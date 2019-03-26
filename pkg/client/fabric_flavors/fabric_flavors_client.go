@@ -25,9 +25,9 @@ type Client struct {
 }
 
 /*
-GetFabricFlavors gets all fabric flavors
+GetFabricFlavors gets fabric flavors
 
-Get all fabric flavors.
+Get all fabric flavors
 */
 func (a *Client) GetFabricFlavors(params *GetFabricFlavorsParams) (*GetFabricFlavorsOK, error) {
 	// TODO: Validate the params before sending

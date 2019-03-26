@@ -68,12 +68,19 @@ type Blueprint struct {
 	// Blueprint name
 	Name string `json:"name,omitempty"`
 
+	// Org ID
+	// Read Only: true
+	OrgID string `json:"orgId,omitempty"`
+
 	// Project ID
 	ProjectID string `json:"projectId,omitempty"`
 
 	// Project Name
 	// Read Only: true
 	ProjectName string `json:"projectName,omitempty"`
+
+	// Flag to indicate blueprint can be requested from any project in org
+	RequestScopeOrg bool `json:"requestScopeOrg,omitempty"`
 
 	// Object link
 	// Read Only: true

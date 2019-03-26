@@ -12,6 +12,7 @@ rename _g_e_t_ _get_
 rename _p_a_t_c_h_ _patch_
 rename _p_o_s_t_ _post_
 rename _p_u_t_ _put_
+rename _g_e_t1_ _get1_
 
 find pkg -type f -exec sed -i '' 's/_a_w_s_/_aws_/g' {} +
 find pkg -type f -exec sed -i '' 's/_v_sphere_/_vsphere_/g' {} +
@@ -21,5 +22,8 @@ find pkg -type f -exec sed -i '' 's/_p_a_t_c_h_/_patch_/g' {} +
 find pkg -type f -exec sed -i '' 's/_p_o_s_t_/_post_/g' {} +
 find pkg -type f -exec sed -i '' 's/_p_u_t_/_put_/g' {} +
 find pkg -type f -exec sed -i '' 's/ iaa s / iaas /g' {} +
+find pkg -type f -exec sed -i '' 's/VmwareCloudAssemblyIaaS/MulticloudIaaS/g' {} +
+find pkg -type f -exec sed -i '' 's/ g e t params/ get params/g' {} +
+find pkg -type f -exec sed -i '' 's/ g e t 1 / get1 /g' {} +
 
-mv pkg/client/multicloud_iaa_s_client.go pkg/client/cas_client.go
+mv pkg/client/vmware_cloud_assembly_iaa_s_client.go pkg/client/cas_client.go

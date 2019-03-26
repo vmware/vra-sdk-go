@@ -27,7 +27,7 @@ type Client struct {
 /*
 CreateProject creates project
 
-Create a new Project.
+Create project
 */
 func (a *Client) CreateProject(params *CreateProjectParams) (*CreateProjectCreated, error) {
 	// TODO: Validate the params before sending
@@ -55,17 +55,17 @@ func (a *Client) CreateProject(params *CreateProjectParams) (*CreateProjectCreat
 }
 
 /*
-DeleteProject deletes a project
+DeleteProject deletes project
 
-Delete a Project.
+Delete project with a given id
 */
-func (a *Client) DeleteProject(params *DeleteProjectParams) error {
+func (a *Client) DeleteProject(params *DeleteProjectParams) (*DeleteProjectNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteProjectParams()
 	}
 
-	_, err := a.transport.Submit(&runtime.ClientOperation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteProject",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/projects/{id}",
@@ -78,16 +78,16 @@ func (a *Client) DeleteProject(params *DeleteProjectParams) error {
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return result.(*DeleteProjectNoContent), nil
 
 }
 
 /*
 GetProject gets project
 
-Get a single Project.
+Get project with a given id
 */
 func (a *Client) GetProject(params *GetProjectParams) (*GetProjectOK, error) {
 	// TODO: Validate the params before sending
@@ -115,9 +115,39 @@ func (a *Client) GetProject(params *GetProjectParams) (*GetProjectOK, error) {
 }
 
 /*
+GetProjectResourceMetadata gets project resource metadata
+
+Get project resource metadata by a given project id
+*/
+func (a *Client) GetProjectResourceMetadata(params *GetProjectResourceMetadataParams) (*GetProjectResourceMetadataOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetProjectResourceMetadataParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getProjectResourceMetadata",
+		Method:             "GET",
+		PathPattern:        "/iaas/api/projects/{id}/resource-metadata",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetProjectResourceMetadataReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetProjectResourceMetadataOK), nil
+
+}
+
+/*
 GetProjects gets projects
 
-Get all Projects.
+Get all projects
 */
 func (a *Client) GetProjects(params *GetProjectsParams) (*GetProjectsOK, error) {
 	// TODO: Validate the params before sending
@@ -147,9 +177,9 @@ func (a *Client) GetProjects(params *GetProjectsParams) (*GetProjectsOK, error) 
 /*
 UpdateProject updates project
 
-Update a Project.
+Update project
 */
-func (a *Client) UpdateProject(params *UpdateProjectParams) (*UpdateProjectCreated, error) {
+func (a *Client) UpdateProject(params *UpdateProjectParams) (*UpdateProjectOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateProjectParams()
@@ -170,7 +200,37 @@ func (a *Client) UpdateProject(params *UpdateProjectParams) (*UpdateProjectCreat
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateProjectCreated), nil
+	return result.(*UpdateProjectOK), nil
+
+}
+
+/*
+UpdateProjectResourceMetadata updates project resource metadata
+
+Update project resource metadata by a given project id
+*/
+func (a *Client) UpdateProjectResourceMetadata(params *UpdateProjectResourceMetadataParams) (*UpdateProjectResourceMetadataOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateProjectResourceMetadataParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "updateProjectResourceMetadata",
+		Method:             "PATCH",
+		PathPattern:        "/iaas/api/projects/{id}/resource-metadata",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateProjectResourceMetadataReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*UpdateProjectResourceMetadataOK), nil
 
 }
 

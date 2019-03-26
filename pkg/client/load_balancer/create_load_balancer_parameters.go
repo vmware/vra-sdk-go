@@ -67,7 +67,7 @@ type CreateLoadBalancerParams struct {
 	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about
 
 	*/
-	APIVersion string
+	APIVersion *string
 	/*Body
 	  LoadBalancer Specification instance
 
@@ -113,13 +113,13 @@ func (o *CreateLoadBalancerParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithAPIVersion adds the aPIVersion to the create load balancer params
-func (o *CreateLoadBalancerParams) WithAPIVersion(aPIVersion string) *CreateLoadBalancerParams {
+func (o *CreateLoadBalancerParams) WithAPIVersion(aPIVersion *string) *CreateLoadBalancerParams {
 	o.SetAPIVersion(aPIVersion)
 	return o
 }
 
 // SetAPIVersion adds the apiVersion to the create load balancer params
-func (o *CreateLoadBalancerParams) SetAPIVersion(aPIVersion string) {
+func (o *CreateLoadBalancerParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
@@ -142,13 +142,20 @@ func (o *CreateLoadBalancerParams) WriteToRequest(r runtime.ClientRequest, reg s
 	}
 	var res []error
 
-	// query param apiVersion
-	qrAPIVersion := o.APIVersion
-	qAPIVersion := qrAPIVersion
-	if qAPIVersion != "" {
-		if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
-			return err
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
 		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	if o.Body != nil {

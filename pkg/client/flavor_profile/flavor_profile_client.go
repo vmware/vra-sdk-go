@@ -25,47 +25,47 @@ type Client struct {
 }
 
 /*
-CreateFlavor creates flavor profile
+CreateFlavorProfile creates flavor profile
 
-Create a new FlavorProfile.
+Create flavor profile
 */
-func (a *Client) CreateFlavor(params *CreateFlavorParams) (*CreateFlavorCreated, error) {
+func (a *Client) CreateFlavorProfile(params *CreateFlavorProfileParams) (*CreateFlavorProfileCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateFlavorParams()
+		params = NewCreateFlavorProfileParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "createFlavor",
+		ID:                 "createFlavorProfile",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/flavor-profiles",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateFlavorReader{formats: a.formats},
+		Reader:             &CreateFlavorProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateFlavorCreated), nil
+	return result.(*CreateFlavorProfileCreated), nil
 
 }
 
 /*
 DeleteFlavorProfile deletes flavor profile
 
-Delete a single FlavorProfile.
+Delete flavor profile with a given id
 */
-func (a *Client) DeleteFlavorProfile(params *DeleteFlavorProfileParams) error {
+func (a *Client) DeleteFlavorProfile(params *DeleteFlavorProfileParams) (*DeleteFlavorProfileNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteFlavorProfileParams()
 	}
 
-	_, err := a.transport.Submit(&runtime.ClientOperation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteFlavorProfile",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/flavor-profiles/{id}",
@@ -78,16 +78,16 @@ func (a *Client) DeleteFlavorProfile(params *DeleteFlavorProfileParams) error {
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return result.(*DeleteFlavorProfileNoContent), nil
 
 }
 
 /*
 GetFlavorProfile gets flavor profile
 
-Get a single FlavorProfile.
+Get flavor profile with a given id
 */
 func (a *Client) GetFlavorProfile(params *GetFlavorProfileParams) (*GetFlavorProfileOK, error) {
 	// TODO: Validate the params before sending
@@ -117,7 +117,7 @@ func (a *Client) GetFlavorProfile(params *GetFlavorProfileParams) (*GetFlavorPro
 /*
 GetFlavorProfiles gets flavor profile
 
-Get all flavors.
+Get all flavor profile
 */
 func (a *Client) GetFlavorProfiles(params *GetFlavorProfilesParams) (*GetFlavorProfilesOK, error) {
 	// TODO: Validate the params before sending
@@ -145,32 +145,32 @@ func (a *Client) GetFlavorProfiles(params *GetFlavorProfilesParams) (*GetFlavorP
 }
 
 /*
-UpdateFlavor updates flavor profile
+UpdateFlavorProfile updates flavor profile
 
-Update a single FlavorProfile.
+Update flavor profile
 */
-func (a *Client) UpdateFlavor(params *UpdateFlavorParams) (*UpdateFlavorOK, error) {
+func (a *Client) UpdateFlavorProfile(params *UpdateFlavorProfileParams) (*UpdateFlavorProfileOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewUpdateFlavorParams()
+		params = NewUpdateFlavorProfileParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "updateFlavor",
+		ID:                 "updateFlavorProfile",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/flavor-profiles/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &UpdateFlavorReader{formats: a.formats},
+		Reader:             &UpdateFlavorProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateFlavorOK), nil
+	return result.(*UpdateFlavorProfileOK), nil
 
 }
 

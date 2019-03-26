@@ -28,6 +28,9 @@ type CatalogItemRequest struct {
 
 	// Reason for request
 	Reason string `json:"reason,omitempty"`
+
+	// Version of the catalog item. e.g. v2.0
+	Version string `json:"version,omitempty"`
 }
 
 // Validate validates this catalog item request

@@ -68,7 +68,7 @@ func NewListProviderResourceTypesUsingGETOK() *ListProviderResourceTypesUsingGET
 OK
 */
 type ListProviderResourceTypesUsingGETOK struct {
-	Payload *models.QueryResultProviderResourceType
+	Payload *models.ProviderResourceTypeQueryResult
 }
 
 func (o *ListProviderResourceTypesUsingGETOK) Error() string {
@@ -77,7 +77,7 @@ func (o *ListProviderResourceTypesUsingGETOK) Error() string {
 
 func (o *ListProviderResourceTypesUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.QueryResultProviderResourceType)
+	o.Payload = new(models.ProviderResourceTypeQueryResult)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

@@ -22,6 +22,10 @@ type ContentDefinition struct {
 	// Description of either the catalog item or the catalog source
 	Description string `json:"description,omitempty"`
 
+	// Icon id of associated catalog item (if association is with catalog item)
+	// Format: uuid
+	IconID strfmt.UUID `json:"iconId,omitempty"`
+
 	// Id of either the catalog source or catalog item.
 	// Required: true
 	// Format: uuid
@@ -36,6 +40,9 @@ type ContentDefinition struct {
 	// Catalog source name
 	SourceName string `json:"sourceName,omitempty"`
 
+	// Catalog source type
+	SourceType string `json:"sourceType,omitempty"`
+
 	// Content definition type
 	// Required: true
 	Type *string `json:"type"`
@@ -44,6 +51,10 @@ type ContentDefinition struct {
 // Validate validates this content definition
 func (m *ContentDefinition) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateIconID(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateID(formats); err != nil {
 		res = append(res, err)
@@ -56,6 +67,19 @@ func (m *ContentDefinition) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *ContentDefinition) validateIconID(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.IconID) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("iconId", "body", "uuid", m.IconID.String(), formats); err != nil {
+		return err
+	}
+
 	return nil
 }
 

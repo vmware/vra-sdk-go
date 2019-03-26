@@ -25,8 +25,8 @@ type DeleteBlockDeviceReader struct {
 func (o *DeleteBlockDeviceReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 200:
-		result := NewDeleteBlockDeviceOK()
+	case 202:
+		result := NewDeleteBlockDeviceAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -51,24 +51,24 @@ func (o *DeleteBlockDeviceReader) ReadResponse(response runtime.ClientResponse, 
 	}
 }
 
-// NewDeleteBlockDeviceOK creates a DeleteBlockDeviceOK with default headers values
-func NewDeleteBlockDeviceOK() *DeleteBlockDeviceOK {
-	return &DeleteBlockDeviceOK{}
+// NewDeleteBlockDeviceAccepted creates a DeleteBlockDeviceAccepted with default headers values
+func NewDeleteBlockDeviceAccepted() *DeleteBlockDeviceAccepted {
+	return &DeleteBlockDeviceAccepted{}
 }
 
-/*DeleteBlockDeviceOK handles this case with default header values.
+/*DeleteBlockDeviceAccepted handles this case with default header values.
 
 successful operation
 */
-type DeleteBlockDeviceOK struct {
+type DeleteBlockDeviceAccepted struct {
 	Payload *models.RequestTracker
 }
 
-func (o *DeleteBlockDeviceOK) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/block-devices/{id}][%d] deleteBlockDeviceOK  %+v", 200, o.Payload)
+func (o *DeleteBlockDeviceAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/block-devices/{id}][%d] deleteBlockDeviceAccepted  %+v", 202, o.Payload)
 }
 
-func (o *DeleteBlockDeviceOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *DeleteBlockDeviceAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.RequestTracker)
 

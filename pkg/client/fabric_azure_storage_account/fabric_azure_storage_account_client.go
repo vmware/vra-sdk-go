@@ -25,32 +25,62 @@ type Client struct {
 }
 
 /*
-GetAzureStorageAccounts gets fabric azure storage accounts
+GetFabricAzureStorageAccount gets fabric azure storage account
 
-Get all Fabric Azure Storage Accounts.
+Get fabric Azure storage account with a given id
 */
-func (a *Client) GetAzureStorageAccounts(params *GetAzureStorageAccountsParams) (*GetAzureStorageAccountsOK, error) {
+func (a *Client) GetFabricAzureStorageAccount(params *GetFabricAzureStorageAccountParams) (*GetFabricAzureStorageAccountOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetAzureStorageAccountsParams()
+		params = NewGetFabricAzureStorageAccountParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getAzureStorageAccounts",
+		ID:                 "getFabricAzureStorageAccount",
 		Method:             "GET",
-		PathPattern:        "/iaas/api/fabric-azure-storage-accounts",
+		PathPattern:        "/iaas/api/fabric-azure-storage-accounts/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetAzureStorageAccountsReader{formats: a.formats},
+		Reader:             &GetFabricAzureStorageAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetAzureStorageAccountsOK), nil
+	return result.(*GetFabricAzureStorageAccountOK), nil
+
+}
+
+/*
+GetFabricAzureStorageAccounts gets fabric azure storage accounts
+
+Get all fabric Azure storage accounts.
+*/
+func (a *Client) GetFabricAzureStorageAccounts(params *GetFabricAzureStorageAccountsParams) (*GetFabricAzureStorageAccountsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetFabricAzureStorageAccountsParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getFabricAzureStorageAccounts",
+		Method:             "GET",
+		PathPattern:        "/iaas/api/fabric-azure-storage-accounts",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetFabricAzureStorageAccountsReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetFabricAzureStorageAccountsOK), nil
 
 }
 

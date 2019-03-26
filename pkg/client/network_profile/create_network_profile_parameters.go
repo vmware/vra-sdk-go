@@ -67,7 +67,7 @@ type CreateNetworkProfileParams struct {
 	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about
 
 	*/
-	APIVersion string
+	APIVersion *string
 	/*Body
 	  NetworkProfile instance
 
@@ -113,13 +113,13 @@ func (o *CreateNetworkProfileParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithAPIVersion adds the aPIVersion to the create network profile params
-func (o *CreateNetworkProfileParams) WithAPIVersion(aPIVersion string) *CreateNetworkProfileParams {
+func (o *CreateNetworkProfileParams) WithAPIVersion(aPIVersion *string) *CreateNetworkProfileParams {
 	o.SetAPIVersion(aPIVersion)
 	return o
 }
 
 // SetAPIVersion adds the apiVersion to the create network profile params
-func (o *CreateNetworkProfileParams) SetAPIVersion(aPIVersion string) {
+func (o *CreateNetworkProfileParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
@@ -142,13 +142,20 @@ func (o *CreateNetworkProfileParams) WriteToRequest(r runtime.ClientRequest, reg
 	}
 	var res []error
 
-	// query param apiVersion
-	qrAPIVersion := o.APIVersion
-	qAPIVersion := qrAPIVersion
-	if qAPIVersion != "" {
-		if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
-			return err
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
 		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	if o.Body != nil {

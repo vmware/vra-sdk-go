@@ -25,63 +25,129 @@ type Client struct {
 }
 
 /*
-GetCatalogItemUsingGET returns the catalog item with the specified ID
+GetCatalogItemUsingGET1 finds a catalog item with specified ID
+
+Returns the catalog item with the specified ID.
 */
-func (a *Client) GetCatalogItemUsingGET(params *GetCatalogItemUsingGETParams) (*GetCatalogItemUsingGETOK, error) {
+func (a *Client) GetCatalogItemUsingGET1(params *GetCatalogItemUsingGET1Params) (*GetCatalogItemUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetCatalogItemUsingGETParams()
+		params = NewGetCatalogItemUsingGET1Params()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getCatalogItemUsingGET",
+		ID:                 "getCatalogItemUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/catalog/api/items/{id}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetCatalogItemUsingGETReader{formats: a.formats},
+		Reader:             &GetCatalogItemUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetCatalogItemUsingGETOK), nil
+	return result.(*GetCatalogItemUsingGET1OK), nil
 
 }
 
 /*
-GetCatalogItemsUsingGET returns a paginated list of catalog items
+GetCatalogItemsUsingGET1 fetches a list of catalog items
+
+Returns a paginated list of catalog items.
 */
-func (a *Client) GetCatalogItemsUsingGET(params *GetCatalogItemsUsingGETParams) (*GetCatalogItemsUsingGETOK, error) {
+func (a *Client) GetCatalogItemsUsingGET1(params *GetCatalogItemsUsingGET1Params) (*GetCatalogItemsUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetCatalogItemsUsingGETParams()
+		params = NewGetCatalogItemsUsingGET1Params()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getCatalogItemsUsingGET",
+		ID:                 "getCatalogItemsUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/catalog/api/items",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetCatalogItemsUsingGETReader{formats: a.formats},
+		Reader:             &GetCatalogItemsUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetCatalogItemsUsingGETOK), nil
+	return result.(*GetCatalogItemsUsingGET1OK), nil
 
 }
 
 /*
-RequestCatalogItemUsingPOST creates a deployment from a catalog item
+GetVersionByIDUsingGET fetches detailed catalog item version
+
+Returns a detailed catalog item version.
+*/
+func (a *Client) GetVersionByIDUsingGET(params *GetVersionByIDUsingGETParams) (*GetVersionByIDUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetVersionByIDUsingGETParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getVersionByIdUsingGET",
+		Method:             "GET",
+		PathPattern:        "/catalog/api/items/{id}/versions/{versionId}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetVersionByIDUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetVersionByIDUsingGETOK), nil
+
+}
+
+/*
+GetVersionsUsingGET fetches a list of catalog items with versions
+
+Returns a paginated list of catalog item versions.
+*/
+func (a *Client) GetVersionsUsingGET(params *GetVersionsUsingGETParams) (*GetVersionsUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetVersionsUsingGETParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getVersionsUsingGET",
+		Method:             "GET",
+		PathPattern:        "/catalog/api/items/{id}/versions",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetVersionsUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetVersionsUsingGETOK), nil
+
+}
+
+/*
+RequestCatalogItemUsingPOST creates a deployment
+
+Creates a deployment from a catalog item.
 */
 func (a *Client) RequestCatalogItemUsingPOST(params *RequestCatalogItemUsingPOSTParams) (*RequestCatalogItemUsingPOSTOK, *RequestCatalogItemUsingPOSTCreated, error) {
 	// TODO: Validate the params before sending

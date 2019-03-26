@@ -57,15 +57,15 @@ func (a *Client) CreateDataCollector(params *CreateDataCollectorParams) (*Create
 /*
 DeleteDataCollector deletes data collector
 
-Delete a single Data Collector.
+Delete Data Collector with a given id
 */
-func (a *Client) DeleteDataCollector(params *DeleteDataCollectorParams) error {
+func (a *Client) DeleteDataCollector(params *DeleteDataCollectorParams) (*DeleteDataCollectorNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteDataCollectorParams()
 	}
 
-	_, err := a.transport.Submit(&runtime.ClientOperation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteDataCollector",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/data-collectors/{id}",
@@ -78,16 +78,16 @@ func (a *Client) DeleteDataCollector(params *DeleteDataCollectorParams) error {
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return result.(*DeleteDataCollectorNoContent), nil
 
 }
 
 /*
 GetDataCollector gets data collector
 
-Get a single Data Collector.
+Get Data Collector with a given id
 */
 func (a *Client) GetDataCollector(params *GetDataCollectorParams) (*GetDataCollectorOK, error) {
 	// TODO: Validate the params before sending

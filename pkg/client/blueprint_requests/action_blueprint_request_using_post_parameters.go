@@ -88,7 +88,7 @@ type ActionBlueprintRequestUsingPOSTParams struct {
 	  requestId
 
 	*/
-	RequestID string
+	RequestID strfmt.UUID
 
 	timeout    time.Duration
 	Context    context.Context
@@ -151,13 +151,13 @@ func (o *ActionBlueprintRequestUsingPOSTParams) SetForce(force *bool) {
 }
 
 // WithRequestID adds the requestID to the action blueprint request using p o s t params
-func (o *ActionBlueprintRequestUsingPOSTParams) WithRequestID(requestID string) *ActionBlueprintRequestUsingPOSTParams {
+func (o *ActionBlueprintRequestUsingPOSTParams) WithRequestID(requestID strfmt.UUID) *ActionBlueprintRequestUsingPOSTParams {
 	o.SetRequestID(requestID)
 	return o
 }
 
 // SetRequestID adds the requestId to the action blueprint request using p o s t params
-func (o *ActionBlueprintRequestUsingPOSTParams) SetRequestID(requestID string) {
+func (o *ActionBlueprintRequestUsingPOSTParams) SetRequestID(requestID strfmt.UUID) {
 	o.RequestID = requestID
 }
 
@@ -195,7 +195,7 @@ func (o *ActionBlueprintRequestUsingPOSTParams) WriteToRequest(r runtime.ClientR
 	}
 
 	// path param requestId
-	if err := r.SetPathParam("requestId", o.RequestID); err != nil {
+	if err := r.SetPathParam("requestId", o.RequestID.String()); err != nil {
 		return err
 	}
 

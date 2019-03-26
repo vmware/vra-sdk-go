@@ -67,7 +67,7 @@ type UpdateAwsStorageProfileParams struct {
 	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about
 
 	*/
-	APIVersion string
+	APIVersion *string
 	/*Body
 	  StorageProfileAwsSpecification
 
@@ -118,13 +118,13 @@ func (o *UpdateAwsStorageProfileParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithAPIVersion adds the aPIVersion to the update aws storage profile params
-func (o *UpdateAwsStorageProfileParams) WithAPIVersion(aPIVersion string) *UpdateAwsStorageProfileParams {
+func (o *UpdateAwsStorageProfileParams) WithAPIVersion(aPIVersion *string) *UpdateAwsStorageProfileParams {
 	o.SetAPIVersion(aPIVersion)
 	return o
 }
 
 // SetAPIVersion adds the apiVersion to the update aws storage profile params
-func (o *UpdateAwsStorageProfileParams) SetAPIVersion(aPIVersion string) {
+func (o *UpdateAwsStorageProfileParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
@@ -158,13 +158,20 @@ func (o *UpdateAwsStorageProfileParams) WriteToRequest(r runtime.ClientRequest, 
 	}
 	var res []error
 
-	// query param apiVersion
-	qrAPIVersion := o.APIVersion
-	qAPIVersion := qrAPIVersion
-	if qAPIVersion != "" {
-		if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
-			return err
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
 		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	if o.Body != nil {

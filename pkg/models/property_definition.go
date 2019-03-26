@@ -25,6 +25,9 @@ type PropertyDefinition struct {
 	// computed
 	Computed bool `json:"computed,omitempty"`
 
+	// const
+	Const interface{} `json:"const,omitempty"`
+
 	// default
 	Default interface{} `json:"default,omitempty"`
 
@@ -73,6 +76,9 @@ type PropertyDefinition struct {
 	// properties
 	Properties map[string]PropertyDefinition `json:"properties,omitempty"`
 
+	// read only
+	ReadOnly bool `json:"readOnly,omitempty"`
+
 	// recreate on update
 	RecreateOnUpdate bool `json:"recreateOnUpdate,omitempty"`
 
@@ -87,6 +93,9 @@ type PropertyDefinition struct {
 
 	// unique items
 	UniqueItems bool `json:"uniqueItems,omitempty"`
+
+	// write only
+	WriteOnly bool `json:"writeOnly,omitempty"`
 }
 
 // Validate validates this property definition

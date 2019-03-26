@@ -68,7 +68,7 @@ func NewListBlueprintsUsingGETOK() *ListBlueprintsUsingGETOK {
 OK
 */
 type ListBlueprintsUsingGETOK struct {
-	Payload *models.QueryResultBlueprint
+	Payload *models.BlueprintQueryResult
 }
 
 func (o *ListBlueprintsUsingGETOK) Error() string {
@@ -77,7 +77,7 @@ func (o *ListBlueprintsUsingGETOK) Error() string {
 
 func (o *ListBlueprintsUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.QueryResultBlueprint)
+	o.Payload = new(models.BlueprintQueryResult)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

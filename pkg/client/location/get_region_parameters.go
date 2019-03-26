@@ -65,7 +65,12 @@ type GetRegionParams struct {
 	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about
 
 	*/
-	APIVersion string
+	APIVersion *string
+	/*ID
+	  The ID of the region.
+
+	*/
+	ID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -106,14 +111,25 @@ func (o *GetRegionParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithAPIVersion adds the aPIVersion to the get region params
-func (o *GetRegionParams) WithAPIVersion(aPIVersion string) *GetRegionParams {
+func (o *GetRegionParams) WithAPIVersion(aPIVersion *string) *GetRegionParams {
 	o.SetAPIVersion(aPIVersion)
 	return o
 }
 
 // SetAPIVersion adds the apiVersion to the get region params
-func (o *GetRegionParams) SetAPIVersion(aPIVersion string) {
+func (o *GetRegionParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
+}
+
+// WithID adds the id to the get region params
+func (o *GetRegionParams) WithID(id string) *GetRegionParams {
+	o.SetID(id)
+	return o
+}
+
+// SetID adds the id to the get region params
+func (o *GetRegionParams) SetID(id string) {
+	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -124,13 +140,25 @@ func (o *GetRegionParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Reg
 	}
 	var res []error
 
-	// query param apiVersion
-	qrAPIVersion := o.APIVersion
-	qAPIVersion := qrAPIVersion
-	if qAPIVersion != "" {
-		if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
-			return err
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
 		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	// path param id
+	if err := r.SetPathParam("id", o.ID); err != nil {
+		return err
 	}
 
 	if len(res) > 0 {

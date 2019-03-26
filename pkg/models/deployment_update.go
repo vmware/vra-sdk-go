@@ -6,11 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"strconv"
-
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
 )
 
@@ -20,58 +17,15 @@ import (
 // swagger:model DeploymentUpdate
 type DeploymentUpdate struct {
 
-	// blueprint Id
-	BlueprintID string `json:"blueprintId,omitempty"`
-
 	// New description of the deployment
 	Description string `json:"description,omitempty"`
 
-	// inputs
-	Inputs interface{} `json:"inputs,omitempty"`
-
 	// New name of the deployment
 	Name string `json:"name,omitempty"`
-
-	// tags
-	Tags []*Tag `json:"tags"`
 }
 
 // Validate validates this deployment update
 func (m *DeploymentUpdate) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateTags(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *DeploymentUpdate) validateTags(formats strfmt.Registry) error {
-
-	if swag.IsZero(m.Tags) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.Tags); i++ {
-		if swag.IsZero(m.Tags[i]) { // not required
-			continue
-		}
-
-		if m.Tags[i] != nil {
-			if err := m.Tags[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
 	return nil
 }
 

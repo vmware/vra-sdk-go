@@ -29,7 +29,8 @@ type CloudAccountVsphereSpecification struct {
 	CreateDefaultZones bool `json:"createDefaultZones,omitempty"`
 
 	// Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors
-	Dcid string `json:"dcid,omitempty"`
+	// Required: true
+	Dcid *string `json:"dcid"`
 
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
@@ -47,6 +48,7 @@ type CloudAccountVsphereSpecification struct {
 	Password *string `json:"password"`
 
 	// A set of datacenter managed object reference identifiers (MoRef) to enable provisioning on. Refer to /iaas/cloud-accounts-vsphere/region-enumeration.
+	// Required: true
 	RegionIds []string `json:"regionIds"`
 
 	// A set of tag keys and optional values to set on the Cloud Account
@@ -61,6 +63,10 @@ type CloudAccountVsphereSpecification struct {
 func (m *CloudAccountVsphereSpecification) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateDcid(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateHostName(formats); err != nil {
 		res = append(res, err)
 	}
@@ -70,6 +76,10 @@ func (m *CloudAccountVsphereSpecification) Validate(formats strfmt.Registry) err
 	}
 
 	if err := m.validatePassword(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateRegionIds(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -84,6 +94,15 @@ func (m *CloudAccountVsphereSpecification) Validate(formats strfmt.Registry) err
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *CloudAccountVsphereSpecification) validateDcid(formats strfmt.Registry) error {
+
+	if err := validate.Required("dcid", "body", m.Dcid); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -108,6 +127,15 @@ func (m *CloudAccountVsphereSpecification) validateName(formats strfmt.Registry)
 func (m *CloudAccountVsphereSpecification) validatePassword(formats strfmt.Registry) error {
 
 	if err := validate.Required("password", "body", m.Password); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CloudAccountVsphereSpecification) validateRegionIds(formats strfmt.Registry) error {
+
+	if err := validate.Required("regionIds", "body", m.RegionIds); err != nil {
 		return err
 	}
 

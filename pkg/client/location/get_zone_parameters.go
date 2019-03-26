@@ -65,12 +65,12 @@ type GetZoneParams struct {
 	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about
 
 	*/
-	APIVersion string
-	/*RegionID
-	  The internal id of the region for which this entity is defined. This is the id property of the Region object retrieved through /iaas/api/regions. Within an entity, the regionId can be obtained as the last path segment of the _links.region.href property
+	APIVersion *string
+	/*ID
+	  The ID of the zone.
 
 	*/
-	RegionID *string
+	ID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -111,25 +111,25 @@ func (o *GetZoneParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithAPIVersion adds the aPIVersion to the get zone params
-func (o *GetZoneParams) WithAPIVersion(aPIVersion string) *GetZoneParams {
+func (o *GetZoneParams) WithAPIVersion(aPIVersion *string) *GetZoneParams {
 	o.SetAPIVersion(aPIVersion)
 	return o
 }
 
 // SetAPIVersion adds the apiVersion to the get zone params
-func (o *GetZoneParams) SetAPIVersion(aPIVersion string) {
+func (o *GetZoneParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
-// WithRegionID adds the regionID to the get zone params
-func (o *GetZoneParams) WithRegionID(regionID *string) *GetZoneParams {
-	o.SetRegionID(regionID)
+// WithID adds the id to the get zone params
+func (o *GetZoneParams) WithID(id string) *GetZoneParams {
+	o.SetID(id)
 	return o
 }
 
-// SetRegionID adds the regionId to the get zone params
-func (o *GetZoneParams) SetRegionID(regionID *string) {
-	o.RegionID = regionID
+// SetID adds the id to the get zone params
+func (o *GetZoneParams) SetID(id string) {
+	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -140,29 +140,25 @@ func (o *GetZoneParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Regis
 	}
 	var res []error
 
-	// query param apiVersion
-	qrAPIVersion := o.APIVersion
-	qAPIVersion := qrAPIVersion
-	if qAPIVersion != "" {
-		if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
-			return err
-		}
-	}
+	if o.APIVersion != nil {
 
-	if o.RegionID != nil {
-
-		// query param regionId
-		var qrRegionID string
-		if o.RegionID != nil {
-			qrRegionID = *o.RegionID
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
 		}
-		qRegionID := qrRegionID
-		if qRegionID != "" {
-			if err := r.SetQueryParam("regionId", qRegionID); err != nil {
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
 
+	}
+
+	// path param id
+	if err := r.SetPathParam("id", o.ID); err != nil {
+		return err
 	}
 
 	if len(res) > 0 {

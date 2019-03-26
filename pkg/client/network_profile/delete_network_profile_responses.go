@@ -22,6 +22,13 @@ type DeleteNetworkProfileReader struct {
 func (o *DeleteNetworkProfileReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
+	case 204:
+		result := NewDeleteNetworkProfileNoContent()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	case 403:
 		result := NewDeleteNetworkProfileForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -39,6 +46,27 @@ func (o *DeleteNetworkProfileReader) ReadResponse(response runtime.ClientRespons
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
+}
+
+// NewDeleteNetworkProfileNoContent creates a DeleteNetworkProfileNoContent with default headers values
+func NewDeleteNetworkProfileNoContent() *DeleteNetworkProfileNoContent {
+	return &DeleteNetworkProfileNoContent{}
+}
+
+/*DeleteNetworkProfileNoContent handles this case with default header values.
+
+No Content
+*/
+type DeleteNetworkProfileNoContent struct {
+}
+
+func (o *DeleteNetworkProfileNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/network-profiles/{id}][%d] deleteNetworkProfileNoContent ", 204)
+}
+
+func (o *DeleteNetworkProfileNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
 }
 
 // NewDeleteNetworkProfileForbidden creates a DeleteNetworkProfileForbidden with default headers values

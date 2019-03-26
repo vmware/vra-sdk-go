@@ -25,32 +25,62 @@ type Client struct {
 }
 
 /*
-GetFabricVsphereDatastores gets fabric vsphere datastores
+GetFabricVSphereDatastore gets fabric v sphere datastore
 
-Get all Fabric vSphere Datastores.
+Get fabric vSphere datastore with a given id
 */
-func (a *Client) GetFabricVsphereDatastores(params *GetFabricVsphereDatastoresParams) (*GetFabricVsphereDatastoresOK, error) {
+func (a *Client) GetFabricVSphereDatastore(params *GetFabricVSphereDatastoreParams) (*GetFabricVSphereDatastoreOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetFabricVsphereDatastoresParams()
+		params = NewGetFabricVSphereDatastoreParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getFabricVsphereDatastores",
+		ID:                 "getFabricVSphereDatastore",
 		Method:             "GET",
-		PathPattern:        "/iaas/api/fabric-vsphere-datastores",
+		PathPattern:        "/iaas/api/fabric-vsphere-datastores/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetFabricVsphereDatastoresReader{formats: a.formats},
+		Reader:             &GetFabricVSphereDatastoreReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetFabricVsphereDatastoresOK), nil
+	return result.(*GetFabricVSphereDatastoreOK), nil
+
+}
+
+/*
+GetFabricVSphereDatastores gets fabric v sphere datastores
+
+Get all fabric vSphere datastores.
+*/
+func (a *Client) GetFabricVSphereDatastores(params *GetFabricVSphereDatastoresParams) (*GetFabricVSphereDatastoresOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetFabricVSphereDatastoresParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getFabricVSphereDatastores",
+		Method:             "GET",
+		PathPattern:        "/iaas/api/fabric-vsphere-datastores",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetFabricVSphereDatastoresReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetFabricVSphereDatastoresOK), nil
 
 }
 

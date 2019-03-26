@@ -33,6 +33,10 @@ type BlueprintRequestEvent struct {
 	// Read Only: true
 	ID string `json:"id,omitempty"`
 
+	// Org ID
+	// Read Only: true
+	OrgID string `json:"orgId,omitempty"`
+
 	// Project ID
 	ProjectID string `json:"projectId,omitempty"`
 

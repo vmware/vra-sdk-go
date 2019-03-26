@@ -25,9 +25,69 @@ type Client struct {
 }
 
 /*
+CreateAwsStorageProfile creates a w s storage profile
+
+Create AWS storage profile
+*/
+func (a *Client) CreateAwsStorageProfile(params *CreateAwsStorageProfileParams) (*CreateAwsStorageProfileCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateAwsStorageProfileParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "createAwsStorageProfile",
+		Method:             "POST",
+		PathPattern:        "/iaas/api/storage-profiles-aws",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CreateAwsStorageProfileReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*CreateAwsStorageProfileCreated), nil
+
+}
+
+/*
+CreateAzureStorageProfile creates azure storage profile
+
+Create Azure storage profile
+*/
+func (a *Client) CreateAzureStorageProfile(params *CreateAzureStorageProfileParams) (*CreateAzureStorageProfileCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateAzureStorageProfileParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "createAzureStorageProfile",
+		Method:             "POST",
+		PathPattern:        "/iaas/api/storage-profiles-azure",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CreateAzureStorageProfileReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*CreateAzureStorageProfileCreated), nil
+
+}
+
+/*
 CreateStorageProfile creates storage profile
 
-Create a new Storage Profile.
+Create storage profile
 */
 func (a *Client) CreateStorageProfile(params *CreateStorageProfileParams) (*CreateStorageProfileCreated, error) {
 	// TODO: Validate the params before sending
@@ -55,107 +115,47 @@ func (a *Client) CreateStorageProfile(params *CreateStorageProfileParams) (*Crea
 }
 
 /*
-CreateStorageProfileForAWS creates a w s storage profile
+CreateVSphereStorageProfile creates v sphere storage profile
 
-Create a new AWS Storage Profile.
+Create vSphere storage profile
 */
-func (a *Client) CreateStorageProfileForAWS(params *CreateStorageProfileForAWSParams) (*CreateStorageProfileForAWSCreated, error) {
+func (a *Client) CreateVSphereStorageProfile(params *CreateVSphereStorageProfileParams) (*CreateVSphereStorageProfileCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateStorageProfileForAWSParams()
+		params = NewCreateVSphereStorageProfileParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "createStorageProfileForAWS",
-		Method:             "POST",
-		PathPattern:        "/iaas/api/storage-profiles-aws",
-		ProducesMediaTypes: []string{"app/json", "application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &CreateStorageProfileForAWSReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*CreateStorageProfileForAWSCreated), nil
-
-}
-
-/*
-CreateStorageProfileForAzure creates azure storage profile
-
-Create a new Azure Storage Profile.
-*/
-func (a *Client) CreateStorageProfileForAzure(params *CreateStorageProfileForAzureParams) (*CreateStorageProfileForAzureCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewCreateStorageProfileForAzureParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "createStorageProfileForAzure",
-		Method:             "POST",
-		PathPattern:        "/iaas/api/storage-profiles-azure",
-		ProducesMediaTypes: []string{"app/json", "application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &CreateStorageProfileForAzureReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*CreateStorageProfileForAzureCreated), nil
-
-}
-
-/*
-CreateStorageProfileForVsphere creates v sphere storage profile
-
-Create a new vSphere Storage Profile.
-*/
-func (a *Client) CreateStorageProfileForVsphere(params *CreateStorageProfileForVsphereParams) (*CreateStorageProfileForVsphereCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewCreateStorageProfileForVsphereParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "createStorageProfileForVsphere",
+		ID:                 "createVSphereStorageProfile",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/storage-profiles-vsphere",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateStorageProfileForVsphereReader{formats: a.formats},
+		Reader:             &CreateVSphereStorageProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateStorageProfileForVsphereCreated), nil
+	return result.(*CreateVSphereStorageProfileCreated), nil
 
 }
 
 /*
 DeleteAwsStorageProfile deletes a w s storage profile
 
-Delete a single AWS StorageProfile.
+Delete AWS storage profile with a given id
 */
-func (a *Client) DeleteAwsStorageProfile(params *DeleteAwsStorageProfileParams) error {
+func (a *Client) DeleteAwsStorageProfile(params *DeleteAwsStorageProfileParams) (*DeleteAwsStorageProfileNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteAwsStorageProfileParams()
 	}
 
-	_, err := a.transport.Submit(&runtime.ClientOperation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteAwsStorageProfile",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/storage-profiles-aws/{id}",
@@ -168,24 +168,24 @@ func (a *Client) DeleteAwsStorageProfile(params *DeleteAwsStorageProfileParams) 
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return result.(*DeleteAwsStorageProfileNoContent), nil
 
 }
 
 /*
 DeleteAzureStorageProfile deletes azure storage profile
 
-Delete a single Azure StorageProfile.
+Delete Azure storage profile with a given id
 */
-func (a *Client) DeleteAzureStorageProfile(params *DeleteAzureStorageProfileParams) error {
+func (a *Client) DeleteAzureStorageProfile(params *DeleteAzureStorageProfileParams) (*DeleteAzureStorageProfileNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteAzureStorageProfileParams()
 	}
 
-	_, err := a.transport.Submit(&runtime.ClientOperation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteAzureStorageProfile",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/storage-profiles-azure/{id}",
@@ -198,24 +198,24 @@ func (a *Client) DeleteAzureStorageProfile(params *DeleteAzureStorageProfilePara
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return result.(*DeleteAzureStorageProfileNoContent), nil
 
 }
 
 /*
 DeleteStorageProfile deletes storage profile
 
-Delete a single StorageProfile.
+Delete storage profile with a given id
 */
-func (a *Client) DeleteStorageProfile(params *DeleteStorageProfileParams) error {
+func (a *Client) DeleteStorageProfile(params *DeleteStorageProfileParams) (*DeleteStorageProfileNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteStorageProfileParams()
 	}
 
-	_, err := a.transport.Submit(&runtime.ClientOperation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteStorageProfile",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/storage-profiles/{id}",
@@ -228,24 +228,24 @@ func (a *Client) DeleteStorageProfile(params *DeleteStorageProfileParams) error 
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return result.(*DeleteStorageProfileNoContent), nil
 
 }
 
 /*
 DeleteVSphereStorageProfile deletes v sphere storage profile
 
-Delete a single vSphere StorageProfile.
+Delete vSphere storage profile with a given id
 */
-func (a *Client) DeleteVSphereStorageProfile(params *DeleteVSphereStorageProfileParams) error {
+func (a *Client) DeleteVSphereStorageProfile(params *DeleteVSphereStorageProfileParams) (*DeleteVSphereStorageProfileNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteVSphereStorageProfileParams()
 	}
 
-	_, err := a.transport.Submit(&runtime.ClientOperation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteVSphereStorageProfile",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/storage-profiles-vsphere/{id}",
@@ -258,16 +258,16 @@ func (a *Client) DeleteVSphereStorageProfile(params *DeleteVSphereStorageProfile
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return result.(*DeleteVSphereStorageProfileNoContent), nil
 
 }
 
 /*
 GetAwsStorageProfile gets a w s storage profile
 
-Get a single AWS StorageProfile.
+Get AWS storage profile with a given id
 */
 func (a *Client) GetAwsStorageProfile(params *GetAwsStorageProfileParams) (*GetAwsStorageProfileOK, error) {
 	// TODO: Validate the params before sending
@@ -297,7 +297,7 @@ func (a *Client) GetAwsStorageProfile(params *GetAwsStorageProfileParams) (*GetA
 /*
 GetAwsStorageProfiles gets a w s storage profiles
 
-Get all AWS storage profiles.
+Get all AWS storage profiles
 */
 func (a *Client) GetAwsStorageProfiles(params *GetAwsStorageProfilesParams) (*GetAwsStorageProfilesOK, error) {
 	// TODO: Validate the params before sending
@@ -327,7 +327,7 @@ func (a *Client) GetAwsStorageProfiles(params *GetAwsStorageProfilesParams) (*Ge
 /*
 GetAzureStorageProfile gets azure storage profile
 
-Get a single Azure StorageProfile.
+Get Azure storage profile with a given id
 */
 func (a *Client) GetAzureStorageProfile(params *GetAzureStorageProfileParams) (*GetAzureStorageProfileOK, error) {
 	// TODO: Validate the params before sending
@@ -357,7 +357,7 @@ func (a *Client) GetAzureStorageProfile(params *GetAzureStorageProfileParams) (*
 /*
 GetAzureStorageProfiles gets azure storage profiles
 
-Get all Azure storage profiles.
+Get all Azure storage profiles
 */
 func (a *Client) GetAzureStorageProfiles(params *GetAzureStorageProfilesParams) (*GetAzureStorageProfilesOK, error) {
 	// TODO: Validate the params before sending
@@ -387,7 +387,7 @@ func (a *Client) GetAzureStorageProfiles(params *GetAzureStorageProfilesParams) 
 /*
 GetStorageProfile gets storage profile
 
-Get a single StorageProfile.
+Get storage profile with a given id
 */
 func (a *Client) GetStorageProfile(params *GetStorageProfileParams) (*GetStorageProfileOK, error) {
 	// TODO: Validate the params before sending
@@ -417,7 +417,7 @@ func (a *Client) GetStorageProfile(params *GetStorageProfileParams) (*GetStorage
 /*
 GetStorageProfiles gets storage profiles
 
-Get all storage profiles.
+Get all storage profiles
 */
 func (a *Client) GetStorageProfiles(params *GetStorageProfilesParams) (*GetStorageProfilesOK, error) {
 	// TODO: Validate the params before sending
@@ -447,7 +447,7 @@ func (a *Client) GetStorageProfiles(params *GetStorageProfilesParams) (*GetStora
 /*
 GetVSphereStorageProfile gets v sphere storage profile
 
-Get a single vSphere StorageProfile.
+Get vSphere storage profile with a given id
 */
 func (a *Client) GetVSphereStorageProfile(params *GetVSphereStorageProfileParams) (*GetVSphereStorageProfileOK, error) {
 	// TODO: Validate the params before sending
@@ -477,7 +477,7 @@ func (a *Client) GetVSphereStorageProfile(params *GetVSphereStorageProfileParams
 /*
 GetVSphereStorageProfiles gets v sphere storage profiles
 
-Get all vSphere storage profiles.
+Get all vSphere storage profiles
 */
 func (a *Client) GetVSphereStorageProfiles(params *GetVSphereStorageProfilesParams) (*GetVSphereStorageProfilesOK, error) {
 	// TODO: Validate the params before sending
@@ -505,11 +505,41 @@ func (a *Client) GetVSphereStorageProfiles(params *GetVSphereStorageProfilesPara
 }
 
 /*
+ReplaceStorageProfile replaces storage profile
+
+Replace storage profile with a given id
+*/
+func (a *Client) ReplaceStorageProfile(params *ReplaceStorageProfileParams) (*ReplaceStorageProfileOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewReplaceStorageProfileParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "replaceStorageProfile",
+		Method:             "PUT",
+		PathPattern:        "/iaas/api/storage-profiles/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ReplaceStorageProfileReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ReplaceStorageProfileOK), nil
+
+}
+
+/*
 UpdateAwsStorageProfile updates a w s storage profile
 
-Update AWS StorageProfile.
+Update AWS storage profile
 */
-func (a *Client) UpdateAwsStorageProfile(params *UpdateAwsStorageProfileParams) (*UpdateAwsStorageProfileCreated, error) {
+func (a *Client) UpdateAwsStorageProfile(params *UpdateAwsStorageProfileParams) (*UpdateAwsStorageProfileOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateAwsStorageProfileParams()
@@ -530,16 +560,16 @@ func (a *Client) UpdateAwsStorageProfile(params *UpdateAwsStorageProfileParams) 
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateAwsStorageProfileCreated), nil
+	return result.(*UpdateAwsStorageProfileOK), nil
 
 }
 
 /*
 UpdateAzureStorageProfile updates azure storage profile
 
-Update Azure StorageProfile
+Update Azure storage profile
 */
-func (a *Client) UpdateAzureStorageProfile(params *UpdateAzureStorageProfileParams) (*UpdateAzureStorageProfileCreated, error) {
+func (a *Client) UpdateAzureStorageProfile(params *UpdateAzureStorageProfileParams) (*UpdateAzureStorageProfileOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateAzureStorageProfileParams()
@@ -560,46 +590,16 @@ func (a *Client) UpdateAzureStorageProfile(params *UpdateAzureStorageProfilePara
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateAzureStorageProfileCreated), nil
-
-}
-
-/*
-UpdateStorageProfile updates storage profile
-
-Update StorageProfile.
-*/
-func (a *Client) UpdateStorageProfile(params *UpdateStorageProfileParams) (*UpdateStorageProfileCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewUpdateStorageProfileParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "updateStorageProfile",
-		Method:             "PUT",
-		PathPattern:        "/iaas/api/storage-profiles/{id}",
-		ProducesMediaTypes: []string{"app/json", "application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &UpdateStorageProfileReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*UpdateStorageProfileCreated), nil
+	return result.(*UpdateAzureStorageProfileOK), nil
 
 }
 
 /*
 UpdateVSphereStorageProfile updates v sphere storage profile
 
-Update vSphere StorageProfile
+Update vSphere storage profile
 */
-func (a *Client) UpdateVSphereStorageProfile(params *UpdateVSphereStorageProfileParams) (*UpdateVSphereStorageProfileCreated, error) {
+func (a *Client) UpdateVSphereStorageProfile(params *UpdateVSphereStorageProfileParams) (*UpdateVSphereStorageProfileOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateVSphereStorageProfileParams()
@@ -620,7 +620,7 @@ func (a *Client) UpdateVSphereStorageProfile(params *UpdateVSphereStorageProfile
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateVSphereStorageProfileCreated), nil
+	return result.(*UpdateVSphereStorageProfileOK), nil
 
 }
 

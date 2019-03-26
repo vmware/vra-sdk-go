@@ -38,6 +38,7 @@ type CloudAccountAzureSpecification struct {
 	Name *string `json:"name"`
 
 	// A set of Region names to enable provisioning on. Refer to /iaas/cloud-accounts-azure/region-enumeration..
+	// Required: true
 	RegionIds []string `json:"regionIds"`
 
 	// Azure Subscribtion ID
@@ -65,6 +66,10 @@ func (m *CloudAccountAzureSpecification) Validate(formats strfmt.Registry) error
 	}
 
 	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateRegionIds(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -107,6 +112,15 @@ func (m *CloudAccountAzureSpecification) validateClientApplicationSecretKey(form
 func (m *CloudAccountAzureSpecification) validateName(formats strfmt.Registry) error {
 
 	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CloudAccountAzureSpecification) validateRegionIds(formats strfmt.Registry) error {
+
+	if err := validate.Required("regionIds", "body", m.RegionIds); err != nil {
 		return err
 	}
 

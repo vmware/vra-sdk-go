@@ -103,112 +103,112 @@ type GetDeploymentResourcesUsingGETParams struct {
 	HTTPClient *http.Client
 }
 
-// WithTimeout adds the timeout to the get deployment resources using g e t params
+// WithTimeout adds the timeout to the get deployment resources using get params
 func (o *GetDeploymentResourcesUsingGETParams) WithTimeout(timeout time.Duration) *GetDeploymentResourcesUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the get deployment resources using g e t params
+// SetTimeout adds the timeout to the get deployment resources using get params
 func (o *GetDeploymentResourcesUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the get deployment resources using g e t params
+// WithContext adds the context to the get deployment resources using get params
 func (o *GetDeploymentResourcesUsingGETParams) WithContext(ctx context.Context) *GetDeploymentResourcesUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the get deployment resources using g e t params
+// SetContext adds the context to the get deployment resources using get params
 func (o *GetDeploymentResourcesUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the get deployment resources using g e t params
+// WithHTTPClient adds the HTTPClient to the get deployment resources using get params
 func (o *GetDeploymentResourcesUsingGETParams) WithHTTPClient(client *http.Client) *GetDeploymentResourcesUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the get deployment resources using g e t params
+// SetHTTPClient adds the HTTPClient to the get deployment resources using get params
 func (o *GetDeploymentResourcesUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithDepID adds the depID to the get deployment resources using g e t params
+// WithDepID adds the depID to the get deployment resources using get params
 func (o *GetDeploymentResourcesUsingGETParams) WithDepID(depID strfmt.UUID) *GetDeploymentResourcesUsingGETParams {
 	o.SetDepID(depID)
 	return o
 }
 
-// SetDepID adds the depId to the get deployment resources using g e t params
+// SetDepID adds the depId to the get deployment resources using get params
 func (o *GetDeploymentResourcesUsingGETParams) SetDepID(depID strfmt.UUID) {
 	o.DepID = depID
 }
 
-// WithExpandMetadata adds the expandMetadata to the get deployment resources using g e t params
+// WithExpandMetadata adds the expandMetadata to the get deployment resources using get params
 func (o *GetDeploymentResourcesUsingGETParams) WithExpandMetadata(expandMetadata *bool) *GetDeploymentResourcesUsingGETParams {
 	o.SetExpandMetadata(expandMetadata)
 	return o
 }
 
-// SetExpandMetadata adds the expandMetadata to the get deployment resources using g e t params
+// SetExpandMetadata adds the expandMetadata to the get deployment resources using get params
 func (o *GetDeploymentResourcesUsingGETParams) SetExpandMetadata(expandMetadata *bool) {
 	o.ExpandMetadata = expandMetadata
 }
 
-// WithForceCachedResources adds the forceCachedResources to the get deployment resources using g e t params
+// WithForceCachedResources adds the forceCachedResources to the get deployment resources using get params
 func (o *GetDeploymentResourcesUsingGETParams) WithForceCachedResources(forceCachedResources *bool) *GetDeploymentResourcesUsingGETParams {
 	o.SetForceCachedResources(forceCachedResources)
 	return o
 }
 
-// SetForceCachedResources adds the forceCachedResources to the get deployment resources using g e t params
+// SetForceCachedResources adds the forceCachedResources to the get deployment resources using get params
 func (o *GetDeploymentResourcesUsingGETParams) SetForceCachedResources(forceCachedResources *bool) {
 	o.ForceCachedResources = forceCachedResources
 }
 
-// WithForceRefreshResources adds the forceRefreshResources to the get deployment resources using g e t params
+// WithForceRefreshResources adds the forceRefreshResources to the get deployment resources using get params
 func (o *GetDeploymentResourcesUsingGETParams) WithForceRefreshResources(forceRefreshResources *bool) *GetDeploymentResourcesUsingGETParams {
 	o.SetForceRefreshResources(forceRefreshResources)
 	return o
 }
 
-// SetForceRefreshResources adds the forceRefreshResources to the get deployment resources using g e t params
+// SetForceRefreshResources adds the forceRefreshResources to the get deployment resources using get params
 func (o *GetDeploymentResourcesUsingGETParams) SetForceRefreshResources(forceRefreshResources *bool) {
 	o.ForceRefreshResources = forceRefreshResources
 }
 
-// WithPage adds the page to the get deployment resources using g e t params
+// WithPage adds the page to the get deployment resources using get params
 func (o *GetDeploymentResourcesUsingGETParams) WithPage(page *int32) *GetDeploymentResourcesUsingGETParams {
 	o.SetPage(page)
 	return o
 }
 
-// SetPage adds the page to the get deployment resources using g e t params
+// SetPage adds the page to the get deployment resources using get params
 func (o *GetDeploymentResourcesUsingGETParams) SetPage(page *int32) {
 	o.Page = page
 }
 
-// WithSize adds the size to the get deployment resources using g e t params
+// WithSize adds the size to the get deployment resources using get params
 func (o *GetDeploymentResourcesUsingGETParams) WithSize(size *int32) *GetDeploymentResourcesUsingGETParams {
 	o.SetSize(size)
 	return o
 }
 
-// SetSize adds the size to the get deployment resources using g e t params
+// SetSize adds the size to the get deployment resources using get params
 func (o *GetDeploymentResourcesUsingGETParams) SetSize(size *int32) {
 	o.Size = size
 }
 
-// WithSort adds the sort to the get deployment resources using g e t params
+// WithSort adds the sort to the get deployment resources using get params
 func (o *GetDeploymentResourcesUsingGETParams) WithSort(sort []string) *GetDeploymentResourcesUsingGETParams {
 	o.SetSort(sort)
 	return o
 }
 
-// SetSort adds the sort to the get deployment resources using g e t params
+// SetSort adds the sort to the get deployment resources using get params
 func (o *GetDeploymentResourcesUsingGETParams) SetSort(sort []string) {
 	o.Sort = sort
 }

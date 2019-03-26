@@ -8,7 +8,9 @@ package models
 import (
 	strfmt "github.com/go-openapi/strfmt"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // BlueprintValidationRequest BlueprintValidationRequest
@@ -16,7 +18,8 @@ import (
 type BlueprintValidationRequest struct {
 
 	// Blueprint Id
-	BlueprintID string `json:"blueprintId,omitempty"`
+	// Format: uuid
+	BlueprintID strfmt.UUID `json:"blueprintId,omitempty"`
 
 	// Blueprint YAML content
 	Content string `json:"content,omitempty"`
@@ -30,6 +33,28 @@ type BlueprintValidationRequest struct {
 
 // Validate validates this blueprint validation request
 func (m *BlueprintValidationRequest) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateBlueprintID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *BlueprintValidationRequest) validateBlueprintID(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.BlueprintID) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("blueprintId", "body", "uuid", m.BlueprintID.String(), formats); err != nil {
+		return err
+	}
+
 	return nil
 }
 

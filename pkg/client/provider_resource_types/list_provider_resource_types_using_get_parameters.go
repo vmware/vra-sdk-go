@@ -139,112 +139,112 @@ type ListProviderResourceTypesUsingGETParams struct {
 	HTTPClient *http.Client
 }
 
-// WithTimeout adds the timeout to the list provider resource types using g e t params
+// WithTimeout adds the timeout to the list provider resource types using get params
 func (o *ListProviderResourceTypesUsingGETParams) WithTimeout(timeout time.Duration) *ListProviderResourceTypesUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the list provider resource types using g e t params
+// SetTimeout adds the timeout to the list provider resource types using get params
 func (o *ListProviderResourceTypesUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the list provider resource types using g e t params
+// WithContext adds the context to the list provider resource types using get params
 func (o *ListProviderResourceTypesUsingGETParams) WithContext(ctx context.Context) *ListProviderResourceTypesUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the list provider resource types using g e t params
+// SetContext adds the context to the list provider resource types using get params
 func (o *ListProviderResourceTypesUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the list provider resource types using g e t params
+// WithHTTPClient adds the HTTPClient to the list provider resource types using get params
 func (o *ListProviderResourceTypesUsingGETParams) WithHTTPClient(client *http.Client) *ListProviderResourceTypesUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the list provider resource types using g e t params
+// SetHTTPClient adds the HTTPClient to the list provider resource types using get params
 func (o *ListProviderResourceTypesUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithExpand adds the expand to the list provider resource types using g e t params
+// WithExpand adds the expand to the list provider resource types using get params
 func (o *ListProviderResourceTypesUsingGETParams) WithExpand(expand *bool) *ListProviderResourceTypesUsingGETParams {
 	o.SetExpand(expand)
 	return o
 }
 
-// SetExpand adds the expand to the list provider resource types using g e t params
+// SetExpand adds the expand to the list provider resource types using get params
 func (o *ListProviderResourceTypesUsingGETParams) SetExpand(expand *bool) {
 	o.Expand = expand
 }
 
-// WithName adds the name to the list provider resource types using g e t params
+// WithName adds the name to the list provider resource types using get params
 func (o *ListProviderResourceTypesUsingGETParams) WithName(name *string) *ListProviderResourceTypesUsingGETParams {
 	o.SetName(name)
 	return o
 }
 
-// SetName adds the name to the list provider resource types using g e t params
+// SetName adds the name to the list provider resource types using get params
 func (o *ListProviderResourceTypesUsingGETParams) SetName(name *string) {
 	o.Name = name
 }
 
-// WithOrderBy adds the orderBy to the list provider resource types using g e t params
+// WithOrderBy adds the orderBy to the list provider resource types using get params
 func (o *ListProviderResourceTypesUsingGETParams) WithOrderBy(orderBy *string) *ListProviderResourceTypesUsingGETParams {
 	o.SetOrderBy(orderBy)
 	return o
 }
 
-// SetOrderBy adds the orderBy to the list provider resource types using g e t params
+// SetOrderBy adds the orderBy to the list provider resource types using get params
 func (o *ListProviderResourceTypesUsingGETParams) SetOrderBy(orderBy *string) {
 	o.OrderBy = orderBy
 }
 
-// WithPage adds the page to the list provider resource types using g e t params
+// WithPage adds the page to the list provider resource types using get params
 func (o *ListProviderResourceTypesUsingGETParams) WithPage(page *int32) *ListProviderResourceTypesUsingGETParams {
 	o.SetPage(page)
 	return o
 }
 
-// SetPage adds the page to the list provider resource types using g e t params
+// SetPage adds the page to the list provider resource types using get params
 func (o *ListProviderResourceTypesUsingGETParams) SetPage(page *int32) {
 	o.Page = page
 }
 
-// WithProviderID adds the providerID to the list provider resource types using g e t params
+// WithProviderID adds the providerID to the list provider resource types using get params
 func (o *ListProviderResourceTypesUsingGETParams) WithProviderID(providerID *string) *ListProviderResourceTypesUsingGETParams {
 	o.SetProviderID(providerID)
 	return o
 }
 
-// SetProviderID adds the providerId to the list provider resource types using g e t params
+// SetProviderID adds the providerId to the list provider resource types using get params
 func (o *ListProviderResourceTypesUsingGETParams) SetProviderID(providerID *string) {
 	o.ProviderID = providerID
 }
 
-// WithSearch adds the search to the list provider resource types using g e t params
+// WithSearch adds the search to the list provider resource types using get params
 func (o *ListProviderResourceTypesUsingGETParams) WithSearch(search *string) *ListProviderResourceTypesUsingGETParams {
 	o.SetSearch(search)
 	return o
 }
 
-// SetSearch adds the search to the list provider resource types using g e t params
+// SetSearch adds the search to the list provider resource types using get params
 func (o *ListProviderResourceTypesUsingGETParams) SetSearch(search *string) {
 	o.Search = search
 }
 
-// WithSize adds the size to the list provider resource types using g e t params
+// WithSize adds the size to the list provider resource types using get params
 func (o *ListProviderResourceTypesUsingGETParams) WithSize(size *int32) *ListProviderResourceTypesUsingGETParams {
 	o.SetSize(size)
 	return o
 }
 
-// SetSize adds the size to the list provider resource types using g e t params
+// SetSize adds the size to the list provider resource types using get params
 func (o *ListProviderResourceTypesUsingGETParams) SetSize(size *int32) {
 	o.Size = size
 }

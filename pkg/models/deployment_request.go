@@ -17,44 +17,68 @@ import (
 
 // DeploymentRequest DeploymentRequest
 //
-// To track the current status of Day2 actions on either deployments or resources
+// A deployment user request.
 // swagger:model DeploymentRequest
 type DeploymentRequest struct {
 
+	// Identifier of the requested action
+	ActionID string `json:"actionId,omitempty"`
+
+	// Identifier of the requested blueprint in the form 'UUID:version'
+	BlueprintID string `json:"blueprintId,omitempty"`
+
+	// Identifier of the requested catalog item in the form 'UUID:version'
+	CatalogItemID string `json:"catalogItemId,omitempty"`
+
 	// The number of tasks completed while fulfilling this request.
-	CompletedTasks int64 `json:"completedTasks,omitempty"`
+	CompletedTasks int32 `json:"completedTasks,omitempty"`
 
 	// Creation time.
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"createdAt,omitempty"`
 
-	// Deployment id to which the request applies to
+	// Deployment id to which the event applies to
 	// Format: uuid
 	DeploymentID strfmt.UUID `json:"deploymentId,omitempty"`
 
-	// Request identifier
+	// Longer user-friendly details of the event.
+	Details string `json:"details,omitempty"`
+
+	// Event identifier
 	// Format: uuid
 	ID strfmt.UUID `json:"id,omitempty"`
 
-	// User friendly name of the request (e.g. 'shutdown myVM')
+	// Request inputs
+	Inputs interface{} `json:"inputs,omitempty"`
+
+	// Short user-friendly label of the event (e.g. 'shuting down myVM')
 	Name string `json:"name,omitempty"`
 
+	// Parent event/request identifier
+	// Format: uuid
+	ParentID strfmt.UUID `json:"parentId,omitempty"`
+
 	// User that initiated the request
+	RequestedBy string `json:"requestedBy,omitempty"`
+
+	// requester
 	Requester string `json:"requester,omitempty"`
 
-	// Optional resource id to which the request applies to (e.g. day 2 operation target)
-	// Format: uuid
-	ResourceID strfmt.UUID `json:"resourceId,omitempty"`
+	// Optional resource name to which the event applies to
+	ResourceName string `json:"resourceName,omitempty"`
+
+	// Optional resource type to which the event applies to
+	ResourceType string `json:"resourceType,omitempty"`
 
 	// Request overall execution status.
 	// Enum: [PENDING REJECTED INPROGRESS ABORTED SUCCESSFUL PARTIALLY_SUCCESSFUL FAILED CREATED]
 	Status string `json:"status,omitempty"`
 
-	// Additional user-friendly details regarding the current status.
+	// status details
 	StatusDetails string `json:"statusDetails,omitempty"`
 
 	// The total number of tasks need to be completed to fulfil this request.
-	TotalTasks int64 `json:"totalTasks,omitempty"`
+	TotalTasks int32 `json:"totalTasks,omitempty"`
 
 	// Last update time.
 	// Format: date-time
@@ -77,7 +101,7 @@ func (m *DeploymentRequest) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateResourceID(formats); err != nil {
+	if err := m.validateParentID(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -134,13 +158,13 @@ func (m *DeploymentRequest) validateID(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *DeploymentRequest) validateResourceID(formats strfmt.Registry) error {
+func (m *DeploymentRequest) validateParentID(formats strfmt.Registry) error {
 
-	if swag.IsZero(m.ResourceID) { // not required
+	if swag.IsZero(m.ParentID) { // not required
 		return nil
 	}
 
-	if err := validate.FormatOf("resourceId", "body", "uuid", m.ResourceID.String(), formats); err != nil {
+	if err := validate.FormatOf("parentId", "body", "uuid", m.ParentID.String(), formats); err != nil {
 		return err
 	}
 

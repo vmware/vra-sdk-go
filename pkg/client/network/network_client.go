@@ -27,9 +27,9 @@ type Client struct {
 /*
 CreateNetwork creates network
 
-Provision a new network based on the passed in constraints.  The network should be destroyed after the machine is destroyed to free up resources.
+Provision a new network based on the passed in constraints. The network should be destroyed after the machine is destroyed to free up resources.
 */
-func (a *Client) CreateNetwork(params *CreateNetworkParams) (*CreateNetworkCreated, error) {
+func (a *Client) CreateNetwork(params *CreateNetworkParams) (*CreateNetworkAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateNetworkParams()
@@ -50,16 +50,16 @@ func (a *Client) CreateNetwork(params *CreateNetworkParams) (*CreateNetworkCreat
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateNetworkCreated), nil
+	return result.(*CreateNetworkAccepted), nil
 
 }
 
 /*
 DeleteNetwork deletes a network
 
-Delete a network.
+Delete a network with a given id
 */
-func (a *Client) DeleteNetwork(params *DeleteNetworkParams) (*DeleteNetworkOK, error) {
+func (a *Client) DeleteNetwork(params *DeleteNetworkParams) (*DeleteNetworkOK, *DeleteNetworkAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteNetworkParams()
@@ -78,76 +78,82 @@ func (a *Client) DeleteNetwork(params *DeleteNetworkParams) (*DeleteNetworkOK, e
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	return result.(*DeleteNetworkOK), nil
+	switch value := result.(type) {
+	case *DeleteNetworkOK:
+		return value, nil, nil
+	case *DeleteNetworkAccepted:
+		return nil, value, nil
+	}
+	return nil, nil, nil
 
 }
 
 /*
-DescribeNetwork describes a network
+GetNetwork gets network
 
-Describe a network.
+Get network with a given id
 */
-func (a *Client) DescribeNetwork(params *DescribeNetworkParams) (*DescribeNetworkOK, error) {
+func (a *Client) GetNetwork(params *GetNetworkParams) (*GetNetworkOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDescribeNetworkParams()
+		params = NewGetNetworkParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "describeNetwork",
+		ID:                 "getNetwork",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/networks/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DescribeNetworkReader{formats: a.formats},
+		Reader:             &GetNetworkReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DescribeNetworkOK), nil
+	return result.(*GetNetworkOK), nil
 
 }
 
 /*
-DescribeNetworkDomain describes a network domain
+GetNetworkDomain gets network domain
 
-Describe a Network Domain.
+Get network domain with a given id
 */
-func (a *Client) DescribeNetworkDomain(params *DescribeNetworkDomainParams) (*DescribeNetworkDomainOK, error) {
+func (a *Client) GetNetworkDomain(params *GetNetworkDomainParams) (*GetNetworkDomainOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDescribeNetworkDomainParams()
+		params = NewGetNetworkDomainParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "describeNetworkDomain",
+		ID:                 "getNetworkDomain",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/network-domains/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DescribeNetworkDomainReader{formats: a.formats},
+		Reader:             &GetNetworkDomainReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DescribeNetworkDomainOK), nil
+	return result.(*GetNetworkDomainOK), nil
 
 }
 
 /*
 GetNetworkDomains gets network domains
 
-Get a page of Network Domains.
+Get all network domains.
 */
 func (a *Client) GetNetworkDomains(params *GetNetworkDomainsParams) (*GetNetworkDomainsOK, error) {
 	// TODO: Validate the params before sending
@@ -177,7 +183,7 @@ func (a *Client) GetNetworkDomains(params *GetNetworkDomainsParams) (*GetNetwork
 /*
 GetNetworks gets networks
 
-Get a page of network content.
+Get all networks
 */
 func (a *Client) GetNetworks(params *GetNetworksParams) (*GetNetworksOK, error) {
 	// TODO: Validate the params before sending

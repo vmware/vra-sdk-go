@@ -61,11 +61,16 @@ for the get security groups operation typically these are written to a http.Requ
 */
 type GetSecurityGroupsParams struct {
 
+	/*NrDollarFilter
+	  Add a filter to return limited results
+
+	*/
+	DollarFilter *string
 	/*APIVersion
 	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about
 
 	*/
-	APIVersion string
+	APIVersion *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -105,14 +110,25 @@ func (o *GetSecurityGroupsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithDollarFilter adds the dollarFilter to the get security groups params
+func (o *GetSecurityGroupsParams) WithDollarFilter(dollarFilter *string) *GetSecurityGroupsParams {
+	o.SetDollarFilter(dollarFilter)
+	return o
+}
+
+// SetDollarFilter adds the dollarFilter to the get security groups params
+func (o *GetSecurityGroupsParams) SetDollarFilter(dollarFilter *string) {
+	o.DollarFilter = dollarFilter
+}
+
 // WithAPIVersion adds the aPIVersion to the get security groups params
-func (o *GetSecurityGroupsParams) WithAPIVersion(aPIVersion string) *GetSecurityGroupsParams {
+func (o *GetSecurityGroupsParams) WithAPIVersion(aPIVersion *string) *GetSecurityGroupsParams {
 	o.SetAPIVersion(aPIVersion)
 	return o
 }
 
 // SetAPIVersion adds the apiVersion to the get security groups params
-func (o *GetSecurityGroupsParams) SetAPIVersion(aPIVersion string) {
+func (o *GetSecurityGroupsParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
@@ -124,13 +140,36 @@ func (o *GetSecurityGroupsParams) WriteToRequest(r runtime.ClientRequest, reg st
 	}
 	var res []error
 
-	// query param apiVersion
-	qrAPIVersion := o.APIVersion
-	qAPIVersion := qrAPIVersion
-	if qAPIVersion != "" {
-		if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
-			return err
+	if o.DollarFilter != nil {
+
+		// query param $filter
+		var qrNrDollarFilter string
+		if o.DollarFilter != nil {
+			qrNrDollarFilter = *o.DollarFilter
 		}
+		qNrDollarFilter := qrNrDollarFilter
+		if qNrDollarFilter != "" {
+			if err := r.SetQueryParam("$filter", qNrDollarFilter); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
+		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	if len(res) > 0 {

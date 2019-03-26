@@ -28,11 +28,18 @@ type BlockDevice struct {
 	// Required: true
 	CapacityInGB *int32 `json:"capacityInGB"`
 
+	// Set of ids of the cloud accounts this entity belongs to.
+	// Unique: true
+	CloudAccountIds []string `json:"cloudAccountIds"`
+
 	// Date when the entity was created. The date is in ISO 6801 and UTC.
 	CreatedAt string `json:"createdAt,omitempty"`
 
 	// Additional properties that may be used to extend the base type.
 	CustomProperties map[string]string `json:"customProperties,omitempty"`
+
+	// deployment Id
+	DeploymentID string `json:"deploymentId,omitempty"`
 
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
@@ -88,6 +95,10 @@ func (m *BlockDevice) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateCloudAccountIds(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateExternalRegionID(formats); err != nil {
 		res = append(res, err)
 	}
@@ -135,6 +146,19 @@ func (m *BlockDevice) validateLinks(formats strfmt.Registry) error {
 func (m *BlockDevice) validateCapacityInGB(formats strfmt.Registry) error {
 
 	if err := validate.Required("capacityInGB", "body", m.CapacityInGB); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BlockDevice) validateCloudAccountIds(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.CloudAccountIds) { // not required
+		return nil
+	}
+
+	if err := validate.UniqueItems("cloudAccountIds", "body", m.CloudAccountIds); err != nil {
 		return err
 	}
 

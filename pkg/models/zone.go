@@ -26,6 +26,9 @@ type Zone struct {
 	// Date when the entity was created. The date is in ISO 6801 and UTC.
 	CreatedAt string `json:"createdAt,omitempty"`
 
+	// A list of key value pair of properties that will  be used
+	CustomProperties map[string]string `json:"customProperties,omitempty"`
+
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
 

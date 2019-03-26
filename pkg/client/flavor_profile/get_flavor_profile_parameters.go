@@ -65,7 +65,7 @@ type GetFlavorProfileParams struct {
 	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about
 
 	*/
-	APIVersion string
+	APIVersion *string
 	/*ID
 	  The ID of the flavor.
 
@@ -111,13 +111,13 @@ func (o *GetFlavorProfileParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithAPIVersion adds the aPIVersion to the get flavor profile params
-func (o *GetFlavorProfileParams) WithAPIVersion(aPIVersion string) *GetFlavorProfileParams {
+func (o *GetFlavorProfileParams) WithAPIVersion(aPIVersion *string) *GetFlavorProfileParams {
 	o.SetAPIVersion(aPIVersion)
 	return o
 }
 
 // SetAPIVersion adds the apiVersion to the get flavor profile params
-func (o *GetFlavorProfileParams) SetAPIVersion(aPIVersion string) {
+func (o *GetFlavorProfileParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
@@ -140,13 +140,20 @@ func (o *GetFlavorProfileParams) WriteToRequest(r runtime.ClientRequest, reg str
 	}
 	var res []error
 
-	// query param apiVersion
-	qrAPIVersion := o.APIVersion
-	qAPIVersion := qrAPIVersion
-	if qAPIVersion != "" {
-		if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
-			return err
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
 		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	// path param id

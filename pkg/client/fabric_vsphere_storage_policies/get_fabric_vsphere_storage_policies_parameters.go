@@ -17,120 +17,127 @@ import (
 	strfmt "github.com/go-openapi/strfmt"
 )
 
-// NewGetFabricVsphereStoragePoliciesParams creates a new GetFabricVsphereStoragePoliciesParams object
+// NewGetFabricVSphereStoragePoliciesParams creates a new GetFabricVSphereStoragePoliciesParams object
 // with the default values initialized.
-func NewGetFabricVsphereStoragePoliciesParams() *GetFabricVsphereStoragePoliciesParams {
+func NewGetFabricVSphereStoragePoliciesParams() *GetFabricVSphereStoragePoliciesParams {
 	var ()
-	return &GetFabricVsphereStoragePoliciesParams{
+	return &GetFabricVSphereStoragePoliciesParams{
 
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGetFabricVsphereStoragePoliciesParamsWithTimeout creates a new GetFabricVsphereStoragePoliciesParams object
+// NewGetFabricVSphereStoragePoliciesParamsWithTimeout creates a new GetFabricVSphereStoragePoliciesParams object
 // with the default values initialized, and the ability to set a timeout on a request
-func NewGetFabricVsphereStoragePoliciesParamsWithTimeout(timeout time.Duration) *GetFabricVsphereStoragePoliciesParams {
+func NewGetFabricVSphereStoragePoliciesParamsWithTimeout(timeout time.Duration) *GetFabricVSphereStoragePoliciesParams {
 	var ()
-	return &GetFabricVsphereStoragePoliciesParams{
+	return &GetFabricVSphereStoragePoliciesParams{
 
 		timeout: timeout,
 	}
 }
 
-// NewGetFabricVsphereStoragePoliciesParamsWithContext creates a new GetFabricVsphereStoragePoliciesParams object
+// NewGetFabricVSphereStoragePoliciesParamsWithContext creates a new GetFabricVSphereStoragePoliciesParams object
 // with the default values initialized, and the ability to set a context for a request
-func NewGetFabricVsphereStoragePoliciesParamsWithContext(ctx context.Context) *GetFabricVsphereStoragePoliciesParams {
+func NewGetFabricVSphereStoragePoliciesParamsWithContext(ctx context.Context) *GetFabricVSphereStoragePoliciesParams {
 	var ()
-	return &GetFabricVsphereStoragePoliciesParams{
+	return &GetFabricVSphereStoragePoliciesParams{
 
 		Context: ctx,
 	}
 }
 
-// NewGetFabricVsphereStoragePoliciesParamsWithHTTPClient creates a new GetFabricVsphereStoragePoliciesParams object
+// NewGetFabricVSphereStoragePoliciesParamsWithHTTPClient creates a new GetFabricVSphereStoragePoliciesParams object
 // with the default values initialized, and the ability to set a custom HTTPClient for a request
-func NewGetFabricVsphereStoragePoliciesParamsWithHTTPClient(client *http.Client) *GetFabricVsphereStoragePoliciesParams {
+func NewGetFabricVSphereStoragePoliciesParamsWithHTTPClient(client *http.Client) *GetFabricVSphereStoragePoliciesParams {
 	var ()
-	return &GetFabricVsphereStoragePoliciesParams{
+	return &GetFabricVSphereStoragePoliciesParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetFabricVsphereStoragePoliciesParams contains all the parameters to send to the API endpoint
-for the get fabric vsphere storage policies operation typically these are written to a http.Request
+/*GetFabricVSphereStoragePoliciesParams contains all the parameters to send to the API endpoint
+for the get fabric v sphere storage policies operation typically these are written to a http.Request
 */
-type GetFabricVsphereStoragePoliciesParams struct {
+type GetFabricVSphereStoragePoliciesParams struct {
 
 	/*APIVersion
 	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about
 
 	*/
-	APIVersion string
+	APIVersion *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
 }
 
-// WithTimeout adds the timeout to the get fabric vsphere storage policies params
-func (o *GetFabricVsphereStoragePoliciesParams) WithTimeout(timeout time.Duration) *GetFabricVsphereStoragePoliciesParams {
+// WithTimeout adds the timeout to the get fabric v sphere storage policies params
+func (o *GetFabricVSphereStoragePoliciesParams) WithTimeout(timeout time.Duration) *GetFabricVSphereStoragePoliciesParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the get fabric vsphere storage policies params
-func (o *GetFabricVsphereStoragePoliciesParams) SetTimeout(timeout time.Duration) {
+// SetTimeout adds the timeout to the get fabric v sphere storage policies params
+func (o *GetFabricVSphereStoragePoliciesParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the get fabric vsphere storage policies params
-func (o *GetFabricVsphereStoragePoliciesParams) WithContext(ctx context.Context) *GetFabricVsphereStoragePoliciesParams {
+// WithContext adds the context to the get fabric v sphere storage policies params
+func (o *GetFabricVSphereStoragePoliciesParams) WithContext(ctx context.Context) *GetFabricVSphereStoragePoliciesParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the get fabric vsphere storage policies params
-func (o *GetFabricVsphereStoragePoliciesParams) SetContext(ctx context.Context) {
+// SetContext adds the context to the get fabric v sphere storage policies params
+func (o *GetFabricVSphereStoragePoliciesParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the get fabric vsphere storage policies params
-func (o *GetFabricVsphereStoragePoliciesParams) WithHTTPClient(client *http.Client) *GetFabricVsphereStoragePoliciesParams {
+// WithHTTPClient adds the HTTPClient to the get fabric v sphere storage policies params
+func (o *GetFabricVSphereStoragePoliciesParams) WithHTTPClient(client *http.Client) *GetFabricVSphereStoragePoliciesParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the get fabric vsphere storage policies params
-func (o *GetFabricVsphereStoragePoliciesParams) SetHTTPClient(client *http.Client) {
+// SetHTTPClient adds the HTTPClient to the get fabric v sphere storage policies params
+func (o *GetFabricVSphereStoragePoliciesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithAPIVersion adds the aPIVersion to the get fabric vsphere storage policies params
-func (o *GetFabricVsphereStoragePoliciesParams) WithAPIVersion(aPIVersion string) *GetFabricVsphereStoragePoliciesParams {
+// WithAPIVersion adds the aPIVersion to the get fabric v sphere storage policies params
+func (o *GetFabricVSphereStoragePoliciesParams) WithAPIVersion(aPIVersion *string) *GetFabricVSphereStoragePoliciesParams {
 	o.SetAPIVersion(aPIVersion)
 	return o
 }
 
-// SetAPIVersion adds the apiVersion to the get fabric vsphere storage policies params
-func (o *GetFabricVsphereStoragePoliciesParams) SetAPIVersion(aPIVersion string) {
+// SetAPIVersion adds the apiVersion to the get fabric v sphere storage policies params
+func (o *GetFabricVSphereStoragePoliciesParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GetFabricVsphereStoragePoliciesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetFabricVSphereStoragePoliciesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err
 	}
 	var res []error
 
-	// query param apiVersion
-	qrAPIVersion := o.APIVersion
-	qAPIVersion := qrAPIVersion
-	if qAPIVersion != "" {
-		if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
-			return err
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
 		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	if len(res) > 0 {

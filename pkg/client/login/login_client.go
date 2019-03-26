@@ -28,6 +28,8 @@ type Client struct {
 RetrieveAuthToken retrieves auth token for local csp users
 
 Retrieve AuthToken for local csp users.
+When accessing other endpoints the `Bearer` authentication scheme and the received `token` must be provided in the `Authorization` request header field as follows:
+`Authorization: Bearer {token}`
 */
 func (a *Client) RetrieveAuthToken(params *RetrieveAuthTokenParams) (*RetrieveAuthTokenOK, error) {
 	// TODO: Validate the params before sending

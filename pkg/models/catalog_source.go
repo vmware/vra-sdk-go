@@ -33,6 +33,9 @@ type CatalogSource struct {
 	// Catalog Source description
 	Description string `json:"description,omitempty"`
 
+	// Global flag indicating that all the items can be requested across all projects.
+	Global bool `json:"global,omitempty"`
+
 	// Catalog Source id
 	// Required: true
 	// Format: uuid
@@ -66,8 +69,8 @@ type CatalogSource struct {
 	// Required: true
 	Name *string `json:"name"`
 
-	// Associated projects that can be used for requesting
-	ProjectIds []string `json:"projectIds"`
+	// Project id where the source belongs
+	ProjectID string `json:"projectId,omitempty"`
 
 	// Type of source, e.g. blueprint, CFT... etc
 	// Required: true

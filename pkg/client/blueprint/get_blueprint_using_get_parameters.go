@@ -65,54 +65,54 @@ type GetBlueprintUsingGETParams struct {
 	  blueprintId
 
 	*/
-	BlueprintID string
+	BlueprintID strfmt.UUID
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
 }
 
-// WithTimeout adds the timeout to the get blueprint using g e t params
+// WithTimeout adds the timeout to the get blueprint using get params
 func (o *GetBlueprintUsingGETParams) WithTimeout(timeout time.Duration) *GetBlueprintUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the get blueprint using g e t params
+// SetTimeout adds the timeout to the get blueprint using get params
 func (o *GetBlueprintUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the get blueprint using g e t params
+// WithContext adds the context to the get blueprint using get params
 func (o *GetBlueprintUsingGETParams) WithContext(ctx context.Context) *GetBlueprintUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the get blueprint using g e t params
+// SetContext adds the context to the get blueprint using get params
 func (o *GetBlueprintUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the get blueprint using g e t params
+// WithHTTPClient adds the HTTPClient to the get blueprint using get params
 func (o *GetBlueprintUsingGETParams) WithHTTPClient(client *http.Client) *GetBlueprintUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the get blueprint using g e t params
+// SetHTTPClient adds the HTTPClient to the get blueprint using get params
 func (o *GetBlueprintUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithBlueprintID adds the blueprintID to the get blueprint using g e t params
-func (o *GetBlueprintUsingGETParams) WithBlueprintID(blueprintID string) *GetBlueprintUsingGETParams {
+// WithBlueprintID adds the blueprintID to the get blueprint using get params
+func (o *GetBlueprintUsingGETParams) WithBlueprintID(blueprintID strfmt.UUID) *GetBlueprintUsingGETParams {
 	o.SetBlueprintID(blueprintID)
 	return o
 }
 
-// SetBlueprintID adds the blueprintId to the get blueprint using g e t params
-func (o *GetBlueprintUsingGETParams) SetBlueprintID(blueprintID string) {
+// SetBlueprintID adds the blueprintId to the get blueprint using get params
+func (o *GetBlueprintUsingGETParams) SetBlueprintID(blueprintID strfmt.UUID) {
 	o.BlueprintID = blueprintID
 }
 
@@ -125,7 +125,7 @@ func (o *GetBlueprintUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg
 	var res []error
 
 	// path param blueprintId
-	if err := r.SetPathParam("blueprintId", o.BlueprintID); err != nil {
+	if err := r.SetPathParam("blueprintId", o.BlueprintID.String()); err != nil {
 		return err
 	}
 

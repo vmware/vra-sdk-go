@@ -8,9 +8,7 @@ package models
 import (
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // ResourceActionRequest ResourceActionRequest
@@ -20,8 +18,7 @@ import (
 type ResourceActionRequest struct {
 
 	// The id of the action to perform.
-	// Format: uuid
-	ActionID strfmt.UUID `json:"actionId,omitempty"`
+	ActionID string `json:"actionId,omitempty"`
 
 	// Resource action request inputs
 	Inputs interface{} `json:"inputs,omitempty"`
@@ -32,28 +29,6 @@ type ResourceActionRequest struct {
 
 // Validate validates this resource action request
 func (m *ResourceActionRequest) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateActionID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *ResourceActionRequest) validateActionID(formats strfmt.Registry) error {
-
-	if swag.IsZero(m.ActionID) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("actionId", "body", "uuid", m.ActionID.String(), formats); err != nil {
-		return err
-	}
-
 	return nil
 }
 

@@ -76,8 +76,15 @@ type BlueprintRequest struct {
 	// Read Only: true
 	ID string `json:"id,omitempty"`
 
+	// Ignore delete failures in blueprint request
+	IgnoreDeleteFailures bool `json:"ignoreDeleteFailures,omitempty"`
+
 	// Blueprint request inputs
 	Inputs interface{} `json:"inputs,omitempty"`
+
+	// Org ID
+	// Read Only: true
+	OrgID string `json:"orgId,omitempty"`
 
 	// Plan only without affecting existing deployment
 	Plan bool `json:"plan,omitempty"`

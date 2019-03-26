@@ -6,9 +6,13 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+
 	strfmt "github.com/go-openapi/strfmt"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // DeploymentResource DeploymentResource
@@ -30,14 +34,9 @@ type DeploymentResource struct {
 	// Resource properties
 	Properties interface{} `json:"properties,omitempty"`
 
-	// Resource ID
-	ResourceID string `json:"resourceId,omitempty"`
-
-	// Resource name
-	ResourceName string `json:"resourceName,omitempty"`
-
-	// Resource type
-	ResourceType string `json:"resourceType,omitempty"`
+	// Resource state
+	// Enum: [PARTIAL TAINTED OK]
+	State string `json:"state,omitempty"`
 
 	// Resource type
 	Type string `json:"type,omitempty"`
@@ -45,6 +44,61 @@ type DeploymentResource struct {
 
 // Validate validates this deployment resource
 func (m *DeploymentResource) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateState(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+var deploymentResourceTypeStatePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["PARTIAL","TAINTED","OK"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		deploymentResourceTypeStatePropEnum = append(deploymentResourceTypeStatePropEnum, v)
+	}
+}
+
+const (
+
+	// DeploymentResourceStatePARTIAL captures enum value "PARTIAL"
+	DeploymentResourceStatePARTIAL string = "PARTIAL"
+
+	// DeploymentResourceStateTAINTED captures enum value "TAINTED"
+	DeploymentResourceStateTAINTED string = "TAINTED"
+
+	// DeploymentResourceStateOK captures enum value "OK"
+	DeploymentResourceStateOK string = "OK"
+)
+
+// prop value enum
+func (m *DeploymentResource) validateStateEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, deploymentResourceTypeStatePropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *DeploymentResource) validateState(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.State) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateStateEnum("state", "body", m.State); err != nil {
+		return err
+	}
+
 	return nil
 }
 

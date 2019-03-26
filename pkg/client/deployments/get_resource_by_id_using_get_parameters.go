@@ -93,90 +93,90 @@ type GetResourceByIDUsingGETParams struct {
 	HTTPClient *http.Client
 }
 
-// WithTimeout adds the timeout to the get resource by Id using g e t params
+// WithTimeout adds the timeout to the get resource by Id using get params
 func (o *GetResourceByIDUsingGETParams) WithTimeout(timeout time.Duration) *GetResourceByIDUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the get resource by Id using g e t params
+// SetTimeout adds the timeout to the get resource by Id using get params
 func (o *GetResourceByIDUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the get resource by Id using g e t params
+// WithContext adds the context to the get resource by Id using get params
 func (o *GetResourceByIDUsingGETParams) WithContext(ctx context.Context) *GetResourceByIDUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the get resource by Id using g e t params
+// SetContext adds the context to the get resource by Id using get params
 func (o *GetResourceByIDUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the get resource by Id using g e t params
+// WithHTTPClient adds the HTTPClient to the get resource by Id using get params
 func (o *GetResourceByIDUsingGETParams) WithHTTPClient(client *http.Client) *GetResourceByIDUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the get resource by Id using g e t params
+// SetHTTPClient adds the HTTPClient to the get resource by Id using get params
 func (o *GetResourceByIDUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithDepID adds the depID to the get resource by Id using g e t params
+// WithDepID adds the depID to the get resource by Id using get params
 func (o *GetResourceByIDUsingGETParams) WithDepID(depID strfmt.UUID) *GetResourceByIDUsingGETParams {
 	o.SetDepID(depID)
 	return o
 }
 
-// SetDepID adds the depId to the get resource by Id using g e t params
+// SetDepID adds the depId to the get resource by Id using get params
 func (o *GetResourceByIDUsingGETParams) SetDepID(depID strfmt.UUID) {
 	o.DepID = depID
 }
 
-// WithExpandMetadata adds the expandMetadata to the get resource by Id using g e t params
+// WithExpandMetadata adds the expandMetadata to the get resource by Id using get params
 func (o *GetResourceByIDUsingGETParams) WithExpandMetadata(expandMetadata *bool) *GetResourceByIDUsingGETParams {
 	o.SetExpandMetadata(expandMetadata)
 	return o
 }
 
-// SetExpandMetadata adds the expandMetadata to the get resource by Id using g e t params
+// SetExpandMetadata adds the expandMetadata to the get resource by Id using get params
 func (o *GetResourceByIDUsingGETParams) SetExpandMetadata(expandMetadata *bool) {
 	o.ExpandMetadata = expandMetadata
 }
 
-// WithForceCachedResources adds the forceCachedResources to the get resource by Id using g e t params
+// WithForceCachedResources adds the forceCachedResources to the get resource by Id using get params
 func (o *GetResourceByIDUsingGETParams) WithForceCachedResources(forceCachedResources *bool) *GetResourceByIDUsingGETParams {
 	o.SetForceCachedResources(forceCachedResources)
 	return o
 }
 
-// SetForceCachedResources adds the forceCachedResources to the get resource by Id using g e t params
+// SetForceCachedResources adds the forceCachedResources to the get resource by Id using get params
 func (o *GetResourceByIDUsingGETParams) SetForceCachedResources(forceCachedResources *bool) {
 	o.ForceCachedResources = forceCachedResources
 }
 
-// WithForceRefreshResources adds the forceRefreshResources to the get resource by Id using g e t params
+// WithForceRefreshResources adds the forceRefreshResources to the get resource by Id using get params
 func (o *GetResourceByIDUsingGETParams) WithForceRefreshResources(forceRefreshResources *bool) *GetResourceByIDUsingGETParams {
 	o.SetForceRefreshResources(forceRefreshResources)
 	return o
 }
 
-// SetForceRefreshResources adds the forceRefreshResources to the get resource by Id using g e t params
+// SetForceRefreshResources adds the forceRefreshResources to the get resource by Id using get params
 func (o *GetResourceByIDUsingGETParams) SetForceRefreshResources(forceRefreshResources *bool) {
 	o.ForceRefreshResources = forceRefreshResources
 }
 
-// WithResourceID adds the resourceID to the get resource by Id using g e t params
+// WithResourceID adds the resourceID to the get resource by Id using get params
 func (o *GetResourceByIDUsingGETParams) WithResourceID(resourceID strfmt.UUID) *GetResourceByIDUsingGETParams {
 	o.SetResourceID(resourceID)
 	return o
 }
 
-// SetResourceID adds the resourceId to the get resource by Id using g e t params
+// SetResourceID adds the resourceId to the get resource by Id using get params
 func (o *GetResourceByIDUsingGETParams) SetResourceID(resourceID strfmt.UUID) {
 	o.ResourceID = resourceID
 }

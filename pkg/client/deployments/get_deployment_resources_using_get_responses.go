@@ -68,7 +68,7 @@ func NewGetDeploymentResourcesUsingGETOK() *GetDeploymentResourcesUsingGETOK {
 OK
 */
 type GetDeploymentResourcesUsingGETOK struct {
-	Payload *models.Resource
+	Payload *models.PageOfResource
 }
 
 func (o *GetDeploymentResourcesUsingGETOK) Error() string {
@@ -77,7 +77,7 @@ func (o *GetDeploymentResourcesUsingGETOK) Error() string {
 
 func (o *GetDeploymentResourcesUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Resource)
+	o.Payload = new(models.PageOfResource)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

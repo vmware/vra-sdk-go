@@ -25,47 +25,47 @@ type Client struct {
 }
 
 /*
-CreateImage creates image profile
+CreateImageProfile creates image profile
 
-Create a new image profile.
+Create image profile
 */
-func (a *Client) CreateImage(params *CreateImageParams) (*CreateImageCreated, error) {
+func (a *Client) CreateImageProfile(params *CreateImageProfileParams) (*CreateImageProfileCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateImageParams()
+		params = NewCreateImageProfileParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "createImage",
+		ID:                 "createImageProfile",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/image-profiles",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateImageReader{formats: a.formats},
+		Reader:             &CreateImageProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateImageCreated), nil
+	return result.(*CreateImageProfileCreated), nil
 
 }
 
 /*
 DeleteImageProfile deletes image profile
 
-Delete a single image profile.
+Delete image profile with a given id
 */
-func (a *Client) DeleteImageProfile(params *DeleteImageProfileParams) error {
+func (a *Client) DeleteImageProfile(params *DeleteImageProfileParams) (*DeleteImageProfileNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteImageProfileParams()
 	}
 
-	_, err := a.transport.Submit(&runtime.ClientOperation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteImageProfile",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/image-profiles/{id}",
@@ -78,16 +78,16 @@ func (a *Client) DeleteImageProfile(params *DeleteImageProfileParams) error {
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return result.(*DeleteImageProfileNoContent), nil
 
 }
 
 /*
 GetImageProfile gets image profile
 
-Get a single image profile.
+Get image profile with a given id
 */
 func (a *Client) GetImageProfile(params *GetImageProfileParams) (*GetImageProfileOK, error) {
 	// TODO: Validate the params before sending
@@ -117,7 +117,7 @@ func (a *Client) GetImageProfile(params *GetImageProfileParams) (*GetImageProfil
 /*
 GetImageProfiles gets image profile
 
-Get all image profiles.
+Get all image profiles
 */
 func (a *Client) GetImageProfiles(params *GetImageProfilesParams) (*GetImageProfilesOK, error) {
 	// TODO: Validate the params before sending
@@ -145,32 +145,32 @@ func (a *Client) GetImageProfiles(params *GetImageProfilesParams) (*GetImageProf
 }
 
 /*
-UpdateImage updates image profile
+UpdateImageProfile updates image profile
 
-Update a single image profile.
+Update image profile
 */
-func (a *Client) UpdateImage(params *UpdateImageParams) (*UpdateImageOK, error) {
+func (a *Client) UpdateImageProfile(params *UpdateImageProfileParams) (*UpdateImageProfileOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewUpdateImageParams()
+		params = NewUpdateImageProfileParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "updateImage",
+		ID:                 "updateImageProfile",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/image-profiles/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &UpdateImageReader{formats: a.formats},
+		Reader:             &UpdateImageProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateImageOK), nil
+	return result.(*UpdateImageProfileOK), nil
 
 }
 

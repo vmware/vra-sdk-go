@@ -32,6 +32,13 @@ func (o *DeleteNetworkReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return result, nil
 
+	case 202:
+		result := NewDeleteNetworkAccepted()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	case 403:
 		result := NewDeleteNetworkForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -58,17 +65,38 @@ func NewDeleteNetworkOK() *DeleteNetworkOK {
 
 /*DeleteNetworkOK handles this case with default header values.
 
-successful operation
+OK
 */
 type DeleteNetworkOK struct {
-	Payload *models.RequestTracker
 }
 
 func (o *DeleteNetworkOK) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/networks/{id}][%d] deleteNetworkOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[DELETE /iaas/api/networks/{id}][%d] deleteNetworkOK ", 200)
 }
 
 func (o *DeleteNetworkOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewDeleteNetworkAccepted creates a DeleteNetworkAccepted with default headers values
+func NewDeleteNetworkAccepted() *DeleteNetworkAccepted {
+	return &DeleteNetworkAccepted{}
+}
+
+/*DeleteNetworkAccepted handles this case with default header values.
+
+successful operation
+*/
+type DeleteNetworkAccepted struct {
+	Payload *models.RequestTracker
+}
+
+func (o *DeleteNetworkAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/networks/{id}][%d] deleteNetworkAccepted  %+v", 202, o.Payload)
+}
+
+func (o *DeleteNetworkAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.RequestTracker)
 
