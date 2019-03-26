@@ -25,8 +25,8 @@ type CreateLoadBalancerReader struct {
 func (o *CreateLoadBalancerReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 201:
-		result := NewCreateLoadBalancerCreated()
+	case 200:
+		result := NewCreateLoadBalancerOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -51,24 +51,24 @@ func (o *CreateLoadBalancerReader) ReadResponse(response runtime.ClientResponse,
 	}
 }
 
-// NewCreateLoadBalancerCreated creates a CreateLoadBalancerCreated with default headers values
-func NewCreateLoadBalancerCreated() *CreateLoadBalancerCreated {
-	return &CreateLoadBalancerCreated{}
+// NewCreateLoadBalancerOK creates a CreateLoadBalancerOK with default headers values
+func NewCreateLoadBalancerOK() *CreateLoadBalancerOK {
+	return &CreateLoadBalancerOK{}
 }
 
-/*CreateLoadBalancerCreated handles this case with default header values.
+/*CreateLoadBalancerOK handles this case with default header values.
 
 successful operation
 */
-type CreateLoadBalancerCreated struct {
+type CreateLoadBalancerOK struct {
 	Payload *models.RequestTracker
 }
 
-func (o *CreateLoadBalancerCreated) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/load-balancers][%d] createLoadBalancerCreated  %+v", 201, o.Payload)
+func (o *CreateLoadBalancerOK) Error() string {
+	return fmt.Sprintf("[POST /iaas/api/load-balancers][%d] createLoadBalancerOK  %+v", 200, o.Payload)
 }
 
-func (o *CreateLoadBalancerCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *CreateLoadBalancerOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.RequestTracker)
 

@@ -29,7 +29,7 @@ CreateNetwork creates network
 
 Provision a new network based on the passed in constraints.  The network should be destroyed after the machine is destroyed to free up resources.
 */
-func (a *Client) CreateNetwork(params *CreateNetworkParams) (*CreateNetworkCreated, error) {
+func (a *Client) CreateNetwork(params *CreateNetworkParams) (*CreateNetworkOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateNetworkParams()
@@ -50,7 +50,7 @@ func (a *Client) CreateNetwork(params *CreateNetworkParams) (*CreateNetworkCreat
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateNetworkCreated), nil
+	return result.(*CreateNetworkOK), nil
 
 }
 

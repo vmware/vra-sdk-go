@@ -29,7 +29,7 @@ CreateLoadBalancer creates load balancer
 
 Create a new Load Balancer.
 */
-func (a *Client) CreateLoadBalancer(params *CreateLoadBalancerParams) (*CreateLoadBalancerCreated, error) {
+func (a *Client) CreateLoadBalancer(params *CreateLoadBalancerParams) (*CreateLoadBalancerOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateLoadBalancerParams()
@@ -50,7 +50,7 @@ func (a *Client) CreateLoadBalancer(params *CreateLoadBalancerParams) (*CreateLo
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateLoadBalancerCreated), nil
+	return result.(*CreateLoadBalancerOK), nil
 
 }
 
@@ -59,13 +59,13 @@ DeleteLoadBalancer deletes a load balancer
 
 Delete a Load Balancer.
 */
-func (a *Client) DeleteLoadBalancer(params *DeleteLoadBalancerParams) error {
+func (a *Client) DeleteLoadBalancer(params *DeleteLoadBalancerParams) (*DeleteLoadBalancerOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteLoadBalancerParams()
 	}
 
-	_, err := a.transport.Submit(&runtime.ClientOperation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteLoadBalancer",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/load-balancers/{id}",
@@ -78,9 +78,9 @@ func (a *Client) DeleteLoadBalancer(params *DeleteLoadBalancerParams) error {
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return result.(*DeleteLoadBalancerOK), nil
 
 }
 

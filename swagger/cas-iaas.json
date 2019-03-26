@@ -175,7 +175,7 @@
                     }
                 ],
                 "responses": {
-                    "201": {
+                    "200": {
                         "description": "successful operation",
                         "schema": {
                             "$ref": "#/definitions/RequestTracker"
@@ -336,7 +336,7 @@
                     }
                 ],
                 "responses": {
-                    "201": {
+                    "200": {
                         "description": "successful operation",
                         "schema": {
                             "$ref": "#/definitions/CloudAccount"
@@ -414,7 +414,7 @@
                     }
                 ],
                 "responses": {
-                    "201": {
+                    "200": {
                         "description": "successful operation",
                         "schema": {
                             "$ref": "#/definitions/CloudAccount"
@@ -546,6 +546,9 @@
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
                     "403": {
                         "description": "Forbidden"
                     },
@@ -2553,7 +2556,7 @@
                     }
                 ],
                 "responses": {
-                    "201": {
+                    "200": {
                         "description": "successful operation",
                         "schema": {
                             "$ref": "#/definitions/RequestTracker"
@@ -2639,6 +2642,12 @@
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/RequestTracker"
+                        }
+                    },
                     "403": {
                         "description": "Forbidden"
                     },
@@ -2842,7 +2851,7 @@
                     }
                 ],
                 "responses": {
-                    "201": {
+                    "200": {
                         "description": "successful operation",
                         "schema": {
                             "$ref": "#/definitions/RequestTracker"
@@ -2928,6 +2937,12 @@
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/RequestTracker"
+                        }
+                    },
                     "403": {
                         "description": "Forbidden"
                     },
@@ -4082,7 +4097,7 @@
                     }
                 ],
                 "responses": {
-                    "201": {
+                    "200": {
                         "description": "successful operation",
                         "schema": {
                             "$ref": "#/definitions/RequestTracker"

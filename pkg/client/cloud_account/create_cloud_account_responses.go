@@ -25,8 +25,8 @@ type CreateCloudAccountReader struct {
 func (o *CreateCloudAccountReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 201:
-		result := NewCreateCloudAccountCreated()
+	case 200:
+		result := NewCreateCloudAccountOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -51,24 +51,24 @@ func (o *CreateCloudAccountReader) ReadResponse(response runtime.ClientResponse,
 	}
 }
 
-// NewCreateCloudAccountCreated creates a CreateCloudAccountCreated with default headers values
-func NewCreateCloudAccountCreated() *CreateCloudAccountCreated {
-	return &CreateCloudAccountCreated{}
+// NewCreateCloudAccountOK creates a CreateCloudAccountOK with default headers values
+func NewCreateCloudAccountOK() *CreateCloudAccountOK {
+	return &CreateCloudAccountOK{}
 }
 
-/*CreateCloudAccountCreated handles this case with default header values.
+/*CreateCloudAccountOK handles this case with default header values.
 
 successful operation
 */
-type CreateCloudAccountCreated struct {
+type CreateCloudAccountOK struct {
 	Payload *models.CloudAccount
 }
 
-func (o *CreateCloudAccountCreated) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/cloud-accounts][%d] createCloudAccountCreated  %+v", 201, o.Payload)
+func (o *CreateCloudAccountOK) Error() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts][%d] createCloudAccountOK  %+v", 200, o.Payload)
 }
 
-func (o *CreateCloudAccountCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *CreateCloudAccountOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.CloudAccount)
 

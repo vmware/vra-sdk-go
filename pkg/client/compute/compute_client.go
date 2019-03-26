@@ -29,7 +29,7 @@ CreateMachine creates machine
 
 Create a new Machine.
 */
-func (a *Client) CreateMachine(params *CreateMachineParams) (*CreateMachineCreated, error) {
+func (a *Client) CreateMachine(params *CreateMachineParams) (*CreateMachineOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateMachineParams()
@@ -50,7 +50,7 @@ func (a *Client) CreateMachine(params *CreateMachineParams) (*CreateMachineCreat
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateMachineCreated), nil
+	return result.(*CreateMachineOK), nil
 
 }
 
@@ -59,13 +59,13 @@ DeleteMachine deletes a machine
 
 Delete a Machine.
 */
-func (a *Client) DeleteMachine(params *DeleteMachineParams) error {
+func (a *Client) DeleteMachine(params *DeleteMachineParams) (*DeleteMachineOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteMachineParams()
 	}
 
-	_, err := a.transport.Submit(&runtime.ClientOperation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteMachine",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/machines/{id}",
@@ -78,9 +78,9 @@ func (a *Client) DeleteMachine(params *DeleteMachineParams) error {
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return result.(*DeleteMachineOK), nil
 
 }
 

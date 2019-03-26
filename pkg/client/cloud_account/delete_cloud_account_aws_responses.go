@@ -22,6 +22,13 @@ type DeleteCloudAccountAwsReader struct {
 func (o *DeleteCloudAccountAwsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
+	case 200:
+		result := NewDeleteCloudAccountAwsOK()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	case 403:
 		result := NewDeleteCloudAccountAwsForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -39,6 +46,27 @@ func (o *DeleteCloudAccountAwsReader) ReadResponse(response runtime.ClientRespon
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
+}
+
+// NewDeleteCloudAccountAwsOK creates a DeleteCloudAccountAwsOK with default headers values
+func NewDeleteCloudAccountAwsOK() *DeleteCloudAccountAwsOK {
+	return &DeleteCloudAccountAwsOK{}
+}
+
+/*DeleteCloudAccountAwsOK handles this case with default header values.
+
+successful operation
+*/
+type DeleteCloudAccountAwsOK struct {
+}
+
+func (o *DeleteCloudAccountAwsOK) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-aws/{id}][%d] deleteCloudAccountAwsOK ", 200)
+}
+
+func (o *DeleteCloudAccountAwsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
 }
 
 // NewDeleteCloudAccountAwsForbidden creates a DeleteCloudAccountAwsForbidden with default headers values

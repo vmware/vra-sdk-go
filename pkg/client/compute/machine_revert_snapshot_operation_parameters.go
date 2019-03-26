@@ -67,15 +67,15 @@ type MachineRevertSnapshotOperationParams struct {
 	*/
 	APIVersion string
 	/*ID
-	  The id of the Machine.
-
-	*/
-	ID string
-	/*ID
 	  Snapshot id to revert.
 
 	*/
 	QueryID string
+	/*ID
+	  The id of the Machine.
+
+	*/
+	ID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -126,17 +126,6 @@ func (o *MachineRevertSnapshotOperationParams) SetAPIVersion(aPIVersion string) 
 	o.APIVersion = aPIVersion
 }
 
-// WithID adds the id to the machine revert snapshot operation params
-func (o *MachineRevertSnapshotOperationParams) WithID(id string) *MachineRevertSnapshotOperationParams {
-	o.SetID(id)
-	return o
-}
-
-// SetID adds the id to the machine revert snapshot operation params
-func (o *MachineRevertSnapshotOperationParams) SetID(id string) {
-	o.ID = id
-}
-
 // WithQueryID adds the id to the machine revert snapshot operation params
 func (o *MachineRevertSnapshotOperationParams) WithQueryID(id string) *MachineRevertSnapshotOperationParams {
 	o.SetQueryID(id)
@@ -146,6 +135,17 @@ func (o *MachineRevertSnapshotOperationParams) WithQueryID(id string) *MachineRe
 // SetQueryID adds the id to the machine revert snapshot operation params
 func (o *MachineRevertSnapshotOperationParams) SetQueryID(id string) {
 	o.QueryID = id
+}
+
+// WithID adds the id to the machine revert snapshot operation params
+func (o *MachineRevertSnapshotOperationParams) WithID(id string) *MachineRevertSnapshotOperationParams {
+	o.SetID(id)
+	return o
+}
+
+// SetID adds the id to the machine revert snapshot operation params
+func (o *MachineRevertSnapshotOperationParams) SetID(id string) {
+	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -165,11 +165,6 @@ func (o *MachineRevertSnapshotOperationParams) WriteToRequest(r runtime.ClientRe
 		}
 	}
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
-		return err
-	}
-
 	// query param id
 	qrID := o.QueryID
 	qID := qrID
@@ -177,6 +172,11 @@ func (o *MachineRevertSnapshotOperationParams) WriteToRequest(r runtime.ClientRe
 		if err := r.SetQueryParam("id", qID); err != nil {
 			return err
 		}
+	}
+
+	// path param id
+	if err := r.SetPathParam("id", o.ID); err != nil {
+		return err
 	}
 
 	if len(res) > 0 {

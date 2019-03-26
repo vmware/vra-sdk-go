@@ -29,7 +29,7 @@ CreateCloudAccount creates a cloud account
 
 Create a cloud account in the current organization
 */
-func (a *Client) CreateCloudAccount(params *CreateCloudAccountParams) (*CreateCloudAccountCreated, error) {
+func (a *Client) CreateCloudAccount(params *CreateCloudAccountParams) (*CreateCloudAccountOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateCloudAccountParams()
@@ -50,7 +50,7 @@ func (a *Client) CreateCloudAccount(params *CreateCloudAccountParams) (*CreateCl
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateCloudAccountCreated), nil
+	return result.(*CreateCloudAccountOK), nil
 
 }
 
@@ -59,7 +59,7 @@ CreateCloudAccountAws creates an a w s cloud account
 
 Create an AWS cloud account
 */
-func (a *Client) CreateCloudAccountAws(params *CreateCloudAccountAwsParams) (*CreateCloudAccountAwsCreated, error) {
+func (a *Client) CreateCloudAccountAws(params *CreateCloudAccountAwsParams) (*CreateCloudAccountAwsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateCloudAccountAwsParams()
@@ -80,7 +80,7 @@ func (a *Client) CreateCloudAccountAws(params *CreateCloudAccountAwsParams) (*Cr
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateCloudAccountAwsCreated), nil
+	return result.(*CreateCloudAccountAwsOK), nil
 
 }
 
@@ -239,13 +239,13 @@ DeleteCloudAccountAws deletes an a w s cloud account
 
 Delete an AWS cloud account with given ID
 */
-func (a *Client) DeleteCloudAccountAws(params *DeleteCloudAccountAwsParams) error {
+func (a *Client) DeleteCloudAccountAws(params *DeleteCloudAccountAwsParams) (*DeleteCloudAccountAwsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteCloudAccountAwsParams()
 	}
 
-	_, err := a.transport.Submit(&runtime.ClientOperation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteCloudAccountAws",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/cloud-accounts-aws/{id}",
@@ -258,9 +258,9 @@ func (a *Client) DeleteCloudAccountAws(params *DeleteCloudAccountAwsParams) erro
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return result.(*DeleteCloudAccountAwsOK), nil
 
 }
 
