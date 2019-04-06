@@ -25,32 +25,32 @@ type Client struct {
 }
 
 /*
-AddMachineDisk adds machine disk
+AttachMachineDisk attaches machine disk
 
 Attach a disk to a machine.
 */
-func (a *Client) AddMachineDisk(params *AddMachineDiskParams) (*AddMachineDiskOK, error) {
+func (a *Client) AttachMachineDisk(params *AttachMachineDiskParams) (*AttachMachineDiskOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewAddMachineDiskParams()
+		params = NewAttachMachineDiskParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "addMachineDisk",
+		ID:                 "attachMachineDisk",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/machines/{id}/disks",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &AddMachineDiskReader{formats: a.formats},
+		Reader:             &AttachMachineDiskReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*AddMachineDiskOK), nil
+	return result.(*AttachMachineDiskOK), nil
 
 }
 
@@ -87,7 +87,7 @@ func (a *Client) DeleteMachineDisk(params *DeleteMachineDiskParams) (*DeleteMach
 /*
 GetMachineDisk gets a machine disk
 
-Get a single disk of a given machine.
+Get disk with a given id for specific machine
 */
 func (a *Client) GetMachineDisk(params *GetMachineDiskParams) (*GetMachineDiskOK, error) {
 	// TODO: Validate the params before sending
@@ -117,7 +117,7 @@ func (a *Client) GetMachineDisk(params *GetMachineDiskParams) (*GetMachineDiskOK
 /*
 GetMachineDisks gets machine disks
 
-Get all disks of a given machine.
+Get all machine disks
 */
 func (a *Client) GetMachineDisks(params *GetMachineDisksParams) (*GetMachineDisksOK, error) {
 	// TODO: Validate the params before sending
@@ -147,7 +147,7 @@ func (a *Client) GetMachineDisks(params *GetMachineDisksParams) (*GetMachineDisk
 /*
 GetMachineNetworkInterface gets machine network interface
 
-Get a single NetworkInterface of a given machine.
+Get network interface with a given id for specific machine
 */
 func (a *Client) GetMachineNetworkInterface(params *GetMachineNetworkInterfaceParams) (*GetMachineNetworkInterfaceOK, error) {
 	// TODO: Validate the params before sending

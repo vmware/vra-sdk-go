@@ -16,24 +16,24 @@ import (
 	models "github.com/vmware/cas-sdk-go/pkg/models"
 )
 
-// GetVsphereCloudAccountsReader is a Reader for the GetVsphereCloudAccounts structure.
-type GetVsphereCloudAccountsReader struct {
+// GetVSphereCloudAccountsReader is a Reader for the GetVSphereCloudAccounts structure.
+type GetVSphereCloudAccountsReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GetVsphereCloudAccountsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetVSphereCloudAccountsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
 	case 200:
-		result := NewGetVsphereCloudAccountsOK()
+		result := NewGetVSphereCloudAccountsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 
 	case 403:
-		result := NewGetVsphereCloudAccountsForbidden()
+		result := NewGetVSphereCloudAccountsForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -44,24 +44,24 @@ func (o *GetVsphereCloudAccountsReader) ReadResponse(response runtime.ClientResp
 	}
 }
 
-// NewGetVsphereCloudAccountsOK creates a GetVsphereCloudAccountsOK with default headers values
-func NewGetVsphereCloudAccountsOK() *GetVsphereCloudAccountsOK {
-	return &GetVsphereCloudAccountsOK{}
+// NewGetVSphereCloudAccountsOK creates a GetVSphereCloudAccountsOK with default headers values
+func NewGetVSphereCloudAccountsOK() *GetVSphereCloudAccountsOK {
+	return &GetVSphereCloudAccountsOK{}
 }
 
-/*GetVsphereCloudAccountsOK handles this case with default header values.
+/*GetVSphereCloudAccountsOK handles this case with default header values.
 
 successful operation
 */
-type GetVsphereCloudAccountsOK struct {
+type GetVSphereCloudAccountsOK struct {
 	Payload *models.CloudAccountVsphereResult
 }
 
-func (o *GetVsphereCloudAccountsOK) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vsphere][%d] getVsphereCloudAccountsOK  %+v", 200, o.Payload)
+func (o *GetVSphereCloudAccountsOK) Error() string {
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vsphere][%d] getVSphereCloudAccountsOK  %+v", 200, o.Payload)
 }
 
-func (o *GetVsphereCloudAccountsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetVSphereCloudAccountsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.CloudAccountVsphereResult)
 
@@ -73,23 +73,23 @@ func (o *GetVsphereCloudAccountsOK) readResponse(response runtime.ClientResponse
 	return nil
 }
 
-// NewGetVsphereCloudAccountsForbidden creates a GetVsphereCloudAccountsForbidden with default headers values
-func NewGetVsphereCloudAccountsForbidden() *GetVsphereCloudAccountsForbidden {
-	return &GetVsphereCloudAccountsForbidden{}
+// NewGetVSphereCloudAccountsForbidden creates a GetVSphereCloudAccountsForbidden with default headers values
+func NewGetVSphereCloudAccountsForbidden() *GetVSphereCloudAccountsForbidden {
+	return &GetVSphereCloudAccountsForbidden{}
 }
 
-/*GetVsphereCloudAccountsForbidden handles this case with default header values.
+/*GetVSphereCloudAccountsForbidden handles this case with default header values.
 
 Forbidden
 */
-type GetVsphereCloudAccountsForbidden struct {
+type GetVSphereCloudAccountsForbidden struct {
 }
 
-func (o *GetVsphereCloudAccountsForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vsphere][%d] getVsphereCloudAccountsForbidden ", 403)
+func (o *GetVSphereCloudAccountsForbidden) Error() string {
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vsphere][%d] getVSphereCloudAccountsForbidden ", 403)
 }
 
-func (o *GetVsphereCloudAccountsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetVSphereCloudAccountsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

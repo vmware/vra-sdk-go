@@ -22,6 +22,13 @@ type DeleteZoneReader struct {
 func (o *DeleteZoneReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
+	case 200:
+		result := NewDeleteZoneOK()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	case 403:
 		result := NewDeleteZoneForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -39,6 +46,27 @@ func (o *DeleteZoneReader) ReadResponse(response runtime.ClientResponse, consume
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
+}
+
+// NewDeleteZoneOK creates a DeleteZoneOK with default headers values
+func NewDeleteZoneOK() *DeleteZoneOK {
+	return &DeleteZoneOK{}
+}
+
+/*DeleteZoneOK handles this case with default header values.
+
+successful operation
+*/
+type DeleteZoneOK struct {
+}
+
+func (o *DeleteZoneOK) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/zones/{id}][%d] deleteZoneOK ", 200)
+}
+
+func (o *DeleteZoneOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
 }
 
 // NewDeleteZoneForbidden creates a DeleteZoneForbidden with default headers values

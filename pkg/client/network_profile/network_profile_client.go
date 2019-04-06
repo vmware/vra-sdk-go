@@ -27,7 +27,7 @@ type Client struct {
 /*
 CreateNetworkProfile creates network profile
 
-Create a new NetworkProfile.
+Create network profile
 */
 func (a *Client) CreateNetworkProfile(params *CreateNetworkProfileParams) (*CreateNetworkProfileCreated, error) {
 	// TODO: Validate the params before sending
@@ -57,15 +57,15 @@ func (a *Client) CreateNetworkProfile(params *CreateNetworkProfileParams) (*Crea
 /*
 DeleteNetworkProfile deletes network profile
 
-Delete a single NetworkProfile.
+Delete network profile with a given id
 */
-func (a *Client) DeleteNetworkProfile(params *DeleteNetworkProfileParams) error {
+func (a *Client) DeleteNetworkProfile(params *DeleteNetworkProfileParams) (*DeleteNetworkProfileOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteNetworkProfileParams()
 	}
 
-	_, err := a.transport.Submit(&runtime.ClientOperation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteNetworkProfile",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/network-profiles/{id}",
@@ -78,16 +78,16 @@ func (a *Client) DeleteNetworkProfile(params *DeleteNetworkProfileParams) error 
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return result.(*DeleteNetworkProfileOK), nil
 
 }
 
 /*
 GetNetworkProfile gets network profile
 
-Get a single NetworkProfile.
+Get network profile with a given id
 */
 func (a *Client) GetNetworkProfile(params *GetNetworkProfileParams) (*GetNetworkProfileOK, error) {
 	// TODO: Validate the params before sending
@@ -117,7 +117,7 @@ func (a *Client) GetNetworkProfile(params *GetNetworkProfileParams) (*GetNetwork
 /*
 GetNetworkProfiles gets network profiles
 
-Get all network profiles.
+Get all network profiles
 */
 func (a *Client) GetNetworkProfiles(params *GetNetworkProfilesParams) (*GetNetworkProfilesOK, error) {
 	// TODO: Validate the params before sending
@@ -147,7 +147,7 @@ func (a *Client) GetNetworkProfiles(params *GetNetworkProfilesParams) (*GetNetwo
 /*
 UpdateNetworkProfile updates network profile
 
-Update an existing NetworkProfile.
+Update network profile
 */
 func (a *Client) UpdateNetworkProfile(params *UpdateNetworkProfileParams) (*UpdateNetworkProfileOK, error) {
 	// TODO: Validate the params before sending

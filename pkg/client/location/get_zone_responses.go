@@ -39,6 +39,13 @@ func (o *GetZoneReader) ReadResponse(response runtime.ClientResponse, consumer r
 		}
 		return nil, result
 
+	case 404:
+		result := NewGetZoneNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
@@ -54,16 +61,16 @@ func NewGetZoneOK() *GetZoneOK {
 successful operation
 */
 type GetZoneOK struct {
-	Payload *models.ZoneResult
+	Payload *models.Zone
 }
 
 func (o *GetZoneOK) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/zones][%d] getZoneOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /iaas/api/zones/{id}][%d] getZoneOK  %+v", 200, o.Payload)
 }
 
 func (o *GetZoneOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ZoneResult)
+	o.Payload = new(models.Zone)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -86,10 +93,31 @@ type GetZoneForbidden struct {
 }
 
 func (o *GetZoneForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/zones][%d] getZoneForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/zones/{id}][%d] getZoneForbidden ", 403)
 }
 
 func (o *GetZoneForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewGetZoneNotFound creates a GetZoneNotFound with default headers values
+func NewGetZoneNotFound() *GetZoneNotFound {
+	return &GetZoneNotFound{}
+}
+
+/*GetZoneNotFound handles this case with default header values.
+
+Not Found
+*/
+type GetZoneNotFound struct {
+}
+
+func (o *GetZoneNotFound) Error() string {
+	return fmt.Sprintf("[GET /iaas/api/zones/{id}][%d] getZoneNotFound ", 404)
+}
+
+func (o *GetZoneNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

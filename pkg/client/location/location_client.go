@@ -27,7 +27,7 @@ type Client struct {
 /*
 CreateZone creates zone
 
-Create a new Zone.
+Create zone
 */
 func (a *Client) CreateZone(params *CreateZoneParams) (*CreateZoneCreated, error) {
 	// TODO: Validate the params before sending
@@ -57,15 +57,15 @@ func (a *Client) CreateZone(params *CreateZoneParams) (*CreateZoneCreated, error
 /*
 DeleteZone deletes a zone
 
-Delete a Zone
+Delete a zone
 */
-func (a *Client) DeleteZone(params *DeleteZoneParams) error {
+func (a *Client) DeleteZone(params *DeleteZoneParams) (*DeleteZoneOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteZoneParams()
 	}
 
-	_, err := a.transport.Submit(&runtime.ClientOperation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteZone",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/zones/{id}",
@@ -78,16 +78,16 @@ func (a *Client) DeleteZone(params *DeleteZoneParams) error {
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return result.(*DeleteZoneOK), nil
 
 }
 
 /*
 GetRegion gets region
 
-Get all regions.
+Get Region with a given id
 */
 func (a *Client) GetRegion(params *GetRegionParams) (*GetRegionOK, error) {
 	// TODO: Validate the params before sending
@@ -98,7 +98,7 @@ func (a *Client) GetRegion(params *GetRegionParams) (*GetRegionOK, error) {
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getRegion",
 		Method:             "GET",
-		PathPattern:        "/iaas/api/regions",
+		PathPattern:        "/iaas/api/regions/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
@@ -115,69 +115,39 @@ func (a *Client) GetRegion(params *GetRegionParams) (*GetRegionOK, error) {
 }
 
 /*
-GetSingleRegion gets a single region
+GetRegions gets regions
 
-Get a single Region.
+Get all regions
 */
-func (a *Client) GetSingleRegion(params *GetSingleRegionParams) (*GetSingleRegionOK, error) {
+func (a *Client) GetRegions(params *GetRegionsParams) (*GetRegionsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetSingleRegionParams()
+		params = NewGetRegionsParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getSingleRegion",
+		ID:                 "getRegions",
 		Method:             "GET",
-		PathPattern:        "/iaas/api/regions/{id}",
+		PathPattern:        "/iaas/api/regions",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetSingleRegionReader{formats: a.formats},
+		Reader:             &GetRegionsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetSingleRegionOK), nil
-
-}
-
-/*
-GetSingleZone gets a single zone
-
-Get a single Zone.
-*/
-func (a *Client) GetSingleZone(params *GetSingleZoneParams) (*GetSingleZoneOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetSingleZoneParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getSingleZone",
-		Method:             "GET",
-		PathPattern:        "/iaas/api/zones/{id}",
-		ProducesMediaTypes: []string{"app/json", "application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetSingleZoneReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*GetSingleZoneOK), nil
+	return result.(*GetRegionsOK), nil
 
 }
 
 /*
 GetZone gets zone
 
-Get all zones
+Get zone with given id
 */
 func (a *Client) GetZone(params *GetZoneParams) (*GetZoneOK, error) {
 	// TODO: Validate the params before sending
@@ -188,7 +158,7 @@ func (a *Client) GetZone(params *GetZoneParams) (*GetZoneOK, error) {
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getZone",
 		Method:             "GET",
-		PathPattern:        "/iaas/api/zones",
+		PathPattern:        "/iaas/api/zones/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
@@ -205,11 +175,41 @@ func (a *Client) GetZone(params *GetZoneParams) (*GetZoneOK, error) {
 }
 
 /*
+GetZones gets zones
+
+Get all zones
+*/
+func (a *Client) GetZones(params *GetZonesParams) (*GetZonesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetZonesParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getZones",
+		Method:             "GET",
+		PathPattern:        "/iaas/api/zones",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetZonesReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetZonesOK), nil
+
+}
+
+/*
 UpdateZone updates zone
 
-Update a Zone.
+Update zone
 */
-func (a *Client) UpdateZone(params *UpdateZoneParams) (*UpdateZoneCreated, error) {
+func (a *Client) UpdateZone(params *UpdateZoneParams) (*UpdateZoneOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateZoneParams()
@@ -230,7 +230,7 @@ func (a *Client) UpdateZone(params *UpdateZoneParams) (*UpdateZoneCreated, error
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateZoneCreated), nil
+	return result.(*UpdateZoneOK), nil
 
 }
 

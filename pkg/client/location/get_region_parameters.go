@@ -66,6 +66,11 @@ type GetRegionParams struct {
 
 	*/
 	APIVersion string
+	/*ID
+	  The ID of the region.
+
+	*/
+	ID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -116,6 +121,17 @@ func (o *GetRegionParams) SetAPIVersion(aPIVersion string) {
 	o.APIVersion = aPIVersion
 }
 
+// WithID adds the id to the get region params
+func (o *GetRegionParams) WithID(id string) *GetRegionParams {
+	o.SetID(id)
+	return o
+}
+
+// SetID adds the id to the get region params
+func (o *GetRegionParams) SetID(id string) {
+	o.ID = id
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetRegionParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -131,6 +147,11 @@ func (o *GetRegionParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Reg
 		if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 			return err
 		}
+	}
+
+	// path param id
+	if err := r.SetPathParam("id", o.ID); err != nil {
+		return err
 	}
 
 	if len(res) > 0 {

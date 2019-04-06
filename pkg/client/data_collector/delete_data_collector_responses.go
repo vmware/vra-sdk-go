@@ -22,6 +22,13 @@ type DeleteDataCollectorReader struct {
 func (o *DeleteDataCollectorReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
+	case 200:
+		result := NewDeleteDataCollectorOK()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	case 403:
 		result := NewDeleteDataCollectorForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -39,6 +46,27 @@ func (o *DeleteDataCollectorReader) ReadResponse(response runtime.ClientResponse
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
+}
+
+// NewDeleteDataCollectorOK creates a DeleteDataCollectorOK with default headers values
+func NewDeleteDataCollectorOK() *DeleteDataCollectorOK {
+	return &DeleteDataCollectorOK{}
+}
+
+/*DeleteDataCollectorOK handles this case with default header values.
+
+successful operation
+*/
+type DeleteDataCollectorOK struct {
+}
+
+func (o *DeleteDataCollectorOK) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/data-collectors/{id}][%d] deleteDataCollectorOK ", 200)
+}
+
+func (o *DeleteDataCollectorOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
 }
 
 // NewDeleteDataCollectorForbidden creates a DeleteDataCollectorForbidden with default headers values

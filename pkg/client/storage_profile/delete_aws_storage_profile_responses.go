@@ -22,6 +22,13 @@ type DeleteAwsStorageProfileReader struct {
 func (o *DeleteAwsStorageProfileReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
+	case 200:
+		result := NewDeleteAwsStorageProfileOK()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	case 403:
 		result := NewDeleteAwsStorageProfileForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -39,6 +46,27 @@ func (o *DeleteAwsStorageProfileReader) ReadResponse(response runtime.ClientResp
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
+}
+
+// NewDeleteAwsStorageProfileOK creates a DeleteAwsStorageProfileOK with default headers values
+func NewDeleteAwsStorageProfileOK() *DeleteAwsStorageProfileOK {
+	return &DeleteAwsStorageProfileOK{}
+}
+
+/*DeleteAwsStorageProfileOK handles this case with default header values.
+
+successful operation
+*/
+type DeleteAwsStorageProfileOK struct {
+}
+
+func (o *DeleteAwsStorageProfileOK) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/storage-profiles-aws/{id}][%d] deleteAwsStorageProfileOK ", 200)
+}
+
+func (o *DeleteAwsStorageProfileOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
 }
 
 // NewDeleteAwsStorageProfileForbidden creates a DeleteAwsStorageProfileForbidden with default headers values

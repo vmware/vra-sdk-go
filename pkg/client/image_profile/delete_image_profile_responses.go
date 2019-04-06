@@ -22,6 +22,13 @@ type DeleteImageProfileReader struct {
 func (o *DeleteImageProfileReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
+	case 200:
+		result := NewDeleteImageProfileOK()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	case 403:
 		result := NewDeleteImageProfileForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -39,6 +46,27 @@ func (o *DeleteImageProfileReader) ReadResponse(response runtime.ClientResponse,
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
+}
+
+// NewDeleteImageProfileOK creates a DeleteImageProfileOK with default headers values
+func NewDeleteImageProfileOK() *DeleteImageProfileOK {
+	return &DeleteImageProfileOK{}
+}
+
+/*DeleteImageProfileOK handles this case with default header values.
+
+successful operation
+*/
+type DeleteImageProfileOK struct {
+}
+
+func (o *DeleteImageProfileOK) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/image-profiles/{id}][%d] deleteImageProfileOK ", 200)
+}
+
+func (o *DeleteImageProfileOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
 }
 
 // NewDeleteImageProfileForbidden creates a DeleteImageProfileForbidden with default headers values

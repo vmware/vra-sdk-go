@@ -25,8 +25,8 @@ type CreateMachineReader struct {
 func (o *CreateMachineReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 200:
-		result := NewCreateMachineOK()
+	case 201:
+		result := NewCreateMachineCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -51,24 +51,24 @@ func (o *CreateMachineReader) ReadResponse(response runtime.ClientResponse, cons
 	}
 }
 
-// NewCreateMachineOK creates a CreateMachineOK with default headers values
-func NewCreateMachineOK() *CreateMachineOK {
-	return &CreateMachineOK{}
+// NewCreateMachineCreated creates a CreateMachineCreated with default headers values
+func NewCreateMachineCreated() *CreateMachineCreated {
+	return &CreateMachineCreated{}
 }
 
-/*CreateMachineOK handles this case with default header values.
+/*CreateMachineCreated handles this case with default header values.
 
 successful operation
 */
-type CreateMachineOK struct {
+type CreateMachineCreated struct {
 	Payload *models.RequestTracker
 }
 
-func (o *CreateMachineOK) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/machines][%d] createMachineOK  %+v", 200, o.Payload)
+func (o *CreateMachineCreated) Error() string {
+	return fmt.Sprintf("[POST /iaas/api/machines][%d] createMachineCreated  %+v", 201, o.Payload)
 }
 
-func (o *CreateMachineOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *CreateMachineCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.RequestTracker)
 

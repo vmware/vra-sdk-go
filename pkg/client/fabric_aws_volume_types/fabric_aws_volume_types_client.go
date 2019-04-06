@@ -25,9 +25,9 @@ type Client struct {
 }
 
 /*
-GetFabricAwsVolumeTypes gets fabric aws volume types
+GetFabricAwsVolumeTypes gets fabric a w s volume types
 
-Get all Fabric AWS Volume Types.
+Get all fabric AWS volume types.
 */
 func (a *Client) GetFabricAwsVolumeTypes(params *GetFabricAwsVolumeTypesParams) (*GetFabricAwsVolumeTypesOK, error) {
 	// TODO: Validate the params before sending

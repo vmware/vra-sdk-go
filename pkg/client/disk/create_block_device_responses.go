@@ -25,8 +25,8 @@ type CreateBlockDeviceReader struct {
 func (o *CreateBlockDeviceReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 200:
-		result := NewCreateBlockDeviceOK()
+	case 201:
+		result := NewCreateBlockDeviceCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -51,24 +51,24 @@ func (o *CreateBlockDeviceReader) ReadResponse(response runtime.ClientResponse, 
 	}
 }
 
-// NewCreateBlockDeviceOK creates a CreateBlockDeviceOK with default headers values
-func NewCreateBlockDeviceOK() *CreateBlockDeviceOK {
-	return &CreateBlockDeviceOK{}
+// NewCreateBlockDeviceCreated creates a CreateBlockDeviceCreated with default headers values
+func NewCreateBlockDeviceCreated() *CreateBlockDeviceCreated {
+	return &CreateBlockDeviceCreated{}
 }
 
-/*CreateBlockDeviceOK handles this case with default header values.
+/*CreateBlockDeviceCreated handles this case with default header values.
 
 successful operation
 */
-type CreateBlockDeviceOK struct {
+type CreateBlockDeviceCreated struct {
 	Payload *models.RequestTracker
 }
 
-func (o *CreateBlockDeviceOK) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/block-devices][%d] createBlockDeviceOK  %+v", 200, o.Payload)
+func (o *CreateBlockDeviceCreated) Error() string {
+	return fmt.Sprintf("[POST /iaas/api/block-devices][%d] createBlockDeviceCreated  %+v", 201, o.Payload)
 }
 
-func (o *CreateBlockDeviceOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *CreateBlockDeviceCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.RequestTracker)
 

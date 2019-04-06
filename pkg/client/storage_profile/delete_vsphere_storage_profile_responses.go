@@ -22,6 +22,13 @@ type DeleteVSphereStorageProfileReader struct {
 func (o *DeleteVSphereStorageProfileReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
+	case 200:
+		result := NewDeleteVSphereStorageProfileOK()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	case 403:
 		result := NewDeleteVSphereStorageProfileForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -39,6 +46,27 @@ func (o *DeleteVSphereStorageProfileReader) ReadResponse(response runtime.Client
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
+}
+
+// NewDeleteVSphereStorageProfileOK creates a DeleteVSphereStorageProfileOK with default headers values
+func NewDeleteVSphereStorageProfileOK() *DeleteVSphereStorageProfileOK {
+	return &DeleteVSphereStorageProfileOK{}
+}
+
+/*DeleteVSphereStorageProfileOK handles this case with default header values.
+
+successful operation
+*/
+type DeleteVSphereStorageProfileOK struct {
+}
+
+func (o *DeleteVSphereStorageProfileOK) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/storage-profiles-vsphere/{id}][%d] deleteVSphereStorageProfileOK ", 200)
+}
+
+func (o *DeleteVSphereStorageProfileOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
 }
 
 // NewDeleteVSphereStorageProfileForbidden creates a DeleteVSphereStorageProfileForbidden with default headers values

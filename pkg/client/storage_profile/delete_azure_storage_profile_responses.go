@@ -22,6 +22,13 @@ type DeleteAzureStorageProfileReader struct {
 func (o *DeleteAzureStorageProfileReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
+	case 200:
+		result := NewDeleteAzureStorageProfileOK()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	case 403:
 		result := NewDeleteAzureStorageProfileForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -39,6 +46,27 @@ func (o *DeleteAzureStorageProfileReader) ReadResponse(response runtime.ClientRe
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
+}
+
+// NewDeleteAzureStorageProfileOK creates a DeleteAzureStorageProfileOK with default headers values
+func NewDeleteAzureStorageProfileOK() *DeleteAzureStorageProfileOK {
+	return &DeleteAzureStorageProfileOK{}
+}
+
+/*DeleteAzureStorageProfileOK handles this case with default header values.
+
+successful operation
+*/
+type DeleteAzureStorageProfileOK struct {
+}
+
+func (o *DeleteAzureStorageProfileOK) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/storage-profiles-azure/{id}][%d] deleteAzureStorageProfileOK ", 200)
+}
+
+func (o *DeleteAzureStorageProfileOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
 }
 
 // NewDeleteAzureStorageProfileForbidden creates a DeleteAzureStorageProfileForbidden with default headers values

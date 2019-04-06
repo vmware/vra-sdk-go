@@ -7,13 +7,10 @@ package compute
 
 import (
 	"fmt"
-	"io"
 
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/vmware/cas-sdk-go/pkg/models"
 )
 
 // DeleteMachineReader is a Reader for the DeleteMachine structure.
@@ -61,21 +58,13 @@ func NewDeleteMachineOK() *DeleteMachineOK {
 successful operation
 */
 type DeleteMachineOK struct {
-	Payload *models.RequestTracker
 }
 
 func (o *DeleteMachineOK) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}][%d] deleteMachineOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}][%d] deleteMachineOK ", 200)
 }
 
 func (o *DeleteMachineOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.RequestTracker)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

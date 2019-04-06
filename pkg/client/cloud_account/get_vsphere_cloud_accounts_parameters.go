@@ -17,49 +17,49 @@ import (
 	strfmt "github.com/go-openapi/strfmt"
 )
 
-// NewGetVsphereCloudAccountsParams creates a new GetVsphereCloudAccountsParams object
+// NewGetVSphereCloudAccountsParams creates a new GetVSphereCloudAccountsParams object
 // with the default values initialized.
-func NewGetVsphereCloudAccountsParams() *GetVsphereCloudAccountsParams {
+func NewGetVSphereCloudAccountsParams() *GetVSphereCloudAccountsParams {
 	var ()
-	return &GetVsphereCloudAccountsParams{
+	return &GetVSphereCloudAccountsParams{
 
 		timeout: cr.DefaultTimeout,
 	}
 }
 
-// NewGetVsphereCloudAccountsParamsWithTimeout creates a new GetVsphereCloudAccountsParams object
+// NewGetVSphereCloudAccountsParamsWithTimeout creates a new GetVSphereCloudAccountsParams object
 // with the default values initialized, and the ability to set a timeout on a request
-func NewGetVsphereCloudAccountsParamsWithTimeout(timeout time.Duration) *GetVsphereCloudAccountsParams {
+func NewGetVSphereCloudAccountsParamsWithTimeout(timeout time.Duration) *GetVSphereCloudAccountsParams {
 	var ()
-	return &GetVsphereCloudAccountsParams{
+	return &GetVSphereCloudAccountsParams{
 
 		timeout: timeout,
 	}
 }
 
-// NewGetVsphereCloudAccountsParamsWithContext creates a new GetVsphereCloudAccountsParams object
+// NewGetVSphereCloudAccountsParamsWithContext creates a new GetVSphereCloudAccountsParams object
 // with the default values initialized, and the ability to set a context for a request
-func NewGetVsphereCloudAccountsParamsWithContext(ctx context.Context) *GetVsphereCloudAccountsParams {
+func NewGetVSphereCloudAccountsParamsWithContext(ctx context.Context) *GetVSphereCloudAccountsParams {
 	var ()
-	return &GetVsphereCloudAccountsParams{
+	return &GetVSphereCloudAccountsParams{
 
 		Context: ctx,
 	}
 }
 
-// NewGetVsphereCloudAccountsParamsWithHTTPClient creates a new GetVsphereCloudAccountsParams object
+// NewGetVSphereCloudAccountsParamsWithHTTPClient creates a new GetVSphereCloudAccountsParams object
 // with the default values initialized, and the ability to set a custom HTTPClient for a request
-func NewGetVsphereCloudAccountsParamsWithHTTPClient(client *http.Client) *GetVsphereCloudAccountsParams {
+func NewGetVSphereCloudAccountsParamsWithHTTPClient(client *http.Client) *GetVSphereCloudAccountsParams {
 	var ()
-	return &GetVsphereCloudAccountsParams{
+	return &GetVSphereCloudAccountsParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetVsphereCloudAccountsParams contains all the parameters to send to the API endpoint
-for the get vsphere cloud accounts operation typically these are written to a http.Request
+/*GetVSphereCloudAccountsParams contains all the parameters to send to the API endpoint
+for the get v sphere cloud accounts operation typically these are written to a http.Request
 */
-type GetVsphereCloudAccountsParams struct {
+type GetVSphereCloudAccountsParams struct {
 
 	/*APIVersion
 	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about
@@ -72,52 +72,52 @@ type GetVsphereCloudAccountsParams struct {
 	HTTPClient *http.Client
 }
 
-// WithTimeout adds the timeout to the get vsphere cloud accounts params
-func (o *GetVsphereCloudAccountsParams) WithTimeout(timeout time.Duration) *GetVsphereCloudAccountsParams {
+// WithTimeout adds the timeout to the get v sphere cloud accounts params
+func (o *GetVSphereCloudAccountsParams) WithTimeout(timeout time.Duration) *GetVSphereCloudAccountsParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the get vsphere cloud accounts params
-func (o *GetVsphereCloudAccountsParams) SetTimeout(timeout time.Duration) {
+// SetTimeout adds the timeout to the get v sphere cloud accounts params
+func (o *GetVSphereCloudAccountsParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the get vsphere cloud accounts params
-func (o *GetVsphereCloudAccountsParams) WithContext(ctx context.Context) *GetVsphereCloudAccountsParams {
+// WithContext adds the context to the get v sphere cloud accounts params
+func (o *GetVSphereCloudAccountsParams) WithContext(ctx context.Context) *GetVSphereCloudAccountsParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the get vsphere cloud accounts params
-func (o *GetVsphereCloudAccountsParams) SetContext(ctx context.Context) {
+// SetContext adds the context to the get v sphere cloud accounts params
+func (o *GetVSphereCloudAccountsParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the get vsphere cloud accounts params
-func (o *GetVsphereCloudAccountsParams) WithHTTPClient(client *http.Client) *GetVsphereCloudAccountsParams {
+// WithHTTPClient adds the HTTPClient to the get v sphere cloud accounts params
+func (o *GetVSphereCloudAccountsParams) WithHTTPClient(client *http.Client) *GetVSphereCloudAccountsParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the get vsphere cloud accounts params
-func (o *GetVsphereCloudAccountsParams) SetHTTPClient(client *http.Client) {
+// SetHTTPClient adds the HTTPClient to the get v sphere cloud accounts params
+func (o *GetVSphereCloudAccountsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithAPIVersion adds the aPIVersion to the get vsphere cloud accounts params
-func (o *GetVsphereCloudAccountsParams) WithAPIVersion(aPIVersion string) *GetVsphereCloudAccountsParams {
+// WithAPIVersion adds the aPIVersion to the get v sphere cloud accounts params
+func (o *GetVSphereCloudAccountsParams) WithAPIVersion(aPIVersion string) *GetVSphereCloudAccountsParams {
 	o.SetAPIVersion(aPIVersion)
 	return o
 }
 
-// SetAPIVersion adds the apiVersion to the get vsphere cloud accounts params
-func (o *GetVsphereCloudAccountsParams) SetAPIVersion(aPIVersion string) {
+// SetAPIVersion adds the apiVersion to the get v sphere cloud accounts params
+func (o *GetVSphereCloudAccountsParams) SetAPIVersion(aPIVersion string) {
 	o.APIVersion = aPIVersion
 }
 
 // WriteToRequest writes these params to a swagger request
-func (o *GetVsphereCloudAccountsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
+func (o *GetVSphereCloudAccountsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	if err := r.SetTimeout(o.timeout); err != nil {
 		return err

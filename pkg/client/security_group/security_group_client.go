@@ -25,39 +25,39 @@ type Client struct {
 }
 
 /*
-DescribeSecurityGroup describes a security group
+GetSecurityGroup gets security group
 
-Describe a Security Group.
+Get security group with a given id
 */
-func (a *Client) DescribeSecurityGroup(params *DescribeSecurityGroupParams) (*DescribeSecurityGroupOK, error) {
+func (a *Client) GetSecurityGroup(params *GetSecurityGroupParams) (*GetSecurityGroupOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDescribeSecurityGroupParams()
+		params = NewGetSecurityGroupParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "describeSecurityGroup",
+		ID:                 "getSecurityGroup",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/security-groups/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DescribeSecurityGroupReader{formats: a.formats},
+		Reader:             &GetSecurityGroupReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DescribeSecurityGroupOK), nil
+	return result.(*GetSecurityGroupOK), nil
 
 }
 
 /*
 GetSecurityGroups gets security groups
 
-Get a page of Security Groups.
+Get all security groups
 */
 func (a *Client) GetSecurityGroups(params *GetSecurityGroupsParams) (*GetSecurityGroupsOK, error) {
 	// TODO: Validate the params before sending

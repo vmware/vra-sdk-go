@@ -16,24 +16,24 @@ import (
 	models "github.com/vmware/cas-sdk-go/pkg/models"
 )
 
-// GetFabricVsphereDatastoresReader is a Reader for the GetFabricVsphereDatastores structure.
-type GetFabricVsphereDatastoresReader struct {
+// GetFabricVSphereDatastoresReader is a Reader for the GetFabricVSphereDatastores structure.
+type GetFabricVSphereDatastoresReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GetFabricVsphereDatastoresReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetFabricVSphereDatastoresReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
 	case 200:
-		result := NewGetFabricVsphereDatastoresOK()
+		result := NewGetFabricVSphereDatastoresOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 
 	case 403:
-		result := NewGetFabricVsphereDatastoresForbidden()
+		result := NewGetFabricVSphereDatastoresForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -44,24 +44,24 @@ func (o *GetFabricVsphereDatastoresReader) ReadResponse(response runtime.ClientR
 	}
 }
 
-// NewGetFabricVsphereDatastoresOK creates a GetFabricVsphereDatastoresOK with default headers values
-func NewGetFabricVsphereDatastoresOK() *GetFabricVsphereDatastoresOK {
-	return &GetFabricVsphereDatastoresOK{}
+// NewGetFabricVSphereDatastoresOK creates a GetFabricVSphereDatastoresOK with default headers values
+func NewGetFabricVSphereDatastoresOK() *GetFabricVSphereDatastoresOK {
+	return &GetFabricVSphereDatastoresOK{}
 }
 
-/*GetFabricVsphereDatastoresOK handles this case with default header values.
+/*GetFabricVSphereDatastoresOK handles this case with default header values.
 
 successful operation
 */
-type GetFabricVsphereDatastoresOK struct {
+type GetFabricVSphereDatastoresOK struct {
 	Payload *models.FabricVsphereDatastoreResult
 }
 
-func (o *GetFabricVsphereDatastoresOK) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-datastores][%d] getFabricVsphereDatastoresOK  %+v", 200, o.Payload)
+func (o *GetFabricVSphereDatastoresOK) Error() string {
+	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-datastores][%d] getFabricVSphereDatastoresOK  %+v", 200, o.Payload)
 }
 
-func (o *GetFabricVsphereDatastoresOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetFabricVSphereDatastoresOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.FabricVsphereDatastoreResult)
 
@@ -73,23 +73,23 @@ func (o *GetFabricVsphereDatastoresOK) readResponse(response runtime.ClientRespo
 	return nil
 }
 
-// NewGetFabricVsphereDatastoresForbidden creates a GetFabricVsphereDatastoresForbidden with default headers values
-func NewGetFabricVsphereDatastoresForbidden() *GetFabricVsphereDatastoresForbidden {
-	return &GetFabricVsphereDatastoresForbidden{}
+// NewGetFabricVSphereDatastoresForbidden creates a GetFabricVSphereDatastoresForbidden with default headers values
+func NewGetFabricVSphereDatastoresForbidden() *GetFabricVSphereDatastoresForbidden {
+	return &GetFabricVSphereDatastoresForbidden{}
 }
 
-/*GetFabricVsphereDatastoresForbidden handles this case with default header values.
+/*GetFabricVSphereDatastoresForbidden handles this case with default header values.
 
 Forbidden
 */
-type GetFabricVsphereDatastoresForbidden struct {
+type GetFabricVSphereDatastoresForbidden struct {
 }
 
-func (o *GetFabricVsphereDatastoresForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-datastores][%d] getFabricVsphereDatastoresForbidden ", 403)
+func (o *GetFabricVSphereDatastoresForbidden) Error() string {
+	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-datastores][%d] getFabricVSphereDatastoresForbidden ", 403)
 }
 
-func (o *GetFabricVsphereDatastoresForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetFabricVSphereDatastoresForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

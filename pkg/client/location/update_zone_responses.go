@@ -25,8 +25,8 @@ type UpdateZoneReader struct {
 func (o *UpdateZoneReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 201:
-		result := NewUpdateZoneCreated()
+	case 200:
+		result := NewUpdateZoneOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -51,24 +51,24 @@ func (o *UpdateZoneReader) ReadResponse(response runtime.ClientResponse, consume
 	}
 }
 
-// NewUpdateZoneCreated creates a UpdateZoneCreated with default headers values
-func NewUpdateZoneCreated() *UpdateZoneCreated {
-	return &UpdateZoneCreated{}
+// NewUpdateZoneOK creates a UpdateZoneOK with default headers values
+func NewUpdateZoneOK() *UpdateZoneOK {
+	return &UpdateZoneOK{}
 }
 
-/*UpdateZoneCreated handles this case with default header values.
+/*UpdateZoneOK handles this case with default header values.
 
 successful operation
 */
-type UpdateZoneCreated struct {
+type UpdateZoneOK struct {
 	Payload *models.Zone
 }
 
-func (o *UpdateZoneCreated) Error() string {
-	return fmt.Sprintf("[PATCH /iaas/api/zones/{id}][%d] updateZoneCreated  %+v", 201, o.Payload)
+func (o *UpdateZoneOK) Error() string {
+	return fmt.Sprintf("[PATCH /iaas/api/zones/{id}][%d] updateZoneOK  %+v", 200, o.Payload)
 }
 
-func (o *UpdateZoneCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *UpdateZoneOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Zone)
 

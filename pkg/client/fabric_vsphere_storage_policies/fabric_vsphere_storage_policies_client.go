@@ -25,32 +25,62 @@ type Client struct {
 }
 
 /*
-GetFabricVsphereStoragePolicies gets fabric vsphere storage polices
+GetFabricVSphereStoragePolicies gets fabric v sphere storage polices
 
-Get all Fabric vSphere Storage Polices.
+Get all fabric vSphere storage polices.
 */
-func (a *Client) GetFabricVsphereStoragePolicies(params *GetFabricVsphereStoragePoliciesParams) (*GetFabricVsphereStoragePoliciesOK, error) {
+func (a *Client) GetFabricVSphereStoragePolicies(params *GetFabricVSphereStoragePoliciesParams) (*GetFabricVSphereStoragePoliciesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetFabricVsphereStoragePoliciesParams()
+		params = NewGetFabricVSphereStoragePoliciesParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getFabricVsphereStoragePolicies",
+		ID:                 "getFabricVSphereStoragePolicies",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/fabric-vsphere-storage-policies",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetFabricVsphereStoragePoliciesReader{formats: a.formats},
+		Reader:             &GetFabricVSphereStoragePoliciesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetFabricVsphereStoragePoliciesOK), nil
+	return result.(*GetFabricVSphereStoragePoliciesOK), nil
+
+}
+
+/*
+GetFabricVSphereStoragePolicy gets fabric v sphere storage policy
+
+Get fabric vSphere storage policy with a given id
+*/
+func (a *Client) GetFabricVSphereStoragePolicy(params *GetFabricVSphereStoragePolicyParams) (*GetFabricVSphereStoragePolicyOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetFabricVSphereStoragePolicyParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getFabricVSphereStoragePolicy",
+		Method:             "GET",
+		PathPattern:        "/iaas/api/fabric-vsphere-storage-policies/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetFabricVSphereStoragePolicyReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetFabricVSphereStoragePolicyOK), nil
 
 }
 

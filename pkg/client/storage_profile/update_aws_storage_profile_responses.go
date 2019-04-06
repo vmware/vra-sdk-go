@@ -25,8 +25,8 @@ type UpdateAwsStorageProfileReader struct {
 func (o *UpdateAwsStorageProfileReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 201:
-		result := NewUpdateAwsStorageProfileCreated()
+	case 200:
+		result := NewUpdateAwsStorageProfileOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -51,24 +51,24 @@ func (o *UpdateAwsStorageProfileReader) ReadResponse(response runtime.ClientResp
 	}
 }
 
-// NewUpdateAwsStorageProfileCreated creates a UpdateAwsStorageProfileCreated with default headers values
-func NewUpdateAwsStorageProfileCreated() *UpdateAwsStorageProfileCreated {
-	return &UpdateAwsStorageProfileCreated{}
+// NewUpdateAwsStorageProfileOK creates a UpdateAwsStorageProfileOK with default headers values
+func NewUpdateAwsStorageProfileOK() *UpdateAwsStorageProfileOK {
+	return &UpdateAwsStorageProfileOK{}
 }
 
-/*UpdateAwsStorageProfileCreated handles this case with default header values.
+/*UpdateAwsStorageProfileOK handles this case with default header values.
 
 successful operation
 */
-type UpdateAwsStorageProfileCreated struct {
+type UpdateAwsStorageProfileOK struct {
 	Payload *models.AwsStorageProfile
 }
 
-func (o *UpdateAwsStorageProfileCreated) Error() string {
-	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-aws/{id}][%d] updateAwsStorageProfileCreated  %+v", 201, o.Payload)
+func (o *UpdateAwsStorageProfileOK) Error() string {
+	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-aws/{id}][%d] updateAwsStorageProfileOK  %+v", 200, o.Payload)
 }
 
-func (o *UpdateAwsStorageProfileCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *UpdateAwsStorageProfileOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.AwsStorageProfile)
 

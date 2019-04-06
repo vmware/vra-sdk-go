@@ -50,9 +50,10 @@ import (
 	"github.com/vmware/cas-sdk-go/pkg/client/request"
 	"github.com/vmware/cas-sdk-go/pkg/client/security_group"
 	"github.com/vmware/cas-sdk-go/pkg/client/storage_profile"
+	"github.com/vmware/cas-sdk-go/pkg/client/tags"
 )
 
-// Default multicloud iaas HTTP client.
+// Default vmware cloud assembly iaas HTTP client.
 var Default = NewHTTPClient(nil)
 
 const (
@@ -67,12 +68,12 @@ const (
 // DefaultSchemes are the default schemes found in Meta (info) section of spec file
 var DefaultSchemes = []string{"https"}
 
-// NewHTTPClient creates a new multicloud iaas HTTP client.
+// NewHTTPClient creates a new vmware cloud assembly iaas HTTP client.
 func NewHTTPClient(formats strfmt.Registry) *MulticloudIaaS {
 	return NewHTTPClientWithConfig(formats, nil)
 }
 
-// NewHTTPClientWithConfig creates a new multicloud iaas HTTP client,
+// NewHTTPClientWithConfig creates a new vmware cloud assembly iaas HTTP client,
 // using a customizable transport config.
 func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *MulticloudIaaS {
 	// ensure nullable parameters have default
@@ -85,7 +86,7 @@ func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *Mul
 	return New(transport, formats)
 }
 
-// New creates a new multicloud iaas client
+// New creates a new vmware cloud assembly iaas client
 func New(transport runtime.ClientTransport, formats strfmt.Registry) *MulticloudIaaS {
 	// ensure nullable parameters have default
 	if formats == nil {
@@ -173,6 +174,8 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 
 	cli.StorageProfile = storage_profile.New(transport, formats)
 
+	cli.Tags = tags.New(transport, formats)
+
 	return cli
 }
 
@@ -215,7 +218,7 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 	return cfg
 }
 
-// MulticloudIaaS is a client for multicloud iaa s
+// MulticloudIaaS is a client for vmware cloud assembly iaa s
 type MulticloudIaaS struct {
 	About *about.Client
 
@@ -294,6 +297,8 @@ type MulticloudIaaS struct {
 	SecurityGroup *security_group.Client
 
 	StorageProfile *storage_profile.Client
+
+	Tags *tags.Client
 
 	Transport runtime.ClientTransport
 }
@@ -379,5 +384,7 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.SecurityGroup.SetTransport(transport)
 
 	c.StorageProfile.SetTransport(transport)
+
+	c.Tags.SetTransport(transport)
 
 }

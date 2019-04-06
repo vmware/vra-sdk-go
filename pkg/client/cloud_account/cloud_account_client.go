@@ -25,11 +25,71 @@ type Client struct {
 }
 
 /*
+CreateAwsCloudAccount creates an a w s cloud account
+
+Create an AWS cloud account in the current organization
+*/
+func (a *Client) CreateAwsCloudAccount(params *CreateAwsCloudAccountParams) (*CreateAwsCloudAccountCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateAwsCloudAccountParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "createAwsCloudAccount",
+		Method:             "POST",
+		PathPattern:        "/iaas/api/cloud-accounts-aws",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CreateAwsCloudAccountReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*CreateAwsCloudAccountCreated), nil
+
+}
+
+/*
+CreateAzureCloudAccount creates an azure cloud account
+
+Create an Azure cloud account in the current organization
+*/
+func (a *Client) CreateAzureCloudAccount(params *CreateAzureCloudAccountParams) (*CreateAzureCloudAccountCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateAzureCloudAccountParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "createAzureCloudAccount",
+		Method:             "POST",
+		PathPattern:        "/iaas/api/cloud-accounts-azure",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CreateAzureCloudAccountReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*CreateAzureCloudAccountCreated), nil
+
+}
+
+/*
 CreateCloudAccount creates a cloud account
 
 Create a cloud account in the current organization
 */
-func (a *Client) CreateCloudAccount(params *CreateCloudAccountParams) (*CreateCloudAccountOK, error) {
+func (a *Client) CreateCloudAccount(params *CreateCloudAccountParams) (*CreateCloudAccountCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateCloudAccountParams()
@@ -50,157 +110,157 @@ func (a *Client) CreateCloudAccount(params *CreateCloudAccountParams) (*CreateCl
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateCloudAccountOK), nil
+	return result.(*CreateCloudAccountCreated), nil
 
 }
 
 /*
-CreateCloudAccountAws creates an a w s cloud account
+CreateNsxTCloudAccount creates a n s x t cloud account
 
-Create an AWS cloud account
+Create a NSX-T cloud account in the current organization
 */
-func (a *Client) CreateCloudAccountAws(params *CreateCloudAccountAwsParams) (*CreateCloudAccountAwsOK, error) {
+func (a *Client) CreateNsxTCloudAccount(params *CreateNsxTCloudAccountParams) (*CreateNsxTCloudAccountCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateCloudAccountAwsParams()
+		params = NewCreateNsxTCloudAccountParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "createCloudAccountAws",
-		Method:             "POST",
-		PathPattern:        "/iaas/api/cloud-accounts-aws",
-		ProducesMediaTypes: []string{"app/json", "application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &CreateCloudAccountAwsReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*CreateCloudAccountAwsOK), nil
-
-}
-
-/*
-CreateCloudAccountAzure creates an azure cloud account
-
-Create an azure cloud account within the current organization
-*/
-func (a *Client) CreateCloudAccountAzure(params *CreateCloudAccountAzureParams) (*CreateCloudAccountAzureCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewCreateCloudAccountAzureParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "createCloudAccountAzure",
-		Method:             "POST",
-		PathPattern:        "/iaas/api/cloud-accounts-azure",
-		ProducesMediaTypes: []string{"app/json", "application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &CreateCloudAccountAzureReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*CreateCloudAccountAzureCreated), nil
-
-}
-
-/*
-CreateCloudAccountNsxT creates a n s x t cloud account
-
-Create a NSX-T cloud account within the current organization
-*/
-func (a *Client) CreateCloudAccountNsxT(params *CreateCloudAccountNsxTParams) (*CreateCloudAccountNsxTCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewCreateCloudAccountNsxTParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "createCloudAccountNsxT",
+		ID:                 "createNsxTCloudAccount",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-nsx-t",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateCloudAccountNsxTReader{formats: a.formats},
+		Reader:             &CreateNsxTCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateCloudAccountNsxTCreated), nil
+	return result.(*CreateNsxTCloudAccountCreated), nil
 
 }
 
 /*
-CreateCloudAccountNsxV creates a n s x v cloud account
+CreateNsxVCloudAccount creates a n s x v cloud account
 
 Create a NSX-V cloud account within the current organization
 */
-func (a *Client) CreateCloudAccountNsxV(params *CreateCloudAccountNsxVParams) (*CreateCloudAccountNsxVCreated, error) {
+func (a *Client) CreateNsxVCloudAccount(params *CreateNsxVCloudAccountParams) (*CreateNsxVCloudAccountCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateCloudAccountNsxVParams()
+		params = NewCreateNsxVCloudAccountParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "createCloudAccountNsxV",
+		ID:                 "createNsxVCloudAccount",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-nsx-v",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateCloudAccountNsxVReader{formats: a.formats},
+		Reader:             &CreateNsxVCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateCloudAccountNsxVCreated), nil
+	return result.(*CreateNsxVCloudAccountCreated), nil
 
 }
 
 /*
-CreateCloudAccountVsphere creates a v sphere cloud account
+CreateVSphereCloudAccount creates a v sphere cloud account
 
 Create a vSphere cloud account within the current organization
 */
-func (a *Client) CreateCloudAccountVsphere(params *CreateCloudAccountVsphereParams) (*CreateCloudAccountVsphereCreated, error) {
+func (a *Client) CreateVSphereCloudAccount(params *CreateVSphereCloudAccountParams) (*CreateVSphereCloudAccountCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateCloudAccountVsphereParams()
+		params = NewCreateVSphereCloudAccountParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "createCloudAccountVsphere",
+		ID:                 "createVSphereCloudAccount",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-vsphere",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateCloudAccountVsphereReader{formats: a.formats},
+		Reader:             &CreateVSphereCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateCloudAccountVsphereCreated), nil
+	return result.(*CreateVSphereCloudAccountCreated), nil
+
+}
+
+/*
+DeleteAwsCloudAccount deletes an a w s cloud account
+
+Delete an AWS cloud account with a given id
+*/
+func (a *Client) DeleteAwsCloudAccount(params *DeleteAwsCloudAccountParams) (*DeleteAwsCloudAccountOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteAwsCloudAccountParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "deleteAwsCloudAccount",
+		Method:             "DELETE",
+		PathPattern:        "/iaas/api/cloud-accounts-aws/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteAwsCloudAccountReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*DeleteAwsCloudAccountOK), nil
+
+}
+
+/*
+DeleteAzureCloudAccount deletes an azure cloud account
+
+Delete an Azure Cloud Account with a given id
+*/
+func (a *Client) DeleteAzureCloudAccount(params *DeleteAzureCloudAccountParams) (*DeleteAzureCloudAccountOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteAzureCloudAccountParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "deleteAzureCloudAccount",
+		Method:             "DELETE",
+		PathPattern:        "/iaas/api/cloud-accounts-azure/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteAzureCloudAccountReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*DeleteAzureCloudAccountOK), nil
 
 }
 
@@ -209,13 +269,13 @@ DeleteCloudAccount deletes a cloud account
 
 Delete a cloud account with a given id
 */
-func (a *Client) DeleteCloudAccount(params *DeleteCloudAccountParams) error {
+func (a *Client) DeleteCloudAccount(params *DeleteCloudAccountParams) (*DeleteCloudAccountOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteCloudAccountParams()
 	}
 
-	_, err := a.transport.Submit(&runtime.ClientOperation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteCloudAccount",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/cloud-accounts/{id}",
@@ -228,166 +288,106 @@ func (a *Client) DeleteCloudAccount(params *DeleteCloudAccountParams) error {
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return result.(*DeleteCloudAccountOK), nil
 
 }
 
 /*
-DeleteCloudAccountAws deletes an a w s cloud account
+DeleteNsxTCloudAccount deletes a n s x t cloud account
 
-Delete an AWS cloud account with given ID
+Delete a NSX-T cloud account with a given id
 */
-func (a *Client) DeleteCloudAccountAws(params *DeleteCloudAccountAwsParams) (*DeleteCloudAccountAwsOK, error) {
+func (a *Client) DeleteNsxTCloudAccount(params *DeleteNsxTCloudAccountParams) (*DeleteNsxTCloudAccountOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteCloudAccountAwsParams()
+		params = NewDeleteNsxTCloudAccountParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "deleteCloudAccountAws",
-		Method:             "DELETE",
-		PathPattern:        "/iaas/api/cloud-accounts-aws/{id}",
-		ProducesMediaTypes: []string{"app/json", "application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteCloudAccountAwsReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*DeleteCloudAccountAwsOK), nil
-
-}
-
-/*
-DeleteCloudAccountAzure deletes an azure cloud account
-
-Delete an Azure Cloud Account with given ID
-*/
-func (a *Client) DeleteCloudAccountAzure(params *DeleteCloudAccountAzureParams) error {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteCloudAccountAzureParams()
-	}
-
-	_, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "deleteCloudAccountAzure",
-		Method:             "DELETE",
-		PathPattern:        "/iaas/api/cloud-accounts-azure/{id}",
-		ProducesMediaTypes: []string{"app/json", "application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteCloudAccountAzureReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return err
-	}
-	return nil
-
-}
-
-/*
-DeleteCloudAccountNsxT deletes a nsx t cloud account
-
-Delete a Nsx-T cloud account with a given ID
-*/
-func (a *Client) DeleteCloudAccountNsxT(params *DeleteCloudAccountNsxTParams) error {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteCloudAccountNsxTParams()
-	}
-
-	_, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "deleteCloudAccountNsx-T",
+		ID:                 "deleteNsxTCloudAccount",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/cloud-accounts-nsx-t/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteCloudAccountNsxTReader{formats: a.formats},
+		Reader:             &DeleteNsxTCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return result.(*DeleteNsxTCloudAccountOK), nil
 
 }
 
 /*
-DeleteCloudAccountNsxV deletes a nsx v cloud account
+DeleteNsxVCloudAccount deletes a n s v v cloud account
 
-Delete a Nsx-V cloud account with a given ID
+Delete a NSV-V cloud account with a given id
 */
-func (a *Client) DeleteCloudAccountNsxV(params *DeleteCloudAccountNsxVParams) error {
+func (a *Client) DeleteNsxVCloudAccount(params *DeleteNsxVCloudAccountParams) (*DeleteNsxVCloudAccountOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteCloudAccountNsxVParams()
+		params = NewDeleteNsxVCloudAccountParams()
 	}
 
-	_, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "deleteCloudAccountNsx-V",
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "deleteNsxVCloudAccount",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/cloud-accounts-nsx-v/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteCloudAccountNsxVReader{formats: a.formats},
+		Reader:             &DeleteNsxVCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return result.(*DeleteNsxVCloudAccountOK), nil
 
 }
 
 /*
-DeleteCloudAccountVsphere deletes a v sphere cloud account
+DeleteVSphereCloudAccount deletes a v sphere cloud account
 
-Delete a vSphere Cloud Account with a given ID
+Delete a vSphere Cloud Account with a given id
 */
-func (a *Client) DeleteCloudAccountVsphere(params *DeleteCloudAccountVsphereParams) error {
+func (a *Client) DeleteVSphereCloudAccount(params *DeleteVSphereCloudAccountParams) (*DeleteVSphereCloudAccountOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteCloudAccountVsphereParams()
+		params = NewDeleteVSphereCloudAccountParams()
 	}
 
-	_, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "deleteCloudAccountVsphere",
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "deleteVSphereCloudAccount",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/cloud-accounts-vsphere/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteCloudAccountVsphereReader{formats: a.formats},
+		Reader:             &DeleteVSphereCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return result.(*DeleteVSphereCloudAccountOK), nil
 
 }
 
 /*
-EnumerateAwsRegions retrieves regions for an a w s cloud account
+EnumerateAwsRegions gets the available regions for specified a w s cloud account
 
-Initiate data collection for the regions in an AWS cloud account
+Get the available regions for specified AWS cloud account
 */
 func (a *Client) EnumerateAwsRegions(params *EnumerateAwsRegionsParams) (*EnumerateAwsRegionsOK, error) {
 	// TODO: Validate the params before sending
@@ -415,9 +415,9 @@ func (a *Client) EnumerateAwsRegions(params *EnumerateAwsRegionsParams) (*Enumer
 }
 
 /*
-EnumerateAzureRegions retrieves regions for an azure cloud account
+EnumerateAzureRegions gets the available regions for specified azure cloud account
 
-Initiate data collection for the regions in an Azure cloud account
+Get the available regions for specified Azure cloud account
 */
 func (a *Client) EnumerateAzureRegions(params *EnumerateAzureRegionsParams) (*EnumerateAzureRegionsOK, error) {
 	// TODO: Validate the params before sending
@@ -445,9 +445,9 @@ func (a *Client) EnumerateAzureRegions(params *EnumerateAzureRegionsParams) (*En
 }
 
 /*
-EnumerateRegions retrieves regions for a cloud account
+EnumerateRegions gets the available regions for specified cloud account
 
-Initiate data collection for the specified regions in a cloud account
+Get the available regions for specified cloud account
 */
 func (a *Client) EnumerateRegions(params *EnumerateRegionsParams) (*EnumerateRegionsOK, error) {
 	// TODO: Validate the params before sending
@@ -475,9 +475,9 @@ func (a *Client) EnumerateRegions(params *EnumerateRegionsParams) (*EnumerateReg
 }
 
 /*
-EnumerateVSphereRegions enumerates regions for a v sphere cloud account
+EnumerateVSphereRegions gets the available regions for specified v sphere cloud account
 
-Initiate data collection for the regions in a cloud account
+Get the available regions for specified vSphere cloud account
 */
 func (a *Client) EnumerateVSphereRegions(params *EnumerateVSphereRegionsParams) (*EnumerateVSphereRegionsOK, error) {
 	// TODO: Validate the params before sending
@@ -505,9 +505,9 @@ func (a *Client) EnumerateVSphereRegions(params *EnumerateVSphereRegionsParams) 
 }
 
 /*
-GetAwsCloudAccount retrieves an a w s cloud account
+GetAwsCloudAccount gets an a w s cloud account
 
-Retrieve an AWS cloud account with a given ID
+Get an AWS cloud account with a given id
 */
 func (a *Client) GetAwsCloudAccount(params *GetAwsCloudAccountParams) (*GetAwsCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -535,9 +535,9 @@ func (a *Client) GetAwsCloudAccount(params *GetAwsCloudAccountParams) (*GetAwsCl
 }
 
 /*
-GetAwsCloudAccounts retrieves a w s cloud accounts
+GetAwsCloudAccounts gets a w s cloud accounts
 
-Retrieve all AWS cloud accounts
+Get all AWS cloud accounts within the current organization
 */
 func (a *Client) GetAwsCloudAccounts(params *GetAwsCloudAccountsParams) (*GetAwsCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
@@ -565,9 +565,9 @@ func (a *Client) GetAwsCloudAccounts(params *GetAwsCloudAccountsParams) (*GetAws
 }
 
 /*
-GetAzureCloudAccount retrieves an azure cloud account
+GetAzureCloudAccount gets an azure cloud account
 
-Retrieve an Azure Cloud Account with a given ID
+Get an Azure Cloud Account with a given id
 */
 func (a *Client) GetAzureCloudAccount(params *GetAzureCloudAccountParams) (*GetAzureCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -595,9 +595,9 @@ func (a *Client) GetAzureCloudAccount(params *GetAzureCloudAccountParams) (*GetA
 }
 
 /*
-GetAzureCloudAccounts retrieves azure cloud accounts
+GetAzureCloudAccounts gets azure cloud accounts
 
-List all Azure cloud accounts within the current organization
+Get all Azure cloud accounts within the current organization
 */
 func (a *Client) GetAzureCloudAccounts(params *GetAzureCloudAccountsParams) (*GetAzureCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
@@ -625,9 +625,9 @@ func (a *Client) GetAzureCloudAccounts(params *GetAzureCloudAccountsParams) (*Ge
 }
 
 /*
-GetCloudAccount retrieves a cloud account
+GetCloudAccount gets cloud account
 
-Retrieve a cloud account for a given ID
+Get cloud account with a given id
 */
 func (a *Client) GetCloudAccount(params *GetCloudAccountParams) (*GetCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -655,9 +655,9 @@ func (a *Client) GetCloudAccount(params *GetCloudAccountParams) (*GetCloudAccoun
 }
 
 /*
-GetCloudAccounts lists cloud accounts
+GetCloudAccounts gets cloud accounts
 
-List all cloud accounts within the current organization
+Get all cloud accounts within the current organization
 */
 func (a *Client) GetCloudAccounts(params *GetCloudAccountsParams) (*GetCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
@@ -685,9 +685,9 @@ func (a *Client) GetCloudAccounts(params *GetCloudAccountsParams) (*GetCloudAcco
 }
 
 /*
-GetNsxTCloudAccount retrieves a nsx t cloud account
+GetNsxTCloudAccount gets an n s x t cloud account
 
-Retrieve a Nsx-T cloud account
+Get an NSX-T cloud account with a given id
 */
 func (a *Client) GetNsxTCloudAccount(params *GetNsxTCloudAccountParams) (*GetNsxTCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -715,9 +715,9 @@ func (a *Client) GetNsxTCloudAccount(params *GetNsxTCloudAccountParams) (*GetNsx
 }
 
 /*
-GetNsxTCloudAccounts retrieves nsx t cloud accounts
+GetNsxTCloudAccounts gets n s x t cloud accounts
 
-List all Nsx-T cloud accounts within the current organization
+Get all NSX-T cloud accounts within the current organization
 */
 func (a *Client) GetNsxTCloudAccounts(params *GetNsxTCloudAccountsParams) (*GetNsxTCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
@@ -745,9 +745,9 @@ func (a *Client) GetNsxTCloudAccounts(params *GetNsxTCloudAccountsParams) (*GetN
 }
 
 /*
-GetNsxVCloudAccount retrieves a n s x v cloud account
+GetNsxVCloudAccount gets an n s x v cloud account
 
-Retrieve a NSX-V cloud account
+Get an NSX-V cloud account with a given id
 */
 func (a *Client) GetNsxVCloudAccount(params *GetNsxVCloudAccountParams) (*GetNsxVCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -775,9 +775,9 @@ func (a *Client) GetNsxVCloudAccount(params *GetNsxVCloudAccountParams) (*GetNsx
 }
 
 /*
-GetNsxVCloudAccounts retrieves n s x v cloud accounts
+GetNsxVCloudAccounts gets n s x v cloud accounts
 
-List all NSX-V cloud accounts within the current organization
+Get all NSX-V cloud accounts within the current organization
 */
 func (a *Client) GetNsxVCloudAccounts(params *GetNsxVCloudAccountsParams) (*GetNsxVCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
@@ -805,9 +805,9 @@ func (a *Client) GetNsxVCloudAccounts(params *GetNsxVCloudAccountsParams) (*GetN
 }
 
 /*
-GetVSphereCloudAccount retrieves a v sphere cloud account
+GetVSphereCloudAccount gets an v sphere cloud account
 
-Retrieve a vSphere cloud account for a given ID
+Get an vSphere cloud account with a given id
 */
 func (a *Client) GetVSphereCloudAccount(params *GetVSphereCloudAccountParams) (*GetVSphereCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -835,62 +835,62 @@ func (a *Client) GetVSphereCloudAccount(params *GetVSphereCloudAccountParams) (*
 }
 
 /*
-GetVsphereCloudAccounts retrieves v sphere cloud accounts
+GetVSphereCloudAccounts gets v sphere cloud accounts
 
-List all vSphere Cloud Accounts within the current organization
+Get all vSphere cloud accounts within the current organization
 */
-func (a *Client) GetVsphereCloudAccounts(params *GetVsphereCloudAccountsParams) (*GetVsphereCloudAccountsOK, error) {
+func (a *Client) GetVSphereCloudAccounts(params *GetVSphereCloudAccountsParams) (*GetVSphereCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetVsphereCloudAccountsParams()
+		params = NewGetVSphereCloudAccountsParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getVsphereCloudAccounts",
+		ID:                 "getVSphereCloudAccounts",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/cloud-accounts-vsphere",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetVsphereCloudAccountsReader{formats: a.formats},
+		Reader:             &GetVSphereCloudAccountsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetVsphereCloudAccountsOK), nil
+	return result.(*GetVSphereCloudAccountsOK), nil
 
 }
 
 /*
-PatchCloudAccount patches cloud account
+UpdateCloudAccount updates cloud account
 
-Patch a single CloudAccount
+Update a single CloudAccount
 */
-func (a *Client) PatchCloudAccount(params *PatchCloudAccountParams) (*PatchCloudAccountOK, error) {
+func (a *Client) UpdateCloudAccount(params *UpdateCloudAccountParams) (*UpdateCloudAccountOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPatchCloudAccountParams()
+		params = NewUpdateCloudAccountParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "patchCloudAccount",
+		ID:                 "updateCloudAccount",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/cloud-accounts/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PatchCloudAccountReader{formats: a.formats},
+		Reader:             &UpdateCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PatchCloudAccountOK), nil
+	return result.(*UpdateCloudAccountOK), nil
 
 }
 

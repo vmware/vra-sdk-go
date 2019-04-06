@@ -27,9 +27,9 @@ type Client struct {
 /*
 CreateMachine creates machine
 
-Create a new Machine.
+Create machine
 */
-func (a *Client) CreateMachine(params *CreateMachineParams) (*CreateMachineOK, error) {
+func (a *Client) CreateMachine(params *CreateMachineParams) (*CreateMachineCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateMachineParams()
@@ -50,14 +50,44 @@ func (a *Client) CreateMachine(params *CreateMachineParams) (*CreateMachineOK, e
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateMachineOK), nil
+	return result.(*CreateMachineCreated), nil
 
 }
 
 /*
-DeleteMachine deletes a machine
+CreateMachineSnapshot creates snapshot operation for machine
 
-Delete a Machine.
+Second day create snapshot operation for machine
+*/
+func (a *Client) CreateMachineSnapshot(params *CreateMachineSnapshotParams) error {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateMachineSnapshotParams()
+	}
+
+	_, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "createMachineSnapshot",
+		Method:             "POST",
+		PathPattern:        "/iaas/api/machines/{id}/operations/snapshots",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CreateMachineSnapshotReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return err
+	}
+	return nil
+
+}
+
+/*
+DeleteMachine deletes machine
+
+Delete Machine with a given id
 */
 func (a *Client) DeleteMachine(params *DeleteMachineParams) (*DeleteMachineOK, error) {
 	// TODO: Validate the params before sending
@@ -85,39 +115,99 @@ func (a *Client) DeleteMachine(params *DeleteMachineParams) (*DeleteMachineOK, e
 }
 
 /*
-DescribeMachine describes a machine
+DeleteMachineSnapshot deletes snapshot operation for machine
 
-Describe a Machine.
+Second day delete snapshot operation for machine
 */
-func (a *Client) DescribeMachine(params *DescribeMachineParams) (*DescribeMachineOK, error) {
+func (a *Client) DeleteMachineSnapshot(params *DeleteMachineSnapshotParams) (*DeleteMachineSnapshotOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDescribeMachineParams()
+		params = NewDeleteMachineSnapshotParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "describeMachine",
-		Method:             "GET",
-		PathPattern:        "/iaas/api/machines/{id}",
+		ID:                 "deleteMachineSnapshot",
+		Method:             "DELETE",
+		PathPattern:        "/iaas/api/machines/{id}/snapshots/{id1}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DescribeMachineReader{formats: a.formats},
+		Reader:             &DeleteMachineSnapshotReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DescribeMachineOK), nil
+	return result.(*DeleteMachineSnapshotOK), nil
+
+}
+
+/*
+GetMachine gets machine
+
+Get machine with a given id
+*/
+func (a *Client) GetMachine(params *GetMachineParams) (*GetMachineOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetMachineParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getMachine",
+		Method:             "GET",
+		PathPattern:        "/iaas/api/machines/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetMachineReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetMachineOK), nil
+
+}
+
+/*
+GetMachineSnapshots gets machine snapshots information
+
+Get machine snapshots information
+*/
+func (a *Client) GetMachineSnapshots(params *GetMachineSnapshotsParams) (*GetMachineSnapshotsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetMachineSnapshotsParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getMachineSnapshots",
+		Method:             "GET",
+		PathPattern:        "/iaas/api/machines/{id}/snapshots",
+		ProducesMediaTypes: []string{""},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetMachineSnapshotsReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetMachineSnapshotsOK), nil
 
 }
 
 /*
 GetMachines gets machines
 
-Get all Machines.
+Get all machines
 */
 func (a *Client) GetMachines(params *GetMachinesParams) (*GetMachinesOK, error) {
 	// TODO: Validate the params before sending
@@ -145,115 +235,25 @@ func (a *Client) GetMachines(params *GetMachinesParams) (*GetMachinesOK, error) 
 }
 
 /*
-GetSnapshotsForMachine gets snapshots information for machine
+PowerOffMachine powers off operation for machine
 
-Get Snapshots information for machine
+Second day power-off operation for machine
 */
-func (a *Client) GetSnapshotsForMachine(params *GetSnapshotsForMachineParams) (*GetSnapshotsForMachineOK, error) {
+func (a *Client) PowerOffMachine(params *PowerOffMachineParams) error {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetSnapshotsForMachineParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getSnapshotsForMachine",
-		Method:             "GET",
-		PathPattern:        "/iaas/api/machines/{id}/snapshots",
-		ProducesMediaTypes: []string{""},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetSnapshotsForMachineReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*GetSnapshotsForMachineOK), nil
-
-}
-
-/*
-MachineCreateSnapshotOperation creates snapshot of machine
-
-Create Snapshot of Machine
-*/
-func (a *Client) MachineCreateSnapshotOperation(params *MachineCreateSnapshotOperationParams) error {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewMachineCreateSnapshotOperationParams()
+		params = NewPowerOffMachineParams()
 	}
 
 	_, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "machineCreateSnapshotOperation",
-		Method:             "POST",
-		PathPattern:        "/iaas/api/machines/{id}/operations/snapshots",
-		ProducesMediaTypes: []string{"app/json", "application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &MachineCreateSnapshotOperationReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return err
-	}
-	return nil
-
-}
-
-/*
-MachineDeleteSnapshotOperation deletes a snapshot
-
-Delete a Snapshot
-*/
-func (a *Client) MachineDeleteSnapshotOperation(params *MachineDeleteSnapshotOperationParams) error {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewMachineDeleteSnapshotOperationParams()
-	}
-
-	_, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "machineDeleteSnapshotOperation",
-		Method:             "DELETE",
-		PathPattern:        "/iaas/api/machines/{id}/snapshots/{id1}",
-		ProducesMediaTypes: []string{"app/json", "application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &MachineDeleteSnapshotOperationReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return err
-	}
-	return nil
-
-}
-
-/*
-MachinePowerOffOperation powers off a machine
-
-Power-off a Machine
-*/
-func (a *Client) MachinePowerOffOperation(params *MachinePowerOffOperationParams) error {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewMachinePowerOffOperationParams()
-	}
-
-	_, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "machinePowerOffOperation",
+		ID:                 "powerOffMachine",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/machines/{id}/operations/power-off",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &MachinePowerOffOperationReader{formats: a.formats},
+		Reader:             &PowerOffMachineReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -265,25 +265,25 @@ func (a *Client) MachinePowerOffOperation(params *MachinePowerOffOperationParams
 }
 
 /*
-MachinePowerOnOperation powers on a machine
+PowerOnMachine powers on operation for machine
 
-Power-on a Machine.
+Second day power-on operation for machine
 */
-func (a *Client) MachinePowerOnOperation(params *MachinePowerOnOperationParams) error {
+func (a *Client) PowerOnMachine(params *PowerOnMachineParams) error {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewMachinePowerOnOperationParams()
+		params = NewPowerOnMachineParams()
 	}
 
 	_, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "machinePowerOnOperation",
+		ID:                 "powerOnMachine",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/machines/{id}/operations/power-on",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &MachinePowerOnOperationReader{formats: a.formats},
+		Reader:             &PowerOnMachineReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -295,25 +295,25 @@ func (a *Client) MachinePowerOnOperation(params *MachinePowerOnOperationParams) 
 }
 
 /*
-MachineRebootOperation reboots a machine
+RebootMachine reboots operation for machine
 
-Reboot a Machine
+Second day reboot operation for machine
 */
-func (a *Client) MachineRebootOperation(params *MachineRebootOperationParams) error {
+func (a *Client) RebootMachine(params *RebootMachineParams) error {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewMachineRebootOperationParams()
+		params = NewRebootMachineParams()
 	}
 
 	_, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "machineRebootOperation",
+		ID:                 "rebootMachine",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/machines/{id}/operations/reboot",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &MachineRebootOperationReader{formats: a.formats},
+		Reader:             &RebootMachineReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -325,25 +325,25 @@ func (a *Client) MachineRebootOperation(params *MachineRebootOperationParams) er
 }
 
 /*
-MachineResetOperation resets a machine
+ResetMachine resets operation for machine
 
-Reset a Machine
+Second day reset operation for machine
 */
-func (a *Client) MachineResetOperation(params *MachineResetOperationParams) error {
+func (a *Client) ResetMachine(params *ResetMachineParams) error {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewMachineResetOperationParams()
+		params = NewResetMachineParams()
 	}
 
 	_, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "machineResetOperation",
+		ID:                 "resetMachine",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/machines/{id}/operations/reset",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &MachineResetOperationReader{formats: a.formats},
+		Reader:             &ResetMachineReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -355,25 +355,25 @@ func (a *Client) MachineResetOperation(params *MachineResetOperationParams) erro
 }
 
 /*
-MachineResizeOperation resizes a machine
+ResizeMachine resizes operation for machine
 
-Resize a Machine
+Second day resize operation for machine
 */
-func (a *Client) MachineResizeOperation(params *MachineResizeOperationParams) error {
+func (a *Client) ResizeMachine(params *ResizeMachineParams) error {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewMachineResizeOperationParams()
+		params = NewResizeMachineParams()
 	}
 
 	_, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "machineResizeOperation",
+		ID:                 "resizeMachine",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/machines/{id}/operations/resize",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &MachineResizeOperationReader{formats: a.formats},
+		Reader:             &ResizeMachineReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -385,25 +385,25 @@ func (a *Client) MachineResizeOperation(params *MachineResizeOperationParams) er
 }
 
 /*
-MachineRestartOperation restarts a machine
+RestartMachine restarts operation for machine
 
-Restart a Machine
+Second day restart operation for machine
 */
-func (a *Client) MachineRestartOperation(params *MachineRestartOperationParams) error {
+func (a *Client) RestartMachine(params *RestartMachineParams) error {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewMachineRestartOperationParams()
+		params = NewRestartMachineParams()
 	}
 
 	_, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "machineRestartOperation",
+		ID:                 "restartMachine",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/machines/{id}/operations/restart",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &MachineRestartOperationReader{formats: a.formats},
+		Reader:             &RestartMachineReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -415,25 +415,25 @@ func (a *Client) MachineRestartOperation(params *MachineRestartOperationParams) 
 }
 
 /*
-MachineRevertSnapshotOperation reverts to a snapshot of machine
+RevertMachineSnapshot reverts snapshot operation for machine
 
-Revert to a Snapshot of Machine
+Second day revert snapshot operation for machine
 */
-func (a *Client) MachineRevertSnapshotOperation(params *MachineRevertSnapshotOperationParams) error {
+func (a *Client) RevertMachineSnapshot(params *RevertMachineSnapshotParams) error {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewMachineRevertSnapshotOperationParams()
+		params = NewRevertMachineSnapshotParams()
 	}
 
 	_, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "machineRevertSnapshotOperation",
+		ID:                 "revertMachineSnapshot",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/machines/{id}/operations/revert",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &MachineRevertSnapshotOperationReader{formats: a.formats},
+		Reader:             &RevertMachineSnapshotReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -445,25 +445,25 @@ func (a *Client) MachineRevertSnapshotOperation(params *MachineRevertSnapshotOpe
 }
 
 /*
-MachineShutdownOperation shuts down a machine
+ShutdownMachine shuts down operation for machine
 
-Shut down a Machine
+Second day shut down operation machine
 */
-func (a *Client) MachineShutdownOperation(params *MachineShutdownOperationParams) error {
+func (a *Client) ShutdownMachine(params *ShutdownMachineParams) error {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewMachineShutdownOperationParams()
+		params = NewShutdownMachineParams()
 	}
 
 	_, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "machineShutdownOperation",
+		ID:                 "shutdownMachine",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/machines/{id}/operations/shutdown",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &MachineShutdownOperationReader{formats: a.formats},
+		Reader:             &ShutdownMachineReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -475,25 +475,25 @@ func (a *Client) MachineShutdownOperation(params *MachineShutdownOperationParams
 }
 
 /*
-MachineSuspendOperation suspends a machine
+SuspendMachine suspends operation for machine
 
-Suspend a Machine
+Second day suspend operation for machine
 */
-func (a *Client) MachineSuspendOperation(params *MachineSuspendOperationParams) error {
+func (a *Client) SuspendMachine(params *SuspendMachineParams) error {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewMachineSuspendOperationParams()
+		params = NewSuspendMachineParams()
 	}
 
 	_, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "machineSuspendOperation",
+		ID:                 "suspendMachine",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/machines/{id}/operations/suspend",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &MachineSuspendOperationReader{formats: a.formats},
+		Reader:             &SuspendMachineReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -505,9 +505,9 @@ func (a *Client) MachineSuspendOperation(params *MachineSuspendOperationParams) 
 }
 
 /*
-UpdateMachine updates a machine
+UpdateMachine updates machine
 
-Update a Machine. Only tag updates are supported. All other properties in the MachineSpecification body are ignored.
+Update machine. Only tag updates are supported. All other properties in the MachineSpecification body are ignored.
 */
 func (a *Client) UpdateMachine(params *UpdateMachineParams) error {
 	// TODO: Validate the params before sending

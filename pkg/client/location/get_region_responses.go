@@ -39,6 +39,13 @@ func (o *GetRegionReader) ReadResponse(response runtime.ClientResponse, consumer
 		}
 		return nil, result
 
+	case 404:
+		result := NewGetRegionNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
@@ -54,16 +61,16 @@ func NewGetRegionOK() *GetRegionOK {
 successful operation
 */
 type GetRegionOK struct {
-	Payload *models.RegionResult
+	Payload *models.Region
 }
 
 func (o *GetRegionOK) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/regions][%d] getRegionOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /iaas/api/regions/{id}][%d] getRegionOK  %+v", 200, o.Payload)
 }
 
 func (o *GetRegionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.RegionResult)
+	o.Payload = new(models.Region)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -86,10 +93,31 @@ type GetRegionForbidden struct {
 }
 
 func (o *GetRegionForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/regions][%d] getRegionForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/regions/{id}][%d] getRegionForbidden ", 403)
 }
 
 func (o *GetRegionForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewGetRegionNotFound creates a GetRegionNotFound with default headers values
+func NewGetRegionNotFound() *GetRegionNotFound {
+	return &GetRegionNotFound{}
+}
+
+/*GetRegionNotFound handles this case with default header values.
+
+Not Found
+*/
+type GetRegionNotFound struct {
+}
+
+func (o *GetRegionNotFound) Error() string {
+	return fmt.Sprintf("[GET /iaas/api/regions/{id}][%d] getRegionNotFound ", 404)
+}
+
+func (o *GetRegionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

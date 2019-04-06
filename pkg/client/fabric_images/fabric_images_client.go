@@ -25,9 +25,39 @@ type Client struct {
 }
 
 /*
-GetFabricImages gets images
+GetFabricImage gets fabric image
 
-Get all Images.
+Get fabric image with a given id
+*/
+func (a *Client) GetFabricImage(params *GetFabricImageParams) (*GetFabricImageOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetFabricImageParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getFabricImage",
+		Method:             "GET",
+		PathPattern:        "/iaas/api/fabric-images/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetFabricImageReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetFabricImageOK), nil
+
+}
+
+/*
+GetFabricImages gets fabric images
+
+Get all fabric images
 */
 func (a *Client) GetFabricImages(params *GetFabricImagesParams) (*GetFabricImagesOK, error) {
 	// TODO: Validate the params before sending
@@ -51,36 +81,6 @@ func (a *Client) GetFabricImages(params *GetFabricImagesParams) (*GetFabricImage
 		return nil, err
 	}
 	return result.(*GetFabricImagesOK), nil
-
-}
-
-/*
-GetImage gets image
-
-Get a single Image.
-*/
-func (a *Client) GetImage(params *GetImageParams) (*GetImageOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetImageParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getImage",
-		Method:             "GET",
-		PathPattern:        "/iaas/api/fabric-images/{id}",
-		ProducesMediaTypes: []string{"app/json", "application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetImageReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*GetImageOK), nil
 
 }
 

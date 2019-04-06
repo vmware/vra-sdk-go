@@ -25,9 +25,39 @@ type Client struct {
 }
 
 /*
+GetFabricNetwork gets fabric network
+
+Get fabric network with a given id
+*/
+func (a *Client) GetFabricNetwork(params *GetFabricNetworkParams) (*GetFabricNetworkOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetFabricNetworkParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getFabricNetwork",
+		Method:             "GET",
+		PathPattern:        "/iaas/api/fabric-networks/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetFabricNetworkReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetFabricNetworkOK), nil
+
+}
+
+/*
 GetFabricNetworks gets fabric networks
 
-Get all FabricNetworks.
+Get all fabric networks.
 */
 func (a *Client) GetFabricNetworks(params *GetFabricNetworksParams) (*GetFabricNetworksOK, error) {
 	// TODO: Validate the params before sending
@@ -55,55 +85,25 @@ func (a *Client) GetFabricNetworks(params *GetFabricNetworksParams) (*GetFabricN
 }
 
 /*
-GetSingleFabricNetwork gets single fabric network
+UpdateFabricNetwork updates fabric network
 
-Get a Fabric Network.
+Update fabric network. Only tag updates are supported.
 */
-func (a *Client) GetSingleFabricNetwork(params *GetSingleFabricNetworkParams) (*GetSingleFabricNetworkOK, error) {
+func (a *Client) UpdateFabricNetwork(params *UpdateFabricNetworkParams) error {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetSingleFabricNetworkParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getSingleFabricNetwork",
-		Method:             "GET",
-		PathPattern:        "/iaas/api/fabric-networks/{id}",
-		ProducesMediaTypes: []string{"app/json", "application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetSingleFabricNetworkReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*GetSingleFabricNetworkOK), nil
-
-}
-
-/*
-PatchFabricNetwork updates a fabric network
-
-Update a FabricNetwork. Only tag updates are supported.
-*/
-func (a *Client) PatchFabricNetwork(params *PatchFabricNetworkParams) error {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchFabricNetworkParams()
+		params = NewUpdateFabricNetworkParams()
 	}
 
 	_, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "patchFabricNetwork",
+		ID:                 "updateFabricNetwork",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/fabric-networks/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PatchFabricNetworkReader{formats: a.formats},
+		Reader:             &UpdateFabricNetworkReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})

@@ -27,7 +27,7 @@ type Client struct {
 /*
 CreateProject creates project
 
-Create a new Project.
+Create project
 */
 func (a *Client) CreateProject(params *CreateProjectParams) (*CreateProjectCreated, error) {
 	// TODO: Validate the params before sending
@@ -55,17 +55,17 @@ func (a *Client) CreateProject(params *CreateProjectParams) (*CreateProjectCreat
 }
 
 /*
-DeleteProject deletes a project
+DeleteProject deletes project
 
-Delete a Project.
+Delete project with a given id
 */
-func (a *Client) DeleteProject(params *DeleteProjectParams) error {
+func (a *Client) DeleteProject(params *DeleteProjectParams) (*DeleteProjectOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteProjectParams()
 	}
 
-	_, err := a.transport.Submit(&runtime.ClientOperation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteProject",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/projects/{id}",
@@ -78,16 +78,16 @@ func (a *Client) DeleteProject(params *DeleteProjectParams) error {
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return result.(*DeleteProjectOK), nil
 
 }
 
 /*
 GetProject gets project
 
-Get a single Project.
+Get project with a given id
 */
 func (a *Client) GetProject(params *GetProjectParams) (*GetProjectOK, error) {
 	// TODO: Validate the params before sending
@@ -117,7 +117,7 @@ func (a *Client) GetProject(params *GetProjectParams) (*GetProjectOK, error) {
 /*
 GetProjects gets projects
 
-Get all Projects.
+Get all projects
 */
 func (a *Client) GetProjects(params *GetProjectsParams) (*GetProjectsOK, error) {
 	// TODO: Validate the params before sending
@@ -147,7 +147,7 @@ func (a *Client) GetProjects(params *GetProjectsParams) (*GetProjectsOK, error) 
 /*
 UpdateProject updates project
 
-Update a Project.
+Update project
 */
 func (a *Client) UpdateProject(params *UpdateProjectParams) (*UpdateProjectCreated, error) {
 	// TODO: Validate the params before sending
