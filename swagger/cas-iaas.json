@@ -1,9 +1,9 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "Multicloud IaaS API",
+        "description": "A multi-cloud IaaS API for Cloud Automation Services",
         "version": "2019-01-15",
-        "title": "Multicloud IaaS API"
+        "title": "VMware Cloud Assembly IaaS API"
     },
     "basePath": "/",
     "tags": [
@@ -81,6 +81,9 @@
         },
         {
             "name": "Storage Profile"
+        },
+        {
+            "name": "Tags"
         }
     ],
     "schemes": [
@@ -175,7 +178,7 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "201": {
                         "description": "successful operation",
                         "schema": {
                             "$ref": "#/definitions/RequestTracker"
@@ -278,8 +281,8 @@
                 "tags": [
                     "Cloud Account"
                 ],
-                "summary": "List cloud accounts",
-                "description": "List all cloud accounts within the current organization",
+                "summary": "Get cloud accounts",
+                "description": "Get all cloud accounts within the current organization",
                 "operationId": "getCloudAccounts",
                 "produces": [
                     "application/json",
@@ -336,7 +339,7 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "201": {
                         "description": "successful operation",
                         "schema": {
                             "$ref": "#/definitions/CloudAccount"
@@ -356,8 +359,8 @@
                 "tags": [
                     "Cloud Account"
                 ],
-                "summary": "Retrieve AWS cloud accounts",
-                "description": "Retrieve all AWS cloud accounts",
+                "summary": "Get AWS cloud accounts",
+                "description": "Get all AWS cloud accounts within the current organization",
                 "operationId": "getAwsCloudAccounts",
                 "produces": [
                     "application/json",
@@ -389,8 +392,8 @@
                     "Cloud Account"
                 ],
                 "summary": "Create an AWS cloud account",
-                "description": "Create an AWS cloud account",
-                "operationId": "createCloudAccountAws",
+                "description": "Create an AWS cloud account in the current organization",
+                "operationId": "createAwsCloudAccount",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -414,7 +417,7 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "201": {
                         "description": "successful operation",
                         "schema": {
                             "$ref": "#/definitions/CloudAccount"
@@ -434,8 +437,8 @@
                 "tags": [
                     "Cloud Account"
                 ],
-                "summary": "Retrieve regions for an AWS cloud account",
-                "description": "Initiate data collection for the regions in an AWS cloud account",
+                "summary": "Get the available regions for specified AWS cloud account",
+                "description": "Get the available regions for specified AWS cloud account",
                 "operationId": "enumerateAwsRegions",
                 "produces": [
                     "application/json",
@@ -480,8 +483,8 @@
                 "tags": [
                     "Cloud Account"
                 ],
-                "summary": "Retrieve an AWS cloud account",
-                "description": "Retrieve an AWS cloud account with a given ID",
+                "summary": "Get an AWS cloud account",
+                "description": "Get an AWS cloud account with a given id",
                 "operationId": "getAwsCloudAccount",
                 "produces": [
                     "application/json",
@@ -523,8 +526,8 @@
                     "Cloud Account"
                 ],
                 "summary": "Delete an AWS cloud account",
-                "description": "Delete an AWS cloud account with given ID",
-                "operationId": "deleteCloudAccountAws",
+                "description": "Delete an AWS cloud account with a given id",
+                "operationId": "deleteAwsCloudAccount",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -546,9 +549,6 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "successful operation"
-                    },
                     "403": {
                         "description": "Forbidden"
                     },
@@ -563,8 +563,8 @@
                 "tags": [
                     "Cloud Account"
                 ],
-                "summary": "Retrieve Azure cloud accounts",
-                "description": "List all Azure cloud accounts within the current organization",
+                "summary": "Get Azure cloud accounts",
+                "description": "Get all Azure cloud accounts within the current organization",
                 "operationId": "getAzureCloudAccounts",
                 "produces": [
                     "application/json",
@@ -596,8 +596,8 @@
                     "Cloud Account"
                 ],
                 "summary": "Create an Azure cloud account",
-                "description": "Create an azure cloud account within the current organization",
-                "operationId": "createCloudAccountAzure",
+                "description": "Create an Azure cloud account in the current organization",
+                "operationId": "createAzureCloudAccount",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -641,8 +641,8 @@
                 "tags": [
                     "Cloud Account"
                 ],
-                "summary": "Retrieve regions for an Azure cloud account",
-                "description": "Initiate data collection for the regions in an Azure cloud account",
+                "summary": "Get the available regions for specified Azure cloud account",
+                "description": "Get the available regions for specified Azure cloud account",
                 "operationId": "enumerateAzureRegions",
                 "produces": [
                     "application/json",
@@ -687,8 +687,8 @@
                 "tags": [
                     "Cloud Account"
                 ],
-                "summary": "Retrieve an Azure Cloud Account",
-                "description": "Retrieve an Azure Cloud Account with a given ID",
+                "summary": "Get an Azure Cloud Account",
+                "description": "Get an Azure Cloud Account with a given id",
                 "operationId": "getAzureCloudAccount",
                 "produces": [
                     "application/json",
@@ -730,8 +730,8 @@
                     "Cloud Account"
                 ],
                 "summary": "Delete an Azure Cloud Account",
-                "description": "Delete an Azure Cloud Account with given ID",
-                "operationId": "deleteCloudAccountAzure",
+                "description": "Delete an Azure Cloud Account with a given id",
+                "operationId": "deleteAzureCloudAccount",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -767,8 +767,8 @@
                 "tags": [
                     "Cloud Account"
                 ],
-                "summary": "Retrieve Nsx-T cloud accounts",
-                "description": "List all Nsx-T cloud accounts within the current organization",
+                "summary": "Get NSX-T cloud accounts",
+                "description": "Get all NSX-T cloud accounts within the current organization",
                 "operationId": "getNsxTCloudAccounts",
                 "produces": [
                     "application/json",
@@ -800,8 +800,8 @@
                     "Cloud Account"
                 ],
                 "summary": "Create a NSX-T cloud account",
-                "description": "Create a NSX-T cloud account within the current organization",
-                "operationId": "createCloudAccountNsxT",
+                "description": "Create a NSX-T cloud account in the current organization",
+                "operationId": "createNsxTCloudAccount",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -845,8 +845,8 @@
                 "tags": [
                     "Cloud Account"
                 ],
-                "summary": "Retrieve a Nsx-T cloud account",
-                "description": "Retrieve a Nsx-T cloud account",
+                "summary": "Get an NSX-T cloud account",
+                "description": "Get an NSX-T cloud account with a given id",
                 "operationId": "getNsxTCloudAccount",
                 "produces": [
                     "application/json",
@@ -887,9 +887,9 @@
                 "tags": [
                     "Cloud Account"
                 ],
-                "summary": "Delete a Nsx-T cloud account",
-                "description": "Delete a Nsx-T cloud account with a given ID",
-                "operationId": "deleteCloudAccountNsx-T",
+                "summary": "Delete a NSX-T cloud account",
+                "description": "Delete a NSX-T cloud account with a given id",
+                "operationId": "deleteNsxTCloudAccount",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -925,8 +925,8 @@
                 "tags": [
                     "Cloud Account"
                 ],
-                "summary": "Retrieve NSX-V cloud accounts",
-                "description": "List all NSX-V cloud accounts within the current organization",
+                "summary": "Get NSX-V cloud accounts",
+                "description": "Get all NSX-V cloud accounts within the current organization",
                 "operationId": "getNsxVCloudAccounts",
                 "produces": [
                     "application/json",
@@ -959,7 +959,7 @@
                 ],
                 "summary": "Create a NSX-V cloud account",
                 "description": "Create a NSX-V cloud account within the current organization",
-                "operationId": "createCloudAccountNsxV",
+                "operationId": "createNsxVCloudAccount",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -1003,8 +1003,8 @@
                 "tags": [
                     "Cloud Account"
                 ],
-                "summary": "Retrieve a NSX-V cloud account",
-                "description": "Retrieve a NSX-V cloud account",
+                "summary": "Get an NSX-V cloud account",
+                "description": "Get an NSX-V cloud account with a given id",
                 "operationId": "getNsxVCloudAccount",
                 "produces": [
                     "application/json",
@@ -1045,9 +1045,9 @@
                 "tags": [
                     "Cloud Account"
                 ],
-                "summary": "Delete a Nsx-V cloud account",
-                "description": "Delete a Nsx-V cloud account with a given ID",
-                "operationId": "deleteCloudAccountNsx-V",
+                "summary": "Delete a NSV-V cloud account",
+                "description": "Delete a NSV-V cloud account with a given id",
+                "operationId": "deleteNsxVCloudAccount",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -1083,9 +1083,9 @@
                 "tags": [
                     "Cloud Account"
                 ],
-                "summary": "Retrieve vSphere cloud accounts",
-                "description": "List all vSphere Cloud Accounts within the current organization",
-                "operationId": "getVsphereCloudAccounts",
+                "summary": "Get vSphere cloud accounts",
+                "description": "Get all vSphere cloud accounts within the current organization",
+                "operationId": "getVSphereCloudAccounts",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -1117,7 +1117,7 @@
                 ],
                 "summary": "Create a vSphere cloud account",
                 "description": "Create a vSphere cloud account within the current organization",
-                "operationId": "createCloudAccountVsphere",
+                "operationId": "createVSphereCloudAccount",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -1161,8 +1161,8 @@
                 "tags": [
                     "Cloud Account"
                 ],
-                "summary": "Enumerate regions for a vSphere cloud account",
-                "description": "Initiate data collection for the regions in a cloud account",
+                "summary": "Get the available regions for specified vSphere cloud account",
+                "description": "Get the available regions for specified vSphere cloud account",
                 "operationId": "enumerateVSphereRegions",
                 "produces": [
                     "application/json",
@@ -1207,8 +1207,8 @@
                 "tags": [
                     "Cloud Account"
                 ],
-                "summary": "Retrieve a vSphere cloud account",
-                "description": "Retrieve a vSphere cloud account for a given ID",
+                "summary": "Get an vSphere cloud account",
+                "description": "Get an vSphere cloud account with a given id",
                 "operationId": "getVSphereCloudAccount",
                 "produces": [
                     "application/json",
@@ -1250,8 +1250,8 @@
                     "Cloud Account"
                 ],
                 "summary": "Delete a vSphere cloud account",
-                "description": "Delete a vSphere Cloud Account with a given ID",
-                "operationId": "deleteCloudAccountVsphere",
+                "description": "Delete a vSphere Cloud Account with a given id",
+                "operationId": "deleteVSphereCloudAccount",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -1287,8 +1287,8 @@
                 "tags": [
                     "Cloud Account"
                 ],
-                "summary": "Retrieve regions for a cloud account",
-                "description": "Initiate data collection for the specified regions in a cloud account",
+                "summary": "Get the available regions for specified cloud account",
+                "description": "Get the available regions for specified cloud account",
                 "operationId": "enumerateRegions",
                 "produces": [
                     "application/json",
@@ -1333,8 +1333,8 @@
                 "tags": [
                     "Cloud Account"
                 ],
-                "summary": "Retrieve a cloud account",
-                "description": "Retrieve a cloud account for a given ID",
+                "summary": "Get cloud account",
+                "description": "Get cloud account with a given id",
                 "operationId": "getCloudAccount",
                 "produces": [
                     "application/json",
@@ -1411,9 +1411,9 @@
                 "tags": [
                     "Cloud Account"
                 ],
-                "summary": "Patch CloudAccount",
-                "description": "Patch a single CloudAccount",
-                "operationId": "patchCloudAccount",
+                "summary": "Update CloudAccount",
+                "description": "Update a single CloudAccount",
+                "operationId": "updateCloudAccount",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -1534,7 +1534,7 @@
                     "Data Collector"
                 ],
                 "summary": "Get Data Collector",
-                "description": "Get a single Data Collector.",
+                "description": "Get Data Collector with a given id",
                 "operationId": "getDataCollector",
                 "produces": [
                     "application/json",
@@ -1576,7 +1576,7 @@
                     "Data Collector"
                 ],
                 "summary": "Delete Data Collector",
-                "description": "Delete a single Data Collector.",
+                "description": "Delete Data Collector with a given id",
                 "operationId": "deleteDataCollector",
                 "produces": [
                     "application/json",
@@ -1613,8 +1613,8 @@
                 "tags": [
                     "Fabric AWS Volume Types"
                 ],
-                "summary": "Get FabricAwsVolumeTypes",
-                "description": "Get all Fabric AWS Volume Types.",
+                "summary": "Get fabric AWS volume types",
+                "description": "Get all fabric AWS volume types.",
                 "operationId": "getFabricAwsVolumeTypes",
                 "produces": [
                     "application/json",
@@ -1647,9 +1647,9 @@
                 "tags": [
                     "Fabric Azure Storage Account"
                 ],
-                "summary": "Get FabricAzureStorageAccounts",
-                "description": "Get all Fabric Azure Storage Accounts.",
-                "operationId": "getAzureStorageAccounts",
+                "summary": "Get fabric Azure storage accounts",
+                "description": "Get all fabric Azure storage accounts.",
+                "operationId": "getFabricAzureStorageAccounts",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -1676,13 +1676,57 @@
                 }
             }
         },
+        "/iaas/api/fabric-azure-storage-accounts/{id}": {
+            "get": {
+                "tags": [
+                    "Fabric Azure Storage Account"
+                ],
+                "summary": "Get fabric Azure storage account",
+                "description": "Get fabric Azure storage account with a given id",
+                "operationId": "getFabricAzureStorageAccount",
+                "produces": [
+                    "application/json",
+                    "app/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The ID of the Fabric Azure Storage Account.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/FabricAzureStorageAccount"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
         "/iaas/api/fabric-flavors": {
             "get": {
                 "tags": [
                     "Fabric Flavors"
                 ],
-                "summary": "Get all FabricFlavors",
-                "description": "Get all fabric flavors.",
+                "summary": "Get fabric flavors",
+                "description": "Get all fabric flavors",
                 "operationId": "getFabricFlavors",
                 "produces": [
                     "application/json",
@@ -1715,8 +1759,8 @@
                 "tags": [
                     "Fabric Images"
                 ],
-                "summary": "Get Images",
-                "description": "Get all Images.",
+                "summary": "Get fabric images",
+                "description": "Get all fabric images",
                 "operationId": "getFabricImages",
                 "produces": [
                     "application/json",
@@ -1749,9 +1793,9 @@
                 "tags": [
                     "Fabric Images"
                 ],
-                "summary": "Get Image",
-                "description": "Get a single Image.",
-                "operationId": "getImage",
+                "summary": "Get fabric image",
+                "description": "Get fabric image with a given id",
+                "operationId": "getFabricImage",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -1793,8 +1837,8 @@
                 "tags": [
                     "Fabric Network"
                 ],
-                "summary": "Get FabricNetworks",
-                "description": "Get all FabricNetworks.",
+                "summary": "Get fabric networks",
+                "description": "Get all fabric networks.",
                 "operationId": "getFabricNetworks",
                 "produces": [
                     "application/json",
@@ -1827,9 +1871,9 @@
                 "tags": [
                     "Fabric Network"
                 ],
-                "summary": "Get single Fabric Network",
-                "description": "Get a Fabric Network.",
-                "operationId": "getSingleFabricNetwork",
+                "summary": "Get fabric network",
+                "description": "Get fabric network with a given id",
+                "operationId": "getFabricNetwork",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -1869,9 +1913,9 @@
                 "tags": [
                     "Fabric Network"
                 ],
-                "summary": "Update a FabricNetwork.",
-                "description": "Update a FabricNetwork. Only tag updates are supported. ",
-                "operationId": "patchFabricNetwork",
+                "summary": "Update fabric network.",
+                "description": "Update fabric network. Only tag updates are supported.",
+                "operationId": "updateFabricNetwork",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -1916,9 +1960,9 @@
                 "tags": [
                     "Fabric vSphere Datastore"
                 ],
-                "summary": "Get FabricVsphereDatastores",
-                "description": "Get all Fabric vSphere Datastores.",
-                "operationId": "getFabricVsphereDatastores",
+                "summary": "Get fabric vSphere datastores",
+                "description": "Get all fabric vSphere datastores.",
+                "operationId": "getFabricVSphereDatastores",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -1945,14 +1989,58 @@
                 }
             }
         },
+        "/iaas/api/fabric-vsphere-datastores/{id}": {
+            "get": {
+                "tags": [
+                    "Fabric vSphere Datastore"
+                ],
+                "summary": "Get fabric vSphere datastore",
+                "description": "Get fabric vSphere datastore with a given id",
+                "operationId": "getFabricVSphereDatastore",
+                "produces": [
+                    "application/json",
+                    "app/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The ID of the Fabric vSphere Datastore.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/FabricVsphereDatastore"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
         "/iaas/api/fabric-vsphere-storage-policies": {
             "get": {
                 "tags": [
                     "Fabric vSphere Storage Policies"
                 ],
-                "summary": "Get FabricVsphereStoragePolices",
-                "description": "Get all Fabric vSphere Storage Polices.",
-                "operationId": "getFabricVsphereStoragePolicies",
+                "summary": "Get fabric vSphere storage polices",
+                "description": "Get all fabric vSphere storage polices.",
+                "operationId": "getFabricVSphereStoragePolicies",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -1979,13 +2067,57 @@
                 }
             }
         },
+        "/iaas/api/fabric-vsphere-storage-policies/{id}": {
+            "get": {
+                "tags": [
+                    "Fabric vSphere Storage Policies"
+                ],
+                "summary": "Get fabric vSphere storage policy",
+                "description": "Get fabric vSphere storage policy with a given id",
+                "operationId": "getFabricVSphereStoragePolicy",
+                "produces": [
+                    "application/json",
+                    "app/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The ID of the Fabric vSphere Storage Policy.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/FabricVsphereStoragePolicy"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
         "/iaas/api/flavor-profiles": {
             "get": {
                 "tags": [
                     "Flavor Profile"
                 ],
-                "summary": "Get FlavorProfile",
-                "description": "Get all flavors.",
+                "summary": "Get flavor profile",
+                "description": "Get all flavor profile",
                 "operationId": "getFlavorProfiles",
                 "produces": [
                     "application/json",
@@ -2023,9 +2155,9 @@
                 "tags": [
                     "Flavor Profile"
                 ],
-                "summary": "Create FlavorProfile",
-                "description": "Create a new FlavorProfile.",
-                "operationId": "createFlavor",
+                "summary": "Create flavor profile",
+                "description": "Create flavor profile",
+                "operationId": "createFlavorProfile",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -2069,8 +2201,8 @@
                 "tags": [
                     "Flavor Profile"
                 ],
-                "summary": "Get FlavorProfile",
-                "description": "Get a single FlavorProfile.",
+                "summary": "Get flavor profile",
+                "description": "Get flavor profile with a given id",
                 "operationId": "getFlavorProfile",
                 "produces": [
                     "application/json",
@@ -2111,8 +2243,8 @@
                 "tags": [
                     "Flavor Profile"
                 ],
-                "summary": "Delete FlavorProfile",
-                "description": "Delete a single FlavorProfile.",
+                "summary": "Delete flavor profile",
+                "description": "Delete flavor profile with a given id",
                 "operationId": "deleteFlavorProfile",
                 "produces": [
                     "application/json",
@@ -2147,9 +2279,9 @@
                 "tags": [
                     "Flavor Profile"
                 ],
-                "summary": "Update FlavorProfile",
-                "description": "Update a single FlavorProfile.",
-                "operationId": "updateFlavor",
+                "summary": "Update flavor profile",
+                "description": "Update flavor profile",
+                "operationId": "updateFlavorProfile",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -2200,7 +2332,7 @@
                 "tags": [
                     "Flavors"
                 ],
-                "summary": "Get Flavors",
+                "summary": "Get flavors",
                 "description": "Get all flavors defined in FlavorProfile",
                 "operationId": "getFlavors",
                 "produces": [
@@ -2241,8 +2373,8 @@
                 "tags": [
                     "Image Profile"
                 ],
-                "summary": "Get ImageProfile",
-                "description": "Get all image profiles.",
+                "summary": "Get image profile",
+                "description": "Get all image profiles",
                 "operationId": "getImageProfiles",
                 "produces": [
                     "application/json",
@@ -2280,9 +2412,9 @@
                 "tags": [
                     "Image Profile"
                 ],
-                "summary": "Create ImageProfile",
-                "description": "Create a new image profile.",
-                "operationId": "createImage",
+                "summary": "Create image profile",
+                "description": "Create image profile",
+                "operationId": "createImageProfile",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -2326,8 +2458,8 @@
                 "tags": [
                     "Image Profile"
                 ],
-                "summary": "Get ImageProfile",
-                "description": "Get a single image profile.",
+                "summary": "Get image profile",
+                "description": "Get image profile with a given id",
                 "operationId": "getImageProfile",
                 "produces": [
                     "application/json",
@@ -2368,8 +2500,8 @@
                 "tags": [
                     "Image Profile"
                 ],
-                "summary": "Delete ImageProfile",
-                "description": "Delete a single image profile.",
+                "summary": "Delete image profile",
+                "description": "Delete image profile with a given id",
                 "operationId": "deleteImageProfile",
                 "produces": [
                     "application/json",
@@ -2404,9 +2536,9 @@
                 "tags": [
                     "Image Profile"
                 ],
-                "summary": "Update ImageProfile",
-                "description": "Update a single image profile.",
-                "operationId": "updateImage",
+                "summary": "Update image profile",
+                "description": "Update image profile",
+                "operationId": "updateImageProfile",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -2457,7 +2589,7 @@
                 "tags": [
                     "Images"
                 ],
-                "summary": "Get Images",
+                "summary": "Get images",
                 "description": "Get all images defined in ImageProfile.",
                 "operationId": "getImages",
                 "produces": [
@@ -2498,8 +2630,8 @@
                 "tags": [
                     "Load Balancer"
                 ],
-                "summary": "Get LoadBalancers",
-                "description": "Get a page of Load Balancers.",
+                "summary": "Get load balancers",
+                "description": "Get all load balancers",
                 "operationId": "getLoadBalancers",
                 "produces": [
                     "application/json",
@@ -2530,8 +2662,8 @@
                 "tags": [
                     "Load Balancer"
                 ],
-                "summary": "Create LoadBalancer",
-                "description": "Create a new Load Balancer.",
+                "summary": "Create load balancer",
+                "description": "Create load balancer",
                 "operationId": "createLoadBalancer",
                 "produces": [
                     "application/json",
@@ -2556,7 +2688,7 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "201": {
                         "description": "successful operation",
                         "schema": {
                             "$ref": "#/definitions/RequestTracker"
@@ -2576,9 +2708,9 @@
                 "tags": [
                     "Load Balancer"
                 ],
-                "summary": "Describe a LoadBalancer",
-                "description": "Describe a Load Balancer.",
-                "operationId": "describeLoadBalancer",
+                "summary": "Get load balancer",
+                "description": "Get load balancer with a given id",
+                "operationId": "getLoadBalancer",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -2618,8 +2750,8 @@
                 "tags": [
                     "Load Balancer"
                 ],
-                "summary": "Delete a LoadBalancer",
-                "description": "Delete a Load Balancer.",
+                "summary": "Delete load balancer",
+                "description": "Delete load balancer with a given id",
                 "operationId": "deleteLoadBalancer",
                 "produces": [
                     "application/json",
@@ -2642,12 +2774,6 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "$ref": "#/definitions/RequestTracker"
-                        }
-                    },
                     "403": {
                         "description": "Forbidden"
                     },
@@ -2662,9 +2788,9 @@
                 "tags": [
                     "Load Balancer"
                 ],
-                "summary": "Delete operation for LoadBalancer",
-                "description": "Perform a second day delete operation for Load Balancer.",
-                "operationId": "loadBalancerDeleteOperation",
+                "summary": "Delete operation for load balancer",
+                "description": "Second day delete operation for load balancer",
+                "operationId": "deleteLoadBalancerOperation",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -2700,9 +2826,9 @@
                 "tags": [
                     "Load Balancer"
                 ],
-                "summary": "Scale operation for LoadBalancer",
-                "description": "Perform a second day scale operation for Load Balancer.",
-                "operationId": "loadBalancerScaleOperation",
+                "summary": "Scale operation for load balancer",
+                "description": "Second day scale operation for load balancer",
+                "operationId": "scaleLoadBalancer",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -2793,8 +2919,8 @@
                 "tags": [
                     "Compute"
                 ],
-                "summary": "Get Machines",
-                "description": "Get all Machines.",
+                "summary": "Get machines",
+                "description": "Get all machines",
                 "operationId": "getMachines",
                 "produces": [
                     "application/json",
@@ -2825,8 +2951,8 @@
                 "tags": [
                     "Compute"
                 ],
-                "summary": "Create Machine",
-                "description": "Create a new Machine.",
+                "summary": "Create machine",
+                "description": "Create machine",
                 "operationId": "createMachine",
                 "produces": [
                     "application/json",
@@ -2851,7 +2977,7 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "201": {
                         "description": "successful operation",
                         "schema": {
                             "$ref": "#/definitions/RequestTracker"
@@ -2871,9 +2997,9 @@
                 "tags": [
                     "Compute"
                 ],
-                "summary": "Describe a Machine",
-                "description": "Describe a Machine.",
-                "operationId": "describeMachine",
+                "summary": "Get machine",
+                "description": "Get machine with a given id",
+                "operationId": "getMachine",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -2913,8 +3039,8 @@
                 "tags": [
                     "Compute"
                 ],
-                "summary": "Delete a Machine",
-                "description": "Delete a Machine.",
+                "summary": "Delete Machine",
+                "description": "Delete Machine with a given id",
                 "operationId": "deleteMachine",
                 "produces": [
                     "application/json",
@@ -2937,12 +3063,6 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "$ref": "#/definitions/RequestTracker"
-                        }
-                    },
                     "403": {
                         "description": "Forbidden"
                     },
@@ -2955,8 +3075,8 @@
                 "tags": [
                     "Compute"
                 ],
-                "summary": "Update a Machine.",
-                "description": "Update a Machine. Only tag updates are supported. All other properties in the MachineSpecification body are ignored.",
+                "summary": "Update machine.",
+                "description": "Update machine. Only tag updates are supported. All other properties in the MachineSpecification body are ignored.",
                 "operationId": "updateMachine",
                 "produces": [
                     "application/json",
@@ -3003,8 +3123,8 @@
                     "Disk",
                     "Compute"
                 ],
-                "summary": "Get Machine Disks",
-                "description": "Get all disks of a given machine.",
+                "summary": "Get machine disks",
+                "description": "Get all machine disks",
                 "operationId": "getMachineDisks",
                 "parameters": [
                     {
@@ -3042,9 +3162,9 @@
                     "Disk",
                     "Compute"
                 ],
-                "summary": "Add Machine Disk",
+                "summary": "Attach machine disk",
                 "description": "Attach a disk to a machine.",
-                "operationId": "addMachineDisk",
+                "operationId": "attachMachineDisk",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -3099,8 +3219,8 @@
                     "Disk",
                     "Compute"
                 ],
-                "summary": "Get a Machine Disk",
-                "description": "Get a single disk of a given machine.",
+                "summary": "Get a machine disk",
+                "description": "Get disk with a given id for specific machine",
                 "operationId": "getMachineDisk",
                 "parameters": [
                     {
@@ -3145,7 +3265,7 @@
                     "Disk",
                     "Compute"
                 ],
-                "summary": "Delete Machine Disk",
+                "summary": "Delete machine disk",
                 "description": "Remove a disk from a given machine.",
                 "operationId": "deleteMachineDisk",
                 "parameters": [
@@ -3193,8 +3313,8 @@
                     "Network",
                     "Compute"
                 ],
-                "summary": "Get Machine NetworkInterface",
-                "description": "Get a single NetworkInterface of a given machine.",
+                "summary": "Get machine network interface",
+                "description": "Get network interface with a given id for specific machine",
                 "operationId": "getMachineNetworkInterface",
                 "parameters": [
                     {
@@ -3240,9 +3360,9 @@
                 "tags": [
                     "Compute"
                 ],
-                "summary": "Power-off a Machine",
-                "description": "Power-off a Machine",
-                "operationId": "machinePowerOffOperation",
+                "summary": "Power-off operation for machine",
+                "description": "Second day power-off operation for machine",
+                "operationId": "powerOffMachine",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -3278,9 +3398,9 @@
                 "tags": [
                     "Compute"
                 ],
-                "summary": "Power-on a Machine.",
-                "description": "Power-on a Machine.",
-                "operationId": "machinePowerOnOperation",
+                "summary": "Power-on operation for machine",
+                "description": "Second day power-on operation for machine",
+                "operationId": "powerOnMachine",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -3316,9 +3436,9 @@
                 "tags": [
                     "Compute"
                 ],
-                "summary": "Reboot a Machine",
-                "description": "Reboot a Machine",
-                "operationId": "machineRebootOperation",
+                "summary": "Reboot operation for machine",
+                "description": "Second day reboot operation for machine",
+                "operationId": "rebootMachine",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -3354,9 +3474,9 @@
                 "tags": [
                     "Compute"
                 ],
-                "summary": "Reset a Machine",
-                "description": "Reset a Machine",
-                "operationId": "machineResetOperation",
+                "summary": "Reset operation for machine",
+                "description": "Second day reset operation for machine",
+                "operationId": "resetMachine",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -3392,9 +3512,9 @@
                 "tags": [
                     "Compute"
                 ],
-                "summary": "Resize a Machine",
-                "description": "Resize a Machine",
-                "operationId": "machineResizeOperation",
+                "summary": "Resize operation for machine",
+                "description": "Second day resize operation for machine",
+                "operationId": "resizeMachine",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -3451,9 +3571,9 @@
                 "tags": [
                     "Compute"
                 ],
-                "summary": "Restart a Machine",
-                "description": "Restart a Machine",
-                "operationId": "machineRestartOperation",
+                "summary": "Restart operation for machine",
+                "description": "Second day restart operation for machine",
+                "operationId": "restartMachine",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -3489,9 +3609,9 @@
                 "tags": [
                     "Compute"
                 ],
-                "summary": "Revert to a Snapshot of Machine",
-                "description": "Revert to a Snapshot of Machine",
-                "operationId": "machineRevertSnapshotOperation",
+                "summary": "Revert snapshot operation for machine",
+                "description": "Second day revert snapshot operation for machine",
+                "operationId": "revertMachineSnapshot",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -3534,9 +3654,9 @@
                 "tags": [
                     "Compute"
                 ],
-                "summary": "Shut down a Machine",
-                "description": "Shut down a Machine",
-                "operationId": "machineShutdownOperation",
+                "summary": "Shut down operation for machine",
+                "description": "Second day shut down operation machine",
+                "operationId": "shutdownMachine",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -3572,9 +3692,9 @@
                 "tags": [
                     "Compute"
                 ],
-                "summary": "Create Snapshot of Machine",
-                "description": "Create Snapshot of Machine",
-                "operationId": "machineCreateSnapshotOperation",
+                "summary": "Create snapshot operation for machine",
+                "description": "Second day create snapshot operation for machine",
+                "operationId": "createMachineSnapshot",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -3619,9 +3739,9 @@
                 "tags": [
                     "Compute"
                 ],
-                "summary": "Suspend a Machine",
-                "description": "Suspend a Machine",
-                "operationId": "machineSuspendOperation",
+                "summary": "Suspend operation for machine",
+                "description": "Second day suspend operation for machine",
+                "operationId": "suspendMachine",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -3657,9 +3777,9 @@
                 "tags": [
                     "Compute"
                 ],
-                "summary": "Get Snapshots information for machine",
-                "description": "Get Snapshots information for machine",
-                "operationId": "getSnapshotsForMachine",
+                "summary": "Get machine snapshots information",
+                "description": "Get machine snapshots information",
+                "operationId": "getMachineSnapshots",
                 "parameters": [
                     {
                         "name": "id",
@@ -3700,9 +3820,9 @@
                 "tags": [
                     "Compute"
                 ],
-                "summary": "Delete a Snapshot",
-                "description": "Delete a Snapshot",
-                "operationId": "machineDeleteSnapshotOperation",
+                "summary": "Delete snapshot operation for machine",
+                "description": "Second day delete snapshot operation for machine",
+                "operationId": "deleteMachineSnapshot",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -3745,8 +3865,8 @@
                 "tags": [
                     "Network"
                 ],
-                "summary": "Get Network Domains",
-                "description": "Get a page of Network Domains.",
+                "summary": "Get network domains",
+                "description": "Get all network domains.",
                 "operationId": "getNetworkDomains",
                 "produces": [
                     "application/json",
@@ -3779,9 +3899,9 @@
                 "tags": [
                     "Network"
                 ],
-                "summary": "Describe a Network Domain",
-                "description": "Describe a Network Domain.",
-                "operationId": "describeNetworkDomain",
+                "summary": "Get network domain",
+                "description": "Get network domain with a given id",
+                "operationId": "getNetworkDomain",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -3823,8 +3943,8 @@
                 "tags": [
                     "Network Profile"
                 ],
-                "summary": "Get NetworkProfiles",
-                "description": "Get all network profiles.",
+                "summary": "Get network profiles",
+                "description": "Get all network profiles",
                 "operationId": "getNetworkProfiles",
                 "produces": [
                     "application/json",
@@ -3862,8 +3982,8 @@
                 "tags": [
                     "Network Profile"
                 ],
-                "summary": "Create NetworkProfile",
-                "description": "Create a new NetworkProfile.",
+                "summary": "Create network profile",
+                "description": "Create network profile",
                 "operationId": "createNetworkProfile",
                 "produces": [
                     "application/json",
@@ -3908,8 +4028,8 @@
                 "tags": [
                     "Network Profile"
                 ],
-                "summary": "Get NetworkProfile",
-                "description": "Get a single NetworkProfile.",
+                "summary": "Get network profile",
+                "description": "Get network profile with a given id",
                 "operationId": "getNetworkProfile",
                 "produces": [
                     "application/json",
@@ -3950,8 +4070,8 @@
                 "tags": [
                     "Network Profile"
                 ],
-                "summary": "Delete NetworkProfile",
-                "description": "Delete a single NetworkProfile.",
+                "summary": "Delete network profile",
+                "description": "Delete network profile with a given id",
                 "operationId": "deleteNetworkProfile",
                 "produces": [
                     "application/json",
@@ -3986,8 +4106,8 @@
                 "tags": [
                     "Network Profile"
                 ],
-                "summary": "Update NetworkProfile",
-                "description": "Update an existing NetworkProfile.",
+                "summary": "Update network profile",
+                "description": "Update network profile",
                 "operationId": "updateNetworkProfile",
                 "produces": [
                     "application/json",
@@ -4039,8 +4159,8 @@
                 "tags": [
                     "Network"
                 ],
-                "summary": "Get Networks",
-                "description": "Get a page of network content.",
+                "summary": "Get networks",
+                "description": "Get all networks",
                 "operationId": "getNetworks",
                 "produces": [
                     "application/json",
@@ -4071,8 +4191,8 @@
                 "tags": [
                     "Network"
                 ],
-                "summary": "Create Network",
-                "description": "Provision a new network based on the passed in constraints.  The network should be destroyed after the machine is destroyed to free up resources.",
+                "summary": "Create network",
+                "description": "Provision a new network based on the passed in constraints. The network should be destroyed after the machine is destroyed to free up resources.",
                 "operationId": "createNetwork",
                 "produces": [
                     "application/json",
@@ -4097,7 +4217,7 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "201": {
                         "description": "successful operation",
                         "schema": {
                             "$ref": "#/definitions/RequestTracker"
@@ -4117,9 +4237,9 @@
                 "tags": [
                     "Network"
                 ],
-                "summary": "Describe a Network",
-                "description": "Describe a network.",
-                "operationId": "describeNetwork",
+                "summary": "Get network",
+                "description": "Get network with a given id",
+                "operationId": "getNetwork",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -4159,8 +4279,8 @@
                 "tags": [
                     "Network"
                 ],
-                "summary": "Delete a Network",
-                "description": "Delete a network.",
+                "summary": "Delete a network",
+                "description": "Delete a network with a given id",
                 "operationId": "deleteNetwork",
                 "produces": [
                     "application/json",
@@ -4203,8 +4323,8 @@
                 "tags": [
                     "Project"
                 ],
-                "summary": "Get Projects",
-                "description": "Get all Projects.",
+                "summary": "Get projects",
+                "description": "Get all projects",
                 "operationId": "getProjects",
                 "produces": [
                     "application/json",
@@ -4235,8 +4355,8 @@
                 "tags": [
                     "Project"
                 ],
-                "summary": "Create Project",
-                "description": "Create a new Project.",
+                "summary": "Create project",
+                "description": "Create project",
                 "operationId": "createProject",
                 "produces": [
                     "application/json",
@@ -4281,8 +4401,8 @@
                 "tags": [
                     "Project"
                 ],
-                "summary": "Get Project",
-                "description": "Get a single Project.",
+                "summary": "Get project",
+                "description": "Get project with a given id",
                 "operationId": "getProject",
                 "produces": [
                     "application/json",
@@ -4323,8 +4443,8 @@
                 "tags": [
                     "Project"
                 ],
-                "summary": "Delete a Project",
-                "description": "Delete a Project.",
+                "summary": "Delete project",
+                "description": "Delete project with a given id",
                 "operationId": "deleteProject",
                 "produces": [
                     "application/json",
@@ -4359,8 +4479,8 @@
                 "tags": [
                     "Project"
                 ],
-                "summary": "Update Project",
-                "description": "Update a Project.",
+                "summary": "Update project",
+                "description": "Update project",
                 "operationId": "updateProject",
                 "produces": [
                     "application/json",
@@ -4412,9 +4532,9 @@
                 "tags": [
                     "Location"
                 ],
-                "summary": "Get Region",
-                "description": "Get all regions.",
-                "operationId": "getRegion",
+                "summary": "Get regions",
+                "description": "Get all regions",
+                "operationId": "getRegions",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -4446,9 +4566,9 @@
                 "tags": [
                     "Location"
                 ],
-                "summary": "Get a Single Region",
-                "description": "Get a single Region.",
-                "operationId": "getSingleRegion",
+                "summary": "Get Region",
+                "description": "Get Region with a given id",
+                "operationId": "getRegion",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -4490,9 +4610,9 @@
                 "tags": [
                     "Request"
                 ],
-                "summary": "Get Request",
-                "description": "Get all Requests.",
-                "operationId": "getRequest",
+                "summary": "Get request tracker",
+                "description": "Get all request trackers",
+                "operationId": "getRequestTrackers",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -4524,9 +4644,9 @@
                 "tags": [
                     "Request"
                 ],
-                "summary": "Describe a Request",
-                "description": "Describe a Request.",
-                "operationId": "describeRequest",
+                "summary": "Get request tracker",
+                "description": "Get request tracker with a given id",
+                "operationId": "getRequestTracker",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -4568,8 +4688,8 @@
                 "tags": [
                     "Security Group"
                 ],
-                "summary": "Get Security Groups",
-                "description": "Get a page of Security Groups.",
+                "summary": "Get security groups",
+                "description": "Get all security groups",
                 "operationId": "getSecurityGroups",
                 "produces": [
                     "application/json",
@@ -4602,9 +4722,9 @@
                 "tags": [
                     "Security Group"
                 ],
-                "summary": "Describe a Security Group",
-                "description": "Describe a Security Group.",
-                "operationId": "describeSecurityGroup",
+                "summary": "Get security group",
+                "description": "Get security group with a given id",
+                "operationId": "getSecurityGroup",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -4646,8 +4766,8 @@
                 "tags": [
                     "Storage Profile"
                 ],
-                "summary": "Get Storage profiles",
-                "description": "Get all storage profiles.",
+                "summary": "Get storage profiles",
+                "description": "Get all storage profiles",
                 "operationId": "getStorageProfiles",
                 "produces": [
                     "application/json",
@@ -4685,8 +4805,8 @@
                 "tags": [
                     "Storage Profile"
                 ],
-                "summary": "Create Storage Profile",
-                "description": "Create a new Storage Profile.",
+                "summary": "Create storage profile",
+                "description": "Create storage profile",
                 "operationId": "createStorageProfile",
                 "produces": [
                     "application/json",
@@ -4731,8 +4851,8 @@
                 "tags": [
                     "Storage Profile"
                 ],
-                "summary": "Get AWS Storage profiles",
-                "description": "Get all AWS storage profiles.",
+                "summary": "Get AWS storage profiles",
+                "description": "Get all AWS storage profiles",
                 "operationId": "getAwsStorageProfiles",
                 "produces": [
                     "application/json",
@@ -4763,9 +4883,9 @@
                 "tags": [
                     "Storage Profile"
                 ],
-                "summary": "Create AWS Storage Profile",
-                "description": "Create a new AWS Storage Profile.",
-                "operationId": "createStorageProfileForAWS",
+                "summary": "Create AWS storage profile",
+                "description": "Create AWS storage profile",
+                "operationId": "createAwsStorageProfile",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -4809,8 +4929,8 @@
                 "tags": [
                     "Storage Profile"
                 ],
-                "summary": "Get AWS StorageProfile",
-                "description": "Get a single AWS StorageProfile.",
+                "summary": "Get AWS storage profile",
+                "description": "Get AWS storage profile with a given id",
                 "operationId": "getAwsStorageProfile",
                 "produces": [
                     "application/json",
@@ -4851,8 +4971,8 @@
                 "tags": [
                     "Storage Profile"
                 ],
-                "summary": "Delete AWS StorageProfile",
-                "description": "Delete a single AWS StorageProfile.",
+                "summary": "Delete AWS storage profile",
+                "description": "Delete AWS storage profile with a given id",
                 "operationId": "deleteAwsStorageProfile",
                 "parameters": [
                     {
@@ -4883,8 +5003,8 @@
                 "tags": [
                     "Storage Profile"
                 ],
-                "summary": "Update AWS StorageProfile",
-                "description": "Update AWS StorageProfile.",
+                "summary": "Update AWS storage profile",
+                "description": "Update AWS storage profile",
                 "operationId": "updateAwsStorageProfile",
                 "produces": [
                     "application/json",
@@ -4916,7 +5036,7 @@
                     }
                 ],
                 "responses": {
-                    "201": {
+                    "200": {
                         "description": "successful operation",
                         "schema": {
                             "$ref": "#/definitions/AwsStorageProfile"
@@ -4936,8 +5056,8 @@
                 "tags": [
                     "Storage Profile"
                 ],
-                "summary": "Get Azure Storage profiles",
-                "description": "Get all Azure storage profiles.",
+                "summary": "Get Azure storage profiles",
+                "description": "Get all Azure storage profiles",
                 "operationId": "getAzureStorageProfiles",
                 "produces": [
                     "application/json",
@@ -4968,9 +5088,9 @@
                 "tags": [
                     "Storage Profile"
                 ],
-                "summary": "Create Azure Storage Profile",
-                "description": "Create a new Azure Storage Profile.",
-                "operationId": "createStorageProfileForAzure",
+                "summary": "Create Azure storage profile",
+                "description": "Create Azure storage profile",
+                "operationId": "createAzureStorageProfile",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -5014,8 +5134,8 @@
                 "tags": [
                     "Storage Profile"
                 ],
-                "summary": "Get Azure StorageProfile",
-                "description": "Get a single Azure StorageProfile.",
+                "summary": "Get Azure storage profile",
+                "description": "Get Azure storage profile with a given id",
                 "operationId": "getAzureStorageProfile",
                 "produces": [
                     "application/json",
@@ -5056,8 +5176,8 @@
                 "tags": [
                     "Storage Profile"
                 ],
-                "summary": "Delete Azure StorageProfile",
-                "description": "Delete a single Azure StorageProfile.",
+                "summary": "Delete Azure storage profile",
+                "description": "Delete Azure storage profile with a given id",
                 "operationId": "deleteAzureStorageProfile",
                 "parameters": [
                     {
@@ -5088,8 +5208,8 @@
                 "tags": [
                     "Storage Profile"
                 ],
-                "summary": "Update Azure StorageProfile",
-                "description": "Update Azure StorageProfile",
+                "summary": "Update Azure storage profile",
+                "description": "Update Azure storage profile",
                 "operationId": "updateAzureStorageProfile",
                 "produces": [
                     "application/json",
@@ -5121,7 +5241,7 @@
                     }
                 ],
                 "responses": {
-                    "201": {
+                    "200": {
                         "description": "successful operation",
                         "schema": {
                             "$ref": "#/definitions/AzureStorageProfile"
@@ -5141,8 +5261,8 @@
                 "tags": [
                     "Storage Profile"
                 ],
-                "summary": "Get vSphere Storage profiles",
-                "description": "Get all vSphere storage profiles.",
+                "summary": "Get vSphere storage profiles",
+                "description": "Get all vSphere storage profiles",
                 "operationId": "getVSphereStorageProfiles",
                 "produces": [
                     "application/json",
@@ -5173,9 +5293,9 @@
                 "tags": [
                     "Storage Profile"
                 ],
-                "summary": "Create vSphere Storage Profile",
-                "description": "Create a new vSphere Storage Profile.",
-                "operationId": "createStorageProfileForVsphere",
+                "summary": "Create vSphere storage profile",
+                "description": "Create vSphere storage profile",
+                "operationId": "createVSphereStorageProfile",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -5219,8 +5339,8 @@
                 "tags": [
                     "Storage Profile"
                 ],
-                "summary": "Get vSphere StorageProfile",
-                "description": "Get a single vSphere StorageProfile.",
+                "summary": "Get vSphere storage profile",
+                "description": "Get vSphere storage profile with a given id",
                 "operationId": "getVSphereStorageProfile",
                 "produces": [
                     "application/json",
@@ -5261,8 +5381,8 @@
                 "tags": [
                     "Storage Profile"
                 ],
-                "summary": "Delete vSphere StorageProfile",
-                "description": "Delete a single vSphere StorageProfile.",
+                "summary": "Delete vSphere storage profile",
+                "description": "Delete vSphere storage profile with a given id",
                 "operationId": "deleteVSphereStorageProfile",
                 "parameters": [
                     {
@@ -5293,8 +5413,8 @@
                 "tags": [
                     "Storage Profile"
                 ],
-                "summary": "Update vSphere StorageProfile",
-                "description": "Update vSphere StorageProfile",
+                "summary": "Update vSphere storage profile",
+                "description": "Update vSphere storage profile",
                 "operationId": "updateVSphereStorageProfile",
                 "produces": [
                     "application/json",
@@ -5326,7 +5446,7 @@
                     }
                 ],
                 "responses": {
-                    "201": {
+                    "200": {
                         "description": "successful operation",
                         "schema": {
                             "$ref": "#/definitions/VsphereStorageProfile"
@@ -5346,8 +5466,8 @@
                 "tags": [
                     "Storage Profile"
                 ],
-                "summary": "Get StorageProfile",
-                "description": "Get a single StorageProfile.",
+                "summary": "Get storage profile",
+                "description": "Get storage profile with a given id",
                 "operationId": "getStorageProfile",
                 "produces": [
                     "application/json",
@@ -5388,9 +5508,9 @@
                 "tags": [
                     "Storage Profile"
                 ],
-                "summary": "Update StorageProfile",
-                "description": "Update StorageProfile.",
-                "operationId": "updateStorageProfile",
+                "summary": "Replace storage profile",
+                "description": "Replace storage profile with a given id",
+                "operationId": "replaceStorageProfile",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -5421,7 +5541,7 @@
                     }
                 ],
                 "responses": {
-                    "201": {
+                    "200": {
                         "description": "successful operation",
                         "schema": {
                             "$ref": "#/definitions/StorageProfile"
@@ -5439,8 +5559,8 @@
                 "tags": [
                     "Storage Profile"
                 ],
-                "summary": "Delete StorageProfile",
-                "description": "Delete a single StorageProfile.",
+                "summary": "Delete storage profile",
+                "description": "Delete storage profile with a given id",
                 "operationId": "deleteStorageProfile",
                 "parameters": [
                     {
@@ -5468,14 +5588,48 @@
                 }
             }
         },
+        "/iaas/api/tags": {
+            "get": {
+                "tags": [
+                    "Tags"
+                ],
+                "summary": "Get tags",
+                "description": "Get all tags",
+                "operationId": "getTags",
+                "produces": [
+                    "application/json",
+                    "app/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/TagResult"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
         "/iaas/api/zones": {
             "get": {
                 "tags": [
                     "Location"
                 ],
-                "summary": "Get Zone",
+                "summary": "Get zones",
                 "description": "Get all zones",
-                "operationId": "getZone",
+                "operationId": "getZones",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -5512,8 +5666,8 @@
                 "tags": [
                     "Location"
                 ],
-                "summary": "Create Zone",
-                "description": "Create a new Zone.",
+                "summary": "Create zone",
+                "description": "Create zone",
                 "operationId": "createZone",
                 "produces": [
                     "application/json",
@@ -5558,9 +5712,9 @@
                 "tags": [
                     "Location"
                 ],
-                "summary": "Get a Single Zone.",
-                "description": "Get a single Zone.",
-                "operationId": "getSingleZone",
+                "summary": "Get zone",
+                "description": "Get zone with given id",
+                "operationId": "getZone",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -5600,8 +5754,8 @@
                 "tags": [
                     "Location"
                 ],
-                "summary": "Delete a Zone",
-                "description": "Delete a Zone",
+                "summary": "Delete a zone",
+                "description": "Delete a zone",
                 "operationId": "deleteZone",
                 "produces": [
                     "application/json",
@@ -5636,8 +5790,8 @@
                 "tags": [
                     "Location"
                 ],
-                "summary": "Update Zone",
-                "description": "Update a Zone.",
+                "summary": "Update zone",
+                "description": "Update zone",
                 "operationId": "updateZone",
                 "produces": [
                     "application/json",
@@ -5669,7 +5823,7 @@
                     }
                 ],
                 "responses": {
-                    "201": {
+                    "200": {
                         "description": "successful operation",
                         "schema": {
                             "$ref": "#/definitions/Zone"
@@ -6001,6 +6155,15 @@
                     "type": "string",
                     "example": "us-east-1",
                     "description": "The external regionId of the resource"
+                },
+                "cloudAccountIds": {
+                    "type": "array",
+                    "example": "[9e49]",
+                    "description": "Set of ids of the cloud accounts this entity belongs to.",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string"
+                    }
                 },
                 "capacityInGB": {
                     "type": "integer",
@@ -6950,7 +7113,7 @@
                 },
                 "cloudAccountProperties": {
                     "type": "object",
-                    "example": "{ \"Azure\": \"azureTenantId\", \"vSphere\": \"hostName\", \"acceptSelfSignedCertificate\" : \"true\" }",
+                    "example": "{\"supportPublicImages\": \"true\", \"acceptSelfSignedCertificate\": \"true\" }",
                     "description": "Cloud Account specific properties supplied in as name value pairs",
                     "additionalProperties": {
                         "type": "string"
@@ -6958,7 +7121,7 @@
                 },
                 "customProperties": {
                     "type": "object",
-                    "example": "{ \"dcId\" : \"0e597dcc-09d5-4b44-98\" }",
+                    "example": "{ \"isExternal\" : \"false\" }",
                     "description": "Additional custom properties that may be used toextend the Cloud Account.",
                     "additionalProperties": {
                         "type": "string"
@@ -7395,6 +7558,15 @@
                     "type": "string",
                     "example": "westus",
                     "description": "Indicates the ID of region."
+                },
+                "cloudAccountIds": {
+                    "type": "array",
+                    "example": "[9e49]",
+                    "description": "Set of ids of the cloud accounts this entity belongs to.",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string"
+                    }
                 }
             },
             "description": "Represents a structure that holds details of Azure endpoint's storage account.<br>**HATEOAS** links:<br>**region** - Region - Region for the storage account.<br>**self** - FabricAzureStorageAccount - Self link to this storage account"
@@ -7597,6 +7769,15 @@
                     "type": "boolean",
                     "example": true,
                     "description": "Indicates whether this fabric image is private. For vSphere, private images are considered to be templates and snapshots and public are Content Library Items"
+                },
+                "cloudAccountIds": {
+                    "type": "array",
+                    "example": "[9e49]",
+                    "description": "Set of ids of the cloud accounts this entity belongs to.",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string"
+                    }
                 }
             },
             "description": "Represents a fabric image from the corresponding cloud end-point.<br>**HATEOAS** links:<br>**region** - Region - Region for the image.<br>**self** - FabricImage - Self link to this image"
@@ -7721,6 +7902,15 @@
                     "items": {
                         "$ref": "#/definitions/Tag"
                     }
+                },
+                "cloudAccountIds": {
+                    "type": "array",
+                    "example": "[9e49]",
+                    "description": "Set of ids of the cloud accounts this entity belongs to.",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string"
+                    }
                 }
             },
             "description": "State object representing a network on a external cloud provider.<br>**HATEOAS** links:<br>**region** - Region - Region for the network.<br>**self** - FabricNetwork - Self link to this network"
@@ -7827,6 +8017,15 @@
                     "type": "string",
                     "example": "20",
                     "description": "Indicates free size available in datastore."
+                },
+                "cloudAccountIds": {
+                    "type": "array",
+                    "example": "[9e49]",
+                    "description": "Set of ids of the cloud accounts this entity belongs to.",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string"
+                    }
                 }
             },
             "description": "Represents a structure that holds details of vSphere datastore.<br>**HATEOAS** links:<br>**self** - FabricVsphereDatastore - Self link to this data store"
@@ -7904,6 +8103,15 @@
                     "type": "string",
                     "example": "i-cfe4-e241-e53b-756a9a2e25d2",
                     "description": "External entity Id on the provider side."
+                },
+                "cloudAccountIds": {
+                    "type": "array",
+                    "example": "[9e49]",
+                    "description": "Set of ids of the cloud accounts this entity belongs to.",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string"
+                    }
                 }
             },
             "description": "Represents a structure that holds details of vSphere storage policy.**HATEOAS** links:<br>**self** - FabricVsphereStoragePolicy - Self link to this storage policy"
@@ -8262,6 +8470,15 @@
                     "example": true,
                     "description": "Indicates whether this fabric image is private. For vSphere, private images are considered to be templates and snapshots and public are Content Library Items"
                 },
+                "cloudAccountIds": {
+                    "type": "array",
+                    "example": "[9e49]",
+                    "description": "Set of ids of the cloud accounts this entity belongs to.",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "cloudConfig": {
                     "type": "string",
                     "example": "runcmd:\n  - [\"mkdir\", \"/imageFolder\"]",
@@ -8476,6 +8693,15 @@
                     "example": "us-east-1",
                     "description": "The external regionId of the resource"
                 },
+                "cloudAccountIds": {
+                    "type": "array",
+                    "example": "[9e49]",
+                    "description": "Set of ids of the cloud accounts this entity belongs to.",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "address": {
                     "type": "string",
                     "example": "lb-123456789.eu-west-1.elb.amazonaws.com",
@@ -8664,6 +8890,15 @@
                     "type": "string",
                     "example": "us-east-1",
                     "description": "The external regionId of the resource"
+                },
+                "cloudAccountIds": {
+                    "type": "array",
+                    "example": "[9e49]",
+                    "description": "Set of ids of the cloud accounts this entity belongs to.",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string"
+                    }
                 },
                 "powerState": {
                     "type": "string",
@@ -8900,6 +9135,15 @@
                     "example": "us-east-1",
                     "description": "The external regionId of the resource"
                 },
+                "cloudAccountIds": {
+                    "type": "array",
+                    "example": "[9e49]",
+                    "description": "Set of ids of the cloud accounts this entity belongs to.",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "cidr": {
                     "type": "string",
                     "example": "10.10.0.0/16",
@@ -9003,6 +9247,15 @@
                     "example": "{ \"awsGatewayID\" : \"igw-f9539691\" }",
                     "description": "Additional properties that may be used to extend the base type.",
                     "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "cloudAccountIds": {
+                    "type": "array",
+                    "example": "[9e49]",
+                    "description": "Set of ids of the cloud accounts this entity belongs to.",
+                    "uniqueItems": true,
+                    "items": {
                         "type": "string"
                     }
                 }
@@ -9116,6 +9369,15 @@
                     "example": "{ \"awaitIp\" : \"true\" }",
                     "description": "Additional properties that may be used to extend the base type.",
                     "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "cloudAccountIds": {
+                    "type": "array",
+                    "example": "[9e49]",
+                    "description": "Set of ids of the cloud accounts this entity belongs to.",
+                    "uniqueItems": true,
+                    "items": {
                         "type": "string"
                     }
                 }
@@ -9631,6 +9893,11 @@
                     "type": "string",
                     "example": "us-west",
                     "description": "Unique identifier of region on the provider side."
+                },
+                "cloudAccountId": {
+                    "type": "string",
+                    "example": "9e49",
+                    "description": "The id of the cloud account this region belongs to."
                 }
             },
             "description": "State object representing a region in a cloud account.<br>**HATEOAS** links:<br>**cloud-account** - CloudAccount - Cloud account for the region.**self** - Region - Self link to this region"
@@ -9883,6 +10150,15 @@
                     "type": "string",
                     "example": "ap-northeast-2",
                     "description": "The external regionId of the security group."
+                },
+                "cloudAccountIds": {
+                    "type": "array",
+                    "example": "[9e49]",
+                    "description": "Set of ids of the cloud accounts this entity belongs to.",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string"
+                    }
                 }
             },
             "description": "State object representing a security group.<br>**HATEOAS** links:<br>**cloud-accounts** - array[CloudAccount] - List of cloud accounts where this security group exists.<br>**self** - SecurityGroup - Self link to this security group"
@@ -10444,6 +10720,26 @@
                     "description": "Tag's value."
                 }
             }
+        },
+        "TagResult": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "description": "List of content items",
+                    "readOnly": true,
+                    "items": {
+                        "$ref": "#/definitions/Tag"
+                    }
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "Total number of elements",
+                    "readOnly": true
+                }
+            },
+            "description": "State object representing a query result of tags."
         },
         "User": {
             "type": "object",
