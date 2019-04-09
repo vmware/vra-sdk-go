@@ -149,7 +149,7 @@ UpdateProject updates project
 
 Update project
 */
-func (a *Client) UpdateProject(params *UpdateProjectParams) (*UpdateProjectCreated, error) {
+func (a *Client) UpdateProject(params *UpdateProjectParams) (*UpdateProjectOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateProjectParams()
@@ -170,7 +170,7 @@ func (a *Client) UpdateProject(params *UpdateProjectParams) (*UpdateProjectCreat
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateProjectCreated), nil
+	return result.(*UpdateProjectOK), nil
 
 }
 

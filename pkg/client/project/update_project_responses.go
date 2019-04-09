@@ -25,8 +25,8 @@ type UpdateProjectReader struct {
 func (o *UpdateProjectReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 201:
-		result := NewUpdateProjectCreated()
+	case 200:
+		result := NewUpdateProjectOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -51,24 +51,24 @@ func (o *UpdateProjectReader) ReadResponse(response runtime.ClientResponse, cons
 	}
 }
 
-// NewUpdateProjectCreated creates a UpdateProjectCreated with default headers values
-func NewUpdateProjectCreated() *UpdateProjectCreated {
-	return &UpdateProjectCreated{}
+// NewUpdateProjectOK creates a UpdateProjectOK with default headers values
+func NewUpdateProjectOK() *UpdateProjectOK {
+	return &UpdateProjectOK{}
 }
 
-/*UpdateProjectCreated handles this case with default header values.
+/*UpdateProjectOK handles this case with default header values.
 
 successful operation
 */
-type UpdateProjectCreated struct {
+type UpdateProjectOK struct {
 	Payload *models.Project
 }
 
-func (o *UpdateProjectCreated) Error() string {
-	return fmt.Sprintf("[PATCH /iaas/api/projects/{id}][%d] updateProjectCreated  %+v", 201, o.Payload)
+func (o *UpdateProjectOK) Error() string {
+	return fmt.Sprintf("[PATCH /iaas/api/projects/{id}][%d] updateProjectOK  %+v", 200, o.Payload)
 }
 
-func (o *UpdateProjectCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *UpdateProjectOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Project)
 
