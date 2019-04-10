@@ -61,6 +61,11 @@ for the get projects operation typically these are written to a http.Request
 */
 type GetProjectsParams struct {
 
+	/*NrDollarFilter
+	  Add a filter to return limited results
+
+	*/
+	DollarFilter *string
 	/*APIVersion
 	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about
 
@@ -105,6 +110,17 @@ func (o *GetProjectsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithDollarFilter adds the dollarFilter to the get projects params
+func (o *GetProjectsParams) WithDollarFilter(dollarFilter *string) *GetProjectsParams {
+	o.SetDollarFilter(dollarFilter)
+	return o
+}
+
+// SetDollarFilter adds the dollarFilter to the get projects params
+func (o *GetProjectsParams) SetDollarFilter(dollarFilter *string) {
+	o.DollarFilter = dollarFilter
+}
+
 // WithAPIVersion adds the aPIVersion to the get projects params
 func (o *GetProjectsParams) WithAPIVersion(aPIVersion string) *GetProjectsParams {
 	o.SetAPIVersion(aPIVersion)
@@ -123,6 +139,22 @@ func (o *GetProjectsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		return err
 	}
 	var res []error
+
+	if o.DollarFilter != nil {
+
+		// query param $filter
+		var qrNrDollarFilter string
+		if o.DollarFilter != nil {
+			qrNrDollarFilter = *o.DollarFilter
+		}
+		qNrDollarFilter := qrNrDollarFilter
+		if qNrDollarFilter != "" {
+			if err := r.SetQueryParam("$filter", qNrDollarFilter); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	// query param apiVersion
 	qrAPIVersion := o.APIVersion
