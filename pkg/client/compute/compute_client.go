@@ -509,13 +509,13 @@ UpdateMachine updates machine
 
 Update machine. Only tag updates are supported. All other properties in the MachineSpecification body are ignored.
 */
-func (a *Client) UpdateMachine(params *UpdateMachineParams) error {
+func (a *Client) UpdateMachine(params *UpdateMachineParams) (*UpdateMachineOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateMachineParams()
 	}
 
-	_, err := a.transport.Submit(&runtime.ClientOperation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "updateMachine",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/machines/{id}",
@@ -528,9 +528,9 @@ func (a *Client) UpdateMachine(params *UpdateMachineParams) error {
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return result.(*UpdateMachineOK), nil
 
 }
 
