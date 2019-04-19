@@ -172,7 +172,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/Deployment"
+                            "$ref": "#/definitions/Deployments"
                         }
                     },
                     "401": {
@@ -1141,6 +1141,17 @@
                 }
             },
             "title": "Criteria"
+        },
+        "Deployments": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Deployment"
+                    }
+                }
+            }
         },
         "Deployment": {
             "type": "object",
