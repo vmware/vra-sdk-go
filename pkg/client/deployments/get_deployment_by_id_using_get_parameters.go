@@ -103,112 +103,112 @@ type GetDeploymentByIDUsingGETParams struct {
 	HTTPClient *http.Client
 }
 
-// WithTimeout adds the timeout to the get deployment by Id using g e t params
+// WithTimeout adds the timeout to the get deployment by Id using get params
 func (o *GetDeploymentByIDUsingGETParams) WithTimeout(timeout time.Duration) *GetDeploymentByIDUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the get deployment by Id using g e t params
+// SetTimeout adds the timeout to the get deployment by Id using get params
 func (o *GetDeploymentByIDUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the get deployment by Id using g e t params
+// WithContext adds the context to the get deployment by Id using get params
 func (o *GetDeploymentByIDUsingGETParams) WithContext(ctx context.Context) *GetDeploymentByIDUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the get deployment by Id using g e t params
+// SetContext adds the context to the get deployment by Id using get params
 func (o *GetDeploymentByIDUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the get deployment by Id using g e t params
+// WithHTTPClient adds the HTTPClient to the get deployment by Id using get params
 func (o *GetDeploymentByIDUsingGETParams) WithHTTPClient(client *http.Client) *GetDeploymentByIDUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the get deployment by Id using g e t params
+// SetHTTPClient adds the HTTPClient to the get deployment by Id using get params
 func (o *GetDeploymentByIDUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithDepID adds the depID to the get deployment by Id using g e t params
+// WithDepID adds the depID to the get deployment by Id using get params
 func (o *GetDeploymentByIDUsingGETParams) WithDepID(depID strfmt.UUID) *GetDeploymentByIDUsingGETParams {
 	o.SetDepID(depID)
 	return o
 }
 
-// SetDepID adds the depId to the get deployment by Id using g e t params
+// SetDepID adds the depId to the get deployment by Id using get params
 func (o *GetDeploymentByIDUsingGETParams) SetDepID(depID strfmt.UUID) {
 	o.DepID = depID
 }
 
-// WithExpandLastRequest adds the expandLastRequest to the get deployment by Id using g e t params
+// WithExpandLastRequest adds the expandLastRequest to the get deployment by Id using get params
 func (o *GetDeploymentByIDUsingGETParams) WithExpandLastRequest(expandLastRequest *bool) *GetDeploymentByIDUsingGETParams {
 	o.SetExpandLastRequest(expandLastRequest)
 	return o
 }
 
-// SetExpandLastRequest adds the expandLastRequest to the get deployment by Id using g e t params
+// SetExpandLastRequest adds the expandLastRequest to the get deployment by Id using get params
 func (o *GetDeploymentByIDUsingGETParams) SetExpandLastRequest(expandLastRequest *bool) {
 	o.ExpandLastRequest = expandLastRequest
 }
 
-// WithExpandMetadata adds the expandMetadata to the get deployment by Id using g e t params
+// WithExpandMetadata adds the expandMetadata to the get deployment by Id using get params
 func (o *GetDeploymentByIDUsingGETParams) WithExpandMetadata(expandMetadata *bool) *GetDeploymentByIDUsingGETParams {
 	o.SetExpandMetadata(expandMetadata)
 	return o
 }
 
-// SetExpandMetadata adds the expandMetadata to the get deployment by Id using g e t params
+// SetExpandMetadata adds the expandMetadata to the get deployment by Id using get params
 func (o *GetDeploymentByIDUsingGETParams) SetExpandMetadata(expandMetadata *bool) {
 	o.ExpandMetadata = expandMetadata
 }
 
-// WithExpandProject adds the expandProject to the get deployment by Id using g e t params
+// WithExpandProject adds the expandProject to the get deployment by Id using get params
 func (o *GetDeploymentByIDUsingGETParams) WithExpandProject(expandProject *bool) *GetDeploymentByIDUsingGETParams {
 	o.SetExpandProject(expandProject)
 	return o
 }
 
-// SetExpandProject adds the expandProject to the get deployment by Id using g e t params
+// SetExpandProject adds the expandProject to the get deployment by Id using get params
 func (o *GetDeploymentByIDUsingGETParams) SetExpandProject(expandProject *bool) {
 	o.ExpandProject = expandProject
 }
 
-// WithExpandResources adds the expandResources to the get deployment by Id using g e t params
+// WithExpandResources adds the expandResources to the get deployment by Id using get params
 func (o *GetDeploymentByIDUsingGETParams) WithExpandResources(expandResources *bool) *GetDeploymentByIDUsingGETParams {
 	o.SetExpandResources(expandResources)
 	return o
 }
 
-// SetExpandResources adds the expandResources to the get deployment by Id using g e t params
+// SetExpandResources adds the expandResources to the get deployment by Id using get params
 func (o *GetDeploymentByIDUsingGETParams) SetExpandResources(expandResources *bool) {
 	o.ExpandResources = expandResources
 }
 
-// WithForceCachedResources adds the forceCachedResources to the get deployment by Id using g e t params
+// WithForceCachedResources adds the forceCachedResources to the get deployment by Id using get params
 func (o *GetDeploymentByIDUsingGETParams) WithForceCachedResources(forceCachedResources *bool) *GetDeploymentByIDUsingGETParams {
 	o.SetForceCachedResources(forceCachedResources)
 	return o
 }
 
-// SetForceCachedResources adds the forceCachedResources to the get deployment by Id using g e t params
+// SetForceCachedResources adds the forceCachedResources to the get deployment by Id using get params
 func (o *GetDeploymentByIDUsingGETParams) SetForceCachedResources(forceCachedResources *bool) {
 	o.ForceCachedResources = forceCachedResources
 }
 
-// WithForceRefreshResources adds the forceRefreshResources to the get deployment by Id using g e t params
+// WithForceRefreshResources adds the forceRefreshResources to the get deployment by Id using get params
 func (o *GetDeploymentByIDUsingGETParams) WithForceRefreshResources(forceRefreshResources *bool) *GetDeploymentByIDUsingGETParams {
 	o.SetForceRefreshResources(forceRefreshResources)
 	return o
 }
 
-// SetForceRefreshResources adds the forceRefreshResources to the get deployment by Id using g e t params
+// SetForceRefreshResources adds the forceRefreshResources to the get deployment by Id using get params
 func (o *GetDeploymentByIDUsingGETParams) SetForceRefreshResources(forceRefreshResources *bool) {
 	o.ForceRefreshResources = forceRefreshResources
 }

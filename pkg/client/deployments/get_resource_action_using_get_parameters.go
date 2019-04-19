@@ -82,68 +82,68 @@ type GetResourceActionUsingGETParams struct {
 	HTTPClient *http.Client
 }
 
-// WithTimeout adds the timeout to the get resource action using g e t params
+// WithTimeout adds the timeout to the get resource action using get params
 func (o *GetResourceActionUsingGETParams) WithTimeout(timeout time.Duration) *GetResourceActionUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the get resource action using g e t params
+// SetTimeout adds the timeout to the get resource action using get params
 func (o *GetResourceActionUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the get resource action using g e t params
+// WithContext adds the context to the get resource action using get params
 func (o *GetResourceActionUsingGETParams) WithContext(ctx context.Context) *GetResourceActionUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the get resource action using g e t params
+// SetContext adds the context to the get resource action using get params
 func (o *GetResourceActionUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the get resource action using g e t params
+// WithHTTPClient adds the HTTPClient to the get resource action using get params
 func (o *GetResourceActionUsingGETParams) WithHTTPClient(client *http.Client) *GetResourceActionUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the get resource action using g e t params
+// SetHTTPClient adds the HTTPClient to the get resource action using get params
 func (o *GetResourceActionUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithActionID adds the actionID to the get resource action using g e t params
+// WithActionID adds the actionID to the get resource action using get params
 func (o *GetResourceActionUsingGETParams) WithActionID(actionID strfmt.UUID) *GetResourceActionUsingGETParams {
 	o.SetActionID(actionID)
 	return o
 }
 
-// SetActionID adds the actionId to the get resource action using g e t params
+// SetActionID adds the actionId to the get resource action using get params
 func (o *GetResourceActionUsingGETParams) SetActionID(actionID strfmt.UUID) {
 	o.ActionID = actionID
 }
 
-// WithDepID adds the depID to the get resource action using g e t params
+// WithDepID adds the depID to the get resource action using get params
 func (o *GetResourceActionUsingGETParams) WithDepID(depID strfmt.UUID) *GetResourceActionUsingGETParams {
 	o.SetDepID(depID)
 	return o
 }
 
-// SetDepID adds the depId to the get resource action using g e t params
+// SetDepID adds the depId to the get resource action using get params
 func (o *GetResourceActionUsingGETParams) SetDepID(depID strfmt.UUID) {
 	o.DepID = depID
 }
 
-// WithResourceID adds the resourceID to the get resource action using g e t params
+// WithResourceID adds the resourceID to the get resource action using get params
 func (o *GetResourceActionUsingGETParams) WithResourceID(resourceID strfmt.UUID) *GetResourceActionUsingGETParams {
 	o.SetResourceID(resourceID)
 	return o
 }
 
-// SetResourceID adds the resourceId to the get resource action using g e t params
+// SetResourceID adds the resourceId to the get resource action using get params
 func (o *GetResourceActionUsingGETParams) SetResourceID(resourceID strfmt.UUID) {
 	o.ResourceID = resourceID
 }

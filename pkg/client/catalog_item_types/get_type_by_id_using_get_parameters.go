@@ -72,46 +72,46 @@ type GetTypeByIDUsingGETParams struct {
 	HTTPClient *http.Client
 }
 
-// WithTimeout adds the timeout to the get type by Id using g e t params
+// WithTimeout adds the timeout to the get type by Id using get params
 func (o *GetTypeByIDUsingGETParams) WithTimeout(timeout time.Duration) *GetTypeByIDUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the get type by Id using g e t params
+// SetTimeout adds the timeout to the get type by Id using get params
 func (o *GetTypeByIDUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the get type by Id using g e t params
+// WithContext adds the context to the get type by Id using get params
 func (o *GetTypeByIDUsingGETParams) WithContext(ctx context.Context) *GetTypeByIDUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the get type by Id using g e t params
+// SetContext adds the context to the get type by Id using get params
 func (o *GetTypeByIDUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the get type by Id using g e t params
+// WithHTTPClient adds the HTTPClient to the get type by Id using get params
 func (o *GetTypeByIDUsingGETParams) WithHTTPClient(client *http.Client) *GetTypeByIDUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the get type by Id using g e t params
+// SetHTTPClient adds the HTTPClient to the get type by Id using get params
 func (o *GetTypeByIDUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithID adds the id to the get type by Id using g e t params
+// WithID adds the id to the get type by Id using get params
 func (o *GetTypeByIDUsingGETParams) WithID(id string) *GetTypeByIDUsingGETParams {
 	o.SetID(id)
 	return o
 }
 
-// SetID adds the id to the get type by Id using g e t params
+// SetID adds the id to the get type by Id using get params
 func (o *GetTypeByIDUsingGETParams) SetID(id string) {
 	o.ID = id
 }

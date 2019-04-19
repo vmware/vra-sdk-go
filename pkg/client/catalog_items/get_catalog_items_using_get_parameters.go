@@ -103,112 +103,112 @@ type GetCatalogItemsUsingGETParams struct {
 	HTTPClient *http.Client
 }
 
-// WithTimeout adds the timeout to the get catalog items using g e t params
+// WithTimeout adds the timeout to the get catalog items using get params
 func (o *GetCatalogItemsUsingGETParams) WithTimeout(timeout time.Duration) *GetCatalogItemsUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the get catalog items using g e t params
+// SetTimeout adds the timeout to the get catalog items using get params
 func (o *GetCatalogItemsUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the get catalog items using g e t params
+// WithContext adds the context to the get catalog items using get params
 func (o *GetCatalogItemsUsingGETParams) WithContext(ctx context.Context) *GetCatalogItemsUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the get catalog items using g e t params
+// SetContext adds the context to the get catalog items using get params
 func (o *GetCatalogItemsUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the get catalog items using g e t params
+// WithHTTPClient adds the HTTPClient to the get catalog items using get params
 func (o *GetCatalogItemsUsingGETParams) WithHTTPClient(client *http.Client) *GetCatalogItemsUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the get catalog items using g e t params
+// SetHTTPClient adds the HTTPClient to the get catalog items using get params
 func (o *GetCatalogItemsUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithExpandProjects adds the expandProjects to the get catalog items using g e t params
+// WithExpandProjects adds the expandProjects to the get catalog items using get params
 func (o *GetCatalogItemsUsingGETParams) WithExpandProjects(expandProjects *bool) *GetCatalogItemsUsingGETParams {
 	o.SetExpandProjects(expandProjects)
 	return o
 }
 
-// SetExpandProjects adds the expandProjects to the get catalog items using g e t params
+// SetExpandProjects adds the expandProjects to the get catalog items using get params
 func (o *GetCatalogItemsUsingGETParams) SetExpandProjects(expandProjects *bool) {
 	o.ExpandProjects = expandProjects
 }
 
-// WithPage adds the page to the get catalog items using g e t params
+// WithPage adds the page to the get catalog items using get params
 func (o *GetCatalogItemsUsingGETParams) WithPage(page *int32) *GetCatalogItemsUsingGETParams {
 	o.SetPage(page)
 	return o
 }
 
-// SetPage adds the page to the get catalog items using g e t params
+// SetPage adds the page to the get catalog items using get params
 func (o *GetCatalogItemsUsingGETParams) SetPage(page *int32) {
 	o.Page = page
 }
 
-// WithProjects adds the projects to the get catalog items using g e t params
+// WithProjects adds the projects to the get catalog items using get params
 func (o *GetCatalogItemsUsingGETParams) WithProjects(projects []string) *GetCatalogItemsUsingGETParams {
 	o.SetProjects(projects)
 	return o
 }
 
-// SetProjects adds the projects to the get catalog items using g e t params
+// SetProjects adds the projects to the get catalog items using get params
 func (o *GetCatalogItemsUsingGETParams) SetProjects(projects []string) {
 	o.Projects = projects
 }
 
-// WithSearch adds the search to the get catalog items using g e t params
+// WithSearch adds the search to the get catalog items using get params
 func (o *GetCatalogItemsUsingGETParams) WithSearch(search *string) *GetCatalogItemsUsingGETParams {
 	o.SetSearch(search)
 	return o
 }
 
-// SetSearch adds the search to the get catalog items using g e t params
+// SetSearch adds the search to the get catalog items using get params
 func (o *GetCatalogItemsUsingGETParams) SetSearch(search *string) {
 	o.Search = search
 }
 
-// WithSize adds the size to the get catalog items using g e t params
+// WithSize adds the size to the get catalog items using get params
 func (o *GetCatalogItemsUsingGETParams) WithSize(size *int32) *GetCatalogItemsUsingGETParams {
 	o.SetSize(size)
 	return o
 }
 
-// SetSize adds the size to the get catalog items using g e t params
+// SetSize adds the size to the get catalog items using get params
 func (o *GetCatalogItemsUsingGETParams) SetSize(size *int32) {
 	o.Size = size
 }
 
-// WithSort adds the sort to the get catalog items using g e t params
+// WithSort adds the sort to the get catalog items using get params
 func (o *GetCatalogItemsUsingGETParams) WithSort(sort []string) *GetCatalogItemsUsingGETParams {
 	o.SetSort(sort)
 	return o
 }
 
-// SetSort adds the sort to the get catalog items using g e t params
+// SetSort adds the sort to the get catalog items using get params
 func (o *GetCatalogItemsUsingGETParams) SetSort(sort []string) {
 	o.Sort = sort
 }
 
-// WithTypes adds the types to the get catalog items using g e t params
+// WithTypes adds the types to the get catalog items using get params
 func (o *GetCatalogItemsUsingGETParams) WithTypes(types []string) *GetCatalogItemsUsingGETParams {
 	o.SetTypes(types)
 	return o
 }
 
-// SetTypes adds the types to the get catalog items using g e t params
+// SetTypes adds the types to the get catalog items using get params
 func (o *GetCatalogItemsUsingGETParams) SetTypes(types []string) {
 	o.Types = types
 }

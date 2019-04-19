@@ -72,46 +72,46 @@ type GetBlueprintInputsSchemaUsingGETParams struct {
 	HTTPClient *http.Client
 }
 
-// WithTimeout adds the timeout to the get blueprint inputs schema using g e t params
+// WithTimeout adds the timeout to the get blueprint inputs schema using get params
 func (o *GetBlueprintInputsSchemaUsingGETParams) WithTimeout(timeout time.Duration) *GetBlueprintInputsSchemaUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the get blueprint inputs schema using g e t params
+// SetTimeout adds the timeout to the get blueprint inputs schema using get params
 func (o *GetBlueprintInputsSchemaUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the get blueprint inputs schema using g e t params
+// WithContext adds the context to the get blueprint inputs schema using get params
 func (o *GetBlueprintInputsSchemaUsingGETParams) WithContext(ctx context.Context) *GetBlueprintInputsSchemaUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the get blueprint inputs schema using g e t params
+// SetContext adds the context to the get blueprint inputs schema using get params
 func (o *GetBlueprintInputsSchemaUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the get blueprint inputs schema using g e t params
+// WithHTTPClient adds the HTTPClient to the get blueprint inputs schema using get params
 func (o *GetBlueprintInputsSchemaUsingGETParams) WithHTTPClient(client *http.Client) *GetBlueprintInputsSchemaUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the get blueprint inputs schema using g e t params
+// SetHTTPClient adds the HTTPClient to the get blueprint inputs schema using get params
 func (o *GetBlueprintInputsSchemaUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithBlueprintID adds the blueprintID to the get blueprint inputs schema using g e t params
+// WithBlueprintID adds the blueprintID to the get blueprint inputs schema using get params
 func (o *GetBlueprintInputsSchemaUsingGETParams) WithBlueprintID(blueprintID string) *GetBlueprintInputsSchemaUsingGETParams {
 	o.SetBlueprintID(blueprintID)
 	return o
 }
 
-// SetBlueprintID adds the blueprintId to the get blueprint inputs schema using g e t params
+// SetBlueprintID adds the blueprintId to the get blueprint inputs schema using get params
 func (o *GetBlueprintInputsSchemaUsingGETParams) SetBlueprintID(blueprintID string) {
 	o.BlueprintID = blueprintID
 }

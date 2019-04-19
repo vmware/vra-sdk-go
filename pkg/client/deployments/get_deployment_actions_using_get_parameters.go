@@ -72,46 +72,46 @@ type GetDeploymentActionsUsingGETParams struct {
 	HTTPClient *http.Client
 }
 
-// WithTimeout adds the timeout to the get deployment actions using g e t params
+// WithTimeout adds the timeout to the get deployment actions using get params
 func (o *GetDeploymentActionsUsingGETParams) WithTimeout(timeout time.Duration) *GetDeploymentActionsUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the get deployment actions using g e t params
+// SetTimeout adds the timeout to the get deployment actions using get params
 func (o *GetDeploymentActionsUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the get deployment actions using g e t params
+// WithContext adds the context to the get deployment actions using get params
 func (o *GetDeploymentActionsUsingGETParams) WithContext(ctx context.Context) *GetDeploymentActionsUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the get deployment actions using g e t params
+// SetContext adds the context to the get deployment actions using get params
 func (o *GetDeploymentActionsUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the get deployment actions using g e t params
+// WithHTTPClient adds the HTTPClient to the get deployment actions using get params
 func (o *GetDeploymentActionsUsingGETParams) WithHTTPClient(client *http.Client) *GetDeploymentActionsUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the get deployment actions using g e t params
+// SetHTTPClient adds the HTTPClient to the get deployment actions using get params
 func (o *GetDeploymentActionsUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithDepID adds the depID to the get deployment actions using g e t params
+// WithDepID adds the depID to the get deployment actions using get params
 func (o *GetDeploymentActionsUsingGETParams) WithDepID(depID strfmt.UUID) *GetDeploymentActionsUsingGETParams {
 	o.SetDepID(depID)
 	return o
 }
 
-// SetDepID adds the depId to the get deployment actions using g e t params
+// SetDepID adds the depId to the get deployment actions using get params
 func (o *GetDeploymentActionsUsingGETParams) SetDepID(depID strfmt.UUID) {
 	o.DepID = depID
 }

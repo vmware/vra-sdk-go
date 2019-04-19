@@ -78,57 +78,57 @@ type GetBlueprintPlanUsingGETParams struct {
 	HTTPClient *http.Client
 }
 
-// WithTimeout adds the timeout to the get blueprint plan using g e t params
+// WithTimeout adds the timeout to the get blueprint plan using get params
 func (o *GetBlueprintPlanUsingGETParams) WithTimeout(timeout time.Duration) *GetBlueprintPlanUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the get blueprint plan using g e t params
+// SetTimeout adds the timeout to the get blueprint plan using get params
 func (o *GetBlueprintPlanUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the get blueprint plan using g e t params
+// WithContext adds the context to the get blueprint plan using get params
 func (o *GetBlueprintPlanUsingGETParams) WithContext(ctx context.Context) *GetBlueprintPlanUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the get blueprint plan using g e t params
+// SetContext adds the context to the get blueprint plan using get params
 func (o *GetBlueprintPlanUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the get blueprint plan using g e t params
+// WithHTTPClient adds the HTTPClient to the get blueprint plan using get params
 func (o *GetBlueprintPlanUsingGETParams) WithHTTPClient(client *http.Client) *GetBlueprintPlanUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the get blueprint plan using g e t params
+// SetHTTPClient adds the HTTPClient to the get blueprint plan using get params
 func (o *GetBlueprintPlanUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithExpand adds the expand to the get blueprint plan using g e t params
+// WithExpand adds the expand to the get blueprint plan using get params
 func (o *GetBlueprintPlanUsingGETParams) WithExpand(expand *bool) *GetBlueprintPlanUsingGETParams {
 	o.SetExpand(expand)
 	return o
 }
 
-// SetExpand adds the expand to the get blueprint plan using g e t params
+// SetExpand adds the expand to the get blueprint plan using get params
 func (o *GetBlueprintPlanUsingGETParams) SetExpand(expand *bool) {
 	o.Expand = expand
 }
 
-// WithRequestID adds the requestID to the get blueprint plan using g e t params
+// WithRequestID adds the requestID to the get blueprint plan using get params
 func (o *GetBlueprintPlanUsingGETParams) WithRequestID(requestID strfmt.UUID) *GetBlueprintPlanUsingGETParams {
 	o.SetRequestID(requestID)
 	return o
 }
 
-// SetRequestID adds the requestId to the get blueprint plan using g e t params
+// SetRequestID adds the requestId to the get blueprint plan using get params
 func (o *GetBlueprintPlanUsingGETParams) SetRequestID(requestID strfmt.UUID) {
 	o.RequestID = requestID
 }

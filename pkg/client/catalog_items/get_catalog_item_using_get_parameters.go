@@ -78,57 +78,57 @@ type GetCatalogItemUsingGETParams struct {
 	HTTPClient *http.Client
 }
 
-// WithTimeout adds the timeout to the get catalog item using g e t params
+// WithTimeout adds the timeout to the get catalog item using get params
 func (o *GetCatalogItemUsingGETParams) WithTimeout(timeout time.Duration) *GetCatalogItemUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the get catalog item using g e t params
+// SetTimeout adds the timeout to the get catalog item using get params
 func (o *GetCatalogItemUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the get catalog item using g e t params
+// WithContext adds the context to the get catalog item using get params
 func (o *GetCatalogItemUsingGETParams) WithContext(ctx context.Context) *GetCatalogItemUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the get catalog item using g e t params
+// SetContext adds the context to the get catalog item using get params
 func (o *GetCatalogItemUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the get catalog item using g e t params
+// WithHTTPClient adds the HTTPClient to the get catalog item using get params
 func (o *GetCatalogItemUsingGETParams) WithHTTPClient(client *http.Client) *GetCatalogItemUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the get catalog item using g e t params
+// SetHTTPClient adds the HTTPClient to the get catalog item using get params
 func (o *GetCatalogItemUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithExpandProjects adds the expandProjects to the get catalog item using g e t params
+// WithExpandProjects adds the expandProjects to the get catalog item using get params
 func (o *GetCatalogItemUsingGETParams) WithExpandProjects(expandProjects *bool) *GetCatalogItemUsingGETParams {
 	o.SetExpandProjects(expandProjects)
 	return o
 }
 
-// SetExpandProjects adds the expandProjects to the get catalog item using g e t params
+// SetExpandProjects adds the expandProjects to the get catalog item using get params
 func (o *GetCatalogItemUsingGETParams) SetExpandProjects(expandProjects *bool) {
 	o.ExpandProjects = expandProjects
 }
 
-// WithID adds the id to the get catalog item using g e t params
+// WithID adds the id to the get catalog item using get params
 func (o *GetCatalogItemUsingGETParams) WithID(id strfmt.UUID) *GetCatalogItemUsingGETParams {
 	o.SetID(id)
 	return o
 }
 
-// SetID adds the id to the get catalog item using g e t params
+// SetID adds the id to the get catalog item using get params
 func (o *GetCatalogItemUsingGETParams) SetID(id strfmt.UUID) {
 	o.ID = id
 }

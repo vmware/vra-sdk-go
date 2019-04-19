@@ -72,46 +72,46 @@ type CheckDeploymentNameUsingGETParams struct {
 	HTTPClient *http.Client
 }
 
-// WithTimeout adds the timeout to the check deployment name using g e t params
+// WithTimeout adds the timeout to the check deployment name using get params
 func (o *CheckDeploymentNameUsingGETParams) WithTimeout(timeout time.Duration) *CheckDeploymentNameUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the check deployment name using g e t params
+// SetTimeout adds the timeout to the check deployment name using get params
 func (o *CheckDeploymentNameUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the check deployment name using g e t params
+// WithContext adds the context to the check deployment name using get params
 func (o *CheckDeploymentNameUsingGETParams) WithContext(ctx context.Context) *CheckDeploymentNameUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the check deployment name using g e t params
+// SetContext adds the context to the check deployment name using get params
 func (o *CheckDeploymentNameUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the check deployment name using g e t params
+// WithHTTPClient adds the HTTPClient to the check deployment name using get params
 func (o *CheckDeploymentNameUsingGETParams) WithHTTPClient(client *http.Client) *CheckDeploymentNameUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the check deployment name using g e t params
+// SetHTTPClient adds the HTTPClient to the check deployment name using get params
 func (o *CheckDeploymentNameUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithName adds the name to the check deployment name using g e t params
+// WithName adds the name to the check deployment name using get params
 func (o *CheckDeploymentNameUsingGETParams) WithName(name string) *CheckDeploymentNameUsingGETParams {
 	o.SetName(name)
 	return o
 }
 
-// SetName adds the name to the check deployment name using g e t params
+// SetName adds the name to the check deployment name using get params
 func (o *CheckDeploymentNameUsingGETParams) SetName(name string) {
 	o.Name = name
 }

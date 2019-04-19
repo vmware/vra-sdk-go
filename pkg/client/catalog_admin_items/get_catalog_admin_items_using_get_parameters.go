@@ -98,101 +98,101 @@ type GetCatalogAdminItemsUsingGETParams struct {
 	HTTPClient *http.Client
 }
 
-// WithTimeout adds the timeout to the get catalog admin items using g e t params
+// WithTimeout adds the timeout to the get catalog admin items using get params
 func (o *GetCatalogAdminItemsUsingGETParams) WithTimeout(timeout time.Duration) *GetCatalogAdminItemsUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the get catalog admin items using g e t params
+// SetTimeout adds the timeout to the get catalog admin items using get params
 func (o *GetCatalogAdminItemsUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the get catalog admin items using g e t params
+// WithContext adds the context to the get catalog admin items using get params
 func (o *GetCatalogAdminItemsUsingGETParams) WithContext(ctx context.Context) *GetCatalogAdminItemsUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the get catalog admin items using g e t params
+// SetContext adds the context to the get catalog admin items using get params
 func (o *GetCatalogAdminItemsUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the get catalog admin items using g e t params
+// WithHTTPClient adds the HTTPClient to the get catalog admin items using get params
 func (o *GetCatalogAdminItemsUsingGETParams) WithHTTPClient(client *http.Client) *GetCatalogAdminItemsUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the get catalog admin items using g e t params
+// SetHTTPClient adds the HTTPClient to the get catalog admin items using get params
 func (o *GetCatalogAdminItemsUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithPage adds the page to the get catalog admin items using g e t params
+// WithPage adds the page to the get catalog admin items using get params
 func (o *GetCatalogAdminItemsUsingGETParams) WithPage(page *int32) *GetCatalogAdminItemsUsingGETParams {
 	o.SetPage(page)
 	return o
 }
 
-// SetPage adds the page to the get catalog admin items using g e t params
+// SetPage adds the page to the get catalog admin items using get params
 func (o *GetCatalogAdminItemsUsingGETParams) SetPage(page *int32) {
 	o.Page = page
 }
 
-// WithSearch adds the search to the get catalog admin items using g e t params
+// WithSearch adds the search to the get catalog admin items using get params
 func (o *GetCatalogAdminItemsUsingGETParams) WithSearch(search *string) *GetCatalogAdminItemsUsingGETParams {
 	o.SetSearch(search)
 	return o
 }
 
-// SetSearch adds the search to the get catalog admin items using g e t params
+// SetSearch adds the search to the get catalog admin items using get params
 func (o *GetCatalogAdminItemsUsingGETParams) SetSearch(search *string) {
 	o.Search = search
 }
 
-// WithSize adds the size to the get catalog admin items using g e t params
+// WithSize adds the size to the get catalog admin items using get params
 func (o *GetCatalogAdminItemsUsingGETParams) WithSize(size *int32) *GetCatalogAdminItemsUsingGETParams {
 	o.SetSize(size)
 	return o
 }
 
-// SetSize adds the size to the get catalog admin items using g e t params
+// SetSize adds the size to the get catalog admin items using get params
 func (o *GetCatalogAdminItemsUsingGETParams) SetSize(size *int32) {
 	o.Size = size
 }
 
-// WithSort adds the sort to the get catalog admin items using g e t params
+// WithSort adds the sort to the get catalog admin items using get params
 func (o *GetCatalogAdminItemsUsingGETParams) WithSort(sort []string) *GetCatalogAdminItemsUsingGETParams {
 	o.SetSort(sort)
 	return o
 }
 
-// SetSort adds the sort to the get catalog admin items using g e t params
+// SetSort adds the sort to the get catalog admin items using get params
 func (o *GetCatalogAdminItemsUsingGETParams) SetSort(sort []string) {
 	o.Sort = sort
 }
 
-// WithSourceIds adds the sourceIds to the get catalog admin items using g e t params
+// WithSourceIds adds the sourceIds to the get catalog admin items using get params
 func (o *GetCatalogAdminItemsUsingGETParams) WithSourceIds(sourceIds []strfmt.UUID) *GetCatalogAdminItemsUsingGETParams {
 	o.SetSourceIds(sourceIds)
 	return o
 }
 
-// SetSourceIds adds the sourceIds to the get catalog admin items using g e t params
+// SetSourceIds adds the sourceIds to the get catalog admin items using get params
 func (o *GetCatalogAdminItemsUsingGETParams) SetSourceIds(sourceIds []strfmt.UUID) {
 	o.SourceIds = sourceIds
 }
 
-// WithTypes adds the types to the get catalog admin items using g e t params
+// WithTypes adds the types to the get catalog admin items using get params
 func (o *GetCatalogAdminItemsUsingGETParams) WithTypes(types []string) *GetCatalogAdminItemsUsingGETParams {
 	o.SetTypes(types)
 	return o
 }
 
-// SetTypes adds the types to the get catalog admin items using g e t params
+// SetTypes adds the types to the get catalog admin items using get params
 func (o *GetCatalogAdminItemsUsingGETParams) SetTypes(types []string) {
 	o.Types = types
 }

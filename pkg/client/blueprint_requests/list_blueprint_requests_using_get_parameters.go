@@ -139,112 +139,112 @@ type ListBlueprintRequestsUsingGETParams struct {
 	HTTPClient *http.Client
 }
 
-// WithTimeout adds the timeout to the list blueprint requests using g e t params
+// WithTimeout adds the timeout to the list blueprint requests using get params
 func (o *ListBlueprintRequestsUsingGETParams) WithTimeout(timeout time.Duration) *ListBlueprintRequestsUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the list blueprint requests using g e t params
+// SetTimeout adds the timeout to the list blueprint requests using get params
 func (o *ListBlueprintRequestsUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the list blueprint requests using g e t params
+// WithContext adds the context to the list blueprint requests using get params
 func (o *ListBlueprintRequestsUsingGETParams) WithContext(ctx context.Context) *ListBlueprintRequestsUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the list blueprint requests using g e t params
+// SetContext adds the context to the list blueprint requests using get params
 func (o *ListBlueprintRequestsUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the list blueprint requests using g e t params
+// WithHTTPClient adds the HTTPClient to the list blueprint requests using get params
 func (o *ListBlueprintRequestsUsingGETParams) WithHTTPClient(client *http.Client) *ListBlueprintRequestsUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the list blueprint requests using g e t params
+// SetHTTPClient adds the HTTPClient to the list blueprint requests using get params
 func (o *ListBlueprintRequestsUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithDeploymentID adds the deploymentID to the list blueprint requests using g e t params
+// WithDeploymentID adds the deploymentID to the list blueprint requests using get params
 func (o *ListBlueprintRequestsUsingGETParams) WithDeploymentID(deploymentID *string) *ListBlueprintRequestsUsingGETParams {
 	o.SetDeploymentID(deploymentID)
 	return o
 }
 
-// SetDeploymentID adds the deploymentId to the list blueprint requests using g e t params
+// SetDeploymentID adds the deploymentId to the list blueprint requests using get params
 func (o *ListBlueprintRequestsUsingGETParams) SetDeploymentID(deploymentID *string) {
 	o.DeploymentID = deploymentID
 }
 
-// WithExpand adds the expand to the list blueprint requests using g e t params
+// WithExpand adds the expand to the list blueprint requests using get params
 func (o *ListBlueprintRequestsUsingGETParams) WithExpand(expand *bool) *ListBlueprintRequestsUsingGETParams {
 	o.SetExpand(expand)
 	return o
 }
 
-// SetExpand adds the expand to the list blueprint requests using g e t params
+// SetExpand adds the expand to the list blueprint requests using get params
 func (o *ListBlueprintRequestsUsingGETParams) SetExpand(expand *bool) {
 	o.Expand = expand
 }
 
-// WithFields adds the fields to the list blueprint requests using g e t params
+// WithFields adds the fields to the list blueprint requests using get params
 func (o *ListBlueprintRequestsUsingGETParams) WithFields(fields []string) *ListBlueprintRequestsUsingGETParams {
 	o.SetFields(fields)
 	return o
 }
 
-// SetFields adds the fields to the list blueprint requests using g e t params
+// SetFields adds the fields to the list blueprint requests using get params
 func (o *ListBlueprintRequestsUsingGETParams) SetFields(fields []string) {
 	o.Fields = fields
 }
 
-// WithIncludePlan adds the includePlan to the list blueprint requests using g e t params
+// WithIncludePlan adds the includePlan to the list blueprint requests using get params
 func (o *ListBlueprintRequestsUsingGETParams) WithIncludePlan(includePlan *bool) *ListBlueprintRequestsUsingGETParams {
 	o.SetIncludePlan(includePlan)
 	return o
 }
 
-// SetIncludePlan adds the includePlan to the list blueprint requests using g e t params
+// SetIncludePlan adds the includePlan to the list blueprint requests using get params
 func (o *ListBlueprintRequestsUsingGETParams) SetIncludePlan(includePlan *bool) {
 	o.IncludePlan = includePlan
 }
 
-// WithOrderBy adds the orderBy to the list blueprint requests using g e t params
+// WithOrderBy adds the orderBy to the list blueprint requests using get params
 func (o *ListBlueprintRequestsUsingGETParams) WithOrderBy(orderBy *string) *ListBlueprintRequestsUsingGETParams {
 	o.SetOrderBy(orderBy)
 	return o
 }
 
-// SetOrderBy adds the orderBy to the list blueprint requests using g e t params
+// SetOrderBy adds the orderBy to the list blueprint requests using get params
 func (o *ListBlueprintRequestsUsingGETParams) SetOrderBy(orderBy *string) {
 	o.OrderBy = orderBy
 }
 
-// WithPage adds the page to the list blueprint requests using g e t params
+// WithPage adds the page to the list blueprint requests using get params
 func (o *ListBlueprintRequestsUsingGETParams) WithPage(page *int32) *ListBlueprintRequestsUsingGETParams {
 	o.SetPage(page)
 	return o
 }
 
-// SetPage adds the page to the list blueprint requests using g e t params
+// SetPage adds the page to the list blueprint requests using get params
 func (o *ListBlueprintRequestsUsingGETParams) SetPage(page *int32) {
 	o.Page = page
 }
 
-// WithSize adds the size to the list blueprint requests using g e t params
+// WithSize adds the size to the list blueprint requests using get params
 func (o *ListBlueprintRequestsUsingGETParams) WithSize(size *int32) *ListBlueprintRequestsUsingGETParams {
 	o.SetSize(size)
 	return o
 }
 
-// SetSize adds the size to the list blueprint requests using g e t params
+// SetSize adds the size to the list blueprint requests using get params
 func (o *ListBlueprintRequestsUsingGETParams) SetSize(size *int32) {
 	o.Size = size
 }

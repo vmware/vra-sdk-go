@@ -138,189 +138,189 @@ type GetDeploymentsUsingGETParams struct {
 	HTTPClient *http.Client
 }
 
-// WithTimeout adds the timeout to the get deployments using g e t params
+// WithTimeout adds the timeout to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) WithTimeout(timeout time.Duration) *GetDeploymentsUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the get deployments using g e t params
+// SetTimeout adds the timeout to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the get deployments using g e t params
+// WithContext adds the context to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) WithContext(ctx context.Context) *GetDeploymentsUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the get deployments using g e t params
+// SetContext adds the context to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the get deployments using g e t params
+// WithHTTPClient adds the HTTPClient to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) WithHTTPClient(client *http.Client) *GetDeploymentsUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the get deployments using g e t params
+// SetHTTPClient adds the HTTPClient to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithExpandLastRequest adds the expandLastRequest to the get deployments using g e t params
+// WithExpandLastRequest adds the expandLastRequest to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) WithExpandLastRequest(expandLastRequest *bool) *GetDeploymentsUsingGETParams {
 	o.SetExpandLastRequest(expandLastRequest)
 	return o
 }
 
-// SetExpandLastRequest adds the expandLastRequest to the get deployments using g e t params
+// SetExpandLastRequest adds the expandLastRequest to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) SetExpandLastRequest(expandLastRequest *bool) {
 	o.ExpandLastRequest = expandLastRequest
 }
 
-// WithExpandMetadata adds the expandMetadata to the get deployments using g e t params
+// WithExpandMetadata adds the expandMetadata to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) WithExpandMetadata(expandMetadata *bool) *GetDeploymentsUsingGETParams {
 	o.SetExpandMetadata(expandMetadata)
 	return o
 }
 
-// SetExpandMetadata adds the expandMetadata to the get deployments using g e t params
+// SetExpandMetadata adds the expandMetadata to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) SetExpandMetadata(expandMetadata *bool) {
 	o.ExpandMetadata = expandMetadata
 }
 
-// WithExpandProject adds the expandProject to the get deployments using g e t params
+// WithExpandProject adds the expandProject to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) WithExpandProject(expandProject *bool) *GetDeploymentsUsingGETParams {
 	o.SetExpandProject(expandProject)
 	return o
 }
 
-// SetExpandProject adds the expandProject to the get deployments using g e t params
+// SetExpandProject adds the expandProject to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) SetExpandProject(expandProject *bool) {
 	o.ExpandProject = expandProject
 }
 
-// WithExpandResources adds the expandResources to the get deployments using g e t params
+// WithExpandResources adds the expandResources to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) WithExpandResources(expandResources *bool) *GetDeploymentsUsingGETParams {
 	o.SetExpandResources(expandResources)
 	return o
 }
 
-// SetExpandResources adds the expandResources to the get deployments using g e t params
+// SetExpandResources adds the expandResources to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) SetExpandResources(expandResources *bool) {
 	o.ExpandResources = expandResources
 }
 
-// WithForceCachedResources adds the forceCachedResources to the get deployments using g e t params
+// WithForceCachedResources adds the forceCachedResources to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) WithForceCachedResources(forceCachedResources *bool) *GetDeploymentsUsingGETParams {
 	o.SetForceCachedResources(forceCachedResources)
 	return o
 }
 
-// SetForceCachedResources adds the forceCachedResources to the get deployments using g e t params
+// SetForceCachedResources adds the forceCachedResources to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) SetForceCachedResources(forceCachedResources *bool) {
 	o.ForceCachedResources = forceCachedResources
 }
 
-// WithForceRefreshResources adds the forceRefreshResources to the get deployments using g e t params
+// WithForceRefreshResources adds the forceRefreshResources to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) WithForceRefreshResources(forceRefreshResources *bool) *GetDeploymentsUsingGETParams {
 	o.SetForceRefreshResources(forceRefreshResources)
 	return o
 }
 
-// SetForceRefreshResources adds the forceRefreshResources to the get deployments using g e t params
+// SetForceRefreshResources adds the forceRefreshResources to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) SetForceRefreshResources(forceRefreshResources *bool) {
 	o.ForceRefreshResources = forceRefreshResources
 }
 
-// WithIds adds the ids to the get deployments using g e t params
+// WithIds adds the ids to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) WithIds(ids []strfmt.UUID) *GetDeploymentsUsingGETParams {
 	o.SetIds(ids)
 	return o
 }
 
-// SetIds adds the ids to the get deployments using g e t params
+// SetIds adds the ids to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) SetIds(ids []strfmt.UUID) {
 	o.Ids = ids
 }
 
-// WithName adds the name to the get deployments using g e t params
+// WithName adds the name to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) WithName(name *string) *GetDeploymentsUsingGETParams {
 	o.SetName(name)
 	return o
 }
 
-// SetName adds the name to the get deployments using g e t params
+// SetName adds the name to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) SetName(name *string) {
 	o.Name = name
 }
 
-// WithPage adds the page to the get deployments using g e t params
+// WithPage adds the page to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) WithPage(page *int32) *GetDeploymentsUsingGETParams {
 	o.SetPage(page)
 	return o
 }
 
-// SetPage adds the page to the get deployments using g e t params
+// SetPage adds the page to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) SetPage(page *int32) {
 	o.Page = page
 }
 
-// WithProjects adds the projects to the get deployments using g e t params
+// WithProjects adds the projects to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) WithProjects(projects []string) *GetDeploymentsUsingGETParams {
 	o.SetProjects(projects)
 	return o
 }
 
-// SetProjects adds the projects to the get deployments using g e t params
+// SetProjects adds the projects to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) SetProjects(projects []string) {
 	o.Projects = projects
 }
 
-// WithSearch adds the search to the get deployments using g e t params
+// WithSearch adds the search to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) WithSearch(search *string) *GetDeploymentsUsingGETParams {
 	o.SetSearch(search)
 	return o
 }
 
-// SetSearch adds the search to the get deployments using g e t params
+// SetSearch adds the search to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) SetSearch(search *string) {
 	o.Search = search
 }
 
-// WithSize adds the size to the get deployments using g e t params
+// WithSize adds the size to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) WithSize(size *int32) *GetDeploymentsUsingGETParams {
 	o.SetSize(size)
 	return o
 }
 
-// SetSize adds the size to the get deployments using g e t params
+// SetSize adds the size to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) SetSize(size *int32) {
 	o.Size = size
 }
 
-// WithSort adds the sort to the get deployments using g e t params
+// WithSort adds the sort to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) WithSort(sort []string) *GetDeploymentsUsingGETParams {
 	o.SetSort(sort)
 	return o
 }
 
-// SetSort adds the sort to the get deployments using g e t params
+// SetSort adds the sort to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) SetSort(sort []string) {
 	o.Sort = sort
 }
 
-// WithTemplates adds the templates to the get deployments using g e t params
+// WithTemplates adds the templates to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) WithTemplates(templates []string) *GetDeploymentsUsingGETParams {
 	o.SetTemplates(templates)
 	return o
 }
 
-// SetTemplates adds the templates to the get deployments using g e t params
+// SetTemplates adds the templates to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) SetTemplates(templates []string) {
 	o.Templates = templates
 }

@@ -121,90 +121,90 @@ type GetRequestEventsUsingGETParams struct {
 	HTTPClient *http.Client
 }
 
-// WithTimeout adds the timeout to the get request events using g e t params
+// WithTimeout adds the timeout to the get request events using get params
 func (o *GetRequestEventsUsingGETParams) WithTimeout(timeout time.Duration) *GetRequestEventsUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the get request events using g e t params
+// SetTimeout adds the timeout to the get request events using get params
 func (o *GetRequestEventsUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the get request events using g e t params
+// WithContext adds the context to the get request events using get params
 func (o *GetRequestEventsUsingGETParams) WithContext(ctx context.Context) *GetRequestEventsUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the get request events using g e t params
+// SetContext adds the context to the get request events using get params
 func (o *GetRequestEventsUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the get request events using g e t params
+// WithHTTPClient adds the HTTPClient to the get request events using get params
 func (o *GetRequestEventsUsingGETParams) WithHTTPClient(client *http.Client) *GetRequestEventsUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the get request events using g e t params
+// SetHTTPClient adds the HTTPClient to the get request events using get params
 func (o *GetRequestEventsUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithDeploymentID adds the deploymentID to the get request events using g e t params
+// WithDeploymentID adds the deploymentID to the get request events using get params
 func (o *GetRequestEventsUsingGETParams) WithDeploymentID(deploymentID string) *GetRequestEventsUsingGETParams {
 	o.SetDeploymentID(deploymentID)
 	return o
 }
 
-// SetDeploymentID adds the deploymentId to the get request events using g e t params
+// SetDeploymentID adds the deploymentId to the get request events using get params
 func (o *GetRequestEventsUsingGETParams) SetDeploymentID(deploymentID string) {
 	o.DeploymentID = deploymentID
 }
 
-// WithOrderBy adds the orderBy to the get request events using g e t params
+// WithOrderBy adds the orderBy to the get request events using get params
 func (o *GetRequestEventsUsingGETParams) WithOrderBy(orderBy *string) *GetRequestEventsUsingGETParams {
 	o.SetOrderBy(orderBy)
 	return o
 }
 
-// SetOrderBy adds the orderBy to the get request events using g e t params
+// SetOrderBy adds the orderBy to the get request events using get params
 func (o *GetRequestEventsUsingGETParams) SetOrderBy(orderBy *string) {
 	o.OrderBy = orderBy
 }
 
-// WithPage adds the page to the get request events using g e t params
+// WithPage adds the page to the get request events using get params
 func (o *GetRequestEventsUsingGETParams) WithPage(page *int32) *GetRequestEventsUsingGETParams {
 	o.SetPage(page)
 	return o
 }
 
-// SetPage adds the page to the get request events using g e t params
+// SetPage adds the page to the get request events using get params
 func (o *GetRequestEventsUsingGETParams) SetPage(page *int32) {
 	o.Page = page
 }
 
-// WithRequestID adds the requestID to the get request events using g e t params
+// WithRequestID adds the requestID to the get request events using get params
 func (o *GetRequestEventsUsingGETParams) WithRequestID(requestID *string) *GetRequestEventsUsingGETParams {
 	o.SetRequestID(requestID)
 	return o
 }
 
-// SetRequestID adds the requestId to the get request events using g e t params
+// SetRequestID adds the requestId to the get request events using get params
 func (o *GetRequestEventsUsingGETParams) SetRequestID(requestID *string) {
 	o.RequestID = requestID
 }
 
-// WithSize adds the size to the get request events using g e t params
+// WithSize adds the size to the get request events using get params
 func (o *GetRequestEventsUsingGETParams) WithSize(size *int32) *GetRequestEventsUsingGETParams {
 	o.SetSize(size)
 	return o
 }
 
-// SetSize adds the size to the get request events using g e t params
+// SetSize adds the size to the get request events using get params
 func (o *GetRequestEventsUsingGETParams) SetSize(size *int32) {
 	o.Size = size
 }

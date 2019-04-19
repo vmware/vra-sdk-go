@@ -159,156 +159,156 @@ type ListBlueprintsUsingGETParams struct {
 	HTTPClient *http.Client
 }
 
-// WithTimeout adds the timeout to the list blueprints using g e t params
+// WithTimeout adds the timeout to the list blueprints using get params
 func (o *ListBlueprintsUsingGETParams) WithTimeout(timeout time.Duration) *ListBlueprintsUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the list blueprints using g e t params
+// SetTimeout adds the timeout to the list blueprints using get params
 func (o *ListBlueprintsUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the list blueprints using g e t params
+// WithContext adds the context to the list blueprints using get params
 func (o *ListBlueprintsUsingGETParams) WithContext(ctx context.Context) *ListBlueprintsUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the list blueprints using g e t params
+// SetContext adds the context to the list blueprints using get params
 func (o *ListBlueprintsUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the list blueprints using g e t params
+// WithHTTPClient adds the HTTPClient to the list blueprints using get params
 func (o *ListBlueprintsUsingGETParams) WithHTTPClient(client *http.Client) *ListBlueprintsUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the list blueprints using g e t params
+// SetHTTPClient adds the HTTPClient to the list blueprints using get params
 func (o *ListBlueprintsUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithExpand adds the expand to the list blueprints using g e t params
+// WithExpand adds the expand to the list blueprints using get params
 func (o *ListBlueprintsUsingGETParams) WithExpand(expand *bool) *ListBlueprintsUsingGETParams {
 	o.SetExpand(expand)
 	return o
 }
 
-// SetExpand adds the expand to the list blueprints using g e t params
+// SetExpand adds the expand to the list blueprints using get params
 func (o *ListBlueprintsUsingGETParams) SetExpand(expand *bool) {
 	o.Expand = expand
 }
 
-// WithFields adds the fields to the list blueprints using g e t params
+// WithFields adds the fields to the list blueprints using get params
 func (o *ListBlueprintsUsingGETParams) WithFields(fields []string) *ListBlueprintsUsingGETParams {
 	o.SetFields(fields)
 	return o
 }
 
-// SetFields adds the fields to the list blueprints using g e t params
+// SetFields adds the fields to the list blueprints using get params
 func (o *ListBlueprintsUsingGETParams) SetFields(fields []string) {
 	o.Fields = fields
 }
 
-// WithName adds the name to the list blueprints using g e t params
+// WithName adds the name to the list blueprints using get params
 func (o *ListBlueprintsUsingGETParams) WithName(name *string) *ListBlueprintsUsingGETParams {
 	o.SetName(name)
 	return o
 }
 
-// SetName adds the name to the list blueprints using g e t params
+// SetName adds the name to the list blueprints using get params
 func (o *ListBlueprintsUsingGETParams) SetName(name *string) {
 	o.Name = name
 }
 
-// WithOrderBy adds the orderBy to the list blueprints using g e t params
+// WithOrderBy adds the orderBy to the list blueprints using get params
 func (o *ListBlueprintsUsingGETParams) WithOrderBy(orderBy *string) *ListBlueprintsUsingGETParams {
 	o.SetOrderBy(orderBy)
 	return o
 }
 
-// SetOrderBy adds the orderBy to the list blueprints using g e t params
+// SetOrderBy adds the orderBy to the list blueprints using get params
 func (o *ListBlueprintsUsingGETParams) SetOrderBy(orderBy *string) {
 	o.OrderBy = orderBy
 }
 
-// WithPage adds the page to the list blueprints using g e t params
+// WithPage adds the page to the list blueprints using get params
 func (o *ListBlueprintsUsingGETParams) WithPage(page *int32) *ListBlueprintsUsingGETParams {
 	o.SetPage(page)
 	return o
 }
 
-// SetPage adds the page to the list blueprints using g e t params
+// SetPage adds the page to the list blueprints using get params
 func (o *ListBlueprintsUsingGETParams) SetPage(page *int32) {
 	o.Page = page
 }
 
-// WithProjects adds the projects to the list blueprints using g e t params
+// WithProjects adds the projects to the list blueprints using get params
 func (o *ListBlueprintsUsingGETParams) WithProjects(projects []string) *ListBlueprintsUsingGETParams {
 	o.SetProjects(projects)
 	return o
 }
 
-// SetProjects adds the projects to the list blueprints using g e t params
+// SetProjects adds the projects to the list blueprints using get params
 func (o *ListBlueprintsUsingGETParams) SetProjects(projects []string) {
 	o.Projects = projects
 }
 
-// WithReleased adds the released to the list blueprints using g e t params
+// WithReleased adds the released to the list blueprints using get params
 func (o *ListBlueprintsUsingGETParams) WithReleased(released *bool) *ListBlueprintsUsingGETParams {
 	o.SetReleased(released)
 	return o
 }
 
-// SetReleased adds the released to the list blueprints using g e t params
+// SetReleased adds the released to the list blueprints using get params
 func (o *ListBlueprintsUsingGETParams) SetReleased(released *bool) {
 	o.Released = released
 }
 
-// WithSearch adds the search to the list blueprints using g e t params
+// WithSearch adds the search to the list blueprints using get params
 func (o *ListBlueprintsUsingGETParams) WithSearch(search *string) *ListBlueprintsUsingGETParams {
 	o.SetSearch(search)
 	return o
 }
 
-// SetSearch adds the search to the list blueprints using g e t params
+// SetSearch adds the search to the list blueprints using get params
 func (o *ListBlueprintsUsingGETParams) SetSearch(search *string) {
 	o.Search = search
 }
 
-// WithSize adds the size to the list blueprints using g e t params
+// WithSize adds the size to the list blueprints using get params
 func (o *ListBlueprintsUsingGETParams) WithSize(size *int32) *ListBlueprintsUsingGETParams {
 	o.SetSize(size)
 	return o
 }
 
-// SetSize adds the size to the list blueprints using g e t params
+// SetSize adds the size to the list blueprints using get params
 func (o *ListBlueprintsUsingGETParams) SetSize(size *int32) {
 	o.Size = size
 }
 
-// WithTags adds the tags to the list blueprints using g e t params
+// WithTags adds the tags to the list blueprints using get params
 func (o *ListBlueprintsUsingGETParams) WithTags(tags []string) *ListBlueprintsUsingGETParams {
 	o.SetTags(tags)
 	return o
 }
 
-// SetTags adds the tags to the list blueprints using g e t params
+// SetTags adds the tags to the list blueprints using get params
 func (o *ListBlueprintsUsingGETParams) SetTags(tags []string) {
 	o.Tags = tags
 }
 
-// WithVersioned adds the versioned to the list blueprints using g e t params
+// WithVersioned adds the versioned to the list blueprints using get params
 func (o *ListBlueprintsUsingGETParams) WithVersioned(versioned *bool) *ListBlueprintsUsingGETParams {
 	o.SetVersioned(versioned)
 	return o
 }
 
-// SetVersioned adds the versioned to the list blueprints using g e t params
+// SetVersioned adds the versioned to the list blueprints using get params
 func (o *ListBlueprintsUsingGETParams) SetVersioned(versioned *bool) {
 	o.Versioned = versioned
 }

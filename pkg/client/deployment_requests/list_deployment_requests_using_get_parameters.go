@@ -88,79 +88,79 @@ type ListDeploymentRequestsUsingGETParams struct {
 	HTTPClient *http.Client
 }
 
-// WithTimeout adds the timeout to the list deployment requests using g e t params
+// WithTimeout adds the timeout to the list deployment requests using get params
 func (o *ListDeploymentRequestsUsingGETParams) WithTimeout(timeout time.Duration) *ListDeploymentRequestsUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the list deployment requests using g e t params
+// SetTimeout adds the timeout to the list deployment requests using get params
 func (o *ListDeploymentRequestsUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the list deployment requests using g e t params
+// WithContext adds the context to the list deployment requests using get params
 func (o *ListDeploymentRequestsUsingGETParams) WithContext(ctx context.Context) *ListDeploymentRequestsUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the list deployment requests using g e t params
+// SetContext adds the context to the list deployment requests using get params
 func (o *ListDeploymentRequestsUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the list deployment requests using g e t params
+// WithHTTPClient adds the HTTPClient to the list deployment requests using get params
 func (o *ListDeploymentRequestsUsingGETParams) WithHTTPClient(client *http.Client) *ListDeploymentRequestsUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the list deployment requests using g e t params
+// SetHTTPClient adds the HTTPClient to the list deployment requests using get params
 func (o *ListDeploymentRequestsUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithDeploymentID adds the deploymentID to the list deployment requests using g e t params
+// WithDeploymentID adds the deploymentID to the list deployment requests using get params
 func (o *ListDeploymentRequestsUsingGETParams) WithDeploymentID(deploymentID *strfmt.UUID) *ListDeploymentRequestsUsingGETParams {
 	o.SetDeploymentID(deploymentID)
 	return o
 }
 
-// SetDeploymentID adds the deploymentId to the list deployment requests using g e t params
+// SetDeploymentID adds the deploymentId to the list deployment requests using get params
 func (o *ListDeploymentRequestsUsingGETParams) SetDeploymentID(deploymentID *strfmt.UUID) {
 	o.DeploymentID = deploymentID
 }
 
-// WithPage adds the page to the list deployment requests using g e t params
+// WithPage adds the page to the list deployment requests using get params
 func (o *ListDeploymentRequestsUsingGETParams) WithPage(page *int32) *ListDeploymentRequestsUsingGETParams {
 	o.SetPage(page)
 	return o
 }
 
-// SetPage adds the page to the list deployment requests using g e t params
+// SetPage adds the page to the list deployment requests using get params
 func (o *ListDeploymentRequestsUsingGETParams) SetPage(page *int32) {
 	o.Page = page
 }
 
-// WithSize adds the size to the list deployment requests using g e t params
+// WithSize adds the size to the list deployment requests using get params
 func (o *ListDeploymentRequestsUsingGETParams) WithSize(size *int32) *ListDeploymentRequestsUsingGETParams {
 	o.SetSize(size)
 	return o
 }
 
-// SetSize adds the size to the list deployment requests using g e t params
+// SetSize adds the size to the list deployment requests using get params
 func (o *ListDeploymentRequestsUsingGETParams) SetSize(size *int32) {
 	o.Size = size
 }
 
-// WithSort adds the sort to the list deployment requests using g e t params
+// WithSort adds the sort to the list deployment requests using get params
 func (o *ListDeploymentRequestsUsingGETParams) WithSort(sort []string) *ListDeploymentRequestsUsingGETParams {
 	o.SetSort(sort)
 	return o
 }
 
-// SetSort adds the sort to the list deployment requests using g e t params
+// SetSort adds the sort to the list deployment requests using get params
 func (o *ListDeploymentRequestsUsingGETParams) SetSort(sort []string) {
 	o.Sort = sort
 }

@@ -88,79 +88,79 @@ type GetPageUsingGETParams struct {
 	HTTPClient *http.Client
 }
 
-// WithTimeout adds the timeout to the get page using g e t params
+// WithTimeout adds the timeout to the get page using get params
 func (o *GetPageUsingGETParams) WithTimeout(timeout time.Duration) *GetPageUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the get page using g e t params
+// SetTimeout adds the timeout to the get page using get params
 func (o *GetPageUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the get page using g e t params
+// WithContext adds the context to the get page using get params
 func (o *GetPageUsingGETParams) WithContext(ctx context.Context) *GetPageUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the get page using g e t params
+// SetContext adds the context to the get page using get params
 func (o *GetPageUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the get page using g e t params
+// WithHTTPClient adds the HTTPClient to the get page using get params
 func (o *GetPageUsingGETParams) WithHTTPClient(client *http.Client) *GetPageUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the get page using g e t params
+// SetHTTPClient adds the HTTPClient to the get page using get params
 func (o *GetPageUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithPage adds the page to the get page using g e t params
+// WithPage adds the page to the get page using get params
 func (o *GetPageUsingGETParams) WithPage(page *int32) *GetPageUsingGETParams {
 	o.SetPage(page)
 	return o
 }
 
-// SetPage adds the page to the get page using g e t params
+// SetPage adds the page to the get page using get params
 func (o *GetPageUsingGETParams) SetPage(page *int32) {
 	o.Page = page
 }
 
-// WithSearch adds the search to the get page using g e t params
+// WithSearch adds the search to the get page using get params
 func (o *GetPageUsingGETParams) WithSearch(search *string) *GetPageUsingGETParams {
 	o.SetSearch(search)
 	return o
 }
 
-// SetSearch adds the search to the get page using g e t params
+// SetSearch adds the search to the get page using get params
 func (o *GetPageUsingGETParams) SetSearch(search *string) {
 	o.Search = search
 }
 
-// WithSize adds the size to the get page using g e t params
+// WithSize adds the size to the get page using get params
 func (o *GetPageUsingGETParams) WithSize(size *int32) *GetPageUsingGETParams {
 	o.SetSize(size)
 	return o
 }
 
-// SetSize adds the size to the get page using g e t params
+// SetSize adds the size to the get page using get params
 func (o *GetPageUsingGETParams) SetSize(size *int32) {
 	o.Size = size
 }
 
-// WithSort adds the sort to the get page using g e t params
+// WithSort adds the sort to the get page using get params
 func (o *GetPageUsingGETParams) WithSort(sort []string) *GetPageUsingGETParams {
 	o.SetSort(sort)
 	return o
 }
 
-// SetSort adds the sort to the get page using g e t params
+// SetSort adds the sort to the get page using get params
 func (o *GetPageUsingGETParams) SetSort(sort []string) {
 	o.Sort = sort
 }

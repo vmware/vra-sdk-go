@@ -72,46 +72,46 @@ type GetDeploymentsForProjectUsingGETParams struct {
 	HTTPClient *http.Client
 }
 
-// WithTimeout adds the timeout to the get deployments for project using g e t params
+// WithTimeout adds the timeout to the get deployments for project using get params
 func (o *GetDeploymentsForProjectUsingGETParams) WithTimeout(timeout time.Duration) *GetDeploymentsForProjectUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the get deployments for project using g e t params
+// SetTimeout adds the timeout to the get deployments for project using get params
 func (o *GetDeploymentsForProjectUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the get deployments for project using g e t params
+// WithContext adds the context to the get deployments for project using get params
 func (o *GetDeploymentsForProjectUsingGETParams) WithContext(ctx context.Context) *GetDeploymentsForProjectUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the get deployments for project using g e t params
+// SetContext adds the context to the get deployments for project using get params
 func (o *GetDeploymentsForProjectUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the get deployments for project using g e t params
+// WithHTTPClient adds the HTTPClient to the get deployments for project using get params
 func (o *GetDeploymentsForProjectUsingGETParams) WithHTTPClient(client *http.Client) *GetDeploymentsForProjectUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the get deployments for project using g e t params
+// SetHTTPClient adds the HTTPClient to the get deployments for project using get params
 func (o *GetDeploymentsForProjectUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithProjectID adds the projectID to the get deployments for project using g e t params
+// WithProjectID adds the projectID to the get deployments for project using get params
 func (o *GetDeploymentsForProjectUsingGETParams) WithProjectID(projectID strfmt.UUID) *GetDeploymentsForProjectUsingGETParams {
 	o.SetProjectID(projectID)
 	return o
 }
 
-// SetProjectID adds the projectId to the get deployments for project using g e t params
+// SetProjectID adds the projectId to the get deployments for project using get params
 func (o *GetDeploymentsForProjectUsingGETParams) SetProjectID(projectID strfmt.UUID) {
 	o.ProjectID = projectID
 }
