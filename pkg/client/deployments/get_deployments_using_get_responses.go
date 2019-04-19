@@ -68,7 +68,7 @@ func NewGetDeploymentsUsingGETOK() *GetDeploymentsUsingGETOK {
 OK
 */
 type GetDeploymentsUsingGETOK struct {
-	Payload *models.Deployment
+	Payload *models.Deployments
 }
 
 func (o *GetDeploymentsUsingGETOK) Error() string {
@@ -77,7 +77,7 @@ func (o *GetDeploymentsUsingGETOK) Error() string {
 
 func (o *GetDeploymentsUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Deployment)
+	o.Payload = new(models.Deployments)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
