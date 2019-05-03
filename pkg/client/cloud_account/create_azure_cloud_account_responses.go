@@ -61,7 +61,7 @@ func NewCreateAzureCloudAccountCreated() *CreateAzureCloudAccountCreated {
 successful operation
 */
 type CreateAzureCloudAccountCreated struct {
-	Payload *models.CloudAccount
+	Payload *models.CloudAccountAzure
 }
 
 func (o *CreateAzureCloudAccountCreated) Error() string {
@@ -70,7 +70,7 @@ func (o *CreateAzureCloudAccountCreated) Error() string {
 
 func (o *CreateAzureCloudAccountCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.CloudAccount)
+	o.Payload = new(models.CloudAccountAzure)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

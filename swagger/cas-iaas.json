@@ -420,7 +420,7 @@
                     "201": {
                         "description": "successful operation",
                         "schema": {
-                            "$ref": "#/definitions/CloudAccount"
+                            "$ref": "#/definitions/CloudAccountAws"
                         }
                     },
                     "400": {
@@ -627,7 +627,7 @@
                     "201": {
                         "description": "successful operation",
                         "schema": {
-                            "$ref": "#/definitions/CloudAccount"
+                            "$ref": "#/definitions/CloudAccountAzure"
                         }
                     },
                     "400": {
@@ -1156,7 +1156,7 @@
                     "201": {
                         "description": "successful operation",
                         "schema": {
-                            "$ref": "#/definitions/CloudAccount"
+                            "$ref": "#/definitions/CloudAccountVsphere"
                         }
                     },
                     "400": {
@@ -4749,6 +4749,41 @@
                         "description": "Not Found"
                     }
                 }
+            },
+            "delete": {
+                "tags": [
+                    "Request"
+                ],
+                "summary": "Delete Request",
+                "description": "Delete a single Request",
+                "operationId": "deleteRequest",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The ID of the request.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
             }
         },
         "/iaas/api/security-groups": {
@@ -6248,6 +6283,9 @@
                         "type": "string"
                     }
                 },
+                "deploymentId": {
+                    "type": "string"
+                },
                 "capacityInGB": {
                     "type": "integer",
                     "format": "int32",
@@ -6323,6 +6361,9 @@
                     "type": "string",
                     "example": "e058",
                     "description": "The id of the project the current user belongs to."
+                },
+                "deploymentId": {
+                    "type": "string"
                 },
                 "capacityInGB": {
                     "type": "integer",
@@ -6569,6 +6610,7 @@
             "required": [
                 "accessKeyId",
                 "name",
+                "regionIds",
                 "secretAccessKey"
             ],
             "properties": {
@@ -6734,6 +6776,7 @@
                 "clientApplicationId",
                 "clientApplicationSecretKey",
                 "name",
+                "regionIds",
                 "subscriptionId",
                 "tenantId"
             ],
@@ -7160,7 +7203,8 @@
                 "cloudAccountType",
                 "name",
                 "privateKey",
-                "privateKeyId"
+                "privateKeyId",
+                "regionIds"
             ],
             "properties": {
                 "name": {
@@ -7350,9 +7394,11 @@
         "CloudAccountVsphereSpecification": {
             "type": "object",
             "required": [
+                "dcid",
                 "hostName",
                 "name",
                 "password",
+                "regionIds",
                 "username"
             ],
             "properties": {
@@ -8228,7 +8274,7 @@
             "properties": {
                 "mapping": {
                     "type": "object",
-                    "example": "{ \"small\": { \"name\": \"t2.small\", \"cpuCount\": \"1\", \"MemoryInMb\": \"2048\", \"storageType\": \"EBS\", \"networkType\": \"Low to Moderate\"} }",
+                    "example": "{ \"small\": { \"name\": \"t2.small\", \"cpuCount\": \"1\", \"MemoryInMB\": \"2048\", \"storageType\": \"EBS\", \"networkType\": \"Low to Moderate\"} }",
                     "description": "Flavors defined for the particular region. Keyed by global flavor key.",
                     "additionalProperties": {
                         "$ref": "#/definitions/FabricFlavor"
@@ -8785,6 +8831,9 @@
                         "type": "string"
                     }
                 },
+                "deploymentId": {
+                    "type": "string"
+                },
                 "address": {
                     "type": "string",
                     "example": "lb-123456789.eu-west-1.elb.amazonaws.com",
@@ -8857,6 +8906,9 @@
                     "type": "string",
                     "example": "e058",
                     "description": "The id of the project the current user belongs to."
+                },
+                "deploymentId": {
+                    "type": "string"
                 },
                 "routes": {
                     "type": "array",
@@ -8983,6 +9035,9 @@
                         "type": "string"
                     }
                 },
+                "deploymentId": {
+                    "type": "string"
+                },
                 "powerState": {
                     "type": "string",
                     "example": "ON, OFF",
@@ -9072,6 +9127,9 @@
                     "type": "string",
                     "example": "e058",
                     "description": "The id of the project the current user belongs to."
+                },
+                "deploymentId": {
+                    "type": "string"
                 },
                 "flavor": {
                     "type": "string",
@@ -9226,6 +9284,9 @@
                     "items": {
                         "type": "string"
                     }
+                },
+                "deploymentId": {
+                    "type": "string"
                 },
                 "cidr": {
                     "type": "string",
@@ -9754,6 +9815,9 @@
                     "type": "string",
                     "example": "e058",
                     "description": "The id of the project the current user belongs to."
+                },
+                "deploymentId": {
+                    "type": "string"
                 },
                 "constraints": {
                     "type": "array",

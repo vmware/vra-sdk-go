@@ -61,7 +61,7 @@ func NewCreateVSphereCloudAccountCreated() *CreateVSphereCloudAccountCreated {
 successful operation
 */
 type CreateVSphereCloudAccountCreated struct {
-	Payload *models.CloudAccount
+	Payload *models.CloudAccountVsphere
 }
 
 func (o *CreateVSphereCloudAccountCreated) Error() string {
@@ -70,7 +70,7 @@ func (o *CreateVSphereCloudAccountCreated) Error() string {
 
 func (o *CreateVSphereCloudAccountCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.CloudAccount)
+	o.Payload = new(models.CloudAccountVsphere)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

@@ -38,6 +38,9 @@ type BlockDevice struct {
 	// Additional properties that may be used to extend the base type.
 	CustomProperties map[string]string `json:"customProperties,omitempty"`
 
+	// deployment Id
+	DeploymentID string `json:"deploymentId,omitempty"`
+
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
 

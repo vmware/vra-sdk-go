@@ -25,6 +25,36 @@ type Client struct {
 }
 
 /*
+DeleteRequest deletes request
+
+Delete a single Request
+*/
+func (a *Client) DeleteRequest(params *DeleteRequestParams) (*DeleteRequestOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteRequestParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "deleteRequest",
+		Method:             "DELETE",
+		PathPattern:        "/iaas/api/request-tracker/{id}",
+		ProducesMediaTypes: []string{""},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteRequestReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*DeleteRequestOK), nil
+
+}
+
+/*
 GetRequestTracker gets request tracker
 
 Get request tracker with a given id

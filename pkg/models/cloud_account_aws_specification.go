@@ -34,6 +34,7 @@ type CloudAccountAwsSpecification struct {
 	Name *string `json:"name"`
 
 	// A set of Region names to enable provisioning on. Refer to /iaas/cloud-accounts-aws/region-enumeration..
+	// Required: true
 	RegionIds []string `json:"regionIds"`
 
 	// Aws Secret Access Key
@@ -53,6 +54,10 @@ func (m *CloudAccountAwsSpecification) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateRegionIds(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -82,6 +87,15 @@ func (m *CloudAccountAwsSpecification) validateAccessKeyID(formats strfmt.Regist
 func (m *CloudAccountAwsSpecification) validateName(formats strfmt.Registry) error {
 
 	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CloudAccountAwsSpecification) validateRegionIds(formats strfmt.Registry) error {
+
+	if err := validate.Required("regionIds", "body", m.RegionIds); err != nil {
 		return err
 	}
 
