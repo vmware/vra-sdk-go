@@ -29,6 +29,13 @@ func (o *DeleteProjectReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return result, nil
 
+	case 204:
+		result := NewDeleteProjectNoContent()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	case 403:
 		result := NewDeleteProjectForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -65,6 +72,27 @@ func (o *DeleteProjectOK) Error() string {
 }
 
 func (o *DeleteProjectOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewDeleteProjectNoContent creates a DeleteProjectNoContent with default headers values
+func NewDeleteProjectNoContent() *DeleteProjectNoContent {
+	return &DeleteProjectNoContent{}
+}
+
+/*DeleteProjectNoContent handles this case with default header values.
+
+successful operation
+*/
+type DeleteProjectNoContent struct {
+}
+
+func (o *DeleteProjectNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/projects/{id}][%d] deleteProjectNoContent ", 204)
+}
+
+func (o *DeleteProjectNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }
