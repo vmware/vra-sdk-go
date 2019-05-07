@@ -4535,6 +4535,9 @@
                     "200": {
                         "description": "successful operation"
                     },
+                    "204": {
+                        "description": "successful operation"
+                    },
                     "403": {
                         "description": "Forbidden"
                     },
