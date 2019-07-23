@@ -46,6 +46,10 @@ type ProviderResourceType struct {
 	// Read Only: true
 	Operations map[string]string `json:"operations,omitempty"`
 
+	// Org ID
+	// Read Only: true
+	OrgID string `json:"orgId,omitempty"`
+
 	// Provider Id
 	// Read Only: true
 	ProviderID string `json:"providerId,omitempty"`

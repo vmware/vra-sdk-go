@@ -22,6 +22,13 @@ type DeleteCloudAccountNsxTReader struct {
 func (o *DeleteCloudAccountNsxTReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
+	case 204:
+		result := NewDeleteCloudAccountNsxTNoContent()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	case 403:
 		result := NewDeleteCloudAccountNsxTForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -39,6 +46,27 @@ func (o *DeleteCloudAccountNsxTReader) ReadResponse(response runtime.ClientRespo
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
+}
+
+// NewDeleteCloudAccountNsxTNoContent creates a DeleteCloudAccountNsxTNoContent with default headers values
+func NewDeleteCloudAccountNsxTNoContent() *DeleteCloudAccountNsxTNoContent {
+	return &DeleteCloudAccountNsxTNoContent{}
+}
+
+/*DeleteCloudAccountNsxTNoContent handles this case with default header values.
+
+No Content
+*/
+type DeleteCloudAccountNsxTNoContent struct {
+}
+
+func (o *DeleteCloudAccountNsxTNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-nsx-t/{id}][%d] deleteCloudAccountNsxTNoContent ", 204)
+}
+
+func (o *DeleteCloudAccountNsxTNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
 }
 
 // NewDeleteCloudAccountNsxTForbidden creates a DeleteCloudAccountNsxTForbidden with default headers values

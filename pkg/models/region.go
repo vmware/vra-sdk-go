@@ -21,6 +21,9 @@ type Region struct {
 	// Required: true
 	Links map[string]Href `json:"_links"`
 
+	// The id of the cloud account this region belongs to.
+	CloudAccountID string `json:"cloudAccountId,omitempty"`
+
 	// Date when the entity was created. The date is in ISO 6801 and UTC.
 	CreatedAt string `json:"createdAt,omitempty"`
 

@@ -139,112 +139,112 @@ type GetBlueprintVersionsUsingGETParams struct {
 	HTTPClient *http.Client
 }
 
-// WithTimeout adds the timeout to the get blueprint versions using g e t params
+// WithTimeout adds the timeout to the get blueprint versions using get params
 func (o *GetBlueprintVersionsUsingGETParams) WithTimeout(timeout time.Duration) *GetBlueprintVersionsUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the get blueprint versions using g e t params
+// SetTimeout adds the timeout to the get blueprint versions using get params
 func (o *GetBlueprintVersionsUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the get blueprint versions using g e t params
+// WithContext adds the context to the get blueprint versions using get params
 func (o *GetBlueprintVersionsUsingGETParams) WithContext(ctx context.Context) *GetBlueprintVersionsUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the get blueprint versions using g e t params
+// SetContext adds the context to the get blueprint versions using get params
 func (o *GetBlueprintVersionsUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the get blueprint versions using g e t params
+// WithHTTPClient adds the HTTPClient to the get blueprint versions using get params
 func (o *GetBlueprintVersionsUsingGETParams) WithHTTPClient(client *http.Client) *GetBlueprintVersionsUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the get blueprint versions using g e t params
+// SetHTTPClient adds the HTTPClient to the get blueprint versions using get params
 func (o *GetBlueprintVersionsUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithBlueprintID adds the blueprintID to the get blueprint versions using g e t params
+// WithBlueprintID adds the blueprintID to the get blueprint versions using get params
 func (o *GetBlueprintVersionsUsingGETParams) WithBlueprintID(blueprintID strfmt.UUID) *GetBlueprintVersionsUsingGETParams {
 	o.SetBlueprintID(blueprintID)
 	return o
 }
 
-// SetBlueprintID adds the blueprintId to the get blueprint versions using g e t params
+// SetBlueprintID adds the blueprintId to the get blueprint versions using get params
 func (o *GetBlueprintVersionsUsingGETParams) SetBlueprintID(blueprintID strfmt.UUID) {
 	o.BlueprintID = blueprintID
 }
 
-// WithExpand adds the expand to the get blueprint versions using g e t params
+// WithExpand adds the expand to the get blueprint versions using get params
 func (o *GetBlueprintVersionsUsingGETParams) WithExpand(expand *bool) *GetBlueprintVersionsUsingGETParams {
 	o.SetExpand(expand)
 	return o
 }
 
-// SetExpand adds the expand to the get blueprint versions using g e t params
+// SetExpand adds the expand to the get blueprint versions using get params
 func (o *GetBlueprintVersionsUsingGETParams) SetExpand(expand *bool) {
 	o.Expand = expand
 }
 
-// WithFields adds the fields to the get blueprint versions using g e t params
+// WithFields adds the fields to the get blueprint versions using get params
 func (o *GetBlueprintVersionsUsingGETParams) WithFields(fields []string) *GetBlueprintVersionsUsingGETParams {
 	o.SetFields(fields)
 	return o
 }
 
-// SetFields adds the fields to the get blueprint versions using g e t params
+// SetFields adds the fields to the get blueprint versions using get params
 func (o *GetBlueprintVersionsUsingGETParams) SetFields(fields []string) {
 	o.Fields = fields
 }
 
-// WithOrderBy adds the orderBy to the get blueprint versions using g e t params
+// WithOrderBy adds the orderBy to the get blueprint versions using get params
 func (o *GetBlueprintVersionsUsingGETParams) WithOrderBy(orderBy *string) *GetBlueprintVersionsUsingGETParams {
 	o.SetOrderBy(orderBy)
 	return o
 }
 
-// SetOrderBy adds the orderBy to the get blueprint versions using g e t params
+// SetOrderBy adds the orderBy to the get blueprint versions using get params
 func (o *GetBlueprintVersionsUsingGETParams) SetOrderBy(orderBy *string) {
 	o.OrderBy = orderBy
 }
 
-// WithPage adds the page to the get blueprint versions using g e t params
+// WithPage adds the page to the get blueprint versions using get params
 func (o *GetBlueprintVersionsUsingGETParams) WithPage(page *int32) *GetBlueprintVersionsUsingGETParams {
 	o.SetPage(page)
 	return o
 }
 
-// SetPage adds the page to the get blueprint versions using g e t params
+// SetPage adds the page to the get blueprint versions using get params
 func (o *GetBlueprintVersionsUsingGETParams) SetPage(page *int32) {
 	o.Page = page
 }
 
-// WithSize adds the size to the get blueprint versions using g e t params
+// WithSize adds the size to the get blueprint versions using get params
 func (o *GetBlueprintVersionsUsingGETParams) WithSize(size *int32) *GetBlueprintVersionsUsingGETParams {
 	o.SetSize(size)
 	return o
 }
 
-// SetSize adds the size to the get blueprint versions using g e t params
+// SetSize adds the size to the get blueprint versions using get params
 func (o *GetBlueprintVersionsUsingGETParams) SetSize(size *int32) {
 	o.Size = size
 }
 
-// WithStatus adds the status to the get blueprint versions using g e t params
+// WithStatus adds the status to the get blueprint versions using get params
 func (o *GetBlueprintVersionsUsingGETParams) WithStatus(status *string) *GetBlueprintVersionsUsingGETParams {
 	o.SetStatus(status)
 	return o
 }
 
-// SetStatus adds the status to the get blueprint versions using g e t params
+// SetStatus adds the status to the get blueprint versions using get params
 func (o *GetBlueprintVersionsUsingGETParams) SetStatus(status *string) {
 	o.Status = status
 }

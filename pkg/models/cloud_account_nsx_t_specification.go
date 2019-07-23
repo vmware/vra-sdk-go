@@ -22,11 +22,9 @@ type CloudAccountNsxTSpecification struct {
 	// Accept self signed certificate when connecting.
 	AcceptSelfSignedCertificate bool `json:"acceptSelfSignedCertificate,omitempty"`
 
-	// Create default cloud zones for the enabled regions.
-	CreateDefaultZones bool `json:"createDefaultZones,omitempty"`
-
 	// Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors
-	Dcid string `json:"dcid,omitempty"`
+	// Required: true
+	Dcid *string `json:"dcid"`
 
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
@@ -55,6 +53,10 @@ type CloudAccountNsxTSpecification struct {
 func (m *CloudAccountNsxTSpecification) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateDcid(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateHostName(formats); err != nil {
 		res = append(res, err)
 	}
@@ -78,6 +80,15 @@ func (m *CloudAccountNsxTSpecification) Validate(formats strfmt.Registry) error 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *CloudAccountNsxTSpecification) validateDcid(formats strfmt.Registry) error {
+
+	if err := validate.Required("dcid", "body", m.Dcid); err != nil {
+		return err
+	}
+
 	return nil
 }
 

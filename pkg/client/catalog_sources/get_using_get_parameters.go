@@ -72,46 +72,46 @@ type GetUsingGETParams struct {
 	HTTPClient *http.Client
 }
 
-// WithTimeout adds the timeout to the get using g e t params
+// WithTimeout adds the timeout to the get using get params
 func (o *GetUsingGETParams) WithTimeout(timeout time.Duration) *GetUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the get using g e t params
+// SetTimeout adds the timeout to the get using get params
 func (o *GetUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the get using g e t params
+// WithContext adds the context to the get using get params
 func (o *GetUsingGETParams) WithContext(ctx context.Context) *GetUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the get using g e t params
+// SetContext adds the context to the get using get params
 func (o *GetUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the get using g e t params
+// WithHTTPClient adds the HTTPClient to the get using get params
 func (o *GetUsingGETParams) WithHTTPClient(client *http.Client) *GetUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the get using g e t params
+// SetHTTPClient adds the HTTPClient to the get using get params
 func (o *GetUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithSourceID adds the sourceID to the get using g e t params
+// WithSourceID adds the sourceID to the get using get params
 func (o *GetUsingGETParams) WithSourceID(sourceID strfmt.UUID) *GetUsingGETParams {
 	o.SetSourceID(sourceID)
 	return o
 }
 
-// SetSourceID adds the sourceId to the get using g e t params
+// SetSourceID adds the sourceId to the get using get params
 func (o *GetUsingGETParams) SetSourceID(sourceID strfmt.UUID) {
 	o.SourceID = sourceID
 }

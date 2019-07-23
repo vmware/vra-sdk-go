@@ -25,8 +25,8 @@ type UpdateAzureStorageProfileReader struct {
 func (o *UpdateAzureStorageProfileReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 201:
-		result := NewUpdateAzureStorageProfileCreated()
+	case 200:
+		result := NewUpdateAzureStorageProfileOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -51,24 +51,24 @@ func (o *UpdateAzureStorageProfileReader) ReadResponse(response runtime.ClientRe
 	}
 }
 
-// NewUpdateAzureStorageProfileCreated creates a UpdateAzureStorageProfileCreated with default headers values
-func NewUpdateAzureStorageProfileCreated() *UpdateAzureStorageProfileCreated {
-	return &UpdateAzureStorageProfileCreated{}
+// NewUpdateAzureStorageProfileOK creates a UpdateAzureStorageProfileOK with default headers values
+func NewUpdateAzureStorageProfileOK() *UpdateAzureStorageProfileOK {
+	return &UpdateAzureStorageProfileOK{}
 }
 
-/*UpdateAzureStorageProfileCreated handles this case with default header values.
+/*UpdateAzureStorageProfileOK handles this case with default header values.
 
 successful operation
 */
-type UpdateAzureStorageProfileCreated struct {
+type UpdateAzureStorageProfileOK struct {
 	Payload *models.AzureStorageProfile
 }
 
-func (o *UpdateAzureStorageProfileCreated) Error() string {
-	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-azure/{id}][%d] updateAzureStorageProfileCreated  %+v", 201, o.Payload)
+func (o *UpdateAzureStorageProfileOK) Error() string {
+	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-azure/{id}][%d] updateAzureStorageProfileOK  %+v", 200, o.Payload)
 }
 
-func (o *UpdateAzureStorageProfileCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *UpdateAzureStorageProfileOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.AzureStorageProfile)
 

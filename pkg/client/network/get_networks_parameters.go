@@ -65,7 +65,7 @@ type GetNetworksParams struct {
 	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about
 
 	*/
-	APIVersion string
+	APIVersion *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -106,13 +106,13 @@ func (o *GetNetworksParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithAPIVersion adds the aPIVersion to the get networks params
-func (o *GetNetworksParams) WithAPIVersion(aPIVersion string) *GetNetworksParams {
+func (o *GetNetworksParams) WithAPIVersion(aPIVersion *string) *GetNetworksParams {
 	o.SetAPIVersion(aPIVersion)
 	return o
 }
 
 // SetAPIVersion adds the apiVersion to the get networks params
-func (o *GetNetworksParams) SetAPIVersion(aPIVersion string) {
+func (o *GetNetworksParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
@@ -124,13 +124,20 @@ func (o *GetNetworksParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 	}
 	var res []error
 
-	// query param apiVersion
-	qrAPIVersion := o.APIVersion
-	qAPIVersion := qrAPIVersion
-	if qAPIVersion != "" {
-		if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
-			return err
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
 		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	if len(res) > 0 {

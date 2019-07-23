@@ -7,10 +7,13 @@ package compute
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	models "github.com/vmware/cas-sdk-go/pkg/models"
 )
 
 // DeleteMachineReader is a Reader for the DeleteMachine structure.
@@ -21,6 +24,13 @@ type DeleteMachineReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteMachineReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
+
+	case 202:
+		result := NewDeleteMachineAccepted()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
 
 	case 403:
 		result := NewDeleteMachineForbidden()
@@ -39,6 +49,35 @@ func (o *DeleteMachineReader) ReadResponse(response runtime.ClientResponse, cons
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
+}
+
+// NewDeleteMachineAccepted creates a DeleteMachineAccepted with default headers values
+func NewDeleteMachineAccepted() *DeleteMachineAccepted {
+	return &DeleteMachineAccepted{}
+}
+
+/*DeleteMachineAccepted handles this case with default header values.
+
+successful operation
+*/
+type DeleteMachineAccepted struct {
+	Payload *models.RequestTracker
+}
+
+func (o *DeleteMachineAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}][%d] deleteMachineAccepted  %+v", 202, o.Payload)
+}
+
+func (o *DeleteMachineAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.RequestTracker)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
 }
 
 // NewDeleteMachineForbidden creates a DeleteMachineForbidden with default headers values

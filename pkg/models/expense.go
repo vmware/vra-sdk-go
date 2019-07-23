@@ -21,6 +21,10 @@ type Expense struct {
 	// Read Only: true
 	AdditionalExpense float64 `json:"additionalExpense,omitempty"`
 
+	// Expense sync message code if any.
+	// Read Only: true
+	Code string `json:"code,omitempty"`
+
 	// Compute expense of the resource.
 	// Read Only: true
 	ComputeExpense float64 `json:"computeExpense,omitempty"`
@@ -28,15 +32,11 @@ type Expense struct {
 	// Last expense sync time.
 	// Read Only: true
 	// Format: date-time
-	CostSyncTime strfmt.DateTime `json:"costSyncTime,omitempty"`
-
-	// Expense sync message code if any.
-	// Read Only: true
-	ExpenseSyncCode string `json:"expenseSyncCode,omitempty"`
+	LastUpdatedTime strfmt.DateTime `json:"lastUpdatedTime,omitempty"`
 
 	// Expense sync message if any.
 	// Read Only: true
-	ExpenseSyncMessage string `json:"expenseSyncMessage,omitempty"`
+	Message string `json:"message,omitempty"`
 
 	// Network expense of the resource.
 	// Read Only: true
@@ -59,7 +59,7 @@ type Expense struct {
 func (m *Expense) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateCostSyncTime(formats); err != nil {
+	if err := m.validateLastUpdatedTime(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -69,13 +69,13 @@ func (m *Expense) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *Expense) validateCostSyncTime(formats strfmt.Registry) error {
+func (m *Expense) validateLastUpdatedTime(formats strfmt.Registry) error {
 
-	if swag.IsZero(m.CostSyncTime) { // not required
+	if swag.IsZero(m.LastUpdatedTime) { // not required
 		return nil
 	}
 
-	if err := validate.FormatOf("costSyncTime", "body", "date-time", m.CostSyncTime.String(), formats); err != nil {
+	if err := validate.FormatOf("lastUpdatedTime", "body", "date-time", m.LastUpdatedTime.String(), formats); err != nil {
 		return err
 	}
 

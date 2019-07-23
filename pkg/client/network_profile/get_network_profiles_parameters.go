@@ -65,12 +65,7 @@ type GetNetworkProfilesParams struct {
 	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about
 
 	*/
-	APIVersion string
-	/*RegionID
-	  The internal id of the region for which this entity is defined. This is the id property of the Region object retrieved through /iaas/api/regions. Within an entity, the regionId can be obtained as the last path segment of the _links.region.href property
-
-	*/
-	RegionID *string
+	APIVersion *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -111,25 +106,14 @@ func (o *GetNetworkProfilesParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithAPIVersion adds the aPIVersion to the get network profiles params
-func (o *GetNetworkProfilesParams) WithAPIVersion(aPIVersion string) *GetNetworkProfilesParams {
+func (o *GetNetworkProfilesParams) WithAPIVersion(aPIVersion *string) *GetNetworkProfilesParams {
 	o.SetAPIVersion(aPIVersion)
 	return o
 }
 
 // SetAPIVersion adds the apiVersion to the get network profiles params
-func (o *GetNetworkProfilesParams) SetAPIVersion(aPIVersion string) {
+func (o *GetNetworkProfilesParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
-}
-
-// WithRegionID adds the regionID to the get network profiles params
-func (o *GetNetworkProfilesParams) WithRegionID(regionID *string) *GetNetworkProfilesParams {
-	o.SetRegionID(regionID)
-	return o
-}
-
-// SetRegionID adds the regionId to the get network profiles params
-func (o *GetNetworkProfilesParams) SetRegionID(regionID *string) {
-	o.RegionID = regionID
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -140,25 +124,16 @@ func (o *GetNetworkProfilesParams) WriteToRequest(r runtime.ClientRequest, reg s
 	}
 	var res []error
 
-	// query param apiVersion
-	qrAPIVersion := o.APIVersion
-	qAPIVersion := qrAPIVersion
-	if qAPIVersion != "" {
-		if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
-			return err
-		}
-	}
+	if o.APIVersion != nil {
 
-	if o.RegionID != nil {
-
-		// query param regionId
-		var qrRegionID string
-		if o.RegionID != nil {
-			qrRegionID = *o.RegionID
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
 		}
-		qRegionID := qrRegionID
-		if qRegionID != "" {
-			if err := r.SetQueryParam("regionId", qRegionID); err != nil {
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}

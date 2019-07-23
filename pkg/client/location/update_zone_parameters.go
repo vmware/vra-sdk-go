@@ -67,7 +67,7 @@ type UpdateZoneParams struct {
 	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about
 
 	*/
-	APIVersion string
+	APIVersion *string
 	/*Body
 	  Zone specification
 
@@ -118,13 +118,13 @@ func (o *UpdateZoneParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithAPIVersion adds the aPIVersion to the update zone params
-func (o *UpdateZoneParams) WithAPIVersion(aPIVersion string) *UpdateZoneParams {
+func (o *UpdateZoneParams) WithAPIVersion(aPIVersion *string) *UpdateZoneParams {
 	o.SetAPIVersion(aPIVersion)
 	return o
 }
 
 // SetAPIVersion adds the apiVersion to the update zone params
-func (o *UpdateZoneParams) SetAPIVersion(aPIVersion string) {
+func (o *UpdateZoneParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
@@ -158,13 +158,20 @@ func (o *UpdateZoneParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Re
 	}
 	var res []error
 
-	// query param apiVersion
-	qrAPIVersion := o.APIVersion
-	qAPIVersion := qrAPIVersion
-	if qAPIVersion != "" {
-		if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
-			return err
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
 		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	if o.Body != nil {

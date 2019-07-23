@@ -13,6 +13,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 )
@@ -65,7 +66,12 @@ type GetDataCollectorsParams struct {
 	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about
 
 	*/
-	APIVersion string
+	APIVersion *string
+	/*Disabled
+	  If query param is provided with value equals to true, only disabled data collectors will be retrieved.
+
+	*/
+	Disabled *bool
 
 	timeout    time.Duration
 	Context    context.Context
@@ -106,14 +112,25 @@ func (o *GetDataCollectorsParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithAPIVersion adds the aPIVersion to the get data collectors params
-func (o *GetDataCollectorsParams) WithAPIVersion(aPIVersion string) *GetDataCollectorsParams {
+func (o *GetDataCollectorsParams) WithAPIVersion(aPIVersion *string) *GetDataCollectorsParams {
 	o.SetAPIVersion(aPIVersion)
 	return o
 }
 
 // SetAPIVersion adds the apiVersion to the get data collectors params
-func (o *GetDataCollectorsParams) SetAPIVersion(aPIVersion string) {
+func (o *GetDataCollectorsParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
+}
+
+// WithDisabled adds the disabled to the get data collectors params
+func (o *GetDataCollectorsParams) WithDisabled(disabled *bool) *GetDataCollectorsParams {
+	o.SetDisabled(disabled)
+	return o
+}
+
+// SetDisabled adds the disabled to the get data collectors params
+func (o *GetDataCollectorsParams) SetDisabled(disabled *bool) {
+	o.Disabled = disabled
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -124,13 +141,36 @@ func (o *GetDataCollectorsParams) WriteToRequest(r runtime.ClientRequest, reg st
 	}
 	var res []error
 
-	// query param apiVersion
-	qrAPIVersion := o.APIVersion
-	qAPIVersion := qrAPIVersion
-	if qAPIVersion != "" {
-		if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
-			return err
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
 		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.Disabled != nil {
+
+		// query param disabled
+		var qrDisabled bool
+		if o.Disabled != nil {
+			qrDisabled = *o.Disabled
+		}
+		qDisabled := swag.FormatBool(qrDisabled)
+		if qDisabled != "" {
+			if err := r.SetQueryParam("disabled", qDisabled); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	if len(res) > 0 {

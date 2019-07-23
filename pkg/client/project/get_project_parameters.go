@@ -65,7 +65,7 @@ type GetProjectParams struct {
 	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about
 
 	*/
-	APIVersion string
+	APIVersion *string
 	/*ID
 	  The ID of the project.
 
@@ -111,13 +111,13 @@ func (o *GetProjectParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithAPIVersion adds the aPIVersion to the get project params
-func (o *GetProjectParams) WithAPIVersion(aPIVersion string) *GetProjectParams {
+func (o *GetProjectParams) WithAPIVersion(aPIVersion *string) *GetProjectParams {
 	o.SetAPIVersion(aPIVersion)
 	return o
 }
 
 // SetAPIVersion adds the apiVersion to the get project params
-func (o *GetProjectParams) SetAPIVersion(aPIVersion string) {
+func (o *GetProjectParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
@@ -140,13 +140,20 @@ func (o *GetProjectParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Re
 	}
 	var res []error
 
-	// query param apiVersion
-	qrAPIVersion := o.APIVersion
-	qAPIVersion := qrAPIVersion
-	if qAPIVersion != "" {
-		if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
-			return err
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
 		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	// path param id

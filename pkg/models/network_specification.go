@@ -25,6 +25,9 @@ type NetworkSpecification struct {
 	// Additional custom properties that may be used toextend the network.
 	CustomProperties map[string]string `json:"customProperties,omitempty"`
 
+	// deployment Id
+	DeploymentID string `json:"deploymentId,omitempty"`
+
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
 
@@ -32,7 +35,7 @@ type NetworkSpecification struct {
 	// Required: true
 	Name *string `json:"name"`
 
-	// Flag to indicate if the network needs to have outbound access or not. Default is true.
+	// Flag to indicate if the network needs to have outbound access or not. Default is true. This field will be ignored if there is proper input for networkType customProperty
 	OutboundAccess bool `json:"outboundAccess,omitempty"`
 
 	// The id of the project the current user belongs to.

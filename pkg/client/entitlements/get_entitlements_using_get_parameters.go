@@ -72,46 +72,46 @@ type GetEntitlementsUsingGETParams struct {
 	HTTPClient *http.Client
 }
 
-// WithTimeout adds the timeout to the get entitlements using g e t params
+// WithTimeout adds the timeout to the get entitlements using get params
 func (o *GetEntitlementsUsingGETParams) WithTimeout(timeout time.Duration) *GetEntitlementsUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the get entitlements using g e t params
+// SetTimeout adds the timeout to the get entitlements using get params
 func (o *GetEntitlementsUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the get entitlements using g e t params
+// WithContext adds the context to the get entitlements using get params
 func (o *GetEntitlementsUsingGETParams) WithContext(ctx context.Context) *GetEntitlementsUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the get entitlements using g e t params
+// SetContext adds the context to the get entitlements using get params
 func (o *GetEntitlementsUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the get entitlements using g e t params
+// WithHTTPClient adds the HTTPClient to the get entitlements using get params
 func (o *GetEntitlementsUsingGETParams) WithHTTPClient(client *http.Client) *GetEntitlementsUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the get entitlements using g e t params
+// SetHTTPClient adds the HTTPClient to the get entitlements using get params
 func (o *GetEntitlementsUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithProjectID adds the projectID to the get entitlements using g e t params
+// WithProjectID adds the projectID to the get entitlements using get params
 func (o *GetEntitlementsUsingGETParams) WithProjectID(projectID *string) *GetEntitlementsUsingGETParams {
 	o.SetProjectID(projectID)
 	return o
 }
 
-// SetProjectID adds the projectId to the get entitlements using g e t params
+// SetProjectID adds the projectId to the get entitlements using get params
 func (o *GetEntitlementsUsingGETParams) SetProjectID(projectID *string) {
 	o.ProjectID = projectID
 }

@@ -27,9 +27,9 @@ type Client struct {
 /*
 CreateLoadBalancer creates load balancer
 
-Create a new Load Balancer.
+Create load balancer
 */
-func (a *Client) CreateLoadBalancer(params *CreateLoadBalancerParams) (*CreateLoadBalancerCreated, error) {
+func (a *Client) CreateLoadBalancer(params *CreateLoadBalancerParams) (*CreateLoadBalancerAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateLoadBalancerParams()
@@ -50,22 +50,22 @@ func (a *Client) CreateLoadBalancer(params *CreateLoadBalancerParams) (*CreateLo
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateLoadBalancerCreated), nil
+	return result.(*CreateLoadBalancerAccepted), nil
 
 }
 
 /*
-DeleteLoadBalancer deletes a load balancer
+DeleteLoadBalancer deletes load balancer
 
-Delete a Load Balancer.
+Delete load balancer with a given id
 */
-func (a *Client) DeleteLoadBalancer(params *DeleteLoadBalancerParams) error {
+func (a *Client) DeleteLoadBalancer(params *DeleteLoadBalancerParams) (*DeleteLoadBalancerAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteLoadBalancerParams()
 	}
 
-	_, err := a.transport.Submit(&runtime.ClientOperation{
+	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "deleteLoadBalancer",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/load-balancers/{id}",
@@ -78,46 +78,76 @@ func (a *Client) DeleteLoadBalancer(params *DeleteLoadBalancerParams) error {
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return result.(*DeleteLoadBalancerAccepted), nil
 
 }
 
 /*
-DescribeLoadBalancer describes a load balancer
+DeleteLoadBalancerOperation deletes operation for load balancer
 
-Describe a Load Balancer.
+Second day delete operation for load balancer
 */
-func (a *Client) DescribeLoadBalancer(params *DescribeLoadBalancerParams) (*DescribeLoadBalancerOK, error) {
+func (a *Client) DeleteLoadBalancerOperation(params *DeleteLoadBalancerOperationParams) (*DeleteLoadBalancerOperationAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDescribeLoadBalancerParams()
+		params = NewDeleteLoadBalancerOperationParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "describeLoadBalancer",
-		Method:             "GET",
-		PathPattern:        "/iaas/api/load-balancers/{id}",
+		ID:                 "deleteLoadBalancerOperation",
+		Method:             "POST",
+		PathPattern:        "/iaas/api/load-balancers/{id}/operations/delete",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DescribeLoadBalancerReader{formats: a.formats},
+		Reader:             &DeleteLoadBalancerOperationReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DescribeLoadBalancerOK), nil
+	return result.(*DeleteLoadBalancerOperationAccepted), nil
+
+}
+
+/*
+GetLoadBalancer gets load balancer
+
+Get load balancer with a given id
+*/
+func (a *Client) GetLoadBalancer(params *GetLoadBalancerParams) (*GetLoadBalancerOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetLoadBalancerParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getLoadBalancer",
+		Method:             "GET",
+		PathPattern:        "/iaas/api/load-balancers/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetLoadBalancerReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetLoadBalancerOK), nil
 
 }
 
 /*
 GetLoadBalancers gets load balancers
 
-Get a page of Load Balancers.
+Get all load balancers
 */
 func (a *Client) GetLoadBalancers(params *GetLoadBalancersParams) (*GetLoadBalancersOK, error) {
 	// TODO: Validate the params before sending
@@ -145,62 +175,32 @@ func (a *Client) GetLoadBalancers(params *GetLoadBalancersParams) (*GetLoadBalan
 }
 
 /*
-LoadBalancerDeleteOperation deletes operation for load balancer
+ScaleLoadBalancer scales operation for load balancer
 
-Perform a second day delete operation for Load Balancer.
+Second day scale operation for load balancer
 */
-func (a *Client) LoadBalancerDeleteOperation(params *LoadBalancerDeleteOperationParams) error {
+func (a *Client) ScaleLoadBalancer(params *ScaleLoadBalancerParams) (*ScaleLoadBalancerAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewLoadBalancerDeleteOperationParams()
+		params = NewScaleLoadBalancerParams()
 	}
 
-	_, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "loadBalancerDeleteOperation",
-		Method:             "POST",
-		PathPattern:        "/iaas/api/load-balancers/{id}/operations/delete",
-		ProducesMediaTypes: []string{"app/json", "application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &LoadBalancerDeleteOperationReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return err
-	}
-	return nil
-
-}
-
-/*
-LoadBalancerScaleOperation scales operation for load balancer
-
-Perform a second day scale operation for Load Balancer.
-*/
-func (a *Client) LoadBalancerScaleOperation(params *LoadBalancerScaleOperationParams) error {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewLoadBalancerScaleOperationParams()
-	}
-
-	_, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "loadBalancerScaleOperation",
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "scaleLoadBalancer",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/load-balancers/{id}/operations/scale",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &LoadBalancerScaleOperationReader{formats: a.formats},
+		Reader:             &ScaleLoadBalancerReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return result.(*ScaleLoadBalancerAccepted), nil
 
 }
 

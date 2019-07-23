@@ -22,6 +22,13 @@ type DeleteFlavorProfileReader struct {
 func (o *DeleteFlavorProfileReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
+	case 204:
+		result := NewDeleteFlavorProfileNoContent()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	case 403:
 		result := NewDeleteFlavorProfileForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -39,6 +46,27 @@ func (o *DeleteFlavorProfileReader) ReadResponse(response runtime.ClientResponse
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
+}
+
+// NewDeleteFlavorProfileNoContent creates a DeleteFlavorProfileNoContent with default headers values
+func NewDeleteFlavorProfileNoContent() *DeleteFlavorProfileNoContent {
+	return &DeleteFlavorProfileNoContent{}
+}
+
+/*DeleteFlavorProfileNoContent handles this case with default header values.
+
+No Content
+*/
+type DeleteFlavorProfileNoContent struct {
+}
+
+func (o *DeleteFlavorProfileNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/flavor-profiles/{id}][%d] deleteFlavorProfileNoContent ", 204)
+}
+
+func (o *DeleteFlavorProfileNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
 }
 
 // NewDeleteFlavorProfileForbidden creates a DeleteFlavorProfileForbidden with default headers values

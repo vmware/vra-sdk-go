@@ -25,6 +25,9 @@ type ProjectSpecification struct {
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
 
+	// The naming template to be used for machines provisioned in this project
+	MachineNamingTemplate string `json:"machineNamingTemplate,omitempty"`
+
 	// List of member users associated with the project.
 	Members []*User `json:"members"`
 

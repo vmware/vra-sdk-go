@@ -16,24 +16,24 @@ import (
 	models "github.com/vmware/cas-sdk-go/pkg/models"
 )
 
-// GetFabricVsphereStoragePoliciesReader is a Reader for the GetFabricVsphereStoragePolicies structure.
-type GetFabricVsphereStoragePoliciesReader struct {
+// GetFabricVSphereStoragePoliciesReader is a Reader for the GetFabricVSphereStoragePolicies structure.
+type GetFabricVSphereStoragePoliciesReader struct {
 	formats strfmt.Registry
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *GetFabricVsphereStoragePoliciesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *GetFabricVSphereStoragePoliciesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
 	case 200:
-		result := NewGetFabricVsphereStoragePoliciesOK()
+		result := NewGetFabricVSphereStoragePoliciesOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 
 	case 403:
-		result := NewGetFabricVsphereStoragePoliciesForbidden()
+		result := NewGetFabricVSphereStoragePoliciesForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -44,24 +44,24 @@ func (o *GetFabricVsphereStoragePoliciesReader) ReadResponse(response runtime.Cl
 	}
 }
 
-// NewGetFabricVsphereStoragePoliciesOK creates a GetFabricVsphereStoragePoliciesOK with default headers values
-func NewGetFabricVsphereStoragePoliciesOK() *GetFabricVsphereStoragePoliciesOK {
-	return &GetFabricVsphereStoragePoliciesOK{}
+// NewGetFabricVSphereStoragePoliciesOK creates a GetFabricVSphereStoragePoliciesOK with default headers values
+func NewGetFabricVSphereStoragePoliciesOK() *GetFabricVSphereStoragePoliciesOK {
+	return &GetFabricVSphereStoragePoliciesOK{}
 }
 
-/*GetFabricVsphereStoragePoliciesOK handles this case with default header values.
+/*GetFabricVSphereStoragePoliciesOK handles this case with default header values.
 
 successful operation
 */
-type GetFabricVsphereStoragePoliciesOK struct {
+type GetFabricVSphereStoragePoliciesOK struct {
 	Payload *models.FabricVsphereStoragePolicyResult
 }
 
-func (o *GetFabricVsphereStoragePoliciesOK) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-storage-policies][%d] getFabricVsphereStoragePoliciesOK  %+v", 200, o.Payload)
+func (o *GetFabricVSphereStoragePoliciesOK) Error() string {
+	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-storage-policies][%d] getFabricVSphereStoragePoliciesOK  %+v", 200, o.Payload)
 }
 
-func (o *GetFabricVsphereStoragePoliciesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetFabricVSphereStoragePoliciesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.FabricVsphereStoragePolicyResult)
 
@@ -73,23 +73,23 @@ func (o *GetFabricVsphereStoragePoliciesOK) readResponse(response runtime.Client
 	return nil
 }
 
-// NewGetFabricVsphereStoragePoliciesForbidden creates a GetFabricVsphereStoragePoliciesForbidden with default headers values
-func NewGetFabricVsphereStoragePoliciesForbidden() *GetFabricVsphereStoragePoliciesForbidden {
-	return &GetFabricVsphereStoragePoliciesForbidden{}
+// NewGetFabricVSphereStoragePoliciesForbidden creates a GetFabricVSphereStoragePoliciesForbidden with default headers values
+func NewGetFabricVSphereStoragePoliciesForbidden() *GetFabricVSphereStoragePoliciesForbidden {
+	return &GetFabricVSphereStoragePoliciesForbidden{}
 }
 
-/*GetFabricVsphereStoragePoliciesForbidden handles this case with default header values.
+/*GetFabricVSphereStoragePoliciesForbidden handles this case with default header values.
 
 Forbidden
 */
-type GetFabricVsphereStoragePoliciesForbidden struct {
+type GetFabricVSphereStoragePoliciesForbidden struct {
 }
 
-func (o *GetFabricVsphereStoragePoliciesForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-storage-policies][%d] getFabricVsphereStoragePoliciesForbidden ", 403)
+func (o *GetFabricVSphereStoragePoliciesForbidden) Error() string {
+	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-storage-policies][%d] getFabricVSphereStoragePoliciesForbidden ", 403)
 }
 
-func (o *GetFabricVsphereStoragePoliciesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *GetFabricVSphereStoragePoliciesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

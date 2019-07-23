@@ -48,6 +48,10 @@ type BlueprintVersion struct {
 	// Read Only: true
 	Name string `json:"name,omitempty"`
 
+	// Org ID
+	// Read Only: true
+	OrgID string `json:"orgId,omitempty"`
+
 	// Project ID
 	ProjectID string `json:"projectId,omitempty"`
 

@@ -25,7 +25,9 @@ type Client struct {
 }
 
 /*
-CreateEntitlementUsingPOST creates an entitlement for a given project
+CreateEntitlementUsingPOST creates an entitlement
+
+Creates an entitlement for a given project.
 */
 func (a *Client) CreateEntitlementUsingPOST(params *CreateEntitlementUsingPOSTParams) (*CreateEntitlementUsingPOSTOK, *CreateEntitlementUsingPOSTCreated, error) {
 	// TODO: Validate the params before sending
@@ -59,7 +61,9 @@ func (a *Client) CreateEntitlementUsingPOST(params *CreateEntitlementUsingPOSTPa
 }
 
 /*
-DeleteEntitlementUsingDELETE deletes the entitlement with the specified id
+DeleteEntitlementUsingDELETE deletes an entitlement
+
+Deletes the entitlement with the specified id.
 */
 func (a *Client) DeleteEntitlementUsingDELETE(params *DeleteEntitlementUsingDELETEParams) (*DeleteEntitlementUsingDELETENoContent, error) {
 	// TODO: Validate the params before sending
@@ -88,6 +92,8 @@ func (a *Client) DeleteEntitlementUsingDELETE(params *DeleteEntitlementUsingDELE
 
 /*
 GetEntitlementsUsingGET returns all entitlements filtered by project Id
+
+Returns all entitlements (filtered by projectId).
 */
 func (a *Client) GetEntitlementsUsingGET(params *GetEntitlementsUsingGETParams) (*GetEntitlementsUsingGETOK, error) {
 	// TODO: Validate the params before sending

@@ -52,6 +52,7 @@ type CloudAccountSpecification struct {
 	PrivateKeyID *string `json:"privateKeyId"`
 
 	// A set of Region names to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration.
+	// Required: true
 	RegionIds []string `json:"regionIds"`
 
 	// A set of tag keys and optional values to set on the Cloud Account
@@ -79,6 +80,10 @@ func (m *CloudAccountSpecification) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validatePrivateKeyID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateRegionIds(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -127,6 +132,15 @@ func (m *CloudAccountSpecification) validatePrivateKey(formats strfmt.Registry) 
 func (m *CloudAccountSpecification) validatePrivateKeyID(formats strfmt.Registry) error {
 
 	if err := validate.Required("privateKeyId", "body", m.PrivateKeyID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CloudAccountSpecification) validateRegionIds(formats strfmt.Registry) error {
+
+	if err := validate.Required("regionIds", "body", m.RegionIds); err != nil {
 		return err
 	}
 

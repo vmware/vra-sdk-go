@@ -67,12 +67,12 @@ type UpdateMachineParams struct {
 	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about
 
 	*/
-	APIVersion string
+	APIVersion *string
 	/*Body
 	  Machine Specification
 
 	*/
-	Body *models.MachineSpecification
+	Body *models.UpdateMachineSpecification
 	/*ID
 	  The ID of the Machine.
 
@@ -118,24 +118,24 @@ func (o *UpdateMachineParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithAPIVersion adds the aPIVersion to the update machine params
-func (o *UpdateMachineParams) WithAPIVersion(aPIVersion string) *UpdateMachineParams {
+func (o *UpdateMachineParams) WithAPIVersion(aPIVersion *string) *UpdateMachineParams {
 	o.SetAPIVersion(aPIVersion)
 	return o
 }
 
 // SetAPIVersion adds the apiVersion to the update machine params
-func (o *UpdateMachineParams) SetAPIVersion(aPIVersion string) {
+func (o *UpdateMachineParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
 // WithBody adds the body to the update machine params
-func (o *UpdateMachineParams) WithBody(body *models.MachineSpecification) *UpdateMachineParams {
+func (o *UpdateMachineParams) WithBody(body *models.UpdateMachineSpecification) *UpdateMachineParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the update machine params
-func (o *UpdateMachineParams) SetBody(body *models.MachineSpecification) {
+func (o *UpdateMachineParams) SetBody(body *models.UpdateMachineSpecification) {
 	o.Body = body
 }
 
@@ -158,13 +158,20 @@ func (o *UpdateMachineParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 	}
 	var res []error
 
-	// query param apiVersion
-	qrAPIVersion := o.APIVersion
-	qAPIVersion := qrAPIVersion
-	if qAPIVersion != "" {
-		if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
-			return err
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
 		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	if o.Body != nil {

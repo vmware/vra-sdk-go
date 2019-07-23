@@ -33,7 +33,7 @@ Following disk custom properties can be passed while creating a block device:
     2. storagePolicy: Defines name of the storage policy in which the disk has to be provisioned. If name of the datastore is specified in the custom properties then, datastore takes precedence.
     3. provisioningType: Defines the type of provisioning. For eg. thick/thin.
 */
-func (a *Client) CreateBlockDevice(params *CreateBlockDeviceParams) (*CreateBlockDeviceCreated, error) {
+func (a *Client) CreateBlockDevice(params *CreateBlockDeviceParams) (*CreateBlockDeviceAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateBlockDeviceParams()
@@ -54,7 +54,7 @@ func (a *Client) CreateBlockDevice(params *CreateBlockDeviceParams) (*CreateBloc
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateBlockDeviceCreated), nil
+	return result.(*CreateBlockDeviceAccepted), nil
 
 }
 
@@ -63,7 +63,7 @@ DeleteBlockDevice deletes a block device
 
 Delete a BlockDevice
 */
-func (a *Client) DeleteBlockDevice(params *DeleteBlockDeviceParams) (*DeleteBlockDeviceOK, error) {
+func (a *Client) DeleteBlockDevice(params *DeleteBlockDeviceParams) (*DeleteBlockDeviceAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteBlockDeviceParams()
@@ -84,7 +84,7 @@ func (a *Client) DeleteBlockDevice(params *DeleteBlockDeviceParams) (*DeleteBloc
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteBlockDeviceOK), nil
+	return result.(*DeleteBlockDeviceAccepted), nil
 
 }
 

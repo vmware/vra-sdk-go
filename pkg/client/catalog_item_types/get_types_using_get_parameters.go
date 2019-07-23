@@ -83,68 +83,68 @@ type GetTypesUsingGETParams struct {
 	HTTPClient *http.Client
 }
 
-// WithTimeout adds the timeout to the get types using g e t params
+// WithTimeout adds the timeout to the get types using get params
 func (o *GetTypesUsingGETParams) WithTimeout(timeout time.Duration) *GetTypesUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the get types using g e t params
+// SetTimeout adds the timeout to the get types using get params
 func (o *GetTypesUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the get types using g e t params
+// WithContext adds the context to the get types using get params
 func (o *GetTypesUsingGETParams) WithContext(ctx context.Context) *GetTypesUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the get types using g e t params
+// SetContext adds the context to the get types using get params
 func (o *GetTypesUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the get types using g e t params
+// WithHTTPClient adds the HTTPClient to the get types using get params
 func (o *GetTypesUsingGETParams) WithHTTPClient(client *http.Client) *GetTypesUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the get types using g e t params
+// SetHTTPClient adds the HTTPClient to the get types using get params
 func (o *GetTypesUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithPage adds the page to the get types using g e t params
+// WithPage adds the page to the get types using get params
 func (o *GetTypesUsingGETParams) WithPage(page *int32) *GetTypesUsingGETParams {
 	o.SetPage(page)
 	return o
 }
 
-// SetPage adds the page to the get types using g e t params
+// SetPage adds the page to the get types using get params
 func (o *GetTypesUsingGETParams) SetPage(page *int32) {
 	o.Page = page
 }
 
-// WithSize adds the size to the get types using g e t params
+// WithSize adds the size to the get types using get params
 func (o *GetTypesUsingGETParams) WithSize(size *int32) *GetTypesUsingGETParams {
 	o.SetSize(size)
 	return o
 }
 
-// SetSize adds the size to the get types using g e t params
+// SetSize adds the size to the get types using get params
 func (o *GetTypesUsingGETParams) SetSize(size *int32) {
 	o.Size = size
 }
 
-// WithSort adds the sort to the get types using g e t params
+// WithSort adds the sort to the get types using get params
 func (o *GetTypesUsingGETParams) WithSort(sort []string) *GetTypesUsingGETParams {
 	o.SetSort(sort)
 	return o
 }
 
-// SetSort adds the sort to the get types using g e t params
+// SetSort adds the sort to the get types using get params
 func (o *GetTypesUsingGETParams) SetSort(sort []string) {
 	o.Sort = sort
 }

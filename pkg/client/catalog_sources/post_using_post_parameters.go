@@ -70,7 +70,7 @@ type PostUsingPOSTParams struct {
 	*/
 	Source *models.CatalogSource
 	/*ValidationOnly
-	  If this is true, don't actually create a source or import items.The request will still return an error code if the source is invalid.
+	  If true, the source will not be created. It returns the number of items belonging to the source. The request will still return an error code if the source is invalid.
 
 	*/
 	ValidationOnly *bool

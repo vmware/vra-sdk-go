@@ -25,35 +25,69 @@ type Client struct {
 }
 
 /*
-GetCatalogAdminItemsUsingGET returns a paginated list of catalog items
+GetCatalogItemUsingGET finds a catalog item with specified id
+
+Returns the catalog item with the specified id.
 */
-func (a *Client) GetCatalogAdminItemsUsingGET(params *GetCatalogAdminItemsUsingGETParams) (*GetCatalogAdminItemsUsingGETOK, error) {
+func (a *Client) GetCatalogItemUsingGET(params *GetCatalogItemUsingGETParams) (*GetCatalogItemUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetCatalogAdminItemsUsingGETParams()
+		params = NewGetCatalogItemUsingGETParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getCatalogAdminItemsUsingGET",
+		ID:                 "getCatalogItemUsingGET",
 		Method:             "GET",
-		PathPattern:        "/catalog/api/admin/items",
+		PathPattern:        "/catalog/api/admin/items/{id}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetCatalogAdminItemsUsingGETReader{formats: a.formats},
+		Reader:             &GetCatalogItemUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetCatalogAdminItemsUsingGETOK), nil
+	return result.(*GetCatalogItemUsingGETOK), nil
+
+}
+
+/*
+GetCatalogItemsUsingGET fetches a list of catalog items
+
+Returns a paginated list of catalog items.
+*/
+func (a *Client) GetCatalogItemsUsingGET(params *GetCatalogItemsUsingGETParams) (*GetCatalogItemsUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetCatalogItemsUsingGETParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getCatalogItemsUsingGET",
+		Method:             "GET",
+		PathPattern:        "/catalog/api/admin/items",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetCatalogItemsUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetCatalogItemsUsingGETOK), nil
 
 }
 
 /*
 SetItemIconUsingPATCH sets an icon to a catalog item
+
+Updates a catalog item with specified icon id.
 */
 func (a *Client) SetItemIconUsingPATCH(params *SetItemIconUsingPATCHParams) (*SetItemIconUsingPATCHOK, *SetItemIconUsingPATCHNoContent, error) {
 	// TODO: Validate the params before sending

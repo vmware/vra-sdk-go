@@ -21,6 +21,10 @@ type ImageMappingDescription struct {
 	// Required: true
 	Links map[string]Href `json:"_links"`
 
+	// Set of ids of the cloud accounts this entity belongs to.
+	// Unique: true
+	CloudAccountIds []string `json:"cloudAccountIds"`
+
 	// Cloud config for this image. This cloud config will be merged during provisioning with other cloud configurations such as the bootConfig provided in MachineSpecification.
 	CloudConfig string `json:"cloudConfig,omitempty"`
 
@@ -70,6 +74,10 @@ func (m *ImageMappingDescription) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateCloudAccountIds(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateID(formats); err != nil {
 		res = append(res, err)
 	}
@@ -93,6 +101,19 @@ func (m *ImageMappingDescription) validateLinks(formats strfmt.Registry) error {
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *ImageMappingDescription) validateCloudAccountIds(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.CloudAccountIds) { // not required
+		return nil
+	}
+
+	if err := validate.UniqueItems("cloudAccountIds", "body", m.CloudAccountIds); err != nil {
+		return err
 	}
 
 	return nil

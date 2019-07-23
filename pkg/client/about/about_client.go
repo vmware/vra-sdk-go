@@ -27,7 +27,9 @@ type Client struct {
 /*
 GetAboutPage gets about page
 
-Get about page that contains information about the API version.
+The page contains information about the supported API versions and the latest API version. The version parameter is optional but highly recommended.
+If you do not specify explicitly an exact version, you will be calling the latest supported API version.
+Here is an example of a call which specifies the exact version you are using: `GET /iaas/api/network-profiles?apiVersion=2019-01-15`
 */
 func (a *Client) GetAboutPage(params *GetAboutPageParams) (*GetAboutPageOK, error) {
 	// TODO: Validate the params before sending

@@ -11,7 +11,7 @@
             "url": "http://www.apache.org/licenses/LICENSE-2.0"
         }
     },
-    "host": "10.33.140.5",
+    "host": "api.mgmt.cloud.vmware.com",
     "basePath": "/",
     "tags": [
         {
@@ -35,8 +35,8 @@
             "description": "Entitlements API"
         },
         {
-            "name": "health-controller",
-            "description": "Health Controller"
+            "name": "Health Status",
+            "description": "Catalog service health status."
         }
     ],
     "paths": {
@@ -45,7 +45,8 @@
                 "tags": [
                     "Entitlements"
                 ],
-                "summary": "Returns all entitlements (filtered by projectId).",
+                "summary": "Returns all entitlements filtered by projectId.",
+                "description": "Returns all entitlements (filtered by projectId).",
                 "operationId": "getEntitlementsUsingGET",
                 "produces": [
                     "*/*"
@@ -86,7 +87,8 @@
                 "tags": [
                     "Entitlements"
                 ],
-                "summary": "Creates an entitlement for a given project.",
+                "summary": "Create an entitlement.",
+                "description": "Creates an entitlement for a given project.",
                 "operationId": "createEntitlementUsingPOST",
                 "consumes": [
                     "application/json"
@@ -133,7 +135,8 @@
                 "tags": [
                     "Entitlements"
                 ],
-                "summary": "Deletes the entitlement with the specified id.",
+                "summary": "Delete an entitlement.",
+                "description": "Deletes the entitlement with the specified id.",
                 "operationId": "deleteEntitlementUsingDELETE",
                 "produces": [
                     "*/*"
@@ -167,8 +170,9 @@
                 "tags": [
                     "Catalog Admin Items"
                 ],
-                "summary": "Returns a paginated list of catalog items.",
-                "operationId": "getCatalogAdminItemsUsingGET",
+                "summary": "Fetch a list of catalog items.",
+                "description": "Returns a paginated list of catalog items.",
+                "operationId": "getCatalogItemsUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -179,7 +183,15 @@
                         "description": "Results page you want to retrieve (0..N)",
                         "required": false,
                         "type": "integer",
-                        "format": "int32"
+                        "format": "int32",
+                        "x-example": 0
+                    },
+                    {
+                        "name": "projectId",
+                        "in": "query",
+                        "description": "projectId",
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "name": "search",
@@ -194,7 +206,8 @@
                         "description": "Number of records per page.",
                         "required": false,
                         "type": "integer",
-                        "format": "int32"
+                        "format": "int32",
+                        "x-example": 20
                     },
                     {
                         "name": "sort",
@@ -252,11 +265,51 @@
             }
         },
         "/catalog/api/admin/items/{id}": {
+            "get": {
+                "tags": [
+                    "Catalog Admin Items"
+                ],
+                "summary": "Find a catalog item with specified id.",
+                "description": "Returns the catalog item with the specified id.",
+                "operationId": "getCatalogItemUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Catalog item id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CatalogItem"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            },
             "patch": {
                 "tags": [
                     "Catalog Admin Items"
                 ],
                 "summary": "Set an icon to a catalog item.",
+                "description": "Updates a catalog item with specified icon id.",
                 "operationId": "setItemIconUsingPATCH",
                 "consumes": [
                     "application/json"
@@ -305,7 +358,8 @@
                 "tags": [
                     "Catalog Sources"
                 ],
-                "summary": "Returns a paginated list of catalog sources.",
+                "summary": "Fetch catalog sources.",
+                "description": "Returns a paginated list of catalog sources.",
                 "operationId": "getPageUsingGET",
                 "produces": [
                     "*/*"
@@ -317,7 +371,16 @@
                         "description": "Results page you want to retrieve (0..N)",
                         "required": false,
                         "type": "integer",
-                        "format": "int32"
+                        "format": "int32",
+                        "x-example": 0
+                    },
+                    {
+                        "name": "projectId",
+                        "in": "query",
+                        "description": "Find sources which contains items that can be requested in the given projectId",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
                     },
                     {
                         "name": "search",
@@ -333,7 +396,8 @@
                         "description": "Number of records per page.",
                         "required": false,
                         "type": "integer",
-                        "format": "int32"
+                        "format": "int32",
+                        "x-example": 20
                     },
                     {
                         "name": "sort",
@@ -370,7 +434,8 @@
                 "tags": [
                     "Catalog Sources"
                 ],
-                "summary": "Creates a catalog source and imports catalog items from it.",
+                "summary": "Create a new catalog source.",
+                "description": "Creates a catalog source and imports catalog items from it.",
                 "operationId": "postUsingPOST",
                 "consumes": [
                     "application/json"
@@ -391,7 +456,7 @@
                     {
                         "name": "validationOnly",
                         "in": "query",
-                        "description": "If this is true, don't actually create a source or import items.The request will still return an error code if the source is invalid.",
+                        "description": "If true, the source will not be created. It returns the number of items belonging to the source. The request will still return an error code if the source is invalid.",
                         "required": false,
                         "type": "boolean",
                         "allowEmptyValue": false
@@ -425,7 +490,8 @@
                 "tags": [
                     "Catalog Sources"
                 ],
-                "summary": "Returns the catalog source with the supplied ID.",
+                "summary": "Fetch a specific catalog source for the given ID.",
+                "description": "Returns the catalog source with the supplied ID.",
                 "operationId": "getUsingGET",
                 "produces": [
                     "*/*"
@@ -463,7 +529,8 @@
                 "tags": [
                     "Catalog Sources"
                 ],
-                "summary": "Deletes the catalog source with the supplied ID.",
+                "summary": "Delete catalog source.",
+                "description": "Deletes the catalog source with the supplied ID.",
                 "operationId": "deleteUsingDELETE",
                 "produces": [
                     "*/*"
@@ -495,9 +562,10 @@
         "/catalog/api/health": {
             "get": {
                 "tags": [
-                    "health-controller"
+                    "Health Status"
                 ],
-                "summary": "Returns health of catalog service",
+                "summary": "Catalog service health.",
+                "description": "Returns health of catalog service. The HTTP 200 success status response code indicates that the health is OK.",
                 "operationId": "getHealthStatusUsingGET",
                 "produces": [
                     "*/*"
@@ -524,8 +592,9 @@
                 "tags": [
                     "Catalog Items"
                 ],
-                "summary": "Returns a paginated list of catalog items.",
-                "operationId": "getCatalogItemsUsingGET",
+                "summary": "Fetch a list of catalog items.",
+                "description": "Returns a paginated list of catalog items.",
+                "operationId": "getCatalogItemsUsingGET_1",
                 "produces": [
                     "*/*"
                 ],
@@ -544,7 +613,8 @@
                         "description": "Results page you want to retrieve (0..N)",
                         "required": false,
                         "type": "integer",
-                        "format": "int32"
+                        "format": "int32",
+                        "x-example": 0
                     },
                     {
                         "name": "projects",
@@ -572,7 +642,8 @@
                         "description": "Number of records per page.",
                         "required": false,
                         "type": "integer",
-                        "format": "int32"
+                        "format": "int32",
+                        "x-example": 20
                     },
                     {
                         "name": "sort",
@@ -623,8 +694,9 @@
                 "tags": [
                     "Catalog Items"
                 ],
-                "summary": "Returns the catalog item with the specified ID.",
-                "operationId": "getCatalogItemUsingGET",
+                "summary": "Find a catalog item with specified ID.",
+                "description": "Returns the catalog item with the specified ID.",
+                "operationId": "getCatalogItemUsingGET_1",
                 "produces": [
                     "*/*"
                 ],
@@ -671,7 +743,8 @@
                 "tags": [
                     "Catalog Items"
                 ],
-                "summary": "Creates a deployment from a catalog item.",
+                "summary": "Create a deployment.",
+                "description": "Creates a deployment from a catalog item.",
                 "operationId": "requestCatalogItemUsingPOST",
                 "consumes": [
                     "application/json"
@@ -721,12 +794,131 @@
                 "deprecated": false
             }
         },
+        "/catalog/api/items/{id}/versions": {
+            "get": {
+                "tags": [
+                    "Catalog Items"
+                ],
+                "summary": "Fetch a list of catalog items with versions.",
+                "description": "Returns a paginated list of catalog item versions.",
+                "operationId": "getVersionsUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Catalog Item ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Results page you want to retrieve (0..N)",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 0
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "Number of records per page.",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 20
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CatalogItemVersion"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/catalog/api/items/{id}/versions/{versionId}": {
+            "get": {
+                "tags": [
+                    "Catalog Items"
+                ],
+                "summary": "Fetch detailed catalog item version.",
+                "description": "Returns a detailed catalog item version.",
+                "operationId": "getVersionByIdUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Catalog Item ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "name": "versionId",
+                        "in": "path",
+                        "description": "Catalog Item Version ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CatalogItemVersion"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
         "/catalog/api/types": {
             "get": {
                 "tags": [
                     "Catalog Item Types"
                 ],
-                "summary": "Returns a paginated list of all available Catalog Item Types",
+                "summary": "Find all Catalog Item Types.",
+                "description": "Returns a paginated list of all available Catalog Item Types.",
                 "operationId": "getTypesUsingGET",
                 "produces": [
                     "*/*"
@@ -738,7 +930,8 @@
                         "description": "Results page you want to retrieve (0..N)",
                         "required": false,
                         "type": "integer",
-                        "format": "int32"
+                        "format": "int32",
+                        "x-example": 0
                     },
                     {
                         "name": "size",
@@ -746,7 +939,8 @@
                         "description": "Number of records per page.",
                         "required": false,
                         "type": "integer",
-                        "format": "int32"
+                        "format": "int32",
+                        "x-example": 20
                     },
                     {
                         "name": "sort",
@@ -785,7 +979,8 @@
                 "tags": [
                     "Catalog Item Types"
                 ],
-                "summary": "Returns the Catalog Item Type with the specified ID.",
+                "summary": "Fetch catalog item type associated with the specified ID.",
+                "description": "Returns the Catalog Item Type with the specified ID.",
                 "operationId": "getTypeByIdUsingGET",
                 "produces": [
                     "*/*"
@@ -930,6 +1125,10 @@
                 "reason": {
                     "type": "string",
                     "description": "Reason for request"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Version of the catalog item. e.g. v2.0"
                 }
             },
             "title": "CatalogItemRequest",
@@ -985,6 +1184,90 @@
             "title": "CatalogItemType",
             "description": "Represents a type of Catalog Item."
         },
+        "CatalogItemUpfrontPriceResponse": {
+            "type": "object",
+            "properties": {
+                "dailyAdditionalPrice": {
+                    "type": "number",
+                    "description": "Additional Price incurred for the catalog.",
+                    "readOnly": true
+                },
+                "dailyComputePrice": {
+                    "type": "number",
+                    "description": "Compute Price of the catalog.",
+                    "readOnly": true
+                },
+                "dailyNetworkPrice": {
+                    "type": "number",
+                    "description": "Network Price of the catalog.",
+                    "readOnly": true
+                },
+                "dailyStoragePrice": {
+                    "type": "number",
+                    "description": "Storage Price of the catalog.",
+                    "readOnly": true
+                },
+                "dailyTotalPrice": {
+                    "type": "number",
+                    "description": "Total Price of the catalog.",
+                    "readOnly": true
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Upfront price sync status",
+                    "readOnly": true,
+                    "enum": [
+                        "STARTED",
+                        "IN_PROGRESS",
+                        "SUCCESS",
+                        "ERROR",
+                        "DATA_NOT_AVAILABLE",
+                        "CURRENCY_NOT_SET"
+                    ]
+                },
+                "statusDetails": {
+                    "type": "string",
+                    "description": "Upfront price status detail.",
+                    "readOnly": true
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "Monetary unit.",
+                    "readOnly": true
+                },
+                "upfrontPriceId": {
+                    "type": "string",
+                    "description": "Id",
+                    "readOnly": true
+                }
+            },
+            "title": "CatalogItemUpfrontPriceResponse",
+            "description": "The response to a catalog item upfront price request"
+        },
+        "CatalogItemVersion": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Created At"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Version ID"
+                },
+                "schema": {
+                    "type": "object",
+                    "description": "Input Schema"
+                }
+            },
+            "title": "CatalogItemVersion",
+            "description": "Represents a version of a Catalog Item that can be requested by a consumer."
+        },
         "CatalogSource": {
             "type": "object",
             "required": [
@@ -1010,6 +1293,10 @@
                 "description": {
                     "type": "string",
                     "description": "Catalog Source description"
+                },
+                "global": {
+                    "type": "boolean",
+                    "description": "Global flag indicating that all the items can be requested across all projects."
                 },
                 "id": {
                     "type": "string",
@@ -1056,12 +1343,9 @@
                     "type": "string",
                     "description": "Catalog Source name"
                 },
-                "projectIds": {
-                    "type": "array",
-                    "description": "Associated projects that can be used for requesting",
-                    "items": {
-                        "type": "string"
-                    }
+                "projectId": {
+                    "type": "string",
+                    "description": "Project id where the source belongs"
                 },
                 "typeId": {
                     "type": "string",
@@ -1082,6 +1366,11 @@
                     "type": "string",
                     "description": "Description of either the catalog item or the catalog source"
                 },
+                "iconId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Icon id of associated catalog item (if association is with catalog item)"
+                },
                 "id": {
                     "type": "string",
                     "format": "uuid",
@@ -1099,6 +1388,10 @@
                 "sourceName": {
                     "type": "string",
                     "description": "Catalog source name"
+                },
+                "sourceType": {
+                    "type": "string",
+                    "description": "Catalog source type"
                 },
                 "type": {
                     "type": "string",

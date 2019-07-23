@@ -42,6 +42,10 @@ type BlueprintDeployment struct {
 	// Read Only: true
 	Name string `json:"name,omitempty"`
 
+	// Org ID
+	// Read Only: true
+	OrgID string `json:"orgId,omitempty"`
+
 	// Object link
 	// Read Only: true
 	SelfLink string `json:"selfLink,omitempty"`

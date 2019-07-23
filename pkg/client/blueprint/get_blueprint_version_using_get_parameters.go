@@ -77,57 +77,57 @@ type GetBlueprintVersionUsingGETParams struct {
 	HTTPClient *http.Client
 }
 
-// WithTimeout adds the timeout to the get blueprint version using g e t params
+// WithTimeout adds the timeout to the get blueprint version using get params
 func (o *GetBlueprintVersionUsingGETParams) WithTimeout(timeout time.Duration) *GetBlueprintVersionUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the get blueprint version using g e t params
+// SetTimeout adds the timeout to the get blueprint version using get params
 func (o *GetBlueprintVersionUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the get blueprint version using g e t params
+// WithContext adds the context to the get blueprint version using get params
 func (o *GetBlueprintVersionUsingGETParams) WithContext(ctx context.Context) *GetBlueprintVersionUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the get blueprint version using g e t params
+// SetContext adds the context to the get blueprint version using get params
 func (o *GetBlueprintVersionUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the get blueprint version using g e t params
+// WithHTTPClient adds the HTTPClient to the get blueprint version using get params
 func (o *GetBlueprintVersionUsingGETParams) WithHTTPClient(client *http.Client) *GetBlueprintVersionUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the get blueprint version using g e t params
+// SetHTTPClient adds the HTTPClient to the get blueprint version using get params
 func (o *GetBlueprintVersionUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithBlueprintID adds the blueprintID to the get blueprint version using g e t params
+// WithBlueprintID adds the blueprintID to the get blueprint version using get params
 func (o *GetBlueprintVersionUsingGETParams) WithBlueprintID(blueprintID strfmt.UUID) *GetBlueprintVersionUsingGETParams {
 	o.SetBlueprintID(blueprintID)
 	return o
 }
 
-// SetBlueprintID adds the blueprintId to the get blueprint version using g e t params
+// SetBlueprintID adds the blueprintId to the get blueprint version using get params
 func (o *GetBlueprintVersionUsingGETParams) SetBlueprintID(blueprintID strfmt.UUID) {
 	o.BlueprintID = blueprintID
 }
 
-// WithVersion adds the version to the get blueprint version using g e t params
+// WithVersion adds the version to the get blueprint version using get params
 func (o *GetBlueprintVersionUsingGETParams) WithVersion(version string) *GetBlueprintVersionUsingGETParams {
 	o.SetVersion(version)
 	return o
 }
 
-// SetVersion adds the version to the get blueprint version using g e t params
+// SetVersion adds the version to the get blueprint version using get params
 func (o *GetBlueprintVersionUsingGETParams) SetVersion(version string) {
 	o.Version = version
 }

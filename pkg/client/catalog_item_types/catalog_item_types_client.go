@@ -25,7 +25,9 @@ type Client struct {
 }
 
 /*
-GetTypeByIDUsingGET returns the catalog item type with the specified ID
+GetTypeByIDUsingGET fetches catalog item type associated with the specified ID
+
+Returns the Catalog Item Type with the specified ID.
 */
 func (a *Client) GetTypeByIDUsingGET(params *GetTypeByIDUsingGETParams) (*GetTypeByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -53,7 +55,9 @@ func (a *Client) GetTypeByIDUsingGET(params *GetTypeByIDUsingGETParams) (*GetTyp
 }
 
 /*
-GetTypesUsingGET returns a paginated list of all available catalog item types
+GetTypesUsingGET finds all catalog item types
+
+Returns a paginated list of all available Catalog Item Types.
 */
 func (a *Client) GetTypesUsingGET(params *GetTypesUsingGETParams) (*GetTypesUsingGETOK, error) {
 	// TODO: Validate the params before sending

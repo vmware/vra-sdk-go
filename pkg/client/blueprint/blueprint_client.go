@@ -183,6 +183,34 @@ func (a *Client) GetBlueprintUsingGET(params *GetBlueprintUsingGETParams) (*GetB
 }
 
 /*
+GetBlueprintVersionInputsSchemaUsingGET returns blueprint version inputs schema
+*/
+func (a *Client) GetBlueprintVersionInputsSchemaUsingGET(params *GetBlueprintVersionInputsSchemaUsingGETParams) (*GetBlueprintVersionInputsSchemaUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetBlueprintVersionInputsSchemaUsingGETParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getBlueprintVersionInputsSchemaUsingGET",
+		Method:             "GET",
+		PathPattern:        "/blueprint/api/blueprints/{blueprintId}/versions/{version}/inputs-schema",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetBlueprintVersionInputsSchemaUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetBlueprintVersionInputsSchemaUsingGETOK), nil
+
+}
+
+/*
 GetBlueprintVersionUsingGET returns versioned blueprint details
 */
 func (a *Client) GetBlueprintVersionUsingGET(params *GetBlueprintVersionUsingGETParams) (*GetBlueprintVersionUsingGETOK, error) {

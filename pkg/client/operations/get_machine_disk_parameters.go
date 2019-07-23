@@ -65,7 +65,7 @@ type GetMachineDiskParams struct {
 	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about
 
 	*/
-	APIVersion string
+	APIVersion *string
 	/*ID
 	  The ID of the machine.
 
@@ -116,13 +116,13 @@ func (o *GetMachineDiskParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithAPIVersion adds the aPIVersion to the get machine disk params
-func (o *GetMachineDiskParams) WithAPIVersion(aPIVersion string) *GetMachineDiskParams {
+func (o *GetMachineDiskParams) WithAPIVersion(aPIVersion *string) *GetMachineDiskParams {
 	o.SetAPIVersion(aPIVersion)
 	return o
 }
 
 // SetAPIVersion adds the apiVersion to the get machine disk params
-func (o *GetMachineDiskParams) SetAPIVersion(aPIVersion string) {
+func (o *GetMachineDiskParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
@@ -156,13 +156,20 @@ func (o *GetMachineDiskParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 	}
 	var res []error
 
-	// query param apiVersion
-	qrAPIVersion := o.APIVersion
-	qAPIVersion := qrAPIVersion
-	if qAPIVersion != "" {
-		if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
-			return err
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
 		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	// path param id

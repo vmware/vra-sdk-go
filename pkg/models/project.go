@@ -36,6 +36,9 @@ type Project struct {
 	// Required: true
 	ID *string `json:"id"`
 
+	// The naming template to be used for machines provisioned in this project
+	MachineNamingTemplate string `json:"machineNamingTemplate,omitempty"`
+
 	// List of member users associated with the project.
 	Members []*User `json:"members"`
 

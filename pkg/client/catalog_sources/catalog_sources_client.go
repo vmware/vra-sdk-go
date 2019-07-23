@@ -25,7 +25,9 @@ type Client struct {
 }
 
 /*
-DeleteUsingDELETE deletes the catalog source with the supplied ID
+DeleteUsingDELETE deletes catalog source
+
+Deletes the catalog source with the supplied ID.
 */
 func (a *Client) DeleteUsingDELETE(params *DeleteUsingDELETEParams) (*DeleteUsingDELETENoContent, error) {
 	// TODO: Validate the params before sending
@@ -53,7 +55,9 @@ func (a *Client) DeleteUsingDELETE(params *DeleteUsingDELETEParams) (*DeleteUsin
 }
 
 /*
-GetPageUsingGET returns a paginated list of catalog sources
+GetPageUsingGET fetches catalog sources
+
+Returns a paginated list of catalog sources.
 */
 func (a *Client) GetPageUsingGET(params *GetPageUsingGETParams) (*GetPageUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -81,7 +85,9 @@ func (a *Client) GetPageUsingGET(params *GetPageUsingGETParams) (*GetPageUsingGE
 }
 
 /*
-GetUsingGET returns the catalog source with the supplied ID
+GetUsingGET fetches a specific catalog source for the given ID
+
+Returns the catalog source with the supplied ID.
 */
 func (a *Client) GetUsingGET(params *GetUsingGETParams) (*GetUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -109,7 +115,9 @@ func (a *Client) GetUsingGET(params *GetUsingGETParams) (*GetUsingGETOK, error) 
 }
 
 /*
-PostUsingPOST creates a catalog source and imports catalog items from it
+PostUsingPOST creates a new catalog source
+
+Creates a catalog source and imports catalog items from it.
 */
 func (a *Client) PostUsingPOST(params *PostUsingPOSTParams) (*PostUsingPOSTOK, *PostUsingPOSTCreated, error) {
 	// TODO: Validate the params before sending

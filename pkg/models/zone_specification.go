@@ -19,6 +19,9 @@ import (
 // swagger:model ZoneSpecification
 type ZoneSpecification struct {
 
+	// A list of key value pair of properties that will  be used
+	CustomProperties map[string]string `json:"customProperties,omitempty"`
+
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
 

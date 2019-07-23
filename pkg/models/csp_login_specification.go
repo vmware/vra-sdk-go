@@ -17,9 +17,6 @@ import (
 // swagger:model CspLoginSpecification
 type CspLoginSpecification struct {
 
-	// Hostname or ip of machine
-	Host string `json:"host,omitempty"`
-
 	// Refresh token obtained from the UI
 	// Required: true
 	RefreshToken *string `json:"refreshToken"`

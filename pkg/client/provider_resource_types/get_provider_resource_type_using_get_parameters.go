@@ -72,46 +72,46 @@ type GetProviderResourceTypeUsingGETParams struct {
 	HTTPClient *http.Client
 }
 
-// WithTimeout adds the timeout to the get provider resource type using g e t params
+// WithTimeout adds the timeout to the get provider resource type using get params
 func (o *GetProviderResourceTypeUsingGETParams) WithTimeout(timeout time.Duration) *GetProviderResourceTypeUsingGETParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the get provider resource type using g e t params
+// SetTimeout adds the timeout to the get provider resource type using get params
 func (o *GetProviderResourceTypeUsingGETParams) SetTimeout(timeout time.Duration) {
 	o.timeout = timeout
 }
 
-// WithContext adds the context to the get provider resource type using g e t params
+// WithContext adds the context to the get provider resource type using get params
 func (o *GetProviderResourceTypeUsingGETParams) WithContext(ctx context.Context) *GetProviderResourceTypeUsingGETParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the get provider resource type using g e t params
+// SetContext adds the context to the get provider resource type using get params
 func (o *GetProviderResourceTypeUsingGETParams) SetContext(ctx context.Context) {
 	o.Context = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the get provider resource type using g e t params
+// WithHTTPClient adds the HTTPClient to the get provider resource type using get params
 func (o *GetProviderResourceTypeUsingGETParams) WithHTTPClient(client *http.Client) *GetProviderResourceTypeUsingGETParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the get provider resource type using g e t params
+// SetHTTPClient adds the HTTPClient to the get provider resource type using get params
 func (o *GetProviderResourceTypeUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithResourceTypeID adds the resourceTypeID to the get provider resource type using g e t params
+// WithResourceTypeID adds the resourceTypeID to the get provider resource type using get params
 func (o *GetProviderResourceTypeUsingGETParams) WithResourceTypeID(resourceTypeID strfmt.UUID) *GetProviderResourceTypeUsingGETParams {
 	o.SetResourceTypeID(resourceTypeID)
 	return o
 }
 
-// SetResourceTypeID adds the resourceTypeId to the get provider resource type using g e t params
+// SetResourceTypeID adds the resourceTypeId to the get provider resource type using get params
 func (o *GetProviderResourceTypeUsingGETParams) SetResourceTypeID(resourceTypeID strfmt.UUID) {
 	o.ResourceTypeID = resourceTypeID
 }

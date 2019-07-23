@@ -24,6 +24,9 @@ type Deployment struct {
 	// Deployment blueprint id
 	BlueprintID string `json:"blueprintId,omitempty"`
 
+	// Deployment blueprint version
+	BlueprintVersion string `json:"blueprintVersion,omitempty"`
+
 	// Deployment catalog item id
 	CatalogItemID string `json:"catalogItemId,omitempty"`
 
@@ -40,9 +43,6 @@ type Deployment struct {
 	// Expense associated with the deployment.
 	// Read Only: true
 	Expense *Expense `json:"expense,omitempty"`
-
-	// Icon link
-	IconLink string `json:"iconLink,omitempty"`
 
 	// Id of the deployment
 	// Format: uuid
@@ -75,11 +75,12 @@ type Deployment struct {
 	// Deployment project id
 	ProjectID string `json:"projectId,omitempty"`
 
-	// Resource links
-	ResourceLinks []string `json:"resourceLinks"`
-
 	// Expanded resources for the deployment. Content of this property will not be maintained backward compatible
+	// Read Only: true
 	Resources []*Resource `json:"resources"`
+
+	// simulated
+	Simulated bool `json:"simulated,omitempty"`
 }
 
 // Validate validates this deployment

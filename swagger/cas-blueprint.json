@@ -11,7 +11,7 @@
             "url": "http://www.apache.org/licenses/LICENSE-2.0"
         }
     },
-    "host": "10.33.140.5",
+    "host": "api.mgmt.cloud.vmware.com",
     "basePath": "/",
     "tags": [
         {
@@ -96,7 +96,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/QueryResult\u00abBlueprintRequestEvent\u00bb"
+                            "$ref": "#/definitions/BlueprintRequestEventQueryResult"
                         }
                     },
                     "401": {
@@ -194,7 +194,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/QueryResult\u00abBlueprintRequest\u00bb"
+                            "$ref": "#/definitions/BlueprintRequestQueryResult"
                         }
                     },
                     "401": {
@@ -332,7 +332,8 @@
                         "in": "path",
                         "description": "requestId",
                         "required": true,
-                        "type": "string"
+                        "type": "string",
+                        "format": "uuid"
                     }
                 ],
                 "responses": {
@@ -663,7 +664,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/QueryResult\u00abBlueprint\u00bb"
+                            "$ref": "#/definitions/BlueprintQueryResult"
                         }
                     },
                     "401": {
@@ -740,7 +741,8 @@
                         "in": "path",
                         "description": "blueprintId",
                         "required": true,
-                        "type": "string"
+                        "type": "string",
+                        "format": "uuid"
                     }
                 ],
                 "responses": {
@@ -1251,6 +1253,52 @@
                 "deprecated": false
             }
         },
+        "/blueprint/api/blueprints/{blueprintId}/versions/{version}/inputs-schema": {
+            "get": {
+                "tags": [
+                    "blueprint"
+                ],
+                "summary": "Returns blueprint version inputs schema",
+                "operationId": "getBlueprintVersionInputsSchemaUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "blueprintId",
+                        "in": "path",
+                        "description": "blueprintId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "description": "version",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PropertyDefinition"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
         "/blueprint/api/provider-resources": {
             "get": {
                 "tags": [
@@ -1329,7 +1377,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/QueryResult\u00abProviderResourceType\u00bb"
+                            "$ref": "#/definitions/ProviderResourceTypeQueryResult"
                         }
                     },
                     "401": {
@@ -1456,6 +1504,11 @@
                     "type": "string",
                     "description": "Blueprint name"
                 },
+                "orgId": {
+                    "type": "string",
+                    "description": "Org ID",
+                    "readOnly": true
+                },
                 "projectId": {
                     "type": "string",
                     "description": "Project ID"
@@ -1464,6 +1517,10 @@
                     "type": "string",
                     "description": "Project Name",
                     "readOnly": true
+                },
+                "requestScopeOrg": {
+                    "type": "boolean",
+                    "description": "Flag to indicate blueprint can be requested from any project in org"
                 },
                 "selfLink": {
                     "type": "string",
@@ -1563,6 +1620,11 @@
                 "name": {
                     "type": "string",
                     "description": "Blueprint deployment name",
+                    "readOnly": true
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Org ID",
                     "readOnly": true
                 },
                 "selfLink": {
@@ -1790,6 +1852,44 @@
             },
             "title": "BlueprintPlanTask"
         },
+        "BlueprintQueryResult": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "Count",
+                    "readOnly": true
+                },
+                "links": {
+                    "type": "array",
+                    "description": "List of links",
+                    "readOnly": true,
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "nextPageLink": {
+                    "type": "string",
+                    "description": "Next page link",
+                    "readOnly": true
+                },
+                "objects": {
+                    "type": "array",
+                    "description": "List of objects",
+                    "readOnly": true,
+                    "items": {
+                        "$ref": "#/definitions/Blueprint"
+                    }
+                },
+                "prevPageLink": {
+                    "type": "string",
+                    "description": "Previous page link",
+                    "readOnly": true
+                }
+            },
+            "title": "BlueprintQueryResult"
+        },
         "BlueprintRequest": {
             "type": "object",
             "properties": {
@@ -1864,9 +1964,18 @@
                     "description": "Object ID",
                     "readOnly": true
                 },
+                "ignoreDeleteFailures": {
+                    "type": "boolean",
+                    "description": "Ignore delete failures in blueprint request"
+                },
                 "inputs": {
                     "type": "object",
                     "description": "Blueprint request inputs"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Org ID",
+                    "readOnly": true
                 },
                 "plan": {
                     "type": "boolean",
@@ -1964,6 +2073,11 @@
                     "description": "Object ID",
                     "readOnly": true
                 },
+                "orgId": {
+                    "type": "string",
+                    "description": "Org ID",
+                    "readOnly": true
+                },
                 "projectId": {
                     "type": "string",
                     "description": "Project ID"
@@ -2012,6 +2126,82 @@
                 }
             },
             "title": "BlueprintRequestEvent"
+        },
+        "BlueprintRequestEventQueryResult": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "Count",
+                    "readOnly": true
+                },
+                "links": {
+                    "type": "array",
+                    "description": "List of links",
+                    "readOnly": true,
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "nextPageLink": {
+                    "type": "string",
+                    "description": "Next page link",
+                    "readOnly": true
+                },
+                "objects": {
+                    "type": "array",
+                    "description": "List of objects",
+                    "readOnly": true,
+                    "items": {
+                        "$ref": "#/definitions/BlueprintRequestEvent"
+                    }
+                },
+                "prevPageLink": {
+                    "type": "string",
+                    "description": "Previous page link",
+                    "readOnly": true
+                }
+            },
+            "title": "BlueprintRequestEventQueryResult"
+        },
+        "BlueprintRequestQueryResult": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "Count",
+                    "readOnly": true
+                },
+                "links": {
+                    "type": "array",
+                    "description": "List of links",
+                    "readOnly": true,
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "nextPageLink": {
+                    "type": "string",
+                    "description": "Next page link",
+                    "readOnly": true
+                },
+                "objects": {
+                    "type": "array",
+                    "description": "List of objects",
+                    "readOnly": true,
+                    "items": {
+                        "$ref": "#/definitions/BlueprintRequest"
+                    }
+                },
+                "prevPageLink": {
+                    "type": "string",
+                    "description": "Previous page link",
+                    "readOnly": true
+                }
+            },
+            "title": "BlueprintRequestQueryResult"
         },
         "BlueprintResourcesPlan": {
             "type": "object",
@@ -2091,6 +2281,14 @@
                     "description": "Validation message",
                     "readOnly": true
                 },
+                "metadata": {
+                    "type": "object",
+                    "description": "Metadata",
+                    "readOnly": true,
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
                 "path": {
                     "type": "string",
                     "description": "Validation path",
@@ -2100,6 +2298,16 @@
                     "type": "string",
                     "description": "Resource name",
                     "readOnly": true
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Message type",
+                    "readOnly": true,
+                    "enum": [
+                        "INFO",
+                        "WARNING",
+                        "ERROR"
+                    ]
                 }
             },
             "title": "BlueprintValidationMessage"
@@ -2109,6 +2317,7 @@
             "properties": {
                 "blueprintId": {
                     "type": "string",
+                    "format": "uuid",
                     "description": "Blueprint Id"
                 },
                 "content": {
@@ -2182,6 +2391,11 @@
                 "name": {
                     "type": "string",
                     "description": "Blueprint name",
+                    "readOnly": true
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Org ID",
                     "readOnly": true
                 },
                 "projectId": {
@@ -2307,24 +2521,16 @@
                     "type": "string",
                     "description": "Blueprint version description"
                 },
+                "release": {
+                    "type": "boolean",
+                    "description": "Flag indicating to release version"
+                },
                 "version": {
                     "type": "string",
                     "description": "Blueprint version"
                 }
             },
             "title": "BlueprintVersionRequest"
-        },
-        "DeferredResult\u00abResponseEntity\u00abDeploymentResource\u00bb\u00bb": {
-            "type": "object",
-            "properties": {
-                "result": {
-                    "type": "object"
-                },
-                "setOrExpired": {
-                    "type": "boolean"
-                }
-            },
-            "title": "DeferredResult\u00abResponseEntity\u00abDeploymentResource\u00bb\u00bb"
         },
         "DeploymentResource": {
             "type": "object",
@@ -2352,17 +2558,14 @@
                     "type": "object",
                     "description": "Resource properties"
                 },
-                "resourceId": {
+                "state": {
                     "type": "string",
-                    "description": "Resource ID"
-                },
-                "resourceName": {
-                    "type": "string",
-                    "description": "Resource name"
-                },
-                "resourceType": {
-                    "type": "string",
-                    "description": "Resource type"
+                    "description": "Resource state",
+                    "enum": [
+                        "PARTIAL",
+                        "TAINTED",
+                        "OK"
+                    ]
                 },
                 "type": {
                     "type": "string",
@@ -2382,6 +2585,9 @@
                 },
                 "computed": {
                     "type": "boolean"
+                },
+                "const": {
+                    "type": "object"
                 },
                 "default": {
                     "type": "object"
@@ -2454,6 +2660,9 @@
                         "$ref": "#/definitions/PropertyDefinition"
                     }
                 },
+                "readOnly": {
+                    "type": "boolean"
+                },
                 "recreateOnUpdate": {
                     "type": "boolean"
                 },
@@ -2470,6 +2679,9 @@
                     "type": "string"
                 },
                 "uniqueItems": {
+                    "type": "boolean"
+                },
+                "writeOnly": {
                     "type": "boolean"
                 }
             },
@@ -2516,6 +2728,11 @@
                     "additionalProperties": {
                         "type": "string"
                     }
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Org ID",
+                    "readOnly": true
                 },
                 "providerId": {
                     "type": "string",
@@ -2569,159 +2786,7 @@
             },
             "title": "ProviderResourceType"
         },
-        "QueryResult\u00abBlueprintRequestEvent\u00bb": {
-            "type": "object",
-            "properties": {
-                "count": {
-                    "type": "integer",
-                    "format": "int64",
-                    "description": "Count",
-                    "readOnly": true
-                },
-                "links": {
-                    "type": "array",
-                    "description": "List of links",
-                    "readOnly": true,
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "nextPageLink": {
-                    "type": "string",
-                    "description": "Next page link",
-                    "readOnly": true
-                },
-                "objects": {
-                    "type": "array",
-                    "description": "List of objects",
-                    "readOnly": true,
-                    "items": {
-                        "$ref": "#/definitions/BlueprintRequestEvent"
-                    }
-                },
-                "prevPageLink": {
-                    "type": "string",
-                    "description": "Previous page link",
-                    "readOnly": true
-                }
-            },
-            "title": "QueryResult\u00abBlueprintRequestEvent\u00bb"
-        },
-        "QueryResult\u00abBlueprintRequest\u00bb": {
-            "type": "object",
-            "properties": {
-                "count": {
-                    "type": "integer",
-                    "format": "int64",
-                    "description": "Count",
-                    "readOnly": true
-                },
-                "links": {
-                    "type": "array",
-                    "description": "List of links",
-                    "readOnly": true,
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "nextPageLink": {
-                    "type": "string",
-                    "description": "Next page link",
-                    "readOnly": true
-                },
-                "objects": {
-                    "type": "array",
-                    "description": "List of objects",
-                    "readOnly": true,
-                    "items": {
-                        "$ref": "#/definitions/BlueprintRequest"
-                    }
-                },
-                "prevPageLink": {
-                    "type": "string",
-                    "description": "Previous page link",
-                    "readOnly": true
-                }
-            },
-            "title": "QueryResult\u00abBlueprintRequest\u00bb"
-        },
-        "QueryResult\u00abBlueprintVersion\u00bb": {
-            "type": "object",
-            "properties": {
-                "count": {
-                    "type": "integer",
-                    "format": "int64",
-                    "description": "Count",
-                    "readOnly": true
-                },
-                "links": {
-                    "type": "array",
-                    "description": "List of links",
-                    "readOnly": true,
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "nextPageLink": {
-                    "type": "string",
-                    "description": "Next page link",
-                    "readOnly": true
-                },
-                "objects": {
-                    "type": "array",
-                    "description": "List of objects",
-                    "readOnly": true,
-                    "items": {
-                        "$ref": "#/definitions/BlueprintVersion"
-                    }
-                },
-                "prevPageLink": {
-                    "type": "string",
-                    "description": "Previous page link",
-                    "readOnly": true
-                }
-            },
-            "title": "QueryResult\u00abBlueprintVersion\u00bb"
-        },
-        "QueryResult\u00abBlueprint\u00bb": {
-            "type": "object",
-            "properties": {
-                "count": {
-                    "type": "integer",
-                    "format": "int64",
-                    "description": "Count",
-                    "readOnly": true
-                },
-                "links": {
-                    "type": "array",
-                    "description": "List of links",
-                    "readOnly": true,
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "nextPageLink": {
-                    "type": "string",
-                    "description": "Next page link",
-                    "readOnly": true
-                },
-                "objects": {
-                    "type": "array",
-                    "description": "List of objects",
-                    "readOnly": true,
-                    "items": {
-                        "$ref": "#/definitions/Blueprint"
-                    }
-                },
-                "prevPageLink": {
-                    "type": "string",
-                    "description": "Previous page link",
-                    "readOnly": true
-                }
-            },
-            "title": "QueryResult\u00abBlueprint\u00bb"
-        },
-        "QueryResult\u00abProviderResourceType\u00bb": {
+        "ProviderResourceTypeQueryResult": {
             "type": "object",
             "properties": {
                 "count": {
@@ -2757,7 +2822,7 @@
                     "readOnly": true
                 }
             },
-            "title": "QueryResult\u00abProviderResourceType\u00bb"
+            "title": "ProviderResourceTypeQueryResult"
         }
     }
 }

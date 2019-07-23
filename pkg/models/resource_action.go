@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
@@ -17,11 +19,9 @@ import (
 // swagger:model ResourceAction
 type ResourceAction struct {
 
-	// Resource action scope
-	ActionCriteria *Criteria `json:"actionCriteria,omitempty"`
-
-	// Resource action scope
-	Criteria string `json:"criteria,omitempty"`
+	// Resource action type
+	// Enum: [RESOURCE_ACTION RESOURCE_EXTENSION]
+	ActionType string `json:"actionType,omitempty"`
 
 	// Dependent resources
 	Dependents []string `json:"dependents"`
@@ -32,15 +32,20 @@ type ResourceAction struct {
 	// Resource action display name
 	DisplayName string `json:"displayName,omitempty"`
 
-	// Resource action has form
-	HasForm bool `json:"hasForm,omitempty"`
+	// Resource action custom UI definition. Optional
+	FormDefinition *FormDefinition `json:"formDefinition,omitempty"`
 
 	// Resource action id
-	// Format: uuid
-	ID strfmt.UUID `json:"id,omitempty"`
+	ID string `json:"id,omitempty"`
 
 	// Resource action name
 	Name string `json:"name,omitempty"`
+
+	// Resource action org ID
+	OrgID string `json:"orgId,omitempty"`
+
+	// Resource action project ID
+	ProjectID string `json:"projectId,omitempty"`
 
 	// Resource action input schema
 	Schema interface{} `json:"schema,omitempty"`
@@ -53,11 +58,11 @@ type ResourceAction struct {
 func (m *ResourceAction) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateActionCriteria(formats); err != nil {
+	if err := m.validateActionType(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateID(formats); err != nil {
+	if err := m.validateFormDefinition(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -67,32 +72,62 @@ func (m *ResourceAction) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *ResourceAction) validateActionCriteria(formats strfmt.Registry) error {
+var resourceActionTypeActionTypePropEnum []interface{}
 
-	if swag.IsZero(m.ActionCriteria) { // not required
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["RESOURCE_ACTION","RESOURCE_EXTENSION"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		resourceActionTypeActionTypePropEnum = append(resourceActionTypeActionTypePropEnum, v)
+	}
+}
+
+const (
+
+	// ResourceActionActionTypeRESOURCEACTION captures enum value "RESOURCE_ACTION"
+	ResourceActionActionTypeRESOURCEACTION string = "RESOURCE_ACTION"
+
+	// ResourceActionActionTypeRESOURCEEXTENSION captures enum value "RESOURCE_EXTENSION"
+	ResourceActionActionTypeRESOURCEEXTENSION string = "RESOURCE_EXTENSION"
+)
+
+// prop value enum
+func (m *ResourceAction) validateActionTypeEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, resourceActionTypeActionTypePropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *ResourceAction) validateActionType(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.ActionType) { // not required
 		return nil
 	}
 
-	if m.ActionCriteria != nil {
-		if err := m.ActionCriteria.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("actionCriteria")
-			}
-			return err
-		}
+	// value enum
+	if err := m.validateActionTypeEnum("actionType", "body", m.ActionType); err != nil {
+		return err
 	}
 
 	return nil
 }
 
-func (m *ResourceAction) validateID(formats strfmt.Registry) error {
+func (m *ResourceAction) validateFormDefinition(formats strfmt.Registry) error {
 
-	if swag.IsZero(m.ID) { // not required
+	if swag.IsZero(m.FormDefinition) { // not required
 		return nil
 	}
 
-	if err := validate.FormatOf("id", "body", "uuid", m.ID.String(), formats); err != nil {
-		return err
+	if m.FormDefinition != nil {
+		if err := m.FormDefinition.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("formDefinition")
+			}
+			return err
+		}
 	}
 
 	return nil

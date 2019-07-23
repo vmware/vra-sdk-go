@@ -25,8 +25,8 @@ type UpdateVSphereStorageProfileReader struct {
 func (o *UpdateVSphereStorageProfileReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 201:
-		result := NewUpdateVSphereStorageProfileCreated()
+	case 200:
+		result := NewUpdateVSphereStorageProfileOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -51,24 +51,24 @@ func (o *UpdateVSphereStorageProfileReader) ReadResponse(response runtime.Client
 	}
 }
 
-// NewUpdateVSphereStorageProfileCreated creates a UpdateVSphereStorageProfileCreated with default headers values
-func NewUpdateVSphereStorageProfileCreated() *UpdateVSphereStorageProfileCreated {
-	return &UpdateVSphereStorageProfileCreated{}
+// NewUpdateVSphereStorageProfileOK creates a UpdateVSphereStorageProfileOK with default headers values
+func NewUpdateVSphereStorageProfileOK() *UpdateVSphereStorageProfileOK {
+	return &UpdateVSphereStorageProfileOK{}
 }
 
-/*UpdateVSphereStorageProfileCreated handles this case with default header values.
+/*UpdateVSphereStorageProfileOK handles this case with default header values.
 
 successful operation
 */
-type UpdateVSphereStorageProfileCreated struct {
+type UpdateVSphereStorageProfileOK struct {
 	Payload *models.VsphereStorageProfile
 }
 
-func (o *UpdateVSphereStorageProfileCreated) Error() string {
-	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-vsphere/{id}][%d] updateVSphereStorageProfileCreated  %+v", 201, o.Payload)
+func (o *UpdateVSphereStorageProfileOK) Error() string {
+	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-vsphere/{id}][%d] updateVSphereStorageProfileOK  %+v", 200, o.Payload)
 }
 
-func (o *UpdateVSphereStorageProfileCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *UpdateVSphereStorageProfileOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.VsphereStorageProfile)
 

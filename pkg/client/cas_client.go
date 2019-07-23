@@ -23,7 +23,9 @@ import (
 	"github.com/vmware/cas-sdk-go/pkg/client/cloud_account"
 	"github.com/vmware/cas-sdk-go/pkg/client/compute"
 	"github.com/vmware/cas-sdk-go/pkg/client/data_collector"
-	"github.com/vmware/cas-sdk-go/pkg/client/deployment_requests"
+	"github.com/vmware/cas-sdk-go/pkg/client/deployment_actions"
+	"github.com/vmware/cas-sdk-go/pkg/client/deployment_and_deployment_resource_actions_admin_api"
+	"github.com/vmware/cas-sdk-go/pkg/client/deployment_events"
 	"github.com/vmware/cas-sdk-go/pkg/client/deployments"
 	"github.com/vmware/cas-sdk-go/pkg/client/disk"
 	"github.com/vmware/cas-sdk-go/pkg/client/entitlements"
@@ -36,7 +38,7 @@ import (
 	"github.com/vmware/cas-sdk-go/pkg/client/fabric_vsphere_storage_policies"
 	"github.com/vmware/cas-sdk-go/pkg/client/flavor_profile"
 	"github.com/vmware/cas-sdk-go/pkg/client/flavors"
-	"github.com/vmware/cas-sdk-go/pkg/client/health_controller"
+	"github.com/vmware/cas-sdk-go/pkg/client/health_status"
 	"github.com/vmware/cas-sdk-go/pkg/client/image_profile"
 	"github.com/vmware/cas-sdk-go/pkg/client/images"
 	"github.com/vmware/cas-sdk-go/pkg/client/load_balancer"
@@ -50,9 +52,10 @@ import (
 	"github.com/vmware/cas-sdk-go/pkg/client/request"
 	"github.com/vmware/cas-sdk-go/pkg/client/security_group"
 	"github.com/vmware/cas-sdk-go/pkg/client/storage_profile"
+	"github.com/vmware/cas-sdk-go/pkg/client/tags"
 )
 
-// Default multicloud iaas HTTP client.
+// Default vmware cloud assembly iaas HTTP client.
 var Default = NewHTTPClient(nil)
 
 const (
@@ -67,12 +70,12 @@ const (
 // DefaultSchemes are the default schemes found in Meta (info) section of spec file
 var DefaultSchemes = []string{"https"}
 
-// NewHTTPClient creates a new multicloud iaas HTTP client.
+// NewHTTPClient creates a new vmware cloud assembly iaas HTTP client.
 func NewHTTPClient(formats strfmt.Registry) *MulticloudIaaS {
 	return NewHTTPClientWithConfig(formats, nil)
 }
 
-// NewHTTPClientWithConfig creates a new multicloud iaas HTTP client,
+// NewHTTPClientWithConfig creates a new vmware cloud assembly iaas HTTP client,
 // using a customizable transport config.
 func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *MulticloudIaaS {
 	// ensure nullable parameters have default
@@ -85,7 +88,7 @@ func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *Mul
 	return New(transport, formats)
 }
 
-// New creates a new multicloud iaas client
+// New creates a new vmware cloud assembly iaas client
 func New(transport runtime.ClientTransport, formats strfmt.Registry) *MulticloudIaaS {
 	// ensure nullable parameters have default
 	if formats == nil {
@@ -119,7 +122,11 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 
 	cli.DataCollector = data_collector.New(transport, formats)
 
-	cli.DeploymentRequests = deployment_requests.New(transport, formats)
+	cli.DeploymentActions = deployment_actions.New(transport, formats)
+
+	cli.DeploymentAndDeploymentResourceActionsAdminAPI = deployment_and_deployment_resource_actions_admin_api.New(transport, formats)
+
+	cli.DeploymentEvents = deployment_events.New(transport, formats)
 
 	cli.Deployments = deployments.New(transport, formats)
 
@@ -145,7 +152,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 
 	cli.Flavors = flavors.New(transport, formats)
 
-	cli.HealthController = health_controller.New(transport, formats)
+	cli.HealthStatus = health_status.New(transport, formats)
 
 	cli.ImageProfile = image_profile.New(transport, formats)
 
@@ -172,6 +179,8 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 	cli.SecurityGroup = security_group.New(transport, formats)
 
 	cli.StorageProfile = storage_profile.New(transport, formats)
+
+	cli.Tags = tags.New(transport, formats)
 
 	return cli
 }
@@ -215,7 +224,7 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 	return cfg
 }
 
-// MulticloudIaaS is a client for multicloud iaa s
+// MulticloudIaaS is a client for vmware cloud assembly iaa s
 type MulticloudIaaS struct {
 	About *about.Client
 
@@ -241,7 +250,11 @@ type MulticloudIaaS struct {
 
 	DataCollector *data_collector.Client
 
-	DeploymentRequests *deployment_requests.Client
+	DeploymentActions *deployment_actions.Client
+
+	DeploymentAndDeploymentResourceActionsAdminAPI *deployment_and_deployment_resource_actions_admin_api.Client
+
+	DeploymentEvents *deployment_events.Client
 
 	Deployments *deployments.Client
 
@@ -267,7 +280,7 @@ type MulticloudIaaS struct {
 
 	Flavors *flavors.Client
 
-	HealthController *health_controller.Client
+	HealthStatus *health_status.Client
 
 	ImageProfile *image_profile.Client
 
@@ -294,6 +307,8 @@ type MulticloudIaaS struct {
 	SecurityGroup *security_group.Client
 
 	StorageProfile *storage_profile.Client
+
+	Tags *tags.Client
 
 	Transport runtime.ClientTransport
 }
@@ -326,7 +341,11 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 
 	c.DataCollector.SetTransport(transport)
 
-	c.DeploymentRequests.SetTransport(transport)
+	c.DeploymentActions.SetTransport(transport)
+
+	c.DeploymentAndDeploymentResourceActionsAdminAPI.SetTransport(transport)
+
+	c.DeploymentEvents.SetTransport(transport)
 
 	c.Deployments.SetTransport(transport)
 
@@ -352,7 +371,7 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 
 	c.Flavors.SetTransport(transport)
 
-	c.HealthController.SetTransport(transport)
+	c.HealthStatus.SetTransport(transport)
 
 	c.ImageProfile.SetTransport(transport)
 
@@ -379,5 +398,7 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.SecurityGroup.SetTransport(transport)
 
 	c.StorageProfile.SetTransport(transport)
+
+	c.Tags.SetTransport(transport)
 
 }

@@ -25,7 +25,9 @@ type Client struct {
 }
 
 /*
-CheckDeploymentNameUsingGET returns true if a deployment with the supplied name exists
+CheckDeploymentNameUsingGET checks if a deployment exists
+
+Returns OK if a deployment with the supplied name exists.
 */
 func (a *Client) CheckDeploymentNameUsingGET(params *CheckDeploymentNameUsingGETParams) (*CheckDeploymentNameUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -53,7 +55,9 @@ func (a *Client) CheckDeploymentNameUsingGET(params *CheckDeploymentNameUsingGET
 }
 
 /*
-DeleteDeploymentUsingDELETE deletes the deployment with the supplied ID
+DeleteDeploymentUsingDELETE deletes a deployment
+
+Deletes the deployment with the supplied ID.
 */
 func (a *Client) DeleteDeploymentUsingDELETE(params *DeleteDeploymentUsingDELETEParams) (*DeleteDeploymentUsingDELETEOK, *DeleteDeploymentUsingDELETENoContent, error) {
 	// TODO: Validate the params before sending
@@ -87,7 +91,9 @@ func (a *Client) DeleteDeploymentUsingDELETE(params *DeleteDeploymentUsingDELETE
 }
 
 /*
-DeleteResourceUsingDELETE deletes the resource with the specified ID that is correlated with the supplied deployment
+DeleteResourceUsingDELETE deletes resource associated with a deployment
+
+Deletes the resource with the specified ID that is correlated with the supplied deployment.
 */
 func (a *Client) DeleteResourceUsingDELETE(params *DeleteResourceUsingDELETEParams) (*DeleteResourceUsingDELETEOK, *DeleteResourceUsingDELETENoContent, error) {
 	// TODO: Validate the params before sending
@@ -121,63 +127,9 @@ func (a *Client) DeleteResourceUsingDELETE(params *DeleteResourceUsingDELETEPara
 }
 
 /*
-GetDeploymentActionUsingGET returns a resource operation for the deployment specified by its id
-*/
-func (a *Client) GetDeploymentActionUsingGET(params *GetDeploymentActionUsingGETParams) (*GetDeploymentActionUsingGETOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetDeploymentActionUsingGETParams()
-	}
+GetDeploymentByIDUsingGET fetches a spefic deployment
 
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getDeploymentActionUsingGET",
-		Method:             "GET",
-		PathPattern:        "/deployment/api/deployments/{depId}/actions/{actionId}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetDeploymentActionUsingGETReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*GetDeploymentActionUsingGETOK), nil
-
-}
-
-/*
-GetDeploymentActionsUsingGET returns the complete list of available operations that can be performed on a given deployment
-*/
-func (a *Client) GetDeploymentActionsUsingGET(params *GetDeploymentActionsUsingGETParams) (*GetDeploymentActionsUsingGETOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetDeploymentActionsUsingGETParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getDeploymentActionsUsingGET",
-		Method:             "GET",
-		PathPattern:        "/deployment/api/deployments/{depId}/actions",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetDeploymentActionsUsingGETReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*GetDeploymentActionsUsingGETOK), nil
-
-}
-
-/*
-GetDeploymentByIDUsingGET returns the deployment with the supplied ID
+Returns the deployment with the supplied ID.
 */
 func (a *Client) GetDeploymentByIDUsingGET(params *GetDeploymentByIDUsingGETParams) (*GetDeploymentByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -205,7 +157,65 @@ func (a *Client) GetDeploymentByIDUsingGET(params *GetDeploymentByIDUsingGETPara
 }
 
 /*
-GetDeploymentResourcesUsingGET returns a paginated list of resources corresponding to the deployment with the supplied ID
+GetDeploymentFilterByIDUsingGET returns the deployment filter with the supplied ID
+*/
+func (a *Client) GetDeploymentFilterByIDUsingGET(params *GetDeploymentFilterByIDUsingGETParams) (*GetDeploymentFilterByIDUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetDeploymentFilterByIDUsingGETParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getDeploymentFilterByIdUsingGET",
+		Method:             "GET",
+		PathPattern:        "/deployment/api/deployments/filters/{filterId}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetDeploymentFilterByIDUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetDeploymentFilterByIDUsingGETOK), nil
+
+}
+
+/*
+GetDeploymentFiltersUsingGET returns the deployment filters in context of given user
+*/
+func (a *Client) GetDeploymentFiltersUsingGET(params *GetDeploymentFiltersUsingGETParams) (*GetDeploymentFiltersUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetDeploymentFiltersUsingGETParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getDeploymentFiltersUsingGET",
+		Method:             "GET",
+		PathPattern:        "/deployment/api/deployments/filters",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetDeploymentFiltersUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetDeploymentFiltersUsingGETOK), nil
+
+}
+
+/*
+GetDeploymentResourcesUsingGET fetches resources associated with a deployment
+
+Returns a paginated list of resources corresponding to the deployment with the supplied ID.
 */
 func (a *Client) GetDeploymentResourcesUsingGET(params *GetDeploymentResourcesUsingGETParams) (*GetDeploymentResourcesUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -261,7 +271,9 @@ func (a *Client) GetDeploymentsForProjectUsingGET(params *GetDeploymentsForProje
 }
 
 /*
-GetDeploymentsUsingGET returns a paginated list of deployments
+GetDeploymentsUsingGET fetches all deployments
+
+Returns a paginated list of deployments.
 */
 func (a *Client) GetDeploymentsUsingGET(params *GetDeploymentsUsingGETParams) (*GetDeploymentsUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -289,63 +301,9 @@ func (a *Client) GetDeploymentsUsingGET(params *GetDeploymentsUsingGETParams) (*
 }
 
 /*
-GetResourceActionUsingGET returns a resource operation for the resource specified by its id
-*/
-func (a *Client) GetResourceActionUsingGET(params *GetResourceActionUsingGETParams) (*GetResourceActionUsingGETOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetResourceActionUsingGETParams()
-	}
+GetResourceByIDUsingGET fetches resource associated with a deployment
 
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getResourceActionUsingGET",
-		Method:             "GET",
-		PathPattern:        "/deployment/api/deployments/{depId}/resources/{resourceId}/actions/{actionId}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetResourceActionUsingGETReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*GetResourceActionUsingGETOK), nil
-
-}
-
-/*
-GetResourceActionsUsingGET returns the complete list of available operations that can be performed on a given resource
-*/
-func (a *Client) GetResourceActionsUsingGET(params *GetResourceActionsUsingGETParams) (*GetResourceActionsUsingGETOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetResourceActionsUsingGETParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getResourceActionsUsingGET",
-		Method:             "GET",
-		PathPattern:        "/deployment/api/deployments/{depId}/resources/{resourceId}/actions",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetResourceActionsUsingGETReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*GetResourceActionsUsingGETOK), nil
-
-}
-
-/*
-GetResourceByIDUsingGET returns the resource with the specified ID that is correlated with the supplied deployment
+Returns the resource with the specified ID that is correlated with the supplied deployment.
 */
 func (a *Client) GetResourceByIDUsingGET(params *GetResourceByIDUsingGETParams) (*GetResourceByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -373,7 +331,9 @@ func (a *Client) GetResourceByIDUsingGET(params *GetResourceByIDUsingGETParams) 
 }
 
 /*
-PatchDeploymentUsingPATCH updates the deployment with the supplied ID
+PatchDeploymentUsingPATCH updates deployment
+
+Updates the deployment with the supplied ID.
 */
 func (a *Client) PatchDeploymentUsingPATCH(params *PatchDeploymentUsingPATCHParams) (*PatchDeploymentUsingPATCHOK, *PatchDeploymentUsingPATCHNoContent, error) {
 	// TODO: Validate the params before sending
@@ -400,74 +360,6 @@ func (a *Client) PatchDeploymentUsingPATCH(params *PatchDeploymentUsingPATCHPara
 	case *PatchDeploymentUsingPATCHOK:
 		return value, nil, nil
 	case *PatchDeploymentUsingPATCHNoContent:
-		return nil, value, nil
-	}
-	return nil, nil, nil
-
-}
-
-/*
-SubmitDeploymentActionRequestUsingPOST submits a deployment resource action request
-*/
-func (a *Client) SubmitDeploymentActionRequestUsingPOST(params *SubmitDeploymentActionRequestUsingPOSTParams) (*SubmitDeploymentActionRequestUsingPOSTOK, *SubmitDeploymentActionRequestUsingPOSTCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewSubmitDeploymentActionRequestUsingPOSTParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "submitDeploymentActionRequestUsingPOST",
-		Method:             "POST",
-		PathPattern:        "/deployment/api/deployments/{depId}/requests",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &SubmitDeploymentActionRequestUsingPOSTReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, nil, err
-	}
-	switch value := result.(type) {
-	case *SubmitDeploymentActionRequestUsingPOSTOK:
-		return value, nil, nil
-	case *SubmitDeploymentActionRequestUsingPOSTCreated:
-		return nil, value, nil
-	}
-	return nil, nil, nil
-
-}
-
-/*
-SubmitResourceActionRequestUsingPOST submits a resource action request
-*/
-func (a *Client) SubmitResourceActionRequestUsingPOST(params *SubmitResourceActionRequestUsingPOSTParams) (*SubmitResourceActionRequestUsingPOSTOK, *SubmitResourceActionRequestUsingPOSTCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewSubmitResourceActionRequestUsingPOSTParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "submitResourceActionRequestUsingPOST",
-		Method:             "POST",
-		PathPattern:        "/deployment/api/deployments/{depId}/resources/{resourceId}/requests",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &SubmitResourceActionRequestUsingPOSTReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, nil, err
-	}
-	switch value := result.(type) {
-	case *SubmitResourceActionRequestUsingPOSTOK:
-		return value, nil, nil
-	case *SubmitResourceActionRequestUsingPOSTCreated:
 		return nil, value, nil
 	}
 	return nil, nil, nil

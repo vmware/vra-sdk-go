@@ -49,6 +49,10 @@ type Resource struct {
 	// properties
 	Properties interface{} `json:"properties,omitempty"`
 
+	// The current state of the resource
+	// Enum: [PARTIAL TAINTED OK]
+	State string `json:"state,omitempty"`
+
 	// The current sync status
 	// Enum: [SUCCESS MISSING STALE]
 	SyncStatus string `json:"syncStatus,omitempty"`
@@ -75,6 +79,10 @@ func (m *Resource) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateState(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -139,6 +147,52 @@ func (m *Resource) validateID(formats strfmt.Registry) error {
 func (m *Resource) validateName(formats strfmt.Registry) error {
 
 	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var resourceTypeStatePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["PARTIAL","TAINTED","OK"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		resourceTypeStatePropEnum = append(resourceTypeStatePropEnum, v)
+	}
+}
+
+const (
+
+	// ResourceStatePARTIAL captures enum value "PARTIAL"
+	ResourceStatePARTIAL string = "PARTIAL"
+
+	// ResourceStateTAINTED captures enum value "TAINTED"
+	ResourceStateTAINTED string = "TAINTED"
+
+	// ResourceStateOK captures enum value "OK"
+	ResourceStateOK string = "OK"
+)
+
+// prop value enum
+func (m *Resource) validateStateEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, resourceTypeStatePropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Resource) validateState(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.State) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateStateEnum("state", "body", m.State); err != nil {
 		return err
 	}
 

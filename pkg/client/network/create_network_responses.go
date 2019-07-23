@@ -25,8 +25,8 @@ type CreateNetworkReader struct {
 func (o *CreateNetworkReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 201:
-		result := NewCreateNetworkCreated()
+	case 202:
+		result := NewCreateNetworkAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -51,24 +51,24 @@ func (o *CreateNetworkReader) ReadResponse(response runtime.ClientResponse, cons
 	}
 }
 
-// NewCreateNetworkCreated creates a CreateNetworkCreated with default headers values
-func NewCreateNetworkCreated() *CreateNetworkCreated {
-	return &CreateNetworkCreated{}
+// NewCreateNetworkAccepted creates a CreateNetworkAccepted with default headers values
+func NewCreateNetworkAccepted() *CreateNetworkAccepted {
+	return &CreateNetworkAccepted{}
 }
 
-/*CreateNetworkCreated handles this case with default header values.
+/*CreateNetworkAccepted handles this case with default header values.
 
 successful operation
 */
-type CreateNetworkCreated struct {
+type CreateNetworkAccepted struct {
 	Payload *models.RequestTracker
 }
 
-func (o *CreateNetworkCreated) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/networks][%d] createNetworkCreated  %+v", 201, o.Payload)
+func (o *CreateNetworkAccepted) Error() string {
+	return fmt.Sprintf("[POST /iaas/api/networks][%d] createNetworkAccepted  %+v", 202, o.Payload)
 }
 
-func (o *CreateNetworkCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *CreateNetworkAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.RequestTracker)
 

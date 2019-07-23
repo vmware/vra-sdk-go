@@ -25,62 +25,92 @@ type Client struct {
 }
 
 /*
-DescribeRequest describes a request
+DeleteRequest deletes request
 
-Describe a Request.
+Delete a single Request
 */
-func (a *Client) DescribeRequest(params *DescribeRequestParams) (*DescribeRequestOK, error) {
+func (a *Client) DeleteRequest(params *DeleteRequestParams) (*DeleteRequestOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDescribeRequestParams()
+		params = NewDeleteRequestParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "describeRequest",
+		ID:                 "deleteRequest",
+		Method:             "DELETE",
+		PathPattern:        "/iaas/api/request-tracker/{id}",
+		ProducesMediaTypes: []string{""},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteRequestReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*DeleteRequestOK), nil
+
+}
+
+/*
+GetRequestTracker gets request tracker
+
+Get request tracker with a given id
+*/
+func (a *Client) GetRequestTracker(params *GetRequestTrackerParams) (*GetRequestTrackerOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetRequestTrackerParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getRequestTracker",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/request-tracker/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DescribeRequestReader{formats: a.formats},
+		Reader:             &GetRequestTrackerReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DescribeRequestOK), nil
+	return result.(*GetRequestTrackerOK), nil
 
 }
 
 /*
-GetRequest gets request
+GetRequestTrackers gets request tracker
 
-Get all Requests.
+Get all request trackers
 */
-func (a *Client) GetRequest(params *GetRequestParams) (*GetRequestOK, error) {
+func (a *Client) GetRequestTrackers(params *GetRequestTrackersParams) (*GetRequestTrackersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetRequestParams()
+		params = NewGetRequestTrackersParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getRequest",
+		ID:                 "getRequestTrackers",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/request-tracker",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetRequestReader{formats: a.formats},
+		Reader:             &GetRequestTrackersReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetRequestOK), nil
+	return result.(*GetRequestTrackersOK), nil
 
 }
 

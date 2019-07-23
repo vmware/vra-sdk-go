@@ -23,6 +23,9 @@ type BlueprintVersionRequest struct {
 	// Blueprint version description
 	Description string `json:"description,omitempty"`
 
+	// Flag indicating to release version
+	Release bool `json:"release,omitempty"`
+
 	// Blueprint version
 	// Required: true
 	Version *string `json:"version"`
