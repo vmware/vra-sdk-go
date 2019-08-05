@@ -39,13 +39,6 @@ func (o *DeleteLoadBalancerOperationReader) ReadResponse(response runtime.Client
 		}
 		return nil, result
 
-	case 404:
-		result := NewDeleteLoadBalancerOperationNotFound()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
@@ -97,27 +90,6 @@ func (o *DeleteLoadBalancerOperationForbidden) Error() string {
 }
 
 func (o *DeleteLoadBalancerOperationForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewDeleteLoadBalancerOperationNotFound creates a DeleteLoadBalancerOperationNotFound with default headers values
-func NewDeleteLoadBalancerOperationNotFound() *DeleteLoadBalancerOperationNotFound {
-	return &DeleteLoadBalancerOperationNotFound{}
-}
-
-/*DeleteLoadBalancerOperationNotFound handles this case with default header values.
-
-Not Found
-*/
-type DeleteLoadBalancerOperationNotFound struct {
-}
-
-func (o *DeleteLoadBalancerOperationNotFound) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/load-balancers/{id}/operations/delete][%d] deleteLoadBalancerOperationNotFound ", 404)
-}
-
-func (o *DeleteLoadBalancerOperationNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

@@ -39,13 +39,6 @@ func (o *DeleteMachineReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 
-	case 404:
-		result := NewDeleteMachineNotFound()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
@@ -97,27 +90,6 @@ func (o *DeleteMachineForbidden) Error() string {
 }
 
 func (o *DeleteMachineForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewDeleteMachineNotFound creates a DeleteMachineNotFound with default headers values
-func NewDeleteMachineNotFound() *DeleteMachineNotFound {
-	return &DeleteMachineNotFound{}
-}
-
-/*DeleteMachineNotFound handles this case with default header values.
-
-Not Found
-*/
-type DeleteMachineNotFound struct {
-}
-
-func (o *DeleteMachineNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}][%d] deleteMachineNotFound ", 404)
-}
-
-func (o *DeleteMachineNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

@@ -133,6 +133,11 @@ type GetBlueprintVersionsUsingGETParams struct {
 
 	*/
 	Status *string
+	/*Version
+	  Filter by version
+
+	*/
+	Version *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -249,6 +254,17 @@ func (o *GetBlueprintVersionsUsingGETParams) SetStatus(status *string) {
 	o.Status = status
 }
 
+// WithVersion adds the version to the get blueprint versions using get params
+func (o *GetBlueprintVersionsUsingGETParams) WithVersion(version *string) *GetBlueprintVersionsUsingGETParams {
+	o.SetVersion(version)
+	return o
+}
+
+// SetVersion adds the version to the get blueprint versions using get params
+func (o *GetBlueprintVersionsUsingGETParams) SetVersion(version *string) {
+	o.Version = version
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetBlueprintVersionsUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -344,6 +360,22 @@ func (o *GetBlueprintVersionsUsingGETParams) WriteToRequest(r runtime.ClientRequ
 		qStatus := qrStatus
 		if qStatus != "" {
 			if err := r.SetQueryParam("status", qStatus); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.Version != nil {
+
+		// query param version
+		var qrVersion string
+		if o.Version != nil {
+			qrVersion = *o.Version
+		}
+		qVersion := qrVersion
+		if qVersion != "" {
+			if err := r.SetQueryParam("version", qVersion); err != nil {
 				return err
 			}
 		}

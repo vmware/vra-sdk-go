@@ -49,10 +49,16 @@ type Project struct {
 	OperationTimeout int64 `json:"operationTimeout,omitempty"`
 
 	// The id of the organization this entity belongs to.
+	OrgID string `json:"orgId,omitempty"`
+
+	// This field is deprecated. Use orgId instead. The id of the organization this entity belongs to.
 	OrganizationID string `json:"organizationId,omitempty"`
 
 	// Email of the user that owns the entity.
 	Owner string `json:"owner,omitempty"`
+
+	// Specifies whether the resources in this projects are shared or not.
+	SharedResources bool `json:"sharedResources,omitempty"`
 
 	// Date when the entity was last updated. The date is ISO 8601 and UTC.
 	UpdatedAt string `json:"updatedAt,omitempty"`

@@ -972,6 +972,14 @@
                             "VERSIONED",
                             "RELEASED"
                         ]
+                    },
+                    {
+                        "name": "version",
+                        "in": "query",
+                        "description": "Filter by version",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
                     }
                 ],
                 "responses": {
@@ -2612,6 +2620,9 @@
                     "items": {
                         "type": "object"
                     }
+                },
+                "ignoreCaseOnDiff": {
+                    "type": "boolean"
                 },
                 "ignoreOnUpdate": {
                     "type": "boolean"

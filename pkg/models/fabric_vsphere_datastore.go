@@ -48,6 +48,9 @@ type FabricVsphereDatastore struct {
 	Name string `json:"name,omitempty"`
 
 	// The id of the organization this entity belongs to.
+	OrgID string `json:"orgId,omitempty"`
+
+	// This field is deprecated. Use orgId instead. The id of the organization this entity belongs to.
 	OrganizationID string `json:"organizationId,omitempty"`
 
 	// Email of the user that owns the entity.

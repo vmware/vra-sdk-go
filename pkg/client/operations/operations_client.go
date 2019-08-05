@@ -59,7 +59,7 @@ DeleteMachineDisk deletes machine disk
 
 Remove a disk from a given machine.
 */
-func (a *Client) DeleteMachineDisk(params *DeleteMachineDiskParams) (*DeleteMachineDiskOK, error) {
+func (a *Client) DeleteMachineDisk(params *DeleteMachineDiskParams) (*DeleteMachineDiskAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteMachineDiskParams()
@@ -80,7 +80,7 @@ func (a *Client) DeleteMachineDisk(params *DeleteMachineDiskParams) (*DeleteMach
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteMachineDiskOK), nil
+	return result.(*DeleteMachineDiskAccepted), nil
 
 }
 

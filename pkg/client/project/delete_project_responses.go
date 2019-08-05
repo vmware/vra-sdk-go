@@ -36,13 +36,6 @@ func (o *DeleteProjectReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 
-	case 404:
-		result := NewDeleteProjectNotFound()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-
 	case 409:
 		result := NewDeleteProjectConflict()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -93,27 +86,6 @@ func (o *DeleteProjectForbidden) Error() string {
 }
 
 func (o *DeleteProjectForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewDeleteProjectNotFound creates a DeleteProjectNotFound with default headers values
-func NewDeleteProjectNotFound() *DeleteProjectNotFound {
-	return &DeleteProjectNotFound{}
-}
-
-/*DeleteProjectNotFound handles this case with default header values.
-
-Not Found
-*/
-type DeleteProjectNotFound struct {
-}
-
-func (o *DeleteProjectNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/projects/{id}][%d] deleteProjectNotFound ", 404)
-}
-
-func (o *DeleteProjectNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

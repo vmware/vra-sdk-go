@@ -36,13 +36,6 @@ func (o *DeleteGcpCloudAccountReader) ReadResponse(response runtime.ClientRespon
 		}
 		return nil, result
 
-	case 404:
-		result := NewDeleteGcpCloudAccountNotFound()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
@@ -86,27 +79,6 @@ func (o *DeleteGcpCloudAccountForbidden) Error() string {
 }
 
 func (o *DeleteGcpCloudAccountForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewDeleteGcpCloudAccountNotFound creates a DeleteGcpCloudAccountNotFound with default headers values
-func NewDeleteGcpCloudAccountNotFound() *DeleteGcpCloudAccountNotFound {
-	return &DeleteGcpCloudAccountNotFound{}
-}
-
-/*DeleteGcpCloudAccountNotFound handles this case with default header values.
-
-Not Found
-*/
-type DeleteGcpCloudAccountNotFound struct {
-}
-
-func (o *DeleteGcpCloudAccountNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-gcp/{id}][%d] deleteGcpCloudAccountNotFound ", 404)
-}
-
-func (o *DeleteGcpCloudAccountNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

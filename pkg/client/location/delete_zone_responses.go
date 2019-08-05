@@ -36,13 +36,6 @@ func (o *DeleteZoneReader) ReadResponse(response runtime.ClientResponse, consume
 		}
 		return nil, result
 
-	case 404:
-		result := NewDeleteZoneNotFound()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
@@ -86,27 +79,6 @@ func (o *DeleteZoneForbidden) Error() string {
 }
 
 func (o *DeleteZoneForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewDeleteZoneNotFound creates a DeleteZoneNotFound with default headers values
-func NewDeleteZoneNotFound() *DeleteZoneNotFound {
-	return &DeleteZoneNotFound{}
-}
-
-/*DeleteZoneNotFound handles this case with default header values.
-
-Not Found
-*/
-type DeleteZoneNotFound struct {
-}
-
-func (o *DeleteZoneNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/zones/{id}][%d] deleteZoneNotFound ", 404)
-}
-
-func (o *DeleteZoneNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

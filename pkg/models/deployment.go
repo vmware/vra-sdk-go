@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
 	"strconv"
 
 	strfmt "github.com/go-openapi/strfmt"
@@ -30,6 +31,9 @@ type Deployment struct {
 	// Deployment catalog item id
 	CatalogItemID string `json:"catalogItemId,omitempty"`
 
+	// Deployment catalog version
+	CatalogItemVersion string `json:"catalogItemVersion,omitempty"`
+
 	// Creation time
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"createdAt,omitempty"`
@@ -43,6 +47,9 @@ type Deployment struct {
 	// Expense associated with the deployment.
 	// Read Only: true
 	Expense *Expense `json:"expense,omitempty"`
+
+	// Deployment icon id
+	IconID string `json:"iconId,omitempty"`
 
 	// Id of the deployment
 	// Format: uuid
@@ -81,6 +88,10 @@ type Deployment struct {
 
 	// simulated
 	Simulated bool `json:"simulated,omitempty"`
+
+	// Deployment status.
+	// Enum: [CREATE_SUCCESSFUL CREATE_INPROGRESS CREATE_FAILED UPDATE_SUCCESSFUL UPDATE_INPROGRESS UPDATE_FAILED]
+	Status string `json:"status,omitempty"`
 }
 
 // Validate validates this deployment
@@ -120,6 +131,10 @@ func (m *Deployment) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateResources(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStatus(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -264,6 +279,61 @@ func (m *Deployment) validateResources(formats strfmt.Registry) error {
 			}
 		}
 
+	}
+
+	return nil
+}
+
+var deploymentTypeStatusPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["CREATE_SUCCESSFUL","CREATE_INPROGRESS","CREATE_FAILED","UPDATE_SUCCESSFUL","UPDATE_INPROGRESS","UPDATE_FAILED"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		deploymentTypeStatusPropEnum = append(deploymentTypeStatusPropEnum, v)
+	}
+}
+
+const (
+
+	// DeploymentStatusCREATESUCCESSFUL captures enum value "CREATE_SUCCESSFUL"
+	DeploymentStatusCREATESUCCESSFUL string = "CREATE_SUCCESSFUL"
+
+	// DeploymentStatusCREATEINPROGRESS captures enum value "CREATE_INPROGRESS"
+	DeploymentStatusCREATEINPROGRESS string = "CREATE_INPROGRESS"
+
+	// DeploymentStatusCREATEFAILED captures enum value "CREATE_FAILED"
+	DeploymentStatusCREATEFAILED string = "CREATE_FAILED"
+
+	// DeploymentStatusUPDATESUCCESSFUL captures enum value "UPDATE_SUCCESSFUL"
+	DeploymentStatusUPDATESUCCESSFUL string = "UPDATE_SUCCESSFUL"
+
+	// DeploymentStatusUPDATEINPROGRESS captures enum value "UPDATE_INPROGRESS"
+	DeploymentStatusUPDATEINPROGRESS string = "UPDATE_INPROGRESS"
+
+	// DeploymentStatusUPDATEFAILED captures enum value "UPDATE_FAILED"
+	DeploymentStatusUPDATEFAILED string = "UPDATE_FAILED"
+)
+
+// prop value enum
+func (m *Deployment) validateStatusEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, deploymentTypeStatusPropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Deployment) validateStatus(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Status) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateStatusEnum("status", "body", m.Status); err != nil {
+		return err
 	}
 
 	return nil

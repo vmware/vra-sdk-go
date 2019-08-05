@@ -36,13 +36,6 @@ func (o *DeleteImageProfileReader) ReadResponse(response runtime.ClientResponse,
 		}
 		return nil, result
 
-	case 404:
-		result := NewDeleteImageProfileNotFound()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
@@ -86,27 +79,6 @@ func (o *DeleteImageProfileForbidden) Error() string {
 }
 
 func (o *DeleteImageProfileForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewDeleteImageProfileNotFound creates a DeleteImageProfileNotFound with default headers values
-func NewDeleteImageProfileNotFound() *DeleteImageProfileNotFound {
-	return &DeleteImageProfileNotFound{}
-}
-
-/*DeleteImageProfileNotFound handles this case with default header values.
-
-Not Found
-*/
-type DeleteImageProfileNotFound struct {
-}
-
-func (o *DeleteImageProfileNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/image-profiles/{id}][%d] deleteImageProfileNotFound ", 404)
-}
-
-func (o *DeleteImageProfileNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

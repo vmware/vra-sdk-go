@@ -36,13 +36,6 @@ func (o *DeleteNetworkProfileReader) ReadResponse(response runtime.ClientRespons
 		}
 		return nil, result
 
-	case 404:
-		result := NewDeleteNetworkProfileNotFound()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
@@ -86,27 +79,6 @@ func (o *DeleteNetworkProfileForbidden) Error() string {
 }
 
 func (o *DeleteNetworkProfileForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewDeleteNetworkProfileNotFound creates a DeleteNetworkProfileNotFound with default headers values
-func NewDeleteNetworkProfileNotFound() *DeleteNetworkProfileNotFound {
-	return &DeleteNetworkProfileNotFound{}
-}
-
-/*DeleteNetworkProfileNotFound handles this case with default header values.
-
-Not Found
-*/
-type DeleteNetworkProfileNotFound struct {
-}
-
-func (o *DeleteNetworkProfileNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/network-profiles/{id}][%d] deleteNetworkProfileNotFound ", 404)
-}
-
-func (o *DeleteNetworkProfileNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

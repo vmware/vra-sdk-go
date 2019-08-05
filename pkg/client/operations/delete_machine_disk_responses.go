@@ -25,8 +25,8 @@ type DeleteMachineDiskReader struct {
 func (o *DeleteMachineDiskReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 200:
-		result := NewDeleteMachineDiskOK()
+	case 202:
+		result := NewDeleteMachineDiskAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -39,36 +39,29 @@ func (o *DeleteMachineDiskReader) ReadResponse(response runtime.ClientResponse, 
 		}
 		return nil, result
 
-	case 404:
-		result := NewDeleteMachineDiskNotFound()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
 }
 
-// NewDeleteMachineDiskOK creates a DeleteMachineDiskOK with default headers values
-func NewDeleteMachineDiskOK() *DeleteMachineDiskOK {
-	return &DeleteMachineDiskOK{}
+// NewDeleteMachineDiskAccepted creates a DeleteMachineDiskAccepted with default headers values
+func NewDeleteMachineDiskAccepted() *DeleteMachineDiskAccepted {
+	return &DeleteMachineDiskAccepted{}
 }
 
-/*DeleteMachineDiskOK handles this case with default header values.
+/*DeleteMachineDiskAccepted handles this case with default header values.
 
 successful operation
 */
-type DeleteMachineDiskOK struct {
+type DeleteMachineDiskAccepted struct {
 	Payload *models.BlockDevice
 }
 
-func (o *DeleteMachineDiskOK) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}/disks/{id1}][%d] deleteMachineDiskOK  %+v", 200, o.Payload)
+func (o *DeleteMachineDiskAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}/disks/{id1}][%d] deleteMachineDiskAccepted  %+v", 202, o.Payload)
 }
 
-func (o *DeleteMachineDiskOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *DeleteMachineDiskAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.BlockDevice)
 
@@ -97,27 +90,6 @@ func (o *DeleteMachineDiskForbidden) Error() string {
 }
 
 func (o *DeleteMachineDiskForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewDeleteMachineDiskNotFound creates a DeleteMachineDiskNotFound with default headers values
-func NewDeleteMachineDiskNotFound() *DeleteMachineDiskNotFound {
-	return &DeleteMachineDiskNotFound{}
-}
-
-/*DeleteMachineDiskNotFound handles this case with default header values.
-
-Not Found
-*/
-type DeleteMachineDiskNotFound struct {
-}
-
-func (o *DeleteMachineDiskNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}/disks/{id1}][%d] deleteMachineDiskNotFound ", 404)
-}
-
-func (o *DeleteMachineDiskNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

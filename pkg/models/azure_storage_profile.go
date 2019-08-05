@@ -50,6 +50,9 @@ type AzureStorageProfile struct {
 	Name string `json:"name,omitempty"`
 
 	// The id of the organization this entity belongs to.
+	OrgID string `json:"orgId,omitempty"`
+
+	// This field is deprecated. Use orgId instead. The id of the organization this entity belongs to.
 	OrganizationID string `json:"organizationId,omitempty"`
 
 	// Indicates the caching mechanism for OS disk. Default policy for OS disks is Read/Write.

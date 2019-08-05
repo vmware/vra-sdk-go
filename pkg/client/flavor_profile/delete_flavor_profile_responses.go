@@ -36,13 +36,6 @@ func (o *DeleteFlavorProfileReader) ReadResponse(response runtime.ClientResponse
 		}
 		return nil, result
 
-	case 404:
-		result := NewDeleteFlavorProfileNotFound()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
@@ -86,27 +79,6 @@ func (o *DeleteFlavorProfileForbidden) Error() string {
 }
 
 func (o *DeleteFlavorProfileForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewDeleteFlavorProfileNotFound creates a DeleteFlavorProfileNotFound with default headers values
-func NewDeleteFlavorProfileNotFound() *DeleteFlavorProfileNotFound {
-	return &DeleteFlavorProfileNotFound{}
-}
-
-/*DeleteFlavorProfileNotFound handles this case with default header values.
-
-Not Found
-*/
-type DeleteFlavorProfileNotFound struct {
-}
-
-func (o *DeleteFlavorProfileNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/flavor-profiles/{id}][%d] deleteFlavorProfileNotFound ", 404)
-}
-
-func (o *DeleteFlavorProfileNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

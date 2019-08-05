@@ -36,13 +36,6 @@ func (o *DeleteDataCollectorReader) ReadResponse(response runtime.ClientResponse
 		}
 		return nil, result
 
-	case 404:
-		result := NewDeleteDataCollectorNotFound()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
@@ -86,27 +79,6 @@ func (o *DeleteDataCollectorForbidden) Error() string {
 }
 
 func (o *DeleteDataCollectorForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewDeleteDataCollectorNotFound creates a DeleteDataCollectorNotFound with default headers values
-func NewDeleteDataCollectorNotFound() *DeleteDataCollectorNotFound {
-	return &DeleteDataCollectorNotFound{}
-}
-
-/*DeleteDataCollectorNotFound handles this case with default header values.
-
-Not Found
-*/
-type DeleteDataCollectorNotFound struct {
-}
-
-func (o *DeleteDataCollectorNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/data-collectors/{id}][%d] deleteDataCollectorNotFound ", 404)
-}
-
-func (o *DeleteDataCollectorNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

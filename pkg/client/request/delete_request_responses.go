@@ -22,8 +22,8 @@ type DeleteRequestReader struct {
 func (o *DeleteRequestReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 200:
-		result := NewDeleteRequestOK()
+	case 204:
+		result := NewDeleteRequestNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -36,35 +36,28 @@ func (o *DeleteRequestReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 
-	case 404:
-		result := NewDeleteRequestNotFound()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
 }
 
-// NewDeleteRequestOK creates a DeleteRequestOK with default headers values
-func NewDeleteRequestOK() *DeleteRequestOK {
-	return &DeleteRequestOK{}
+// NewDeleteRequestNoContent creates a DeleteRequestNoContent with default headers values
+func NewDeleteRequestNoContent() *DeleteRequestNoContent {
+	return &DeleteRequestNoContent{}
 }
 
-/*DeleteRequestOK handles this case with default header values.
+/*DeleteRequestNoContent handles this case with default header values.
 
-OK
+No Content
 */
-type DeleteRequestOK struct {
+type DeleteRequestNoContent struct {
 }
 
-func (o *DeleteRequestOK) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/request-tracker/{id}][%d] deleteRequestOK ", 200)
+func (o *DeleteRequestNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/request-tracker/{id}][%d] deleteRequestNoContent ", 204)
 }
 
-func (o *DeleteRequestOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *DeleteRequestNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }
@@ -86,27 +79,6 @@ func (o *DeleteRequestForbidden) Error() string {
 }
 
 func (o *DeleteRequestForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewDeleteRequestNotFound creates a DeleteRequestNotFound with default headers values
-func NewDeleteRequestNotFound() *DeleteRequestNotFound {
-	return &DeleteRequestNotFound{}
-}
-
-/*DeleteRequestNotFound handles this case with default header values.
-
-Not Found
-*/
-type DeleteRequestNotFound struct {
-}
-
-func (o *DeleteRequestNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/request-tracker/{id}][%d] deleteRequestNotFound ", 404)
-}
-
-func (o *DeleteRequestNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

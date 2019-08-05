@@ -36,13 +36,6 @@ func (o *DeleteAwsCloudAccountReader) ReadResponse(response runtime.ClientRespon
 		}
 		return nil, result
 
-	case 404:
-		result := NewDeleteAwsCloudAccountNotFound()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
@@ -86,27 +79,6 @@ func (o *DeleteAwsCloudAccountForbidden) Error() string {
 }
 
 func (o *DeleteAwsCloudAccountForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewDeleteAwsCloudAccountNotFound creates a DeleteAwsCloudAccountNotFound with default headers values
-func NewDeleteAwsCloudAccountNotFound() *DeleteAwsCloudAccountNotFound {
-	return &DeleteAwsCloudAccountNotFound{}
-}
-
-/*DeleteAwsCloudAccountNotFound handles this case with default header values.
-
-Not Found
-*/
-type DeleteAwsCloudAccountNotFound struct {
-}
-
-func (o *DeleteAwsCloudAccountNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-aws/{id}][%d] deleteAwsCloudAccountNotFound ", 404)
-}
-
-func (o *DeleteAwsCloudAccountNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

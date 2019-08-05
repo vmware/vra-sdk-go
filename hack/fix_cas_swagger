@@ -1,0 +1,88 @@
+#!/usr/bin/env python3
+
+import argparse
+import json
+
+
+# This is the location of the IaaS swagger
+filename = "swagger/cas-combined.json"
+
+
+def add_filter_params(swagger):
+    # The $filter parameter to insert
+    filter_spec = {
+        "name": "$filter",
+        "in": "query",
+        "description": "Add a filter to return limited results",
+        "required": False,
+        "type": "string"
+    }
+
+    # List of paths to insert $filter
+    paths = [
+        "/iaas/api/fabric-images",
+        "/iaas/api/fabric-networks",
+        "/iaas/api/network-domains",
+        "/iaas/api/projects",
+        "/iaas/api/security-groups",
+    ]
+
+    # Update the needed paths
+    for p in paths:
+        param_list = swagger['paths'][p]['get']['parameters']
+        param_name_list = [d['name'] for d in param_list]
+        if filter_spec['name'] not in param_name_list:
+            param_list.insert(0, filter_spec)
+
+
+def add_global_security(swagger):
+    security_def = {
+        "Bearer": {
+            "type": "apiKey",
+            "in": "header",
+            "name": "Authorization"
+        }
+    }
+
+    if 'securityDefinitions' not in swagger:
+        swagger['securityDefinitions'] = security_def
+
+
+def add_security(swagger):
+    exclude_paths = [
+        '/iaas/api/about',
+        '/iaas/api/login',
+    ]
+    empty_security = []
+    bearer_security = [
+        {"Bearer": []},
+    ]
+
+    # Update the needed paths
+    for p in swagger['paths']:
+        if p in exclude_paths:
+            continue
+        param_list = swagger['paths'][p]
+        for method in param_list:
+            if 'security' not in swagger['paths'][p][method]:
+                swagger['paths'][p][method]['security'] = bearer_security
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--omit-security', action='store_false')
+    args = parser.parse_args()
+
+    # read in the swagger spec
+    swagger = json.loads(open(filename).read())
+
+    add_filter_params(swagger)
+
+    if args.omit_security:
+        add_global_security(swagger)
+        add_security(swagger)
+
+    # Overwrite the swagger spec
+    f = open(filename, "w")
+    f.write(json.dumps(swagger, sort_keys=False, indent=2))
+    f.write('\n')

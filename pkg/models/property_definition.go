@@ -43,6 +43,9 @@ type PropertyDefinition struct {
 	// enum
 	Enum []interface{} `json:"enum"`
 
+	// ignore case on diff
+	IgnoreCaseOnDiff bool `json:"ignoreCaseOnDiff,omitempty"`
+
 	// ignore on update
 	IgnoreOnUpdate bool `json:"ignoreOnUpdate,omitempty"`
 

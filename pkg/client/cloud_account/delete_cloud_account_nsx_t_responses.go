@@ -36,13 +36,6 @@ func (o *DeleteCloudAccountNsxTReader) ReadResponse(response runtime.ClientRespo
 		}
 		return nil, result
 
-	case 404:
-		result := NewDeleteCloudAccountNsxTNotFound()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
@@ -86,27 +79,6 @@ func (o *DeleteCloudAccountNsxTForbidden) Error() string {
 }
 
 func (o *DeleteCloudAccountNsxTForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewDeleteCloudAccountNsxTNotFound creates a DeleteCloudAccountNsxTNotFound with default headers values
-func NewDeleteCloudAccountNsxTNotFound() *DeleteCloudAccountNsxTNotFound {
-	return &DeleteCloudAccountNsxTNotFound{}
-}
-
-/*DeleteCloudAccountNsxTNotFound handles this case with default header values.
-
-Not Found
-*/
-type DeleteCloudAccountNsxTNotFound struct {
-}
-
-func (o *DeleteCloudAccountNsxTNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-nsx-t/{id}][%d] deleteCloudAccountNsxTNotFound ", 404)
-}
-
-func (o *DeleteCloudAccountNsxTNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

@@ -24,7 +24,6 @@ import (
 	"github.com/vmware/cas-sdk-go/pkg/client/compute"
 	"github.com/vmware/cas-sdk-go/pkg/client/data_collector"
 	"github.com/vmware/cas-sdk-go/pkg/client/deployment_actions"
-	"github.com/vmware/cas-sdk-go/pkg/client/deployment_and_deployment_resource_actions_admin_api"
 	"github.com/vmware/cas-sdk-go/pkg/client/deployment_events"
 	"github.com/vmware/cas-sdk-go/pkg/client/deployments"
 	"github.com/vmware/cas-sdk-go/pkg/client/disk"
@@ -123,8 +122,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 	cli.DataCollector = data_collector.New(transport, formats)
 
 	cli.DeploymentActions = deployment_actions.New(transport, formats)
-
-	cli.DeploymentAndDeploymentResourceActionsAdminAPI = deployment_and_deployment_resource_actions_admin_api.New(transport, formats)
 
 	cli.DeploymentEvents = deployment_events.New(transport, formats)
 
@@ -252,8 +249,6 @@ type MulticloudIaaS struct {
 
 	DeploymentActions *deployment_actions.Client
 
-	DeploymentAndDeploymentResourceActionsAdminAPI *deployment_and_deployment_resource_actions_admin_api.Client
-
 	DeploymentEvents *deployment_events.Client
 
 	Deployments *deployments.Client
@@ -342,8 +337,6 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.DataCollector.SetTransport(transport)
 
 	c.DeploymentActions.SetTransport(transport)
-
-	c.DeploymentAndDeploymentResourceActionsAdminAPI.SetTransport(transport)
 
 	c.DeploymentEvents.SetTransport(transport)
 

@@ -36,13 +36,6 @@ func (o *DeleteStorageProfileReader) ReadResponse(response runtime.ClientRespons
 		}
 		return nil, result
 
-	case 404:
-		result := NewDeleteStorageProfileNotFound()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
@@ -86,27 +79,6 @@ func (o *DeleteStorageProfileForbidden) Error() string {
 }
 
 func (o *DeleteStorageProfileForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewDeleteStorageProfileNotFound creates a DeleteStorageProfileNotFound with default headers values
-func NewDeleteStorageProfileNotFound() *DeleteStorageProfileNotFound {
-	return &DeleteStorageProfileNotFound{}
-}
-
-/*DeleteStorageProfileNotFound handles this case with default header values.
-
-Not Found
-*/
-type DeleteStorageProfileNotFound struct {
-}
-
-func (o *DeleteStorageProfileNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/storage-profiles/{id}][%d] deleteStorageProfileNotFound ", 404)
-}
-
-func (o *DeleteStorageProfileNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

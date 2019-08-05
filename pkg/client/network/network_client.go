@@ -59,7 +59,7 @@ DeleteNetwork deletes a network
 
 Delete a network with a given id
 */
-func (a *Client) DeleteNetwork(params *DeleteNetworkParams) (*DeleteNetworkOK, *DeleteNetworkAccepted, error) {
+func (a *Client) DeleteNetwork(params *DeleteNetworkParams) (*DeleteNetworkAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteNetworkParams()
@@ -78,15 +78,9 @@ func (a *Client) DeleteNetwork(params *DeleteNetworkParams) (*DeleteNetworkOK, *
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
-	switch value := result.(type) {
-	case *DeleteNetworkOK:
-		return value, nil, nil
-	case *DeleteNetworkAccepted:
-		return nil, value, nil
-	}
-	return nil, nil, nil
+	return result.(*DeleteNetworkAccepted), nil
 
 }
 

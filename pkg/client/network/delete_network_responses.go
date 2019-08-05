@@ -25,13 +25,6 @@ type DeleteNetworkReader struct {
 func (o *DeleteNetworkReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 200:
-		result := NewDeleteNetworkOK()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return result, nil
-
 	case 202:
 		result := NewDeleteNetworkAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -46,37 +39,9 @@ func (o *DeleteNetworkReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 
-	case 404:
-		result := NewDeleteNetworkNotFound()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
-}
-
-// NewDeleteNetworkOK creates a DeleteNetworkOK with default headers values
-func NewDeleteNetworkOK() *DeleteNetworkOK {
-	return &DeleteNetworkOK{}
-}
-
-/*DeleteNetworkOK handles this case with default header values.
-
-OK
-*/
-type DeleteNetworkOK struct {
-}
-
-func (o *DeleteNetworkOK) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/networks/{id}][%d] deleteNetworkOK ", 200)
-}
-
-func (o *DeleteNetworkOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
 }
 
 // NewDeleteNetworkAccepted creates a DeleteNetworkAccepted with default headers values
@@ -125,27 +90,6 @@ func (o *DeleteNetworkForbidden) Error() string {
 }
 
 func (o *DeleteNetworkForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewDeleteNetworkNotFound creates a DeleteNetworkNotFound with default headers values
-func NewDeleteNetworkNotFound() *DeleteNetworkNotFound {
-	return &DeleteNetworkNotFound{}
-}
-
-/*DeleteNetworkNotFound handles this case with default header values.
-
-Not Found
-*/
-type DeleteNetworkNotFound struct {
-}
-
-func (o *DeleteNetworkNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/networks/{id}][%d] deleteNetworkNotFound ", 404)
-}
-
-func (o *DeleteNetworkNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

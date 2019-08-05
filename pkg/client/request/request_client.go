@@ -29,7 +29,7 @@ DeleteRequest deletes request
 
 Delete a single Request
 */
-func (a *Client) DeleteRequest(params *DeleteRequestParams) (*DeleteRequestOK, error) {
+func (a *Client) DeleteRequest(params *DeleteRequestParams) (*DeleteRequestNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteRequestParams()
@@ -50,7 +50,7 @@ func (a *Client) DeleteRequest(params *DeleteRequestParams) (*DeleteRequestOK, e
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteRequestOK), nil
+	return result.(*DeleteRequestNoContent), nil
 
 }
 

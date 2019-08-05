@@ -36,13 +36,6 @@ func (o *DeleteVSphereCloudAccountReader) ReadResponse(response runtime.ClientRe
 		}
 		return nil, result
 
-	case 404:
-		result := NewDeleteVSphereCloudAccountNotFound()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
@@ -86,27 +79,6 @@ func (o *DeleteVSphereCloudAccountForbidden) Error() string {
 }
 
 func (o *DeleteVSphereCloudAccountForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewDeleteVSphereCloudAccountNotFound creates a DeleteVSphereCloudAccountNotFound with default headers values
-func NewDeleteVSphereCloudAccountNotFound() *DeleteVSphereCloudAccountNotFound {
-	return &DeleteVSphereCloudAccountNotFound{}
-}
-
-/*DeleteVSphereCloudAccountNotFound handles this case with default header values.
-
-Not Found
-*/
-type DeleteVSphereCloudAccountNotFound struct {
-}
-
-func (o *DeleteVSphereCloudAccountNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-vsphere/{id}][%d] deleteVSphereCloudAccountNotFound ", 404)
-}
-
-func (o *DeleteVSphereCloudAccountNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

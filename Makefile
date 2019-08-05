@@ -5,8 +5,8 @@ all:
 
 swagger:
 	rm -rf pkg/client pkg/models
-	./hack/add_filter_params
-	swagger mixin -c=1 swagger/cas-iaas.json swagger/cas-blueprint.json swagger/cas-catalog.json swagger/cas-deployment.json > swagger/cas-combined.json
+	swagger mixin -c=1 swagger/cas-iaas.json swagger/cas-blueprint.json swagger/cas-catalog.json swagger/cas-deployment.json | python3 -mjson.tool > swagger/cas-combined.json
+	./hack/fix_cas_swagger --omit-security
 	swagger generate client -f swagger/cas-combined.json -t pkg
 	./hack/fixup.sh
 

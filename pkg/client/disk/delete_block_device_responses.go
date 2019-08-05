@@ -39,13 +39,6 @@ func (o *DeleteBlockDeviceReader) ReadResponse(response runtime.ClientResponse, 
 		}
 		return nil, result
 
-	case 404:
-		result := NewDeleteBlockDeviceNotFound()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
@@ -97,27 +90,6 @@ func (o *DeleteBlockDeviceForbidden) Error() string {
 }
 
 func (o *DeleteBlockDeviceForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewDeleteBlockDeviceNotFound creates a DeleteBlockDeviceNotFound with default headers values
-func NewDeleteBlockDeviceNotFound() *DeleteBlockDeviceNotFound {
-	return &DeleteBlockDeviceNotFound{}
-}
-
-/*DeleteBlockDeviceNotFound handles this case with default header values.
-
-Not Found
-*/
-type DeleteBlockDeviceNotFound struct {
-}
-
-func (o *DeleteBlockDeviceNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/block-devices/{id}][%d] deleteBlockDeviceNotFound ", 404)
-}
-
-func (o *DeleteBlockDeviceNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

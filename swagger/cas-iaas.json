@@ -269,9 +269,6 @@
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 }
             }
@@ -554,9 +551,6 @@
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 }
             },
@@ -812,9 +806,6 @@
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 }
             },
@@ -1070,9 +1061,6 @@
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 }
             },
@@ -1282,9 +1270,6 @@
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 }
             },
@@ -1494,9 +1479,6 @@
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 }
             },
@@ -1752,9 +1734,6 @@
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 }
             },
@@ -1932,9 +1911,6 @@
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 }
             },
@@ -2142,9 +2118,6 @@
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 }
             }
@@ -2309,13 +2282,6 @@
                 ],
                 "parameters": [
                     {
-                        "name": "$filter",
-                        "in": "query",
-                        "description": "Add a filter to return limited results",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "apiVersion",
                         "in": "query",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about",
@@ -2393,13 +2359,6 @@
                     "app/json"
                 ],
                 "parameters": [
-                    {
-                        "name": "$filter",
-                        "in": "query",
-                        "description": "Add a filter to return limited results",
-                        "required": false,
-                        "type": "string"
-                    },
                     {
                         "name": "apiVersion",
                         "in": "query",
@@ -2826,9 +2785,6 @@
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 }
             },
@@ -3072,9 +3028,6 @@
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 }
             },
@@ -3321,9 +3274,6 @@
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 }
             }
@@ -3365,9 +3315,6 @@
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 }
             }
@@ -3628,9 +3575,6 @@
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 }
             },
@@ -3861,7 +3805,7 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "202": {
                         "description": "successful operation",
                         "schema": {
                             "$ref": "#/definitions/BlockDevice"
@@ -3869,9 +3813,6 @@
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 }
             }
@@ -4488,9 +4429,6 @@
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 }
             }
@@ -4508,13 +4446,6 @@
                     "app/json"
                 ],
                 "parameters": [
-                    {
-                        "name": "$filter",
-                        "in": "query",
-                        "description": "Add a filter to return limited results",
-                        "required": false,
-                        "type": "string"
-                    },
                     {
                         "name": "apiVersion",
                         "in": "query",
@@ -4734,9 +4665,6 @@
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 }
             },
@@ -4941,9 +4869,6 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK"
-                    },
                     "202": {
                         "description": "successful operation",
                         "schema": {
@@ -4952,9 +4877,6 @@
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 }
             }
@@ -4972,13 +4894,6 @@
                     "app/json"
                 ],
                 "parameters": [
-                    {
-                        "name": "$filter",
-                        "in": "query",
-                        "description": "Add a filter to return limited results",
-                        "required": false,
-                        "type": "string"
-                    },
                     {
                         "name": "apiVersion",
                         "in": "query",
@@ -5120,9 +5035,6 @@
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     },
                     "409": {
                         "description": "Conflict, when the project is in use"
@@ -5455,14 +5367,11 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK"
+                    "204": {
+                        "description": "No Content"
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 }
             }
@@ -5480,13 +5389,6 @@
                     "app/json"
                 ],
                 "parameters": [
-                    {
-                        "name": "$filter",
-                        "in": "query",
-                        "description": "Add a filter to return limited results",
-                        "required": false,
-                        "type": "string"
-                    },
                     {
                         "name": "apiVersion",
                         "in": "query",
@@ -5780,9 +5682,6 @@
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 }
             },
@@ -5988,9 +5887,6 @@
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 }
             },
@@ -6196,9 +6092,6 @@
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 }
             },
@@ -6377,9 +6270,6 @@
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 }
             }
@@ -6572,9 +6462,6 @@
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 }
             },
@@ -6723,6 +6610,11 @@
                 },
                 "organizationId": {
                     "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
+                    "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
                 },
@@ -6813,6 +6705,11 @@
                     "description": "Email of the user that owns the entity."
                 },
                 "organizationId": {
+                    "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
                     "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
@@ -6907,6 +6804,11 @@
                     "description": "Email of the user that owns the entity."
                 },
                 "organizationId": {
+                    "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
                     "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
@@ -7118,6 +7020,11 @@
                 },
                 "organizationId": {
                     "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
+                    "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
                 },
@@ -7207,6 +7114,11 @@
                     "description": "Email of the user that owns the entity."
                 },
                 "organizationId": {
+                    "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
                     "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
@@ -7363,6 +7275,11 @@
                     "description": "Email of the user that owns the entity."
                 },
                 "organizationId": {
+                    "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
                     "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
@@ -7542,6 +7459,11 @@
                 },
                 "organizationId": {
                     "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
+                    "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
                 },
@@ -7719,6 +7641,11 @@
                 },
                 "organizationId": {
                     "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
+                    "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
                 },
@@ -7878,6 +7805,11 @@
                     "description": "Email of the user that owns the entity."
                 },
                 "organizationId": {
+                    "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
                     "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
@@ -8158,6 +8090,11 @@
                     "description": "Email of the user that owns the entity."
                 },
                 "organizationId": {
+                    "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
                     "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
@@ -8500,6 +8437,11 @@
                 },
                 "organizationId": {
                     "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
+                    "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
                 },
@@ -8700,6 +8642,11 @@
                 },
                 "organizationId": {
                     "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
+                    "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
                 },
@@ -8831,6 +8778,11 @@
                 },
                 "organizationId": {
                     "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
+                    "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
                 },
@@ -8958,6 +8910,11 @@
                 },
                 "organizationId": {
                     "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
+                    "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
                 },
@@ -9059,6 +9016,11 @@
                     "description": "Email of the user that owns the entity."
                 },
                 "organizationId": {
+                    "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
                     "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
@@ -9182,6 +9144,11 @@
                     "description": "Email of the user that owns the entity."
                 },
                 "organizationId": {
+                    "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
                     "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
@@ -9411,6 +9378,11 @@
                 },
                 "organizationId": {
                     "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
+                    "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
                 },
@@ -9505,6 +9477,11 @@
                     "description": "Email of the user that owns the entity."
                 },
                 "organizationId": {
+                    "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
                     "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
@@ -9643,6 +9620,11 @@
                     "description": "Email of the user that owns the entity."
                 },
                 "organizationId": {
+                    "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
                     "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
@@ -9848,6 +9830,11 @@
                     "description": "Email of the user that owns the entity."
                 },
                 "organizationId": {
+                    "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
                     "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
@@ -10100,6 +10087,11 @@
                 },
                 "organizationId": {
                     "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
+                    "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
                 },
@@ -10206,6 +10198,11 @@
                     "description": "Email of the user that owns the entity."
                 },
                 "organizationId": {
+                    "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
                     "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
@@ -10320,6 +10317,11 @@
                     "description": "Email of the user that owns the entity."
                 },
                 "organizationId": {
+                    "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
                     "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
@@ -10473,6 +10475,11 @@
                     "description": "Email of the user that owns the entity."
                 },
                 "organizationId": {
+                    "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
                     "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
@@ -10746,6 +10753,11 @@
                 },
                 "organizationId": {
                     "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
+                    "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
                 },
@@ -10796,8 +10808,12 @@
                 },
                 "machineNamingTemplate": {
                     "type": "string",
-                    "example": "{project.name}-test-{####}",
+                    "example": "${project.name}-test-${####}",
                     "description": "The naming template to be used for machines provisioned in this project"
+                },
+                "sharedResources": {
+                    "type": "boolean",
+                    "description": "Specifies whether the resources in this projects are shared or not."
                 }
             },
             "description": "Projects link users and cloud zones, thus controlling who can use what cloud resources.<br>**HATEOAS** links:<br>**self** - Project - Self link to this project"
@@ -10896,8 +10912,13 @@
                 },
                 "machineNamingTemplate": {
                     "type": "string",
-                    "example": "{project.name}-test-{####}",
+                    "example": "${project.name}-test-${####}",
                     "description": "The naming template to be used for machines provisioned in this project"
+                },
+                "sharedResources": {
+                    "type": "boolean",
+                    "example": true,
+                    "description": "Specifies whether the resources in this projects are shared or not. If not set default will be used."
                 }
             },
             "description": "Represents a specification for a project."
@@ -10931,6 +10952,11 @@
                     "description": "Email of the user that owns the entity."
                 },
                 "organizationId": {
+                    "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
                     "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
@@ -11162,6 +11188,11 @@
                 },
                 "organizationId": {
                     "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
+                    "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
                 },
@@ -11268,6 +11299,11 @@
                 },
                 "organizationId": {
                     "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
+                    "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
                 },
@@ -11319,6 +11355,11 @@
                     "description": "Email of the user that owns the entity."
                 },
                 "organizationId": {
+                    "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
                     "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
@@ -11382,6 +11423,11 @@
                     "description": "Email of the user that owns the entity."
                 },
                 "organizationId": {
+                    "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
                     "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
@@ -12064,6 +12110,11 @@
                 },
                 "organizationId": {
                     "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
+                    "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."
                 },
@@ -12163,6 +12214,11 @@
                     "description": "Email of the user that owns the entity."
                 },
                 "organizationId": {
+                    "type": "string",
+                    "example": "deprecated",
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to."
+                },
+                "orgId": {
                     "type": "string",
                     "example": "9e49",
                     "description": "The id of the organization this entity belongs to."

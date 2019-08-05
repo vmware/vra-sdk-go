@@ -39,13 +39,6 @@ func (o *DeleteMachineSnapshotReader) ReadResponse(response runtime.ClientRespon
 		}
 		return nil, result
 
-	case 404:
-		result := NewDeleteMachineSnapshotNotFound()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
@@ -97,27 +90,6 @@ func (o *DeleteMachineSnapshotForbidden) Error() string {
 }
 
 func (o *DeleteMachineSnapshotForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewDeleteMachineSnapshotNotFound creates a DeleteMachineSnapshotNotFound with default headers values
-func NewDeleteMachineSnapshotNotFound() *DeleteMachineSnapshotNotFound {
-	return &DeleteMachineSnapshotNotFound{}
-}
-
-/*DeleteMachineSnapshotNotFound handles this case with default header values.
-
-Not Found
-*/
-type DeleteMachineSnapshotNotFound struct {
-}
-
-func (o *DeleteMachineSnapshotNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}/snapshots/{id1}][%d] deleteMachineSnapshotNotFound ", 404)
-}
-
-func (o *DeleteMachineSnapshotNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

@@ -38,6 +38,9 @@ type ProjectSpecification struct {
 	// The timeout that should be used for Blueprint operations and Provisioning tasks. The timeout is in seconds
 	OperationTimeout int64 `json:"operationTimeout,omitempty"`
 
+	// Specifies whether the resources in this projects are shared or not. If not set default will be used.
+	SharedResources bool `json:"sharedResources,omitempty"`
+
 	// List of configurations for zone assignment to a project.
 	ZoneAssignmentConfigurations []*ZoneAssignmentConfig `json:"zoneAssignmentConfigurations"`
 }

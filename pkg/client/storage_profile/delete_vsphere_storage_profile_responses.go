@@ -36,13 +36,6 @@ func (o *DeleteVSphereStorageProfileReader) ReadResponse(response runtime.Client
 		}
 		return nil, result
 
-	case 404:
-		result := NewDeleteVSphereStorageProfileNotFound()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
@@ -86,27 +79,6 @@ func (o *DeleteVSphereStorageProfileForbidden) Error() string {
 }
 
 func (o *DeleteVSphereStorageProfileForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewDeleteVSphereStorageProfileNotFound creates a DeleteVSphereStorageProfileNotFound with default headers values
-func NewDeleteVSphereStorageProfileNotFound() *DeleteVSphereStorageProfileNotFound {
-	return &DeleteVSphereStorageProfileNotFound{}
-}
-
-/*DeleteVSphereStorageProfileNotFound handles this case with default header values.
-
-Not Found
-*/
-type DeleteVSphereStorageProfileNotFound struct {
-}
-
-func (o *DeleteVSphereStorageProfileNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/storage-profiles-vsphere/{id}][%d] deleteVSphereStorageProfileNotFound ", 404)
-}
-
-func (o *DeleteVSphereStorageProfileNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

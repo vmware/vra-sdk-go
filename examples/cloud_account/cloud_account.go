@@ -15,7 +15,7 @@ import (
 )
 
 var apiHost = "api.mgmt.cloud.vmware.com"
-var debug = false
+var debug = true
 
 func setupCASEnvironment() string {
 	// Assume a valid refresh token is passed in via an environment variable
@@ -63,7 +63,7 @@ func getToken(apiToken string) (string, error) {
 		},
 	)
 	authTokenResponse, err := apiclient.Login.RetrieveAuthToken(params)
-	if err != nil || *authTokenResponse.Payload.TokenType != "bearer" {
+	if err != nil || *authTokenResponse.Payload.TokenType != "Bearer" {
 		return "", err
 	}
 
@@ -75,6 +75,7 @@ func withString(s string) *string {
 }
 
 func main() {
+	flag.BoolVar(&debug, "debug", false, "output verbose http debug information")
 	deletePtr := flag.Bool("delete", false, "delete cloud account")
 	cloudAccountNamePtr := flag.String("name", "", "Name of test cloud account")
 	flag.Parse()
@@ -93,6 +94,7 @@ func main() {
 		fmt.Printf("Could not get bearer token: %v\n", err)
 		os.Exit(1)
 	}
+	// bearerAuth := httptransport.BearerToken(bearerToken)
 
 	transport := httptransport.New(apiHost, "", nil)
 	transport.SetDebug(debug)
@@ -100,7 +102,7 @@ func main() {
 	apiclient := client.New(transport, strfmt.Default)
 
 	fmt.Printf("Creating cloud account %s\n", *cloudAccountNamePtr)
-	createResp, err := apiclient.CloudAccount.CreateCloudAccountAws(cloud_account.NewCreateCloudAccountAwsParams().WithBody(&models.CloudAccountAwsSpecification{
+	createResp, err := apiclient.CloudAccount.CreateAwsCloudAccount(cloud_account.NewCreateAwsCloudAccountParams().WithBody(&models.CloudAccountAwsSpecification{
 		Name:            cloudAccountNamePtr,
 		AccessKeyID:     withString(accessKeyID),
 		SecretAccessKey: withString(secretAccessKey),
@@ -112,7 +114,7 @@ func main() {
 	}))
 
 	if err != nil {
-		if _, ok := err.(*cloud_account.CreateCloudAccountAwsBadRequest); ok {
+		if _, ok := err.(*cloud_account.CreateAwsCloudAccountBadRequest); ok {
 			fmt.Printf("Cloud account '%s' already exists\n", *cloudAccountNamePtr)
 		} else {
 			fmt.Printf("Unknown error: %+v\n", err)
@@ -133,7 +135,7 @@ func main() {
 	}
 
 	if *deletePtr && id != "" {
-		resp, err := apiclient.CloudAccount.DeleteCloudAccountAws(cloud_account.NewDeleteCloudAccountAwsParams().WithID(id))
+		resp, err := apiclient.CloudAccount.DeleteAwsCloudAccount(cloud_account.NewDeleteAwsCloudAccountParams().WithID(id))
 		if err != nil {
 			fmt.Printf("Error with delete: %s %+v %+v\n", *cloudAccountNamePtr, resp, err)
 		} else {
