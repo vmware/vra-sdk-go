@@ -6,10 +6,10 @@ import (
 	"os"
 
 	"github.com/go-openapi/strfmt"
-	"github.com/vmware/cas-sdk-go/pkg/client"
-	"github.com/vmware/cas-sdk-go/pkg/client/cloud_account"
-	"github.com/vmware/cas-sdk-go/pkg/client/login"
-	"github.com/vmware/cas-sdk-go/pkg/models"
+	"github.com/vmware/vra-sdk-go/pkg/client"
+	"github.com/vmware/vra-sdk-go/pkg/client/cloud_account"
+	"github.com/vmware/vra-sdk-go/pkg/client/login"
+	"github.com/vmware/vra-sdk-go/pkg/models"
 
 	httptransport "github.com/go-openapi/runtime/client"
 )
@@ -17,36 +17,36 @@ import (
 var apiHost = "api.mgmt.cloud.vmware.com"
 var debug = true
 
-func setupCASEnvironment() string {
+func setupVRAEnvironment() string {
 	// Assume a valid refresh token is passed in via an environment variable
-	casRefreshToken := os.Getenv("CAS_REFRESH_TOKEN")
-	if casRefreshToken == "" {
-		fmt.Printf("Need to set CAS_REFRESH_TOKEN\n")
+	vraRefreshToken := os.Getenv("VRA_REFRESH_TOKEN")
+	if vraRefreshToken == "" {
+		fmt.Printf("Need to set VRA_REFRESH_TOKEN\n")
 		os.Exit(1)
 	}
 
-	envAPIHost := os.Getenv("CAS_API_HOST")
+	envAPIHost := os.Getenv("VRA_API_HOST")
 	if apiHost != "" {
 		apiHost = envAPIHost
 	}
 
-	if os.Getenv("CAS_DEBUG") != "" {
+	if os.Getenv("VRA_DEBUG") != "" {
 		debug = true
 	}
 
-	return casRefreshToken
+	return vraRefreshToken
 }
 
 func setupAWSEnvironment() (string, string) {
-	accessKeyID := os.Getenv("CAS_AWS_ACCESS_KEY_ID")
+	accessKeyID := os.Getenv("VRA_AWS_ACCESS_KEY_ID")
 	if accessKeyID == "" {
-		fmt.Printf("Need to set CAS_AWS_ACCESS_KEY_ID\n")
+		fmt.Printf("Need to set VRA_AWS_ACCESS_KEY_ID\n")
 		os.Exit(1)
 	}
 
-	secretAccessKey := os.Getenv("CAS_AWS_SECRET_ACCESS_KEY")
+	secretAccessKey := os.Getenv("VRA_AWS_SECRET_ACCESS_KEY")
 	if secretAccessKey == "" {
-		fmt.Printf("Need to set CAS_AWS_SECRET_ACCESS_KEY\n")
+		fmt.Printf("Need to set VRA_AWS_SECRET_ACCESS_KEY\n")
 		os.Exit(1)
 	}
 	return accessKeyID, secretAccessKey
@@ -85,11 +85,11 @@ func main() {
 		os.Exit(1)
 	}
 
-	casRefreshToken := setupCASEnvironment()
+	vraRefreshToken := setupVRAEnvironment()
 	accessKeyID, secretAccessKey := setupAWSEnvironment()
 
 	fmt.Printf("Getting bearer token\n")
-	bearerToken, err := getToken(casRefreshToken)
+	bearerToken, err := getToken(vraRefreshToken)
 	if err != nil {
 		fmt.Printf("Could not get bearer token: %v\n", err)
 		os.Exit(1)

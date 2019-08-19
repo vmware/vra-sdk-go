@@ -26,4 +26,4 @@ find pkg -type f -exec sed -i '' 's/VmwareCloudAssemblyIaaS/MulticloudIaaS/g' {}
 find pkg -type f -exec sed -i '' 's/ g e t params/ get params/g' {} +
 find pkg -type f -exec sed -i '' 's/ g e t 1 / get1 /g' {} +
 
-mv pkg/client/vmware_cloud_assembly_iaa_s_client.go pkg/client/cas_client.go
+mv pkg/client/vmware_cloud_assembly_iaa_s_client.go pkg/client/vra_client.go

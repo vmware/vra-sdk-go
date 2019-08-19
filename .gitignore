@@ -1,5 +1,5 @@
-cas-sdk-go
-swagger/cas-combined.json
+vra-sdk-go
+swagger/vra-combined.json
 sdk-test
 tokens
 examples/cloud_account/cloud_account

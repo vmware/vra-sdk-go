@@ -1,4 +1,4 @@
-module github.com/vmware/cas-sdk-go
+module github.com/vmware/vra-sdk-go
 
 require (
 	github.com/go-openapi/errors v0.18.0

@@ -13,7 +13,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/vmware/cas-sdk-go/pkg/models"
+	models "github.com/vmware/vra-sdk-go/pkg/models"
 )
 
 // GetCloudAccountsReader is a Reader for the GetCloudAccounts structure.

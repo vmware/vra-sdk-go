@@ -5,7 +5,7 @@ import json
 
 
 # This is the location of the IaaS swagger
-filename = "swagger/cas-combined.json"
+filename = "swagger/vra-combined.json"
 
 
 def add_filter_params(swagger):
