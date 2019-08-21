@@ -70,14 +70,6 @@ type ProviderResourceType struct {
 	// Read Only: true
 	SelfLink string `json:"selfLink,omitempty"`
 
-	// Provider resource tags
-	// Read Only: true
-	Tags []string `json:"tags"`
-
-	// Object type
-	// Read Only: true
-	Type string `json:"type,omitempty"`
-
 	// Updated time
 	// Read Only: true
 	// Format: date-time

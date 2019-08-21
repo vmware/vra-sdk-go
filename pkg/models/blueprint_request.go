@@ -112,13 +112,6 @@ type BlueprintRequest struct {
 	// Enum: [CREATED STARTED FINISHED FAILED CANCELLED]
 	Status string `json:"status,omitempty"`
 
-	// Blueprint request tags
-	Tags []string `json:"tags"`
-
-	// Object type
-	// Read Only: true
-	Type string `json:"type,omitempty"`
-
 	// Updated time
 	// Read Only: true
 	// Format: date-time

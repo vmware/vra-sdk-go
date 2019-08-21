@@ -19,7 +19,7 @@ import (
 // swagger:model DeploymentEvent
 type DeploymentEvent struct {
 
-	// Creation time.
+	// Creation time (e.g. date format '2019-07-13T23:16:49.310Z').
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"createdAt,omitempty"`
 
@@ -47,7 +47,7 @@ type DeploymentEvent struct {
 	// Optional resource type to which the event applies to
 	ResourceType string `json:"resourceType,omitempty"`
 
-	// Last update time.
+	// Last update time (e.g. date format '2019-07-13T23:16:49.310Z').
 	// Format: date-time
 	UpdatedAt strfmt.DateTime `json:"updatedAt,omitempty"`
 }

@@ -20,14 +20,14 @@ import (
 type StorageProfileAwsSpecification struct {
 
 	// Indicates if a storage profile is default or not.
-	// Required: true
-	DefaultItem *bool `json:"defaultItem"`
+	DefaultItem bool `json:"defaultItem,omitempty"`
 
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
 
 	// Indicates the type of storage.
-	DeviceType string `json:"deviceType,omitempty"`
+	// Required: true
+	DeviceType *string `json:"deviceType"`
 
 	// Indicates maximum I/O operations per second in range(1-20,000).
 	Iops string `json:"iops,omitempty"`
@@ -54,7 +54,7 @@ type StorageProfileAwsSpecification struct {
 func (m *StorageProfileAwsSpecification) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateDefaultItem(formats); err != nil {
+	if err := m.validateDeviceType(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -76,9 +76,9 @@ func (m *StorageProfileAwsSpecification) Validate(formats strfmt.Registry) error
 	return nil
 }
 
-func (m *StorageProfileAwsSpecification) validateDefaultItem(formats strfmt.Registry) error {
+func (m *StorageProfileAwsSpecification) validateDeviceType(formats strfmt.Registry) error {
 
-	if err := validate.Required("defaultItem", "body", m.DefaultItem); err != nil {
+	if err := validate.Required("deviceType", "body", m.DeviceType); err != nil {
 		return err
 	}
 

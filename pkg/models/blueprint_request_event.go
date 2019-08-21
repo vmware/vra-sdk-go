@@ -60,10 +60,6 @@ type BlueprintRequestEvent struct {
 	// Status
 	Status string `json:"status,omitempty"`
 
-	// Object type
-	// Read Only: true
-	Type string `json:"type,omitempty"`
-
 	// Updated time
 	// Read Only: true
 	// Format: date-time

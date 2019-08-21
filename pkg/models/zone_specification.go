@@ -25,6 +25,9 @@ type ZoneSpecification struct {
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
 
+	// The folder relative path to the datacenter where resources are deployed to. (only applicable for vSphere cloud zones)
+	Folder string `json:"folder,omitempty"`
+
 	// A human-friendly name used as an identifier in APIs that support this option.
 	// Required: true
 	Name *string `json:"name"`

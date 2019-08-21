@@ -50,10 +50,6 @@ type BlueprintDeployment struct {
 	// Read Only: true
 	SelfLink string `json:"selfLink,omitempty"`
 
-	// Object type
-	// Read Only: true
-	Type string `json:"type,omitempty"`
-
 	// Updated time
 	// Read Only: true
 	// Format: date-time

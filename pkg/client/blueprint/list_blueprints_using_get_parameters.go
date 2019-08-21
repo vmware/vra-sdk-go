@@ -143,11 +143,6 @@ type ListBlueprintsUsingGETParams struct {
 
 	*/
 	Size *int32
-	/*Tags
-	  Tags filter
-
-	*/
-	Tags []string
 	/*Versioned
 	  Filter blueprints with at least one version
 
@@ -289,17 +284,6 @@ func (o *ListBlueprintsUsingGETParams) WithSize(size *int32) *ListBlueprintsUsin
 // SetSize adds the size to the list blueprints using get params
 func (o *ListBlueprintsUsingGETParams) SetSize(size *int32) {
 	o.Size = size
-}
-
-// WithTags adds the tags to the list blueprints using get params
-func (o *ListBlueprintsUsingGETParams) WithTags(tags []string) *ListBlueprintsUsingGETParams {
-	o.SetTags(tags)
-	return o
-}
-
-// SetTags adds the tags to the list blueprints using get params
-func (o *ListBlueprintsUsingGETParams) SetTags(tags []string) {
-	o.Tags = tags
 }
 
 // WithVersioned adds the versioned to the list blueprints using get params
@@ -447,14 +431,6 @@ func (o *ListBlueprintsUsingGETParams) WriteToRequest(r runtime.ClientRequest, r
 			}
 		}
 
-	}
-
-	valuesTags := o.Tags
-
-	joinedTags := swag.JoinByFormat(valuesTags, "multi")
-	// query array param tags
-	if err := r.SetQueryParam("tags", joinedTags...); err != nil {
-		return err
 	}
 
 	if o.Versioned != nil {

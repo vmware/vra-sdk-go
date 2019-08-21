@@ -149,32 +149,32 @@ func (a *Client) GetResourceActionUsingGET(params *GetResourceActionUsingGETPara
 }
 
 /*
-GetResourceActionsUsingGET1 fetches available resource actions
+GetResourceActionsUsingGET fetches available resource actions
 
 Returns the complete list of available actions that can be performed on a given resource.
 */
-func (a *Client) GetResourceActionsUsingGET1(params *GetResourceActionsUsingGET1Params) (*GetResourceActionsUsingGET1OK, error) {
+func (a *Client) GetResourceActionsUsingGET(params *GetResourceActionsUsingGETParams) (*GetResourceActionsUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetResourceActionsUsingGET1Params()
+		params = NewGetResourceActionsUsingGETParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getResourceActionsUsingGET_1",
+		ID:                 "getResourceActionsUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/{depId}/resources/{resourceId}/actions",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetResourceActionsUsingGET1Reader{formats: a.formats},
+		Reader:             &GetResourceActionsUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetResourceActionsUsingGET1OK), nil
+	return result.(*GetResourceActionsUsingGETOK), nil
 
 }
 

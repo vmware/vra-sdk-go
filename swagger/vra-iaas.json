@@ -6859,9 +6859,6 @@
                         "type": "string"
                     }
                 },
-                "deploymentId": {
-                    "type": "string"
-                },
                 "capacityInGB": {
                     "type": "integer",
                     "format": "int32",
@@ -6934,9 +6931,6 @@
                     "type": "string",
                     "example": "e058",
                     "description": "The id of the project the current user belongs to."
-                },
-                "deploymentId": {
-                    "type": "string"
                 },
                 "description": {
                     "type": "string",
@@ -8182,7 +8176,6 @@
         "CloudAccountVsphereSpecification": {
             "type": "object",
             "required": [
-                "dcid",
                 "hostName",
                 "name",
                 "password",
@@ -9675,9 +9668,6 @@
                         "type": "string"
                     }
                 },
-                "deploymentId": {
-                    "type": "string"
-                },
                 "address": {
                     "type": "string",
                     "example": "lb-123456789.eu-west-1.elb.amazonaws.com",
@@ -9747,9 +9737,6 @@
                     "type": "string",
                     "example": "e058",
                     "description": "The id of the project the current user belongs to."
-                },
-                "deploymentId": {
-                    "type": "string"
                 },
                 "description": {
                     "type": "string",
@@ -9885,9 +9872,6 @@
                         "type": "string"
                     }
                 },
-                "deploymentId": {
-                    "type": "string"
-                },
                 "powerState": {
                     "type": "string",
                     "example": "ON, OFF",
@@ -9974,9 +9958,6 @@
                     "type": "string",
                     "example": "e058",
                     "description": "The id of the project the current user belongs to."
-                },
-                "deploymentId": {
-                    "type": "string"
                 },
                 "description": {
                     "type": "string",
@@ -10140,9 +10121,6 @@
                     "items": {
                         "type": "string"
                     }
-                },
-                "deploymentId": {
-                    "type": "string"
                 },
                 "cidr": {
                     "type": "string",
@@ -10686,9 +10664,6 @@
                     "example": "e058",
                     "description": "The id of the project the current user belongs to."
                 },
-                "deploymentId": {
-                    "type": "string"
-                },
                 "description": {
                     "type": "string",
                     "description": "A human-friendly description."
@@ -10801,6 +10776,17 @@
                         "$ref": "#/definitions/ZoneAssignmentConfig"
                     }
                 },
+                "constraints": {
+                    "type": "object",
+                    "example": "{\"network\":[{\"mandatory\": \"true\", \"expression\": \"env:dev\"}],\"storage\":[{\"mandatory\": \"false\", \"expression\": \"gold\"}],\"extensibility\":[{\"mandatory\": \"false\", \"expression\": \"key:value\"}]}",
+                    "description": "List of storage, network and extensibility constraints to be applied when provisioning through this project.",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/Constraint"
+                        }
+                    }
+                },
                 "operationTimeout": {
                     "type": "integer",
                     "format": "int64",
@@ -10902,6 +10888,17 @@
                     "description": "List of configurations for zone assignment to a project.",
                     "items": {
                         "$ref": "#/definitions/ZoneAssignmentConfig"
+                    }
+                },
+                "constraints": {
+                    "type": "object",
+                    "example": "{\"network\":[{\"mandatory\": \"true\", \"expression\": \"env:dev\"}],\"storage\":[{\"mandatory\": \"false\", \"expression\": \"gold\"}],\"extensibility\":[{\"mandatory\": \"false\", \"expression\": \"key:value\"}]}",
+                    "description": "List of storage, network and extensibility constraints to be applied when provisioning through this project.",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/Constraint"
+                        }
                     }
                 },
                 "operationTimeout": {
@@ -11505,7 +11502,7 @@
         "StorageProfileAwsSpecification": {
             "type": "object",
             "required": [
-                "defaultItem",
+                "deviceType",
                 "name",
                 "regionId"
             ],
@@ -11583,7 +11580,6 @@
         "StorageProfileAzureSpecification": {
             "type": "object",
             "required": [
-                "defaultItem",
                 "name",
                 "regionId"
             ],
@@ -12268,6 +12264,11 @@
                     "additionalProperties": {
                         "type": "string"
                     }
+                },
+                "folder": {
+                    "type": "string",
+                    "example": "test-folder",
+                    "description": "The folder relative path to the datacenter where resources are deployed to. (only applicable for vSphere cloud zones)"
                 }
             },
             "description": "Description of a compute placement zone.  This can be used to specify a subset of compute resources within a region where machines can be placed.**region** - Region - Region for the zone.<br>**self** - Zone - Self link to this zone"
@@ -12364,6 +12365,11 @@
                     "additionalProperties": {
                         "type": "string"
                     }
+                },
+                "folder": {
+                    "type": "string",
+                    "example": "test-folder",
+                    "description": "The folder relative path to the datacenter where resources are deployed to. (only applicable for vSphere cloud zones)"
                 }
             },
             "description": "Specification for a zone."

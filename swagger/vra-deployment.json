@@ -23,10 +23,6 @@
             "description": "Deployment Events API"
         },
         {
-            "name": "Deployment and Deployment Resource Actions Admin API",
-            "description": "Resource Action Admin Controller"
-        },
-        {
             "name": "Deployments",
             "description": "Deployment API"
         }
@@ -993,7 +989,7 @@
                 ],
                 "summary": "Fetch available resource actions.",
                 "description": "Returns the complete list of available actions that can be performed on a given resource.",
-                "operationId": "getResourceActionsUsingGET_1",
+                "operationId": "getResourceActionsUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -1372,7 +1368,7 @@
                 "createdAt": {
                     "type": "string",
                     "format": "date-time",
-                    "description": "Creation time."
+                    "description": "Creation time (e.g. date format '2019-07-13T23:16:49.310Z')."
                 },
                 "deploymentId": {
                     "type": "string",
@@ -1408,7 +1404,7 @@
                 "updatedAt": {
                     "type": "string",
                     "format": "date-time",
-                    "description": "Last update time."
+                    "description": "Last update time (e.g. date format '2019-07-13T23:16:49.310Z')."
                 }
             },
             "title": "DeploymentEvent",
@@ -1437,7 +1433,7 @@
                 "createdAt": {
                     "type": "string",
                     "format": "date-time",
-                    "description": "Creation time."
+                    "description": "Creation time (e.g. date format '2019-07-13T23:16:49.310Z')."
                 },
                 "deploymentId": {
                     "type": "string",
@@ -1506,7 +1502,7 @@
                 "updatedAt": {
                     "type": "string",
                     "format": "date-time",
-                    "description": "Last update time."
+                    "description": "Last update time (e.g. date format '2019-07-13T23:16:49.310Z')."
                 }
             },
             "title": "DeploymentRequest",
@@ -1897,50 +1893,6 @@
                 }
             },
             "title": "PageOfResource"
-        },
-        "PageOfResourceAction": {
-            "type": "object",
-            "properties": {
-                "content": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/ResourceAction"
-                    }
-                },
-                "empty": {
-                    "type": "boolean"
-                },
-                "first": {
-                    "type": "boolean"
-                },
-                "last": {
-                    "type": "boolean"
-                },
-                "number": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "numberOfElements": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "size": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "sort": {
-                    "$ref": "#/definitions/Sort"
-                },
-                "totalElements": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "totalPages": {
-                    "type": "integer",
-                    "format": "int32"
-                }
-            },
-            "title": "PageOfResourceAction"
         },
         "Resource": {
             "type": "object",

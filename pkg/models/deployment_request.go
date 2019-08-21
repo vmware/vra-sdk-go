@@ -33,7 +33,7 @@ type DeploymentRequest struct {
 	// The number of tasks completed while fulfilling this request.
 	CompletedTasks int32 `json:"completedTasks,omitempty"`
 
-	// Creation time.
+	// Creation time (e.g. date format '2019-07-13T23:16:49.310Z').
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"createdAt,omitempty"`
 
@@ -80,7 +80,7 @@ type DeploymentRequest struct {
 	// The total number of tasks need to be completed to fulfil this request.
 	TotalTasks int32 `json:"totalTasks,omitempty"`
 
-	// Last update time.
+	// Last update time (e.g. date format '2019-07-13T23:16:49.310Z').
 	// Format: date-time
 	UpdatedAt strfmt.DateTime `json:"updatedAt,omitempty"`
 }

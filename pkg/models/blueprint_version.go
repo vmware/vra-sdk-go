@@ -68,14 +68,6 @@ type BlueprintVersion struct {
 	// Enum: [DRAFT VERSIONED RELEASED]
 	Status string `json:"status,omitempty"`
 
-	// Blueprint tags
-	// Read Only: true
-	Tags []string `json:"tags"`
-
-	// Object type
-	// Read Only: true
-	Type string `json:"type,omitempty"`
-
 	// Updated time
 	// Read Only: true
 	// Format: date-time

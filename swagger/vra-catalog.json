@@ -1149,6 +1149,70 @@
             "title": "CatalogItemRequestResponse",
             "description": "The blueprint service's response to a deployment request"
         },
+        "CatalogItemResourceUpfrontPriceResponse": {
+            "type": "object",
+            "properties": {
+                "dailyAdditionalPrice": {
+                    "type": "number",
+                    "description": "Additional Price incurred for the catalog.",
+                    "readOnly": true
+                },
+                "dailyComputePrice": {
+                    "type": "number",
+                    "description": "Compute Price of the catalog resource.",
+                    "readOnly": true
+                },
+                "dailyNetworkPrice": {
+                    "type": "number",
+                    "description": "Network Price of the catalog resource.",
+                    "readOnly": true
+                },
+                "dailyStoragePrice": {
+                    "type": "number",
+                    "description": "Storage Price of the catalog resource.",
+                    "readOnly": true
+                },
+                "dailyTotalPrice": {
+                    "type": "number",
+                    "description": "Total Price of the catalog resource.",
+                    "readOnly": true
+                },
+                "resourceName": {
+                    "type": "string"
+                },
+                "resourceType": {
+                    "type": "string"
+                },
+                "resourceUpfrontPriceId": {
+                    "type": "string",
+                    "description": "Id",
+                    "readOnly": true
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Upfront price sync status",
+                    "readOnly": true,
+                    "enum": [
+                        "SUCCESS",
+                        "ERROR",
+                        "DATA_NOT_AVAILABLE",
+                        "CURRENCY_NOT_SET"
+                    ]
+                },
+                "statusDetails": {
+                    "type": "string",
+                    "description": "Upfront price status detail.",
+                    "readOnly": true
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "Monetary unit.",
+                    "readOnly": true
+                }
+            },
+            "title": "CatalogItemResourceUpfrontPriceResponse",
+            "description": "A response with upfront price for a resource in given catalog item"
+        },
         "CatalogItemType": {
             "type": "object",
             "required": [
@@ -1212,6 +1276,12 @@
                     "description": "Total Price of the catalog.",
                     "readOnly": true
                 },
+                "resourcePriceDetails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CatalogItemResourceUpfrontPriceResponse"
+                    }
+                },
                 "status": {
                     "type": "string",
                     "description": "Upfront price sync status",
@@ -1222,7 +1292,8 @@
                         "SUCCESS",
                         "ERROR",
                         "DATA_NOT_AVAILABLE",
-                        "CURRENCY_NOT_SET"
+                        "CURRENCY_NOT_SET",
+                        "PUBLIC_CLOUD_NOT_SUPPORTED"
                     ]
                 },
                 "statusDetails": {

@@ -22,6 +22,9 @@ type ProjectSpecification struct {
 	// List of administrator users associated with the project. Only administrators can manage project's configuration.
 	Administrators []*User `json:"administrators"`
 
+	// List of storage, network and extensibility constraints to be applied when provisioning through this project.
+	Constraints map[string][]Constraint `json:"constraints,omitempty"`
+
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
 
@@ -50,6 +53,10 @@ func (m *ProjectSpecification) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateAdministrators(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateConstraints(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -89,6 +96,34 @@ func (m *ProjectSpecification) validateAdministrators(formats strfmt.Registry) e
 				}
 				return err
 			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ProjectSpecification) validateConstraints(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Constraints) { // not required
+		return nil
+	}
+
+	for k := range m.Constraints {
+
+		if err := validate.Required("constraints"+"."+k, "body", m.Constraints[k]); err != nil {
+			return err
+		}
+
+		for i := 0; i < len(m.Constraints[k]); i++ {
+
+			if err := m.Constraints[k][i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("constraints" + "." + k + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+
 		}
 
 	}

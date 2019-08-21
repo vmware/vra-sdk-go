@@ -26,6 +26,9 @@ type Project struct {
 	// List of administrator users associated with the project. Only administrators can manage project's configuration.
 	Administrators []*User `json:"administrators"`
 
+	// List of storage, network and extensibility constraints to be applied when provisioning through this project.
+	Constraints map[string][]Constraint `json:"constraints,omitempty"`
+
 	// Date when the entity was created. The date is in ISO 6801 and UTC.
 	CreatedAt string `json:"createdAt,omitempty"`
 
@@ -76,6 +79,10 @@ func (m *Project) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateAdministrators(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateConstraints(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -133,6 +140,34 @@ func (m *Project) validateAdministrators(formats strfmt.Registry) error {
 				}
 				return err
 			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *Project) validateConstraints(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Constraints) { // not required
+		return nil
+	}
+
+	for k := range m.Constraints {
+
+		if err := validate.Required("constraints"+"."+k, "body", m.Constraints[k]); err != nil {
+			return err
+		}
+
+		for i := 0; i < len(m.Constraints[k]); i++ {
+
+			if err := m.Constraints[k][i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("constraints" + "." + k + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+
 		}
 
 	}

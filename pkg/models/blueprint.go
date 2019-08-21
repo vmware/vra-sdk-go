@@ -91,9 +91,6 @@ type Blueprint struct {
 	// Enum: [DRAFT VERSIONED RELEASED]
 	Status string `json:"status,omitempty"`
 
-	// Blueprint tags
-	Tags []string `json:"tags"`
-
 	// Total released versions
 	// Read Only: true
 	TotalReleasedVersions int32 `json:"totalReleasedVersions,omitempty"`
@@ -101,10 +98,6 @@ type Blueprint struct {
 	// Total versions
 	// Read Only: true
 	TotalVersions int32 `json:"totalVersions,omitempty"`
-
-	// Object type
-	// Read Only: true
-	Type string `json:"type,omitempty"`
 
 	// Updated time
 	// Read Only: true

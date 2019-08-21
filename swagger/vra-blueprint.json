@@ -640,18 +640,6 @@
                         "allowEmptyValue": false
                     },
                     {
-                        "name": "tags",
-                        "in": "query",
-                        "description": "Tags filter",
-                        "required": false,
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "multi",
-                        "allowEmptyValue": false
-                    },
-                    {
                         "name": "versioned",
                         "in": "query",
                         "description": "Filter blueprints with at least one version",
@@ -1545,13 +1533,6 @@
                         "RELEASED"
                     ]
                 },
-                "tags": {
-                    "type": "array",
-                    "description": "Blueprint tags",
-                    "items": {
-                        "type": "string"
-                    }
-                },
                 "totalReleasedVersions": {
                     "type": "integer",
                     "format": "int32",
@@ -1562,11 +1543,6 @@
                     "type": "integer",
                     "format": "int32",
                     "description": "Total versions",
-                    "readOnly": true
-                },
-                "type": {
-                    "type": "string",
-                    "description": "Object type",
                     "readOnly": true
                 },
                 "updatedAt": {
@@ -1638,11 +1614,6 @@
                 "selfLink": {
                     "type": "string",
                     "description": "Object link",
-                    "readOnly": true
-                },
-                "type": {
-                    "type": "string",
-                    "description": "Object type",
                     "readOnly": true
                 },
                 "updatedAt": {
@@ -2024,18 +1995,6 @@
                         "CANCELLED"
                     ]
                 },
-                "tags": {
-                    "type": "array",
-                    "description": "Blueprint request tags",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "type": {
-                    "type": "string",
-                    "description": "Object type",
-                    "readOnly": true
-                },
                 "updatedAt": {
                     "type": "string",
                     "format": "date-time",
@@ -2115,11 +2074,6 @@
                 "status": {
                     "type": "string",
                     "description": "Status"
-                },
-                "type": {
-                    "type": "string",
-                    "description": "Object type",
-                    "readOnly": true
                 },
                 "updatedAt": {
                     "type": "string",
@@ -2429,19 +2383,6 @@
                         "VERSIONED",
                         "RELEASED"
                     ]
-                },
-                "tags": {
-                    "type": "array",
-                    "description": "Blueprint tags",
-                    "readOnly": true,
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "type": {
-                    "type": "string",
-                    "description": "Object type",
-                    "readOnly": true
                 },
                 "updatedAt": {
                     "type": "string",
@@ -2768,19 +2709,6 @@
                 "selfLink": {
                     "type": "string",
                     "description": "Object link",
-                    "readOnly": true
-                },
-                "tags": {
-                    "type": "array",
-                    "description": "Provider resource tags",
-                    "readOnly": true,
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "type": {
-                    "type": "string",
-                    "description": "Object type",
                     "readOnly": true
                 },
                 "updatedAt": {

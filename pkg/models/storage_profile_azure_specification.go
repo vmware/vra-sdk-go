@@ -23,8 +23,7 @@ type StorageProfileAzureSpecification struct {
 	DataDiskCaching string `json:"dataDiskCaching,omitempty"`
 
 	// Indicates if a storage policy contains default storage properties.
-	// Required: true
-	DefaultItem *bool `json:"defaultItem"`
+	DefaultItem bool `json:"defaultItem,omitempty"`
 
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
@@ -57,10 +56,6 @@ type StorageProfileAzureSpecification struct {
 func (m *StorageProfileAzureSpecification) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateDefaultItem(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateName(formats); err != nil {
 		res = append(res, err)
 	}
@@ -76,15 +71,6 @@ func (m *StorageProfileAzureSpecification) Validate(formats strfmt.Registry) err
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *StorageProfileAzureSpecification) validateDefaultItem(formats strfmt.Registry) error {
-
-	if err := validate.Required("defaultItem", "body", m.DefaultItem); err != nil {
-		return err
-	}
-
 	return nil
 }
 

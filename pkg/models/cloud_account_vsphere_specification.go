@@ -29,8 +29,7 @@ type CloudAccountVsphereSpecification struct {
 	CreateDefaultZones bool `json:"createDefaultZones,omitempty"`
 
 	// Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors
-	// Required: true
-	Dcid *string `json:"dcid"`
+	Dcid string `json:"dcid,omitempty"`
 
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
@@ -63,10 +62,6 @@ type CloudAccountVsphereSpecification struct {
 func (m *CloudAccountVsphereSpecification) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateDcid(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateHostName(formats); err != nil {
 		res = append(res, err)
 	}
@@ -94,15 +89,6 @@ func (m *CloudAccountVsphereSpecification) Validate(formats strfmt.Registry) err
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *CloudAccountVsphereSpecification) validateDcid(formats strfmt.Registry) error {
-
-	if err := validate.Required("dcid", "body", m.Dcid); err != nil {
-		return err
-	}
-
 	return nil
 }
 

@@ -7,6 +7,7 @@ package models
 
 import (
 	"encoding/json"
+	"strconv"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -41,9 +42,12 @@ type CatalogItemUpfrontPriceResponse struct {
 	// Read Only: true
 	DailyTotalPrice float64 `json:"dailyTotalPrice,omitempty"`
 
+	// resource price details
+	ResourcePriceDetails []*CatalogItemResourceUpfrontPriceResponse `json:"resourcePriceDetails"`
+
 	// Upfront price sync status
 	// Read Only: true
-	// Enum: [STARTED IN_PROGRESS SUCCESS ERROR DATA_NOT_AVAILABLE CURRENCY_NOT_SET]
+	// Enum: [STARTED IN_PROGRESS SUCCESS ERROR DATA_NOT_AVAILABLE CURRENCY_NOT_SET PUBLIC_CLOUD_NOT_SUPPORTED]
 	Status string `json:"status,omitempty"`
 
 	// Upfront price status detail.
@@ -63,6 +67,10 @@ type CatalogItemUpfrontPriceResponse struct {
 func (m *CatalogItemUpfrontPriceResponse) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateResourcePriceDetails(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateStatus(formats); err != nil {
 		res = append(res, err)
 	}
@@ -73,11 +81,36 @@ func (m *CatalogItemUpfrontPriceResponse) Validate(formats strfmt.Registry) erro
 	return nil
 }
 
+func (m *CatalogItemUpfrontPriceResponse) validateResourcePriceDetails(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.ResourcePriceDetails) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ResourcePriceDetails); i++ {
+		if swag.IsZero(m.ResourcePriceDetails[i]) { // not required
+			continue
+		}
+
+		if m.ResourcePriceDetails[i] != nil {
+			if err := m.ResourcePriceDetails[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("resourcePriceDetails" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 var catalogItemUpfrontPriceResponseTypeStatusPropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["STARTED","IN_PROGRESS","SUCCESS","ERROR","DATA_NOT_AVAILABLE","CURRENCY_NOT_SET"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["STARTED","IN_PROGRESS","SUCCESS","ERROR","DATA_NOT_AVAILABLE","CURRENCY_NOT_SET","PUBLIC_CLOUD_NOT_SUPPORTED"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -104,6 +137,9 @@ const (
 
 	// CatalogItemUpfrontPriceResponseStatusCURRENCYNOTSET captures enum value "CURRENCY_NOT_SET"
 	CatalogItemUpfrontPriceResponseStatusCURRENCYNOTSET string = "CURRENCY_NOT_SET"
+
+	// CatalogItemUpfrontPriceResponseStatusPUBLICCLOUDNOTSUPPORTED captures enum value "PUBLIC_CLOUD_NOT_SUPPORTED"
+	CatalogItemUpfrontPriceResponseStatusPUBLICCLOUDNOTSUPPORTED string = "PUBLIC_CLOUD_NOT_SUPPORTED"
 )
 
 // prop value enum

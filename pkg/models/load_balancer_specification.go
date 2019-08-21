@@ -22,9 +22,6 @@ type LoadBalancerSpecification struct {
 	// Additional custom properties that may be used to extend the load balancer.
 	CustomProperties map[string]string `json:"customProperties,omitempty"`
 
-	// deployment Id
-	DeploymentID string `json:"deploymentId,omitempty"`
-
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
 

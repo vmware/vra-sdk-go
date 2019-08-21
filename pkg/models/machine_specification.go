@@ -28,9 +28,6 @@ type MachineSpecification struct {
 	// Additional custom properties that may be used toextend the machine.
 	CustomProperties map[string]string `json:"customProperties,omitempty"`
 
-	// deployment Id
-	DeploymentID string `json:"deploymentId,omitempty"`
-
 	// Describes machine within the scope of your organization and is not propagated to the cloud
 	Description string `json:"description,omitempty"`
 
