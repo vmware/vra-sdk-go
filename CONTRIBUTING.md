@@ -1,22 +1,21 @@
-# Contributing to cas-sdk-go
+# Contributing to vra-sdk-go
 
-The cas-sdk-go project team welcomes contributions from the community.
+The vra-sdk-go project team welcomes contributions from the community.
 If you wish to contribute code and you have not signed our contributor
 license agreement (CLA), our bot will update the issue when you open a
 Pull Request. For any questions about the CLA process, please refer to
 our [FAQ](https://cla.vmware.com/faq).
 
-## Community
-
 ## Getting Started
 
-## Contribution Flow
-
-The SDK Go code is auto-generated using [go-swagger](https://github.com/go-swagger/go-swagger). Any changes should come from the official swagger files from
-Cloud Automation Services and then processed using `make swagger`.
+The SDK Go code is auto-generated using [go-swagger](https://github.com/go-swagger/go-swagger). Any changes should come from the official swagger files via the VMware
+vRealize Automation Cloud and then processed using `make swagger`.
 This will run the correct swagger commands and then some fixups needed for
 more accurate naming. After generations the below flows can be used for
 submitting the change.
+
+
+## Contribution Flow
 
 This is a rough outline of what a contributor's workflow looks like:
 
@@ -29,7 +28,7 @@ This is a rough outline of what a contributor's workflow looks like:
 Example:
 
 ``` shell
-git remote add upstream https://github.com/vmware/cas-sdk-go.git
+git remote add upstream https://github.com/vmware/vra-sdk-go.git
 git checkout -b my-new-feature master
 git commit -a
 git push origin my-new-feature
