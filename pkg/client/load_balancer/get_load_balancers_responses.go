@@ -24,14 +24,12 @@ type GetLoadBalancersReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetLoadBalancersReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetLoadBalancersOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewGetLoadBalancersForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -59,6 +57,10 @@ type GetLoadBalancersOK struct {
 
 func (o *GetLoadBalancersOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/load-balancers][%d] getLoadBalancersOK  %+v", 200, o.Payload)
+}
+
+func (o *GetLoadBalancersOK) GetPayload() *models.LoadBalancerResult {
+	return o.Payload
 }
 
 func (o *GetLoadBalancersOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

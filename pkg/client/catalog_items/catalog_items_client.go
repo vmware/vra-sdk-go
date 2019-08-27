@@ -6,6 +6,8 @@ package catalog_items
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"fmt"
+
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
@@ -50,8 +52,14 @@ func (a *Client) GetCatalogItemUsingGET1(params *GetCatalogItemUsingGET1Params) 
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetCatalogItemUsingGET1OK), nil
-
+	success, ok := result.(*GetCatalogItemUsingGET1OK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getCatalogItemUsingGET_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -80,8 +88,14 @@ func (a *Client) GetCatalogItemsUsingGET1(params *GetCatalogItemsUsingGET1Params
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetCatalogItemsUsingGET1OK), nil
-
+	success, ok := result.(*GetCatalogItemsUsingGET1OK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getCatalogItemsUsingGET_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -110,8 +124,14 @@ func (a *Client) GetVersionByIDUsingGET(params *GetVersionByIDUsingGETParams) (*
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetVersionByIDUsingGETOK), nil
-
+	success, ok := result.(*GetVersionByIDUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getVersionByIdUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -140,8 +160,14 @@ func (a *Client) GetVersionsUsingGET(params *GetVersionsUsingGETParams) (*GetVer
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetVersionsUsingGETOK), nil
-
+	success, ok := result.(*GetVersionsUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getVersionsUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -176,8 +202,9 @@ func (a *Client) RequestCatalogItemUsingPOST(params *RequestCatalogItemUsingPOST
 	case *RequestCatalogItemUsingPOSTCreated:
 		return nil, value, nil
 	}
-	return nil, nil, nil
-
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for catalog_items: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 // SetTransport changes the transport on the client

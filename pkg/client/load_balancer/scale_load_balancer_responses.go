@@ -24,21 +24,18 @@ type ScaleLoadBalancerReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *ScaleLoadBalancerReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 202:
 		result := NewScaleLoadBalancerAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewScaleLoadBalancerForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewScaleLoadBalancerNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type ScaleLoadBalancerAccepted struct {
 
 func (o *ScaleLoadBalancerAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/load-balancers/{id}/operations/scale][%d] scaleLoadBalancerAccepted  %+v", 202, o.Payload)
+}
+
+func (o *ScaleLoadBalancerAccepted) GetPayload() *models.RequestTracker {
+	return o.Payload
 }
 
 func (o *ScaleLoadBalancerAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -24,21 +24,18 @@ type CreateFlavorProfileReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *CreateFlavorProfileReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 201:
 		result := NewCreateFlavorProfileCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 400:
 		result := NewCreateFlavorProfileBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewCreateFlavorProfileForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type CreateFlavorProfileCreated struct {
 
 func (o *CreateFlavorProfileCreated) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/flavor-profiles][%d] createFlavorProfileCreated  %+v", 201, o.Payload)
+}
+
+func (o *CreateFlavorProfileCreated) GetPayload() *models.FlavorProfile {
+	return o.Payload
 }
 
 func (o *CreateFlavorProfileCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

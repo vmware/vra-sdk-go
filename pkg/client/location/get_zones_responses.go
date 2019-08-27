@@ -24,14 +24,12 @@ type GetZonesReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetZonesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetZonesOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewGetZonesForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -59,6 +57,10 @@ type GetZonesOK struct {
 
 func (o *GetZonesOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/zones][%d] getZonesOK  %+v", 200, o.Payload)
+}
+
+func (o *GetZonesOK) GetPayload() *models.ZoneResult {
+	return o.Payload
 }
 
 func (o *GetZonesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

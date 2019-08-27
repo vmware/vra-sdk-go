@@ -24,21 +24,18 @@ type ReplaceStorageProfileReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *ReplaceStorageProfileReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewReplaceStorageProfileOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 400:
 		result := NewReplaceStorageProfileBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewReplaceStorageProfileForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type ReplaceStorageProfileOK struct {
 
 func (o *ReplaceStorageProfileOK) Error() string {
 	return fmt.Sprintf("[PUT /iaas/api/storage-profiles/{id}][%d] replaceStorageProfileOK  %+v", 200, o.Payload)
+}
+
+func (o *ReplaceStorageProfileOK) GetPayload() *models.StorageProfile {
+	return o.Payload
 }
 
 func (o *ReplaceStorageProfileOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

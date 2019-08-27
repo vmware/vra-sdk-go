@@ -24,14 +24,12 @@ type GetFlavorProfilesReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetFlavorProfilesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetFlavorProfilesOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewGetFlavorProfilesForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -59,6 +57,10 @@ type GetFlavorProfilesOK struct {
 
 func (o *GetFlavorProfilesOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/flavor-profiles][%d] getFlavorProfilesOK  %+v", 200, o.Payload)
+}
+
+func (o *GetFlavorProfilesOK) GetPayload() *models.FlavorProfileResult {
+	return o.Payload
 }
 
 func (o *GetFlavorProfilesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

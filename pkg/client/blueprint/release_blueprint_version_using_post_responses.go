@@ -24,35 +24,30 @@ type ReleaseBlueprintVersionUsingPOSTReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *ReleaseBlueprintVersionUsingPOSTReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewReleaseBlueprintVersionUsingPOSTOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 201:
 		result := NewReleaseBlueprintVersionUsingPOSTCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewReleaseBlueprintVersionUsingPOSTUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewReleaseBlueprintVersionUsingPOSTForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewReleaseBlueprintVersionUsingPOSTNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -80,6 +75,10 @@ type ReleaseBlueprintVersionUsingPOSTOK struct {
 
 func (o *ReleaseBlueprintVersionUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprints/{blueprintId}/versions/{version}/action/release][%d] releaseBlueprintVersionUsingPOSTOK  %+v", 200, o.Payload)
+}
+
+func (o *ReleaseBlueprintVersionUsingPOSTOK) GetPayload() *models.BlueprintVersion {
+	return o.Payload
 }
 
 func (o *ReleaseBlueprintVersionUsingPOSTOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

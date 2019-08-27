@@ -24,21 +24,18 @@ type EnumerateGcpRegionsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *EnumerateGcpRegionsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewEnumerateGcpRegionsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 400:
 		result := NewEnumerateGcpRegionsBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewEnumerateGcpRegionsForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type EnumerateGcpRegionsOK struct {
 
 func (o *EnumerateGcpRegionsOK) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-gcp/region-enumeration][%d] enumerateGcpRegionsOK  %+v", 200, o.Payload)
+}
+
+func (o *EnumerateGcpRegionsOK) GetPayload() *models.CloudAccountRegions {
+	return o.Payload
 }
 
 func (o *EnumerateGcpRegionsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

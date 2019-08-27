@@ -24,28 +24,24 @@ type GetRequestEventsUsingGETReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetRequestEventsUsingGETReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetRequestEventsUsingGETOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewGetRequestEventsUsingGETUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewGetRequestEventsUsingGETForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewGetRequestEventsUsingGETNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -73,6 +69,10 @@ type GetRequestEventsUsingGETOK struct {
 
 func (o *GetRequestEventsUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-deployments/{deploymentId}/events][%d] getRequestEventsUsingGETOK  %+v", 200, o.Payload)
+}
+
+func (o *GetRequestEventsUsingGETOK) GetPayload() *models.BlueprintRequestEventQueryResult {
+	return o.Payload
 }
 
 func (o *GetRequestEventsUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

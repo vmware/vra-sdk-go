@@ -24,28 +24,24 @@ type ListProviderResourceTypesUsingGETReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *ListProviderResourceTypesUsingGETReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewListProviderResourceTypesUsingGETOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewListProviderResourceTypesUsingGETUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewListProviderResourceTypesUsingGETForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewListProviderResourceTypesUsingGETNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -73,6 +69,10 @@ type ListProviderResourceTypesUsingGETOK struct {
 
 func (o *ListProviderResourceTypesUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/provider-resources][%d] listProviderResourceTypesUsingGETOK  %+v", 200, o.Payload)
+}
+
+func (o *ListProviderResourceTypesUsingGETOK) GetPayload() *models.ProviderResourceTypeQueryResult {
+	return o.Payload
 }
 
 func (o *ListProviderResourceTypesUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

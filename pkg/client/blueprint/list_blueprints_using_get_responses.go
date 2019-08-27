@@ -24,28 +24,24 @@ type ListBlueprintsUsingGETReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *ListBlueprintsUsingGETReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewListBlueprintsUsingGETOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewListBlueprintsUsingGETUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewListBlueprintsUsingGETForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewListBlueprintsUsingGETNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -73,6 +69,10 @@ type ListBlueprintsUsingGETOK struct {
 
 func (o *ListBlueprintsUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprints][%d] listBlueprintsUsingGETOK  %+v", 200, o.Payload)
+}
+
+func (o *ListBlueprintsUsingGETOK) GetPayload() *models.BlueprintQueryResult {
+	return o.Payload
 }
 
 func (o *ListBlueprintsUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

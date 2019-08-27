@@ -24,14 +24,12 @@ type GetGcpCloudAccountsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetGcpCloudAccountsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetGcpCloudAccountsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewGetGcpCloudAccountsForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -59,6 +57,10 @@ type GetGcpCloudAccountsOK struct {
 
 func (o *GetGcpCloudAccountsOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-gcp][%d] getGcpCloudAccountsOK  %+v", 200, o.Payload)
+}
+
+func (o *GetGcpCloudAccountsOK) GetPayload() *models.CloudAccountGcpResult {
+	return o.Payload
 }
 
 func (o *GetGcpCloudAccountsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

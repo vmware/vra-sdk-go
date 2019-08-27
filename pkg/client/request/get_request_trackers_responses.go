@@ -24,14 +24,12 @@ type GetRequestTrackersReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetRequestTrackersReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetRequestTrackersOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewGetRequestTrackersForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -59,6 +57,10 @@ type GetRequestTrackersOK struct {
 
 func (o *GetRequestTrackersOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/request-tracker][%d] getRequestTrackersOK  %+v", 200, o.Payload)
+}
+
+func (o *GetRequestTrackersOK) GetPayload() *models.RequestTrackerResult {
+	return o.Payload
 }
 
 func (o *GetRequestTrackersOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

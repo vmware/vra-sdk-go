@@ -24,28 +24,24 @@ type GetResourceByIDUsingGETReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetResourceByIDUsingGETReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetResourceByIDUsingGETOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewGetResourceByIDUsingGETUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewGetResourceByIDUsingGETForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewGetResourceByIDUsingGETNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -73,6 +69,10 @@ type GetResourceByIDUsingGETOK struct {
 
 func (o *GetResourceByIDUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/{depId}/resources/{resourceId}][%d] getResourceByIdUsingGETOK  %+v", 200, o.Payload)
+}
+
+func (o *GetResourceByIDUsingGETOK) GetPayload() *models.Resource {
+	return o.Payload
 }
 
 func (o *GetResourceByIDUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -6,6 +6,8 @@ package flavor_profile
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"fmt"
+
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
@@ -50,8 +52,14 @@ func (a *Client) CreateFlavorProfile(params *CreateFlavorProfileParams) (*Create
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateFlavorProfileCreated), nil
-
+	success, ok := result.(*CreateFlavorProfileCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for createFlavorProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -80,8 +88,14 @@ func (a *Client) DeleteFlavorProfile(params *DeleteFlavorProfileParams) (*Delete
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteFlavorProfileNoContent), nil
-
+	success, ok := result.(*DeleteFlavorProfileNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteFlavorProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -110,8 +124,14 @@ func (a *Client) GetFlavorProfile(params *GetFlavorProfileParams) (*GetFlavorPro
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetFlavorProfileOK), nil
-
+	success, ok := result.(*GetFlavorProfileOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getFlavorProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -140,8 +160,14 @@ func (a *Client) GetFlavorProfiles(params *GetFlavorProfilesParams) (*GetFlavorP
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetFlavorProfilesOK), nil
-
+	success, ok := result.(*GetFlavorProfilesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getFlavorProfiles: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -170,8 +196,14 @@ func (a *Client) UpdateFlavorProfile(params *UpdateFlavorProfileParams) (*Update
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateFlavorProfileOK), nil
-
+	success, ok := result.(*UpdateFlavorProfileOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateFlavorProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 // SetTransport changes the transport on the client

@@ -24,35 +24,30 @@ type PostUsingPOSTReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PostUsingPOSTReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPostUsingPOSTOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 201:
 		result := NewPostUsingPOSTCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewPostUsingPOSTUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewPostUsingPOSTForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewPostUsingPOSTNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -80,6 +75,10 @@ type PostUsingPOSTOK struct {
 
 func (o *PostUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /catalog/api/admin/sources][%d] postUsingPOSTOK  %+v", 200, o.Payload)
+}
+
+func (o *PostUsingPOSTOK) GetPayload() *models.CatalogSource {
+	return o.Payload
 }
 
 func (o *PostUsingPOSTOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

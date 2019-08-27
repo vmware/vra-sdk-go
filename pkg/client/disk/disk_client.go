@@ -6,6 +6,8 @@ package disk
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"fmt"
+
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
@@ -22,6 +24,42 @@ Client for disk API
 type Client struct {
 	transport runtime.ClientTransport
 	formats   strfmt.Registry
+}
+
+/*
+AttachMachineDisk attaches machine disk
+
+Attach a disk to a machine.
+*/
+func (a *Client) AttachMachineDisk(params *AttachMachineDiskParams) (*AttachMachineDiskOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewAttachMachineDiskParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "attachMachineDisk",
+		Method:             "POST",
+		PathPattern:        "/iaas/api/machines/{id}/disks",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &AttachMachineDiskReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*AttachMachineDiskOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for attachMachineDisk: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -54,8 +92,14 @@ func (a *Client) CreateBlockDevice(params *CreateBlockDeviceParams) (*CreateBloc
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateBlockDeviceAccepted), nil
-
+	success, ok := result.(*CreateBlockDeviceAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for createBlockDevice: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -84,8 +128,50 @@ func (a *Client) DeleteBlockDevice(params *DeleteBlockDeviceParams) (*DeleteBloc
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteBlockDeviceAccepted), nil
+	success, ok := result.(*DeleteBlockDeviceAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteBlockDevice: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
 
+/*
+DeleteMachineDisk deletes machine disk
+
+Remove a disk from a given machine.
+*/
+func (a *Client) DeleteMachineDisk(params *DeleteMachineDiskParams) (*DeleteMachineDiskAccepted, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteMachineDiskParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "deleteMachineDisk",
+		Method:             "DELETE",
+		PathPattern:        "/iaas/api/machines/{id}/disks/{id1}",
+		ProducesMediaTypes: []string{""},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteMachineDiskReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteMachineDiskAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteMachineDisk: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -114,8 +200,14 @@ func (a *Client) GetBlockDevice(params *GetBlockDeviceParams) (*GetBlockDeviceOK
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetBlockDeviceOK), nil
-
+	success, ok := result.(*GetBlockDeviceOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getBlockDevice: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -144,8 +236,86 @@ func (a *Client) GetBlockDevices(params *GetBlockDevicesParams) (*GetBlockDevice
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetBlockDevicesOK), nil
+	success, ok := result.(*GetBlockDevicesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getBlockDevices: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
 
+/*
+GetMachineDisk gets a machine disk
+
+Get disk with a given id for specific machine
+*/
+func (a *Client) GetMachineDisk(params *GetMachineDiskParams) (*GetMachineDiskOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetMachineDiskParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getMachineDisk",
+		Method:             "GET",
+		PathPattern:        "/iaas/api/machines/{id}/disks/{id1}",
+		ProducesMediaTypes: []string{""},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetMachineDiskReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetMachineDiskOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getMachineDisk: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetMachineDisks gets machine disks
+
+Get all machine disks
+*/
+func (a *Client) GetMachineDisks(params *GetMachineDisksParams) (*GetMachineDisksOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetMachineDisksParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getMachineDisks",
+		Method:             "GET",
+		PathPattern:        "/iaas/api/machines/{id}/disks",
+		ProducesMediaTypes: []string{""},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetMachineDisksReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetMachineDisksOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getMachineDisks: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 // SetTransport changes the transport on the client

@@ -21,14 +21,12 @@ type DeleteAzureStorageProfileReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteAzureStorageProfileReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 204:
 		result := NewDeleteAzureStorageProfileNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewDeleteAzureStorageProfileForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {

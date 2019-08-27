@@ -24,21 +24,18 @@ type ResizeMachineReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *ResizeMachineReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 202:
 		result := NewResizeMachineAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewResizeMachineForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewResizeMachineNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type ResizeMachineAccepted struct {
 
 func (o *ResizeMachineAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/resize][%d] resizeMachineAccepted  %+v", 202, o.Payload)
+}
+
+func (o *ResizeMachineAccepted) GetPayload() *models.RequestTracker {
+	return o.Payload
 }
 
 func (o *ResizeMachineAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

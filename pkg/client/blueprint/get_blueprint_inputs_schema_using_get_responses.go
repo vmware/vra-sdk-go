@@ -24,28 +24,24 @@ type GetBlueprintInputsSchemaUsingGETReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetBlueprintInputsSchemaUsingGETReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetBlueprintInputsSchemaUsingGETOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewGetBlueprintInputsSchemaUsingGETUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewGetBlueprintInputsSchemaUsingGETForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewGetBlueprintInputsSchemaUsingGETNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -73,6 +69,10 @@ type GetBlueprintInputsSchemaUsingGETOK struct {
 
 func (o *GetBlueprintInputsSchemaUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprints/{blueprintId}/inputs-schema][%d] getBlueprintInputsSchemaUsingGETOK  %+v", 200, o.Payload)
+}
+
+func (o *GetBlueprintInputsSchemaUsingGETOK) GetPayload() *models.PropertyDefinition {
+	return o.Payload
 }
 
 func (o *GetBlueprintInputsSchemaUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

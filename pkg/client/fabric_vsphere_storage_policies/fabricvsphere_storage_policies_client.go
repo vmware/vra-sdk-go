@@ -6,6 +6,8 @@ package fabric_vsphere_storage_policies
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"fmt"
+
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
@@ -50,8 +52,14 @@ func (a *Client) GetFabricVSphereStoragePolicies(params *GetFabricVSphereStorage
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetFabricVSphereStoragePoliciesOK), nil
-
+	success, ok := result.(*GetFabricVSphereStoragePoliciesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getFabricVSphereStoragePolicies: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -80,8 +88,14 @@ func (a *Client) GetFabricVSphereStoragePolicy(params *GetFabricVSphereStoragePo
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetFabricVSphereStoragePolicyOK), nil
-
+	success, ok := result.(*GetFabricVSphereStoragePolicyOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getFabricVSphereStoragePolicy: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 // SetTransport changes the transport on the client

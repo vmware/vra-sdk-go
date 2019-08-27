@@ -24,14 +24,12 @@ type GetFabricAwsVolumeTypesReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetFabricAwsVolumeTypesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetFabricAwsVolumeTypesOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewGetFabricAwsVolumeTypesForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -59,6 +57,10 @@ type GetFabricAwsVolumeTypesOK struct {
 
 func (o *GetFabricAwsVolumeTypesOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-aws-volume-types][%d] getFabricAwsVolumeTypesOK  %+v", 200, o.Payload)
+}
+
+func (o *GetFabricAwsVolumeTypesOK) GetPayload() *models.VolumeTypeList {
+	return o.Payload
 }
 
 func (o *GetFabricAwsVolumeTypesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

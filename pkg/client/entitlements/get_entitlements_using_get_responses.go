@@ -24,28 +24,24 @@ type GetEntitlementsUsingGETReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetEntitlementsUsingGETReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetEntitlementsUsingGETOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewGetEntitlementsUsingGETUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewGetEntitlementsUsingGETForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewGetEntitlementsUsingGETNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -73,6 +69,10 @@ type GetEntitlementsUsingGETOK struct {
 
 func (o *GetEntitlementsUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /catalog/api/admin/entitlements][%d] getEntitlementsUsingGETOK  %+v", 200, o.Payload)
+}
+
+func (o *GetEntitlementsUsingGETOK) GetPayload() []*models.Entitlement {
+	return o.Payload
 }
 
 func (o *GetEntitlementsUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

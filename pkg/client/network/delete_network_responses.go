@@ -24,14 +24,12 @@ type DeleteNetworkReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteNetworkReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 202:
 		result := NewDeleteNetworkAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewDeleteNetworkForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -59,6 +57,10 @@ type DeleteNetworkAccepted struct {
 
 func (o *DeleteNetworkAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/networks/{id}][%d] deleteNetworkAccepted  %+v", 202, o.Payload)
+}
+
+func (o *DeleteNetworkAccepted) GetPayload() *models.RequestTracker {
+	return o.Payload
 }
 
 func (o *DeleteNetworkAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

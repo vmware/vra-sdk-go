@@ -24,28 +24,24 @@ type DeleteDeploymentUsingDELETEReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteDeploymentUsingDELETEReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewDeleteDeploymentUsingDELETEOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 204:
 		result := NewDeleteDeploymentUsingDELETENoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewDeleteDeploymentUsingDELETEUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewDeleteDeploymentUsingDELETEForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -73,6 +69,10 @@ type DeleteDeploymentUsingDELETEOK struct {
 
 func (o *DeleteDeploymentUsingDELETEOK) Error() string {
 	return fmt.Sprintf("[DELETE /deployment/api/deployments/{depId}][%d] deleteDeploymentUsingDELETEOK  %+v", 200, o.Payload)
+}
+
+func (o *DeleteDeploymentUsingDELETEOK) GetPayload() *models.DeploymentRequest {
+	return o.Payload
 }
 
 func (o *DeleteDeploymentUsingDELETEOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

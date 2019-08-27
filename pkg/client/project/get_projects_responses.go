@@ -24,14 +24,12 @@ type GetProjectsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetProjectsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetProjectsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewGetProjectsForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -59,6 +57,10 @@ type GetProjectsOK struct {
 
 func (o *GetProjectsOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/projects][%d] getProjectsOK  %+v", 200, o.Payload)
+}
+
+func (o *GetProjectsOK) GetPayload() *models.ProjectResult {
+	return o.Payload
 }
 
 func (o *GetProjectsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

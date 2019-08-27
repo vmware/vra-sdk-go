@@ -24,21 +24,18 @@ type UpdateProjectResourceMetadataReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *UpdateProjectResourceMetadataReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewUpdateProjectResourceMetadataOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 400:
 		result := NewUpdateProjectResourceMetadataBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewUpdateProjectResourceMetadataForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type UpdateProjectResourceMetadataOK struct {
 
 func (o *UpdateProjectResourceMetadataOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/projects/{id}/resource-metadata][%d] updateProjectResourceMetadataOK  %+v", 200, o.Payload)
+}
+
+func (o *UpdateProjectResourceMetadataOK) GetPayload() *models.Project {
+	return o.Payload
 }
 
 func (o *UpdateProjectResourceMetadataOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

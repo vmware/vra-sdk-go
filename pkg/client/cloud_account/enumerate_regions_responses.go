@@ -24,21 +24,18 @@ type EnumerateRegionsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *EnumerateRegionsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewEnumerateRegionsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 400:
 		result := NewEnumerateRegionsBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewEnumerateRegionsForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type EnumerateRegionsOK struct {
 
 func (o *EnumerateRegionsOK) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts/region-enumeration][%d] enumerateRegionsOK  %+v", 200, o.Payload)
+}
+
+func (o *EnumerateRegionsOK) GetPayload() *models.CloudAccountRegions {
+	return o.Payload
 }
 
 func (o *EnumerateRegionsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

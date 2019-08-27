@@ -61,7 +61,7 @@ for the get fabric images operation typically these are written to a http.Reques
 */
 type GetFabricImagesParams struct {
 
-	/*NrDollarFilter
+	/*DollarFilter
 	  Add a filter to return limited results
 
 	*/
@@ -143,13 +143,13 @@ func (o *GetFabricImagesParams) WriteToRequest(r runtime.ClientRequest, reg strf
 	if o.DollarFilter != nil {
 
 		// query param $filter
-		var qrNrDollarFilter string
+		var qrDollarFilter string
 		if o.DollarFilter != nil {
-			qrNrDollarFilter = *o.DollarFilter
+			qrDollarFilter = *o.DollarFilter
 		}
-		qNrDollarFilter := qrNrDollarFilter
-		if qNrDollarFilter != "" {
-			if err := r.SetQueryParam("$filter", qNrDollarFilter); err != nil {
+		qDollarFilter := qrDollarFilter
+		if qDollarFilter != "" {
+			if err := r.SetQueryParam("$filter", qDollarFilter); err != nil {
 				return err
 			}
 		}

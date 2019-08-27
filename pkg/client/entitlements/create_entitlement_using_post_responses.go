@@ -24,35 +24,30 @@ type CreateEntitlementUsingPOSTReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *CreateEntitlementUsingPOSTReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewCreateEntitlementUsingPOSTOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 201:
 		result := NewCreateEntitlementUsingPOSTCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewCreateEntitlementUsingPOSTUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewCreateEntitlementUsingPOSTForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewCreateEntitlementUsingPOSTNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -80,6 +75,10 @@ type CreateEntitlementUsingPOSTOK struct {
 
 func (o *CreateEntitlementUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /catalog/api/admin/entitlements][%d] createEntitlementUsingPOSTOK  %+v", 200, o.Payload)
+}
+
+func (o *CreateEntitlementUsingPOSTOK) GetPayload() *models.Entitlement {
+	return o.Payload
 }
 
 func (o *CreateEntitlementUsingPOSTOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

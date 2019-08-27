@@ -6,6 +6,8 @@ package network
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"fmt"
+
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
@@ -50,8 +52,14 @@ func (a *Client) CreateNetwork(params *CreateNetworkParams) (*CreateNetworkAccep
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateNetworkAccepted), nil
-
+	success, ok := result.(*CreateNetworkAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for createNetwork: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -80,8 +88,50 @@ func (a *Client) DeleteNetwork(params *DeleteNetworkParams) (*DeleteNetworkAccep
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteNetworkAccepted), nil
+	success, ok := result.(*DeleteNetworkAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteNetwork: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
 
+/*
+GetMachineNetworkInterface gets machine network interface
+
+Get network interface with a given id for specific machine
+*/
+func (a *Client) GetMachineNetworkInterface(params *GetMachineNetworkInterfaceParams) (*GetMachineNetworkInterfaceOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetMachineNetworkInterfaceParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getMachineNetworkInterface",
+		Method:             "GET",
+		PathPattern:        "/iaas/api/machines/{id}/network-interfaces/{id1}",
+		ProducesMediaTypes: []string{""},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetMachineNetworkInterfaceReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetMachineNetworkInterfaceOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getMachineNetworkInterface: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -110,8 +160,14 @@ func (a *Client) GetNetwork(params *GetNetworkParams) (*GetNetworkOK, error) {
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetNetworkOK), nil
-
+	success, ok := result.(*GetNetworkOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getNetwork: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -140,8 +196,14 @@ func (a *Client) GetNetworkDomain(params *GetNetworkDomainParams) (*GetNetworkDo
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetNetworkDomainOK), nil
-
+	success, ok := result.(*GetNetworkDomainOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getNetworkDomain: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -170,8 +232,14 @@ func (a *Client) GetNetworkDomains(params *GetNetworkDomainsParams) (*GetNetwork
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetNetworkDomainsOK), nil
-
+	success, ok := result.(*GetNetworkDomainsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getNetworkDomains: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -200,8 +268,14 @@ func (a *Client) GetNetworks(params *GetNetworksParams) (*GetNetworksOK, error) 
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetNetworksOK), nil
-
+	success, ok := result.(*GetNetworksOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getNetworks: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 // SetTransport changes the transport on the client

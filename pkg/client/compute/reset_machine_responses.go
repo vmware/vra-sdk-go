@@ -24,21 +24,18 @@ type ResetMachineReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *ResetMachineReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 202:
 		result := NewResetMachineAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewResetMachineForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewResetMachineNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type ResetMachineAccepted struct {
 
 func (o *ResetMachineAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/reset][%d] resetMachineAccepted  %+v", 202, o.Payload)
+}
+
+func (o *ResetMachineAccepted) GetPayload() *models.RequestTracker {
+	return o.Payload
 }
 
 func (o *ResetMachineAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

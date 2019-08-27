@@ -45,7 +45,6 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/login"
 	"github.com/vmware/vra-sdk-go/pkg/client/network"
 	"github.com/vmware/vra-sdk-go/pkg/client/network_profile"
-	"github.com/vmware/vra-sdk-go/pkg/client/operations"
 	"github.com/vmware/vra-sdk-go/pkg/client/project"
 	"github.com/vmware/vra-sdk-go/pkg/client/provider_resource_types"
 	"github.com/vmware/vra-sdk-go/pkg/client/request"
@@ -54,13 +53,13 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/tags"
 )
 
-// Default vmware cloud assembly iaas HTTP client.
+// Default vmware cloud assembly iaas  HTTP client.
 var Default = NewHTTPClient(nil)
 
 const (
 	// DefaultHost is the default Host
 	// found in Meta (info) section of spec file
-	DefaultHost string = "localhost"
+	DefaultHost string = "api.mgmt.cloud.vmware.com"
 	// DefaultBasePath is the default BasePath
 	// found in Meta (info) section of spec file
 	DefaultBasePath string = "/"
@@ -69,12 +68,12 @@ const (
 // DefaultSchemes are the default schemes found in Meta (info) section of spec file
 var DefaultSchemes = []string{"https"}
 
-// NewHTTPClient creates a new vmware cloud assembly iaas HTTP client.
+// NewHTTPClient creates a new vmware cloud assembly iaas  HTTP client.
 func NewHTTPClient(formats strfmt.Registry) *MulticloudIaaS {
 	return NewHTTPClientWithConfig(formats, nil)
 }
 
-// NewHTTPClientWithConfig creates a new vmware cloud assembly iaas HTTP client,
+// NewHTTPClientWithConfig creates a new vmware cloud assembly iaas  HTTP client,
 // using a customizable transport config.
 func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *MulticloudIaaS {
 	// ensure nullable parameters have default
@@ -87,7 +86,7 @@ func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *Mul
 	return New(transport, formats)
 }
 
-// New creates a new vmware cloud assembly iaas client
+// New creates a new vmware cloud assembly iaas  client
 func New(transport runtime.ClientTransport, formats strfmt.Registry) *MulticloudIaaS {
 	// ensure nullable parameters have default
 	if formats == nil {
@@ -131,7 +130,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 
 	cli.Entitlements = entitlements.New(transport, formats)
 
-	cli.FabricAWSVolumeTypes = fabric_aws_volume_types.New(transport, formats)
+	cli.FabricawsVolumeTypes = fabric_aws_volume_types.New(transport, formats)
 
 	cli.FabricAzureStorageAccount = fabric_azure_storage_account.New(transport, formats)
 
@@ -141,9 +140,9 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 
 	cli.FabricNetwork = fabric_network.New(transport, formats)
 
-	cli.FabricVSphereDatastore = fabric_vsphere_datastore.New(transport, formats)
+	cli.FabricvSphereDatastore = fabric_vsphere_datastore.New(transport, formats)
 
-	cli.FabricVSphereStoragePolicies = fabric_vsphere_storage_policies.New(transport, formats)
+	cli.FabricvSphereStoragePolicies = fabric_vsphere_storage_policies.New(transport, formats)
 
 	cli.FlavorProfile = flavor_profile.New(transport, formats)
 
@@ -164,8 +163,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 	cli.Network = network.New(transport, formats)
 
 	cli.NetworkProfile = network_profile.New(transport, formats)
-
-	cli.Operations = operations.New(transport, formats)
 
 	cli.Project = project.New(transport, formats)
 
@@ -221,7 +218,7 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 	return cfg
 }
 
-// MulticloudIaaS is a client for vmware cloud assembly iaa s
+// MulticloudIaaS is a client for vmware cloud assembly iaas 
 type MulticloudIaaS struct {
 	About *about.Client
 
@@ -257,7 +254,7 @@ type MulticloudIaaS struct {
 
 	Entitlements *entitlements.Client
 
-	FabricAWSVolumeTypes *fabric_aws_volume_types.Client
+	FabricawsVolumeTypes *fabric_aws_volume_types.Client
 
 	FabricAzureStorageAccount *fabric_azure_storage_account.Client
 
@@ -267,9 +264,9 @@ type MulticloudIaaS struct {
 
 	FabricNetwork *fabric_network.Client
 
-	FabricVSphereDatastore *fabric_vsphere_datastore.Client
+	FabricvSphereDatastore *fabric_vsphere_datastore.Client
 
-	FabricVSphereStoragePolicies *fabric_vsphere_storage_policies.Client
+	FabricvSphereStoragePolicies *fabric_vsphere_storage_policies.Client
 
 	FlavorProfile *flavor_profile.Client
 
@@ -290,8 +287,6 @@ type MulticloudIaaS struct {
 	Network *network.Client
 
 	NetworkProfile *network_profile.Client
-
-	Operations *operations.Client
 
 	Project *project.Client
 
@@ -346,7 +341,7 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 
 	c.Entitlements.SetTransport(transport)
 
-	c.FabricAWSVolumeTypes.SetTransport(transport)
+	c.FabricawsVolumeTypes.SetTransport(transport)
 
 	c.FabricAzureStorageAccount.SetTransport(transport)
 
@@ -356,9 +351,9 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 
 	c.FabricNetwork.SetTransport(transport)
 
-	c.FabricVSphereDatastore.SetTransport(transport)
+	c.FabricvSphereDatastore.SetTransport(transport)
 
-	c.FabricVSphereStoragePolicies.SetTransport(transport)
+	c.FabricvSphereStoragePolicies.SetTransport(transport)
 
 	c.FlavorProfile.SetTransport(transport)
 
@@ -379,8 +374,6 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.Network.SetTransport(transport)
 
 	c.NetworkProfile.SetTransport(transport)
-
-	c.Operations.SetTransport(transport)
 
 	c.Project.SetTransport(transport)
 

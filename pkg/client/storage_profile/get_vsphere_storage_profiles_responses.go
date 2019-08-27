@@ -24,14 +24,12 @@ type GetVSphereStorageProfilesReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetVSphereStorageProfilesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetVSphereStorageProfilesOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewGetVSphereStorageProfilesForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -59,6 +57,10 @@ type GetVSphereStorageProfilesOK struct {
 
 func (o *GetVSphereStorageProfilesOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/storage-profiles-vsphere][%d] getVSphereStorageProfilesOK  %+v", 200, o.Payload)
+}
+
+func (o *GetVSphereStorageProfilesOK) GetPayload() *models.StorageProfileVsphereResult {
+	return o.Payload
 }
 
 func (o *GetVSphereStorageProfilesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

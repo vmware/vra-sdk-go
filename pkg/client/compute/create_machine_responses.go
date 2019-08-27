@@ -24,21 +24,18 @@ type CreateMachineReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *CreateMachineReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 202:
 		result := NewCreateMachineAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 400:
 		result := NewCreateMachineBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewCreateMachineForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type CreateMachineAccepted struct {
 
 func (o *CreateMachineAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines][%d] createMachineAccepted  %+v", 202, o.Payload)
+}
+
+func (o *CreateMachineAccepted) GetPayload() *models.RequestTracker {
+	return o.Payload
 }
 
 func (o *CreateMachineAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

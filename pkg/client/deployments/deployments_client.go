@@ -6,6 +6,8 @@ package deployments
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"fmt"
+
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
@@ -50,8 +52,14 @@ func (a *Client) CheckDeploymentNameUsingGET(params *CheckDeploymentNameUsingGET
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CheckDeploymentNameUsingGETOK), nil
-
+	success, ok := result.(*CheckDeploymentNameUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for checkDeploymentNameUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -86,8 +94,9 @@ func (a *Client) DeleteDeploymentUsingDELETE(params *DeleteDeploymentUsingDELETE
 	case *DeleteDeploymentUsingDELETENoContent:
 		return nil, value, nil
 	}
-	return nil, nil, nil
-
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deployments: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -122,8 +131,9 @@ func (a *Client) DeleteResourceUsingDELETE(params *DeleteResourceUsingDELETEPara
 	case *DeleteResourceUsingDELETENoContent:
 		return nil, value, nil
 	}
-	return nil, nil, nil
-
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deployments: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -152,8 +162,14 @@ func (a *Client) GetDeploymentByIDUsingGET(params *GetDeploymentByIDUsingGETPara
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetDeploymentByIDUsingGETOK), nil
-
+	success, ok := result.(*GetDeploymentByIDUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getDeploymentByIdUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -180,8 +196,14 @@ func (a *Client) GetDeploymentFilterByIDUsingGET(params *GetDeploymentFilterByID
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetDeploymentFilterByIDUsingGETOK), nil
-
+	success, ok := result.(*GetDeploymentFilterByIDUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getDeploymentFilterByIdUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -208,8 +230,14 @@ func (a *Client) GetDeploymentFiltersUsingGET(params *GetDeploymentFiltersUsingG
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetDeploymentFiltersUsingGETOK), nil
-
+	success, ok := result.(*GetDeploymentFiltersUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getDeploymentFiltersUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -238,8 +266,14 @@ func (a *Client) GetDeploymentResourcesUsingGET(params *GetDeploymentResourcesUs
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetDeploymentResourcesUsingGETOK), nil
-
+	success, ok := result.(*GetDeploymentResourcesUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getDeploymentResourcesUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -266,8 +300,14 @@ func (a *Client) GetDeploymentsForProjectUsingGET(params *GetDeploymentsForProje
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetDeploymentsForProjectUsingGETOK), nil
-
+	success, ok := result.(*GetDeploymentsForProjectUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getDeploymentsForProjectUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -296,8 +336,14 @@ func (a *Client) GetDeploymentsUsingGET(params *GetDeploymentsUsingGETParams) (*
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetDeploymentsUsingGETOK), nil
-
+	success, ok := result.(*GetDeploymentsUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getDeploymentsUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -326,8 +372,14 @@ func (a *Client) GetResourceByIDUsingGET(params *GetResourceByIDUsingGETParams) 
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetResourceByIDUsingGETOK), nil
-
+	success, ok := result.(*GetResourceByIDUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getResourceByIdUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -362,8 +414,9 @@ func (a *Client) PatchDeploymentUsingPATCH(params *PatchDeploymentUsingPATCHPara
 	case *PatchDeploymentUsingPATCHNoContent:
 		return nil, value, nil
 	}
-	return nil, nil, nil
-
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deployments: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 // SetTransport changes the transport on the client

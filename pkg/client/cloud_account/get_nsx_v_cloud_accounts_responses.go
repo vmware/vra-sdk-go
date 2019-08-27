@@ -24,14 +24,12 @@ type GetNsxVCloudAccountsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetNsxVCloudAccountsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetNsxVCloudAccountsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewGetNsxVCloudAccountsForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -59,6 +57,10 @@ type GetNsxVCloudAccountsOK struct {
 
 func (o *GetNsxVCloudAccountsOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-nsx-v][%d] getNsxVCloudAccountsOK  %+v", 200, o.Payload)
+}
+
+func (o *GetNsxVCloudAccountsOK) GetPayload() *models.CloudAccountNsxVResult {
+	return o.Payload
 }
 
 func (o *GetNsxVCloudAccountsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

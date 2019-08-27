@@ -24,21 +24,18 @@ type UpdateMachineReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *UpdateMachineReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewUpdateMachineOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewUpdateMachineForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewUpdateMachineNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type UpdateMachineOK struct {
 
 func (o *UpdateMachineOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/machines/{id}][%d] updateMachineOK  %+v", 200, o.Payload)
+}
+
+func (o *UpdateMachineOK) GetPayload() *models.Machine {
+	return o.Payload
 }
 
 func (o *UpdateMachineOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

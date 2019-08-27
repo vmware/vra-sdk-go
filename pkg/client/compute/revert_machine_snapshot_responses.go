@@ -24,21 +24,18 @@ type RevertMachineSnapshotReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *RevertMachineSnapshotReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 202:
 		result := NewRevertMachineSnapshotAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewRevertMachineSnapshotForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewRevertMachineSnapshotNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type RevertMachineSnapshotAccepted struct {
 
 func (o *RevertMachineSnapshotAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/revert][%d] revertMachineSnapshotAccepted  %+v", 202, o.Payload)
+}
+
+func (o *RevertMachineSnapshotAccepted) GetPayload() *models.RequestTracker {
+	return o.Payload
 }
 
 func (o *RevertMachineSnapshotAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

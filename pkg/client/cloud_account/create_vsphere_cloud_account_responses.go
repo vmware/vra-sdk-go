@@ -24,21 +24,18 @@ type CreateVSphereCloudAccountReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *CreateVSphereCloudAccountReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 201:
 		result := NewCreateVSphereCloudAccountCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 400:
 		result := NewCreateVSphereCloudAccountBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewCreateVSphereCloudAccountForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type CreateVSphereCloudAccountCreated struct {
 
 func (o *CreateVSphereCloudAccountCreated) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vsphere][%d] createVSphereCloudAccountCreated  %+v", 201, o.Payload)
+}
+
+func (o *CreateVSphereCloudAccountCreated) GetPayload() *models.CloudAccountVsphere {
+	return o.Payload
 }
 
 func (o *CreateVSphereCloudAccountCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

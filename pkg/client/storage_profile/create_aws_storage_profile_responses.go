@@ -24,21 +24,18 @@ type CreateAwsStorageProfileReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *CreateAwsStorageProfileReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 201:
 		result := NewCreateAwsStorageProfileCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 400:
 		result := NewCreateAwsStorageProfileBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewCreateAwsStorageProfileForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type CreateAwsStorageProfileCreated struct {
 
 func (o *CreateAwsStorageProfileCreated) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/storage-profiles-aws][%d] createAwsStorageProfileCreated  %+v", 201, o.Payload)
+}
+
+func (o *CreateAwsStorageProfileCreated) GetPayload() *models.AwsStorageProfile {
+	return o.Payload
 }
 
 func (o *CreateAwsStorageProfileCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

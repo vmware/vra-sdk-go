@@ -24,21 +24,18 @@ type GetMachineSnapshotsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetMachineSnapshotsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetMachineSnapshotsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewGetMachineSnapshotsForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewGetMachineSnapshotsNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type GetMachineSnapshotsOK struct {
 
 func (o *GetMachineSnapshotsOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/machines/{id}/snapshots][%d] getMachineSnapshotsOK  %+v", 200, o.Payload)
+}
+
+func (o *GetMachineSnapshotsOK) GetPayload() []*models.Snapshot {
+	return o.Payload
 }
 
 func (o *GetMachineSnapshotsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

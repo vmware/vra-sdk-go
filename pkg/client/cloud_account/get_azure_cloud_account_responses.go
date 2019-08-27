@@ -24,21 +24,18 @@ type GetAzureCloudAccountReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetAzureCloudAccountReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetAzureCloudAccountOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewGetAzureCloudAccountForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewGetAzureCloudAccountNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type GetAzureCloudAccountOK struct {
 
 func (o *GetAzureCloudAccountOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-azure/{id}][%d] getAzureCloudAccountOK  %+v", 200, o.Payload)
+}
+
+func (o *GetAzureCloudAccountOK) GetPayload() *models.CloudAccountAzure {
+	return o.Payload
 }
 
 func (o *GetAzureCloudAccountOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

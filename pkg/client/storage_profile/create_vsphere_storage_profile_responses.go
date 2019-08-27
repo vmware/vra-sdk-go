@@ -24,21 +24,18 @@ type CreateVSphereStorageProfileReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *CreateVSphereStorageProfileReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 201:
 		result := NewCreateVSphereStorageProfileCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 400:
 		result := NewCreateVSphereStorageProfileBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewCreateVSphereStorageProfileForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type CreateVSphereStorageProfileCreated struct {
 
 func (o *CreateVSphereStorageProfileCreated) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/storage-profiles-vsphere][%d] createVSphereStorageProfileCreated  %+v", 201, o.Payload)
+}
+
+func (o *CreateVSphereStorageProfileCreated) GetPayload() *models.VsphereStorageProfile {
+	return o.Payload
 }
 
 func (o *CreateVSphereStorageProfileCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

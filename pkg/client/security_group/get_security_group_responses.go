@@ -24,21 +24,18 @@ type GetSecurityGroupReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetSecurityGroupReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetSecurityGroupOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewGetSecurityGroupForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewGetSecurityGroupNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type GetSecurityGroupOK struct {
 
 func (o *GetSecurityGroupOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/security-groups/{id}][%d] getSecurityGroupOK  %+v", 200, o.Payload)
+}
+
+func (o *GetSecurityGroupOK) GetPayload() *models.SecurityGroup {
+	return o.Payload
 }
 
 func (o *GetSecurityGroupOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

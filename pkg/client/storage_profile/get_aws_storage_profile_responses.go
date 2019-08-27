@@ -24,21 +24,18 @@ type GetAwsStorageProfileReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetAwsStorageProfileReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetAwsStorageProfileOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewGetAwsStorageProfileForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewGetAwsStorageProfileNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type GetAwsStorageProfileOK struct {
 
 func (o *GetAwsStorageProfileOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/storage-profiles-aws/{id}][%d] getAwsStorageProfileOK  %+v", 200, o.Payload)
+}
+
+func (o *GetAwsStorageProfileOK) GetPayload() *models.AwsStorageProfile {
+	return o.Payload
 }
 
 func (o *GetAwsStorageProfileOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

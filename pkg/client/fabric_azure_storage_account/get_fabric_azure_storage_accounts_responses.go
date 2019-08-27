@@ -24,14 +24,12 @@ type GetFabricAzureStorageAccountsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetFabricAzureStorageAccountsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetFabricAzureStorageAccountsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewGetFabricAzureStorageAccountsForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -59,6 +57,10 @@ type GetFabricAzureStorageAccountsOK struct {
 
 func (o *GetFabricAzureStorageAccountsOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-azure-storage-accounts][%d] getFabricAzureStorageAccountsOK  %+v", 200, o.Payload)
+}
+
+func (o *GetFabricAzureStorageAccountsOK) GetPayload() *models.FabricAzureStorageAccountResult {
+	return o.Payload
 }
 
 func (o *GetFabricAzureStorageAccountsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

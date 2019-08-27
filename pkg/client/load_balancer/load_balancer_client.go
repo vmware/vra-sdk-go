@@ -6,6 +6,8 @@ package load_balancer
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"fmt"
+
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
@@ -50,8 +52,14 @@ func (a *Client) CreateLoadBalancer(params *CreateLoadBalancerParams) (*CreateLo
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateLoadBalancerAccepted), nil
-
+	success, ok := result.(*CreateLoadBalancerAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for createLoadBalancer: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -80,8 +88,14 @@ func (a *Client) DeleteLoadBalancer(params *DeleteLoadBalancerParams) (*DeleteLo
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteLoadBalancerAccepted), nil
-
+	success, ok := result.(*DeleteLoadBalancerAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteLoadBalancer: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -110,8 +124,14 @@ func (a *Client) DeleteLoadBalancerOperation(params *DeleteLoadBalancerOperation
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteLoadBalancerOperationAccepted), nil
-
+	success, ok := result.(*DeleteLoadBalancerOperationAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteLoadBalancerOperation: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -140,8 +160,14 @@ func (a *Client) GetLoadBalancer(params *GetLoadBalancerParams) (*GetLoadBalance
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetLoadBalancerOK), nil
-
+	success, ok := result.(*GetLoadBalancerOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getLoadBalancer: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -170,8 +196,14 @@ func (a *Client) GetLoadBalancers(params *GetLoadBalancersParams) (*GetLoadBalan
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetLoadBalancersOK), nil
-
+	success, ok := result.(*GetLoadBalancersOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getLoadBalancers: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -200,8 +232,14 @@ func (a *Client) ScaleLoadBalancer(params *ScaleLoadBalancerParams) (*ScaleLoadB
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ScaleLoadBalancerAccepted), nil
-
+	success, ok := result.(*ScaleLoadBalancerAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for scaleLoadBalancer: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 // SetTransport changes the transport on the client

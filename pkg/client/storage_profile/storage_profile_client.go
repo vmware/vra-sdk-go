@@ -6,6 +6,8 @@ package storage_profile
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"fmt"
+
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
@@ -50,8 +52,14 @@ func (a *Client) CreateAwsStorageProfile(params *CreateAwsStorageProfileParams) 
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateAwsStorageProfileCreated), nil
-
+	success, ok := result.(*CreateAwsStorageProfileCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for createAwsStorageProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -80,8 +88,14 @@ func (a *Client) CreateAzureStorageProfile(params *CreateAzureStorageProfilePara
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateAzureStorageProfileCreated), nil
-
+	success, ok := result.(*CreateAzureStorageProfileCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for createAzureStorageProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -110,8 +124,14 @@ func (a *Client) CreateStorageProfile(params *CreateStorageProfileParams) (*Crea
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateStorageProfileCreated), nil
-
+	success, ok := result.(*CreateStorageProfileCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for createStorageProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -140,8 +160,14 @@ func (a *Client) CreateVSphereStorageProfile(params *CreateVSphereStorageProfile
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateVSphereStorageProfileCreated), nil
-
+	success, ok := result.(*CreateVSphereStorageProfileCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for createVSphereStorageProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -170,8 +196,14 @@ func (a *Client) DeleteAwsStorageProfile(params *DeleteAwsStorageProfileParams) 
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteAwsStorageProfileNoContent), nil
-
+	success, ok := result.(*DeleteAwsStorageProfileNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteAwsStorageProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -200,8 +232,14 @@ func (a *Client) DeleteAzureStorageProfile(params *DeleteAzureStorageProfilePara
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteAzureStorageProfileNoContent), nil
-
+	success, ok := result.(*DeleteAzureStorageProfileNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteAzureStorageProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -230,8 +268,14 @@ func (a *Client) DeleteStorageProfile(params *DeleteStorageProfileParams) (*Dele
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteStorageProfileNoContent), nil
-
+	success, ok := result.(*DeleteStorageProfileNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteStorageProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -260,8 +304,14 @@ func (a *Client) DeleteVSphereStorageProfile(params *DeleteVSphereStorageProfile
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteVSphereStorageProfileNoContent), nil
-
+	success, ok := result.(*DeleteVSphereStorageProfileNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteVSphereStorageProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -290,8 +340,14 @@ func (a *Client) GetAwsStorageProfile(params *GetAwsStorageProfileParams) (*GetA
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetAwsStorageProfileOK), nil
-
+	success, ok := result.(*GetAwsStorageProfileOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getAwsStorageProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -320,8 +376,14 @@ func (a *Client) GetAwsStorageProfiles(params *GetAwsStorageProfilesParams) (*Ge
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetAwsStorageProfilesOK), nil
-
+	success, ok := result.(*GetAwsStorageProfilesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getAwsStorageProfiles: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -350,8 +412,14 @@ func (a *Client) GetAzureStorageProfile(params *GetAzureStorageProfileParams) (*
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetAzureStorageProfileOK), nil
-
+	success, ok := result.(*GetAzureStorageProfileOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getAzureStorageProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -380,8 +448,14 @@ func (a *Client) GetAzureStorageProfiles(params *GetAzureStorageProfilesParams) 
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetAzureStorageProfilesOK), nil
-
+	success, ok := result.(*GetAzureStorageProfilesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getAzureStorageProfiles: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -410,8 +484,14 @@ func (a *Client) GetStorageProfile(params *GetStorageProfileParams) (*GetStorage
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetStorageProfileOK), nil
-
+	success, ok := result.(*GetStorageProfileOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getStorageProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -440,8 +520,14 @@ func (a *Client) GetStorageProfiles(params *GetStorageProfilesParams) (*GetStora
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetStorageProfilesOK), nil
-
+	success, ok := result.(*GetStorageProfilesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getStorageProfiles: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -470,8 +556,14 @@ func (a *Client) GetVSphereStorageProfile(params *GetVSphereStorageProfileParams
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetVSphereStorageProfileOK), nil
-
+	success, ok := result.(*GetVSphereStorageProfileOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getVSphereStorageProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -500,8 +592,14 @@ func (a *Client) GetVSphereStorageProfiles(params *GetVSphereStorageProfilesPara
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetVSphereStorageProfilesOK), nil
-
+	success, ok := result.(*GetVSphereStorageProfilesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getVSphereStorageProfiles: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -530,8 +628,14 @@ func (a *Client) ReplaceStorageProfile(params *ReplaceStorageProfileParams) (*Re
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ReplaceStorageProfileOK), nil
-
+	success, ok := result.(*ReplaceStorageProfileOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for replaceStorageProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -560,8 +664,14 @@ func (a *Client) UpdateAwsStorageProfile(params *UpdateAwsStorageProfileParams) 
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateAwsStorageProfileOK), nil
-
+	success, ok := result.(*UpdateAwsStorageProfileOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateAwsStorageProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -590,8 +700,14 @@ func (a *Client) UpdateAzureStorageProfile(params *UpdateAzureStorageProfilePara
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateAzureStorageProfileOK), nil
-
+	success, ok := result.(*UpdateAzureStorageProfileOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateAzureStorageProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -620,8 +736,14 @@ func (a *Client) UpdateVSphereStorageProfile(params *UpdateVSphereStorageProfile
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateVSphereStorageProfileOK), nil
-
+	success, ok := result.(*UpdateVSphereStorageProfileOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateVSphereStorageProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 // SetTransport changes the transport on the client

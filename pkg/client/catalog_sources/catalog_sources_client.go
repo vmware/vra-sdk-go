@@ -6,6 +6,8 @@ package catalog_sources
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"fmt"
+
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
@@ -50,8 +52,14 @@ func (a *Client) DeleteUsingDELETE(params *DeleteUsingDELETEParams) (*DeleteUsin
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteUsingDELETENoContent), nil
-
+	success, ok := result.(*DeleteUsingDELETENoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -80,8 +88,14 @@ func (a *Client) GetPageUsingGET(params *GetPageUsingGETParams) (*GetPageUsingGE
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetPageUsingGETOK), nil
-
+	success, ok := result.(*GetPageUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getPageUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -110,8 +124,14 @@ func (a *Client) GetUsingGET(params *GetUsingGETParams) (*GetUsingGETOK, error) 
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetUsingGETOK), nil
-
+	success, ok := result.(*GetUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -146,8 +166,9 @@ func (a *Client) PostUsingPOST(params *PostUsingPOSTParams) (*PostUsingPOSTOK, *
 	case *PostUsingPOSTCreated:
 		return nil, value, nil
 	}
-	return nil, nil, nil
-
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for catalog_sources: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 // SetTransport changes the transport on the client

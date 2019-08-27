@@ -24,14 +24,12 @@ type GetAwsCloudAccountsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetAwsCloudAccountsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetAwsCloudAccountsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewGetAwsCloudAccountsForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -59,6 +57,10 @@ type GetAwsCloudAccountsOK struct {
 
 func (o *GetAwsCloudAccountsOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-aws][%d] getAwsCloudAccountsOK  %+v", 200, o.Payload)
+}
+
+func (o *GetAwsCloudAccountsOK) GetPayload() *models.CloudAccountAwsResult {
+	return o.Payload
 }
 
 func (o *GetAwsCloudAccountsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

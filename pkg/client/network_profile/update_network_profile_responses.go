@@ -24,21 +24,18 @@ type UpdateNetworkProfileReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *UpdateNetworkProfileReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewUpdateNetworkProfileOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewUpdateNetworkProfileForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewUpdateNetworkProfileNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type UpdateNetworkProfileOK struct {
 
 func (o *UpdateNetworkProfileOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/network-profiles/{id}][%d] updateNetworkProfileOK  %+v", 200, o.Payload)
+}
+
+func (o *UpdateNetworkProfileOK) GetPayload() *models.NetworkProfile {
+	return o.Payload
 }
 
 func (o *UpdateNetworkProfileOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -24,21 +24,18 @@ type CreateDataCollectorReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *CreateDataCollectorReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 201:
 		result := NewCreateDataCollectorCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 400:
 		result := NewCreateDataCollectorBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewCreateDataCollectorForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type CreateDataCollectorCreated struct {
 
 func (o *CreateDataCollectorCreated) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/data-collectors][%d] createDataCollectorCreated  %+v", 201, o.Payload)
+}
+
+func (o *CreateDataCollectorCreated) GetPayload() *models.DataCollectorRegistration {
+	return o.Payload
 }
 
 func (o *CreateDataCollectorCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

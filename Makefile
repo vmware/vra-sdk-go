@@ -1,5 +1,5 @@
 .PHONY: all swagger modified update update-blueprint update-catalog update-deployment update-iaas clean
-SWAGGER_VERSION=0.18.0
+SWAGGER_VERSION=0.20.1
 
 all:
 	go build -o sdk-test

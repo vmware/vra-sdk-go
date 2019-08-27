@@ -24,21 +24,18 @@ type UpdateNsxVCloudAccountReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *UpdateNsxVCloudAccountReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewUpdateNsxVCloudAccountOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewUpdateNsxVCloudAccountForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewUpdateNsxVCloudAccountNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type UpdateNsxVCloudAccountOK struct {
 
 func (o *UpdateNsxVCloudAccountOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-nsx-v/{id}][%d] updateNsxVCloudAccountOK  %+v", 200, o.Payload)
+}
+
+func (o *UpdateNsxVCloudAccountOK) GetPayload() *models.CloudAccountNsxV {
+	return o.Payload
 }
 
 func (o *UpdateNsxVCloudAccountOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

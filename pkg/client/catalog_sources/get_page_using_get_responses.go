@@ -24,28 +24,24 @@ type GetPageUsingGETReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetPageUsingGETReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetPageUsingGETOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewGetPageUsingGETUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewGetPageUsingGETForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewGetPageUsingGETNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -73,6 +69,10 @@ type GetPageUsingGETOK struct {
 
 func (o *GetPageUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /catalog/api/admin/sources][%d] getPageUsingGETOK  %+v", 200, o.Payload)
+}
+
+func (o *GetPageUsingGETOK) GetPayload() *models.CatalogSource {
+	return o.Payload
 }
 
 func (o *GetPageUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

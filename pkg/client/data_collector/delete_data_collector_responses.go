@@ -21,14 +21,12 @@ type DeleteDataCollectorReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteDataCollectorReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 204:
 		result := NewDeleteDataCollectorNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewDeleteDataCollectorForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {

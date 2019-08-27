@@ -24,14 +24,12 @@ type GetMachinesReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetMachinesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetMachinesOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewGetMachinesForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -59,6 +57,10 @@ type GetMachinesOK struct {
 
 func (o *GetMachinesOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/machines][%d] getMachinesOK  %+v", 200, o.Payload)
+}
+
+func (o *GetMachinesOK) GetPayload() *models.MachineResult {
+	return o.Payload
 }
 
 func (o *GetMachinesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

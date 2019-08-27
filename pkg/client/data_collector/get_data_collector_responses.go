@@ -24,21 +24,18 @@ type GetDataCollectorReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetDataCollectorReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetDataCollectorOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewGetDataCollectorForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewGetDataCollectorNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type GetDataCollectorOK struct {
 
 func (o *GetDataCollectorOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/data-collectors/{id}][%d] getDataCollectorOK  %+v", 200, o.Payload)
+}
+
+func (o *GetDataCollectorOK) GetPayload() *models.DataCollector {
+	return o.Payload
 }
 
 func (o *GetDataCollectorOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

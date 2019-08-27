@@ -24,28 +24,24 @@ type PatchDeploymentUsingPATCHReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PatchDeploymentUsingPATCHReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPatchDeploymentUsingPATCHOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 204:
 		result := NewPatchDeploymentUsingPATCHNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewPatchDeploymentUsingPATCHUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewPatchDeploymentUsingPATCHForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -73,6 +69,10 @@ type PatchDeploymentUsingPATCHOK struct {
 
 func (o *PatchDeploymentUsingPATCHOK) Error() string {
 	return fmt.Sprintf("[PATCH /deployment/api/deployments/{depId}][%d] patchDeploymentUsingPATCHOK  %+v", 200, o.Payload)
+}
+
+func (o *PatchDeploymentUsingPATCHOK) GetPayload() *models.Deployment {
+	return o.Payload
 }
 
 func (o *PatchDeploymentUsingPATCHOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

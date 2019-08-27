@@ -6,6 +6,8 @@ package deployment_actions
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"fmt"
+
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
@@ -54,8 +56,9 @@ func (a *Client) ActionDeploymentRequestUsingPOST(params *ActionDeploymentReques
 	case *ActionDeploymentRequestUsingPOSTCreated:
 		return nil, value, nil
 	}
-	return nil, nil, nil
-
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deployment_actions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -84,8 +87,14 @@ func (a *Client) GetDeploymentActionUsingGET(params *GetDeploymentActionUsingGET
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetDeploymentActionUsingGETOK), nil
-
+	success, ok := result.(*GetDeploymentActionUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getDeploymentActionUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -114,8 +123,14 @@ func (a *Client) GetDeploymentActionsUsingGET(params *GetDeploymentActionsUsingG
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetDeploymentActionsUsingGETOK), nil
-
+	success, ok := result.(*GetDeploymentActionsUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getDeploymentActionsUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -144,8 +159,14 @@ func (a *Client) GetResourceActionUsingGET(params *GetResourceActionUsingGETPara
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetResourceActionUsingGETOK), nil
-
+	success, ok := result.(*GetResourceActionUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getResourceActionUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -174,8 +195,14 @@ func (a *Client) GetResourceActionsUsingGET(params *GetResourceActionsUsingGETPa
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetResourceActionsUsingGETOK), nil
-
+	success, ok := result.(*GetResourceActionsUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getResourceActionsUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -210,8 +237,9 @@ func (a *Client) SubmitDeploymentActionRequestUsingPOST(params *SubmitDeployment
 	case *SubmitDeploymentActionRequestUsingPOSTCreated:
 		return nil, value, nil
 	}
-	return nil, nil, nil
-
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deployment_actions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -246,8 +274,9 @@ func (a *Client) SubmitResourceActionRequestUsingPOST(params *SubmitResourceActi
 	case *SubmitResourceActionRequestUsingPOSTCreated:
 		return nil, value, nil
 	}
-	return nil, nil, nil
-
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deployment_actions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 // SetTransport changes the transport on the client

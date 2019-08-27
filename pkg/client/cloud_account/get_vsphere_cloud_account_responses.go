@@ -24,21 +24,18 @@ type GetVSphereCloudAccountReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetVSphereCloudAccountReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetVSphereCloudAccountOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewGetVSphereCloudAccountForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewGetVSphereCloudAccountNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type GetVSphereCloudAccountOK struct {
 
 func (o *GetVSphereCloudAccountOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vsphere/{id}][%d] getVSphereCloudAccountOK  %+v", 200, o.Payload)
+}
+
+func (o *GetVSphereCloudAccountOK) GetPayload() *models.CloudAccountVsphere {
+	return o.Payload
 }
 
 func (o *GetVSphereCloudAccountOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

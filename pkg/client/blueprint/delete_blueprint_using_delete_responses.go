@@ -21,28 +21,24 @@ type DeleteBlueprintUsingDELETEReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteBlueprintUsingDELETEReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewDeleteBlueprintUsingDELETEOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 204:
 		result := NewDeleteBlueprintUsingDELETENoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewDeleteBlueprintUsingDELETEUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewDeleteBlueprintUsingDELETEForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {

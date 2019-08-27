@@ -21,21 +21,18 @@ type DeleteUsingDELETEReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteUsingDELETEReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 204:
 		result := NewDeleteUsingDELETENoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewDeleteUsingDELETEUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewDeleteUsingDELETEForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {

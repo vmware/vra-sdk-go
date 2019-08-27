@@ -24,21 +24,18 @@ type GetImageProfileReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetImageProfileReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetImageProfileOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewGetImageProfileForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewGetImageProfileNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type GetImageProfileOK struct {
 
 func (o *GetImageProfileOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/image-profiles/{id}][%d] getImageProfileOK  %+v", 200, o.Payload)
+}
+
+func (o *GetImageProfileOK) GetPayload() *models.ImageProfile {
+	return o.Payload
 }
 
 func (o *GetImageProfileOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

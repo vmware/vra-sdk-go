@@ -24,28 +24,24 @@ type GetVersionsUsingGETReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetVersionsUsingGETReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetVersionsUsingGETOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewGetVersionsUsingGETUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewGetVersionsUsingGETForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewGetVersionsUsingGETNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -73,6 +69,10 @@ type GetVersionsUsingGETOK struct {
 
 func (o *GetVersionsUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /catalog/api/items/{id}/versions][%d] getVersionsUsingGETOK  %+v", 200, o.Payload)
+}
+
+func (o *GetVersionsUsingGETOK) GetPayload() *models.CatalogItemVersion {
+	return o.Payload
 }
 
 func (o *GetVersionsUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

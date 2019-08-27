@@ -24,28 +24,24 @@ type GetBlueprintVersionUsingGETReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetBlueprintVersionUsingGETReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetBlueprintVersionUsingGETOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewGetBlueprintVersionUsingGETUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewGetBlueprintVersionUsingGETForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewGetBlueprintVersionUsingGETNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -73,6 +69,10 @@ type GetBlueprintVersionUsingGETOK struct {
 
 func (o *GetBlueprintVersionUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprints/{blueprintId}/versions/{version}][%d] getBlueprintVersionUsingGETOK  %+v", 200, o.Payload)
+}
+
+func (o *GetBlueprintVersionUsingGETOK) GetPayload() *models.BlueprintVersion {
+	return o.Payload
 }
 
 func (o *GetBlueprintVersionUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

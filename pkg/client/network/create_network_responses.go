@@ -24,21 +24,18 @@ type CreateNetworkReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *CreateNetworkReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 202:
 		result := NewCreateNetworkAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 400:
 		result := NewCreateNetworkBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewCreateNetworkForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type CreateNetworkAccepted struct {
 
 func (o *CreateNetworkAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/networks][%d] createNetworkAccepted  %+v", 202, o.Payload)
+}
+
+func (o *CreateNetworkAccepted) GetPayload() *models.RequestTracker {
+	return o.Payload
 }
 
 func (o *CreateNetworkAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

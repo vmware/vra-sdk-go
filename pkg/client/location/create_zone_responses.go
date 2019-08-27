@@ -24,21 +24,18 @@ type CreateZoneReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *CreateZoneReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 201:
 		result := NewCreateZoneCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 400:
 		result := NewCreateZoneBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewCreateZoneForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type CreateZoneCreated struct {
 
 func (o *CreateZoneCreated) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/zones][%d] createZoneCreated  %+v", 201, o.Payload)
+}
+
+func (o *CreateZoneCreated) GetPayload() *models.Zone {
+	return o.Payload
 }
 
 func (o *CreateZoneCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

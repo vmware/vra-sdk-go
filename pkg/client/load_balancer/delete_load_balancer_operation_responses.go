@@ -24,14 +24,12 @@ type DeleteLoadBalancerOperationReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteLoadBalancerOperationReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 202:
 		result := NewDeleteLoadBalancerOperationAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewDeleteLoadBalancerOperationForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -59,6 +57,10 @@ type DeleteLoadBalancerOperationAccepted struct {
 
 func (o *DeleteLoadBalancerOperationAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/load-balancers/{id}/operations/delete][%d] deleteLoadBalancerOperationAccepted  %+v", 202, o.Payload)
+}
+
+func (o *DeleteLoadBalancerOperationAccepted) GetPayload() *models.RequestTracker {
+	return o.Payload
 }
 
 func (o *DeleteLoadBalancerOperationAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

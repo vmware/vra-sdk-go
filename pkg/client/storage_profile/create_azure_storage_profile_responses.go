@@ -24,21 +24,18 @@ type CreateAzureStorageProfileReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *CreateAzureStorageProfileReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 201:
 		result := NewCreateAzureStorageProfileCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 400:
 		result := NewCreateAzureStorageProfileBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewCreateAzureStorageProfileForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type CreateAzureStorageProfileCreated struct {
 
 func (o *CreateAzureStorageProfileCreated) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/storage-profiles-azure][%d] createAzureStorageProfileCreated  %+v", 201, o.Payload)
+}
+
+func (o *CreateAzureStorageProfileCreated) GetPayload() *models.AzureStorageProfile {
+	return o.Payload
 }
 
 func (o *CreateAzureStorageProfileCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

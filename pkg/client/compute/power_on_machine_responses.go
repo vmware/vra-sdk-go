@@ -24,21 +24,18 @@ type PowerOnMachineReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PowerOnMachineReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 202:
 		result := NewPowerOnMachineAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewPowerOnMachineForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewPowerOnMachineNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type PowerOnMachineAccepted struct {
 
 func (o *PowerOnMachineAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/power-on][%d] powerOnMachineAccepted  %+v", 202, o.Payload)
+}
+
+func (o *PowerOnMachineAccepted) GetPayload() *models.RequestTracker {
+	return o.Payload
 }
 
 func (o *PowerOnMachineAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -24,35 +24,30 @@ type ValidateBlueprintUsingPOSTReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *ValidateBlueprintUsingPOSTReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewValidateBlueprintUsingPOSTOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 201:
 		result := NewValidateBlueprintUsingPOSTCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewValidateBlueprintUsingPOSTUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewValidateBlueprintUsingPOSTForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewValidateBlueprintUsingPOSTNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -80,6 +75,10 @@ type ValidateBlueprintUsingPOSTOK struct {
 
 func (o *ValidateBlueprintUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprint-validation][%d] validateBlueprintUsingPOSTOK  %+v", 200, o.Payload)
+}
+
+func (o *ValidateBlueprintUsingPOSTOK) GetPayload() *models.BlueprintValidationResponse {
+	return o.Payload
 }
 
 func (o *ValidateBlueprintUsingPOSTOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

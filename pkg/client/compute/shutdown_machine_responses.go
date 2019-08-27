@@ -24,21 +24,18 @@ type ShutdownMachineReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *ShutdownMachineReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 202:
 		result := NewShutdownMachineAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewShutdownMachineForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewShutdownMachineNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type ShutdownMachineAccepted struct {
 
 func (o *ShutdownMachineAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/shutdown][%d] shutdownMachineAccepted  %+v", 202, o.Payload)
+}
+
+func (o *ShutdownMachineAccepted) GetPayload() *models.RequestTracker {
+	return o.Payload
 }
 
 func (o *ShutdownMachineAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

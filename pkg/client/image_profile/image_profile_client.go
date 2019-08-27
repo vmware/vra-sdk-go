@@ -6,6 +6,8 @@ package image_profile
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"fmt"
+
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
@@ -50,8 +52,14 @@ func (a *Client) CreateImageProfile(params *CreateImageProfileParams) (*CreateIm
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateImageProfileCreated), nil
-
+	success, ok := result.(*CreateImageProfileCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for createImageProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -80,8 +88,14 @@ func (a *Client) DeleteImageProfile(params *DeleteImageProfileParams) (*DeleteIm
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteImageProfileNoContent), nil
-
+	success, ok := result.(*DeleteImageProfileNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteImageProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -110,8 +124,14 @@ func (a *Client) GetImageProfile(params *GetImageProfileParams) (*GetImageProfil
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetImageProfileOK), nil
-
+	success, ok := result.(*GetImageProfileOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getImageProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -140,8 +160,14 @@ func (a *Client) GetImageProfiles(params *GetImageProfilesParams) (*GetImageProf
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetImageProfilesOK), nil
-
+	success, ok := result.(*GetImageProfilesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getImageProfiles: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -170,8 +196,14 @@ func (a *Client) UpdateImageProfile(params *UpdateImageProfileParams) (*UpdateIm
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateImageProfileOK), nil
-
+	success, ok := result.(*UpdateImageProfileOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateImageProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 // SetTransport changes the transport on the client

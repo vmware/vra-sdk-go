@@ -24,28 +24,24 @@ type GetUsingGETReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetUsingGETReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetUsingGETOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewGetUsingGETUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewGetUsingGETForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewGetUsingGETNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -73,6 +69,10 @@ type GetUsingGETOK struct {
 
 func (o *GetUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /catalog/api/admin/sources/{sourceId}][%d] getUsingGETOK  %+v", 200, o.Payload)
+}
+
+func (o *GetUsingGETOK) GetPayload() *models.CatalogSource {
+	return o.Payload
 }
 
 func (o *GetUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

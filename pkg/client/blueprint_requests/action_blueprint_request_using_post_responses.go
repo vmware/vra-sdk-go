@@ -21,35 +21,30 @@ type ActionBlueprintRequestUsingPOSTReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *ActionBlueprintRequestUsingPOSTReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewActionBlueprintRequestUsingPOSTOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 201:
 		result := NewActionBlueprintRequestUsingPOSTCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewActionBlueprintRequestUsingPOSTUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewActionBlueprintRequestUsingPOSTForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewActionBlueprintRequestUsingPOSTNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {

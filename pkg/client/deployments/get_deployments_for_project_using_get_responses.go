@@ -24,28 +24,24 @@ type GetDeploymentsForProjectUsingGETReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetDeploymentsForProjectUsingGETReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetDeploymentsForProjectUsingGETOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewGetDeploymentsForProjectUsingGETUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewGetDeploymentsForProjectUsingGETForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewGetDeploymentsForProjectUsingGETNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -73,6 +69,10 @@ type GetDeploymentsForProjectUsingGETOK struct {
 
 func (o *GetDeploymentsForProjectUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/projects/{projectId}/deployment-count][%d] getDeploymentsForProjectUsingGETOK  %+v", 200, o.Payload)
+}
+
+func (o *GetDeploymentsForProjectUsingGETOK) GetPayload() *models.Page {
+	return o.Payload
 }
 
 func (o *GetDeploymentsForProjectUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

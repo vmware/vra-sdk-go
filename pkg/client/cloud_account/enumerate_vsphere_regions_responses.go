@@ -24,21 +24,18 @@ type EnumerateVSphereRegionsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *EnumerateVSphereRegionsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewEnumerateVSphereRegionsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 400:
 		result := NewEnumerateVSphereRegionsBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewEnumerateVSphereRegionsForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type EnumerateVSphereRegionsOK struct {
 
 func (o *EnumerateVSphereRegionsOK) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vsphere/region-enumeration][%d] enumerateVSphereRegionsOK  %+v", 200, o.Payload)
+}
+
+func (o *EnumerateVSphereRegionsOK) GetPayload() *models.CloudAccountRegions {
+	return o.Payload
 }
 
 func (o *EnumerateVSphereRegionsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

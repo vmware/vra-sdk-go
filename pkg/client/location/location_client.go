@@ -6,6 +6,8 @@ package location
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"fmt"
+
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
@@ -50,8 +52,14 @@ func (a *Client) CreateZone(params *CreateZoneParams) (*CreateZoneCreated, error
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateZoneCreated), nil
-
+	success, ok := result.(*CreateZoneCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for createZone: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -80,8 +88,14 @@ func (a *Client) DeleteZone(params *DeleteZoneParams) (*DeleteZoneNoContent, err
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteZoneNoContent), nil
-
+	success, ok := result.(*DeleteZoneNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteZone: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -110,8 +124,14 @@ func (a *Client) GetRegion(params *GetRegionParams) (*GetRegionOK, error) {
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetRegionOK), nil
-
+	success, ok := result.(*GetRegionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getRegion: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -140,8 +160,14 @@ func (a *Client) GetRegions(params *GetRegionsParams) (*GetRegionsOK, error) {
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetRegionsOK), nil
-
+	success, ok := result.(*GetRegionsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getRegions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -170,8 +196,14 @@ func (a *Client) GetZone(params *GetZoneParams) (*GetZoneOK, error) {
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetZoneOK), nil
-
+	success, ok := result.(*GetZoneOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getZone: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -200,8 +232,14 @@ func (a *Client) GetZones(params *GetZonesParams) (*GetZonesOK, error) {
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetZonesOK), nil
-
+	success, ok := result.(*GetZonesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getZones: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -230,8 +268,14 @@ func (a *Client) UpdateZone(params *UpdateZoneParams) (*UpdateZoneOK, error) {
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateZoneOK), nil
-
+	success, ok := result.(*UpdateZoneOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateZone: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 // SetTransport changes the transport on the client

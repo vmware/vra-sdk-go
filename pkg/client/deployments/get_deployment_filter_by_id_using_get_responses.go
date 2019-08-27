@@ -24,28 +24,24 @@ type GetDeploymentFilterByIDUsingGETReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetDeploymentFilterByIDUsingGETReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetDeploymentFilterByIDUsingGETOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewGetDeploymentFilterByIDUsingGETUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewGetDeploymentFilterByIDUsingGETForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewGetDeploymentFilterByIDUsingGETNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -73,6 +69,10 @@ type GetDeploymentFilterByIDUsingGETOK struct {
 
 func (o *GetDeploymentFilterByIDUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/filters/{filterId}][%d] getDeploymentFilterByIdUsingGETOK  %+v", 200, o.Payload)
+}
+
+func (o *GetDeploymentFilterByIDUsingGETOK) GetPayload() *models.PageOfFilterEntry {
+	return o.Payload
 }
 
 func (o *GetDeploymentFilterByIDUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

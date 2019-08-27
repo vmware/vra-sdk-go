@@ -6,6 +6,8 @@ package project
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"fmt"
+
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
@@ -50,8 +52,14 @@ func (a *Client) CreateProject(params *CreateProjectParams) (*CreateProjectCreat
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateProjectCreated), nil
-
+	success, ok := result.(*CreateProjectCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for createProject: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -80,8 +88,14 @@ func (a *Client) DeleteProject(params *DeleteProjectParams) (*DeleteProjectNoCon
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteProjectNoContent), nil
-
+	success, ok := result.(*DeleteProjectNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteProject: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -110,8 +124,14 @@ func (a *Client) GetProject(params *GetProjectParams) (*GetProjectOK, error) {
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetProjectOK), nil
-
+	success, ok := result.(*GetProjectOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getProject: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -140,8 +160,14 @@ func (a *Client) GetProjectResourceMetadata(params *GetProjectResourceMetadataPa
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetProjectResourceMetadataOK), nil
-
+	success, ok := result.(*GetProjectResourceMetadataOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getProjectResourceMetadata: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -170,8 +196,14 @@ func (a *Client) GetProjects(params *GetProjectsParams) (*GetProjectsOK, error) 
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetProjectsOK), nil
-
+	success, ok := result.(*GetProjectsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getProjects: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -200,8 +232,14 @@ func (a *Client) UpdateProject(params *UpdateProjectParams) (*UpdateProjectOK, e
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateProjectOK), nil
-
+	success, ok := result.(*UpdateProjectOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateProject: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -230,8 +268,14 @@ func (a *Client) UpdateProjectResourceMetadata(params *UpdateProjectResourceMeta
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateProjectResourceMetadataOK), nil
-
+	success, ok := result.(*UpdateProjectResourceMetadataOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateProjectResourceMetadata: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 // SetTransport changes the transport on the client

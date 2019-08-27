@@ -6,6 +6,8 @@ package entitlements
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"fmt"
+
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
@@ -56,8 +58,9 @@ func (a *Client) CreateEntitlementUsingPOST(params *CreateEntitlementUsingPOSTPa
 	case *CreateEntitlementUsingPOSTCreated:
 		return nil, value, nil
 	}
-	return nil, nil, nil
-
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for entitlements: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -86,8 +89,14 @@ func (a *Client) DeleteEntitlementUsingDELETE(params *DeleteEntitlementUsingDELE
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteEntitlementUsingDELETENoContent), nil
-
+	success, ok := result.(*DeleteEntitlementUsingDELETENoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteEntitlementUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -116,8 +125,14 @@ func (a *Client) GetEntitlementsUsingGET(params *GetEntitlementsUsingGETParams) 
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetEntitlementsUsingGETOK), nil
-
+	success, ok := result.(*GetEntitlementsUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getEntitlementsUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 // SetTransport changes the transport on the client

@@ -24,21 +24,18 @@ type GetFabricImageReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetFabricImageReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetFabricImageOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewGetFabricImageForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewGetFabricImageNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type GetFabricImageOK struct {
 
 func (o *GetFabricImageOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-images/{id}][%d] getFabricImageOK  %+v", 200, o.Payload)
+}
+
+func (o *GetFabricImageOK) GetPayload() *models.FabricImage {
+	return o.Payload
 }
 
 func (o *GetFabricImageOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -24,35 +24,30 @@ type SubmitDeploymentActionRequestUsingPOSTReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *SubmitDeploymentActionRequestUsingPOSTReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewSubmitDeploymentActionRequestUsingPOSTOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 201:
 		result := NewSubmitDeploymentActionRequestUsingPOSTCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewSubmitDeploymentActionRequestUsingPOSTUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewSubmitDeploymentActionRequestUsingPOSTForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewSubmitDeploymentActionRequestUsingPOSTNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -80,6 +75,10 @@ type SubmitDeploymentActionRequestUsingPOSTOK struct {
 
 func (o *SubmitDeploymentActionRequestUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /deployment/api/deployments/{depId}/requests][%d] submitDeploymentActionRequestUsingPOSTOK  %+v", 200, o.Payload)
+}
+
+func (o *SubmitDeploymentActionRequestUsingPOSTOK) GetPayload() *models.DeploymentRequest {
+	return o.Payload
 }
 
 func (o *SubmitDeploymentActionRequestUsingPOSTOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

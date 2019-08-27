@@ -24,21 +24,18 @@ type CreateImageProfileReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *CreateImageProfileReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 201:
 		result := NewCreateImageProfileCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 400:
 		result := NewCreateImageProfileBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewCreateImageProfileForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type CreateImageProfileCreated struct {
 
 func (o *CreateImageProfileCreated) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/image-profiles][%d] createImageProfileCreated  %+v", 201, o.Payload)
+}
+
+func (o *CreateImageProfileCreated) GetPayload() *models.ImageProfile {
+	return o.Payload
 }
 
 func (o *CreateImageProfileCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

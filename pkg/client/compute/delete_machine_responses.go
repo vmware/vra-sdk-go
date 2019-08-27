@@ -24,14 +24,12 @@ type DeleteMachineReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteMachineReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 202:
 		result := NewDeleteMachineAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewDeleteMachineForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -59,6 +57,10 @@ type DeleteMachineAccepted struct {
 
 func (o *DeleteMachineAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}][%d] deleteMachineAccepted  %+v", 202, o.Payload)
+}
+
+func (o *DeleteMachineAccepted) GetPayload() *models.RequestTracker {
+	return o.Payload
 }
 
 func (o *DeleteMachineAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -24,21 +24,18 @@ type UpdateAwsCloudAccountReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *UpdateAwsCloudAccountReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewUpdateAwsCloudAccountOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewUpdateAwsCloudAccountForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewUpdateAwsCloudAccountNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type UpdateAwsCloudAccountOK struct {
 
 func (o *UpdateAwsCloudAccountOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-aws/{id}][%d] updateAwsCloudAccountOK  %+v", 200, o.Payload)
+}
+
+func (o *UpdateAwsCloudAccountOK) GetPayload() *models.CloudAccountAws {
+	return o.Payload
 }
 
 func (o *UpdateAwsCloudAccountOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

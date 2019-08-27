@@ -24,21 +24,18 @@ type GetFabricVSphereDatastoreReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetFabricVSphereDatastoreReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetFabricVSphereDatastoreOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewGetFabricVSphereDatastoreForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewGetFabricVSphereDatastoreNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type GetFabricVSphereDatastoreOK struct {
 
 func (o *GetFabricVSphereDatastoreOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-datastores/{id}][%d] getFabricVSphereDatastoreOK  %+v", 200, o.Payload)
+}
+
+func (o *GetFabricVSphereDatastoreOK) GetPayload() *models.FabricVsphereDatastore {
+	return o.Payload
 }
 
 func (o *GetFabricVSphereDatastoreOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

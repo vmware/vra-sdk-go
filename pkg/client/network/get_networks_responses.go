@@ -24,14 +24,12 @@ type GetNetworksReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetNetworksReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetNetworksOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewGetNetworksForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -59,6 +57,10 @@ type GetNetworksOK struct {
 
 func (o *GetNetworksOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/networks][%d] getNetworksOK  %+v", 200, o.Payload)
+}
+
+func (o *GetNetworksOK) GetPayload() *models.NetworkResult {
+	return o.Payload
 }
 
 func (o *GetNetworksOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

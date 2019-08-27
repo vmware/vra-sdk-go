@@ -24,28 +24,24 @@ type GetDeploymentActionsUsingGETReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetDeploymentActionsUsingGETReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetDeploymentActionsUsingGETOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewGetDeploymentActionsUsingGETUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewGetDeploymentActionsUsingGETForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewGetDeploymentActionsUsingGETNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -73,6 +69,10 @@ type GetDeploymentActionsUsingGETOK struct {
 
 func (o *GetDeploymentActionsUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/{depId}/actions][%d] getDeploymentActionsUsingGETOK  %+v", 200, o.Payload)
+}
+
+func (o *GetDeploymentActionsUsingGETOK) GetPayload() []*models.ResourceAction {
+	return o.Payload
 }
 
 func (o *GetDeploymentActionsUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

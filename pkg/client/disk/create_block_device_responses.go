@@ -24,21 +24,18 @@ type CreateBlockDeviceReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *CreateBlockDeviceReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 202:
 		result := NewCreateBlockDeviceAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 400:
 		result := NewCreateBlockDeviceBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewCreateBlockDeviceForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type CreateBlockDeviceAccepted struct {
 
 func (o *CreateBlockDeviceAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/block-devices][%d] createBlockDeviceAccepted  %+v", 202, o.Payload)
+}
+
+func (o *CreateBlockDeviceAccepted) GetPayload() *models.RequestTracker {
+	return o.Payload
 }
 
 func (o *CreateBlockDeviceAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

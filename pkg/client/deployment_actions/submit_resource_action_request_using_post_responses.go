@@ -24,35 +24,30 @@ type SubmitResourceActionRequestUsingPOSTReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *SubmitResourceActionRequestUsingPOSTReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewSubmitResourceActionRequestUsingPOSTOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 201:
 		result := NewSubmitResourceActionRequestUsingPOSTCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewSubmitResourceActionRequestUsingPOSTUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewSubmitResourceActionRequestUsingPOSTForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewSubmitResourceActionRequestUsingPOSTNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -80,6 +75,10 @@ type SubmitResourceActionRequestUsingPOSTOK struct {
 
 func (o *SubmitResourceActionRequestUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /deployment/api/deployments/{depId}/resources/{resourceId}/requests][%d] submitResourceActionRequestUsingPOSTOK  %+v", 200, o.Payload)
+}
+
+func (o *SubmitResourceActionRequestUsingPOSTOK) GetPayload() *models.DeploymentRequest {
+	return o.Payload
 }
 
 func (o *SubmitResourceActionRequestUsingPOSTOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

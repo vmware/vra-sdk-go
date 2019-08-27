@@ -24,21 +24,18 @@ type GetNetworkDomainReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetNetworkDomainReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetNetworkDomainOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewGetNetworkDomainForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewGetNetworkDomainNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type GetNetworkDomainOK struct {
 
 func (o *GetNetworkDomainOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/network-domains/{id}][%d] getNetworkDomainOK  %+v", 200, o.Payload)
+}
+
+func (o *GetNetworkDomainOK) GetPayload() *models.NetworkDomain {
+	return o.Payload
 }
 
 func (o *GetNetworkDomainOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

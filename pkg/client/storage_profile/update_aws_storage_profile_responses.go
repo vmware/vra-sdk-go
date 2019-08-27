@@ -24,21 +24,18 @@ type UpdateAwsStorageProfileReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *UpdateAwsStorageProfileReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewUpdateAwsStorageProfileOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 400:
 		result := NewUpdateAwsStorageProfileBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewUpdateAwsStorageProfileForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type UpdateAwsStorageProfileOK struct {
 
 func (o *UpdateAwsStorageProfileOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-aws/{id}][%d] updateAwsStorageProfileOK  %+v", 200, o.Payload)
+}
+
+func (o *UpdateAwsStorageProfileOK) GetPayload() *models.AwsStorageProfile {
+	return o.Payload
 }
 
 func (o *UpdateAwsStorageProfileOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

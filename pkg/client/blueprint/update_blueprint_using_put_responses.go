@@ -24,35 +24,30 @@ type UpdateBlueprintUsingPUTReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *UpdateBlueprintUsingPUTReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewUpdateBlueprintUsingPUTOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 201:
 		result := NewUpdateBlueprintUsingPUTCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewUpdateBlueprintUsingPUTUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewUpdateBlueprintUsingPUTForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewUpdateBlueprintUsingPUTNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -80,6 +75,10 @@ type UpdateBlueprintUsingPUTOK struct {
 
 func (o *UpdateBlueprintUsingPUTOK) Error() string {
 	return fmt.Sprintf("[PUT /blueprint/api/blueprints/{blueprintId}][%d] updateBlueprintUsingPUTOK  %+v", 200, o.Payload)
+}
+
+func (o *UpdateBlueprintUsingPUTOK) GetPayload() *models.BlueprintLinkResponse {
+	return o.Payload
 }
 
 func (o *UpdateBlueprintUsingPUTOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

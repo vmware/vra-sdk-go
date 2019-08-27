@@ -24,35 +24,30 @@ type CreateBlueprintUsingPOSTReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *CreateBlueprintUsingPOSTReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewCreateBlueprintUsingPOSTOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 201:
 		result := NewCreateBlueprintUsingPOSTCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewCreateBlueprintUsingPOSTUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewCreateBlueprintUsingPOSTForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewCreateBlueprintUsingPOSTNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -80,6 +75,10 @@ type CreateBlueprintUsingPOSTOK struct {
 
 func (o *CreateBlueprintUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprints][%d] createBlueprintUsingPOSTOK  %+v", 200, o.Payload)
+}
+
+func (o *CreateBlueprintUsingPOSTOK) GetPayload() *models.BlueprintLinkResponse {
+	return o.Payload
 }
 
 func (o *CreateBlueprintUsingPOSTOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

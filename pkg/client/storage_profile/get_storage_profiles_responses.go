@@ -24,14 +24,12 @@ type GetStorageProfilesReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetStorageProfilesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetStorageProfilesOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewGetStorageProfilesForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -59,6 +57,10 @@ type GetStorageProfilesOK struct {
 
 func (o *GetStorageProfilesOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/storage-profiles][%d] getStorageProfilesOK  %+v", 200, o.Payload)
+}
+
+func (o *GetStorageProfilesOK) GetPayload() *models.StorageProfileResult {
+	return o.Payload
 }
 
 func (o *GetStorageProfilesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

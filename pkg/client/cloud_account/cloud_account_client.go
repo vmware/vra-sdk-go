@@ -6,6 +6,8 @@ package cloud_account
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"fmt"
+
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
@@ -50,8 +52,14 @@ func (a *Client) CreateAwsCloudAccount(params *CreateAwsCloudAccountParams) (*Cr
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateAwsCloudAccountCreated), nil
-
+	success, ok := result.(*CreateAwsCloudAccountCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for createAwsCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -80,8 +88,14 @@ func (a *Client) CreateAzureCloudAccount(params *CreateAzureCloudAccountParams) 
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateAzureCloudAccountCreated), nil
-
+	success, ok := result.(*CreateAzureCloudAccountCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for createAzureCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -110,8 +124,14 @@ func (a *Client) CreateCloudAccount(params *CreateCloudAccountParams) (*CreateCl
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateCloudAccountCreated), nil
-
+	success, ok := result.(*CreateCloudAccountCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for createCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -140,8 +160,14 @@ func (a *Client) CreateGcpCloudAccount(params *CreateGcpCloudAccountParams) (*Cr
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateGcpCloudAccountCreated), nil
-
+	success, ok := result.(*CreateGcpCloudAccountCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for createGcpCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -170,8 +196,14 @@ func (a *Client) CreateNsxTCloudAccount(params *CreateNsxTCloudAccountParams) (*
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateNsxTCloudAccountCreated), nil
-
+	success, ok := result.(*CreateNsxTCloudAccountCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for createNsxTCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -200,8 +232,14 @@ func (a *Client) CreateNsxVCloudAccount(params *CreateNsxVCloudAccountParams) (*
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateNsxVCloudAccountCreated), nil
-
+	success, ok := result.(*CreateNsxVCloudAccountCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for createNsxVCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -230,8 +268,14 @@ func (a *Client) CreateVSphereCloudAccount(params *CreateVSphereCloudAccountPara
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateVSphereCloudAccountCreated), nil
-
+	success, ok := result.(*CreateVSphereCloudAccountCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for createVSphereCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -260,8 +304,14 @@ func (a *Client) DeleteAwsCloudAccount(params *DeleteAwsCloudAccountParams) (*De
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteAwsCloudAccountNoContent), nil
-
+	success, ok := result.(*DeleteAwsCloudAccountNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteAwsCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -290,8 +340,14 @@ func (a *Client) DeleteAzureCloudAccount(params *DeleteAzureCloudAccountParams) 
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteAzureCloudAccountNoContent), nil
-
+	success, ok := result.(*DeleteAzureCloudAccountNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteAzureCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -320,8 +376,14 @@ func (a *Client) DeleteCloudAccount(params *DeleteCloudAccountParams) (*DeleteCl
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteCloudAccountNoContent), nil
-
+	success, ok := result.(*DeleteCloudAccountNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -350,8 +412,14 @@ func (a *Client) DeleteCloudAccountNsxT(params *DeleteCloudAccountNsxTParams) (*
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteCloudAccountNsxTNoContent), nil
-
+	success, ok := result.(*DeleteCloudAccountNsxTNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteCloudAccountNsx-T: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -380,8 +448,14 @@ func (a *Client) DeleteCloudAccountNsxV(params *DeleteCloudAccountNsxVParams) (*
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteCloudAccountNsxVNoContent), nil
-
+	success, ok := result.(*DeleteCloudAccountNsxVNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteCloudAccountNsx-V: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -410,8 +484,14 @@ func (a *Client) DeleteGcpCloudAccount(params *DeleteGcpCloudAccountParams) (*De
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteGcpCloudAccountNoContent), nil
-
+	success, ok := result.(*DeleteGcpCloudAccountNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteGcpCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -440,8 +520,14 @@ func (a *Client) DeleteVSphereCloudAccount(params *DeleteVSphereCloudAccountPara
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteVSphereCloudAccountNoContent), nil
-
+	success, ok := result.(*DeleteVSphereCloudAccountNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteVSphereCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -470,8 +556,14 @@ func (a *Client) EnumerateAwsRegions(params *EnumerateAwsRegionsParams) (*Enumer
 	if err != nil {
 		return nil, err
 	}
-	return result.(*EnumerateAwsRegionsOK), nil
-
+	success, ok := result.(*EnumerateAwsRegionsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for enumerateAwsRegions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -500,8 +592,14 @@ func (a *Client) EnumerateAzureRegions(params *EnumerateAzureRegionsParams) (*En
 	if err != nil {
 		return nil, err
 	}
-	return result.(*EnumerateAzureRegionsOK), nil
-
+	success, ok := result.(*EnumerateAzureRegionsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for enumerateAzureRegions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -530,8 +628,14 @@ func (a *Client) EnumerateGcpRegions(params *EnumerateGcpRegionsParams) (*Enumer
 	if err != nil {
 		return nil, err
 	}
-	return result.(*EnumerateGcpRegionsOK), nil
-
+	success, ok := result.(*EnumerateGcpRegionsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for enumerateGcpRegions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -560,8 +664,14 @@ func (a *Client) EnumerateRegions(params *EnumerateRegionsParams) (*EnumerateReg
 	if err != nil {
 		return nil, err
 	}
-	return result.(*EnumerateRegionsOK), nil
-
+	success, ok := result.(*EnumerateRegionsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for enumerateRegions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -590,8 +700,14 @@ func (a *Client) EnumerateVSphereRegions(params *EnumerateVSphereRegionsParams) 
 	if err != nil {
 		return nil, err
 	}
-	return result.(*EnumerateVSphereRegionsOK), nil
-
+	success, ok := result.(*EnumerateVSphereRegionsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for enumerateVSphereRegions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -620,8 +736,14 @@ func (a *Client) GetAwsCloudAccount(params *GetAwsCloudAccountParams) (*GetAwsCl
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetAwsCloudAccountOK), nil
-
+	success, ok := result.(*GetAwsCloudAccountOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getAwsCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -650,8 +772,14 @@ func (a *Client) GetAwsCloudAccounts(params *GetAwsCloudAccountsParams) (*GetAws
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetAwsCloudAccountsOK), nil
-
+	success, ok := result.(*GetAwsCloudAccountsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getAwsCloudAccounts: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -680,8 +808,14 @@ func (a *Client) GetAzureCloudAccount(params *GetAzureCloudAccountParams) (*GetA
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetAzureCloudAccountOK), nil
-
+	success, ok := result.(*GetAzureCloudAccountOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getAzureCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -710,8 +844,14 @@ func (a *Client) GetAzureCloudAccounts(params *GetAzureCloudAccountsParams) (*Ge
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetAzureCloudAccountsOK), nil
-
+	success, ok := result.(*GetAzureCloudAccountsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getAzureCloudAccounts: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -740,8 +880,14 @@ func (a *Client) GetCloudAccount(params *GetCloudAccountParams) (*GetCloudAccoun
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetCloudAccountOK), nil
-
+	success, ok := result.(*GetCloudAccountOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -770,8 +916,14 @@ func (a *Client) GetCloudAccounts(params *GetCloudAccountsParams) (*GetCloudAcco
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetCloudAccountsOK), nil
-
+	success, ok := result.(*GetCloudAccountsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getCloudAccounts: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -800,8 +952,14 @@ func (a *Client) GetGcpCloudAccount(params *GetGcpCloudAccountParams) (*GetGcpCl
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetGcpCloudAccountOK), nil
-
+	success, ok := result.(*GetGcpCloudAccountOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getGcpCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -830,8 +988,14 @@ func (a *Client) GetGcpCloudAccounts(params *GetGcpCloudAccountsParams) (*GetGcp
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetGcpCloudAccountsOK), nil
-
+	success, ok := result.(*GetGcpCloudAccountsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getGcpCloudAccounts: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -860,8 +1024,14 @@ func (a *Client) GetNsxTCloudAccount(params *GetNsxTCloudAccountParams) (*GetNsx
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetNsxTCloudAccountOK), nil
-
+	success, ok := result.(*GetNsxTCloudAccountOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getNsxTCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -890,8 +1060,14 @@ func (a *Client) GetNsxTCloudAccounts(params *GetNsxTCloudAccountsParams) (*GetN
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetNsxTCloudAccountsOK), nil
-
+	success, ok := result.(*GetNsxTCloudAccountsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getNsxTCloudAccounts: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -920,8 +1096,14 @@ func (a *Client) GetNsxVCloudAccount(params *GetNsxVCloudAccountParams) (*GetNsx
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetNsxVCloudAccountOK), nil
-
+	success, ok := result.(*GetNsxVCloudAccountOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getNsxVCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -950,8 +1132,14 @@ func (a *Client) GetNsxVCloudAccounts(params *GetNsxVCloudAccountsParams) (*GetN
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetNsxVCloudAccountsOK), nil
-
+	success, ok := result.(*GetNsxVCloudAccountsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getNsxVCloudAccounts: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -980,8 +1168,14 @@ func (a *Client) GetVSphereCloudAccount(params *GetVSphereCloudAccountParams) (*
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetVSphereCloudAccountOK), nil
-
+	success, ok := result.(*GetVSphereCloudAccountOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getVSphereCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -1010,8 +1204,14 @@ func (a *Client) GetVSphereCloudAccounts(params *GetVSphereCloudAccountsParams) 
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetVSphereCloudAccountsOK), nil
-
+	success, ok := result.(*GetVSphereCloudAccountsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getVSphereCloudAccounts: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -1040,8 +1240,14 @@ func (a *Client) UpdateAwsCloudAccount(params *UpdateAwsCloudAccountParams) (*Up
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateAwsCloudAccountOK), nil
-
+	success, ok := result.(*UpdateAwsCloudAccountOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateAwsCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -1070,8 +1276,14 @@ func (a *Client) UpdateAzureCloudAccount(params *UpdateAzureCloudAccountParams) 
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateAzureCloudAccountOK), nil
-
+	success, ok := result.(*UpdateAzureCloudAccountOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateAzureCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -1100,8 +1312,14 @@ func (a *Client) UpdateCloudAccount(params *UpdateCloudAccountParams) (*UpdateCl
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateCloudAccountOK), nil
-
+	success, ok := result.(*UpdateCloudAccountOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -1130,8 +1348,14 @@ func (a *Client) UpdateGcpCloudAccount(params *UpdateGcpCloudAccountParams) (*Up
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateGcpCloudAccountOK), nil
-
+	success, ok := result.(*UpdateGcpCloudAccountOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateGcpCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -1160,8 +1384,14 @@ func (a *Client) UpdateNsxTCloudAccount(params *UpdateNsxTCloudAccountParams) (*
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateNsxTCloudAccountOK), nil
-
+	success, ok := result.(*UpdateNsxTCloudAccountOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateNsxTCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -1190,8 +1420,14 @@ func (a *Client) UpdateNsxVCloudAccount(params *UpdateNsxVCloudAccountParams) (*
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateNsxVCloudAccountOK), nil
-
+	success, ok := result.(*UpdateNsxVCloudAccountOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateNsxVCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -1220,8 +1456,14 @@ func (a *Client) UpdateVSphereCloudAccount(params *UpdateVSphereCloudAccountPara
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateVSphereCloudAccountOK), nil
-
+	success, ok := result.(*UpdateVSphereCloudAccountOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateVSphereCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 // SetTransport changes the transport on the client

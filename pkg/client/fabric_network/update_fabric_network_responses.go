@@ -24,21 +24,18 @@ type UpdateFabricNetworkReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *UpdateFabricNetworkReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewUpdateFabricNetworkOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewUpdateFabricNetworkForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewUpdateFabricNetworkNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type UpdateFabricNetworkOK struct {
 
 func (o *UpdateFabricNetworkOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/fabric-networks/{id}][%d] updateFabricNetworkOK  %+v", 200, o.Payload)
+}
+
+func (o *UpdateFabricNetworkOK) GetPayload() *models.FabricNetwork {
+	return o.Payload
 }
 
 func (o *UpdateFabricNetworkOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -6,6 +6,8 @@ package compute
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"fmt"
+
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
@@ -50,8 +52,14 @@ func (a *Client) CreateMachine(params *CreateMachineParams) (*CreateMachineAccep
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateMachineAccepted), nil
-
+	success, ok := result.(*CreateMachineAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for createMachine: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -80,8 +88,14 @@ func (a *Client) CreateMachineSnapshot(params *CreateMachineSnapshotParams) (*Cr
 	if err != nil {
 		return nil, err
 	}
-	return result.(*CreateMachineSnapshotAccepted), nil
-
+	success, ok := result.(*CreateMachineSnapshotAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for createMachineSnapshot: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -110,8 +124,14 @@ func (a *Client) DeleteMachine(params *DeleteMachineParams) (*DeleteMachineAccep
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteMachineAccepted), nil
-
+	success, ok := result.(*DeleteMachineAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteMachine: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -140,8 +160,14 @@ func (a *Client) DeleteMachineSnapshot(params *DeleteMachineSnapshotParams) (*De
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteMachineSnapshotAccepted), nil
-
+	success, ok := result.(*DeleteMachineSnapshotAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteMachineSnapshot: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -170,8 +196,14 @@ func (a *Client) GetMachine(params *GetMachineParams) (*GetMachineOK, error) {
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetMachineOK), nil
-
+	success, ok := result.(*GetMachineOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getMachine: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -200,8 +232,14 @@ func (a *Client) GetMachineSnapshots(params *GetMachineSnapshotsParams) (*GetMac
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetMachineSnapshotsOK), nil
-
+	success, ok := result.(*GetMachineSnapshotsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getMachineSnapshots: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -230,8 +268,14 @@ func (a *Client) GetMachines(params *GetMachinesParams) (*GetMachinesOK, error) 
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetMachinesOK), nil
-
+	success, ok := result.(*GetMachinesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getMachines: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -260,8 +304,14 @@ func (a *Client) PowerOffMachine(params *PowerOffMachineParams) (*PowerOffMachin
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PowerOffMachineAccepted), nil
-
+	success, ok := result.(*PowerOffMachineAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for powerOffMachine: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -290,8 +340,14 @@ func (a *Client) PowerOnMachine(params *PowerOnMachineParams) (*PowerOnMachineAc
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PowerOnMachineAccepted), nil
-
+	success, ok := result.(*PowerOnMachineAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for powerOnMachine: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -320,8 +376,14 @@ func (a *Client) RebootMachine(params *RebootMachineParams) (*RebootMachineAccep
 	if err != nil {
 		return nil, err
 	}
-	return result.(*RebootMachineAccepted), nil
-
+	success, ok := result.(*RebootMachineAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for rebootMachine: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -350,8 +412,14 @@ func (a *Client) ResetMachine(params *ResetMachineParams) (*ResetMachineAccepted
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ResetMachineAccepted), nil
-
+	success, ok := result.(*ResetMachineAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for resetMachine: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -380,8 +448,14 @@ func (a *Client) ResizeMachine(params *ResizeMachineParams) (*ResizeMachineAccep
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ResizeMachineAccepted), nil
-
+	success, ok := result.(*ResizeMachineAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for resizeMachine: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -410,8 +484,14 @@ func (a *Client) RestartMachine(params *RestartMachineParams) (*RestartMachineAc
 	if err != nil {
 		return nil, err
 	}
-	return result.(*RestartMachineAccepted), nil
-
+	success, ok := result.(*RestartMachineAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for restartMachine: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -440,8 +520,14 @@ func (a *Client) RevertMachineSnapshot(params *RevertMachineSnapshotParams) (*Re
 	if err != nil {
 		return nil, err
 	}
-	return result.(*RevertMachineSnapshotAccepted), nil
-
+	success, ok := result.(*RevertMachineSnapshotAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for revertMachineSnapshot: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -470,8 +556,14 @@ func (a *Client) ShutdownMachine(params *ShutdownMachineParams) (*ShutdownMachin
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ShutdownMachineAccepted), nil
-
+	success, ok := result.(*ShutdownMachineAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for shutdownMachine: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -500,8 +592,14 @@ func (a *Client) SuspendMachine(params *SuspendMachineParams) (*SuspendMachineAc
 	if err != nil {
 		return nil, err
 	}
-	return result.(*SuspendMachineAccepted), nil
-
+	success, ok := result.(*SuspendMachineAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for suspendMachine: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -530,8 +628,14 @@ func (a *Client) UpdateMachine(params *UpdateMachineParams) (*UpdateMachineOK, e
 	if err != nil {
 		return nil, err
 	}
-	return result.(*UpdateMachineOK), nil
-
+	success, ok := result.(*UpdateMachineOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateMachine: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 // SetTransport changes the transport on the client

@@ -24,21 +24,18 @@ type CreateProjectReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *CreateProjectReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 201:
 		result := NewCreateProjectCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 400:
 		result := NewCreateProjectBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewCreateProjectForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type CreateProjectCreated struct {
 
 func (o *CreateProjectCreated) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/projects][%d] createProjectCreated  %+v", 201, o.Payload)
+}
+
+func (o *CreateProjectCreated) GetPayload() *models.Project {
+	return o.Payload
 }
 
 func (o *CreateProjectCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

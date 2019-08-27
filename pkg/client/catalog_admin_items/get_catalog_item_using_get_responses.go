@@ -24,28 +24,24 @@ type GetCatalogItemUsingGETReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetCatalogItemUsingGETReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetCatalogItemUsingGETOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewGetCatalogItemUsingGETUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewGetCatalogItemUsingGETForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewGetCatalogItemUsingGETNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -73,6 +69,10 @@ type GetCatalogItemUsingGETOK struct {
 
 func (o *GetCatalogItemUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /catalog/api/admin/items/{id}][%d] getCatalogItemUsingGETOK  %+v", 200, o.Payload)
+}
+
+func (o *GetCatalogItemUsingGETOK) GetPayload() *models.CatalogItem {
+	return o.Payload
 }
 
 func (o *GetCatalogItemUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

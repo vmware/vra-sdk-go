@@ -24,21 +24,18 @@ type GetFabricNetworkReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetFabricNetworkReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetFabricNetworkOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewGetFabricNetworkForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewGetFabricNetworkNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type GetFabricNetworkOK struct {
 
 func (o *GetFabricNetworkOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-networks/{id}][%d] getFabricNetworkOK  %+v", 200, o.Payload)
+}
+
+func (o *GetFabricNetworkOK) GetPayload() *models.FabricNetwork {
+	return o.Payload
 }
 
 func (o *GetFabricNetworkOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

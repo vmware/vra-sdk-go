@@ -24,14 +24,12 @@ type GetTagsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetTagsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetTagsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewGetTagsForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -59,6 +57,10 @@ type GetTagsOK struct {
 
 func (o *GetTagsOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/tags][%d] getTagsOK  %+v", 200, o.Payload)
+}
+
+func (o *GetTagsOK) GetPayload() *models.TagResult {
+	return o.Payload
 }
 
 func (o *GetTagsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

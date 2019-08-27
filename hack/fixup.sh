@@ -21,9 +21,10 @@ find pkg -type f -exec sed -i '' 's/_g_e_t_/_get_/g' {} +
 find pkg -type f -exec sed -i '' 's/_p_a_t_c_h_/_patch_/g' {} +
 find pkg -type f -exec sed -i '' 's/_p_o_s_t_/_post_/g' {} +
 find pkg -type f -exec sed -i '' 's/_p_u_t_/_put_/g' {} +
-find pkg -type f -exec sed -i '' 's/ iaa s / iaas /g' {} +
-find pkg -type f -exec sed -i '' 's/VmwareCloudAssemblyIaaS/MulticloudIaaS/g' {} +
+find pkg -type f -exec sed -i '' 's/ iaa s/ iaas /g' {} +
+find pkg -type f -exec sed -i '' 's/ v mware/ vmware/g' {} +
+find pkg -type f -exec sed -i '' 's/VMwareCloudAssemblyIaaS/MulticloudIaaS/g' {} +
 find pkg -type f -exec sed -i '' 's/ g e t params/ get params/g' {} +
 find pkg -type f -exec sed -i '' 's/ g e t 1 / get1 /g' {} +
 
-mv pkg/client/vmware_cloud_assembly_iaa_s_client.go pkg/client/vra_client.go
+mv pkg/client/v_mware_cloud_assembly_iaa_s_client.go pkg/client/vra_client.go

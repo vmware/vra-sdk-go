@@ -24,14 +24,12 @@ type GetAboutPageReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetAboutPageReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetAboutPageOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewGetAboutPageForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -59,6 +57,10 @@ type GetAboutPageOK struct {
 
 func (o *GetAboutPageOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/about][%d] getAboutPageOK  %+v", 200, o.Payload)
+}
+
+func (o *GetAboutPageOK) GetPayload() *models.About {
+	return o.Payload
 }
 
 func (o *GetAboutPageOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -24,14 +24,12 @@ type DeleteBlockDeviceReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteBlockDeviceReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 202:
 		result := NewDeleteBlockDeviceAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewDeleteBlockDeviceForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -59,6 +57,10 @@ type DeleteBlockDeviceAccepted struct {
 
 func (o *DeleteBlockDeviceAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/block-devices/{id}][%d] deleteBlockDeviceAccepted  %+v", 202, o.Payload)
+}
+
+func (o *DeleteBlockDeviceAccepted) GetPayload() *models.RequestTracker {
+	return o.Payload
 }
 
 func (o *DeleteBlockDeviceAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

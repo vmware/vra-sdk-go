@@ -24,21 +24,18 @@ type GetRegionReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetRegionReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetRegionOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewGetRegionForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewGetRegionNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type GetRegionOK struct {
 
 func (o *GetRegionOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/regions/{id}][%d] getRegionOK  %+v", 200, o.Payload)
+}
+
+func (o *GetRegionOK) GetPayload() *models.Region {
+	return o.Payload
 }
 
 func (o *GetRegionOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

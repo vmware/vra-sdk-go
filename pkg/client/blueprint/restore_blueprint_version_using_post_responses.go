@@ -24,35 +24,30 @@ type RestoreBlueprintVersionUsingPOSTReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *RestoreBlueprintVersionUsingPOSTReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewRestoreBlueprintVersionUsingPOSTOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 201:
 		result := NewRestoreBlueprintVersionUsingPOSTCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewRestoreBlueprintVersionUsingPOSTUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewRestoreBlueprintVersionUsingPOSTForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewRestoreBlueprintVersionUsingPOSTNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -80,6 +75,10 @@ type RestoreBlueprintVersionUsingPOSTOK struct {
 
 func (o *RestoreBlueprintVersionUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprints/{blueprintId}/versions/{version}/action/restore][%d] restoreBlueprintVersionUsingPOSTOK  %+v", 200, o.Payload)
+}
+
+func (o *RestoreBlueprintVersionUsingPOSTOK) GetPayload() *models.Blueprint {
+	return o.Payload
 }
 
 func (o *RestoreBlueprintVersionUsingPOSTOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

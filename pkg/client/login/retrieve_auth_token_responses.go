@@ -24,21 +24,18 @@ type RetrieveAuthTokenReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *RetrieveAuthTokenReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewRetrieveAuthTokenOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 400:
 		result := NewRetrieveAuthTokenBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewRetrieveAuthTokenForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type RetrieveAuthTokenOK struct {
 
 func (o *RetrieveAuthTokenOK) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/login][%d] retrieveAuthTokenOK  %+v", 200, o.Payload)
+}
+
+func (o *RetrieveAuthTokenOK) GetPayload() *models.AuthResponse {
+	return o.Payload
 }
 
 func (o *RetrieveAuthTokenOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

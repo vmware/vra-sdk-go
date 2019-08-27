@@ -24,21 +24,18 @@ type PowerOffMachineReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PowerOffMachineReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 202:
 		result := NewPowerOffMachineAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewPowerOffMachineForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewPowerOffMachineNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type PowerOffMachineAccepted struct {
 
 func (o *PowerOffMachineAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/power-off][%d] powerOffMachineAccepted  %+v", 202, o.Payload)
+}
+
+func (o *PowerOffMachineAccepted) GetPayload() *models.RequestTracker {
+	return o.Payload
 }
 
 func (o *PowerOffMachineAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

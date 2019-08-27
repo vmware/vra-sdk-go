@@ -24,21 +24,18 @@ type UpdateAzureStorageProfileReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *UpdateAzureStorageProfileReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewUpdateAzureStorageProfileOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 400:
 		result := NewUpdateAzureStorageProfileBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewUpdateAzureStorageProfileForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type UpdateAzureStorageProfileOK struct {
 
 func (o *UpdateAzureStorageProfileOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-azure/{id}][%d] updateAzureStorageProfileOK  %+v", 200, o.Payload)
+}
+
+func (o *UpdateAzureStorageProfileOK) GetPayload() *models.AzureStorageProfile {
+	return o.Payload
 }
 
 func (o *UpdateAzureStorageProfileOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

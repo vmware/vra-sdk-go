@@ -24,21 +24,18 @@ type GetFabricVSphereStoragePolicyReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetFabricVSphereStoragePolicyReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetFabricVSphereStoragePolicyOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 403:
 		result := NewGetFabricVSphereStoragePolicyForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewGetFabricVSphereStoragePolicyNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -66,6 +63,10 @@ type GetFabricVSphereStoragePolicyOK struct {
 
 func (o *GetFabricVSphereStoragePolicyOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-storage-policies/{id}][%d] getFabricVSphereStoragePolicyOK  %+v", 200, o.Payload)
+}
+
+func (o *GetFabricVSphereStoragePolicyOK) GetPayload() *models.FabricVsphereStoragePolicy {
+	return o.Payload
 }
 
 func (o *GetFabricVSphereStoragePolicyOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -24,35 +24,30 @@ type RequestCatalogItemUsingPOSTReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *RequestCatalogItemUsingPOSTReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewRequestCatalogItemUsingPOSTOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 201:
 		result := NewRequestCatalogItemUsingPOSTCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 401:
 		result := NewRequestCatalogItemUsingPOSTUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 403:
 		result := NewRequestCatalogItemUsingPOSTForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 404:
 		result := NewRequestCatalogItemUsingPOSTNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -80,6 +75,10 @@ type RequestCatalogItemUsingPOSTOK struct {
 
 func (o *RequestCatalogItemUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /catalog/api/items/{id}/request][%d] requestCatalogItemUsingPOSTOK  %+v", 200, o.Payload)
+}
+
+func (o *RequestCatalogItemUsingPOSTOK) GetPayload() *models.CatalogItemRequestResponse {
+	return o.Payload
 }
 
 func (o *RequestCatalogItemUsingPOSTOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
