@@ -1,14 +1,18 @@
 .PHONY: all swagger modified update update-blueprint update-catalog update-deployment update-iaas clean
+SWAGGER_VERSION=0.18.0
 
 all:
 	go build -o sdk-test
 
-swagger:
+swagger: check-swagger
 	rm -rf pkg/client pkg/models
 	swagger mixin -c=1 swagger/vra-iaas.json swagger/vra-blueprint.json swagger/vra-catalog.json swagger/vra-deployment.json | python3 -mjson.tool > swagger/vra-combined.json
 	./hack/fix_vra_swagger --omit-security
 	swagger generate client -f swagger/vra-combined.json -t pkg
 	./hack/fixup.sh
+
+check-swagger:
+	@swagger version | grep ${SWAGGER_VERSION} > /dev/null || { echo "Wrong version of swagger command. Install go-swagger ${SWAGGER_VERSION}"; exit 1; }
 
 modified:
 	git ls-files --modified | xargs git add
