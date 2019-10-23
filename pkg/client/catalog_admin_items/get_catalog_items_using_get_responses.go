@@ -36,18 +36,6 @@ func (o *GetCatalogItemsUsingGETReader) ReadResponse(response runtime.ClientResp
 			return nil, err
 		}
 		return nil, result
-	case 403:
-		result := NewGetCatalogItemsUsingGETForbidden()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-	case 404:
-		result := NewGetCatalogItemsUsingGETNotFound()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
@@ -64,20 +52,20 @@ func NewGetCatalogItemsUsingGETOK() *GetCatalogItemsUsingGETOK {
 OK
 */
 type GetCatalogItemsUsingGETOK struct {
-	Payload *models.CatalogItem
+	Payload *models.PageOfCatalogItem
 }
 
 func (o *GetCatalogItemsUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /catalog/api/admin/items][%d] getCatalogItemsUsingGETOK  %+v", 200, o.Payload)
 }
 
-func (o *GetCatalogItemsUsingGETOK) GetPayload() *models.CatalogItem {
+func (o *GetCatalogItemsUsingGETOK) GetPayload() *models.PageOfCatalogItem {
 	return o.Payload
 }
 
 func (o *GetCatalogItemsUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.CatalogItem)
+	o.Payload = new(models.PageOfCatalogItem)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -104,48 +92,6 @@ func (o *GetCatalogItemsUsingGETUnauthorized) Error() string {
 }
 
 func (o *GetCatalogItemsUsingGETUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewGetCatalogItemsUsingGETForbidden creates a GetCatalogItemsUsingGETForbidden with default headers values
-func NewGetCatalogItemsUsingGETForbidden() *GetCatalogItemsUsingGETForbidden {
-	return &GetCatalogItemsUsingGETForbidden{}
-}
-
-/*GetCatalogItemsUsingGETForbidden handles this case with default header values.
-
-Forbidden
-*/
-type GetCatalogItemsUsingGETForbidden struct {
-}
-
-func (o *GetCatalogItemsUsingGETForbidden) Error() string {
-	return fmt.Sprintf("[GET /catalog/api/admin/items][%d] getCatalogItemsUsingGETForbidden ", 403)
-}
-
-func (o *GetCatalogItemsUsingGETForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewGetCatalogItemsUsingGETNotFound creates a GetCatalogItemsUsingGETNotFound with default headers values
-func NewGetCatalogItemsUsingGETNotFound() *GetCatalogItemsUsingGETNotFound {
-	return &GetCatalogItemsUsingGETNotFound{}
-}
-
-/*GetCatalogItemsUsingGETNotFound handles this case with default header values.
-
-Not Found
-*/
-type GetCatalogItemsUsingGETNotFound struct {
-}
-
-func (o *GetCatalogItemsUsingGETNotFound) Error() string {
-	return fmt.Sprintf("[GET /catalog/api/admin/items][%d] getCatalogItemsUsingGETNotFound ", 404)
-}
-
-func (o *GetCatalogItemsUsingGETNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

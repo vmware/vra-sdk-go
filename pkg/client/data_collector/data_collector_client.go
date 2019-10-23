@@ -30,6 +30,8 @@ type Client struct {
 CreateDataCollector creates data collector
 
 Create a new Data Collector.
+
+Note: Data collector endpoints are not available in vRA on-prem release.
 */
 func (a *Client) CreateDataCollector(params *CreateDataCollectorParams) (*CreateDataCollectorCreated, error) {
 	// TODO: Validate the params before sending
@@ -65,7 +67,9 @@ func (a *Client) CreateDataCollector(params *CreateDataCollectorParams) (*Create
 /*
 DeleteDataCollector deletes data collector
 
-Delete Data Collector with a given id
+Delete Data Collector with a given id.
+
+Note: Data collector endpoints are not available in vRA on-prem release.
 */
 func (a *Client) DeleteDataCollector(params *DeleteDataCollectorParams) (*DeleteDataCollectorNoContent, error) {
 	// TODO: Validate the params before sending
@@ -101,7 +105,9 @@ func (a *Client) DeleteDataCollector(params *DeleteDataCollectorParams) (*Delete
 /*
 GetDataCollector gets data collector
 
-Get Data Collector with a given id
+Get Data Collector with a given id.
+
+Note: Data collector endpoints are not available in vRA on-prem release.
 */
 func (a *Client) GetDataCollector(params *GetDataCollectorParams) (*GetDataCollectorOK, error) {
 	// TODO: Validate the params before sending
@@ -138,6 +144,8 @@ func (a *Client) GetDataCollector(params *GetDataCollectorParams) (*GetDataColle
 GetDataCollectors gets data collectors
 
 Get all Data Collectors.
+
+Note: Data collector endpoints are not available in vRA on-prem release.
 */
 func (a *Client) GetDataCollectors(params *GetDataCollectorsParams) (*GetDataCollectorsOK, error) {
 	// TODO: Validate the params before sending

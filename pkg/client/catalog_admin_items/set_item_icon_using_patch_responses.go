@@ -27,20 +27,8 @@ func (o *SetItemIconUsingPATCHReader) ReadResponse(response runtime.ClientRespon
 			return nil, err
 		}
 		return result, nil
-	case 204:
-		result := NewSetItemIconUsingPATCHNoContent()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return result, nil
 	case 401:
 		result := NewSetItemIconUsingPATCHUnauthorized()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-	case 403:
-		result := NewSetItemIconUsingPATCHForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -72,27 +60,6 @@ func (o *SetItemIconUsingPATCHOK) readResponse(response runtime.ClientResponse, 
 	return nil
 }
 
-// NewSetItemIconUsingPATCHNoContent creates a SetItemIconUsingPATCHNoContent with default headers values
-func NewSetItemIconUsingPATCHNoContent() *SetItemIconUsingPATCHNoContent {
-	return &SetItemIconUsingPATCHNoContent{}
-}
-
-/*SetItemIconUsingPATCHNoContent handles this case with default header values.
-
-No Content
-*/
-type SetItemIconUsingPATCHNoContent struct {
-}
-
-func (o *SetItemIconUsingPATCHNoContent) Error() string {
-	return fmt.Sprintf("[PATCH /catalog/api/admin/items/{id}][%d] setItemIconUsingPATCHNoContent ", 204)
-}
-
-func (o *SetItemIconUsingPATCHNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
 // NewSetItemIconUsingPATCHUnauthorized creates a SetItemIconUsingPATCHUnauthorized with default headers values
 func NewSetItemIconUsingPATCHUnauthorized() *SetItemIconUsingPATCHUnauthorized {
 	return &SetItemIconUsingPATCHUnauthorized{}
@@ -110,27 +77,6 @@ func (o *SetItemIconUsingPATCHUnauthorized) Error() string {
 }
 
 func (o *SetItemIconUsingPATCHUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewSetItemIconUsingPATCHForbidden creates a SetItemIconUsingPATCHForbidden with default headers values
-func NewSetItemIconUsingPATCHForbidden() *SetItemIconUsingPATCHForbidden {
-	return &SetItemIconUsingPATCHForbidden{}
-}
-
-/*SetItemIconUsingPATCHForbidden handles this case with default header values.
-
-Forbidden
-*/
-type SetItemIconUsingPATCHForbidden struct {
-}
-
-func (o *SetItemIconUsingPATCHForbidden) Error() string {
-	return fmt.Sprintf("[PATCH /catalog/api/admin/items/{id}][%d] setItemIconUsingPATCHForbidden ", 403)
-}
-
-func (o *SetItemIconUsingPATCHForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

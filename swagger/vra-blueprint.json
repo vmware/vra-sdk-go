@@ -1,112 +1,52 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "Api Documentation",
-        "version": "1.0",
-        "title": "Api Documentation",
-        "termsOfService": "urn:tos",
-        "contact": {},
-        "license": {
-            "name": "Apache 2.0",
-            "url": "http://www.apache.org/licenses/LICENSE-2.0"
-        }
+        "description": "A multi-cloud Blueprint API for Cloud Automation Services",
+        "version": "2019-09-12",
+        "title": "VMware Cloud Assembly Blueprint API"
     },
     "host": "api.mgmt.cloud.vmware.com",
     "basePath": "/",
     "tags": [
         {
-            "name": "blueprint",
-            "description": "Blueprint API"
+            "name": "About",
+            "description": "About API"
         },
         {
-            "name": "blueprint-deployments",
-            "description": "Blueprint deployments API"
+            "name": "Blueprint",
+            "description": "Blueprints API"
         },
         {
-            "name": "blueprint-requests",
+            "name": "Blueprint Requests",
             "description": "Blueprint requests API"
         },
         {
-            "name": "blueprint-validation",
+            "name": "Blueprint Validation",
             "description": "Blueprint validation API"
         },
         {
-            "name": "provider-resource-types",
-            "description": "Provider resource types API"
+            "name": "Resource Types",
+            "description": "Resource types API"
         }
     ],
+    "produces": [
+        "application/json"
+    ],
     "paths": {
-        "/blueprint/api/blueprint-deployments/{deploymentId}/events": {
+        "/blueprint/api/about": {
             "get": {
                 "tags": [
-                    "blueprint-deployments"
+                    "About"
                 ],
-                "summary": "Returns events for the request",
-                "operationId": "getRequestEventsUsingGET",
-                "produces": [
-                    "*/*"
-                ],
-                "parameters": [
-                    {
-                        "name": "deploymentId",
-                        "in": "path",
-                        "description": "deploymentId",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "orderBy",
-                        "in": "query",
-                        "description": "Sorts events (e.g. 'createdAt DESC').",
-                        "required": false,
-                        "type": "string",
-                        "default": "createdAt DESC",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "Page index",
-                        "required": false,
-                        "type": "integer",
-                        "default": 1,
-                        "format": "int32",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "requestId",
-                        "in": "query",
-                        "description": "Request Id filter",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "size",
-                        "in": "query",
-                        "description": "Page size",
-                        "required": false,
-                        "type": "integer",
-                        "default": 1000,
-                        "format": "int32",
-                        "allowEmptyValue": false
-                    }
-                ],
+                "summary": "Returns blueprint API information",
+                "description": "The page contains information about the supported API versions and the latest API version. The version parameter is optional but highly recommended.\nIf you do not specify explicitly an exact version, you will be calling the latest supported API version.\nHere is an example of a call which specifies the exact version you are using: GET /blueprint/api/blueprints?apiVersion=2019-09-12",
+                "operationId": "getAboutUsingGET_1",
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/BlueprintRequestEventQueryResult"
+                            "$ref": "#/definitions/BlueprintAbout"
                         }
-                    },
-                    "401": {
-                        "description": "Unauthorized"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 },
                 "deprecated": false
@@ -115,35 +55,26 @@
         "/blueprint/api/blueprint-requests": {
             "get": {
                 "tags": [
-                    "blueprint-requests"
+                    "Blueprint Requests"
                 ],
                 "summary": "Lists blueprint requests",
-                "operationId": "listBlueprintRequestsUsingGET",
-                "produces": [
-                    "*/*"
-                ],
+                "operationId": "listBlueprintRequestsUsingGET_1",
                 "parameters": [
                     {
-                        "name": "deploymentId",
+                        "name": "$orderby",
                         "in": "query",
-                        "description": "Deployment Id filter",
+                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is descending on updatedAt. Sorting is supported on fields createdAt, updatedAt, createdBy, updatedBy.",
                         "required": false,
-                        "type": "string",
-                        "allowEmptyValue": false
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
                     },
                     {
-                        "name": "expand",
+                        "name": "$select",
                         "in": "query",
-                        "description": "Expand with content",
-                        "required": false,
-                        "type": "boolean",
-                        "default": true,
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "fields",
-                        "in": "query",
-                        "description": "Fields to include in content",
+                        "description": "Fields to include in content. Use * to get all fields.",
                         "required": false,
                         "type": "array",
                         "items": {
@@ -153,40 +84,44 @@
                         "allowEmptyValue": false
                     },
                     {
+                        "name": "$skip",
+                        "in": "query",
+                        "description": "Number of records you want to skip",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "description": "Number of records you want",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "deploymentId",
+                        "in": "query",
+                        "description": "Deployment Id filter",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
                         "name": "includePlan",
                         "in": "query",
                         "description": "Plan Requests filter",
                         "required": false,
                         "type": "boolean",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "orderBy",
-                        "in": "query",
-                        "description": "Sorts blueprint requests (e.g. 'updatedAt DESC').",
-                        "required": false,
-                        "type": "string",
-                        "default": "updatedAt DESC",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "Page index",
-                        "required": false,
-                        "type": "integer",
-                        "default": 1,
-                        "format": "int32",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "size",
-                        "in": "query",
-                        "description": "Page size",
-                        "required": false,
-                        "type": "integer",
-                        "default": 20,
-                        "format": "int32",
                         "allowEmptyValue": false
                     }
                 ],
@@ -194,34 +129,38 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/BlueprintRequestQueryResult"
+                            "$ref": "#/definitions/PageOfBlueprintRequest"
                         }
+                    },
+                    "400": {
+                        "description": "Bad Request"
                     },
                     "401": {
                         "description": "Unauthorized"
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 },
                 "deprecated": false
             },
             "post": {
                 "tags": [
-                    "blueprint-requests"
+                    "Blueprint Requests"
                 ],
                 "summary": "Creates a blueprint request",
-                "operationId": "createBlueprintRequestUsingPOST",
+                "operationId": "createBlueprintRequestUsingPOST_1",
                 "consumes": [
                     "application/json"
                 ],
-                "produces": [
-                    "*/*"
-                ],
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "in": "body",
                         "name": "request",
@@ -233,23 +172,26 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK",
+                    "201": {
+                        "description": "Created",
                         "schema": {
                             "$ref": "#/definitions/BlueprintRequest"
                         }
                     },
-                    "201": {
-                        "description": "Created"
+                    "202": {
+                        "description": "Accepted",
+                        "schema": {
+                            "$ref": "#/definitions/BlueprintRequest"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
                     },
                     "401": {
                         "description": "Unauthorized"
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 },
                 "deprecated": false
@@ -258,14 +200,18 @@
         "/blueprint/api/blueprint-requests/{requestId}": {
             "get": {
                 "tags": [
-                    "blueprint-requests"
+                    "Blueprint Requests"
                 ],
                 "summary": "Returns blueprint request details",
-                "operationId": "getBlueprintRequestUsingGET",
-                "produces": [
-                    "*/*"
-                ],
+                "operationId": "getBlueprintRequestUsingGET_1",
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "requestId",
                         "in": "path",
@@ -294,29 +240,71 @@
                 },
                 "deprecated": false
             },
+            "delete": {
+                "tags": [
+                    "Blueprint Requests"
+                ],
+                "summary": "Deletes request",
+                "operationId": "deleteBlueprintRequestUsingDELETE_1",
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "force",
+                        "in": "query",
+                        "description": "Force delete if not in final stage",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "requestId",
+                        "in": "path",
+                        "description": "requestId",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/blueprint/api/blueprint-requests/{requestId}/actions/cancel": {
             "post": {
                 "tags": [
-                    "blueprint-requests"
+                    "Blueprint Requests"
                 ],
-                "summary": "Send action to request",
-                "operationId": "actionBlueprintRequestUsingPOST",
+                "summary": "Cancel request",
+                "operationId": "cancelBlueprintRequestUsingPOST",
                 "consumes": [
                     "application/json"
                 ],
-                "produces": [
-                    "*/*"
-                ],
                 "parameters": [
                     {
-                        "name": "action",
+                        "name": "apiVersion",
                         "in": "query",
-                        "description": "action",
-                        "required": true,
-                        "type": "string",
-                        "allowEmptyValue": false,
-                        "enum": [
-                            "cancel"
-                        ]
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about",
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "name": "force",
@@ -340,9 +328,6 @@
                     "200": {
                         "description": "OK"
                     },
-                    "201": {
-                        "description": "Created"
-                    },
                     "401": {
                         "description": "Unauthorized"
                     },
@@ -354,62 +339,23 @@
                     }
                 },
                 "deprecated": false
-            },
-            "delete": {
-                "tags": [
-                    "blueprint-requests"
-                ],
-                "summary": "Deletes request",
-                "operationId": "deleteBlueprintRequestUsingDELETE",
-                "produces": [
-                    "*/*"
-                ],
-                "parameters": [
-                    {
-                        "name": "force",
-                        "in": "query",
-                        "description": "Force delete if not in final stage",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "requestId",
-                        "in": "path",
-                        "description": "requestId",
-                        "required": true,
-                        "type": "string",
-                        "format": "uuid"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    },
-                    "204": {
-                        "description": "No Content"
-                    },
-                    "401": {
-                        "description": "Unauthorized"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                },
-                "deprecated": false
             }
         },
         "/blueprint/api/blueprint-requests/{requestId}/plan": {
             "get": {
                 "tags": [
-                    "blueprint-requests"
+                    "Blueprint Requests"
                 ],
                 "summary": "Returns request plan",
-                "operationId": "getBlueprintPlanUsingGET",
-                "produces": [
-                    "*/*"
-                ],
+                "operationId": "getBlueprintPlanUsingGET_1",
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "expand",
                         "in": "query",
@@ -450,14 +396,18 @@
         "/blueprint/api/blueprint-requests/{requestId}/resources-plan": {
             "get": {
                 "tags": [
-                    "blueprint-requests"
+                    "Blueprint Requests"
                 ],
                 "summary": "Returns request resources plan",
-                "operationId": "getBlueprintResourcesPlanUsingGET",
-                "produces": [
-                    "*/*"
-                ],
+                "operationId": "getBlueprintResourcesPlanUsingGET_1",
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "expand",
                         "in": "query",
@@ -498,17 +448,21 @@
         "/blueprint/api/blueprint-validation": {
             "post": {
                 "tags": [
-                    "blueprint-validation"
+                    "Blueprint Validation"
                 ],
                 "summary": "Validates a blueprint",
-                "operationId": "validateBlueprintUsingPOST",
+                "operationId": "validateBlueprintUsingPOST_1",
                 "consumes": [
                     "application/json"
                 ],
-                "produces": [
-                    "*/*"
-                ],
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "in": "body",
                         "name": "request",
@@ -526,17 +480,14 @@
                             "$ref": "#/definitions/BlueprintValidationResponse"
                         }
                     },
-                    "201": {
-                        "description": "Created"
+                    "400": {
+                        "description": "Bad Request"
                     },
                     "401": {
                         "description": "Unauthorized"
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 },
                 "deprecated": false
@@ -545,27 +496,26 @@
         "/blueprint/api/blueprints": {
             "get": {
                 "tags": [
-                    "blueprint"
+                    "Blueprint"
                 ],
                 "summary": "Lists draft blueprint",
-                "operationId": "listBlueprintsUsingGET",
-                "produces": [
-                    "*/*"
-                ],
+                "operationId": "listBlueprintsUsingGET_1",
                 "parameters": [
                     {
-                        "name": "expand",
+                        "name": "$orderby",
                         "in": "query",
-                        "description": "Expand with content",
+                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is descending on updatedAt. Sorting is supported on fields createdAt, updatedAt, createdBy, updatedBy, name.",
                         "required": false,
-                        "type": "boolean",
-                        "default": true,
-                        "allowEmptyValue": false
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
                     },
                     {
-                        "name": "fields",
+                        "name": "$select",
                         "in": "query",
-                        "description": "Fields to include in content",
+                        "description": "Fields to include in content. Use * to get all fields.",
                         "required": false,
                         "type": "array",
                         "items": {
@@ -575,30 +525,36 @@
                         "allowEmptyValue": false
                     },
                     {
+                        "name": "$skip",
+                        "in": "query",
+                        "description": "Number of records you want to skip",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "description": "Number of records you want",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name",
                         "in": "query",
                         "description": "Filter by name",
                         "required": false,
                         "type": "string",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "orderBy",
-                        "in": "query",
-                        "description": "Sorts blueprints (e.g. 'name ASC').",
-                        "required": false,
-                        "type": "string",
-                        "default": "updatedAt DESC",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "Page index",
-                        "required": false,
-                        "type": "integer",
-                        "default": 1,
-                        "format": "int32",
                         "allowEmptyValue": false
                     },
                     {
@@ -630,16 +586,6 @@
                         "allowEmptyValue": false
                     },
                     {
-                        "name": "size",
-                        "in": "query",
-                        "description": "Page size",
-                        "required": false,
-                        "type": "integer",
-                        "default": 20,
-                        "format": "int32",
-                        "allowEmptyValue": false
-                    },
-                    {
                         "name": "versioned",
                         "in": "query",
                         "description": "Filter blueprints with at least one version",
@@ -652,34 +598,38 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/BlueprintQueryResult"
+                            "$ref": "#/definitions/PageOfBlueprint"
                         }
+                    },
+                    "400": {
+                        "description": "Bad Request"
                     },
                     "401": {
                         "description": "Unauthorized"
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 },
                 "deprecated": false
             },
             "post": {
                 "tags": [
-                    "blueprint"
+                    "Blueprint"
                 ],
                 "summary": "Creates a blueprint",
-                "operationId": "createBlueprintUsingPOST",
+                "operationId": "createBlueprintUsingPOST_1",
                 "consumes": [
                     "application/json"
                 ],
-                "produces": [
-                    "*/*"
-                ],
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "in": "body",
                         "name": "blueprint",
@@ -691,23 +641,20 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK",
+                    "201": {
+                        "description": "Created",
                         "schema": {
-                            "$ref": "#/definitions/BlueprintLinkResponse"
+                            "$ref": "#/definitions/Blueprint"
                         }
                     },
-                    "201": {
-                        "description": "Created"
+                    "400": {
+                        "description": "Bad Request"
                     },
                     "401": {
                         "description": "Unauthorized"
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 },
                 "deprecated": false
@@ -716,14 +663,18 @@
         "/blueprint/api/blueprints/{blueprintId}": {
             "get": {
                 "tags": [
-                    "blueprint"
+                    "Blueprint"
                 ],
                 "summary": "Returns blueprint details",
-                "operationId": "getBlueprintUsingGET",
-                "produces": [
-                    "*/*"
-                ],
+                "operationId": "getBlueprintUsingGET_1",
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "blueprintId",
                         "in": "path",
@@ -754,17 +705,21 @@
             },
             "put": {
                 "tags": [
-                    "blueprint"
+                    "Blueprint"
                 ],
                 "summary": "Updates a blueprint",
-                "operationId": "updateBlueprintUsingPUT",
+                "operationId": "updateBlueprintUsingPUT_1",
                 "consumes": [
                     "application/json"
                 ],
-                "produces": [
-                    "*/*"
-                ],
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "in": "body",
                         "name": "blueprint",
@@ -787,11 +742,8 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/BlueprintLinkResponse"
+                            "$ref": "#/definitions/Blueprint"
                         }
-                    },
-                    "201": {
-                        "description": "Created"
                     },
                     "401": {
                         "description": "Unauthorized"
@@ -807,14 +759,18 @@
             },
             "delete": {
                 "tags": [
-                    "blueprint"
+                    "Blueprint"
                 ],
                 "summary": "Deletes a blueprint",
-                "operationId": "deleteBlueprintUsingDELETE",
-                "produces": [
-                    "*/*"
-                ],
+                "operationId": "deleteBlueprintUsingDELETE_1",
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "blueprintId",
                         "in": "path",
@@ -825,9 +781,6 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK"
-                    },
                     "204": {
                         "description": "No Content"
                     },
@@ -836,6 +789,9 @@
                     },
                     "403": {
                         "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
                     }
                 },
                 "deprecated": false
@@ -844,14 +800,18 @@
         "/blueprint/api/blueprints/{blueprintId}/inputs-schema": {
             "get": {
                 "tags": [
-                    "blueprint"
+                    "Blueprint"
                 ],
                 "summary": "Returns blueprint inputs schema",
-                "operationId": "getBlueprintInputsSchemaUsingGET",
-                "produces": [
-                    "*/*"
-                ],
+                "operationId": "getBlueprintInputsSchemaUsingGET_1",
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "blueprintId",
                         "in": "path",
@@ -883,35 +843,26 @@
         "/blueprint/api/blueprints/{blueprintId}/versions": {
             "get": {
                 "tags": [
-                    "blueprint"
+                    "Blueprint"
                 ],
                 "summary": "Lists blueprint versions",
-                "operationId": "getBlueprintVersionsUsingGET",
-                "produces": [
-                    "*/*"
-                ],
+                "operationId": "listBlueprintVersionsUsingGET",
                 "parameters": [
                     {
-                        "name": "blueprintId",
-                        "in": "path",
-                        "description": "blueprintId",
-                        "required": true,
-                        "type": "string",
-                        "format": "uuid"
-                    },
-                    {
-                        "name": "expand",
+                        "name": "$orderby",
                         "in": "query",
-                        "description": "Expand with content",
+                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is descending on updatedAt. Sorting is supported on fields createdAt, updatedAt, createdBy, updatedBy, name, version.",
                         "required": false,
-                        "type": "boolean",
-                        "default": true,
-                        "allowEmptyValue": false
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
                     },
                     {
-                        "name": "fields",
+                        "name": "$select",
                         "in": "query",
-                        "description": "Fields to include in content",
+                        "description": "Fields to include in content. Use * to get all fields.",
                         "required": false,
                         "type": "array",
                         "items": {
@@ -921,33 +872,37 @@
                         "allowEmptyValue": false
                     },
                     {
-                        "name": "orderBy",
+                        "name": "$skip",
                         "in": "query",
-                        "description": "Sorts blueprint versions (e.g. 'name ASC').",
+                        "description": "Number of records you want to skip",
                         "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "description": "Number of records you want",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "blueprintId",
+                        "in": "path",
+                        "description": "blueprintId",
+                        "required": true,
                         "type": "string",
-                        "default": "updatedAt DESC",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "Page index",
-                        "required": false,
-                        "type": "integer",
-                        "default": 1,
-                        "format": "int32",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "size",
-                        "in": "query",
-                        "description": "Page size",
-                        "required": false,
-                        "type": "integer",
-                        "default": 20,
-                        "format": "int32",
-                        "allowEmptyValue": false
+                        "format": "uuid"
                     },
                     {
                         "name": "status",
@@ -974,8 +929,11 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/BlueprintVersionQueryResult"
+                            "$ref": "#/definitions/PageOfBlueprintVersion"
                         }
+                    },
+                    "400": {
+                        "description": "Bad Request"
                     },
                     "401": {
                         "description": "Unauthorized"
@@ -991,17 +949,21 @@
             },
             "post": {
                 "tags": [
-                    "blueprint"
+                    "Blueprint"
                 ],
                 "summary": "Creates version for the given blueprint ID",
-                "operationId": "createBlueprintVersionUsingPOST",
+                "operationId": "createBlueprintVersionUsingPOST_1",
                 "consumes": [
                     "application/json"
                 ],
-                "produces": [
-                    "*/*"
-                ],
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "blueprintId",
                         "in": "path",
@@ -1021,14 +983,14 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK",
+                    "201": {
+                        "description": "Created",
                         "schema": {
                             "$ref": "#/definitions/BlueprintVersion"
                         }
                     },
-                    "201": {
-                        "description": "Created"
+                    "400": {
+                        "description": "Bad Request"
                     },
                     "401": {
                         "description": "Unauthorized"
@@ -1046,13 +1008,10 @@
         "/blueprint/api/blueprints/{blueprintId}/versions/{version}": {
             "get": {
                 "tags": [
-                    "blueprint"
+                    "Blueprint"
                 ],
                 "summary": "Returns versioned blueprint details",
-                "operationId": "getBlueprintVersionUsingGET",
-                "produces": [
-                    "*/*"
-                ],
+                "operationId": "getBlueprintVersionUsingGET_1",
                 "parameters": [
                     {
                         "name": "blueprintId",
@@ -1090,20 +1049,24 @@
                 "deprecated": false
             }
         },
-        "/blueprint/api/blueprints/{blueprintId}/versions/{version}/action/release": {
+        "/blueprint/api/blueprints/{blueprintId}/versions/{version}/actions/release": {
             "post": {
                 "tags": [
-                    "blueprint"
+                    "Blueprint"
                 ],
                 "summary": "Release versioned blueprint to catalog",
-                "operationId": "releaseBlueprintVersionUsingPOST",
+                "operationId": "releaseBlueprintVersionUsingPOST_1",
                 "consumes": [
                     "application/json"
                 ],
-                "produces": [
-                    "*/*"
-                ],
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "blueprintId",
                         "in": "path",
@@ -1127,9 +1090,6 @@
                             "$ref": "#/definitions/BlueprintVersion"
                         }
                     },
-                    "201": {
-                        "description": "Created"
-                    },
                     "401": {
                         "description": "Unauthorized"
                     },
@@ -1143,20 +1103,24 @@
                 "deprecated": false
             }
         },
-        "/blueprint/api/blueprints/{blueprintId}/versions/{version}/action/restore": {
+        "/blueprint/api/blueprints/{blueprintId}/versions/{version}/actions/restore": {
             "post": {
                 "tags": [
-                    "blueprint"
+                    "Blueprint"
                 ],
                 "summary": "Restores content of draft from versioned blueprint",
-                "operationId": "restoreBlueprintVersionUsingPOST",
+                "operationId": "restoreBlueprintVersionUsingPOST_1",
                 "consumes": [
                     "application/json"
                 ],
-                "produces": [
-                    "*/*"
-                ],
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "blueprintId",
                         "in": "path",
@@ -1180,9 +1144,6 @@
                             "$ref": "#/definitions/Blueprint"
                         }
                     },
-                    "201": {
-                        "description": "Created"
-                    },
                     "401": {
                         "description": "Unauthorized"
                     },
@@ -1196,20 +1157,24 @@
                 "deprecated": false
             }
         },
-        "/blueprint/api/blueprints/{blueprintId}/versions/{version}/action/unrelease": {
+        "/blueprint/api/blueprints/{blueprintId}/versions/{version}/actions/unrelease": {
             "post": {
                 "tags": [
-                    "blueprint"
+                    "Blueprint"
                 ],
                 "summary": "UnRelease versioned blueprint from catalog",
-                "operationId": "unReleaseBlueprintVersionUsingPOST",
+                "operationId": "unReleaseBlueprintVersionUsingPOST_1",
                 "consumes": [
                     "application/json"
                 ],
-                "produces": [
-                    "*/*"
-                ],
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "blueprintId",
                         "in": "path",
@@ -1233,9 +1198,6 @@
                             "$ref": "#/definitions/BlueprintVersion"
                         }
                     },
-                    "201": {
-                        "description": "Created"
-                    },
                     "401": {
                         "description": "Unauthorized"
                     },
@@ -1252,14 +1214,18 @@
         "/blueprint/api/blueprints/{blueprintId}/versions/{version}/inputs-schema": {
             "get": {
                 "tags": [
-                    "blueprint"
+                    "Blueprint"
                 ],
                 "summary": "Returns blueprint version inputs schema",
-                "operationId": "getBlueprintVersionInputsSchemaUsingGET",
-                "produces": [
-                    "*/*"
-                ],
+                "operationId": "getBlueprintVersionInputsSchemaUsingGET_1",
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "blueprintId",
                         "in": "path",
@@ -1295,17 +1261,50 @@
                 "deprecated": false
             }
         },
-        "/blueprint/api/provider-resources": {
+        "/blueprint/api/resource-types": {
             "get": {
                 "tags": [
-                    "provider-resource-types"
+                    "Resource Types"
                 ],
-                "summary": "Lists provider resource types",
-                "operationId": "listProviderResourceTypesUsingGET",
-                "produces": [
-                    "*/*"
-                ],
+                "summary": "Lists resource types",
+                "operationId": "listResourceTypesUsingGET",
                 "parameters": [
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending on name. Sorting is supported on fields createdAt, updatedAt, createdBy, updatedBy, name.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "$skip",
+                        "in": "query",
+                        "description": "Number of records you want to skip",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "description": "Number of records you want",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "expand",
                         "in": "query",
@@ -1324,25 +1323,6 @@
                         "allowEmptyValue": false
                     },
                     {
-                        "name": "orderBy",
-                        "in": "query",
-                        "description": "Sorts resource types (e.g. 'name ASC').",
-                        "required": false,
-                        "type": "string",
-                        "default": "name ASC",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "Page index",
-                        "required": false,
-                        "type": "integer",
-                        "default": 1,
-                        "format": "int32",
-                        "allowEmptyValue": false
-                    },
-                    {
                         "name": "providerId",
                         "in": "query",
                         "description": "Filter by provider ID",
@@ -1357,49 +1337,43 @@
                         "required": false,
                         "type": "string",
                         "allowEmptyValue": false
-                    },
-                    {
-                        "name": "size",
-                        "in": "query",
-                        "description": "Page size",
-                        "required": false,
-                        "type": "integer",
-                        "default": 200,
-                        "format": "int32",
-                        "allowEmptyValue": false
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/ProviderResourceTypeQueryResult"
+                            "$ref": "#/definitions/PageOfResourceType"
                         }
+                    },
+                    "400": {
+                        "description": "Bad Request"
                     },
                     "401": {
                         "description": "Unauthorized"
                     },
                     "403": {
                         "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 },
                 "deprecated": false
             }
         },
-        "/blueprint/api/provider-resources/{resourceTypeId}": {
+        "/blueprint/api/resource-types/{resourceTypeId}": {
             "get": {
                 "tags": [
-                    "provider-resource-types"
+                    "Resource Types"
                 ],
-                "summary": "Returns provider resource type details",
-                "operationId": "getProviderResourceTypeUsingGET",
-                "produces": [
-                    "*/*"
-                ],
+                "summary": "Returns resource type details",
+                "operationId": "getResourceTypeUsingGET",
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "resourceTypeId",
                         "in": "path",
@@ -1413,7 +1387,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/ProviderResourceType"
+                            "$ref": "#/definitions/ResourceType"
                         }
                     },
                     "401": {
@@ -1520,7 +1494,7 @@
                 },
                 "selfLink": {
                     "type": "string",
-                    "description": "Object link",
+                    "description": "Blueprint self link",
                     "readOnly": true
                 },
                 "status": {
@@ -1572,63 +1546,24 @@
             },
             "title": "Blueprint"
         },
-        "BlueprintDeployment": {
+        "BlueprintAbout": {
             "type": "object",
             "properties": {
-                "createdAt": {
+                "latestApiVersion": {
                     "type": "string",
-                    "format": "date-time",
-                    "description": "Created time",
+                    "description": "Latest API Version",
                     "readOnly": true
                 },
-                "createdBy": {
-                    "type": "string",
-                    "description": "Created by",
-                    "readOnly": true
-                },
-                "description": {
-                    "type": "string",
-                    "description": "Blueprint deployment description",
-                    "readOnly": true
-                },
-                "id": {
-                    "type": "string",
-                    "description": "Object ID",
-                    "readOnly": true
-                },
-                "inputs": {
-                    "type": "object",
-                    "description": "Blueprint deployment inputs",
-                    "readOnly": true
-                },
-                "name": {
-                    "type": "string",
-                    "description": "Blueprint deployment name",
-                    "readOnly": true
-                },
-                "orgId": {
-                    "type": "string",
-                    "description": "Org ID",
-                    "readOnly": true
-                },
-                "selfLink": {
-                    "type": "string",
-                    "description": "Object link",
-                    "readOnly": true
-                },
-                "updatedAt": {
-                    "type": "string",
-                    "format": "date-time",
-                    "description": "Updated time",
-                    "readOnly": true
-                },
-                "updatedBy": {
-                    "type": "string",
-                    "description": "Updated by",
-                    "readOnly": true
+                "supportedApis": {
+                    "type": "array",
+                    "description": "Supported API's",
+                    "readOnly": true,
+                    "items": {
+                        "$ref": "#/definitions/SupportedApi"
+                    }
                 }
             },
-            "title": "BlueprintDeployment"
+            "title": "BlueprintAbout"
         },
         "BlueprintDeploymentResourcesQueryResult": {
             "type": "object",
@@ -1690,22 +1625,6 @@
                 }
             },
             "title": "BlueprintExecution"
-        },
-        "BlueprintLinkResponse": {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "Blueprint Id",
-                    "readOnly": true
-                },
-                "selfLink": {
-                    "type": "string",
-                    "description": "Blueprint self link",
-                    "readOnly": true
-                }
-            },
-            "title": "BlueprintLinkResponse"
         },
         "BlueprintPlan": {
             "type": "object",
@@ -1831,44 +1750,6 @@
             },
             "title": "BlueprintPlanTask"
         },
-        "BlueprintQueryResult": {
-            "type": "object",
-            "properties": {
-                "count": {
-                    "type": "integer",
-                    "format": "int64",
-                    "description": "Count",
-                    "readOnly": true
-                },
-                "links": {
-                    "type": "array",
-                    "description": "List of links",
-                    "readOnly": true,
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "nextPageLink": {
-                    "type": "string",
-                    "description": "Next page link",
-                    "readOnly": true
-                },
-                "objects": {
-                    "type": "array",
-                    "description": "List of objects",
-                    "readOnly": true,
-                    "items": {
-                        "$ref": "#/definitions/Blueprint"
-                    }
-                },
-                "prevPageLink": {
-                    "type": "string",
-                    "description": "Previous page link",
-                    "readOnly": true
-                }
-            },
-            "title": "BlueprintQueryResult"
-        },
         "BlueprintRequest": {
             "type": "object",
             "properties": {
@@ -1978,10 +1859,9 @@
                     "description": "Request tracker Id",
                     "readOnly": true
                 },
-                "selfLink": {
-                    "type": "string",
-                    "description": "Object link",
-                    "readOnly": true
+                "simulate": {
+                    "type": "boolean",
+                    "description": "Simulate blueprint request with providers"
                 },
                 "status": {
                     "type": "string",
@@ -2016,154 +1896,6 @@
                 }
             },
             "title": "BlueprintRequest"
-        },
-        "BlueprintRequestEvent": {
-            "type": "object",
-            "properties": {
-                "additionalDetails": {
-                    "type": "string",
-                    "description": "Additional Details"
-                },
-                "createdAt": {
-                    "type": "string",
-                    "format": "date-time",
-                    "description": "Created time",
-                    "readOnly": true
-                },
-                "createdBy": {
-                    "type": "string",
-                    "description": "Created by",
-                    "readOnly": true
-                },
-                "id": {
-                    "type": "string",
-                    "description": "Object ID",
-                    "readOnly": true
-                },
-                "orgId": {
-                    "type": "string",
-                    "description": "Org ID",
-                    "readOnly": true
-                },
-                "projectId": {
-                    "type": "string",
-                    "description": "Project ID"
-                },
-                "projectName": {
-                    "type": "string",
-                    "description": "Project Name",
-                    "readOnly": true
-                },
-                "reason": {
-                    "type": "string",
-                    "description": "Reason"
-                },
-                "resourceName": {
-                    "type": "string",
-                    "description": "Resource Name"
-                },
-                "resourceType": {
-                    "type": "string",
-                    "description": "Resource Type"
-                },
-                "selfLink": {
-                    "type": "string",
-                    "description": "Object link",
-                    "readOnly": true
-                },
-                "status": {
-                    "type": "string",
-                    "description": "Status"
-                },
-                "updatedAt": {
-                    "type": "string",
-                    "format": "date-time",
-                    "description": "Updated time",
-                    "readOnly": true
-                },
-                "updatedBy": {
-                    "type": "string",
-                    "description": "Updated by",
-                    "readOnly": true
-                }
-            },
-            "title": "BlueprintRequestEvent"
-        },
-        "BlueprintRequestEventQueryResult": {
-            "type": "object",
-            "properties": {
-                "count": {
-                    "type": "integer",
-                    "format": "int64",
-                    "description": "Count",
-                    "readOnly": true
-                },
-                "links": {
-                    "type": "array",
-                    "description": "List of links",
-                    "readOnly": true,
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "nextPageLink": {
-                    "type": "string",
-                    "description": "Next page link",
-                    "readOnly": true
-                },
-                "objects": {
-                    "type": "array",
-                    "description": "List of objects",
-                    "readOnly": true,
-                    "items": {
-                        "$ref": "#/definitions/BlueprintRequestEvent"
-                    }
-                },
-                "prevPageLink": {
-                    "type": "string",
-                    "description": "Previous page link",
-                    "readOnly": true
-                }
-            },
-            "title": "BlueprintRequestEventQueryResult"
-        },
-        "BlueprintRequestQueryResult": {
-            "type": "object",
-            "properties": {
-                "count": {
-                    "type": "integer",
-                    "format": "int64",
-                    "description": "Count",
-                    "readOnly": true
-                },
-                "links": {
-                    "type": "array",
-                    "description": "List of links",
-                    "readOnly": true,
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "nextPageLink": {
-                    "type": "string",
-                    "description": "Next page link",
-                    "readOnly": true
-                },
-                "objects": {
-                    "type": "array",
-                    "description": "List of objects",
-                    "readOnly": true,
-                    "items": {
-                        "$ref": "#/definitions/BlueprintRequest"
-                    }
-                },
-                "prevPageLink": {
-                    "type": "string",
-                    "description": "Previous page link",
-                    "readOnly": true
-                }
-            },
-            "title": "BlueprintRequestQueryResult"
         },
         "BlueprintResourcesPlan": {
             "type": "object",
@@ -2371,7 +2103,7 @@
                 },
                 "selfLink": {
                     "type": "string",
-                    "description": "Object link",
+                    "description": "Blueprint version self link",
                     "readOnly": true
                 },
                 "status": {
@@ -2417,44 +2149,6 @@
                 }
             },
             "title": "BlueprintVersion"
-        },
-        "BlueprintVersionQueryResult": {
-            "type": "object",
-            "properties": {
-                "count": {
-                    "type": "integer",
-                    "format": "int64",
-                    "description": "Count",
-                    "readOnly": true
-                },
-                "links": {
-                    "type": "array",
-                    "description": "List of links",
-                    "readOnly": true,
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "nextPageLink": {
-                    "type": "string",
-                    "description": "Next page link",
-                    "readOnly": true
-                },
-                "objects": {
-                    "type": "array",
-                    "description": "List of objects",
-                    "readOnly": true,
-                    "items": {
-                        "$ref": "#/definitions/BlueprintVersion"
-                    }
-                },
-                "prevPageLink": {
-                    "type": "string",
-                    "description": "Previous page link",
-                    "readOnly": true
-                }
-            },
-            "title": "BlueprintVersionQueryResult"
         },
         "BlueprintVersionRequest": {
             "type": "object",
@@ -2522,6 +2216,182 @@
                 }
             },
             "title": "DeploymentResource"
+        },
+        "PageOfBlueprint": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Blueprint"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfBlueprint"
+        },
+        "PageOfBlueprintRequest": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BlueprintRequest"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfBlueprintRequest"
+        },
+        "PageOfBlueprintVersion": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BlueprintVersion"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfBlueprintVersion"
+        },
+        "PageOfResourceType": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ResourceType"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfResourceType"
         },
         "PropertyDefinition": {
             "type": "object",
@@ -2639,7 +2509,7 @@
             },
             "title": "PropertyDefinition"
         },
-        "ProviderResourceType": {
+        "ResourceType": {
             "type": "object",
             "properties": {
                 "createdAt": {
@@ -2655,12 +2525,12 @@
                 },
                 "description": {
                     "type": "string",
-                    "description": "Provider resource description",
+                    "description": "Resource type description",
                     "readOnly": true
                 },
                 "displayName": {
                     "type": "string",
-                    "description": "Provider resource display name",
+                    "description": "Resource type display name",
                     "readOnly": true
                 },
                 "id": {
@@ -2670,7 +2540,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Provider resource name",
+                    "description": "Resource type name",
                     "readOnly": true
                 },
                 "operations": {
@@ -2702,14 +2572,9 @@
                     "readOnly": true
                 },
                 "schema": {
-                    "description": "Provider resource schema",
+                    "description": "Resource type schema",
                     "readOnly": true,
                     "$ref": "#/definitions/PropertyDefinition"
-                },
-                "selfLink": {
-                    "type": "string",
-                    "description": "Object link",
-                    "readOnly": true
                 },
                 "updatedAt": {
                     "type": "string",
@@ -2723,45 +2588,31 @@
                     "readOnly": true
                 }
             },
-            "title": "ProviderResourceType"
+            "title": "ResourceType"
         },
-        "ProviderResourceTypeQueryResult": {
+        "Sort": {
             "type": "object",
             "properties": {
-                "count": {
-                    "type": "integer",
-                    "format": "int64",
-                    "description": "Count",
-                    "readOnly": true
+                "empty": {
+                    "type": "boolean"
                 },
-                "links": {
-                    "type": "array",
-                    "description": "List of links",
-                    "readOnly": true,
-                    "items": {
-                        "type": "string"
-                    }
+                "sorted": {
+                    "type": "boolean"
                 },
-                "nextPageLink": {
-                    "type": "string",
-                    "description": "Next page link",
-                    "readOnly": true
-                },
-                "objects": {
-                    "type": "array",
-                    "description": "List of objects",
-                    "readOnly": true,
-                    "items": {
-                        "$ref": "#/definitions/ProviderResourceType"
-                    }
-                },
-                "prevPageLink": {
-                    "type": "string",
-                    "description": "Previous page link",
-                    "readOnly": true
+                "unsorted": {
+                    "type": "boolean"
                 }
             },
-            "title": "ProviderResourceTypeQueryResult"
+            "title": "Sort"
+        },
+        "SupportedApi": {
+            "type": "object",
+            "properties": {
+                "apiVersion": {
+                    "type": "string"
+                }
+            },
+            "title": "SupportedApi"
         }
     }
 }

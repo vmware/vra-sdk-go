@@ -62,16 +62,26 @@ for the get deployment resources using g e t operation typically these are writt
 */
 type GetDeploymentResourcesUsingGETParams struct {
 
+	/*DollarOrderby
+	  Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.
+
+	*/
+	DollarOrderby []string
+	/*DollarSkip
+	  Number of records you want to skip
+
+	*/
+	DollarSkip *int32
+	/*DollarTop
+	  Number of records you want
+
+	*/
+	DollarTop *int32
 	/*DepID
 	  Deployment ID
 
 	*/
 	DepID strfmt.UUID
-	/*ExpandMetadata
-	  Retrieves the 'metadata' field of each resource.
-
-	*/
-	ExpandMetadata *bool
 	/*ForceCachedResources
 	  Retrieves the resources from a cache for a faster query.
 
@@ -82,21 +92,6 @@ type GetDeploymentResourcesUsingGETParams struct {
 
 	*/
 	ForceRefreshResources *bool
-	/*Page
-	  Results page you want to retrieve (0..N)
-
-	*/
-	Page *int32
-	/*Size
-	  Number of records per page.
-
-	*/
-	Size *int32
-	/*Sort
-	  Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.
-
-	*/
-	Sort []string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -136,6 +131,39 @@ func (o *GetDeploymentResourcesUsingGETParams) SetHTTPClient(client *http.Client
 	o.HTTPClient = client
 }
 
+// WithDollarOrderby adds the dollarOrderby to the get deployment resources using get params
+func (o *GetDeploymentResourcesUsingGETParams) WithDollarOrderby(dollarOrderby []string) *GetDeploymentResourcesUsingGETParams {
+	o.SetDollarOrderby(dollarOrderby)
+	return o
+}
+
+// SetDollarOrderby adds the dollarOrderby to the get deployment resources using get params
+func (o *GetDeploymentResourcesUsingGETParams) SetDollarOrderby(dollarOrderby []string) {
+	o.DollarOrderby = dollarOrderby
+}
+
+// WithDollarSkip adds the dollarSkip to the get deployment resources using get params
+func (o *GetDeploymentResourcesUsingGETParams) WithDollarSkip(dollarSkip *int32) *GetDeploymentResourcesUsingGETParams {
+	o.SetDollarSkip(dollarSkip)
+	return o
+}
+
+// SetDollarSkip adds the dollarSkip to the get deployment resources using get params
+func (o *GetDeploymentResourcesUsingGETParams) SetDollarSkip(dollarSkip *int32) {
+	o.DollarSkip = dollarSkip
+}
+
+// WithDollarTop adds the dollarTop to the get deployment resources using get params
+func (o *GetDeploymentResourcesUsingGETParams) WithDollarTop(dollarTop *int32) *GetDeploymentResourcesUsingGETParams {
+	o.SetDollarTop(dollarTop)
+	return o
+}
+
+// SetDollarTop adds the dollarTop to the get deployment resources using get params
+func (o *GetDeploymentResourcesUsingGETParams) SetDollarTop(dollarTop *int32) {
+	o.DollarTop = dollarTop
+}
+
 // WithDepID adds the depID to the get deployment resources using get params
 func (o *GetDeploymentResourcesUsingGETParams) WithDepID(depID strfmt.UUID) *GetDeploymentResourcesUsingGETParams {
 	o.SetDepID(depID)
@@ -145,17 +173,6 @@ func (o *GetDeploymentResourcesUsingGETParams) WithDepID(depID strfmt.UUID) *Get
 // SetDepID adds the depId to the get deployment resources using get params
 func (o *GetDeploymentResourcesUsingGETParams) SetDepID(depID strfmt.UUID) {
 	o.DepID = depID
-}
-
-// WithExpandMetadata adds the expandMetadata to the get deployment resources using get params
-func (o *GetDeploymentResourcesUsingGETParams) WithExpandMetadata(expandMetadata *bool) *GetDeploymentResourcesUsingGETParams {
-	o.SetExpandMetadata(expandMetadata)
-	return o
-}
-
-// SetExpandMetadata adds the expandMetadata to the get deployment resources using get params
-func (o *GetDeploymentResourcesUsingGETParams) SetExpandMetadata(expandMetadata *bool) {
-	o.ExpandMetadata = expandMetadata
 }
 
 // WithForceCachedResources adds the forceCachedResources to the get deployment resources using get params
@@ -180,39 +197,6 @@ func (o *GetDeploymentResourcesUsingGETParams) SetForceRefreshResources(forceRef
 	o.ForceRefreshResources = forceRefreshResources
 }
 
-// WithPage adds the page to the get deployment resources using get params
-func (o *GetDeploymentResourcesUsingGETParams) WithPage(page *int32) *GetDeploymentResourcesUsingGETParams {
-	o.SetPage(page)
-	return o
-}
-
-// SetPage adds the page to the get deployment resources using get params
-func (o *GetDeploymentResourcesUsingGETParams) SetPage(page *int32) {
-	o.Page = page
-}
-
-// WithSize adds the size to the get deployment resources using get params
-func (o *GetDeploymentResourcesUsingGETParams) WithSize(size *int32) *GetDeploymentResourcesUsingGETParams {
-	o.SetSize(size)
-	return o
-}
-
-// SetSize adds the size to the get deployment resources using get params
-func (o *GetDeploymentResourcesUsingGETParams) SetSize(size *int32) {
-	o.Size = size
-}
-
-// WithSort adds the sort to the get deployment resources using get params
-func (o *GetDeploymentResourcesUsingGETParams) WithSort(sort []string) *GetDeploymentResourcesUsingGETParams {
-	o.SetSort(sort)
-	return o
-}
-
-// SetSort adds the sort to the get deployment resources using get params
-func (o *GetDeploymentResourcesUsingGETParams) SetSort(sort []string) {
-	o.Sort = sort
-}
-
 // WriteToRequest writes these params to a swagger request
 func (o *GetDeploymentResourcesUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -221,25 +205,49 @@ func (o *GetDeploymentResourcesUsingGETParams) WriteToRequest(r runtime.ClientRe
 	}
 	var res []error
 
-	// path param depId
-	if err := r.SetPathParam("depId", o.DepID.String()); err != nil {
+	valuesDollarOrderby := o.DollarOrderby
+
+	joinedDollarOrderby := swag.JoinByFormat(valuesDollarOrderby, "multi")
+	// query array param $orderby
+	if err := r.SetQueryParam("$orderby", joinedDollarOrderby...); err != nil {
 		return err
 	}
 
-	if o.ExpandMetadata != nil {
+	if o.DollarSkip != nil {
 
-		// query param expandMetadata
-		var qrExpandMetadata bool
-		if o.ExpandMetadata != nil {
-			qrExpandMetadata = *o.ExpandMetadata
+		// query param $skip
+		var qrDollarSkip int32
+		if o.DollarSkip != nil {
+			qrDollarSkip = *o.DollarSkip
 		}
-		qExpandMetadata := swag.FormatBool(qrExpandMetadata)
-		if qExpandMetadata != "" {
-			if err := r.SetQueryParam("expandMetadata", qExpandMetadata); err != nil {
+		qDollarSkip := swag.FormatInt32(qrDollarSkip)
+		if qDollarSkip != "" {
+			if err := r.SetQueryParam("$skip", qDollarSkip); err != nil {
 				return err
 			}
 		}
 
+	}
+
+	if o.DollarTop != nil {
+
+		// query param $top
+		var qrDollarTop int32
+		if o.DollarTop != nil {
+			qrDollarTop = *o.DollarTop
+		}
+		qDollarTop := swag.FormatInt32(qrDollarTop)
+		if qDollarTop != "" {
+			if err := r.SetQueryParam("$top", qDollarTop); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	// path param depId
+	if err := r.SetPathParam("depId", o.DepID.String()); err != nil {
+		return err
 	}
 
 	if o.ForceCachedResources != nil {
@@ -272,46 +280,6 @@ func (o *GetDeploymentResourcesUsingGETParams) WriteToRequest(r runtime.ClientRe
 			}
 		}
 
-	}
-
-	if o.Page != nil {
-
-		// query param page
-		var qrPage int32
-		if o.Page != nil {
-			qrPage = *o.Page
-		}
-		qPage := swag.FormatInt32(qrPage)
-		if qPage != "" {
-			if err := r.SetQueryParam("page", qPage); err != nil {
-				return err
-			}
-		}
-
-	}
-
-	if o.Size != nil {
-
-		// query param size
-		var qrSize int32
-		if o.Size != nil {
-			qrSize = *o.Size
-		}
-		qSize := swag.FormatInt32(qrSize)
-		if qSize != "" {
-			if err := r.SetQueryParam("size", qSize); err != nil {
-				return err
-			}
-		}
-
-	}
-
-	valuesSort := o.Sort
-
-	joinedSort := swag.JoinByFormat(valuesSort, "multi")
-	// query array param sort
-	if err := r.SetQueryParam("sort", joinedSort...); err != nil {
-		return err
 	}
 
 	if len(res) > 0 {

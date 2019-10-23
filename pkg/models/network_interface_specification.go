@@ -30,8 +30,7 @@ type NetworkInterfaceSpecification struct {
 	DeviceIndex int32 `json:"deviceIndex,omitempty"`
 
 	// A human-friendly name used as an identifier in APIs that support this option.
-	// Required: true
-	Name *string `json:"name"`
+	Name string `json:"name,omitempty"`
 
 	// Id of the network instance that this network interface plugs into.
 	// Required: true
@@ -45,10 +44,6 @@ type NetworkInterfaceSpecification struct {
 func (m *NetworkInterfaceSpecification) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateName(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateNetworkID(formats); err != nil {
 		res = append(res, err)
 	}
@@ -56,15 +51,6 @@ func (m *NetworkInterfaceSpecification) Validate(formats strfmt.Registry) error 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *NetworkInterfaceSpecification) validateName(formats strfmt.Registry) error {
-
-	if err := validate.Required("name", "body", m.Name); err != nil {
-		return err
-	}
-
 	return nil
 }
 

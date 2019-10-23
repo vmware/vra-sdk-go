@@ -17,7 +17,7 @@ import (
 
 // DeploymentRequest DeploymentRequest
 //
-// A deployment user request.
+// Represents deployment requests.
 // swagger:model DeploymentRequest
 type DeploymentRequest struct {
 
@@ -26,6 +26,9 @@ type DeploymentRequest struct {
 
 	// Identifier of the requested blueprint in the form 'UUID:version'
 	BlueprintID string `json:"blueprintId,omitempty"`
+
+	// Indicates whether request can be canceled or not.
+	Cancelable bool `json:"cancelable,omitempty"`
 
 	// Identifier of the requested catalog item in the form 'UUID:version'
 	CatalogItemID string `json:"catalogItemId,omitempty"`
@@ -44,6 +47,9 @@ type DeploymentRequest struct {
 	// Longer user-friendly details of the event.
 	Details string `json:"details,omitempty"`
 
+	// Indicates whether request is in dismissed state.
+	Dismissed bool `json:"dismissed,omitempty"`
+
 	// Event identifier
 	// Format: uuid
 	ID strfmt.UUID `json:"id,omitempty"`
@@ -61,9 +67,6 @@ type DeploymentRequest struct {
 	// User that initiated the request
 	RequestedBy string `json:"requestedBy,omitempty"`
 
-	// requester
-	Requester string `json:"requester,omitempty"`
-
 	// Optional resource name to which the event applies to
 	ResourceName string `json:"resourceName,omitempty"`
 
@@ -73,9 +76,6 @@ type DeploymentRequest struct {
 	// Request overall execution status.
 	// Enum: [PENDING REJECTED INPROGRESS ABORTED SUCCESSFUL PARTIALLY_SUCCESSFUL FAILED CREATED]
 	Status string `json:"status,omitempty"`
-
-	// status details
-	StatusDetails string `json:"statusDetails,omitempty"`
 
 	// The total number of tasks need to be completed to fulfil this request.
 	TotalTasks int32 `json:"totalTasks,omitempty"`

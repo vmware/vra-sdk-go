@@ -27,9 +27,9 @@ type Client struct {
 }
 
 /*
-ActionDeploymentRequestUsingPOST submits action on in progress requests allowable values cancel pause resume
+ActionDeploymentRequestUsingPOST submits action on requests allowable values cancel dismiss cancel can be submitted on in progress requests and dismiss can be submitted on failed requests
 */
-func (a *Client) ActionDeploymentRequestUsingPOST(params *ActionDeploymentRequestUsingPOSTParams) (*ActionDeploymentRequestUsingPOSTOK, *ActionDeploymentRequestUsingPOSTCreated, error) {
+func (a *Client) ActionDeploymentRequestUsingPOST(params *ActionDeploymentRequestUsingPOSTParams) (*ActionDeploymentRequestUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewActionDeploymentRequestUsingPOSTParams()
@@ -39,7 +39,7 @@ func (a *Client) ActionDeploymentRequestUsingPOST(params *ActionDeploymentReques
 		ID:                 "actionDeploymentRequestUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/deployment/api/requests/{requestId}",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
@@ -48,16 +48,15 @@ func (a *Client) ActionDeploymentRequestUsingPOST(params *ActionDeploymentReques
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
-	switch value := result.(type) {
-	case *ActionDeploymentRequestUsingPOSTOK:
-		return value, nil, nil
-	case *ActionDeploymentRequestUsingPOSTCreated:
-		return nil, value, nil
+	success, ok := result.(*ActionDeploymentRequestUsingPOSTOK)
+	if ok {
+		return success, nil
 	}
+	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deployment_actions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for actionDeploymentRequestUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -76,7 +75,7 @@ func (a *Client) GetDeploymentActionUsingGET(params *GetDeploymentActionUsingGET
 		ID:                 "getDeploymentActionUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/{depId}/actions/{actionId}",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
@@ -112,7 +111,7 @@ func (a *Client) GetDeploymentActionsUsingGET(params *GetDeploymentActionsUsingG
 		ID:                 "getDeploymentActionsUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/{depId}/actions",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
@@ -148,7 +147,7 @@ func (a *Client) GetResourceActionUsingGET(params *GetResourceActionUsingGETPara
 		ID:                 "getResourceActionUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/{depId}/resources/{resourceId}/actions/{actionId}",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
@@ -184,7 +183,7 @@ func (a *Client) GetResourceActionsUsingGET(params *GetResourceActionsUsingGETPa
 		ID:                 "getResourceActionsUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/{depId}/resources/{resourceId}/actions",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
@@ -210,7 +209,7 @@ SubmitDeploymentActionRequestUsingPOST deployments action request
 
 Submit a deployment action request
 */
-func (a *Client) SubmitDeploymentActionRequestUsingPOST(params *SubmitDeploymentActionRequestUsingPOSTParams) (*SubmitDeploymentActionRequestUsingPOSTOK, *SubmitDeploymentActionRequestUsingPOSTCreated, error) {
+func (a *Client) SubmitDeploymentActionRequestUsingPOST(params *SubmitDeploymentActionRequestUsingPOSTParams) (*SubmitDeploymentActionRequestUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewSubmitDeploymentActionRequestUsingPOSTParams()
@@ -220,7 +219,7 @@ func (a *Client) SubmitDeploymentActionRequestUsingPOST(params *SubmitDeployment
 		ID:                 "submitDeploymentActionRequestUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/deployment/api/deployments/{depId}/requests",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
@@ -229,16 +228,15 @@ func (a *Client) SubmitDeploymentActionRequestUsingPOST(params *SubmitDeployment
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
-	switch value := result.(type) {
-	case *SubmitDeploymentActionRequestUsingPOSTOK:
-		return value, nil, nil
-	case *SubmitDeploymentActionRequestUsingPOSTCreated:
-		return nil, value, nil
+	success, ok := result.(*SubmitDeploymentActionRequestUsingPOSTOK)
+	if ok {
+		return success, nil
 	}
+	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deployment_actions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for submitDeploymentActionRequestUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -247,7 +245,7 @@ SubmitResourceActionRequestUsingPOST resources action request
 
 Submit a resource action request.
 */
-func (a *Client) SubmitResourceActionRequestUsingPOST(params *SubmitResourceActionRequestUsingPOSTParams) (*SubmitResourceActionRequestUsingPOSTOK, *SubmitResourceActionRequestUsingPOSTCreated, error) {
+func (a *Client) SubmitResourceActionRequestUsingPOST(params *SubmitResourceActionRequestUsingPOSTParams) (*SubmitResourceActionRequestUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewSubmitResourceActionRequestUsingPOSTParams()
@@ -257,7 +255,7 @@ func (a *Client) SubmitResourceActionRequestUsingPOST(params *SubmitResourceActi
 		ID:                 "submitResourceActionRequestUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/deployment/api/deployments/{depId}/resources/{resourceId}/requests",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
@@ -266,16 +264,15 @@ func (a *Client) SubmitResourceActionRequestUsingPOST(params *SubmitResourceActi
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
-	switch value := result.(type) {
-	case *SubmitResourceActionRequestUsingPOSTOK:
-		return value, nil, nil
-	case *SubmitResourceActionRequestUsingPOSTCreated:
-		return nil, value, nil
+	success, ok := result.(*SubmitResourceActionRequestUsingPOSTOK)
+	if ok {
+		return success, nil
 	}
+	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deployment_actions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for submitResourceActionRequestUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

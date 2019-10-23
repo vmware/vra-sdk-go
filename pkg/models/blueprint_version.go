@@ -59,7 +59,7 @@ type BlueprintVersion struct {
 	// Read Only: true
 	ProjectName string `json:"projectName,omitempty"`
 
-	// Object link
+	// Blueprint version self link
 	// Read Only: true
 	SelfLink string `json:"selfLink,omitempty"`
 

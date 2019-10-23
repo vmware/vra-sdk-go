@@ -36,6 +36,12 @@ func (o *PostUsingPOSTReader) ReadResponse(response runtime.ClientResponse, cons
 			return nil, err
 		}
 		return result, nil
+	case 400:
+		result := NewPostUsingPOSTBadRequest()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 401:
 		result := NewPostUsingPOSTUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -67,7 +73,7 @@ func NewPostUsingPOSTOK() *PostUsingPOSTOK {
 
 /*PostUsingPOSTOK handles this case with default header values.
 
-OK
+Validation is ok
 */
 type PostUsingPOSTOK struct {
 	Payload *models.CatalogSource
@@ -103,13 +109,46 @@ func NewPostUsingPOSTCreated() *PostUsingPOSTCreated {
 Created
 */
 type PostUsingPOSTCreated struct {
+	Payload *models.CatalogSource
 }
 
 func (o *PostUsingPOSTCreated) Error() string {
-	return fmt.Sprintf("[POST /catalog/api/admin/sources][%d] postUsingPOSTCreated ", 201)
+	return fmt.Sprintf("[POST /catalog/api/admin/sources][%d] postUsingPOSTCreated  %+v", 201, o.Payload)
+}
+
+func (o *PostUsingPOSTCreated) GetPayload() *models.CatalogSource {
+	return o.Payload
 }
 
 func (o *PostUsingPOSTCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.CatalogSource)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPostUsingPOSTBadRequest creates a PostUsingPOSTBadRequest with default headers values
+func NewPostUsingPOSTBadRequest() *PostUsingPOSTBadRequest {
+	return &PostUsingPOSTBadRequest{}
+}
+
+/*PostUsingPOSTBadRequest handles this case with default header values.
+
+Bad Request
+*/
+type PostUsingPOSTBadRequest struct {
+}
+
+func (o *PostUsingPOSTBadRequest) Error() string {
+	return fmt.Sprintf("[POST /catalog/api/admin/sources][%d] postUsingPOSTBadRequest ", 400)
+}
+
+func (o *PostUsingPOSTBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

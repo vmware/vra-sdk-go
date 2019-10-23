@@ -72,11 +72,6 @@ type GetDeploymentByIDUsingGETParams struct {
 
 	*/
 	ExpandLastRequest *bool
-	/*ExpandMetadata
-	  Retrieves the 'metadata' field of the resource.
-
-	*/
-	ExpandMetadata *bool
 	/*ExpandProject
 	  The 'project' field of the deployment will be retrieved.
 
@@ -88,12 +83,12 @@ type GetDeploymentByIDUsingGETParams struct {
 	*/
 	ExpandResources *bool
 	/*ForceCachedResources
-	  The 'resources' field of the deployment will be guaranteed up-to-date.
+	  The 'resources' field of the deployment will be read from a cache for a faster query.
 
 	*/
 	ForceCachedResources *bool
 	/*ForceRefreshResources
-	  The 'resources' field of the deployment will be read from a cache for a faster query.
+	  The 'resources' field of the deployment will be guaranteed up-to-date.
 
 	*/
 	ForceRefreshResources *bool
@@ -156,17 +151,6 @@ func (o *GetDeploymentByIDUsingGETParams) WithExpandLastRequest(expandLastReques
 // SetExpandLastRequest adds the expandLastRequest to the get deployment by Id using get params
 func (o *GetDeploymentByIDUsingGETParams) SetExpandLastRequest(expandLastRequest *bool) {
 	o.ExpandLastRequest = expandLastRequest
-}
-
-// WithExpandMetadata adds the expandMetadata to the get deployment by Id using get params
-func (o *GetDeploymentByIDUsingGETParams) WithExpandMetadata(expandMetadata *bool) *GetDeploymentByIDUsingGETParams {
-	o.SetExpandMetadata(expandMetadata)
-	return o
-}
-
-// SetExpandMetadata adds the expandMetadata to the get deployment by Id using get params
-func (o *GetDeploymentByIDUsingGETParams) SetExpandMetadata(expandMetadata *bool) {
-	o.ExpandMetadata = expandMetadata
 }
 
 // WithExpandProject adds the expandProject to the get deployment by Id using get params
@@ -236,22 +220,6 @@ func (o *GetDeploymentByIDUsingGETParams) WriteToRequest(r runtime.ClientRequest
 		qExpandLastRequest := swag.FormatBool(qrExpandLastRequest)
 		if qExpandLastRequest != "" {
 			if err := r.SetQueryParam("expandLastRequest", qExpandLastRequest); err != nil {
-				return err
-			}
-		}
-
-	}
-
-	if o.ExpandMetadata != nil {
-
-		// query param expandMetadata
-		var qrExpandMetadata bool
-		if o.ExpandMetadata != nil {
-			qrExpandMetadata = *o.ExpandMetadata
-		}
-		qExpandMetadata := swag.FormatBool(qrExpandMetadata)
-		if qExpandMetadata != "" {
-			if err := r.SetQueryParam("expandMetadata", qExpandMetadata); err != nil {
 				return err
 			}
 		}

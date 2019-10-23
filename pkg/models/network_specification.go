@@ -22,7 +22,7 @@ type NetworkSpecification struct {
 	// Constraints that are used to drive placement policies for the network that is produced from this specification, related with the network profile. Constraint expressions are matched against tags on existing placement targets.
 	Constraints []*Constraint `json:"constraints"`
 
-	// Additional custom properties that may be used toextend the network.
+	// Additional custom properties that may be used to extend the network.
 	CustomProperties map[string]string `json:"customProperties,omitempty"`
 
 	// A human-friendly description.

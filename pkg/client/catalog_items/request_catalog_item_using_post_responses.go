@@ -30,20 +30,8 @@ func (o *RequestCatalogItemUsingPOSTReader) ReadResponse(response runtime.Client
 			return nil, err
 		}
 		return result, nil
-	case 201:
-		result := NewRequestCatalogItemUsingPOSTCreated()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return result, nil
 	case 401:
 		result := NewRequestCatalogItemUsingPOSTUnauthorized()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-	case 403:
-		result := NewRequestCatalogItemUsingPOSTForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -93,27 +81,6 @@ func (o *RequestCatalogItemUsingPOSTOK) readResponse(response runtime.ClientResp
 	return nil
 }
 
-// NewRequestCatalogItemUsingPOSTCreated creates a RequestCatalogItemUsingPOSTCreated with default headers values
-func NewRequestCatalogItemUsingPOSTCreated() *RequestCatalogItemUsingPOSTCreated {
-	return &RequestCatalogItemUsingPOSTCreated{}
-}
-
-/*RequestCatalogItemUsingPOSTCreated handles this case with default header values.
-
-Created
-*/
-type RequestCatalogItemUsingPOSTCreated struct {
-}
-
-func (o *RequestCatalogItemUsingPOSTCreated) Error() string {
-	return fmt.Sprintf("[POST /catalog/api/items/{id}/request][%d] requestCatalogItemUsingPOSTCreated ", 201)
-}
-
-func (o *RequestCatalogItemUsingPOSTCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
 // NewRequestCatalogItemUsingPOSTUnauthorized creates a RequestCatalogItemUsingPOSTUnauthorized with default headers values
 func NewRequestCatalogItemUsingPOSTUnauthorized() *RequestCatalogItemUsingPOSTUnauthorized {
 	return &RequestCatalogItemUsingPOSTUnauthorized{}
@@ -131,27 +98,6 @@ func (o *RequestCatalogItemUsingPOSTUnauthorized) Error() string {
 }
 
 func (o *RequestCatalogItemUsingPOSTUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewRequestCatalogItemUsingPOSTForbidden creates a RequestCatalogItemUsingPOSTForbidden with default headers values
-func NewRequestCatalogItemUsingPOSTForbidden() *RequestCatalogItemUsingPOSTForbidden {
-	return &RequestCatalogItemUsingPOSTForbidden{}
-}
-
-/*RequestCatalogItemUsingPOSTForbidden handles this case with default header values.
-
-Forbidden
-*/
-type RequestCatalogItemUsingPOSTForbidden struct {
-}
-
-func (o *RequestCatalogItemUsingPOSTForbidden) Error() string {
-	return fmt.Sprintf("[POST /catalog/api/items/{id}/request][%d] requestCatalogItemUsingPOSTForbidden ", 403)
-}
-
-func (o *RequestCatalogItemUsingPOSTForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

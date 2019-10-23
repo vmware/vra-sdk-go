@@ -30,20 +30,14 @@ func (o *PatchDeploymentUsingPATCHReader) ReadResponse(response runtime.ClientRe
 			return nil, err
 		}
 		return result, nil
-	case 204:
-		result := NewPatchDeploymentUsingPATCHNoContent()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return result, nil
 	case 401:
 		result := NewPatchDeploymentUsingPATCHUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-	case 403:
-		result := NewPatchDeploymentUsingPATCHForbidden()
+	case 404:
+		result := NewPatchDeploymentUsingPATCHNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -87,27 +81,6 @@ func (o *PatchDeploymentUsingPATCHOK) readResponse(response runtime.ClientRespon
 	return nil
 }
 
-// NewPatchDeploymentUsingPATCHNoContent creates a PatchDeploymentUsingPATCHNoContent with default headers values
-func NewPatchDeploymentUsingPATCHNoContent() *PatchDeploymentUsingPATCHNoContent {
-	return &PatchDeploymentUsingPATCHNoContent{}
-}
-
-/*PatchDeploymentUsingPATCHNoContent handles this case with default header values.
-
-No Content
-*/
-type PatchDeploymentUsingPATCHNoContent struct {
-}
-
-func (o *PatchDeploymentUsingPATCHNoContent) Error() string {
-	return fmt.Sprintf("[PATCH /deployment/api/deployments/{depId}][%d] patchDeploymentUsingPATCHNoContent ", 204)
-}
-
-func (o *PatchDeploymentUsingPATCHNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
 // NewPatchDeploymentUsingPATCHUnauthorized creates a PatchDeploymentUsingPATCHUnauthorized with default headers values
 func NewPatchDeploymentUsingPATCHUnauthorized() *PatchDeploymentUsingPATCHUnauthorized {
 	return &PatchDeploymentUsingPATCHUnauthorized{}
@@ -129,23 +102,23 @@ func (o *PatchDeploymentUsingPATCHUnauthorized) readResponse(response runtime.Cl
 	return nil
 }
 
-// NewPatchDeploymentUsingPATCHForbidden creates a PatchDeploymentUsingPATCHForbidden with default headers values
-func NewPatchDeploymentUsingPATCHForbidden() *PatchDeploymentUsingPATCHForbidden {
-	return &PatchDeploymentUsingPATCHForbidden{}
+// NewPatchDeploymentUsingPATCHNotFound creates a PatchDeploymentUsingPATCHNotFound with default headers values
+func NewPatchDeploymentUsingPATCHNotFound() *PatchDeploymentUsingPATCHNotFound {
+	return &PatchDeploymentUsingPATCHNotFound{}
 }
 
-/*PatchDeploymentUsingPATCHForbidden handles this case with default header values.
+/*PatchDeploymentUsingPATCHNotFound handles this case with default header values.
 
-Forbidden
+Not Found
 */
-type PatchDeploymentUsingPATCHForbidden struct {
+type PatchDeploymentUsingPATCHNotFound struct {
 }
 
-func (o *PatchDeploymentUsingPATCHForbidden) Error() string {
-	return fmt.Sprintf("[PATCH /deployment/api/deployments/{depId}][%d] patchDeploymentUsingPATCHForbidden ", 403)
+func (o *PatchDeploymentUsingPATCHNotFound) Error() string {
+	return fmt.Sprintf("[PATCH /deployment/api/deployments/{depId}][%d] patchDeploymentUsingPATCHNotFound ", 404)
 }
 
-func (o *PatchDeploymentUsingPATCHForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *PatchDeploymentUsingPATCHNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

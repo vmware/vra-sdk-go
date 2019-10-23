@@ -41,7 +41,7 @@ func (a *Client) CheckDeploymentNameUsingGET(params *CheckDeploymentNameUsingGET
 		ID:                 "checkDeploymentNameUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/names/{name}",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
@@ -63,11 +63,11 @@ func (a *Client) CheckDeploymentNameUsingGET(params *CheckDeploymentNameUsingGET
 }
 
 /*
-DeleteDeploymentUsingDELETE deletes a deployment
+DeleteDeploymentUsingDELETE deletes a deployment effectively triggers a delete day2 operation
 
-Deletes the deployment with the supplied ID.
+Deletes the deployment with the supplied ID, cleans up the associated resources from the Cloud Provider.
 */
-func (a *Client) DeleteDeploymentUsingDELETE(params *DeleteDeploymentUsingDELETEParams) (*DeleteDeploymentUsingDELETEOK, *DeleteDeploymentUsingDELETENoContent, error) {
+func (a *Client) DeleteDeploymentUsingDELETE(params *DeleteDeploymentUsingDELETEParams) (*DeleteDeploymentUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteDeploymentUsingDELETEParams()
@@ -77,7 +77,7 @@ func (a *Client) DeleteDeploymentUsingDELETE(params *DeleteDeploymentUsingDELETE
 		ID:                 "deleteDeploymentUsingDELETE",
 		Method:             "DELETE",
 		PathPattern:        "/deployment/api/deployments/{depId}",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
@@ -86,25 +86,24 @@ func (a *Client) DeleteDeploymentUsingDELETE(params *DeleteDeploymentUsingDELETE
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
-	switch value := result.(type) {
-	case *DeleteDeploymentUsingDELETEOK:
-		return value, nil, nil
-	case *DeleteDeploymentUsingDELETENoContent:
-		return nil, value, nil
+	success, ok := result.(*DeleteDeploymentUsingDELETEOK)
+	if ok {
+		return success, nil
 	}
+	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deployments: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for deleteDeploymentUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-DeleteResourceUsingDELETE deletes resource associated with a deployment
+DeleteResourceUsingDELETE deletes resource associated with a deployment effectively triggers a delete day2 operation
 
-Deletes the resource with the specified ID that is correlated with the supplied deployment.
+Deletes the resource with the specified ID and attempts to delete resource from the Cloud Provider.
 */
-func (a *Client) DeleteResourceUsingDELETE(params *DeleteResourceUsingDELETEParams) (*DeleteResourceUsingDELETEOK, *DeleteResourceUsingDELETENoContent, error) {
+func (a *Client) DeleteResourceUsingDELETE(params *DeleteResourceUsingDELETEParams) (*DeleteResourceUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteResourceUsingDELETEParams()
@@ -114,7 +113,7 @@ func (a *Client) DeleteResourceUsingDELETE(params *DeleteResourceUsingDELETEPara
 		ID:                 "deleteResourceUsingDELETE",
 		Method:             "DELETE",
 		PathPattern:        "/deployment/api/deployments/{depId}/resources/{resourceId}",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
@@ -123,21 +122,20 @@ func (a *Client) DeleteResourceUsingDELETE(params *DeleteResourceUsingDELETEPara
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
-	switch value := result.(type) {
-	case *DeleteResourceUsingDELETEOK:
-		return value, nil, nil
-	case *DeleteResourceUsingDELETENoContent:
-		return nil, value, nil
+	success, ok := result.(*DeleteResourceUsingDELETEOK)
+	if ok {
+		return success, nil
 	}
+	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deployments: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for deleteResourceUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetDeploymentByIDUsingGET fetches a spefic deployment
+GetDeploymentByIDUsingGET fetches a specific deployment
 
 Returns the deployment with the supplied ID.
 */
@@ -151,7 +149,7 @@ func (a *Client) GetDeploymentByIDUsingGET(params *GetDeploymentByIDUsingGETPara
 		ID:                 "getDeploymentByIdUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/{depId}",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
@@ -185,7 +183,7 @@ func (a *Client) GetDeploymentFilterByIDUsingGET(params *GetDeploymentFilterByID
 		ID:                 "getDeploymentFilterByIdUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/filters/{filterId}",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
@@ -219,7 +217,7 @@ func (a *Client) GetDeploymentFiltersUsingGET(params *GetDeploymentFiltersUsingG
 		ID:                 "getDeploymentFiltersUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/filters",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
@@ -255,7 +253,7 @@ func (a *Client) GetDeploymentResourcesUsingGET(params *GetDeploymentResourcesUs
 		ID:                 "getDeploymentResourcesUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/{depId}/resources",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
@@ -289,7 +287,7 @@ func (a *Client) GetDeploymentsForProjectUsingGET(params *GetDeploymentsForProje
 		ID:                 "getDeploymentsForProjectUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/projects/{projectId}/deployment-count",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
@@ -325,7 +323,7 @@ func (a *Client) GetDeploymentsUsingGET(params *GetDeploymentsUsingGETParams) (*
 		ID:                 "getDeploymentsUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
@@ -361,7 +359,7 @@ func (a *Client) GetResourceByIDUsingGET(params *GetResourceByIDUsingGETParams) 
 		ID:                 "getResourceByIdUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/{depId}/resources/{resourceId}",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
@@ -387,7 +385,7 @@ PatchDeploymentUsingPATCH updates deployment
 
 Updates the deployment with the supplied ID.
 */
-func (a *Client) PatchDeploymentUsingPATCH(params *PatchDeploymentUsingPATCHParams) (*PatchDeploymentUsingPATCHOK, *PatchDeploymentUsingPATCHNoContent, error) {
+func (a *Client) PatchDeploymentUsingPATCH(params *PatchDeploymentUsingPATCHParams) (*PatchDeploymentUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPatchDeploymentUsingPATCHParams()
@@ -397,7 +395,7 @@ func (a *Client) PatchDeploymentUsingPATCH(params *PatchDeploymentUsingPATCHPara
 		ID:                 "patchDeploymentUsingPATCH",
 		Method:             "PATCH",
 		PathPattern:        "/deployment/api/deployments/{depId}",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
@@ -406,16 +404,15 @@ func (a *Client) PatchDeploymentUsingPATCH(params *PatchDeploymentUsingPATCHPara
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
-	switch value := result.(type) {
-	case *PatchDeploymentUsingPATCHOK:
-		return value, nil, nil
-	case *PatchDeploymentUsingPATCHNoContent:
-		return nil, value, nil
+	success, ok := result.(*PatchDeploymentUsingPATCHOK)
+	if ok {
+		return success, nil
 	}
+	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deployments: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for patchDeploymentUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

@@ -27,58 +27,57 @@ type Client struct {
 }
 
 /*
-ActionBlueprintRequestUsingPOST sends action to request
+CancelBlueprintRequestUsingPOST cancels request
 */
-func (a *Client) ActionBlueprintRequestUsingPOST(params *ActionBlueprintRequestUsingPOSTParams) (*ActionBlueprintRequestUsingPOSTOK, *ActionBlueprintRequestUsingPOSTCreated, error) {
+func (a *Client) CancelBlueprintRequestUsingPOST(params *CancelBlueprintRequestUsingPOSTParams) (*CancelBlueprintRequestUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewActionBlueprintRequestUsingPOSTParams()
+		params = NewCancelBlueprintRequestUsingPOSTParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "actionBlueprintRequestUsingPOST",
+		ID:                 "cancelBlueprintRequestUsingPOST",
 		Method:             "POST",
-		PathPattern:        "/blueprint/api/blueprint-requests/{requestId}",
-		ProducesMediaTypes: []string{"*/*"},
+		PathPattern:        "/blueprint/api/blueprint-requests/{requestId}/actions/cancel",
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &ActionBlueprintRequestUsingPOSTReader{formats: a.formats},
+		Reader:             &CancelBlueprintRequestUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
-	switch value := result.(type) {
-	case *ActionBlueprintRequestUsingPOSTOK:
-		return value, nil, nil
-	case *ActionBlueprintRequestUsingPOSTCreated:
-		return nil, value, nil
+	success, ok := result.(*CancelBlueprintRequestUsingPOSTOK)
+	if ok {
+		return success, nil
 	}
+	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for blueprint_requests: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for cancelBlueprintRequestUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-CreateBlueprintRequestUsingPOST creates a blueprint request
+CreateBlueprintRequestUsingPOST1 creates a blueprint request
 */
-func (a *Client) CreateBlueprintRequestUsingPOST(params *CreateBlueprintRequestUsingPOSTParams) (*CreateBlueprintRequestUsingPOSTOK, *CreateBlueprintRequestUsingPOSTCreated, error) {
+func (a *Client) CreateBlueprintRequestUsingPOST1(params *CreateBlueprintRequestUsingPOST1Params) (*CreateBlueprintRequestUsingPOST1Created, *CreateBlueprintRequestUsingPOST1Accepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateBlueprintRequestUsingPOSTParams()
+		params = NewCreateBlueprintRequestUsingPOST1Params()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "createBlueprintRequestUsingPOST",
+		ID:                 "createBlueprintRequestUsingPOST_1",
 		Method:             "POST",
 		PathPattern:        "/blueprint/api/blueprint-requests",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateBlueprintRequestUsingPOSTReader{formats: a.formats},
+		Reader:             &CreateBlueprintRequestUsingPOST1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -86,9 +85,9 @@ func (a *Client) CreateBlueprintRequestUsingPOST(params *CreateBlueprintRequestU
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *CreateBlueprintRequestUsingPOSTOK:
+	case *CreateBlueprintRequestUsingPOST1Created:
 		return value, nil, nil
-	case *CreateBlueprintRequestUsingPOSTCreated:
+	case *CreateBlueprintRequestUsingPOST1Accepted:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
@@ -97,173 +96,172 @@ func (a *Client) CreateBlueprintRequestUsingPOST(params *CreateBlueprintRequestU
 }
 
 /*
-DeleteBlueprintRequestUsingDELETE deletes request
+DeleteBlueprintRequestUsingDELETE1 deletes request
 */
-func (a *Client) DeleteBlueprintRequestUsingDELETE(params *DeleteBlueprintRequestUsingDELETEParams) (*DeleteBlueprintRequestUsingDELETEOK, *DeleteBlueprintRequestUsingDELETENoContent, error) {
+func (a *Client) DeleteBlueprintRequestUsingDELETE1(params *DeleteBlueprintRequestUsingDELETE1Params) (*DeleteBlueprintRequestUsingDELETE1NoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteBlueprintRequestUsingDELETEParams()
+		params = NewDeleteBlueprintRequestUsingDELETE1Params()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "deleteBlueprintRequestUsingDELETE",
+		ID:                 "deleteBlueprintRequestUsingDELETE_1",
 		Method:             "DELETE",
 		PathPattern:        "/blueprint/api/blueprint-requests/{requestId}",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteBlueprintRequestUsingDELETEReader{formats: a.formats},
+		Reader:             &DeleteBlueprintRequestUsingDELETE1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
-	switch value := result.(type) {
-	case *DeleteBlueprintRequestUsingDELETEOK:
-		return value, nil, nil
-	case *DeleteBlueprintRequestUsingDELETENoContent:
-		return nil, value, nil
+	success, ok := result.(*DeleteBlueprintRequestUsingDELETE1NoContent)
+	if ok {
+		return success, nil
 	}
+	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for blueprint_requests: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for deleteBlueprintRequestUsingDELETE_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetBlueprintPlanUsingGET returns request plan
+GetBlueprintPlanUsingGET1 returns request plan
 */
-func (a *Client) GetBlueprintPlanUsingGET(params *GetBlueprintPlanUsingGETParams) (*GetBlueprintPlanUsingGETOK, error) {
+func (a *Client) GetBlueprintPlanUsingGET1(params *GetBlueprintPlanUsingGET1Params) (*GetBlueprintPlanUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetBlueprintPlanUsingGETParams()
+		params = NewGetBlueprintPlanUsingGET1Params()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getBlueprintPlanUsingGET",
+		ID:                 "getBlueprintPlanUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/blueprint/api/blueprint-requests/{requestId}/plan",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetBlueprintPlanUsingGETReader{formats: a.formats},
+		Reader:             &GetBlueprintPlanUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetBlueprintPlanUsingGETOK)
+	success, ok := result.(*GetBlueprintPlanUsingGET1OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getBlueprintPlanUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getBlueprintPlanUsingGET_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetBlueprintRequestUsingGET returns blueprint request details
+GetBlueprintRequestUsingGET1 returns blueprint request details
 */
-func (a *Client) GetBlueprintRequestUsingGET(params *GetBlueprintRequestUsingGETParams) (*GetBlueprintRequestUsingGETOK, error) {
+func (a *Client) GetBlueprintRequestUsingGET1(params *GetBlueprintRequestUsingGET1Params) (*GetBlueprintRequestUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetBlueprintRequestUsingGETParams()
+		params = NewGetBlueprintRequestUsingGET1Params()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getBlueprintRequestUsingGET",
+		ID:                 "getBlueprintRequestUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/blueprint/api/blueprint-requests/{requestId}",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetBlueprintRequestUsingGETReader{formats: a.formats},
+		Reader:             &GetBlueprintRequestUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetBlueprintRequestUsingGETOK)
+	success, ok := result.(*GetBlueprintRequestUsingGET1OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getBlueprintRequestUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getBlueprintRequestUsingGET_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetBlueprintResourcesPlanUsingGET returns request resources plan
+GetBlueprintResourcesPlanUsingGET1 returns request resources plan
 */
-func (a *Client) GetBlueprintResourcesPlanUsingGET(params *GetBlueprintResourcesPlanUsingGETParams) (*GetBlueprintResourcesPlanUsingGETOK, error) {
+func (a *Client) GetBlueprintResourcesPlanUsingGET1(params *GetBlueprintResourcesPlanUsingGET1Params) (*GetBlueprintResourcesPlanUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetBlueprintResourcesPlanUsingGETParams()
+		params = NewGetBlueprintResourcesPlanUsingGET1Params()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getBlueprintResourcesPlanUsingGET",
+		ID:                 "getBlueprintResourcesPlanUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/blueprint/api/blueprint-requests/{requestId}/resources-plan",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetBlueprintResourcesPlanUsingGETReader{formats: a.formats},
+		Reader:             &GetBlueprintResourcesPlanUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetBlueprintResourcesPlanUsingGETOK)
+	success, ok := result.(*GetBlueprintResourcesPlanUsingGET1OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getBlueprintResourcesPlanUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getBlueprintResourcesPlanUsingGET_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-ListBlueprintRequestsUsingGET lists blueprint requests
+ListBlueprintRequestsUsingGET1 lists blueprint requests
 */
-func (a *Client) ListBlueprintRequestsUsingGET(params *ListBlueprintRequestsUsingGETParams) (*ListBlueprintRequestsUsingGETOK, error) {
+func (a *Client) ListBlueprintRequestsUsingGET1(params *ListBlueprintRequestsUsingGET1Params) (*ListBlueprintRequestsUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewListBlueprintRequestsUsingGETParams()
+		params = NewListBlueprintRequestsUsingGET1Params()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "listBlueprintRequestsUsingGET",
+		ID:                 "listBlueprintRequestsUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/blueprint/api/blueprint-requests",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &ListBlueprintRequestsUsingGETReader{formats: a.formats},
+		Reader:             &ListBlueprintRequestsUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*ListBlueprintRequestsUsingGETOK)
+	success, ok := result.(*ListBlueprintRequestsUsingGET1OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for listBlueprintRequestsUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for listBlueprintRequestsUsingGET_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

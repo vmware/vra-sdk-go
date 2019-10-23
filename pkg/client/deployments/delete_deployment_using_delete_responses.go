@@ -30,20 +30,8 @@ func (o *DeleteDeploymentUsingDELETEReader) ReadResponse(response runtime.Client
 			return nil, err
 		}
 		return result, nil
-	case 204:
-		result := NewDeleteDeploymentUsingDELETENoContent()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return result, nil
 	case 401:
 		result := NewDeleteDeploymentUsingDELETEUnauthorized()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-	case 403:
-		result := NewDeleteDeploymentUsingDELETEForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -87,27 +75,6 @@ func (o *DeleteDeploymentUsingDELETEOK) readResponse(response runtime.ClientResp
 	return nil
 }
 
-// NewDeleteDeploymentUsingDELETENoContent creates a DeleteDeploymentUsingDELETENoContent with default headers values
-func NewDeleteDeploymentUsingDELETENoContent() *DeleteDeploymentUsingDELETENoContent {
-	return &DeleteDeploymentUsingDELETENoContent{}
-}
-
-/*DeleteDeploymentUsingDELETENoContent handles this case with default header values.
-
-No Content
-*/
-type DeleteDeploymentUsingDELETENoContent struct {
-}
-
-func (o *DeleteDeploymentUsingDELETENoContent) Error() string {
-	return fmt.Sprintf("[DELETE /deployment/api/deployments/{depId}][%d] deleteDeploymentUsingDELETENoContent ", 204)
-}
-
-func (o *DeleteDeploymentUsingDELETENoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
 // NewDeleteDeploymentUsingDELETEUnauthorized creates a DeleteDeploymentUsingDELETEUnauthorized with default headers values
 func NewDeleteDeploymentUsingDELETEUnauthorized() *DeleteDeploymentUsingDELETEUnauthorized {
 	return &DeleteDeploymentUsingDELETEUnauthorized{}
@@ -125,27 +92,6 @@ func (o *DeleteDeploymentUsingDELETEUnauthorized) Error() string {
 }
 
 func (o *DeleteDeploymentUsingDELETEUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewDeleteDeploymentUsingDELETEForbidden creates a DeleteDeploymentUsingDELETEForbidden with default headers values
-func NewDeleteDeploymentUsingDELETEForbidden() *DeleteDeploymentUsingDELETEForbidden {
-	return &DeleteDeploymentUsingDELETEForbidden{}
-}
-
-/*DeleteDeploymentUsingDELETEForbidden handles this case with default header values.
-
-Forbidden
-*/
-type DeleteDeploymentUsingDELETEForbidden struct {
-}
-
-func (o *DeleteDeploymentUsingDELETEForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /deployment/api/deployments/{depId}][%d] deleteDeploymentUsingDELETEForbidden ", 403)
-}
-
-func (o *DeleteDeploymentUsingDELETEForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

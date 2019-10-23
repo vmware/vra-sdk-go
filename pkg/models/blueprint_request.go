@@ -103,9 +103,8 @@ type BlueprintRequest struct {
 	// Read Only: true
 	RequestTrackerID string `json:"requestTrackerId,omitempty"`
 
-	// Object link
-	// Read Only: true
-	SelfLink string `json:"selfLink,omitempty"`
+	// Simulate blueprint request with providers
+	Simulate bool `json:"simulate,omitempty"`
 
 	// Status
 	// Read Only: true

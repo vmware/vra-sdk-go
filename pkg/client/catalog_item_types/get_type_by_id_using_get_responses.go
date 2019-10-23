@@ -36,12 +36,6 @@ func (o *GetTypeByIDUsingGETReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
-	case 403:
-		result := NewGetTypeByIDUsingGETForbidden()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 404:
 		result := NewGetTypeByIDUsingGETNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -104,27 +98,6 @@ func (o *GetTypeByIDUsingGETUnauthorized) Error() string {
 }
 
 func (o *GetTypeByIDUsingGETUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewGetTypeByIDUsingGETForbidden creates a GetTypeByIDUsingGETForbidden with default headers values
-func NewGetTypeByIDUsingGETForbidden() *GetTypeByIDUsingGETForbidden {
-	return &GetTypeByIDUsingGETForbidden{}
-}
-
-/*GetTypeByIDUsingGETForbidden handles this case with default header values.
-
-Forbidden
-*/
-type GetTypeByIDUsingGETForbidden struct {
-}
-
-func (o *GetTypeByIDUsingGETForbidden) Error() string {
-	return fmt.Sprintf("[GET /catalog/api/types/{id}][%d] getTypeByIdUsingGETForbidden ", 403)
-}
-
-func (o *GetTypeByIDUsingGETForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

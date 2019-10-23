@@ -41,7 +41,7 @@ func (a *Client) GetCatalogItemUsingGET(params *GetCatalogItemUsingGETParams) (*
 		ID:                 "getCatalogItemUsingGET",
 		Method:             "GET",
 		PathPattern:        "/catalog/api/admin/items/{id}",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
@@ -77,7 +77,7 @@ func (a *Client) GetCatalogItemsUsingGET(params *GetCatalogItemsUsingGETParams) 
 		ID:                 "getCatalogItemsUsingGET",
 		Method:             "GET",
 		PathPattern:        "/catalog/api/admin/items",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
@@ -103,7 +103,7 @@ SetItemIconUsingPATCH sets an icon to a catalog item
 
 Updates a catalog item with specified icon id.
 */
-func (a *Client) SetItemIconUsingPATCH(params *SetItemIconUsingPATCHParams) (*SetItemIconUsingPATCHOK, *SetItemIconUsingPATCHNoContent, error) {
+func (a *Client) SetItemIconUsingPATCH(params *SetItemIconUsingPATCHParams) (*SetItemIconUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewSetItemIconUsingPATCHParams()
@@ -113,7 +113,7 @@ func (a *Client) SetItemIconUsingPATCH(params *SetItemIconUsingPATCHParams) (*Se
 		ID:                 "setItemIconUsingPATCH",
 		Method:             "PATCH",
 		PathPattern:        "/catalog/api/admin/items/{id}",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
@@ -122,16 +122,15 @@ func (a *Client) SetItemIconUsingPATCH(params *SetItemIconUsingPATCHParams) (*Se
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
-	switch value := result.(type) {
-	case *SetItemIconUsingPATCHOK:
-		return value, nil, nil
-	case *SetItemIconUsingPATCHNoContent:
-		return nil, value, nil
+	success, ok := result.(*SetItemIconUsingPATCHOK)
+	if ok {
+		return success, nil
 	}
+	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for catalog_admin_items: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for setItemIconUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

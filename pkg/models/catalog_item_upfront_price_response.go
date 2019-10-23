@@ -47,7 +47,7 @@ type CatalogItemUpfrontPriceResponse struct {
 
 	// Upfront price sync status
 	// Read Only: true
-	// Enum: [STARTED IN_PROGRESS SUCCESS ERROR DATA_NOT_AVAILABLE CURRENCY_NOT_SET PUBLIC_CLOUD_NOT_SUPPORTED]
+	// Enum: [STARTED PREPARING_COST_ESTIMATION IN_PROGRESS SUCCESS ERROR DATA_NOT_AVAILABLE CURRENCY_NOT_SET PUBLIC_CLOUD_NOT_SUPPORTED]
 	Status string `json:"status,omitempty"`
 
 	// Upfront price status detail.
@@ -110,7 +110,7 @@ var catalogItemUpfrontPriceResponseTypeStatusPropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["STARTED","IN_PROGRESS","SUCCESS","ERROR","DATA_NOT_AVAILABLE","CURRENCY_NOT_SET","PUBLIC_CLOUD_NOT_SUPPORTED"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["STARTED","PREPARING_COST_ESTIMATION","IN_PROGRESS","SUCCESS","ERROR","DATA_NOT_AVAILABLE","CURRENCY_NOT_SET","PUBLIC_CLOUD_NOT_SUPPORTED"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -122,6 +122,9 @@ const (
 
 	// CatalogItemUpfrontPriceResponseStatusSTARTED captures enum value "STARTED"
 	CatalogItemUpfrontPriceResponseStatusSTARTED string = "STARTED"
+
+	// CatalogItemUpfrontPriceResponseStatusPREPARINGCOSTESTIMATION captures enum value "PREPARING_COST_ESTIMATION"
+	CatalogItemUpfrontPriceResponseStatusPREPARINGCOSTESTIMATION string = "PREPARING_COST_ESTIMATION"
 
 	// CatalogItemUpfrontPriceResponseStatusINPROGRESS captures enum value "IN_PROGRESS"
 	CatalogItemUpfrontPriceResponseStatusINPROGRESS string = "IN_PROGRESS"

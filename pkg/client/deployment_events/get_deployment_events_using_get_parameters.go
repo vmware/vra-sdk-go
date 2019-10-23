@@ -62,31 +62,36 @@ for the get deployment events using g e t operation typically these are written 
 */
 type GetDeploymentEventsUsingGETParams struct {
 
+	/*DollarOrderby
+	  Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.
+
+	*/
+	DollarOrderby []string
+	/*DollarSkip
+	  Number of records you want to skip
+
+	*/
+	DollarSkip *int32
+	/*DollarTop
+	  Number of records you want
+
+	*/
+	DollarTop *int32
 	/*DepID
 	  Deployment ID
 
 	*/
 	DepID strfmt.UUID
-	/*Page
-	  Results page you want to retrieve (0..N)
+	/*IncludeAllSubEvents
+	  Whether to include all events in the response.
 
 	*/
-	Page *int32
+	IncludeAllSubEvents *bool
 	/*ParentID
 	  Parent Event Id
 
 	*/
 	ParentID *strfmt.UUID
-	/*Size
-	  Number of records per page.
-
-	*/
-	Size *int32
-	/*Sort
-	  Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.
-
-	*/
-	Sort []string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -126,6 +131,39 @@ func (o *GetDeploymentEventsUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithDollarOrderby adds the dollarOrderby to the get deployment events using get params
+func (o *GetDeploymentEventsUsingGETParams) WithDollarOrderby(dollarOrderby []string) *GetDeploymentEventsUsingGETParams {
+	o.SetDollarOrderby(dollarOrderby)
+	return o
+}
+
+// SetDollarOrderby adds the dollarOrderby to the get deployment events using get params
+func (o *GetDeploymentEventsUsingGETParams) SetDollarOrderby(dollarOrderby []string) {
+	o.DollarOrderby = dollarOrderby
+}
+
+// WithDollarSkip adds the dollarSkip to the get deployment events using get params
+func (o *GetDeploymentEventsUsingGETParams) WithDollarSkip(dollarSkip *int32) *GetDeploymentEventsUsingGETParams {
+	o.SetDollarSkip(dollarSkip)
+	return o
+}
+
+// SetDollarSkip adds the dollarSkip to the get deployment events using get params
+func (o *GetDeploymentEventsUsingGETParams) SetDollarSkip(dollarSkip *int32) {
+	o.DollarSkip = dollarSkip
+}
+
+// WithDollarTop adds the dollarTop to the get deployment events using get params
+func (o *GetDeploymentEventsUsingGETParams) WithDollarTop(dollarTop *int32) *GetDeploymentEventsUsingGETParams {
+	o.SetDollarTop(dollarTop)
+	return o
+}
+
+// SetDollarTop adds the dollarTop to the get deployment events using get params
+func (o *GetDeploymentEventsUsingGETParams) SetDollarTop(dollarTop *int32) {
+	o.DollarTop = dollarTop
+}
+
 // WithDepID adds the depID to the get deployment events using get params
 func (o *GetDeploymentEventsUsingGETParams) WithDepID(depID strfmt.UUID) *GetDeploymentEventsUsingGETParams {
 	o.SetDepID(depID)
@@ -137,15 +175,15 @@ func (o *GetDeploymentEventsUsingGETParams) SetDepID(depID strfmt.UUID) {
 	o.DepID = depID
 }
 
-// WithPage adds the page to the get deployment events using get params
-func (o *GetDeploymentEventsUsingGETParams) WithPage(page *int32) *GetDeploymentEventsUsingGETParams {
-	o.SetPage(page)
+// WithIncludeAllSubEvents adds the includeAllSubEvents to the get deployment events using get params
+func (o *GetDeploymentEventsUsingGETParams) WithIncludeAllSubEvents(includeAllSubEvents *bool) *GetDeploymentEventsUsingGETParams {
+	o.SetIncludeAllSubEvents(includeAllSubEvents)
 	return o
 }
 
-// SetPage adds the page to the get deployment events using get params
-func (o *GetDeploymentEventsUsingGETParams) SetPage(page *int32) {
-	o.Page = page
+// SetIncludeAllSubEvents adds the includeAllSubEvents to the get deployment events using get params
+func (o *GetDeploymentEventsUsingGETParams) SetIncludeAllSubEvents(includeAllSubEvents *bool) {
+	o.IncludeAllSubEvents = includeAllSubEvents
 }
 
 // WithParentID adds the parentID to the get deployment events using get params
@@ -159,28 +197,6 @@ func (o *GetDeploymentEventsUsingGETParams) SetParentID(parentID *strfmt.UUID) {
 	o.ParentID = parentID
 }
 
-// WithSize adds the size to the get deployment events using get params
-func (o *GetDeploymentEventsUsingGETParams) WithSize(size *int32) *GetDeploymentEventsUsingGETParams {
-	o.SetSize(size)
-	return o
-}
-
-// SetSize adds the size to the get deployment events using get params
-func (o *GetDeploymentEventsUsingGETParams) SetSize(size *int32) {
-	o.Size = size
-}
-
-// WithSort adds the sort to the get deployment events using get params
-func (o *GetDeploymentEventsUsingGETParams) WithSort(sort []string) *GetDeploymentEventsUsingGETParams {
-	o.SetSort(sort)
-	return o
-}
-
-// SetSort adds the sort to the get deployment events using get params
-func (o *GetDeploymentEventsUsingGETParams) SetSort(sort []string) {
-	o.Sort = sort
-}
-
 // WriteToRequest writes these params to a swagger request
 func (o *GetDeploymentEventsUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -189,21 +205,61 @@ func (o *GetDeploymentEventsUsingGETParams) WriteToRequest(r runtime.ClientReque
 	}
 	var res []error
 
+	valuesDollarOrderby := o.DollarOrderby
+
+	joinedDollarOrderby := swag.JoinByFormat(valuesDollarOrderby, "multi")
+	// query array param $orderby
+	if err := r.SetQueryParam("$orderby", joinedDollarOrderby...); err != nil {
+		return err
+	}
+
+	if o.DollarSkip != nil {
+
+		// query param $skip
+		var qrDollarSkip int32
+		if o.DollarSkip != nil {
+			qrDollarSkip = *o.DollarSkip
+		}
+		qDollarSkip := swag.FormatInt32(qrDollarSkip)
+		if qDollarSkip != "" {
+			if err := r.SetQueryParam("$skip", qDollarSkip); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.DollarTop != nil {
+
+		// query param $top
+		var qrDollarTop int32
+		if o.DollarTop != nil {
+			qrDollarTop = *o.DollarTop
+		}
+		qDollarTop := swag.FormatInt32(qrDollarTop)
+		if qDollarTop != "" {
+			if err := r.SetQueryParam("$top", qDollarTop); err != nil {
+				return err
+			}
+		}
+
+	}
+
 	// path param depId
 	if err := r.SetPathParam("depId", o.DepID.String()); err != nil {
 		return err
 	}
 
-	if o.Page != nil {
+	if o.IncludeAllSubEvents != nil {
 
-		// query param page
-		var qrPage int32
-		if o.Page != nil {
-			qrPage = *o.Page
+		// query param includeAllSubEvents
+		var qrIncludeAllSubEvents bool
+		if o.IncludeAllSubEvents != nil {
+			qrIncludeAllSubEvents = *o.IncludeAllSubEvents
 		}
-		qPage := swag.FormatInt32(qrPage)
-		if qPage != "" {
-			if err := r.SetQueryParam("page", qPage); err != nil {
+		qIncludeAllSubEvents := swag.FormatBool(qrIncludeAllSubEvents)
+		if qIncludeAllSubEvents != "" {
+			if err := r.SetQueryParam("includeAllSubEvents", qIncludeAllSubEvents); err != nil {
 				return err
 			}
 		}
@@ -224,30 +280,6 @@ func (o *GetDeploymentEventsUsingGETParams) WriteToRequest(r runtime.ClientReque
 			}
 		}
 
-	}
-
-	if o.Size != nil {
-
-		// query param size
-		var qrSize int32
-		if o.Size != nil {
-			qrSize = *o.Size
-		}
-		qSize := swag.FormatInt32(qrSize)
-		if qSize != "" {
-			if err := r.SetQueryParam("size", qSize); err != nil {
-				return err
-			}
-		}
-
-	}
-
-	valuesSort := o.Sort
-
-	joinedSort := swag.JoinByFormat(valuesSort, "multi")
-	// query array param sort
-	if err := r.SetQueryParam("sort", joinedSort...); err != nil {
-		return err
 	}
 
 	if len(res) > 0 {

@@ -13,6 +13,10 @@ rename _p_a_t_c_h_ _patch_
 rename _p_o_s_t_ _post_
 rename _p_u_t_ _put_
 rename _g_e_t1_ _get1_
+rename _d_e_l_e_t_e1_ _delete1_
+rename _p_a_t_c_h1_ _patch1_
+rename _p_o_s_t1_ _post1_
+rename _p_u_t1_ _put1_
 
 find pkg -type f -exec sed -i '' 's/_a_w_s_/_aws_/g' {} +
 find pkg -type f -exec sed -i '' 's/_v_sphere_/_vsphere_/g' {} +

@@ -25,7 +25,7 @@ type MachineSpecification struct {
 	// Constraints that are used to drive placement policies for the virtual machine that is produced from this specification. Constraint expressions are matched against tags on existing placement targets.
 	Constraints []*Constraint `json:"constraints"`
 
-	// Additional custom properties that may be used toextend the machine.
+	// Additional custom properties that may be used to extend the machine.
 	CustomProperties map[string]string `json:"customProperties,omitempty"`
 
 	// Describes machine within the scope of your organization and is not propagated to the cloud

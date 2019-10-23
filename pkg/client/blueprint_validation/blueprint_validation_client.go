@@ -27,37 +27,36 @@ type Client struct {
 }
 
 /*
-ValidateBlueprintUsingPOST validates a blueprint
+ValidateBlueprintUsingPOST1 validates a blueprint
 */
-func (a *Client) ValidateBlueprintUsingPOST(params *ValidateBlueprintUsingPOSTParams) (*ValidateBlueprintUsingPOSTOK, *ValidateBlueprintUsingPOSTCreated, error) {
+func (a *Client) ValidateBlueprintUsingPOST1(params *ValidateBlueprintUsingPOST1Params) (*ValidateBlueprintUsingPOST1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewValidateBlueprintUsingPOSTParams()
+		params = NewValidateBlueprintUsingPOST1Params()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "validateBlueprintUsingPOST",
+		ID:                 "validateBlueprintUsingPOST_1",
 		Method:             "POST",
 		PathPattern:        "/blueprint/api/blueprint-validation",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &ValidateBlueprintUsingPOSTReader{formats: a.formats},
+		Reader:             &ValidateBlueprintUsingPOST1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
-	switch value := result.(type) {
-	case *ValidateBlueprintUsingPOSTOK:
-		return value, nil, nil
-	case *ValidateBlueprintUsingPOSTCreated:
-		return nil, value, nil
+	success, ok := result.(*ValidateBlueprintUsingPOST1OK)
+	if ok {
+		return success, nil
 	}
+	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for blueprint_validation: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for validateBlueprintUsingPOST_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

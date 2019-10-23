@@ -30,24 +30,6 @@ func (o *GetDeploymentsForProjectUsingGETReader) ReadResponse(response runtime.C
 			return nil, err
 		}
 		return result, nil
-	case 401:
-		result := NewGetDeploymentsForProjectUsingGETUnauthorized()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-	case 403:
-		result := NewGetDeploymentsForProjectUsingGETForbidden()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-	case 404:
-		result := NewGetDeploymentsForProjectUsingGETNotFound()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
@@ -83,69 +65,6 @@ func (o *GetDeploymentsForProjectUsingGETOK) readResponse(response runtime.Clien
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
-
-	return nil
-}
-
-// NewGetDeploymentsForProjectUsingGETUnauthorized creates a GetDeploymentsForProjectUsingGETUnauthorized with default headers values
-func NewGetDeploymentsForProjectUsingGETUnauthorized() *GetDeploymentsForProjectUsingGETUnauthorized {
-	return &GetDeploymentsForProjectUsingGETUnauthorized{}
-}
-
-/*GetDeploymentsForProjectUsingGETUnauthorized handles this case with default header values.
-
-Unauthorized
-*/
-type GetDeploymentsForProjectUsingGETUnauthorized struct {
-}
-
-func (o *GetDeploymentsForProjectUsingGETUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /deployment/api/projects/{projectId}/deployment-count][%d] getDeploymentsForProjectUsingGETUnauthorized ", 401)
-}
-
-func (o *GetDeploymentsForProjectUsingGETUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewGetDeploymentsForProjectUsingGETForbidden creates a GetDeploymentsForProjectUsingGETForbidden with default headers values
-func NewGetDeploymentsForProjectUsingGETForbidden() *GetDeploymentsForProjectUsingGETForbidden {
-	return &GetDeploymentsForProjectUsingGETForbidden{}
-}
-
-/*GetDeploymentsForProjectUsingGETForbidden handles this case with default header values.
-
-Forbidden
-*/
-type GetDeploymentsForProjectUsingGETForbidden struct {
-}
-
-func (o *GetDeploymentsForProjectUsingGETForbidden) Error() string {
-	return fmt.Sprintf("[GET /deployment/api/projects/{projectId}/deployment-count][%d] getDeploymentsForProjectUsingGETForbidden ", 403)
-}
-
-func (o *GetDeploymentsForProjectUsingGETForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewGetDeploymentsForProjectUsingGETNotFound creates a GetDeploymentsForProjectUsingGETNotFound with default headers values
-func NewGetDeploymentsForProjectUsingGETNotFound() *GetDeploymentsForProjectUsingGETNotFound {
-	return &GetDeploymentsForProjectUsingGETNotFound{}
-}
-
-/*GetDeploymentsForProjectUsingGETNotFound handles this case with default header values.
-
-Not Found
-*/
-type GetDeploymentsForProjectUsingGETNotFound struct {
-}
-
-func (o *GetDeploymentsForProjectUsingGETNotFound) Error() string {
-	return fmt.Sprintf("[GET /deployment/api/projects/{projectId}/deployment-count][%d] getDeploymentsForProjectUsingGETNotFound ", 404)
-}
-
-func (o *GetDeploymentsForProjectUsingGETNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

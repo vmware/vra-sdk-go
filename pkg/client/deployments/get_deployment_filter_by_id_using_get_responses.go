@@ -36,18 +36,6 @@ func (o *GetDeploymentFilterByIDUsingGETReader) ReadResponse(response runtime.Cl
 			return nil, err
 		}
 		return nil, result
-	case 403:
-		result := NewGetDeploymentFilterByIDUsingGETForbidden()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-	case 404:
-		result := NewGetDeploymentFilterByIDUsingGETNotFound()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
@@ -104,48 +92,6 @@ func (o *GetDeploymentFilterByIDUsingGETUnauthorized) Error() string {
 }
 
 func (o *GetDeploymentFilterByIDUsingGETUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewGetDeploymentFilterByIDUsingGETForbidden creates a GetDeploymentFilterByIDUsingGETForbidden with default headers values
-func NewGetDeploymentFilterByIDUsingGETForbidden() *GetDeploymentFilterByIDUsingGETForbidden {
-	return &GetDeploymentFilterByIDUsingGETForbidden{}
-}
-
-/*GetDeploymentFilterByIDUsingGETForbidden handles this case with default header values.
-
-Forbidden
-*/
-type GetDeploymentFilterByIDUsingGETForbidden struct {
-}
-
-func (o *GetDeploymentFilterByIDUsingGETForbidden) Error() string {
-	return fmt.Sprintf("[GET /deployment/api/deployments/filters/{filterId}][%d] getDeploymentFilterByIdUsingGETForbidden ", 403)
-}
-
-func (o *GetDeploymentFilterByIDUsingGETForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewGetDeploymentFilterByIDUsingGETNotFound creates a GetDeploymentFilterByIDUsingGETNotFound with default headers values
-func NewGetDeploymentFilterByIDUsingGETNotFound() *GetDeploymentFilterByIDUsingGETNotFound {
-	return &GetDeploymentFilterByIDUsingGETNotFound{}
-}
-
-/*GetDeploymentFilterByIDUsingGETNotFound handles this case with default header values.
-
-Not Found
-*/
-type GetDeploymentFilterByIDUsingGETNotFound struct {
-}
-
-func (o *GetDeploymentFilterByIDUsingGETNotFound) Error() string {
-	return fmt.Sprintf("[GET /deployment/api/deployments/filters/{filterId}][%d] getDeploymentFilterByIdUsingGETNotFound ", 404)
-}
-
-func (o *GetDeploymentFilterByIDUsingGETNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }
