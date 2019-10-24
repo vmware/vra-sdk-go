@@ -7,10 +7,13 @@ package deployments
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	models "github.com/vmware/vra-sdk-go/pkg/models"
 )
 
 // DeleteResourceUsingDELETEReader is a Reader for the DeleteResourceUsingDELETE structure.
@@ -27,20 +30,8 @@ func (o *DeleteResourceUsingDELETEReader) ReadResponse(response runtime.ClientRe
 			return nil, err
 		}
 		return result, nil
-	case 204:
-		result := NewDeleteResourceUsingDELETENoContent()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return result, nil
 	case 401:
 		result := NewDeleteResourceUsingDELETEUnauthorized()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-	case 403:
-		result := NewDeleteResourceUsingDELETEForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -61,34 +52,25 @@ func NewDeleteResourceUsingDELETEOK() *DeleteResourceUsingDELETEOK {
 OK
 */
 type DeleteResourceUsingDELETEOK struct {
+	Payload *models.DeploymentRequest
 }
 
 func (o *DeleteResourceUsingDELETEOK) Error() string {
-	return fmt.Sprintf("[DELETE /deployment/api/deployments/{depId}/resources/{resourceId}][%d] deleteResourceUsingDELETEOK ", 200)
+	return fmt.Sprintf("[DELETE /deployment/api/deployments/{depId}/resources/{resourceId}][%d] deleteResourceUsingDELETEOK  %+v", 200, o.Payload)
+}
+
+func (o *DeleteResourceUsingDELETEOK) GetPayload() *models.DeploymentRequest {
+	return o.Payload
 }
 
 func (o *DeleteResourceUsingDELETEOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
+	o.Payload = new(models.DeploymentRequest)
 
-// NewDeleteResourceUsingDELETENoContent creates a DeleteResourceUsingDELETENoContent with default headers values
-func NewDeleteResourceUsingDELETENoContent() *DeleteResourceUsingDELETENoContent {
-	return &DeleteResourceUsingDELETENoContent{}
-}
-
-/*DeleteResourceUsingDELETENoContent handles this case with default header values.
-
-No Content
-*/
-type DeleteResourceUsingDELETENoContent struct {
-}
-
-func (o *DeleteResourceUsingDELETENoContent) Error() string {
-	return fmt.Sprintf("[DELETE /deployment/api/deployments/{depId}/resources/{resourceId}][%d] deleteResourceUsingDELETENoContent ", 204)
-}
-
-func (o *DeleteResourceUsingDELETENoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -110,27 +92,6 @@ func (o *DeleteResourceUsingDELETEUnauthorized) Error() string {
 }
 
 func (o *DeleteResourceUsingDELETEUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewDeleteResourceUsingDELETEForbidden creates a DeleteResourceUsingDELETEForbidden with default headers values
-func NewDeleteResourceUsingDELETEForbidden() *DeleteResourceUsingDELETEForbidden {
-	return &DeleteResourceUsingDELETEForbidden{}
-}
-
-/*DeleteResourceUsingDELETEForbidden handles this case with default header values.
-
-Forbidden
-*/
-type DeleteResourceUsingDELETEForbidden struct {
-}
-
-func (o *DeleteResourceUsingDELETEForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /deployment/api/deployments/{depId}/resources/{resourceId}][%d] deleteResourceUsingDELETEForbidden ", 403)
-}
-
-func (o *DeleteResourceUsingDELETEForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

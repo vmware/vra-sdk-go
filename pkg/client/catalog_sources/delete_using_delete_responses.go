@@ -33,12 +33,6 @@ func (o *DeleteUsingDELETEReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return nil, result
-	case 403:
-		result := NewDeleteUsingDELETEForbidden()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
@@ -83,27 +77,6 @@ func (o *DeleteUsingDELETEUnauthorized) Error() string {
 }
 
 func (o *DeleteUsingDELETEUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewDeleteUsingDELETEForbidden creates a DeleteUsingDELETEForbidden with default headers values
-func NewDeleteUsingDELETEForbidden() *DeleteUsingDELETEForbidden {
-	return &DeleteUsingDELETEForbidden{}
-}
-
-/*DeleteUsingDELETEForbidden handles this case with default header values.
-
-Forbidden
-*/
-type DeleteUsingDELETEForbidden struct {
-}
-
-func (o *DeleteUsingDELETEForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /catalog/api/admin/sources/{sourceId}][%d] deleteUsingDELETEForbidden ", 403)
-}
-
-func (o *DeleteUsingDELETEForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

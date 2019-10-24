@@ -36,12 +36,6 @@ func (o *GetVersionsUsingGETReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
-	case 403:
-		result := NewGetVersionsUsingGETForbidden()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 404:
 		result := NewGetVersionsUsingGETNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -64,20 +58,20 @@ func NewGetVersionsUsingGETOK() *GetVersionsUsingGETOK {
 OK
 */
 type GetVersionsUsingGETOK struct {
-	Payload *models.CatalogItemVersion
+	Payload *models.PageOfCatalogItemVersion
 }
 
 func (o *GetVersionsUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /catalog/api/items/{id}/versions][%d] getVersionsUsingGETOK  %+v", 200, o.Payload)
 }
 
-func (o *GetVersionsUsingGETOK) GetPayload() *models.CatalogItemVersion {
+func (o *GetVersionsUsingGETOK) GetPayload() *models.PageOfCatalogItemVersion {
 	return o.Payload
 }
 
 func (o *GetVersionsUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.CatalogItemVersion)
+	o.Payload = new(models.PageOfCatalogItemVersion)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -104,27 +98,6 @@ func (o *GetVersionsUsingGETUnauthorized) Error() string {
 }
 
 func (o *GetVersionsUsingGETUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewGetVersionsUsingGETForbidden creates a GetVersionsUsingGETForbidden with default headers values
-func NewGetVersionsUsingGETForbidden() *GetVersionsUsingGETForbidden {
-	return &GetVersionsUsingGETForbidden{}
-}
-
-/*GetVersionsUsingGETForbidden handles this case with default header values.
-
-Forbidden
-*/
-type GetVersionsUsingGETForbidden struct {
-}
-
-func (o *GetVersionsUsingGETForbidden) Error() string {
-	return fmt.Sprintf("[GET /catalog/api/items/{id}/versions][%d] getVersionsUsingGETForbidden ", 403)
-}
-
-func (o *GetVersionsUsingGETForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

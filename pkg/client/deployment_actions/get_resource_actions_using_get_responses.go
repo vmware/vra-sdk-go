@@ -36,12 +36,6 @@ func (o *GetResourceActionsUsingGETReader) ReadResponse(response runtime.ClientR
 			return nil, err
 		}
 		return nil, result
-	case 403:
-		result := NewGetResourceActionsUsingGETForbidden()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 404:
 		result := NewGetResourceActionsUsingGETNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -102,27 +96,6 @@ func (o *GetResourceActionsUsingGETUnauthorized) Error() string {
 }
 
 func (o *GetResourceActionsUsingGETUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewGetResourceActionsUsingGETForbidden creates a GetResourceActionsUsingGETForbidden with default headers values
-func NewGetResourceActionsUsingGETForbidden() *GetResourceActionsUsingGETForbidden {
-	return &GetResourceActionsUsingGETForbidden{}
-}
-
-/*GetResourceActionsUsingGETForbidden handles this case with default header values.
-
-Forbidden
-*/
-type GetResourceActionsUsingGETForbidden struct {
-}
-
-func (o *GetResourceActionsUsingGETForbidden) Error() string {
-	return fmt.Sprintf("[GET /deployment/api/deployments/{depId}/resources/{resourceId}/actions][%d] getResourceActionsUsingGETForbidden ", 403)
-}
-
-func (o *GetResourceActionsUsingGETForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

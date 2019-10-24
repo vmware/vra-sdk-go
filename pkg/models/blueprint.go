@@ -82,7 +82,7 @@ type Blueprint struct {
 	// Flag to indicate blueprint can be requested from any project in org
 	RequestScopeOrg bool `json:"requestScopeOrg,omitempty"`
 
-	// Object link
+	// Blueprint self link
 	// Read Only: true
 	SelfLink string `json:"selfLink,omitempty"`
 

@@ -36,12 +36,6 @@ func (o *GetCatalogItemUsingGET1Reader) ReadResponse(response runtime.ClientResp
 			return nil, err
 		}
 		return nil, result
-	case 403:
-		result := NewGetCatalogItemUsingGET1Forbidden()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 404:
 		result := NewGetCatalogItemUsingGET1NotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -104,27 +98,6 @@ func (o *GetCatalogItemUsingGET1Unauthorized) Error() string {
 }
 
 func (o *GetCatalogItemUsingGET1Unauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewGetCatalogItemUsingGET1Forbidden creates a GetCatalogItemUsingGET1Forbidden with default headers values
-func NewGetCatalogItemUsingGET1Forbidden() *GetCatalogItemUsingGET1Forbidden {
-	return &GetCatalogItemUsingGET1Forbidden{}
-}
-
-/*GetCatalogItemUsingGET1Forbidden handles this case with default header values.
-
-Forbidden
-*/
-type GetCatalogItemUsingGET1Forbidden struct {
-}
-
-func (o *GetCatalogItemUsingGET1Forbidden) Error() string {
-	return fmt.Sprintf("[GET /catalog/api/items/{id}][%d] getCatalogItemUsingGET1Forbidden ", 403)
-}
-
-func (o *GetCatalogItemUsingGET1Forbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

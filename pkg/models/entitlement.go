@@ -19,14 +19,6 @@ import (
 // swagger:model Entitlement
 type Entitlement struct {
 
-	// Catalog item id
-	// Format: uuid
-	CatalogItemID strfmt.UUID `json:"catalogItemId,omitempty"`
-
-	// Catalog source ID
-	// Format: uuid
-	CatalogSourceID strfmt.UUID `json:"catalogSourceId,omitempty"`
-
 	// Entitlement definition that contains the Catalog Item or Catalog Source data.
 	// Required: true
 	Definition *ContentDefinition `json:"definition"`
@@ -45,14 +37,6 @@ type Entitlement struct {
 func (m *Entitlement) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateCatalogItemID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateCatalogSourceID(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateDefinition(formats); err != nil {
 		res = append(res, err)
 	}
@@ -68,32 +52,6 @@ func (m *Entitlement) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *Entitlement) validateCatalogItemID(formats strfmt.Registry) error {
-
-	if swag.IsZero(m.CatalogItemID) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("catalogItemId", "body", "uuid", m.CatalogItemID.String(), formats); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *Entitlement) validateCatalogSourceID(formats strfmt.Registry) error {
-
-	if swag.IsZero(m.CatalogSourceID) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("catalogSourceId", "body", "uuid", m.CatalogSourceID.String(), formats); err != nil {
-		return err
-	}
-
 	return nil
 }
 

@@ -36,12 +36,6 @@ func (o *GetDeploymentByIDUsingGETReader) ReadResponse(response runtime.ClientRe
 			return nil, err
 		}
 		return nil, result
-	case 403:
-		result := NewGetDeploymentByIDUsingGETForbidden()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 404:
 		result := NewGetDeploymentByIDUsingGETNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -104,27 +98,6 @@ func (o *GetDeploymentByIDUsingGETUnauthorized) Error() string {
 }
 
 func (o *GetDeploymentByIDUsingGETUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewGetDeploymentByIDUsingGETForbidden creates a GetDeploymentByIDUsingGETForbidden with default headers values
-func NewGetDeploymentByIDUsingGETForbidden() *GetDeploymentByIDUsingGETForbidden {
-	return &GetDeploymentByIDUsingGETForbidden{}
-}
-
-/*GetDeploymentByIDUsingGETForbidden handles this case with default header values.
-
-Forbidden
-*/
-type GetDeploymentByIDUsingGETForbidden struct {
-}
-
-func (o *GetDeploymentByIDUsingGETForbidden) Error() string {
-	return fmt.Sprintf("[GET /deployment/api/deployments/{depId}][%d] getDeploymentByIdUsingGETForbidden ", 403)
-}
-
-func (o *GetDeploymentByIDUsingGETForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

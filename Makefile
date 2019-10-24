@@ -20,13 +20,13 @@ modified:
 update: update-blueprint update-catalog update-deployment update-iaas
 
 update-blueprint:
-	curl 'https://api.mgmt.cloud.vmware.com/blueprint/api/swagger/swagger-api-docs?group=blueprint' | python3 -mjson.tool > swagger/vra-blueprint.json
+	curl 'https://api.mgmt.cloud.vmware.com/blueprint/api/swagger/swagger-api-docs?group=2019-09-12' | python3 -mjson.tool > swagger/vra-blueprint.json
 
 update-catalog:
-	curl 'https://api.mgmt.cloud.vmware.com/catalog/api/swagger/swagger/v2/api-docs?group=catalog' | python3 -mjson.tool > swagger/vra-catalog.json
+	curl 'https://api.mgmt.cloud.vmware.com/catalog/api/swagger/swagger/v2/api-docs?group=2019-01-15' | python3 -mjson.tool > swagger/vra-catalog.json
 
 update-deployment:
-	curl 'https://api.mgmt.cloud.vmware.com/deployment/api/swagger/swagger/v2/api-docs?group=deployments' | python3 -mjson.tool > swagger/vra-deployment.json
+	curl 'https://api.mgmt.cloud.vmware.com/deployment/api/swagger/swagger/v2/api-docs?group=2019-01-15' | python3 -mjson.tool > swagger/vra-deployment.json
 
 update-iaas:
 	curl 'https://api.mgmt.cloud.vmware.com/iaas/api/swagger/swagger/v2/api-docs?group=iaas' | python3 -mjson.tool > swagger/vra-iaas.json

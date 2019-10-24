@@ -36,12 +36,6 @@ func (o *GetVersionByIDUsingGETReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return nil, result
-	case 403:
-		result := NewGetVersionByIDUsingGETForbidden()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 404:
 		result := NewGetVersionByIDUsingGETNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -104,27 +98,6 @@ func (o *GetVersionByIDUsingGETUnauthorized) Error() string {
 }
 
 func (o *GetVersionByIDUsingGETUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewGetVersionByIDUsingGETForbidden creates a GetVersionByIDUsingGETForbidden with default headers values
-func NewGetVersionByIDUsingGETForbidden() *GetVersionByIDUsingGETForbidden {
-	return &GetVersionByIDUsingGETForbidden{}
-}
-
-/*GetVersionByIDUsingGETForbidden handles this case with default header values.
-
-Forbidden
-*/
-type GetVersionByIDUsingGETForbidden struct {
-}
-
-func (o *GetVersionByIDUsingGETForbidden) Error() string {
-	return fmt.Sprintf("[GET /catalog/api/items/{id}/versions/{versionId}][%d] getVersionByIdUsingGETForbidden ", 403)
-}
-
-func (o *GetVersionByIDUsingGETForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

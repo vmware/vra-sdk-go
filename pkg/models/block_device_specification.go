@@ -26,7 +26,7 @@ type BlockDeviceSpecification struct {
 	// Constraints that are used to drive placement policies for the block device that is produced from this specification. Constraint expressions are matched against tags on existing placement targets.
 	Constraints []*Constraint `json:"constraints"`
 
-	// Additional custom properties that may be used toextend the block device.
+	// Additional custom properties that may be used to extend the block device.
 	CustomProperties map[string]string `json:"customProperties,omitempty"`
 
 	// A human-friendly description.

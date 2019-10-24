@@ -62,6 +62,21 @@ for the get deployments using g e t operation typically these are written to a h
 */
 type GetDeploymentsUsingGETParams struct {
 
+	/*DollarOrderby
+	  Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.
+
+	*/
+	DollarOrderby []string
+	/*DollarSkip
+	  Number of records you want to skip
+
+	*/
+	DollarSkip *int32
+	/*DollarTop
+	  Number of records you want
+
+	*/
+	DollarTop *int32
 	/*CloudAccounts
 	  A comma-separated list. Results must be associated with one of these cloud accounts.
 
@@ -77,11 +92,6 @@ type GetDeploymentsUsingGETParams struct {
 
 	*/
 	ExpandLastRequest *bool
-	/*ExpandMetadata
-	  Retrieves the 'metadata' field of the resource.
-
-	*/
-	ExpandMetadata *bool
 	/*ExpandProject
 	  The 'project' field of each resulting deployment will be retrieved.
 
@@ -112,11 +122,6 @@ type GetDeploymentsUsingGETParams struct {
 
 	*/
 	Name *string
-	/*Page
-	  Results page you want to retrieve (0..N)
-
-	*/
-	Page *int32
 	/*Projects
 	  A comma-separated list. Results must be associated with one of these project IDs.
 
@@ -137,16 +142,11 @@ type GetDeploymentsUsingGETParams struct {
 
 	*/
 	Search *string
-	/*Size
-	  Number of records per page.
+	/*Status
+	  A comma-separated list. Results must be associated with one of these statuses.
 
 	*/
-	Size *int32
-	/*Sort
-	  Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.
-
-	*/
-	Sort []string
+	Status []string
 	/*Tags
 	  A comma-separated list. Results must be associated with one of these tags
 
@@ -196,6 +196,39 @@ func (o *GetDeploymentsUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithDollarOrderby adds the dollarOrderby to the get deployments using get params
+func (o *GetDeploymentsUsingGETParams) WithDollarOrderby(dollarOrderby []string) *GetDeploymentsUsingGETParams {
+	o.SetDollarOrderby(dollarOrderby)
+	return o
+}
+
+// SetDollarOrderby adds the dollarOrderby to the get deployments using get params
+func (o *GetDeploymentsUsingGETParams) SetDollarOrderby(dollarOrderby []string) {
+	o.DollarOrderby = dollarOrderby
+}
+
+// WithDollarSkip adds the dollarSkip to the get deployments using get params
+func (o *GetDeploymentsUsingGETParams) WithDollarSkip(dollarSkip *int32) *GetDeploymentsUsingGETParams {
+	o.SetDollarSkip(dollarSkip)
+	return o
+}
+
+// SetDollarSkip adds the dollarSkip to the get deployments using get params
+func (o *GetDeploymentsUsingGETParams) SetDollarSkip(dollarSkip *int32) {
+	o.DollarSkip = dollarSkip
+}
+
+// WithDollarTop adds the dollarTop to the get deployments using get params
+func (o *GetDeploymentsUsingGETParams) WithDollarTop(dollarTop *int32) *GetDeploymentsUsingGETParams {
+	o.SetDollarTop(dollarTop)
+	return o
+}
+
+// SetDollarTop adds the dollarTop to the get deployments using get params
+func (o *GetDeploymentsUsingGETParams) SetDollarTop(dollarTop *int32) {
+	o.DollarTop = dollarTop
+}
+
 // WithCloudAccounts adds the cloudAccounts to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) WithCloudAccounts(cloudAccounts []string) *GetDeploymentsUsingGETParams {
 	o.SetCloudAccounts(cloudAccounts)
@@ -227,17 +260,6 @@ func (o *GetDeploymentsUsingGETParams) WithExpandLastRequest(expandLastRequest *
 // SetExpandLastRequest adds the expandLastRequest to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) SetExpandLastRequest(expandLastRequest *bool) {
 	o.ExpandLastRequest = expandLastRequest
-}
-
-// WithExpandMetadata adds the expandMetadata to the get deployments using get params
-func (o *GetDeploymentsUsingGETParams) WithExpandMetadata(expandMetadata *bool) *GetDeploymentsUsingGETParams {
-	o.SetExpandMetadata(expandMetadata)
-	return o
-}
-
-// SetExpandMetadata adds the expandMetadata to the get deployments using get params
-func (o *GetDeploymentsUsingGETParams) SetExpandMetadata(expandMetadata *bool) {
-	o.ExpandMetadata = expandMetadata
 }
 
 // WithExpandProject adds the expandProject to the get deployments using get params
@@ -306,17 +328,6 @@ func (o *GetDeploymentsUsingGETParams) SetName(name *string) {
 	o.Name = name
 }
 
-// WithPage adds the page to the get deployments using get params
-func (o *GetDeploymentsUsingGETParams) WithPage(page *int32) *GetDeploymentsUsingGETParams {
-	o.SetPage(page)
-	return o
-}
-
-// SetPage adds the page to the get deployments using get params
-func (o *GetDeploymentsUsingGETParams) SetPage(page *int32) {
-	o.Page = page
-}
-
 // WithProjects adds the projects to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) WithProjects(projects []string) *GetDeploymentsUsingGETParams {
 	o.SetProjects(projects)
@@ -361,26 +372,15 @@ func (o *GetDeploymentsUsingGETParams) SetSearch(search *string) {
 	o.Search = search
 }
 
-// WithSize adds the size to the get deployments using get params
-func (o *GetDeploymentsUsingGETParams) WithSize(size *int32) *GetDeploymentsUsingGETParams {
-	o.SetSize(size)
+// WithStatus adds the status to the get deployments using get params
+func (o *GetDeploymentsUsingGETParams) WithStatus(status []string) *GetDeploymentsUsingGETParams {
+	o.SetStatus(status)
 	return o
 }
 
-// SetSize adds the size to the get deployments using get params
-func (o *GetDeploymentsUsingGETParams) SetSize(size *int32) {
-	o.Size = size
-}
-
-// WithSort adds the sort to the get deployments using get params
-func (o *GetDeploymentsUsingGETParams) WithSort(sort []string) *GetDeploymentsUsingGETParams {
-	o.SetSort(sort)
-	return o
-}
-
-// SetSort adds the sort to the get deployments using get params
-func (o *GetDeploymentsUsingGETParams) SetSort(sort []string) {
-	o.Sort = sort
+// SetStatus adds the status to the get deployments using get params
+func (o *GetDeploymentsUsingGETParams) SetStatus(status []string) {
+	o.Status = status
 }
 
 // WithTags adds the tags to the get deployments using get params
@@ -413,6 +413,46 @@ func (o *GetDeploymentsUsingGETParams) WriteToRequest(r runtime.ClientRequest, r
 	}
 	var res []error
 
+	valuesDollarOrderby := o.DollarOrderby
+
+	joinedDollarOrderby := swag.JoinByFormat(valuesDollarOrderby, "multi")
+	// query array param $orderby
+	if err := r.SetQueryParam("$orderby", joinedDollarOrderby...); err != nil {
+		return err
+	}
+
+	if o.DollarSkip != nil {
+
+		// query param $skip
+		var qrDollarSkip int32
+		if o.DollarSkip != nil {
+			qrDollarSkip = *o.DollarSkip
+		}
+		qDollarSkip := swag.FormatInt32(qrDollarSkip)
+		if qDollarSkip != "" {
+			if err := r.SetQueryParam("$skip", qDollarSkip); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.DollarTop != nil {
+
+		// query param $top
+		var qrDollarTop int32
+		if o.DollarTop != nil {
+			qrDollarTop = *o.DollarTop
+		}
+		qDollarTop := swag.FormatInt32(qrDollarTop)
+		if qDollarTop != "" {
+			if err := r.SetQueryParam("$top", qDollarTop); err != nil {
+				return err
+			}
+		}
+
+	}
+
 	valuesCloudAccounts := o.CloudAccounts
 
 	joinedCloudAccounts := swag.JoinByFormat(valuesCloudAccounts, "multi")
@@ -439,22 +479,6 @@ func (o *GetDeploymentsUsingGETParams) WriteToRequest(r runtime.ClientRequest, r
 		qExpandLastRequest := swag.FormatBool(qrExpandLastRequest)
 		if qExpandLastRequest != "" {
 			if err := r.SetQueryParam("expandLastRequest", qExpandLastRequest); err != nil {
-				return err
-			}
-		}
-
-	}
-
-	if o.ExpandMetadata != nil {
-
-		// query param expandMetadata
-		var qrExpandMetadata bool
-		if o.ExpandMetadata != nil {
-			qrExpandMetadata = *o.ExpandMetadata
-		}
-		qExpandMetadata := swag.FormatBool(qrExpandMetadata)
-		if qExpandMetadata != "" {
-			if err := r.SetQueryParam("expandMetadata", qExpandMetadata); err != nil {
 				return err
 			}
 		}
@@ -552,22 +576,6 @@ func (o *GetDeploymentsUsingGETParams) WriteToRequest(r runtime.ClientRequest, r
 
 	}
 
-	if o.Page != nil {
-
-		// query param page
-		var qrPage int32
-		if o.Page != nil {
-			qrPage = *o.Page
-		}
-		qPage := swag.FormatInt32(qrPage)
-		if qPage != "" {
-			if err := r.SetQueryParam("page", qPage); err != nil {
-				return err
-			}
-		}
-
-	}
-
 	valuesProjects := o.Projects
 
 	joinedProjects := swag.JoinByFormat(valuesProjects, "multi")
@@ -608,27 +616,11 @@ func (o *GetDeploymentsUsingGETParams) WriteToRequest(r runtime.ClientRequest, r
 
 	}
 
-	if o.Size != nil {
+	valuesStatus := o.Status
 
-		// query param size
-		var qrSize int32
-		if o.Size != nil {
-			qrSize = *o.Size
-		}
-		qSize := swag.FormatInt32(qrSize)
-		if qSize != "" {
-			if err := r.SetQueryParam("size", qSize); err != nil {
-				return err
-			}
-		}
-
-	}
-
-	valuesSort := o.Sort
-
-	joinedSort := swag.JoinByFormat(valuesSort, "multi")
-	// query array param sort
-	if err := r.SetQueryParam("sort", joinedSort...); err != nil {
+	joinedStatus := swag.JoinByFormat(valuesStatus, "multi")
+	// query array param status
+	if err := r.SetQueryParam("status", joinedStatus...); err != nil {
 		return err
 	}
 

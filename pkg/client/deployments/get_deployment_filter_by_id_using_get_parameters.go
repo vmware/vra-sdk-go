@@ -13,6 +13,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 )
@@ -61,6 +62,21 @@ for the get deployment filter by Id using g e t operation typically these are wr
 */
 type GetDeploymentFilterByIDUsingGETParams struct {
 
+	/*DollarOrderby
+	  Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.
+
+	*/
+	DollarOrderby []string
+	/*DollarSkip
+	  Number of records you want to skip
+
+	*/
+	DollarSkip *int32
+	/*DollarTop
+	  Number of records you want
+
+	*/
+	DollarTop *int32
 	/*FilterID
 	  Filter Id
 
@@ -110,6 +126,39 @@ func (o *GetDeploymentFilterByIDUsingGETParams) SetHTTPClient(client *http.Clien
 	o.HTTPClient = client
 }
 
+// WithDollarOrderby adds the dollarOrderby to the get deployment filter by Id using get params
+func (o *GetDeploymentFilterByIDUsingGETParams) WithDollarOrderby(dollarOrderby []string) *GetDeploymentFilterByIDUsingGETParams {
+	o.SetDollarOrderby(dollarOrderby)
+	return o
+}
+
+// SetDollarOrderby adds the dollarOrderby to the get deployment filter by Id using get params
+func (o *GetDeploymentFilterByIDUsingGETParams) SetDollarOrderby(dollarOrderby []string) {
+	o.DollarOrderby = dollarOrderby
+}
+
+// WithDollarSkip adds the dollarSkip to the get deployment filter by Id using get params
+func (o *GetDeploymentFilterByIDUsingGETParams) WithDollarSkip(dollarSkip *int32) *GetDeploymentFilterByIDUsingGETParams {
+	o.SetDollarSkip(dollarSkip)
+	return o
+}
+
+// SetDollarSkip adds the dollarSkip to the get deployment filter by Id using get params
+func (o *GetDeploymentFilterByIDUsingGETParams) SetDollarSkip(dollarSkip *int32) {
+	o.DollarSkip = dollarSkip
+}
+
+// WithDollarTop adds the dollarTop to the get deployment filter by Id using get params
+func (o *GetDeploymentFilterByIDUsingGETParams) WithDollarTop(dollarTop *int32) *GetDeploymentFilterByIDUsingGETParams {
+	o.SetDollarTop(dollarTop)
+	return o
+}
+
+// SetDollarTop adds the dollarTop to the get deployment filter by Id using get params
+func (o *GetDeploymentFilterByIDUsingGETParams) SetDollarTop(dollarTop *int32) {
+	o.DollarTop = dollarTop
+}
+
 // WithFilterID adds the filterID to the get deployment filter by Id using get params
 func (o *GetDeploymentFilterByIDUsingGETParams) WithFilterID(filterID string) *GetDeploymentFilterByIDUsingGETParams {
 	o.SetFilterID(filterID)
@@ -139,6 +188,46 @@ func (o *GetDeploymentFilterByIDUsingGETParams) WriteToRequest(r runtime.ClientR
 		return err
 	}
 	var res []error
+
+	valuesDollarOrderby := o.DollarOrderby
+
+	joinedDollarOrderby := swag.JoinByFormat(valuesDollarOrderby, "multi")
+	// query array param $orderby
+	if err := r.SetQueryParam("$orderby", joinedDollarOrderby...); err != nil {
+		return err
+	}
+
+	if o.DollarSkip != nil {
+
+		// query param $skip
+		var qrDollarSkip int32
+		if o.DollarSkip != nil {
+			qrDollarSkip = *o.DollarSkip
+		}
+		qDollarSkip := swag.FormatInt32(qrDollarSkip)
+		if qDollarSkip != "" {
+			if err := r.SetQueryParam("$skip", qDollarSkip); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.DollarTop != nil {
+
+		// query param $top
+		var qrDollarTop int32
+		if o.DollarTop != nil {
+			qrDollarTop = *o.DollarTop
+		}
+		qDollarTop := swag.FormatInt32(qrDollarTop)
+		if qDollarTop != "" {
+			if err := r.SetQueryParam("$top", qDollarTop); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	// path param filterId
 	if err := r.SetPathParam("filterId", o.FilterID); err != nil {

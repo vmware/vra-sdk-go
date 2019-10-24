@@ -46,6 +46,9 @@ type FabricNetwork struct {
 	// Required: true
 	ID *string `json:"id"`
 
+	// Network IPv6 CIDR to be used.
+	IPV6Cidr string `json:"ipv6Cidr,omitempty"`
+
 	// Indicates whether this is the default subnet for the zone.
 	IsDefault bool `json:"isDefault,omitempty"`
 

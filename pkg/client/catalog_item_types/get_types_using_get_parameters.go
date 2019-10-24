@@ -62,21 +62,21 @@ for the get types using g e t operation typically these are written to a http.Re
 */
 type GetTypesUsingGETParams struct {
 
-	/*Page
-	  Results page you want to retrieve (0..N)
+	/*DollarOrderby
+	  Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.
 
 	*/
-	Page *int32
-	/*Size
-	  Number of records per page.
+	DollarOrderby []string
+	/*DollarSkip
+	  Number of records you want to skip
 
 	*/
-	Size *int32
-	/*Sort
-	  Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.
+	DollarSkip *int32
+	/*DollarTop
+	  Number of records you want
 
 	*/
-	Sort []string
+	DollarTop *int32
 
 	timeout    time.Duration
 	Context    context.Context
@@ -116,37 +116,37 @@ func (o *GetTypesUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithPage adds the page to the get types using get params
-func (o *GetTypesUsingGETParams) WithPage(page *int32) *GetTypesUsingGETParams {
-	o.SetPage(page)
+// WithDollarOrderby adds the dollarOrderby to the get types using get params
+func (o *GetTypesUsingGETParams) WithDollarOrderby(dollarOrderby []string) *GetTypesUsingGETParams {
+	o.SetDollarOrderby(dollarOrderby)
 	return o
 }
 
-// SetPage adds the page to the get types using get params
-func (o *GetTypesUsingGETParams) SetPage(page *int32) {
-	o.Page = page
+// SetDollarOrderby adds the dollarOrderby to the get types using get params
+func (o *GetTypesUsingGETParams) SetDollarOrderby(dollarOrderby []string) {
+	o.DollarOrderby = dollarOrderby
 }
 
-// WithSize adds the size to the get types using get params
-func (o *GetTypesUsingGETParams) WithSize(size *int32) *GetTypesUsingGETParams {
-	o.SetSize(size)
+// WithDollarSkip adds the dollarSkip to the get types using get params
+func (o *GetTypesUsingGETParams) WithDollarSkip(dollarSkip *int32) *GetTypesUsingGETParams {
+	o.SetDollarSkip(dollarSkip)
 	return o
 }
 
-// SetSize adds the size to the get types using get params
-func (o *GetTypesUsingGETParams) SetSize(size *int32) {
-	o.Size = size
+// SetDollarSkip adds the dollarSkip to the get types using get params
+func (o *GetTypesUsingGETParams) SetDollarSkip(dollarSkip *int32) {
+	o.DollarSkip = dollarSkip
 }
 
-// WithSort adds the sort to the get types using get params
-func (o *GetTypesUsingGETParams) WithSort(sort []string) *GetTypesUsingGETParams {
-	o.SetSort(sort)
+// WithDollarTop adds the dollarTop to the get types using get params
+func (o *GetTypesUsingGETParams) WithDollarTop(dollarTop *int32) *GetTypesUsingGETParams {
+	o.SetDollarTop(dollarTop)
 	return o
 }
 
-// SetSort adds the sort to the get types using get params
-func (o *GetTypesUsingGETParams) SetSort(sort []string) {
-	o.Sort = sort
+// SetDollarTop adds the dollarTop to the get types using get params
+func (o *GetTypesUsingGETParams) SetDollarTop(dollarTop *int32) {
+	o.DollarTop = dollarTop
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -157,44 +157,44 @@ func (o *GetTypesUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg str
 	}
 	var res []error
 
-	if o.Page != nil {
+	valuesDollarOrderby := o.DollarOrderby
 
-		// query param page
-		var qrPage int32
-		if o.Page != nil {
-			qrPage = *o.Page
-		}
-		qPage := swag.FormatInt32(qrPage)
-		if qPage != "" {
-			if err := r.SetQueryParam("page", qPage); err != nil {
-				return err
-			}
-		}
-
-	}
-
-	if o.Size != nil {
-
-		// query param size
-		var qrSize int32
-		if o.Size != nil {
-			qrSize = *o.Size
-		}
-		qSize := swag.FormatInt32(qrSize)
-		if qSize != "" {
-			if err := r.SetQueryParam("size", qSize); err != nil {
-				return err
-			}
-		}
-
-	}
-
-	valuesSort := o.Sort
-
-	joinedSort := swag.JoinByFormat(valuesSort, "multi")
-	// query array param sort
-	if err := r.SetQueryParam("sort", joinedSort...); err != nil {
+	joinedDollarOrderby := swag.JoinByFormat(valuesDollarOrderby, "multi")
+	// query array param $orderby
+	if err := r.SetQueryParam("$orderby", joinedDollarOrderby...); err != nil {
 		return err
+	}
+
+	if o.DollarSkip != nil {
+
+		// query param $skip
+		var qrDollarSkip int32
+		if o.DollarSkip != nil {
+			qrDollarSkip = *o.DollarSkip
+		}
+		qDollarSkip := swag.FormatInt32(qrDollarSkip)
+		if qDollarSkip != "" {
+			if err := r.SetQueryParam("$skip", qDollarSkip); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.DollarTop != nil {
+
+		// query param $top
+		var qrDollarTop int32
+		if o.DollarTop != nil {
+			qrDollarTop = *o.DollarTop
+		}
+		qDollarTop := swag.FormatInt32(qrDollarTop)
+		if qDollarTop != "" {
+			if err := r.SetQueryParam("$top", qDollarTop); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	if len(res) > 0 {

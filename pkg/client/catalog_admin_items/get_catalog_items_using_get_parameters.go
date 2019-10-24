@@ -62,11 +62,21 @@ for the get catalog items using g e t operation typically these are written to a
 */
 type GetCatalogItemsUsingGETParams struct {
 
-	/*Page
-	  Results page you want to retrieve (0..N)
+	/*DollarOrderby
+	  Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.
 
 	*/
-	Page *int32
+	DollarOrderby []string
+	/*DollarSkip
+	  Number of records you want to skip
+
+	*/
+	DollarSkip *int32
+	/*DollarTop
+	  Number of records you want
+
+	*/
+	DollarTop *int32
 	/*ProjectID
 	  projectId
 
@@ -77,16 +87,6 @@ type GetCatalogItemsUsingGETParams struct {
 
 	*/
 	Search *string
-	/*Size
-	  Number of records per page.
-
-	*/
-	Size *int32
-	/*Sort
-	  Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.
-
-	*/
-	Sort []string
 	/*SourceIds
 	  sourceIds
 
@@ -136,15 +136,37 @@ func (o *GetCatalogItemsUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithPage adds the page to the get catalog items using get params
-func (o *GetCatalogItemsUsingGETParams) WithPage(page *int32) *GetCatalogItemsUsingGETParams {
-	o.SetPage(page)
+// WithDollarOrderby adds the dollarOrderby to the get catalog items using get params
+func (o *GetCatalogItemsUsingGETParams) WithDollarOrderby(dollarOrderby []string) *GetCatalogItemsUsingGETParams {
+	o.SetDollarOrderby(dollarOrderby)
 	return o
 }
 
-// SetPage adds the page to the get catalog items using get params
-func (o *GetCatalogItemsUsingGETParams) SetPage(page *int32) {
-	o.Page = page
+// SetDollarOrderby adds the dollarOrderby to the get catalog items using get params
+func (o *GetCatalogItemsUsingGETParams) SetDollarOrderby(dollarOrderby []string) {
+	o.DollarOrderby = dollarOrderby
+}
+
+// WithDollarSkip adds the dollarSkip to the get catalog items using get params
+func (o *GetCatalogItemsUsingGETParams) WithDollarSkip(dollarSkip *int32) *GetCatalogItemsUsingGETParams {
+	o.SetDollarSkip(dollarSkip)
+	return o
+}
+
+// SetDollarSkip adds the dollarSkip to the get catalog items using get params
+func (o *GetCatalogItemsUsingGETParams) SetDollarSkip(dollarSkip *int32) {
+	o.DollarSkip = dollarSkip
+}
+
+// WithDollarTop adds the dollarTop to the get catalog items using get params
+func (o *GetCatalogItemsUsingGETParams) WithDollarTop(dollarTop *int32) *GetCatalogItemsUsingGETParams {
+	o.SetDollarTop(dollarTop)
+	return o
+}
+
+// SetDollarTop adds the dollarTop to the get catalog items using get params
+func (o *GetCatalogItemsUsingGETParams) SetDollarTop(dollarTop *int32) {
+	o.DollarTop = dollarTop
 }
 
 // WithProjectID adds the projectID to the get catalog items using get params
@@ -167,28 +189,6 @@ func (o *GetCatalogItemsUsingGETParams) WithSearch(search *string) *GetCatalogIt
 // SetSearch adds the search to the get catalog items using get params
 func (o *GetCatalogItemsUsingGETParams) SetSearch(search *string) {
 	o.Search = search
-}
-
-// WithSize adds the size to the get catalog items using get params
-func (o *GetCatalogItemsUsingGETParams) WithSize(size *int32) *GetCatalogItemsUsingGETParams {
-	o.SetSize(size)
-	return o
-}
-
-// SetSize adds the size to the get catalog items using get params
-func (o *GetCatalogItemsUsingGETParams) SetSize(size *int32) {
-	o.Size = size
-}
-
-// WithSort adds the sort to the get catalog items using get params
-func (o *GetCatalogItemsUsingGETParams) WithSort(sort []string) *GetCatalogItemsUsingGETParams {
-	o.SetSort(sort)
-	return o
-}
-
-// SetSort adds the sort to the get catalog items using get params
-func (o *GetCatalogItemsUsingGETParams) SetSort(sort []string) {
-	o.Sort = sort
 }
 
 // WithSourceIds adds the sourceIds to the get catalog items using get params
@@ -221,16 +221,40 @@ func (o *GetCatalogItemsUsingGETParams) WriteToRequest(r runtime.ClientRequest, 
 	}
 	var res []error
 
-	if o.Page != nil {
+	valuesDollarOrderby := o.DollarOrderby
 
-		// query param page
-		var qrPage int32
-		if o.Page != nil {
-			qrPage = *o.Page
+	joinedDollarOrderby := swag.JoinByFormat(valuesDollarOrderby, "multi")
+	// query array param $orderby
+	if err := r.SetQueryParam("$orderby", joinedDollarOrderby...); err != nil {
+		return err
+	}
+
+	if o.DollarSkip != nil {
+
+		// query param $skip
+		var qrDollarSkip int32
+		if o.DollarSkip != nil {
+			qrDollarSkip = *o.DollarSkip
 		}
-		qPage := swag.FormatInt32(qrPage)
-		if qPage != "" {
-			if err := r.SetQueryParam("page", qPage); err != nil {
+		qDollarSkip := swag.FormatInt32(qrDollarSkip)
+		if qDollarSkip != "" {
+			if err := r.SetQueryParam("$skip", qDollarSkip); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.DollarTop != nil {
+
+		// query param $top
+		var qrDollarTop int32
+		if o.DollarTop != nil {
+			qrDollarTop = *o.DollarTop
+		}
+		qDollarTop := swag.FormatInt32(qrDollarTop)
+		if qDollarTop != "" {
+			if err := r.SetQueryParam("$top", qDollarTop); err != nil {
 				return err
 			}
 		}
@@ -267,30 +291,6 @@ func (o *GetCatalogItemsUsingGETParams) WriteToRequest(r runtime.ClientRequest, 
 			}
 		}
 
-	}
-
-	if o.Size != nil {
-
-		// query param size
-		var qrSize int32
-		if o.Size != nil {
-			qrSize = *o.Size
-		}
-		qSize := swag.FormatInt32(qrSize)
-		if qSize != "" {
-			if err := r.SetQueryParam("size", qSize); err != nil {
-				return err
-			}
-		}
-
-	}
-
-	valuesSort := o.Sort
-
-	joinedSort := swag.JoinByFormat(valuesSort, "multi")
-	// query array param sort
-	if err := r.SetQueryParam("sort", joinedSort...); err != nil {
-		return err
 	}
 
 	var valuesSourceIds []string

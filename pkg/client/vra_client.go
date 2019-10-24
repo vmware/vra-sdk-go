@@ -13,10 +13,10 @@ import (
 
 	"github.com/vmware/vra-sdk-go/pkg/client/about"
 	"github.com/vmware/vra-sdk-go/pkg/client/blueprint"
-	"github.com/vmware/vra-sdk-go/pkg/client/blueprint_deployments"
 	"github.com/vmware/vra-sdk-go/pkg/client/blueprint_requests"
 	"github.com/vmware/vra-sdk-go/pkg/client/blueprint_validation"
 	"github.com/vmware/vra-sdk-go/pkg/client/catalog_admin_items"
+	"github.com/vmware/vra-sdk-go/pkg/client/catalog_entitlements"
 	"github.com/vmware/vra-sdk-go/pkg/client/catalog_item_types"
 	"github.com/vmware/vra-sdk-go/pkg/client/catalog_items"
 	"github.com/vmware/vra-sdk-go/pkg/client/catalog_sources"
@@ -27,7 +27,6 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/deployment_events"
 	"github.com/vmware/vra-sdk-go/pkg/client/deployments"
 	"github.com/vmware/vra-sdk-go/pkg/client/disk"
-	"github.com/vmware/vra-sdk-go/pkg/client/entitlements"
 	"github.com/vmware/vra-sdk-go/pkg/client/fabric_aws_volume_types"
 	"github.com/vmware/vra-sdk-go/pkg/client/fabric_azure_storage_account"
 	"github.com/vmware/vra-sdk-go/pkg/client/fabric_flavors"
@@ -37,7 +36,7 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/fabric_vsphere_storage_policies"
 	"github.com/vmware/vra-sdk-go/pkg/client/flavor_profile"
 	"github.com/vmware/vra-sdk-go/pkg/client/flavors"
-	"github.com/vmware/vra-sdk-go/pkg/client/health_status"
+	"github.com/vmware/vra-sdk-go/pkg/client/icons"
 	"github.com/vmware/vra-sdk-go/pkg/client/image_profile"
 	"github.com/vmware/vra-sdk-go/pkg/client/images"
 	"github.com/vmware/vra-sdk-go/pkg/client/load_balancer"
@@ -45,9 +44,12 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/login"
 	"github.com/vmware/vra-sdk-go/pkg/client/network"
 	"github.com/vmware/vra-sdk-go/pkg/client/network_profile"
+	"github.com/vmware/vra-sdk-go/pkg/client/policies"
+	"github.com/vmware/vra-sdk-go/pkg/client/policy_decisions"
+	"github.com/vmware/vra-sdk-go/pkg/client/policy_types"
 	"github.com/vmware/vra-sdk-go/pkg/client/project"
-	"github.com/vmware/vra-sdk-go/pkg/client/provider_resource_types"
 	"github.com/vmware/vra-sdk-go/pkg/client/request"
+	"github.com/vmware/vra-sdk-go/pkg/client/resource_types"
 	"github.com/vmware/vra-sdk-go/pkg/client/security_group"
 	"github.com/vmware/vra-sdk-go/pkg/client/storage_profile"
 	"github.com/vmware/vra-sdk-go/pkg/client/tags"
@@ -100,13 +102,13 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 
 	cli.Blueprint = blueprint.New(transport, formats)
 
-	cli.BlueprintDeployments = blueprint_deployments.New(transport, formats)
-
 	cli.BlueprintRequests = blueprint_requests.New(transport, formats)
 
 	cli.BlueprintValidation = blueprint_validation.New(transport, formats)
 
 	cli.CatalogAdminItems = catalog_admin_items.New(transport, formats)
+
+	cli.CatalogEntitlements = catalog_entitlements.New(transport, formats)
 
 	cli.CatalogItemTypes = catalog_item_types.New(transport, formats)
 
@@ -128,8 +130,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 
 	cli.Disk = disk.New(transport, formats)
 
-	cli.Entitlements = entitlements.New(transport, formats)
-
 	cli.FabricawsVolumeTypes = fabric_aws_volume_types.New(transport, formats)
 
 	cli.FabricAzureStorageAccount = fabric_azure_storage_account.New(transport, formats)
@@ -148,7 +148,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 
 	cli.Flavors = flavors.New(transport, formats)
 
-	cli.HealthStatus = health_status.New(transport, formats)
+	cli.Icons = icons.New(transport, formats)
 
 	cli.ImageProfile = image_profile.New(transport, formats)
 
@@ -164,11 +164,17 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 
 	cli.NetworkProfile = network_profile.New(transport, formats)
 
+	cli.Policies = policies.New(transport, formats)
+
+	cli.PolicyDecisions = policy_decisions.New(transport, formats)
+
+	cli.PolicyTypes = policy_types.New(transport, formats)
+
 	cli.Project = project.New(transport, formats)
 
-	cli.ProviderResourceTypes = provider_resource_types.New(transport, formats)
-
 	cli.Request = request.New(transport, formats)
+
+	cli.ResourceTypes = resource_types.New(transport, formats)
 
 	cli.SecurityGroup = security_group.New(transport, formats)
 
@@ -224,13 +230,13 @@ type MulticloudIaaS struct {
 
 	Blueprint *blueprint.Client
 
-	BlueprintDeployments *blueprint_deployments.Client
-
 	BlueprintRequests *blueprint_requests.Client
 
 	BlueprintValidation *blueprint_validation.Client
 
 	CatalogAdminItems *catalog_admin_items.Client
+
+	CatalogEntitlements *catalog_entitlements.Client
 
 	CatalogItemTypes *catalog_item_types.Client
 
@@ -252,8 +258,6 @@ type MulticloudIaaS struct {
 
 	Disk *disk.Client
 
-	Entitlements *entitlements.Client
-
 	FabricawsVolumeTypes *fabric_aws_volume_types.Client
 
 	FabricAzureStorageAccount *fabric_azure_storage_account.Client
@@ -272,7 +276,7 @@ type MulticloudIaaS struct {
 
 	Flavors *flavors.Client
 
-	HealthStatus *health_status.Client
+	Icons *icons.Client
 
 	ImageProfile *image_profile.Client
 
@@ -288,11 +292,17 @@ type MulticloudIaaS struct {
 
 	NetworkProfile *network_profile.Client
 
+	Policies *policies.Client
+
+	PolicyDecisions *policy_decisions.Client
+
+	PolicyTypes *policy_types.Client
+
 	Project *project.Client
 
-	ProviderResourceTypes *provider_resource_types.Client
-
 	Request *request.Client
+
+	ResourceTypes *resource_types.Client
 
 	SecurityGroup *security_group.Client
 
@@ -311,13 +321,13 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 
 	c.Blueprint.SetTransport(transport)
 
-	c.BlueprintDeployments.SetTransport(transport)
-
 	c.BlueprintRequests.SetTransport(transport)
 
 	c.BlueprintValidation.SetTransport(transport)
 
 	c.CatalogAdminItems.SetTransport(transport)
+
+	c.CatalogEntitlements.SetTransport(transport)
 
 	c.CatalogItemTypes.SetTransport(transport)
 
@@ -339,8 +349,6 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 
 	c.Disk.SetTransport(transport)
 
-	c.Entitlements.SetTransport(transport)
-
 	c.FabricawsVolumeTypes.SetTransport(transport)
 
 	c.FabricAzureStorageAccount.SetTransport(transport)
@@ -359,7 +367,7 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 
 	c.Flavors.SetTransport(transport)
 
-	c.HealthStatus.SetTransport(transport)
+	c.Icons.SetTransport(transport)
 
 	c.ImageProfile.SetTransport(transport)
 
@@ -375,11 +383,17 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 
 	c.NetworkProfile.SetTransport(transport)
 
+	c.Policies.SetTransport(transport)
+
+	c.PolicyDecisions.SetTransport(transport)
+
+	c.PolicyTypes.SetTransport(transport)
+
 	c.Project.SetTransport(transport)
 
-	c.ProviderResourceTypes.SetTransport(transport)
-
 	c.Request.SetTransport(transport)
+
+	c.ResourceTypes.SetTransport(transport)
 
 	c.SecurityGroup.SetTransport(transport)
 

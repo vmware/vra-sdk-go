@@ -67,11 +67,6 @@ type GetResourceByIDUsingGETParams struct {
 
 	*/
 	DepID strfmt.UUID
-	/*ExpandMetadata
-	  Retrieves the 'metadata' field of the resource.
-
-	*/
-	ExpandMetadata *bool
 	/*ForceCachedResources
 	  Retrieves the resource from a cache for a faster query.
 
@@ -137,17 +132,6 @@ func (o *GetResourceByIDUsingGETParams) SetDepID(depID strfmt.UUID) {
 	o.DepID = depID
 }
 
-// WithExpandMetadata adds the expandMetadata to the get resource by Id using get params
-func (o *GetResourceByIDUsingGETParams) WithExpandMetadata(expandMetadata *bool) *GetResourceByIDUsingGETParams {
-	o.SetExpandMetadata(expandMetadata)
-	return o
-}
-
-// SetExpandMetadata adds the expandMetadata to the get resource by Id using get params
-func (o *GetResourceByIDUsingGETParams) SetExpandMetadata(expandMetadata *bool) {
-	o.ExpandMetadata = expandMetadata
-}
-
 // WithForceCachedResources adds the forceCachedResources to the get resource by Id using get params
 func (o *GetResourceByIDUsingGETParams) WithForceCachedResources(forceCachedResources *bool) *GetResourceByIDUsingGETParams {
 	o.SetForceCachedResources(forceCachedResources)
@@ -192,22 +176,6 @@ func (o *GetResourceByIDUsingGETParams) WriteToRequest(r runtime.ClientRequest, 
 	// path param depId
 	if err := r.SetPathParam("depId", o.DepID.String()); err != nil {
 		return err
-	}
-
-	if o.ExpandMetadata != nil {
-
-		// query param expandMetadata
-		var qrExpandMetadata bool
-		if o.ExpandMetadata != nil {
-			qrExpandMetadata = *o.ExpandMetadata
-		}
-		qExpandMetadata := swag.FormatBool(qrExpandMetadata)
-		if qExpandMetadata != "" {
-			if err := r.SetQueryParam("expandMetadata", qExpandMetadata); err != nil {
-				return err
-			}
-		}
-
 	}
 
 	if o.ForceCachedResources != nil {

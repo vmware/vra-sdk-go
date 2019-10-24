@@ -36,18 +36,6 @@ func (o *GetDeploymentFiltersUsingGETReader) ReadResponse(response runtime.Clien
 			return nil, err
 		}
 		return nil, result
-	case 403:
-		result := NewGetDeploymentFiltersUsingGETForbidden()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-	case 404:
-		result := NewGetDeploymentFiltersUsingGETNotFound()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
@@ -104,48 +92,6 @@ func (o *GetDeploymentFiltersUsingGETUnauthorized) Error() string {
 }
 
 func (o *GetDeploymentFiltersUsingGETUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewGetDeploymentFiltersUsingGETForbidden creates a GetDeploymentFiltersUsingGETForbidden with default headers values
-func NewGetDeploymentFiltersUsingGETForbidden() *GetDeploymentFiltersUsingGETForbidden {
-	return &GetDeploymentFiltersUsingGETForbidden{}
-}
-
-/*GetDeploymentFiltersUsingGETForbidden handles this case with default header values.
-
-Forbidden
-*/
-type GetDeploymentFiltersUsingGETForbidden struct {
-}
-
-func (o *GetDeploymentFiltersUsingGETForbidden) Error() string {
-	return fmt.Sprintf("[GET /deployment/api/deployments/filters][%d] getDeploymentFiltersUsingGETForbidden ", 403)
-}
-
-func (o *GetDeploymentFiltersUsingGETForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewGetDeploymentFiltersUsingGETNotFound creates a GetDeploymentFiltersUsingGETNotFound with default headers values
-func NewGetDeploymentFiltersUsingGETNotFound() *GetDeploymentFiltersUsingGETNotFound {
-	return &GetDeploymentFiltersUsingGETNotFound{}
-}
-
-/*GetDeploymentFiltersUsingGETNotFound handles this case with default header values.
-
-Not Found
-*/
-type GetDeploymentFiltersUsingGETNotFound struct {
-}
-
-func (o *GetDeploymentFiltersUsingGETNotFound) Error() string {
-	return fmt.Sprintf("[GET /deployment/api/deployments/filters][%d] getDeploymentFiltersUsingGETNotFound ", 404)
-}
-
-func (o *GetDeploymentFiltersUsingGETNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

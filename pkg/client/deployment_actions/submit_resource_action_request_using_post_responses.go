@@ -30,20 +30,8 @@ func (o *SubmitResourceActionRequestUsingPOSTReader) ReadResponse(response runti
 			return nil, err
 		}
 		return result, nil
-	case 201:
-		result := NewSubmitResourceActionRequestUsingPOSTCreated()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return result, nil
 	case 401:
 		result := NewSubmitResourceActionRequestUsingPOSTUnauthorized()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-	case 403:
-		result := NewSubmitResourceActionRequestUsingPOSTForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -93,27 +81,6 @@ func (o *SubmitResourceActionRequestUsingPOSTOK) readResponse(response runtime.C
 	return nil
 }
 
-// NewSubmitResourceActionRequestUsingPOSTCreated creates a SubmitResourceActionRequestUsingPOSTCreated with default headers values
-func NewSubmitResourceActionRequestUsingPOSTCreated() *SubmitResourceActionRequestUsingPOSTCreated {
-	return &SubmitResourceActionRequestUsingPOSTCreated{}
-}
-
-/*SubmitResourceActionRequestUsingPOSTCreated handles this case with default header values.
-
-Created
-*/
-type SubmitResourceActionRequestUsingPOSTCreated struct {
-}
-
-func (o *SubmitResourceActionRequestUsingPOSTCreated) Error() string {
-	return fmt.Sprintf("[POST /deployment/api/deployments/{depId}/resources/{resourceId}/requests][%d] submitResourceActionRequestUsingPOSTCreated ", 201)
-}
-
-func (o *SubmitResourceActionRequestUsingPOSTCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
 // NewSubmitResourceActionRequestUsingPOSTUnauthorized creates a SubmitResourceActionRequestUsingPOSTUnauthorized with default headers values
 func NewSubmitResourceActionRequestUsingPOSTUnauthorized() *SubmitResourceActionRequestUsingPOSTUnauthorized {
 	return &SubmitResourceActionRequestUsingPOSTUnauthorized{}
@@ -131,27 +98,6 @@ func (o *SubmitResourceActionRequestUsingPOSTUnauthorized) Error() string {
 }
 
 func (o *SubmitResourceActionRequestUsingPOSTUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewSubmitResourceActionRequestUsingPOSTForbidden creates a SubmitResourceActionRequestUsingPOSTForbidden with default headers values
-func NewSubmitResourceActionRequestUsingPOSTForbidden() *SubmitResourceActionRequestUsingPOSTForbidden {
-	return &SubmitResourceActionRequestUsingPOSTForbidden{}
-}
-
-/*SubmitResourceActionRequestUsingPOSTForbidden handles this case with default header values.
-
-Forbidden
-*/
-type SubmitResourceActionRequestUsingPOSTForbidden struct {
-}
-
-func (o *SubmitResourceActionRequestUsingPOSTForbidden) Error() string {
-	return fmt.Sprintf("[POST /deployment/api/deployments/{depId}/resources/{resourceId}/requests][%d] submitResourceActionRequestUsingPOSTForbidden ", 403)
-}
-
-func (o *SubmitResourceActionRequestUsingPOSTForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

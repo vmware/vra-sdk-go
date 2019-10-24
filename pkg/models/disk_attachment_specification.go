@@ -25,8 +25,7 @@ type DiskAttachmentSpecification struct {
 	Description string `json:"description,omitempty"`
 
 	// A human-friendly name used as an identifier in APIs that support this option.
-	// Required: true
-	Name *string `json:"name"`
+	Name string `json:"name,omitempty"`
 }
 
 // Validate validates this disk attachment specification
@@ -34,10 +33,6 @@ func (m *DiskAttachmentSpecification) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateBlockDeviceID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateName(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -50,15 +45,6 @@ func (m *DiskAttachmentSpecification) Validate(formats strfmt.Registry) error {
 func (m *DiskAttachmentSpecification) validateBlockDeviceID(formats strfmt.Registry) error {
 
 	if err := validate.Required("blockDeviceId", "body", m.BlockDeviceID); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *DiskAttachmentSpecification) validateName(formats strfmt.Registry) error {
-
-	if err := validate.Required("name", "body", m.Name); err != nil {
 		return err
 	}
 

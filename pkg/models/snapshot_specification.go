@@ -24,7 +24,7 @@ type SnapshotSpecification struct {
 	// Date when the entity was created. The date is in ISO 6801 and UTC.
 	CreatedAt string `json:"createdAt,omitempty"`
 
-	// Additional custom properties that may be used toextend the snapshot.
+	// Additional custom properties that may be used to extend the snapshot.
 	CustomProperties map[string]string `json:"customProperties,omitempty"`
 
 	// A human-friendly description.

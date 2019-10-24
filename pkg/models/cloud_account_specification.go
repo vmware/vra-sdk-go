@@ -33,7 +33,7 @@ type CloudAccountSpecification struct {
 	// Create default cloud zones for the enabled regions.
 	CreateDefaultZones bool `json:"createDefaultZones,omitempty"`
 
-	// Additional custom properties that may be used toextend the Cloud Account.
+	// Additional custom properties that may be used to extend the Cloud Account.
 	CustomProperties map[string]string `json:"customProperties,omitempty"`
 
 	// A human-friendly description.

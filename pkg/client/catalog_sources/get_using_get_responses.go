@@ -36,12 +36,6 @@ func (o *GetUsingGETReader) ReadResponse(response runtime.ClientResponse, consum
 			return nil, err
 		}
 		return nil, result
-	case 403:
-		result := NewGetUsingGETForbidden()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 404:
 		result := NewGetUsingGETNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -104,27 +98,6 @@ func (o *GetUsingGETUnauthorized) Error() string {
 }
 
 func (o *GetUsingGETUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewGetUsingGETForbidden creates a GetUsingGETForbidden with default headers values
-func NewGetUsingGETForbidden() *GetUsingGETForbidden {
-	return &GetUsingGETForbidden{}
-}
-
-/*GetUsingGETForbidden handles this case with default header values.
-
-Forbidden
-*/
-type GetUsingGETForbidden struct {
-}
-
-func (o *GetUsingGETForbidden) Error() string {
-	return fmt.Sprintf("[GET /catalog/api/admin/sources/{sourceId}][%d] getUsingGETForbidden ", 403)
-}
-
-func (o *GetUsingGETForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

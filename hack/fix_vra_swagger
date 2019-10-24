@@ -35,6 +35,25 @@ def add_filter_params(swagger):
             param_list.insert(0, filter_spec)
 
 
+def add_required(swagger):
+    # List of paths to insert required
+    paths = [
+        ("/policy/api/policies/{id}", "get", "id"),
+        ("/policy/api/policies/{id}", "delete", "id"),
+        ("/policy/api/policyDecisions/{id}", "get", "id"),
+        ("/policy/api/policyTypes/{id}", "get", "id"),
+        ("/policy/api/policyTypes/{id}/data/{dataPath}", "get", "id"),
+        ("/policy/api/policyTypes/{id}/data/{dataPath}", "get", "dataPath"),
+    ]
+
+    # Update the needed paths
+    for (p, op, node) in paths:
+        param_list = swagger['paths'][p][op]['parameters']
+        for d in param_list:
+            if d['name'] == node:
+                d['required'] = True
+
+
 def add_global_security(swagger):
     security_def = {
         "Bearer": {
@@ -52,6 +71,7 @@ def add_security(swagger):
     exclude_paths = [
         '/iaas/api/about',
         '/iaas/api/login',
+        '/blueprint/api/about'
     ]
     empty_security = []
     bearer_security = [
@@ -77,6 +97,7 @@ if __name__ == "__main__":
     swagger = json.loads(open(filename).read())
 
     add_filter_params(swagger)
+    add_required(swagger)
 
     if args.omit_security:
         add_global_security(swagger)

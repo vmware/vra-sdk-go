@@ -33,12 +33,6 @@ func (o *CheckDeploymentNameUsingGETReader) ReadResponse(response runtime.Client
 			return nil, err
 		}
 		return nil, result
-	case 403:
-		result := NewCheckDeploymentNameUsingGETForbidden()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 404:
 		result := NewCheckDeploymentNameUsingGETNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -89,27 +83,6 @@ func (o *CheckDeploymentNameUsingGETUnauthorized) Error() string {
 }
 
 func (o *CheckDeploymentNameUsingGETUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewCheckDeploymentNameUsingGETForbidden creates a CheckDeploymentNameUsingGETForbidden with default headers values
-func NewCheckDeploymentNameUsingGETForbidden() *CheckDeploymentNameUsingGETForbidden {
-	return &CheckDeploymentNameUsingGETForbidden{}
-}
-
-/*CheckDeploymentNameUsingGETForbidden handles this case with default header values.
-
-Forbidden
-*/
-type CheckDeploymentNameUsingGETForbidden struct {
-}
-
-func (o *CheckDeploymentNameUsingGETForbidden) Error() string {
-	return fmt.Sprintf("[GET /deployment/api/deployments/names/{name}][%d] checkDeploymentNameUsingGETForbidden ", 403)
-}
-
-func (o *CheckDeploymentNameUsingGETForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

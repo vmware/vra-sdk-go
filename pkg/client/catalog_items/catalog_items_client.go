@@ -41,7 +41,7 @@ func (a *Client) GetCatalogItemUsingGET1(params *GetCatalogItemUsingGET1Params) 
 		ID:                 "getCatalogItemUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/catalog/api/items/{id}",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
@@ -77,7 +77,7 @@ func (a *Client) GetCatalogItemsUsingGET1(params *GetCatalogItemsUsingGET1Params
 		ID:                 "getCatalogItemsUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/catalog/api/items",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
@@ -99,6 +99,42 @@ func (a *Client) GetCatalogItemsUsingGET1(params *GetCatalogItemsUsingGET1Params
 }
 
 /*
+GetUpfrontPriceResponseForCatalogItemUsingGET gets a response with upfront prices for a given catalog item
+
+Returns upfront prices of a given catalog item.
+*/
+func (a *Client) GetUpfrontPriceResponseForCatalogItemUsingGET(params *GetUpfrontPriceResponseForCatalogItemUsingGETParams) (*GetUpfrontPriceResponseForCatalogItemUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetUpfrontPriceResponseForCatalogItemUsingGETParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getUpfrontPriceResponseForCatalogItemUsingGET",
+		Method:             "GET",
+		PathPattern:        "/catalog/api/items/{id}/upfront-prices/{upfrontPriceId}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetUpfrontPriceResponseForCatalogItemUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetUpfrontPriceResponseForCatalogItemUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getUpfrontPriceResponseForCatalogItemUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 GetVersionByIDUsingGET fetches detailed catalog item version
 
 Returns a detailed catalog item version.
@@ -113,7 +149,7 @@ func (a *Client) GetVersionByIDUsingGET(params *GetVersionByIDUsingGETParams) (*
 		ID:                 "getVersionByIdUsingGET",
 		Method:             "GET",
 		PathPattern:        "/catalog/api/items/{id}/versions/{versionId}",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
@@ -149,7 +185,7 @@ func (a *Client) GetVersionsUsingGET(params *GetVersionsUsingGETParams) (*GetVer
 		ID:                 "getVersionsUsingGET",
 		Method:             "GET",
 		PathPattern:        "/catalog/api/items/{id}/versions",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
@@ -175,7 +211,7 @@ RequestCatalogItemUsingPOST creates a deployment
 
 Creates a deployment from a catalog item.
 */
-func (a *Client) RequestCatalogItemUsingPOST(params *RequestCatalogItemUsingPOSTParams) (*RequestCatalogItemUsingPOSTOK, *RequestCatalogItemUsingPOSTCreated, error) {
+func (a *Client) RequestCatalogItemUsingPOST(params *RequestCatalogItemUsingPOSTParams) (*RequestCatalogItemUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewRequestCatalogItemUsingPOSTParams()
@@ -185,7 +221,7 @@ func (a *Client) RequestCatalogItemUsingPOST(params *RequestCatalogItemUsingPOST
 		ID:                 "requestCatalogItemUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/catalog/api/items/{id}/request",
-		ProducesMediaTypes: []string{"*/*"},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
@@ -194,16 +230,51 @@ func (a *Client) RequestCatalogItemUsingPOST(params *RequestCatalogItemUsingPOST
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
-	switch value := result.(type) {
-	case *RequestCatalogItemUsingPOSTOK:
-		return value, nil, nil
-	case *RequestCatalogItemUsingPOSTCreated:
-		return nil, value, nil
+	success, ok := result.(*RequestCatalogItemUsingPOSTOK)
+	if ok {
+		return success, nil
 	}
+	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for catalog_items: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for requestCatalogItemUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+SubmitUpfrontPriceRequestForCatalogItemUsingPOST creates a request to calculate upfront price for a given catalog item
+
+Returns upfront price response for a given catalog item.
+*/
+func (a *Client) SubmitUpfrontPriceRequestForCatalogItemUsingPOST(params *SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams) (*SubmitUpfrontPriceRequestForCatalogItemUsingPOSTOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewSubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "submitUpfrontPriceRequestForCatalogItemUsingPOST",
+		Method:             "POST",
+		PathPattern:        "/catalog/api/items/{id}/upfront-prices",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &SubmitUpfrontPriceRequestForCatalogItemUsingPOSTReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*SubmitUpfrontPriceRequestForCatalogItemUsingPOSTOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for submitUpfrontPriceRequestForCatalogItemUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

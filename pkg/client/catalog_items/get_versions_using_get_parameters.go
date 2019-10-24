@@ -77,11 +77,6 @@ type GetVersionsUsingGETParams struct {
 
 	*/
 	Size *int32
-	/*Sort
-	  Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.
-
-	*/
-	Sort []string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -154,17 +149,6 @@ func (o *GetVersionsUsingGETParams) SetSize(size *int32) {
 	o.Size = size
 }
 
-// WithSort adds the sort to the get versions using get params
-func (o *GetVersionsUsingGETParams) WithSort(sort []string) *GetVersionsUsingGETParams {
-	o.SetSort(sort)
-	return o
-}
-
-// SetSort adds the sort to the get versions using get params
-func (o *GetVersionsUsingGETParams) SetSort(sort []string) {
-	o.Sort = sort
-}
-
 // WriteToRequest writes these params to a swagger request
 func (o *GetVersionsUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -208,14 +192,6 @@ func (o *GetVersionsUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg 
 			}
 		}
 
-	}
-
-	valuesSort := o.Sort
-
-	joinedSort := swag.JoinByFormat(valuesSort, "multi")
-	// query array param sort
-	if err := r.SetQueryParam("sort", joinedSort...); err != nil {
-		return err
 	}
 
 	if len(res) > 0 {

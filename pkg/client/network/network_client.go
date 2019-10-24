@@ -113,7 +113,7 @@ func (a *Client) GetMachineNetworkInterface(params *GetMachineNetworkInterfacePa
 		ID:                 "getMachineNetworkInterface",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/machines/{id}/network-interfaces/{id1}",
-		ProducesMediaTypes: []string{""},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,

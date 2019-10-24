@@ -1,33 +1,983 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "Api Documentation",
-        "version": "1.0",
-        "title": "Api Documentation",
-        "termsOfService": "urn:tos",
-        "contact": {},
-        "license": {
-            "name": "Apache 2.0",
-            "url": "http://www.apache.org/licenses/LICENSE-2.0"
-        }
+        "description": "A multi-cloud API for Cloud Automation Services",
+        "version": "2019-01-15",
+        "title": "VMware Service Broker API"
     },
     "host": "api.mgmt.cloud.vmware.com",
     "basePath": "/",
     "tags": [
         {
+            "name": "Catalog Admin Items",
+            "description": "Catalog Admin Items API"
+        },
+        {
+            "name": "Catalog Entitlements",
+            "description": "Entitlements API"
+        },
+        {
+            "name": "Catalog Item Types",
+            "description": "Catalog Item Type API"
+        },
+        {
+            "name": "Catalog Items",
+            "description": "Catalog Items API"
+        },
+        {
+            "name": "Catalog Sources",
+            "description": "Catalog Sources API"
+        },
+        {
             "name": "Deployment Actions",
-            "description": "Deployment Action API"
+            "description": "Deployment Request Action Controller"
         },
         {
             "name": "Deployment Events",
-            "description": "Deployment Events API"
+            "description": "Deployment Event Controller"
         },
         {
             "name": "Deployments",
-            "description": "Deployment API"
+            "description": "Deployment Controller"
+        },
+        {
+            "name": "Icons",
+            "description": "Icons API"
+        },
+        {
+            "name": "Policies",
+            "description": "Policy API"
+        },
+        {
+            "name": "Policy Decisions",
+            "description": "Policy Decision Controller"
+        },
+        {
+            "name": "Policy Types",
+            "description": "Policy Type API"
         }
     ],
+    "produces": [
+        "application/json"
+    ],
     "paths": {
+        "/catalog/api/admin/entitlements": {
+            "get": {
+                "tags": [
+                    "Catalog Entitlements"
+                ],
+                "summary": "Returns all entitlements filtered by projectId.",
+                "description": "Returns all entitlements (filtered by projectId).",
+                "operationId": "getEntitlementsUsingGET",
+                "parameters": [
+                    {
+                        "name": "projectId",
+                        "in": "query",
+                        "description": "The project id for which to return .",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Entitlement"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "deprecated": false
+            },
+            "post": {
+                "tags": [
+                    "Catalog Entitlements"
+                ],
+                "summary": "Create an entitlement.",
+                "description": "Creates an entitlement for a given project.",
+                "operationId": "createEntitlementUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "entitlement",
+                        "description": "The entitlement to be created",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Entitlement"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Entitlement"
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/Entitlement"
+                        }
+                    },
+                    "400": {
+                        "description": "Catalog item or source cannot be entitled to the project"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Catalog item or catalog source not found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/catalog/api/admin/entitlements/{id}": {
+            "delete": {
+                "tags": [
+                    "Catalog Entitlements"
+                ],
+                "summary": "Delete an entitlement.",
+                "description": "Deletes the entitlement with the specified id.",
+                "operationId": "deleteEntitlementUsingDELETE",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Entitlement id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/catalog/api/admin/items": {
+            "get": {
+                "tags": [
+                    "Catalog Admin Items"
+                ],
+                "summary": "Fetch a list of catalog items.",
+                "description": "Returns a paginated list of catalog items.",
+                "operationId": "getCatalogItemsUsingGET",
+                "parameters": [
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "$skip",
+                        "in": "query",
+                        "description": "Number of records you want to skip",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "description": "Number of records you want",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "projectId",
+                        "in": "query",
+                        "description": "projectId",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "search",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sourceIds",
+                        "in": "query",
+                        "description": "sourceIds",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "types",
+                        "in": "query",
+                        "description": "types",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfCatalogItem"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/catalog/api/admin/items/{id}": {
+            "get": {
+                "tags": [
+                    "Catalog Admin Items"
+                ],
+                "summary": "Find a catalog item with specified id.",
+                "description": "Returns the catalog item with the specified id.",
+                "operationId": "getCatalogItemUsingGET",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Catalog item id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CatalogItem"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            },
+            "patch": {
+                "tags": [
+                    "Catalog Admin Items"
+                ],
+                "summary": "Set an icon to a catalog item.",
+                "description": "Updates a catalog item with specified icon id.",
+                "operationId": "setItemIconUsingPATCH",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The unique id of item to update.",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "in": "body",
+                        "name": "patch",
+                        "description": "The patch that apply to the item",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AdminCatalogItemPatch"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/catalog/api/admin/sources": {
+            "get": {
+                "tags": [
+                    "Catalog Sources"
+                ],
+                "summary": "Fetch catalog sources.",
+                "description": "Returns a paginated list of catalog sources.",
+                "operationId": "getPageUsingGET",
+                "parameters": [
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "$skip",
+                        "in": "query",
+                        "description": "Number of records you want to skip",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "description": "Number of records you want",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "projectId",
+                        "in": "query",
+                        "description": "Find sources which contains items that can be requested in the given projectId",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Matches will have this string in their name or description.",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfCatalogSource"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "deprecated": false
+            },
+            "post": {
+                "tags": [
+                    "Catalog Sources"
+                ],
+                "summary": "Create a new catalog source.",
+                "description": "Creates a catalog source and imports catalog items from it.",
+                "operationId": "postUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "source",
+                        "description": "The catalog source to be created",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/CatalogSource"
+                        }
+                    },
+                    {
+                        "name": "validationOnly",
+                        "in": "query",
+                        "description": "If true, the source will not be created. It returns the number of items belonging to the source. The request will still return an error code if the source is invalid.",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Validation is ok",
+                        "schema": {
+                            "$ref": "#/definitions/CatalogSource"
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/CatalogSource"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/catalog/api/admin/sources/{sourceId}": {
+            "get": {
+                "tags": [
+                    "Catalog Sources"
+                ],
+                "summary": "Fetch a specific catalog source for the given ID.",
+                "description": "Returns the catalog source with the supplied ID.",
+                "operationId": "getUsingGET",
+                "parameters": [
+                    {
+                        "name": "sourceId",
+                        "in": "path",
+                        "description": "Catalog source ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CatalogSource"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            },
+            "delete": {
+                "tags": [
+                    "Catalog Sources"
+                ],
+                "summary": "Delete catalog source.",
+                "description": "Deletes the catalog source with the supplied ID.",
+                "operationId": "deleteUsingDELETE",
+                "parameters": [
+                    {
+                        "name": "sourceId",
+                        "in": "path",
+                        "description": "Catalog source ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/catalog/api/items": {
+            "get": {
+                "tags": [
+                    "Catalog Items"
+                ],
+                "summary": "Fetch a list of catalog items.",
+                "description": "Returns a paginated list of catalog items.",
+                "operationId": "getCatalogItemsUsingGET_1",
+                "parameters": [
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "$skip",
+                        "in": "query",
+                        "description": "Number of records you want to skip",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "description": "Number of records you want",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "expandProjects",
+                        "in": "query",
+                        "description": "Whether or not to return detailed project data for each result.",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "projects",
+                        "in": "query",
+                        "description": "A list of project IDs. Results will belong to one of these projects.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Matches will have this string somewhere in their name or description.",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "types",
+                        "in": "query",
+                        "description": "A list of Catalog Item Type IDs. Results will be one of these types.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfCatalogItem"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/catalog/api/items/{id}": {
+            "get": {
+                "tags": [
+                    "Catalog Items"
+                ],
+                "summary": "Find a catalog item with specified ID.",
+                "description": "Returns the catalog item with the specified ID.",
+                "operationId": "getCatalogItemUsingGET_1",
+                "parameters": [
+                    {
+                        "name": "expandProjects",
+                        "in": "query",
+                        "description": "Retrieves the 'projects' field of the catalog item",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Catalog item ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CatalogItem"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/catalog/api/items/{id}/request": {
+            "post": {
+                "tags": [
+                    "Catalog Items"
+                ],
+                "summary": "Create a deployment.",
+                "description": "Creates a deployment from a catalog item.",
+                "operationId": "requestCatalogItemUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Catalog item ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "in": "body",
+                        "name": "request",
+                        "description": "request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CatalogItemRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CatalogItemRequestResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/catalog/api/items/{id}/upfront-prices": {
+            "post": {
+                "tags": [
+                    "Catalog Items"
+                ],
+                "summary": "Create a request to calculate upfront price for a given catalog item.",
+                "description": "Returns upfront price response for a given catalog item.",
+                "operationId": "submitUpfrontPriceRequestForCatalogItemUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Catalog Item ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "in": "body",
+                        "name": "request",
+                        "description": "request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CatalogItemRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CatalogItemUpfrontPriceResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/catalog/api/items/{id}/upfront-prices/{upfrontPriceId}": {
+            "get": {
+                "tags": [
+                    "Catalog Items"
+                ],
+                "summary": "Get a response with upfront prices for a given catalog item.",
+                "description": "Returns upfront prices of a given catalog item.",
+                "operationId": "getUpfrontPriceResponseForCatalogItemUsingGET",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Catalog Item ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "name": "upfrontPriceId",
+                        "in": "path",
+                        "description": "Upfront Price Request ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CatalogItemUpfrontPriceResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/catalog/api/items/{id}/versions": {
+            "get": {
+                "tags": [
+                    "Catalog Items"
+                ],
+                "summary": "Fetch a list of catalog items with versions.",
+                "description": "Returns a paginated list of catalog item versions.",
+                "operationId": "getVersionsUsingGET",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Catalog Item ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Results page you want to retrieve (0..N)",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 0
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "Number of records per page.",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 20
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfCatalogItemVersion"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/catalog/api/items/{id}/versions/{versionId}": {
+            "get": {
+                "tags": [
+                    "Catalog Items"
+                ],
+                "summary": "Fetch detailed catalog item version.",
+                "description": "Returns a detailed catalog item version.",
+                "operationId": "getVersionByIdUsingGET",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Catalog Item ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "name": "versionId",
+                        "in": "path",
+                        "description": "Catalog Item Version ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CatalogItemVersion"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/catalog/api/types": {
+            "get": {
+                "tags": [
+                    "Catalog Item Types"
+                ],
+                "summary": "Find all Catalog Item Types.",
+                "description": "Returns a paginated list of all available Catalog Item Types.",
+                "operationId": "getTypesUsingGET",
+                "parameters": [
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "$skip",
+                        "in": "query",
+                        "description": "Number of records you want to skip",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "description": "Number of records you want",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfCatalogItemType"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/catalog/api/types/{id}": {
+            "get": {
+                "tags": [
+                    "Catalog Item Types"
+                ],
+                "summary": "Fetch catalog item type associated with the specified ID.",
+                "description": "Returns the Catalog Item Type with the specified ID.",
+                "operationId": "getTypeByIdUsingGET",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Catalog Type ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CatalogItemType"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
         "/deployment/api/deployments": {
             "get": {
                 "tags": [
@@ -36,10 +986,36 @@
                 "summary": "Fetch all deployments.",
                 "description": "Returns a paginated list of deployments.",
                 "operationId": "getDeploymentsUsingGET",
-                "produces": [
-                    "*/*"
-                ],
                 "parameters": [
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "$skip",
+                        "in": "query",
+                        "description": "Number of records you want to skip",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "description": "Number of records you want",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
                     {
                         "name": "cloudAccounts",
                         "in": "query",
@@ -68,14 +1044,6 @@
                         "name": "expandLastRequest",
                         "in": "query",
                         "description": "Expands deployment last request.",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "expandMetadata",
-                        "in": "query",
-                        "description": "Retrieves the 'metadata' field of the resource.",
                         "required": false,
                         "type": "boolean",
                         "allowEmptyValue": false
@@ -134,15 +1102,6 @@
                         "allowEmptyValue": false
                     },
                     {
-                        "name": "page",
-                        "in": "query",
-                        "description": "Results page you want to retrieve (0..N)",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32",
-                        "x-example": 0
-                    },
-                    {
                         "name": "projects",
                         "in": "query",
                         "description": "A comma-separated list. Results must be associated with one of these project IDs.",
@@ -187,24 +1146,16 @@
                         "allowEmptyValue": false
                     },
                     {
-                        "name": "size",
+                        "name": "status",
                         "in": "query",
-                        "description": "Number of records per page.",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32",
-                        "x-example": 20
-                    },
-                    {
-                        "name": "sort",
-                        "in": "query",
-                        "description": "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "description": "A comma-separated list. Results must be associated with one of these statuses.",
                         "required": false,
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "collectionFormat": "multi"
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
                     },
                     {
                         "name": "tags",
@@ -240,12 +1191,6 @@
                     },
                     "401": {
                         "description": "Unauthorized"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 },
                 "deprecated": false
@@ -258,8 +1203,93 @@
                 ],
                 "summary": "Returns the Deployment filters in context of given user.",
                 "operationId": "getDeploymentFiltersUsingGET",
-                "produces": [
-                    "*/*"
+                "parameters": [
+                    {
+                        "name": "ISO3Country",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "ISO3Language",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "country",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "displayCountry",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "displayLanguage",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "displayName",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "displayScript",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "displayVariant",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "language",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "script",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "unicodeLocaleAttributes",
+                        "in": "query",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "unicodeLocaleKeys",
+                        "in": "query",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "variant",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    }
                 ],
                 "responses": {
                     "200": {
@@ -270,12 +1300,6 @@
                     },
                     "401": {
                         "description": "Unauthorized"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 },
                 "deprecated": false
@@ -288,10 +1312,36 @@
                 ],
                 "summary": "Returns the Deployment filter with the supplied ID.",
                 "operationId": "getDeploymentFilterByIdUsingGET",
-                "produces": [
-                    "*/*"
-                ],
                 "parameters": [
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "$skip",
+                        "in": "query",
+                        "description": "Number of records you want to skip",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "description": "Number of records you want",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
                     {
                         "name": "filterId",
                         "in": "path",
@@ -317,12 +1367,6 @@
                     },
                     "401": {
                         "description": "Unauthorized"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 },
                 "deprecated": false
@@ -336,9 +1380,6 @@
                 "summary": "Check if a deployment exists.",
                 "description": "Returns OK if a deployment with the supplied name exists.",
                 "operationId": "checkDeploymentNameUsingGET",
-                "produces": [
-                    "*/*"
-                ],
                 "parameters": [
                     {
                         "name": "name",
@@ -355,9 +1396,6 @@
                     "401": {
                         "description": "Unauthorized"
                     },
-                    "403": {
-                        "description": "Forbidden"
-                    },
                     "404": {
                         "description": "Not Found"
                     }
@@ -370,12 +1408,9 @@
                 "tags": [
                     "Deployments"
                 ],
-                "summary": "Fetch a spefic deployment.",
+                "summary": "Fetch a specific deployment.",
                 "description": "Returns the deployment with the supplied ID.",
                 "operationId": "getDeploymentByIdUsingGET",
-                "produces": [
-                    "*/*"
-                ],
                 "parameters": [
                     {
                         "name": "depId",
@@ -389,14 +1424,6 @@
                         "name": "expandLastRequest",
                         "in": "query",
                         "description": "Expands deployment last request.",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "expandMetadata",
-                        "in": "query",
-                        "description": "Retrieves the 'metadata' field of the resource.",
                         "required": false,
                         "type": "boolean",
                         "allowEmptyValue": false
@@ -420,7 +1447,7 @@
                     {
                         "name": "forceCachedResources",
                         "in": "query",
-                        "description": "The 'resources' field of the deployment will be guaranteed up-to-date.",
+                        "description": "The 'resources' field of the deployment will be read from a cache for a faster query.",
                         "required": false,
                         "type": "boolean",
                         "allowEmptyValue": false
@@ -428,7 +1455,7 @@
                     {
                         "name": "forceRefreshResources",
                         "in": "query",
-                        "description": "The 'resources' field of the deployment will be read from a cache for a faster query.",
+                        "description": "The 'resources' field of the deployment will be guaranteed up-to-date.",
                         "required": false,
                         "type": "boolean",
                         "allowEmptyValue": false
@@ -444,9 +1471,6 @@
                     "401": {
                         "description": "Unauthorized"
                     },
-                    "403": {
-                        "description": "Forbidden"
-                    },
                     "404": {
                         "description": "Not Found"
                     }
@@ -457,12 +1481,9 @@
                 "tags": [
                     "Deployments"
                 ],
-                "summary": "Delete a deployment.",
-                "description": "Deletes the deployment with the supplied ID.",
+                "summary": "Delete a deployment. Effectively triggers a Delete Day2 operation",
+                "description": "Deletes the deployment with the supplied ID, cleans up the associated resources from the Cloud Provider.",
                 "operationId": "deleteDeploymentUsingDELETE",
-                "produces": [
-                    "*/*"
-                ],
                 "parameters": [
                     {
                         "name": "depId",
@@ -480,17 +1501,11 @@
                             "$ref": "#/definitions/DeploymentRequest"
                         }
                     },
-                    "204": {
-                        "description": "No Content"
-                    },
                     "401": {
                         "description": "Unauthorized"
-                    },
-                    "403": {
-                        "description": "Forbidden"
                     }
                 },
-                "deprecated": true
+                "deprecated": false
             },
             "patch": {
                 "tags": [
@@ -501,9 +1516,6 @@
                 "operationId": "patchDeploymentUsingPATCH",
                 "consumes": [
                     "application/json"
-                ],
-                "produces": [
-                    "*/*"
                 ],
                 "parameters": [
                     {
@@ -531,14 +1543,11 @@
                             "$ref": "#/definitions/Deployment"
                         }
                     },
-                    "204": {
-                        "description": "No Content"
-                    },
                     "401": {
                         "description": "Unauthorized"
                     },
-                    "403": {
-                        "description": "Forbidden"
+                    "404": {
+                        "description": "Not Found"
                     }
                 },
                 "deprecated": false
@@ -552,9 +1561,6 @@
                 "summary": "Fetch deployment available actions.",
                 "description": "Returns the complete list of available actions that can be performed on a given deployment.",
                 "operationId": "getDeploymentActionsUsingGET",
-                "produces": [
-                    "*/*"
-                ],
                 "parameters": [
                     {
                         "name": "depId",
@@ -578,9 +1584,6 @@
                     "401": {
                         "description": "Unauthorized"
                     },
-                    "403": {
-                        "description": "Forbidden"
-                    },
                     "404": {
                         "description": "Not Found"
                     }
@@ -596,9 +1599,6 @@
                 "summary": "Fetch deployment action.",
                 "description": "Returns an action for the deployment specified by its Deployment ID and Action ID.",
                 "operationId": "getDeploymentActionUsingGET",
-                "produces": [
-                    "*/*"
-                ],
                 "parameters": [
                     {
                         "name": "actionId",
@@ -626,9 +1626,6 @@
                     "401": {
                         "description": "Unauthorized"
                     },
-                    "403": {
-                        "description": "Forbidden"
-                    },
                     "404": {
                         "description": "Not Found"
                     }
@@ -644,10 +1641,36 @@
                 "summary": "Fetch deployment events.",
                 "description": "Returns the events for the deployment.",
                 "operationId": "getDeploymentEventsUsingGET",
-                "produces": [
-                    "*/*"
-                ],
                 "parameters": [
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "$skip",
+                        "in": "query",
+                        "description": "Number of records you want to skip",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "description": "Number of records you want",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
                     {
                         "name": "depId",
                         "in": "path",
@@ -657,13 +1680,12 @@
                         "format": "uuid"
                     },
                     {
-                        "name": "page",
+                        "name": "includeAllSubEvents",
                         "in": "query",
-                        "description": "Results page you want to retrieve (0..N)",
+                        "description": "Whether to include all events in the response.",
                         "required": false,
-                        "type": "integer",
-                        "format": "int32",
-                        "x-example": 0
+                        "type": "boolean",
+                        "allowEmptyValue": false
                     },
                     {
                         "name": "parentId",
@@ -673,26 +1695,6 @@
                         "type": "string",
                         "format": "uuid",
                         "allowEmptyValue": false
-                    },
-                    {
-                        "name": "size",
-                        "in": "query",
-                        "description": "Number of records per page.",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32",
-                        "x-example": 20
-                    },
-                    {
-                        "name": "sort",
-                        "in": "query",
-                        "description": "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
-                        "required": false,
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "multi"
                     }
                 ],
                 "responses": {
@@ -704,9 +1706,6 @@
                     },
                     "401": {
                         "description": "Unauthorized"
-                    },
-                    "403": {
-                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -725,9 +1724,6 @@
                 "operationId": "submitDeploymentActionRequestUsingPOST",
                 "consumes": [
                     "application/json"
-                ],
-                "produces": [
-                    "*/*"
                 ],
                 "parameters": [
                     {
@@ -755,14 +1751,8 @@
                             "$ref": "#/definitions/DeploymentRequest"
                         }
                     },
-                    "201": {
-                        "description": "Created"
-                    },
                     "401": {
                         "description": "Unauthorized"
-                    },
-                    "403": {
-                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -779,10 +1769,36 @@
                 "summary": "Fetch resources associated with a deployment.",
                 "description": "Returns a paginated list of resources corresponding to the deployment with the supplied ID.",
                 "operationId": "getDeploymentResourcesUsingGET",
-                "produces": [
-                    "*/*"
-                ],
                 "parameters": [
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "$skip",
+                        "in": "query",
+                        "description": "Number of records you want to skip",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "description": "Number of records you want",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
                     {
                         "name": "depId",
                         "in": "path",
@@ -790,14 +1806,6 @@
                         "required": true,
                         "type": "string",
                         "format": "uuid"
-                    },
-                    {
-                        "name": "expandMetadata",
-                        "in": "query",
-                        "description": "Retrieves the 'metadata' field of each resource.",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": false
                     },
                     {
                         "name": "forceCachedResources",
@@ -814,35 +1822,6 @@
                         "required": false,
                         "type": "boolean",
                         "allowEmptyValue": false
-                    },
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "Results page you want to retrieve (0..N)",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32",
-                        "x-example": 0
-                    },
-                    {
-                        "name": "size",
-                        "in": "query",
-                        "description": "Number of records per page.",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32",
-                        "x-example": 20
-                    },
-                    {
-                        "name": "sort",
-                        "in": "query",
-                        "description": "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
-                        "required": false,
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "multi"
                     }
                 ],
                 "responses": {
@@ -854,9 +1833,6 @@
                     },
                     "401": {
                         "description": "Unauthorized"
-                    },
-                    "403": {
-                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -873,9 +1849,6 @@
                 "summary": "Fetch resource associated with a deployment.",
                 "description": "Returns the resource with the specified ID that is correlated with the supplied deployment.",
                 "operationId": "getResourceByIdUsingGET",
-                "produces": [
-                    "*/*"
-                ],
                 "parameters": [
                     {
                         "name": "depId",
@@ -884,14 +1857,6 @@
                         "required": true,
                         "type": "string",
                         "format": "uuid"
-                    },
-                    {
-                        "name": "expandMetadata",
-                        "in": "query",
-                        "description": "Retrieves the 'metadata' field of the resource.",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": false
                     },
                     {
                         "name": "forceCachedResources",
@@ -928,9 +1893,6 @@
                     "401": {
                         "description": "Unauthorized"
                     },
-                    "403": {
-                        "description": "Forbidden"
-                    },
                     "404": {
                         "description": "Not Found"
                     }
@@ -941,12 +1903,9 @@
                 "tags": [
                     "Deployments"
                 ],
-                "summary": "Delete resource associated with a deployment.",
-                "description": "Deletes the resource with the specified ID that is correlated with the supplied deployment.",
+                "summary": "Delete resource associated with a deployment. Effectively triggers a Delete Day2 operation.",
+                "description": "Deletes the resource with the specified ID and attempts to delete resource from the Cloud Provider.",
                 "operationId": "deleteResourceUsingDELETE",
-                "produces": [
-                    "*/*"
-                ],
                 "parameters": [
                     {
                         "name": "depId",
@@ -967,19 +1926,16 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK"
-                    },
-                    "204": {
-                        "description": "No Content"
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/DeploymentRequest"
+                        }
                     },
                     "401": {
                         "description": "Unauthorized"
-                    },
-                    "403": {
-                        "description": "Forbidden"
                     }
                 },
-                "deprecated": true
+                "deprecated": false
             }
         },
         "/deployment/api/deployments/{depId}/resources/{resourceId}/actions": {
@@ -990,9 +1946,6 @@
                 "summary": "Fetch available resource actions.",
                 "description": "Returns the complete list of available actions that can be performed on a given resource.",
                 "operationId": "getResourceActionsUsingGET",
-                "produces": [
-                    "*/*"
-                ],
                 "parameters": [
                     {
                         "name": "depId",
@@ -1024,9 +1977,6 @@
                     "401": {
                         "description": "Unauthorized"
                     },
-                    "403": {
-                        "description": "Forbidden"
-                    },
                     "404": {
                         "description": "Not Found"
                     }
@@ -1042,9 +1992,6 @@
                 "summary": "Fetch resource action.",
                 "description": "Returns an action for the resource specified by its Resource ID and Action ID.",
                 "operationId": "getResourceActionUsingGET",
-                "produces": [
-                    "*/*"
-                ],
                 "parameters": [
                     {
                         "name": "actionId",
@@ -1080,9 +2027,6 @@
                     "401": {
                         "description": "Unauthorized"
                     },
-                    "403": {
-                        "description": "Forbidden"
-                    },
                     "404": {
                         "description": "Not Found"
                     }
@@ -1100,9 +2044,6 @@
                 "operationId": "submitResourceActionRequestUsingPOST",
                 "consumes": [
                     "application/json"
-                ],
-                "produces": [
-                    "*/*"
                 ],
                 "parameters": [
                     {
@@ -1138,14 +2079,8 @@
                             "$ref": "#/definitions/DeploymentRequest"
                         }
                     },
-                    "201": {
-                        "description": "Created"
-                    },
                     "401": {
                         "description": "Unauthorized"
-                    },
-                    "403": {
-                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1161,9 +2096,6 @@
                 ],
                 "summary": "Returns a count of deployments using the project.",
                 "operationId": "getDeploymentsForProjectUsingGET",
-                "produces": [
-                    "*/*"
-                ],
                 "parameters": [
                     {
                         "name": "projectId",
@@ -1180,15 +2112,6 @@
                         "schema": {
                             "$ref": "#/definitions/Page"
                         }
-                    },
-                    "401": {
-                        "description": "Unauthorized"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
                     }
                 },
                 "deprecated": false
@@ -1199,13 +2122,10 @@
                 "tags": [
                     "Deployment Actions"
                 ],
-                "summary": "Submit action on in-progress requests. Allowable values: cancel,pause,resume",
+                "summary": "Submit action on requests. Allowable values: cancel, dismiss. Cancel can be submitted on In-progress requests and Dismiss can be submitted on Failed requests.",
                 "operationId": "actionDeploymentRequestUsingPOST",
                 "consumes": [
                     "application/json"
-                ],
-                "produces": [
-                    "*/*"
                 ],
                 "parameters": [
                     {
@@ -1217,8 +2137,7 @@
                         "allowEmptyValue": false,
                         "enum": [
                             "cancel",
-                            "pause",
-                            "resume"
+                            "dismiss"
                         ]
                     },
                     {
@@ -1234,14 +2153,8 @@
                     "200": {
                         "description": "OK"
                     },
-                    "201": {
-                        "description": "Created"
-                    },
                     "401": {
                         "description": "Unauthorized"
-                    },
-                    "403": {
-                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1249,9 +2162,1050 @@
                 },
                 "deprecated": false
             }
+        },
+        "/icon/api/icons": {
+            "post": {
+                "tags": [
+                    "Icons"
+                ],
+                "summary": "Upload an icon",
+                "description": "Create an icon.",
+                "operationId": "upload",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "formData",
+                        "description": "Icon file",
+                        "required": true,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success - create an icon."
+                    },
+                    "400": {
+                        "description": "Invalid request - bad data."
+                    },
+                    "403": {
+                        "description": "Forbidden."
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/icon/api/icons/{id}": {
+            "get": {
+                "tags": [
+                    "Icons"
+                ],
+                "summary": "Download an icon",
+                "description": "Download an existing icon by its unique id.",
+                "operationId": "download",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Icon id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success - return the catalog icon.",
+                        "schema": {
+                            "type": "string",
+                            "format": "byte"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request - bad data."
+                    },
+                    "404": {
+                        "description": "Icon not found."
+                    }
+                },
+                "deprecated": false
+            },
+            "delete": {
+                "tags": [
+                    "Icons"
+                ],
+                "summary": "Delete an icon",
+                "description": "Delete an existing icon by its unique id.",
+                "operationId": "delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Icon id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Success - delete the icon"
+                    },
+                    "403": {
+                        "description": "Forbidden."
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/policy/api/policies": {
+            "get": {
+                "tags": [
+                    "Policies"
+                ],
+                "summary": "Returns a paginated list of policies.",
+                "description": "Find all the policies associated with current org.",
+                "operationId": "getPoliciesUsingGET",
+                "parameters": [
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "$skip",
+                        "in": "query",
+                        "description": "Number of records you want to skip",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "description": "Number of records you want",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "computeStats",
+                        "in": "query",
+                        "description": "computeStats",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "expandDefinition",
+                        "in": "query",
+                        "description": "Retrieves the schema for this policy type",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Matches will start with this string in their name or have this string somewhere in their description.",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfPolicy"
+                        }
+                    }
+                },
+                "deprecated": false
+            },
+            "post": {
+                "tags": [
+                    "Policies"
+                ],
+                "summary": "Creates a policy.",
+                "description": "Create a new policy based on request body and validate its field according to business rules.",
+                "operationId": "createPolicyUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "policy",
+                        "description": "The policy to be created",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Policy"
+                        }
+                    },
+                    {
+                        "name": "validationOnly",
+                        "in": "query",
+                        "description": "For a dry run that will do policy validation only instead of create a policy",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Policy"
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/policy/api/policies/{id}": {
+            "get": {
+                "tags": [
+                    "Policies"
+                ],
+                "summary": "Returns a specified policy.",
+                "description": "Find a specific policy based on the input policy id.",
+                "operationId": "getPolicyUsingGET",
+                "parameters": [
+                    {
+                        "name": "computeStats",
+                        "in": "query",
+                        "description": "computeStats",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "expandCriteriaLegend",
+                        "in": "query",
+                        "description": "Augments Criteria in returned object with legend data structures for translation between IDs and human readable DataElements",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Policy ID",
+                        "required": false,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Policy"
+                        }
+                    }
+                },
+                "deprecated": false
+            },
+            "delete": {
+                "tags": [
+                    "Policies"
+                ],
+                "summary": "Delete a policy",
+                "description": "Delete a specified policy corresponding to its unique id.",
+                "operationId": "deletePolicyUsingDELETE",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Policy ID",
+                        "required": false,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/policy/api/policyDecisions": {
+            "get": {
+                "tags": [
+                    "Policy Decisions"
+                ],
+                "summary": "Fetch a list of policy decisions.",
+                "description": "Returns a paginated list of policy decisions. If a dryRunId is provided, the return value has a field indicating whether the dry run is complete.",
+                "operationId": "getDecisionsUsingGET",
+                "parameters": [
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "$skip",
+                        "in": "query",
+                        "description": "Number of records you want to skip",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "description": "Number of records you want",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "dryRunId",
+                        "in": "query",
+                        "description": "dryRunId",
+                        "required": false,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "name": "policyTypeId",
+                        "in": "query",
+                        "description": "Matches will only include policies of this type",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "projectId",
+                        "in": "query",
+                        "description": "Matches will only include decisions with this project ID",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Matches will start with this string in their policy name or target name or have this string somewhere in their description.",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfPolicyDecisionOfObjectNode"
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/policy/api/policyDecisions/{id}": {
+            "get": {
+                "tags": [
+                    "Policy Decisions"
+                ],
+                "summary": "Returns a policy decision by id.",
+                "description": "Find a specific policy decision based on the input policy decision id.",
+                "operationId": "getDecisionByIdUsingGET",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Policy decision Id",
+                        "required": false,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PolicyDecisionOfObjectNode"
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/policy/api/policyTypes": {
+            "get": {
+                "tags": [
+                    "Policy Types"
+                ],
+                "summary": "Returns a paginated list of policy types.",
+                "description": "Find all the policy types available in the current org.",
+                "operationId": "getTypesUsingGET_1",
+                "parameters": [
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "$skip",
+                        "in": "query",
+                        "description": "Number of records you want to skip",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "description": "Number of records you want",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "expandSchema",
+                        "in": "query",
+                        "description": "Retrieves the schema for this policy type",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfPolicyType"
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/policy/api/policyTypes/{id}": {
+            "get": {
+                "tags": [
+                    "Policy Types"
+                ],
+                "summary": "Returns the policy type with the specified ID.",
+                "description": "Find a specific policy type based on the input policy type id.",
+                "operationId": "getPolicyTypeByIdUsingGET",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Policy type ID",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PolicyType"
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/policy/api/policyTypes/{id}/data/{dataPath}": {
+            "get": {
+                "tags": [
+                    "Policy Types"
+                ],
+                "summary": "Returns the data elements for the given policy type and data type id.",
+                "operationId": "getPolicyTypeDataUsingGET",
+                "parameters": [
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "$skip",
+                        "in": "query",
+                        "description": "Number of records you want to skip",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "description": "Number of records you want",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "dataPath",
+                        "in": "path",
+                        "description": "Data path",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Policy type ID",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "projectId",
+                        "in": "query",
+                        "description": "Optional projectId to further contextualize returned data elements",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Search param for data elements",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfDataElement"
+                        }
+                    }
+                },
+                "deprecated": false
+            }
         }
     },
     "definitions": {
+        "AdminCatalogItemPatch": {
+            "type": "object",
+            "properties": {
+                "iconId": {
+                    "type": "string",
+                    "description": "icon id"
+                }
+            },
+            "title": "AdminCatalogItemPatch",
+            "description": "A patch to update attributes for a catalog item"
+        },
+        "CatalogItem": {
+            "type": "object",
+            "required": [
+                "id",
+                "name",
+                "projectIds",
+                "type"
+            ],
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Creation time"
+                },
+                "createdBy": {
+                    "type": "string",
+                    "description": "Created By"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "CatalogItem description"
+                },
+                "iconId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Icon ID"
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "CatalogItem id"
+                },
+                "lastUpdatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Update time"
+                },
+                "lastUpdatedBy": {
+                    "type": "string",
+                    "description": "Updated By"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "CatalogItem name"
+                },
+                "projectIds": {
+                    "type": "array",
+                    "description": "Associated project IDs that can be used for requesting",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "projects": {
+                    "type": "array",
+                    "description": "Associated projects that can be used for requesting",
+                    "items": {
+                        "$ref": "#/definitions/ResourceReference"
+                    }
+                },
+                "schema": {
+                    "type": "object",
+                    "description": "Json schema describing request parameters, a simplified version of http://json-schema.org/latest/json-schema-validation.html#rfc.section.5"
+                },
+                "sourceId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "LibraryItem source ID."
+                },
+                "sourceName": {
+                    "type": "string",
+                    "description": "LibraryItem source name."
+                },
+                "type": {
+                    "description": "ResourceReference to type, e.g. blueprint, CFT... etc",
+                    "$ref": "#/definitions/ResourceReference"
+                }
+            },
+            "title": "CatalogItem",
+            "description": "Represents a Catalog Item that can eventually be requested by a consumer."
+        },
+        "CatalogItemRequest": {
+            "type": "object",
+            "properties": {
+                "deploymentName": {
+                    "type": "string",
+                    "description": "Name of the requested deployment"
+                },
+                "inputs": {
+                    "type": "object",
+                    "description": "Input parameters for the request. These must be compliant with the schema of the corresponding catalog item"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Project to be used for the request"
+                },
+                "reason": {
+                    "type": "string",
+                    "description": "Reason for request"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Version of the catalog item. e.g. v2.0"
+                }
+            },
+            "title": "CatalogItemRequest",
+            "description": "A request to create a deployment based on a catalog item"
+        },
+        "CatalogItemRequestResponse": {
+            "type": "object",
+            "properties": {
+                "deploymentId": {
+                    "type": "string",
+                    "description": "The created deployment's ID"
+                },
+                "deploymentName": {
+                    "type": "string",
+                    "description": "The created deployment's name"
+                }
+            },
+            "title": "CatalogItemRequestResponse",
+            "description": "The blueprint service's response to a deployment request"
+        },
+        "CatalogItemResourceUpfrontPriceResponse": {
+            "type": "object",
+            "properties": {
+                "dailyAdditionalPrice": {
+                    "type": "number",
+                    "description": "Additional Price incurred for the catalog.",
+                    "readOnly": true
+                },
+                "dailyComputePrice": {
+                    "type": "number",
+                    "description": "Compute Price of the catalog resource.",
+                    "readOnly": true
+                },
+                "dailyNetworkPrice": {
+                    "type": "number",
+                    "description": "Network Price of the catalog resource.",
+                    "readOnly": true
+                },
+                "dailyStoragePrice": {
+                    "type": "number",
+                    "description": "Storage Price of the catalog resource.",
+                    "readOnly": true
+                },
+                "dailyTotalPrice": {
+                    "type": "number",
+                    "description": "Total Price of the catalog resource.",
+                    "readOnly": true
+                },
+                "resourceName": {
+                    "type": "string"
+                },
+                "resourceType": {
+                    "type": "string"
+                },
+                "resourceUpfrontPriceId": {
+                    "type": "string",
+                    "description": "Id",
+                    "readOnly": true
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Upfront price sync status",
+                    "readOnly": true,
+                    "enum": [
+                        "SUCCESS",
+                        "ERROR",
+                        "DATA_NOT_AVAILABLE",
+                        "CURRENCY_NOT_SET"
+                    ]
+                },
+                "statusDetails": {
+                    "type": "string",
+                    "description": "Upfront price status detail.",
+                    "readOnly": true
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "Monetary unit.",
+                    "readOnly": true
+                }
+            },
+            "title": "CatalogItemResourceUpfrontPriceResponse",
+            "description": "A response with upfront price for a resource in given catalog item"
+        },
+        "CatalogItemType": {
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "baseUri": {
+                    "type": "string",
+                    "description": "Base callback URI for import operations"
+                },
+                "configSchema": {
+                    "type": "object",
+                    "description": "Configuration schema for this type, requests to create a source of this type should have a compliant 'config' field"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Creation time"
+                },
+                "createdBy": {
+                    "type": "string",
+                    "description": "Service that created this type"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Human-readable unique ID containing only lowercase letters and periods, neither starting nor ending with a period, and never having two consecutive periods"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique Catalog Item Type name"
+                }
+            },
+            "title": "CatalogItemType",
+            "description": "Represents a type of Catalog Item."
+        },
+        "CatalogItemUpfrontPriceResponse": {
+            "type": "object",
+            "properties": {
+                "dailyAdditionalPrice": {
+                    "type": "number",
+                    "description": "Additional Price incurred for the catalog.",
+                    "readOnly": true
+                },
+                "dailyComputePrice": {
+                    "type": "number",
+                    "description": "Compute Price of the catalog.",
+                    "readOnly": true
+                },
+                "dailyNetworkPrice": {
+                    "type": "number",
+                    "description": "Network Price of the catalog.",
+                    "readOnly": true
+                },
+                "dailyStoragePrice": {
+                    "type": "number",
+                    "description": "Storage Price of the catalog.",
+                    "readOnly": true
+                },
+                "dailyTotalPrice": {
+                    "type": "number",
+                    "description": "Total Price of the catalog.",
+                    "readOnly": true
+                },
+                "resourcePriceDetails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CatalogItemResourceUpfrontPriceResponse"
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Upfront price sync status",
+                    "readOnly": true,
+                    "enum": [
+                        "STARTED",
+                        "PREPARING_COST_ESTIMATION",
+                        "IN_PROGRESS",
+                        "SUCCESS",
+                        "ERROR",
+                        "DATA_NOT_AVAILABLE",
+                        "CURRENCY_NOT_SET",
+                        "PUBLIC_CLOUD_NOT_SUPPORTED"
+                    ]
+                },
+                "statusDetails": {
+                    "type": "string",
+                    "description": "Upfront price status detail.",
+                    "readOnly": true
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "Monetary unit.",
+                    "readOnly": true
+                },
+                "upfrontPriceId": {
+                    "type": "string",
+                    "description": "Id",
+                    "readOnly": true
+                }
+            },
+            "title": "CatalogItemUpfrontPriceResponse",
+            "description": "The response to a catalog item upfront price request"
+        },
+        "CatalogItemVersion": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Created At"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Version ID"
+                },
+                "schema": {
+                    "type": "object",
+                    "description": "Input Schema"
+                }
+            },
+            "title": "CatalogItemVersion",
+            "description": "Represents a version of a Catalog Item that can be requested by a consumer."
+        },
+        "CatalogSource": {
+            "type": "object",
+            "required": [
+                "config",
+                "id",
+                "name",
+                "typeId"
+            ],
+            "properties": {
+                "config": {
+                    "type": "object",
+                    "description": "Source custom configuration"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Creation time"
+                },
+                "createdBy": {
+                    "type": "string",
+                    "description": "Created By"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Catalog Source description"
+                },
+                "global": {
+                    "type": "boolean",
+                    "description": "Global flag indicating that all the items can be requested across all projects."
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Catalog Source id"
+                },
+                "itemsFound": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Number of items found"
+                },
+                "itemsImported": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Number of items imported."
+                },
+                "lastImportCompletedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Last import completion time"
+                },
+                "lastImportErrors": {
+                    "type": "array",
+                    "description": "Last import error(s)",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "lastImportStartedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Last import start time"
+                },
+                "lastUpdatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Update time"
+                },
+                "lastUpdatedBy": {
+                    "type": "string",
+                    "description": "Updated By"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Catalog Source name"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Project id where the source belongs"
+                },
+                "typeId": {
+                    "type": "string",
+                    "description": "Type of source, e.g. blueprint, CFT... etc"
+                }
+            },
+            "title": "CatalogSource",
+            "description": "Represents a source of templates from which Catalog Items can be created"
+        },
+        "Clause": {
+            "type": "object",
+            "title": "Clause"
+        },
+        "ContentDefinition": {
+            "type": "object",
+            "required": [
+                "id",
+                "type"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of either the catalog item or the catalog source"
+                },
+                "iconId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Icon id of associated catalog item (if association is with catalog item)"
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Id of either the catalog source or catalog item."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of either the catalog item or the catalog source"
+                },
+                "numItems": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Number of items in the associated catalog source"
+                },
+                "sourceName": {
+                    "type": "string",
+                    "description": "Catalog source name"
+                },
+                "sourceType": {
+                    "type": "string",
+                    "description": "Catalog source type"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Content definition type"
+                }
+            },
+            "title": "ContentDefinition",
+            "description": "Represents a catalog item or content source that is linked to a project via an entitlement."
+        },
+        "Criteria": {
+            "type": "object",
+            "properties": {
+                "matchExpression": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Clause"
+                    }
+                }
+            },
+            "title": "Criteria"
+        },
+        "DataElement": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "title": "DataElement"
+        },
         "Deployment": {
             "type": "object",
             "required": [
@@ -1421,6 +3375,10 @@
                     "type": "string",
                     "description": "Identifier of the requested blueprint in the form 'UUID:version'"
                 },
+                "cancelable": {
+                    "type": "boolean",
+                    "description": "Indicates whether request can be canceled or not."
+                },
                 "catalogItemId": {
                     "type": "string",
                     "description": "Identifier of the requested catalog item in the form 'UUID:version'"
@@ -1444,6 +3402,10 @@
                     "type": "string",
                     "description": "Longer user-friendly details of the event."
                 },
+                "dismissed": {
+                    "type": "boolean",
+                    "description": "Indicates whether request is in dismissed state."
+                },
                 "id": {
                     "type": "string",
                     "format": "uuid",
@@ -1465,9 +3427,6 @@
                 "requestedBy": {
                     "type": "string",
                     "description": "User that initiated the request"
-                },
-                "requester": {
-                    "type": "string"
                 },
                 "resourceName": {
                     "type": "string",
@@ -1491,9 +3450,6 @@
                         "CREATED"
                     ]
                 },
-                "statusDetails": {
-                    "type": "string"
-                },
                 "totalTasks": {
                     "type": "integer",
                     "format": "int32",
@@ -1506,7 +3462,7 @@
                 }
             },
             "title": "DeploymentRequest",
-            "description": "A deployment user request."
+            "description": "Represents deployment requests."
         },
         "DeploymentUpdate": {
             "type": "object",
@@ -1522,6 +3478,31 @@
             },
             "title": "DeploymentUpdate",
             "description": "A deployment update request"
+        },
+        "Entitlement": {
+            "type": "object",
+            "required": [
+                "definition",
+                "id",
+                "projectId"
+            ],
+            "properties": {
+                "definition": {
+                    "description": "Entitlement definition that contains the Catalog Item or Catalog Source data.",
+                    "$ref": "#/definitions/ContentDefinition"
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Entitlement id"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Project id"
+                }
+            },
+            "title": "Entitlement",
+            "description": "Represents an entitlement that is configured by admins to enforce user access to catalog items, services, etc., within their own organizations. "
         },
         "Expense": {
             "type": "object",
@@ -1662,6 +3643,33 @@
             },
             "title": "FormDefinition"
         },
+        "InternalDeploymentIconUpdate": {
+            "type": "object",
+            "properties": {
+                "iconId": {
+                    "type": "string"
+                }
+            },
+            "title": "InternalDeploymentIconUpdate"
+        },
+        "InternalDeploymentUpdate": {
+            "type": "object",
+            "properties": {
+                "blueprintId": {
+                    "type": "string"
+                },
+                "blueprintVersion": {
+                    "type": "string"
+                },
+                "expense": {
+                    "$ref": "#/definitions/Expense"
+                },
+                "inputs": {
+                    "type": "object"
+                }
+            },
+            "title": "InternalDeploymentUpdate"
+        },
         "Page": {
             "type": "object",
             "properties": {
@@ -1673,6 +3681,226 @@
             },
             "title": "Page",
             "description": "Project callback response containing count of deployments"
+        },
+        "PageOfCatalogItem": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CatalogItem"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfCatalogItem"
+        },
+        "PageOfCatalogItemType": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CatalogItemType"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfCatalogItemType"
+        },
+        "PageOfCatalogItemVersion": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CatalogItemVersion"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfCatalogItemVersion"
+        },
+        "PageOfCatalogSource": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CatalogSource"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfCatalogSource"
+        },
+        "PageOfDataElement": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DataElement"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfDataElement"
         },
         "PageOfDeployment": {
             "type": "object",
@@ -1850,6 +4078,138 @@
             },
             "title": "PageOfFilterEntry"
         },
+        "PageOfPolicy": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Policy"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfPolicy"
+        },
+        "PageOfPolicyDecisionOfObjectNode": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PolicyDecisionOfObjectNode"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfPolicyDecisionOfObjectNode"
+        },
+        "PageOfPolicyType": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PolicyType"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfPolicyType"
+        },
         "PageOfResource": {
             "type": "object",
             "properties": {
@@ -1893,6 +4253,200 @@
                 }
             },
             "title": "PageOfResource"
+        },
+        "Policy": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "createdBy": {
+                    "type": "string"
+                },
+                "criteria": {
+                    "$ref": "#/definitions/Criteria"
+                },
+                "definition": {
+                    "type": "object"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "enforcementType": {
+                    "type": "string",
+                    "enum": [
+                        "SOFT",
+                        "HARD"
+                    ]
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "lastUpdatedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "lastUpdatedBy": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "orgId": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "string"
+                },
+                "statistics": {
+                    "$ref": "#/definitions/PolicyStats"
+                },
+                "typeId": {
+                    "type": "string"
+                }
+            },
+            "title": "Policy",
+            "description": "A policy such as lease policy that will be enforced."
+        },
+        "PolicyDecisionOfObjectNode": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "dryRunId": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "dryRunSubTaskId": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "effectivePolicyDefinition": {
+                    "type": "object"
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "orgId": {
+                    "type": "string"
+                },
+                "policies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PolicyDecisionPolicy"
+                    }
+                },
+                "projectId": {
+                    "type": "string"
+                },
+                "targetId": {
+                    "type": "string"
+                },
+                "targetName": {
+                    "type": "string"
+                },
+                "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "typeId": {
+                    "type": "string"
+                }
+            },
+            "title": "PolicyDecisionOfObjectNode",
+            "description": "A decision made to enforce policies."
+        },
+        "PolicyDecisionPolicy": {
+            "type": "object",
+            "properties": {
+                "enforcementType": {
+                    "type": "string",
+                    "enum": [
+                        "SOFT",
+                        "HARD"
+                    ]
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "string"
+                },
+                "rank": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "NOT_ENFORCED",
+                        "ENFORCED",
+                        "CONFLICT"
+                    ]
+                }
+            },
+            "title": "PolicyDecisionPolicy",
+            "description": "Element of a decision."
+        },
+        "PolicyStats": {
+            "type": "object",
+            "properties": {
+                "conflictCount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "enforcedCount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "notEnforcedCount": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "PolicyStats"
+        },
+        "PolicyType": {
+            "type": "object",
+            "required": [
+                "definitionSchema",
+                "displayName",
+                "id",
+                "name",
+                "targetSchema"
+            ],
+            "properties": {
+                "definitionSchema": {
+                    "type": "object",
+                    "description": "Schema describing a policy object of this type"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Policy type display-name/label"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Policy type ID"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Policy type name"
+                },
+                "targetSchema": {
+                    "type": "object",
+                    "description": "Schema describing objects that can be affected by this policy"
+                }
+            },
+            "title": "PolicyType",
+            "description": "A type of policy that includes the schema of the policy itself and the schema of the objects affected by the policy"
         },
         "Resource": {
             "type": "object",

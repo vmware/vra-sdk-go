@@ -41,7 +41,7 @@ func (a *Client) DeleteRequest(params *DeleteRequestParams) (*DeleteRequestNoCon
 		ID:                 "deleteRequest",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/request-tracker/{id}",
-		ProducesMediaTypes: []string{""},
+		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,

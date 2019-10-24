@@ -36,18 +36,6 @@ func (o *GetDeploymentsUsingGETReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return nil, result
-	case 403:
-		result := NewGetDeploymentsUsingGETForbidden()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-	case 404:
-		result := NewGetDeploymentsUsingGETNotFound()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
@@ -104,48 +92,6 @@ func (o *GetDeploymentsUsingGETUnauthorized) Error() string {
 }
 
 func (o *GetDeploymentsUsingGETUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewGetDeploymentsUsingGETForbidden creates a GetDeploymentsUsingGETForbidden with default headers values
-func NewGetDeploymentsUsingGETForbidden() *GetDeploymentsUsingGETForbidden {
-	return &GetDeploymentsUsingGETForbidden{}
-}
-
-/*GetDeploymentsUsingGETForbidden handles this case with default header values.
-
-Forbidden
-*/
-type GetDeploymentsUsingGETForbidden struct {
-}
-
-func (o *GetDeploymentsUsingGETForbidden) Error() string {
-	return fmt.Sprintf("[GET /deployment/api/deployments][%d] getDeploymentsUsingGETForbidden ", 403)
-}
-
-func (o *GetDeploymentsUsingGETForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewGetDeploymentsUsingGETNotFound creates a GetDeploymentsUsingGETNotFound with default headers values
-func NewGetDeploymentsUsingGETNotFound() *GetDeploymentsUsingGETNotFound {
-	return &GetDeploymentsUsingGETNotFound{}
-}
-
-/*GetDeploymentsUsingGETNotFound handles this case with default header values.
-
-Not Found
-*/
-type GetDeploymentsUsingGETNotFound struct {
-}
-
-func (o *GetDeploymentsUsingGETNotFound) Error() string {
-	return fmt.Sprintf("[GET /deployment/api/deployments][%d] getDeploymentsUsingGETNotFound ", 404)
-}
-
-func (o *GetDeploymentsUsingGETNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

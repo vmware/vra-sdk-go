@@ -27,20 +27,8 @@ func (o *ActionDeploymentRequestUsingPOSTReader) ReadResponse(response runtime.C
 			return nil, err
 		}
 		return result, nil
-	case 201:
-		result := NewActionDeploymentRequestUsingPOSTCreated()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return result, nil
 	case 401:
 		result := NewActionDeploymentRequestUsingPOSTUnauthorized()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
-	case 403:
-		result := NewActionDeploymentRequestUsingPOSTForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -78,27 +66,6 @@ func (o *ActionDeploymentRequestUsingPOSTOK) readResponse(response runtime.Clien
 	return nil
 }
 
-// NewActionDeploymentRequestUsingPOSTCreated creates a ActionDeploymentRequestUsingPOSTCreated with default headers values
-func NewActionDeploymentRequestUsingPOSTCreated() *ActionDeploymentRequestUsingPOSTCreated {
-	return &ActionDeploymentRequestUsingPOSTCreated{}
-}
-
-/*ActionDeploymentRequestUsingPOSTCreated handles this case with default header values.
-
-Created
-*/
-type ActionDeploymentRequestUsingPOSTCreated struct {
-}
-
-func (o *ActionDeploymentRequestUsingPOSTCreated) Error() string {
-	return fmt.Sprintf("[POST /deployment/api/requests/{requestId}][%d] actionDeploymentRequestUsingPOSTCreated ", 201)
-}
-
-func (o *ActionDeploymentRequestUsingPOSTCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
 // NewActionDeploymentRequestUsingPOSTUnauthorized creates a ActionDeploymentRequestUsingPOSTUnauthorized with default headers values
 func NewActionDeploymentRequestUsingPOSTUnauthorized() *ActionDeploymentRequestUsingPOSTUnauthorized {
 	return &ActionDeploymentRequestUsingPOSTUnauthorized{}
@@ -116,27 +83,6 @@ func (o *ActionDeploymentRequestUsingPOSTUnauthorized) Error() string {
 }
 
 func (o *ActionDeploymentRequestUsingPOSTUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewActionDeploymentRequestUsingPOSTForbidden creates a ActionDeploymentRequestUsingPOSTForbidden with default headers values
-func NewActionDeploymentRequestUsingPOSTForbidden() *ActionDeploymentRequestUsingPOSTForbidden {
-	return &ActionDeploymentRequestUsingPOSTForbidden{}
-}
-
-/*ActionDeploymentRequestUsingPOSTForbidden handles this case with default header values.
-
-Forbidden
-*/
-type ActionDeploymentRequestUsingPOSTForbidden struct {
-}
-
-func (o *ActionDeploymentRequestUsingPOSTForbidden) Error() string {
-	return fmt.Sprintf("[POST /deployment/api/requests/{requestId}][%d] actionDeploymentRequestUsingPOSTForbidden ", 403)
-}
-
-func (o *ActionDeploymentRequestUsingPOSTForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }
