@@ -25,6 +25,8 @@ def add_filter_params(swagger):
         "/iaas/api/network-domains",
         "/iaas/api/projects",
         "/iaas/api/security-groups",
+        "/iaas/api/network-profiles",
+        "/iaas/api/storage-profiles",
     ]
 
     # Update the needed paths
