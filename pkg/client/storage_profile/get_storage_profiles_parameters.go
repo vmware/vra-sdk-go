@@ -61,6 +61,11 @@ for the get storage profiles operation typically these are written to a http.Req
 */
 type GetStorageProfilesParams struct {
 
+	/*DollarFilter
+	  Add a filter to return limited results
+
+	*/
+	DollarFilter *string
 	/*APIVersion
 	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about
 
@@ -105,6 +110,17 @@ func (o *GetStorageProfilesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithDollarFilter adds the dollarFilter to the get storage profiles params
+func (o *GetStorageProfilesParams) WithDollarFilter(dollarFilter *string) *GetStorageProfilesParams {
+	o.SetDollarFilter(dollarFilter)
+	return o
+}
+
+// SetDollarFilter adds the dollarFilter to the get storage profiles params
+func (o *GetStorageProfilesParams) SetDollarFilter(dollarFilter *string) {
+	o.DollarFilter = dollarFilter
+}
+
 // WithAPIVersion adds the aPIVersion to the get storage profiles params
 func (o *GetStorageProfilesParams) WithAPIVersion(aPIVersion *string) *GetStorageProfilesParams {
 	o.SetAPIVersion(aPIVersion)
@@ -123,6 +139,22 @@ func (o *GetStorageProfilesParams) WriteToRequest(r runtime.ClientRequest, reg s
 		return err
 	}
 	var res []error
+
+	if o.DollarFilter != nil {
+
+		// query param $filter
+		var qrDollarFilter string
+		if o.DollarFilter != nil {
+			qrDollarFilter = *o.DollarFilter
+		}
+		qDollarFilter := qrDollarFilter
+		if qDollarFilter != "" {
+			if err := r.SetQueryParam("$filter", qDollarFilter); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	if o.APIVersion != nil {
 
