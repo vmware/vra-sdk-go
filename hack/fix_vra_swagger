@@ -54,6 +54,18 @@ def add_required(swagger):
                 d['required'] = True
 
 
+def add_204(swagger):
+    paths = [
+        ('/iaas/api/block-devices/{id}', 'delete'),
+    ]
+
+    # Update the needed paths
+    for p, op in paths:
+        responses = swagger['paths'][p][op]['responses']
+        if '204' not in responses:
+            responses['204'] = { "description": "No Content" }
+
+
 def add_global_security(swagger):
     security_def = {
         "Bearer": {
@@ -98,6 +110,7 @@ if __name__ == "__main__":
 
     add_filter_params(swagger)
     add_required(swagger)
+    add_204(swagger)
 
     if args.omit_security:
         add_global_security(swagger)
