@@ -70,12 +70,12 @@ type RevertMachineSnapshotParams struct {
 	  The id of the Machine.
 
 	*/
-	ID string
+	PathID string
 	/*ID
 	  Snapshot id to revert.
 
 	*/
-	QueryID string
+	ID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -126,6 +126,17 @@ func (o *RevertMachineSnapshotParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
+// WithPathID adds the id to the revert machine snapshot params
+func (o *RevertMachineSnapshotParams) WithPathID(id string) *RevertMachineSnapshotParams {
+	o.SetPathID(id)
+	return o
+}
+
+// SetPathID adds the id to the revert machine snapshot params
+func (o *RevertMachineSnapshotParams) SetPathID(id string) {
+	o.PathID = id
+}
+
 // WithID adds the id to the revert machine snapshot params
 func (o *RevertMachineSnapshotParams) WithID(id string) *RevertMachineSnapshotParams {
 	o.SetID(id)
@@ -135,17 +146,6 @@ func (o *RevertMachineSnapshotParams) WithID(id string) *RevertMachineSnapshotPa
 // SetID adds the id to the revert machine snapshot params
 func (o *RevertMachineSnapshotParams) SetID(id string) {
 	o.ID = id
-}
-
-// WithQueryID adds the id to the revert machine snapshot params
-func (o *RevertMachineSnapshotParams) WithQueryID(id string) *RevertMachineSnapshotParams {
-	o.SetQueryID(id)
-	return o
-}
-
-// SetQueryID adds the id to the revert machine snapshot params
-func (o *RevertMachineSnapshotParams) SetQueryID(id string) {
-	o.QueryID = id
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -173,12 +173,12 @@ func (o *RevertMachineSnapshotParams) WriteToRequest(r runtime.ClientRequest, re
 	}
 
 	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
+	if err := r.SetPathParam("id", o.PathID); err != nil {
 		return err
 	}
 
 	// query param id
-	qrID := o.QueryID
+	qrID := o.ID
 	qID := qrID
 	if qID != "" {
 		if err := r.SetQueryParam("id", qID); err != nil {
