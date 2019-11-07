@@ -76,6 +76,9 @@ type Deployment struct {
 	// Required: true
 	Name *string `json:"name"`
 
+	// org Id
+	OrgID string `json:"orgId,omitempty"`
+
 	// Expanded deployment project
 	Project *ResourceReference `json:"project,omitempty"`
 
@@ -85,9 +88,6 @@ type Deployment struct {
 	// Expanded resources for the deployment. Content of this property will not be maintained backward compatible
 	// Read Only: true
 	Resources []*Resource `json:"resources"`
-
-	// simulated
-	Simulated bool `json:"simulated,omitempty"`
 
 	// Deployment status.
 	// Enum: [CREATE_SUCCESSFUL CREATE_INPROGRESS CREATE_FAILED UPDATE_SUCCESSFUL UPDATE_INPROGRESS UPDATE_FAILED]

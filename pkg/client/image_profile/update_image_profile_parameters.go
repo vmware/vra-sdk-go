@@ -72,7 +72,7 @@ type UpdateImageProfileParams struct {
 	  ImageProfile instance
 
 	*/
-	Body *models.ImageProfileSpecification
+	Body *models.UpdateImageProfileSpecification
 	/*ID
 	  The ID of the image.
 
@@ -129,13 +129,13 @@ func (o *UpdateImageProfileParams) SetAPIVersion(aPIVersion *string) {
 }
 
 // WithBody adds the body to the update image profile params
-func (o *UpdateImageProfileParams) WithBody(body *models.ImageProfileSpecification) *UpdateImageProfileParams {
+func (o *UpdateImageProfileParams) WithBody(body *models.UpdateImageProfileSpecification) *UpdateImageProfileParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the update image profile params
-func (o *UpdateImageProfileParams) SetBody(body *models.ImageProfileSpecification) {
+func (o *UpdateImageProfileParams) SetBody(body *models.UpdateImageProfileSpecification) {
 	o.Body = body
 }
 

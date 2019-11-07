@@ -2400,7 +2400,7 @@
                         "name": "id",
                         "in": "path",
                         "description": "Policy ID",
-                        "required": false,
+                        "required": true,
                         "type": "string",
                         "format": "uuid"
                     }
@@ -2427,7 +2427,7 @@
                         "name": "id",
                         "in": "path",
                         "description": "Policy ID",
-                        "required": false,
+                        "required": true,
                         "type": "string",
                         "format": "uuid"
                     }
@@ -2535,7 +2535,7 @@
                         "name": "id",
                         "in": "path",
                         "description": "Policy decision Id",
-                        "required": false,
+                        "required": true,
                         "type": "string",
                         "format": "uuid"
                     }
@@ -2622,7 +2622,7 @@
                         "name": "id",
                         "in": "path",
                         "description": "Policy type ID",
-                        "required": false,
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -2678,14 +2678,14 @@
                         "name": "dataPath",
                         "in": "path",
                         "description": "Data path",
-                        "required": false,
+                        "required": true,
                         "type": "string"
                     },
                     {
                         "name": "id",
                         "in": "path",
                         "description": "Policy type ID",
-                        "required": false,
+                        "required": true,
                         "type": "string"
                     },
                     {
@@ -3281,6 +3281,9 @@
                     "type": "string",
                     "description": "Name of the deployment"
                 },
+                "orgId": {
+                    "type": "string"
+                },
                 "project": {
                     "description": "Expanded deployment project",
                     "$ref": "#/definitions/ResourceReference"
@@ -3296,9 +3299,6 @@
                     "items": {
                         "$ref": "#/definitions/Resource"
                     }
-                },
-                "simulated": {
-                    "type": "boolean"
                 },
                 "status": {
                     "type": "string",
@@ -3643,33 +3643,6 @@
             },
             "title": "FormDefinition"
         },
-        "InternalDeploymentIconUpdate": {
-            "type": "object",
-            "properties": {
-                "iconId": {
-                    "type": "string"
-                }
-            },
-            "title": "InternalDeploymentIconUpdate"
-        },
-        "InternalDeploymentUpdate": {
-            "type": "object",
-            "properties": {
-                "blueprintId": {
-                    "type": "string"
-                },
-                "blueprintVersion": {
-                    "type": "string"
-                },
-                "expense": {
-                    "$ref": "#/definitions/Expense"
-                },
-                "inputs": {
-                    "type": "object"
-                }
-            },
-            "title": "InternalDeploymentUpdate"
-        },
         "Page": {
             "type": "object",
             "properties": {
@@ -3989,50 +3962,6 @@
                 }
             },
             "title": "PageOfDeploymentEvent"
-        },
-        "PageOfDeploymentRequest": {
-            "type": "object",
-            "properties": {
-                "content": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/DeploymentRequest"
-                    }
-                },
-                "empty": {
-                    "type": "boolean"
-                },
-                "first": {
-                    "type": "boolean"
-                },
-                "last": {
-                    "type": "boolean"
-                },
-                "number": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "numberOfElements": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "size": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "sort": {
-                    "$ref": "#/definitions/Sort"
-                },
-                "totalElements": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "totalPages": {
-                    "type": "integer",
-                    "format": "int32"
-                }
-            },
-            "title": "PageOfDeploymentRequest"
         },
         "PageOfFilterEntry": {
             "type": "object",

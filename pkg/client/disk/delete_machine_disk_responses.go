@@ -30,6 +30,12 @@ func (o *DeleteMachineDiskReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return result, nil
+	case 204:
+		result := NewDeleteMachineDiskNoContent()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
 	case 403:
 		result := NewDeleteMachineDiskForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -52,25 +58,46 @@ func NewDeleteMachineDiskAccepted() *DeleteMachineDiskAccepted {
 successful operation
 */
 type DeleteMachineDiskAccepted struct {
-	Payload *models.BlockDevice
+	Payload *models.RequestTracker
 }
 
 func (o *DeleteMachineDiskAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}/disks/{id1}][%d] deleteMachineDiskAccepted  %+v", 202, o.Payload)
 }
 
-func (o *DeleteMachineDiskAccepted) GetPayload() *models.BlockDevice {
+func (o *DeleteMachineDiskAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
 
 func (o *DeleteMachineDiskAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.BlockDevice)
+	o.Payload = new(models.RequestTracker)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewDeleteMachineDiskNoContent creates a DeleteMachineDiskNoContent with default headers values
+func NewDeleteMachineDiskNoContent() *DeleteMachineDiskNoContent {
+	return &DeleteMachineDiskNoContent{}
+}
+
+/*DeleteMachineDiskNoContent handles this case with default header values.
+
+No Content
+*/
+type DeleteMachineDiskNoContent struct {
+}
+
+func (o *DeleteMachineDiskNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}/disks/{id1}][%d] deleteMachineDiskNoContent ", 204)
+}
+
+func (o *DeleteMachineDiskNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }
