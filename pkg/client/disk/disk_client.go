@@ -144,7 +144,7 @@ DeleteMachineDisk deletes machine disk
 
 Remove a disk from a given machine.
 */
-func (a *Client) DeleteMachineDisk(params *DeleteMachineDiskParams) (*DeleteMachineDiskAccepted, error) {
+func (a *Client) DeleteMachineDisk(params *DeleteMachineDiskParams) (*DeleteMachineDiskAccepted, *DeleteMachineDiskNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteMachineDiskParams()
@@ -163,15 +163,16 @@ func (a *Client) DeleteMachineDisk(params *DeleteMachineDiskParams) (*DeleteMach
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	success, ok := result.(*DeleteMachineDiskAccepted)
-	if ok {
-		return success, nil
+	switch value := result.(type) {
+	case *DeleteMachineDiskAccepted:
+		return value, nil, nil
+	case *DeleteMachineDiskNoContent:
+		return nil, value, nil
 	}
-	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteMachineDisk: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for disk: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

@@ -64,20 +64,20 @@ func NewAttachMachineDiskOK() *AttachMachineDiskOK {
 successful operation
 */
 type AttachMachineDiskOK struct {
-	Payload *models.BlockDevice
+	Payload *models.RequestTracker
 }
 
 func (o *AttachMachineDiskOK) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/disks][%d] attachMachineDiskOK  %+v", 200, o.Payload)
 }
 
-func (o *AttachMachineDiskOK) GetPayload() *models.BlockDevice {
+func (o *AttachMachineDiskOK) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
 
 func (o *AttachMachineDiskOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.BlockDevice)
+	o.Payload = new(models.RequestTracker)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

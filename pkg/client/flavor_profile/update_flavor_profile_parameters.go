@@ -72,7 +72,7 @@ type UpdateFlavorProfileParams struct {
 	  FlavorProfile instance
 
 	*/
-	Body *models.FlavorProfileSpecification
+	Body *models.UpdateFlavorProfileSpecification
 	/*ID
 	  The ID of the flavor.
 
@@ -129,13 +129,13 @@ func (o *UpdateFlavorProfileParams) SetAPIVersion(aPIVersion *string) {
 }
 
 // WithBody adds the body to the update flavor profile params
-func (o *UpdateFlavorProfileParams) WithBody(body *models.FlavorProfileSpecification) *UpdateFlavorProfileParams {
+func (o *UpdateFlavorProfileParams) WithBody(body *models.UpdateFlavorProfileSpecification) *UpdateFlavorProfileParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the update flavor profile params
-func (o *UpdateFlavorProfileParams) SetBody(body *models.FlavorProfileSpecification) {
+func (o *UpdateFlavorProfileParams) SetBody(body *models.UpdateFlavorProfileSpecification) {
 	o.Body = body
 }
 

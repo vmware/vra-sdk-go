@@ -1065,22 +1065,6 @@
                         "allowEmptyValue": false
                     },
                     {
-                        "name": "forceCachedResources",
-                        "in": "query",
-                        "description": "The 'resources' field of each deployment in the result list will be read from a cache for a faster query.",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "forceRefreshResources",
-                        "in": "query",
-                        "description": "The 'resources' field of each deployment in the result list will be guaranteed up-to-date.",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": false
-                    },
-                    {
                         "name": "ids",
                         "in": "query",
                         "description": "A comma-separated list. Only deployments with these IDs will be included in the results.",
@@ -1443,22 +1427,6 @@
                         "required": false,
                         "type": "boolean",
                         "allowEmptyValue": false
-                    },
-                    {
-                        "name": "forceCachedResources",
-                        "in": "query",
-                        "description": "The 'resources' field of the deployment will be read from a cache for a faster query.",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "forceRefreshResources",
-                        "in": "query",
-                        "description": "The 'resources' field of the deployment will be guaranteed up-to-date.",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": false
                     }
                 ],
                 "responses": {
@@ -1806,22 +1774,6 @@
                         "required": true,
                         "type": "string",
                         "format": "uuid"
-                    },
-                    {
-                        "name": "forceCachedResources",
-                        "in": "query",
-                        "description": "Retrieves the resources from a cache for a faster query.",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "forceRefreshResources",
-                        "in": "query",
-                        "description": "Guarantees the resources are up-to-date.",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": false
                     }
                 ],
                 "responses": {
@@ -1857,22 +1809,6 @@
                         "required": true,
                         "type": "string",
                         "format": "uuid"
-                    },
-                    {
-                        "name": "forceCachedResources",
-                        "in": "query",
-                        "description": "Retrieves the resource from a cache for a faster query.",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "forceRefreshResources",
-                        "in": "query",
-                        "description": "Guarantees the resource is up-to-date.",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": false
                     },
                     {
                         "name": "resourceId",
@@ -2336,13 +2272,19 @@
                 "tags": [
                     "Policies"
                 ],
-                "summary": "Creates a policy.",
-                "description": "Create a new policy based on request body and validate its field according to business rules.",
-                "operationId": "createPolicyUsingPOST",
+                "summary": "Trigger a policy dry-run.",
+                "description": "Dry-run an existing policy to rehearse actual policy effect on application.",
+                "operationId": "dryRunPolicyUsingPOST",
                 "consumes": [
                     "application/json"
                 ],
                 "parameters": [
+                    {
+                        "name": "dryRun",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
                     {
                         "in": "body",
                         "name": "policy",
@@ -2351,22 +2293,11 @@
                         "schema": {
                             "$ref": "#/definitions/Policy"
                         }
-                    },
-                    {
-                        "name": "validationOnly",
-                        "in": "query",
-                        "description": "For a dry run that will do policy validation only instead of create a policy",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": false
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/Policy"
-                        }
+                        "description": "OK"
                     }
                 },
                 "deprecated": false
@@ -2400,7 +2331,7 @@
                         "name": "id",
                         "in": "path",
                         "description": "Policy ID",
-                        "required": false,
+                        "required": true,
                         "type": "string",
                         "format": "uuid"
                     }
@@ -2427,7 +2358,7 @@
                         "name": "id",
                         "in": "path",
                         "description": "Policy ID",
-                        "required": false,
+                        "required": true,
                         "type": "string",
                         "format": "uuid"
                     }
@@ -2535,7 +2466,7 @@
                         "name": "id",
                         "in": "path",
                         "description": "Policy decision Id",
-                        "required": false,
+                        "required": true,
                         "type": "string",
                         "format": "uuid"
                     }
@@ -2622,7 +2553,7 @@
                         "name": "id",
                         "in": "path",
                         "description": "Policy type ID",
-                        "required": false,
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -2631,85 +2562,6 @@
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/PolicyType"
-                        }
-                    }
-                },
-                "deprecated": false
-            }
-        },
-        "/policy/api/policyTypes/{id}/data/{dataPath}": {
-            "get": {
-                "tags": [
-                    "Policy Types"
-                ],
-                "summary": "Returns the data elements for the given policy type and data type id.",
-                "operationId": "getPolicyTypeDataUsingGET",
-                "parameters": [
-                    {
-                        "name": "$orderby",
-                        "in": "query",
-                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
-                        "required": false,
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "multi"
-                    },
-                    {
-                        "name": "$skip",
-                        "in": "query",
-                        "description": "Number of records you want to skip",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32",
-                        "x-example": 1
-                    },
-                    {
-                        "name": "$top",
-                        "in": "query",
-                        "description": "Number of records you want",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32",
-                        "x-example": 1
-                    },
-                    {
-                        "name": "dataPath",
-                        "in": "path",
-                        "description": "Data path",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Policy type ID",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "projectId",
-                        "in": "query",
-                        "description": "Optional projectId to further contextualize returned data elements",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "search",
-                        "in": "query",
-                        "description": "Search param for data elements",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": false
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/PageOfDataElement"
                         }
                     }
                 },
@@ -3191,21 +3043,6 @@
             },
             "title": "Criteria"
         },
-        "DataElement": {
-            "type": "object",
-            "properties": {
-                "description": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                }
-            },
-            "title": "DataElement"
-        },
         "Deployment": {
             "type": "object",
             "required": [
@@ -3281,6 +3118,9 @@
                     "type": "string",
                     "description": "Name of the deployment"
                 },
+                "orgId": {
+                    "type": "string"
+                },
                 "project": {
                     "description": "Expanded deployment project",
                     "$ref": "#/definitions/ResourceReference"
@@ -3296,9 +3136,6 @@
                     "items": {
                         "$ref": "#/definitions/Resource"
                     }
-                },
-                "simulated": {
-                    "type": "boolean"
                 },
                 "status": {
                     "type": "string",
@@ -3643,33 +3480,6 @@
             },
             "title": "FormDefinition"
         },
-        "InternalDeploymentIconUpdate": {
-            "type": "object",
-            "properties": {
-                "iconId": {
-                    "type": "string"
-                }
-            },
-            "title": "InternalDeploymentIconUpdate"
-        },
-        "InternalDeploymentUpdate": {
-            "type": "object",
-            "properties": {
-                "blueprintId": {
-                    "type": "string"
-                },
-                "blueprintVersion": {
-                    "type": "string"
-                },
-                "expense": {
-                    "$ref": "#/definitions/Expense"
-                },
-                "inputs": {
-                    "type": "object"
-                }
-            },
-            "title": "InternalDeploymentUpdate"
-        },
         "Page": {
             "type": "object",
             "properties": {
@@ -3858,50 +3668,6 @@
             },
             "title": "PageOfCatalogSource"
         },
-        "PageOfDataElement": {
-            "type": "object",
-            "properties": {
-                "content": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/DataElement"
-                    }
-                },
-                "empty": {
-                    "type": "boolean"
-                },
-                "first": {
-                    "type": "boolean"
-                },
-                "last": {
-                    "type": "boolean"
-                },
-                "number": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "numberOfElements": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "size": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "sort": {
-                    "$ref": "#/definitions/Sort"
-                },
-                "totalElements": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "totalPages": {
-                    "type": "integer",
-                    "format": "int32"
-                }
-            },
-            "title": "PageOfDataElement"
-        },
         "PageOfDeployment": {
             "type": "object",
             "properties": {
@@ -3989,50 +3755,6 @@
                 }
             },
             "title": "PageOfDeploymentEvent"
-        },
-        "PageOfDeploymentRequest": {
-            "type": "object",
-            "properties": {
-                "content": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/DeploymentRequest"
-                    }
-                },
-                "empty": {
-                    "type": "boolean"
-                },
-                "first": {
-                    "type": "boolean"
-                },
-                "last": {
-                    "type": "boolean"
-                },
-                "number": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "numberOfElements": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "size": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "sort": {
-                    "$ref": "#/definitions/Sort"
-                },
-                "totalElements": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "totalPages": {
-                    "type": "integer",
-                    "format": "int32"
-                }
-            },
-            "title": "PageOfDeploymentRequest"
         },
         "PageOfFilterEntry": {
             "type": "object",

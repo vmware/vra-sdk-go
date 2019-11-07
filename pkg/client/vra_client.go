@@ -43,6 +43,7 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/location"
 	"github.com/vmware/vra-sdk-go/pkg/client/login"
 	"github.com/vmware/vra-sdk-go/pkg/client/network"
+	"github.com/vmware/vra-sdk-go/pkg/client/network_ip_range"
 	"github.com/vmware/vra-sdk-go/pkg/client/network_profile"
 	"github.com/vmware/vra-sdk-go/pkg/client/policies"
 	"github.com/vmware/vra-sdk-go/pkg/client/policy_decisions"
@@ -161,6 +162,8 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 	cli.Login = login.New(transport, formats)
 
 	cli.Network = network.New(transport, formats)
+
+	cli.NetworkIPRange = network_ip_range.New(transport, formats)
 
 	cli.NetworkProfile = network_profile.New(transport, formats)
 
@@ -290,6 +293,8 @@ type MulticloudIaaS struct {
 
 	Network *network.Client
 
+	NetworkIPRange *network_ip_range.Client
+
 	NetworkProfile *network_profile.Client
 
 	Policies *policies.Client
@@ -380,6 +385,8 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.Login.SetTransport(transport)
 
 	c.Network.SetTransport(transport)
+
+	c.NetworkIPRange.SetTransport(transport)
 
 	c.NetworkProfile.SetTransport(transport)
 
