@@ -37,6 +37,9 @@ type Machine struct {
 	// Additional properties that may be used to extend the base type.
 	CustomProperties map[string]string `json:"customProperties,omitempty"`
 
+	// Deployment id that is associated with this resource
+	DeploymentID string `json:"deploymentId,omitempty"`
+
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
 

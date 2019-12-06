@@ -42,6 +42,12 @@ func (o *CreateLoadBalancerReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewCreateLoadBalancerNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
@@ -119,6 +125,27 @@ func (o *CreateLoadBalancerForbidden) Error() string {
 }
 
 func (o *CreateLoadBalancerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewCreateLoadBalancerNotFound creates a CreateLoadBalancerNotFound with default headers values
+func NewCreateLoadBalancerNotFound() *CreateLoadBalancerNotFound {
+	return &CreateLoadBalancerNotFound{}
+}
+
+/*CreateLoadBalancerNotFound handles this case with default header values.
+
+Input(s) not Found
+*/
+type CreateLoadBalancerNotFound struct {
+}
+
+func (o *CreateLoadBalancerNotFound) Error() string {
+	return fmt.Sprintf("[POST /iaas/api/load-balancers][%d] createLoadBalancerNotFound ", 404)
+}
+
+func (o *CreateLoadBalancerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

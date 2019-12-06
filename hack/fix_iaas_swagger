@@ -1,0 +1,45 @@
+#!/usr/bin/env python3
+
+import argparse
+import json
+
+
+# This is the location of the IaaS swagger
+old_filename = "swagger/vra-iaas.json"
+new_filename = "swagger/vra-iaas-fixed.json"
+
+
+def replace_value(d, k, v, new):
+    if k in d and d[k] == v:
+        print(d[k])
+        print("found one")
+        d[k] = new
+    for child in d.values():
+        if isinstance(child, dict):
+            replace_value(child, k, v, new)
+    
+
+def rename_iaas_deployment(swagger):
+    print(swagger['definitions'].keys())
+    v = swagger['definitions']['Deployment']
+    del swagger['definitions']['Deployment']
+    swagger['definitions']['IaaSDeployment'] = v
+
+    old_value = "#/definitions/Deployment"
+    new_value = "#/definitions/IaaSDeployment"
+    replace_value(swagger, "$ref", old_value, new_value)
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    args = parser.parse_args()
+
+    # read in the swagger spec
+    swagger = json.loads(open(old_filename).read())
+
+    rename_iaas_deployment(swagger)
+
+    # Overwrite the swagger spec
+    f = open(new_filename, "w")
+    f.write(json.dumps(swagger, sort_keys=False, indent=2))
+    f.write('\n')

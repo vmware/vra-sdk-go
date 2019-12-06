@@ -23,6 +23,7 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/cloud_account"
 	"github.com/vmware/vra-sdk-go/pkg/client/compute"
 	"github.com/vmware/vra-sdk-go/pkg/client/data_collector"
+	"github.com/vmware/vra-sdk-go/pkg/client/deployment"
 	"github.com/vmware/vra-sdk-go/pkg/client/deployment_actions"
 	"github.com/vmware/vra-sdk-go/pkg/client/deployment_events"
 	"github.com/vmware/vra-sdk-go/pkg/client/deployments"
@@ -32,6 +33,7 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/fabric_flavors"
 	"github.com/vmware/vra-sdk-go/pkg/client/fabric_images"
 	"github.com/vmware/vra-sdk-go/pkg/client/fabric_network"
+	"github.com/vmware/vra-sdk-go/pkg/client/fabric_networks_vsphere"
 	"github.com/vmware/vra-sdk-go/pkg/client/fabric_vsphere_datastore"
 	"github.com/vmware/vra-sdk-go/pkg/client/fabric_vsphere_storage_policies"
 	"github.com/vmware/vra-sdk-go/pkg/client/flavor_profile"
@@ -123,6 +125,8 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 
 	cli.DataCollector = data_collector.New(transport, formats)
 
+	cli.Deployment = deployment.New(transport, formats)
+
 	cli.DeploymentActions = deployment_actions.New(transport, formats)
 
 	cli.DeploymentEvents = deployment_events.New(transport, formats)
@@ -140,6 +144,8 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 	cli.FabricImages = fabric_images.New(transport, formats)
 
 	cli.FabricNetwork = fabric_network.New(transport, formats)
+
+	cli.FabricNetworksVsphere = fabric_networks_vsphere.New(transport, formats)
 
 	cli.FabricvSphereDatastore = fabric_vsphere_datastore.New(transport, formats)
 
@@ -253,6 +259,8 @@ type MulticloudIaaS struct {
 
 	DataCollector *data_collector.Client
 
+	Deployment *deployment.Client
+
 	DeploymentActions *deployment_actions.Client
 
 	DeploymentEvents *deployment_events.Client
@@ -270,6 +278,8 @@ type MulticloudIaaS struct {
 	FabricImages *fabric_images.Client
 
 	FabricNetwork *fabric_network.Client
+
+	FabricNetworksVsphere *fabric_networks_vsphere.Client
 
 	FabricvSphereDatastore *fabric_vsphere_datastore.Client
 
@@ -346,6 +356,8 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 
 	c.DataCollector.SetTransport(transport)
 
+	c.Deployment.SetTransport(transport)
+
 	c.DeploymentActions.SetTransport(transport)
 
 	c.DeploymentEvents.SetTransport(transport)
@@ -363,6 +375,8 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.FabricImages.SetTransport(transport)
 
 	c.FabricNetwork.SetTransport(transport)
+
+	c.FabricNetworksVsphere.SetTransport(transport)
 
 	c.FabricvSphereDatastore.SetTransport(transport)
 

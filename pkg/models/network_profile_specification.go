@@ -45,6 +45,9 @@ type NetworkProfileSpecification struct {
 	// Enum: [NONE SUBNET SECURITY_GROUP]
 	IsolationType string `json:"isolationType,omitempty"`
 
+	// A list of load balancers which are assigned to the network profile.
+	LoadBalancerIds []string `json:"loadBalancerIds"`
+
 	// A human-friendly name used as an identifier in APIs that support this option.
 	// Required: true
 	Name *string `json:"name"`

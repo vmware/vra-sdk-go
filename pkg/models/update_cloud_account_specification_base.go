@@ -21,6 +21,9 @@ type UpdateCloudAccountSpecificationBase struct {
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
 
+	// A human-friendly name used as an identifier in APIs that support this option.
+	Name string `json:"name,omitempty"`
+
 	// A set of tag keys and optional values to set on the Cloud Account
 	Tags []*Tag `json:"tags"`
 }

@@ -25,6 +25,9 @@ type NetworkSpecification struct {
 	// Additional custom properties that may be used to extend the network.
 	CustomProperties map[string]string `json:"customProperties,omitempty"`
 
+	// The id of the deployment that is associated with this resource
+	DeploymentID string `json:"deploymentId,omitempty"`
+
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
 

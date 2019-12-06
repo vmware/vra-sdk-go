@@ -15,19 +15,16 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// Network The network object is an opaque reference to a logical network that network interfaces are attached to.<br>
-// Based on settings specified by your cloud administrator, it may be a reference to an existing network, or be backed by an on-demand network created for isolation, or a security group that will be attached to machines as part of provisioning.<br>
-// Networks are a limited resource, when it is not needed it should be deleted.<br>**HATEOAS** links:<br>**self** - Network - Self link to this network
-// swagger:model Network
-type Network struct {
+// FabricNetworkVsphere State object representing a vSphere network on a external cloud provider.<br>**domain** - domain for the vSphere network.<br>**defaultGateway** - default IPv4 gateway for the vSphere network.<br>**defaultIPv6Gateway** - default IPv6 gateway for the vSphere network.<br>**dnsServerAddresses** - list of dns server address for the vSphere network.<br>**dnsSearchDomains** - ist of dns search domains for the vSphere network
+// swagger:model FabricNetworkVsphere
+type FabricNetworkVsphere struct {
 
 	// HATEOAS of the entity
 	// Required: true
 	Links map[string]Href `json:"_links"`
 
-	// IPv4 address range of the network in CIDR format
-	// Required: true
-	Cidr *string `json:"cidr"`
+	// Network CIDR to be used.
+	Cidr string `json:"cidr,omitempty"`
 
 	// Set of ids of the cloud accounts this entity belongs to.
 	// Unique: true
@@ -36,29 +33,42 @@ type Network struct {
 	// Date when the entity was created. The date is in ISO 6801 and UTC.
 	CreatedAt string `json:"createdAt,omitempty"`
 
-	// Additional properties that may be used to extend the base type.
-	CustomProperties map[string]string `json:"customProperties,omitempty"`
+	// IPv4 default gateway to be used.
+	DefaultGateway string `json:"defaultGateway,omitempty"`
 
-	// Deployment id that is associated with this resource
-	DeploymentID string `json:"deploymentId,omitempty"`
+	// IPv6 default gateway to be used.
+	DefaultIPV6Gateway string `json:"defaultIpv6Gateway,omitempty"`
 
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
 
+	// A list of DNS search domains that were set on this resource instance.
+	DNSSearchDomains []string `json:"dnsSearchDomains"`
+
+	// A list of DNS server addresses that were set on this resource instance.
+	DNSServerAddresses []string `json:"dnsServerAddresses"`
+
+	// Domain value.
+	Domain string `json:"domain,omitempty"`
+
 	// External entity Id on the provider side.
 	ExternalID string `json:"externalId,omitempty"`
 
-	// The external regionId of the resource
-	// Required: true
-	ExternalRegionID *string `json:"externalRegionId"`
-
-	// The external zoneId of the resource.
-	// Required: true
-	ExternalZoneID *string `json:"externalZoneId"`
+	// The id of the region for which this network is defined
+	ExternalRegionID string `json:"externalRegionId,omitempty"`
 
 	// The id of this resource instance
 	// Required: true
 	ID *string `json:"id"`
+
+	// Network IPv6 CIDR to be used.
+	IPV6Cidr string `json:"ipv6Cidr,omitempty"`
+
+	// Indicates whether this is the default subnet for the zone.
+	IsDefault bool `json:"isDefault,omitempty"`
+
+	// Indicates whether the sub-network supports public IP assignment.
+	IsPublic bool `json:"isPublic,omitempty"`
 
 	// A human-friendly name used as an identifier in APIs that support this option.
 	Name string `json:"name,omitempty"`
@@ -72,37 +82,22 @@ type Network struct {
 	// Email of the user that owns the entity.
 	Owner string `json:"owner,omitempty"`
 
-	// The id of the project this entity belongs to.
-	ProjectID string `json:"projectId,omitempty"`
-
-	// A set of tag keys and optional values that were set on this network.
+	// A set of tag keys and optional values that were set on this resource instance.
 	Tags []*Tag `json:"tags"`
 
 	// Date when the entity was last updated. The date is ISO 8601 and UTC.
 	UpdatedAt string `json:"updatedAt,omitempty"`
 }
 
-// Validate validates this network
-func (m *Network) Validate(formats strfmt.Registry) error {
+// Validate validates this fabric network vsphere
+func (m *FabricNetworkVsphere) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateLinks(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateCidr(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateCloudAccountIds(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateExternalRegionID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateExternalZoneID(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -120,7 +115,7 @@ func (m *Network) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *Network) validateLinks(formats strfmt.Registry) error {
+func (m *FabricNetworkVsphere) validateLinks(formats strfmt.Registry) error {
 
 	for k := range m.Links {
 
@@ -138,16 +133,7 @@ func (m *Network) validateLinks(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *Network) validateCidr(formats strfmt.Registry) error {
-
-	if err := validate.Required("cidr", "body", m.Cidr); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *Network) validateCloudAccountIds(formats strfmt.Registry) error {
+func (m *FabricNetworkVsphere) validateCloudAccountIds(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.CloudAccountIds) { // not required
 		return nil
@@ -160,25 +146,7 @@ func (m *Network) validateCloudAccountIds(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *Network) validateExternalRegionID(formats strfmt.Registry) error {
-
-	if err := validate.Required("externalRegionId", "body", m.ExternalRegionID); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *Network) validateExternalZoneID(formats strfmt.Registry) error {
-
-	if err := validate.Required("externalZoneId", "body", m.ExternalZoneID); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *Network) validateID(formats strfmt.Registry) error {
+func (m *FabricNetworkVsphere) validateID(formats strfmt.Registry) error {
 
 	if err := validate.Required("id", "body", m.ID); err != nil {
 		return err
@@ -187,7 +155,7 @@ func (m *Network) validateID(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *Network) validateTags(formats strfmt.Registry) error {
+func (m *FabricNetworkVsphere) validateTags(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.Tags) { // not required
 		return nil
@@ -213,7 +181,7 @@ func (m *Network) validateTags(formats strfmt.Registry) error {
 }
 
 // MarshalBinary interface implementation
-func (m *Network) MarshalBinary() ([]byte, error) {
+func (m *FabricNetworkVsphere) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -221,8 +189,8 @@ func (m *Network) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *Network) UnmarshalBinary(b []byte) error {
-	var res Network
+func (m *FabricNetworkVsphere) UnmarshalBinary(b []byte) error {
+	var res FabricNetworkVsphere
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
