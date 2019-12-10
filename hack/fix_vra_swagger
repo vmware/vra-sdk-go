@@ -27,6 +27,7 @@ def add_filter_params(swagger):
         "/iaas/api/security-groups",
         "/iaas/api/network-profiles",
         "/iaas/api/storage-profiles",
+        "/iaas/api/block-devices",
     ]
 
     # Update the needed paths
