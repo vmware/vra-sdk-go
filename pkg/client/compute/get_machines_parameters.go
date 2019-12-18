@@ -61,6 +61,11 @@ for the get machines operation typically these are written to a http.Request
 */
 type GetMachinesParams struct {
 
+	/*DollarFilter
+	  Add a filter to return limited results
+
+	*/
+	DollarFilter *string
 	/*APIVersion
 	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about
 
@@ -105,6 +110,17 @@ func (o *GetMachinesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithDollarFilter adds the dollarFilter to the get machines params
+func (o *GetMachinesParams) WithDollarFilter(dollarFilter *string) *GetMachinesParams {
+	o.SetDollarFilter(dollarFilter)
+	return o
+}
+
+// SetDollarFilter adds the dollarFilter to the get machines params
+func (o *GetMachinesParams) SetDollarFilter(dollarFilter *string) {
+	o.DollarFilter = dollarFilter
+}
+
 // WithAPIVersion adds the aPIVersion to the get machines params
 func (o *GetMachinesParams) WithAPIVersion(aPIVersion *string) *GetMachinesParams {
 	o.SetAPIVersion(aPIVersion)
@@ -123,6 +139,22 @@ func (o *GetMachinesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		return err
 	}
 	var res []error
+
+	if o.DollarFilter != nil {
+
+		// query param $filter
+		var qrDollarFilter string
+		if o.DollarFilter != nil {
+			qrDollarFilter = *o.DollarFilter
+		}
+		qDollarFilter := qrDollarFilter
+		if qDollarFilter != "" {
+			if err := r.SetQueryParam("$filter", qDollarFilter); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	if o.APIVersion != nil {
 
