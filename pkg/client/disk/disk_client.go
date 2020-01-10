@@ -320,6 +320,43 @@ func (a *Client) GetMachineDisks(params *GetMachineDisksParams) (*GetMachineDisk
 	panic(msg)
 }
 
+/*
+ResizeBlockDevice resizes block device
+
+Resize operation on block device.
+*/
+func (a *Client) ResizeBlockDevice(params *ResizeBlockDeviceParams) (*ResizeBlockDeviceAccepted, *ResizeBlockDeviceNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewResizeBlockDeviceParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "resizeBlockDevice",
+		Method:             "POST",
+		PathPattern:        "/iaas/api/block-devices/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ResizeBlockDeviceReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, nil, err
+	}
+	switch value := result.(type) {
+	case *ResizeBlockDeviceAccepted:
+		return value, nil, nil
+	case *ResizeBlockDeviceNoContent:
+		return nil, value, nil
+	}
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for disk: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
 // SetTransport changes the transport on the client
 func (a *Client) SetTransport(transport runtime.ClientTransport) {
 	a.transport = transport

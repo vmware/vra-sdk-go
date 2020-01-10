@@ -36,6 +36,12 @@ func (o *GetBlockDeviceReader) ReadResponse(response runtime.ClientResponse, con
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetBlockDeviceNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
@@ -92,6 +98,27 @@ func (o *GetBlockDeviceForbidden) Error() string {
 }
 
 func (o *GetBlockDeviceForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewGetBlockDeviceNotFound creates a GetBlockDeviceNotFound with default headers values
+func NewGetBlockDeviceNotFound() *GetBlockDeviceNotFound {
+	return &GetBlockDeviceNotFound{}
+}
+
+/*GetBlockDeviceNotFound handles this case with default header values.
+
+Not Found
+*/
+type GetBlockDeviceNotFound struct {
+}
+
+func (o *GetBlockDeviceNotFound) Error() string {
+	return fmt.Sprintf("[GET /iaas/api/block-devices/{id}][%d] getBlockDeviceNotFound ", 404)
+}
+
+func (o *GetBlockDeviceNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

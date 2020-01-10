@@ -71,6 +71,9 @@ type BlockDevice struct {
 	// Email of the user that owns the entity.
 	Owner string `json:"owner,omitempty"`
 
+	// Indicates whether the block device survives a delete action.
+	Persistent bool `json:"persistent,omitempty"`
+
 	// The id of the project this entity belongs to.
 	ProjectID string `json:"projectId,omitempty"`
 

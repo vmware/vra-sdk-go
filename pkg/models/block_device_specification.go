@@ -45,6 +45,9 @@ type BlockDeviceSpecification struct {
 	// Required: true
 	Name *string `json:"name"`
 
+	// Indicates whether the block device survives a delete action.
+	Persistent bool `json:"persistent,omitempty"`
+
 	// The id of the project the current user belongs to.
 	// Required: true
 	ProjectID *string `json:"projectId"`

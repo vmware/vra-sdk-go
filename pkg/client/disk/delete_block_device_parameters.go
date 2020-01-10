@@ -13,6 +13,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 )
@@ -71,6 +72,11 @@ type DeleteBlockDeviceParams struct {
 
 	*/
 	ID string
+	/*Purge
+	  Indicates if the disk has to be completely destroyed or should be kept in the system. Valid only for block devices with 'persistent' set to true.
+
+	*/
+	Purge *bool
 
 	timeout    time.Duration
 	Context    context.Context
@@ -132,6 +138,17 @@ func (o *DeleteBlockDeviceParams) SetID(id string) {
 	o.ID = id
 }
 
+// WithPurge adds the purge to the delete block device params
+func (o *DeleteBlockDeviceParams) WithPurge(purge *bool) *DeleteBlockDeviceParams {
+	o.SetPurge(purge)
+	return o
+}
+
+// SetPurge adds the purge to the delete block device params
+func (o *DeleteBlockDeviceParams) SetPurge(purge *bool) {
+	o.Purge = purge
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *DeleteBlockDeviceParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -159,6 +176,22 @@ func (o *DeleteBlockDeviceParams) WriteToRequest(r runtime.ClientRequest, reg st
 	// path param id
 	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
+	}
+
+	if o.Purge != nil {
+
+		// query param purge
+		var qrPurge bool
+		if o.Purge != nil {
+			qrPurge = *o.Purge
+		}
+		qPurge := swag.FormatBool(qrPurge)
+		if qPurge != "" {
+			if err := r.SetQueryParam("purge", qPurge); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	if len(res) > 0 {

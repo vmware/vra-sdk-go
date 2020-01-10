@@ -49,21 +49,20 @@ def add_204(swagger):
     for p, op in paths:
         responses = swagger['paths'][p][op]['responses']
         if '204' not in responses:
-            responses['204'] = { "description": "No Content" }
+            responses['204'] = {"description": "No Content"}
 
 
 def change_response_model_to_request_tracker(swagger):
     # List of paths, operations, and status code to update the response model
-        paths = [
-            ('/iaas/api/machines/{id}/disks', 'post', '200'),
-            ('/iaas/api/machines/{id}/disks/{id1}', 'delete', '202'),
-        ]
+    paths = [
+        ('/iaas/api/machines/{id}/disks', 'post', '200'),
+        ('/iaas/api/machines/{id}/disks/{id1}', 'delete', '202'),
+    ]
 
-        # Update the needed paths
-        for (p, op, response_code) in paths:
-            schema = swagger['paths'][p][op]['responses'][response_code]['schema']
-            #if schema['$ref'] == "#/definitions/BlockDevice"
-            schema['$ref'] = '#/definitions/RequestTracker'
+    # Update the needed paths
+    for (p, op, response_code) in paths:
+        schema = swagger['paths'][p][op]['responses'][response_code]['schema']
+        schema['$ref'] = '#/definitions/RequestTracker'
 
 
 def add_global_security(swagger):
@@ -85,7 +84,6 @@ def add_security(swagger):
         '/iaas/api/login',
         '/blueprint/api/about'
     ]
-    empty_security = []
     bearer_security = [
         {"Bearer": []},
     ]
@@ -105,6 +103,106 @@ def add_region_enumerate_return_code(swagger):
     responses['201'] = responses['200']
 
 
+def add_blockdevice_persistent(swagger):
+    persistent = {
+        "description": "Indicates whether the block device survives a delete action.",
+        "type": "boolean",
+        "example": True,
+    }
+    bd_props = swagger['definitions']['BlockDevice']['properties']
+    if 'persistent' not in bd_props:
+        bd_props['persistent'] = persistent
+
+    bd_props = swagger['definitions']['BlockDeviceSpecification']['properties']
+    if 'persistent' not in bd_props:
+        bd_props['persistent'] = persistent
+
+
+def add_blockdevice_delete_purge(swagger):
+    bd = swagger['paths']['/iaas/api/block-devices/{id}']['delete']
+    for p in bd['parameters']:
+        if p['name'] == 'purge':
+            return
+    bd['parameters'].append({
+        "in": "query",
+        "name": "purge",
+        "description": "Indicates if the disk has to be completely destroyed or should be kept in the system. Valid only for block devices with 'persistent' set to true.",
+        "type": "boolean",
+        "required": False
+    })
+
+
+def add_blockdevice_resize(swagger):
+    bd = swagger['paths']['/iaas/api/block-devices/{id}']
+    if 'post' in bd:
+        return
+    bd['post'] = {
+        "summary": "Resize BlockDevice",
+        "produces": [
+            "application/json",
+            "app/json"
+        ],
+        "description": "Resize operation on block device.",
+        "operationId": "resizeBlockDevice",
+        "responses": {
+            "202": {
+                "schema": {
+                    "$ref": "#/definitions/RequestTracker"
+                },
+                "description": "successful operation"
+            },
+            "204": {
+                "description": "No Content"
+            },
+            "403": {
+                "description": "Forbidden"
+            }
+        },
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "description": "The ID of the block device.",
+                "type": "string",
+                "required": True
+            },
+            {
+                "in": "query",
+                "name": "capacityInGB",
+                "format": "int32",
+                "description": "Resize Capacity in GB",
+                "type": "integer",
+                "required": True
+            },
+            {
+                "in": "query",
+                "name": "apiVersion",
+                "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about",
+                "type": "string",
+                "required": False
+            }
+        ],
+        "tags": [
+            "Disk"
+        ]
+    }
+
+
+def add_404_not_found(swagger):
+    # List of paths and operations to add a 404 not found
+    paths = [
+        ('/iaas/api/block-devices/{id}', 'get'),
+    ]
+
+    # Update the needed paths
+    for (p, op) in paths:
+        responses = swagger['paths'][p][op]['responses']
+        if '404' not in responses:
+            responses['404'] = {
+                "description": "Not Found",
+            }
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--omit-security', action='store_false')
@@ -118,6 +216,11 @@ if __name__ == "__main__":
     change_response_model_to_request_tracker(swagger)
 
     add_region_enumerate_return_code(swagger)
+
+    add_blockdevice_persistent(swagger)
+    add_blockdevice_delete_purge(swagger)
+    add_blockdevice_resize(swagger)
+    add_404_not_found(swagger)
 
     if args.omit_security:
         add_global_security(swagger)
