@@ -99,6 +99,11 @@ def add_security(swagger):
             if 'security' not in swagger['paths'][p][method]:
                 swagger['paths'][p][method]['security'] = bearer_security
 
+def add_region_enumerate_return_code(swagger):
+    path = '/iaas/api/cloud-accounts-vsphere/region-enumeration'
+    responses = swagger['paths'][path]['post']['responses']
+    responses['201'] = responses['200']
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -111,6 +116,8 @@ if __name__ == "__main__":
     add_filter_params(swagger)
     add_204(swagger)
     change_response_model_to_request_tracker(swagger)
+
+    add_region_enumerate_return_code(swagger)
 
     if args.omit_security:
         add_global_security(swagger)

@@ -20,7 +20,6 @@ def replace_value(d, k, v, new):
     
 
 def rename_iaas_deployment(swagger):
-    print(swagger['definitions'].keys())
     v = swagger['definitions']['Deployment']
     del swagger['definitions']['Deployment']
     swagger['definitions']['IaaSDeployment'] = v
