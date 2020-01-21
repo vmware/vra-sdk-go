@@ -22,6 +22,7 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/catalog_sources"
 	"github.com/vmware/vra-sdk-go/pkg/client/cloud_account"
 	"github.com/vmware/vra-sdk-go/pkg/client/compute"
+	"github.com/vmware/vra-sdk-go/pkg/client/content_source"
 	"github.com/vmware/vra-sdk-go/pkg/client/data_collector"
 	"github.com/vmware/vra-sdk-go/pkg/client/deployment"
 	"github.com/vmware/vra-sdk-go/pkg/client/deployment_actions"
@@ -44,6 +45,8 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/load_balancer"
 	"github.com/vmware/vra-sdk-go/pkg/client/location"
 	"github.com/vmware/vra-sdk-go/pkg/client/login"
+	"github.com/vmware/vra-sdk-go/pkg/client/marketplace"
+	"github.com/vmware/vra-sdk-go/pkg/client/marketplace_downloads"
 	"github.com/vmware/vra-sdk-go/pkg/client/network"
 	"github.com/vmware/vra-sdk-go/pkg/client/network_ip_range"
 	"github.com/vmware/vra-sdk-go/pkg/client/network_profile"
@@ -54,6 +57,7 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/request"
 	"github.com/vmware/vra-sdk-go/pkg/client/resource_types"
 	"github.com/vmware/vra-sdk-go/pkg/client/security_group"
+	"github.com/vmware/vra-sdk-go/pkg/client/source_control_sync"
 	"github.com/vmware/vra-sdk-go/pkg/client/storage_profile"
 	"github.com/vmware/vra-sdk-go/pkg/client/tags"
 )
@@ -123,6 +127,8 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 
 	cli.Compute = compute.New(transport, formats)
 
+	cli.ContentSource = content_source.New(transport, formats)
+
 	cli.DataCollector = data_collector.New(transport, formats)
 
 	cli.Deployment = deployment.New(transport, formats)
@@ -167,6 +173,10 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 
 	cli.Login = login.New(transport, formats)
 
+	cli.Marketplace = marketplace.New(transport, formats)
+
+	cli.MarketplaceDownloads = marketplace_downloads.New(transport, formats)
+
 	cli.Network = network.New(transport, formats)
 
 	cli.NetworkIPRange = network_ip_range.New(transport, formats)
@@ -186,6 +196,8 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 	cli.ResourceTypes = resource_types.New(transport, formats)
 
 	cli.SecurityGroup = security_group.New(transport, formats)
+
+	cli.SourceControlSync = source_control_sync.New(transport, formats)
 
 	cli.StorageProfile = storage_profile.New(transport, formats)
 
@@ -257,6 +269,8 @@ type MulticloudIaaS struct {
 
 	Compute *compute.Client
 
+	ContentSource *content_source.Client
+
 	DataCollector *data_collector.Client
 
 	Deployment *deployment.Client
@@ -301,6 +315,10 @@ type MulticloudIaaS struct {
 
 	Login *login.Client
 
+	Marketplace *marketplace.Client
+
+	MarketplaceDownloads *marketplace_downloads.Client
+
 	Network *network.Client
 
 	NetworkIPRange *network_ip_range.Client
@@ -320,6 +338,8 @@ type MulticloudIaaS struct {
 	ResourceTypes *resource_types.Client
 
 	SecurityGroup *security_group.Client
+
+	SourceControlSync *source_control_sync.Client
 
 	StorageProfile *storage_profile.Client
 
@@ -353,6 +373,8 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.CloudAccount.SetTransport(transport)
 
 	c.Compute.SetTransport(transport)
+
+	c.ContentSource.SetTransport(transport)
 
 	c.DataCollector.SetTransport(transport)
 
@@ -398,6 +420,10 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 
 	c.Login.SetTransport(transport)
 
+	c.Marketplace.SetTransport(transport)
+
+	c.MarketplaceDownloads.SetTransport(transport)
+
 	c.Network.SetTransport(transport)
 
 	c.NetworkIPRange.SetTransport(transport)
@@ -417,6 +443,8 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.ResourceTypes.SetTransport(transport)
 
 	c.SecurityGroup.SetTransport(transport)
+
+	c.SourceControlSync.SetTransport(transport)
 
 	c.StorageProfile.SetTransport(transport)
 
