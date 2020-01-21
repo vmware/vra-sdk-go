@@ -1,4 +1,4 @@
-.PHONY: all swagger modified update update-blueprint update-catalog update-deployment update-iaas clean
+.PHONY: all swagger modified update update-blueprint update-catalog update-deployment update-iaas update-content clean
 SWAGGER_VERSION=0.20.1
 
 all:
@@ -7,7 +7,7 @@ all:
 swagger: check-swagger
 	rm -rf pkg/client pkg/models
 	./hack/fix_iaas_swagger
-	swagger mixin -c=1 swagger/vra-iaas-fixed.json swagger/vra-blueprint.json swagger/vra-catalog.json swagger/vra-deployment.json | python3 -mjson.tool > swagger/vra-combined.json
+	swagger mixin -c=1 swagger/vra-iaas-fixed.json swagger/vra-blueprint.json swagger/vra-catalog.json swagger/vra-deployment.json swagger/vra-content.json | python3 -mjson.tool > swagger/vra-combined.json
 	./hack/fix_vra_swagger --omit-security
 	swagger generate client -f swagger/vra-combined.json -t pkg
 	./hack/fixup.sh
@@ -18,7 +18,7 @@ check-swagger:
 modified:
 	git ls-files --modified | xargs git add
 
-update: update-blueprint update-catalog update-deployment update-iaas
+update: update-blueprint update-catalog update-deployment update-iaas update-content
 
 update-blueprint:
 	curl 'https://api.mgmt.cloud.vmware.com/blueprint/api/swagger/swagger-api-docs?group=2019-09-12' | python3 -mjson.tool > swagger/vra-blueprint.json
@@ -31,6 +31,9 @@ update-deployment:
 
 update-iaas:
 	curl 'https://api.mgmt.cloud.vmware.com/iaas/api/swagger/swagger/v2/api-docs?group=iaas' | python3 -mjson.tool > swagger/vra-iaas.json
+
+update-content:
+	curl 'https://api.mgmt.cloud.vmware.com/content/api/swagger/v2/api-docs?group=2019-01-15' | python3 -mjson.tool > swagger/vra-content.json
 
 clean:
 	rm swagger/vra-combined.json
