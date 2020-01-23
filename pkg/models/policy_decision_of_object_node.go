@@ -138,6 +138,7 @@ func (m *PolicyDecisionOfObjectNode) validatePolicies(formats strfmt.Registry) e
 	}
 
 	for i := 0; i < len(m.Policies); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.Policies[i]) { // not required
 			continue
 		}

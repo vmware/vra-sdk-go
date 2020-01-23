@@ -43,7 +43,7 @@ func (a *Client) GetDeploymentEventsUsingGET(params *GetDeploymentEventsUsingGET
 		PathPattern:        "/deployment/api/deployments/{depId}/events",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetDeploymentEventsUsingGETReader{formats: a.formats},
 		Context:            params.Context,

@@ -270,6 +270,7 @@ func (m *BlueprintRequest) validateValidationMessages(formats strfmt.Registry) e
 	}
 
 	for i := 0; i < len(m.ValidationMessages); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.ValidationMessages[i]) { // not required
 			continue
 		}

@@ -85,6 +85,7 @@ func (m *ProjectSpecification) validateAdministrators(formats strfmt.Registry) e
 	}
 
 	for i := 0; i < len(m.Administrators); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.Administrators[i]) { // not required
 			continue
 		}
@@ -138,6 +139,7 @@ func (m *ProjectSpecification) validateMembers(formats strfmt.Registry) error {
 	}
 
 	for i := 0; i < len(m.Members); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.Members[i]) { // not required
 			continue
 		}
@@ -172,6 +174,7 @@ func (m *ProjectSpecification) validateZoneAssignmentConfigurations(formats strf
 	}
 
 	for i := 0; i < len(m.ZoneAssignmentConfigurations); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.ZoneAssignmentConfigurations[i]) { // not required
 			continue
 		}

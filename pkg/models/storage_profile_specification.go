@@ -107,6 +107,7 @@ func (m *StorageProfileSpecification) validateTags(formats strfmt.Registry) erro
 	}
 
 	for i := 0; i < len(m.Tags); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.Tags[i]) { // not required
 			continue
 		}

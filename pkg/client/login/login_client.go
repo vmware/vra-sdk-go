@@ -45,7 +45,7 @@ func (a *Client) RetrieveAuthToken(params *RetrieveAuthTokenParams) (*RetrieveAu
 		PathPattern:        "/iaas/api/login",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &RetrieveAuthTokenReader{formats: a.formats},
 		Context:            params.Context,

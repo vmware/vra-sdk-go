@@ -45,7 +45,7 @@ func (a *Client) GetAboutPage(params *GetAboutPageParams) (*GetAboutPageOK, erro
 		PathPattern:        "/iaas/api/about",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetAboutPageReader{formats: a.formats},
 		Context:            params.Context,
@@ -83,7 +83,7 @@ func (a *Client) GetAboutUsingGET1(params *GetAboutUsingGET1Params) (*GetAboutUs
 		PathPattern:        "/blueprint/api/about",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetAboutUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
@@ -99,6 +99,44 @@ func (a *Client) GetAboutUsingGET1(params *GetAboutUsingGET1Params) (*GetAboutUs
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getAboutUsingGET_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+HandleGetAboutUsingGET gets about page
+
+The page contains information about the supported API versions and the latest API version. The version parameter is optional but highly recommended.
+If you do not specify explicitly an exact version, you will be calling the latest supported API version.
+Here is an example of a call which specifies the exact version you are using: `GET /codestream/api/pipelines?apiVersion=2019-10-17`
+*/
+func (a *Client) HandleGetAboutUsingGET(params *HandleGetAboutUsingGETParams) (*HandleGetAboutUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewHandleGetAboutUsingGETParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "handleGetAboutUsingGET",
+		Method:             "GET",
+		PathPattern:        "/codestream/api/about",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"http", "https"},
+		Params:             params,
+		Reader:             &HandleGetAboutUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*HandleGetAboutUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for handleGetAboutUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

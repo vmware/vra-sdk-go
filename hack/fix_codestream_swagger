@@ -1,0 +1,90 @@
+#!/usr/bin/env python3
+
+import argparse
+import json
+
+# This is the location of the Codestream swagger
+old_filename = "swagger/vra-codestream.json"
+new_filename = "swagger/vra-codestream-fixed.json"
+
+def sanitize_about_dollar(d):
+    keysToDelete = []
+    valuesToKeep = []
+    for i, (key, value) in enumerate(d.items()):
+        if '$' in key and not key.startswith('$'): # rename About$ApiDescription into AboutApiDescription
+            keysToDelete.append(key)
+            valuesToKeep.append(value)
+    for i, keyToDelete in enumerate(keysToDelete):
+        del d[keyToDelete]
+        d[keyToDelete.replace('$', '')] = valuesToKeep[i]
+    
+    if '$ref' in d: # $ref: '#/definitions/About$ApiDescription' becomes: $ref: '#/definitions/AboutApiDescription'
+        value = d['$ref']
+        if value.startswith("#/definitions/"):
+            d['$ref'] = value.replace('$', '')
+    if 'ref' in d: # $ref: '#/definitions/About$ApiDescription' becomes: $ref: '#/definitions/AboutApiDescription'
+        value = d['ref']
+        if value.startswith("#/definitions/"):
+            d['ref'] = value.replace('$', '')
+    if 'description' in d and isinstance(d['description'], str) and d['description'].startswith('Prioritize Exclusion ensures that pipelines are not triggered even if any'):
+        #  some strange unicode sometimes show up here
+        d['description'] = 'Prioritize Exclusion ensures that pipelines are not triggered even if any of the files in a commit match the specified files in the exclusion paths or regex.'
+
+    for child in d.values():
+        if isinstance(child, dict):
+            sanitize_about_dollar(child)
+        elif isinstance(child, list):
+            for i in child:
+                if isinstance(i, dict):
+                    sanitize_about_dollar(i)
+
+def remove_security_authorization_global(d):
+    if 'security' in d and isinstance(d['security'], list) and len(d['security']) == 1:
+        if 'Authorization' in d['security'][0] and d['security'][0]['Authorization'][0] == 'global':
+            del d['security']
+    if 'name' in d and d['name'] == "queryParams" and 'type' not in d and 'items' in d:
+        d['type'] = 'array'
+        d['items'] = {'type': 'string'}
+    for child in d.values():
+        if isinstance(child, dict):
+            remove_security_authorization_global(child)
+        elif isinstance(child, list):
+            for i in child:
+                if isinstance(i, dict):
+                    remove_security_authorization_global(i)
+
+def remove_duplicate_properties(d):
+    """
+    _created_by, and created_by generate the same golang field with the current version of go-swagger.
+    Omit the backward compatibility field that starts with '_'
+    """
+    keys_to_delete = []
+    for key in d:
+        if key.startswith("_") and f"{key[1:]}" in d:
+            keys_to_delete.append(key)
+    for key in keys_to_delete:
+        del d[key]
+    for child in d.values():
+        if isinstance(child, dict):
+            remove_duplicate_properties(child)
+        elif isinstance(child, list):
+            for i in child:
+                if isinstance(i, dict):
+                    remove_duplicate_properties(i)
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    args = parser.parse_args()
+
+    # read in the swagger spec
+    swagger = json.loads(open(old_filename, encoding="utf8").read())
+
+    sanitize_about_dollar(swagger['definitions'])
+    remove_duplicate_properties(swagger['definitions'])
+    remove_security_authorization_global(swagger['paths'])
+
+    # Overwrite the swagger spec
+    f = open(new_filename, "w")
+    f.write(json.dumps(swagger, sort_keys=False, indent=2))
+    f.write('\n')

@@ -134,6 +134,7 @@ func (m *PropertyDefinition) validateAllOf(formats strfmt.Registry) error {
 	}
 
 	for i := 0; i < len(m.AllOf); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.AllOf[i]) { // not required
 			continue
 		}
@@ -177,6 +178,7 @@ func (m *PropertyDefinition) validateOneOf(formats strfmt.Registry) error {
 	}
 
 	for i := 0; i < len(m.OneOf); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.OneOf[i]) { // not required
 			continue
 		}

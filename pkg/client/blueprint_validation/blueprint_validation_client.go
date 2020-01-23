@@ -41,7 +41,7 @@ func (a *Client) ValidateBlueprintUsingPOST1(params *ValidateBlueprintUsingPOST1
 		PathPattern:        "/blueprint/api/blueprint-validation",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &ValidateBlueprintUsingPOST1Reader{formats: a.formats},
 		Context:            params.Context,

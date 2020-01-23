@@ -140,6 +140,7 @@ func (m *SecurityGroup) validateEgress(formats strfmt.Registry) error {
 	}
 
 	for i := 0; i < len(m.Egress); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.Egress[i]) { // not required
 			continue
 		}
@@ -183,6 +184,7 @@ func (m *SecurityGroup) validateIngress(formats strfmt.Registry) error {
 	}
 
 	for i := 0; i < len(m.Ingress); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.Ingress[i]) { // not required
 			continue
 		}

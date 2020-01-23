@@ -22,12 +22,15 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/catalog_sources"
 	"github.com/vmware/vra-sdk-go/pkg/client/cloud_account"
 	"github.com/vmware/vra-sdk-go/pkg/client/compute"
+	"github.com/vmware/vra-sdk-go/pkg/client/custom_integrations"
 	"github.com/vmware/vra-sdk-go/pkg/client/data_collector"
 	"github.com/vmware/vra-sdk-go/pkg/client/deployment"
 	"github.com/vmware/vra-sdk-go/pkg/client/deployment_actions"
 	"github.com/vmware/vra-sdk-go/pkg/client/deployment_events"
 	"github.com/vmware/vra-sdk-go/pkg/client/deployments"
 	"github.com/vmware/vra-sdk-go/pkg/client/disk"
+	"github.com/vmware/vra-sdk-go/pkg/client/endpoints"
+	"github.com/vmware/vra-sdk-go/pkg/client/executions"
 	"github.com/vmware/vra-sdk-go/pkg/client/fabric_aws_volume_types"
 	"github.com/vmware/vra-sdk-go/pkg/client/fabric_azure_storage_account"
 	"github.com/vmware/vra-sdk-go/pkg/client/fabric_flavors"
@@ -47,6 +50,7 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/network"
 	"github.com/vmware/vra-sdk-go/pkg/client/network_ip_range"
 	"github.com/vmware/vra-sdk-go/pkg/client/network_profile"
+	"github.com/vmware/vra-sdk-go/pkg/client/pipelines"
 	"github.com/vmware/vra-sdk-go/pkg/client/policies"
 	"github.com/vmware/vra-sdk-go/pkg/client/policy_decisions"
 	"github.com/vmware/vra-sdk-go/pkg/client/policy_types"
@@ -56,6 +60,7 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/security_group"
 	"github.com/vmware/vra-sdk-go/pkg/client/storage_profile"
 	"github.com/vmware/vra-sdk-go/pkg/client/tags"
+	"github.com/vmware/vra-sdk-go/pkg/client/triggers"
 )
 
 // Default vmware cloud assembly iaas  HTTP client.
@@ -71,7 +76,7 @@ const (
 )
 
 // DefaultSchemes are the default schemes found in Meta (info) section of spec file
-var DefaultSchemes = []string{"https"}
+var DefaultSchemes = []string{"http", "https"}
 
 // NewHTTPClient creates a new vmware cloud assembly iaas  HTTP client.
 func NewHTTPClient(formats strfmt.Registry) *MulticloudIaaS {
@@ -123,6 +128,8 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 
 	cli.Compute = compute.New(transport, formats)
 
+	cli.CustomIntegrations = custom_integrations.New(transport, formats)
+
 	cli.DataCollector = data_collector.New(transport, formats)
 
 	cli.Deployment = deployment.New(transport, formats)
@@ -134,6 +141,10 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 	cli.Deployments = deployments.New(transport, formats)
 
 	cli.Disk = disk.New(transport, formats)
+
+	cli.Endpoints = endpoints.New(transport, formats)
+
+	cli.Executions = executions.New(transport, formats)
 
 	cli.FabricawsVolumeTypes = fabric_aws_volume_types.New(transport, formats)
 
@@ -173,6 +184,8 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 
 	cli.NetworkProfile = network_profile.New(transport, formats)
 
+	cli.Pipelines = pipelines.New(transport, formats)
+
 	cli.Policies = policies.New(transport, formats)
 
 	cli.PolicyDecisions = policy_decisions.New(transport, formats)
@@ -190,6 +203,8 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 	cli.StorageProfile = storage_profile.New(transport, formats)
 
 	cli.Tags = tags.New(transport, formats)
+
+	cli.Triggers = triggers.New(transport, formats)
 
 	return cli
 }
@@ -257,6 +272,8 @@ type MulticloudIaaS struct {
 
 	Compute *compute.Client
 
+	CustomIntegrations *custom_integrations.Client
+
 	DataCollector *data_collector.Client
 
 	Deployment *deployment.Client
@@ -268,6 +285,10 @@ type MulticloudIaaS struct {
 	Deployments *deployments.Client
 
 	Disk *disk.Client
+
+	Endpoints *endpoints.Client
+
+	Executions *executions.Client
 
 	FabricawsVolumeTypes *fabric_aws_volume_types.Client
 
@@ -307,6 +328,8 @@ type MulticloudIaaS struct {
 
 	NetworkProfile *network_profile.Client
 
+	Pipelines *pipelines.Client
+
 	Policies *policies.Client
 
 	PolicyDecisions *policy_decisions.Client
@@ -324,6 +347,8 @@ type MulticloudIaaS struct {
 	StorageProfile *storage_profile.Client
 
 	Tags *tags.Client
+
+	Triggers *triggers.Client
 
 	Transport runtime.ClientTransport
 }
@@ -354,6 +379,8 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 
 	c.Compute.SetTransport(transport)
 
+	c.CustomIntegrations.SetTransport(transport)
+
 	c.DataCollector.SetTransport(transport)
 
 	c.Deployment.SetTransport(transport)
@@ -365,6 +392,10 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.Deployments.SetTransport(transport)
 
 	c.Disk.SetTransport(transport)
+
+	c.Endpoints.SetTransport(transport)
+
+	c.Executions.SetTransport(transport)
 
 	c.FabricawsVolumeTypes.SetTransport(transport)
 
@@ -404,6 +435,8 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 
 	c.NetworkProfile.SetTransport(transport)
 
+	c.Pipelines.SetTransport(transport)
+
 	c.Policies.SetTransport(transport)
 
 	c.PolicyDecisions.SetTransport(transport)
@@ -421,5 +454,7 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.StorageProfile.SetTransport(transport)
 
 	c.Tags.SetTransport(transport)
+
+	c.Triggers.SetTransport(transport)
 
 }

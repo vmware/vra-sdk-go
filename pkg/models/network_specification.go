@@ -79,6 +79,7 @@ func (m *NetworkSpecification) validateConstraints(formats strfmt.Registry) erro
 	}
 
 	for i := 0; i < len(m.Constraints); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.Constraints[i]) { // not required
 			continue
 		}
@@ -122,6 +123,7 @@ func (m *NetworkSpecification) validateTags(formats strfmt.Registry) error {
 	}
 
 	for i := 0; i < len(m.Tags); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.Tags[i]) { // not required
 			continue
 		}

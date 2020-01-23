@@ -52,6 +52,7 @@ func (m *FabricVsphereStoragePolicyResult) validateContent(formats strfmt.Regist
 	}
 
 	for i := 0; i < len(m.Content); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.Content[i]) { // not required
 			continue
 		}

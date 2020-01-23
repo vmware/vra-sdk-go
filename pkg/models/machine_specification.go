@@ -149,6 +149,7 @@ func (m *MachineSpecification) validateConstraints(formats strfmt.Registry) erro
 	}
 
 	for i := 0; i < len(m.Constraints); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.Constraints[i]) { // not required
 			continue
 		}
@@ -174,6 +175,7 @@ func (m *MachineSpecification) validateDisks(formats strfmt.Registry) error {
 	}
 
 	for i := 0; i < len(m.Disks); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.Disks[i]) { // not required
 			continue
 		}
@@ -217,6 +219,7 @@ func (m *MachineSpecification) validateImageDiskConstraints(formats strfmt.Regis
 	}
 
 	for i := 0; i < len(m.ImageDiskConstraints); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.ImageDiskConstraints[i]) { // not required
 			continue
 		}
@@ -260,6 +263,7 @@ func (m *MachineSpecification) validateNics(formats strfmt.Registry) error {
 	}
 
 	for i := 0; i < len(m.Nics); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.Nics[i]) { // not required
 			continue
 		}
@@ -294,6 +298,7 @@ func (m *MachineSpecification) validateTags(formats strfmt.Registry) error {
 	}
 
 	for i := 0; i < len(m.Tags); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.Tags[i]) { // not required
 			continue
 		}

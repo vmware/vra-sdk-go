@@ -1,5 +1,6 @@
 vra-sdk-go
 swagger/vra-combined.json
+swagger/vra-codestream-fixed.json
 swagger/vra-iaas-fixed.json
 sdk-test
 tokens

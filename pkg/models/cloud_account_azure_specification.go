@@ -143,6 +143,7 @@ func (m *CloudAccountAzureSpecification) validateTags(formats strfmt.Registry) e
 	}
 
 	for i := 0; i < len(m.Tags); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.Tags[i]) { // not required
 			continue
 		}

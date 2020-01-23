@@ -18,18 +18,18 @@ rename _p_a_t_c_h1_ _patch1_
 rename _p_o_s_t1_ _post1_
 rename _p_u_t1_ _put1_
 
-find pkg -type f -exec sed -i.bak 's/_a_w_s_/_aws_/g' {} +
-find pkg -type f -exec sed -i.bak 's/_v_sphere_/_vsphere_/g' {} +
-find pkg -type f -exec sed -i.bak 's/_d_e_l_e_t_e_/_delete_/g' {} +
-find pkg -type f -exec sed -i.bak 's/_g_e_t_/_get_/g' {} +
-find pkg -type f -exec sed -i.bak 's/_p_a_t_c_h_/_patch_/g' {} +
-find pkg -type f -exec sed -i.bak 's/_p_o_s_t_/_post_/g' {} +
-find pkg -type f -exec sed -i.bak 's/_p_u_t_/_put_/g' {} +
-find pkg -type f -exec sed -i.bak 's/ iaa s/ iaas /g' {} +
-find pkg -type f -exec sed -i.bak 's/ v mware/ vmware/g' {} +
-find pkg -type f -exec sed -i.bak 's/VMwareCloudAssemblyIaaS/MulticloudIaaS/g' {} +
-find pkg -type f -exec sed -i.bak 's/ g e t params/ get params/g' {} +
-find pkg -type f -exec sed -i.bak 's/ g e t 1 / get1 /g' {} +
+find pkg -type f -name '*.go' -exec sed -i.bak 's/_a_w_s_/_aws_/g' {} +
+find pkg -type f -name '*.go' -exec sed -i.bak 's/_v_sphere_/_vsphere_/g' {} +
+find pkg -type f -name '*.go' -exec sed -i.bak 's/_d_e_l_e_t_e_/_delete_/g' {} +
+find pkg -type f -name '*.go' -exec sed -i.bak 's/_g_e_t_/_get_/g' {} +
+find pkg -type f -name '*.go' -exec sed -i.bak 's/_p_a_t_c_h_/_patch_/g' {} +
+find pkg -type f -name '*.go' -exec sed -i.bak 's/_p_o_s_t_/_post_/g' {} +
+find pkg -type f -name '*.go' -exec sed -i.bak 's/_p_u_t_/_put_/g' {} +
+find pkg -type f -name '*.go' -exec sed -i.bak 's/ iaa s/ iaas /g' {} +
+find pkg -type f -name '*.go' -exec sed -i.bak 's/ v mware/ vmware/g' {} +
+find pkg -type f -name '*.go' -exec sed -i.bak 's/VMwareCloudAssemblyIaaS/MulticloudIaaS/g' {} +
+find pkg -type f -name '*.go' -exec sed -i.bak 's/ g e t params/ get params/g' {} +
+find pkg -type f -name '*.go' -exec sed -i.bak 's/ g e t 1 / get1 /g' {} +
 find pkg -type f -name "*.bak" -exec rm {} +
 
 mv pkg/client/v_mware_cloud_assembly_iaa_s_client.go pkg/client/vra_client.go

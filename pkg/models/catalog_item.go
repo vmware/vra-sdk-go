@@ -196,6 +196,7 @@ func (m *CatalogItem) validateProjects(formats strfmt.Registry) error {
 	}
 
 	for i := 0; i < len(m.Projects); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.Projects[i]) { // not required
 			continue
 		}

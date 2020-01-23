@@ -119,6 +119,7 @@ func (m *BlueprintExecution) validateTasks(formats strfmt.Registry) error {
 	}
 
 	for i := 0; i < len(m.Tasks); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.Tasks[i]) { // not required
 			continue
 		}

@@ -266,6 +266,7 @@ func (m *Deployment) validateResources(formats strfmt.Registry) error {
 	}
 
 	for i := 0; i < len(m.Resources); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.Resources[i]) { // not required
 			continue
 		}

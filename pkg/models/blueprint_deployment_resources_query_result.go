@@ -48,6 +48,7 @@ func (m *BlueprintDeploymentResourcesQueryResult) validateObjects(formats strfmt
 	}
 
 	for i := 0; i < len(m.Objects); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.Objects[i]) { // not required
 			continue
 		}

@@ -140,6 +140,7 @@ func (m *AwsStorageProfile) validateTags(formats strfmt.Registry) error {
 	}
 
 	for i := 0; i < len(m.Tags); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.Tags[i]) { // not required
 			continue
 		}

@@ -99,6 +99,7 @@ func (m *StorageProfileAzureSpecification) validateTags(formats strfmt.Registry)
 	}
 
 	for i := 0; i < len(m.Tags); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.Tags[i]) { // not required
 			continue
 		}

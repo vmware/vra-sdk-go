@@ -43,7 +43,7 @@ func (a *Client) GetFabricFlavors(params *GetFabricFlavorsParams) (*GetFabricFla
 		PathPattern:        "/iaas/api/fabric-flavors",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetFabricFlavorsReader{formats: a.formats},
 		Context:            params.Context,

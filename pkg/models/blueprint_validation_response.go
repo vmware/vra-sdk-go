@@ -48,6 +48,7 @@ func (m *BlueprintValidationResponse) validateValidationMessages(formats strfmt.
 	}
 
 	for i := 0; i < len(m.ValidationMessages); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.ValidationMessages[i]) { // not required
 			continue
 		}

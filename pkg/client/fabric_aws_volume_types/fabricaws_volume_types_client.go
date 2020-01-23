@@ -43,7 +43,7 @@ func (a *Client) GetFabricAwsVolumeTypes(params *GetFabricAwsVolumeTypesParams) 
 		PathPattern:        "/iaas/api/fabric-aws-volume-types",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"https"},
+		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetFabricAwsVolumeTypesReader{formats: a.formats},
 		Context:            params.Context,

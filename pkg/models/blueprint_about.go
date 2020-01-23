@@ -48,6 +48,7 @@ func (m *BlueprintAbout) validateSupportedApis(formats strfmt.Registry) error {
 	}
 
 	for i := 0; i < len(m.SupportedApis); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.SupportedApis[i]) { // not required
 			continue
 		}

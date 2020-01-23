@@ -44,6 +44,7 @@ func (m *BlueprintResourcesPlan) validateResources(formats strfmt.Registry) erro
 	}
 
 	for i := 0; i < len(m.Resources); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.Resources[i]) { // not required
 			continue
 		}

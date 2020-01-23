@@ -43,6 +43,7 @@ func (m *FilterSchema) validateFilters(formats strfmt.Registry) error {
 	}
 
 	for i := 0; i < len(m.Filters); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.Filters[i]) { // not required
 			continue
 		}

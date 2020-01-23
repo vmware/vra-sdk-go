@@ -88,6 +88,7 @@ func (m *CatalogItemUpfrontPriceResponse) validateResourcePriceDetails(formats s
 	}
 
 	for i := 0; i < len(m.ResourcePriceDetails); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.ResourcePriceDetails[i]) { // not required
 			continue
 		}

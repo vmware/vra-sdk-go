@@ -52,6 +52,7 @@ func (m *ImageProfileResult) validateContent(formats strfmt.Registry) error {
 	}
 
 	for i := 0; i < len(m.Content); i++ {
+		// hello slicevalidator
 		if swag.IsZero(m.Content[i]) { // not required
 			continue
 		}
