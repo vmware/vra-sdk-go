@@ -103,6 +103,12 @@ def add_region_enumerate_return_code(swagger):
     responses['201'] = responses['200']
 
 
+def add_network_ip_range_return_code(swagger):
+    path = '"/iaas/api/network-ip-ranges'
+    responses = swagger['paths'][path]['post']['responses']
+    responses['201'] = responses['202']
+    
+
 def add_blockdevice_persistent(swagger):
     persistent = {
         "description": "Indicates whether the block device survives a delete action.",
