@@ -222,6 +222,7 @@ if __name__ == "__main__":
     change_response_model_to_request_tracker(swagger)
 
     add_region_enumerate_return_code(swagger)
+    add_network_ip_range_return_code(swagger)
 
     add_blockdevice_persistent(swagger)
     add_blockdevice_delete_purge(swagger)
