@@ -104,7 +104,7 @@ def add_region_enumerate_return_code(swagger):
 
 
 def add_network_ip_range_return_code(swagger):
-    path = '"/iaas/api/network-ip-ranges'
+    path = '/iaas/api/network-ip-ranges'
     responses = swagger['paths'][path]['post']['responses']
     responses['201'] = responses['202']
     
