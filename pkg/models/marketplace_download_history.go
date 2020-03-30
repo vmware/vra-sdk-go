@@ -18,11 +18,11 @@ import (
 // swagger:model MarketplaceDownloadHistory
 type MarketplaceDownloadHistory struct {
 
-	// embedded
-	Embedded []*MarketplaceDownloadHistoryItem `json:"_embedded" xml:"embedded"`
+	// content
+	Content []*MarketplaceDownloadHistoryItem `json:"content"`
 
 	// links
-	Links []*Link `json:"_links" xml:"link"`
+	Links []*Link `json:"links"`
 
 	// page
 	Page *PageMetadata `json:"page,omitempty"`
@@ -32,7 +32,7 @@ type MarketplaceDownloadHistory struct {
 func (m *MarketplaceDownloadHistory) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateEmbedded(formats); err != nil {
+	if err := m.validateContent(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -50,21 +50,21 @@ func (m *MarketplaceDownloadHistory) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *MarketplaceDownloadHistory) validateEmbedded(formats strfmt.Registry) error {
+func (m *MarketplaceDownloadHistory) validateContent(formats strfmt.Registry) error {
 
-	if swag.IsZero(m.Embedded) { // not required
+	if swag.IsZero(m.Content) { // not required
 		return nil
 	}
 
-	for i := 0; i < len(m.Embedded); i++ {
-		if swag.IsZero(m.Embedded[i]) { // not required
+	for i := 0; i < len(m.Content); i++ {
+		if swag.IsZero(m.Content[i]) { // not required
 			continue
 		}
 
-		if m.Embedded[i] != nil {
-			if err := m.Embedded[i].Validate(formats); err != nil {
+		if m.Content[i] != nil {
+			if err := m.Content[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("_embedded" + "." + strconv.Itoa(i))
+					return ve.ValidateName("content" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -89,7 +89,7 @@ func (m *MarketplaceDownloadHistory) validateLinks(formats strfmt.Registry) erro
 		if m.Links[i] != nil {
 			if err := m.Links[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("_links" + "." + strconv.Itoa(i))
+					return ve.ValidateName("links" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

@@ -42,7 +42,7 @@ func (a *Client) GetImages(params *GetImagesParams) (*GetImagesOK, error) {
 		Method:             "GET",
 		PathPattern:        "/iaas/api/images",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
-		ConsumesMediaTypes: []string{""},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &GetImagesReader{formats: a.formats},
