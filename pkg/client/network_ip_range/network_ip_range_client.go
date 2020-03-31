@@ -31,7 +31,7 @@ CreateNetworkIPRange creates network IP range
 
 Creates a network IP range.
 */
-func (a *Client) CreateNetworkIPRange(params *CreateNetworkIPRangeParams) (*CreateNetworkIPRangeAccepted, error) {
+func (a *Client) CreateNetworkIPRange(params *CreateNetworkIPRangeParams) (*CreateNetworkIPRangeCreated, *CreateNetworkIPRangeAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateNetworkIPRangeParams()
@@ -42,7 +42,7 @@ func (a *Client) CreateNetworkIPRange(params *CreateNetworkIPRangeParams) (*Crea
 		Method:             "POST",
 		PathPattern:        "/iaas/api/network-ip-ranges",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
-		ConsumesMediaTypes: []string{""},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &CreateNetworkIPRangeReader{formats: a.formats},
@@ -50,15 +50,16 @@ func (a *Client) CreateNetworkIPRange(params *CreateNetworkIPRangeParams) (*Crea
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	success, ok := result.(*CreateNetworkIPRangeAccepted)
-	if ok {
-		return success, nil
+	switch value := result.(type) {
+	case *CreateNetworkIPRangeCreated:
+		return value, nil, nil
+	case *CreateNetworkIPRangeAccepted:
+		return nil, value, nil
 	}
-	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for createNetworkIPRange: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for network_ip_range: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -78,7 +79,7 @@ func (a *Client) DeleteNetworkIPRange(params *DeleteNetworkIPRangeParams) (*Dele
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/network-ip-ranges/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
-		ConsumesMediaTypes: []string{""},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &DeleteNetworkIPRangeReader{formats: a.formats},
@@ -114,7 +115,7 @@ func (a *Client) GetNetworkIPRange(params *GetNetworkIPRangeParams) (*GetNetwork
 		Method:             "GET",
 		PathPattern:        "/iaas/api/network-ip-ranges/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
-		ConsumesMediaTypes: []string{""},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &GetNetworkIPRangeReader{formats: a.formats},
@@ -150,7 +151,7 @@ func (a *Client) GetNetworkIPRanges(params *GetNetworkIPRangesParams) (*GetNetwo
 		Method:             "GET",
 		PathPattern:        "/iaas/api/network-ip-ranges",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
-		ConsumesMediaTypes: []string{""},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &GetNetworkIPRangesReader{formats: a.formats},
@@ -186,7 +187,7 @@ func (a *Client) UpdateNetworkIPRange(params *UpdateNetworkIPRangeParams) (*Upda
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/network-ip-ranges/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
-		ConsumesMediaTypes: []string{""},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &UpdateNetworkIPRangeReader{formats: a.formats},

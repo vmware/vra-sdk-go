@@ -67,15 +67,15 @@ type RevertMachineSnapshotParams struct {
 	*/
 	APIVersion *string
 	/*ID
-	  The id of the Machine.
-
-	*/
-	ID string
-	/*ID
 	  Snapshot id to revert.
 
 	*/
 	QueryID string
+	/*ID
+	  The id of the Machine.
+
+	*/
+	ID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -126,17 +126,6 @@ func (o *RevertMachineSnapshotParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
-// WithID adds the id to the revert machine snapshot params
-func (o *RevertMachineSnapshotParams) WithID(id string) *RevertMachineSnapshotParams {
-	o.SetID(id)
-	return o
-}
-
-// SetID adds the id to the revert machine snapshot params
-func (o *RevertMachineSnapshotParams) SetID(id string) {
-	o.ID = id
-}
-
 // WithQueryID adds the id to the revert machine snapshot params
 func (o *RevertMachineSnapshotParams) WithQueryID(id string) *RevertMachineSnapshotParams {
 	o.SetQueryID(id)
@@ -146,6 +135,17 @@ func (o *RevertMachineSnapshotParams) WithQueryID(id string) *RevertMachineSnaps
 // SetQueryID adds the id to the revert machine snapshot params
 func (o *RevertMachineSnapshotParams) SetQueryID(id string) {
 	o.QueryID = id
+}
+
+// WithID adds the id to the revert machine snapshot params
+func (o *RevertMachineSnapshotParams) WithID(id string) *RevertMachineSnapshotParams {
+	o.SetID(id)
+	return o
+}
+
+// SetID adds the id to the revert machine snapshot params
+func (o *RevertMachineSnapshotParams) SetID(id string) {
+	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -172,11 +172,6 @@ func (o *RevertMachineSnapshotParams) WriteToRequest(r runtime.ClientRequest, re
 
 	}
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
-		return err
-	}
-
 	// query param id
 	qrID := o.QueryID
 	qID := qrID
@@ -184,6 +179,11 @@ func (o *RevertMachineSnapshotParams) WriteToRequest(r runtime.ClientRequest, re
 		if err := r.SetQueryParam("id", qID); err != nil {
 			return err
 		}
+	}
+
+	// path param id
+	if err := r.SetPathParam("id", o.ID); err != nil {
+		return err
 	}
 
 	if len(res) > 0 {

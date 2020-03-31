@@ -24,6 +24,12 @@ type CreateNetworkIPRangeReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *CreateNetworkIPRangeReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
+	case 201:
+		result := NewCreateNetworkIPRangeCreated()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
 	case 202:
 		result := NewCreateNetworkIPRangeAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -46,6 +52,39 @@ func (o *CreateNetworkIPRangeReader) ReadResponse(response runtime.ClientRespons
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
 	}
+}
+
+// NewCreateNetworkIPRangeCreated creates a CreateNetworkIPRangeCreated with default headers values
+func NewCreateNetworkIPRangeCreated() *CreateNetworkIPRangeCreated {
+	return &CreateNetworkIPRangeCreated{}
+}
+
+/*CreateNetworkIPRangeCreated handles this case with default header values.
+
+successful operation
+*/
+type CreateNetworkIPRangeCreated struct {
+	Payload *models.RequestTracker
+}
+
+func (o *CreateNetworkIPRangeCreated) Error() string {
+	return fmt.Sprintf("[POST /iaas/api/network-ip-ranges][%d] createNetworkIpRangeCreated  %+v", 201, o.Payload)
+}
+
+func (o *CreateNetworkIPRangeCreated) GetPayload() *models.RequestTracker {
+	return o.Payload
+}
+
+func (o *CreateNetworkIPRangeCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.RequestTracker)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
 }
 
 // NewCreateNetworkIPRangeAccepted creates a CreateNetworkIPRangeAccepted with default headers values

@@ -42,7 +42,7 @@ func (a *Client) GetFlavors(params *GetFlavorsParams) (*GetFlavorsOK, error) {
 		Method:             "GET",
 		PathPattern:        "/iaas/api/flavors",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
-		ConsumesMediaTypes: []string{""},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &GetFlavorsReader{formats: a.formats},

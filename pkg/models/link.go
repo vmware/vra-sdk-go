@@ -15,29 +15,11 @@ import (
 // swagger:model Link
 type Link struct {
 
-	// deprecation
-	Deprecation string `json:"deprecation,omitempty" xml:"deprecation,attr"`
-
 	// href
-	Href string `json:"href,omitempty" xml:"href,attr"`
-
-	// hreflang
-	Hreflang string `json:"hreflang,omitempty" xml:"hreflang,attr"`
-
-	// media
-	Media string `json:"media,omitempty" xml:"media,attr"`
+	Href string `json:"href,omitempty"`
 
 	// rel
-	Rel string `json:"rel,omitempty" xml:"rel,attr"`
-
-	// templated
-	Templated bool `json:"templated,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty" xml:"title,attr"`
-
-	// type
-	Type string `json:"type,omitempty" xml:"type,attr"`
+	Rel string `json:"rel,omitempty"`
 }
 
 // Validate validates this link

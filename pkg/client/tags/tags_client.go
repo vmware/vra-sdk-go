@@ -42,7 +42,7 @@ func (a *Client) GetTags(params *GetTagsParams) (*GetTagsOK, error) {
 		Method:             "GET",
 		PathPattern:        "/iaas/api/tags",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
-		ConsumesMediaTypes: []string{""},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &GetTagsReader{formats: a.formats},
