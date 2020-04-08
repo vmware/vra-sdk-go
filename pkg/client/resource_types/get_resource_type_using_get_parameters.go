@@ -70,7 +70,7 @@ type GetResourceTypeUsingGETParams struct {
 	  resourceTypeId
 
 	*/
-	ResourceTypeID strfmt.UUID
+	ResourceTypeID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -122,13 +122,13 @@ func (o *GetResourceTypeUsingGETParams) SetAPIVersion(aPIVersion *string) {
 }
 
 // WithResourceTypeID adds the resourceTypeID to the get resource type using get params
-func (o *GetResourceTypeUsingGETParams) WithResourceTypeID(resourceTypeID strfmt.UUID) *GetResourceTypeUsingGETParams {
+func (o *GetResourceTypeUsingGETParams) WithResourceTypeID(resourceTypeID string) *GetResourceTypeUsingGETParams {
 	o.SetResourceTypeID(resourceTypeID)
 	return o
 }
 
 // SetResourceTypeID adds the resourceTypeId to the get resource type using get params
-func (o *GetResourceTypeUsingGETParams) SetResourceTypeID(resourceTypeID strfmt.UUID) {
+func (o *GetResourceTypeUsingGETParams) SetResourceTypeID(resourceTypeID string) {
 	o.ResourceTypeID = resourceTypeID
 }
 
@@ -157,7 +157,7 @@ func (o *GetResourceTypeUsingGETParams) WriteToRequest(r runtime.ClientRequest, 
 	}
 
 	// path param resourceTypeId
-	if err := r.SetPathParam("resourceTypeId", o.ResourceTypeID.String()); err != nil {
+	if err := r.SetPathParam("resourceTypeId", o.ResourceTypeID); err != nil {
 		return err
 	}
 

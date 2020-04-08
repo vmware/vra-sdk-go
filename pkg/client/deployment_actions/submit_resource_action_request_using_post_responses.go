@@ -36,6 +36,12 @@ func (o *SubmitResourceActionRequestUsingPOSTReader) ReadResponse(response runti
 			return nil, err
 		}
 		return nil, result
+	case 403:
+		result := NewSubmitResourceActionRequestUsingPOSTForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 404:
 		result := NewSubmitResourceActionRequestUsingPOSTNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -98,6 +104,27 @@ func (o *SubmitResourceActionRequestUsingPOSTUnauthorized) Error() string {
 }
 
 func (o *SubmitResourceActionRequestUsingPOSTUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewSubmitResourceActionRequestUsingPOSTForbidden creates a SubmitResourceActionRequestUsingPOSTForbidden with default headers values
+func NewSubmitResourceActionRequestUsingPOSTForbidden() *SubmitResourceActionRequestUsingPOSTForbidden {
+	return &SubmitResourceActionRequestUsingPOSTForbidden{}
+}
+
+/*SubmitResourceActionRequestUsingPOSTForbidden handles this case with default header values.
+
+Forbidden
+*/
+type SubmitResourceActionRequestUsingPOSTForbidden struct {
+}
+
+func (o *SubmitResourceActionRequestUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /deployment/api/deployments/{depId}/resources/{resourceId}/requests][%d] submitResourceActionRequestUsingPOSTForbidden ", 403)
+}
+
+func (o *SubmitResourceActionRequestUsingPOSTForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

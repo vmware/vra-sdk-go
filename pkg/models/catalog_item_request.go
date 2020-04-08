@@ -8,7 +8,9 @@ package models
 import (
 	strfmt "github.com/go-openapi/strfmt"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // CatalogItemRequest CatalogItemRequest
@@ -16,6 +18,11 @@ import (
 // A request to create a deployment based on a catalog item
 // swagger:model CatalogItemRequest
 type CatalogItemRequest struct {
+
+	// Deployment request count; defaults to 1 if not specified.
+	// Maximum: 127
+	// Minimum: -128
+	BulkRequestCount *int32 `json:"bulkRequestCount,omitempty"`
 
 	// Name of the requested deployment
 	DeploymentName string `json:"deploymentName,omitempty"`
@@ -35,6 +42,32 @@ type CatalogItemRequest struct {
 
 // Validate validates this catalog item request
 func (m *CatalogItemRequest) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateBulkRequestCount(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CatalogItemRequest) validateBulkRequestCount(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.BulkRequestCount) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("bulkRequestCount", "body", int64(*m.BulkRequestCount), -128, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("bulkRequestCount", "body", int64(*m.BulkRequestCount), 127, false); err != nil {
+		return err
+	}
+
 	return nil
 }
 

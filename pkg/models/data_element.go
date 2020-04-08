@@ -18,6 +18,9 @@ type DataElement struct {
 	// description
 	Description string `json:"description,omitempty"`
 
+	// error
+	Error string `json:"error,omitempty"`
+
 	// id
 	ID string `json:"id,omitempty"`
 

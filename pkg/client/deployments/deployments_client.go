@@ -171,6 +171,42 @@ func (a *Client) GetDeploymentByIDUsingGET(params *GetDeploymentByIDUsingGETPara
 }
 
 /*
+GetDeploymentExpenseHistoryByIDUsingGET fetches a specific deployment s expense history
+
+Returns the deployment expense history with the supplied ID.
+*/
+func (a *Client) GetDeploymentExpenseHistoryByIDUsingGET(params *GetDeploymentExpenseHistoryByIDUsingGETParams) (*GetDeploymentExpenseHistoryByIDUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetDeploymentExpenseHistoryByIDUsingGETParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getDeploymentExpenseHistoryByIdUsingGET",
+		Method:             "GET",
+		PathPattern:        "/deployment/api/deployments/{depId}/expense-history",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetDeploymentExpenseHistoryByIDUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetDeploymentExpenseHistoryByIDUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getDeploymentExpenseHistoryByIdUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 GetDeploymentFilterByIDUsingGET returns the deployment filter with the supplied ID
 */
 func (a *Client) GetDeploymentFilterByIDUsingGET(params *GetDeploymentFilterByIDUsingGETParams) (*GetDeploymentFilterByIDUsingGETOK, error) {

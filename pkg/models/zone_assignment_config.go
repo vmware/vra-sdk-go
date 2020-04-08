@@ -15,11 +15,20 @@ import (
 // swagger:model ZoneAssignmentConfig
 type ZoneAssignmentConfig struct {
 
+	// The maximum amount of cpus that can be used by this cloud zone. Default is 0 (unlimited cpu).
+	CPULimit int64 `json:"cpuLimit,omitempty"`
+
 	// The maximum number of instances that can be provisioned in this cloud zone. Default is 0 (unlimited instances).
 	MaxNumberInstances int64 `json:"maxNumberInstances,omitempty"`
 
+	// The maximum amount of memory that can be used by this cloud zone. Default is 0 (unlimited memory).
+	MemoryLimitMB int64 `json:"memoryLimitMB,omitempty"`
+
 	// The priority of this zone in the current project. Lower numbers mean higher priority. Default is 0 (highest)
 	Priority int32 `json:"priority,omitempty"`
+
+	// Defines an upper limit on storage that can be requested from a cloud zone which is part of this project. Default is 0 (unlimited storage). Please note that this feature is supported only for vSphere cloud zones. Not valid for other cloud zone types.
+	StorageLimitGB int64 `json:"storageLimitGB,omitempty"`
 
 	// The Cloud Zone Id
 	ZoneID string `json:"zoneId,omitempty"`

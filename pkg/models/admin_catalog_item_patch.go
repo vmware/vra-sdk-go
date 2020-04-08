@@ -8,7 +8,9 @@ package models
 import (
 	strfmt "github.com/go-openapi/strfmt"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // AdminCatalogItemPatch AdminCatalogItemPatch
@@ -17,12 +19,43 @@ import (
 // swagger:model AdminCatalogItemPatch
 type AdminCatalogItemPatch struct {
 
+	// Max number of instances that can be requested at a time
+	// Maximum: 127
+	// Minimum: -128
+	BulkRequestLimit *int32 `json:"bulkRequestLimit,omitempty"`
+
 	// icon id
 	IconID string `json:"iconId,omitempty"`
 }
 
 // Validate validates this admin catalog item patch
 func (m *AdminCatalogItemPatch) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateBulkRequestLimit(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *AdminCatalogItemPatch) validateBulkRequestLimit(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.BulkRequestLimit) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("bulkRequestLimit", "body", int64(*m.BulkRequestLimit), -128, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("bulkRequestLimit", "body", int64(*m.BulkRequestLimit), 127, false); err != nil {
+		return err
+	}
+
 	return nil
 }
 

@@ -30,12 +30,6 @@ func (o *EnumerateVSphereRegionsReader) ReadResponse(response runtime.ClientResp
 			return nil, err
 		}
 		return result, nil
-	case 201:
-		result := NewEnumerateVSphereRegionsCreated()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return result, nil
 	case 400:
 		result := NewEnumerateVSphereRegionsBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -76,39 +70,6 @@ func (o *EnumerateVSphereRegionsOK) GetPayload() *models.CloudAccountRegions {
 }
 
 func (o *EnumerateVSphereRegionsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.CloudAccountRegions)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewEnumerateVSphereRegionsCreated creates a EnumerateVSphereRegionsCreated with default headers values
-func NewEnumerateVSphereRegionsCreated() *EnumerateVSphereRegionsCreated {
-	return &EnumerateVSphereRegionsCreated{}
-}
-
-/*EnumerateVSphereRegionsCreated handles this case with default header values.
-
-successful operation
-*/
-type EnumerateVSphereRegionsCreated struct {
-	Payload *models.CloudAccountRegions
-}
-
-func (o *EnumerateVSphereRegionsCreated) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vsphere/region-enumeration][%d] enumerateVSphereRegionsCreated  %+v", 201, o.Payload)
-}
-
-func (o *EnumerateVSphereRegionsCreated) GetPayload() *models.CloudAccountRegions {
-	return o.Payload
-}
-
-func (o *EnumerateVSphereRegionsCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.CloudAccountRegions)
 

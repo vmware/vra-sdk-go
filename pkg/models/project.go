@@ -29,7 +29,7 @@ type Project struct {
 	// List of storage, network and extensibility constraints to be applied when provisioning through this project.
 	Constraints map[string][]Constraint `json:"constraints,omitempty"`
 
-	// Date when the entity was created. The date is in ISO 6801 and UTC.
+	// Date when the entity was created. The date is in ISO 8601 and UTC.
 	CreatedAt string `json:"createdAt,omitempty"`
 
 	// A human-friendly description.
@@ -66,6 +66,9 @@ type Project struct {
 	// Date when the entity was last updated. The date is ISO 8601 and UTC.
 	UpdatedAt string `json:"updatedAt,omitempty"`
 
+	// List of viewer users associated with the project.
+	Viewers []*User `json:"viewers"`
+
 	// List of Cloud Zones assigned to this project. You can limit deployment to a single region or allow multi-region placement by adding more than one cloud zone to a project. A cloud zone lists available resources. Use tags on resources to control workload placement.
 	Zones []*ZoneAssignmentConfig `json:"zones"`
 }
@@ -91,6 +94,10 @@ func (m *Project) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateMembers(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateViewers(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -199,6 +206,31 @@ func (m *Project) validateMembers(formats strfmt.Registry) error {
 			if err := m.Members[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("members" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *Project) validateViewers(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Viewers) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Viewers); i++ {
+		if swag.IsZero(m.Viewers[i]) { // not required
+			continue
+		}
+
+		if m.Viewers[i] != nil {
+			if err := m.Viewers[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("viewers" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

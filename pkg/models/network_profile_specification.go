@@ -20,7 +20,7 @@ import (
 // swagger:model NetworkProfileSpecification
 type NetworkProfileSpecification struct {
 
-	// Additional properties that may be used to extend the Network Profile object that is produced from this specification.
+	// Additional properties that may be used to extend the Network Profile object that is produced from this specification.  For isolationType security group, datastoreId identifies the Compute Resource Edge datastore. computeCluster and resourcePoolId identify the Compute Resource Edge cluster. For isolationType subnet, distributedLogicalRouterStateLink identifies the on-demand network distributed local router.  onDemandNetworkIPAssignmentType identifies the on-demand network IP range assignment type static, dynamic, or mixed.
 	CustomProperties map[string]string `json:"customProperties,omitempty"`
 
 	// A human-friendly description.

@@ -24,6 +24,10 @@ type DeploymentRequest struct {
 	// Identifier of the requested action
 	ActionID string `json:"actionId,omitempty"`
 
+	// Time at which the request was approved.
+	// Format: date-time
+	ApprovedAt strfmt.DateTime `json:"approvedAt,omitempty"`
+
 	// Identifier of the requested blueprint in the form 'UUID:version'
 	BlueprintID string `json:"blueprintId,omitempty"`
 
@@ -32,6 +36,10 @@ type DeploymentRequest struct {
 
 	// Identifier of the requested catalog item in the form 'UUID:version'
 	CatalogItemID string `json:"catalogItemId,omitempty"`
+
+	// Time at which the request completed.
+	// Format: date-time
+	CompletedAt strfmt.DateTime `json:"completedAt,omitempty"`
 
 	// The number of tasks completed while fulfilling this request.
 	CompletedTasks int32 `json:"completedTasks,omitempty"`
@@ -54,6 +62,10 @@ type DeploymentRequest struct {
 	// Format: uuid
 	ID strfmt.UUID `json:"id,omitempty"`
 
+	// Time at which the request was initialized.
+	// Format: date-time
+	InitializedAt strfmt.DateTime `json:"initializedAt,omitempty"`
+
 	// Request inputs
 	Inputs interface{} `json:"inputs,omitempty"`
 
@@ -74,7 +86,7 @@ type DeploymentRequest struct {
 	ResourceType string `json:"resourceType,omitempty"`
 
 	// Request overall execution status.
-	// Enum: [PENDING REJECTED INPROGRESS ABORTED SUCCESSFUL PARTIALLY_SUCCESSFUL FAILED CREATED]
+	// Enum: [CREATED PENDING INITIALIZATION APPROVAL_PENDING INPROGRESS COMPLETION APPROVAL_REJECTED ABORTED SUCCESSFUL FAILED]
 	Status string `json:"status,omitempty"`
 
 	// The total number of tasks need to be completed to fulfil this request.
@@ -89,6 +101,14 @@ type DeploymentRequest struct {
 func (m *DeploymentRequest) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateApprovedAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateCompletedAt(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateCreatedAt(formats); err != nil {
 		res = append(res, err)
 	}
@@ -98,6 +118,10 @@ func (m *DeploymentRequest) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateInitializedAt(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -116,6 +140,32 @@ func (m *DeploymentRequest) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *DeploymentRequest) validateApprovedAt(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.ApprovedAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("approvedAt", "body", "date-time", m.ApprovedAt.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *DeploymentRequest) validateCompletedAt(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.CompletedAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("completedAt", "body", "date-time", m.CompletedAt.String(), formats); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -158,6 +208,19 @@ func (m *DeploymentRequest) validateID(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *DeploymentRequest) validateInitializedAt(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.InitializedAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("initializedAt", "body", "date-time", m.InitializedAt.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (m *DeploymentRequest) validateParentID(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.ParentID) { // not required
@@ -175,7 +238,7 @@ var deploymentRequestTypeStatusPropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["PENDING","REJECTED","INPROGRESS","ABORTED","SUCCESSFUL","PARTIALLY_SUCCESSFUL","FAILED","CREATED"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["CREATED","PENDING","INITIALIZATION","APPROVAL_PENDING","INPROGRESS","COMPLETION","APPROVAL_REJECTED","ABORTED","SUCCESSFUL","FAILED"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -185,14 +248,26 @@ func init() {
 
 const (
 
+	// DeploymentRequestStatusCREATED captures enum value "CREATED"
+	DeploymentRequestStatusCREATED string = "CREATED"
+
 	// DeploymentRequestStatusPENDING captures enum value "PENDING"
 	DeploymentRequestStatusPENDING string = "PENDING"
 
-	// DeploymentRequestStatusREJECTED captures enum value "REJECTED"
-	DeploymentRequestStatusREJECTED string = "REJECTED"
+	// DeploymentRequestStatusINITIALIZATION captures enum value "INITIALIZATION"
+	DeploymentRequestStatusINITIALIZATION string = "INITIALIZATION"
+
+	// DeploymentRequestStatusAPPROVALPENDING captures enum value "APPROVAL_PENDING"
+	DeploymentRequestStatusAPPROVALPENDING string = "APPROVAL_PENDING"
 
 	// DeploymentRequestStatusINPROGRESS captures enum value "INPROGRESS"
 	DeploymentRequestStatusINPROGRESS string = "INPROGRESS"
+
+	// DeploymentRequestStatusCOMPLETION captures enum value "COMPLETION"
+	DeploymentRequestStatusCOMPLETION string = "COMPLETION"
+
+	// DeploymentRequestStatusAPPROVALREJECTED captures enum value "APPROVAL_REJECTED"
+	DeploymentRequestStatusAPPROVALREJECTED string = "APPROVAL_REJECTED"
 
 	// DeploymentRequestStatusABORTED captures enum value "ABORTED"
 	DeploymentRequestStatusABORTED string = "ABORTED"
@@ -200,14 +275,8 @@ const (
 	// DeploymentRequestStatusSUCCESSFUL captures enum value "SUCCESSFUL"
 	DeploymentRequestStatusSUCCESSFUL string = "SUCCESSFUL"
 
-	// DeploymentRequestStatusPARTIALLYSUCCESSFUL captures enum value "PARTIALLY_SUCCESSFUL"
-	DeploymentRequestStatusPARTIALLYSUCCESSFUL string = "PARTIALLY_SUCCESSFUL"
-
 	// DeploymentRequestStatusFAILED captures enum value "FAILED"
 	DeploymentRequestStatusFAILED string = "FAILED"
-
-	// DeploymentRequestStatusCREATED captures enum value "CREATED"
-	DeploymentRequestStatusCREATED string = "CREATED"
 )
 
 // prop value enum

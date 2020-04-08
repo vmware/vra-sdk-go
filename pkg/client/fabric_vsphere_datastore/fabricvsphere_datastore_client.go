@@ -66,6 +66,8 @@ func (a *Client) GetFabricVSphereDatastore(params *GetFabricVSphereDatastorePara
 GetFabricVSphereDatastores gets fabric v sphere datastores
 
 Get all fabric vSphere datastores.
+1. If regionId is not provided as a parameter then all datastores are returned
+2. If regionId is provided as a parameter then datastores iin that region are returned
 */
 func (a *Client) GetFabricVSphereDatastores(params *GetFabricVSphereDatastoresParams) (*GetFabricVSphereDatastoresOK, error) {
 	// TODO: Validate the params before sending

@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// Zone Description of a compute placement zone.  This can be used to specify a subset of compute resources within a region where machines can be placed.**region** - Region - Region for the zone.<br>**self** - Zone - Self link to this zone
+// Zone Description of a compute placement zone.  This can be used to specify a subset of compute resources within a region where machines can be placed. <br>**HATEOAS** links:<br>**region** - Region - Region for the zone.<br>**computes** - Computes - Computes for the zone. <br>**cloud-account** - CloudAccount - The cloud account that the zone belongs to.<br>**self** - Zone - Self link to this zone
 // swagger:model Zone
 type Zone struct {
 
@@ -23,7 +23,7 @@ type Zone struct {
 	// Required: true
 	Links map[string]Href `json:"_links"`
 
-	// Date when the entity was created. The date is in ISO 6801 and UTC.
+	// Date when the entity was created. The date is in ISO 8601 and UTC.
 	CreatedAt string `json:"createdAt,omitempty"`
 
 	// A list of key value pair of properties that will  be used

@@ -61,6 +61,42 @@ func (a *Client) GetResourceTypeUsingGET(params *GetResourceTypeUsingGETParams) 
 }
 
 /*
+GetResourceTypeUsingGETMixin1 fetches a specific resource type
+
+Returns the Resource type with the supplied ID.
+*/
+func (a *Client) GetResourceTypeUsingGETMixin1(params *GetResourceTypeUsingGETMixin1Params) (*GetResourceTypeUsingGETMixin1OK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetResourceTypeUsingGETMixin1Params()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getResourceTypeUsingGETMixin1",
+		Method:             "GET",
+		PathPattern:        "/deployment/api/resource-types/{resourceTypeId}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetResourceTypeUsingGETMixin1Reader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetResourceTypeUsingGETMixin1OK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getResourceTypeUsingGETMixin1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 ListResourceTypesUsingGET lists resource types
 */
 func (a *Client) ListResourceTypesUsingGET(params *ListResourceTypesUsingGETParams) (*ListResourceTypesUsingGETOK, error) {
@@ -91,6 +127,42 @@ func (a *Client) ListResourceTypesUsingGET(params *ListResourceTypesUsingGETPara
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for listResourceTypesUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListResourceTypesUsingGETMixin1 fetches all resource types
+
+Returns a paginated list of Resource Types.
+*/
+func (a *Client) ListResourceTypesUsingGETMixin1(params *ListResourceTypesUsingGETMixin1Params) (*ListResourceTypesUsingGETMixin1OK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListResourceTypesUsingGETMixin1Params()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "listResourceTypesUsingGETMixin1",
+		Method:             "GET",
+		PathPattern:        "/deployment/api/resource-types",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListResourceTypesUsingGETMixin1Reader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListResourceTypesUsingGETMixin1OK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for listResourceTypesUsingGETMixin1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

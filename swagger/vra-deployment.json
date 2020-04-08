@@ -55,6 +55,18 @@
         {
             "name": "Policy Types",
             "description": "Policy Type API"
+        },
+        {
+            "name": "Pricing Card Assignments",
+            "description": "Metering Policy Assignment Controller"
+        },
+        {
+            "name": "Resource types",
+            "description": "Resource Type Controller"
+        },
+        {
+            "name": "pricing cards",
+            "description": "Metering Policy Controller"
         }
     ],
     "produces": [
@@ -299,9 +311,9 @@
                 "tags": [
                     "Catalog Admin Items"
                 ],
-                "summary": "Set an icon to a catalog item.",
-                "description": "Updates a catalog item with specified icon id.",
-                "operationId": "setItemIconUsingPATCH",
+                "summary": "Set an icon or request limit to a catalog item.",
+                "description": "Updates a catalog item with specified icon id or request limit.",
+                "operationId": "updateCatalogItemUsingPATCH",
                 "consumes": [
                     "application/json"
                 ],
@@ -1041,6 +1053,14 @@
                         "allowEmptyValue": false
                     },
                     {
+                        "name": "createdAt",
+                        "in": "query",
+                        "description": "Comma-separated start and end dates for the interval",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
                         "name": "expandLastRequest",
                         "in": "query",
                         "description": "Expands deployment last request.",
@@ -1062,6 +1082,14 @@
                         "description": "The 'resources' field of each resulting deployment will be retrieved.",
                         "required": false,
                         "type": "boolean",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "expiresAt",
+                        "in": "query",
+                        "description": "Comma-separated start and end dates for the interval",
+                        "required": false,
+                        "type": "string",
                         "allowEmptyValue": false
                     },
                     {
@@ -1471,6 +1499,12 @@
                     },
                     "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
                     }
                 },
                 "deprecated": false
@@ -1513,6 +1547,9 @@
                     },
                     "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1682,6 +1719,67 @@
                 "deprecated": false
             }
         },
+        "/deployment/api/deployments/{depId}/expense-history": {
+            "get": {
+                "tags": [
+                    "Deployments"
+                ],
+                "summary": "Fetch a specific deployment's expense history.",
+                "description": "Returns the deployment expense history with the supplied ID.",
+                "operationId": "getDeploymentExpenseHistoryByIdUsingGET",
+                "parameters": [
+                    {
+                        "name": "depId",
+                        "in": "path",
+                        "description": "Deployment ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "name": "from",
+                        "in": "query",
+                        "description": "The timestamp from when history is requested. Should be of ISO_INSTANT format.",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "interval",
+                        "in": "query",
+                        "description": "The interval of the expense history. Should be one of daily, weekly or monthly.",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "to",
+                        "in": "query",
+                        "description": "The timestamp until when history is requested. Should be of ISO_INSTANT format.",
+                        "required": false,
+                        "type": "string",
+                        "format": "date-time",
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/DeploymentExpenseHistory"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
         "/deployment/api/deployments/{depId}/requests": {
             "post": {
                 "tags": [
@@ -1721,6 +1819,9 @@
                     },
                     "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1869,6 +1970,12 @@
                     },
                     "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
                     }
                 },
                 "deprecated": false
@@ -2018,6 +2125,9 @@
                     "401": {
                         "description": "Unauthorized"
                     },
+                    "403": {
+                        "description": "Forbidden"
+                    },
                     "404": {
                         "description": "Not Found"
                     }
@@ -2088,6 +2198,136 @@
                 "responses": {
                     "200": {
                         "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/deployment/api/resource-types": {
+            "get": {
+                "tags": [
+                    "Resource types"
+                ],
+                "summary": "Fetch all Resource Types.",
+                "description": "Returns a paginated list of Resource Types.",
+                "operationId": "listResourceTypesUsingGET",
+                "parameters": [
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "$skip",
+                        "in": "query",
+                        "description": "Number of records you want to skip",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "description": "Number of records you want",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "ids",
+                        "in": "query",
+                        "description": "Filter by list of resource type ids",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "projectIds",
+                        "in": "query",
+                        "description": "Filter by list of project ids",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "providerId",
+                        "in": "query",
+                        "description": "Filter by provider ID",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Search by name and description",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfResourceType"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/deployment/api/resource-types/{resourceTypeId}": {
+            "get": {
+                "tags": [
+                    "Resource types"
+                ],
+                "summary": "Fetch a specific Resource type.",
+                "description": "Returns the Resource type with the supplied ID.",
+                "operationId": "getResourceTypeUsingGET",
+                "parameters": [
+                    {
+                        "name": "resourceTypeId",
+                        "in": "path",
+                        "description": "resourceTypeId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ResourceType"
+                        }
                     },
                     "401": {
                         "description": "Unauthorized"
@@ -2203,7 +2443,7 @@
                 ],
                 "summary": "Returns a paginated list of policies.",
                 "description": "Find all the policies associated with current org.",
-                "operationId": "getPoliciesUsingGET",
+                "operationId": "getPoliciesUsingGET_1",
                 "parameters": [
                     {
                         "name": "$orderby",
@@ -2272,19 +2512,13 @@
                 "tags": [
                     "Policies"
                 ],
-                "summary": "Trigger a policy dry-run.",
-                "description": "Dry-run an existing policy to rehearse actual policy effect on application.",
-                "operationId": "dryRunPolicyUsingPOST",
+                "summary": "Creates a policy.",
+                "description": "Create a new policy based on request body and validate its field according to business rules.",
+                "operationId": "createPolicyUsingPOST_1",
                 "consumes": [
                     "application/json"
                 ],
                 "parameters": [
-                    {
-                        "name": "dryRun",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
                     {
                         "in": "body",
                         "name": "policy",
@@ -2293,11 +2527,22 @@
                         "schema": {
                             "$ref": "#/definitions/Policy"
                         }
+                    },
+                    {
+                        "name": "validationOnly",
+                        "in": "query",
+                        "description": "For a dry run that will do policy validation only instead of create a policy",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": false
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK"
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Policy"
+                        }
                     }
                 },
                 "deprecated": false
@@ -2310,7 +2555,7 @@
                 ],
                 "summary": "Returns a specified policy.",
                 "description": "Find a specific policy based on the input policy id.",
-                "operationId": "getPolicyUsingGET",
+                "operationId": "getPolicyUsingGET_1",
                 "parameters": [
                     {
                         "name": "computeStats",
@@ -2318,14 +2563,6 @@
                         "description": "computeStats",
                         "required": false,
                         "type": "boolean"
-                    },
-                    {
-                        "name": "expandCriteriaLegend",
-                        "in": "query",
-                        "description": "Augments Criteria in returned object with legend data structures for translation between IDs and human readable DataElements",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": false
                     },
                     {
                         "name": "id",
@@ -2352,7 +2589,7 @@
                 ],
                 "summary": "Delete a policy",
                 "description": "Delete a specified policy corresponding to its unique id.",
-                "operationId": "deletePolicyUsingDELETE",
+                "operationId": "deletePolicyUsingDELETE_1",
                 "parameters": [
                     {
                         "name": "id",
@@ -2567,12 +2804,561 @@
                 },
                 "deprecated": false
             }
+        },
+        "/price/api/private/pricing-card-assignments": {
+            "get": {
+                "tags": [
+                    "Pricing Card Assignments"
+                ],
+                "summary": "Fetch all pricing card assignment for private cloud",
+                "description": "Returns a paginated list of pricing card assignments",
+                "operationId": "getAllMeteringPolicyAssignmentsUsingGET",
+                "parameters": [
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "$skip",
+                        "in": "query",
+                        "description": "Number of records you want to skip",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "description": "Number of records you want",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "refreshEntities",
+                        "in": "query",
+                        "description": "Search by name and description",
+                        "required": false,
+                        "type": "boolean",
+                        "default": true,
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfMeteringPolicyAssignment"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "deprecated": false
+            },
+            "post": {
+                "tags": [
+                    "Pricing Card Assignments"
+                ],
+                "summary": "Create a new pricing card assignment",
+                "description": "Create a new pricing card policy assignment based on request body and validate its field according to business rules. Request body with ALL entityType will delete the older assignments for the given pricingCardId",
+                "operationId": "createMeteringPolicyAssignmentUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "meteringPolicyAssignment",
+                        "description": "The pricing card assignment to be created",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/MeteringPolicyAssignment"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/MeteringPolicyAssignment"
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/MeteringPolicyAssignment"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/price/api/private/pricing-card-assignments/strategy": {
+            "get": {
+                "tags": [
+                    "Pricing Card Assignments"
+                ],
+                "summary": "Fetch pricing card assignment strategy for the Org",
+                "description": "Returns a pricing card assignment strategy for the Org",
+                "operationId": "getMeteringAssignmentStrategyUsingGET",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/MeteringAssignmentStrategy"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            },
+            "post": {
+                "tags": [
+                    "Pricing Card Assignments"
+                ],
+                "summary": "Selecting the new pricing card assignment strategy,PROJECT or CLOUDZONE are possible values can be used while creating strategy. Also there can be only one strategy for a given org at a given point of time",
+                "description": "Create a new pricing card assignment strategy based on request body and validate its field according to business rules.",
+                "operationId": "createMeteringAssignmentStrategyUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "meteringAssignmentStrategy",
+                        "description": "The pricing card assignment strategy to be created",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/MeteringAssignmentStrategy"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/MeteringAssignmentStrategy"
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/MeteringAssignmentStrategy"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "deprecated": false
+            },
+            "patch": {
+                "tags": [
+                    "Pricing Card Assignments"
+                ],
+                "summary": "Updates the pricing card assignment strategy for the Org.",
+                "operationId": "changeMeteringAssignmentStrategyUsingPATCH",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "meteringAssignmentStrategy",
+                        "description": "Pricing card assignment strategy with 'EntityType' to override the strategy for the org",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/MeteringAssignmentStrategy"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/MeteringAssignmentStrategy"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/price/api/private/pricing-card-assignments/{id}": {
+            "get": {
+                "tags": [
+                    "Pricing Card Assignments"
+                ],
+                "summary": "Fetch pricing card assignment for private cloud by id",
+                "description": "Returns a pricing card assignments by id",
+                "operationId": "getMeteringPolicyAssignmentUsingGET",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "pricing card assignment id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/MeteringPolicyAssignment"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            },
+            "delete": {
+                "tags": [
+                    "Pricing Card Assignments"
+                ],
+                "summary": "Delete the pricing card assignment with specified id",
+                "description": "Deletes the pricing card assignment with the specified id",
+                "operationId": "deleteMeteringPolicyAssignmentUsingDELETE",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "pricing card Assignment Id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            },
+            "patch": {
+                "tags": [
+                    "Pricing Card Assignments"
+                ],
+                "summary": "Updates the pricing card assignment id with the supplied id. Request body with ALL entityType will delete the older assignments for the given pricingCardId",
+                "operationId": "patchMeteringPolicyAssignmentUsingPATCH",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "pricing card Assignment Id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "in": "body",
+                        "name": "meteringPolicyAssignment",
+                        "description": "A pricing card assignment with pricing card Id to override existing pricing card Id",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/MeteringPolicyAssignment"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/MeteringPolicyAssignment"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/price/api/private/pricing-cards": {
+            "get": {
+                "tags": [
+                    "pricing cards"
+                ],
+                "summary": "Fetch all pricing cards for private-policy cloud",
+                "description": "Returns a paginated list of pricing cards",
+                "operationId": "getPoliciesUsingGET",
+                "parameters": [
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "$skip",
+                        "in": "query",
+                        "description": "Number of records you want to skip",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "description": "Number of records you want",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "expandAssignmentInfo",
+                        "in": "query",
+                        "description": "Whether or not returns count of assignments.",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "expandPricingCard",
+                        "in": "query",
+                        "description": "Whether or not returns detailed pricing card for each result.",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Search by name and description",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfMeteringPolicy"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "deprecated": false
+            },
+            "post": {
+                "tags": [
+                    "pricing cards"
+                ],
+                "summary": "Create a new pricing card",
+                "description": "Create a new pricing card based on request body and validate its field according to business rules.",
+                "operationId": "createPolicyUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "meteringPolicy",
+                        "description": "The pricing card to be created",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/MeteringPolicy"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/MeteringPolicy"
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/MeteringPolicy"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/price/api/private/pricing-cards/{id}": {
+            "get": {
+                "tags": [
+                    "pricing cards"
+                ],
+                "summary": "Find the pricing card with specified Id",
+                "description": "Returns the pricing card with the specified id",
+                "operationId": "getPolicyUsingGET",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "pricing card Id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/MeteringPolicy"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            },
+            "put": {
+                "tags": [
+                    "pricing cards"
+                ],
+                "summary": "Update the pricing card",
+                "description": "Updates the pricing card with the specified Id",
+                "operationId": "updatePolicyUsingPUT",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "pricing card Id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "in": "body",
+                        "name": "meteringPolicy",
+                        "description": "A set of pricing card fields to be updated.",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/MeteringPolicy"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/MeteringPolicy"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            },
+            "delete": {
+                "tags": [
+                    "pricing cards"
+                ],
+                "summary": "Delete the pricing card with specified Id",
+                "description": "Deletes the pricing card with the specified id",
+                "operationId": "deletePolicyUsingDELETE",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "pricing card Id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
         }
     },
     "definitions": {
         "AdminCatalogItemPatch": {
             "type": "object",
             "properties": {
+                "bulkRequestLimit": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Max number of instances that can be requested at a time",
+                    "minimum": -128,
+                    "maximum": 127
+                },
                 "iconId": {
                     "type": "string",
                     "description": "icon id"
@@ -2590,6 +3376,13 @@
                 "type"
             ],
             "properties": {
+                "bulkRequestLimit": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Max number of instances that can be requested at a time",
+                    "minimum": -128,
+                    "maximum": 127
+                },
                 "createdAt": {
                     "type": "string",
                     "format": "date-time",
@@ -2664,6 +3457,13 @@
         "CatalogItemRequest": {
             "type": "object",
             "properties": {
+                "bulkRequestCount": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Deployment request count; defaults to 1 if not specified.",
+                    "minimum": -128,
+                    "maximum": 127
+                },
                 "deploymentName": {
                     "type": "string",
                     "description": "Name of the requested deployment"
@@ -2789,6 +3589,11 @@
                 "createdBy": {
                     "type": "string",
                     "description": "Service that created this type"
+                },
+                "iconId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Default Icon Id"
                 },
                 "id": {
                     "type": "string",
@@ -2924,6 +3729,11 @@
                     "type": "boolean",
                     "description": "Global flag indicating that all the items can be requested across all projects."
                 },
+                "iconId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Default Icon Id"
+                },
                 "id": {
                     "type": "string",
                     "format": "uuid",
@@ -3042,6 +3852,24 @@
                 }
             },
             "title": "Criteria"
+        },
+        "DataElement": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "error": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "title": "DataElement"
         },
         "Deployment": {
             "type": "object",
@@ -3201,12 +4029,47 @@
             "title": "DeploymentEvent",
             "description": "Represents deployment events."
         },
+        "DeploymentExpenseHistory": {
+            "type": "object",
+            "properties": {
+                "currency": {
+                    "type": "string",
+                    "description": "The currency code of the expense history.",
+                    "readOnly": true
+                },
+                "data": {
+                    "type": "array",
+                    "description": "The list of expense history metric.",
+                    "readOnly": true,
+                    "items": {
+                        "$ref": "#/definitions/TimeSeriesValue"
+                    }
+                },
+                "interval": {
+                    "type": "string",
+                    "description": "The requested interval type.",
+                    "readOnly": true,
+                    "enum": [
+                        "daily",
+                        "weekly",
+                        "monthly"
+                    ]
+                }
+            },
+            "title": "DeploymentExpenseHistory",
+            "description": "Expense history of a deployment."
+        },
         "DeploymentRequest": {
             "type": "object",
             "properties": {
                 "actionId": {
                     "type": "string",
                     "description": "Identifier of the requested action"
+                },
+                "approvedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Time at which the request was approved."
                 },
                 "blueprintId": {
                     "type": "string",
@@ -3219,6 +4082,11 @@
                 "catalogItemId": {
                     "type": "string",
                     "description": "Identifier of the requested catalog item in the form 'UUID:version'"
+                },
+                "completedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Time at which the request completed."
                 },
                 "completedTasks": {
                     "type": "integer",
@@ -3247,6 +4115,11 @@
                     "type": "string",
                     "format": "uuid",
                     "description": "Event identifier"
+                },
+                "initializedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Time at which the request was initialized."
                 },
                 "inputs": {
                     "type": "object",
@@ -3277,14 +4150,16 @@
                     "type": "string",
                     "description": "Request overall execution status.",
                     "enum": [
+                        "CREATED",
                         "PENDING",
-                        "REJECTED",
+                        "INITIALIZATION",
+                        "APPROVAL_PENDING",
                         "INPROGRESS",
+                        "COMPLETION",
+                        "APPROVAL_REJECTED",
                         "ABORTED",
                         "SUCCESSFUL",
-                        "PARTIALLY_SUCCESSFUL",
-                        "FAILED",
-                        "CREATED"
+                        "FAILED"
                     ]
                 },
                 "totalTasks": {
@@ -3405,6 +4280,13 @@
                 "empty": {
                     "type": "boolean"
                 },
+                "filterType": {
+                    "type": "string",
+                    "enum": [
+                        "MULTISELECT",
+                        "DATE_RANGE"
+                    ]
+                },
                 "first": {
                     "type": "boolean"
                 },
@@ -3471,6 +4353,25 @@
             },
             "title": "FilterSchema"
         },
+        "FixedPrice": {
+            "type": "object",
+            "properties": {
+                "chargePeriod": {
+                    "type": "string",
+                    "enum": [
+                        "HOURLY",
+                        "DAILY",
+                        "WEEKLY",
+                        "MONTHLY"
+                    ]
+                },
+                "rate": {
+                    "type": "number",
+                    "format": "double"
+                }
+            },
+            "title": "FixedPrice"
+        },
         "FormDefinition": {
             "type": "object",
             "properties": {
@@ -3479,6 +4380,272 @@
                 }
             },
             "title": "FormDefinition"
+        },
+        "Metering": {
+            "type": "object",
+            "properties": {
+                "baseRate": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "chargeBasedOn": {
+                    "type": "string",
+                    "enum": [
+                        "USAGE"
+                    ]
+                },
+                "chargeOnPowerState": {
+                    "type": "string",
+                    "enum": [
+                        "ALWAYS",
+                        "ONLY_WHEN_POWERED_ON",
+                        "POWERED_ON_AT_LEAST_ONCE"
+                    ]
+                },
+                "chargePeriod": {
+                    "type": "string",
+                    "enum": [
+                        "HOURLY",
+                        "DAILY",
+                        "WEEKLY",
+                        "MONTHLY"
+                    ]
+                },
+                "fixedPrice": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "unit": {
+                    "type": "string"
+                }
+            },
+            "title": "Metering"
+        },
+        "MeteringAssignmentStrategy": {
+            "type": "object",
+            "properties": {
+                "entityType": {
+                    "type": "string",
+                    "description": "Metering Policy Assignment entityType(Strategy)",
+                    "enum": [
+                        "ALL",
+                        "PROJECT",
+                        "CLOUDZONE"
+                    ]
+                }
+            },
+            "title": "MeteringAssignmentStrategy",
+            "description": "Metering Assignment Strategy"
+        },
+        "MeteringItem": {
+            "type": "object",
+            "properties": {
+                "itemName": {
+                    "type": "string"
+                },
+                "metering": {
+                    "$ref": "#/definitions/Metering"
+                }
+            },
+            "title": "MeteringItem"
+        },
+        "MeteringPolicy": {
+            "type": "object",
+            "properties": {
+                "chargeModel": {
+                    "type": "string",
+                    "enum": [
+                        "PAY_AS_YOU_GO"
+                    ]
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "createdBy": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "fixedPrice": {
+                    "$ref": "#/definitions/FixedPrice"
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "lastUpdatedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "meteringItems": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/MeteringItem"
+                    }
+                },
+                "name": {
+                    "type": "string"
+                },
+                "namedMeteringItems": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/NamedMeteringItem"
+                    }
+                },
+                "oneTimeMeteringItems": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/OneTimeMeteringItem"
+                    }
+                },
+                "orgId": {
+                    "type": "string"
+                },
+                "pricingCardAssignmentInfo": {
+                    "description": "Assignment count, assignment entity type",
+                    "$ref": "#/definitions/MeteringPolicyAssignmentInfo"
+                },
+                "tagBasedMeteringItems": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TagBasedMeteringItem"
+                    }
+                },
+                "tagBasedOneTimeMeteringItems": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TagBasedOneTimeMeteringItem"
+                    }
+                },
+                "tagBasedRateFactorItems": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TagBasedRateFactorItem"
+                    }
+                }
+            },
+            "title": "MeteringPolicy"
+        },
+        "MeteringPolicyAssignment": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Creation time"
+                },
+                "entityId": {
+                    "type": "string",
+                    "description": "Pricing card assigned entity id"
+                },
+                "entityName": {
+                    "type": "string",
+                    "description": "Pricing card assigned entity name"
+                },
+                "entityType": {
+                    "type": "string",
+                    "description": "Pricing card assigned entity type",
+                    "enum": [
+                        "ALL",
+                        "PROJECT",
+                        "CLOUDZONE"
+                    ]
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Id of the pricingCardAssignment"
+                },
+                "lastUpdatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Updated time"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "OrgId of the pricingCardAssignment"
+                },
+                "pricingCardId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Pricing card id"
+                },
+                "pricingCardName": {
+                    "type": "string",
+                    "description": "Pricing card name"
+                }
+            },
+            "title": "MeteringPolicyAssignment",
+            "description": "Pricing card assignment for project/cloud zone"
+        },
+        "MeteringPolicyAssignmentInfo": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "entityType": {
+                    "type": "string",
+                    "enum": [
+                        "ALL",
+                        "PROJECT",
+                        "CLOUDZONE"
+                    ]
+                }
+            },
+            "title": "MeteringPolicyAssignmentInfo"
+        },
+        "NamedMetering": {
+            "type": "object",
+            "properties": {
+                "metering": {
+                    "$ref": "#/definitions/Metering"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "title": "NamedMetering"
+        },
+        "NamedMeteringItem": {
+            "type": "object",
+            "properties": {
+                "itemName": {
+                    "type": "string"
+                },
+                "namedMeterings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/NamedMetering"
+                    }
+                }
+            },
+            "title": "NamedMeteringItem"
+        },
+        "OneTimeMetering": {
+            "type": "object",
+            "properties": {
+                "oneTimeFixedPrice": {
+                    "type": "number",
+                    "format": "double"
+                }
+            },
+            "title": "OneTimeMetering"
+        },
+        "OneTimeMeteringItem": {
+            "type": "object",
+            "properties": {
+                "itemName": {
+                    "type": "string"
+                },
+                "oneTimeMetering": {
+                    "$ref": "#/definitions/OneTimeMetering"
+                }
+            },
+            "title": "OneTimeMeteringItem"
         },
         "Page": {
             "type": "object",
@@ -3800,6 +4967,94 @@
             },
             "title": "PageOfFilterEntry"
         },
+        "PageOfMeteringPolicy": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/MeteringPolicy"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfMeteringPolicy"
+        },
+        "PageOfMeteringPolicyAssignment": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/MeteringPolicyAssignment"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfMeteringPolicyAssignment"
+        },
         "PageOfPolicy": {
             "type": "object",
             "properties": {
@@ -3976,6 +5231,50 @@
             },
             "title": "PageOfResource"
         },
+        "PageOfResourceType": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ResourceType"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfResourceType"
+        },
         "Policy": {
             "type": "object",
             "properties": {
@@ -3992,11 +5291,18 @@
                 "definition": {
                     "type": "object"
                 },
+                "definitionLegend": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/DataElement"
+                    }
+                },
                 "description": {
                     "type": "string"
                 },
                 "enforcementType": {
                     "type": "string",
+                    "description": "Defines enforcement type for policy. Default is HARD",
                     "enum": [
                         "SOFT",
                         "HARD"
@@ -4118,6 +5424,21 @@
             "title": "PolicyDecisionPolicy",
             "description": "Element of a decision."
         },
+        "PolicyFeatureConfig": {
+            "type": "object",
+            "properties": {
+                "enableDryRun": {
+                    "type": "boolean"
+                },
+                "enableEnforcementType": {
+                    "type": "boolean"
+                },
+                "enableUpdateNotification": {
+                    "type": "boolean"
+                }
+            },
+            "title": "PolicyFeatureConfig"
+        },
         "PolicyStats": {
             "type": "object",
             "properties": {
@@ -4146,6 +5467,10 @@
                 "targetSchema"
             ],
             "properties": {
+                "config": {
+                    "description": "Defines configuration options for policy type",
+                    "$ref": "#/definitions/PolicyFeatureConfig"
+                },
                 "definitionSchema": {
                     "type": "object",
                     "description": "Schema describing a policy object of this type"
@@ -4169,6 +5494,34 @@
             },
             "title": "PolicyType",
             "description": "A type of policy that includes the schema of the policy itself and the schema of the objects affected by the policy"
+        },
+        "RateFactor": {
+            "type": "object",
+            "properties": {
+                "contextMeteringItem": {
+                    "type": "string"
+                },
+                "rateFactor": {
+                    "type": "number",
+                    "format": "double"
+                }
+            },
+            "title": "RateFactor"
+        },
+        "RateFactorItem": {
+            "type": "object",
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "rateFactor": {
+                    "$ref": "#/definitions/RateFactor"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "title": "RateFactorItem"
         },
         "Resource": {
             "type": "object",
@@ -4330,6 +5683,82 @@
             },
             "title": "ResourceReference"
         },
+        "ResourceType": {
+            "type": "object",
+            "properties": {
+                "accountType": {
+                    "type": "string",
+                    "description": "Optional. Account type to which the resource type belongs to. Example: AWS, Azure etc",
+                    "enum": [
+                        "AWS",
+                        "Azure",
+                        "GCP",
+                        "vSphere",
+                        "vSphere-cloud",
+                        "Azure-EA",
+                        "NSX-V",
+                        "NSX-T",
+                        "NSX-P",
+                        "NSX-P-cloud",
+                        "vCloud Director",
+                        "VMC",
+                        "Puppet",
+                        "Ansible"
+                    ]
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Time at which the resource type was created."
+                },
+                "createdBy": {
+                    "type": "string",
+                    "description": "Name of the user who created the resource type."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Resource type description"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Resource display name"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Resource type id"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Resource type name"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Org ID where resource type belongs"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Project ID where resource type belongs"
+                },
+                "providerId": {
+                    "type": "string",
+                    "description": "Provider Id"
+                },
+                "schema": {
+                    "type": "object",
+                    "description": "Resource type schema"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Time at which the resource type was updated."
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "Name of the user who updated the resource type."
+                }
+            },
+            "title": "ResourceType"
+        },
         "Sort": {
             "type": "object",
             "properties": {
@@ -4344,6 +5773,99 @@
                 }
             },
             "title": "Sort"
+        },
+        "TagBasedMetering": {
+            "type": "object",
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "metering": {
+                    "$ref": "#/definitions/Metering"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "title": "TagBasedMetering"
+        },
+        "TagBasedMeteringItem": {
+            "type": "object",
+            "properties": {
+                "itemName": {
+                    "type": "string"
+                },
+                "tagBasedMeterings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TagBasedMetering"
+                    }
+                }
+            },
+            "title": "TagBasedMeteringItem"
+        },
+        "TagBasedOneTimeMetering": {
+            "type": "object",
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "oneTimeMetering": {
+                    "$ref": "#/definitions/OneTimeMetering"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "title": "TagBasedOneTimeMetering"
+        },
+        "TagBasedOneTimeMeteringItem": {
+            "type": "object",
+            "properties": {
+                "itemName": {
+                    "type": "string"
+                },
+                "oneTimeMeterings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TagBasedOneTimeMetering"
+                    }
+                }
+            },
+            "title": "TagBasedOneTimeMeteringItem"
+        },
+        "TagBasedRateFactorItem": {
+            "type": "object",
+            "properties": {
+                "itemName": {
+                    "type": "string"
+                },
+                "rateFactors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RateFactorItem"
+                    }
+                }
+            },
+            "title": "TagBasedRateFactorItem"
+        },
+        "TimeSeriesValue": {
+            "type": "object",
+            "properties": {
+                "timestamp": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The timestamp of the metric.",
+                    "readOnly": true
+                },
+                "value": {
+                    "type": "number",
+                    "description": "The expense value at the timestamp.",
+                    "readOnly": true
+                }
+            },
+            "title": "TimeSeriesValue",
+            "description": "A timeseries object containing timestamp and price value at the timestamp"
         }
     }
 }

@@ -106,6 +106,9 @@ func (a *Client) CreateBlockDevice(params *CreateBlockDeviceParams) (*CreateBloc
 DeleteBlockDevice deletes a block device
 
 Delete a BlockDevice
+1. A block device cannot be deleted when attached to a machine.
+2. A block device with persistent property set to 'false' is deleted.
+3. A block device with persistent property set to 'true' needs an additional parameter 'purge' to be set to true, for deletion.
 */
 func (a *Client) DeleteBlockDevice(params *DeleteBlockDeviceParams) (*DeleteBlockDeviceAccepted, *DeleteBlockDeviceNoContent, error) {
 	// TODO: Validate the params before sending
@@ -249,7 +252,7 @@ func (a *Client) GetBlockDevices(params *GetBlockDevicesParams) (*GetBlockDevice
 }
 
 /*
-GetMachineDisk gets a machine disk
+GetMachineDisk gets machine disk
 
 Get disk with a given id for specific machine
 */

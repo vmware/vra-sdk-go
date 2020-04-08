@@ -62,7 +62,7 @@ for the delete cloud account nsx v operation typically these are written to a ht
 type DeleteCloudAccountNsxVParams struct {
 
 	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 
 	*/
 	APIVersion *string

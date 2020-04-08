@@ -6,8 +6,11 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"strconv"
+
 	strfmt "github.com/go-openapi/strfmt"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
 )
 
@@ -18,6 +21,9 @@ type FabricImageDescription struct {
 	// Cloud config for this image. This cloud config will be merged during provisioning with other cloud configurations such as the bootConfig provided in MachineSpecification.
 	CloudConfig string `json:"cloudConfig,omitempty"`
 
+	// Constraints that are used to drive placement policies for the image that is produced from this mapping.Constraint expressions are matched against tags on existing placement targets.
+	Constraints []*Constraint `json:"constraints"`
+
 	// The id of the fabric image
 	ID string `json:"id,omitempty"`
 
@@ -27,6 +33,40 @@ type FabricImageDescription struct {
 
 // Validate validates this fabric image description
 func (m *FabricImageDescription) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateConstraints(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *FabricImageDescription) validateConstraints(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Constraints) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Constraints); i++ {
+		if swag.IsZero(m.Constraints[i]) { // not required
+			continue
+		}
+
+		if m.Constraints[i] != nil {
+			if err := m.Constraints[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("constraints" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

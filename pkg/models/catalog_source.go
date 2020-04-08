@@ -36,6 +36,10 @@ type CatalogSource struct {
 	// Global flag indicating that all the items can be requested across all projects.
 	Global bool `json:"global,omitempty"`
 
+	// Default Icon Id
+	// Format: uuid
+	IconID strfmt.UUID `json:"iconId,omitempty"`
+
 	// Catalog Source id
 	// Required: true
 	// Format: uuid
@@ -89,6 +93,10 @@ func (m *CatalogSource) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateIconID(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateID(formats); err != nil {
 		res = append(res, err)
 	}
@@ -135,6 +143,19 @@ func (m *CatalogSource) validateCreatedAt(formats strfmt.Registry) error {
 	}
 
 	if err := validate.FormatOf("createdAt", "body", "date-time", m.CreatedAt.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CatalogSource) validateIconID(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.IconID) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("iconId", "body", "uuid", m.IconID.String(), formats); err != nil {
 		return err
 	}
 

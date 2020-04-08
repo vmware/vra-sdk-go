@@ -669,6 +669,18 @@
                 "operationId": "getBlueprintUsingGET_1",
                 "parameters": [
                     {
+                        "name": "$select",
+                        "in": "query",
+                        "description": "Fields to include in content. Use * to get all fields.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
+                    },
+                    {
                         "name": "apiVersion",
                         "in": "query",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about",
@@ -1013,6 +1025,18 @@
                 "summary": "Returns versioned blueprint details",
                 "operationId": "getBlueprintVersionUsingGET_1",
                 "parameters": [
+                    {
+                        "name": "$select",
+                        "in": "query",
+                        "description": "Fields to include in content. Use * to get all fields.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
+                    },
                     {
                         "name": "blueprintId",
                         "in": "path",
@@ -1379,8 +1403,7 @@
                         "in": "path",
                         "description": "resourceTypeId",
                         "required": true,
-                        "type": "string",
-                        "format": "uuid"
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -1564,26 +1587,6 @@
                 }
             },
             "title": "BlueprintAbout"
-        },
-        "BlueprintDeploymentResourcesQueryResult": {
-            "type": "object",
-            "properties": {
-                "count": {
-                    "type": "integer",
-                    "format": "int64",
-                    "description": "Count",
-                    "readOnly": true
-                },
-                "objects": {
-                    "type": "array",
-                    "description": "List of blueprint deployment resources",
-                    "readOnly": true,
-                    "items": {
-                        "$ref": "#/definitions/DeploymentResource"
-                    }
-                }
-            },
-            "title": "BlueprintDeploymentResourcesQueryResult"
         },
         "BlueprintExecution": {
             "type": "object",
@@ -2175,48 +2178,6 @@
             },
             "title": "BlueprintVersionRequest"
         },
-        "DeploymentResource": {
-            "type": "object",
-            "properties": {
-                "dependsOn": {
-                    "type": "array",
-                    "description": "Resource dependency on other resources",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "id": {
-                    "type": "string",
-                    "description": "Resource ID"
-                },
-                "metadata": {
-                    "type": "object",
-                    "description": "Resource metadata"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "Resource name"
-                },
-                "properties": {
-                    "type": "object",
-                    "description": "Resource properties"
-                },
-                "state": {
-                    "type": "string",
-                    "description": "Resource state",
-                    "enum": [
-                        "PARTIAL",
-                        "TAINTED",
-                        "OK"
-                    ]
-                },
-                "type": {
-                    "type": "string",
-                    "description": "Resource type"
-                }
-            },
-            "title": "DeploymentResource"
-        },
         "PageOfBlueprint": {
             "type": "object",
             "properties": {
@@ -2531,6 +2492,11 @@
                 "displayName": {
                     "type": "string",
                     "description": "Resource type display name",
+                    "readOnly": true
+                },
+                "endpointType": {
+                    "type": "string",
+                    "description": "Endpoint type",
                     "readOnly": true
                 },
                 "id": {

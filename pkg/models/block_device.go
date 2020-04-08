@@ -28,17 +28,17 @@ type BlockDevice struct {
 	// Required: true
 	CapacityInGB *int32 `json:"capacityInGB"`
 
-	// Set of ids of the cloud accounts this entity belongs to.
+	// Set of ids of the cloud accounts this resource belongs to.
 	// Unique: true
 	CloudAccountIds []string `json:"cloudAccountIds"`
 
-	// Date when the entity was created. The date is in ISO 6801 and UTC.
+	// Date when the entity was created. The date is in ISO 8601 and UTC.
 	CreatedAt string `json:"createdAt,omitempty"`
 
-	// Additional properties that may be used to extend the base type.
+	// Additional properties that may be used to extend the base resource.
 	CustomProperties map[string]string `json:"customProperties,omitempty"`
 
-	// Deployment id that is associated with this resource
+	// Deployment id that is associated with this resource.
 	DeploymentID string `json:"deploymentId,omitempty"`
 
 	// A human-friendly description.
@@ -47,7 +47,7 @@ type BlockDevice struct {
 	// External entity Id on the provider side.
 	ExternalID string `json:"externalId,omitempty"`
 
-	// The external regionId of the resource
+	// The external regionId of the resource.
 	// Required: true
 	ExternalRegionID *string `json:"externalRegionId"`
 
@@ -74,7 +74,7 @@ type BlockDevice struct {
 	// Indicates whether the block device survives a delete action.
 	Persistent bool `json:"persistent,omitempty"`
 
-	// The id of the project this entity belongs to.
+	// The id of the project this resource belongs to.
 	ProjectID string `json:"projectId,omitempty"`
 
 	// Status of the block device
@@ -82,7 +82,7 @@ type BlockDevice struct {
 	// Enum: [DETACHED ATTACHED AVAILABLE]
 	Status *string `json:"status"`
 
-	// A set of tag keys and optional values that were set on this resource instance.
+	// A set of tag keys and optional values that were set on this resource.
 	Tags []*Tag `json:"tags"`
 
 	// Date when the entity was last updated. The date is ISO 8601 and UTC.

@@ -32,6 +32,10 @@ type CatalogItemType struct {
 	// Service that created this type
 	CreatedBy string `json:"createdBy,omitempty"`
 
+	// Default Icon Id
+	// Format: uuid
+	IconID strfmt.UUID `json:"iconId,omitempty"`
+
 	// Human-readable unique ID containing only lowercase letters and periods, neither starting nor ending with a period, and never having two consecutive periods
 	ID string `json:"id,omitempty"`
 
@@ -45,6 +49,10 @@ func (m *CatalogItemType) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateCreatedAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIconID(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -65,6 +73,19 @@ func (m *CatalogItemType) validateCreatedAt(formats strfmt.Registry) error {
 	}
 
 	if err := validate.FormatOf("createdAt", "body", "date-time", m.CreatedAt.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CatalogItemType) validateIconID(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.IconID) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("iconId", "body", "uuid", m.IconID.String(), formats); err != nil {
 		return err
 	}
 

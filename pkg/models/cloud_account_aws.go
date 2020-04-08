@@ -27,7 +27,7 @@ type CloudAccountAws struct {
 	// Required: true
 	AccessKeyID *string `json:"accessKeyId"`
 
-	// Date when the entity was created. The date is in ISO 6801 and UTC.
+	// Date when the entity was created. The date is in ISO 8601 and UTC.
 	CreatedAt string `json:"createdAt,omitempty"`
 
 	// Additional properties that may be used to extend the base type.

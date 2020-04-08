@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
 	"strconv"
 
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // Filter Filter
@@ -23,6 +25,10 @@ type Filter struct {
 
 	// empty
 	Empty bool `json:"empty,omitempty"`
+
+	// filter type
+	// Enum: [MULTISELECT DATE_RANGE]
+	FilterType string `json:"filterType,omitempty"`
 
 	// first
 	First bool `json:"first,omitempty"`
@@ -63,6 +69,10 @@ func (m *Filter) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateFilterType(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateSort(formats); err != nil {
 		res = append(res, err)
 	}
@@ -93,6 +103,49 @@ func (m *Filter) validateContent(formats strfmt.Registry) error {
 			}
 		}
 
+	}
+
+	return nil
+}
+
+var filterTypeFilterTypePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["MULTISELECT","DATE_RANGE"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		filterTypeFilterTypePropEnum = append(filterTypeFilterTypePropEnum, v)
+	}
+}
+
+const (
+
+	// FilterFilterTypeMULTISELECT captures enum value "MULTISELECT"
+	FilterFilterTypeMULTISELECT string = "MULTISELECT"
+
+	// FilterFilterTypeDATERANGE captures enum value "DATE_RANGE"
+	FilterFilterTypeDATERANGE string = "DATE_RANGE"
+)
+
+// prop value enum
+func (m *Filter) validateFilterTypeEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, filterTypeFilterTypePropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Filter) validateFilterType(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.FilterType) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateFilterTypeEnum("filterType", "body", m.FilterType); err != nil {
+		return err
 	}
 
 	return nil

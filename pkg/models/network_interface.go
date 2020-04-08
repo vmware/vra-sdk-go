@@ -30,7 +30,7 @@ type NetworkInterface struct {
 	// Unique: true
 	CloudAccountIds []string `json:"cloudAccountIds"`
 
-	// Date when the entity was created. The date is in ISO 6801 and UTC.
+	// Date when the entity was created. The date is in ISO 8601 and UTC.
 	CreatedAt string `json:"createdAt,omitempty"`
 
 	// Additional properties that may be used to extend the base type.
@@ -64,6 +64,9 @@ type NetworkInterface struct {
 
 	// Email of the user that owns the entity.
 	Owner string `json:"owner,omitempty"`
+
+	// A list of security group ids this network interface is associated with
+	SecurityGroupIds []string `json:"securityGroupIds"`
 
 	// A set of tag keys and optional values that were set on this network interface.
 	Tags []*Tag `json:"tags"`

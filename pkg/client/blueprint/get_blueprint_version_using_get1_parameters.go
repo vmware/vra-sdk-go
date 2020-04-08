@@ -13,6 +13,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 )
@@ -61,6 +62,11 @@ for the get blueprint version using get1 operation typically these are written t
 */
 type GetBlueprintVersionUsingGET1Params struct {
 
+	/*DollarSelect
+	  Fields to include in content. Use * to get all fields.
+
+	*/
+	DollarSelect []string
 	/*BlueprintID
 	  blueprintId
 
@@ -110,6 +116,17 @@ func (o *GetBlueprintVersionUsingGET1Params) SetHTTPClient(client *http.Client) 
 	o.HTTPClient = client
 }
 
+// WithDollarSelect adds the dollarSelect to the get blueprint version using get1 params
+func (o *GetBlueprintVersionUsingGET1Params) WithDollarSelect(dollarSelect []string) *GetBlueprintVersionUsingGET1Params {
+	o.SetDollarSelect(dollarSelect)
+	return o
+}
+
+// SetDollarSelect adds the dollarSelect to the get blueprint version using get1 params
+func (o *GetBlueprintVersionUsingGET1Params) SetDollarSelect(dollarSelect []string) {
+	o.DollarSelect = dollarSelect
+}
+
 // WithBlueprintID adds the blueprintID to the get blueprint version using get1 params
 func (o *GetBlueprintVersionUsingGET1Params) WithBlueprintID(blueprintID strfmt.UUID) *GetBlueprintVersionUsingGET1Params {
 	o.SetBlueprintID(blueprintID)
@@ -139,6 +156,14 @@ func (o *GetBlueprintVersionUsingGET1Params) WriteToRequest(r runtime.ClientRequ
 		return err
 	}
 	var res []error
+
+	valuesDollarSelect := o.DollarSelect
+
+	joinedDollarSelect := swag.JoinByFormat(valuesDollarSelect, "multi")
+	// query array param $select
+	if err := r.SetQueryParam("$select", joinedDollarSelect...); err != nil {
+		return err
+	}
 
 	// path param blueprintId
 	if err := r.SetPathParam("blueprintId", o.BlueprintID.String()); err != nil {

@@ -97,11 +97,6 @@ def add_security(swagger):
             if 'security' not in swagger['paths'][p][method]:
                 swagger['paths'][p][method]['security'] = bearer_security
 
-def add_region_enumerate_return_code(swagger):
-    path = '/iaas/api/cloud-accounts-vsphere/region-enumeration'
-    responses = swagger['paths'][path]['post']['responses']
-    responses['201'] = responses['200']
-
 
 def add_network_ip_range_return_code(swagger):
     path = '/iaas/api/network-ip-ranges'
@@ -209,6 +204,15 @@ def add_404_not_found(swagger):
             }
 
 
+def change_operationId_for_get_fabric_compute(swagger):
+    # Remove when VCOM-16823 is fixed.
+    path = '/iaas/api/fabric-computes/{id}'
+    fc = swagger['paths'][path]['get']
+    if fc['operationId'] == 'getFabricCompute':
+       return
+    fc['operationId'] = 'getFabricCompute'
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--omit-security', action='store_false')
@@ -221,8 +225,8 @@ if __name__ == "__main__":
     add_204(swagger)
     change_response_model_to_request_tracker(swagger)
 
-    add_region_enumerate_return_code(swagger)
     add_network_ip_range_return_code(swagger)
+    change_operationId_for_get_fabric_compute(swagger)
 
     add_blockdevice_persistent(swagger)
     add_blockdevice_delete_purge(swagger)

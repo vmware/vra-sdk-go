@@ -62,20 +62,20 @@ for the revert machine snapshot operation typically these are written to a http.
 type RevertMachineSnapshotParams struct {
 
 	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 
 	*/
 	APIVersion *string
-	/*ID
-	  Snapshot id to revert.
-
-	*/
-	QueryID string
 	/*ID
 	  The id of the Machine.
 
 	*/
 	ID string
+	/*ID
+	  Snapshot id to revert.
+
+	*/
+	QueryID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -126,17 +126,6 @@ func (o *RevertMachineSnapshotParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
-// WithQueryID adds the id to the revert machine snapshot params
-func (o *RevertMachineSnapshotParams) WithQueryID(id string) *RevertMachineSnapshotParams {
-	o.SetQueryID(id)
-	return o
-}
-
-// SetQueryID adds the id to the revert machine snapshot params
-func (o *RevertMachineSnapshotParams) SetQueryID(id string) {
-	o.QueryID = id
-}
-
 // WithID adds the id to the revert machine snapshot params
 func (o *RevertMachineSnapshotParams) WithID(id string) *RevertMachineSnapshotParams {
 	o.SetID(id)
@@ -146,6 +135,17 @@ func (o *RevertMachineSnapshotParams) WithID(id string) *RevertMachineSnapshotPa
 // SetID adds the id to the revert machine snapshot params
 func (o *RevertMachineSnapshotParams) SetID(id string) {
 	o.ID = id
+}
+
+// WithQueryID adds the id to the revert machine snapshot params
+func (o *RevertMachineSnapshotParams) WithQueryID(id string) *RevertMachineSnapshotParams {
+	o.SetQueryID(id)
+	return o
+}
+
+// SetQueryID adds the id to the revert machine snapshot params
+func (o *RevertMachineSnapshotParams) SetQueryID(id string) {
+	o.QueryID = id
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -172,6 +172,11 @@ func (o *RevertMachineSnapshotParams) WriteToRequest(r runtime.ClientRequest, re
 
 	}
 
+	// path param id
+	if err := r.SetPathParam("id", o.ID); err != nil {
+		return err
+	}
+
 	// query param id
 	qrID := o.QueryID
 	qID := qrID
@@ -179,11 +184,6 @@ func (o *RevertMachineSnapshotParams) WriteToRequest(r runtime.ClientRequest, re
 		if err := r.SetQueryParam("id", qID); err != nil {
 			return err
 		}
-	}
-
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
-		return err
 	}
 
 	if len(res) > 0 {

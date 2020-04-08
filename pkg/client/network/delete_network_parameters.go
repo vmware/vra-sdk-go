@@ -13,6 +13,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 )
@@ -62,10 +63,15 @@ for the delete network operation typically these are written to a http.Request
 type DeleteNetworkParams struct {
 
 	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 
 	*/
 	APIVersion *string
+	/*ForceDelete
+	  Controls whether this is a force delete operation. If true, best effort is made for deleting this network. Use with caution as force deleting may cause inconsistencies between the cloud provider and vRA.
+
+	*/
+	ForceDelete *bool
 	/*ID
 	  The ID of the network.
 
@@ -121,6 +127,17 @@ func (o *DeleteNetworkParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
+// WithForceDelete adds the forceDelete to the delete network params
+func (o *DeleteNetworkParams) WithForceDelete(forceDelete *bool) *DeleteNetworkParams {
+	o.SetForceDelete(forceDelete)
+	return o
+}
+
+// SetForceDelete adds the forceDelete to the delete network params
+func (o *DeleteNetworkParams) SetForceDelete(forceDelete *bool) {
+	o.ForceDelete = forceDelete
+}
+
 // WithID adds the id to the delete network params
 func (o *DeleteNetworkParams) WithID(id string) *DeleteNetworkParams {
 	o.SetID(id)
@@ -150,6 +167,22 @@ func (o *DeleteNetworkParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.ForceDelete != nil {
+
+		// query param forceDelete
+		var qrForceDelete bool
+		if o.ForceDelete != nil {
+			qrForceDelete = *o.ForceDelete
+		}
+		qForceDelete := swag.FormatBool(qrForceDelete)
+		if qForceDelete != "" {
+			if err := r.SetQueryParam("forceDelete", qForceDelete); err != nil {
 				return err
 			}
 		}

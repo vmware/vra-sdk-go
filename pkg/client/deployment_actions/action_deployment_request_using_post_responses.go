@@ -33,6 +33,12 @@ func (o *ActionDeploymentRequestUsingPOSTReader) ReadResponse(response runtime.C
 			return nil, err
 		}
 		return nil, result
+	case 403:
+		result := NewActionDeploymentRequestUsingPOSTForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 404:
 		result := NewActionDeploymentRequestUsingPOSTNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -83,6 +89,27 @@ func (o *ActionDeploymentRequestUsingPOSTUnauthorized) Error() string {
 }
 
 func (o *ActionDeploymentRequestUsingPOSTUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewActionDeploymentRequestUsingPOSTForbidden creates a ActionDeploymentRequestUsingPOSTForbidden with default headers values
+func NewActionDeploymentRequestUsingPOSTForbidden() *ActionDeploymentRequestUsingPOSTForbidden {
+	return &ActionDeploymentRequestUsingPOSTForbidden{}
+}
+
+/*ActionDeploymentRequestUsingPOSTForbidden handles this case with default header values.
+
+Forbidden
+*/
+type ActionDeploymentRequestUsingPOSTForbidden struct {
+}
+
+func (o *ActionDeploymentRequestUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /deployment/api/requests/{requestId}][%d] actionDeploymentRequestUsingPOSTForbidden ", 403)
+}
+
+func (o *ActionDeploymentRequestUsingPOSTForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

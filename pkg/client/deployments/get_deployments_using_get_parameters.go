@@ -87,6 +87,11 @@ type GetDeploymentsUsingGETParams struct {
 
 	*/
 	CloudTypes []string
+	/*CreatedAt
+	  Comma-separated start and end dates for the interval
+
+	*/
+	CreatedAt *string
 	/*ExpandLastRequest
 	  Expands deployment last request.
 
@@ -102,16 +107,11 @@ type GetDeploymentsUsingGETParams struct {
 
 	*/
 	ExpandResources *bool
-	/*ForceCachedResources
-	  The 'resources' field of each deployment in the result list will be read from a cache for a faster query.
+	/*ExpiresAt
+	  Comma-separated start and end dates for the interval
 
 	*/
-	ForceCachedResources *bool
-	/*ForceRefreshResources
-	  The 'resources' field of each deployment in the result list will be guaranteed up-to-date.
-
-	*/
-	ForceRefreshResources *bool
+	ExpiresAt *string
 	/*Ids
 	  A comma-separated list. Only deployments with these IDs will be included in the results.
 
@@ -251,6 +251,17 @@ func (o *GetDeploymentsUsingGETParams) SetCloudTypes(cloudTypes []string) {
 	o.CloudTypes = cloudTypes
 }
 
+// WithCreatedAt adds the createdAt to the get deployments using get params
+func (o *GetDeploymentsUsingGETParams) WithCreatedAt(createdAt *string) *GetDeploymentsUsingGETParams {
+	o.SetCreatedAt(createdAt)
+	return o
+}
+
+// SetCreatedAt adds the createdAt to the get deployments using get params
+func (o *GetDeploymentsUsingGETParams) SetCreatedAt(createdAt *string) {
+	o.CreatedAt = createdAt
+}
+
 // WithExpandLastRequest adds the expandLastRequest to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) WithExpandLastRequest(expandLastRequest *bool) *GetDeploymentsUsingGETParams {
 	o.SetExpandLastRequest(expandLastRequest)
@@ -284,26 +295,15 @@ func (o *GetDeploymentsUsingGETParams) SetExpandResources(expandResources *bool)
 	o.ExpandResources = expandResources
 }
 
-// WithForceCachedResources adds the forceCachedResources to the get deployments using get params
-func (o *GetDeploymentsUsingGETParams) WithForceCachedResources(forceCachedResources *bool) *GetDeploymentsUsingGETParams {
-	o.SetForceCachedResources(forceCachedResources)
+// WithExpiresAt adds the expiresAt to the get deployments using get params
+func (o *GetDeploymentsUsingGETParams) WithExpiresAt(expiresAt *string) *GetDeploymentsUsingGETParams {
+	o.SetExpiresAt(expiresAt)
 	return o
 }
 
-// SetForceCachedResources adds the forceCachedResources to the get deployments using get params
-func (o *GetDeploymentsUsingGETParams) SetForceCachedResources(forceCachedResources *bool) {
-	o.ForceCachedResources = forceCachedResources
-}
-
-// WithForceRefreshResources adds the forceRefreshResources to the get deployments using get params
-func (o *GetDeploymentsUsingGETParams) WithForceRefreshResources(forceRefreshResources *bool) *GetDeploymentsUsingGETParams {
-	o.SetForceRefreshResources(forceRefreshResources)
-	return o
-}
-
-// SetForceRefreshResources adds the forceRefreshResources to the get deployments using get params
-func (o *GetDeploymentsUsingGETParams) SetForceRefreshResources(forceRefreshResources *bool) {
-	o.ForceRefreshResources = forceRefreshResources
+// SetExpiresAt adds the expiresAt to the get deployments using get params
+func (o *GetDeploymentsUsingGETParams) SetExpiresAt(expiresAt *string) {
+	o.ExpiresAt = expiresAt
 }
 
 // WithIds adds the ids to the get deployments using get params
@@ -469,6 +469,22 @@ func (o *GetDeploymentsUsingGETParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 
+	if o.CreatedAt != nil {
+
+		// query param createdAt
+		var qrCreatedAt string
+		if o.CreatedAt != nil {
+			qrCreatedAt = *o.CreatedAt
+		}
+		qCreatedAt := qrCreatedAt
+		if qCreatedAt != "" {
+			if err := r.SetQueryParam("createdAt", qCreatedAt); err != nil {
+				return err
+			}
+		}
+
+	}
+
 	if o.ExpandLastRequest != nil {
 
 		// query param expandLastRequest
@@ -517,32 +533,16 @@ func (o *GetDeploymentsUsingGETParams) WriteToRequest(r runtime.ClientRequest, r
 
 	}
 
-	if o.ForceCachedResources != nil {
+	if o.ExpiresAt != nil {
 
-		// query param forceCachedResources
-		var qrForceCachedResources bool
-		if o.ForceCachedResources != nil {
-			qrForceCachedResources = *o.ForceCachedResources
+		// query param expiresAt
+		var qrExpiresAt string
+		if o.ExpiresAt != nil {
+			qrExpiresAt = *o.ExpiresAt
 		}
-		qForceCachedResources := swag.FormatBool(qrForceCachedResources)
-		if qForceCachedResources != "" {
-			if err := r.SetQueryParam("forceCachedResources", qForceCachedResources); err != nil {
-				return err
-			}
-		}
-
-	}
-
-	if o.ForceRefreshResources != nil {
-
-		// query param forceRefreshResources
-		var qrForceRefreshResources bool
-		if o.ForceRefreshResources != nil {
-			qrForceRefreshResources = *o.ForceRefreshResources
-		}
-		qForceRefreshResources := swag.FormatBool(qrForceRefreshResources)
-		if qForceRefreshResources != "" {
-			if err := r.SetQueryParam("forceRefreshResources", qForceRefreshResources); err != nil {
+		qExpiresAt := qrExpiresAt
+		if qExpiresAt != "" {
+			if err := r.SetQueryParam("expiresAt", qExpiresAt); err != nil {
 				return err
 			}
 		}
