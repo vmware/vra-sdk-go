@@ -27,25 +27,25 @@ type Client struct {
 }
 
 /*
-CreateNetworkIPRange creates network IP range
+CreateInternalNetworkIPRange creates internal network IP range
 
-Creates a network IP range.
+Creates an internal network IP range.
 */
-func (a *Client) CreateNetworkIPRange(params *CreateNetworkIPRangeParams) (*CreateNetworkIPRangeCreated, *CreateNetworkIPRangeAccepted, error) {
+func (a *Client) CreateInternalNetworkIPRange(params *CreateInternalNetworkIPRangeParams) (*CreateInternalNetworkIPRangeCreated, *CreateInternalNetworkIPRangeAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateNetworkIPRangeParams()
+		params = NewCreateInternalNetworkIPRangeParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "createNetworkIPRange",
+		ID:                 "createInternalNetworkIPRange",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/network-ip-ranges",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateNetworkIPRangeReader{formats: a.formats},
+		Reader:             &CreateInternalNetworkIPRangeReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -53,9 +53,9 @@ func (a *Client) CreateNetworkIPRange(params *CreateNetworkIPRangeParams) (*Crea
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *CreateNetworkIPRangeCreated:
+	case *CreateInternalNetworkIPRangeCreated:
 		return value, nil, nil
-	case *CreateNetworkIPRangeAccepted:
+	case *CreateInternalNetworkIPRangeAccepted:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
@@ -64,146 +64,254 @@ func (a *Client) CreateNetworkIPRange(params *CreateNetworkIPRangeParams) (*Crea
 }
 
 /*
-DeleteNetworkIPRange deletes network IP range
+DeleteInternalNetworkIPRange deletes internal network IP range
 
-Delete network IP range with a given id
+Delete internal network IP range with a given id
 */
-func (a *Client) DeleteNetworkIPRange(params *DeleteNetworkIPRangeParams) (*DeleteNetworkIPRangeNoContent, error) {
+func (a *Client) DeleteInternalNetworkIPRange(params *DeleteInternalNetworkIPRangeParams) (*DeleteInternalNetworkIPRangeNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteNetworkIPRangeParams()
+		params = NewDeleteInternalNetworkIPRangeParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "deleteNetworkIPRange",
+		ID:                 "deleteInternalNetworkIPRange",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/network-ip-ranges/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteNetworkIPRangeReader{formats: a.formats},
+		Reader:             &DeleteInternalNetworkIPRangeReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteNetworkIPRangeNoContent)
+	success, ok := result.(*DeleteInternalNetworkIPRangeNoContent)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteNetworkIPRange: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for deleteInternalNetworkIPRange: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetNetworkIPRange gets network IP range
+GetExternalNetworkIPRange gets external IP a m network IP range
 
-Get network IP range with a given id
+Get external IPAM network IP range with a given id
 */
-func (a *Client) GetNetworkIPRange(params *GetNetworkIPRangeParams) (*GetNetworkIPRangeOK, error) {
+func (a *Client) GetExternalNetworkIPRange(params *GetExternalNetworkIPRangeParams) (*GetExternalNetworkIPRangeOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetNetworkIPRangeParams()
+		params = NewGetExternalNetworkIPRangeParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getNetworkIPRange",
+		ID:                 "getExternalNetworkIPRange",
+		Method:             "GET",
+		PathPattern:        "/iaas/api/external-network-ip-ranges/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetExternalNetworkIPRangeReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetExternalNetworkIPRangeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getExternalNetworkIPRange: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetExternalNetworkIPRanges gets external IP a m network IP ranges
+
+Get all external IPAM network IP ranges
+*/
+func (a *Client) GetExternalNetworkIPRanges(params *GetExternalNetworkIPRangesParams) (*GetExternalNetworkIPRangesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetExternalNetworkIPRangesParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getExternalNetworkIPRanges",
+		Method:             "GET",
+		PathPattern:        "/iaas/api/external-network-ip-ranges",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetExternalNetworkIPRangesReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetExternalNetworkIPRangesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getExternalNetworkIPRanges: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetInternalNetworkIPRange gets internal IP a m network IP range
+
+Get internal IPAM network IP range with a given id
+*/
+func (a *Client) GetInternalNetworkIPRange(params *GetInternalNetworkIPRangeParams) (*GetInternalNetworkIPRangeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetInternalNetworkIPRangeParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getInternalNetworkIPRange",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/network-ip-ranges/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetNetworkIPRangeReader{formats: a.formats},
+		Reader:             &GetInternalNetworkIPRangeReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetNetworkIPRangeOK)
+	success, ok := result.(*GetInternalNetworkIPRangeOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getNetworkIPRange: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getInternalNetworkIPRange: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetNetworkIPRanges gets network IP ranges
+GetInternalNetworkIPRanges gets internal IP a m network IP ranges
 
-Get all network IP ranges
+Get all internal IPAM network IP ranges
 */
-func (a *Client) GetNetworkIPRanges(params *GetNetworkIPRangesParams) (*GetNetworkIPRangesOK, error) {
+func (a *Client) GetInternalNetworkIPRanges(params *GetInternalNetworkIPRangesParams) (*GetInternalNetworkIPRangesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetNetworkIPRangesParams()
+		params = NewGetInternalNetworkIPRangesParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getNetworkIPRanges",
+		ID:                 "getInternalNetworkIPRanges",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/network-ip-ranges",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetNetworkIPRangesReader{formats: a.formats},
+		Reader:             &GetInternalNetworkIPRangesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetNetworkIPRangesOK)
+	success, ok := result.(*GetInternalNetworkIPRangesOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getNetworkIPRanges: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getInternalNetworkIPRanges: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-UpdateNetworkIPRange updates network IP range
+UpdateExternalNetworkIPRange updates external IP a m network IP range
 
-Update network IP range.
+Assign the external IPAM network IP range to a different network and/or change the tags of the external IPAM network IP range.
 */
-func (a *Client) UpdateNetworkIPRange(params *UpdateNetworkIPRangeParams) (*UpdateNetworkIPRangeOK, error) {
+func (a *Client) UpdateExternalNetworkIPRange(params *UpdateExternalNetworkIPRangeParams) (*UpdateExternalNetworkIPRangeOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewUpdateNetworkIPRangeParams()
+		params = NewUpdateExternalNetworkIPRangeParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "updateNetworkIPRange",
+		ID:                 "updateExternalNetworkIPRange",
+		Method:             "PATCH",
+		PathPattern:        "/iaas/api/external-network-ip-ranges/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateExternalNetworkIPRangeReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateExternalNetworkIPRangeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateExternalNetworkIPRange: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateInternalNetworkIPRange updates internal network IP range
+
+Update internal network IP range.
+*/
+func (a *Client) UpdateInternalNetworkIPRange(params *UpdateInternalNetworkIPRangeParams) (*UpdateInternalNetworkIPRangeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateInternalNetworkIPRangeParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "updateInternalNetworkIPRange",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/network-ip-ranges/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &UpdateNetworkIPRangeReader{formats: a.formats},
+		Reader:             &UpdateInternalNetworkIPRangeReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*UpdateNetworkIPRangeOK)
+	success, ok := result.(*UpdateInternalNetworkIPRangeOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateNetworkIPRange: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for updateInternalNetworkIPRange: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

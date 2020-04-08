@@ -279,6 +279,42 @@ func (a *Client) CreateVSphereCloudAccount(params *CreateVSphereCloudAccountPara
 }
 
 /*
+CreateVmcCloudAccount creates an VM c cloud account
+
+Create an VMC cloud account in the current organization
+*/
+func (a *Client) CreateVmcCloudAccount(params *CreateVmcCloudAccountParams) (*CreateVmcCloudAccountCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateVmcCloudAccountParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "createVmcCloudAccount",
+		Method:             "POST",
+		PathPattern:        "/iaas/api/cloud-accounts-vmc",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CreateVmcCloudAccountReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CreateVmcCloudAccountCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for createVmcCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 DeleteAwsCloudAccount deletes an a w s cloud account
 
 Delete an AWS cloud account with a given id
@@ -531,6 +567,42 @@ func (a *Client) DeleteVSphereCloudAccount(params *DeleteVSphereCloudAccountPara
 }
 
 /*
+DeleteVmcCloudAccount deletes an VM c cloud account
+
+Delete an VMC cloud account with a given id
+*/
+func (a *Client) DeleteVmcCloudAccount(params *DeleteVmcCloudAccountParams) (*DeleteVmcCloudAccountNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteVmcCloudAccountParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "deleteVmcCloudAccount",
+		Method:             "DELETE",
+		PathPattern:        "/iaas/api/cloud-accounts-vmc/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteVmcCloudAccountReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteVmcCloudAccountNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteVmcCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 EnumerateAwsRegions gets the available regions for specified a w s cloud account
 
 Get the available regions for specified AWS cloud account
@@ -639,6 +711,168 @@ func (a *Client) EnumerateGcpRegions(params *EnumerateGcpRegionsParams) (*Enumer
 }
 
 /*
+EnumeratePrivateImages enumerates all private images for enabled regions of the specified cloud account
+*/
+func (a *Client) EnumeratePrivateImages(params *EnumeratePrivateImagesParams) error {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewEnumeratePrivateImagesParams()
+	}
+
+	_, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "enumeratePrivateImages",
+		Method:             "POST",
+		PathPattern:        "/iaas/api/cloud-accounts/{id}/private-image-enumeration",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &EnumeratePrivateImagesReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+/*
+EnumeratePrivateImagesAWS enumerates all private images for enabled regions of the specified a w s account
+*/
+func (a *Client) EnumeratePrivateImagesAWS(params *EnumeratePrivateImagesAWSParams) error {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewEnumeratePrivateImagesAWSParams()
+	}
+
+	_, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "enumeratePrivateImagesAWS",
+		Method:             "POST",
+		PathPattern:        "/iaas/api/cloud-accounts-aws/{id}/private-image-enumeration",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &EnumeratePrivateImagesAWSReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+/*
+EnumeratePrivateImagesAzure enumerates all private images for enabled regions of the specified azure account
+*/
+func (a *Client) EnumeratePrivateImagesAzure(params *EnumeratePrivateImagesAzureParams) error {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewEnumeratePrivateImagesAzureParams()
+	}
+
+	_, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "enumeratePrivateImagesAzure",
+		Method:             "POST",
+		PathPattern:        "/iaas/api/cloud-accounts-azure/{id}/private-image-enumeration",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &EnumeratePrivateImagesAzureReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+/*
+EnumeratePrivateImagesGcp enumerates all private images for enabled regions of the specified g c p account
+*/
+func (a *Client) EnumeratePrivateImagesGcp(params *EnumeratePrivateImagesGcpParams) error {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewEnumeratePrivateImagesGcpParams()
+	}
+
+	_, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "enumeratePrivateImagesGcp",
+		Method:             "POST",
+		PathPattern:        "/iaas/api/cloud-accounts-gcp/{id}/private-image-enumeration",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &EnumeratePrivateImagesGcpReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+/*
+EnumeratePrivateImagesVMC enumerates all private images for enabled regions of the specified VM c account
+*/
+func (a *Client) EnumeratePrivateImagesVMC(params *EnumeratePrivateImagesVMCParams) error {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewEnumeratePrivateImagesVMCParams()
+	}
+
+	_, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "enumeratePrivateImagesVMC",
+		Method:             "POST",
+		PathPattern:        "/iaas/api/cloud-accounts-vmc/{id}/private-image-enumeration",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &EnumeratePrivateImagesVMCReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+/*
+EnumeratePrivateImagesVSphere enumerates all private images for enabled regions of the specified v sphere account
+*/
+func (a *Client) EnumeratePrivateImagesVSphere(params *EnumeratePrivateImagesVSphereParams) error {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewEnumeratePrivateImagesVSphereParams()
+	}
+
+	_, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "enumeratePrivateImagesVSphere",
+		Method:             "POST",
+		PathPattern:        "/iaas/api/cloud-accounts-vsphere/{id}/private-image-enumeration",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &EnumeratePrivateImagesVSphereReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+/*
 EnumerateRegions gets the available regions for specified cloud account
 
 Get the available regions for specified cloud account
@@ -679,7 +913,7 @@ EnumerateVSphereRegions gets the available regions for specified v sphere cloud 
 
 Get the available regions for specified vSphere cloud account
 */
-func (a *Client) EnumerateVSphereRegions(params *EnumerateVSphereRegionsParams) (*EnumerateVSphereRegionsOK, *EnumerateVSphereRegionsCreated, error) {
+func (a *Client) EnumerateVSphereRegions(params *EnumerateVSphereRegionsParams) (*EnumerateVSphereRegionsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewEnumerateVSphereRegionsParams()
@@ -698,16 +932,51 @@ func (a *Client) EnumerateVSphereRegions(params *EnumerateVSphereRegionsParams) 
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
-	switch value := result.(type) {
-	case *EnumerateVSphereRegionsOK:
-		return value, nil, nil
-	case *EnumerateVSphereRegionsCreated:
-		return nil, value, nil
+	success, ok := result.(*EnumerateVSphereRegionsOK)
+	if ok {
+		return success, nil
 	}
+	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for cloud_account: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for enumerateVSphereRegions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+EnumerateVmcRegions gets the available regions for specified VM c cloud account
+
+Get the available regions for specified VMC cloud account
+*/
+func (a *Client) EnumerateVmcRegions(params *EnumerateVmcRegionsParams) (*EnumerateVmcRegionsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewEnumerateVmcRegionsParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "enumerateVmcRegions",
+		Method:             "POST",
+		PathPattern:        "/iaas/api/cloud-accounts-vmc/region-enumeration",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &EnumerateVmcRegionsReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*EnumerateVmcRegionsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for enumerateVmcRegions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -1216,6 +1485,78 @@ func (a *Client) GetVSphereCloudAccounts(params *GetVSphereCloudAccountsParams) 
 }
 
 /*
+GetVmcCloudAccount gets an VM c cloud account
+
+Get an VMC cloud account with a given id
+*/
+func (a *Client) GetVmcCloudAccount(params *GetVmcCloudAccountParams) (*GetVmcCloudAccountOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetVmcCloudAccountParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getVmcCloudAccount",
+		Method:             "GET",
+		PathPattern:        "/iaas/api/cloud-accounts-vmc/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetVmcCloudAccountReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetVmcCloudAccountOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getVmcCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetVmcCloudAccounts gets VM c cloud accounts
+
+Get all VMC cloud accounts within the current organization
+*/
+func (a *Client) GetVmcCloudAccounts(params *GetVmcCloudAccountsParams) (*GetVmcCloudAccountsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetVmcCloudAccountsParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getVmcCloudAccounts",
+		Method:             "GET",
+		PathPattern:        "/iaas/api/cloud-accounts-vmc",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetVmcCloudAccountsReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetVmcCloudAccountsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getVmcCloudAccounts: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 UpdateAwsCloudAccount updates a w s cloud account
 
 Update AWS cloud account
@@ -1464,6 +1805,42 @@ func (a *Client) UpdateVSphereCloudAccount(params *UpdateVSphereCloudAccountPara
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for updateVSphereCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateVmcCloudAccount updates VM c cloud account
+
+Update VMC cloud account
+*/
+func (a *Client) UpdateVmcCloudAccount(params *UpdateVmcCloudAccountParams) (*UpdateVmcCloudAccountOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateVmcCloudAccountParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "updateVmcCloudAccount",
+		Method:             "PATCH",
+		PathPattern:        "/iaas/api/cloud-accounts-vmc/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateVmcCloudAccountReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateVmcCloudAccountOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateVmcCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

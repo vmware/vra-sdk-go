@@ -27,17 +27,17 @@ type Machine struct {
 	// Primary address allocated or in use by this machine. The actual type of the address depends on the adapter type. Typically it is either the public or the external IP address.
 	Address string `json:"address,omitempty"`
 
-	// Set of ids of the cloud accounts this entity belongs to.
+	// Set of ids of the cloud accounts this resource belongs to.
 	// Unique: true
 	CloudAccountIds []string `json:"cloudAccountIds"`
 
-	// Date when the entity was created. The date is in ISO 6801 and UTC.
+	// Date when the entity was created. The date is in ISO 8601 and UTC.
 	CreatedAt string `json:"createdAt,omitempty"`
 
-	// Additional properties that may be used to extend the base type.
+	// Additional properties that may be used to extend the base resource.
 	CustomProperties map[string]string `json:"customProperties,omitempty"`
 
-	// Deployment id that is associated with this resource
+	// Deployment id that is associated with this resource.
 	DeploymentID string `json:"deploymentId,omitempty"`
 
 	// A human-friendly description.
@@ -46,7 +46,7 @@ type Machine struct {
 	// External entity Id on the provider side.
 	ExternalID string `json:"externalId,omitempty"`
 
-	// The external regionId of the resource
+	// The external regionId of the resource.
 	// Required: true
 	ExternalRegionID *string `json:"externalRegionId"`
 
@@ -75,10 +75,10 @@ type Machine struct {
 	// Enum: [ON OFF GUEST_OFF UNKNOWN SUSPEND]
 	PowerState *string `json:"powerState"`
 
-	// The id of the project this entity belongs to.
+	// The id of the project this resource belongs to.
 	ProjectID string `json:"projectId,omitempty"`
 
-	// A set of tag keys and optional values that were set on this resource instance.
+	// A set of tag keys and optional values that were set on this resource.
 	Tags []*Tag `json:"tags"`
 
 	// Date when the entity was last updated. The date is ISO 8601 and UTC.

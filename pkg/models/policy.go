@@ -34,10 +34,13 @@ type Policy struct {
 	// definition
 	Definition interface{} `json:"definition,omitempty"`
 
+	// definition legend
+	DefinitionLegend map[string]DataElement `json:"definitionLegend,omitempty"`
+
 	// description
 	Description string `json:"description,omitempty"`
 
-	// enforcement type
+	// Defines enforcement type for policy. Default is HARD
 	// Enum: [SOFT HARD]
 	EnforcementType string `json:"enforcementType,omitempty"`
 
@@ -77,6 +80,10 @@ func (m *Policy) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateCriteria(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDefinitionLegend(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -128,6 +135,28 @@ func (m *Policy) validateCriteria(formats strfmt.Registry) error {
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *Policy) validateDefinitionLegend(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.DefinitionLegend) { // not required
+		return nil
+	}
+
+	for k := range m.DefinitionLegend {
+
+		if err := validate.Required("definitionLegend"+"."+k, "body", m.DefinitionLegend[k]); err != nil {
+			return err
+		}
+		if val, ok := m.DefinitionLegend[k]; ok {
+			if err := val.Validate(formats); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	return nil

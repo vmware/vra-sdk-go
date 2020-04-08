@@ -13,6 +13,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 )
@@ -61,6 +62,11 @@ for the get blueprint using get1 operation typically these are written to a http
 */
 type GetBlueprintUsingGET1Params struct {
 
+	/*DollarSelect
+	  Fields to include in content. Use * to get all fields.
+
+	*/
+	DollarSelect []string
 	/*APIVersion
 	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about
 
@@ -110,6 +116,17 @@ func (o *GetBlueprintUsingGET1Params) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithDollarSelect adds the dollarSelect to the get blueprint using get1 params
+func (o *GetBlueprintUsingGET1Params) WithDollarSelect(dollarSelect []string) *GetBlueprintUsingGET1Params {
+	o.SetDollarSelect(dollarSelect)
+	return o
+}
+
+// SetDollarSelect adds the dollarSelect to the get blueprint using get1 params
+func (o *GetBlueprintUsingGET1Params) SetDollarSelect(dollarSelect []string) {
+	o.DollarSelect = dollarSelect
+}
+
 // WithAPIVersion adds the aPIVersion to the get blueprint using get1 params
 func (o *GetBlueprintUsingGET1Params) WithAPIVersion(aPIVersion *string) *GetBlueprintUsingGET1Params {
 	o.SetAPIVersion(aPIVersion)
@@ -139,6 +156,14 @@ func (o *GetBlueprintUsingGET1Params) WriteToRequest(r runtime.ClientRequest, re
 		return err
 	}
 	var res []error
+
+	valuesDollarSelect := o.DollarSelect
+
+	joinedDollarSelect := swag.JoinByFormat(valuesDollarSelect, "multi")
+	// query array param $select
+	if err := r.SetQueryParam("$select", joinedDollarSelect...); err != nil {
+		return err
+	}
 
 	if o.APIVersion != nil {
 

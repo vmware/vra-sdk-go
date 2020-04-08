@@ -36,6 +36,18 @@ func (o *DeleteDeploymentUsingDELETEReader) ReadResponse(response runtime.Client
 			return nil, err
 		}
 		return nil, result
+	case 403:
+		result := NewDeleteDeploymentUsingDELETEForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 404:
+		result := NewDeleteDeploymentUsingDELETENotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
@@ -92,6 +104,48 @@ func (o *DeleteDeploymentUsingDELETEUnauthorized) Error() string {
 }
 
 func (o *DeleteDeploymentUsingDELETEUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewDeleteDeploymentUsingDELETEForbidden creates a DeleteDeploymentUsingDELETEForbidden with default headers values
+func NewDeleteDeploymentUsingDELETEForbidden() *DeleteDeploymentUsingDELETEForbidden {
+	return &DeleteDeploymentUsingDELETEForbidden{}
+}
+
+/*DeleteDeploymentUsingDELETEForbidden handles this case with default header values.
+
+Forbidden
+*/
+type DeleteDeploymentUsingDELETEForbidden struct {
+}
+
+func (o *DeleteDeploymentUsingDELETEForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /deployment/api/deployments/{depId}][%d] deleteDeploymentUsingDELETEForbidden ", 403)
+}
+
+func (o *DeleteDeploymentUsingDELETEForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewDeleteDeploymentUsingDELETENotFound creates a DeleteDeploymentUsingDELETENotFound with default headers values
+func NewDeleteDeploymentUsingDELETENotFound() *DeleteDeploymentUsingDELETENotFound {
+	return &DeleteDeploymentUsingDELETENotFound{}
+}
+
+/*DeleteDeploymentUsingDELETENotFound handles this case with default header values.
+
+Not Found
+*/
+type DeleteDeploymentUsingDELETENotFound struct {
+}
+
+func (o *DeleteDeploymentUsingDELETENotFound) Error() string {
+	return fmt.Sprintf("[DELETE /deployment/api/deployments/{depId}][%d] deleteDeploymentUsingDELETENotFound ", 404)
+}
+
+func (o *DeleteDeploymentUsingDELETENotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

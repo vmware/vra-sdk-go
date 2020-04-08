@@ -22,6 +22,9 @@ type MachineSpecification struct {
 	// A valid cloud config data in json-escaped yaml syntax
 	BootConfig *MachineBootConfig `json:"bootConfig,omitempty"`
 
+	// A set of settings that specify how the provided Boot Config should be handled
+	BootConfigSettings *MachineBootConfigSettings `json:"bootConfigSettings,omitempty"`
+
 	// Constraints that are used to drive placement policies for the virtual machine that is produced from this specification. Constraint expressions are matched against tags on existing placement targets.
 	Constraints []*Constraint `json:"constraints"`
 
@@ -66,6 +69,9 @@ type MachineSpecification struct {
 	// Required: true
 	ProjectID *string `json:"projectId"`
 
+	// Settings to remotely connect to the provisioned machine, by public/private key pair or username/password authentication. AWS and vSphere support key pair. Azure supports key pair or username/password.
+	RemoteAccess *RemoteAccessSpecification `json:"remoteAccess,omitempty"`
+
 	// A set of tag keys and optional values that should be set on any resource that is produced from this specification.
 	Tags []*Tag `json:"tags"`
 }
@@ -75,6 +81,10 @@ func (m *MachineSpecification) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateBootConfig(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBootConfigSettings(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -114,6 +124,10 @@ func (m *MachineSpecification) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateRemoteAccess(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateTags(formats); err != nil {
 		res = append(res, err)
 	}
@@ -134,6 +148,24 @@ func (m *MachineSpecification) validateBootConfig(formats strfmt.Registry) error
 		if err := m.BootConfig.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("bootConfig")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *MachineSpecification) validateBootConfigSettings(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.BootConfigSettings) { // not required
+		return nil
+	}
+
+	if m.BootConfigSettings != nil {
+		if err := m.BootConfigSettings.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bootConfigSettings")
 			}
 			return err
 		}
@@ -282,6 +314,24 @@ func (m *MachineSpecification) validateProjectID(formats strfmt.Registry) error 
 
 	if err := validate.Required("projectId", "body", m.ProjectID); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *MachineSpecification) validateRemoteAccess(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.RemoteAccess) { // not required
+		return nil
+	}
+
+	if m.RemoteAccess != nil {
+		if err := m.RemoteAccess.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("remoteAccess")
+			}
+			return err
+		}
 	}
 
 	return nil

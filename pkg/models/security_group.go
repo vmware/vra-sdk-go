@@ -23,34 +23,36 @@ type SecurityGroup struct {
 	// Required: true
 	Links map[string]Href `json:"_links"`
 
-	// Set of ids of the cloud accounts this entity belongs to.
+	// Set of ids of the cloud accounts this resource belongs to.
 	// Unique: true
 	CloudAccountIds []string `json:"cloudAccountIds"`
 
-	// Date when the entity was created. The date is in ISO 6801 and UTC.
+	// Date when the entity was created. The date is in ISO 8601 and UTC.
 	CreatedAt string `json:"createdAt,omitempty"`
+
+	// Additional properties that may be used to extend the base resource.
+	CustomProperties map[string]string `json:"customProperties,omitempty"`
+
+	// Deployment id that is associated with this resource.
+	DeploymentID string `json:"deploymentId,omitempty"`
 
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
 
-	// List of egress security rules.
-	// Required: true
-	Egress []*Rule `json:"egress"`
-
 	// External entity Id on the provider side.
 	ExternalID string `json:"externalId,omitempty"`
 
-	// The external regionId of the security group.
+	// The external regionId of the resource.
 	// Required: true
 	ExternalRegionID *string `json:"externalRegionId"`
+
+	// The external zoneId of the resource.
+	// Required: true
+	ExternalZoneID *string `json:"externalZoneId"`
 
 	// The id of this resource instance
 	// Required: true
 	ID *string `json:"id"`
-
-	// List of ingress security rules.
-	// Required: true
-	Ingress []*Rule `json:"ingress"`
 
 	// A human-friendly name used as an identifier in APIs that support this option.
 	Name string `json:"name,omitempty"`
@@ -63,6 +65,16 @@ type SecurityGroup struct {
 
 	// Email of the user that owns the entity.
 	Owner string `json:"owner,omitempty"`
+
+	// The id of the project this resource belongs to.
+	ProjectID string `json:"projectId,omitempty"`
+
+	// List of security rules.
+	// Required: true
+	Rules []*Rule `json:"rules"`
+
+	// A set of tag keys and optional values that were set on this resource.
+	Tags []*Tag `json:"tags"`
 
 	// Date when the entity was last updated. The date is ISO 8601 and UTC.
 	UpdatedAt string `json:"updatedAt,omitempty"`
@@ -80,11 +92,11 @@ func (m *SecurityGroup) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateEgress(formats); err != nil {
+	if err := m.validateExternalRegionID(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateExternalRegionID(formats); err != nil {
+	if err := m.validateExternalZoneID(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -92,7 +104,11 @@ func (m *SecurityGroup) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateIngress(formats); err != nil {
+	if err := m.validateRules(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTags(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -133,34 +149,18 @@ func (m *SecurityGroup) validateCloudAccountIds(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *SecurityGroup) validateEgress(formats strfmt.Registry) error {
+func (m *SecurityGroup) validateExternalRegionID(formats strfmt.Registry) error {
 
-	if err := validate.Required("egress", "body", m.Egress); err != nil {
+	if err := validate.Required("externalRegionId", "body", m.ExternalRegionID); err != nil {
 		return err
-	}
-
-	for i := 0; i < len(m.Egress); i++ {
-		if swag.IsZero(m.Egress[i]) { // not required
-			continue
-		}
-
-		if m.Egress[i] != nil {
-			if err := m.Egress[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("egress" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
 	}
 
 	return nil
 }
 
-func (m *SecurityGroup) validateExternalRegionID(formats strfmt.Registry) error {
+func (m *SecurityGroup) validateExternalZoneID(formats strfmt.Registry) error {
 
-	if err := validate.Required("externalRegionId", "body", m.ExternalRegionID); err != nil {
+	if err := validate.Required("externalZoneId", "body", m.ExternalZoneID); err != nil {
 		return err
 	}
 
@@ -176,21 +176,46 @@ func (m *SecurityGroup) validateID(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *SecurityGroup) validateIngress(formats strfmt.Registry) error {
+func (m *SecurityGroup) validateRules(formats strfmt.Registry) error {
 
-	if err := validate.Required("ingress", "body", m.Ingress); err != nil {
+	if err := validate.Required("rules", "body", m.Rules); err != nil {
 		return err
 	}
 
-	for i := 0; i < len(m.Ingress); i++ {
-		if swag.IsZero(m.Ingress[i]) { // not required
+	for i := 0; i < len(m.Rules); i++ {
+		if swag.IsZero(m.Rules[i]) { // not required
 			continue
 		}
 
-		if m.Ingress[i] != nil {
-			if err := m.Ingress[i].Validate(formats); err != nil {
+		if m.Rules[i] != nil {
+			if err := m.Rules[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("ingress" + "." + strconv.Itoa(i))
+					return ve.ValidateName("rules" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *SecurityGroup) validateTags(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Tags) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Tags); i++ {
+		if swag.IsZero(m.Tags[i]) { // not required
+			continue
+		}
+
+		if m.Tags[i] != nil {
+			if err := m.Tags[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

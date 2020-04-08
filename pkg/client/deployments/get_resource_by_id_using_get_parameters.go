@@ -13,7 +13,6 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
-	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 )
@@ -67,16 +66,6 @@ type GetResourceByIDUsingGETParams struct {
 
 	*/
 	DepID strfmt.UUID
-	/*ForceCachedResources
-	  Retrieves the resource from a cache for a faster query.
-
-	*/
-	ForceCachedResources *bool
-	/*ForceRefreshResources
-	  Guarantees the resource is up-to-date.
-
-	*/
-	ForceRefreshResources *bool
 	/*ResourceID
 	  Resource ID
 
@@ -132,28 +121,6 @@ func (o *GetResourceByIDUsingGETParams) SetDepID(depID strfmt.UUID) {
 	o.DepID = depID
 }
 
-// WithForceCachedResources adds the forceCachedResources to the get resource by Id using get params
-func (o *GetResourceByIDUsingGETParams) WithForceCachedResources(forceCachedResources *bool) *GetResourceByIDUsingGETParams {
-	o.SetForceCachedResources(forceCachedResources)
-	return o
-}
-
-// SetForceCachedResources adds the forceCachedResources to the get resource by Id using get params
-func (o *GetResourceByIDUsingGETParams) SetForceCachedResources(forceCachedResources *bool) {
-	o.ForceCachedResources = forceCachedResources
-}
-
-// WithForceRefreshResources adds the forceRefreshResources to the get resource by Id using get params
-func (o *GetResourceByIDUsingGETParams) WithForceRefreshResources(forceRefreshResources *bool) *GetResourceByIDUsingGETParams {
-	o.SetForceRefreshResources(forceRefreshResources)
-	return o
-}
-
-// SetForceRefreshResources adds the forceRefreshResources to the get resource by Id using get params
-func (o *GetResourceByIDUsingGETParams) SetForceRefreshResources(forceRefreshResources *bool) {
-	o.ForceRefreshResources = forceRefreshResources
-}
-
 // WithResourceID adds the resourceID to the get resource by Id using get params
 func (o *GetResourceByIDUsingGETParams) WithResourceID(resourceID strfmt.UUID) *GetResourceByIDUsingGETParams {
 	o.SetResourceID(resourceID)
@@ -176,38 +143,6 @@ func (o *GetResourceByIDUsingGETParams) WriteToRequest(r runtime.ClientRequest, 
 	// path param depId
 	if err := r.SetPathParam("depId", o.DepID.String()); err != nil {
 		return err
-	}
-
-	if o.ForceCachedResources != nil {
-
-		// query param forceCachedResources
-		var qrForceCachedResources bool
-		if o.ForceCachedResources != nil {
-			qrForceCachedResources = *o.ForceCachedResources
-		}
-		qForceCachedResources := swag.FormatBool(qrForceCachedResources)
-		if qForceCachedResources != "" {
-			if err := r.SetQueryParam("forceCachedResources", qForceCachedResources); err != nil {
-				return err
-			}
-		}
-
-	}
-
-	if o.ForceRefreshResources != nil {
-
-		// query param forceRefreshResources
-		var qrForceRefreshResources bool
-		if o.ForceRefreshResources != nil {
-			qrForceRefreshResources = *o.ForceRefreshResources
-		}
-		qForceRefreshResources := swag.FormatBool(qrForceRefreshResources)
-		if qForceRefreshResources != "" {
-			if err := r.SetQueryParam("forceRefreshResources", qForceRefreshResources); err != nil {
-				return err
-			}
-		}
-
 	}
 
 	// path param resourceId

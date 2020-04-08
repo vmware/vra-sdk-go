@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"strconv"
+
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
@@ -28,7 +30,10 @@ type ImageMappingDescription struct {
 	// Cloud config for this image. This cloud config will be merged during provisioning with other cloud configurations such as the bootConfig provided in MachineSpecification.
 	CloudConfig string `json:"cloudConfig,omitempty"`
 
-	// Date when the entity was created. The date is in ISO 6801 and UTC.
+	// Constraints that are used to drive placement policies for the image that is produced from this mapping.Constraint expressions are matched against tags on existing placement targets.
+	Constraints []*Constraint `json:"constraints"`
+
+	// Date when the entity was created. The date is in ISO 8601 and UTC.
 	CreatedAt string `json:"createdAt,omitempty"`
 
 	// Additional properties that may be used to extend the base type.
@@ -81,6 +86,10 @@ func (m *ImageMappingDescription) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateConstraints(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateID(formats); err != nil {
 		res = append(res, err)
 	}
@@ -117,6 +126,31 @@ func (m *ImageMappingDescription) validateCloudAccountIds(formats strfmt.Registr
 
 	if err := validate.UniqueItems("cloudAccountIds", "body", m.CloudAccountIds); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *ImageMappingDescription) validateConstraints(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Constraints) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Constraints); i++ {
+		if swag.IsZero(m.Constraints[i]) { // not required
+			continue
+		}
+
+		if m.Constraints[i] != nil {
+			if err := m.Constraints[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("constraints" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil

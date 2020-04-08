@@ -31,10 +31,10 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/disk"
 	"github.com/vmware/vra-sdk-go/pkg/client/fabric_aws_volume_types"
 	"github.com/vmware/vra-sdk-go/pkg/client/fabric_azure_storage_account"
+	"github.com/vmware/vra-sdk-go/pkg/client/fabric_compute"
 	"github.com/vmware/vra-sdk-go/pkg/client/fabric_flavors"
 	"github.com/vmware/vra-sdk-go/pkg/client/fabric_images"
 	"github.com/vmware/vra-sdk-go/pkg/client/fabric_network"
-	"github.com/vmware/vra-sdk-go/pkg/client/fabric_networks_vsphere"
 	"github.com/vmware/vra-sdk-go/pkg/client/fabric_vsphere_datastore"
 	"github.com/vmware/vra-sdk-go/pkg/client/fabric_vsphere_storage_policies"
 	"github.com/vmware/vra-sdk-go/pkg/client/flavor_profile"
@@ -53,6 +53,8 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/policies"
 	"github.com/vmware/vra-sdk-go/pkg/client/policy_decisions"
 	"github.com/vmware/vra-sdk-go/pkg/client/policy_types"
+	"github.com/vmware/vra-sdk-go/pkg/client/pricing_card_assignments"
+	"github.com/vmware/vra-sdk-go/pkg/client/pricing_cards"
 	"github.com/vmware/vra-sdk-go/pkg/client/project"
 	"github.com/vmware/vra-sdk-go/pkg/client/request"
 	"github.com/vmware/vra-sdk-go/pkg/client/resource_types"
@@ -145,13 +147,13 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 
 	cli.FabricAzureStorageAccount = fabric_azure_storage_account.New(transport, formats)
 
+	cli.FabricCompute = fabric_compute.New(transport, formats)
+
 	cli.FabricFlavors = fabric_flavors.New(transport, formats)
 
 	cli.FabricImages = fabric_images.New(transport, formats)
 
 	cli.FabricNetwork = fabric_network.New(transport, formats)
-
-	cli.FabricNetworksVsphere = fabric_networks_vsphere.New(transport, formats)
 
 	cli.FabricvSphereDatastore = fabric_vsphere_datastore.New(transport, formats)
 
@@ -188,6 +190,10 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 	cli.PolicyDecisions = policy_decisions.New(transport, formats)
 
 	cli.PolicyTypes = policy_types.New(transport, formats)
+
+	cli.PricingCardAssignments = pricing_card_assignments.New(transport, formats)
+
+	cli.PricingCards = pricing_cards.New(transport, formats)
 
 	cli.Project = project.New(transport, formats)
 
@@ -287,13 +293,13 @@ type MulticloudIaaS struct {
 
 	FabricAzureStorageAccount *fabric_azure_storage_account.Client
 
+	FabricCompute *fabric_compute.Client
+
 	FabricFlavors *fabric_flavors.Client
 
 	FabricImages *fabric_images.Client
 
 	FabricNetwork *fabric_network.Client
-
-	FabricNetworksVsphere *fabric_networks_vsphere.Client
 
 	FabricvSphereDatastore *fabric_vsphere_datastore.Client
 
@@ -330,6 +336,10 @@ type MulticloudIaaS struct {
 	PolicyDecisions *policy_decisions.Client
 
 	PolicyTypes *policy_types.Client
+
+	PricingCardAssignments *pricing_card_assignments.Client
+
+	PricingCards *pricing_cards.Client
 
 	Project *project.Client
 
@@ -392,13 +402,13 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 
 	c.FabricAzureStorageAccount.SetTransport(transport)
 
+	c.FabricCompute.SetTransport(transport)
+
 	c.FabricFlavors.SetTransport(transport)
 
 	c.FabricImages.SetTransport(transport)
 
 	c.FabricNetwork.SetTransport(transport)
-
-	c.FabricNetworksVsphere.SetTransport(transport)
 
 	c.FabricvSphereDatastore.SetTransport(transport)
 
@@ -435,6 +445,10 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.PolicyDecisions.SetTransport(transport)
 
 	c.PolicyTypes.SetTransport(transport)
+
+	c.PricingCardAssignments.SetTransport(transport)
+
+	c.PricingCards.SetTransport(transport)
 
 	c.Project.SetTransport(transport)
 

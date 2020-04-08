@@ -36,6 +36,12 @@ func (o *PatchDeploymentUsingPATCHReader) ReadResponse(response runtime.ClientRe
 			return nil, err
 		}
 		return nil, result
+	case 403:
+		result := NewPatchDeploymentUsingPATCHForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 404:
 		result := NewPatchDeploymentUsingPATCHNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -98,6 +104,27 @@ func (o *PatchDeploymentUsingPATCHUnauthorized) Error() string {
 }
 
 func (o *PatchDeploymentUsingPATCHUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewPatchDeploymentUsingPATCHForbidden creates a PatchDeploymentUsingPATCHForbidden with default headers values
+func NewPatchDeploymentUsingPATCHForbidden() *PatchDeploymentUsingPATCHForbidden {
+	return &PatchDeploymentUsingPATCHForbidden{}
+}
+
+/*PatchDeploymentUsingPATCHForbidden handles this case with default header values.
+
+Forbidden
+*/
+type PatchDeploymentUsingPATCHForbidden struct {
+}
+
+func (o *PatchDeploymentUsingPATCHForbidden) Error() string {
+	return fmt.Sprintf("[PATCH /deployment/api/deployments/{depId}][%d] patchDeploymentUsingPATCHForbidden ", 403)
+}
+
+func (o *PatchDeploymentUsingPATCHForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

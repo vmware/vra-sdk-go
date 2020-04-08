@@ -27,146 +27,146 @@ type Client struct {
 }
 
 /*
-CreatePolicyUsingPOST creates a policy
+CreatePolicyUsingPOST1 creates a policy
 
 Create a new policy based on request body and validate its field according to business rules.
 */
-func (a *Client) CreatePolicyUsingPOST(params *CreatePolicyUsingPOSTParams) (*CreatePolicyUsingPOSTOK, error) {
+func (a *Client) CreatePolicyUsingPOST1(params *CreatePolicyUsingPOST1Params) (*CreatePolicyUsingPOST1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreatePolicyUsingPOSTParams()
+		params = NewCreatePolicyUsingPOST1Params()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "createPolicyUsingPOST",
+		ID:                 "createPolicyUsingPOST_1",
 		Method:             "POST",
 		PathPattern:        "/policy/api/policies",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreatePolicyUsingPOSTReader{formats: a.formats},
+		Reader:             &CreatePolicyUsingPOST1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreatePolicyUsingPOSTOK)
+	success, ok := result.(*CreatePolicyUsingPOST1OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for createPolicyUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for createPolicyUsingPOST_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-DeletePolicyUsingDELETE deletes a policy
+DeletePolicyUsingDELETE1 deletes a policy
 
 Delete a specified policy corresponding to its unique id.
 */
-func (a *Client) DeletePolicyUsingDELETE(params *DeletePolicyUsingDELETEParams) (*DeletePolicyUsingDELETENoContent, error) {
+func (a *Client) DeletePolicyUsingDELETE1(params *DeletePolicyUsingDELETE1Params) (*DeletePolicyUsingDELETE1NoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeletePolicyUsingDELETEParams()
+		params = NewDeletePolicyUsingDELETE1Params()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "deletePolicyUsingDELETE",
+		ID:                 "deletePolicyUsingDELETE_1",
 		Method:             "DELETE",
 		PathPattern:        "/policy/api/policies/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeletePolicyUsingDELETEReader{formats: a.formats},
+		Reader:             &DeletePolicyUsingDELETE1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeletePolicyUsingDELETENoContent)
+	success, ok := result.(*DeletePolicyUsingDELETE1NoContent)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deletePolicyUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for deletePolicyUsingDELETE_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetPoliciesUsingGET returns a paginated list of policies
+GetPoliciesUsingGET1 returns a paginated list of policies
 
 Find all the policies associated with current org.
 */
-func (a *Client) GetPoliciesUsingGET(params *GetPoliciesUsingGETParams) (*GetPoliciesUsingGETOK, error) {
+func (a *Client) GetPoliciesUsingGET1(params *GetPoliciesUsingGET1Params) (*GetPoliciesUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetPoliciesUsingGETParams()
+		params = NewGetPoliciesUsingGET1Params()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getPoliciesUsingGET",
+		ID:                 "getPoliciesUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/policy/api/policies",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetPoliciesUsingGETReader{formats: a.formats},
+		Reader:             &GetPoliciesUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetPoliciesUsingGETOK)
+	success, ok := result.(*GetPoliciesUsingGET1OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getPoliciesUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getPoliciesUsingGET_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetPolicyUsingGET returns a specified policy
+GetPolicyUsingGET1 returns a specified policy
 
 Find a specific policy based on the input policy id.
 */
-func (a *Client) GetPolicyUsingGET(params *GetPolicyUsingGETParams) (*GetPolicyUsingGETOK, error) {
+func (a *Client) GetPolicyUsingGET1(params *GetPolicyUsingGET1Params) (*GetPolicyUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetPolicyUsingGETParams()
+		params = NewGetPolicyUsingGET1Params()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getPolicyUsingGET",
+		ID:                 "getPolicyUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/policy/api/policies/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetPolicyUsingGETReader{formats: a.formats},
+		Reader:             &GetPolicyUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetPolicyUsingGETOK)
+	success, ok := result.(*GetPolicyUsingGET1OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getPolicyUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getPolicyUsingGET_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

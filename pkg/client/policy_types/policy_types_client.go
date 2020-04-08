@@ -63,40 +63,6 @@ func (a *Client) GetPolicyTypeByIDUsingGET(params *GetPolicyTypeByIDUsingGETPara
 }
 
 /*
-GetPolicyTypeDataUsingGET returns the data elements for the given policy type and data type id
-*/
-func (a *Client) GetPolicyTypeDataUsingGET(params *GetPolicyTypeDataUsingGETParams) (*GetPolicyTypeDataUsingGETOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetPolicyTypeDataUsingGETParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getPolicyTypeDataUsingGET",
-		Method:             "GET",
-		PathPattern:        "/policy/api/policyTypes/{id}/data/{dataPath}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetPolicyTypeDataUsingGETReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetPolicyTypeDataUsingGETOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getPolicyTypeDataUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
 GetTypesUsingGET1 returns a paginated list of policy types
 
 Find all the policy types available in the current org.

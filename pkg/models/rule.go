@@ -24,6 +24,11 @@ type Rule struct {
 	// Enum: [Allow Deny]
 	Access *string `json:"access"`
 
+	// Direction of the security rule (inbound or outboud).
+	// Required: true
+	// Enum: [Inbound Outbound]
+	Direction *string `json:"direction"`
+
 	// IP address(es) in CIDR format which the security rule applies to.
 	// Required: true
 	IPRangeCidr *string `json:"ipRangeCidr"`
@@ -36,8 +41,10 @@ type Rule struct {
 	Ports *string `json:"ports"`
 
 	// Protocol the security rule applies to.
-	// Required: true
-	Protocol *string `json:"protocol"`
+	Protocol string `json:"protocol,omitempty"`
+
+	// Service defined by the provider (such as: SSH, HTTPS). Either service or protocol have to be specified.
+	Service string `json:"service,omitempty"`
 }
 
 // Validate validates this rule
@@ -48,15 +55,15 @@ func (m *Rule) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateDirection(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateIPRangeCidr(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validatePorts(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateProtocol(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -109,6 +116,49 @@ func (m *Rule) validateAccess(formats strfmt.Registry) error {
 	return nil
 }
 
+var ruleTypeDirectionPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["Inbound","Outbound"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		ruleTypeDirectionPropEnum = append(ruleTypeDirectionPropEnum, v)
+	}
+}
+
+const (
+
+	// RuleDirectionInbound captures enum value "Inbound"
+	RuleDirectionInbound string = "Inbound"
+
+	// RuleDirectionOutbound captures enum value "Outbound"
+	RuleDirectionOutbound string = "Outbound"
+)
+
+// prop value enum
+func (m *Rule) validateDirectionEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, ruleTypeDirectionPropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Rule) validateDirection(formats strfmt.Registry) error {
+
+	if err := validate.Required("direction", "body", m.Direction); err != nil {
+		return err
+	}
+
+	// value enum
+	if err := m.validateDirectionEnum("direction", "body", *m.Direction); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (m *Rule) validateIPRangeCidr(formats strfmt.Registry) error {
 
 	if err := validate.Required("ipRangeCidr", "body", m.IPRangeCidr); err != nil {
@@ -121,15 +171,6 @@ func (m *Rule) validateIPRangeCidr(formats strfmt.Registry) error {
 func (m *Rule) validatePorts(formats strfmt.Registry) error {
 
 	if err := validate.Required("ports", "body", m.Ports); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *Rule) validateProtocol(formats strfmt.Registry) error {
-
-	if err := validate.Required("protocol", "body", m.Protocol); err != nil {
 		return err
 	}
 

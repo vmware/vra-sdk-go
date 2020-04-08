@@ -62,10 +62,15 @@ for the get fabric v sphere datastores operation typically these are written to 
 type GetFabricVSphereDatastoresParams struct {
 
 	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 
 	*/
 	APIVersion *string
+	/*RegionID
+	  Id of the Region for which datastores/datastore clusters are required
+
+	*/
+	RegionID *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -116,6 +121,17 @@ func (o *GetFabricVSphereDatastoresParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
+// WithRegionID adds the regionID to the get fabric v sphere datastores params
+func (o *GetFabricVSphereDatastoresParams) WithRegionID(regionID *string) *GetFabricVSphereDatastoresParams {
+	o.SetRegionID(regionID)
+	return o
+}
+
+// SetRegionID adds the regionId to the get fabric v sphere datastores params
+func (o *GetFabricVSphereDatastoresParams) SetRegionID(regionID *string) {
+	o.RegionID = regionID
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetFabricVSphereDatastoresParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -134,6 +150,22 @@ func (o *GetFabricVSphereDatastoresParams) WriteToRequest(r runtime.ClientReques
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.RegionID != nil {
+
+		// query param regionId
+		var qrRegionID string
+		if o.RegionID != nil {
+			qrRegionID = *o.RegionID
+		}
+		qRegionID := qrRegionID
+		if qRegionID != "" {
+			if err := r.SetQueryParam("regionId", qRegionID); err != nil {
 				return err
 			}
 		}

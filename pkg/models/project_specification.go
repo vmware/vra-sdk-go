@@ -44,6 +44,9 @@ type ProjectSpecification struct {
 	// Specifies whether the resources in this projects are shared or not. If not set default will be used.
 	SharedResources bool `json:"sharedResources,omitempty"`
 
+	// List of viewer users associated with the project.
+	Viewers []*User `json:"viewers"`
+
 	// List of configurations for zone assignment to a project.
 	ZoneAssignmentConfigurations []*ZoneAssignmentConfig `json:"zoneAssignmentConfigurations"`
 }
@@ -65,6 +68,10 @@ func (m *ProjectSpecification) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateViewers(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -160,6 +167,31 @@ func (m *ProjectSpecification) validateName(formats strfmt.Registry) error {
 
 	if err := validate.Required("name", "body", m.Name); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *ProjectSpecification) validateViewers(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Viewers) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Viewers); i++ {
+		if swag.IsZero(m.Viewers[i]) { // not required
+			continue
+		}
+
+		if m.Viewers[i] != nil {
+			if err := m.Viewers[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("viewers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil

@@ -21,6 +21,11 @@ import (
 // swagger:model CatalogItem
 type CatalogItem struct {
 
+	// Max number of instances that can be requested at a time
+	// Maximum: 127
+	// Minimum: -128
+	BulkRequestLimit *int32 `json:"bulkRequestLimit,omitempty"`
+
 	// Creation time
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"createdAt,omitempty"`
@@ -77,6 +82,10 @@ type CatalogItem struct {
 func (m *CatalogItem) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateBulkRequestLimit(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateCreatedAt(formats); err != nil {
 		res = append(res, err)
 	}
@@ -116,6 +125,23 @@ func (m *CatalogItem) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *CatalogItem) validateBulkRequestLimit(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.BulkRequestLimit) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("bulkRequestLimit", "body", int64(*m.BulkRequestLimit), -128, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("bulkRequestLimit", "body", int64(*m.BulkRequestLimit), 127, false); err != nil {
+		return err
+	}
+
 	return nil
 }
 

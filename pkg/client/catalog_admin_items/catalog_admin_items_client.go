@@ -99,38 +99,38 @@ func (a *Client) GetCatalogItemsUsingGET(params *GetCatalogItemsUsingGETParams) 
 }
 
 /*
-SetItemIconUsingPATCH sets an icon to a catalog item
+UpdateCatalogItemUsingPATCH sets an icon or request limit to a catalog item
 
-Updates a catalog item with specified icon id.
+Updates a catalog item with specified icon id or request limit.
 */
-func (a *Client) SetItemIconUsingPATCH(params *SetItemIconUsingPATCHParams) (*SetItemIconUsingPATCHOK, error) {
+func (a *Client) UpdateCatalogItemUsingPATCH(params *UpdateCatalogItemUsingPATCHParams) (*UpdateCatalogItemUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewSetItemIconUsingPATCHParams()
+		params = NewUpdateCatalogItemUsingPATCHParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "setItemIconUsingPATCH",
+		ID:                 "updateCatalogItemUsingPATCH",
 		Method:             "PATCH",
 		PathPattern:        "/catalog/api/admin/items/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &SetItemIconUsingPATCHReader{formats: a.formats},
+		Reader:             &UpdateCatalogItemUsingPATCHReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*SetItemIconUsingPATCHOK)
+	success, ok := result.(*UpdateCatalogItemUsingPATCHOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for setItemIconUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for updateCatalogItemUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

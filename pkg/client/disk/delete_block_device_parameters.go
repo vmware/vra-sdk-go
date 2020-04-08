@@ -63,10 +63,15 @@ for the delete block device operation typically these are written to a http.Requ
 type DeleteBlockDeviceParams struct {
 
 	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 
 	*/
 	APIVersion *string
+	/*ForceDelete
+	  Controls whether this is a force delete operation. If true, best effort is made for deleting this block device. Use with caution as force deleting may cause inconsistencies between the cloud provider and vRA.
+
+	*/
+	ForceDelete *bool
 	/*ID
 	  The ID of the block device.
 
@@ -127,6 +132,17 @@ func (o *DeleteBlockDeviceParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
+// WithForceDelete adds the forceDelete to the delete block device params
+func (o *DeleteBlockDeviceParams) WithForceDelete(forceDelete *bool) *DeleteBlockDeviceParams {
+	o.SetForceDelete(forceDelete)
+	return o
+}
+
+// SetForceDelete adds the forceDelete to the delete block device params
+func (o *DeleteBlockDeviceParams) SetForceDelete(forceDelete *bool) {
+	o.ForceDelete = forceDelete
+}
+
 // WithID adds the id to the delete block device params
 func (o *DeleteBlockDeviceParams) WithID(id string) *DeleteBlockDeviceParams {
 	o.SetID(id)
@@ -167,6 +183,22 @@ func (o *DeleteBlockDeviceParams) WriteToRequest(r runtime.ClientRequest, reg st
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.ForceDelete != nil {
+
+		// query param forceDelete
+		var qrForceDelete bool
+		if o.ForceDelete != nil {
+			qrForceDelete = *o.ForceDelete
+		}
+		qForceDelete := swag.FormatBool(qrForceDelete)
+		if qForceDelete != "" {
+			if err := r.SetQueryParam("forceDelete", qForceDelete); err != nil {
 				return err
 			}
 		}

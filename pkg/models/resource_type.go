@@ -34,6 +34,10 @@ type ResourceType struct {
 	// Read Only: true
 	DisplayName string `json:"displayName,omitempty"`
 
+	// Endpoint type
+	// Read Only: true
+	EndpointType string `json:"endpointType,omitempty"`
+
 	// Object ID
 	// Read Only: true
 	ID string `json:"id,omitempty"`

@@ -82,16 +82,6 @@ type GetDeploymentResourcesUsingGETParams struct {
 
 	*/
 	DepID strfmt.UUID
-	/*ForceCachedResources
-	  Retrieves the resources from a cache for a faster query.
-
-	*/
-	ForceCachedResources *bool
-	/*ForceRefreshResources
-	  Guarantees the resources are up-to-date.
-
-	*/
-	ForceRefreshResources *bool
 
 	timeout    time.Duration
 	Context    context.Context
@@ -175,28 +165,6 @@ func (o *GetDeploymentResourcesUsingGETParams) SetDepID(depID strfmt.UUID) {
 	o.DepID = depID
 }
 
-// WithForceCachedResources adds the forceCachedResources to the get deployment resources using get params
-func (o *GetDeploymentResourcesUsingGETParams) WithForceCachedResources(forceCachedResources *bool) *GetDeploymentResourcesUsingGETParams {
-	o.SetForceCachedResources(forceCachedResources)
-	return o
-}
-
-// SetForceCachedResources adds the forceCachedResources to the get deployment resources using get params
-func (o *GetDeploymentResourcesUsingGETParams) SetForceCachedResources(forceCachedResources *bool) {
-	o.ForceCachedResources = forceCachedResources
-}
-
-// WithForceRefreshResources adds the forceRefreshResources to the get deployment resources using get params
-func (o *GetDeploymentResourcesUsingGETParams) WithForceRefreshResources(forceRefreshResources *bool) *GetDeploymentResourcesUsingGETParams {
-	o.SetForceRefreshResources(forceRefreshResources)
-	return o
-}
-
-// SetForceRefreshResources adds the forceRefreshResources to the get deployment resources using get params
-func (o *GetDeploymentResourcesUsingGETParams) SetForceRefreshResources(forceRefreshResources *bool) {
-	o.ForceRefreshResources = forceRefreshResources
-}
-
 // WriteToRequest writes these params to a swagger request
 func (o *GetDeploymentResourcesUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -248,38 +216,6 @@ func (o *GetDeploymentResourcesUsingGETParams) WriteToRequest(r runtime.ClientRe
 	// path param depId
 	if err := r.SetPathParam("depId", o.DepID.String()); err != nil {
 		return err
-	}
-
-	if o.ForceCachedResources != nil {
-
-		// query param forceCachedResources
-		var qrForceCachedResources bool
-		if o.ForceCachedResources != nil {
-			qrForceCachedResources = *o.ForceCachedResources
-		}
-		qForceCachedResources := swag.FormatBool(qrForceCachedResources)
-		if qForceCachedResources != "" {
-			if err := r.SetQueryParam("forceCachedResources", qForceCachedResources); err != nil {
-				return err
-			}
-		}
-
-	}
-
-	if o.ForceRefreshResources != nil {
-
-		// query param forceRefreshResources
-		var qrForceRefreshResources bool
-		if o.ForceRefreshResources != nil {
-			qrForceRefreshResources = *o.ForceRefreshResources
-		}
-		qForceRefreshResources := swag.FormatBool(qrForceRefreshResources)
-		if qForceRefreshResources != "" {
-			if err := r.SetQueryParam("forceRefreshResources", qForceRefreshResources); err != nil {
-				return err
-			}
-		}
-
 	}
 
 	if len(res) > 0 {

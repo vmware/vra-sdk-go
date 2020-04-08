@@ -99,6 +99,78 @@ func (a *Client) GetFabricNetworks(params *GetFabricNetworksParams) (*GetFabricN
 }
 
 /*
+GetVsphereFabricNetwork gets v sphere fabric network
+
+Get vSphere fabric network with a given id
+*/
+func (a *Client) GetVsphereFabricNetwork(params *GetVsphereFabricNetworkParams) (*GetVsphereFabricNetworkOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetVsphereFabricNetworkParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getVsphereFabricNetwork",
+		Method:             "GET",
+		PathPattern:        "/iaas/api/fabric-networks-vsphere/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetVsphereFabricNetworkReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetVsphereFabricNetworkOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getVsphereFabricNetwork: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetVsphereFabricNetworks gets v sphere fabric networks
+
+Get all vSphere fabric networks.
+*/
+func (a *Client) GetVsphereFabricNetworks(params *GetVsphereFabricNetworksParams) (*GetVsphereFabricNetworksOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetVsphereFabricNetworksParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getVsphereFabricNetworks",
+		Method:             "GET",
+		PathPattern:        "/iaas/api/fabric-networks-vsphere",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetVsphereFabricNetworksReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetVsphereFabricNetworksOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getVsphereFabricNetworks: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 UpdateFabricNetwork updates fabric network
 
 Update fabric network. Only tag updates are supported.
@@ -131,6 +203,42 @@ func (a *Client) UpdateFabricNetwork(params *UpdateFabricNetworkParams) (*Update
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for updateFabricNetwork: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdatevSphereFabricNetwork updates v sphere fabric network
+
+Update vSphere fabric network.
+*/
+func (a *Client) UpdatevSphereFabricNetwork(params *UpdatevSphereFabricNetworkParams) (*UpdatevSphereFabricNetworkOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdatevSphereFabricNetworkParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "updatevSphereFabricNetwork",
+		Method:             "PATCH",
+		PathPattern:        "/iaas/api/fabric-networks-vsphere/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdatevSphereFabricNetworkReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdatevSphereFabricNetworkOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updatevSphereFabricNetwork: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

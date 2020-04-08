@@ -99,6 +99,42 @@ func (a *Client) DeleteZone(params *DeleteZoneParams) (*DeleteZoneNoContent, err
 }
 
 /*
+GetComputes gets computes
+
+Get zone's computes by given zone ID
+*/
+func (a *Client) GetComputes(params *GetComputesParams) (*GetComputesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetComputesParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getComputes",
+		Method:             "GET",
+		PathPattern:        "/iaas/api/zones/{id}/computes",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetComputesReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetComputesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getComputes: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 GetRegion gets region
 
 Get Region with a given id

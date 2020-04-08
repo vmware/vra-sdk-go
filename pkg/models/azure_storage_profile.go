@@ -23,7 +23,7 @@ type AzureStorageProfile struct {
 	// Required: true
 	Links map[string]Href `json:"_links"`
 
-	// Date when the entity was created. The date is in ISO 6801 and UTC.
+	// Date when the entity was created. The date is in ISO 8601 and UTC.
 	CreatedAt string `json:"createdAt,omitempty"`
 
 	// Indicates the caching mechanism for additional disk.

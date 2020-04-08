@@ -36,6 +36,18 @@ func (o *DeleteResourceUsingDELETEReader) ReadResponse(response runtime.ClientRe
 			return nil, err
 		}
 		return nil, result
+	case 403:
+		result := NewDeleteResourceUsingDELETEForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 404:
+		result := NewDeleteResourceUsingDELETENotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 
 	default:
 		return nil, runtime.NewAPIError("unknown error", response, response.Code())
@@ -92,6 +104,48 @@ func (o *DeleteResourceUsingDELETEUnauthorized) Error() string {
 }
 
 func (o *DeleteResourceUsingDELETEUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewDeleteResourceUsingDELETEForbidden creates a DeleteResourceUsingDELETEForbidden with default headers values
+func NewDeleteResourceUsingDELETEForbidden() *DeleteResourceUsingDELETEForbidden {
+	return &DeleteResourceUsingDELETEForbidden{}
+}
+
+/*DeleteResourceUsingDELETEForbidden handles this case with default header values.
+
+Forbidden
+*/
+type DeleteResourceUsingDELETEForbidden struct {
+}
+
+func (o *DeleteResourceUsingDELETEForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /deployment/api/deployments/{depId}/resources/{resourceId}][%d] deleteResourceUsingDELETEForbidden ", 403)
+}
+
+func (o *DeleteResourceUsingDELETEForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewDeleteResourceUsingDELETENotFound creates a DeleteResourceUsingDELETENotFound with default headers values
+func NewDeleteResourceUsingDELETENotFound() *DeleteResourceUsingDELETENotFound {
+	return &DeleteResourceUsingDELETENotFound{}
+}
+
+/*DeleteResourceUsingDELETENotFound handles this case with default header values.
+
+Not Found
+*/
+type DeleteResourceUsingDELETENotFound struct {
+}
+
+func (o *DeleteResourceUsingDELETENotFound) Error() string {
+	return fmt.Sprintf("[DELETE /deployment/api/deployments/{depId}/resources/{resourceId}][%d] deleteResourceUsingDELETENotFound ", 404)
+}
+
+func (o *DeleteResourceUsingDELETENotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

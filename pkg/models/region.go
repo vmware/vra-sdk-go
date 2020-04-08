@@ -24,7 +24,7 @@ type Region struct {
 	// The id of the cloud account this region belongs to.
 	CloudAccountID string `json:"cloudAccountId,omitempty"`
 
-	// Date when the entity was created. The date is in ISO 6801 and UTC.
+	// Date when the entity was created. The date is in ISO 8601 and UTC.
 	CreatedAt string `json:"createdAt,omitempty"`
 
 	// Unique identifier of region on the provider side.
@@ -34,6 +34,9 @@ type Region struct {
 	// The id of this resource instance
 	// Required: true
 	ID *string `json:"id"`
+
+	// Name of region on the provider side. In vSphere, the name of the region is different from its id.
+	Name string `json:"name,omitempty"`
 
 	// The id of the organization this entity belongs to.
 	OrgID string `json:"orgId,omitempty"`

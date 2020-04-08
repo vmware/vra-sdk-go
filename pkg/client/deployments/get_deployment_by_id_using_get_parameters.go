@@ -82,16 +82,6 @@ type GetDeploymentByIDUsingGETParams struct {
 
 	*/
 	ExpandResources *bool
-	/*ForceCachedResources
-	  The 'resources' field of the deployment will be read from a cache for a faster query.
-
-	*/
-	ForceCachedResources *bool
-	/*ForceRefreshResources
-	  The 'resources' field of the deployment will be guaranteed up-to-date.
-
-	*/
-	ForceRefreshResources *bool
 
 	timeout    time.Duration
 	Context    context.Context
@@ -175,28 +165,6 @@ func (o *GetDeploymentByIDUsingGETParams) SetExpandResources(expandResources *bo
 	o.ExpandResources = expandResources
 }
 
-// WithForceCachedResources adds the forceCachedResources to the get deployment by Id using get params
-func (o *GetDeploymentByIDUsingGETParams) WithForceCachedResources(forceCachedResources *bool) *GetDeploymentByIDUsingGETParams {
-	o.SetForceCachedResources(forceCachedResources)
-	return o
-}
-
-// SetForceCachedResources adds the forceCachedResources to the get deployment by Id using get params
-func (o *GetDeploymentByIDUsingGETParams) SetForceCachedResources(forceCachedResources *bool) {
-	o.ForceCachedResources = forceCachedResources
-}
-
-// WithForceRefreshResources adds the forceRefreshResources to the get deployment by Id using get params
-func (o *GetDeploymentByIDUsingGETParams) WithForceRefreshResources(forceRefreshResources *bool) *GetDeploymentByIDUsingGETParams {
-	o.SetForceRefreshResources(forceRefreshResources)
-	return o
-}
-
-// SetForceRefreshResources adds the forceRefreshResources to the get deployment by Id using get params
-func (o *GetDeploymentByIDUsingGETParams) SetForceRefreshResources(forceRefreshResources *bool) {
-	o.ForceRefreshResources = forceRefreshResources
-}
-
 // WriteToRequest writes these params to a swagger request
 func (o *GetDeploymentByIDUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -252,38 +220,6 @@ func (o *GetDeploymentByIDUsingGETParams) WriteToRequest(r runtime.ClientRequest
 		qExpandResources := swag.FormatBool(qrExpandResources)
 		if qExpandResources != "" {
 			if err := r.SetQueryParam("expandResources", qExpandResources); err != nil {
-				return err
-			}
-		}
-
-	}
-
-	if o.ForceCachedResources != nil {
-
-		// query param forceCachedResources
-		var qrForceCachedResources bool
-		if o.ForceCachedResources != nil {
-			qrForceCachedResources = *o.ForceCachedResources
-		}
-		qForceCachedResources := swag.FormatBool(qrForceCachedResources)
-		if qForceCachedResources != "" {
-			if err := r.SetQueryParam("forceCachedResources", qForceCachedResources); err != nil {
-				return err
-			}
-		}
-
-	}
-
-	if o.ForceRefreshResources != nil {
-
-		// query param forceRefreshResources
-		var qrForceRefreshResources bool
-		if o.ForceRefreshResources != nil {
-			qrForceRefreshResources = *o.ForceRefreshResources
-		}
-		qForceRefreshResources := swag.FormatBool(qrForceRefreshResources)
-		if qForceRefreshResources != "" {
-			if err := r.SetQueryParam("forceRefreshResources", qForceRefreshResources); err != nil {
 				return err
 			}
 		}

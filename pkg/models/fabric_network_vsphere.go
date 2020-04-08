@@ -30,7 +30,7 @@ type FabricNetworkVsphere struct {
 	// Unique: true
 	CloudAccountIds []string `json:"cloudAccountIds"`
 
-	// Date when the entity was created. The date is in ISO 6801 and UTC.
+	// Date when the entity was created. The date is in ISO 8601 and UTC.
 	CreatedAt string `json:"createdAt,omitempty"`
 
 	// IPv4 default gateway to be used.

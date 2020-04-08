@@ -62,7 +62,7 @@ for the get fabric v sphere storage policies operation typically these are writt
 type GetFabricVSphereStoragePoliciesParams struct {
 
 	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /iaas/api/about
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 
 	*/
 	APIVersion *string
