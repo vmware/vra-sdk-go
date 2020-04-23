@@ -63,6 +63,11 @@ for the submit upfront price request for catalog item using p o s t operation ty
 */
 type SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams struct {
 
+	/*APIVersion
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+
+	*/
+	APIVersion *string
 	/*ID
 	  Catalog Item ID
 
@@ -112,6 +117,17 @@ func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams) SetHTTPClient(c
 	o.HTTPClient = client
 }
 
+// WithAPIVersion adds the aPIVersion to the submit upfront price request for catalog item using p o s t params
+func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams) WithAPIVersion(aPIVersion *string) *SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams {
+	o.SetAPIVersion(aPIVersion)
+	return o
+}
+
+// SetAPIVersion adds the apiVersion to the submit upfront price request for catalog item using p o s t params
+func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams) SetAPIVersion(aPIVersion *string) {
+	o.APIVersion = aPIVersion
+}
+
 // WithID adds the id to the submit upfront price request for catalog item using p o s t params
 func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams) WithID(id strfmt.UUID) *SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams {
 	o.SetID(id)
@@ -141,6 +157,22 @@ func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams) WriteToRequest(
 		return err
 	}
 	var res []error
+
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
+		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	// path param id
 	if err := r.SetPathParam("id", o.ID.String()); err != nil {

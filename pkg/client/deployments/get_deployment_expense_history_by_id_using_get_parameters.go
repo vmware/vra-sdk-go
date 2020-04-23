@@ -61,6 +61,11 @@ for the get deployment expense history by Id using g e t operation typically the
 */
 type GetDeploymentExpenseHistoryByIDUsingGETParams struct {
 
+	/*APIVersion
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+
+	*/
+	APIVersion *string
 	/*DepID
 	  Deployment ID
 
@@ -120,6 +125,17 @@ func (o *GetDeploymentExpenseHistoryByIDUsingGETParams) SetHTTPClient(client *ht
 	o.HTTPClient = client
 }
 
+// WithAPIVersion adds the aPIVersion to the get deployment expense history by Id using get params
+func (o *GetDeploymentExpenseHistoryByIDUsingGETParams) WithAPIVersion(aPIVersion *string) *GetDeploymentExpenseHistoryByIDUsingGETParams {
+	o.SetAPIVersion(aPIVersion)
+	return o
+}
+
+// SetAPIVersion adds the apiVersion to the get deployment expense history by Id using get params
+func (o *GetDeploymentExpenseHistoryByIDUsingGETParams) SetAPIVersion(aPIVersion *string) {
+	o.APIVersion = aPIVersion
+}
+
 // WithDepID adds the depID to the get deployment expense history by Id using get params
 func (o *GetDeploymentExpenseHistoryByIDUsingGETParams) WithDepID(depID strfmt.UUID) *GetDeploymentExpenseHistoryByIDUsingGETParams {
 	o.SetDepID(depID)
@@ -171,6 +187,22 @@ func (o *GetDeploymentExpenseHistoryByIDUsingGETParams) WriteToRequest(r runtime
 		return err
 	}
 	var res []error
+
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
+		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	// path param depId
 	if err := r.SetPathParam("depId", o.DepID.String()); err != nil {

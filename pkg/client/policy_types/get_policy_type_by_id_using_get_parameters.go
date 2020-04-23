@@ -61,6 +61,11 @@ for the get policy type by Id using g e t operation typically these are written 
 */
 type GetPolicyTypeByIDUsingGETParams struct {
 
+	/*APIVersion
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+
+	*/
+	APIVersion *string
 	/*ID
 	  Policy type ID
 
@@ -105,6 +110,17 @@ func (o *GetPolicyTypeByIDUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithAPIVersion adds the aPIVersion to the get policy type by Id using get params
+func (o *GetPolicyTypeByIDUsingGETParams) WithAPIVersion(aPIVersion *string) *GetPolicyTypeByIDUsingGETParams {
+	o.SetAPIVersion(aPIVersion)
+	return o
+}
+
+// SetAPIVersion adds the apiVersion to the get policy type by Id using get params
+func (o *GetPolicyTypeByIDUsingGETParams) SetAPIVersion(aPIVersion *string) {
+	o.APIVersion = aPIVersion
+}
+
 // WithID adds the id to the get policy type by Id using get params
 func (o *GetPolicyTypeByIDUsingGETParams) WithID(id string) *GetPolicyTypeByIDUsingGETParams {
 	o.SetID(id)
@@ -123,6 +139,22 @@ func (o *GetPolicyTypeByIDUsingGETParams) WriteToRequest(r runtime.ClientRequest
 		return err
 	}
 	var res []error
+
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
+		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	// path param id
 	if err := r.SetPathParam("id", o.ID); err != nil {

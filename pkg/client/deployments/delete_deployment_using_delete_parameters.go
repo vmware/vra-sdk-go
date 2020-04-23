@@ -61,6 +61,11 @@ for the delete deployment using d e l e t e operation typically these are writte
 */
 type DeleteDeploymentUsingDELETEParams struct {
 
+	/*APIVersion
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+
+	*/
+	APIVersion *string
 	/*DepID
 	  Deployment ID
 
@@ -105,6 +110,17 @@ func (o *DeleteDeploymentUsingDELETEParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithAPIVersion adds the aPIVersion to the delete deployment using d e l e t e params
+func (o *DeleteDeploymentUsingDELETEParams) WithAPIVersion(aPIVersion *string) *DeleteDeploymentUsingDELETEParams {
+	o.SetAPIVersion(aPIVersion)
+	return o
+}
+
+// SetAPIVersion adds the apiVersion to the delete deployment using d e l e t e params
+func (o *DeleteDeploymentUsingDELETEParams) SetAPIVersion(aPIVersion *string) {
+	o.APIVersion = aPIVersion
+}
+
 // WithDepID adds the depID to the delete deployment using d e l e t e params
 func (o *DeleteDeploymentUsingDELETEParams) WithDepID(depID strfmt.UUID) *DeleteDeploymentUsingDELETEParams {
 	o.SetDepID(depID)
@@ -123,6 +139,22 @@ func (o *DeleteDeploymentUsingDELETEParams) WriteToRequest(r runtime.ClientReque
 		return err
 	}
 	var res []error
+
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
+		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	// path param depId
 	if err := r.SetPathParam("depId", o.DepID.String()); err != nil {

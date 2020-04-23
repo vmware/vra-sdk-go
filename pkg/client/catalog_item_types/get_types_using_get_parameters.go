@@ -77,6 +77,11 @@ type GetTypesUsingGETParams struct {
 
 	*/
 	DollarTop *int32
+	/*APIVersion
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+
+	*/
+	APIVersion *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -149,6 +154,17 @@ func (o *GetTypesUsingGETParams) SetDollarTop(dollarTop *int32) {
 	o.DollarTop = dollarTop
 }
 
+// WithAPIVersion adds the aPIVersion to the get types using get params
+func (o *GetTypesUsingGETParams) WithAPIVersion(aPIVersion *string) *GetTypesUsingGETParams {
+	o.SetAPIVersion(aPIVersion)
+	return o
+}
+
+// SetAPIVersion adds the apiVersion to the get types using get params
+func (o *GetTypesUsingGETParams) SetAPIVersion(aPIVersion *string) {
+	o.APIVersion = aPIVersion
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetTypesUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -191,6 +207,22 @@ func (o *GetTypesUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg str
 		qDollarTop := swag.FormatInt32(qrDollarTop)
 		if qDollarTop != "" {
 			if err := r.SetQueryParam("$top", qDollarTop); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
+		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}

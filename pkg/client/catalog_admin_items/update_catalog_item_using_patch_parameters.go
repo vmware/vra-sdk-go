@@ -63,6 +63,11 @@ for the update catalog item using p a t c h operation typically these are writte
 */
 type UpdateCatalogItemUsingPATCHParams struct {
 
+	/*APIVersion
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+
+	*/
+	APIVersion *string
 	/*ID
 	  The unique id of item to update.
 
@@ -112,6 +117,17 @@ func (o *UpdateCatalogItemUsingPATCHParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithAPIVersion adds the aPIVersion to the update catalog item using p a t c h params
+func (o *UpdateCatalogItemUsingPATCHParams) WithAPIVersion(aPIVersion *string) *UpdateCatalogItemUsingPATCHParams {
+	o.SetAPIVersion(aPIVersion)
+	return o
+}
+
+// SetAPIVersion adds the apiVersion to the update catalog item using p a t c h params
+func (o *UpdateCatalogItemUsingPATCHParams) SetAPIVersion(aPIVersion *string) {
+	o.APIVersion = aPIVersion
+}
+
 // WithID adds the id to the update catalog item using p a t c h params
 func (o *UpdateCatalogItemUsingPATCHParams) WithID(id strfmt.UUID) *UpdateCatalogItemUsingPATCHParams {
 	o.SetID(id)
@@ -141,6 +157,22 @@ func (o *UpdateCatalogItemUsingPATCHParams) WriteToRequest(r runtime.ClientReque
 		return err
 	}
 	var res []error
+
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
+		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	// path param id
 	if err := r.SetPathParam("id", o.ID.String()); err != nil {

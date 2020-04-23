@@ -63,6 +63,11 @@ for the create metering assignment strategy using p o s t operation typically th
 */
 type CreateMeteringAssignmentStrategyUsingPOSTParams struct {
 
+	/*APIVersion
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+
+	*/
+	APIVersion *string
 	/*MeteringAssignmentStrategy
 	  The pricing card assignment strategy to be created
 
@@ -107,6 +112,17 @@ func (o *CreateMeteringAssignmentStrategyUsingPOSTParams) SetHTTPClient(client *
 	o.HTTPClient = client
 }
 
+// WithAPIVersion adds the aPIVersion to the create metering assignment strategy using p o s t params
+func (o *CreateMeteringAssignmentStrategyUsingPOSTParams) WithAPIVersion(aPIVersion *string) *CreateMeteringAssignmentStrategyUsingPOSTParams {
+	o.SetAPIVersion(aPIVersion)
+	return o
+}
+
+// SetAPIVersion adds the apiVersion to the create metering assignment strategy using p o s t params
+func (o *CreateMeteringAssignmentStrategyUsingPOSTParams) SetAPIVersion(aPIVersion *string) {
+	o.APIVersion = aPIVersion
+}
+
 // WithMeteringAssignmentStrategy adds the meteringAssignmentStrategy to the create metering assignment strategy using p o s t params
 func (o *CreateMeteringAssignmentStrategyUsingPOSTParams) WithMeteringAssignmentStrategy(meteringAssignmentStrategy *models.MeteringAssignmentStrategy) *CreateMeteringAssignmentStrategyUsingPOSTParams {
 	o.SetMeteringAssignmentStrategy(meteringAssignmentStrategy)
@@ -125,6 +141,22 @@ func (o *CreateMeteringAssignmentStrategyUsingPOSTParams) WriteToRequest(r runti
 		return err
 	}
 	var res []error
+
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
+		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	if o.MeteringAssignmentStrategy != nil {
 		if err := r.SetBodyParam(o.MeteringAssignmentStrategy); err != nil {

@@ -89,6 +89,11 @@ type GetAllMeteringPolicyAssignmentsUsingGETParams struct {
 
 	*/
 	DollarTop *int32
+	/*APIVersion
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+
+	*/
+	APIVersion *string
 	/*RefreshEntities
 	  Search by name and description
 
@@ -166,6 +171,17 @@ func (o *GetAllMeteringPolicyAssignmentsUsingGETParams) SetDollarTop(dollarTop *
 	o.DollarTop = dollarTop
 }
 
+// WithAPIVersion adds the aPIVersion to the get all metering policy assignments using get params
+func (o *GetAllMeteringPolicyAssignmentsUsingGETParams) WithAPIVersion(aPIVersion *string) *GetAllMeteringPolicyAssignmentsUsingGETParams {
+	o.SetAPIVersion(aPIVersion)
+	return o
+}
+
+// SetAPIVersion adds the apiVersion to the get all metering policy assignments using get params
+func (o *GetAllMeteringPolicyAssignmentsUsingGETParams) SetAPIVersion(aPIVersion *string) {
+	o.APIVersion = aPIVersion
+}
+
 // WithRefreshEntities adds the refreshEntities to the get all metering policy assignments using get params
 func (o *GetAllMeteringPolicyAssignmentsUsingGETParams) WithRefreshEntities(refreshEntities *bool) *GetAllMeteringPolicyAssignmentsUsingGETParams {
 	o.SetRefreshEntities(refreshEntities)
@@ -219,6 +235,22 @@ func (o *GetAllMeteringPolicyAssignmentsUsingGETParams) WriteToRequest(r runtime
 		qDollarTop := swag.FormatInt32(qrDollarTop)
 		if qDollarTop != "" {
 			if err := r.SetQueryParam("$top", qDollarTop); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
+		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}

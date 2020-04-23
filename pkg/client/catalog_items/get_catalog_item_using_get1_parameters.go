@@ -62,6 +62,11 @@ for the get catalog item using get1 operation typically these are written to a h
 */
 type GetCatalogItemUsingGET1Params struct {
 
+	/*APIVersion
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+
+	*/
+	APIVersion *string
 	/*ExpandProjects
 	  Retrieves the 'projects' field of the catalog item
 
@@ -111,6 +116,17 @@ func (o *GetCatalogItemUsingGET1Params) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithAPIVersion adds the aPIVersion to the get catalog item using get1 params
+func (o *GetCatalogItemUsingGET1Params) WithAPIVersion(aPIVersion *string) *GetCatalogItemUsingGET1Params {
+	o.SetAPIVersion(aPIVersion)
+	return o
+}
+
+// SetAPIVersion adds the apiVersion to the get catalog item using get1 params
+func (o *GetCatalogItemUsingGET1Params) SetAPIVersion(aPIVersion *string) {
+	o.APIVersion = aPIVersion
+}
+
 // WithExpandProjects adds the expandProjects to the get catalog item using get1 params
 func (o *GetCatalogItemUsingGET1Params) WithExpandProjects(expandProjects *bool) *GetCatalogItemUsingGET1Params {
 	o.SetExpandProjects(expandProjects)
@@ -140,6 +156,22 @@ func (o *GetCatalogItemUsingGET1Params) WriteToRequest(r runtime.ClientRequest, 
 		return err
 	}
 	var res []error
+
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
+		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	if o.ExpandProjects != nil {
 

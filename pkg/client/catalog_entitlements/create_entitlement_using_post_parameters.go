@@ -63,6 +63,11 @@ for the create entitlement using p o s t operation typically these are written t
 */
 type CreateEntitlementUsingPOSTParams struct {
 
+	/*APIVersion
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+
+	*/
+	APIVersion *string
 	/*Entitlement
 	  The entitlement to be created
 
@@ -107,6 +112,17 @@ func (o *CreateEntitlementUsingPOSTParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithAPIVersion adds the aPIVersion to the create entitlement using p o s t params
+func (o *CreateEntitlementUsingPOSTParams) WithAPIVersion(aPIVersion *string) *CreateEntitlementUsingPOSTParams {
+	o.SetAPIVersion(aPIVersion)
+	return o
+}
+
+// SetAPIVersion adds the apiVersion to the create entitlement using p o s t params
+func (o *CreateEntitlementUsingPOSTParams) SetAPIVersion(aPIVersion *string) {
+	o.APIVersion = aPIVersion
+}
+
 // WithEntitlement adds the entitlement to the create entitlement using p o s t params
 func (o *CreateEntitlementUsingPOSTParams) WithEntitlement(entitlement *models.Entitlement) *CreateEntitlementUsingPOSTParams {
 	o.SetEntitlement(entitlement)
@@ -125,6 +141,22 @@ func (o *CreateEntitlementUsingPOSTParams) WriteToRequest(r runtime.ClientReques
 		return err
 	}
 	var res []error
+
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
+		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	if o.Entitlement != nil {
 		if err := r.SetBodyParam(o.Entitlement); err != nil {

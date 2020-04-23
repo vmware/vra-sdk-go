@@ -61,6 +61,11 @@ for the get resource actions using g e t operation typically these are written t
 */
 type GetResourceActionsUsingGETParams struct {
 
+	/*APIVersion
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+
+	*/
+	APIVersion *string
 	/*DepID
 	  Deployment ID
 
@@ -110,6 +115,17 @@ func (o *GetResourceActionsUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithAPIVersion adds the aPIVersion to the get resource actions using get params
+func (o *GetResourceActionsUsingGETParams) WithAPIVersion(aPIVersion *string) *GetResourceActionsUsingGETParams {
+	o.SetAPIVersion(aPIVersion)
+	return o
+}
+
+// SetAPIVersion adds the apiVersion to the get resource actions using get params
+func (o *GetResourceActionsUsingGETParams) SetAPIVersion(aPIVersion *string) {
+	o.APIVersion = aPIVersion
+}
+
 // WithDepID adds the depID to the get resource actions using get params
 func (o *GetResourceActionsUsingGETParams) WithDepID(depID strfmt.UUID) *GetResourceActionsUsingGETParams {
 	o.SetDepID(depID)
@@ -139,6 +155,22 @@ func (o *GetResourceActionsUsingGETParams) WriteToRequest(r runtime.ClientReques
 		return err
 	}
 	var res []error
+
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
+		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	// path param depId
 	if err := r.SetPathParam("depId", o.DepID.String()); err != nil {

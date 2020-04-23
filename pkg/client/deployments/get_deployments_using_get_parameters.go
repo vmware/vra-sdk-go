@@ -77,6 +77,11 @@ type GetDeploymentsUsingGETParams struct {
 
 	*/
 	DollarTop *int32
+	/*APIVersion
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+
+	*/
+	APIVersion *string
 	/*CloudAccounts
 	  A comma-separated list. Results must be associated with one of these cloud accounts.
 
@@ -227,6 +232,17 @@ func (o *GetDeploymentsUsingGETParams) WithDollarTop(dollarTop *int32) *GetDeplo
 // SetDollarTop adds the dollarTop to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) SetDollarTop(dollarTop *int32) {
 	o.DollarTop = dollarTop
+}
+
+// WithAPIVersion adds the aPIVersion to the get deployments using get params
+func (o *GetDeploymentsUsingGETParams) WithAPIVersion(aPIVersion *string) *GetDeploymentsUsingGETParams {
+	o.SetAPIVersion(aPIVersion)
+	return o
+}
+
+// SetAPIVersion adds the apiVersion to the get deployments using get params
+func (o *GetDeploymentsUsingGETParams) SetAPIVersion(aPIVersion *string) {
+	o.APIVersion = aPIVersion
 }
 
 // WithCloudAccounts adds the cloudAccounts to the get deployments using get params
@@ -447,6 +463,22 @@ func (o *GetDeploymentsUsingGETParams) WriteToRequest(r runtime.ClientRequest, r
 		qDollarTop := swag.FormatInt32(qrDollarTop)
 		if qDollarTop != "" {
 			if err := r.SetQueryParam("$top", qDollarTop); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
+		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}

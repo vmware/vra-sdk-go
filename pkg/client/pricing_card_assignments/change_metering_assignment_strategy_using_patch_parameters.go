@@ -63,6 +63,11 @@ for the change metering assignment strategy using p a t c h operation typically 
 */
 type ChangeMeteringAssignmentStrategyUsingPATCHParams struct {
 
+	/*APIVersion
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+
+	*/
+	APIVersion *string
 	/*MeteringAssignmentStrategy
 	  Pricing card assignment strategy with 'EntityType' to override the strategy for the org
 
@@ -107,6 +112,17 @@ func (o *ChangeMeteringAssignmentStrategyUsingPATCHParams) SetHTTPClient(client 
 	o.HTTPClient = client
 }
 
+// WithAPIVersion adds the aPIVersion to the change metering assignment strategy using p a t c h params
+func (o *ChangeMeteringAssignmentStrategyUsingPATCHParams) WithAPIVersion(aPIVersion *string) *ChangeMeteringAssignmentStrategyUsingPATCHParams {
+	o.SetAPIVersion(aPIVersion)
+	return o
+}
+
+// SetAPIVersion adds the apiVersion to the change metering assignment strategy using p a t c h params
+func (o *ChangeMeteringAssignmentStrategyUsingPATCHParams) SetAPIVersion(aPIVersion *string) {
+	o.APIVersion = aPIVersion
+}
+
 // WithMeteringAssignmentStrategy adds the meteringAssignmentStrategy to the change metering assignment strategy using p a t c h params
 func (o *ChangeMeteringAssignmentStrategyUsingPATCHParams) WithMeteringAssignmentStrategy(meteringAssignmentStrategy *models.MeteringAssignmentStrategy) *ChangeMeteringAssignmentStrategyUsingPATCHParams {
 	o.SetMeteringAssignmentStrategy(meteringAssignmentStrategy)
@@ -125,6 +141,22 @@ func (o *ChangeMeteringAssignmentStrategyUsingPATCHParams) WriteToRequest(r runt
 		return err
 	}
 	var res []error
+
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
+		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	if o.MeteringAssignmentStrategy != nil {
 		if err := r.SetBodyParam(o.MeteringAssignmentStrategy); err != nil {
