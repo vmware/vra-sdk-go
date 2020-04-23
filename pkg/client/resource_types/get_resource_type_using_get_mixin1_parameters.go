@@ -61,6 +61,11 @@ for the get resource type using g e t mixin1 operation typically these are writt
 */
 type GetResourceTypeUsingGETMixin1Params struct {
 
+	/*APIVersion
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+
+	*/
+	APIVersion *string
 	/*ResourceTypeID
 	  resourceTypeId
 
@@ -105,6 +110,17 @@ func (o *GetResourceTypeUsingGETMixin1Params) SetHTTPClient(client *http.Client)
 	o.HTTPClient = client
 }
 
+// WithAPIVersion adds the aPIVersion to the get resource type using g e t mixin1 params
+func (o *GetResourceTypeUsingGETMixin1Params) WithAPIVersion(aPIVersion *string) *GetResourceTypeUsingGETMixin1Params {
+	o.SetAPIVersion(aPIVersion)
+	return o
+}
+
+// SetAPIVersion adds the apiVersion to the get resource type using g e t mixin1 params
+func (o *GetResourceTypeUsingGETMixin1Params) SetAPIVersion(aPIVersion *string) {
+	o.APIVersion = aPIVersion
+}
+
 // WithResourceTypeID adds the resourceTypeID to the get resource type using g e t mixin1 params
 func (o *GetResourceTypeUsingGETMixin1Params) WithResourceTypeID(resourceTypeID string) *GetResourceTypeUsingGETMixin1Params {
 	o.SetResourceTypeID(resourceTypeID)
@@ -123,6 +139,22 @@ func (o *GetResourceTypeUsingGETMixin1Params) WriteToRequest(r runtime.ClientReq
 		return err
 	}
 	var res []error
+
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
+		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	// path param resourceTypeId
 	if err := r.SetPathParam("resourceTypeId", o.ResourceTypeID); err != nil {

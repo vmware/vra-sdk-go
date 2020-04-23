@@ -20,7 +20,7 @@ import (
 // NewGetMeteringAssignmentStrategyUsingGETParams creates a new GetMeteringAssignmentStrategyUsingGETParams object
 // with the default values initialized.
 func NewGetMeteringAssignmentStrategyUsingGETParams() *GetMeteringAssignmentStrategyUsingGETParams {
-
+	var ()
 	return &GetMeteringAssignmentStrategyUsingGETParams{
 
 		timeout: cr.DefaultTimeout,
@@ -30,7 +30,7 @@ func NewGetMeteringAssignmentStrategyUsingGETParams() *GetMeteringAssignmentStra
 // NewGetMeteringAssignmentStrategyUsingGETParamsWithTimeout creates a new GetMeteringAssignmentStrategyUsingGETParams object
 // with the default values initialized, and the ability to set a timeout on a request
 func NewGetMeteringAssignmentStrategyUsingGETParamsWithTimeout(timeout time.Duration) *GetMeteringAssignmentStrategyUsingGETParams {
-
+	var ()
 	return &GetMeteringAssignmentStrategyUsingGETParams{
 
 		timeout: timeout,
@@ -40,7 +40,7 @@ func NewGetMeteringAssignmentStrategyUsingGETParamsWithTimeout(timeout time.Dura
 // NewGetMeteringAssignmentStrategyUsingGETParamsWithContext creates a new GetMeteringAssignmentStrategyUsingGETParams object
 // with the default values initialized, and the ability to set a context for a request
 func NewGetMeteringAssignmentStrategyUsingGETParamsWithContext(ctx context.Context) *GetMeteringAssignmentStrategyUsingGETParams {
-
+	var ()
 	return &GetMeteringAssignmentStrategyUsingGETParams{
 
 		Context: ctx,
@@ -50,7 +50,7 @@ func NewGetMeteringAssignmentStrategyUsingGETParamsWithContext(ctx context.Conte
 // NewGetMeteringAssignmentStrategyUsingGETParamsWithHTTPClient creates a new GetMeteringAssignmentStrategyUsingGETParams object
 // with the default values initialized, and the ability to set a custom HTTPClient for a request
 func NewGetMeteringAssignmentStrategyUsingGETParamsWithHTTPClient(client *http.Client) *GetMeteringAssignmentStrategyUsingGETParams {
-
+	var ()
 	return &GetMeteringAssignmentStrategyUsingGETParams{
 		HTTPClient: client,
 	}
@@ -60,6 +60,13 @@ func NewGetMeteringAssignmentStrategyUsingGETParamsWithHTTPClient(client *http.C
 for the get metering assignment strategy using g e t operation typically these are written to a http.Request
 */
 type GetMeteringAssignmentStrategyUsingGETParams struct {
+
+	/*APIVersion
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+
+	*/
+	APIVersion *string
+
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -98,6 +105,17 @@ func (o *GetMeteringAssignmentStrategyUsingGETParams) SetHTTPClient(client *http
 	o.HTTPClient = client
 }
 
+// WithAPIVersion adds the aPIVersion to the get metering assignment strategy using get params
+func (o *GetMeteringAssignmentStrategyUsingGETParams) WithAPIVersion(aPIVersion *string) *GetMeteringAssignmentStrategyUsingGETParams {
+	o.SetAPIVersion(aPIVersion)
+	return o
+}
+
+// SetAPIVersion adds the apiVersion to the get metering assignment strategy using get params
+func (o *GetMeteringAssignmentStrategyUsingGETParams) SetAPIVersion(aPIVersion *string) {
+	o.APIVersion = aPIVersion
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetMeteringAssignmentStrategyUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -105,6 +123,22 @@ func (o *GetMeteringAssignmentStrategyUsingGETParams) WriteToRequest(r runtime.C
 		return err
 	}
 	var res []error
+
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
+		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)

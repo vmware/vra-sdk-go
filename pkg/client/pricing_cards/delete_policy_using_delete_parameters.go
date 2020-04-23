@@ -61,6 +61,11 @@ for the delete policy using d e l e t e operation typically these are written to
 */
 type DeletePolicyUsingDELETEParams struct {
 
+	/*APIVersion
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+
+	*/
+	APIVersion *string
 	/*ID
 	  pricing card Id
 
@@ -105,6 +110,17 @@ func (o *DeletePolicyUsingDELETEParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithAPIVersion adds the aPIVersion to the delete policy using d e l e t e params
+func (o *DeletePolicyUsingDELETEParams) WithAPIVersion(aPIVersion *string) *DeletePolicyUsingDELETEParams {
+	o.SetAPIVersion(aPIVersion)
+	return o
+}
+
+// SetAPIVersion adds the apiVersion to the delete policy using d e l e t e params
+func (o *DeletePolicyUsingDELETEParams) SetAPIVersion(aPIVersion *string) {
+	o.APIVersion = aPIVersion
+}
+
 // WithID adds the id to the delete policy using d e l e t e params
 func (o *DeletePolicyUsingDELETEParams) WithID(id strfmt.UUID) *DeletePolicyUsingDELETEParams {
 	o.SetID(id)
@@ -123,6 +139,22 @@ func (o *DeletePolicyUsingDELETEParams) WriteToRequest(r runtime.ClientRequest, 
 		return err
 	}
 	var res []error
+
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
+		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	// path param id
 	if err := r.SetPathParam("id", o.ID.String()); err != nil {

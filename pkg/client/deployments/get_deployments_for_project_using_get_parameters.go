@@ -61,6 +61,11 @@ for the get deployments for project using g e t operation typically these are wr
 */
 type GetDeploymentsForProjectUsingGETParams struct {
 
+	/*APIVersion
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+
+	*/
+	APIVersion *string
 	/*ProjectID
 	  Project ID
 
@@ -105,6 +110,17 @@ func (o *GetDeploymentsForProjectUsingGETParams) SetHTTPClient(client *http.Clie
 	o.HTTPClient = client
 }
 
+// WithAPIVersion adds the aPIVersion to the get deployments for project using get params
+func (o *GetDeploymentsForProjectUsingGETParams) WithAPIVersion(aPIVersion *string) *GetDeploymentsForProjectUsingGETParams {
+	o.SetAPIVersion(aPIVersion)
+	return o
+}
+
+// SetAPIVersion adds the apiVersion to the get deployments for project using get params
+func (o *GetDeploymentsForProjectUsingGETParams) SetAPIVersion(aPIVersion *string) {
+	o.APIVersion = aPIVersion
+}
+
 // WithProjectID adds the projectID to the get deployments for project using get params
 func (o *GetDeploymentsForProjectUsingGETParams) WithProjectID(projectID strfmt.UUID) *GetDeploymentsForProjectUsingGETParams {
 	o.SetProjectID(projectID)
@@ -123,6 +139,22 @@ func (o *GetDeploymentsForProjectUsingGETParams) WriteToRequest(r runtime.Client
 		return err
 	}
 	var res []error
+
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
+		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	// path param projectId
 	if err := r.SetPathParam("projectId", o.ProjectID.String()); err != nil {

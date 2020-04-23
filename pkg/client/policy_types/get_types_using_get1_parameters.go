@@ -77,6 +77,11 @@ type GetTypesUsingGET1Params struct {
 
 	*/
 	DollarTop *int32
+	/*APIVersion
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+
+	*/
+	APIVersion *string
 	/*ExpandSchema
 	  Retrieves the schema for this policy type
 
@@ -154,6 +159,17 @@ func (o *GetTypesUsingGET1Params) SetDollarTop(dollarTop *int32) {
 	o.DollarTop = dollarTop
 }
 
+// WithAPIVersion adds the aPIVersion to the get types using get1 params
+func (o *GetTypesUsingGET1Params) WithAPIVersion(aPIVersion *string) *GetTypesUsingGET1Params {
+	o.SetAPIVersion(aPIVersion)
+	return o
+}
+
+// SetAPIVersion adds the apiVersion to the get types using get1 params
+func (o *GetTypesUsingGET1Params) SetAPIVersion(aPIVersion *string) {
+	o.APIVersion = aPIVersion
+}
+
 // WithExpandSchema adds the expandSchema to the get types using get1 params
 func (o *GetTypesUsingGET1Params) WithExpandSchema(expandSchema *bool) *GetTypesUsingGET1Params {
 	o.SetExpandSchema(expandSchema)
@@ -207,6 +223,22 @@ func (o *GetTypesUsingGET1Params) WriteToRequest(r runtime.ClientRequest, reg st
 		qDollarTop := swag.FormatInt32(qrDollarTop)
 		if qDollarTop != "" {
 			if err := r.SetQueryParam("$top", qDollarTop); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
+		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}

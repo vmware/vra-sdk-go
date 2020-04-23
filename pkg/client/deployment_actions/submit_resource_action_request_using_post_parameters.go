@@ -68,6 +68,11 @@ type SubmitResourceActionRequestUsingPOSTParams struct {
 
 	*/
 	ActionRequest *models.ResourceActionRequest
+	/*APIVersion
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+
+	*/
+	APIVersion *string
 	/*DepID
 	  Deployment ID
 
@@ -128,6 +133,17 @@ func (o *SubmitResourceActionRequestUsingPOSTParams) SetActionRequest(actionRequ
 	o.ActionRequest = actionRequest
 }
 
+// WithAPIVersion adds the aPIVersion to the submit resource action request using p o s t params
+func (o *SubmitResourceActionRequestUsingPOSTParams) WithAPIVersion(aPIVersion *string) *SubmitResourceActionRequestUsingPOSTParams {
+	o.SetAPIVersion(aPIVersion)
+	return o
+}
+
+// SetAPIVersion adds the apiVersion to the submit resource action request using p o s t params
+func (o *SubmitResourceActionRequestUsingPOSTParams) SetAPIVersion(aPIVersion *string) {
+	o.APIVersion = aPIVersion
+}
+
 // WithDepID adds the depID to the submit resource action request using p o s t params
 func (o *SubmitResourceActionRequestUsingPOSTParams) WithDepID(depID strfmt.UUID) *SubmitResourceActionRequestUsingPOSTParams {
 	o.SetDepID(depID)
@@ -162,6 +178,22 @@ func (o *SubmitResourceActionRequestUsingPOSTParams) WriteToRequest(r runtime.Cl
 		if err := r.SetBodyParam(o.ActionRequest); err != nil {
 			return err
 		}
+	}
+
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
+		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	// path param depId

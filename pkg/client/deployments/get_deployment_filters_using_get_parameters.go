@@ -66,6 +66,11 @@ type GetDeploymentFiltersUsingGETParams struct {
 	ISO3Country *string
 	/*ISO3Language*/
 	ISO3Language *string
+	/*APIVersion
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+
+	*/
+	APIVersion *string
 	/*Country*/
 	Country *string
 	/*DisplayCountry*/
@@ -147,6 +152,17 @@ func (o *GetDeploymentFiltersUsingGETParams) WithISO3Language(iSO3Language *stri
 // SetISO3Language adds the iSO3Language to the get deployment filters using get params
 func (o *GetDeploymentFiltersUsingGETParams) SetISO3Language(iSO3Language *string) {
 	o.ISO3Language = iSO3Language
+}
+
+// WithAPIVersion adds the aPIVersion to the get deployment filters using get params
+func (o *GetDeploymentFiltersUsingGETParams) WithAPIVersion(aPIVersion *string) *GetDeploymentFiltersUsingGETParams {
+	o.SetAPIVersion(aPIVersion)
+	return o
+}
+
+// SetAPIVersion adds the apiVersion to the get deployment filters using get params
+func (o *GetDeploymentFiltersUsingGETParams) SetAPIVersion(aPIVersion *string) {
+	o.APIVersion = aPIVersion
 }
 
 // WithCountry adds the country to the get deployment filters using get params
@@ -304,6 +320,22 @@ func (o *GetDeploymentFiltersUsingGETParams) WriteToRequest(r runtime.ClientRequ
 		qISO3Language := qrISO3Language
 		if qISO3Language != "" {
 			if err := r.SetQueryParam("ISO3Language", qISO3Language); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
+		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}

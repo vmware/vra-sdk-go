@@ -66,6 +66,11 @@ type ActionDeploymentRequestUsingPOSTParams struct {
 
 	*/
 	Action string
+	/*APIVersion
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+
+	*/
+	APIVersion *string
 	/*RequestID
 	  requestId
 
@@ -121,6 +126,17 @@ func (o *ActionDeploymentRequestUsingPOSTParams) SetAction(action string) {
 	o.Action = action
 }
 
+// WithAPIVersion adds the aPIVersion to the action deployment request using p o s t params
+func (o *ActionDeploymentRequestUsingPOSTParams) WithAPIVersion(aPIVersion *string) *ActionDeploymentRequestUsingPOSTParams {
+	o.SetAPIVersion(aPIVersion)
+	return o
+}
+
+// SetAPIVersion adds the apiVersion to the action deployment request using p o s t params
+func (o *ActionDeploymentRequestUsingPOSTParams) SetAPIVersion(aPIVersion *string) {
+	o.APIVersion = aPIVersion
+}
+
 // WithRequestID adds the requestID to the action deployment request using p o s t params
 func (o *ActionDeploymentRequestUsingPOSTParams) WithRequestID(requestID strfmt.UUID) *ActionDeploymentRequestUsingPOSTParams {
 	o.SetRequestID(requestID)
@@ -147,6 +163,22 @@ func (o *ActionDeploymentRequestUsingPOSTParams) WriteToRequest(r runtime.Client
 		if err := r.SetQueryParam("action", qAction); err != nil {
 			return err
 		}
+	}
+
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
+		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	// path param requestId

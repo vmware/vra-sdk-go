@@ -77,6 +77,11 @@ type GetDeploymentEventsUsingGETParams struct {
 
 	*/
 	DollarTop *int32
+	/*APIVersion
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+
+	*/
+	APIVersion *string
 	/*DepID
 	  Deployment ID
 
@@ -164,6 +169,17 @@ func (o *GetDeploymentEventsUsingGETParams) SetDollarTop(dollarTop *int32) {
 	o.DollarTop = dollarTop
 }
 
+// WithAPIVersion adds the aPIVersion to the get deployment events using get params
+func (o *GetDeploymentEventsUsingGETParams) WithAPIVersion(aPIVersion *string) *GetDeploymentEventsUsingGETParams {
+	o.SetAPIVersion(aPIVersion)
+	return o
+}
+
+// SetAPIVersion adds the apiVersion to the get deployment events using get params
+func (o *GetDeploymentEventsUsingGETParams) SetAPIVersion(aPIVersion *string) {
+	o.APIVersion = aPIVersion
+}
+
 // WithDepID adds the depID to the get deployment events using get params
 func (o *GetDeploymentEventsUsingGETParams) WithDepID(depID strfmt.UUID) *GetDeploymentEventsUsingGETParams {
 	o.SetDepID(depID)
@@ -239,6 +255,22 @@ func (o *GetDeploymentEventsUsingGETParams) WriteToRequest(r runtime.ClientReque
 		qDollarTop := swag.FormatInt32(qrDollarTop)
 		if qDollarTop != "" {
 			if err := r.SetQueryParam("$top", qDollarTop); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
+		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}

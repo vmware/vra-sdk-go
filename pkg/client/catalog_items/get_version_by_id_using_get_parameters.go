@@ -61,6 +61,11 @@ for the get version by Id using g e t operation typically these are written to a
 */
 type GetVersionByIDUsingGETParams struct {
 
+	/*APIVersion
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+
+	*/
+	APIVersion *string
 	/*ID
 	  Catalog Item ID
 
@@ -110,6 +115,17 @@ func (o *GetVersionByIDUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithAPIVersion adds the aPIVersion to the get version by Id using get params
+func (o *GetVersionByIDUsingGETParams) WithAPIVersion(aPIVersion *string) *GetVersionByIDUsingGETParams {
+	o.SetAPIVersion(aPIVersion)
+	return o
+}
+
+// SetAPIVersion adds the apiVersion to the get version by Id using get params
+func (o *GetVersionByIDUsingGETParams) SetAPIVersion(aPIVersion *string) {
+	o.APIVersion = aPIVersion
+}
+
 // WithID adds the id to the get version by Id using get params
 func (o *GetVersionByIDUsingGETParams) WithID(id strfmt.UUID) *GetVersionByIDUsingGETParams {
 	o.SetID(id)
@@ -139,6 +155,22 @@ func (o *GetVersionByIDUsingGETParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 	var res []error
+
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
+		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	// path param id
 	if err := r.SetPathParam("id", o.ID.String()); err != nil {

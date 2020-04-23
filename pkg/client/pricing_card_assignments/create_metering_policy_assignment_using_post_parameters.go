@@ -63,6 +63,11 @@ for the create metering policy assignment using p o s t operation typically thes
 */
 type CreateMeteringPolicyAssignmentUsingPOSTParams struct {
 
+	/*APIVersion
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+
+	*/
+	APIVersion *string
 	/*MeteringPolicyAssignment
 	  The pricing card assignment to be created
 
@@ -107,6 +112,17 @@ func (o *CreateMeteringPolicyAssignmentUsingPOSTParams) SetHTTPClient(client *ht
 	o.HTTPClient = client
 }
 
+// WithAPIVersion adds the aPIVersion to the create metering policy assignment using p o s t params
+func (o *CreateMeteringPolicyAssignmentUsingPOSTParams) WithAPIVersion(aPIVersion *string) *CreateMeteringPolicyAssignmentUsingPOSTParams {
+	o.SetAPIVersion(aPIVersion)
+	return o
+}
+
+// SetAPIVersion adds the apiVersion to the create metering policy assignment using p o s t params
+func (o *CreateMeteringPolicyAssignmentUsingPOSTParams) SetAPIVersion(aPIVersion *string) {
+	o.APIVersion = aPIVersion
+}
+
 // WithMeteringPolicyAssignment adds the meteringPolicyAssignment to the create metering policy assignment using p o s t params
 func (o *CreateMeteringPolicyAssignmentUsingPOSTParams) WithMeteringPolicyAssignment(meteringPolicyAssignment *models.MeteringPolicyAssignment) *CreateMeteringPolicyAssignmentUsingPOSTParams {
 	o.SetMeteringPolicyAssignment(meteringPolicyAssignment)
@@ -125,6 +141,22 @@ func (o *CreateMeteringPolicyAssignmentUsingPOSTParams) WriteToRequest(r runtime
 		return err
 	}
 	var res []error
+
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
+		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	if o.MeteringPolicyAssignment != nil {
 		if err := r.SetBodyParam(o.MeteringPolicyAssignment); err != nil {

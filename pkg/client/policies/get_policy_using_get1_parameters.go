@@ -62,6 +62,11 @@ for the get policy using get1 operation typically these are written to a http.Re
 */
 type GetPolicyUsingGET1Params struct {
 
+	/*APIVersion
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+
+	*/
+	APIVersion *string
 	/*ComputeStats
 	  computeStats
 
@@ -111,6 +116,17 @@ func (o *GetPolicyUsingGET1Params) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithAPIVersion adds the aPIVersion to the get policy using get1 params
+func (o *GetPolicyUsingGET1Params) WithAPIVersion(aPIVersion *string) *GetPolicyUsingGET1Params {
+	o.SetAPIVersion(aPIVersion)
+	return o
+}
+
+// SetAPIVersion adds the apiVersion to the get policy using get1 params
+func (o *GetPolicyUsingGET1Params) SetAPIVersion(aPIVersion *string) {
+	o.APIVersion = aPIVersion
+}
+
 // WithComputeStats adds the computeStats to the get policy using get1 params
 func (o *GetPolicyUsingGET1Params) WithComputeStats(computeStats *bool) *GetPolicyUsingGET1Params {
 	o.SetComputeStats(computeStats)
@@ -140,6 +156,22 @@ func (o *GetPolicyUsingGET1Params) WriteToRequest(r runtime.ClientRequest, reg s
 		return err
 	}
 	var res []error
+
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
+		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	if o.ComputeStats != nil {
 

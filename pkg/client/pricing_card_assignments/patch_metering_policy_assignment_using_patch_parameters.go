@@ -63,6 +63,11 @@ for the patch metering policy assignment using p a t c h operation typically the
 */
 type PatchMeteringPolicyAssignmentUsingPATCHParams struct {
 
+	/*APIVersion
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+
+	*/
+	APIVersion *string
 	/*ID
 	  pricing card Assignment Id
 
@@ -112,6 +117,17 @@ func (o *PatchMeteringPolicyAssignmentUsingPATCHParams) SetHTTPClient(client *ht
 	o.HTTPClient = client
 }
 
+// WithAPIVersion adds the aPIVersion to the patch metering policy assignment using p a t c h params
+func (o *PatchMeteringPolicyAssignmentUsingPATCHParams) WithAPIVersion(aPIVersion *string) *PatchMeteringPolicyAssignmentUsingPATCHParams {
+	o.SetAPIVersion(aPIVersion)
+	return o
+}
+
+// SetAPIVersion adds the apiVersion to the patch metering policy assignment using p a t c h params
+func (o *PatchMeteringPolicyAssignmentUsingPATCHParams) SetAPIVersion(aPIVersion *string) {
+	o.APIVersion = aPIVersion
+}
+
 // WithID adds the id to the patch metering policy assignment using p a t c h params
 func (o *PatchMeteringPolicyAssignmentUsingPATCHParams) WithID(id strfmt.UUID) *PatchMeteringPolicyAssignmentUsingPATCHParams {
 	o.SetID(id)
@@ -141,6 +157,22 @@ func (o *PatchMeteringPolicyAssignmentUsingPATCHParams) WriteToRequest(r runtime
 		return err
 	}
 	var res []error
+
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
+		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	// path param id
 	if err := r.SetPathParam("id", o.ID.String()); err != nil {

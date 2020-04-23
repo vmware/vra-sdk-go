@@ -62,6 +62,11 @@ for the get deployment by Id using g e t operation typically these are written t
 */
 type GetDeploymentByIDUsingGETParams struct {
 
+	/*APIVersion
+	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+
+	*/
+	APIVersion *string
 	/*DepID
 	  Deployment ID
 
@@ -121,6 +126,17 @@ func (o *GetDeploymentByIDUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithAPIVersion adds the aPIVersion to the get deployment by Id using get params
+func (o *GetDeploymentByIDUsingGETParams) WithAPIVersion(aPIVersion *string) *GetDeploymentByIDUsingGETParams {
+	o.SetAPIVersion(aPIVersion)
+	return o
+}
+
+// SetAPIVersion adds the apiVersion to the get deployment by Id using get params
+func (o *GetDeploymentByIDUsingGETParams) SetAPIVersion(aPIVersion *string) {
+	o.APIVersion = aPIVersion
+}
+
 // WithDepID adds the depID to the get deployment by Id using get params
 func (o *GetDeploymentByIDUsingGETParams) WithDepID(depID strfmt.UUID) *GetDeploymentByIDUsingGETParams {
 	o.SetDepID(depID)
@@ -172,6 +188,22 @@ func (o *GetDeploymentByIDUsingGETParams) WriteToRequest(r runtime.ClientRequest
 		return err
 	}
 	var res []error
+
+	if o.APIVersion != nil {
+
+		// query param apiVersion
+		var qrAPIVersion string
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
+		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	// path param depId
 	if err := r.SetPathParam("depId", o.DepID.String()); err != nil {
