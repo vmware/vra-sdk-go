@@ -112,13 +112,25 @@ func NewGetVmcCloudAccountNotFound() *GetVmcCloudAccountNotFound {
 Not Found
 */
 type GetVmcCloudAccountNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetVmcCloudAccountNotFound) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vmc/{id}][%d] getVmcCloudAccountNotFound ", 404)
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vmc/{id}][%d] getVmcCloudAccountNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetVmcCloudAccountNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetVmcCloudAccountNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

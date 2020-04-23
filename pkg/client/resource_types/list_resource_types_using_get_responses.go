@@ -97,13 +97,25 @@ func NewListResourceTypesUsingGETBadRequest() *ListResourceTypesUsingGETBadReque
 Bad Request
 */
 type ListResourceTypesUsingGETBadRequest struct {
+	Payload *models.Error
 }
 
 func (o *ListResourceTypesUsingGETBadRequest) Error() string {
-	return fmt.Sprintf("[GET /blueprint/api/resource-types][%d] listResourceTypesUsingGETBadRequest ", 400)
+	return fmt.Sprintf("[GET /blueprint/api/resource-types][%d] listResourceTypesUsingGETBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *ListResourceTypesUsingGETBadRequest) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *ListResourceTypesUsingGETBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

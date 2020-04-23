@@ -112,13 +112,25 @@ func NewGetDeploymentExpenseHistoryByIDUsingGETNotFound() *GetDeploymentExpenseH
 Not Found
 */
 type GetDeploymentExpenseHistoryByIDUsingGETNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetDeploymentExpenseHistoryByIDUsingGETNotFound) Error() string {
-	return fmt.Sprintf("[GET /deployment/api/deployments/{depId}/expense-history][%d] getDeploymentExpenseHistoryByIdUsingGETNotFound ", 404)
+	return fmt.Sprintf("[GET /deployment/api/deployments/{depId}/expense-history][%d] getDeploymentExpenseHistoryByIdUsingGETNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetDeploymentExpenseHistoryByIDUsingGETNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetDeploymentExpenseHistoryByIDUsingGETNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

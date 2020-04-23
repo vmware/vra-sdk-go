@@ -7,10 +7,13 @@ package deployments
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	models "github.com/vmware/vra-sdk-go/pkg/models"
 )
 
 // CheckDeploymentNameUsingGETReader is a Reader for the CheckDeploymentNameUsingGET structure.
@@ -97,13 +100,25 @@ func NewCheckDeploymentNameUsingGETNotFound() *CheckDeploymentNameUsingGETNotFou
 Not Found
 */
 type CheckDeploymentNameUsingGETNotFound struct {
+	Payload *models.Error
 }
 
 func (o *CheckDeploymentNameUsingGETNotFound) Error() string {
-	return fmt.Sprintf("[GET /deployment/api/deployments/names/{name}][%d] checkDeploymentNameUsingGETNotFound ", 404)
+	return fmt.Sprintf("[GET /deployment/api/deployments/names/{name}][%d] checkDeploymentNameUsingGETNotFound  %+v", 404, o.Payload)
+}
+
+func (o *CheckDeploymentNameUsingGETNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *CheckDeploymentNameUsingGETNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

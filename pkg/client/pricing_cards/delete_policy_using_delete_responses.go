@@ -7,10 +7,13 @@ package pricing_cards
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	models "github.com/vmware/vra-sdk-go/pkg/models"
 )
 
 // DeletePolicyUsingDELETEReader is a Reader for the DeletePolicyUsingDELETE structure.
@@ -124,13 +127,25 @@ func NewDeletePolicyUsingDELETENotFound() *DeletePolicyUsingDELETENotFound {
 Not Found
 */
 type DeletePolicyUsingDELETENotFound struct {
+	Payload *models.Error
 }
 
 func (o *DeletePolicyUsingDELETENotFound) Error() string {
-	return fmt.Sprintf("[DELETE /price/api/private/pricing-cards/{id}][%d] deletePolicyUsingDELETENotFound ", 404)
+	return fmt.Sprintf("[DELETE /price/api/private/pricing-cards/{id}][%d] deletePolicyUsingDELETENotFound  %+v", 404, o.Payload)
+}
+
+func (o *DeletePolicyUsingDELETENotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *DeletePolicyUsingDELETENotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

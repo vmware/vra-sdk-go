@@ -112,13 +112,25 @@ func NewGetVSphereCloudAccountNotFound() *GetVSphereCloudAccountNotFound {
 Not Found
 */
 type GetVSphereCloudAccountNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetVSphereCloudAccountNotFound) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vsphere/{id}][%d] getVSphereCloudAccountNotFound ", 404)
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vsphere/{id}][%d] getVSphereCloudAccountNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetVSphereCloudAccountNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetVSphereCloudAccountNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

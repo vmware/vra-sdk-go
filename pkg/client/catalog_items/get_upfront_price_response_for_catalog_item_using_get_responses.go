@@ -112,13 +112,25 @@ func NewGetUpfrontPriceResponseForCatalogItemUsingGETNotFound() *GetUpfrontPrice
 Not Found
 */
 type GetUpfrontPriceResponseForCatalogItemUsingGETNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetUpfrontPriceResponseForCatalogItemUsingGETNotFound) Error() string {
-	return fmt.Sprintf("[GET /catalog/api/items/{id}/upfront-prices/{upfrontPriceId}][%d] getUpfrontPriceResponseForCatalogItemUsingGETNotFound ", 404)
+	return fmt.Sprintf("[GET /catalog/api/items/{id}/upfront-prices/{upfrontPriceId}][%d] getUpfrontPriceResponseForCatalogItemUsingGETNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetUpfrontPriceResponseForCatalogItemUsingGETNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetUpfrontPriceResponseForCatalogItemUsingGETNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

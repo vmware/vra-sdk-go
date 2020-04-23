@@ -112,13 +112,25 @@ func NewGetVSphereStorageProfileNotFound() *GetVSphereStorageProfileNotFound {
 Not Found
 */
 type GetVSphereStorageProfileNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetVSphereStorageProfileNotFound) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/storage-profiles-vsphere/{id}][%d] getVSphereStorageProfileNotFound ", 404)
+	return fmt.Sprintf("[GET /iaas/api/storage-profiles-vsphere/{id}][%d] getVSphereStorageProfileNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetVSphereStorageProfileNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetVSphereStorageProfileNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

@@ -112,13 +112,25 @@ func NewGetLoadBalancerNetworkInterfaceNotFound() *GetLoadBalancerNetworkInterfa
 Not Found
 */
 type GetLoadBalancerNetworkInterfaceNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetLoadBalancerNetworkInterfaceNotFound) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/load-balancers/{id}/network-interfaces/{id1}][%d] getLoadBalancerNetworkInterfaceNotFound ", 404)
+	return fmt.Sprintf("[GET /iaas/api/load-balancers/{id}/network-interfaces/{id1}][%d] getLoadBalancerNetworkInterfaceNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetLoadBalancerNetworkInterfaceNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetLoadBalancerNetworkInterfaceNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

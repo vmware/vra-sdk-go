@@ -91,13 +91,25 @@ func NewCreateNetworkProfileBadRequest() *CreateNetworkProfileBadRequest {
 Invalid Request - bad data
 */
 type CreateNetworkProfileBadRequest struct {
+	Payload *models.Error
 }
 
 func (o *CreateNetworkProfileBadRequest) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/network-profiles][%d] createNetworkProfileBadRequest ", 400)
+	return fmt.Sprintf("[POST /iaas/api/network-profiles][%d] createNetworkProfileBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *CreateNetworkProfileBadRequest) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *CreateNetworkProfileBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

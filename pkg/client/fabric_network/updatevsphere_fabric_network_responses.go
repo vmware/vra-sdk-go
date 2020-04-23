@@ -112,13 +112,25 @@ func NewUpdatevSphereFabricNetworkNotFound() *UpdatevSphereFabricNetworkNotFound
 Not Found
 */
 type UpdatevSphereFabricNetworkNotFound struct {
+	Payload *models.Error
 }
 
 func (o *UpdatevSphereFabricNetworkNotFound) Error() string {
-	return fmt.Sprintf("[PATCH /iaas/api/fabric-networks-vsphere/{id}][%d] updatevSphereFabricNetworkNotFound ", 404)
+	return fmt.Sprintf("[PATCH /iaas/api/fabric-networks-vsphere/{id}][%d] updatevSphereFabricNetworkNotFound  %+v", 404, o.Payload)
+}
+
+func (o *UpdatevSphereFabricNetworkNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *UpdatevSphereFabricNetworkNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

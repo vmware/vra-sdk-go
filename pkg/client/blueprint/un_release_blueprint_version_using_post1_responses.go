@@ -139,13 +139,25 @@ func NewUnReleaseBlueprintVersionUsingPOST1NotFound() *UnReleaseBlueprintVersion
 Not Found
 */
 type UnReleaseBlueprintVersionUsingPOST1NotFound struct {
+	Payload *models.Error
 }
 
 func (o *UnReleaseBlueprintVersionUsingPOST1NotFound) Error() string {
-	return fmt.Sprintf("[POST /blueprint/api/blueprints/{blueprintId}/versions/{version}/actions/unrelease][%d] unReleaseBlueprintVersionUsingPOST1NotFound ", 404)
+	return fmt.Sprintf("[POST /blueprint/api/blueprints/{blueprintId}/versions/{version}/actions/unrelease][%d] unReleaseBlueprintVersionUsingPOST1NotFound  %+v", 404, o.Payload)
+}
+
+func (o *UnReleaseBlueprintVersionUsingPOST1NotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *UnReleaseBlueprintVersionUsingPOST1NotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

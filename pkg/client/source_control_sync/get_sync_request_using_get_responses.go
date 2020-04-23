@@ -85,13 +85,25 @@ func NewGetSyncRequestUsingGETNotFound() *GetSyncRequestUsingGETNotFound {
 request not found
 */
 type GetSyncRequestUsingGETNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetSyncRequestUsingGETNotFound) Error() string {
-	return fmt.Sprintf("[GET /content/api/sourcecontrol/sync-requests/{id}][%d] getSyncRequestUsingGETNotFound ", 404)
+	return fmt.Sprintf("[GET /content/api/sourcecontrol/sync-requests/{id}][%d] getSyncRequestUsingGETNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetSyncRequestUsingGETNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetSyncRequestUsingGETNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

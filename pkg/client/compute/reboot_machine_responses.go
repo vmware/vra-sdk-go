@@ -112,13 +112,25 @@ func NewRebootMachineNotFound() *RebootMachineNotFound {
 Not Found
 */
 type RebootMachineNotFound struct {
+	Payload *models.Error
 }
 
 func (o *RebootMachineNotFound) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/reboot][%d] rebootMachineNotFound ", 404)
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/reboot][%d] rebootMachineNotFound  %+v", 404, o.Payload)
+}
+
+func (o *RebootMachineNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *RebootMachineNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

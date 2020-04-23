@@ -142,13 +142,25 @@ func NewPostUsingPOSTBadRequest() *PostUsingPOSTBadRequest {
 Bad Request
 */
 type PostUsingPOSTBadRequest struct {
+	Payload *models.Error
 }
 
 func (o *PostUsingPOSTBadRequest) Error() string {
-	return fmt.Sprintf("[POST /catalog/api/admin/sources][%d] postUsingPOSTBadRequest ", 400)
+	return fmt.Sprintf("[POST /catalog/api/admin/sources][%d] postUsingPOSTBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *PostUsingPOSTBadRequest) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *PostUsingPOSTBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -205,13 +217,25 @@ func NewPostUsingPOSTNotFound() *PostUsingPOSTNotFound {
 Not Found
 */
 type PostUsingPOSTNotFound struct {
+	Payload *models.Error
 }
 
 func (o *PostUsingPOSTNotFound) Error() string {
-	return fmt.Sprintf("[POST /catalog/api/admin/sources][%d] postUsingPOSTNotFound ", 404)
+	return fmt.Sprintf("[POST /catalog/api/admin/sources][%d] postUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
+func (o *PostUsingPOSTNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *PostUsingPOSTNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

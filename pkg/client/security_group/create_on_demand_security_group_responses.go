@@ -91,13 +91,25 @@ func NewCreateOnDemandSecurityGroupBadRequest() *CreateOnDemandSecurityGroupBadR
 Invalid Request - bad data
 */
 type CreateOnDemandSecurityGroupBadRequest struct {
+	Payload *models.Error
 }
 
 func (o *CreateOnDemandSecurityGroupBadRequest) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/security-groups][%d] createOnDemandSecurityGroupBadRequest ", 400)
+	return fmt.Sprintf("[POST /iaas/api/security-groups][%d] createOnDemandSecurityGroupBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *CreateOnDemandSecurityGroupBadRequest) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *CreateOnDemandSecurityGroupBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

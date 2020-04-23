@@ -112,13 +112,25 @@ func NewGetMachineNetworkInterfaceNotFound() *GetMachineNetworkInterfaceNotFound
 Not Found
 */
 type GetMachineNetworkInterfaceNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetMachineNetworkInterfaceNotFound) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/machines/{id}/network-interfaces/{id1}][%d] getMachineNetworkInterfaceNotFound ", 404)
+	return fmt.Sprintf("[GET /iaas/api/machines/{id}/network-interfaces/{id1}][%d] getMachineNetworkInterfaceNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetMachineNetworkInterfaceNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetMachineNetworkInterfaceNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

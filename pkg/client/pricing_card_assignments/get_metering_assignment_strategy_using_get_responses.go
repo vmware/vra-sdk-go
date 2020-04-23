@@ -112,13 +112,25 @@ func NewGetMeteringAssignmentStrategyUsingGETNotFound() *GetMeteringAssignmentSt
 Not Found
 */
 type GetMeteringAssignmentStrategyUsingGETNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetMeteringAssignmentStrategyUsingGETNotFound) Error() string {
-	return fmt.Sprintf("[GET /price/api/private/pricing-card-assignments/strategy][%d] getMeteringAssignmentStrategyUsingGETNotFound ", 404)
+	return fmt.Sprintf("[GET /price/api/private/pricing-card-assignments/strategy][%d] getMeteringAssignmentStrategyUsingGETNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetMeteringAssignmentStrategyUsingGETNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetMeteringAssignmentStrategyUsingGETNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

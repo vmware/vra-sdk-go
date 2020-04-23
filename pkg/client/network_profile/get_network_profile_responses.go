@@ -112,13 +112,25 @@ func NewGetNetworkProfileNotFound() *GetNetworkProfileNotFound {
 Not Found
 */
 type GetNetworkProfileNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetNetworkProfileNotFound) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/network-profiles/{id}][%d] getNetworkProfileNotFound ", 404)
+	return fmt.Sprintf("[GET /iaas/api/network-profiles/{id}][%d] getNetworkProfileNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetNetworkProfileNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetNetworkProfileNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

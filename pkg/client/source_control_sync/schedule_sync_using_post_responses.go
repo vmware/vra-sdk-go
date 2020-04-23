@@ -85,13 +85,25 @@ func NewScheduleSyncUsingPOSTNotFound() *ScheduleSyncUsingPOSTNotFound {
 source not found
 */
 type ScheduleSyncUsingPOSTNotFound struct {
+	Payload *models.Error
 }
 
 func (o *ScheduleSyncUsingPOSTNotFound) Error() string {
-	return fmt.Sprintf("[POST /content/api/sourcecontrol/sync-requests][%d] scheduleSyncUsingPOSTNotFound ", 404)
+	return fmt.Sprintf("[POST /content/api/sourcecontrol/sync-requests][%d] scheduleSyncUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
+func (o *ScheduleSyncUsingPOSTNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *ScheduleSyncUsingPOSTNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

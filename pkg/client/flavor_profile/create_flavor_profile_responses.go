@@ -91,13 +91,25 @@ func NewCreateFlavorProfileBadRequest() *CreateFlavorProfileBadRequest {
 Invalid Request - bad data
 */
 type CreateFlavorProfileBadRequest struct {
+	Payload *models.Error
 }
 
 func (o *CreateFlavorProfileBadRequest) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/flavor-profiles][%d] createFlavorProfileBadRequest ", 400)
+	return fmt.Sprintf("[POST /iaas/api/flavor-profiles][%d] createFlavorProfileBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *CreateFlavorProfileBadRequest) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *CreateFlavorProfileBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

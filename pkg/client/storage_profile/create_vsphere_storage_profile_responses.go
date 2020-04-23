@@ -91,13 +91,25 @@ func NewCreateVSphereStorageProfileBadRequest() *CreateVSphereStorageProfileBadR
 Invalid Request - bad data
 */
 type CreateVSphereStorageProfileBadRequest struct {
+	Payload *models.Error
 }
 
 func (o *CreateVSphereStorageProfileBadRequest) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/storage-profiles-vsphere][%d] createVSphereStorageProfileBadRequest ", 400)
+	return fmt.Sprintf("[POST /iaas/api/storage-profiles-vsphere][%d] createVSphereStorageProfileBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *CreateVSphereStorageProfileBadRequest) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *CreateVSphereStorageProfileBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

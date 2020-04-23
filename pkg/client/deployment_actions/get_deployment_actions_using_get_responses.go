@@ -110,13 +110,25 @@ func NewGetDeploymentActionsUsingGETNotFound() *GetDeploymentActionsUsingGETNotF
 Not Found
 */
 type GetDeploymentActionsUsingGETNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetDeploymentActionsUsingGETNotFound) Error() string {
-	return fmt.Sprintf("[GET /deployment/api/deployments/{depId}/actions][%d] getDeploymentActionsUsingGETNotFound ", 404)
+	return fmt.Sprintf("[GET /deployment/api/deployments/{depId}/actions][%d] getDeploymentActionsUsingGETNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetDeploymentActionsUsingGETNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetDeploymentActionsUsingGETNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

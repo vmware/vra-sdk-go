@@ -97,13 +97,25 @@ func NewValidateBlueprintUsingPOST1BadRequest() *ValidateBlueprintUsingPOST1BadR
 Bad Request
 */
 type ValidateBlueprintUsingPOST1BadRequest struct {
+	Payload *models.Error
 }
 
 func (o *ValidateBlueprintUsingPOST1BadRequest) Error() string {
-	return fmt.Sprintf("[POST /blueprint/api/blueprint-validation][%d] validateBlueprintUsingPOST1BadRequest ", 400)
+	return fmt.Sprintf("[POST /blueprint/api/blueprint-validation][%d] validateBlueprintUsingPOST1BadRequest  %+v", 400, o.Payload)
+}
+
+func (o *ValidateBlueprintUsingPOST1BadRequest) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *ValidateBlueprintUsingPOST1BadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

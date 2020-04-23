@@ -136,13 +136,25 @@ func NewCreateEntitlementUsingPOSTBadRequest() *CreateEntitlementUsingPOSTBadReq
 Catalog item or source cannot be entitled to the project
 */
 type CreateEntitlementUsingPOSTBadRequest struct {
+	Payload *models.Error
 }
 
 func (o *CreateEntitlementUsingPOSTBadRequest) Error() string {
-	return fmt.Sprintf("[POST /catalog/api/admin/entitlements][%d] createEntitlementUsingPOSTBadRequest ", 400)
+	return fmt.Sprintf("[POST /catalog/api/admin/entitlements][%d] createEntitlementUsingPOSTBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *CreateEntitlementUsingPOSTBadRequest) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *CreateEntitlementUsingPOSTBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -178,13 +190,25 @@ func NewCreateEntitlementUsingPOSTNotFound() *CreateEntitlementUsingPOSTNotFound
 Catalog item or catalog source not found
 */
 type CreateEntitlementUsingPOSTNotFound struct {
+	Payload *models.Error
 }
 
 func (o *CreateEntitlementUsingPOSTNotFound) Error() string {
-	return fmt.Sprintf("[POST /catalog/api/admin/entitlements][%d] createEntitlementUsingPOSTNotFound ", 404)
+	return fmt.Sprintf("[POST /catalog/api/admin/entitlements][%d] createEntitlementUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
+func (o *CreateEntitlementUsingPOSTNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *CreateEntitlementUsingPOSTNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

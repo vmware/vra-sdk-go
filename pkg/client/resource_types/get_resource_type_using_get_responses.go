@@ -139,13 +139,25 @@ func NewGetResourceTypeUsingGETNotFound() *GetResourceTypeUsingGETNotFound {
 Not Found
 */
 type GetResourceTypeUsingGETNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetResourceTypeUsingGETNotFound) Error() string {
-	return fmt.Sprintf("[GET /blueprint/api/resource-types/{resourceTypeId}][%d] getResourceTypeUsingGETNotFound ", 404)
+	return fmt.Sprintf("[GET /blueprint/api/resource-types/{resourceTypeId}][%d] getResourceTypeUsingGETNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetResourceTypeUsingGETNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetResourceTypeUsingGETNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

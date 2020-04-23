@@ -65,6 +65,39 @@ def change_response_model_to_request_tracker(swagger):
         schema['$ref'] = '#/definitions/RequestTracker'
 
 
+def add_error_definition(swagger):
+    # The error message definition to insert
+    error_response_definition = {
+        "type": "object",
+        "title": "Error",
+        "description": "Specification for a vRA API error.",
+        "properties": {
+            "message": {
+                "description": "Error message",
+                "type": "string",
+                "example": "Failed to validate credentials."
+            },
+            "statusCode": {
+                "type": "integer",
+                "format": "int32"
+            }
+        }
+    }
+
+    # Add the 'Error' into definitions
+    swagger['definitions']['Error'] = error_response_definition
+
+    # Update all the paths with response code 400
+    paths = swagger['paths']
+    for p in paths.keys():
+        operations = swagger['paths'][p].keys()
+        for op in operations:
+            responses = swagger['paths'][p][op]['responses']
+            for response in responses:
+                if response == '400' or response == '404':
+                    responses[response]['schema'] = { "$ref": "#/definitions/Error" }
+
+
 def add_global_security(swagger):
     security_def = {
         "Bearer": {
@@ -232,6 +265,8 @@ if __name__ == "__main__":
     add_blockdevice_delete_purge(swagger)
     add_blockdevice_resize(swagger)
     add_404_not_found(swagger)
+
+    add_error_definition(swagger)
 
     if args.omit_security:
         add_global_security(swagger)

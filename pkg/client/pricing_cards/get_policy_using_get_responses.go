@@ -112,13 +112,25 @@ func NewGetPolicyUsingGETNotFound() *GetPolicyUsingGETNotFound {
 Not Found
 */
 type GetPolicyUsingGETNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetPolicyUsingGETNotFound) Error() string {
-	return fmt.Sprintf("[GET /price/api/private/pricing-cards/{id}][%d] getPolicyUsingGETNotFound ", 404)
+	return fmt.Sprintf("[GET /price/api/private/pricing-cards/{id}][%d] getPolicyUsingGETNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetPolicyUsingGETNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetPolicyUsingGETNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

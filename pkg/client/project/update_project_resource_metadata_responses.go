@@ -91,13 +91,25 @@ func NewUpdateProjectResourceMetadataBadRequest() *UpdateProjectResourceMetadata
 Invalid Request - bad data
 */
 type UpdateProjectResourceMetadataBadRequest struct {
+	Payload *models.Error
 }
 
 func (o *UpdateProjectResourceMetadataBadRequest) Error() string {
-	return fmt.Sprintf("[PATCH /iaas/api/projects/{id}/resource-metadata][%d] updateProjectResourceMetadataBadRequest ", 400)
+	return fmt.Sprintf("[PATCH /iaas/api/projects/{id}/resource-metadata][%d] updateProjectResourceMetadataBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *UpdateProjectResourceMetadataBadRequest) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *UpdateProjectResourceMetadataBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

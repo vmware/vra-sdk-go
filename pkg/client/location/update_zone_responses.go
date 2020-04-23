@@ -91,13 +91,25 @@ func NewUpdateZoneBadRequest() *UpdateZoneBadRequest {
 Invalid Request - bad data
 */
 type UpdateZoneBadRequest struct {
+	Payload *models.Error
 }
 
 func (o *UpdateZoneBadRequest) Error() string {
-	return fmt.Sprintf("[PATCH /iaas/api/zones/{id}][%d] updateZoneBadRequest ", 400)
+	return fmt.Sprintf("[PATCH /iaas/api/zones/{id}][%d] updateZoneBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *UpdateZoneBadRequest) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *UpdateZoneBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

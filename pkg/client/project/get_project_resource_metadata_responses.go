@@ -112,13 +112,25 @@ func NewGetProjectResourceMetadataNotFound() *GetProjectResourceMetadataNotFound
 Not Found
 */
 type GetProjectResourceMetadataNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetProjectResourceMetadataNotFound) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/projects/{id}/resource-metadata][%d] getProjectResourceMetadataNotFound ", 404)
+	return fmt.Sprintf("[GET /iaas/api/projects/{id}/resource-metadata][%d] getProjectResourceMetadataNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetProjectResourceMetadataNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetProjectResourceMetadataNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

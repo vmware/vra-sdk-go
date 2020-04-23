@@ -7,10 +7,13 @@ package pricing_card_assignments
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	models "github.com/vmware/vra-sdk-go/pkg/models"
 )
 
 // DeleteMeteringPolicyAssignmentUsingDELETEReader is a Reader for the DeleteMeteringPolicyAssignmentUsingDELETE structure.
@@ -97,13 +100,25 @@ func NewDeleteMeteringPolicyAssignmentUsingDELETENotFound() *DeleteMeteringPolic
 Not Found
 */
 type DeleteMeteringPolicyAssignmentUsingDELETENotFound struct {
+	Payload *models.Error
 }
 
 func (o *DeleteMeteringPolicyAssignmentUsingDELETENotFound) Error() string {
-	return fmt.Sprintf("[DELETE /price/api/private/pricing-card-assignments/{id}][%d] deleteMeteringPolicyAssignmentUsingDELETENotFound ", 404)
+	return fmt.Sprintf("[DELETE /price/api/private/pricing-card-assignments/{id}][%d] deleteMeteringPolicyAssignmentUsingDELETENotFound  %+v", 404, o.Payload)
+}
+
+func (o *DeleteMeteringPolicyAssignmentUsingDELETENotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *DeleteMeteringPolicyAssignmentUsingDELETENotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

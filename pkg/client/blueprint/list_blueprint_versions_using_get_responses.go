@@ -103,13 +103,25 @@ func NewListBlueprintVersionsUsingGETBadRequest() *ListBlueprintVersionsUsingGET
 Bad Request
 */
 type ListBlueprintVersionsUsingGETBadRequest struct {
+	Payload *models.Error
 }
 
 func (o *ListBlueprintVersionsUsingGETBadRequest) Error() string {
-	return fmt.Sprintf("[GET /blueprint/api/blueprints/{blueprintId}/versions][%d] listBlueprintVersionsUsingGETBadRequest ", 400)
+	return fmt.Sprintf("[GET /blueprint/api/blueprints/{blueprintId}/versions][%d] listBlueprintVersionsUsingGETBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *ListBlueprintVersionsUsingGETBadRequest) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *ListBlueprintVersionsUsingGETBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -166,13 +178,25 @@ func NewListBlueprintVersionsUsingGETNotFound() *ListBlueprintVersionsUsingGETNo
 Not Found
 */
 type ListBlueprintVersionsUsingGETNotFound struct {
+	Payload *models.Error
 }
 
 func (o *ListBlueprintVersionsUsingGETNotFound) Error() string {
-	return fmt.Sprintf("[GET /blueprint/api/blueprints/{blueprintId}/versions][%d] listBlueprintVersionsUsingGETNotFound ", 404)
+	return fmt.Sprintf("[GET /blueprint/api/blueprints/{blueprintId}/versions][%d] listBlueprintVersionsUsingGETNotFound  %+v", 404, o.Payload)
+}
+
+func (o *ListBlueprintVersionsUsingGETNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *ListBlueprintVersionsUsingGETNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

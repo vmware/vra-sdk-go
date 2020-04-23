@@ -112,13 +112,25 @@ func NewGetFabricVSphereStoragePolicyNotFound() *GetFabricVSphereStoragePolicyNo
 Not Found
 */
 type GetFabricVSphereStoragePolicyNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetFabricVSphereStoragePolicyNotFound) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-storage-policies/{id}][%d] getFabricVSphereStoragePolicyNotFound ", 404)
+	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-storage-policies/{id}][%d] getFabricVSphereStoragePolicyNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetFabricVSphereStoragePolicyNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetFabricVSphereStoragePolicyNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

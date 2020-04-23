@@ -91,13 +91,25 @@ func NewCreateDataCollectorBadRequest() *CreateDataCollectorBadRequest {
 Invalid Request - bad data
 */
 type CreateDataCollectorBadRequest struct {
+	Payload *models.Error
 }
 
 func (o *CreateDataCollectorBadRequest) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/data-collectors][%d] createDataCollectorBadRequest ", 400)
+	return fmt.Sprintf("[POST /iaas/api/data-collectors][%d] createDataCollectorBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *CreateDataCollectorBadRequest) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *CreateDataCollectorBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

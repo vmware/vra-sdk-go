@@ -91,13 +91,25 @@ func NewCreateNsxVCloudAccountBadRequest() *CreateNsxVCloudAccountBadRequest {
 Invalid Request - bad data
 */
 type CreateNsxVCloudAccountBadRequest struct {
+	Payload *models.Error
 }
 
 func (o *CreateNsxVCloudAccountBadRequest) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-nsx-v][%d] createNsxVCloudAccountBadRequest ", 400)
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-nsx-v][%d] createNsxVCloudAccountBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *CreateNsxVCloudAccountBadRequest) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *CreateNsxVCloudAccountBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

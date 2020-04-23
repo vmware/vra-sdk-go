@@ -112,13 +112,25 @@ func NewUpdateImageProfileNotFound() *UpdateImageProfileNotFound {
 Not Found
 */
 type UpdateImageProfileNotFound struct {
+	Payload *models.Error
 }
 
 func (o *UpdateImageProfileNotFound) Error() string {
-	return fmt.Sprintf("[PATCH /iaas/api/image-profiles/{id}][%d] updateImageProfileNotFound ", 404)
+	return fmt.Sprintf("[PATCH /iaas/api/image-profiles/{id}][%d] updateImageProfileNotFound  %+v", 404, o.Payload)
+}
+
+func (o *UpdateImageProfileNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *UpdateImageProfileNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

@@ -112,13 +112,25 @@ func NewGetLoadBalancerNotFound() *GetLoadBalancerNotFound {
 Not Found
 */
 type GetLoadBalancerNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetLoadBalancerNotFound) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/load-balancers/{id}][%d] getLoadBalancerNotFound ", 404)
+	return fmt.Sprintf("[GET /iaas/api/load-balancers/{id}][%d] getLoadBalancerNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetLoadBalancerNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetLoadBalancerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

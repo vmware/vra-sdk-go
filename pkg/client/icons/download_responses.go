@@ -12,6 +12,8 @@ import (
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	models "github.com/vmware/vra-sdk-go/pkg/models"
 )
 
 // DownloadReader is a Reader for the Download structure.
@@ -87,13 +89,25 @@ func NewDownloadBadRequest() *DownloadBadRequest {
 Invalid request - bad data.
 */
 type DownloadBadRequest struct {
+	Payload *models.Error
 }
 
 func (o *DownloadBadRequest) Error() string {
-	return fmt.Sprintf("[GET /icon/api/icons/{id}][%d] downloadBadRequest ", 400)
+	return fmt.Sprintf("[GET /icon/api/icons/{id}][%d] downloadBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *DownloadBadRequest) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *DownloadBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -108,13 +122,25 @@ func NewDownloadNotFound() *DownloadNotFound {
 Icon not found.
 */
 type DownloadNotFound struct {
+	Payload *models.Error
 }
 
 func (o *DownloadNotFound) Error() string {
-	return fmt.Sprintf("[GET /icon/api/icons/{id}][%d] downloadNotFound ", 404)
+	return fmt.Sprintf("[GET /icon/api/icons/{id}][%d] downloadNotFound  %+v", 404, o.Payload)
+}
+
+func (o *DownloadNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *DownloadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

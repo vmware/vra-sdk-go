@@ -7,10 +7,13 @@ package icons
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	models "github.com/vmware/vra-sdk-go/pkg/models"
 )
 
 // UploadReader is a Reader for the Upload structure.
@@ -76,13 +79,25 @@ func NewUploadBadRequest() *UploadBadRequest {
 Invalid request - bad data.
 */
 type UploadBadRequest struct {
+	Payload *models.Error
 }
 
 func (o *UploadBadRequest) Error() string {
-	return fmt.Sprintf("[POST /icon/api/icons][%d] uploadBadRequest ", 400)
+	return fmt.Sprintf("[POST /icon/api/icons][%d] uploadBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *UploadBadRequest) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *UploadBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

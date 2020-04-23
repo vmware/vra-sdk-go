@@ -112,13 +112,25 @@ func NewUpdateInternalNetworkIPRangeNotFound() *UpdateInternalNetworkIPRangeNotF
 Not Found
 */
 type UpdateInternalNetworkIPRangeNotFound struct {
+	Payload *models.Error
 }
 
 func (o *UpdateInternalNetworkIPRangeNotFound) Error() string {
-	return fmt.Sprintf("[PATCH /iaas/api/network-ip-ranges/{id}][%d] updateInternalNetworkIpRangeNotFound ", 404)
+	return fmt.Sprintf("[PATCH /iaas/api/network-ip-ranges/{id}][%d] updateInternalNetworkIpRangeNotFound  %+v", 404, o.Payload)
+}
+
+func (o *UpdateInternalNetworkIPRangeNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *UpdateInternalNetworkIPRangeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
