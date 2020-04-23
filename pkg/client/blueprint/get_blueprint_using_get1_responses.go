@@ -139,13 +139,25 @@ func NewGetBlueprintUsingGET1NotFound() *GetBlueprintUsingGET1NotFound {
 Not Found
 */
 type GetBlueprintUsingGET1NotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetBlueprintUsingGET1NotFound) Error() string {
-	return fmt.Sprintf("[GET /blueprint/api/blueprints/{blueprintId}][%d] getBlueprintUsingGET1NotFound ", 404)
+	return fmt.Sprintf("[GET /blueprint/api/blueprints/{blueprintId}][%d] getBlueprintUsingGET1NotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetBlueprintUsingGET1NotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetBlueprintUsingGET1NotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

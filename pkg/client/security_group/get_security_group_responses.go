@@ -112,13 +112,25 @@ func NewGetSecurityGroupNotFound() *GetSecurityGroupNotFound {
 Not Found
 */
 type GetSecurityGroupNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetSecurityGroupNotFound) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/security-groups/{id}][%d] getSecurityGroupNotFound ", 404)
+	return fmt.Sprintf("[GET /iaas/api/security-groups/{id}][%d] getSecurityGroupNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetSecurityGroupNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetSecurityGroupNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

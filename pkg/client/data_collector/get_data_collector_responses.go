@@ -112,13 +112,25 @@ func NewGetDataCollectorNotFound() *GetDataCollectorNotFound {
 Not Found
 */
 type GetDataCollectorNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetDataCollectorNotFound) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/data-collectors/{id}][%d] getDataCollectorNotFound ", 404)
+	return fmt.Sprintf("[GET /iaas/api/data-collectors/{id}][%d] getDataCollectorNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetDataCollectorNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetDataCollectorNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

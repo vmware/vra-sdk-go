@@ -7,10 +7,13 @@ package blueprint_requests
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	models "github.com/vmware/vra-sdk-go/pkg/models"
 )
 
 // DeleteBlueprintRequestUsingDELETE1Reader is a Reader for the DeleteBlueprintRequestUsingDELETE1 structure.
@@ -124,13 +127,25 @@ func NewDeleteBlueprintRequestUsingDELETE1NotFound() *DeleteBlueprintRequestUsin
 Not Found
 */
 type DeleteBlueprintRequestUsingDELETE1NotFound struct {
+	Payload *models.Error
 }
 
 func (o *DeleteBlueprintRequestUsingDELETE1NotFound) Error() string {
-	return fmt.Sprintf("[DELETE /blueprint/api/blueprint-requests/{requestId}][%d] deleteBlueprintRequestUsingDELETE1NotFound ", 404)
+	return fmt.Sprintf("[DELETE /blueprint/api/blueprint-requests/{requestId}][%d] deleteBlueprintRequestUsingDELETE1NotFound  %+v", 404, o.Payload)
+}
+
+func (o *DeleteBlueprintRequestUsingDELETE1NotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *DeleteBlueprintRequestUsingDELETE1NotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

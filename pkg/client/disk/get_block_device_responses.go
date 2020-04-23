@@ -112,13 +112,25 @@ func NewGetBlockDeviceNotFound() *GetBlockDeviceNotFound {
 Not Found
 */
 type GetBlockDeviceNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetBlockDeviceNotFound) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/block-devices/{id}][%d] getBlockDeviceNotFound ", 404)
+	return fmt.Sprintf("[GET /iaas/api/block-devices/{id}][%d] getBlockDeviceNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetBlockDeviceNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetBlockDeviceNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

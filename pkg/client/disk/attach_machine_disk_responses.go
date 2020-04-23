@@ -97,13 +97,25 @@ func NewAttachMachineDiskBadRequest() *AttachMachineDiskBadRequest {
 Invalid Request - bad data
 */
 type AttachMachineDiskBadRequest struct {
+	Payload *models.Error
 }
 
 func (o *AttachMachineDiskBadRequest) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/machines/{id}/disks][%d] attachMachineDiskBadRequest ", 400)
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/disks][%d] attachMachineDiskBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *AttachMachineDiskBadRequest) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *AttachMachineDiskBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -139,13 +151,25 @@ func NewAttachMachineDiskNotFound() *AttachMachineDiskNotFound {
 Not Found
 */
 type AttachMachineDiskNotFound struct {
+	Payload *models.Error
 }
 
 func (o *AttachMachineDiskNotFound) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/machines/{id}/disks][%d] attachMachineDiskNotFound ", 404)
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/disks][%d] attachMachineDiskNotFound  %+v", 404, o.Payload)
+}
+
+func (o *AttachMachineDiskNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *AttachMachineDiskNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

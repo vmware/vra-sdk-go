@@ -112,13 +112,25 @@ func NewCreateMachineSnapshotNotFound() *CreateMachineSnapshotNotFound {
 Not Found
 */
 type CreateMachineSnapshotNotFound struct {
+	Payload *models.Error
 }
 
 func (o *CreateMachineSnapshotNotFound) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/snapshots][%d] createMachineSnapshotNotFound ", 404)
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/snapshots][%d] createMachineSnapshotNotFound  %+v", 404, o.Payload)
+}
+
+func (o *CreateMachineSnapshotNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *CreateMachineSnapshotNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

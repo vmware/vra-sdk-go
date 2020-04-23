@@ -7,10 +7,13 @@ package deployment_actions
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	models "github.com/vmware/vra-sdk-go/pkg/models"
 )
 
 // ActionDeploymentRequestUsingPOSTReader is a Reader for the ActionDeploymentRequestUsingPOST structure.
@@ -124,13 +127,25 @@ func NewActionDeploymentRequestUsingPOSTNotFound() *ActionDeploymentRequestUsing
 Not Found
 */
 type ActionDeploymentRequestUsingPOSTNotFound struct {
+	Payload *models.Error
 }
 
 func (o *ActionDeploymentRequestUsingPOSTNotFound) Error() string {
-	return fmt.Sprintf("[POST /deployment/api/requests/{requestId}][%d] actionDeploymentRequestUsingPOSTNotFound ", 404)
+	return fmt.Sprintf("[POST /deployment/api/requests/{requestId}][%d] actionDeploymentRequestUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
+func (o *ActionDeploymentRequestUsingPOSTNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *ActionDeploymentRequestUsingPOSTNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

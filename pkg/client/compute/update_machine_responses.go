@@ -112,13 +112,25 @@ func NewUpdateMachineNotFound() *UpdateMachineNotFound {
 Not Found
 */
 type UpdateMachineNotFound struct {
+	Payload *models.Error
 }
 
 func (o *UpdateMachineNotFound) Error() string {
-	return fmt.Sprintf("[PATCH /iaas/api/machines/{id}][%d] updateMachineNotFound ", 404)
+	return fmt.Sprintf("[PATCH /iaas/api/machines/{id}][%d] updateMachineNotFound  %+v", 404, o.Payload)
+}
+
+func (o *UpdateMachineNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *UpdateMachineNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

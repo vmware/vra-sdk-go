@@ -112,13 +112,25 @@ func NewUpdateFabricComputeNotFound() *UpdateFabricComputeNotFound {
 Not Found
 */
 type UpdateFabricComputeNotFound struct {
+	Payload *models.Error
 }
 
 func (o *UpdateFabricComputeNotFound) Error() string {
-	return fmt.Sprintf("[PATCH /iaas/api/fabric-computes/{id}][%d] updateFabricComputeNotFound ", 404)
+	return fmt.Sprintf("[PATCH /iaas/api/fabric-computes/{id}][%d] updateFabricComputeNotFound  %+v", 404, o.Payload)
+}
+
+func (o *UpdateFabricComputeNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *UpdateFabricComputeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

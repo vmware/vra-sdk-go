@@ -91,13 +91,25 @@ func NewUpdateVSphereStorageProfileBadRequest() *UpdateVSphereStorageProfileBadR
 Invalid Request - bad data
 */
 type UpdateVSphereStorageProfileBadRequest struct {
+	Payload *models.Error
 }
 
 func (o *UpdateVSphereStorageProfileBadRequest) Error() string {
-	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-vsphere/{id}][%d] updateVSphereStorageProfileBadRequest ", 400)
+	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-vsphere/{id}][%d] updateVSphereStorageProfileBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *UpdateVSphereStorageProfileBadRequest) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *UpdateVSphereStorageProfileBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

@@ -91,13 +91,25 @@ func NewCreateVSphereCloudAccountBadRequest() *CreateVSphereCloudAccountBadReque
 Invalid Request - bad data
 */
 type CreateVSphereCloudAccountBadRequest struct {
+	Payload *models.Error
 }
 
 func (o *CreateVSphereCloudAccountBadRequest) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vsphere][%d] createVSphereCloudAccountBadRequest ", 400)
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vsphere][%d] createVSphereCloudAccountBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *CreateVSphereCloudAccountBadRequest) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *CreateVSphereCloudAccountBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

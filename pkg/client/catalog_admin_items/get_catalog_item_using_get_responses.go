@@ -112,13 +112,25 @@ func NewGetCatalogItemUsingGETNotFound() *GetCatalogItemUsingGETNotFound {
 Not Found
 */
 type GetCatalogItemUsingGETNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetCatalogItemUsingGETNotFound) Error() string {
-	return fmt.Sprintf("[GET /catalog/api/admin/items/{id}][%d] getCatalogItemUsingGETNotFound ", 404)
+	return fmt.Sprintf("[GET /catalog/api/admin/items/{id}][%d] getCatalogItemUsingGETNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetCatalogItemUsingGETNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetCatalogItemUsingGETNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

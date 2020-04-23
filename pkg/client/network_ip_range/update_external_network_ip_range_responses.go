@@ -97,13 +97,25 @@ func NewUpdateExternalNetworkIPRangeBadRequest() *UpdateExternalNetworkIPRangeBa
 Invalid Request - bad data
 */
 type UpdateExternalNetworkIPRangeBadRequest struct {
+	Payload *models.Error
 }
 
 func (o *UpdateExternalNetworkIPRangeBadRequest) Error() string {
-	return fmt.Sprintf("[PATCH /iaas/api/external-network-ip-ranges/{id}][%d] updateExternalNetworkIpRangeBadRequest ", 400)
+	return fmt.Sprintf("[PATCH /iaas/api/external-network-ip-ranges/{id}][%d] updateExternalNetworkIpRangeBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *UpdateExternalNetworkIPRangeBadRequest) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *UpdateExternalNetworkIPRangeBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -139,13 +151,25 @@ func NewUpdateExternalNetworkIPRangeNotFound() *UpdateExternalNetworkIPRangeNotF
 Not Found
 */
 type UpdateExternalNetworkIPRangeNotFound struct {
+	Payload *models.Error
 }
 
 func (o *UpdateExternalNetworkIPRangeNotFound) Error() string {
-	return fmt.Sprintf("[PATCH /iaas/api/external-network-ip-ranges/{id}][%d] updateExternalNetworkIpRangeNotFound ", 404)
+	return fmt.Sprintf("[PATCH /iaas/api/external-network-ip-ranges/{id}][%d] updateExternalNetworkIpRangeNotFound  %+v", 404, o.Payload)
+}
+
+func (o *UpdateExternalNetworkIPRangeNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *UpdateExternalNetworkIPRangeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

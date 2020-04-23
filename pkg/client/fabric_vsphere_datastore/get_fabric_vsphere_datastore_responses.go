@@ -112,13 +112,25 @@ func NewGetFabricVSphereDatastoreNotFound() *GetFabricVSphereDatastoreNotFound {
 Not Found
 */
 type GetFabricVSphereDatastoreNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetFabricVSphereDatastoreNotFound) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-datastores/{id}][%d] getFabricVSphereDatastoreNotFound ", 404)
+	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-datastores/{id}][%d] getFabricVSphereDatastoreNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetFabricVSphereDatastoreNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetFabricVSphereDatastoreNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

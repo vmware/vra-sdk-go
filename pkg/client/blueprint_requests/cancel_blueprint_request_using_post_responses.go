@@ -7,10 +7,13 @@ package blueprint_requests
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	models "github.com/vmware/vra-sdk-go/pkg/models"
 )
 
 // CancelBlueprintRequestUsingPOSTReader is a Reader for the CancelBlueprintRequestUsingPOST structure.
@@ -124,13 +127,25 @@ func NewCancelBlueprintRequestUsingPOSTNotFound() *CancelBlueprintRequestUsingPO
 Not Found
 */
 type CancelBlueprintRequestUsingPOSTNotFound struct {
+	Payload *models.Error
 }
 
 func (o *CancelBlueprintRequestUsingPOSTNotFound) Error() string {
-	return fmt.Sprintf("[POST /blueprint/api/blueprint-requests/{requestId}/actions/cancel][%d] cancelBlueprintRequestUsingPOSTNotFound ", 404)
+	return fmt.Sprintf("[POST /blueprint/api/blueprint-requests/{requestId}/actions/cancel][%d] cancelBlueprintRequestUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
+func (o *CancelBlueprintRequestUsingPOSTNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *CancelBlueprintRequestUsingPOSTNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

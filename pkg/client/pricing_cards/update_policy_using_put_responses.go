@@ -112,13 +112,25 @@ func NewUpdatePolicyUsingPUTNotFound() *UpdatePolicyUsingPUTNotFound {
 Not Found
 */
 type UpdatePolicyUsingPUTNotFound struct {
+	Payload *models.Error
 }
 
 func (o *UpdatePolicyUsingPUTNotFound) Error() string {
-	return fmt.Sprintf("[PUT /price/api/private/pricing-cards/{id}][%d] updatePolicyUsingPUTNotFound ", 404)
+	return fmt.Sprintf("[PUT /price/api/private/pricing-cards/{id}][%d] updatePolicyUsingPUTNotFound  %+v", 404, o.Payload)
+}
+
+func (o *UpdatePolicyUsingPUTNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *UpdatePolicyUsingPUTNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

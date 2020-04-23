@@ -112,13 +112,25 @@ func NewGetInternalNetworkIPRangeNotFound() *GetInternalNetworkIPRangeNotFound {
 Not Found
 */
 type GetInternalNetworkIPRangeNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetInternalNetworkIPRangeNotFound) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/network-ip-ranges/{id}][%d] getInternalNetworkIpRangeNotFound ", 404)
+	return fmt.Sprintf("[GET /iaas/api/network-ip-ranges/{id}][%d] getInternalNetworkIpRangeNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetInternalNetworkIPRangeNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetInternalNetworkIPRangeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

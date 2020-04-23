@@ -112,13 +112,25 @@ func NewGetMachineNotFound() *GetMachineNotFound {
 Not Found
 */
 type GetMachineNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetMachineNotFound) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/machines/{id}][%d] getMachineNotFound ", 404)
+	return fmt.Sprintf("[GET /iaas/api/machines/{id}][%d] getMachineNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetMachineNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetMachineNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

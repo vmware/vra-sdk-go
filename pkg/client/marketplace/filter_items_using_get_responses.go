@@ -85,13 +85,25 @@ func NewFilterItemsUsingGETNotFound() *FilterItemsUsingGETNotFound {
 Source or Filter not found
 */
 type FilterItemsUsingGETNotFound struct {
+	Payload *models.Error
 }
 
 func (o *FilterItemsUsingGETNotFound) Error() string {
-	return fmt.Sprintf("[GET /content/api/marketplace/sources/{sourceId}/filters/{filterId}][%d] filterItemsUsingGETNotFound ", 404)
+	return fmt.Sprintf("[GET /content/api/marketplace/sources/{sourceId}/filters/{filterId}][%d] filterItemsUsingGETNotFound  %+v", 404, o.Payload)
+}
+
+func (o *FilterItemsUsingGETNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *FilterItemsUsingGETNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

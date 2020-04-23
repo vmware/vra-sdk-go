@@ -112,13 +112,25 @@ func NewPowerOffMachineNotFound() *PowerOffMachineNotFound {
 Not Found
 */
 type PowerOffMachineNotFound struct {
+	Payload *models.Error
 }
 
 func (o *PowerOffMachineNotFound) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/power-off][%d] powerOffMachineNotFound ", 404)
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/power-off][%d] powerOffMachineNotFound  %+v", 404, o.Payload)
+}
+
+func (o *PowerOffMachineNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *PowerOffMachineNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

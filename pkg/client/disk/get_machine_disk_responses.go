@@ -112,13 +112,25 @@ func NewGetMachineDiskNotFound() *GetMachineDiskNotFound {
 Not Found
 */
 type GetMachineDiskNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetMachineDiskNotFound) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/machines/{id}/disks/{id1}][%d] getMachineDiskNotFound ", 404)
+	return fmt.Sprintf("[GET /iaas/api/machines/{id}/disks/{id1}][%d] getMachineDiskNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetMachineDiskNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetMachineDiskNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

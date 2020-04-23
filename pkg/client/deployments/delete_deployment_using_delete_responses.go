@@ -139,13 +139,25 @@ func NewDeleteDeploymentUsingDELETENotFound() *DeleteDeploymentUsingDELETENotFou
 Not Found
 */
 type DeleteDeploymentUsingDELETENotFound struct {
+	Payload *models.Error
 }
 
 func (o *DeleteDeploymentUsingDELETENotFound) Error() string {
-	return fmt.Sprintf("[DELETE /deployment/api/deployments/{depId}][%d] deleteDeploymentUsingDELETENotFound ", 404)
+	return fmt.Sprintf("[DELETE /deployment/api/deployments/{depId}][%d] deleteDeploymentUsingDELETENotFound  %+v", 404, o.Payload)
+}
+
+func (o *DeleteDeploymentUsingDELETENotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *DeleteDeploymentUsingDELETENotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

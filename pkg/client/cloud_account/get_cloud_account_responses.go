@@ -112,13 +112,25 @@ func NewGetCloudAccountNotFound() *GetCloudAccountNotFound {
 Not Found
 */
 type GetCloudAccountNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetCloudAccountNotFound) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/cloud-accounts/{id}][%d] getCloudAccountNotFound ", 404)
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts/{id}][%d] getCloudAccountNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetCloudAccountNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetCloudAccountNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

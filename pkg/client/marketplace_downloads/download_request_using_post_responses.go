@@ -91,13 +91,25 @@ func NewDownloadRequestUsingPOSTBadRequest() *DownloadRequestUsingPOSTBadRequest
 Invalid source type
 */
 type DownloadRequestUsingPOSTBadRequest struct {
+	Payload *models.Error
 }
 
 func (o *DownloadRequestUsingPOSTBadRequest) Error() string {
-	return fmt.Sprintf("[POST /content/api/marketplace/download-requests][%d] downloadRequestUsingPOSTBadRequest ", 400)
+	return fmt.Sprintf("[POST /content/api/marketplace/download-requests][%d] downloadRequestUsingPOSTBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *DownloadRequestUsingPOSTBadRequest) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *DownloadRequestUsingPOSTBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -112,13 +124,25 @@ func NewDownloadRequestUsingPOSTNotFound() *DownloadRequestUsingPOSTNotFound {
 source not found
 */
 type DownloadRequestUsingPOSTNotFound struct {
+	Payload *models.Error
 }
 
 func (o *DownloadRequestUsingPOSTNotFound) Error() string {
-	return fmt.Sprintf("[POST /content/api/marketplace/download-requests][%d] downloadRequestUsingPOSTNotFound ", 404)
+	return fmt.Sprintf("[POST /content/api/marketplace/download-requests][%d] downloadRequestUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
+func (o *DownloadRequestUsingPOSTNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *DownloadRequestUsingPOSTNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

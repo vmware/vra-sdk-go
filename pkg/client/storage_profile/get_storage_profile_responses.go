@@ -112,13 +112,25 @@ func NewGetStorageProfileNotFound() *GetStorageProfileNotFound {
 Not Found
 */
 type GetStorageProfileNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetStorageProfileNotFound) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/storage-profiles/{id}][%d] getStorageProfileNotFound ", 404)
+	return fmt.Sprintf("[GET /iaas/api/storage-profiles/{id}][%d] getStorageProfileNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetStorageProfileNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetStorageProfileNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

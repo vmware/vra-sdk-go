@@ -112,13 +112,25 @@ func NewGetRequestTrackerNotFound() *GetRequestTrackerNotFound {
 Not Found
 */
 type GetRequestTrackerNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetRequestTrackerNotFound) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/request-tracker/{id}][%d] getRequestTrackerNotFound ", 404)
+	return fmt.Sprintf("[GET /iaas/api/request-tracker/{id}][%d] getRequestTrackerNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetRequestTrackerNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetRequestTrackerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

@@ -139,13 +139,25 @@ func NewDeleteResourceUsingDELETENotFound() *DeleteResourceUsingDELETENotFound {
 Not Found
 */
 type DeleteResourceUsingDELETENotFound struct {
+	Payload *models.Error
 }
 
 func (o *DeleteResourceUsingDELETENotFound) Error() string {
-	return fmt.Sprintf("[DELETE /deployment/api/deployments/{depId}/resources/{resourceId}][%d] deleteResourceUsingDELETENotFound ", 404)
+	return fmt.Sprintf("[DELETE /deployment/api/deployments/{depId}/resources/{resourceId}][%d] deleteResourceUsingDELETENotFound  %+v", 404, o.Payload)
+}
+
+func (o *DeleteResourceUsingDELETENotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *DeleteResourceUsingDELETENotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

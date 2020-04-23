@@ -112,13 +112,25 @@ func NewGetRegionNotFound() *GetRegionNotFound {
 Not Found
 */
 type GetRegionNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetRegionNotFound) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/regions/{id}][%d] getRegionNotFound ", 404)
+	return fmt.Sprintf("[GET /iaas/api/regions/{id}][%d] getRegionNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetRegionNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetRegionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

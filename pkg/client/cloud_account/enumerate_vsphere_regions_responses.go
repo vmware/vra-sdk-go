@@ -91,13 +91,25 @@ func NewEnumerateVSphereRegionsBadRequest() *EnumerateVSphereRegionsBadRequest {
 Invalid Request - bad data
 */
 type EnumerateVSphereRegionsBadRequest struct {
+	Payload *models.Error
 }
 
 func (o *EnumerateVSphereRegionsBadRequest) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vsphere/region-enumeration][%d] enumerateVSphereRegionsBadRequest ", 400)
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vsphere/region-enumeration][%d] enumerateVSphereRegionsBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *EnumerateVSphereRegionsBadRequest) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *EnumerateVSphereRegionsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

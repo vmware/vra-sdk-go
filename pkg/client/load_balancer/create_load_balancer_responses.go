@@ -97,13 +97,25 @@ func NewCreateLoadBalancerBadRequest() *CreateLoadBalancerBadRequest {
 Invalid Request - bad data
 */
 type CreateLoadBalancerBadRequest struct {
+	Payload *models.Error
 }
 
 func (o *CreateLoadBalancerBadRequest) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/load-balancers][%d] createLoadBalancerBadRequest ", 400)
+	return fmt.Sprintf("[POST /iaas/api/load-balancers][%d] createLoadBalancerBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *CreateLoadBalancerBadRequest) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *CreateLoadBalancerBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -139,13 +151,25 @@ func NewCreateLoadBalancerNotFound() *CreateLoadBalancerNotFound {
 Input(s) not Found
 */
 type CreateLoadBalancerNotFound struct {
+	Payload *models.Error
 }
 
 func (o *CreateLoadBalancerNotFound) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/load-balancers][%d] createLoadBalancerNotFound ", 404)
+	return fmt.Sprintf("[POST /iaas/api/load-balancers][%d] createLoadBalancerNotFound  %+v", 404, o.Payload)
+}
+
+func (o *CreateLoadBalancerNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *CreateLoadBalancerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

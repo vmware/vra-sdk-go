@@ -112,13 +112,25 @@ func NewGetComputesNotFound() *GetComputesNotFound {
 Not Found
 */
 type GetComputesNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetComputesNotFound) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/zones/{id}/computes][%d] getComputesNotFound ", 404)
+	return fmt.Sprintf("[GET /iaas/api/zones/{id}/computes][%d] getComputesNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetComputesNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetComputesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

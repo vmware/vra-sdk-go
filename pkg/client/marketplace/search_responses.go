@@ -85,13 +85,25 @@ func NewSearchNotFound() *SearchNotFound {
 Source not found
 */
 type SearchNotFound struct {
+	Payload *models.Error
 }
 
 func (o *SearchNotFound) Error() string {
-	return fmt.Sprintf("[GET /content/api/marketplace/sources/{sourceId}/contents][%d] searchNotFound ", 404)
+	return fmt.Sprintf("[GET /content/api/marketplace/sources/{sourceId}/contents][%d] searchNotFound  %+v", 404, o.Payload)
+}
+
+func (o *SearchNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *SearchNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

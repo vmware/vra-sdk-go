@@ -112,13 +112,25 @@ func NewGetResourceTypeUsingGETMixin1NotFound() *GetResourceTypeUsingGETMixin1No
 Not Found
 */
 type GetResourceTypeUsingGETMixin1NotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetResourceTypeUsingGETMixin1NotFound) Error() string {
-	return fmt.Sprintf("[GET /deployment/api/resource-types/{resourceTypeId}][%d] getResourceTypeUsingGETMixin1NotFound ", 404)
+	return fmt.Sprintf("[GET /deployment/api/resource-types/{resourceTypeId}][%d] getResourceTypeUsingGETMixin1NotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetResourceTypeUsingGETMixin1NotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetResourceTypeUsingGETMixin1NotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

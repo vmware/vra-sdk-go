@@ -91,13 +91,25 @@ func NewCreateProjectBadRequest() *CreateProjectBadRequest {
 Invalid Request - bad data
 */
 type CreateProjectBadRequest struct {
+	Payload *models.Error
 }
 
 func (o *CreateProjectBadRequest) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/projects][%d] createProjectBadRequest ", 400)
+	return fmt.Sprintf("[POST /iaas/api/projects][%d] createProjectBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *CreateProjectBadRequest) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *CreateProjectBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

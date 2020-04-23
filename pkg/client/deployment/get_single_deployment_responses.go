@@ -112,13 +112,25 @@ func NewGetSingleDeploymentNotFound() *GetSingleDeploymentNotFound {
 Not Found
 */
 type GetSingleDeploymentNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetSingleDeploymentNotFound) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/deployments/{id}][%d] getSingleDeploymentNotFound ", 404)
+	return fmt.Sprintf("[GET /iaas/api/deployments/{id}][%d] getSingleDeploymentNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetSingleDeploymentNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetSingleDeploymentNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

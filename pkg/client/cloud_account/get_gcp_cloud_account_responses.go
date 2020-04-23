@@ -112,13 +112,25 @@ func NewGetGcpCloudAccountNotFound() *GetGcpCloudAccountNotFound {
 Not Found
 */
 type GetGcpCloudAccountNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetGcpCloudAccountNotFound) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-gcp/{id}][%d] getGcpCloudAccountNotFound ", 404)
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-gcp/{id}][%d] getGcpCloudAccountNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetGcpCloudAccountNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetGcpCloudAccountNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

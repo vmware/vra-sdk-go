@@ -112,13 +112,25 @@ func NewUpdateAzureCloudAccountNotFound() *UpdateAzureCloudAccountNotFound {
 Not Found
 */
 type UpdateAzureCloudAccountNotFound struct {
+	Payload *models.Error
 }
 
 func (o *UpdateAzureCloudAccountNotFound) Error() string {
-	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-azure/{id}][%d] updateAzureCloudAccountNotFound ", 404)
+	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-azure/{id}][%d] updateAzureCloudAccountNotFound  %+v", 404, o.Payload)
+}
+
+func (o *UpdateAzureCloudAccountNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *UpdateAzureCloudAccountNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

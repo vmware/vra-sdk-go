@@ -91,13 +91,25 @@ func NewReplaceStorageProfileBadRequest() *ReplaceStorageProfileBadRequest {
 Invalid Request - bad data
 */
 type ReplaceStorageProfileBadRequest struct {
+	Payload *models.Error
 }
 
 func (o *ReplaceStorageProfileBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /iaas/api/storage-profiles/{id}][%d] replaceStorageProfileBadRequest ", 400)
+	return fmt.Sprintf("[PUT /iaas/api/storage-profiles/{id}][%d] replaceStorageProfileBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *ReplaceStorageProfileBadRequest) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *ReplaceStorageProfileBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

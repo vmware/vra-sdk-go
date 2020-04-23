@@ -130,13 +130,25 @@ func NewCreateInternalNetworkIPRangeBadRequest() *CreateInternalNetworkIPRangeBa
 Invalid Request - bad data
 */
 type CreateInternalNetworkIPRangeBadRequest struct {
+	Payload *models.Error
 }
 
 func (o *CreateInternalNetworkIPRangeBadRequest) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/network-ip-ranges][%d] createInternalNetworkIpRangeBadRequest ", 400)
+	return fmt.Sprintf("[POST /iaas/api/network-ip-ranges][%d] createInternalNetworkIpRangeBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *CreateInternalNetworkIPRangeBadRequest) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *CreateInternalNetworkIPRangeBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

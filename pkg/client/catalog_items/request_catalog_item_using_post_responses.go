@@ -112,13 +112,25 @@ func NewRequestCatalogItemUsingPOSTNotFound() *RequestCatalogItemUsingPOSTNotFou
 Not Found
 */
 type RequestCatalogItemUsingPOSTNotFound struct {
+	Payload *models.Error
 }
 
 func (o *RequestCatalogItemUsingPOSTNotFound) Error() string {
-	return fmt.Sprintf("[POST /catalog/api/items/{id}/request][%d] requestCatalogItemUsingPOSTNotFound ", 404)
+	return fmt.Sprintf("[POST /catalog/api/items/{id}/request][%d] requestCatalogItemUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
+func (o *RequestCatalogItemUsingPOSTNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *RequestCatalogItemUsingPOSTNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

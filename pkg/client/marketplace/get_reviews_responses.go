@@ -85,13 +85,25 @@ func NewGetReviewsNotFound() *GetReviewsNotFound {
 Source or Content not found
 */
 type GetReviewsNotFound struct {
+	Payload *models.Error
 }
 
 func (o *GetReviewsNotFound) Error() string {
-	return fmt.Sprintf("[GET /content/api/marketplace/sources/{sourceId}/contents/{contentId}/reviews][%d] getReviewsNotFound ", 404)
+	return fmt.Sprintf("[GET /content/api/marketplace/sources/{sourceId}/contents/{contentId}/reviews][%d] getReviewsNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetReviewsNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *GetReviewsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

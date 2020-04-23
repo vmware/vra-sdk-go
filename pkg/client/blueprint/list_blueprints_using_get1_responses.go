@@ -97,13 +97,25 @@ func NewListBlueprintsUsingGET1BadRequest() *ListBlueprintsUsingGET1BadRequest {
 Bad Request
 */
 type ListBlueprintsUsingGET1BadRequest struct {
+	Payload *models.Error
 }
 
 func (o *ListBlueprintsUsingGET1BadRequest) Error() string {
-	return fmt.Sprintf("[GET /blueprint/api/blueprints][%d] listBlueprintsUsingGET1BadRequest ", 400)
+	return fmt.Sprintf("[GET /blueprint/api/blueprints][%d] listBlueprintsUsingGET1BadRequest  %+v", 400, o.Payload)
+}
+
+func (o *ListBlueprintsUsingGET1BadRequest) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *ListBlueprintsUsingGET1BadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

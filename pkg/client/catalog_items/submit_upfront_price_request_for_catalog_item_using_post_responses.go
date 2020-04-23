@@ -112,13 +112,25 @@ func NewSubmitUpfrontPriceRequestForCatalogItemUsingPOSTNotFound() *SubmitUpfron
 Not Found
 */
 type SubmitUpfrontPriceRequestForCatalogItemUsingPOSTNotFound struct {
+	Payload *models.Error
 }
 
 func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOSTNotFound) Error() string {
-	return fmt.Sprintf("[POST /catalog/api/items/{id}/upfront-prices][%d] submitUpfrontPriceRequestForCatalogItemUsingPOSTNotFound ", 404)
+	return fmt.Sprintf("[POST /catalog/api/items/{id}/upfront-prices][%d] submitUpfrontPriceRequestForCatalogItemUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
+func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOSTNotFound) GetPayload() *models.Error {
+	return o.Payload
 }
 
 func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOSTNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
