@@ -237,6 +237,21 @@ def add_404_not_found(swagger):
             }
 
 
+def add_400_bad_request(swagger):
+    # List of paths and operations to add a 400 bad request
+    paths = [
+        ('/catalog/api/items/{id}/request', 'post'),
+    ]
+
+    # Update the needed paths
+    for (p, op) in paths:
+        responses = swagger['paths'][p][op]['responses']
+        if '400' not in responses:
+            responses['400'] = {
+                "description": "Bad Request",
+            }
+
+
 def change_operationId_for_get_fabric_compute(swagger):
     # Remove when VCOM-16823 is fixed.
     path = '/iaas/api/fabric-computes/{id}'
@@ -265,6 +280,7 @@ if __name__ == "__main__":
     add_blockdevice_delete_purge(swagger)
     add_blockdevice_resize(swagger)
     add_404_not_found(swagger)
+    add_400_bad_request(swagger)
 
     add_error_definition(swagger)
 
