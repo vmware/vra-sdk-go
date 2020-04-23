@@ -30,6 +30,12 @@ func (o *RequestCatalogItemUsingPOSTReader) ReadResponse(response runtime.Client
 			return nil, err
 		}
 		return result, nil
+	case 400:
+		result := NewRequestCatalogItemUsingPOSTBadRequest()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 401:
 		result := NewRequestCatalogItemUsingPOSTUnauthorized()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -72,6 +78,39 @@ func (o *RequestCatalogItemUsingPOSTOK) GetPayload() *models.CatalogItemRequestR
 func (o *RequestCatalogItemUsingPOSTOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.CatalogItemRequestResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewRequestCatalogItemUsingPOSTBadRequest creates a RequestCatalogItemUsingPOSTBadRequest with default headers values
+func NewRequestCatalogItemUsingPOSTBadRequest() *RequestCatalogItemUsingPOSTBadRequest {
+	return &RequestCatalogItemUsingPOSTBadRequest{}
+}
+
+/*RequestCatalogItemUsingPOSTBadRequest handles this case with default header values.
+
+Bad Request
+*/
+type RequestCatalogItemUsingPOSTBadRequest struct {
+	Payload *models.Error
+}
+
+func (o *RequestCatalogItemUsingPOSTBadRequest) Error() string {
+	return fmt.Sprintf("[POST /catalog/api/items/{id}/request][%d] requestCatalogItemUsingPOSTBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *RequestCatalogItemUsingPOSTBadRequest) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *RequestCatalogItemUsingPOSTBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
