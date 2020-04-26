@@ -42,7 +42,7 @@ type ProjectSpecification struct {
 	OperationTimeout int64 `json:"operationTimeout,omitempty"`
 
 	// Specifies whether the resources in this projects are shared or not. If not set default will be used.
-	SharedResources bool `json:"sharedResources,omitempty"`
+	SharedResources *bool `json:"sharedResources,omitempty"`
 
 	// List of viewer users associated with the project.
 	Viewers []*User `json:"viewers"`
