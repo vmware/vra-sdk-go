@@ -261,6 +261,18 @@ def change_operationId_for_get_fabric_compute(swagger):
     fc['operationId'] = 'getFabricCompute'
 
 
+def add_default_value_to_sharedResources(swagger):
+    default_spec = {
+        "default": True
+    }
+
+    # Update ProjectSpecification -> sharedResources property with a default value of true.
+    attributes = swagger['definitions']['ProjectSpecification']['properties']['sharedResources']
+
+    if 'default' not in attributes.keys():
+        attributes['default'] = True
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--omit-security', action='store_false')
@@ -281,6 +293,8 @@ if __name__ == "__main__":
     add_blockdevice_resize(swagger)
     add_404_not_found(swagger)
     add_400_bad_request(swagger)
+
+    add_default_value_to_sharedResources(swagger)
 
     add_error_definition(swagger)
 
