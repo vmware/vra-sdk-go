@@ -25,6 +25,8 @@ def add_filter_params(swagger):
         "/iaas/api/network-domains",
         "/iaas/api/projects",
         "/iaas/api/security-groups",
+        "/iaas/api/image-profiles",
+        "/iaas/api/flavor-profiles",
         "/iaas/api/network-profiles",
         "/iaas/api/storage-profiles",
         "/iaas/api/block-devices",

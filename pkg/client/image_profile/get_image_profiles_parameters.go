@@ -61,6 +61,11 @@ for the get image profiles operation typically these are written to a http.Reque
 */
 type GetImageProfilesParams struct {
 
+	/*DollarFilter
+	  Add a filter to return limited results
+
+	*/
+	DollarFilter *string
 	/*APIVersion
 	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 
@@ -105,6 +110,17 @@ func (o *GetImageProfilesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithDollarFilter adds the dollarFilter to the get image profiles params
+func (o *GetImageProfilesParams) WithDollarFilter(dollarFilter *string) *GetImageProfilesParams {
+	o.SetDollarFilter(dollarFilter)
+	return o
+}
+
+// SetDollarFilter adds the dollarFilter to the get image profiles params
+func (o *GetImageProfilesParams) SetDollarFilter(dollarFilter *string) {
+	o.DollarFilter = dollarFilter
+}
+
 // WithAPIVersion adds the aPIVersion to the get image profiles params
 func (o *GetImageProfilesParams) WithAPIVersion(aPIVersion *string) *GetImageProfilesParams {
 	o.SetAPIVersion(aPIVersion)
@@ -123,6 +139,22 @@ func (o *GetImageProfilesParams) WriteToRequest(r runtime.ClientRequest, reg str
 		return err
 	}
 	var res []error
+
+	if o.DollarFilter != nil {
+
+		// query param $filter
+		var qrDollarFilter string
+		if o.DollarFilter != nil {
+			qrDollarFilter = *o.DollarFilter
+		}
+		qDollarFilter := qrDollarFilter
+		if qDollarFilter != "" {
+			if err := r.SetQueryParam("$filter", qDollarFilter); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	if o.APIVersion != nil {
 
