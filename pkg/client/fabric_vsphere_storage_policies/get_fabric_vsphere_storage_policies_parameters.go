@@ -61,6 +61,11 @@ for the get fabric v sphere storage policies operation typically these are writt
 */
 type GetFabricVSphereStoragePoliciesParams struct {
 
+	/*DollarFilter
+	  Add a filter to return limited results
+
+	*/
+	DollarFilter *string
 	/*APIVersion
 	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 
@@ -105,6 +110,17 @@ func (o *GetFabricVSphereStoragePoliciesParams) SetHTTPClient(client *http.Clien
 	o.HTTPClient = client
 }
 
+// WithDollarFilter adds the dollarFilter to the get fabric v sphere storage policies params
+func (o *GetFabricVSphereStoragePoliciesParams) WithDollarFilter(dollarFilter *string) *GetFabricVSphereStoragePoliciesParams {
+	o.SetDollarFilter(dollarFilter)
+	return o
+}
+
+// SetDollarFilter adds the dollarFilter to the get fabric v sphere storage policies params
+func (o *GetFabricVSphereStoragePoliciesParams) SetDollarFilter(dollarFilter *string) {
+	o.DollarFilter = dollarFilter
+}
+
 // WithAPIVersion adds the aPIVersion to the get fabric v sphere storage policies params
 func (o *GetFabricVSphereStoragePoliciesParams) WithAPIVersion(aPIVersion *string) *GetFabricVSphereStoragePoliciesParams {
 	o.SetAPIVersion(aPIVersion)
@@ -123,6 +139,22 @@ func (o *GetFabricVSphereStoragePoliciesParams) WriteToRequest(r runtime.ClientR
 		return err
 	}
 	var res []error
+
+	if o.DollarFilter != nil {
+
+		// query param $filter
+		var qrDollarFilter string
+		if o.DollarFilter != nil {
+			qrDollarFilter = *o.DollarFilter
+		}
+		qDollarFilter := qrDollarFilter
+		if qDollarFilter != "" {
+			if err := r.SetQueryParam("$filter", qDollarFilter); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	if o.APIVersion != nil {
 
