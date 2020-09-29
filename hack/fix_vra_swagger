@@ -22,6 +22,8 @@ def add_filter_params(swagger):
     paths = [
         "/iaas/api/fabric-images",
         "/iaas/api/fabric-networks",
+        "/iaas/api/fabric-vsphere-datastores",
+        "/iaas/api/fabric-vsphere-storage-policies",
         "/iaas/api/network-domains",
         "/iaas/api/projects",
         "/iaas/api/security-groups",
@@ -29,6 +31,9 @@ def add_filter_params(swagger):
         "/iaas/api/flavor-profiles",
         "/iaas/api/network-profiles",
         "/iaas/api/storage-profiles",
+        "/iaas/api/storage-profiles-aws",
+        "/iaas/api/storage-profiles-azure",
+        "/iaas/api/storage-profiles-vsphere",
         "/iaas/api/block-devices",
         "/iaas/api/machines",
     ]
