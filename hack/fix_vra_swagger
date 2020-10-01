@@ -20,6 +20,10 @@ def add_filter_params(swagger):
 
     # List of paths to insert $filter
     paths = [
+        "/iaas/api/fabric-azure-storage-accounts",
+        "/iaas/api/fabric-aws-volume-types",
+        "/iaas/api/fabric-computes",
+        "/iaas/api/fabric-flavors",
         "/iaas/api/fabric-images",
         "/iaas/api/fabric-networks",
         "/iaas/api/fabric-vsphere-datastores",
