@@ -61,6 +61,11 @@ for the get fabric azure storage accounts operation typically these are written 
 */
 type GetFabricAzureStorageAccountsParams struct {
 
+	/*DollarFilter
+	  Add a filter to return limited results
+
+	*/
+	DollarFilter *string
 	/*APIVersion
 	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 
@@ -105,6 +110,17 @@ func (o *GetFabricAzureStorageAccountsParams) SetHTTPClient(client *http.Client)
 	o.HTTPClient = client
 }
 
+// WithDollarFilter adds the dollarFilter to the get fabric azure storage accounts params
+func (o *GetFabricAzureStorageAccountsParams) WithDollarFilter(dollarFilter *string) *GetFabricAzureStorageAccountsParams {
+	o.SetDollarFilter(dollarFilter)
+	return o
+}
+
+// SetDollarFilter adds the dollarFilter to the get fabric azure storage accounts params
+func (o *GetFabricAzureStorageAccountsParams) SetDollarFilter(dollarFilter *string) {
+	o.DollarFilter = dollarFilter
+}
+
 // WithAPIVersion adds the aPIVersion to the get fabric azure storage accounts params
 func (o *GetFabricAzureStorageAccountsParams) WithAPIVersion(aPIVersion *string) *GetFabricAzureStorageAccountsParams {
 	o.SetAPIVersion(aPIVersion)
@@ -123,6 +139,22 @@ func (o *GetFabricAzureStorageAccountsParams) WriteToRequest(r runtime.ClientReq
 		return err
 	}
 	var res []error
+
+	if o.DollarFilter != nil {
+
+		// query param $filter
+		var qrDollarFilter string
+		if o.DollarFilter != nil {
+			qrDollarFilter = *o.DollarFilter
+		}
+		qDollarFilter := qrDollarFilter
+		if qDollarFilter != "" {
+			if err := r.SetQueryParam("$filter", qDollarFilter); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	if o.APIVersion != nil {
 

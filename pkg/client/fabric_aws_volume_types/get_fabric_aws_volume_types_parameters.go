@@ -61,6 +61,11 @@ for the get fabric aws volume types operation typically these are written to a h
 */
 type GetFabricAwsVolumeTypesParams struct {
 
+	/*DollarFilter
+	  Add a filter to return limited results
+
+	*/
+	DollarFilter *string
 	/*APIVersion
 	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 
@@ -105,6 +110,17 @@ func (o *GetFabricAwsVolumeTypesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithDollarFilter adds the dollarFilter to the get fabric aws volume types params
+func (o *GetFabricAwsVolumeTypesParams) WithDollarFilter(dollarFilter *string) *GetFabricAwsVolumeTypesParams {
+	o.SetDollarFilter(dollarFilter)
+	return o
+}
+
+// SetDollarFilter adds the dollarFilter to the get fabric aws volume types params
+func (o *GetFabricAwsVolumeTypesParams) SetDollarFilter(dollarFilter *string) {
+	o.DollarFilter = dollarFilter
+}
+
 // WithAPIVersion adds the aPIVersion to the get fabric aws volume types params
 func (o *GetFabricAwsVolumeTypesParams) WithAPIVersion(aPIVersion *string) *GetFabricAwsVolumeTypesParams {
 	o.SetAPIVersion(aPIVersion)
@@ -123,6 +139,22 @@ func (o *GetFabricAwsVolumeTypesParams) WriteToRequest(r runtime.ClientRequest, 
 		return err
 	}
 	var res []error
+
+	if o.DollarFilter != nil {
+
+		// query param $filter
+		var qrDollarFilter string
+		if o.DollarFilter != nil {
+			qrDollarFilter = *o.DollarFilter
+		}
+		qDollarFilter := qrDollarFilter
+		if qDollarFilter != "" {
+			if err := r.SetQueryParam("$filter", qDollarFilter); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	if o.APIVersion != nil {
 
