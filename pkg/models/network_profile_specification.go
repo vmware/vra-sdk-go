@@ -26,6 +26,9 @@ type NetworkProfileSpecification struct {
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
 
+	// List of external IP blocks coming from an external IPAM provider that can be used to create subnetworks inside them
+	ExternalIPBlockIds []string `json:"externalIpBlockIds"`
+
 	// A list of fabric network Ids which are assigned to the network profile.
 	FabricNetworkIds []string `json:"fabricNetworkIds"`
 

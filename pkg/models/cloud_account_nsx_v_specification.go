@@ -15,12 +15,15 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// CloudAccountNsxVSpecification Specification for an Nsx-V cloud account.<br><br>A cloud account identifies a cloud account type and an account-specific deployment region or data center where the associated cloud account resources are hosted.
+// CloudAccountNsxVSpecification Specification for an NSX-v cloud account.<br><br>A cloud account identifies a cloud account type and an account-specific deployment region or data center where the associated cloud account resources are hosted.
 // swagger:model CloudAccountNsxVSpecification
 type CloudAccountNsxVSpecification struct {
 
 	// Accept self signed certificate when connecting.
 	AcceptSelfSignedCertificate bool `json:"acceptSelfSignedCertificate,omitempty"`
+
+	// vSphere cloud account associated with this NSX-V cloud account. NSX-V cloud account can be associated with a single vSphere cloud account.
+	AssociatedCloudAccountIds []string `json:"associatedCloudAccountIds"`
 
 	// Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors
 	// Required: true
@@ -29,7 +32,7 @@ type CloudAccountNsxVSpecification struct {
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
 
-	// Host name for the Nsx-T endpoint
+	// Host name for the NSX-v endpoint
 	// Required: true
 	HostName *string `json:"hostName"`
 

@@ -6,6 +6,8 @@ rename() {
 }
 
 rename v_sphere vsphere
+rename v_c_f vcf
+rename vm_c vmc
 rename a_w_s aws
 rename _d_e_l_e_t_e_ _delete_
 rename _g_e_t_ _get_
@@ -19,6 +21,8 @@ rename _p_o_s_t1_ _post1_
 rename _p_u_t1_ _put1_
 
 find pkg -type f -exec sed -i.bak 's/_a_w_s_/_aws_/g' {} +
+find pkg -type f -exec sed -i.bak 's/_v_c_f_/_vcf_/g' {} +
+find pkg -type f -exec sed -i.bak 's/_v_m_c_/_vmc_/g' {} +
 find pkg -type f -exec sed -i.bak 's/_v_sphere_/_vsphere_/g' {} +
 find pkg -type f -exec sed -i.bak 's/_d_e_l_e_t_e_/_delete_/g' {} +
 find pkg -type f -exec sed -i.bak 's/_g_e_t_/_get_/g' {} +

@@ -32,6 +32,14 @@ type StorageProfileVsphereSpecification struct {
 	// Type of mode for the disk
 	DiskMode string `json:"diskMode,omitempty"`
 
+	// Disk types are specified as
+	//
+	//  	Standard - Simple vSphere virtual disks which cannot be managed independently without an attached VM.
+	// 	First Class - Improved version of standard virtual disks, designed to be fully mananged independent storage objects.
+	//
+	// Empty value is considered as Standard
+	DiskType string `json:"diskType,omitempty"`
+
 	// The upper bound for the I/O operations per second allocated for each virtual disk.
 	LimitIops string `json:"limitIops,omitempty"`
 

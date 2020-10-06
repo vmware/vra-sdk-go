@@ -14,9 +14,12 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// UpdateCloudAccountSpecificationBase update cloud account specification base
-// swagger:model UpdateCloudAccountSpecificationBase
-type UpdateCloudAccountSpecificationBase struct {
+// UpdateCloudAccountNsxVSpecification update cloud account nsx v specification
+// swagger:model UpdateCloudAccountNsxVSpecification
+type UpdateCloudAccountNsxVSpecification struct {
+
+	// vSphere cloud account associated with this NSX-V cloud account. NSX-V cloud account can be associated with a single vSphere cloud account.
+	AssociatedCloudAccountIds []string `json:"associatedCloudAccountIds"`
 
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
@@ -28,8 +31,8 @@ type UpdateCloudAccountSpecificationBase struct {
 	Tags []*Tag `json:"tags"`
 }
 
-// Validate validates this update cloud account specification base
-func (m *UpdateCloudAccountSpecificationBase) Validate(formats strfmt.Registry) error {
+// Validate validates this update cloud account nsx v specification
+func (m *UpdateCloudAccountNsxVSpecification) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateTags(formats); err != nil {
@@ -42,7 +45,7 @@ func (m *UpdateCloudAccountSpecificationBase) Validate(formats strfmt.Registry) 
 	return nil
 }
 
-func (m *UpdateCloudAccountSpecificationBase) validateTags(formats strfmt.Registry) error {
+func (m *UpdateCloudAccountNsxVSpecification) validateTags(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.Tags) { // not required
 		return nil
@@ -68,7 +71,7 @@ func (m *UpdateCloudAccountSpecificationBase) validateTags(formats strfmt.Regist
 }
 
 // MarshalBinary interface implementation
-func (m *UpdateCloudAccountSpecificationBase) MarshalBinary() ([]byte, error) {
+func (m *UpdateCloudAccountNsxVSpecification) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -76,8 +79,8 @@ func (m *UpdateCloudAccountSpecificationBase) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *UpdateCloudAccountSpecificationBase) UnmarshalBinary(b []byte) error {
-	var res UpdateCloudAccountSpecificationBase
+func (m *UpdateCloudAccountNsxVSpecification) UnmarshalBinary(b []byte) error {
+	var res UpdateCloudAccountNsxVSpecification
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

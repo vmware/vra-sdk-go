@@ -72,7 +72,7 @@ type CreateOnDemandSecurityGroupParams struct {
 	  Security group Specification instance
 
 	*/
-	Body *models.NetworkSpecification
+	Body *models.SecurityGroupSpecification
 
 	timeout    time.Duration
 	Context    context.Context
@@ -124,13 +124,13 @@ func (o *CreateOnDemandSecurityGroupParams) SetAPIVersion(aPIVersion *string) {
 }
 
 // WithBody adds the body to the create on demand security group params
-func (o *CreateOnDemandSecurityGroupParams) WithBody(body *models.NetworkSpecification) *CreateOnDemandSecurityGroupParams {
+func (o *CreateOnDemandSecurityGroupParams) WithBody(body *models.SecurityGroupSpecification) *CreateOnDemandSecurityGroupParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the create on demand security group params
-func (o *CreateOnDemandSecurityGroupParams) SetBody(body *models.NetworkSpecification) {
+func (o *CreateOnDemandSecurityGroupParams) SetBody(body *models.SecurityGroupSpecification) {
 	o.Body = body
 }
 

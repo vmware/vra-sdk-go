@@ -17,6 +17,12 @@ import (
 // swagger:model RouteConfiguration
 type RouteConfiguration struct {
 
+	// Algorithm employed for load balancing.
+	Algorithm string `json:"algorithm,omitempty"`
+
+	// Parameters need for load balancing algorithm.Use newline to separate multiple parameters.
+	AlgorithmParameters string `json:"algorithmParameters,omitempty"`
+
 	// Health check configuration for this route configuration.
 	HealthCheckConfiguration *HealthCheckConfiguration `json:"healthCheckConfiguration,omitempty"`
 

@@ -18,7 +18,7 @@ import (
 // swagger:model UpdateCloudAccountSpecification
 type UpdateCloudAccountSpecification struct {
 
-	// Cloud accounts to link with this cloud account
+	// Cloud accounts to associate with this cloud account
 	AssociatedCloudAccountIds []string `json:"associatedCloudAccountIds"`
 
 	// Create default cloud zones for the enabled regions.
@@ -32,6 +32,12 @@ type UpdateCloudAccountSpecification struct {
 
 	// A human-friendly name used as an identifier in APIs that support this option.
 	Name string `json:"name,omitempty"`
+
+	// Secret access key or password to be used to authenticate with the cloud account
+	PrivateKey string `json:"privateKey,omitempty"`
+
+	// Access key id or username to be used to authenticate with the cloud account
+	PrivateKeyID string `json:"privateKeyId,omitempty"`
 
 	// A set of Region names to enable provisioning on.
 	RegionIds []string `json:"regionIds"`

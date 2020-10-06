@@ -100,6 +100,78 @@ func (a *Client) DeleteInternalNetworkIPRange(params *DeleteInternalNetworkIPRan
 }
 
 /*
+GetExternalIPBlock gets specific external IP block by id
+
+An external IP block is network coming from external IPAM provider that can be used to create subnetworks inside it
+*/
+func (a *Client) GetExternalIPBlock(params *GetExternalIPBlockParams) (*GetExternalIPBlockOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetExternalIPBlockParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getExternalIpBlock",
+		Method:             "GET",
+		PathPattern:        "/iaas/api/external-ip-blocks/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetExternalIPBlockReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetExternalIPBlockOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getExternalIpBlock: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetExternalIPBlocks gets all external IP blocks
+
+An external IP block is network coming from external IPAM provider that can be used to create subnetworks inside it
+*/
+func (a *Client) GetExternalIPBlocks(params *GetExternalIPBlocksParams) (*GetExternalIPBlocksOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetExternalIPBlocksParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getExternalIpBlocks",
+		Method:             "GET",
+		PathPattern:        "/iaas/api/external-ip-blocks",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetExternalIPBlocksReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetExternalIPBlocksOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getExternalIpBlocks: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 GetExternalNetworkIPRange gets external IP a m network IP range
 
 Get external IPAM network IP range with a given id

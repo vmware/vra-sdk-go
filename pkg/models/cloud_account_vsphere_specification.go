@@ -22,7 +22,7 @@ type CloudAccountVsphereSpecification struct {
 	// Accept self signed certificate when connecting to vSphere
 	AcceptSelfSignedCertificate bool `json:"acceptSelfSignedCertificate,omitempty"`
 
-	// Cloud accounts to associate with this cloud account
+	// NSX-V or NSX-T account to associate with this vSphere cloud account. vSphere cloud account can be a single NSX-V cloud account or a single NSX-T cloud account.
 	AssociatedCloudAccountIds []string `json:"associatedCloudAccountIds"`
 
 	// Create default cloud zones for the enabled regions.

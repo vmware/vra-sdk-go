@@ -33,6 +33,9 @@ type FabricNetwork struct {
 	// Date when the entity was created. The date is in ISO 8601 and UTC.
 	CreatedAt string `json:"createdAt,omitempty"`
 
+	// Custom properties of the fabric network instance
+	CustomProperties map[string]string `json:"customProperties,omitempty"`
+
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
 

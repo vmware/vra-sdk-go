@@ -19,6 +19,9 @@ import (
 // swagger:model RequestTracker
 type RequestTracker struct {
 
+	// ID of the deployment, this request is connected to.
+	DeploymentID string `json:"deploymentId,omitempty"`
+
 	// ID of this request.
 	// Required: true
 	ID *string `json:"id"`
