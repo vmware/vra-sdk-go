@@ -19,7 +19,7 @@ import (
 // swagger:model CloudAccountSpecification
 type CloudAccountSpecification struct {
 
-	// Cloud account to link with this cloud account
+	// Cloud accounts to associate with this cloud account
 	AssociatedCloudAccountIds []string `json:"associatedCloudAccountIds"`
 
 	// Cloud Account specific properties supplied in as name value pairs
@@ -52,6 +52,7 @@ type CloudAccountSpecification struct {
 	PrivateKeyID *string `json:"privateKeyId"`
 
 	// A set of Region names to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration.
+	// 'regionIds' is not required parameter for NSX-T and NSX-V cloud account types.
 	// Required: true
 	RegionIds []string `json:"regionIds"`
 

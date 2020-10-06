@@ -27,6 +27,42 @@ type Client struct {
 }
 
 /*
+PromoteDisk promotes operation on disk
+
+Second day promote operation on disk
+*/
+func (a *Client) PromoteDisk(params *PromoteDiskParams) (*PromoteDiskOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPromoteDiskParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "PromoteDisk",
+		Method:             "POST",
+		PathPattern:        "/iaas/api/block-devices/{id}/operations/promote",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PromoteDiskReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PromoteDiskOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for PromoteDisk: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 AttachMachineDisk attaches machine disk
 
 Attach a disk to a machine.
@@ -103,6 +139,43 @@ func (a *Client) CreateBlockDevice(params *CreateBlockDeviceParams) (*CreateBloc
 }
 
 /*
+CreateFirstClassDiskSnapshot creates snapshot operation for first class disk
+
+Second day create snapshot operation for first class disk
+*/
+func (a *Client) CreateFirstClassDiskSnapshot(params *CreateFirstClassDiskSnapshotParams) (*CreateFirstClassDiskSnapshotOK, *CreateFirstClassDiskSnapshotNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateFirstClassDiskSnapshotParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "createFirstClassDiskSnapshot",
+		Method:             "POST",
+		PathPattern:        "/iaas/api/block-devices/{id}/operations/snapshots",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CreateFirstClassDiskSnapshotReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, nil, err
+	}
+	switch value := result.(type) {
+	case *CreateFirstClassDiskSnapshotOK:
+		return value, nil, nil
+	case *CreateFirstClassDiskSnapshotNoContent:
+		return nil, value, nil
+	}
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for disk: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 DeleteBlockDevice deletes a block device
 
 Delete a BlockDevice
@@ -135,6 +208,43 @@ func (a *Client) DeleteBlockDevice(params *DeleteBlockDeviceParams) (*DeleteBloc
 	case *DeleteBlockDeviceAccepted:
 		return value, nil, nil
 	case *DeleteBlockDeviceNoContent:
+		return nil, value, nil
+	}
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for disk: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteFirstClassDiskSnapshot deletes snapshot operation for first class disk
+
+Second day delete snapshot operation for first class disk
+*/
+func (a *Client) DeleteFirstClassDiskSnapshot(params *DeleteFirstClassDiskSnapshotParams) (*DeleteFirstClassDiskSnapshotOK, *DeleteFirstClassDiskSnapshotNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteFirstClassDiskSnapshotParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "deleteFirstClassDiskSnapshot",
+		Method:             "DELETE",
+		PathPattern:        "/iaas/api/block-devices/{id}/snapshots/{id1}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteFirstClassDiskSnapshotReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, nil, err
+	}
+	switch value := result.(type) {
+	case *DeleteFirstClassDiskSnapshotOK:
+		return value, nil, nil
+	case *DeleteFirstClassDiskSnapshotNoContent:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
@@ -252,6 +362,78 @@ func (a *Client) GetBlockDevices(params *GetBlockDevicesParams) (*GetBlockDevice
 }
 
 /*
+GetDiskSnapshot gets disk snapshot
+
+Get snapshot with a given id for specific disk
+*/
+func (a *Client) GetDiskSnapshot(params *GetDiskSnapshotParams) (*GetDiskSnapshotOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetDiskSnapshotParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getDiskSnapshot",
+		Method:             "GET",
+		PathPattern:        "/iaas/api/block-devices/{id}/snapshots/{id1}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetDiskSnapshotReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetDiskSnapshotOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getDiskSnapshot: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetDiskSnapshots gets disk snapshots information
+
+Get disk snapshots information
+*/
+func (a *Client) GetDiskSnapshots(params *GetDiskSnapshotsParams) (*GetDiskSnapshotsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetDiskSnapshotsParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getDiskSnapshots",
+		Method:             "GET",
+		PathPattern:        "/iaas/api/block-devices/{id}/snapshots",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetDiskSnapshotsReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetDiskSnapshotsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getDiskSnapshots: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 GetMachineDisk gets machine disk
 
 Get disk with a given id for specific machine
@@ -357,6 +539,42 @@ func (a *Client) ResizeBlockDevice(params *ResizeBlockDeviceParams) (*ResizeBloc
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for disk: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+RevertDiskSnapshot reverts snapshot operation for disk
+
+Second day revert snapshot operation for disk
+*/
+func (a *Client) RevertDiskSnapshot(params *RevertDiskSnapshotParams) (*RevertDiskSnapshotOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewRevertDiskSnapshotParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "revertDiskSnapshot",
+		Method:             "POST",
+		PathPattern:        "/iaas/api/block-devices/{id}/operations/revert",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &RevertDiskSnapshotReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*RevertDiskSnapshotOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for revertDiskSnapshot: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

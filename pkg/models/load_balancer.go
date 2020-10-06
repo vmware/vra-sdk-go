@@ -57,6 +57,9 @@ type LoadBalancer struct {
 	// Required: true
 	ID *string `json:"id"`
 
+	// Defines logging level for collecting load balancer traffic logs.
+	LoggingLevel string `json:"loggingLevel,omitempty"`
+
 	// A human-friendly name used as an identifier in APIs that support this option.
 	Name string `json:"name,omitempty"`
 
@@ -78,6 +81,9 @@ type LoadBalancer struct {
 
 	// A set of tag keys and optional values that were set on this resource.
 	Tags []*Tag `json:"tags"`
+
+	// Define the type/variant of load balancer numbers e.g.for NSX the number virtual servers and pool members load balancer can host
+	Type string `json:"type,omitempty"`
 
 	// Date when the entity was last updated. The date is ISO 8601 and UTC.
 	UpdatedAt string `json:"updatedAt,omitempty"`

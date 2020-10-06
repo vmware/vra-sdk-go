@@ -27,6 +27,42 @@ type Client struct {
 }
 
 /*
+ChangeSecurityGroups changes security groups for a v sphere machine
+
+ Change security groups for a vSphere machine network interfaces. Securing group that is part of the same deployment can be added or removed for a machine network interface.
+*/
+func (a *Client) ChangeSecurityGroups(params *ChangeSecurityGroupsParams) (*ChangeSecurityGroupsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewChangeSecurityGroupsParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "changeSecurityGroups",
+		Method:             "POST",
+		PathPattern:        "/iaas/api/machines/{id}/operations/change-security-groups",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ChangeSecurityGroupsReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ChangeSecurityGroupsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for changeSecurityGroups: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 CreateOnDemandSecurityGroup creates on demand security group
 
 Provision a new on-demand security group
@@ -168,6 +204,42 @@ func (a *Client) GetSecurityGroups(params *GetSecurityGroupsParams) (*GetSecurit
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getSecurityGroups: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateSecurityGroup updates security group
+
+Update security group. Only tag updates are supported.
+*/
+func (a *Client) UpdateSecurityGroup(params *UpdateSecurityGroupParams) (*UpdateSecurityGroupOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateSecurityGroupParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "updateSecurityGroup",
+		Method:             "PATCH",
+		PathPattern:        "/iaas/api/security-groups/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateSecurityGroupReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateSecurityGroupOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateSecurityGroup: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

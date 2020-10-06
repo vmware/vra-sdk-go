@@ -72,7 +72,7 @@ type UpdateNsxTCloudAccountParams struct {
 	  NSX-T cloud account details to be updated
 
 	*/
-	Body *models.UpdateCloudAccountSpecificationBase
+	Body *models.UpdateCloudAccountNsxTSpecification
 	/*ID
 	  Cloud account id
 
@@ -129,13 +129,13 @@ func (o *UpdateNsxTCloudAccountParams) SetAPIVersion(aPIVersion *string) {
 }
 
 // WithBody adds the body to the update nsx t cloud account params
-func (o *UpdateNsxTCloudAccountParams) WithBody(body *models.UpdateCloudAccountSpecificationBase) *UpdateNsxTCloudAccountParams {
+func (o *UpdateNsxTCloudAccountParams) WithBody(body *models.UpdateCloudAccountNsxTSpecification) *UpdateNsxTCloudAccountParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the update nsx t cloud account params
-func (o *UpdateNsxTCloudAccountParams) SetBody(body *models.UpdateCloudAccountSpecificationBase) {
+func (o *UpdateNsxTCloudAccountParams) SetBody(body *models.UpdateCloudAccountNsxTSpecification) {
 	o.Body = body
 }
 

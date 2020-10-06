@@ -85,6 +85,10 @@ type BlockDevice struct {
 	// A set of tag keys and optional values that were set on this resource.
 	Tags []*Tag `json:"tags"`
 
+	// Type of the block device
+	// Enum: [SSD HDD CDROM FLOPPY]
+	Type string `json:"type,omitempty"`
+
 	// Date when the entity was last updated. The date is ISO 8601 and UTC.
 	UpdatedAt string `json:"updatedAt,omitempty"`
 }
@@ -122,6 +126,10 @@ func (m *BlockDevice) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateTags(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateType(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -264,6 +272,55 @@ func (m *BlockDevice) validateTags(formats strfmt.Registry) error {
 			}
 		}
 
+	}
+
+	return nil
+}
+
+var blockDeviceTypeTypePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["SSD","HDD","CDROM","FLOPPY"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		blockDeviceTypeTypePropEnum = append(blockDeviceTypeTypePropEnum, v)
+	}
+}
+
+const (
+
+	// BlockDeviceTypeSSD captures enum value "SSD"
+	BlockDeviceTypeSSD string = "SSD"
+
+	// BlockDeviceTypeHDD captures enum value "HDD"
+	BlockDeviceTypeHDD string = "HDD"
+
+	// BlockDeviceTypeCDROM captures enum value "CDROM"
+	BlockDeviceTypeCDROM string = "CDROM"
+
+	// BlockDeviceTypeFLOPPY captures enum value "FLOPPY"
+	BlockDeviceTypeFLOPPY string = "FLOPPY"
+)
+
+// prop value enum
+func (m *BlockDevice) validateTypeEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, blockDeviceTypeTypePropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *BlockDevice) validateType(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Type) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateTypeEnum("type", "body", m.Type); err != nil {
+		return err
 	}
 
 	return nil

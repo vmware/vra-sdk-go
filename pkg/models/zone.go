@@ -23,6 +23,9 @@ type Zone struct {
 	// Required: true
 	Links map[string]Href `json:"_links"`
 
+	// Cloud account this zone belongs to.
+	CloudAccountID string `json:"cloudAccountId,omitempty"`
+
 	// Date when the entity was created. The date is in ISO 8601 and UTC.
 	CreatedAt string `json:"createdAt,omitempty"`
 
@@ -31,6 +34,9 @@ type Zone struct {
 
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
+
+	// The id of the region for which this zone is defined
+	ExternalRegionID string `json:"externalRegionId,omitempty"`
 
 	// The folder relative path to the datacenter where resources are deployed to. (only applicable for vSphere cloud zones)
 	Folder string `json:"folder,omitempty"`

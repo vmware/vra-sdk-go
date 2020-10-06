@@ -23,6 +23,9 @@ type VsphereStorageProfile struct {
 	// Required: true
 	Links map[string]Href `json:"_links"`
 
+	// Id of the cloud account this storage profile belongs to.
+	CloudAccountID string `json:"cloudAccountId,omitempty"`
+
 	// Date when the entity was created. The date is in ISO 8601 and UTC.
 	CreatedAt string `json:"createdAt,omitempty"`
 
@@ -35,6 +38,13 @@ type VsphereStorageProfile struct {
 
 	// Type of mode for the disk
 	DiskMode string `json:"diskMode,omitempty"`
+
+	// Disk types are specified as
+	// 	Standard - Simple vSphere virtual disks which cannot be managed independently without an attached VM.
+	// 	First Class - Improved version of standard virtual disks, designed to be fully mananged
+	//  independent storage objects.
+	// Empty value is considered as Standard
+	DiskType string `json:"diskType,omitempty"`
 
 	// The id of the region for which this profile is defined
 	ExternalRegionID string `json:"externalRegionId,omitempty"`

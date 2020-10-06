@@ -18,6 +18,9 @@ import (
 // swagger:model UpdateCloudAccountVsphereSpecification
 type UpdateCloudAccountVsphereSpecification struct {
 
+	// NSX-V or NSX-T account to associate with this vSphere cloud account. vSphere cloud account can be a single NSX-V cloud account or a single NSX-T cloud account.
+	AssociatedCloudAccountIds []string `json:"associatedCloudAccountIds"`
+
 	// Create default cloud zones for the enabled regions.
 	CreateDefaultZones bool `json:"createDefaultZones,omitempty"`
 
@@ -27,11 +30,17 @@ type UpdateCloudAccountVsphereSpecification struct {
 	// A human-friendly name used as an identifier in APIs that support this option.
 	Name string `json:"name,omitempty"`
 
+	// Password to authenticate with the cloud account
+	Password string `json:"password,omitempty"`
+
 	// A set of Region names to enable provisioning on.
 	RegionIds []string `json:"regionIds"`
 
 	// A set of tag keys and optional values to set on the Cloud Account
 	Tags []*Tag `json:"tags"`
+
+	// Username to authenticate with the cloud account
+	Username string `json:"username,omitempty"`
 }
 
 // Validate validates this update cloud account vsphere specification

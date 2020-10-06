@@ -28,6 +28,9 @@ type CloudAccountVmcSpecification struct {
 	// Create default cloud zones for the enabled regions.
 	CreateDefaultZones bool `json:"createDefaultZones,omitempty"`
 
+	// The host name of the CSP service.
+	CspHostName string `json:"cspHostName,omitempty"`
+
 	// Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors
 	DcID string `json:"dcId,omitempty"`
 

@@ -31,6 +31,9 @@ type LoadBalancerSpecification struct {
 	// An Internet-facing load balancer has a publicly resolvable DNS name, so it can route requests from clients over the Internet to the instances that are registered with the load balancer.
 	InternetFacing bool `json:"internetFacing,omitempty"`
 
+	// Defines logging level for collecting load balancer traffic logs.
+	LoggingLevel string `json:"loggingLevel,omitempty"`
+
 	// A human-friendly name used as an identifier in APIs that support this option.
 	// Required: true
 	Name *string `json:"name"`
@@ -52,6 +55,9 @@ type LoadBalancerSpecification struct {
 
 	// A list of links to target load balancer pool members. Links can be to either a machine or a machine's network interface.
 	TargetLinks []string `json:"targetLinks"`
+
+	// Define the type/variant of load balancer numbers e.g.for NSX the number virtual servers and pool members load balancer can host
+	Type string `json:"type,omitempty"`
 }
 
 // Validate validates this load balancer specification

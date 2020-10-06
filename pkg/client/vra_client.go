@@ -22,6 +22,7 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/catalog_sources"
 	"github.com/vmware/vra-sdk-go/pkg/client/cloud_account"
 	"github.com/vmware/vra-sdk-go/pkg/client/compute"
+	"github.com/vmware/vra-sdk-go/pkg/client/compute_gateway"
 	"github.com/vmware/vra-sdk-go/pkg/client/content_source"
 	"github.com/vmware/vra-sdk-go/pkg/client/data_collector"
 	"github.com/vmware/vra-sdk-go/pkg/client/deployment"
@@ -128,6 +129,8 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 	cli.CloudAccount = cloud_account.New(transport, formats)
 
 	cli.Compute = compute.New(transport, formats)
+
+	cli.ComputeGateway = compute_gateway.New(transport, formats)
 
 	cli.ContentSource = content_source.New(transport, formats)
 
@@ -275,6 +278,8 @@ type MulticloudIaaS struct {
 
 	Compute *compute.Client
 
+	ComputeGateway *compute_gateway.Client
+
 	ContentSource *content_source.Client
 
 	DataCollector *data_collector.Client
@@ -383,6 +388,8 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.CloudAccount.SetTransport(transport)
 
 	c.Compute.SetTransport(transport)
+
+	c.ComputeGateway.SetTransport(transport)
 
 	c.ContentSource.SetTransport(transport)
 

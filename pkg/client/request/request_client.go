@@ -27,6 +27,35 @@ type Client struct {
 }
 
 /*
+CancelRequest cancels operation for request
+
+Cancel operation for request with a given id
+*/
+func (a *Client) CancelRequest(params *CancelRequestParams) error {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCancelRequestParams()
+	}
+
+	_, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "cancelRequest",
+		Method:             "POST",
+		PathPattern:        "/iaas/api/request-tracker/{id}/operations/cancel",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CancelRequestReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+/*
 DeleteRequest deletes request
 
 Delete a single Request

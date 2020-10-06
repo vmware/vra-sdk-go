@@ -6,11 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"strconv"
-
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
 )
 
@@ -19,45 +16,11 @@ import (
 type FilterSchema struct {
 
 	// filters
-	Filters []*Filter `json:"filters"`
+	Filters []Filter `json:"filters"`
 }
 
 // Validate validates this filter schema
 func (m *FilterSchema) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateFilters(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *FilterSchema) validateFilters(formats strfmt.Registry) error {
-
-	if swag.IsZero(m.Filters) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.Filters); i++ {
-		if swag.IsZero(m.Filters[i]) { // not required
-			continue
-		}
-
-		if m.Filters[i] != nil {
-			if err := m.Filters[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("filters" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
 	return nil
 }
 

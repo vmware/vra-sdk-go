@@ -29,6 +29,29 @@ def rename_iaas_deployment(swagger):
     replace_value(swagger, "$ref", old_value, new_value)
 
 
+# Delete all the definitions not referred by any endpoints in IaaS API swagger
+def delete_unreferenced_definitions(swagger):
+    del swagger['definitions']['AuthorizationContext']
+    del swagger['definitions']['Connection']
+    del swagger['definitions']['DatabaseMetaData']
+    del swagger['definitions']['DeferredResultObject']
+    del swagger['definitions']['DataSource']
+    del swagger['definitions']['PostgresSchemaManager']
+    del swagger['definitions']['ResultSet']
+    del swagger['definitions']['ResultSetMetaData']
+    del swagger['definitions']['ScheduledExecutorService']
+    del swagger['definitions']['Service']
+    del swagger['definitions']['ServiceDocument']
+    del swagger['definitions']['ServiceHost']
+    del swagger['definitions']['ServiceHostState']
+    del swagger['definitions']['ServiceStat']
+    del swagger['definitions']['Statement']
+    del swagger['definitions']['TableDescription']
+    del swagger['definitions']['Thread']
+    del swagger['definitions']['TimeSeriesStats']
+    del swagger['definitions']['Tracer']
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     args = parser.parse_args()
@@ -37,6 +60,8 @@ if __name__ == "__main__":
     swagger = json.loads(open(old_filename).read())
 
     rename_iaas_deployment(swagger)
+
+    delete_unreferenced_definitions(swagger)
 
     # Overwrite the swagger spec
     f = open(new_filename, "w")

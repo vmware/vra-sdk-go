@@ -23,6 +23,9 @@ type AwsStorageProfile struct {
 	// Required: true
 	Links map[string]Href `json:"_links"`
 
+	// Id of the cloud account this storage profile belongs to.
+	CloudAccountID string `json:"cloudAccountId,omitempty"`
+
 	// Date when the entity was created. The date is in ISO 8601 and UTC.
 	CreatedAt string `json:"createdAt,omitempty"`
 

@@ -19,9 +19,9 @@ import (
 // swagger:model Rule
 type Rule struct {
 
-	// Type of access (allow or deny) for the security rule. Traffic that does not match any rules will be denied.
+	// Type of access (Allow, Deny or Drop) for the security rule. Allow is default. Traffic that does not match any rules will be denied.
 	// Required: true
-	// Enum: [Allow Deny]
+	// Enum: [Allow Deny Drop]
 	Access *string `json:"access"`
 
 	// Direction of the security rule (inbound or outboud).
@@ -77,7 +77,7 @@ var ruleTypeAccessPropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["Allow","Deny"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["Allow","Deny","Drop"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -92,6 +92,9 @@ const (
 
 	// RuleAccessDeny captures enum value "Deny"
 	RuleAccessDeny string = "Deny"
+
+	// RuleAccessDrop captures enum value "Drop"
+	RuleAccessDrop string = "Drop"
 )
 
 // prop value enum

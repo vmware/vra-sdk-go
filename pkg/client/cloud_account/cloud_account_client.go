@@ -279,6 +279,42 @@ func (a *Client) CreateVSphereCloudAccount(params *CreateVSphereCloudAccountPara
 }
 
 /*
+CreateVcfCloudAccount creates an v c f cloud account
+
+Create an VCF cloud account in the current organization
+*/
+func (a *Client) CreateVcfCloudAccount(params *CreateVcfCloudAccountParams) (*CreateVcfCloudAccountOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateVcfCloudAccountParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "createVcfCloudAccount",
+		Method:             "POST",
+		PathPattern:        "/iaas/api/cloud-accounts-vcf",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CreateVcfCloudAccountReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CreateVcfCloudAccountOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for createVcfCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 CreateVmcCloudAccount creates an VM c cloud account
 
 Create an VMC cloud account in the current organization
@@ -567,6 +603,42 @@ func (a *Client) DeleteVSphereCloudAccount(params *DeleteVSphereCloudAccountPara
 }
 
 /*
+DeleteVcfCloudAccount deletes an v c f cloud account
+
+Delete an VCF cloud account with a given id
+*/
+func (a *Client) DeleteVcfCloudAccount(params *DeleteVcfCloudAccountParams) (*DeleteVcfCloudAccountNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteVcfCloudAccountParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "deleteVcfCloudAccount",
+		Method:             "DELETE",
+		PathPattern:        "/iaas/api/cloud-accounts-vcf/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteVcfCloudAccountReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteVcfCloudAccountNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteVcfCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 DeleteVmcCloudAccount deletes an VM c cloud account
 
 Delete an VMC cloud account with a given id
@@ -819,6 +891,33 @@ func (a *Client) EnumeratePrivateImagesGcp(params *EnumeratePrivateImagesGcpPara
 }
 
 /*
+EnumeratePrivateImagesVCF enumerates all private images for enabled regions of the specified v c f account
+*/
+func (a *Client) EnumeratePrivateImagesVCF(params *EnumeratePrivateImagesVCFParams) error {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewEnumeratePrivateImagesVCFParams()
+	}
+
+	_, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "enumeratePrivateImagesVCF",
+		Method:             "POST",
+		PathPattern:        "/iaas/api/cloud-accounts-vcf/{id}/private-image-enumeration",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &EnumeratePrivateImagesVCFReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+/*
 EnumeratePrivateImagesVMC enumerates all private images for enabled regions of the specified VM c account
 */
 func (a *Client) EnumeratePrivateImagesVMC(params *EnumeratePrivateImagesVMCParams) error {
@@ -941,6 +1040,42 @@ func (a *Client) EnumerateVSphereRegions(params *EnumerateVSphereRegionsParams) 
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for enumerateVSphereRegions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+EnumerateVcfRegions gets the available regions for specified v c f cloud account
+
+Get the available regions for specified VCF cloud account
+*/
+func (a *Client) EnumerateVcfRegions(params *EnumerateVcfRegionsParams) (*EnumerateVcfRegionsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewEnumerateVcfRegionsParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "enumerateVcfRegions",
+		Method:             "POST",
+		PathPattern:        "/iaas/api/cloud-accounts-vcf/region-enumeration",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &EnumerateVcfRegionsReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*EnumerateVcfRegionsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for enumerateVcfRegions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -1485,6 +1620,78 @@ func (a *Client) GetVSphereCloudAccounts(params *GetVSphereCloudAccountsParams) 
 }
 
 /*
+GetVcfCloudAccount gets an v c f cloud account
+
+Get an VCF cloud account with a given id
+*/
+func (a *Client) GetVcfCloudAccount(params *GetVcfCloudAccountParams) (*GetVcfCloudAccountOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetVcfCloudAccountParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getVcfCloudAccount",
+		Method:             "GET",
+		PathPattern:        "/iaas/api/cloud-accounts-vcf/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetVcfCloudAccountReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetVcfCloudAccountOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getVcfCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetVcfCloudAccounts gets v c f cloud accounts
+
+Get all VCF cloud accounts within the current organization
+*/
+func (a *Client) GetVcfCloudAccounts(params *GetVcfCloudAccountsParams) (*GetVcfCloudAccountsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetVcfCloudAccountsParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getVcfCloudAccounts",
+		Method:             "GET",
+		PathPattern:        "/iaas/api/cloud-accounts-vcf",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetVcfCloudAccountsReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetVcfCloudAccountsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getVcfCloudAccounts: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 GetVmcCloudAccount gets an VM c cloud account
 
 Get an VMC cloud account with a given id
@@ -1805,6 +2012,42 @@ func (a *Client) UpdateVSphereCloudAccount(params *UpdateVSphereCloudAccountPara
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for updateVSphereCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateVcfCloudAccount updates v c f cloud account
+
+Update VCF cloud account
+*/
+func (a *Client) UpdateVcfCloudAccount(params *UpdateVcfCloudAccountParams) (*UpdateVcfCloudAccountOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateVcfCloudAccountParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "updateVcfCloudAccount",
+		Method:             "PATCH",
+		PathPattern:        "/iaas/api/cloud-accounts-vcf/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateVcfCloudAccountReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateVcfCloudAccountOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateVcfCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

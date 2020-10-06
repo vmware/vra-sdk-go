@@ -17,9 +17,12 @@ import (
 // swagger:model User
 type User struct {
 
-	// The email of the user.
+	// The email of the user or name of the group.
 	// Required: true
 	Email *string `json:"email"`
+
+	// Type of the principal. Currently supported 'user' (default) and 'group'.
+	Type string `json:"type,omitempty"`
 }
 
 // Validate validates this user

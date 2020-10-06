@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// CloudAccountNsxT State object representing an Nsx-T cloud account.<br><br>A cloud account identifies a cloud account type and an account-specific deployment region or data center where the associated cloud account resources are hosted.<br>**HATEOAS** links:<br>**self** - CloudAccountNsxT - Self link to this cloud account
+// CloudAccountNsxT State object representing an NSX-T cloud account.<br><br>A cloud account identifies a cloud account type and an account-specific deployment region or data center where the associated cloud account resources are hosted.<br>**HATEOAS** links:<br>**self** - CloudAccountNsxT - Self link to this cloud account
 // swagger:model CloudAccountNsxT
 type CloudAccountNsxT struct {
 
@@ -35,7 +35,7 @@ type CloudAccountNsxT struct {
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
 
-	// Host name for the Nsx-T cloud account
+	// Host name for the NSX-T cloud account
 	// Required: true
 	HostName *string `json:"hostName"`
 
