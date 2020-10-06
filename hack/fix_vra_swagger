@@ -272,16 +272,19 @@ def change_operationId_for_get_fabric_compute(swagger):
     fc['operationId'] = 'getFabricCompute'
 
 
-def add_default_value_to_sharedResources(swagger):
-    default_spec = {
-        "default": True
-    }
+def add_default_value_to_boolean_properties(swagger):
+    # Update following definition properties of type boolean with specified default value.
+    paths = [
+        ('FabricNetworkVsphereSpecification', 'isDefault', False),
+        ('FabricNetworkVsphereSpecification', 'isPublic', False),
+        ('ProjectSpecification', 'sharedResources', True),
+    ]
 
-    # Update ProjectSpecification -> sharedResources property with a default value of true.
-    attributes = swagger['definitions']['ProjectSpecification']['properties']['sharedResources']
-
-    if 'default' not in attributes.keys():
-        attributes['default'] = True
+    # Update the needed definitions
+    for (definition, propertyName, defaultValue) in paths:
+        attributes = swagger['definitions'][definition]['properties'][propertyName]
+        if 'default' not in attributes.keys():
+            attributes['default'] = defaultValue
 
 
 if __name__ == "__main__":
@@ -305,7 +308,7 @@ if __name__ == "__main__":
     add_404_not_found(swagger)
     add_400_bad_request(swagger)
 
-    add_default_value_to_sharedResources(swagger)
+    add_default_value_to_boolean_properties(swagger)
 
     add_error_definition(swagger)
 
