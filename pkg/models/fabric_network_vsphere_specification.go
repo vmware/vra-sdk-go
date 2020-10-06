@@ -40,10 +40,10 @@ type FabricNetworkVsphereSpecification struct {
 	IPV6Cidr string `json:"ipv6Cidr,omitempty"`
 
 	// Indicates whether this is the default subnet for the zone.
-	IsDefault bool `json:"isDefault,omitempty"`
+	IsDefault *bool `json:"isDefault,omitempty"`
 
 	// Indicates whether the sub-network supports public IP assignment.
-	IsPublic bool `json:"isPublic,omitempty"`
+	IsPublic *bool `json:"isPublic,omitempty"`
 
 	// A set of tag keys and optional values that were set on this resource instance.
 	Tags []*Tag `json:"tags"`
