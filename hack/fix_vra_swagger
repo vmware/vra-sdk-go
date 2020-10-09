@@ -63,17 +63,18 @@ def add_204(swagger):
             responses['204'] = {"description": "No Content"}
 
 
-def change_response_model_to_request_tracker(swagger):
+def change_response_model(swagger):
     # List of paths, operations, and status code to update the response model
     paths = [
-        ('/iaas/api/machines/{id}/disks', 'post', '200'),
-        ('/iaas/api/machines/{id}/disks/{id1}', 'delete', '202'),
+        ('/iaas/api/machines/{id}/disks', 'post', '200', '#/definitions/RequestTracker'),
+        ('/iaas/api/machines/{id}/disks/{id1}', 'delete', '202', '#/definitions/RequestTracker'),
+        ('/iaas/api/block-devices/{id}/snapshots/{id1}', 'get', '200', '#/definitions/Snapshot'),
     ]
 
     # Update the needed paths
-    for (p, op, response_code) in paths:
+    for (p, op, response_code, response_model) in paths:
         schema = swagger['paths'][p][op]['responses'][response_code]['schema']
-        schema['$ref'] = '#/definitions/RequestTracker'
+        schema['$ref'] = response_model
 
 
 def add_error_definition(swagger):
@@ -287,6 +288,21 @@ def add_default_value_to_boolean_properties(swagger):
             attributes['default'] = defaultValue
 
 
+def change_response_code(swagger):
+    # List of paths, operations, current status code, and new status code to update the response model
+    paths = [
+        ('/iaas/api/block-devices/{id}/operations/snapshots', 'post', '200', '202'),
+        ('/iaas/api/block-devices/{id}/snapshots/{id1}', 'delete', '200', '202'),
+    ]
+
+    # Update the needed paths
+    for (p, op, old_response_code, new_response_code) in paths:
+        responses = swagger['paths'][p][op]['responses']
+        if old_response_code in responses :
+            responses[new_response_code] = responses[old_response_code]
+            del responses[old_response_code]
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--omit-security', action='store_false')
@@ -297,7 +313,7 @@ if __name__ == "__main__":
 
     add_filter_params(swagger)
     add_204(swagger)
-    change_response_model_to_request_tracker(swagger)
+    change_response_model(swagger)
 
     add_network_ip_range_return_code(swagger)
     change_operationId_for_get_fabric_compute(swagger)
@@ -309,6 +325,7 @@ if __name__ == "__main__":
     add_400_bad_request(swagger)
 
     add_default_value_to_boolean_properties(swagger)
+    change_response_code(swagger)
 
     add_error_definition(swagger)
 

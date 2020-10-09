@@ -143,7 +143,7 @@ CreateFirstClassDiskSnapshot creates snapshot operation for first class disk
 
 Second day create snapshot operation for first class disk
 */
-func (a *Client) CreateFirstClassDiskSnapshot(params *CreateFirstClassDiskSnapshotParams) (*CreateFirstClassDiskSnapshotOK, *CreateFirstClassDiskSnapshotNoContent, error) {
+func (a *Client) CreateFirstClassDiskSnapshot(params *CreateFirstClassDiskSnapshotParams) (*CreateFirstClassDiskSnapshotAccepted, *CreateFirstClassDiskSnapshotNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateFirstClassDiskSnapshotParams()
@@ -165,7 +165,7 @@ func (a *Client) CreateFirstClassDiskSnapshot(params *CreateFirstClassDiskSnapsh
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *CreateFirstClassDiskSnapshotOK:
+	case *CreateFirstClassDiskSnapshotAccepted:
 		return value, nil, nil
 	case *CreateFirstClassDiskSnapshotNoContent:
 		return nil, value, nil
@@ -220,7 +220,7 @@ DeleteFirstClassDiskSnapshot deletes snapshot operation for first class disk
 
 Second day delete snapshot operation for first class disk
 */
-func (a *Client) DeleteFirstClassDiskSnapshot(params *DeleteFirstClassDiskSnapshotParams) (*DeleteFirstClassDiskSnapshotOK, *DeleteFirstClassDiskSnapshotNoContent, error) {
+func (a *Client) DeleteFirstClassDiskSnapshot(params *DeleteFirstClassDiskSnapshotParams) (*DeleteFirstClassDiskSnapshotAccepted, *DeleteFirstClassDiskSnapshotNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteFirstClassDiskSnapshotParams()
@@ -242,7 +242,7 @@ func (a *Client) DeleteFirstClassDiskSnapshot(params *DeleteFirstClassDiskSnapsh
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *DeleteFirstClassDiskSnapshotOK:
+	case *DeleteFirstClassDiskSnapshotAccepted:
 		return value, nil, nil
 	case *DeleteFirstClassDiskSnapshotNoContent:
 		return nil, value, nil

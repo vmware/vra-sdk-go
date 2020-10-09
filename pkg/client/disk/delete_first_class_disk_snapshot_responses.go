@@ -24,8 +24,8 @@ type DeleteFirstClassDiskSnapshotReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteFirstClassDiskSnapshotReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-	case 200:
-		result := NewDeleteFirstClassDiskSnapshotOK()
+	case 202:
+		result := NewDeleteFirstClassDiskSnapshotAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -48,28 +48,28 @@ func (o *DeleteFirstClassDiskSnapshotReader) ReadResponse(response runtime.Clien
 	}
 }
 
-// NewDeleteFirstClassDiskSnapshotOK creates a DeleteFirstClassDiskSnapshotOK with default headers values
-func NewDeleteFirstClassDiskSnapshotOK() *DeleteFirstClassDiskSnapshotOK {
-	return &DeleteFirstClassDiskSnapshotOK{}
+// NewDeleteFirstClassDiskSnapshotAccepted creates a DeleteFirstClassDiskSnapshotAccepted with default headers values
+func NewDeleteFirstClassDiskSnapshotAccepted() *DeleteFirstClassDiskSnapshotAccepted {
+	return &DeleteFirstClassDiskSnapshotAccepted{}
 }
 
-/*DeleteFirstClassDiskSnapshotOK handles this case with default header values.
+/*DeleteFirstClassDiskSnapshotAccepted handles this case with default header values.
 
 successful operation
 */
-type DeleteFirstClassDiskSnapshotOK struct {
+type DeleteFirstClassDiskSnapshotAccepted struct {
 	Payload *models.RequestTracker
 }
 
-func (o *DeleteFirstClassDiskSnapshotOK) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/block-devices/{id}/snapshots/{id1}][%d] deleteFirstClassDiskSnapshotOK  %+v", 200, o.Payload)
+func (o *DeleteFirstClassDiskSnapshotAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/block-devices/{id}/snapshots/{id1}][%d] deleteFirstClassDiskSnapshotAccepted  %+v", 202, o.Payload)
 }
 
-func (o *DeleteFirstClassDiskSnapshotOK) GetPayload() *models.RequestTracker {
+func (o *DeleteFirstClassDiskSnapshotAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
 
-func (o *DeleteFirstClassDiskSnapshotOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *DeleteFirstClassDiskSnapshotAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.RequestTracker)
 
