@@ -24,8 +24,8 @@ type CreateFirstClassDiskSnapshotReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *CreateFirstClassDiskSnapshotReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-	case 200:
-		result := NewCreateFirstClassDiskSnapshotOK()
+	case 202:
+		result := NewCreateFirstClassDiskSnapshotAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -48,28 +48,28 @@ func (o *CreateFirstClassDiskSnapshotReader) ReadResponse(response runtime.Clien
 	}
 }
 
-// NewCreateFirstClassDiskSnapshotOK creates a CreateFirstClassDiskSnapshotOK with default headers values
-func NewCreateFirstClassDiskSnapshotOK() *CreateFirstClassDiskSnapshotOK {
-	return &CreateFirstClassDiskSnapshotOK{}
+// NewCreateFirstClassDiskSnapshotAccepted creates a CreateFirstClassDiskSnapshotAccepted with default headers values
+func NewCreateFirstClassDiskSnapshotAccepted() *CreateFirstClassDiskSnapshotAccepted {
+	return &CreateFirstClassDiskSnapshotAccepted{}
 }
 
-/*CreateFirstClassDiskSnapshotOK handles this case with default header values.
+/*CreateFirstClassDiskSnapshotAccepted handles this case with default header values.
 
 successful operation
 */
-type CreateFirstClassDiskSnapshotOK struct {
+type CreateFirstClassDiskSnapshotAccepted struct {
 	Payload *models.RequestTracker
 }
 
-func (o *CreateFirstClassDiskSnapshotOK) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/snapshots][%d] createFirstClassDiskSnapshotOK  %+v", 200, o.Payload)
+func (o *CreateFirstClassDiskSnapshotAccepted) Error() string {
+	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/snapshots][%d] createFirstClassDiskSnapshotAccepted  %+v", 202, o.Payload)
 }
 
-func (o *CreateFirstClassDiskSnapshotOK) GetPayload() *models.RequestTracker {
+func (o *CreateFirstClassDiskSnapshotAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
 
-func (o *CreateFirstClassDiskSnapshotOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *CreateFirstClassDiskSnapshotAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.RequestTracker)
 
