@@ -58,20 +58,20 @@ func NewGetDiskSnapshotOK() *GetDiskSnapshotOK {
 successful operation
 */
 type GetDiskSnapshotOK struct {
-	Payload *models.Snapshot
+	Payload *models.DiskSnapshot
 }
 
 func (o *GetDiskSnapshotOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/block-devices/{id}/snapshots/{id1}][%d] getDiskSnapshotOK  %+v", 200, o.Payload)
 }
 
-func (o *GetDiskSnapshotOK) GetPayload() *models.Snapshot {
+func (o *GetDiskSnapshotOK) GetPayload() *models.DiskSnapshot {
 	return o.Payload
 }
 
 func (o *GetDiskSnapshotOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Snapshot)
+	o.Payload = new(models.DiskSnapshot)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
