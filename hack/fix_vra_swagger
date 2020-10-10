@@ -68,7 +68,7 @@ def change_response_model(swagger):
     paths = [
         ('/iaas/api/machines/{id}/disks', 'post', '200', '#/definitions/RequestTracker'),
         ('/iaas/api/machines/{id}/disks/{id1}', 'delete', '202', '#/definitions/RequestTracker'),
-        ('/iaas/api/block-devices/{id}/snapshots/{id1}', 'get', '200', '#/definitions/Snapshot'),
+        ('/iaas/api/block-devices/{id}/snapshots/{id1}', 'get', '200', '#/definitions/DiskSnapshot'),
     ]
 
     # Update the needed paths
