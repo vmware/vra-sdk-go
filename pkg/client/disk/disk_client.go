@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new disk API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,45 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-PromoteDisk promotes operation on disk
+// ClientService is the interface for Client methods
+type ClientService interface {
+	PromoteDisk(params *PromoteDiskParams) (*PromoteDiskOK, error)
 
-Second day promote operation on disk
+	AttachMachineDisk(params *AttachMachineDiskParams) (*AttachMachineDiskOK, error)
+
+	CreateBlockDevice(params *CreateBlockDeviceParams) (*CreateBlockDeviceAccepted, error)
+
+	CreateFirstClassDiskSnapshot(params *CreateFirstClassDiskSnapshotParams) (*CreateFirstClassDiskSnapshotAccepted, *CreateFirstClassDiskSnapshotNoContent, error)
+
+	DeleteBlockDevice(params *DeleteBlockDeviceParams) (*DeleteBlockDeviceAccepted, *DeleteBlockDeviceNoContent, error)
+
+	DeleteFirstClassDiskSnapshot(params *DeleteFirstClassDiskSnapshotParams) (*DeleteFirstClassDiskSnapshotAccepted, *DeleteFirstClassDiskSnapshotNoContent, error)
+
+	DeleteMachineDisk(params *DeleteMachineDiskParams) (*DeleteMachineDiskAccepted, *DeleteMachineDiskNoContent, error)
+
+	GetBlockDevice(params *GetBlockDeviceParams) (*GetBlockDeviceOK, error)
+
+	GetBlockDevices(params *GetBlockDevicesParams) (*GetBlockDevicesOK, error)
+
+	GetDiskSnapshot(params *GetDiskSnapshotParams) (*GetDiskSnapshotOK, error)
+
+	GetDiskSnapshots(params *GetDiskSnapshotsParams) (*GetDiskSnapshotsOK, error)
+
+	GetMachineDisk(params *GetMachineDiskParams) (*GetMachineDiskOK, error)
+
+	GetMachineDisks(params *GetMachineDisksParams) (*GetMachineDisksOK, error)
+
+	ResizeBlockDevice(params *ResizeBlockDeviceParams) (*ResizeBlockDeviceAccepted, *ResizeBlockDeviceNoContent, error)
+
+	RevertDiskSnapshot(params *RevertDiskSnapshotParams) (*RevertDiskSnapshotOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  PromoteDisk promotes operation on disk
+
+  Second day promote operation on disk
 */
 func (a *Client) PromoteDisk(params *PromoteDiskParams) (*PromoteDiskOK, error) {
 	// TODO: Validate the params before sending
@@ -63,9 +97,9 @@ func (a *Client) PromoteDisk(params *PromoteDiskParams) (*PromoteDiskOK, error) 
 }
 
 /*
-AttachMachineDisk attaches machine disk
+  AttachMachineDisk attaches machine disk
 
-Attach a disk to a machine.
+  Attach a disk to a machine.
 */
 func (a *Client) AttachMachineDisk(params *AttachMachineDiskParams) (*AttachMachineDiskOK, error) {
 	// TODO: Validate the params before sending
@@ -99,9 +133,9 @@ func (a *Client) AttachMachineDisk(params *AttachMachineDiskParams) (*AttachMach
 }
 
 /*
-CreateBlockDevice creates block device
+  CreateBlockDevice creates block device
 
-Following disk custom properties can be passed while creating a block device:
+  Following disk custom properties can be passed while creating a block device:
 
     1. dataStore: Defines name of the datastore in which the disk has to be provisioned.
     2. storagePolicy: Defines name of the storage policy in which the disk has to be provisioned. If name of the datastore is specified in the custom properties then, datastore takes precedence.
@@ -139,9 +173,9 @@ func (a *Client) CreateBlockDevice(params *CreateBlockDeviceParams) (*CreateBloc
 }
 
 /*
-CreateFirstClassDiskSnapshot creates snapshot operation for first class disk
+  CreateFirstClassDiskSnapshot creates snapshot operation for first class disk
 
-Second day create snapshot operation for first class disk
+  Second day create snapshot operation for first class disk
 */
 func (a *Client) CreateFirstClassDiskSnapshot(params *CreateFirstClassDiskSnapshotParams) (*CreateFirstClassDiskSnapshotAccepted, *CreateFirstClassDiskSnapshotNoContent, error) {
 	// TODO: Validate the params before sending
@@ -176,9 +210,9 @@ func (a *Client) CreateFirstClassDiskSnapshot(params *CreateFirstClassDiskSnapsh
 }
 
 /*
-DeleteBlockDevice deletes a block device
+  DeleteBlockDevice deletes a block device
 
-Delete a BlockDevice
+  Delete a BlockDevice
 1. A block device cannot be deleted when attached to a machine.
 2. A block device with persistent property set to 'false' is deleted.
 3. A block device with persistent property set to 'true' needs an additional parameter 'purge' to be set to true, for deletion.
@@ -216,9 +250,9 @@ func (a *Client) DeleteBlockDevice(params *DeleteBlockDeviceParams) (*DeleteBloc
 }
 
 /*
-DeleteFirstClassDiskSnapshot deletes snapshot operation for first class disk
+  DeleteFirstClassDiskSnapshot deletes snapshot operation for first class disk
 
-Second day delete snapshot operation for first class disk
+  Second day delete snapshot operation for first class disk
 */
 func (a *Client) DeleteFirstClassDiskSnapshot(params *DeleteFirstClassDiskSnapshotParams) (*DeleteFirstClassDiskSnapshotAccepted, *DeleteFirstClassDiskSnapshotNoContent, error) {
 	// TODO: Validate the params before sending
@@ -253,9 +287,9 @@ func (a *Client) DeleteFirstClassDiskSnapshot(params *DeleteFirstClassDiskSnapsh
 }
 
 /*
-DeleteMachineDisk deletes machine disk
+  DeleteMachineDisk deletes machine disk
 
-Remove a disk from a given machine.
+  Remove a disk from a given machine.
 */
 func (a *Client) DeleteMachineDisk(params *DeleteMachineDiskParams) (*DeleteMachineDiskAccepted, *DeleteMachineDiskNoContent, error) {
 	// TODO: Validate the params before sending
@@ -290,9 +324,9 @@ func (a *Client) DeleteMachineDisk(params *DeleteMachineDiskParams) (*DeleteMach
 }
 
 /*
-GetBlockDevice gets block device
+  GetBlockDevice gets block device
 
-Get a single BlockDevice
+  Get a single BlockDevice
 */
 func (a *Client) GetBlockDevice(params *GetBlockDeviceParams) (*GetBlockDeviceOK, error) {
 	// TODO: Validate the params before sending
@@ -326,9 +360,9 @@ func (a *Client) GetBlockDevice(params *GetBlockDeviceParams) (*GetBlockDeviceOK
 }
 
 /*
-GetBlockDevices gets block devices
+  GetBlockDevices gets block devices
 
-Get all BlockDevices
+  Get all BlockDevices
 */
 func (a *Client) GetBlockDevices(params *GetBlockDevicesParams) (*GetBlockDevicesOK, error) {
 	// TODO: Validate the params before sending
@@ -362,9 +396,9 @@ func (a *Client) GetBlockDevices(params *GetBlockDevicesParams) (*GetBlockDevice
 }
 
 /*
-GetDiskSnapshot gets disk snapshot
+  GetDiskSnapshot gets disk snapshot
 
-Get snapshot with a given id for specific disk
+  Get snapshot with a given id for specific disk
 */
 func (a *Client) GetDiskSnapshot(params *GetDiskSnapshotParams) (*GetDiskSnapshotOK, error) {
 	// TODO: Validate the params before sending
@@ -398,9 +432,9 @@ func (a *Client) GetDiskSnapshot(params *GetDiskSnapshotParams) (*GetDiskSnapsho
 }
 
 /*
-GetDiskSnapshots gets disk snapshots information
+  GetDiskSnapshots gets disk snapshots information
 
-Get disk snapshots information
+  Get disk snapshots information
 */
 func (a *Client) GetDiskSnapshots(params *GetDiskSnapshotsParams) (*GetDiskSnapshotsOK, error) {
 	// TODO: Validate the params before sending
@@ -434,9 +468,9 @@ func (a *Client) GetDiskSnapshots(params *GetDiskSnapshotsParams) (*GetDiskSnaps
 }
 
 /*
-GetMachineDisk gets machine disk
+  GetMachineDisk gets machine disk
 
-Get disk with a given id for specific machine
+  Get disk with a given id for specific machine
 */
 func (a *Client) GetMachineDisk(params *GetMachineDiskParams) (*GetMachineDiskOK, error) {
 	// TODO: Validate the params before sending
@@ -470,9 +504,9 @@ func (a *Client) GetMachineDisk(params *GetMachineDiskParams) (*GetMachineDiskOK
 }
 
 /*
-GetMachineDisks gets machine disks
+  GetMachineDisks gets machine disks
 
-Get all machine disks
+  Get all machine disks
 */
 func (a *Client) GetMachineDisks(params *GetMachineDisksParams) (*GetMachineDisksOK, error) {
 	// TODO: Validate the params before sending
@@ -506,9 +540,9 @@ func (a *Client) GetMachineDisks(params *GetMachineDisksParams) (*GetMachineDisk
 }
 
 /*
-ResizeBlockDevice resizes block device
+  ResizeBlockDevice resizes block device
 
-Resize operation on block device.
+  Resize operation on block device.
 */
 func (a *Client) ResizeBlockDevice(params *ResizeBlockDeviceParams) (*ResizeBlockDeviceAccepted, *ResizeBlockDeviceNoContent, error) {
 	// TODO: Validate the params before sending
@@ -543,9 +577,9 @@ func (a *Client) ResizeBlockDevice(params *ResizeBlockDeviceParams) (*ResizeBloc
 }
 
 /*
-RevertDiskSnapshot reverts snapshot operation for disk
+  RevertDiskSnapshot reverts snapshot operation for disk
 
-Second day revert snapshot operation for disk
+  Second day revert snapshot operation for disk
 */
 func (a *Client) RevertDiskSnapshot(params *RevertDiskSnapshotParams) (*RevertDiskSnapshotOK, error) {
 	// TODO: Validate the params before sending

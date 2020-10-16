@@ -8,14 +8,14 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // FabricVsphereDatastore Represents a structure that holds details of vSphere datastore.<br>**HATEOAS** links:<br>**self** - FabricVsphereDatastore - Self link to this data store
+//
 // swagger:model FabricVsphereDatastore
 type FabricVsphereDatastore struct {
 

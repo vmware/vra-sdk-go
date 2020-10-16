@@ -9,14 +9,14 @@ import (
 	"encoding/json"
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // BlockDevice State object representing a block device.<br>**HATEOAS** links:<br>**cloud-accounts** - array[CloudAccount] - Cloud accounts where this disk is provisioned.<br>**self** - BlockDevice - Self link to this block device
+//
 // swagger:model BlockDevice
 type BlockDevice struct {
 
@@ -232,7 +232,7 @@ const (
 
 // prop value enum
 func (m *BlockDevice) validateStatusEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, blockDeviceTypeStatusPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, blockDeviceTypeStatusPropEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -306,7 +306,7 @@ const (
 
 // prop value enum
 func (m *BlockDevice) validateTypeEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, blockDeviceTypeTypePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, blockDeviceTypeTypePropEnum, true); err != nil {
 		return err
 	}
 	return nil

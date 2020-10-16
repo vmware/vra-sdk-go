@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new catalog entitlements API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,21 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-CreateEntitlementUsingPOST creates an entitlement
+// ClientService is the interface for Client methods
+type ClientService interface {
+	CreateEntitlementUsingPOST(params *CreateEntitlementUsingPOSTParams) (*CreateEntitlementUsingPOSTOK, *CreateEntitlementUsingPOSTCreated, error)
 
-Creates an entitlement for a given project.
+	DeleteEntitlementUsingDELETE(params *DeleteEntitlementUsingDELETEParams) (*DeleteEntitlementUsingDELETENoContent, error)
+
+	GetEntitlementsUsingGET(params *GetEntitlementsUsingGETParams) (*GetEntitlementsUsingGETOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  CreateEntitlementUsingPOST creates an entitlement
+
+  Creates an entitlement for a given project.
 */
 func (a *Client) CreateEntitlementUsingPOST(params *CreateEntitlementUsingPOSTParams) (*CreateEntitlementUsingPOSTOK, *CreateEntitlementUsingPOSTCreated, error) {
 	// TODO: Validate the params before sending
@@ -64,9 +74,9 @@ func (a *Client) CreateEntitlementUsingPOST(params *CreateEntitlementUsingPOSTPa
 }
 
 /*
-DeleteEntitlementUsingDELETE deletes an entitlement
+  DeleteEntitlementUsingDELETE deletes an entitlement
 
-Deletes the entitlement with the specified id.
+  Deletes the entitlement with the specified id.
 */
 func (a *Client) DeleteEntitlementUsingDELETE(params *DeleteEntitlementUsingDELETEParams) (*DeleteEntitlementUsingDELETENoContent, error) {
 	// TODO: Validate the params before sending
@@ -100,9 +110,9 @@ func (a *Client) DeleteEntitlementUsingDELETE(params *DeleteEntitlementUsingDELE
 }
 
 /*
-GetEntitlementsUsingGET returns all entitlements filtered by project Id
+  GetEntitlementsUsingGET returns all entitlements filtered by project Id
 
-Returns all entitlements (filtered by projectId).
+  Returns all entitlements (filtered by projectId).
 */
 func (a *Client) GetEntitlementsUsingGET(params *GetEntitlementsUsingGETParams) (*GetEntitlementsUsingGETOK, error) {
 	// TODO: Validate the params before sending

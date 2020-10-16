@@ -6,14 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // DataCollectorRegistration Data collector registration object.<br>The supplied data collector is an OVA tool that contains the credentials and protocols needed to create a connection between a data collector appliance on a host vCenter and a vCenter-based cloud account. . The process of deploying data collector is: <br> 1. Download the data collector ova from the "ovaLink".<br>2. Import the .ova file to the vCenter Server and start the installation.<br> 3. When asked for the key, copy and use the "key" provided.<br> 4. It takes a few minutes to detect your Data Collector after it is deployed and powered on in vCenter.
+//
 // swagger:model DataCollectorRegistration
 type DataCollectorRegistration struct {
 

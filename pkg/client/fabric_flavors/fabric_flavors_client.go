@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new fabric flavors API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,17 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-GetFabricFlavors gets fabric flavors
+// ClientService is the interface for Client methods
+type ClientService interface {
+	GetFabricFlavors(params *GetFabricFlavorsParams) (*GetFabricFlavorsOK, error)
 
-Get all fabric flavors
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  GetFabricFlavors gets fabric flavors
+
+  Get all fabric flavors
 */
 func (a *Client) GetFabricFlavors(params *GetFabricFlavorsParams) (*GetFabricFlavorsOK, error) {
 	// TODO: Validate the params before sending

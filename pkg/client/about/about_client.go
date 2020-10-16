@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new about API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,21 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-GetAboutPage gets about page
+// ClientService is the interface for Client methods
+type ClientService interface {
+	GetAboutPage(params *GetAboutPageParams) (*GetAboutPageOK, error)
 
-The page contains information about the supported API versions and the latest API version. The version parameter is optional but highly recommended.
+	GetAboutUsingGET(params *GetAboutUsingGETParams) (*GetAboutUsingGETOK, error)
+
+	GetAboutUsingGET1(params *GetAboutUsingGET1Params) (*GetAboutUsingGET1OK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  GetAboutPage gets about page
+
+  The page contains information about the supported API versions and the latest API version. The version parameter is optional but highly recommended.
 If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 Here is an example of a call which specifies the exact version you are using: `GET /iaas/api/network-profiles?apiVersion=2019-01-15`
 */
@@ -65,9 +75,9 @@ func (a *Client) GetAboutPage(params *GetAboutPageParams) (*GetAboutPageOK, erro
 }
 
 /*
-GetAboutUsingGET returns content API information
+  GetAboutUsingGET returns content API information
 
-The page contains information about the supported API versions and the latest API version. The version parameter is optional but highly recommended.
+  The page contains information about the supported API versions and the latest API version. The version parameter is optional but highly recommended.
 If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 Here is an example of a call which specifies the exact version you are using: GET /content/api/sources?apiVersion=2019-01-15
 */
@@ -103,9 +113,9 @@ func (a *Client) GetAboutUsingGET(params *GetAboutUsingGETParams) (*GetAboutUsin
 }
 
 /*
-GetAboutUsingGET1 returns blueprint API information
+  GetAboutUsingGET1 returns blueprint API information
 
-The page contains information about the supported API versions and the latest API version. The version parameter is optional but highly recommended.
+  The page contains information about the supported API versions and the latest API version. The version parameter is optional but highly recommended.
 If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 Here is an example of a call which specifies the exact version you are using: GET /blueprint/api/blueprints?apiVersion=2019-09-12
 */

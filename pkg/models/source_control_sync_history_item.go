@@ -8,14 +8,14 @@ package models
 import (
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // SourceControlSyncHistoryItem SourceControlSyncHistoryItem
+//
 // swagger:model SourceControlSyncHistoryItem
 type SourceControlSyncHistoryItem struct {
 
@@ -127,7 +127,7 @@ const (
 
 // prop value enum
 func (m *SourceControlSyncHistoryItem) validateContentTypeEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, sourceControlSyncHistoryItemTypeContentTypePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, sourceControlSyncHistoryItemTypeContentTypePropEnum, true); err != nil {
 		return err
 	}
 	return nil

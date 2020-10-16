@@ -8,14 +8,14 @@ package models
 import (
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // QueryTerm query term
+//
 // swagger:model QueryTerm
 type QueryTerm struct {
 
@@ -96,7 +96,7 @@ const (
 
 // prop value enum
 func (m *QueryTerm) validateMatchTypeEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, queryTermTypeMatchTypePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, queryTermTypeMatchTypePropEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -172,7 +172,7 @@ const (
 
 // prop value enum
 func (m *QueryTerm) validatePropertyTypeEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, queryTermTypePropertyTypePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, queryTermTypePropertyTypePropEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -233,7 +233,7 @@ const (
 
 // prop value enum
 func (m *QueryTerm) validateSortOrderEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, queryTermTypeSortOrderPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, queryTermTypeSortOrderPropEnum, true); err != nil {
 		return err
 	}
 	return nil

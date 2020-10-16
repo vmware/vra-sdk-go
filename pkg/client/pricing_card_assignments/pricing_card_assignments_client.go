@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new pricing card assignments API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,8 +25,29 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientService is the interface for Client methods
+type ClientService interface {
+	ChangeMeteringAssignmentStrategyUsingPATCH(params *ChangeMeteringAssignmentStrategyUsingPATCHParams) (*ChangeMeteringAssignmentStrategyUsingPATCHOK, error)
+
+	CreateMeteringAssignmentStrategyUsingPOST(params *CreateMeteringAssignmentStrategyUsingPOSTParams) (*CreateMeteringAssignmentStrategyUsingPOSTOK, *CreateMeteringAssignmentStrategyUsingPOSTCreated, error)
+
+	CreateMeteringPolicyAssignmentUsingPOST(params *CreateMeteringPolicyAssignmentUsingPOSTParams) (*CreateMeteringPolicyAssignmentUsingPOSTOK, *CreateMeteringPolicyAssignmentUsingPOSTCreated, error)
+
+	DeleteMeteringPolicyAssignmentUsingDELETE(params *DeleteMeteringPolicyAssignmentUsingDELETEParams) (*DeleteMeteringPolicyAssignmentUsingDELETEOK, error)
+
+	GetAllMeteringPolicyAssignmentsUsingGET(params *GetAllMeteringPolicyAssignmentsUsingGETParams) (*GetAllMeteringPolicyAssignmentsUsingGETOK, error)
+
+	GetMeteringAssignmentStrategyUsingGET(params *GetMeteringAssignmentStrategyUsingGETParams) (*GetMeteringAssignmentStrategyUsingGETOK, error)
+
+	GetMeteringPolicyAssignmentUsingGET(params *GetMeteringPolicyAssignmentUsingGETParams) (*GetMeteringPolicyAssignmentUsingGETOK, error)
+
+	PatchMeteringPolicyAssignmentUsingPATCH(params *PatchMeteringPolicyAssignmentUsingPATCHParams) (*PatchMeteringPolicyAssignmentUsingPATCHOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
 /*
-ChangeMeteringAssignmentStrategyUsingPATCH updates the pricing card assignment strategy for the org
+  ChangeMeteringAssignmentStrategyUsingPATCH updates the pricing card assignment strategy for the org
 */
 func (a *Client) ChangeMeteringAssignmentStrategyUsingPATCH(params *ChangeMeteringAssignmentStrategyUsingPATCHParams) (*ChangeMeteringAssignmentStrategyUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
@@ -61,9 +81,9 @@ func (a *Client) ChangeMeteringAssignmentStrategyUsingPATCH(params *ChangeMeteri
 }
 
 /*
-CreateMeteringAssignmentStrategyUsingPOST selectings the new pricing card assignment strategy p r o j e c t or c l o u d z o n e are possible values can be used while creating strategy also there can be only one strategy for a given org at a given point of time
+  CreateMeteringAssignmentStrategyUsingPOST selectings the new pricing card assignment strategy p r o j e c t or c l o u d z o n e are possible values can be used while creating strategy also there can be only one strategy for a given org at a given point of time
 
-Create a new pricing card assignment strategy based on request body and validate its field according to business rules.
+  Create a new pricing card assignment strategy based on request body and validate its field according to business rules.
 */
 func (a *Client) CreateMeteringAssignmentStrategyUsingPOST(params *CreateMeteringAssignmentStrategyUsingPOSTParams) (*CreateMeteringAssignmentStrategyUsingPOSTOK, *CreateMeteringAssignmentStrategyUsingPOSTCreated, error) {
 	// TODO: Validate the params before sending
@@ -98,9 +118,9 @@ func (a *Client) CreateMeteringAssignmentStrategyUsingPOST(params *CreateMeterin
 }
 
 /*
-CreateMeteringPolicyAssignmentUsingPOST creates a new pricing card assignment
+  CreateMeteringPolicyAssignmentUsingPOST creates a new pricing card assignment
 
-Create a new pricing card policy assignment based on request body and validate its field according to business rules. Request body with ALL entityType will delete the older assignments for the given pricingCardId
+  Create a new pricing card policy assignment based on request body and validate its field according to business rules. Request body with ALL entityType will delete the older assignments for the given pricingCardId
 */
 func (a *Client) CreateMeteringPolicyAssignmentUsingPOST(params *CreateMeteringPolicyAssignmentUsingPOSTParams) (*CreateMeteringPolicyAssignmentUsingPOSTOK, *CreateMeteringPolicyAssignmentUsingPOSTCreated, error) {
 	// TODO: Validate the params before sending
@@ -135,9 +155,9 @@ func (a *Client) CreateMeteringPolicyAssignmentUsingPOST(params *CreateMeteringP
 }
 
 /*
-DeleteMeteringPolicyAssignmentUsingDELETE deletes the pricing card assignment with specified id
+  DeleteMeteringPolicyAssignmentUsingDELETE deletes the pricing card assignment with specified id
 
-Deletes the pricing card assignment with the specified id
+  Deletes the pricing card assignment with the specified id
 */
 func (a *Client) DeleteMeteringPolicyAssignmentUsingDELETE(params *DeleteMeteringPolicyAssignmentUsingDELETEParams) (*DeleteMeteringPolicyAssignmentUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
@@ -171,9 +191,9 @@ func (a *Client) DeleteMeteringPolicyAssignmentUsingDELETE(params *DeleteMeterin
 }
 
 /*
-GetAllMeteringPolicyAssignmentsUsingGET fetches all pricing card assignment for private cloud
+  GetAllMeteringPolicyAssignmentsUsingGET fetches all pricing card assignment for private cloud
 
-Returns a paginated list of pricing card assignments
+  Returns a paginated list of pricing card assignments
 */
 func (a *Client) GetAllMeteringPolicyAssignmentsUsingGET(params *GetAllMeteringPolicyAssignmentsUsingGETParams) (*GetAllMeteringPolicyAssignmentsUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -207,9 +227,9 @@ func (a *Client) GetAllMeteringPolicyAssignmentsUsingGET(params *GetAllMeteringP
 }
 
 /*
-GetMeteringAssignmentStrategyUsingGET fetches pricing card assignment strategy for the org
+  GetMeteringAssignmentStrategyUsingGET fetches pricing card assignment strategy for the org
 
-Returns a pricing card assignment strategy for the Org
+  Returns a pricing card assignment strategy for the Org
 */
 func (a *Client) GetMeteringAssignmentStrategyUsingGET(params *GetMeteringAssignmentStrategyUsingGETParams) (*GetMeteringAssignmentStrategyUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -243,9 +263,9 @@ func (a *Client) GetMeteringAssignmentStrategyUsingGET(params *GetMeteringAssign
 }
 
 /*
-GetMeteringPolicyAssignmentUsingGET fetches pricing card assignment for private cloud by id
+  GetMeteringPolicyAssignmentUsingGET fetches pricing card assignment for private cloud by id
 
-Returns a pricing card assignments by id
+  Returns a pricing card assignments by id
 */
 func (a *Client) GetMeteringPolicyAssignmentUsingGET(params *GetMeteringPolicyAssignmentUsingGETParams) (*GetMeteringPolicyAssignmentUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -279,7 +299,7 @@ func (a *Client) GetMeteringPolicyAssignmentUsingGET(params *GetMeteringPolicyAs
 }
 
 /*
-PatchMeteringPolicyAssignmentUsingPATCH updates the pricing card assignment id with the supplied id request body with a l l entity type will delete the older assignments for the given pricing card Id
+  PatchMeteringPolicyAssignmentUsingPATCH updates the pricing card assignment id with the supplied id request body with a l l entity type will delete the older assignments for the given pricing card Id
 */
 func (a *Client) PatchMeteringPolicyAssignmentUsingPATCH(params *PatchMeteringPolicyAssignmentUsingPATCHParams) (*PatchMeteringPolicyAssignmentUsingPATCHOK, error) {
 	// TODO: Validate the params before sending

@@ -8,14 +8,14 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // LoadBalancer Represents a load balancer.<br>**HATEOAS** links:<br>**load-balancer-targets** - array[Machine] - List of load balancer target machines.<br>**cloud-account** - CloudAccount - Cloud account where this LB is deployed.<br>**self** - LoadBalancer - Self link to this load balancer
+//
 // swagger:model LoadBalancer
 type LoadBalancer struct {
 

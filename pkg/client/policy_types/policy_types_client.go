@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new policy types API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,19 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-GetPolicyTypeByIDUsingGET returns the policy type with the specified ID
+// ClientService is the interface for Client methods
+type ClientService interface {
+	GetPolicyTypeByIDUsingGET(params *GetPolicyTypeByIDUsingGETParams) (*GetPolicyTypeByIDUsingGETOK, error)
 
-Find a specific policy type based on the input policy type id.
+	GetTypesUsingGET1(params *GetTypesUsingGET1Params) (*GetTypesUsingGET1OK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  GetPolicyTypeByIDUsingGET returns the policy type with the specified ID
+
+  Find a specific policy type based on the input policy type id.
 */
 func (a *Client) GetPolicyTypeByIDUsingGET(params *GetPolicyTypeByIDUsingGETParams) (*GetPolicyTypeByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -63,9 +71,9 @@ func (a *Client) GetPolicyTypeByIDUsingGET(params *GetPolicyTypeByIDUsingGETPara
 }
 
 /*
-GetTypesUsingGET1 returns a paginated list of policy types
+  GetTypesUsingGET1 returns a paginated list of policy types
 
-Find all the policy types available in the current org.
+  Find all the policy types available in the current org.
 */
 func (a *Client) GetTypesUsingGET1(params *GetTypesUsingGET1Params) (*GetTypesUsingGET1OK, error) {
 	// TODO: Validate the params before sending

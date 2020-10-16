@@ -8,14 +8,14 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // FabricVsphereStoragePolicy Represents a structure that holds details of vSphere storage policy.**HATEOAS** links:<br>**self** - FabricVsphereStoragePolicy - Self link to this storage policy
+//
 // swagger:model FabricVsphereStoragePolicy
 type FabricVsphereStoragePolicy struct {
 

@@ -8,13 +8,13 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // FabricNetworkVsphereResult State object representing a query result of fabric networks.
+//
 // swagger:model FabricNetworkVsphereResult
 type FabricNetworkVsphereResult struct {
 

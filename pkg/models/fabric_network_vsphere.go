@@ -8,14 +8,14 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // FabricNetworkVsphere State object representing a vSphere network on a external cloud provider.<br>**domain** - domain for the vSphere network.<br>**defaultGateway** - default IPv4 gateway for the vSphere network.<br>**defaultIPv6Gateway** - default IPv6 gateway for the vSphere network.<br>**dnsServerAddresses** - list of dns server address for the vSphere network.<br>**dnsSearchDomains** - ist of dns search domains for the vSphere network
+//
 // swagger:model FabricNetworkVsphere
 type FabricNetworkVsphere struct {
 

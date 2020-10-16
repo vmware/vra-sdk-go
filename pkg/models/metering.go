@@ -8,14 +8,14 @@ package models
 import (
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // Metering Metering
+//
 // swagger:model Metering
 type Metering struct {
 
@@ -83,7 +83,7 @@ const (
 
 // prop value enum
 func (m *Metering) validateChargeBasedOnEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, meteringTypeChargeBasedOnPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, meteringTypeChargeBasedOnPropEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -129,7 +129,7 @@ const (
 
 // prop value enum
 func (m *Metering) validateChargeOnPowerStateEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, meteringTypeChargeOnPowerStatePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, meteringTypeChargeOnPowerStatePropEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -178,7 +178,7 @@ const (
 
 // prop value enum
 func (m *Metering) validateChargePeriodEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, meteringTypeChargePeriodPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, meteringTypeChargePeriodPropEnum, true); err != nil {
 		return err
 	}
 	return nil

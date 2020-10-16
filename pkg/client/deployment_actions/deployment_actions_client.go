@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new deployment actions API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,8 +25,27 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientService is the interface for Client methods
+type ClientService interface {
+	ActionDeploymentRequestUsingPOST(params *ActionDeploymentRequestUsingPOSTParams) (*ActionDeploymentRequestUsingPOSTOK, error)
+
+	GetDeploymentActionUsingGET(params *GetDeploymentActionUsingGETParams) (*GetDeploymentActionUsingGETOK, error)
+
+	GetDeploymentActionsUsingGET(params *GetDeploymentActionsUsingGETParams) (*GetDeploymentActionsUsingGETOK, error)
+
+	GetResourceActionUsingGET(params *GetResourceActionUsingGETParams) (*GetResourceActionUsingGETOK, error)
+
+	GetResourceActionsUsingGET(params *GetResourceActionsUsingGETParams) (*GetResourceActionsUsingGETOK, error)
+
+	SubmitDeploymentActionRequestUsingPOST(params *SubmitDeploymentActionRequestUsingPOSTParams) (*SubmitDeploymentActionRequestUsingPOSTOK, error)
+
+	SubmitResourceActionRequestUsingPOST(params *SubmitResourceActionRequestUsingPOSTParams) (*SubmitResourceActionRequestUsingPOSTOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
 /*
-ActionDeploymentRequestUsingPOST submits action on requests allowable values cancel dismiss cancel can be submitted on in progress requests and dismiss can be submitted on failed requests
+  ActionDeploymentRequestUsingPOST submits action on requests allowable values cancel dismiss cancel can be submitted on in progress requests and dismiss can be submitted on failed requests
 */
 func (a *Client) ActionDeploymentRequestUsingPOST(params *ActionDeploymentRequestUsingPOSTParams) (*ActionDeploymentRequestUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -61,9 +79,9 @@ func (a *Client) ActionDeploymentRequestUsingPOST(params *ActionDeploymentReques
 }
 
 /*
-GetDeploymentActionUsingGET fetches deployment action
+  GetDeploymentActionUsingGET fetches deployment action
 
-Returns an action for the deployment specified by its Deployment ID and Action ID.
+  Returns an action for the deployment specified by its Deployment ID and Action ID.
 */
 func (a *Client) GetDeploymentActionUsingGET(params *GetDeploymentActionUsingGETParams) (*GetDeploymentActionUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -97,9 +115,9 @@ func (a *Client) GetDeploymentActionUsingGET(params *GetDeploymentActionUsingGET
 }
 
 /*
-GetDeploymentActionsUsingGET fetches deployment available actions
+  GetDeploymentActionsUsingGET fetches deployment available actions
 
-Returns the complete list of available actions that can be performed on a given deployment.
+  Returns the complete list of available actions that can be performed on a given deployment.
 */
 func (a *Client) GetDeploymentActionsUsingGET(params *GetDeploymentActionsUsingGETParams) (*GetDeploymentActionsUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -133,9 +151,9 @@ func (a *Client) GetDeploymentActionsUsingGET(params *GetDeploymentActionsUsingG
 }
 
 /*
-GetResourceActionUsingGET fetches resource action
+  GetResourceActionUsingGET fetches resource action
 
-Returns an action for the resource specified by its Resource ID and Action ID.
+  Returns an action for the resource specified by its Resource ID and Action ID.
 */
 func (a *Client) GetResourceActionUsingGET(params *GetResourceActionUsingGETParams) (*GetResourceActionUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -169,9 +187,9 @@ func (a *Client) GetResourceActionUsingGET(params *GetResourceActionUsingGETPara
 }
 
 /*
-GetResourceActionsUsingGET fetches available resource actions
+  GetResourceActionsUsingGET fetches available resource actions
 
-Returns the complete list of available actions that can be performed on a given resource.
+  Returns the complete list of available actions that can be performed on a given resource.
 */
 func (a *Client) GetResourceActionsUsingGET(params *GetResourceActionsUsingGETParams) (*GetResourceActionsUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -205,9 +223,9 @@ func (a *Client) GetResourceActionsUsingGET(params *GetResourceActionsUsingGETPa
 }
 
 /*
-SubmitDeploymentActionRequestUsingPOST deployments action request
+  SubmitDeploymentActionRequestUsingPOST deployments action request
 
-Submit a deployment action request
+  Submit a deployment action request
 */
 func (a *Client) SubmitDeploymentActionRequestUsingPOST(params *SubmitDeploymentActionRequestUsingPOSTParams) (*SubmitDeploymentActionRequestUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -241,9 +259,9 @@ func (a *Client) SubmitDeploymentActionRequestUsingPOST(params *SubmitDeployment
 }
 
 /*
-SubmitResourceActionRequestUsingPOST resources action request
+  SubmitResourceActionRequestUsingPOST resources action request
 
-Submit a resource action request.
+  Submit a resource action request.
 */
 func (a *Client) SubmitResourceActionRequestUsingPOST(params *SubmitResourceActionRequestUsingPOSTParams) (*SubmitResourceActionRequestUsingPOSTOK, error) {
 	// TODO: Validate the params before sending

@@ -8,8 +8,7 @@ package client
 import (
 	"github.com/go-openapi/runtime"
 	httptransport "github.com/go-openapi/runtime/client"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 
 	"github.com/vmware/vra-sdk-go/pkg/client/about"
 	"github.com/vmware/vra-sdk-go/pkg/client/blueprint"
@@ -65,7 +64,7 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/tags"
 )
 
-// Default vmware cloud assembly iaas  HTTP client.
+// Default vmware cloud assembly iaas  API HTTP client.
 var Default = NewHTTPClient(nil)
 
 const (
@@ -80,12 +79,12 @@ const (
 // DefaultSchemes are the default schemes found in Meta (info) section of spec file
 var DefaultSchemes = []string{"https"}
 
-// NewHTTPClient creates a new vmware cloud assembly iaas  HTTP client.
+// NewHTTPClient creates a new vmware cloud assembly iaas  API HTTP client.
 func NewHTTPClient(formats strfmt.Registry) *MulticloudIaaS {
 	return NewHTTPClientWithConfig(formats, nil)
 }
 
-// NewHTTPClientWithConfig creates a new vmware cloud assembly iaas  HTTP client,
+// NewHTTPClientWithConfig creates a new vmware cloud assembly iaas  API HTTP client,
 // using a customizable transport config.
 func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *MulticloudIaaS {
 	// ensure nullable parameters have default
@@ -98,7 +97,7 @@ func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *Mul
 	return New(transport, formats)
 }
 
-// New creates a new vmware cloud assembly iaas  client
+// New creates a new vmware cloud assembly iaas  API client
 func New(transport runtime.ClientTransport, formats strfmt.Registry) *MulticloudIaaS {
 	// ensure nullable parameters have default
 	if formats == nil {
@@ -107,111 +106,58 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 
 	cli := new(MulticloudIaaS)
 	cli.Transport = transport
-
 	cli.About = about.New(transport, formats)
-
 	cli.Blueprint = blueprint.New(transport, formats)
-
 	cli.BlueprintRequests = blueprint_requests.New(transport, formats)
-
 	cli.BlueprintValidation = blueprint_validation.New(transport, formats)
-
 	cli.CatalogAdminItems = catalog_admin_items.New(transport, formats)
-
 	cli.CatalogEntitlements = catalog_entitlements.New(transport, formats)
-
 	cli.CatalogItemTypes = catalog_item_types.New(transport, formats)
-
 	cli.CatalogItems = catalog_items.New(transport, formats)
-
 	cli.CatalogSources = catalog_sources.New(transport, formats)
-
 	cli.CloudAccount = cloud_account.New(transport, formats)
-
 	cli.Compute = compute.New(transport, formats)
-
 	cli.ComputeGateway = compute_gateway.New(transport, formats)
-
 	cli.ContentSource = content_source.New(transport, formats)
-
 	cli.DataCollector = data_collector.New(transport, formats)
-
 	cli.Deployment = deployment.New(transport, formats)
-
 	cli.DeploymentActions = deployment_actions.New(transport, formats)
-
 	cli.DeploymentEvents = deployment_events.New(transport, formats)
-
 	cli.Deployments = deployments.New(transport, formats)
-
 	cli.Disk = disk.New(transport, formats)
-
 	cli.FabricawsVolumeTypes = fabric_aws_volume_types.New(transport, formats)
-
 	cli.FabricAzureStorageAccount = fabric_azure_storage_account.New(transport, formats)
-
 	cli.FabricCompute = fabric_compute.New(transport, formats)
-
 	cli.FabricFlavors = fabric_flavors.New(transport, formats)
-
 	cli.FabricImages = fabric_images.New(transport, formats)
-
 	cli.FabricNetwork = fabric_network.New(transport, formats)
-
 	cli.FabricvSphereDatastore = fabric_vsphere_datastore.New(transport, formats)
-
 	cli.FabricvSphereStoragePolicies = fabric_vsphere_storage_policies.New(transport, formats)
-
 	cli.FlavorProfile = flavor_profile.New(transport, formats)
-
 	cli.Flavors = flavors.New(transport, formats)
-
 	cli.Icons = icons.New(transport, formats)
-
 	cli.ImageProfile = image_profile.New(transport, formats)
-
 	cli.Images = images.New(transport, formats)
-
 	cli.LoadBalancer = load_balancer.New(transport, formats)
-
 	cli.Location = location.New(transport, formats)
-
 	cli.Login = login.New(transport, formats)
-
 	cli.Marketplace = marketplace.New(transport, formats)
-
 	cli.MarketplaceDownloads = marketplace_downloads.New(transport, formats)
-
 	cli.Network = network.New(transport, formats)
-
 	cli.NetworkIPRange = network_ip_range.New(transport, formats)
-
 	cli.NetworkProfile = network_profile.New(transport, formats)
-
 	cli.Policies = policies.New(transport, formats)
-
 	cli.PolicyDecisions = policy_decisions.New(transport, formats)
-
 	cli.PolicyTypes = policy_types.New(transport, formats)
-
 	cli.PricingCardAssignments = pricing_card_assignments.New(transport, formats)
-
 	cli.PricingCards = pricing_cards.New(transport, formats)
-
 	cli.Project = project.New(transport, formats)
-
 	cli.Request = request.New(transport, formats)
-
 	cli.ResourceTypes = resource_types.New(transport, formats)
-
 	cli.SecurityGroup = security_group.New(transport, formats)
-
 	cli.SourceControlSync = source_control_sync.New(transport, formats)
-
 	cli.StorageProfile = storage_profile.New(transport, formats)
-
 	cli.Tags = tags.New(transport, formats)
-
 	return cli
 }
 
@@ -254,111 +200,111 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 	return cfg
 }
 
-// MulticloudIaaS is a client for vmware cloud assembly iaas 
+// MulticloudIaaS is a client for vmware cloud assembly iaas  API
 type MulticloudIaaS struct {
-	About *about.Client
+	About about.ClientService
 
-	Blueprint *blueprint.Client
+	Blueprint blueprint.ClientService
 
-	BlueprintRequests *blueprint_requests.Client
+	BlueprintRequests blueprint_requests.ClientService
 
-	BlueprintValidation *blueprint_validation.Client
+	BlueprintValidation blueprint_validation.ClientService
 
-	CatalogAdminItems *catalog_admin_items.Client
+	CatalogAdminItems catalog_admin_items.ClientService
 
-	CatalogEntitlements *catalog_entitlements.Client
+	CatalogEntitlements catalog_entitlements.ClientService
 
-	CatalogItemTypes *catalog_item_types.Client
+	CatalogItemTypes catalog_item_types.ClientService
 
-	CatalogItems *catalog_items.Client
+	CatalogItems catalog_items.ClientService
 
-	CatalogSources *catalog_sources.Client
+	CatalogSources catalog_sources.ClientService
 
-	CloudAccount *cloud_account.Client
+	CloudAccount cloud_account.ClientService
 
-	Compute *compute.Client
+	Compute compute.ClientService
 
-	ComputeGateway *compute_gateway.Client
+	ComputeGateway compute_gateway.ClientService
 
-	ContentSource *content_source.Client
+	ContentSource content_source.ClientService
 
-	DataCollector *data_collector.Client
+	DataCollector data_collector.ClientService
 
-	Deployment *deployment.Client
+	Deployment deployment.ClientService
 
-	DeploymentActions *deployment_actions.Client
+	DeploymentActions deployment_actions.ClientService
 
-	DeploymentEvents *deployment_events.Client
+	DeploymentEvents deployment_events.ClientService
 
-	Deployments *deployments.Client
+	Deployments deployments.ClientService
 
-	Disk *disk.Client
+	Disk disk.ClientService
 
-	FabricawsVolumeTypes *fabric_aws_volume_types.Client
+	FabricawsVolumeTypes fabric_aws_volume_types.ClientService
 
-	FabricAzureStorageAccount *fabric_azure_storage_account.Client
+	FabricAzureStorageAccount fabric_azure_storage_account.ClientService
 
-	FabricCompute *fabric_compute.Client
+	FabricCompute fabric_compute.ClientService
 
-	FabricFlavors *fabric_flavors.Client
+	FabricFlavors fabric_flavors.ClientService
 
-	FabricImages *fabric_images.Client
+	FabricImages fabric_images.ClientService
 
-	FabricNetwork *fabric_network.Client
+	FabricNetwork fabric_network.ClientService
 
-	FabricvSphereDatastore *fabric_vsphere_datastore.Client
+	FabricvSphereDatastore fabric_vsphere_datastore.ClientService
 
-	FabricvSphereStoragePolicies *fabric_vsphere_storage_policies.Client
+	FabricvSphereStoragePolicies fabric_vsphere_storage_policies.ClientService
 
-	FlavorProfile *flavor_profile.Client
+	FlavorProfile flavor_profile.ClientService
 
-	Flavors *flavors.Client
+	Flavors flavors.ClientService
 
-	Icons *icons.Client
+	Icons icons.ClientService
 
-	ImageProfile *image_profile.Client
+	ImageProfile image_profile.ClientService
 
-	Images *images.Client
+	Images images.ClientService
 
-	LoadBalancer *load_balancer.Client
+	LoadBalancer load_balancer.ClientService
 
-	Location *location.Client
+	Location location.ClientService
 
-	Login *login.Client
+	Login login.ClientService
 
-	Marketplace *marketplace.Client
+	Marketplace marketplace.ClientService
 
-	MarketplaceDownloads *marketplace_downloads.Client
+	MarketplaceDownloads marketplace_downloads.ClientService
 
-	Network *network.Client
+	Network network.ClientService
 
-	NetworkIPRange *network_ip_range.Client
+	NetworkIPRange network_ip_range.ClientService
 
-	NetworkProfile *network_profile.Client
+	NetworkProfile network_profile.ClientService
 
-	Policies *policies.Client
+	Policies policies.ClientService
 
-	PolicyDecisions *policy_decisions.Client
+	PolicyDecisions policy_decisions.ClientService
 
-	PolicyTypes *policy_types.Client
+	PolicyTypes policy_types.ClientService
 
-	PricingCardAssignments *pricing_card_assignments.Client
+	PricingCardAssignments pricing_card_assignments.ClientService
 
-	PricingCards *pricing_cards.Client
+	PricingCards pricing_cards.ClientService
 
-	Project *project.Client
+	Project project.ClientService
 
-	Request *request.Client
+	Request request.ClientService
 
-	ResourceTypes *resource_types.Client
+	ResourceTypes resource_types.ClientService
 
-	SecurityGroup *security_group.Client
+	SecurityGroup security_group.ClientService
 
-	SourceControlSync *source_control_sync.Client
+	SourceControlSync source_control_sync.ClientService
 
-	StorageProfile *storage_profile.Client
+	StorageProfile storage_profile.ClientService
 
-	Tags *tags.Client
+	Tags tags.ClientService
 
 	Transport runtime.ClientTransport
 }
@@ -366,109 +312,56 @@ type MulticloudIaaS struct {
 // SetTransport changes the transport on the client and all its subresources
 func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
-
 	c.About.SetTransport(transport)
-
 	c.Blueprint.SetTransport(transport)
-
 	c.BlueprintRequests.SetTransport(transport)
-
 	c.BlueprintValidation.SetTransport(transport)
-
 	c.CatalogAdminItems.SetTransport(transport)
-
 	c.CatalogEntitlements.SetTransport(transport)
-
 	c.CatalogItemTypes.SetTransport(transport)
-
 	c.CatalogItems.SetTransport(transport)
-
 	c.CatalogSources.SetTransport(transport)
-
 	c.CloudAccount.SetTransport(transport)
-
 	c.Compute.SetTransport(transport)
-
 	c.ComputeGateway.SetTransport(transport)
-
 	c.ContentSource.SetTransport(transport)
-
 	c.DataCollector.SetTransport(transport)
-
 	c.Deployment.SetTransport(transport)
-
 	c.DeploymentActions.SetTransport(transport)
-
 	c.DeploymentEvents.SetTransport(transport)
-
 	c.Deployments.SetTransport(transport)
-
 	c.Disk.SetTransport(transport)
-
 	c.FabricawsVolumeTypes.SetTransport(transport)
-
 	c.FabricAzureStorageAccount.SetTransport(transport)
-
 	c.FabricCompute.SetTransport(transport)
-
 	c.FabricFlavors.SetTransport(transport)
-
 	c.FabricImages.SetTransport(transport)
-
 	c.FabricNetwork.SetTransport(transport)
-
 	c.FabricvSphereDatastore.SetTransport(transport)
-
 	c.FabricvSphereStoragePolicies.SetTransport(transport)
-
 	c.FlavorProfile.SetTransport(transport)
-
 	c.Flavors.SetTransport(transport)
-
 	c.Icons.SetTransport(transport)
-
 	c.ImageProfile.SetTransport(transport)
-
 	c.Images.SetTransport(transport)
-
 	c.LoadBalancer.SetTransport(transport)
-
 	c.Location.SetTransport(transport)
-
 	c.Login.SetTransport(transport)
-
 	c.Marketplace.SetTransport(transport)
-
 	c.MarketplaceDownloads.SetTransport(transport)
-
 	c.Network.SetTransport(transport)
-
 	c.NetworkIPRange.SetTransport(transport)
-
 	c.NetworkProfile.SetTransport(transport)
-
 	c.Policies.SetTransport(transport)
-
 	c.PolicyDecisions.SetTransport(transport)
-
 	c.PolicyTypes.SetTransport(transport)
-
 	c.PricingCardAssignments.SetTransport(transport)
-
 	c.PricingCards.SetTransport(transport)
-
 	c.Project.SetTransport(transport)
-
 	c.Request.SetTransport(transport)
-
 	c.ResourceTypes.SetTransport(transport)
-
 	c.SecurityGroup.SetTransport(transport)
-
 	c.SourceControlSync.SetTransport(transport)
-
 	c.StorageProfile.SetTransport(transport)
-
 	c.Tags.SetTransport(transport)
-
 }

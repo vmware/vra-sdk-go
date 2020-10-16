@@ -8,9 +8,8 @@ package models
 import (
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
@@ -18,6 +17,7 @@ import (
 // Resource Resource
 //
 // A resource part of a deployment.
+//
 // swagger:model Resource
 type Resource struct {
 
@@ -179,7 +179,7 @@ const (
 
 // prop value enum
 func (m *Resource) validateStateEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, resourceTypeStatePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, resourceTypeStatePropEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -225,7 +225,7 @@ const (
 
 // prop value enum
 func (m *Resource) validateSyncStatusEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, resourceTypeSyncStatusPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, resourceTypeSyncStatusPropEnum, true); err != nil {
 		return err
 	}
 	return nil

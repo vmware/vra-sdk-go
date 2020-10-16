@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new pricing cards API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,25 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-CreatePolicyUsingPOST creates a new pricing card
+// ClientService is the interface for Client methods
+type ClientService interface {
+	CreatePolicyUsingPOST(params *CreatePolicyUsingPOSTParams) (*CreatePolicyUsingPOSTOK, *CreatePolicyUsingPOSTCreated, error)
 
-Create a new pricing card based on request body and validate its field according to business rules.
+	DeletePolicyUsingDELETE(params *DeletePolicyUsingDELETEParams) (*DeletePolicyUsingDELETEOK, *DeletePolicyUsingDELETENoContent, error)
+
+	GetPoliciesUsingGET(params *GetPoliciesUsingGETParams) (*GetPoliciesUsingGETOK, error)
+
+	GetPolicyUsingGET(params *GetPolicyUsingGETParams) (*GetPolicyUsingGETOK, error)
+
+	UpdatePolicyUsingPUT(params *UpdatePolicyUsingPUTParams) (*UpdatePolicyUsingPUTOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  CreatePolicyUsingPOST creates a new pricing card
+
+  Create a new pricing card based on request body and validate its field according to business rules.
 */
 func (a *Client) CreatePolicyUsingPOST(params *CreatePolicyUsingPOSTParams) (*CreatePolicyUsingPOSTOK, *CreatePolicyUsingPOSTCreated, error) {
 	// TODO: Validate the params before sending
@@ -64,9 +78,9 @@ func (a *Client) CreatePolicyUsingPOST(params *CreatePolicyUsingPOSTParams) (*Cr
 }
 
 /*
-DeletePolicyUsingDELETE deletes the pricing card with specified Id
+  DeletePolicyUsingDELETE deletes the pricing card with specified Id
 
-Deletes the pricing card with the specified id
+  Deletes the pricing card with the specified id
 */
 func (a *Client) DeletePolicyUsingDELETE(params *DeletePolicyUsingDELETEParams) (*DeletePolicyUsingDELETEOK, *DeletePolicyUsingDELETENoContent, error) {
 	// TODO: Validate the params before sending
@@ -101,9 +115,9 @@ func (a *Client) DeletePolicyUsingDELETE(params *DeletePolicyUsingDELETEParams) 
 }
 
 /*
-GetPoliciesUsingGET fetches all pricing cards for private policy cloud
+  GetPoliciesUsingGET fetches all pricing cards for private policy cloud
 
-Returns a paginated list of pricing cards
+  Returns a paginated list of pricing cards
 */
 func (a *Client) GetPoliciesUsingGET(params *GetPoliciesUsingGETParams) (*GetPoliciesUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -137,9 +151,9 @@ func (a *Client) GetPoliciesUsingGET(params *GetPoliciesUsingGETParams) (*GetPol
 }
 
 /*
-GetPolicyUsingGET finds the pricing card with specified Id
+  GetPolicyUsingGET finds the pricing card with specified Id
 
-Returns the pricing card with the specified id
+  Returns the pricing card with the specified id
 */
 func (a *Client) GetPolicyUsingGET(params *GetPolicyUsingGETParams) (*GetPolicyUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -173,9 +187,9 @@ func (a *Client) GetPolicyUsingGET(params *GetPolicyUsingGETParams) (*GetPolicyU
 }
 
 /*
-UpdatePolicyUsingPUT updates the pricing card
+  UpdatePolicyUsingPUT updates the pricing card
 
-Updates the pricing card with the specified Id
+  Updates the pricing card with the specified Id
 */
 func (a *Client) UpdatePolicyUsingPUT(params *UpdatePolicyUsingPUTParams) (*UpdatePolicyUsingPUTOK, error) {
 	// TODO: Validate the params before sending

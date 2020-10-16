@@ -6,5 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 // Annotation annotation
+//
 // swagger:model Annotation
 type Annotation interface{}

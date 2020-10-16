@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new fabric a w s volume types API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,17 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-GetFabricAwsVolumeTypes gets fabric a w s volume types
+// ClientService is the interface for Client methods
+type ClientService interface {
+	GetFabricAwsVolumeTypes(params *GetFabricAwsVolumeTypesParams) (*GetFabricAwsVolumeTypesOK, error)
 
-Get all fabric AWS volume types.
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  GetFabricAwsVolumeTypes gets fabric a w s volume types
+
+  Get all fabric AWS volume types.
 */
 func (a *Client) GetFabricAwsVolumeTypes(params *GetFabricAwsVolumeTypesParams) (*GetFabricAwsVolumeTypesOK, error) {
 	// TODO: Validate the params before sending

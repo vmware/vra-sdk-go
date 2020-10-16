@@ -8,13 +8,13 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // ProjectResourceMetadata Represents the resource metadata associated with a project
+//
 // swagger:model ProjectResourceMetadata
 type ProjectResourceMetadata struct {
 

@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new marketplace API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,8 +25,25 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientService is the interface for Client methods
+type ClientService interface {
+	FilterItemsUsingGET(params *FilterItemsUsingGETParams) (*FilterItemsUsingGETOK, error)
+
+	FiltersUsingGET(params *FiltersUsingGETParams) (*FiltersUsingGETOK, error)
+
+	GetDetails(params *GetDetailsParams) (*GetDetailsOK, error)
+
+	GetLink(params *GetLinkParams) (*GetLinkOK, error)
+
+	GetReviews(params *GetReviewsParams) (*GetReviewsOK, error)
+
+	Search(params *SearchParams) (*SearchOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
 /*
-FilterItemsUsingGET lists filter entries for a filter
+  FilterItemsUsingGET lists filter entries for a filter
 */
 func (a *Client) FilterItemsUsingGET(params *FilterItemsUsingGETParams) (*FilterItemsUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -61,7 +77,7 @@ func (a *Client) FilterItemsUsingGET(params *FilterItemsUsingGETParams) (*Filter
 }
 
 /*
-FiltersUsingGET lists filters by endpoint
+  FiltersUsingGET lists filters by endpoint
 */
 func (a *Client) FiltersUsingGET(params *FiltersUsingGETParams) (*FiltersUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -95,7 +111,7 @@ func (a *Client) FiltersUsingGET(params *FiltersUsingGETParams) (*FiltersUsingGE
 }
 
 /*
-GetDetails gets content details
+  GetDetails gets content details
 */
 func (a *Client) GetDetails(params *GetDetailsParams) (*GetDetailsOK, error) {
 	// TODO: Validate the params before sending
@@ -129,7 +145,7 @@ func (a *Client) GetDetails(params *GetDetailsParams) (*GetDetailsOK, error) {
 }
 
 /*
-GetLink gets link to the content
+  GetLink gets link to the content
 */
 func (a *Client) GetLink(params *GetLinkParams) (*GetLinkOK, error) {
 	// TODO: Validate the params before sending
@@ -163,7 +179,7 @@ func (a *Client) GetLink(params *GetLinkParams) (*GetLinkOK, error) {
 }
 
 /*
-GetReviews gets reviews for the content
+  GetReviews gets reviews for the content
 */
 func (a *Client) GetReviews(params *GetReviewsParams) (*GetReviewsOK, error) {
 	// TODO: Validate the params before sending
@@ -197,7 +213,7 @@ func (a *Client) GetReviews(params *GetReviewsParams) (*GetReviewsOK, error) {
 }
 
 /*
-Search searches for content based on the search term
+  Search searches for content based on the search term
 */
 func (a *Client) Search(params *SearchParams) (*SearchOK, error) {
 	// TODO: Validate the params before sending

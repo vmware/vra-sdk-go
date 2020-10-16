@@ -9,14 +9,14 @@ import (
 	"encoding/json"
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // NetworkIPRange State object representing an IP address range for a Fabric Network.<br>**HATEOAS** links:<br>**region** - Region - Region for the network.<br>**self** - NetworkIPRange - Self link to this IP address range
+//
 // swagger:model NetworkIPRange
 type NetworkIPRange struct {
 
@@ -161,7 +161,7 @@ const (
 
 // prop value enum
 func (m *NetworkIPRange) validateIPVersionEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, networkIpRangeTypeIPVersionPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, networkIpRangeTypeIPVersionPropEnum, true); err != nil {
 		return err
 	}
 	return nil

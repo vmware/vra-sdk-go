@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new policies API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,23 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-CreatePolicyUsingPOST1 creates a policy
+// ClientService is the interface for Client methods
+type ClientService interface {
+	CreatePolicyUsingPOST1(params *CreatePolicyUsingPOST1Params) (*CreatePolicyUsingPOST1OK, error)
 
-Create a new policy based on request body and validate its field according to business rules.
+	DeletePolicyUsingDELETE1(params *DeletePolicyUsingDELETE1Params) (*DeletePolicyUsingDELETE1NoContent, error)
+
+	GetPoliciesUsingGET1(params *GetPoliciesUsingGET1Params) (*GetPoliciesUsingGET1OK, error)
+
+	GetPolicyUsingGET1(params *GetPolicyUsingGET1Params) (*GetPolicyUsingGET1OK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  CreatePolicyUsingPOST1 creates a policy
+
+  Create a new policy based on request body and validate its field according to business rules.
 */
 func (a *Client) CreatePolicyUsingPOST1(params *CreatePolicyUsingPOST1Params) (*CreatePolicyUsingPOST1OK, error) {
 	// TODO: Validate the params before sending
@@ -63,9 +75,9 @@ func (a *Client) CreatePolicyUsingPOST1(params *CreatePolicyUsingPOST1Params) (*
 }
 
 /*
-DeletePolicyUsingDELETE1 deletes a policy
+  DeletePolicyUsingDELETE1 deletes a policy
 
-Delete a specified policy corresponding to its unique id.
+  Delete a specified policy corresponding to its unique id.
 */
 func (a *Client) DeletePolicyUsingDELETE1(params *DeletePolicyUsingDELETE1Params) (*DeletePolicyUsingDELETE1NoContent, error) {
 	// TODO: Validate the params before sending
@@ -99,9 +111,9 @@ func (a *Client) DeletePolicyUsingDELETE1(params *DeletePolicyUsingDELETE1Params
 }
 
 /*
-GetPoliciesUsingGET1 returns a paginated list of policies
+  GetPoliciesUsingGET1 returns a paginated list of policies
 
-Find all the policies associated with current org.
+  Find all the policies associated with current org.
 */
 func (a *Client) GetPoliciesUsingGET1(params *GetPoliciesUsingGET1Params) (*GetPoliciesUsingGET1OK, error) {
 	// TODO: Validate the params before sending
@@ -135,9 +147,9 @@ func (a *Client) GetPoliciesUsingGET1(params *GetPoliciesUsingGET1Params) (*GetP
 }
 
 /*
-GetPolicyUsingGET1 returns a specified policy
+  GetPolicyUsingGET1 returns a specified policy
 
-Find a specific policy based on the input policy id.
+  Find a specific policy based on the input policy id.
 */
 func (a *Client) GetPolicyUsingGET1(params *GetPolicyUsingGET1Params) (*GetPolicyUsingGET1OK, error) {
 	// TODO: Validate the params before sending

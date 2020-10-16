@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new catalog item types API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,19 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-GetTypeByIDUsingGET fetches catalog item type associated with the specified ID
+// ClientService is the interface for Client methods
+type ClientService interface {
+	GetTypeByIDUsingGET(params *GetTypeByIDUsingGETParams) (*GetTypeByIDUsingGETOK, error)
 
-Returns the Catalog Item Type with the specified ID.
+	GetTypesUsingGET(params *GetTypesUsingGETParams) (*GetTypesUsingGETOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  GetTypeByIDUsingGET fetches catalog item type associated with the specified ID
+
+  Returns the Catalog Item Type with the specified ID.
 */
 func (a *Client) GetTypeByIDUsingGET(params *GetTypeByIDUsingGETParams) (*GetTypeByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -63,9 +71,9 @@ func (a *Client) GetTypeByIDUsingGET(params *GetTypeByIDUsingGETParams) (*GetTyp
 }
 
 /*
-GetTypesUsingGET finds all catalog item types
+  GetTypesUsingGET finds all catalog item types
 
-Returns a paginated list of all available Catalog Item Types.
+  Returns a paginated list of all available Catalog Item Types.
 */
 func (a *Client) GetTypesUsingGET(params *GetTypesUsingGETParams) (*GetTypesUsingGETOK, error) {
 	// TODO: Validate the params before sending

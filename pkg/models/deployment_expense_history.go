@@ -9,9 +9,8 @@ import (
 	"encoding/json"
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
@@ -19,6 +18,7 @@ import (
 // DeploymentExpenseHistory DeploymentExpenseHistory
 //
 // Expense history of a deployment.
+//
 // swagger:model DeploymentExpenseHistory
 type DeploymentExpenseHistory struct {
 
@@ -105,7 +105,7 @@ const (
 
 // prop value enum
 func (m *DeploymentExpenseHistory) validateIntervalEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, deploymentExpenseHistoryTypeIntervalPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, deploymentExpenseHistoryTypeIntervalPropEnum, true); err != nil {
 		return err
 	}
 	return nil

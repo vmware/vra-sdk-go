@@ -8,14 +8,14 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // CloudAccount State object representing a cloud account.<br><br>A cloud account identifies a cloud account type and an account-specific deployment region or data center where the associated cloud account resources are hosted.<br>**HATEOAS** links:<br>**associated-cloud-accounts** - array[CloudAccount] - Cloud accounts associated to this cloud account. For example an NSX endpoint linked to a vSphere cloud account.<br>**regions** - array[Region] - List of regions that are enabled for this cloud account.<br>**self** - CloudAccount - Self link to this cloud account
+//
 // swagger:model CloudAccount
 type CloudAccount struct {
 

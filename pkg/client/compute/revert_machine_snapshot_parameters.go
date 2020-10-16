@@ -13,8 +13,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // NewRevertMachineSnapshotParams creates a new RevertMachineSnapshotParams object
@@ -70,7 +69,7 @@ type RevertMachineSnapshotParams struct {
 	  The id of the Machine.
 
 	*/
-	ID string
+	PathID string
 	/*ID
 	  Snapshot id to revert.
 
@@ -126,15 +125,15 @@ func (o *RevertMachineSnapshotParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
-// WithID adds the id to the revert machine snapshot params
-func (o *RevertMachineSnapshotParams) WithID(id string) *RevertMachineSnapshotParams {
-	o.SetID(id)
+// WithPathID adds the id to the revert machine snapshot params
+func (o *RevertMachineSnapshotParams) WithPathID(id string) *RevertMachineSnapshotParams {
+	o.SetPathID(id)
 	return o
 }
 
-// SetID adds the id to the revert machine snapshot params
-func (o *RevertMachineSnapshotParams) SetID(id string) {
-	o.ID = id
+// SetPathID adds the id to the revert machine snapshot params
+func (o *RevertMachineSnapshotParams) SetPathID(id string) {
+	o.PathID = id
 }
 
 // WithQueryID adds the id to the revert machine snapshot params
@@ -173,7 +172,7 @@ func (o *RevertMachineSnapshotParams) WriteToRequest(r runtime.ClientRequest, re
 	}
 
 	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
+	if err := r.SetPathParam("id", o.PathID); err != nil {
 		return err
 	}
 

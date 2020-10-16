@@ -8,14 +8,14 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // Zone Description of a compute placement zone.  This can be used to specify a subset of compute resources within a region where machines can be placed. <br>**HATEOAS** links:<br>**region** - Region - Region for the zone.<br>**computes** - Computes - Computes for the zone. <br>**cloud-account** - CloudAccount - The cloud account that the zone belongs to.<br>**self** - Zone - Self link to this zone
+//
 // swagger:model Zone
 type Zone struct {
 

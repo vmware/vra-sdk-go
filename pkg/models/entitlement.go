@@ -6,9 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
@@ -16,6 +15,7 @@ import (
 // Entitlement Entitlement
 //
 // Represents an entitlement that is configured by admins to enforce user access to catalog items, services, etc., within their own organizations.
+//
 // swagger:model Entitlement
 type Entitlement struct {
 

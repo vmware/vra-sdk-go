@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new images API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,17 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-GetImages gets images
+// ClientService is the interface for Client methods
+type ClientService interface {
+	GetImages(params *GetImagesParams) (*GetImagesOK, error)
 
-Get all images defined in ImageProfile.
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  GetImages gets images
+
+  Get all images defined in ImageProfile.
 */
 func (a *Client) GetImages(params *GetImagesParams) (*GetImagesOK, error) {
 	// TODO: Validate the params before sending

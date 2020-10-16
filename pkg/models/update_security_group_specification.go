@@ -8,13 +8,13 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // UpdateSecurityGroupSpecification update security group specification
+//
 // swagger:model UpdateSecurityGroupSpecification
 type UpdateSecurityGroupSpecification struct {
 

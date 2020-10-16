@@ -8,14 +8,14 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // NetworkInterface Represents a network interface.<br>**HATEOAS** links:<br>**cloud-accounts** - array[CloudAccount] - List of cloud accounts where this network domain exists.<br>**security-groups** - array[SecurityGroup] - List of security groups for this network interface.<br>**self** - NetworkInterface - Self link to this network interface
+//
 // swagger:model NetworkInterface
 type NetworkInterface struct {
 

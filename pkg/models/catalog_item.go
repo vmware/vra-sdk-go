@@ -8,9 +8,8 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
@@ -18,6 +17,7 @@ import (
 // CatalogItem CatalogItem
 //
 // Represents a Catalog Item that can eventually be requested by a consumer.
+//
 // swagger:model CatalogItem
 type CatalogItem struct {
 

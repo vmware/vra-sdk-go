@@ -8,13 +8,13 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // FabricAzureStorageAccountResult State object representing a query result of Azure storage accounts.
+//
 // swagger:model FabricAzureStorageAccountResult
 type FabricAzureStorageAccountResult struct {
 

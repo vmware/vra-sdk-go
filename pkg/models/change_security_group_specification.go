@@ -8,14 +8,14 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // ChangeSecurityGroupSpecification Specification for a second day change security groups operation for a vsphere machine
+//
 // swagger:model ChangeSecurityGroupSpecification
 type ChangeSecurityGroupSpecification struct {
 

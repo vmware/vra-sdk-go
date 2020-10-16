@@ -8,14 +8,14 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // CloudAccountGcpSpecification Specification for a GCP cloud account.<br><br>A cloud account identifies a cloud account type and an account-specific deployment region where the associated cloud account resources are hosted.
+//
 // swagger:model CloudAccountGcpSpecification
 type CloudAccountGcpSpecification struct {
 

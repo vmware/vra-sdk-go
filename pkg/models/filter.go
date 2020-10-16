@@ -6,5 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 // Filter filter
+//
 // swagger:model Filter
 type Filter interface{}

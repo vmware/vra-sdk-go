@@ -8,14 +8,14 @@ package models
 import (
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // NumericRange numeric range
+//
 // swagger:model NumericRange
 type NumericRange struct {
 
@@ -109,7 +109,7 @@ const (
 
 // prop value enum
 func (m *NumericRange) validateTypeEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, numericRangeTypeTypePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, numericRangeTypeTypePropEnum, true); err != nil {
 		return err
 	}
 	return nil

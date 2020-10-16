@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new deployments API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,39 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-CheckDeploymentNameUsingGET checks if a deployment exists
+// ClientService is the interface for Client methods
+type ClientService interface {
+	CheckDeploymentNameUsingGET(params *CheckDeploymentNameUsingGETParams) (*CheckDeploymentNameUsingGETOK, error)
 
-Returns OK if a deployment with the supplied name exists.
+	DeleteDeploymentUsingDELETE(params *DeleteDeploymentUsingDELETEParams) (*DeleteDeploymentUsingDELETEOK, error)
+
+	DeleteResourceUsingDELETE(params *DeleteResourceUsingDELETEParams) (*DeleteResourceUsingDELETEOK, error)
+
+	GetDeploymentByIDUsingGET(params *GetDeploymentByIDUsingGETParams) (*GetDeploymentByIDUsingGETOK, error)
+
+	GetDeploymentExpenseHistoryByIDUsingGET(params *GetDeploymentExpenseHistoryByIDUsingGETParams) (*GetDeploymentExpenseHistoryByIDUsingGETOK, error)
+
+	GetDeploymentFilterByIDUsingGET(params *GetDeploymentFilterByIDUsingGETParams) (*GetDeploymentFilterByIDUsingGETOK, error)
+
+	GetDeploymentFiltersUsingGET(params *GetDeploymentFiltersUsingGETParams) (*GetDeploymentFiltersUsingGETOK, error)
+
+	GetDeploymentResourcesUsingGET(params *GetDeploymentResourcesUsingGETParams) (*GetDeploymentResourcesUsingGETOK, error)
+
+	GetDeploymentsForProjectUsingGET(params *GetDeploymentsForProjectUsingGETParams) (*GetDeploymentsForProjectUsingGETOK, error)
+
+	GetDeploymentsUsingGET(params *GetDeploymentsUsingGETParams) (*GetDeploymentsUsingGETOK, error)
+
+	GetResourceByIDUsingGET(params *GetResourceByIDUsingGETParams) (*GetResourceByIDUsingGETOK, error)
+
+	PatchDeploymentUsingPATCH(params *PatchDeploymentUsingPATCHParams) (*PatchDeploymentUsingPATCHOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  CheckDeploymentNameUsingGET checks if a deployment exists
+
+  Returns OK if a deployment with the supplied name exists.
 */
 func (a *Client) CheckDeploymentNameUsingGET(params *CheckDeploymentNameUsingGETParams) (*CheckDeploymentNameUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -63,9 +91,9 @@ func (a *Client) CheckDeploymentNameUsingGET(params *CheckDeploymentNameUsingGET
 }
 
 /*
-DeleteDeploymentUsingDELETE deletes a deployment effectively triggers a delete day2 operation
+  DeleteDeploymentUsingDELETE deletes a deployment effectively triggers a delete day2 operation
 
-Deletes the deployment with the supplied ID, cleans up the associated resources from the Cloud Provider.
+  Deletes the deployment with the supplied ID, cleans up the associated resources from the Cloud Provider.
 */
 func (a *Client) DeleteDeploymentUsingDELETE(params *DeleteDeploymentUsingDELETEParams) (*DeleteDeploymentUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
@@ -99,9 +127,9 @@ func (a *Client) DeleteDeploymentUsingDELETE(params *DeleteDeploymentUsingDELETE
 }
 
 /*
-DeleteResourceUsingDELETE deletes resource associated with a deployment effectively triggers a delete day2 operation
+  DeleteResourceUsingDELETE deletes resource associated with a deployment effectively triggers a delete day2 operation
 
-Deletes the resource with the specified ID and attempts to delete resource from the Cloud Provider.
+  Deletes the resource with the specified ID and attempts to delete resource from the Cloud Provider.
 */
 func (a *Client) DeleteResourceUsingDELETE(params *DeleteResourceUsingDELETEParams) (*DeleteResourceUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
@@ -135,9 +163,9 @@ func (a *Client) DeleteResourceUsingDELETE(params *DeleteResourceUsingDELETEPara
 }
 
 /*
-GetDeploymentByIDUsingGET fetches a specific deployment
+  GetDeploymentByIDUsingGET fetches a specific deployment
 
-Returns the deployment with the supplied ID.
+  Returns the deployment with the supplied ID.
 */
 func (a *Client) GetDeploymentByIDUsingGET(params *GetDeploymentByIDUsingGETParams) (*GetDeploymentByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -171,9 +199,9 @@ func (a *Client) GetDeploymentByIDUsingGET(params *GetDeploymentByIDUsingGETPara
 }
 
 /*
-GetDeploymentExpenseHistoryByIDUsingGET fetches a specific deployment s expense history
+  GetDeploymentExpenseHistoryByIDUsingGET fetches a specific deployment s expense history
 
-Returns the deployment expense history with the supplied ID.
+  Returns the deployment expense history with the supplied ID.
 */
 func (a *Client) GetDeploymentExpenseHistoryByIDUsingGET(params *GetDeploymentExpenseHistoryByIDUsingGETParams) (*GetDeploymentExpenseHistoryByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -207,7 +235,7 @@ func (a *Client) GetDeploymentExpenseHistoryByIDUsingGET(params *GetDeploymentEx
 }
 
 /*
-GetDeploymentFilterByIDUsingGET returns the deployment filter with the supplied ID
+  GetDeploymentFilterByIDUsingGET returns the deployment filter with the supplied ID
 */
 func (a *Client) GetDeploymentFilterByIDUsingGET(params *GetDeploymentFilterByIDUsingGETParams) (*GetDeploymentFilterByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -241,7 +269,7 @@ func (a *Client) GetDeploymentFilterByIDUsingGET(params *GetDeploymentFilterByID
 }
 
 /*
-GetDeploymentFiltersUsingGET returns the deployment filters in context of given user
+  GetDeploymentFiltersUsingGET returns the deployment filters in context of given user
 */
 func (a *Client) GetDeploymentFiltersUsingGET(params *GetDeploymentFiltersUsingGETParams) (*GetDeploymentFiltersUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -275,9 +303,9 @@ func (a *Client) GetDeploymentFiltersUsingGET(params *GetDeploymentFiltersUsingG
 }
 
 /*
-GetDeploymentResourcesUsingGET fetches resources associated with a deployment
+  GetDeploymentResourcesUsingGET fetches resources associated with a deployment
 
-Returns a paginated list of resources corresponding to the deployment with the supplied ID.
+  Returns a paginated list of resources corresponding to the deployment with the supplied ID.
 */
 func (a *Client) GetDeploymentResourcesUsingGET(params *GetDeploymentResourcesUsingGETParams) (*GetDeploymentResourcesUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -311,7 +339,7 @@ func (a *Client) GetDeploymentResourcesUsingGET(params *GetDeploymentResourcesUs
 }
 
 /*
-GetDeploymentsForProjectUsingGET returns a count of deployments using the project
+  GetDeploymentsForProjectUsingGET returns a count of deployments using the project
 */
 func (a *Client) GetDeploymentsForProjectUsingGET(params *GetDeploymentsForProjectUsingGETParams) (*GetDeploymentsForProjectUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -345,9 +373,9 @@ func (a *Client) GetDeploymentsForProjectUsingGET(params *GetDeploymentsForProje
 }
 
 /*
-GetDeploymentsUsingGET fetches all deployments
+  GetDeploymentsUsingGET fetches all deployments
 
-Returns a paginated list of deployments.
+  Returns a paginated list of deployments.
 */
 func (a *Client) GetDeploymentsUsingGET(params *GetDeploymentsUsingGETParams) (*GetDeploymentsUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -381,9 +409,9 @@ func (a *Client) GetDeploymentsUsingGET(params *GetDeploymentsUsingGETParams) (*
 }
 
 /*
-GetResourceByIDUsingGET fetches resource associated with a deployment
+  GetResourceByIDUsingGET fetches resource associated with a deployment
 
-Returns the resource with the specified ID that is correlated with the supplied deployment.
+  Returns the resource with the specified ID that is correlated with the supplied deployment.
 */
 func (a *Client) GetResourceByIDUsingGET(params *GetResourceByIDUsingGETParams) (*GetResourceByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -417,9 +445,9 @@ func (a *Client) GetResourceByIDUsingGET(params *GetResourceByIDUsingGETParams) 
 }
 
 /*
-PatchDeploymentUsingPATCH updates deployment
+  PatchDeploymentUsingPATCH updates deployment
 
-Updates the deployment with the supplied ID.
+  Updates the deployment with the supplied ID.
 */
 func (a *Client) PatchDeploymentUsingPATCH(params *PatchDeploymentUsingPATCHParams) (*PatchDeploymentUsingPATCHOK, error) {
 	// TODO: Validate the params before sending

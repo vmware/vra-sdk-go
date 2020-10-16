@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new icons API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,21 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-Delete deletes an icon
+// ClientService is the interface for Client methods
+type ClientService interface {
+	Delete(params *DeleteParams) (*DeleteNoContent, error)
 
-Delete an existing icon by its unique id.
+	Download(params *DownloadParams) (*DownloadOK, error)
+
+	Upload(params *UploadParams) (*UploadCreated, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  Delete deletes an icon
+
+  Delete an existing icon by its unique id.
 */
 func (a *Client) Delete(params *DeleteParams) (*DeleteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -63,9 +73,9 @@ func (a *Client) Delete(params *DeleteParams) (*DeleteNoContent, error) {
 }
 
 /*
-Download downloads an icon
+  Download downloads an icon
 
-Download an existing icon by its unique id.
+  Download an existing icon by its unique id.
 */
 func (a *Client) Download(params *DownloadParams) (*DownloadOK, error) {
 	// TODO: Validate the params before sending
@@ -99,9 +109,9 @@ func (a *Client) Download(params *DownloadParams) (*DownloadOK, error) {
 }
 
 /*
-Upload uploads an icon
+  Upload uploads an icon
 
-Create an icon.
+  Create an icon.
 */
 func (a *Client) Upload(params *UploadParams) (*UploadCreated, error) {
 	// TODO: Validate the params before sending

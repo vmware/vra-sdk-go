@@ -8,13 +8,13 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CloudAccountNsxVResult State object representing a query result of Nsx-V cloud accounts.
+//
 // swagger:model CloudAccountNsxVResult
 type CloudAccountNsxVResult struct {
 

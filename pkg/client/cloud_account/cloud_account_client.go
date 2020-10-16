@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new cloud account API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,133 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-CreateAwsCloudAccount creates an a w s cloud account
+// ClientService is the interface for Client methods
+type ClientService interface {
+	CreateAwsCloudAccount(params *CreateAwsCloudAccountParams) (*CreateAwsCloudAccountCreated, error)
 
-Create an AWS cloud account in the current organization
+	CreateAzureCloudAccount(params *CreateAzureCloudAccountParams) (*CreateAzureCloudAccountCreated, error)
+
+	CreateCloudAccount(params *CreateCloudAccountParams) (*CreateCloudAccountCreated, error)
+
+	CreateGcpCloudAccount(params *CreateGcpCloudAccountParams) (*CreateGcpCloudAccountCreated, error)
+
+	CreateNsxTCloudAccount(params *CreateNsxTCloudAccountParams) (*CreateNsxTCloudAccountCreated, error)
+
+	CreateNsxVCloudAccount(params *CreateNsxVCloudAccountParams) (*CreateNsxVCloudAccountCreated, error)
+
+	CreateVSphereCloudAccount(params *CreateVSphereCloudAccountParams) (*CreateVSphereCloudAccountCreated, error)
+
+	CreateVcfCloudAccount(params *CreateVcfCloudAccountParams) (*CreateVcfCloudAccountOK, error)
+
+	CreateVmcCloudAccount(params *CreateVmcCloudAccountParams) (*CreateVmcCloudAccountCreated, error)
+
+	DeleteAwsCloudAccount(params *DeleteAwsCloudAccountParams) (*DeleteAwsCloudAccountNoContent, error)
+
+	DeleteAzureCloudAccount(params *DeleteAzureCloudAccountParams) (*DeleteAzureCloudAccountNoContent, error)
+
+	DeleteCloudAccount(params *DeleteCloudAccountParams) (*DeleteCloudAccountNoContent, error)
+
+	DeleteCloudAccountNsxT(params *DeleteCloudAccountNsxTParams) (*DeleteCloudAccountNsxTNoContent, error)
+
+	DeleteCloudAccountNsxV(params *DeleteCloudAccountNsxVParams) (*DeleteCloudAccountNsxVNoContent, error)
+
+	DeleteGcpCloudAccount(params *DeleteGcpCloudAccountParams) (*DeleteGcpCloudAccountNoContent, error)
+
+	DeleteVSphereCloudAccount(params *DeleteVSphereCloudAccountParams) (*DeleteVSphereCloudAccountNoContent, error)
+
+	DeleteVcfCloudAccount(params *DeleteVcfCloudAccountParams) (*DeleteVcfCloudAccountNoContent, error)
+
+	DeleteVmcCloudAccount(params *DeleteVmcCloudAccountParams) (*DeleteVmcCloudAccountNoContent, error)
+
+	EnumerateAwsRegions(params *EnumerateAwsRegionsParams) (*EnumerateAwsRegionsOK, error)
+
+	EnumerateAzureRegions(params *EnumerateAzureRegionsParams) (*EnumerateAzureRegionsOK, error)
+
+	EnumerateGcpRegions(params *EnumerateGcpRegionsParams) (*EnumerateGcpRegionsOK, error)
+
+	EnumeratePrivateImages(params *EnumeratePrivateImagesParams) error
+
+	EnumeratePrivateImagesAWS(params *EnumeratePrivateImagesAWSParams) error
+
+	EnumeratePrivateImagesAzure(params *EnumeratePrivateImagesAzureParams) error
+
+	EnumeratePrivateImagesGcp(params *EnumeratePrivateImagesGcpParams) error
+
+	EnumeratePrivateImagesVCF(params *EnumeratePrivateImagesVCFParams) error
+
+	EnumeratePrivateImagesVMC(params *EnumeratePrivateImagesVMCParams) error
+
+	EnumeratePrivateImagesVSphere(params *EnumeratePrivateImagesVSphereParams) error
+
+	EnumerateRegions(params *EnumerateRegionsParams) (*EnumerateRegionsOK, error)
+
+	EnumerateVSphereRegions(params *EnumerateVSphereRegionsParams) (*EnumerateVSphereRegionsOK, error)
+
+	EnumerateVcfRegions(params *EnumerateVcfRegionsParams) (*EnumerateVcfRegionsOK, error)
+
+	EnumerateVmcRegions(params *EnumerateVmcRegionsParams) (*EnumerateVmcRegionsOK, error)
+
+	GetAwsCloudAccount(params *GetAwsCloudAccountParams) (*GetAwsCloudAccountOK, error)
+
+	GetAwsCloudAccounts(params *GetAwsCloudAccountsParams) (*GetAwsCloudAccountsOK, error)
+
+	GetAzureCloudAccount(params *GetAzureCloudAccountParams) (*GetAzureCloudAccountOK, error)
+
+	GetAzureCloudAccounts(params *GetAzureCloudAccountsParams) (*GetAzureCloudAccountsOK, error)
+
+	GetCloudAccount(params *GetCloudAccountParams) (*GetCloudAccountOK, error)
+
+	GetCloudAccounts(params *GetCloudAccountsParams) (*GetCloudAccountsOK, error)
+
+	GetGcpCloudAccount(params *GetGcpCloudAccountParams) (*GetGcpCloudAccountOK, error)
+
+	GetGcpCloudAccounts(params *GetGcpCloudAccountsParams) (*GetGcpCloudAccountsOK, error)
+
+	GetNsxTCloudAccount(params *GetNsxTCloudAccountParams) (*GetNsxTCloudAccountOK, error)
+
+	GetNsxTCloudAccounts(params *GetNsxTCloudAccountsParams) (*GetNsxTCloudAccountsOK, error)
+
+	GetNsxVCloudAccount(params *GetNsxVCloudAccountParams) (*GetNsxVCloudAccountOK, error)
+
+	GetNsxVCloudAccounts(params *GetNsxVCloudAccountsParams) (*GetNsxVCloudAccountsOK, error)
+
+	GetVSphereCloudAccount(params *GetVSphereCloudAccountParams) (*GetVSphereCloudAccountOK, error)
+
+	GetVSphereCloudAccounts(params *GetVSphereCloudAccountsParams) (*GetVSphereCloudAccountsOK, error)
+
+	GetVcfCloudAccount(params *GetVcfCloudAccountParams) (*GetVcfCloudAccountOK, error)
+
+	GetVcfCloudAccounts(params *GetVcfCloudAccountsParams) (*GetVcfCloudAccountsOK, error)
+
+	GetVmcCloudAccount(params *GetVmcCloudAccountParams) (*GetVmcCloudAccountOK, error)
+
+	GetVmcCloudAccounts(params *GetVmcCloudAccountsParams) (*GetVmcCloudAccountsOK, error)
+
+	UpdateAwsCloudAccount(params *UpdateAwsCloudAccountParams) (*UpdateAwsCloudAccountOK, error)
+
+	UpdateAzureCloudAccount(params *UpdateAzureCloudAccountParams) (*UpdateAzureCloudAccountOK, error)
+
+	UpdateCloudAccount(params *UpdateCloudAccountParams) (*UpdateCloudAccountOK, error)
+
+	UpdateGcpCloudAccount(params *UpdateGcpCloudAccountParams) (*UpdateGcpCloudAccountOK, error)
+
+	UpdateNsxTCloudAccount(params *UpdateNsxTCloudAccountParams) (*UpdateNsxTCloudAccountOK, error)
+
+	UpdateNsxVCloudAccount(params *UpdateNsxVCloudAccountParams) (*UpdateNsxVCloudAccountOK, error)
+
+	UpdateVSphereCloudAccount(params *UpdateVSphereCloudAccountParams) (*UpdateVSphereCloudAccountOK, error)
+
+	UpdateVcfCloudAccount(params *UpdateVcfCloudAccountParams) (*UpdateVcfCloudAccountOK, error)
+
+	UpdateVmcCloudAccount(params *UpdateVmcCloudAccountParams) (*UpdateVmcCloudAccountOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  CreateAwsCloudAccount creates an a w s cloud account
+
+  Create an AWS cloud account in the current organization
 */
 func (a *Client) CreateAwsCloudAccount(params *CreateAwsCloudAccountParams) (*CreateAwsCloudAccountCreated, error) {
 	// TODO: Validate the params before sending
@@ -63,9 +185,9 @@ func (a *Client) CreateAwsCloudAccount(params *CreateAwsCloudAccountParams) (*Cr
 }
 
 /*
-CreateAzureCloudAccount creates an azure cloud account
+  CreateAzureCloudAccount creates an azure cloud account
 
-Create an Azure cloud account in the current organization
+  Create an Azure cloud account in the current organization
 */
 func (a *Client) CreateAzureCloudAccount(params *CreateAzureCloudAccountParams) (*CreateAzureCloudAccountCreated, error) {
 	// TODO: Validate the params before sending
@@ -99,9 +221,9 @@ func (a *Client) CreateAzureCloudAccount(params *CreateAzureCloudAccountParams) 
 }
 
 /*
-CreateCloudAccount creates a cloud account
+  CreateCloudAccount creates a cloud account
 
-Create a cloud account in the current organization
+  Create a cloud account in the current organization
 */
 func (a *Client) CreateCloudAccount(params *CreateCloudAccountParams) (*CreateCloudAccountCreated, error) {
 	// TODO: Validate the params before sending
@@ -135,9 +257,9 @@ func (a *Client) CreateCloudAccount(params *CreateCloudAccountParams) (*CreateCl
 }
 
 /*
-CreateGcpCloudAccount creates an g c p cloud account
+  CreateGcpCloudAccount creates an g c p cloud account
 
-Create an GCP cloud account in the current organization
+  Create an GCP cloud account in the current organization
 */
 func (a *Client) CreateGcpCloudAccount(params *CreateGcpCloudAccountParams) (*CreateGcpCloudAccountCreated, error) {
 	// TODO: Validate the params before sending
@@ -171,9 +293,9 @@ func (a *Client) CreateGcpCloudAccount(params *CreateGcpCloudAccountParams) (*Cr
 }
 
 /*
-CreateNsxTCloudAccount creates a n s x t cloud account
+  CreateNsxTCloudAccount creates a n s x t cloud account
 
-Create a NSX-T cloud account in the current organization
+  Create a NSX-T cloud account in the current organization
 */
 func (a *Client) CreateNsxTCloudAccount(params *CreateNsxTCloudAccountParams) (*CreateNsxTCloudAccountCreated, error) {
 	// TODO: Validate the params before sending
@@ -207,9 +329,9 @@ func (a *Client) CreateNsxTCloudAccount(params *CreateNsxTCloudAccountParams) (*
 }
 
 /*
-CreateNsxVCloudAccount creates a n s x v cloud account
+  CreateNsxVCloudAccount creates a n s x v cloud account
 
-Create a NSX-V cloud account within the current organization
+  Create a NSX-V cloud account within the current organization
 */
 func (a *Client) CreateNsxVCloudAccount(params *CreateNsxVCloudAccountParams) (*CreateNsxVCloudAccountCreated, error) {
 	// TODO: Validate the params before sending
@@ -243,9 +365,9 @@ func (a *Client) CreateNsxVCloudAccount(params *CreateNsxVCloudAccountParams) (*
 }
 
 /*
-CreateVSphereCloudAccount creates a v sphere cloud account
+  CreateVSphereCloudAccount creates a v sphere cloud account
 
-Create a vSphere cloud account within the current organization
+  Create a vSphere cloud account within the current organization
 */
 func (a *Client) CreateVSphereCloudAccount(params *CreateVSphereCloudAccountParams) (*CreateVSphereCloudAccountCreated, error) {
 	// TODO: Validate the params before sending
@@ -279,9 +401,9 @@ func (a *Client) CreateVSphereCloudAccount(params *CreateVSphereCloudAccountPara
 }
 
 /*
-CreateVcfCloudAccount creates an v c f cloud account
+  CreateVcfCloudAccount creates an v c f cloud account
 
-Create an VCF cloud account in the current organization
+  Create an VCF cloud account in the current organization
 */
 func (a *Client) CreateVcfCloudAccount(params *CreateVcfCloudAccountParams) (*CreateVcfCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -315,9 +437,9 @@ func (a *Client) CreateVcfCloudAccount(params *CreateVcfCloudAccountParams) (*Cr
 }
 
 /*
-CreateVmcCloudAccount creates an VM c cloud account
+  CreateVmcCloudAccount creates an VM c cloud account
 
-Create an VMC cloud account in the current organization
+  Create an VMC cloud account in the current organization
 */
 func (a *Client) CreateVmcCloudAccount(params *CreateVmcCloudAccountParams) (*CreateVmcCloudAccountCreated, error) {
 	// TODO: Validate the params before sending
@@ -351,9 +473,9 @@ func (a *Client) CreateVmcCloudAccount(params *CreateVmcCloudAccountParams) (*Cr
 }
 
 /*
-DeleteAwsCloudAccount deletes an a w s cloud account
+  DeleteAwsCloudAccount deletes an a w s cloud account
 
-Delete an AWS cloud account with a given id
+  Delete an AWS cloud account with a given id
 */
 func (a *Client) DeleteAwsCloudAccount(params *DeleteAwsCloudAccountParams) (*DeleteAwsCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
@@ -387,9 +509,9 @@ func (a *Client) DeleteAwsCloudAccount(params *DeleteAwsCloudAccountParams) (*De
 }
 
 /*
-DeleteAzureCloudAccount deletes an azure cloud account
+  DeleteAzureCloudAccount deletes an azure cloud account
 
-Delete an Azure Cloud Account with a given id
+  Delete an Azure Cloud Account with a given id
 */
 func (a *Client) DeleteAzureCloudAccount(params *DeleteAzureCloudAccountParams) (*DeleteAzureCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
@@ -423,9 +545,9 @@ func (a *Client) DeleteAzureCloudAccount(params *DeleteAzureCloudAccountParams) 
 }
 
 /*
-DeleteCloudAccount deletes a cloud account
+  DeleteCloudAccount deletes a cloud account
 
-Delete a cloud account with a given id
+  Delete a cloud account with a given id
 */
 func (a *Client) DeleteCloudAccount(params *DeleteCloudAccountParams) (*DeleteCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
@@ -459,9 +581,9 @@ func (a *Client) DeleteCloudAccount(params *DeleteCloudAccountParams) (*DeleteCl
 }
 
 /*
-DeleteCloudAccountNsxT deletes a n s x t cloud account
+  DeleteCloudAccountNsxT deletes a n s x t cloud account
 
-Delete a NSX-T cloud account with a given id
+  Delete a NSX-T cloud account with a given id
 */
 func (a *Client) DeleteCloudAccountNsxT(params *DeleteCloudAccountNsxTParams) (*DeleteCloudAccountNsxTNoContent, error) {
 	// TODO: Validate the params before sending
@@ -495,9 +617,9 @@ func (a *Client) DeleteCloudAccountNsxT(params *DeleteCloudAccountNsxTParams) (*
 }
 
 /*
-DeleteCloudAccountNsxV deletes a n s v v cloud account
+  DeleteCloudAccountNsxV deletes a n s v v cloud account
 
-Delete a NSV-V cloud account with a given id
+  Delete a NSV-V cloud account with a given id
 */
 func (a *Client) DeleteCloudAccountNsxV(params *DeleteCloudAccountNsxVParams) (*DeleteCloudAccountNsxVNoContent, error) {
 	// TODO: Validate the params before sending
@@ -531,9 +653,9 @@ func (a *Client) DeleteCloudAccountNsxV(params *DeleteCloudAccountNsxVParams) (*
 }
 
 /*
-DeleteGcpCloudAccount deletes an g c p cloud account
+  DeleteGcpCloudAccount deletes an g c p cloud account
 
-Delete an GCP cloud account with a given id
+  Delete an GCP cloud account with a given id
 */
 func (a *Client) DeleteGcpCloudAccount(params *DeleteGcpCloudAccountParams) (*DeleteGcpCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
@@ -567,9 +689,9 @@ func (a *Client) DeleteGcpCloudAccount(params *DeleteGcpCloudAccountParams) (*De
 }
 
 /*
-DeleteVSphereCloudAccount deletes a v sphere cloud account
+  DeleteVSphereCloudAccount deletes a v sphere cloud account
 
-Delete a vSphere Cloud Account with a given id
+  Delete a vSphere Cloud Account with a given id
 */
 func (a *Client) DeleteVSphereCloudAccount(params *DeleteVSphereCloudAccountParams) (*DeleteVSphereCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
@@ -603,9 +725,9 @@ func (a *Client) DeleteVSphereCloudAccount(params *DeleteVSphereCloudAccountPara
 }
 
 /*
-DeleteVcfCloudAccount deletes an v c f cloud account
+  DeleteVcfCloudAccount deletes an v c f cloud account
 
-Delete an VCF cloud account with a given id
+  Delete an VCF cloud account with a given id
 */
 func (a *Client) DeleteVcfCloudAccount(params *DeleteVcfCloudAccountParams) (*DeleteVcfCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
@@ -639,9 +761,9 @@ func (a *Client) DeleteVcfCloudAccount(params *DeleteVcfCloudAccountParams) (*De
 }
 
 /*
-DeleteVmcCloudAccount deletes an VM c cloud account
+  DeleteVmcCloudAccount deletes an VM c cloud account
 
-Delete an VMC cloud account with a given id
+  Delete an VMC cloud account with a given id
 */
 func (a *Client) DeleteVmcCloudAccount(params *DeleteVmcCloudAccountParams) (*DeleteVmcCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
@@ -675,9 +797,9 @@ func (a *Client) DeleteVmcCloudAccount(params *DeleteVmcCloudAccountParams) (*De
 }
 
 /*
-EnumerateAwsRegions gets the available regions for specified a w s cloud account
+  EnumerateAwsRegions gets the available regions for specified a w s cloud account
 
-Get the available regions for specified AWS cloud account
+  Get the available regions for specified AWS cloud account
 */
 func (a *Client) EnumerateAwsRegions(params *EnumerateAwsRegionsParams) (*EnumerateAwsRegionsOK, error) {
 	// TODO: Validate the params before sending
@@ -711,9 +833,9 @@ func (a *Client) EnumerateAwsRegions(params *EnumerateAwsRegionsParams) (*Enumer
 }
 
 /*
-EnumerateAzureRegions gets the available regions for specified azure cloud account
+  EnumerateAzureRegions gets the available regions for specified azure cloud account
 
-Get the available regions for specified Azure cloud account
+  Get the available regions for specified Azure cloud account
 */
 func (a *Client) EnumerateAzureRegions(params *EnumerateAzureRegionsParams) (*EnumerateAzureRegionsOK, error) {
 	// TODO: Validate the params before sending
@@ -747,9 +869,9 @@ func (a *Client) EnumerateAzureRegions(params *EnumerateAzureRegionsParams) (*En
 }
 
 /*
-EnumerateGcpRegions gets the available regions for specified g c p cloud account
+  EnumerateGcpRegions gets the available regions for specified g c p cloud account
 
-Get the available regions for specified GCP cloud account
+  Get the available regions for specified GCP cloud account
 */
 func (a *Client) EnumerateGcpRegions(params *EnumerateGcpRegionsParams) (*EnumerateGcpRegionsOK, error) {
 	// TODO: Validate the params before sending
@@ -783,7 +905,7 @@ func (a *Client) EnumerateGcpRegions(params *EnumerateGcpRegionsParams) (*Enumer
 }
 
 /*
-EnumeratePrivateImages enumerates all private images for enabled regions of the specified cloud account
+  EnumeratePrivateImages enumerates all private images for enabled regions of the specified cloud account
 */
 func (a *Client) EnumeratePrivateImages(params *EnumeratePrivateImagesParams) error {
 	// TODO: Validate the params before sending
@@ -810,7 +932,7 @@ func (a *Client) EnumeratePrivateImages(params *EnumeratePrivateImagesParams) er
 }
 
 /*
-EnumeratePrivateImagesAWS enumerates all private images for enabled regions of the specified a w s account
+  EnumeratePrivateImagesAWS enumerates all private images for enabled regions of the specified a w s account
 */
 func (a *Client) EnumeratePrivateImagesAWS(params *EnumeratePrivateImagesAWSParams) error {
 	// TODO: Validate the params before sending
@@ -837,7 +959,7 @@ func (a *Client) EnumeratePrivateImagesAWS(params *EnumeratePrivateImagesAWSPara
 }
 
 /*
-EnumeratePrivateImagesAzure enumerates all private images for enabled regions of the specified azure account
+  EnumeratePrivateImagesAzure enumerates all private images for enabled regions of the specified azure account
 */
 func (a *Client) EnumeratePrivateImagesAzure(params *EnumeratePrivateImagesAzureParams) error {
 	// TODO: Validate the params before sending
@@ -864,7 +986,7 @@ func (a *Client) EnumeratePrivateImagesAzure(params *EnumeratePrivateImagesAzure
 }
 
 /*
-EnumeratePrivateImagesGcp enumerates all private images for enabled regions of the specified g c p account
+  EnumeratePrivateImagesGcp enumerates all private images for enabled regions of the specified g c p account
 */
 func (a *Client) EnumeratePrivateImagesGcp(params *EnumeratePrivateImagesGcpParams) error {
 	// TODO: Validate the params before sending
@@ -891,7 +1013,7 @@ func (a *Client) EnumeratePrivateImagesGcp(params *EnumeratePrivateImagesGcpPara
 }
 
 /*
-EnumeratePrivateImagesVCF enumerates all private images for enabled regions of the specified v c f account
+  EnumeratePrivateImagesVCF enumerates all private images for enabled regions of the specified v c f account
 */
 func (a *Client) EnumeratePrivateImagesVCF(params *EnumeratePrivateImagesVCFParams) error {
 	// TODO: Validate the params before sending
@@ -918,7 +1040,7 @@ func (a *Client) EnumeratePrivateImagesVCF(params *EnumeratePrivateImagesVCFPara
 }
 
 /*
-EnumeratePrivateImagesVMC enumerates all private images for enabled regions of the specified VM c account
+  EnumeratePrivateImagesVMC enumerates all private images for enabled regions of the specified VM c account
 */
 func (a *Client) EnumeratePrivateImagesVMC(params *EnumeratePrivateImagesVMCParams) error {
 	// TODO: Validate the params before sending
@@ -945,7 +1067,7 @@ func (a *Client) EnumeratePrivateImagesVMC(params *EnumeratePrivateImagesVMCPara
 }
 
 /*
-EnumeratePrivateImagesVSphere enumerates all private images for enabled regions of the specified v sphere account
+  EnumeratePrivateImagesVSphere enumerates all private images for enabled regions of the specified v sphere account
 */
 func (a *Client) EnumeratePrivateImagesVSphere(params *EnumeratePrivateImagesVSphereParams) error {
 	// TODO: Validate the params before sending
@@ -972,9 +1094,9 @@ func (a *Client) EnumeratePrivateImagesVSphere(params *EnumeratePrivateImagesVSp
 }
 
 /*
-EnumerateRegions gets the available regions for specified cloud account
+  EnumerateRegions gets the available regions for specified cloud account
 
-Get the available regions for specified cloud account
+  Get the available regions for specified cloud account
 */
 func (a *Client) EnumerateRegions(params *EnumerateRegionsParams) (*EnumerateRegionsOK, error) {
 	// TODO: Validate the params before sending
@@ -1008,9 +1130,9 @@ func (a *Client) EnumerateRegions(params *EnumerateRegionsParams) (*EnumerateReg
 }
 
 /*
-EnumerateVSphereRegions gets the available regions for specified v sphere cloud account
+  EnumerateVSphereRegions gets the available regions for specified v sphere cloud account
 
-Get the available regions for specified vSphere cloud account
+  Get the available regions for specified vSphere cloud account
 */
 func (a *Client) EnumerateVSphereRegions(params *EnumerateVSphereRegionsParams) (*EnumerateVSphereRegionsOK, error) {
 	// TODO: Validate the params before sending
@@ -1044,9 +1166,9 @@ func (a *Client) EnumerateVSphereRegions(params *EnumerateVSphereRegionsParams) 
 }
 
 /*
-EnumerateVcfRegions gets the available regions for specified v c f cloud account
+  EnumerateVcfRegions gets the available regions for specified v c f cloud account
 
-Get the available regions for specified VCF cloud account
+  Get the available regions for specified VCF cloud account
 */
 func (a *Client) EnumerateVcfRegions(params *EnumerateVcfRegionsParams) (*EnumerateVcfRegionsOK, error) {
 	// TODO: Validate the params before sending
@@ -1080,9 +1202,9 @@ func (a *Client) EnumerateVcfRegions(params *EnumerateVcfRegionsParams) (*Enumer
 }
 
 /*
-EnumerateVmcRegions gets the available regions for specified VM c cloud account
+  EnumerateVmcRegions gets the available regions for specified VM c cloud account
 
-Get the available regions for specified VMC cloud account
+  Get the available regions for specified VMC cloud account
 */
 func (a *Client) EnumerateVmcRegions(params *EnumerateVmcRegionsParams) (*EnumerateVmcRegionsOK, error) {
 	// TODO: Validate the params before sending
@@ -1116,9 +1238,9 @@ func (a *Client) EnumerateVmcRegions(params *EnumerateVmcRegionsParams) (*Enumer
 }
 
 /*
-GetAwsCloudAccount gets an a w s cloud account
+  GetAwsCloudAccount gets an a w s cloud account
 
-Get an AWS cloud account with a given id
+  Get an AWS cloud account with a given id
 */
 func (a *Client) GetAwsCloudAccount(params *GetAwsCloudAccountParams) (*GetAwsCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -1152,9 +1274,9 @@ func (a *Client) GetAwsCloudAccount(params *GetAwsCloudAccountParams) (*GetAwsCl
 }
 
 /*
-GetAwsCloudAccounts gets a w s cloud accounts
+  GetAwsCloudAccounts gets a w s cloud accounts
 
-Get all AWS cloud accounts within the current organization
+  Get all AWS cloud accounts within the current organization
 */
 func (a *Client) GetAwsCloudAccounts(params *GetAwsCloudAccountsParams) (*GetAwsCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
@@ -1188,9 +1310,9 @@ func (a *Client) GetAwsCloudAccounts(params *GetAwsCloudAccountsParams) (*GetAws
 }
 
 /*
-GetAzureCloudAccount gets an azure cloud account
+  GetAzureCloudAccount gets an azure cloud account
 
-Get an Azure Cloud Account with a given id
+  Get an Azure Cloud Account with a given id
 */
 func (a *Client) GetAzureCloudAccount(params *GetAzureCloudAccountParams) (*GetAzureCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -1224,9 +1346,9 @@ func (a *Client) GetAzureCloudAccount(params *GetAzureCloudAccountParams) (*GetA
 }
 
 /*
-GetAzureCloudAccounts gets azure cloud accounts
+  GetAzureCloudAccounts gets azure cloud accounts
 
-Get all Azure cloud accounts within the current organization
+  Get all Azure cloud accounts within the current organization
 */
 func (a *Client) GetAzureCloudAccounts(params *GetAzureCloudAccountsParams) (*GetAzureCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
@@ -1260,9 +1382,9 @@ func (a *Client) GetAzureCloudAccounts(params *GetAzureCloudAccountsParams) (*Ge
 }
 
 /*
-GetCloudAccount gets cloud account
+  GetCloudAccount gets cloud account
 
-Get cloud account with a given id
+  Get cloud account with a given id
 */
 func (a *Client) GetCloudAccount(params *GetCloudAccountParams) (*GetCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -1296,9 +1418,9 @@ func (a *Client) GetCloudAccount(params *GetCloudAccountParams) (*GetCloudAccoun
 }
 
 /*
-GetCloudAccounts gets cloud accounts
+  GetCloudAccounts gets cloud accounts
 
-Get all cloud accounts within the current organization
+  Get all cloud accounts within the current organization
 */
 func (a *Client) GetCloudAccounts(params *GetCloudAccountsParams) (*GetCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
@@ -1332,9 +1454,9 @@ func (a *Client) GetCloudAccounts(params *GetCloudAccountsParams) (*GetCloudAcco
 }
 
 /*
-GetGcpCloudAccount gets an g c p cloud account
+  GetGcpCloudAccount gets an g c p cloud account
 
-Get an GCP cloud account with a given id
+  Get an GCP cloud account with a given id
 */
 func (a *Client) GetGcpCloudAccount(params *GetGcpCloudAccountParams) (*GetGcpCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -1368,9 +1490,9 @@ func (a *Client) GetGcpCloudAccount(params *GetGcpCloudAccountParams) (*GetGcpCl
 }
 
 /*
-GetGcpCloudAccounts gets g c p cloud accounts
+  GetGcpCloudAccounts gets g c p cloud accounts
 
-Get all GCP cloud accounts within the current organization
+  Get all GCP cloud accounts within the current organization
 */
 func (a *Client) GetGcpCloudAccounts(params *GetGcpCloudAccountsParams) (*GetGcpCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
@@ -1404,9 +1526,9 @@ func (a *Client) GetGcpCloudAccounts(params *GetGcpCloudAccountsParams) (*GetGcp
 }
 
 /*
-GetNsxTCloudAccount gets an n s x t cloud account
+  GetNsxTCloudAccount gets an n s x t cloud account
 
-Get an NSX-T cloud account with a given id
+  Get an NSX-T cloud account with a given id
 */
 func (a *Client) GetNsxTCloudAccount(params *GetNsxTCloudAccountParams) (*GetNsxTCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -1440,9 +1562,9 @@ func (a *Client) GetNsxTCloudAccount(params *GetNsxTCloudAccountParams) (*GetNsx
 }
 
 /*
-GetNsxTCloudAccounts gets n s x t cloud accounts
+  GetNsxTCloudAccounts gets n s x t cloud accounts
 
-Get all NSX-T cloud accounts within the current organization
+  Get all NSX-T cloud accounts within the current organization
 */
 func (a *Client) GetNsxTCloudAccounts(params *GetNsxTCloudAccountsParams) (*GetNsxTCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
@@ -1476,9 +1598,9 @@ func (a *Client) GetNsxTCloudAccounts(params *GetNsxTCloudAccountsParams) (*GetN
 }
 
 /*
-GetNsxVCloudAccount gets an n s x v cloud account
+  GetNsxVCloudAccount gets an n s x v cloud account
 
-Get an NSX-V cloud account with a given id
+  Get an NSX-V cloud account with a given id
 */
 func (a *Client) GetNsxVCloudAccount(params *GetNsxVCloudAccountParams) (*GetNsxVCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -1512,9 +1634,9 @@ func (a *Client) GetNsxVCloudAccount(params *GetNsxVCloudAccountParams) (*GetNsx
 }
 
 /*
-GetNsxVCloudAccounts gets n s x v cloud accounts
+  GetNsxVCloudAccounts gets n s x v cloud accounts
 
-Get all NSX-V cloud accounts within the current organization
+  Get all NSX-V cloud accounts within the current organization
 */
 func (a *Client) GetNsxVCloudAccounts(params *GetNsxVCloudAccountsParams) (*GetNsxVCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
@@ -1548,9 +1670,9 @@ func (a *Client) GetNsxVCloudAccounts(params *GetNsxVCloudAccountsParams) (*GetN
 }
 
 /*
-GetVSphereCloudAccount gets an v sphere cloud account
+  GetVSphereCloudAccount gets an v sphere cloud account
 
-Get an vSphere cloud account with a given id
+  Get an vSphere cloud account with a given id
 */
 func (a *Client) GetVSphereCloudAccount(params *GetVSphereCloudAccountParams) (*GetVSphereCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -1584,9 +1706,9 @@ func (a *Client) GetVSphereCloudAccount(params *GetVSphereCloudAccountParams) (*
 }
 
 /*
-GetVSphereCloudAccounts gets v sphere cloud accounts
+  GetVSphereCloudAccounts gets v sphere cloud accounts
 
-Get all vSphere cloud accounts within the current organization
+  Get all vSphere cloud accounts within the current organization
 */
 func (a *Client) GetVSphereCloudAccounts(params *GetVSphereCloudAccountsParams) (*GetVSphereCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
@@ -1620,9 +1742,9 @@ func (a *Client) GetVSphereCloudAccounts(params *GetVSphereCloudAccountsParams) 
 }
 
 /*
-GetVcfCloudAccount gets an v c f cloud account
+  GetVcfCloudAccount gets an v c f cloud account
 
-Get an VCF cloud account with a given id
+  Get an VCF cloud account with a given id
 */
 func (a *Client) GetVcfCloudAccount(params *GetVcfCloudAccountParams) (*GetVcfCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -1656,9 +1778,9 @@ func (a *Client) GetVcfCloudAccount(params *GetVcfCloudAccountParams) (*GetVcfCl
 }
 
 /*
-GetVcfCloudAccounts gets v c f cloud accounts
+  GetVcfCloudAccounts gets v c f cloud accounts
 
-Get all VCF cloud accounts within the current organization
+  Get all VCF cloud accounts within the current organization
 */
 func (a *Client) GetVcfCloudAccounts(params *GetVcfCloudAccountsParams) (*GetVcfCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
@@ -1692,9 +1814,9 @@ func (a *Client) GetVcfCloudAccounts(params *GetVcfCloudAccountsParams) (*GetVcf
 }
 
 /*
-GetVmcCloudAccount gets an VM c cloud account
+  GetVmcCloudAccount gets an VM c cloud account
 
-Get an VMC cloud account with a given id
+  Get an VMC cloud account with a given id
 */
 func (a *Client) GetVmcCloudAccount(params *GetVmcCloudAccountParams) (*GetVmcCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -1728,9 +1850,9 @@ func (a *Client) GetVmcCloudAccount(params *GetVmcCloudAccountParams) (*GetVmcCl
 }
 
 /*
-GetVmcCloudAccounts gets VM c cloud accounts
+  GetVmcCloudAccounts gets VM c cloud accounts
 
-Get all VMC cloud accounts within the current organization
+  Get all VMC cloud accounts within the current organization
 */
 func (a *Client) GetVmcCloudAccounts(params *GetVmcCloudAccountsParams) (*GetVmcCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
@@ -1764,9 +1886,9 @@ func (a *Client) GetVmcCloudAccounts(params *GetVmcCloudAccountsParams) (*GetVmc
 }
 
 /*
-UpdateAwsCloudAccount updates a w s cloud account
+  UpdateAwsCloudAccount updates a w s cloud account
 
-Update AWS cloud account
+  Update AWS cloud account
 */
 func (a *Client) UpdateAwsCloudAccount(params *UpdateAwsCloudAccountParams) (*UpdateAwsCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -1800,9 +1922,9 @@ func (a *Client) UpdateAwsCloudAccount(params *UpdateAwsCloudAccountParams) (*Up
 }
 
 /*
-UpdateAzureCloudAccount updates azure cloud account
+  UpdateAzureCloudAccount updates azure cloud account
 
-Update Azure cloud account
+  Update Azure cloud account
 */
 func (a *Client) UpdateAzureCloudAccount(params *UpdateAzureCloudAccountParams) (*UpdateAzureCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -1836,9 +1958,9 @@ func (a *Client) UpdateAzureCloudAccount(params *UpdateAzureCloudAccountParams) 
 }
 
 /*
-UpdateCloudAccount updates cloud account
+  UpdateCloudAccount updates cloud account
 
-Update a single CloudAccount
+  Update a single CloudAccount
 */
 func (a *Client) UpdateCloudAccount(params *UpdateCloudAccountParams) (*UpdateCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -1872,9 +1994,9 @@ func (a *Client) UpdateCloudAccount(params *UpdateCloudAccountParams) (*UpdateCl
 }
 
 /*
-UpdateGcpCloudAccount updates g c p cloud account
+  UpdateGcpCloudAccount updates g c p cloud account
 
-Update GCP cloud account
+  Update GCP cloud account
 */
 func (a *Client) UpdateGcpCloudAccount(params *UpdateGcpCloudAccountParams) (*UpdateGcpCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -1908,9 +2030,9 @@ func (a *Client) UpdateGcpCloudAccount(params *UpdateGcpCloudAccountParams) (*Up
 }
 
 /*
-UpdateNsxTCloudAccount updates n s x t cloud account
+  UpdateNsxTCloudAccount updates n s x t cloud account
 
-Update NSX-T cloud account
+  Update NSX-T cloud account
 */
 func (a *Client) UpdateNsxTCloudAccount(params *UpdateNsxTCloudAccountParams) (*UpdateNsxTCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -1944,9 +2066,9 @@ func (a *Client) UpdateNsxTCloudAccount(params *UpdateNsxTCloudAccountParams) (*
 }
 
 /*
-UpdateNsxVCloudAccount updates n s x v cloud account
+  UpdateNsxVCloudAccount updates n s x v cloud account
 
-Update NSX-V cloud account
+  Update NSX-V cloud account
 */
 func (a *Client) UpdateNsxVCloudAccount(params *UpdateNsxVCloudAccountParams) (*UpdateNsxVCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -1980,9 +2102,9 @@ func (a *Client) UpdateNsxVCloudAccount(params *UpdateNsxVCloudAccountParams) (*
 }
 
 /*
-UpdateVSphereCloudAccount updates v sphere cloud account
+  UpdateVSphereCloudAccount updates v sphere cloud account
 
-Update vSphere cloud account
+  Update vSphere cloud account
 */
 func (a *Client) UpdateVSphereCloudAccount(params *UpdateVSphereCloudAccountParams) (*UpdateVSphereCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -2016,9 +2138,9 @@ func (a *Client) UpdateVSphereCloudAccount(params *UpdateVSphereCloudAccountPara
 }
 
 /*
-UpdateVcfCloudAccount updates v c f cloud account
+  UpdateVcfCloudAccount updates v c f cloud account
 
-Update VCF cloud account
+  Update VCF cloud account
 */
 func (a *Client) UpdateVcfCloudAccount(params *UpdateVcfCloudAccountParams) (*UpdateVcfCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -2052,9 +2174,9 @@ func (a *Client) UpdateVcfCloudAccount(params *UpdateVcfCloudAccountParams) (*Up
 }
 
 /*
-UpdateVmcCloudAccount updates VM c cloud account
+  UpdateVmcCloudAccount updates VM c cloud account
 
-Update VMC cloud account
+  Update VMC cloud account
 */
 func (a *Client) UpdateVmcCloudAccount(params *UpdateVmcCloudAccountParams) (*UpdateVmcCloudAccountOK, error) {
 	// TODO: Validate the params before sending

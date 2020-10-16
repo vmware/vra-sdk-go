@@ -13,8 +13,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // NewRevertDiskSnapshotParams creates a new RevertDiskSnapshotParams object
@@ -67,15 +66,15 @@ type RevertDiskSnapshotParams struct {
 	*/
 	APIVersion *string
 	/*ID
+	  The id of the Disk.
+
+	*/
+	PathID string
+	/*ID
 	  Snapshot id to revert.
 
 	*/
 	QueryID string
-	/*ID
-	  The id of the Disk.
-
-	*/
-	ID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -126,6 +125,17 @@ func (o *RevertDiskSnapshotParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
+// WithPathID adds the id to the revert disk snapshot params
+func (o *RevertDiskSnapshotParams) WithPathID(id string) *RevertDiskSnapshotParams {
+	o.SetPathID(id)
+	return o
+}
+
+// SetPathID adds the id to the revert disk snapshot params
+func (o *RevertDiskSnapshotParams) SetPathID(id string) {
+	o.PathID = id
+}
+
 // WithQueryID adds the id to the revert disk snapshot params
 func (o *RevertDiskSnapshotParams) WithQueryID(id string) *RevertDiskSnapshotParams {
 	o.SetQueryID(id)
@@ -135,17 +145,6 @@ func (o *RevertDiskSnapshotParams) WithQueryID(id string) *RevertDiskSnapshotPar
 // SetQueryID adds the id to the revert disk snapshot params
 func (o *RevertDiskSnapshotParams) SetQueryID(id string) {
 	o.QueryID = id
-}
-
-// WithID adds the id to the revert disk snapshot params
-func (o *RevertDiskSnapshotParams) WithID(id string) *RevertDiskSnapshotParams {
-	o.SetID(id)
-	return o
-}
-
-// SetID adds the id to the revert disk snapshot params
-func (o *RevertDiskSnapshotParams) SetID(id string) {
-	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -172,6 +171,11 @@ func (o *RevertDiskSnapshotParams) WriteToRequest(r runtime.ClientRequest, reg s
 
 	}
 
+	// path param id
+	if err := r.SetPathParam("id", o.PathID); err != nil {
+		return err
+	}
+
 	// query param id
 	qrID := o.QueryID
 	qID := qrID
@@ -179,11 +183,6 @@ func (o *RevertDiskSnapshotParams) WriteToRequest(r runtime.ClientRequest, reg s
 		if err := r.SetQueryParam("id", qID); err != nil {
 			return err
 		}
-	}
-
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
-		return err
 	}
 
 	if len(res) > 0 {

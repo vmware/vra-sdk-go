@@ -9,14 +9,14 @@ import (
 	"encoding/json"
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // Query query
+//
 // swagger:model Query
 type Query struct {
 
@@ -104,7 +104,7 @@ const (
 
 // prop value enum
 func (m *Query) validateOccuranceEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, queryTypeOccurancePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, queryTypeOccurancePropEnum, true); err != nil {
 		return err
 	}
 	return nil

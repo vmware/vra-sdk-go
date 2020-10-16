@@ -6,14 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // Region State object representing a region in a cloud account.<br>**HATEOAS** links:<br>**cloud-account** - CloudAccount - Cloud account for the region.**self** - Region - Self link to this region
+//
 // swagger:model Region
 type Region struct {
 

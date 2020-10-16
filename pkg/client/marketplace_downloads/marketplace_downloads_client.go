@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new marketplace downloads API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,21 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-DownloadHistoryUsingGET gets download history
+// ClientService is the interface for Client methods
+type ClientService interface {
+	DownloadHistoryUsingGET(params *DownloadHistoryUsingGETParams) (*DownloadHistoryUsingGETOK, error)
 
-Get download history for the content downloaded from Marketplace
+	DownloadRequestUsingPOST(params *DownloadRequestUsingPOSTParams) (*DownloadRequestUsingPOSTAccepted, error)
+
+	GetRequestByIDUsingGET(params *GetRequestByIDUsingGETParams) (*GetRequestByIDUsingGETOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  DownloadHistoryUsingGET gets download history
+
+  Get download history for the content downloaded from Marketplace
 */
 func (a *Client) DownloadHistoryUsingGET(params *DownloadHistoryUsingGETParams) (*DownloadHistoryUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -63,9 +73,9 @@ func (a *Client) DownloadHistoryUsingGET(params *DownloadHistoryUsingGETParams) 
 }
 
 /*
-DownloadRequestUsingPOST submits download request
+  DownloadRequestUsingPOST submits download request
 
-Submit a download request for a content
+  Submit a download request for a content
 */
 func (a *Client) DownloadRequestUsingPOST(params *DownloadRequestUsingPOSTParams) (*DownloadRequestUsingPOSTAccepted, error) {
 	// TODO: Validate the params before sending
@@ -99,9 +109,9 @@ func (a *Client) DownloadRequestUsingPOST(params *DownloadRequestUsingPOSTParams
 }
 
 /*
-GetRequestByIDUsingGET gets download request
+  GetRequestByIDUsingGET gets download request
 
-Get a download request by Id
+  Get a download request by Id
 */
 func (a *Client) GetRequestByIDUsingGET(params *GetRequestByIDUsingGETParams) (*GetRequestByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending

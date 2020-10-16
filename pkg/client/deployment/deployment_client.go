@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new deployment API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,23 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-CreateDeployment creates deployment
+// ClientService is the interface for Client methods
+type ClientService interface {
+	CreateDeployment(params *CreateDeploymentParams) (*CreateDeploymentCreated, error)
 
-Create a new Deployment.
+	DeleteDeployment(params *DeleteDeploymentParams) (*DeleteDeploymentAccepted, error)
+
+	GetDeployments(params *GetDeploymentsParams) (*GetDeploymentsOK, error)
+
+	GetSingleDeployment(params *GetSingleDeploymentParams) (*GetSingleDeploymentOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  CreateDeployment creates deployment
+
+  Create a new Deployment.
 */
 func (a *Client) CreateDeployment(params *CreateDeploymentParams) (*CreateDeploymentCreated, error) {
 	// TODO: Validate the params before sending
@@ -63,9 +75,9 @@ func (a *Client) CreateDeployment(params *CreateDeploymentParams) (*CreateDeploy
 }
 
 /*
-DeleteDeployment deletes a deployment
+  DeleteDeployment deletes a deployment
 
-Delete a deployment.
+  Delete a deployment.
 */
 func (a *Client) DeleteDeployment(params *DeleteDeploymentParams) (*DeleteDeploymentAccepted, error) {
 	// TODO: Validate the params before sending
@@ -99,9 +111,9 @@ func (a *Client) DeleteDeployment(params *DeleteDeploymentParams) (*DeleteDeploy
 }
 
 /*
-GetDeployments gets deployments
+  GetDeployments gets deployments
 
-Get all deployments.
+  Get all deployments.
 */
 func (a *Client) GetDeployments(params *GetDeploymentsParams) (*GetDeploymentsOK, error) {
 	// TODO: Validate the params before sending
@@ -135,9 +147,9 @@ func (a *Client) GetDeployments(params *GetDeploymentsParams) (*GetDeploymentsOK
 }
 
 /*
-GetSingleDeployment gets a single deployment
+  GetSingleDeployment gets a single deployment
 
-Get a single deployment.
+  Get a single deployment.
 */
 func (a *Client) GetSingleDeployment(params *GetSingleDeploymentParams) (*GetSingleDeploymentOK, error) {
 	// TODO: Validate the params before sending

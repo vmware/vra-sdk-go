@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new network API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,29 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-CreateNetwork creates network
+// ClientService is the interface for Client methods
+type ClientService interface {
+	CreateNetwork(params *CreateNetworkParams) (*CreateNetworkAccepted, error)
 
-Provision a new network based on the passed in constraints. The network should be destroyed after the machine is destroyed to free up resources.
+	DeleteNetwork(params *DeleteNetworkParams) (*DeleteNetworkAccepted, error)
+
+	GetMachineNetworkInterface(params *GetMachineNetworkInterfaceParams) (*GetMachineNetworkInterfaceOK, error)
+
+	GetNetwork(params *GetNetworkParams) (*GetNetworkOK, error)
+
+	GetNetworkDomain(params *GetNetworkDomainParams) (*GetNetworkDomainOK, error)
+
+	GetNetworkDomains(params *GetNetworkDomainsParams) (*GetNetworkDomainsOK, error)
+
+	GetNetworks(params *GetNetworksParams) (*GetNetworksOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  CreateNetwork creates network
+
+  Provision a new network based on the passed in constraints. The network should be destroyed after the machine is destroyed to free up resources.
 */
 func (a *Client) CreateNetwork(params *CreateNetworkParams) (*CreateNetworkAccepted, error) {
 	// TODO: Validate the params before sending
@@ -63,9 +81,9 @@ func (a *Client) CreateNetwork(params *CreateNetworkParams) (*CreateNetworkAccep
 }
 
 /*
-DeleteNetwork deletes a network
+  DeleteNetwork deletes a network
 
-Delete a network with a given id
+  Delete a network with a given id
 */
 func (a *Client) DeleteNetwork(params *DeleteNetworkParams) (*DeleteNetworkAccepted, error) {
 	// TODO: Validate the params before sending
@@ -99,9 +117,9 @@ func (a *Client) DeleteNetwork(params *DeleteNetworkParams) (*DeleteNetworkAccep
 }
 
 /*
-GetMachineNetworkInterface gets machine network interface
+  GetMachineNetworkInterface gets machine network interface
 
-Get network interface with a given id for specific machine
+  Get network interface with a given id for specific machine
 */
 func (a *Client) GetMachineNetworkInterface(params *GetMachineNetworkInterfaceParams) (*GetMachineNetworkInterfaceOK, error) {
 	// TODO: Validate the params before sending
@@ -135,9 +153,9 @@ func (a *Client) GetMachineNetworkInterface(params *GetMachineNetworkInterfacePa
 }
 
 /*
-GetNetwork gets network
+  GetNetwork gets network
 
-Get network with a given id
+  Get network with a given id
 */
 func (a *Client) GetNetwork(params *GetNetworkParams) (*GetNetworkOK, error) {
 	// TODO: Validate the params before sending
@@ -171,9 +189,9 @@ func (a *Client) GetNetwork(params *GetNetworkParams) (*GetNetworkOK, error) {
 }
 
 /*
-GetNetworkDomain gets network domain
+  GetNetworkDomain gets network domain
 
-Get network domain with a given id
+  Get network domain with a given id
 */
 func (a *Client) GetNetworkDomain(params *GetNetworkDomainParams) (*GetNetworkDomainOK, error) {
 	// TODO: Validate the params before sending
@@ -207,9 +225,9 @@ func (a *Client) GetNetworkDomain(params *GetNetworkDomainParams) (*GetNetworkDo
 }
 
 /*
-GetNetworkDomains gets network domains
+  GetNetworkDomains gets network domains
 
-Get all network domains.
+  Get all network domains.
 */
 func (a *Client) GetNetworkDomains(params *GetNetworkDomainsParams) (*GetNetworkDomainsOK, error) {
 	// TODO: Validate the params before sending
@@ -243,9 +261,9 @@ func (a *Client) GetNetworkDomains(params *GetNetworkDomainsParams) (*GetNetwork
 }
 
 /*
-GetNetworks gets networks
+  GetNetworks gets networks
 
-Get all networks
+  Get all networks
 */
 func (a *Client) GetNetworks(params *GetNetworksParams) (*GetNetworksOK, error) {
 	// TODO: Validate the params before sending

@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new fabric azure storage account API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,19 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-GetFabricAzureStorageAccount gets fabric azure storage account
+// ClientService is the interface for Client methods
+type ClientService interface {
+	GetFabricAzureStorageAccount(params *GetFabricAzureStorageAccountParams) (*GetFabricAzureStorageAccountOK, error)
 
-Get fabric Azure storage account with a given id
+	GetFabricAzureStorageAccounts(params *GetFabricAzureStorageAccountsParams) (*GetFabricAzureStorageAccountsOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  GetFabricAzureStorageAccount gets fabric azure storage account
+
+  Get fabric Azure storage account with a given id
 */
 func (a *Client) GetFabricAzureStorageAccount(params *GetFabricAzureStorageAccountParams) (*GetFabricAzureStorageAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -63,9 +71,9 @@ func (a *Client) GetFabricAzureStorageAccount(params *GetFabricAzureStorageAccou
 }
 
 /*
-GetFabricAzureStorageAccounts gets fabric azure storage accounts
+  GetFabricAzureStorageAccounts gets fabric azure storage accounts
 
-Get all fabric Azure storage accounts.
+  Get all fabric Azure storage accounts.
 */
 func (a *Client) GetFabricAzureStorageAccounts(params *GetFabricAzureStorageAccountsParams) (*GetFabricAzureStorageAccountsOK, error) {
 	// TODO: Validate the params before sending

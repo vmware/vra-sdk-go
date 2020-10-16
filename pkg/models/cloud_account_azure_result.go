@@ -8,13 +8,13 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CloudAccountAzureResult State object representing a query result of Azure cloud accounts.
+//
 // swagger:model CloudAccountAzureResult
 type CloudAccountAzureResult struct {
 

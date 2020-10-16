@@ -8,13 +8,13 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // FabricComputeSpecification Specification for updating a FabricCompute
+//
 // swagger:model FabricComputeSpecification
 type FabricComputeSpecification struct {
 

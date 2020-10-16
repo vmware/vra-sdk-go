@@ -6,14 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // FabricAzureStorageAccount Represents a structure that holds details of Azure endpoint's storage account.<br>**HATEOAS** links:<br>**region** - Region - Region for the storage account.<br>**self** - FabricAzureStorageAccount - Self link to this storage account
+//
 // swagger:model FabricAzureStorageAccount
 type FabricAzureStorageAccount struct {
 

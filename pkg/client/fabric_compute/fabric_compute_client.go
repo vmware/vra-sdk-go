@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new fabric compute API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,21 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-GetFabricCompute gets fabric compute
+// ClientService is the interface for Client methods
+type ClientService interface {
+	GetFabricCompute(params *GetFabricComputeParams) (*GetFabricComputeOK, error)
 
-Get fabric compute with a given id
+	GetFabricComputes(params *GetFabricComputesParams) (*GetFabricComputesOK, error)
+
+	UpdateFabricCompute(params *UpdateFabricComputeParams) (*UpdateFabricComputeOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  GetFabricCompute gets fabric compute
+
+  Get fabric compute with a given id
 */
 func (a *Client) GetFabricCompute(params *GetFabricComputeParams) (*GetFabricComputeOK, error) {
 	// TODO: Validate the params before sending
@@ -63,9 +73,9 @@ func (a *Client) GetFabricCompute(params *GetFabricComputeParams) (*GetFabricCom
 }
 
 /*
-GetFabricComputes gets fabric computes
+  GetFabricComputes gets fabric computes
 
-Get all fabric computes.
+  Get all fabric computes.
 */
 func (a *Client) GetFabricComputes(params *GetFabricComputesParams) (*GetFabricComputesOK, error) {
 	// TODO: Validate the params before sending
@@ -99,9 +109,9 @@ func (a *Client) GetFabricComputes(params *GetFabricComputesParams) (*GetFabricC
 }
 
 /*
-UpdateFabricCompute updates fabric compute
+  UpdateFabricCompute updates fabric compute
 
-Update fabric compute. Only tag updates are supported.
+  Update fabric compute. Only tag updates are supported.
 */
 func (a *Client) UpdateFabricCompute(params *UpdateFabricComputeParams) (*UpdateFabricComputeOK, error) {
 	// TODO: Validate the params before sending

@@ -8,14 +8,14 @@ package models
 import (
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // MeteringPolicyAssignmentInfo MeteringPolicyAssignmentInfo
+//
 // swagger:model MeteringPolicyAssignmentInfo
 type MeteringPolicyAssignmentInfo struct {
 
@@ -67,7 +67,7 @@ const (
 
 // prop value enum
 func (m *MeteringPolicyAssignmentInfo) validateEntityTypeEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, meteringPolicyAssignmentInfoTypeEntityTypePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, meteringPolicyAssignmentInfoTypeEntityTypePropEnum, true); err != nil {
 		return err
 	}
 	return nil

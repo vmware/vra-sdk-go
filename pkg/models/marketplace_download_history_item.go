@@ -8,14 +8,14 @@ package models
 import (
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // MarketplaceDownloadHistoryItem MarketplaceDownloadHistoryItem
+//
 // swagger:model MarketplaceDownloadHistoryItem
 type MarketplaceDownloadHistoryItem struct {
 
@@ -114,7 +114,7 @@ const (
 
 // prop value enum
 func (m *MarketplaceDownloadHistoryItem) validateContentTypeEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, marketplaceDownloadHistoryItemTypeContentTypePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, marketplaceDownloadHistoryItemTypeContentTypePropEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -170,7 +170,7 @@ const (
 
 // prop value enum
 func (m *MarketplaceDownloadHistoryItem) validateStatusEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, marketplaceDownloadHistoryItemTypeStatusPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, marketplaceDownloadHistoryItemTypeStatusPropEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -210,7 +210,7 @@ const (
 
 // prop value enum
 func (m *MarketplaceDownloadHistoryItem) validateTargetTypeEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, marketplaceDownloadHistoryItemTypeTargetTypePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, marketplaceDownloadHistoryItemTypeTargetTypePropEnum, true); err != nil {
 		return err
 	}
 	return nil

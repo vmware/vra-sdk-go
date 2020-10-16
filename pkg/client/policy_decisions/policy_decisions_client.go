@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new policy decisions API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,19 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-GetDecisionByIDUsingGET returns a policy decision by id
+// ClientService is the interface for Client methods
+type ClientService interface {
+	GetDecisionByIDUsingGET(params *GetDecisionByIDUsingGETParams) (*GetDecisionByIDUsingGETOK, error)
 
-Find a specific policy decision based on the input policy decision id.
+	GetDecisionsUsingGET(params *GetDecisionsUsingGETParams) (*GetDecisionsUsingGETOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  GetDecisionByIDUsingGET returns a policy decision by id
+
+  Find a specific policy decision based on the input policy decision id.
 */
 func (a *Client) GetDecisionByIDUsingGET(params *GetDecisionByIDUsingGETParams) (*GetDecisionByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -63,9 +71,9 @@ func (a *Client) GetDecisionByIDUsingGET(params *GetDecisionByIDUsingGETParams) 
 }
 
 /*
-GetDecisionsUsingGET fetches a list of policy decisions
+  GetDecisionsUsingGET fetches a list of policy decisions
 
-Returns a paginated list of policy decisions. If a dryRunId is provided, the return value has a field indicating whether the dry run is complete.
+  Returns a paginated list of policy decisions. If a dryRunId is provided, the return value has a field indicating whether the dry run is complete.
 */
 func (a *Client) GetDecisionsUsingGET(params *GetDecisionsUsingGETParams) (*GetDecisionsUsingGETOK, error) {
 	// TODO: Validate the params before sending

@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new project API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,29 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-CreateProject creates project
+// ClientService is the interface for Client methods
+type ClientService interface {
+	CreateProject(params *CreateProjectParams) (*CreateProjectCreated, error)
 
-Create project
+	DeleteProject(params *DeleteProjectParams) (*DeleteProjectNoContent, error)
+
+	GetProject(params *GetProjectParams) (*GetProjectOK, error)
+
+	GetProjectResourceMetadata(params *GetProjectResourceMetadataParams) (*GetProjectResourceMetadataOK, error)
+
+	GetProjects(params *GetProjectsParams) (*GetProjectsOK, error)
+
+	UpdateProject(params *UpdateProjectParams) (*UpdateProjectOK, error)
+
+	UpdateProjectResourceMetadata(params *UpdateProjectResourceMetadataParams) (*UpdateProjectResourceMetadataOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  CreateProject creates project
+
+  Create project
 */
 func (a *Client) CreateProject(params *CreateProjectParams) (*CreateProjectCreated, error) {
 	// TODO: Validate the params before sending
@@ -63,9 +81,9 @@ func (a *Client) CreateProject(params *CreateProjectParams) (*CreateProjectCreat
 }
 
 /*
-DeleteProject deletes project
+  DeleteProject deletes project
 
-Delete project with a given id
+  Delete project with a given id
 */
 func (a *Client) DeleteProject(params *DeleteProjectParams) (*DeleteProjectNoContent, error) {
 	// TODO: Validate the params before sending
@@ -99,9 +117,9 @@ func (a *Client) DeleteProject(params *DeleteProjectParams) (*DeleteProjectNoCon
 }
 
 /*
-GetProject gets project
+  GetProject gets project
 
-Get project with a given id
+  Get project with a given id
 */
 func (a *Client) GetProject(params *GetProjectParams) (*GetProjectOK, error) {
 	// TODO: Validate the params before sending
@@ -135,9 +153,9 @@ func (a *Client) GetProject(params *GetProjectParams) (*GetProjectOK, error) {
 }
 
 /*
-GetProjectResourceMetadata gets project resource metadata
+  GetProjectResourceMetadata gets project resource metadata
 
-Get project resource metadata by a given project id
+  Get project resource metadata by a given project id
 */
 func (a *Client) GetProjectResourceMetadata(params *GetProjectResourceMetadataParams) (*GetProjectResourceMetadataOK, error) {
 	// TODO: Validate the params before sending
@@ -171,9 +189,9 @@ func (a *Client) GetProjectResourceMetadata(params *GetProjectResourceMetadataPa
 }
 
 /*
-GetProjects gets projects
+  GetProjects gets projects
 
-Get all projects
+  Get all projects
 */
 func (a *Client) GetProjects(params *GetProjectsParams) (*GetProjectsOK, error) {
 	// TODO: Validate the params before sending
@@ -207,9 +225,9 @@ func (a *Client) GetProjects(params *GetProjectsParams) (*GetProjectsOK, error) 
 }
 
 /*
-UpdateProject updates project
+  UpdateProject updates project
 
-Update project
+  Update project
 */
 func (a *Client) UpdateProject(params *UpdateProjectParams) (*UpdateProjectOK, error) {
 	// TODO: Validate the params before sending
@@ -243,9 +261,9 @@ func (a *Client) UpdateProject(params *UpdateProjectParams) (*UpdateProjectOK, e
 }
 
 /*
-UpdateProjectResourceMetadata updates project resource metadata
+  UpdateProjectResourceMetadata updates project resource metadata
 
-Update project resource metadata by a given project id
+  Update project resource metadata by a given project id
 */
 func (a *Client) UpdateProjectResourceMetadata(params *UpdateProjectResourceMetadataParams) (*UpdateProjectResourceMetadataOK, error) {
 	// TODO: Validate the params before sending

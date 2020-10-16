@@ -31,9 +31,9 @@ find pkg -type f -exec sed -i.bak 's/_p_o_s_t_/_post_/g' {} +
 find pkg -type f -exec sed -i.bak 's/_p_u_t_/_put_/g' {} +
 find pkg -type f -exec sed -i.bak 's/ iaa s/ iaas /g' {} +
 find pkg -type f -exec sed -i.bak 's/ v mware/ vmware/g' {} +
-find pkg -type f -exec sed -i.bak 's/VMwareCloudAssemblyIaaS/MulticloudIaaS/g' {} +
+find pkg -type f -exec sed -i.bak 's/VMwareCloudAssemblyIaaSAPI/MulticloudIaaS/g' {} +
 find pkg -type f -exec sed -i.bak 's/ g e t params/ get params/g' {} +
 find pkg -type f -exec sed -i.bak 's/ g e t 1 / get1 /g' {} +
 find pkg -type f -name "*.bak" -exec rm {} +
 
-mv pkg/client/v_mware_cloud_assembly_iaa_s_client.go pkg/client/vra_client.go
+mv pkg/client/v_mware_cloud_assembly_iaa_s_api_client.go pkg/client/vra_client.go

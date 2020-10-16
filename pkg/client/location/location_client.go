@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new location API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,31 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-CreateZone creates zone
+// ClientService is the interface for Client methods
+type ClientService interface {
+	CreateZone(params *CreateZoneParams) (*CreateZoneCreated, error)
 
-Create zone
+	DeleteZone(params *DeleteZoneParams) (*DeleteZoneNoContent, error)
+
+	GetComputes(params *GetComputesParams) (*GetComputesOK, error)
+
+	GetRegion(params *GetRegionParams) (*GetRegionOK, error)
+
+	GetRegions(params *GetRegionsParams) (*GetRegionsOK, error)
+
+	GetZone(params *GetZoneParams) (*GetZoneOK, error)
+
+	GetZones(params *GetZonesParams) (*GetZonesOK, error)
+
+	UpdateZone(params *UpdateZoneParams) (*UpdateZoneOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  CreateZone creates zone
+
+  Create zone
 */
 func (a *Client) CreateZone(params *CreateZoneParams) (*CreateZoneCreated, error) {
 	// TODO: Validate the params before sending
@@ -63,9 +83,9 @@ func (a *Client) CreateZone(params *CreateZoneParams) (*CreateZoneCreated, error
 }
 
 /*
-DeleteZone deletes a zone
+  DeleteZone deletes a zone
 
-Delete a zone
+  Delete a zone
 */
 func (a *Client) DeleteZone(params *DeleteZoneParams) (*DeleteZoneNoContent, error) {
 	// TODO: Validate the params before sending
@@ -99,9 +119,9 @@ func (a *Client) DeleteZone(params *DeleteZoneParams) (*DeleteZoneNoContent, err
 }
 
 /*
-GetComputes gets computes
+  GetComputes gets computes
 
-Get zone's computes by given zone ID
+  Get zone's computes by given zone ID
 */
 func (a *Client) GetComputes(params *GetComputesParams) (*GetComputesOK, error) {
 	// TODO: Validate the params before sending
@@ -135,9 +155,9 @@ func (a *Client) GetComputes(params *GetComputesParams) (*GetComputesOK, error) 
 }
 
 /*
-GetRegion gets region
+  GetRegion gets region
 
-Get Region with a given id
+  Get Region with a given id
 */
 func (a *Client) GetRegion(params *GetRegionParams) (*GetRegionOK, error) {
 	// TODO: Validate the params before sending
@@ -171,9 +191,9 @@ func (a *Client) GetRegion(params *GetRegionParams) (*GetRegionOK, error) {
 }
 
 /*
-GetRegions gets regions
+  GetRegions gets regions
 
-Get all regions
+  Get all regions
 */
 func (a *Client) GetRegions(params *GetRegionsParams) (*GetRegionsOK, error) {
 	// TODO: Validate the params before sending
@@ -207,9 +227,9 @@ func (a *Client) GetRegions(params *GetRegionsParams) (*GetRegionsOK, error) {
 }
 
 /*
-GetZone gets zone
+  GetZone gets zone
 
-Get zone with given id
+  Get zone with given id
 */
 func (a *Client) GetZone(params *GetZoneParams) (*GetZoneOK, error) {
 	// TODO: Validate the params before sending
@@ -243,9 +263,9 @@ func (a *Client) GetZone(params *GetZoneParams) (*GetZoneOK, error) {
 }
 
 /*
-GetZones gets zones
+  GetZones gets zones
 
-Get all zones
+  Get all zones
 */
 func (a *Client) GetZones(params *GetZonesParams) (*GetZonesOK, error) {
 	// TODO: Validate the params before sending
@@ -279,9 +299,9 @@ func (a *Client) GetZones(params *GetZonesParams) (*GetZonesOK, error) {
 }
 
 /*
-UpdateZone updates zone
+  UpdateZone updates zone
 
-Update zone
+  Update zone
 */
 func (a *Client) UpdateZone(params *UpdateZoneParams) (*UpdateZoneOK, error) {
 	// TODO: Validate the params before sending

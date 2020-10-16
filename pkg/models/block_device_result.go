@@ -8,13 +8,13 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // BlockDeviceResult State object representing a query result of block device.
+//
 // swagger:model BlockDeviceResult
 type BlockDeviceResult struct {
 

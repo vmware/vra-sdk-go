@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new image profile API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,25 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-CreateImageProfile creates image profile
+// ClientService is the interface for Client methods
+type ClientService interface {
+	CreateImageProfile(params *CreateImageProfileParams) (*CreateImageProfileCreated, error)
 
-Create image profile
+	DeleteImageProfile(params *DeleteImageProfileParams) (*DeleteImageProfileNoContent, error)
+
+	GetImageProfile(params *GetImageProfileParams) (*GetImageProfileOK, error)
+
+	GetImageProfiles(params *GetImageProfilesParams) (*GetImageProfilesOK, error)
+
+	UpdateImageProfile(params *UpdateImageProfileParams) (*UpdateImageProfileOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  CreateImageProfile creates image profile
+
+  Create image profile
 */
 func (a *Client) CreateImageProfile(params *CreateImageProfileParams) (*CreateImageProfileCreated, error) {
 	// TODO: Validate the params before sending
@@ -63,9 +77,9 @@ func (a *Client) CreateImageProfile(params *CreateImageProfileParams) (*CreateIm
 }
 
 /*
-DeleteImageProfile deletes image profile
+  DeleteImageProfile deletes image profile
 
-Delete image profile with a given id
+  Delete image profile with a given id
 */
 func (a *Client) DeleteImageProfile(params *DeleteImageProfileParams) (*DeleteImageProfileNoContent, error) {
 	// TODO: Validate the params before sending
@@ -99,9 +113,9 @@ func (a *Client) DeleteImageProfile(params *DeleteImageProfileParams) (*DeleteIm
 }
 
 /*
-GetImageProfile gets image profile
+  GetImageProfile gets image profile
 
-Get image profile with a given id
+  Get image profile with a given id
 */
 func (a *Client) GetImageProfile(params *GetImageProfileParams) (*GetImageProfileOK, error) {
 	// TODO: Validate the params before sending
@@ -135,9 +149,9 @@ func (a *Client) GetImageProfile(params *GetImageProfileParams) (*GetImageProfil
 }
 
 /*
-GetImageProfiles gets image profile
+  GetImageProfiles gets image profile
 
-Get all image profiles
+  Get all image profiles
 */
 func (a *Client) GetImageProfiles(params *GetImageProfilesParams) (*GetImageProfilesOK, error) {
 	// TODO: Validate the params before sending
@@ -171,9 +185,9 @@ func (a *Client) GetImageProfiles(params *GetImageProfilesParams) (*GetImageProf
 }
 
 /*
-UpdateImageProfile updates image profile
+  UpdateImageProfile updates image profile
 
-Update image profile
+  Update image profile
 */
 func (a *Client) UpdateImageProfile(params *UpdateImageProfileParams) (*UpdateImageProfileOK, error) {
 	// TODO: Validate the params before sending

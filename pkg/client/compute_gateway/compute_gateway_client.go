@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new compute gateway API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,23 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-CreateComputeGateway creates a compute gateway
+// ClientService is the interface for Client methods
+type ClientService interface {
+	CreateComputeGateway(params *CreateComputeGatewayParams) (*CreateComputeGatewayOK, error)
 
-Create a new compute gateway.
+	DeleteComputeGateway(params *DeleteComputeGatewayParams) (*DeleteComputeGatewayOK, error)
+
+	GetComputeGateway(params *GetComputeGatewayParams) (*GetComputeGatewayOK, error)
+
+	GetGateway(params *GetGatewayParams) (*GetGatewayOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  CreateComputeGateway creates a compute gateway
+
+  Create a new compute gateway.
 */
 func (a *Client) CreateComputeGateway(params *CreateComputeGatewayParams) (*CreateComputeGatewayOK, error) {
 	// TODO: Validate the params before sending
@@ -63,9 +75,9 @@ func (a *Client) CreateComputeGateway(params *CreateComputeGatewayParams) (*Crea
 }
 
 /*
-DeleteComputeGateway deletes a compute gateway
+  DeleteComputeGateway deletes a compute gateway
 
-Delete compute gateway with a given id
+  Delete compute gateway with a given id
 */
 func (a *Client) DeleteComputeGateway(params *DeleteComputeGatewayParams) (*DeleteComputeGatewayOK, error) {
 	// TODO: Validate the params before sending
@@ -99,9 +111,9 @@ func (a *Client) DeleteComputeGateway(params *DeleteComputeGatewayParams) (*Dele
 }
 
 /*
-GetComputeGateway gets compute gateway
+  GetComputeGateway gets compute gateway
 
-Get all compute gateways
+  Get all compute gateways
 */
 func (a *Client) GetComputeGateway(params *GetComputeGatewayParams) (*GetComputeGatewayOK, error) {
 	// TODO: Validate the params before sending
@@ -135,9 +147,9 @@ func (a *Client) GetComputeGateway(params *GetComputeGatewayParams) (*GetCompute
 }
 
 /*
-GetGateway gets gateway
+  GetGateway gets gateway
 
-Get gateway with a given id
+  Get gateway with a given id
 */
 func (a *Client) GetGateway(params *GetGatewayParams) (*GetGatewayOK, error) {
 	// TODO: Validate the params before sending

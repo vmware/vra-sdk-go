@@ -8,14 +8,14 @@ package models
 import (
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // Rule A rule used in a security group.
+//
 // swagger:model Rule
 type Rule struct {
 
@@ -99,7 +99,7 @@ const (
 
 // prop value enum
 func (m *Rule) validateAccessEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, ruleTypeAccessPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, ruleTypeAccessPropEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -142,7 +142,7 @@ const (
 
 // prop value enum
 func (m *Rule) validateDirectionEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, ruleTypeDirectionPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, ruleTypeDirectionPropEnum, true); err != nil {
 		return err
 	}
 	return nil

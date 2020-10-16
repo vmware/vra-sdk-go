@@ -8,9 +8,8 @@ package models
 import (
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
@@ -18,6 +17,7 @@ import (
 // Policy Policy
 //
 // A policy such as lease policy that will be enforced.
+//
 // swagger:model Policy
 type Policy struct {
 
@@ -185,7 +185,7 @@ const (
 
 // prop value enum
 func (m *Policy) validateEnforcementTypeEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, policyTypeEnforcementTypePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, policyTypeEnforcementTypePropEnum, true); err != nil {
 		return err
 	}
 	return nil

@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new source control sync API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,8 +25,21 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientService is the interface for Client methods
+type ClientService interface {
+	GetSyncRequestUsingGET(params *GetSyncRequestUsingGETParams) (*GetSyncRequestUsingGETOK, error)
+
+	ScheduleSyncAllUsingPOST(params *ScheduleSyncAllUsingPOSTParams) (*ScheduleSyncAllUsingPOSTAccepted, error)
+
+	ScheduleSyncUsingPOST(params *ScheduleSyncUsingPOSTParams) (*ScheduleSyncUsingPOSTAccepted, error)
+
+	SyncHistoryUsingGET(params *SyncHistoryUsingGETParams) (*SyncHistoryUsingGETOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
 /*
-GetSyncRequestUsingGET gets a sync request by id
+  GetSyncRequestUsingGET gets a sync request by id
 */
 func (a *Client) GetSyncRequestUsingGET(params *GetSyncRequestUsingGETParams) (*GetSyncRequestUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -61,9 +73,9 @@ func (a *Client) GetSyncRequestUsingGET(params *GetSyncRequestUsingGETParams) (*
 }
 
 /*
-ScheduleSyncAllUsingPOST submits sync request for the projects
+  ScheduleSyncAllUsingPOST submits sync request for the projects
 
-Request sync for the sources belonging to the user's projects or specified projects
+  Request sync for the sources belonging to the user's projects or specified projects
 */
 func (a *Client) ScheduleSyncAllUsingPOST(params *ScheduleSyncAllUsingPOSTParams) (*ScheduleSyncAllUsingPOSTAccepted, error) {
 	// TODO: Validate the params before sending
@@ -97,9 +109,9 @@ func (a *Client) ScheduleSyncAllUsingPOST(params *ScheduleSyncAllUsingPOSTParams
 }
 
 /*
-ScheduleSyncUsingPOST creates a sync request
+  ScheduleSyncUsingPOST creates a sync request
 
-Request sync for a content source
+  Request sync for a content source
 */
 func (a *Client) ScheduleSyncUsingPOST(params *ScheduleSyncUsingPOSTParams) (*ScheduleSyncUsingPOSTAccepted, error) {
 	// TODO: Validate the params before sending
@@ -133,9 +145,9 @@ func (a *Client) ScheduleSyncUsingPOST(params *ScheduleSyncUsingPOSTParams) (*Sc
 }
 
 /*
-SyncHistoryUsingGET gets sync history
+  SyncHistoryUsingGET gets sync history
 
-Get history for files synced via source control sync
+  Get history for files synced via source control sync
 */
 func (a *Client) SyncHistoryUsingGET(params *SyncHistoryUsingGETParams) (*SyncHistoryUsingGETOK, error) {
 	// TODO: Validate the params before sending

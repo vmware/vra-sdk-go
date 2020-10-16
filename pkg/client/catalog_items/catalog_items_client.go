@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new catalog items API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,29 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-GetCatalogItemUsingGET1 finds a catalog item with specified ID
+// ClientService is the interface for Client methods
+type ClientService interface {
+	GetCatalogItemUsingGET1(params *GetCatalogItemUsingGET1Params) (*GetCatalogItemUsingGET1OK, error)
 
-Returns the catalog item with the specified ID.
+	GetCatalogItemsUsingGET1(params *GetCatalogItemsUsingGET1Params) (*GetCatalogItemsUsingGET1OK, error)
+
+	GetUpfrontPriceResponseForCatalogItemUsingGET(params *GetUpfrontPriceResponseForCatalogItemUsingGETParams) (*GetUpfrontPriceResponseForCatalogItemUsingGETOK, error)
+
+	GetVersionByIDUsingGET(params *GetVersionByIDUsingGETParams) (*GetVersionByIDUsingGETOK, error)
+
+	GetVersionsUsingGET(params *GetVersionsUsingGETParams) (*GetVersionsUsingGETOK, error)
+
+	RequestCatalogItemUsingPOST(params *RequestCatalogItemUsingPOSTParams) (*RequestCatalogItemUsingPOSTOK, error)
+
+	SubmitUpfrontPriceRequestForCatalogItemUsingPOST(params *SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams) (*SubmitUpfrontPriceRequestForCatalogItemUsingPOSTOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  GetCatalogItemUsingGET1 finds a catalog item with specified ID
+
+  Returns the catalog item with the specified ID.
 */
 func (a *Client) GetCatalogItemUsingGET1(params *GetCatalogItemUsingGET1Params) (*GetCatalogItemUsingGET1OK, error) {
 	// TODO: Validate the params before sending
@@ -63,9 +81,9 @@ func (a *Client) GetCatalogItemUsingGET1(params *GetCatalogItemUsingGET1Params) 
 }
 
 /*
-GetCatalogItemsUsingGET1 fetches a list of catalog items
+  GetCatalogItemsUsingGET1 fetches a list of catalog items
 
-Returns a paginated list of catalog items.
+  Returns a paginated list of catalog items.
 */
 func (a *Client) GetCatalogItemsUsingGET1(params *GetCatalogItemsUsingGET1Params) (*GetCatalogItemsUsingGET1OK, error) {
 	// TODO: Validate the params before sending
@@ -99,9 +117,9 @@ func (a *Client) GetCatalogItemsUsingGET1(params *GetCatalogItemsUsingGET1Params
 }
 
 /*
-GetUpfrontPriceResponseForCatalogItemUsingGET gets a response with upfront prices for a given catalog item
+  GetUpfrontPriceResponseForCatalogItemUsingGET gets a response with upfront prices for a given catalog item
 
-Returns upfront prices of a given catalog item.
+  Returns upfront prices of a given catalog item.
 */
 func (a *Client) GetUpfrontPriceResponseForCatalogItemUsingGET(params *GetUpfrontPriceResponseForCatalogItemUsingGETParams) (*GetUpfrontPriceResponseForCatalogItemUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -135,9 +153,9 @@ func (a *Client) GetUpfrontPriceResponseForCatalogItemUsingGET(params *GetUpfron
 }
 
 /*
-GetVersionByIDUsingGET fetches detailed catalog item version
+  GetVersionByIDUsingGET fetches detailed catalog item version
 
-Returns a detailed catalog item version.
+  Returns a detailed catalog item version.
 */
 func (a *Client) GetVersionByIDUsingGET(params *GetVersionByIDUsingGETParams) (*GetVersionByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -171,9 +189,9 @@ func (a *Client) GetVersionByIDUsingGET(params *GetVersionByIDUsingGETParams) (*
 }
 
 /*
-GetVersionsUsingGET fetches a list of catalog items with versions
+  GetVersionsUsingGET fetches a list of catalog items with versions
 
-Returns a paginated list of catalog item versions.
+  Returns a paginated list of catalog item versions.
 */
 func (a *Client) GetVersionsUsingGET(params *GetVersionsUsingGETParams) (*GetVersionsUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -207,9 +225,9 @@ func (a *Client) GetVersionsUsingGET(params *GetVersionsUsingGETParams) (*GetVer
 }
 
 /*
-RequestCatalogItemUsingPOST creates a deployment
+  RequestCatalogItemUsingPOST creates a deployment
 
-Creates a deployment from a catalog item.
+  Creates a deployment from a catalog item.
 */
 func (a *Client) RequestCatalogItemUsingPOST(params *RequestCatalogItemUsingPOSTParams) (*RequestCatalogItemUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -243,9 +261,9 @@ func (a *Client) RequestCatalogItemUsingPOST(params *RequestCatalogItemUsingPOST
 }
 
 /*
-SubmitUpfrontPriceRequestForCatalogItemUsingPOST creates a request to calculate upfront price for a given catalog item
+  SubmitUpfrontPriceRequestForCatalogItemUsingPOST creates a request to calculate upfront price for a given catalog item
 
-Returns upfront price response for a given catalog item.
+  Returns upfront price response for a given catalog item.
 */
 func (a *Client) SubmitUpfrontPriceRequestForCatalogItemUsingPOST(params *SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams) (*SubmitUpfrontPriceRequestForCatalogItemUsingPOSTOK, error) {
 	// TODO: Validate the params before sending

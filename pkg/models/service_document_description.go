@@ -9,14 +9,14 @@ import (
 	"encoding/json"
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // ServiceDocumentDescription service document description
+//
 // swagger:model ServiceDocumentDescription
 type ServiceDocumentDescription struct {
 
@@ -90,7 +90,7 @@ func init() {
 }
 
 func (m *ServiceDocumentDescription) validateDocumentIndexingOptionsItemsEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, serviceDocumentDescriptionDocumentIndexingOptionsItemsEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, serviceDocumentDescriptionDocumentIndexingOptionsItemsEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -149,7 +149,7 @@ func init() {
 }
 
 func (m *ServiceDocumentDescription) validateServiceCapabilitiesItemsEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, serviceDocumentDescriptionServiceCapabilitiesItemsEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, serviceDocumentDescriptionServiceCapabilitiesItemsEnum, true); err != nil {
 		return err
 	}
 	return nil

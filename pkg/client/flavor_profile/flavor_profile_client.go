@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new flavor profile API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,25 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-CreateFlavorProfile creates flavor profile
+// ClientService is the interface for Client methods
+type ClientService interface {
+	CreateFlavorProfile(params *CreateFlavorProfileParams) (*CreateFlavorProfileCreated, error)
 
-Create flavor profile
+	DeleteFlavorProfile(params *DeleteFlavorProfileParams) (*DeleteFlavorProfileNoContent, error)
+
+	GetFlavorProfile(params *GetFlavorProfileParams) (*GetFlavorProfileOK, error)
+
+	GetFlavorProfiles(params *GetFlavorProfilesParams) (*GetFlavorProfilesOK, error)
+
+	UpdateFlavorProfile(params *UpdateFlavorProfileParams) (*UpdateFlavorProfileOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  CreateFlavorProfile creates flavor profile
+
+  Create flavor profile
 */
 func (a *Client) CreateFlavorProfile(params *CreateFlavorProfileParams) (*CreateFlavorProfileCreated, error) {
 	// TODO: Validate the params before sending
@@ -63,9 +77,9 @@ func (a *Client) CreateFlavorProfile(params *CreateFlavorProfileParams) (*Create
 }
 
 /*
-DeleteFlavorProfile deletes flavor profile
+  DeleteFlavorProfile deletes flavor profile
 
-Delete flavor profile with a given id
+  Delete flavor profile with a given id
 */
 func (a *Client) DeleteFlavorProfile(params *DeleteFlavorProfileParams) (*DeleteFlavorProfileNoContent, error) {
 	// TODO: Validate the params before sending
@@ -99,9 +113,9 @@ func (a *Client) DeleteFlavorProfile(params *DeleteFlavorProfileParams) (*Delete
 }
 
 /*
-GetFlavorProfile gets flavor profile
+  GetFlavorProfile gets flavor profile
 
-Get flavor profile with a given id
+  Get flavor profile with a given id
 */
 func (a *Client) GetFlavorProfile(params *GetFlavorProfileParams) (*GetFlavorProfileOK, error) {
 	// TODO: Validate the params before sending
@@ -135,9 +149,9 @@ func (a *Client) GetFlavorProfile(params *GetFlavorProfileParams) (*GetFlavorPro
 }
 
 /*
-GetFlavorProfiles gets flavor profile
+  GetFlavorProfiles gets flavor profile
 
-Get all flavor profile
+  Get all flavor profile
 */
 func (a *Client) GetFlavorProfiles(params *GetFlavorProfilesParams) (*GetFlavorProfilesOK, error) {
 	// TODO: Validate the params before sending
@@ -171,9 +185,9 @@ func (a *Client) GetFlavorProfiles(params *GetFlavorProfilesParams) (*GetFlavorP
 }
 
 /*
-UpdateFlavorProfile updates flavor profile
+  UpdateFlavorProfile updates flavor profile
 
-Update flavor profile
+  Update flavor profile
 */
 func (a *Client) UpdateFlavorProfile(params *UpdateFlavorProfileParams) (*UpdateFlavorProfileOK, error) {
 	// TODO: Validate the params before sending

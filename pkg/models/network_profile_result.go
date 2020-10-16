@@ -8,13 +8,13 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // NetworkProfileResult State object representing a query result of network profiles.
+//
 // swagger:model NetworkProfileResult
 type NetworkProfileResult struct {
 

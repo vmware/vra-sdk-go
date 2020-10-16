@@ -9,14 +9,14 @@ import (
 	"encoding/json"
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // Route route
+//
 // swagger:model Route
 type Route struct {
 
@@ -101,7 +101,7 @@ const (
 
 // prop value enum
 func (m *Route) validateActionEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, routeTypeActionPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, routeTypeActionPropEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -175,7 +175,7 @@ const (
 
 // prop value enum
 func (m *Route) validateSupportLevelEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, routeTypeSupportLevelPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, routeTypeSupportLevelPropEnum, true); err != nil {
 		return err
 	}
 	return nil
