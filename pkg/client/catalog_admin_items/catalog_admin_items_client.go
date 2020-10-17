@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new catalog admin items API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,21 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-GetCatalogItemUsingGET finds a catalog item with specified id
+// ClientService is the interface for Client methods
+type ClientService interface {
+	GetCatalogItemUsingGET(params *GetCatalogItemUsingGETParams) (*GetCatalogItemUsingGETOK, error)
 
-Returns the catalog item with the specified id.
+	GetCatalogItemsUsingGET(params *GetCatalogItemsUsingGETParams) (*GetCatalogItemsUsingGETOK, error)
+
+	UpdateCatalogItemUsingPATCH(params *UpdateCatalogItemUsingPATCHParams) (*UpdateCatalogItemUsingPATCHOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  GetCatalogItemUsingGET finds a catalog item with specified id
+
+  Returns the catalog item with the specified id.
 */
 func (a *Client) GetCatalogItemUsingGET(params *GetCatalogItemUsingGETParams) (*GetCatalogItemUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -63,9 +73,9 @@ func (a *Client) GetCatalogItemUsingGET(params *GetCatalogItemUsingGETParams) (*
 }
 
 /*
-GetCatalogItemsUsingGET fetches a list of catalog items
+  GetCatalogItemsUsingGET fetches a list of catalog items
 
-Returns a paginated list of catalog items.
+  Returns a paginated list of catalog items.
 */
 func (a *Client) GetCatalogItemsUsingGET(params *GetCatalogItemsUsingGETParams) (*GetCatalogItemsUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -99,9 +109,9 @@ func (a *Client) GetCatalogItemsUsingGET(params *GetCatalogItemsUsingGETParams) 
 }
 
 /*
-UpdateCatalogItemUsingPATCH sets an icon or request limit to a catalog item
+  UpdateCatalogItemUsingPATCH sets an icon or request limit to a catalog item
 
-Updates a catalog item with specified icon id or request limit.
+  Updates a catalog item with specified icon id or request limit.
 */
 func (a *Client) UpdateCatalogItemUsingPATCH(params *UpdateCatalogItemUsingPATCHParams) (*UpdateCatalogItemUsingPATCHOK, error) {
 	// TODO: Validate the params before sending

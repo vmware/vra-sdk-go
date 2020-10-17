@@ -8,14 +8,14 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // AzureStorageProfile Defines a structure that holds list of storage policies defined for Azure for a specific region.**HATEOAS** links:<br>**storage-account** - FabricAzureStorageAccount - Storage account for the profile.<br>**region** - Region - Region for the profile.<br>**self** - AzureStorageProfile - Self link to this Azure storage profile.
+//
 // swagger:model AzureStorageProfile
 type AzureStorageProfile struct {
 

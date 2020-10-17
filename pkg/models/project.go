@@ -8,14 +8,14 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // Project Projects link users and cloud zones, thus controlling who can use what cloud resources.<br>**HATEOAS** links:<br>**self** - Project - Self link to this project
+//
 // swagger:model Project
 type Project struct {
 

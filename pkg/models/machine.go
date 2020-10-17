@@ -9,14 +9,14 @@ import (
 	"encoding/json"
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // Machine Represents a cloud agnostic machine.<br>**HATEOAS** links:<br>**operations** - array[String] - Supported operations for the machine.<br>**network-interfaces** - array[NetworkInterface] - Network interfaces for the machine.<br>**disks** - array[MachineDisk] - disks for the machine.<br>**deployment** - Deployment - Deployment that this machine is part of.<br>**cloud-accounts** - array[CloudAccount] - Cloud accounts where this machine is provisioned.<br>**self** - Machine - Self link to this machine
+//
 // swagger:model Machine
 type Machine struct {
 
@@ -213,7 +213,7 @@ const (
 
 // prop value enum
 func (m *Machine) validatePowerStateEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, machineTypePowerStatePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, machineTypePowerStatePropEnum, true); err != nil {
 		return err
 	}
 	return nil

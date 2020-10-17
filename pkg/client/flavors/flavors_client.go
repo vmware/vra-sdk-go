@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new flavors API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,17 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-GetFlavors gets flavors
+// ClientService is the interface for Client methods
+type ClientService interface {
+	GetFlavors(params *GetFlavorsParams) (*GetFlavorsOK, error)
 
-Get all flavors defined in FlavorProfile
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  GetFlavors gets flavors
+
+  Get all flavors defined in FlavorProfile
 */
 func (a *Client) GetFlavors(params *GetFlavorsParams) (*GetFlavorsOK, error) {
 	// TODO: Validate the params before sending

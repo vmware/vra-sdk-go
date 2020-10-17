@@ -8,13 +8,13 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // RequestTrackerResult State object representing a query result of request tracker objects.
+//
 // swagger:model RequestTrackerResult
 type RequestTrackerResult struct {
 

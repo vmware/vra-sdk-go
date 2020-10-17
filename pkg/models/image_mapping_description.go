@@ -8,14 +8,14 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // ImageMappingDescription Represents a fabric image from the corresponding cloud end-point with additional cloud configuration script that will be executed on provisioning
+//
 // swagger:model ImageMappingDescription
 type ImageMappingDescription struct {
 

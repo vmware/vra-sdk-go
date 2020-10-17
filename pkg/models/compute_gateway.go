@@ -8,14 +8,14 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // ComputeGateway The compute gateway object is a logical entity attached to a network. It is used to configure NAT rules on the Edge Gateway or Tier-1 logical router in NSX to enable port forwarding.<br>**HATEOAS** links:<br>**self** - Compute Gateway - Self link to this compute gateway
+//
 // swagger:model ComputeGateway
 type ComputeGateway struct {
 

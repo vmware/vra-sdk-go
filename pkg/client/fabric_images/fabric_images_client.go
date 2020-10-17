@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new fabric images API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,19 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-GetFabricImage gets fabric image
+// ClientService is the interface for Client methods
+type ClientService interface {
+	GetFabricImage(params *GetFabricImageParams) (*GetFabricImageOK, error)
 
-Get fabric image with a given id
+	GetFabricImages(params *GetFabricImagesParams) (*GetFabricImagesOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  GetFabricImage gets fabric image
+
+  Get fabric image with a given id
 */
 func (a *Client) GetFabricImage(params *GetFabricImageParams) (*GetFabricImageOK, error) {
 	// TODO: Validate the params before sending
@@ -63,9 +71,9 @@ func (a *Client) GetFabricImage(params *GetFabricImageParams) (*GetFabricImageOK
 }
 
 /*
-GetFabricImages gets fabric images
+  GetFabricImages gets fabric images
 
-Get all fabric images
+  Get all fabric images
 */
 func (a *Client) GetFabricImages(params *GetFabricImagesParams) (*GetFabricImagesOK, error) {
 	// TODO: Validate the params before sending

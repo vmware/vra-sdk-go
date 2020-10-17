@@ -8,14 +8,14 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // FabricNetwork State object representing a network on a external cloud provider.<br>**HATEOAS** links:<br>**region** - Region - Region for the network.<br>**self** - FabricNetwork - Self link to this network
+//
 // swagger:model FabricNetwork
 type FabricNetwork struct {
 

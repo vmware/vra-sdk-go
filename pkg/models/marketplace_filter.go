@@ -8,14 +8,14 @@ package models
 import (
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // MarketplaceFilter MarketplaceFilter
+//
 // swagger:model MarketplaceFilter
 type MarketplaceFilter struct {
 
@@ -103,7 +103,7 @@ const (
 
 // prop value enum
 func (m *MarketplaceFilter) validateTypeEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, marketplaceFilterTypeTypePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, marketplaceFilterTypeTypePropEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -149,7 +149,7 @@ const (
 
 // prop value enum
 func (m *MarketplaceFilter) validateValueTypeEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, marketplaceFilterTypeValueTypePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, marketplaceFilterTypeValueTypePropEnum, true); err != nil {
 		return err
 	}
 	return nil

@@ -9,14 +9,14 @@ import (
 	"encoding/json"
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // BlueprintRequest BlueprintRequest
+//
 // swagger:model BlueprintRequest
 type BlueprintRequest struct {
 
@@ -230,7 +230,7 @@ const (
 
 // prop value enum
 func (m *BlueprintRequest) validateStatusEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, blueprintRequestTypeStatusPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, blueprintRequestTypeStatusPropEnum, true); err != nil {
 		return err
 	}
 	return nil

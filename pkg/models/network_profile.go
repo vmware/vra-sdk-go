@@ -9,14 +9,14 @@ import (
 	"encoding/json"
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // NetworkProfile Represents a network Profile.<br>**HATEOAS** links:<br>**fabric-networks** - array[FabricNetwork] - Fabric networks defined in this profile.<br>**security-groups** - array[SecurityGroup] - List of security groups for this profile.<br>**network-domains** - array[NetworkDomain] - List of network domains for this profile.<br>**isolated-external-fabric-networks** - array[FabricNetwork] - Isolated external fabric networks in this profile.<br>**self** - NetowrkProfile - Self link to this network profile
+//
 // swagger:model NetworkProfile
 type NetworkProfile struct {
 
@@ -151,7 +151,7 @@ const (
 
 // prop value enum
 func (m *NetworkProfile) validateIsolationTypeEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, networkProfileTypeIsolationTypePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, networkProfileTypeIsolationTypePropEnum, true); err != nil {
 		return err
 	}
 	return nil

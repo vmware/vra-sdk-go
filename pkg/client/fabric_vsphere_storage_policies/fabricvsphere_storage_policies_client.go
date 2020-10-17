@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new fabric v sphere storage policies API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,19 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-GetFabricVSphereStoragePolicies gets fabric v sphere storage polices
+// ClientService is the interface for Client methods
+type ClientService interface {
+	GetFabricVSphereStoragePolicies(params *GetFabricVSphereStoragePoliciesParams) (*GetFabricVSphereStoragePoliciesOK, error)
 
-Get all fabric vSphere storage polices.
+	GetFabricVSphereStoragePolicy(params *GetFabricVSphereStoragePolicyParams) (*GetFabricVSphereStoragePolicyOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  GetFabricVSphereStoragePolicies gets fabric v sphere storage polices
+
+  Get all fabric vSphere storage polices.
 */
 func (a *Client) GetFabricVSphereStoragePolicies(params *GetFabricVSphereStoragePoliciesParams) (*GetFabricVSphereStoragePoliciesOK, error) {
 	// TODO: Validate the params before sending
@@ -63,9 +71,9 @@ func (a *Client) GetFabricVSphereStoragePolicies(params *GetFabricVSphereStorage
 }
 
 /*
-GetFabricVSphereStoragePolicy gets fabric v sphere storage policy
+  GetFabricVSphereStoragePolicy gets fabric v sphere storage policy
 
-Get fabric vSphere storage policy with a given id
+  Get fabric vSphere storage policy with a given id
 */
 func (a *Client) GetFabricVSphereStoragePolicy(params *GetFabricVSphereStoragePolicyParams) (*GetFabricVSphereStoragePolicyOK, error) {
 	// TODO: Validate the params before sending

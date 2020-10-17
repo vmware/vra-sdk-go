@@ -8,13 +8,13 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // StorageProfileResult State object representing a query result of storage profiles.
+//
 // swagger:model StorageProfileResult
 type StorageProfileResult struct {
 

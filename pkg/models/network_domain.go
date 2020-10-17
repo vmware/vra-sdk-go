@@ -8,14 +8,14 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // NetworkDomain The network domain object is the parent of related subnets that are configured together. Subnets within a domain must have non-overlapping address spaces.<br>**HATEOAS** links:<br>**cloud-accounts** - array[CloudAccount] - List of cloud accounts where this network domain exists.<br>**self** - NetworkDomain - Self link to this network domain
+//
 // swagger:model NetworkDomain
 type NetworkDomain struct {
 

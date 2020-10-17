@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new request API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,23 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-CancelRequest cancels operation for request
+// ClientService is the interface for Client methods
+type ClientService interface {
+	CancelRequest(params *CancelRequestParams) error
 
-Cancel operation for request with a given id
+	DeleteRequest(params *DeleteRequestParams) (*DeleteRequestNoContent, error)
+
+	GetRequestTracker(params *GetRequestTrackerParams) (*GetRequestTrackerOK, error)
+
+	GetRequestTrackers(params *GetRequestTrackersParams) (*GetRequestTrackersOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  CancelRequest cancels operation for request
+
+  Cancel operation for request with a given id
 */
 func (a *Client) CancelRequest(params *CancelRequestParams) error {
 	// TODO: Validate the params before sending
@@ -56,9 +68,9 @@ func (a *Client) CancelRequest(params *CancelRequestParams) error {
 }
 
 /*
-DeleteRequest deletes request
+  DeleteRequest deletes request
 
-Delete a single Request
+  Delete a single Request
 */
 func (a *Client) DeleteRequest(params *DeleteRequestParams) (*DeleteRequestNoContent, error) {
 	// TODO: Validate the params before sending
@@ -92,9 +104,9 @@ func (a *Client) DeleteRequest(params *DeleteRequestParams) (*DeleteRequestNoCon
 }
 
 /*
-GetRequestTracker gets request tracker
+  GetRequestTracker gets request tracker
 
-Get request tracker with a given id
+  Get request tracker with a given id
 */
 func (a *Client) GetRequestTracker(params *GetRequestTrackerParams) (*GetRequestTrackerOK, error) {
 	// TODO: Validate the params before sending
@@ -128,9 +140,9 @@ func (a *Client) GetRequestTracker(params *GetRequestTrackerParams) (*GetRequest
 }
 
 /*
-GetRequestTrackers gets request tracker
+  GetRequestTrackers gets request tracker
 
-Get all request trackers
+  Get all request trackers
 */
 func (a *Client) GetRequestTrackers(params *GetRequestTrackersParams) (*GetRequestTrackersOK, error) {
 	// TODO: Validate the params before sending

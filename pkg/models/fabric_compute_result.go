@@ -8,13 +8,13 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // FabricComputeResult State object representing a query result of cloud zone's computes.
+//
 // swagger:model FabricComputeResult
 type FabricComputeResult struct {
 

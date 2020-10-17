@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new load balancer API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,29 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-CreateLoadBalancer creates load balancer
+// ClientService is the interface for Client methods
+type ClientService interface {
+	CreateLoadBalancer(params *CreateLoadBalancerParams) (*CreateLoadBalancerAccepted, error)
 
-Create load balancer
+	DeleteLoadBalancer(params *DeleteLoadBalancerParams) (*DeleteLoadBalancerAccepted, error)
+
+	DeleteLoadBalancerOperation(params *DeleteLoadBalancerOperationParams) (*DeleteLoadBalancerOperationAccepted, error)
+
+	GetLoadBalancer(params *GetLoadBalancerParams) (*GetLoadBalancerOK, error)
+
+	GetLoadBalancerNetworkInterface(params *GetLoadBalancerNetworkInterfaceParams) (*GetLoadBalancerNetworkInterfaceOK, error)
+
+	GetLoadBalancers(params *GetLoadBalancersParams) (*GetLoadBalancersOK, error)
+
+	ScaleLoadBalancer(params *ScaleLoadBalancerParams) (*ScaleLoadBalancerAccepted, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  CreateLoadBalancer creates load balancer
+
+  Create load balancer
 */
 func (a *Client) CreateLoadBalancer(params *CreateLoadBalancerParams) (*CreateLoadBalancerAccepted, error) {
 	// TODO: Validate the params before sending
@@ -63,9 +81,9 @@ func (a *Client) CreateLoadBalancer(params *CreateLoadBalancerParams) (*CreateLo
 }
 
 /*
-DeleteLoadBalancer deletes load balancer
+  DeleteLoadBalancer deletes load balancer
 
-Delete load balancer with a given id
+  Delete load balancer with a given id
 */
 func (a *Client) DeleteLoadBalancer(params *DeleteLoadBalancerParams) (*DeleteLoadBalancerAccepted, error) {
 	// TODO: Validate the params before sending
@@ -99,9 +117,9 @@ func (a *Client) DeleteLoadBalancer(params *DeleteLoadBalancerParams) (*DeleteLo
 }
 
 /*
-DeleteLoadBalancerOperation deletes operation for load balancer
+  DeleteLoadBalancerOperation deletes operation for load balancer
 
-Second day delete operation for load balancer
+  Second day delete operation for load balancer
 */
 func (a *Client) DeleteLoadBalancerOperation(params *DeleteLoadBalancerOperationParams) (*DeleteLoadBalancerOperationAccepted, error) {
 	// TODO: Validate the params before sending
@@ -135,9 +153,9 @@ func (a *Client) DeleteLoadBalancerOperation(params *DeleteLoadBalancerOperation
 }
 
 /*
-GetLoadBalancer gets load balancer
+  GetLoadBalancer gets load balancer
 
-Get load balancer with a given id
+  Get load balancer with a given id
 */
 func (a *Client) GetLoadBalancer(params *GetLoadBalancerParams) (*GetLoadBalancerOK, error) {
 	// TODO: Validate the params before sending
@@ -171,9 +189,9 @@ func (a *Client) GetLoadBalancer(params *GetLoadBalancerParams) (*GetLoadBalance
 }
 
 /*
-GetLoadBalancerNetworkInterface gets load balancer network interface
+  GetLoadBalancerNetworkInterface gets load balancer network interface
 
-Get network interface with a given id for specific load balancer
+  Get network interface with a given id for specific load balancer
 */
 func (a *Client) GetLoadBalancerNetworkInterface(params *GetLoadBalancerNetworkInterfaceParams) (*GetLoadBalancerNetworkInterfaceOK, error) {
 	// TODO: Validate the params before sending
@@ -207,9 +225,9 @@ func (a *Client) GetLoadBalancerNetworkInterface(params *GetLoadBalancerNetworkI
 }
 
 /*
-GetLoadBalancers gets load balancers
+  GetLoadBalancers gets load balancers
 
-Get all load balancers
+  Get all load balancers
 */
 func (a *Client) GetLoadBalancers(params *GetLoadBalancersParams) (*GetLoadBalancersOK, error) {
 	// TODO: Validate the params before sending
@@ -243,9 +261,9 @@ func (a *Client) GetLoadBalancers(params *GetLoadBalancersParams) (*GetLoadBalan
 }
 
 /*
-ScaleLoadBalancer scales operation for load balancer
+  ScaleLoadBalancer scales operation for load balancer
 
-Second day scale operation for load balancer
+  Second day scale operation for load balancer
 */
 func (a *Client) ScaleLoadBalancer(params *ScaleLoadBalancerParams) (*ScaleLoadBalancerAccepted, error) {
 	// TODO: Validate the params before sending

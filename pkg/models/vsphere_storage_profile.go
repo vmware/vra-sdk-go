@@ -8,14 +8,14 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // VsphereStorageProfile Defines a structure that holds storage profile details defined for vSphere for a specific region.**HATEOAS** links:<br>**datastore** - FabricVsphereDatastore - Datastore for this storage profile.<br>**storage-policy** - FabricVsphereStoragePolicy - vSphere storage policy for this storage profile.<br> **region** - Region - Region for the profile.<br>**self** - VsphereStorageProfile - Self link to this vSphere storage profile.
+//
 // swagger:model VsphereStorageProfile
 type VsphereStorageProfile struct {
 

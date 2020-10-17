@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new fabric v sphere datastore API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,19 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-GetFabricVSphereDatastore gets fabric v sphere datastore
+// ClientService is the interface for Client methods
+type ClientService interface {
+	GetFabricVSphereDatastore(params *GetFabricVSphereDatastoreParams) (*GetFabricVSphereDatastoreOK, error)
 
-Get fabric vSphere datastore with a given id
+	GetFabricVSphereDatastores(params *GetFabricVSphereDatastoresParams) (*GetFabricVSphereDatastoresOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  GetFabricVSphereDatastore gets fabric v sphere datastore
+
+  Get fabric vSphere datastore with a given id
 */
 func (a *Client) GetFabricVSphereDatastore(params *GetFabricVSphereDatastoreParams) (*GetFabricVSphereDatastoreOK, error) {
 	// TODO: Validate the params before sending
@@ -63,9 +71,9 @@ func (a *Client) GetFabricVSphereDatastore(params *GetFabricVSphereDatastorePara
 }
 
 /*
-GetFabricVSphereDatastores gets fabric v sphere datastores
+  GetFabricVSphereDatastores gets fabric v sphere datastores
 
-Get all fabric vSphere datastores.
+  Get all fabric vSphere datastores.
 1. If regionId is not provided as a parameter then all datastores are returned
 2. If regionId is provided as a parameter then datastores iin that region are returned
 */

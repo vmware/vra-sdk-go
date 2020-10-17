@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new network profile API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,25 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-CreateNetworkProfile creates network profile
+// ClientService is the interface for Client methods
+type ClientService interface {
+	CreateNetworkProfile(params *CreateNetworkProfileParams) (*CreateNetworkProfileCreated, error)
 
-Create network profile
+	DeleteNetworkProfile(params *DeleteNetworkProfileParams) (*DeleteNetworkProfileNoContent, error)
+
+	GetNetworkProfile(params *GetNetworkProfileParams) (*GetNetworkProfileOK, error)
+
+	GetNetworkProfiles(params *GetNetworkProfilesParams) (*GetNetworkProfilesOK, error)
+
+	UpdateNetworkProfile(params *UpdateNetworkProfileParams) (*UpdateNetworkProfileOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  CreateNetworkProfile creates network profile
+
+  Create network profile
 */
 func (a *Client) CreateNetworkProfile(params *CreateNetworkProfileParams) (*CreateNetworkProfileCreated, error) {
 	// TODO: Validate the params before sending
@@ -63,9 +77,9 @@ func (a *Client) CreateNetworkProfile(params *CreateNetworkProfileParams) (*Crea
 }
 
 /*
-DeleteNetworkProfile deletes network profile
+  DeleteNetworkProfile deletes network profile
 
-Delete network profile with a given id
+  Delete network profile with a given id
 */
 func (a *Client) DeleteNetworkProfile(params *DeleteNetworkProfileParams) (*DeleteNetworkProfileNoContent, error) {
 	// TODO: Validate the params before sending
@@ -99,9 +113,9 @@ func (a *Client) DeleteNetworkProfile(params *DeleteNetworkProfileParams) (*Dele
 }
 
 /*
-GetNetworkProfile gets network profile
+  GetNetworkProfile gets network profile
 
-Get network profile with a given id
+  Get network profile with a given id
 */
 func (a *Client) GetNetworkProfile(params *GetNetworkProfileParams) (*GetNetworkProfileOK, error) {
 	// TODO: Validate the params before sending
@@ -135,9 +149,9 @@ func (a *Client) GetNetworkProfile(params *GetNetworkProfileParams) (*GetNetwork
 }
 
 /*
-GetNetworkProfiles gets network profiles
+  GetNetworkProfiles gets network profiles
 
-Get all network profiles
+  Get all network profiles
 */
 func (a *Client) GetNetworkProfiles(params *GetNetworkProfilesParams) (*GetNetworkProfilesOK, error) {
 	// TODO: Validate the params before sending
@@ -171,9 +185,9 @@ func (a *Client) GetNetworkProfiles(params *GetNetworkProfilesParams) (*GetNetwo
 }
 
 /*
-UpdateNetworkProfile updates network profile
+  UpdateNetworkProfile updates network profile
 
-Update network profile
+  Update network profile
 */
 func (a *Client) UpdateNetworkProfile(params *UpdateNetworkProfileParams) (*UpdateNetworkProfileOK, error) {
 	// TODO: Validate the params before sending

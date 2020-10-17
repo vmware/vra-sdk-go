@@ -8,14 +8,14 @@ package models
 import (
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // FixedPrice FixedPrice
+//
 // swagger:model FixedPrice
 type FixedPrice struct {
 
@@ -70,7 +70,7 @@ const (
 
 // prop value enum
 func (m *FixedPrice) validateChargePeriodEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, fixedPriceTypeChargePeriodPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, fixedPriceTypeChargePeriodPropEnum, true); err != nil {
 		return err
 	}
 	return nil

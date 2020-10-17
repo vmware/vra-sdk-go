@@ -8,14 +8,14 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // FabricCompute Represents a compute which is an entity on the cloud provider side that can be used to provision resources in. It could be an availability zone in a public cloud, cluster, host or resource pool in vSphere
+//
 // swagger:model FabricCompute
 type FabricCompute struct {
 

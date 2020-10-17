@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new data collector API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,23 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-CreateDataCollector creates data collector
+// ClientService is the interface for Client methods
+type ClientService interface {
+	CreateDataCollector(params *CreateDataCollectorParams) (*CreateDataCollectorCreated, error)
 
-Create a new Data Collector.
+	DeleteDataCollector(params *DeleteDataCollectorParams) (*DeleteDataCollectorNoContent, error)
+
+	GetDataCollector(params *GetDataCollectorParams) (*GetDataCollectorOK, error)
+
+	GetDataCollectors(params *GetDataCollectorsParams) (*GetDataCollectorsOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  CreateDataCollector creates data collector
+
+  Create a new Data Collector.
 
 Note: Data collector endpoints are not available in vRA on-prem release.
 */
@@ -65,9 +77,9 @@ func (a *Client) CreateDataCollector(params *CreateDataCollectorParams) (*Create
 }
 
 /*
-DeleteDataCollector deletes data collector
+  DeleteDataCollector deletes data collector
 
-Delete Data Collector with a given id.
+  Delete Data Collector with a given id.
 
 Note: Data collector endpoints are not available in vRA on-prem release.
 */
@@ -103,9 +115,9 @@ func (a *Client) DeleteDataCollector(params *DeleteDataCollectorParams) (*Delete
 }
 
 /*
-GetDataCollector gets data collector
+  GetDataCollector gets data collector
 
-Get Data Collector with a given id.
+  Get Data Collector with a given id.
 
 Note: Data collector endpoints are not available in vRA on-prem release.
 */
@@ -141,9 +153,9 @@ func (a *Client) GetDataCollector(params *GetDataCollectorParams) (*GetDataColle
 }
 
 /*
-GetDataCollectors gets data collectors
+  GetDataCollectors gets data collectors
 
-Get all Data Collectors.
+  Get all Data Collectors.
 
 Note: Data collector endpoints are not available in vRA on-prem release.
 */

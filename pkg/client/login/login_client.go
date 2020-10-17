@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new login API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,17 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-RetrieveAuthToken retrieves auth token for local csp users
+// ClientService is the interface for Client methods
+type ClientService interface {
+	RetrieveAuthToken(params *RetrieveAuthTokenParams) (*RetrieveAuthTokenOK, error)
 
-Retrieve AuthToken for local csp users.
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  RetrieveAuthToken retrieves auth token for local csp users
+
+  Retrieve AuthToken for local csp users.
 When accessing other endpoints the `Bearer` authentication scheme and the received `token` must be provided in the `Authorization` request header field as follows:
 `Authorization: Bearer {token}`
 */

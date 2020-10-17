@@ -9,14 +9,14 @@ import (
 	"encoding/json"
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // MarketplaceContentDownloadRequest MarketplaceContentDownloadRequest
+//
 // swagger:model MarketplaceContentDownloadRequest
 type MarketplaceContentDownloadRequest struct {
 
@@ -169,7 +169,7 @@ const (
 
 // prop value enum
 func (m *MarketplaceContentDownloadRequest) validateContentTypeEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, marketplaceContentDownloadRequestTypeContentTypePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, marketplaceContentDownloadRequestTypeContentTypePropEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -295,7 +295,7 @@ const (
 
 // prop value enum
 func (m *MarketplaceContentDownloadRequest) validateTargetTypeEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, marketplaceContentDownloadRequestTypeTargetTypePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, marketplaceContentDownloadRequestTypeTargetTypePropEnum, true); err != nil {
 		return err
 	}
 	return nil

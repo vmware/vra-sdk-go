@@ -8,13 +8,13 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // FabricVsphereStoragePolicyResult State object representing a query result of vSphere storage policies.
+//
 // swagger:model FabricVsphereStoragePolicyResult
 type FabricVsphereStoragePolicyResult struct {
 

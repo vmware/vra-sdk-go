@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new blueprint requests API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,8 +25,27 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientService is the interface for Client methods
+type ClientService interface {
+	CancelBlueprintRequestUsingPOST(params *CancelBlueprintRequestUsingPOSTParams) (*CancelBlueprintRequestUsingPOSTOK, error)
+
+	CreateBlueprintRequestUsingPOST1(params *CreateBlueprintRequestUsingPOST1Params) (*CreateBlueprintRequestUsingPOST1Created, *CreateBlueprintRequestUsingPOST1Accepted, error)
+
+	DeleteBlueprintRequestUsingDELETE1(params *DeleteBlueprintRequestUsingDELETE1Params) (*DeleteBlueprintRequestUsingDELETE1NoContent, error)
+
+	GetBlueprintPlanUsingGET1(params *GetBlueprintPlanUsingGET1Params) (*GetBlueprintPlanUsingGET1OK, error)
+
+	GetBlueprintRequestUsingGET1(params *GetBlueprintRequestUsingGET1Params) (*GetBlueprintRequestUsingGET1OK, error)
+
+	GetBlueprintResourcesPlanUsingGET1(params *GetBlueprintResourcesPlanUsingGET1Params) (*GetBlueprintResourcesPlanUsingGET1OK, error)
+
+	ListBlueprintRequestsUsingGET1(params *ListBlueprintRequestsUsingGET1Params) (*ListBlueprintRequestsUsingGET1OK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
 /*
-CancelBlueprintRequestUsingPOST cancels request
+  CancelBlueprintRequestUsingPOST cancels request
 */
 func (a *Client) CancelBlueprintRequestUsingPOST(params *CancelBlueprintRequestUsingPOSTParams) (*CancelBlueprintRequestUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -61,7 +79,7 @@ func (a *Client) CancelBlueprintRequestUsingPOST(params *CancelBlueprintRequestU
 }
 
 /*
-CreateBlueprintRequestUsingPOST1 creates a blueprint request
+  CreateBlueprintRequestUsingPOST1 creates a blueprint request
 */
 func (a *Client) CreateBlueprintRequestUsingPOST1(params *CreateBlueprintRequestUsingPOST1Params) (*CreateBlueprintRequestUsingPOST1Created, *CreateBlueprintRequestUsingPOST1Accepted, error) {
 	// TODO: Validate the params before sending
@@ -96,7 +114,7 @@ func (a *Client) CreateBlueprintRequestUsingPOST1(params *CreateBlueprintRequest
 }
 
 /*
-DeleteBlueprintRequestUsingDELETE1 deletes request
+  DeleteBlueprintRequestUsingDELETE1 deletes request
 */
 func (a *Client) DeleteBlueprintRequestUsingDELETE1(params *DeleteBlueprintRequestUsingDELETE1Params) (*DeleteBlueprintRequestUsingDELETE1NoContent, error) {
 	// TODO: Validate the params before sending
@@ -130,7 +148,7 @@ func (a *Client) DeleteBlueprintRequestUsingDELETE1(params *DeleteBlueprintReque
 }
 
 /*
-GetBlueprintPlanUsingGET1 returns request plan
+  GetBlueprintPlanUsingGET1 returns request plan
 */
 func (a *Client) GetBlueprintPlanUsingGET1(params *GetBlueprintPlanUsingGET1Params) (*GetBlueprintPlanUsingGET1OK, error) {
 	// TODO: Validate the params before sending
@@ -164,7 +182,7 @@ func (a *Client) GetBlueprintPlanUsingGET1(params *GetBlueprintPlanUsingGET1Para
 }
 
 /*
-GetBlueprintRequestUsingGET1 returns blueprint request details
+  GetBlueprintRequestUsingGET1 returns blueprint request details
 */
 func (a *Client) GetBlueprintRequestUsingGET1(params *GetBlueprintRequestUsingGET1Params) (*GetBlueprintRequestUsingGET1OK, error) {
 	// TODO: Validate the params before sending
@@ -198,7 +216,7 @@ func (a *Client) GetBlueprintRequestUsingGET1(params *GetBlueprintRequestUsingGE
 }
 
 /*
-GetBlueprintResourcesPlanUsingGET1 returns request resources plan
+  GetBlueprintResourcesPlanUsingGET1 returns request resources plan
 */
 func (a *Client) GetBlueprintResourcesPlanUsingGET1(params *GetBlueprintResourcesPlanUsingGET1Params) (*GetBlueprintResourcesPlanUsingGET1OK, error) {
 	// TODO: Validate the params before sending
@@ -232,7 +250,7 @@ func (a *Client) GetBlueprintResourcesPlanUsingGET1(params *GetBlueprintResource
 }
 
 /*
-ListBlueprintRequestsUsingGET1 lists blueprint requests
+  ListBlueprintRequestsUsingGET1 lists blueprint requests
 */
 func (a *Client) ListBlueprintRequestsUsingGET1(params *ListBlueprintRequestsUsingGET1Params) (*ListBlueprintRequestsUsingGET1OK, error) {
 	// TODO: Validate the params before sending

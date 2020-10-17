@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new resource types API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,8 +25,21 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientService is the interface for Client methods
+type ClientService interface {
+	GetResourceTypeUsingGET(params *GetResourceTypeUsingGETParams) (*GetResourceTypeUsingGETOK, error)
+
+	GetResourceTypeUsingGETMixin1(params *GetResourceTypeUsingGETMixin1Params) (*GetResourceTypeUsingGETMixin1OK, error)
+
+	ListResourceTypesUsingGET(params *ListResourceTypesUsingGETParams) (*ListResourceTypesUsingGETOK, error)
+
+	ListResourceTypesUsingGETMixin1(params *ListResourceTypesUsingGETMixin1Params) (*ListResourceTypesUsingGETMixin1OK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
 /*
-GetResourceTypeUsingGET returns resource type details
+  GetResourceTypeUsingGET returns resource type details
 */
 func (a *Client) GetResourceTypeUsingGET(params *GetResourceTypeUsingGETParams) (*GetResourceTypeUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -61,9 +73,9 @@ func (a *Client) GetResourceTypeUsingGET(params *GetResourceTypeUsingGETParams) 
 }
 
 /*
-GetResourceTypeUsingGETMixin1 fetches a specific resource type
+  GetResourceTypeUsingGETMixin1 fetches a specific resource type
 
-Returns the Resource type with the supplied ID.
+  Returns the Resource type with the supplied ID.
 */
 func (a *Client) GetResourceTypeUsingGETMixin1(params *GetResourceTypeUsingGETMixin1Params) (*GetResourceTypeUsingGETMixin1OK, error) {
 	// TODO: Validate the params before sending
@@ -97,7 +109,7 @@ func (a *Client) GetResourceTypeUsingGETMixin1(params *GetResourceTypeUsingGETMi
 }
 
 /*
-ListResourceTypesUsingGET lists resource types
+  ListResourceTypesUsingGET lists resource types
 */
 func (a *Client) ListResourceTypesUsingGET(params *ListResourceTypesUsingGETParams) (*ListResourceTypesUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -131,9 +143,9 @@ func (a *Client) ListResourceTypesUsingGET(params *ListResourceTypesUsingGETPara
 }
 
 /*
-ListResourceTypesUsingGETMixin1 fetches all resource types
+  ListResourceTypesUsingGETMixin1 fetches all resource types
 
-Returns a paginated list of Resource Types.
+  Returns a paginated list of Resource Types.
 */
 func (a *Client) ListResourceTypesUsingGETMixin1(params *ListResourceTypesUsingGETMixin1Params) (*ListResourceTypesUsingGETMixin1OK, error) {
 	// TODO: Validate the params before sending

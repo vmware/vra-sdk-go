@@ -8,14 +8,14 @@ package models
 import (
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // RequestTracker An object used to track long-running operations.
+//
 // swagger:model RequestTracker
 type RequestTracker struct {
 
@@ -128,7 +128,7 @@ const (
 
 // prop value enum
 func (m *RequestTracker) validateStatusEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, requestTrackerTypeStatusPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, requestTrackerTypeStatusPropEnum, true); err != nil {
 		return err
 	}
 	return nil

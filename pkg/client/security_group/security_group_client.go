@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new security group API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,27 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-ChangeSecurityGroups changes security groups for a v sphere machine
+// ClientService is the interface for Client methods
+type ClientService interface {
+	ChangeSecurityGroups(params *ChangeSecurityGroupsParams) (*ChangeSecurityGroupsOK, error)
 
- Change security groups for a vSphere machine network interfaces. Securing group that is part of the same deployment can be added or removed for a machine network interface.
+	CreateOnDemandSecurityGroup(params *CreateOnDemandSecurityGroupParams) (*CreateOnDemandSecurityGroupAccepted, error)
+
+	DeleteSecurityGroup(params *DeleteSecurityGroupParams) (*DeleteSecurityGroupAccepted, *DeleteSecurityGroupNoContent, error)
+
+	GetSecurityGroup(params *GetSecurityGroupParams) (*GetSecurityGroupOK, error)
+
+	GetSecurityGroups(params *GetSecurityGroupsParams) (*GetSecurityGroupsOK, error)
+
+	UpdateSecurityGroup(params *UpdateSecurityGroupParams) (*UpdateSecurityGroupOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  ChangeSecurityGroups changes security groups for a v sphere machine
+
+   Change security groups for a vSphere machine network interfaces. Securing group that is part of the same deployment can be added or removed for a machine network interface.
 */
 func (a *Client) ChangeSecurityGroups(params *ChangeSecurityGroupsParams) (*ChangeSecurityGroupsOK, error) {
 	// TODO: Validate the params before sending
@@ -63,9 +79,9 @@ func (a *Client) ChangeSecurityGroups(params *ChangeSecurityGroupsParams) (*Chan
 }
 
 /*
-CreateOnDemandSecurityGroup creates on demand security group
+  CreateOnDemandSecurityGroup creates on demand security group
 
-Provision a new on-demand security group
+  Provision a new on-demand security group
 */
 func (a *Client) CreateOnDemandSecurityGroup(params *CreateOnDemandSecurityGroupParams) (*CreateOnDemandSecurityGroupAccepted, error) {
 	// TODO: Validate the params before sending
@@ -99,9 +115,9 @@ func (a *Client) CreateOnDemandSecurityGroup(params *CreateOnDemandSecurityGroup
 }
 
 /*
-DeleteSecurityGroup deletes an on demand security group
+  DeleteSecurityGroup deletes an on demand security group
 
-Delete an on-demand security group with a given id
+  Delete an on-demand security group with a given id
 */
 func (a *Client) DeleteSecurityGroup(params *DeleteSecurityGroupParams) (*DeleteSecurityGroupAccepted, *DeleteSecurityGroupNoContent, error) {
 	// TODO: Validate the params before sending
@@ -136,9 +152,9 @@ func (a *Client) DeleteSecurityGroup(params *DeleteSecurityGroupParams) (*Delete
 }
 
 /*
-GetSecurityGroup gets security group
+  GetSecurityGroup gets security group
 
-Get security group with a given id
+  Get security group with a given id
 */
 func (a *Client) GetSecurityGroup(params *GetSecurityGroupParams) (*GetSecurityGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -172,9 +188,9 @@ func (a *Client) GetSecurityGroup(params *GetSecurityGroupParams) (*GetSecurityG
 }
 
 /*
-GetSecurityGroups gets security groups
+  GetSecurityGroups gets security groups
 
-Get all security groups
+  Get all security groups
 */
 func (a *Client) GetSecurityGroups(params *GetSecurityGroupsParams) (*GetSecurityGroupsOK, error) {
 	// TODO: Validate the params before sending
@@ -208,9 +224,9 @@ func (a *Client) GetSecurityGroups(params *GetSecurityGroupsParams) (*GetSecurit
 }
 
 /*
-UpdateSecurityGroup updates security group
+  UpdateSecurityGroup updates security group
 
-Update security group. Only tag updates are supported.
+  Update security group. Only tag updates are supported.
 */
 func (a *Client) UpdateSecurityGroup(params *UpdateSecurityGroupParams) (*UpdateSecurityGroupOK, error) {
 	// TODO: Validate the params before sending

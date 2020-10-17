@@ -8,13 +8,13 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // FabricImageDescription Represents fabric image description. Used when creating image profiles.
+//
 // swagger:model FabricImageDescription
 type FabricImageDescription struct {
 

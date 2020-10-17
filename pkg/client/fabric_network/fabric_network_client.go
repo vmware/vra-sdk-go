@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new fabric network API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,27 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-GetFabricNetwork gets fabric network
+// ClientService is the interface for Client methods
+type ClientService interface {
+	GetFabricNetwork(params *GetFabricNetworkParams) (*GetFabricNetworkOK, error)
 
-Get fabric network with a given id
+	GetFabricNetworks(params *GetFabricNetworksParams) (*GetFabricNetworksOK, error)
+
+	GetVsphereFabricNetwork(params *GetVsphereFabricNetworkParams) (*GetVsphereFabricNetworkOK, error)
+
+	GetVsphereFabricNetworks(params *GetVsphereFabricNetworksParams) (*GetVsphereFabricNetworksOK, error)
+
+	UpdateFabricNetwork(params *UpdateFabricNetworkParams) (*UpdateFabricNetworkOK, error)
+
+	UpdatevSphereFabricNetwork(params *UpdatevSphereFabricNetworkParams) (*UpdatevSphereFabricNetworkOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  GetFabricNetwork gets fabric network
+
+  Get fabric network with a given id
 */
 func (a *Client) GetFabricNetwork(params *GetFabricNetworkParams) (*GetFabricNetworkOK, error) {
 	// TODO: Validate the params before sending
@@ -63,9 +79,9 @@ func (a *Client) GetFabricNetwork(params *GetFabricNetworkParams) (*GetFabricNet
 }
 
 /*
-GetFabricNetworks gets fabric networks
+  GetFabricNetworks gets fabric networks
 
-Get all fabric networks.
+  Get all fabric networks.
 */
 func (a *Client) GetFabricNetworks(params *GetFabricNetworksParams) (*GetFabricNetworksOK, error) {
 	// TODO: Validate the params before sending
@@ -99,9 +115,9 @@ func (a *Client) GetFabricNetworks(params *GetFabricNetworksParams) (*GetFabricN
 }
 
 /*
-GetVsphereFabricNetwork gets v sphere fabric network
+  GetVsphereFabricNetwork gets v sphere fabric network
 
-Get vSphere fabric network with a given id
+  Get vSphere fabric network with a given id
 */
 func (a *Client) GetVsphereFabricNetwork(params *GetVsphereFabricNetworkParams) (*GetVsphereFabricNetworkOK, error) {
 	// TODO: Validate the params before sending
@@ -135,9 +151,9 @@ func (a *Client) GetVsphereFabricNetwork(params *GetVsphereFabricNetworkParams) 
 }
 
 /*
-GetVsphereFabricNetworks gets v sphere fabric networks
+  GetVsphereFabricNetworks gets v sphere fabric networks
 
-Get all vSphere fabric networks.
+  Get all vSphere fabric networks.
 */
 func (a *Client) GetVsphereFabricNetworks(params *GetVsphereFabricNetworksParams) (*GetVsphereFabricNetworksOK, error) {
 	// TODO: Validate the params before sending
@@ -171,9 +187,9 @@ func (a *Client) GetVsphereFabricNetworks(params *GetVsphereFabricNetworksParams
 }
 
 /*
-UpdateFabricNetwork updates fabric network
+  UpdateFabricNetwork updates fabric network
 
-Update fabric network. Only tag updates are supported.
+  Update fabric network. Only tag updates are supported.
 */
 func (a *Client) UpdateFabricNetwork(params *UpdateFabricNetworkParams) (*UpdateFabricNetworkOK, error) {
 	// TODO: Validate the params before sending
@@ -207,9 +223,9 @@ func (a *Client) UpdateFabricNetwork(params *UpdateFabricNetworkParams) (*Update
 }
 
 /*
-UpdatevSphereFabricNetwork updates v sphere fabric network
+  UpdatevSphereFabricNetwork updates v sphere fabric network
 
-Update vSphere fabric network.
+  Update vSphere fabric network.
 */
 func (a *Client) UpdatevSphereFabricNetwork(params *UpdatevSphereFabricNetworkParams) (*UpdatevSphereFabricNetworkOK, error) {
 	// TODO: Validate the params before sending

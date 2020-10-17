@@ -8,9 +8,8 @@ package models
 import (
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
@@ -18,6 +17,7 @@ import (
 // CatalogItemResourceUpfrontPriceResponse CatalogItemResourceUpfrontPriceResponse
 //
 // A response with upfront price for a resource in given catalog item
+//
 // swagger:model CatalogItemResourceUpfrontPriceResponse
 type CatalogItemResourceUpfrontPriceResponse struct {
 
@@ -108,7 +108,7 @@ const (
 
 // prop value enum
 func (m *CatalogItemResourceUpfrontPriceResponse) validateStatusEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, catalogItemResourceUpfrontPriceResponseTypeStatusPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, catalogItemResourceUpfrontPriceResponseTypeStatusPropEnum, true); err != nil {
 		return err
 	}
 	return nil

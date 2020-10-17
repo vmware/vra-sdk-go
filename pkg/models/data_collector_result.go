@@ -8,13 +8,13 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // DataCollectorResult State object representing a query result of data collectors.
+//
 // swagger:model DataCollectorResult
 type DataCollectorResult struct {
 

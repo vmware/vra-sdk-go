@@ -6,14 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // FlavorProfile Represents a structure that holds flavor mappings defined for the corresponding cloud end-point region.<br>**HATEOAS** links:<br>**region** - Region - Region for the profile.<br>**self** - FlavorProfile - Self link to this flavor profile
+//
 // swagger:model FlavorProfile
 type FlavorProfile struct {
 

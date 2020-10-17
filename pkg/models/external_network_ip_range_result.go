@@ -8,13 +8,13 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // ExternalNetworkIPRangeResult State object representing a query result of external IPAM network IP range.
+//
 // swagger:model ExternalNetworkIPRangeResult
 type ExternalNetworkIPRangeResult struct {
 

@@ -8,13 +8,13 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // CloudAccountAwsResult State object representing a query result of Aws cloud accounts.
+//
 // swagger:model CloudAccountAwsResult
 type CloudAccountAwsResult struct {
 

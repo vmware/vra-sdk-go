@@ -8,14 +8,14 @@ package models
 import (
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // BlueprintTaskExecution BlueprintTaskExecution
+//
 // swagger:model BlueprintTaskExecution
 type BlueprintTaskExecution struct {
 
@@ -99,7 +99,7 @@ const (
 
 // prop value enum
 func (m *BlueprintTaskExecution) validateStatusEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, blueprintTaskExecutionTypeStatusPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, blueprintTaskExecutionTypeStatusPropEnum, true); err != nil {
 		return err
 	}
 	return nil

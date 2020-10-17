@@ -8,14 +8,14 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // AwsStorageProfile Defines a structure that holds list of storage policies defined for AWS for a specific region.**HATEOAS** links:<br>**region** - Region - Region for the profile.<br>**self** - AwsStorageProfile - Self link to this aws Storage Profile
+//
 // swagger:model AwsStorageProfile
 type AwsStorageProfile struct {
 

@@ -8,14 +8,14 @@ package models
 import (
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // ContentSource ContentSource
+//
 // swagger:model ContentSource
 type ContentSource struct {
 
@@ -192,7 +192,7 @@ const (
 
 // prop value enum
 func (m *ContentSource) validateTypeIDEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, contentSourceTypeTypeIDPropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, contentSourceTypeTypeIDPropEnum, true); err != nil {
 		return err
 	}
 	return nil

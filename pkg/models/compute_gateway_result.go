@@ -8,13 +8,13 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // ComputeGatewayResult State object representing a query result of compute-gateways.
+//
 // swagger:model ComputeGatewayResult
 type ComputeGatewayResult struct {
 

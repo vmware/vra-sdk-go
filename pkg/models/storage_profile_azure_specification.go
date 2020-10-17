@@ -8,14 +8,14 @@ package models
 import (
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // StorageProfileAzureSpecification Represents a specification of Azure storage profile.
+//
 // swagger:model StorageProfileAzureSpecification
 type StorageProfileAzureSpecification struct {
 

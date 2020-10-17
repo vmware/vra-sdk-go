@@ -9,12 +9,11 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new content source API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -26,10 +25,23 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-CreateContentSourceUsingPOST creates a content source
+// ClientService is the interface for Client methods
+type ClientService interface {
+	CreateContentSourceUsingPOST(params *CreateContentSourceUsingPOSTParams) (*CreateContentSourceUsingPOSTCreated, error)
 
-Returns the new content source
+	DeleteContentSourceUsingDELETE(params *DeleteContentSourceUsingDELETEParams) (*DeleteContentSourceUsingDELETENoContent, error)
+
+	GetContentSourceUsingGET(params *GetContentSourceUsingGETParams) (*GetContentSourceUsingGETOK, error)
+
+	GetContentSourcesUsingGET(params *GetContentSourcesUsingGETParams) (*GetContentSourcesUsingGETOK, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  CreateContentSourceUsingPOST creates a content source
+
+  Returns the new content source
 */
 func (a *Client) CreateContentSourceUsingPOST(params *CreateContentSourceUsingPOSTParams) (*CreateContentSourceUsingPOSTCreated, error) {
 	// TODO: Validate the params before sending
@@ -63,7 +75,7 @@ func (a *Client) CreateContentSourceUsingPOST(params *CreateContentSourceUsingPO
 }
 
 /*
-DeleteContentSourceUsingDELETE deletes a content source
+  DeleteContentSourceUsingDELETE deletes a content source
 */
 func (a *Client) DeleteContentSourceUsingDELETE(params *DeleteContentSourceUsingDELETEParams) (*DeleteContentSourceUsingDELETENoContent, error) {
 	// TODO: Validate the params before sending
@@ -97,7 +109,7 @@ func (a *Client) DeleteContentSourceUsingDELETE(params *DeleteContentSourceUsing
 }
 
 /*
-GetContentSourceUsingGET gets a content source
+  GetContentSourceUsingGET gets a content source
 */
 func (a *Client) GetContentSourceUsingGET(params *GetContentSourceUsingGETParams) (*GetContentSourceUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -131,9 +143,9 @@ func (a *Client) GetContentSourceUsingGET(params *GetContentSourceUsingGETParams
 }
 
 /*
-GetContentSourcesUsingGET gets content sources
+  GetContentSourcesUsingGET gets content sources
 
-Use filter parameters to narrow down the results
+  Use filter parameters to narrow down the results
 */
 func (a *Client) GetContentSourcesUsingGET(params *GetContentSourcesUsingGETParams) (*GetContentSourcesUsingGETOK, error) {
 	// TODO: Validate the params before sending

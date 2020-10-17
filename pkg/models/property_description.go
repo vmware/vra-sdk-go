@@ -9,14 +9,14 @@ import (
 	"encoding/json"
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // PropertyDescription property description
+//
 // swagger:model PropertyDescription
 type PropertyDescription struct {
 
@@ -135,7 +135,7 @@ func init() {
 }
 
 func (m *PropertyDescription) validateIndexingOptionsItemsEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, propertyDescriptionIndexingOptionsItemsEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, propertyDescriptionIndexingOptionsItemsEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -215,7 +215,7 @@ const (
 
 // prop value enum
 func (m *PropertyDescription) validateTypeNameEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, propertyDescriptionTypeTypeNamePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, propertyDescriptionTypeTypeNamePropEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -248,7 +248,7 @@ func init() {
 }
 
 func (m *PropertyDescription) validateUsageOptionsItemsEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, propertyDescriptionUsageOptionsItemsEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, propertyDescriptionUsageOptionsItemsEnum, true); err != nil {
 		return err
 	}
 	return nil
