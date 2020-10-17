@@ -19,6 +19,15 @@ import (
 // swagger:model PropertyDefinition
 type PropertyDefinition struct {
 
+	// dollar data
+	DollarData string `json:"$data,omitempty"`
+
+	// dollar ref
+	DollarRef string `json:"$ref,omitempty"`
+
+	// additional properties
+	AdditionalProperties bool `json:"additionalProperties,omitempty"`
+
 	// all of
 	AllOf []*PropertyDefinition `json:"allOf"`
 
@@ -43,6 +52,9 @@ type PropertyDefinition struct {
 	// enum
 	Enum []interface{} `json:"enum"`
 
+	// format
+	Format string `json:"format,omitempty"`
+
 	// ignore case on diff
 	IgnoreCaseOnDiff bool `json:"ignoreCaseOnDiff,omitempty"`
 
@@ -51,6 +63,9 @@ type PropertyDefinition struct {
 
 	// items
 	Items *PropertyDefinition `json:"items,omitempty"`
+
+	// max items
+	MaxItems int64 `json:"maxItems,omitempty"`
 
 	// max length
 	MaxLength int32 `json:"maxLength,omitempty"`
@@ -67,8 +82,8 @@ type PropertyDefinition struct {
 	// minimum
 	Minimum int64 `json:"minimum,omitempty"`
 
-	// not allowed
-	NotAllowed []string `json:"notAllowed"`
+	// not
+	Not *PropertyDefinition `json:"not,omitempty"`
 
 	// one of
 	OneOf []*PropertyDefinition `json:"oneOf"`
@@ -110,6 +125,10 @@ func (m *PropertyDefinition) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateItems(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateNot(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -162,6 +181,24 @@ func (m *PropertyDefinition) validateItems(formats strfmt.Registry) error {
 		if err := m.Items.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("items")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *PropertyDefinition) validateNot(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Not) { // not required
+		return nil
+	}
+
+	if m.Not != nil {
+		if err := m.Not.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("not")
 			}
 			return err
 		}

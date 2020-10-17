@@ -23,8 +23,8 @@ type CreateVcfCloudAccountReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *CreateVcfCloudAccountReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-	case 200:
-		result := NewCreateVcfCloudAccountOK()
+	case 201:
+		result := NewCreateVcfCloudAccountCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -47,28 +47,28 @@ func (o *CreateVcfCloudAccountReader) ReadResponse(response runtime.ClientRespon
 	}
 }
 
-// NewCreateVcfCloudAccountOK creates a CreateVcfCloudAccountOK with default headers values
-func NewCreateVcfCloudAccountOK() *CreateVcfCloudAccountOK {
-	return &CreateVcfCloudAccountOK{}
+// NewCreateVcfCloudAccountCreated creates a CreateVcfCloudAccountCreated with default headers values
+func NewCreateVcfCloudAccountCreated() *CreateVcfCloudAccountCreated {
+	return &CreateVcfCloudAccountCreated{}
 }
 
-/*CreateVcfCloudAccountOK handles this case with default header values.
+/*CreateVcfCloudAccountCreated handles this case with default header values.
 
 successful operation
 */
-type CreateVcfCloudAccountOK struct {
+type CreateVcfCloudAccountCreated struct {
 	Payload *models.CloudAccountVcf
 }
 
-func (o *CreateVcfCloudAccountOK) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vcf][%d] createVcfCloudAccountOK  %+v", 200, o.Payload)
+func (o *CreateVcfCloudAccountCreated) Error() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vcf][%d] createVcfCloudAccountCreated  %+v", 201, o.Payload)
 }
 
-func (o *CreateVcfCloudAccountOK) GetPayload() *models.CloudAccountVcf {
+func (o *CreateVcfCloudAccountCreated) GetPayload() *models.CloudAccountVcf {
 	return o.Payload
 }
 
-func (o *CreateVcfCloudAccountOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *CreateVcfCloudAccountCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.CloudAccountVcf)
 

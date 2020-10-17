@@ -23,8 +23,8 @@ type DeleteComputeGatewayReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteComputeGatewayReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-	case 200:
-		result := NewDeleteComputeGatewayOK()
+	case 202:
+		result := NewDeleteComputeGatewayAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -41,28 +41,28 @@ func (o *DeleteComputeGatewayReader) ReadResponse(response runtime.ClientRespons
 	}
 }
 
-// NewDeleteComputeGatewayOK creates a DeleteComputeGatewayOK with default headers values
-func NewDeleteComputeGatewayOK() *DeleteComputeGatewayOK {
-	return &DeleteComputeGatewayOK{}
+// NewDeleteComputeGatewayAccepted creates a DeleteComputeGatewayAccepted with default headers values
+func NewDeleteComputeGatewayAccepted() *DeleteComputeGatewayAccepted {
+	return &DeleteComputeGatewayAccepted{}
 }
 
-/*DeleteComputeGatewayOK handles this case with default header values.
+/*DeleteComputeGatewayAccepted handles this case with default header values.
 
 successful operation
 */
-type DeleteComputeGatewayOK struct {
+type DeleteComputeGatewayAccepted struct {
 	Payload *models.RequestTracker
 }
 
-func (o *DeleteComputeGatewayOK) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/compute-gateways/{id}][%d] deleteComputeGatewayOK  %+v", 200, o.Payload)
+func (o *DeleteComputeGatewayAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/compute-gateways/{id}][%d] deleteComputeGatewayAccepted  %+v", 202, o.Payload)
 }
 
-func (o *DeleteComputeGatewayOK) GetPayload() *models.RequestTracker {
+func (o *DeleteComputeGatewayAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
 
-func (o *DeleteComputeGatewayOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *DeleteComputeGatewayAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.RequestTracker)
 

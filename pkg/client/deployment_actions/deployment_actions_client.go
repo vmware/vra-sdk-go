@@ -45,7 +45,9 @@ type ClientService interface {
 }
 
 /*
-  ActionDeploymentRequestUsingPOST submits action on requests allowable values cancel dismiss cancel can be submitted on in progress requests and dismiss can be submitted on failed requests
+  ActionDeploymentRequestUsingPOST submits action on requests allowable values cancel dismiss
+
+  Cancel can be submitted on In-progress requests and Dismiss can be submitted on Failed requests.
 */
 func (a *Client) ActionDeploymentRequestUsingPOST(params *ActionDeploymentRequestUsingPOSTParams) (*ActionDeploymentRequestUsingPOSTOK, error) {
 	// TODO: Validate the params before sending

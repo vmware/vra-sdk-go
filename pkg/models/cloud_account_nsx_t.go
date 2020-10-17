@@ -43,6 +43,9 @@ type CloudAccountNsxT struct {
 	// Required: true
 	ID *string `json:"id"`
 
+	// Indicates whether NSX-T cloud account was created in Manager (legacy) mode.
+	ManagerMode bool `json:"managerMode,omitempty"`
+
 	// A human-friendly name used as an identifier in APIs that support this option.
 	Name string `json:"name,omitempty"`
 

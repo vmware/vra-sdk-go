@@ -1,0 +1,48 @@
+#!/usr/bin/env python3
+
+import argparse
+import json
+
+
+# This is the location of the IaaS swagger
+old_filename = "swagger/vra-blueprint.json"
+new_filename = "swagger/vra-blueprint-fixed.json"
+
+
+def replace_value(d, k, v, new):
+    if k in d and d[k] == v:
+        print(d[k])
+        print("found one")
+        d[k] = new
+    for child in d.values():
+        if isinstance(child, dict):
+            replace_value(child, k, v, new)
+
+
+def rename_blueprint_models(swagger):
+    definitions = [
+        ('ContentSource', 'BlueprintContentSource', '#/definitions/ContentSource', '#/definitions/BlueprintContentSource'),
+        ('ContentSourceConfig', 'BlueprintContentSourceConfig', '#/definitions/ContentSourceConfig', '#/definitions/BlueprintContentSourceConfig'),
+        ('PageOfContentSource', 'PageOfBlueprintContentSource', '#/definitions/PageOfContentSource', '#/definitions/PageOfBlueprintContentSource'),
+    ]
+
+    for (oldDef, newDef, oldRef, newRef) in definitions:
+        v = swagger['definitions'][oldDef]
+        del swagger['definitions'][oldDef]
+        swagger['definitions'][newDef] = v
+        replace_value(swagger, "$ref", oldRef, newRef)
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    args = parser.parse_args()
+
+    # read in the swagger spec
+    swagger = json.loads(open(old_filename).read())
+
+    rename_blueprint_models(swagger)
+
+    # Overwrite the swagger spec
+    f = open(new_filename, "w")
+    f.write(json.dumps(swagger, sort_keys=False, indent=2))
+    f.write('\n')

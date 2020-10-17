@@ -375,7 +375,7 @@ func (a *Client) GetDeploymentsForProjectUsingGET(params *GetDeploymentsForProje
 /*
   GetDeploymentsUsingGET fetches all deployments
 
-  Returns a paginated list of deployments.
+  Returns a paginated list of deployments. Deployments with more than 100 resources is not supported.
 */
 func (a *Client) GetDeploymentsUsingGET(params *GetDeploymentsUsingGETParams) (*GetDeploymentsUsingGETOK, error) {
 	// TODO: Validate the params before sending

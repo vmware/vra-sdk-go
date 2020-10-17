@@ -41,7 +41,7 @@ type ClientService interface {
 
 	CreateVSphereCloudAccount(params *CreateVSphereCloudAccountParams) (*CreateVSphereCloudAccountCreated, error)
 
-	CreateVcfCloudAccount(params *CreateVcfCloudAccountParams) (*CreateVcfCloudAccountOK, error)
+	CreateVcfCloudAccount(params *CreateVcfCloudAccountParams) (*CreateVcfCloudAccountCreated, error)
 
 	CreateVmcCloudAccount(params *CreateVmcCloudAccountParams) (*CreateVmcCloudAccountCreated, error)
 
@@ -405,7 +405,7 @@ func (a *Client) CreateVSphereCloudAccount(params *CreateVSphereCloudAccountPara
 
   Create an VCF cloud account in the current organization
 */
-func (a *Client) CreateVcfCloudAccount(params *CreateVcfCloudAccountParams) (*CreateVcfCloudAccountOK, error) {
+func (a *Client) CreateVcfCloudAccount(params *CreateVcfCloudAccountParams) (*CreateVcfCloudAccountCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateVcfCloudAccountParams()
@@ -426,7 +426,7 @@ func (a *Client) CreateVcfCloudAccount(params *CreateVcfCloudAccountParams) (*Cr
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateVcfCloudAccountOK)
+	success, ok := result.(*CreateVcfCloudAccountCreated)
 	if ok {
 		return success, nil
 	}

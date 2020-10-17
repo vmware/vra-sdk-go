@@ -63,20 +63,20 @@ func NewSubmitDeploymentActionRequestUsingPOSTOK() *SubmitDeploymentActionReques
 OK
 */
 type SubmitDeploymentActionRequestUsingPOSTOK struct {
-	Payload *models.DeploymentRequest
+	Payload *models.Request
 }
 
 func (o *SubmitDeploymentActionRequestUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /deployment/api/deployments/{depId}/requests][%d] submitDeploymentActionRequestUsingPOSTOK  %+v", 200, o.Payload)
 }
 
-func (o *SubmitDeploymentActionRequestUsingPOSTOK) GetPayload() *models.DeploymentRequest {
+func (o *SubmitDeploymentActionRequestUsingPOSTOK) GetPayload() *models.Request {
 	return o.Payload
 }
 
 func (o *SubmitDeploymentActionRequestUsingPOSTOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.DeploymentRequest)
+	o.Payload = new(models.Request)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

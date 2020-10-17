@@ -65,6 +65,11 @@ type GetComputeGatewayParams struct {
 
 	*/
 	APIVersion *string
+	/*ID
+	  The ID of the gateway.
+
+	*/
+	ID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -115,6 +120,17 @@ func (o *GetComputeGatewayParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
+// WithID adds the id to the get compute gateway params
+func (o *GetComputeGatewayParams) WithID(id string) *GetComputeGatewayParams {
+	o.SetID(id)
+	return o
+}
+
+// SetID adds the id to the get compute gateway params
+func (o *GetComputeGatewayParams) SetID(id string) {
+	o.ID = id
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetComputeGatewayParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -137,6 +153,11 @@ func (o *GetComputeGatewayParams) WriteToRequest(r runtime.ClientRequest, reg st
 			}
 		}
 
+	}
+
+	// path param id
+	if err := r.SetPathParam("id", o.ID); err != nil {
+		return err
 	}
 
 	if len(res) > 0 {

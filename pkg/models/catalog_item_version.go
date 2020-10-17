@@ -26,6 +26,9 @@ type CatalogItemVersion struct {
 	// Description
 	Description string `json:"description,omitempty"`
 
+	// Form ID
+	FormID string `json:"formId,omitempty"`
+
 	// Version ID
 	ID string `json:"id,omitempty"`
 

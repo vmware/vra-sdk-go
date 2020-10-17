@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewGetProjectsParams creates a new GetProjectsParams object
@@ -60,16 +61,50 @@ for the get projects operation typically these are written to a http.Request
 */
 type GetProjectsParams struct {
 
+	/*DollarCount
+	  Total number of records. If the collection has a filter, the number of records matching the filter
+
+	*/
+	DollarCount *bool
 	/*DollarFilter
-	  Add a filter to return limited results
+	  Filter the results by a specified predicate expression. A set of operators and functions are defined for use:
+	Operators: eq, ne, gt, ge, lt, le, and, or, not.
+	Functions:
+	bool substringof(string p0, string p1)
+	bool endswith(string p0, string p1)
+	bool startswith(string p0, string p1)
+	int length(string p0)
+	int indexof(string p0, string p1)
+	string replace(string p0, string find, string replace)
+	string substring(string p0, int pos)
+	string substring(string p0, int pos, int length)
+	string tolower(string p0)
+	string toupper(string p0)
+	string trim(string p0)
+	string concat(string p0, string p1)
 
 	*/
 	DollarFilter *string
+	/*DollarSkip
+	  Number of records you want to skip
+
+	*/
+	DollarSkip *int64
+	/*DollarTop
+	  Number of records you want
+
+	*/
+	DollarTop *int64
 	/*APIVersion
 	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 
 	*/
 	APIVersion *string
+	/*OrderBy
+	  Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.
+
+	*/
+	OrderBy *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -109,6 +144,17 @@ func (o *GetProjectsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithDollarCount adds the dollarCount to the get projects params
+func (o *GetProjectsParams) WithDollarCount(dollarCount *bool) *GetProjectsParams {
+	o.SetDollarCount(dollarCount)
+	return o
+}
+
+// SetDollarCount adds the dollarCount to the get projects params
+func (o *GetProjectsParams) SetDollarCount(dollarCount *bool) {
+	o.DollarCount = dollarCount
+}
+
 // WithDollarFilter adds the dollarFilter to the get projects params
 func (o *GetProjectsParams) WithDollarFilter(dollarFilter *string) *GetProjectsParams {
 	o.SetDollarFilter(dollarFilter)
@@ -118,6 +164,28 @@ func (o *GetProjectsParams) WithDollarFilter(dollarFilter *string) *GetProjectsP
 // SetDollarFilter adds the dollarFilter to the get projects params
 func (o *GetProjectsParams) SetDollarFilter(dollarFilter *string) {
 	o.DollarFilter = dollarFilter
+}
+
+// WithDollarSkip adds the dollarSkip to the get projects params
+func (o *GetProjectsParams) WithDollarSkip(dollarSkip *int64) *GetProjectsParams {
+	o.SetDollarSkip(dollarSkip)
+	return o
+}
+
+// SetDollarSkip adds the dollarSkip to the get projects params
+func (o *GetProjectsParams) SetDollarSkip(dollarSkip *int64) {
+	o.DollarSkip = dollarSkip
+}
+
+// WithDollarTop adds the dollarTop to the get projects params
+func (o *GetProjectsParams) WithDollarTop(dollarTop *int64) *GetProjectsParams {
+	o.SetDollarTop(dollarTop)
+	return o
+}
+
+// SetDollarTop adds the dollarTop to the get projects params
+func (o *GetProjectsParams) SetDollarTop(dollarTop *int64) {
+	o.DollarTop = dollarTop
 }
 
 // WithAPIVersion adds the aPIVersion to the get projects params
@@ -131,6 +199,17 @@ func (o *GetProjectsParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
+// WithOrderBy adds the orderBy to the get projects params
+func (o *GetProjectsParams) WithOrderBy(orderBy *string) *GetProjectsParams {
+	o.SetOrderBy(orderBy)
+	return o
+}
+
+// SetOrderBy adds the orderBy to the get projects params
+func (o *GetProjectsParams) SetOrderBy(orderBy *string) {
+	o.OrderBy = orderBy
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetProjectsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -138,6 +217,22 @@ func (o *GetProjectsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		return err
 	}
 	var res []error
+
+	if o.DollarCount != nil {
+
+		// query param $count
+		var qrDollarCount bool
+		if o.DollarCount != nil {
+			qrDollarCount = *o.DollarCount
+		}
+		qDollarCount := swag.FormatBool(qrDollarCount)
+		if qDollarCount != "" {
+			if err := r.SetQueryParam("$count", qDollarCount); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	if o.DollarFilter != nil {
 
@@ -155,6 +250,38 @@ func (o *GetProjectsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 
 	}
 
+	if o.DollarSkip != nil {
+
+		// query param $skip
+		var qrDollarSkip int64
+		if o.DollarSkip != nil {
+			qrDollarSkip = *o.DollarSkip
+		}
+		qDollarSkip := swag.FormatInt64(qrDollarSkip)
+		if qDollarSkip != "" {
+			if err := r.SetQueryParam("$skip", qDollarSkip); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.DollarTop != nil {
+
+		// query param $top
+		var qrDollarTop int64
+		if o.DollarTop != nil {
+			qrDollarTop = *o.DollarTop
+		}
+		qDollarTop := swag.FormatInt64(qrDollarTop)
+		if qDollarTop != "" {
+			if err := r.SetQueryParam("$top", qDollarTop); err != nil {
+				return err
+			}
+		}
+
+	}
+
 	if o.APIVersion != nil {
 
 		// query param apiVersion
@@ -165,6 +292,22 @@ func (o *GetProjectsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.OrderBy != nil {
+
+		// query param orderBy
+		var qrOrderBy string
+		if o.OrderBy != nil {
+			qrOrderBy = *o.OrderBy
+		}
+		qOrderBy := qrOrderBy
+		if qOrderBy != "" {
+			if err := r.SetQueryParam("orderBy", qOrderBy); err != nil {
 				return err
 			}
 		}

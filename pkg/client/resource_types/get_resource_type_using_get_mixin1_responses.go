@@ -57,20 +57,20 @@ func NewGetResourceTypeUsingGETMixin1OK() *GetResourceTypeUsingGETMixin1OK {
 OK
 */
 type GetResourceTypeUsingGETMixin1OK struct {
-	Payload *models.ResourceType
+	Payload *models.DeploymentResourceType
 }
 
 func (o *GetResourceTypeUsingGETMixin1OK) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/resource-types/{resourceTypeId}][%d] getResourceTypeUsingGETMixin1OK  %+v", 200, o.Payload)
 }
 
-func (o *GetResourceTypeUsingGETMixin1OK) GetPayload() *models.ResourceType {
+func (o *GetResourceTypeUsingGETMixin1OK) GetPayload() *models.DeploymentResourceType {
 	return o.Payload
 }
 
 func (o *GetResourceTypeUsingGETMixin1OK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ResourceType)
+	o.Payload = new(models.DeploymentResourceType)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

@@ -62,15 +62,25 @@ for the get deployment by Id using g e t operation typically these are written t
 type GetDeploymentByIDUsingGETParams struct {
 
 	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 
 	*/
 	APIVersion *string
+	/*Deleted
+	  Retrieves the deployment, includes soft-deleted deployments that have not yet been completely deleted.
+
+	*/
+	Deleted *bool
 	/*DepID
 	  Deployment ID
 
 	*/
 	DepID strfmt.UUID
+	/*Expand
+	  The expanded details of the requested comma separated objects. 'resources' option returns resources with all properties. Ex. blueprint, project
+
+	*/
+	Expand []string
 	/*ExpandLastRequest
 	  Expands deployment last request.
 
@@ -136,6 +146,17 @@ func (o *GetDeploymentByIDUsingGETParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
+// WithDeleted adds the deleted to the get deployment by Id using get params
+func (o *GetDeploymentByIDUsingGETParams) WithDeleted(deleted *bool) *GetDeploymentByIDUsingGETParams {
+	o.SetDeleted(deleted)
+	return o
+}
+
+// SetDeleted adds the deleted to the get deployment by Id using get params
+func (o *GetDeploymentByIDUsingGETParams) SetDeleted(deleted *bool) {
+	o.Deleted = deleted
+}
+
 // WithDepID adds the depID to the get deployment by Id using get params
 func (o *GetDeploymentByIDUsingGETParams) WithDepID(depID strfmt.UUID) *GetDeploymentByIDUsingGETParams {
 	o.SetDepID(depID)
@@ -145,6 +166,17 @@ func (o *GetDeploymentByIDUsingGETParams) WithDepID(depID strfmt.UUID) *GetDeplo
 // SetDepID adds the depId to the get deployment by Id using get params
 func (o *GetDeploymentByIDUsingGETParams) SetDepID(depID strfmt.UUID) {
 	o.DepID = depID
+}
+
+// WithExpand adds the expand to the get deployment by Id using get params
+func (o *GetDeploymentByIDUsingGETParams) WithExpand(expand []string) *GetDeploymentByIDUsingGETParams {
+	o.SetExpand(expand)
+	return o
+}
+
+// SetExpand adds the expand to the get deployment by Id using get params
+func (o *GetDeploymentByIDUsingGETParams) SetExpand(expand []string) {
+	o.Expand = expand
 }
 
 // WithExpandLastRequest adds the expandLastRequest to the get deployment by Id using get params
@@ -204,8 +236,32 @@ func (o *GetDeploymentByIDUsingGETParams) WriteToRequest(r runtime.ClientRequest
 
 	}
 
+	if o.Deleted != nil {
+
+		// query param deleted
+		var qrDeleted bool
+		if o.Deleted != nil {
+			qrDeleted = *o.Deleted
+		}
+		qDeleted := swag.FormatBool(qrDeleted)
+		if qDeleted != "" {
+			if err := r.SetQueryParam("deleted", qDeleted); err != nil {
+				return err
+			}
+		}
+
+	}
+
 	// path param depId
 	if err := r.SetPathParam("depId", o.DepID.String()); err != nil {
+		return err
+	}
+
+	valuesExpand := o.Expand
+
+	joinedExpand := swag.JoinByFormat(valuesExpand, "multi")
+	// query array param expand
+	if err := r.SetQueryParam("expand", joinedExpand...); err != nil {
 		return err
 	}
 

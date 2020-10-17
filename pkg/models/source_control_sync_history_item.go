@@ -29,7 +29,7 @@ type SourceControlSyncHistoryItem struct {
 
 	// Content Type
 	// Read Only: true
-	// Enum: [BLUEPRINT IMAGE ABX_SCRIPTS]
+	// Enum: [BLUEPRINT IMAGE ABX_SCRIPTS TERRAFORM_CONFIGURATION]
 	ContentType string `json:"contentType,omitempty"`
 
 	// Details
@@ -105,7 +105,7 @@ var sourceControlSyncHistoryItemTypeContentTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["BLUEPRINT","IMAGE","ABX_SCRIPTS"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["BLUEPRINT","IMAGE","ABX_SCRIPTS","TERRAFORM_CONFIGURATION"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -123,6 +123,9 @@ const (
 
 	// SourceControlSyncHistoryItemContentTypeABXSCRIPTS captures enum value "ABX_SCRIPTS"
 	SourceControlSyncHistoryItemContentTypeABXSCRIPTS string = "ABX_SCRIPTS"
+
+	// SourceControlSyncHistoryItemContentTypeTERRAFORMCONFIGURATION captures enum value "TERRAFORM_CONFIGURATION"
+	SourceControlSyncHistoryItemContentTypeTERRAFORMCONFIGURATION string = "TERRAFORM_CONFIGURATION"
 )
 
 // prop value enum

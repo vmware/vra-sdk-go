@@ -63,20 +63,20 @@ func NewDeleteResourceUsingDELETEOK() *DeleteResourceUsingDELETEOK {
 OK
 */
 type DeleteResourceUsingDELETEOK struct {
-	Payload *models.DeploymentRequest
+	Payload *models.Request
 }
 
 func (o *DeleteResourceUsingDELETEOK) Error() string {
 	return fmt.Sprintf("[DELETE /deployment/api/deployments/{depId}/resources/{resourceId}][%d] deleteResourceUsingDELETEOK  %+v", 200, o.Payload)
 }
 
-func (o *DeleteResourceUsingDELETEOK) GetPayload() *models.DeploymentRequest {
+func (o *DeleteResourceUsingDELETEOK) GetPayload() *models.Request {
 	return o.Payload
 }
 
 func (o *DeleteResourceUsingDELETEOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.DeploymentRequest)
+	o.Payload = new(models.Request)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

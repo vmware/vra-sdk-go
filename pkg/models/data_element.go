@@ -26,6 +26,9 @@ type DataElement struct {
 
 	// name
 	Name string `json:"name,omitempty"`
+
+	// properties
+	Properties interface{} `json:"properties,omitempty"`
 }
 
 // Validate validates this data element

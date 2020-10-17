@@ -23,8 +23,8 @@ type RevertDiskSnapshotReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *RevertDiskSnapshotReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-	case 200:
-		result := NewRevertDiskSnapshotOK()
+	case 202:
+		result := NewRevertDiskSnapshotAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -47,28 +47,28 @@ func (o *RevertDiskSnapshotReader) ReadResponse(response runtime.ClientResponse,
 	}
 }
 
-// NewRevertDiskSnapshotOK creates a RevertDiskSnapshotOK with default headers values
-func NewRevertDiskSnapshotOK() *RevertDiskSnapshotOK {
-	return &RevertDiskSnapshotOK{}
+// NewRevertDiskSnapshotAccepted creates a RevertDiskSnapshotAccepted with default headers values
+func NewRevertDiskSnapshotAccepted() *RevertDiskSnapshotAccepted {
+	return &RevertDiskSnapshotAccepted{}
 }
 
-/*RevertDiskSnapshotOK handles this case with default header values.
+/*RevertDiskSnapshotAccepted handles this case with default header values.
 
 successful operation
 */
-type RevertDiskSnapshotOK struct {
+type RevertDiskSnapshotAccepted struct {
 	Payload *models.RequestTracker
 }
 
-func (o *RevertDiskSnapshotOK) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/revert][%d] revertDiskSnapshotOK  %+v", 200, o.Payload)
+func (o *RevertDiskSnapshotAccepted) Error() string {
+	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/revert][%d] revertDiskSnapshotAccepted  %+v", 202, o.Payload)
 }
 
-func (o *RevertDiskSnapshotOK) GetPayload() *models.RequestTracker {
+func (o *RevertDiskSnapshotAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
 
-func (o *RevertDiskSnapshotOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *RevertDiskSnapshotAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.RequestTracker)
 

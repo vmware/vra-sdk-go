@@ -26,7 +26,7 @@ type MarketplaceDownloadHistoryItem struct {
 	ContentName string `json:"contentName,omitempty"`
 
 	// Downloaded Content Type
-	// Enum: [BLUEPRINT IMAGE ABX_SCRIPTS]
+	// Enum: [BLUEPRINT IMAGE ABX_SCRIPTS TERRAFORM_CONFIGURATION]
 	ContentType string `json:"contentType,omitempty"`
 
 	// Downloaded On
@@ -92,7 +92,7 @@ var marketplaceDownloadHistoryItemTypeContentTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["BLUEPRINT","IMAGE","ABX_SCRIPTS"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["BLUEPRINT","IMAGE","ABX_SCRIPTS","TERRAFORM_CONFIGURATION"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -110,6 +110,9 @@ const (
 
 	// MarketplaceDownloadHistoryItemContentTypeABXSCRIPTS captures enum value "ABX_SCRIPTS"
 	MarketplaceDownloadHistoryItemContentTypeABXSCRIPTS string = "ABX_SCRIPTS"
+
+	// MarketplaceDownloadHistoryItemContentTypeTERRAFORMCONFIGURATION captures enum value "TERRAFORM_CONFIGURATION"
+	MarketplaceDownloadHistoryItemContentTypeTERRAFORMCONFIGURATION string = "TERRAFORM_CONFIGURATION"
 )
 
 // prop value enum

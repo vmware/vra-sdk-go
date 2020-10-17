@@ -18,6 +18,9 @@ import (
 // swagger:model UpdateMachineSpecification
 type UpdateMachineSpecification struct {
 
+	// Additional custom properties that may be used to extend the machine. Custom properties prefixed with: "__" are discarded.
+	CustomProperties map[string]string `json:"customProperties,omitempty"`
+
 	// Describes machine within the scope of your organization and is not propagated to the cloud
 	Description string `json:"description,omitempty"`
 

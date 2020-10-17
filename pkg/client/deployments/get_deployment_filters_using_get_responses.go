@@ -51,20 +51,20 @@ func NewGetDeploymentFiltersUsingGETOK() *GetDeploymentFiltersUsingGETOK {
 OK
 */
 type GetDeploymentFiltersUsingGETOK struct {
-	Payload *models.FilterSchema
+	Payload *models.DeploymentFilterSchema
 }
 
 func (o *GetDeploymentFiltersUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/filters][%d] getDeploymentFiltersUsingGETOK  %+v", 200, o.Payload)
 }
 
-func (o *GetDeploymentFiltersUsingGETOK) GetPayload() *models.FilterSchema {
+func (o *GetDeploymentFiltersUsingGETOK) GetPayload() *models.DeploymentFilterSchema {
 	return o.Payload
 }
 
 func (o *GetDeploymentFiltersUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.FilterSchema)
+	o.Payload = new(models.DeploymentFilterSchema)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

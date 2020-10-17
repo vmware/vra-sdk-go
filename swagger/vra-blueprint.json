@@ -21,6 +21,10 @@
             "description": "Blueprint requests API"
         },
         {
+            "name": "Blueprint Terraform Integrations",
+            "description": "Terraform integrations API"
+        },
+        {
             "name": "Blueprint Validation",
             "description": "Blueprint validation API"
         },
@@ -47,6 +51,456 @@
                         "schema": {
                             "$ref": "#/definitions/BlueprintAbout"
                         }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/blueprint/api/blueprint-integrations/terraform/create-blueprint-from-mapping": {
+            "post": {
+                "tags": [
+                    "Blueprint Terraform Integrations"
+                ],
+                "summary": "Creates a blueprint from a Terraform blueprint configuration (obtained from /create-blueprint-mapping).",
+                "operationId": "createBlueprintFromMappingUsingPOST_1",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "terraformBlueprintConfig",
+                        "description": "A Terraform blueprint configuration.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/TerraformBlueprintConfig"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Blueprint"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/blueprint/api/blueprint-integrations/terraform/create-blueprint-mapping": {
+            "post": {
+                "tags": [
+                    "Blueprint Terraform Integrations"
+                ],
+                "summary": "Retrieves and parses the specified Terraform configuration file(s) and returns relevant information for blueprint construction.",
+                "operationId": "createBlueprintMappingUsingPOST_1",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "configurationSourceReference",
+                        "description": "configurationSourceReference",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/TerraformConfigurationSourceReference"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/TerraformToBlueprintMapping"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/blueprint/api/blueprint-integrations/terraform/get-configuration-source-commits": {
+            "get": {
+                "tags": [
+                    "Blueprint Terraform Integrations"
+                ],
+                "summary": "Returns a paginated list of commits for a specified configuration source.",
+                "operationId": "getTerraformConfigurationSourceCommitListUsingGET_1",
+                "parameters": [
+                    {
+                        "name": "configurationSourceId",
+                        "in": "query",
+                        "description": "A Configuration Source ID.",
+                        "required": true,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfCommitDetails"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/blueprint/api/blueprint-integrations/terraform/get-configuration-source-tree": {
+            "get": {
+                "tags": [
+                    "Blueprint Terraform Integrations"
+                ],
+                "summary": "Shows directories of the configuration source repository that correspond to Terraform configurations.",
+                "operationId": "getConfigurationSourceTreeUsingGET_1",
+                "parameters": [
+                    {
+                        "name": "commitId",
+                        "in": "query",
+                        "description": "The commit ID corresponding to the version of the configuration source.",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "configurationSourceId",
+                        "in": "query",
+                        "description": "The ID of the configuration source to inspect.",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "path",
+                        "in": "query",
+                        "description": "A file path prefix. The prefix is interpreted in the context of the configuration source's path prefix. Results will only include directories under this path.",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/FileTree"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/blueprint/api/blueprint-integrations/terraform/get-configuration-sources": {
+            "get": {
+                "tags": [
+                    "Blueprint Terraform Integrations"
+                ],
+                "summary": "Returns a paginated list of configuration sources configured as storage for Terraform configurations.",
+                "operationId": "getTerraformConfigurationSourcesUsingGET_1",
+                "parameters": [
+                    {
+                        "name": "projects",
+                        "in": "query",
+                        "description": "A comma-separated list of project IDs. Results will be filtered so only configuration sources accessible from one or more of these projects will be returned.",
+                        "required": true,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "A search parameter to search based on configuration source name or repository.",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfContentSource"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/blueprint/api/blueprint-integrations/terraform/versions": {
+            "get": {
+                "tags": [
+                    "Blueprint Terraform Integrations"
+                ],
+                "summary": "Lists terraform versions",
+                "operationId": "listTerraformVersionsUsingGET_1",
+                "parameters": [
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is descending on updatedAt. Sorting is supported on fields createdAt, updatedAt, createdBy, updatedBy, version.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "$skip",
+                        "in": "query",
+                        "description": "Number of records you want to skip",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "description": "Number of records you want",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "onlyEnabled",
+                        "in": "query",
+                        "description": "Include only enabled versions",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfTerraformVersion"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "deprecated": false
+            },
+            "post": {
+                "tags": [
+                    "Blueprint Terraform Integrations"
+                ],
+                "summary": "Creates a version",
+                "operationId": "createTerraformVersionUsingPOST_1",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "terraformVersion",
+                        "description": "Terraform version",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/TerraformVersion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/TerraformVersion"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/blueprint/api/blueprint-integrations/terraform/versions/{versionId}": {
+            "get": {
+                "tags": [
+                    "Blueprint Terraform Integrations"
+                ],
+                "summary": "Returns Terraform Version details",
+                "operationId": "getTerraformVersionUsingGET_1",
+                "parameters": [
+                    {
+                        "name": "versionId",
+                        "in": "path",
+                        "description": "versionId",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/TerraformVersion"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            },
+            "delete": {
+                "tags": [
+                    "Blueprint Terraform Integrations"
+                ],
+                "summary": "Deletes a terraform version",
+                "operationId": "deleteTerraformVersionUsingDELETE_1",
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "versionId",
+                        "in": "path",
+                        "description": "versionId",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            },
+            "patch": {
+                "tags": [
+                    "Blueprint Terraform Integrations"
+                ],
+                "summary": "Updates a terraform version",
+                "operationId": "updateTerraformVersionUsingPATCH_1",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "terraformVersion",
+                        "description": "Terraform version object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/TerraformVersion"
+                        }
+                    },
+                    {
+                        "name": "versionId",
+                        "in": "path",
+                        "description": "versionId",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/TerraformVersion"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
                     }
                 },
                 "deprecated": false
@@ -1688,7 +2142,8 @@
                         "RECREATE",
                         "UPDATE",
                         "DELETE",
-                        "ACTION"
+                        "ACTION",
+                        "READ"
                     ]
                 },
                 "resourceType": {
@@ -1742,7 +2197,8 @@
                         "RECREATE",
                         "UPDATE",
                         "DELETE",
-                        "ACTION"
+                        "ACTION",
+                        "READ"
                     ]
                 },
                 "resourceType": {
@@ -2178,6 +2634,131 @@
             },
             "title": "BlueprintVersionRequest"
         },
+        "CommitDetails": {
+            "type": "object",
+            "properties": {
+                "authorName": {
+                    "type": "string"
+                },
+                "comments": {
+                    "type": "string"
+                },
+                "commitId": {
+                    "type": "string"
+                },
+                "committedDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "committerEmail": {
+                    "type": "string"
+                },
+                "committerName": {
+                    "type": "string"
+                }
+            },
+            "title": "CommitDetails"
+        },
+        "ContentSource": {
+            "type": "object",
+            "properties": {
+                "config": {
+                    "$ref": "#/definitions/ContentSourceConfig"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "integrationAccountName": {
+                    "type": "string"
+                },
+                "isSyncEnabled": {
+                    "type": "boolean"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "string"
+                },
+                "typeId": {
+                    "type": "string"
+                }
+            },
+            "title": "ContentSource"
+        },
+        "ContentSourceConfig": {
+            "type": "object",
+            "properties": {
+                "branch": {
+                    "type": "string"
+                },
+                "contentType": {
+                    "type": "string"
+                },
+                "integrationId": {
+                    "type": "string"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "repository": {
+                    "type": "string"
+                }
+            },
+            "title": "ContentSourceConfig"
+        },
+        "FileTree": {
+            "type": "object",
+            "properties": {
+                "repositoryId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "The ID of a content source"
+                },
+                "tree": {
+                    "type": "array",
+                    "description": "A list of directories",
+                    "items": {
+                        "$ref": "#/definitions/FileTreeDirectory"
+                    }
+                }
+            },
+            "title": "FileTree",
+            "description": "A list of directories found in a remote repository."
+        },
+        "FileTreeDirectory": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            },
+            "title": "FileTreeDirectory"
+        },
+        "OutputValue": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the output value in the Terraform configuration."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the output value in the Terraform configuration."
+                },
+                "sensitive": {
+                    "type": "boolean",
+                    "description": "A flag indicating that the field should be obscured because of security concerns."
+                }
+            },
+            "title": "OutputValue"
+        },
         "PageOfBlueprint": {
             "type": "object",
             "properties": {
@@ -2310,6 +2891,94 @@
             },
             "title": "PageOfBlueprintVersion"
         },
+        "PageOfCommitDetails": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CommitDetails"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfCommitDetails"
+        },
+        "PageOfContentSource": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ContentSource"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfContentSource"
+        },
         "PageOfResourceType": {
             "type": "object",
             "properties": {
@@ -2354,9 +3023,62 @@
             },
             "title": "PageOfResourceType"
         },
+        "PageOfTerraformVersion": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TerraformVersion"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfTerraformVersion"
+        },
         "PropertyDefinition": {
             "type": "object",
             "properties": {
+                "$data": {
+                    "type": "string"
+                },
+                "$ref": {
+                    "type": "string"
+                },
+                "additionalProperties": {
+                    "type": "boolean"
+                },
                 "allOf": {
                     "type": "array",
                     "items": {
@@ -2393,6 +3115,9 @@
                         "type": "object"
                     }
                 },
+                "format": {
+                    "type": "string"
+                },
                 "ignoreCaseOnDiff": {
                     "type": "boolean"
                 },
@@ -2401,6 +3126,10 @@
                 },
                 "items": {
                     "$ref": "#/definitions/PropertyDefinition"
+                },
+                "maxItems": {
+                    "type": "integer",
+                    "format": "int64"
                 },
                 "maxLength": {
                     "type": "integer",
@@ -2422,11 +3151,8 @@
                     "type": "integer",
                     "format": "int64"
                 },
-                "notAllowed": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
+                "not": {
+                    "$ref": "#/definitions/PropertyDefinition"
                 },
                 "oneOf": {
                     "type": "array",
@@ -2469,6 +3195,23 @@
                 }
             },
             "title": "PropertyDefinition"
+        },
+        "Provider": {
+            "type": "object",
+            "properties": {
+                "attributes": {
+                    "type": "object",
+                    "description": "The Terraform provider's statically configured attributes.",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The Terraform provider's type."
+                }
+            },
+            "title": "Provider"
         },
         "ResourceType": {
             "type": "object",
@@ -2579,6 +3322,227 @@
                 }
             },
             "title": "SupportedApi"
+        },
+        "TerraformBlueprintConfig": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Created time",
+                    "readOnly": true
+                },
+                "createdBy": {
+                    "type": "string",
+                    "description": "Created by",
+                    "readOnly": true
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Blueprint description."
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Object ID",
+                    "readOnly": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Blueprint name."
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Org ID",
+                    "readOnly": true
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Project ID"
+                },
+                "projectName": {
+                    "type": "string",
+                    "description": "Project Name",
+                    "readOnly": true
+                },
+                "terraformToBlueprintMapping": {
+                    "description": "Terraform configuration to blueprint mapping.",
+                    "$ref": "#/definitions/TerraformToBlueprintMapping"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Updated time",
+                    "readOnly": true
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "Updated by",
+                    "readOnly": true
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Terraform runtime version."
+                }
+            },
+            "title": "TerraformBlueprintConfig"
+        },
+        "TerraformConfigurationSourceReference": {
+            "type": "object",
+            "properties": {
+                "commitId": {
+                    "type": "string",
+                    "description": "ID that identifies the commit that corresponds to the desired version of the remote file(s)."
+                },
+                "repositoryId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "The ID of the relevant configuration source repository."
+                },
+                "sourceDirectory": {
+                    "type": "string",
+                    "description": "A path to the desired Terraform directory."
+                }
+            },
+            "title": "TerraformConfigurationSourceReference",
+            "description": "Reference information about a Terraform Configuration source that stores Terraform configuration files."
+        },
+        "TerraformToBlueprintMapping": {
+            "type": "object",
+            "properties": {
+                "compatibleVersions": {
+                    "type": "array",
+                    "description": "Compatible versions of Terraform that can be used to execute this configuration.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "configurationSourceReference": {
+                    "description": "A reference to the location where the Terraform configuration is being hosted.",
+                    "$ref": "#/definitions/TerraformConfigurationSourceReference"
+                },
+                "outputValues": {
+                    "type": "array",
+                    "description": "Information about output values generated by the Terraform configuration.",
+                    "items": {
+                        "$ref": "#/definitions/OutputValue"
+                    }
+                },
+                "providers": {
+                    "type": "array",
+                    "description": "Information about providers used in the Terraform configuration.",
+                    "items": {
+                        "$ref": "#/definitions/Provider"
+                    }
+                },
+                "variables": {
+                    "type": "array",
+                    "description": "Information about variables expected by the Terraform configuration.",
+                    "items": {
+                        "$ref": "#/definitions/Variable"
+                    }
+                },
+                "warnings": {
+                    "type": "array",
+                    "description": "A list of warnings related to the Terraform configuration.",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "title": "TerraformToBlueprintMapping",
+            "description": "Information about a Terraform configuration needed to create a blueprint."
+        },
+        "TerraformVersion": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Created time",
+                    "readOnly": true
+                },
+                "createdBy": {
+                    "type": "string",
+                    "description": "Created by",
+                    "readOnly": true
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Version description"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Version status"
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Version ID",
+                    "readOnly": true
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Org ID",
+                    "readOnly": true
+                },
+                "sha256Checksum": {
+                    "type": "string",
+                    "description": "The sha256 checksum of the terraform binary"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Updated time",
+                    "readOnly": true
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "Updated by",
+                    "readOnly": true
+                },
+                "url": {
+                    "type": "string",
+                    "description": "Download url"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "The numeric version of terraform release"
+                }
+            },
+            "title": "TerraformVersion"
+        },
+        "Variable": {
+            "type": "object",
+            "properties": {
+                "defaultValue": {
+                    "type": "object",
+                    "description": "The variable's default value in the Terraform configuration."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The variable's description in the Terraform configuration."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The variable's name in the Terraform configuration."
+                },
+                "sensitive": {
+                    "type": "boolean",
+                    "description": "Whether the variable should be obscured because of security concerns."
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The variable's type in the Terraform configuration. Complex Terraform types may be treated as Strings.",
+                    "enum": [
+                        "STRING",
+                        "NUMBER",
+                        "BOOL",
+                        "LIST",
+                        "MAP"
+                    ]
+                }
+            },
+            "title": "Variable"
         }
     }
 }

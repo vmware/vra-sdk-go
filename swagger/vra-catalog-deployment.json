@@ -33,8 +33,8 @@
             "description": "Deployment Request Action Controller"
         },
         {
-            "name": "Deployment Events",
-            "description": "Deployment Event Controller"
+            "name": "Deployment Requests",
+            "description": "Request Controller"
         },
         {
             "name": "Deployments",
@@ -61,12 +61,12 @@
             "description": "Metering Policy Assignment Controller"
         },
         {
-            "name": "Resource types",
-            "description": "Resource Type Controller"
+            "name": "Pricing Cards",
+            "description": "Metering Policy Controller"
         },
         {
-            "name": "pricing cards",
-            "description": "Metering Policy Controller"
+            "name": "Resource types",
+            "description": "Resource Type Controller"
         }
     ],
     "produces": [
@@ -82,6 +82,13 @@
                 "description": "Returns all entitlements (filtered by projectId).",
                 "operationId": "getEntitlementsUsingGET",
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "projectId",
                         "in": "query",
@@ -118,6 +125,13 @@
                     "application/json"
                 ],
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "in": "body",
                         "name": "entitlement",
@@ -163,6 +177,13 @@
                 "description": "Deletes the entitlement with the specified id.",
                 "operationId": "deleteEntitlementUsingDELETE",
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "id",
                         "in": "path",
@@ -220,6 +241,13 @@
                         "type": "integer",
                         "format": "int32",
                         "x-example": 1
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "name": "projectId",
@@ -283,6 +311,13 @@
                 "operationId": "getCatalogItemUsingGET",
                 "parameters": [
                     {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "id",
                         "in": "path",
                         "description": "Catalog item id",
@@ -318,6 +353,13 @@
                     "application/json"
                 ],
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "id",
                         "in": "path",
@@ -386,6 +428,13 @@
                         "x-example": 1
                     },
                     {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "projectId",
                         "in": "query",
                         "description": "Find sources which contains items that can be requested in the given projectId",
@@ -426,6 +475,13 @@
                     "application/json"
                 ],
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "in": "body",
                         "name": "source",
@@ -483,6 +539,13 @@
                 "operationId": "getUsingGET",
                 "parameters": [
                     {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "sourceId",
                         "in": "path",
                         "description": "Catalog source ID",
@@ -515,6 +578,13 @@
                 "description": "Deletes the catalog source with the supplied ID.",
                 "operationId": "deleteUsingDELETE",
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "sourceId",
                         "in": "path",
@@ -572,6 +642,13 @@
                         "type": "integer",
                         "format": "int32",
                         "x-example": 1
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "name": "expandProjects",
@@ -638,6 +715,13 @@
                 "operationId": "getCatalogItemUsingGET_1",
                 "parameters": [
                     {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "expandProjects",
                         "in": "query",
                         "description": "Retrieves the 'projects' field of the catalog item",
@@ -684,6 +768,13 @@
                 ],
                 "parameters": [
                     {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "id",
                         "in": "path",
                         "description": "Catalog item ID",
@@ -708,8 +799,14 @@
                             "$ref": "#/definitions/CatalogItemRequestResponse"
                         }
                     },
+                    "400": {
+                        "description": "Invalid request - bad data."
+                    },
                     "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden."
                     },
                     "404": {
                         "description": "Not Found"
@@ -730,6 +827,13 @@
                     "application/json"
                 ],
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "id",
                         "in": "path",
@@ -775,6 +879,13 @@
                 "operationId": "getUpfrontPriceResponseForCatalogItemUsingGET",
                 "parameters": [
                     {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "id",
                         "in": "path",
                         "description": "Catalog Item ID",
@@ -817,6 +928,13 @@
                 "description": "Returns a paginated list of catalog item versions.",
                 "operationId": "getVersionsUsingGET",
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "id",
                         "in": "path",
@@ -870,6 +988,13 @@
                 "description": "Returns a detailed catalog item version.",
                 "operationId": "getVersionByIdUsingGET",
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "id",
                         "in": "path",
@@ -940,6 +1065,13 @@
                         "type": "integer",
                         "format": "int32",
                         "x-example": 1
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -965,6 +1097,13 @@
                 "description": "Returns the Catalog Item Type with the specified ID.",
                 "operationId": "getTypeByIdUsingGET",
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "id",
                         "in": "path",
@@ -996,7 +1135,7 @@
                     "Deployments"
                 ],
                 "summary": "Fetch all deployments.",
-                "description": "Returns a paginated list of deployments.",
+                "description": "Returns a paginated list of deployments. Deployments with more than 100 resources is not supported.",
                 "operationId": "getDeploymentsUsingGET",
                 "parameters": [
                     {
@@ -1029,6 +1168,13 @@
                         "x-example": 1
                     },
                     {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "cloudAccounts",
                         "in": "query",
                         "description": "A comma-separated list. Results must be associated with one of these cloud accounts.",
@@ -1059,6 +1205,40 @@
                         "required": false,
                         "type": "string",
                         "allowEmptyValue": false
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "Retrieves only soft-deleted deployments that have not yet been completely deleted.",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "description": "The expanded details of the requested comma separated objects. 'resources' option returns resources with all properties. Ex. blueprint, project",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "blueprint",
+                                "catalog",
+                                "lastRequest",
+                                "project",
+                                "resources"
+                            ]
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false,
+                        "enum": [
+                            "blueprint",
+                            "catalog",
+                            "lastRequest",
+                            "project",
+                            "resources"
+                        ]
                     },
                     {
                         "name": "expandLastRequest",
@@ -1106,11 +1286,31 @@
                         "allowEmptyValue": false
                     },
                     {
+                        "name": "lastUpdatedAt",
+                        "in": "query",
+                        "description": "Comma-separated start and end dates for the interval",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
                         "name": "name",
                         "in": "query",
                         "description": "Results must have exactly this name.",
                         "required": false,
                         "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "ownedBy",
+                        "in": "query",
+                        "description": "A comma-separated list. Results must be associated with one of these owners",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
                         "allowEmptyValue": false
                     },
                     {
@@ -1152,7 +1352,7 @@
                     {
                         "name": "search",
                         "in": "query",
-                        "description": "Results must either have names with this string as a prefix or contain this string in their description.",
+                        "description": "Given string should either be part of a searchable field in a deployment or one of deployment's resources.",
                         "required": false,
                         "type": "string",
                         "allowEmptyValue": false
@@ -1173,18 +1373,6 @@
                         "name": "tags",
                         "in": "query",
                         "description": "A comma-separated list. Results must be associated with one of these tags",
-                        "required": false,
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "multi",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "templates",
-                        "in": "query",
-                        "description": "A comma-separated list. Results must be associated with one of these templates.",
                         "required": false,
                         "type": "array",
                         "items": {
@@ -1225,6 +1413,13 @@
                     {
                         "name": "ISO3Language",
                         "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
                         "required": false,
                         "type": "string"
                     },
@@ -1355,6 +1550,13 @@
                         "x-example": 1
                     },
                     {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "filterId",
                         "in": "path",
                         "description": "Filter Id",
@@ -1394,6 +1596,13 @@
                 "operationId": "checkDeploymentNameUsingGET",
                 "parameters": [
                     {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "name",
                         "in": "path",
                         "description": "Deployment name",
@@ -1425,12 +1634,53 @@
                 "operationId": "getDeploymentByIdUsingGET",
                 "parameters": [
                     {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "Retrieves the deployment, includes soft-deleted deployments that have not yet been completely deleted.",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": false
+                    },
+                    {
                         "name": "depId",
                         "in": "path",
                         "description": "Deployment ID",
                         "required": true,
                         "type": "string",
                         "format": "uuid"
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "description": "The expanded details of the requested comma separated objects. 'resources' option returns resources with all properties. Ex. blueprint, project",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "blueprint",
+                                "catalog",
+                                "lastRequest",
+                                "project",
+                                "resources"
+                            ]
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false,
+                        "enum": [
+                            "blueprint",
+                            "catalog",
+                            "lastRequest",
+                            "project",
+                            "resources"
+                        ]
                     },
                     {
                         "name": "expandLastRequest",
@@ -1482,6 +1732,13 @@
                 "operationId": "deleteDeploymentUsingDELETE",
                 "parameters": [
                     {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "depId",
                         "in": "path",
                         "description": "Deployment ID",
@@ -1494,7 +1751,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/DeploymentRequest"
+                            "$ref": "#/definitions/Request"
                         }
                     },
                     "401": {
@@ -1520,6 +1777,13 @@
                     "application/json"
                 ],
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "depId",
                         "in": "path",
@@ -1568,6 +1832,13 @@
                 "operationId": "getDeploymentActionsUsingGET",
                 "parameters": [
                     {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "depId",
                         "in": "path",
                         "description": "Deployment ID",
@@ -1613,6 +1884,13 @@
                         "type": "string"
                     },
                     {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "depId",
                         "in": "path",
                         "description": "Deployment ID",
@@ -1638,87 +1916,6 @@
                 "deprecated": false
             }
         },
-        "/deployment/api/deployments/{depId}/events": {
-            "get": {
-                "tags": [
-                    "Deployment Events"
-                ],
-                "summary": "Fetch deployment events.",
-                "description": "Returns the events for the deployment.",
-                "operationId": "getDeploymentEventsUsingGET",
-                "parameters": [
-                    {
-                        "name": "$orderby",
-                        "in": "query",
-                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
-                        "required": false,
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "multi"
-                    },
-                    {
-                        "name": "$skip",
-                        "in": "query",
-                        "description": "Number of records you want to skip",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32",
-                        "x-example": 1
-                    },
-                    {
-                        "name": "$top",
-                        "in": "query",
-                        "description": "Number of records you want",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32",
-                        "x-example": 1
-                    },
-                    {
-                        "name": "depId",
-                        "in": "path",
-                        "description": "Deployment ID",
-                        "required": true,
-                        "type": "string",
-                        "format": "uuid"
-                    },
-                    {
-                        "name": "includeAllSubEvents",
-                        "in": "query",
-                        "description": "Whether to include all events in the response.",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "parentId",
-                        "in": "query",
-                        "description": "Parent Event Id",
-                        "required": false,
-                        "type": "string",
-                        "format": "uuid",
-                        "allowEmptyValue": false
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/PageOfDeploymentEvent"
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized"
-                    },
-                    "404": {
-                        "description": "Not Found"
-                    }
-                },
-                "deprecated": false
-            }
-        },
         "/deployment/api/deployments/{depId}/expense-history": {
             "get": {
                 "tags": [
@@ -1728,6 +1925,13 @@
                 "description": "Returns the deployment expense history with the supplied ID.",
                 "operationId": "getDeploymentExpenseHistoryByIdUsingGET",
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "depId",
                         "in": "path",
@@ -1781,6 +1985,83 @@
             }
         },
         "/deployment/api/deployments/{depId}/requests": {
+            "get": {
+                "tags": [
+                    "Deployment Requests"
+                ],
+                "summary": "Fetch deployment requests.",
+                "description": "Returns the requests for the deployment.",
+                "operationId": "getDeploymentRequestsUsingGET",
+                "parameters": [
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "$skip",
+                        "in": "query",
+                        "description": "Number of records you want to skip",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "description": "Number of records you want",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "Retrieves the soft-deleted requests that have not yet been completely deleted.",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "depId",
+                        "in": "path",
+                        "description": "Deployment ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfRequest"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            },
             "post": {
                 "tags": [
                     "Deployment Actions"
@@ -1802,6 +2083,13 @@
                         }
                     },
                     {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "depId",
                         "in": "path",
                         "description": "Deployment ID",
@@ -1814,7 +2102,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/DeploymentRequest"
+                            "$ref": "#/definitions/Request"
                         }
                     },
                     "401": {
@@ -1822,6 +2110,255 @@
                     },
                     "403": {
                         "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/deployment/api/deployments/{depId}/requests/{requestId}": {
+            "get": {
+                "tags": [
+                    "Deployment Requests"
+                ],
+                "summary": "Get the Request.",
+                "description": "Returns the request with the given ID.",
+                "operationId": "getRequestUsingGET",
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "Retrieves the request, includes soft-deleted request that have not yet been completely deleted.",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "depId",
+                        "in": "path",
+                        "description": "Deployment ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "name": "requestId",
+                        "in": "path",
+                        "description": "Request ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Request"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/deployment/api/deployments/{depId}/requests/{requestId}/events": {
+            "get": {
+                "tags": [
+                    "Deployment Requests"
+                ],
+                "summary": "Fetch Request events.",
+                "description": "Returns all the events for a request.",
+                "operationId": "getRequestEventsUsingGET",
+                "parameters": [
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "$skip",
+                        "in": "query",
+                        "description": "Number of records you want to skip",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "description": "Number of records you want",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "Retrieves the soft-deleted events of the request that have not yet been completely deleted.",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "depId",
+                        "in": "path",
+                        "description": "Deployment ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "name": "requestId",
+                        "in": "path",
+                        "description": "Request ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfEvent"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/deployment/api/deployments/{depId}/requests/{requestId}/events/{eventId}/logs": {
+            "get": {
+                "tags": [
+                    "Deployment Requests"
+                ],
+                "summary": "Fetch Event logs.",
+                "description": "Returns the logs for an event.",
+                "operationId": "getEventLogsUsingGET",
+                "parameters": [
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "$skip",
+                        "in": "query",
+                        "description": "Number of records you want to skip",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "description": "Number of records you want",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "Retrieves the soft-deleted event logs that have not yet been completely deleted.",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "depId",
+                        "in": "path",
+                        "description": "Deployment ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "name": "eventId",
+                        "in": "path",
+                        "description": "Event ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "name": "requestId",
+                        "in": "path",
+                        "description": "Request ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "name": "sinceRow",
+                        "in": "query",
+                        "description": "A positive row number from which to show logs.",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/SliceOfEventLog"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1869,12 +2406,31 @@
                         "x-example": 1
                     },
                     {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "depId",
                         "in": "path",
                         "description": "Deployment ID",
                         "required": true,
                         "type": "string",
                         "format": "uuid"
+                    },
+                    {
+                        "name": "names",
+                        "in": "query",
+                        "description": "Results must have exactly these resource names.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
                     }
                 ],
                 "responses": {
@@ -1903,6 +2459,13 @@
                 "description": "Returns the resource with the specified ID that is correlated with the supplied deployment.",
                 "operationId": "getResourceByIdUsingGET",
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "depId",
                         "in": "path",
@@ -1945,6 +2508,13 @@
                 "operationId": "deleteResourceUsingDELETE",
                 "parameters": [
                     {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "depId",
                         "in": "path",
                         "description": "Deployment ID",
@@ -1965,7 +2535,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/DeploymentRequest"
+                            "$ref": "#/definitions/Request"
                         }
                     },
                     "401": {
@@ -1990,6 +2560,13 @@
                 "description": "Returns the complete list of available actions that can be performed on a given resource.",
                 "operationId": "getResourceActionsUsingGET",
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "depId",
                         "in": "path",
@@ -2041,6 +2618,13 @@
                         "in": "path",
                         "description": "Action ID",
                         "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
                         "type": "string"
                     },
                     {
@@ -2099,6 +2683,13 @@
                         }
                     },
                     {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "depId",
                         "in": "path",
                         "description": "Deployment ID",
@@ -2119,7 +2710,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/DeploymentRequest"
+                            "$ref": "#/definitions/Request"
                         }
                     },
                     "401": {
@@ -2143,6 +2734,13 @@
                 "summary": "Returns a count of deployments using the project.",
                 "operationId": "getDeploymentsForProjectUsingGET",
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "projectId",
                         "in": "path",
@@ -2168,7 +2766,8 @@
                 "tags": [
                     "Deployment Actions"
                 ],
-                "summary": "Submit action on requests. Allowable values: cancel, dismiss. Cancel can be submitted on In-progress requests and Dismiss can be submitted on Failed requests.",
+                "summary": "Submit action on requests. Allowable values: cancel, dismiss. ",
+                "description": "Cancel can be submitted on In-progress requests and Dismiss can be submitted on Failed requests.",
                 "operationId": "actionDeploymentRequestUsingPOST",
                 "consumes": [
                     "application/json"
@@ -2185,6 +2784,13 @@
                             "cancel",
                             "dismiss"
                         ]
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "name": "requestId",
@@ -2251,6 +2857,21 @@
                         "x-example": 1
                     },
                     {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "composableOnly",
+                        "in": "query",
+                        "description": "Include only composable resource types",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": false
+                    },
+                    {
                         "name": "ids",
                         "in": "query",
                         "description": "Filter by list of resource type ids",
@@ -2315,6 +2936,13 @@
                 "operationId": "getResourceTypeUsingGET",
                 "parameters": [
                     {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "resourceTypeId",
                         "in": "path",
                         "description": "resourceTypeId",
@@ -2352,6 +2980,13 @@
                 ],
                 "parameters": [
                     {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "file",
                         "in": "formData",
                         "description": "Icon file",
@@ -2382,6 +3017,13 @@
                 "description": "Download an existing icon by its unique id.",
                 "operationId": "download",
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "id",
                         "in": "path",
@@ -2416,6 +3058,13 @@
                 "description": "Delete an existing icon by its unique id.",
                 "operationId": "delete",
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "id",
                         "in": "path",
@@ -2475,6 +3124,13 @@
                         "x-example": 1
                     },
                     {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "computeStats",
                         "in": "query",
                         "description": "computeStats",
@@ -2484,7 +3140,7 @@
                     {
                         "name": "expandDefinition",
                         "in": "query",
-                        "description": "Retrieves the schema for this policy type",
+                        "description": "Retrieves policy definition information for each returned policy.",
                         "required": false,
                         "type": "boolean",
                         "allowEmptyValue": false
@@ -2512,17 +3168,24 @@
                 "tags": [
                     "Policies"
                 ],
-                "summary": "Creates a policy.",
-                "description": "Create a new policy based on request body and validate its field according to business rules.",
+                "summary": "Creates a new policy or updates an existing policy.",
+                "description": "Create a new policy or update an existing policy based on request body and validate its fields according to business rules.",
                 "operationId": "createPolicyUsingPOST_1",
                 "consumes": [
                     "application/json"
                 ],
                 "parameters": [
                     {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "in": "body",
                         "name": "policy",
-                        "description": "The policy to be created",
+                        "description": "The policy to be created or updated",
                         "required": false,
                         "schema": {
                             "$ref": "#/definitions/Policy"
@@ -2531,7 +3194,7 @@
                     {
                         "name": "validationOnly",
                         "in": "query",
-                        "description": "For a dry run that will do policy validation only instead of create a policy",
+                        "description": "For a dry run that will do policy validation only instead of creating or updating a policy",
                         "required": false,
                         "type": "boolean",
                         "allowEmptyValue": false
@@ -2557,6 +3220,13 @@
                 "description": "Find a specific policy based on the input policy id.",
                 "operationId": "getPolicyUsingGET_1",
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "computeStats",
                         "in": "query",
@@ -2591,6 +3261,13 @@
                 "description": "Delete a specified policy corresponding to its unique id.",
                 "operationId": "deletePolicyUsingDELETE_1",
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "id",
                         "in": "path",
@@ -2647,6 +3324,13 @@
                         "x-example": 1
                     },
                     {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "dryRunId",
                         "in": "query",
                         "description": "dryRunId",
@@ -2699,6 +3383,13 @@
                 "description": "Find a specific policy decision based on the input policy decision id.",
                 "operationId": "getDecisionByIdUsingGET",
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "id",
                         "in": "path",
@@ -2758,6 +3449,13 @@
                         "x-example": 1
                     },
                     {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "expandSchema",
                         "in": "query",
                         "description": "Retrieves the schema for this policy type",
@@ -2786,6 +3484,13 @@
                 "description": "Find a specific policy type based on the input policy type id.",
                 "operationId": "getPolicyTypeByIdUsingGET",
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "id",
                         "in": "path",
@@ -2844,6 +3549,13 @@
                         "x-example": 1
                     },
                     {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "refreshEntities",
                         "in": "query",
                         "description": "Search by name and description",
@@ -2877,6 +3589,13 @@
                     "application/json"
                 ],
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "in": "body",
                         "name": "meteringPolicyAssignment",
@@ -2918,6 +3637,15 @@
                 "summary": "Fetch pricing card assignment strategy for the Org",
                 "description": "Returns a pricing card assignment strategy for the Org",
                 "operationId": "getMeteringAssignmentStrategyUsingGET",
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -2945,6 +3673,13 @@
                     "application/json"
                 ],
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "in": "body",
                         "name": "meteringAssignmentStrategy",
@@ -2988,6 +3723,13 @@
                 ],
                 "parameters": [
                     {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "in": "body",
                         "name": "meteringAssignmentStrategy",
                         "description": "Pricing card assignment strategy with 'EntityType' to override the strategy for the org",
@@ -3020,6 +3762,13 @@
                 "description": "Returns a pricing card assignments by id",
                 "operationId": "getMeteringPolicyAssignmentUsingGET",
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "id",
                         "in": "path",
@@ -3054,6 +3803,13 @@
                 "operationId": "deleteMeteringPolicyAssignmentUsingDELETE",
                 "parameters": [
                     {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
                         "name": "id",
                         "in": "path",
                         "description": "pricing card Assignment Id",
@@ -3085,6 +3841,13 @@
                     "application/json"
                 ],
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "id",
                         "in": "path",
@@ -3120,7 +3883,7 @@
         "/price/api/private/pricing-cards": {
             "get": {
                 "tags": [
-                    "pricing cards"
+                    "Pricing Cards"
                 ],
                 "summary": "Fetch all pricing cards for private-policy cloud",
                 "description": "Returns a paginated list of pricing cards",
@@ -3154,6 +3917,13 @@
                         "type": "integer",
                         "format": "int32",
                         "x-example": 1
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "name": "expandAssignmentInfo",
@@ -3195,7 +3965,7 @@
             },
             "post": {
                 "tags": [
-                    "pricing cards"
+                    "Pricing Cards"
                 ],
                 "summary": "Create a new pricing card",
                 "description": "Create a new pricing card based on request body and validate its field according to business rules.",
@@ -3204,6 +3974,13 @@
                     "application/json"
                 ],
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "in": "body",
                         "name": "meteringPolicy",
@@ -3237,12 +4014,19 @@
         "/price/api/private/pricing-cards/{id}": {
             "get": {
                 "tags": [
-                    "pricing cards"
+                    "Pricing Cards"
                 ],
                 "summary": "Find the pricing card with specified Id",
                 "description": "Returns the pricing card with the specified id",
                 "operationId": "getPolicyUsingGET",
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "id",
                         "in": "path",
@@ -3270,7 +4054,7 @@
             },
             "put": {
                 "tags": [
-                    "pricing cards"
+                    "Pricing Cards"
                 ],
                 "summary": "Update the pricing card",
                 "description": "Updates the pricing card with the specified Id",
@@ -3279,6 +4063,13 @@
                     "application/json"
                 ],
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "id",
                         "in": "path",
@@ -3315,12 +4106,19 @@
             },
             "delete": {
                 "tags": [
-                    "pricing cards"
+                    "Pricing Cards"
                 ],
                 "summary": "Delete the pricing card with specified Id",
                 "description": "Deletes the pricing card with the specified id",
                 "operationId": "deletePolicyUsingDELETE",
                 "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "id",
                         "in": "path",
@@ -3395,6 +4193,10 @@
                 "description": {
                     "type": "string",
                     "description": "CatalogItem description"
+                },
+                "formId": {
+                    "type": "string",
+                    "description": "Form ID"
                 },
                 "iconId": {
                     "type": "string",
@@ -3687,6 +4489,10 @@
                     "type": "string",
                     "description": "Description"
                 },
+                "formId": {
+                    "type": "string",
+                    "description": "Form ID"
+                },
                 "id": {
                     "type": "string",
                     "description": "Version ID"
@@ -3867,6 +4673,9 @@
                 },
                 "name": {
                     "type": "string"
+                },
+                "properties": {
+                    "type": "object"
                 }
             },
             "title": "DataElement"
@@ -3877,6 +4686,10 @@
                 "name"
             ],
             "properties": {
+                "blueprint": {
+                    "description": "Expanded deployment blueprint",
+                    "$ref": "#/definitions/ResourceReference"
+                },
                 "blueprintId": {
                     "type": "string",
                     "description": "Deployment blueprint id"
@@ -3884,6 +4697,10 @@
                 "blueprintVersion": {
                     "type": "string",
                     "description": "Deployment blueprint version"
+                },
+                "catalog": {
+                    "description": "Expanded deployment catalog",
+                    "$ref": "#/definitions/ResourceReference"
                 },
                 "catalogItemId": {
                     "type": "string",
@@ -3902,13 +4719,16 @@
                     "type": "string",
                     "description": "Created by"
                 },
+                "deleted": {
+                    "type": "boolean",
+                    "description": "Indicates whether the deployment is deleted or not."
+                },
                 "description": {
                     "type": "string",
                     "description": "Description of the deployment"
                 },
                 "expense": {
                     "description": "Expense associated with the deployment.",
-                    "readOnly": true,
                     "$ref": "#/definitions/Expense"
                 },
                 "iconId": {
@@ -3926,7 +4746,7 @@
                 },
                 "lastRequest": {
                     "description": "Last request",
-                    "$ref": "#/definitions/DeploymentRequest"
+                    "$ref": "#/definitions/Request"
                 },
                 "lastUpdatedAt": {
                     "type": "string",
@@ -3949,6 +4769,10 @@
                 "orgId": {
                     "type": "string"
                 },
+                "ownedBy": {
+                    "type": "string",
+                    "description": "Owned by"
+                },
                 "project": {
                     "description": "Expanded deployment project",
                     "$ref": "#/definitions/ResourceReference"
@@ -3960,7 +4784,6 @@
                 "resources": {
                     "type": "array",
                     "description": "Expanded resources for the deployment. Content of this property will not be maintained backward compatible",
-                    "readOnly": true,
                     "items": {
                         "$ref": "#/definitions/Resource"
                     }
@@ -3974,60 +4797,18 @@
                         "CREATE_FAILED",
                         "UPDATE_SUCCESSFUL",
                         "UPDATE_INPROGRESS",
-                        "UPDATE_FAILED"
+                        "UPDATE_FAILED",
+                        "DELETE_SUCCESSFUL",
+                        "DELETE_INPROGRESS",
+                        "DELETE_FAILED",
+                        "ACTION_SUCCESSFUL",
+                        "ACTION_INPROGRESS",
+                        "ACTION_FAILED"
                     ]
                 }
             },
             "title": "Deployment",
             "description": "A group of resources such as machines, network, software, etc... typically provisioned together to deliver a complete/workable application."
-        },
-        "DeploymentEvent": {
-            "type": "object",
-            "properties": {
-                "createdAt": {
-                    "type": "string",
-                    "format": "date-time",
-                    "description": "Creation time (e.g. date format '2019-07-13T23:16:49.310Z')."
-                },
-                "deploymentId": {
-                    "type": "string",
-                    "format": "uuid",
-                    "description": "Deployment id to which the event applies to"
-                },
-                "details": {
-                    "type": "string",
-                    "description": "Longer user-friendly details of the event."
-                },
-                "id": {
-                    "type": "string",
-                    "format": "uuid",
-                    "description": "Event identifier"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "Short user-friendly label of the event (e.g. 'shuting down myVM')"
-                },
-                "parentId": {
-                    "type": "string",
-                    "format": "uuid",
-                    "description": "Parent event/request identifier"
-                },
-                "resourceName": {
-                    "type": "string",
-                    "description": "Optional resource name to which the event applies to"
-                },
-                "resourceType": {
-                    "type": "string",
-                    "description": "Optional resource type to which the event applies to"
-                },
-                "updatedAt": {
-                    "type": "string",
-                    "format": "date-time",
-                    "description": "Last update time (e.g. date format '2019-07-13T23:16:49.310Z')."
-                }
-            },
-            "title": "DeploymentEvent",
-            "description": "Represents deployment events."
         },
         "DeploymentExpenseHistory": {
             "type": "object",
@@ -4058,123 +4839,6 @@
             },
             "title": "DeploymentExpenseHistory",
             "description": "Expense history of a deployment."
-        },
-        "DeploymentRequest": {
-            "type": "object",
-            "properties": {
-                "actionId": {
-                    "type": "string",
-                    "description": "Identifier of the requested action"
-                },
-                "approvedAt": {
-                    "type": "string",
-                    "format": "date-time",
-                    "description": "Time at which the request was approved."
-                },
-                "blueprintId": {
-                    "type": "string",
-                    "description": "Identifier of the requested blueprint in the form 'UUID:version'"
-                },
-                "cancelable": {
-                    "type": "boolean",
-                    "description": "Indicates whether request can be canceled or not."
-                },
-                "catalogItemId": {
-                    "type": "string",
-                    "description": "Identifier of the requested catalog item in the form 'UUID:version'"
-                },
-                "completedAt": {
-                    "type": "string",
-                    "format": "date-time",
-                    "description": "Time at which the request completed."
-                },
-                "completedTasks": {
-                    "type": "integer",
-                    "format": "int32",
-                    "description": "The number of tasks completed while fulfilling this request."
-                },
-                "createdAt": {
-                    "type": "string",
-                    "format": "date-time",
-                    "description": "Creation time (e.g. date format '2019-07-13T23:16:49.310Z')."
-                },
-                "deploymentId": {
-                    "type": "string",
-                    "format": "uuid",
-                    "description": "Deployment id to which the event applies to"
-                },
-                "details": {
-                    "type": "string",
-                    "description": "Longer user-friendly details of the event."
-                },
-                "dismissed": {
-                    "type": "boolean",
-                    "description": "Indicates whether request is in dismissed state."
-                },
-                "id": {
-                    "type": "string",
-                    "format": "uuid",
-                    "description": "Event identifier"
-                },
-                "initializedAt": {
-                    "type": "string",
-                    "format": "date-time",
-                    "description": "Time at which the request was initialized."
-                },
-                "inputs": {
-                    "type": "object",
-                    "description": "Request inputs"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "Short user-friendly label of the event (e.g. 'shuting down myVM')"
-                },
-                "parentId": {
-                    "type": "string",
-                    "format": "uuid",
-                    "description": "Parent event/request identifier"
-                },
-                "requestedBy": {
-                    "type": "string",
-                    "description": "User that initiated the request"
-                },
-                "resourceName": {
-                    "type": "string",
-                    "description": "Optional resource name to which the event applies to"
-                },
-                "resourceType": {
-                    "type": "string",
-                    "description": "Optional resource type to which the event applies to"
-                },
-                "status": {
-                    "type": "string",
-                    "description": "Request overall execution status.",
-                    "enum": [
-                        "CREATED",
-                        "PENDING",
-                        "INITIALIZATION",
-                        "APPROVAL_PENDING",
-                        "INPROGRESS",
-                        "COMPLETION",
-                        "APPROVAL_REJECTED",
-                        "ABORTED",
-                        "SUCCESSFUL",
-                        "FAILED"
-                    ]
-                },
-                "totalTasks": {
-                    "type": "integer",
-                    "format": "int32",
-                    "description": "The total number of tasks need to be completed to fulfil this request."
-                },
-                "updatedAt": {
-                    "type": "string",
-                    "format": "date-time",
-                    "description": "Last update time (e.g. date format '2019-07-13T23:16:49.310Z')."
-                }
-            },
-            "title": "DeploymentRequest",
-            "description": "Represents deployment requests."
         },
         "DeploymentUpdate": {
             "type": "object",
@@ -4215,6 +4879,81 @@
             },
             "title": "Entitlement",
             "description": "Represents an entitlement that is configured by admins to enforce user access to catalog items, services, etc., within their own organizations. "
+        },
+        "Event": {
+            "type": "object",
+            "required": [
+                "name",
+                "timestamp"
+            ],
+            "properties": {
+                "details": {
+                    "type": "string",
+                    "description": "Longer user-friendly details of the event."
+                },
+                "hasLogs": {
+                    "type": "boolean",
+                    "description": "Indicates whether the event has logs or not."
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Event identifier"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Short user-friendly label of the event (e.g. 'shutting down myVM')"
+                },
+                "resourceName": {
+                    "type": "string",
+                    "description": "Optional resource name to which the event applies to"
+                },
+                "resourceType": {
+                    "type": "string",
+                    "description": "Optional resource type to which the event applies to"
+                },
+                "timestamp": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Timestamp of the Event (e.g. date format '2019-07-13T23:16:49.310Z')."
+                }
+            },
+            "title": "Event",
+            "description": "Represents request events."
+        },
+        "EventLog": {
+            "type": "object",
+            "required": [
+                "message",
+                "timestamp"
+            ],
+            "properties": {
+                "eof": {
+                    "type": "boolean",
+                    "description": "Indicates whether this is the last log entry."
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Event Log identifier"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Message of the event log"
+                },
+                "rownum": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Row number of the Event Log."
+                },
+                "timestamp": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Timestamp of the Event log (e.g. date format '2019-07-13T23:16:49.310Z')."
+                }
+            },
+            "title": "EventLog",
+            "description": "Represents a event log."
         },
         "Expense": {
             "type": "object",
@@ -4280,13 +5019,6 @@
                 "empty": {
                     "type": "boolean"
                 },
-                "filterType": {
-                    "type": "string",
-                    "enum": [
-                        "MULTISELECT",
-                        "DATE_RANGE"
-                    ]
-                },
                 "first": {
                     "type": "boolean"
                 },
@@ -4321,6 +5053,13 @@
                 "totalPages": {
                     "type": "integer",
                     "format": "int32"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "MULTISELECT",
+                        "DATE_RANGE"
+                    ]
                 }
             },
             "title": "Filter"
@@ -4377,6 +5116,9 @@
             "properties": {
                 "formURI": {
                     "type": "string"
+                },
+                "trackProgressInModal": {
+                    "type": "boolean"
                 }
             },
             "title": "FormDefinition"
@@ -4879,13 +5621,13 @@
             },
             "title": "PageOfDeployment"
         },
-        "PageOfDeploymentEvent": {
+        "PageOfEvent": {
             "type": "object",
             "properties": {
                 "content": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/DeploymentEvent"
+                        "$ref": "#/definitions/Event"
                     }
                 },
                 "empty": {
@@ -4921,7 +5663,7 @@
                     "format": "int32"
                 }
             },
-            "title": "PageOfDeploymentEvent"
+            "title": "PageOfEvent"
         },
         "PageOfFilterEntry": {
             "type": "object",
@@ -5186,6 +5928,50 @@
                 }
             },
             "title": "PageOfPolicyType"
+        },
+        "PageOfRequest": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Request"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfRequest"
         },
         "PageOfResource": {
             "type": "object",
@@ -5523,6 +6309,125 @@
             },
             "title": "RateFactorItem"
         },
+        "Request": {
+            "type": "object",
+            "required": [
+                "completedTasks",
+                "createdAt",
+                "name",
+                "requestedBy",
+                "totalTasks"
+            ],
+            "properties": {
+                "actionId": {
+                    "type": "string",
+                    "description": "Identifier of the requested action"
+                },
+                "approvedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Time at which the request was approved."
+                },
+                "blueprintId": {
+                    "type": "string",
+                    "description": "Identifier of the requested blueprint in the form 'UUID:version'"
+                },
+                "cancelCallbackUri": {
+                    "type": "string",
+                    "description": "URL to be called for cancelling execution of the request."
+                },
+                "cancelable": {
+                    "type": "boolean",
+                    "description": "Indicates whether request can be canceled or not."
+                },
+                "catalogItemId": {
+                    "type": "string",
+                    "description": "Identifier of the requested catalog item in the form 'UUID:version'"
+                },
+                "completedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Time at which the request completed."
+                },
+                "completedTasks": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "The number of tasks completed while fulfilling this request."
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Creation time (e.g. date format '2019-07-13T23:16:49.310Z')."
+                },
+                "details": {
+                    "type": "string",
+                    "description": "Longer user-friendly details of the request."
+                },
+                "dismissed": {
+                    "type": "boolean",
+                    "description": "Indicates whether request is in dismissed state."
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Request identifier"
+                },
+                "initializedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Time at which the request was initialized."
+                },
+                "inputs": {
+                    "type": "object",
+                    "description": "Request inputs"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Short user-friendly label of the request (e.g. 'shuting down myVM')"
+                },
+                "outputs": {
+                    "type": "object",
+                    "description": "Request outputs"
+                },
+                "requestedBy": {
+                    "type": "string",
+                    "description": "User that initiated the request"
+                },
+                "resourceName": {
+                    "type": "string",
+                    "description": "Optional resource name to which the request applies to"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Request overall execution status.",
+                    "enum": [
+                        "CREATED",
+                        "PENDING",
+                        "INITIALIZATION",
+                        "CHECKING_APPROVAL",
+                        "APPROVAL_PENDING",
+                        "INPROGRESS",
+                        "COMPLETION",
+                        "APPROVAL_REJECTED",
+                        "ABORTED",
+                        "SUCCESSFUL",
+                        "FAILED"
+                    ]
+                },
+                "totalTasks": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "The total number of tasks need to be completed to fulfil this request."
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Last update time (e.g. date format '2019-07-13T23:16:49.310Z')."
+                }
+            },
+            "title": "Request",
+            "description": "Represents deployment requests."
+        },
         "Resource": {
             "type": "object",
             "required": [
@@ -5555,9 +6460,6 @@
                     "type": "string",
                     "format": "uuid",
                     "description": "Unique identifier of the resource"
-                },
-                "metadata": {
-                    "type": "object"
                 },
                 "name": {
                     "type": "string",
@@ -5671,13 +6573,16 @@
         "ResourceReference": {
             "type": "object",
             "properties": {
+                "description": {
+                    "type": "string"
+                },
                 "id": {
                     "type": "string"
                 },
-                "link": {
+                "name": {
                     "type": "string"
                 },
-                "name": {
+                "version": {
                     "type": "string"
                 }
             },
@@ -5705,6 +6610,10 @@
                         "Puppet",
                         "Ansible"
                     ]
+                },
+                "composable": {
+                    "type": "boolean",
+                    "description": "Composable with other types or not"
                 },
                 "createdAt": {
                     "type": "string",
@@ -5745,7 +6654,7 @@
                 },
                 "schema": {
                     "type": "object",
-                    "description": "Resource type schema"
+                    "description": "Json schema that represents resource type, a simplified version of http://json-schema.org/latest/json-schema-validation.html#rfc.section.5"
                 },
                 "updatedAt": {
                     "type": "string",
@@ -5758,6 +6667,42 @@
                 }
             },
             "title": "ResourceType"
+        },
+        "SliceOfEventLog": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/EventLog"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                }
+            },
+            "title": "SliceOfEventLog"
         },
         "Sort": {
             "type": "object",

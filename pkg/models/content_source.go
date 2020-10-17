@@ -60,18 +60,12 @@ type ContentSource struct {
 	// Required: true
 	ProjectID *string `json:"projectId"`
 
-	// project ids
-	ProjectIds []string `json:"projectIds"`
-
 	// Is Sync Enabled
 	SyncEnabled bool `json:"syncEnabled,omitempty"`
 
-	// type
-	Type string `json:"type,omitempty"`
-
 	// Content Source type
 	// Required: true
-	// Enum: [com.github com.gitlab com.vmware.marketplace]
+	// Enum: [com.github com.gitlab org.bitbucket com.vmware.marketplace]
 	TypeID *string `json:"typeId"`
 }
 
@@ -170,7 +164,7 @@ var contentSourceTypeTypeIDPropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["com.github","com.gitlab","com.vmware.marketplace"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["com.github","com.gitlab","org.bitbucket","com.vmware.marketplace"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -185,6 +179,9 @@ const (
 
 	// ContentSourceTypeIDComGitlab captures enum value "com.gitlab"
 	ContentSourceTypeIDComGitlab string = "com.gitlab"
+
+	// ContentSourceTypeIDOrgBitbucket captures enum value "org.bitbucket"
+	ContentSourceTypeIDOrgBitbucket string = "org.bitbucket"
 
 	// ContentSourceTypeIDComVmwareMarketplace captures enum value "com.vmware.marketplace"
 	ContentSourceTypeIDComVmwareMarketplace string = "com.vmware.marketplace"

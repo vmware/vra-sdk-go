@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewResizeMachineParams creates a new ResizeMachineParams object
@@ -65,6 +66,11 @@ type ResizeMachineParams struct {
 
 	*/
 	APIVersion *string
+	/*CoreCount
+	  The desired number of cores per socket to resize the Machine
+
+	*/
+	CoreCount *string
 	/*CPUCount
 	  The desired number of CPUs to resize the Machine
 
@@ -85,6 +91,11 @@ type ResizeMachineParams struct {
 
 	*/
 	Name *string
+	/*RebootMachine
+	  Only applicable for vSphere VMs with the Hot Add option enabled. If set to false, VM is resized without reboot.
+
+	*/
+	RebootMachine *bool
 
 	timeout    time.Duration
 	Context    context.Context
@@ -135,6 +146,17 @@ func (o *ResizeMachineParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
+// WithCoreCount adds the coreCount to the resize machine params
+func (o *ResizeMachineParams) WithCoreCount(coreCount *string) *ResizeMachineParams {
+	o.SetCoreCount(coreCount)
+	return o
+}
+
+// SetCoreCount adds the coreCount to the resize machine params
+func (o *ResizeMachineParams) SetCoreCount(coreCount *string) {
+	o.CoreCount = coreCount
+}
+
 // WithCPUCount adds the cPUCount to the resize machine params
 func (o *ResizeMachineParams) WithCPUCount(cPUCount *string) *ResizeMachineParams {
 	o.SetCPUCount(cPUCount)
@@ -179,6 +201,17 @@ func (o *ResizeMachineParams) SetName(name *string) {
 	o.Name = name
 }
 
+// WithRebootMachine adds the rebootMachine to the resize machine params
+func (o *ResizeMachineParams) WithRebootMachine(rebootMachine *bool) *ResizeMachineParams {
+	o.SetRebootMachine(rebootMachine)
+	return o
+}
+
+// SetRebootMachine adds the rebootMachine to the resize machine params
+func (o *ResizeMachineParams) SetRebootMachine(rebootMachine *bool) {
+	o.RebootMachine = rebootMachine
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *ResizeMachineParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -197,6 +230,22 @@ func (o *ResizeMachineParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.CoreCount != nil {
+
+		// query param coreCount
+		var qrCoreCount string
+		if o.CoreCount != nil {
+			qrCoreCount = *o.CoreCount
+		}
+		qCoreCount := qrCoreCount
+		if qCoreCount != "" {
+			if err := r.SetQueryParam("coreCount", qCoreCount); err != nil {
 				return err
 			}
 		}
@@ -250,6 +299,22 @@ func (o *ResizeMachineParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		qName := qrName
 		if qName != "" {
 			if err := r.SetQueryParam("name", qName); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.RebootMachine != nil {
+
+		// query param rebootMachine
+		var qrRebootMachine bool
+		if o.RebootMachine != nil {
+			qrRebootMachine = *o.RebootMachine
+		}
+		qRebootMachine := swag.FormatBool(qrRebootMachine)
+		if qRebootMachine != "" {
+			if err := r.SetQueryParam("rebootMachine", qRebootMachine); err != nil {
 				return err
 			}
 		}

@@ -303,6 +303,20 @@ def change_response_code(swagger):
             del responses[old_response_code]
 
 
+def change_property_type(swagger):
+    # List of paths, operations, parameters, current type and new type to update
+    paths = [
+        ('/iaas/api/projects', 'get', '$filter', 'boolean', 'string'),
+    ]
+
+    # Update the needed paths
+    for (p, op, parameter, old_type, new_type) in paths:
+        param_list = swagger['paths'][p][op]['parameters']
+        for i in range(len(param_list)):
+            if param_list[i]['name'] == parameter and param_list[i]['type'] == old_type:
+                param_list[i]['type'] = new_type
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--omit-security', action='store_false')
@@ -328,6 +342,8 @@ if __name__ == "__main__":
     change_response_code(swagger)
 
     add_error_definition(swagger)
+
+    change_property_type(swagger)
 
     if args.omit_security:
         add_global_security(swagger)

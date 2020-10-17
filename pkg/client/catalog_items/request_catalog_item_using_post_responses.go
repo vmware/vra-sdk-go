@@ -41,6 +41,12 @@ func (o *RequestCatalogItemUsingPOSTReader) ReadResponse(response runtime.Client
 			return nil, err
 		}
 		return nil, result
+	case 403:
+		result := NewRequestCatalogItemUsingPOSTForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 404:
 		result := NewRequestCatalogItemUsingPOSTNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -93,7 +99,7 @@ func NewRequestCatalogItemUsingPOSTBadRequest() *RequestCatalogItemUsingPOSTBadR
 
 /*RequestCatalogItemUsingPOSTBadRequest handles this case with default header values.
 
-Bad Request
+Invalid request - bad data.
 */
 type RequestCatalogItemUsingPOSTBadRequest struct {
 	Payload *models.Error
@@ -136,6 +142,27 @@ func (o *RequestCatalogItemUsingPOSTUnauthorized) Error() string {
 }
 
 func (o *RequestCatalogItemUsingPOSTUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewRequestCatalogItemUsingPOSTForbidden creates a RequestCatalogItemUsingPOSTForbidden with default headers values
+func NewRequestCatalogItemUsingPOSTForbidden() *RequestCatalogItemUsingPOSTForbidden {
+	return &RequestCatalogItemUsingPOSTForbidden{}
+}
+
+/*RequestCatalogItemUsingPOSTForbidden handles this case with default header values.
+
+Forbidden.
+*/
+type RequestCatalogItemUsingPOSTForbidden struct {
+}
+
+func (o *RequestCatalogItemUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /catalog/api/items/{id}/request][%d] requestCatalogItemUsingPOSTForbidden ", 403)
+}
+
+func (o *RequestCatalogItemUsingPOSTForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }
