@@ -27,7 +27,7 @@ type Client struct {
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	PromoteDisk(params *PromoteDiskParams) (*PromoteDiskOK, error)
+	PromoteDisk(params *PromoteDiskParams) (*PromoteDiskAccepted, error)
 
 	AttachMachineDisk(params *AttachMachineDiskParams) (*AttachMachineDiskOK, error)
 
@@ -55,7 +55,7 @@ type ClientService interface {
 
 	ResizeBlockDevice(params *ResizeBlockDeviceParams) (*ResizeBlockDeviceAccepted, *ResizeBlockDeviceNoContent, error)
 
-	RevertDiskSnapshot(params *RevertDiskSnapshotParams) (*RevertDiskSnapshotOK, error)
+	RevertDiskSnapshot(params *RevertDiskSnapshotParams) (*RevertDiskSnapshotAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -65,7 +65,7 @@ type ClientService interface {
 
   Second day promote operation on disk
 */
-func (a *Client) PromoteDisk(params *PromoteDiskParams) (*PromoteDiskOK, error) {
+func (a *Client) PromoteDisk(params *PromoteDiskParams) (*PromoteDiskAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPromoteDiskParams()
@@ -86,7 +86,7 @@ func (a *Client) PromoteDisk(params *PromoteDiskParams) (*PromoteDiskOK, error) 
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PromoteDiskOK)
+	success, ok := result.(*PromoteDiskAccepted)
 	if ok {
 		return success, nil
 	}
@@ -140,6 +140,7 @@ func (a *Client) AttachMachineDisk(params *AttachMachineDiskParams) (*AttachMach
     1. dataStore: Defines name of the datastore in which the disk has to be provisioned.
     2. storagePolicy: Defines name of the storage policy in which the disk has to be provisioned. If name of the datastore is specified in the custom properties then, datastore takes precedence.
     3. provisioningType: Defines the type of provisioning. For eg. thick/thin.
+    4. resourceGroupName: Defines the Azure resource group name where the disk needs to be provisioned.
 */
 func (a *Client) CreateBlockDevice(params *CreateBlockDeviceParams) (*CreateBlockDeviceAccepted, error) {
 	// TODO: Validate the params before sending
@@ -581,7 +582,7 @@ func (a *Client) ResizeBlockDevice(params *ResizeBlockDeviceParams) (*ResizeBloc
 
   Second day revert snapshot operation for disk
 */
-func (a *Client) RevertDiskSnapshot(params *RevertDiskSnapshotParams) (*RevertDiskSnapshotOK, error) {
+func (a *Client) RevertDiskSnapshot(params *RevertDiskSnapshotParams) (*RevertDiskSnapshotAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewRevertDiskSnapshotParams()
@@ -602,7 +603,7 @@ func (a *Client) RevertDiskSnapshot(params *RevertDiskSnapshotParams) (*RevertDi
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*RevertDiskSnapshotOK)
+	success, ok := result.(*RevertDiskSnapshotAccepted)
 	if ok {
 		return success, nil
 	}

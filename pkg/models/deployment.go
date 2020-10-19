@@ -22,11 +22,17 @@ import (
 // swagger:model Deployment
 type Deployment struct {
 
+	// Expanded deployment blueprint
+	Blueprint *ResourceReference `json:"blueprint,omitempty"`
+
 	// Deployment blueprint id
 	BlueprintID string `json:"blueprintId,omitempty"`
 
 	// Deployment blueprint version
 	BlueprintVersion string `json:"blueprintVersion,omitempty"`
+
+	// Expanded deployment catalog
+	Catalog *ResourceReference `json:"catalog,omitempty"`
 
 	// Deployment catalog item id
 	CatalogItemID string `json:"catalogItemId,omitempty"`
@@ -41,11 +47,13 @@ type Deployment struct {
 	// Created by
 	CreatedBy string `json:"createdBy,omitempty"`
 
+	// Indicates whether the deployment is deleted or not.
+	Deleted bool `json:"deleted,omitempty"`
+
 	// Description of the deployment
 	Description string `json:"description,omitempty"`
 
 	// Expense associated with the deployment.
-	// Read Only: true
 	Expense *Expense `json:"expense,omitempty"`
 
 	// Deployment icon id
@@ -59,7 +67,7 @@ type Deployment struct {
 	Inputs interface{} `json:"inputs,omitempty"`
 
 	// Last request
-	LastRequest *DeploymentRequest `json:"lastRequest,omitempty"`
+	LastRequest *Request `json:"lastRequest,omitempty"`
 
 	// Update time
 	// Format: date-time
@@ -79,6 +87,9 @@ type Deployment struct {
 	// org Id
 	OrgID string `json:"orgId,omitempty"`
 
+	// Owned by
+	OwnedBy string `json:"ownedBy,omitempty"`
+
 	// Expanded deployment project
 	Project *ResourceReference `json:"project,omitempty"`
 
@@ -86,17 +97,24 @@ type Deployment struct {
 	ProjectID string `json:"projectId,omitempty"`
 
 	// Expanded resources for the deployment. Content of this property will not be maintained backward compatible
-	// Read Only: true
 	Resources []*Resource `json:"resources"`
 
 	// Deployment status.
-	// Enum: [CREATE_SUCCESSFUL CREATE_INPROGRESS CREATE_FAILED UPDATE_SUCCESSFUL UPDATE_INPROGRESS UPDATE_FAILED]
+	// Enum: [CREATE_SUCCESSFUL CREATE_INPROGRESS CREATE_FAILED UPDATE_SUCCESSFUL UPDATE_INPROGRESS UPDATE_FAILED DELETE_SUCCESSFUL DELETE_INPROGRESS DELETE_FAILED ACTION_SUCCESSFUL ACTION_INPROGRESS ACTION_FAILED]
 	Status string `json:"status,omitempty"`
 }
 
 // Validate validates this deployment
 func (m *Deployment) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateBlueprint(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateCatalog(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateCreatedAt(formats); err != nil {
 		res = append(res, err)
@@ -141,6 +159,42 @@ func (m *Deployment) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *Deployment) validateBlueprint(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Blueprint) { // not required
+		return nil
+	}
+
+	if m.Blueprint != nil {
+		if err := m.Blueprint.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("blueprint")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Deployment) validateCatalog(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Catalog) { // not required
+		return nil
+	}
+
+	if m.Catalog != nil {
+		if err := m.Catalog.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("catalog")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -288,7 +342,7 @@ var deploymentTypeStatusPropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["CREATE_SUCCESSFUL","CREATE_INPROGRESS","CREATE_FAILED","UPDATE_SUCCESSFUL","UPDATE_INPROGRESS","UPDATE_FAILED"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["CREATE_SUCCESSFUL","CREATE_INPROGRESS","CREATE_FAILED","UPDATE_SUCCESSFUL","UPDATE_INPROGRESS","UPDATE_FAILED","DELETE_SUCCESSFUL","DELETE_INPROGRESS","DELETE_FAILED","ACTION_SUCCESSFUL","ACTION_INPROGRESS","ACTION_FAILED"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -315,6 +369,24 @@ const (
 
 	// DeploymentStatusUPDATEFAILED captures enum value "UPDATE_FAILED"
 	DeploymentStatusUPDATEFAILED string = "UPDATE_FAILED"
+
+	// DeploymentStatusDELETESUCCESSFUL captures enum value "DELETE_SUCCESSFUL"
+	DeploymentStatusDELETESUCCESSFUL string = "DELETE_SUCCESSFUL"
+
+	// DeploymentStatusDELETEINPROGRESS captures enum value "DELETE_INPROGRESS"
+	DeploymentStatusDELETEINPROGRESS string = "DELETE_INPROGRESS"
+
+	// DeploymentStatusDELETEFAILED captures enum value "DELETE_FAILED"
+	DeploymentStatusDELETEFAILED string = "DELETE_FAILED"
+
+	// DeploymentStatusACTIONSUCCESSFUL captures enum value "ACTION_SUCCESSFUL"
+	DeploymentStatusACTIONSUCCESSFUL string = "ACTION_SUCCESSFUL"
+
+	// DeploymentStatusACTIONINPROGRESS captures enum value "ACTION_INPROGRESS"
+	DeploymentStatusACTIONINPROGRESS string = "ACTION_INPROGRESS"
+
+	// DeploymentStatusACTIONFAILED captures enum value "ACTION_FAILED"
+	DeploymentStatusACTIONFAILED string = "ACTION_FAILED"
 )
 
 // prop value enum

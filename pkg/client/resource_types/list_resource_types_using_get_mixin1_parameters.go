@@ -77,10 +77,15 @@ type ListResourceTypesUsingGETMixin1Params struct {
 	*/
 	DollarTop *int32
 	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 
 	*/
 	APIVersion *string
+	/*ComposableOnly
+	  Include only composable resource types
+
+	*/
+	ComposableOnly *bool
 	/*Ids
 	  Filter by list of resource type ids
 
@@ -182,6 +187,17 @@ func (o *ListResourceTypesUsingGETMixin1Params) WithAPIVersion(aPIVersion *strin
 // SetAPIVersion adds the apiVersion to the list resource types using g e t mixin1 params
 func (o *ListResourceTypesUsingGETMixin1Params) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
+}
+
+// WithComposableOnly adds the composableOnly to the list resource types using g e t mixin1 params
+func (o *ListResourceTypesUsingGETMixin1Params) WithComposableOnly(composableOnly *bool) *ListResourceTypesUsingGETMixin1Params {
+	o.SetComposableOnly(composableOnly)
+	return o
+}
+
+// SetComposableOnly adds the composableOnly to the list resource types using g e t mixin1 params
+func (o *ListResourceTypesUsingGETMixin1Params) SetComposableOnly(composableOnly *bool) {
+	o.ComposableOnly = composableOnly
 }
 
 // WithIds adds the ids to the list resource types using g e t mixin1 params
@@ -286,6 +302,22 @@ func (o *ListResourceTypesUsingGETMixin1Params) WriteToRequest(r runtime.ClientR
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.ComposableOnly != nil {
+
+		// query param composableOnly
+		var qrComposableOnly bool
+		if o.ComposableOnly != nil {
+			qrComposableOnly = *o.ComposableOnly
+		}
+		qComposableOnly := swag.FormatBool(qrComposableOnly)
+		if qComposableOnly != "" {
+			if err := r.SetQueryParam("composableOnly", qComposableOnly); err != nil {
 				return err
 			}
 		}

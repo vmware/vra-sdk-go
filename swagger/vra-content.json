@@ -27,6 +27,10 @@
         {
             "name": "Source Control Sync",
             "description": "Source Control Sync API"
+        },
+        {
+            "name": "VCF",
+            "description": "VCF Operations"
         }
     ],
     "consumes": [
@@ -90,7 +94,8 @@
                         "enum": [
                             "BLUEPRINT",
                             "IMAGE",
-                            "ABX_SCRIPTS"
+                            "ABX_SCRIPTS",
+                            "TERRAFORM_CONFIGURATION"
                         ]
                     },
                     {
@@ -741,7 +746,7 @@
                 ],
                 "summary": "Get content sources",
                 "description": "Use filter parameters to narrow down the results",
-                "operationId": "getContentSourcesUsingGET",
+                "operationId": "listContentSourcesUsingGET",
                 "produces": [
                     "application/json"
                 ],
@@ -762,7 +767,8 @@
                         "enum": [
                             "BLUEPRINT",
                             "IMAGE",
-                            "ABX_SCRIPTS"
+                            "ABX_SCRIPTS",
+                            "TERRAFORM_CONFIGURATION"
                         ]
                     },
                     {
@@ -789,6 +795,20 @@
                             "type": "string"
                         },
                         "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "repository",
+                        "in": "query",
+                        "description": "Search based on repository",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Search based on name or repository",
+                        "required": false,
+                        "type": "string"
                     },
                     {
                         "name": "syncEnabled",
@@ -950,6 +970,310 @@
                 },
                 "deprecated": false
             }
+        },
+        "/content/api/vcf/domains-enumeration": {
+            "post": {
+                "tags": [
+                    "VCF"
+                ],
+                "summary": "Enumerate Domains",
+                "operationId": "enumerateDomainsUsingPOST",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "input",
+                        "description": "input",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PhotonModelEndpointConfigRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get domains of the vCF endpoint",
+                        "schema": {
+                            "$ref": "#/definitions/VcfDomains"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/content/api/vcf/{integrationId}/domain/{domainId}": {
+            "get": {
+                "tags": [
+                    "VCF"
+                ],
+                "summary": "Get Domain Details",
+                "operationId": "getDomainUsingGET",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "domainId",
+                        "in": "path",
+                        "description": "domainId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "integrationId",
+                        "in": "path",
+                        "description": "integrationId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get domain detail",
+                        "schema": {
+                            "$ref": "#/definitions/VcfDomain"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/content/api/vcf/{integrationId}/domain/{domainId}/service-accounts": {
+            "post": {
+                "tags": [
+                    "VCF"
+                ],
+                "summary": "Create Service Credentials",
+                "operationId": "createServiceCredentialsUsingPOST",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "domainId",
+                        "in": "path",
+                        "description": "domainId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "integrationId",
+                        "in": "path",
+                        "description": "integrationId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "request",
+                        "description": "request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/VcfCredentialRequests"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Create Service credentials",
+                        "schema": {
+                            "$ref": "#/definitions/VcfServiceCredentialCreationResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "deprecated": false
+            },
+            "delete": {
+                "tags": [
+                    "VCF"
+                ],
+                "summary": "Delete a service account",
+                "operationId": "deleteServiceAccountUsingDELETE",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "domainId",
+                        "in": "path",
+                        "description": "domainId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "integrationId",
+                        "in": "path",
+                        "description": "integrationId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    }
+                },
+                "deprecated": false
+            },
+            "patch": {
+                "tags": [
+                    "VCF"
+                ],
+                "summary": "patchServiceAccount",
+                "operationId": "patchServiceAccountUsingPATCH",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "domainId",
+                        "in": "path",
+                        "description": "domainId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "integrationId",
+                        "in": "path",
+                        "description": "integrationId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "patchRequest",
+                        "description": "patchRequest",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/VcfServiceCredential"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/content/api/vcf/{integrationId}/domain/{domainId}/service-accounts/{id}": {
+            "delete": {
+                "tags": [
+                    "VCF"
+                ],
+                "summary": "Delete a service credential",
+                "operationId": "deleteServiceCredentialUsingDELETE",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "domainId",
+                        "in": "path",
+                        "description": "domainId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "integrationId",
+                        "in": "path",
+                        "description": "integrationId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/content/api/vcf/{integrationId}/domains": {
+            "get": {
+                "tags": [
+                    "VCF"
+                ],
+                "summary": "Get Domains",
+                "operationId": "getDomainsUsingGET",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "integrationId",
+                        "in": "path",
+                        "description": "integrationId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get domains of the vCF endpoint",
+                        "schema": {
+                            "$ref": "#/definitions/VcfDomain"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "deprecated": false
+            }
         }
     },
     "definitions": {
@@ -1037,19 +1361,10 @@
                     "type": "string",
                     "description": "Associated projects"
                 },
-                "projectIds": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
                 "syncEnabled": {
                     "type": "boolean",
                     "example": false,
                     "description": "Is Sync Enabled"
-                },
-                "type": {
-                    "type": "string"
                 },
                 "typeId": {
                     "type": "string",
@@ -1057,6 +1372,7 @@
                     "enum": [
                         "com.github",
                         "com.gitlab",
+                        "org.bitbucket",
                         "com.vmware.marketplace"
                     ]
                 }
@@ -1084,6 +1400,30 @@
             },
             "title": "ContentSources"
         },
+        "CustomProperties": {
+            "type": "object",
+            "properties": {
+                "endpointId": {
+                    "type": "string"
+                },
+                "isExternal": {
+                    "type": "boolean"
+                },
+                "serviceAccountId": {
+                    "type": "string"
+                },
+                "serviceAccountName": {
+                    "type": "string"
+                },
+                "vcfDomainId": {
+                    "type": "string"
+                },
+                "vcfDomainName": {
+                    "type": "string"
+                }
+            },
+            "title": "CustomProperties"
+        },
         "Document": {
             "type": "object",
             "properties": {
@@ -1101,6 +1441,42 @@
                 }
             },
             "title": "Document"
+        },
+        "EndpointProperties": {
+            "type": "object",
+            "properties": {
+                "acceptSelfSignedCertificate": {
+                    "type": "boolean"
+                },
+                "certificate": {
+                    "type": "string"
+                },
+                "dcId": {
+                    "type": "string"
+                },
+                "endpointId": {
+                    "type": "string"
+                },
+                "hostName": {
+                    "type": "string"
+                },
+                "privateKey": {
+                    "type": "string"
+                },
+                "privateKeyId": {
+                    "type": "string"
+                },
+                "server": {
+                    "type": "string"
+                },
+                "serviceAccountId": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "title": "EndpointProperties"
         },
         "ExecutionMessage": {
             "type": "object",
@@ -1234,7 +1610,8 @@
                     "enum": [
                         "BLUEPRINT",
                         "IMAGE",
-                        "ABX_SCRIPTS"
+                        "ABX_SCRIPTS",
+                        "TERRAFORM_CONFIGURATION"
                     ]
                 },
                 "createdAt": {
@@ -1416,7 +1793,8 @@
                     "enum": [
                         "BLUEPRINT",
                         "IMAGE",
-                        "ABX_SCRIPTS"
+                        "ABX_SCRIPTS",
+                        "TERRAFORM_CONFIGURATION"
                     ]
                 },
                 "downloadedOn": {
@@ -1550,6 +1928,18 @@
             },
             "title": "MarketplaceFilterSchema"
         },
+        "NsxAccount": {
+            "type": "object",
+            "properties": {
+                "hostName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                }
+            },
+            "title": "NsxAccount"
+        },
         "PageMetadata": {
             "type": "object",
             "properties": {
@@ -1571,6 +1961,69 @@
                 }
             },
             "title": "PageMetadata"
+        },
+        "PhotonModelEndpointConfigRequest": {
+            "type": "object",
+            "properties": {
+                "associatedEndpointLinks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "authCredentialsLink": {
+                    "type": "string"
+                },
+                "checkForEndpointUniqueness": {
+                    "type": "boolean"
+                },
+                "customProperties": {
+                    "$ref": "#/definitions/CustomProperties"
+                },
+                "endpointProperties": {
+                    "$ref": "#/definitions/EndpointProperties"
+                },
+                "endpointType": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "requestType": {
+                    "type": "string",
+                    "enum": [
+                        "VALIDATE",
+                        "ENHANCE",
+                        "CHECK_IF_ACCOUNT_EXISTS",
+                        "VALIDATE_REMOVAL"
+                    ]
+                },
+                "resourceLink": {
+                    "type": "string"
+                },
+                "resourceReference": {
+                    "$ref": "#/definitions/URI"
+                },
+                "taskReference": {
+                    "$ref": "#/definitions/URI"
+                }
+            },
+            "title": "PhotonModelEndpointConfigRequest"
+        },
+        "ServiceAccountRequest": {
+            "type": "object",
+            "properties": {
+                "hostName": {
+                    "type": "string"
+                },
+                "resourceId": {
+                    "type": "string"
+                },
+                "resourceType": {
+                    "type": "string"
+                }
+            },
+            "title": "ServiceAccountRequest"
         },
         "SourceControlSyncAllRequest": {
             "type": "object",
@@ -1626,7 +2079,8 @@
                     "enum": [
                         "BLUEPRINT",
                         "IMAGE",
-                        "ABX_SCRIPTS"
+                        "ABX_SCRIPTS",
+                        "TERRAFORM_CONFIGURATION"
                     ]
                 },
                 "details": {
@@ -1789,6 +2243,234 @@
                 }
             },
             "title": "SupportedApi"
+        },
+        "URI": {
+            "type": "object",
+            "properties": {
+                "absolute": {
+                    "type": "boolean"
+                },
+                "authority": {
+                    "type": "string"
+                },
+                "fragment": {
+                    "type": "string"
+                },
+                "host": {
+                    "type": "string"
+                },
+                "opaque": {
+                    "type": "boolean"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "port": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "query": {
+                    "type": "string"
+                },
+                "rawAuthority": {
+                    "type": "string"
+                },
+                "rawFragment": {
+                    "type": "string"
+                },
+                "rawPath": {
+                    "type": "string"
+                },
+                "rawQuery": {
+                    "type": "string"
+                },
+                "rawSchemeSpecificPart": {
+                    "type": "string"
+                },
+                "rawUserInfo": {
+                    "type": "string"
+                },
+                "scheme": {
+                    "type": "string"
+                },
+                "schemeSpecificPart": {
+                    "type": "string"
+                },
+                "userInfo": {
+                    "type": "string"
+                }
+            },
+            "title": "URI"
+        },
+        "VcfCredentialRequests": {
+            "type": "object",
+            "properties": {
+                "credentials": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ServiceAccountRequest"
+                    }
+                }
+            },
+            "title": "VcfCredentialRequests"
+        },
+        "VcfDomain": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "nsxResource": {
+                    "$ref": "#/definitions/NsxAccount"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "ACTIVE",
+                        "CONFIGURED",
+                        "NOT_CONFIGURED",
+                        "NOT_ACTIVE"
+                    ]
+                },
+                "type": {
+                    "type": "string"
+                },
+                "vsphere": {
+                    "$ref": "#/definitions/VsphereAccount"
+                }
+            },
+            "title": "VcfDomain"
+        },
+        "VcfDomains": {
+            "type": "object",
+            "properties": {
+                "domains": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/VcfDomain"
+                    }
+                }
+            },
+            "title": "VcfDomains"
+        },
+        "VcfServiceAccount": {
+            "type": "object",
+            "properties": {
+                "authCredentials": {
+                    "type": "string"
+                },
+                "credentialId": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "resourceId": {
+                    "type": "string"
+                },
+                "resourceType": {
+                    "type": "string"
+                },
+                "roleName": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            },
+            "title": "VcfServiceAccount"
+        },
+        "VcfServiceCredential": {
+            "type": "object",
+            "properties": {
+                "authCredentialLink": {
+                    "type": "string"
+                },
+                "credentialId": {
+                    "type": "string"
+                },
+                "domainId": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "integrationId": {
+                    "type": "string"
+                },
+                "resourceId": {
+                    "type": "string"
+                },
+                "resourceType": {
+                    "type": "string"
+                },
+                "roleName": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "taskId": {
+                    "type": "string"
+                },
+                "userName": {
+                    "type": "string"
+                },
+                "vcfCloudAccountId": {
+                    "type": "string"
+                }
+            },
+            "title": "VcfServiceCredential"
+        },
+        "VcfServiceCredentialCreationResponse": {
+            "type": "object",
+            "properties": {
+                "credentials": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/VcfServiceAccount"
+                    }
+                },
+                "domainId": {
+                    "type": "string"
+                },
+                "sddcIntegrationId": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "SUCCESSFUL",
+                        "IN_PROGRESS",
+                        "FAILED"
+                    ]
+                },
+                "taskId": {
+                    "type": "string"
+                }
+            },
+            "title": "VcfServiceCredentialCreationResponse"
+        },
+        "VsphereAccount": {
+            "type": "object",
+            "properties": {
+                "hostName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "regionId": {
+                    "type": "string"
+                }
+            },
+            "title": "VsphereAccount"
         }
     }
 }

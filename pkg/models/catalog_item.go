@@ -36,6 +36,9 @@ type CatalogItem struct {
 	// CatalogItem description
 	Description string `json:"description,omitempty"`
 
+	// Form ID
+	FormID string `json:"formId,omitempty"`
+
 	// Icon ID
 	// Format: uuid
 	IconID strfmt.UUID `json:"iconId,omitempty"`

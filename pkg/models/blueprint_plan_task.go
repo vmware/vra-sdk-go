@@ -37,7 +37,7 @@ type BlueprintPlanTask struct {
 
 	// Resource reason
 	// Read Only: true
-	// Enum: [CREATE RECREATE UPDATE DELETE ACTION]
+	// Enum: [CREATE RECREATE UPDATE DELETE ACTION READ]
 	ResourceReason string `json:"resourceReason,omitempty"`
 
 	// Resource type
@@ -63,7 +63,7 @@ var blueprintPlanTaskTypeResourceReasonPropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["CREATE","RECREATE","UPDATE","DELETE","ACTION"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["CREATE","RECREATE","UPDATE","DELETE","ACTION","READ"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -87,6 +87,9 @@ const (
 
 	// BlueprintPlanTaskResourceReasonACTION captures enum value "ACTION"
 	BlueprintPlanTaskResourceReasonACTION string = "ACTION"
+
+	// BlueprintPlanTaskResourceReasonREAD captures enum value "READ"
+	BlueprintPlanTaskResourceReasonREAD string = "READ"
 )
 
 // prop value enum

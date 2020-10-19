@@ -27,7 +27,7 @@ type Client struct {
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	ChangeSecurityGroups(params *ChangeSecurityGroupsParams) (*ChangeSecurityGroupsOK, error)
+	ChangeSecurityGroups(params *ChangeSecurityGroupsParams) (*ChangeSecurityGroupsAccepted, error)
 
 	CreateOnDemandSecurityGroup(params *CreateOnDemandSecurityGroupParams) (*CreateOnDemandSecurityGroupAccepted, error)
 
@@ -47,7 +47,7 @@ type ClientService interface {
 
    Change security groups for a vSphere machine network interfaces. Securing group that is part of the same deployment can be added or removed for a machine network interface.
 */
-func (a *Client) ChangeSecurityGroups(params *ChangeSecurityGroupsParams) (*ChangeSecurityGroupsOK, error) {
+func (a *Client) ChangeSecurityGroups(params *ChangeSecurityGroupsParams) (*ChangeSecurityGroupsAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewChangeSecurityGroupsParams()
@@ -68,7 +68,7 @@ func (a *Client) ChangeSecurityGroups(params *ChangeSecurityGroupsParams) (*Chan
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*ChangeSecurityGroupsOK)
+	success, ok := result.(*ChangeSecurityGroupsAccepted)
 	if ok {
 		return success, nil
 	}

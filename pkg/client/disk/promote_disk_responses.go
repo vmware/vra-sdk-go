@@ -23,8 +23,8 @@ type PromoteDiskReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PromoteDiskReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-	case 200:
-		result := NewPromoteDiskOK()
+	case 202:
+		result := NewPromoteDiskAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -47,28 +47,28 @@ func (o *PromoteDiskReader) ReadResponse(response runtime.ClientResponse, consum
 	}
 }
 
-// NewPromoteDiskOK creates a PromoteDiskOK with default headers values
-func NewPromoteDiskOK() *PromoteDiskOK {
-	return &PromoteDiskOK{}
+// NewPromoteDiskAccepted creates a PromoteDiskAccepted with default headers values
+func NewPromoteDiskAccepted() *PromoteDiskAccepted {
+	return &PromoteDiskAccepted{}
 }
 
-/*PromoteDiskOK handles this case with default header values.
+/*PromoteDiskAccepted handles this case with default header values.
 
 successful operation
 */
-type PromoteDiskOK struct {
+type PromoteDiskAccepted struct {
 	Payload *models.RequestTracker
 }
 
-func (o *PromoteDiskOK) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/promote][%d] promoteDiskOK  %+v", 200, o.Payload)
+func (o *PromoteDiskAccepted) Error() string {
+	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/promote][%d] promoteDiskAccepted  %+v", 202, o.Payload)
 }
 
-func (o *PromoteDiskOK) GetPayload() *models.RequestTracker {
+func (o *PromoteDiskAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
 
-func (o *PromoteDiskOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *PromoteDiskAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.RequestTracker)
 

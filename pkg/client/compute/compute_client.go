@@ -681,7 +681,7 @@ func (a *Client) SuspendMachine(params *SuspendMachineParams) (*SuspendMachineAc
 /*
   UpdateMachine updates machine
 
-  Update machine. Only tag updates are supported. All other properties in the MachineSpecification body are ignored.
+  Update machine. Only description, tag and custom property updates are supported. All other properties in the MachineSpecification body are ignored.
 */
 func (a *Client) UpdateMachine(params *UpdateMachineParams) (*UpdateMachineOK, error) {
 	// TODO: Validate the params before sending

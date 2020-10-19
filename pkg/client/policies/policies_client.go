@@ -39,9 +39,9 @@ type ClientService interface {
 }
 
 /*
-  CreatePolicyUsingPOST1 creates a policy
+  CreatePolicyUsingPOST1 creates a new policy or updates an existing policy
 
-  Create a new policy based on request body and validate its field according to business rules.
+  Create a new policy or update an existing policy based on request body and validate its fields according to business rules.
 */
 func (a *Client) CreatePolicyUsingPOST1(params *CreatePolicyUsingPOST1Params) (*CreatePolicyUsingPOST1OK, error) {
 	// TODO: Validate the params before sending

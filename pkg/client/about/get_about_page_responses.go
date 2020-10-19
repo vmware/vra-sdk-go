@@ -51,20 +51,20 @@ func NewGetAboutPageOK() *GetAboutPageOK {
 successful operation
 */
 type GetAboutPageOK struct {
-	Payload *models.About
+	Payload *models.IaaSAbout
 }
 
 func (o *GetAboutPageOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/about][%d] getAboutPageOK  %+v", 200, o.Payload)
 }
 
-func (o *GetAboutPageOK) GetPayload() *models.About {
+func (o *GetAboutPageOK) GetPayload() *models.IaaSAbout {
 	return o.Payload
 }
 
 func (o *GetAboutPageOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.About)
+	o.Payload = new(models.IaaSAbout)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

@@ -7,8 +7,9 @@ all:
 swagger: check-swagger
 	rm -rf pkg/client pkg/models
 	./hack/fix_iaas_swagger
+	./hack/fix_blueprint_swagger
 	./hack/fix_catalog_deployment_swagger
-	swagger mixin -c=1 swagger/vra-iaas-fixed.json swagger/vra-blueprint.json swagger/vra-catalog-deployment-fixed.json swagger/vra-content.json | python3 -mjson.tool > swagger/vra-combined.json
+	swagger mixin -c=1 swagger/vra-iaas-fixed.json swagger/vra-blueprint-fixed.json swagger/vra-catalog-deployment-fixed.json swagger/vra-content.json | python3 -mjson.tool > swagger/vra-combined.json
 	./hack/fix_vra_swagger --omit-security
 	swagger generate client -f swagger/vra-combined.json -t pkg
 	./hack/fixup.sh

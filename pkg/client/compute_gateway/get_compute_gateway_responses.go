@@ -35,6 +35,12 @@ func (o *GetComputeGatewayReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewGetComputeGatewayNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
@@ -51,20 +57,20 @@ func NewGetComputeGatewayOK() *GetComputeGatewayOK {
 successful operation
 */
 type GetComputeGatewayOK struct {
-	Payload *models.ComputeGatewayResult
+	Payload *models.ComputeGateway
 }
 
 func (o *GetComputeGatewayOK) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/compute-gateways][%d] getComputeGatewayOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /iaas/api/compute-gateways/{id}][%d] getComputeGatewayOK  %+v", 200, o.Payload)
 }
 
-func (o *GetComputeGatewayOK) GetPayload() *models.ComputeGatewayResult {
+func (o *GetComputeGatewayOK) GetPayload() *models.ComputeGateway {
 	return o.Payload
 }
 
 func (o *GetComputeGatewayOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ComputeGatewayResult)
+	o.Payload = new(models.ComputeGateway)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -87,10 +93,43 @@ type GetComputeGatewayForbidden struct {
 }
 
 func (o *GetComputeGatewayForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/compute-gateways][%d] getComputeGatewayForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/compute-gateways/{id}][%d] getComputeGatewayForbidden ", 403)
 }
 
 func (o *GetComputeGatewayForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewGetComputeGatewayNotFound creates a GetComputeGatewayNotFound with default headers values
+func NewGetComputeGatewayNotFound() *GetComputeGatewayNotFound {
+	return &GetComputeGatewayNotFound{}
+}
+
+/*GetComputeGatewayNotFound handles this case with default header values.
+
+Not Found
+*/
+type GetComputeGatewayNotFound struct {
+	Payload *models.Error
+}
+
+func (o *GetComputeGatewayNotFound) Error() string {
+	return fmt.Sprintf("[GET /iaas/api/compute-gateways/{id}][%d] getComputeGatewayNotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetComputeGatewayNotFound) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *GetComputeGatewayNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

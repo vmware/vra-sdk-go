@@ -77,7 +77,7 @@ type GetDeploymentsUsingGETParams struct {
 	*/
 	DollarTop *int32
 	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 
 	*/
 	APIVersion *string
@@ -96,6 +96,16 @@ type GetDeploymentsUsingGETParams struct {
 
 	*/
 	CreatedAt *string
+	/*Deleted
+	  Retrieves only soft-deleted deployments that have not yet been completely deleted.
+
+	*/
+	Deleted *bool
+	/*Expand
+	  The expanded details of the requested comma separated objects. 'resources' option returns resources with all properties. Ex. blueprint, project
+
+	*/
+	Expand []string
 	/*ExpandLastRequest
 	  Expands deployment last request.
 
@@ -121,11 +131,21 @@ type GetDeploymentsUsingGETParams struct {
 
 	*/
 	Ids []strfmt.UUID
+	/*LastUpdatedAt
+	  Comma-separated start and end dates for the interval
+
+	*/
+	LastUpdatedAt *string
 	/*Name
 	  Results must have exactly this name.
 
 	*/
 	Name *string
+	/*OwnedBy
+	  A comma-separated list. Results must be associated with one of these owners
+
+	*/
+	OwnedBy []string
 	/*Projects
 	  A comma-separated list. Results must be associated with one of these project IDs.
 
@@ -142,7 +162,7 @@ type GetDeploymentsUsingGETParams struct {
 	*/
 	ResourceTypes []string
 	/*Search
-	  Results must either have names with this string as a prefix or contain this string in their description.
+	  Given string should either be part of a searchable field in a deployment or one of deployment's resources.
 
 	*/
 	Search *string
@@ -156,11 +176,6 @@ type GetDeploymentsUsingGETParams struct {
 
 	*/
 	Tags []string
-	/*Templates
-	  A comma-separated list. Results must be associated with one of these templates.
-
-	*/
-	Templates []string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -277,6 +292,28 @@ func (o *GetDeploymentsUsingGETParams) SetCreatedAt(createdAt *string) {
 	o.CreatedAt = createdAt
 }
 
+// WithDeleted adds the deleted to the get deployments using get params
+func (o *GetDeploymentsUsingGETParams) WithDeleted(deleted *bool) *GetDeploymentsUsingGETParams {
+	o.SetDeleted(deleted)
+	return o
+}
+
+// SetDeleted adds the deleted to the get deployments using get params
+func (o *GetDeploymentsUsingGETParams) SetDeleted(deleted *bool) {
+	o.Deleted = deleted
+}
+
+// WithExpand adds the expand to the get deployments using get params
+func (o *GetDeploymentsUsingGETParams) WithExpand(expand []string) *GetDeploymentsUsingGETParams {
+	o.SetExpand(expand)
+	return o
+}
+
+// SetExpand adds the expand to the get deployments using get params
+func (o *GetDeploymentsUsingGETParams) SetExpand(expand []string) {
+	o.Expand = expand
+}
+
 // WithExpandLastRequest adds the expandLastRequest to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) WithExpandLastRequest(expandLastRequest *bool) *GetDeploymentsUsingGETParams {
 	o.SetExpandLastRequest(expandLastRequest)
@@ -332,6 +369,17 @@ func (o *GetDeploymentsUsingGETParams) SetIds(ids []strfmt.UUID) {
 	o.Ids = ids
 }
 
+// WithLastUpdatedAt adds the lastUpdatedAt to the get deployments using get params
+func (o *GetDeploymentsUsingGETParams) WithLastUpdatedAt(lastUpdatedAt *string) *GetDeploymentsUsingGETParams {
+	o.SetLastUpdatedAt(lastUpdatedAt)
+	return o
+}
+
+// SetLastUpdatedAt adds the lastUpdatedAt to the get deployments using get params
+func (o *GetDeploymentsUsingGETParams) SetLastUpdatedAt(lastUpdatedAt *string) {
+	o.LastUpdatedAt = lastUpdatedAt
+}
+
 // WithName adds the name to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) WithName(name *string) *GetDeploymentsUsingGETParams {
 	o.SetName(name)
@@ -341,6 +389,17 @@ func (o *GetDeploymentsUsingGETParams) WithName(name *string) *GetDeploymentsUsi
 // SetName adds the name to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) SetName(name *string) {
 	o.Name = name
+}
+
+// WithOwnedBy adds the ownedBy to the get deployments using get params
+func (o *GetDeploymentsUsingGETParams) WithOwnedBy(ownedBy []string) *GetDeploymentsUsingGETParams {
+	o.SetOwnedBy(ownedBy)
+	return o
+}
+
+// SetOwnedBy adds the ownedBy to the get deployments using get params
+func (o *GetDeploymentsUsingGETParams) SetOwnedBy(ownedBy []string) {
+	o.OwnedBy = ownedBy
 }
 
 // WithProjects adds the projects to the get deployments using get params
@@ -407,17 +466,6 @@ func (o *GetDeploymentsUsingGETParams) WithTags(tags []string) *GetDeploymentsUs
 // SetTags adds the tags to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) SetTags(tags []string) {
 	o.Tags = tags
-}
-
-// WithTemplates adds the templates to the get deployments using get params
-func (o *GetDeploymentsUsingGETParams) WithTemplates(templates []string) *GetDeploymentsUsingGETParams {
-	o.SetTemplates(templates)
-	return o
-}
-
-// SetTemplates adds the templates to the get deployments using get params
-func (o *GetDeploymentsUsingGETParams) SetTemplates(templates []string) {
-	o.Templates = templates
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -516,6 +564,30 @@ func (o *GetDeploymentsUsingGETParams) WriteToRequest(r runtime.ClientRequest, r
 
 	}
 
+	if o.Deleted != nil {
+
+		// query param deleted
+		var qrDeleted bool
+		if o.Deleted != nil {
+			qrDeleted = *o.Deleted
+		}
+		qDeleted := swag.FormatBool(qrDeleted)
+		if qDeleted != "" {
+			if err := r.SetQueryParam("deleted", qDeleted); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	valuesExpand := o.Expand
+
+	joinedExpand := swag.JoinByFormat(valuesExpand, "multi")
+	// query array param expand
+	if err := r.SetQueryParam("expand", joinedExpand...); err != nil {
+		return err
+	}
+
 	if o.ExpandLastRequest != nil {
 
 		// query param expandLastRequest
@@ -591,6 +663,22 @@ func (o *GetDeploymentsUsingGETParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 
+	if o.LastUpdatedAt != nil {
+
+		// query param lastUpdatedAt
+		var qrLastUpdatedAt string
+		if o.LastUpdatedAt != nil {
+			qrLastUpdatedAt = *o.LastUpdatedAt
+		}
+		qLastUpdatedAt := qrLastUpdatedAt
+		if qLastUpdatedAt != "" {
+			if err := r.SetQueryParam("lastUpdatedAt", qLastUpdatedAt); err != nil {
+				return err
+			}
+		}
+
+	}
+
 	if o.Name != nil {
 
 		// query param name
@@ -605,6 +693,14 @@ func (o *GetDeploymentsUsingGETParams) WriteToRequest(r runtime.ClientRequest, r
 			}
 		}
 
+	}
+
+	valuesOwnedBy := o.OwnedBy
+
+	joinedOwnedBy := swag.JoinByFormat(valuesOwnedBy, "multi")
+	// query array param ownedBy
+	if err := r.SetQueryParam("ownedBy", joinedOwnedBy...); err != nil {
+		return err
 	}
 
 	valuesProjects := o.Projects
@@ -660,14 +756,6 @@ func (o *GetDeploymentsUsingGETParams) WriteToRequest(r runtime.ClientRequest, r
 	joinedTags := swag.JoinByFormat(valuesTags, "multi")
 	// query array param tags
 	if err := r.SetQueryParam("tags", joinedTags...); err != nil {
-		return err
-	}
-
-	valuesTemplates := o.Templates
-
-	joinedTemplates := swag.JoinByFormat(valuesTemplates, "multi")
-	// query array param templates
-	if err := r.SetQueryParam("templates", joinedTemplates...); err != nil {
 		return err
 	}
 

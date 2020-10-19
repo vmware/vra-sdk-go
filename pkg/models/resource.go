@@ -39,9 +39,6 @@ type Resource struct {
 	// Format: uuid
 	ID strfmt.UUID `json:"id,omitempty"`
 
-	// metadata
-	Metadata interface{} `json:"metadata,omitempty"`
-
 	// Name of the resource
 	// Required: true
 	Name *string `json:"name"`

@@ -77,7 +77,7 @@ type GetDeploymentResourcesUsingGETParams struct {
 	*/
 	DollarTop *int32
 	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 
 	*/
 	APIVersion *string
@@ -86,6 +86,11 @@ type GetDeploymentResourcesUsingGETParams struct {
 
 	*/
 	DepID strfmt.UUID
+	/*Names
+	  Results must have exactly these resource names.
+
+	*/
+	Names []string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -180,6 +185,17 @@ func (o *GetDeploymentResourcesUsingGETParams) SetDepID(depID strfmt.UUID) {
 	o.DepID = depID
 }
 
+// WithNames adds the names to the get deployment resources using get params
+func (o *GetDeploymentResourcesUsingGETParams) WithNames(names []string) *GetDeploymentResourcesUsingGETParams {
+	o.SetNames(names)
+	return o
+}
+
+// SetNames adds the names to the get deployment resources using get params
+func (o *GetDeploymentResourcesUsingGETParams) SetNames(names []string) {
+	o.Names = names
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetDeploymentResourcesUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -246,6 +262,14 @@ func (o *GetDeploymentResourcesUsingGETParams) WriteToRequest(r runtime.ClientRe
 
 	// path param depId
 	if err := r.SetPathParam("depId", o.DepID.String()); err != nil {
+		return err
+	}
+
+	valuesNames := o.Names
+
+	joinedNames := swag.JoinByFormat(valuesNames, "multi")
+	// query array param names
+	if err := r.SetQueryParam("names", joinedNames...); err != nil {
 		return err
 	}
 

@@ -19,37 +19,17 @@ def replace_value(d, k, v, new):
             replace_value(child, k, v, new)
     
 
-def rename_iaas_deployment(swagger):
-    v = swagger['definitions']['Deployment']
-    del swagger['definitions']['Deployment']
-    swagger['definitions']['IaaSDeployment'] = v
+def rename_iaas_models(swagger):
+    definitions = [
+        ('Deployment', 'IaaSDeployment', '#/definitions/Deployment', '#/definitions/IaaSDeployment'),
+        ('About', 'IaaSAbout', '#/definitions/About', '#/definitions/IaaSAbout'),
+    ]
 
-    old_value = "#/definitions/Deployment"
-    new_value = "#/definitions/IaaSDeployment"
-    replace_value(swagger, "$ref", old_value, new_value)
-
-
-# Delete all the definitions not referred by any endpoints in IaaS API swagger
-def delete_unreferenced_definitions(swagger):
-    del swagger['definitions']['AuthorizationContext']
-    del swagger['definitions']['Connection']
-    del swagger['definitions']['DatabaseMetaData']
-    del swagger['definitions']['DeferredResultObject']
-    del swagger['definitions']['DataSource']
-    del swagger['definitions']['PostgresSchemaManager']
-    del swagger['definitions']['ResultSet']
-    del swagger['definitions']['ResultSetMetaData']
-    del swagger['definitions']['ScheduledExecutorService']
-    del swagger['definitions']['Service']
-    del swagger['definitions']['ServiceDocument']
-    del swagger['definitions']['ServiceHost']
-    del swagger['definitions']['ServiceHostState']
-    del swagger['definitions']['ServiceStat']
-    del swagger['definitions']['Statement']
-    del swagger['definitions']['TableDescription']
-    del swagger['definitions']['Thread']
-    del swagger['definitions']['TimeSeriesStats']
-    del swagger['definitions']['Tracer']
+    for (oldDef, newDef, oldRef, newRef) in definitions:
+        v = swagger['definitions'][oldDef]
+        del swagger['definitions'][oldDef]
+        swagger['definitions'][newDef] = v
+        replace_value(swagger, "$ref", oldRef, newRef)
 
 
 if __name__ == "__main__":
@@ -59,9 +39,7 @@ if __name__ == "__main__":
     # read in the swagger spec
     swagger = json.loads(open(old_filename).read())
 
-    rename_iaas_deployment(swagger)
-
-    delete_unreferenced_definitions(swagger)
+    rename_iaas_models(swagger)
 
     # Overwrite the swagger spec
     f = open(new_filename, "w")

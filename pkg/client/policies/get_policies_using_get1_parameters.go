@@ -77,7 +77,7 @@ type GetPoliciesUsingGET1Params struct {
 	*/
 	DollarTop *int32
 	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /catalog/api/about
+	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 
 	*/
 	APIVersion *string
@@ -87,7 +87,7 @@ type GetPoliciesUsingGET1Params struct {
 	*/
 	ComputeStats *bool
 	/*ExpandDefinition
-	  Retrieves the schema for this policy type
+	  Retrieves policy definition information for each returned policy.
 
 	*/
 	ExpandDefinition *bool

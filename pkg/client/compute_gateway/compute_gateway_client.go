@@ -27,13 +27,13 @@ type Client struct {
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateComputeGateway(params *CreateComputeGatewayParams) (*CreateComputeGatewayOK, error)
+	CreateComputeGateway(params *CreateComputeGatewayParams) (*CreateComputeGatewayAccepted, error)
 
-	DeleteComputeGateway(params *DeleteComputeGatewayParams) (*DeleteComputeGatewayOK, error)
+	DeleteComputeGateway(params *DeleteComputeGatewayParams) (*DeleteComputeGatewayAccepted, error)
 
 	GetComputeGateway(params *GetComputeGatewayParams) (*GetComputeGatewayOK, error)
 
-	GetGateway(params *GetGatewayParams) (*GetGatewayOK, error)
+	GetComputeGateways(params *GetComputeGatewaysParams) (*GetComputeGatewaysOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -43,7 +43,7 @@ type ClientService interface {
 
   Create a new compute gateway.
 */
-func (a *Client) CreateComputeGateway(params *CreateComputeGatewayParams) (*CreateComputeGatewayOK, error) {
+func (a *Client) CreateComputeGateway(params *CreateComputeGatewayParams) (*CreateComputeGatewayAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateComputeGatewayParams()
@@ -64,7 +64,7 @@ func (a *Client) CreateComputeGateway(params *CreateComputeGatewayParams) (*Crea
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateComputeGatewayOK)
+	success, ok := result.(*CreateComputeGatewayAccepted)
 	if ok {
 		return success, nil
 	}
@@ -79,7 +79,7 @@ func (a *Client) CreateComputeGateway(params *CreateComputeGatewayParams) (*Crea
 
   Delete compute gateway with a given id
 */
-func (a *Client) DeleteComputeGateway(params *DeleteComputeGatewayParams) (*DeleteComputeGatewayOK, error) {
+func (a *Client) DeleteComputeGateway(params *DeleteComputeGatewayParams) (*DeleteComputeGatewayAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteComputeGatewayParams()
@@ -100,7 +100,7 @@ func (a *Client) DeleteComputeGateway(params *DeleteComputeGatewayParams) (*Dele
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteComputeGatewayOK)
+	success, ok := result.(*DeleteComputeGatewayAccepted)
 	if ok {
 		return success, nil
 	}
@@ -111,9 +111,9 @@ func (a *Client) DeleteComputeGateway(params *DeleteComputeGatewayParams) (*Dele
 }
 
 /*
-  GetComputeGateway gets compute gateway
+  GetComputeGateway gets a compute gateway
 
-  Get all compute gateways
+  Get compute gateway with a given id
 */
 func (a *Client) GetComputeGateway(params *GetComputeGatewayParams) (*GetComputeGatewayOK, error) {
 	// TODO: Validate the params before sending
@@ -124,7 +124,7 @@ func (a *Client) GetComputeGateway(params *GetComputeGatewayParams) (*GetCompute
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "getComputeGateway",
 		Method:             "GET",
-		PathPattern:        "/iaas/api/compute-gateways",
+		PathPattern:        "/iaas/api/compute-gateways/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -147,38 +147,38 @@ func (a *Client) GetComputeGateway(params *GetComputeGatewayParams) (*GetCompute
 }
 
 /*
-  GetGateway gets gateway
+  GetComputeGateways gets compute gateways
 
-  Get gateway with a given id
+  Get all compute gateways
 */
-func (a *Client) GetGateway(params *GetGatewayParams) (*GetGatewayOK, error) {
+func (a *Client) GetComputeGateways(params *GetComputeGatewaysParams) (*GetComputeGatewaysOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetGatewayParams()
+		params = NewGetComputeGatewaysParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getGateway",
+		ID:                 "getComputeGateways",
 		Method:             "GET",
-		PathPattern:        "/iaas/api/compute-gateways/{id}",
+		PathPattern:        "/iaas/api/compute-gateways",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetGatewayReader{formats: a.formats},
+		Reader:             &GetComputeGatewaysReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetGatewayOK)
+	success, ok := result.(*GetComputeGatewaysOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getGateway: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getComputeGateways: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

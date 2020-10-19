@@ -36,6 +36,9 @@ type CloudAccountNsxTSpecification struct {
 	// Required: true
 	HostName *string `json:"hostName"`
 
+	// Create NSX-T cloud account in Manager (legacy) mode. When set to true, NSX-T cloud account in created in Manager mode. Mode cannot be changed after cloud account is created. Default value is false.
+	ManagerMode bool `json:"managerMode,omitempty"`
+
 	// A human-friendly name used as an identifier in APIs that support this option.
 	// Required: true
 	Name *string `json:"name"`

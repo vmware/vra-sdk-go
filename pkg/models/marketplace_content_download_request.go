@@ -30,7 +30,7 @@ type MarketplaceContentDownloadRequest struct {
 
 	// Content Type
 	// Required: true
-	// Enum: [BLUEPRINT IMAGE ABX_SCRIPTS]
+	// Enum: [BLUEPRINT IMAGE ABX_SCRIPTS TERRAFORM_CONFIGURATION]
 	ContentType *string `json:"contentType"`
 
 	// Request Created Time
@@ -147,7 +147,7 @@ var marketplaceContentDownloadRequestTypeContentTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["BLUEPRINT","IMAGE","ABX_SCRIPTS"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["BLUEPRINT","IMAGE","ABX_SCRIPTS","TERRAFORM_CONFIGURATION"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -165,6 +165,9 @@ const (
 
 	// MarketplaceContentDownloadRequestContentTypeABXSCRIPTS captures enum value "ABX_SCRIPTS"
 	MarketplaceContentDownloadRequestContentTypeABXSCRIPTS string = "ABX_SCRIPTS"
+
+	// MarketplaceContentDownloadRequestContentTypeTERRAFORMCONFIGURATION captures enum value "TERRAFORM_CONFIGURATION"
+	MarketplaceContentDownloadRequestContentTypeTERRAFORMCONFIGURATION string = "TERRAFORM_CONFIGURATION"
 )
 
 // prop value enum

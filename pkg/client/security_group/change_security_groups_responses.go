@@ -23,8 +23,8 @@ type ChangeSecurityGroupsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *ChangeSecurityGroupsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-	case 200:
-		result := NewChangeSecurityGroupsOK()
+	case 202:
+		result := NewChangeSecurityGroupsAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -53,28 +53,28 @@ func (o *ChangeSecurityGroupsReader) ReadResponse(response runtime.ClientRespons
 	}
 }
 
-// NewChangeSecurityGroupsOK creates a ChangeSecurityGroupsOK with default headers values
-func NewChangeSecurityGroupsOK() *ChangeSecurityGroupsOK {
-	return &ChangeSecurityGroupsOK{}
+// NewChangeSecurityGroupsAccepted creates a ChangeSecurityGroupsAccepted with default headers values
+func NewChangeSecurityGroupsAccepted() *ChangeSecurityGroupsAccepted {
+	return &ChangeSecurityGroupsAccepted{}
 }
 
-/*ChangeSecurityGroupsOK handles this case with default header values.
+/*ChangeSecurityGroupsAccepted handles this case with default header values.
 
 successful operation
 */
-type ChangeSecurityGroupsOK struct {
+type ChangeSecurityGroupsAccepted struct {
 	Payload *models.RequestTracker
 }
 
-func (o *ChangeSecurityGroupsOK) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/change-security-groups][%d] changeSecurityGroupsOK  %+v", 200, o.Payload)
+func (o *ChangeSecurityGroupsAccepted) Error() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/change-security-groups][%d] changeSecurityGroupsAccepted  %+v", 202, o.Payload)
 }
 
-func (o *ChangeSecurityGroupsOK) GetPayload() *models.RequestTracker {
+func (o *ChangeSecurityGroupsAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
 
-func (o *ChangeSecurityGroupsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *ChangeSecurityGroupsAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.RequestTracker)
 

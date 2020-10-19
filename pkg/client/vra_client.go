@@ -13,6 +13,7 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/about"
 	"github.com/vmware/vra-sdk-go/pkg/client/blueprint"
 	"github.com/vmware/vra-sdk-go/pkg/client/blueprint_requests"
+	"github.com/vmware/vra-sdk-go/pkg/client/blueprint_terraform_integrations"
 	"github.com/vmware/vra-sdk-go/pkg/client/blueprint_validation"
 	"github.com/vmware/vra-sdk-go/pkg/client/catalog_admin_items"
 	"github.com/vmware/vra-sdk-go/pkg/client/catalog_entitlements"
@@ -26,7 +27,7 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/data_collector"
 	"github.com/vmware/vra-sdk-go/pkg/client/deployment"
 	"github.com/vmware/vra-sdk-go/pkg/client/deployment_actions"
-	"github.com/vmware/vra-sdk-go/pkg/client/deployment_events"
+	"github.com/vmware/vra-sdk-go/pkg/client/deployment_requests"
 	"github.com/vmware/vra-sdk-go/pkg/client/deployments"
 	"github.com/vmware/vra-sdk-go/pkg/client/disk"
 	"github.com/vmware/vra-sdk-go/pkg/client/fabric_aws_volume_types"
@@ -62,6 +63,7 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/source_control_sync"
 	"github.com/vmware/vra-sdk-go/pkg/client/storage_profile"
 	"github.com/vmware/vra-sdk-go/pkg/client/tags"
+	"github.com/vmware/vra-sdk-go/pkg/client/vcf"
 )
 
 // Default vmware cloud assembly iaas  API HTTP client.
@@ -109,6 +111,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 	cli.About = about.New(transport, formats)
 	cli.Blueprint = blueprint.New(transport, formats)
 	cli.BlueprintRequests = blueprint_requests.New(transport, formats)
+	cli.BlueprintTerraformIntegrations = blueprint_terraform_integrations.New(transport, formats)
 	cli.BlueprintValidation = blueprint_validation.New(transport, formats)
 	cli.CatalogAdminItems = catalog_admin_items.New(transport, formats)
 	cli.CatalogEntitlements = catalog_entitlements.New(transport, formats)
@@ -122,7 +125,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 	cli.DataCollector = data_collector.New(transport, formats)
 	cli.Deployment = deployment.New(transport, formats)
 	cli.DeploymentActions = deployment_actions.New(transport, formats)
-	cli.DeploymentEvents = deployment_events.New(transport, formats)
+	cli.DeploymentRequests = deployment_requests.New(transport, formats)
 	cli.Deployments = deployments.New(transport, formats)
 	cli.Disk = disk.New(transport, formats)
 	cli.FabricawsVolumeTypes = fabric_aws_volume_types.New(transport, formats)
@@ -158,6 +161,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 	cli.SourceControlSync = source_control_sync.New(transport, formats)
 	cli.StorageProfile = storage_profile.New(transport, formats)
 	cli.Tags = tags.New(transport, formats)
+	cli.Vcf = vcf.New(transport, formats)
 	return cli
 }
 
@@ -208,6 +212,8 @@ type MulticloudIaaS struct {
 
 	BlueprintRequests blueprint_requests.ClientService
 
+	BlueprintTerraformIntegrations blueprint_terraform_integrations.ClientService
+
 	BlueprintValidation blueprint_validation.ClientService
 
 	CatalogAdminItems catalog_admin_items.ClientService
@@ -234,7 +240,7 @@ type MulticloudIaaS struct {
 
 	DeploymentActions deployment_actions.ClientService
 
-	DeploymentEvents deployment_events.ClientService
+	DeploymentRequests deployment_requests.ClientService
 
 	Deployments deployments.ClientService
 
@@ -306,6 +312,8 @@ type MulticloudIaaS struct {
 
 	Tags tags.ClientService
 
+	Vcf vcf.ClientService
+
 	Transport runtime.ClientTransport
 }
 
@@ -315,6 +323,7 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.About.SetTransport(transport)
 	c.Blueprint.SetTransport(transport)
 	c.BlueprintRequests.SetTransport(transport)
+	c.BlueprintTerraformIntegrations.SetTransport(transport)
 	c.BlueprintValidation.SetTransport(transport)
 	c.CatalogAdminItems.SetTransport(transport)
 	c.CatalogEntitlements.SetTransport(transport)
@@ -328,7 +337,7 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.DataCollector.SetTransport(transport)
 	c.Deployment.SetTransport(transport)
 	c.DeploymentActions.SetTransport(transport)
-	c.DeploymentEvents.SetTransport(transport)
+	c.DeploymentRequests.SetTransport(transport)
 	c.Deployments.SetTransport(transport)
 	c.Disk.SetTransport(transport)
 	c.FabricawsVolumeTypes.SetTransport(transport)
@@ -364,4 +373,5 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.SourceControlSync.SetTransport(transport)
 	c.StorageProfile.SetTransport(transport)
 	c.Tags.SetTransport(transport)
+	c.Vcf.SetTransport(transport)
 }

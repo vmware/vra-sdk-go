@@ -20,8 +20,14 @@ type HealthCheckConfiguration struct {
 	// Number of consecutive successful checks before considering a particular back-end instance as healthy.
 	HealthyThreshold int32 `json:"healthyThreshold,omitempty"`
 
+	// HTTP or HTTPS method to use when sending a health check request.
+	HTTPMethod string `json:"httpMethod,omitempty"`
+
 	// Interval (in seconds) at which the health checks will be performed.
 	IntervalSeconds int32 `json:"intervalSeconds,omitempty"`
+
+	// Enable passive monitor mode. This setting only applies to NSX-T.
+	PassiveMonitor bool `json:"passiveMonitor,omitempty"`
 
 	// Port on the back-end instance machine to use for the health check.
 	// Required: true
@@ -30,6 +36,12 @@ type HealthCheckConfiguration struct {
 	// The protocol used for the health check.
 	// Required: true
 	Protocol *string `json:"protocol"`
+
+	// Request body. Used by HTTP, HTTPS, TCP, UDP.
+	RequestBody string `json:"requestBody,omitempty"`
+
+	// Expected response body. Used by HTTP, HTTPS, TCP, UDP.
+	ResponseBody string `json:"responseBody,omitempty"`
 
 	// Timeout (in seconds) to wait for a response from the back-end instance.
 	TimeoutSeconds int32 `json:"timeoutSeconds,omitempty"`
