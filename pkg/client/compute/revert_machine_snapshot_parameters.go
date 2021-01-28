@@ -66,15 +66,15 @@ type RevertMachineSnapshotParams struct {
 	*/
 	APIVersion *string
 	/*ID
-	  Snapshot id to revert.
-
-	*/
-	QueryID string
-	/*ID
 	  The id of the Machine.
 
 	*/
 	PathID string
+	/*ID
+	  Snapshot id to revert.
+
+	*/
+	QueryID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -125,17 +125,6 @@ func (o *RevertMachineSnapshotParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
-// WithQueryID adds the id to the revert machine snapshot params
-func (o *RevertMachineSnapshotParams) WithQueryID(id string) *RevertMachineSnapshotParams {
-	o.SetQueryID(id)
-	return o
-}
-
-// SetQueryID adds the id to the revert machine snapshot params
-func (o *RevertMachineSnapshotParams) SetQueryID(id string) {
-	o.QueryID = id
-}
-
 // WithPathID adds the id to the revert machine snapshot params
 func (o *RevertMachineSnapshotParams) WithPathID(id string) *RevertMachineSnapshotParams {
 	o.SetPathID(id)
@@ -145,6 +134,17 @@ func (o *RevertMachineSnapshotParams) WithPathID(id string) *RevertMachineSnapsh
 // SetPathID adds the id to the revert machine snapshot params
 func (o *RevertMachineSnapshotParams) SetPathID(id string) {
 	o.PathID = id
+}
+
+// WithQueryID adds the id to the revert machine snapshot params
+func (o *RevertMachineSnapshotParams) WithQueryID(id string) *RevertMachineSnapshotParams {
+	o.SetQueryID(id)
+	return o
+}
+
+// SetQueryID adds the id to the revert machine snapshot params
+func (o *RevertMachineSnapshotParams) SetQueryID(id string) {
+	o.QueryID = id
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -171,6 +171,11 @@ func (o *RevertMachineSnapshotParams) WriteToRequest(r runtime.ClientRequest, re
 
 	}
 
+	// path param id
+	if err := r.SetPathParam("id", o.PathID); err != nil {
+		return err
+	}
+
 	// query param id
 	qrID := o.QueryID
 	qID := qrID
@@ -178,11 +183,6 @@ func (o *RevertMachineSnapshotParams) WriteToRequest(r runtime.ClientRequest, re
 		if err := r.SetQueryParam("id", qID); err != nil {
 			return err
 		}
-	}
-
-	// path param id
-	if err := r.SetPathParam("id", o.PathID); err != nil {
-		return err
 	}
 
 	if len(res) > 0 {
