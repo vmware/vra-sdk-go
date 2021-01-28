@@ -40,6 +40,7 @@ def add_filter_params(swagger):
         "/iaas/api/storage-profiles-vsphere",
         "/iaas/api/block-devices",
         "/iaas/api/machines",
+        "/iaas/api/regions",
     ]
 
     # Update the needed paths
