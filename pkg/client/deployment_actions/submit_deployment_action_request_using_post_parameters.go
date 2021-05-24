@@ -18,69 +18,87 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewSubmitDeploymentActionRequestUsingPOSTParams creates a new SubmitDeploymentActionRequestUsingPOSTParams object
-// with the default values initialized.
+// NewSubmitDeploymentActionRequestUsingPOSTParams creates a new SubmitDeploymentActionRequestUsingPOSTParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewSubmitDeploymentActionRequestUsingPOSTParams() *SubmitDeploymentActionRequestUsingPOSTParams {
-	var ()
 	return &SubmitDeploymentActionRequestUsingPOSTParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewSubmitDeploymentActionRequestUsingPOSTParamsWithTimeout creates a new SubmitDeploymentActionRequestUsingPOSTParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewSubmitDeploymentActionRequestUsingPOSTParamsWithTimeout(timeout time.Duration) *SubmitDeploymentActionRequestUsingPOSTParams {
-	var ()
 	return &SubmitDeploymentActionRequestUsingPOSTParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewSubmitDeploymentActionRequestUsingPOSTParamsWithContext creates a new SubmitDeploymentActionRequestUsingPOSTParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewSubmitDeploymentActionRequestUsingPOSTParamsWithContext(ctx context.Context) *SubmitDeploymentActionRequestUsingPOSTParams {
-	var ()
 	return &SubmitDeploymentActionRequestUsingPOSTParams{
-
 		Context: ctx,
 	}
 }
 
 // NewSubmitDeploymentActionRequestUsingPOSTParamsWithHTTPClient creates a new SubmitDeploymentActionRequestUsingPOSTParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewSubmitDeploymentActionRequestUsingPOSTParamsWithHTTPClient(client *http.Client) *SubmitDeploymentActionRequestUsingPOSTParams {
-	var ()
 	return &SubmitDeploymentActionRequestUsingPOSTParams{
 		HTTPClient: client,
 	}
 }
 
-/*SubmitDeploymentActionRequestUsingPOSTParams contains all the parameters to send to the API endpoint
-for the submit deployment action request using p o s t operation typically these are written to a http.Request
+/* SubmitDeploymentActionRequestUsingPOSTParams contains all the parameters to send to the API endpoint
+   for the submit deployment action request using p o s t operation.
+
+   Typically these are written to a http.Request.
 */
 type SubmitDeploymentActionRequestUsingPOSTParams struct {
 
-	/*ActionRequest
-	  actionRequest
+	/* ActionRequest.
 
+	   actionRequest
 	*/
 	ActionRequest *models.ResourceActionRequest
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 
+	/* APIVersion.
+
+	   The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 	*/
 	APIVersion *string
-	/*DepID
-	  Deployment ID
 
+	/* DepID.
+
+	   Deployment ID
+
+	   Format: uuid
 	*/
 	DepID strfmt.UUID
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the submit deployment action request using p o s t params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *SubmitDeploymentActionRequestUsingPOSTParams) WithDefaults() *SubmitDeploymentActionRequestUsingPOSTParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the submit deployment action request using p o s t params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *SubmitDeploymentActionRequestUsingPOSTParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the submit deployment action request using p o s t params
@@ -156,7 +174,6 @@ func (o *SubmitDeploymentActionRequestUsingPOSTParams) WriteToRequest(r runtime.
 		return err
 	}
 	var res []error
-
 	if o.ActionRequest != nil {
 		if err := r.SetBodyParam(o.ActionRequest); err != nil {
 			return err
@@ -167,16 +184,17 @@ func (o *SubmitDeploymentActionRequestUsingPOSTParams) WriteToRequest(r runtime.
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param depId

@@ -41,7 +41,6 @@ func (o *DeleteSecurityGroupReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewDeleteSecurityGroupAccepted() *DeleteSecurityGroupAccepted {
 	return &DeleteSecurityGroupAccepted{}
 }
 
-/*DeleteSecurityGroupAccepted handles this case with default header values.
+/* DeleteSecurityGroupAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type DeleteSecurityGroupAccepted struct {
 func (o *DeleteSecurityGroupAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/security-groups/{id}][%d] deleteSecurityGroupAccepted  %+v", 202, o.Payload)
 }
-
 func (o *DeleteSecurityGroupAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewDeleteSecurityGroupNoContent() *DeleteSecurityGroupNoContent {
 	return &DeleteSecurityGroupNoContent{}
 }
 
-/*DeleteSecurityGroupNoContent handles this case with default header values.
+/* DeleteSecurityGroupNoContent describes a response with status code 204, with default header values.
 
 No Content
 */
@@ -106,18 +104,29 @@ func NewDeleteSecurityGroupForbidden() *DeleteSecurityGroupForbidden {
 	return &DeleteSecurityGroupForbidden{}
 }
 
-/*DeleteSecurityGroupForbidden handles this case with default header values.
+/* DeleteSecurityGroupForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type DeleteSecurityGroupForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *DeleteSecurityGroupForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/security-groups/{id}][%d] deleteSecurityGroupForbidden ", 403)
+	return fmt.Sprintf("[DELETE /iaas/api/security-groups/{id}][%d] deleteSecurityGroupForbidden  %+v", 403, o.Payload)
+}
+func (o *DeleteSecurityGroupForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *DeleteSecurityGroupForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

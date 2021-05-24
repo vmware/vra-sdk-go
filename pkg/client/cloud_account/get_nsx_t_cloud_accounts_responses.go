@@ -35,7 +35,6 @@ func (o *GetNsxTCloudAccountsReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewGetNsxTCloudAccountsOK() *GetNsxTCloudAccountsOK {
 	return &GetNsxTCloudAccountsOK{}
 }
 
-/*GetNsxTCloudAccountsOK handles this case with default header values.
+/* GetNsxTCloudAccountsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -57,7 +56,6 @@ type GetNsxTCloudAccountsOK struct {
 func (o *GetNsxTCloudAccountsOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-nsx-t][%d] getNsxTCloudAccountsOK  %+v", 200, o.Payload)
 }
-
 func (o *GetNsxTCloudAccountsOK) GetPayload() *models.CloudAccountNsxTResult {
 	return o.Payload
 }
@@ -79,18 +77,29 @@ func NewGetNsxTCloudAccountsForbidden() *GetNsxTCloudAccountsForbidden {
 	return &GetNsxTCloudAccountsForbidden{}
 }
 
-/*GetNsxTCloudAccountsForbidden handles this case with default header values.
+/* GetNsxTCloudAccountsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetNsxTCloudAccountsForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetNsxTCloudAccountsForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-nsx-t][%d] getNsxTCloudAccountsForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-nsx-t][%d] getNsxTCloudAccountsForbidden  %+v", 403, o.Payload)
+}
+func (o *GetNsxTCloudAccountsForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetNsxTCloudAccountsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

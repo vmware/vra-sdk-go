@@ -41,7 +41,6 @@ func (o *UpdateSecurityGroupReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewUpdateSecurityGroupOK() *UpdateSecurityGroupOK {
 	return &UpdateSecurityGroupOK{}
 }
 
-/*UpdateSecurityGroupOK handles this case with default header values.
+/* UpdateSecurityGroupOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type UpdateSecurityGroupOK struct {
 func (o *UpdateSecurityGroupOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/security-groups/{id}][%d] updateSecurityGroupOK  %+v", 200, o.Payload)
 }
-
 func (o *UpdateSecurityGroupOK) GetPayload() *models.SecurityGroup {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewUpdateSecurityGroupForbidden() *UpdateSecurityGroupForbidden {
 	return &UpdateSecurityGroupForbidden{}
 }
 
-/*UpdateSecurityGroupForbidden handles this case with default header values.
+/* UpdateSecurityGroupForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type UpdateSecurityGroupForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *UpdateSecurityGroupForbidden) Error() string {
-	return fmt.Sprintf("[PATCH /iaas/api/security-groups/{id}][%d] updateSecurityGroupForbidden ", 403)
+	return fmt.Sprintf("[PATCH /iaas/api/security-groups/{id}][%d] updateSecurityGroupForbidden  %+v", 403, o.Payload)
+}
+func (o *UpdateSecurityGroupForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *UpdateSecurityGroupForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewUpdateSecurityGroupNotFound() *UpdateSecurityGroupNotFound {
 	return &UpdateSecurityGroupNotFound{}
 }
 
-/*UpdateSecurityGroupNotFound handles this case with default header values.
+/* UpdateSecurityGroupNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type UpdateSecurityGroupNotFound struct {
 func (o *UpdateSecurityGroupNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/security-groups/{id}][%d] updateSecurityGroupNotFound  %+v", 404, o.Payload)
 }
-
 func (o *UpdateSecurityGroupNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

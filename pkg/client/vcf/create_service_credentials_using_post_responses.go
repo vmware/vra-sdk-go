@@ -47,7 +47,6 @@ func (o *CreateServiceCredentialsUsingPOSTReader) ReadResponse(response runtime.
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewCreateServiceCredentialsUsingPOSTOK() *CreateServiceCredentialsUsingPOST
 	return &CreateServiceCredentialsUsingPOSTOK{}
 }
 
-/*CreateServiceCredentialsUsingPOSTOK handles this case with default header values.
+/* CreateServiceCredentialsUsingPOSTOK describes a response with status code 200, with default header values.
 
 Create Service credentials
 */
@@ -69,7 +68,6 @@ type CreateServiceCredentialsUsingPOSTOK struct {
 func (o *CreateServiceCredentialsUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /content/api/vcf/{integrationId}/domain/{domainId}/service-accounts][%d] createServiceCredentialsUsingPOSTOK  %+v", 200, o.Payload)
 }
-
 func (o *CreateServiceCredentialsUsingPOSTOK) GetPayload() *models.VcfServiceCredentialCreationResponse {
 	return o.Payload
 }
@@ -91,7 +89,7 @@ func NewCreateServiceCredentialsUsingPOSTBadRequest() *CreateServiceCredentialsU
 	return &CreateServiceCredentialsUsingPOSTBadRequest{}
 }
 
-/*CreateServiceCredentialsUsingPOSTBadRequest handles this case with default header values.
+/* CreateServiceCredentialsUsingPOSTBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -102,7 +100,6 @@ type CreateServiceCredentialsUsingPOSTBadRequest struct {
 func (o *CreateServiceCredentialsUsingPOSTBadRequest) Error() string {
 	return fmt.Sprintf("[POST /content/api/vcf/{integrationId}/domain/{domainId}/service-accounts][%d] createServiceCredentialsUsingPOSTBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateServiceCredentialsUsingPOSTBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -124,7 +121,7 @@ func NewCreateServiceCredentialsUsingPOSTUnauthorized() *CreateServiceCredential
 	return &CreateServiceCredentialsUsingPOSTUnauthorized{}
 }
 
-/*CreateServiceCredentialsUsingPOSTUnauthorized handles this case with default header values.
+/* CreateServiceCredentialsUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -145,7 +142,7 @@ func NewCreateServiceCredentialsUsingPOSTForbidden() *CreateServiceCredentialsUs
 	return &CreateServiceCredentialsUsingPOSTForbidden{}
 }
 
-/*CreateServiceCredentialsUsingPOSTForbidden handles this case with default header values.
+/* CreateServiceCredentialsUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */

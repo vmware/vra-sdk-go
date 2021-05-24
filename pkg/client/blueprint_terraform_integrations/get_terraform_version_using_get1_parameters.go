@@ -16,59 +16,75 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetTerraformVersionUsingGET1Params creates a new GetTerraformVersionUsingGET1Params object
-// with the default values initialized.
+// NewGetTerraformVersionUsingGET1Params creates a new GetTerraformVersionUsingGET1Params object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetTerraformVersionUsingGET1Params() *GetTerraformVersionUsingGET1Params {
-	var ()
 	return &GetTerraformVersionUsingGET1Params{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetTerraformVersionUsingGET1ParamsWithTimeout creates a new GetTerraformVersionUsingGET1Params object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetTerraformVersionUsingGET1ParamsWithTimeout(timeout time.Duration) *GetTerraformVersionUsingGET1Params {
-	var ()
 	return &GetTerraformVersionUsingGET1Params{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetTerraformVersionUsingGET1ParamsWithContext creates a new GetTerraformVersionUsingGET1Params object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetTerraformVersionUsingGET1ParamsWithContext(ctx context.Context) *GetTerraformVersionUsingGET1Params {
-	var ()
 	return &GetTerraformVersionUsingGET1Params{
-
 		Context: ctx,
 	}
 }
 
 // NewGetTerraformVersionUsingGET1ParamsWithHTTPClient creates a new GetTerraformVersionUsingGET1Params object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetTerraformVersionUsingGET1ParamsWithHTTPClient(client *http.Client) *GetTerraformVersionUsingGET1Params {
-	var ()
 	return &GetTerraformVersionUsingGET1Params{
 		HTTPClient: client,
 	}
 }
 
-/*GetTerraformVersionUsingGET1Params contains all the parameters to send to the API endpoint
-for the get terraform version using get1 operation typically these are written to a http.Request
+/* GetTerraformVersionUsingGET1Params contains all the parameters to send to the API endpoint
+   for the get terraform version using get1 operation.
+
+   Typically these are written to a http.Request.
 */
 type GetTerraformVersionUsingGET1Params struct {
 
-	/*VersionID
-	  versionId
+	/* VersionID.
 
+	   versionId
+
+	   Format: uuid
 	*/
 	VersionID strfmt.UUID
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get terraform version using get1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetTerraformVersionUsingGET1Params) WithDefaults() *GetTerraformVersionUsingGET1Params {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get terraform version using get1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetTerraformVersionUsingGET1Params) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get terraform version using get1 params

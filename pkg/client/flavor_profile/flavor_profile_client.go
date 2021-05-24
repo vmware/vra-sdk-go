@@ -25,17 +25,20 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateFlavorProfile(params *CreateFlavorProfileParams) (*CreateFlavorProfileCreated, error)
+	CreateFlavorProfile(params *CreateFlavorProfileParams, opts ...ClientOption) (*CreateFlavorProfileCreated, error)
 
-	DeleteFlavorProfile(params *DeleteFlavorProfileParams) (*DeleteFlavorProfileNoContent, error)
+	DeleteFlavorProfile(params *DeleteFlavorProfileParams, opts ...ClientOption) (*DeleteFlavorProfileNoContent, error)
 
-	GetFlavorProfile(params *GetFlavorProfileParams) (*GetFlavorProfileOK, error)
+	GetFlavorProfile(params *GetFlavorProfileParams, opts ...ClientOption) (*GetFlavorProfileOK, error)
 
-	GetFlavorProfiles(params *GetFlavorProfilesParams) (*GetFlavorProfilesOK, error)
+	GetFlavorProfiles(params *GetFlavorProfilesParams, opts ...ClientOption) (*GetFlavorProfilesOK, error)
 
-	UpdateFlavorProfile(params *UpdateFlavorProfileParams) (*UpdateFlavorProfileOK, error)
+	UpdateFlavorProfile(params *UpdateFlavorProfileParams, opts ...ClientOption) (*UpdateFlavorProfileOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -45,13 +48,12 @@ type ClientService interface {
 
   Create flavor profile
 */
-func (a *Client) CreateFlavorProfile(params *CreateFlavorProfileParams) (*CreateFlavorProfileCreated, error) {
+func (a *Client) CreateFlavorProfile(params *CreateFlavorProfileParams, opts ...ClientOption) (*CreateFlavorProfileCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateFlavorProfileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createFlavorProfile",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/flavor-profiles",
@@ -62,7 +64,12 @@ func (a *Client) CreateFlavorProfile(params *CreateFlavorProfileParams) (*Create
 		Reader:             &CreateFlavorProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -81,13 +88,12 @@ func (a *Client) CreateFlavorProfile(params *CreateFlavorProfileParams) (*Create
 
   Delete flavor profile with a given id
 */
-func (a *Client) DeleteFlavorProfile(params *DeleteFlavorProfileParams) (*DeleteFlavorProfileNoContent, error) {
+func (a *Client) DeleteFlavorProfile(params *DeleteFlavorProfileParams, opts ...ClientOption) (*DeleteFlavorProfileNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteFlavorProfileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteFlavorProfile",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/flavor-profiles/{id}",
@@ -98,7 +104,12 @@ func (a *Client) DeleteFlavorProfile(params *DeleteFlavorProfileParams) (*Delete
 		Reader:             &DeleteFlavorProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -117,13 +128,12 @@ func (a *Client) DeleteFlavorProfile(params *DeleteFlavorProfileParams) (*Delete
 
   Get flavor profile with a given id
 */
-func (a *Client) GetFlavorProfile(params *GetFlavorProfileParams) (*GetFlavorProfileOK, error) {
+func (a *Client) GetFlavorProfile(params *GetFlavorProfileParams, opts ...ClientOption) (*GetFlavorProfileOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetFlavorProfileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getFlavorProfile",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/flavor-profiles/{id}",
@@ -134,7 +144,12 @@ func (a *Client) GetFlavorProfile(params *GetFlavorProfileParams) (*GetFlavorPro
 		Reader:             &GetFlavorProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -153,13 +168,12 @@ func (a *Client) GetFlavorProfile(params *GetFlavorProfileParams) (*GetFlavorPro
 
   Get all flavor profile
 */
-func (a *Client) GetFlavorProfiles(params *GetFlavorProfilesParams) (*GetFlavorProfilesOK, error) {
+func (a *Client) GetFlavorProfiles(params *GetFlavorProfilesParams, opts ...ClientOption) (*GetFlavorProfilesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetFlavorProfilesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getFlavorProfiles",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/flavor-profiles",
@@ -170,7 +184,12 @@ func (a *Client) GetFlavorProfiles(params *GetFlavorProfilesParams) (*GetFlavorP
 		Reader:             &GetFlavorProfilesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -189,13 +208,12 @@ func (a *Client) GetFlavorProfiles(params *GetFlavorProfilesParams) (*GetFlavorP
 
   Update flavor profile
 */
-func (a *Client) UpdateFlavorProfile(params *UpdateFlavorProfileParams) (*UpdateFlavorProfileOK, error) {
+func (a *Client) UpdateFlavorProfile(params *UpdateFlavorProfileParams, opts ...ClientOption) (*UpdateFlavorProfileOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateFlavorProfileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "updateFlavorProfile",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/flavor-profiles/{id}",
@@ -206,7 +224,12 @@ func (a *Client) UpdateFlavorProfile(params *UpdateFlavorProfileParams) (*Update
 		Reader:             &UpdateFlavorProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

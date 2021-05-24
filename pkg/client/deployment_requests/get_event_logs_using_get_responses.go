@@ -41,7 +41,6 @@ func (o *GetEventLogsUsingGETReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetEventLogsUsingGETOK() *GetEventLogsUsingGETOK {
 	return &GetEventLogsUsingGETOK{}
 }
 
-/*GetEventLogsUsingGETOK handles this case with default header values.
+/* GetEventLogsUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -63,7 +62,6 @@ type GetEventLogsUsingGETOK struct {
 func (o *GetEventLogsUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/{depId}/requests/{requestId}/events/{eventId}/logs][%d] getEventLogsUsingGETOK  %+v", 200, o.Payload)
 }
-
 func (o *GetEventLogsUsingGETOK) GetPayload() *models.SliceOfEventLog {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewGetEventLogsUsingGETUnauthorized() *GetEventLogsUsingGETUnauthorized {
 	return &GetEventLogsUsingGETUnauthorized{}
 }
 
-/*GetEventLogsUsingGETUnauthorized handles this case with default header values.
+/* GetEventLogsUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -106,7 +104,7 @@ func NewGetEventLogsUsingGETNotFound() *GetEventLogsUsingGETNotFound {
 	return &GetEventLogsUsingGETNotFound{}
 }
 
-/*GetEventLogsUsingGETNotFound handles this case with default header values.
+/* GetEventLogsUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +115,6 @@ type GetEventLogsUsingGETNotFound struct {
 func (o *GetEventLogsUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/{depId}/requests/{requestId}/events/{eventId}/logs][%d] getEventLogsUsingGETNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetEventLogsUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

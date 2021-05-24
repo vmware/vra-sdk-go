@@ -36,7 +36,7 @@ func NewEnumeratePrivateImagesVCFDefault(code int) *EnumeratePrivateImagesVCFDef
 	}
 }
 
-/*EnumeratePrivateImagesVCFDefault handles this case with default header values.
+/* EnumeratePrivateImagesVCFDefault describes a response with status code -1, with default header values.
 
 successful operation
 */

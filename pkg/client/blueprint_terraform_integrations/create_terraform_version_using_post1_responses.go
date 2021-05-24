@@ -47,7 +47,6 @@ func (o *CreateTerraformVersionUsingPOST1Reader) ReadResponse(response runtime.C
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewCreateTerraformVersionUsingPOST1Created() *CreateTerraformVersionUsingPO
 	return &CreateTerraformVersionUsingPOST1Created{}
 }
 
-/*CreateTerraformVersionUsingPOST1Created handles this case with default header values.
+/* CreateTerraformVersionUsingPOST1Created describes a response with status code 201, with default header values.
 
 Created
 */
@@ -69,7 +68,6 @@ type CreateTerraformVersionUsingPOST1Created struct {
 func (o *CreateTerraformVersionUsingPOST1Created) Error() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprint-integrations/terraform/versions][%d] createTerraformVersionUsingPOST1Created  %+v", 201, o.Payload)
 }
-
 func (o *CreateTerraformVersionUsingPOST1Created) GetPayload() *models.TerraformVersion {
 	return o.Payload
 }
@@ -91,7 +89,7 @@ func NewCreateTerraformVersionUsingPOST1BadRequest() *CreateTerraformVersionUsin
 	return &CreateTerraformVersionUsingPOST1BadRequest{}
 }
 
-/*CreateTerraformVersionUsingPOST1BadRequest handles this case with default header values.
+/* CreateTerraformVersionUsingPOST1BadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -102,7 +100,6 @@ type CreateTerraformVersionUsingPOST1BadRequest struct {
 func (o *CreateTerraformVersionUsingPOST1BadRequest) Error() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprint-integrations/terraform/versions][%d] createTerraformVersionUsingPOST1BadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateTerraformVersionUsingPOST1BadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -124,7 +121,7 @@ func NewCreateTerraformVersionUsingPOST1Unauthorized() *CreateTerraformVersionUs
 	return &CreateTerraformVersionUsingPOST1Unauthorized{}
 }
 
-/*CreateTerraformVersionUsingPOST1Unauthorized handles this case with default header values.
+/* CreateTerraformVersionUsingPOST1Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -145,7 +142,7 @@ func NewCreateTerraformVersionUsingPOST1Forbidden() *CreateTerraformVersionUsing
 	return &CreateTerraformVersionUsingPOST1Forbidden{}
 }
 
-/*CreateTerraformVersionUsingPOST1Forbidden handles this case with default header values.
+/* CreateTerraformVersionUsingPOST1Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 	"strconv"
 
@@ -160,7 +161,6 @@ func (m *BlueprintRequest) Validate(formats strfmt.Registry) error {
 }
 
 func (m *BlueprintRequest) validateBlueprintID(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.BlueprintID) { // not required
 		return nil
 	}
@@ -173,7 +173,6 @@ func (m *BlueprintRequest) validateBlueprintID(formats strfmt.Registry) error {
 }
 
 func (m *BlueprintRequest) validateCancelRequestedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CancelRequestedAt) { // not required
 		return nil
 	}
@@ -186,7 +185,6 @@ func (m *BlueprintRequest) validateCancelRequestedAt(formats strfmt.Registry) er
 }
 
 func (m *BlueprintRequest) validateCreatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CreatedAt) { // not required
 		return nil
 	}
@@ -237,7 +235,6 @@ func (m *BlueprintRequest) validateStatusEnum(path, location string, value strin
 }
 
 func (m *BlueprintRequest) validateStatus(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Status) { // not required
 		return nil
 	}
@@ -251,7 +248,6 @@ func (m *BlueprintRequest) validateStatus(formats strfmt.Registry) error {
 }
 
 func (m *BlueprintRequest) validateUpdatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.UpdatedAt) { // not required
 		return nil
 	}
@@ -264,7 +260,6 @@ func (m *BlueprintRequest) validateUpdatedAt(formats strfmt.Registry) error {
 }
 
 func (m *BlueprintRequest) validateValidationMessages(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ValidationMessages) { // not required
 		return nil
 	}
@@ -276,6 +271,224 @@ func (m *BlueprintRequest) validateValidationMessages(formats strfmt.Registry) e
 
 		if m.ValidationMessages[i] != nil {
 			if err := m.ValidationMessages[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("validationMessages" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this blueprint request based on the context it is used
+func (m *BlueprintRequest) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateCancelRequestedAt(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateCancelRequestedBy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateCreatedAt(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateCreatedBy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateFailureMessage(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateFlowExecutionID(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateFlowID(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateID(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOrgID(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateProjectName(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateRequestTrackerID(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUpdatedAt(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUpdatedBy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateValidationMessages(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *BlueprintRequest) contextValidateCancelRequestedAt(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "cancelRequestedAt", "body", strfmt.DateTime(m.CancelRequestedAt)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BlueprintRequest) contextValidateCancelRequestedBy(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "cancelRequestedBy", "body", string(m.CancelRequestedBy)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BlueprintRequest) contextValidateCreatedAt(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "createdAt", "body", strfmt.DateTime(m.CreatedAt)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BlueprintRequest) contextValidateCreatedBy(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "createdBy", "body", string(m.CreatedBy)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BlueprintRequest) contextValidateFailureMessage(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "failureMessage", "body", string(m.FailureMessage)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BlueprintRequest) contextValidateFlowExecutionID(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "flowExecutionId", "body", string(m.FlowExecutionID)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BlueprintRequest) contextValidateFlowID(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "flowId", "body", string(m.FlowID)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BlueprintRequest) contextValidateID(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "id", "body", string(m.ID)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BlueprintRequest) contextValidateOrgID(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "orgId", "body", string(m.OrgID)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BlueprintRequest) contextValidateProjectName(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "projectName", "body", string(m.ProjectName)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BlueprintRequest) contextValidateRequestTrackerID(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "requestTrackerId", "body", string(m.RequestTrackerID)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BlueprintRequest) contextValidateStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "status", "body", string(m.Status)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BlueprintRequest) contextValidateUpdatedAt(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "updatedAt", "body", strfmt.DateTime(m.UpdatedAt)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BlueprintRequest) contextValidateUpdatedBy(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "updatedBy", "body", string(m.UpdatedBy)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BlueprintRequest) contextValidateValidationMessages(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "validationMessages", "body", []*BlueprintValidationMessage(m.ValidationMessages)); err != nil {
+		return err
+	}
+
+	for i := 0; i < len(m.ValidationMessages); i++ {
+
+		if m.ValidationMessages[i] != nil {
+			if err := m.ValidationMessages[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("validationMessages" + "." + strconv.Itoa(i))
 				}

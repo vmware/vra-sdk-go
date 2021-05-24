@@ -35,7 +35,6 @@ func (o *GetExternalIPBlocksReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewGetExternalIPBlocksOK() *GetExternalIPBlocksOK {
 	return &GetExternalIPBlocksOK{}
 }
 
-/*GetExternalIPBlocksOK handles this case with default header values.
+/* GetExternalIPBlocksOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -57,7 +56,6 @@ type GetExternalIPBlocksOK struct {
 func (o *GetExternalIPBlocksOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/external-ip-blocks][%d] getExternalIpBlocksOK  %+v", 200, o.Payload)
 }
-
 func (o *GetExternalIPBlocksOK) GetPayload() *models.FabricNetworkResult {
 	return o.Payload
 }
@@ -79,18 +77,29 @@ func NewGetExternalIPBlocksForbidden() *GetExternalIPBlocksForbidden {
 	return &GetExternalIPBlocksForbidden{}
 }
 
-/*GetExternalIPBlocksForbidden handles this case with default header values.
+/* GetExternalIPBlocksForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetExternalIPBlocksForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetExternalIPBlocksForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/external-ip-blocks][%d] getExternalIpBlocksForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/external-ip-blocks][%d] getExternalIpBlocksForbidden  %+v", 403, o.Payload)
+}
+func (o *GetExternalIPBlocksForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetExternalIPBlocksForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

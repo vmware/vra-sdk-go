@@ -16,69 +16,85 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewRevertDiskSnapshotParams creates a new RevertDiskSnapshotParams object
-// with the default values initialized.
+// NewRevertDiskSnapshotParams creates a new RevertDiskSnapshotParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewRevertDiskSnapshotParams() *RevertDiskSnapshotParams {
-	var ()
 	return &RevertDiskSnapshotParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewRevertDiskSnapshotParamsWithTimeout creates a new RevertDiskSnapshotParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewRevertDiskSnapshotParamsWithTimeout(timeout time.Duration) *RevertDiskSnapshotParams {
-	var ()
 	return &RevertDiskSnapshotParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewRevertDiskSnapshotParamsWithContext creates a new RevertDiskSnapshotParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewRevertDiskSnapshotParamsWithContext(ctx context.Context) *RevertDiskSnapshotParams {
-	var ()
 	return &RevertDiskSnapshotParams{
-
 		Context: ctx,
 	}
 }
 
 // NewRevertDiskSnapshotParamsWithHTTPClient creates a new RevertDiskSnapshotParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewRevertDiskSnapshotParamsWithHTTPClient(client *http.Client) *RevertDiskSnapshotParams {
-	var ()
 	return &RevertDiskSnapshotParams{
 		HTTPClient: client,
 	}
 }
 
-/*RevertDiskSnapshotParams contains all the parameters to send to the API endpoint
-for the revert disk snapshot operation typically these are written to a http.Request
+/* RevertDiskSnapshotParams contains all the parameters to send to the API endpoint
+   for the revert disk snapshot operation.
+
+   Typically these are written to a http.Request.
 */
 type RevertDiskSnapshotParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*ID
-	  The id of the Disk.
 
+	/* ID.
+
+	   The id of the Disk.
 	*/
 	PathID string
-	/*ID
-	  Snapshot id to revert.
 
+	/* ID.
+
+	   Snapshot id to revert.
 	*/
 	QueryID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the revert disk snapshot params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *RevertDiskSnapshotParams) WithDefaults() *RevertDiskSnapshotParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the revert disk snapshot params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *RevertDiskSnapshotParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the revert disk snapshot params
@@ -159,16 +175,17 @@ func (o *RevertDiskSnapshotParams) WriteToRequest(r runtime.ClientRequest, reg s
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id
@@ -180,6 +197,7 @@ func (o *RevertDiskSnapshotParams) WriteToRequest(r runtime.ClientRequest, reg s
 	qrID := o.QueryID
 	qID := qrID
 	if qID != "" {
+
 		if err := r.SetQueryParam("id", qID); err != nil {
 			return err
 		}

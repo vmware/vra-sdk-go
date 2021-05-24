@@ -18,69 +18,87 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewCreateBlueprintVersionUsingPOST1Params creates a new CreateBlueprintVersionUsingPOST1Params object
-// with the default values initialized.
+// NewCreateBlueprintVersionUsingPOST1Params creates a new CreateBlueprintVersionUsingPOST1Params object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewCreateBlueprintVersionUsingPOST1Params() *CreateBlueprintVersionUsingPOST1Params {
-	var ()
 	return &CreateBlueprintVersionUsingPOST1Params{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewCreateBlueprintVersionUsingPOST1ParamsWithTimeout creates a new CreateBlueprintVersionUsingPOST1Params object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewCreateBlueprintVersionUsingPOST1ParamsWithTimeout(timeout time.Duration) *CreateBlueprintVersionUsingPOST1Params {
-	var ()
 	return &CreateBlueprintVersionUsingPOST1Params{
-
 		timeout: timeout,
 	}
 }
 
 // NewCreateBlueprintVersionUsingPOST1ParamsWithContext creates a new CreateBlueprintVersionUsingPOST1Params object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewCreateBlueprintVersionUsingPOST1ParamsWithContext(ctx context.Context) *CreateBlueprintVersionUsingPOST1Params {
-	var ()
 	return &CreateBlueprintVersionUsingPOST1Params{
-
 		Context: ctx,
 	}
 }
 
 // NewCreateBlueprintVersionUsingPOST1ParamsWithHTTPClient creates a new CreateBlueprintVersionUsingPOST1Params object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewCreateBlueprintVersionUsingPOST1ParamsWithHTTPClient(client *http.Client) *CreateBlueprintVersionUsingPOST1Params {
-	var ()
 	return &CreateBlueprintVersionUsingPOST1Params{
 		HTTPClient: client,
 	}
 }
 
-/*CreateBlueprintVersionUsingPOST1Params contains all the parameters to send to the API endpoint
-for the create blueprint version using p o s t 1 operation typically these are written to a http.Request
+/* CreateBlueprintVersionUsingPOST1Params contains all the parameters to send to the API endpoint
+   for the create blueprint version using p o s t 1 operation.
+
+   Typically these are written to a http.Request.
 */
 type CreateBlueprintVersionUsingPOST1Params struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about
 	*/
 	APIVersion *string
-	/*BlueprintID
-	  blueprintId
 
+	/* BlueprintID.
+
+	   blueprintId
+
+	   Format: uuid
 	*/
 	BlueprintID strfmt.UUID
-	/*VersionRequest
-	  Blueprint version object
 
+	/* VersionRequest.
+
+	   Blueprint version object
 	*/
 	VersionRequest *models.BlueprintVersionRequest
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the create blueprint version using p o s t 1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateBlueprintVersionUsingPOST1Params) WithDefaults() *CreateBlueprintVersionUsingPOST1Params {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the create blueprint version using p o s t 1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateBlueprintVersionUsingPOST1Params) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the create blueprint version using p o s t 1 params
@@ -161,23 +179,23 @@ func (o *CreateBlueprintVersionUsingPOST1Params) WriteToRequest(r runtime.Client
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param blueprintId
 	if err := r.SetPathParam("blueprintId", o.BlueprintID.String()); err != nil {
 		return err
 	}
-
 	if o.VersionRequest != nil {
 		if err := r.SetBodyParam(o.VersionRequest); err != nil {
 			return err

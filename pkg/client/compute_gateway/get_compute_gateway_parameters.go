@@ -16,64 +16,79 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetComputeGatewayParams creates a new GetComputeGatewayParams object
-// with the default values initialized.
+// NewGetComputeGatewayParams creates a new GetComputeGatewayParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetComputeGatewayParams() *GetComputeGatewayParams {
-	var ()
 	return &GetComputeGatewayParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetComputeGatewayParamsWithTimeout creates a new GetComputeGatewayParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetComputeGatewayParamsWithTimeout(timeout time.Duration) *GetComputeGatewayParams {
-	var ()
 	return &GetComputeGatewayParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetComputeGatewayParamsWithContext creates a new GetComputeGatewayParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetComputeGatewayParamsWithContext(ctx context.Context) *GetComputeGatewayParams {
-	var ()
 	return &GetComputeGatewayParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetComputeGatewayParamsWithHTTPClient creates a new GetComputeGatewayParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetComputeGatewayParamsWithHTTPClient(client *http.Client) *GetComputeGatewayParams {
-	var ()
 	return &GetComputeGatewayParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetComputeGatewayParams contains all the parameters to send to the API endpoint
-for the get compute gateway operation typically these are written to a http.Request
+/* GetComputeGatewayParams contains all the parameters to send to the API endpoint
+   for the get compute gateway operation.
+
+   Typically these are written to a http.Request.
 */
 type GetComputeGatewayParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*ID
-	  The ID of the gateway.
 
+	/* ID.
+
+	   The ID of the gateway.
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get compute gateway params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetComputeGatewayParams) WithDefaults() *GetComputeGatewayParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get compute gateway params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetComputeGatewayParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get compute gateway params
@@ -143,16 +158,17 @@ func (o *GetComputeGatewayParams) WriteToRequest(r runtime.ClientRequest, reg st
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id

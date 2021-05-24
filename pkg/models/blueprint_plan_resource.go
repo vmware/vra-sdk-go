@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -105,13 +106,87 @@ func (m *BlueprintPlanResource) validateResourceReasonEnum(path, location string
 }
 
 func (m *BlueprintPlanResource) validateResourceReason(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ResourceReason) { // not required
 		return nil
 	}
 
 	// value enum
 	if err := m.validateResourceReasonEnum("resourceReason", "body", m.ResourceReason); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this blueprint plan resource based on the context it is used
+func (m *BlueprintPlanResource) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateDependsOnResources(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResourceName(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResourceReason(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResourceType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTaskNames(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *BlueprintPlanResource) contextValidateDependsOnResources(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "dependsOnResources", "body", []string(m.DependsOnResources)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BlueprintPlanResource) contextValidateResourceName(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "resourceName", "body", string(m.ResourceName)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BlueprintPlanResource) contextValidateResourceReason(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "resourceReason", "body", string(m.ResourceReason)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BlueprintPlanResource) contextValidateResourceType(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "resourceType", "body", string(m.ResourceType)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BlueprintPlanResource) contextValidateTaskNames(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "taskNames", "body", []string(m.TaskNames)); err != nil {
 		return err
 	}
 

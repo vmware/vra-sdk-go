@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -70,12 +72,138 @@ func (m *Expense) Validate(formats strfmt.Registry) error {
 }
 
 func (m *Expense) validateLastUpdatedTime(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.LastUpdatedTime) { // not required
 		return nil
 	}
 
 	if err := validate.FormatOf("lastUpdatedTime", "body", "date-time", m.LastUpdatedTime.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this expense based on the context it is used
+func (m *Expense) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateAdditionalExpense(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateCode(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateComputeExpense(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateLastUpdatedTime(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMessage(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateNetworkExpense(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStorageExpense(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTotalExpense(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *Expense) contextValidateAdditionalExpense(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "additionalExpense", "body", float64(m.AdditionalExpense)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Expense) contextValidateCode(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "code", "body", string(m.Code)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Expense) contextValidateComputeExpense(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "computeExpense", "body", float64(m.ComputeExpense)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Expense) contextValidateLastUpdatedTime(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "lastUpdatedTime", "body", strfmt.DateTime(m.LastUpdatedTime)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Expense) contextValidateMessage(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "message", "body", string(m.Message)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Expense) contextValidateNetworkExpense(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "networkExpense", "body", float64(m.NetworkExpense)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Expense) contextValidateStorageExpense(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "storageExpense", "body", float64(m.StorageExpense)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Expense) contextValidateTotalExpense(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "totalExpense", "body", float64(m.TotalExpense)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Expense) contextValidateUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "unit", "body", string(m.Unit)); err != nil {
 		return err
 	}
 

@@ -41,7 +41,6 @@ func (o *GetRegionReader) ReadResponse(response runtime.ClientResponse, consumer
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetRegionOK() *GetRegionOK {
 	return &GetRegionOK{}
 }
 
-/*GetRegionOK handles this case with default header values.
+/* GetRegionOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type GetRegionOK struct {
 func (o *GetRegionOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/regions/{id}][%d] getRegionOK  %+v", 200, o.Payload)
 }
-
 func (o *GetRegionOK) GetPayload() *models.Region {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewGetRegionForbidden() *GetRegionForbidden {
 	return &GetRegionForbidden{}
 }
 
-/*GetRegionForbidden handles this case with default header values.
+/* GetRegionForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetRegionForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetRegionForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/regions/{id}][%d] getRegionForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/regions/{id}][%d] getRegionForbidden  %+v", 403, o.Payload)
+}
+func (o *GetRegionForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetRegionForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewGetRegionNotFound() *GetRegionNotFound {
 	return &GetRegionNotFound{}
 }
 
-/*GetRegionNotFound handles this case with default header values.
+/* GetRegionNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type GetRegionNotFound struct {
 func (o *GetRegionNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/regions/{id}][%d] getRegionNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetRegionNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

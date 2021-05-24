@@ -17,89 +17,109 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewResizeMachineParams creates a new ResizeMachineParams object
-// with the default values initialized.
+// NewResizeMachineParams creates a new ResizeMachineParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewResizeMachineParams() *ResizeMachineParams {
-	var ()
 	return &ResizeMachineParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewResizeMachineParamsWithTimeout creates a new ResizeMachineParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewResizeMachineParamsWithTimeout(timeout time.Duration) *ResizeMachineParams {
-	var ()
 	return &ResizeMachineParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewResizeMachineParamsWithContext creates a new ResizeMachineParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewResizeMachineParamsWithContext(ctx context.Context) *ResizeMachineParams {
-	var ()
 	return &ResizeMachineParams{
-
 		Context: ctx,
 	}
 }
 
 // NewResizeMachineParamsWithHTTPClient creates a new ResizeMachineParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewResizeMachineParamsWithHTTPClient(client *http.Client) *ResizeMachineParams {
-	var ()
 	return &ResizeMachineParams{
 		HTTPClient: client,
 	}
 }
 
-/*ResizeMachineParams contains all the parameters to send to the API endpoint
-for the resize machine operation typically these are written to a http.Request
+/* ResizeMachineParams contains all the parameters to send to the API endpoint
+   for the resize machine operation.
+
+   Typically these are written to a http.Request.
 */
 type ResizeMachineParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*CoreCount
-	  The desired number of cores per socket to resize the Machine
 
+	/* CoreCount.
+
+	   The desired number of cores per socket to resize the Machine
 	*/
 	CoreCount *string
-	/*CPUCount
-	  The desired number of CPUs to resize the Machine
 
+	/* CPUCount.
+
+	   The desired number of CPUs to resize the Machine
 	*/
 	CPUCount *string
-	/*ID
-	  The id of the Machine.
 
+	/* ID.
+
+	   The id of the Machine.
 	*/
 	ID string
-	/*MemoryInMB
-	  The desired memory in MBs to resize the Machine
 
+	/* MemoryInMB.
+
+	   The desired memory in MBs to resize the Machine
 	*/
 	MemoryInMB *string
-	/*Name
-	  The desired flavor to resize the Machine.
 
+	/* Name.
+
+	   The desired flavor to resize the Machine.
 	*/
 	Name *string
-	/*RebootMachine
-	  Only applicable for vSphere VMs with the Hot Add option enabled. If set to false, VM is resized without reboot.
 
+	/* RebootMachine.
+
+	   Only applicable for vSphere VMs with the Hot Add option enabled. If set to false, VM is resized without reboot.
 	*/
 	RebootMachine *bool
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the resize machine params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ResizeMachineParams) WithDefaults() *ResizeMachineParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the resize machine params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ResizeMachineParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the resize machine params
@@ -224,48 +244,51 @@ func (o *ResizeMachineParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.CoreCount != nil {
 
 		// query param coreCount
 		var qrCoreCount string
+
 		if o.CoreCount != nil {
 			qrCoreCount = *o.CoreCount
 		}
 		qCoreCount := qrCoreCount
 		if qCoreCount != "" {
+
 			if err := r.SetQueryParam("coreCount", qCoreCount); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.CPUCount != nil {
 
 		// query param cpuCount
 		var qrCPUCount string
+
 		if o.CPUCount != nil {
 			qrCPUCount = *o.CPUCount
 		}
 		qCPUCount := qrCPUCount
 		if qCPUCount != "" {
+
 			if err := r.SetQueryParam("cpuCount", qCPUCount); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id
@@ -277,48 +300,51 @@ func (o *ResizeMachineParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 
 		// query param memoryInMB
 		var qrMemoryInMB string
+
 		if o.MemoryInMB != nil {
 			qrMemoryInMB = *o.MemoryInMB
 		}
 		qMemoryInMB := qrMemoryInMB
 		if qMemoryInMB != "" {
+
 			if err := r.SetQueryParam("memoryInMB", qMemoryInMB); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Name != nil {
 
 		// query param name
 		var qrName string
+
 		if o.Name != nil {
 			qrName = *o.Name
 		}
 		qName := qrName
 		if qName != "" {
+
 			if err := r.SetQueryParam("name", qName); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.RebootMachine != nil {
 
 		// query param rebootMachine
 		var qrRebootMachine bool
+
 		if o.RebootMachine != nil {
 			qrRebootMachine = *o.RebootMachine
 		}
 		qRebootMachine := swag.FormatBool(qrRebootMachine)
 		if qRebootMachine != "" {
+
 			if err := r.SetQueryParam("rebootMachine", qRebootMachine); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

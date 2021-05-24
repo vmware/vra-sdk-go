@@ -16,64 +16,79 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetBlockDeviceParams creates a new GetBlockDeviceParams object
-// with the default values initialized.
+// NewGetBlockDeviceParams creates a new GetBlockDeviceParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetBlockDeviceParams() *GetBlockDeviceParams {
-	var ()
 	return &GetBlockDeviceParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetBlockDeviceParamsWithTimeout creates a new GetBlockDeviceParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetBlockDeviceParamsWithTimeout(timeout time.Duration) *GetBlockDeviceParams {
-	var ()
 	return &GetBlockDeviceParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetBlockDeviceParamsWithContext creates a new GetBlockDeviceParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetBlockDeviceParamsWithContext(ctx context.Context) *GetBlockDeviceParams {
-	var ()
 	return &GetBlockDeviceParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetBlockDeviceParamsWithHTTPClient creates a new GetBlockDeviceParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetBlockDeviceParamsWithHTTPClient(client *http.Client) *GetBlockDeviceParams {
-	var ()
 	return &GetBlockDeviceParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetBlockDeviceParams contains all the parameters to send to the API endpoint
-for the get block device operation typically these are written to a http.Request
+/* GetBlockDeviceParams contains all the parameters to send to the API endpoint
+   for the get block device operation.
+
+   Typically these are written to a http.Request.
 */
 type GetBlockDeviceParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*ID
-	  The ID of the block device.
 
+	/* ID.
+
+	   The ID of the block device.
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get block device params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetBlockDeviceParams) WithDefaults() *GetBlockDeviceParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get block device params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetBlockDeviceParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get block device params
@@ -143,16 +158,17 @@ func (o *GetBlockDeviceParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id

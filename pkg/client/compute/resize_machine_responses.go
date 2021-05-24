@@ -41,7 +41,6 @@ func (o *ResizeMachineReader) ReadResponse(response runtime.ClientResponse, cons
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewResizeMachineAccepted() *ResizeMachineAccepted {
 	return &ResizeMachineAccepted{}
 }
 
-/*ResizeMachineAccepted handles this case with default header values.
+/* ResizeMachineAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type ResizeMachineAccepted struct {
 func (o *ResizeMachineAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/resize][%d] resizeMachineAccepted  %+v", 202, o.Payload)
 }
-
 func (o *ResizeMachineAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewResizeMachineForbidden() *ResizeMachineForbidden {
 	return &ResizeMachineForbidden{}
 }
 
-/*ResizeMachineForbidden handles this case with default header values.
+/* ResizeMachineForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type ResizeMachineForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *ResizeMachineForbidden) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/resize][%d] resizeMachineForbidden ", 403)
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/resize][%d] resizeMachineForbidden  %+v", 403, o.Payload)
+}
+func (o *ResizeMachineForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *ResizeMachineForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewResizeMachineNotFound() *ResizeMachineNotFound {
 	return &ResizeMachineNotFound{}
 }
 
-/*ResizeMachineNotFound handles this case with default header values.
+/* ResizeMachineNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type ResizeMachineNotFound struct {
 func (o *ResizeMachineNotFound) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/resize][%d] resizeMachineNotFound  %+v", 404, o.Payload)
 }
-
 func (o *ResizeMachineNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

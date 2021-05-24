@@ -47,7 +47,6 @@ func (o *UpdateBlueprintUsingPUT1Reader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewUpdateBlueprintUsingPUT1OK() *UpdateBlueprintUsingPUT1OK {
 	return &UpdateBlueprintUsingPUT1OK{}
 }
 
-/*UpdateBlueprintUsingPUT1OK handles this case with default header values.
+/* UpdateBlueprintUsingPUT1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -69,7 +68,6 @@ type UpdateBlueprintUsingPUT1OK struct {
 func (o *UpdateBlueprintUsingPUT1OK) Error() string {
 	return fmt.Sprintf("[PUT /blueprint/api/blueprints/{blueprintId}][%d] updateBlueprintUsingPUT1OK  %+v", 200, o.Payload)
 }
-
 func (o *UpdateBlueprintUsingPUT1OK) GetPayload() *models.Blueprint {
 	return o.Payload
 }
@@ -91,7 +89,7 @@ func NewUpdateBlueprintUsingPUT1Unauthorized() *UpdateBlueprintUsingPUT1Unauthor
 	return &UpdateBlueprintUsingPUT1Unauthorized{}
 }
 
-/*UpdateBlueprintUsingPUT1Unauthorized handles this case with default header values.
+/* UpdateBlueprintUsingPUT1Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -112,7 +110,7 @@ func NewUpdateBlueprintUsingPUT1Forbidden() *UpdateBlueprintUsingPUT1Forbidden {
 	return &UpdateBlueprintUsingPUT1Forbidden{}
 }
 
-/*UpdateBlueprintUsingPUT1Forbidden handles this case with default header values.
+/* UpdateBlueprintUsingPUT1Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -133,7 +131,7 @@ func NewUpdateBlueprintUsingPUT1NotFound() *UpdateBlueprintUsingPUT1NotFound {
 	return &UpdateBlueprintUsingPUT1NotFound{}
 }
 
-/*UpdateBlueprintUsingPUT1NotFound handles this case with default header values.
+/* UpdateBlueprintUsingPUT1NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -144,7 +142,6 @@ type UpdateBlueprintUsingPUT1NotFound struct {
 func (o *UpdateBlueprintUsingPUT1NotFound) Error() string {
 	return fmt.Sprintf("[PUT /blueprint/api/blueprints/{blueprintId}][%d] updateBlueprintUsingPUT1NotFound  %+v", 404, o.Payload)
 }
-
 func (o *UpdateBlueprintUsingPUT1NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

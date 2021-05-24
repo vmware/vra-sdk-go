@@ -18,6 +18,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -66,9 +69,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -135,7 +144,7 @@
                     "application/json",
                     "app/json"
                 ],
-                "description": "Second day promote operation on disk",
+                "description": "Second day promote operation on disk. Applicable for vSphere Block Devices only",
                 "operationId": "PromoteDisk",
                 "responses": {
                     "202": {
@@ -145,9 +154,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -189,9 +204,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -233,6 +254,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -267,6 +291,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -301,6 +328,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -320,13 +350,13 @@
         },
         "/iaas/api/block-devices/{id}/operations/snapshots": {
             "post": {
-                "summary": "Create snapshot operation for first class disk",
+                "summary": "Create snapshot operation for Block Device",
                 "produces": [
                     "application/json",
                     "app/json"
                 ],
-                "description": "Second day create snapshot operation for first class disk",
-                "operationId": "createFirstClassDiskSnapshot",
+                "description": "Second day create snapshot operation for Block device",
+                "operationId": "createBlockDeviceSnapshot",
                 "responses": {
                     "202": {
                         "schema": {
@@ -338,6 +368,9 @@
                         "description": "No Content"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -388,9 +421,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -432,6 +471,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -466,9 +508,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -517,9 +565,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -556,6 +610,9 @@
                         "description": "No Content"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -597,9 +654,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -615,6 +678,13 @@
                         "in": "query",
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$select",
+                        "description": "Select a subset of properties to include in the response.",
                         "type": "string",
                         "required": false
                     }
@@ -641,9 +711,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -685,6 +761,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -754,9 +833,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -798,6 +883,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -832,9 +920,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -850,6 +944,13 @@
                         "in": "query",
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$select",
+                        "description": "Select a subset of properties to include in the response.",
                         "type": "string",
                         "required": false
                     }
@@ -876,9 +977,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -927,9 +1034,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -972,6 +1085,9 @@
                         "description": "No Content"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -1020,9 +1136,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -1064,9 +1186,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -1108,6 +1236,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -1116,6 +1247,41 @@
                         "in": "query",
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$top",
+                        "description": "Number of records you want to get.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$skip",
+                        "description": "Number of records you want to skip.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$count",
+                        "description": "Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
+                        "type": "boolean",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$select",
+                        "description": "Select a subset of properties to include in the response.",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$filter",
+                        "description": "Filter the results by a specified predicate expression. Operators: eq, ne, and, or.",
                         "type": "string",
                         "required": false
                     }
@@ -1142,12 +1308,21 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Input(s) not Found"
                     }
                 },
@@ -1189,6 +1364,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -1223,9 +1401,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -1265,6 +1449,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -1313,9 +1500,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -1357,9 +1550,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -1401,6 +1600,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -1415,20 +1617,20 @@
                     {
                         "in": "query",
                         "name": "$top",
-                        "description": "Number of records you want",
+                        "description": "Number of records you want to get.",
                         "type": "integer",
                         "required": false
                     },
                     {
                         "in": "query",
                         "name": "$skip",
-                        "description": "Number of records you want to skip",
+                        "description": "Number of records you want to skip.",
                         "type": "integer",
                         "required": false
                     },
                     {
                         "in": "query",
-                        "name": "orderBy",
+                        "name": "$orderBy",
                         "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
                         "type": "string",
                         "required": false
@@ -1436,7 +1638,7 @@
                     {
                         "in": "query",
                         "name": "$count",
-                        "description": "Total number of records. If the collection has a filter, the number of records matching the filter",
+                        "description": "Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
                         "type": "boolean",
                         "required": false
                     },
@@ -1444,7 +1646,7 @@
                         "in": "query",
                         "name": "$filter",
                         "description": "Filter the results by a specified predicate expression. A set of operators and functions are defined for use:\nOperators: eq, ne, gt, ge, lt, le, and, or, not.\nFunctions:\nbool substringof(string p0, string p1)\nbool endswith(string p0, string p1)\nbool startswith(string p0, string p1)\nint length(string p0)\nint indexof(string p0, string p1)\nstring replace(string p0, string find, string replace)\nstring substring(string p0, int pos)\nstring substring(string p0, int pos, int length)\nstring tolower(string p0)\nstring toupper(string p0)\nstring trim(string p0)\nstring concat(string p0, string p1)",
-                        "type": "boolean",
+                        "type": "string",
                         "required": false
                     }
                 ],
@@ -1470,9 +1672,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -1514,6 +1722,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -1522,6 +1733,41 @@
                         "in": "query",
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$top",
+                        "description": "Number of records you want to get.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$skip",
+                        "description": "Number of records you want to skip.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$count",
+                        "description": "Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
+                        "type": "boolean",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$select",
+                        "description": "Select a subset of properties to include in the response.",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$filter",
+                        "description": "Filter the results by a specified predicate expression. Operators: eq, ne, and, or.",
                         "type": "string",
                         "required": false
                     }
@@ -1548,9 +1794,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -1599,9 +1851,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -1617,6 +1875,13 @@
                         "in": "query",
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$select",
+                        "description": "Select a subset of properties to include in the response.",
                         "type": "string",
                         "required": false
                     }
@@ -1641,6 +1906,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -1689,9 +1957,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -1735,9 +2009,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -1779,6 +2059,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -1813,12 +2096,21 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -1867,9 +2159,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -1911,6 +2209,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -1919,6 +2220,34 @@
                         "in": "query",
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$top",
+                        "description": "Number of records you want to get.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$skip",
+                        "description": "Number of records you want to skip.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$count",
+                        "description": "Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
+                        "type": "boolean",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$filter",
+                        "description": "Filter the results by a specified predicate expression. Operators: eq, ne, and, or.",
                         "type": "string",
                         "required": false
                     }
@@ -1936,14 +2265,20 @@
                 "responses": {
                     "200": {
                         "schema": {
-                            "$ref": "#/definitions/BlockDevice"
+                            "$ref": "#/definitions/DiskSnapshot"
                         },
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -1951,7 +2286,7 @@
                     {
                         "in": "path",
                         "name": "id",
-                        "description": "The ID of the machine.",
+                        "description": "The ID of the disk.",
                         "type": "string",
                         "required": true
                     },
@@ -1975,13 +2310,13 @@
                 ]
             },
             "delete": {
-                "summary": "Delete snapshot operation for first class disk",
+                "summary": "Delete snapshot operation for Block device",
                 "produces": [
                     "application/json",
                     "app/json"
                 ],
-                "description": "Second day delete snapshot operation for first class disk",
-                "operationId": "deleteFirstClassDiskSnapshot",
+                "description": "Second day delete snapshot operation for Block device",
+                "operationId": "deleteBlockDeviceSnapshot",
                 "responses": {
                     "202": {
                         "schema": {
@@ -1993,6 +2328,9 @@
                         "description": "No Content"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -2041,6 +2379,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -2075,9 +2416,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -2126,9 +2473,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -2165,6 +2518,9 @@
                         "description": "No Content"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -2206,12 +2562,21 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -2257,9 +2622,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -2302,6 +2673,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -2336,9 +2710,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -2371,6 +2751,9 @@
                         "description": "No Content"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -2410,9 +2793,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -2463,9 +2852,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -2502,6 +2897,9 @@
                         "description": "No Content"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -2543,6 +2941,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -2577,9 +2978,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -2621,9 +3028,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -2665,6 +3078,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -2699,9 +3115,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -2743,6 +3165,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -2777,9 +3202,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -2828,9 +3259,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -2867,6 +3304,9 @@
                         "description": "No Content"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -2908,6 +3348,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -2916,6 +3359,41 @@
                         "in": "query",
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$top",
+                        "description": "Number of records you want to get.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$skip",
+                        "description": "Number of records you want to skip.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$count",
+                        "description": "Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
+                        "type": "boolean",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$select",
+                        "description": "Select a subset of properties to include in the response.",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$filter",
+                        "description": "Filter the results by a specified predicate expression. Operators: eq, ne, and, or.",
                         "type": "string",
                         "required": false
                     }
@@ -2942,12 +3420,21 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Change security groups action is not supported for a machine cluster"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -2999,9 +3486,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -3050,9 +3543,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -3089,6 +3588,9 @@
                         "description": "No Content"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -3130,9 +3632,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -3181,9 +3689,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -3220,6 +3734,9 @@
                         "description": "No Content"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -3292,9 +3809,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -3344,9 +3867,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -3395,9 +3924,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -3413,6 +3948,13 @@
                         "in": "query",
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$select",
+                        "description": "Select a subset of properties to include in the response.",
                         "type": "string",
                         "required": false
                     }
@@ -3434,6 +3976,9 @@
                         "description": "No Content"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -3458,6 +4003,65 @@
                 ]
             }
         },
+        "/iaas/api/security-groups/{id}/operations/reconfigure": {
+            "post": {
+                "summary": "Reconfigure operation for security group",
+                "produces": [
+                    "application/json",
+                    "app/json"
+                ],
+                "description": "Day-2 reconfigure operation for new security groups provisioned by vRA. This is not supported for 'existing' security groups",
+                "operationId": "reconfigureSecurityGroup",
+                "responses": {
+                    "202": {
+                        "schema": {
+                            "$ref": "#/definitions/RequestTracker"
+                        },
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
+                        "description": "Reconfigure is not supported for 'existing' type of security group."
+                    },
+                    "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
+                        "description": "Forbidden"
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "$ref": "#/definitions/SecurityGroupSpecification"
+                        },
+                        "in": "body",
+                        "name": "body",
+                        "description": "Security group Specification instance",
+                        "required": true
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The ID of the security group.",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "apiVersion",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
+                        "type": "string",
+                        "required": false
+                    }
+                ],
+                "tags": [
+                    "Security Group"
+                ]
+            }
+        },
         "/iaas/api/deployments": {
             "post": {
                 "summary": "Create deployment",
@@ -3475,9 +4079,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -3522,6 +4132,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -3530,6 +4143,34 @@
                         "in": "query",
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$top",
+                        "description": "Number of records you want to get.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$skip",
+                        "description": "Number of records you want to skip.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$count",
+                        "description": "Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
+                        "type": "boolean",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$filter",
+                        "description": "Filter the results by a specified predicate expression. Operators: eq, ne, and, or.",
                         "type": "string",
                         "required": false
                     }
@@ -3556,6 +4197,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -3590,9 +4234,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -3641,9 +4291,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -3676,6 +4332,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -3717,9 +4376,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -3768,9 +4433,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -3807,6 +4478,9 @@
                         "description": "No Content"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -3848,9 +4522,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -3892,6 +4572,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -3926,9 +4609,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -3977,9 +4666,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -4012,6 +4707,9 @@
                         "description": "No Content"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -4053,9 +4751,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -4088,6 +4792,9 @@
                         "description": "No Content"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -4114,12 +4821,12 @@
         },
         "/iaas/api/block-devices/{id}/operations/revert": {
             "post": {
-                "summary": "Revert snapshot operation for disk",
+                "summary": "Revert snapshot operation for Block device",
                 "produces": [
                     "application/json",
                     "app/json"
                 ],
-                "description": "Second day revert snapshot operation for disk",
+                "description": "Second day revert snapshot operation for Block device",
                 "operationId": "revertDiskSnapshot",
                 "responses": {
                     "202": {
@@ -4129,9 +4836,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -4180,9 +4893,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -4222,6 +4941,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -4270,9 +4992,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -4316,9 +5044,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -4367,9 +5101,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -4411,9 +5151,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -4455,6 +5201,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -4489,9 +5238,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -4540,9 +5295,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -4579,6 +5340,9 @@
                         "description": "No Content"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -4603,6 +5367,65 @@
                 ]
             }
         },
+        "/iaas/api/compute-gateways/{id}/operations/reconfigure": {
+            "post": {
+                "summary": "Deprecated: Reconfigure operation for compute gateway",
+                "produces": [
+                    "application/json",
+                    "app/json"
+                ],
+                "description": "Deprecated: Day-2 reconfigure operation for compute gateway. Use Day-2 reconfigure operation on compute nat resource instead.",
+                "operationId": "reconfigureComputeGateway",
+                "responses": {
+                    "202": {
+                        "schema": {
+                            "$ref": "#/definitions/RequestTracker"
+                        },
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
+                        "description": "NAT rules cannot be null"
+                    },
+                    "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
+                        "description": "Forbidden"
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "$ref": "#/definitions/ReconfigureComputeGatewaySpecification"
+                        },
+                        "in": "body",
+                        "name": "body",
+                        "description": "Reconfigure Compute Gateway Specification instance",
+                        "required": true
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The ID of the Compute Gateway",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "apiVersion",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
+                        "type": "string",
+                        "required": false
+                    }
+                ],
+                "tags": [
+                    "Compute Gateway"
+                ]
+            }
+        },
         "/iaas/api/machines/{id}/disks/{id1}": {
             "get": {
                 "summary": "Get machine disk",
@@ -4616,9 +5439,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -4662,6 +5491,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -4711,9 +5543,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -4755,6 +5593,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -4789,9 +5630,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -4835,9 +5682,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -4879,6 +5732,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -4913,9 +5769,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -4957,6 +5819,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -4966,6 +5831,34 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$top",
+                        "description": "Number of records you want to get.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$skip",
+                        "description": "Number of records you want to skip.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$count",
+                        "description": "Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
+                        "type": "boolean",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$filter",
+                        "description": "Filter the results by a specified predicate expression. Only 'ne', 'eq', 'and' & 'or' are supported at this time",
+                        "type": "boolean",
                         "required": false
                     }
                 ],
@@ -4991,9 +5884,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -5035,6 +5934,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -5049,6 +5951,65 @@
                 ],
                 "tags": [
                     "Cloud Account"
+                ]
+            }
+        },
+        "/iaas/api/compute-nats/{id}/operations/reconfigure": {
+            "post": {
+                "summary": "Reconfigure operation for nat",
+                "produces": [
+                    "application/json",
+                    "app/json"
+                ],
+                "description": "Day-2 reconfigure operation for nat",
+                "operationId": "reconfigureNat",
+                "responses": {
+                    "202": {
+                        "schema": {
+                            "$ref": "#/definitions/RequestTracker"
+                        },
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
+                        "description": "NAT rules cannot be null"
+                    },
+                    "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
+                        "description": "Forbidden"
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "$ref": "#/definitions/ReconfigureComputeNatSpecification"
+                        },
+                        "in": "body",
+                        "name": "body",
+                        "description": "Reconfigure compute nat specification instance",
+                        "required": true
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The ID of the Compute Nat",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "apiVersion",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
+                        "type": "string",
+                        "required": false
+                    }
+                ],
+                "tags": [
+                    "Compute Nat"
                 ]
             }
         },
@@ -5069,9 +6030,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -5113,9 +6080,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -5164,9 +6137,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -5203,6 +6182,9 @@
                         "description": "No Content"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -5244,9 +6226,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -5295,9 +6283,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -5313,6 +6307,13 @@
                         "in": "query",
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$select",
+                        "description": "Select a subset of properties to include in the response.",
                         "type": "string",
                         "required": false
                     }
@@ -5374,9 +6375,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -5427,9 +6434,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -5506,9 +6519,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -5557,9 +6576,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -5596,6 +6621,9 @@
                         "description": "No Content"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -5636,9 +6664,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -5683,6 +6717,9 @@
                         "description": "No Content"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -5730,9 +6767,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -5775,6 +6818,9 @@
                         "description": "No Content"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -5830,9 +6876,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -5874,9 +6926,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -5920,9 +6978,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -5940,10 +7004,116 @@
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
                         "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$select",
+                        "description": "Select a subset of properties to include in the response.",
+                        "type": "string",
+                        "required": false
                     }
                 ],
                 "tags": [
                     "Fabric vSphere Storage Policies"
+                ]
+            }
+        },
+        "/iaas/api/compute-nats/{id}": {
+            "get": {
+                "summary": "Get a Compute Nat",
+                "produces": [
+                    "application/json",
+                    "app/json"
+                ],
+                "description": "Get Compute Nat with a given id",
+                "operationId": "getComputeNat",
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/ComputeNat"
+                        },
+                        "description": "successful operation"
+                    },
+                    "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
+                        "description": "Not Found"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The ID of the Compute Nat resource.",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "apiVersion",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
+                        "type": "string",
+                        "required": false
+                    }
+                ],
+                "tags": [
+                    "Compute Nat"
+                ]
+            },
+            "delete": {
+                "summary": "Delete a compute nat",
+                "produces": [
+                    "application/json",
+                    "app/json"
+                ],
+                "description": "Delete compute nat with a given id",
+                "operationId": "deleteComputeNat",
+                "responses": {
+                    "202": {
+                        "schema": {
+                            "$ref": "#/definitions/RequestTracker"
+                        },
+                        "description": "successful operation"
+                    },
+                    "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
+                        "description": "Forbidden"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The ID of the compute nat resource.",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "forceDelete",
+                        "description": "Controls whether this is a force delete operation. If true, best effort is made for deleting this nat. Use with caution as force deleting may cause inconsistencies between the cloud provider and vRA.",
+                        "type": "boolean",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "apiVersion",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
+                        "type": "string",
+                        "required": false
+                    }
+                ],
+                "tags": [
+                    "Compute Nat"
                 ]
             }
         },
@@ -5964,9 +7134,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -6017,9 +7193,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -6068,9 +7250,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -6107,6 +7295,9 @@
                         "description": "No Content"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -6148,9 +7339,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -6192,6 +7389,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -6226,9 +7426,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -6268,6 +7474,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -6278,6 +7487,13 @@
                         "description": "The id of the deployment.",
                         "type": "string",
                         "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "forceDelete",
+                        "description": "If true, best effort is made for deleting this deployment and all related resources. In some situations, this may leave provisioned infrastructure resources behind. Please ensure you remove them manually. If false, a standard delete action will be executed.",
+                        "type": "boolean",
+                        "required": false
                     },
                     {
                         "in": "query",
@@ -6309,9 +7525,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -6351,6 +7573,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -6399,9 +7624,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -6445,9 +7676,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -6489,6 +7726,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -6523,9 +7763,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -6604,6 +7850,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -6612,6 +7861,41 @@
                         "in": "query",
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$top",
+                        "description": "Number of records you want to get.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$skip",
+                        "description": "Number of records you want to skip.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$count",
+                        "description": "Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
+                        "type": "boolean",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$select",
+                        "description": "Select a subset of properties to include in the response.",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$filter",
+                        "description": "Filter the results by a specified predicate expression. Operators: eq, ne, and, or.",
                         "type": "string",
                         "required": false
                     }
@@ -6638,9 +7922,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -6682,9 +7972,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -6726,6 +8022,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -6760,9 +8059,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -6811,9 +8116,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -6829,6 +8140,13 @@
                         "in": "query",
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$select",
+                        "description": "Select a subset of properties to include in the response.",
                         "type": "string",
                         "required": false
                     }
@@ -6855,9 +8173,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -6899,6 +8223,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -6924,9 +8251,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -6968,6 +8301,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -6998,9 +8334,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -7047,6 +8389,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -7130,9 +8475,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -7181,9 +8532,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -7220,6 +8577,9 @@
                         "description": "No Content"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -7261,6 +8621,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -7269,6 +8632,41 @@
                         "in": "query",
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$top",
+                        "description": "Number of records you want to get.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$skip",
+                        "description": "Number of records you want to skip.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$count",
+                        "description": "Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
+                        "type": "boolean",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$select",
+                        "description": "Select a subset of properties to include in the response.",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$filter",
+                        "description": "Filter the results by a specified predicate expression. Operators: eq, ne, and, or.",
                         "type": "string",
                         "required": false
                     }
@@ -7295,9 +8693,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -7339,6 +8743,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -7373,9 +8780,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -7424,9 +8837,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -7468,9 +8887,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -7512,6 +8937,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -7539,16 +8967,22 @@
                 "description": "Creates an internal network IP range.",
                 "operationId": "createInternalNetworkIPRange",
                 "responses": {
-                    "202": {
+                    "201": {
                         "schema": {
-                            "$ref": "#/definitions/RequestTracker"
+                            "$ref": "#/definitions/NetworkIPRange"
                         },
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -7590,9 +9024,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -7627,9 +9067,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -7673,6 +9119,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -7707,9 +9156,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -7725,6 +9180,13 @@
                         "in": "query",
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$select",
+                        "description": "Select a subset of properties to include in the response.",
                         "type": "string",
                         "required": false
                     }
@@ -7751,6 +9213,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -7759,6 +9224,41 @@
                         "in": "query",
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$top",
+                        "description": "Number of records you want to get.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$skip",
+                        "description": "Number of records you want to skip.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$count",
+                        "description": "Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
+                        "type": "boolean",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$select",
+                        "description": "Select a subset of properties to include in the response.",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$filter",
+                        "description": "Filter the results by a specified predicate expression. Operators: eq, ne, and, or.",
                         "type": "string",
                         "required": false
                     }
@@ -7785,9 +9285,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -7836,9 +9342,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -7875,6 +9387,9 @@
                         "description": "No Content"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -7916,9 +9431,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -7967,9 +9488,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -8002,6 +9529,9 @@
                         "description": "No Content"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -8043,9 +9573,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -8087,6 +9623,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -8121,9 +9660,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -8172,9 +9717,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -8207,6 +9758,9 @@
                         "description": "No Content"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -8248,6 +9802,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -8256,6 +9813,41 @@
                         "in": "query",
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$top",
+                        "description": "Number of records you want to get.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$skip",
+                        "description": "Number of records you want to skip.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$count",
+                        "description": "Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
+                        "type": "boolean",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$select",
+                        "description": "Select a subset of properties to include in the response.",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$filter",
+                        "description": "Filter the results by a specified predicate expression. Operators: eq, ne, and, or.",
                         "type": "string",
                         "required": false
                     }
@@ -8282,9 +9874,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -8326,9 +9924,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -8372,9 +9976,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -8416,6 +10026,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -8430,6 +10043,93 @@
                 ],
                 "tags": [
                     "Cloud Account"
+                ]
+            }
+        },
+        "/iaas/api/compute-nats": {
+            "post": {
+                "summary": "Create a Compute Nat",
+                "produces": [
+                    "application/json",
+                    "app/json"
+                ],
+                "description": "Create a new Compute Nat. ",
+                "operationId": "createComputeNat",
+                "responses": {
+                    "202": {
+                        "schema": {
+                            "$ref": "#/definitions/RequestTracker"
+                        },
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
+                        "description": "Invalid Request - bad data"
+                    },
+                    "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
+                        "description": "Forbidden"
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "$ref": "#/definitions/ComputeNatSpecification"
+                        },
+                        "in": "body",
+                        "name": "body",
+                        "description": "Compute Nat Specification instance",
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "apiVersion",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
+                        "type": "string",
+                        "required": false
+                    }
+                ],
+                "tags": [
+                    "Compute Nat"
+                ]
+            },
+            "get": {
+                "summary": "Get Compute Nats",
+                "produces": [
+                    "application/json",
+                    "app/json"
+                ],
+                "description": "Get all Compute Nats",
+                "operationId": "getComputeNats",
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/ComputeNatResult"
+                        },
+                        "description": "successful operation"
+                    },
+                    "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
+                        "description": "Forbidden"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "apiVersion",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
+                        "type": "string",
+                        "required": false
+                    }
+                ],
+                "tags": [
+                    "Compute Nat"
                 ]
             }
         },
@@ -8485,9 +10185,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -8529,6 +10235,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -8563,9 +10272,15 @@
                         "description": "successful operation"
                     },
                     "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Invalid Request - bad data"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -8614,9 +10329,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -8653,9 +10374,15 @@
                         "description": "No Content"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "409": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Conflict, when the project is in use"
                     }
                 },
@@ -8697,6 +10424,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -8731,6 +10461,9 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -8739,6 +10472,41 @@
                         "in": "query",
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$top",
+                        "description": "Number of records you want to get.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$skip",
+                        "description": "Number of records you want to skip.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$count",
+                        "description": "Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
+                        "type": "boolean",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$select",
+                        "description": "Select a subset of properties to include in the response.",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$filter",
+                        "description": "Filter the results by a specified predicate expression. Operators: eq, ne, and, or.",
                         "type": "string",
                         "required": false
                     }
@@ -8761,9 +10529,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -8811,9 +10585,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -8855,9 +10635,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -8906,9 +10692,15 @@
                         "description": "successful operation"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     },
                     "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Not Found"
                     }
                 },
@@ -8945,6 +10737,9 @@
                         "description": "No Content"
                     },
                     "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
                         "description": "Forbidden"
                     }
                 },
@@ -8970,7 +10765,7 @@
             }
         }
     },
-    "host": "api.mgmt.cloud.vmware.com",
+    "host": "cava-r-90-055.eng.vmware.com",
     "schemes": [
         "https"
     ],
@@ -9072,7 +10867,7 @@
                         "$ref": "#/definitions/FabricImageDescription"
                     },
                     "type": "object",
-                    "example": "{ \"ubuntu\": { \"id\": \"9e49\", \"name\": \"ami-ubuntu-16.04-1.9.1-00-1516139717\"}, \"coreos\": { \"id\": \"9e50\", \"name\": \"ami-coreos-26.04-1.9.1-00-543254235\"}}"
+                    "example": "{ \"ubuntu\": { \"id\": \"9e49\", \"name\": \"ami-ubuntu-16.04-1.9.1-00-1516139717\"}, \"centos\": { \"id\": \"9e50\", \"name\": \"ami-centos-7-1.13.0-00-1543963388\"}}"
                 },
                 "name": {
                     "description": "A human-friendly name used as an identifier in APIs that support this option.",
@@ -9088,10 +10883,21 @@
             "description": "Specification for Disk Snapshot creation request.",
             "type": "object",
             "properties": {
+                "name": {
+                    "description": "A human-friendly name used as an identifier in APIs that support this option.",
+                    "type": "string"
+                },
                 "description": {
                     "description": "A human-friendly description.",
-                    "type": "string",
-                    "example": "a snapshot description"
+                    "type": "string"
+                },
+                "snapshotProperties": {
+                    "description": "Cloud specific snapshot properties supplied in as name value pairs",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "type": "object",
+                    "example": "{\"incremental\": \"true\","
                 }
             }
         },
@@ -9257,6 +11063,12 @@
         "UpdateCloudAccountAwsSpecification": {
             "type": "object",
             "properties": {
+                "accessKeyId": {
+                    "type": "string"
+                },
+                "secretAccessKey": {
+                    "type": "string"
+                },
                 "createDefaultZones": {
                     "description": "Create default cloud zones for the enabled regions.",
                     "type": "boolean",
@@ -9300,6 +11112,11 @@
                     "type": "string",
                     "example": "1298765"
                 },
+                "scsiController": {
+                    "description": "The SCSI controller to be assigned",
+                    "type": "string",
+                    "example": "SCSI_Controller_0, SCSI_Controller_1, SCSI_Controller_2, SCSI_Controller_3"
+                },
                 "name": {
                     "description": "A human-friendly name used as an identifier in APIs that support this option.",
                     "type": "string"
@@ -9307,6 +11124,11 @@
                 "description": {
                     "description": "A human-friendly description.",
                     "type": "string"
+                },
+                "unitNumber": {
+                    "description": "The Unit Number to be assigned",
+                    "type": "string",
+                    "example": "0"
                 }
             }
         },
@@ -9559,6 +11381,49 @@
                 }
             }
         },
+        "ComputeNatSpecification": {
+            "type": "object",
+            "required": [
+                "gateway",
+                "name",
+                "natRules",
+                "projectId"
+            ],
+            "properties": {
+                "customProperties": {
+                    "description": "Additional custom properties that may be used to extend this resource.",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "type": "object"
+                },
+                "deploymentId": {
+                    "description": "The id of the deployment that is associated with this resource",
+                    "type": "string",
+                    "example": "123e4567-e89b-12d3-a456-426655440000"
+                },
+                "name": {
+                    "description": "A human-friendly name used as an identifier in APIs that support this option.",
+                    "type": "string"
+                },
+                "natRules": {
+                    "description": "List of NAT Rules",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/NatRule"
+                    }
+                },
+                "projectId": {
+                    "description": "The id of the project the current user belongs to.",
+                    "type": "string",
+                    "example": "e058"
+                },
+                "gateway": {
+                    "description": "Id of the Compute Gateway to which the Compute Nat resource will be attached",
+                    "type": "string"
+                }
+            }
+        },
         "UpdateCloudAccountNsxVSpecification": {
             "type": "object",
             "properties": {
@@ -9773,7 +11638,7 @@
                     "type": "string"
                 },
                 "dcId": {
-                    "description": "Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors",
+                    "description": "Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors.\nNote: Data collector endpoints are not available in vRA on-prem release.",
                     "type": "string",
                     "example": "23959a1e-18bc-4f0c-ac49-b5aeb4b6eef4"
                 },
@@ -9805,7 +11670,7 @@
                     }
                 },
                 "customProperties": {
-                    "description": "Additional custom properties that may be used to extend the load balancer.",
+                    "description": "Additional custom properties that may be used to extend this resource.",
                     "additionalProperties": {
                         "type": "string"
                     },
@@ -10085,7 +11950,7 @@
                     "example": true
                 },
                 "dcid": {
-                    "description": "Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors",
+                    "description": "Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors.\nNote: Data collector endpoints are not available in vRA on-prem release.",
                     "type": "string",
                     "example": "23959a1e-18bc-4f0c-ac49-b5aeb4b6eef4"
                 },
@@ -10252,6 +12117,14 @@
                     "type": "string",
                     "example": "${project.name}-test-${####}"
                 },
+                "customProperties": {
+                    "description": "The project custom properties which are added to all requests in this project",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "type": "object",
+                    "example": "{ \"property\" : \"value\" }"
+                },
                 "sharedResources": {
                     "description": "Specifies whether the resources in this projects are shared or not.",
                     "type": "boolean"
@@ -10268,6 +12141,11 @@
                     "description": "A human-friendly name used as an identifier in APIs that support this option.",
                     "type": "string",
                     "example": "my-name"
+                },
+                "placementPolicy": {
+                    "description": "Placement policy for the project. Determines how a zone will be selected for provisioning. DEFAULT or SPREAD.",
+                    "type": "string",
+                    "example": "DEFAULT"
                 },
                 "id": {
                     "description": "The id of this resource instance",
@@ -10311,6 +12189,11 @@
                     "description": "Date when the entity was created. The date is in ISO 8601 and UTC.",
                     "type": "string",
                     "example": "2012-09-27"
+                },
+                "isCurrent": {
+                    "description": "Indicates if the snapshot is the current snapshot for machine ",
+                    "type": "boolean",
+                    "example": false
                 },
                 "_links": {
                     "description": "HATEOAS of the entity",
@@ -10731,6 +12614,128 @@
                         "$ref": "#/definitions/Tag"
                     },
                     "example": "[ { \"key\" : \"tier\", \"value\": \"silver\" } ]"
+                }
+            }
+        },
+        "ComputeNat": {
+            "description": "The compute nat object is used to configure NAT rules on the Edge Gateway or Tier-1 logical router in NSX to enable port forwarding.<br>**HATEOAS** links:<br>**self** - Nat - Self link to this nat",
+            "type": "object",
+            "required": [
+                "_links",
+                "externalRegionId",
+                "externalZoneId",
+                "gateway",
+                "id",
+                "natRules"
+            ],
+            "properties": {
+                "owner": {
+                    "description": "Email of the user that owns the entity.",
+                    "type": "string",
+                    "example": "csp@vmware.com"
+                },
+                "_links": {
+                    "description": "HATEOAS of the entity",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/Href"
+                    },
+                    "type": "object"
+                },
+                "externalZoneId": {
+                    "description": "The external zoneId of the resource.",
+                    "type": "string",
+                    "example": "us-east-1a"
+                },
+                "externalRegionId": {
+                    "description": "The external regionId of the resource.",
+                    "type": "string",
+                    "example": "us-east-1"
+                },
+                "description": {
+                    "description": "A human-friendly description.",
+                    "type": "string",
+                    "example": "my-description"
+                },
+                "externalId": {
+                    "description": "External entity Id on the provider side.",
+                    "type": "string",
+                    "example": "i-cfe4-e241-e53b-756a9a2e25d2"
+                },
+                "orgId": {
+                    "description": "The id of the organization this entity belongs to.",
+                    "type": "string",
+                    "example": "9e49"
+                },
+                "tags": {
+                    "description": "A set of tag keys and optional values that were set on this resource.",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Tag"
+                    },
+                    "example": "[ { \"key\" : \"ownedBy\", \"value\": \"Rainpole\" } ]"
+                },
+                "organizationId": {
+                    "description": "This field is deprecated. Use orgId instead. The id of the organization this entity belongs to.",
+                    "type": "string",
+                    "example": "deprecated"
+                },
+                "createdAt": {
+                    "description": "Date when the entity was created. The date is in ISO 8601 and UTC.",
+                    "type": "string",
+                    "example": "2012-09-27"
+                },
+                "cloudAccountIds": {
+                    "uniqueItems": true,
+                    "description": "Set of ids of the cloud accounts this resource belongs to.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": "[9e49]"
+                },
+                "customProperties": {
+                    "description": "Additional properties that may be used to extend the base resource.",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "type": "object",
+                    "example": "{ \"property\" : \"value\" }"
+                },
+                "deploymentId": {
+                    "description": "Deployment id that is associated with this resource.",
+                    "type": "string",
+                    "example": "123e4567-e89b-12d3-a456-426655440000"
+                },
+                "name": {
+                    "description": "A human-friendly name used as an identifier in APIs that support this option.",
+                    "type": "string",
+                    "example": "my-name"
+                },
+                "id": {
+                    "description": "The id of this resource instance",
+                    "type": "string",
+                    "example": "9e49"
+                },
+                "natRules": {
+                    "description": "A list of NAT rule(s) to be created on the NSX network",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/NatRule"
+                    }
+                },
+                "projectId": {
+                    "description": "The id of the project this resource belongs to.",
+                    "type": "string",
+                    "example": "9e49"
+                },
+                "gateway": {
+                    "description": "The compute gateway to which the compute nat is attached",
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "description": "Date when the entity was last updated. The date is ISO 8601 and UTC.",
+                    "type": "string",
+                    "example": "2012-09-27"
                 }
             }
         },
@@ -11189,6 +13194,34 @@
                 }
             }
         },
+        "ComputeNatResult": {
+            "description": "State object representing a query result of compute-nats.",
+            "type": "object",
+            "properties": {
+                "numberOfElements": {
+                    "format": "int64",
+                    "description": "Number of elements in the current page",
+                    "readOnly": true,
+                    "type": "integer",
+                    "example": 1
+                },
+                "content": {
+                    "description": "List of content items",
+                    "readOnly": true,
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ComputeNat"
+                    }
+                },
+                "totalElements": {
+                    "format": "int64",
+                    "description": "Total number of elements. In some cases the field may not be populated",
+                    "readOnly": true,
+                    "type": "integer",
+                    "example": 1
+                }
+            }
+        },
         "AwsStorageProfile": {
             "description": "Defines a structure that holds list of storage policies defined for AWS for a specific region.**HATEOAS** links:<br>**region** - Region - Region for the profile.<br>**self** - AwsStorageProfile - Self link to this aws Storage Profile",
             "type": "object",
@@ -11370,6 +13403,10 @@
                     },
                     "example": "[9e49]"
                 },
+                "hostname": {
+                    "description": "Hostname associated with this machine instance.",
+                    "type": "string"
+                },
                 "customProperties": {
                     "description": "Additional properties that may be used to extend the base resource.",
                     "additionalProperties": {
@@ -11394,6 +13431,10 @@
                     "description": "Deployment id that is associated with this resource.",
                     "type": "string",
                     "example": "123e4567-e89b-12d3-a456-426655440000"
+                },
+                "bootConfig": {
+                    "description": "The cloud config data in json-escaped yaml syntax",
+                    "$ref": "#/definitions/MachineBootConfig"
                 },
                 "name": {
                     "description": "A human-friendly name used as an identifier in APIs that support this option.",
@@ -11437,12 +13478,11 @@
                     "example": "ami-0d4cfd66"
                 },
                 "customProperties": {
-                    "description": "Additional custom properties that may be used to extend the block device.",
+                    "description": "Additional custom properties that may be used to extend this resource.",
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "type": "object",
-                    "example": "{ \"key\" : \"type\", \"value\": \"HDD\" }"
+                    "type": "object"
                 },
                 "encrypted": {
                     "description": "Indicates whether the block device should be encrypted or not.",
@@ -11492,6 +13532,22 @@
                         "$ref": "#/definitions/Tag"
                     },
                     "example": "[ { \"key\" : \"location\", \"value\": \"SOF\" } ]"
+                }
+            }
+        },
+        "ReconfigureComputeGatewaySpecification": {
+            "description": "Specification for a Compute Gateway Reconfigure operation for NAT rules",
+            "type": "object",
+            "required": [
+                "natRules"
+            ],
+            "properties": {
+                "natRules": {
+                    "description": "List of NAT rules to be applied on this Compute Gateway.",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/NatRule"
+                    }
                 }
             }
         },
@@ -11742,7 +13798,7 @@
             ],
             "properties": {
                 "customProperties": {
-                    "description": "Additional custom properties that may be used to extend the network.",
+                    "description": "Additional custom properties that may be used to extend this resource.",
                     "additionalProperties": {
                         "type": "string"
                     },
@@ -11765,6 +13821,11 @@
                 "description": {
                     "description": "A human-friendly description.",
                     "type": "string"
+                },
+                "createGateway": {
+                    "description": "Flag to indicate if the network creation should create a gateway. Default is true.",
+                    "type": "boolean",
+                    "example": true
                 },
                 "projectId": {
                     "description": "The id of the project the current user belongs to.",
@@ -11936,7 +13997,7 @@
             ],
             "properties": {
                 "customProperties": {
-                    "description": "Additional custom properties that may be used to extend the group.",
+                    "description": "Additional custom properties that may be used to extend this resource.",
                     "additionalProperties": {
                         "type": "string"
                     },
@@ -12012,7 +14073,7 @@
                     "example": "[ \"42f3e0d199d134755684cd935435a\" ]"
                 },
                 "dcid": {
-                    "description": "Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors",
+                    "description": "Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors.\nNote: Data collector endpoints are not available in vRA on-prem release and hence the data collector Id is optional for vRA on-prem.",
                     "type": "string",
                     "example": "23959a1e-18bc-4f0c-ac49-b5aeb4b6eef4"
                 },
@@ -12119,6 +14180,12 @@
                     "type": "boolean",
                     "example": true
                 },
+                "clientApplicationId": {
+                    "type": "string"
+                },
+                "clientApplicationSecretKey": {
+                    "type": "string"
+                },
                 "name": {
                     "description": "A human-friendly name used as an identifier in APIs that support this option.",
                     "type": "string"
@@ -12199,7 +14266,7 @@
                     "example": "[ \"42f3e0d199d134755684cd935435a\" ]"
                 },
                 "dcid": {
-                    "description": "Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors",
+                    "description": "Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors.\nNote: Data collector endpoints are not available in vRA on-prem release and hence the data collector Id is optional for vRA on-prem.",
                     "type": "string",
                     "example": "23959a1e-18bc-4f0c-ac49-b5aeb4b6eef4"
                 },
@@ -12215,6 +14282,11 @@
                 "description": {
                     "description": "A human-friendly description.",
                     "type": "string"
+                },
+                "isGlobalManager": {
+                    "description": "Indicates whether this is an NSX-T Global Manager cloud account. NSX-T Global Manager can only be associated with NSX-T cloud accounts. Default value: false.",
+                    "type": "boolean",
+                    "example": true
                 },
                 "username": {
                     "description": "Username to authenticate with the cloud account",
@@ -12320,6 +14392,22 @@
                         "$ref": "#/definitions/Href"
                     },
                     "type": "object"
+                }
+            }
+        },
+        "ReconfigureComputeNatSpecification": {
+            "description": "Specification for a Compute Nat Reconfigure operation for NAT rules",
+            "type": "object",
+            "required": [
+                "natRules"
+            ],
+            "properties": {
+                "natRules": {
+                    "description": "List of NAT rules to be applied on this Compute Nat.",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/NatRule"
+                    }
                 }
             }
         },
@@ -12442,6 +14530,11 @@
                     "description": "Indicates the caching mechanism for OS disk. Default policy for OS disks is Read/Write.",
                     "type": "string",
                     "example": "None / ReadOnly / ReadWrite"
+                },
+                "diskEncryptionSetId": {
+                    "description": "Indicates the id of disk encryption set. ",
+                    "type": "string",
+                    "example": "/subscriptions/b8ef63/resourceGroups/DiskEncryptionSets/providers/Microsoft.Compute/diskEncryptionSets/MyDES"
                 },
                 "tags": {
                     "description": "A set of tag keys and optional values for a storage policy which define set of specifications for creating a disk.",
@@ -12669,7 +14762,7 @@
                         "$ref": "#/definitions/FabricImageDescription"
                     },
                     "type": "object",
-                    "example": "{ \"ubuntu\": { \"id\": \"9e49\", \"name\": \"ami-ubuntu-16.04-1.9.1-00-1516139717\"}, \"coreos\": { \"id\": \"9e50\", \"name\": \"ami-coreos-26.04-1.9.1-00-543254235\"}}"
+                    "example": "{ \"ubuntu\": { \"id\": \"9e49\", \"name\": \"ami-ubuntu-16.04-1.9.1-00-1516139717\"}, \"centos\": { \"id\": \"9e50\", \"name\": \"ami-centos-7-1.13.0-00-1543963388\"}}"
                 },
                 "name": {
                     "description": "A human-friendly name used as an identifier in APIs that support this option.",
@@ -12936,6 +15029,46 @@
                     "readOnly": true,
                     "type": "integer",
                     "example": 1
+                }
+            }
+        },
+        "ServiceErrorResponse": {
+            "type": "object",
+            "properties": {
+                "documentKind": {
+                    "type": "string"
+                },
+                "messageId": {
+                    "type": "string"
+                },
+                "errorCode": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "details": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "SHOULD_RETRY"
+                        ]
+                    }
+                },
+                "serverErrorId": {
+                    "type": "string"
+                },
+                "stackTrace": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "message": {
+                    "type": "string"
+                },
+                "statusCode": {
+                    "format": "int32",
+                    "type": "integer"
                 }
             }
         },
@@ -13391,10 +15524,8 @@
             "description": "NAT Rule",
             "type": "object",
             "required": [
-                "destinationPorts",
                 "index",
-                "targetLink",
-                "translatedPorts"
+                "targetLink"
             ],
             "properties": {
                 "protocol": {
@@ -13408,22 +15539,28 @@
                     "example": "any, 10.20.156.101"
                 },
                 "translatedPorts": {
-                    "description": "The machine port where the request will be forwarded",
+                    "description": "The machine port where the request will be forwarded. Default is `any`",
                     "type": "string",
                     "example": "any, 80, 5000-5100"
                 },
-                "kind": {
-                    "description": "Kind of NAT: NAT44/NAT64/NAT66. Only NAT44 is supported currently",
+                "destinationAddress": {
+                    "description": "The external IP address of the outbound or routed network",
+                    "readOnly": true,
                     "type": "string",
-                    "example": "NAT, NAT64,IPV6"
+                    "example": "any, 10.20.156.101"
+                },
+                "kind": {
+                    "description": "Kind of NAT: NAT44/NAT64/NAT66. Only NAT44 is supported currently and it is the default value",
+                    "type": "string",
+                    "example": "NAT44"
                 },
                 "targetLink": {
                     "description": "A links to target load balancer or a machine's network interface where the request will be forwarded.",
                     "type": "string",
-                    "example": "/resource/load-balancers/{id}, /resources/network-interfaces/{id}"
+                    "example": "/iaas/api/load-balancers/try6-45ef, /iaas/api/machines/ht54-a472/network-interfaces/dyd6-d67e"
                 },
                 "destinationPorts": {
-                    "description": "The edge gateway port",
+                    "description": "The edge gateway port. Default is `any`",
                     "type": "string",
                     "example": "any, 80, 5000-5100"
                 },
@@ -13441,10 +15578,15 @@
                     "description": "Description of the NAT rule.",
                     "type": "string"
                 },
+                "ruleId": {
+                    "description": "Unique ID of the NAT Rule",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "type": {
                     "description": "Type of the NAT rule. Only DNAT is supported currently.",
                     "type": "string",
-                    "example": "DNAT, SNAT"
+                    "example": "DNAT"
                 }
             }
         },
@@ -14118,10 +16260,6 @@
         "HealthCheckConfiguration": {
             "description": "Load balancer health check configuration.",
             "type": "object",
-            "required": [
-                "port",
-                "protocol"
-            ],
             "properties": {
                 "protocol": {
                     "description": "The protocol used for the health check.",
@@ -15091,7 +17229,7 @@
                     "example": "2012-09-27"
                 },
                 "isCurrent": {
-                    "description": "A human-friendly description.",
+                    "description": "Specifies if the snapshot is the current snapshot for the block device. Valid only for vSphere First Class Disks",
                     "type": "boolean",
                     "example": false
                 },
@@ -15111,6 +17249,14 @@
                     "description": "The id of this resource instance",
                     "type": "string",
                     "example": "9e49"
+                },
+                "snapshotProperties": {
+                    "description": "Snapshot specific properties",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "type": "object",
+                    "example": "{ \"incremental\": \"false\" }"
                 },
                 "orgId": {
                     "description": "The id of the organization this entity belongs to.",
@@ -15435,7 +17581,7 @@
                     "example": "small, medium, large"
                 },
                 "customProperties": {
-                    "description": "Additional custom properties that may be used to extend the machine.",
+                    "description": "Additional custom properties that may be used to extend this resource.",
                     "additionalProperties": {
                         "type": "string"
                     },
@@ -15713,6 +17859,11 @@
                     "type": "string",
                     "example": "csp@vmware.com"
                 },
+                "lifecycleState": {
+                    "description": "Lifecycle status of the compute instance",
+                    "type": "string",
+                    "example": "PROVISIONING, READY, SUSPEND, STOPPED, RETIRED"
+                },
                 "_links": {
                     "description": "HATEOAS of the entity",
                     "additionalProperties": {
@@ -15766,6 +17917,11 @@
                     "description": "Date when the entity was created. The date is in ISO 8601 and UTC.",
                     "type": "string",
                     "example": "2012-09-27"
+                },
+                "powerState": {
+                    "description": "Power state of compute instance",
+                    "type": "string",
+                    "example": "ON, OFF, GUEST_OFF, UNKNOWN, SUSPEND"
                 },
                 "customProperties": {
                     "description": "Custom properties of the compute instance",
@@ -16079,6 +18235,14 @@
                     "description": "The folder relative path to the datacenter where resources are deployed to. (only applicable for vSphere cloud zones)",
                     "type": "string",
                     "example": "test-folder"
+                },
+                "computeIds": {
+                    "description": "The ids of the compute resources that will be explicitly assigned to this zone",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": "[ab12c]"
                 },
                 "regionId": {
                     "description": "The id of the region for which this profile is created",
@@ -16563,6 +18727,11 @@
                     "type": "string",
                     "example": "None / ReadOnly / ReadWrite"
                 },
+                "diskEncryptionSetId": {
+                    "description": "Indicates the id of disk encryption set. ",
+                    "type": "string",
+                    "example": "/subscriptions/b8ef63/resourceGroups/DiskEncryptionSets/providers/Microsoft.Compute/diskEncryptionSets/MyDES"
+                },
                 "updatedAt": {
                     "description": "Date when the entity was last updated. The date is ISO 8601 and UTC.",
                     "type": "string",
@@ -16743,6 +18912,11 @@
                     "type": "string",
                     "example": "9e49"
                 },
+                "isGlobalManager": {
+                    "description": "Indicates whether this is an NSX-T Global Manager cloud account. NSX-T global manager cloud account can be associated with NSX-T local manager cloud accounts. It cannot be associated with vSphere cloud accounts. Default value: false.",
+                    "type": "boolean",
+                    "example": true
+                },
                 "updatedAt": {
                     "description": "Date when the entity was last updated. The date is ISO 8601 and UTC.",
                     "type": "string",
@@ -16876,6 +19050,14 @@
                     "type": "string",
                     "example": "${project.name}-test-${####}"
                 },
+                "customProperties": {
+                    "description": "The project custom properties which are added to all requests in this project",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "type": "object",
+                    "example": "{ \"property\" : \"value\" }"
+                },
                 "sharedResources": {
                     "description": "Specifies whether the resources in this projects are shared or not. If not set default will be used.",
                     "type": "boolean",
@@ -16909,6 +19091,11 @@
                 "description": {
                     "description": "A human-friendly description.",
                     "type": "string"
+                },
+                "placementPolicy": {
+                    "description": "Placement policy for the project. Determines how a zone will be selected for provisioning. DEFAULT or SPREAD.",
+                    "type": "string",
+                    "example": "DEFAULT"
                 },
                 "constraints": {
                     "description": "List of storage, network and extensibility constraints to be applied when provisioning through this project.",
@@ -16991,7 +19178,7 @@
             "type": "object",
             "properties": {
                 "customProperties": {
-                    "description": "Additional custom properties that may be used to extend the machine. Custom properties prefixed with: \"__\" are discarded.",
+                    "description": "Additional custom properties that may be used to extend the machine. Internal custom properties (for example, prefixed with: \"__\") can not be updated.",
                     "additionalProperties": {
                         "type": "string"
                     },
@@ -17236,7 +19423,7 @@
             ],
             "properties": {
                 "customProperties": {
-                    "description": "Additional custom properties that may be used to extend the compute gateway.",
+                    "description": "Additional custom properties that may be used to extend this resource.",
                     "additionalProperties": {
                         "type": "string"
                     },
@@ -17407,6 +19594,9 @@
         },
         {
             "name": "Compute Gateway"
+        },
+        {
+            "name": "Compute Nat"
         },
         {
             "name": "Data Collector"

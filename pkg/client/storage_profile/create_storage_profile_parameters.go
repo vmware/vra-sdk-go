@@ -18,64 +18,79 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewCreateStorageProfileParams creates a new CreateStorageProfileParams object
-// with the default values initialized.
+// NewCreateStorageProfileParams creates a new CreateStorageProfileParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewCreateStorageProfileParams() *CreateStorageProfileParams {
-	var ()
 	return &CreateStorageProfileParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewCreateStorageProfileParamsWithTimeout creates a new CreateStorageProfileParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewCreateStorageProfileParamsWithTimeout(timeout time.Duration) *CreateStorageProfileParams {
-	var ()
 	return &CreateStorageProfileParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewCreateStorageProfileParamsWithContext creates a new CreateStorageProfileParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewCreateStorageProfileParamsWithContext(ctx context.Context) *CreateStorageProfileParams {
-	var ()
 	return &CreateStorageProfileParams{
-
 		Context: ctx,
 	}
 }
 
 // NewCreateStorageProfileParamsWithHTTPClient creates a new CreateStorageProfileParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewCreateStorageProfileParamsWithHTTPClient(client *http.Client) *CreateStorageProfileParams {
-	var ()
 	return &CreateStorageProfileParams{
 		HTTPClient: client,
 	}
 }
 
-/*CreateStorageProfileParams contains all the parameters to send to the API endpoint
-for the create storage profile operation typically these are written to a http.Request
+/* CreateStorageProfileParams contains all the parameters to send to the API endpoint
+   for the create storage profile operation.
+
+   Typically these are written to a http.Request.
 */
 type CreateStorageProfileParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*Body
-	  StorageProfileSpecification instance
 
+	/* Body.
+
+	   StorageProfileSpecification instance
 	*/
 	Body *models.StorageProfileSpecification
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the create storage profile params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateStorageProfileParams) WithDefaults() *CreateStorageProfileParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the create storage profile params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateStorageProfileParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the create storage profile params
@@ -145,18 +160,18 @@ func (o *CreateStorageProfileParams) WriteToRequest(r runtime.ClientRequest, reg
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
-
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err

@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -16,6 +18,7 @@ import (
 type MarketplaceFilterEntry struct {
 
 	// Entry count for this filter
+	// Example: 0
 	Count int64 `json:"count,omitempty"`
 
 	// id
@@ -27,6 +30,11 @@ type MarketplaceFilterEntry struct {
 
 // Validate validates this marketplace filter entry
 func (m *MarketplaceFilterEntry) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this marketplace filter entry based on context it is used
+func (m *MarketplaceFilterEntry) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

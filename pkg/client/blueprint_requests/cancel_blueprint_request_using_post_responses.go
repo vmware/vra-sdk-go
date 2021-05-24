@@ -47,7 +47,6 @@ func (o *CancelBlueprintRequestUsingPOSTReader) ReadResponse(response runtime.Cl
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewCancelBlueprintRequestUsingPOSTOK() *CancelBlueprintRequestUsingPOSTOK {
 	return &CancelBlueprintRequestUsingPOSTOK{}
 }
 
-/*CancelBlueprintRequestUsingPOSTOK handles this case with default header values.
+/* CancelBlueprintRequestUsingPOSTOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -79,7 +78,7 @@ func NewCancelBlueprintRequestUsingPOSTUnauthorized() *CancelBlueprintRequestUsi
 	return &CancelBlueprintRequestUsingPOSTUnauthorized{}
 }
 
-/*CancelBlueprintRequestUsingPOSTUnauthorized handles this case with default header values.
+/* CancelBlueprintRequestUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -100,7 +99,7 @@ func NewCancelBlueprintRequestUsingPOSTForbidden() *CancelBlueprintRequestUsingP
 	return &CancelBlueprintRequestUsingPOSTForbidden{}
 }
 
-/*CancelBlueprintRequestUsingPOSTForbidden handles this case with default header values.
+/* CancelBlueprintRequestUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -121,7 +120,7 @@ func NewCancelBlueprintRequestUsingPOSTNotFound() *CancelBlueprintRequestUsingPO
 	return &CancelBlueprintRequestUsingPOSTNotFound{}
 }
 
-/*CancelBlueprintRequestUsingPOSTNotFound handles this case with default header values.
+/* CancelBlueprintRequestUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -132,7 +131,6 @@ type CancelBlueprintRequestUsingPOSTNotFound struct {
 func (o *CancelBlueprintRequestUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprint-requests/{requestId}/actions/cancel][%d] cancelBlueprintRequestUsingPOSTNotFound  %+v", 404, o.Payload)
 }
-
 func (o *CancelBlueprintRequestUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

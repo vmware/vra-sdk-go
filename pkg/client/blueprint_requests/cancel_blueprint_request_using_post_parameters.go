@@ -17,81 +17,100 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewCancelBlueprintRequestUsingPOSTParams creates a new CancelBlueprintRequestUsingPOSTParams object
-// with the default values initialized.
+// NewCancelBlueprintRequestUsingPOSTParams creates a new CancelBlueprintRequestUsingPOSTParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewCancelBlueprintRequestUsingPOSTParams() *CancelBlueprintRequestUsingPOSTParams {
-	var (
-		forceDefault = bool(true)
-	)
 	return &CancelBlueprintRequestUsingPOSTParams{
-		Force: &forceDefault,
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewCancelBlueprintRequestUsingPOSTParamsWithTimeout creates a new CancelBlueprintRequestUsingPOSTParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewCancelBlueprintRequestUsingPOSTParamsWithTimeout(timeout time.Duration) *CancelBlueprintRequestUsingPOSTParams {
-	var (
-		forceDefault = bool(true)
-	)
 	return &CancelBlueprintRequestUsingPOSTParams{
-		Force: &forceDefault,
-
 		timeout: timeout,
 	}
 }
 
 // NewCancelBlueprintRequestUsingPOSTParamsWithContext creates a new CancelBlueprintRequestUsingPOSTParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewCancelBlueprintRequestUsingPOSTParamsWithContext(ctx context.Context) *CancelBlueprintRequestUsingPOSTParams {
-	var (
-		forceDefault = bool(true)
-	)
 	return &CancelBlueprintRequestUsingPOSTParams{
-		Force: &forceDefault,
-
 		Context: ctx,
 	}
 }
 
 // NewCancelBlueprintRequestUsingPOSTParamsWithHTTPClient creates a new CancelBlueprintRequestUsingPOSTParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewCancelBlueprintRequestUsingPOSTParamsWithHTTPClient(client *http.Client) *CancelBlueprintRequestUsingPOSTParams {
-	var (
-		forceDefault = bool(true)
-	)
 	return &CancelBlueprintRequestUsingPOSTParams{
-		Force:      &forceDefault,
 		HTTPClient: client,
 	}
 }
 
-/*CancelBlueprintRequestUsingPOSTParams contains all the parameters to send to the API endpoint
-for the cancel blueprint request using p o s t operation typically these are written to a http.Request
+/* CancelBlueprintRequestUsingPOSTParams contains all the parameters to send to the API endpoint
+   for the cancel blueprint request using p o s t operation.
+
+   Typically these are written to a http.Request.
 */
 type CancelBlueprintRequestUsingPOSTParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about
 	*/
 	APIVersion *string
-	/*Force
-	  Force cancellation of in progress tasks
 
+	/* Force.
+
+	   Force cancellation of in progress tasks
+
+	   Default: true
 	*/
 	Force *bool
-	/*RequestID
-	  requestId
 
+	/* RequestID.
+
+	   requestId
+
+	   Format: uuid
 	*/
 	RequestID strfmt.UUID
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the cancel blueprint request using p o s t params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CancelBlueprintRequestUsingPOSTParams) WithDefaults() *CancelBlueprintRequestUsingPOSTParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the cancel blueprint request using p o s t params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CancelBlueprintRequestUsingPOSTParams) SetDefaults() {
+	var (
+		forceDefault = bool(true)
+	)
+
+	val := CancelBlueprintRequestUsingPOSTParams{
+		Force: &forceDefault,
+	}
+
+	val.timeout = o.timeout
+	val.Context = o.Context
+	val.HTTPClient = o.HTTPClient
+	*o = val
 }
 
 // WithTimeout adds the timeout to the cancel blueprint request using p o s t params
@@ -172,32 +191,34 @@ func (o *CancelBlueprintRequestUsingPOSTParams) WriteToRequest(r runtime.ClientR
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Force != nil {
 
 		// query param force
 		var qrForce bool
+
 		if o.Force != nil {
 			qrForce = *o.Force
 		}
 		qForce := swag.FormatBool(qrForce)
 		if qForce != "" {
+
 			if err := r.SetQueryParam("force", qForce); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param requestId

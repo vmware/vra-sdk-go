@@ -36,7 +36,7 @@ func NewEnumeratePrivateImagesAzureDefault(code int) *EnumeratePrivateImagesAzur
 	}
 }
 
-/*EnumeratePrivateImagesAzureDefault handles this case with default header values.
+/* EnumeratePrivateImagesAzureDefault describes a response with status code -1, with default header values.
 
 successful operation
 */

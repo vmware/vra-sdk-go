@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -86,7 +88,6 @@ func (m *TerraformBlueprintConfig) Validate(formats strfmt.Registry) error {
 }
 
 func (m *TerraformBlueprintConfig) validateCreatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CreatedAt) { // not required
 		return nil
 	}
@@ -99,7 +100,6 @@ func (m *TerraformBlueprintConfig) validateCreatedAt(formats strfmt.Registry) er
 }
 
 func (m *TerraformBlueprintConfig) validateTerraformToBlueprintMapping(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.TerraformToBlueprintMapping) { // not required
 		return nil
 	}
@@ -117,12 +117,130 @@ func (m *TerraformBlueprintConfig) validateTerraformToBlueprintMapping(formats s
 }
 
 func (m *TerraformBlueprintConfig) validateUpdatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.UpdatedAt) { // not required
 		return nil
 	}
 
 	if err := validate.FormatOf("updatedAt", "body", "date-time", m.UpdatedAt.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this terraform blueprint config based on the context it is used
+func (m *TerraformBlueprintConfig) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateCreatedAt(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateCreatedBy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateID(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOrgID(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateProjectName(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTerraformToBlueprintMapping(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUpdatedAt(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUpdatedBy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *TerraformBlueprintConfig) contextValidateCreatedAt(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "createdAt", "body", strfmt.DateTime(m.CreatedAt)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *TerraformBlueprintConfig) contextValidateCreatedBy(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "createdBy", "body", string(m.CreatedBy)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *TerraformBlueprintConfig) contextValidateID(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "id", "body", string(m.ID)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *TerraformBlueprintConfig) contextValidateOrgID(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "orgId", "body", string(m.OrgID)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *TerraformBlueprintConfig) contextValidateProjectName(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "projectName", "body", string(m.ProjectName)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *TerraformBlueprintConfig) contextValidateTerraformToBlueprintMapping(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.TerraformToBlueprintMapping != nil {
+		if err := m.TerraformToBlueprintMapping.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("terraformToBlueprintMapping")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *TerraformBlueprintConfig) contextValidateUpdatedAt(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "updatedAt", "body", strfmt.DateTime(m.UpdatedAt)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *TerraformBlueprintConfig) contextValidateUpdatedBy(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "updatedBy", "body", string(m.UpdatedBy)); err != nil {
 		return err
 	}
 

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -24,31 +25,39 @@ type ChangeSecurityGroupSpecification struct {
 	Links map[string]Href `json:"_links"`
 
 	// Date when the entity was created. The date is in ISO 8601 and UTC.
+	// Example: 2012-09-27
 	CreatedAt string `json:"createdAt,omitempty"`
 
 	// A human-friendly description.
+	// Example: my-description
 	Description string `json:"description,omitempty"`
 
 	// The id of this resource instance
+	// Example: 9e49
 	// Required: true
 	ID *string `json:"id"`
 
 	// A human-friendly name used as an identifier in APIs that support this option.
+	// Example: my-name
 	Name string `json:"name,omitempty"`
 
 	// A set of network interface controller specifications for this machine. If not specified, then no reconfiguration will be performed.
 	NetworkInterfaceSpecifications []*NetworkInterfaceSpecification `json:"networkInterfaceSpecifications"`
 
 	// The id of the organization this entity belongs to.
+	// Example: 9e49
 	OrgID string `json:"orgId,omitempty"`
 
 	// This field is deprecated. Use orgId instead. The id of the organization this entity belongs to.
+	// Example: deprecated
 	OrganizationID string `json:"organizationId,omitempty"`
 
 	// Email of the user that owns the entity.
+	// Example: csp@vmware.com
 	Owner string `json:"owner,omitempty"`
 
 	// Date when the entity was last updated. The date is ISO 8601 and UTC.
+	// Example: 2012-09-27
 	UpdatedAt string `json:"updatedAt,omitempty"`
 }
 
@@ -76,6 +85,10 @@ func (m *ChangeSecurityGroupSpecification) Validate(formats strfmt.Registry) err
 
 func (m *ChangeSecurityGroupSpecification) validateLinks(formats strfmt.Registry) error {
 
+	if err := validate.Required("_links", "body", m.Links); err != nil {
+		return err
+	}
+
 	for k := range m.Links {
 
 		if err := validate.Required("_links"+"."+k, "body", m.Links[k]); err != nil {
@@ -102,7 +115,6 @@ func (m *ChangeSecurityGroupSpecification) validateID(formats strfmt.Registry) e
 }
 
 func (m *ChangeSecurityGroupSpecification) validateNetworkInterfaceSpecifications(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.NetworkInterfaceSpecifications) { // not required
 		return nil
 	}
@@ -114,6 +126,61 @@ func (m *ChangeSecurityGroupSpecification) validateNetworkInterfaceSpecification
 
 		if m.NetworkInterfaceSpecifications[i] != nil {
 			if err := m.NetworkInterfaceSpecifications[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("networkInterfaceSpecifications" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this change security group specification based on the context it is used
+func (m *ChangeSecurityGroupSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateLinks(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateNetworkInterfaceSpecifications(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ChangeSecurityGroupSpecification) contextValidateLinks(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.Required("_links", "body", m.Links); err != nil {
+		return err
+	}
+
+	for k := range m.Links {
+
+		if val, ok := m.Links[k]; ok {
+			if err := val.ContextValidate(ctx, formats); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ChangeSecurityGroupSpecification) contextValidateNetworkInterfaceSpecifications(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.NetworkInterfaceSpecifications); i++ {
+
+		if m.NetworkInterfaceSpecifications[i] != nil {
+			if err := m.NetworkInterfaceSpecifications[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("networkInterfaceSpecifications" + "." + strconv.Itoa(i))
 				}

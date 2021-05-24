@@ -16,64 +16,85 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetMachineParams creates a new GetMachineParams object
-// with the default values initialized.
+// NewGetMachineParams creates a new GetMachineParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetMachineParams() *GetMachineParams {
-	var ()
 	return &GetMachineParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetMachineParamsWithTimeout creates a new GetMachineParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetMachineParamsWithTimeout(timeout time.Duration) *GetMachineParams {
-	var ()
 	return &GetMachineParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetMachineParamsWithContext creates a new GetMachineParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetMachineParamsWithContext(ctx context.Context) *GetMachineParams {
-	var ()
 	return &GetMachineParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetMachineParamsWithHTTPClient creates a new GetMachineParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetMachineParamsWithHTTPClient(client *http.Client) *GetMachineParams {
-	var ()
 	return &GetMachineParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetMachineParams contains all the parameters to send to the API endpoint
-for the get machine operation typically these are written to a http.Request
+/* GetMachineParams contains all the parameters to send to the API endpoint
+   for the get machine operation.
+
+   Typically these are written to a http.Request.
 */
 type GetMachineParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* DollarSelect.
 
+	   Select a subset of properties to include in the response.
+	*/
+	DollarSelect *string
+
+	/* APIVersion.
+
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*ID
-	  The ID of the machine.
 
+	/* ID.
+
+	   The ID of the machine.
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get machine params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetMachineParams) WithDefaults() *GetMachineParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get machine params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetMachineParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get machine params
@@ -109,6 +130,17 @@ func (o *GetMachineParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithDollarSelect adds the dollarSelect to the get machine params
+func (o *GetMachineParams) WithDollarSelect(dollarSelect *string) *GetMachineParams {
+	o.SetDollarSelect(dollarSelect)
+	return o
+}
+
+// SetDollarSelect adds the dollarSelect to the get machine params
+func (o *GetMachineParams) SetDollarSelect(dollarSelect *string) {
+	o.DollarSelect = dollarSelect
+}
+
 // WithAPIVersion adds the aPIVersion to the get machine params
 func (o *GetMachineParams) WithAPIVersion(aPIVersion *string) *GetMachineParams {
 	o.SetAPIVersion(aPIVersion)
@@ -139,20 +171,38 @@ func (o *GetMachineParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Re
 	}
 	var res []error
 
+	if o.DollarSelect != nil {
+
+		// query param $select
+		var qrDollarSelect string
+
+		if o.DollarSelect != nil {
+			qrDollarSelect = *o.DollarSelect
+		}
+		qDollarSelect := qrDollarSelect
+		if qDollarSelect != "" {
+
+			if err := r.SetQueryParam("$select", qDollarSelect); err != nil {
+				return err
+			}
+		}
+	}
+
 	if o.APIVersion != nil {
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id

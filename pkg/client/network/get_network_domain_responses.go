@@ -41,7 +41,6 @@ func (o *GetNetworkDomainReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetNetworkDomainOK() *GetNetworkDomainOK {
 	return &GetNetworkDomainOK{}
 }
 
-/*GetNetworkDomainOK handles this case with default header values.
+/* GetNetworkDomainOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type GetNetworkDomainOK struct {
 func (o *GetNetworkDomainOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/network-domains/{id}][%d] getNetworkDomainOK  %+v", 200, o.Payload)
 }
-
 func (o *GetNetworkDomainOK) GetPayload() *models.NetworkDomain {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewGetNetworkDomainForbidden() *GetNetworkDomainForbidden {
 	return &GetNetworkDomainForbidden{}
 }
 
-/*GetNetworkDomainForbidden handles this case with default header values.
+/* GetNetworkDomainForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetNetworkDomainForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetNetworkDomainForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/network-domains/{id}][%d] getNetworkDomainForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/network-domains/{id}][%d] getNetworkDomainForbidden  %+v", 403, o.Payload)
+}
+func (o *GetNetworkDomainForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetNetworkDomainForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewGetNetworkDomainNotFound() *GetNetworkDomainNotFound {
 	return &GetNetworkDomainNotFound{}
 }
 
-/*GetNetworkDomainNotFound handles this case with default header values.
+/* GetNetworkDomainNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type GetNetworkDomainNotFound struct {
 func (o *GetNetworkDomainNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/network-domains/{id}][%d] getNetworkDomainNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetNetworkDomainNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

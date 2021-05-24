@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -19,6 +21,7 @@ type Constraint struct {
 
 	// An expression of the form "[!]tag-key[:[tag-value]]", used to indicate a constraint match on keys and values of tags.
 	//
+	// Example: ha:strong
 	// Required: true
 	Expression *string `json:"expression"`
 
@@ -60,6 +63,11 @@ func (m *Constraint) validateMandatory(formats strfmt.Registry) error {
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validates this constraint based on context it is used
+func (m *Constraint) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

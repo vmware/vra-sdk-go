@@ -25,13 +25,16 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateEntitlementUsingPOST(params *CreateEntitlementUsingPOSTParams) (*CreateEntitlementUsingPOSTOK, *CreateEntitlementUsingPOSTCreated, error)
+	CreateEntitlementUsingPOST(params *CreateEntitlementUsingPOSTParams, opts ...ClientOption) (*CreateEntitlementUsingPOSTOK, *CreateEntitlementUsingPOSTCreated, error)
 
-	DeleteEntitlementUsingDELETE(params *DeleteEntitlementUsingDELETEParams) (*DeleteEntitlementUsingDELETENoContent, error)
+	DeleteEntitlementUsingDELETE(params *DeleteEntitlementUsingDELETEParams, opts ...ClientOption) (*DeleteEntitlementUsingDELETENoContent, error)
 
-	GetEntitlementsUsingGET(params *GetEntitlementsUsingGETParams) (*GetEntitlementsUsingGETOK, error)
+	GetEntitlementsUsingGET(params *GetEntitlementsUsingGETParams, opts ...ClientOption) (*GetEntitlementsUsingGETOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -41,13 +44,12 @@ type ClientService interface {
 
   Creates an entitlement for a given project.
 */
-func (a *Client) CreateEntitlementUsingPOST(params *CreateEntitlementUsingPOSTParams) (*CreateEntitlementUsingPOSTOK, *CreateEntitlementUsingPOSTCreated, error) {
+func (a *Client) CreateEntitlementUsingPOST(params *CreateEntitlementUsingPOSTParams, opts ...ClientOption) (*CreateEntitlementUsingPOSTOK, *CreateEntitlementUsingPOSTCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateEntitlementUsingPOSTParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createEntitlementUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/catalog/api/admin/entitlements",
@@ -58,7 +60,12 @@ func (a *Client) CreateEntitlementUsingPOST(params *CreateEntitlementUsingPOSTPa
 		Reader:             &CreateEntitlementUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -78,13 +85,12 @@ func (a *Client) CreateEntitlementUsingPOST(params *CreateEntitlementUsingPOSTPa
 
   Deletes the entitlement with the specified id.
 */
-func (a *Client) DeleteEntitlementUsingDELETE(params *DeleteEntitlementUsingDELETEParams) (*DeleteEntitlementUsingDELETENoContent, error) {
+func (a *Client) DeleteEntitlementUsingDELETE(params *DeleteEntitlementUsingDELETEParams, opts ...ClientOption) (*DeleteEntitlementUsingDELETENoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteEntitlementUsingDELETEParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteEntitlementUsingDELETE",
 		Method:             "DELETE",
 		PathPattern:        "/catalog/api/admin/entitlements/{id}",
@@ -95,7 +101,12 @@ func (a *Client) DeleteEntitlementUsingDELETE(params *DeleteEntitlementUsingDELE
 		Reader:             &DeleteEntitlementUsingDELETEReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -114,13 +125,12 @@ func (a *Client) DeleteEntitlementUsingDELETE(params *DeleteEntitlementUsingDELE
 
   Returns all entitlements (filtered by projectId).
 */
-func (a *Client) GetEntitlementsUsingGET(params *GetEntitlementsUsingGETParams) (*GetEntitlementsUsingGETOK, error) {
+func (a *Client) GetEntitlementsUsingGET(params *GetEntitlementsUsingGETParams, opts ...ClientOption) (*GetEntitlementsUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetEntitlementsUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getEntitlementsUsingGET",
 		Method:             "GET",
 		PathPattern:        "/catalog/api/admin/entitlements",
@@ -131,7 +141,12 @@ func (a *Client) GetEntitlementsUsingGET(params *GetEntitlementsUsingGETParams) 
 		Reader:             &GetEntitlementsUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

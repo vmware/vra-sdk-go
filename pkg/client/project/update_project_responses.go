@@ -41,7 +41,6 @@ func (o *UpdateProjectReader) ReadResponse(response runtime.ClientResponse, cons
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewUpdateProjectOK() *UpdateProjectOK {
 	return &UpdateProjectOK{}
 }
 
-/*UpdateProjectOK handles this case with default header values.
+/* UpdateProjectOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type UpdateProjectOK struct {
 func (o *UpdateProjectOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/projects/{id}][%d] updateProjectOK  %+v", 200, o.Payload)
 }
-
 func (o *UpdateProjectOK) GetPayload() *models.Project {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewUpdateProjectBadRequest() *UpdateProjectBadRequest {
 	return &UpdateProjectBadRequest{}
 }
 
-/*UpdateProjectBadRequest handles this case with default header values.
+/* UpdateProjectBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -96,7 +94,6 @@ type UpdateProjectBadRequest struct {
 func (o *UpdateProjectBadRequest) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/projects/{id}][%d] updateProjectBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *UpdateProjectBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -118,18 +115,29 @@ func NewUpdateProjectForbidden() *UpdateProjectForbidden {
 	return &UpdateProjectForbidden{}
 }
 
-/*UpdateProjectForbidden handles this case with default header values.
+/* UpdateProjectForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type UpdateProjectForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *UpdateProjectForbidden) Error() string {
-	return fmt.Sprintf("[PATCH /iaas/api/projects/{id}][%d] updateProjectForbidden ", 403)
+	return fmt.Sprintf("[PATCH /iaas/api/projects/{id}][%d] updateProjectForbidden  %+v", 403, o.Payload)
+}
+func (o *UpdateProjectForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *UpdateProjectForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

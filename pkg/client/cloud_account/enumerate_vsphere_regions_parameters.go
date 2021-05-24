@@ -18,64 +18,79 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewEnumerateVSphereRegionsParams creates a new EnumerateVSphereRegionsParams object
-// with the default values initialized.
+// NewEnumerateVSphereRegionsParams creates a new EnumerateVSphereRegionsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewEnumerateVSphereRegionsParams() *EnumerateVSphereRegionsParams {
-	var ()
 	return &EnumerateVSphereRegionsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewEnumerateVSphereRegionsParamsWithTimeout creates a new EnumerateVSphereRegionsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewEnumerateVSphereRegionsParamsWithTimeout(timeout time.Duration) *EnumerateVSphereRegionsParams {
-	var ()
 	return &EnumerateVSphereRegionsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewEnumerateVSphereRegionsParamsWithContext creates a new EnumerateVSphereRegionsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewEnumerateVSphereRegionsParamsWithContext(ctx context.Context) *EnumerateVSphereRegionsParams {
-	var ()
 	return &EnumerateVSphereRegionsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewEnumerateVSphereRegionsParamsWithHTTPClient creates a new EnumerateVSphereRegionsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewEnumerateVSphereRegionsParamsWithHTTPClient(client *http.Client) *EnumerateVSphereRegionsParams {
-	var ()
 	return &EnumerateVSphereRegionsParams{
 		HTTPClient: client,
 	}
 }
 
-/*EnumerateVSphereRegionsParams contains all the parameters to send to the API endpoint
-for the enumerate v sphere regions operation typically these are written to a http.Request
+/* EnumerateVSphereRegionsParams contains all the parameters to send to the API endpoint
+   for the enumerate v sphere regions operation.
+
+   Typically these are written to a http.Request.
 */
 type EnumerateVSphereRegionsParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*Body
-	  CloudAccountVsphere specification
 
+	/* Body.
+
+	   CloudAccountVsphere specification
 	*/
 	Body *models.CloudAccountVsphereSpecification
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the enumerate v sphere regions params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *EnumerateVSphereRegionsParams) WithDefaults() *EnumerateVSphereRegionsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the enumerate v sphere regions params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *EnumerateVSphereRegionsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the enumerate v sphere regions params
@@ -145,18 +160,18 @@ func (o *EnumerateVSphereRegionsParams) WriteToRequest(r runtime.ClientRequest, 
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
-
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err

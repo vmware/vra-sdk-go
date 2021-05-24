@@ -17,106 +17,132 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewListResourceTypesUsingGETParams creates a new ListResourceTypesUsingGETParams object
-// with the default values initialized.
+// NewListResourceTypesUsingGETParams creates a new ListResourceTypesUsingGETParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewListResourceTypesUsingGETParams() *ListResourceTypesUsingGETParams {
-	var (
-		expandDefault = bool(true)
-	)
 	return &ListResourceTypesUsingGETParams{
-		Expand: &expandDefault,
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewListResourceTypesUsingGETParamsWithTimeout creates a new ListResourceTypesUsingGETParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewListResourceTypesUsingGETParamsWithTimeout(timeout time.Duration) *ListResourceTypesUsingGETParams {
-	var (
-		expandDefault = bool(true)
-	)
 	return &ListResourceTypesUsingGETParams{
-		Expand: &expandDefault,
-
 		timeout: timeout,
 	}
 }
 
 // NewListResourceTypesUsingGETParamsWithContext creates a new ListResourceTypesUsingGETParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewListResourceTypesUsingGETParamsWithContext(ctx context.Context) *ListResourceTypesUsingGETParams {
-	var (
-		expandDefault = bool(true)
-	)
 	return &ListResourceTypesUsingGETParams{
-		Expand: &expandDefault,
-
 		Context: ctx,
 	}
 }
 
 // NewListResourceTypesUsingGETParamsWithHTTPClient creates a new ListResourceTypesUsingGETParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewListResourceTypesUsingGETParamsWithHTTPClient(client *http.Client) *ListResourceTypesUsingGETParams {
-	var (
-		expandDefault = bool(true)
-	)
 	return &ListResourceTypesUsingGETParams{
-		Expand:     &expandDefault,
 		HTTPClient: client,
 	}
 }
 
-/*ListResourceTypesUsingGETParams contains all the parameters to send to the API endpoint
-for the list resource types using g e t operation typically these are written to a http.Request
+/* ListResourceTypesUsingGETParams contains all the parameters to send to the API endpoint
+   for the list resource types using g e t operation.
+
+   Typically these are written to a http.Request.
 */
 type ListResourceTypesUsingGETParams struct {
 
-	/*DollarOrderby
-	  Sorting criteria in the format: property (asc|desc). Default sort order is ascending on name. Sorting is supported on fields createdAt, updatedAt, createdBy, updatedBy, name.
+	/* DollarOrderby.
 
+	   Sorting criteria in the format: property (asc|desc). Default sort order is ascending on name. Sorting is supported on fields createdAt, updatedAt, createdBy, updatedBy, name.
 	*/
 	DollarOrderby []string
-	/*DollarSkip
-	  Number of records you want to skip
 
+	/* DollarSkip.
+
+	   Number of records you want to skip
+
+	   Format: int32
 	*/
 	DollarSkip *int32
-	/*DollarTop
-	  Number of records you want
 
+	/* DollarTop.
+
+	   Number of records you want
+
+	   Format: int32
 	*/
 	DollarTop *int32
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about
 
+	/* APIVersion.
+
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about
 	*/
 	APIVersion *string
-	/*Expand
-	  Expand with content
 
+	/* Expand.
+
+	   Expand with content
+
+	   Default: true
 	*/
 	Expand *bool
-	/*Name
-	  Filter by name
 
+	/* Name.
+
+	   Filter by name
 	*/
 	Name *string
-	/*ProviderID
-	  Filter by provider ID
 
+	/* ProviderID.
+
+	   Filter by provider ID
 	*/
 	ProviderID *string
-	/*Search
-	  Search by name and description
 
+	/* Search.
+
+	   Search by name and description
 	*/
 	Search *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the list resource types using get params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ListResourceTypesUsingGETParams) WithDefaults() *ListResourceTypesUsingGETParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the list resource types using get params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ListResourceTypesUsingGETParams) SetDefaults() {
+	var (
+		expandDefault = bool(true)
+	)
+
+	val := ListResourceTypesUsingGETParams{
+		Expand: &expandDefault,
+	}
+
+	val.timeout = o.timeout
+	val.Context = o.Context
+	val.HTTPClient = o.HTTPClient
+	*o = val
 }
 
 // WithTimeout adds the timeout to the list resource types using get params
@@ -248,128 +274,155 @@ func (o *ListResourceTypesUsingGETParams) WriteToRequest(r runtime.ClientRequest
 	}
 	var res []error
 
-	valuesDollarOrderby := o.DollarOrderby
+	if o.DollarOrderby != nil {
 
-	joinedDollarOrderby := swag.JoinByFormat(valuesDollarOrderby, "multi")
-	// query array param $orderby
-	if err := r.SetQueryParam("$orderby", joinedDollarOrderby...); err != nil {
-		return err
+		// binding items for $orderby
+		joinedDollarOrderby := o.bindParamDollarOrderby(reg)
+
+		// query array param $orderby
+		if err := r.SetQueryParam("$orderby", joinedDollarOrderby...); err != nil {
+			return err
+		}
 	}
 
 	if o.DollarSkip != nil {
 
 		// query param $skip
 		var qrDollarSkip int32
+
 		if o.DollarSkip != nil {
 			qrDollarSkip = *o.DollarSkip
 		}
 		qDollarSkip := swag.FormatInt32(qrDollarSkip)
 		if qDollarSkip != "" {
+
 			if err := r.SetQueryParam("$skip", qDollarSkip); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.DollarTop != nil {
 
 		// query param $top
 		var qrDollarTop int32
+
 		if o.DollarTop != nil {
 			qrDollarTop = *o.DollarTop
 		}
 		qDollarTop := swag.FormatInt32(qrDollarTop)
 		if qDollarTop != "" {
+
 			if err := r.SetQueryParam("$top", qDollarTop); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.APIVersion != nil {
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Expand != nil {
 
 		// query param expand
 		var qrExpand bool
+
 		if o.Expand != nil {
 			qrExpand = *o.Expand
 		}
 		qExpand := swag.FormatBool(qrExpand)
 		if qExpand != "" {
+
 			if err := r.SetQueryParam("expand", qExpand); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Name != nil {
 
 		// query param name
 		var qrName string
+
 		if o.Name != nil {
 			qrName = *o.Name
 		}
 		qName := qrName
 		if qName != "" {
+
 			if err := r.SetQueryParam("name", qName); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.ProviderID != nil {
 
 		// query param providerId
 		var qrProviderID string
+
 		if o.ProviderID != nil {
 			qrProviderID = *o.ProviderID
 		}
 		qProviderID := qrProviderID
 		if qProviderID != "" {
+
 			if err := r.SetQueryParam("providerId", qProviderID); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Search != nil {
 
 		// query param search
 		var qrSearch string
+
 		if o.Search != nil {
 			qrSearch = *o.Search
 		}
 		qSearch := qrSearch
 		if qSearch != "" {
+
 			if err := r.SetQueryParam("search", qSearch); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
+}
+
+// bindParamListResourceTypesUsingGET binds the parameter $orderby
+func (o *ListResourceTypesUsingGETParams) bindParamDollarOrderby(formats strfmt.Registry) []string {
+	dollarOrderbyIR := o.DollarOrderby
+
+	var dollarOrderbyIC []string
+	for _, dollarOrderbyIIR := range dollarOrderbyIR { // explode []string
+
+		dollarOrderbyIIV := dollarOrderbyIIR // string as string
+		dollarOrderbyIC = append(dollarOrderbyIC, dollarOrderbyIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	dollarOrderbyIS := swag.JoinByFormat(dollarOrderbyIC, "multi")
+
+	return dollarOrderbyIS
 }

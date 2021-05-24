@@ -16,59 +16,73 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetTerraformConfigurationSourceCommitListUsingGET1Params creates a new GetTerraformConfigurationSourceCommitListUsingGET1Params object
-// with the default values initialized.
+// NewGetTerraformConfigurationSourceCommitListUsingGET1Params creates a new GetTerraformConfigurationSourceCommitListUsingGET1Params object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetTerraformConfigurationSourceCommitListUsingGET1Params() *GetTerraformConfigurationSourceCommitListUsingGET1Params {
-	var ()
 	return &GetTerraformConfigurationSourceCommitListUsingGET1Params{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetTerraformConfigurationSourceCommitListUsingGET1ParamsWithTimeout creates a new GetTerraformConfigurationSourceCommitListUsingGET1Params object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetTerraformConfigurationSourceCommitListUsingGET1ParamsWithTimeout(timeout time.Duration) *GetTerraformConfigurationSourceCommitListUsingGET1Params {
-	var ()
 	return &GetTerraformConfigurationSourceCommitListUsingGET1Params{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetTerraformConfigurationSourceCommitListUsingGET1ParamsWithContext creates a new GetTerraformConfigurationSourceCommitListUsingGET1Params object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetTerraformConfigurationSourceCommitListUsingGET1ParamsWithContext(ctx context.Context) *GetTerraformConfigurationSourceCommitListUsingGET1Params {
-	var ()
 	return &GetTerraformConfigurationSourceCommitListUsingGET1Params{
-
 		Context: ctx,
 	}
 }
 
 // NewGetTerraformConfigurationSourceCommitListUsingGET1ParamsWithHTTPClient creates a new GetTerraformConfigurationSourceCommitListUsingGET1Params object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetTerraformConfigurationSourceCommitListUsingGET1ParamsWithHTTPClient(client *http.Client) *GetTerraformConfigurationSourceCommitListUsingGET1Params {
-	var ()
 	return &GetTerraformConfigurationSourceCommitListUsingGET1Params{
 		HTTPClient: client,
 	}
 }
 
-/*GetTerraformConfigurationSourceCommitListUsingGET1Params contains all the parameters to send to the API endpoint
-for the get terraform configuration source commit list using get1 operation typically these are written to a http.Request
+/* GetTerraformConfigurationSourceCommitListUsingGET1Params contains all the parameters to send to the API endpoint
+   for the get terraform configuration source commit list using get1 operation.
+
+   Typically these are written to a http.Request.
 */
 type GetTerraformConfigurationSourceCommitListUsingGET1Params struct {
 
-	/*ConfigurationSourceID
-	  A Configuration Source ID.
+	/* ConfigurationSourceID.
 
+	   A Configuration Source ID.
 	*/
 	ConfigurationSourceID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get terraform configuration source commit list using get1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetTerraformConfigurationSourceCommitListUsingGET1Params) WithDefaults() *GetTerraformConfigurationSourceCommitListUsingGET1Params {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get terraform configuration source commit list using get1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetTerraformConfigurationSourceCommitListUsingGET1Params) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get terraform configuration source commit list using get1 params
@@ -127,6 +141,7 @@ func (o *GetTerraformConfigurationSourceCommitListUsingGET1Params) WriteToReques
 	qrConfigurationSourceID := o.ConfigurationSourceID
 	qConfigurationSourceID := qrConfigurationSourceID
 	if qConfigurationSourceID != "" {
+
 		if err := r.SetQueryParam("configurationSourceId", qConfigurationSourceID); err != nil {
 			return err
 		}

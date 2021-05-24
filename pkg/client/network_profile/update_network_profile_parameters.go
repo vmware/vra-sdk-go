@@ -18,69 +18,85 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewUpdateNetworkProfileParams creates a new UpdateNetworkProfileParams object
-// with the default values initialized.
+// NewUpdateNetworkProfileParams creates a new UpdateNetworkProfileParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewUpdateNetworkProfileParams() *UpdateNetworkProfileParams {
-	var ()
 	return &UpdateNetworkProfileParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewUpdateNetworkProfileParamsWithTimeout creates a new UpdateNetworkProfileParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewUpdateNetworkProfileParamsWithTimeout(timeout time.Duration) *UpdateNetworkProfileParams {
-	var ()
 	return &UpdateNetworkProfileParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewUpdateNetworkProfileParamsWithContext creates a new UpdateNetworkProfileParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewUpdateNetworkProfileParamsWithContext(ctx context.Context) *UpdateNetworkProfileParams {
-	var ()
 	return &UpdateNetworkProfileParams{
-
 		Context: ctx,
 	}
 }
 
 // NewUpdateNetworkProfileParamsWithHTTPClient creates a new UpdateNetworkProfileParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewUpdateNetworkProfileParamsWithHTTPClient(client *http.Client) *UpdateNetworkProfileParams {
-	var ()
 	return &UpdateNetworkProfileParams{
 		HTTPClient: client,
 	}
 }
 
-/*UpdateNetworkProfileParams contains all the parameters to send to the API endpoint
-for the update network profile operation typically these are written to a http.Request
+/* UpdateNetworkProfileParams contains all the parameters to send to the API endpoint
+   for the update network profile operation.
+
+   Typically these are written to a http.Request.
 */
 type UpdateNetworkProfileParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*Body
-	  NetworkProfile specification
 
+	/* Body.
+
+	   NetworkProfile specification
 	*/
 	Body *models.NetworkProfileSpecification
-	/*ID
-	  The ID of the network profile.
 
+	/* ID.
+
+	   The ID of the network profile.
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the update network profile params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UpdateNetworkProfileParams) WithDefaults() *UpdateNetworkProfileParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the update network profile params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UpdateNetworkProfileParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the update network profile params
@@ -161,18 +177,18 @@ func (o *UpdateNetworkProfileParams) WriteToRequest(r runtime.ClientRequest, reg
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
-
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err

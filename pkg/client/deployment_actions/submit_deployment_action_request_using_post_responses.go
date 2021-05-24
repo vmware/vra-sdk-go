@@ -47,7 +47,6 @@ func (o *SubmitDeploymentActionRequestUsingPOSTReader) ReadResponse(response run
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewSubmitDeploymentActionRequestUsingPOSTOK() *SubmitDeploymentActionReques
 	return &SubmitDeploymentActionRequestUsingPOSTOK{}
 }
 
-/*SubmitDeploymentActionRequestUsingPOSTOK handles this case with default header values.
+/* SubmitDeploymentActionRequestUsingPOSTOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -69,7 +68,6 @@ type SubmitDeploymentActionRequestUsingPOSTOK struct {
 func (o *SubmitDeploymentActionRequestUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /deployment/api/deployments/{depId}/requests][%d] submitDeploymentActionRequestUsingPOSTOK  %+v", 200, o.Payload)
 }
-
 func (o *SubmitDeploymentActionRequestUsingPOSTOK) GetPayload() *models.Request {
 	return o.Payload
 }
@@ -91,7 +89,7 @@ func NewSubmitDeploymentActionRequestUsingPOSTUnauthorized() *SubmitDeploymentAc
 	return &SubmitDeploymentActionRequestUsingPOSTUnauthorized{}
 }
 
-/*SubmitDeploymentActionRequestUsingPOSTUnauthorized handles this case with default header values.
+/* SubmitDeploymentActionRequestUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -112,7 +110,7 @@ func NewSubmitDeploymentActionRequestUsingPOSTForbidden() *SubmitDeploymentActio
 	return &SubmitDeploymentActionRequestUsingPOSTForbidden{}
 }
 
-/*SubmitDeploymentActionRequestUsingPOSTForbidden handles this case with default header values.
+/* SubmitDeploymentActionRequestUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -133,7 +131,7 @@ func NewSubmitDeploymentActionRequestUsingPOSTNotFound() *SubmitDeploymentAction
 	return &SubmitDeploymentActionRequestUsingPOSTNotFound{}
 }
 
-/*SubmitDeploymentActionRequestUsingPOSTNotFound handles this case with default header values.
+/* SubmitDeploymentActionRequestUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -144,7 +142,6 @@ type SubmitDeploymentActionRequestUsingPOSTNotFound struct {
 func (o *SubmitDeploymentActionRequestUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /deployment/api/deployments/{depId}/requests][%d] submitDeploymentActionRequestUsingPOSTNotFound  %+v", 404, o.Payload)
 }
-
 func (o *SubmitDeploymentActionRequestUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

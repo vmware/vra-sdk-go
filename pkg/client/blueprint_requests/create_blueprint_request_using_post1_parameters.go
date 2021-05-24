@@ -18,64 +18,79 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewCreateBlueprintRequestUsingPOST1Params creates a new CreateBlueprintRequestUsingPOST1Params object
-// with the default values initialized.
+// NewCreateBlueprintRequestUsingPOST1Params creates a new CreateBlueprintRequestUsingPOST1Params object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewCreateBlueprintRequestUsingPOST1Params() *CreateBlueprintRequestUsingPOST1Params {
-	var ()
 	return &CreateBlueprintRequestUsingPOST1Params{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewCreateBlueprintRequestUsingPOST1ParamsWithTimeout creates a new CreateBlueprintRequestUsingPOST1Params object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewCreateBlueprintRequestUsingPOST1ParamsWithTimeout(timeout time.Duration) *CreateBlueprintRequestUsingPOST1Params {
-	var ()
 	return &CreateBlueprintRequestUsingPOST1Params{
-
 		timeout: timeout,
 	}
 }
 
 // NewCreateBlueprintRequestUsingPOST1ParamsWithContext creates a new CreateBlueprintRequestUsingPOST1Params object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewCreateBlueprintRequestUsingPOST1ParamsWithContext(ctx context.Context) *CreateBlueprintRequestUsingPOST1Params {
-	var ()
 	return &CreateBlueprintRequestUsingPOST1Params{
-
 		Context: ctx,
 	}
 }
 
 // NewCreateBlueprintRequestUsingPOST1ParamsWithHTTPClient creates a new CreateBlueprintRequestUsingPOST1Params object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewCreateBlueprintRequestUsingPOST1ParamsWithHTTPClient(client *http.Client) *CreateBlueprintRequestUsingPOST1Params {
-	var ()
 	return &CreateBlueprintRequestUsingPOST1Params{
 		HTTPClient: client,
 	}
 }
 
-/*CreateBlueprintRequestUsingPOST1Params contains all the parameters to send to the API endpoint
-for the create blueprint request using p o s t 1 operation typically these are written to a http.Request
+/* CreateBlueprintRequestUsingPOST1Params contains all the parameters to send to the API endpoint
+   for the create blueprint request using p o s t 1 operation.
+
+   Typically these are written to a http.Request.
 */
 type CreateBlueprintRequestUsingPOST1Params struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about
 	*/
 	APIVersion *string
-	/*Request
-	  request
 
+	/* Request.
+
+	   request
 	*/
 	Request *models.BlueprintRequest
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the create blueprint request using p o s t 1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateBlueprintRequestUsingPOST1Params) WithDefaults() *CreateBlueprintRequestUsingPOST1Params {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the create blueprint request using p o s t 1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateBlueprintRequestUsingPOST1Params) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the create blueprint request using p o s t 1 params
@@ -145,18 +160,18 @@ func (o *CreateBlueprintRequestUsingPOST1Params) WriteToRequest(r runtime.Client
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
-
 	if o.Request != nil {
 		if err := r.SetBodyParam(o.Request); err != nil {
 			return err

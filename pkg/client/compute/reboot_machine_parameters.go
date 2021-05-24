@@ -16,64 +16,79 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewRebootMachineParams creates a new RebootMachineParams object
-// with the default values initialized.
+// NewRebootMachineParams creates a new RebootMachineParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewRebootMachineParams() *RebootMachineParams {
-	var ()
 	return &RebootMachineParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewRebootMachineParamsWithTimeout creates a new RebootMachineParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewRebootMachineParamsWithTimeout(timeout time.Duration) *RebootMachineParams {
-	var ()
 	return &RebootMachineParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewRebootMachineParamsWithContext creates a new RebootMachineParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewRebootMachineParamsWithContext(ctx context.Context) *RebootMachineParams {
-	var ()
 	return &RebootMachineParams{
-
 		Context: ctx,
 	}
 }
 
 // NewRebootMachineParamsWithHTTPClient creates a new RebootMachineParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewRebootMachineParamsWithHTTPClient(client *http.Client) *RebootMachineParams {
-	var ()
 	return &RebootMachineParams{
 		HTTPClient: client,
 	}
 }
 
-/*RebootMachineParams contains all the parameters to send to the API endpoint
-for the reboot machine operation typically these are written to a http.Request
+/* RebootMachineParams contains all the parameters to send to the API endpoint
+   for the reboot machine operation.
+
+   Typically these are written to a http.Request.
 */
 type RebootMachineParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*ID
-	  The id of the Machine.
 
+	/* ID.
+
+	   The id of the Machine.
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the reboot machine params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *RebootMachineParams) WithDefaults() *RebootMachineParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the reboot machine params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *RebootMachineParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the reboot machine params
@@ -143,16 +158,17 @@ func (o *RebootMachineParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id

@@ -41,7 +41,6 @@ func (o *GetLoadBalancerNetworkInterfaceReader) ReadResponse(response runtime.Cl
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetLoadBalancerNetworkInterfaceOK() *GetLoadBalancerNetworkInterfaceOK {
 	return &GetLoadBalancerNetworkInterfaceOK{}
 }
 
-/*GetLoadBalancerNetworkInterfaceOK handles this case with default header values.
+/* GetLoadBalancerNetworkInterfaceOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type GetLoadBalancerNetworkInterfaceOK struct {
 func (o *GetLoadBalancerNetworkInterfaceOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/load-balancers/{id}/network-interfaces/{id1}][%d] getLoadBalancerNetworkInterfaceOK  %+v", 200, o.Payload)
 }
-
 func (o *GetLoadBalancerNetworkInterfaceOK) GetPayload() *models.NetworkInterface {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewGetLoadBalancerNetworkInterfaceForbidden() *GetLoadBalancerNetworkInterf
 	return &GetLoadBalancerNetworkInterfaceForbidden{}
 }
 
-/*GetLoadBalancerNetworkInterfaceForbidden handles this case with default header values.
+/* GetLoadBalancerNetworkInterfaceForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetLoadBalancerNetworkInterfaceForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetLoadBalancerNetworkInterfaceForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/load-balancers/{id}/network-interfaces/{id1}][%d] getLoadBalancerNetworkInterfaceForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/load-balancers/{id}/network-interfaces/{id1}][%d] getLoadBalancerNetworkInterfaceForbidden  %+v", 403, o.Payload)
+}
+func (o *GetLoadBalancerNetworkInterfaceForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetLoadBalancerNetworkInterfaceForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewGetLoadBalancerNetworkInterfaceNotFound() *GetLoadBalancerNetworkInterfa
 	return &GetLoadBalancerNetworkInterfaceNotFound{}
 }
 
-/*GetLoadBalancerNetworkInterfaceNotFound handles this case with default header values.
+/* GetLoadBalancerNetworkInterfaceNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type GetLoadBalancerNetworkInterfaceNotFound struct {
 func (o *GetLoadBalancerNetworkInterfaceNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/load-balancers/{id}/network-interfaces/{id1}][%d] getLoadBalancerNetworkInterfaceNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetLoadBalancerNetworkInterfaceNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -20,45 +22,56 @@ type NatRule struct {
 	// Description of the NAT rule.
 	Description string `json:"description,omitempty"`
 
-	// The edge gateway port
-	// Required: true
-	DestinationPorts *string `json:"destinationPorts"`
+	// The external IP address of the outbound or routed network
+	// Example: any, 10.20.156.101
+	// Read Only: true
+	DestinationAddress string `json:"destinationAddress,omitempty"`
+
+	// The edge gateway port. Default is `any`
+	// Example: any, 80, 5000-5100
+	DestinationPorts string `json:"destinationPorts,omitempty"`
 
 	// Index in which the rule must be applied
 	// Required: true
 	Index *int32 `json:"index"`
 
-	// Kind of NAT: NAT44/NAT64/NAT66. Only NAT44 is supported currently
+	// Kind of NAT: NAT44/NAT64/NAT66. Only NAT44 is supported currently and it is the default value
+	// Example: NAT44
 	Kind string `json:"kind,omitempty"`
 
 	// The protocol of the incoming requests. Default is TCP.
+	// Example: TCP, UDP
 	Protocol string `json:"protocol,omitempty"`
 
+	// Unique ID of the NAT Rule
+	// Read Only: true
+	RuleID string `json:"ruleId,omitempty"`
+
 	// The IP of the external source. Default is `any`
+	// Example: any, 10.20.156.101
 	SourceIPs string `json:"sourceIPs,omitempty"`
 
 	// Ports from where the request is originating. Default is `any`
+	// Example: any, 80, 5000-5100
 	SourcePorts string `json:"sourcePorts,omitempty"`
 
 	// A links to target load balancer or a machine's network interface where the request will be forwarded.
+	// Example: /iaas/api/load-balancers/try6-45ef, /iaas/api/machines/ht54-a472/network-interfaces/dyd6-d67e
 	// Required: true
 	TargetLink *string `json:"targetLink"`
 
-	// The machine port where the request will be forwarded
-	// Required: true
-	TranslatedPorts *string `json:"translatedPorts"`
+	// The machine port where the request will be forwarded. Default is `any`
+	// Example: any, 80, 5000-5100
+	TranslatedPorts string `json:"translatedPorts,omitempty"`
 
 	// Type of the NAT rule. Only DNAT is supported currently.
+	// Example: DNAT
 	Type string `json:"type,omitempty"`
 }
 
 // Validate validates this nat rule
 func (m *NatRule) Validate(formats strfmt.Registry) error {
 	var res []error
-
-	if err := m.validateDestinationPorts(formats); err != nil {
-		res = append(res, err)
-	}
 
 	if err := m.validateIndex(formats); err != nil {
 		res = append(res, err)
@@ -68,22 +81,9 @@ func (m *NatRule) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateTranslatedPorts(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *NatRule) validateDestinationPorts(formats strfmt.Registry) error {
-
-	if err := validate.Required("destinationPorts", "body", m.DestinationPorts); err != nil {
-		return err
-	}
-
 	return nil
 }
 
@@ -105,9 +105,36 @@ func (m *NatRule) validateTargetLink(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *NatRule) validateTranslatedPorts(formats strfmt.Registry) error {
+// ContextValidate validate this nat rule based on the context it is used
+func (m *NatRule) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
 
-	if err := validate.Required("translatedPorts", "body", m.TranslatedPorts); err != nil {
+	if err := m.contextValidateDestinationAddress(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateRuleID(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *NatRule) contextValidateDestinationAddress(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "destinationAddress", "body", string(m.DestinationAddress)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *NatRule) contextValidateRuleID(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "ruleId", "body", string(m.RuleID)); err != nil {
 		return err
 	}
 

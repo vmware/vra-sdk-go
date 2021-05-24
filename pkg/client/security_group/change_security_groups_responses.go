@@ -47,7 +47,6 @@ func (o *ChangeSecurityGroupsReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewChangeSecurityGroupsAccepted() *ChangeSecurityGroupsAccepted {
 	return &ChangeSecurityGroupsAccepted{}
 }
 
-/*ChangeSecurityGroupsAccepted handles this case with default header values.
+/* ChangeSecurityGroupsAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -69,7 +68,6 @@ type ChangeSecurityGroupsAccepted struct {
 func (o *ChangeSecurityGroupsAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/change-security-groups][%d] changeSecurityGroupsAccepted  %+v", 202, o.Payload)
 }
-
 func (o *ChangeSecurityGroupsAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -91,7 +89,7 @@ func NewChangeSecurityGroupsBadRequest() *ChangeSecurityGroupsBadRequest {
 	return &ChangeSecurityGroupsBadRequest{}
 }
 
-/*ChangeSecurityGroupsBadRequest handles this case with default header values.
+/* ChangeSecurityGroupsBadRequest describes a response with status code 400, with default header values.
 
 Change security groups action is not supported for a machine cluster
 */
@@ -102,7 +100,6 @@ type ChangeSecurityGroupsBadRequest struct {
 func (o *ChangeSecurityGroupsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/change-security-groups][%d] changeSecurityGroupsBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *ChangeSecurityGroupsBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -124,18 +121,29 @@ func NewChangeSecurityGroupsForbidden() *ChangeSecurityGroupsForbidden {
 	return &ChangeSecurityGroupsForbidden{}
 }
 
-/*ChangeSecurityGroupsForbidden handles this case with default header values.
+/* ChangeSecurityGroupsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type ChangeSecurityGroupsForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *ChangeSecurityGroupsForbidden) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/change-security-groups][%d] changeSecurityGroupsForbidden ", 403)
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/change-security-groups][%d] changeSecurityGroupsForbidden  %+v", 403, o.Payload)
+}
+func (o *ChangeSecurityGroupsForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *ChangeSecurityGroupsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -145,7 +153,7 @@ func NewChangeSecurityGroupsNotFound() *ChangeSecurityGroupsNotFound {
 	return &ChangeSecurityGroupsNotFound{}
 }
 
-/*ChangeSecurityGroupsNotFound handles this case with default header values.
+/* ChangeSecurityGroupsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -156,7 +164,6 @@ type ChangeSecurityGroupsNotFound struct {
 func (o *ChangeSecurityGroupsNotFound) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/change-security-groups][%d] changeSecurityGroupsNotFound  %+v", 404, o.Payload)
 }
-
 func (o *ChangeSecurityGroupsNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

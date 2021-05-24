@@ -16,69 +16,85 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewPatchServiceAccountUsingPATCHParams creates a new PatchServiceAccountUsingPATCHParams object
-// with the default values initialized.
+// NewPatchServiceAccountUsingPATCHParams creates a new PatchServiceAccountUsingPATCHParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPatchServiceAccountUsingPATCHParams() *PatchServiceAccountUsingPATCHParams {
-	var ()
 	return &PatchServiceAccountUsingPATCHParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPatchServiceAccountUsingPATCHParamsWithTimeout creates a new PatchServiceAccountUsingPATCHParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPatchServiceAccountUsingPATCHParamsWithTimeout(timeout time.Duration) *PatchServiceAccountUsingPATCHParams {
-	var ()
 	return &PatchServiceAccountUsingPATCHParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPatchServiceAccountUsingPATCHParamsWithContext creates a new PatchServiceAccountUsingPATCHParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPatchServiceAccountUsingPATCHParamsWithContext(ctx context.Context) *PatchServiceAccountUsingPATCHParams {
-	var ()
 	return &PatchServiceAccountUsingPATCHParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPatchServiceAccountUsingPATCHParamsWithHTTPClient creates a new PatchServiceAccountUsingPATCHParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPatchServiceAccountUsingPATCHParamsWithHTTPClient(client *http.Client) *PatchServiceAccountUsingPATCHParams {
-	var ()
 	return &PatchServiceAccountUsingPATCHParams{
 		HTTPClient: client,
 	}
 }
 
-/*PatchServiceAccountUsingPATCHParams contains all the parameters to send to the API endpoint
-for the patch service account using p a t c h operation typically these are written to a http.Request
+/* PatchServiceAccountUsingPATCHParams contains all the parameters to send to the API endpoint
+   for the patch service account using p a t c h operation.
+
+   Typically these are written to a http.Request.
 */
 type PatchServiceAccountUsingPATCHParams struct {
 
-	/*DomainID
-	  domainId
+	/* DomainID.
 
+	   domainId
 	*/
 	DomainID string
-	/*IntegrationID
-	  integrationId
 
+	/* IntegrationID.
+
+	   integrationId
 	*/
 	IntegrationID string
-	/*PatchRequest
-	  patchRequest
 
+	/* PatchRequest.
+
+	   patchRequest
 	*/
 	PatchRequest map[string]string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the patch service account using p a t c h params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PatchServiceAccountUsingPATCHParams) WithDefaults() *PatchServiceAccountUsingPATCHParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the patch service account using p a t c h params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PatchServiceAccountUsingPATCHParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the patch service account using p a t c h params
@@ -164,7 +180,6 @@ func (o *PatchServiceAccountUsingPATCHParams) WriteToRequest(r runtime.ClientReq
 	if err := r.SetPathParam("integrationId", o.IntegrationID); err != nil {
 		return err
 	}
-
 	if o.PatchRequest != nil {
 		if err := r.SetBodyParam(o.PatchRequest); err != nil {
 			return err

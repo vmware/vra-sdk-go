@@ -16,79 +16,103 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetDeploymentExpenseHistoryByIDUsingGETParams creates a new GetDeploymentExpenseHistoryByIDUsingGETParams object
-// with the default values initialized.
+// NewGetDeploymentExpenseHistoryByIDUsingGETParams creates a new GetDeploymentExpenseHistoryByIDUsingGETParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetDeploymentExpenseHistoryByIDUsingGETParams() *GetDeploymentExpenseHistoryByIDUsingGETParams {
-	var ()
 	return &GetDeploymentExpenseHistoryByIDUsingGETParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetDeploymentExpenseHistoryByIDUsingGETParamsWithTimeout creates a new GetDeploymentExpenseHistoryByIDUsingGETParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetDeploymentExpenseHistoryByIDUsingGETParamsWithTimeout(timeout time.Duration) *GetDeploymentExpenseHistoryByIDUsingGETParams {
-	var ()
 	return &GetDeploymentExpenseHistoryByIDUsingGETParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetDeploymentExpenseHistoryByIDUsingGETParamsWithContext creates a new GetDeploymentExpenseHistoryByIDUsingGETParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetDeploymentExpenseHistoryByIDUsingGETParamsWithContext(ctx context.Context) *GetDeploymentExpenseHistoryByIDUsingGETParams {
-	var ()
 	return &GetDeploymentExpenseHistoryByIDUsingGETParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetDeploymentExpenseHistoryByIDUsingGETParamsWithHTTPClient creates a new GetDeploymentExpenseHistoryByIDUsingGETParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetDeploymentExpenseHistoryByIDUsingGETParamsWithHTTPClient(client *http.Client) *GetDeploymentExpenseHistoryByIDUsingGETParams {
-	var ()
 	return &GetDeploymentExpenseHistoryByIDUsingGETParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetDeploymentExpenseHistoryByIDUsingGETParams contains all the parameters to send to the API endpoint
-for the get deployment expense history by Id using g e t operation typically these are written to a http.Request
+/* GetDeploymentExpenseHistoryByIDUsingGETParams contains all the parameters to send to the API endpoint
+   for the get deployment expense history by Id using g e t operation.
+
+   Typically these are written to a http.Request.
 */
 type GetDeploymentExpenseHistoryByIDUsingGETParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 	*/
 	APIVersion *string
-	/*DepID
-	  Deployment ID
 
+	/* DepID.
+
+	   Deployment ID
+
+	   Format: uuid
 	*/
 	DepID strfmt.UUID
-	/*From
-	  The timestamp from when history is requested. Should be of ISO_INSTANT format.
 
+	/* From.
+
+	   The timestamp from when history is requested. Should be of ISO_INSTANT format.
+
+	   Format: date-time
 	*/
 	From *strfmt.DateTime
-	/*Interval
-	  The interval of the expense history. Should be one of daily, weekly or monthly.
 
+	/* Interval.
+
+	   The interval of the expense history. Should be one of daily, weekly or monthly.
 	*/
 	Interval *string
-	/*To
-	  The timestamp until when history is requested. Should be of ISO_INSTANT format.
 
+	/* To.
+
+	   The timestamp until when history is requested. Should be of ISO_INSTANT format.
+
+	   Format: date-time
 	*/
 	To *strfmt.DateTime
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get deployment expense history by Id using get params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetDeploymentExpenseHistoryByIDUsingGETParams) WithDefaults() *GetDeploymentExpenseHistoryByIDUsingGETParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get deployment expense history by Id using get params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetDeploymentExpenseHistoryByIDUsingGETParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get deployment expense history by Id using get params
@@ -191,16 +215,17 @@ func (o *GetDeploymentExpenseHistoryByIDUsingGETParams) WriteToRequest(r runtime
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param depId
@@ -212,48 +237,51 @@ func (o *GetDeploymentExpenseHistoryByIDUsingGETParams) WriteToRequest(r runtime
 
 		// query param from
 		var qrFrom strfmt.DateTime
+
 		if o.From != nil {
 			qrFrom = *o.From
 		}
 		qFrom := qrFrom.String()
 		if qFrom != "" {
+
 			if err := r.SetQueryParam("from", qFrom); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Interval != nil {
 
 		// query param interval
 		var qrInterval string
+
 		if o.Interval != nil {
 			qrInterval = *o.Interval
 		}
 		qInterval := qrInterval
 		if qInterval != "" {
+
 			if err := r.SetQueryParam("interval", qInterval); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.To != nil {
 
 		// query param to
 		var qrTo strfmt.DateTime
+
 		if o.To != nil {
 			qrTo = *o.To
 		}
 		qTo := qrTo.String()
 		if qTo != "" {
+
 			if err := r.SetQueryParam("to", qTo); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

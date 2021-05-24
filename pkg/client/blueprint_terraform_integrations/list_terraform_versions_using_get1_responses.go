@@ -47,7 +47,6 @@ func (o *ListTerraformVersionsUsingGET1Reader) ReadResponse(response runtime.Cli
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewListTerraformVersionsUsingGET1OK() *ListTerraformVersionsUsingGET1OK {
 	return &ListTerraformVersionsUsingGET1OK{}
 }
 
-/*ListTerraformVersionsUsingGET1OK handles this case with default header values.
+/* ListTerraformVersionsUsingGET1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -69,7 +68,6 @@ type ListTerraformVersionsUsingGET1OK struct {
 func (o *ListTerraformVersionsUsingGET1OK) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/versions][%d] listTerraformVersionsUsingGET1OK  %+v", 200, o.Payload)
 }
-
 func (o *ListTerraformVersionsUsingGET1OK) GetPayload() *models.PageOfTerraformVersion {
 	return o.Payload
 }
@@ -91,7 +89,7 @@ func NewListTerraformVersionsUsingGET1BadRequest() *ListTerraformVersionsUsingGE
 	return &ListTerraformVersionsUsingGET1BadRequest{}
 }
 
-/*ListTerraformVersionsUsingGET1BadRequest handles this case with default header values.
+/* ListTerraformVersionsUsingGET1BadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -102,7 +100,6 @@ type ListTerraformVersionsUsingGET1BadRequest struct {
 func (o *ListTerraformVersionsUsingGET1BadRequest) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/versions][%d] listTerraformVersionsUsingGET1BadRequest  %+v", 400, o.Payload)
 }
-
 func (o *ListTerraformVersionsUsingGET1BadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -124,7 +121,7 @@ func NewListTerraformVersionsUsingGET1Unauthorized() *ListTerraformVersionsUsing
 	return &ListTerraformVersionsUsingGET1Unauthorized{}
 }
 
-/*ListTerraformVersionsUsingGET1Unauthorized handles this case with default header values.
+/* ListTerraformVersionsUsingGET1Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -145,7 +142,7 @@ func NewListTerraformVersionsUsingGET1Forbidden() *ListTerraformVersionsUsingGET
 	return &ListTerraformVersionsUsingGET1Forbidden{}
 }
 
-/*ListTerraformVersionsUsingGET1Forbidden handles this case with default header values.
+/* ListTerraformVersionsUsingGET1Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */

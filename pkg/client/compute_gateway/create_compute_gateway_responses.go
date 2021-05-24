@@ -41,7 +41,6 @@ func (o *CreateComputeGatewayReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewCreateComputeGatewayAccepted() *CreateComputeGatewayAccepted {
 	return &CreateComputeGatewayAccepted{}
 }
 
-/*CreateComputeGatewayAccepted handles this case with default header values.
+/* CreateComputeGatewayAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type CreateComputeGatewayAccepted struct {
 func (o *CreateComputeGatewayAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/compute-gateways][%d] createComputeGatewayAccepted  %+v", 202, o.Payload)
 }
-
 func (o *CreateComputeGatewayAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewCreateComputeGatewayBadRequest() *CreateComputeGatewayBadRequest {
 	return &CreateComputeGatewayBadRequest{}
 }
 
-/*CreateComputeGatewayBadRequest handles this case with default header values.
+/* CreateComputeGatewayBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -96,7 +94,6 @@ type CreateComputeGatewayBadRequest struct {
 func (o *CreateComputeGatewayBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/compute-gateways][%d] createComputeGatewayBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateComputeGatewayBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -118,18 +115,29 @@ func NewCreateComputeGatewayForbidden() *CreateComputeGatewayForbidden {
 	return &CreateComputeGatewayForbidden{}
 }
 
-/*CreateComputeGatewayForbidden handles this case with default header values.
+/* CreateComputeGatewayForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type CreateComputeGatewayForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *CreateComputeGatewayForbidden) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/compute-gateways][%d] createComputeGatewayForbidden ", 403)
+	return fmt.Sprintf("[POST /iaas/api/compute-gateways][%d] createComputeGatewayForbidden  %+v", 403, o.Payload)
+}
+func (o *CreateComputeGatewayForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *CreateComputeGatewayForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

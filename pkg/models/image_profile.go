@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -22,18 +24,23 @@ type ImageProfile struct {
 	Links map[string]Href `json:"_links"`
 
 	// Id of the cloud account this image profile belongs to.
+	// Example: [9e49]
 	CloudAccountID string `json:"cloudAccountId,omitempty"`
 
 	// Date when the entity was created. The date is in ISO 8601 and UTC.
+	// Example: 2012-09-27
 	CreatedAt string `json:"createdAt,omitempty"`
 
 	// A human-friendly description.
+	// Example: my-description
 	Description string `json:"description,omitempty"`
 
 	// The id of the region for which this profile is defined
+	// Example: us-east-1
 	ExternalRegionID string `json:"externalRegionId,omitempty"`
 
 	// The id of this resource instance
+	// Example: 9e49
 	// Required: true
 	ID *string `json:"id"`
 
@@ -42,18 +49,23 @@ type ImageProfile struct {
 	ImageMappings *ImageMapping `json:"imageMappings"`
 
 	// A human-friendly name used as an identifier in APIs that support this option.
+	// Example: my-name
 	Name string `json:"name,omitempty"`
 
 	// The id of the organization this entity belongs to.
+	// Example: 9e49
 	OrgID string `json:"orgId,omitempty"`
 
 	// This field is deprecated. Use orgId instead. The id of the organization this entity belongs to.
+	// Example: deprecated
 	OrganizationID string `json:"organizationId,omitempty"`
 
 	// Email of the user that owns the entity.
+	// Example: csp@vmware.com
 	Owner string `json:"owner,omitempty"`
 
 	// Date when the entity was last updated. The date is ISO 8601 and UTC.
+	// Example: 2012-09-27
 	UpdatedAt string `json:"updatedAt,omitempty"`
 }
 
@@ -80,6 +92,10 @@ func (m *ImageProfile) Validate(formats strfmt.Registry) error {
 }
 
 func (m *ImageProfile) validateLinks(formats strfmt.Registry) error {
+
+	if err := validate.Required("_links", "body", m.Links); err != nil {
+		return err
+	}
 
 	for k := range m.Links {
 
@@ -114,6 +130,57 @@ func (m *ImageProfile) validateImageMappings(formats strfmt.Registry) error {
 
 	if m.ImageMappings != nil {
 		if err := m.ImageMappings.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("imageMappings")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this image profile based on the context it is used
+func (m *ImageProfile) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateLinks(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateImageMappings(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ImageProfile) contextValidateLinks(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.Required("_links", "body", m.Links); err != nil {
+		return err
+	}
+
+	for k := range m.Links {
+
+		if val, ok := m.Links[k]; ok {
+			if err := val.ContextValidate(ctx, formats); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ImageProfile) contextValidateImageMappings(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ImageMappings != nil {
+		if err := m.ImageMappings.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("imageMappings")
 			}

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 	"strconv"
 
@@ -193,7 +194,6 @@ func (m *MarketplaceContentDownloadRequest) validateContentType(formats strfmt.R
 }
 
 func (m *MarketplaceContentDownloadRequest) validateCreatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CreatedAt) { // not required
 		return nil
 	}
@@ -206,7 +206,6 @@ func (m *MarketplaceContentDownloadRequest) validateCreatedAt(formats strfmt.Reg
 }
 
 func (m *MarketplaceContentDownloadRequest) validateExecutionMessages(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ExecutionMessages) { // not required
 		return nil
 	}
@@ -231,7 +230,6 @@ func (m *MarketplaceContentDownloadRequest) validateExecutionMessages(formats st
 }
 
 func (m *MarketplaceContentDownloadRequest) validateID(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ID) { // not required
 		return nil
 	}
@@ -244,7 +242,6 @@ func (m *MarketplaceContentDownloadRequest) validateID(formats strfmt.Registry) 
 }
 
 func (m *MarketplaceContentDownloadRequest) validateLastUpdatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.LastUpdatedAt) { // not required
 		return nil
 	}
@@ -312,6 +309,107 @@ func (m *MarketplaceContentDownloadRequest) validateTargetType(formats strfmt.Re
 
 	// value enum
 	if err := m.validateTargetTypeEnum("targetType", "body", *m.TargetType); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this marketplace content download request based on the context it is used
+func (m *MarketplaceContentDownloadRequest) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateCreatedAt(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDownloadedContentID(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateExecutionMessages(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateID(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateLastUpdatedAt(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *MarketplaceContentDownloadRequest) contextValidateCreatedAt(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "createdAt", "body", strfmt.DateTime(m.CreatedAt)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *MarketplaceContentDownloadRequest) contextValidateDownloadedContentID(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "downloadedContentId", "body", string(m.DownloadedContentID)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *MarketplaceContentDownloadRequest) contextValidateExecutionMessages(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "executionMessages", "body", []*ExecutionMessage(m.ExecutionMessages)); err != nil {
+		return err
+	}
+
+	for i := 0; i < len(m.ExecutionMessages); i++ {
+
+		if m.ExecutionMessages[i] != nil {
+			if err := m.ExecutionMessages[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("executionMessages" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *MarketplaceContentDownloadRequest) contextValidateID(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "id", "body", strfmt.UUID(m.ID)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *MarketplaceContentDownloadRequest) contextValidateLastUpdatedAt(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "lastUpdatedAt", "body", strfmt.DateTime(m.LastUpdatedAt)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *MarketplaceContentDownloadRequest) contextValidateStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "status", "body", string(m.Status)); err != nil {
 		return err
 	}
 

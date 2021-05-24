@@ -25,15 +25,20 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateComputeGateway(params *CreateComputeGatewayParams) (*CreateComputeGatewayAccepted, error)
+	CreateComputeGateway(params *CreateComputeGatewayParams, opts ...ClientOption) (*CreateComputeGatewayAccepted, error)
 
-	DeleteComputeGateway(params *DeleteComputeGatewayParams) (*DeleteComputeGatewayAccepted, error)
+	DeleteComputeGateway(params *DeleteComputeGatewayParams, opts ...ClientOption) (*DeleteComputeGatewayAccepted, error)
 
-	GetComputeGateway(params *GetComputeGatewayParams) (*GetComputeGatewayOK, error)
+	GetComputeGateway(params *GetComputeGatewayParams, opts ...ClientOption) (*GetComputeGatewayOK, error)
 
-	GetComputeGateways(params *GetComputeGatewaysParams) (*GetComputeGatewaysOK, error)
+	GetComputeGateways(params *GetComputeGatewaysParams, opts ...ClientOption) (*GetComputeGatewaysOK, error)
+
+	ReconfigureComputeGateway(params *ReconfigureComputeGatewayParams, opts ...ClientOption) (*ReconfigureComputeGatewayAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -43,13 +48,12 @@ type ClientService interface {
 
   Create a new compute gateway.
 */
-func (a *Client) CreateComputeGateway(params *CreateComputeGatewayParams) (*CreateComputeGatewayAccepted, error) {
+func (a *Client) CreateComputeGateway(params *CreateComputeGatewayParams, opts ...ClientOption) (*CreateComputeGatewayAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateComputeGatewayParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createComputeGateway",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/compute-gateways",
@@ -60,7 +64,12 @@ func (a *Client) CreateComputeGateway(params *CreateComputeGatewayParams) (*Crea
 		Reader:             &CreateComputeGatewayReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -79,13 +88,12 @@ func (a *Client) CreateComputeGateway(params *CreateComputeGatewayParams) (*Crea
 
   Delete compute gateway with a given id
 */
-func (a *Client) DeleteComputeGateway(params *DeleteComputeGatewayParams) (*DeleteComputeGatewayAccepted, error) {
+func (a *Client) DeleteComputeGateway(params *DeleteComputeGatewayParams, opts ...ClientOption) (*DeleteComputeGatewayAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteComputeGatewayParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteComputeGateway",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/compute-gateways/{id}",
@@ -96,7 +104,12 @@ func (a *Client) DeleteComputeGateway(params *DeleteComputeGatewayParams) (*Dele
 		Reader:             &DeleteComputeGatewayReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -115,13 +128,12 @@ func (a *Client) DeleteComputeGateway(params *DeleteComputeGatewayParams) (*Dele
 
   Get compute gateway with a given id
 */
-func (a *Client) GetComputeGateway(params *GetComputeGatewayParams) (*GetComputeGatewayOK, error) {
+func (a *Client) GetComputeGateway(params *GetComputeGatewayParams, opts ...ClientOption) (*GetComputeGatewayOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetComputeGatewayParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getComputeGateway",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/compute-gateways/{id}",
@@ -132,7 +144,12 @@ func (a *Client) GetComputeGateway(params *GetComputeGatewayParams) (*GetCompute
 		Reader:             &GetComputeGatewayReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -151,13 +168,12 @@ func (a *Client) GetComputeGateway(params *GetComputeGatewayParams) (*GetCompute
 
   Get all compute gateways
 */
-func (a *Client) GetComputeGateways(params *GetComputeGatewaysParams) (*GetComputeGatewaysOK, error) {
+func (a *Client) GetComputeGateways(params *GetComputeGatewaysParams, opts ...ClientOption) (*GetComputeGatewaysOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetComputeGatewaysParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getComputeGateways",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/compute-gateways",
@@ -168,7 +184,12 @@ func (a *Client) GetComputeGateways(params *GetComputeGatewaysParams) (*GetCompu
 		Reader:             &GetComputeGatewaysReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -179,6 +200,46 @@ func (a *Client) GetComputeGateways(params *GetComputeGatewaysParams) (*GetCompu
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getComputeGateways: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  ReconfigureComputeGateway deprecateds reconfigure operation for compute gateway
+
+  Deprecated: Day-2 reconfigure operation for compute gateway. Use Day-2 reconfigure operation on compute nat resource instead.
+*/
+func (a *Client) ReconfigureComputeGateway(params *ReconfigureComputeGatewayParams, opts ...ClientOption) (*ReconfigureComputeGatewayAccepted, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewReconfigureComputeGatewayParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "reconfigureComputeGateway",
+		Method:             "POST",
+		PathPattern:        "/iaas/api/compute-gateways/{id}/operations/reconfigure",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ReconfigureComputeGatewayReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ReconfigureComputeGatewayAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for reconfigureComputeGateway: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

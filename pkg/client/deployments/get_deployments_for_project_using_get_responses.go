@@ -29,7 +29,6 @@ func (o *GetDeploymentsForProjectUsingGETReader) ReadResponse(response runtime.C
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -40,7 +39,7 @@ func NewGetDeploymentsForProjectUsingGETOK() *GetDeploymentsForProjectUsingGETOK
 	return &GetDeploymentsForProjectUsingGETOK{}
 }
 
-/*GetDeploymentsForProjectUsingGETOK handles this case with default header values.
+/* GetDeploymentsForProjectUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -51,7 +50,6 @@ type GetDeploymentsForProjectUsingGETOK struct {
 func (o *GetDeploymentsForProjectUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/projects/{projectId}/deployment-count][%d] getDeploymentsForProjectUsingGETOK  %+v", 200, o.Payload)
 }
-
 func (o *GetDeploymentsForProjectUsingGETOK) GetPayload() *models.Page {
 	return o.Payload
 }

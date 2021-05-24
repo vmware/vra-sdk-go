@@ -47,7 +47,6 @@ func (o *EnumerateDomainsUsingPOSTReader) ReadResponse(response runtime.ClientRe
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewEnumerateDomainsUsingPOSTOK() *EnumerateDomainsUsingPOSTOK {
 	return &EnumerateDomainsUsingPOSTOK{}
 }
 
-/*EnumerateDomainsUsingPOSTOK handles this case with default header values.
+/* EnumerateDomainsUsingPOSTOK describes a response with status code 200, with default header values.
 
 Get domains of the vCF endpoint
 */
@@ -69,7 +68,6 @@ type EnumerateDomainsUsingPOSTOK struct {
 func (o *EnumerateDomainsUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /content/api/vcf/domains-enumeration][%d] enumerateDomainsUsingPOSTOK  %+v", 200, o.Payload)
 }
-
 func (o *EnumerateDomainsUsingPOSTOK) GetPayload() *models.VcfDomains {
 	return o.Payload
 }
@@ -91,7 +89,7 @@ func NewEnumerateDomainsUsingPOSTBadRequest() *EnumerateDomainsUsingPOSTBadReque
 	return &EnumerateDomainsUsingPOSTBadRequest{}
 }
 
-/*EnumerateDomainsUsingPOSTBadRequest handles this case with default header values.
+/* EnumerateDomainsUsingPOSTBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -102,7 +100,6 @@ type EnumerateDomainsUsingPOSTBadRequest struct {
 func (o *EnumerateDomainsUsingPOSTBadRequest) Error() string {
 	return fmt.Sprintf("[POST /content/api/vcf/domains-enumeration][%d] enumerateDomainsUsingPOSTBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *EnumerateDomainsUsingPOSTBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -124,7 +121,7 @@ func NewEnumerateDomainsUsingPOSTUnauthorized() *EnumerateDomainsUsingPOSTUnauth
 	return &EnumerateDomainsUsingPOSTUnauthorized{}
 }
 
-/*EnumerateDomainsUsingPOSTUnauthorized handles this case with default header values.
+/* EnumerateDomainsUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -145,7 +142,7 @@ func NewEnumerateDomainsUsingPOSTForbidden() *EnumerateDomainsUsingPOSTForbidden
 	return &EnumerateDomainsUsingPOSTForbidden{}
 }
 
-/*EnumerateDomainsUsingPOSTForbidden handles this case with default header values.
+/* EnumerateDomainsUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */

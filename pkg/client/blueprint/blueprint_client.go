@@ -25,33 +25,36 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateBlueprintUsingPOST1(params *CreateBlueprintUsingPOST1Params) (*CreateBlueprintUsingPOST1Created, error)
+	CreateBlueprintUsingPOST1(params *CreateBlueprintUsingPOST1Params, opts ...ClientOption) (*CreateBlueprintUsingPOST1Created, error)
 
-	CreateBlueprintVersionUsingPOST1(params *CreateBlueprintVersionUsingPOST1Params) (*CreateBlueprintVersionUsingPOST1Created, error)
+	CreateBlueprintVersionUsingPOST1(params *CreateBlueprintVersionUsingPOST1Params, opts ...ClientOption) (*CreateBlueprintVersionUsingPOST1Created, error)
 
-	DeleteBlueprintUsingDELETE1(params *DeleteBlueprintUsingDELETE1Params) (*DeleteBlueprintUsingDELETE1NoContent, error)
+	DeleteBlueprintUsingDELETE1(params *DeleteBlueprintUsingDELETE1Params, opts ...ClientOption) (*DeleteBlueprintUsingDELETE1NoContent, error)
 
-	GetBlueprintInputsSchemaUsingGET1(params *GetBlueprintInputsSchemaUsingGET1Params) (*GetBlueprintInputsSchemaUsingGET1OK, error)
+	GetBlueprintInputsSchemaUsingGET1(params *GetBlueprintInputsSchemaUsingGET1Params, opts ...ClientOption) (*GetBlueprintInputsSchemaUsingGET1OK, error)
 
-	GetBlueprintUsingGET1(params *GetBlueprintUsingGET1Params) (*GetBlueprintUsingGET1OK, error)
+	GetBlueprintUsingGET1(params *GetBlueprintUsingGET1Params, opts ...ClientOption) (*GetBlueprintUsingGET1OK, error)
 
-	GetBlueprintVersionInputsSchemaUsingGET1(params *GetBlueprintVersionInputsSchemaUsingGET1Params) (*GetBlueprintVersionInputsSchemaUsingGET1OK, error)
+	GetBlueprintVersionInputsSchemaUsingGET1(params *GetBlueprintVersionInputsSchemaUsingGET1Params, opts ...ClientOption) (*GetBlueprintVersionInputsSchemaUsingGET1OK, error)
 
-	GetBlueprintVersionUsingGET1(params *GetBlueprintVersionUsingGET1Params) (*GetBlueprintVersionUsingGET1OK, error)
+	GetBlueprintVersionUsingGET1(params *GetBlueprintVersionUsingGET1Params, opts ...ClientOption) (*GetBlueprintVersionUsingGET1OK, error)
 
-	ListBlueprintVersionsUsingGET(params *ListBlueprintVersionsUsingGETParams) (*ListBlueprintVersionsUsingGETOK, error)
+	ListBlueprintVersionsUsingGET(params *ListBlueprintVersionsUsingGETParams, opts ...ClientOption) (*ListBlueprintVersionsUsingGETOK, error)
 
-	ListBlueprintsUsingGET1(params *ListBlueprintsUsingGET1Params) (*ListBlueprintsUsingGET1OK, error)
+	ListBlueprintsUsingGET1(params *ListBlueprintsUsingGET1Params, opts ...ClientOption) (*ListBlueprintsUsingGET1OK, error)
 
-	ReleaseBlueprintVersionUsingPOST1(params *ReleaseBlueprintVersionUsingPOST1Params) (*ReleaseBlueprintVersionUsingPOST1OK, error)
+	ReleaseBlueprintVersionUsingPOST1(params *ReleaseBlueprintVersionUsingPOST1Params, opts ...ClientOption) (*ReleaseBlueprintVersionUsingPOST1OK, error)
 
-	RestoreBlueprintVersionUsingPOST1(params *RestoreBlueprintVersionUsingPOST1Params) (*RestoreBlueprintVersionUsingPOST1OK, error)
+	RestoreBlueprintVersionUsingPOST1(params *RestoreBlueprintVersionUsingPOST1Params, opts ...ClientOption) (*RestoreBlueprintVersionUsingPOST1OK, error)
 
-	UnReleaseBlueprintVersionUsingPOST1(params *UnReleaseBlueprintVersionUsingPOST1Params) (*UnReleaseBlueprintVersionUsingPOST1OK, error)
+	UnReleaseBlueprintVersionUsingPOST1(params *UnReleaseBlueprintVersionUsingPOST1Params, opts ...ClientOption) (*UnReleaseBlueprintVersionUsingPOST1OK, error)
 
-	UpdateBlueprintUsingPUT1(params *UpdateBlueprintUsingPUT1Params) (*UpdateBlueprintUsingPUT1OK, error)
+	UpdateBlueprintUsingPUT1(params *UpdateBlueprintUsingPUT1Params, opts ...ClientOption) (*UpdateBlueprintUsingPUT1OK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -59,13 +62,12 @@ type ClientService interface {
 /*
   CreateBlueprintUsingPOST1 creates a blueprint
 */
-func (a *Client) CreateBlueprintUsingPOST1(params *CreateBlueprintUsingPOST1Params) (*CreateBlueprintUsingPOST1Created, error) {
+func (a *Client) CreateBlueprintUsingPOST1(params *CreateBlueprintUsingPOST1Params, opts ...ClientOption) (*CreateBlueprintUsingPOST1Created, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateBlueprintUsingPOST1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createBlueprintUsingPOST_1",
 		Method:             "POST",
 		PathPattern:        "/blueprint/api/blueprints",
@@ -76,7 +78,12 @@ func (a *Client) CreateBlueprintUsingPOST1(params *CreateBlueprintUsingPOST1Para
 		Reader:             &CreateBlueprintUsingPOST1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -93,13 +100,12 @@ func (a *Client) CreateBlueprintUsingPOST1(params *CreateBlueprintUsingPOST1Para
 /*
   CreateBlueprintVersionUsingPOST1 creates version for the given blueprint ID
 */
-func (a *Client) CreateBlueprintVersionUsingPOST1(params *CreateBlueprintVersionUsingPOST1Params) (*CreateBlueprintVersionUsingPOST1Created, error) {
+func (a *Client) CreateBlueprintVersionUsingPOST1(params *CreateBlueprintVersionUsingPOST1Params, opts ...ClientOption) (*CreateBlueprintVersionUsingPOST1Created, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateBlueprintVersionUsingPOST1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createBlueprintVersionUsingPOST_1",
 		Method:             "POST",
 		PathPattern:        "/blueprint/api/blueprints/{blueprintId}/versions",
@@ -110,7 +116,12 @@ func (a *Client) CreateBlueprintVersionUsingPOST1(params *CreateBlueprintVersion
 		Reader:             &CreateBlueprintVersionUsingPOST1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -127,13 +138,12 @@ func (a *Client) CreateBlueprintVersionUsingPOST1(params *CreateBlueprintVersion
 /*
   DeleteBlueprintUsingDELETE1 deletes a blueprint
 */
-func (a *Client) DeleteBlueprintUsingDELETE1(params *DeleteBlueprintUsingDELETE1Params) (*DeleteBlueprintUsingDELETE1NoContent, error) {
+func (a *Client) DeleteBlueprintUsingDELETE1(params *DeleteBlueprintUsingDELETE1Params, opts ...ClientOption) (*DeleteBlueprintUsingDELETE1NoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteBlueprintUsingDELETE1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteBlueprintUsingDELETE_1",
 		Method:             "DELETE",
 		PathPattern:        "/blueprint/api/blueprints/{blueprintId}",
@@ -144,7 +154,12 @@ func (a *Client) DeleteBlueprintUsingDELETE1(params *DeleteBlueprintUsingDELETE1
 		Reader:             &DeleteBlueprintUsingDELETE1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -161,13 +176,12 @@ func (a *Client) DeleteBlueprintUsingDELETE1(params *DeleteBlueprintUsingDELETE1
 /*
   GetBlueprintInputsSchemaUsingGET1 returns blueprint inputs schema
 */
-func (a *Client) GetBlueprintInputsSchemaUsingGET1(params *GetBlueprintInputsSchemaUsingGET1Params) (*GetBlueprintInputsSchemaUsingGET1OK, error) {
+func (a *Client) GetBlueprintInputsSchemaUsingGET1(params *GetBlueprintInputsSchemaUsingGET1Params, opts ...ClientOption) (*GetBlueprintInputsSchemaUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetBlueprintInputsSchemaUsingGET1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getBlueprintInputsSchemaUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/blueprint/api/blueprints/{blueprintId}/inputs-schema",
@@ -178,7 +192,12 @@ func (a *Client) GetBlueprintInputsSchemaUsingGET1(params *GetBlueprintInputsSch
 		Reader:             &GetBlueprintInputsSchemaUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -195,13 +214,12 @@ func (a *Client) GetBlueprintInputsSchemaUsingGET1(params *GetBlueprintInputsSch
 /*
   GetBlueprintUsingGET1 returns blueprint details
 */
-func (a *Client) GetBlueprintUsingGET1(params *GetBlueprintUsingGET1Params) (*GetBlueprintUsingGET1OK, error) {
+func (a *Client) GetBlueprintUsingGET1(params *GetBlueprintUsingGET1Params, opts ...ClientOption) (*GetBlueprintUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetBlueprintUsingGET1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getBlueprintUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/blueprint/api/blueprints/{blueprintId}",
@@ -212,7 +230,12 @@ func (a *Client) GetBlueprintUsingGET1(params *GetBlueprintUsingGET1Params) (*Ge
 		Reader:             &GetBlueprintUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -229,13 +252,12 @@ func (a *Client) GetBlueprintUsingGET1(params *GetBlueprintUsingGET1Params) (*Ge
 /*
   GetBlueprintVersionInputsSchemaUsingGET1 returns blueprint version inputs schema
 */
-func (a *Client) GetBlueprintVersionInputsSchemaUsingGET1(params *GetBlueprintVersionInputsSchemaUsingGET1Params) (*GetBlueprintVersionInputsSchemaUsingGET1OK, error) {
+func (a *Client) GetBlueprintVersionInputsSchemaUsingGET1(params *GetBlueprintVersionInputsSchemaUsingGET1Params, opts ...ClientOption) (*GetBlueprintVersionInputsSchemaUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetBlueprintVersionInputsSchemaUsingGET1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getBlueprintVersionInputsSchemaUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/blueprint/api/blueprints/{blueprintId}/versions/{version}/inputs-schema",
@@ -246,7 +268,12 @@ func (a *Client) GetBlueprintVersionInputsSchemaUsingGET1(params *GetBlueprintVe
 		Reader:             &GetBlueprintVersionInputsSchemaUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -263,13 +290,12 @@ func (a *Client) GetBlueprintVersionInputsSchemaUsingGET1(params *GetBlueprintVe
 /*
   GetBlueprintVersionUsingGET1 returns versioned blueprint details
 */
-func (a *Client) GetBlueprintVersionUsingGET1(params *GetBlueprintVersionUsingGET1Params) (*GetBlueprintVersionUsingGET1OK, error) {
+func (a *Client) GetBlueprintVersionUsingGET1(params *GetBlueprintVersionUsingGET1Params, opts ...ClientOption) (*GetBlueprintVersionUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetBlueprintVersionUsingGET1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getBlueprintVersionUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/blueprint/api/blueprints/{blueprintId}/versions/{version}",
@@ -280,7 +306,12 @@ func (a *Client) GetBlueprintVersionUsingGET1(params *GetBlueprintVersionUsingGE
 		Reader:             &GetBlueprintVersionUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -297,13 +328,12 @@ func (a *Client) GetBlueprintVersionUsingGET1(params *GetBlueprintVersionUsingGE
 /*
   ListBlueprintVersionsUsingGET lists blueprint versions
 */
-func (a *Client) ListBlueprintVersionsUsingGET(params *ListBlueprintVersionsUsingGETParams) (*ListBlueprintVersionsUsingGETOK, error) {
+func (a *Client) ListBlueprintVersionsUsingGET(params *ListBlueprintVersionsUsingGETParams, opts ...ClientOption) (*ListBlueprintVersionsUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewListBlueprintVersionsUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "listBlueprintVersionsUsingGET",
 		Method:             "GET",
 		PathPattern:        "/blueprint/api/blueprints/{blueprintId}/versions",
@@ -314,7 +344,12 @@ func (a *Client) ListBlueprintVersionsUsingGET(params *ListBlueprintVersionsUsin
 		Reader:             &ListBlueprintVersionsUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -331,13 +366,12 @@ func (a *Client) ListBlueprintVersionsUsingGET(params *ListBlueprintVersionsUsin
 /*
   ListBlueprintsUsingGET1 lists draft blueprint
 */
-func (a *Client) ListBlueprintsUsingGET1(params *ListBlueprintsUsingGET1Params) (*ListBlueprintsUsingGET1OK, error) {
+func (a *Client) ListBlueprintsUsingGET1(params *ListBlueprintsUsingGET1Params, opts ...ClientOption) (*ListBlueprintsUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewListBlueprintsUsingGET1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "listBlueprintsUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/blueprint/api/blueprints",
@@ -348,7 +382,12 @@ func (a *Client) ListBlueprintsUsingGET1(params *ListBlueprintsUsingGET1Params) 
 		Reader:             &ListBlueprintsUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -365,13 +404,12 @@ func (a *Client) ListBlueprintsUsingGET1(params *ListBlueprintsUsingGET1Params) 
 /*
   ReleaseBlueprintVersionUsingPOST1 releases versioned blueprint to catalog
 */
-func (a *Client) ReleaseBlueprintVersionUsingPOST1(params *ReleaseBlueprintVersionUsingPOST1Params) (*ReleaseBlueprintVersionUsingPOST1OK, error) {
+func (a *Client) ReleaseBlueprintVersionUsingPOST1(params *ReleaseBlueprintVersionUsingPOST1Params, opts ...ClientOption) (*ReleaseBlueprintVersionUsingPOST1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReleaseBlueprintVersionUsingPOST1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "releaseBlueprintVersionUsingPOST_1",
 		Method:             "POST",
 		PathPattern:        "/blueprint/api/blueprints/{blueprintId}/versions/{version}/actions/release",
@@ -382,7 +420,12 @@ func (a *Client) ReleaseBlueprintVersionUsingPOST1(params *ReleaseBlueprintVersi
 		Reader:             &ReleaseBlueprintVersionUsingPOST1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -399,13 +442,12 @@ func (a *Client) ReleaseBlueprintVersionUsingPOST1(params *ReleaseBlueprintVersi
 /*
   RestoreBlueprintVersionUsingPOST1 restores content of draft from versioned blueprint
 */
-func (a *Client) RestoreBlueprintVersionUsingPOST1(params *RestoreBlueprintVersionUsingPOST1Params) (*RestoreBlueprintVersionUsingPOST1OK, error) {
+func (a *Client) RestoreBlueprintVersionUsingPOST1(params *RestoreBlueprintVersionUsingPOST1Params, opts ...ClientOption) (*RestoreBlueprintVersionUsingPOST1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewRestoreBlueprintVersionUsingPOST1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "restoreBlueprintVersionUsingPOST_1",
 		Method:             "POST",
 		PathPattern:        "/blueprint/api/blueprints/{blueprintId}/versions/{version}/actions/restore",
@@ -416,7 +458,12 @@ func (a *Client) RestoreBlueprintVersionUsingPOST1(params *RestoreBlueprintVersi
 		Reader:             &RestoreBlueprintVersionUsingPOST1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -433,13 +480,12 @@ func (a *Client) RestoreBlueprintVersionUsingPOST1(params *RestoreBlueprintVersi
 /*
   UnReleaseBlueprintVersionUsingPOST1 uns release versioned blueprint from catalog
 */
-func (a *Client) UnReleaseBlueprintVersionUsingPOST1(params *UnReleaseBlueprintVersionUsingPOST1Params) (*UnReleaseBlueprintVersionUsingPOST1OK, error) {
+func (a *Client) UnReleaseBlueprintVersionUsingPOST1(params *UnReleaseBlueprintVersionUsingPOST1Params, opts ...ClientOption) (*UnReleaseBlueprintVersionUsingPOST1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUnReleaseBlueprintVersionUsingPOST1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "unReleaseBlueprintVersionUsingPOST_1",
 		Method:             "POST",
 		PathPattern:        "/blueprint/api/blueprints/{blueprintId}/versions/{version}/actions/unrelease",
@@ -450,7 +496,12 @@ func (a *Client) UnReleaseBlueprintVersionUsingPOST1(params *UnReleaseBlueprintV
 		Reader:             &UnReleaseBlueprintVersionUsingPOST1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -467,13 +518,12 @@ func (a *Client) UnReleaseBlueprintVersionUsingPOST1(params *UnReleaseBlueprintV
 /*
   UpdateBlueprintUsingPUT1 updates a blueprint
 */
-func (a *Client) UpdateBlueprintUsingPUT1(params *UpdateBlueprintUsingPUT1Params) (*UpdateBlueprintUsingPUT1OK, error) {
+func (a *Client) UpdateBlueprintUsingPUT1(params *UpdateBlueprintUsingPUT1Params, opts ...ClientOption) (*UpdateBlueprintUsingPUT1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateBlueprintUsingPUT1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "updateBlueprintUsingPUT_1",
 		Method:             "PUT",
 		PathPattern:        "/blueprint/api/blueprints/{blueprintId}",
@@ -484,7 +534,12 @@ func (a *Client) UpdateBlueprintUsingPUT1(params *UpdateBlueprintUsingPUT1Params
 		Reader:             &UpdateBlueprintUsingPUT1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

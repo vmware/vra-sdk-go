@@ -17,57 +17,58 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGetProjectsParams creates a new GetProjectsParams object
-// with the default values initialized.
+// NewGetProjectsParams creates a new GetProjectsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetProjectsParams() *GetProjectsParams {
-	var ()
 	return &GetProjectsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetProjectsParamsWithTimeout creates a new GetProjectsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetProjectsParamsWithTimeout(timeout time.Duration) *GetProjectsParams {
-	var ()
 	return &GetProjectsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetProjectsParamsWithContext creates a new GetProjectsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetProjectsParamsWithContext(ctx context.Context) *GetProjectsParams {
-	var ()
 	return &GetProjectsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetProjectsParamsWithHTTPClient creates a new GetProjectsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetProjectsParamsWithHTTPClient(client *http.Client) *GetProjectsParams {
-	var ()
 	return &GetProjectsParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetProjectsParams contains all the parameters to send to the API endpoint
-for the get projects operation typically these are written to a http.Request
+/* GetProjectsParams contains all the parameters to send to the API endpoint
+   for the get projects operation.
+
+   Typically these are written to a http.Request.
 */
 type GetProjectsParams struct {
 
-	/*DollarCount
-	  Total number of records. If the collection has a filter, the number of records matching the filter
+	/* DollarCount.
 
+	   Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.
 	*/
 	DollarCount *bool
-	/*DollarFilter
-	  Filter the results by a specified predicate expression. A set of operators and functions are defined for use:
+
+	/* DollarFilter.
+
+	     Filter the results by a specified predicate expression. A set of operators and functions are defined for use:
 	Operators: eq, ne, gt, ge, lt, le, and, or, not.
 	Functions:
 	bool substringof(string p0, string p1)
@@ -82,33 +83,51 @@ type GetProjectsParams struct {
 	string toupper(string p0)
 	string trim(string p0)
 	string concat(string p0, string p1)
-
 	*/
 	DollarFilter *string
-	/*DollarSkip
-	  Number of records you want to skip
 
+	/* DollarOrderBy.
+
+	   Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.
+	*/
+	DollarOrderBy *string
+
+	/* DollarSkip.
+
+	   Number of records you want to skip.
 	*/
 	DollarSkip *int64
-	/*DollarTop
-	  Number of records you want
 
+	/* DollarTop.
+
+	   Number of records you want to get.
 	*/
 	DollarTop *int64
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 
+	/* APIVersion.
+
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*OrderBy
-	  Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.
-
-	*/
-	OrderBy *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get projects params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetProjectsParams) WithDefaults() *GetProjectsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get projects params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetProjectsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get projects params
@@ -166,6 +185,17 @@ func (o *GetProjectsParams) SetDollarFilter(dollarFilter *string) {
 	o.DollarFilter = dollarFilter
 }
 
+// WithDollarOrderBy adds the dollarOrderBy to the get projects params
+func (o *GetProjectsParams) WithDollarOrderBy(dollarOrderBy *string) *GetProjectsParams {
+	o.SetDollarOrderBy(dollarOrderBy)
+	return o
+}
+
+// SetDollarOrderBy adds the dollarOrderBy to the get projects params
+func (o *GetProjectsParams) SetDollarOrderBy(dollarOrderBy *string) {
+	o.DollarOrderBy = dollarOrderBy
+}
+
 // WithDollarSkip adds the dollarSkip to the get projects params
 func (o *GetProjectsParams) WithDollarSkip(dollarSkip *int64) *GetProjectsParams {
 	o.SetDollarSkip(dollarSkip)
@@ -199,17 +229,6 @@ func (o *GetProjectsParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
-// WithOrderBy adds the orderBy to the get projects params
-func (o *GetProjectsParams) WithOrderBy(orderBy *string) *GetProjectsParams {
-	o.SetOrderBy(orderBy)
-	return o
-}
-
-// SetOrderBy adds the orderBy to the get projects params
-func (o *GetProjectsParams) SetOrderBy(orderBy *string) {
-	o.OrderBy = orderBy
-}
-
 // WriteToRequest writes these params to a swagger request
 func (o *GetProjectsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -222,96 +241,102 @@ func (o *GetProjectsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 
 		// query param $count
 		var qrDollarCount bool
+
 		if o.DollarCount != nil {
 			qrDollarCount = *o.DollarCount
 		}
 		qDollarCount := swag.FormatBool(qrDollarCount)
 		if qDollarCount != "" {
+
 			if err := r.SetQueryParam("$count", qDollarCount); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.DollarFilter != nil {
 
 		// query param $filter
 		var qrDollarFilter string
+
 		if o.DollarFilter != nil {
 			qrDollarFilter = *o.DollarFilter
 		}
 		qDollarFilter := qrDollarFilter
 		if qDollarFilter != "" {
+
 			if err := r.SetQueryParam("$filter", qDollarFilter); err != nil {
 				return err
 			}
 		}
+	}
 
+	if o.DollarOrderBy != nil {
+
+		// query param $orderBy
+		var qrDollarOrderBy string
+
+		if o.DollarOrderBy != nil {
+			qrDollarOrderBy = *o.DollarOrderBy
+		}
+		qDollarOrderBy := qrDollarOrderBy
+		if qDollarOrderBy != "" {
+
+			if err := r.SetQueryParam("$orderBy", qDollarOrderBy); err != nil {
+				return err
+			}
+		}
 	}
 
 	if o.DollarSkip != nil {
 
 		// query param $skip
 		var qrDollarSkip int64
+
 		if o.DollarSkip != nil {
 			qrDollarSkip = *o.DollarSkip
 		}
 		qDollarSkip := swag.FormatInt64(qrDollarSkip)
 		if qDollarSkip != "" {
+
 			if err := r.SetQueryParam("$skip", qDollarSkip); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.DollarTop != nil {
 
 		// query param $top
 		var qrDollarTop int64
+
 		if o.DollarTop != nil {
 			qrDollarTop = *o.DollarTop
 		}
 		qDollarTop := swag.FormatInt64(qrDollarTop)
 		if qDollarTop != "" {
+
 			if err := r.SetQueryParam("$top", qDollarTop); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.APIVersion != nil {
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
-	}
-
-	if o.OrderBy != nil {
-
-		// query param orderBy
-		var qrOrderBy string
-		if o.OrderBy != nil {
-			qrOrderBy = *o.OrderBy
-		}
-		qOrderBy := qrOrderBy
-		if qOrderBy != "" {
-			if err := r.SetQueryParam("orderBy", qOrderBy); err != nil {
-				return err
-			}
-		}
-
 	}
 
 	if len(res) > 0 {

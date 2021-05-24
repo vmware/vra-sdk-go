@@ -41,7 +41,6 @@ func (o *GetMachineReader) ReadResponse(response runtime.ClientResponse, consume
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetMachineOK() *GetMachineOK {
 	return &GetMachineOK{}
 }
 
-/*GetMachineOK handles this case with default header values.
+/* GetMachineOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type GetMachineOK struct {
 func (o *GetMachineOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/machines/{id}][%d] getMachineOK  %+v", 200, o.Payload)
 }
-
 func (o *GetMachineOK) GetPayload() *models.Machine {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewGetMachineForbidden() *GetMachineForbidden {
 	return &GetMachineForbidden{}
 }
 
-/*GetMachineForbidden handles this case with default header values.
+/* GetMachineForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetMachineForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetMachineForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/machines/{id}][%d] getMachineForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/machines/{id}][%d] getMachineForbidden  %+v", 403, o.Payload)
+}
+func (o *GetMachineForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetMachineForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewGetMachineNotFound() *GetMachineNotFound {
 	return &GetMachineNotFound{}
 }
 
-/*GetMachineNotFound handles this case with default header values.
+/* GetMachineNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type GetMachineNotFound struct {
 func (o *GetMachineNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/machines/{id}][%d] getMachineNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetMachineNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

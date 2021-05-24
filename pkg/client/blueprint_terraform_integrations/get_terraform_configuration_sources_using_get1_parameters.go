@@ -17,64 +17,79 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGetTerraformConfigurationSourcesUsingGET1Params creates a new GetTerraformConfigurationSourcesUsingGET1Params object
-// with the default values initialized.
+// NewGetTerraformConfigurationSourcesUsingGET1Params creates a new GetTerraformConfigurationSourcesUsingGET1Params object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetTerraformConfigurationSourcesUsingGET1Params() *GetTerraformConfigurationSourcesUsingGET1Params {
-	var ()
 	return &GetTerraformConfigurationSourcesUsingGET1Params{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetTerraformConfigurationSourcesUsingGET1ParamsWithTimeout creates a new GetTerraformConfigurationSourcesUsingGET1Params object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetTerraformConfigurationSourcesUsingGET1ParamsWithTimeout(timeout time.Duration) *GetTerraformConfigurationSourcesUsingGET1Params {
-	var ()
 	return &GetTerraformConfigurationSourcesUsingGET1Params{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetTerraformConfigurationSourcesUsingGET1ParamsWithContext creates a new GetTerraformConfigurationSourcesUsingGET1Params object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetTerraformConfigurationSourcesUsingGET1ParamsWithContext(ctx context.Context) *GetTerraformConfigurationSourcesUsingGET1Params {
-	var ()
 	return &GetTerraformConfigurationSourcesUsingGET1Params{
-
 		Context: ctx,
 	}
 }
 
 // NewGetTerraformConfigurationSourcesUsingGET1ParamsWithHTTPClient creates a new GetTerraformConfigurationSourcesUsingGET1Params object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetTerraformConfigurationSourcesUsingGET1ParamsWithHTTPClient(client *http.Client) *GetTerraformConfigurationSourcesUsingGET1Params {
-	var ()
 	return &GetTerraformConfigurationSourcesUsingGET1Params{
 		HTTPClient: client,
 	}
 }
 
-/*GetTerraformConfigurationSourcesUsingGET1Params contains all the parameters to send to the API endpoint
-for the get terraform configuration sources using get1 operation typically these are written to a http.Request
+/* GetTerraformConfigurationSourcesUsingGET1Params contains all the parameters to send to the API endpoint
+   for the get terraform configuration sources using get1 operation.
+
+   Typically these are written to a http.Request.
 */
 type GetTerraformConfigurationSourcesUsingGET1Params struct {
 
-	/*Projects
-	  A comma-separated list of project IDs. Results will be filtered so only configuration sources accessible from one or more of these projects will be returned.
+	/* Projects.
 
+	   A comma-separated list of project IDs. Results will be filtered so only configuration sources accessible from one or more of these projects will be returned.
 	*/
 	Projects []string
-	/*Search
-	  A search parameter to search based on configuration source name or repository.
 
+	/* Search.
+
+	   A search parameter to search based on configuration source name or repository.
 	*/
 	Search *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get terraform configuration sources using get1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetTerraformConfigurationSourcesUsingGET1Params) WithDefaults() *GetTerraformConfigurationSourcesUsingGET1Params {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get terraform configuration sources using get1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetTerraformConfigurationSourcesUsingGET1Params) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get terraform configuration sources using get1 params
@@ -140,32 +155,53 @@ func (o *GetTerraformConfigurationSourcesUsingGET1Params) WriteToRequest(r runti
 	}
 	var res []error
 
-	valuesProjects := o.Projects
+	if o.Projects != nil {
 
-	joinedProjects := swag.JoinByFormat(valuesProjects, "multi")
-	// query array param projects
-	if err := r.SetQueryParam("projects", joinedProjects...); err != nil {
-		return err
+		// binding items for projects
+		joinedProjects := o.bindParamProjects(reg)
+
+		// query array param projects
+		if err := r.SetQueryParam("projects", joinedProjects...); err != nil {
+			return err
+		}
 	}
 
 	if o.Search != nil {
 
 		// query param search
 		var qrSearch string
+
 		if o.Search != nil {
 			qrSearch = *o.Search
 		}
 		qSearch := qrSearch
 		if qSearch != "" {
+
 			if err := r.SetQueryParam("search", qSearch); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
+}
+
+// bindParamGetTerraformConfigurationSourcesUsingGET1 binds the parameter projects
+func (o *GetTerraformConfigurationSourcesUsingGET1Params) bindParamProjects(formats strfmt.Registry) []string {
+	projectsIR := o.Projects
+
+	var projectsIC []string
+	for _, projectsIIR := range projectsIR { // explode []string
+
+		projectsIIV := projectsIIR // string as string
+		projectsIC = append(projectsIC, projectsIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	projectsIS := swag.JoinByFormat(projectsIC, "multi")
+
+	return projectsIS
 }

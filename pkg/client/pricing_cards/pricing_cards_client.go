@@ -25,17 +25,20 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreatePolicyUsingPOST(params *CreatePolicyUsingPOSTParams) (*CreatePolicyUsingPOSTOK, *CreatePolicyUsingPOSTCreated, error)
+	CreatePolicyUsingPOST(params *CreatePolicyUsingPOSTParams, opts ...ClientOption) (*CreatePolicyUsingPOSTOK, *CreatePolicyUsingPOSTCreated, error)
 
-	DeletePolicyUsingDELETE(params *DeletePolicyUsingDELETEParams) (*DeletePolicyUsingDELETEOK, *DeletePolicyUsingDELETENoContent, error)
+	DeletePolicyUsingDELETE(params *DeletePolicyUsingDELETEParams, opts ...ClientOption) (*DeletePolicyUsingDELETEOK, *DeletePolicyUsingDELETENoContent, error)
 
-	GetPoliciesUsingGET(params *GetPoliciesUsingGETParams) (*GetPoliciesUsingGETOK, error)
+	GetPoliciesUsingGET(params *GetPoliciesUsingGETParams, opts ...ClientOption) (*GetPoliciesUsingGETOK, error)
 
-	GetPolicyUsingGET(params *GetPolicyUsingGETParams) (*GetPolicyUsingGETOK, error)
+	GetPolicyUsingGET(params *GetPolicyUsingGETParams, opts ...ClientOption) (*GetPolicyUsingGETOK, error)
 
-	UpdatePolicyUsingPUT(params *UpdatePolicyUsingPUTParams) (*UpdatePolicyUsingPUTOK, error)
+	UpdatePolicyUsingPUT(params *UpdatePolicyUsingPUTParams, opts ...ClientOption) (*UpdatePolicyUsingPUTOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -45,13 +48,12 @@ type ClientService interface {
 
   Create a new pricing card based on request body and validate its field according to business rules.
 */
-func (a *Client) CreatePolicyUsingPOST(params *CreatePolicyUsingPOSTParams) (*CreatePolicyUsingPOSTOK, *CreatePolicyUsingPOSTCreated, error) {
+func (a *Client) CreatePolicyUsingPOST(params *CreatePolicyUsingPOSTParams, opts ...ClientOption) (*CreatePolicyUsingPOSTOK, *CreatePolicyUsingPOSTCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreatePolicyUsingPOSTParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createPolicyUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/price/api/private/pricing-cards",
@@ -62,7 +64,12 @@ func (a *Client) CreatePolicyUsingPOST(params *CreatePolicyUsingPOSTParams) (*Cr
 		Reader:             &CreatePolicyUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -82,13 +89,12 @@ func (a *Client) CreatePolicyUsingPOST(params *CreatePolicyUsingPOSTParams) (*Cr
 
   Deletes the pricing card with the specified id
 */
-func (a *Client) DeletePolicyUsingDELETE(params *DeletePolicyUsingDELETEParams) (*DeletePolicyUsingDELETEOK, *DeletePolicyUsingDELETENoContent, error) {
+func (a *Client) DeletePolicyUsingDELETE(params *DeletePolicyUsingDELETEParams, opts ...ClientOption) (*DeletePolicyUsingDELETEOK, *DeletePolicyUsingDELETENoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeletePolicyUsingDELETEParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deletePolicyUsingDELETE",
 		Method:             "DELETE",
 		PathPattern:        "/price/api/private/pricing-cards/{id}",
@@ -99,7 +105,12 @@ func (a *Client) DeletePolicyUsingDELETE(params *DeletePolicyUsingDELETEParams) 
 		Reader:             &DeletePolicyUsingDELETEReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -119,13 +130,12 @@ func (a *Client) DeletePolicyUsingDELETE(params *DeletePolicyUsingDELETEParams) 
 
   Returns a paginated list of pricing cards
 */
-func (a *Client) GetPoliciesUsingGET(params *GetPoliciesUsingGETParams) (*GetPoliciesUsingGETOK, error) {
+func (a *Client) GetPoliciesUsingGET(params *GetPoliciesUsingGETParams, opts ...ClientOption) (*GetPoliciesUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetPoliciesUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getPoliciesUsingGET",
 		Method:             "GET",
 		PathPattern:        "/price/api/private/pricing-cards",
@@ -136,7 +146,12 @@ func (a *Client) GetPoliciesUsingGET(params *GetPoliciesUsingGETParams) (*GetPol
 		Reader:             &GetPoliciesUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -155,13 +170,12 @@ func (a *Client) GetPoliciesUsingGET(params *GetPoliciesUsingGETParams) (*GetPol
 
   Returns the pricing card with the specified id
 */
-func (a *Client) GetPolicyUsingGET(params *GetPolicyUsingGETParams) (*GetPolicyUsingGETOK, error) {
+func (a *Client) GetPolicyUsingGET(params *GetPolicyUsingGETParams, opts ...ClientOption) (*GetPolicyUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetPolicyUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getPolicyUsingGET",
 		Method:             "GET",
 		PathPattern:        "/price/api/private/pricing-cards/{id}",
@@ -172,7 +186,12 @@ func (a *Client) GetPolicyUsingGET(params *GetPolicyUsingGETParams) (*GetPolicyU
 		Reader:             &GetPolicyUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -191,13 +210,12 @@ func (a *Client) GetPolicyUsingGET(params *GetPolicyUsingGETParams) (*GetPolicyU
 
   Updates the pricing card with the specified Id
 */
-func (a *Client) UpdatePolicyUsingPUT(params *UpdatePolicyUsingPUTParams) (*UpdatePolicyUsingPUTOK, error) {
+func (a *Client) UpdatePolicyUsingPUT(params *UpdatePolicyUsingPUTParams, opts ...ClientOption) (*UpdatePolicyUsingPUTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdatePolicyUsingPUTParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "updatePolicyUsingPUT",
 		Method:             "PUT",
 		PathPattern:        "/price/api/private/pricing-cards/{id}",
@@ -208,7 +226,12 @@ func (a *Client) UpdatePolicyUsingPUT(params *UpdatePolicyUsingPUTParams) (*Upda
 		Reader:             &UpdatePolicyUsingPUTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

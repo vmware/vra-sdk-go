@@ -25,11 +25,14 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetFabricVSphereStoragePolicies(params *GetFabricVSphereStoragePoliciesParams) (*GetFabricVSphereStoragePoliciesOK, error)
+	GetFabricVSphereStoragePolicies(params *GetFabricVSphereStoragePoliciesParams, opts ...ClientOption) (*GetFabricVSphereStoragePoliciesOK, error)
 
-	GetFabricVSphereStoragePolicy(params *GetFabricVSphereStoragePolicyParams) (*GetFabricVSphereStoragePolicyOK, error)
+	GetFabricVSphereStoragePolicy(params *GetFabricVSphereStoragePolicyParams, opts ...ClientOption) (*GetFabricVSphereStoragePolicyOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -39,13 +42,12 @@ type ClientService interface {
 
   Get all fabric vSphere storage polices.
 */
-func (a *Client) GetFabricVSphereStoragePolicies(params *GetFabricVSphereStoragePoliciesParams) (*GetFabricVSphereStoragePoliciesOK, error) {
+func (a *Client) GetFabricVSphereStoragePolicies(params *GetFabricVSphereStoragePoliciesParams, opts ...ClientOption) (*GetFabricVSphereStoragePoliciesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetFabricVSphereStoragePoliciesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getFabricVSphereStoragePolicies",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/fabric-vsphere-storage-policies",
@@ -56,7 +58,12 @@ func (a *Client) GetFabricVSphereStoragePolicies(params *GetFabricVSphereStorage
 		Reader:             &GetFabricVSphereStoragePoliciesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -75,13 +82,12 @@ func (a *Client) GetFabricVSphereStoragePolicies(params *GetFabricVSphereStorage
 
   Get fabric vSphere storage policy with a given id
 */
-func (a *Client) GetFabricVSphereStoragePolicy(params *GetFabricVSphereStoragePolicyParams) (*GetFabricVSphereStoragePolicyOK, error) {
+func (a *Client) GetFabricVSphereStoragePolicy(params *GetFabricVSphereStoragePolicyParams, opts ...ClientOption) (*GetFabricVSphereStoragePolicyOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetFabricVSphereStoragePolicyParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getFabricVSphereStoragePolicy",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/fabric-vsphere-storage-policies/{id}",
@@ -92,7 +98,12 @@ func (a *Client) GetFabricVSphereStoragePolicy(params *GetFabricVSphereStoragePo
 		Reader:             &GetFabricVSphereStoragePolicyReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

@@ -41,7 +41,6 @@ func (o *GetAwsStorageProfileReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetAwsStorageProfileOK() *GetAwsStorageProfileOK {
 	return &GetAwsStorageProfileOK{}
 }
 
-/*GetAwsStorageProfileOK handles this case with default header values.
+/* GetAwsStorageProfileOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type GetAwsStorageProfileOK struct {
 func (o *GetAwsStorageProfileOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/storage-profiles-aws/{id}][%d] getAwsStorageProfileOK  %+v", 200, o.Payload)
 }
-
 func (o *GetAwsStorageProfileOK) GetPayload() *models.AwsStorageProfile {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewGetAwsStorageProfileForbidden() *GetAwsStorageProfileForbidden {
 	return &GetAwsStorageProfileForbidden{}
 }
 
-/*GetAwsStorageProfileForbidden handles this case with default header values.
+/* GetAwsStorageProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetAwsStorageProfileForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetAwsStorageProfileForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/storage-profiles-aws/{id}][%d] getAwsStorageProfileForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/storage-profiles-aws/{id}][%d] getAwsStorageProfileForbidden  %+v", 403, o.Payload)
+}
+func (o *GetAwsStorageProfileForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetAwsStorageProfileForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewGetAwsStorageProfileNotFound() *GetAwsStorageProfileNotFound {
 	return &GetAwsStorageProfileNotFound{}
 }
 
-/*GetAwsStorageProfileNotFound handles this case with default header values.
+/* GetAwsStorageProfileNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type GetAwsStorageProfileNotFound struct {
 func (o *GetAwsStorageProfileNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/storage-profiles-aws/{id}][%d] getAwsStorageProfileNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetAwsStorageProfileNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

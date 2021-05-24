@@ -18,69 +18,85 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewUpdateNsxVCloudAccountParams creates a new UpdateNsxVCloudAccountParams object
-// with the default values initialized.
+// NewUpdateNsxVCloudAccountParams creates a new UpdateNsxVCloudAccountParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewUpdateNsxVCloudAccountParams() *UpdateNsxVCloudAccountParams {
-	var ()
 	return &UpdateNsxVCloudAccountParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewUpdateNsxVCloudAccountParamsWithTimeout creates a new UpdateNsxVCloudAccountParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewUpdateNsxVCloudAccountParamsWithTimeout(timeout time.Duration) *UpdateNsxVCloudAccountParams {
-	var ()
 	return &UpdateNsxVCloudAccountParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewUpdateNsxVCloudAccountParamsWithContext creates a new UpdateNsxVCloudAccountParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewUpdateNsxVCloudAccountParamsWithContext(ctx context.Context) *UpdateNsxVCloudAccountParams {
-	var ()
 	return &UpdateNsxVCloudAccountParams{
-
 		Context: ctx,
 	}
 }
 
 // NewUpdateNsxVCloudAccountParamsWithHTTPClient creates a new UpdateNsxVCloudAccountParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewUpdateNsxVCloudAccountParamsWithHTTPClient(client *http.Client) *UpdateNsxVCloudAccountParams {
-	var ()
 	return &UpdateNsxVCloudAccountParams{
 		HTTPClient: client,
 	}
 }
 
-/*UpdateNsxVCloudAccountParams contains all the parameters to send to the API endpoint
-for the update nsx v cloud account operation typically these are written to a http.Request
+/* UpdateNsxVCloudAccountParams contains all the parameters to send to the API endpoint
+   for the update nsx v cloud account operation.
+
+   Typically these are written to a http.Request.
 */
 type UpdateNsxVCloudAccountParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*Body
-	  NSX-V cloud account details to be updated
 
+	/* Body.
+
+	   NSX-V cloud account details to be updated
 	*/
 	Body *models.UpdateCloudAccountNsxVSpecification
-	/*ID
-	  Cloud account id
 
+	/* ID.
+
+	   Cloud account id
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the update nsx v cloud account params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UpdateNsxVCloudAccountParams) WithDefaults() *UpdateNsxVCloudAccountParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the update nsx v cloud account params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UpdateNsxVCloudAccountParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the update nsx v cloud account params
@@ -161,18 +177,18 @@ func (o *UpdateNsxVCloudAccountParams) WriteToRequest(r runtime.ClientRequest, r
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
-
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err

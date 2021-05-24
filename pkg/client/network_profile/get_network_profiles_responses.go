@@ -35,7 +35,6 @@ func (o *GetNetworkProfilesReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewGetNetworkProfilesOK() *GetNetworkProfilesOK {
 	return &GetNetworkProfilesOK{}
 }
 
-/*GetNetworkProfilesOK handles this case with default header values.
+/* GetNetworkProfilesOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -57,7 +56,6 @@ type GetNetworkProfilesOK struct {
 func (o *GetNetworkProfilesOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/network-profiles][%d] getNetworkProfilesOK  %+v", 200, o.Payload)
 }
-
 func (o *GetNetworkProfilesOK) GetPayload() *models.NetworkProfileResult {
 	return o.Payload
 }
@@ -79,18 +77,29 @@ func NewGetNetworkProfilesForbidden() *GetNetworkProfilesForbidden {
 	return &GetNetworkProfilesForbidden{}
 }
 
-/*GetNetworkProfilesForbidden handles this case with default header values.
+/* GetNetworkProfilesForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetNetworkProfilesForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetNetworkProfilesForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/network-profiles][%d] getNetworkProfilesForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/network-profiles][%d] getNetworkProfilesForbidden  %+v", 403, o.Payload)
+}
+func (o *GetNetworkProfilesForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetNetworkProfilesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

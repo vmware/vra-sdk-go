@@ -41,7 +41,6 @@ func (o *GetNetworkReader) ReadResponse(response runtime.ClientResponse, consume
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetNetworkOK() *GetNetworkOK {
 	return &GetNetworkOK{}
 }
 
-/*GetNetworkOK handles this case with default header values.
+/* GetNetworkOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type GetNetworkOK struct {
 func (o *GetNetworkOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/networks/{id}][%d] getNetworkOK  %+v", 200, o.Payload)
 }
-
 func (o *GetNetworkOK) GetPayload() *models.Network {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewGetNetworkForbidden() *GetNetworkForbidden {
 	return &GetNetworkForbidden{}
 }
 
-/*GetNetworkForbidden handles this case with default header values.
+/* GetNetworkForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetNetworkForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetNetworkForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/networks/{id}][%d] getNetworkForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/networks/{id}][%d] getNetworkForbidden  %+v", 403, o.Payload)
+}
+func (o *GetNetworkForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetNetworkForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewGetNetworkNotFound() *GetNetworkNotFound {
 	return &GetNetworkNotFound{}
 }
 
-/*GetNetworkNotFound handles this case with default header values.
+/* GetNetworkNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type GetNetworkNotFound struct {
 func (o *GetNetworkNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/networks/{id}][%d] getNetworkNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetNetworkNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

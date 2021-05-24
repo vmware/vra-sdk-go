@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -106,13 +107,100 @@ func (m *BlueprintTaskExecution) validateStatusEnum(path, location string, value
 }
 
 func (m *BlueprintTaskExecution) validateStatus(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Status) { // not required
 		return nil
 	}
 
 	// value enum
 	if err := m.validateStatusEnum("status", "body", m.Status); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this blueprint task execution based on the context it is used
+func (m *BlueprintTaskExecution) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateDependsOnTasks(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateFailureMessage(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResourceName(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResourceType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTaskName(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *BlueprintTaskExecution) contextValidateDependsOnTasks(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "dependsOnTasks", "body", []string(m.DependsOnTasks)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BlueprintTaskExecution) contextValidateFailureMessage(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "failureMessage", "body", string(m.FailureMessage)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BlueprintTaskExecution) contextValidateResourceName(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "resourceName", "body", string(m.ResourceName)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BlueprintTaskExecution) contextValidateResourceType(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "resourceType", "body", string(m.ResourceType)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BlueprintTaskExecution) contextValidateStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "status", "body", string(m.Status)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BlueprintTaskExecution) contextValidateTaskName(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "taskName", "body", string(m.TaskName)); err != nil {
 		return err
 	}
 

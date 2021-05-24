@@ -25,43 +25,46 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateMachine(params *CreateMachineParams) (*CreateMachineAccepted, error)
+	CreateMachine(params *CreateMachineParams, opts ...ClientOption) (*CreateMachineAccepted, error)
 
-	CreateMachineSnapshot(params *CreateMachineSnapshotParams) (*CreateMachineSnapshotAccepted, error)
+	CreateMachineSnapshot(params *CreateMachineSnapshotParams, opts ...ClientOption) (*CreateMachineSnapshotAccepted, error)
 
-	DeleteMachine(params *DeleteMachineParams) (*DeleteMachineAccepted, error)
+	DeleteMachine(params *DeleteMachineParams, opts ...ClientOption) (*DeleteMachineAccepted, error)
 
-	DeleteMachineSnapshot(params *DeleteMachineSnapshotParams) (*DeleteMachineSnapshotAccepted, error)
+	DeleteMachineSnapshot(params *DeleteMachineSnapshotParams, opts ...ClientOption) (*DeleteMachineSnapshotAccepted, error)
 
-	GetMachine(params *GetMachineParams) (*GetMachineOK, error)
+	GetMachine(params *GetMachineParams, opts ...ClientOption) (*GetMachineOK, error)
 
-	GetMachineSnapshot(params *GetMachineSnapshotParams) (*GetMachineSnapshotOK, error)
+	GetMachineSnapshot(params *GetMachineSnapshotParams, opts ...ClientOption) (*GetMachineSnapshotOK, error)
 
-	GetMachineSnapshots(params *GetMachineSnapshotsParams) (*GetMachineSnapshotsOK, error)
+	GetMachineSnapshots(params *GetMachineSnapshotsParams, opts ...ClientOption) (*GetMachineSnapshotsOK, error)
 
-	GetMachines(params *GetMachinesParams) (*GetMachinesOK, error)
+	GetMachines(params *GetMachinesParams, opts ...ClientOption) (*GetMachinesOK, error)
 
-	PowerOffMachine(params *PowerOffMachineParams) (*PowerOffMachineAccepted, error)
+	PowerOffMachine(params *PowerOffMachineParams, opts ...ClientOption) (*PowerOffMachineAccepted, error)
 
-	PowerOnMachine(params *PowerOnMachineParams) (*PowerOnMachineAccepted, error)
+	PowerOnMachine(params *PowerOnMachineParams, opts ...ClientOption) (*PowerOnMachineAccepted, error)
 
-	RebootMachine(params *RebootMachineParams) (*RebootMachineAccepted, error)
+	RebootMachine(params *RebootMachineParams, opts ...ClientOption) (*RebootMachineAccepted, error)
 
-	ResetMachine(params *ResetMachineParams) (*ResetMachineAccepted, error)
+	ResetMachine(params *ResetMachineParams, opts ...ClientOption) (*ResetMachineAccepted, error)
 
-	ResizeMachine(params *ResizeMachineParams) (*ResizeMachineAccepted, error)
+	ResizeMachine(params *ResizeMachineParams, opts ...ClientOption) (*ResizeMachineAccepted, error)
 
-	RestartMachine(params *RestartMachineParams) (*RestartMachineAccepted, error)
+	RestartMachine(params *RestartMachineParams, opts ...ClientOption) (*RestartMachineAccepted, error)
 
-	RevertMachineSnapshot(params *RevertMachineSnapshotParams) (*RevertMachineSnapshotAccepted, error)
+	RevertMachineSnapshot(params *RevertMachineSnapshotParams, opts ...ClientOption) (*RevertMachineSnapshotAccepted, error)
 
-	ShutdownMachine(params *ShutdownMachineParams) (*ShutdownMachineAccepted, error)
+	ShutdownMachine(params *ShutdownMachineParams, opts ...ClientOption) (*ShutdownMachineAccepted, error)
 
-	SuspendMachine(params *SuspendMachineParams) (*SuspendMachineAccepted, error)
+	SuspendMachine(params *SuspendMachineParams, opts ...ClientOption) (*SuspendMachineAccepted, error)
 
-	UpdateMachine(params *UpdateMachineParams) (*UpdateMachineOK, error)
+	UpdateMachine(params *UpdateMachineParams, opts ...ClientOption) (*UpdateMachineOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -71,13 +74,12 @@ type ClientService interface {
 
   Create machine
 */
-func (a *Client) CreateMachine(params *CreateMachineParams) (*CreateMachineAccepted, error) {
+func (a *Client) CreateMachine(params *CreateMachineParams, opts ...ClientOption) (*CreateMachineAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateMachineParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createMachine",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/machines",
@@ -88,7 +90,12 @@ func (a *Client) CreateMachine(params *CreateMachineParams) (*CreateMachineAccep
 		Reader:             &CreateMachineReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -107,13 +114,12 @@ func (a *Client) CreateMachine(params *CreateMachineParams) (*CreateMachineAccep
 
   Second day create snapshot operation for machine
 */
-func (a *Client) CreateMachineSnapshot(params *CreateMachineSnapshotParams) (*CreateMachineSnapshotAccepted, error) {
+func (a *Client) CreateMachineSnapshot(params *CreateMachineSnapshotParams, opts ...ClientOption) (*CreateMachineSnapshotAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateMachineSnapshotParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createMachineSnapshot",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/machines/{id}/operations/snapshots",
@@ -124,7 +130,12 @@ func (a *Client) CreateMachineSnapshot(params *CreateMachineSnapshotParams) (*Cr
 		Reader:             &CreateMachineSnapshotReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -143,13 +154,12 @@ func (a *Client) CreateMachineSnapshot(params *CreateMachineSnapshotParams) (*Cr
 
   Delete Machine with a given id
 */
-func (a *Client) DeleteMachine(params *DeleteMachineParams) (*DeleteMachineAccepted, error) {
+func (a *Client) DeleteMachine(params *DeleteMachineParams, opts ...ClientOption) (*DeleteMachineAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteMachineParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteMachine",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/machines/{id}",
@@ -160,7 +170,12 @@ func (a *Client) DeleteMachine(params *DeleteMachineParams) (*DeleteMachineAccep
 		Reader:             &DeleteMachineReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -179,13 +194,12 @@ func (a *Client) DeleteMachine(params *DeleteMachineParams) (*DeleteMachineAccep
 
   Second day delete snapshot operation for machine
 */
-func (a *Client) DeleteMachineSnapshot(params *DeleteMachineSnapshotParams) (*DeleteMachineSnapshotAccepted, error) {
+func (a *Client) DeleteMachineSnapshot(params *DeleteMachineSnapshotParams, opts ...ClientOption) (*DeleteMachineSnapshotAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteMachineSnapshotParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteMachineSnapshot",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/machines/{id}/snapshots/{id1}",
@@ -196,7 +210,12 @@ func (a *Client) DeleteMachineSnapshot(params *DeleteMachineSnapshotParams) (*De
 		Reader:             &DeleteMachineSnapshotReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -215,13 +234,12 @@ func (a *Client) DeleteMachineSnapshot(params *DeleteMachineSnapshotParams) (*De
 
   Get machine with a given id
 */
-func (a *Client) GetMachine(params *GetMachineParams) (*GetMachineOK, error) {
+func (a *Client) GetMachine(params *GetMachineParams, opts ...ClientOption) (*GetMachineOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetMachineParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getMachine",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/machines/{id}",
@@ -232,7 +250,12 @@ func (a *Client) GetMachine(params *GetMachineParams) (*GetMachineOK, error) {
 		Reader:             &GetMachineReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -251,13 +274,12 @@ func (a *Client) GetMachine(params *GetMachineParams) (*GetMachineOK, error) {
 
   Get snapshot with a given id for specific machine
 */
-func (a *Client) GetMachineSnapshot(params *GetMachineSnapshotParams) (*GetMachineSnapshotOK, error) {
+func (a *Client) GetMachineSnapshot(params *GetMachineSnapshotParams, opts ...ClientOption) (*GetMachineSnapshotOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetMachineSnapshotParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getMachineSnapshot",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/machines/{id}/snapshots/{id1}",
@@ -268,7 +290,12 @@ func (a *Client) GetMachineSnapshot(params *GetMachineSnapshotParams) (*GetMachi
 		Reader:             &GetMachineSnapshotReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -287,13 +314,12 @@ func (a *Client) GetMachineSnapshot(params *GetMachineSnapshotParams) (*GetMachi
 
   Get machine snapshots information
 */
-func (a *Client) GetMachineSnapshots(params *GetMachineSnapshotsParams) (*GetMachineSnapshotsOK, error) {
+func (a *Client) GetMachineSnapshots(params *GetMachineSnapshotsParams, opts ...ClientOption) (*GetMachineSnapshotsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetMachineSnapshotsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getMachineSnapshots",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/machines/{id}/snapshots",
@@ -304,7 +330,12 @@ func (a *Client) GetMachineSnapshots(params *GetMachineSnapshotsParams) (*GetMac
 		Reader:             &GetMachineSnapshotsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -323,13 +354,12 @@ func (a *Client) GetMachineSnapshots(params *GetMachineSnapshotsParams) (*GetMac
 
   Get all machines
 */
-func (a *Client) GetMachines(params *GetMachinesParams) (*GetMachinesOK, error) {
+func (a *Client) GetMachines(params *GetMachinesParams, opts ...ClientOption) (*GetMachinesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetMachinesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getMachines",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/machines",
@@ -340,7 +370,12 @@ func (a *Client) GetMachines(params *GetMachinesParams) (*GetMachinesOK, error) 
 		Reader:             &GetMachinesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -359,13 +394,12 @@ func (a *Client) GetMachines(params *GetMachinesParams) (*GetMachinesOK, error) 
 
   Second day power-off operation for machine
 */
-func (a *Client) PowerOffMachine(params *PowerOffMachineParams) (*PowerOffMachineAccepted, error) {
+func (a *Client) PowerOffMachine(params *PowerOffMachineParams, opts ...ClientOption) (*PowerOffMachineAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPowerOffMachineParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "powerOffMachine",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/machines/{id}/operations/power-off",
@@ -376,7 +410,12 @@ func (a *Client) PowerOffMachine(params *PowerOffMachineParams) (*PowerOffMachin
 		Reader:             &PowerOffMachineReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -395,13 +434,12 @@ func (a *Client) PowerOffMachine(params *PowerOffMachineParams) (*PowerOffMachin
 
   Second day power-on operation for machine
 */
-func (a *Client) PowerOnMachine(params *PowerOnMachineParams) (*PowerOnMachineAccepted, error) {
+func (a *Client) PowerOnMachine(params *PowerOnMachineParams, opts ...ClientOption) (*PowerOnMachineAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPowerOnMachineParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "powerOnMachine",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/machines/{id}/operations/power-on",
@@ -412,7 +450,12 @@ func (a *Client) PowerOnMachine(params *PowerOnMachineParams) (*PowerOnMachineAc
 		Reader:             &PowerOnMachineReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -431,13 +474,12 @@ func (a *Client) PowerOnMachine(params *PowerOnMachineParams) (*PowerOnMachineAc
 
   Second day reboot operation for machine
 */
-func (a *Client) RebootMachine(params *RebootMachineParams) (*RebootMachineAccepted, error) {
+func (a *Client) RebootMachine(params *RebootMachineParams, opts ...ClientOption) (*RebootMachineAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewRebootMachineParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "rebootMachine",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/machines/{id}/operations/reboot",
@@ -448,7 +490,12 @@ func (a *Client) RebootMachine(params *RebootMachineParams) (*RebootMachineAccep
 		Reader:             &RebootMachineReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -467,13 +514,12 @@ func (a *Client) RebootMachine(params *RebootMachineParams) (*RebootMachineAccep
 
   Second day reset operation for machine
 */
-func (a *Client) ResetMachine(params *ResetMachineParams) (*ResetMachineAccepted, error) {
+func (a *Client) ResetMachine(params *ResetMachineParams, opts ...ClientOption) (*ResetMachineAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewResetMachineParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "resetMachine",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/machines/{id}/operations/reset",
@@ -484,7 +530,12 @@ func (a *Client) ResetMachine(params *ResetMachineParams) (*ResetMachineAccepted
 		Reader:             &ResetMachineReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -503,13 +554,12 @@ func (a *Client) ResetMachine(params *ResetMachineParams) (*ResetMachineAccepted
 
   Second day resize operation for machine
 */
-func (a *Client) ResizeMachine(params *ResizeMachineParams) (*ResizeMachineAccepted, error) {
+func (a *Client) ResizeMachine(params *ResizeMachineParams, opts ...ClientOption) (*ResizeMachineAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewResizeMachineParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "resizeMachine",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/machines/{id}/operations/resize",
@@ -520,7 +570,12 @@ func (a *Client) ResizeMachine(params *ResizeMachineParams) (*ResizeMachineAccep
 		Reader:             &ResizeMachineReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -539,13 +594,12 @@ func (a *Client) ResizeMachine(params *ResizeMachineParams) (*ResizeMachineAccep
 
   Second day restart operation for machine
 */
-func (a *Client) RestartMachine(params *RestartMachineParams) (*RestartMachineAccepted, error) {
+func (a *Client) RestartMachine(params *RestartMachineParams, opts ...ClientOption) (*RestartMachineAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewRestartMachineParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "restartMachine",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/machines/{id}/operations/restart",
@@ -556,7 +610,12 @@ func (a *Client) RestartMachine(params *RestartMachineParams) (*RestartMachineAc
 		Reader:             &RestartMachineReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -575,13 +634,12 @@ func (a *Client) RestartMachine(params *RestartMachineParams) (*RestartMachineAc
 
   Second day revert snapshot operation for machine
 */
-func (a *Client) RevertMachineSnapshot(params *RevertMachineSnapshotParams) (*RevertMachineSnapshotAccepted, error) {
+func (a *Client) RevertMachineSnapshot(params *RevertMachineSnapshotParams, opts ...ClientOption) (*RevertMachineSnapshotAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewRevertMachineSnapshotParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "revertMachineSnapshot",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/machines/{id}/operations/revert",
@@ -592,7 +650,12 @@ func (a *Client) RevertMachineSnapshot(params *RevertMachineSnapshotParams) (*Re
 		Reader:             &RevertMachineSnapshotReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -611,13 +674,12 @@ func (a *Client) RevertMachineSnapshot(params *RevertMachineSnapshotParams) (*Re
 
   Second day shut down operation machine
 */
-func (a *Client) ShutdownMachine(params *ShutdownMachineParams) (*ShutdownMachineAccepted, error) {
+func (a *Client) ShutdownMachine(params *ShutdownMachineParams, opts ...ClientOption) (*ShutdownMachineAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewShutdownMachineParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "shutdownMachine",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/machines/{id}/operations/shutdown",
@@ -628,7 +690,12 @@ func (a *Client) ShutdownMachine(params *ShutdownMachineParams) (*ShutdownMachin
 		Reader:             &ShutdownMachineReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -647,13 +714,12 @@ func (a *Client) ShutdownMachine(params *ShutdownMachineParams) (*ShutdownMachin
 
   Second day suspend operation for machine
 */
-func (a *Client) SuspendMachine(params *SuspendMachineParams) (*SuspendMachineAccepted, error) {
+func (a *Client) SuspendMachine(params *SuspendMachineParams, opts ...ClientOption) (*SuspendMachineAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewSuspendMachineParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "suspendMachine",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/machines/{id}/operations/suspend",
@@ -664,7 +730,12 @@ func (a *Client) SuspendMachine(params *SuspendMachineParams) (*SuspendMachineAc
 		Reader:             &SuspendMachineReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -683,13 +754,12 @@ func (a *Client) SuspendMachine(params *SuspendMachineParams) (*SuspendMachineAc
 
   Update machine. Only description, tag and custom property updates are supported. All other properties in the MachineSpecification body are ignored.
 */
-func (a *Client) UpdateMachine(params *UpdateMachineParams) (*UpdateMachineOK, error) {
+func (a *Client) UpdateMachine(params *UpdateMachineParams, opts ...ClientOption) (*UpdateMachineOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateMachineParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "updateMachine",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/machines/{id}",
@@ -700,7 +770,12 @@ func (a *Client) UpdateMachine(params *UpdateMachineParams) (*UpdateMachineOK, e
 		Reader:             &UpdateMachineReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

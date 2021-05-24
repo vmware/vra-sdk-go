@@ -18,69 +18,87 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewRequestCatalogItemUsingPOSTParams creates a new RequestCatalogItemUsingPOSTParams object
-// with the default values initialized.
+// NewRequestCatalogItemUsingPOSTParams creates a new RequestCatalogItemUsingPOSTParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewRequestCatalogItemUsingPOSTParams() *RequestCatalogItemUsingPOSTParams {
-	var ()
 	return &RequestCatalogItemUsingPOSTParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewRequestCatalogItemUsingPOSTParamsWithTimeout creates a new RequestCatalogItemUsingPOSTParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewRequestCatalogItemUsingPOSTParamsWithTimeout(timeout time.Duration) *RequestCatalogItemUsingPOSTParams {
-	var ()
 	return &RequestCatalogItemUsingPOSTParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewRequestCatalogItemUsingPOSTParamsWithContext creates a new RequestCatalogItemUsingPOSTParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewRequestCatalogItemUsingPOSTParamsWithContext(ctx context.Context) *RequestCatalogItemUsingPOSTParams {
-	var ()
 	return &RequestCatalogItemUsingPOSTParams{
-
 		Context: ctx,
 	}
 }
 
 // NewRequestCatalogItemUsingPOSTParamsWithHTTPClient creates a new RequestCatalogItemUsingPOSTParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewRequestCatalogItemUsingPOSTParamsWithHTTPClient(client *http.Client) *RequestCatalogItemUsingPOSTParams {
-	var ()
 	return &RequestCatalogItemUsingPOSTParams{
 		HTTPClient: client,
 	}
 }
 
-/*RequestCatalogItemUsingPOSTParams contains all the parameters to send to the API endpoint
-for the request catalog item using p o s t operation typically these are written to a http.Request
+/* RequestCatalogItemUsingPOSTParams contains all the parameters to send to the API endpoint
+   for the request catalog item using p o s t operation.
+
+   Typically these are written to a http.Request.
 */
 type RequestCatalogItemUsingPOSTParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 	*/
 	APIVersion *string
-	/*ID
-	  Catalog item ID
 
+	/* ID.
+
+	   Catalog item ID
+
+	   Format: uuid
 	*/
 	ID strfmt.UUID
-	/*Request
-	  request
 
+	/* Request.
+
+	   request
 	*/
 	Request *models.CatalogItemRequest
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the request catalog item using p o s t params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *RequestCatalogItemUsingPOSTParams) WithDefaults() *RequestCatalogItemUsingPOSTParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the request catalog item using p o s t params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *RequestCatalogItemUsingPOSTParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the request catalog item using p o s t params
@@ -161,23 +179,23 @@ func (o *RequestCatalogItemUsingPOSTParams) WriteToRequest(r runtime.ClientReque
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id
 	if err := r.SetPathParam("id", o.ID.String()); err != nil {
 		return err
 	}
-
 	if o.Request != nil {
 		if err := r.SetBodyParam(o.Request); err != nil {
 			return err

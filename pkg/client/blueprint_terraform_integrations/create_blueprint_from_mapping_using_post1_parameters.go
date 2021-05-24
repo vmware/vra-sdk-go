@@ -18,59 +18,73 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewCreateBlueprintFromMappingUsingPOST1Params creates a new CreateBlueprintFromMappingUsingPOST1Params object
-// with the default values initialized.
+// NewCreateBlueprintFromMappingUsingPOST1Params creates a new CreateBlueprintFromMappingUsingPOST1Params object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewCreateBlueprintFromMappingUsingPOST1Params() *CreateBlueprintFromMappingUsingPOST1Params {
-	var ()
 	return &CreateBlueprintFromMappingUsingPOST1Params{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewCreateBlueprintFromMappingUsingPOST1ParamsWithTimeout creates a new CreateBlueprintFromMappingUsingPOST1Params object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewCreateBlueprintFromMappingUsingPOST1ParamsWithTimeout(timeout time.Duration) *CreateBlueprintFromMappingUsingPOST1Params {
-	var ()
 	return &CreateBlueprintFromMappingUsingPOST1Params{
-
 		timeout: timeout,
 	}
 }
 
 // NewCreateBlueprintFromMappingUsingPOST1ParamsWithContext creates a new CreateBlueprintFromMappingUsingPOST1Params object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewCreateBlueprintFromMappingUsingPOST1ParamsWithContext(ctx context.Context) *CreateBlueprintFromMappingUsingPOST1Params {
-	var ()
 	return &CreateBlueprintFromMappingUsingPOST1Params{
-
 		Context: ctx,
 	}
 }
 
 // NewCreateBlueprintFromMappingUsingPOST1ParamsWithHTTPClient creates a new CreateBlueprintFromMappingUsingPOST1Params object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewCreateBlueprintFromMappingUsingPOST1ParamsWithHTTPClient(client *http.Client) *CreateBlueprintFromMappingUsingPOST1Params {
-	var ()
 	return &CreateBlueprintFromMappingUsingPOST1Params{
 		HTTPClient: client,
 	}
 }
 
-/*CreateBlueprintFromMappingUsingPOST1Params contains all the parameters to send to the API endpoint
-for the create blueprint from mapping using p o s t 1 operation typically these are written to a http.Request
+/* CreateBlueprintFromMappingUsingPOST1Params contains all the parameters to send to the API endpoint
+   for the create blueprint from mapping using p o s t 1 operation.
+
+   Typically these are written to a http.Request.
 */
 type CreateBlueprintFromMappingUsingPOST1Params struct {
 
-	/*TerraformBlueprintConfig
-	  A Terraform blueprint configuration.
+	/* TerraformBlueprintConfig.
 
+	   A Terraform blueprint configuration.
 	*/
 	TerraformBlueprintConfig *models.TerraformBlueprintConfig
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the create blueprint from mapping using p o s t 1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateBlueprintFromMappingUsingPOST1Params) WithDefaults() *CreateBlueprintFromMappingUsingPOST1Params {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the create blueprint from mapping using p o s t 1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateBlueprintFromMappingUsingPOST1Params) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the create blueprint from mapping using p o s t 1 params
@@ -124,7 +138,6 @@ func (o *CreateBlueprintFromMappingUsingPOST1Params) WriteToRequest(r runtime.Cl
 		return err
 	}
 	var res []error
-
 	if o.TerraformBlueprintConfig != nil {
 		if err := r.SetBodyParam(o.TerraformBlueprintConfig); err != nil {
 			return err

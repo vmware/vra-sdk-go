@@ -16,69 +16,85 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetMachineSnapshotParams creates a new GetMachineSnapshotParams object
-// with the default values initialized.
+// NewGetMachineSnapshotParams creates a new GetMachineSnapshotParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetMachineSnapshotParams() *GetMachineSnapshotParams {
-	var ()
 	return &GetMachineSnapshotParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetMachineSnapshotParamsWithTimeout creates a new GetMachineSnapshotParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetMachineSnapshotParamsWithTimeout(timeout time.Duration) *GetMachineSnapshotParams {
-	var ()
 	return &GetMachineSnapshotParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetMachineSnapshotParamsWithContext creates a new GetMachineSnapshotParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetMachineSnapshotParamsWithContext(ctx context.Context) *GetMachineSnapshotParams {
-	var ()
 	return &GetMachineSnapshotParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetMachineSnapshotParamsWithHTTPClient creates a new GetMachineSnapshotParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetMachineSnapshotParamsWithHTTPClient(client *http.Client) *GetMachineSnapshotParams {
-	var ()
 	return &GetMachineSnapshotParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetMachineSnapshotParams contains all the parameters to send to the API endpoint
-for the get machine snapshot operation typically these are written to a http.Request
+/* GetMachineSnapshotParams contains all the parameters to send to the API endpoint
+   for the get machine snapshot operation.
+
+   Typically these are written to a http.Request.
 */
 type GetMachineSnapshotParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*ID
-	  The ID of the machine.
 
+	/* ID.
+
+	   The ID of the machine.
 	*/
 	ID string
-	/*Id1
-	  The ID of the snapshot.
 
+	/* Id1.
+
+	   The ID of the snapshot.
 	*/
 	Id1 string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get machine snapshot params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetMachineSnapshotParams) WithDefaults() *GetMachineSnapshotParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get machine snapshot params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetMachineSnapshotParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get machine snapshot params
@@ -159,16 +175,17 @@ func (o *GetMachineSnapshotParams) WriteToRequest(r runtime.ClientRequest, reg s
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id

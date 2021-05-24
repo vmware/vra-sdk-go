@@ -35,7 +35,6 @@ func (o *GetSyncRequestUsingGETReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewGetSyncRequestUsingGETOK() *GetSyncRequestUsingGETOK {
 	return &GetSyncRequestUsingGETOK{}
 }
 
-/*GetSyncRequestUsingGETOK handles this case with default header values.
+/* GetSyncRequestUsingGETOK describes a response with status code 200, with default header values.
 
 Sync request for id
 */
@@ -57,7 +56,6 @@ type GetSyncRequestUsingGETOK struct {
 func (o *GetSyncRequestUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /content/api/sourcecontrol/sync-requests/{id}][%d] getSyncRequestUsingGETOK  %+v", 200, o.Payload)
 }
-
 func (o *GetSyncRequestUsingGETOK) GetPayload() *models.SourceControlSyncRequest {
 	return o.Payload
 }
@@ -79,7 +77,7 @@ func NewGetSyncRequestUsingGETNotFound() *GetSyncRequestUsingGETNotFound {
 	return &GetSyncRequestUsingGETNotFound{}
 }
 
-/*GetSyncRequestUsingGETNotFound handles this case with default header values.
+/* GetSyncRequestUsingGETNotFound describes a response with status code 404, with default header values.
 
 request not found
 */
@@ -90,7 +88,6 @@ type GetSyncRequestUsingGETNotFound struct {
 func (o *GetSyncRequestUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /content/api/sourcecontrol/sync-requests/{id}][%d] getSyncRequestUsingGETNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetSyncRequestUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

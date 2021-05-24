@@ -18,64 +18,79 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewCreateDeploymentParams creates a new CreateDeploymentParams object
-// with the default values initialized.
+// NewCreateDeploymentParams creates a new CreateDeploymentParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewCreateDeploymentParams() *CreateDeploymentParams {
-	var ()
 	return &CreateDeploymentParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewCreateDeploymentParamsWithTimeout creates a new CreateDeploymentParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewCreateDeploymentParamsWithTimeout(timeout time.Duration) *CreateDeploymentParams {
-	var ()
 	return &CreateDeploymentParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewCreateDeploymentParamsWithContext creates a new CreateDeploymentParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewCreateDeploymentParamsWithContext(ctx context.Context) *CreateDeploymentParams {
-	var ()
 	return &CreateDeploymentParams{
-
 		Context: ctx,
 	}
 }
 
 // NewCreateDeploymentParamsWithHTTPClient creates a new CreateDeploymentParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewCreateDeploymentParamsWithHTTPClient(client *http.Client) *CreateDeploymentParams {
-	var ()
 	return &CreateDeploymentParams{
 		HTTPClient: client,
 	}
 }
 
-/*CreateDeploymentParams contains all the parameters to send to the API endpoint
-for the create deployment operation typically these are written to a http.Request
+/* CreateDeploymentParams contains all the parameters to send to the API endpoint
+   for the create deployment operation.
+
+   Typically these are written to a http.Request.
 */
 type CreateDeploymentParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*Body
-	  Deployment specification instance
 
+	/* Body.
+
+	   Deployment specification instance
 	*/
 	Body *models.DeploymentSpecification
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the create deployment params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateDeploymentParams) WithDefaults() *CreateDeploymentParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the create deployment params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateDeploymentParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the create deployment params
@@ -145,18 +160,18 @@ func (o *CreateDeploymentParams) WriteToRequest(r runtime.ClientRequest, reg str
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
-
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err

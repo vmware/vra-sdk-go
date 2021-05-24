@@ -47,7 +47,6 @@ func (o *DeleteResourceUsingDELETEReader) ReadResponse(response runtime.ClientRe
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewDeleteResourceUsingDELETEOK() *DeleteResourceUsingDELETEOK {
 	return &DeleteResourceUsingDELETEOK{}
 }
 
-/*DeleteResourceUsingDELETEOK handles this case with default header values.
+/* DeleteResourceUsingDELETEOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -69,7 +68,6 @@ type DeleteResourceUsingDELETEOK struct {
 func (o *DeleteResourceUsingDELETEOK) Error() string {
 	return fmt.Sprintf("[DELETE /deployment/api/deployments/{depId}/resources/{resourceId}][%d] deleteResourceUsingDELETEOK  %+v", 200, o.Payload)
 }
-
 func (o *DeleteResourceUsingDELETEOK) GetPayload() *models.Request {
 	return o.Payload
 }
@@ -91,7 +89,7 @@ func NewDeleteResourceUsingDELETEUnauthorized() *DeleteResourceUsingDELETEUnauth
 	return &DeleteResourceUsingDELETEUnauthorized{}
 }
 
-/*DeleteResourceUsingDELETEUnauthorized handles this case with default header values.
+/* DeleteResourceUsingDELETEUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -112,7 +110,7 @@ func NewDeleteResourceUsingDELETEForbidden() *DeleteResourceUsingDELETEForbidden
 	return &DeleteResourceUsingDELETEForbidden{}
 }
 
-/*DeleteResourceUsingDELETEForbidden handles this case with default header values.
+/* DeleteResourceUsingDELETEForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -133,7 +131,7 @@ func NewDeleteResourceUsingDELETENotFound() *DeleteResourceUsingDELETENotFound {
 	return &DeleteResourceUsingDELETENotFound{}
 }
 
-/*DeleteResourceUsingDELETENotFound handles this case with default header values.
+/* DeleteResourceUsingDELETENotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -144,7 +142,6 @@ type DeleteResourceUsingDELETENotFound struct {
 func (o *DeleteResourceUsingDELETENotFound) Error() string {
 	return fmt.Sprintf("[DELETE /deployment/api/deployments/{depId}/resources/{resourceId}][%d] deleteResourceUsingDELETENotFound  %+v", 404, o.Payload)
 }
-
 func (o *DeleteResourceUsingDELETENotFound) GetPayload() *models.Error {
 	return o.Payload
 }

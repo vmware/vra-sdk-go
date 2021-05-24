@@ -18,64 +18,79 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewCreateContentSourceUsingPOSTParams creates a new CreateContentSourceUsingPOSTParams object
-// with the default values initialized.
+// NewCreateContentSourceUsingPOSTParams creates a new CreateContentSourceUsingPOSTParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewCreateContentSourceUsingPOSTParams() *CreateContentSourceUsingPOSTParams {
-	var ()
 	return &CreateContentSourceUsingPOSTParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewCreateContentSourceUsingPOSTParamsWithTimeout creates a new CreateContentSourceUsingPOSTParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewCreateContentSourceUsingPOSTParamsWithTimeout(timeout time.Duration) *CreateContentSourceUsingPOSTParams {
-	var ()
 	return &CreateContentSourceUsingPOSTParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewCreateContentSourceUsingPOSTParamsWithContext creates a new CreateContentSourceUsingPOSTParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewCreateContentSourceUsingPOSTParamsWithContext(ctx context.Context) *CreateContentSourceUsingPOSTParams {
-	var ()
 	return &CreateContentSourceUsingPOSTParams{
-
 		Context: ctx,
 	}
 }
 
 // NewCreateContentSourceUsingPOSTParamsWithHTTPClient creates a new CreateContentSourceUsingPOSTParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewCreateContentSourceUsingPOSTParamsWithHTTPClient(client *http.Client) *CreateContentSourceUsingPOSTParams {
-	var ()
 	return &CreateContentSourceUsingPOSTParams{
 		HTTPClient: client,
 	}
 }
 
-/*CreateContentSourceUsingPOSTParams contains all the parameters to send to the API endpoint
-for the create content source using p o s t operation typically these are written to a http.Request
+/* CreateContentSourceUsingPOSTParams contains all the parameters to send to the API endpoint
+   for the create content source using p o s t operation.
+
+   Typically these are written to a http.Request.
 */
 type CreateContentSourceUsingPOSTParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information, please refer to /content/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information, please refer to /content/api/about
 	*/
 	APIVersion *string
-	/*Source
-	  source
 
+	/* Source.
+
+	   source
 	*/
 	Source *models.ContentSource
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the create content source using p o s t params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateContentSourceUsingPOSTParams) WithDefaults() *CreateContentSourceUsingPOSTParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the create content source using p o s t params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateContentSourceUsingPOSTParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the create content source using p o s t params
@@ -145,18 +160,18 @@ func (o *CreateContentSourceUsingPOSTParams) WriteToRequest(r runtime.ClientRequ
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
-
 	if o.Source != nil {
 		if err := r.SetBodyParam(o.Source); err != nil {
 			return err

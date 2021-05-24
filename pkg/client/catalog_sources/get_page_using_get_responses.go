@@ -35,7 +35,6 @@ func (o *GetPageUsingGETReader) ReadResponse(response runtime.ClientResponse, co
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewGetPageUsingGETOK() *GetPageUsingGETOK {
 	return &GetPageUsingGETOK{}
 }
 
-/*GetPageUsingGETOK handles this case with default header values.
+/* GetPageUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -57,7 +56,6 @@ type GetPageUsingGETOK struct {
 func (o *GetPageUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /catalog/api/admin/sources][%d] getPageUsingGETOK  %+v", 200, o.Payload)
 }
-
 func (o *GetPageUsingGETOK) GetPayload() *models.PageOfCatalogSource {
 	return o.Payload
 }
@@ -79,7 +77,7 @@ func NewGetPageUsingGETUnauthorized() *GetPageUsingGETUnauthorized {
 	return &GetPageUsingGETUnauthorized{}
 }
 
-/*GetPageUsingGETUnauthorized handles this case with default header values.
+/* GetPageUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */

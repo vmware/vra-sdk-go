@@ -41,7 +41,6 @@ func (o *EnumerateVcfRegionsReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewEnumerateVcfRegionsOK() *EnumerateVcfRegionsOK {
 	return &EnumerateVcfRegionsOK{}
 }
 
-/*EnumerateVcfRegionsOK handles this case with default header values.
+/* EnumerateVcfRegionsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type EnumerateVcfRegionsOK struct {
 func (o *EnumerateVcfRegionsOK) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vcf/region-enumeration][%d] enumerateVcfRegionsOK  %+v", 200, o.Payload)
 }
-
 func (o *EnumerateVcfRegionsOK) GetPayload() *models.CloudAccountRegions {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewEnumerateVcfRegionsBadRequest() *EnumerateVcfRegionsBadRequest {
 	return &EnumerateVcfRegionsBadRequest{}
 }
 
-/*EnumerateVcfRegionsBadRequest handles this case with default header values.
+/* EnumerateVcfRegionsBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -96,7 +94,6 @@ type EnumerateVcfRegionsBadRequest struct {
 func (o *EnumerateVcfRegionsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vcf/region-enumeration][%d] enumerateVcfRegionsBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *EnumerateVcfRegionsBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -118,18 +115,29 @@ func NewEnumerateVcfRegionsForbidden() *EnumerateVcfRegionsForbidden {
 	return &EnumerateVcfRegionsForbidden{}
 }
 
-/*EnumerateVcfRegionsForbidden handles this case with default header values.
+/* EnumerateVcfRegionsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type EnumerateVcfRegionsForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *EnumerateVcfRegionsForbidden) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vcf/region-enumeration][%d] enumerateVcfRegionsForbidden ", 403)
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vcf/region-enumeration][%d] enumerateVcfRegionsForbidden  %+v", 403, o.Payload)
+}
+func (o *EnumerateVcfRegionsForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *EnumerateVcfRegionsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

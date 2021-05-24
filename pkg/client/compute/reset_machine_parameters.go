@@ -16,64 +16,79 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewResetMachineParams creates a new ResetMachineParams object
-// with the default values initialized.
+// NewResetMachineParams creates a new ResetMachineParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewResetMachineParams() *ResetMachineParams {
-	var ()
 	return &ResetMachineParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewResetMachineParamsWithTimeout creates a new ResetMachineParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewResetMachineParamsWithTimeout(timeout time.Duration) *ResetMachineParams {
-	var ()
 	return &ResetMachineParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewResetMachineParamsWithContext creates a new ResetMachineParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewResetMachineParamsWithContext(ctx context.Context) *ResetMachineParams {
-	var ()
 	return &ResetMachineParams{
-
 		Context: ctx,
 	}
 }
 
 // NewResetMachineParamsWithHTTPClient creates a new ResetMachineParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewResetMachineParamsWithHTTPClient(client *http.Client) *ResetMachineParams {
-	var ()
 	return &ResetMachineParams{
 		HTTPClient: client,
 	}
 }
 
-/*ResetMachineParams contains all the parameters to send to the API endpoint
-for the reset machine operation typically these are written to a http.Request
+/* ResetMachineParams contains all the parameters to send to the API endpoint
+   for the reset machine operation.
+
+   Typically these are written to a http.Request.
 */
 type ResetMachineParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*ID
-	  The id of the Machine.
 
+	/* ID.
+
+	   The id of the Machine.
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the reset machine params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ResetMachineParams) WithDefaults() *ResetMachineParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the reset machine params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ResetMachineParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the reset machine params
@@ -143,16 +158,17 @@ func (o *ResetMachineParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id

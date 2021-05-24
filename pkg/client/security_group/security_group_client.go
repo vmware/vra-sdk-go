@@ -25,19 +25,24 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	ChangeSecurityGroups(params *ChangeSecurityGroupsParams) (*ChangeSecurityGroupsAccepted, error)
+	ChangeSecurityGroups(params *ChangeSecurityGroupsParams, opts ...ClientOption) (*ChangeSecurityGroupsAccepted, error)
 
-	CreateOnDemandSecurityGroup(params *CreateOnDemandSecurityGroupParams) (*CreateOnDemandSecurityGroupAccepted, error)
+	CreateOnDemandSecurityGroup(params *CreateOnDemandSecurityGroupParams, opts ...ClientOption) (*CreateOnDemandSecurityGroupAccepted, error)
 
-	DeleteSecurityGroup(params *DeleteSecurityGroupParams) (*DeleteSecurityGroupAccepted, *DeleteSecurityGroupNoContent, error)
+	DeleteSecurityGroup(params *DeleteSecurityGroupParams, opts ...ClientOption) (*DeleteSecurityGroupAccepted, *DeleteSecurityGroupNoContent, error)
 
-	GetSecurityGroup(params *GetSecurityGroupParams) (*GetSecurityGroupOK, error)
+	GetSecurityGroup(params *GetSecurityGroupParams, opts ...ClientOption) (*GetSecurityGroupOK, error)
 
-	GetSecurityGroups(params *GetSecurityGroupsParams) (*GetSecurityGroupsOK, error)
+	GetSecurityGroups(params *GetSecurityGroupsParams, opts ...ClientOption) (*GetSecurityGroupsOK, error)
 
-	UpdateSecurityGroup(params *UpdateSecurityGroupParams) (*UpdateSecurityGroupOK, error)
+	ReconfigureSecurityGroup(params *ReconfigureSecurityGroupParams, opts ...ClientOption) (*ReconfigureSecurityGroupAccepted, error)
+
+	UpdateSecurityGroup(params *UpdateSecurityGroupParams, opts ...ClientOption) (*UpdateSecurityGroupOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -47,13 +52,12 @@ type ClientService interface {
 
    Change security groups for a vSphere machine network interfaces. Securing group that is part of the same deployment can be added or removed for a machine network interface.
 */
-func (a *Client) ChangeSecurityGroups(params *ChangeSecurityGroupsParams) (*ChangeSecurityGroupsAccepted, error) {
+func (a *Client) ChangeSecurityGroups(params *ChangeSecurityGroupsParams, opts ...ClientOption) (*ChangeSecurityGroupsAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewChangeSecurityGroupsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "changeSecurityGroups",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/machines/{id}/operations/change-security-groups",
@@ -64,7 +68,12 @@ func (a *Client) ChangeSecurityGroups(params *ChangeSecurityGroupsParams) (*Chan
 		Reader:             &ChangeSecurityGroupsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -83,13 +92,12 @@ func (a *Client) ChangeSecurityGroups(params *ChangeSecurityGroupsParams) (*Chan
 
   Provision a new on-demand security group
 */
-func (a *Client) CreateOnDemandSecurityGroup(params *CreateOnDemandSecurityGroupParams) (*CreateOnDemandSecurityGroupAccepted, error) {
+func (a *Client) CreateOnDemandSecurityGroup(params *CreateOnDemandSecurityGroupParams, opts ...ClientOption) (*CreateOnDemandSecurityGroupAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateOnDemandSecurityGroupParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createOnDemandSecurityGroup",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/security-groups",
@@ -100,7 +108,12 @@ func (a *Client) CreateOnDemandSecurityGroup(params *CreateOnDemandSecurityGroup
 		Reader:             &CreateOnDemandSecurityGroupReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -119,13 +132,12 @@ func (a *Client) CreateOnDemandSecurityGroup(params *CreateOnDemandSecurityGroup
 
   Delete an on-demand security group with a given id
 */
-func (a *Client) DeleteSecurityGroup(params *DeleteSecurityGroupParams) (*DeleteSecurityGroupAccepted, *DeleteSecurityGroupNoContent, error) {
+func (a *Client) DeleteSecurityGroup(params *DeleteSecurityGroupParams, opts ...ClientOption) (*DeleteSecurityGroupAccepted, *DeleteSecurityGroupNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteSecurityGroupParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteSecurityGroup",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/security-groups/{id}",
@@ -136,7 +148,12 @@ func (a *Client) DeleteSecurityGroup(params *DeleteSecurityGroupParams) (*Delete
 		Reader:             &DeleteSecurityGroupReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -156,13 +173,12 @@ func (a *Client) DeleteSecurityGroup(params *DeleteSecurityGroupParams) (*Delete
 
   Get security group with a given id
 */
-func (a *Client) GetSecurityGroup(params *GetSecurityGroupParams) (*GetSecurityGroupOK, error) {
+func (a *Client) GetSecurityGroup(params *GetSecurityGroupParams, opts ...ClientOption) (*GetSecurityGroupOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSecurityGroupParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getSecurityGroup",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/security-groups/{id}",
@@ -173,7 +189,12 @@ func (a *Client) GetSecurityGroup(params *GetSecurityGroupParams) (*GetSecurityG
 		Reader:             &GetSecurityGroupReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -192,13 +213,12 @@ func (a *Client) GetSecurityGroup(params *GetSecurityGroupParams) (*GetSecurityG
 
   Get all security groups
 */
-func (a *Client) GetSecurityGroups(params *GetSecurityGroupsParams) (*GetSecurityGroupsOK, error) {
+func (a *Client) GetSecurityGroups(params *GetSecurityGroupsParams, opts ...ClientOption) (*GetSecurityGroupsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSecurityGroupsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getSecurityGroups",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/security-groups",
@@ -209,7 +229,12 @@ func (a *Client) GetSecurityGroups(params *GetSecurityGroupsParams) (*GetSecurit
 		Reader:             &GetSecurityGroupsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -224,17 +249,56 @@ func (a *Client) GetSecurityGroups(params *GetSecurityGroupsParams) (*GetSecurit
 }
 
 /*
+  ReconfigureSecurityGroup reconfigures operation for security group
+
+  Day-2 reconfigure operation for new security groups provisioned by vRA. This is not supported for 'existing' security groups
+*/
+func (a *Client) ReconfigureSecurityGroup(params *ReconfigureSecurityGroupParams, opts ...ClientOption) (*ReconfigureSecurityGroupAccepted, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewReconfigureSecurityGroupParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "reconfigureSecurityGroup",
+		Method:             "POST",
+		PathPattern:        "/iaas/api/security-groups/{id}/operations/reconfigure",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ReconfigureSecurityGroupReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ReconfigureSecurityGroupAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for reconfigureSecurityGroup: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   UpdateSecurityGroup updates security group
 
   Update security group. Only tag updates are supported.
 */
-func (a *Client) UpdateSecurityGroup(params *UpdateSecurityGroupParams) (*UpdateSecurityGroupOK, error) {
+func (a *Client) UpdateSecurityGroup(params *UpdateSecurityGroupParams, opts ...ClientOption) (*UpdateSecurityGroupOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateSecurityGroupParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "updateSecurityGroup",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/security-groups/{id}",
@@ -245,7 +309,12 @@ func (a *Client) UpdateSecurityGroup(params *UpdateSecurityGroupParams) (*Update
 		Reader:             &UpdateSecurityGroupReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

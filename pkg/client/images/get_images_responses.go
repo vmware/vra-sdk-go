@@ -35,7 +35,6 @@ func (o *GetImagesReader) ReadResponse(response runtime.ClientResponse, consumer
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewGetImagesOK() *GetImagesOK {
 	return &GetImagesOK{}
 }
 
-/*GetImagesOK handles this case with default header values.
+/* GetImagesOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -57,7 +56,6 @@ type GetImagesOK struct {
 func (o *GetImagesOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/images][%d] getImagesOK  %+v", 200, o.Payload)
 }
-
 func (o *GetImagesOK) GetPayload() *models.ImageResult {
 	return o.Payload
 }
@@ -79,18 +77,29 @@ func NewGetImagesForbidden() *GetImagesForbidden {
 	return &GetImagesForbidden{}
 }
 
-/*GetImagesForbidden handles this case with default header values.
+/* GetImagesForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetImagesForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetImagesForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/images][%d] getImagesForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/images][%d] getImagesForbidden  %+v", 403, o.Payload)
+}
+func (o *GetImagesForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetImagesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

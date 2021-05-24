@@ -16,69 +16,87 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetDeploymentActionUsingGETParams creates a new GetDeploymentActionUsingGETParams object
-// with the default values initialized.
+// NewGetDeploymentActionUsingGETParams creates a new GetDeploymentActionUsingGETParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetDeploymentActionUsingGETParams() *GetDeploymentActionUsingGETParams {
-	var ()
 	return &GetDeploymentActionUsingGETParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetDeploymentActionUsingGETParamsWithTimeout creates a new GetDeploymentActionUsingGETParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetDeploymentActionUsingGETParamsWithTimeout(timeout time.Duration) *GetDeploymentActionUsingGETParams {
-	var ()
 	return &GetDeploymentActionUsingGETParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetDeploymentActionUsingGETParamsWithContext creates a new GetDeploymentActionUsingGETParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetDeploymentActionUsingGETParamsWithContext(ctx context.Context) *GetDeploymentActionUsingGETParams {
-	var ()
 	return &GetDeploymentActionUsingGETParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetDeploymentActionUsingGETParamsWithHTTPClient creates a new GetDeploymentActionUsingGETParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetDeploymentActionUsingGETParamsWithHTTPClient(client *http.Client) *GetDeploymentActionUsingGETParams {
-	var ()
 	return &GetDeploymentActionUsingGETParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetDeploymentActionUsingGETParams contains all the parameters to send to the API endpoint
-for the get deployment action using g e t operation typically these are written to a http.Request
+/* GetDeploymentActionUsingGETParams contains all the parameters to send to the API endpoint
+   for the get deployment action using g e t operation.
+
+   Typically these are written to a http.Request.
 */
 type GetDeploymentActionUsingGETParams struct {
 
-	/*ActionID
-	  Action ID
+	/* ActionID.
 
+	   Action ID
 	*/
 	ActionID string
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 
+	/* APIVersion.
+
+	   The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 	*/
 	APIVersion *string
-	/*DepID
-	  Deployment ID
 
+	/* DepID.
+
+	   Deployment ID
+
+	   Format: uuid
 	*/
 	DepID strfmt.UUID
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get deployment action using get params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetDeploymentActionUsingGETParams) WithDefaults() *GetDeploymentActionUsingGETParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get deployment action using get params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetDeploymentActionUsingGETParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get deployment action using get params
@@ -164,16 +182,17 @@ func (o *GetDeploymentActionUsingGETParams) WriteToRequest(r runtime.ClientReque
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param depId

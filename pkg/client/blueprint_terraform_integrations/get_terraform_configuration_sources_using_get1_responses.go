@@ -41,7 +41,6 @@ func (o *GetTerraformConfigurationSourcesUsingGET1Reader) ReadResponse(response 
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetTerraformConfigurationSourcesUsingGET1OK() *GetTerraformConfiguration
 	return &GetTerraformConfigurationSourcesUsingGET1OK{}
 }
 
-/*GetTerraformConfigurationSourcesUsingGET1OK handles this case with default header values.
+/* GetTerraformConfigurationSourcesUsingGET1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -63,7 +62,6 @@ type GetTerraformConfigurationSourcesUsingGET1OK struct {
 func (o *GetTerraformConfigurationSourcesUsingGET1OK) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/get-configuration-sources][%d] getTerraformConfigurationSourcesUsingGET1OK  %+v", 200, o.Payload)
 }
-
 func (o *GetTerraformConfigurationSourcesUsingGET1OK) GetPayload() *models.PageOfBlueprintContentSource {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewGetTerraformConfigurationSourcesUsingGET1Unauthorized() *GetTerraformCon
 	return &GetTerraformConfigurationSourcesUsingGET1Unauthorized{}
 }
 
-/*GetTerraformConfigurationSourcesUsingGET1Unauthorized handles this case with default header values.
+/* GetTerraformConfigurationSourcesUsingGET1Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -106,7 +104,7 @@ func NewGetTerraformConfigurationSourcesUsingGET1Forbidden() *GetTerraformConfig
 	return &GetTerraformConfigurationSourcesUsingGET1Forbidden{}
 }
 
-/*GetTerraformConfigurationSourcesUsingGET1Forbidden handles this case with default header values.
+/* GetTerraformConfigurationSourcesUsingGET1Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */

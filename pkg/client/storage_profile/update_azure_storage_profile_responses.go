@@ -41,7 +41,6 @@ func (o *UpdateAzureStorageProfileReader) ReadResponse(response runtime.ClientRe
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewUpdateAzureStorageProfileOK() *UpdateAzureStorageProfileOK {
 	return &UpdateAzureStorageProfileOK{}
 }
 
-/*UpdateAzureStorageProfileOK handles this case with default header values.
+/* UpdateAzureStorageProfileOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type UpdateAzureStorageProfileOK struct {
 func (o *UpdateAzureStorageProfileOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-azure/{id}][%d] updateAzureStorageProfileOK  %+v", 200, o.Payload)
 }
-
 func (o *UpdateAzureStorageProfileOK) GetPayload() *models.AzureStorageProfile {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewUpdateAzureStorageProfileBadRequest() *UpdateAzureStorageProfileBadReque
 	return &UpdateAzureStorageProfileBadRequest{}
 }
 
-/*UpdateAzureStorageProfileBadRequest handles this case with default header values.
+/* UpdateAzureStorageProfileBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -96,7 +94,6 @@ type UpdateAzureStorageProfileBadRequest struct {
 func (o *UpdateAzureStorageProfileBadRequest) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-azure/{id}][%d] updateAzureStorageProfileBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *UpdateAzureStorageProfileBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -118,18 +115,29 @@ func NewUpdateAzureStorageProfileForbidden() *UpdateAzureStorageProfileForbidden
 	return &UpdateAzureStorageProfileForbidden{}
 }
 
-/*UpdateAzureStorageProfileForbidden handles this case with default header values.
+/* UpdateAzureStorageProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type UpdateAzureStorageProfileForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *UpdateAzureStorageProfileForbidden) Error() string {
-	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-azure/{id}][%d] updateAzureStorageProfileForbidden ", 403)
+	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-azure/{id}][%d] updateAzureStorageProfileForbidden  %+v", 403, o.Payload)
+}
+func (o *UpdateAzureStorageProfileForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *UpdateAzureStorageProfileForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

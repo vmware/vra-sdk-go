@@ -16,64 +16,79 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetNsxVCloudAccountParams creates a new GetNsxVCloudAccountParams object
-// with the default values initialized.
+// NewGetNsxVCloudAccountParams creates a new GetNsxVCloudAccountParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetNsxVCloudAccountParams() *GetNsxVCloudAccountParams {
-	var ()
 	return &GetNsxVCloudAccountParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetNsxVCloudAccountParamsWithTimeout creates a new GetNsxVCloudAccountParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetNsxVCloudAccountParamsWithTimeout(timeout time.Duration) *GetNsxVCloudAccountParams {
-	var ()
 	return &GetNsxVCloudAccountParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetNsxVCloudAccountParamsWithContext creates a new GetNsxVCloudAccountParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetNsxVCloudAccountParamsWithContext(ctx context.Context) *GetNsxVCloudAccountParams {
-	var ()
 	return &GetNsxVCloudAccountParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetNsxVCloudAccountParamsWithHTTPClient creates a new GetNsxVCloudAccountParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetNsxVCloudAccountParamsWithHTTPClient(client *http.Client) *GetNsxVCloudAccountParams {
-	var ()
 	return &GetNsxVCloudAccountParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetNsxVCloudAccountParams contains all the parameters to send to the API endpoint
-for the get nsx v cloud account operation typically these are written to a http.Request
+/* GetNsxVCloudAccountParams contains all the parameters to send to the API endpoint
+   for the get nsx v cloud account operation.
+
+   Typically these are written to a http.Request.
 */
 type GetNsxVCloudAccountParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*ID
-	  The ID of the Cloud Account
 
+	/* ID.
+
+	   The ID of the Cloud Account
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get nsx v cloud account params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetNsxVCloudAccountParams) WithDefaults() *GetNsxVCloudAccountParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get nsx v cloud account params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetNsxVCloudAccountParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get nsx v cloud account params
@@ -143,16 +158,17 @@ func (o *GetNsxVCloudAccountParams) WriteToRequest(r runtime.ClientRequest, reg 
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id

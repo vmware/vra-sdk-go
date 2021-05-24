@@ -18,64 +18,79 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewChangeMeteringAssignmentStrategyUsingPATCHParams creates a new ChangeMeteringAssignmentStrategyUsingPATCHParams object
-// with the default values initialized.
+// NewChangeMeteringAssignmentStrategyUsingPATCHParams creates a new ChangeMeteringAssignmentStrategyUsingPATCHParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewChangeMeteringAssignmentStrategyUsingPATCHParams() *ChangeMeteringAssignmentStrategyUsingPATCHParams {
-	var ()
 	return &ChangeMeteringAssignmentStrategyUsingPATCHParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewChangeMeteringAssignmentStrategyUsingPATCHParamsWithTimeout creates a new ChangeMeteringAssignmentStrategyUsingPATCHParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewChangeMeteringAssignmentStrategyUsingPATCHParamsWithTimeout(timeout time.Duration) *ChangeMeteringAssignmentStrategyUsingPATCHParams {
-	var ()
 	return &ChangeMeteringAssignmentStrategyUsingPATCHParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewChangeMeteringAssignmentStrategyUsingPATCHParamsWithContext creates a new ChangeMeteringAssignmentStrategyUsingPATCHParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewChangeMeteringAssignmentStrategyUsingPATCHParamsWithContext(ctx context.Context) *ChangeMeteringAssignmentStrategyUsingPATCHParams {
-	var ()
 	return &ChangeMeteringAssignmentStrategyUsingPATCHParams{
-
 		Context: ctx,
 	}
 }
 
 // NewChangeMeteringAssignmentStrategyUsingPATCHParamsWithHTTPClient creates a new ChangeMeteringAssignmentStrategyUsingPATCHParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewChangeMeteringAssignmentStrategyUsingPATCHParamsWithHTTPClient(client *http.Client) *ChangeMeteringAssignmentStrategyUsingPATCHParams {
-	var ()
 	return &ChangeMeteringAssignmentStrategyUsingPATCHParams{
 		HTTPClient: client,
 	}
 }
 
-/*ChangeMeteringAssignmentStrategyUsingPATCHParams contains all the parameters to send to the API endpoint
-for the change metering assignment strategy using p a t c h operation typically these are written to a http.Request
+/* ChangeMeteringAssignmentStrategyUsingPATCHParams contains all the parameters to send to the API endpoint
+   for the change metering assignment strategy using p a t c h operation.
+
+   Typically these are written to a http.Request.
 */
 type ChangeMeteringAssignmentStrategyUsingPATCHParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 	*/
 	APIVersion *string
-	/*MeteringAssignmentStrategy
-	  Pricing card assignment strategy with 'EntityType' to override the strategy for the org
 
+	/* MeteringAssignmentStrategy.
+
+	   Pricing card assignment strategy with 'EntityType' to override the strategy for the org
 	*/
 	MeteringAssignmentStrategy *models.MeteringAssignmentStrategy
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the change metering assignment strategy using p a t c h params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ChangeMeteringAssignmentStrategyUsingPATCHParams) WithDefaults() *ChangeMeteringAssignmentStrategyUsingPATCHParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the change metering assignment strategy using p a t c h params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ChangeMeteringAssignmentStrategyUsingPATCHParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the change metering assignment strategy using p a t c h params
@@ -145,18 +160,18 @@ func (o *ChangeMeteringAssignmentStrategyUsingPATCHParams) WriteToRequest(r runt
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
-
 	if o.MeteringAssignmentStrategy != nil {
 		if err := r.SetBodyParam(o.MeteringAssignmentStrategy); err != nil {
 			return err

@@ -41,7 +41,6 @@ func (o *GetComputeGatewayReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetComputeGatewayOK() *GetComputeGatewayOK {
 	return &GetComputeGatewayOK{}
 }
 
-/*GetComputeGatewayOK handles this case with default header values.
+/* GetComputeGatewayOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type GetComputeGatewayOK struct {
 func (o *GetComputeGatewayOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/compute-gateways/{id}][%d] getComputeGatewayOK  %+v", 200, o.Payload)
 }
-
 func (o *GetComputeGatewayOK) GetPayload() *models.ComputeGateway {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewGetComputeGatewayForbidden() *GetComputeGatewayForbidden {
 	return &GetComputeGatewayForbidden{}
 }
 
-/*GetComputeGatewayForbidden handles this case with default header values.
+/* GetComputeGatewayForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetComputeGatewayForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetComputeGatewayForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/compute-gateways/{id}][%d] getComputeGatewayForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/compute-gateways/{id}][%d] getComputeGatewayForbidden  %+v", 403, o.Payload)
+}
+func (o *GetComputeGatewayForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetComputeGatewayForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewGetComputeGatewayNotFound() *GetComputeGatewayNotFound {
 	return &GetComputeGatewayNotFound{}
 }
 
-/*GetComputeGatewayNotFound handles this case with default header values.
+/* GetComputeGatewayNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type GetComputeGatewayNotFound struct {
 func (o *GetComputeGatewayNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/compute-gateways/{id}][%d] getComputeGatewayNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetComputeGatewayNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

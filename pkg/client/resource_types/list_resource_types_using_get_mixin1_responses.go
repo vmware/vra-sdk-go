@@ -35,7 +35,6 @@ func (o *ListResourceTypesUsingGETMixin1Reader) ReadResponse(response runtime.Cl
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewListResourceTypesUsingGETMixin1OK() *ListResourceTypesUsingGETMixin1OK {
 	return &ListResourceTypesUsingGETMixin1OK{}
 }
 
-/*ListResourceTypesUsingGETMixin1OK handles this case with default header values.
+/* ListResourceTypesUsingGETMixin1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -57,7 +56,6 @@ type ListResourceTypesUsingGETMixin1OK struct {
 func (o *ListResourceTypesUsingGETMixin1OK) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/resource-types][%d] listResourceTypesUsingGETMixin1OK  %+v", 200, o.Payload)
 }
-
 func (o *ListResourceTypesUsingGETMixin1OK) GetPayload() *models.PageOfDeploymentResourceType {
 	return o.Payload
 }
@@ -79,7 +77,7 @@ func NewListResourceTypesUsingGETMixin1Unauthorized() *ListResourceTypesUsingGET
 	return &ListResourceTypesUsingGETMixin1Unauthorized{}
 }
 
-/*ListResourceTypesUsingGETMixin1Unauthorized handles this case with default header values.
+/* ListResourceTypesUsingGETMixin1Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */

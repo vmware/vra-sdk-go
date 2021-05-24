@@ -18,69 +18,87 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewUpdateBlueprintUsingPUT1Params creates a new UpdateBlueprintUsingPUT1Params object
-// with the default values initialized.
+// NewUpdateBlueprintUsingPUT1Params creates a new UpdateBlueprintUsingPUT1Params object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewUpdateBlueprintUsingPUT1Params() *UpdateBlueprintUsingPUT1Params {
-	var ()
 	return &UpdateBlueprintUsingPUT1Params{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewUpdateBlueprintUsingPUT1ParamsWithTimeout creates a new UpdateBlueprintUsingPUT1Params object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewUpdateBlueprintUsingPUT1ParamsWithTimeout(timeout time.Duration) *UpdateBlueprintUsingPUT1Params {
-	var ()
 	return &UpdateBlueprintUsingPUT1Params{
-
 		timeout: timeout,
 	}
 }
 
 // NewUpdateBlueprintUsingPUT1ParamsWithContext creates a new UpdateBlueprintUsingPUT1Params object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewUpdateBlueprintUsingPUT1ParamsWithContext(ctx context.Context) *UpdateBlueprintUsingPUT1Params {
-	var ()
 	return &UpdateBlueprintUsingPUT1Params{
-
 		Context: ctx,
 	}
 }
 
 // NewUpdateBlueprintUsingPUT1ParamsWithHTTPClient creates a new UpdateBlueprintUsingPUT1Params object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewUpdateBlueprintUsingPUT1ParamsWithHTTPClient(client *http.Client) *UpdateBlueprintUsingPUT1Params {
-	var ()
 	return &UpdateBlueprintUsingPUT1Params{
 		HTTPClient: client,
 	}
 }
 
-/*UpdateBlueprintUsingPUT1Params contains all the parameters to send to the API endpoint
-for the update blueprint using p u t 1 operation typically these are written to a http.Request
+/* UpdateBlueprintUsingPUT1Params contains all the parameters to send to the API endpoint
+   for the update blueprint using p u t 1 operation.
+
+   Typically these are written to a http.Request.
 */
 type UpdateBlueprintUsingPUT1Params struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about
 	*/
 	APIVersion *string
-	/*Blueprint
-	  Blueprint object
 
+	/* Blueprint.
+
+	   Blueprint object
 	*/
 	Blueprint *models.Blueprint
-	/*BlueprintID
-	  blueprintId
 
+	/* BlueprintID.
+
+	   blueprintId
+
+	   Format: uuid
 	*/
 	BlueprintID strfmt.UUID
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the update blueprint using p u t 1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UpdateBlueprintUsingPUT1Params) WithDefaults() *UpdateBlueprintUsingPUT1Params {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the update blueprint using p u t 1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UpdateBlueprintUsingPUT1Params) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the update blueprint using p u t 1 params
@@ -161,18 +179,18 @@ func (o *UpdateBlueprintUsingPUT1Params) WriteToRequest(r runtime.ClientRequest,
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
-
 	if o.Blueprint != nil {
 		if err := r.SetBodyParam(o.Blueprint); err != nil {
 			return err

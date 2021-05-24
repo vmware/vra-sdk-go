@@ -35,7 +35,6 @@ func (o *GetDeploymentFilterByIDUsingGETReader) ReadResponse(response runtime.Cl
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewGetDeploymentFilterByIDUsingGETOK() *GetDeploymentFilterByIDUsingGETOK {
 	return &GetDeploymentFilterByIDUsingGETOK{}
 }
 
-/*GetDeploymentFilterByIDUsingGETOK handles this case with default header values.
+/* GetDeploymentFilterByIDUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -57,7 +56,6 @@ type GetDeploymentFilterByIDUsingGETOK struct {
 func (o *GetDeploymentFilterByIDUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/filters/{filterId}][%d] getDeploymentFilterByIdUsingGETOK  %+v", 200, o.Payload)
 }
-
 func (o *GetDeploymentFilterByIDUsingGETOK) GetPayload() *models.PageOfFilterEntry {
 	return o.Payload
 }
@@ -79,7 +77,7 @@ func NewGetDeploymentFilterByIDUsingGETUnauthorized() *GetDeploymentFilterByIDUs
 	return &GetDeploymentFilterByIDUsingGETUnauthorized{}
 }
 
-/*GetDeploymentFilterByIDUsingGETUnauthorized handles this case with default header values.
+/* GetDeploymentFilterByIDUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */

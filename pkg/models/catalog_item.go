@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -132,7 +133,6 @@ func (m *CatalogItem) Validate(formats strfmt.Registry) error {
 }
 
 func (m *CatalogItem) validateBulkRequestLimit(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.BulkRequestLimit) { // not required
 		return nil
 	}
@@ -149,7 +149,6 @@ func (m *CatalogItem) validateBulkRequestLimit(formats strfmt.Registry) error {
 }
 
 func (m *CatalogItem) validateCreatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CreatedAt) { // not required
 		return nil
 	}
@@ -162,7 +161,6 @@ func (m *CatalogItem) validateCreatedAt(formats strfmt.Registry) error {
 }
 
 func (m *CatalogItem) validateIconID(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.IconID) { // not required
 		return nil
 	}
@@ -188,7 +186,6 @@ func (m *CatalogItem) validateID(formats strfmt.Registry) error {
 }
 
 func (m *CatalogItem) validateLastUpdatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.LastUpdatedAt) { // not required
 		return nil
 	}
@@ -219,7 +216,6 @@ func (m *CatalogItem) validateProjectIds(formats strfmt.Registry) error {
 }
 
 func (m *CatalogItem) validateProjects(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Projects) { // not required
 		return nil
 	}
@@ -244,7 +240,6 @@ func (m *CatalogItem) validateProjects(formats strfmt.Registry) error {
 }
 
 func (m *CatalogItem) validateSourceID(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.SourceID) { // not required
 		return nil
 	}
@@ -264,6 +259,56 @@ func (m *CatalogItem) validateType(formats strfmt.Registry) error {
 
 	if m.Type != nil {
 		if err := m.Type.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this catalog item based on the context it is used
+func (m *CatalogItem) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateProjects(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CatalogItem) contextValidateProjects(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Projects); i++ {
+
+		if m.Projects[i] != nil {
+			if err := m.Projects[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CatalogItem) contextValidateType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Type != nil {
+		if err := m.Type.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("type")
 			}

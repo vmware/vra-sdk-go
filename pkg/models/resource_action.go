@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -102,7 +103,6 @@ func (m *ResourceAction) validateActionTypeEnum(path, location string, value str
 }
 
 func (m *ResourceAction) validateActionType(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ActionType) { // not required
 		return nil
 	}
@@ -116,13 +116,40 @@ func (m *ResourceAction) validateActionType(formats strfmt.Registry) error {
 }
 
 func (m *ResourceAction) validateFormDefinition(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.FormDefinition) { // not required
 		return nil
 	}
 
 	if m.FormDefinition != nil {
 		if err := m.FormDefinition.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("formDefinition")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this resource action based on the context it is used
+func (m *ResourceAction) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateFormDefinition(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ResourceAction) contextValidateFormDefinition(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.FormDefinition != nil {
+		if err := m.FormDefinition.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("formDefinition")
 			}

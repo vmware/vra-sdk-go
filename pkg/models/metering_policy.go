@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 	"strconv"
 
@@ -158,7 +159,6 @@ func (m *MeteringPolicy) validateChargeModelEnum(path, location string, value st
 }
 
 func (m *MeteringPolicy) validateChargeModel(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ChargeModel) { // not required
 		return nil
 	}
@@ -172,7 +172,6 @@ func (m *MeteringPolicy) validateChargeModel(formats strfmt.Registry) error {
 }
 
 func (m *MeteringPolicy) validateCreatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CreatedAt) { // not required
 		return nil
 	}
@@ -185,7 +184,6 @@ func (m *MeteringPolicy) validateCreatedAt(formats strfmt.Registry) error {
 }
 
 func (m *MeteringPolicy) validateFixedPrice(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.FixedPrice) { // not required
 		return nil
 	}
@@ -203,7 +201,6 @@ func (m *MeteringPolicy) validateFixedPrice(formats strfmt.Registry) error {
 }
 
 func (m *MeteringPolicy) validateID(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ID) { // not required
 		return nil
 	}
@@ -216,7 +213,6 @@ func (m *MeteringPolicy) validateID(formats strfmt.Registry) error {
 }
 
 func (m *MeteringPolicy) validateLastUpdatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.LastUpdatedAt) { // not required
 		return nil
 	}
@@ -229,7 +225,6 @@ func (m *MeteringPolicy) validateLastUpdatedAt(formats strfmt.Registry) error {
 }
 
 func (m *MeteringPolicy) validateMeteringItems(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.MeteringItems) { // not required
 		return nil
 	}
@@ -254,7 +249,6 @@ func (m *MeteringPolicy) validateMeteringItems(formats strfmt.Registry) error {
 }
 
 func (m *MeteringPolicy) validateNamedMeteringItems(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.NamedMeteringItems) { // not required
 		return nil
 	}
@@ -279,7 +273,6 @@ func (m *MeteringPolicy) validateNamedMeteringItems(formats strfmt.Registry) err
 }
 
 func (m *MeteringPolicy) validateOneTimeMeteringItems(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.OneTimeMeteringItems) { // not required
 		return nil
 	}
@@ -304,7 +297,6 @@ func (m *MeteringPolicy) validateOneTimeMeteringItems(formats strfmt.Registry) e
 }
 
 func (m *MeteringPolicy) validatePricingCardAssignmentInfo(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.PricingCardAssignmentInfo) { // not required
 		return nil
 	}
@@ -322,7 +314,6 @@ func (m *MeteringPolicy) validatePricingCardAssignmentInfo(formats strfmt.Regist
 }
 
 func (m *MeteringPolicy) validateTagBasedMeteringItems(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.TagBasedMeteringItems) { // not required
 		return nil
 	}
@@ -347,7 +338,6 @@ func (m *MeteringPolicy) validateTagBasedMeteringItems(formats strfmt.Registry) 
 }
 
 func (m *MeteringPolicy) validateTagBasedOneTimeMeteringItems(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.TagBasedOneTimeMeteringItems) { // not required
 		return nil
 	}
@@ -372,7 +362,6 @@ func (m *MeteringPolicy) validateTagBasedOneTimeMeteringItems(formats strfmt.Reg
 }
 
 func (m *MeteringPolicy) validateTagBasedRateFactorItems(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.TagBasedRateFactorItems) { // not required
 		return nil
 	}
@@ -384,6 +373,184 @@ func (m *MeteringPolicy) validateTagBasedRateFactorItems(formats strfmt.Registry
 
 		if m.TagBasedRateFactorItems[i] != nil {
 			if err := m.TagBasedRateFactorItems[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tagBasedRateFactorItems" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this metering policy based on the context it is used
+func (m *MeteringPolicy) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateFixedPrice(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMeteringItems(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateNamedMeteringItems(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOneTimeMeteringItems(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidatePricingCardAssignmentInfo(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTagBasedMeteringItems(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTagBasedOneTimeMeteringItems(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTagBasedRateFactorItems(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *MeteringPolicy) contextValidateFixedPrice(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.FixedPrice != nil {
+		if err := m.FixedPrice.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("fixedPrice")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *MeteringPolicy) contextValidateMeteringItems(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.MeteringItems); i++ {
+
+		if m.MeteringItems[i] != nil {
+			if err := m.MeteringItems[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("meteringItems" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *MeteringPolicy) contextValidateNamedMeteringItems(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.NamedMeteringItems); i++ {
+
+		if m.NamedMeteringItems[i] != nil {
+			if err := m.NamedMeteringItems[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("namedMeteringItems" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *MeteringPolicy) contextValidateOneTimeMeteringItems(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.OneTimeMeteringItems); i++ {
+
+		if m.OneTimeMeteringItems[i] != nil {
+			if err := m.OneTimeMeteringItems[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("oneTimeMeteringItems" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *MeteringPolicy) contextValidatePricingCardAssignmentInfo(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.PricingCardAssignmentInfo != nil {
+		if err := m.PricingCardAssignmentInfo.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("pricingCardAssignmentInfo")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *MeteringPolicy) contextValidateTagBasedMeteringItems(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.TagBasedMeteringItems); i++ {
+
+		if m.TagBasedMeteringItems[i] != nil {
+			if err := m.TagBasedMeteringItems[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tagBasedMeteringItems" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *MeteringPolicy) contextValidateTagBasedOneTimeMeteringItems(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.TagBasedOneTimeMeteringItems); i++ {
+
+		if m.TagBasedOneTimeMeteringItems[i] != nil {
+			if err := m.TagBasedOneTimeMeteringItems[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tagBasedOneTimeMeteringItems" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *MeteringPolicy) contextValidateTagBasedRateFactorItems(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.TagBasedRateFactorItems); i++ {
+
+		if m.TagBasedRateFactorItems[i] != nil {
+			if err := m.TagBasedRateFactorItems[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tagBasedRateFactorItems" + "." + strconv.Itoa(i))
 				}

@@ -41,7 +41,6 @@ func (o *CreatePolicyUsingPOSTReader) ReadResponse(response runtime.ClientRespon
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewCreatePolicyUsingPOSTOK() *CreatePolicyUsingPOSTOK {
 	return &CreatePolicyUsingPOSTOK{}
 }
 
-/*CreatePolicyUsingPOSTOK handles this case with default header values.
+/* CreatePolicyUsingPOSTOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -63,7 +62,6 @@ type CreatePolicyUsingPOSTOK struct {
 func (o *CreatePolicyUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /price/api/private/pricing-cards][%d] createPolicyUsingPOSTOK  %+v", 200, o.Payload)
 }
-
 func (o *CreatePolicyUsingPOSTOK) GetPayload() *models.MeteringPolicy {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewCreatePolicyUsingPOSTCreated() *CreatePolicyUsingPOSTCreated {
 	return &CreatePolicyUsingPOSTCreated{}
 }
 
-/*CreatePolicyUsingPOSTCreated handles this case with default header values.
+/* CreatePolicyUsingPOSTCreated describes a response with status code 201, with default header values.
 
 Created
 */
@@ -96,7 +94,6 @@ type CreatePolicyUsingPOSTCreated struct {
 func (o *CreatePolicyUsingPOSTCreated) Error() string {
 	return fmt.Sprintf("[POST /price/api/private/pricing-cards][%d] createPolicyUsingPOSTCreated  %+v", 201, o.Payload)
 }
-
 func (o *CreatePolicyUsingPOSTCreated) GetPayload() *models.MeteringPolicy {
 	return o.Payload
 }
@@ -118,7 +115,7 @@ func NewCreatePolicyUsingPOSTUnauthorized() *CreatePolicyUsingPOSTUnauthorized {
 	return &CreatePolicyUsingPOSTUnauthorized{}
 }
 
-/*CreatePolicyUsingPOSTUnauthorized handles this case with default header values.
+/* CreatePolicyUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */

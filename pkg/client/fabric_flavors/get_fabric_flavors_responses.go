@@ -35,7 +35,6 @@ func (o *GetFabricFlavorsReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewGetFabricFlavorsOK() *GetFabricFlavorsOK {
 	return &GetFabricFlavorsOK{}
 }
 
-/*GetFabricFlavorsOK handles this case with default header values.
+/* GetFabricFlavorsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -57,7 +56,6 @@ type GetFabricFlavorsOK struct {
 func (o *GetFabricFlavorsOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-flavors][%d] getFabricFlavorsOK  %+v", 200, o.Payload)
 }
-
 func (o *GetFabricFlavorsOK) GetPayload() *models.FabricFlavorResult {
 	return o.Payload
 }
@@ -79,18 +77,29 @@ func NewGetFabricFlavorsForbidden() *GetFabricFlavorsForbidden {
 	return &GetFabricFlavorsForbidden{}
 }
 
-/*GetFabricFlavorsForbidden handles this case with default header values.
+/* GetFabricFlavorsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetFabricFlavorsForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetFabricFlavorsForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/fabric-flavors][%d] getFabricFlavorsForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/fabric-flavors][%d] getFabricFlavorsForbidden  %+v", 403, o.Payload)
+}
+func (o *GetFabricFlavorsForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetFabricFlavorsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

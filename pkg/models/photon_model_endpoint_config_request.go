@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -85,7 +86,6 @@ func (m *PhotonModelEndpointConfigRequest) Validate(formats strfmt.Registry) err
 }
 
 func (m *PhotonModelEndpointConfigRequest) validateCustomProperties(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CustomProperties) { // not required
 		return nil
 	}
@@ -103,7 +103,6 @@ func (m *PhotonModelEndpointConfigRequest) validateCustomProperties(formats strf
 }
 
 func (m *PhotonModelEndpointConfigRequest) validateEndpointProperties(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.EndpointProperties) { // not required
 		return nil
 	}
@@ -156,7 +155,6 @@ func (m *PhotonModelEndpointConfigRequest) validateRequestTypeEnum(path, locatio
 }
 
 func (m *PhotonModelEndpointConfigRequest) validateRequestType(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.RequestType) { // not required
 		return nil
 	}
@@ -170,7 +168,6 @@ func (m *PhotonModelEndpointConfigRequest) validateRequestType(formats strfmt.Re
 }
 
 func (m *PhotonModelEndpointConfigRequest) validateResourceReference(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ResourceReference) { // not required
 		return nil
 	}
@@ -188,13 +185,94 @@ func (m *PhotonModelEndpointConfigRequest) validateResourceReference(formats str
 }
 
 func (m *PhotonModelEndpointConfigRequest) validateTaskReference(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.TaskReference) { // not required
 		return nil
 	}
 
 	if m.TaskReference != nil {
 		if err := m.TaskReference.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("taskReference")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this photon model endpoint config request based on the context it is used
+func (m *PhotonModelEndpointConfigRequest) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateCustomProperties(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateEndpointProperties(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResourceReference(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTaskReference(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PhotonModelEndpointConfigRequest) contextValidateCustomProperties(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.CustomProperties != nil {
+		if err := m.CustomProperties.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("customProperties")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *PhotonModelEndpointConfigRequest) contextValidateEndpointProperties(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.EndpointProperties != nil {
+		if err := m.EndpointProperties.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("endpointProperties")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *PhotonModelEndpointConfigRequest) contextValidateResourceReference(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ResourceReference != nil {
+		if err := m.ResourceReference.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("resourceReference")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *PhotonModelEndpointConfigRequest) contextValidateTaskReference(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.TaskReference != nil {
+		if err := m.TaskReference.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("taskReference")
 			}

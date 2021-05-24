@@ -41,7 +41,6 @@ func (o *UploadReader) ReadResponse(response runtime.ClientResponse, consumer ru
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewUploadCreated() *UploadCreated {
 	return &UploadCreated{}
 }
 
-/*UploadCreated handles this case with default header values.
+/* UploadCreated describes a response with status code 201, with default header values.
 
 Success - create an icon.
 */
@@ -73,7 +72,7 @@ func NewUploadBadRequest() *UploadBadRequest {
 	return &UploadBadRequest{}
 }
 
-/*UploadBadRequest handles this case with default header values.
+/* UploadBadRequest describes a response with status code 400, with default header values.
 
 Invalid request - bad data.
 */
@@ -84,7 +83,6 @@ type UploadBadRequest struct {
 func (o *UploadBadRequest) Error() string {
 	return fmt.Sprintf("[POST /icon/api/icons][%d] uploadBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *UploadBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -106,7 +104,7 @@ func NewUploadForbidden() *UploadForbidden {
 	return &UploadForbidden{}
 }
 
-/*UploadForbidden handles this case with default header values.
+/* UploadForbidden describes a response with status code 403, with default header values.
 
 Forbidden.
 */

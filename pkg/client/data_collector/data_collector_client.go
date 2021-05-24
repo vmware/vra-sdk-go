@@ -25,15 +25,18 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateDataCollector(params *CreateDataCollectorParams) (*CreateDataCollectorCreated, error)
+	CreateDataCollector(params *CreateDataCollectorParams, opts ...ClientOption) (*CreateDataCollectorCreated, error)
 
-	DeleteDataCollector(params *DeleteDataCollectorParams) (*DeleteDataCollectorNoContent, error)
+	DeleteDataCollector(params *DeleteDataCollectorParams, opts ...ClientOption) (*DeleteDataCollectorNoContent, error)
 
-	GetDataCollector(params *GetDataCollectorParams) (*GetDataCollectorOK, error)
+	GetDataCollector(params *GetDataCollectorParams, opts ...ClientOption) (*GetDataCollectorOK, error)
 
-	GetDataCollectors(params *GetDataCollectorsParams) (*GetDataCollectorsOK, error)
+	GetDataCollectors(params *GetDataCollectorsParams, opts ...ClientOption) (*GetDataCollectorsOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -45,13 +48,12 @@ type ClientService interface {
 
 Note: Data collector endpoints are not available in vRA on-prem release.
 */
-func (a *Client) CreateDataCollector(params *CreateDataCollectorParams) (*CreateDataCollectorCreated, error) {
+func (a *Client) CreateDataCollector(params *CreateDataCollectorParams, opts ...ClientOption) (*CreateDataCollectorCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateDataCollectorParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createDataCollector",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/data-collectors",
@@ -62,7 +64,12 @@ func (a *Client) CreateDataCollector(params *CreateDataCollectorParams) (*Create
 		Reader:             &CreateDataCollectorReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -83,13 +90,12 @@ func (a *Client) CreateDataCollector(params *CreateDataCollectorParams) (*Create
 
 Note: Data collector endpoints are not available in vRA on-prem release.
 */
-func (a *Client) DeleteDataCollector(params *DeleteDataCollectorParams) (*DeleteDataCollectorNoContent, error) {
+func (a *Client) DeleteDataCollector(params *DeleteDataCollectorParams, opts ...ClientOption) (*DeleteDataCollectorNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteDataCollectorParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteDataCollector",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/data-collectors/{id}",
@@ -100,7 +106,12 @@ func (a *Client) DeleteDataCollector(params *DeleteDataCollectorParams) (*Delete
 		Reader:             &DeleteDataCollectorReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -121,13 +132,12 @@ func (a *Client) DeleteDataCollector(params *DeleteDataCollectorParams) (*Delete
 
 Note: Data collector endpoints are not available in vRA on-prem release.
 */
-func (a *Client) GetDataCollector(params *GetDataCollectorParams) (*GetDataCollectorOK, error) {
+func (a *Client) GetDataCollector(params *GetDataCollectorParams, opts ...ClientOption) (*GetDataCollectorOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDataCollectorParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getDataCollector",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/data-collectors/{id}",
@@ -138,7 +148,12 @@ func (a *Client) GetDataCollector(params *GetDataCollectorParams) (*GetDataColle
 		Reader:             &GetDataCollectorReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -159,13 +174,12 @@ func (a *Client) GetDataCollector(params *GetDataCollectorParams) (*GetDataColle
 
 Note: Data collector endpoints are not available in vRA on-prem release.
 */
-func (a *Client) GetDataCollectors(params *GetDataCollectorsParams) (*GetDataCollectorsOK, error) {
+func (a *Client) GetDataCollectors(params *GetDataCollectorsParams, opts ...ClientOption) (*GetDataCollectorsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDataCollectorsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getDataCollectors",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/data-collectors",
@@ -176,7 +190,12 @@ func (a *Client) GetDataCollectors(params *GetDataCollectorsParams) (*GetDataCol
 		Reader:             &GetDataCollectorsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

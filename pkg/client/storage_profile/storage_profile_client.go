@@ -25,47 +25,50 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateAwsStorageProfile(params *CreateAwsStorageProfileParams) (*CreateAwsStorageProfileCreated, error)
+	CreateAwsStorageProfile(params *CreateAwsStorageProfileParams, opts ...ClientOption) (*CreateAwsStorageProfileCreated, error)
 
-	CreateAzureStorageProfile(params *CreateAzureStorageProfileParams) (*CreateAzureStorageProfileCreated, error)
+	CreateAzureStorageProfile(params *CreateAzureStorageProfileParams, opts ...ClientOption) (*CreateAzureStorageProfileCreated, error)
 
-	CreateStorageProfile(params *CreateStorageProfileParams) (*CreateStorageProfileCreated, error)
+	CreateStorageProfile(params *CreateStorageProfileParams, opts ...ClientOption) (*CreateStorageProfileCreated, error)
 
-	CreateVSphereStorageProfile(params *CreateVSphereStorageProfileParams) (*CreateVSphereStorageProfileCreated, error)
+	CreateVSphereStorageProfile(params *CreateVSphereStorageProfileParams, opts ...ClientOption) (*CreateVSphereStorageProfileCreated, error)
 
-	DeleteAwsStorageProfile(params *DeleteAwsStorageProfileParams) (*DeleteAwsStorageProfileNoContent, error)
+	DeleteAwsStorageProfile(params *DeleteAwsStorageProfileParams, opts ...ClientOption) (*DeleteAwsStorageProfileNoContent, error)
 
-	DeleteAzureStorageProfile(params *DeleteAzureStorageProfileParams) (*DeleteAzureStorageProfileNoContent, error)
+	DeleteAzureStorageProfile(params *DeleteAzureStorageProfileParams, opts ...ClientOption) (*DeleteAzureStorageProfileNoContent, error)
 
-	DeleteStorageProfile(params *DeleteStorageProfileParams) (*DeleteStorageProfileNoContent, error)
+	DeleteStorageProfile(params *DeleteStorageProfileParams, opts ...ClientOption) (*DeleteStorageProfileNoContent, error)
 
-	DeleteVSphereStorageProfile(params *DeleteVSphereStorageProfileParams) (*DeleteVSphereStorageProfileNoContent, error)
+	DeleteVSphereStorageProfile(params *DeleteVSphereStorageProfileParams, opts ...ClientOption) (*DeleteVSphereStorageProfileNoContent, error)
 
-	GetAwsStorageProfile(params *GetAwsStorageProfileParams) (*GetAwsStorageProfileOK, error)
+	GetAwsStorageProfile(params *GetAwsStorageProfileParams, opts ...ClientOption) (*GetAwsStorageProfileOK, error)
 
-	GetAwsStorageProfiles(params *GetAwsStorageProfilesParams) (*GetAwsStorageProfilesOK, error)
+	GetAwsStorageProfiles(params *GetAwsStorageProfilesParams, opts ...ClientOption) (*GetAwsStorageProfilesOK, error)
 
-	GetAzureStorageProfile(params *GetAzureStorageProfileParams) (*GetAzureStorageProfileOK, error)
+	GetAzureStorageProfile(params *GetAzureStorageProfileParams, opts ...ClientOption) (*GetAzureStorageProfileOK, error)
 
-	GetAzureStorageProfiles(params *GetAzureStorageProfilesParams) (*GetAzureStorageProfilesOK, error)
+	GetAzureStorageProfiles(params *GetAzureStorageProfilesParams, opts ...ClientOption) (*GetAzureStorageProfilesOK, error)
 
-	GetStorageProfile(params *GetStorageProfileParams) (*GetStorageProfileOK, error)
+	GetStorageProfile(params *GetStorageProfileParams, opts ...ClientOption) (*GetStorageProfileOK, error)
 
-	GetStorageProfiles(params *GetStorageProfilesParams) (*GetStorageProfilesOK, error)
+	GetStorageProfiles(params *GetStorageProfilesParams, opts ...ClientOption) (*GetStorageProfilesOK, error)
 
-	GetVSphereStorageProfile(params *GetVSphereStorageProfileParams) (*GetVSphereStorageProfileOK, error)
+	GetVSphereStorageProfile(params *GetVSphereStorageProfileParams, opts ...ClientOption) (*GetVSphereStorageProfileOK, error)
 
-	GetVSphereStorageProfiles(params *GetVSphereStorageProfilesParams) (*GetVSphereStorageProfilesOK, error)
+	GetVSphereStorageProfiles(params *GetVSphereStorageProfilesParams, opts ...ClientOption) (*GetVSphereStorageProfilesOK, error)
 
-	ReplaceStorageProfile(params *ReplaceStorageProfileParams) (*ReplaceStorageProfileOK, error)
+	ReplaceStorageProfile(params *ReplaceStorageProfileParams, opts ...ClientOption) (*ReplaceStorageProfileOK, error)
 
-	UpdateAwsStorageProfile(params *UpdateAwsStorageProfileParams) (*UpdateAwsStorageProfileOK, error)
+	UpdateAwsStorageProfile(params *UpdateAwsStorageProfileParams, opts ...ClientOption) (*UpdateAwsStorageProfileOK, error)
 
-	UpdateAzureStorageProfile(params *UpdateAzureStorageProfileParams) (*UpdateAzureStorageProfileOK, error)
+	UpdateAzureStorageProfile(params *UpdateAzureStorageProfileParams, opts ...ClientOption) (*UpdateAzureStorageProfileOK, error)
 
-	UpdateVSphereStorageProfile(params *UpdateVSphereStorageProfileParams) (*UpdateVSphereStorageProfileOK, error)
+	UpdateVSphereStorageProfile(params *UpdateVSphereStorageProfileParams, opts ...ClientOption) (*UpdateVSphereStorageProfileOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -75,13 +78,12 @@ type ClientService interface {
 
   Create AWS storage profile
 */
-func (a *Client) CreateAwsStorageProfile(params *CreateAwsStorageProfileParams) (*CreateAwsStorageProfileCreated, error) {
+func (a *Client) CreateAwsStorageProfile(params *CreateAwsStorageProfileParams, opts ...ClientOption) (*CreateAwsStorageProfileCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateAwsStorageProfileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createAwsStorageProfile",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/storage-profiles-aws",
@@ -92,7 +94,12 @@ func (a *Client) CreateAwsStorageProfile(params *CreateAwsStorageProfileParams) 
 		Reader:             &CreateAwsStorageProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -111,13 +118,12 @@ func (a *Client) CreateAwsStorageProfile(params *CreateAwsStorageProfileParams) 
 
   Create Azure storage profile
 */
-func (a *Client) CreateAzureStorageProfile(params *CreateAzureStorageProfileParams) (*CreateAzureStorageProfileCreated, error) {
+func (a *Client) CreateAzureStorageProfile(params *CreateAzureStorageProfileParams, opts ...ClientOption) (*CreateAzureStorageProfileCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateAzureStorageProfileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createAzureStorageProfile",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/storage-profiles-azure",
@@ -128,7 +134,12 @@ func (a *Client) CreateAzureStorageProfile(params *CreateAzureStorageProfilePara
 		Reader:             &CreateAzureStorageProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -147,13 +158,12 @@ func (a *Client) CreateAzureStorageProfile(params *CreateAzureStorageProfilePara
 
   Create storage profile
 */
-func (a *Client) CreateStorageProfile(params *CreateStorageProfileParams) (*CreateStorageProfileCreated, error) {
+func (a *Client) CreateStorageProfile(params *CreateStorageProfileParams, opts ...ClientOption) (*CreateStorageProfileCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateStorageProfileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createStorageProfile",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/storage-profiles",
@@ -164,7 +174,12 @@ func (a *Client) CreateStorageProfile(params *CreateStorageProfileParams) (*Crea
 		Reader:             &CreateStorageProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -183,13 +198,12 @@ func (a *Client) CreateStorageProfile(params *CreateStorageProfileParams) (*Crea
 
   Create vSphere storage profile
 */
-func (a *Client) CreateVSphereStorageProfile(params *CreateVSphereStorageProfileParams) (*CreateVSphereStorageProfileCreated, error) {
+func (a *Client) CreateVSphereStorageProfile(params *CreateVSphereStorageProfileParams, opts ...ClientOption) (*CreateVSphereStorageProfileCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateVSphereStorageProfileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createVSphereStorageProfile",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/storage-profiles-vsphere",
@@ -200,7 +214,12 @@ func (a *Client) CreateVSphereStorageProfile(params *CreateVSphereStorageProfile
 		Reader:             &CreateVSphereStorageProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -219,13 +238,12 @@ func (a *Client) CreateVSphereStorageProfile(params *CreateVSphereStorageProfile
 
   Delete AWS storage profile with a given id
 */
-func (a *Client) DeleteAwsStorageProfile(params *DeleteAwsStorageProfileParams) (*DeleteAwsStorageProfileNoContent, error) {
+func (a *Client) DeleteAwsStorageProfile(params *DeleteAwsStorageProfileParams, opts ...ClientOption) (*DeleteAwsStorageProfileNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteAwsStorageProfileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteAwsStorageProfile",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/storage-profiles-aws/{id}",
@@ -236,7 +254,12 @@ func (a *Client) DeleteAwsStorageProfile(params *DeleteAwsStorageProfileParams) 
 		Reader:             &DeleteAwsStorageProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -255,13 +278,12 @@ func (a *Client) DeleteAwsStorageProfile(params *DeleteAwsStorageProfileParams) 
 
   Delete Azure storage profile with a given id
 */
-func (a *Client) DeleteAzureStorageProfile(params *DeleteAzureStorageProfileParams) (*DeleteAzureStorageProfileNoContent, error) {
+func (a *Client) DeleteAzureStorageProfile(params *DeleteAzureStorageProfileParams, opts ...ClientOption) (*DeleteAzureStorageProfileNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteAzureStorageProfileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteAzureStorageProfile",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/storage-profiles-azure/{id}",
@@ -272,7 +294,12 @@ func (a *Client) DeleteAzureStorageProfile(params *DeleteAzureStorageProfilePara
 		Reader:             &DeleteAzureStorageProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -291,13 +318,12 @@ func (a *Client) DeleteAzureStorageProfile(params *DeleteAzureStorageProfilePara
 
   Delete storage profile with a given id
 */
-func (a *Client) DeleteStorageProfile(params *DeleteStorageProfileParams) (*DeleteStorageProfileNoContent, error) {
+func (a *Client) DeleteStorageProfile(params *DeleteStorageProfileParams, opts ...ClientOption) (*DeleteStorageProfileNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteStorageProfileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteStorageProfile",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/storage-profiles/{id}",
@@ -308,7 +334,12 @@ func (a *Client) DeleteStorageProfile(params *DeleteStorageProfileParams) (*Dele
 		Reader:             &DeleteStorageProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -327,13 +358,12 @@ func (a *Client) DeleteStorageProfile(params *DeleteStorageProfileParams) (*Dele
 
   Delete vSphere storage profile with a given id
 */
-func (a *Client) DeleteVSphereStorageProfile(params *DeleteVSphereStorageProfileParams) (*DeleteVSphereStorageProfileNoContent, error) {
+func (a *Client) DeleteVSphereStorageProfile(params *DeleteVSphereStorageProfileParams, opts ...ClientOption) (*DeleteVSphereStorageProfileNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteVSphereStorageProfileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteVSphereStorageProfile",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/storage-profiles-vsphere/{id}",
@@ -344,7 +374,12 @@ func (a *Client) DeleteVSphereStorageProfile(params *DeleteVSphereStorageProfile
 		Reader:             &DeleteVSphereStorageProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -363,13 +398,12 @@ func (a *Client) DeleteVSphereStorageProfile(params *DeleteVSphereStorageProfile
 
   Get AWS storage profile with a given id
 */
-func (a *Client) GetAwsStorageProfile(params *GetAwsStorageProfileParams) (*GetAwsStorageProfileOK, error) {
+func (a *Client) GetAwsStorageProfile(params *GetAwsStorageProfileParams, opts ...ClientOption) (*GetAwsStorageProfileOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAwsStorageProfileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getAwsStorageProfile",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/storage-profiles-aws/{id}",
@@ -380,7 +414,12 @@ func (a *Client) GetAwsStorageProfile(params *GetAwsStorageProfileParams) (*GetA
 		Reader:             &GetAwsStorageProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -399,13 +438,12 @@ func (a *Client) GetAwsStorageProfile(params *GetAwsStorageProfileParams) (*GetA
 
   Get all AWS storage profiles
 */
-func (a *Client) GetAwsStorageProfiles(params *GetAwsStorageProfilesParams) (*GetAwsStorageProfilesOK, error) {
+func (a *Client) GetAwsStorageProfiles(params *GetAwsStorageProfilesParams, opts ...ClientOption) (*GetAwsStorageProfilesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAwsStorageProfilesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getAwsStorageProfiles",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/storage-profiles-aws",
@@ -416,7 +454,12 @@ func (a *Client) GetAwsStorageProfiles(params *GetAwsStorageProfilesParams) (*Ge
 		Reader:             &GetAwsStorageProfilesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -435,13 +478,12 @@ func (a *Client) GetAwsStorageProfiles(params *GetAwsStorageProfilesParams) (*Ge
 
   Get Azure storage profile with a given id
 */
-func (a *Client) GetAzureStorageProfile(params *GetAzureStorageProfileParams) (*GetAzureStorageProfileOK, error) {
+func (a *Client) GetAzureStorageProfile(params *GetAzureStorageProfileParams, opts ...ClientOption) (*GetAzureStorageProfileOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAzureStorageProfileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getAzureStorageProfile",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/storage-profiles-azure/{id}",
@@ -452,7 +494,12 @@ func (a *Client) GetAzureStorageProfile(params *GetAzureStorageProfileParams) (*
 		Reader:             &GetAzureStorageProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -471,13 +518,12 @@ func (a *Client) GetAzureStorageProfile(params *GetAzureStorageProfileParams) (*
 
   Get all Azure storage profiles
 */
-func (a *Client) GetAzureStorageProfiles(params *GetAzureStorageProfilesParams) (*GetAzureStorageProfilesOK, error) {
+func (a *Client) GetAzureStorageProfiles(params *GetAzureStorageProfilesParams, opts ...ClientOption) (*GetAzureStorageProfilesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAzureStorageProfilesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getAzureStorageProfiles",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/storage-profiles-azure",
@@ -488,7 +534,12 @@ func (a *Client) GetAzureStorageProfiles(params *GetAzureStorageProfilesParams) 
 		Reader:             &GetAzureStorageProfilesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -507,13 +558,12 @@ func (a *Client) GetAzureStorageProfiles(params *GetAzureStorageProfilesParams) 
 
   Get storage profile with a given id
 */
-func (a *Client) GetStorageProfile(params *GetStorageProfileParams) (*GetStorageProfileOK, error) {
+func (a *Client) GetStorageProfile(params *GetStorageProfileParams, opts ...ClientOption) (*GetStorageProfileOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetStorageProfileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getStorageProfile",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/storage-profiles/{id}",
@@ -524,7 +574,12 @@ func (a *Client) GetStorageProfile(params *GetStorageProfileParams) (*GetStorage
 		Reader:             &GetStorageProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -543,13 +598,12 @@ func (a *Client) GetStorageProfile(params *GetStorageProfileParams) (*GetStorage
 
   Get all storage profiles
 */
-func (a *Client) GetStorageProfiles(params *GetStorageProfilesParams) (*GetStorageProfilesOK, error) {
+func (a *Client) GetStorageProfiles(params *GetStorageProfilesParams, opts ...ClientOption) (*GetStorageProfilesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetStorageProfilesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getStorageProfiles",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/storage-profiles",
@@ -560,7 +614,12 @@ func (a *Client) GetStorageProfiles(params *GetStorageProfilesParams) (*GetStora
 		Reader:             &GetStorageProfilesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -579,13 +638,12 @@ func (a *Client) GetStorageProfiles(params *GetStorageProfilesParams) (*GetStora
 
   Get vSphere storage profile with a given id
 */
-func (a *Client) GetVSphereStorageProfile(params *GetVSphereStorageProfileParams) (*GetVSphereStorageProfileOK, error) {
+func (a *Client) GetVSphereStorageProfile(params *GetVSphereStorageProfileParams, opts ...ClientOption) (*GetVSphereStorageProfileOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVSphereStorageProfileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getVSphereStorageProfile",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/storage-profiles-vsphere/{id}",
@@ -596,7 +654,12 @@ func (a *Client) GetVSphereStorageProfile(params *GetVSphereStorageProfileParams
 		Reader:             &GetVSphereStorageProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -615,13 +678,12 @@ func (a *Client) GetVSphereStorageProfile(params *GetVSphereStorageProfileParams
 
   Get all vSphere storage profiles
 */
-func (a *Client) GetVSphereStorageProfiles(params *GetVSphereStorageProfilesParams) (*GetVSphereStorageProfilesOK, error) {
+func (a *Client) GetVSphereStorageProfiles(params *GetVSphereStorageProfilesParams, opts ...ClientOption) (*GetVSphereStorageProfilesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVSphereStorageProfilesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getVSphereStorageProfiles",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/storage-profiles-vsphere",
@@ -632,7 +694,12 @@ func (a *Client) GetVSphereStorageProfiles(params *GetVSphereStorageProfilesPara
 		Reader:             &GetVSphereStorageProfilesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -651,13 +718,12 @@ func (a *Client) GetVSphereStorageProfiles(params *GetVSphereStorageProfilesPara
 
   Replace storage profile with a given id
 */
-func (a *Client) ReplaceStorageProfile(params *ReplaceStorageProfileParams) (*ReplaceStorageProfileOK, error) {
+func (a *Client) ReplaceStorageProfile(params *ReplaceStorageProfileParams, opts ...ClientOption) (*ReplaceStorageProfileOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewReplaceStorageProfileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "replaceStorageProfile",
 		Method:             "PUT",
 		PathPattern:        "/iaas/api/storage-profiles/{id}",
@@ -668,7 +734,12 @@ func (a *Client) ReplaceStorageProfile(params *ReplaceStorageProfileParams) (*Re
 		Reader:             &ReplaceStorageProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -687,13 +758,12 @@ func (a *Client) ReplaceStorageProfile(params *ReplaceStorageProfileParams) (*Re
 
   Update AWS storage profile
 */
-func (a *Client) UpdateAwsStorageProfile(params *UpdateAwsStorageProfileParams) (*UpdateAwsStorageProfileOK, error) {
+func (a *Client) UpdateAwsStorageProfile(params *UpdateAwsStorageProfileParams, opts ...ClientOption) (*UpdateAwsStorageProfileOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateAwsStorageProfileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "updateAwsStorageProfile",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/storage-profiles-aws/{id}",
@@ -704,7 +774,12 @@ func (a *Client) UpdateAwsStorageProfile(params *UpdateAwsStorageProfileParams) 
 		Reader:             &UpdateAwsStorageProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -723,13 +798,12 @@ func (a *Client) UpdateAwsStorageProfile(params *UpdateAwsStorageProfileParams) 
 
   Update Azure storage profile
 */
-func (a *Client) UpdateAzureStorageProfile(params *UpdateAzureStorageProfileParams) (*UpdateAzureStorageProfileOK, error) {
+func (a *Client) UpdateAzureStorageProfile(params *UpdateAzureStorageProfileParams, opts ...ClientOption) (*UpdateAzureStorageProfileOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateAzureStorageProfileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "updateAzureStorageProfile",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/storage-profiles-azure/{id}",
@@ -740,7 +814,12 @@ func (a *Client) UpdateAzureStorageProfile(params *UpdateAzureStorageProfilePara
 		Reader:             &UpdateAzureStorageProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -759,13 +838,12 @@ func (a *Client) UpdateAzureStorageProfile(params *UpdateAzureStorageProfilePara
 
   Update vSphere storage profile
 */
-func (a *Client) UpdateVSphereStorageProfile(params *UpdateVSphereStorageProfileParams) (*UpdateVSphereStorageProfileOK, error) {
+func (a *Client) UpdateVSphereStorageProfile(params *UpdateVSphereStorageProfileParams, opts ...ClientOption) (*UpdateVSphereStorageProfileOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateVSphereStorageProfileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "updateVSphereStorageProfile",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/storage-profiles-vsphere/{id}",
@@ -776,7 +854,12 @@ func (a *Client) UpdateVSphereStorageProfile(params *UpdateVSphereStorageProfile
 		Reader:             &UpdateVSphereStorageProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -41,13 +43,40 @@ func (m *RateFactorItem) Validate(formats strfmt.Registry) error {
 }
 
 func (m *RateFactorItem) validateRateFactor(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.RateFactor) { // not required
 		return nil
 	}
 
 	if m.RateFactor != nil {
 		if err := m.RateFactor.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("rateFactor")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this rate factor item based on the context it is used
+func (m *RateFactorItem) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateRateFactor(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *RateFactorItem) contextValidateRateFactor(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.RateFactor != nil {
+		if err := m.RateFactor.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("rateFactor")
 			}

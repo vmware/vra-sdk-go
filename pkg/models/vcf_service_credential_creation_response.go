@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 	"strconv"
 
@@ -56,7 +57,6 @@ func (m *VcfServiceCredentialCreationResponse) Validate(formats strfmt.Registry)
 }
 
 func (m *VcfServiceCredentialCreationResponse) validateCredentials(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Credentials) { // not required
 		return nil
 	}
@@ -113,7 +113,6 @@ func (m *VcfServiceCredentialCreationResponse) validateStatusEnum(path, location
 }
 
 func (m *VcfServiceCredentialCreationResponse) validateStatus(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Status) { // not required
 		return nil
 	}
@@ -121,6 +120,38 @@ func (m *VcfServiceCredentialCreationResponse) validateStatus(formats strfmt.Reg
 	// value enum
 	if err := m.validateStatusEnum("status", "body", m.Status); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this vcf service credential creation response based on the context it is used
+func (m *VcfServiceCredentialCreationResponse) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateCredentials(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *VcfServiceCredentialCreationResponse) contextValidateCredentials(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Credentials); i++ {
+
+		if m.Credentials[i] != nil {
+			if err := m.Credentials[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("credentials" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil

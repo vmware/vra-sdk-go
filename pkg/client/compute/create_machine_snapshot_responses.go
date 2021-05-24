@@ -41,7 +41,6 @@ func (o *CreateMachineSnapshotReader) ReadResponse(response runtime.ClientRespon
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewCreateMachineSnapshotAccepted() *CreateMachineSnapshotAccepted {
 	return &CreateMachineSnapshotAccepted{}
 }
 
-/*CreateMachineSnapshotAccepted handles this case with default header values.
+/* CreateMachineSnapshotAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type CreateMachineSnapshotAccepted struct {
 func (o *CreateMachineSnapshotAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/snapshots][%d] createMachineSnapshotAccepted  %+v", 202, o.Payload)
 }
-
 func (o *CreateMachineSnapshotAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewCreateMachineSnapshotForbidden() *CreateMachineSnapshotForbidden {
 	return &CreateMachineSnapshotForbidden{}
 }
 
-/*CreateMachineSnapshotForbidden handles this case with default header values.
+/* CreateMachineSnapshotForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type CreateMachineSnapshotForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *CreateMachineSnapshotForbidden) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/snapshots][%d] createMachineSnapshotForbidden ", 403)
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/snapshots][%d] createMachineSnapshotForbidden  %+v", 403, o.Payload)
+}
+func (o *CreateMachineSnapshotForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *CreateMachineSnapshotForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewCreateMachineSnapshotNotFound() *CreateMachineSnapshotNotFound {
 	return &CreateMachineSnapshotNotFound{}
 }
 
-/*CreateMachineSnapshotNotFound handles this case with default header values.
+/* CreateMachineSnapshotNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type CreateMachineSnapshotNotFound struct {
 func (o *CreateMachineSnapshotNotFound) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/snapshots][%d] createMachineSnapshotNotFound  %+v", 404, o.Payload)
 }
-
 func (o *CreateMachineSnapshotNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

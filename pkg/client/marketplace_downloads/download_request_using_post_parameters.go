@@ -18,64 +18,79 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewDownloadRequestUsingPOSTParams creates a new DownloadRequestUsingPOSTParams object
-// with the default values initialized.
+// NewDownloadRequestUsingPOSTParams creates a new DownloadRequestUsingPOSTParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDownloadRequestUsingPOSTParams() *DownloadRequestUsingPOSTParams {
-	var ()
 	return &DownloadRequestUsingPOSTParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDownloadRequestUsingPOSTParamsWithTimeout creates a new DownloadRequestUsingPOSTParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDownloadRequestUsingPOSTParamsWithTimeout(timeout time.Duration) *DownloadRequestUsingPOSTParams {
-	var ()
 	return &DownloadRequestUsingPOSTParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDownloadRequestUsingPOSTParamsWithContext creates a new DownloadRequestUsingPOSTParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDownloadRequestUsingPOSTParamsWithContext(ctx context.Context) *DownloadRequestUsingPOSTParams {
-	var ()
 	return &DownloadRequestUsingPOSTParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDownloadRequestUsingPOSTParamsWithHTTPClient creates a new DownloadRequestUsingPOSTParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDownloadRequestUsingPOSTParamsWithHTTPClient(client *http.Client) *DownloadRequestUsingPOSTParams {
-	var ()
 	return &DownloadRequestUsingPOSTParams{
 		HTTPClient: client,
 	}
 }
 
-/*DownloadRequestUsingPOSTParams contains all the parameters to send to the API endpoint
-for the download request using p o s t operation typically these are written to a http.Request
+/* DownloadRequestUsingPOSTParams contains all the parameters to send to the API endpoint
+   for the download request using p o s t operation.
+
+   Typically these are written to a http.Request.
 */
 type DownloadRequestUsingPOSTParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information, please refer to /content/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information, please refer to /content/api/about
 	*/
 	APIVersion *string
-	/*DownloadRequest
-	  downloadRequest
 
+	/* DownloadRequest.
+
+	   downloadRequest
 	*/
 	DownloadRequest *models.MarketplaceContentDownloadRequest
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the download request using p o s t params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DownloadRequestUsingPOSTParams) WithDefaults() *DownloadRequestUsingPOSTParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the download request using p o s t params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DownloadRequestUsingPOSTParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the download request using p o s t params
@@ -145,18 +160,18 @@ func (o *DownloadRequestUsingPOSTParams) WriteToRequest(r runtime.ClientRequest,
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
-
 	if o.DownloadRequest != nil {
 		if err := r.SetBodyParam(o.DownloadRequest); err != nil {
 			return err

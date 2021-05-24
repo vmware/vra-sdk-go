@@ -41,7 +41,6 @@ func (o *GetProjectReader) ReadResponse(response runtime.ClientResponse, consume
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetProjectOK() *GetProjectOK {
 	return &GetProjectOK{}
 }
 
-/*GetProjectOK handles this case with default header values.
+/* GetProjectOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type GetProjectOK struct {
 func (o *GetProjectOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/projects/{id}][%d] getProjectOK  %+v", 200, o.Payload)
 }
-
 func (o *GetProjectOK) GetPayload() *models.Project {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewGetProjectForbidden() *GetProjectForbidden {
 	return &GetProjectForbidden{}
 }
 
-/*GetProjectForbidden handles this case with default header values.
+/* GetProjectForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetProjectForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetProjectForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/projects/{id}][%d] getProjectForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/projects/{id}][%d] getProjectForbidden  %+v", 403, o.Payload)
+}
+func (o *GetProjectForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetProjectForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewGetProjectNotFound() *GetProjectNotFound {
 	return &GetProjectNotFound{}
 }
 
-/*GetProjectNotFound handles this case with default header values.
+/* GetProjectNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type GetProjectNotFound struct {
 func (o *GetProjectNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/projects/{id}][%d] getProjectNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetProjectNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -23,6 +23,7 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/cloud_account"
 	"github.com/vmware/vra-sdk-go/pkg/client/compute"
 	"github.com/vmware/vra-sdk-go/pkg/client/compute_gateway"
+	"github.com/vmware/vra-sdk-go/pkg/client/compute_nat"
 	"github.com/vmware/vra-sdk-go/pkg/client/content_source"
 	"github.com/vmware/vra-sdk-go/pkg/client/data_collector"
 	"github.com/vmware/vra-sdk-go/pkg/client/deployment"
@@ -72,7 +73,7 @@ var Default = NewHTTPClient(nil)
 const (
 	// DefaultHost is the default Host
 	// found in Meta (info) section of spec file
-	DefaultHost string = "api.mgmt.cloud.vmware.com"
+	DefaultHost string = "cava-r-90-055.eng.vmware.com"
 	// DefaultBasePath is the default BasePath
 	// found in Meta (info) section of spec file
 	DefaultBasePath string = "/"
@@ -121,6 +122,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 	cli.CloudAccount = cloud_account.New(transport, formats)
 	cli.Compute = compute.New(transport, formats)
 	cli.ComputeGateway = compute_gateway.New(transport, formats)
+	cli.ComputeNat = compute_nat.New(transport, formats)
 	cli.ContentSource = content_source.New(transport, formats)
 	cli.DataCollector = data_collector.New(transport, formats)
 	cli.Deployment = deployment.New(transport, formats)
@@ -232,6 +234,8 @@ type MulticloudIaaS struct {
 
 	ComputeGateway compute_gateway.ClientService
 
+	ComputeNat compute_nat.ClientService
+
 	ContentSource content_source.ClientService
 
 	DataCollector data_collector.ClientService
@@ -333,6 +337,7 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.CloudAccount.SetTransport(transport)
 	c.Compute.SetTransport(transport)
 	c.ComputeGateway.SetTransport(transport)
+	c.ComputeNat.SetTransport(transport)
 	c.ContentSource.SetTransport(transport)
 	c.DataCollector.SetTransport(transport)
 	c.Deployment.SetTransport(transport)

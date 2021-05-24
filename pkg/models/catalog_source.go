@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -129,15 +131,14 @@ func (m *CatalogSource) Validate(formats strfmt.Registry) error {
 
 func (m *CatalogSource) validateConfig(formats strfmt.Registry) error {
 
-	if err := validate.Required("config", "body", m.Config); err != nil {
-		return err
+	if m.Config == nil {
+		return errors.Required("config", "body", nil)
 	}
 
 	return nil
 }
 
 func (m *CatalogSource) validateCreatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CreatedAt) { // not required
 		return nil
 	}
@@ -150,7 +151,6 @@ func (m *CatalogSource) validateCreatedAt(formats strfmt.Registry) error {
 }
 
 func (m *CatalogSource) validateIconID(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.IconID) { // not required
 		return nil
 	}
@@ -176,7 +176,6 @@ func (m *CatalogSource) validateID(formats strfmt.Registry) error {
 }
 
 func (m *CatalogSource) validateLastImportCompletedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.LastImportCompletedAt) { // not required
 		return nil
 	}
@@ -189,7 +188,6 @@ func (m *CatalogSource) validateLastImportCompletedAt(formats strfmt.Registry) e
 }
 
 func (m *CatalogSource) validateLastImportStartedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.LastImportStartedAt) { // not required
 		return nil
 	}
@@ -202,7 +200,6 @@ func (m *CatalogSource) validateLastImportStartedAt(formats strfmt.Registry) err
 }
 
 func (m *CatalogSource) validateLastUpdatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.LastUpdatedAt) { // not required
 		return nil
 	}
@@ -229,6 +226,11 @@ func (m *CatalogSource) validateTypeID(formats strfmt.Registry) error {
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validates this catalog source based on context it is used
+func (m *CatalogSource) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

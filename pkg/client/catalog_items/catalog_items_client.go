@@ -25,21 +25,24 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetCatalogItemUsingGET1(params *GetCatalogItemUsingGET1Params) (*GetCatalogItemUsingGET1OK, error)
+	GetCatalogItemUsingGET1(params *GetCatalogItemUsingGET1Params, opts ...ClientOption) (*GetCatalogItemUsingGET1OK, error)
 
-	GetCatalogItemsUsingGET1(params *GetCatalogItemsUsingGET1Params) (*GetCatalogItemsUsingGET1OK, error)
+	GetCatalogItemsUsingGET1(params *GetCatalogItemsUsingGET1Params, opts ...ClientOption) (*GetCatalogItemsUsingGET1OK, error)
 
-	GetUpfrontPriceResponseForCatalogItemUsingGET(params *GetUpfrontPriceResponseForCatalogItemUsingGETParams) (*GetUpfrontPriceResponseForCatalogItemUsingGETOK, error)
+	GetUpfrontPriceResponseForCatalogItemUsingGET(params *GetUpfrontPriceResponseForCatalogItemUsingGETParams, opts ...ClientOption) (*GetUpfrontPriceResponseForCatalogItemUsingGETOK, error)
 
-	GetVersionByIDUsingGET(params *GetVersionByIDUsingGETParams) (*GetVersionByIDUsingGETOK, error)
+	GetVersionByIDUsingGET(params *GetVersionByIDUsingGETParams, opts ...ClientOption) (*GetVersionByIDUsingGETOK, error)
 
-	GetVersionsUsingGET(params *GetVersionsUsingGETParams) (*GetVersionsUsingGETOK, error)
+	GetVersionsUsingGET(params *GetVersionsUsingGETParams, opts ...ClientOption) (*GetVersionsUsingGETOK, error)
 
-	RequestCatalogItemUsingPOST(params *RequestCatalogItemUsingPOSTParams) (*RequestCatalogItemUsingPOSTOK, error)
+	RequestCatalogItemUsingPOST(params *RequestCatalogItemUsingPOSTParams, opts ...ClientOption) (*RequestCatalogItemUsingPOSTOK, error)
 
-	SubmitUpfrontPriceRequestForCatalogItemUsingPOST(params *SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams) (*SubmitUpfrontPriceRequestForCatalogItemUsingPOSTOK, error)
+	SubmitUpfrontPriceRequestForCatalogItemUsingPOST(params *SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams, opts ...ClientOption) (*SubmitUpfrontPriceRequestForCatalogItemUsingPOSTOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -49,13 +52,12 @@ type ClientService interface {
 
   Returns the catalog item with the specified ID.
 */
-func (a *Client) GetCatalogItemUsingGET1(params *GetCatalogItemUsingGET1Params) (*GetCatalogItemUsingGET1OK, error) {
+func (a *Client) GetCatalogItemUsingGET1(params *GetCatalogItemUsingGET1Params, opts ...ClientOption) (*GetCatalogItemUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCatalogItemUsingGET1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getCatalogItemUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/catalog/api/items/{id}",
@@ -66,7 +68,12 @@ func (a *Client) GetCatalogItemUsingGET1(params *GetCatalogItemUsingGET1Params) 
 		Reader:             &GetCatalogItemUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -85,13 +92,12 @@ func (a *Client) GetCatalogItemUsingGET1(params *GetCatalogItemUsingGET1Params) 
 
   Returns a paginated list of catalog items.
 */
-func (a *Client) GetCatalogItemsUsingGET1(params *GetCatalogItemsUsingGET1Params) (*GetCatalogItemsUsingGET1OK, error) {
+func (a *Client) GetCatalogItemsUsingGET1(params *GetCatalogItemsUsingGET1Params, opts ...ClientOption) (*GetCatalogItemsUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCatalogItemsUsingGET1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getCatalogItemsUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/catalog/api/items",
@@ -102,7 +108,12 @@ func (a *Client) GetCatalogItemsUsingGET1(params *GetCatalogItemsUsingGET1Params
 		Reader:             &GetCatalogItemsUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -121,13 +132,12 @@ func (a *Client) GetCatalogItemsUsingGET1(params *GetCatalogItemsUsingGET1Params
 
   Returns upfront prices of a given catalog item.
 */
-func (a *Client) GetUpfrontPriceResponseForCatalogItemUsingGET(params *GetUpfrontPriceResponseForCatalogItemUsingGETParams) (*GetUpfrontPriceResponseForCatalogItemUsingGETOK, error) {
+func (a *Client) GetUpfrontPriceResponseForCatalogItemUsingGET(params *GetUpfrontPriceResponseForCatalogItemUsingGETParams, opts ...ClientOption) (*GetUpfrontPriceResponseForCatalogItemUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetUpfrontPriceResponseForCatalogItemUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getUpfrontPriceResponseForCatalogItemUsingGET",
 		Method:             "GET",
 		PathPattern:        "/catalog/api/items/{id}/upfront-prices/{upfrontPriceId}",
@@ -138,7 +148,12 @@ func (a *Client) GetUpfrontPriceResponseForCatalogItemUsingGET(params *GetUpfron
 		Reader:             &GetUpfrontPriceResponseForCatalogItemUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -157,13 +172,12 @@ func (a *Client) GetUpfrontPriceResponseForCatalogItemUsingGET(params *GetUpfron
 
   Returns a detailed catalog item version.
 */
-func (a *Client) GetVersionByIDUsingGET(params *GetVersionByIDUsingGETParams) (*GetVersionByIDUsingGETOK, error) {
+func (a *Client) GetVersionByIDUsingGET(params *GetVersionByIDUsingGETParams, opts ...ClientOption) (*GetVersionByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVersionByIDUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getVersionByIdUsingGET",
 		Method:             "GET",
 		PathPattern:        "/catalog/api/items/{id}/versions/{versionId}",
@@ -174,7 +188,12 @@ func (a *Client) GetVersionByIDUsingGET(params *GetVersionByIDUsingGETParams) (*
 		Reader:             &GetVersionByIDUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -193,13 +212,12 @@ func (a *Client) GetVersionByIDUsingGET(params *GetVersionByIDUsingGETParams) (*
 
   Returns a paginated list of catalog item versions.
 */
-func (a *Client) GetVersionsUsingGET(params *GetVersionsUsingGETParams) (*GetVersionsUsingGETOK, error) {
+func (a *Client) GetVersionsUsingGET(params *GetVersionsUsingGETParams, opts ...ClientOption) (*GetVersionsUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVersionsUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getVersionsUsingGET",
 		Method:             "GET",
 		PathPattern:        "/catalog/api/items/{id}/versions",
@@ -210,7 +228,12 @@ func (a *Client) GetVersionsUsingGET(params *GetVersionsUsingGETParams) (*GetVer
 		Reader:             &GetVersionsUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -229,13 +252,12 @@ func (a *Client) GetVersionsUsingGET(params *GetVersionsUsingGETParams) (*GetVer
 
   Creates a deployment from a catalog item.
 */
-func (a *Client) RequestCatalogItemUsingPOST(params *RequestCatalogItemUsingPOSTParams) (*RequestCatalogItemUsingPOSTOK, error) {
+func (a *Client) RequestCatalogItemUsingPOST(params *RequestCatalogItemUsingPOSTParams, opts ...ClientOption) (*RequestCatalogItemUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewRequestCatalogItemUsingPOSTParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "requestCatalogItemUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/catalog/api/items/{id}/request",
@@ -246,7 +268,12 @@ func (a *Client) RequestCatalogItemUsingPOST(params *RequestCatalogItemUsingPOST
 		Reader:             &RequestCatalogItemUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -265,13 +292,12 @@ func (a *Client) RequestCatalogItemUsingPOST(params *RequestCatalogItemUsingPOST
 
   Returns upfront price response for a given catalog item.
 */
-func (a *Client) SubmitUpfrontPriceRequestForCatalogItemUsingPOST(params *SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams) (*SubmitUpfrontPriceRequestForCatalogItemUsingPOSTOK, error) {
+func (a *Client) SubmitUpfrontPriceRequestForCatalogItemUsingPOST(params *SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams, opts ...ClientOption) (*SubmitUpfrontPriceRequestForCatalogItemUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewSubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "submitUpfrontPriceRequestForCatalogItemUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/catalog/api/items/{id}/upfront-prices",
@@ -282,7 +308,12 @@ func (a *Client) SubmitUpfrontPriceRequestForCatalogItemUsingPOST(params *Submit
 		Reader:             &SubmitUpfrontPriceRequestForCatalogItemUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

@@ -41,7 +41,6 @@ func (o *CreateBlockDeviceReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewCreateBlockDeviceAccepted() *CreateBlockDeviceAccepted {
 	return &CreateBlockDeviceAccepted{}
 }
 
-/*CreateBlockDeviceAccepted handles this case with default header values.
+/* CreateBlockDeviceAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type CreateBlockDeviceAccepted struct {
 func (o *CreateBlockDeviceAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/block-devices][%d] createBlockDeviceAccepted  %+v", 202, o.Payload)
 }
-
 func (o *CreateBlockDeviceAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewCreateBlockDeviceBadRequest() *CreateBlockDeviceBadRequest {
 	return &CreateBlockDeviceBadRequest{}
 }
 
-/*CreateBlockDeviceBadRequest handles this case with default header values.
+/* CreateBlockDeviceBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -96,7 +94,6 @@ type CreateBlockDeviceBadRequest struct {
 func (o *CreateBlockDeviceBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/block-devices][%d] createBlockDeviceBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateBlockDeviceBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -118,18 +115,29 @@ func NewCreateBlockDeviceForbidden() *CreateBlockDeviceForbidden {
 	return &CreateBlockDeviceForbidden{}
 }
 
-/*CreateBlockDeviceForbidden handles this case with default header values.
+/* CreateBlockDeviceForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type CreateBlockDeviceForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *CreateBlockDeviceForbidden) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/block-devices][%d] createBlockDeviceForbidden ", 403)
+	return fmt.Sprintf("[POST /iaas/api/block-devices][%d] createBlockDeviceForbidden  %+v", 403, o.Payload)
+}
+func (o *CreateBlockDeviceForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *CreateBlockDeviceForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

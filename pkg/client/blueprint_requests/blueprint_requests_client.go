@@ -25,21 +25,24 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CancelBlueprintRequestUsingPOST(params *CancelBlueprintRequestUsingPOSTParams) (*CancelBlueprintRequestUsingPOSTOK, error)
+	CancelBlueprintRequestUsingPOST(params *CancelBlueprintRequestUsingPOSTParams, opts ...ClientOption) (*CancelBlueprintRequestUsingPOSTOK, error)
 
-	CreateBlueprintRequestUsingPOST1(params *CreateBlueprintRequestUsingPOST1Params) (*CreateBlueprintRequestUsingPOST1Created, *CreateBlueprintRequestUsingPOST1Accepted, error)
+	CreateBlueprintRequestUsingPOST1(params *CreateBlueprintRequestUsingPOST1Params, opts ...ClientOption) (*CreateBlueprintRequestUsingPOST1Created, *CreateBlueprintRequestUsingPOST1Accepted, error)
 
-	DeleteBlueprintRequestUsingDELETE1(params *DeleteBlueprintRequestUsingDELETE1Params) (*DeleteBlueprintRequestUsingDELETE1NoContent, error)
+	DeleteBlueprintRequestUsingDELETE1(params *DeleteBlueprintRequestUsingDELETE1Params, opts ...ClientOption) (*DeleteBlueprintRequestUsingDELETE1NoContent, error)
 
-	GetBlueprintPlanUsingGET1(params *GetBlueprintPlanUsingGET1Params) (*GetBlueprintPlanUsingGET1OK, error)
+	GetBlueprintPlanUsingGET1(params *GetBlueprintPlanUsingGET1Params, opts ...ClientOption) (*GetBlueprintPlanUsingGET1OK, error)
 
-	GetBlueprintRequestUsingGET1(params *GetBlueprintRequestUsingGET1Params) (*GetBlueprintRequestUsingGET1OK, error)
+	GetBlueprintRequestUsingGET1(params *GetBlueprintRequestUsingGET1Params, opts ...ClientOption) (*GetBlueprintRequestUsingGET1OK, error)
 
-	GetBlueprintResourcesPlanUsingGET1(params *GetBlueprintResourcesPlanUsingGET1Params) (*GetBlueprintResourcesPlanUsingGET1OK, error)
+	GetBlueprintResourcesPlanUsingGET1(params *GetBlueprintResourcesPlanUsingGET1Params, opts ...ClientOption) (*GetBlueprintResourcesPlanUsingGET1OK, error)
 
-	ListBlueprintRequestsUsingGET1(params *ListBlueprintRequestsUsingGET1Params) (*ListBlueprintRequestsUsingGET1OK, error)
+	ListBlueprintRequestsUsingGET1(params *ListBlueprintRequestsUsingGET1Params, opts ...ClientOption) (*ListBlueprintRequestsUsingGET1OK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -47,13 +50,12 @@ type ClientService interface {
 /*
   CancelBlueprintRequestUsingPOST cancels request
 */
-func (a *Client) CancelBlueprintRequestUsingPOST(params *CancelBlueprintRequestUsingPOSTParams) (*CancelBlueprintRequestUsingPOSTOK, error) {
+func (a *Client) CancelBlueprintRequestUsingPOST(params *CancelBlueprintRequestUsingPOSTParams, opts ...ClientOption) (*CancelBlueprintRequestUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCancelBlueprintRequestUsingPOSTParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "cancelBlueprintRequestUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/blueprint/api/blueprint-requests/{requestId}/actions/cancel",
@@ -64,7 +66,12 @@ func (a *Client) CancelBlueprintRequestUsingPOST(params *CancelBlueprintRequestU
 		Reader:             &CancelBlueprintRequestUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -81,13 +88,12 @@ func (a *Client) CancelBlueprintRequestUsingPOST(params *CancelBlueprintRequestU
 /*
   CreateBlueprintRequestUsingPOST1 creates a blueprint request
 */
-func (a *Client) CreateBlueprintRequestUsingPOST1(params *CreateBlueprintRequestUsingPOST1Params) (*CreateBlueprintRequestUsingPOST1Created, *CreateBlueprintRequestUsingPOST1Accepted, error) {
+func (a *Client) CreateBlueprintRequestUsingPOST1(params *CreateBlueprintRequestUsingPOST1Params, opts ...ClientOption) (*CreateBlueprintRequestUsingPOST1Created, *CreateBlueprintRequestUsingPOST1Accepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateBlueprintRequestUsingPOST1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createBlueprintRequestUsingPOST_1",
 		Method:             "POST",
 		PathPattern:        "/blueprint/api/blueprint-requests",
@@ -98,7 +104,12 @@ func (a *Client) CreateBlueprintRequestUsingPOST1(params *CreateBlueprintRequest
 		Reader:             &CreateBlueprintRequestUsingPOST1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -116,13 +127,12 @@ func (a *Client) CreateBlueprintRequestUsingPOST1(params *CreateBlueprintRequest
 /*
   DeleteBlueprintRequestUsingDELETE1 deletes request
 */
-func (a *Client) DeleteBlueprintRequestUsingDELETE1(params *DeleteBlueprintRequestUsingDELETE1Params) (*DeleteBlueprintRequestUsingDELETE1NoContent, error) {
+func (a *Client) DeleteBlueprintRequestUsingDELETE1(params *DeleteBlueprintRequestUsingDELETE1Params, opts ...ClientOption) (*DeleteBlueprintRequestUsingDELETE1NoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteBlueprintRequestUsingDELETE1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteBlueprintRequestUsingDELETE_1",
 		Method:             "DELETE",
 		PathPattern:        "/blueprint/api/blueprint-requests/{requestId}",
@@ -133,7 +143,12 @@ func (a *Client) DeleteBlueprintRequestUsingDELETE1(params *DeleteBlueprintReque
 		Reader:             &DeleteBlueprintRequestUsingDELETE1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -150,13 +165,12 @@ func (a *Client) DeleteBlueprintRequestUsingDELETE1(params *DeleteBlueprintReque
 /*
   GetBlueprintPlanUsingGET1 returns request plan
 */
-func (a *Client) GetBlueprintPlanUsingGET1(params *GetBlueprintPlanUsingGET1Params) (*GetBlueprintPlanUsingGET1OK, error) {
+func (a *Client) GetBlueprintPlanUsingGET1(params *GetBlueprintPlanUsingGET1Params, opts ...ClientOption) (*GetBlueprintPlanUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetBlueprintPlanUsingGET1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getBlueprintPlanUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/blueprint/api/blueprint-requests/{requestId}/plan",
@@ -167,7 +181,12 @@ func (a *Client) GetBlueprintPlanUsingGET1(params *GetBlueprintPlanUsingGET1Para
 		Reader:             &GetBlueprintPlanUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -184,13 +203,12 @@ func (a *Client) GetBlueprintPlanUsingGET1(params *GetBlueprintPlanUsingGET1Para
 /*
   GetBlueprintRequestUsingGET1 returns blueprint request details
 */
-func (a *Client) GetBlueprintRequestUsingGET1(params *GetBlueprintRequestUsingGET1Params) (*GetBlueprintRequestUsingGET1OK, error) {
+func (a *Client) GetBlueprintRequestUsingGET1(params *GetBlueprintRequestUsingGET1Params, opts ...ClientOption) (*GetBlueprintRequestUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetBlueprintRequestUsingGET1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getBlueprintRequestUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/blueprint/api/blueprint-requests/{requestId}",
@@ -201,7 +219,12 @@ func (a *Client) GetBlueprintRequestUsingGET1(params *GetBlueprintRequestUsingGE
 		Reader:             &GetBlueprintRequestUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -218,13 +241,12 @@ func (a *Client) GetBlueprintRequestUsingGET1(params *GetBlueprintRequestUsingGE
 /*
   GetBlueprintResourcesPlanUsingGET1 returns request resources plan
 */
-func (a *Client) GetBlueprintResourcesPlanUsingGET1(params *GetBlueprintResourcesPlanUsingGET1Params) (*GetBlueprintResourcesPlanUsingGET1OK, error) {
+func (a *Client) GetBlueprintResourcesPlanUsingGET1(params *GetBlueprintResourcesPlanUsingGET1Params, opts ...ClientOption) (*GetBlueprintResourcesPlanUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetBlueprintResourcesPlanUsingGET1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getBlueprintResourcesPlanUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/blueprint/api/blueprint-requests/{requestId}/resources-plan",
@@ -235,7 +257,12 @@ func (a *Client) GetBlueprintResourcesPlanUsingGET1(params *GetBlueprintResource
 		Reader:             &GetBlueprintResourcesPlanUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -252,13 +279,12 @@ func (a *Client) GetBlueprintResourcesPlanUsingGET1(params *GetBlueprintResource
 /*
   ListBlueprintRequestsUsingGET1 lists blueprint requests
 */
-func (a *Client) ListBlueprintRequestsUsingGET1(params *ListBlueprintRequestsUsingGET1Params) (*ListBlueprintRequestsUsingGET1OK, error) {
+func (a *Client) ListBlueprintRequestsUsingGET1(params *ListBlueprintRequestsUsingGET1Params, opts ...ClientOption) (*ListBlueprintRequestsUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewListBlueprintRequestsUsingGET1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "listBlueprintRequestsUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/blueprint/api/blueprint-requests",
@@ -269,7 +295,12 @@ func (a *Client) ListBlueprintRequestsUsingGET1(params *ListBlueprintRequestsUsi
 		Reader:             &ListBlueprintRequestsUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

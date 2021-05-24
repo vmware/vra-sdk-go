@@ -35,7 +35,6 @@ func (o *GetCatalogItemsUsingGET1Reader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewGetCatalogItemsUsingGET1OK() *GetCatalogItemsUsingGET1OK {
 	return &GetCatalogItemsUsingGET1OK{}
 }
 
-/*GetCatalogItemsUsingGET1OK handles this case with default header values.
+/* GetCatalogItemsUsingGET1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -57,7 +56,6 @@ type GetCatalogItemsUsingGET1OK struct {
 func (o *GetCatalogItemsUsingGET1OK) Error() string {
 	return fmt.Sprintf("[GET /catalog/api/items][%d] getCatalogItemsUsingGET1OK  %+v", 200, o.Payload)
 }
-
 func (o *GetCatalogItemsUsingGET1OK) GetPayload() *models.PageOfCatalogItem {
 	return o.Payload
 }
@@ -79,7 +77,7 @@ func NewGetCatalogItemsUsingGET1Unauthorized() *GetCatalogItemsUsingGET1Unauthor
 	return &GetCatalogItemsUsingGET1Unauthorized{}
 }
 
-/*GetCatalogItemsUsingGET1Unauthorized handles this case with default header values.
+/* GetCatalogItemsUsingGET1Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */

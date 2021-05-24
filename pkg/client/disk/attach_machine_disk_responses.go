@@ -47,7 +47,6 @@ func (o *AttachMachineDiskReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewAttachMachineDiskOK() *AttachMachineDiskOK {
 	return &AttachMachineDiskOK{}
 }
 
-/*AttachMachineDiskOK handles this case with default header values.
+/* AttachMachineDiskOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -69,7 +68,6 @@ type AttachMachineDiskOK struct {
 func (o *AttachMachineDiskOK) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/disks][%d] attachMachineDiskOK  %+v", 200, o.Payload)
 }
-
 func (o *AttachMachineDiskOK) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -91,7 +89,7 @@ func NewAttachMachineDiskBadRequest() *AttachMachineDiskBadRequest {
 	return &AttachMachineDiskBadRequest{}
 }
 
-/*AttachMachineDiskBadRequest handles this case with default header values.
+/* AttachMachineDiskBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -102,7 +100,6 @@ type AttachMachineDiskBadRequest struct {
 func (o *AttachMachineDiskBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/disks][%d] attachMachineDiskBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *AttachMachineDiskBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -124,18 +121,29 @@ func NewAttachMachineDiskForbidden() *AttachMachineDiskForbidden {
 	return &AttachMachineDiskForbidden{}
 }
 
-/*AttachMachineDiskForbidden handles this case with default header values.
+/* AttachMachineDiskForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type AttachMachineDiskForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *AttachMachineDiskForbidden) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/machines/{id}/disks][%d] attachMachineDiskForbidden ", 403)
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/disks][%d] attachMachineDiskForbidden  %+v", 403, o.Payload)
+}
+func (o *AttachMachineDiskForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *AttachMachineDiskForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -145,7 +153,7 @@ func NewAttachMachineDiskNotFound() *AttachMachineDiskNotFound {
 	return &AttachMachineDiskNotFound{}
 }
 
-/*AttachMachineDiskNotFound handles this case with default header values.
+/* AttachMachineDiskNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -156,7 +164,6 @@ type AttachMachineDiskNotFound struct {
 func (o *AttachMachineDiskNotFound) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/disks][%d] attachMachineDiskNotFound  %+v", 404, o.Payload)
 }
-
 func (o *AttachMachineDiskNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

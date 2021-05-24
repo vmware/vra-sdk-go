@@ -16,69 +16,87 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewUnReleaseBlueprintVersionUsingPOST1Params creates a new UnReleaseBlueprintVersionUsingPOST1Params object
-// with the default values initialized.
+// NewUnReleaseBlueprintVersionUsingPOST1Params creates a new UnReleaseBlueprintVersionUsingPOST1Params object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewUnReleaseBlueprintVersionUsingPOST1Params() *UnReleaseBlueprintVersionUsingPOST1Params {
-	var ()
 	return &UnReleaseBlueprintVersionUsingPOST1Params{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewUnReleaseBlueprintVersionUsingPOST1ParamsWithTimeout creates a new UnReleaseBlueprintVersionUsingPOST1Params object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewUnReleaseBlueprintVersionUsingPOST1ParamsWithTimeout(timeout time.Duration) *UnReleaseBlueprintVersionUsingPOST1Params {
-	var ()
 	return &UnReleaseBlueprintVersionUsingPOST1Params{
-
 		timeout: timeout,
 	}
 }
 
 // NewUnReleaseBlueprintVersionUsingPOST1ParamsWithContext creates a new UnReleaseBlueprintVersionUsingPOST1Params object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewUnReleaseBlueprintVersionUsingPOST1ParamsWithContext(ctx context.Context) *UnReleaseBlueprintVersionUsingPOST1Params {
-	var ()
 	return &UnReleaseBlueprintVersionUsingPOST1Params{
-
 		Context: ctx,
 	}
 }
 
 // NewUnReleaseBlueprintVersionUsingPOST1ParamsWithHTTPClient creates a new UnReleaseBlueprintVersionUsingPOST1Params object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewUnReleaseBlueprintVersionUsingPOST1ParamsWithHTTPClient(client *http.Client) *UnReleaseBlueprintVersionUsingPOST1Params {
-	var ()
 	return &UnReleaseBlueprintVersionUsingPOST1Params{
 		HTTPClient: client,
 	}
 }
 
-/*UnReleaseBlueprintVersionUsingPOST1Params contains all the parameters to send to the API endpoint
-for the un release blueprint version using p o s t 1 operation typically these are written to a http.Request
+/* UnReleaseBlueprintVersionUsingPOST1Params contains all the parameters to send to the API endpoint
+   for the un release blueprint version using p o s t 1 operation.
+
+   Typically these are written to a http.Request.
 */
 type UnReleaseBlueprintVersionUsingPOST1Params struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about
 	*/
 	APIVersion *string
-	/*BlueprintID
-	  blueprintId
 
+	/* BlueprintID.
+
+	   blueprintId
+
+	   Format: uuid
 	*/
 	BlueprintID strfmt.UUID
-	/*Version
-	  version
 
+	/* Version.
+
+	   version
 	*/
 	Version string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the un release blueprint version using p o s t 1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UnReleaseBlueprintVersionUsingPOST1Params) WithDefaults() *UnReleaseBlueprintVersionUsingPOST1Params {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the un release blueprint version using p o s t 1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UnReleaseBlueprintVersionUsingPOST1Params) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the un release blueprint version using p o s t 1 params
@@ -159,16 +177,17 @@ func (o *UnReleaseBlueprintVersionUsingPOST1Params) WriteToRequest(r runtime.Cli
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param blueprintId

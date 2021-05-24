@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -61,7 +63,6 @@ func (m *APIDescription) validateAPIVersion(formats strfmt.Registry) error {
 }
 
 func (m *APIDescription) validateDeprecationPolicy(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.DeprecationPolicy) { // not required
 		return nil
 	}
@@ -82,6 +83,34 @@ func (m *APIDescription) validateDocumentationLink(formats strfmt.Registry) erro
 
 	if err := validate.Required("documentationLink", "body", m.DocumentationLink); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this Api description based on the context it is used
+func (m *APIDescription) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateDeprecationPolicy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *APIDescription) contextValidateDeprecationPolicy(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.DeprecationPolicy != nil {
+		if err := m.DeprecationPolicy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("deprecationPolicy")
+			}
+			return err
+		}
 	}
 
 	return nil

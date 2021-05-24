@@ -25,15 +25,18 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreatePolicyUsingPOST1(params *CreatePolicyUsingPOST1Params) (*CreatePolicyUsingPOST1OK, error)
+	CreatePolicyUsingPOST1(params *CreatePolicyUsingPOST1Params, opts ...ClientOption) (*CreatePolicyUsingPOST1OK, error)
 
-	DeletePolicyUsingDELETE1(params *DeletePolicyUsingDELETE1Params) (*DeletePolicyUsingDELETE1NoContent, error)
+	DeletePolicyUsingDELETE1(params *DeletePolicyUsingDELETE1Params, opts ...ClientOption) (*DeletePolicyUsingDELETE1NoContent, error)
 
-	GetPoliciesUsingGET1(params *GetPoliciesUsingGET1Params) (*GetPoliciesUsingGET1OK, error)
+	GetPoliciesUsingGET1(params *GetPoliciesUsingGET1Params, opts ...ClientOption) (*GetPoliciesUsingGET1OK, error)
 
-	GetPolicyUsingGET1(params *GetPolicyUsingGET1Params) (*GetPolicyUsingGET1OK, error)
+	GetPolicyUsingGET1(params *GetPolicyUsingGET1Params, opts ...ClientOption) (*GetPolicyUsingGET1OK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -43,13 +46,12 @@ type ClientService interface {
 
   Create a new policy or update an existing policy based on request body and validate its fields according to business rules.
 */
-func (a *Client) CreatePolicyUsingPOST1(params *CreatePolicyUsingPOST1Params) (*CreatePolicyUsingPOST1OK, error) {
+func (a *Client) CreatePolicyUsingPOST1(params *CreatePolicyUsingPOST1Params, opts ...ClientOption) (*CreatePolicyUsingPOST1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreatePolicyUsingPOST1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createPolicyUsingPOST_1",
 		Method:             "POST",
 		PathPattern:        "/policy/api/policies",
@@ -60,7 +62,12 @@ func (a *Client) CreatePolicyUsingPOST1(params *CreatePolicyUsingPOST1Params) (*
 		Reader:             &CreatePolicyUsingPOST1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -79,13 +86,12 @@ func (a *Client) CreatePolicyUsingPOST1(params *CreatePolicyUsingPOST1Params) (*
 
   Delete a specified policy corresponding to its unique id.
 */
-func (a *Client) DeletePolicyUsingDELETE1(params *DeletePolicyUsingDELETE1Params) (*DeletePolicyUsingDELETE1NoContent, error) {
+func (a *Client) DeletePolicyUsingDELETE1(params *DeletePolicyUsingDELETE1Params, opts ...ClientOption) (*DeletePolicyUsingDELETE1NoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeletePolicyUsingDELETE1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deletePolicyUsingDELETE_1",
 		Method:             "DELETE",
 		PathPattern:        "/policy/api/policies/{id}",
@@ -96,7 +102,12 @@ func (a *Client) DeletePolicyUsingDELETE1(params *DeletePolicyUsingDELETE1Params
 		Reader:             &DeletePolicyUsingDELETE1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -115,13 +126,12 @@ func (a *Client) DeletePolicyUsingDELETE1(params *DeletePolicyUsingDELETE1Params
 
   Find all the policies associated with current org.
 */
-func (a *Client) GetPoliciesUsingGET1(params *GetPoliciesUsingGET1Params) (*GetPoliciesUsingGET1OK, error) {
+func (a *Client) GetPoliciesUsingGET1(params *GetPoliciesUsingGET1Params, opts ...ClientOption) (*GetPoliciesUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetPoliciesUsingGET1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getPoliciesUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/policy/api/policies",
@@ -132,7 +142,12 @@ func (a *Client) GetPoliciesUsingGET1(params *GetPoliciesUsingGET1Params) (*GetP
 		Reader:             &GetPoliciesUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -151,13 +166,12 @@ func (a *Client) GetPoliciesUsingGET1(params *GetPoliciesUsingGET1Params) (*GetP
 
   Find a specific policy based on the input policy id.
 */
-func (a *Client) GetPolicyUsingGET1(params *GetPolicyUsingGET1Params) (*GetPolicyUsingGET1OK, error) {
+func (a *Client) GetPolicyUsingGET1(params *GetPolicyUsingGET1Params, opts ...ClientOption) (*GetPolicyUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetPolicyUsingGET1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getPolicyUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/policy/api/policies/{id}",
@@ -168,7 +182,12 @@ func (a *Client) GetPolicyUsingGET1(params *GetPolicyUsingGET1Params) (*GetPolic
 		Reader:             &GetPolicyUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

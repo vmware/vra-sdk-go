@@ -18,64 +18,79 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewCreatePolicyUsingPOSTParams creates a new CreatePolicyUsingPOSTParams object
-// with the default values initialized.
+// NewCreatePolicyUsingPOSTParams creates a new CreatePolicyUsingPOSTParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewCreatePolicyUsingPOSTParams() *CreatePolicyUsingPOSTParams {
-	var ()
 	return &CreatePolicyUsingPOSTParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewCreatePolicyUsingPOSTParamsWithTimeout creates a new CreatePolicyUsingPOSTParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewCreatePolicyUsingPOSTParamsWithTimeout(timeout time.Duration) *CreatePolicyUsingPOSTParams {
-	var ()
 	return &CreatePolicyUsingPOSTParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewCreatePolicyUsingPOSTParamsWithContext creates a new CreatePolicyUsingPOSTParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewCreatePolicyUsingPOSTParamsWithContext(ctx context.Context) *CreatePolicyUsingPOSTParams {
-	var ()
 	return &CreatePolicyUsingPOSTParams{
-
 		Context: ctx,
 	}
 }
 
 // NewCreatePolicyUsingPOSTParamsWithHTTPClient creates a new CreatePolicyUsingPOSTParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewCreatePolicyUsingPOSTParamsWithHTTPClient(client *http.Client) *CreatePolicyUsingPOSTParams {
-	var ()
 	return &CreatePolicyUsingPOSTParams{
 		HTTPClient: client,
 	}
 }
 
-/*CreatePolicyUsingPOSTParams contains all the parameters to send to the API endpoint
-for the create policy using p o s t operation typically these are written to a http.Request
+/* CreatePolicyUsingPOSTParams contains all the parameters to send to the API endpoint
+   for the create policy using p o s t operation.
+
+   Typically these are written to a http.Request.
 */
 type CreatePolicyUsingPOSTParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 	*/
 	APIVersion *string
-	/*MeteringPolicy
-	  The pricing card to be created
 
+	/* MeteringPolicy.
+
+	   The pricing card to be created
 	*/
 	MeteringPolicy *models.MeteringPolicy
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the create policy using p o s t params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreatePolicyUsingPOSTParams) WithDefaults() *CreatePolicyUsingPOSTParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the create policy using p o s t params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreatePolicyUsingPOSTParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the create policy using p o s t params
@@ -145,18 +160,18 @@ func (o *CreatePolicyUsingPOSTParams) WriteToRequest(r runtime.ClientRequest, re
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
-
 	if o.MeteringPolicy != nil {
 		if err := r.SetBodyParam(o.MeteringPolicy); err != nil {
 			return err

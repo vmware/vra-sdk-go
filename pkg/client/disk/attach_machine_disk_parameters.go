@@ -18,69 +18,85 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewAttachMachineDiskParams creates a new AttachMachineDiskParams object
-// with the default values initialized.
+// NewAttachMachineDiskParams creates a new AttachMachineDiskParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewAttachMachineDiskParams() *AttachMachineDiskParams {
-	var ()
 	return &AttachMachineDiskParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewAttachMachineDiskParamsWithTimeout creates a new AttachMachineDiskParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewAttachMachineDiskParamsWithTimeout(timeout time.Duration) *AttachMachineDiskParams {
-	var ()
 	return &AttachMachineDiskParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewAttachMachineDiskParamsWithContext creates a new AttachMachineDiskParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewAttachMachineDiskParamsWithContext(ctx context.Context) *AttachMachineDiskParams {
-	var ()
 	return &AttachMachineDiskParams{
-
 		Context: ctx,
 	}
 }
 
 // NewAttachMachineDiskParamsWithHTTPClient creates a new AttachMachineDiskParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewAttachMachineDiskParamsWithHTTPClient(client *http.Client) *AttachMachineDiskParams {
-	var ()
 	return &AttachMachineDiskParams{
 		HTTPClient: client,
 	}
 }
 
-/*AttachMachineDiskParams contains all the parameters to send to the API endpoint
-for the attach machine disk operation typically these are written to a http.Request
+/* AttachMachineDiskParams contains all the parameters to send to the API endpoint
+   for the attach machine disk operation.
+
+   Typically these are written to a http.Request.
 */
 type AttachMachineDiskParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*Body
-	  Disk Specification instance
 
+	/* Body.
+
+	   Disk Specification instance
 	*/
 	Body *models.DiskAttachmentSpecification
-	/*ID
-	  The ID of the machine.
 
+	/* ID.
+
+	   The ID of the machine.
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the attach machine disk params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *AttachMachineDiskParams) WithDefaults() *AttachMachineDiskParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the attach machine disk params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *AttachMachineDiskParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the attach machine disk params
@@ -161,18 +177,18 @@ func (o *AttachMachineDiskParams) WriteToRequest(r runtime.ClientRequest, reg st
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
-
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err

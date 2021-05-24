@@ -16,69 +16,87 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewSearchParams creates a new SearchParams object
-// with the default values initialized.
+// NewSearchParams creates a new SearchParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewSearchParams() *SearchParams {
-	var ()
 	return &SearchParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewSearchParamsWithTimeout creates a new SearchParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewSearchParamsWithTimeout(timeout time.Duration) *SearchParams {
-	var ()
 	return &SearchParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewSearchParamsWithContext creates a new SearchParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewSearchParamsWithContext(ctx context.Context) *SearchParams {
-	var ()
 	return &SearchParams{
-
 		Context: ctx,
 	}
 }
 
 // NewSearchParamsWithHTTPClient creates a new SearchParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewSearchParamsWithHTTPClient(client *http.Client) *SearchParams {
-	var ()
 	return &SearchParams{
 		HTTPClient: client,
 	}
 }
 
-/*SearchParams contains all the parameters to send to the API endpoint
-for the search operation typically these are written to a http.Request
+/* SearchParams contains all the parameters to send to the API endpoint
+   for the search operation.
+
+   Typically these are written to a http.Request.
 */
 type SearchParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information, please refer to /content/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information, please refer to /content/api/about
 	*/
 	APIVersion *string
-	/*Search
-	  Full-text search term
 
+	/* Search.
+
+	   Full-text search term
 	*/
 	Search *string
-	/*SourceID
-	  Content Source Id
 
+	/* SourceID.
+
+	   Content Source Id
+
+	   Format: uuid
 	*/
 	SourceID strfmt.UUID
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the search params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *SearchParams) WithDefaults() *SearchParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the search params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *SearchParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the search params
@@ -159,32 +177,34 @@ func (o *SearchParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Regist
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Search != nil {
 
 		// query param search
 		var qrSearch string
+
 		if o.Search != nil {
 			qrSearch = *o.Search
 		}
 		qSearch := qrSearch
 		if qSearch != "" {
+
 			if err := r.SetQueryParam("search", qSearch); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param sourceId

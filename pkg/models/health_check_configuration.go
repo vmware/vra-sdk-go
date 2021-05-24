@@ -6,10 +6,10 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-openapi/errors"
+	"context"
+
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // HealthCheckConfiguration Load balancer health check configuration.
@@ -18,74 +18,57 @@ import (
 type HealthCheckConfiguration struct {
 
 	// Number of consecutive successful checks before considering a particular back-end instance as healthy.
+	// Example: 2
 	HealthyThreshold int32 `json:"healthyThreshold,omitempty"`
 
 	// HTTP or HTTPS method to use when sending a health check request.
+	// Example: GET, OPTIONS, POST, HEAD, PUT
 	HTTPMethod string `json:"httpMethod,omitempty"`
 
 	// Interval (in seconds) at which the health checks will be performed.
+	// Example: 60
 	IntervalSeconds int32 `json:"intervalSeconds,omitempty"`
 
 	// Enable passive monitor mode. This setting only applies to NSX-T.
+	// Example: false
 	PassiveMonitor bool `json:"passiveMonitor,omitempty"`
 
 	// Port on the back-end instance machine to use for the health check.
-	// Required: true
-	Port *string `json:"port"`
+	// Example: 80
+	Port string `json:"port,omitempty"`
 
 	// The protocol used for the health check.
-	// Required: true
-	Protocol *string `json:"protocol"`
+	// Example: HTTP, HTTPS
+	Protocol string `json:"protocol,omitempty"`
 
 	// Request body. Used by HTTP, HTTPS, TCP, UDP.
+	// Example: http_request.body
 	RequestBody string `json:"requestBody,omitempty"`
 
 	// Expected response body. Used by HTTP, HTTPS, TCP, UDP.
+	// Example: http_response.body
 	ResponseBody string `json:"responseBody,omitempty"`
 
 	// Timeout (in seconds) to wait for a response from the back-end instance.
+	// Example: 5
 	TimeoutSeconds int32 `json:"timeoutSeconds,omitempty"`
 
 	// Number of consecutive check failures before considering a particular back-end instance as unhealthy.
+	// Example: 5
 	UnhealthyThreshold int32 `json:"unhealthyThreshold,omitempty"`
 
 	// URL path on the back-end instance against which a request will be performed for the health check. Useful when the health check protocol is HTTP/HTTPS.
+	// Example: /index.html
 	URLPath string `json:"urlPath,omitempty"`
 }
 
 // Validate validates this health check configuration
 func (m *HealthCheckConfiguration) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validatePort(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateProtocol(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
 	return nil
 }
 
-func (m *HealthCheckConfiguration) validatePort(formats strfmt.Registry) error {
-
-	if err := validate.Required("port", "body", m.Port); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *HealthCheckConfiguration) validateProtocol(formats strfmt.Registry) error {
-
-	if err := validate.Required("protocol", "body", m.Protocol); err != nil {
-		return err
-	}
-
+// ContextValidate validates this health check configuration based on context it is used
+func (m *HealthCheckConfiguration) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

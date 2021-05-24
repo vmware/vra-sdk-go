@@ -41,7 +41,6 @@ func (o *CreateAzureStorageProfileReader) ReadResponse(response runtime.ClientRe
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewCreateAzureStorageProfileCreated() *CreateAzureStorageProfileCreated {
 	return &CreateAzureStorageProfileCreated{}
 }
 
-/*CreateAzureStorageProfileCreated handles this case with default header values.
+/* CreateAzureStorageProfileCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type CreateAzureStorageProfileCreated struct {
 func (o *CreateAzureStorageProfileCreated) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/storage-profiles-azure][%d] createAzureStorageProfileCreated  %+v", 201, o.Payload)
 }
-
 func (o *CreateAzureStorageProfileCreated) GetPayload() *models.AzureStorageProfile {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewCreateAzureStorageProfileBadRequest() *CreateAzureStorageProfileBadReque
 	return &CreateAzureStorageProfileBadRequest{}
 }
 
-/*CreateAzureStorageProfileBadRequest handles this case with default header values.
+/* CreateAzureStorageProfileBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -96,7 +94,6 @@ type CreateAzureStorageProfileBadRequest struct {
 func (o *CreateAzureStorageProfileBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/storage-profiles-azure][%d] createAzureStorageProfileBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateAzureStorageProfileBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -118,18 +115,29 @@ func NewCreateAzureStorageProfileForbidden() *CreateAzureStorageProfileForbidden
 	return &CreateAzureStorageProfileForbidden{}
 }
 
-/*CreateAzureStorageProfileForbidden handles this case with default header values.
+/* CreateAzureStorageProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type CreateAzureStorageProfileForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *CreateAzureStorageProfileForbidden) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/storage-profiles-azure][%d] createAzureStorageProfileForbidden ", 403)
+	return fmt.Sprintf("[POST /iaas/api/storage-profiles-azure][%d] createAzureStorageProfileForbidden  %+v", 403, o.Payload)
+}
+func (o *CreateAzureStorageProfileForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *CreateAzureStorageProfileForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

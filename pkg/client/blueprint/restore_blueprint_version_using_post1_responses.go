@@ -47,7 +47,6 @@ func (o *RestoreBlueprintVersionUsingPOST1Reader) ReadResponse(response runtime.
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewRestoreBlueprintVersionUsingPOST1OK() *RestoreBlueprintVersionUsingPOST1
 	return &RestoreBlueprintVersionUsingPOST1OK{}
 }
 
-/*RestoreBlueprintVersionUsingPOST1OK handles this case with default header values.
+/* RestoreBlueprintVersionUsingPOST1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -69,7 +68,6 @@ type RestoreBlueprintVersionUsingPOST1OK struct {
 func (o *RestoreBlueprintVersionUsingPOST1OK) Error() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprints/{blueprintId}/versions/{version}/actions/restore][%d] restoreBlueprintVersionUsingPOST1OK  %+v", 200, o.Payload)
 }
-
 func (o *RestoreBlueprintVersionUsingPOST1OK) GetPayload() *models.Blueprint {
 	return o.Payload
 }
@@ -91,7 +89,7 @@ func NewRestoreBlueprintVersionUsingPOST1Unauthorized() *RestoreBlueprintVersion
 	return &RestoreBlueprintVersionUsingPOST1Unauthorized{}
 }
 
-/*RestoreBlueprintVersionUsingPOST1Unauthorized handles this case with default header values.
+/* RestoreBlueprintVersionUsingPOST1Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -112,7 +110,7 @@ func NewRestoreBlueprintVersionUsingPOST1Forbidden() *RestoreBlueprintVersionUsi
 	return &RestoreBlueprintVersionUsingPOST1Forbidden{}
 }
 
-/*RestoreBlueprintVersionUsingPOST1Forbidden handles this case with default header values.
+/* RestoreBlueprintVersionUsingPOST1Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -133,7 +131,7 @@ func NewRestoreBlueprintVersionUsingPOST1NotFound() *RestoreBlueprintVersionUsin
 	return &RestoreBlueprintVersionUsingPOST1NotFound{}
 }
 
-/*RestoreBlueprintVersionUsingPOST1NotFound handles this case with default header values.
+/* RestoreBlueprintVersionUsingPOST1NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -144,7 +142,6 @@ type RestoreBlueprintVersionUsingPOST1NotFound struct {
 func (o *RestoreBlueprintVersionUsingPOST1NotFound) Error() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprints/{blueprintId}/versions/{version}/actions/restore][%d] restoreBlueprintVersionUsingPOST1NotFound  %+v", 404, o.Payload)
 }
-
 func (o *RestoreBlueprintVersionUsingPOST1NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

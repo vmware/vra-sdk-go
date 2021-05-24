@@ -47,7 +47,6 @@ func (o *GetTerraformVersionUsingGET1Reader) ReadResponse(response runtime.Clien
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewGetTerraformVersionUsingGET1OK() *GetTerraformVersionUsingGET1OK {
 	return &GetTerraformVersionUsingGET1OK{}
 }
 
-/*GetTerraformVersionUsingGET1OK handles this case with default header values.
+/* GetTerraformVersionUsingGET1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -69,7 +68,6 @@ type GetTerraformVersionUsingGET1OK struct {
 func (o *GetTerraformVersionUsingGET1OK) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/versions/{versionId}][%d] getTerraformVersionUsingGET1OK  %+v", 200, o.Payload)
 }
-
 func (o *GetTerraformVersionUsingGET1OK) GetPayload() *models.TerraformVersion {
 	return o.Payload
 }
@@ -91,7 +89,7 @@ func NewGetTerraformVersionUsingGET1Unauthorized() *GetTerraformVersionUsingGET1
 	return &GetTerraformVersionUsingGET1Unauthorized{}
 }
 
-/*GetTerraformVersionUsingGET1Unauthorized handles this case with default header values.
+/* GetTerraformVersionUsingGET1Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -112,7 +110,7 @@ func NewGetTerraformVersionUsingGET1Forbidden() *GetTerraformVersionUsingGET1For
 	return &GetTerraformVersionUsingGET1Forbidden{}
 }
 
-/*GetTerraformVersionUsingGET1Forbidden handles this case with default header values.
+/* GetTerraformVersionUsingGET1Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -133,7 +131,7 @@ func NewGetTerraformVersionUsingGET1NotFound() *GetTerraformVersionUsingGET1NotF
 	return &GetTerraformVersionUsingGET1NotFound{}
 }
 
-/*GetTerraformVersionUsingGET1NotFound handles this case with default header values.
+/* GetTerraformVersionUsingGET1NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -144,7 +142,6 @@ type GetTerraformVersionUsingGET1NotFound struct {
 func (o *GetTerraformVersionUsingGET1NotFound) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/versions/{versionId}][%d] getTerraformVersionUsingGET1NotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetTerraformVersionUsingGET1NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

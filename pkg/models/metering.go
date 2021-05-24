@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -90,7 +91,6 @@ func (m *Metering) validateChargeBasedOnEnum(path, location string, value string
 }
 
 func (m *Metering) validateChargeBasedOn(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ChargeBasedOn) { // not required
 		return nil
 	}
@@ -136,7 +136,6 @@ func (m *Metering) validateChargeOnPowerStateEnum(path, location string, value s
 }
 
 func (m *Metering) validateChargeOnPowerState(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ChargeOnPowerState) { // not required
 		return nil
 	}
@@ -185,7 +184,6 @@ func (m *Metering) validateChargePeriodEnum(path, location string, value string)
 }
 
 func (m *Metering) validateChargePeriod(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ChargePeriod) { // not required
 		return nil
 	}
@@ -195,6 +193,11 @@ func (m *Metering) validateChargePeriod(formats strfmt.Registry) error {
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validates this metering based on context it is used
+func (m *Metering) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

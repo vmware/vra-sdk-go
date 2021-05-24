@@ -47,7 +47,6 @@ func (o *UnReleaseBlueprintVersionUsingPOST1Reader) ReadResponse(response runtim
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewUnReleaseBlueprintVersionUsingPOST1OK() *UnReleaseBlueprintVersionUsingP
 	return &UnReleaseBlueprintVersionUsingPOST1OK{}
 }
 
-/*UnReleaseBlueprintVersionUsingPOST1OK handles this case with default header values.
+/* UnReleaseBlueprintVersionUsingPOST1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -69,7 +68,6 @@ type UnReleaseBlueprintVersionUsingPOST1OK struct {
 func (o *UnReleaseBlueprintVersionUsingPOST1OK) Error() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprints/{blueprintId}/versions/{version}/actions/unrelease][%d] unReleaseBlueprintVersionUsingPOST1OK  %+v", 200, o.Payload)
 }
-
 func (o *UnReleaseBlueprintVersionUsingPOST1OK) GetPayload() *models.BlueprintVersion {
 	return o.Payload
 }
@@ -91,7 +89,7 @@ func NewUnReleaseBlueprintVersionUsingPOST1Unauthorized() *UnReleaseBlueprintVer
 	return &UnReleaseBlueprintVersionUsingPOST1Unauthorized{}
 }
 
-/*UnReleaseBlueprintVersionUsingPOST1Unauthorized handles this case with default header values.
+/* UnReleaseBlueprintVersionUsingPOST1Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -112,7 +110,7 @@ func NewUnReleaseBlueprintVersionUsingPOST1Forbidden() *UnReleaseBlueprintVersio
 	return &UnReleaseBlueprintVersionUsingPOST1Forbidden{}
 }
 
-/*UnReleaseBlueprintVersionUsingPOST1Forbidden handles this case with default header values.
+/* UnReleaseBlueprintVersionUsingPOST1Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -133,7 +131,7 @@ func NewUnReleaseBlueprintVersionUsingPOST1NotFound() *UnReleaseBlueprintVersion
 	return &UnReleaseBlueprintVersionUsingPOST1NotFound{}
 }
 
-/*UnReleaseBlueprintVersionUsingPOST1NotFound handles this case with default header values.
+/* UnReleaseBlueprintVersionUsingPOST1NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -144,7 +142,6 @@ type UnReleaseBlueprintVersionUsingPOST1NotFound struct {
 func (o *UnReleaseBlueprintVersionUsingPOST1NotFound) Error() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprints/{blueprintId}/versions/{version}/actions/unrelease][%d] unReleaseBlueprintVersionUsingPOST1NotFound  %+v", 404, o.Payload)
 }
-
 func (o *UnReleaseBlueprintVersionUsingPOST1NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

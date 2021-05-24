@@ -16,69 +16,87 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetReviewsParams creates a new GetReviewsParams object
-// with the default values initialized.
+// NewGetReviewsParams creates a new GetReviewsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetReviewsParams() *GetReviewsParams {
-	var ()
 	return &GetReviewsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetReviewsParamsWithTimeout creates a new GetReviewsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetReviewsParamsWithTimeout(timeout time.Duration) *GetReviewsParams {
-	var ()
 	return &GetReviewsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetReviewsParamsWithContext creates a new GetReviewsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetReviewsParamsWithContext(ctx context.Context) *GetReviewsParams {
-	var ()
 	return &GetReviewsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetReviewsParamsWithHTTPClient creates a new GetReviewsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetReviewsParamsWithHTTPClient(client *http.Client) *GetReviewsParams {
-	var ()
 	return &GetReviewsParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetReviewsParams contains all the parameters to send to the API endpoint
-for the get reviews operation typically these are written to a http.Request
+/* GetReviewsParams contains all the parameters to send to the API endpoint
+   for the get reviews operation.
+
+   Typically these are written to a http.Request.
 */
 type GetReviewsParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information, please refer to /content/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information, please refer to /content/api/about
 	*/
 	APIVersion *string
-	/*ContentID
-	  Content Id
 
+	/* ContentID.
+
+	   Content Id
 	*/
 	ContentID string
-	/*SourceID
-	  Content Source Id
 
+	/* SourceID.
+
+	   Content Source Id
+
+	   Format: uuid
 	*/
 	SourceID strfmt.UUID
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get reviews params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetReviewsParams) WithDefaults() *GetReviewsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get reviews params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetReviewsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get reviews params
@@ -159,16 +177,17 @@ func (o *GetReviewsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Re
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param contentId

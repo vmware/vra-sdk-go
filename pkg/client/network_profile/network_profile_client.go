@@ -25,17 +25,20 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateNetworkProfile(params *CreateNetworkProfileParams) (*CreateNetworkProfileCreated, error)
+	CreateNetworkProfile(params *CreateNetworkProfileParams, opts ...ClientOption) (*CreateNetworkProfileCreated, error)
 
-	DeleteNetworkProfile(params *DeleteNetworkProfileParams) (*DeleteNetworkProfileNoContent, error)
+	DeleteNetworkProfile(params *DeleteNetworkProfileParams, opts ...ClientOption) (*DeleteNetworkProfileNoContent, error)
 
-	GetNetworkProfile(params *GetNetworkProfileParams) (*GetNetworkProfileOK, error)
+	GetNetworkProfile(params *GetNetworkProfileParams, opts ...ClientOption) (*GetNetworkProfileOK, error)
 
-	GetNetworkProfiles(params *GetNetworkProfilesParams) (*GetNetworkProfilesOK, error)
+	GetNetworkProfiles(params *GetNetworkProfilesParams, opts ...ClientOption) (*GetNetworkProfilesOK, error)
 
-	UpdateNetworkProfile(params *UpdateNetworkProfileParams) (*UpdateNetworkProfileOK, error)
+	UpdateNetworkProfile(params *UpdateNetworkProfileParams, opts ...ClientOption) (*UpdateNetworkProfileOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -45,13 +48,12 @@ type ClientService interface {
 
   Create network profile
 */
-func (a *Client) CreateNetworkProfile(params *CreateNetworkProfileParams) (*CreateNetworkProfileCreated, error) {
+func (a *Client) CreateNetworkProfile(params *CreateNetworkProfileParams, opts ...ClientOption) (*CreateNetworkProfileCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateNetworkProfileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createNetworkProfile",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/network-profiles",
@@ -62,7 +64,12 @@ func (a *Client) CreateNetworkProfile(params *CreateNetworkProfileParams) (*Crea
 		Reader:             &CreateNetworkProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -81,13 +88,12 @@ func (a *Client) CreateNetworkProfile(params *CreateNetworkProfileParams) (*Crea
 
   Delete network profile with a given id
 */
-func (a *Client) DeleteNetworkProfile(params *DeleteNetworkProfileParams) (*DeleteNetworkProfileNoContent, error) {
+func (a *Client) DeleteNetworkProfile(params *DeleteNetworkProfileParams, opts ...ClientOption) (*DeleteNetworkProfileNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteNetworkProfileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteNetworkProfile",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/network-profiles/{id}",
@@ -98,7 +104,12 @@ func (a *Client) DeleteNetworkProfile(params *DeleteNetworkProfileParams) (*Dele
 		Reader:             &DeleteNetworkProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -117,13 +128,12 @@ func (a *Client) DeleteNetworkProfile(params *DeleteNetworkProfileParams) (*Dele
 
   Get network profile with a given id
 */
-func (a *Client) GetNetworkProfile(params *GetNetworkProfileParams) (*GetNetworkProfileOK, error) {
+func (a *Client) GetNetworkProfile(params *GetNetworkProfileParams, opts ...ClientOption) (*GetNetworkProfileOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetNetworkProfileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getNetworkProfile",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/network-profiles/{id}",
@@ -134,7 +144,12 @@ func (a *Client) GetNetworkProfile(params *GetNetworkProfileParams) (*GetNetwork
 		Reader:             &GetNetworkProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -153,13 +168,12 @@ func (a *Client) GetNetworkProfile(params *GetNetworkProfileParams) (*GetNetwork
 
   Get all network profiles
 */
-func (a *Client) GetNetworkProfiles(params *GetNetworkProfilesParams) (*GetNetworkProfilesOK, error) {
+func (a *Client) GetNetworkProfiles(params *GetNetworkProfilesParams, opts ...ClientOption) (*GetNetworkProfilesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetNetworkProfilesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getNetworkProfiles",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/network-profiles",
@@ -170,7 +184,12 @@ func (a *Client) GetNetworkProfiles(params *GetNetworkProfilesParams) (*GetNetwo
 		Reader:             &GetNetworkProfilesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -189,13 +208,12 @@ func (a *Client) GetNetworkProfiles(params *GetNetworkProfilesParams) (*GetNetwo
 
   Update network profile
 */
-func (a *Client) UpdateNetworkProfile(params *UpdateNetworkProfileParams) (*UpdateNetworkProfileOK, error) {
+func (a *Client) UpdateNetworkProfile(params *UpdateNetworkProfileParams, opts ...ClientOption) (*UpdateNetworkProfileOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateNetworkProfileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "updateNetworkProfile",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/network-profiles/{id}",
@@ -206,7 +224,12 @@ func (a *Client) UpdateNetworkProfile(params *UpdateNetworkProfileParams) (*Upda
 		Reader:             &UpdateNetworkProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

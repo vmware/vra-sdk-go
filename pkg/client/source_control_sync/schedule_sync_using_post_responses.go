@@ -35,7 +35,6 @@ func (o *ScheduleSyncUsingPOSTReader) ReadResponse(response runtime.ClientRespon
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewScheduleSyncUsingPOSTAccepted() *ScheduleSyncUsingPOSTAccepted {
 	return &ScheduleSyncUsingPOSTAccepted{}
 }
 
-/*ScheduleSyncUsingPOSTAccepted handles this case with default header values.
+/* ScheduleSyncUsingPOSTAccepted describes a response with status code 202, with default header values.
 
 Submitted sync requests
 */
@@ -57,7 +56,6 @@ type ScheduleSyncUsingPOSTAccepted struct {
 func (o *ScheduleSyncUsingPOSTAccepted) Error() string {
 	return fmt.Sprintf("[POST /content/api/sourcecontrol/sync-requests][%d] scheduleSyncUsingPOSTAccepted  %+v", 202, o.Payload)
 }
-
 func (o *ScheduleSyncUsingPOSTAccepted) GetPayload() *models.SourceControlSyncRequest {
 	return o.Payload
 }
@@ -79,7 +77,7 @@ func NewScheduleSyncUsingPOSTNotFound() *ScheduleSyncUsingPOSTNotFound {
 	return &ScheduleSyncUsingPOSTNotFound{}
 }
 
-/*ScheduleSyncUsingPOSTNotFound handles this case with default header values.
+/* ScheduleSyncUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 source not found
 */
@@ -90,7 +88,6 @@ type ScheduleSyncUsingPOSTNotFound struct {
 func (o *ScheduleSyncUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /content/api/sourcecontrol/sync-requests][%d] scheduleSyncUsingPOSTNotFound  %+v", 404, o.Payload)
 }
-
 func (o *ScheduleSyncUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -16,64 +16,79 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewDeleteVcfCloudAccountParams creates a new DeleteVcfCloudAccountParams object
-// with the default values initialized.
+// NewDeleteVcfCloudAccountParams creates a new DeleteVcfCloudAccountParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteVcfCloudAccountParams() *DeleteVcfCloudAccountParams {
-	var ()
 	return &DeleteVcfCloudAccountParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteVcfCloudAccountParamsWithTimeout creates a new DeleteVcfCloudAccountParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteVcfCloudAccountParamsWithTimeout(timeout time.Duration) *DeleteVcfCloudAccountParams {
-	var ()
 	return &DeleteVcfCloudAccountParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteVcfCloudAccountParamsWithContext creates a new DeleteVcfCloudAccountParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteVcfCloudAccountParamsWithContext(ctx context.Context) *DeleteVcfCloudAccountParams {
-	var ()
 	return &DeleteVcfCloudAccountParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteVcfCloudAccountParamsWithHTTPClient creates a new DeleteVcfCloudAccountParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteVcfCloudAccountParamsWithHTTPClient(client *http.Client) *DeleteVcfCloudAccountParams {
-	var ()
 	return &DeleteVcfCloudAccountParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteVcfCloudAccountParams contains all the parameters to send to the API endpoint
-for the delete vcf cloud account operation typically these are written to a http.Request
+/* DeleteVcfCloudAccountParams contains all the parameters to send to the API endpoint
+   for the delete vcf cloud account operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteVcfCloudAccountParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*ID
-	  The ID of the Cloud Account
 
+	/* ID.
+
+	   The ID of the Cloud Account
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete vcf cloud account params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteVcfCloudAccountParams) WithDefaults() *DeleteVcfCloudAccountParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete vcf cloud account params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteVcfCloudAccountParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete vcf cloud account params
@@ -143,16 +158,17 @@ func (o *DeleteVcfCloudAccountParams) WriteToRequest(r runtime.ClientRequest, re
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id

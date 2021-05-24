@@ -16,64 +16,85 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetCloudAccountParams creates a new GetCloudAccountParams object
-// with the default values initialized.
+// NewGetCloudAccountParams creates a new GetCloudAccountParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetCloudAccountParams() *GetCloudAccountParams {
-	var ()
 	return &GetCloudAccountParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetCloudAccountParamsWithTimeout creates a new GetCloudAccountParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetCloudAccountParamsWithTimeout(timeout time.Duration) *GetCloudAccountParams {
-	var ()
 	return &GetCloudAccountParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetCloudAccountParamsWithContext creates a new GetCloudAccountParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetCloudAccountParamsWithContext(ctx context.Context) *GetCloudAccountParams {
-	var ()
 	return &GetCloudAccountParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetCloudAccountParamsWithHTTPClient creates a new GetCloudAccountParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetCloudAccountParamsWithHTTPClient(client *http.Client) *GetCloudAccountParams {
-	var ()
 	return &GetCloudAccountParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetCloudAccountParams contains all the parameters to send to the API endpoint
-for the get cloud account operation typically these are written to a http.Request
+/* GetCloudAccountParams contains all the parameters to send to the API endpoint
+   for the get cloud account operation.
+
+   Typically these are written to a http.Request.
 */
 type GetCloudAccountParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* DollarSelect.
 
+	   Select a subset of properties to include in the response.
+	*/
+	DollarSelect *string
+
+	/* APIVersion.
+
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*ID
-	  The ID of the Cloud Account
 
+	/* ID.
+
+	   The ID of the Cloud Account
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get cloud account params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCloudAccountParams) WithDefaults() *GetCloudAccountParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get cloud account params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCloudAccountParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get cloud account params
@@ -109,6 +130,17 @@ func (o *GetCloudAccountParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithDollarSelect adds the dollarSelect to the get cloud account params
+func (o *GetCloudAccountParams) WithDollarSelect(dollarSelect *string) *GetCloudAccountParams {
+	o.SetDollarSelect(dollarSelect)
+	return o
+}
+
+// SetDollarSelect adds the dollarSelect to the get cloud account params
+func (o *GetCloudAccountParams) SetDollarSelect(dollarSelect *string) {
+	o.DollarSelect = dollarSelect
+}
+
 // WithAPIVersion adds the aPIVersion to the get cloud account params
 func (o *GetCloudAccountParams) WithAPIVersion(aPIVersion *string) *GetCloudAccountParams {
 	o.SetAPIVersion(aPIVersion)
@@ -139,20 +171,38 @@ func (o *GetCloudAccountParams) WriteToRequest(r runtime.ClientRequest, reg strf
 	}
 	var res []error
 
+	if o.DollarSelect != nil {
+
+		// query param $select
+		var qrDollarSelect string
+
+		if o.DollarSelect != nil {
+			qrDollarSelect = *o.DollarSelect
+		}
+		qDollarSelect := qrDollarSelect
+		if qDollarSelect != "" {
+
+			if err := r.SetQueryParam("$select", qDollarSelect); err != nil {
+				return err
+			}
+		}
+	}
+
 	if o.APIVersion != nil {
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id

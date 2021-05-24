@@ -41,7 +41,6 @@ func (o *GetTypeByIDUsingGETReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetTypeByIDUsingGETOK() *GetTypeByIDUsingGETOK {
 	return &GetTypeByIDUsingGETOK{}
 }
 
-/*GetTypeByIDUsingGETOK handles this case with default header values.
+/* GetTypeByIDUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -63,7 +62,6 @@ type GetTypeByIDUsingGETOK struct {
 func (o *GetTypeByIDUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /catalog/api/types/{id}][%d] getTypeByIdUsingGETOK  %+v", 200, o.Payload)
 }
-
 func (o *GetTypeByIDUsingGETOK) GetPayload() *models.CatalogItemType {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewGetTypeByIDUsingGETUnauthorized() *GetTypeByIDUsingGETUnauthorized {
 	return &GetTypeByIDUsingGETUnauthorized{}
 }
 
-/*GetTypeByIDUsingGETUnauthorized handles this case with default header values.
+/* GetTypeByIDUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -106,7 +104,7 @@ func NewGetTypeByIDUsingGETNotFound() *GetTypeByIDUsingGETNotFound {
 	return &GetTypeByIDUsingGETNotFound{}
 }
 
-/*GetTypeByIDUsingGETNotFound handles this case with default header values.
+/* GetTypeByIDUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +115,6 @@ type GetTypeByIDUsingGETNotFound struct {
 func (o *GetTypeByIDUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /catalog/api/types/{id}][%d] getTypeByIdUsingGETNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetTypeByIDUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

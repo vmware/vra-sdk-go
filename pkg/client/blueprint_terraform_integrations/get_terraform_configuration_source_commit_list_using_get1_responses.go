@@ -47,7 +47,6 @@ func (o *GetTerraformConfigurationSourceCommitListUsingGET1Reader) ReadResponse(
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewGetTerraformConfigurationSourceCommitListUsingGET1OK() *GetTerraformConf
 	return &GetTerraformConfigurationSourceCommitListUsingGET1OK{}
 }
 
-/*GetTerraformConfigurationSourceCommitListUsingGET1OK handles this case with default header values.
+/* GetTerraformConfigurationSourceCommitListUsingGET1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -69,7 +68,6 @@ type GetTerraformConfigurationSourceCommitListUsingGET1OK struct {
 func (o *GetTerraformConfigurationSourceCommitListUsingGET1OK) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/get-configuration-source-commits][%d] getTerraformConfigurationSourceCommitListUsingGET1OK  %+v", 200, o.Payload)
 }
-
 func (o *GetTerraformConfigurationSourceCommitListUsingGET1OK) GetPayload() *models.PageOfCommitDetails {
 	return o.Payload
 }
@@ -91,7 +89,7 @@ func NewGetTerraformConfigurationSourceCommitListUsingGET1BadRequest() *GetTerra
 	return &GetTerraformConfigurationSourceCommitListUsingGET1BadRequest{}
 }
 
-/*GetTerraformConfigurationSourceCommitListUsingGET1BadRequest handles this case with default header values.
+/* GetTerraformConfigurationSourceCommitListUsingGET1BadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -102,7 +100,6 @@ type GetTerraformConfigurationSourceCommitListUsingGET1BadRequest struct {
 func (o *GetTerraformConfigurationSourceCommitListUsingGET1BadRequest) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/get-configuration-source-commits][%d] getTerraformConfigurationSourceCommitListUsingGET1BadRequest  %+v", 400, o.Payload)
 }
-
 func (o *GetTerraformConfigurationSourceCommitListUsingGET1BadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -124,7 +121,7 @@ func NewGetTerraformConfigurationSourceCommitListUsingGET1Unauthorized() *GetTer
 	return &GetTerraformConfigurationSourceCommitListUsingGET1Unauthorized{}
 }
 
-/*GetTerraformConfigurationSourceCommitListUsingGET1Unauthorized handles this case with default header values.
+/* GetTerraformConfigurationSourceCommitListUsingGET1Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -145,7 +142,7 @@ func NewGetTerraformConfigurationSourceCommitListUsingGET1Forbidden() *GetTerraf
 	return &GetTerraformConfigurationSourceCommitListUsingGET1Forbidden{}
 }
 
-/*GetTerraformConfigurationSourceCommitListUsingGET1Forbidden handles this case with default header values.
+/* GetTerraformConfigurationSourceCommitListUsingGET1Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */

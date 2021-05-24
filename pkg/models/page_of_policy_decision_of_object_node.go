@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -68,7 +69,6 @@ func (m *PageOfPolicyDecisionOfObjectNode) Validate(formats strfmt.Registry) err
 }
 
 func (m *PageOfPolicyDecisionOfObjectNode) validateContent(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Content) { // not required
 		return nil
 	}
@@ -93,13 +93,62 @@ func (m *PageOfPolicyDecisionOfObjectNode) validateContent(formats strfmt.Regist
 }
 
 func (m *PageOfPolicyDecisionOfObjectNode) validateSort(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Sort) { // not required
 		return nil
 	}
 
 	if m.Sort != nil {
 		if err := m.Sort.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("sort")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this page of policy decision of object node based on the context it is used
+func (m *PageOfPolicyDecisionOfObjectNode) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateContent(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSort(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PageOfPolicyDecisionOfObjectNode) contextValidateContent(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Content); i++ {
+
+		if m.Content[i] != nil {
+			if err := m.Content[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("content" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *PageOfPolicyDecisionOfObjectNode) contextValidateSort(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Sort != nil {
+		if err := m.Sort.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("sort")
 			}

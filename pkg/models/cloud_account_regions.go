@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -18,6 +20,7 @@ import (
 type CloudAccountRegions struct {
 
 	// A set of region ids for the cloud account.
+	// Example: [ \"us-east-1\", \"ap-northeast-1\" ]
 	// Required: true
 	ExternalRegionIds []string `json:"externalRegionIds"`
 }
@@ -42,6 +45,11 @@ func (m *CloudAccountRegions) validateExternalRegionIds(formats strfmt.Registry)
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validates this cloud account regions based on context it is used
+func (m *CloudAccountRegions) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

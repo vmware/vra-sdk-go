@@ -41,7 +41,6 @@ func (o *GetMachineNetworkInterfaceReader) ReadResponse(response runtime.ClientR
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetMachineNetworkInterfaceOK() *GetMachineNetworkInterfaceOK {
 	return &GetMachineNetworkInterfaceOK{}
 }
 
-/*GetMachineNetworkInterfaceOK handles this case with default header values.
+/* GetMachineNetworkInterfaceOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type GetMachineNetworkInterfaceOK struct {
 func (o *GetMachineNetworkInterfaceOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/machines/{id}/network-interfaces/{id1}][%d] getMachineNetworkInterfaceOK  %+v", 200, o.Payload)
 }
-
 func (o *GetMachineNetworkInterfaceOK) GetPayload() *models.NetworkInterface {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewGetMachineNetworkInterfaceForbidden() *GetMachineNetworkInterfaceForbidd
 	return &GetMachineNetworkInterfaceForbidden{}
 }
 
-/*GetMachineNetworkInterfaceForbidden handles this case with default header values.
+/* GetMachineNetworkInterfaceForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetMachineNetworkInterfaceForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetMachineNetworkInterfaceForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/machines/{id}/network-interfaces/{id1}][%d] getMachineNetworkInterfaceForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/machines/{id}/network-interfaces/{id1}][%d] getMachineNetworkInterfaceForbidden  %+v", 403, o.Payload)
+}
+func (o *GetMachineNetworkInterfaceForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetMachineNetworkInterfaceForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewGetMachineNetworkInterfaceNotFound() *GetMachineNetworkInterfaceNotFound
 	return &GetMachineNetworkInterfaceNotFound{}
 }
 
-/*GetMachineNetworkInterfaceNotFound handles this case with default header values.
+/* GetMachineNetworkInterfaceNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type GetMachineNetworkInterfaceNotFound struct {
 func (o *GetMachineNetworkInterfaceNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/machines/{id}/network-interfaces/{id1}][%d] getMachineNetworkInterfaceNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetMachineNetworkInterfaceNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

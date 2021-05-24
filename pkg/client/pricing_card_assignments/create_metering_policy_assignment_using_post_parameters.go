@@ -18,64 +18,79 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewCreateMeteringPolicyAssignmentUsingPOSTParams creates a new CreateMeteringPolicyAssignmentUsingPOSTParams object
-// with the default values initialized.
+// NewCreateMeteringPolicyAssignmentUsingPOSTParams creates a new CreateMeteringPolicyAssignmentUsingPOSTParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewCreateMeteringPolicyAssignmentUsingPOSTParams() *CreateMeteringPolicyAssignmentUsingPOSTParams {
-	var ()
 	return &CreateMeteringPolicyAssignmentUsingPOSTParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewCreateMeteringPolicyAssignmentUsingPOSTParamsWithTimeout creates a new CreateMeteringPolicyAssignmentUsingPOSTParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewCreateMeteringPolicyAssignmentUsingPOSTParamsWithTimeout(timeout time.Duration) *CreateMeteringPolicyAssignmentUsingPOSTParams {
-	var ()
 	return &CreateMeteringPolicyAssignmentUsingPOSTParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewCreateMeteringPolicyAssignmentUsingPOSTParamsWithContext creates a new CreateMeteringPolicyAssignmentUsingPOSTParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewCreateMeteringPolicyAssignmentUsingPOSTParamsWithContext(ctx context.Context) *CreateMeteringPolicyAssignmentUsingPOSTParams {
-	var ()
 	return &CreateMeteringPolicyAssignmentUsingPOSTParams{
-
 		Context: ctx,
 	}
 }
 
 // NewCreateMeteringPolicyAssignmentUsingPOSTParamsWithHTTPClient creates a new CreateMeteringPolicyAssignmentUsingPOSTParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewCreateMeteringPolicyAssignmentUsingPOSTParamsWithHTTPClient(client *http.Client) *CreateMeteringPolicyAssignmentUsingPOSTParams {
-	var ()
 	return &CreateMeteringPolicyAssignmentUsingPOSTParams{
 		HTTPClient: client,
 	}
 }
 
-/*CreateMeteringPolicyAssignmentUsingPOSTParams contains all the parameters to send to the API endpoint
-for the create metering policy assignment using p o s t operation typically these are written to a http.Request
+/* CreateMeteringPolicyAssignmentUsingPOSTParams contains all the parameters to send to the API endpoint
+   for the create metering policy assignment using p o s t operation.
+
+   Typically these are written to a http.Request.
 */
 type CreateMeteringPolicyAssignmentUsingPOSTParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 	*/
 	APIVersion *string
-	/*MeteringPolicyAssignment
-	  The pricing card assignment to be created
 
+	/* MeteringPolicyAssignment.
+
+	   The pricing card assignment to be created
 	*/
 	MeteringPolicyAssignment *models.MeteringPolicyAssignment
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the create metering policy assignment using p o s t params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateMeteringPolicyAssignmentUsingPOSTParams) WithDefaults() *CreateMeteringPolicyAssignmentUsingPOSTParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the create metering policy assignment using p o s t params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateMeteringPolicyAssignmentUsingPOSTParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the create metering policy assignment using p o s t params
@@ -145,18 +160,18 @@ func (o *CreateMeteringPolicyAssignmentUsingPOSTParams) WriteToRequest(r runtime
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
-
 	if o.MeteringPolicyAssignment != nil {
 		if err := r.SetBodyParam(o.MeteringPolicyAssignment); err != nil {
 			return err

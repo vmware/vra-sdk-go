@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -110,7 +111,6 @@ func (m *Policy) Validate(formats strfmt.Registry) error {
 }
 
 func (m *Policy) validateCreatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CreatedAt) { // not required
 		return nil
 	}
@@ -123,7 +123,6 @@ func (m *Policy) validateCreatedAt(formats strfmt.Registry) error {
 }
 
 func (m *Policy) validateCriteria(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Criteria) { // not required
 		return nil
 	}
@@ -141,7 +140,6 @@ func (m *Policy) validateCriteria(formats strfmt.Registry) error {
 }
 
 func (m *Policy) validateDefinitionLegend(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.DefinitionLegend) { // not required
 		return nil
 	}
@@ -192,7 +190,6 @@ func (m *Policy) validateEnforcementTypeEnum(path, location string, value string
 }
 
 func (m *Policy) validateEnforcementType(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.EnforcementType) { // not required
 		return nil
 	}
@@ -206,7 +203,6 @@ func (m *Policy) validateEnforcementType(formats strfmt.Registry) error {
 }
 
 func (m *Policy) validateID(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ID) { // not required
 		return nil
 	}
@@ -219,7 +215,6 @@ func (m *Policy) validateID(formats strfmt.Registry) error {
 }
 
 func (m *Policy) validateLastUpdatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.LastUpdatedAt) { // not required
 		return nil
 	}
@@ -232,13 +227,77 @@ func (m *Policy) validateLastUpdatedAt(formats strfmt.Registry) error {
 }
 
 func (m *Policy) validateStatistics(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Statistics) { // not required
 		return nil
 	}
 
 	if m.Statistics != nil {
 		if err := m.Statistics.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("statistics")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this policy based on the context it is used
+func (m *Policy) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateCriteria(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDefinitionLegend(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStatistics(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *Policy) contextValidateCriteria(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Criteria != nil {
+		if err := m.Criteria.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("criteria")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Policy) contextValidateDefinitionLegend(ctx context.Context, formats strfmt.Registry) error {
+
+	for k := range m.DefinitionLegend {
+
+		if val, ok := m.DefinitionLegend[k]; ok {
+			if err := val.ContextValidate(ctx, formats); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *Policy) contextValidateStatistics(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Statistics != nil {
+		if err := m.Statistics.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("statistics")
 			}

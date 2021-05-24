@@ -25,15 +25,18 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetResourceTypeUsingGET(params *GetResourceTypeUsingGETParams) (*GetResourceTypeUsingGETOK, error)
+	GetResourceTypeUsingGET(params *GetResourceTypeUsingGETParams, opts ...ClientOption) (*GetResourceTypeUsingGETOK, error)
 
-	GetResourceTypeUsingGETMixin1(params *GetResourceTypeUsingGETMixin1Params) (*GetResourceTypeUsingGETMixin1OK, error)
+	GetResourceTypeUsingGETMixin1(params *GetResourceTypeUsingGETMixin1Params, opts ...ClientOption) (*GetResourceTypeUsingGETMixin1OK, error)
 
-	ListResourceTypesUsingGET(params *ListResourceTypesUsingGETParams) (*ListResourceTypesUsingGETOK, error)
+	ListResourceTypesUsingGET(params *ListResourceTypesUsingGETParams, opts ...ClientOption) (*ListResourceTypesUsingGETOK, error)
 
-	ListResourceTypesUsingGETMixin1(params *ListResourceTypesUsingGETMixin1Params) (*ListResourceTypesUsingGETMixin1OK, error)
+	ListResourceTypesUsingGETMixin1(params *ListResourceTypesUsingGETMixin1Params, opts ...ClientOption) (*ListResourceTypesUsingGETMixin1OK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -41,13 +44,12 @@ type ClientService interface {
 /*
   GetResourceTypeUsingGET returns resource type details
 */
-func (a *Client) GetResourceTypeUsingGET(params *GetResourceTypeUsingGETParams) (*GetResourceTypeUsingGETOK, error) {
+func (a *Client) GetResourceTypeUsingGET(params *GetResourceTypeUsingGETParams, opts ...ClientOption) (*GetResourceTypeUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetResourceTypeUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getResourceTypeUsingGET",
 		Method:             "GET",
 		PathPattern:        "/blueprint/api/resource-types/{resourceTypeId}",
@@ -58,7 +60,12 @@ func (a *Client) GetResourceTypeUsingGET(params *GetResourceTypeUsingGETParams) 
 		Reader:             &GetResourceTypeUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -77,13 +84,12 @@ func (a *Client) GetResourceTypeUsingGET(params *GetResourceTypeUsingGETParams) 
 
   Returns the Resource type with the supplied ID.
 */
-func (a *Client) GetResourceTypeUsingGETMixin1(params *GetResourceTypeUsingGETMixin1Params) (*GetResourceTypeUsingGETMixin1OK, error) {
+func (a *Client) GetResourceTypeUsingGETMixin1(params *GetResourceTypeUsingGETMixin1Params, opts ...ClientOption) (*GetResourceTypeUsingGETMixin1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetResourceTypeUsingGETMixin1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getResourceTypeUsingGETMixin1",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/resource-types/{resourceTypeId}",
@@ -94,7 +100,12 @@ func (a *Client) GetResourceTypeUsingGETMixin1(params *GetResourceTypeUsingGETMi
 		Reader:             &GetResourceTypeUsingGETMixin1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -111,13 +122,12 @@ func (a *Client) GetResourceTypeUsingGETMixin1(params *GetResourceTypeUsingGETMi
 /*
   ListResourceTypesUsingGET lists resource types
 */
-func (a *Client) ListResourceTypesUsingGET(params *ListResourceTypesUsingGETParams) (*ListResourceTypesUsingGETOK, error) {
+func (a *Client) ListResourceTypesUsingGET(params *ListResourceTypesUsingGETParams, opts ...ClientOption) (*ListResourceTypesUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewListResourceTypesUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "listResourceTypesUsingGET",
 		Method:             "GET",
 		PathPattern:        "/blueprint/api/resource-types",
@@ -128,7 +138,12 @@ func (a *Client) ListResourceTypesUsingGET(params *ListResourceTypesUsingGETPara
 		Reader:             &ListResourceTypesUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -147,13 +162,12 @@ func (a *Client) ListResourceTypesUsingGET(params *ListResourceTypesUsingGETPara
 
   Returns a paginated list of Resource Types.
 */
-func (a *Client) ListResourceTypesUsingGETMixin1(params *ListResourceTypesUsingGETMixin1Params) (*ListResourceTypesUsingGETMixin1OK, error) {
+func (a *Client) ListResourceTypesUsingGETMixin1(params *ListResourceTypesUsingGETMixin1Params, opts ...ClientOption) (*ListResourceTypesUsingGETMixin1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewListResourceTypesUsingGETMixin1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "listResourceTypesUsingGETMixin1",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/resource-types",
@@ -164,7 +178,12 @@ func (a *Client) ListResourceTypesUsingGETMixin1(params *ListResourceTypesUsingG
 		Reader:             &ListResourceTypesUsingGETMixin1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

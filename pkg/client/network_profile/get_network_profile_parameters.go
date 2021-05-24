@@ -16,64 +16,79 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetNetworkProfileParams creates a new GetNetworkProfileParams object
-// with the default values initialized.
+// NewGetNetworkProfileParams creates a new GetNetworkProfileParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetNetworkProfileParams() *GetNetworkProfileParams {
-	var ()
 	return &GetNetworkProfileParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetNetworkProfileParamsWithTimeout creates a new GetNetworkProfileParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetNetworkProfileParamsWithTimeout(timeout time.Duration) *GetNetworkProfileParams {
-	var ()
 	return &GetNetworkProfileParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetNetworkProfileParamsWithContext creates a new GetNetworkProfileParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetNetworkProfileParamsWithContext(ctx context.Context) *GetNetworkProfileParams {
-	var ()
 	return &GetNetworkProfileParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetNetworkProfileParamsWithHTTPClient creates a new GetNetworkProfileParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetNetworkProfileParamsWithHTTPClient(client *http.Client) *GetNetworkProfileParams {
-	var ()
 	return &GetNetworkProfileParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetNetworkProfileParams contains all the parameters to send to the API endpoint
-for the get network profile operation typically these are written to a http.Request
+/* GetNetworkProfileParams contains all the parameters to send to the API endpoint
+   for the get network profile operation.
+
+   Typically these are written to a http.Request.
 */
 type GetNetworkProfileParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*ID
-	  The ID of the network profile.
 
+	/* ID.
+
+	   The ID of the network profile.
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get network profile params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetNetworkProfileParams) WithDefaults() *GetNetworkProfileParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get network profile params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetNetworkProfileParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get network profile params
@@ -143,16 +158,17 @@ func (o *GetNetworkProfileParams) WriteToRequest(r runtime.ClientRequest, reg st
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id

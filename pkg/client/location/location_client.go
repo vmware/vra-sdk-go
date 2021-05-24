@@ -25,23 +25,26 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateZone(params *CreateZoneParams) (*CreateZoneCreated, error)
+	CreateZone(params *CreateZoneParams, opts ...ClientOption) (*CreateZoneCreated, error)
 
-	DeleteZone(params *DeleteZoneParams) (*DeleteZoneNoContent, error)
+	DeleteZone(params *DeleteZoneParams, opts ...ClientOption) (*DeleteZoneNoContent, error)
 
-	GetComputes(params *GetComputesParams) (*GetComputesOK, error)
+	GetComputes(params *GetComputesParams, opts ...ClientOption) (*GetComputesOK, error)
 
-	GetRegion(params *GetRegionParams) (*GetRegionOK, error)
+	GetRegion(params *GetRegionParams, opts ...ClientOption) (*GetRegionOK, error)
 
-	GetRegions(params *GetRegionsParams) (*GetRegionsOK, error)
+	GetRegions(params *GetRegionsParams, opts ...ClientOption) (*GetRegionsOK, error)
 
-	GetZone(params *GetZoneParams) (*GetZoneOK, error)
+	GetZone(params *GetZoneParams, opts ...ClientOption) (*GetZoneOK, error)
 
-	GetZones(params *GetZonesParams) (*GetZonesOK, error)
+	GetZones(params *GetZonesParams, opts ...ClientOption) (*GetZonesOK, error)
 
-	UpdateZone(params *UpdateZoneParams) (*UpdateZoneOK, error)
+	UpdateZone(params *UpdateZoneParams, opts ...ClientOption) (*UpdateZoneOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -51,13 +54,12 @@ type ClientService interface {
 
   Create zone
 */
-func (a *Client) CreateZone(params *CreateZoneParams) (*CreateZoneCreated, error) {
+func (a *Client) CreateZone(params *CreateZoneParams, opts ...ClientOption) (*CreateZoneCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateZoneParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createZone",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/zones",
@@ -68,7 +70,12 @@ func (a *Client) CreateZone(params *CreateZoneParams) (*CreateZoneCreated, error
 		Reader:             &CreateZoneReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -87,13 +94,12 @@ func (a *Client) CreateZone(params *CreateZoneParams) (*CreateZoneCreated, error
 
   Delete a zone
 */
-func (a *Client) DeleteZone(params *DeleteZoneParams) (*DeleteZoneNoContent, error) {
+func (a *Client) DeleteZone(params *DeleteZoneParams, opts ...ClientOption) (*DeleteZoneNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteZoneParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteZone",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/zones/{id}",
@@ -104,7 +110,12 @@ func (a *Client) DeleteZone(params *DeleteZoneParams) (*DeleteZoneNoContent, err
 		Reader:             &DeleteZoneReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -123,13 +134,12 @@ func (a *Client) DeleteZone(params *DeleteZoneParams) (*DeleteZoneNoContent, err
 
   Get zone's computes by given zone ID
 */
-func (a *Client) GetComputes(params *GetComputesParams) (*GetComputesOK, error) {
+func (a *Client) GetComputes(params *GetComputesParams, opts ...ClientOption) (*GetComputesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetComputesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getComputes",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/zones/{id}/computes",
@@ -140,7 +150,12 @@ func (a *Client) GetComputes(params *GetComputesParams) (*GetComputesOK, error) 
 		Reader:             &GetComputesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -159,13 +174,12 @@ func (a *Client) GetComputes(params *GetComputesParams) (*GetComputesOK, error) 
 
   Get Region with a given id
 */
-func (a *Client) GetRegion(params *GetRegionParams) (*GetRegionOK, error) {
+func (a *Client) GetRegion(params *GetRegionParams, opts ...ClientOption) (*GetRegionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetRegionParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getRegion",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/regions/{id}",
@@ -176,7 +190,12 @@ func (a *Client) GetRegion(params *GetRegionParams) (*GetRegionOK, error) {
 		Reader:             &GetRegionReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -195,13 +214,12 @@ func (a *Client) GetRegion(params *GetRegionParams) (*GetRegionOK, error) {
 
   Get all regions
 */
-func (a *Client) GetRegions(params *GetRegionsParams) (*GetRegionsOK, error) {
+func (a *Client) GetRegions(params *GetRegionsParams, opts ...ClientOption) (*GetRegionsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetRegionsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getRegions",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/regions",
@@ -212,7 +230,12 @@ func (a *Client) GetRegions(params *GetRegionsParams) (*GetRegionsOK, error) {
 		Reader:             &GetRegionsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -231,13 +254,12 @@ func (a *Client) GetRegions(params *GetRegionsParams) (*GetRegionsOK, error) {
 
   Get zone with given id
 */
-func (a *Client) GetZone(params *GetZoneParams) (*GetZoneOK, error) {
+func (a *Client) GetZone(params *GetZoneParams, opts ...ClientOption) (*GetZoneOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetZoneParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getZone",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/zones/{id}",
@@ -248,7 +270,12 @@ func (a *Client) GetZone(params *GetZoneParams) (*GetZoneOK, error) {
 		Reader:             &GetZoneReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -267,13 +294,12 @@ func (a *Client) GetZone(params *GetZoneParams) (*GetZoneOK, error) {
 
   Get all zones
 */
-func (a *Client) GetZones(params *GetZonesParams) (*GetZonesOK, error) {
+func (a *Client) GetZones(params *GetZonesParams, opts ...ClientOption) (*GetZonesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetZonesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getZones",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/zones",
@@ -284,7 +310,12 @@ func (a *Client) GetZones(params *GetZonesParams) (*GetZonesOK, error) {
 		Reader:             &GetZonesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -303,13 +334,12 @@ func (a *Client) GetZones(params *GetZonesParams) (*GetZonesOK, error) {
 
   Update zone
 */
-func (a *Client) UpdateZone(params *UpdateZoneParams) (*UpdateZoneOK, error) {
+func (a *Client) UpdateZone(params *UpdateZoneParams, opts ...ClientOption) (*UpdateZoneOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateZoneParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "updateZone",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/zones/{id}",
@@ -320,7 +350,12 @@ func (a *Client) UpdateZone(params *UpdateZoneParams) (*UpdateZoneOK, error) {
 		Reader:             &UpdateZoneReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

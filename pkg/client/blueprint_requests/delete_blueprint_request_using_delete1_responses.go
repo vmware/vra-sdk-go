@@ -47,7 +47,6 @@ func (o *DeleteBlueprintRequestUsingDELETE1Reader) ReadResponse(response runtime
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewDeleteBlueprintRequestUsingDELETE1NoContent() *DeleteBlueprintRequestUsi
 	return &DeleteBlueprintRequestUsingDELETE1NoContent{}
 }
 
-/*DeleteBlueprintRequestUsingDELETE1NoContent handles this case with default header values.
+/* DeleteBlueprintRequestUsingDELETE1NoContent describes a response with status code 204, with default header values.
 
 No Content
 */
@@ -79,7 +78,7 @@ func NewDeleteBlueprintRequestUsingDELETE1Unauthorized() *DeleteBlueprintRequest
 	return &DeleteBlueprintRequestUsingDELETE1Unauthorized{}
 }
 
-/*DeleteBlueprintRequestUsingDELETE1Unauthorized handles this case with default header values.
+/* DeleteBlueprintRequestUsingDELETE1Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -100,7 +99,7 @@ func NewDeleteBlueprintRequestUsingDELETE1Forbidden() *DeleteBlueprintRequestUsi
 	return &DeleteBlueprintRequestUsingDELETE1Forbidden{}
 }
 
-/*DeleteBlueprintRequestUsingDELETE1Forbidden handles this case with default header values.
+/* DeleteBlueprintRequestUsingDELETE1Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -121,7 +120,7 @@ func NewDeleteBlueprintRequestUsingDELETE1NotFound() *DeleteBlueprintRequestUsin
 	return &DeleteBlueprintRequestUsingDELETE1NotFound{}
 }
 
-/*DeleteBlueprintRequestUsingDELETE1NotFound handles this case with default header values.
+/* DeleteBlueprintRequestUsingDELETE1NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -132,7 +131,6 @@ type DeleteBlueprintRequestUsingDELETE1NotFound struct {
 func (o *DeleteBlueprintRequestUsingDELETE1NotFound) Error() string {
 	return fmt.Sprintf("[DELETE /blueprint/api/blueprint-requests/{requestId}][%d] deleteBlueprintRequestUsingDELETE1NotFound  %+v", 404, o.Payload)
 }
-
 func (o *DeleteBlueprintRequestUsingDELETE1NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

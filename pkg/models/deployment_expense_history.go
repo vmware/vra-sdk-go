@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 	"strconv"
 
@@ -55,7 +56,6 @@ func (m *DeploymentExpenseHistory) Validate(formats strfmt.Registry) error {
 }
 
 func (m *DeploymentExpenseHistory) validateData(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Data) { // not required
 		return nil
 	}
@@ -112,13 +112,74 @@ func (m *DeploymentExpenseHistory) validateIntervalEnum(path, location string, v
 }
 
 func (m *DeploymentExpenseHistory) validateInterval(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Interval) { // not required
 		return nil
 	}
 
 	// value enum
 	if err := m.validateIntervalEnum("interval", "body", m.Interval); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this deployment expense history based on the context it is used
+func (m *DeploymentExpenseHistory) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateCurrency(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateInterval(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *DeploymentExpenseHistory) contextValidateCurrency(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "currency", "body", string(m.Currency)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *DeploymentExpenseHistory) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "data", "body", []*TimeSeriesValue(m.Data)); err != nil {
+		return err
+	}
+
+	for i := 0; i < len(m.Data); i++ {
+
+		if m.Data[i] != nil {
+			if err := m.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DeploymentExpenseHistory) contextValidateInterval(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "interval", "body", string(m.Interval)); err != nil {
 		return err
 	}
 

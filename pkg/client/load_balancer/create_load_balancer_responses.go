@@ -47,7 +47,6 @@ func (o *CreateLoadBalancerReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewCreateLoadBalancerAccepted() *CreateLoadBalancerAccepted {
 	return &CreateLoadBalancerAccepted{}
 }
 
-/*CreateLoadBalancerAccepted handles this case with default header values.
+/* CreateLoadBalancerAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -69,7 +68,6 @@ type CreateLoadBalancerAccepted struct {
 func (o *CreateLoadBalancerAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/load-balancers][%d] createLoadBalancerAccepted  %+v", 202, o.Payload)
 }
-
 func (o *CreateLoadBalancerAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -91,7 +89,7 @@ func NewCreateLoadBalancerBadRequest() *CreateLoadBalancerBadRequest {
 	return &CreateLoadBalancerBadRequest{}
 }
 
-/*CreateLoadBalancerBadRequest handles this case with default header values.
+/* CreateLoadBalancerBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -102,7 +100,6 @@ type CreateLoadBalancerBadRequest struct {
 func (o *CreateLoadBalancerBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/load-balancers][%d] createLoadBalancerBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateLoadBalancerBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -124,18 +121,29 @@ func NewCreateLoadBalancerForbidden() *CreateLoadBalancerForbidden {
 	return &CreateLoadBalancerForbidden{}
 }
 
-/*CreateLoadBalancerForbidden handles this case with default header values.
+/* CreateLoadBalancerForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type CreateLoadBalancerForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *CreateLoadBalancerForbidden) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/load-balancers][%d] createLoadBalancerForbidden ", 403)
+	return fmt.Sprintf("[POST /iaas/api/load-balancers][%d] createLoadBalancerForbidden  %+v", 403, o.Payload)
+}
+func (o *CreateLoadBalancerForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *CreateLoadBalancerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -145,7 +153,7 @@ func NewCreateLoadBalancerNotFound() *CreateLoadBalancerNotFound {
 	return &CreateLoadBalancerNotFound{}
 }
 
-/*CreateLoadBalancerNotFound handles this case with default header values.
+/* CreateLoadBalancerNotFound describes a response with status code 404, with default header values.
 
 Input(s) not Found
 */
@@ -156,7 +164,6 @@ type CreateLoadBalancerNotFound struct {
 func (o *CreateLoadBalancerNotFound) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/load-balancers][%d] createLoadBalancerNotFound  %+v", 404, o.Payload)
 }
-
 func (o *CreateLoadBalancerNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

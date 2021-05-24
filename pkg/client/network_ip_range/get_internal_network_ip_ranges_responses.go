@@ -41,7 +41,6 @@ func (o *GetInternalNetworkIPRangesReader) ReadResponse(response runtime.ClientR
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetInternalNetworkIPRangesOK() *GetInternalNetworkIPRangesOK {
 	return &GetInternalNetworkIPRangesOK{}
 }
 
-/*GetInternalNetworkIPRangesOK handles this case with default header values.
+/* GetInternalNetworkIPRangesOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type GetInternalNetworkIPRangesOK struct {
 func (o *GetInternalNetworkIPRangesOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/network-ip-ranges][%d] getInternalNetworkIpRangesOK  %+v", 200, o.Payload)
 }
-
 func (o *GetInternalNetworkIPRangesOK) GetPayload() *models.NetworkIPRangeResult {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewGetInternalNetworkIPRangesForbidden() *GetInternalNetworkIPRangesForbidd
 	return &GetInternalNetworkIPRangesForbidden{}
 }
 
-/*GetInternalNetworkIPRangesForbidden handles this case with default header values.
+/* GetInternalNetworkIPRangesForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetInternalNetworkIPRangesForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetInternalNetworkIPRangesForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/network-ip-ranges][%d] getInternalNetworkIpRangesForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/network-ip-ranges][%d] getInternalNetworkIpRangesForbidden  %+v", 403, o.Payload)
+}
+func (o *GetInternalNetworkIPRangesForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetInternalNetworkIPRangesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewGetInternalNetworkIPRangesNotFound() *GetInternalNetworkIPRangesNotFound
 	return &GetInternalNetworkIPRangesNotFound{}
 }
 
-/*GetInternalNetworkIPRangesNotFound handles this case with default header values.
+/* GetInternalNetworkIPRangesNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type GetInternalNetworkIPRangesNotFound struct {
 func (o *GetInternalNetworkIPRangesNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/network-ip-ranges][%d] getInternalNetworkIpRangesNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetInternalNetworkIPRangesNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

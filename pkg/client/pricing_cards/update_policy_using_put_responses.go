@@ -41,7 +41,6 @@ func (o *UpdatePolicyUsingPUTReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewUpdatePolicyUsingPUTOK() *UpdatePolicyUsingPUTOK {
 	return &UpdatePolicyUsingPUTOK{}
 }
 
-/*UpdatePolicyUsingPUTOK handles this case with default header values.
+/* UpdatePolicyUsingPUTOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -63,7 +62,6 @@ type UpdatePolicyUsingPUTOK struct {
 func (o *UpdatePolicyUsingPUTOK) Error() string {
 	return fmt.Sprintf("[PUT /price/api/private/pricing-cards/{id}][%d] updatePolicyUsingPUTOK  %+v", 200, o.Payload)
 }
-
 func (o *UpdatePolicyUsingPUTOK) GetPayload() *models.MeteringPolicy {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewUpdatePolicyUsingPUTUnauthorized() *UpdatePolicyUsingPUTUnauthorized {
 	return &UpdatePolicyUsingPUTUnauthorized{}
 }
 
-/*UpdatePolicyUsingPUTUnauthorized handles this case with default header values.
+/* UpdatePolicyUsingPUTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -106,7 +104,7 @@ func NewUpdatePolicyUsingPUTNotFound() *UpdatePolicyUsingPUTNotFound {
 	return &UpdatePolicyUsingPUTNotFound{}
 }
 
-/*UpdatePolicyUsingPUTNotFound handles this case with default header values.
+/* UpdatePolicyUsingPUTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +115,6 @@ type UpdatePolicyUsingPUTNotFound struct {
 func (o *UpdatePolicyUsingPUTNotFound) Error() string {
 	return fmt.Sprintf("[PUT /price/api/private/pricing-cards/{id}][%d] updatePolicyUsingPUTNotFound  %+v", 404, o.Payload)
 }
-
 func (o *UpdatePolicyUsingPUTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

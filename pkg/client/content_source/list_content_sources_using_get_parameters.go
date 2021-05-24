@@ -17,99 +17,121 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewListContentSourcesUsingGETParams creates a new ListContentSourcesUsingGETParams object
-// with the default values initialized.
+// NewListContentSourcesUsingGETParams creates a new ListContentSourcesUsingGETParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewListContentSourcesUsingGETParams() *ListContentSourcesUsingGETParams {
-	var ()
 	return &ListContentSourcesUsingGETParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewListContentSourcesUsingGETParamsWithTimeout creates a new ListContentSourcesUsingGETParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewListContentSourcesUsingGETParamsWithTimeout(timeout time.Duration) *ListContentSourcesUsingGETParams {
-	var ()
 	return &ListContentSourcesUsingGETParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewListContentSourcesUsingGETParamsWithContext creates a new ListContentSourcesUsingGETParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewListContentSourcesUsingGETParamsWithContext(ctx context.Context) *ListContentSourcesUsingGETParams {
-	var ()
 	return &ListContentSourcesUsingGETParams{
-
 		Context: ctx,
 	}
 }
 
 // NewListContentSourcesUsingGETParamsWithHTTPClient creates a new ListContentSourcesUsingGETParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewListContentSourcesUsingGETParamsWithHTTPClient(client *http.Client) *ListContentSourcesUsingGETParams {
-	var ()
 	return &ListContentSourcesUsingGETParams{
 		HTTPClient: client,
 	}
 }
 
-/*ListContentSourcesUsingGETParams contains all the parameters to send to the API endpoint
-for the list content sources using g e t operation typically these are written to a http.Request
+/* ListContentSourcesUsingGETParams contains all the parameters to send to the API endpoint
+   for the list content sources using g e t operation.
+
+   Typically these are written to a http.Request.
 */
 type ListContentSourcesUsingGETParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information, please refer to /content/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information, please refer to /content/api/about
 	*/
 	APIVersion *string
-	/*ContentType
-	  Search based on Content Type
 
+	/* ContentType.
+
+	   Search based on Content Type
 	*/
 	ContentType *string
-	/*IntegrationID
-	  Search based on integrationId
 
+	/* IntegrationID.
+
+	   Search based on integrationId
 	*/
 	IntegrationID *string
-	/*Name
-	  Search based on Content Source name
 
+	/* Name.
+
+	   Search based on Content Source name
 	*/
 	Name *string
-	/*ProjectIds
-	  Search based on associated projects
 
+	/* ProjectIds.
+
+	   Search based on associated projects
 	*/
 	ProjectIds []string
-	/*Repository
-	  Search based on repository
 
+	/* Repository.
+
+	   Search based on repository
 	*/
 	Repository *string
-	/*Search
-	  Search based on name or repository
 
+	/* Search.
+
+	   Search based on name or repository
 	*/
 	Search *string
-	/*SyncEnabled
-	  Search based on whether sync is enabled or not
 
+	/* SyncEnabled.
+
+	   Search based on whether sync is enabled or not
 	*/
 	SyncEnabled *bool
-	/*TypeIds
-	  Search based on Content Source Type Ids
 
+	/* TypeIds.
+
+	   Search based on Content Source Type Ids
 	*/
 	TypeIds []string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the list content sources using get params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ListContentSourcesUsingGETParams) WithDefaults() *ListContentSourcesUsingGETParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the list content sources using get params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ListContentSourcesUsingGETParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the list content sources using get params
@@ -256,132 +278,179 @@ func (o *ListContentSourcesUsingGETParams) WriteToRequest(r runtime.ClientReques
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.ContentType != nil {
 
 		// query param contentType
 		var qrContentType string
+
 		if o.ContentType != nil {
 			qrContentType = *o.ContentType
 		}
 		qContentType := qrContentType
 		if qContentType != "" {
+
 			if err := r.SetQueryParam("contentType", qContentType); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.IntegrationID != nil {
 
 		// query param integrationId
 		var qrIntegrationID string
+
 		if o.IntegrationID != nil {
 			qrIntegrationID = *o.IntegrationID
 		}
 		qIntegrationID := qrIntegrationID
 		if qIntegrationID != "" {
+
 			if err := r.SetQueryParam("integrationId", qIntegrationID); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Name != nil {
 
 		// query param name
 		var qrName string
+
 		if o.Name != nil {
 			qrName = *o.Name
 		}
 		qName := qrName
 		if qName != "" {
+
 			if err := r.SetQueryParam("name", qName); err != nil {
 				return err
 			}
 		}
-
 	}
 
-	valuesProjectIds := o.ProjectIds
+	if o.ProjectIds != nil {
 
-	joinedProjectIds := swag.JoinByFormat(valuesProjectIds, "multi")
-	// query array param projectIds
-	if err := r.SetQueryParam("projectIds", joinedProjectIds...); err != nil {
-		return err
+		// binding items for projectIds
+		joinedProjectIds := o.bindParamProjectIds(reg)
+
+		// query array param projectIds
+		if err := r.SetQueryParam("projectIds", joinedProjectIds...); err != nil {
+			return err
+		}
 	}
 
 	if o.Repository != nil {
 
 		// query param repository
 		var qrRepository string
+
 		if o.Repository != nil {
 			qrRepository = *o.Repository
 		}
 		qRepository := qrRepository
 		if qRepository != "" {
+
 			if err := r.SetQueryParam("repository", qRepository); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Search != nil {
 
 		// query param search
 		var qrSearch string
+
 		if o.Search != nil {
 			qrSearch = *o.Search
 		}
 		qSearch := qrSearch
 		if qSearch != "" {
+
 			if err := r.SetQueryParam("search", qSearch); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.SyncEnabled != nil {
 
 		// query param syncEnabled
 		var qrSyncEnabled bool
+
 		if o.SyncEnabled != nil {
 			qrSyncEnabled = *o.SyncEnabled
 		}
 		qSyncEnabled := swag.FormatBool(qrSyncEnabled)
 		if qSyncEnabled != "" {
+
 			if err := r.SetQueryParam("syncEnabled", qSyncEnabled); err != nil {
 				return err
 			}
 		}
-
 	}
 
-	valuesTypeIds := o.TypeIds
+	if o.TypeIds != nil {
 
-	joinedTypeIds := swag.JoinByFormat(valuesTypeIds, "multi")
-	// query array param typeIds
-	if err := r.SetQueryParam("typeIds", joinedTypeIds...); err != nil {
-		return err
+		// binding items for typeIds
+		joinedTypeIds := o.bindParamTypeIds(reg)
+
+		// query array param typeIds
+		if err := r.SetQueryParam("typeIds", joinedTypeIds...); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
+}
+
+// bindParamListContentSourcesUsingGET binds the parameter projectIds
+func (o *ListContentSourcesUsingGETParams) bindParamProjectIds(formats strfmt.Registry) []string {
+	projectIdsIR := o.ProjectIds
+
+	var projectIdsIC []string
+	for _, projectIdsIIR := range projectIdsIR { // explode []string
+
+		projectIdsIIV := projectIdsIIR // string as string
+		projectIdsIC = append(projectIdsIC, projectIdsIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	projectIdsIS := swag.JoinByFormat(projectIdsIC, "multi")
+
+	return projectIdsIS
+}
+
+// bindParamListContentSourcesUsingGET binds the parameter typeIds
+func (o *ListContentSourcesUsingGETParams) bindParamTypeIds(formats strfmt.Registry) []string {
+	typeIdsIR := o.TypeIds
+
+	var typeIdsIC []string
+	for _, typeIdsIIR := range typeIdsIR { // explode []string
+
+		typeIdsIIV := typeIdsIIR // string as string
+		typeIdsIC = append(typeIdsIC, typeIdsIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	typeIdsIS := swag.JoinByFormat(typeIdsIC, "multi")
+
+	return typeIdsIS
 }

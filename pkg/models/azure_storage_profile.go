@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -24,53 +25,73 @@ type AzureStorageProfile struct {
 	Links map[string]Href `json:"_links"`
 
 	// Id of the cloud account this storage profile belongs to.
+	// Example: [9e49]
 	CloudAccountID string `json:"cloudAccountId,omitempty"`
 
 	// Date when the entity was created. The date is in ISO 8601 and UTC.
+	// Example: 2012-09-27
 	CreatedAt string `json:"createdAt,omitempty"`
 
 	// Indicates the caching mechanism for additional disk.
+	// Example: None / ReadOnly / ReadWrite
 	DataDiskCaching string `json:"dataDiskCaching,omitempty"`
 
 	// Indicates if a storage profile contains default storage properties.
+	// Example: false
 	// Required: true
 	DefaultItem *bool `json:"defaultItem"`
 
 	// A human-friendly description.
+	// Example: my-description
 	Description string `json:"description,omitempty"`
 
+	// Indicates the id of disk encryption set.
+	// Example: /subscriptions/b8ef63/resourceGroups/DiskEncryptionSets/providers/Microsoft.Compute/diskEncryptionSets/MyDES
+	DiskEncryptionSetID string `json:"diskEncryptionSetId,omitempty"`
+
 	// Indicates the performance tier for the storage type. Premium disks are SSD backed and Standard disks are HDD backed.
+	// Example: Standard_LRS / Premium_LRS
 	DiskType string `json:"diskType,omitempty"`
 
 	// The id of the region for which this profile is defined
+	// Example: uswest
 	ExternalRegionID string `json:"externalRegionId,omitempty"`
 
 	// The id of this resource instance
+	// Example: 9e49
 	// Required: true
 	ID *string `json:"id"`
 
 	// A human-friendly name used as an identifier in APIs that support this option.
+	// Example: my-name
 	Name string `json:"name,omitempty"`
 
 	// The id of the organization this entity belongs to.
+	// Example: 9e49
 	OrgID string `json:"orgId,omitempty"`
 
 	// This field is deprecated. Use orgId instead. The id of the organization this entity belongs to.
+	// Example: deprecated
 	OrganizationID string `json:"organizationId,omitempty"`
 
 	// Indicates the caching mechanism for OS disk. Default policy for OS disks is Read/Write.
+	// Example: None / ReadOnly / ReadWrite
 	OsDiskCaching string `json:"osDiskCaching,omitempty"`
 
 	// Email of the user that owns the entity.
+	// Example: csp@vmware.com
 	Owner string `json:"owner,omitempty"`
 
 	// Indicates whether this storage profile should support encryption or not.
+	// Example: false
 	SupportsEncryption bool `json:"supportsEncryption,omitempty"`
 
 	// A list of tags that represent the capabilities of this storage profile
+	// Example: [ { \"key\" : \"tier\", \"value\": \"silver\" } ]
 	Tags []*Tag `json:"tags"`
 
 	// Date when the entity was last updated. The date is ISO 8601 and UTC.
+	// Example: 2012-09-27
 	UpdatedAt string `json:"updatedAt,omitempty"`
 }
 
@@ -101,6 +122,10 @@ func (m *AzureStorageProfile) Validate(formats strfmt.Registry) error {
 }
 
 func (m *AzureStorageProfile) validateLinks(formats strfmt.Registry) error {
+
+	if err := validate.Required("_links", "body", m.Links); err != nil {
+		return err
+	}
 
 	for k := range m.Links {
 
@@ -137,7 +162,6 @@ func (m *AzureStorageProfile) validateID(formats strfmt.Registry) error {
 }
 
 func (m *AzureStorageProfile) validateTags(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Tags) { // not required
 		return nil
 	}
@@ -149,6 +173,61 @@ func (m *AzureStorageProfile) validateTags(formats strfmt.Registry) error {
 
 		if m.Tags[i] != nil {
 			if err := m.Tags[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this azure storage profile based on the context it is used
+func (m *AzureStorageProfile) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateLinks(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTags(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *AzureStorageProfile) contextValidateLinks(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.Required("_links", "body", m.Links); err != nil {
+		return err
+	}
+
+	for k := range m.Links {
+
+		if val, ok := m.Links[k]; ok {
+			if err := val.ContextValidate(ctx, formats); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *AzureStorageProfile) contextValidateTags(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Tags); i++ {
+
+		if m.Tags[i] != nil {
+			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
 				}

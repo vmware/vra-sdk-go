@@ -17,94 +17,119 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGetCatalogItemsUsingGET1Params creates a new GetCatalogItemsUsingGET1Params object
-// with the default values initialized.
+// NewGetCatalogItemsUsingGET1Params creates a new GetCatalogItemsUsingGET1Params object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetCatalogItemsUsingGET1Params() *GetCatalogItemsUsingGET1Params {
-	var ()
 	return &GetCatalogItemsUsingGET1Params{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetCatalogItemsUsingGET1ParamsWithTimeout creates a new GetCatalogItemsUsingGET1Params object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetCatalogItemsUsingGET1ParamsWithTimeout(timeout time.Duration) *GetCatalogItemsUsingGET1Params {
-	var ()
 	return &GetCatalogItemsUsingGET1Params{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetCatalogItemsUsingGET1ParamsWithContext creates a new GetCatalogItemsUsingGET1Params object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetCatalogItemsUsingGET1ParamsWithContext(ctx context.Context) *GetCatalogItemsUsingGET1Params {
-	var ()
 	return &GetCatalogItemsUsingGET1Params{
-
 		Context: ctx,
 	}
 }
 
 // NewGetCatalogItemsUsingGET1ParamsWithHTTPClient creates a new GetCatalogItemsUsingGET1Params object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetCatalogItemsUsingGET1ParamsWithHTTPClient(client *http.Client) *GetCatalogItemsUsingGET1Params {
-	var ()
 	return &GetCatalogItemsUsingGET1Params{
 		HTTPClient: client,
 	}
 }
 
-/*GetCatalogItemsUsingGET1Params contains all the parameters to send to the API endpoint
-for the get catalog items using get1 operation typically these are written to a http.Request
+/* GetCatalogItemsUsingGET1Params contains all the parameters to send to the API endpoint
+   for the get catalog items using get1 operation.
+
+   Typically these are written to a http.Request.
 */
 type GetCatalogItemsUsingGET1Params struct {
 
-	/*DollarOrderby
-	  Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.
+	/* DollarOrderby.
 
+	   Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.
 	*/
 	DollarOrderby []string
-	/*DollarSkip
-	  Number of records you want to skip
 
+	/* DollarSkip.
+
+	   Number of records you want to skip
+
+	   Format: int32
 	*/
 	DollarSkip *int32
-	/*DollarTop
-	  Number of records you want
 
+	/* DollarTop.
+
+	   Number of records you want
+
+	   Format: int32
 	*/
 	DollarTop *int32
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 
+	/* APIVersion.
+
+	   The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 	*/
 	APIVersion *string
-	/*ExpandProjects
-	  Whether or not to return detailed project data for each result.
 
+	/* ExpandProjects.
+
+	   Whether or not to return detailed project data for each result.
 	*/
 	ExpandProjects *bool
-	/*Projects
-	  A list of project IDs. Results will belong to one of these projects.
 
+	/* Projects.
+
+	   A list of project IDs. Results will belong to one of these projects.
 	*/
 	Projects []string
-	/*Search
-	  Matches will have this string somewhere in their name or description.
 
+	/* Search.
+
+	   Matches will have this string somewhere in their name or description.
 	*/
 	Search *string
-	/*Types
-	  A list of Catalog Item Type IDs. Results will be one of these types.
 
+	/* Types.
+
+	   A list of Catalog Item Type IDs. Results will be one of these types.
 	*/
 	Types []string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get catalog items using get1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCatalogItemsUsingGET1Params) WithDefaults() *GetCatalogItemsUsingGET1Params {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get catalog items using get1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCatalogItemsUsingGET1Params) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get catalog items using get1 params
@@ -236,112 +261,177 @@ func (o *GetCatalogItemsUsingGET1Params) WriteToRequest(r runtime.ClientRequest,
 	}
 	var res []error
 
-	valuesDollarOrderby := o.DollarOrderby
+	if o.DollarOrderby != nil {
 
-	joinedDollarOrderby := swag.JoinByFormat(valuesDollarOrderby, "multi")
-	// query array param $orderby
-	if err := r.SetQueryParam("$orderby", joinedDollarOrderby...); err != nil {
-		return err
+		// binding items for $orderby
+		joinedDollarOrderby := o.bindParamDollarOrderby(reg)
+
+		// query array param $orderby
+		if err := r.SetQueryParam("$orderby", joinedDollarOrderby...); err != nil {
+			return err
+		}
 	}
 
 	if o.DollarSkip != nil {
 
 		// query param $skip
 		var qrDollarSkip int32
+
 		if o.DollarSkip != nil {
 			qrDollarSkip = *o.DollarSkip
 		}
 		qDollarSkip := swag.FormatInt32(qrDollarSkip)
 		if qDollarSkip != "" {
+
 			if err := r.SetQueryParam("$skip", qDollarSkip); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.DollarTop != nil {
 
 		// query param $top
 		var qrDollarTop int32
+
 		if o.DollarTop != nil {
 			qrDollarTop = *o.DollarTop
 		}
 		qDollarTop := swag.FormatInt32(qrDollarTop)
 		if qDollarTop != "" {
+
 			if err := r.SetQueryParam("$top", qDollarTop); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.APIVersion != nil {
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.ExpandProjects != nil {
 
 		// query param expandProjects
 		var qrExpandProjects bool
+
 		if o.ExpandProjects != nil {
 			qrExpandProjects = *o.ExpandProjects
 		}
 		qExpandProjects := swag.FormatBool(qrExpandProjects)
 		if qExpandProjects != "" {
+
 			if err := r.SetQueryParam("expandProjects", qExpandProjects); err != nil {
 				return err
 			}
 		}
-
 	}
 
-	valuesProjects := o.Projects
+	if o.Projects != nil {
 
-	joinedProjects := swag.JoinByFormat(valuesProjects, "multi")
-	// query array param projects
-	if err := r.SetQueryParam("projects", joinedProjects...); err != nil {
-		return err
+		// binding items for projects
+		joinedProjects := o.bindParamProjects(reg)
+
+		// query array param projects
+		if err := r.SetQueryParam("projects", joinedProjects...); err != nil {
+			return err
+		}
 	}
 
 	if o.Search != nil {
 
 		// query param search
 		var qrSearch string
+
 		if o.Search != nil {
 			qrSearch = *o.Search
 		}
 		qSearch := qrSearch
 		if qSearch != "" {
+
 			if err := r.SetQueryParam("search", qSearch); err != nil {
 				return err
 			}
 		}
-
 	}
 
-	valuesTypes := o.Types
+	if o.Types != nil {
 
-	joinedTypes := swag.JoinByFormat(valuesTypes, "multi")
-	// query array param types
-	if err := r.SetQueryParam("types", joinedTypes...); err != nil {
-		return err
+		// binding items for types
+		joinedTypes := o.bindParamTypes(reg)
+
+		// query array param types
+		if err := r.SetQueryParam("types", joinedTypes...); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
+}
+
+// bindParamGetCatalogItemsUsingGET1 binds the parameter $orderby
+func (o *GetCatalogItemsUsingGET1Params) bindParamDollarOrderby(formats strfmt.Registry) []string {
+	dollarOrderbyIR := o.DollarOrderby
+
+	var dollarOrderbyIC []string
+	for _, dollarOrderbyIIR := range dollarOrderbyIR { // explode []string
+
+		dollarOrderbyIIV := dollarOrderbyIIR // string as string
+		dollarOrderbyIC = append(dollarOrderbyIC, dollarOrderbyIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	dollarOrderbyIS := swag.JoinByFormat(dollarOrderbyIC, "multi")
+
+	return dollarOrderbyIS
+}
+
+// bindParamGetCatalogItemsUsingGET1 binds the parameter projects
+func (o *GetCatalogItemsUsingGET1Params) bindParamProjects(formats strfmt.Registry) []string {
+	projectsIR := o.Projects
+
+	var projectsIC []string
+	for _, projectsIIR := range projectsIR { // explode []string
+
+		projectsIIV := projectsIIR // string as string
+		projectsIC = append(projectsIC, projectsIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	projectsIS := swag.JoinByFormat(projectsIC, "multi")
+
+	return projectsIS
+}
+
+// bindParamGetCatalogItemsUsingGET1 binds the parameter types
+func (o *GetCatalogItemsUsingGET1Params) bindParamTypes(formats strfmt.Registry) []string {
+	typesIR := o.Types
+
+	var typesIC []string
+	for _, typesIIR := range typesIR { // explode []string
+
+		typesIIV := typesIIR // string as string
+		typesIC = append(typesIC, typesIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	typesIS := swag.JoinByFormat(typesIC, "multi")
+
+	return typesIS
 }

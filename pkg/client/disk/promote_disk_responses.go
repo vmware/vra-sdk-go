@@ -41,7 +41,6 @@ func (o *PromoteDiskReader) ReadResponse(response runtime.ClientResponse, consum
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewPromoteDiskAccepted() *PromoteDiskAccepted {
 	return &PromoteDiskAccepted{}
 }
 
-/*PromoteDiskAccepted handles this case with default header values.
+/* PromoteDiskAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type PromoteDiskAccepted struct {
 func (o *PromoteDiskAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/promote][%d] promoteDiskAccepted  %+v", 202, o.Payload)
 }
-
 func (o *PromoteDiskAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewPromoteDiskForbidden() *PromoteDiskForbidden {
 	return &PromoteDiskForbidden{}
 }
 
-/*PromoteDiskForbidden handles this case with default header values.
+/* PromoteDiskForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type PromoteDiskForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *PromoteDiskForbidden) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/promote][%d] promoteDiskForbidden ", 403)
+	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/promote][%d] promoteDiskForbidden  %+v", 403, o.Payload)
+}
+func (o *PromoteDiskForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *PromoteDiskForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewPromoteDiskNotFound() *PromoteDiskNotFound {
 	return &PromoteDiskNotFound{}
 }
 
-/*PromoteDiskNotFound handles this case with default header values.
+/* PromoteDiskNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type PromoteDiskNotFound struct {
 func (o *PromoteDiskNotFound) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/promote][%d] promoteDiskNotFound  %+v", 404, o.Payload)
 }
-
 func (o *PromoteDiskNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

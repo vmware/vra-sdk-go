@@ -17,169 +17,209 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGetDeploymentsUsingGETParams creates a new GetDeploymentsUsingGETParams object
-// with the default values initialized.
+// NewGetDeploymentsUsingGETParams creates a new GetDeploymentsUsingGETParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetDeploymentsUsingGETParams() *GetDeploymentsUsingGETParams {
-	var ()
 	return &GetDeploymentsUsingGETParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetDeploymentsUsingGETParamsWithTimeout creates a new GetDeploymentsUsingGETParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetDeploymentsUsingGETParamsWithTimeout(timeout time.Duration) *GetDeploymentsUsingGETParams {
-	var ()
 	return &GetDeploymentsUsingGETParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetDeploymentsUsingGETParamsWithContext creates a new GetDeploymentsUsingGETParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetDeploymentsUsingGETParamsWithContext(ctx context.Context) *GetDeploymentsUsingGETParams {
-	var ()
 	return &GetDeploymentsUsingGETParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetDeploymentsUsingGETParamsWithHTTPClient creates a new GetDeploymentsUsingGETParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetDeploymentsUsingGETParamsWithHTTPClient(client *http.Client) *GetDeploymentsUsingGETParams {
-	var ()
 	return &GetDeploymentsUsingGETParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetDeploymentsUsingGETParams contains all the parameters to send to the API endpoint
-for the get deployments using g e t operation typically these are written to a http.Request
+/* GetDeploymentsUsingGETParams contains all the parameters to send to the API endpoint
+   for the get deployments using g e t operation.
+
+   Typically these are written to a http.Request.
 */
 type GetDeploymentsUsingGETParams struct {
 
-	/*DollarOrderby
-	  Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.
+	/* DollarOrderby.
 
+	   Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.
 	*/
 	DollarOrderby []string
-	/*DollarSkip
-	  Number of records you want to skip
 
+	/* DollarSkip.
+
+	   Number of records you want to skip
+
+	   Format: int32
 	*/
 	DollarSkip *int32
-	/*DollarTop
-	  Number of records you want
 
+	/* DollarTop.
+
+	   Number of records you want
+
+	   Format: int32
 	*/
 	DollarTop *int32
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 
+	/* APIVersion.
+
+	   The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 	*/
 	APIVersion *string
-	/*CloudAccounts
-	  A comma-separated list. Results must be associated with one of these cloud accounts.
 
+	/* CloudAccounts.
+
+	   A comma-separated list. Results must be associated with one of these cloud accounts.
 	*/
 	CloudAccounts []string
-	/*CloudTypes
-	  A comma-separated list. Results must be associated with one of these endpoint Types
 
+	/* CloudTypes.
+
+	   A comma-separated list. Results must be associated with one of these endpoint Types
 	*/
 	CloudTypes []string
-	/*CreatedAt
-	  Comma-separated start and end dates for the interval
 
+	/* CreatedAt.
+
+	   Comma-separated start and end dates for the interval
 	*/
 	CreatedAt *string
-	/*Deleted
-	  Retrieves only soft-deleted deployments that have not yet been completely deleted.
 
+	/* Deleted.
+
+	   Retrieves only soft-deleted deployments that have not yet been completely deleted.
 	*/
 	Deleted *bool
-	/*Expand
-	  The expanded details of the requested comma separated objects. 'resources' option returns resources with all properties. Ex. blueprint, project
 
+	/* Expand.
+
+	   The expanded details of the requested comma separated objects. 'resources' option returns resources with all properties. Ex. blueprint, project
 	*/
 	Expand []string
-	/*ExpandLastRequest
-	  Expands deployment last request.
 
+	/* ExpandLastRequest.
+
+	   Expands deployment last request.
 	*/
 	ExpandLastRequest *bool
-	/*ExpandProject
-	  The 'project' field of each resulting deployment will be retrieved.
 
+	/* ExpandProject.
+
+	   The 'project' field of each resulting deployment will be retrieved.
 	*/
 	ExpandProject *bool
-	/*ExpandResources
-	  The 'resources' field of each resulting deployment will be retrieved.
 
+	/* ExpandResources.
+
+	   The 'resources' field of each resulting deployment will be retrieved.
 	*/
 	ExpandResources *bool
-	/*ExpiresAt
-	  Comma-separated start and end dates for the interval
 
+	/* ExpiresAt.
+
+	   Comma-separated start and end dates for the interval
 	*/
 	ExpiresAt *string
-	/*Ids
-	  A comma-separated list. Only deployments with these IDs will be included in the results.
 
+	/* Ids.
+
+	   A comma-separated list. Only deployments with these IDs will be included in the results.
 	*/
 	Ids []strfmt.UUID
-	/*LastUpdatedAt
-	  Comma-separated start and end dates for the interval
 
+	/* LastUpdatedAt.
+
+	   Comma-separated start and end dates for the interval
 	*/
 	LastUpdatedAt *string
-	/*Name
-	  Results must have exactly this name.
 
+	/* Name.
+
+	   Results must have exactly this name.
 	*/
 	Name *string
-	/*OwnedBy
-	  A comma-separated list. Results must be associated with one of these owners
 
+	/* OwnedBy.
+
+	   A comma-separated list. Results must be associated with one of these owners
 	*/
 	OwnedBy []string
-	/*Projects
-	  A comma-separated list. Results must be associated with one of these project IDs.
 
+	/* Projects.
+
+	   A comma-separated list. Results must be associated with one of these project IDs.
 	*/
 	Projects []string
-	/*RequestedBy
-	  A comma-separated list. Results must be associated with one of these requesters
 
+	/* RequestedBy.
+
+	   A comma-separated list. Results must be associated with one of these requesters
 	*/
 	RequestedBy []string
-	/*ResourceTypes
-	  A comma-separated list. Results must be associated with one of these resourceType Names.
 
+	/* ResourceTypes.
+
+	   A comma-separated list. Results must be associated with one of these resourceType Names.
 	*/
 	ResourceTypes []string
-	/*Search
-	  Given string should either be part of a searchable field in a deployment or one of deployment's resources.
 
+	/* Search.
+
+	   Given string should either be part of a searchable field in a deployment or one of deployment's resources.
 	*/
 	Search *string
-	/*Status
-	  A comma-separated list. Results must be associated with one of these statuses.
 
+	/* Status.
+
+	   A comma-separated list. Results must be associated with one of these statuses.
 	*/
 	Status []string
-	/*Tags
-	  A comma-separated list. Results must be associated with one of these tags
 
+	/* Tags.
+
+	   A comma-separated list. Results must be associated with one of these tags
 	*/
 	Tags []string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get deployments using get params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetDeploymentsUsingGETParams) WithDefaults() *GetDeploymentsUsingGETParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get deployments using get params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetDeploymentsUsingGETParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get deployments using get params
@@ -476,291 +516,520 @@ func (o *GetDeploymentsUsingGETParams) WriteToRequest(r runtime.ClientRequest, r
 	}
 	var res []error
 
-	valuesDollarOrderby := o.DollarOrderby
+	if o.DollarOrderby != nil {
 
-	joinedDollarOrderby := swag.JoinByFormat(valuesDollarOrderby, "multi")
-	// query array param $orderby
-	if err := r.SetQueryParam("$orderby", joinedDollarOrderby...); err != nil {
-		return err
+		// binding items for $orderby
+		joinedDollarOrderby := o.bindParamDollarOrderby(reg)
+
+		// query array param $orderby
+		if err := r.SetQueryParam("$orderby", joinedDollarOrderby...); err != nil {
+			return err
+		}
 	}
 
 	if o.DollarSkip != nil {
 
 		// query param $skip
 		var qrDollarSkip int32
+
 		if o.DollarSkip != nil {
 			qrDollarSkip = *o.DollarSkip
 		}
 		qDollarSkip := swag.FormatInt32(qrDollarSkip)
 		if qDollarSkip != "" {
+
 			if err := r.SetQueryParam("$skip", qDollarSkip); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.DollarTop != nil {
 
 		// query param $top
 		var qrDollarTop int32
+
 		if o.DollarTop != nil {
 			qrDollarTop = *o.DollarTop
 		}
 		qDollarTop := swag.FormatInt32(qrDollarTop)
 		if qDollarTop != "" {
+
 			if err := r.SetQueryParam("$top", qDollarTop); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.APIVersion != nil {
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
-	valuesCloudAccounts := o.CloudAccounts
+	if o.CloudAccounts != nil {
 
-	joinedCloudAccounts := swag.JoinByFormat(valuesCloudAccounts, "multi")
-	// query array param cloudAccounts
-	if err := r.SetQueryParam("cloudAccounts", joinedCloudAccounts...); err != nil {
-		return err
+		// binding items for cloudAccounts
+		joinedCloudAccounts := o.bindParamCloudAccounts(reg)
+
+		// query array param cloudAccounts
+		if err := r.SetQueryParam("cloudAccounts", joinedCloudAccounts...); err != nil {
+			return err
+		}
 	}
 
-	valuesCloudTypes := o.CloudTypes
+	if o.CloudTypes != nil {
 
-	joinedCloudTypes := swag.JoinByFormat(valuesCloudTypes, "multi")
-	// query array param cloudTypes
-	if err := r.SetQueryParam("cloudTypes", joinedCloudTypes...); err != nil {
-		return err
+		// binding items for cloudTypes
+		joinedCloudTypes := o.bindParamCloudTypes(reg)
+
+		// query array param cloudTypes
+		if err := r.SetQueryParam("cloudTypes", joinedCloudTypes...); err != nil {
+			return err
+		}
 	}
 
 	if o.CreatedAt != nil {
 
 		// query param createdAt
 		var qrCreatedAt string
+
 		if o.CreatedAt != nil {
 			qrCreatedAt = *o.CreatedAt
 		}
 		qCreatedAt := qrCreatedAt
 		if qCreatedAt != "" {
+
 			if err := r.SetQueryParam("createdAt", qCreatedAt); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Deleted != nil {
 
 		// query param deleted
 		var qrDeleted bool
+
 		if o.Deleted != nil {
 			qrDeleted = *o.Deleted
 		}
 		qDeleted := swag.FormatBool(qrDeleted)
 		if qDeleted != "" {
+
 			if err := r.SetQueryParam("deleted", qDeleted); err != nil {
 				return err
 			}
 		}
-
 	}
 
-	valuesExpand := o.Expand
+	if o.Expand != nil {
 
-	joinedExpand := swag.JoinByFormat(valuesExpand, "multi")
-	// query array param expand
-	if err := r.SetQueryParam("expand", joinedExpand...); err != nil {
-		return err
+		// binding items for expand
+		joinedExpand := o.bindParamExpand(reg)
+
+		// query array param expand
+		if err := r.SetQueryParam("expand", joinedExpand...); err != nil {
+			return err
+		}
 	}
 
 	if o.ExpandLastRequest != nil {
 
 		// query param expandLastRequest
 		var qrExpandLastRequest bool
+
 		if o.ExpandLastRequest != nil {
 			qrExpandLastRequest = *o.ExpandLastRequest
 		}
 		qExpandLastRequest := swag.FormatBool(qrExpandLastRequest)
 		if qExpandLastRequest != "" {
+
 			if err := r.SetQueryParam("expandLastRequest", qExpandLastRequest); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.ExpandProject != nil {
 
 		// query param expandProject
 		var qrExpandProject bool
+
 		if o.ExpandProject != nil {
 			qrExpandProject = *o.ExpandProject
 		}
 		qExpandProject := swag.FormatBool(qrExpandProject)
 		if qExpandProject != "" {
+
 			if err := r.SetQueryParam("expandProject", qExpandProject); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.ExpandResources != nil {
 
 		// query param expandResources
 		var qrExpandResources bool
+
 		if o.ExpandResources != nil {
 			qrExpandResources = *o.ExpandResources
 		}
 		qExpandResources := swag.FormatBool(qrExpandResources)
 		if qExpandResources != "" {
+
 			if err := r.SetQueryParam("expandResources", qExpandResources); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.ExpiresAt != nil {
 
 		// query param expiresAt
 		var qrExpiresAt string
+
 		if o.ExpiresAt != nil {
 			qrExpiresAt = *o.ExpiresAt
 		}
 		qExpiresAt := qrExpiresAt
 		if qExpiresAt != "" {
+
 			if err := r.SetQueryParam("expiresAt", qExpiresAt); err != nil {
 				return err
 			}
 		}
-
 	}
 
-	var valuesIds []string
-	for _, v := range o.Ids {
-		valuesIds = append(valuesIds, v.String())
-	}
+	if o.Ids != nil {
 
-	joinedIds := swag.JoinByFormat(valuesIds, "multi")
-	// query array param ids
-	if err := r.SetQueryParam("ids", joinedIds...); err != nil {
-		return err
+		// binding items for ids
+		joinedIds := o.bindParamIds(reg)
+
+		// query array param ids
+		if err := r.SetQueryParam("ids", joinedIds...); err != nil {
+			return err
+		}
 	}
 
 	if o.LastUpdatedAt != nil {
 
 		// query param lastUpdatedAt
 		var qrLastUpdatedAt string
+
 		if o.LastUpdatedAt != nil {
 			qrLastUpdatedAt = *o.LastUpdatedAt
 		}
 		qLastUpdatedAt := qrLastUpdatedAt
 		if qLastUpdatedAt != "" {
+
 			if err := r.SetQueryParam("lastUpdatedAt", qLastUpdatedAt); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Name != nil {
 
 		// query param name
 		var qrName string
+
 		if o.Name != nil {
 			qrName = *o.Name
 		}
 		qName := qrName
 		if qName != "" {
+
 			if err := r.SetQueryParam("name", qName); err != nil {
 				return err
 			}
 		}
-
 	}
 
-	valuesOwnedBy := o.OwnedBy
+	if o.OwnedBy != nil {
 
-	joinedOwnedBy := swag.JoinByFormat(valuesOwnedBy, "multi")
-	// query array param ownedBy
-	if err := r.SetQueryParam("ownedBy", joinedOwnedBy...); err != nil {
-		return err
+		// binding items for ownedBy
+		joinedOwnedBy := o.bindParamOwnedBy(reg)
+
+		// query array param ownedBy
+		if err := r.SetQueryParam("ownedBy", joinedOwnedBy...); err != nil {
+			return err
+		}
 	}
 
-	valuesProjects := o.Projects
+	if o.Projects != nil {
 
-	joinedProjects := swag.JoinByFormat(valuesProjects, "multi")
-	// query array param projects
-	if err := r.SetQueryParam("projects", joinedProjects...); err != nil {
-		return err
+		// binding items for projects
+		joinedProjects := o.bindParamProjects(reg)
+
+		// query array param projects
+		if err := r.SetQueryParam("projects", joinedProjects...); err != nil {
+			return err
+		}
 	}
 
-	valuesRequestedBy := o.RequestedBy
+	if o.RequestedBy != nil {
 
-	joinedRequestedBy := swag.JoinByFormat(valuesRequestedBy, "multi")
-	// query array param requestedBy
-	if err := r.SetQueryParam("requestedBy", joinedRequestedBy...); err != nil {
-		return err
+		// binding items for requestedBy
+		joinedRequestedBy := o.bindParamRequestedBy(reg)
+
+		// query array param requestedBy
+		if err := r.SetQueryParam("requestedBy", joinedRequestedBy...); err != nil {
+			return err
+		}
 	}
 
-	valuesResourceTypes := o.ResourceTypes
+	if o.ResourceTypes != nil {
 
-	joinedResourceTypes := swag.JoinByFormat(valuesResourceTypes, "multi")
-	// query array param resourceTypes
-	if err := r.SetQueryParam("resourceTypes", joinedResourceTypes...); err != nil {
-		return err
+		// binding items for resourceTypes
+		joinedResourceTypes := o.bindParamResourceTypes(reg)
+
+		// query array param resourceTypes
+		if err := r.SetQueryParam("resourceTypes", joinedResourceTypes...); err != nil {
+			return err
+		}
 	}
 
 	if o.Search != nil {
 
 		// query param search
 		var qrSearch string
+
 		if o.Search != nil {
 			qrSearch = *o.Search
 		}
 		qSearch := qrSearch
 		if qSearch != "" {
+
 			if err := r.SetQueryParam("search", qSearch); err != nil {
 				return err
 			}
 		}
-
 	}
 
-	valuesStatus := o.Status
+	if o.Status != nil {
 
-	joinedStatus := swag.JoinByFormat(valuesStatus, "multi")
-	// query array param status
-	if err := r.SetQueryParam("status", joinedStatus...); err != nil {
-		return err
+		// binding items for status
+		joinedStatus := o.bindParamStatus(reg)
+
+		// query array param status
+		if err := r.SetQueryParam("status", joinedStatus...); err != nil {
+			return err
+		}
 	}
 
-	valuesTags := o.Tags
+	if o.Tags != nil {
 
-	joinedTags := swag.JoinByFormat(valuesTags, "multi")
-	// query array param tags
-	if err := r.SetQueryParam("tags", joinedTags...); err != nil {
-		return err
+		// binding items for tags
+		joinedTags := o.bindParamTags(reg)
+
+		// query array param tags
+		if err := r.SetQueryParam("tags", joinedTags...); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
+}
+
+// bindParamGetDeploymentsUsingGET binds the parameter $orderby
+func (o *GetDeploymentsUsingGETParams) bindParamDollarOrderby(formats strfmt.Registry) []string {
+	dollarOrderbyIR := o.DollarOrderby
+
+	var dollarOrderbyIC []string
+	for _, dollarOrderbyIIR := range dollarOrderbyIR { // explode []string
+
+		dollarOrderbyIIV := dollarOrderbyIIR // string as string
+		dollarOrderbyIC = append(dollarOrderbyIC, dollarOrderbyIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	dollarOrderbyIS := swag.JoinByFormat(dollarOrderbyIC, "multi")
+
+	return dollarOrderbyIS
+}
+
+// bindParamGetDeploymentsUsingGET binds the parameter cloudAccounts
+func (o *GetDeploymentsUsingGETParams) bindParamCloudAccounts(formats strfmt.Registry) []string {
+	cloudAccountsIR := o.CloudAccounts
+
+	var cloudAccountsIC []string
+	for _, cloudAccountsIIR := range cloudAccountsIR { // explode []string
+
+		cloudAccountsIIV := cloudAccountsIIR // string as string
+		cloudAccountsIC = append(cloudAccountsIC, cloudAccountsIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	cloudAccountsIS := swag.JoinByFormat(cloudAccountsIC, "multi")
+
+	return cloudAccountsIS
+}
+
+// bindParamGetDeploymentsUsingGET binds the parameter cloudTypes
+func (o *GetDeploymentsUsingGETParams) bindParamCloudTypes(formats strfmt.Registry) []string {
+	cloudTypesIR := o.CloudTypes
+
+	var cloudTypesIC []string
+	for _, cloudTypesIIR := range cloudTypesIR { // explode []string
+
+		cloudTypesIIV := cloudTypesIIR // string as string
+		cloudTypesIC = append(cloudTypesIC, cloudTypesIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	cloudTypesIS := swag.JoinByFormat(cloudTypesIC, "multi")
+
+	return cloudTypesIS
+}
+
+// bindParamGetDeploymentsUsingGET binds the parameter expand
+func (o *GetDeploymentsUsingGETParams) bindParamExpand(formats strfmt.Registry) []string {
+	expandIR := o.Expand
+
+	var expandIC []string
+	for _, expandIIR := range expandIR { // explode []string
+
+		expandIIV := expandIIR // string as string
+		expandIC = append(expandIC, expandIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	expandIS := swag.JoinByFormat(expandIC, "multi")
+
+	return expandIS
+}
+
+// bindParamGetDeploymentsUsingGET binds the parameter ids
+func (o *GetDeploymentsUsingGETParams) bindParamIds(formats strfmt.Registry) []string {
+	idsIR := o.Ids
+
+	var idsIC []string
+	for _, idsIIR := range idsIR { // explode []strfmt.UUID
+
+		idsIIV := idsIIR.String() // strfmt.UUID as string
+		idsIC = append(idsIC, idsIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	idsIS := swag.JoinByFormat(idsIC, "multi")
+
+	return idsIS
+}
+
+// bindParamGetDeploymentsUsingGET binds the parameter ownedBy
+func (o *GetDeploymentsUsingGETParams) bindParamOwnedBy(formats strfmt.Registry) []string {
+	ownedByIR := o.OwnedBy
+
+	var ownedByIC []string
+	for _, ownedByIIR := range ownedByIR { // explode []string
+
+		ownedByIIV := ownedByIIR // string as string
+		ownedByIC = append(ownedByIC, ownedByIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	ownedByIS := swag.JoinByFormat(ownedByIC, "multi")
+
+	return ownedByIS
+}
+
+// bindParamGetDeploymentsUsingGET binds the parameter projects
+func (o *GetDeploymentsUsingGETParams) bindParamProjects(formats strfmt.Registry) []string {
+	projectsIR := o.Projects
+
+	var projectsIC []string
+	for _, projectsIIR := range projectsIR { // explode []string
+
+		projectsIIV := projectsIIR // string as string
+		projectsIC = append(projectsIC, projectsIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	projectsIS := swag.JoinByFormat(projectsIC, "multi")
+
+	return projectsIS
+}
+
+// bindParamGetDeploymentsUsingGET binds the parameter requestedBy
+func (o *GetDeploymentsUsingGETParams) bindParamRequestedBy(formats strfmt.Registry) []string {
+	requestedByIR := o.RequestedBy
+
+	var requestedByIC []string
+	for _, requestedByIIR := range requestedByIR { // explode []string
+
+		requestedByIIV := requestedByIIR // string as string
+		requestedByIC = append(requestedByIC, requestedByIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	requestedByIS := swag.JoinByFormat(requestedByIC, "multi")
+
+	return requestedByIS
+}
+
+// bindParamGetDeploymentsUsingGET binds the parameter resourceTypes
+func (o *GetDeploymentsUsingGETParams) bindParamResourceTypes(formats strfmt.Registry) []string {
+	resourceTypesIR := o.ResourceTypes
+
+	var resourceTypesIC []string
+	for _, resourceTypesIIR := range resourceTypesIR { // explode []string
+
+		resourceTypesIIV := resourceTypesIIR // string as string
+		resourceTypesIC = append(resourceTypesIC, resourceTypesIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	resourceTypesIS := swag.JoinByFormat(resourceTypesIC, "multi")
+
+	return resourceTypesIS
+}
+
+// bindParamGetDeploymentsUsingGET binds the parameter status
+func (o *GetDeploymentsUsingGETParams) bindParamStatus(formats strfmt.Registry) []string {
+	statusIR := o.Status
+
+	var statusIC []string
+	for _, statusIIR := range statusIR { // explode []string
+
+		statusIIV := statusIIR // string as string
+		statusIC = append(statusIC, statusIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	statusIS := swag.JoinByFormat(statusIC, "multi")
+
+	return statusIS
+}
+
+// bindParamGetDeploymentsUsingGET binds the parameter tags
+func (o *GetDeploymentsUsingGETParams) bindParamTags(formats strfmt.Registry) []string {
+	tagsIR := o.Tags
+
+	var tagsIC []string
+	for _, tagsIIR := range tagsIR { // explode []string
+
+		tagsIIV := tagsIIR // string as string
+		tagsIC = append(tagsIC, tagsIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	tagsIS := swag.JoinByFormat(tagsIC, "multi")
+
+	return tagsIS
 }

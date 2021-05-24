@@ -16,64 +16,79 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewUploadParams creates a new UploadParams object
-// with the default values initialized.
+// NewUploadParams creates a new UploadParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewUploadParams() *UploadParams {
-	var ()
 	return &UploadParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewUploadParamsWithTimeout creates a new UploadParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewUploadParamsWithTimeout(timeout time.Duration) *UploadParams {
-	var ()
 	return &UploadParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewUploadParamsWithContext creates a new UploadParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewUploadParamsWithContext(ctx context.Context) *UploadParams {
-	var ()
 	return &UploadParams{
-
 		Context: ctx,
 	}
 }
 
 // NewUploadParamsWithHTTPClient creates a new UploadParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewUploadParamsWithHTTPClient(client *http.Client) *UploadParams {
-	var ()
 	return &UploadParams{
 		HTTPClient: client,
 	}
 }
 
-/*UploadParams contains all the parameters to send to the API endpoint
-for the upload operation typically these are written to a http.Request
+/* UploadParams contains all the parameters to send to the API endpoint
+   for the upload operation.
+
+   Typically these are written to a http.Request.
 */
 type UploadParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 	*/
 	APIVersion *string
-	/*File
-	  Icon file
 
+	/* File.
+
+	   Icon file
 	*/
 	File runtime.NamedReadCloser
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the upload params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UploadParams) WithDefaults() *UploadParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the upload params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UploadParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the upload params
@@ -143,18 +158,18 @@ func (o *UploadParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Regist
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
-
 	// form file param file
 	if err := r.SetFileParam("file", o.File); err != nil {
 		return err

@@ -18,69 +18,85 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewChangeSecurityGroupsParams creates a new ChangeSecurityGroupsParams object
-// with the default values initialized.
+// NewChangeSecurityGroupsParams creates a new ChangeSecurityGroupsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewChangeSecurityGroupsParams() *ChangeSecurityGroupsParams {
-	var ()
 	return &ChangeSecurityGroupsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewChangeSecurityGroupsParamsWithTimeout creates a new ChangeSecurityGroupsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewChangeSecurityGroupsParamsWithTimeout(timeout time.Duration) *ChangeSecurityGroupsParams {
-	var ()
 	return &ChangeSecurityGroupsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewChangeSecurityGroupsParamsWithContext creates a new ChangeSecurityGroupsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewChangeSecurityGroupsParamsWithContext(ctx context.Context) *ChangeSecurityGroupsParams {
-	var ()
 	return &ChangeSecurityGroupsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewChangeSecurityGroupsParamsWithHTTPClient creates a new ChangeSecurityGroupsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewChangeSecurityGroupsParamsWithHTTPClient(client *http.Client) *ChangeSecurityGroupsParams {
-	var ()
 	return &ChangeSecurityGroupsParams{
 		HTTPClient: client,
 	}
 }
 
-/*ChangeSecurityGroupsParams contains all the parameters to send to the API endpoint
-for the change security groups operation typically these are written to a http.Request
+/* ChangeSecurityGroupsParams contains all the parameters to send to the API endpoint
+   for the change security groups operation.
+
+   Typically these are written to a http.Request.
 */
 type ChangeSecurityGroupsParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*Body
-	  Change security groups details
 
+	/* Body.
+
+	   Change security groups details
 	*/
 	Body *models.ChangeSecurityGroupSpecification
-	/*ID
-	  The id of the vSphere machine.
 
+	/* ID.
+
+	   The id of the vSphere machine.
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the change security groups params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ChangeSecurityGroupsParams) WithDefaults() *ChangeSecurityGroupsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the change security groups params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ChangeSecurityGroupsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the change security groups params
@@ -161,18 +177,18 @@ func (o *ChangeSecurityGroupsParams) WriteToRequest(r runtime.ClientRequest, reg
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
-
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err

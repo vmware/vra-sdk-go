@@ -35,7 +35,6 @@ func (o *GetRequestTrackersReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewGetRequestTrackersOK() *GetRequestTrackersOK {
 	return &GetRequestTrackersOK{}
 }
 
-/*GetRequestTrackersOK handles this case with default header values.
+/* GetRequestTrackersOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -57,7 +56,6 @@ type GetRequestTrackersOK struct {
 func (o *GetRequestTrackersOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/request-tracker][%d] getRequestTrackersOK  %+v", 200, o.Payload)
 }
-
 func (o *GetRequestTrackersOK) GetPayload() *models.RequestTrackerResult {
 	return o.Payload
 }
@@ -79,18 +77,29 @@ func NewGetRequestTrackersForbidden() *GetRequestTrackersForbidden {
 	return &GetRequestTrackersForbidden{}
 }
 
-/*GetRequestTrackersForbidden handles this case with default header values.
+/* GetRequestTrackersForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetRequestTrackersForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetRequestTrackersForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/request-tracker][%d] getRequestTrackersForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/request-tracker][%d] getRequestTrackersForbidden  %+v", 403, o.Payload)
+}
+func (o *GetRequestTrackersForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetRequestTrackersForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

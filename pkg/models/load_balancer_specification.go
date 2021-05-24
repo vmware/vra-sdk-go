@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -19,10 +20,11 @@ import (
 // swagger:model LoadBalancerSpecification
 type LoadBalancerSpecification struct {
 
-	// Additional custom properties that may be used to extend the load balancer.
+	// Additional custom properties that may be used to extend this resource.
 	CustomProperties map[string]string `json:"customProperties,omitempty"`
 
 	// The id of the deployment that is associated with this resource
+	// Example: 123e4567-e89b-12d3-a456-426655440000
 	DeploymentID string `json:"deploymentId,omitempty"`
 
 	// A human-friendly description.
@@ -32,6 +34,7 @@ type LoadBalancerSpecification struct {
 	InternetFacing bool `json:"internetFacing,omitempty"`
 
 	// Defines logging level for collecting load balancer traffic logs.
+	// Example: ERROR, WARNING, INFO, DEBUG
 	LoggingLevel string `json:"loggingLevel,omitempty"`
 
 	// A human-friendly name used as an identifier in APIs that support this option.
@@ -43,6 +46,7 @@ type LoadBalancerSpecification struct {
 	Nics []*NetworkInterfaceSpecification `json:"nics"`
 
 	// The id of the project the current user belongs to.
+	// Example: e058
 	// Required: true
 	ProjectID *string `json:"projectId"`
 
@@ -51,12 +55,15 @@ type LoadBalancerSpecification struct {
 	Routes []*RouteConfiguration `json:"routes"`
 
 	// A set of tag keys and optional values that should be set on any resource that is produced from this specification.
+	// Example: [ { \"key\" : \"ownedBy\", \"value\": \"Rainpole\" } ]
 	Tags []*Tag `json:"tags"`
 
 	// A list of links to target load balancer pool members. Links can be to either a machine or a machine's network interface.
+	// Example: [ \"/iaas/machines/eac3d\" ]
 	TargetLinks []string `json:"targetLinks"`
 
 	// Define the type/variant of load balancer numbers e.g.for NSX the number virtual servers and pool members load balancer can host
+	// Example: SMALL, MEDIUM, LARGE
 	Type string `json:"type,omitempty"`
 }
 
@@ -159,7 +166,6 @@ func (m *LoadBalancerSpecification) validateRoutes(formats strfmt.Registry) erro
 }
 
 func (m *LoadBalancerSpecification) validateTags(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Tags) { // not required
 		return nil
 	}
@@ -171,6 +177,82 @@ func (m *LoadBalancerSpecification) validateTags(formats strfmt.Registry) error 
 
 		if m.Tags[i] != nil {
 			if err := m.Tags[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this load balancer specification based on the context it is used
+func (m *LoadBalancerSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateNics(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateRoutes(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTags(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *LoadBalancerSpecification) contextValidateNics(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Nics); i++ {
+
+		if m.Nics[i] != nil {
+			if err := m.Nics[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("nics" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *LoadBalancerSpecification) contextValidateRoutes(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Routes); i++ {
+
+		if m.Routes[i] != nil {
+			if err := m.Routes[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("routes" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *LoadBalancerSpecification) contextValidateTags(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Tags); i++ {
+
+		if m.Tags[i] != nil {
+			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
 				}

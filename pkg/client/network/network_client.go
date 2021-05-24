@@ -25,21 +25,24 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateNetwork(params *CreateNetworkParams) (*CreateNetworkAccepted, error)
+	CreateNetwork(params *CreateNetworkParams, opts ...ClientOption) (*CreateNetworkAccepted, error)
 
-	DeleteNetwork(params *DeleteNetworkParams) (*DeleteNetworkAccepted, error)
+	DeleteNetwork(params *DeleteNetworkParams, opts ...ClientOption) (*DeleteNetworkAccepted, error)
 
-	GetMachineNetworkInterface(params *GetMachineNetworkInterfaceParams) (*GetMachineNetworkInterfaceOK, error)
+	GetMachineNetworkInterface(params *GetMachineNetworkInterfaceParams, opts ...ClientOption) (*GetMachineNetworkInterfaceOK, error)
 
-	GetNetwork(params *GetNetworkParams) (*GetNetworkOK, error)
+	GetNetwork(params *GetNetworkParams, opts ...ClientOption) (*GetNetworkOK, error)
 
-	GetNetworkDomain(params *GetNetworkDomainParams) (*GetNetworkDomainOK, error)
+	GetNetworkDomain(params *GetNetworkDomainParams, opts ...ClientOption) (*GetNetworkDomainOK, error)
 
-	GetNetworkDomains(params *GetNetworkDomainsParams) (*GetNetworkDomainsOK, error)
+	GetNetworkDomains(params *GetNetworkDomainsParams, opts ...ClientOption) (*GetNetworkDomainsOK, error)
 
-	GetNetworks(params *GetNetworksParams) (*GetNetworksOK, error)
+	GetNetworks(params *GetNetworksParams, opts ...ClientOption) (*GetNetworksOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -49,13 +52,12 @@ type ClientService interface {
 
   Provision a new network based on the passed in constraints. The network should be destroyed after the machine is destroyed to free up resources.
 */
-func (a *Client) CreateNetwork(params *CreateNetworkParams) (*CreateNetworkAccepted, error) {
+func (a *Client) CreateNetwork(params *CreateNetworkParams, opts ...ClientOption) (*CreateNetworkAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateNetworkParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createNetwork",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/networks",
@@ -66,7 +68,12 @@ func (a *Client) CreateNetwork(params *CreateNetworkParams) (*CreateNetworkAccep
 		Reader:             &CreateNetworkReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -85,13 +92,12 @@ func (a *Client) CreateNetwork(params *CreateNetworkParams) (*CreateNetworkAccep
 
   Delete a network with a given id
 */
-func (a *Client) DeleteNetwork(params *DeleteNetworkParams) (*DeleteNetworkAccepted, error) {
+func (a *Client) DeleteNetwork(params *DeleteNetworkParams, opts ...ClientOption) (*DeleteNetworkAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteNetworkParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteNetwork",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/networks/{id}",
@@ -102,7 +108,12 @@ func (a *Client) DeleteNetwork(params *DeleteNetworkParams) (*DeleteNetworkAccep
 		Reader:             &DeleteNetworkReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -121,13 +132,12 @@ func (a *Client) DeleteNetwork(params *DeleteNetworkParams) (*DeleteNetworkAccep
 
   Get network interface with a given id for specific machine
 */
-func (a *Client) GetMachineNetworkInterface(params *GetMachineNetworkInterfaceParams) (*GetMachineNetworkInterfaceOK, error) {
+func (a *Client) GetMachineNetworkInterface(params *GetMachineNetworkInterfaceParams, opts ...ClientOption) (*GetMachineNetworkInterfaceOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetMachineNetworkInterfaceParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getMachineNetworkInterface",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/machines/{id}/network-interfaces/{id1}",
@@ -138,7 +148,12 @@ func (a *Client) GetMachineNetworkInterface(params *GetMachineNetworkInterfacePa
 		Reader:             &GetMachineNetworkInterfaceReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -157,13 +172,12 @@ func (a *Client) GetMachineNetworkInterface(params *GetMachineNetworkInterfacePa
 
   Get network with a given id
 */
-func (a *Client) GetNetwork(params *GetNetworkParams) (*GetNetworkOK, error) {
+func (a *Client) GetNetwork(params *GetNetworkParams, opts ...ClientOption) (*GetNetworkOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetNetworkParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getNetwork",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/networks/{id}",
@@ -174,7 +188,12 @@ func (a *Client) GetNetwork(params *GetNetworkParams) (*GetNetworkOK, error) {
 		Reader:             &GetNetworkReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -193,13 +212,12 @@ func (a *Client) GetNetwork(params *GetNetworkParams) (*GetNetworkOK, error) {
 
   Get network domain with a given id
 */
-func (a *Client) GetNetworkDomain(params *GetNetworkDomainParams) (*GetNetworkDomainOK, error) {
+func (a *Client) GetNetworkDomain(params *GetNetworkDomainParams, opts ...ClientOption) (*GetNetworkDomainOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetNetworkDomainParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getNetworkDomain",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/network-domains/{id}",
@@ -210,7 +228,12 @@ func (a *Client) GetNetworkDomain(params *GetNetworkDomainParams) (*GetNetworkDo
 		Reader:             &GetNetworkDomainReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -229,13 +252,12 @@ func (a *Client) GetNetworkDomain(params *GetNetworkDomainParams) (*GetNetworkDo
 
   Get all network domains.
 */
-func (a *Client) GetNetworkDomains(params *GetNetworkDomainsParams) (*GetNetworkDomainsOK, error) {
+func (a *Client) GetNetworkDomains(params *GetNetworkDomainsParams, opts ...ClientOption) (*GetNetworkDomainsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetNetworkDomainsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getNetworkDomains",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/network-domains",
@@ -246,7 +268,12 @@ func (a *Client) GetNetworkDomains(params *GetNetworkDomainsParams) (*GetNetwork
 		Reader:             &GetNetworkDomainsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -265,13 +292,12 @@ func (a *Client) GetNetworkDomains(params *GetNetworkDomainsParams) (*GetNetwork
 
   Get all networks
 */
-func (a *Client) GetNetworks(params *GetNetworksParams) (*GetNetworksOK, error) {
+func (a *Client) GetNetworks(params *GetNetworksParams, opts ...ClientOption) (*GetNetworksOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetNetworksParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getNetworks",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/networks",
@@ -282,7 +308,12 @@ func (a *Client) GetNetworks(params *GetNetworksParams) (*GetNetworksOK, error) 
 		Reader:             &GetNetworksReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

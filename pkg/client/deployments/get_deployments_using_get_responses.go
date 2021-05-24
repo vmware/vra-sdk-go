@@ -35,7 +35,6 @@ func (o *GetDeploymentsUsingGETReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewGetDeploymentsUsingGETOK() *GetDeploymentsUsingGETOK {
 	return &GetDeploymentsUsingGETOK{}
 }
 
-/*GetDeploymentsUsingGETOK handles this case with default header values.
+/* GetDeploymentsUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -57,7 +56,6 @@ type GetDeploymentsUsingGETOK struct {
 func (o *GetDeploymentsUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments][%d] getDeploymentsUsingGETOK  %+v", 200, o.Payload)
 }
-
 func (o *GetDeploymentsUsingGETOK) GetPayload() *models.PageOfDeployment {
 	return o.Payload
 }
@@ -79,7 +77,7 @@ func NewGetDeploymentsUsingGETUnauthorized() *GetDeploymentsUsingGETUnauthorized
 	return &GetDeploymentsUsingGETUnauthorized{}
 }
 
-/*GetDeploymentsUsingGETUnauthorized handles this case with default header values.
+/* GetDeploymentsUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */

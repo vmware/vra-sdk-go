@@ -25,19 +25,22 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetFabricNetwork(params *GetFabricNetworkParams) (*GetFabricNetworkOK, error)
+	GetFabricNetwork(params *GetFabricNetworkParams, opts ...ClientOption) (*GetFabricNetworkOK, error)
 
-	GetFabricNetworks(params *GetFabricNetworksParams) (*GetFabricNetworksOK, error)
+	GetFabricNetworks(params *GetFabricNetworksParams, opts ...ClientOption) (*GetFabricNetworksOK, error)
 
-	GetVsphereFabricNetwork(params *GetVsphereFabricNetworkParams) (*GetVsphereFabricNetworkOK, error)
+	GetVsphereFabricNetwork(params *GetVsphereFabricNetworkParams, opts ...ClientOption) (*GetVsphereFabricNetworkOK, error)
 
-	GetVsphereFabricNetworks(params *GetVsphereFabricNetworksParams) (*GetVsphereFabricNetworksOK, error)
+	GetVsphereFabricNetworks(params *GetVsphereFabricNetworksParams, opts ...ClientOption) (*GetVsphereFabricNetworksOK, error)
 
-	UpdateFabricNetwork(params *UpdateFabricNetworkParams) (*UpdateFabricNetworkOK, error)
+	UpdateFabricNetwork(params *UpdateFabricNetworkParams, opts ...ClientOption) (*UpdateFabricNetworkOK, error)
 
-	UpdatevSphereFabricNetwork(params *UpdatevSphereFabricNetworkParams) (*UpdatevSphereFabricNetworkOK, error)
+	UpdatevSphereFabricNetwork(params *UpdatevSphereFabricNetworkParams, opts ...ClientOption) (*UpdatevSphereFabricNetworkOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -47,13 +50,12 @@ type ClientService interface {
 
   Get fabric network with a given id
 */
-func (a *Client) GetFabricNetwork(params *GetFabricNetworkParams) (*GetFabricNetworkOK, error) {
+func (a *Client) GetFabricNetwork(params *GetFabricNetworkParams, opts ...ClientOption) (*GetFabricNetworkOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetFabricNetworkParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getFabricNetwork",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/fabric-networks/{id}",
@@ -64,7 +66,12 @@ func (a *Client) GetFabricNetwork(params *GetFabricNetworkParams) (*GetFabricNet
 		Reader:             &GetFabricNetworkReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -83,13 +90,12 @@ func (a *Client) GetFabricNetwork(params *GetFabricNetworkParams) (*GetFabricNet
 
   Get all fabric networks.
 */
-func (a *Client) GetFabricNetworks(params *GetFabricNetworksParams) (*GetFabricNetworksOK, error) {
+func (a *Client) GetFabricNetworks(params *GetFabricNetworksParams, opts ...ClientOption) (*GetFabricNetworksOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetFabricNetworksParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getFabricNetworks",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/fabric-networks",
@@ -100,7 +106,12 @@ func (a *Client) GetFabricNetworks(params *GetFabricNetworksParams) (*GetFabricN
 		Reader:             &GetFabricNetworksReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -119,13 +130,12 @@ func (a *Client) GetFabricNetworks(params *GetFabricNetworksParams) (*GetFabricN
 
   Get vSphere fabric network with a given id
 */
-func (a *Client) GetVsphereFabricNetwork(params *GetVsphereFabricNetworkParams) (*GetVsphereFabricNetworkOK, error) {
+func (a *Client) GetVsphereFabricNetwork(params *GetVsphereFabricNetworkParams, opts ...ClientOption) (*GetVsphereFabricNetworkOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVsphereFabricNetworkParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getVsphereFabricNetwork",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/fabric-networks-vsphere/{id}",
@@ -136,7 +146,12 @@ func (a *Client) GetVsphereFabricNetwork(params *GetVsphereFabricNetworkParams) 
 		Reader:             &GetVsphereFabricNetworkReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -155,13 +170,12 @@ func (a *Client) GetVsphereFabricNetwork(params *GetVsphereFabricNetworkParams) 
 
   Get all vSphere fabric networks.
 */
-func (a *Client) GetVsphereFabricNetworks(params *GetVsphereFabricNetworksParams) (*GetVsphereFabricNetworksOK, error) {
+func (a *Client) GetVsphereFabricNetworks(params *GetVsphereFabricNetworksParams, opts ...ClientOption) (*GetVsphereFabricNetworksOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVsphereFabricNetworksParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getVsphereFabricNetworks",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/fabric-networks-vsphere",
@@ -172,7 +186,12 @@ func (a *Client) GetVsphereFabricNetworks(params *GetVsphereFabricNetworksParams
 		Reader:             &GetVsphereFabricNetworksReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -191,13 +210,12 @@ func (a *Client) GetVsphereFabricNetworks(params *GetVsphereFabricNetworksParams
 
   Update fabric network. Only tag updates are supported.
 */
-func (a *Client) UpdateFabricNetwork(params *UpdateFabricNetworkParams) (*UpdateFabricNetworkOK, error) {
+func (a *Client) UpdateFabricNetwork(params *UpdateFabricNetworkParams, opts ...ClientOption) (*UpdateFabricNetworkOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateFabricNetworkParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "updateFabricNetwork",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/fabric-networks/{id}",
@@ -208,7 +226,12 @@ func (a *Client) UpdateFabricNetwork(params *UpdateFabricNetworkParams) (*Update
 		Reader:             &UpdateFabricNetworkReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -227,13 +250,12 @@ func (a *Client) UpdateFabricNetwork(params *UpdateFabricNetworkParams) (*Update
 
   Update vSphere fabric network.
 */
-func (a *Client) UpdatevSphereFabricNetwork(params *UpdatevSphereFabricNetworkParams) (*UpdatevSphereFabricNetworkOK, error) {
+func (a *Client) UpdatevSphereFabricNetwork(params *UpdatevSphereFabricNetworkParams, opts ...ClientOption) (*UpdatevSphereFabricNetworkOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdatevSphereFabricNetworkParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "updatevSphereFabricNetwork",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/fabric-networks-vsphere/{id}",
@@ -244,7 +266,12 @@ func (a *Client) UpdatevSphereFabricNetwork(params *UpdatevSphereFabricNetworkPa
 		Reader:             &UpdatevSphereFabricNetworkReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

@@ -18,69 +18,85 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewUpdateImageProfileParams creates a new UpdateImageProfileParams object
-// with the default values initialized.
+// NewUpdateImageProfileParams creates a new UpdateImageProfileParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewUpdateImageProfileParams() *UpdateImageProfileParams {
-	var ()
 	return &UpdateImageProfileParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewUpdateImageProfileParamsWithTimeout creates a new UpdateImageProfileParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewUpdateImageProfileParamsWithTimeout(timeout time.Duration) *UpdateImageProfileParams {
-	var ()
 	return &UpdateImageProfileParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewUpdateImageProfileParamsWithContext creates a new UpdateImageProfileParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewUpdateImageProfileParamsWithContext(ctx context.Context) *UpdateImageProfileParams {
-	var ()
 	return &UpdateImageProfileParams{
-
 		Context: ctx,
 	}
 }
 
 // NewUpdateImageProfileParamsWithHTTPClient creates a new UpdateImageProfileParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewUpdateImageProfileParamsWithHTTPClient(client *http.Client) *UpdateImageProfileParams {
-	var ()
 	return &UpdateImageProfileParams{
 		HTTPClient: client,
 	}
 }
 
-/*UpdateImageProfileParams contains all the parameters to send to the API endpoint
-for the update image profile operation typically these are written to a http.Request
+/* UpdateImageProfileParams contains all the parameters to send to the API endpoint
+   for the update image profile operation.
+
+   Typically these are written to a http.Request.
 */
 type UpdateImageProfileParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*Body
-	  ImageProfile instance
 
+	/* Body.
+
+	   ImageProfile instance
 	*/
 	Body *models.UpdateImageProfileSpecification
-	/*ID
-	  The ID of the image.
 
+	/* ID.
+
+	   The ID of the image.
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the update image profile params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UpdateImageProfileParams) WithDefaults() *UpdateImageProfileParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the update image profile params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UpdateImageProfileParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the update image profile params
@@ -161,18 +177,18 @@ func (o *UpdateImageProfileParams) WriteToRequest(r runtime.ClientRequest, reg s
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
-
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err

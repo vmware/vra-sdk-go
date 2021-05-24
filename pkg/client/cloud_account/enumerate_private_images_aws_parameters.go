@@ -16,64 +16,79 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewEnumeratePrivateImagesAWSParams creates a new EnumeratePrivateImagesAWSParams object
-// with the default values initialized.
+// NewEnumeratePrivateImagesAWSParams creates a new EnumeratePrivateImagesAWSParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewEnumeratePrivateImagesAWSParams() *EnumeratePrivateImagesAWSParams {
-	var ()
 	return &EnumeratePrivateImagesAWSParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewEnumeratePrivateImagesAWSParamsWithTimeout creates a new EnumeratePrivateImagesAWSParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewEnumeratePrivateImagesAWSParamsWithTimeout(timeout time.Duration) *EnumeratePrivateImagesAWSParams {
-	var ()
 	return &EnumeratePrivateImagesAWSParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewEnumeratePrivateImagesAWSParamsWithContext creates a new EnumeratePrivateImagesAWSParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewEnumeratePrivateImagesAWSParamsWithContext(ctx context.Context) *EnumeratePrivateImagesAWSParams {
-	var ()
 	return &EnumeratePrivateImagesAWSParams{
-
 		Context: ctx,
 	}
 }
 
 // NewEnumeratePrivateImagesAWSParamsWithHTTPClient creates a new EnumeratePrivateImagesAWSParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewEnumeratePrivateImagesAWSParamsWithHTTPClient(client *http.Client) *EnumeratePrivateImagesAWSParams {
-	var ()
 	return &EnumeratePrivateImagesAWSParams{
 		HTTPClient: client,
 	}
 }
 
-/*EnumeratePrivateImagesAWSParams contains all the parameters to send to the API endpoint
-for the enumerate private images a w s operation typically these are written to a http.Request
+/* EnumeratePrivateImagesAWSParams contains all the parameters to send to the API endpoint
+   for the enumerate private images a w s operation.
+
+   Typically these are written to a http.Request.
 */
 type EnumeratePrivateImagesAWSParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*ID
-	  Id of AWS cloud account to enumerate
 
+	/* ID.
+
+	   Id of AWS cloud account to enumerate
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the enumerate private images a w s params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *EnumeratePrivateImagesAWSParams) WithDefaults() *EnumeratePrivateImagesAWSParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the enumerate private images a w s params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *EnumeratePrivateImagesAWSParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the enumerate private images a w s params
@@ -143,16 +158,17 @@ func (o *EnumeratePrivateImagesAWSParams) WriteToRequest(r runtime.ClientRequest
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id

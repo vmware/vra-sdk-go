@@ -25,37 +25,40 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	PromoteDisk(params *PromoteDiskParams) (*PromoteDiskAccepted, error)
+	PromoteDisk(params *PromoteDiskParams, opts ...ClientOption) (*PromoteDiskAccepted, error)
 
-	AttachMachineDisk(params *AttachMachineDiskParams) (*AttachMachineDiskOK, error)
+	AttachMachineDisk(params *AttachMachineDiskParams, opts ...ClientOption) (*AttachMachineDiskOK, error)
 
-	CreateBlockDevice(params *CreateBlockDeviceParams) (*CreateBlockDeviceAccepted, error)
+	CreateBlockDevice(params *CreateBlockDeviceParams, opts ...ClientOption) (*CreateBlockDeviceAccepted, error)
 
-	CreateFirstClassDiskSnapshot(params *CreateFirstClassDiskSnapshotParams) (*CreateFirstClassDiskSnapshotAccepted, *CreateFirstClassDiskSnapshotNoContent, error)
+	CreateBlockDeviceSnapshot(params *CreateBlockDeviceSnapshotParams, opts ...ClientOption) (*CreateBlockDeviceSnapshotAccepted, *CreateBlockDeviceSnapshotNoContent, error)
 
-	DeleteBlockDevice(params *DeleteBlockDeviceParams) (*DeleteBlockDeviceAccepted, *DeleteBlockDeviceNoContent, error)
+	DeleteBlockDevice(params *DeleteBlockDeviceParams, opts ...ClientOption) (*DeleteBlockDeviceAccepted, *DeleteBlockDeviceNoContent, error)
 
-	DeleteFirstClassDiskSnapshot(params *DeleteFirstClassDiskSnapshotParams) (*DeleteFirstClassDiskSnapshotAccepted, *DeleteFirstClassDiskSnapshotNoContent, error)
+	DeleteBlockDeviceSnapshot(params *DeleteBlockDeviceSnapshotParams, opts ...ClientOption) (*DeleteBlockDeviceSnapshotAccepted, *DeleteBlockDeviceSnapshotNoContent, error)
 
-	DeleteMachineDisk(params *DeleteMachineDiskParams) (*DeleteMachineDiskAccepted, *DeleteMachineDiskNoContent, error)
+	DeleteMachineDisk(params *DeleteMachineDiskParams, opts ...ClientOption) (*DeleteMachineDiskAccepted, error)
 
-	GetBlockDevice(params *GetBlockDeviceParams) (*GetBlockDeviceOK, error)
+	GetBlockDevice(params *GetBlockDeviceParams, opts ...ClientOption) (*GetBlockDeviceOK, error)
 
-	GetBlockDevices(params *GetBlockDevicesParams) (*GetBlockDevicesOK, error)
+	GetBlockDevices(params *GetBlockDevicesParams, opts ...ClientOption) (*GetBlockDevicesOK, error)
 
-	GetDiskSnapshot(params *GetDiskSnapshotParams) (*GetDiskSnapshotOK, error)
+	GetDiskSnapshot(params *GetDiskSnapshotParams, opts ...ClientOption) (*GetDiskSnapshotOK, error)
 
-	GetDiskSnapshots(params *GetDiskSnapshotsParams) (*GetDiskSnapshotsOK, error)
+	GetDiskSnapshots(params *GetDiskSnapshotsParams, opts ...ClientOption) (*GetDiskSnapshotsOK, error)
 
-	GetMachineDisk(params *GetMachineDiskParams) (*GetMachineDiskOK, error)
+	GetMachineDisk(params *GetMachineDiskParams, opts ...ClientOption) (*GetMachineDiskOK, error)
 
-	GetMachineDisks(params *GetMachineDisksParams) (*GetMachineDisksOK, error)
+	GetMachineDisks(params *GetMachineDisksParams, opts ...ClientOption) (*GetMachineDisksOK, error)
 
-	ResizeBlockDevice(params *ResizeBlockDeviceParams) (*ResizeBlockDeviceAccepted, *ResizeBlockDeviceNoContent, error)
+	ResizeBlockDevice(params *ResizeBlockDeviceParams, opts ...ClientOption) (*ResizeBlockDeviceAccepted, *ResizeBlockDeviceNoContent, error)
 
-	RevertDiskSnapshot(params *RevertDiskSnapshotParams) (*RevertDiskSnapshotAccepted, error)
+	RevertDiskSnapshot(params *RevertDiskSnapshotParams, opts ...ClientOption) (*RevertDiskSnapshotAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -63,15 +66,14 @@ type ClientService interface {
 /*
   PromoteDisk promotes operation on disk
 
-  Second day promote operation on disk
+  Second day promote operation on disk. Applicable for vSphere Block Devices only
 */
-func (a *Client) PromoteDisk(params *PromoteDiskParams) (*PromoteDiskAccepted, error) {
+func (a *Client) PromoteDisk(params *PromoteDiskParams, opts ...ClientOption) (*PromoteDiskAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPromoteDiskParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "PromoteDisk",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/block-devices/{id}/operations/promote",
@@ -82,7 +84,12 @@ func (a *Client) PromoteDisk(params *PromoteDiskParams) (*PromoteDiskAccepted, e
 		Reader:             &PromoteDiskReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -101,13 +108,12 @@ func (a *Client) PromoteDisk(params *PromoteDiskParams) (*PromoteDiskAccepted, e
 
   Attach a disk to a machine.
 */
-func (a *Client) AttachMachineDisk(params *AttachMachineDiskParams) (*AttachMachineDiskOK, error) {
+func (a *Client) AttachMachineDisk(params *AttachMachineDiskParams, opts ...ClientOption) (*AttachMachineDiskOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewAttachMachineDiskParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "attachMachineDisk",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/machines/{id}/disks",
@@ -118,7 +124,12 @@ func (a *Client) AttachMachineDisk(params *AttachMachineDiskParams) (*AttachMach
 		Reader:             &AttachMachineDiskReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -142,13 +153,12 @@ func (a *Client) AttachMachineDisk(params *AttachMachineDiskParams) (*AttachMach
     3. provisioningType: Defines the type of provisioning. For eg. thick/thin.
     4. resourceGroupName: Defines the Azure resource group name where the disk needs to be provisioned.
 */
-func (a *Client) CreateBlockDevice(params *CreateBlockDeviceParams) (*CreateBlockDeviceAccepted, error) {
+func (a *Client) CreateBlockDevice(params *CreateBlockDeviceParams, opts ...ClientOption) (*CreateBlockDeviceAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateBlockDeviceParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createBlockDevice",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/block-devices",
@@ -159,7 +169,12 @@ func (a *Client) CreateBlockDevice(params *CreateBlockDeviceParams) (*CreateBloc
 		Reader:             &CreateBlockDeviceReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -174,35 +189,39 @@ func (a *Client) CreateBlockDevice(params *CreateBlockDeviceParams) (*CreateBloc
 }
 
 /*
-  CreateFirstClassDiskSnapshot creates snapshot operation for first class disk
+  CreateBlockDeviceSnapshot creates snapshot operation for block device
 
-  Second day create snapshot operation for first class disk
+  Second day create snapshot operation for Block device
 */
-func (a *Client) CreateFirstClassDiskSnapshot(params *CreateFirstClassDiskSnapshotParams) (*CreateFirstClassDiskSnapshotAccepted, *CreateFirstClassDiskSnapshotNoContent, error) {
+func (a *Client) CreateBlockDeviceSnapshot(params *CreateBlockDeviceSnapshotParams, opts ...ClientOption) (*CreateBlockDeviceSnapshotAccepted, *CreateBlockDeviceSnapshotNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateFirstClassDiskSnapshotParams()
+		params = NewCreateBlockDeviceSnapshotParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "createFirstClassDiskSnapshot",
+	op := &runtime.ClientOperation{
+		ID:                 "createBlockDeviceSnapshot",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/block-devices/{id}/operations/snapshots",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateFirstClassDiskSnapshotReader{formats: a.formats},
+		Reader:             &CreateBlockDeviceSnapshotReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *CreateFirstClassDiskSnapshotAccepted:
+	case *CreateBlockDeviceSnapshotAccepted:
 		return value, nil, nil
-	case *CreateFirstClassDiskSnapshotNoContent:
+	case *CreateBlockDeviceSnapshotNoContent:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
@@ -218,13 +237,12 @@ func (a *Client) CreateFirstClassDiskSnapshot(params *CreateFirstClassDiskSnapsh
 2. A block device with persistent property set to 'false' is deleted.
 3. A block device with persistent property set to 'true' needs an additional parameter 'purge' to be set to true, for deletion.
 */
-func (a *Client) DeleteBlockDevice(params *DeleteBlockDeviceParams) (*DeleteBlockDeviceAccepted, *DeleteBlockDeviceNoContent, error) {
+func (a *Client) DeleteBlockDevice(params *DeleteBlockDeviceParams, opts ...ClientOption) (*DeleteBlockDeviceAccepted, *DeleteBlockDeviceNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteBlockDeviceParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteBlockDevice",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/block-devices/{id}",
@@ -235,7 +253,12 @@ func (a *Client) DeleteBlockDevice(params *DeleteBlockDeviceParams) (*DeleteBloc
 		Reader:             &DeleteBlockDeviceReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -251,35 +274,39 @@ func (a *Client) DeleteBlockDevice(params *DeleteBlockDeviceParams) (*DeleteBloc
 }
 
 /*
-  DeleteFirstClassDiskSnapshot deletes snapshot operation for first class disk
+  DeleteBlockDeviceSnapshot deletes snapshot operation for block device
 
-  Second day delete snapshot operation for first class disk
+  Second day delete snapshot operation for Block device
 */
-func (a *Client) DeleteFirstClassDiskSnapshot(params *DeleteFirstClassDiskSnapshotParams) (*DeleteFirstClassDiskSnapshotAccepted, *DeleteFirstClassDiskSnapshotNoContent, error) {
+func (a *Client) DeleteBlockDeviceSnapshot(params *DeleteBlockDeviceSnapshotParams, opts ...ClientOption) (*DeleteBlockDeviceSnapshotAccepted, *DeleteBlockDeviceSnapshotNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteFirstClassDiskSnapshotParams()
+		params = NewDeleteBlockDeviceSnapshotParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "deleteFirstClassDiskSnapshot",
+	op := &runtime.ClientOperation{
+		ID:                 "deleteBlockDeviceSnapshot",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/block-devices/{id}/snapshots/{id1}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteFirstClassDiskSnapshotReader{formats: a.formats},
+		Reader:             &DeleteBlockDeviceSnapshotReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *DeleteFirstClassDiskSnapshotAccepted:
+	case *DeleteBlockDeviceSnapshotAccepted:
 		return value, nil, nil
-	case *DeleteFirstClassDiskSnapshotNoContent:
+	case *DeleteBlockDeviceSnapshotNoContent:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
@@ -292,13 +319,12 @@ func (a *Client) DeleteFirstClassDiskSnapshot(params *DeleteFirstClassDiskSnapsh
 
   Remove a disk from a given machine.
 */
-func (a *Client) DeleteMachineDisk(params *DeleteMachineDiskParams) (*DeleteMachineDiskAccepted, *DeleteMachineDiskNoContent, error) {
+func (a *Client) DeleteMachineDisk(params *DeleteMachineDiskParams, opts ...ClientOption) (*DeleteMachineDiskAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteMachineDiskParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteMachineDisk",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/machines/{id}/disks/{id1}",
@@ -309,18 +335,22 @@ func (a *Client) DeleteMachineDisk(params *DeleteMachineDiskParams) (*DeleteMach
 		Reader:             &DeleteMachineDiskReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
-	switch value := result.(type) {
-	case *DeleteMachineDiskAccepted:
-		return value, nil, nil
-	case *DeleteMachineDiskNoContent:
-		return nil, value, nil
+	success, ok := result.(*DeleteMachineDiskAccepted)
+	if ok {
+		return success, nil
 	}
+	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for disk: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for deleteMachineDisk: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -329,13 +359,12 @@ func (a *Client) DeleteMachineDisk(params *DeleteMachineDiskParams) (*DeleteMach
 
   Get a single BlockDevice
 */
-func (a *Client) GetBlockDevice(params *GetBlockDeviceParams) (*GetBlockDeviceOK, error) {
+func (a *Client) GetBlockDevice(params *GetBlockDeviceParams, opts ...ClientOption) (*GetBlockDeviceOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetBlockDeviceParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getBlockDevice",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/block-devices/{id}",
@@ -346,7 +375,12 @@ func (a *Client) GetBlockDevice(params *GetBlockDeviceParams) (*GetBlockDeviceOK
 		Reader:             &GetBlockDeviceReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -365,13 +399,12 @@ func (a *Client) GetBlockDevice(params *GetBlockDeviceParams) (*GetBlockDeviceOK
 
   Get all BlockDevices
 */
-func (a *Client) GetBlockDevices(params *GetBlockDevicesParams) (*GetBlockDevicesOK, error) {
+func (a *Client) GetBlockDevices(params *GetBlockDevicesParams, opts ...ClientOption) (*GetBlockDevicesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetBlockDevicesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getBlockDevices",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/block-devices",
@@ -382,7 +415,12 @@ func (a *Client) GetBlockDevices(params *GetBlockDevicesParams) (*GetBlockDevice
 		Reader:             &GetBlockDevicesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -401,13 +439,12 @@ func (a *Client) GetBlockDevices(params *GetBlockDevicesParams) (*GetBlockDevice
 
   Get snapshot with a given id for specific disk
 */
-func (a *Client) GetDiskSnapshot(params *GetDiskSnapshotParams) (*GetDiskSnapshotOK, error) {
+func (a *Client) GetDiskSnapshot(params *GetDiskSnapshotParams, opts ...ClientOption) (*GetDiskSnapshotOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDiskSnapshotParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getDiskSnapshot",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/block-devices/{id}/snapshots/{id1}",
@@ -418,7 +455,12 @@ func (a *Client) GetDiskSnapshot(params *GetDiskSnapshotParams) (*GetDiskSnapsho
 		Reader:             &GetDiskSnapshotReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -437,13 +479,12 @@ func (a *Client) GetDiskSnapshot(params *GetDiskSnapshotParams) (*GetDiskSnapsho
 
   Get disk snapshots information
 */
-func (a *Client) GetDiskSnapshots(params *GetDiskSnapshotsParams) (*GetDiskSnapshotsOK, error) {
+func (a *Client) GetDiskSnapshots(params *GetDiskSnapshotsParams, opts ...ClientOption) (*GetDiskSnapshotsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDiskSnapshotsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getDiskSnapshots",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/block-devices/{id}/snapshots",
@@ -454,7 +495,12 @@ func (a *Client) GetDiskSnapshots(params *GetDiskSnapshotsParams) (*GetDiskSnaps
 		Reader:             &GetDiskSnapshotsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -473,13 +519,12 @@ func (a *Client) GetDiskSnapshots(params *GetDiskSnapshotsParams) (*GetDiskSnaps
 
   Get disk with a given id for specific machine
 */
-func (a *Client) GetMachineDisk(params *GetMachineDiskParams) (*GetMachineDiskOK, error) {
+func (a *Client) GetMachineDisk(params *GetMachineDiskParams, opts ...ClientOption) (*GetMachineDiskOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetMachineDiskParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getMachineDisk",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/machines/{id}/disks/{id1}",
@@ -490,7 +535,12 @@ func (a *Client) GetMachineDisk(params *GetMachineDiskParams) (*GetMachineDiskOK
 		Reader:             &GetMachineDiskReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -509,13 +559,12 @@ func (a *Client) GetMachineDisk(params *GetMachineDiskParams) (*GetMachineDiskOK
 
   Get all machine disks
 */
-func (a *Client) GetMachineDisks(params *GetMachineDisksParams) (*GetMachineDisksOK, error) {
+func (a *Client) GetMachineDisks(params *GetMachineDisksParams, opts ...ClientOption) (*GetMachineDisksOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetMachineDisksParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getMachineDisks",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/machines/{id}/disks",
@@ -526,7 +575,12 @@ func (a *Client) GetMachineDisks(params *GetMachineDisksParams) (*GetMachineDisk
 		Reader:             &GetMachineDisksReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -545,13 +599,12 @@ func (a *Client) GetMachineDisks(params *GetMachineDisksParams) (*GetMachineDisk
 
   Resize operation on block device.
 */
-func (a *Client) ResizeBlockDevice(params *ResizeBlockDeviceParams) (*ResizeBlockDeviceAccepted, *ResizeBlockDeviceNoContent, error) {
+func (a *Client) ResizeBlockDevice(params *ResizeBlockDeviceParams, opts ...ClientOption) (*ResizeBlockDeviceAccepted, *ResizeBlockDeviceNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewResizeBlockDeviceParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "resizeBlockDevice",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/block-devices/{id}",
@@ -562,7 +615,12 @@ func (a *Client) ResizeBlockDevice(params *ResizeBlockDeviceParams) (*ResizeBloc
 		Reader:             &ResizeBlockDeviceReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -578,17 +636,16 @@ func (a *Client) ResizeBlockDevice(params *ResizeBlockDeviceParams) (*ResizeBloc
 }
 
 /*
-  RevertDiskSnapshot reverts snapshot operation for disk
+  RevertDiskSnapshot reverts snapshot operation for block device
 
-  Second day revert snapshot operation for disk
+  Second day revert snapshot operation for Block device
 */
-func (a *Client) RevertDiskSnapshot(params *RevertDiskSnapshotParams) (*RevertDiskSnapshotAccepted, error) {
+func (a *Client) RevertDiskSnapshot(params *RevertDiskSnapshotParams, opts ...ClientOption) (*RevertDiskSnapshotAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewRevertDiskSnapshotParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "revertDiskSnapshot",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/block-devices/{id}/operations/revert",
@@ -599,7 +656,12 @@ func (a *Client) RevertDiskSnapshot(params *RevertDiskSnapshotParams) (*RevertDi
 		Reader:             &RevertDiskSnapshotReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

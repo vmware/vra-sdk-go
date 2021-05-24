@@ -41,7 +41,6 @@ func (o *ResetMachineReader) ReadResponse(response runtime.ClientResponse, consu
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewResetMachineAccepted() *ResetMachineAccepted {
 	return &ResetMachineAccepted{}
 }
 
-/*ResetMachineAccepted handles this case with default header values.
+/* ResetMachineAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type ResetMachineAccepted struct {
 func (o *ResetMachineAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/reset][%d] resetMachineAccepted  %+v", 202, o.Payload)
 }
-
 func (o *ResetMachineAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewResetMachineForbidden() *ResetMachineForbidden {
 	return &ResetMachineForbidden{}
 }
 
-/*ResetMachineForbidden handles this case with default header values.
+/* ResetMachineForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type ResetMachineForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *ResetMachineForbidden) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/reset][%d] resetMachineForbidden ", 403)
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/reset][%d] resetMachineForbidden  %+v", 403, o.Payload)
+}
+func (o *ResetMachineForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *ResetMachineForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewResetMachineNotFound() *ResetMachineNotFound {
 	return &ResetMachineNotFound{}
 }
 
-/*ResetMachineNotFound handles this case with default header values.
+/* ResetMachineNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type ResetMachineNotFound struct {
 func (o *ResetMachineNotFound) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/reset][%d] resetMachineNotFound  %+v", 404, o.Payload)
 }
-
 func (o *ResetMachineNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -18,64 +18,79 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewValidateBlueprintUsingPOST1Params creates a new ValidateBlueprintUsingPOST1Params object
-// with the default values initialized.
+// NewValidateBlueprintUsingPOST1Params creates a new ValidateBlueprintUsingPOST1Params object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewValidateBlueprintUsingPOST1Params() *ValidateBlueprintUsingPOST1Params {
-	var ()
 	return &ValidateBlueprintUsingPOST1Params{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewValidateBlueprintUsingPOST1ParamsWithTimeout creates a new ValidateBlueprintUsingPOST1Params object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewValidateBlueprintUsingPOST1ParamsWithTimeout(timeout time.Duration) *ValidateBlueprintUsingPOST1Params {
-	var ()
 	return &ValidateBlueprintUsingPOST1Params{
-
 		timeout: timeout,
 	}
 }
 
 // NewValidateBlueprintUsingPOST1ParamsWithContext creates a new ValidateBlueprintUsingPOST1Params object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewValidateBlueprintUsingPOST1ParamsWithContext(ctx context.Context) *ValidateBlueprintUsingPOST1Params {
-	var ()
 	return &ValidateBlueprintUsingPOST1Params{
-
 		Context: ctx,
 	}
 }
 
 // NewValidateBlueprintUsingPOST1ParamsWithHTTPClient creates a new ValidateBlueprintUsingPOST1Params object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewValidateBlueprintUsingPOST1ParamsWithHTTPClient(client *http.Client) *ValidateBlueprintUsingPOST1Params {
-	var ()
 	return &ValidateBlueprintUsingPOST1Params{
 		HTTPClient: client,
 	}
 }
 
-/*ValidateBlueprintUsingPOST1Params contains all the parameters to send to the API endpoint
-for the validate blueprint using p o s t 1 operation typically these are written to a http.Request
+/* ValidateBlueprintUsingPOST1Params contains all the parameters to send to the API endpoint
+   for the validate blueprint using p o s t 1 operation.
+
+   Typically these are written to a http.Request.
 */
 type ValidateBlueprintUsingPOST1Params struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about
 	*/
 	APIVersion *string
-	/*Request
-	  request
 
+	/* Request.
+
+	   request
 	*/
 	Request *models.BlueprintValidationRequest
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the validate blueprint using p o s t 1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ValidateBlueprintUsingPOST1Params) WithDefaults() *ValidateBlueprintUsingPOST1Params {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the validate blueprint using p o s t 1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ValidateBlueprintUsingPOST1Params) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the validate blueprint using p o s t 1 params
@@ -145,18 +160,18 @@ func (o *ValidateBlueprintUsingPOST1Params) WriteToRequest(r runtime.ClientReque
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
-
 	if o.Request != nil {
 		if err := r.SetBodyParam(o.Request); err != nil {
 			return err

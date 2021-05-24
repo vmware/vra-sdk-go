@@ -41,7 +41,6 @@ func (o *SuspendMachineReader) ReadResponse(response runtime.ClientResponse, con
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewSuspendMachineAccepted() *SuspendMachineAccepted {
 	return &SuspendMachineAccepted{}
 }
 
-/*SuspendMachineAccepted handles this case with default header values.
+/* SuspendMachineAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type SuspendMachineAccepted struct {
 func (o *SuspendMachineAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/suspend][%d] suspendMachineAccepted  %+v", 202, o.Payload)
 }
-
 func (o *SuspendMachineAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewSuspendMachineForbidden() *SuspendMachineForbidden {
 	return &SuspendMachineForbidden{}
 }
 
-/*SuspendMachineForbidden handles this case with default header values.
+/* SuspendMachineForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type SuspendMachineForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *SuspendMachineForbidden) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/suspend][%d] suspendMachineForbidden ", 403)
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/suspend][%d] suspendMachineForbidden  %+v", 403, o.Payload)
+}
+func (o *SuspendMachineForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *SuspendMachineForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewSuspendMachineNotFound() *SuspendMachineNotFound {
 	return &SuspendMachineNotFound{}
 }
 
-/*SuspendMachineNotFound handles this case with default header values.
+/* SuspendMachineNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type SuspendMachineNotFound struct {
 func (o *SuspendMachineNotFound) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/suspend][%d] suspendMachineNotFound  %+v", 404, o.Payload)
 }
-
 func (o *SuspendMachineNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

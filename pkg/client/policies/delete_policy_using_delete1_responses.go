@@ -26,7 +26,6 @@ func (o *DeletePolicyUsingDELETE1Reader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -37,7 +36,7 @@ func NewDeletePolicyUsingDELETE1NoContent() *DeletePolicyUsingDELETE1NoContent {
 	return &DeletePolicyUsingDELETE1NoContent{}
 }
 
-/*DeletePolicyUsingDELETE1NoContent handles this case with default header values.
+/* DeletePolicyUsingDELETE1NoContent describes a response with status code 204, with default header values.
 
 No Content
 */

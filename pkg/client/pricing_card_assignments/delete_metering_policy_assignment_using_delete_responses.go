@@ -41,7 +41,6 @@ func (o *DeleteMeteringPolicyAssignmentUsingDELETEReader) ReadResponse(response 
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewDeleteMeteringPolicyAssignmentUsingDELETEOK() *DeleteMeteringPolicyAssig
 	return &DeleteMeteringPolicyAssignmentUsingDELETEOK{}
 }
 
-/*DeleteMeteringPolicyAssignmentUsingDELETEOK handles this case with default header values.
+/* DeleteMeteringPolicyAssignmentUsingDELETEOK describes a response with status code 200, with default header values.
 
 No Content
 */
@@ -73,7 +72,7 @@ func NewDeleteMeteringPolicyAssignmentUsingDELETEUnauthorized() *DeleteMeteringP
 	return &DeleteMeteringPolicyAssignmentUsingDELETEUnauthorized{}
 }
 
-/*DeleteMeteringPolicyAssignmentUsingDELETEUnauthorized handles this case with default header values.
+/* DeleteMeteringPolicyAssignmentUsingDELETEUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -94,7 +93,7 @@ func NewDeleteMeteringPolicyAssignmentUsingDELETENotFound() *DeleteMeteringPolic
 	return &DeleteMeteringPolicyAssignmentUsingDELETENotFound{}
 }
 
-/*DeleteMeteringPolicyAssignmentUsingDELETENotFound handles this case with default header values.
+/* DeleteMeteringPolicyAssignmentUsingDELETENotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -105,7 +104,6 @@ type DeleteMeteringPolicyAssignmentUsingDELETENotFound struct {
 func (o *DeleteMeteringPolicyAssignmentUsingDELETENotFound) Error() string {
 	return fmt.Sprintf("[DELETE /price/api/private/pricing-card-assignments/{id}][%d] deleteMeteringPolicyAssignmentUsingDELETENotFound  %+v", 404, o.Payload)
 }
-
 func (o *DeleteMeteringPolicyAssignmentUsingDELETENotFound) GetPayload() *models.Error {
 	return o.Payload
 }

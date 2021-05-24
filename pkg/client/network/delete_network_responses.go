@@ -35,7 +35,6 @@ func (o *DeleteNetworkReader) ReadResponse(response runtime.ClientResponse, cons
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewDeleteNetworkAccepted() *DeleteNetworkAccepted {
 	return &DeleteNetworkAccepted{}
 }
 
-/*DeleteNetworkAccepted handles this case with default header values.
+/* DeleteNetworkAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -57,7 +56,6 @@ type DeleteNetworkAccepted struct {
 func (o *DeleteNetworkAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/networks/{id}][%d] deleteNetworkAccepted  %+v", 202, o.Payload)
 }
-
 func (o *DeleteNetworkAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -79,18 +77,29 @@ func NewDeleteNetworkForbidden() *DeleteNetworkForbidden {
 	return &DeleteNetworkForbidden{}
 }
 
-/*DeleteNetworkForbidden handles this case with default header values.
+/* DeleteNetworkForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type DeleteNetworkForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *DeleteNetworkForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/networks/{id}][%d] deleteNetworkForbidden ", 403)
+	return fmt.Sprintf("[DELETE /iaas/api/networks/{id}][%d] deleteNetworkForbidden  %+v", 403, o.Payload)
+}
+func (o *DeleteNetworkForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *DeleteNetworkForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

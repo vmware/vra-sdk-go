@@ -25,23 +25,26 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	ChangeMeteringAssignmentStrategyUsingPATCH(params *ChangeMeteringAssignmentStrategyUsingPATCHParams) (*ChangeMeteringAssignmentStrategyUsingPATCHOK, error)
+	ChangeMeteringAssignmentStrategyUsingPATCH(params *ChangeMeteringAssignmentStrategyUsingPATCHParams, opts ...ClientOption) (*ChangeMeteringAssignmentStrategyUsingPATCHOK, error)
 
-	CreateMeteringAssignmentStrategyUsingPOST(params *CreateMeteringAssignmentStrategyUsingPOSTParams) (*CreateMeteringAssignmentStrategyUsingPOSTOK, *CreateMeteringAssignmentStrategyUsingPOSTCreated, error)
+	CreateMeteringAssignmentStrategyUsingPOST(params *CreateMeteringAssignmentStrategyUsingPOSTParams, opts ...ClientOption) (*CreateMeteringAssignmentStrategyUsingPOSTOK, *CreateMeteringAssignmentStrategyUsingPOSTCreated, error)
 
-	CreateMeteringPolicyAssignmentUsingPOST(params *CreateMeteringPolicyAssignmentUsingPOSTParams) (*CreateMeteringPolicyAssignmentUsingPOSTOK, *CreateMeteringPolicyAssignmentUsingPOSTCreated, error)
+	CreateMeteringPolicyAssignmentUsingPOST(params *CreateMeteringPolicyAssignmentUsingPOSTParams, opts ...ClientOption) (*CreateMeteringPolicyAssignmentUsingPOSTOK, *CreateMeteringPolicyAssignmentUsingPOSTCreated, error)
 
-	DeleteMeteringPolicyAssignmentUsingDELETE(params *DeleteMeteringPolicyAssignmentUsingDELETEParams) (*DeleteMeteringPolicyAssignmentUsingDELETEOK, error)
+	DeleteMeteringPolicyAssignmentUsingDELETE(params *DeleteMeteringPolicyAssignmentUsingDELETEParams, opts ...ClientOption) (*DeleteMeteringPolicyAssignmentUsingDELETEOK, error)
 
-	GetAllMeteringPolicyAssignmentsUsingGET(params *GetAllMeteringPolicyAssignmentsUsingGETParams) (*GetAllMeteringPolicyAssignmentsUsingGETOK, error)
+	GetAllMeteringPolicyAssignmentsUsingGET(params *GetAllMeteringPolicyAssignmentsUsingGETParams, opts ...ClientOption) (*GetAllMeteringPolicyAssignmentsUsingGETOK, error)
 
-	GetMeteringAssignmentStrategyUsingGET(params *GetMeteringAssignmentStrategyUsingGETParams) (*GetMeteringAssignmentStrategyUsingGETOK, error)
+	GetMeteringAssignmentStrategyUsingGET(params *GetMeteringAssignmentStrategyUsingGETParams, opts ...ClientOption) (*GetMeteringAssignmentStrategyUsingGETOK, error)
 
-	GetMeteringPolicyAssignmentUsingGET(params *GetMeteringPolicyAssignmentUsingGETParams) (*GetMeteringPolicyAssignmentUsingGETOK, error)
+	GetMeteringPolicyAssignmentUsingGET(params *GetMeteringPolicyAssignmentUsingGETParams, opts ...ClientOption) (*GetMeteringPolicyAssignmentUsingGETOK, error)
 
-	PatchMeteringPolicyAssignmentUsingPATCH(params *PatchMeteringPolicyAssignmentUsingPATCHParams) (*PatchMeteringPolicyAssignmentUsingPATCHOK, error)
+	PatchMeteringPolicyAssignmentUsingPATCH(params *PatchMeteringPolicyAssignmentUsingPATCHParams, opts ...ClientOption) (*PatchMeteringPolicyAssignmentUsingPATCHOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -49,13 +52,12 @@ type ClientService interface {
 /*
   ChangeMeteringAssignmentStrategyUsingPATCH updates the pricing card assignment strategy for the org
 */
-func (a *Client) ChangeMeteringAssignmentStrategyUsingPATCH(params *ChangeMeteringAssignmentStrategyUsingPATCHParams) (*ChangeMeteringAssignmentStrategyUsingPATCHOK, error) {
+func (a *Client) ChangeMeteringAssignmentStrategyUsingPATCH(params *ChangeMeteringAssignmentStrategyUsingPATCHParams, opts ...ClientOption) (*ChangeMeteringAssignmentStrategyUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewChangeMeteringAssignmentStrategyUsingPATCHParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "changeMeteringAssignmentStrategyUsingPATCH",
 		Method:             "PATCH",
 		PathPattern:        "/price/api/private/pricing-card-assignments/strategy",
@@ -66,7 +68,12 @@ func (a *Client) ChangeMeteringAssignmentStrategyUsingPATCH(params *ChangeMeteri
 		Reader:             &ChangeMeteringAssignmentStrategyUsingPATCHReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -85,13 +92,12 @@ func (a *Client) ChangeMeteringAssignmentStrategyUsingPATCH(params *ChangeMeteri
 
   Create a new pricing card assignment strategy based on request body and validate its field according to business rules.
 */
-func (a *Client) CreateMeteringAssignmentStrategyUsingPOST(params *CreateMeteringAssignmentStrategyUsingPOSTParams) (*CreateMeteringAssignmentStrategyUsingPOSTOK, *CreateMeteringAssignmentStrategyUsingPOSTCreated, error) {
+func (a *Client) CreateMeteringAssignmentStrategyUsingPOST(params *CreateMeteringAssignmentStrategyUsingPOSTParams, opts ...ClientOption) (*CreateMeteringAssignmentStrategyUsingPOSTOK, *CreateMeteringAssignmentStrategyUsingPOSTCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateMeteringAssignmentStrategyUsingPOSTParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createMeteringAssignmentStrategyUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/price/api/private/pricing-card-assignments/strategy",
@@ -102,7 +108,12 @@ func (a *Client) CreateMeteringAssignmentStrategyUsingPOST(params *CreateMeterin
 		Reader:             &CreateMeteringAssignmentStrategyUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -122,13 +133,12 @@ func (a *Client) CreateMeteringAssignmentStrategyUsingPOST(params *CreateMeterin
 
   Create a new pricing card policy assignment based on request body and validate its field according to business rules. Request body with ALL entityType will delete the older assignments for the given pricingCardId
 */
-func (a *Client) CreateMeteringPolicyAssignmentUsingPOST(params *CreateMeteringPolicyAssignmentUsingPOSTParams) (*CreateMeteringPolicyAssignmentUsingPOSTOK, *CreateMeteringPolicyAssignmentUsingPOSTCreated, error) {
+func (a *Client) CreateMeteringPolicyAssignmentUsingPOST(params *CreateMeteringPolicyAssignmentUsingPOSTParams, opts ...ClientOption) (*CreateMeteringPolicyAssignmentUsingPOSTOK, *CreateMeteringPolicyAssignmentUsingPOSTCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateMeteringPolicyAssignmentUsingPOSTParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createMeteringPolicyAssignmentUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/price/api/private/pricing-card-assignments",
@@ -139,7 +149,12 @@ func (a *Client) CreateMeteringPolicyAssignmentUsingPOST(params *CreateMeteringP
 		Reader:             &CreateMeteringPolicyAssignmentUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -159,13 +174,12 @@ func (a *Client) CreateMeteringPolicyAssignmentUsingPOST(params *CreateMeteringP
 
   Deletes the pricing card assignment with the specified id
 */
-func (a *Client) DeleteMeteringPolicyAssignmentUsingDELETE(params *DeleteMeteringPolicyAssignmentUsingDELETEParams) (*DeleteMeteringPolicyAssignmentUsingDELETEOK, error) {
+func (a *Client) DeleteMeteringPolicyAssignmentUsingDELETE(params *DeleteMeteringPolicyAssignmentUsingDELETEParams, opts ...ClientOption) (*DeleteMeteringPolicyAssignmentUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteMeteringPolicyAssignmentUsingDELETEParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteMeteringPolicyAssignmentUsingDELETE",
 		Method:             "DELETE",
 		PathPattern:        "/price/api/private/pricing-card-assignments/{id}",
@@ -176,7 +190,12 @@ func (a *Client) DeleteMeteringPolicyAssignmentUsingDELETE(params *DeleteMeterin
 		Reader:             &DeleteMeteringPolicyAssignmentUsingDELETEReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -195,13 +214,12 @@ func (a *Client) DeleteMeteringPolicyAssignmentUsingDELETE(params *DeleteMeterin
 
   Returns a paginated list of pricing card assignments
 */
-func (a *Client) GetAllMeteringPolicyAssignmentsUsingGET(params *GetAllMeteringPolicyAssignmentsUsingGETParams) (*GetAllMeteringPolicyAssignmentsUsingGETOK, error) {
+func (a *Client) GetAllMeteringPolicyAssignmentsUsingGET(params *GetAllMeteringPolicyAssignmentsUsingGETParams, opts ...ClientOption) (*GetAllMeteringPolicyAssignmentsUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAllMeteringPolicyAssignmentsUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getAllMeteringPolicyAssignmentsUsingGET",
 		Method:             "GET",
 		PathPattern:        "/price/api/private/pricing-card-assignments",
@@ -212,7 +230,12 @@ func (a *Client) GetAllMeteringPolicyAssignmentsUsingGET(params *GetAllMeteringP
 		Reader:             &GetAllMeteringPolicyAssignmentsUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -231,13 +254,12 @@ func (a *Client) GetAllMeteringPolicyAssignmentsUsingGET(params *GetAllMeteringP
 
   Returns a pricing card assignment strategy for the Org
 */
-func (a *Client) GetMeteringAssignmentStrategyUsingGET(params *GetMeteringAssignmentStrategyUsingGETParams) (*GetMeteringAssignmentStrategyUsingGETOK, error) {
+func (a *Client) GetMeteringAssignmentStrategyUsingGET(params *GetMeteringAssignmentStrategyUsingGETParams, opts ...ClientOption) (*GetMeteringAssignmentStrategyUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetMeteringAssignmentStrategyUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getMeteringAssignmentStrategyUsingGET",
 		Method:             "GET",
 		PathPattern:        "/price/api/private/pricing-card-assignments/strategy",
@@ -248,7 +270,12 @@ func (a *Client) GetMeteringAssignmentStrategyUsingGET(params *GetMeteringAssign
 		Reader:             &GetMeteringAssignmentStrategyUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -267,13 +294,12 @@ func (a *Client) GetMeteringAssignmentStrategyUsingGET(params *GetMeteringAssign
 
   Returns a pricing card assignments by id
 */
-func (a *Client) GetMeteringPolicyAssignmentUsingGET(params *GetMeteringPolicyAssignmentUsingGETParams) (*GetMeteringPolicyAssignmentUsingGETOK, error) {
+func (a *Client) GetMeteringPolicyAssignmentUsingGET(params *GetMeteringPolicyAssignmentUsingGETParams, opts ...ClientOption) (*GetMeteringPolicyAssignmentUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetMeteringPolicyAssignmentUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getMeteringPolicyAssignmentUsingGET",
 		Method:             "GET",
 		PathPattern:        "/price/api/private/pricing-card-assignments/{id}",
@@ -284,7 +310,12 @@ func (a *Client) GetMeteringPolicyAssignmentUsingGET(params *GetMeteringPolicyAs
 		Reader:             &GetMeteringPolicyAssignmentUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -301,13 +332,12 @@ func (a *Client) GetMeteringPolicyAssignmentUsingGET(params *GetMeteringPolicyAs
 /*
   PatchMeteringPolicyAssignmentUsingPATCH updates the pricing card assignment id with the supplied id request body with a l l entity type will delete the older assignments for the given pricing card Id
 */
-func (a *Client) PatchMeteringPolicyAssignmentUsingPATCH(params *PatchMeteringPolicyAssignmentUsingPATCHParams) (*PatchMeteringPolicyAssignmentUsingPATCHOK, error) {
+func (a *Client) PatchMeteringPolicyAssignmentUsingPATCH(params *PatchMeteringPolicyAssignmentUsingPATCHParams, opts ...ClientOption) (*PatchMeteringPolicyAssignmentUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPatchMeteringPolicyAssignmentUsingPATCHParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "patchMeteringPolicyAssignmentUsingPATCH",
 		Method:             "PATCH",
 		PathPattern:        "/price/api/private/pricing-card-assignments/{id}",
@@ -318,7 +348,12 @@ func (a *Client) PatchMeteringPolicyAssignmentUsingPATCH(params *PatchMeteringPo
 		Reader:             &PatchMeteringPolicyAssignmentUsingPATCHReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

@@ -17,85 +17,112 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGetDeploymentFiltersUsingGETParams creates a new GetDeploymentFiltersUsingGETParams object
-// with the default values initialized.
+// NewGetDeploymentFiltersUsingGETParams creates a new GetDeploymentFiltersUsingGETParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetDeploymentFiltersUsingGETParams() *GetDeploymentFiltersUsingGETParams {
-	var ()
 	return &GetDeploymentFiltersUsingGETParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetDeploymentFiltersUsingGETParamsWithTimeout creates a new GetDeploymentFiltersUsingGETParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetDeploymentFiltersUsingGETParamsWithTimeout(timeout time.Duration) *GetDeploymentFiltersUsingGETParams {
-	var ()
 	return &GetDeploymentFiltersUsingGETParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetDeploymentFiltersUsingGETParamsWithContext creates a new GetDeploymentFiltersUsingGETParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetDeploymentFiltersUsingGETParamsWithContext(ctx context.Context) *GetDeploymentFiltersUsingGETParams {
-	var ()
 	return &GetDeploymentFiltersUsingGETParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetDeploymentFiltersUsingGETParamsWithHTTPClient creates a new GetDeploymentFiltersUsingGETParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetDeploymentFiltersUsingGETParamsWithHTTPClient(client *http.Client) *GetDeploymentFiltersUsingGETParams {
-	var ()
 	return &GetDeploymentFiltersUsingGETParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetDeploymentFiltersUsingGETParams contains all the parameters to send to the API endpoint
-for the get deployment filters using g e t operation typically these are written to a http.Request
+/* GetDeploymentFiltersUsingGETParams contains all the parameters to send to the API endpoint
+   for the get deployment filters using g e t operation.
+
+   Typically these are written to a http.Request.
 */
 type GetDeploymentFiltersUsingGETParams struct {
 
-	/*ISO3Country*/
+	// ISO3Country.
 	ISO3Country *string
-	/*ISO3Language*/
-	ISO3Language *string
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 
+	// ISO3Language.
+	ISO3Language *string
+
+	/* APIVersion.
+
+	   The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 	*/
 	APIVersion *string
-	/*Country*/
+
+	// Country.
 	Country *string
-	/*DisplayCountry*/
+
+	// DisplayCountry.
 	DisplayCountry *string
-	/*DisplayLanguage*/
+
+	// DisplayLanguage.
 	DisplayLanguage *string
-	/*DisplayName*/
+
+	// DisplayName.
 	DisplayName *string
-	/*DisplayScript*/
+
+	// DisplayScript.
 	DisplayScript *string
-	/*DisplayVariant*/
+
+	// DisplayVariant.
 	DisplayVariant *string
-	/*Language*/
+
+	// Language.
 	Language *string
-	/*Script*/
+
+	// Script.
 	Script *string
-	/*UnicodeLocaleAttributes*/
+
+	// UnicodeLocaleAttributes.
 	UnicodeLocaleAttributes []string
-	/*UnicodeLocaleKeys*/
+
+	// UnicodeLocaleKeys.
 	UnicodeLocaleKeys []string
-	/*Variant*/
+
+	// Variant.
 	Variant *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get deployment filters using get params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetDeploymentFiltersUsingGETParams) WithDefaults() *GetDeploymentFiltersUsingGETParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get deployment filters using get params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetDeploymentFiltersUsingGETParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get deployment filters using get params
@@ -297,212 +324,264 @@ func (o *GetDeploymentFiltersUsingGETParams) WriteToRequest(r runtime.ClientRequ
 
 		// query param ISO3Country
 		var qrISO3Country string
+
 		if o.ISO3Country != nil {
 			qrISO3Country = *o.ISO3Country
 		}
 		qISO3Country := qrISO3Country
 		if qISO3Country != "" {
+
 			if err := r.SetQueryParam("ISO3Country", qISO3Country); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.ISO3Language != nil {
 
 		// query param ISO3Language
 		var qrISO3Language string
+
 		if o.ISO3Language != nil {
 			qrISO3Language = *o.ISO3Language
 		}
 		qISO3Language := qrISO3Language
 		if qISO3Language != "" {
+
 			if err := r.SetQueryParam("ISO3Language", qISO3Language); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.APIVersion != nil {
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Country != nil {
 
 		// query param country
 		var qrCountry string
+
 		if o.Country != nil {
 			qrCountry = *o.Country
 		}
 		qCountry := qrCountry
 		if qCountry != "" {
+
 			if err := r.SetQueryParam("country", qCountry); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.DisplayCountry != nil {
 
 		// query param displayCountry
 		var qrDisplayCountry string
+
 		if o.DisplayCountry != nil {
 			qrDisplayCountry = *o.DisplayCountry
 		}
 		qDisplayCountry := qrDisplayCountry
 		if qDisplayCountry != "" {
+
 			if err := r.SetQueryParam("displayCountry", qDisplayCountry); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.DisplayLanguage != nil {
 
 		// query param displayLanguage
 		var qrDisplayLanguage string
+
 		if o.DisplayLanguage != nil {
 			qrDisplayLanguage = *o.DisplayLanguage
 		}
 		qDisplayLanguage := qrDisplayLanguage
 		if qDisplayLanguage != "" {
+
 			if err := r.SetQueryParam("displayLanguage", qDisplayLanguage); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.DisplayName != nil {
 
 		// query param displayName
 		var qrDisplayName string
+
 		if o.DisplayName != nil {
 			qrDisplayName = *o.DisplayName
 		}
 		qDisplayName := qrDisplayName
 		if qDisplayName != "" {
+
 			if err := r.SetQueryParam("displayName", qDisplayName); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.DisplayScript != nil {
 
 		// query param displayScript
 		var qrDisplayScript string
+
 		if o.DisplayScript != nil {
 			qrDisplayScript = *o.DisplayScript
 		}
 		qDisplayScript := qrDisplayScript
 		if qDisplayScript != "" {
+
 			if err := r.SetQueryParam("displayScript", qDisplayScript); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.DisplayVariant != nil {
 
 		// query param displayVariant
 		var qrDisplayVariant string
+
 		if o.DisplayVariant != nil {
 			qrDisplayVariant = *o.DisplayVariant
 		}
 		qDisplayVariant := qrDisplayVariant
 		if qDisplayVariant != "" {
+
 			if err := r.SetQueryParam("displayVariant", qDisplayVariant); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Language != nil {
 
 		// query param language
 		var qrLanguage string
+
 		if o.Language != nil {
 			qrLanguage = *o.Language
 		}
 		qLanguage := qrLanguage
 		if qLanguage != "" {
+
 			if err := r.SetQueryParam("language", qLanguage); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Script != nil {
 
 		// query param script
 		var qrScript string
+
 		if o.Script != nil {
 			qrScript = *o.Script
 		}
 		qScript := qrScript
 		if qScript != "" {
+
 			if err := r.SetQueryParam("script", qScript); err != nil {
 				return err
 			}
 		}
-
 	}
 
-	valuesUnicodeLocaleAttributes := o.UnicodeLocaleAttributes
+	if o.UnicodeLocaleAttributes != nil {
 
-	joinedUnicodeLocaleAttributes := swag.JoinByFormat(valuesUnicodeLocaleAttributes, "multi")
-	// query array param unicodeLocaleAttributes
-	if err := r.SetQueryParam("unicodeLocaleAttributes", joinedUnicodeLocaleAttributes...); err != nil {
-		return err
+		// binding items for unicodeLocaleAttributes
+		joinedUnicodeLocaleAttributes := o.bindParamUnicodeLocaleAttributes(reg)
+
+		// query array param unicodeLocaleAttributes
+		if err := r.SetQueryParam("unicodeLocaleAttributes", joinedUnicodeLocaleAttributes...); err != nil {
+			return err
+		}
 	}
 
-	valuesUnicodeLocaleKeys := o.UnicodeLocaleKeys
+	if o.UnicodeLocaleKeys != nil {
 
-	joinedUnicodeLocaleKeys := swag.JoinByFormat(valuesUnicodeLocaleKeys, "multi")
-	// query array param unicodeLocaleKeys
-	if err := r.SetQueryParam("unicodeLocaleKeys", joinedUnicodeLocaleKeys...); err != nil {
-		return err
+		// binding items for unicodeLocaleKeys
+		joinedUnicodeLocaleKeys := o.bindParamUnicodeLocaleKeys(reg)
+
+		// query array param unicodeLocaleKeys
+		if err := r.SetQueryParam("unicodeLocaleKeys", joinedUnicodeLocaleKeys...); err != nil {
+			return err
+		}
 	}
 
 	if o.Variant != nil {
 
 		// query param variant
 		var qrVariant string
+
 		if o.Variant != nil {
 			qrVariant = *o.Variant
 		}
 		qVariant := qrVariant
 		if qVariant != "" {
+
 			if err := r.SetQueryParam("variant", qVariant); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
+}
+
+// bindParamGetDeploymentFiltersUsingGET binds the parameter unicodeLocaleAttributes
+func (o *GetDeploymentFiltersUsingGETParams) bindParamUnicodeLocaleAttributes(formats strfmt.Registry) []string {
+	unicodeLocaleAttributesIR := o.UnicodeLocaleAttributes
+
+	var unicodeLocaleAttributesIC []string
+	for _, unicodeLocaleAttributesIIR := range unicodeLocaleAttributesIR { // explode []string
+
+		unicodeLocaleAttributesIIV := unicodeLocaleAttributesIIR // string as string
+		unicodeLocaleAttributesIC = append(unicodeLocaleAttributesIC, unicodeLocaleAttributesIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	unicodeLocaleAttributesIS := swag.JoinByFormat(unicodeLocaleAttributesIC, "multi")
+
+	return unicodeLocaleAttributesIS
+}
+
+// bindParamGetDeploymentFiltersUsingGET binds the parameter unicodeLocaleKeys
+func (o *GetDeploymentFiltersUsingGETParams) bindParamUnicodeLocaleKeys(formats strfmt.Registry) []string {
+	unicodeLocaleKeysIR := o.UnicodeLocaleKeys
+
+	var unicodeLocaleKeysIC []string
+	for _, unicodeLocaleKeysIIR := range unicodeLocaleKeysIR { // explode []string
+
+		unicodeLocaleKeysIIV := unicodeLocaleKeysIIR // string as string
+		unicodeLocaleKeysIC = append(unicodeLocaleKeysIC, unicodeLocaleKeysIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	unicodeLocaleKeysIS := swag.JoinByFormat(unicodeLocaleKeysIC, "multi")
+
+	return unicodeLocaleKeysIS
 }

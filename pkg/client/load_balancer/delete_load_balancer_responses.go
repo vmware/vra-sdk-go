@@ -35,7 +35,6 @@ func (o *DeleteLoadBalancerReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewDeleteLoadBalancerAccepted() *DeleteLoadBalancerAccepted {
 	return &DeleteLoadBalancerAccepted{}
 }
 
-/*DeleteLoadBalancerAccepted handles this case with default header values.
+/* DeleteLoadBalancerAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -57,7 +56,6 @@ type DeleteLoadBalancerAccepted struct {
 func (o *DeleteLoadBalancerAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/load-balancers/{id}][%d] deleteLoadBalancerAccepted  %+v", 202, o.Payload)
 }
-
 func (o *DeleteLoadBalancerAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -79,18 +77,29 @@ func NewDeleteLoadBalancerForbidden() *DeleteLoadBalancerForbidden {
 	return &DeleteLoadBalancerForbidden{}
 }
 
-/*DeleteLoadBalancerForbidden handles this case with default header values.
+/* DeleteLoadBalancerForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type DeleteLoadBalancerForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *DeleteLoadBalancerForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/load-balancers/{id}][%d] deleteLoadBalancerForbidden ", 403)
+	return fmt.Sprintf("[DELETE /iaas/api/load-balancers/{id}][%d] deleteLoadBalancerForbidden  %+v", 403, o.Payload)
+}
+func (o *DeleteLoadBalancerForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *DeleteLoadBalancerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

@@ -16,59 +16,73 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetExternalIPBlocksParams creates a new GetExternalIPBlocksParams object
-// with the default values initialized.
+// NewGetExternalIPBlocksParams creates a new GetExternalIPBlocksParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetExternalIPBlocksParams() *GetExternalIPBlocksParams {
-	var ()
 	return &GetExternalIPBlocksParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetExternalIPBlocksParamsWithTimeout creates a new GetExternalIPBlocksParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetExternalIPBlocksParamsWithTimeout(timeout time.Duration) *GetExternalIPBlocksParams {
-	var ()
 	return &GetExternalIPBlocksParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetExternalIPBlocksParamsWithContext creates a new GetExternalIPBlocksParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetExternalIPBlocksParamsWithContext(ctx context.Context) *GetExternalIPBlocksParams {
-	var ()
 	return &GetExternalIPBlocksParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetExternalIPBlocksParamsWithHTTPClient creates a new GetExternalIPBlocksParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetExternalIPBlocksParamsWithHTTPClient(client *http.Client) *GetExternalIPBlocksParams {
-	var ()
 	return &GetExternalIPBlocksParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetExternalIPBlocksParams contains all the parameters to send to the API endpoint
-for the get external Ip blocks operation typically these are written to a http.Request
+/* GetExternalIPBlocksParams contains all the parameters to send to the API endpoint
+   for the get external Ip blocks operation.
+
+   Typically these are written to a http.Request.
 */
 type GetExternalIPBlocksParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get external Ip blocks params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetExternalIPBlocksParams) WithDefaults() *GetExternalIPBlocksParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get external Ip blocks params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetExternalIPBlocksParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get external Ip blocks params
@@ -127,16 +141,17 @@ func (o *GetExternalIPBlocksParams) WriteToRequest(r runtime.ClientRequest, reg 
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

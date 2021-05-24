@@ -25,9 +25,12 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetFabricAwsVolumeTypes(params *GetFabricAwsVolumeTypesParams) (*GetFabricAwsVolumeTypesOK, error)
+	GetFabricAwsVolumeTypes(params *GetFabricAwsVolumeTypesParams, opts ...ClientOption) (*GetFabricAwsVolumeTypesOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -37,13 +40,12 @@ type ClientService interface {
 
   Get all fabric AWS volume types.
 */
-func (a *Client) GetFabricAwsVolumeTypes(params *GetFabricAwsVolumeTypesParams) (*GetFabricAwsVolumeTypesOK, error) {
+func (a *Client) GetFabricAwsVolumeTypes(params *GetFabricAwsVolumeTypesParams, opts ...ClientOption) (*GetFabricAwsVolumeTypesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetFabricAwsVolumeTypesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getFabricAwsVolumeTypes",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/fabric-aws-volume-types",
@@ -54,7 +56,12 @@ func (a *Client) GetFabricAwsVolumeTypes(params *GetFabricAwsVolumeTypesParams) 
 		Reader:             &GetFabricAwsVolumeTypesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

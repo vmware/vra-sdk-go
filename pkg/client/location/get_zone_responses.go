@@ -41,7 +41,6 @@ func (o *GetZoneReader) ReadResponse(response runtime.ClientResponse, consumer r
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetZoneOK() *GetZoneOK {
 	return &GetZoneOK{}
 }
 
-/*GetZoneOK handles this case with default header values.
+/* GetZoneOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type GetZoneOK struct {
 func (o *GetZoneOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/zones/{id}][%d] getZoneOK  %+v", 200, o.Payload)
 }
-
 func (o *GetZoneOK) GetPayload() *models.Zone {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewGetZoneForbidden() *GetZoneForbidden {
 	return &GetZoneForbidden{}
 }
 
-/*GetZoneForbidden handles this case with default header values.
+/* GetZoneForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetZoneForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetZoneForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/zones/{id}][%d] getZoneForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/zones/{id}][%d] getZoneForbidden  %+v", 403, o.Payload)
+}
+func (o *GetZoneForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetZoneForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewGetZoneNotFound() *GetZoneNotFound {
 	return &GetZoneNotFound{}
 }
 
-/*GetZoneNotFound handles this case with default header values.
+/* GetZoneNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type GetZoneNotFound struct {
 func (o *GetZoneNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/zones/{id}][%d] getZoneNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetZoneNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

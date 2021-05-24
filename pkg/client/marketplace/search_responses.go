@@ -35,7 +35,6 @@ func (o *SearchReader) ReadResponse(response runtime.ClientResponse, consumer ru
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewSearchOK() *SearchOK {
 	return &SearchOK{}
 }
 
-/*SearchOK handles this case with default header values.
+/* SearchOK describes a response with status code 200, with default header values.
 
 Search result
 */
@@ -57,7 +56,6 @@ type SearchOK struct {
 func (o *SearchOK) Error() string {
 	return fmt.Sprintf("[GET /content/api/marketplace/sources/{sourceId}/contents][%d] searchOK  %+v", 200, o.Payload)
 }
-
 func (o *SearchOK) GetPayload() *models.MarketplaceContents {
 	return o.Payload
 }
@@ -79,7 +77,7 @@ func NewSearchNotFound() *SearchNotFound {
 	return &SearchNotFound{}
 }
 
-/*SearchNotFound handles this case with default header values.
+/* SearchNotFound describes a response with status code 404, with default header values.
 
 Source not found
 */
@@ -90,7 +88,6 @@ type SearchNotFound struct {
 func (o *SearchNotFound) Error() string {
 	return fmt.Sprintf("[GET /content/api/marketplace/sources/{sourceId}/contents][%d] searchNotFound  %+v", 404, o.Payload)
 }
-
 func (o *SearchNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

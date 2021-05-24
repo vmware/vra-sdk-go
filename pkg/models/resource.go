@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -98,7 +99,6 @@ func (m *Resource) Validate(formats strfmt.Registry) error {
 }
 
 func (m *Resource) validateCreatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CreatedAt) { // not required
 		return nil
 	}
@@ -111,7 +111,6 @@ func (m *Resource) validateCreatedAt(formats strfmt.Registry) error {
 }
 
 func (m *Resource) validateExpense(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Expense) { // not required
 		return nil
 	}
@@ -129,7 +128,6 @@ func (m *Resource) validateExpense(formats strfmt.Registry) error {
 }
 
 func (m *Resource) validateID(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ID) { // not required
 		return nil
 	}
@@ -183,7 +181,6 @@ func (m *Resource) validateStateEnum(path, location string, value string) error 
 }
 
 func (m *Resource) validateState(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.State) { // not required
 		return nil
 	}
@@ -229,7 +226,6 @@ func (m *Resource) validateSyncStatusEnum(path, location string, value string) e
 }
 
 func (m *Resource) validateSyncStatus(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.SyncStatus) { // not required
 		return nil
 	}
@@ -246,6 +242,34 @@ func (m *Resource) validateType(formats strfmt.Registry) error {
 
 	if err := validate.Required("type", "body", m.Type); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this resource based on the context it is used
+func (m *Resource) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateExpense(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *Resource) contextValidateExpense(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Expense != nil {
+		if err := m.Expense.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("expense")
+			}
+			return err
+		}
 	}
 
 	return nil

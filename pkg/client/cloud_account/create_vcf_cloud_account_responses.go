@@ -41,7 +41,6 @@ func (o *CreateVcfCloudAccountReader) ReadResponse(response runtime.ClientRespon
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewCreateVcfCloudAccountCreated() *CreateVcfCloudAccountCreated {
 	return &CreateVcfCloudAccountCreated{}
 }
 
-/*CreateVcfCloudAccountCreated handles this case with default header values.
+/* CreateVcfCloudAccountCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type CreateVcfCloudAccountCreated struct {
 func (o *CreateVcfCloudAccountCreated) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vcf][%d] createVcfCloudAccountCreated  %+v", 201, o.Payload)
 }
-
 func (o *CreateVcfCloudAccountCreated) GetPayload() *models.CloudAccountVcf {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewCreateVcfCloudAccountBadRequest() *CreateVcfCloudAccountBadRequest {
 	return &CreateVcfCloudAccountBadRequest{}
 }
 
-/*CreateVcfCloudAccountBadRequest handles this case with default header values.
+/* CreateVcfCloudAccountBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -96,7 +94,6 @@ type CreateVcfCloudAccountBadRequest struct {
 func (o *CreateVcfCloudAccountBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vcf][%d] createVcfCloudAccountBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateVcfCloudAccountBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -118,18 +115,29 @@ func NewCreateVcfCloudAccountForbidden() *CreateVcfCloudAccountForbidden {
 	return &CreateVcfCloudAccountForbidden{}
 }
 
-/*CreateVcfCloudAccountForbidden handles this case with default header values.
+/* CreateVcfCloudAccountForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type CreateVcfCloudAccountForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *CreateVcfCloudAccountForbidden) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vcf][%d] createVcfCloudAccountForbidden ", 403)
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vcf][%d] createVcfCloudAccountForbidden  %+v", 403, o.Payload)
+}
+func (o *CreateVcfCloudAccountForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *CreateVcfCloudAccountForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

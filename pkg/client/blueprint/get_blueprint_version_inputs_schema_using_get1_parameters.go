@@ -16,69 +16,85 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetBlueprintVersionInputsSchemaUsingGET1Params creates a new GetBlueprintVersionInputsSchemaUsingGET1Params object
-// with the default values initialized.
+// NewGetBlueprintVersionInputsSchemaUsingGET1Params creates a new GetBlueprintVersionInputsSchemaUsingGET1Params object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetBlueprintVersionInputsSchemaUsingGET1Params() *GetBlueprintVersionInputsSchemaUsingGET1Params {
-	var ()
 	return &GetBlueprintVersionInputsSchemaUsingGET1Params{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetBlueprintVersionInputsSchemaUsingGET1ParamsWithTimeout creates a new GetBlueprintVersionInputsSchemaUsingGET1Params object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetBlueprintVersionInputsSchemaUsingGET1ParamsWithTimeout(timeout time.Duration) *GetBlueprintVersionInputsSchemaUsingGET1Params {
-	var ()
 	return &GetBlueprintVersionInputsSchemaUsingGET1Params{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetBlueprintVersionInputsSchemaUsingGET1ParamsWithContext creates a new GetBlueprintVersionInputsSchemaUsingGET1Params object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetBlueprintVersionInputsSchemaUsingGET1ParamsWithContext(ctx context.Context) *GetBlueprintVersionInputsSchemaUsingGET1Params {
-	var ()
 	return &GetBlueprintVersionInputsSchemaUsingGET1Params{
-
 		Context: ctx,
 	}
 }
 
 // NewGetBlueprintVersionInputsSchemaUsingGET1ParamsWithHTTPClient creates a new GetBlueprintVersionInputsSchemaUsingGET1Params object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetBlueprintVersionInputsSchemaUsingGET1ParamsWithHTTPClient(client *http.Client) *GetBlueprintVersionInputsSchemaUsingGET1Params {
-	var ()
 	return &GetBlueprintVersionInputsSchemaUsingGET1Params{
 		HTTPClient: client,
 	}
 }
 
-/*GetBlueprintVersionInputsSchemaUsingGET1Params contains all the parameters to send to the API endpoint
-for the get blueprint version inputs schema using get1 operation typically these are written to a http.Request
+/* GetBlueprintVersionInputsSchemaUsingGET1Params contains all the parameters to send to the API endpoint
+   for the get blueprint version inputs schema using get1 operation.
+
+   Typically these are written to a http.Request.
 */
 type GetBlueprintVersionInputsSchemaUsingGET1Params struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about
 	*/
 	APIVersion *string
-	/*BlueprintID
-	  blueprintId
 
+	/* BlueprintID.
+
+	   blueprintId
 	*/
 	BlueprintID string
-	/*Version
-	  version
 
+	/* Version.
+
+	   version
 	*/
 	Version string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get blueprint version inputs schema using get1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetBlueprintVersionInputsSchemaUsingGET1Params) WithDefaults() *GetBlueprintVersionInputsSchemaUsingGET1Params {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get blueprint version inputs schema using get1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetBlueprintVersionInputsSchemaUsingGET1Params) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get blueprint version inputs schema using get1 params
@@ -159,16 +175,17 @@ func (o *GetBlueprintVersionInputsSchemaUsingGET1Params) WriteToRequest(r runtim
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param blueprintId

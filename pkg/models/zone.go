@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -24,49 +25,64 @@ type Zone struct {
 	Links map[string]Href `json:"_links"`
 
 	// Cloud account this zone belongs to.
+	// Example: 9e49
 	CloudAccountID string `json:"cloudAccountId,omitempty"`
 
 	// Date when the entity was created. The date is in ISO 8601 and UTC.
+	// Example: 2012-09-27
 	CreatedAt string `json:"createdAt,omitempty"`
 
 	// A list of key value pair of properties that will  be used
+	// Example: {\"__isDefaultPlacementZone\": \"true\"}
 	CustomProperties map[string]string `json:"customProperties,omitempty"`
 
 	// A human-friendly description.
+	// Example: my-description
 	Description string `json:"description,omitempty"`
 
 	// The id of the region for which this zone is defined
+	// Example: us-east-1
 	ExternalRegionID string `json:"externalRegionId,omitempty"`
 
 	// The folder relative path to the datacenter where resources are deployed to. (only applicable for vSphere cloud zones)
+	// Example: test-folder
 	Folder string `json:"folder,omitempty"`
 
 	// The id of this resource instance
+	// Example: 9e49
 	// Required: true
 	ID *string `json:"id"`
 
 	// A human-friendly name used as an identifier in APIs that support this option.
+	// Example: my-name
 	Name string `json:"name,omitempty"`
 
 	// The id of the organization this entity belongs to.
+	// Example: 9e49
 	OrgID string `json:"orgId,omitempty"`
 
 	// This field is deprecated. Use orgId instead. The id of the organization this entity belongs to.
+	// Example: deprecated
 	OrganizationID string `json:"organizationId,omitempty"`
 
 	// Email of the user that owns the entity.
+	// Example: csp@vmware.com
 	Owner string `json:"owner,omitempty"`
 
 	// The placement policy for the zone.
+	// Example: DEFAULT, SPREAD, BINPACK
 	PlacementPolicy string `json:"placementPolicy,omitempty"`
 
 	// A set of tag keys and optional values that were set on this placement.
+	// Example: [ { \"key\" : \"dev\", \"value\": \" \" } ]
 	Tags []*Tag `json:"tags"`
 
 	// A set of tag keys and optional values for compute resource filtering.
+	// Example: [ { \"key\" : \"compliance\", \"value\": \"pci\" } ]
 	TagsToMatch []*Tag `json:"tagsToMatch"`
 
 	// Date when the entity was last updated. The date is ISO 8601 and UTC.
+	// Example: 2012-09-27
 	UpdatedAt string `json:"updatedAt,omitempty"`
 }
 
@@ -98,6 +114,10 @@ func (m *Zone) Validate(formats strfmt.Registry) error {
 
 func (m *Zone) validateLinks(formats strfmt.Registry) error {
 
+	if err := validate.Required("_links", "body", m.Links); err != nil {
+		return err
+	}
+
 	for k := range m.Links {
 
 		if err := validate.Required("_links"+"."+k, "body", m.Links[k]); err != nil {
@@ -124,7 +144,6 @@ func (m *Zone) validateID(formats strfmt.Registry) error {
 }
 
 func (m *Zone) validateTags(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Tags) { // not required
 		return nil
 	}
@@ -149,7 +168,6 @@ func (m *Zone) validateTags(formats strfmt.Registry) error {
 }
 
 func (m *Zone) validateTagsToMatch(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.TagsToMatch) { // not required
 		return nil
 	}
@@ -161,6 +179,83 @@ func (m *Zone) validateTagsToMatch(formats strfmt.Registry) error {
 
 		if m.TagsToMatch[i] != nil {
 			if err := m.TagsToMatch[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tagsToMatch" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this zone based on the context it is used
+func (m *Zone) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateLinks(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTags(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTagsToMatch(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *Zone) contextValidateLinks(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.Required("_links", "body", m.Links); err != nil {
+		return err
+	}
+
+	for k := range m.Links {
+
+		if val, ok := m.Links[k]; ok {
+			if err := val.ContextValidate(ctx, formats); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *Zone) contextValidateTags(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Tags); i++ {
+
+		if m.Tags[i] != nil {
+			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *Zone) contextValidateTagsToMatch(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.TagsToMatch); i++ {
+
+		if m.TagsToMatch[i] != nil {
+			if err := m.TagsToMatch[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tagsToMatch" + "." + strconv.Itoa(i))
 				}

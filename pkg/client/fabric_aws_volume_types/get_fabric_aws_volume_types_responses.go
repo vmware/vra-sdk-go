@@ -35,7 +35,6 @@ func (o *GetFabricAwsVolumeTypesReader) ReadResponse(response runtime.ClientResp
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewGetFabricAwsVolumeTypesOK() *GetFabricAwsVolumeTypesOK {
 	return &GetFabricAwsVolumeTypesOK{}
 }
 
-/*GetFabricAwsVolumeTypesOK handles this case with default header values.
+/* GetFabricAwsVolumeTypesOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -57,7 +56,6 @@ type GetFabricAwsVolumeTypesOK struct {
 func (o *GetFabricAwsVolumeTypesOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-aws-volume-types][%d] getFabricAwsVolumeTypesOK  %+v", 200, o.Payload)
 }
-
 func (o *GetFabricAwsVolumeTypesOK) GetPayload() *models.VolumeTypeList {
 	return o.Payload
 }
@@ -79,18 +77,29 @@ func NewGetFabricAwsVolumeTypesForbidden() *GetFabricAwsVolumeTypesForbidden {
 	return &GetFabricAwsVolumeTypesForbidden{}
 }
 
-/*GetFabricAwsVolumeTypesForbidden handles this case with default header values.
+/* GetFabricAwsVolumeTypesForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetFabricAwsVolumeTypesForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetFabricAwsVolumeTypesForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/fabric-aws-volume-types][%d] getFabricAwsVolumeTypesForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/fabric-aws-volume-types][%d] getFabricAwsVolumeTypesForbidden  %+v", 403, o.Payload)
+}
+func (o *GetFabricAwsVolumeTypesForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetFabricAwsVolumeTypesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

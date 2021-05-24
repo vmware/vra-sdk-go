@@ -25,21 +25,24 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateServiceCredentialsUsingPOST(params *CreateServiceCredentialsUsingPOSTParams) (*CreateServiceCredentialsUsingPOSTOK, error)
+	CreateServiceCredentialsUsingPOST(params *CreateServiceCredentialsUsingPOSTParams, opts ...ClientOption) (*CreateServiceCredentialsUsingPOSTOK, error)
 
-	DeleteServiceAccountUsingDELETE(params *DeleteServiceAccountUsingDELETEParams) (*DeleteServiceAccountUsingDELETENoContent, error)
+	DeleteServiceAccountUsingDELETE(params *DeleteServiceAccountUsingDELETEParams, opts ...ClientOption) (*DeleteServiceAccountUsingDELETENoContent, error)
 
-	DeleteServiceCredentialUsingDELETE(params *DeleteServiceCredentialUsingDELETEParams) (*DeleteServiceCredentialUsingDELETENoContent, error)
+	DeleteServiceCredentialUsingDELETE(params *DeleteServiceCredentialUsingDELETEParams, opts ...ClientOption) (*DeleteServiceCredentialUsingDELETENoContent, error)
 
-	EnumerateDomainsUsingPOST(params *EnumerateDomainsUsingPOSTParams) (*EnumerateDomainsUsingPOSTOK, error)
+	EnumerateDomainsUsingPOST(params *EnumerateDomainsUsingPOSTParams, opts ...ClientOption) (*EnumerateDomainsUsingPOSTOK, error)
 
-	GetDomainUsingGET(params *GetDomainUsingGETParams) (*GetDomainUsingGETOK, error)
+	GetDomainUsingGET(params *GetDomainUsingGETParams, opts ...ClientOption) (*GetDomainUsingGETOK, error)
 
-	GetDomainsUsingGET(params *GetDomainsUsingGETParams) (*GetDomainsUsingGETOK, error)
+	GetDomainsUsingGET(params *GetDomainsUsingGETParams, opts ...ClientOption) (*GetDomainsUsingGETOK, error)
 
-	PatchServiceAccountUsingPATCH(params *PatchServiceAccountUsingPATCHParams) (*PatchServiceAccountUsingPATCHOK, error)
+	PatchServiceAccountUsingPATCH(params *PatchServiceAccountUsingPATCHParams, opts ...ClientOption) (*PatchServiceAccountUsingPATCHOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -47,13 +50,12 @@ type ClientService interface {
 /*
   CreateServiceCredentialsUsingPOST creates service credentials
 */
-func (a *Client) CreateServiceCredentialsUsingPOST(params *CreateServiceCredentialsUsingPOSTParams) (*CreateServiceCredentialsUsingPOSTOK, error) {
+func (a *Client) CreateServiceCredentialsUsingPOST(params *CreateServiceCredentialsUsingPOSTParams, opts ...ClientOption) (*CreateServiceCredentialsUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateServiceCredentialsUsingPOSTParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createServiceCredentialsUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/content/api/vcf/{integrationId}/domain/{domainId}/service-accounts",
@@ -64,7 +66,12 @@ func (a *Client) CreateServiceCredentialsUsingPOST(params *CreateServiceCredenti
 		Reader:             &CreateServiceCredentialsUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -81,13 +88,12 @@ func (a *Client) CreateServiceCredentialsUsingPOST(params *CreateServiceCredenti
 /*
   DeleteServiceAccountUsingDELETE deletes a service account
 */
-func (a *Client) DeleteServiceAccountUsingDELETE(params *DeleteServiceAccountUsingDELETEParams) (*DeleteServiceAccountUsingDELETENoContent, error) {
+func (a *Client) DeleteServiceAccountUsingDELETE(params *DeleteServiceAccountUsingDELETEParams, opts ...ClientOption) (*DeleteServiceAccountUsingDELETENoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteServiceAccountUsingDELETEParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteServiceAccountUsingDELETE",
 		Method:             "DELETE",
 		PathPattern:        "/content/api/vcf/{integrationId}/domain/{domainId}/service-accounts",
@@ -98,7 +104,12 @@ func (a *Client) DeleteServiceAccountUsingDELETE(params *DeleteServiceAccountUsi
 		Reader:             &DeleteServiceAccountUsingDELETEReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -115,13 +126,12 @@ func (a *Client) DeleteServiceAccountUsingDELETE(params *DeleteServiceAccountUsi
 /*
   DeleteServiceCredentialUsingDELETE deletes a service credential
 */
-func (a *Client) DeleteServiceCredentialUsingDELETE(params *DeleteServiceCredentialUsingDELETEParams) (*DeleteServiceCredentialUsingDELETENoContent, error) {
+func (a *Client) DeleteServiceCredentialUsingDELETE(params *DeleteServiceCredentialUsingDELETEParams, opts ...ClientOption) (*DeleteServiceCredentialUsingDELETENoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteServiceCredentialUsingDELETEParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteServiceCredentialUsingDELETE",
 		Method:             "DELETE",
 		PathPattern:        "/content/api/vcf/{integrationId}/domain/{domainId}/service-accounts/{id}",
@@ -132,7 +142,12 @@ func (a *Client) DeleteServiceCredentialUsingDELETE(params *DeleteServiceCredent
 		Reader:             &DeleteServiceCredentialUsingDELETEReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -149,13 +164,12 @@ func (a *Client) DeleteServiceCredentialUsingDELETE(params *DeleteServiceCredent
 /*
   EnumerateDomainsUsingPOST enumerates domains
 */
-func (a *Client) EnumerateDomainsUsingPOST(params *EnumerateDomainsUsingPOSTParams) (*EnumerateDomainsUsingPOSTOK, error) {
+func (a *Client) EnumerateDomainsUsingPOST(params *EnumerateDomainsUsingPOSTParams, opts ...ClientOption) (*EnumerateDomainsUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewEnumerateDomainsUsingPOSTParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "enumerateDomainsUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/content/api/vcf/domains-enumeration",
@@ -166,7 +180,12 @@ func (a *Client) EnumerateDomainsUsingPOST(params *EnumerateDomainsUsingPOSTPara
 		Reader:             &EnumerateDomainsUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -183,13 +202,12 @@ func (a *Client) EnumerateDomainsUsingPOST(params *EnumerateDomainsUsingPOSTPara
 /*
   GetDomainUsingGET gets domain details
 */
-func (a *Client) GetDomainUsingGET(params *GetDomainUsingGETParams) (*GetDomainUsingGETOK, error) {
+func (a *Client) GetDomainUsingGET(params *GetDomainUsingGETParams, opts ...ClientOption) (*GetDomainUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDomainUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getDomainUsingGET",
 		Method:             "GET",
 		PathPattern:        "/content/api/vcf/{integrationId}/domain/{domainId}",
@@ -200,7 +218,12 @@ func (a *Client) GetDomainUsingGET(params *GetDomainUsingGETParams) (*GetDomainU
 		Reader:             &GetDomainUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -217,13 +240,12 @@ func (a *Client) GetDomainUsingGET(params *GetDomainUsingGETParams) (*GetDomainU
 /*
   GetDomainsUsingGET gets domains
 */
-func (a *Client) GetDomainsUsingGET(params *GetDomainsUsingGETParams) (*GetDomainsUsingGETOK, error) {
+func (a *Client) GetDomainsUsingGET(params *GetDomainsUsingGETParams, opts ...ClientOption) (*GetDomainsUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDomainsUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getDomainsUsingGET",
 		Method:             "GET",
 		PathPattern:        "/content/api/vcf/{integrationId}/domains",
@@ -234,7 +256,12 @@ func (a *Client) GetDomainsUsingGET(params *GetDomainsUsingGETParams) (*GetDomai
 		Reader:             &GetDomainsUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -251,13 +278,12 @@ func (a *Client) GetDomainsUsingGET(params *GetDomainsUsingGETParams) (*GetDomai
 /*
   PatchServiceAccountUsingPATCH patches service account
 */
-func (a *Client) PatchServiceAccountUsingPATCH(params *PatchServiceAccountUsingPATCHParams) (*PatchServiceAccountUsingPATCHOK, error) {
+func (a *Client) PatchServiceAccountUsingPATCH(params *PatchServiceAccountUsingPATCHParams, opts ...ClientOption) (*PatchServiceAccountUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPatchServiceAccountUsingPATCHParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "patchServiceAccountUsingPATCH",
 		Method:             "PATCH",
 		PathPattern:        "/content/api/vcf/{integrationId}/domain/{domainId}/service-accounts",
@@ -268,7 +294,12 @@ func (a *Client) PatchServiceAccountUsingPATCH(params *PatchServiceAccountUsingP
 		Reader:             &PatchServiceAccountUsingPATCHReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

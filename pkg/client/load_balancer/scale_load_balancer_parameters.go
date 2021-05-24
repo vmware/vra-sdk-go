@@ -18,69 +18,85 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewScaleLoadBalancerParams creates a new ScaleLoadBalancerParams object
-// with the default values initialized.
+// NewScaleLoadBalancerParams creates a new ScaleLoadBalancerParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewScaleLoadBalancerParams() *ScaleLoadBalancerParams {
-	var ()
 	return &ScaleLoadBalancerParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewScaleLoadBalancerParamsWithTimeout creates a new ScaleLoadBalancerParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewScaleLoadBalancerParamsWithTimeout(timeout time.Duration) *ScaleLoadBalancerParams {
-	var ()
 	return &ScaleLoadBalancerParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewScaleLoadBalancerParamsWithContext creates a new ScaleLoadBalancerParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewScaleLoadBalancerParamsWithContext(ctx context.Context) *ScaleLoadBalancerParams {
-	var ()
 	return &ScaleLoadBalancerParams{
-
 		Context: ctx,
 	}
 }
 
 // NewScaleLoadBalancerParamsWithHTTPClient creates a new ScaleLoadBalancerParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewScaleLoadBalancerParamsWithHTTPClient(client *http.Client) *ScaleLoadBalancerParams {
-	var ()
 	return &ScaleLoadBalancerParams{
 		HTTPClient: client,
 	}
 }
 
-/*ScaleLoadBalancerParams contains all the parameters to send to the API endpoint
-for the scale load balancer operation typically these are written to a http.Request
+/* ScaleLoadBalancerParams contains all the parameters to send to the API endpoint
+   for the scale load balancer operation.
+
+   Typically these are written to a http.Request.
 */
 type ScaleLoadBalancerParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*Body
-	  LoadBalancer Specification instance
 
+	/* Body.
+
+	   LoadBalancer Specification instance
 	*/
 	Body *models.LoadBalancerSpecification
-	/*ID
-	  The ID of the load balancer.
 
+	/* ID.
+
+	   The ID of the load balancer.
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the scale load balancer params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ScaleLoadBalancerParams) WithDefaults() *ScaleLoadBalancerParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the scale load balancer params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ScaleLoadBalancerParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the scale load balancer params
@@ -161,18 +177,18 @@ func (o *ScaleLoadBalancerParams) WriteToRequest(r runtime.ClientRequest, reg st
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
-
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err

@@ -35,7 +35,6 @@ func (o *GetFabricVSphereStoragePoliciesReader) ReadResponse(response runtime.Cl
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewGetFabricVSphereStoragePoliciesOK() *GetFabricVSphereStoragePoliciesOK {
 	return &GetFabricVSphereStoragePoliciesOK{}
 }
 
-/*GetFabricVSphereStoragePoliciesOK handles this case with default header values.
+/* GetFabricVSphereStoragePoliciesOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -57,7 +56,6 @@ type GetFabricVSphereStoragePoliciesOK struct {
 func (o *GetFabricVSphereStoragePoliciesOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-storage-policies][%d] getFabricVSphereStoragePoliciesOK  %+v", 200, o.Payload)
 }
-
 func (o *GetFabricVSphereStoragePoliciesOK) GetPayload() *models.FabricVsphereStoragePolicyResult {
 	return o.Payload
 }
@@ -79,18 +77,29 @@ func NewGetFabricVSphereStoragePoliciesForbidden() *GetFabricVSphereStoragePolic
 	return &GetFabricVSphereStoragePoliciesForbidden{}
 }
 
-/*GetFabricVSphereStoragePoliciesForbidden handles this case with default header values.
+/* GetFabricVSphereStoragePoliciesForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetFabricVSphereStoragePoliciesForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetFabricVSphereStoragePoliciesForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-storage-policies][%d] getFabricVSphereStoragePoliciesForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-storage-policies][%d] getFabricVSphereStoragePoliciesForbidden  %+v", 403, o.Payload)
+}
+func (o *GetFabricVSphereStoragePoliciesForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetFabricVSphereStoragePoliciesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

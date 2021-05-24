@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -20,24 +21,29 @@ import (
 type CloudAccountVmcSpecification struct {
 
 	// Accept self signed certificate when connecting to vSphere
+	// Example: false
 	AcceptSelfSignedCertificate bool `json:"acceptSelfSignedCertificate,omitempty"`
 
 	// VMC API access key
 	APIKey string `json:"apiKey,omitempty"`
 
 	// Create default cloud zones for the enabled regions.
+	// Example: true
 	CreateDefaultZones bool `json:"createDefaultZones,omitempty"`
 
 	// The host name of the CSP service.
+	// Example: console-stg.cloud.vmware.com
 	CspHostName string `json:"cspHostName,omitempty"`
 
 	// Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors
+	// Example: 23959a1e-18bc-4f0c-ac49-b5aeb4b6eef4
 	DcID string `json:"dcId,omitempty"`
 
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
 
 	// Enter the IP address or FQDN of the vCenter Server in the specified SDDC. The cloud proxy belongs on this vCenter.
+	// Example: vc1.vmware.com
 	// Required: true
 	HostName *string `json:"hostName"`
 
@@ -46,24 +52,30 @@ type CloudAccountVmcSpecification struct {
 	Name *string `json:"name"`
 
 	// The IP address of the NSX Manager server in the specified SDDC / FQDN.
+	// Example: nsxManager.sddc-52-12-8-145.vmwaretest.com
 	// Required: true
 	NsxHostName *string `json:"nsxHostName"`
 
 	// Password for the user used to authenticate with the cloud Account
+	// Example: cndhjslacd90ascdbasyoucbdh
 	// Required: true
 	Password *string `json:"password"`
 
 	// A set of Region names to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration.
+	// Example: [ \"us-east-1\", \"ap-northeast-1\" ]
 	// Required: true
 	RegionIds []string `json:"regionIds"`
 
 	// Identifier of the on-premise SDDC to be used by this cloud account. Note that NSX-V SDDCs are not supported.
+	// Example: CMBU-PRD-NSXT-M8GA-090319
 	SddcID string `json:"sddcId,omitempty"`
 
 	// A set of tag keys and optional values to set on the Cloud Account.Cloud account capability tags may enable different features.
+	// Example: [ { \"key\" : \"env\", \"value\": \"dev\" } ]
 	Tags []*Tag `json:"tags"`
 
 	// vCenter user name for the specified SDDC.The specified user requires CloudAdmin credentials. The user does not require CloudGlobalAdmin credentials.
+	// Example: administrator@mycompany.com
 	// Required: true
 	Username *string `json:"username"`
 }
@@ -152,7 +164,6 @@ func (m *CloudAccountVmcSpecification) validateRegionIds(formats strfmt.Registry
 }
 
 func (m *CloudAccountVmcSpecification) validateTags(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Tags) { // not required
 		return nil
 	}
@@ -180,6 +191,38 @@ func (m *CloudAccountVmcSpecification) validateUsername(formats strfmt.Registry)
 
 	if err := validate.Required("username", "body", m.Username); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this cloud account vmc specification based on the context it is used
+func (m *CloudAccountVmcSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateTags(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CloudAccountVmcSpecification) contextValidateTags(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Tags); i++ {
+
+		if m.Tags[i] != nil {
+			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil

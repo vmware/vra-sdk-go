@@ -41,7 +41,6 @@ func (o *GetExternalNetworkIPRangeReader) ReadResponse(response runtime.ClientRe
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetExternalNetworkIPRangeOK() *GetExternalNetworkIPRangeOK {
 	return &GetExternalNetworkIPRangeOK{}
 }
 
-/*GetExternalNetworkIPRangeOK handles this case with default header values.
+/* GetExternalNetworkIPRangeOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type GetExternalNetworkIPRangeOK struct {
 func (o *GetExternalNetworkIPRangeOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/external-network-ip-ranges/{id}][%d] getExternalNetworkIpRangeOK  %+v", 200, o.Payload)
 }
-
 func (o *GetExternalNetworkIPRangeOK) GetPayload() *models.ExternalNetworkIPRange {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewGetExternalNetworkIPRangeForbidden() *GetExternalNetworkIPRangeForbidden
 	return &GetExternalNetworkIPRangeForbidden{}
 }
 
-/*GetExternalNetworkIPRangeForbidden handles this case with default header values.
+/* GetExternalNetworkIPRangeForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetExternalNetworkIPRangeForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetExternalNetworkIPRangeForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/external-network-ip-ranges/{id}][%d] getExternalNetworkIpRangeForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/external-network-ip-ranges/{id}][%d] getExternalNetworkIpRangeForbidden  %+v", 403, o.Payload)
+}
+func (o *GetExternalNetworkIPRangeForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetExternalNetworkIPRangeForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewGetExternalNetworkIPRangeNotFound() *GetExternalNetworkIPRangeNotFound {
 	return &GetExternalNetworkIPRangeNotFound{}
 }
 
-/*GetExternalNetworkIPRangeNotFound handles this case with default header values.
+/* GetExternalNetworkIPRangeNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type GetExternalNetworkIPRangeNotFound struct {
 func (o *GetExternalNetworkIPRangeNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/external-network-ip-ranges/{id}][%d] getExternalNetworkIpRangeNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetExternalNetworkIPRangeNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

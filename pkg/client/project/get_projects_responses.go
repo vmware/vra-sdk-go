@@ -35,7 +35,6 @@ func (o *GetProjectsReader) ReadResponse(response runtime.ClientResponse, consum
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewGetProjectsOK() *GetProjectsOK {
 	return &GetProjectsOK{}
 }
 
-/*GetProjectsOK handles this case with default header values.
+/* GetProjectsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -57,7 +56,6 @@ type GetProjectsOK struct {
 func (o *GetProjectsOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/projects][%d] getProjectsOK  %+v", 200, o.Payload)
 }
-
 func (o *GetProjectsOK) GetPayload() *models.ProjectResult {
 	return o.Payload
 }
@@ -79,18 +77,29 @@ func NewGetProjectsForbidden() *GetProjectsForbidden {
 	return &GetProjectsForbidden{}
 }
 
-/*GetProjectsForbidden handles this case with default header values.
+/* GetProjectsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetProjectsForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetProjectsForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/projects][%d] getProjectsForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/projects][%d] getProjectsForbidden  %+v", 403, o.Payload)
+}
+func (o *GetProjectsForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetProjectsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

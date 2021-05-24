@@ -25,13 +25,16 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	Delete(params *DeleteParams) (*DeleteNoContent, error)
+	Delete(params *DeleteParams, opts ...ClientOption) (*DeleteNoContent, error)
 
-	Download(params *DownloadParams) (*DownloadOK, error)
+	Download(params *DownloadParams, opts ...ClientOption) (*DownloadOK, error)
 
-	Upload(params *UploadParams) (*UploadCreated, error)
+	Upload(params *UploadParams, opts ...ClientOption) (*UploadCreated, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -41,13 +44,12 @@ type ClientService interface {
 
   Delete an existing icon by its unique id.
 */
-func (a *Client) Delete(params *DeleteParams) (*DeleteNoContent, error) {
+func (a *Client) Delete(params *DeleteParams, opts ...ClientOption) (*DeleteNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "delete",
 		Method:             "DELETE",
 		PathPattern:        "/icon/api/icons/{id}",
@@ -58,7 +60,12 @@ func (a *Client) Delete(params *DeleteParams) (*DeleteNoContent, error) {
 		Reader:             &DeleteReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -77,13 +84,12 @@ func (a *Client) Delete(params *DeleteParams) (*DeleteNoContent, error) {
 
   Download an existing icon by its unique id.
 */
-func (a *Client) Download(params *DownloadParams) (*DownloadOK, error) {
+func (a *Client) Download(params *DownloadParams, opts ...ClientOption) (*DownloadOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDownloadParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "download",
 		Method:             "GET",
 		PathPattern:        "/icon/api/icons/{id}",
@@ -94,7 +100,12 @@ func (a *Client) Download(params *DownloadParams) (*DownloadOK, error) {
 		Reader:             &DownloadReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -113,13 +124,12 @@ func (a *Client) Download(params *DownloadParams) (*DownloadOK, error) {
 
   Create an icon.
 */
-func (a *Client) Upload(params *UploadParams) (*UploadCreated, error) {
+func (a *Client) Upload(params *UploadParams, opts ...ClientOption) (*UploadCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUploadParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "upload",
 		Method:             "POST",
 		PathPattern:        "/icon/api/icons",
@@ -130,7 +140,12 @@ func (a *Client) Upload(params *UploadParams) (*UploadCreated, error) {
 		Reader:             &UploadReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

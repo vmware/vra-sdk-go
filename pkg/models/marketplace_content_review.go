@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -36,6 +38,11 @@ type MarketplaceContentReview struct {
 
 // Validate validates this marketplace content review
 func (m *MarketplaceContentReview) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this marketplace content review based on context it is used
+func (m *MarketplaceContentReview) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

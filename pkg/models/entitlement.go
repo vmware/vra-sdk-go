@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -90,6 +92,34 @@ func (m *Entitlement) validateProjectID(formats strfmt.Registry) error {
 
 	if err := validate.Required("projectId", "body", m.ProjectID); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this entitlement based on the context it is used
+func (m *Entitlement) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateDefinition(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *Entitlement) contextValidateDefinition(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Definition != nil {
+		if err := m.Definition.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("definition")
+			}
+			return err
+		}
 	}
 
 	return nil

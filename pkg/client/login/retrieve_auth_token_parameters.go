@@ -18,64 +18,79 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewRetrieveAuthTokenParams creates a new RetrieveAuthTokenParams object
-// with the default values initialized.
+// NewRetrieveAuthTokenParams creates a new RetrieveAuthTokenParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewRetrieveAuthTokenParams() *RetrieveAuthTokenParams {
-	var ()
 	return &RetrieveAuthTokenParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewRetrieveAuthTokenParamsWithTimeout creates a new RetrieveAuthTokenParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewRetrieveAuthTokenParamsWithTimeout(timeout time.Duration) *RetrieveAuthTokenParams {
-	var ()
 	return &RetrieveAuthTokenParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewRetrieveAuthTokenParamsWithContext creates a new RetrieveAuthTokenParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewRetrieveAuthTokenParamsWithContext(ctx context.Context) *RetrieveAuthTokenParams {
-	var ()
 	return &RetrieveAuthTokenParams{
-
 		Context: ctx,
 	}
 }
 
 // NewRetrieveAuthTokenParamsWithHTTPClient creates a new RetrieveAuthTokenParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewRetrieveAuthTokenParamsWithHTTPClient(client *http.Client) *RetrieveAuthTokenParams {
-	var ()
 	return &RetrieveAuthTokenParams{
 		HTTPClient: client,
 	}
 }
 
-/*RetrieveAuthTokenParams contains all the parameters to send to the API endpoint
-for the retrieve auth token operation typically these are written to a http.Request
+/* RetrieveAuthTokenParams contains all the parameters to send to the API endpoint
+   for the retrieve auth token operation.
+
+   Typically these are written to a http.Request.
 */
 type RetrieveAuthTokenParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*Body
-	  CspLoginSpecification instance
 
+	/* Body.
+
+	   CspLoginSpecification instance
 	*/
 	Body *models.CspLoginSpecification
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the retrieve auth token params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *RetrieveAuthTokenParams) WithDefaults() *RetrieveAuthTokenParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the retrieve auth token params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *RetrieveAuthTokenParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the retrieve auth token params
@@ -145,18 +160,18 @@ func (o *RetrieveAuthTokenParams) WriteToRequest(r runtime.ClientRequest, reg st
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
-
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -24,44 +25,57 @@ type CloudAccountNsxV struct {
 	Links map[string]Href `json:"_links"`
 
 	// Date when the entity was created. The date is in ISO 8601 and UTC.
+	// Example: 2012-09-27
 	CreatedAt string `json:"createdAt,omitempty"`
 
 	// Additional properties that may be used to extend the base type.
+	// Example: { \"isExternal\" : \"false\" }
 	CustomProperties map[string]string `json:"customProperties,omitempty"`
 
 	// Identifier of a data collector vm deployed in the on premise infrastructure.
+	// Example: 23959a1e-18bc-4f0c-ac49-b5aeb4b6eef4
 	Dcid string `json:"dcid,omitempty"`
 
 	// A human-friendly description.
+	// Example: my-description
 	Description string `json:"description,omitempty"`
 
 	// Host name for the Nsx-V cloud account
+	// Example: nsxv.vmware.com
 	// Required: true
 	HostName *string `json:"hostName"`
 
 	// The id of this resource instance
+	// Example: 9e49
 	// Required: true
 	ID *string `json:"id"`
 
 	// A human-friendly name used as an identifier in APIs that support this option.
+	// Example: my-name
 	Name string `json:"name,omitempty"`
 
 	// The id of the organization this entity belongs to.
+	// Example: 9e49
 	OrgID string `json:"orgId,omitempty"`
 
 	// This field is deprecated. Use orgId instead. The id of the organization this entity belongs to.
+	// Example: deprecated
 	OrganizationID string `json:"organizationId,omitempty"`
 
 	// Email of the user that owns the entity.
+	// Example: csp@vmware.com
 	Owner string `json:"owner,omitempty"`
 
 	// A set of tag keys and optional values that were set on the Cloud Account
+	// Example: [ { \"key\" : \"env\", \"value\": \"dev\" } ]
 	Tags []*Tag `json:"tags"`
 
 	// Date when the entity was last updated. The date is ISO 8601 and UTC.
+	// Example: 2012-09-27
 	UpdatedAt string `json:"updatedAt,omitempty"`
 
 	// Username to authenticate with the cloud account
+	// Example: administrator@mycompany.com
 	// Required: true
 	Username *string `json:"username"`
 }
@@ -98,6 +112,10 @@ func (m *CloudAccountNsxV) Validate(formats strfmt.Registry) error {
 
 func (m *CloudAccountNsxV) validateLinks(formats strfmt.Registry) error {
 
+	if err := validate.Required("_links", "body", m.Links); err != nil {
+		return err
+	}
+
 	for k := range m.Links {
 
 		if err := validate.Required("_links"+"."+k, "body", m.Links[k]); err != nil {
@@ -133,7 +151,6 @@ func (m *CloudAccountNsxV) validateID(formats strfmt.Registry) error {
 }
 
 func (m *CloudAccountNsxV) validateTags(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Tags) { // not required
 		return nil
 	}
@@ -161,6 +178,61 @@ func (m *CloudAccountNsxV) validateUsername(formats strfmt.Registry) error {
 
 	if err := validate.Required("username", "body", m.Username); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this cloud account nsx v based on the context it is used
+func (m *CloudAccountNsxV) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateLinks(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTags(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CloudAccountNsxV) contextValidateLinks(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.Required("_links", "body", m.Links); err != nil {
+		return err
+	}
+
+	for k := range m.Links {
+
+		if val, ok := m.Links[k]; ok {
+			if err := val.ContextValidate(ctx, formats); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CloudAccountNsxV) contextValidateTags(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Tags); i++ {
+
+		if m.Tags[i] != nil {
+			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil

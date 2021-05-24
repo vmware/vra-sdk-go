@@ -7,9 +7,12 @@ package network_profile
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
 // DeleteNetworkProfileReader is a Reader for the DeleteNetworkProfile structure.
@@ -32,7 +35,6 @@ func (o *DeleteNetworkProfileReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -43,7 +45,7 @@ func NewDeleteNetworkProfileNoContent() *DeleteNetworkProfileNoContent {
 	return &DeleteNetworkProfileNoContent{}
 }
 
-/*DeleteNetworkProfileNoContent handles this case with default header values.
+/* DeleteNetworkProfileNoContent describes a response with status code 204, with default header values.
 
 No Content
 */
@@ -64,18 +66,29 @@ func NewDeleteNetworkProfileForbidden() *DeleteNetworkProfileForbidden {
 	return &DeleteNetworkProfileForbidden{}
 }
 
-/*DeleteNetworkProfileForbidden handles this case with default header values.
+/* DeleteNetworkProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type DeleteNetworkProfileForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *DeleteNetworkProfileForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/network-profiles/{id}][%d] deleteNetworkProfileForbidden ", 403)
+	return fmt.Sprintf("[DELETE /iaas/api/network-profiles/{id}][%d] deleteNetworkProfileForbidden  %+v", 403, o.Payload)
+}
+func (o *DeleteNetworkProfileForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *DeleteNetworkProfileForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

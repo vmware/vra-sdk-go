@@ -47,7 +47,6 @@ func (o *CreateMeteringAssignmentStrategyUsingPOSTReader) ReadResponse(response 
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewCreateMeteringAssignmentStrategyUsingPOSTOK() *CreateMeteringAssignmentS
 	return &CreateMeteringAssignmentStrategyUsingPOSTOK{}
 }
 
-/*CreateMeteringAssignmentStrategyUsingPOSTOK handles this case with default header values.
+/* CreateMeteringAssignmentStrategyUsingPOSTOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -69,7 +68,6 @@ type CreateMeteringAssignmentStrategyUsingPOSTOK struct {
 func (o *CreateMeteringAssignmentStrategyUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /price/api/private/pricing-card-assignments/strategy][%d] createMeteringAssignmentStrategyUsingPOSTOK  %+v", 200, o.Payload)
 }
-
 func (o *CreateMeteringAssignmentStrategyUsingPOSTOK) GetPayload() *models.MeteringAssignmentStrategy {
 	return o.Payload
 }
@@ -91,7 +89,7 @@ func NewCreateMeteringAssignmentStrategyUsingPOSTCreated() *CreateMeteringAssign
 	return &CreateMeteringAssignmentStrategyUsingPOSTCreated{}
 }
 
-/*CreateMeteringAssignmentStrategyUsingPOSTCreated handles this case with default header values.
+/* CreateMeteringAssignmentStrategyUsingPOSTCreated describes a response with status code 201, with default header values.
 
 Created
 */
@@ -102,7 +100,6 @@ type CreateMeteringAssignmentStrategyUsingPOSTCreated struct {
 func (o *CreateMeteringAssignmentStrategyUsingPOSTCreated) Error() string {
 	return fmt.Sprintf("[POST /price/api/private/pricing-card-assignments/strategy][%d] createMeteringAssignmentStrategyUsingPOSTCreated  %+v", 201, o.Payload)
 }
-
 func (o *CreateMeteringAssignmentStrategyUsingPOSTCreated) GetPayload() *models.MeteringAssignmentStrategy {
 	return o.Payload
 }
@@ -124,7 +121,7 @@ func NewCreateMeteringAssignmentStrategyUsingPOSTUnauthorized() *CreateMeteringA
 	return &CreateMeteringAssignmentStrategyUsingPOSTUnauthorized{}
 }
 
-/*CreateMeteringAssignmentStrategyUsingPOSTUnauthorized handles this case with default header values.
+/* CreateMeteringAssignmentStrategyUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -145,7 +142,7 @@ func NewCreateMeteringAssignmentStrategyUsingPOSTForbidden() *CreateMeteringAssi
 	return &CreateMeteringAssignmentStrategyUsingPOSTForbidden{}
 }
 
-/*CreateMeteringAssignmentStrategyUsingPOSTForbidden handles this case with default header values.
+/* CreateMeteringAssignmentStrategyUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */

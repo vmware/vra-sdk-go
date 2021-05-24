@@ -25,11 +25,14 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetFabricImage(params *GetFabricImageParams) (*GetFabricImageOK, error)
+	GetFabricImage(params *GetFabricImageParams, opts ...ClientOption) (*GetFabricImageOK, error)
 
-	GetFabricImages(params *GetFabricImagesParams) (*GetFabricImagesOK, error)
+	GetFabricImages(params *GetFabricImagesParams, opts ...ClientOption) (*GetFabricImagesOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -39,13 +42,12 @@ type ClientService interface {
 
   Get fabric image with a given id
 */
-func (a *Client) GetFabricImage(params *GetFabricImageParams) (*GetFabricImageOK, error) {
+func (a *Client) GetFabricImage(params *GetFabricImageParams, opts ...ClientOption) (*GetFabricImageOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetFabricImageParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getFabricImage",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/fabric-images/{id}",
@@ -56,7 +58,12 @@ func (a *Client) GetFabricImage(params *GetFabricImageParams) (*GetFabricImageOK
 		Reader:             &GetFabricImageReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -75,13 +82,12 @@ func (a *Client) GetFabricImage(params *GetFabricImageParams) (*GetFabricImageOK
 
   Get all fabric images
 */
-func (a *Client) GetFabricImages(params *GetFabricImagesParams) (*GetFabricImagesOK, error) {
+func (a *Client) GetFabricImages(params *GetFabricImagesParams, opts ...ClientOption) (*GetFabricImagesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetFabricImagesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getFabricImages",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/fabric-images",
@@ -92,7 +98,12 @@ func (a *Client) GetFabricImages(params *GetFabricImagesParams) (*GetFabricImage
 		Reader:             &GetFabricImagesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

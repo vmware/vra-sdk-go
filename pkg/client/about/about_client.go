@@ -25,13 +25,16 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetAboutPage(params *GetAboutPageParams) (*GetAboutPageOK, error)
+	GetAboutPage(params *GetAboutPageParams, opts ...ClientOption) (*GetAboutPageOK, error)
 
-	GetAboutUsingGET(params *GetAboutUsingGETParams) (*GetAboutUsingGETOK, error)
+	GetAboutUsingGET(params *GetAboutUsingGETParams, opts ...ClientOption) (*GetAboutUsingGETOK, error)
 
-	GetAboutUsingGET1(params *GetAboutUsingGET1Params) (*GetAboutUsingGET1OK, error)
+	GetAboutUsingGET1(params *GetAboutUsingGET1Params, opts ...ClientOption) (*GetAboutUsingGET1OK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -43,13 +46,12 @@ type ClientService interface {
 If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 Here is an example of a call which specifies the exact version you are using: `GET /iaas/api/network-profiles?apiVersion=2019-01-15`
 */
-func (a *Client) GetAboutPage(params *GetAboutPageParams) (*GetAboutPageOK, error) {
+func (a *Client) GetAboutPage(params *GetAboutPageParams, opts ...ClientOption) (*GetAboutPageOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAboutPageParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getAboutPage",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/about",
@@ -60,7 +62,12 @@ func (a *Client) GetAboutPage(params *GetAboutPageParams) (*GetAboutPageOK, erro
 		Reader:             &GetAboutPageReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -81,13 +88,12 @@ func (a *Client) GetAboutPage(params *GetAboutPageParams) (*GetAboutPageOK, erro
 If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 Here is an example of a call which specifies the exact version you are using: GET /content/api/sources?apiVersion=2019-01-15
 */
-func (a *Client) GetAboutUsingGET(params *GetAboutUsingGETParams) (*GetAboutUsingGETOK, error) {
+func (a *Client) GetAboutUsingGET(params *GetAboutUsingGETParams, opts ...ClientOption) (*GetAboutUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAboutUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getAboutUsingGET",
 		Method:             "GET",
 		PathPattern:        "/content/api/about",
@@ -98,7 +104,12 @@ func (a *Client) GetAboutUsingGET(params *GetAboutUsingGETParams) (*GetAboutUsin
 		Reader:             &GetAboutUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -119,13 +130,12 @@ func (a *Client) GetAboutUsingGET(params *GetAboutUsingGETParams) (*GetAboutUsin
 If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 Here is an example of a call which specifies the exact version you are using: GET /blueprint/api/blueprints?apiVersion=2019-09-12
 */
-func (a *Client) GetAboutUsingGET1(params *GetAboutUsingGET1Params) (*GetAboutUsingGET1OK, error) {
+func (a *Client) GetAboutUsingGET1(params *GetAboutUsingGET1Params, opts ...ClientOption) (*GetAboutUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAboutUsingGET1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getAboutUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/blueprint/api/about",
@@ -136,7 +146,12 @@ func (a *Client) GetAboutUsingGET1(params *GetAboutUsingGET1Params) (*GetAboutUs
 		Reader:             &GetAboutUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

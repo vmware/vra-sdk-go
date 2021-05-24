@@ -59,7 +59,6 @@ func (o *PostUsingPOSTReader) ReadResponse(response runtime.ClientResponse, cons
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -70,7 +69,7 @@ func NewPostUsingPOSTOK() *PostUsingPOSTOK {
 	return &PostUsingPOSTOK{}
 }
 
-/*PostUsingPOSTOK handles this case with default header values.
+/* PostUsingPOSTOK describes a response with status code 200, with default header values.
 
 Validation is ok
 */
@@ -81,7 +80,6 @@ type PostUsingPOSTOK struct {
 func (o *PostUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /catalog/api/admin/sources][%d] postUsingPOSTOK  %+v", 200, o.Payload)
 }
-
 func (o *PostUsingPOSTOK) GetPayload() *models.CatalogSource {
 	return o.Payload
 }
@@ -103,7 +101,7 @@ func NewPostUsingPOSTCreated() *PostUsingPOSTCreated {
 	return &PostUsingPOSTCreated{}
 }
 
-/*PostUsingPOSTCreated handles this case with default header values.
+/* PostUsingPOSTCreated describes a response with status code 201, with default header values.
 
 Created
 */
@@ -114,7 +112,6 @@ type PostUsingPOSTCreated struct {
 func (o *PostUsingPOSTCreated) Error() string {
 	return fmt.Sprintf("[POST /catalog/api/admin/sources][%d] postUsingPOSTCreated  %+v", 201, o.Payload)
 }
-
 func (o *PostUsingPOSTCreated) GetPayload() *models.CatalogSource {
 	return o.Payload
 }
@@ -136,7 +133,7 @@ func NewPostUsingPOSTBadRequest() *PostUsingPOSTBadRequest {
 	return &PostUsingPOSTBadRequest{}
 }
 
-/*PostUsingPOSTBadRequest handles this case with default header values.
+/* PostUsingPOSTBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -147,7 +144,6 @@ type PostUsingPOSTBadRequest struct {
 func (o *PostUsingPOSTBadRequest) Error() string {
 	return fmt.Sprintf("[POST /catalog/api/admin/sources][%d] postUsingPOSTBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *PostUsingPOSTBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,7 +165,7 @@ func NewPostUsingPOSTUnauthorized() *PostUsingPOSTUnauthorized {
 	return &PostUsingPOSTUnauthorized{}
 }
 
-/*PostUsingPOSTUnauthorized handles this case with default header values.
+/* PostUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -190,7 +186,7 @@ func NewPostUsingPOSTForbidden() *PostUsingPOSTForbidden {
 	return &PostUsingPOSTForbidden{}
 }
 
-/*PostUsingPOSTForbidden handles this case with default header values.
+/* PostUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -211,7 +207,7 @@ func NewPostUsingPOSTNotFound() *PostUsingPOSTNotFound {
 	return &PostUsingPOSTNotFound{}
 }
 
-/*PostUsingPOSTNotFound handles this case with default header values.
+/* PostUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -222,7 +218,6 @@ type PostUsingPOSTNotFound struct {
 func (o *PostUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /catalog/api/admin/sources][%d] postUsingPOSTNotFound  %+v", 404, o.Payload)
 }
-
 func (o *PostUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

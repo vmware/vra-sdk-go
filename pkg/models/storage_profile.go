@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -24,9 +25,11 @@ type StorageProfile struct {
 	Links map[string]Href `json:"_links"`
 
 	// Id of the cloud account this storage profile belongs to.
+	// Example: [9e49]
 	CloudAccountID string `json:"cloudAccountId,omitempty"`
 
 	// Date when the entity was created. The date is in ISO 8601 and UTC.
+	// Example: 2012-09-27
 	CreatedAt string `json:"createdAt,omitempty"`
 
 	// Indicates if a storage profile is default profile or not.
@@ -34,37 +37,47 @@ type StorageProfile struct {
 	DefaultItem *bool `json:"defaultItem"`
 
 	// A human-friendly description.
+	// Example: my-description
 	Description string `json:"description,omitempty"`
 
 	// Map of storage properties that are to be applied on disk while provisioning.
+	// Example: { \"diskProperties\": {\n                    \"provisioningType\": \"thin\",\n                    \"sharesLevel\": \"low\",\n                    \"shares\": \"500\",\n                    \"limitIops\": \"500\",\n                    \"diskType\": \"firstClass\"\n                } }
 	DiskProperties map[string]string `json:"diskProperties,omitempty"`
 
 	// The id of the region for which this profile is defined
+	// Example: us-east-1
 	ExternalRegionID string `json:"externalRegionId,omitempty"`
 
 	// The id of this resource instance
+	// Example: 9e49
 	// Required: true
 	ID *string `json:"id"`
 
 	// A human-friendly name used as an identifier in APIs that support this option.
+	// Example: my-name
 	Name string `json:"name,omitempty"`
 
 	// The id of the organization this entity belongs to.
+	// Example: 9e49
 	OrgID string `json:"orgId,omitempty"`
 
 	// This field is deprecated. Use orgId instead. The id of the organization this entity belongs to.
+	// Example: deprecated
 	OrganizationID string `json:"organizationId,omitempty"`
 
 	// Email of the user that owns the entity.
+	// Example: csp@vmware.com
 	Owner string `json:"owner,omitempty"`
 
 	// Indicates whether this storage profile supports encryption or not.
 	SupportsEncryption bool `json:"supportsEncryption,omitempty"`
 
 	// A list of tags that represent the capabilities of this storage profile
+	// Example: [ { \"key\" : \"tier\", \"value\": \"silver\" } ]
 	Tags []*Tag `json:"tags"`
 
 	// Date when the entity was last updated. The date is ISO 8601 and UTC.
+	// Example: 2012-09-27
 	UpdatedAt string `json:"updatedAt,omitempty"`
 }
 
@@ -95,6 +108,10 @@ func (m *StorageProfile) Validate(formats strfmt.Registry) error {
 }
 
 func (m *StorageProfile) validateLinks(formats strfmt.Registry) error {
+
+	if err := validate.Required("_links", "body", m.Links); err != nil {
+		return err
+	}
 
 	for k := range m.Links {
 
@@ -131,7 +148,6 @@ func (m *StorageProfile) validateID(formats strfmt.Registry) error {
 }
 
 func (m *StorageProfile) validateTags(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Tags) { // not required
 		return nil
 	}
@@ -143,6 +159,61 @@ func (m *StorageProfile) validateTags(formats strfmt.Registry) error {
 
 		if m.Tags[i] != nil {
 			if err := m.Tags[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this storage profile based on the context it is used
+func (m *StorageProfile) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateLinks(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTags(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *StorageProfile) contextValidateLinks(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.Required("_links", "body", m.Links); err != nil {
+		return err
+	}
+
+	for k := range m.Links {
+
+		if val, ok := m.Links[k]; ok {
+			if err := val.ContextValidate(ctx, formats); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *StorageProfile) contextValidateTags(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Tags); i++ {
+
+		if m.Tags[i] != nil {
+			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
 				}

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -20,12 +21,16 @@ import (
 type CloudAccountNsxVSpecification struct {
 
 	// Accept self signed certificate when connecting.
+	// Example: false
 	AcceptSelfSignedCertificate bool `json:"acceptSelfSignedCertificate,omitempty"`
 
 	// vSphere cloud account associated with this NSX-V cloud account. NSX-V cloud account can be associated with a single vSphere cloud account.
+	// Example: [ \"42f3e0d199d134755684cd935435a\" ]
 	AssociatedCloudAccountIds []string `json:"associatedCloudAccountIds"`
 
-	// Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors
+	// Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors.
+	// Note: Data collector endpoints are not available in vRA on-prem release and hence the data collector Id is optional for vRA on-prem.
+	// Example: 23959a1e-18bc-4f0c-ac49-b5aeb4b6eef4
 	// Required: true
 	Dcid *string `json:"dcid"`
 
@@ -33,6 +38,7 @@ type CloudAccountNsxVSpecification struct {
 	Description string `json:"description,omitempty"`
 
 	// Host name for the NSX-v endpoint
+	// Example: nsxv.mycompany.com
 	// Required: true
 	HostName *string `json:"hostName"`
 
@@ -41,13 +47,16 @@ type CloudAccountNsxVSpecification struct {
 	Name *string `json:"name"`
 
 	// Password for the user used to authenticate with the cloud Account
+	// Example: cndhjslacd90ascdbasyoucbdh
 	// Required: true
 	Password *string `json:"password"`
 
 	// A set of tag keys and optional values to set on the Cloud Account
+	// Example: [ { \"key\" : \"env\", \"value\": \"dev\" } ]
 	Tags []*Tag `json:"tags"`
 
 	// Username to authenticate with the cloud account
+	// Example: administrator@mycompany.com
 	// Required: true
 	Username *string `json:"username"`
 }
@@ -123,7 +132,6 @@ func (m *CloudAccountNsxVSpecification) validatePassword(formats strfmt.Registry
 }
 
 func (m *CloudAccountNsxVSpecification) validateTags(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Tags) { // not required
 		return nil
 	}
@@ -151,6 +159,38 @@ func (m *CloudAccountNsxVSpecification) validateUsername(formats strfmt.Registry
 
 	if err := validate.Required("username", "body", m.Username); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this cloud account nsx v specification based on the context it is used
+func (m *CloudAccountNsxVSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateTags(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CloudAccountNsxVSpecification) contextValidateTags(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Tags); i++ {
+
+		if m.Tags[i] != nil {
+			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil

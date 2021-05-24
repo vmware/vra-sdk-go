@@ -18,69 +18,85 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewUpdateVmcCloudAccountParams creates a new UpdateVmcCloudAccountParams object
-// with the default values initialized.
+// NewUpdateVmcCloudAccountParams creates a new UpdateVmcCloudAccountParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewUpdateVmcCloudAccountParams() *UpdateVmcCloudAccountParams {
-	var ()
 	return &UpdateVmcCloudAccountParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewUpdateVmcCloudAccountParamsWithTimeout creates a new UpdateVmcCloudAccountParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewUpdateVmcCloudAccountParamsWithTimeout(timeout time.Duration) *UpdateVmcCloudAccountParams {
-	var ()
 	return &UpdateVmcCloudAccountParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewUpdateVmcCloudAccountParamsWithContext creates a new UpdateVmcCloudAccountParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewUpdateVmcCloudAccountParamsWithContext(ctx context.Context) *UpdateVmcCloudAccountParams {
-	var ()
 	return &UpdateVmcCloudAccountParams{
-
 		Context: ctx,
 	}
 }
 
 // NewUpdateVmcCloudAccountParamsWithHTTPClient creates a new UpdateVmcCloudAccountParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewUpdateVmcCloudAccountParamsWithHTTPClient(client *http.Client) *UpdateVmcCloudAccountParams {
-	var ()
 	return &UpdateVmcCloudAccountParams{
 		HTTPClient: client,
 	}
 }
 
-/*UpdateVmcCloudAccountParams contains all the parameters to send to the API endpoint
-for the update vmc cloud account operation typically these are written to a http.Request
+/* UpdateVmcCloudAccountParams contains all the parameters to send to the API endpoint
+   for the update vmc cloud account operation.
+
+   Typically these are written to a http.Request.
 */
 type UpdateVmcCloudAccountParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*Body
-	  VMC cloud account details to be updated
 
+	/* Body.
+
+	   VMC cloud account details to be updated
 	*/
 	Body *models.UpdateCloudAccountVmcSpecification
-	/*ID
-	  Cloud account id
 
+	/* ID.
+
+	   Cloud account id
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the update vmc cloud account params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UpdateVmcCloudAccountParams) WithDefaults() *UpdateVmcCloudAccountParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the update vmc cloud account params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UpdateVmcCloudAccountParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the update vmc cloud account params
@@ -161,18 +177,18 @@ func (o *UpdateVmcCloudAccountParams) WriteToRequest(r runtime.ClientRequest, re
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
-
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err

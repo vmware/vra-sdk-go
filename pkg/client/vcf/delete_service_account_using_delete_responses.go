@@ -26,7 +26,6 @@ func (o *DeleteServiceAccountUsingDELETEReader) ReadResponse(response runtime.Cl
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -37,7 +36,7 @@ func NewDeleteServiceAccountUsingDELETENoContent() *DeleteServiceAccountUsingDEL
 	return &DeleteServiceAccountUsingDELETENoContent{}
 }
 
-/*DeleteServiceAccountUsingDELETENoContent handles this case with default header values.
+/* DeleteServiceAccountUsingDELETENoContent describes a response with status code 204, with default header values.
 
 No Content
 */
