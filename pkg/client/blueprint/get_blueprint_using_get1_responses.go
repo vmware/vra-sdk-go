@@ -47,7 +47,6 @@ func (o *GetBlueprintUsingGET1Reader) ReadResponse(response runtime.ClientRespon
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewGetBlueprintUsingGET1OK() *GetBlueprintUsingGET1OK {
 	return &GetBlueprintUsingGET1OK{}
 }
 
-/*GetBlueprintUsingGET1OK handles this case with default header values.
+/* GetBlueprintUsingGET1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -69,7 +68,6 @@ type GetBlueprintUsingGET1OK struct {
 func (o *GetBlueprintUsingGET1OK) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprints/{blueprintId}][%d] getBlueprintUsingGET1OK  %+v", 200, o.Payload)
 }
-
 func (o *GetBlueprintUsingGET1OK) GetPayload() *models.Blueprint {
 	return o.Payload
 }
@@ -91,7 +89,7 @@ func NewGetBlueprintUsingGET1Unauthorized() *GetBlueprintUsingGET1Unauthorized {
 	return &GetBlueprintUsingGET1Unauthorized{}
 }
 
-/*GetBlueprintUsingGET1Unauthorized handles this case with default header values.
+/* GetBlueprintUsingGET1Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -112,7 +110,7 @@ func NewGetBlueprintUsingGET1Forbidden() *GetBlueprintUsingGET1Forbidden {
 	return &GetBlueprintUsingGET1Forbidden{}
 }
 
-/*GetBlueprintUsingGET1Forbidden handles this case with default header values.
+/* GetBlueprintUsingGET1Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -133,7 +131,7 @@ func NewGetBlueprintUsingGET1NotFound() *GetBlueprintUsingGET1NotFound {
 	return &GetBlueprintUsingGET1NotFound{}
 }
 
-/*GetBlueprintUsingGET1NotFound handles this case with default header values.
+/* GetBlueprintUsingGET1NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -144,7 +142,6 @@ type GetBlueprintUsingGET1NotFound struct {
 func (o *GetBlueprintUsingGET1NotFound) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprints/{blueprintId}][%d] getBlueprintUsingGET1NotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetBlueprintUsingGET1NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

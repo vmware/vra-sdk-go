@@ -18,69 +18,87 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewUpdateCatalogItemUsingPATCHParams creates a new UpdateCatalogItemUsingPATCHParams object
-// with the default values initialized.
+// NewUpdateCatalogItemUsingPATCHParams creates a new UpdateCatalogItemUsingPATCHParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewUpdateCatalogItemUsingPATCHParams() *UpdateCatalogItemUsingPATCHParams {
-	var ()
 	return &UpdateCatalogItemUsingPATCHParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewUpdateCatalogItemUsingPATCHParamsWithTimeout creates a new UpdateCatalogItemUsingPATCHParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewUpdateCatalogItemUsingPATCHParamsWithTimeout(timeout time.Duration) *UpdateCatalogItemUsingPATCHParams {
-	var ()
 	return &UpdateCatalogItemUsingPATCHParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewUpdateCatalogItemUsingPATCHParamsWithContext creates a new UpdateCatalogItemUsingPATCHParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewUpdateCatalogItemUsingPATCHParamsWithContext(ctx context.Context) *UpdateCatalogItemUsingPATCHParams {
-	var ()
 	return &UpdateCatalogItemUsingPATCHParams{
-
 		Context: ctx,
 	}
 }
 
 // NewUpdateCatalogItemUsingPATCHParamsWithHTTPClient creates a new UpdateCatalogItemUsingPATCHParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewUpdateCatalogItemUsingPATCHParamsWithHTTPClient(client *http.Client) *UpdateCatalogItemUsingPATCHParams {
-	var ()
 	return &UpdateCatalogItemUsingPATCHParams{
 		HTTPClient: client,
 	}
 }
 
-/*UpdateCatalogItemUsingPATCHParams contains all the parameters to send to the API endpoint
-for the update catalog item using p a t c h operation typically these are written to a http.Request
+/* UpdateCatalogItemUsingPATCHParams contains all the parameters to send to the API endpoint
+   for the update catalog item using p a t c h operation.
+
+   Typically these are written to a http.Request.
 */
 type UpdateCatalogItemUsingPATCHParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 	*/
 	APIVersion *string
-	/*ID
-	  The unique id of item to update.
 
+	/* ID.
+
+	   The unique id of item to update.
+
+	   Format: uuid
 	*/
 	ID strfmt.UUID
-	/*Patch
-	  The patch that apply to the item
 
+	/* Patch.
+
+	   The patch that apply to the item
 	*/
 	Patch *models.AdminCatalogItemPatch
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the update catalog item using p a t c h params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UpdateCatalogItemUsingPATCHParams) WithDefaults() *UpdateCatalogItemUsingPATCHParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the update catalog item using p a t c h params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UpdateCatalogItemUsingPATCHParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the update catalog item using p a t c h params
@@ -161,23 +179,23 @@ func (o *UpdateCatalogItemUsingPATCHParams) WriteToRequest(r runtime.ClientReque
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id
 	if err := r.SetPathParam("id", o.ID.String()); err != nil {
 		return err
 	}
-
 	if o.Patch != nil {
 		if err := r.SetBodyParam(o.Patch); err != nil {
 			return err

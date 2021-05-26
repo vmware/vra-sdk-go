@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -95,7 +96,6 @@ func (m *MarketplaceContent) Validate(formats strfmt.Registry) error {
 }
 
 func (m *MarketplaceContent) validateDocuments(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Documents) { // not required
 		return nil
 	}
@@ -120,7 +120,6 @@ func (m *MarketplaceContent) validateDocuments(formats strfmt.Registry) error {
 }
 
 func (m *MarketplaceContent) validateSupport(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Support) { // not required
 		return nil
 	}
@@ -138,13 +137,62 @@ func (m *MarketplaceContent) validateSupport(formats strfmt.Registry) error {
 }
 
 func (m *MarketplaceContent) validateUpdatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.UpdatedAt) { // not required
 		return nil
 	}
 
 	if err := validate.FormatOf("updatedAt", "body", "date-time", m.UpdatedAt.String(), formats); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this marketplace content based on the context it is used
+func (m *MarketplaceContent) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateDocuments(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSupport(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *MarketplaceContent) contextValidateDocuments(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Documents); i++ {
+
+		if m.Documents[i] != nil {
+			if err := m.Documents[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("documents" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *MarketplaceContent) contextValidateSupport(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Support != nil {
+		if err := m.Support.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("support")
+			}
+			return err
+		}
 	}
 
 	return nil

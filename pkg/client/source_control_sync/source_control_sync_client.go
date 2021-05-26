@@ -25,15 +25,18 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetSyncRequestUsingGET(params *GetSyncRequestUsingGETParams) (*GetSyncRequestUsingGETOK, error)
+	GetSyncRequestUsingGET(params *GetSyncRequestUsingGETParams, opts ...ClientOption) (*GetSyncRequestUsingGETOK, error)
 
-	ScheduleSyncAllUsingPOST(params *ScheduleSyncAllUsingPOSTParams) (*ScheduleSyncAllUsingPOSTAccepted, error)
+	ScheduleSyncAllUsingPOST(params *ScheduleSyncAllUsingPOSTParams, opts ...ClientOption) (*ScheduleSyncAllUsingPOSTAccepted, error)
 
-	ScheduleSyncUsingPOST(params *ScheduleSyncUsingPOSTParams) (*ScheduleSyncUsingPOSTAccepted, error)
+	ScheduleSyncUsingPOST(params *ScheduleSyncUsingPOSTParams, opts ...ClientOption) (*ScheduleSyncUsingPOSTAccepted, error)
 
-	SyncHistoryUsingGET(params *SyncHistoryUsingGETParams) (*SyncHistoryUsingGETOK, error)
+	SyncHistoryUsingGET(params *SyncHistoryUsingGETParams, opts ...ClientOption) (*SyncHistoryUsingGETOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -41,13 +44,12 @@ type ClientService interface {
 /*
   GetSyncRequestUsingGET gets a sync request by id
 */
-func (a *Client) GetSyncRequestUsingGET(params *GetSyncRequestUsingGETParams) (*GetSyncRequestUsingGETOK, error) {
+func (a *Client) GetSyncRequestUsingGET(params *GetSyncRequestUsingGETParams, opts ...ClientOption) (*GetSyncRequestUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSyncRequestUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getSyncRequestUsingGET",
 		Method:             "GET",
 		PathPattern:        "/content/api/sourcecontrol/sync-requests/{id}",
@@ -58,7 +60,12 @@ func (a *Client) GetSyncRequestUsingGET(params *GetSyncRequestUsingGETParams) (*
 		Reader:             &GetSyncRequestUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -77,13 +84,12 @@ func (a *Client) GetSyncRequestUsingGET(params *GetSyncRequestUsingGETParams) (*
 
   Request sync for the sources belonging to the user's projects or specified projects
 */
-func (a *Client) ScheduleSyncAllUsingPOST(params *ScheduleSyncAllUsingPOSTParams) (*ScheduleSyncAllUsingPOSTAccepted, error) {
+func (a *Client) ScheduleSyncAllUsingPOST(params *ScheduleSyncAllUsingPOSTParams, opts ...ClientOption) (*ScheduleSyncAllUsingPOSTAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewScheduleSyncAllUsingPOSTParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "scheduleSyncAllUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/content/api/sourcecontrol/sync-all-requests",
@@ -94,7 +100,12 @@ func (a *Client) ScheduleSyncAllUsingPOST(params *ScheduleSyncAllUsingPOSTParams
 		Reader:             &ScheduleSyncAllUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -113,13 +124,12 @@ func (a *Client) ScheduleSyncAllUsingPOST(params *ScheduleSyncAllUsingPOSTParams
 
   Request sync for a content source
 */
-func (a *Client) ScheduleSyncUsingPOST(params *ScheduleSyncUsingPOSTParams) (*ScheduleSyncUsingPOSTAccepted, error) {
+func (a *Client) ScheduleSyncUsingPOST(params *ScheduleSyncUsingPOSTParams, opts ...ClientOption) (*ScheduleSyncUsingPOSTAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewScheduleSyncUsingPOSTParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "scheduleSyncUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/content/api/sourcecontrol/sync-requests",
@@ -130,7 +140,12 @@ func (a *Client) ScheduleSyncUsingPOST(params *ScheduleSyncUsingPOSTParams) (*Sc
 		Reader:             &ScheduleSyncUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -149,13 +164,12 @@ func (a *Client) ScheduleSyncUsingPOST(params *ScheduleSyncUsingPOSTParams) (*Sc
 
   Get history for files synced via source control sync
 */
-func (a *Client) SyncHistoryUsingGET(params *SyncHistoryUsingGETParams) (*SyncHistoryUsingGETOK, error) {
+func (a *Client) SyncHistoryUsingGET(params *SyncHistoryUsingGETParams, opts ...ClientOption) (*SyncHistoryUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewSyncHistoryUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "syncHistoryUsingGET",
 		Method:             "GET",
 		PathPattern:        "/content/api/sourcecontrol/sync-history",
@@ -166,7 +180,12 @@ func (a *Client) SyncHistoryUsingGET(params *SyncHistoryUsingGETParams) (*SyncHi
 		Reader:             &SyncHistoryUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

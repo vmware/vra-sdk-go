@@ -41,7 +41,6 @@ func (o *DownloadRequestUsingPOSTReader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewDownloadRequestUsingPOSTAccepted() *DownloadRequestUsingPOSTAccepted {
 	return &DownloadRequestUsingPOSTAccepted{}
 }
 
-/*DownloadRequestUsingPOSTAccepted handles this case with default header values.
+/* DownloadRequestUsingPOSTAccepted describes a response with status code 202, with default header values.
 
 Submitted download request
 */
@@ -63,7 +62,6 @@ type DownloadRequestUsingPOSTAccepted struct {
 func (o *DownloadRequestUsingPOSTAccepted) Error() string {
 	return fmt.Sprintf("[POST /content/api/marketplace/download-requests][%d] downloadRequestUsingPOSTAccepted  %+v", 202, o.Payload)
 }
-
 func (o *DownloadRequestUsingPOSTAccepted) GetPayload() *models.MarketplaceContentDownloadRequest {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewDownloadRequestUsingPOSTBadRequest() *DownloadRequestUsingPOSTBadRequest
 	return &DownloadRequestUsingPOSTBadRequest{}
 }
 
-/*DownloadRequestUsingPOSTBadRequest handles this case with default header values.
+/* DownloadRequestUsingPOSTBadRequest describes a response with status code 400, with default header values.
 
 Invalid source type
 */
@@ -96,7 +94,6 @@ type DownloadRequestUsingPOSTBadRequest struct {
 func (o *DownloadRequestUsingPOSTBadRequest) Error() string {
 	return fmt.Sprintf("[POST /content/api/marketplace/download-requests][%d] downloadRequestUsingPOSTBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *DownloadRequestUsingPOSTBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -118,7 +115,7 @@ func NewDownloadRequestUsingPOSTNotFound() *DownloadRequestUsingPOSTNotFound {
 	return &DownloadRequestUsingPOSTNotFound{}
 }
 
-/*DownloadRequestUsingPOSTNotFound handles this case with default header values.
+/* DownloadRequestUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 source not found
 */
@@ -129,7 +126,6 @@ type DownloadRequestUsingPOSTNotFound struct {
 func (o *DownloadRequestUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /content/api/marketplace/download-requests][%d] downloadRequestUsingPOSTNotFound  %+v", 404, o.Payload)
 }
-
 func (o *DownloadRequestUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

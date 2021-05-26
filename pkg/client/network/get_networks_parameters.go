@@ -16,59 +16,73 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetNetworksParams creates a new GetNetworksParams object
-// with the default values initialized.
+// NewGetNetworksParams creates a new GetNetworksParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetNetworksParams() *GetNetworksParams {
-	var ()
 	return &GetNetworksParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetNetworksParamsWithTimeout creates a new GetNetworksParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetNetworksParamsWithTimeout(timeout time.Duration) *GetNetworksParams {
-	var ()
 	return &GetNetworksParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetNetworksParamsWithContext creates a new GetNetworksParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetNetworksParamsWithContext(ctx context.Context) *GetNetworksParams {
-	var ()
 	return &GetNetworksParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetNetworksParamsWithHTTPClient creates a new GetNetworksParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetNetworksParamsWithHTTPClient(client *http.Client) *GetNetworksParams {
-	var ()
 	return &GetNetworksParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetNetworksParams contains all the parameters to send to the API endpoint
-for the get networks operation typically these are written to a http.Request
+/* GetNetworksParams contains all the parameters to send to the API endpoint
+   for the get networks operation.
+
+   Typically these are written to a http.Request.
 */
 type GetNetworksParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get networks params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetNetworksParams) WithDefaults() *GetNetworksParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get networks params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetNetworksParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get networks params
@@ -127,16 +141,17 @@ func (o *GetNetworksParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

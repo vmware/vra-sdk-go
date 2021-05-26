@@ -41,7 +41,6 @@ func (o *CreateVSphereStorageProfileReader) ReadResponse(response runtime.Client
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewCreateVSphereStorageProfileCreated() *CreateVSphereStorageProfileCreated
 	return &CreateVSphereStorageProfileCreated{}
 }
 
-/*CreateVSphereStorageProfileCreated handles this case with default header values.
+/* CreateVSphereStorageProfileCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type CreateVSphereStorageProfileCreated struct {
 func (o *CreateVSphereStorageProfileCreated) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/storage-profiles-vsphere][%d] createVSphereStorageProfileCreated  %+v", 201, o.Payload)
 }
-
 func (o *CreateVSphereStorageProfileCreated) GetPayload() *models.VsphereStorageProfile {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewCreateVSphereStorageProfileBadRequest() *CreateVSphereStorageProfileBadR
 	return &CreateVSphereStorageProfileBadRequest{}
 }
 
-/*CreateVSphereStorageProfileBadRequest handles this case with default header values.
+/* CreateVSphereStorageProfileBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -96,7 +94,6 @@ type CreateVSphereStorageProfileBadRequest struct {
 func (o *CreateVSphereStorageProfileBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/storage-profiles-vsphere][%d] createVSphereStorageProfileBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateVSphereStorageProfileBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -118,18 +115,29 @@ func NewCreateVSphereStorageProfileForbidden() *CreateVSphereStorageProfileForbi
 	return &CreateVSphereStorageProfileForbidden{}
 }
 
-/*CreateVSphereStorageProfileForbidden handles this case with default header values.
+/* CreateVSphereStorageProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type CreateVSphereStorageProfileForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *CreateVSphereStorageProfileForbidden) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/storage-profiles-vsphere][%d] createVSphereStorageProfileForbidden ", 403)
+	return fmt.Sprintf("[POST /iaas/api/storage-profiles-vsphere][%d] createVSphereStorageProfileForbidden  %+v", 403, o.Payload)
+}
+func (o *CreateVSphereStorageProfileForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *CreateVSphereStorageProfileForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

@@ -53,7 +53,6 @@ func (o *ListBlueprintVersionsUsingGETReader) ReadResponse(response runtime.Clie
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -64,7 +63,7 @@ func NewListBlueprintVersionsUsingGETOK() *ListBlueprintVersionsUsingGETOK {
 	return &ListBlueprintVersionsUsingGETOK{}
 }
 
-/*ListBlueprintVersionsUsingGETOK handles this case with default header values.
+/* ListBlueprintVersionsUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -75,7 +74,6 @@ type ListBlueprintVersionsUsingGETOK struct {
 func (o *ListBlueprintVersionsUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprints/{blueprintId}/versions][%d] listBlueprintVersionsUsingGETOK  %+v", 200, o.Payload)
 }
-
 func (o *ListBlueprintVersionsUsingGETOK) GetPayload() *models.PageOfBlueprintVersion {
 	return o.Payload
 }
@@ -97,7 +95,7 @@ func NewListBlueprintVersionsUsingGETBadRequest() *ListBlueprintVersionsUsingGET
 	return &ListBlueprintVersionsUsingGETBadRequest{}
 }
 
-/*ListBlueprintVersionsUsingGETBadRequest handles this case with default header values.
+/* ListBlueprintVersionsUsingGETBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -108,7 +106,6 @@ type ListBlueprintVersionsUsingGETBadRequest struct {
 func (o *ListBlueprintVersionsUsingGETBadRequest) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprints/{blueprintId}/versions][%d] listBlueprintVersionsUsingGETBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *ListBlueprintVersionsUsingGETBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -130,7 +127,7 @@ func NewListBlueprintVersionsUsingGETUnauthorized() *ListBlueprintVersionsUsingG
 	return &ListBlueprintVersionsUsingGETUnauthorized{}
 }
 
-/*ListBlueprintVersionsUsingGETUnauthorized handles this case with default header values.
+/* ListBlueprintVersionsUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -151,7 +148,7 @@ func NewListBlueprintVersionsUsingGETForbidden() *ListBlueprintVersionsUsingGETF
 	return &ListBlueprintVersionsUsingGETForbidden{}
 }
 
-/*ListBlueprintVersionsUsingGETForbidden handles this case with default header values.
+/* ListBlueprintVersionsUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -172,7 +169,7 @@ func NewListBlueprintVersionsUsingGETNotFound() *ListBlueprintVersionsUsingGETNo
 	return &ListBlueprintVersionsUsingGETNotFound{}
 }
 
-/*ListBlueprintVersionsUsingGETNotFound handles this case with default header values.
+/* ListBlueprintVersionsUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -183,7 +180,6 @@ type ListBlueprintVersionsUsingGETNotFound struct {
 func (o *ListBlueprintVersionsUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprints/{blueprintId}/versions][%d] listBlueprintVersionsUsingGETNotFound  %+v", 404, o.Payload)
 }
-
 func (o *ListBlueprintVersionsUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

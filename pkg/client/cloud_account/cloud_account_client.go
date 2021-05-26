@@ -25,125 +25,128 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateAwsCloudAccount(params *CreateAwsCloudAccountParams) (*CreateAwsCloudAccountCreated, error)
+	CreateAwsCloudAccount(params *CreateAwsCloudAccountParams, opts ...ClientOption) (*CreateAwsCloudAccountCreated, error)
 
-	CreateAzureCloudAccount(params *CreateAzureCloudAccountParams) (*CreateAzureCloudAccountCreated, error)
+	CreateAzureCloudAccount(params *CreateAzureCloudAccountParams, opts ...ClientOption) (*CreateAzureCloudAccountCreated, error)
 
-	CreateCloudAccount(params *CreateCloudAccountParams) (*CreateCloudAccountCreated, error)
+	CreateCloudAccount(params *CreateCloudAccountParams, opts ...ClientOption) (*CreateCloudAccountCreated, error)
 
-	CreateGcpCloudAccount(params *CreateGcpCloudAccountParams) (*CreateGcpCloudAccountCreated, error)
+	CreateGcpCloudAccount(params *CreateGcpCloudAccountParams, opts ...ClientOption) (*CreateGcpCloudAccountCreated, error)
 
-	CreateNsxTCloudAccount(params *CreateNsxTCloudAccountParams) (*CreateNsxTCloudAccountCreated, error)
+	CreateNsxTCloudAccount(params *CreateNsxTCloudAccountParams, opts ...ClientOption) (*CreateNsxTCloudAccountCreated, error)
 
-	CreateNsxVCloudAccount(params *CreateNsxVCloudAccountParams) (*CreateNsxVCloudAccountCreated, error)
+	CreateNsxVCloudAccount(params *CreateNsxVCloudAccountParams, opts ...ClientOption) (*CreateNsxVCloudAccountCreated, error)
 
-	CreateVSphereCloudAccount(params *CreateVSphereCloudAccountParams) (*CreateVSphereCloudAccountCreated, error)
+	CreateVSphereCloudAccount(params *CreateVSphereCloudAccountParams, opts ...ClientOption) (*CreateVSphereCloudAccountCreated, error)
 
-	CreateVcfCloudAccount(params *CreateVcfCloudAccountParams) (*CreateVcfCloudAccountCreated, error)
+	CreateVcfCloudAccount(params *CreateVcfCloudAccountParams, opts ...ClientOption) (*CreateVcfCloudAccountCreated, error)
 
-	CreateVmcCloudAccount(params *CreateVmcCloudAccountParams) (*CreateVmcCloudAccountCreated, error)
+	CreateVmcCloudAccount(params *CreateVmcCloudAccountParams, opts ...ClientOption) (*CreateVmcCloudAccountCreated, error)
 
-	DeleteAwsCloudAccount(params *DeleteAwsCloudAccountParams) (*DeleteAwsCloudAccountNoContent, error)
+	DeleteAwsCloudAccount(params *DeleteAwsCloudAccountParams, opts ...ClientOption) (*DeleteAwsCloudAccountNoContent, error)
 
-	DeleteAzureCloudAccount(params *DeleteAzureCloudAccountParams) (*DeleteAzureCloudAccountNoContent, error)
+	DeleteAzureCloudAccount(params *DeleteAzureCloudAccountParams, opts ...ClientOption) (*DeleteAzureCloudAccountNoContent, error)
 
-	DeleteCloudAccount(params *DeleteCloudAccountParams) (*DeleteCloudAccountNoContent, error)
+	DeleteCloudAccount(params *DeleteCloudAccountParams, opts ...ClientOption) (*DeleteCloudAccountNoContent, error)
 
-	DeleteCloudAccountNsxT(params *DeleteCloudAccountNsxTParams) (*DeleteCloudAccountNsxTNoContent, error)
+	DeleteCloudAccountNsxT(params *DeleteCloudAccountNsxTParams, opts ...ClientOption) (*DeleteCloudAccountNsxTNoContent, error)
 
-	DeleteCloudAccountNsxV(params *DeleteCloudAccountNsxVParams) (*DeleteCloudAccountNsxVNoContent, error)
+	DeleteCloudAccountNsxV(params *DeleteCloudAccountNsxVParams, opts ...ClientOption) (*DeleteCloudAccountNsxVNoContent, error)
 
-	DeleteGcpCloudAccount(params *DeleteGcpCloudAccountParams) (*DeleteGcpCloudAccountNoContent, error)
+	DeleteGcpCloudAccount(params *DeleteGcpCloudAccountParams, opts ...ClientOption) (*DeleteGcpCloudAccountNoContent, error)
 
-	DeleteVSphereCloudAccount(params *DeleteVSphereCloudAccountParams) (*DeleteVSphereCloudAccountNoContent, error)
+	DeleteVSphereCloudAccount(params *DeleteVSphereCloudAccountParams, opts ...ClientOption) (*DeleteVSphereCloudAccountNoContent, error)
 
-	DeleteVcfCloudAccount(params *DeleteVcfCloudAccountParams) (*DeleteVcfCloudAccountNoContent, error)
+	DeleteVcfCloudAccount(params *DeleteVcfCloudAccountParams, opts ...ClientOption) (*DeleteVcfCloudAccountNoContent, error)
 
-	DeleteVmcCloudAccount(params *DeleteVmcCloudAccountParams) (*DeleteVmcCloudAccountNoContent, error)
+	DeleteVmcCloudAccount(params *DeleteVmcCloudAccountParams, opts ...ClientOption) (*DeleteVmcCloudAccountNoContent, error)
 
-	EnumerateAwsRegions(params *EnumerateAwsRegionsParams) (*EnumerateAwsRegionsOK, error)
+	EnumerateAwsRegions(params *EnumerateAwsRegionsParams, opts ...ClientOption) (*EnumerateAwsRegionsOK, error)
 
-	EnumerateAzureRegions(params *EnumerateAzureRegionsParams) (*EnumerateAzureRegionsOK, error)
+	EnumerateAzureRegions(params *EnumerateAzureRegionsParams, opts ...ClientOption) (*EnumerateAzureRegionsOK, error)
 
-	EnumerateGcpRegions(params *EnumerateGcpRegionsParams) (*EnumerateGcpRegionsOK, error)
+	EnumerateGcpRegions(params *EnumerateGcpRegionsParams, opts ...ClientOption) (*EnumerateGcpRegionsOK, error)
 
-	EnumeratePrivateImages(params *EnumeratePrivateImagesParams) error
+	EnumeratePrivateImages(params *EnumeratePrivateImagesParams, opts ...ClientOption) error
 
-	EnumeratePrivateImagesAWS(params *EnumeratePrivateImagesAWSParams) error
+	EnumeratePrivateImagesAWS(params *EnumeratePrivateImagesAWSParams, opts ...ClientOption) error
 
-	EnumeratePrivateImagesAzure(params *EnumeratePrivateImagesAzureParams) error
+	EnumeratePrivateImagesAzure(params *EnumeratePrivateImagesAzureParams, opts ...ClientOption) error
 
-	EnumeratePrivateImagesGcp(params *EnumeratePrivateImagesGcpParams) error
+	EnumeratePrivateImagesGcp(params *EnumeratePrivateImagesGcpParams, opts ...ClientOption) error
 
-	EnumeratePrivateImagesVCF(params *EnumeratePrivateImagesVCFParams) error
+	EnumeratePrivateImagesVCF(params *EnumeratePrivateImagesVCFParams, opts ...ClientOption) error
 
-	EnumeratePrivateImagesVMC(params *EnumeratePrivateImagesVMCParams) error
+	EnumeratePrivateImagesVMC(params *EnumeratePrivateImagesVMCParams, opts ...ClientOption) error
 
-	EnumeratePrivateImagesVSphere(params *EnumeratePrivateImagesVSphereParams) error
+	EnumeratePrivateImagesVSphere(params *EnumeratePrivateImagesVSphereParams, opts ...ClientOption) error
 
-	EnumerateRegions(params *EnumerateRegionsParams) (*EnumerateRegionsOK, error)
+	EnumerateRegions(params *EnumerateRegionsParams, opts ...ClientOption) (*EnumerateRegionsOK, error)
 
-	EnumerateVSphereRegions(params *EnumerateVSphereRegionsParams) (*EnumerateVSphereRegionsOK, error)
+	EnumerateVSphereRegions(params *EnumerateVSphereRegionsParams, opts ...ClientOption) (*EnumerateVSphereRegionsOK, error)
 
-	EnumerateVcfRegions(params *EnumerateVcfRegionsParams) (*EnumerateVcfRegionsOK, error)
+	EnumerateVcfRegions(params *EnumerateVcfRegionsParams, opts ...ClientOption) (*EnumerateVcfRegionsOK, error)
 
-	EnumerateVmcRegions(params *EnumerateVmcRegionsParams) (*EnumerateVmcRegionsOK, error)
+	EnumerateVmcRegions(params *EnumerateVmcRegionsParams, opts ...ClientOption) (*EnumerateVmcRegionsOK, error)
 
-	GetAwsCloudAccount(params *GetAwsCloudAccountParams) (*GetAwsCloudAccountOK, error)
+	GetAwsCloudAccount(params *GetAwsCloudAccountParams, opts ...ClientOption) (*GetAwsCloudAccountOK, error)
 
-	GetAwsCloudAccounts(params *GetAwsCloudAccountsParams) (*GetAwsCloudAccountsOK, error)
+	GetAwsCloudAccounts(params *GetAwsCloudAccountsParams, opts ...ClientOption) (*GetAwsCloudAccountsOK, error)
 
-	GetAzureCloudAccount(params *GetAzureCloudAccountParams) (*GetAzureCloudAccountOK, error)
+	GetAzureCloudAccount(params *GetAzureCloudAccountParams, opts ...ClientOption) (*GetAzureCloudAccountOK, error)
 
-	GetAzureCloudAccounts(params *GetAzureCloudAccountsParams) (*GetAzureCloudAccountsOK, error)
+	GetAzureCloudAccounts(params *GetAzureCloudAccountsParams, opts ...ClientOption) (*GetAzureCloudAccountsOK, error)
 
-	GetCloudAccount(params *GetCloudAccountParams) (*GetCloudAccountOK, error)
+	GetCloudAccount(params *GetCloudAccountParams, opts ...ClientOption) (*GetCloudAccountOK, error)
 
-	GetCloudAccounts(params *GetCloudAccountsParams) (*GetCloudAccountsOK, error)
+	GetCloudAccounts(params *GetCloudAccountsParams, opts ...ClientOption) (*GetCloudAccountsOK, error)
 
-	GetGcpCloudAccount(params *GetGcpCloudAccountParams) (*GetGcpCloudAccountOK, error)
+	GetGcpCloudAccount(params *GetGcpCloudAccountParams, opts ...ClientOption) (*GetGcpCloudAccountOK, error)
 
-	GetGcpCloudAccounts(params *GetGcpCloudAccountsParams) (*GetGcpCloudAccountsOK, error)
+	GetGcpCloudAccounts(params *GetGcpCloudAccountsParams, opts ...ClientOption) (*GetGcpCloudAccountsOK, error)
 
-	GetNsxTCloudAccount(params *GetNsxTCloudAccountParams) (*GetNsxTCloudAccountOK, error)
+	GetNsxTCloudAccount(params *GetNsxTCloudAccountParams, opts ...ClientOption) (*GetNsxTCloudAccountOK, error)
 
-	GetNsxTCloudAccounts(params *GetNsxTCloudAccountsParams) (*GetNsxTCloudAccountsOK, error)
+	GetNsxTCloudAccounts(params *GetNsxTCloudAccountsParams, opts ...ClientOption) (*GetNsxTCloudAccountsOK, error)
 
-	GetNsxVCloudAccount(params *GetNsxVCloudAccountParams) (*GetNsxVCloudAccountOK, error)
+	GetNsxVCloudAccount(params *GetNsxVCloudAccountParams, opts ...ClientOption) (*GetNsxVCloudAccountOK, error)
 
-	GetNsxVCloudAccounts(params *GetNsxVCloudAccountsParams) (*GetNsxVCloudAccountsOK, error)
+	GetNsxVCloudAccounts(params *GetNsxVCloudAccountsParams, opts ...ClientOption) (*GetNsxVCloudAccountsOK, error)
 
-	GetVSphereCloudAccount(params *GetVSphereCloudAccountParams) (*GetVSphereCloudAccountOK, error)
+	GetVSphereCloudAccount(params *GetVSphereCloudAccountParams, opts ...ClientOption) (*GetVSphereCloudAccountOK, error)
 
-	GetVSphereCloudAccounts(params *GetVSphereCloudAccountsParams) (*GetVSphereCloudAccountsOK, error)
+	GetVSphereCloudAccounts(params *GetVSphereCloudAccountsParams, opts ...ClientOption) (*GetVSphereCloudAccountsOK, error)
 
-	GetVcfCloudAccount(params *GetVcfCloudAccountParams) (*GetVcfCloudAccountOK, error)
+	GetVcfCloudAccount(params *GetVcfCloudAccountParams, opts ...ClientOption) (*GetVcfCloudAccountOK, error)
 
-	GetVcfCloudAccounts(params *GetVcfCloudAccountsParams) (*GetVcfCloudAccountsOK, error)
+	GetVcfCloudAccounts(params *GetVcfCloudAccountsParams, opts ...ClientOption) (*GetVcfCloudAccountsOK, error)
 
-	GetVmcCloudAccount(params *GetVmcCloudAccountParams) (*GetVmcCloudAccountOK, error)
+	GetVmcCloudAccount(params *GetVmcCloudAccountParams, opts ...ClientOption) (*GetVmcCloudAccountOK, error)
 
-	GetVmcCloudAccounts(params *GetVmcCloudAccountsParams) (*GetVmcCloudAccountsOK, error)
+	GetVmcCloudAccounts(params *GetVmcCloudAccountsParams, opts ...ClientOption) (*GetVmcCloudAccountsOK, error)
 
-	UpdateAwsCloudAccount(params *UpdateAwsCloudAccountParams) (*UpdateAwsCloudAccountOK, error)
+	UpdateAwsCloudAccount(params *UpdateAwsCloudAccountParams, opts ...ClientOption) (*UpdateAwsCloudAccountOK, error)
 
-	UpdateAzureCloudAccount(params *UpdateAzureCloudAccountParams) (*UpdateAzureCloudAccountOK, error)
+	UpdateAzureCloudAccount(params *UpdateAzureCloudAccountParams, opts ...ClientOption) (*UpdateAzureCloudAccountOK, error)
 
-	UpdateCloudAccount(params *UpdateCloudAccountParams) (*UpdateCloudAccountOK, error)
+	UpdateCloudAccount(params *UpdateCloudAccountParams, opts ...ClientOption) (*UpdateCloudAccountOK, error)
 
-	UpdateGcpCloudAccount(params *UpdateGcpCloudAccountParams) (*UpdateGcpCloudAccountOK, error)
+	UpdateGcpCloudAccount(params *UpdateGcpCloudAccountParams, opts ...ClientOption) (*UpdateGcpCloudAccountOK, error)
 
-	UpdateNsxTCloudAccount(params *UpdateNsxTCloudAccountParams) (*UpdateNsxTCloudAccountOK, error)
+	UpdateNsxTCloudAccount(params *UpdateNsxTCloudAccountParams, opts ...ClientOption) (*UpdateNsxTCloudAccountOK, error)
 
-	UpdateNsxVCloudAccount(params *UpdateNsxVCloudAccountParams) (*UpdateNsxVCloudAccountOK, error)
+	UpdateNsxVCloudAccount(params *UpdateNsxVCloudAccountParams, opts ...ClientOption) (*UpdateNsxVCloudAccountOK, error)
 
-	UpdateVSphereCloudAccount(params *UpdateVSphereCloudAccountParams) (*UpdateVSphereCloudAccountOK, error)
+	UpdateVSphereCloudAccount(params *UpdateVSphereCloudAccountParams, opts ...ClientOption) (*UpdateVSphereCloudAccountOK, error)
 
-	UpdateVcfCloudAccount(params *UpdateVcfCloudAccountParams) (*UpdateVcfCloudAccountOK, error)
+	UpdateVcfCloudAccount(params *UpdateVcfCloudAccountParams, opts ...ClientOption) (*UpdateVcfCloudAccountOK, error)
 
-	UpdateVmcCloudAccount(params *UpdateVmcCloudAccountParams) (*UpdateVmcCloudAccountOK, error)
+	UpdateVmcCloudAccount(params *UpdateVmcCloudAccountParams, opts ...ClientOption) (*UpdateVmcCloudAccountOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -153,13 +156,12 @@ type ClientService interface {
 
   Create an AWS cloud account in the current organization
 */
-func (a *Client) CreateAwsCloudAccount(params *CreateAwsCloudAccountParams) (*CreateAwsCloudAccountCreated, error) {
+func (a *Client) CreateAwsCloudAccount(params *CreateAwsCloudAccountParams, opts ...ClientOption) (*CreateAwsCloudAccountCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateAwsCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createAwsCloudAccount",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-aws",
@@ -170,7 +172,12 @@ func (a *Client) CreateAwsCloudAccount(params *CreateAwsCloudAccountParams) (*Cr
 		Reader:             &CreateAwsCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -189,13 +196,12 @@ func (a *Client) CreateAwsCloudAccount(params *CreateAwsCloudAccountParams) (*Cr
 
   Create an Azure cloud account in the current organization
 */
-func (a *Client) CreateAzureCloudAccount(params *CreateAzureCloudAccountParams) (*CreateAzureCloudAccountCreated, error) {
+func (a *Client) CreateAzureCloudAccount(params *CreateAzureCloudAccountParams, opts ...ClientOption) (*CreateAzureCloudAccountCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateAzureCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createAzureCloudAccount",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-azure",
@@ -206,7 +212,12 @@ func (a *Client) CreateAzureCloudAccount(params *CreateAzureCloudAccountParams) 
 		Reader:             &CreateAzureCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -225,13 +236,12 @@ func (a *Client) CreateAzureCloudAccount(params *CreateAzureCloudAccountParams) 
 
   Create a cloud account in the current organization
 */
-func (a *Client) CreateCloudAccount(params *CreateCloudAccountParams) (*CreateCloudAccountCreated, error) {
+func (a *Client) CreateCloudAccount(params *CreateCloudAccountParams, opts ...ClientOption) (*CreateCloudAccountCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createCloudAccount",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts",
@@ -242,7 +252,12 @@ func (a *Client) CreateCloudAccount(params *CreateCloudAccountParams) (*CreateCl
 		Reader:             &CreateCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -261,13 +276,12 @@ func (a *Client) CreateCloudAccount(params *CreateCloudAccountParams) (*CreateCl
 
   Create an GCP cloud account in the current organization
 */
-func (a *Client) CreateGcpCloudAccount(params *CreateGcpCloudAccountParams) (*CreateGcpCloudAccountCreated, error) {
+func (a *Client) CreateGcpCloudAccount(params *CreateGcpCloudAccountParams, opts ...ClientOption) (*CreateGcpCloudAccountCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateGcpCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createGcpCloudAccount",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-gcp",
@@ -278,7 +292,12 @@ func (a *Client) CreateGcpCloudAccount(params *CreateGcpCloudAccountParams) (*Cr
 		Reader:             &CreateGcpCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -297,13 +316,12 @@ func (a *Client) CreateGcpCloudAccount(params *CreateGcpCloudAccountParams) (*Cr
 
   Create a NSX-T cloud account in the current organization
 */
-func (a *Client) CreateNsxTCloudAccount(params *CreateNsxTCloudAccountParams) (*CreateNsxTCloudAccountCreated, error) {
+func (a *Client) CreateNsxTCloudAccount(params *CreateNsxTCloudAccountParams, opts ...ClientOption) (*CreateNsxTCloudAccountCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateNsxTCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createNsxTCloudAccount",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-nsx-t",
@@ -314,7 +332,12 @@ func (a *Client) CreateNsxTCloudAccount(params *CreateNsxTCloudAccountParams) (*
 		Reader:             &CreateNsxTCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -333,13 +356,12 @@ func (a *Client) CreateNsxTCloudAccount(params *CreateNsxTCloudAccountParams) (*
 
   Create a NSX-V cloud account within the current organization
 */
-func (a *Client) CreateNsxVCloudAccount(params *CreateNsxVCloudAccountParams) (*CreateNsxVCloudAccountCreated, error) {
+func (a *Client) CreateNsxVCloudAccount(params *CreateNsxVCloudAccountParams, opts ...ClientOption) (*CreateNsxVCloudAccountCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateNsxVCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createNsxVCloudAccount",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-nsx-v",
@@ -350,7 +372,12 @@ func (a *Client) CreateNsxVCloudAccount(params *CreateNsxVCloudAccountParams) (*
 		Reader:             &CreateNsxVCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -369,13 +396,12 @@ func (a *Client) CreateNsxVCloudAccount(params *CreateNsxVCloudAccountParams) (*
 
   Create a vSphere cloud account within the current organization
 */
-func (a *Client) CreateVSphereCloudAccount(params *CreateVSphereCloudAccountParams) (*CreateVSphereCloudAccountCreated, error) {
+func (a *Client) CreateVSphereCloudAccount(params *CreateVSphereCloudAccountParams, opts ...ClientOption) (*CreateVSphereCloudAccountCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateVSphereCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createVSphereCloudAccount",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-vsphere",
@@ -386,7 +412,12 @@ func (a *Client) CreateVSphereCloudAccount(params *CreateVSphereCloudAccountPara
 		Reader:             &CreateVSphereCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -405,13 +436,12 @@ func (a *Client) CreateVSphereCloudAccount(params *CreateVSphereCloudAccountPara
 
   Create an VCF cloud account in the current organization
 */
-func (a *Client) CreateVcfCloudAccount(params *CreateVcfCloudAccountParams) (*CreateVcfCloudAccountCreated, error) {
+func (a *Client) CreateVcfCloudAccount(params *CreateVcfCloudAccountParams, opts ...ClientOption) (*CreateVcfCloudAccountCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateVcfCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createVcfCloudAccount",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-vcf",
@@ -422,7 +452,12 @@ func (a *Client) CreateVcfCloudAccount(params *CreateVcfCloudAccountParams) (*Cr
 		Reader:             &CreateVcfCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -441,13 +476,12 @@ func (a *Client) CreateVcfCloudAccount(params *CreateVcfCloudAccountParams) (*Cr
 
   Create an VMC cloud account in the current organization
 */
-func (a *Client) CreateVmcCloudAccount(params *CreateVmcCloudAccountParams) (*CreateVmcCloudAccountCreated, error) {
+func (a *Client) CreateVmcCloudAccount(params *CreateVmcCloudAccountParams, opts ...ClientOption) (*CreateVmcCloudAccountCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateVmcCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createVmcCloudAccount",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-vmc",
@@ -458,7 +492,12 @@ func (a *Client) CreateVmcCloudAccount(params *CreateVmcCloudAccountParams) (*Cr
 		Reader:             &CreateVmcCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -477,13 +516,12 @@ func (a *Client) CreateVmcCloudAccount(params *CreateVmcCloudAccountParams) (*Cr
 
   Delete an AWS cloud account with a given id
 */
-func (a *Client) DeleteAwsCloudAccount(params *DeleteAwsCloudAccountParams) (*DeleteAwsCloudAccountNoContent, error) {
+func (a *Client) DeleteAwsCloudAccount(params *DeleteAwsCloudAccountParams, opts ...ClientOption) (*DeleteAwsCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteAwsCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteAwsCloudAccount",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/cloud-accounts-aws/{id}",
@@ -494,7 +532,12 @@ func (a *Client) DeleteAwsCloudAccount(params *DeleteAwsCloudAccountParams) (*De
 		Reader:             &DeleteAwsCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -513,13 +556,12 @@ func (a *Client) DeleteAwsCloudAccount(params *DeleteAwsCloudAccountParams) (*De
 
   Delete an Azure Cloud Account with a given id
 */
-func (a *Client) DeleteAzureCloudAccount(params *DeleteAzureCloudAccountParams) (*DeleteAzureCloudAccountNoContent, error) {
+func (a *Client) DeleteAzureCloudAccount(params *DeleteAzureCloudAccountParams, opts ...ClientOption) (*DeleteAzureCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteAzureCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteAzureCloudAccount",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/cloud-accounts-azure/{id}",
@@ -530,7 +572,12 @@ func (a *Client) DeleteAzureCloudAccount(params *DeleteAzureCloudAccountParams) 
 		Reader:             &DeleteAzureCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -549,13 +596,12 @@ func (a *Client) DeleteAzureCloudAccount(params *DeleteAzureCloudAccountParams) 
 
   Delete a cloud account with a given id
 */
-func (a *Client) DeleteCloudAccount(params *DeleteCloudAccountParams) (*DeleteCloudAccountNoContent, error) {
+func (a *Client) DeleteCloudAccount(params *DeleteCloudAccountParams, opts ...ClientOption) (*DeleteCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteCloudAccount",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/cloud-accounts/{id}",
@@ -566,7 +612,12 @@ func (a *Client) DeleteCloudAccount(params *DeleteCloudAccountParams) (*DeleteCl
 		Reader:             &DeleteCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -585,13 +636,12 @@ func (a *Client) DeleteCloudAccount(params *DeleteCloudAccountParams) (*DeleteCl
 
   Delete a NSX-T cloud account with a given id
 */
-func (a *Client) DeleteCloudAccountNsxT(params *DeleteCloudAccountNsxTParams) (*DeleteCloudAccountNsxTNoContent, error) {
+func (a *Client) DeleteCloudAccountNsxT(params *DeleteCloudAccountNsxTParams, opts ...ClientOption) (*DeleteCloudAccountNsxTNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteCloudAccountNsxTParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteCloudAccountNsx-T",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/cloud-accounts-nsx-t/{id}",
@@ -602,7 +652,12 @@ func (a *Client) DeleteCloudAccountNsxT(params *DeleteCloudAccountNsxTParams) (*
 		Reader:             &DeleteCloudAccountNsxTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -621,13 +676,12 @@ func (a *Client) DeleteCloudAccountNsxT(params *DeleteCloudAccountNsxTParams) (*
 
   Delete a NSV-V cloud account with a given id
 */
-func (a *Client) DeleteCloudAccountNsxV(params *DeleteCloudAccountNsxVParams) (*DeleteCloudAccountNsxVNoContent, error) {
+func (a *Client) DeleteCloudAccountNsxV(params *DeleteCloudAccountNsxVParams, opts ...ClientOption) (*DeleteCloudAccountNsxVNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteCloudAccountNsxVParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteCloudAccountNsx-V",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/cloud-accounts-nsx-v/{id}",
@@ -638,7 +692,12 @@ func (a *Client) DeleteCloudAccountNsxV(params *DeleteCloudAccountNsxVParams) (*
 		Reader:             &DeleteCloudAccountNsxVReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -657,13 +716,12 @@ func (a *Client) DeleteCloudAccountNsxV(params *DeleteCloudAccountNsxVParams) (*
 
   Delete an GCP cloud account with a given id
 */
-func (a *Client) DeleteGcpCloudAccount(params *DeleteGcpCloudAccountParams) (*DeleteGcpCloudAccountNoContent, error) {
+func (a *Client) DeleteGcpCloudAccount(params *DeleteGcpCloudAccountParams, opts ...ClientOption) (*DeleteGcpCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteGcpCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteGcpCloudAccount",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/cloud-accounts-gcp/{id}",
@@ -674,7 +732,12 @@ func (a *Client) DeleteGcpCloudAccount(params *DeleteGcpCloudAccountParams) (*De
 		Reader:             &DeleteGcpCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -693,13 +756,12 @@ func (a *Client) DeleteGcpCloudAccount(params *DeleteGcpCloudAccountParams) (*De
 
   Delete a vSphere Cloud Account with a given id
 */
-func (a *Client) DeleteVSphereCloudAccount(params *DeleteVSphereCloudAccountParams) (*DeleteVSphereCloudAccountNoContent, error) {
+func (a *Client) DeleteVSphereCloudAccount(params *DeleteVSphereCloudAccountParams, opts ...ClientOption) (*DeleteVSphereCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteVSphereCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteVSphereCloudAccount",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/cloud-accounts-vsphere/{id}",
@@ -710,7 +772,12 @@ func (a *Client) DeleteVSphereCloudAccount(params *DeleteVSphereCloudAccountPara
 		Reader:             &DeleteVSphereCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -729,13 +796,12 @@ func (a *Client) DeleteVSphereCloudAccount(params *DeleteVSphereCloudAccountPara
 
   Delete an VCF cloud account with a given id
 */
-func (a *Client) DeleteVcfCloudAccount(params *DeleteVcfCloudAccountParams) (*DeleteVcfCloudAccountNoContent, error) {
+func (a *Client) DeleteVcfCloudAccount(params *DeleteVcfCloudAccountParams, opts ...ClientOption) (*DeleteVcfCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteVcfCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteVcfCloudAccount",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/cloud-accounts-vcf/{id}",
@@ -746,7 +812,12 @@ func (a *Client) DeleteVcfCloudAccount(params *DeleteVcfCloudAccountParams) (*De
 		Reader:             &DeleteVcfCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -765,13 +836,12 @@ func (a *Client) DeleteVcfCloudAccount(params *DeleteVcfCloudAccountParams) (*De
 
   Delete an VMC cloud account with a given id
 */
-func (a *Client) DeleteVmcCloudAccount(params *DeleteVmcCloudAccountParams) (*DeleteVmcCloudAccountNoContent, error) {
+func (a *Client) DeleteVmcCloudAccount(params *DeleteVmcCloudAccountParams, opts ...ClientOption) (*DeleteVmcCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteVmcCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteVmcCloudAccount",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/cloud-accounts-vmc/{id}",
@@ -782,7 +852,12 @@ func (a *Client) DeleteVmcCloudAccount(params *DeleteVmcCloudAccountParams) (*De
 		Reader:             &DeleteVmcCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -801,13 +876,12 @@ func (a *Client) DeleteVmcCloudAccount(params *DeleteVmcCloudAccountParams) (*De
 
   Get the available regions for specified AWS cloud account
 */
-func (a *Client) EnumerateAwsRegions(params *EnumerateAwsRegionsParams) (*EnumerateAwsRegionsOK, error) {
+func (a *Client) EnumerateAwsRegions(params *EnumerateAwsRegionsParams, opts ...ClientOption) (*EnumerateAwsRegionsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewEnumerateAwsRegionsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "enumerateAwsRegions",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-aws/region-enumeration",
@@ -818,7 +892,12 @@ func (a *Client) EnumerateAwsRegions(params *EnumerateAwsRegionsParams) (*Enumer
 		Reader:             &EnumerateAwsRegionsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -837,13 +916,12 @@ func (a *Client) EnumerateAwsRegions(params *EnumerateAwsRegionsParams) (*Enumer
 
   Get the available regions for specified Azure cloud account
 */
-func (a *Client) EnumerateAzureRegions(params *EnumerateAzureRegionsParams) (*EnumerateAzureRegionsOK, error) {
+func (a *Client) EnumerateAzureRegions(params *EnumerateAzureRegionsParams, opts ...ClientOption) (*EnumerateAzureRegionsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewEnumerateAzureRegionsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "enumerateAzureRegions",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-azure/region-enumeration",
@@ -854,7 +932,12 @@ func (a *Client) EnumerateAzureRegions(params *EnumerateAzureRegionsParams) (*En
 		Reader:             &EnumerateAzureRegionsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -873,13 +956,12 @@ func (a *Client) EnumerateAzureRegions(params *EnumerateAzureRegionsParams) (*En
 
   Get the available regions for specified GCP cloud account
 */
-func (a *Client) EnumerateGcpRegions(params *EnumerateGcpRegionsParams) (*EnumerateGcpRegionsOK, error) {
+func (a *Client) EnumerateGcpRegions(params *EnumerateGcpRegionsParams, opts ...ClientOption) (*EnumerateGcpRegionsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewEnumerateGcpRegionsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "enumerateGcpRegions",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-gcp/region-enumeration",
@@ -890,7 +972,12 @@ func (a *Client) EnumerateGcpRegions(params *EnumerateGcpRegionsParams) (*Enumer
 		Reader:             &EnumerateGcpRegionsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -907,13 +994,12 @@ func (a *Client) EnumerateGcpRegions(params *EnumerateGcpRegionsParams) (*Enumer
 /*
   EnumeratePrivateImages enumerates all private images for enabled regions of the specified cloud account
 */
-func (a *Client) EnumeratePrivateImages(params *EnumeratePrivateImagesParams) error {
+func (a *Client) EnumeratePrivateImages(params *EnumeratePrivateImagesParams, opts ...ClientOption) error {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewEnumeratePrivateImagesParams()
 	}
-
-	_, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "enumeratePrivateImages",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts/{id}/private-image-enumeration",
@@ -924,7 +1010,12 @@ func (a *Client) EnumeratePrivateImages(params *EnumeratePrivateImagesParams) er
 		Reader:             &EnumeratePrivateImagesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	_, err := a.transport.Submit(op)
 	if err != nil {
 		return err
 	}
@@ -934,13 +1025,12 @@ func (a *Client) EnumeratePrivateImages(params *EnumeratePrivateImagesParams) er
 /*
   EnumeratePrivateImagesAWS enumerates all private images for enabled regions of the specified a w s account
 */
-func (a *Client) EnumeratePrivateImagesAWS(params *EnumeratePrivateImagesAWSParams) error {
+func (a *Client) EnumeratePrivateImagesAWS(params *EnumeratePrivateImagesAWSParams, opts ...ClientOption) error {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewEnumeratePrivateImagesAWSParams()
 	}
-
-	_, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "enumeratePrivateImagesAWS",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-aws/{id}/private-image-enumeration",
@@ -951,7 +1041,12 @@ func (a *Client) EnumeratePrivateImagesAWS(params *EnumeratePrivateImagesAWSPara
 		Reader:             &EnumeratePrivateImagesAWSReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	_, err := a.transport.Submit(op)
 	if err != nil {
 		return err
 	}
@@ -961,13 +1056,12 @@ func (a *Client) EnumeratePrivateImagesAWS(params *EnumeratePrivateImagesAWSPara
 /*
   EnumeratePrivateImagesAzure enumerates all private images for enabled regions of the specified azure account
 */
-func (a *Client) EnumeratePrivateImagesAzure(params *EnumeratePrivateImagesAzureParams) error {
+func (a *Client) EnumeratePrivateImagesAzure(params *EnumeratePrivateImagesAzureParams, opts ...ClientOption) error {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewEnumeratePrivateImagesAzureParams()
 	}
-
-	_, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "enumeratePrivateImagesAzure",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-azure/{id}/private-image-enumeration",
@@ -978,7 +1072,12 @@ func (a *Client) EnumeratePrivateImagesAzure(params *EnumeratePrivateImagesAzure
 		Reader:             &EnumeratePrivateImagesAzureReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	_, err := a.transport.Submit(op)
 	if err != nil {
 		return err
 	}
@@ -988,13 +1087,12 @@ func (a *Client) EnumeratePrivateImagesAzure(params *EnumeratePrivateImagesAzure
 /*
   EnumeratePrivateImagesGcp enumerates all private images for enabled regions of the specified g c p account
 */
-func (a *Client) EnumeratePrivateImagesGcp(params *EnumeratePrivateImagesGcpParams) error {
+func (a *Client) EnumeratePrivateImagesGcp(params *EnumeratePrivateImagesGcpParams, opts ...ClientOption) error {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewEnumeratePrivateImagesGcpParams()
 	}
-
-	_, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "enumeratePrivateImagesGcp",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-gcp/{id}/private-image-enumeration",
@@ -1005,7 +1103,12 @@ func (a *Client) EnumeratePrivateImagesGcp(params *EnumeratePrivateImagesGcpPara
 		Reader:             &EnumeratePrivateImagesGcpReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	_, err := a.transport.Submit(op)
 	if err != nil {
 		return err
 	}
@@ -1015,13 +1118,12 @@ func (a *Client) EnumeratePrivateImagesGcp(params *EnumeratePrivateImagesGcpPara
 /*
   EnumeratePrivateImagesVCF enumerates all private images for enabled regions of the specified v c f account
 */
-func (a *Client) EnumeratePrivateImagesVCF(params *EnumeratePrivateImagesVCFParams) error {
+func (a *Client) EnumeratePrivateImagesVCF(params *EnumeratePrivateImagesVCFParams, opts ...ClientOption) error {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewEnumeratePrivateImagesVCFParams()
 	}
-
-	_, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "enumeratePrivateImagesVCF",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-vcf/{id}/private-image-enumeration",
@@ -1032,7 +1134,12 @@ func (a *Client) EnumeratePrivateImagesVCF(params *EnumeratePrivateImagesVCFPara
 		Reader:             &EnumeratePrivateImagesVCFReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	_, err := a.transport.Submit(op)
 	if err != nil {
 		return err
 	}
@@ -1042,13 +1149,12 @@ func (a *Client) EnumeratePrivateImagesVCF(params *EnumeratePrivateImagesVCFPara
 /*
   EnumeratePrivateImagesVMC enumerates all private images for enabled regions of the specified VM c account
 */
-func (a *Client) EnumeratePrivateImagesVMC(params *EnumeratePrivateImagesVMCParams) error {
+func (a *Client) EnumeratePrivateImagesVMC(params *EnumeratePrivateImagesVMCParams, opts ...ClientOption) error {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewEnumeratePrivateImagesVMCParams()
 	}
-
-	_, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "enumeratePrivateImagesVMC",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-vmc/{id}/private-image-enumeration",
@@ -1059,7 +1165,12 @@ func (a *Client) EnumeratePrivateImagesVMC(params *EnumeratePrivateImagesVMCPara
 		Reader:             &EnumeratePrivateImagesVMCReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	_, err := a.transport.Submit(op)
 	if err != nil {
 		return err
 	}
@@ -1069,13 +1180,12 @@ func (a *Client) EnumeratePrivateImagesVMC(params *EnumeratePrivateImagesVMCPara
 /*
   EnumeratePrivateImagesVSphere enumerates all private images for enabled regions of the specified v sphere account
 */
-func (a *Client) EnumeratePrivateImagesVSphere(params *EnumeratePrivateImagesVSphereParams) error {
+func (a *Client) EnumeratePrivateImagesVSphere(params *EnumeratePrivateImagesVSphereParams, opts ...ClientOption) error {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewEnumeratePrivateImagesVSphereParams()
 	}
-
-	_, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "enumeratePrivateImagesVSphere",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-vsphere/{id}/private-image-enumeration",
@@ -1086,7 +1196,12 @@ func (a *Client) EnumeratePrivateImagesVSphere(params *EnumeratePrivateImagesVSp
 		Reader:             &EnumeratePrivateImagesVSphereReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	_, err := a.transport.Submit(op)
 	if err != nil {
 		return err
 	}
@@ -1098,13 +1213,12 @@ func (a *Client) EnumeratePrivateImagesVSphere(params *EnumeratePrivateImagesVSp
 
   Get the available regions for specified cloud account
 */
-func (a *Client) EnumerateRegions(params *EnumerateRegionsParams) (*EnumerateRegionsOK, error) {
+func (a *Client) EnumerateRegions(params *EnumerateRegionsParams, opts ...ClientOption) (*EnumerateRegionsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewEnumerateRegionsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "enumerateRegions",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts/region-enumeration",
@@ -1115,7 +1229,12 @@ func (a *Client) EnumerateRegions(params *EnumerateRegionsParams) (*EnumerateReg
 		Reader:             &EnumerateRegionsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1134,13 +1253,12 @@ func (a *Client) EnumerateRegions(params *EnumerateRegionsParams) (*EnumerateReg
 
   Get the available regions for specified vSphere cloud account
 */
-func (a *Client) EnumerateVSphereRegions(params *EnumerateVSphereRegionsParams) (*EnumerateVSphereRegionsOK, error) {
+func (a *Client) EnumerateVSphereRegions(params *EnumerateVSphereRegionsParams, opts ...ClientOption) (*EnumerateVSphereRegionsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewEnumerateVSphereRegionsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "enumerateVSphereRegions",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-vsphere/region-enumeration",
@@ -1151,7 +1269,12 @@ func (a *Client) EnumerateVSphereRegions(params *EnumerateVSphereRegionsParams) 
 		Reader:             &EnumerateVSphereRegionsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1170,13 +1293,12 @@ func (a *Client) EnumerateVSphereRegions(params *EnumerateVSphereRegionsParams) 
 
   Get the available regions for specified VCF cloud account
 */
-func (a *Client) EnumerateVcfRegions(params *EnumerateVcfRegionsParams) (*EnumerateVcfRegionsOK, error) {
+func (a *Client) EnumerateVcfRegions(params *EnumerateVcfRegionsParams, opts ...ClientOption) (*EnumerateVcfRegionsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewEnumerateVcfRegionsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "enumerateVcfRegions",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-vcf/region-enumeration",
@@ -1187,7 +1309,12 @@ func (a *Client) EnumerateVcfRegions(params *EnumerateVcfRegionsParams) (*Enumer
 		Reader:             &EnumerateVcfRegionsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1206,13 +1333,12 @@ func (a *Client) EnumerateVcfRegions(params *EnumerateVcfRegionsParams) (*Enumer
 
   Get the available regions for specified VMC cloud account
 */
-func (a *Client) EnumerateVmcRegions(params *EnumerateVmcRegionsParams) (*EnumerateVmcRegionsOK, error) {
+func (a *Client) EnumerateVmcRegions(params *EnumerateVmcRegionsParams, opts ...ClientOption) (*EnumerateVmcRegionsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewEnumerateVmcRegionsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "enumerateVmcRegions",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-vmc/region-enumeration",
@@ -1223,7 +1349,12 @@ func (a *Client) EnumerateVmcRegions(params *EnumerateVmcRegionsParams) (*Enumer
 		Reader:             &EnumerateVmcRegionsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1242,13 +1373,12 @@ func (a *Client) EnumerateVmcRegions(params *EnumerateVmcRegionsParams) (*Enumer
 
   Get an AWS cloud account with a given id
 */
-func (a *Client) GetAwsCloudAccount(params *GetAwsCloudAccountParams) (*GetAwsCloudAccountOK, error) {
+func (a *Client) GetAwsCloudAccount(params *GetAwsCloudAccountParams, opts ...ClientOption) (*GetAwsCloudAccountOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAwsCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getAwsCloudAccount",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/cloud-accounts-aws/{id}",
@@ -1259,7 +1389,12 @@ func (a *Client) GetAwsCloudAccount(params *GetAwsCloudAccountParams) (*GetAwsCl
 		Reader:             &GetAwsCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1278,13 +1413,12 @@ func (a *Client) GetAwsCloudAccount(params *GetAwsCloudAccountParams) (*GetAwsCl
 
   Get all AWS cloud accounts within the current organization
 */
-func (a *Client) GetAwsCloudAccounts(params *GetAwsCloudAccountsParams) (*GetAwsCloudAccountsOK, error) {
+func (a *Client) GetAwsCloudAccounts(params *GetAwsCloudAccountsParams, opts ...ClientOption) (*GetAwsCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAwsCloudAccountsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getAwsCloudAccounts",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/cloud-accounts-aws",
@@ -1295,7 +1429,12 @@ func (a *Client) GetAwsCloudAccounts(params *GetAwsCloudAccountsParams) (*GetAws
 		Reader:             &GetAwsCloudAccountsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1314,13 +1453,12 @@ func (a *Client) GetAwsCloudAccounts(params *GetAwsCloudAccountsParams) (*GetAws
 
   Get an Azure Cloud Account with a given id
 */
-func (a *Client) GetAzureCloudAccount(params *GetAzureCloudAccountParams) (*GetAzureCloudAccountOK, error) {
+func (a *Client) GetAzureCloudAccount(params *GetAzureCloudAccountParams, opts ...ClientOption) (*GetAzureCloudAccountOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAzureCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getAzureCloudAccount",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/cloud-accounts-azure/{id}",
@@ -1331,7 +1469,12 @@ func (a *Client) GetAzureCloudAccount(params *GetAzureCloudAccountParams) (*GetA
 		Reader:             &GetAzureCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1350,13 +1493,12 @@ func (a *Client) GetAzureCloudAccount(params *GetAzureCloudAccountParams) (*GetA
 
   Get all Azure cloud accounts within the current organization
 */
-func (a *Client) GetAzureCloudAccounts(params *GetAzureCloudAccountsParams) (*GetAzureCloudAccountsOK, error) {
+func (a *Client) GetAzureCloudAccounts(params *GetAzureCloudAccountsParams, opts ...ClientOption) (*GetAzureCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAzureCloudAccountsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getAzureCloudAccounts",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/cloud-accounts-azure",
@@ -1367,7 +1509,12 @@ func (a *Client) GetAzureCloudAccounts(params *GetAzureCloudAccountsParams) (*Ge
 		Reader:             &GetAzureCloudAccountsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1386,13 +1533,12 @@ func (a *Client) GetAzureCloudAccounts(params *GetAzureCloudAccountsParams) (*Ge
 
   Get cloud account with a given id
 */
-func (a *Client) GetCloudAccount(params *GetCloudAccountParams) (*GetCloudAccountOK, error) {
+func (a *Client) GetCloudAccount(params *GetCloudAccountParams, opts ...ClientOption) (*GetCloudAccountOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getCloudAccount",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/cloud-accounts/{id}",
@@ -1403,7 +1549,12 @@ func (a *Client) GetCloudAccount(params *GetCloudAccountParams) (*GetCloudAccoun
 		Reader:             &GetCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1422,13 +1573,12 @@ func (a *Client) GetCloudAccount(params *GetCloudAccountParams) (*GetCloudAccoun
 
   Get all cloud accounts within the current organization
 */
-func (a *Client) GetCloudAccounts(params *GetCloudAccountsParams) (*GetCloudAccountsOK, error) {
+func (a *Client) GetCloudAccounts(params *GetCloudAccountsParams, opts ...ClientOption) (*GetCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCloudAccountsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getCloudAccounts",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/cloud-accounts",
@@ -1439,7 +1589,12 @@ func (a *Client) GetCloudAccounts(params *GetCloudAccountsParams) (*GetCloudAcco
 		Reader:             &GetCloudAccountsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1458,13 +1613,12 @@ func (a *Client) GetCloudAccounts(params *GetCloudAccountsParams) (*GetCloudAcco
 
   Get an GCP cloud account with a given id
 */
-func (a *Client) GetGcpCloudAccount(params *GetGcpCloudAccountParams) (*GetGcpCloudAccountOK, error) {
+func (a *Client) GetGcpCloudAccount(params *GetGcpCloudAccountParams, opts ...ClientOption) (*GetGcpCloudAccountOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetGcpCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getGcpCloudAccount",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/cloud-accounts-gcp/{id}",
@@ -1475,7 +1629,12 @@ func (a *Client) GetGcpCloudAccount(params *GetGcpCloudAccountParams) (*GetGcpCl
 		Reader:             &GetGcpCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1494,13 +1653,12 @@ func (a *Client) GetGcpCloudAccount(params *GetGcpCloudAccountParams) (*GetGcpCl
 
   Get all GCP cloud accounts within the current organization
 */
-func (a *Client) GetGcpCloudAccounts(params *GetGcpCloudAccountsParams) (*GetGcpCloudAccountsOK, error) {
+func (a *Client) GetGcpCloudAccounts(params *GetGcpCloudAccountsParams, opts ...ClientOption) (*GetGcpCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetGcpCloudAccountsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getGcpCloudAccounts",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/cloud-accounts-gcp",
@@ -1511,7 +1669,12 @@ func (a *Client) GetGcpCloudAccounts(params *GetGcpCloudAccountsParams) (*GetGcp
 		Reader:             &GetGcpCloudAccountsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1530,13 +1693,12 @@ func (a *Client) GetGcpCloudAccounts(params *GetGcpCloudAccountsParams) (*GetGcp
 
   Get an NSX-T cloud account with a given id
 */
-func (a *Client) GetNsxTCloudAccount(params *GetNsxTCloudAccountParams) (*GetNsxTCloudAccountOK, error) {
+func (a *Client) GetNsxTCloudAccount(params *GetNsxTCloudAccountParams, opts ...ClientOption) (*GetNsxTCloudAccountOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetNsxTCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getNsxTCloudAccount",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/cloud-accounts-nsx-t/{id}",
@@ -1547,7 +1709,12 @@ func (a *Client) GetNsxTCloudAccount(params *GetNsxTCloudAccountParams) (*GetNsx
 		Reader:             &GetNsxTCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1566,13 +1733,12 @@ func (a *Client) GetNsxTCloudAccount(params *GetNsxTCloudAccountParams) (*GetNsx
 
   Get all NSX-T cloud accounts within the current organization
 */
-func (a *Client) GetNsxTCloudAccounts(params *GetNsxTCloudAccountsParams) (*GetNsxTCloudAccountsOK, error) {
+func (a *Client) GetNsxTCloudAccounts(params *GetNsxTCloudAccountsParams, opts ...ClientOption) (*GetNsxTCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetNsxTCloudAccountsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getNsxTCloudAccounts",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/cloud-accounts-nsx-t",
@@ -1583,7 +1749,12 @@ func (a *Client) GetNsxTCloudAccounts(params *GetNsxTCloudAccountsParams) (*GetN
 		Reader:             &GetNsxTCloudAccountsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1602,13 +1773,12 @@ func (a *Client) GetNsxTCloudAccounts(params *GetNsxTCloudAccountsParams) (*GetN
 
   Get an NSX-V cloud account with a given id
 */
-func (a *Client) GetNsxVCloudAccount(params *GetNsxVCloudAccountParams) (*GetNsxVCloudAccountOK, error) {
+func (a *Client) GetNsxVCloudAccount(params *GetNsxVCloudAccountParams, opts ...ClientOption) (*GetNsxVCloudAccountOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetNsxVCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getNsxVCloudAccount",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/cloud-accounts-nsx-v/{id}",
@@ -1619,7 +1789,12 @@ func (a *Client) GetNsxVCloudAccount(params *GetNsxVCloudAccountParams) (*GetNsx
 		Reader:             &GetNsxVCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1638,13 +1813,12 @@ func (a *Client) GetNsxVCloudAccount(params *GetNsxVCloudAccountParams) (*GetNsx
 
   Get all NSX-V cloud accounts within the current organization
 */
-func (a *Client) GetNsxVCloudAccounts(params *GetNsxVCloudAccountsParams) (*GetNsxVCloudAccountsOK, error) {
+func (a *Client) GetNsxVCloudAccounts(params *GetNsxVCloudAccountsParams, opts ...ClientOption) (*GetNsxVCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetNsxVCloudAccountsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getNsxVCloudAccounts",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/cloud-accounts-nsx-v",
@@ -1655,7 +1829,12 @@ func (a *Client) GetNsxVCloudAccounts(params *GetNsxVCloudAccountsParams) (*GetN
 		Reader:             &GetNsxVCloudAccountsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1674,13 +1853,12 @@ func (a *Client) GetNsxVCloudAccounts(params *GetNsxVCloudAccountsParams) (*GetN
 
   Get an vSphere cloud account with a given id
 */
-func (a *Client) GetVSphereCloudAccount(params *GetVSphereCloudAccountParams) (*GetVSphereCloudAccountOK, error) {
+func (a *Client) GetVSphereCloudAccount(params *GetVSphereCloudAccountParams, opts ...ClientOption) (*GetVSphereCloudAccountOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVSphereCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getVSphereCloudAccount",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/cloud-accounts-vsphere/{id}",
@@ -1691,7 +1869,12 @@ func (a *Client) GetVSphereCloudAccount(params *GetVSphereCloudAccountParams) (*
 		Reader:             &GetVSphereCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1710,13 +1893,12 @@ func (a *Client) GetVSphereCloudAccount(params *GetVSphereCloudAccountParams) (*
 
   Get all vSphere cloud accounts within the current organization
 */
-func (a *Client) GetVSphereCloudAccounts(params *GetVSphereCloudAccountsParams) (*GetVSphereCloudAccountsOK, error) {
+func (a *Client) GetVSphereCloudAccounts(params *GetVSphereCloudAccountsParams, opts ...ClientOption) (*GetVSphereCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVSphereCloudAccountsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getVSphereCloudAccounts",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/cloud-accounts-vsphere",
@@ -1727,7 +1909,12 @@ func (a *Client) GetVSphereCloudAccounts(params *GetVSphereCloudAccountsParams) 
 		Reader:             &GetVSphereCloudAccountsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1746,13 +1933,12 @@ func (a *Client) GetVSphereCloudAccounts(params *GetVSphereCloudAccountsParams) 
 
   Get an VCF cloud account with a given id
 */
-func (a *Client) GetVcfCloudAccount(params *GetVcfCloudAccountParams) (*GetVcfCloudAccountOK, error) {
+func (a *Client) GetVcfCloudAccount(params *GetVcfCloudAccountParams, opts ...ClientOption) (*GetVcfCloudAccountOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVcfCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getVcfCloudAccount",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/cloud-accounts-vcf/{id}",
@@ -1763,7 +1949,12 @@ func (a *Client) GetVcfCloudAccount(params *GetVcfCloudAccountParams) (*GetVcfCl
 		Reader:             &GetVcfCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1782,13 +1973,12 @@ func (a *Client) GetVcfCloudAccount(params *GetVcfCloudAccountParams) (*GetVcfCl
 
   Get all VCF cloud accounts within the current organization
 */
-func (a *Client) GetVcfCloudAccounts(params *GetVcfCloudAccountsParams) (*GetVcfCloudAccountsOK, error) {
+func (a *Client) GetVcfCloudAccounts(params *GetVcfCloudAccountsParams, opts ...ClientOption) (*GetVcfCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVcfCloudAccountsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getVcfCloudAccounts",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/cloud-accounts-vcf",
@@ -1799,7 +1989,12 @@ func (a *Client) GetVcfCloudAccounts(params *GetVcfCloudAccountsParams) (*GetVcf
 		Reader:             &GetVcfCloudAccountsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1818,13 +2013,12 @@ func (a *Client) GetVcfCloudAccounts(params *GetVcfCloudAccountsParams) (*GetVcf
 
   Get an VMC cloud account with a given id
 */
-func (a *Client) GetVmcCloudAccount(params *GetVmcCloudAccountParams) (*GetVmcCloudAccountOK, error) {
+func (a *Client) GetVmcCloudAccount(params *GetVmcCloudAccountParams, opts ...ClientOption) (*GetVmcCloudAccountOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVmcCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getVmcCloudAccount",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/cloud-accounts-vmc/{id}",
@@ -1835,7 +2029,12 @@ func (a *Client) GetVmcCloudAccount(params *GetVmcCloudAccountParams) (*GetVmcCl
 		Reader:             &GetVmcCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1854,13 +2053,12 @@ func (a *Client) GetVmcCloudAccount(params *GetVmcCloudAccountParams) (*GetVmcCl
 
   Get all VMC cloud accounts within the current organization
 */
-func (a *Client) GetVmcCloudAccounts(params *GetVmcCloudAccountsParams) (*GetVmcCloudAccountsOK, error) {
+func (a *Client) GetVmcCloudAccounts(params *GetVmcCloudAccountsParams, opts ...ClientOption) (*GetVmcCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetVmcCloudAccountsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getVmcCloudAccounts",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/cloud-accounts-vmc",
@@ -1871,7 +2069,12 @@ func (a *Client) GetVmcCloudAccounts(params *GetVmcCloudAccountsParams) (*GetVmc
 		Reader:             &GetVmcCloudAccountsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1890,13 +2093,12 @@ func (a *Client) GetVmcCloudAccounts(params *GetVmcCloudAccountsParams) (*GetVmc
 
   Update AWS cloud account
 */
-func (a *Client) UpdateAwsCloudAccount(params *UpdateAwsCloudAccountParams) (*UpdateAwsCloudAccountOK, error) {
+func (a *Client) UpdateAwsCloudAccount(params *UpdateAwsCloudAccountParams, opts ...ClientOption) (*UpdateAwsCloudAccountOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateAwsCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "updateAwsCloudAccount",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/cloud-accounts-aws/{id}",
@@ -1907,7 +2109,12 @@ func (a *Client) UpdateAwsCloudAccount(params *UpdateAwsCloudAccountParams) (*Up
 		Reader:             &UpdateAwsCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1926,13 +2133,12 @@ func (a *Client) UpdateAwsCloudAccount(params *UpdateAwsCloudAccountParams) (*Up
 
   Update Azure cloud account
 */
-func (a *Client) UpdateAzureCloudAccount(params *UpdateAzureCloudAccountParams) (*UpdateAzureCloudAccountOK, error) {
+func (a *Client) UpdateAzureCloudAccount(params *UpdateAzureCloudAccountParams, opts ...ClientOption) (*UpdateAzureCloudAccountOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateAzureCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "updateAzureCloudAccount",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/cloud-accounts-azure/{id}",
@@ -1943,7 +2149,12 @@ func (a *Client) UpdateAzureCloudAccount(params *UpdateAzureCloudAccountParams) 
 		Reader:             &UpdateAzureCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1962,13 +2173,12 @@ func (a *Client) UpdateAzureCloudAccount(params *UpdateAzureCloudAccountParams) 
 
   Update a single CloudAccount
 */
-func (a *Client) UpdateCloudAccount(params *UpdateCloudAccountParams) (*UpdateCloudAccountOK, error) {
+func (a *Client) UpdateCloudAccount(params *UpdateCloudAccountParams, opts ...ClientOption) (*UpdateCloudAccountOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "updateCloudAccount",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/cloud-accounts/{id}",
@@ -1979,7 +2189,12 @@ func (a *Client) UpdateCloudAccount(params *UpdateCloudAccountParams) (*UpdateCl
 		Reader:             &UpdateCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -1998,13 +2213,12 @@ func (a *Client) UpdateCloudAccount(params *UpdateCloudAccountParams) (*UpdateCl
 
   Update GCP cloud account
 */
-func (a *Client) UpdateGcpCloudAccount(params *UpdateGcpCloudAccountParams) (*UpdateGcpCloudAccountOK, error) {
+func (a *Client) UpdateGcpCloudAccount(params *UpdateGcpCloudAccountParams, opts ...ClientOption) (*UpdateGcpCloudAccountOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateGcpCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "updateGcpCloudAccount",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/cloud-accounts-gcp/{id}",
@@ -2015,7 +2229,12 @@ func (a *Client) UpdateGcpCloudAccount(params *UpdateGcpCloudAccountParams) (*Up
 		Reader:             &UpdateGcpCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2034,13 +2253,12 @@ func (a *Client) UpdateGcpCloudAccount(params *UpdateGcpCloudAccountParams) (*Up
 
   Update NSX-T cloud account
 */
-func (a *Client) UpdateNsxTCloudAccount(params *UpdateNsxTCloudAccountParams) (*UpdateNsxTCloudAccountOK, error) {
+func (a *Client) UpdateNsxTCloudAccount(params *UpdateNsxTCloudAccountParams, opts ...ClientOption) (*UpdateNsxTCloudAccountOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateNsxTCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "updateNsxTCloudAccount",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/cloud-accounts-nsx-t/{id}",
@@ -2051,7 +2269,12 @@ func (a *Client) UpdateNsxTCloudAccount(params *UpdateNsxTCloudAccountParams) (*
 		Reader:             &UpdateNsxTCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2070,13 +2293,12 @@ func (a *Client) UpdateNsxTCloudAccount(params *UpdateNsxTCloudAccountParams) (*
 
   Update NSX-V cloud account
 */
-func (a *Client) UpdateNsxVCloudAccount(params *UpdateNsxVCloudAccountParams) (*UpdateNsxVCloudAccountOK, error) {
+func (a *Client) UpdateNsxVCloudAccount(params *UpdateNsxVCloudAccountParams, opts ...ClientOption) (*UpdateNsxVCloudAccountOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateNsxVCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "updateNsxVCloudAccount",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/cloud-accounts-nsx-v/{id}",
@@ -2087,7 +2309,12 @@ func (a *Client) UpdateNsxVCloudAccount(params *UpdateNsxVCloudAccountParams) (*
 		Reader:             &UpdateNsxVCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2106,13 +2333,12 @@ func (a *Client) UpdateNsxVCloudAccount(params *UpdateNsxVCloudAccountParams) (*
 
   Update vSphere cloud account
 */
-func (a *Client) UpdateVSphereCloudAccount(params *UpdateVSphereCloudAccountParams) (*UpdateVSphereCloudAccountOK, error) {
+func (a *Client) UpdateVSphereCloudAccount(params *UpdateVSphereCloudAccountParams, opts ...ClientOption) (*UpdateVSphereCloudAccountOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateVSphereCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "updateVSphereCloudAccount",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/cloud-accounts-vsphere/{id}",
@@ -2123,7 +2349,12 @@ func (a *Client) UpdateVSphereCloudAccount(params *UpdateVSphereCloudAccountPara
 		Reader:             &UpdateVSphereCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2142,13 +2373,12 @@ func (a *Client) UpdateVSphereCloudAccount(params *UpdateVSphereCloudAccountPara
 
   Update VCF cloud account
 */
-func (a *Client) UpdateVcfCloudAccount(params *UpdateVcfCloudAccountParams) (*UpdateVcfCloudAccountOK, error) {
+func (a *Client) UpdateVcfCloudAccount(params *UpdateVcfCloudAccountParams, opts ...ClientOption) (*UpdateVcfCloudAccountOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateVcfCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "updateVcfCloudAccount",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/cloud-accounts-vcf/{id}",
@@ -2159,7 +2389,12 @@ func (a *Client) UpdateVcfCloudAccount(params *UpdateVcfCloudAccountParams) (*Up
 		Reader:             &UpdateVcfCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -2178,13 +2413,12 @@ func (a *Client) UpdateVcfCloudAccount(params *UpdateVcfCloudAccountParams) (*Up
 
   Update VMC cloud account
 */
-func (a *Client) UpdateVmcCloudAccount(params *UpdateVmcCloudAccountParams) (*UpdateVmcCloudAccountOK, error) {
+func (a *Client) UpdateVmcCloudAccount(params *UpdateVmcCloudAccountParams, opts ...ClientOption) (*UpdateVmcCloudAccountOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateVmcCloudAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "updateVmcCloudAccount",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/cloud-accounts-vmc/{id}",
@@ -2195,7 +2429,12 @@ func (a *Client) UpdateVmcCloudAccount(params *UpdateVmcCloudAccountParams) (*Up
 		Reader:             &UpdateVmcCloudAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

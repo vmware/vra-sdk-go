@@ -16,64 +16,81 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetDeploymentsForProjectUsingGETParams creates a new GetDeploymentsForProjectUsingGETParams object
-// with the default values initialized.
+// NewGetDeploymentsForProjectUsingGETParams creates a new GetDeploymentsForProjectUsingGETParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetDeploymentsForProjectUsingGETParams() *GetDeploymentsForProjectUsingGETParams {
-	var ()
 	return &GetDeploymentsForProjectUsingGETParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetDeploymentsForProjectUsingGETParamsWithTimeout creates a new GetDeploymentsForProjectUsingGETParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetDeploymentsForProjectUsingGETParamsWithTimeout(timeout time.Duration) *GetDeploymentsForProjectUsingGETParams {
-	var ()
 	return &GetDeploymentsForProjectUsingGETParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetDeploymentsForProjectUsingGETParamsWithContext creates a new GetDeploymentsForProjectUsingGETParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetDeploymentsForProjectUsingGETParamsWithContext(ctx context.Context) *GetDeploymentsForProjectUsingGETParams {
-	var ()
 	return &GetDeploymentsForProjectUsingGETParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetDeploymentsForProjectUsingGETParamsWithHTTPClient creates a new GetDeploymentsForProjectUsingGETParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetDeploymentsForProjectUsingGETParamsWithHTTPClient(client *http.Client) *GetDeploymentsForProjectUsingGETParams {
-	var ()
 	return &GetDeploymentsForProjectUsingGETParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetDeploymentsForProjectUsingGETParams contains all the parameters to send to the API endpoint
-for the get deployments for project using g e t operation typically these are written to a http.Request
+/* GetDeploymentsForProjectUsingGETParams contains all the parameters to send to the API endpoint
+   for the get deployments for project using g e t operation.
+
+   Typically these are written to a http.Request.
 */
 type GetDeploymentsForProjectUsingGETParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 	*/
 	APIVersion *string
-	/*ProjectID
-	  Project ID
 
+	/* ProjectID.
+
+	   Project ID
+
+	   Format: uuid
 	*/
 	ProjectID strfmt.UUID
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get deployments for project using get params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetDeploymentsForProjectUsingGETParams) WithDefaults() *GetDeploymentsForProjectUsingGETParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get deployments for project using get params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetDeploymentsForProjectUsingGETParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get deployments for project using get params
@@ -143,16 +160,17 @@ func (o *GetDeploymentsForProjectUsingGETParams) WriteToRequest(r runtime.Client
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param projectId

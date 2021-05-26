@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -20,10 +21,12 @@ import (
 type CloudAccountAwsSpecification struct {
 
 	// Aws Access key ID
+	// Example: ACDC55DB4MFH6ADG75KK
 	// Required: true
 	AccessKeyID *string `json:"accessKeyId"`
 
 	// Create default cloud zones for the enabled regions.
+	// Example: true
 	CreateDefaultZones bool `json:"createDefaultZones,omitempty"`
 
 	// A human-friendly description.
@@ -34,14 +37,17 @@ type CloudAccountAwsSpecification struct {
 	Name *string `json:"name"`
 
 	// A set of Region names to enable provisioning on. Refer to /iaas/cloud-accounts-aws/region-enumeration..
+	// Example: [ \"us-east-1\", \"ap-northeast-1\" ]
 	// Required: true
 	RegionIds []string `json:"regionIds"`
 
 	// Aws Secret Access Key
+	// Example: gfsScK345sGGaVdds222dasdfDDSSasdfdsa34fS
 	// Required: true
 	SecretAccessKey *string `json:"secretAccessKey"`
 
 	// A set of tag keys and optional values to set on the Cloud Account
+	// Example: [ { \"key\" : \"env\", \"value\": \"dev\" } ]
 	Tags []*Tag `json:"tags"`
 }
 
@@ -112,7 +118,6 @@ func (m *CloudAccountAwsSpecification) validateSecretAccessKey(formats strfmt.Re
 }
 
 func (m *CloudAccountAwsSpecification) validateTags(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Tags) { // not required
 		return nil
 	}
@@ -124,6 +129,38 @@ func (m *CloudAccountAwsSpecification) validateTags(formats strfmt.Registry) err
 
 		if m.Tags[i] != nil {
 			if err := m.Tags[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this cloud account aws specification based on the context it is used
+func (m *CloudAccountAwsSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateTags(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CloudAccountAwsSpecification) contextValidateTags(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Tags); i++ {
+
+		if m.Tags[i] != nil {
+			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
 				}

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -62,7 +63,6 @@ func (m *VcfDomain) Validate(formats strfmt.Registry) error {
 }
 
 func (m *VcfDomain) validateNsxResource(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.NsxResource) { // not required
 		return nil
 	}
@@ -115,7 +115,6 @@ func (m *VcfDomain) validateStatusEnum(path, location string, value string) erro
 }
 
 func (m *VcfDomain) validateStatus(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Status) { // not required
 		return nil
 	}
@@ -129,13 +128,58 @@ func (m *VcfDomain) validateStatus(formats strfmt.Registry) error {
 }
 
 func (m *VcfDomain) validateVsphere(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Vsphere) { // not required
 		return nil
 	}
 
 	if m.Vsphere != nil {
 		if err := m.Vsphere.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vsphere")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this vcf domain based on the context it is used
+func (m *VcfDomain) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateNsxResource(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVsphere(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *VcfDomain) contextValidateNsxResource(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.NsxResource != nil {
+		if err := m.NsxResource.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("nsxResource")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *VcfDomain) contextValidateVsphere(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Vsphere != nil {
+		if err := m.Vsphere.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("vsphere")
 			}

@@ -41,7 +41,6 @@ func (o *GetPolicyUsingGETReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetPolicyUsingGETOK() *GetPolicyUsingGETOK {
 	return &GetPolicyUsingGETOK{}
 }
 
-/*GetPolicyUsingGETOK handles this case with default header values.
+/* GetPolicyUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -63,7 +62,6 @@ type GetPolicyUsingGETOK struct {
 func (o *GetPolicyUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /price/api/private/pricing-cards/{id}][%d] getPolicyUsingGETOK  %+v", 200, o.Payload)
 }
-
 func (o *GetPolicyUsingGETOK) GetPayload() *models.MeteringPolicy {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewGetPolicyUsingGETUnauthorized() *GetPolicyUsingGETUnauthorized {
 	return &GetPolicyUsingGETUnauthorized{}
 }
 
-/*GetPolicyUsingGETUnauthorized handles this case with default header values.
+/* GetPolicyUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -106,7 +104,7 @@ func NewGetPolicyUsingGETNotFound() *GetPolicyUsingGETNotFound {
 	return &GetPolicyUsingGETNotFound{}
 }
 
-/*GetPolicyUsingGETNotFound handles this case with default header values.
+/* GetPolicyUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +115,6 @@ type GetPolicyUsingGETNotFound struct {
 func (o *GetPolicyUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /price/api/private/pricing-cards/{id}][%d] getPolicyUsingGETNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetPolicyUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

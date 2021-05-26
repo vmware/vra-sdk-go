@@ -19,69 +19,85 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewCreatePolicyUsingPOST1Params creates a new CreatePolicyUsingPOST1Params object
-// with the default values initialized.
+// NewCreatePolicyUsingPOST1Params creates a new CreatePolicyUsingPOST1Params object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewCreatePolicyUsingPOST1Params() *CreatePolicyUsingPOST1Params {
-	var ()
 	return &CreatePolicyUsingPOST1Params{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewCreatePolicyUsingPOST1ParamsWithTimeout creates a new CreatePolicyUsingPOST1Params object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewCreatePolicyUsingPOST1ParamsWithTimeout(timeout time.Duration) *CreatePolicyUsingPOST1Params {
-	var ()
 	return &CreatePolicyUsingPOST1Params{
-
 		timeout: timeout,
 	}
 }
 
 // NewCreatePolicyUsingPOST1ParamsWithContext creates a new CreatePolicyUsingPOST1Params object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewCreatePolicyUsingPOST1ParamsWithContext(ctx context.Context) *CreatePolicyUsingPOST1Params {
-	var ()
 	return &CreatePolicyUsingPOST1Params{
-
 		Context: ctx,
 	}
 }
 
 // NewCreatePolicyUsingPOST1ParamsWithHTTPClient creates a new CreatePolicyUsingPOST1Params object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewCreatePolicyUsingPOST1ParamsWithHTTPClient(client *http.Client) *CreatePolicyUsingPOST1Params {
-	var ()
 	return &CreatePolicyUsingPOST1Params{
 		HTTPClient: client,
 	}
 }
 
-/*CreatePolicyUsingPOST1Params contains all the parameters to send to the API endpoint
-for the create policy using p o s t 1 operation typically these are written to a http.Request
+/* CreatePolicyUsingPOST1Params contains all the parameters to send to the API endpoint
+   for the create policy using p o s t 1 operation.
+
+   Typically these are written to a http.Request.
 */
 type CreatePolicyUsingPOST1Params struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 	*/
 	APIVersion *string
-	/*Policy
-	  The policy to be created or updated
 
+	/* Policy.
+
+	   The policy to be created or updated
 	*/
 	Policy *models.Policy
-	/*ValidationOnly
-	  For a dry run that will do policy validation only instead of creating or updating a policy
 
+	/* ValidationOnly.
+
+	   For a dry run that will do policy validation only instead of creating or updating a policy
 	*/
 	ValidationOnly *bool
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the create policy using p o s t 1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreatePolicyUsingPOST1Params) WithDefaults() *CreatePolicyUsingPOST1Params {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the create policy using p o s t 1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreatePolicyUsingPOST1Params) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the create policy using p o s t 1 params
@@ -162,18 +178,18 @@ func (o *CreatePolicyUsingPOST1Params) WriteToRequest(r runtime.ClientRequest, r
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
-
 	if o.Policy != nil {
 		if err := r.SetBodyParam(o.Policy); err != nil {
 			return err
@@ -184,16 +200,17 @@ func (o *CreatePolicyUsingPOST1Params) WriteToRequest(r runtime.ClientRequest, r
 
 		// query param validationOnly
 		var qrValidationOnly bool
+
 		if o.ValidationOnly != nil {
 			qrValidationOnly = *o.ValidationOnly
 		}
 		qValidationOnly := swag.FormatBool(qrValidationOnly)
 		if qValidationOnly != "" {
+
 			if err := r.SetQueryParam("validationOnly", qValidationOnly); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

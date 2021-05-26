@@ -47,7 +47,6 @@ func (o *PatchDeploymentUsingPATCHReader) ReadResponse(response runtime.ClientRe
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewPatchDeploymentUsingPATCHOK() *PatchDeploymentUsingPATCHOK {
 	return &PatchDeploymentUsingPATCHOK{}
 }
 
-/*PatchDeploymentUsingPATCHOK handles this case with default header values.
+/* PatchDeploymentUsingPATCHOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -69,7 +68,6 @@ type PatchDeploymentUsingPATCHOK struct {
 func (o *PatchDeploymentUsingPATCHOK) Error() string {
 	return fmt.Sprintf("[PATCH /deployment/api/deployments/{depId}][%d] patchDeploymentUsingPATCHOK  %+v", 200, o.Payload)
 }
-
 func (o *PatchDeploymentUsingPATCHOK) GetPayload() *models.Deployment {
 	return o.Payload
 }
@@ -91,7 +89,7 @@ func NewPatchDeploymentUsingPATCHUnauthorized() *PatchDeploymentUsingPATCHUnauth
 	return &PatchDeploymentUsingPATCHUnauthorized{}
 }
 
-/*PatchDeploymentUsingPATCHUnauthorized handles this case with default header values.
+/* PatchDeploymentUsingPATCHUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -112,7 +110,7 @@ func NewPatchDeploymentUsingPATCHForbidden() *PatchDeploymentUsingPATCHForbidden
 	return &PatchDeploymentUsingPATCHForbidden{}
 }
 
-/*PatchDeploymentUsingPATCHForbidden handles this case with default header values.
+/* PatchDeploymentUsingPATCHForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -133,7 +131,7 @@ func NewPatchDeploymentUsingPATCHNotFound() *PatchDeploymentUsingPATCHNotFound {
 	return &PatchDeploymentUsingPATCHNotFound{}
 }
 
-/*PatchDeploymentUsingPATCHNotFound handles this case with default header values.
+/* PatchDeploymentUsingPATCHNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -144,7 +142,6 @@ type PatchDeploymentUsingPATCHNotFound struct {
 func (o *PatchDeploymentUsingPATCHNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /deployment/api/deployments/{depId}][%d] patchDeploymentUsingPATCHNotFound  %+v", 404, o.Payload)
 }
-
 func (o *PatchDeploymentUsingPATCHNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

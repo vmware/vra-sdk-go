@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -18,10 +20,12 @@ import (
 type User struct {
 
 	// The email of the user or name of the group.
+	// Example: administrator@vmware.com
 	// Required: true
 	Email *string `json:"email"`
 
 	// Type of the principal. Currently supported 'user' (default) and 'group'.
+	// Example: user
 	Type string `json:"type,omitempty"`
 }
 
@@ -45,6 +49,11 @@ func (m *User) validateEmail(formats strfmt.Registry) error {
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validates this user based on context it is used
+func (m *User) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

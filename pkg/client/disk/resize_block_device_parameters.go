@@ -17,69 +17,87 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewResizeBlockDeviceParams creates a new ResizeBlockDeviceParams object
-// with the default values initialized.
+// NewResizeBlockDeviceParams creates a new ResizeBlockDeviceParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewResizeBlockDeviceParams() *ResizeBlockDeviceParams {
-	var ()
 	return &ResizeBlockDeviceParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewResizeBlockDeviceParamsWithTimeout creates a new ResizeBlockDeviceParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewResizeBlockDeviceParamsWithTimeout(timeout time.Duration) *ResizeBlockDeviceParams {
-	var ()
 	return &ResizeBlockDeviceParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewResizeBlockDeviceParamsWithContext creates a new ResizeBlockDeviceParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewResizeBlockDeviceParamsWithContext(ctx context.Context) *ResizeBlockDeviceParams {
-	var ()
 	return &ResizeBlockDeviceParams{
-
 		Context: ctx,
 	}
 }
 
 // NewResizeBlockDeviceParamsWithHTTPClient creates a new ResizeBlockDeviceParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewResizeBlockDeviceParamsWithHTTPClient(client *http.Client) *ResizeBlockDeviceParams {
-	var ()
 	return &ResizeBlockDeviceParams{
 		HTTPClient: client,
 	}
 }
 
-/*ResizeBlockDeviceParams contains all the parameters to send to the API endpoint
-for the resize block device operation typically these are written to a http.Request
+/* ResizeBlockDeviceParams contains all the parameters to send to the API endpoint
+   for the resize block device operation.
+
+   Typically these are written to a http.Request.
 */
 type ResizeBlockDeviceParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*CapacityInGB
-	  Resize Capacity in GB
 
+	/* CapacityInGB.
+
+	   Resize Capacity in GB
+
+	   Format: int32
 	*/
 	CapacityInGB int32
-	/*ID
-	  The ID of the block device.
 
+	/* ID.
+
+	   The ID of the block device.
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the resize block device params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ResizeBlockDeviceParams) WithDefaults() *ResizeBlockDeviceParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the resize block device params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ResizeBlockDeviceParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the resize block device params
@@ -160,22 +178,24 @@ func (o *ResizeBlockDeviceParams) WriteToRequest(r runtime.ClientRequest, reg st
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// query param capacityInGB
 	qrCapacityInGB := o.CapacityInGB
 	qCapacityInGB := swag.FormatInt32(qrCapacityInGB)
 	if qCapacityInGB != "" {
+
 		if err := r.SetQueryParam("capacityInGB", qCapacityInGB); err != nil {
 			return err
 		}

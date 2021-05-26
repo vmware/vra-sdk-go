@@ -17,74 +17,97 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGetVersionsUsingGETParams creates a new GetVersionsUsingGETParams object
-// with the default values initialized.
+// NewGetVersionsUsingGETParams creates a new GetVersionsUsingGETParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetVersionsUsingGETParams() *GetVersionsUsingGETParams {
-	var ()
 	return &GetVersionsUsingGETParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetVersionsUsingGETParamsWithTimeout creates a new GetVersionsUsingGETParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetVersionsUsingGETParamsWithTimeout(timeout time.Duration) *GetVersionsUsingGETParams {
-	var ()
 	return &GetVersionsUsingGETParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetVersionsUsingGETParamsWithContext creates a new GetVersionsUsingGETParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetVersionsUsingGETParamsWithContext(ctx context.Context) *GetVersionsUsingGETParams {
-	var ()
 	return &GetVersionsUsingGETParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetVersionsUsingGETParamsWithHTTPClient creates a new GetVersionsUsingGETParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetVersionsUsingGETParamsWithHTTPClient(client *http.Client) *GetVersionsUsingGETParams {
-	var ()
 	return &GetVersionsUsingGETParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetVersionsUsingGETParams contains all the parameters to send to the API endpoint
-for the get versions using g e t operation typically these are written to a http.Request
+/* GetVersionsUsingGETParams contains all the parameters to send to the API endpoint
+   for the get versions using g e t operation.
+
+   Typically these are written to a http.Request.
 */
 type GetVersionsUsingGETParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 	*/
 	APIVersion *string
-	/*ID
-	  Catalog Item ID
 
+	/* ID.
+
+	   Catalog Item ID
+
+	   Format: uuid
 	*/
 	ID strfmt.UUID
-	/*Page
-	  Results page you want to retrieve (0..N)
 
+	/* Page.
+
+	   Results page you want to retrieve (0..N)
+
+	   Format: int32
 	*/
 	Page *int32
-	/*Size
-	  Number of records per page.
 
+	/* Size.
+
+	   Number of records per page.
+
+	   Format: int32
 	*/
 	Size *int32
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get versions using get params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetVersionsUsingGETParams) WithDefaults() *GetVersionsUsingGETParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get versions using get params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetVersionsUsingGETParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get versions using get params
@@ -176,16 +199,17 @@ func (o *GetVersionsUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg 
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id
@@ -197,32 +221,34 @@ func (o *GetVersionsUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg 
 
 		// query param page
 		var qrPage int32
+
 		if o.Page != nil {
 			qrPage = *o.Page
 		}
 		qPage := swag.FormatInt32(qrPage)
 		if qPage != "" {
+
 			if err := r.SetQueryParam("page", qPage); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Size != nil {
 
 		// query param size
 		var qrSize int32
+
 		if o.Size != nil {
 			qrSize = *o.Size
 		}
 		qSize := swag.FormatInt32(qrSize)
 		if qSize != "" {
+
 			if err := r.SetQueryParam("size", qSize); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

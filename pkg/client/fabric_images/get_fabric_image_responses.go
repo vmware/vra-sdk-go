@@ -41,7 +41,6 @@ func (o *GetFabricImageReader) ReadResponse(response runtime.ClientResponse, con
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetFabricImageOK() *GetFabricImageOK {
 	return &GetFabricImageOK{}
 }
 
-/*GetFabricImageOK handles this case with default header values.
+/* GetFabricImageOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type GetFabricImageOK struct {
 func (o *GetFabricImageOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-images/{id}][%d] getFabricImageOK  %+v", 200, o.Payload)
 }
-
 func (o *GetFabricImageOK) GetPayload() *models.FabricImage {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewGetFabricImageForbidden() *GetFabricImageForbidden {
 	return &GetFabricImageForbidden{}
 }
 
-/*GetFabricImageForbidden handles this case with default header values.
+/* GetFabricImageForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetFabricImageForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetFabricImageForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/fabric-images/{id}][%d] getFabricImageForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/fabric-images/{id}][%d] getFabricImageForbidden  %+v", 403, o.Payload)
+}
+func (o *GetFabricImageForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetFabricImageForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewGetFabricImageNotFound() *GetFabricImageNotFound {
 	return &GetFabricImageNotFound{}
 }
 
-/*GetFabricImageNotFound handles this case with default header values.
+/* GetFabricImageNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type GetFabricImageNotFound struct {
 func (o *GetFabricImageNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-images/{id}][%d] getFabricImageNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetFabricImageNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

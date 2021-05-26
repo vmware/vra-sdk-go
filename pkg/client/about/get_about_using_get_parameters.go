@@ -16,52 +16,66 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetAboutUsingGETParams creates a new GetAboutUsingGETParams object
-// with the default values initialized.
+// NewGetAboutUsingGETParams creates a new GetAboutUsingGETParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetAboutUsingGETParams() *GetAboutUsingGETParams {
-
 	return &GetAboutUsingGETParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetAboutUsingGETParamsWithTimeout creates a new GetAboutUsingGETParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetAboutUsingGETParamsWithTimeout(timeout time.Duration) *GetAboutUsingGETParams {
-
 	return &GetAboutUsingGETParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetAboutUsingGETParamsWithContext creates a new GetAboutUsingGETParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetAboutUsingGETParamsWithContext(ctx context.Context) *GetAboutUsingGETParams {
-
 	return &GetAboutUsingGETParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetAboutUsingGETParamsWithHTTPClient creates a new GetAboutUsingGETParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetAboutUsingGETParamsWithHTTPClient(client *http.Client) *GetAboutUsingGETParams {
-
 	return &GetAboutUsingGETParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetAboutUsingGETParams contains all the parameters to send to the API endpoint
-for the get about using g e t operation typically these are written to a http.Request
+/* GetAboutUsingGETParams contains all the parameters to send to the API endpoint
+   for the get about using g e t operation.
+
+   Typically these are written to a http.Request.
 */
 type GetAboutUsingGETParams struct {
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get about using get params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetAboutUsingGETParams) WithDefaults() *GetAboutUsingGETParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get about using get params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetAboutUsingGETParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get about using get params

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -19,15 +20,19 @@ import (
 type FabricImageDescription struct {
 
 	// Cloud config for this image. This cloud config will be merged during provisioning with other cloud configurations such as the bootConfig provided in MachineSpecification.
+	// Example: runcmd:\n  - [\"mkdir\", \"/imageFolder\"]
 	CloudConfig string `json:"cloudConfig,omitempty"`
 
 	// Constraints that are used to drive placement policies for the image that is produced from this mapping.Constraint expressions are matched against tags on existing placement targets.
+	// Example: [{\"mandatory\" : \"true\", \"expression\": \"environment\":\"prod\"}, {\"mandatory\" : \"false\", \"expression\": \"pci\"}]
 	Constraints []*Constraint `json:"constraints"`
 
 	// The id of the fabric image
+	// Example: 9e49
 	ID string `json:"id,omitempty"`
 
 	// Fabric image name. Valid if id not provided.
+	// Example: ami-ubuntu-16.04-1.9.1-00-1516139717
 	Name string `json:"name,omitempty"`
 }
 
@@ -46,7 +51,6 @@ func (m *FabricImageDescription) Validate(formats strfmt.Registry) error {
 }
 
 func (m *FabricImageDescription) validateConstraints(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Constraints) { // not required
 		return nil
 	}
@@ -58,6 +62,38 @@ func (m *FabricImageDescription) validateConstraints(formats strfmt.Registry) er
 
 		if m.Constraints[i] != nil {
 			if err := m.Constraints[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("constraints" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this fabric image description based on the context it is used
+func (m *FabricImageDescription) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateConstraints(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *FabricImageDescription) contextValidateConstraints(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Constraints); i++ {
+
+		if m.Constraints[i] != nil {
+			if err := m.Constraints[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("constraints" + "." + strconv.Itoa(i))
 				}

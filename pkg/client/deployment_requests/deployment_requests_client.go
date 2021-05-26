@@ -25,15 +25,18 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetDeploymentRequestsUsingGET(params *GetDeploymentRequestsUsingGETParams) (*GetDeploymentRequestsUsingGETOK, error)
+	GetDeploymentRequestsUsingGET(params *GetDeploymentRequestsUsingGETParams, opts ...ClientOption) (*GetDeploymentRequestsUsingGETOK, error)
 
-	GetEventLogsUsingGET(params *GetEventLogsUsingGETParams) (*GetEventLogsUsingGETOK, error)
+	GetEventLogsUsingGET(params *GetEventLogsUsingGETParams, opts ...ClientOption) (*GetEventLogsUsingGETOK, error)
 
-	GetRequestEventsUsingGET(params *GetRequestEventsUsingGETParams) (*GetRequestEventsUsingGETOK, error)
+	GetRequestEventsUsingGET(params *GetRequestEventsUsingGETParams, opts ...ClientOption) (*GetRequestEventsUsingGETOK, error)
 
-	GetRequestUsingGET(params *GetRequestUsingGETParams) (*GetRequestUsingGETOK, error)
+	GetRequestUsingGET(params *GetRequestUsingGETParams, opts ...ClientOption) (*GetRequestUsingGETOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -43,13 +46,12 @@ type ClientService interface {
 
   Returns the requests for the deployment.
 */
-func (a *Client) GetDeploymentRequestsUsingGET(params *GetDeploymentRequestsUsingGETParams) (*GetDeploymentRequestsUsingGETOK, error) {
+func (a *Client) GetDeploymentRequestsUsingGET(params *GetDeploymentRequestsUsingGETParams, opts ...ClientOption) (*GetDeploymentRequestsUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDeploymentRequestsUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getDeploymentRequestsUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/{depId}/requests",
@@ -60,7 +62,12 @@ func (a *Client) GetDeploymentRequestsUsingGET(params *GetDeploymentRequestsUsin
 		Reader:             &GetDeploymentRequestsUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -79,13 +86,12 @@ func (a *Client) GetDeploymentRequestsUsingGET(params *GetDeploymentRequestsUsin
 
   Returns the logs for an event.
 */
-func (a *Client) GetEventLogsUsingGET(params *GetEventLogsUsingGETParams) (*GetEventLogsUsingGETOK, error) {
+func (a *Client) GetEventLogsUsingGET(params *GetEventLogsUsingGETParams, opts ...ClientOption) (*GetEventLogsUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetEventLogsUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getEventLogsUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/{depId}/requests/{requestId}/events/{eventId}/logs",
@@ -96,7 +102,12 @@ func (a *Client) GetEventLogsUsingGET(params *GetEventLogsUsingGETParams) (*GetE
 		Reader:             &GetEventLogsUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -115,13 +126,12 @@ func (a *Client) GetEventLogsUsingGET(params *GetEventLogsUsingGETParams) (*GetE
 
   Returns all the events for a request.
 */
-func (a *Client) GetRequestEventsUsingGET(params *GetRequestEventsUsingGETParams) (*GetRequestEventsUsingGETOK, error) {
+func (a *Client) GetRequestEventsUsingGET(params *GetRequestEventsUsingGETParams, opts ...ClientOption) (*GetRequestEventsUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetRequestEventsUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getRequestEventsUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/{depId}/requests/{requestId}/events",
@@ -132,7 +142,12 @@ func (a *Client) GetRequestEventsUsingGET(params *GetRequestEventsUsingGETParams
 		Reader:             &GetRequestEventsUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -151,13 +166,12 @@ func (a *Client) GetRequestEventsUsingGET(params *GetRequestEventsUsingGETParams
 
   Returns the request with the given ID.
 */
-func (a *Client) GetRequestUsingGET(params *GetRequestUsingGETParams) (*GetRequestUsingGETOK, error) {
+func (a *Client) GetRequestUsingGET(params *GetRequestUsingGETParams, opts ...ClientOption) (*GetRequestUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetRequestUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getRequestUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/{depId}/requests/{requestId}",
@@ -168,7 +182,12 @@ func (a *Client) GetRequestUsingGET(params *GetRequestUsingGETParams) (*GetReque
 		Reader:             &GetRequestUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

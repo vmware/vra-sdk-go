@@ -41,7 +41,6 @@ func (o *GetGcpCloudAccountReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetGcpCloudAccountOK() *GetGcpCloudAccountOK {
 	return &GetGcpCloudAccountOK{}
 }
 
-/*GetGcpCloudAccountOK handles this case with default header values.
+/* GetGcpCloudAccountOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type GetGcpCloudAccountOK struct {
 func (o *GetGcpCloudAccountOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-gcp/{id}][%d] getGcpCloudAccountOK  %+v", 200, o.Payload)
 }
-
 func (o *GetGcpCloudAccountOK) GetPayload() *models.CloudAccountGcp {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewGetGcpCloudAccountForbidden() *GetGcpCloudAccountForbidden {
 	return &GetGcpCloudAccountForbidden{}
 }
 
-/*GetGcpCloudAccountForbidden handles this case with default header values.
+/* GetGcpCloudAccountForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetGcpCloudAccountForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetGcpCloudAccountForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-gcp/{id}][%d] getGcpCloudAccountForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-gcp/{id}][%d] getGcpCloudAccountForbidden  %+v", 403, o.Payload)
+}
+func (o *GetGcpCloudAccountForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetGcpCloudAccountForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewGetGcpCloudAccountNotFound() *GetGcpCloudAccountNotFound {
 	return &GetGcpCloudAccountNotFound{}
 }
 
-/*GetGcpCloudAccountNotFound handles this case with default header values.
+/* GetGcpCloudAccountNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type GetGcpCloudAccountNotFound struct {
 func (o *GetGcpCloudAccountNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-gcp/{id}][%d] getGcpCloudAccountNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetGcpCloudAccountNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

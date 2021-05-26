@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -20,14 +21,17 @@ import (
 type CloudAccountAzureSpecification struct {
 
 	// Azure Client Application ID
+	// Example: 3287dd6e-76d8-41b7-9856-2584969e7739
 	// Required: true
 	ClientApplicationID *string `json:"clientApplicationId"`
 
 	// Azure Client Application Secret Key
+	// Example: GDfdasDasdASFas321das32cas2x3dsXCSA76xdcasg=
 	// Required: true
 	ClientApplicationSecretKey *string `json:"clientApplicationSecretKey"`
 
 	// Create default cloud zones for the enabled regions.
+	// Example: true
 	CreateDefaultZones bool `json:"createDefaultZones,omitempty"`
 
 	// A human-friendly description.
@@ -38,17 +42,21 @@ type CloudAccountAzureSpecification struct {
 	Name *string `json:"name"`
 
 	// A set of Region names to enable provisioning on. Refer to /iaas/cloud-accounts-azure/region-enumeration..
+	// Example: [ \"East US\", \"North Europe\" ]
 	// Required: true
 	RegionIds []string `json:"regionIds"`
 
 	// Azure Subscribtion ID
+	// Example: 064865b2-e914-4717-b415-8806d17948f7
 	// Required: true
 	SubscriptionID *string `json:"subscriptionId"`
 
 	// A set of tag keys and optional values to set on the Cloud Account
+	// Example: [ { \"key\" : \"env\", \"value\": \"dev\" } ]
 	Tags []*Tag `json:"tags"`
 
 	// Azure Tenant ID
+	// Example: 9a13d920-4691-4e2d-b5d5-9c4c1279bc9a
 	// Required: true
 	TenantID *string `json:"tenantId"`
 }
@@ -137,7 +145,6 @@ func (m *CloudAccountAzureSpecification) validateSubscriptionID(formats strfmt.R
 }
 
 func (m *CloudAccountAzureSpecification) validateTags(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Tags) { // not required
 		return nil
 	}
@@ -165,6 +172,38 @@ func (m *CloudAccountAzureSpecification) validateTenantID(formats strfmt.Registr
 
 	if err := validate.Required("tenantId", "body", m.TenantID); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this cloud account azure specification based on the context it is used
+func (m *CloudAccountAzureSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateTags(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CloudAccountAzureSpecification) contextValidateTags(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Tags); i++ {
+
+		if m.Tags[i] != nil {
+			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil

@@ -41,7 +41,6 @@ func (o *GetVSphereStorageProfileReader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetVSphereStorageProfileOK() *GetVSphereStorageProfileOK {
 	return &GetVSphereStorageProfileOK{}
 }
 
-/*GetVSphereStorageProfileOK handles this case with default header values.
+/* GetVSphereStorageProfileOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type GetVSphereStorageProfileOK struct {
 func (o *GetVSphereStorageProfileOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/storage-profiles-vsphere/{id}][%d] getVSphereStorageProfileOK  %+v", 200, o.Payload)
 }
-
 func (o *GetVSphereStorageProfileOK) GetPayload() *models.VsphereStorageProfile {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewGetVSphereStorageProfileForbidden() *GetVSphereStorageProfileForbidden {
 	return &GetVSphereStorageProfileForbidden{}
 }
 
-/*GetVSphereStorageProfileForbidden handles this case with default header values.
+/* GetVSphereStorageProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetVSphereStorageProfileForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetVSphereStorageProfileForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/storage-profiles-vsphere/{id}][%d] getVSphereStorageProfileForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/storage-profiles-vsphere/{id}][%d] getVSphereStorageProfileForbidden  %+v", 403, o.Payload)
+}
+func (o *GetVSphereStorageProfileForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetVSphereStorageProfileForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewGetVSphereStorageProfileNotFound() *GetVSphereStorageProfileNotFound {
 	return &GetVSphereStorageProfileNotFound{}
 }
 
-/*GetVSphereStorageProfileNotFound handles this case with default header values.
+/* GetVSphereStorageProfileNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type GetVSphereStorageProfileNotFound struct {
 func (o *GetVSphereStorageProfileNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/storage-profiles-vsphere/{id}][%d] getVSphereStorageProfileNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetVSphereStorageProfileNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

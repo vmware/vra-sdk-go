@@ -41,7 +41,6 @@ func (o *PowerOffMachineReader) ReadResponse(response runtime.ClientResponse, co
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewPowerOffMachineAccepted() *PowerOffMachineAccepted {
 	return &PowerOffMachineAccepted{}
 }
 
-/*PowerOffMachineAccepted handles this case with default header values.
+/* PowerOffMachineAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type PowerOffMachineAccepted struct {
 func (o *PowerOffMachineAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/power-off][%d] powerOffMachineAccepted  %+v", 202, o.Payload)
 }
-
 func (o *PowerOffMachineAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewPowerOffMachineForbidden() *PowerOffMachineForbidden {
 	return &PowerOffMachineForbidden{}
 }
 
-/*PowerOffMachineForbidden handles this case with default header values.
+/* PowerOffMachineForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type PowerOffMachineForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *PowerOffMachineForbidden) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/power-off][%d] powerOffMachineForbidden ", 403)
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/power-off][%d] powerOffMachineForbidden  %+v", 403, o.Payload)
+}
+func (o *PowerOffMachineForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *PowerOffMachineForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewPowerOffMachineNotFound() *PowerOffMachineNotFound {
 	return &PowerOffMachineNotFound{}
 }
 
-/*PowerOffMachineNotFound handles this case with default header values.
+/* PowerOffMachineNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type PowerOffMachineNotFound struct {
 func (o *PowerOffMachineNotFound) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/power-off][%d] powerOffMachineNotFound  %+v", 404, o.Payload)
 }
-
 func (o *PowerOffMachineNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

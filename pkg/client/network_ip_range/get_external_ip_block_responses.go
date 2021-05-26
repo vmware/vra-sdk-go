@@ -41,7 +41,6 @@ func (o *GetExternalIPBlockReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetExternalIPBlockOK() *GetExternalIPBlockOK {
 	return &GetExternalIPBlockOK{}
 }
 
-/*GetExternalIPBlockOK handles this case with default header values.
+/* GetExternalIPBlockOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type GetExternalIPBlockOK struct {
 func (o *GetExternalIPBlockOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/external-ip-blocks/{id}][%d] getExternalIpBlockOK  %+v", 200, o.Payload)
 }
-
 func (o *GetExternalIPBlockOK) GetPayload() *models.FabricNetwork {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewGetExternalIPBlockForbidden() *GetExternalIPBlockForbidden {
 	return &GetExternalIPBlockForbidden{}
 }
 
-/*GetExternalIPBlockForbidden handles this case with default header values.
+/* GetExternalIPBlockForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetExternalIPBlockForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetExternalIPBlockForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/external-ip-blocks/{id}][%d] getExternalIpBlockForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/external-ip-blocks/{id}][%d] getExternalIpBlockForbidden  %+v", 403, o.Payload)
+}
+func (o *GetExternalIPBlockForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetExternalIPBlockForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewGetExternalIPBlockNotFound() *GetExternalIPBlockNotFound {
 	return &GetExternalIPBlockNotFound{}
 }
 
-/*GetExternalIPBlockNotFound handles this case with default header values.
+/* GetExternalIPBlockNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type GetExternalIPBlockNotFound struct {
 func (o *GetExternalIPBlockNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/external-ip-blocks/{id}][%d] getExternalIpBlockNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetExternalIPBlockNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -41,7 +41,6 @@ func (o *CreateZoneReader) ReadResponse(response runtime.ClientResponse, consume
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewCreateZoneCreated() *CreateZoneCreated {
 	return &CreateZoneCreated{}
 }
 
-/*CreateZoneCreated handles this case with default header values.
+/* CreateZoneCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type CreateZoneCreated struct {
 func (o *CreateZoneCreated) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/zones][%d] createZoneCreated  %+v", 201, o.Payload)
 }
-
 func (o *CreateZoneCreated) GetPayload() *models.Zone {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewCreateZoneBadRequest() *CreateZoneBadRequest {
 	return &CreateZoneBadRequest{}
 }
 
-/*CreateZoneBadRequest handles this case with default header values.
+/* CreateZoneBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -96,7 +94,6 @@ type CreateZoneBadRequest struct {
 func (o *CreateZoneBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/zones][%d] createZoneBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateZoneBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -118,18 +115,29 @@ func NewCreateZoneForbidden() *CreateZoneForbidden {
 	return &CreateZoneForbidden{}
 }
 
-/*CreateZoneForbidden handles this case with default header values.
+/* CreateZoneForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type CreateZoneForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *CreateZoneForbidden) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/zones][%d] createZoneForbidden ", 403)
+	return fmt.Sprintf("[POST /iaas/api/zones][%d] createZoneForbidden  %+v", 403, o.Payload)
+}
+func (o *CreateZoneForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *CreateZoneForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

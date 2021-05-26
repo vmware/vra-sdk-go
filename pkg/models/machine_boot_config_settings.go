@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -16,17 +18,25 @@ import (
 type MachineBootConfigSettings struct {
 
 	// In case a timeout occurs whether the provisioning process should fail or continue.
+	// Example: false
 	PhoneHomeFailOnTimeout bool `json:"phoneHomeFailOnTimeout,omitempty"`
 
 	// A phone_home module will be added to the Cloud Config and the provisioning will wait on a callback prior proceeding
+	// Example: true
 	PhoneHomeShouldWait bool `json:"phoneHomeShouldWait,omitempty"`
 
 	// The period of time to wait for the phone_home module callback to occur
+	// Example: 100
 	PhoneHomeTimeoutSeconds int32 `json:"phoneHomeTimeoutSeconds,omitempty"`
 }
 
 // Validate validates this machine boot config settings
 func (m *MachineBootConfigSettings) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this machine boot config settings based on context it is used
+func (m *MachineBootConfigSettings) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

@@ -25,31 +25,34 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CheckDeploymentNameUsingGET(params *CheckDeploymentNameUsingGETParams) (*CheckDeploymentNameUsingGETOK, error)
+	CheckDeploymentNameUsingGET(params *CheckDeploymentNameUsingGETParams, opts ...ClientOption) (*CheckDeploymentNameUsingGETOK, error)
 
-	DeleteDeploymentUsingDELETE(params *DeleteDeploymentUsingDELETEParams) (*DeleteDeploymentUsingDELETEOK, error)
+	DeleteDeploymentUsingDELETE(params *DeleteDeploymentUsingDELETEParams, opts ...ClientOption) (*DeleteDeploymentUsingDELETEOK, error)
 
-	DeleteResourceUsingDELETE(params *DeleteResourceUsingDELETEParams) (*DeleteResourceUsingDELETEOK, error)
+	DeleteResourceUsingDELETE(params *DeleteResourceUsingDELETEParams, opts ...ClientOption) (*DeleteResourceUsingDELETEOK, error)
 
-	GetDeploymentByIDUsingGET(params *GetDeploymentByIDUsingGETParams) (*GetDeploymentByIDUsingGETOK, error)
+	GetDeploymentByIDUsingGET(params *GetDeploymentByIDUsingGETParams, opts ...ClientOption) (*GetDeploymentByIDUsingGETOK, error)
 
-	GetDeploymentExpenseHistoryByIDUsingGET(params *GetDeploymentExpenseHistoryByIDUsingGETParams) (*GetDeploymentExpenseHistoryByIDUsingGETOK, error)
+	GetDeploymentExpenseHistoryByIDUsingGET(params *GetDeploymentExpenseHistoryByIDUsingGETParams, opts ...ClientOption) (*GetDeploymentExpenseHistoryByIDUsingGETOK, error)
 
-	GetDeploymentFilterByIDUsingGET(params *GetDeploymentFilterByIDUsingGETParams) (*GetDeploymentFilterByIDUsingGETOK, error)
+	GetDeploymentFilterByIDUsingGET(params *GetDeploymentFilterByIDUsingGETParams, opts ...ClientOption) (*GetDeploymentFilterByIDUsingGETOK, error)
 
-	GetDeploymentFiltersUsingGET(params *GetDeploymentFiltersUsingGETParams) (*GetDeploymentFiltersUsingGETOK, error)
+	GetDeploymentFiltersUsingGET(params *GetDeploymentFiltersUsingGETParams, opts ...ClientOption) (*GetDeploymentFiltersUsingGETOK, error)
 
-	GetDeploymentResourcesUsingGET(params *GetDeploymentResourcesUsingGETParams) (*GetDeploymentResourcesUsingGETOK, error)
+	GetDeploymentResourcesUsingGET(params *GetDeploymentResourcesUsingGETParams, opts ...ClientOption) (*GetDeploymentResourcesUsingGETOK, error)
 
-	GetDeploymentsForProjectUsingGET(params *GetDeploymentsForProjectUsingGETParams) (*GetDeploymentsForProjectUsingGETOK, error)
+	GetDeploymentsForProjectUsingGET(params *GetDeploymentsForProjectUsingGETParams, opts ...ClientOption) (*GetDeploymentsForProjectUsingGETOK, error)
 
-	GetDeploymentsUsingGET(params *GetDeploymentsUsingGETParams) (*GetDeploymentsUsingGETOK, error)
+	GetDeploymentsUsingGET(params *GetDeploymentsUsingGETParams, opts ...ClientOption) (*GetDeploymentsUsingGETOK, error)
 
-	GetResourceByIDUsingGET(params *GetResourceByIDUsingGETParams) (*GetResourceByIDUsingGETOK, error)
+	GetResourceByIDUsingGET(params *GetResourceByIDUsingGETParams, opts ...ClientOption) (*GetResourceByIDUsingGETOK, error)
 
-	PatchDeploymentUsingPATCH(params *PatchDeploymentUsingPATCHParams) (*PatchDeploymentUsingPATCHOK, error)
+	PatchDeploymentUsingPATCH(params *PatchDeploymentUsingPATCHParams, opts ...ClientOption) (*PatchDeploymentUsingPATCHOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -59,13 +62,12 @@ type ClientService interface {
 
   Returns OK if a deployment with the supplied name exists.
 */
-func (a *Client) CheckDeploymentNameUsingGET(params *CheckDeploymentNameUsingGETParams) (*CheckDeploymentNameUsingGETOK, error) {
+func (a *Client) CheckDeploymentNameUsingGET(params *CheckDeploymentNameUsingGETParams, opts ...ClientOption) (*CheckDeploymentNameUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCheckDeploymentNameUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "checkDeploymentNameUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/names/{name}",
@@ -76,7 +78,12 @@ func (a *Client) CheckDeploymentNameUsingGET(params *CheckDeploymentNameUsingGET
 		Reader:             &CheckDeploymentNameUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -95,13 +102,12 @@ func (a *Client) CheckDeploymentNameUsingGET(params *CheckDeploymentNameUsingGET
 
   Deletes the deployment with the supplied ID, cleans up the associated resources from the Cloud Provider.
 */
-func (a *Client) DeleteDeploymentUsingDELETE(params *DeleteDeploymentUsingDELETEParams) (*DeleteDeploymentUsingDELETEOK, error) {
+func (a *Client) DeleteDeploymentUsingDELETE(params *DeleteDeploymentUsingDELETEParams, opts ...ClientOption) (*DeleteDeploymentUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteDeploymentUsingDELETEParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteDeploymentUsingDELETE",
 		Method:             "DELETE",
 		PathPattern:        "/deployment/api/deployments/{depId}",
@@ -112,7 +118,12 @@ func (a *Client) DeleteDeploymentUsingDELETE(params *DeleteDeploymentUsingDELETE
 		Reader:             &DeleteDeploymentUsingDELETEReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -131,13 +142,12 @@ func (a *Client) DeleteDeploymentUsingDELETE(params *DeleteDeploymentUsingDELETE
 
   Deletes the resource with the specified ID and attempts to delete resource from the Cloud Provider.
 */
-func (a *Client) DeleteResourceUsingDELETE(params *DeleteResourceUsingDELETEParams) (*DeleteResourceUsingDELETEOK, error) {
+func (a *Client) DeleteResourceUsingDELETE(params *DeleteResourceUsingDELETEParams, opts ...ClientOption) (*DeleteResourceUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteResourceUsingDELETEParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteResourceUsingDELETE",
 		Method:             "DELETE",
 		PathPattern:        "/deployment/api/deployments/{depId}/resources/{resourceId}",
@@ -148,7 +158,12 @@ func (a *Client) DeleteResourceUsingDELETE(params *DeleteResourceUsingDELETEPara
 		Reader:             &DeleteResourceUsingDELETEReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -167,13 +182,12 @@ func (a *Client) DeleteResourceUsingDELETE(params *DeleteResourceUsingDELETEPara
 
   Returns the deployment with the supplied ID.
 */
-func (a *Client) GetDeploymentByIDUsingGET(params *GetDeploymentByIDUsingGETParams) (*GetDeploymentByIDUsingGETOK, error) {
+func (a *Client) GetDeploymentByIDUsingGET(params *GetDeploymentByIDUsingGETParams, opts ...ClientOption) (*GetDeploymentByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDeploymentByIDUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getDeploymentByIdUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/{depId}",
@@ -184,7 +198,12 @@ func (a *Client) GetDeploymentByIDUsingGET(params *GetDeploymentByIDUsingGETPara
 		Reader:             &GetDeploymentByIDUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -203,13 +222,12 @@ func (a *Client) GetDeploymentByIDUsingGET(params *GetDeploymentByIDUsingGETPara
 
   Returns the deployment expense history with the supplied ID.
 */
-func (a *Client) GetDeploymentExpenseHistoryByIDUsingGET(params *GetDeploymentExpenseHistoryByIDUsingGETParams) (*GetDeploymentExpenseHistoryByIDUsingGETOK, error) {
+func (a *Client) GetDeploymentExpenseHistoryByIDUsingGET(params *GetDeploymentExpenseHistoryByIDUsingGETParams, opts ...ClientOption) (*GetDeploymentExpenseHistoryByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDeploymentExpenseHistoryByIDUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getDeploymentExpenseHistoryByIdUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/{depId}/expense-history",
@@ -220,7 +238,12 @@ func (a *Client) GetDeploymentExpenseHistoryByIDUsingGET(params *GetDeploymentEx
 		Reader:             &GetDeploymentExpenseHistoryByIDUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -237,13 +260,12 @@ func (a *Client) GetDeploymentExpenseHistoryByIDUsingGET(params *GetDeploymentEx
 /*
   GetDeploymentFilterByIDUsingGET returns the deployment filter with the supplied ID
 */
-func (a *Client) GetDeploymentFilterByIDUsingGET(params *GetDeploymentFilterByIDUsingGETParams) (*GetDeploymentFilterByIDUsingGETOK, error) {
+func (a *Client) GetDeploymentFilterByIDUsingGET(params *GetDeploymentFilterByIDUsingGETParams, opts ...ClientOption) (*GetDeploymentFilterByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDeploymentFilterByIDUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getDeploymentFilterByIdUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/filters/{filterId}",
@@ -254,7 +276,12 @@ func (a *Client) GetDeploymentFilterByIDUsingGET(params *GetDeploymentFilterByID
 		Reader:             &GetDeploymentFilterByIDUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -271,13 +298,12 @@ func (a *Client) GetDeploymentFilterByIDUsingGET(params *GetDeploymentFilterByID
 /*
   GetDeploymentFiltersUsingGET returns the deployment filters in context of given user
 */
-func (a *Client) GetDeploymentFiltersUsingGET(params *GetDeploymentFiltersUsingGETParams) (*GetDeploymentFiltersUsingGETOK, error) {
+func (a *Client) GetDeploymentFiltersUsingGET(params *GetDeploymentFiltersUsingGETParams, opts ...ClientOption) (*GetDeploymentFiltersUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDeploymentFiltersUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getDeploymentFiltersUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/filters",
@@ -288,7 +314,12 @@ func (a *Client) GetDeploymentFiltersUsingGET(params *GetDeploymentFiltersUsingG
 		Reader:             &GetDeploymentFiltersUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -307,13 +338,12 @@ func (a *Client) GetDeploymentFiltersUsingGET(params *GetDeploymentFiltersUsingG
 
   Returns a paginated list of resources corresponding to the deployment with the supplied ID.
 */
-func (a *Client) GetDeploymentResourcesUsingGET(params *GetDeploymentResourcesUsingGETParams) (*GetDeploymentResourcesUsingGETOK, error) {
+func (a *Client) GetDeploymentResourcesUsingGET(params *GetDeploymentResourcesUsingGETParams, opts ...ClientOption) (*GetDeploymentResourcesUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDeploymentResourcesUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getDeploymentResourcesUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/{depId}/resources",
@@ -324,7 +354,12 @@ func (a *Client) GetDeploymentResourcesUsingGET(params *GetDeploymentResourcesUs
 		Reader:             &GetDeploymentResourcesUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -341,13 +376,12 @@ func (a *Client) GetDeploymentResourcesUsingGET(params *GetDeploymentResourcesUs
 /*
   GetDeploymentsForProjectUsingGET returns a count of deployments using the project
 */
-func (a *Client) GetDeploymentsForProjectUsingGET(params *GetDeploymentsForProjectUsingGETParams) (*GetDeploymentsForProjectUsingGETOK, error) {
+func (a *Client) GetDeploymentsForProjectUsingGET(params *GetDeploymentsForProjectUsingGETParams, opts ...ClientOption) (*GetDeploymentsForProjectUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDeploymentsForProjectUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getDeploymentsForProjectUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/projects/{projectId}/deployment-count",
@@ -358,7 +392,12 @@ func (a *Client) GetDeploymentsForProjectUsingGET(params *GetDeploymentsForProje
 		Reader:             &GetDeploymentsForProjectUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -377,13 +416,12 @@ func (a *Client) GetDeploymentsForProjectUsingGET(params *GetDeploymentsForProje
 
   Returns a paginated list of deployments. Deployments with more than 100 resources is not supported.
 */
-func (a *Client) GetDeploymentsUsingGET(params *GetDeploymentsUsingGETParams) (*GetDeploymentsUsingGETOK, error) {
+func (a *Client) GetDeploymentsUsingGET(params *GetDeploymentsUsingGETParams, opts ...ClientOption) (*GetDeploymentsUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDeploymentsUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getDeploymentsUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments",
@@ -394,7 +432,12 @@ func (a *Client) GetDeploymentsUsingGET(params *GetDeploymentsUsingGETParams) (*
 		Reader:             &GetDeploymentsUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -413,13 +456,12 @@ func (a *Client) GetDeploymentsUsingGET(params *GetDeploymentsUsingGETParams) (*
 
   Returns the resource with the specified ID that is correlated with the supplied deployment.
 */
-func (a *Client) GetResourceByIDUsingGET(params *GetResourceByIDUsingGETParams) (*GetResourceByIDUsingGETOK, error) {
+func (a *Client) GetResourceByIDUsingGET(params *GetResourceByIDUsingGETParams, opts ...ClientOption) (*GetResourceByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetResourceByIDUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getResourceByIdUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/{depId}/resources/{resourceId}",
@@ -430,7 +472,12 @@ func (a *Client) GetResourceByIDUsingGET(params *GetResourceByIDUsingGETParams) 
 		Reader:             &GetResourceByIDUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -449,13 +496,12 @@ func (a *Client) GetResourceByIDUsingGET(params *GetResourceByIDUsingGETParams) 
 
   Updates the deployment with the supplied ID.
 */
-func (a *Client) PatchDeploymentUsingPATCH(params *PatchDeploymentUsingPATCHParams) (*PatchDeploymentUsingPATCHOK, error) {
+func (a *Client) PatchDeploymentUsingPATCH(params *PatchDeploymentUsingPATCHParams, opts ...ClientOption) (*PatchDeploymentUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPatchDeploymentUsingPATCHParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "patchDeploymentUsingPATCH",
 		Method:             "PATCH",
 		PathPattern:        "/deployment/api/deployments/{depId}",
@@ -466,7 +512,12 @@ func (a *Client) PatchDeploymentUsingPATCH(params *PatchDeploymentUsingPATCHPara
 		Reader:             &PatchDeploymentUsingPATCHReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

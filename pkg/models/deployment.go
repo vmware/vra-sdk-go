@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 	"strconv"
 
@@ -163,7 +164,6 @@ func (m *Deployment) Validate(formats strfmt.Registry) error {
 }
 
 func (m *Deployment) validateBlueprint(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Blueprint) { // not required
 		return nil
 	}
@@ -181,7 +181,6 @@ func (m *Deployment) validateBlueprint(formats strfmt.Registry) error {
 }
 
 func (m *Deployment) validateCatalog(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Catalog) { // not required
 		return nil
 	}
@@ -199,7 +198,6 @@ func (m *Deployment) validateCatalog(formats strfmt.Registry) error {
 }
 
 func (m *Deployment) validateCreatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CreatedAt) { // not required
 		return nil
 	}
@@ -212,7 +210,6 @@ func (m *Deployment) validateCreatedAt(formats strfmt.Registry) error {
 }
 
 func (m *Deployment) validateExpense(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Expense) { // not required
 		return nil
 	}
@@ -230,7 +227,6 @@ func (m *Deployment) validateExpense(formats strfmt.Registry) error {
 }
 
 func (m *Deployment) validateID(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ID) { // not required
 		return nil
 	}
@@ -243,7 +239,6 @@ func (m *Deployment) validateID(formats strfmt.Registry) error {
 }
 
 func (m *Deployment) validateLastRequest(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.LastRequest) { // not required
 		return nil
 	}
@@ -261,7 +256,6 @@ func (m *Deployment) validateLastRequest(formats strfmt.Registry) error {
 }
 
 func (m *Deployment) validateLastUpdatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.LastUpdatedAt) { // not required
 		return nil
 	}
@@ -274,7 +268,6 @@ func (m *Deployment) validateLastUpdatedAt(formats strfmt.Registry) error {
 }
 
 func (m *Deployment) validateLeaseExpireAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.LeaseExpireAt) { // not required
 		return nil
 	}
@@ -296,7 +289,6 @@ func (m *Deployment) validateName(formats strfmt.Registry) error {
 }
 
 func (m *Deployment) validateProject(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Project) { // not required
 		return nil
 	}
@@ -314,7 +306,6 @@ func (m *Deployment) validateProject(formats strfmt.Registry) error {
 }
 
 func (m *Deployment) validateResources(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Resources) { // not required
 		return nil
 	}
@@ -398,7 +389,6 @@ func (m *Deployment) validateStatusEnum(path, location string, value string) err
 }
 
 func (m *Deployment) validateStatus(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Status) { // not required
 		return nil
 	}
@@ -406,6 +396,128 @@ func (m *Deployment) validateStatus(formats strfmt.Registry) error {
 	// value enum
 	if err := m.validateStatusEnum("status", "body", m.Status); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this deployment based on the context it is used
+func (m *Deployment) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateBlueprint(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateCatalog(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateExpense(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateLastRequest(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateProject(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResources(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *Deployment) contextValidateBlueprint(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Blueprint != nil {
+		if err := m.Blueprint.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("blueprint")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Deployment) contextValidateCatalog(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Catalog != nil {
+		if err := m.Catalog.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("catalog")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Deployment) contextValidateExpense(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Expense != nil {
+		if err := m.Expense.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("expense")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Deployment) contextValidateLastRequest(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.LastRequest != nil {
+		if err := m.LastRequest.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("lastRequest")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Deployment) contextValidateProject(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Project != nil {
+		if err := m.Project.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("project")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Deployment) contextValidateResources(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Resources); i++ {
+
+		if m.Resources[i] != nil {
+			if err := m.Resources[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("resources" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil

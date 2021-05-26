@@ -16,59 +16,73 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetVSphereCloudAccountsParams creates a new GetVSphereCloudAccountsParams object
-// with the default values initialized.
+// NewGetVSphereCloudAccountsParams creates a new GetVSphereCloudAccountsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetVSphereCloudAccountsParams() *GetVSphereCloudAccountsParams {
-	var ()
 	return &GetVSphereCloudAccountsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetVSphereCloudAccountsParamsWithTimeout creates a new GetVSphereCloudAccountsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetVSphereCloudAccountsParamsWithTimeout(timeout time.Duration) *GetVSphereCloudAccountsParams {
-	var ()
 	return &GetVSphereCloudAccountsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetVSphereCloudAccountsParamsWithContext creates a new GetVSphereCloudAccountsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetVSphereCloudAccountsParamsWithContext(ctx context.Context) *GetVSphereCloudAccountsParams {
-	var ()
 	return &GetVSphereCloudAccountsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetVSphereCloudAccountsParamsWithHTTPClient creates a new GetVSphereCloudAccountsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetVSphereCloudAccountsParamsWithHTTPClient(client *http.Client) *GetVSphereCloudAccountsParams {
-	var ()
 	return &GetVSphereCloudAccountsParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetVSphereCloudAccountsParams contains all the parameters to send to the API endpoint
-for the get v sphere cloud accounts operation typically these are written to a http.Request
+/* GetVSphereCloudAccountsParams contains all the parameters to send to the API endpoint
+   for the get v sphere cloud accounts operation.
+
+   Typically these are written to a http.Request.
 */
 type GetVSphereCloudAccountsParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get v sphere cloud accounts params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetVSphereCloudAccountsParams) WithDefaults() *GetVSphereCloudAccountsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get v sphere cloud accounts params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetVSphereCloudAccountsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get v sphere cloud accounts params
@@ -127,16 +141,17 @@ func (o *GetVSphereCloudAccountsParams) WriteToRequest(r runtime.ClientRequest, 
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

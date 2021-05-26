@@ -29,7 +29,6 @@ func (o *SyncHistoryUsingGETReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -40,7 +39,7 @@ func NewSyncHistoryUsingGETOK() *SyncHistoryUsingGETOK {
 	return &SyncHistoryUsingGETOK{}
 }
 
-/*SyncHistoryUsingGETOK handles this case with default header values.
+/* SyncHistoryUsingGETOK describes a response with status code 200, with default header values.
 
 Sync history
 */
@@ -51,7 +50,6 @@ type SyncHistoryUsingGETOK struct {
 func (o *SyncHistoryUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /content/api/sourcecontrol/sync-history][%d] syncHistoryUsingGETOK  %+v", 200, o.Payload)
 }
-
 func (o *SyncHistoryUsingGETOK) GetPayload() *models.SourceControlSyncHistory {
 	return o.Payload
 }

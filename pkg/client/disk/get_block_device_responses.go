@@ -41,7 +41,6 @@ func (o *GetBlockDeviceReader) ReadResponse(response runtime.ClientResponse, con
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetBlockDeviceOK() *GetBlockDeviceOK {
 	return &GetBlockDeviceOK{}
 }
 
-/*GetBlockDeviceOK handles this case with default header values.
+/* GetBlockDeviceOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type GetBlockDeviceOK struct {
 func (o *GetBlockDeviceOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/block-devices/{id}][%d] getBlockDeviceOK  %+v", 200, o.Payload)
 }
-
 func (o *GetBlockDeviceOK) GetPayload() *models.BlockDevice {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewGetBlockDeviceForbidden() *GetBlockDeviceForbidden {
 	return &GetBlockDeviceForbidden{}
 }
 
-/*GetBlockDeviceForbidden handles this case with default header values.
+/* GetBlockDeviceForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetBlockDeviceForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetBlockDeviceForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/block-devices/{id}][%d] getBlockDeviceForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/block-devices/{id}][%d] getBlockDeviceForbidden  %+v", 403, o.Payload)
+}
+func (o *GetBlockDeviceForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetBlockDeviceForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewGetBlockDeviceNotFound() *GetBlockDeviceNotFound {
 	return &GetBlockDeviceNotFound{}
 }
 
-/*GetBlockDeviceNotFound handles this case with default header values.
+/* GetBlockDeviceNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type GetBlockDeviceNotFound struct {
 func (o *GetBlockDeviceNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/block-devices/{id}][%d] getBlockDeviceNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetBlockDeviceNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

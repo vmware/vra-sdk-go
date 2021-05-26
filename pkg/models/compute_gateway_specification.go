@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -19,10 +20,11 @@ import (
 // swagger:model ComputeGatewaySpecification
 type ComputeGatewaySpecification struct {
 
-	// Additional custom properties that may be used to extend the compute gateway.
+	// Additional custom properties that may be used to extend this resource.
 	CustomProperties map[string]string `json:"customProperties,omitempty"`
 
 	// The id of the deployment that is associated with this resource
+	// Example: 123e4567-e89b-12d3-a456-426655440000
 	DeploymentID string `json:"deploymentId,omitempty"`
 
 	// A human-friendly name used as an identifier in APIs that support this option.
@@ -38,6 +40,7 @@ type ComputeGatewaySpecification struct {
 	Networks []string `json:"networks"`
 
 	// The id of the project the current user belongs to.
+	// Example: e058
 	// Required: true
 	ProjectID *string `json:"projectId"`
 }
@@ -115,6 +118,38 @@ func (m *ComputeGatewaySpecification) validateProjectID(formats strfmt.Registry)
 
 	if err := validate.Required("projectId", "body", m.ProjectID); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this compute gateway specification based on the context it is used
+func (m *ComputeGatewaySpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateNatRules(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ComputeGatewaySpecification) contextValidateNatRules(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.NatRules); i++ {
+
+		if m.NatRules[i] != nil {
+			if err := m.NatRules[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("natRules" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil

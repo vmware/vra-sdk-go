@@ -17,69 +17,87 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGetBlueprintResourcesPlanUsingGET1Params creates a new GetBlueprintResourcesPlanUsingGET1Params object
-// with the default values initialized.
+// NewGetBlueprintResourcesPlanUsingGET1Params creates a new GetBlueprintResourcesPlanUsingGET1Params object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetBlueprintResourcesPlanUsingGET1Params() *GetBlueprintResourcesPlanUsingGET1Params {
-	var ()
 	return &GetBlueprintResourcesPlanUsingGET1Params{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetBlueprintResourcesPlanUsingGET1ParamsWithTimeout creates a new GetBlueprintResourcesPlanUsingGET1Params object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetBlueprintResourcesPlanUsingGET1ParamsWithTimeout(timeout time.Duration) *GetBlueprintResourcesPlanUsingGET1Params {
-	var ()
 	return &GetBlueprintResourcesPlanUsingGET1Params{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetBlueprintResourcesPlanUsingGET1ParamsWithContext creates a new GetBlueprintResourcesPlanUsingGET1Params object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetBlueprintResourcesPlanUsingGET1ParamsWithContext(ctx context.Context) *GetBlueprintResourcesPlanUsingGET1Params {
-	var ()
 	return &GetBlueprintResourcesPlanUsingGET1Params{
-
 		Context: ctx,
 	}
 }
 
 // NewGetBlueprintResourcesPlanUsingGET1ParamsWithHTTPClient creates a new GetBlueprintResourcesPlanUsingGET1Params object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetBlueprintResourcesPlanUsingGET1ParamsWithHTTPClient(client *http.Client) *GetBlueprintResourcesPlanUsingGET1Params {
-	var ()
 	return &GetBlueprintResourcesPlanUsingGET1Params{
 		HTTPClient: client,
 	}
 }
 
-/*GetBlueprintResourcesPlanUsingGET1Params contains all the parameters to send to the API endpoint
-for the get blueprint resources plan using get1 operation typically these are written to a http.Request
+/* GetBlueprintResourcesPlanUsingGET1Params contains all the parameters to send to the API endpoint
+   for the get blueprint resources plan using get1 operation.
+
+   Typically these are written to a http.Request.
 */
 type GetBlueprintResourcesPlanUsingGET1Params struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about
 	*/
 	APIVersion *string
-	/*Expand
-	  Detailed plan
 
+	/* Expand.
+
+	   Detailed plan
 	*/
 	Expand *bool
-	/*RequestID
-	  requestId
 
+	/* RequestID.
+
+	   requestId
+
+	   Format: uuid
 	*/
 	RequestID strfmt.UUID
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get blueprint resources plan using get1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetBlueprintResourcesPlanUsingGET1Params) WithDefaults() *GetBlueprintResourcesPlanUsingGET1Params {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get blueprint resources plan using get1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetBlueprintResourcesPlanUsingGET1Params) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get blueprint resources plan using get1 params
@@ -160,32 +178,34 @@ func (o *GetBlueprintResourcesPlanUsingGET1Params) WriteToRequest(r runtime.Clie
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Expand != nil {
 
 		// query param expand
 		var qrExpand bool
+
 		if o.Expand != nil {
 			qrExpand = *o.Expand
 		}
 		qExpand := swag.FormatBool(qrExpand)
 		if qExpand != "" {
+
 			if err := r.SetQueryParam("expand", qExpand); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param requestId

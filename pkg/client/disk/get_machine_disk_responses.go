@@ -41,7 +41,6 @@ func (o *GetMachineDiskReader) ReadResponse(response runtime.ClientResponse, con
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetMachineDiskOK() *GetMachineDiskOK {
 	return &GetMachineDiskOK{}
 }
 
-/*GetMachineDiskOK handles this case with default header values.
+/* GetMachineDiskOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type GetMachineDiskOK struct {
 func (o *GetMachineDiskOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/machines/{id}/disks/{id1}][%d] getMachineDiskOK  %+v", 200, o.Payload)
 }
-
 func (o *GetMachineDiskOK) GetPayload() *models.BlockDevice {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewGetMachineDiskForbidden() *GetMachineDiskForbidden {
 	return &GetMachineDiskForbidden{}
 }
 
-/*GetMachineDiskForbidden handles this case with default header values.
+/* GetMachineDiskForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetMachineDiskForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetMachineDiskForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/machines/{id}/disks/{id1}][%d] getMachineDiskForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/machines/{id}/disks/{id1}][%d] getMachineDiskForbidden  %+v", 403, o.Payload)
+}
+func (o *GetMachineDiskForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetMachineDiskForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewGetMachineDiskNotFound() *GetMachineDiskNotFound {
 	return &GetMachineDiskNotFound{}
 }
 
-/*GetMachineDiskNotFound handles this case with default header values.
+/* GetMachineDiskNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type GetMachineDiskNotFound struct {
 func (o *GetMachineDiskNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/machines/{id}/disks/{id1}][%d] getMachineDiskNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetMachineDiskNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

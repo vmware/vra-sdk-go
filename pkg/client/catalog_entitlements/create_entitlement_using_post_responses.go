@@ -53,7 +53,6 @@ func (o *CreateEntitlementUsingPOSTReader) ReadResponse(response runtime.ClientR
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -64,7 +63,7 @@ func NewCreateEntitlementUsingPOSTOK() *CreateEntitlementUsingPOSTOK {
 	return &CreateEntitlementUsingPOSTOK{}
 }
 
-/*CreateEntitlementUsingPOSTOK handles this case with default header values.
+/* CreateEntitlementUsingPOSTOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -75,7 +74,6 @@ type CreateEntitlementUsingPOSTOK struct {
 func (o *CreateEntitlementUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /catalog/api/admin/entitlements][%d] createEntitlementUsingPOSTOK  %+v", 200, o.Payload)
 }
-
 func (o *CreateEntitlementUsingPOSTOK) GetPayload() *models.Entitlement {
 	return o.Payload
 }
@@ -97,7 +95,7 @@ func NewCreateEntitlementUsingPOSTCreated() *CreateEntitlementUsingPOSTCreated {
 	return &CreateEntitlementUsingPOSTCreated{}
 }
 
-/*CreateEntitlementUsingPOSTCreated handles this case with default header values.
+/* CreateEntitlementUsingPOSTCreated describes a response with status code 201, with default header values.
 
 Created
 */
@@ -108,7 +106,6 @@ type CreateEntitlementUsingPOSTCreated struct {
 func (o *CreateEntitlementUsingPOSTCreated) Error() string {
 	return fmt.Sprintf("[POST /catalog/api/admin/entitlements][%d] createEntitlementUsingPOSTCreated  %+v", 201, o.Payload)
 }
-
 func (o *CreateEntitlementUsingPOSTCreated) GetPayload() *models.Entitlement {
 	return o.Payload
 }
@@ -130,7 +127,7 @@ func NewCreateEntitlementUsingPOSTBadRequest() *CreateEntitlementUsingPOSTBadReq
 	return &CreateEntitlementUsingPOSTBadRequest{}
 }
 
-/*CreateEntitlementUsingPOSTBadRequest handles this case with default header values.
+/* CreateEntitlementUsingPOSTBadRequest describes a response with status code 400, with default header values.
 
 Catalog item or source cannot be entitled to the project
 */
@@ -141,7 +138,6 @@ type CreateEntitlementUsingPOSTBadRequest struct {
 func (o *CreateEntitlementUsingPOSTBadRequest) Error() string {
 	return fmt.Sprintf("[POST /catalog/api/admin/entitlements][%d] createEntitlementUsingPOSTBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateEntitlementUsingPOSTBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -163,7 +159,7 @@ func NewCreateEntitlementUsingPOSTUnauthorized() *CreateEntitlementUsingPOSTUnau
 	return &CreateEntitlementUsingPOSTUnauthorized{}
 }
 
-/*CreateEntitlementUsingPOSTUnauthorized handles this case with default header values.
+/* CreateEntitlementUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -184,7 +180,7 @@ func NewCreateEntitlementUsingPOSTNotFound() *CreateEntitlementUsingPOSTNotFound
 	return &CreateEntitlementUsingPOSTNotFound{}
 }
 
-/*CreateEntitlementUsingPOSTNotFound handles this case with default header values.
+/* CreateEntitlementUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Catalog item or catalog source not found
 */
@@ -195,7 +191,6 @@ type CreateEntitlementUsingPOSTNotFound struct {
 func (o *CreateEntitlementUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /catalog/api/admin/entitlements][%d] createEntitlementUsingPOSTNotFound  %+v", 404, o.Payload)
 }
-
 func (o *CreateEntitlementUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

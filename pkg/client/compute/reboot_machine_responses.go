@@ -41,7 +41,6 @@ func (o *RebootMachineReader) ReadResponse(response runtime.ClientResponse, cons
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewRebootMachineAccepted() *RebootMachineAccepted {
 	return &RebootMachineAccepted{}
 }
 
-/*RebootMachineAccepted handles this case with default header values.
+/* RebootMachineAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type RebootMachineAccepted struct {
 func (o *RebootMachineAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/reboot][%d] rebootMachineAccepted  %+v", 202, o.Payload)
 }
-
 func (o *RebootMachineAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewRebootMachineForbidden() *RebootMachineForbidden {
 	return &RebootMachineForbidden{}
 }
 
-/*RebootMachineForbidden handles this case with default header values.
+/* RebootMachineForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type RebootMachineForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *RebootMachineForbidden) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/reboot][%d] rebootMachineForbidden ", 403)
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/reboot][%d] rebootMachineForbidden  %+v", 403, o.Payload)
+}
+func (o *RebootMachineForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *RebootMachineForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewRebootMachineNotFound() *RebootMachineNotFound {
 	return &RebootMachineNotFound{}
 }
 
-/*RebootMachineNotFound handles this case with default header values.
+/* RebootMachineNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type RebootMachineNotFound struct {
 func (o *RebootMachineNotFound) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/reboot][%d] rebootMachineNotFound  %+v", 404, o.Payload)
 }
-
 func (o *RebootMachineNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

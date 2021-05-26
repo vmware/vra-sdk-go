@@ -41,7 +41,6 @@ func (o *CreateContentSourceUsingPOSTReader) ReadResponse(response runtime.Clien
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewCreateContentSourceUsingPOSTCreated() *CreateContentSourceUsingPOSTCreat
 	return &CreateContentSourceUsingPOSTCreated{}
 }
 
-/*CreateContentSourceUsingPOSTCreated handles this case with default header values.
+/* CreateContentSourceUsingPOSTCreated describes a response with status code 201, with default header values.
 
 Created content source
 */
@@ -63,7 +62,6 @@ type CreateContentSourceUsingPOSTCreated struct {
 func (o *CreateContentSourceUsingPOSTCreated) Error() string {
 	return fmt.Sprintf("[POST /content/api/sources][%d] createContentSourceUsingPOSTCreated  %+v", 201, o.Payload)
 }
-
 func (o *CreateContentSourceUsingPOSTCreated) GetPayload() *models.ContentSource {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewCreateContentSourceUsingPOSTBadRequest() *CreateContentSourceUsingPOSTBa
 	return &CreateContentSourceUsingPOSTBadRequest{}
 }
 
-/*CreateContentSourceUsingPOSTBadRequest handles this case with default header values.
+/* CreateContentSourceUsingPOSTBadRequest describes a response with status code 400, with default header values.
 
 Invalid request data
 */
@@ -96,7 +94,6 @@ type CreateContentSourceUsingPOSTBadRequest struct {
 func (o *CreateContentSourceUsingPOSTBadRequest) Error() string {
 	return fmt.Sprintf("[POST /content/api/sources][%d] createContentSourceUsingPOSTBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateContentSourceUsingPOSTBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -118,7 +115,7 @@ func NewCreateContentSourceUsingPOSTForbidden() *CreateContentSourceUsingPOSTFor
 	return &CreateContentSourceUsingPOSTForbidden{}
 }
 
-/*CreateContentSourceUsingPOSTForbidden handles this case with default header values.
+/* CreateContentSourceUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Invalid project id or integration id
 */

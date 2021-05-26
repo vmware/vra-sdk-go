@@ -41,7 +41,6 @@ func (o *ReplaceStorageProfileReader) ReadResponse(response runtime.ClientRespon
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewReplaceStorageProfileOK() *ReplaceStorageProfileOK {
 	return &ReplaceStorageProfileOK{}
 }
 
-/*ReplaceStorageProfileOK handles this case with default header values.
+/* ReplaceStorageProfileOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type ReplaceStorageProfileOK struct {
 func (o *ReplaceStorageProfileOK) Error() string {
 	return fmt.Sprintf("[PUT /iaas/api/storage-profiles/{id}][%d] replaceStorageProfileOK  %+v", 200, o.Payload)
 }
-
 func (o *ReplaceStorageProfileOK) GetPayload() *models.StorageProfile {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewReplaceStorageProfileBadRequest() *ReplaceStorageProfileBadRequest {
 	return &ReplaceStorageProfileBadRequest{}
 }
 
-/*ReplaceStorageProfileBadRequest handles this case with default header values.
+/* ReplaceStorageProfileBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -96,7 +94,6 @@ type ReplaceStorageProfileBadRequest struct {
 func (o *ReplaceStorageProfileBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /iaas/api/storage-profiles/{id}][%d] replaceStorageProfileBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *ReplaceStorageProfileBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -118,18 +115,29 @@ func NewReplaceStorageProfileForbidden() *ReplaceStorageProfileForbidden {
 	return &ReplaceStorageProfileForbidden{}
 }
 
-/*ReplaceStorageProfileForbidden handles this case with default header values.
+/* ReplaceStorageProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type ReplaceStorageProfileForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *ReplaceStorageProfileForbidden) Error() string {
-	return fmt.Sprintf("[PUT /iaas/api/storage-profiles/{id}][%d] replaceStorageProfileForbidden ", 403)
+	return fmt.Sprintf("[PUT /iaas/api/storage-profiles/{id}][%d] replaceStorageProfileForbidden  %+v", 403, o.Payload)
+}
+func (o *ReplaceStorageProfileForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *ReplaceStorageProfileForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

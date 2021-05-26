@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -19,10 +20,11 @@ import (
 // swagger:model SecurityGroupSpecification
 type SecurityGroupSpecification struct {
 
-	// Additional custom properties that may be used to extend the group.
+	// Additional custom properties that may be used to extend this resource.
 	CustomProperties map[string]string `json:"customProperties,omitempty"`
 
 	// The id of the deployment that is associated with this resource
+	// Example: 123e4567-e89b-12d3-a456-426655440000
 	DeploymentID string `json:"deploymentId,omitempty"`
 
 	// A human-friendly description.
@@ -33,6 +35,7 @@ type SecurityGroupSpecification struct {
 	Name *string `json:"name"`
 
 	// The id of the project the current user belongs to.
+	// Example: e058
 	// Required: true
 	ProjectID *string `json:"projectId"`
 
@@ -40,6 +43,7 @@ type SecurityGroupSpecification struct {
 	Rules []*Rule `json:"rules"`
 
 	// A set of tag keys and optional values that should be set on any resource that is produced from this specification.
+	// Example: [ { \"key\" : \"group\", \"value\": \"ssh\" } ]
 	Tags []*Tag `json:"tags"`
 }
 
@@ -88,7 +92,6 @@ func (m *SecurityGroupSpecification) validateProjectID(formats strfmt.Registry) 
 }
 
 func (m *SecurityGroupSpecification) validateRules(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Rules) { // not required
 		return nil
 	}
@@ -113,7 +116,6 @@ func (m *SecurityGroupSpecification) validateRules(formats strfmt.Registry) erro
 }
 
 func (m *SecurityGroupSpecification) validateTags(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Tags) { // not required
 		return nil
 	}
@@ -125,6 +127,60 @@ func (m *SecurityGroupSpecification) validateTags(formats strfmt.Registry) error
 
 		if m.Tags[i] != nil {
 			if err := m.Tags[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this security group specification based on the context it is used
+func (m *SecurityGroupSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateRules(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTags(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *SecurityGroupSpecification) contextValidateRules(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Rules); i++ {
+
+		if m.Rules[i] != nil {
+			if err := m.Rules[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("rules" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *SecurityGroupSpecification) contextValidateTags(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Tags); i++ {
+
+		if m.Tags[i] != nil {
+			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
 				}

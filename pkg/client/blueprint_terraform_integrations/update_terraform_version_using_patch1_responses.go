@@ -47,7 +47,6 @@ func (o *UpdateTerraformVersionUsingPATCH1Reader) ReadResponse(response runtime.
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewUpdateTerraformVersionUsingPATCH1OK() *UpdateTerraformVersionUsingPATCH1
 	return &UpdateTerraformVersionUsingPATCH1OK{}
 }
 
-/*UpdateTerraformVersionUsingPATCH1OK handles this case with default header values.
+/* UpdateTerraformVersionUsingPATCH1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -69,7 +68,6 @@ type UpdateTerraformVersionUsingPATCH1OK struct {
 func (o *UpdateTerraformVersionUsingPATCH1OK) Error() string {
 	return fmt.Sprintf("[PATCH /blueprint/api/blueprint-integrations/terraform/versions/{versionId}][%d] updateTerraformVersionUsingPATCH1OK  %+v", 200, o.Payload)
 }
-
 func (o *UpdateTerraformVersionUsingPATCH1OK) GetPayload() *models.TerraformVersion {
 	return o.Payload
 }
@@ -91,7 +89,7 @@ func NewUpdateTerraformVersionUsingPATCH1Unauthorized() *UpdateTerraformVersionU
 	return &UpdateTerraformVersionUsingPATCH1Unauthorized{}
 }
 
-/*UpdateTerraformVersionUsingPATCH1Unauthorized handles this case with default header values.
+/* UpdateTerraformVersionUsingPATCH1Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -112,7 +110,7 @@ func NewUpdateTerraformVersionUsingPATCH1Forbidden() *UpdateTerraformVersionUsin
 	return &UpdateTerraformVersionUsingPATCH1Forbidden{}
 }
 
-/*UpdateTerraformVersionUsingPATCH1Forbidden handles this case with default header values.
+/* UpdateTerraformVersionUsingPATCH1Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -133,7 +131,7 @@ func NewUpdateTerraformVersionUsingPATCH1NotFound() *UpdateTerraformVersionUsing
 	return &UpdateTerraformVersionUsingPATCH1NotFound{}
 }
 
-/*UpdateTerraformVersionUsingPATCH1NotFound handles this case with default header values.
+/* UpdateTerraformVersionUsingPATCH1NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -144,7 +142,6 @@ type UpdateTerraformVersionUsingPATCH1NotFound struct {
 func (o *UpdateTerraformVersionUsingPATCH1NotFound) Error() string {
 	return fmt.Sprintf("[PATCH /blueprint/api/blueprint-integrations/terraform/versions/{versionId}][%d] updateTerraformVersionUsingPATCH1NotFound  %+v", 404, o.Payload)
 }
-
 func (o *UpdateTerraformVersionUsingPATCH1NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

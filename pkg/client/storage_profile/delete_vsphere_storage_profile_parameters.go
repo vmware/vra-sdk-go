@@ -16,64 +16,79 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewDeleteVSphereStorageProfileParams creates a new DeleteVSphereStorageProfileParams object
-// with the default values initialized.
+// NewDeleteVSphereStorageProfileParams creates a new DeleteVSphereStorageProfileParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteVSphereStorageProfileParams() *DeleteVSphereStorageProfileParams {
-	var ()
 	return &DeleteVSphereStorageProfileParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteVSphereStorageProfileParamsWithTimeout creates a new DeleteVSphereStorageProfileParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteVSphereStorageProfileParamsWithTimeout(timeout time.Duration) *DeleteVSphereStorageProfileParams {
-	var ()
 	return &DeleteVSphereStorageProfileParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteVSphereStorageProfileParamsWithContext creates a new DeleteVSphereStorageProfileParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteVSphereStorageProfileParamsWithContext(ctx context.Context) *DeleteVSphereStorageProfileParams {
-	var ()
 	return &DeleteVSphereStorageProfileParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteVSphereStorageProfileParamsWithHTTPClient creates a new DeleteVSphereStorageProfileParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteVSphereStorageProfileParamsWithHTTPClient(client *http.Client) *DeleteVSphereStorageProfileParams {
-	var ()
 	return &DeleteVSphereStorageProfileParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteVSphereStorageProfileParams contains all the parameters to send to the API endpoint
-for the delete v sphere storage profile operation typically these are written to a http.Request
+/* DeleteVSphereStorageProfileParams contains all the parameters to send to the API endpoint
+   for the delete v sphere storage profile operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteVSphereStorageProfileParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*ID
-	  The ID of the storage profile.
 
+	/* ID.
+
+	   The ID of the storage profile.
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete v sphere storage profile params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteVSphereStorageProfileParams) WithDefaults() *DeleteVSphereStorageProfileParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete v sphere storage profile params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteVSphereStorageProfileParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete v sphere storage profile params
@@ -143,16 +158,17 @@ func (o *DeleteVSphereStorageProfileParams) WriteToRequest(r runtime.ClientReque
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id

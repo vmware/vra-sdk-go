@@ -18,69 +18,87 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewPatchDeploymentUsingPATCHParams creates a new PatchDeploymentUsingPATCHParams object
-// with the default values initialized.
+// NewPatchDeploymentUsingPATCHParams creates a new PatchDeploymentUsingPATCHParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPatchDeploymentUsingPATCHParams() *PatchDeploymentUsingPATCHParams {
-	var ()
 	return &PatchDeploymentUsingPATCHParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPatchDeploymentUsingPATCHParamsWithTimeout creates a new PatchDeploymentUsingPATCHParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPatchDeploymentUsingPATCHParamsWithTimeout(timeout time.Duration) *PatchDeploymentUsingPATCHParams {
-	var ()
 	return &PatchDeploymentUsingPATCHParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPatchDeploymentUsingPATCHParamsWithContext creates a new PatchDeploymentUsingPATCHParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPatchDeploymentUsingPATCHParamsWithContext(ctx context.Context) *PatchDeploymentUsingPATCHParams {
-	var ()
 	return &PatchDeploymentUsingPATCHParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPatchDeploymentUsingPATCHParamsWithHTTPClient creates a new PatchDeploymentUsingPATCHParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPatchDeploymentUsingPATCHParamsWithHTTPClient(client *http.Client) *PatchDeploymentUsingPATCHParams {
-	var ()
 	return &PatchDeploymentUsingPATCHParams{
 		HTTPClient: client,
 	}
 }
 
-/*PatchDeploymentUsingPATCHParams contains all the parameters to send to the API endpoint
-for the patch deployment using p a t c h operation typically these are written to a http.Request
+/* PatchDeploymentUsingPATCHParams contains all the parameters to send to the API endpoint
+   for the patch deployment using p a t c h operation.
+
+   Typically these are written to a http.Request.
 */
 type PatchDeploymentUsingPATCHParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 	*/
 	APIVersion *string
-	/*DepID
-	  Deployment ID
 
+	/* DepID.
+
+	   Deployment ID
+
+	   Format: uuid
 	*/
 	DepID strfmt.UUID
-	/*Update
-	  A set of fields to overwrite the corresponding fields in the deployment
 
+	/* Update.
+
+	   A set of fields to overwrite the corresponding fields in the deployment
 	*/
 	Update *models.DeploymentUpdate
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the patch deployment using p a t c h params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PatchDeploymentUsingPATCHParams) WithDefaults() *PatchDeploymentUsingPATCHParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the patch deployment using p a t c h params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PatchDeploymentUsingPATCHParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the patch deployment using p a t c h params
@@ -161,23 +179,23 @@ func (o *PatchDeploymentUsingPATCHParams) WriteToRequest(r runtime.ClientRequest
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param depId
 	if err := r.SetPathParam("depId", o.DepID.String()); err != nil {
 		return err
 	}
-
 	if o.Update != nil {
 		if err := r.SetBodyParam(o.Update); err != nil {
 			return err

@@ -19,69 +19,85 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewPostUsingPOSTParams creates a new PostUsingPOSTParams object
-// with the default values initialized.
+// NewPostUsingPOSTParams creates a new PostUsingPOSTParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostUsingPOSTParams() *PostUsingPOSTParams {
-	var ()
 	return &PostUsingPOSTParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostUsingPOSTParamsWithTimeout creates a new PostUsingPOSTParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostUsingPOSTParamsWithTimeout(timeout time.Duration) *PostUsingPOSTParams {
-	var ()
 	return &PostUsingPOSTParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostUsingPOSTParamsWithContext creates a new PostUsingPOSTParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostUsingPOSTParamsWithContext(ctx context.Context) *PostUsingPOSTParams {
-	var ()
 	return &PostUsingPOSTParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostUsingPOSTParamsWithHTTPClient creates a new PostUsingPOSTParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostUsingPOSTParamsWithHTTPClient(client *http.Client) *PostUsingPOSTParams {
-	var ()
 	return &PostUsingPOSTParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostUsingPOSTParams contains all the parameters to send to the API endpoint
-for the post using p o s t operation typically these are written to a http.Request
+/* PostUsingPOSTParams contains all the parameters to send to the API endpoint
+   for the post using p o s t operation.
+
+   Typically these are written to a http.Request.
 */
 type PostUsingPOSTParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 	*/
 	APIVersion *string
-	/*Source
-	  The catalog source to be created
 
+	/* Source.
+
+	   The catalog source to be created
 	*/
 	Source *models.CatalogSource
-	/*ValidationOnly
-	  If true, the source will not be created. It returns the number of items belonging to the source. The request will still return an error code if the source is invalid.
 
+	/* ValidationOnly.
+
+	   If true, the source will not be created. It returns the number of items belonging to the source. The request will still return an error code if the source is invalid.
 	*/
 	ValidationOnly *bool
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post using p o s t params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostUsingPOSTParams) WithDefaults() *PostUsingPOSTParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post using p o s t params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostUsingPOSTParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post using p o s t params
@@ -162,18 +178,18 @@ func (o *PostUsingPOSTParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
-
 	if o.Source != nil {
 		if err := r.SetBodyParam(o.Source); err != nil {
 			return err
@@ -184,16 +200,17 @@ func (o *PostUsingPOSTParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 
 		// query param validationOnly
 		var qrValidationOnly bool
+
 		if o.ValidationOnly != nil {
 			qrValidationOnly = *o.ValidationOnly
 		}
 		qValidationOnly := swag.FormatBool(qrValidationOnly)
 		if qValidationOnly != "" {
+
 			if err := r.SetQueryParam("validationOnly", qValidationOnly); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

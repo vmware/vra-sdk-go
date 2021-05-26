@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -17,10 +19,22 @@ type DiskSnapshotSpecification struct {
 
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
+
+	// A human-friendly name used as an identifier in APIs that support this option.
+	Name string `json:"name,omitempty"`
+
+	// Cloud specific snapshot properties supplied in as name value pairs
+	// Example: {\"incremental\": \"true\",
+	SnapshotProperties map[string]string `json:"snapshotProperties,omitempty"`
 }
 
 // Validate validates this disk snapshot specification
 func (m *DiskSnapshotSpecification) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this disk snapshot specification based on context it is used
+func (m *DiskSnapshotSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

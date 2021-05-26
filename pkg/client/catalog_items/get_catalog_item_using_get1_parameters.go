@@ -17,69 +17,87 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGetCatalogItemUsingGET1Params creates a new GetCatalogItemUsingGET1Params object
-// with the default values initialized.
+// NewGetCatalogItemUsingGET1Params creates a new GetCatalogItemUsingGET1Params object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetCatalogItemUsingGET1Params() *GetCatalogItemUsingGET1Params {
-	var ()
 	return &GetCatalogItemUsingGET1Params{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetCatalogItemUsingGET1ParamsWithTimeout creates a new GetCatalogItemUsingGET1Params object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetCatalogItemUsingGET1ParamsWithTimeout(timeout time.Duration) *GetCatalogItemUsingGET1Params {
-	var ()
 	return &GetCatalogItemUsingGET1Params{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetCatalogItemUsingGET1ParamsWithContext creates a new GetCatalogItemUsingGET1Params object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetCatalogItemUsingGET1ParamsWithContext(ctx context.Context) *GetCatalogItemUsingGET1Params {
-	var ()
 	return &GetCatalogItemUsingGET1Params{
-
 		Context: ctx,
 	}
 }
 
 // NewGetCatalogItemUsingGET1ParamsWithHTTPClient creates a new GetCatalogItemUsingGET1Params object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetCatalogItemUsingGET1ParamsWithHTTPClient(client *http.Client) *GetCatalogItemUsingGET1Params {
-	var ()
 	return &GetCatalogItemUsingGET1Params{
 		HTTPClient: client,
 	}
 }
 
-/*GetCatalogItemUsingGET1Params contains all the parameters to send to the API endpoint
-for the get catalog item using get1 operation typically these are written to a http.Request
+/* GetCatalogItemUsingGET1Params contains all the parameters to send to the API endpoint
+   for the get catalog item using get1 operation.
+
+   Typically these are written to a http.Request.
 */
 type GetCatalogItemUsingGET1Params struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 	*/
 	APIVersion *string
-	/*ExpandProjects
-	  Retrieves the 'projects' field of the catalog item
 
+	/* ExpandProjects.
+
+	   Retrieves the 'projects' field of the catalog item
 	*/
 	ExpandProjects *bool
-	/*ID
-	  Catalog item ID
 
+	/* ID.
+
+	   Catalog item ID
+
+	   Format: uuid
 	*/
 	ID strfmt.UUID
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get catalog item using get1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCatalogItemUsingGET1Params) WithDefaults() *GetCatalogItemUsingGET1Params {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get catalog item using get1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetCatalogItemUsingGET1Params) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get catalog item using get1 params
@@ -160,32 +178,34 @@ func (o *GetCatalogItemUsingGET1Params) WriteToRequest(r runtime.ClientRequest, 
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.ExpandProjects != nil {
 
 		// query param expandProjects
 		var qrExpandProjects bool
+
 		if o.ExpandProjects != nil {
 			qrExpandProjects = *o.ExpandProjects
 		}
 		qExpandProjects := swag.FormatBool(qrExpandProjects)
 		if qExpandProjects != "" {
+
 			if err := r.SetQueryParam("expandProjects", qExpandProjects); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id

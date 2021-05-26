@@ -25,11 +25,14 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetTypeByIDUsingGET(params *GetTypeByIDUsingGETParams) (*GetTypeByIDUsingGETOK, error)
+	GetTypeByIDUsingGET(params *GetTypeByIDUsingGETParams, opts ...ClientOption) (*GetTypeByIDUsingGETOK, error)
 
-	GetTypesUsingGET(params *GetTypesUsingGETParams) (*GetTypesUsingGETOK, error)
+	GetTypesUsingGET(params *GetTypesUsingGETParams, opts ...ClientOption) (*GetTypesUsingGETOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -39,13 +42,12 @@ type ClientService interface {
 
   Returns the Catalog Item Type with the specified ID.
 */
-func (a *Client) GetTypeByIDUsingGET(params *GetTypeByIDUsingGETParams) (*GetTypeByIDUsingGETOK, error) {
+func (a *Client) GetTypeByIDUsingGET(params *GetTypeByIDUsingGETParams, opts ...ClientOption) (*GetTypeByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetTypeByIDUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getTypeByIdUsingGET",
 		Method:             "GET",
 		PathPattern:        "/catalog/api/types/{id}",
@@ -56,7 +58,12 @@ func (a *Client) GetTypeByIDUsingGET(params *GetTypeByIDUsingGETParams) (*GetTyp
 		Reader:             &GetTypeByIDUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -75,13 +82,12 @@ func (a *Client) GetTypeByIDUsingGET(params *GetTypeByIDUsingGETParams) (*GetTyp
 
   Returns a paginated list of all available Catalog Item Types.
 */
-func (a *Client) GetTypesUsingGET(params *GetTypesUsingGETParams) (*GetTypesUsingGETOK, error) {
+func (a *Client) GetTypesUsingGET(params *GetTypesUsingGETParams, opts ...ClientOption) (*GetTypesUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetTypesUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getTypesUsingGET",
 		Method:             "GET",
 		PathPattern:        "/catalog/api/types",
@@ -92,7 +98,12 @@ func (a *Client) GetTypesUsingGET(params *GetTypesUsingGETParams) (*GetTypesUsin
 		Reader:             &GetTypesUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

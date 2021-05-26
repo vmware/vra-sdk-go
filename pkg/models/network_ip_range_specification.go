@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 	"strconv"
 
@@ -43,6 +44,7 @@ type NetworkIPRangeSpecification struct {
 	StartIPAddress *string `json:"startIPAddress"`
 
 	// A set of tag keys and optional values that were set on this resource instance.
+	// Example: [ { \"key\" : \"fast-network\", \"value\": \"true\" } ]
 	Tags []*Tag `json:"tags"`
 }
 
@@ -115,7 +117,6 @@ func (m *NetworkIPRangeSpecification) validateIPVersionEnum(path, location strin
 }
 
 func (m *NetworkIPRangeSpecification) validateIPVersion(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.IPVersion) { // not required
 		return nil
 	}
@@ -147,7 +148,6 @@ func (m *NetworkIPRangeSpecification) validateStartIPAddress(formats strfmt.Regi
 }
 
 func (m *NetworkIPRangeSpecification) validateTags(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Tags) { // not required
 		return nil
 	}
@@ -159,6 +159,38 @@ func (m *NetworkIPRangeSpecification) validateTags(formats strfmt.Registry) erro
 
 		if m.Tags[i] != nil {
 			if err := m.Tags[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this network IP range specification based on the context it is used
+func (m *NetworkIPRangeSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateTags(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *NetworkIPRangeSpecification) contextValidateTags(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Tags); i++ {
+
+		if m.Tags[i] != nil {
+			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
 				}

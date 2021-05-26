@@ -35,7 +35,6 @@ func (o *GetFabricVSphereDatastoresReader) ReadResponse(response runtime.ClientR
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewGetFabricVSphereDatastoresOK() *GetFabricVSphereDatastoresOK {
 	return &GetFabricVSphereDatastoresOK{}
 }
 
-/*GetFabricVSphereDatastoresOK handles this case with default header values.
+/* GetFabricVSphereDatastoresOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -57,7 +56,6 @@ type GetFabricVSphereDatastoresOK struct {
 func (o *GetFabricVSphereDatastoresOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-datastores][%d] getFabricVSphereDatastoresOK  %+v", 200, o.Payload)
 }
-
 func (o *GetFabricVSphereDatastoresOK) GetPayload() *models.FabricVsphereDatastoreResult {
 	return o.Payload
 }
@@ -79,18 +77,29 @@ func NewGetFabricVSphereDatastoresForbidden() *GetFabricVSphereDatastoresForbidd
 	return &GetFabricVSphereDatastoresForbidden{}
 }
 
-/*GetFabricVSphereDatastoresForbidden handles this case with default header values.
+/* GetFabricVSphereDatastoresForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetFabricVSphereDatastoresForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetFabricVSphereDatastoresForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-datastores][%d] getFabricVSphereDatastoresForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-datastores][%d] getFabricVSphereDatastoresForbidden  %+v", 403, o.Payload)
+}
+func (o *GetFabricVSphereDatastoresForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetFabricVSphereDatastoresForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

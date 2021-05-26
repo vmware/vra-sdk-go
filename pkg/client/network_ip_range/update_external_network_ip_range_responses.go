@@ -47,7 +47,6 @@ func (o *UpdateExternalNetworkIPRangeReader) ReadResponse(response runtime.Clien
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewUpdateExternalNetworkIPRangeOK() *UpdateExternalNetworkIPRangeOK {
 	return &UpdateExternalNetworkIPRangeOK{}
 }
 
-/*UpdateExternalNetworkIPRangeOK handles this case with default header values.
+/* UpdateExternalNetworkIPRangeOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -69,7 +68,6 @@ type UpdateExternalNetworkIPRangeOK struct {
 func (o *UpdateExternalNetworkIPRangeOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/external-network-ip-ranges/{id}][%d] updateExternalNetworkIpRangeOK  %+v", 200, o.Payload)
 }
-
 func (o *UpdateExternalNetworkIPRangeOK) GetPayload() *models.ExternalNetworkIPRange {
 	return o.Payload
 }
@@ -91,7 +89,7 @@ func NewUpdateExternalNetworkIPRangeBadRequest() *UpdateExternalNetworkIPRangeBa
 	return &UpdateExternalNetworkIPRangeBadRequest{}
 }
 
-/*UpdateExternalNetworkIPRangeBadRequest handles this case with default header values.
+/* UpdateExternalNetworkIPRangeBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -102,7 +100,6 @@ type UpdateExternalNetworkIPRangeBadRequest struct {
 func (o *UpdateExternalNetworkIPRangeBadRequest) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/external-network-ip-ranges/{id}][%d] updateExternalNetworkIpRangeBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *UpdateExternalNetworkIPRangeBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -124,18 +121,29 @@ func NewUpdateExternalNetworkIPRangeForbidden() *UpdateExternalNetworkIPRangeFor
 	return &UpdateExternalNetworkIPRangeForbidden{}
 }
 
-/*UpdateExternalNetworkIPRangeForbidden handles this case with default header values.
+/* UpdateExternalNetworkIPRangeForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type UpdateExternalNetworkIPRangeForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *UpdateExternalNetworkIPRangeForbidden) Error() string {
-	return fmt.Sprintf("[PATCH /iaas/api/external-network-ip-ranges/{id}][%d] updateExternalNetworkIpRangeForbidden ", 403)
+	return fmt.Sprintf("[PATCH /iaas/api/external-network-ip-ranges/{id}][%d] updateExternalNetworkIpRangeForbidden  %+v", 403, o.Payload)
+}
+func (o *UpdateExternalNetworkIPRangeForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *UpdateExternalNetworkIPRangeForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -145,7 +153,7 @@ func NewUpdateExternalNetworkIPRangeNotFound() *UpdateExternalNetworkIPRangeNotF
 	return &UpdateExternalNetworkIPRangeNotFound{}
 }
 
-/*UpdateExternalNetworkIPRangeNotFound handles this case with default header values.
+/* UpdateExternalNetworkIPRangeNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -156,7 +164,6 @@ type UpdateExternalNetworkIPRangeNotFound struct {
 func (o *UpdateExternalNetworkIPRangeNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/external-network-ip-ranges/{id}][%d] updateExternalNetworkIpRangeNotFound  %+v", 404, o.Payload)
 }
-
 func (o *UpdateExternalNetworkIPRangeNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

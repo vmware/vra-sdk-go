@@ -47,7 +47,6 @@ func (o *SubmitResourceActionRequestUsingPOSTReader) ReadResponse(response runti
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewSubmitResourceActionRequestUsingPOSTOK() *SubmitResourceActionRequestUsi
 	return &SubmitResourceActionRequestUsingPOSTOK{}
 }
 
-/*SubmitResourceActionRequestUsingPOSTOK handles this case with default header values.
+/* SubmitResourceActionRequestUsingPOSTOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -69,7 +68,6 @@ type SubmitResourceActionRequestUsingPOSTOK struct {
 func (o *SubmitResourceActionRequestUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /deployment/api/deployments/{depId}/resources/{resourceId}/requests][%d] submitResourceActionRequestUsingPOSTOK  %+v", 200, o.Payload)
 }
-
 func (o *SubmitResourceActionRequestUsingPOSTOK) GetPayload() *models.Request {
 	return o.Payload
 }
@@ -91,7 +89,7 @@ func NewSubmitResourceActionRequestUsingPOSTUnauthorized() *SubmitResourceAction
 	return &SubmitResourceActionRequestUsingPOSTUnauthorized{}
 }
 
-/*SubmitResourceActionRequestUsingPOSTUnauthorized handles this case with default header values.
+/* SubmitResourceActionRequestUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -112,7 +110,7 @@ func NewSubmitResourceActionRequestUsingPOSTForbidden() *SubmitResourceActionReq
 	return &SubmitResourceActionRequestUsingPOSTForbidden{}
 }
 
-/*SubmitResourceActionRequestUsingPOSTForbidden handles this case with default header values.
+/* SubmitResourceActionRequestUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -133,7 +131,7 @@ func NewSubmitResourceActionRequestUsingPOSTNotFound() *SubmitResourceActionRequ
 	return &SubmitResourceActionRequestUsingPOSTNotFound{}
 }
 
-/*SubmitResourceActionRequestUsingPOSTNotFound handles this case with default header values.
+/* SubmitResourceActionRequestUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -144,7 +142,6 @@ type SubmitResourceActionRequestUsingPOSTNotFound struct {
 func (o *SubmitResourceActionRequestUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /deployment/api/deployments/{depId}/resources/{resourceId}/requests][%d] submitResourceActionRequestUsingPOSTNotFound  %+v", 404, o.Payload)
 }
-
 func (o *SubmitResourceActionRequestUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

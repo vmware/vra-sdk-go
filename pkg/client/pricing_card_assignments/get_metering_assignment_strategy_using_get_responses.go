@@ -41,7 +41,6 @@ func (o *GetMeteringAssignmentStrategyUsingGETReader) ReadResponse(response runt
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetMeteringAssignmentStrategyUsingGETOK() *GetMeteringAssignmentStrategy
 	return &GetMeteringAssignmentStrategyUsingGETOK{}
 }
 
-/*GetMeteringAssignmentStrategyUsingGETOK handles this case with default header values.
+/* GetMeteringAssignmentStrategyUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -63,7 +62,6 @@ type GetMeteringAssignmentStrategyUsingGETOK struct {
 func (o *GetMeteringAssignmentStrategyUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /price/api/private/pricing-card-assignments/strategy][%d] getMeteringAssignmentStrategyUsingGETOK  %+v", 200, o.Payload)
 }
-
 func (o *GetMeteringAssignmentStrategyUsingGETOK) GetPayload() *models.MeteringAssignmentStrategy {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewGetMeteringAssignmentStrategyUsingGETUnauthorized() *GetMeteringAssignme
 	return &GetMeteringAssignmentStrategyUsingGETUnauthorized{}
 }
 
-/*GetMeteringAssignmentStrategyUsingGETUnauthorized handles this case with default header values.
+/* GetMeteringAssignmentStrategyUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -106,7 +104,7 @@ func NewGetMeteringAssignmentStrategyUsingGETNotFound() *GetMeteringAssignmentSt
 	return &GetMeteringAssignmentStrategyUsingGETNotFound{}
 }
 
-/*GetMeteringAssignmentStrategyUsingGETNotFound handles this case with default header values.
+/* GetMeteringAssignmentStrategyUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +115,6 @@ type GetMeteringAssignmentStrategyUsingGETNotFound struct {
 func (o *GetMeteringAssignmentStrategyUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /price/api/private/pricing-card-assignments/strategy][%d] getMeteringAssignmentStrategyUsingGETNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetMeteringAssignmentStrategyUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

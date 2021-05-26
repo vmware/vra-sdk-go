@@ -41,7 +41,6 @@ func (o *GetImageProfileReader) ReadResponse(response runtime.ClientResponse, co
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetImageProfileOK() *GetImageProfileOK {
 	return &GetImageProfileOK{}
 }
 
-/*GetImageProfileOK handles this case with default header values.
+/* GetImageProfileOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type GetImageProfileOK struct {
 func (o *GetImageProfileOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/image-profiles/{id}][%d] getImageProfileOK  %+v", 200, o.Payload)
 }
-
 func (o *GetImageProfileOK) GetPayload() *models.ImageProfile {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewGetImageProfileForbidden() *GetImageProfileForbidden {
 	return &GetImageProfileForbidden{}
 }
 
-/*GetImageProfileForbidden handles this case with default header values.
+/* GetImageProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetImageProfileForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetImageProfileForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/image-profiles/{id}][%d] getImageProfileForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/image-profiles/{id}][%d] getImageProfileForbidden  %+v", 403, o.Payload)
+}
+func (o *GetImageProfileForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetImageProfileForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewGetImageProfileNotFound() *GetImageProfileNotFound {
 	return &GetImageProfileNotFound{}
 }
 
-/*GetImageProfileNotFound handles this case with default header values.
+/* GetImageProfileNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type GetImageProfileNotFound struct {
 func (o *GetImageProfileNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/image-profiles/{id}][%d] getImageProfileNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetImageProfileNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -22,9 +24,11 @@ type FlavorMapping struct {
 	Links map[string]Href `json:"_links"`
 
 	// The id of the region for which this mapping is defined.
+	// Example: us-east-1
 	ExternalRegionID string `json:"externalRegionId,omitempty"`
 
 	// Flavors defined for the particular region. Keyed by global flavor key.
+	// Example: { \"small\": { \"name\": \"t2.small\", \"cpuCount\": \"1\", \"MemoryInMB\": \"2048\", \"storageType\": \"EBS\", \"networkType\": \"Low to Moderate\"} }
 	// Required: true
 	Mapping map[string]FabricFlavor `json:"mapping"`
 }
@@ -49,6 +53,10 @@ func (m *FlavorMapping) Validate(formats strfmt.Registry) error {
 
 func (m *FlavorMapping) validateLinks(formats strfmt.Registry) error {
 
+	if err := validate.Required("_links", "body", m.Links); err != nil {
+		return err
+	}
+
 	for k := range m.Links {
 
 		if err := validate.Required("_links"+"."+k, "body", m.Links[k]); err != nil {
@@ -67,6 +75,10 @@ func (m *FlavorMapping) validateLinks(formats strfmt.Registry) error {
 
 func (m *FlavorMapping) validateMapping(formats strfmt.Registry) error {
 
+	if err := validate.Required("mapping", "body", m.Mapping); err != nil {
+		return err
+	}
+
 	for k := range m.Mapping {
 
 		if err := validate.Required("mapping"+"."+k, "body", m.Mapping[k]); err != nil {
@@ -74,6 +86,62 @@ func (m *FlavorMapping) validateMapping(formats strfmt.Registry) error {
 		}
 		if val, ok := m.Mapping[k]; ok {
 			if err := val.Validate(formats); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this flavor mapping based on the context it is used
+func (m *FlavorMapping) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateLinks(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMapping(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *FlavorMapping) contextValidateLinks(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.Required("_links", "body", m.Links); err != nil {
+		return err
+	}
+
+	for k := range m.Links {
+
+		if val, ok := m.Links[k]; ok {
+			if err := val.ContextValidate(ctx, formats); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *FlavorMapping) contextValidateMapping(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.Required("mapping", "body", m.Mapping); err != nil {
+		return err
+	}
+
+	for k := range m.Mapping {
+
+		if val, ok := m.Mapping[k]; ok {
+			if err := val.ContextValidate(ctx, formats); err != nil {
 				return err
 			}
 		}

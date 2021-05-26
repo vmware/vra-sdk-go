@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -20,6 +21,7 @@ import (
 type ContentSource struct {
 
 	// Source custom configuration
+	// Example: {"branch":"string","contentType":"string","endpointId":"string","integrationId":"string","path":"string","repository":"string"}
 	Config interface{} `json:"config,omitempty"`
 
 	// Creation time
@@ -61,6 +63,7 @@ type ContentSource struct {
 	ProjectID *string `json:"projectId"`
 
 	// Is Sync Enabled
+	// Example: false
 	SyncEnabled bool `json:"syncEnabled,omitempty"`
 
 	// Content Source type
@@ -104,7 +107,6 @@ func (m *ContentSource) Validate(formats strfmt.Registry) error {
 }
 
 func (m *ContentSource) validateCreatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CreatedAt) { // not required
 		return nil
 	}
@@ -130,7 +132,6 @@ func (m *ContentSource) validateID(formats strfmt.Registry) error {
 }
 
 func (m *ContentSource) validateLastUpdatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.LastUpdatedAt) { // not required
 		return nil
 	}
@@ -174,17 +175,17 @@ func init() {
 
 const (
 
-	// ContentSourceTypeIDComGithub captures enum value "com.github"
-	ContentSourceTypeIDComGithub string = "com.github"
+	// ContentSourceTypeIDComDotGithub captures enum value "com.github"
+	ContentSourceTypeIDComDotGithub string = "com.github"
 
-	// ContentSourceTypeIDComGitlab captures enum value "com.gitlab"
-	ContentSourceTypeIDComGitlab string = "com.gitlab"
+	// ContentSourceTypeIDComDotGitlab captures enum value "com.gitlab"
+	ContentSourceTypeIDComDotGitlab string = "com.gitlab"
 
-	// ContentSourceTypeIDOrgBitbucket captures enum value "org.bitbucket"
-	ContentSourceTypeIDOrgBitbucket string = "org.bitbucket"
+	// ContentSourceTypeIDOrgDotBitbucket captures enum value "org.bitbucket"
+	ContentSourceTypeIDOrgDotBitbucket string = "org.bitbucket"
 
-	// ContentSourceTypeIDComVmwareMarketplace captures enum value "com.vmware.marketplace"
-	ContentSourceTypeIDComVmwareMarketplace string = "com.vmware.marketplace"
+	// ContentSourceTypeIDComDotVmwareDotMarketplace captures enum value "com.vmware.marketplace"
+	ContentSourceTypeIDComDotVmwareDotMarketplace string = "com.vmware.marketplace"
 )
 
 // prop value enum
@@ -203,6 +204,81 @@ func (m *ContentSource) validateTypeID(formats strfmt.Registry) error {
 
 	// value enum
 	if err := m.validateTypeIDEnum("typeId", "body", *m.TypeID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this content source based on the context it is used
+func (m *ContentSource) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateCreatedAt(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateCreatedBy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateLastUpdatedAt(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateLastUpdatedBy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOrgID(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ContentSource) contextValidateCreatedAt(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "createdAt", "body", strfmt.DateTime(m.CreatedAt)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *ContentSource) contextValidateCreatedBy(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "createdBy", "body", string(m.CreatedBy)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *ContentSource) contextValidateLastUpdatedAt(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "lastUpdatedAt", "body", strfmt.DateTime(m.LastUpdatedAt)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *ContentSource) contextValidateLastUpdatedBy(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "lastUpdatedBy", "body", string(m.LastUpdatedBy)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *ContentSource) contextValidateOrgID(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "orgId", "body", string(m.OrgID)); err != nil {
 		return err
 	}
 

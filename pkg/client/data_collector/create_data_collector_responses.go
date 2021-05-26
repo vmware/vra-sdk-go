@@ -41,7 +41,6 @@ func (o *CreateDataCollectorReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewCreateDataCollectorCreated() *CreateDataCollectorCreated {
 	return &CreateDataCollectorCreated{}
 }
 
-/*CreateDataCollectorCreated handles this case with default header values.
+/* CreateDataCollectorCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type CreateDataCollectorCreated struct {
 func (o *CreateDataCollectorCreated) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/data-collectors][%d] createDataCollectorCreated  %+v", 201, o.Payload)
 }
-
 func (o *CreateDataCollectorCreated) GetPayload() *models.DataCollectorRegistration {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewCreateDataCollectorBadRequest() *CreateDataCollectorBadRequest {
 	return &CreateDataCollectorBadRequest{}
 }
 
-/*CreateDataCollectorBadRequest handles this case with default header values.
+/* CreateDataCollectorBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -96,7 +94,6 @@ type CreateDataCollectorBadRequest struct {
 func (o *CreateDataCollectorBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/data-collectors][%d] createDataCollectorBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateDataCollectorBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -118,18 +115,29 @@ func NewCreateDataCollectorForbidden() *CreateDataCollectorForbidden {
 	return &CreateDataCollectorForbidden{}
 }
 
-/*CreateDataCollectorForbidden handles this case with default header values.
+/* CreateDataCollectorForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type CreateDataCollectorForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *CreateDataCollectorForbidden) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/data-collectors][%d] createDataCollectorForbidden ", 403)
+	return fmt.Sprintf("[POST /iaas/api/data-collectors][%d] createDataCollectorForbidden  %+v", 403, o.Payload)
+}
+func (o *CreateDataCollectorForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *CreateDataCollectorForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

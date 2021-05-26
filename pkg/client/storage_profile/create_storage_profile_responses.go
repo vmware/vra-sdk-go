@@ -41,7 +41,6 @@ func (o *CreateStorageProfileReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewCreateStorageProfileCreated() *CreateStorageProfileCreated {
 	return &CreateStorageProfileCreated{}
 }
 
-/*CreateStorageProfileCreated handles this case with default header values.
+/* CreateStorageProfileCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type CreateStorageProfileCreated struct {
 func (o *CreateStorageProfileCreated) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/storage-profiles][%d] createStorageProfileCreated  %+v", 201, o.Payload)
 }
-
 func (o *CreateStorageProfileCreated) GetPayload() *models.StorageProfile {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewCreateStorageProfileBadRequest() *CreateStorageProfileBadRequest {
 	return &CreateStorageProfileBadRequest{}
 }
 
-/*CreateStorageProfileBadRequest handles this case with default header values.
+/* CreateStorageProfileBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -96,7 +94,6 @@ type CreateStorageProfileBadRequest struct {
 func (o *CreateStorageProfileBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/storage-profiles][%d] createStorageProfileBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateStorageProfileBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -118,18 +115,29 @@ func NewCreateStorageProfileForbidden() *CreateStorageProfileForbidden {
 	return &CreateStorageProfileForbidden{}
 }
 
-/*CreateStorageProfileForbidden handles this case with default header values.
+/* CreateStorageProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type CreateStorageProfileForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *CreateStorageProfileForbidden) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/storage-profiles][%d] createStorageProfileForbidden ", 403)
+	return fmt.Sprintf("[POST /iaas/api/storage-profiles][%d] createStorageProfileForbidden  %+v", 403, o.Payload)
+}
+func (o *CreateStorageProfileForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *CreateStorageProfileForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

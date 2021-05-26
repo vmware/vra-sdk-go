@@ -25,11 +25,14 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetFabricAzureStorageAccount(params *GetFabricAzureStorageAccountParams) (*GetFabricAzureStorageAccountOK, error)
+	GetFabricAzureStorageAccount(params *GetFabricAzureStorageAccountParams, opts ...ClientOption) (*GetFabricAzureStorageAccountOK, error)
 
-	GetFabricAzureStorageAccounts(params *GetFabricAzureStorageAccountsParams) (*GetFabricAzureStorageAccountsOK, error)
+	GetFabricAzureStorageAccounts(params *GetFabricAzureStorageAccountsParams, opts ...ClientOption) (*GetFabricAzureStorageAccountsOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -39,13 +42,12 @@ type ClientService interface {
 
   Get fabric Azure storage account with a given id
 */
-func (a *Client) GetFabricAzureStorageAccount(params *GetFabricAzureStorageAccountParams) (*GetFabricAzureStorageAccountOK, error) {
+func (a *Client) GetFabricAzureStorageAccount(params *GetFabricAzureStorageAccountParams, opts ...ClientOption) (*GetFabricAzureStorageAccountOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetFabricAzureStorageAccountParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getFabricAzureStorageAccount",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/fabric-azure-storage-accounts/{id}",
@@ -56,7 +58,12 @@ func (a *Client) GetFabricAzureStorageAccount(params *GetFabricAzureStorageAccou
 		Reader:             &GetFabricAzureStorageAccountReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -75,13 +82,12 @@ func (a *Client) GetFabricAzureStorageAccount(params *GetFabricAzureStorageAccou
 
   Get all fabric Azure storage accounts.
 */
-func (a *Client) GetFabricAzureStorageAccounts(params *GetFabricAzureStorageAccountsParams) (*GetFabricAzureStorageAccountsOK, error) {
+func (a *Client) GetFabricAzureStorageAccounts(params *GetFabricAzureStorageAccountsParams, opts ...ClientOption) (*GetFabricAzureStorageAccountsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetFabricAzureStorageAccountsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getFabricAzureStorageAccounts",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/fabric-azure-storage-accounts",
@@ -92,7 +98,12 @@ func (a *Client) GetFabricAzureStorageAccounts(params *GetFabricAzureStorageAcco
 		Reader:             &GetFabricAzureStorageAccountsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

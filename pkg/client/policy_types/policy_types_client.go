@@ -25,11 +25,14 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetPolicyTypeByIDUsingGET(params *GetPolicyTypeByIDUsingGETParams) (*GetPolicyTypeByIDUsingGETOK, error)
+	GetPolicyTypeByIDUsingGET(params *GetPolicyTypeByIDUsingGETParams, opts ...ClientOption) (*GetPolicyTypeByIDUsingGETOK, error)
 
-	GetTypesUsingGET1(params *GetTypesUsingGET1Params) (*GetTypesUsingGET1OK, error)
+	GetTypesUsingGET1(params *GetTypesUsingGET1Params, opts ...ClientOption) (*GetTypesUsingGET1OK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -39,13 +42,12 @@ type ClientService interface {
 
   Find a specific policy type based on the input policy type id.
 */
-func (a *Client) GetPolicyTypeByIDUsingGET(params *GetPolicyTypeByIDUsingGETParams) (*GetPolicyTypeByIDUsingGETOK, error) {
+func (a *Client) GetPolicyTypeByIDUsingGET(params *GetPolicyTypeByIDUsingGETParams, opts ...ClientOption) (*GetPolicyTypeByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetPolicyTypeByIDUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getPolicyTypeByIdUsingGET",
 		Method:             "GET",
 		PathPattern:        "/policy/api/policyTypes/{id}",
@@ -56,7 +58,12 @@ func (a *Client) GetPolicyTypeByIDUsingGET(params *GetPolicyTypeByIDUsingGETPara
 		Reader:             &GetPolicyTypeByIDUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -75,13 +82,12 @@ func (a *Client) GetPolicyTypeByIDUsingGET(params *GetPolicyTypeByIDUsingGETPara
 
   Find all the policy types available in the current org.
 */
-func (a *Client) GetTypesUsingGET1(params *GetTypesUsingGET1Params) (*GetTypesUsingGET1OK, error) {
+func (a *Client) GetTypesUsingGET1(params *GetTypesUsingGET1Params, opts ...ClientOption) (*GetTypesUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetTypesUsingGET1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getTypesUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/policy/api/policyTypes",
@@ -92,7 +98,12 @@ func (a *Client) GetTypesUsingGET1(params *GetTypesUsingGET1Params) (*GetTypesUs
 		Reader:             &GetTypesUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

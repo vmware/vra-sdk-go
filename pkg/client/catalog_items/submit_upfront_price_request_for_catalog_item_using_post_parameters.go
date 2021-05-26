@@ -18,69 +18,87 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewSubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams creates a new SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams object
-// with the default values initialized.
+// NewSubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams creates a new SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewSubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams() *SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams {
-	var ()
 	return &SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewSubmitUpfrontPriceRequestForCatalogItemUsingPOSTParamsWithTimeout creates a new SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewSubmitUpfrontPriceRequestForCatalogItemUsingPOSTParamsWithTimeout(timeout time.Duration) *SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams {
-	var ()
 	return &SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewSubmitUpfrontPriceRequestForCatalogItemUsingPOSTParamsWithContext creates a new SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewSubmitUpfrontPriceRequestForCatalogItemUsingPOSTParamsWithContext(ctx context.Context) *SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams {
-	var ()
 	return &SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams{
-
 		Context: ctx,
 	}
 }
 
 // NewSubmitUpfrontPriceRequestForCatalogItemUsingPOSTParamsWithHTTPClient creates a new SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewSubmitUpfrontPriceRequestForCatalogItemUsingPOSTParamsWithHTTPClient(client *http.Client) *SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams {
-	var ()
 	return &SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams{
 		HTTPClient: client,
 	}
 }
 
-/*SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams contains all the parameters to send to the API endpoint
-for the submit upfront price request for catalog item using p o s t operation typically these are written to a http.Request
+/* SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams contains all the parameters to send to the API endpoint
+   for the submit upfront price request for catalog item using p o s t operation.
+
+   Typically these are written to a http.Request.
 */
 type SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 	*/
 	APIVersion *string
-	/*ID
-	  Catalog Item ID
 
+	/* ID.
+
+	   Catalog Item ID
+
+	   Format: uuid
 	*/
 	ID strfmt.UUID
-	/*Request
-	  request
 
+	/* Request.
+
+	   request
 	*/
 	Request *models.CatalogItemRequest
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the submit upfront price request for catalog item using p o s t params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams) WithDefaults() *SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the submit upfront price request for catalog item using p o s t params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the submit upfront price request for catalog item using p o s t params
@@ -161,23 +179,23 @@ func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOSTParams) WriteToRequest(
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id
 	if err := r.SetPathParam("id", o.ID.String()); err != nil {
 		return err
 	}
-
 	if o.Request != nil {
 		if err := r.SetBodyParam(o.Request); err != nil {
 			return err

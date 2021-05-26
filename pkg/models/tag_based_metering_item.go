@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -40,7 +41,6 @@ func (m *TagBasedMeteringItem) Validate(formats strfmt.Registry) error {
 }
 
 func (m *TagBasedMeteringItem) validateTagBasedMeterings(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.TagBasedMeterings) { // not required
 		return nil
 	}
@@ -52,6 +52,38 @@ func (m *TagBasedMeteringItem) validateTagBasedMeterings(formats strfmt.Registry
 
 		if m.TagBasedMeterings[i] != nil {
 			if err := m.TagBasedMeterings[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tagBasedMeterings" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this tag based metering item based on the context it is used
+func (m *TagBasedMeteringItem) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateTagBasedMeterings(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *TagBasedMeteringItem) contextValidateTagBasedMeterings(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.TagBasedMeterings); i++ {
+
+		if m.TagBasedMeterings[i] != nil {
+			if err := m.TagBasedMeterings[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tagBasedMeterings" + "." + strconv.Itoa(i))
 				}

@@ -16,64 +16,81 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewDeleteEntitlementUsingDELETEParams creates a new DeleteEntitlementUsingDELETEParams object
-// with the default values initialized.
+// NewDeleteEntitlementUsingDELETEParams creates a new DeleteEntitlementUsingDELETEParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteEntitlementUsingDELETEParams() *DeleteEntitlementUsingDELETEParams {
-	var ()
 	return &DeleteEntitlementUsingDELETEParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteEntitlementUsingDELETEParamsWithTimeout creates a new DeleteEntitlementUsingDELETEParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteEntitlementUsingDELETEParamsWithTimeout(timeout time.Duration) *DeleteEntitlementUsingDELETEParams {
-	var ()
 	return &DeleteEntitlementUsingDELETEParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteEntitlementUsingDELETEParamsWithContext creates a new DeleteEntitlementUsingDELETEParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteEntitlementUsingDELETEParamsWithContext(ctx context.Context) *DeleteEntitlementUsingDELETEParams {
-	var ()
 	return &DeleteEntitlementUsingDELETEParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteEntitlementUsingDELETEParamsWithHTTPClient creates a new DeleteEntitlementUsingDELETEParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteEntitlementUsingDELETEParamsWithHTTPClient(client *http.Client) *DeleteEntitlementUsingDELETEParams {
-	var ()
 	return &DeleteEntitlementUsingDELETEParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteEntitlementUsingDELETEParams contains all the parameters to send to the API endpoint
-for the delete entitlement using d e l e t e operation typically these are written to a http.Request
+/* DeleteEntitlementUsingDELETEParams contains all the parameters to send to the API endpoint
+   for the delete entitlement using d e l e t e operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteEntitlementUsingDELETEParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 	*/
 	APIVersion *string
-	/*ID
-	  Entitlement id
 
+	/* ID.
+
+	   Entitlement id
+
+	   Format: uuid
 	*/
 	ID strfmt.UUID
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete entitlement using d e l e t e params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteEntitlementUsingDELETEParams) WithDefaults() *DeleteEntitlementUsingDELETEParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete entitlement using d e l e t e params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteEntitlementUsingDELETEParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete entitlement using d e l e t e params
@@ -143,16 +160,17 @@ func (o *DeleteEntitlementUsingDELETEParams) WriteToRequest(r runtime.ClientRequ
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id

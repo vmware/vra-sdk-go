@@ -29,7 +29,6 @@ func (o *GetTypesUsingGET1Reader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -40,7 +39,7 @@ func NewGetTypesUsingGET1OK() *GetTypesUsingGET1OK {
 	return &GetTypesUsingGET1OK{}
 }
 
-/*GetTypesUsingGET1OK handles this case with default header values.
+/* GetTypesUsingGET1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -51,7 +50,6 @@ type GetTypesUsingGET1OK struct {
 func (o *GetTypesUsingGET1OK) Error() string {
 	return fmt.Sprintf("[GET /policy/api/policyTypes][%d] getTypesUsingGET1OK  %+v", 200, o.Payload)
 }
-
 func (o *GetTypesUsingGET1OK) GetPayload() *models.PageOfPolicyType {
 	return o.Payload
 }

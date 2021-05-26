@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -18,13 +19,14 @@ import (
 // swagger:model UpdateMachineSpecification
 type UpdateMachineSpecification struct {
 
-	// Additional custom properties that may be used to extend the machine. Custom properties prefixed with: "__" are discarded.
+	// Additional custom properties that may be used to extend the machine. Internal custom properties (for example, prefixed with: "__") can not be updated.
 	CustomProperties map[string]string `json:"customProperties,omitempty"`
 
 	// Describes machine within the scope of your organization and is not propagated to the cloud
 	Description string `json:"description,omitempty"`
 
 	// A set of tag keys and optional values that should be set on any resource that is produced from this specification.
+	// Example: [ { \"key\" : \"ownedBy\", \"value\": \"Rainpole\" } ]
 	Tags []*Tag `json:"tags"`
 }
 
@@ -43,7 +45,6 @@ func (m *UpdateMachineSpecification) Validate(formats strfmt.Registry) error {
 }
 
 func (m *UpdateMachineSpecification) validateTags(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Tags) { // not required
 		return nil
 	}
@@ -55,6 +56,38 @@ func (m *UpdateMachineSpecification) validateTags(formats strfmt.Registry) error
 
 		if m.Tags[i] != nil {
 			if err := m.Tags[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this update machine specification based on the context it is used
+func (m *UpdateMachineSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateTags(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *UpdateMachineSpecification) contextValidateTags(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Tags); i++ {
+
+		if m.Tags[i] != nil {
+			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
 				}

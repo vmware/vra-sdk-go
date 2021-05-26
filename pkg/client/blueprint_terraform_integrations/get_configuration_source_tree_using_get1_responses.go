@@ -53,7 +53,6 @@ func (o *GetConfigurationSourceTreeUsingGET1Reader) ReadResponse(response runtim
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -64,7 +63,7 @@ func NewGetConfigurationSourceTreeUsingGET1OK() *GetConfigurationSourceTreeUsing
 	return &GetConfigurationSourceTreeUsingGET1OK{}
 }
 
-/*GetConfigurationSourceTreeUsingGET1OK handles this case with default header values.
+/* GetConfigurationSourceTreeUsingGET1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -75,7 +74,6 @@ type GetConfigurationSourceTreeUsingGET1OK struct {
 func (o *GetConfigurationSourceTreeUsingGET1OK) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/get-configuration-source-tree][%d] getConfigurationSourceTreeUsingGET1OK  %+v", 200, o.Payload)
 }
-
 func (o *GetConfigurationSourceTreeUsingGET1OK) GetPayload() *models.FileTree {
 	return o.Payload
 }
@@ -97,7 +95,7 @@ func NewGetConfigurationSourceTreeUsingGET1BadRequest() *GetConfigurationSourceT
 	return &GetConfigurationSourceTreeUsingGET1BadRequest{}
 }
 
-/*GetConfigurationSourceTreeUsingGET1BadRequest handles this case with default header values.
+/* GetConfigurationSourceTreeUsingGET1BadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -108,7 +106,6 @@ type GetConfigurationSourceTreeUsingGET1BadRequest struct {
 func (o *GetConfigurationSourceTreeUsingGET1BadRequest) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/get-configuration-source-tree][%d] getConfigurationSourceTreeUsingGET1BadRequest  %+v", 400, o.Payload)
 }
-
 func (o *GetConfigurationSourceTreeUsingGET1BadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -130,7 +127,7 @@ func NewGetConfigurationSourceTreeUsingGET1Unauthorized() *GetConfigurationSourc
 	return &GetConfigurationSourceTreeUsingGET1Unauthorized{}
 }
 
-/*GetConfigurationSourceTreeUsingGET1Unauthorized handles this case with default header values.
+/* GetConfigurationSourceTreeUsingGET1Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -151,7 +148,7 @@ func NewGetConfigurationSourceTreeUsingGET1Forbidden() *GetConfigurationSourceTr
 	return &GetConfigurationSourceTreeUsingGET1Forbidden{}
 }
 
-/*GetConfigurationSourceTreeUsingGET1Forbidden handles this case with default header values.
+/* GetConfigurationSourceTreeUsingGET1Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -172,7 +169,7 @@ func NewGetConfigurationSourceTreeUsingGET1NotFound() *GetConfigurationSourceTre
 	return &GetConfigurationSourceTreeUsingGET1NotFound{}
 }
 
-/*GetConfigurationSourceTreeUsingGET1NotFound handles this case with default header values.
+/* GetConfigurationSourceTreeUsingGET1NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -183,7 +180,6 @@ type GetConfigurationSourceTreeUsingGET1NotFound struct {
 func (o *GetConfigurationSourceTreeUsingGET1NotFound) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/get-configuration-source-tree][%d] getConfigurationSourceTreeUsingGET1NotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetConfigurationSourceTreeUsingGET1NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

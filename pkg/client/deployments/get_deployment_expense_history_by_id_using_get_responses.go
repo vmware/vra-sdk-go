@@ -41,7 +41,6 @@ func (o *GetDeploymentExpenseHistoryByIDUsingGETReader) ReadResponse(response ru
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetDeploymentExpenseHistoryByIDUsingGETOK() *GetDeploymentExpenseHistory
 	return &GetDeploymentExpenseHistoryByIDUsingGETOK{}
 }
 
-/*GetDeploymentExpenseHistoryByIDUsingGETOK handles this case with default header values.
+/* GetDeploymentExpenseHistoryByIDUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -63,7 +62,6 @@ type GetDeploymentExpenseHistoryByIDUsingGETOK struct {
 func (o *GetDeploymentExpenseHistoryByIDUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/{depId}/expense-history][%d] getDeploymentExpenseHistoryByIdUsingGETOK  %+v", 200, o.Payload)
 }
-
 func (o *GetDeploymentExpenseHistoryByIDUsingGETOK) GetPayload() *models.DeploymentExpenseHistory {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewGetDeploymentExpenseHistoryByIDUsingGETUnauthorized() *GetDeploymentExpe
 	return &GetDeploymentExpenseHistoryByIDUsingGETUnauthorized{}
 }
 
-/*GetDeploymentExpenseHistoryByIDUsingGETUnauthorized handles this case with default header values.
+/* GetDeploymentExpenseHistoryByIDUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -106,7 +104,7 @@ func NewGetDeploymentExpenseHistoryByIDUsingGETNotFound() *GetDeploymentExpenseH
 	return &GetDeploymentExpenseHistoryByIDUsingGETNotFound{}
 }
 
-/*GetDeploymentExpenseHistoryByIDUsingGETNotFound handles this case with default header values.
+/* GetDeploymentExpenseHistoryByIDUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +115,6 @@ type GetDeploymentExpenseHistoryByIDUsingGETNotFound struct {
 func (o *GetDeploymentExpenseHistoryByIDUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/{depId}/expense-history][%d] getDeploymentExpenseHistoryByIdUsingGETNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetDeploymentExpenseHistoryByIDUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

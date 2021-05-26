@@ -41,7 +41,6 @@ func (o *GetVSphereCloudAccountReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetVSphereCloudAccountOK() *GetVSphereCloudAccountOK {
 	return &GetVSphereCloudAccountOK{}
 }
 
-/*GetVSphereCloudAccountOK handles this case with default header values.
+/* GetVSphereCloudAccountOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type GetVSphereCloudAccountOK struct {
 func (o *GetVSphereCloudAccountOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vsphere/{id}][%d] getVSphereCloudAccountOK  %+v", 200, o.Payload)
 }
-
 func (o *GetVSphereCloudAccountOK) GetPayload() *models.CloudAccountVsphere {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewGetVSphereCloudAccountForbidden() *GetVSphereCloudAccountForbidden {
 	return &GetVSphereCloudAccountForbidden{}
 }
 
-/*GetVSphereCloudAccountForbidden handles this case with default header values.
+/* GetVSphereCloudAccountForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetVSphereCloudAccountForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetVSphereCloudAccountForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vsphere/{id}][%d] getVSphereCloudAccountForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vsphere/{id}][%d] getVSphereCloudAccountForbidden  %+v", 403, o.Payload)
+}
+func (o *GetVSphereCloudAccountForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetVSphereCloudAccountForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewGetVSphereCloudAccountNotFound() *GetVSphereCloudAccountNotFound {
 	return &GetVSphereCloudAccountNotFound{}
 }
 
-/*GetVSphereCloudAccountNotFound handles this case with default header values.
+/* GetVSphereCloudAccountNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type GetVSphereCloudAccountNotFound struct {
 func (o *GetVSphereCloudAccountNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vsphere/{id}][%d] getVSphereCloudAccountNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetVSphereCloudAccountNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

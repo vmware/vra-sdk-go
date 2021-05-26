@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -147,7 +148,6 @@ func (m *PropertyDefinition) Validate(formats strfmt.Registry) error {
 }
 
 func (m *PropertyDefinition) validateAllOf(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.AllOf) { // not required
 		return nil
 	}
@@ -172,7 +172,6 @@ func (m *PropertyDefinition) validateAllOf(formats strfmt.Registry) error {
 }
 
 func (m *PropertyDefinition) validateItems(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Items) { // not required
 		return nil
 	}
@@ -190,7 +189,6 @@ func (m *PropertyDefinition) validateItems(formats strfmt.Registry) error {
 }
 
 func (m *PropertyDefinition) validateNot(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Not) { // not required
 		return nil
 	}
@@ -208,7 +206,6 @@ func (m *PropertyDefinition) validateNot(formats strfmt.Registry) error {
 }
 
 func (m *PropertyDefinition) validateOneOf(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.OneOf) { // not required
 		return nil
 	}
@@ -233,7 +230,6 @@ func (m *PropertyDefinition) validateOneOf(formats strfmt.Registry) error {
 }
 
 func (m *PropertyDefinition) validateProperties(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Properties) { // not required
 		return nil
 	}
@@ -245,6 +241,115 @@ func (m *PropertyDefinition) validateProperties(formats strfmt.Registry) error {
 		}
 		if val, ok := m.Properties[k]; ok {
 			if err := val.Validate(formats); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this property definition based on the context it is used
+func (m *PropertyDefinition) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateAllOf(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateItems(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateNot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOneOf(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateProperties(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PropertyDefinition) contextValidateAllOf(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.AllOf); i++ {
+
+		if m.AllOf[i] != nil {
+			if err := m.AllOf[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("allOf" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *PropertyDefinition) contextValidateItems(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Items != nil {
+		if err := m.Items.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("items")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *PropertyDefinition) contextValidateNot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Not != nil {
+		if err := m.Not.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("not")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *PropertyDefinition) contextValidateOneOf(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.OneOf); i++ {
+
+		if m.OneOf[i] != nil {
+			if err := m.OneOf[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("oneOf" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *PropertyDefinition) contextValidateProperties(ctx context.Context, formats strfmt.Registry) error {
+
+	for k := range m.Properties {
+
+		if val, ok := m.Properties[k]; ok {
+			if err := val.ContextValidate(ctx, formats); err != nil {
 				return err
 			}
 		}

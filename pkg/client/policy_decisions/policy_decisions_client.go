@@ -25,11 +25,14 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetDecisionByIDUsingGET(params *GetDecisionByIDUsingGETParams) (*GetDecisionByIDUsingGETOK, error)
+	GetDecisionByIDUsingGET(params *GetDecisionByIDUsingGETParams, opts ...ClientOption) (*GetDecisionByIDUsingGETOK, error)
 
-	GetDecisionsUsingGET(params *GetDecisionsUsingGETParams) (*GetDecisionsUsingGETOK, error)
+	GetDecisionsUsingGET(params *GetDecisionsUsingGETParams, opts ...ClientOption) (*GetDecisionsUsingGETOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -39,13 +42,12 @@ type ClientService interface {
 
   Find a specific policy decision based on the input policy decision id.
 */
-func (a *Client) GetDecisionByIDUsingGET(params *GetDecisionByIDUsingGETParams) (*GetDecisionByIDUsingGETOK, error) {
+func (a *Client) GetDecisionByIDUsingGET(params *GetDecisionByIDUsingGETParams, opts ...ClientOption) (*GetDecisionByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDecisionByIDUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getDecisionByIdUsingGET",
 		Method:             "GET",
 		PathPattern:        "/policy/api/policyDecisions/{id}",
@@ -56,7 +58,12 @@ func (a *Client) GetDecisionByIDUsingGET(params *GetDecisionByIDUsingGETParams) 
 		Reader:             &GetDecisionByIDUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -75,13 +82,12 @@ func (a *Client) GetDecisionByIDUsingGET(params *GetDecisionByIDUsingGETParams) 
 
   Returns a paginated list of policy decisions. If a dryRunId is provided, the return value has a field indicating whether the dry run is complete.
 */
-func (a *Client) GetDecisionsUsingGET(params *GetDecisionsUsingGETParams) (*GetDecisionsUsingGETOK, error) {
+func (a *Client) GetDecisionsUsingGET(params *GetDecisionsUsingGETParams, opts ...ClientOption) (*GetDecisionsUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDecisionsUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getDecisionsUsingGET",
 		Method:             "GET",
 		PathPattern:        "/policy/api/policyDecisions",
@@ -92,7 +98,12 @@ func (a *Client) GetDecisionsUsingGET(params *GetDecisionsUsingGETParams) (*GetD
 		Reader:             &GetDecisionsUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

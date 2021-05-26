@@ -17,89 +17,111 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGetDeploymentByIDUsingGETParams creates a new GetDeploymentByIDUsingGETParams object
-// with the default values initialized.
+// NewGetDeploymentByIDUsingGETParams creates a new GetDeploymentByIDUsingGETParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetDeploymentByIDUsingGETParams() *GetDeploymentByIDUsingGETParams {
-	var ()
 	return &GetDeploymentByIDUsingGETParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetDeploymentByIDUsingGETParamsWithTimeout creates a new GetDeploymentByIDUsingGETParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetDeploymentByIDUsingGETParamsWithTimeout(timeout time.Duration) *GetDeploymentByIDUsingGETParams {
-	var ()
 	return &GetDeploymentByIDUsingGETParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetDeploymentByIDUsingGETParamsWithContext creates a new GetDeploymentByIDUsingGETParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetDeploymentByIDUsingGETParamsWithContext(ctx context.Context) *GetDeploymentByIDUsingGETParams {
-	var ()
 	return &GetDeploymentByIDUsingGETParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetDeploymentByIDUsingGETParamsWithHTTPClient creates a new GetDeploymentByIDUsingGETParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetDeploymentByIDUsingGETParamsWithHTTPClient(client *http.Client) *GetDeploymentByIDUsingGETParams {
-	var ()
 	return &GetDeploymentByIDUsingGETParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetDeploymentByIDUsingGETParams contains all the parameters to send to the API endpoint
-for the get deployment by Id using g e t operation typically these are written to a http.Request
+/* GetDeploymentByIDUsingGETParams contains all the parameters to send to the API endpoint
+   for the get deployment by Id using g e t operation.
+
+   Typically these are written to a http.Request.
 */
 type GetDeploymentByIDUsingGETParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 	*/
 	APIVersion *string
-	/*Deleted
-	  Retrieves the deployment, includes soft-deleted deployments that have not yet been completely deleted.
 
+	/* Deleted.
+
+	   Retrieves the deployment, includes soft-deleted deployments that have not yet been completely deleted.
 	*/
 	Deleted *bool
-	/*DepID
-	  Deployment ID
 
+	/* DepID.
+
+	   Deployment ID
+
+	   Format: uuid
 	*/
 	DepID strfmt.UUID
-	/*Expand
-	  The expanded details of the requested comma separated objects. 'resources' option returns resources with all properties. Ex. blueprint, project
 
+	/* Expand.
+
+	   The expanded details of the requested comma separated objects. 'resources' option returns resources with all properties. Ex. blueprint, project
 	*/
 	Expand []string
-	/*ExpandLastRequest
-	  Expands deployment last request.
 
+	/* ExpandLastRequest.
+
+	   Expands deployment last request.
 	*/
 	ExpandLastRequest *bool
-	/*ExpandProject
-	  The 'project' field of the deployment will be retrieved.
 
+	/* ExpandProject.
+
+	   The 'project' field of the deployment will be retrieved.
 	*/
 	ExpandProject *bool
-	/*ExpandResources
-	  The 'resources' field of the deployment will be retrieved.
 
+	/* ExpandResources.
+
+	   The 'resources' field of the deployment will be retrieved.
 	*/
 	ExpandResources *bool
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get deployment by Id using get params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetDeploymentByIDUsingGETParams) WithDefaults() *GetDeploymentByIDUsingGETParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get deployment by Id using get params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetDeploymentByIDUsingGETParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get deployment by Id using get params
@@ -224,32 +246,34 @@ func (o *GetDeploymentByIDUsingGETParams) WriteToRequest(r runtime.ClientRequest
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Deleted != nil {
 
 		// query param deleted
 		var qrDeleted bool
+
 		if o.Deleted != nil {
 			qrDeleted = *o.Deleted
 		}
 		qDeleted := swag.FormatBool(qrDeleted)
 		if qDeleted != "" {
+
 			if err := r.SetQueryParam("deleted", qDeleted); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param depId
@@ -257,64 +281,87 @@ func (o *GetDeploymentByIDUsingGETParams) WriteToRequest(r runtime.ClientRequest
 		return err
 	}
 
-	valuesExpand := o.Expand
+	if o.Expand != nil {
 
-	joinedExpand := swag.JoinByFormat(valuesExpand, "multi")
-	// query array param expand
-	if err := r.SetQueryParam("expand", joinedExpand...); err != nil {
-		return err
+		// binding items for expand
+		joinedExpand := o.bindParamExpand(reg)
+
+		// query array param expand
+		if err := r.SetQueryParam("expand", joinedExpand...); err != nil {
+			return err
+		}
 	}
 
 	if o.ExpandLastRequest != nil {
 
 		// query param expandLastRequest
 		var qrExpandLastRequest bool
+
 		if o.ExpandLastRequest != nil {
 			qrExpandLastRequest = *o.ExpandLastRequest
 		}
 		qExpandLastRequest := swag.FormatBool(qrExpandLastRequest)
 		if qExpandLastRequest != "" {
+
 			if err := r.SetQueryParam("expandLastRequest", qExpandLastRequest); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.ExpandProject != nil {
 
 		// query param expandProject
 		var qrExpandProject bool
+
 		if o.ExpandProject != nil {
 			qrExpandProject = *o.ExpandProject
 		}
 		qExpandProject := swag.FormatBool(qrExpandProject)
 		if qExpandProject != "" {
+
 			if err := r.SetQueryParam("expandProject", qExpandProject); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.ExpandResources != nil {
 
 		// query param expandResources
 		var qrExpandResources bool
+
 		if o.ExpandResources != nil {
 			qrExpandResources = *o.ExpandResources
 		}
 		qExpandResources := swag.FormatBool(qrExpandResources)
 		if qExpandResources != "" {
+
 			if err := r.SetQueryParam("expandResources", qExpandResources); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
+}
+
+// bindParamGetDeploymentByIDUsingGET binds the parameter expand
+func (o *GetDeploymentByIDUsingGETParams) bindParamExpand(formats strfmt.Registry) []string {
+	expandIR := o.Expand
+
+	var expandIC []string
+	for _, expandIIR := range expandIR { // explode []string
+
+		expandIIV := expandIIR // string as string
+		expandIC = append(expandIC, expandIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	expandIS := swag.JoinByFormat(expandIC, "multi")
+
+	return expandIS
 }

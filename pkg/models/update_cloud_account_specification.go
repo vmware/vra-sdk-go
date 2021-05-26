@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -19,12 +20,15 @@ import (
 type UpdateCloudAccountSpecification struct {
 
 	// Cloud accounts to associate with this cloud account
+	// Example: [ \"42f3e0d199d134755684cd935435a\" ]
 	AssociatedCloudAccountIds []string `json:"associatedCloudAccountIds"`
 
 	// Create default cloud zones for the enabled regions.
+	// Example: true
 	CreateDefaultZones bool `json:"createDefaultZones,omitempty"`
 
 	// Additional custom properties that may be used to extend the Cloud Account.
+	// Example: { \"sampleadapterProjectId\" : \"projectId\" }
 	CustomProperties map[string]string `json:"customProperties,omitempty"`
 
 	// A human-friendly description.
@@ -34,15 +38,19 @@ type UpdateCloudAccountSpecification struct {
 	Name string `json:"name,omitempty"`
 
 	// Secret access key or password to be used to authenticate with the cloud account
+	// Example: [ \"LVJbZNAkPCJs\" ]
 	PrivateKey string `json:"privateKey,omitempty"`
 
 	// Access key id or username to be used to authenticate with the cloud account
+	// Example: [ \"ACDC55DB4MFH6ADG75KK\" ]
 	PrivateKeyID string `json:"privateKeyId,omitempty"`
 
 	// A set of Region names to enable provisioning on.
+	// Example: [\"us-east-1\", \"ap-northeast-1\"]
 	RegionIds []string `json:"regionIds"`
 
 	// A set of tag keys and optional values to set on the Cloud Account
+	// Example: [{\"key\": \"env\", \"value\": \"dev\"}]
 	Tags []*Tag `json:"tags"`
 }
 
@@ -61,7 +69,6 @@ func (m *UpdateCloudAccountSpecification) Validate(formats strfmt.Registry) erro
 }
 
 func (m *UpdateCloudAccountSpecification) validateTags(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Tags) { // not required
 		return nil
 	}
@@ -73,6 +80,38 @@ func (m *UpdateCloudAccountSpecification) validateTags(formats strfmt.Registry) 
 
 		if m.Tags[i] != nil {
 			if err := m.Tags[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this update cloud account specification based on the context it is used
+func (m *UpdateCloudAccountSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateTags(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *UpdateCloudAccountSpecification) contextValidateTags(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Tags); i++ {
+
+		if m.Tags[i] != nil {
+			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
 				}

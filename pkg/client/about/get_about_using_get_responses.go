@@ -29,7 +29,6 @@ func (o *GetAboutUsingGETReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -40,7 +39,7 @@ func NewGetAboutUsingGETOK() *GetAboutUsingGETOK {
 	return &GetAboutUsingGETOK{}
 }
 
-/*GetAboutUsingGETOK handles this case with default header values.
+/* GetAboutUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -51,7 +50,6 @@ type GetAboutUsingGETOK struct {
 func (o *GetAboutUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /content/api/about][%d] getAboutUsingGETOK  %+v", 200, o.Payload)
 }
-
 func (o *GetAboutUsingGETOK) GetPayload() *models.ContentAbout {
 	return o.Payload
 }

@@ -16,69 +16,85 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewDeleteServiceCredentialUsingDELETEParams creates a new DeleteServiceCredentialUsingDELETEParams object
-// with the default values initialized.
+// NewDeleteServiceCredentialUsingDELETEParams creates a new DeleteServiceCredentialUsingDELETEParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteServiceCredentialUsingDELETEParams() *DeleteServiceCredentialUsingDELETEParams {
-	var ()
 	return &DeleteServiceCredentialUsingDELETEParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteServiceCredentialUsingDELETEParamsWithTimeout creates a new DeleteServiceCredentialUsingDELETEParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteServiceCredentialUsingDELETEParamsWithTimeout(timeout time.Duration) *DeleteServiceCredentialUsingDELETEParams {
-	var ()
 	return &DeleteServiceCredentialUsingDELETEParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteServiceCredentialUsingDELETEParamsWithContext creates a new DeleteServiceCredentialUsingDELETEParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteServiceCredentialUsingDELETEParamsWithContext(ctx context.Context) *DeleteServiceCredentialUsingDELETEParams {
-	var ()
 	return &DeleteServiceCredentialUsingDELETEParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteServiceCredentialUsingDELETEParamsWithHTTPClient creates a new DeleteServiceCredentialUsingDELETEParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteServiceCredentialUsingDELETEParamsWithHTTPClient(client *http.Client) *DeleteServiceCredentialUsingDELETEParams {
-	var ()
 	return &DeleteServiceCredentialUsingDELETEParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteServiceCredentialUsingDELETEParams contains all the parameters to send to the API endpoint
-for the delete service credential using d e l e t e operation typically these are written to a http.Request
+/* DeleteServiceCredentialUsingDELETEParams contains all the parameters to send to the API endpoint
+   for the delete service credential using d e l e t e operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteServiceCredentialUsingDELETEParams struct {
 
-	/*DomainID
-	  domainId
+	/* DomainID.
 
+	   domainId
 	*/
 	DomainID string
-	/*ID
-	  id
 
+	/* ID.
+
+	   id
 	*/
 	ID string
-	/*IntegrationID
-	  integrationId
 
+	/* IntegrationID.
+
+	   integrationId
 	*/
 	IntegrationID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete service credential using d e l e t e params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteServiceCredentialUsingDELETEParams) WithDefaults() *DeleteServiceCredentialUsingDELETEParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete service credential using d e l e t e params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteServiceCredentialUsingDELETEParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete service credential using d e l e t e params

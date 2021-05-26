@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -152,7 +153,6 @@ func (m *Request) Validate(formats strfmt.Registry) error {
 }
 
 func (m *Request) validateApprovedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ApprovedAt) { // not required
 		return nil
 	}
@@ -165,7 +165,6 @@ func (m *Request) validateApprovedAt(formats strfmt.Registry) error {
 }
 
 func (m *Request) validateCompletedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CompletedAt) { // not required
 		return nil
 	}
@@ -200,7 +199,6 @@ func (m *Request) validateCreatedAt(formats strfmt.Registry) error {
 }
 
 func (m *Request) validateID(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ID) { // not required
 		return nil
 	}
@@ -213,7 +211,6 @@ func (m *Request) validateID(formats strfmt.Registry) error {
 }
 
 func (m *Request) validateInitializedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.InitializedAt) { // not required
 		return nil
 	}
@@ -300,7 +297,6 @@ func (m *Request) validateStatusEnum(path, location string, value string) error 
 }
 
 func (m *Request) validateStatus(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Status) { // not required
 		return nil
 	}
@@ -323,7 +319,6 @@ func (m *Request) validateTotalTasks(formats strfmt.Registry) error {
 }
 
 func (m *Request) validateUpdatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.UpdatedAt) { // not required
 		return nil
 	}
@@ -332,6 +327,11 @@ func (m *Request) validateUpdatedAt(formats strfmt.Registry) error {
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validates this request based on context it is used
+func (m *Request) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

@@ -16,64 +16,79 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetAzureStorageProfileParams creates a new GetAzureStorageProfileParams object
-// with the default values initialized.
+// NewGetAzureStorageProfileParams creates a new GetAzureStorageProfileParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetAzureStorageProfileParams() *GetAzureStorageProfileParams {
-	var ()
 	return &GetAzureStorageProfileParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetAzureStorageProfileParamsWithTimeout creates a new GetAzureStorageProfileParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetAzureStorageProfileParamsWithTimeout(timeout time.Duration) *GetAzureStorageProfileParams {
-	var ()
 	return &GetAzureStorageProfileParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetAzureStorageProfileParamsWithContext creates a new GetAzureStorageProfileParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetAzureStorageProfileParamsWithContext(ctx context.Context) *GetAzureStorageProfileParams {
-	var ()
 	return &GetAzureStorageProfileParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetAzureStorageProfileParamsWithHTTPClient creates a new GetAzureStorageProfileParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetAzureStorageProfileParamsWithHTTPClient(client *http.Client) *GetAzureStorageProfileParams {
-	var ()
 	return &GetAzureStorageProfileParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetAzureStorageProfileParams contains all the parameters to send to the API endpoint
-for the get azure storage profile operation typically these are written to a http.Request
+/* GetAzureStorageProfileParams contains all the parameters to send to the API endpoint
+   for the get azure storage profile operation.
+
+   Typically these are written to a http.Request.
 */
 type GetAzureStorageProfileParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*ID
-	  The ID of storage profile.
 
+	/* ID.
+
+	   The ID of storage profile.
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get azure storage profile params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetAzureStorageProfileParams) WithDefaults() *GetAzureStorageProfileParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get azure storage profile params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetAzureStorageProfileParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get azure storage profile params
@@ -143,16 +158,17 @@ func (o *GetAzureStorageProfileParams) WriteToRequest(r runtime.ClientRequest, r
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id

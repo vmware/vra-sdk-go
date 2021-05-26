@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -18,27 +20,33 @@ import (
 type RouteConfiguration struct {
 
 	// Algorithm employed for load balancing.
+	// Example: ROUND_ROBIN
 	Algorithm string `json:"algorithm,omitempty"`
 
 	// Parameters need for load balancing algorithm.Use newline to separate multiple parameters.
+	// Example: uriLength=10\nurlParam=section
 	AlgorithmParameters string `json:"algorithmParameters,omitempty"`
 
 	// Health check configuration for this route configuration.
 	HealthCheckConfiguration *HealthCheckConfiguration `json:"healthCheckConfiguration,omitempty"`
 
 	// Member port where the traffic is routed to.
+	// Example: 80
 	// Required: true
 	MemberPort *string `json:"memberPort"`
 
 	// The protocol of the member traffic.
+	// Example: TCP, UDP
 	// Required: true
 	MemberProtocol *string `json:"memberProtocol"`
 
 	// Port which the load balancer is listening to.
+	// Example: 80
 	// Required: true
 	Port *string `json:"port"`
 
 	// The protocol of the incoming load balancer requests.
+	// Example: TCP, UDP
 	// Required: true
 	Protocol *string `json:"protocol"`
 }
@@ -74,7 +82,6 @@ func (m *RouteConfiguration) Validate(formats strfmt.Registry) error {
 }
 
 func (m *RouteConfiguration) validateHealthCheckConfiguration(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.HealthCheckConfiguration) { // not required
 		return nil
 	}
@@ -122,6 +129,34 @@ func (m *RouteConfiguration) validateProtocol(formats strfmt.Registry) error {
 
 	if err := validate.Required("protocol", "body", m.Protocol); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this route configuration based on the context it is used
+func (m *RouteConfiguration) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateHealthCheckConfiguration(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *RouteConfiguration) contextValidateHealthCheckConfiguration(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.HealthCheckConfiguration != nil {
+		if err := m.HealthCheckConfiguration.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("healthCheckConfiguration")
+			}
+			return err
+		}
 	}
 
 	return nil

@@ -17,69 +17,85 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewDeleteComputeGatewayParams creates a new DeleteComputeGatewayParams object
-// with the default values initialized.
+// NewDeleteComputeGatewayParams creates a new DeleteComputeGatewayParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteComputeGatewayParams() *DeleteComputeGatewayParams {
-	var ()
 	return &DeleteComputeGatewayParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteComputeGatewayParamsWithTimeout creates a new DeleteComputeGatewayParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteComputeGatewayParamsWithTimeout(timeout time.Duration) *DeleteComputeGatewayParams {
-	var ()
 	return &DeleteComputeGatewayParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteComputeGatewayParamsWithContext creates a new DeleteComputeGatewayParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteComputeGatewayParamsWithContext(ctx context.Context) *DeleteComputeGatewayParams {
-	var ()
 	return &DeleteComputeGatewayParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteComputeGatewayParamsWithHTTPClient creates a new DeleteComputeGatewayParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteComputeGatewayParamsWithHTTPClient(client *http.Client) *DeleteComputeGatewayParams {
-	var ()
 	return &DeleteComputeGatewayParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteComputeGatewayParams contains all the parameters to send to the API endpoint
-for the delete compute gateway operation typically these are written to a http.Request
+/* DeleteComputeGatewayParams contains all the parameters to send to the API endpoint
+   for the delete compute gateway operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteComputeGatewayParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*ForceDelete
-	  Controls whether this is a force delete operation. If true, best effort is made for deleting this compute gateway. Use with caution as force deleting may cause inconsistencies between the cloud provider and vRA.
 
+	/* ForceDelete.
+
+	   Controls whether this is a force delete operation. If true, best effort is made for deleting this compute gateway. Use with caution as force deleting may cause inconsistencies between the cloud provider and vRA.
 	*/
 	ForceDelete *bool
-	/*ID
-	  The ID of the compute gateway.
 
+	/* ID.
+
+	   The ID of the compute gateway.
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete compute gateway params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteComputeGatewayParams) WithDefaults() *DeleteComputeGatewayParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete compute gateway params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteComputeGatewayParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete compute gateway params
@@ -160,32 +176,34 @@ func (o *DeleteComputeGatewayParams) WriteToRequest(r runtime.ClientRequest, reg
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.ForceDelete != nil {
 
 		// query param forceDelete
 		var qrForceDelete bool
+
 		if o.ForceDelete != nil {
 			qrForceDelete = *o.ForceDelete
 		}
 		qForceDelete := swag.FormatBool(qrForceDelete)
 		if qForceDelete != "" {
+
 			if err := r.SetQueryParam("forceDelete", qForceDelete); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id

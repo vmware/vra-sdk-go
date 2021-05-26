@@ -47,7 +47,6 @@ func (o *GetResourceTypeUsingGETReader) ReadResponse(response runtime.ClientResp
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewGetResourceTypeUsingGETOK() *GetResourceTypeUsingGETOK {
 	return &GetResourceTypeUsingGETOK{}
 }
 
-/*GetResourceTypeUsingGETOK handles this case with default header values.
+/* GetResourceTypeUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -69,7 +68,6 @@ type GetResourceTypeUsingGETOK struct {
 func (o *GetResourceTypeUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/resource-types/{resourceTypeId}][%d] getResourceTypeUsingGETOK  %+v", 200, o.Payload)
 }
-
 func (o *GetResourceTypeUsingGETOK) GetPayload() *models.ResourceType {
 	return o.Payload
 }
@@ -91,7 +89,7 @@ func NewGetResourceTypeUsingGETUnauthorized() *GetResourceTypeUsingGETUnauthoriz
 	return &GetResourceTypeUsingGETUnauthorized{}
 }
 
-/*GetResourceTypeUsingGETUnauthorized handles this case with default header values.
+/* GetResourceTypeUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -112,7 +110,7 @@ func NewGetResourceTypeUsingGETForbidden() *GetResourceTypeUsingGETForbidden {
 	return &GetResourceTypeUsingGETForbidden{}
 }
 
-/*GetResourceTypeUsingGETForbidden handles this case with default header values.
+/* GetResourceTypeUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -133,7 +131,7 @@ func NewGetResourceTypeUsingGETNotFound() *GetResourceTypeUsingGETNotFound {
 	return &GetResourceTypeUsingGETNotFound{}
 }
 
-/*GetResourceTypeUsingGETNotFound handles this case with default header values.
+/* GetResourceTypeUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -144,7 +142,6 @@ type GetResourceTypeUsingGETNotFound struct {
 func (o *GetResourceTypeUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/resource-types/{resourceTypeId}][%d] getResourceTypeUsingGETNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetResourceTypeUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

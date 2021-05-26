@@ -47,7 +47,6 @@ func (o *ListBlueprintsUsingGET1Reader) ReadResponse(response runtime.ClientResp
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewListBlueprintsUsingGET1OK() *ListBlueprintsUsingGET1OK {
 	return &ListBlueprintsUsingGET1OK{}
 }
 
-/*ListBlueprintsUsingGET1OK handles this case with default header values.
+/* ListBlueprintsUsingGET1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -69,7 +68,6 @@ type ListBlueprintsUsingGET1OK struct {
 func (o *ListBlueprintsUsingGET1OK) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprints][%d] listBlueprintsUsingGET1OK  %+v", 200, o.Payload)
 }
-
 func (o *ListBlueprintsUsingGET1OK) GetPayload() *models.PageOfBlueprint {
 	return o.Payload
 }
@@ -91,7 +89,7 @@ func NewListBlueprintsUsingGET1BadRequest() *ListBlueprintsUsingGET1BadRequest {
 	return &ListBlueprintsUsingGET1BadRequest{}
 }
 
-/*ListBlueprintsUsingGET1BadRequest handles this case with default header values.
+/* ListBlueprintsUsingGET1BadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -102,7 +100,6 @@ type ListBlueprintsUsingGET1BadRequest struct {
 func (o *ListBlueprintsUsingGET1BadRequest) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprints][%d] listBlueprintsUsingGET1BadRequest  %+v", 400, o.Payload)
 }
-
 func (o *ListBlueprintsUsingGET1BadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -124,7 +121,7 @@ func NewListBlueprintsUsingGET1Unauthorized() *ListBlueprintsUsingGET1Unauthoriz
 	return &ListBlueprintsUsingGET1Unauthorized{}
 }
 
-/*ListBlueprintsUsingGET1Unauthorized handles this case with default header values.
+/* ListBlueprintsUsingGET1Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -145,7 +142,7 @@ func NewListBlueprintsUsingGET1Forbidden() *ListBlueprintsUsingGET1Forbidden {
 	return &ListBlueprintsUsingGET1Forbidden{}
 }
 
-/*ListBlueprintsUsingGET1Forbidden handles this case with default header values.
+/* ListBlueprintsUsingGET1Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */

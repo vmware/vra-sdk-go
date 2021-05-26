@@ -17,69 +17,85 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewDeleteLoadBalancerParams creates a new DeleteLoadBalancerParams object
-// with the default values initialized.
+// NewDeleteLoadBalancerParams creates a new DeleteLoadBalancerParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteLoadBalancerParams() *DeleteLoadBalancerParams {
-	var ()
 	return &DeleteLoadBalancerParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteLoadBalancerParamsWithTimeout creates a new DeleteLoadBalancerParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteLoadBalancerParamsWithTimeout(timeout time.Duration) *DeleteLoadBalancerParams {
-	var ()
 	return &DeleteLoadBalancerParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteLoadBalancerParamsWithContext creates a new DeleteLoadBalancerParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteLoadBalancerParamsWithContext(ctx context.Context) *DeleteLoadBalancerParams {
-	var ()
 	return &DeleteLoadBalancerParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteLoadBalancerParamsWithHTTPClient creates a new DeleteLoadBalancerParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteLoadBalancerParamsWithHTTPClient(client *http.Client) *DeleteLoadBalancerParams {
-	var ()
 	return &DeleteLoadBalancerParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteLoadBalancerParams contains all the parameters to send to the API endpoint
-for the delete load balancer operation typically these are written to a http.Request
+/* DeleteLoadBalancerParams contains all the parameters to send to the API endpoint
+   for the delete load balancer operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteLoadBalancerParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*ForceDelete
-	  Controls whether this is a force delete operation. If true, best effort is made for deleting this load balancer. Use with caution as force deleting may cause inconsistencies between the cloud provider and vRA.
 
+	/* ForceDelete.
+
+	   Controls whether this is a force delete operation. If true, best effort is made for deleting this load balancer. Use with caution as force deleting may cause inconsistencies between the cloud provider and vRA.
 	*/
 	ForceDelete *bool
-	/*ID
-	  The ID of the load balancer.
 
+	/* ID.
+
+	   The ID of the load balancer.
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete load balancer params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteLoadBalancerParams) WithDefaults() *DeleteLoadBalancerParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete load balancer params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteLoadBalancerParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete load balancer params
@@ -160,32 +176,34 @@ func (o *DeleteLoadBalancerParams) WriteToRequest(r runtime.ClientRequest, reg s
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.ForceDelete != nil {
 
 		// query param forceDelete
 		var qrForceDelete bool
+
 		if o.ForceDelete != nil {
 			qrForceDelete = *o.ForceDelete
 		}
 		qForceDelete := swag.FormatBool(qrForceDelete)
 		if qForceDelete != "" {
+
 			if err := r.SetQueryParam("forceDelete", qForceDelete); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id

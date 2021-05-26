@@ -18,69 +18,85 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewUpdateAwsStorageProfileParams creates a new UpdateAwsStorageProfileParams object
-// with the default values initialized.
+// NewUpdateAwsStorageProfileParams creates a new UpdateAwsStorageProfileParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewUpdateAwsStorageProfileParams() *UpdateAwsStorageProfileParams {
-	var ()
 	return &UpdateAwsStorageProfileParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewUpdateAwsStorageProfileParamsWithTimeout creates a new UpdateAwsStorageProfileParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewUpdateAwsStorageProfileParamsWithTimeout(timeout time.Duration) *UpdateAwsStorageProfileParams {
-	var ()
 	return &UpdateAwsStorageProfileParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewUpdateAwsStorageProfileParamsWithContext creates a new UpdateAwsStorageProfileParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewUpdateAwsStorageProfileParamsWithContext(ctx context.Context) *UpdateAwsStorageProfileParams {
-	var ()
 	return &UpdateAwsStorageProfileParams{
-
 		Context: ctx,
 	}
 }
 
 // NewUpdateAwsStorageProfileParamsWithHTTPClient creates a new UpdateAwsStorageProfileParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewUpdateAwsStorageProfileParamsWithHTTPClient(client *http.Client) *UpdateAwsStorageProfileParams {
-	var ()
 	return &UpdateAwsStorageProfileParams{
 		HTTPClient: client,
 	}
 }
 
-/*UpdateAwsStorageProfileParams contains all the parameters to send to the API endpoint
-for the update aws storage profile operation typically these are written to a http.Request
+/* UpdateAwsStorageProfileParams contains all the parameters to send to the API endpoint
+   for the update aws storage profile operation.
+
+   Typically these are written to a http.Request.
 */
 type UpdateAwsStorageProfileParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*Body
-	  StorageProfileAwsSpecification
 
+	/* Body.
+
+	   StorageProfileAwsSpecification
 	*/
 	Body *models.StorageProfileAwsSpecification
-	/*ID
-	  The ID of the storage profile.
 
+	/* ID.
+
+	   The ID of the storage profile.
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the update aws storage profile params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UpdateAwsStorageProfileParams) WithDefaults() *UpdateAwsStorageProfileParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the update aws storage profile params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UpdateAwsStorageProfileParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the update aws storage profile params
@@ -161,18 +177,18 @@ func (o *UpdateAwsStorageProfileParams) WriteToRequest(r runtime.ClientRequest, 
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
-
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err

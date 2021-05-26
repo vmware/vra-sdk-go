@@ -41,7 +41,6 @@ func (o *ResizeBlockDeviceReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewResizeBlockDeviceAccepted() *ResizeBlockDeviceAccepted {
 	return &ResizeBlockDeviceAccepted{}
 }
 
-/*ResizeBlockDeviceAccepted handles this case with default header values.
+/* ResizeBlockDeviceAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type ResizeBlockDeviceAccepted struct {
 func (o *ResizeBlockDeviceAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}][%d] resizeBlockDeviceAccepted  %+v", 202, o.Payload)
 }
-
 func (o *ResizeBlockDeviceAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewResizeBlockDeviceNoContent() *ResizeBlockDeviceNoContent {
 	return &ResizeBlockDeviceNoContent{}
 }
 
-/*ResizeBlockDeviceNoContent handles this case with default header values.
+/* ResizeBlockDeviceNoContent describes a response with status code 204, with default header values.
 
 No Content
 */
@@ -106,18 +104,29 @@ func NewResizeBlockDeviceForbidden() *ResizeBlockDeviceForbidden {
 	return &ResizeBlockDeviceForbidden{}
 }
 
-/*ResizeBlockDeviceForbidden handles this case with default header values.
+/* ResizeBlockDeviceForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type ResizeBlockDeviceForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *ResizeBlockDeviceForbidden) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}][%d] resizeBlockDeviceForbidden ", 403)
+	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}][%d] resizeBlockDeviceForbidden  %+v", 403, o.Payload)
+}
+func (o *ResizeBlockDeviceForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *ResizeBlockDeviceForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

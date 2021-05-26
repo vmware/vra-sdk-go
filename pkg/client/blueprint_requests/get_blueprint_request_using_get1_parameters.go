@@ -16,64 +16,81 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetBlueprintRequestUsingGET1Params creates a new GetBlueprintRequestUsingGET1Params object
-// with the default values initialized.
+// NewGetBlueprintRequestUsingGET1Params creates a new GetBlueprintRequestUsingGET1Params object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetBlueprintRequestUsingGET1Params() *GetBlueprintRequestUsingGET1Params {
-	var ()
 	return &GetBlueprintRequestUsingGET1Params{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetBlueprintRequestUsingGET1ParamsWithTimeout creates a new GetBlueprintRequestUsingGET1Params object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetBlueprintRequestUsingGET1ParamsWithTimeout(timeout time.Duration) *GetBlueprintRequestUsingGET1Params {
-	var ()
 	return &GetBlueprintRequestUsingGET1Params{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetBlueprintRequestUsingGET1ParamsWithContext creates a new GetBlueprintRequestUsingGET1Params object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetBlueprintRequestUsingGET1ParamsWithContext(ctx context.Context) *GetBlueprintRequestUsingGET1Params {
-	var ()
 	return &GetBlueprintRequestUsingGET1Params{
-
 		Context: ctx,
 	}
 }
 
 // NewGetBlueprintRequestUsingGET1ParamsWithHTTPClient creates a new GetBlueprintRequestUsingGET1Params object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetBlueprintRequestUsingGET1ParamsWithHTTPClient(client *http.Client) *GetBlueprintRequestUsingGET1Params {
-	var ()
 	return &GetBlueprintRequestUsingGET1Params{
 		HTTPClient: client,
 	}
 }
 
-/*GetBlueprintRequestUsingGET1Params contains all the parameters to send to the API endpoint
-for the get blueprint request using get1 operation typically these are written to a http.Request
+/* GetBlueprintRequestUsingGET1Params contains all the parameters to send to the API endpoint
+   for the get blueprint request using get1 operation.
+
+   Typically these are written to a http.Request.
 */
 type GetBlueprintRequestUsingGET1Params struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about
 	*/
 	APIVersion *string
-	/*RequestID
-	  requestId
 
+	/* RequestID.
+
+	   requestId
+
+	   Format: uuid
 	*/
 	RequestID strfmt.UUID
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get blueprint request using get1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetBlueprintRequestUsingGET1Params) WithDefaults() *GetBlueprintRequestUsingGET1Params {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get blueprint request using get1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetBlueprintRequestUsingGET1Params) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get blueprint request using get1 params
@@ -143,16 +160,17 @@ func (o *GetBlueprintRequestUsingGET1Params) WriteToRequest(r runtime.ClientRequ
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param requestId

@@ -29,7 +29,6 @@ func (o *CreatePolicyUsingPOST1Reader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -40,7 +39,7 @@ func NewCreatePolicyUsingPOST1OK() *CreatePolicyUsingPOST1OK {
 	return &CreatePolicyUsingPOST1OK{}
 }
 
-/*CreatePolicyUsingPOST1OK handles this case with default header values.
+/* CreatePolicyUsingPOST1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -51,7 +50,6 @@ type CreatePolicyUsingPOST1OK struct {
 func (o *CreatePolicyUsingPOST1OK) Error() string {
 	return fmt.Sprintf("[POST /policy/api/policies][%d] createPolicyUsingPOST1OK  %+v", 200, o.Payload)
 }
-
 func (o *CreatePolicyUsingPOST1OK) GetPayload() *models.Policy {
 	return o.Payload
 }

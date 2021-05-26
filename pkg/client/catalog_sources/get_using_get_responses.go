@@ -41,7 +41,6 @@ func (o *GetUsingGETReader) ReadResponse(response runtime.ClientResponse, consum
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetUsingGETOK() *GetUsingGETOK {
 	return &GetUsingGETOK{}
 }
 
-/*GetUsingGETOK handles this case with default header values.
+/* GetUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -63,7 +62,6 @@ type GetUsingGETOK struct {
 func (o *GetUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /catalog/api/admin/sources/{sourceId}][%d] getUsingGETOK  %+v", 200, o.Payload)
 }
-
 func (o *GetUsingGETOK) GetPayload() *models.CatalogSource {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewGetUsingGETUnauthorized() *GetUsingGETUnauthorized {
 	return &GetUsingGETUnauthorized{}
 }
 
-/*GetUsingGETUnauthorized handles this case with default header values.
+/* GetUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -106,7 +104,7 @@ func NewGetUsingGETNotFound() *GetUsingGETNotFound {
 	return &GetUsingGETNotFound{}
 }
 
-/*GetUsingGETNotFound handles this case with default header values.
+/* GetUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +115,6 @@ type GetUsingGETNotFound struct {
 func (o *GetUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /catalog/api/admin/sources/{sourceId}][%d] getUsingGETNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -7,9 +7,12 @@ package network_ip_range
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
 // DeleteInternalNetworkIPRangeReader is a Reader for the DeleteInternalNetworkIPRange structure.
@@ -32,7 +35,6 @@ func (o *DeleteInternalNetworkIPRangeReader) ReadResponse(response runtime.Clien
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -43,7 +45,7 @@ func NewDeleteInternalNetworkIPRangeNoContent() *DeleteInternalNetworkIPRangeNoC
 	return &DeleteInternalNetworkIPRangeNoContent{}
 }
 
-/*DeleteInternalNetworkIPRangeNoContent handles this case with default header values.
+/* DeleteInternalNetworkIPRangeNoContent describes a response with status code 204, with default header values.
 
 No Content
 */
@@ -64,18 +66,29 @@ func NewDeleteInternalNetworkIPRangeForbidden() *DeleteInternalNetworkIPRangeFor
 	return &DeleteInternalNetworkIPRangeForbidden{}
 }
 
-/*DeleteInternalNetworkIPRangeForbidden handles this case with default header values.
+/* DeleteInternalNetworkIPRangeForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type DeleteInternalNetworkIPRangeForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *DeleteInternalNetworkIPRangeForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/network-ip-ranges/{id}][%d] deleteInternalNetworkIpRangeForbidden ", 403)
+	return fmt.Sprintf("[DELETE /iaas/api/network-ip-ranges/{id}][%d] deleteInternalNetworkIpRangeForbidden  %+v", 403, o.Payload)
+}
+func (o *DeleteInternalNetworkIPRangeForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *DeleteInternalNetworkIPRangeForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

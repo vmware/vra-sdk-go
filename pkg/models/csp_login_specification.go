@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -18,6 +20,7 @@ import (
 type CspLoginSpecification struct {
 
 	// Refresh token obtained from the UI
+	// Example: 5e7c2c-9a9e-4b0-9339-a7f94
 	// Required: true
 	RefreshToken *string `json:"refreshToken"`
 }
@@ -42,6 +45,11 @@ func (m *CspLoginSpecification) validateRefreshToken(formats strfmt.Registry) er
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validates this csp login specification based on context it is used
+func (m *CspLoginSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

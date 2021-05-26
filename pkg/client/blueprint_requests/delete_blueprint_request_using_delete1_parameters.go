@@ -17,69 +17,87 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewDeleteBlueprintRequestUsingDELETE1Params creates a new DeleteBlueprintRequestUsingDELETE1Params object
-// with the default values initialized.
+// NewDeleteBlueprintRequestUsingDELETE1Params creates a new DeleteBlueprintRequestUsingDELETE1Params object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteBlueprintRequestUsingDELETE1Params() *DeleteBlueprintRequestUsingDELETE1Params {
-	var ()
 	return &DeleteBlueprintRequestUsingDELETE1Params{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteBlueprintRequestUsingDELETE1ParamsWithTimeout creates a new DeleteBlueprintRequestUsingDELETE1Params object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteBlueprintRequestUsingDELETE1ParamsWithTimeout(timeout time.Duration) *DeleteBlueprintRequestUsingDELETE1Params {
-	var ()
 	return &DeleteBlueprintRequestUsingDELETE1Params{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteBlueprintRequestUsingDELETE1ParamsWithContext creates a new DeleteBlueprintRequestUsingDELETE1Params object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteBlueprintRequestUsingDELETE1ParamsWithContext(ctx context.Context) *DeleteBlueprintRequestUsingDELETE1Params {
-	var ()
 	return &DeleteBlueprintRequestUsingDELETE1Params{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteBlueprintRequestUsingDELETE1ParamsWithHTTPClient creates a new DeleteBlueprintRequestUsingDELETE1Params object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteBlueprintRequestUsingDELETE1ParamsWithHTTPClient(client *http.Client) *DeleteBlueprintRequestUsingDELETE1Params {
-	var ()
 	return &DeleteBlueprintRequestUsingDELETE1Params{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteBlueprintRequestUsingDELETE1Params contains all the parameters to send to the API endpoint
-for the delete blueprint request using d e l e t e 1 operation typically these are written to a http.Request
+/* DeleteBlueprintRequestUsingDELETE1Params contains all the parameters to send to the API endpoint
+   for the delete blueprint request using d e l e t e 1 operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteBlueprintRequestUsingDELETE1Params struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about
 	*/
 	APIVersion *string
-	/*Force
-	  Force delete if not in final stage
 
+	/* Force.
+
+	   Force delete if not in final stage
 	*/
 	Force *bool
-	/*RequestID
-	  requestId
 
+	/* RequestID.
+
+	   requestId
+
+	   Format: uuid
 	*/
 	RequestID strfmt.UUID
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete blueprint request using d e l e t e 1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteBlueprintRequestUsingDELETE1Params) WithDefaults() *DeleteBlueprintRequestUsingDELETE1Params {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete blueprint request using d e l e t e 1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteBlueprintRequestUsingDELETE1Params) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete blueprint request using d e l e t e 1 params
@@ -160,32 +178,34 @@ func (o *DeleteBlueprintRequestUsingDELETE1Params) WriteToRequest(r runtime.Clie
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Force != nil {
 
 		// query param force
 		var qrForce bool
+
 		if o.Force != nil {
 			qrForce = *o.Force
 		}
 		qForce := swag.FormatBool(qrForce)
 		if qForce != "" {
+
 			if err := r.SetQueryParam("force", qForce); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param requestId

@@ -47,7 +47,6 @@ func (o *ListResourceTypesUsingGETReader) ReadResponse(response runtime.ClientRe
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewListResourceTypesUsingGETOK() *ListResourceTypesUsingGETOK {
 	return &ListResourceTypesUsingGETOK{}
 }
 
-/*ListResourceTypesUsingGETOK handles this case with default header values.
+/* ListResourceTypesUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -69,7 +68,6 @@ type ListResourceTypesUsingGETOK struct {
 func (o *ListResourceTypesUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/resource-types][%d] listResourceTypesUsingGETOK  %+v", 200, o.Payload)
 }
-
 func (o *ListResourceTypesUsingGETOK) GetPayload() *models.PageOfResourceType {
 	return o.Payload
 }
@@ -91,7 +89,7 @@ func NewListResourceTypesUsingGETBadRequest() *ListResourceTypesUsingGETBadReque
 	return &ListResourceTypesUsingGETBadRequest{}
 }
 
-/*ListResourceTypesUsingGETBadRequest handles this case with default header values.
+/* ListResourceTypesUsingGETBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -102,7 +100,6 @@ type ListResourceTypesUsingGETBadRequest struct {
 func (o *ListResourceTypesUsingGETBadRequest) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/resource-types][%d] listResourceTypesUsingGETBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *ListResourceTypesUsingGETBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -124,7 +121,7 @@ func NewListResourceTypesUsingGETUnauthorized() *ListResourceTypesUsingGETUnauth
 	return &ListResourceTypesUsingGETUnauthorized{}
 }
 
-/*ListResourceTypesUsingGETUnauthorized handles this case with default header values.
+/* ListResourceTypesUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -145,7 +142,7 @@ func NewListResourceTypesUsingGETForbidden() *ListResourceTypesUsingGETForbidden
 	return &ListResourceTypesUsingGETForbidden{}
 }
 
-/*ListResourceTypesUsingGETForbidden handles this case with default header values.
+/* ListResourceTypesUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */

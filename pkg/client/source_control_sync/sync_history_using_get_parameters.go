@@ -17,94 +17,115 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewSyncHistoryUsingGETParams creates a new SyncHistoryUsingGETParams object
-// with the default values initialized.
+// NewSyncHistoryUsingGETParams creates a new SyncHistoryUsingGETParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewSyncHistoryUsingGETParams() *SyncHistoryUsingGETParams {
-	var ()
 	return &SyncHistoryUsingGETParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewSyncHistoryUsingGETParamsWithTimeout creates a new SyncHistoryUsingGETParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewSyncHistoryUsingGETParamsWithTimeout(timeout time.Duration) *SyncHistoryUsingGETParams {
-	var ()
 	return &SyncHistoryUsingGETParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewSyncHistoryUsingGETParamsWithContext creates a new SyncHistoryUsingGETParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewSyncHistoryUsingGETParamsWithContext(ctx context.Context) *SyncHistoryUsingGETParams {
-	var ()
 	return &SyncHistoryUsingGETParams{
-
 		Context: ctx,
 	}
 }
 
 // NewSyncHistoryUsingGETParamsWithHTTPClient creates a new SyncHistoryUsingGETParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewSyncHistoryUsingGETParamsWithHTTPClient(client *http.Client) *SyncHistoryUsingGETParams {
-	var ()
 	return &SyncHistoryUsingGETParams{
 		HTTPClient: client,
 	}
 }
 
-/*SyncHistoryUsingGETParams contains all the parameters to send to the API endpoint
-for the sync history using g e t operation typically these are written to a http.Request
+/* SyncHistoryUsingGETParams contains all the parameters to send to the API endpoint
+   for the sync history using g e t operation.
+
+   Typically these are written to a http.Request.
 */
 type SyncHistoryUsingGETParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information, please refer to /content/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information, please refer to /content/api/about
 	*/
 	APIVersion *string
-	/*ContentName
-	  Search based on content name
 
+	/* ContentName.
+
+	   Search based on content name
 	*/
 	ContentName *string
-	/*ContentType
-	  Search based on content type
 
+	/* ContentType.
+
+	   Search based on content type
 	*/
 	ContentType *string
-	/*IntegrationID
-	  Search based on integration id
 
+	/* IntegrationID.
+
+	   Search based on integration id
 	*/
 	IntegrationID *string
-	/*ProjectIds
-	  Search based on project ids
 
+	/* ProjectIds.
+
+	   Search based on project ids
 	*/
 	ProjectIds []string
-	/*RequestID
-	  Search based on request Id
 
+	/* RequestID.
+
+	   Search based on request Id
 	*/
 	RequestID *string
-	/*SourceIds
-	  Search based on content source ids
 
+	/* SourceIds.
+
+	   Search based on content source ids
 	*/
 	SourceIds []strfmt.UUID
-	/*Status
-	  Search based on sync status
 
+	/* Status.
+
+	   Search based on sync status
 	*/
 	Status *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the sync history using get params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *SyncHistoryUsingGETParams) WithDefaults() *SyncHistoryUsingGETParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the sync history using get params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *SyncHistoryUsingGETParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the sync history using get params
@@ -240,119 +261,162 @@ func (o *SyncHistoryUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg 
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.ContentName != nil {
 
 		// query param contentName
 		var qrContentName string
+
 		if o.ContentName != nil {
 			qrContentName = *o.ContentName
 		}
 		qContentName := qrContentName
 		if qContentName != "" {
+
 			if err := r.SetQueryParam("contentName", qContentName); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.ContentType != nil {
 
 		// query param contentType
 		var qrContentType string
+
 		if o.ContentType != nil {
 			qrContentType = *o.ContentType
 		}
 		qContentType := qrContentType
 		if qContentType != "" {
+
 			if err := r.SetQueryParam("contentType", qContentType); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.IntegrationID != nil {
 
 		// query param integrationId
 		var qrIntegrationID string
+
 		if o.IntegrationID != nil {
 			qrIntegrationID = *o.IntegrationID
 		}
 		qIntegrationID := qrIntegrationID
 		if qIntegrationID != "" {
+
 			if err := r.SetQueryParam("integrationId", qIntegrationID); err != nil {
 				return err
 			}
 		}
-
 	}
 
-	valuesProjectIds := o.ProjectIds
+	if o.ProjectIds != nil {
 
-	joinedProjectIds := swag.JoinByFormat(valuesProjectIds, "multi")
-	// query array param projectIds
-	if err := r.SetQueryParam("projectIds", joinedProjectIds...); err != nil {
-		return err
+		// binding items for projectIds
+		joinedProjectIds := o.bindParamProjectIds(reg)
+
+		// query array param projectIds
+		if err := r.SetQueryParam("projectIds", joinedProjectIds...); err != nil {
+			return err
+		}
 	}
 
 	if o.RequestID != nil {
 
 		// query param requestId
 		var qrRequestID string
+
 		if o.RequestID != nil {
 			qrRequestID = *o.RequestID
 		}
 		qRequestID := qrRequestID
 		if qRequestID != "" {
+
 			if err := r.SetQueryParam("requestId", qRequestID); err != nil {
 				return err
 			}
 		}
-
 	}
 
-	var valuesSourceIds []string
-	for _, v := range o.SourceIds {
-		valuesSourceIds = append(valuesSourceIds, v.String())
-	}
+	if o.SourceIds != nil {
 
-	joinedSourceIds := swag.JoinByFormat(valuesSourceIds, "multi")
-	// query array param sourceIds
-	if err := r.SetQueryParam("sourceIds", joinedSourceIds...); err != nil {
-		return err
+		// binding items for sourceIds
+		joinedSourceIds := o.bindParamSourceIds(reg)
+
+		// query array param sourceIds
+		if err := r.SetQueryParam("sourceIds", joinedSourceIds...); err != nil {
+			return err
+		}
 	}
 
 	if o.Status != nil {
 
 		// query param status
 		var qrStatus string
+
 		if o.Status != nil {
 			qrStatus = *o.Status
 		}
 		qStatus := qrStatus
 		if qStatus != "" {
+
 			if err := r.SetQueryParam("status", qStatus); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
+}
+
+// bindParamSyncHistoryUsingGET binds the parameter projectIds
+func (o *SyncHistoryUsingGETParams) bindParamProjectIds(formats strfmt.Registry) []string {
+	projectIdsIR := o.ProjectIds
+
+	var projectIdsIC []string
+	for _, projectIdsIIR := range projectIdsIR { // explode []string
+
+		projectIdsIIV := projectIdsIIR // string as string
+		projectIdsIC = append(projectIdsIC, projectIdsIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	projectIdsIS := swag.JoinByFormat(projectIdsIC, "multi")
+
+	return projectIdsIS
+}
+
+// bindParamSyncHistoryUsingGET binds the parameter sourceIds
+func (o *SyncHistoryUsingGETParams) bindParamSourceIds(formats strfmt.Registry) []string {
+	sourceIdsIR := o.SourceIds
+
+	var sourceIdsIC []string
+	for _, sourceIdsIIR := range sourceIdsIR { // explode []strfmt.UUID
+
+		sourceIdsIIV := sourceIdsIIR.String() // strfmt.UUID as string
+		sourceIdsIC = append(sourceIdsIC, sourceIdsIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	sourceIdsIS := swag.JoinByFormat(sourceIdsIC, "multi")
+
+	return sourceIdsIS
 }

@@ -35,7 +35,6 @@ func (o *GetReviewsReader) ReadResponse(response runtime.ClientResponse, consume
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewGetReviewsOK() *GetReviewsOK {
 	return &GetReviewsOK{}
 }
 
-/*GetReviewsOK handles this case with default header values.
+/* GetReviewsOK describes a response with status code 200, with default header values.
 
 Content Reviews
 */
@@ -57,7 +56,6 @@ type GetReviewsOK struct {
 func (o *GetReviewsOK) Error() string {
 	return fmt.Sprintf("[GET /content/api/marketplace/sources/{sourceId}/contents/{contentId}/reviews][%d] getReviewsOK  %+v", 200, o.Payload)
 }
-
 func (o *GetReviewsOK) GetPayload() *models.MarketplaceContentReviews {
 	return o.Payload
 }
@@ -79,7 +77,7 @@ func NewGetReviewsNotFound() *GetReviewsNotFound {
 	return &GetReviewsNotFound{}
 }
 
-/*GetReviewsNotFound handles this case with default header values.
+/* GetReviewsNotFound describes a response with status code 404, with default header values.
 
 Source or Content not found
 */
@@ -90,7 +88,6 @@ type GetReviewsNotFound struct {
 func (o *GetReviewsNotFound) Error() string {
 	return fmt.Sprintf("[GET /content/api/marketplace/sources/{sourceId}/contents/{contentId}/reviews][%d] getReviewsNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetReviewsNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

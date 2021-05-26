@@ -41,7 +41,6 @@ func (o *CreateImageProfileReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewCreateImageProfileCreated() *CreateImageProfileCreated {
 	return &CreateImageProfileCreated{}
 }
 
-/*CreateImageProfileCreated handles this case with default header values.
+/* CreateImageProfileCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type CreateImageProfileCreated struct {
 func (o *CreateImageProfileCreated) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/image-profiles][%d] createImageProfileCreated  %+v", 201, o.Payload)
 }
-
 func (o *CreateImageProfileCreated) GetPayload() *models.ImageProfile {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewCreateImageProfileBadRequest() *CreateImageProfileBadRequest {
 	return &CreateImageProfileBadRequest{}
 }
 
-/*CreateImageProfileBadRequest handles this case with default header values.
+/* CreateImageProfileBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -96,7 +94,6 @@ type CreateImageProfileBadRequest struct {
 func (o *CreateImageProfileBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/image-profiles][%d] createImageProfileBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateImageProfileBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -118,18 +115,29 @@ func NewCreateImageProfileForbidden() *CreateImageProfileForbidden {
 	return &CreateImageProfileForbidden{}
 }
 
-/*CreateImageProfileForbidden handles this case with default header values.
+/* CreateImageProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type CreateImageProfileForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *CreateImageProfileForbidden) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/image-profiles][%d] createImageProfileForbidden ", 403)
+	return fmt.Sprintf("[POST /iaas/api/image-profiles][%d] createImageProfileForbidden  %+v", 403, o.Payload)
+}
+func (o *CreateImageProfileForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *CreateImageProfileForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

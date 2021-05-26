@@ -41,7 +41,6 @@ func (o *UpdateImageProfileReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewUpdateImageProfileOK() *UpdateImageProfileOK {
 	return &UpdateImageProfileOK{}
 }
 
-/*UpdateImageProfileOK handles this case with default header values.
+/* UpdateImageProfileOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type UpdateImageProfileOK struct {
 func (o *UpdateImageProfileOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/image-profiles/{id}][%d] updateImageProfileOK  %+v", 200, o.Payload)
 }
-
 func (o *UpdateImageProfileOK) GetPayload() *models.ImageProfile {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewUpdateImageProfileForbidden() *UpdateImageProfileForbidden {
 	return &UpdateImageProfileForbidden{}
 }
 
-/*UpdateImageProfileForbidden handles this case with default header values.
+/* UpdateImageProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type UpdateImageProfileForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *UpdateImageProfileForbidden) Error() string {
-	return fmt.Sprintf("[PATCH /iaas/api/image-profiles/{id}][%d] updateImageProfileForbidden ", 403)
+	return fmt.Sprintf("[PATCH /iaas/api/image-profiles/{id}][%d] updateImageProfileForbidden  %+v", 403, o.Payload)
+}
+func (o *UpdateImageProfileForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *UpdateImageProfileForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewUpdateImageProfileNotFound() *UpdateImageProfileNotFound {
 	return &UpdateImageProfileNotFound{}
 }
 
-/*UpdateImageProfileNotFound handles this case with default header values.
+/* UpdateImageProfileNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type UpdateImageProfileNotFound struct {
 func (o *UpdateImageProfileNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/image-profiles/{id}][%d] updateImageProfileNotFound  %+v", 404, o.Payload)
 }
-
 func (o *UpdateImageProfileNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

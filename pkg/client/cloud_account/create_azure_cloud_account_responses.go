@@ -41,7 +41,6 @@ func (o *CreateAzureCloudAccountReader) ReadResponse(response runtime.ClientResp
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewCreateAzureCloudAccountCreated() *CreateAzureCloudAccountCreated {
 	return &CreateAzureCloudAccountCreated{}
 }
 
-/*CreateAzureCloudAccountCreated handles this case with default header values.
+/* CreateAzureCloudAccountCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type CreateAzureCloudAccountCreated struct {
 func (o *CreateAzureCloudAccountCreated) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-azure][%d] createAzureCloudAccountCreated  %+v", 201, o.Payload)
 }
-
 func (o *CreateAzureCloudAccountCreated) GetPayload() *models.CloudAccountAzure {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewCreateAzureCloudAccountBadRequest() *CreateAzureCloudAccountBadRequest {
 	return &CreateAzureCloudAccountBadRequest{}
 }
 
-/*CreateAzureCloudAccountBadRequest handles this case with default header values.
+/* CreateAzureCloudAccountBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -96,7 +94,6 @@ type CreateAzureCloudAccountBadRequest struct {
 func (o *CreateAzureCloudAccountBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-azure][%d] createAzureCloudAccountBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateAzureCloudAccountBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -118,18 +115,29 @@ func NewCreateAzureCloudAccountForbidden() *CreateAzureCloudAccountForbidden {
 	return &CreateAzureCloudAccountForbidden{}
 }
 
-/*CreateAzureCloudAccountForbidden handles this case with default header values.
+/* CreateAzureCloudAccountForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type CreateAzureCloudAccountForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *CreateAzureCloudAccountForbidden) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-azure][%d] createAzureCloudAccountForbidden ", 403)
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-azure][%d] createAzureCloudAccountForbidden  %+v", 403, o.Payload)
+}
+func (o *CreateAzureCloudAccountForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *CreateAzureCloudAccountForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

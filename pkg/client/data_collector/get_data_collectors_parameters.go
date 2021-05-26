@@ -17,64 +17,79 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGetDataCollectorsParams creates a new GetDataCollectorsParams object
-// with the default values initialized.
+// NewGetDataCollectorsParams creates a new GetDataCollectorsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetDataCollectorsParams() *GetDataCollectorsParams {
-	var ()
 	return &GetDataCollectorsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetDataCollectorsParamsWithTimeout creates a new GetDataCollectorsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetDataCollectorsParamsWithTimeout(timeout time.Duration) *GetDataCollectorsParams {
-	var ()
 	return &GetDataCollectorsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetDataCollectorsParamsWithContext creates a new GetDataCollectorsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetDataCollectorsParamsWithContext(ctx context.Context) *GetDataCollectorsParams {
-	var ()
 	return &GetDataCollectorsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetDataCollectorsParamsWithHTTPClient creates a new GetDataCollectorsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetDataCollectorsParamsWithHTTPClient(client *http.Client) *GetDataCollectorsParams {
-	var ()
 	return &GetDataCollectorsParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetDataCollectorsParams contains all the parameters to send to the API endpoint
-for the get data collectors operation typically these are written to a http.Request
+/* GetDataCollectorsParams contains all the parameters to send to the API endpoint
+   for the get data collectors operation.
+
+   Typically these are written to a http.Request.
 */
 type GetDataCollectorsParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*Disabled
-	  If query param is provided with value equals to true, only disabled data collectors will be retrieved.
 
+	/* Disabled.
+
+	   If query param is provided with value equals to true, only disabled data collectors will be retrieved.
 	*/
 	Disabled *bool
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get data collectors params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetDataCollectorsParams) WithDefaults() *GetDataCollectorsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get data collectors params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetDataCollectorsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get data collectors params
@@ -144,32 +159,34 @@ func (o *GetDataCollectorsParams) WriteToRequest(r runtime.ClientRequest, reg st
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Disabled != nil {
 
 		// query param disabled
 		var qrDisabled bool
+
 		if o.Disabled != nil {
 			qrDisabled = *o.Disabled
 		}
 		qDisabled := swag.FormatBool(qrDisabled)
 		if qDisabled != "" {
+
 			if err := r.SetQueryParam("disabled", qDisabled); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

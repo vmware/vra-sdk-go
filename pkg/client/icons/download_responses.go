@@ -41,7 +41,6 @@ func (o *DownloadReader) ReadResponse(response runtime.ClientResponse, consumer 
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewDownloadOK() *DownloadOK {
 	return &DownloadOK{}
 }
 
-/*DownloadOK handles this case with default header values.
+/* DownloadOK describes a response with status code 200, with default header values.
 
 Success - return the catalog icon.
 */
@@ -63,7 +62,6 @@ type DownloadOK struct {
 func (o *DownloadOK) Error() string {
 	return fmt.Sprintf("[GET /icon/api/icons/{id}][%d] downloadOK  %+v", 200, o.Payload)
 }
-
 func (o *DownloadOK) GetPayload() strfmt.Base64 {
 	return o.Payload
 }
@@ -83,7 +81,7 @@ func NewDownloadBadRequest() *DownloadBadRequest {
 	return &DownloadBadRequest{}
 }
 
-/*DownloadBadRequest handles this case with default header values.
+/* DownloadBadRequest describes a response with status code 400, with default header values.
 
 Invalid request - bad data.
 */
@@ -94,7 +92,6 @@ type DownloadBadRequest struct {
 func (o *DownloadBadRequest) Error() string {
 	return fmt.Sprintf("[GET /icon/api/icons/{id}][%d] downloadBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *DownloadBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -116,7 +113,7 @@ func NewDownloadNotFound() *DownloadNotFound {
 	return &DownloadNotFound{}
 }
 
-/*DownloadNotFound handles this case with default header values.
+/* DownloadNotFound describes a response with status code 404, with default header values.
 
 Icon not found.
 */
@@ -127,7 +124,6 @@ type DownloadNotFound struct {
 func (o *DownloadNotFound) Error() string {
 	return fmt.Sprintf("[GET /icon/api/icons/{id}][%d] downloadNotFound  %+v", 404, o.Payload)
 }
-
 func (o *DownloadNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

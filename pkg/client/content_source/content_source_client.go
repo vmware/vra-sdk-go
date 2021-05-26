@@ -25,15 +25,18 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateContentSourceUsingPOST(params *CreateContentSourceUsingPOSTParams) (*CreateContentSourceUsingPOSTCreated, error)
+	CreateContentSourceUsingPOST(params *CreateContentSourceUsingPOSTParams, opts ...ClientOption) (*CreateContentSourceUsingPOSTCreated, error)
 
-	DeleteContentSourceUsingDELETE(params *DeleteContentSourceUsingDELETEParams) (*DeleteContentSourceUsingDELETENoContent, error)
+	DeleteContentSourceUsingDELETE(params *DeleteContentSourceUsingDELETEParams, opts ...ClientOption) (*DeleteContentSourceUsingDELETENoContent, error)
 
-	GetContentSourceUsingGET(params *GetContentSourceUsingGETParams) (*GetContentSourceUsingGETOK, error)
+	GetContentSourceUsingGET(params *GetContentSourceUsingGETParams, opts ...ClientOption) (*GetContentSourceUsingGETOK, error)
 
-	ListContentSourcesUsingGET(params *ListContentSourcesUsingGETParams) (*ListContentSourcesUsingGETOK, error)
+	ListContentSourcesUsingGET(params *ListContentSourcesUsingGETParams, opts ...ClientOption) (*ListContentSourcesUsingGETOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -43,13 +46,12 @@ type ClientService interface {
 
   Returns the new content source
 */
-func (a *Client) CreateContentSourceUsingPOST(params *CreateContentSourceUsingPOSTParams) (*CreateContentSourceUsingPOSTCreated, error) {
+func (a *Client) CreateContentSourceUsingPOST(params *CreateContentSourceUsingPOSTParams, opts ...ClientOption) (*CreateContentSourceUsingPOSTCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateContentSourceUsingPOSTParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createContentSourceUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/content/api/sources",
@@ -60,7 +62,12 @@ func (a *Client) CreateContentSourceUsingPOST(params *CreateContentSourceUsingPO
 		Reader:             &CreateContentSourceUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -77,13 +84,12 @@ func (a *Client) CreateContentSourceUsingPOST(params *CreateContentSourceUsingPO
 /*
   DeleteContentSourceUsingDELETE deletes a content source
 */
-func (a *Client) DeleteContentSourceUsingDELETE(params *DeleteContentSourceUsingDELETEParams) (*DeleteContentSourceUsingDELETENoContent, error) {
+func (a *Client) DeleteContentSourceUsingDELETE(params *DeleteContentSourceUsingDELETEParams, opts ...ClientOption) (*DeleteContentSourceUsingDELETENoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteContentSourceUsingDELETEParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteContentSourceUsingDELETE",
 		Method:             "DELETE",
 		PathPattern:        "/content/api/sources/{id}",
@@ -94,7 +100,12 @@ func (a *Client) DeleteContentSourceUsingDELETE(params *DeleteContentSourceUsing
 		Reader:             &DeleteContentSourceUsingDELETEReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -111,13 +122,12 @@ func (a *Client) DeleteContentSourceUsingDELETE(params *DeleteContentSourceUsing
 /*
   GetContentSourceUsingGET gets a content source
 */
-func (a *Client) GetContentSourceUsingGET(params *GetContentSourceUsingGETParams) (*GetContentSourceUsingGETOK, error) {
+func (a *Client) GetContentSourceUsingGET(params *GetContentSourceUsingGETParams, opts ...ClientOption) (*GetContentSourceUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetContentSourceUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getContentSourceUsingGET",
 		Method:             "GET",
 		PathPattern:        "/content/api/sources/{id}",
@@ -128,7 +138,12 @@ func (a *Client) GetContentSourceUsingGET(params *GetContentSourceUsingGETParams
 		Reader:             &GetContentSourceUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -147,13 +162,12 @@ func (a *Client) GetContentSourceUsingGET(params *GetContentSourceUsingGETParams
 
   Use filter parameters to narrow down the results
 */
-func (a *Client) ListContentSourcesUsingGET(params *ListContentSourcesUsingGETParams) (*ListContentSourcesUsingGETOK, error) {
+func (a *Client) ListContentSourcesUsingGET(params *ListContentSourcesUsingGETParams, opts ...ClientOption) (*ListContentSourcesUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewListContentSourcesUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "listContentSourcesUsingGET",
 		Method:             "GET",
 		PathPattern:        "/content/api/sources",
@@ -164,7 +178,12 @@ func (a *Client) ListContentSourcesUsingGET(params *ListContentSourcesUsingGETPa
 		Reader:             &ListContentSourcesUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

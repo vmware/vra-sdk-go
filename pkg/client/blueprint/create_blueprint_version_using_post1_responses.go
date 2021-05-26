@@ -53,7 +53,6 @@ func (o *CreateBlueprintVersionUsingPOST1Reader) ReadResponse(response runtime.C
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -64,7 +63,7 @@ func NewCreateBlueprintVersionUsingPOST1Created() *CreateBlueprintVersionUsingPO
 	return &CreateBlueprintVersionUsingPOST1Created{}
 }
 
-/*CreateBlueprintVersionUsingPOST1Created handles this case with default header values.
+/* CreateBlueprintVersionUsingPOST1Created describes a response with status code 201, with default header values.
 
 Created
 */
@@ -75,7 +74,6 @@ type CreateBlueprintVersionUsingPOST1Created struct {
 func (o *CreateBlueprintVersionUsingPOST1Created) Error() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprints/{blueprintId}/versions][%d] createBlueprintVersionUsingPOST1Created  %+v", 201, o.Payload)
 }
-
 func (o *CreateBlueprintVersionUsingPOST1Created) GetPayload() *models.BlueprintVersion {
 	return o.Payload
 }
@@ -97,7 +95,7 @@ func NewCreateBlueprintVersionUsingPOST1BadRequest() *CreateBlueprintVersionUsin
 	return &CreateBlueprintVersionUsingPOST1BadRequest{}
 }
 
-/*CreateBlueprintVersionUsingPOST1BadRequest handles this case with default header values.
+/* CreateBlueprintVersionUsingPOST1BadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -108,7 +106,6 @@ type CreateBlueprintVersionUsingPOST1BadRequest struct {
 func (o *CreateBlueprintVersionUsingPOST1BadRequest) Error() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprints/{blueprintId}/versions][%d] createBlueprintVersionUsingPOST1BadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateBlueprintVersionUsingPOST1BadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -130,7 +127,7 @@ func NewCreateBlueprintVersionUsingPOST1Unauthorized() *CreateBlueprintVersionUs
 	return &CreateBlueprintVersionUsingPOST1Unauthorized{}
 }
 
-/*CreateBlueprintVersionUsingPOST1Unauthorized handles this case with default header values.
+/* CreateBlueprintVersionUsingPOST1Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -151,7 +148,7 @@ func NewCreateBlueprintVersionUsingPOST1Forbidden() *CreateBlueprintVersionUsing
 	return &CreateBlueprintVersionUsingPOST1Forbidden{}
 }
 
-/*CreateBlueprintVersionUsingPOST1Forbidden handles this case with default header values.
+/* CreateBlueprintVersionUsingPOST1Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -172,7 +169,7 @@ func NewCreateBlueprintVersionUsingPOST1NotFound() *CreateBlueprintVersionUsingP
 	return &CreateBlueprintVersionUsingPOST1NotFound{}
 }
 
-/*CreateBlueprintVersionUsingPOST1NotFound handles this case with default header values.
+/* CreateBlueprintVersionUsingPOST1NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -183,7 +180,6 @@ type CreateBlueprintVersionUsingPOST1NotFound struct {
 func (o *CreateBlueprintVersionUsingPOST1NotFound) Error() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprints/{blueprintId}/versions][%d] createBlueprintVersionUsingPOST1NotFound  %+v", 404, o.Payload)
 }
-
 func (o *CreateBlueprintVersionUsingPOST1NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

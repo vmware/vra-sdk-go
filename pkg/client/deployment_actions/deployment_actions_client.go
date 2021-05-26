@@ -25,21 +25,24 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	ActionDeploymentRequestUsingPOST(params *ActionDeploymentRequestUsingPOSTParams) (*ActionDeploymentRequestUsingPOSTOK, error)
+	ActionDeploymentRequestUsingPOST(params *ActionDeploymentRequestUsingPOSTParams, opts ...ClientOption) (*ActionDeploymentRequestUsingPOSTOK, error)
 
-	GetDeploymentActionUsingGET(params *GetDeploymentActionUsingGETParams) (*GetDeploymentActionUsingGETOK, error)
+	GetDeploymentActionUsingGET(params *GetDeploymentActionUsingGETParams, opts ...ClientOption) (*GetDeploymentActionUsingGETOK, error)
 
-	GetDeploymentActionsUsingGET(params *GetDeploymentActionsUsingGETParams) (*GetDeploymentActionsUsingGETOK, error)
+	GetDeploymentActionsUsingGET(params *GetDeploymentActionsUsingGETParams, opts ...ClientOption) (*GetDeploymentActionsUsingGETOK, error)
 
-	GetResourceActionUsingGET(params *GetResourceActionUsingGETParams) (*GetResourceActionUsingGETOK, error)
+	GetResourceActionUsingGET(params *GetResourceActionUsingGETParams, opts ...ClientOption) (*GetResourceActionUsingGETOK, error)
 
-	GetResourceActionsUsingGET(params *GetResourceActionsUsingGETParams) (*GetResourceActionsUsingGETOK, error)
+	GetResourceActionsUsingGET(params *GetResourceActionsUsingGETParams, opts ...ClientOption) (*GetResourceActionsUsingGETOK, error)
 
-	SubmitDeploymentActionRequestUsingPOST(params *SubmitDeploymentActionRequestUsingPOSTParams) (*SubmitDeploymentActionRequestUsingPOSTOK, error)
+	SubmitDeploymentActionRequestUsingPOST(params *SubmitDeploymentActionRequestUsingPOSTParams, opts ...ClientOption) (*SubmitDeploymentActionRequestUsingPOSTOK, error)
 
-	SubmitResourceActionRequestUsingPOST(params *SubmitResourceActionRequestUsingPOSTParams) (*SubmitResourceActionRequestUsingPOSTOK, error)
+	SubmitResourceActionRequestUsingPOST(params *SubmitResourceActionRequestUsingPOSTParams, opts ...ClientOption) (*SubmitResourceActionRequestUsingPOSTOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -49,13 +52,12 @@ type ClientService interface {
 
   Cancel can be submitted on In-progress requests and Dismiss can be submitted on Failed requests.
 */
-func (a *Client) ActionDeploymentRequestUsingPOST(params *ActionDeploymentRequestUsingPOSTParams) (*ActionDeploymentRequestUsingPOSTOK, error) {
+func (a *Client) ActionDeploymentRequestUsingPOST(params *ActionDeploymentRequestUsingPOSTParams, opts ...ClientOption) (*ActionDeploymentRequestUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewActionDeploymentRequestUsingPOSTParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "actionDeploymentRequestUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/deployment/api/requests/{requestId}",
@@ -66,7 +68,12 @@ func (a *Client) ActionDeploymentRequestUsingPOST(params *ActionDeploymentReques
 		Reader:             &ActionDeploymentRequestUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -85,13 +92,12 @@ func (a *Client) ActionDeploymentRequestUsingPOST(params *ActionDeploymentReques
 
   Returns an action for the deployment specified by its Deployment ID and Action ID.
 */
-func (a *Client) GetDeploymentActionUsingGET(params *GetDeploymentActionUsingGETParams) (*GetDeploymentActionUsingGETOK, error) {
+func (a *Client) GetDeploymentActionUsingGET(params *GetDeploymentActionUsingGETParams, opts ...ClientOption) (*GetDeploymentActionUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDeploymentActionUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getDeploymentActionUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/{depId}/actions/{actionId}",
@@ -102,7 +108,12 @@ func (a *Client) GetDeploymentActionUsingGET(params *GetDeploymentActionUsingGET
 		Reader:             &GetDeploymentActionUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -121,13 +132,12 @@ func (a *Client) GetDeploymentActionUsingGET(params *GetDeploymentActionUsingGET
 
   Returns the complete list of available actions that can be performed on a given deployment.
 */
-func (a *Client) GetDeploymentActionsUsingGET(params *GetDeploymentActionsUsingGETParams) (*GetDeploymentActionsUsingGETOK, error) {
+func (a *Client) GetDeploymentActionsUsingGET(params *GetDeploymentActionsUsingGETParams, opts ...ClientOption) (*GetDeploymentActionsUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDeploymentActionsUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getDeploymentActionsUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/{depId}/actions",
@@ -138,7 +148,12 @@ func (a *Client) GetDeploymentActionsUsingGET(params *GetDeploymentActionsUsingG
 		Reader:             &GetDeploymentActionsUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -157,13 +172,12 @@ func (a *Client) GetDeploymentActionsUsingGET(params *GetDeploymentActionsUsingG
 
   Returns an action for the resource specified by its Resource ID and Action ID.
 */
-func (a *Client) GetResourceActionUsingGET(params *GetResourceActionUsingGETParams) (*GetResourceActionUsingGETOK, error) {
+func (a *Client) GetResourceActionUsingGET(params *GetResourceActionUsingGETParams, opts ...ClientOption) (*GetResourceActionUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetResourceActionUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getResourceActionUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/{depId}/resources/{resourceId}/actions/{actionId}",
@@ -174,7 +188,12 @@ func (a *Client) GetResourceActionUsingGET(params *GetResourceActionUsingGETPara
 		Reader:             &GetResourceActionUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -193,13 +212,12 @@ func (a *Client) GetResourceActionUsingGET(params *GetResourceActionUsingGETPara
 
   Returns the complete list of available actions that can be performed on a given resource.
 */
-func (a *Client) GetResourceActionsUsingGET(params *GetResourceActionsUsingGETParams) (*GetResourceActionsUsingGETOK, error) {
+func (a *Client) GetResourceActionsUsingGET(params *GetResourceActionsUsingGETParams, opts ...ClientOption) (*GetResourceActionsUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetResourceActionsUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getResourceActionsUsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/{depId}/resources/{resourceId}/actions",
@@ -210,7 +228,12 @@ func (a *Client) GetResourceActionsUsingGET(params *GetResourceActionsUsingGETPa
 		Reader:             &GetResourceActionsUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -229,13 +252,12 @@ func (a *Client) GetResourceActionsUsingGET(params *GetResourceActionsUsingGETPa
 
   Submit a deployment action request
 */
-func (a *Client) SubmitDeploymentActionRequestUsingPOST(params *SubmitDeploymentActionRequestUsingPOSTParams) (*SubmitDeploymentActionRequestUsingPOSTOK, error) {
+func (a *Client) SubmitDeploymentActionRequestUsingPOST(params *SubmitDeploymentActionRequestUsingPOSTParams, opts ...ClientOption) (*SubmitDeploymentActionRequestUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewSubmitDeploymentActionRequestUsingPOSTParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "submitDeploymentActionRequestUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/deployment/api/deployments/{depId}/requests",
@@ -246,7 +268,12 @@ func (a *Client) SubmitDeploymentActionRequestUsingPOST(params *SubmitDeployment
 		Reader:             &SubmitDeploymentActionRequestUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -265,13 +292,12 @@ func (a *Client) SubmitDeploymentActionRequestUsingPOST(params *SubmitDeployment
 
   Submit a resource action request.
 */
-func (a *Client) SubmitResourceActionRequestUsingPOST(params *SubmitResourceActionRequestUsingPOSTParams) (*SubmitResourceActionRequestUsingPOSTOK, error) {
+func (a *Client) SubmitResourceActionRequestUsingPOST(params *SubmitResourceActionRequestUsingPOSTParams, opts ...ClientOption) (*SubmitResourceActionRequestUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewSubmitResourceActionRequestUsingPOSTParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "submitResourceActionRequestUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/deployment/api/deployments/{depId}/resources/{resourceId}/requests",
@@ -282,7 +308,12 @@ func (a *Client) SubmitResourceActionRequestUsingPOST(params *SubmitResourceActi
 		Reader:             &SubmitResourceActionRequestUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

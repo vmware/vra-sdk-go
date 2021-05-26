@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -78,7 +80,6 @@ func (m *PolicyType) Validate(formats strfmt.Registry) error {
 }
 
 func (m *PolicyType) validateConfig(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Config) { // not required
 		return nil
 	}
@@ -97,8 +98,8 @@ func (m *PolicyType) validateConfig(formats strfmt.Registry) error {
 
 func (m *PolicyType) validateDefinitionSchema(formats strfmt.Registry) error {
 
-	if err := validate.Required("definitionSchema", "body", m.DefinitionSchema); err != nil {
-		return err
+	if m.DefinitionSchema == nil {
+		return errors.Required("definitionSchema", "body", nil)
 	}
 
 	return nil
@@ -133,8 +134,36 @@ func (m *PolicyType) validateName(formats strfmt.Registry) error {
 
 func (m *PolicyType) validateTargetSchema(formats strfmt.Registry) error {
 
-	if err := validate.Required("targetSchema", "body", m.TargetSchema); err != nil {
-		return err
+	if m.TargetSchema == nil {
+		return errors.Required("targetSchema", "body", nil)
+	}
+
+	return nil
+}
+
+// ContextValidate validate this policy type based on the context it is used
+func (m *PolicyType) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateConfig(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PolicyType) contextValidateConfig(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Config != nil {
+		if err := m.Config.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("config")
+			}
+			return err
+		}
 	}
 
 	return nil

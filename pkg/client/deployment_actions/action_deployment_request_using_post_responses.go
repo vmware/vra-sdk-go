@@ -47,7 +47,6 @@ func (o *ActionDeploymentRequestUsingPOSTReader) ReadResponse(response runtime.C
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewActionDeploymentRequestUsingPOSTOK() *ActionDeploymentRequestUsingPOSTOK
 	return &ActionDeploymentRequestUsingPOSTOK{}
 }
 
-/*ActionDeploymentRequestUsingPOSTOK handles this case with default header values.
+/* ActionDeploymentRequestUsingPOSTOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -79,7 +78,7 @@ func NewActionDeploymentRequestUsingPOSTUnauthorized() *ActionDeploymentRequestU
 	return &ActionDeploymentRequestUsingPOSTUnauthorized{}
 }
 
-/*ActionDeploymentRequestUsingPOSTUnauthorized handles this case with default header values.
+/* ActionDeploymentRequestUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -100,7 +99,7 @@ func NewActionDeploymentRequestUsingPOSTForbidden() *ActionDeploymentRequestUsin
 	return &ActionDeploymentRequestUsingPOSTForbidden{}
 }
 
-/*ActionDeploymentRequestUsingPOSTForbidden handles this case with default header values.
+/* ActionDeploymentRequestUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -121,7 +120,7 @@ func NewActionDeploymentRequestUsingPOSTNotFound() *ActionDeploymentRequestUsing
 	return &ActionDeploymentRequestUsingPOSTNotFound{}
 }
 
-/*ActionDeploymentRequestUsingPOSTNotFound handles this case with default header values.
+/* ActionDeploymentRequestUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -132,7 +131,6 @@ type ActionDeploymentRequestUsingPOSTNotFound struct {
 func (o *ActionDeploymentRequestUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /deployment/api/requests/{requestId}][%d] actionDeploymentRequestUsingPOSTNotFound  %+v", 404, o.Payload)
 }
-
 func (o *ActionDeploymentRequestUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

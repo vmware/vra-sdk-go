@@ -41,7 +41,6 @@ func (o *GetFlavorProfileReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetFlavorProfileOK() *GetFlavorProfileOK {
 	return &GetFlavorProfileOK{}
 }
 
-/*GetFlavorProfileOK handles this case with default header values.
+/* GetFlavorProfileOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type GetFlavorProfileOK struct {
 func (o *GetFlavorProfileOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/flavor-profiles/{id}][%d] getFlavorProfileOK  %+v", 200, o.Payload)
 }
-
 func (o *GetFlavorProfileOK) GetPayload() *models.FlavorProfile {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewGetFlavorProfileForbidden() *GetFlavorProfileForbidden {
 	return &GetFlavorProfileForbidden{}
 }
 
-/*GetFlavorProfileForbidden handles this case with default header values.
+/* GetFlavorProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetFlavorProfileForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetFlavorProfileForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/flavor-profiles/{id}][%d] getFlavorProfileForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/flavor-profiles/{id}][%d] getFlavorProfileForbidden  %+v", 403, o.Payload)
+}
+func (o *GetFlavorProfileForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetFlavorProfileForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewGetFlavorProfileNotFound() *GetFlavorProfileNotFound {
 	return &GetFlavorProfileNotFound{}
 }
 
-/*GetFlavorProfileNotFound handles this case with default header values.
+/* GetFlavorProfileNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type GetFlavorProfileNotFound struct {
 func (o *GetFlavorProfileNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/flavor-profiles/{id}][%d] getFlavorProfileNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetFlavorProfileNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

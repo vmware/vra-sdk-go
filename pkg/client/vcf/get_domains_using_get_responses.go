@@ -47,7 +47,6 @@ func (o *GetDomainsUsingGETReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewGetDomainsUsingGETOK() *GetDomainsUsingGETOK {
 	return &GetDomainsUsingGETOK{}
 }
 
-/*GetDomainsUsingGETOK handles this case with default header values.
+/* GetDomainsUsingGETOK describes a response with status code 200, with default header values.
 
 Get domains of the vCF endpoint
 */
@@ -69,7 +68,6 @@ type GetDomainsUsingGETOK struct {
 func (o *GetDomainsUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /content/api/vcf/{integrationId}/domains][%d] getDomainsUsingGETOK  %+v", 200, o.Payload)
 }
-
 func (o *GetDomainsUsingGETOK) GetPayload() *models.VcfDomain {
 	return o.Payload
 }
@@ -91,7 +89,7 @@ func NewGetDomainsUsingGETBadRequest() *GetDomainsUsingGETBadRequest {
 	return &GetDomainsUsingGETBadRequest{}
 }
 
-/*GetDomainsUsingGETBadRequest handles this case with default header values.
+/* GetDomainsUsingGETBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -102,7 +100,6 @@ type GetDomainsUsingGETBadRequest struct {
 func (o *GetDomainsUsingGETBadRequest) Error() string {
 	return fmt.Sprintf("[GET /content/api/vcf/{integrationId}/domains][%d] getDomainsUsingGETBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *GetDomainsUsingGETBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -124,7 +121,7 @@ func NewGetDomainsUsingGETUnauthorized() *GetDomainsUsingGETUnauthorized {
 	return &GetDomainsUsingGETUnauthorized{}
 }
 
-/*GetDomainsUsingGETUnauthorized handles this case with default header values.
+/* GetDomainsUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -145,7 +142,7 @@ func NewGetDomainsUsingGETForbidden() *GetDomainsUsingGETForbidden {
 	return &GetDomainsUsingGETForbidden{}
 }
 
-/*GetDomainsUsingGETForbidden handles this case with default header values.
+/* GetDomainsUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */

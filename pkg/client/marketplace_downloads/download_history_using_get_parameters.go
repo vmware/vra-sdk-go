@@ -17,79 +17,97 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewDownloadHistoryUsingGETParams creates a new DownloadHistoryUsingGETParams object
-// with the default values initialized.
+// NewDownloadHistoryUsingGETParams creates a new DownloadHistoryUsingGETParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDownloadHistoryUsingGETParams() *DownloadHistoryUsingGETParams {
-	var ()
 	return &DownloadHistoryUsingGETParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDownloadHistoryUsingGETParamsWithTimeout creates a new DownloadHistoryUsingGETParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDownloadHistoryUsingGETParamsWithTimeout(timeout time.Duration) *DownloadHistoryUsingGETParams {
-	var ()
 	return &DownloadHistoryUsingGETParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDownloadHistoryUsingGETParamsWithContext creates a new DownloadHistoryUsingGETParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDownloadHistoryUsingGETParamsWithContext(ctx context.Context) *DownloadHistoryUsingGETParams {
-	var ()
 	return &DownloadHistoryUsingGETParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDownloadHistoryUsingGETParamsWithHTTPClient creates a new DownloadHistoryUsingGETParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDownloadHistoryUsingGETParamsWithHTTPClient(client *http.Client) *DownloadHistoryUsingGETParams {
-	var ()
 	return &DownloadHistoryUsingGETParams{
 		HTTPClient: client,
 	}
 }
 
-/*DownloadHistoryUsingGETParams contains all the parameters to send to the API endpoint
-for the download history using g e t operation typically these are written to a http.Request
+/* DownloadHistoryUsingGETParams contains all the parameters to send to the API endpoint
+   for the download history using g e t operation.
+
+   Typically these are written to a http.Request.
 */
 type DownloadHistoryUsingGETParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information, please refer to /content/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information, please refer to /content/api/about
 	*/
 	APIVersion *string
-	/*ContentName
-	  Search based on content name
 
+	/* ContentName.
+
+	   Search based on content name
 	*/
 	ContentName *string
-	/*ContentType
-	  Search based on content type
 
+	/* ContentType.
+
+	   Search based on content type
 	*/
 	ContentType *string
-	/*Status
-	  Search based on download status
 
+	/* Status.
+
+	   Search based on download status
 	*/
 	Status *string
-	/*TargetIds
-	  Search based on target Ids
 
+	/* TargetIds.
+
+	   Search based on target Ids
 	*/
 	TargetIds []string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the download history using get params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DownloadHistoryUsingGETParams) WithDefaults() *DownloadHistoryUsingGETParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the download history using get params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DownloadHistoryUsingGETParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the download history using get params
@@ -192,76 +210,100 @@ func (o *DownloadHistoryUsingGETParams) WriteToRequest(r runtime.ClientRequest, 
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.ContentName != nil {
 
 		// query param contentName
 		var qrContentName string
+
 		if o.ContentName != nil {
 			qrContentName = *o.ContentName
 		}
 		qContentName := qrContentName
 		if qContentName != "" {
+
 			if err := r.SetQueryParam("contentName", qContentName); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.ContentType != nil {
 
 		// query param contentType
 		var qrContentType string
+
 		if o.ContentType != nil {
 			qrContentType = *o.ContentType
 		}
 		qContentType := qrContentType
 		if qContentType != "" {
+
 			if err := r.SetQueryParam("contentType", qContentType); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Status != nil {
 
 		// query param status
 		var qrStatus string
+
 		if o.Status != nil {
 			qrStatus = *o.Status
 		}
 		qStatus := qrStatus
 		if qStatus != "" {
+
 			if err := r.SetQueryParam("status", qStatus); err != nil {
 				return err
 			}
 		}
-
 	}
 
-	valuesTargetIds := o.TargetIds
+	if o.TargetIds != nil {
 
-	joinedTargetIds := swag.JoinByFormat(valuesTargetIds, "multi")
-	// query array param targetIds
-	if err := r.SetQueryParam("targetIds", joinedTargetIds...); err != nil {
-		return err
+		// binding items for targetIds
+		joinedTargetIds := o.bindParamTargetIds(reg)
+
+		// query array param targetIds
+		if err := r.SetQueryParam("targetIds", joinedTargetIds...); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
+}
+
+// bindParamDownloadHistoryUsingGET binds the parameter targetIds
+func (o *DownloadHistoryUsingGETParams) bindParamTargetIds(formats strfmt.Registry) []string {
+	targetIdsIR := o.TargetIds
+
+	var targetIdsIC []string
+	for _, targetIdsIIR := range targetIdsIR { // explode []string
+
+		targetIdsIIV := targetIdsIIR // string as string
+		targetIdsIC = append(targetIdsIC, targetIdsIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	targetIdsIS := swag.JoinByFormat(targetIdsIC, "multi")
+
+	return targetIdsIS
 }

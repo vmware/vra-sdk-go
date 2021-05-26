@@ -41,7 +41,6 @@ func (o *GetRequestTrackerReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetRequestTrackerOK() *GetRequestTrackerOK {
 	return &GetRequestTrackerOK{}
 }
 
-/*GetRequestTrackerOK handles this case with default header values.
+/* GetRequestTrackerOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type GetRequestTrackerOK struct {
 func (o *GetRequestTrackerOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/request-tracker/{id}][%d] getRequestTrackerOK  %+v", 200, o.Payload)
 }
-
 func (o *GetRequestTrackerOK) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewGetRequestTrackerForbidden() *GetRequestTrackerForbidden {
 	return &GetRequestTrackerForbidden{}
 }
 
-/*GetRequestTrackerForbidden handles this case with default header values.
+/* GetRequestTrackerForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetRequestTrackerForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetRequestTrackerForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/request-tracker/{id}][%d] getRequestTrackerForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/request-tracker/{id}][%d] getRequestTrackerForbidden  %+v", 403, o.Payload)
+}
+func (o *GetRequestTrackerForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetRequestTrackerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewGetRequestTrackerNotFound() *GetRequestTrackerNotFound {
 	return &GetRequestTrackerNotFound{}
 }
 
-/*GetRequestTrackerNotFound handles this case with default header values.
+/* GetRequestTrackerNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type GetRequestTrackerNotFound struct {
 func (o *GetRequestTrackerNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/request-tracker/{id}][%d] getRequestTrackerNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetRequestTrackerNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

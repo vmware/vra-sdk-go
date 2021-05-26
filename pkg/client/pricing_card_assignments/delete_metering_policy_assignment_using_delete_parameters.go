@@ -16,64 +16,81 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewDeleteMeteringPolicyAssignmentUsingDELETEParams creates a new DeleteMeteringPolicyAssignmentUsingDELETEParams object
-// with the default values initialized.
+// NewDeleteMeteringPolicyAssignmentUsingDELETEParams creates a new DeleteMeteringPolicyAssignmentUsingDELETEParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteMeteringPolicyAssignmentUsingDELETEParams() *DeleteMeteringPolicyAssignmentUsingDELETEParams {
-	var ()
 	return &DeleteMeteringPolicyAssignmentUsingDELETEParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteMeteringPolicyAssignmentUsingDELETEParamsWithTimeout creates a new DeleteMeteringPolicyAssignmentUsingDELETEParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteMeteringPolicyAssignmentUsingDELETEParamsWithTimeout(timeout time.Duration) *DeleteMeteringPolicyAssignmentUsingDELETEParams {
-	var ()
 	return &DeleteMeteringPolicyAssignmentUsingDELETEParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteMeteringPolicyAssignmentUsingDELETEParamsWithContext creates a new DeleteMeteringPolicyAssignmentUsingDELETEParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteMeteringPolicyAssignmentUsingDELETEParamsWithContext(ctx context.Context) *DeleteMeteringPolicyAssignmentUsingDELETEParams {
-	var ()
 	return &DeleteMeteringPolicyAssignmentUsingDELETEParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteMeteringPolicyAssignmentUsingDELETEParamsWithHTTPClient creates a new DeleteMeteringPolicyAssignmentUsingDELETEParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteMeteringPolicyAssignmentUsingDELETEParamsWithHTTPClient(client *http.Client) *DeleteMeteringPolicyAssignmentUsingDELETEParams {
-	var ()
 	return &DeleteMeteringPolicyAssignmentUsingDELETEParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteMeteringPolicyAssignmentUsingDELETEParams contains all the parameters to send to the API endpoint
-for the delete metering policy assignment using d e l e t e operation typically these are written to a http.Request
+/* DeleteMeteringPolicyAssignmentUsingDELETEParams contains all the parameters to send to the API endpoint
+   for the delete metering policy assignment using d e l e t e operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteMeteringPolicyAssignmentUsingDELETEParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 	*/
 	APIVersion *string
-	/*ID
-	  pricing card Assignment Id
 
+	/* ID.
+
+	   pricing card Assignment Id
+
+	   Format: uuid
 	*/
 	ID strfmt.UUID
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete metering policy assignment using d e l e t e params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteMeteringPolicyAssignmentUsingDELETEParams) WithDefaults() *DeleteMeteringPolicyAssignmentUsingDELETEParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete metering policy assignment using d e l e t e params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteMeteringPolicyAssignmentUsingDELETEParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete metering policy assignment using d e l e t e params
@@ -143,16 +160,17 @@ func (o *DeleteMeteringPolicyAssignmentUsingDELETEParams) WriteToRequest(r runti
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id

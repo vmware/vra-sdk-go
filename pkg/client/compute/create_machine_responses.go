@@ -41,7 +41,6 @@ func (o *CreateMachineReader) ReadResponse(response runtime.ClientResponse, cons
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewCreateMachineAccepted() *CreateMachineAccepted {
 	return &CreateMachineAccepted{}
 }
 
-/*CreateMachineAccepted handles this case with default header values.
+/* CreateMachineAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type CreateMachineAccepted struct {
 func (o *CreateMachineAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines][%d] createMachineAccepted  %+v", 202, o.Payload)
 }
-
 func (o *CreateMachineAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewCreateMachineBadRequest() *CreateMachineBadRequest {
 	return &CreateMachineBadRequest{}
 }
 
-/*CreateMachineBadRequest handles this case with default header values.
+/* CreateMachineBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -96,7 +94,6 @@ type CreateMachineBadRequest struct {
 func (o *CreateMachineBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines][%d] createMachineBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateMachineBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -118,18 +115,29 @@ func NewCreateMachineForbidden() *CreateMachineForbidden {
 	return &CreateMachineForbidden{}
 }
 
-/*CreateMachineForbidden handles this case with default header values.
+/* CreateMachineForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type CreateMachineForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *CreateMachineForbidden) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/machines][%d] createMachineForbidden ", 403)
+	return fmt.Sprintf("[POST /iaas/api/machines][%d] createMachineForbidden  %+v", 403, o.Payload)
+}
+func (o *CreateMachineForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *CreateMachineForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

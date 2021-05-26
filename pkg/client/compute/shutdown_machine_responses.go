@@ -41,7 +41,6 @@ func (o *ShutdownMachineReader) ReadResponse(response runtime.ClientResponse, co
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewShutdownMachineAccepted() *ShutdownMachineAccepted {
 	return &ShutdownMachineAccepted{}
 }
 
-/*ShutdownMachineAccepted handles this case with default header values.
+/* ShutdownMachineAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type ShutdownMachineAccepted struct {
 func (o *ShutdownMachineAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/shutdown][%d] shutdownMachineAccepted  %+v", 202, o.Payload)
 }
-
 func (o *ShutdownMachineAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewShutdownMachineForbidden() *ShutdownMachineForbidden {
 	return &ShutdownMachineForbidden{}
 }
 
-/*ShutdownMachineForbidden handles this case with default header values.
+/* ShutdownMachineForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type ShutdownMachineForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *ShutdownMachineForbidden) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/shutdown][%d] shutdownMachineForbidden ", 403)
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/shutdown][%d] shutdownMachineForbidden  %+v", 403, o.Payload)
+}
+func (o *ShutdownMachineForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *ShutdownMachineForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewShutdownMachineNotFound() *ShutdownMachineNotFound {
 	return &ShutdownMachineNotFound{}
 }
 
-/*ShutdownMachineNotFound handles this case with default header values.
+/* ShutdownMachineNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type ShutdownMachineNotFound struct {
 func (o *ShutdownMachineNotFound) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/shutdown][%d] shutdownMachineNotFound  %+v", 404, o.Payload)
 }
-
 func (o *ShutdownMachineNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

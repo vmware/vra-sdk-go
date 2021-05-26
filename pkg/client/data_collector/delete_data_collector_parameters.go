@@ -16,64 +16,79 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewDeleteDataCollectorParams creates a new DeleteDataCollectorParams object
-// with the default values initialized.
+// NewDeleteDataCollectorParams creates a new DeleteDataCollectorParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteDataCollectorParams() *DeleteDataCollectorParams {
-	var ()
 	return &DeleteDataCollectorParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteDataCollectorParamsWithTimeout creates a new DeleteDataCollectorParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteDataCollectorParamsWithTimeout(timeout time.Duration) *DeleteDataCollectorParams {
-	var ()
 	return &DeleteDataCollectorParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteDataCollectorParamsWithContext creates a new DeleteDataCollectorParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteDataCollectorParamsWithContext(ctx context.Context) *DeleteDataCollectorParams {
-	var ()
 	return &DeleteDataCollectorParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteDataCollectorParamsWithHTTPClient creates a new DeleteDataCollectorParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteDataCollectorParamsWithHTTPClient(client *http.Client) *DeleteDataCollectorParams {
-	var ()
 	return &DeleteDataCollectorParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteDataCollectorParams contains all the parameters to send to the API endpoint
-for the delete data collector operation typically these are written to a http.Request
+/* DeleteDataCollectorParams contains all the parameters to send to the API endpoint
+   for the delete data collector operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteDataCollectorParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*ID
-	  The ID of the Data Collector.
 
+	/* ID.
+
+	   The ID of the Data Collector.
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete data collector params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteDataCollectorParams) WithDefaults() *DeleteDataCollectorParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete data collector params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteDataCollectorParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete data collector params
@@ -143,16 +158,17 @@ func (o *DeleteDataCollectorParams) WriteToRequest(r runtime.ClientRequest, reg 
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id

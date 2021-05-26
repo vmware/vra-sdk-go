@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 	"strconv"
 
@@ -82,7 +83,6 @@ func (m *CatalogItemUpfrontPriceResponse) Validate(formats strfmt.Registry) erro
 }
 
 func (m *CatalogItemUpfrontPriceResponse) validateResourcePriceDetails(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ResourcePriceDetails) { // not required
 		return nil
 	}
@@ -154,13 +154,161 @@ func (m *CatalogItemUpfrontPriceResponse) validateStatusEnum(path, location stri
 }
 
 func (m *CatalogItemUpfrontPriceResponse) validateStatus(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Status) { // not required
 		return nil
 	}
 
 	// value enum
 	if err := m.validateStatusEnum("status", "body", m.Status); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this catalog item upfront price response based on the context it is used
+func (m *CatalogItemUpfrontPriceResponse) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateDailyAdditionalPrice(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDailyComputePrice(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDailyNetworkPrice(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDailyStoragePrice(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDailyTotalPrice(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResourcePriceDetails(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStatusDetails(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUpfrontPriceID(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CatalogItemUpfrontPriceResponse) contextValidateDailyAdditionalPrice(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "dailyAdditionalPrice", "body", float64(m.DailyAdditionalPrice)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CatalogItemUpfrontPriceResponse) contextValidateDailyComputePrice(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "dailyComputePrice", "body", float64(m.DailyComputePrice)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CatalogItemUpfrontPriceResponse) contextValidateDailyNetworkPrice(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "dailyNetworkPrice", "body", float64(m.DailyNetworkPrice)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CatalogItemUpfrontPriceResponse) contextValidateDailyStoragePrice(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "dailyStoragePrice", "body", float64(m.DailyStoragePrice)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CatalogItemUpfrontPriceResponse) contextValidateDailyTotalPrice(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "dailyTotalPrice", "body", float64(m.DailyTotalPrice)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CatalogItemUpfrontPriceResponse) contextValidateResourcePriceDetails(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ResourcePriceDetails); i++ {
+
+		if m.ResourcePriceDetails[i] != nil {
+			if err := m.ResourcePriceDetails[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("resourcePriceDetails" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CatalogItemUpfrontPriceResponse) contextValidateStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "status", "body", string(m.Status)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CatalogItemUpfrontPriceResponse) contextValidateStatusDetails(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "statusDetails", "body", string(m.StatusDetails)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CatalogItemUpfrontPriceResponse) contextValidateUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "unit", "body", string(m.Unit)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CatalogItemUpfrontPriceResponse) contextValidateUpfrontPriceID(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "upfrontPriceId", "body", string(m.UpfrontPriceID)); err != nil {
 		return err
 	}
 

@@ -17,69 +17,85 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewDeleteMachineParams creates a new DeleteMachineParams object
-// with the default values initialized.
+// NewDeleteMachineParams creates a new DeleteMachineParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteMachineParams() *DeleteMachineParams {
-	var ()
 	return &DeleteMachineParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteMachineParamsWithTimeout creates a new DeleteMachineParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteMachineParamsWithTimeout(timeout time.Duration) *DeleteMachineParams {
-	var ()
 	return &DeleteMachineParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteMachineParamsWithContext creates a new DeleteMachineParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteMachineParamsWithContext(ctx context.Context) *DeleteMachineParams {
-	var ()
 	return &DeleteMachineParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteMachineParamsWithHTTPClient creates a new DeleteMachineParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteMachineParamsWithHTTPClient(client *http.Client) *DeleteMachineParams {
-	var ()
 	return &DeleteMachineParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteMachineParams contains all the parameters to send to the API endpoint
-for the delete machine operation typically these are written to a http.Request
+/* DeleteMachineParams contains all the parameters to send to the API endpoint
+   for the delete machine operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteMachineParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*ForceDelete
-	  Controls whether this is a force delete operation. If true, best effort is made for deleting this machine. Use with caution as force deleting may cause inconsistencies between the cloud provider and vRA.
 
+	/* ForceDelete.
+
+	   Controls whether this is a force delete operation. If true, best effort is made for deleting this machine. Use with caution as force deleting may cause inconsistencies between the cloud provider and vRA.
 	*/
 	ForceDelete *bool
-	/*ID
-	  The ID of the machine.
 
+	/* ID.
+
+	   The ID of the machine.
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete machine params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteMachineParams) WithDefaults() *DeleteMachineParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete machine params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteMachineParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete machine params
@@ -160,32 +176,34 @@ func (o *DeleteMachineParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.ForceDelete != nil {
 
 		// query param forceDelete
 		var qrForceDelete bool
+
 		if o.ForceDelete != nil {
 			qrForceDelete = *o.ForceDelete
 		}
 		qForceDelete := swag.FormatBool(qrForceDelete)
 		if qForceDelete != "" {
+
 			if err := r.SetQueryParam("forceDelete", qForceDelete); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -113,23 +114,23 @@ const (
 	// DeploymentResourceTypeAccountTypeVSphere captures enum value "vSphere"
 	DeploymentResourceTypeAccountTypeVSphere string = "vSphere"
 
-	// DeploymentResourceTypeAccountTypeVSphereCloud captures enum value "vSphere-cloud"
-	DeploymentResourceTypeAccountTypeVSphereCloud string = "vSphere-cloud"
+	// DeploymentResourceTypeAccountTypeVSphereDashCloud captures enum value "vSphere-cloud"
+	DeploymentResourceTypeAccountTypeVSphereDashCloud string = "vSphere-cloud"
 
-	// DeploymentResourceTypeAccountTypeAzureEA captures enum value "Azure-EA"
-	DeploymentResourceTypeAccountTypeAzureEA string = "Azure-EA"
+	// DeploymentResourceTypeAccountTypeAzureDashEA captures enum value "Azure-EA"
+	DeploymentResourceTypeAccountTypeAzureDashEA string = "Azure-EA"
 
-	// DeploymentResourceTypeAccountTypeNSXV captures enum value "NSX-V"
-	DeploymentResourceTypeAccountTypeNSXV string = "NSX-V"
+	// DeploymentResourceTypeAccountTypeNSXDashV captures enum value "NSX-V"
+	DeploymentResourceTypeAccountTypeNSXDashV string = "NSX-V"
 
-	// DeploymentResourceTypeAccountTypeNSXT captures enum value "NSX-T"
-	DeploymentResourceTypeAccountTypeNSXT string = "NSX-T"
+	// DeploymentResourceTypeAccountTypeNSXDashT captures enum value "NSX-T"
+	DeploymentResourceTypeAccountTypeNSXDashT string = "NSX-T"
 
-	// DeploymentResourceTypeAccountTypeNSXP captures enum value "NSX-P"
-	DeploymentResourceTypeAccountTypeNSXP string = "NSX-P"
+	// DeploymentResourceTypeAccountTypeNSXDashP captures enum value "NSX-P"
+	DeploymentResourceTypeAccountTypeNSXDashP string = "NSX-P"
 
-	// DeploymentResourceTypeAccountTypeNSXPCloud captures enum value "NSX-P-cloud"
-	DeploymentResourceTypeAccountTypeNSXPCloud string = "NSX-P-cloud"
+	// DeploymentResourceTypeAccountTypeNSXDashPDashCloud captures enum value "NSX-P-cloud"
+	DeploymentResourceTypeAccountTypeNSXDashPDashCloud string = "NSX-P-cloud"
 
 	// DeploymentResourceTypeAccountTypeVCloudDirector captures enum value "vCloud Director"
 	DeploymentResourceTypeAccountTypeVCloudDirector string = "vCloud Director"
@@ -153,7 +154,6 @@ func (m *DeploymentResourceType) validateAccountTypeEnum(path, location string, 
 }
 
 func (m *DeploymentResourceType) validateAccountType(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.AccountType) { // not required
 		return nil
 	}
@@ -167,7 +167,6 @@ func (m *DeploymentResourceType) validateAccountType(formats strfmt.Registry) er
 }
 
 func (m *DeploymentResourceType) validateCreatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CreatedAt) { // not required
 		return nil
 	}
@@ -180,7 +179,6 @@ func (m *DeploymentResourceType) validateCreatedAt(formats strfmt.Registry) erro
 }
 
 func (m *DeploymentResourceType) validateUpdatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.UpdatedAt) { // not required
 		return nil
 	}
@@ -189,6 +187,11 @@ func (m *DeploymentResourceType) validateUpdatedAt(formats strfmt.Registry) erro
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validates this deployment resource type based on context it is used
+func (m *DeploymentResourceType) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

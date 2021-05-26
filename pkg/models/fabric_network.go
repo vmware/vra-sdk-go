@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -24,32 +25,40 @@ type FabricNetwork struct {
 	Links map[string]Href `json:"_links"`
 
 	// Network CIDR to be used.
+	// Example: 10.1.2.0/24
 	Cidr string `json:"cidr,omitempty"`
 
 	// Set of ids of the cloud accounts this entity belongs to.
+	// Example: [9e49]
 	// Unique: true
 	CloudAccountIds []string `json:"cloudAccountIds"`
 
 	// Date when the entity was created. The date is in ISO 8601 and UTC.
+	// Example: 2012-09-27
 	CreatedAt string `json:"createdAt,omitempty"`
 
 	// Custom properties of the fabric network instance
 	CustomProperties map[string]string `json:"customProperties,omitempty"`
 
 	// A human-friendly description.
+	// Example: my-description
 	Description string `json:"description,omitempty"`
 
 	// External entity Id on the provider side.
+	// Example: i-cfe4-e241-e53b-756a9a2e25d2
 	ExternalID string `json:"externalId,omitempty"`
 
 	// The id of the region for which this network is defined
+	// Example: us-east-1
 	ExternalRegionID string `json:"externalRegionId,omitempty"`
 
 	// The id of this resource instance
+	// Example: 9e49
 	// Required: true
 	ID *string `json:"id"`
 
 	// Network IPv6 CIDR to be used.
+	// Example: 2001:eeee:6bd:2a::1/64
 	IPV6Cidr string `json:"ipv6Cidr,omitempty"`
 
 	// Indicates whether this is the default subnet for the zone.
@@ -59,21 +68,27 @@ type FabricNetwork struct {
 	IsPublic bool `json:"isPublic,omitempty"`
 
 	// A human-friendly name used as an identifier in APIs that support this option.
+	// Example: my-name
 	Name string `json:"name,omitempty"`
 
 	// The id of the organization this entity belongs to.
+	// Example: 9e49
 	OrgID string `json:"orgId,omitempty"`
 
 	// This field is deprecated. Use orgId instead. The id of the organization this entity belongs to.
+	// Example: deprecated
 	OrganizationID string `json:"organizationId,omitempty"`
 
 	// Email of the user that owns the entity.
+	// Example: csp@vmware.com
 	Owner string `json:"owner,omitempty"`
 
 	// A set of tag keys and optional values that were set on this resource instance.
+	// Example: [ { \"key\" : \"fast-network\", \"value\": \"true\" } ]
 	Tags []*Tag `json:"tags"`
 
 	// Date when the entity was last updated. The date is ISO 8601 and UTC.
+	// Example: 2012-09-27
 	UpdatedAt string `json:"updatedAt,omitempty"`
 }
 
@@ -105,6 +120,10 @@ func (m *FabricNetwork) Validate(formats strfmt.Registry) error {
 
 func (m *FabricNetwork) validateLinks(formats strfmt.Registry) error {
 
+	if err := validate.Required("_links", "body", m.Links); err != nil {
+		return err
+	}
+
 	for k := range m.Links {
 
 		if err := validate.Required("_links"+"."+k, "body", m.Links[k]); err != nil {
@@ -122,7 +141,6 @@ func (m *FabricNetwork) validateLinks(formats strfmt.Registry) error {
 }
 
 func (m *FabricNetwork) validateCloudAccountIds(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CloudAccountIds) { // not required
 		return nil
 	}
@@ -144,7 +162,6 @@ func (m *FabricNetwork) validateID(formats strfmt.Registry) error {
 }
 
 func (m *FabricNetwork) validateTags(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Tags) { // not required
 		return nil
 	}
@@ -156,6 +173,61 @@ func (m *FabricNetwork) validateTags(formats strfmt.Registry) error {
 
 		if m.Tags[i] != nil {
 			if err := m.Tags[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this fabric network based on the context it is used
+func (m *FabricNetwork) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateLinks(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTags(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *FabricNetwork) contextValidateLinks(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.Required("_links", "body", m.Links); err != nil {
+		return err
+	}
+
+	for k := range m.Links {
+
+		if val, ok := m.Links[k]; ok {
+			if err := val.ContextValidate(ctx, formats); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *FabricNetwork) contextValidateTags(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Tags); i++ {
+
+		if m.Tags[i] != nil {
+			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
 				}

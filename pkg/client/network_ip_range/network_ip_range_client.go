@@ -25,27 +25,30 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateInternalNetworkIPRange(params *CreateInternalNetworkIPRangeParams) (*CreateInternalNetworkIPRangeCreated, *CreateInternalNetworkIPRangeAccepted, error)
+	CreateInternalNetworkIPRange(params *CreateInternalNetworkIPRangeParams, opts ...ClientOption) (*CreateInternalNetworkIPRangeCreated, error)
 
-	DeleteInternalNetworkIPRange(params *DeleteInternalNetworkIPRangeParams) (*DeleteInternalNetworkIPRangeNoContent, error)
+	DeleteInternalNetworkIPRange(params *DeleteInternalNetworkIPRangeParams, opts ...ClientOption) (*DeleteInternalNetworkIPRangeNoContent, error)
 
-	GetExternalIPBlock(params *GetExternalIPBlockParams) (*GetExternalIPBlockOK, error)
+	GetExternalIPBlock(params *GetExternalIPBlockParams, opts ...ClientOption) (*GetExternalIPBlockOK, error)
 
-	GetExternalIPBlocks(params *GetExternalIPBlocksParams) (*GetExternalIPBlocksOK, error)
+	GetExternalIPBlocks(params *GetExternalIPBlocksParams, opts ...ClientOption) (*GetExternalIPBlocksOK, error)
 
-	GetExternalNetworkIPRange(params *GetExternalNetworkIPRangeParams) (*GetExternalNetworkIPRangeOK, error)
+	GetExternalNetworkIPRange(params *GetExternalNetworkIPRangeParams, opts ...ClientOption) (*GetExternalNetworkIPRangeOK, error)
 
-	GetExternalNetworkIPRanges(params *GetExternalNetworkIPRangesParams) (*GetExternalNetworkIPRangesOK, error)
+	GetExternalNetworkIPRanges(params *GetExternalNetworkIPRangesParams, opts ...ClientOption) (*GetExternalNetworkIPRangesOK, error)
 
-	GetInternalNetworkIPRange(params *GetInternalNetworkIPRangeParams) (*GetInternalNetworkIPRangeOK, error)
+	GetInternalNetworkIPRange(params *GetInternalNetworkIPRangeParams, opts ...ClientOption) (*GetInternalNetworkIPRangeOK, error)
 
-	GetInternalNetworkIPRanges(params *GetInternalNetworkIPRangesParams) (*GetInternalNetworkIPRangesOK, error)
+	GetInternalNetworkIPRanges(params *GetInternalNetworkIPRangesParams, opts ...ClientOption) (*GetInternalNetworkIPRangesOK, error)
 
-	UpdateExternalNetworkIPRange(params *UpdateExternalNetworkIPRangeParams) (*UpdateExternalNetworkIPRangeOK, error)
+	UpdateExternalNetworkIPRange(params *UpdateExternalNetworkIPRangeParams, opts ...ClientOption) (*UpdateExternalNetworkIPRangeOK, error)
 
-	UpdateInternalNetworkIPRange(params *UpdateInternalNetworkIPRangeParams) (*UpdateInternalNetworkIPRangeOK, error)
+	UpdateInternalNetworkIPRange(params *UpdateInternalNetworkIPRangeParams, opts ...ClientOption) (*UpdateInternalNetworkIPRangeOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -55,13 +58,12 @@ type ClientService interface {
 
   Creates an internal network IP range.
 */
-func (a *Client) CreateInternalNetworkIPRange(params *CreateInternalNetworkIPRangeParams) (*CreateInternalNetworkIPRangeCreated, *CreateInternalNetworkIPRangeAccepted, error) {
+func (a *Client) CreateInternalNetworkIPRange(params *CreateInternalNetworkIPRangeParams, opts ...ClientOption) (*CreateInternalNetworkIPRangeCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateInternalNetworkIPRangeParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createInternalNetworkIPRange",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/network-ip-ranges",
@@ -72,18 +74,22 @@ func (a *Client) CreateInternalNetworkIPRange(params *CreateInternalNetworkIPRan
 		Reader:             &CreateInternalNetworkIPRangeReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
-	switch value := result.(type) {
-	case *CreateInternalNetworkIPRangeCreated:
-		return value, nil, nil
-	case *CreateInternalNetworkIPRangeAccepted:
-		return nil, value, nil
+	success, ok := result.(*CreateInternalNetworkIPRangeCreated)
+	if ok {
+		return success, nil
 	}
+	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for network_ip_range: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for createInternalNetworkIPRange: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -92,13 +98,12 @@ func (a *Client) CreateInternalNetworkIPRange(params *CreateInternalNetworkIPRan
 
   Delete internal network IP range with a given id
 */
-func (a *Client) DeleteInternalNetworkIPRange(params *DeleteInternalNetworkIPRangeParams) (*DeleteInternalNetworkIPRangeNoContent, error) {
+func (a *Client) DeleteInternalNetworkIPRange(params *DeleteInternalNetworkIPRangeParams, opts ...ClientOption) (*DeleteInternalNetworkIPRangeNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteInternalNetworkIPRangeParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteInternalNetworkIPRange",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/network-ip-ranges/{id}",
@@ -109,7 +114,12 @@ func (a *Client) DeleteInternalNetworkIPRange(params *DeleteInternalNetworkIPRan
 		Reader:             &DeleteInternalNetworkIPRangeReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -128,13 +138,12 @@ func (a *Client) DeleteInternalNetworkIPRange(params *DeleteInternalNetworkIPRan
 
   An external IP block is network coming from external IPAM provider that can be used to create subnetworks inside it
 */
-func (a *Client) GetExternalIPBlock(params *GetExternalIPBlockParams) (*GetExternalIPBlockOK, error) {
+func (a *Client) GetExternalIPBlock(params *GetExternalIPBlockParams, opts ...ClientOption) (*GetExternalIPBlockOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetExternalIPBlockParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getExternalIpBlock",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/external-ip-blocks/{id}",
@@ -145,7 +154,12 @@ func (a *Client) GetExternalIPBlock(params *GetExternalIPBlockParams) (*GetExter
 		Reader:             &GetExternalIPBlockReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -164,13 +178,12 @@ func (a *Client) GetExternalIPBlock(params *GetExternalIPBlockParams) (*GetExter
 
   An external IP block is network coming from external IPAM provider that can be used to create subnetworks inside it
 */
-func (a *Client) GetExternalIPBlocks(params *GetExternalIPBlocksParams) (*GetExternalIPBlocksOK, error) {
+func (a *Client) GetExternalIPBlocks(params *GetExternalIPBlocksParams, opts ...ClientOption) (*GetExternalIPBlocksOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetExternalIPBlocksParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getExternalIpBlocks",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/external-ip-blocks",
@@ -181,7 +194,12 @@ func (a *Client) GetExternalIPBlocks(params *GetExternalIPBlocksParams) (*GetExt
 		Reader:             &GetExternalIPBlocksReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -200,13 +218,12 @@ func (a *Client) GetExternalIPBlocks(params *GetExternalIPBlocksParams) (*GetExt
 
   Get external IPAM network IP range with a given id
 */
-func (a *Client) GetExternalNetworkIPRange(params *GetExternalNetworkIPRangeParams) (*GetExternalNetworkIPRangeOK, error) {
+func (a *Client) GetExternalNetworkIPRange(params *GetExternalNetworkIPRangeParams, opts ...ClientOption) (*GetExternalNetworkIPRangeOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetExternalNetworkIPRangeParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getExternalNetworkIPRange",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/external-network-ip-ranges/{id}",
@@ -217,7 +234,12 @@ func (a *Client) GetExternalNetworkIPRange(params *GetExternalNetworkIPRangePara
 		Reader:             &GetExternalNetworkIPRangeReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -236,13 +258,12 @@ func (a *Client) GetExternalNetworkIPRange(params *GetExternalNetworkIPRangePara
 
   Get all external IPAM network IP ranges
 */
-func (a *Client) GetExternalNetworkIPRanges(params *GetExternalNetworkIPRangesParams) (*GetExternalNetworkIPRangesOK, error) {
+func (a *Client) GetExternalNetworkIPRanges(params *GetExternalNetworkIPRangesParams, opts ...ClientOption) (*GetExternalNetworkIPRangesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetExternalNetworkIPRangesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getExternalNetworkIPRanges",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/external-network-ip-ranges",
@@ -253,7 +274,12 @@ func (a *Client) GetExternalNetworkIPRanges(params *GetExternalNetworkIPRangesPa
 		Reader:             &GetExternalNetworkIPRangesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -272,13 +298,12 @@ func (a *Client) GetExternalNetworkIPRanges(params *GetExternalNetworkIPRangesPa
 
   Get internal IPAM network IP range with a given id
 */
-func (a *Client) GetInternalNetworkIPRange(params *GetInternalNetworkIPRangeParams) (*GetInternalNetworkIPRangeOK, error) {
+func (a *Client) GetInternalNetworkIPRange(params *GetInternalNetworkIPRangeParams, opts ...ClientOption) (*GetInternalNetworkIPRangeOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetInternalNetworkIPRangeParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getInternalNetworkIPRange",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/network-ip-ranges/{id}",
@@ -289,7 +314,12 @@ func (a *Client) GetInternalNetworkIPRange(params *GetInternalNetworkIPRangePara
 		Reader:             &GetInternalNetworkIPRangeReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -308,13 +338,12 @@ func (a *Client) GetInternalNetworkIPRange(params *GetInternalNetworkIPRangePara
 
   Get all internal IPAM network IP ranges
 */
-func (a *Client) GetInternalNetworkIPRanges(params *GetInternalNetworkIPRangesParams) (*GetInternalNetworkIPRangesOK, error) {
+func (a *Client) GetInternalNetworkIPRanges(params *GetInternalNetworkIPRangesParams, opts ...ClientOption) (*GetInternalNetworkIPRangesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetInternalNetworkIPRangesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getInternalNetworkIPRanges",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/network-ip-ranges",
@@ -325,7 +354,12 @@ func (a *Client) GetInternalNetworkIPRanges(params *GetInternalNetworkIPRangesPa
 		Reader:             &GetInternalNetworkIPRangesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -344,13 +378,12 @@ func (a *Client) GetInternalNetworkIPRanges(params *GetInternalNetworkIPRangesPa
 
   Assign the external IPAM network IP range to a different network and/or change the tags of the external IPAM network IP range.
 */
-func (a *Client) UpdateExternalNetworkIPRange(params *UpdateExternalNetworkIPRangeParams) (*UpdateExternalNetworkIPRangeOK, error) {
+func (a *Client) UpdateExternalNetworkIPRange(params *UpdateExternalNetworkIPRangeParams, opts ...ClientOption) (*UpdateExternalNetworkIPRangeOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateExternalNetworkIPRangeParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "updateExternalNetworkIPRange",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/external-network-ip-ranges/{id}",
@@ -361,7 +394,12 @@ func (a *Client) UpdateExternalNetworkIPRange(params *UpdateExternalNetworkIPRan
 		Reader:             &UpdateExternalNetworkIPRangeReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -380,13 +418,12 @@ func (a *Client) UpdateExternalNetworkIPRange(params *UpdateExternalNetworkIPRan
 
   Update internal network IP range.
 */
-func (a *Client) UpdateInternalNetworkIPRange(params *UpdateInternalNetworkIPRangeParams) (*UpdateInternalNetworkIPRangeOK, error) {
+func (a *Client) UpdateInternalNetworkIPRange(params *UpdateInternalNetworkIPRangeParams, opts ...ClientOption) (*UpdateInternalNetworkIPRangeOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateInternalNetworkIPRangeParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "updateInternalNetworkIPRange",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/network-ip-ranges/{id}",
@@ -397,7 +434,12 @@ func (a *Client) UpdateInternalNetworkIPRange(params *UpdateInternalNetworkIPRan
 		Reader:             &UpdateInternalNetworkIPRangeReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -21,6 +23,7 @@ type ImageProfileSpecification struct {
 	Description string `json:"description,omitempty"`
 
 	// Image mapping defined for the corresponding region.
+	// Example: { \"ubuntu\": { \"id\": \"9e49\", \"name\": \"ami-ubuntu-16.04-1.9.1-00-1516139717\"}, \"centos\": { \"id\": \"9e50\", \"name\": \"ami-centos-7-1.13.0-00-1543963388\"}}
 	// Required: true
 	ImageMapping map[string]FabricImageDescription `json:"imageMapping"`
 
@@ -29,6 +32,7 @@ type ImageProfileSpecification struct {
 	Name *string `json:"name"`
 
 	// The id of the region for which this profile is created
+	// Example: 9e49
 	// Required: true
 	RegionID *string `json:"regionId"`
 }
@@ -56,6 +60,10 @@ func (m *ImageProfileSpecification) Validate(formats strfmt.Registry) error {
 }
 
 func (m *ImageProfileSpecification) validateImageMapping(formats strfmt.Registry) error {
+
+	if err := validate.Required("imageMapping", "body", m.ImageMapping); err != nil {
+		return err
+	}
 
 	for k := range m.ImageMapping {
 
@@ -86,6 +94,39 @@ func (m *ImageProfileSpecification) validateRegionID(formats strfmt.Registry) er
 
 	if err := validate.Required("regionId", "body", m.RegionID); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this image profile specification based on the context it is used
+func (m *ImageProfileSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateImageMapping(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ImageProfileSpecification) contextValidateImageMapping(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.Required("imageMapping", "body", m.ImageMapping); err != nil {
+		return err
+	}
+
+	for k := range m.ImageMapping {
+
+		if val, ok := m.ImageMapping[k]; ok {
+			if err := val.ContextValidate(ctx, formats); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	return nil

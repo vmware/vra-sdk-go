@@ -18,59 +18,73 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewEnumerateDomainsUsingPOSTParams creates a new EnumerateDomainsUsingPOSTParams object
-// with the default values initialized.
+// NewEnumerateDomainsUsingPOSTParams creates a new EnumerateDomainsUsingPOSTParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewEnumerateDomainsUsingPOSTParams() *EnumerateDomainsUsingPOSTParams {
-	var ()
 	return &EnumerateDomainsUsingPOSTParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewEnumerateDomainsUsingPOSTParamsWithTimeout creates a new EnumerateDomainsUsingPOSTParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewEnumerateDomainsUsingPOSTParamsWithTimeout(timeout time.Duration) *EnumerateDomainsUsingPOSTParams {
-	var ()
 	return &EnumerateDomainsUsingPOSTParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewEnumerateDomainsUsingPOSTParamsWithContext creates a new EnumerateDomainsUsingPOSTParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewEnumerateDomainsUsingPOSTParamsWithContext(ctx context.Context) *EnumerateDomainsUsingPOSTParams {
-	var ()
 	return &EnumerateDomainsUsingPOSTParams{
-
 		Context: ctx,
 	}
 }
 
 // NewEnumerateDomainsUsingPOSTParamsWithHTTPClient creates a new EnumerateDomainsUsingPOSTParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewEnumerateDomainsUsingPOSTParamsWithHTTPClient(client *http.Client) *EnumerateDomainsUsingPOSTParams {
-	var ()
 	return &EnumerateDomainsUsingPOSTParams{
 		HTTPClient: client,
 	}
 }
 
-/*EnumerateDomainsUsingPOSTParams contains all the parameters to send to the API endpoint
-for the enumerate domains using p o s t operation typically these are written to a http.Request
+/* EnumerateDomainsUsingPOSTParams contains all the parameters to send to the API endpoint
+   for the enumerate domains using p o s t operation.
+
+   Typically these are written to a http.Request.
 */
 type EnumerateDomainsUsingPOSTParams struct {
 
-	/*Input
-	  input
+	/* Input.
 
+	   input
 	*/
 	Input *models.PhotonModelEndpointConfigRequest
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the enumerate domains using p o s t params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *EnumerateDomainsUsingPOSTParams) WithDefaults() *EnumerateDomainsUsingPOSTParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the enumerate domains using p o s t params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *EnumerateDomainsUsingPOSTParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the enumerate domains using p o s t params
@@ -124,7 +138,6 @@ func (o *EnumerateDomainsUsingPOSTParams) WriteToRequest(r runtime.ClientRequest
 		return err
 	}
 	var res []error
-
 	if o.Input != nil {
 		if err := r.SetBodyParam(o.Input); err != nil {
 			return err

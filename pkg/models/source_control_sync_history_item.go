@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -137,7 +138,6 @@ func (m *SourceControlSyncHistoryItem) validateContentTypeEnum(path, location st
 }
 
 func (m *SourceControlSyncHistoryItem) validateContentType(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ContentType) { // not required
 		return nil
 	}
@@ -151,7 +151,6 @@ func (m *SourceControlSyncHistoryItem) validateContentType(formats strfmt.Regist
 }
 
 func (m *SourceControlSyncHistoryItem) validateID(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ID) { // not required
 		return nil
 	}
@@ -164,7 +163,6 @@ func (m *SourceControlSyncHistoryItem) validateID(formats strfmt.Registry) error
 }
 
 func (m *SourceControlSyncHistoryItem) validateRequestID(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.RequestID) { // not required
 		return nil
 	}
@@ -177,7 +175,6 @@ func (m *SourceControlSyncHistoryItem) validateRequestID(formats strfmt.Registry
 }
 
 func (m *SourceControlSyncHistoryItem) validateSourceID(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.SourceID) { // not required
 		return nil
 	}
@@ -190,12 +187,151 @@ func (m *SourceControlSyncHistoryItem) validateSourceID(formats strfmt.Registry)
 }
 
 func (m *SourceControlSyncHistoryItem) validateTimestamp(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Timestamp) { // not required
 		return nil
 	}
 
 	if err := validate.FormatOf("timestamp", "body", "date-time", m.Timestamp.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this source control sync history item based on the context it is used
+func (m *SourceControlSyncHistoryItem) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateContentFullPath(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateContentName(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateContentType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDetails(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateIntegrationID(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateProjectID(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateProjectName(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSourceID(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTimestamp(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *SourceControlSyncHistoryItem) contextValidateContentFullPath(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "contentFullPath", "body", string(m.ContentFullPath)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SourceControlSyncHistoryItem) contextValidateContentName(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "contentName", "body", string(m.ContentName)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SourceControlSyncHistoryItem) contextValidateContentType(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "contentType", "body", string(m.ContentType)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SourceControlSyncHistoryItem) contextValidateDetails(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "details", "body", []string(m.Details)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SourceControlSyncHistoryItem) contextValidateIntegrationID(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "integrationId", "body", string(m.IntegrationID)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SourceControlSyncHistoryItem) contextValidateProjectID(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "projectId", "body", string(m.ProjectID)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SourceControlSyncHistoryItem) contextValidateProjectName(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "projectName", "body", string(m.ProjectName)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SourceControlSyncHistoryItem) contextValidateSourceID(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "sourceId", "body", strfmt.UUID(m.SourceID)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SourceControlSyncHistoryItem) contextValidateStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "status", "body", string(m.Status)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SourceControlSyncHistoryItem) contextValidateTimestamp(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "timestamp", "body", strfmt.DateTime(m.Timestamp)); err != nil {
 		return err
 	}
 

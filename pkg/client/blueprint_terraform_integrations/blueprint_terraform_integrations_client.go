@@ -25,27 +25,30 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateBlueprintFromMappingUsingPOST1(params *CreateBlueprintFromMappingUsingPOST1Params) (*CreateBlueprintFromMappingUsingPOST1OK, error)
+	CreateBlueprintFromMappingUsingPOST1(params *CreateBlueprintFromMappingUsingPOST1Params, opts ...ClientOption) (*CreateBlueprintFromMappingUsingPOST1OK, error)
 
-	CreateBlueprintMappingUsingPOST1(params *CreateBlueprintMappingUsingPOST1Params) (*CreateBlueprintMappingUsingPOST1OK, error)
+	CreateBlueprintMappingUsingPOST1(params *CreateBlueprintMappingUsingPOST1Params, opts ...ClientOption) (*CreateBlueprintMappingUsingPOST1OK, error)
 
-	CreateTerraformVersionUsingPOST1(params *CreateTerraformVersionUsingPOST1Params) (*CreateTerraformVersionUsingPOST1Created, error)
+	CreateTerraformVersionUsingPOST1(params *CreateTerraformVersionUsingPOST1Params, opts ...ClientOption) (*CreateTerraformVersionUsingPOST1Created, error)
 
-	DeleteTerraformVersionUsingDELETE1(params *DeleteTerraformVersionUsingDELETE1Params) (*DeleteTerraformVersionUsingDELETE1NoContent, error)
+	DeleteTerraformVersionUsingDELETE1(params *DeleteTerraformVersionUsingDELETE1Params, opts ...ClientOption) (*DeleteTerraformVersionUsingDELETE1NoContent, error)
 
-	GetConfigurationSourceTreeUsingGET1(params *GetConfigurationSourceTreeUsingGET1Params) (*GetConfigurationSourceTreeUsingGET1OK, error)
+	GetConfigurationSourceTreeUsingGET1(params *GetConfigurationSourceTreeUsingGET1Params, opts ...ClientOption) (*GetConfigurationSourceTreeUsingGET1OK, error)
 
-	GetTerraformConfigurationSourceCommitListUsingGET1(params *GetTerraformConfigurationSourceCommitListUsingGET1Params) (*GetTerraformConfigurationSourceCommitListUsingGET1OK, error)
+	GetTerraformConfigurationSourceCommitListUsingGET1(params *GetTerraformConfigurationSourceCommitListUsingGET1Params, opts ...ClientOption) (*GetTerraformConfigurationSourceCommitListUsingGET1OK, error)
 
-	GetTerraformConfigurationSourcesUsingGET1(params *GetTerraformConfigurationSourcesUsingGET1Params) (*GetTerraformConfigurationSourcesUsingGET1OK, error)
+	GetTerraformConfigurationSourcesUsingGET1(params *GetTerraformConfigurationSourcesUsingGET1Params, opts ...ClientOption) (*GetTerraformConfigurationSourcesUsingGET1OK, error)
 
-	GetTerraformVersionUsingGET1(params *GetTerraformVersionUsingGET1Params) (*GetTerraformVersionUsingGET1OK, error)
+	GetTerraformVersionUsingGET1(params *GetTerraformVersionUsingGET1Params, opts ...ClientOption) (*GetTerraformVersionUsingGET1OK, error)
 
-	ListTerraformVersionsUsingGET1(params *ListTerraformVersionsUsingGET1Params) (*ListTerraformVersionsUsingGET1OK, error)
+	ListTerraformVersionsUsingGET1(params *ListTerraformVersionsUsingGET1Params, opts ...ClientOption) (*ListTerraformVersionsUsingGET1OK, error)
 
-	UpdateTerraformVersionUsingPATCH1(params *UpdateTerraformVersionUsingPATCH1Params) (*UpdateTerraformVersionUsingPATCH1OK, error)
+	UpdateTerraformVersionUsingPATCH1(params *UpdateTerraformVersionUsingPATCH1Params, opts ...ClientOption) (*UpdateTerraformVersionUsingPATCH1OK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -53,13 +56,12 @@ type ClientService interface {
 /*
   CreateBlueprintFromMappingUsingPOST1 creates a blueprint from a terraform blueprint configuration obtained from create blueprint mapping
 */
-func (a *Client) CreateBlueprintFromMappingUsingPOST1(params *CreateBlueprintFromMappingUsingPOST1Params) (*CreateBlueprintFromMappingUsingPOST1OK, error) {
+func (a *Client) CreateBlueprintFromMappingUsingPOST1(params *CreateBlueprintFromMappingUsingPOST1Params, opts ...ClientOption) (*CreateBlueprintFromMappingUsingPOST1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateBlueprintFromMappingUsingPOST1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createBlueprintFromMappingUsingPOST_1",
 		Method:             "POST",
 		PathPattern:        "/blueprint/api/blueprint-integrations/terraform/create-blueprint-from-mapping",
@@ -70,7 +72,12 @@ func (a *Client) CreateBlueprintFromMappingUsingPOST1(params *CreateBlueprintFro
 		Reader:             &CreateBlueprintFromMappingUsingPOST1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -87,13 +94,12 @@ func (a *Client) CreateBlueprintFromMappingUsingPOST1(params *CreateBlueprintFro
 /*
   CreateBlueprintMappingUsingPOST1 retrieves and parses the specified terraform configuration file s and returns relevant information for blueprint construction
 */
-func (a *Client) CreateBlueprintMappingUsingPOST1(params *CreateBlueprintMappingUsingPOST1Params) (*CreateBlueprintMappingUsingPOST1OK, error) {
+func (a *Client) CreateBlueprintMappingUsingPOST1(params *CreateBlueprintMappingUsingPOST1Params, opts ...ClientOption) (*CreateBlueprintMappingUsingPOST1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateBlueprintMappingUsingPOST1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createBlueprintMappingUsingPOST_1",
 		Method:             "POST",
 		PathPattern:        "/blueprint/api/blueprint-integrations/terraform/create-blueprint-mapping",
@@ -104,7 +110,12 @@ func (a *Client) CreateBlueprintMappingUsingPOST1(params *CreateBlueprintMapping
 		Reader:             &CreateBlueprintMappingUsingPOST1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -121,13 +132,12 @@ func (a *Client) CreateBlueprintMappingUsingPOST1(params *CreateBlueprintMapping
 /*
   CreateTerraformVersionUsingPOST1 creates a version
 */
-func (a *Client) CreateTerraformVersionUsingPOST1(params *CreateTerraformVersionUsingPOST1Params) (*CreateTerraformVersionUsingPOST1Created, error) {
+func (a *Client) CreateTerraformVersionUsingPOST1(params *CreateTerraformVersionUsingPOST1Params, opts ...ClientOption) (*CreateTerraformVersionUsingPOST1Created, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateTerraformVersionUsingPOST1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createTerraformVersionUsingPOST_1",
 		Method:             "POST",
 		PathPattern:        "/blueprint/api/blueprint-integrations/terraform/versions",
@@ -138,7 +148,12 @@ func (a *Client) CreateTerraformVersionUsingPOST1(params *CreateTerraformVersion
 		Reader:             &CreateTerraformVersionUsingPOST1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -155,13 +170,12 @@ func (a *Client) CreateTerraformVersionUsingPOST1(params *CreateTerraformVersion
 /*
   DeleteTerraformVersionUsingDELETE1 deletes a terraform version
 */
-func (a *Client) DeleteTerraformVersionUsingDELETE1(params *DeleteTerraformVersionUsingDELETE1Params) (*DeleteTerraformVersionUsingDELETE1NoContent, error) {
+func (a *Client) DeleteTerraformVersionUsingDELETE1(params *DeleteTerraformVersionUsingDELETE1Params, opts ...ClientOption) (*DeleteTerraformVersionUsingDELETE1NoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteTerraformVersionUsingDELETE1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteTerraformVersionUsingDELETE_1",
 		Method:             "DELETE",
 		PathPattern:        "/blueprint/api/blueprint-integrations/terraform/versions/{versionId}",
@@ -172,7 +186,12 @@ func (a *Client) DeleteTerraformVersionUsingDELETE1(params *DeleteTerraformVersi
 		Reader:             &DeleteTerraformVersionUsingDELETE1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -189,13 +208,12 @@ func (a *Client) DeleteTerraformVersionUsingDELETE1(params *DeleteTerraformVersi
 /*
   GetConfigurationSourceTreeUsingGET1 shows directories of the configuration source repository that correspond to terraform configurations
 */
-func (a *Client) GetConfigurationSourceTreeUsingGET1(params *GetConfigurationSourceTreeUsingGET1Params) (*GetConfigurationSourceTreeUsingGET1OK, error) {
+func (a *Client) GetConfigurationSourceTreeUsingGET1(params *GetConfigurationSourceTreeUsingGET1Params, opts ...ClientOption) (*GetConfigurationSourceTreeUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetConfigurationSourceTreeUsingGET1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getConfigurationSourceTreeUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/blueprint/api/blueprint-integrations/terraform/get-configuration-source-tree",
@@ -206,7 +224,12 @@ func (a *Client) GetConfigurationSourceTreeUsingGET1(params *GetConfigurationSou
 		Reader:             &GetConfigurationSourceTreeUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -223,13 +246,12 @@ func (a *Client) GetConfigurationSourceTreeUsingGET1(params *GetConfigurationSou
 /*
   GetTerraformConfigurationSourceCommitListUsingGET1 returns a paginated list of commits for a specified configuration source
 */
-func (a *Client) GetTerraformConfigurationSourceCommitListUsingGET1(params *GetTerraformConfigurationSourceCommitListUsingGET1Params) (*GetTerraformConfigurationSourceCommitListUsingGET1OK, error) {
+func (a *Client) GetTerraformConfigurationSourceCommitListUsingGET1(params *GetTerraformConfigurationSourceCommitListUsingGET1Params, opts ...ClientOption) (*GetTerraformConfigurationSourceCommitListUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetTerraformConfigurationSourceCommitListUsingGET1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getTerraformConfigurationSourceCommitListUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/blueprint/api/blueprint-integrations/terraform/get-configuration-source-commits",
@@ -240,7 +262,12 @@ func (a *Client) GetTerraformConfigurationSourceCommitListUsingGET1(params *GetT
 		Reader:             &GetTerraformConfigurationSourceCommitListUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -257,13 +284,12 @@ func (a *Client) GetTerraformConfigurationSourceCommitListUsingGET1(params *GetT
 /*
   GetTerraformConfigurationSourcesUsingGET1 returns a paginated list of configuration sources configured as storage for terraform configurations
 */
-func (a *Client) GetTerraformConfigurationSourcesUsingGET1(params *GetTerraformConfigurationSourcesUsingGET1Params) (*GetTerraformConfigurationSourcesUsingGET1OK, error) {
+func (a *Client) GetTerraformConfigurationSourcesUsingGET1(params *GetTerraformConfigurationSourcesUsingGET1Params, opts ...ClientOption) (*GetTerraformConfigurationSourcesUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetTerraformConfigurationSourcesUsingGET1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getTerraformConfigurationSourcesUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/blueprint/api/blueprint-integrations/terraform/get-configuration-sources",
@@ -274,7 +300,12 @@ func (a *Client) GetTerraformConfigurationSourcesUsingGET1(params *GetTerraformC
 		Reader:             &GetTerraformConfigurationSourcesUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -291,13 +322,12 @@ func (a *Client) GetTerraformConfigurationSourcesUsingGET1(params *GetTerraformC
 /*
   GetTerraformVersionUsingGET1 returns terraform version details
 */
-func (a *Client) GetTerraformVersionUsingGET1(params *GetTerraformVersionUsingGET1Params) (*GetTerraformVersionUsingGET1OK, error) {
+func (a *Client) GetTerraformVersionUsingGET1(params *GetTerraformVersionUsingGET1Params, opts ...ClientOption) (*GetTerraformVersionUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetTerraformVersionUsingGET1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getTerraformVersionUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/blueprint/api/blueprint-integrations/terraform/versions/{versionId}",
@@ -308,7 +338,12 @@ func (a *Client) GetTerraformVersionUsingGET1(params *GetTerraformVersionUsingGE
 		Reader:             &GetTerraformVersionUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -325,13 +360,12 @@ func (a *Client) GetTerraformVersionUsingGET1(params *GetTerraformVersionUsingGE
 /*
   ListTerraformVersionsUsingGET1 lists terraform versions
 */
-func (a *Client) ListTerraformVersionsUsingGET1(params *ListTerraformVersionsUsingGET1Params) (*ListTerraformVersionsUsingGET1OK, error) {
+func (a *Client) ListTerraformVersionsUsingGET1(params *ListTerraformVersionsUsingGET1Params, opts ...ClientOption) (*ListTerraformVersionsUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewListTerraformVersionsUsingGET1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "listTerraformVersionsUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/blueprint/api/blueprint-integrations/terraform/versions",
@@ -342,7 +376,12 @@ func (a *Client) ListTerraformVersionsUsingGET1(params *ListTerraformVersionsUsi
 		Reader:             &ListTerraformVersionsUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -359,13 +398,12 @@ func (a *Client) ListTerraformVersionsUsingGET1(params *ListTerraformVersionsUsi
 /*
   UpdateTerraformVersionUsingPATCH1 updates a terraform version
 */
-func (a *Client) UpdateTerraformVersionUsingPATCH1(params *UpdateTerraformVersionUsingPATCH1Params) (*UpdateTerraformVersionUsingPATCH1OK, error) {
+func (a *Client) UpdateTerraformVersionUsingPATCH1(params *UpdateTerraformVersionUsingPATCH1Params, opts ...ClientOption) (*UpdateTerraformVersionUsingPATCH1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateTerraformVersionUsingPATCH1Params()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "updateTerraformVersionUsingPATCH_1",
 		Method:             "PATCH",
 		PathPattern:        "/blueprint/api/blueprint-integrations/terraform/versions/{versionId}",
@@ -376,7 +414,12 @@ func (a *Client) UpdateTerraformVersionUsingPATCH1(params *UpdateTerraformVersio
 		Reader:             &UpdateTerraformVersionUsingPATCH1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

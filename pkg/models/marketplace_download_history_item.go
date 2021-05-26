@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -124,7 +125,6 @@ func (m *MarketplaceDownloadHistoryItem) validateContentTypeEnum(path, location 
 }
 
 func (m *MarketplaceDownloadHistoryItem) validateContentType(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ContentType) { // not required
 		return nil
 	}
@@ -138,7 +138,6 @@ func (m *MarketplaceDownloadHistoryItem) validateContentType(formats strfmt.Regi
 }
 
 func (m *MarketplaceDownloadHistoryItem) validateDownloadedOn(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.DownloadedOn) { // not required
 		return nil
 	}
@@ -180,7 +179,6 @@ func (m *MarketplaceDownloadHistoryItem) validateStatusEnum(path, location strin
 }
 
 func (m *MarketplaceDownloadHistoryItem) validateStatus(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Status) { // not required
 		return nil
 	}
@@ -220,7 +218,6 @@ func (m *MarketplaceDownloadHistoryItem) validateTargetTypeEnum(path, location s
 }
 
 func (m *MarketplaceDownloadHistoryItem) validateTargetType(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.TargetType) { // not required
 		return nil
 	}
@@ -234,7 +231,6 @@ func (m *MarketplaceDownloadHistoryItem) validateTargetType(formats strfmt.Regis
 }
 
 func (m *MarketplaceDownloadHistoryItem) validateUpdatedOn(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.UpdatedOn) { // not required
 		return nil
 	}
@@ -243,6 +239,11 @@ func (m *MarketplaceDownloadHistoryItem) validateUpdatedOn(formats strfmt.Regist
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validates this marketplace download history item based on context it is used
+func (m *MarketplaceDownloadHistoryItem) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

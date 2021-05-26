@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -51,7 +52,6 @@ func (m *MarketplaceFilterEntries) Validate(formats strfmt.Registry) error {
 }
 
 func (m *MarketplaceFilterEntries) validateContent(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Content) { // not required
 		return nil
 	}
@@ -76,7 +76,6 @@ func (m *MarketplaceFilterEntries) validateContent(formats strfmt.Registry) erro
 }
 
 func (m *MarketplaceFilterEntries) validateLinks(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Links) { // not required
 		return nil
 	}
@@ -101,13 +100,84 @@ func (m *MarketplaceFilterEntries) validateLinks(formats strfmt.Registry) error 
 }
 
 func (m *MarketplaceFilterEntries) validatePage(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Page) { // not required
 		return nil
 	}
 
 	if m.Page != nil {
 		if err := m.Page.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("page")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this marketplace filter entries based on the context it is used
+func (m *MarketplaceFilterEntries) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateContent(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateLinks(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidatePage(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *MarketplaceFilterEntries) contextValidateContent(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Content); i++ {
+
+		if m.Content[i] != nil {
+			if err := m.Content[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("content" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *MarketplaceFilterEntries) contextValidateLinks(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Links); i++ {
+
+		if m.Links[i] != nil {
+			if err := m.Links[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("links" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *MarketplaceFilterEntries) contextValidatePage(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Page != nil {
+		if err := m.Page.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("page")
 			}

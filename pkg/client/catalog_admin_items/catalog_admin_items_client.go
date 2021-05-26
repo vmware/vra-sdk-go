@@ -25,13 +25,16 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetCatalogItemUsingGET(params *GetCatalogItemUsingGETParams) (*GetCatalogItemUsingGETOK, error)
+	GetCatalogItemUsingGET(params *GetCatalogItemUsingGETParams, opts ...ClientOption) (*GetCatalogItemUsingGETOK, error)
 
-	GetCatalogItemsUsingGET(params *GetCatalogItemsUsingGETParams) (*GetCatalogItemsUsingGETOK, error)
+	GetCatalogItemsUsingGET(params *GetCatalogItemsUsingGETParams, opts ...ClientOption) (*GetCatalogItemsUsingGETOK, error)
 
-	UpdateCatalogItemUsingPATCH(params *UpdateCatalogItemUsingPATCHParams) (*UpdateCatalogItemUsingPATCHOK, error)
+	UpdateCatalogItemUsingPATCH(params *UpdateCatalogItemUsingPATCHParams, opts ...ClientOption) (*UpdateCatalogItemUsingPATCHOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -41,13 +44,12 @@ type ClientService interface {
 
   Returns the catalog item with the specified id.
 */
-func (a *Client) GetCatalogItemUsingGET(params *GetCatalogItemUsingGETParams) (*GetCatalogItemUsingGETOK, error) {
+func (a *Client) GetCatalogItemUsingGET(params *GetCatalogItemUsingGETParams, opts ...ClientOption) (*GetCatalogItemUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCatalogItemUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getCatalogItemUsingGET",
 		Method:             "GET",
 		PathPattern:        "/catalog/api/admin/items/{id}",
@@ -58,7 +60,12 @@ func (a *Client) GetCatalogItemUsingGET(params *GetCatalogItemUsingGETParams) (*
 		Reader:             &GetCatalogItemUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -77,13 +84,12 @@ func (a *Client) GetCatalogItemUsingGET(params *GetCatalogItemUsingGETParams) (*
 
   Returns a paginated list of catalog items.
 */
-func (a *Client) GetCatalogItemsUsingGET(params *GetCatalogItemsUsingGETParams) (*GetCatalogItemsUsingGETOK, error) {
+func (a *Client) GetCatalogItemsUsingGET(params *GetCatalogItemsUsingGETParams, opts ...ClientOption) (*GetCatalogItemsUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetCatalogItemsUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getCatalogItemsUsingGET",
 		Method:             "GET",
 		PathPattern:        "/catalog/api/admin/items",
@@ -94,7 +100,12 @@ func (a *Client) GetCatalogItemsUsingGET(params *GetCatalogItemsUsingGETParams) 
 		Reader:             &GetCatalogItemsUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -113,13 +124,12 @@ func (a *Client) GetCatalogItemsUsingGET(params *GetCatalogItemsUsingGETParams) 
 
   Updates a catalog item with specified icon id or request limit.
 */
-func (a *Client) UpdateCatalogItemUsingPATCH(params *UpdateCatalogItemUsingPATCHParams) (*UpdateCatalogItemUsingPATCHOK, error) {
+func (a *Client) UpdateCatalogItemUsingPATCH(params *UpdateCatalogItemUsingPATCHParams, opts ...ClientOption) (*UpdateCatalogItemUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateCatalogItemUsingPATCHParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "updateCatalogItemUsingPATCH",
 		Method:             "PATCH",
 		PathPattern:        "/catalog/api/admin/items/{id}",
@@ -130,7 +140,12 @@ func (a *Client) UpdateCatalogItemUsingPATCH(params *UpdateCatalogItemUsingPATCH
 		Reader:             &UpdateCatalogItemUsingPATCHReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

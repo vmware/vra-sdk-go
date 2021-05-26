@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -20,15 +21,22 @@ import (
 type StorageProfileAzureSpecification struct {
 
 	// Indicates the caching mechanism for additional disk.
+	// Example: None / ReadOnly / ReadWrite
 	DataDiskCaching string `json:"dataDiskCaching,omitempty"`
 
 	// Indicates if a storage policy contains default storage properties.
+	// Example: true
 	DefaultItem bool `json:"defaultItem,omitempty"`
 
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
 
+	// Indicates the id of disk encryption set.
+	// Example: /subscriptions/b8ef63/resourceGroups/DiskEncryptionSets/providers/Microsoft.Compute/diskEncryptionSets/MyDES
+	DiskEncryptionSetID string `json:"diskEncryptionSetId,omitempty"`
+
 	// Indicates the performance tier for the storage type. Premium disks are SSD backed and Standard disks are HDD backed.
+	// Example: Standard_LRS / Premium_LRS
 	DiskType string `json:"diskType,omitempty"`
 
 	// A human-friendly name used as an identifier in APIs that support this option.
@@ -36,19 +44,24 @@ type StorageProfileAzureSpecification struct {
 	Name *string `json:"name"`
 
 	// Indicates the caching mechanism for OS disk. Default policy for OS disks is Read/Write.
+	// Example: None / ReadOnly / ReadWrite
 	OsDiskCaching string `json:"osDiskCaching,omitempty"`
 
 	// The If of the region that is associated with the storage profile.
+	// Example: 31186
 	// Required: true
 	RegionID *string `json:"regionId"`
 
 	// Id of a storage account where in the disk is placed.
+	// Example: aaa82
 	StorageAccountID string `json:"storageAccountId,omitempty"`
 
 	// Indicates whether this storage policy should support encryption or not.
+	// Example: false
 	SupportsEncryption bool `json:"supportsEncryption,omitempty"`
 
 	// A set of tag keys and optional values for a storage policy which define set of specifications for creating a disk.
+	// Example: [ { \"key\" : \"tier\", \"value\": \"silver\" } ]
 	Tags []*Tag `json:"tags"`
 }
 
@@ -93,7 +106,6 @@ func (m *StorageProfileAzureSpecification) validateRegionID(formats strfmt.Regis
 }
 
 func (m *StorageProfileAzureSpecification) validateTags(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Tags) { // not required
 		return nil
 	}
@@ -105,6 +117,38 @@ func (m *StorageProfileAzureSpecification) validateTags(formats strfmt.Registry)
 
 		if m.Tags[i] != nil {
 			if err := m.Tags[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this storage profile azure specification based on the context it is used
+func (m *StorageProfileAzureSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateTags(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *StorageProfileAzureSpecification) contextValidateTags(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Tags); i++ {
+
+		if m.Tags[i] != nil {
+			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
 				}

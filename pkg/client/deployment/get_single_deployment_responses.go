@@ -41,7 +41,6 @@ func (o *GetSingleDeploymentReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetSingleDeploymentOK() *GetSingleDeploymentOK {
 	return &GetSingleDeploymentOK{}
 }
 
-/*GetSingleDeploymentOK handles this case with default header values.
+/* GetSingleDeploymentOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type GetSingleDeploymentOK struct {
 func (o *GetSingleDeploymentOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/deployments/{id}][%d] getSingleDeploymentOK  %+v", 200, o.Payload)
 }
-
 func (o *GetSingleDeploymentOK) GetPayload() *models.IaaSDeployment {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewGetSingleDeploymentForbidden() *GetSingleDeploymentForbidden {
 	return &GetSingleDeploymentForbidden{}
 }
 
-/*GetSingleDeploymentForbidden handles this case with default header values.
+/* GetSingleDeploymentForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetSingleDeploymentForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetSingleDeploymentForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/deployments/{id}][%d] getSingleDeploymentForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/deployments/{id}][%d] getSingleDeploymentForbidden  %+v", 403, o.Payload)
+}
+func (o *GetSingleDeploymentForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetSingleDeploymentForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewGetSingleDeploymentNotFound() *GetSingleDeploymentNotFound {
 	return &GetSingleDeploymentNotFound{}
 }
 
-/*GetSingleDeploymentNotFound handles this case with default header values.
+/* GetSingleDeploymentNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type GetSingleDeploymentNotFound struct {
 func (o *GetSingleDeploymentNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/deployments/{id}][%d] getSingleDeploymentNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetSingleDeploymentNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

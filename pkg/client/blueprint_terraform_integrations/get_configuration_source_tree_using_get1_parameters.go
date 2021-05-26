@@ -16,69 +16,87 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetConfigurationSourceTreeUsingGET1Params creates a new GetConfigurationSourceTreeUsingGET1Params object
-// with the default values initialized.
+// NewGetConfigurationSourceTreeUsingGET1Params creates a new GetConfigurationSourceTreeUsingGET1Params object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetConfigurationSourceTreeUsingGET1Params() *GetConfigurationSourceTreeUsingGET1Params {
-	var ()
 	return &GetConfigurationSourceTreeUsingGET1Params{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetConfigurationSourceTreeUsingGET1ParamsWithTimeout creates a new GetConfigurationSourceTreeUsingGET1Params object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetConfigurationSourceTreeUsingGET1ParamsWithTimeout(timeout time.Duration) *GetConfigurationSourceTreeUsingGET1Params {
-	var ()
 	return &GetConfigurationSourceTreeUsingGET1Params{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetConfigurationSourceTreeUsingGET1ParamsWithContext creates a new GetConfigurationSourceTreeUsingGET1Params object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetConfigurationSourceTreeUsingGET1ParamsWithContext(ctx context.Context) *GetConfigurationSourceTreeUsingGET1Params {
-	var ()
 	return &GetConfigurationSourceTreeUsingGET1Params{
-
 		Context: ctx,
 	}
 }
 
 // NewGetConfigurationSourceTreeUsingGET1ParamsWithHTTPClient creates a new GetConfigurationSourceTreeUsingGET1Params object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetConfigurationSourceTreeUsingGET1ParamsWithHTTPClient(client *http.Client) *GetConfigurationSourceTreeUsingGET1Params {
-	var ()
 	return &GetConfigurationSourceTreeUsingGET1Params{
 		HTTPClient: client,
 	}
 }
 
-/*GetConfigurationSourceTreeUsingGET1Params contains all the parameters to send to the API endpoint
-for the get configuration source tree using get1 operation typically these are written to a http.Request
+/* GetConfigurationSourceTreeUsingGET1Params contains all the parameters to send to the API endpoint
+   for the get configuration source tree using get1 operation.
+
+   Typically these are written to a http.Request.
 */
 type GetConfigurationSourceTreeUsingGET1Params struct {
 
-	/*CommitID
-	  The commit ID corresponding to the version of the configuration source.
+	/* CommitID.
 
+	   The commit ID corresponding to the version of the configuration source.
 	*/
 	CommitID *string
-	/*ConfigurationSourceID
-	  The ID of the configuration source to inspect.
 
+	/* ConfigurationSourceID.
+
+	   The ID of the configuration source to inspect.
+
+	   Format: uuid
 	*/
 	ConfigurationSourceID strfmt.UUID
-	/*Path
-	  A file path prefix. The prefix is interpreted in the context of the configuration source's path prefix. Results will only include directories under this path.
 
+	/* Path.
+
+	   A file path prefix. The prefix is interpreted in the context of the configuration source's path prefix. Results will only include directories under this path.
 	*/
 	Path *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get configuration source tree using get1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetConfigurationSourceTreeUsingGET1Params) WithDefaults() *GetConfigurationSourceTreeUsingGET1Params {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get configuration source tree using get1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetConfigurationSourceTreeUsingGET1Params) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get configuration source tree using get1 params
@@ -159,22 +177,24 @@ func (o *GetConfigurationSourceTreeUsingGET1Params) WriteToRequest(r runtime.Cli
 
 		// query param commitId
 		var qrCommitID string
+
 		if o.CommitID != nil {
 			qrCommitID = *o.CommitID
 		}
 		qCommitID := qrCommitID
 		if qCommitID != "" {
+
 			if err := r.SetQueryParam("commitId", qCommitID); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// query param configurationSourceId
 	qrConfigurationSourceID := o.ConfigurationSourceID
 	qConfigurationSourceID := qrConfigurationSourceID.String()
 	if qConfigurationSourceID != "" {
+
 		if err := r.SetQueryParam("configurationSourceId", qConfigurationSourceID); err != nil {
 			return err
 		}
@@ -184,16 +204,17 @@ func (o *GetConfigurationSourceTreeUsingGET1Params) WriteToRequest(r runtime.Cli
 
 		// query param path
 		var qrPath string
+
 		if o.Path != nil {
 			qrPath = *o.Path
 		}
 		qPath := qrPath
 		if qPath != "" {
+
 			if err := r.SetQueryParam("path", qPath); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

@@ -16,69 +16,85 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetLoadBalancerNetworkInterfaceParams creates a new GetLoadBalancerNetworkInterfaceParams object
-// with the default values initialized.
+// NewGetLoadBalancerNetworkInterfaceParams creates a new GetLoadBalancerNetworkInterfaceParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetLoadBalancerNetworkInterfaceParams() *GetLoadBalancerNetworkInterfaceParams {
-	var ()
 	return &GetLoadBalancerNetworkInterfaceParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetLoadBalancerNetworkInterfaceParamsWithTimeout creates a new GetLoadBalancerNetworkInterfaceParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetLoadBalancerNetworkInterfaceParamsWithTimeout(timeout time.Duration) *GetLoadBalancerNetworkInterfaceParams {
-	var ()
 	return &GetLoadBalancerNetworkInterfaceParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetLoadBalancerNetworkInterfaceParamsWithContext creates a new GetLoadBalancerNetworkInterfaceParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetLoadBalancerNetworkInterfaceParamsWithContext(ctx context.Context) *GetLoadBalancerNetworkInterfaceParams {
-	var ()
 	return &GetLoadBalancerNetworkInterfaceParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetLoadBalancerNetworkInterfaceParamsWithHTTPClient creates a new GetLoadBalancerNetworkInterfaceParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetLoadBalancerNetworkInterfaceParamsWithHTTPClient(client *http.Client) *GetLoadBalancerNetworkInterfaceParams {
-	var ()
 	return &GetLoadBalancerNetworkInterfaceParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetLoadBalancerNetworkInterfaceParams contains all the parameters to send to the API endpoint
-for the get load balancer network interface operation typically these are written to a http.Request
+/* GetLoadBalancerNetworkInterfaceParams contains all the parameters to send to the API endpoint
+   for the get load balancer network interface operation.
+
+   Typically these are written to a http.Request.
 */
 type GetLoadBalancerNetworkInterfaceParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*ID
-	  The ID of the load balancer.
 
+	/* ID.
+
+	   The ID of the load balancer.
 	*/
 	ID string
-	/*Id1
-	  The ID of the network interface.
 
+	/* Id1.
+
+	   The ID of the network interface.
 	*/
 	Id1 string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get load balancer network interface params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetLoadBalancerNetworkInterfaceParams) WithDefaults() *GetLoadBalancerNetworkInterfaceParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get load balancer network interface params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetLoadBalancerNetworkInterfaceParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get load balancer network interface params
@@ -159,16 +175,17 @@ func (o *GetLoadBalancerNetworkInterfaceParams) WriteToRequest(r runtime.ClientR
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id

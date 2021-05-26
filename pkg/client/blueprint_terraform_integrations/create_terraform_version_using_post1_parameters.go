@@ -18,59 +18,73 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewCreateTerraformVersionUsingPOST1Params creates a new CreateTerraformVersionUsingPOST1Params object
-// with the default values initialized.
+// NewCreateTerraformVersionUsingPOST1Params creates a new CreateTerraformVersionUsingPOST1Params object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewCreateTerraformVersionUsingPOST1Params() *CreateTerraformVersionUsingPOST1Params {
-	var ()
 	return &CreateTerraformVersionUsingPOST1Params{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewCreateTerraformVersionUsingPOST1ParamsWithTimeout creates a new CreateTerraformVersionUsingPOST1Params object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewCreateTerraformVersionUsingPOST1ParamsWithTimeout(timeout time.Duration) *CreateTerraformVersionUsingPOST1Params {
-	var ()
 	return &CreateTerraformVersionUsingPOST1Params{
-
 		timeout: timeout,
 	}
 }
 
 // NewCreateTerraformVersionUsingPOST1ParamsWithContext creates a new CreateTerraformVersionUsingPOST1Params object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewCreateTerraformVersionUsingPOST1ParamsWithContext(ctx context.Context) *CreateTerraformVersionUsingPOST1Params {
-	var ()
 	return &CreateTerraformVersionUsingPOST1Params{
-
 		Context: ctx,
 	}
 }
 
 // NewCreateTerraformVersionUsingPOST1ParamsWithHTTPClient creates a new CreateTerraformVersionUsingPOST1Params object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewCreateTerraformVersionUsingPOST1ParamsWithHTTPClient(client *http.Client) *CreateTerraformVersionUsingPOST1Params {
-	var ()
 	return &CreateTerraformVersionUsingPOST1Params{
 		HTTPClient: client,
 	}
 }
 
-/*CreateTerraformVersionUsingPOST1Params contains all the parameters to send to the API endpoint
-for the create terraform version using p o s t 1 operation typically these are written to a http.Request
+/* CreateTerraformVersionUsingPOST1Params contains all the parameters to send to the API endpoint
+   for the create terraform version using p o s t 1 operation.
+
+   Typically these are written to a http.Request.
 */
 type CreateTerraformVersionUsingPOST1Params struct {
 
-	/*TerraformVersion
-	  Terraform version
+	/* TerraformVersion.
 
+	   Terraform version
 	*/
 	TerraformVersion *models.TerraformVersion
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the create terraform version using p o s t 1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateTerraformVersionUsingPOST1Params) WithDefaults() *CreateTerraformVersionUsingPOST1Params {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the create terraform version using p o s t 1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateTerraformVersionUsingPOST1Params) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the create terraform version using p o s t 1 params
@@ -124,7 +138,6 @@ func (o *CreateTerraformVersionUsingPOST1Params) WriteToRequest(r runtime.Client
 		return err
 	}
 	var res []error
-
 	if o.TerraformVersion != nil {
 		if err := r.SetBodyParam(o.TerraformVersion); err != nil {
 			return err

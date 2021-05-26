@@ -17,94 +17,121 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewListBlueprintVersionsUsingGETParams creates a new ListBlueprintVersionsUsingGETParams object
-// with the default values initialized.
+// NewListBlueprintVersionsUsingGETParams creates a new ListBlueprintVersionsUsingGETParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewListBlueprintVersionsUsingGETParams() *ListBlueprintVersionsUsingGETParams {
-	var ()
 	return &ListBlueprintVersionsUsingGETParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewListBlueprintVersionsUsingGETParamsWithTimeout creates a new ListBlueprintVersionsUsingGETParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewListBlueprintVersionsUsingGETParamsWithTimeout(timeout time.Duration) *ListBlueprintVersionsUsingGETParams {
-	var ()
 	return &ListBlueprintVersionsUsingGETParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewListBlueprintVersionsUsingGETParamsWithContext creates a new ListBlueprintVersionsUsingGETParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewListBlueprintVersionsUsingGETParamsWithContext(ctx context.Context) *ListBlueprintVersionsUsingGETParams {
-	var ()
 	return &ListBlueprintVersionsUsingGETParams{
-
 		Context: ctx,
 	}
 }
 
 // NewListBlueprintVersionsUsingGETParamsWithHTTPClient creates a new ListBlueprintVersionsUsingGETParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewListBlueprintVersionsUsingGETParamsWithHTTPClient(client *http.Client) *ListBlueprintVersionsUsingGETParams {
-	var ()
 	return &ListBlueprintVersionsUsingGETParams{
 		HTTPClient: client,
 	}
 }
 
-/*ListBlueprintVersionsUsingGETParams contains all the parameters to send to the API endpoint
-for the list blueprint versions using g e t operation typically these are written to a http.Request
+/* ListBlueprintVersionsUsingGETParams contains all the parameters to send to the API endpoint
+   for the list blueprint versions using g e t operation.
+
+   Typically these are written to a http.Request.
 */
 type ListBlueprintVersionsUsingGETParams struct {
 
-	/*DollarOrderby
-	  Sorting criteria in the format: property (asc|desc). Default sort order is descending on updatedAt. Sorting is supported on fields createdAt, updatedAt, createdBy, updatedBy, name, version.
+	/* DollarOrderby.
 
+	   Sorting criteria in the format: property (asc|desc). Default sort order is descending on updatedAt. Sorting is supported on fields createdAt, updatedAt, createdBy, updatedBy, name, version.
 	*/
 	DollarOrderby []string
-	/*DollarSelect
-	  Fields to include in content. Use * to get all fields.
 
+	/* DollarSelect.
+
+	   Fields to include in content. Use * to get all fields.
 	*/
 	DollarSelect []string
-	/*DollarSkip
-	  Number of records you want to skip
 
+	/* DollarSkip.
+
+	   Number of records you want to skip
+
+	   Format: int32
 	*/
 	DollarSkip *int32
-	/*DollarTop
-	  Number of records you want
 
+	/* DollarTop.
+
+	   Number of records you want
+
+	   Format: int32
 	*/
 	DollarTop *int32
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about
 
+	/* APIVersion.
+
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about
 	*/
 	APIVersion *string
-	/*BlueprintID
-	  blueprintId
 
+	/* BlueprintID.
+
+	   blueprintId
+
+	   Format: uuid
 	*/
 	BlueprintID strfmt.UUID
-	/*Status
-	  Filter by blueprint status: versioned / released
 
+	/* Status.
+
+	   Filter by blueprint status: versioned / released
 	*/
 	Status *string
-	/*Version
-	  Filter by version
 
+	/* Version.
+
+	   Filter by version
 	*/
 	Version *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the list blueprint versions using get params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ListBlueprintVersionsUsingGETParams) WithDefaults() *ListBlueprintVersionsUsingGETParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the list blueprint versions using get params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ListBlueprintVersionsUsingGETParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the list blueprint versions using get params
@@ -236,68 +263,77 @@ func (o *ListBlueprintVersionsUsingGETParams) WriteToRequest(r runtime.ClientReq
 	}
 	var res []error
 
-	valuesDollarOrderby := o.DollarOrderby
+	if o.DollarOrderby != nil {
 
-	joinedDollarOrderby := swag.JoinByFormat(valuesDollarOrderby, "multi")
-	// query array param $orderby
-	if err := r.SetQueryParam("$orderby", joinedDollarOrderby...); err != nil {
-		return err
+		// binding items for $orderby
+		joinedDollarOrderby := o.bindParamDollarOrderby(reg)
+
+		// query array param $orderby
+		if err := r.SetQueryParam("$orderby", joinedDollarOrderby...); err != nil {
+			return err
+		}
 	}
 
-	valuesDollarSelect := o.DollarSelect
+	if o.DollarSelect != nil {
 
-	joinedDollarSelect := swag.JoinByFormat(valuesDollarSelect, "multi")
-	// query array param $select
-	if err := r.SetQueryParam("$select", joinedDollarSelect...); err != nil {
-		return err
+		// binding items for $select
+		joinedDollarSelect := o.bindParamDollarSelect(reg)
+
+		// query array param $select
+		if err := r.SetQueryParam("$select", joinedDollarSelect...); err != nil {
+			return err
+		}
 	}
 
 	if o.DollarSkip != nil {
 
 		// query param $skip
 		var qrDollarSkip int32
+
 		if o.DollarSkip != nil {
 			qrDollarSkip = *o.DollarSkip
 		}
 		qDollarSkip := swag.FormatInt32(qrDollarSkip)
 		if qDollarSkip != "" {
+
 			if err := r.SetQueryParam("$skip", qDollarSkip); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.DollarTop != nil {
 
 		// query param $top
 		var qrDollarTop int32
+
 		if o.DollarTop != nil {
 			qrDollarTop = *o.DollarTop
 		}
 		qDollarTop := swag.FormatInt32(qrDollarTop)
 		if qDollarTop != "" {
+
 			if err := r.SetQueryParam("$top", qDollarTop); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.APIVersion != nil {
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param blueprintId
@@ -309,36 +345,72 @@ func (o *ListBlueprintVersionsUsingGETParams) WriteToRequest(r runtime.ClientReq
 
 		// query param status
 		var qrStatus string
+
 		if o.Status != nil {
 			qrStatus = *o.Status
 		}
 		qStatus := qrStatus
 		if qStatus != "" {
+
 			if err := r.SetQueryParam("status", qStatus); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Version != nil {
 
 		// query param version
 		var qrVersion string
+
 		if o.Version != nil {
 			qrVersion = *o.Version
 		}
 		qVersion := qrVersion
 		if qVersion != "" {
+
 			if err := r.SetQueryParam("version", qVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
+}
+
+// bindParamListBlueprintVersionsUsingGET binds the parameter $orderby
+func (o *ListBlueprintVersionsUsingGETParams) bindParamDollarOrderby(formats strfmt.Registry) []string {
+	dollarOrderbyIR := o.DollarOrderby
+
+	var dollarOrderbyIC []string
+	for _, dollarOrderbyIIR := range dollarOrderbyIR { // explode []string
+
+		dollarOrderbyIIV := dollarOrderbyIIR // string as string
+		dollarOrderbyIC = append(dollarOrderbyIC, dollarOrderbyIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	dollarOrderbyIS := swag.JoinByFormat(dollarOrderbyIC, "multi")
+
+	return dollarOrderbyIS
+}
+
+// bindParamListBlueprintVersionsUsingGET binds the parameter $select
+func (o *ListBlueprintVersionsUsingGETParams) bindParamDollarSelect(formats strfmt.Registry) []string {
+	dollarSelectIR := o.DollarSelect
+
+	var dollarSelectIC []string
+	for _, dollarSelectIIR := range dollarSelectIR { // explode []string
+
+		dollarSelectIIV := dollarSelectIIR // string as string
+		dollarSelectIC = append(dollarSelectIC, dollarSelectIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	dollarSelectIS := swag.JoinByFormat(dollarSelectIC, "multi")
+
+	return dollarSelectIS
 }

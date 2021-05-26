@@ -7,9 +7,12 @@ package cloud_account
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
 // DeleteVSphereCloudAccountReader is a Reader for the DeleteVSphereCloudAccount structure.
@@ -32,7 +35,6 @@ func (o *DeleteVSphereCloudAccountReader) ReadResponse(response runtime.ClientRe
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -43,7 +45,7 @@ func NewDeleteVSphereCloudAccountNoContent() *DeleteVSphereCloudAccountNoContent
 	return &DeleteVSphereCloudAccountNoContent{}
 }
 
-/*DeleteVSphereCloudAccountNoContent handles this case with default header values.
+/* DeleteVSphereCloudAccountNoContent describes a response with status code 204, with default header values.
 
 No Content
 */
@@ -64,18 +66,29 @@ func NewDeleteVSphereCloudAccountForbidden() *DeleteVSphereCloudAccountForbidden
 	return &DeleteVSphereCloudAccountForbidden{}
 }
 
-/*DeleteVSphereCloudAccountForbidden handles this case with default header values.
+/* DeleteVSphereCloudAccountForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type DeleteVSphereCloudAccountForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *DeleteVSphereCloudAccountForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-vsphere/{id}][%d] deleteVSphereCloudAccountForbidden ", 403)
+	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-vsphere/{id}][%d] deleteVSphereCloudAccountForbidden  %+v", 403, o.Payload)
+}
+func (o *DeleteVSphereCloudAccountForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *DeleteVSphereCloudAccountForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

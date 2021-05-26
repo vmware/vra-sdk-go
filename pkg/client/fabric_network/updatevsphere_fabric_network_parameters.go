@@ -18,69 +18,85 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewUpdatevSphereFabricNetworkParams creates a new UpdatevSphereFabricNetworkParams object
-// with the default values initialized.
+// NewUpdatevSphereFabricNetworkParams creates a new UpdatevSphereFabricNetworkParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewUpdatevSphereFabricNetworkParams() *UpdatevSphereFabricNetworkParams {
-	var ()
 	return &UpdatevSphereFabricNetworkParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewUpdatevSphereFabricNetworkParamsWithTimeout creates a new UpdatevSphereFabricNetworkParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewUpdatevSphereFabricNetworkParamsWithTimeout(timeout time.Duration) *UpdatevSphereFabricNetworkParams {
-	var ()
 	return &UpdatevSphereFabricNetworkParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewUpdatevSphereFabricNetworkParamsWithContext creates a new UpdatevSphereFabricNetworkParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewUpdatevSphereFabricNetworkParamsWithContext(ctx context.Context) *UpdatevSphereFabricNetworkParams {
-	var ()
 	return &UpdatevSphereFabricNetworkParams{
-
 		Context: ctx,
 	}
 }
 
 // NewUpdatevSphereFabricNetworkParamsWithHTTPClient creates a new UpdatevSphereFabricNetworkParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewUpdatevSphereFabricNetworkParamsWithHTTPClient(client *http.Client) *UpdatevSphereFabricNetworkParams {
-	var ()
 	return &UpdatevSphereFabricNetworkParams{
 		HTTPClient: client,
 	}
 }
 
-/*UpdatevSphereFabricNetworkParams contains all the parameters to send to the API endpoint
-for the updatev sphere fabric network operation typically these are written to a http.Request
+/* UpdatevSphereFabricNetworkParams contains all the parameters to send to the API endpoint
+   for the updatev sphere fabric network operation.
+
+   Typically these are written to a http.Request.
 */
 type UpdatevSphereFabricNetworkParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*Body
-	  Vsphere Fabric Network Specification
 
+	/* Body.
+
+	   Vsphere Fabric Network Specification
 	*/
 	Body *models.FabricNetworkVsphereSpecification
-	/*ID
-	  The ID of the vSphere Fabric Network.
 
+	/* ID.
+
+	   The ID of the vSphere Fabric Network.
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the updatev sphere fabric network params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UpdatevSphereFabricNetworkParams) WithDefaults() *UpdatevSphereFabricNetworkParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the updatev sphere fabric network params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UpdatevSphereFabricNetworkParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the updatev sphere fabric network params
@@ -161,18 +177,18 @@ func (o *UpdatevSphereFabricNetworkParams) WriteToRequest(r runtime.ClientReques
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
-
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err

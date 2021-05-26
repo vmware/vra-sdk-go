@@ -25,19 +25,22 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	FilterItemsUsingGET(params *FilterItemsUsingGETParams) (*FilterItemsUsingGETOK, error)
+	FilterItemsUsingGET(params *FilterItemsUsingGETParams, opts ...ClientOption) (*FilterItemsUsingGETOK, error)
 
-	FiltersUsingGET(params *FiltersUsingGETParams) (*FiltersUsingGETOK, error)
+	FiltersUsingGET(params *FiltersUsingGETParams, opts ...ClientOption) (*FiltersUsingGETOK, error)
 
-	GetDetails(params *GetDetailsParams) (*GetDetailsOK, error)
+	GetDetails(params *GetDetailsParams, opts ...ClientOption) (*GetDetailsOK, error)
 
-	GetLink(params *GetLinkParams) (*GetLinkOK, error)
+	GetLink(params *GetLinkParams, opts ...ClientOption) (*GetLinkOK, error)
 
-	GetReviews(params *GetReviewsParams) (*GetReviewsOK, error)
+	GetReviews(params *GetReviewsParams, opts ...ClientOption) (*GetReviewsOK, error)
 
-	Search(params *SearchParams) (*SearchOK, error)
+	Search(params *SearchParams, opts ...ClientOption) (*SearchOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -45,13 +48,12 @@ type ClientService interface {
 /*
   FilterItemsUsingGET lists filter entries for a filter
 */
-func (a *Client) FilterItemsUsingGET(params *FilterItemsUsingGETParams) (*FilterItemsUsingGETOK, error) {
+func (a *Client) FilterItemsUsingGET(params *FilterItemsUsingGETParams, opts ...ClientOption) (*FilterItemsUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewFilterItemsUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "filterItemsUsingGET",
 		Method:             "GET",
 		PathPattern:        "/content/api/marketplace/sources/{sourceId}/filters/{filterId}",
@@ -62,7 +64,12 @@ func (a *Client) FilterItemsUsingGET(params *FilterItemsUsingGETParams) (*Filter
 		Reader:             &FilterItemsUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -79,13 +86,12 @@ func (a *Client) FilterItemsUsingGET(params *FilterItemsUsingGETParams) (*Filter
 /*
   FiltersUsingGET lists filters by endpoint
 */
-func (a *Client) FiltersUsingGET(params *FiltersUsingGETParams) (*FiltersUsingGETOK, error) {
+func (a *Client) FiltersUsingGET(params *FiltersUsingGETParams, opts ...ClientOption) (*FiltersUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewFiltersUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "filtersUsingGET",
 		Method:             "GET",
 		PathPattern:        "/content/api/marketplace/sources/{sourceId}/filters",
@@ -96,7 +102,12 @@ func (a *Client) FiltersUsingGET(params *FiltersUsingGETParams) (*FiltersUsingGE
 		Reader:             &FiltersUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -113,13 +124,12 @@ func (a *Client) FiltersUsingGET(params *FiltersUsingGETParams) (*FiltersUsingGE
 /*
   GetDetails gets content details
 */
-func (a *Client) GetDetails(params *GetDetailsParams) (*GetDetailsOK, error) {
+func (a *Client) GetDetails(params *GetDetailsParams, opts ...ClientOption) (*GetDetailsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDetailsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getDetails",
 		Method:             "GET",
 		PathPattern:        "/content/api/marketplace/sources/{sourceId}/contents/{contentId}",
@@ -130,7 +140,12 @@ func (a *Client) GetDetails(params *GetDetailsParams) (*GetDetailsOK, error) {
 		Reader:             &GetDetailsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -147,13 +162,12 @@ func (a *Client) GetDetails(params *GetDetailsParams) (*GetDetailsOK, error) {
 /*
   GetLink gets link to the content
 */
-func (a *Client) GetLink(params *GetLinkParams) (*GetLinkOK, error) {
+func (a *Client) GetLink(params *GetLinkParams, opts ...ClientOption) (*GetLinkOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetLinkParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getLink",
 		Method:             "GET",
 		PathPattern:        "/content/api/marketplace/sources/{sourceId}/contents/{contentId}/link",
@@ -164,7 +178,12 @@ func (a *Client) GetLink(params *GetLinkParams) (*GetLinkOK, error) {
 		Reader:             &GetLinkReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -181,13 +200,12 @@ func (a *Client) GetLink(params *GetLinkParams) (*GetLinkOK, error) {
 /*
   GetReviews gets reviews for the content
 */
-func (a *Client) GetReviews(params *GetReviewsParams) (*GetReviewsOK, error) {
+func (a *Client) GetReviews(params *GetReviewsParams, opts ...ClientOption) (*GetReviewsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetReviewsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getReviews",
 		Method:             "GET",
 		PathPattern:        "/content/api/marketplace/sources/{sourceId}/contents/{contentId}/reviews",
@@ -198,7 +216,12 @@ func (a *Client) GetReviews(params *GetReviewsParams) (*GetReviewsOK, error) {
 		Reader:             &GetReviewsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -215,13 +238,12 @@ func (a *Client) GetReviews(params *GetReviewsParams) (*GetReviewsOK, error) {
 /*
   Search searches for content based on the search term
 */
-func (a *Client) Search(params *SearchParams) (*SearchOK, error) {
+func (a *Client) Search(params *SearchParams, opts ...ClientOption) (*SearchOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewSearchParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "search",
 		Method:             "GET",
 		PathPattern:        "/content/api/marketplace/sources/{sourceId}/contents",
@@ -232,7 +254,12 @@ func (a *Client) Search(params *SearchParams) (*SearchOK, error) {
 		Reader:             &SearchReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

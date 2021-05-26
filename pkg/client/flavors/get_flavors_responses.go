@@ -35,7 +35,6 @@ func (o *GetFlavorsReader) ReadResponse(response runtime.ClientResponse, consume
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewGetFlavorsOK() *GetFlavorsOK {
 	return &GetFlavorsOK{}
 }
 
-/*GetFlavorsOK handles this case with default header values.
+/* GetFlavorsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -57,7 +56,6 @@ type GetFlavorsOK struct {
 func (o *GetFlavorsOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/flavors][%d] getFlavorsOK  %+v", 200, o.Payload)
 }
-
 func (o *GetFlavorsOK) GetPayload() *models.FlavorResult {
 	return o.Payload
 }
@@ -79,18 +77,29 @@ func NewGetFlavorsForbidden() *GetFlavorsForbidden {
 	return &GetFlavorsForbidden{}
 }
 
-/*GetFlavorsForbidden handles this case with default header values.
+/* GetFlavorsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetFlavorsForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetFlavorsForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/flavors][%d] getFlavorsForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/flavors][%d] getFlavorsForbidden  %+v", 403, o.Payload)
+}
+func (o *GetFlavorsForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetFlavorsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

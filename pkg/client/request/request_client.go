@@ -25,13 +25,16 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DeleteRequest(params *DeleteRequestParams) (*DeleteRequestNoContent, error)
+	DeleteRequest(params *DeleteRequestParams, opts ...ClientOption) (*DeleteRequestNoContent, error)
 
-	GetRequestTracker(params *GetRequestTrackerParams) (*GetRequestTrackerOK, error)
+	GetRequestTracker(params *GetRequestTrackerParams, opts ...ClientOption) (*GetRequestTrackerOK, error)
 
-	GetRequestTrackers(params *GetRequestTrackersParams) (*GetRequestTrackersOK, error)
+	GetRequestTrackers(params *GetRequestTrackersParams, opts ...ClientOption) (*GetRequestTrackersOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -41,13 +44,12 @@ type ClientService interface {
 
   Delete a single Request
 */
-func (a *Client) DeleteRequest(params *DeleteRequestParams) (*DeleteRequestNoContent, error) {
+func (a *Client) DeleteRequest(params *DeleteRequestParams, opts ...ClientOption) (*DeleteRequestNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteRequestParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteRequest",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/request-tracker/{id}",
@@ -58,7 +60,12 @@ func (a *Client) DeleteRequest(params *DeleteRequestParams) (*DeleteRequestNoCon
 		Reader:             &DeleteRequestReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -77,13 +84,12 @@ func (a *Client) DeleteRequest(params *DeleteRequestParams) (*DeleteRequestNoCon
 
   Get request tracker with a given id
 */
-func (a *Client) GetRequestTracker(params *GetRequestTrackerParams) (*GetRequestTrackerOK, error) {
+func (a *Client) GetRequestTracker(params *GetRequestTrackerParams, opts ...ClientOption) (*GetRequestTrackerOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetRequestTrackerParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getRequestTracker",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/request-tracker/{id}",
@@ -94,7 +100,12 @@ func (a *Client) GetRequestTracker(params *GetRequestTrackerParams) (*GetRequest
 		Reader:             &GetRequestTrackerReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -113,13 +124,12 @@ func (a *Client) GetRequestTracker(params *GetRequestTrackerParams) (*GetRequest
 
   Get all request trackers
 */
-func (a *Client) GetRequestTrackers(params *GetRequestTrackersParams) (*GetRequestTrackersOK, error) {
+func (a *Client) GetRequestTrackers(params *GetRequestTrackersParams, opts ...ClientOption) (*GetRequestTrackersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetRequestTrackersParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getRequestTrackers",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/request-tracker",
@@ -130,7 +140,12 @@ func (a *Client) GetRequestTrackers(params *GetRequestTrackersParams) (*GetReque
 		Reader:             &GetRequestTrackersReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

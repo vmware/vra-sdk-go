@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -18,6 +20,7 @@ import (
 type DiskAttachmentSpecification struct {
 
 	// The id of the existing block device
+	// Example: 1298765
 	// Required: true
 	BlockDeviceID *string `json:"blockDeviceId"`
 
@@ -26,6 +29,14 @@ type DiskAttachmentSpecification struct {
 
 	// A human-friendly name used as an identifier in APIs that support this option.
 	Name string `json:"name,omitempty"`
+
+	// The SCSI controller to be assigned
+	// Example: SCSI_Controller_0, SCSI_Controller_1, SCSI_Controller_2, SCSI_Controller_3
+	ScsiController string `json:"scsiController,omitempty"`
+
+	// The Unit Number to be assigned
+	// Example: 0
+	UnitNumber string `json:"unitNumber,omitempty"`
 }
 
 // Validate validates this disk attachment specification
@@ -48,6 +59,11 @@ func (m *DiskAttachmentSpecification) validateBlockDeviceID(formats strfmt.Regis
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validates this disk attachment specification based on context it is used
+func (m *DiskAttachmentSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

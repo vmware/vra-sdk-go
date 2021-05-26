@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -19,6 +20,7 @@ import (
 type UpdateCloudAccountVcfSpecification struct {
 
 	// Create default cloud zones for the enabled regions.
+	// Example: true
 	CreateDefaultZones bool `json:"createDefaultZones,omitempty"`
 
 	// A human-friendly description.
@@ -28,9 +30,11 @@ type UpdateCloudAccountVcfSpecification struct {
 	Name string `json:"name,omitempty"`
 
 	// A set of Region names to enable provisioning on.
+	// Example: [\"Datacenter:datacenter-2\"]
 	RegionIds []string `json:"regionIds"`
 
 	// A set of tag keys and optional values to set on the Cloud Account
+	// Example: [{\"key\": \"env\", \"value\": \"dev\"}]
 	Tags []*Tag `json:"tags"`
 }
 
@@ -49,7 +53,6 @@ func (m *UpdateCloudAccountVcfSpecification) Validate(formats strfmt.Registry) e
 }
 
 func (m *UpdateCloudAccountVcfSpecification) validateTags(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Tags) { // not required
 		return nil
 	}
@@ -61,6 +64,38 @@ func (m *UpdateCloudAccountVcfSpecification) validateTags(formats strfmt.Registr
 
 		if m.Tags[i] != nil {
 			if err := m.Tags[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this update cloud account vcf specification based on the context it is used
+func (m *UpdateCloudAccountVcfSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateTags(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *UpdateCloudAccountVcfSpecification) contextValidateTags(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Tags); i++ {
+
+		if m.Tags[i] != nil {
+			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
 				}

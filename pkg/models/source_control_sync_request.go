@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -83,7 +84,6 @@ func (m *SourceControlSyncRequest) Validate(formats strfmt.Registry) error {
 }
 
 func (m *SourceControlSyncRequest) validateCreatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CreatedAt) { // not required
 		return nil
 	}
@@ -96,7 +96,6 @@ func (m *SourceControlSyncRequest) validateCreatedAt(formats strfmt.Registry) er
 }
 
 func (m *SourceControlSyncRequest) validateLastUpdatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.LastUpdatedAt) { // not required
 		return nil
 	}
@@ -109,7 +108,6 @@ func (m *SourceControlSyncRequest) validateLastUpdatedAt(formats strfmt.Registry
 }
 
 func (m *SourceControlSyncRequest) validateRequestID(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.RequestID) { // not required
 		return nil
 	}
@@ -122,7 +120,6 @@ func (m *SourceControlSyncRequest) validateRequestID(formats strfmt.Registry) er
 }
 
 func (m *SourceControlSyncRequest) validateSourceID(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.SourceID) { // not required
 		return nil
 	}
@@ -176,13 +173,100 @@ func (m *SourceControlSyncRequest) validateStatusEnum(path, location string, val
 }
 
 func (m *SourceControlSyncRequest) validateStatus(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Status) { // not required
 		return nil
 	}
 
 	// value enum
 	if err := m.validateStatusEnum("status", "body", m.Status); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this source control sync request based on the context it is used
+func (m *SourceControlSyncRequest) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateCreatedAt(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateLastUpdatedAt(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMessage(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateProjectID(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateRequestID(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *SourceControlSyncRequest) contextValidateCreatedAt(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "createdAt", "body", strfmt.DateTime(m.CreatedAt)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SourceControlSyncRequest) contextValidateLastUpdatedAt(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "lastUpdatedAt", "body", strfmt.DateTime(m.LastUpdatedAt)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SourceControlSyncRequest) contextValidateMessage(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "message", "body", string(m.Message)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SourceControlSyncRequest) contextValidateProjectID(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "projectId", "body", string(m.ProjectID)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SourceControlSyncRequest) contextValidateRequestID(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "requestId", "body", strfmt.UUID(m.RequestID)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SourceControlSyncRequest) contextValidateStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "status", "body", string(m.Status)); err != nil {
 		return err
 	}
 

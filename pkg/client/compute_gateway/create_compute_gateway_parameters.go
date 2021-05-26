@@ -18,64 +18,79 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewCreateComputeGatewayParams creates a new CreateComputeGatewayParams object
-// with the default values initialized.
+// NewCreateComputeGatewayParams creates a new CreateComputeGatewayParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewCreateComputeGatewayParams() *CreateComputeGatewayParams {
-	var ()
 	return &CreateComputeGatewayParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewCreateComputeGatewayParamsWithTimeout creates a new CreateComputeGatewayParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewCreateComputeGatewayParamsWithTimeout(timeout time.Duration) *CreateComputeGatewayParams {
-	var ()
 	return &CreateComputeGatewayParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewCreateComputeGatewayParamsWithContext creates a new CreateComputeGatewayParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewCreateComputeGatewayParamsWithContext(ctx context.Context) *CreateComputeGatewayParams {
-	var ()
 	return &CreateComputeGatewayParams{
-
 		Context: ctx,
 	}
 }
 
 // NewCreateComputeGatewayParamsWithHTTPClient creates a new CreateComputeGatewayParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewCreateComputeGatewayParamsWithHTTPClient(client *http.Client) *CreateComputeGatewayParams {
-	var ()
 	return &CreateComputeGatewayParams{
 		HTTPClient: client,
 	}
 }
 
-/*CreateComputeGatewayParams contains all the parameters to send to the API endpoint
-for the create compute gateway operation typically these are written to a http.Request
+/* CreateComputeGatewayParams contains all the parameters to send to the API endpoint
+   for the create compute gateway operation.
+
+   Typically these are written to a http.Request.
 */
 type CreateComputeGatewayParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*Body
-	  Compute Gateway Specification instance
 
+	/* Body.
+
+	   Compute Gateway Specification instance
 	*/
 	Body *models.ComputeGatewaySpecification
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the create compute gateway params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateComputeGatewayParams) WithDefaults() *CreateComputeGatewayParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the create compute gateway params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateComputeGatewayParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the create compute gateway params
@@ -145,18 +160,18 @@ func (o *CreateComputeGatewayParams) WriteToRequest(r runtime.ClientRequest, reg
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
-
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err

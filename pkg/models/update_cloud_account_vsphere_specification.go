@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -19,9 +20,11 @@ import (
 type UpdateCloudAccountVsphereSpecification struct {
 
 	// NSX-V or NSX-T account to associate with this vSphere cloud account. vSphere cloud account can be a single NSX-V cloud account or a single NSX-T cloud account.
+	// Example: [ \"42f3e0d199d134755684cd935435a\" ]
 	AssociatedCloudAccountIds []string `json:"associatedCloudAccountIds"`
 
 	// Create default cloud zones for the enabled regions.
+	// Example: true
 	CreateDefaultZones bool `json:"createDefaultZones,omitempty"`
 
 	// A human-friendly description.
@@ -31,15 +34,19 @@ type UpdateCloudAccountVsphereSpecification struct {
 	Name string `json:"name,omitempty"`
 
 	// Password to authenticate with the cloud account
+	// Example: LVJbZNAkPCJs
 	Password string `json:"password,omitempty"`
 
 	// A set of Region names to enable provisioning on.
+	// Example: [\"Datacenter:datacenter-2\"]
 	RegionIds []string `json:"regionIds"`
 
 	// A set of tag keys and optional values to set on the Cloud Account
+	// Example: [{\"key\": \"env\", \"value\": \"dev\"}]
 	Tags []*Tag `json:"tags"`
 
 	// Username to authenticate with the cloud account
+	// Example: administrator@csp.local
 	Username string `json:"username,omitempty"`
 }
 
@@ -58,7 +65,6 @@ func (m *UpdateCloudAccountVsphereSpecification) Validate(formats strfmt.Registr
 }
 
 func (m *UpdateCloudAccountVsphereSpecification) validateTags(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Tags) { // not required
 		return nil
 	}
@@ -70,6 +76,38 @@ func (m *UpdateCloudAccountVsphereSpecification) validateTags(formats strfmt.Reg
 
 		if m.Tags[i] != nil {
 			if err := m.Tags[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this update cloud account vsphere specification based on the context it is used
+func (m *UpdateCloudAccountVsphereSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateTags(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *UpdateCloudAccountVsphereSpecification) contextValidateTags(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Tags); i++ {
+
+		if m.Tags[i] != nil {
+			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
 				}

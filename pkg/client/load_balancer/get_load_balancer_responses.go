@@ -41,7 +41,6 @@ func (o *GetLoadBalancerReader) ReadResponse(response runtime.ClientResponse, co
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetLoadBalancerOK() *GetLoadBalancerOK {
 	return &GetLoadBalancerOK{}
 }
 
-/*GetLoadBalancerOK handles this case with default header values.
+/* GetLoadBalancerOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type GetLoadBalancerOK struct {
 func (o *GetLoadBalancerOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/load-balancers/{id}][%d] getLoadBalancerOK  %+v", 200, o.Payload)
 }
-
 func (o *GetLoadBalancerOK) GetPayload() *models.LoadBalancer {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewGetLoadBalancerForbidden() *GetLoadBalancerForbidden {
 	return &GetLoadBalancerForbidden{}
 }
 
-/*GetLoadBalancerForbidden handles this case with default header values.
+/* GetLoadBalancerForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetLoadBalancerForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetLoadBalancerForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/load-balancers/{id}][%d] getLoadBalancerForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/load-balancers/{id}][%d] getLoadBalancerForbidden  %+v", 403, o.Payload)
+}
+func (o *GetLoadBalancerForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetLoadBalancerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewGetLoadBalancerNotFound() *GetLoadBalancerNotFound {
 	return &GetLoadBalancerNotFound{}
 }
 
-/*GetLoadBalancerNotFound handles this case with default header values.
+/* GetLoadBalancerNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type GetLoadBalancerNotFound struct {
 func (o *GetLoadBalancerNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/load-balancers/{id}][%d] getLoadBalancerNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetLoadBalancerNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

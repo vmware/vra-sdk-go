@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -60,7 +61,6 @@ func (m *MarketplaceFilter) Validate(formats strfmt.Registry) error {
 }
 
 func (m *MarketplaceFilter) validateEntries(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Entries) { // not required
 		return nil
 	}
@@ -110,7 +110,6 @@ func (m *MarketplaceFilter) validateTypeEnum(path, location string, value string
 }
 
 func (m *MarketplaceFilter) validateType(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Type) { // not required
 		return nil
 	}
@@ -156,7 +155,6 @@ func (m *MarketplaceFilter) validateValueTypeEnum(path, location string, value s
 }
 
 func (m *MarketplaceFilter) validateValueType(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ValueType) { // not required
 		return nil
 	}
@@ -164,6 +162,34 @@ func (m *MarketplaceFilter) validateValueType(formats strfmt.Registry) error {
 	// value enum
 	if err := m.validateValueTypeEnum("valueType", "body", m.ValueType); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this marketplace filter based on the context it is used
+func (m *MarketplaceFilter) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateEntries(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *MarketplaceFilter) contextValidateEntries(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Entries != nil {
+		if err := m.Entries.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("entries")
+			}
+			return err
+		}
 	}
 
 	return nil

@@ -41,7 +41,6 @@ func (o *GetVcfCloudAccountReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetVcfCloudAccountOK() *GetVcfCloudAccountOK {
 	return &GetVcfCloudAccountOK{}
 }
 
-/*GetVcfCloudAccountOK handles this case with default header values.
+/* GetVcfCloudAccountOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type GetVcfCloudAccountOK struct {
 func (o *GetVcfCloudAccountOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vcf/{id}][%d] getVcfCloudAccountOK  %+v", 200, o.Payload)
 }
-
 func (o *GetVcfCloudAccountOK) GetPayload() *models.CloudAccountVcf {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewGetVcfCloudAccountForbidden() *GetVcfCloudAccountForbidden {
 	return &GetVcfCloudAccountForbidden{}
 }
 
-/*GetVcfCloudAccountForbidden handles this case with default header values.
+/* GetVcfCloudAccountForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetVcfCloudAccountForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetVcfCloudAccountForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vcf/{id}][%d] getVcfCloudAccountForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vcf/{id}][%d] getVcfCloudAccountForbidden  %+v", 403, o.Payload)
+}
+func (o *GetVcfCloudAccountForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetVcfCloudAccountForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewGetVcfCloudAccountNotFound() *GetVcfCloudAccountNotFound {
 	return &GetVcfCloudAccountNotFound{}
 }
 
-/*GetVcfCloudAccountNotFound handles this case with default header values.
+/* GetVcfCloudAccountNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type GetVcfCloudAccountNotFound struct {
 func (o *GetVcfCloudAccountNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vcf/{id}][%d] getVcfCloudAccountNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetVcfCloudAccountNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

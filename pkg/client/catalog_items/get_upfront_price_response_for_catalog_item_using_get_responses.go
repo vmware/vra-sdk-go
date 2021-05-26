@@ -41,7 +41,6 @@ func (o *GetUpfrontPriceResponseForCatalogItemUsingGETReader) ReadResponse(respo
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetUpfrontPriceResponseForCatalogItemUsingGETOK() *GetUpfrontPriceRespon
 	return &GetUpfrontPriceResponseForCatalogItemUsingGETOK{}
 }
 
-/*GetUpfrontPriceResponseForCatalogItemUsingGETOK handles this case with default header values.
+/* GetUpfrontPriceResponseForCatalogItemUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -63,7 +62,6 @@ type GetUpfrontPriceResponseForCatalogItemUsingGETOK struct {
 func (o *GetUpfrontPriceResponseForCatalogItemUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /catalog/api/items/{id}/upfront-prices/{upfrontPriceId}][%d] getUpfrontPriceResponseForCatalogItemUsingGETOK  %+v", 200, o.Payload)
 }
-
 func (o *GetUpfrontPriceResponseForCatalogItemUsingGETOK) GetPayload() *models.CatalogItemUpfrontPriceResponse {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewGetUpfrontPriceResponseForCatalogItemUsingGETUnauthorized() *GetUpfrontP
 	return &GetUpfrontPriceResponseForCatalogItemUsingGETUnauthorized{}
 }
 
-/*GetUpfrontPriceResponseForCatalogItemUsingGETUnauthorized handles this case with default header values.
+/* GetUpfrontPriceResponseForCatalogItemUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -106,7 +104,7 @@ func NewGetUpfrontPriceResponseForCatalogItemUsingGETNotFound() *GetUpfrontPrice
 	return &GetUpfrontPriceResponseForCatalogItemUsingGETNotFound{}
 }
 
-/*GetUpfrontPriceResponseForCatalogItemUsingGETNotFound handles this case with default header values.
+/* GetUpfrontPriceResponseForCatalogItemUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +115,6 @@ type GetUpfrontPriceResponseForCatalogItemUsingGETNotFound struct {
 func (o *GetUpfrontPriceResponseForCatalogItemUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /catalog/api/items/{id}/upfront-prices/{upfrontPriceId}][%d] getUpfrontPriceResponseForCatalogItemUsingGETNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetUpfrontPriceResponseForCatalogItemUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

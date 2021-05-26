@@ -41,7 +41,6 @@ func (o *DeleteBlockDeviceReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewDeleteBlockDeviceAccepted() *DeleteBlockDeviceAccepted {
 	return &DeleteBlockDeviceAccepted{}
 }
 
-/*DeleteBlockDeviceAccepted handles this case with default header values.
+/* DeleteBlockDeviceAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type DeleteBlockDeviceAccepted struct {
 func (o *DeleteBlockDeviceAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/block-devices/{id}][%d] deleteBlockDeviceAccepted  %+v", 202, o.Payload)
 }
-
 func (o *DeleteBlockDeviceAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewDeleteBlockDeviceNoContent() *DeleteBlockDeviceNoContent {
 	return &DeleteBlockDeviceNoContent{}
 }
 
-/*DeleteBlockDeviceNoContent handles this case with default header values.
+/* DeleteBlockDeviceNoContent describes a response with status code 204, with default header values.
 
 No Content
 */
@@ -106,18 +104,29 @@ func NewDeleteBlockDeviceForbidden() *DeleteBlockDeviceForbidden {
 	return &DeleteBlockDeviceForbidden{}
 }
 
-/*DeleteBlockDeviceForbidden handles this case with default header values.
+/* DeleteBlockDeviceForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type DeleteBlockDeviceForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *DeleteBlockDeviceForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/block-devices/{id}][%d] deleteBlockDeviceForbidden ", 403)
+	return fmt.Sprintf("[DELETE /iaas/api/block-devices/{id}][%d] deleteBlockDeviceForbidden  %+v", 403, o.Payload)
+}
+func (o *DeleteBlockDeviceForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *DeleteBlockDeviceForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

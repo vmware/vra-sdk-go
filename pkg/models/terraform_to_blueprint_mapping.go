@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -66,7 +67,6 @@ func (m *TerraformToBlueprintMapping) Validate(formats strfmt.Registry) error {
 }
 
 func (m *TerraformToBlueprintMapping) validateConfigurationSourceReference(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ConfigurationSourceReference) { // not required
 		return nil
 	}
@@ -84,7 +84,6 @@ func (m *TerraformToBlueprintMapping) validateConfigurationSourceReference(forma
 }
 
 func (m *TerraformToBlueprintMapping) validateOutputValues(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.OutputValues) { // not required
 		return nil
 	}
@@ -109,7 +108,6 @@ func (m *TerraformToBlueprintMapping) validateOutputValues(formats strfmt.Regist
 }
 
 func (m *TerraformToBlueprintMapping) validateProviders(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Providers) { // not required
 		return nil
 	}
@@ -134,7 +132,6 @@ func (m *TerraformToBlueprintMapping) validateProviders(formats strfmt.Registry)
 }
 
 func (m *TerraformToBlueprintMapping) validateVariables(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Variables) { // not required
 		return nil
 	}
@@ -146,6 +143,100 @@ func (m *TerraformToBlueprintMapping) validateVariables(formats strfmt.Registry)
 
 		if m.Variables[i] != nil {
 			if err := m.Variables[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("variables" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this terraform to blueprint mapping based on the context it is used
+func (m *TerraformToBlueprintMapping) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateConfigurationSourceReference(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOutputValues(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateProviders(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVariables(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *TerraformToBlueprintMapping) contextValidateConfigurationSourceReference(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ConfigurationSourceReference != nil {
+		if err := m.ConfigurationSourceReference.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("configurationSourceReference")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *TerraformToBlueprintMapping) contextValidateOutputValues(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.OutputValues); i++ {
+
+		if m.OutputValues[i] != nil {
+			if err := m.OutputValues[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("outputValues" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *TerraformToBlueprintMapping) contextValidateProviders(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Providers); i++ {
+
+		if m.Providers[i] != nil {
+			if err := m.Providers[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("providers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *TerraformToBlueprintMapping) contextValidateVariables(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Variables); i++ {
+
+		if m.Variables[i] != nil {
+			if err := m.Variables[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("variables" + "." + strconv.Itoa(i))
 				}

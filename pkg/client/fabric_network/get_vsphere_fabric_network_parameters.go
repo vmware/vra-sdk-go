@@ -16,64 +16,85 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewGetVsphereFabricNetworkParams creates a new GetVsphereFabricNetworkParams object
-// with the default values initialized.
+// NewGetVsphereFabricNetworkParams creates a new GetVsphereFabricNetworkParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetVsphereFabricNetworkParams() *GetVsphereFabricNetworkParams {
-	var ()
 	return &GetVsphereFabricNetworkParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetVsphereFabricNetworkParamsWithTimeout creates a new GetVsphereFabricNetworkParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetVsphereFabricNetworkParamsWithTimeout(timeout time.Duration) *GetVsphereFabricNetworkParams {
-	var ()
 	return &GetVsphereFabricNetworkParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetVsphereFabricNetworkParamsWithContext creates a new GetVsphereFabricNetworkParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetVsphereFabricNetworkParamsWithContext(ctx context.Context) *GetVsphereFabricNetworkParams {
-	var ()
 	return &GetVsphereFabricNetworkParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetVsphereFabricNetworkParamsWithHTTPClient creates a new GetVsphereFabricNetworkParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetVsphereFabricNetworkParamsWithHTTPClient(client *http.Client) *GetVsphereFabricNetworkParams {
-	var ()
 	return &GetVsphereFabricNetworkParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetVsphereFabricNetworkParams contains all the parameters to send to the API endpoint
-for the get vsphere fabric network operation typically these are written to a http.Request
+/* GetVsphereFabricNetworkParams contains all the parameters to send to the API endpoint
+   for the get vsphere fabric network operation.
+
+   Typically these are written to a http.Request.
 */
 type GetVsphereFabricNetworkParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* DollarSelect.
 
+	   Select a subset of properties to include in the response.
+	*/
+	DollarSelect *string
+
+	/* APIVersion.
+
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*ID
-	  The ID of the fabric network.
 
+	/* ID.
+
+	   The ID of the fabric network.
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get vsphere fabric network params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetVsphereFabricNetworkParams) WithDefaults() *GetVsphereFabricNetworkParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get vsphere fabric network params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetVsphereFabricNetworkParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get vsphere fabric network params
@@ -109,6 +130,17 @@ func (o *GetVsphereFabricNetworkParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithDollarSelect adds the dollarSelect to the get vsphere fabric network params
+func (o *GetVsphereFabricNetworkParams) WithDollarSelect(dollarSelect *string) *GetVsphereFabricNetworkParams {
+	o.SetDollarSelect(dollarSelect)
+	return o
+}
+
+// SetDollarSelect adds the dollarSelect to the get vsphere fabric network params
+func (o *GetVsphereFabricNetworkParams) SetDollarSelect(dollarSelect *string) {
+	o.DollarSelect = dollarSelect
+}
+
 // WithAPIVersion adds the aPIVersion to the get vsphere fabric network params
 func (o *GetVsphereFabricNetworkParams) WithAPIVersion(aPIVersion *string) *GetVsphereFabricNetworkParams {
 	o.SetAPIVersion(aPIVersion)
@@ -139,20 +171,38 @@ func (o *GetVsphereFabricNetworkParams) WriteToRequest(r runtime.ClientRequest, 
 	}
 	var res []error
 
+	if o.DollarSelect != nil {
+
+		// query param $select
+		var qrDollarSelect string
+
+		if o.DollarSelect != nil {
+			qrDollarSelect = *o.DollarSelect
+		}
+		qDollarSelect := qrDollarSelect
+		if qDollarSelect != "" {
+
+			if err := r.SetQueryParam("$select", qDollarSelect); err != nil {
+				return err
+			}
+		}
+	}
+
 	if o.APIVersion != nil {
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id

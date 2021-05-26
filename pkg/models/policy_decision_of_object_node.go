@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -93,7 +94,6 @@ func (m *PolicyDecisionOfObjectNode) Validate(formats strfmt.Registry) error {
 }
 
 func (m *PolicyDecisionOfObjectNode) validateDryRunID(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.DryRunID) { // not required
 		return nil
 	}
@@ -106,7 +106,6 @@ func (m *PolicyDecisionOfObjectNode) validateDryRunID(formats strfmt.Registry) e
 }
 
 func (m *PolicyDecisionOfObjectNode) validateDryRunSubTaskID(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.DryRunSubTaskID) { // not required
 		return nil
 	}
@@ -119,7 +118,6 @@ func (m *PolicyDecisionOfObjectNode) validateDryRunSubTaskID(formats strfmt.Regi
 }
 
 func (m *PolicyDecisionOfObjectNode) validateID(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ID) { // not required
 		return nil
 	}
@@ -132,7 +130,6 @@ func (m *PolicyDecisionOfObjectNode) validateID(formats strfmt.Registry) error {
 }
 
 func (m *PolicyDecisionOfObjectNode) validatePolicies(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Policies) { // not required
 		return nil
 	}
@@ -157,13 +154,44 @@ func (m *PolicyDecisionOfObjectNode) validatePolicies(formats strfmt.Registry) e
 }
 
 func (m *PolicyDecisionOfObjectNode) validateTimestamp(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Timestamp) { // not required
 		return nil
 	}
 
 	if err := validate.FormatOf("timestamp", "body", "date-time", m.Timestamp.String(), formats); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this policy decision of object node based on the context it is used
+func (m *PolicyDecisionOfObjectNode) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidatePolicies(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PolicyDecisionOfObjectNode) contextValidatePolicies(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Policies); i++ {
+
+		if m.Policies[i] != nil {
+			if err := m.Policies[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("policies" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil

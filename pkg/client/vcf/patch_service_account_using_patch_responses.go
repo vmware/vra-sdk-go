@@ -29,7 +29,6 @@ func (o *PatchServiceAccountUsingPATCHReader) ReadResponse(response runtime.Clie
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -40,7 +39,7 @@ func NewPatchServiceAccountUsingPATCHOK() *PatchServiceAccountUsingPATCHOK {
 	return &PatchServiceAccountUsingPATCHOK{}
 }
 
-/*PatchServiceAccountUsingPATCHOK handles this case with default header values.
+/* PatchServiceAccountUsingPATCHOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -51,7 +50,6 @@ type PatchServiceAccountUsingPATCHOK struct {
 func (o *PatchServiceAccountUsingPATCHOK) Error() string {
 	return fmt.Sprintf("[PATCH /content/api/vcf/{integrationId}/domain/{domainId}/service-accounts][%d] patchServiceAccountUsingPATCHOK  %+v", 200, o.Payload)
 }
-
 func (o *PatchServiceAccountUsingPATCHOK) GetPayload() []*models.VcfServiceCredential {
 	return o.Payload
 }

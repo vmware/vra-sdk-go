@@ -47,7 +47,6 @@ func (o *GetBlueprintPlanUsingGET1Reader) ReadResponse(response runtime.ClientRe
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewGetBlueprintPlanUsingGET1OK() *GetBlueprintPlanUsingGET1OK {
 	return &GetBlueprintPlanUsingGET1OK{}
 }
 
-/*GetBlueprintPlanUsingGET1OK handles this case with default header values.
+/* GetBlueprintPlanUsingGET1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -69,7 +68,6 @@ type GetBlueprintPlanUsingGET1OK struct {
 func (o *GetBlueprintPlanUsingGET1OK) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-requests/{requestId}/plan][%d] getBlueprintPlanUsingGET1OK  %+v", 200, o.Payload)
 }
-
 func (o *GetBlueprintPlanUsingGET1OK) GetPayload() *models.BlueprintPlan {
 	return o.Payload
 }
@@ -91,7 +89,7 @@ func NewGetBlueprintPlanUsingGET1Unauthorized() *GetBlueprintPlanUsingGET1Unauth
 	return &GetBlueprintPlanUsingGET1Unauthorized{}
 }
 
-/*GetBlueprintPlanUsingGET1Unauthorized handles this case with default header values.
+/* GetBlueprintPlanUsingGET1Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -112,7 +110,7 @@ func NewGetBlueprintPlanUsingGET1Forbidden() *GetBlueprintPlanUsingGET1Forbidden
 	return &GetBlueprintPlanUsingGET1Forbidden{}
 }
 
-/*GetBlueprintPlanUsingGET1Forbidden handles this case with default header values.
+/* GetBlueprintPlanUsingGET1Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -133,7 +131,7 @@ func NewGetBlueprintPlanUsingGET1NotFound() *GetBlueprintPlanUsingGET1NotFound {
 	return &GetBlueprintPlanUsingGET1NotFound{}
 }
 
-/*GetBlueprintPlanUsingGET1NotFound handles this case with default header values.
+/* GetBlueprintPlanUsingGET1NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -144,7 +142,6 @@ type GetBlueprintPlanUsingGET1NotFound struct {
 func (o *GetBlueprintPlanUsingGET1NotFound) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-requests/{requestId}/plan][%d] getBlueprintPlanUsingGET1NotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetBlueprintPlanUsingGET1NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

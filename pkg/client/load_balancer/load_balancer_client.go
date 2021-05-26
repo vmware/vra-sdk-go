@@ -25,21 +25,24 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateLoadBalancer(params *CreateLoadBalancerParams) (*CreateLoadBalancerAccepted, error)
+	CreateLoadBalancer(params *CreateLoadBalancerParams, opts ...ClientOption) (*CreateLoadBalancerAccepted, error)
 
-	DeleteLoadBalancer(params *DeleteLoadBalancerParams) (*DeleteLoadBalancerAccepted, error)
+	DeleteLoadBalancer(params *DeleteLoadBalancerParams, opts ...ClientOption) (*DeleteLoadBalancerAccepted, error)
 
-	DeleteLoadBalancerOperation(params *DeleteLoadBalancerOperationParams) (*DeleteLoadBalancerOperationAccepted, error)
+	DeleteLoadBalancerOperation(params *DeleteLoadBalancerOperationParams, opts ...ClientOption) (*DeleteLoadBalancerOperationAccepted, error)
 
-	GetLoadBalancer(params *GetLoadBalancerParams) (*GetLoadBalancerOK, error)
+	GetLoadBalancer(params *GetLoadBalancerParams, opts ...ClientOption) (*GetLoadBalancerOK, error)
 
-	GetLoadBalancerNetworkInterface(params *GetLoadBalancerNetworkInterfaceParams) (*GetLoadBalancerNetworkInterfaceOK, error)
+	GetLoadBalancerNetworkInterface(params *GetLoadBalancerNetworkInterfaceParams, opts ...ClientOption) (*GetLoadBalancerNetworkInterfaceOK, error)
 
-	GetLoadBalancers(params *GetLoadBalancersParams) (*GetLoadBalancersOK, error)
+	GetLoadBalancers(params *GetLoadBalancersParams, opts ...ClientOption) (*GetLoadBalancersOK, error)
 
-	ScaleLoadBalancer(params *ScaleLoadBalancerParams) (*ScaleLoadBalancerAccepted, error)
+	ScaleLoadBalancer(params *ScaleLoadBalancerParams, opts ...ClientOption) (*ScaleLoadBalancerAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -49,13 +52,12 @@ type ClientService interface {
 
   Create load balancer
 */
-func (a *Client) CreateLoadBalancer(params *CreateLoadBalancerParams) (*CreateLoadBalancerAccepted, error) {
+func (a *Client) CreateLoadBalancer(params *CreateLoadBalancerParams, opts ...ClientOption) (*CreateLoadBalancerAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateLoadBalancerParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createLoadBalancer",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/load-balancers",
@@ -66,7 +68,12 @@ func (a *Client) CreateLoadBalancer(params *CreateLoadBalancerParams) (*CreateLo
 		Reader:             &CreateLoadBalancerReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -85,13 +92,12 @@ func (a *Client) CreateLoadBalancer(params *CreateLoadBalancerParams) (*CreateLo
 
   Delete load balancer with a given id
 */
-func (a *Client) DeleteLoadBalancer(params *DeleteLoadBalancerParams) (*DeleteLoadBalancerAccepted, error) {
+func (a *Client) DeleteLoadBalancer(params *DeleteLoadBalancerParams, opts ...ClientOption) (*DeleteLoadBalancerAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteLoadBalancerParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteLoadBalancer",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/load-balancers/{id}",
@@ -102,7 +108,12 @@ func (a *Client) DeleteLoadBalancer(params *DeleteLoadBalancerParams) (*DeleteLo
 		Reader:             &DeleteLoadBalancerReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -121,13 +132,12 @@ func (a *Client) DeleteLoadBalancer(params *DeleteLoadBalancerParams) (*DeleteLo
 
   Second day delete operation for load balancer
 */
-func (a *Client) DeleteLoadBalancerOperation(params *DeleteLoadBalancerOperationParams) (*DeleteLoadBalancerOperationAccepted, error) {
+func (a *Client) DeleteLoadBalancerOperation(params *DeleteLoadBalancerOperationParams, opts ...ClientOption) (*DeleteLoadBalancerOperationAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteLoadBalancerOperationParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteLoadBalancerOperation",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/load-balancers/{id}/operations/delete",
@@ -138,7 +148,12 @@ func (a *Client) DeleteLoadBalancerOperation(params *DeleteLoadBalancerOperation
 		Reader:             &DeleteLoadBalancerOperationReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -157,13 +172,12 @@ func (a *Client) DeleteLoadBalancerOperation(params *DeleteLoadBalancerOperation
 
   Get load balancer with a given id
 */
-func (a *Client) GetLoadBalancer(params *GetLoadBalancerParams) (*GetLoadBalancerOK, error) {
+func (a *Client) GetLoadBalancer(params *GetLoadBalancerParams, opts ...ClientOption) (*GetLoadBalancerOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetLoadBalancerParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getLoadBalancer",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/load-balancers/{id}",
@@ -174,7 +188,12 @@ func (a *Client) GetLoadBalancer(params *GetLoadBalancerParams) (*GetLoadBalance
 		Reader:             &GetLoadBalancerReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -193,13 +212,12 @@ func (a *Client) GetLoadBalancer(params *GetLoadBalancerParams) (*GetLoadBalance
 
   Get network interface with a given id for specific load balancer
 */
-func (a *Client) GetLoadBalancerNetworkInterface(params *GetLoadBalancerNetworkInterfaceParams) (*GetLoadBalancerNetworkInterfaceOK, error) {
+func (a *Client) GetLoadBalancerNetworkInterface(params *GetLoadBalancerNetworkInterfaceParams, opts ...ClientOption) (*GetLoadBalancerNetworkInterfaceOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetLoadBalancerNetworkInterfaceParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getLoadBalancerNetworkInterface",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/load-balancers/{id}/network-interfaces/{id1}",
@@ -210,7 +228,12 @@ func (a *Client) GetLoadBalancerNetworkInterface(params *GetLoadBalancerNetworkI
 		Reader:             &GetLoadBalancerNetworkInterfaceReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -229,13 +252,12 @@ func (a *Client) GetLoadBalancerNetworkInterface(params *GetLoadBalancerNetworkI
 
   Get all load balancers
 */
-func (a *Client) GetLoadBalancers(params *GetLoadBalancersParams) (*GetLoadBalancersOK, error) {
+func (a *Client) GetLoadBalancers(params *GetLoadBalancersParams, opts ...ClientOption) (*GetLoadBalancersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetLoadBalancersParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getLoadBalancers",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/load-balancers",
@@ -246,7 +268,12 @@ func (a *Client) GetLoadBalancers(params *GetLoadBalancersParams) (*GetLoadBalan
 		Reader:             &GetLoadBalancersReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -265,13 +292,12 @@ func (a *Client) GetLoadBalancers(params *GetLoadBalancersParams) (*GetLoadBalan
 
   Second day scale operation for load balancer
 */
-func (a *Client) ScaleLoadBalancer(params *ScaleLoadBalancerParams) (*ScaleLoadBalancerAccepted, error) {
+func (a *Client) ScaleLoadBalancer(params *ScaleLoadBalancerParams, opts ...ClientOption) (*ScaleLoadBalancerAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewScaleLoadBalancerParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "scaleLoadBalancer",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/load-balancers/{id}/operations/scale",
@@ -282,7 +308,12 @@ func (a *Client) ScaleLoadBalancer(params *ScaleLoadBalancerParams) (*ScaleLoadB
 		Reader:             &ScaleLoadBalancerReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

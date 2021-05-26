@@ -35,7 +35,6 @@ func (o *GetContentSourceUsingGETReader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewGetContentSourceUsingGETOK() *GetContentSourceUsingGETOK {
 	return &GetContentSourceUsingGETOK{}
 }
 
-/*GetContentSourceUsingGETOK handles this case with default header values.
+/* GetContentSourceUsingGETOK describes a response with status code 200, with default header values.
 
 Content source
 */
@@ -57,7 +56,6 @@ type GetContentSourceUsingGETOK struct {
 func (o *GetContentSourceUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /content/api/sources/{id}][%d] getContentSourceUsingGETOK  %+v", 200, o.Payload)
 }
-
 func (o *GetContentSourceUsingGETOK) GetPayload() *models.ContentSource {
 	return o.Payload
 }
@@ -79,7 +77,7 @@ func NewGetContentSourceUsingGETNotFound() *GetContentSourceUsingGETNotFound {
 	return &GetContentSourceUsingGETNotFound{}
 }
 
-/*GetContentSourceUsingGETNotFound handles this case with default header values.
+/* GetContentSourceUsingGETNotFound describes a response with status code 404, with default header values.
 
 Content source not found
 */
@@ -90,7 +88,6 @@ type GetContentSourceUsingGETNotFound struct {
 func (o *GetContentSourceUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /content/api/sources/{id}][%d] getContentSourceUsingGETNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetContentSourceUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

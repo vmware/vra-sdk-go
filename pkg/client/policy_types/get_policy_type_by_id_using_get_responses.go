@@ -29,7 +29,6 @@ func (o *GetPolicyTypeByIDUsingGETReader) ReadResponse(response runtime.ClientRe
 			return nil, err
 		}
 		return result, nil
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -40,7 +39,7 @@ func NewGetPolicyTypeByIDUsingGETOK() *GetPolicyTypeByIDUsingGETOK {
 	return &GetPolicyTypeByIDUsingGETOK{}
 }
 
-/*GetPolicyTypeByIDUsingGETOK handles this case with default header values.
+/* GetPolicyTypeByIDUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -51,7 +50,6 @@ type GetPolicyTypeByIDUsingGETOK struct {
 func (o *GetPolicyTypeByIDUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /policy/api/policyTypes/{id}][%d] getPolicyTypeByIdUsingGETOK  %+v", 200, o.Payload)
 }
-
 func (o *GetPolicyTypeByIDUsingGETOK) GetPayload() *models.PolicyType {
 	return o.Payload
 }

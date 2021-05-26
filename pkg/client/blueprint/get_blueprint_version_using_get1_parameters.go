@@ -17,69 +17,87 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGetBlueprintVersionUsingGET1Params creates a new GetBlueprintVersionUsingGET1Params object
-// with the default values initialized.
+// NewGetBlueprintVersionUsingGET1Params creates a new GetBlueprintVersionUsingGET1Params object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetBlueprintVersionUsingGET1Params() *GetBlueprintVersionUsingGET1Params {
-	var ()
 	return &GetBlueprintVersionUsingGET1Params{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetBlueprintVersionUsingGET1ParamsWithTimeout creates a new GetBlueprintVersionUsingGET1Params object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetBlueprintVersionUsingGET1ParamsWithTimeout(timeout time.Duration) *GetBlueprintVersionUsingGET1Params {
-	var ()
 	return &GetBlueprintVersionUsingGET1Params{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetBlueprintVersionUsingGET1ParamsWithContext creates a new GetBlueprintVersionUsingGET1Params object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetBlueprintVersionUsingGET1ParamsWithContext(ctx context.Context) *GetBlueprintVersionUsingGET1Params {
-	var ()
 	return &GetBlueprintVersionUsingGET1Params{
-
 		Context: ctx,
 	}
 }
 
 // NewGetBlueprintVersionUsingGET1ParamsWithHTTPClient creates a new GetBlueprintVersionUsingGET1Params object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetBlueprintVersionUsingGET1ParamsWithHTTPClient(client *http.Client) *GetBlueprintVersionUsingGET1Params {
-	var ()
 	return &GetBlueprintVersionUsingGET1Params{
 		HTTPClient: client,
 	}
 }
 
-/*GetBlueprintVersionUsingGET1Params contains all the parameters to send to the API endpoint
-for the get blueprint version using get1 operation typically these are written to a http.Request
+/* GetBlueprintVersionUsingGET1Params contains all the parameters to send to the API endpoint
+   for the get blueprint version using get1 operation.
+
+   Typically these are written to a http.Request.
 */
 type GetBlueprintVersionUsingGET1Params struct {
 
-	/*DollarSelect
-	  Fields to include in content. Use * to get all fields.
+	/* DollarSelect.
 
+	   Fields to include in content. Use * to get all fields.
 	*/
 	DollarSelect []string
-	/*BlueprintID
-	  blueprintId
 
+	/* BlueprintID.
+
+	   blueprintId
+
+	   Format: uuid
 	*/
 	BlueprintID strfmt.UUID
-	/*Version
-	  version
 
+	/* Version.
+
+	   version
 	*/
 	Version string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get blueprint version using get1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetBlueprintVersionUsingGET1Params) WithDefaults() *GetBlueprintVersionUsingGET1Params {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get blueprint version using get1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetBlueprintVersionUsingGET1Params) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get blueprint version using get1 params
@@ -156,12 +174,15 @@ func (o *GetBlueprintVersionUsingGET1Params) WriteToRequest(r runtime.ClientRequ
 	}
 	var res []error
 
-	valuesDollarSelect := o.DollarSelect
+	if o.DollarSelect != nil {
 
-	joinedDollarSelect := swag.JoinByFormat(valuesDollarSelect, "multi")
-	// query array param $select
-	if err := r.SetQueryParam("$select", joinedDollarSelect...); err != nil {
-		return err
+		// binding items for $select
+		joinedDollarSelect := o.bindParamDollarSelect(reg)
+
+		// query array param $select
+		if err := r.SetQueryParam("$select", joinedDollarSelect...); err != nil {
+			return err
+		}
 	}
 
 	// path param blueprintId
@@ -178,4 +199,21 @@ func (o *GetBlueprintVersionUsingGET1Params) WriteToRequest(r runtime.ClientRequ
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
+}
+
+// bindParamGetBlueprintVersionUsingGET1 binds the parameter $select
+func (o *GetBlueprintVersionUsingGET1Params) bindParamDollarSelect(formats strfmt.Registry) []string {
+	dollarSelectIR := o.DollarSelect
+
+	var dollarSelectIC []string
+	for _, dollarSelectIIR := range dollarSelectIR { // explode []string
+
+		dollarSelectIIV := dollarSelectIIR // string as string
+		dollarSelectIC = append(dollarSelectIC, dollarSelectIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	dollarSelectIS := swag.JoinByFormat(dollarSelectIC, "multi")
+
+	return dollarSelectIS
 }

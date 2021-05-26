@@ -35,7 +35,6 @@ func (o *GetRequestByIDUsingGETReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewGetRequestByIDUsingGETOK() *GetRequestByIDUsingGETOK {
 	return &GetRequestByIDUsingGETOK{}
 }
 
-/*GetRequestByIDUsingGETOK handles this case with default header values.
+/* GetRequestByIDUsingGETOK describes a response with status code 200, with default header values.
 
 Download request for id
 */
@@ -57,7 +56,6 @@ type GetRequestByIDUsingGETOK struct {
 func (o *GetRequestByIDUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /content/api/marketplace/download-requests/{id}][%d] getRequestByIdUsingGETOK  %+v", 200, o.Payload)
 }
-
 func (o *GetRequestByIDUsingGETOK) GetPayload() *models.MarketplaceContentDownloadRequest {
 	return o.Payload
 }
@@ -79,7 +77,7 @@ func NewGetRequestByIDUsingGETNotFound() *GetRequestByIDUsingGETNotFound {
 	return &GetRequestByIDUsingGETNotFound{}
 }
 
-/*GetRequestByIDUsingGETNotFound handles this case with default header values.
+/* GetRequestByIDUsingGETNotFound describes a response with status code 404, with default header values.
 
 request not found
 */
@@ -90,7 +88,6 @@ type GetRequestByIDUsingGETNotFound struct {
 func (o *GetRequestByIDUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /content/api/marketplace/download-requests/{id}][%d] getRequestByIdUsingGETNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetRequestByIDUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

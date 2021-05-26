@@ -1,5 +1,6 @@
 .PHONY: all swagger modified update update-blueprint update-catalog-deployment update-iaas update-content clean
-SWAGGER_VERSION=0.25.0
+SWAGGER_VERSION=0.27.0
+SWAGGER_ENDPOINT ?= api.mgmt.cloud.vmware.com
 
 all:
 	go build -o sdk-test
@@ -23,16 +24,16 @@ modified:
 update: update-blueprint update-catalog-deployment update-iaas update-content
 
 update-blueprint:
-	curl 'https://api.mgmt.cloud.vmware.com/blueprint/api/swagger/swagger-api-docs?group=2019-09-12' | python3 -mjson.tool > swagger/vra-blueprint.json
+	curl --insecure 'https://${SWAGGER_ENDPOINT}/blueprint/api/swagger/swagger-api-docs?group=2019-09-12' | python3 -mjson.tool > swagger/vra-blueprint.json
 
 update-catalog-deployment:
-	curl 'https://api.mgmt.cloud.vmware.com/deployment/api/swagger/swagger/v2/api-docs?group=2019-01-15' | python3 -mjson.tool > swagger/vra-catalog-deployment.json
+	curl --insecure 'https://${SWAGGER_ENDPOINT}/deployment/api/swagger/swagger/v2/api-docs?group=2019-01-15' | python3 -mjson.tool > swagger/vra-catalog-deployment.json
 
 update-iaas:
-	curl 'https://api.mgmt.cloud.vmware.com/iaas/api/swagger/swagger/v2/api-docs?group=iaas' | python3 -mjson.tool > swagger/vra-iaas.json
+	curl --insecure 'https://${SWAGGER_ENDPOINT}/iaas/api/swagger/swagger/v2/api-docs?group=iaas' | python3 -mjson.tool > swagger/vra-iaas.json
 
 update-content:
-	curl 'https://api.mgmt.cloud.vmware.com/content/api/swagger/v2/api-docs?group=2019-01-15' | python3 -mjson.tool > swagger/vra-content.json
+	curl --insecure 'https://${SWAGGER_ENDPOINT}/content/api/swagger/v2/api-docs?group=2019-01-15' | python3 -mjson.tool > swagger/vra-content.json
 
 clean:
 	rm swagger/vra-combined.json

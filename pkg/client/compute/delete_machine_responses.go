@@ -35,7 +35,6 @@ func (o *DeleteMachineReader) ReadResponse(response runtime.ClientResponse, cons
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewDeleteMachineAccepted() *DeleteMachineAccepted {
 	return &DeleteMachineAccepted{}
 }
 
-/*DeleteMachineAccepted handles this case with default header values.
+/* DeleteMachineAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -57,7 +56,6 @@ type DeleteMachineAccepted struct {
 func (o *DeleteMachineAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}][%d] deleteMachineAccepted  %+v", 202, o.Payload)
 }
-
 func (o *DeleteMachineAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -79,18 +77,29 @@ func NewDeleteMachineForbidden() *DeleteMachineForbidden {
 	return &DeleteMachineForbidden{}
 }
 
-/*DeleteMachineForbidden handles this case with default header values.
+/* DeleteMachineForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type DeleteMachineForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *DeleteMachineForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}][%d] deleteMachineForbidden ", 403)
+	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}][%d] deleteMachineForbidden  %+v", 403, o.Payload)
+}
+func (o *DeleteMachineForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *DeleteMachineForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

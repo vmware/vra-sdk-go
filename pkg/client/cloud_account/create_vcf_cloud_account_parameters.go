@@ -18,64 +18,79 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewCreateVcfCloudAccountParams creates a new CreateVcfCloudAccountParams object
-// with the default values initialized.
+// NewCreateVcfCloudAccountParams creates a new CreateVcfCloudAccountParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewCreateVcfCloudAccountParams() *CreateVcfCloudAccountParams {
-	var ()
 	return &CreateVcfCloudAccountParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewCreateVcfCloudAccountParamsWithTimeout creates a new CreateVcfCloudAccountParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewCreateVcfCloudAccountParamsWithTimeout(timeout time.Duration) *CreateVcfCloudAccountParams {
-	var ()
 	return &CreateVcfCloudAccountParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewCreateVcfCloudAccountParamsWithContext creates a new CreateVcfCloudAccountParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewCreateVcfCloudAccountParamsWithContext(ctx context.Context) *CreateVcfCloudAccountParams {
-	var ()
 	return &CreateVcfCloudAccountParams{
-
 		Context: ctx,
 	}
 }
 
 // NewCreateVcfCloudAccountParamsWithHTTPClient creates a new CreateVcfCloudAccountParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewCreateVcfCloudAccountParamsWithHTTPClient(client *http.Client) *CreateVcfCloudAccountParams {
-	var ()
 	return &CreateVcfCloudAccountParams{
 		HTTPClient: client,
 	}
 }
 
-/*CreateVcfCloudAccountParams contains all the parameters to send to the API endpoint
-for the create vcf cloud account operation typically these are written to a http.Request
+/* CreateVcfCloudAccountParams contains all the parameters to send to the API endpoint
+   for the create vcf cloud account operation.
+
+   Typically these are written to a http.Request.
 */
 type CreateVcfCloudAccountParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*Body
-	  CloudAccountVcf specification
 
+	/* Body.
+
+	   CloudAccountVcf specification
 	*/
 	Body *models.CloudAccountVcfSpecification
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the create vcf cloud account params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateVcfCloudAccountParams) WithDefaults() *CreateVcfCloudAccountParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the create vcf cloud account params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateVcfCloudAccountParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the create vcf cloud account params
@@ -145,18 +160,18 @@ func (o *CreateVcfCloudAccountParams) WriteToRequest(r runtime.ClientRequest, re
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
-
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err

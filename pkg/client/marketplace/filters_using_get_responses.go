@@ -35,7 +35,6 @@ func (o *FiltersUsingGETReader) ReadResponse(response runtime.ClientResponse, co
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewFiltersUsingGETOK() *FiltersUsingGETOK {
 	return &FiltersUsingGETOK{}
 }
 
-/*FiltersUsingGETOK handles this case with default header values.
+/* FiltersUsingGETOK describes a response with status code 200, with default header values.
 
 Marketplace filters
 */
@@ -57,7 +56,6 @@ type FiltersUsingGETOK struct {
 func (o *FiltersUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /content/api/marketplace/sources/{sourceId}/filters][%d] filtersUsingGETOK  %+v", 200, o.Payload)
 }
-
 func (o *FiltersUsingGETOK) GetPayload() *models.MarketplaceFilterSchema {
 	return o.Payload
 }
@@ -79,7 +77,7 @@ func NewFiltersUsingGETNotFound() *FiltersUsingGETNotFound {
 	return &FiltersUsingGETNotFound{}
 }
 
-/*FiltersUsingGETNotFound handles this case with default header values.
+/* FiltersUsingGETNotFound describes a response with status code 404, with default header values.
 
 Source not found
 */
@@ -90,7 +88,6 @@ type FiltersUsingGETNotFound struct {
 func (o *FiltersUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /content/api/marketplace/sources/{sourceId}/filters][%d] filtersUsingGETNotFound  %+v", 404, o.Payload)
 }
-
 func (o *FiltersUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

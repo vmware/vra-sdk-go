@@ -25,13 +25,16 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetFabricCompute(params *GetFabricComputeParams) (*GetFabricComputeOK, error)
+	GetFabricCompute(params *GetFabricComputeParams, opts ...ClientOption) (*GetFabricComputeOK, error)
 
-	GetFabricComputes(params *GetFabricComputesParams) (*GetFabricComputesOK, error)
+	GetFabricComputes(params *GetFabricComputesParams, opts ...ClientOption) (*GetFabricComputesOK, error)
 
-	UpdateFabricCompute(params *UpdateFabricComputeParams) (*UpdateFabricComputeOK, error)
+	UpdateFabricCompute(params *UpdateFabricComputeParams, opts ...ClientOption) (*UpdateFabricComputeOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -41,13 +44,12 @@ type ClientService interface {
 
   Get fabric compute with a given id
 */
-func (a *Client) GetFabricCompute(params *GetFabricComputeParams) (*GetFabricComputeOK, error) {
+func (a *Client) GetFabricCompute(params *GetFabricComputeParams, opts ...ClientOption) (*GetFabricComputeOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetFabricComputeParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getFabricCompute",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/fabric-computes/{id}",
@@ -58,7 +60,12 @@ func (a *Client) GetFabricCompute(params *GetFabricComputeParams) (*GetFabricCom
 		Reader:             &GetFabricComputeReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -77,13 +84,12 @@ func (a *Client) GetFabricCompute(params *GetFabricComputeParams) (*GetFabricCom
 
   Get all fabric computes.
 */
-func (a *Client) GetFabricComputes(params *GetFabricComputesParams) (*GetFabricComputesOK, error) {
+func (a *Client) GetFabricComputes(params *GetFabricComputesParams, opts ...ClientOption) (*GetFabricComputesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetFabricComputesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getFabricComputes",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/fabric-computes",
@@ -94,7 +100,12 @@ func (a *Client) GetFabricComputes(params *GetFabricComputesParams) (*GetFabricC
 		Reader:             &GetFabricComputesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -113,13 +124,12 @@ func (a *Client) GetFabricComputes(params *GetFabricComputesParams) (*GetFabricC
 
   Update fabric compute. Only tag updates are supported.
 */
-func (a *Client) UpdateFabricCompute(params *UpdateFabricComputeParams) (*UpdateFabricComputeOK, error) {
+func (a *Client) UpdateFabricCompute(params *UpdateFabricComputeParams, opts ...ClientOption) (*UpdateFabricComputeOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateFabricComputeParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "updateFabricCompute",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/fabric-computes/{id}",
@@ -130,7 +140,12 @@ func (a *Client) UpdateFabricCompute(params *UpdateFabricComputeParams) (*Update
 		Reader:             &UpdateFabricComputeReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

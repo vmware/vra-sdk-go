@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -115,13 +116,139 @@ func (m *CatalogItemResourceUpfrontPriceResponse) validateStatusEnum(path, locat
 }
 
 func (m *CatalogItemResourceUpfrontPriceResponse) validateStatus(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Status) { // not required
 		return nil
 	}
 
 	// value enum
 	if err := m.validateStatusEnum("status", "body", m.Status); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this catalog item resource upfront price response based on the context it is used
+func (m *CatalogItemResourceUpfrontPriceResponse) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateDailyAdditionalPrice(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDailyComputePrice(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDailyNetworkPrice(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDailyStoragePrice(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDailyTotalPrice(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResourceUpfrontPriceID(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStatusDetails(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUnit(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CatalogItemResourceUpfrontPriceResponse) contextValidateDailyAdditionalPrice(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "dailyAdditionalPrice", "body", float64(m.DailyAdditionalPrice)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CatalogItemResourceUpfrontPriceResponse) contextValidateDailyComputePrice(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "dailyComputePrice", "body", float64(m.DailyComputePrice)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CatalogItemResourceUpfrontPriceResponse) contextValidateDailyNetworkPrice(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "dailyNetworkPrice", "body", float64(m.DailyNetworkPrice)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CatalogItemResourceUpfrontPriceResponse) contextValidateDailyStoragePrice(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "dailyStoragePrice", "body", float64(m.DailyStoragePrice)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CatalogItemResourceUpfrontPriceResponse) contextValidateDailyTotalPrice(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "dailyTotalPrice", "body", float64(m.DailyTotalPrice)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CatalogItemResourceUpfrontPriceResponse) contextValidateResourceUpfrontPriceID(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "resourceUpfrontPriceId", "body", string(m.ResourceUpfrontPriceID)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CatalogItemResourceUpfrontPriceResponse) contextValidateStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "status", "body", string(m.Status)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CatalogItemResourceUpfrontPriceResponse) contextValidateStatusDetails(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "statusDetails", "body", string(m.StatusDetails)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CatalogItemResourceUpfrontPriceResponse) contextValidateUnit(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "unit", "body", string(m.Unit)); err != nil {
 		return err
 	}
 

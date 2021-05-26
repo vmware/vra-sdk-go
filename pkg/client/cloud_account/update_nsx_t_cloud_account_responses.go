@@ -41,7 +41,6 @@ func (o *UpdateNsxTCloudAccountReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewUpdateNsxTCloudAccountOK() *UpdateNsxTCloudAccountOK {
 	return &UpdateNsxTCloudAccountOK{}
 }
 
-/*UpdateNsxTCloudAccountOK handles this case with default header values.
+/* UpdateNsxTCloudAccountOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type UpdateNsxTCloudAccountOK struct {
 func (o *UpdateNsxTCloudAccountOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-nsx-t/{id}][%d] updateNsxTCloudAccountOK  %+v", 200, o.Payload)
 }
-
 func (o *UpdateNsxTCloudAccountOK) GetPayload() *models.CloudAccountNsxT {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewUpdateNsxTCloudAccountForbidden() *UpdateNsxTCloudAccountForbidden {
 	return &UpdateNsxTCloudAccountForbidden{}
 }
 
-/*UpdateNsxTCloudAccountForbidden handles this case with default header values.
+/* UpdateNsxTCloudAccountForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type UpdateNsxTCloudAccountForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *UpdateNsxTCloudAccountForbidden) Error() string {
-	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-nsx-t/{id}][%d] updateNsxTCloudAccountForbidden ", 403)
+	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-nsx-t/{id}][%d] updateNsxTCloudAccountForbidden  %+v", 403, o.Payload)
+}
+func (o *UpdateNsxTCloudAccountForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *UpdateNsxTCloudAccountForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewUpdateNsxTCloudAccountNotFound() *UpdateNsxTCloudAccountNotFound {
 	return &UpdateNsxTCloudAccountNotFound{}
 }
 
-/*UpdateNsxTCloudAccountNotFound handles this case with default header values.
+/* UpdateNsxTCloudAccountNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type UpdateNsxTCloudAccountNotFound struct {
 func (o *UpdateNsxTCloudAccountNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-nsx-t/{id}][%d] updateNsxTCloudAccountNotFound  %+v", 404, o.Payload)
 }
-
 func (o *UpdateNsxTCloudAccountNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

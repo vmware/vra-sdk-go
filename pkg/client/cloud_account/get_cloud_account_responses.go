@@ -41,7 +41,6 @@ func (o *GetCloudAccountReader) ReadResponse(response runtime.ClientResponse, co
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetCloudAccountOK() *GetCloudAccountOK {
 	return &GetCloudAccountOK{}
 }
 
-/*GetCloudAccountOK handles this case with default header values.
+/* GetCloudAccountOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type GetCloudAccountOK struct {
 func (o *GetCloudAccountOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts/{id}][%d] getCloudAccountOK  %+v", 200, o.Payload)
 }
-
 func (o *GetCloudAccountOK) GetPayload() *models.CloudAccount {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewGetCloudAccountForbidden() *GetCloudAccountForbidden {
 	return &GetCloudAccountForbidden{}
 }
 
-/*GetCloudAccountForbidden handles this case with default header values.
+/* GetCloudAccountForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetCloudAccountForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetCloudAccountForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/cloud-accounts/{id}][%d] getCloudAccountForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts/{id}][%d] getCloudAccountForbidden  %+v", 403, o.Payload)
+}
+func (o *GetCloudAccountForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetCloudAccountForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewGetCloudAccountNotFound() *GetCloudAccountNotFound {
 	return &GetCloudAccountNotFound{}
 }
 
-/*GetCloudAccountNotFound handles this case with default header values.
+/* GetCloudAccountNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type GetCloudAccountNotFound struct {
 func (o *GetCloudAccountNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts/{id}][%d] getCloudAccountNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetCloudAccountNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -35,7 +35,6 @@ func (o *GetLinkReader) ReadResponse(response runtime.ClientResponse, consumer r
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewGetLinkOK() *GetLinkOK {
 	return &GetLinkOK{}
 }
 
-/*GetLinkOK handles this case with default header values.
+/* GetLinkOK describes a response with status code 200, with default header values.
 
 Link to Content
 */
@@ -57,7 +56,6 @@ type GetLinkOK struct {
 func (o *GetLinkOK) Error() string {
 	return fmt.Sprintf("[GET /content/api/marketplace/sources/{sourceId}/contents/{contentId}/link][%d] getLinkOK  %+v", 200, o.Payload)
 }
-
 func (o *GetLinkOK) GetPayload() *models.MarketplaceContentLink {
 	return o.Payload
 }
@@ -79,7 +77,7 @@ func NewGetLinkNotFound() *GetLinkNotFound {
 	return &GetLinkNotFound{}
 }
 
-/*GetLinkNotFound handles this case with default header values.
+/* GetLinkNotFound describes a response with status code 404, with default header values.
 
 Source or Content not found
 */
@@ -90,7 +88,6 @@ type GetLinkNotFound struct {
 func (o *GetLinkNotFound) Error() string {
 	return fmt.Sprintf("[GET /content/api/marketplace/sources/{sourceId}/contents/{contentId}/link][%d] getLinkNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetLinkNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

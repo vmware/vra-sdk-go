@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -20,16 +21,19 @@ import (
 type StorageProfileAwsSpecification struct {
 
 	// Indicates if a storage profile is default or not.
+	// Example: true
 	DefaultItem bool `json:"defaultItem,omitempty"`
 
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
 
 	// Indicates the type of storage.
+	// Example: ebs / instance-store
 	// Required: true
 	DeviceType *string `json:"deviceType"`
 
 	// Indicates maximum I/O operations per second in range(1-20,000).
+	// Example: 2000
 	Iops string `json:"iops,omitempty"`
 
 	// A human-friendly name used as an identifier in APIs that support this option.
@@ -37,16 +41,20 @@ type StorageProfileAwsSpecification struct {
 	Name *string `json:"name"`
 
 	// A link to the region that is associated with the storage profile.
+	// Example: 31186
 	// Required: true
 	RegionID *string `json:"regionId"`
 
 	// Indicates whether this storage profile supports encryption or not.
+	// Example: false
 	SupportsEncryption bool `json:"supportsEncryption,omitempty"`
 
 	// A list of tags that represent the capabilities of this storage profile
+	// Example: [ { \"key\" : \"tier\", \"value\": \"silver\" } ]
 	Tags []*Tag `json:"tags"`
 
 	// Indicates the type of volume associated with type of storage.
+	// Example: gp2 / io1 / sc1 / st1 / standard
 	VolumeType string `json:"volumeType,omitempty"`
 }
 
@@ -104,7 +112,6 @@ func (m *StorageProfileAwsSpecification) validateRegionID(formats strfmt.Registr
 }
 
 func (m *StorageProfileAwsSpecification) validateTags(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Tags) { // not required
 		return nil
 	}
@@ -116,6 +123,38 @@ func (m *StorageProfileAwsSpecification) validateTags(formats strfmt.Registry) e
 
 		if m.Tags[i] != nil {
 			if err := m.Tags[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this storage profile aws specification based on the context it is used
+func (m *StorageProfileAwsSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateTags(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *StorageProfileAwsSpecification) contextValidateTags(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Tags); i++ {
+
+		if m.Tags[i] != nil {
+			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
 				}

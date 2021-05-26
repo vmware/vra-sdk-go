@@ -47,7 +47,6 @@ func (o *CreateBlueprintFromMappingUsingPOST1Reader) ReadResponse(response runti
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewCreateBlueprintFromMappingUsingPOST1OK() *CreateBlueprintFromMappingUsin
 	return &CreateBlueprintFromMappingUsingPOST1OK{}
 }
 
-/*CreateBlueprintFromMappingUsingPOST1OK handles this case with default header values.
+/* CreateBlueprintFromMappingUsingPOST1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -69,7 +68,6 @@ type CreateBlueprintFromMappingUsingPOST1OK struct {
 func (o *CreateBlueprintFromMappingUsingPOST1OK) Error() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprint-integrations/terraform/create-blueprint-from-mapping][%d] createBlueprintFromMappingUsingPOST1OK  %+v", 200, o.Payload)
 }
-
 func (o *CreateBlueprintFromMappingUsingPOST1OK) GetPayload() *models.Blueprint {
 	return o.Payload
 }
@@ -91,7 +89,7 @@ func NewCreateBlueprintFromMappingUsingPOST1BadRequest() *CreateBlueprintFromMap
 	return &CreateBlueprintFromMappingUsingPOST1BadRequest{}
 }
 
-/*CreateBlueprintFromMappingUsingPOST1BadRequest handles this case with default header values.
+/* CreateBlueprintFromMappingUsingPOST1BadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -102,7 +100,6 @@ type CreateBlueprintFromMappingUsingPOST1BadRequest struct {
 func (o *CreateBlueprintFromMappingUsingPOST1BadRequest) Error() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprint-integrations/terraform/create-blueprint-from-mapping][%d] createBlueprintFromMappingUsingPOST1BadRequest  %+v", 400, o.Payload)
 }
-
 func (o *CreateBlueprintFromMappingUsingPOST1BadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -124,7 +121,7 @@ func NewCreateBlueprintFromMappingUsingPOST1Unauthorized() *CreateBlueprintFromM
 	return &CreateBlueprintFromMappingUsingPOST1Unauthorized{}
 }
 
-/*CreateBlueprintFromMappingUsingPOST1Unauthorized handles this case with default header values.
+/* CreateBlueprintFromMappingUsingPOST1Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -145,7 +142,7 @@ func NewCreateBlueprintFromMappingUsingPOST1Forbidden() *CreateBlueprintFromMapp
 	return &CreateBlueprintFromMappingUsingPOST1Forbidden{}
 }
 
-/*CreateBlueprintFromMappingUsingPOST1Forbidden handles this case with default header values.
+/* CreateBlueprintFromMappingUsingPOST1Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */

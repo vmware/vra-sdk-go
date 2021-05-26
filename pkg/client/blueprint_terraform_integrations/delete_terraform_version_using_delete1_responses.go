@@ -47,7 +47,6 @@ func (o *DeleteTerraformVersionUsingDELETE1Reader) ReadResponse(response runtime
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewDeleteTerraformVersionUsingDELETE1NoContent() *DeleteTerraformVersionUsi
 	return &DeleteTerraformVersionUsingDELETE1NoContent{}
 }
 
-/*DeleteTerraformVersionUsingDELETE1NoContent handles this case with default header values.
+/* DeleteTerraformVersionUsingDELETE1NoContent describes a response with status code 204, with default header values.
 
 No Content
 */
@@ -79,7 +78,7 @@ func NewDeleteTerraformVersionUsingDELETE1Unauthorized() *DeleteTerraformVersion
 	return &DeleteTerraformVersionUsingDELETE1Unauthorized{}
 }
 
-/*DeleteTerraformVersionUsingDELETE1Unauthorized handles this case with default header values.
+/* DeleteTerraformVersionUsingDELETE1Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -100,7 +99,7 @@ func NewDeleteTerraformVersionUsingDELETE1Forbidden() *DeleteTerraformVersionUsi
 	return &DeleteTerraformVersionUsingDELETE1Forbidden{}
 }
 
-/*DeleteTerraformVersionUsingDELETE1Forbidden handles this case with default header values.
+/* DeleteTerraformVersionUsingDELETE1Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -121,7 +120,7 @@ func NewDeleteTerraformVersionUsingDELETE1NotFound() *DeleteTerraformVersionUsin
 	return &DeleteTerraformVersionUsingDELETE1NotFound{}
 }
 
-/*DeleteTerraformVersionUsingDELETE1NotFound handles this case with default header values.
+/* DeleteTerraformVersionUsingDELETE1NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -132,7 +131,6 @@ type DeleteTerraformVersionUsingDELETE1NotFound struct {
 func (o *DeleteTerraformVersionUsingDELETE1NotFound) Error() string {
 	return fmt.Sprintf("[DELETE /blueprint/api/blueprint-integrations/terraform/versions/{versionId}][%d] deleteTerraformVersionUsingDELETE1NotFound  %+v", 404, o.Payload)
 }
-
 func (o *DeleteTerraformVersionUsingDELETE1NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

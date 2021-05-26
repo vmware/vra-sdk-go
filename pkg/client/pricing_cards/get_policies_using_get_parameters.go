@@ -17,89 +17,113 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewGetPoliciesUsingGETParams creates a new GetPoliciesUsingGETParams object
-// with the default values initialized.
+// NewGetPoliciesUsingGETParams creates a new GetPoliciesUsingGETParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetPoliciesUsingGETParams() *GetPoliciesUsingGETParams {
-	var ()
 	return &GetPoliciesUsingGETParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetPoliciesUsingGETParamsWithTimeout creates a new GetPoliciesUsingGETParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetPoliciesUsingGETParamsWithTimeout(timeout time.Duration) *GetPoliciesUsingGETParams {
-	var ()
 	return &GetPoliciesUsingGETParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetPoliciesUsingGETParamsWithContext creates a new GetPoliciesUsingGETParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetPoliciesUsingGETParamsWithContext(ctx context.Context) *GetPoliciesUsingGETParams {
-	var ()
 	return &GetPoliciesUsingGETParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetPoliciesUsingGETParamsWithHTTPClient creates a new GetPoliciesUsingGETParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetPoliciesUsingGETParamsWithHTTPClient(client *http.Client) *GetPoliciesUsingGETParams {
-	var ()
 	return &GetPoliciesUsingGETParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetPoliciesUsingGETParams contains all the parameters to send to the API endpoint
-for the get policies using g e t operation typically these are written to a http.Request
+/* GetPoliciesUsingGETParams contains all the parameters to send to the API endpoint
+   for the get policies using g e t operation.
+
+   Typically these are written to a http.Request.
 */
 type GetPoliciesUsingGETParams struct {
 
-	/*DollarOrderby
-	  Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.
+	/* DollarOrderby.
 
+	   Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.
 	*/
 	DollarOrderby []string
-	/*DollarSkip
-	  Number of records you want to skip
 
+	/* DollarSkip.
+
+	   Number of records you want to skip
+
+	   Format: int32
 	*/
 	DollarSkip *int32
-	/*DollarTop
-	  Number of records you want
 
+	/* DollarTop.
+
+	   Number of records you want
+
+	   Format: int32
 	*/
 	DollarTop *int32
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 
+	/* APIVersion.
+
+	   The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 	*/
 	APIVersion *string
-	/*ExpandAssignmentInfo
-	  Whether or not returns count of assignments.
 
+	/* ExpandAssignmentInfo.
+
+	   Whether or not returns count of assignments.
 	*/
 	ExpandAssignmentInfo *bool
-	/*ExpandPricingCard
-	  Whether or not returns detailed pricing card for each result.
 
+	/* ExpandPricingCard.
+
+	   Whether or not returns detailed pricing card for each result.
 	*/
 	ExpandPricingCard *bool
-	/*Search
-	  Search by name and description
 
+	/* Search.
+
+	   Search by name and description
 	*/
 	Search *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get policies using get params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetPoliciesUsingGETParams) WithDefaults() *GetPoliciesUsingGETParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get policies using get params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetPoliciesUsingGETParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get policies using get params
@@ -220,112 +244,138 @@ func (o *GetPoliciesUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg 
 	}
 	var res []error
 
-	valuesDollarOrderby := o.DollarOrderby
+	if o.DollarOrderby != nil {
 
-	joinedDollarOrderby := swag.JoinByFormat(valuesDollarOrderby, "multi")
-	// query array param $orderby
-	if err := r.SetQueryParam("$orderby", joinedDollarOrderby...); err != nil {
-		return err
+		// binding items for $orderby
+		joinedDollarOrderby := o.bindParamDollarOrderby(reg)
+
+		// query array param $orderby
+		if err := r.SetQueryParam("$orderby", joinedDollarOrderby...); err != nil {
+			return err
+		}
 	}
 
 	if o.DollarSkip != nil {
 
 		// query param $skip
 		var qrDollarSkip int32
+
 		if o.DollarSkip != nil {
 			qrDollarSkip = *o.DollarSkip
 		}
 		qDollarSkip := swag.FormatInt32(qrDollarSkip)
 		if qDollarSkip != "" {
+
 			if err := r.SetQueryParam("$skip", qDollarSkip); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.DollarTop != nil {
 
 		// query param $top
 		var qrDollarTop int32
+
 		if o.DollarTop != nil {
 			qrDollarTop = *o.DollarTop
 		}
 		qDollarTop := swag.FormatInt32(qrDollarTop)
 		if qDollarTop != "" {
+
 			if err := r.SetQueryParam("$top", qDollarTop); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.APIVersion != nil {
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.ExpandAssignmentInfo != nil {
 
 		// query param expandAssignmentInfo
 		var qrExpandAssignmentInfo bool
+
 		if o.ExpandAssignmentInfo != nil {
 			qrExpandAssignmentInfo = *o.ExpandAssignmentInfo
 		}
 		qExpandAssignmentInfo := swag.FormatBool(qrExpandAssignmentInfo)
 		if qExpandAssignmentInfo != "" {
+
 			if err := r.SetQueryParam("expandAssignmentInfo", qExpandAssignmentInfo); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.ExpandPricingCard != nil {
 
 		// query param expandPricingCard
 		var qrExpandPricingCard bool
+
 		if o.ExpandPricingCard != nil {
 			qrExpandPricingCard = *o.ExpandPricingCard
 		}
 		qExpandPricingCard := swag.FormatBool(qrExpandPricingCard)
 		if qExpandPricingCard != "" {
+
 			if err := r.SetQueryParam("expandPricingCard", qExpandPricingCard); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Search != nil {
 
 		// query param search
 		var qrSearch string
+
 		if o.Search != nil {
 			qrSearch = *o.Search
 		}
 		qSearch := qrSearch
 		if qSearch != "" {
+
 			if err := r.SetQueryParam("search", qSearch); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
+}
+
+// bindParamGetPoliciesUsingGET binds the parameter $orderby
+func (o *GetPoliciesUsingGETParams) bindParamDollarOrderby(formats strfmt.Registry) []string {
+	dollarOrderbyIR := o.DollarOrderby
+
+	var dollarOrderbyIC []string
+	for _, dollarOrderbyIIR := range dollarOrderbyIR { // explode []string
+
+		dollarOrderbyIIV := dollarOrderbyIIR // string as string
+		dollarOrderbyIC = append(dollarOrderbyIC, dollarOrderbyIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	dollarOrderbyIS := swag.JoinByFormat(dollarOrderbyIC, "multi")
+
+	return dollarOrderbyIS
 }

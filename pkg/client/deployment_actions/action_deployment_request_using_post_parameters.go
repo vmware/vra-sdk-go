@@ -16,69 +16,87 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// NewActionDeploymentRequestUsingPOSTParams creates a new ActionDeploymentRequestUsingPOSTParams object
-// with the default values initialized.
+// NewActionDeploymentRequestUsingPOSTParams creates a new ActionDeploymentRequestUsingPOSTParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewActionDeploymentRequestUsingPOSTParams() *ActionDeploymentRequestUsingPOSTParams {
-	var ()
 	return &ActionDeploymentRequestUsingPOSTParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewActionDeploymentRequestUsingPOSTParamsWithTimeout creates a new ActionDeploymentRequestUsingPOSTParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewActionDeploymentRequestUsingPOSTParamsWithTimeout(timeout time.Duration) *ActionDeploymentRequestUsingPOSTParams {
-	var ()
 	return &ActionDeploymentRequestUsingPOSTParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewActionDeploymentRequestUsingPOSTParamsWithContext creates a new ActionDeploymentRequestUsingPOSTParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewActionDeploymentRequestUsingPOSTParamsWithContext(ctx context.Context) *ActionDeploymentRequestUsingPOSTParams {
-	var ()
 	return &ActionDeploymentRequestUsingPOSTParams{
-
 		Context: ctx,
 	}
 }
 
 // NewActionDeploymentRequestUsingPOSTParamsWithHTTPClient creates a new ActionDeploymentRequestUsingPOSTParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewActionDeploymentRequestUsingPOSTParamsWithHTTPClient(client *http.Client) *ActionDeploymentRequestUsingPOSTParams {
-	var ()
 	return &ActionDeploymentRequestUsingPOSTParams{
 		HTTPClient: client,
 	}
 }
 
-/*ActionDeploymentRequestUsingPOSTParams contains all the parameters to send to the API endpoint
-for the action deployment request using p o s t operation typically these are written to a http.Request
+/* ActionDeploymentRequestUsingPOSTParams contains all the parameters to send to the API endpoint
+   for the action deployment request using p o s t operation.
+
+   Typically these are written to a http.Request.
 */
 type ActionDeploymentRequestUsingPOSTParams struct {
 
-	/*Action
-	  action
+	/* Action.
 
+	   action
 	*/
 	Action string
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 
+	/* APIVersion.
+
+	   The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 	*/
 	APIVersion *string
-	/*RequestID
-	  requestId
 
+	/* RequestID.
+
+	   requestId
+
+	   Format: uuid
 	*/
 	RequestID strfmt.UUID
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the action deployment request using p o s t params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ActionDeploymentRequestUsingPOSTParams) WithDefaults() *ActionDeploymentRequestUsingPOSTParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the action deployment request using p o s t params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *ActionDeploymentRequestUsingPOSTParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the action deployment request using p o s t params
@@ -159,6 +177,7 @@ func (o *ActionDeploymentRequestUsingPOSTParams) WriteToRequest(r runtime.Client
 	qrAction := o.Action
 	qAction := qrAction
 	if qAction != "" {
+
 		if err := r.SetQueryParam("action", qAction); err != nil {
 			return err
 		}
@@ -168,16 +187,17 @@ func (o *ActionDeploymentRequestUsingPOSTParams) WriteToRequest(r runtime.Client
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param requestId

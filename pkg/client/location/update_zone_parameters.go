@@ -18,69 +18,85 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewUpdateZoneParams creates a new UpdateZoneParams object
-// with the default values initialized.
+// NewUpdateZoneParams creates a new UpdateZoneParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewUpdateZoneParams() *UpdateZoneParams {
-	var ()
 	return &UpdateZoneParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewUpdateZoneParamsWithTimeout creates a new UpdateZoneParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewUpdateZoneParamsWithTimeout(timeout time.Duration) *UpdateZoneParams {
-	var ()
 	return &UpdateZoneParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewUpdateZoneParamsWithContext creates a new UpdateZoneParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewUpdateZoneParamsWithContext(ctx context.Context) *UpdateZoneParams {
-	var ()
 	return &UpdateZoneParams{
-
 		Context: ctx,
 	}
 }
 
 // NewUpdateZoneParamsWithHTTPClient creates a new UpdateZoneParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewUpdateZoneParamsWithHTTPClient(client *http.Client) *UpdateZoneParams {
-	var ()
 	return &UpdateZoneParams{
 		HTTPClient: client,
 	}
 }
 
-/*UpdateZoneParams contains all the parameters to send to the API endpoint
-for the update zone operation typically these are written to a http.Request
+/* UpdateZoneParams contains all the parameters to send to the API endpoint
+   for the update zone operation.
+
+   Typically these are written to a http.Request.
 */
 type UpdateZoneParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*Body
-	  Zone specification
 
+	/* Body.
+
+	   Zone specification
 	*/
 	Body *models.ZoneSpecification
-	/*ID
-	  The ID of the zone.
 
+	/* ID.
+
+	   The ID of the zone.
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the update zone params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UpdateZoneParams) WithDefaults() *UpdateZoneParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the update zone params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UpdateZoneParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the update zone params
@@ -161,18 +177,18 @@ func (o *UpdateZoneParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Re
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
-
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err

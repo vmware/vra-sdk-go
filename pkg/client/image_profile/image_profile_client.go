@@ -25,17 +25,20 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateImageProfile(params *CreateImageProfileParams) (*CreateImageProfileCreated, error)
+	CreateImageProfile(params *CreateImageProfileParams, opts ...ClientOption) (*CreateImageProfileCreated, error)
 
-	DeleteImageProfile(params *DeleteImageProfileParams) (*DeleteImageProfileNoContent, error)
+	DeleteImageProfile(params *DeleteImageProfileParams, opts ...ClientOption) (*DeleteImageProfileNoContent, error)
 
-	GetImageProfile(params *GetImageProfileParams) (*GetImageProfileOK, error)
+	GetImageProfile(params *GetImageProfileParams, opts ...ClientOption) (*GetImageProfileOK, error)
 
-	GetImageProfiles(params *GetImageProfilesParams) (*GetImageProfilesOK, error)
+	GetImageProfiles(params *GetImageProfilesParams, opts ...ClientOption) (*GetImageProfilesOK, error)
 
-	UpdateImageProfile(params *UpdateImageProfileParams) (*UpdateImageProfileOK, error)
+	UpdateImageProfile(params *UpdateImageProfileParams, opts ...ClientOption) (*UpdateImageProfileOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -45,13 +48,12 @@ type ClientService interface {
 
   Create image profile
 */
-func (a *Client) CreateImageProfile(params *CreateImageProfileParams) (*CreateImageProfileCreated, error) {
+func (a *Client) CreateImageProfile(params *CreateImageProfileParams, opts ...ClientOption) (*CreateImageProfileCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateImageProfileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createImageProfile",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/image-profiles",
@@ -62,7 +64,12 @@ func (a *Client) CreateImageProfile(params *CreateImageProfileParams) (*CreateIm
 		Reader:             &CreateImageProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -81,13 +88,12 @@ func (a *Client) CreateImageProfile(params *CreateImageProfileParams) (*CreateIm
 
   Delete image profile with a given id
 */
-func (a *Client) DeleteImageProfile(params *DeleteImageProfileParams) (*DeleteImageProfileNoContent, error) {
+func (a *Client) DeleteImageProfile(params *DeleteImageProfileParams, opts ...ClientOption) (*DeleteImageProfileNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteImageProfileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteImageProfile",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/image-profiles/{id}",
@@ -98,7 +104,12 @@ func (a *Client) DeleteImageProfile(params *DeleteImageProfileParams) (*DeleteIm
 		Reader:             &DeleteImageProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -117,13 +128,12 @@ func (a *Client) DeleteImageProfile(params *DeleteImageProfileParams) (*DeleteIm
 
   Get image profile with a given id
 */
-func (a *Client) GetImageProfile(params *GetImageProfileParams) (*GetImageProfileOK, error) {
+func (a *Client) GetImageProfile(params *GetImageProfileParams, opts ...ClientOption) (*GetImageProfileOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetImageProfileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getImageProfile",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/image-profiles/{id}",
@@ -134,7 +144,12 @@ func (a *Client) GetImageProfile(params *GetImageProfileParams) (*GetImageProfil
 		Reader:             &GetImageProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -153,13 +168,12 @@ func (a *Client) GetImageProfile(params *GetImageProfileParams) (*GetImageProfil
 
   Get all image profiles
 */
-func (a *Client) GetImageProfiles(params *GetImageProfilesParams) (*GetImageProfilesOK, error) {
+func (a *Client) GetImageProfiles(params *GetImageProfilesParams, opts ...ClientOption) (*GetImageProfilesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetImageProfilesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getImageProfiles",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/image-profiles",
@@ -170,7 +184,12 @@ func (a *Client) GetImageProfiles(params *GetImageProfilesParams) (*GetImageProf
 		Reader:             &GetImageProfilesReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -189,13 +208,12 @@ func (a *Client) GetImageProfiles(params *GetImageProfilesParams) (*GetImageProf
 
   Update image profile
 */
-func (a *Client) UpdateImageProfile(params *UpdateImageProfileParams) (*UpdateImageProfileOK, error) {
+func (a *Client) UpdateImageProfile(params *UpdateImageProfileParams, opts ...ClientOption) (*UpdateImageProfileOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateImageProfileParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "updateImageProfile",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/image-profiles/{id}",
@@ -206,7 +224,12 @@ func (a *Client) UpdateImageProfile(params *UpdateImageProfileParams) (*UpdateIm
 		Reader:             &UpdateImageProfileReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

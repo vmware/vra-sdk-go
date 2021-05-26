@@ -25,21 +25,24 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateProject(params *CreateProjectParams) (*CreateProjectCreated, error)
+	CreateProject(params *CreateProjectParams, opts ...ClientOption) (*CreateProjectCreated, error)
 
-	DeleteProject(params *DeleteProjectParams) (*DeleteProjectNoContent, error)
+	DeleteProject(params *DeleteProjectParams, opts ...ClientOption) (*DeleteProjectNoContent, error)
 
-	GetProject(params *GetProjectParams) (*GetProjectOK, error)
+	GetProject(params *GetProjectParams, opts ...ClientOption) (*GetProjectOK, error)
 
-	GetProjectResourceMetadata(params *GetProjectResourceMetadataParams) (*GetProjectResourceMetadataOK, error)
+	GetProjectResourceMetadata(params *GetProjectResourceMetadataParams, opts ...ClientOption) (*GetProjectResourceMetadataOK, error)
 
-	GetProjects(params *GetProjectsParams) (*GetProjectsOK, error)
+	GetProjects(params *GetProjectsParams, opts ...ClientOption) (*GetProjectsOK, error)
 
-	UpdateProject(params *UpdateProjectParams) (*UpdateProjectOK, error)
+	UpdateProject(params *UpdateProjectParams, opts ...ClientOption) (*UpdateProjectOK, error)
 
-	UpdateProjectResourceMetadata(params *UpdateProjectResourceMetadataParams) (*UpdateProjectResourceMetadataOK, error)
+	UpdateProjectResourceMetadata(params *UpdateProjectResourceMetadataParams, opts ...ClientOption) (*UpdateProjectResourceMetadataOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -49,13 +52,12 @@ type ClientService interface {
 
   Create project
 */
-func (a *Client) CreateProject(params *CreateProjectParams) (*CreateProjectCreated, error) {
+func (a *Client) CreateProject(params *CreateProjectParams, opts ...ClientOption) (*CreateProjectCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateProjectParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createProject",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/projects",
@@ -66,7 +68,12 @@ func (a *Client) CreateProject(params *CreateProjectParams) (*CreateProjectCreat
 		Reader:             &CreateProjectReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -85,13 +92,12 @@ func (a *Client) CreateProject(params *CreateProjectParams) (*CreateProjectCreat
 
   Delete project with a given id
 */
-func (a *Client) DeleteProject(params *DeleteProjectParams) (*DeleteProjectNoContent, error) {
+func (a *Client) DeleteProject(params *DeleteProjectParams, opts ...ClientOption) (*DeleteProjectNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteProjectParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteProject",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/projects/{id}",
@@ -102,7 +108,12 @@ func (a *Client) DeleteProject(params *DeleteProjectParams) (*DeleteProjectNoCon
 		Reader:             &DeleteProjectReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -121,13 +132,12 @@ func (a *Client) DeleteProject(params *DeleteProjectParams) (*DeleteProjectNoCon
 
   Get project with a given id
 */
-func (a *Client) GetProject(params *GetProjectParams) (*GetProjectOK, error) {
+func (a *Client) GetProject(params *GetProjectParams, opts ...ClientOption) (*GetProjectOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetProjectParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getProject",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/projects/{id}",
@@ -138,7 +148,12 @@ func (a *Client) GetProject(params *GetProjectParams) (*GetProjectOK, error) {
 		Reader:             &GetProjectReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -157,13 +172,12 @@ func (a *Client) GetProject(params *GetProjectParams) (*GetProjectOK, error) {
 
   Get project resource metadata by a given project id
 */
-func (a *Client) GetProjectResourceMetadata(params *GetProjectResourceMetadataParams) (*GetProjectResourceMetadataOK, error) {
+func (a *Client) GetProjectResourceMetadata(params *GetProjectResourceMetadataParams, opts ...ClientOption) (*GetProjectResourceMetadataOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetProjectResourceMetadataParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getProjectResourceMetadata",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/projects/{id}/resource-metadata",
@@ -174,7 +188,12 @@ func (a *Client) GetProjectResourceMetadata(params *GetProjectResourceMetadataPa
 		Reader:             &GetProjectResourceMetadataReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -193,13 +212,12 @@ func (a *Client) GetProjectResourceMetadata(params *GetProjectResourceMetadataPa
 
   Get all projects
 */
-func (a *Client) GetProjects(params *GetProjectsParams) (*GetProjectsOK, error) {
+func (a *Client) GetProjects(params *GetProjectsParams, opts ...ClientOption) (*GetProjectsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetProjectsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getProjects",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/projects",
@@ -210,7 +228,12 @@ func (a *Client) GetProjects(params *GetProjectsParams) (*GetProjectsOK, error) 
 		Reader:             &GetProjectsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -229,13 +252,12 @@ func (a *Client) GetProjects(params *GetProjectsParams) (*GetProjectsOK, error) 
 
   Update project
 */
-func (a *Client) UpdateProject(params *UpdateProjectParams) (*UpdateProjectOK, error) {
+func (a *Client) UpdateProject(params *UpdateProjectParams, opts ...ClientOption) (*UpdateProjectOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateProjectParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "updateProject",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/projects/{id}",
@@ -246,7 +268,12 @@ func (a *Client) UpdateProject(params *UpdateProjectParams) (*UpdateProjectOK, e
 		Reader:             &UpdateProjectReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -265,13 +292,12 @@ func (a *Client) UpdateProject(params *UpdateProjectParams) (*UpdateProjectOK, e
 
   Update project resource metadata by a given project id
 */
-func (a *Client) UpdateProjectResourceMetadata(params *UpdateProjectResourceMetadataParams) (*UpdateProjectResourceMetadataOK, error) {
+func (a *Client) UpdateProjectResourceMetadata(params *UpdateProjectResourceMetadataParams, opts ...ClientOption) (*UpdateProjectResourceMetadataOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateProjectResourceMetadataParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "updateProjectResourceMetadata",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/projects/{id}/resource-metadata",
@@ -282,7 +308,12 @@ func (a *Client) UpdateProjectResourceMetadata(params *UpdateProjectResourceMeta
 		Reader:             &UpdateProjectResourceMetadataReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

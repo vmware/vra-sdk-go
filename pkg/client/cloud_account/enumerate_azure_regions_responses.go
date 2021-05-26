@@ -41,7 +41,6 @@ func (o *EnumerateAzureRegionsReader) ReadResponse(response runtime.ClientRespon
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewEnumerateAzureRegionsOK() *EnumerateAzureRegionsOK {
 	return &EnumerateAzureRegionsOK{}
 }
 
-/*EnumerateAzureRegionsOK handles this case with default header values.
+/* EnumerateAzureRegionsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type EnumerateAzureRegionsOK struct {
 func (o *EnumerateAzureRegionsOK) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-azure/region-enumeration][%d] enumerateAzureRegionsOK  %+v", 200, o.Payload)
 }
-
 func (o *EnumerateAzureRegionsOK) GetPayload() *models.CloudAccountRegions {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewEnumerateAzureRegionsBadRequest() *EnumerateAzureRegionsBadRequest {
 	return &EnumerateAzureRegionsBadRequest{}
 }
 
-/*EnumerateAzureRegionsBadRequest handles this case with default header values.
+/* EnumerateAzureRegionsBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -96,7 +94,6 @@ type EnumerateAzureRegionsBadRequest struct {
 func (o *EnumerateAzureRegionsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-azure/region-enumeration][%d] enumerateAzureRegionsBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *EnumerateAzureRegionsBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -118,18 +115,29 @@ func NewEnumerateAzureRegionsForbidden() *EnumerateAzureRegionsForbidden {
 	return &EnumerateAzureRegionsForbidden{}
 }
 
-/*EnumerateAzureRegionsForbidden handles this case with default header values.
+/* EnumerateAzureRegionsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type EnumerateAzureRegionsForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *EnumerateAzureRegionsForbidden) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-azure/region-enumeration][%d] enumerateAzureRegionsForbidden ", 403)
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-azure/region-enumeration][%d] enumerateAzureRegionsForbidden  %+v", 403, o.Payload)
+}
+func (o *EnumerateAzureRegionsForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *EnumerateAzureRegionsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

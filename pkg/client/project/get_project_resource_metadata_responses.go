@@ -41,7 +41,6 @@ func (o *GetProjectResourceMetadataReader) ReadResponse(response runtime.ClientR
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetProjectResourceMetadataOK() *GetProjectResourceMetadataOK {
 	return &GetProjectResourceMetadataOK{}
 }
 
-/*GetProjectResourceMetadataOK handles this case with default header values.
+/* GetProjectResourceMetadataOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type GetProjectResourceMetadataOK struct {
 func (o *GetProjectResourceMetadataOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/projects/{id}/resource-metadata][%d] getProjectResourceMetadataOK  %+v", 200, o.Payload)
 }
-
 func (o *GetProjectResourceMetadataOK) GetPayload() *models.ProjectResourceMetadata {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewGetProjectResourceMetadataForbidden() *GetProjectResourceMetadataForbidd
 	return &GetProjectResourceMetadataForbidden{}
 }
 
-/*GetProjectResourceMetadataForbidden handles this case with default header values.
+/* GetProjectResourceMetadataForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetProjectResourceMetadataForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetProjectResourceMetadataForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/projects/{id}/resource-metadata][%d] getProjectResourceMetadataForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/projects/{id}/resource-metadata][%d] getProjectResourceMetadataForbidden  %+v", 403, o.Payload)
+}
+func (o *GetProjectResourceMetadataForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetProjectResourceMetadataForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewGetProjectResourceMetadataNotFound() *GetProjectResourceMetadataNotFound
 	return &GetProjectResourceMetadataNotFound{}
 }
 
-/*GetProjectResourceMetadataNotFound handles this case with default header values.
+/* GetProjectResourceMetadataNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type GetProjectResourceMetadataNotFound struct {
 func (o *GetProjectResourceMetadataNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/projects/{id}/resource-metadata][%d] getProjectResourceMetadataNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetProjectResourceMetadataNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

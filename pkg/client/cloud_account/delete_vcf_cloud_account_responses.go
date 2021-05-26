@@ -7,9 +7,12 @@ package cloud_account
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
 // DeleteVcfCloudAccountReader is a Reader for the DeleteVcfCloudAccount structure.
@@ -32,7 +35,6 @@ func (o *DeleteVcfCloudAccountReader) ReadResponse(response runtime.ClientRespon
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -43,7 +45,7 @@ func NewDeleteVcfCloudAccountNoContent() *DeleteVcfCloudAccountNoContent {
 	return &DeleteVcfCloudAccountNoContent{}
 }
 
-/*DeleteVcfCloudAccountNoContent handles this case with default header values.
+/* DeleteVcfCloudAccountNoContent describes a response with status code 204, with default header values.
 
 No Content
 */
@@ -64,18 +66,29 @@ func NewDeleteVcfCloudAccountForbidden() *DeleteVcfCloudAccountForbidden {
 	return &DeleteVcfCloudAccountForbidden{}
 }
 
-/*DeleteVcfCloudAccountForbidden handles this case with default header values.
+/* DeleteVcfCloudAccountForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type DeleteVcfCloudAccountForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *DeleteVcfCloudAccountForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-vcf/{id}][%d] deleteVcfCloudAccountForbidden ", 403)
+	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-vcf/{id}][%d] deleteVcfCloudAccountForbidden  %+v", 403, o.Payload)
+}
+func (o *DeleteVcfCloudAccountForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *DeleteVcfCloudAccountForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -20,21 +21,27 @@ import (
 type CloudAccountVsphereSpecification struct {
 
 	// Accept self signed certificate when connecting to vSphere
+	// Example: false
 	AcceptSelfSignedCertificate bool `json:"acceptSelfSignedCertificate,omitempty"`
 
 	// NSX-V or NSX-T account to associate with this vSphere cloud account. vSphere cloud account can be a single NSX-V cloud account or a single NSX-T cloud account.
+	// Example: [ \"42f3e0d199d134755684cd935435a\" ]
 	AssociatedCloudAccountIds []string `json:"associatedCloudAccountIds"`
 
 	// Create default cloud zones for the enabled regions.
+	// Example: true
 	CreateDefaultZones bool `json:"createDefaultZones,omitempty"`
 
-	// Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors
+	// Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors.
+	// Note: Data collector endpoints are not available in vRA on-prem release.
+	// Example: 23959a1e-18bc-4f0c-ac49-b5aeb4b6eef4
 	Dcid string `json:"dcid,omitempty"`
 
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
 
 	// Host name for the vSphere endpoint
+	// Example: vc.mycompany.com
 	// Required: true
 	HostName *string `json:"hostName"`
 
@@ -43,17 +50,21 @@ type CloudAccountVsphereSpecification struct {
 	Name *string `json:"name"`
 
 	// Password for the user used to authenticate with the cloud Account
+	// Example: cndhjslacd90ascdbasyoucbdh
 	// Required: true
 	Password *string `json:"password"`
 
 	// A set of datacenter managed object reference identifiers (MoRef) to enable provisioning on. Refer to /iaas/cloud-accounts-vsphere/region-enumeration.
+	// Example: [ \"Datacenter:datacenter-2\" ]
 	// Required: true
 	RegionIds []string `json:"regionIds"`
 
 	// A set of tag keys and optional values to set on the Cloud Account
+	// Example: [ { \"key\" : \"env\", \"value\": \"dev\" } ]
 	Tags []*Tag `json:"tags"`
 
 	// Username to authenticate with the cloud account
+	// Example: administrator@mycompany.com
 	// Required: true
 	Username *string `json:"username"`
 }
@@ -129,7 +140,6 @@ func (m *CloudAccountVsphereSpecification) validateRegionIds(formats strfmt.Regi
 }
 
 func (m *CloudAccountVsphereSpecification) validateTags(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Tags) { // not required
 		return nil
 	}
@@ -157,6 +167,38 @@ func (m *CloudAccountVsphereSpecification) validateUsername(formats strfmt.Regis
 
 	if err := validate.Required("username", "body", m.Username); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this cloud account vsphere specification based on the context it is used
+func (m *CloudAccountVsphereSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateTags(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CloudAccountVsphereSpecification) contextValidateTags(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Tags); i++ {
+
+		if m.Tags[i] != nil {
+			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil

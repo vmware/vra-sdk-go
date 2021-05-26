@@ -41,7 +41,6 @@ func (o *GetDeploymentByIDUsingGETReader) ReadResponse(response runtime.ClientRe
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetDeploymentByIDUsingGETOK() *GetDeploymentByIDUsingGETOK {
 	return &GetDeploymentByIDUsingGETOK{}
 }
 
-/*GetDeploymentByIDUsingGETOK handles this case with default header values.
+/* GetDeploymentByIDUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -63,7 +62,6 @@ type GetDeploymentByIDUsingGETOK struct {
 func (o *GetDeploymentByIDUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/{depId}][%d] getDeploymentByIdUsingGETOK  %+v", 200, o.Payload)
 }
-
 func (o *GetDeploymentByIDUsingGETOK) GetPayload() *models.Deployment {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewGetDeploymentByIDUsingGETUnauthorized() *GetDeploymentByIDUsingGETUnauth
 	return &GetDeploymentByIDUsingGETUnauthorized{}
 }
 
-/*GetDeploymentByIDUsingGETUnauthorized handles this case with default header values.
+/* GetDeploymentByIDUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -106,7 +104,7 @@ func NewGetDeploymentByIDUsingGETNotFound() *GetDeploymentByIDUsingGETNotFound {
 	return &GetDeploymentByIDUsingGETNotFound{}
 }
 
-/*GetDeploymentByIDUsingGETNotFound handles this case with default header values.
+/* GetDeploymentByIDUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +115,6 @@ type GetDeploymentByIDUsingGETNotFound struct {
 func (o *GetDeploymentByIDUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/{depId}][%d] getDeploymentByIdUsingGETNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetDeploymentByIDUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -25,13 +25,16 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DownloadHistoryUsingGET(params *DownloadHistoryUsingGETParams) (*DownloadHistoryUsingGETOK, error)
+	DownloadHistoryUsingGET(params *DownloadHistoryUsingGETParams, opts ...ClientOption) (*DownloadHistoryUsingGETOK, error)
 
-	DownloadRequestUsingPOST(params *DownloadRequestUsingPOSTParams) (*DownloadRequestUsingPOSTAccepted, error)
+	DownloadRequestUsingPOST(params *DownloadRequestUsingPOSTParams, opts ...ClientOption) (*DownloadRequestUsingPOSTAccepted, error)
 
-	GetRequestByIDUsingGET(params *GetRequestByIDUsingGETParams) (*GetRequestByIDUsingGETOK, error)
+	GetRequestByIDUsingGET(params *GetRequestByIDUsingGETParams, opts ...ClientOption) (*GetRequestByIDUsingGETOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -41,13 +44,12 @@ type ClientService interface {
 
   Get download history for the content downloaded from Marketplace
 */
-func (a *Client) DownloadHistoryUsingGET(params *DownloadHistoryUsingGETParams) (*DownloadHistoryUsingGETOK, error) {
+func (a *Client) DownloadHistoryUsingGET(params *DownloadHistoryUsingGETParams, opts ...ClientOption) (*DownloadHistoryUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDownloadHistoryUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "downloadHistoryUsingGET",
 		Method:             "GET",
 		PathPattern:        "/content/api/marketplace/download-history",
@@ -58,7 +60,12 @@ func (a *Client) DownloadHistoryUsingGET(params *DownloadHistoryUsingGETParams) 
 		Reader:             &DownloadHistoryUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -77,13 +84,12 @@ func (a *Client) DownloadHistoryUsingGET(params *DownloadHistoryUsingGETParams) 
 
   Submit a download request for a content
 */
-func (a *Client) DownloadRequestUsingPOST(params *DownloadRequestUsingPOSTParams) (*DownloadRequestUsingPOSTAccepted, error) {
+func (a *Client) DownloadRequestUsingPOST(params *DownloadRequestUsingPOSTParams, opts ...ClientOption) (*DownloadRequestUsingPOSTAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDownloadRequestUsingPOSTParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "downloadRequestUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/content/api/marketplace/download-requests",
@@ -94,7 +100,12 @@ func (a *Client) DownloadRequestUsingPOST(params *DownloadRequestUsingPOSTParams
 		Reader:             &DownloadRequestUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -113,13 +124,12 @@ func (a *Client) DownloadRequestUsingPOST(params *DownloadRequestUsingPOSTParams
 
   Get a download request by Id
 */
-func (a *Client) GetRequestByIDUsingGET(params *GetRequestByIDUsingGETParams) (*GetRequestByIDUsingGETOK, error) {
+func (a *Client) GetRequestByIDUsingGET(params *GetRequestByIDUsingGETParams, opts ...ClientOption) (*GetRequestByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetRequestByIDUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getRequestByIdUsingGET",
 		Method:             "GET",
 		PathPattern:        "/content/api/marketplace/download-requests/{id}",
@@ -130,7 +140,12 @@ func (a *Client) GetRequestByIDUsingGET(params *GetRequestByIDUsingGETParams) (*
 		Reader:             &GetRequestByIDUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

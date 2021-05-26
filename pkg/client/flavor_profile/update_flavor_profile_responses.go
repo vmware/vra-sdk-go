@@ -41,7 +41,6 @@ func (o *UpdateFlavorProfileReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewUpdateFlavorProfileOK() *UpdateFlavorProfileOK {
 	return &UpdateFlavorProfileOK{}
 }
 
-/*UpdateFlavorProfileOK handles this case with default header values.
+/* UpdateFlavorProfileOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type UpdateFlavorProfileOK struct {
 func (o *UpdateFlavorProfileOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/flavor-profiles/{id}][%d] updateFlavorProfileOK  %+v", 200, o.Payload)
 }
-
 func (o *UpdateFlavorProfileOK) GetPayload() *models.FlavorProfile {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewUpdateFlavorProfileForbidden() *UpdateFlavorProfileForbidden {
 	return &UpdateFlavorProfileForbidden{}
 }
 
-/*UpdateFlavorProfileForbidden handles this case with default header values.
+/* UpdateFlavorProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type UpdateFlavorProfileForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *UpdateFlavorProfileForbidden) Error() string {
-	return fmt.Sprintf("[PATCH /iaas/api/flavor-profiles/{id}][%d] updateFlavorProfileForbidden ", 403)
+	return fmt.Sprintf("[PATCH /iaas/api/flavor-profiles/{id}][%d] updateFlavorProfileForbidden  %+v", 403, o.Payload)
+}
+func (o *UpdateFlavorProfileForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *UpdateFlavorProfileForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewUpdateFlavorProfileNotFound() *UpdateFlavorProfileNotFound {
 	return &UpdateFlavorProfileNotFound{}
 }
 
-/*UpdateFlavorProfileNotFound handles this case with default header values.
+/* UpdateFlavorProfileNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type UpdateFlavorProfileNotFound struct {
 func (o *UpdateFlavorProfileNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/flavor-profiles/{id}][%d] updateFlavorProfileNotFound  %+v", 404, o.Payload)
 }
-
 func (o *UpdateFlavorProfileNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

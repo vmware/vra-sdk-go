@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -27,9 +28,11 @@ type StorageProfileSpecification struct {
 	Description string `json:"description,omitempty"`
 
 	// Map of storage properties that are to be applied on disk while provisioning.
+	// Example: { \"diskProperties\": {\n                    \"provisioningType\": \"thin\",\n                    \"sharesLevel\": \"low\",\n                    \"shares\": \"500\",\n                    \"limitIops\": \"500\"\n                    \"diskType\": \"firstClass\"\n                    \"deviceType\": \"ebs\"\n                    \"volumeType\": \"gp2\"\n                    \"azureDataDiskCaching\": \"ReadWrite\"\n                    \"azureOsDiskCaching\": \"ReadWrite\"\n                    \"azureManagedDiskType\": \"Standard_LRS\"\n                } }
 	DiskProperties map[string]string `json:"diskProperties,omitempty"`
 
 	// Map of storage placements to know where the disk is provisioned.
+	// Example: { \"diskTargetProperties\": {\n                    \"storageAccountId\": \"27dhbf7\",\n                    \"storagePolicyId\": \"7fhfj9f\",\n                    \"datastoreId\": \"638nfjd8\",\n                } }
 	DiskTargetProperties map[string]string `json:"diskTargetProperties,omitempty"`
 
 	// A human-friendly name used as an identifier in APIs that support this option.
@@ -37,6 +40,7 @@ type StorageProfileSpecification struct {
 	Name *string `json:"name"`
 
 	// The Id of the region that is associated with the storage profile.
+	// Example: 31186
 	// Required: true
 	RegionID *string `json:"regionId"`
 
@@ -44,6 +48,7 @@ type StorageProfileSpecification struct {
 	SupportsEncryption bool `json:"supportsEncryption,omitempty"`
 
 	// A list of tags that represent the capabilities of this storage profile
+	// Example: [ { \"key\" : \"tier\", \"value\": \"silver\" } ]
 	Tags []*Tag `json:"tags"`
 }
 
@@ -101,7 +106,6 @@ func (m *StorageProfileSpecification) validateRegionID(formats strfmt.Registry) 
 }
 
 func (m *StorageProfileSpecification) validateTags(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Tags) { // not required
 		return nil
 	}
@@ -113,6 +117,38 @@ func (m *StorageProfileSpecification) validateTags(formats strfmt.Registry) erro
 
 		if m.Tags[i] != nil {
 			if err := m.Tags[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this storage profile specification based on the context it is used
+func (m *StorageProfileSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateTags(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *StorageProfileSpecification) contextValidateTags(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Tags); i++ {
+
+		if m.Tags[i] != nil {
+			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
 				}

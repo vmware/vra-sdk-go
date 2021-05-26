@@ -18,64 +18,79 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewEnumerateGcpRegionsParams creates a new EnumerateGcpRegionsParams object
-// with the default values initialized.
+// NewEnumerateGcpRegionsParams creates a new EnumerateGcpRegionsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewEnumerateGcpRegionsParams() *EnumerateGcpRegionsParams {
-	var ()
 	return &EnumerateGcpRegionsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewEnumerateGcpRegionsParamsWithTimeout creates a new EnumerateGcpRegionsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewEnumerateGcpRegionsParamsWithTimeout(timeout time.Duration) *EnumerateGcpRegionsParams {
-	var ()
 	return &EnumerateGcpRegionsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewEnumerateGcpRegionsParamsWithContext creates a new EnumerateGcpRegionsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewEnumerateGcpRegionsParamsWithContext(ctx context.Context) *EnumerateGcpRegionsParams {
-	var ()
 	return &EnumerateGcpRegionsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewEnumerateGcpRegionsParamsWithHTTPClient creates a new EnumerateGcpRegionsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewEnumerateGcpRegionsParamsWithHTTPClient(client *http.Client) *EnumerateGcpRegionsParams {
-	var ()
 	return &EnumerateGcpRegionsParams{
 		HTTPClient: client,
 	}
 }
 
-/*EnumerateGcpRegionsParams contains all the parameters to send to the API endpoint
-for the enumerate gcp regions operation typically these are written to a http.Request
+/* EnumerateGcpRegionsParams contains all the parameters to send to the API endpoint
+   for the enumerate gcp regions operation.
+
+   Typically these are written to a http.Request.
 */
 type EnumerateGcpRegionsParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*Body
-	  CloudAccount specification
 
+	/* Body.
+
+	   CloudAccount specification
 	*/
 	Body *models.CloudAccountGcpSpecification
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the enumerate gcp regions params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *EnumerateGcpRegionsParams) WithDefaults() *EnumerateGcpRegionsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the enumerate gcp regions params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *EnumerateGcpRegionsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the enumerate gcp regions params
@@ -145,18 +160,18 @@ func (o *EnumerateGcpRegionsParams) WriteToRequest(r runtime.ClientRequest, reg 
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
-
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err

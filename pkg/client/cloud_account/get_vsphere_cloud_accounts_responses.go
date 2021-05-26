@@ -35,7 +35,6 @@ func (o *GetVSphereCloudAccountsReader) ReadResponse(response runtime.ClientResp
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewGetVSphereCloudAccountsOK() *GetVSphereCloudAccountsOK {
 	return &GetVSphereCloudAccountsOK{}
 }
 
-/*GetVSphereCloudAccountsOK handles this case with default header values.
+/* GetVSphereCloudAccountsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -57,7 +56,6 @@ type GetVSphereCloudAccountsOK struct {
 func (o *GetVSphereCloudAccountsOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vsphere][%d] getVSphereCloudAccountsOK  %+v", 200, o.Payload)
 }
-
 func (o *GetVSphereCloudAccountsOK) GetPayload() *models.CloudAccountVsphereResult {
 	return o.Payload
 }
@@ -79,18 +77,29 @@ func NewGetVSphereCloudAccountsForbidden() *GetVSphereCloudAccountsForbidden {
 	return &GetVSphereCloudAccountsForbidden{}
 }
 
-/*GetVSphereCloudAccountsForbidden handles this case with default header values.
+/* GetVSphereCloudAccountsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetVSphereCloudAccountsForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetVSphereCloudAccountsForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vsphere][%d] getVSphereCloudAccountsForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vsphere][%d] getVSphereCloudAccountsForbidden  %+v", 403, o.Payload)
+}
+func (o *GetVSphereCloudAccountsForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetVSphereCloudAccountsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

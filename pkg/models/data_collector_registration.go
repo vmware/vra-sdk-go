@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
+
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
@@ -18,10 +20,12 @@ import (
 type DataCollectorRegistration struct {
 
 	// A registration key for the data collector
+	// Example: eyJyZWdpc3RyYXRpb25VcmwiOiJodHRwczovL2Fw
 	// Required: true
 	Key *string `json:"key"`
 
 	// Data collector OVA Link
+	// Example: https://ci-data-collector.s3.amazonaws.com/VMware-Cloud-Services-Data-Collector.ova
 	// Required: true
 	OvaLink *string `json:"ovaLink"`
 }
@@ -59,6 +63,11 @@ func (m *DataCollectorRegistration) validateOvaLink(formats strfmt.Registry) err
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validates this data collector registration based on context it is used
+func (m *DataCollectorRegistration) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

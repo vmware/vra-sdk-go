@@ -35,7 +35,6 @@ func (o *GetPoliciesUsingGETReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewGetPoliciesUsingGETOK() *GetPoliciesUsingGETOK {
 	return &GetPoliciesUsingGETOK{}
 }
 
-/*GetPoliciesUsingGETOK handles this case with default header values.
+/* GetPoliciesUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -57,7 +56,6 @@ type GetPoliciesUsingGETOK struct {
 func (o *GetPoliciesUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /price/api/private/pricing-cards][%d] getPoliciesUsingGETOK  %+v", 200, o.Payload)
 }
-
 func (o *GetPoliciesUsingGETOK) GetPayload() *models.PageOfMeteringPolicy {
 	return o.Payload
 }
@@ -79,7 +77,7 @@ func NewGetPoliciesUsingGETUnauthorized() *GetPoliciesUsingGETUnauthorized {
 	return &GetPoliciesUsingGETUnauthorized{}
 }
 
-/*GetPoliciesUsingGETUnauthorized handles this case with default header values.
+/* GetPoliciesUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */

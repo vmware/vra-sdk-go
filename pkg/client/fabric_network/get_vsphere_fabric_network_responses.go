@@ -41,7 +41,6 @@ func (o *GetVsphereFabricNetworkReader) ReadResponse(response runtime.ClientResp
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetVsphereFabricNetworkOK() *GetVsphereFabricNetworkOK {
 	return &GetVsphereFabricNetworkOK{}
 }
 
-/*GetVsphereFabricNetworkOK handles this case with default header values.
+/* GetVsphereFabricNetworkOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type GetVsphereFabricNetworkOK struct {
 func (o *GetVsphereFabricNetworkOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-networks-vsphere/{id}][%d] getVsphereFabricNetworkOK  %+v", 200, o.Payload)
 }
-
 func (o *GetVsphereFabricNetworkOK) GetPayload() *models.FabricNetworkVsphere {
 	return o.Payload
 }
@@ -85,18 +83,29 @@ func NewGetVsphereFabricNetworkForbidden() *GetVsphereFabricNetworkForbidden {
 	return &GetVsphereFabricNetworkForbidden{}
 }
 
-/*GetVsphereFabricNetworkForbidden handles this case with default header values.
+/* GetVsphereFabricNetworkForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetVsphereFabricNetworkForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *GetVsphereFabricNetworkForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/fabric-networks-vsphere/{id}][%d] getVsphereFabricNetworkForbidden ", 403)
+	return fmt.Sprintf("[GET /iaas/api/fabric-networks-vsphere/{id}][%d] getVsphereFabricNetworkForbidden  %+v", 403, o.Payload)
+}
+func (o *GetVsphereFabricNetworkForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *GetVsphereFabricNetworkForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -106,7 +115,7 @@ func NewGetVsphereFabricNetworkNotFound() *GetVsphereFabricNetworkNotFound {
 	return &GetVsphereFabricNetworkNotFound{}
 }
 
-/*GetVsphereFabricNetworkNotFound handles this case with default header values.
+/* GetVsphereFabricNetworkNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -117,7 +126,6 @@ type GetVsphereFabricNetworkNotFound struct {
 func (o *GetVsphereFabricNetworkNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-networks-vsphere/{id}][%d] getVsphereFabricNetworkNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetVsphereFabricNetworkNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -35,7 +35,6 @@ func (o *DeleteLoadBalancerOperationReader) ReadResponse(response runtime.Client
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -46,7 +45,7 @@ func NewDeleteLoadBalancerOperationAccepted() *DeleteLoadBalancerOperationAccept
 	return &DeleteLoadBalancerOperationAccepted{}
 }
 
-/*DeleteLoadBalancerOperationAccepted handles this case with default header values.
+/* DeleteLoadBalancerOperationAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -57,7 +56,6 @@ type DeleteLoadBalancerOperationAccepted struct {
 func (o *DeleteLoadBalancerOperationAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/load-balancers/{id}/operations/delete][%d] deleteLoadBalancerOperationAccepted  %+v", 202, o.Payload)
 }
-
 func (o *DeleteLoadBalancerOperationAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -79,18 +77,29 @@ func NewDeleteLoadBalancerOperationForbidden() *DeleteLoadBalancerOperationForbi
 	return &DeleteLoadBalancerOperationForbidden{}
 }
 
-/*DeleteLoadBalancerOperationForbidden handles this case with default header values.
+/* DeleteLoadBalancerOperationForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type DeleteLoadBalancerOperationForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *DeleteLoadBalancerOperationForbidden) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/load-balancers/{id}/operations/delete][%d] deleteLoadBalancerOperationForbidden ", 403)
+	return fmt.Sprintf("[POST /iaas/api/load-balancers/{id}/operations/delete][%d] deleteLoadBalancerOperationForbidden  %+v", 403, o.Payload)
+}
+func (o *DeleteLoadBalancerOperationForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *DeleteLoadBalancerOperationForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

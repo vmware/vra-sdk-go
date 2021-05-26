@@ -25,15 +25,18 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateDeployment(params *CreateDeploymentParams) (*CreateDeploymentCreated, error)
+	CreateDeployment(params *CreateDeploymentParams, opts ...ClientOption) (*CreateDeploymentCreated, error)
 
-	DeleteDeployment(params *DeleteDeploymentParams) (*DeleteDeploymentAccepted, error)
+	DeleteDeployment(params *DeleteDeploymentParams, opts ...ClientOption) (*DeleteDeploymentAccepted, error)
 
-	GetDeployments(params *GetDeploymentsParams) (*GetDeploymentsOK, error)
+	GetDeployments(params *GetDeploymentsParams, opts ...ClientOption) (*GetDeploymentsOK, error)
 
-	GetSingleDeployment(params *GetSingleDeploymentParams) (*GetSingleDeploymentOK, error)
+	GetSingleDeployment(params *GetSingleDeploymentParams, opts ...ClientOption) (*GetSingleDeploymentOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -43,13 +46,12 @@ type ClientService interface {
 
   Create a new Deployment.
 */
-func (a *Client) CreateDeployment(params *CreateDeploymentParams) (*CreateDeploymentCreated, error) {
+func (a *Client) CreateDeployment(params *CreateDeploymentParams, opts ...ClientOption) (*CreateDeploymentCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewCreateDeploymentParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "createDeployment",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/deployments",
@@ -60,7 +62,12 @@ func (a *Client) CreateDeployment(params *CreateDeploymentParams) (*CreateDeploy
 		Reader:             &CreateDeploymentReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -79,13 +86,12 @@ func (a *Client) CreateDeployment(params *CreateDeploymentParams) (*CreateDeploy
 
   Delete a deployment.
 */
-func (a *Client) DeleteDeployment(params *DeleteDeploymentParams) (*DeleteDeploymentAccepted, error) {
+func (a *Client) DeleteDeployment(params *DeleteDeploymentParams, opts ...ClientOption) (*DeleteDeploymentAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteDeploymentParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteDeployment",
 		Method:             "DELETE",
 		PathPattern:        "/iaas/api/deployments/{id}",
@@ -96,7 +102,12 @@ func (a *Client) DeleteDeployment(params *DeleteDeploymentParams) (*DeleteDeploy
 		Reader:             &DeleteDeploymentReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -115,13 +126,12 @@ func (a *Client) DeleteDeployment(params *DeleteDeploymentParams) (*DeleteDeploy
 
   Get all deployments.
 */
-func (a *Client) GetDeployments(params *GetDeploymentsParams) (*GetDeploymentsOK, error) {
+func (a *Client) GetDeployments(params *GetDeploymentsParams, opts ...ClientOption) (*GetDeploymentsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetDeploymentsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getDeployments",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/deployments",
@@ -132,7 +142,12 @@ func (a *Client) GetDeployments(params *GetDeploymentsParams) (*GetDeploymentsOK
 		Reader:             &GetDeploymentsReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -151,13 +166,12 @@ func (a *Client) GetDeployments(params *GetDeploymentsParams) (*GetDeploymentsOK
 
   Get a single deployment.
 */
-func (a *Client) GetSingleDeployment(params *GetSingleDeploymentParams) (*GetSingleDeploymentOK, error) {
+func (a *Client) GetSingleDeployment(params *GetSingleDeploymentParams, opts ...ClientOption) (*GetSingleDeploymentOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetSingleDeploymentParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getSingleDeployment",
 		Method:             "GET",
 		PathPattern:        "/iaas/api/deployments/{id}",
@@ -168,7 +182,12 @@ func (a *Client) GetSingleDeployment(params *GetSingleDeploymentParams) (*GetSin
 		Reader:             &GetSingleDeploymentReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}

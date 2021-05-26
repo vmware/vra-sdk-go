@@ -41,7 +41,6 @@ func (o *UpdateAwsStorageProfileReader) ReadResponse(response runtime.ClientResp
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewUpdateAwsStorageProfileOK() *UpdateAwsStorageProfileOK {
 	return &UpdateAwsStorageProfileOK{}
 }
 
-/*UpdateAwsStorageProfileOK handles this case with default header values.
+/* UpdateAwsStorageProfileOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -63,7 +62,6 @@ type UpdateAwsStorageProfileOK struct {
 func (o *UpdateAwsStorageProfileOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-aws/{id}][%d] updateAwsStorageProfileOK  %+v", 200, o.Payload)
 }
-
 func (o *UpdateAwsStorageProfileOK) GetPayload() *models.AwsStorageProfile {
 	return o.Payload
 }
@@ -85,7 +83,7 @@ func NewUpdateAwsStorageProfileBadRequest() *UpdateAwsStorageProfileBadRequest {
 	return &UpdateAwsStorageProfileBadRequest{}
 }
 
-/*UpdateAwsStorageProfileBadRequest handles this case with default header values.
+/* UpdateAwsStorageProfileBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -96,7 +94,6 @@ type UpdateAwsStorageProfileBadRequest struct {
 func (o *UpdateAwsStorageProfileBadRequest) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-aws/{id}][%d] updateAwsStorageProfileBadRequest  %+v", 400, o.Payload)
 }
-
 func (o *UpdateAwsStorageProfileBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -118,18 +115,29 @@ func NewUpdateAwsStorageProfileForbidden() *UpdateAwsStorageProfileForbidden {
 	return &UpdateAwsStorageProfileForbidden{}
 }
 
-/*UpdateAwsStorageProfileForbidden handles this case with default header values.
+/* UpdateAwsStorageProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type UpdateAwsStorageProfileForbidden struct {
+	Payload *models.ServiceErrorResponse
 }
 
 func (o *UpdateAwsStorageProfileForbidden) Error() string {
-	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-aws/{id}][%d] updateAwsStorageProfileForbidden ", 403)
+	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-aws/{id}][%d] updateAwsStorageProfileForbidden  %+v", 403, o.Payload)
+}
+func (o *UpdateAwsStorageProfileForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
 }
 
 func (o *UpdateAwsStorageProfileForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

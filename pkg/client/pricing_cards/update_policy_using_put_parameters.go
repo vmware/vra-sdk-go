@@ -18,69 +18,87 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewUpdatePolicyUsingPUTParams creates a new UpdatePolicyUsingPUTParams object
-// with the default values initialized.
+// NewUpdatePolicyUsingPUTParams creates a new UpdatePolicyUsingPUTParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewUpdatePolicyUsingPUTParams() *UpdatePolicyUsingPUTParams {
-	var ()
 	return &UpdatePolicyUsingPUTParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewUpdatePolicyUsingPUTParamsWithTimeout creates a new UpdatePolicyUsingPUTParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewUpdatePolicyUsingPUTParamsWithTimeout(timeout time.Duration) *UpdatePolicyUsingPUTParams {
-	var ()
 	return &UpdatePolicyUsingPUTParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewUpdatePolicyUsingPUTParamsWithContext creates a new UpdatePolicyUsingPUTParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewUpdatePolicyUsingPUTParamsWithContext(ctx context.Context) *UpdatePolicyUsingPUTParams {
-	var ()
 	return &UpdatePolicyUsingPUTParams{
-
 		Context: ctx,
 	}
 }
 
 // NewUpdatePolicyUsingPUTParamsWithHTTPClient creates a new UpdatePolicyUsingPUTParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewUpdatePolicyUsingPUTParamsWithHTTPClient(client *http.Client) *UpdatePolicyUsingPUTParams {
-	var ()
 	return &UpdatePolicyUsingPUTParams{
 		HTTPClient: client,
 	}
 }
 
-/*UpdatePolicyUsingPUTParams contains all the parameters to send to the API endpoint
-for the update policy using p u t operation typically these are written to a http.Request
+/* UpdatePolicyUsingPUTParams contains all the parameters to send to the API endpoint
+   for the update policy using p u t operation.
+
+   Typically these are written to a http.Request.
 */
 type UpdatePolicyUsingPUTParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.
 	*/
 	APIVersion *string
-	/*ID
-	  pricing card Id
 
+	/* ID.
+
+	   pricing card Id
+
+	   Format: uuid
 	*/
 	ID strfmt.UUID
-	/*MeteringPolicy
-	  A set of pricing card fields to be updated.
 
+	/* MeteringPolicy.
+
+	   A set of pricing card fields to be updated.
 	*/
 	MeteringPolicy *models.MeteringPolicy
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the update policy using p u t params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UpdatePolicyUsingPUTParams) WithDefaults() *UpdatePolicyUsingPUTParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the update policy using p u t params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UpdatePolicyUsingPUTParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the update policy using p u t params
@@ -161,23 +179,23 @@ func (o *UpdatePolicyUsingPUTParams) WriteToRequest(r runtime.ClientRequest, reg
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id
 	if err := r.SetPathParam("id", o.ID.String()); err != nil {
 		return err
 	}
-
 	if o.MeteringPolicy != nil {
 		if err := r.SetBodyParam(o.MeteringPolicy); err != nil {
 			return err

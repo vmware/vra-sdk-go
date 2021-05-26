@@ -25,15 +25,18 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DeleteUsingDELETE(params *DeleteUsingDELETEParams) (*DeleteUsingDELETENoContent, error)
+	DeleteUsingDELETE(params *DeleteUsingDELETEParams, opts ...ClientOption) (*DeleteUsingDELETENoContent, error)
 
-	GetPageUsingGET(params *GetPageUsingGETParams) (*GetPageUsingGETOK, error)
+	GetPageUsingGET(params *GetPageUsingGETParams, opts ...ClientOption) (*GetPageUsingGETOK, error)
 
-	GetUsingGET(params *GetUsingGETParams) (*GetUsingGETOK, error)
+	GetUsingGET(params *GetUsingGETParams, opts ...ClientOption) (*GetUsingGETOK, error)
 
-	PostUsingPOST(params *PostUsingPOSTParams) (*PostUsingPOSTOK, *PostUsingPOSTCreated, error)
+	PostUsingPOST(params *PostUsingPOSTParams, opts ...ClientOption) (*PostUsingPOSTOK, *PostUsingPOSTCreated, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -43,13 +46,12 @@ type ClientService interface {
 
   Deletes the catalog source with the supplied ID.
 */
-func (a *Client) DeleteUsingDELETE(params *DeleteUsingDELETEParams) (*DeleteUsingDELETENoContent, error) {
+func (a *Client) DeleteUsingDELETE(params *DeleteUsingDELETEParams, opts ...ClientOption) (*DeleteUsingDELETENoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteUsingDELETEParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteUsingDELETE",
 		Method:             "DELETE",
 		PathPattern:        "/catalog/api/admin/sources/{sourceId}",
@@ -60,7 +62,12 @@ func (a *Client) DeleteUsingDELETE(params *DeleteUsingDELETEParams) (*DeleteUsin
 		Reader:             &DeleteUsingDELETEReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -79,13 +86,12 @@ func (a *Client) DeleteUsingDELETE(params *DeleteUsingDELETEParams) (*DeleteUsin
 
   Returns a paginated list of catalog sources.
 */
-func (a *Client) GetPageUsingGET(params *GetPageUsingGETParams) (*GetPageUsingGETOK, error) {
+func (a *Client) GetPageUsingGET(params *GetPageUsingGETParams, opts ...ClientOption) (*GetPageUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetPageUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getPageUsingGET",
 		Method:             "GET",
 		PathPattern:        "/catalog/api/admin/sources",
@@ -96,7 +102,12 @@ func (a *Client) GetPageUsingGET(params *GetPageUsingGETParams) (*GetPageUsingGE
 		Reader:             &GetPageUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -115,13 +126,12 @@ func (a *Client) GetPageUsingGET(params *GetPageUsingGETParams) (*GetPageUsingGE
 
   Returns the catalog source with the supplied ID.
 */
-func (a *Client) GetUsingGET(params *GetUsingGETParams) (*GetUsingGETOK, error) {
+func (a *Client) GetUsingGET(params *GetUsingGETParams, opts ...ClientOption) (*GetUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetUsingGETParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getUsingGET",
 		Method:             "GET",
 		PathPattern:        "/catalog/api/admin/sources/{sourceId}",
@@ -132,7 +142,12 @@ func (a *Client) GetUsingGET(params *GetUsingGETParams) (*GetUsingGETOK, error) 
 		Reader:             &GetUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
@@ -151,13 +166,12 @@ func (a *Client) GetUsingGET(params *GetUsingGETParams) (*GetUsingGETOK, error) 
 
   Creates a catalog source and imports catalog items from it.
 */
-func (a *Client) PostUsingPOST(params *PostUsingPOSTParams) (*PostUsingPOSTOK, *PostUsingPOSTCreated, error) {
+func (a *Client) PostUsingPOST(params *PostUsingPOSTParams, opts ...ClientOption) (*PostUsingPOSTOK, *PostUsingPOSTCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostUsingPOSTParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "postUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/catalog/api/admin/sources",
@@ -168,7 +182,12 @@ func (a *Client) PostUsingPOST(params *PostUsingPOSTParams) (*PostUsingPOSTOK, *
 		Reader:             &PostUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}

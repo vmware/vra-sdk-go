@@ -47,7 +47,6 @@ func (o *GetBlueprintInputsSchemaUsingGET1Reader) ReadResponse(response runtime.
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -58,7 +57,7 @@ func NewGetBlueprintInputsSchemaUsingGET1OK() *GetBlueprintInputsSchemaUsingGET1
 	return &GetBlueprintInputsSchemaUsingGET1OK{}
 }
 
-/*GetBlueprintInputsSchemaUsingGET1OK handles this case with default header values.
+/* GetBlueprintInputsSchemaUsingGET1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -69,7 +68,6 @@ type GetBlueprintInputsSchemaUsingGET1OK struct {
 func (o *GetBlueprintInputsSchemaUsingGET1OK) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprints/{blueprintId}/inputs-schema][%d] getBlueprintInputsSchemaUsingGET1OK  %+v", 200, o.Payload)
 }
-
 func (o *GetBlueprintInputsSchemaUsingGET1OK) GetPayload() *models.PropertyDefinition {
 	return o.Payload
 }
@@ -91,7 +89,7 @@ func NewGetBlueprintInputsSchemaUsingGET1Unauthorized() *GetBlueprintInputsSchem
 	return &GetBlueprintInputsSchemaUsingGET1Unauthorized{}
 }
 
-/*GetBlueprintInputsSchemaUsingGET1Unauthorized handles this case with default header values.
+/* GetBlueprintInputsSchemaUsingGET1Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -112,7 +110,7 @@ func NewGetBlueprintInputsSchemaUsingGET1Forbidden() *GetBlueprintInputsSchemaUs
 	return &GetBlueprintInputsSchemaUsingGET1Forbidden{}
 }
 
-/*GetBlueprintInputsSchemaUsingGET1Forbidden handles this case with default header values.
+/* GetBlueprintInputsSchemaUsingGET1Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -133,7 +131,7 @@ func NewGetBlueprintInputsSchemaUsingGET1NotFound() *GetBlueprintInputsSchemaUsi
 	return &GetBlueprintInputsSchemaUsingGET1NotFound{}
 }
 
-/*GetBlueprintInputsSchemaUsingGET1NotFound handles this case with default header values.
+/* GetBlueprintInputsSchemaUsingGET1NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -144,7 +142,6 @@ type GetBlueprintInputsSchemaUsingGET1NotFound struct {
 func (o *GetBlueprintInputsSchemaUsingGET1NotFound) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprints/{blueprintId}/inputs-schema][%d] getBlueprintInputsSchemaUsingGET1NotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetBlueprintInputsSchemaUsingGET1NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

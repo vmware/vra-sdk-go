@@ -18,64 +18,81 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewUpdateTerraformVersionUsingPATCH1Params creates a new UpdateTerraformVersionUsingPATCH1Params object
-// with the default values initialized.
+// NewUpdateTerraformVersionUsingPATCH1Params creates a new UpdateTerraformVersionUsingPATCH1Params object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewUpdateTerraformVersionUsingPATCH1Params() *UpdateTerraformVersionUsingPATCH1Params {
-	var ()
 	return &UpdateTerraformVersionUsingPATCH1Params{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewUpdateTerraformVersionUsingPATCH1ParamsWithTimeout creates a new UpdateTerraformVersionUsingPATCH1Params object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewUpdateTerraformVersionUsingPATCH1ParamsWithTimeout(timeout time.Duration) *UpdateTerraformVersionUsingPATCH1Params {
-	var ()
 	return &UpdateTerraformVersionUsingPATCH1Params{
-
 		timeout: timeout,
 	}
 }
 
 // NewUpdateTerraformVersionUsingPATCH1ParamsWithContext creates a new UpdateTerraformVersionUsingPATCH1Params object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewUpdateTerraformVersionUsingPATCH1ParamsWithContext(ctx context.Context) *UpdateTerraformVersionUsingPATCH1Params {
-	var ()
 	return &UpdateTerraformVersionUsingPATCH1Params{
-
 		Context: ctx,
 	}
 }
 
 // NewUpdateTerraformVersionUsingPATCH1ParamsWithHTTPClient creates a new UpdateTerraformVersionUsingPATCH1Params object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewUpdateTerraformVersionUsingPATCH1ParamsWithHTTPClient(client *http.Client) *UpdateTerraformVersionUsingPATCH1Params {
-	var ()
 	return &UpdateTerraformVersionUsingPATCH1Params{
 		HTTPClient: client,
 	}
 }
 
-/*UpdateTerraformVersionUsingPATCH1Params contains all the parameters to send to the API endpoint
-for the update terraform version using p a t c h 1 operation typically these are written to a http.Request
+/* UpdateTerraformVersionUsingPATCH1Params contains all the parameters to send to the API endpoint
+   for the update terraform version using p a t c h 1 operation.
+
+   Typically these are written to a http.Request.
 */
 type UpdateTerraformVersionUsingPATCH1Params struct {
 
-	/*TerraformVersion
-	  Terraform version object
+	/* TerraformVersion.
 
+	   Terraform version object
 	*/
 	TerraformVersion *models.TerraformVersion
-	/*VersionID
-	  versionId
 
+	/* VersionID.
+
+	   versionId
+
+	   Format: uuid
 	*/
 	VersionID strfmt.UUID
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the update terraform version using p a t c h 1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UpdateTerraformVersionUsingPATCH1Params) WithDefaults() *UpdateTerraformVersionUsingPATCH1Params {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the update terraform version using p a t c h 1 params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *UpdateTerraformVersionUsingPATCH1Params) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the update terraform version using p a t c h 1 params
@@ -140,7 +157,6 @@ func (o *UpdateTerraformVersionUsingPATCH1Params) WriteToRequest(r runtime.Clien
 		return err
 	}
 	var res []error
-
 	if o.TerraformVersion != nil {
 		if err := r.SetBodyParam(o.TerraformVersion); err != nil {
 			return err

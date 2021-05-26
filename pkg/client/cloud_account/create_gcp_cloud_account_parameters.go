@@ -18,64 +18,79 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
-// NewCreateGcpCloudAccountParams creates a new CreateGcpCloudAccountParams object
-// with the default values initialized.
+// NewCreateGcpCloudAccountParams creates a new CreateGcpCloudAccountParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewCreateGcpCloudAccountParams() *CreateGcpCloudAccountParams {
-	var ()
 	return &CreateGcpCloudAccountParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewCreateGcpCloudAccountParamsWithTimeout creates a new CreateGcpCloudAccountParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewCreateGcpCloudAccountParamsWithTimeout(timeout time.Duration) *CreateGcpCloudAccountParams {
-	var ()
 	return &CreateGcpCloudAccountParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewCreateGcpCloudAccountParamsWithContext creates a new CreateGcpCloudAccountParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewCreateGcpCloudAccountParamsWithContext(ctx context.Context) *CreateGcpCloudAccountParams {
-	var ()
 	return &CreateGcpCloudAccountParams{
-
 		Context: ctx,
 	}
 }
 
 // NewCreateGcpCloudAccountParamsWithHTTPClient creates a new CreateGcpCloudAccountParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewCreateGcpCloudAccountParamsWithHTTPClient(client *http.Client) *CreateGcpCloudAccountParams {
-	var ()
 	return &CreateGcpCloudAccountParams{
 		HTTPClient: client,
 	}
 }
 
-/*CreateGcpCloudAccountParams contains all the parameters to send to the API endpoint
-for the create gcp cloud account operation typically these are written to a http.Request
+/* CreateGcpCloudAccountParams contains all the parameters to send to the API endpoint
+   for the create gcp cloud account operation.
+
+   Typically these are written to a http.Request.
 */
 type CreateGcpCloudAccountParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*Body
-	  CloudAccountGcp specification
 
+	/* Body.
+
+	   CloudAccountGcp specification
 	*/
 	Body *models.CloudAccountGcpSpecification
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the create gcp cloud account params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateGcpCloudAccountParams) WithDefaults() *CreateGcpCloudAccountParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the create gcp cloud account params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *CreateGcpCloudAccountParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the create gcp cloud account params
@@ -145,18 +160,18 @@ func (o *CreateGcpCloudAccountParams) WriteToRequest(r runtime.ClientRequest, re
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
-
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err

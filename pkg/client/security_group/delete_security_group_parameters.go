@@ -17,69 +17,85 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NewDeleteSecurityGroupParams creates a new DeleteSecurityGroupParams object
-// with the default values initialized.
+// NewDeleteSecurityGroupParams creates a new DeleteSecurityGroupParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteSecurityGroupParams() *DeleteSecurityGroupParams {
-	var ()
 	return &DeleteSecurityGroupParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteSecurityGroupParamsWithTimeout creates a new DeleteSecurityGroupParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteSecurityGroupParamsWithTimeout(timeout time.Duration) *DeleteSecurityGroupParams {
-	var ()
 	return &DeleteSecurityGroupParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteSecurityGroupParamsWithContext creates a new DeleteSecurityGroupParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteSecurityGroupParamsWithContext(ctx context.Context) *DeleteSecurityGroupParams {
-	var ()
 	return &DeleteSecurityGroupParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteSecurityGroupParamsWithHTTPClient creates a new DeleteSecurityGroupParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteSecurityGroupParamsWithHTTPClient(client *http.Client) *DeleteSecurityGroupParams {
-	var ()
 	return &DeleteSecurityGroupParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteSecurityGroupParams contains all the parameters to send to the API endpoint
-for the delete security group operation typically these are written to a http.Request
+/* DeleteSecurityGroupParams contains all the parameters to send to the API endpoint
+   for the delete security group operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteSecurityGroupParams struct {
 
-	/*APIVersion
-	  The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
+	/* APIVersion.
 
+	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
-	/*ForceDelete
-	  Controls whether this is a force delete operation. If true, best effort is made for deleting this security group. Use with caution as force deleting may cause inconsistencies between the cloud provider and vRA.
 
+	/* ForceDelete.
+
+	   Controls whether this is a force delete operation. If true, best effort is made for deleting this security group. Use with caution as force deleting may cause inconsistencies between the cloud provider and vRA.
 	*/
 	ForceDelete *bool
-	/*ID
-	  The ID of the security group.
 
+	/* ID.
+
+	   The ID of the security group.
 	*/
 	ID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete security group params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteSecurityGroupParams) WithDefaults() *DeleteSecurityGroupParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete security group params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteSecurityGroupParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete security group params
@@ -160,32 +176,34 @@ func (o *DeleteSecurityGroupParams) WriteToRequest(r runtime.ClientRequest, reg 
 
 		// query param apiVersion
 		var qrAPIVersion string
+
 		if o.APIVersion != nil {
 			qrAPIVersion = *o.APIVersion
 		}
 		qAPIVersion := qrAPIVersion
 		if qAPIVersion != "" {
+
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.ForceDelete != nil {
 
 		// query param forceDelete
 		var qrForceDelete bool
+
 		if o.ForceDelete != nil {
 			qrForceDelete = *o.ForceDelete
 		}
 		qForceDelete := swag.FormatBool(qrForceDelete)
 		if qForceDelete != "" {
+
 			if err := r.SetQueryParam("forceDelete", qForceDelete); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	// path param id

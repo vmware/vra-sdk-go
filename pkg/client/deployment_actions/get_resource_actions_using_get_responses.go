@@ -41,7 +41,6 @@ func (o *GetResourceActionsUsingGETReader) ReadResponse(response runtime.ClientR
 			return nil, err
 		}
 		return nil, result
-
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -52,7 +51,7 @@ func NewGetResourceActionsUsingGETOK() *GetResourceActionsUsingGETOK {
 	return &GetResourceActionsUsingGETOK{}
 }
 
-/*GetResourceActionsUsingGETOK handles this case with default header values.
+/* GetResourceActionsUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -63,7 +62,6 @@ type GetResourceActionsUsingGETOK struct {
 func (o *GetResourceActionsUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/{depId}/resources/{resourceId}/actions][%d] getResourceActionsUsingGETOK  %+v", 200, o.Payload)
 }
-
 func (o *GetResourceActionsUsingGETOK) GetPayload() []*models.ResourceAction {
 	return o.Payload
 }
@@ -83,7 +81,7 @@ func NewGetResourceActionsUsingGETUnauthorized() *GetResourceActionsUsingGETUnau
 	return &GetResourceActionsUsingGETUnauthorized{}
 }
 
-/*GetResourceActionsUsingGETUnauthorized handles this case with default header values.
+/* GetResourceActionsUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -104,7 +102,7 @@ func NewGetResourceActionsUsingGETNotFound() *GetResourceActionsUsingGETNotFound
 	return &GetResourceActionsUsingGETNotFound{}
 }
 
-/*GetResourceActionsUsingGETNotFound handles this case with default header values.
+/* GetResourceActionsUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -115,7 +113,6 @@ type GetResourceActionsUsingGETNotFound struct {
 func (o *GetResourceActionsUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/{depId}/resources/{resourceId}/actions][%d] getResourceActionsUsingGETNotFound  %+v", 404, o.Payload)
 }
-
 func (o *GetResourceActionsUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

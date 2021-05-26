@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 	"strconv"
 
@@ -152,7 +153,6 @@ func (m *Blueprint) Validate(formats strfmt.Registry) error {
 }
 
 func (m *Blueprint) validateContentSourceSyncAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ContentSourceSyncAt) { // not required
 		return nil
 	}
@@ -194,7 +194,6 @@ func (m *Blueprint) validateContentSourceSyncStatusEnum(path, location string, v
 }
 
 func (m *Blueprint) validateContentSourceSyncStatus(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ContentSourceSyncStatus) { // not required
 		return nil
 	}
@@ -208,7 +207,6 @@ func (m *Blueprint) validateContentSourceSyncStatus(formats strfmt.Registry) err
 }
 
 func (m *Blueprint) validateCreatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CreatedAt) { // not required
 		return nil
 	}
@@ -253,7 +251,6 @@ func (m *Blueprint) validateStatusEnum(path, location string, value string) erro
 }
 
 func (m *Blueprint) validateStatus(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Status) { // not required
 		return nil
 	}
@@ -267,7 +264,6 @@ func (m *Blueprint) validateStatus(formats strfmt.Registry) error {
 }
 
 func (m *Blueprint) validateUpdatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.UpdatedAt) { // not required
 		return nil
 	}
@@ -280,7 +276,6 @@ func (m *Blueprint) validateUpdatedAt(formats strfmt.Registry) error {
 }
 
 func (m *Blueprint) validateValidationMessages(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ValidationMessages) { // not required
 		return nil
 	}
@@ -292,6 +287,276 @@ func (m *Blueprint) validateValidationMessages(formats strfmt.Registry) error {
 
 		if m.ValidationMessages[i] != nil {
 			if err := m.ValidationMessages[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("validationMessages" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this blueprint based on the context it is used
+func (m *Blueprint) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateContentSourceID(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateContentSourcePath(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateContentSourceSyncAt(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateContentSourceSyncMessages(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateContentSourceSyncStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateContentSourceType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateCreatedAt(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateCreatedBy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateID(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOrgID(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateProjectName(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSelfLink(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTotalReleasedVersions(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTotalVersions(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUpdatedAt(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUpdatedBy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateValid(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateValidationMessages(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *Blueprint) contextValidateContentSourceID(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "contentSourceId", "body", string(m.ContentSourceID)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Blueprint) contextValidateContentSourcePath(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "contentSourcePath", "body", string(m.ContentSourcePath)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Blueprint) contextValidateContentSourceSyncAt(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "contentSourceSyncAt", "body", strfmt.DateTime(m.ContentSourceSyncAt)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Blueprint) contextValidateContentSourceSyncMessages(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "contentSourceSyncMessages", "body", []string(m.ContentSourceSyncMessages)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Blueprint) contextValidateContentSourceSyncStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "contentSourceSyncStatus", "body", string(m.ContentSourceSyncStatus)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Blueprint) contextValidateContentSourceType(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "contentSourceType", "body", string(m.ContentSourceType)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Blueprint) contextValidateCreatedAt(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "createdAt", "body", strfmt.DateTime(m.CreatedAt)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Blueprint) contextValidateCreatedBy(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "createdBy", "body", string(m.CreatedBy)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Blueprint) contextValidateID(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "id", "body", string(m.ID)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Blueprint) contextValidateOrgID(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "orgId", "body", string(m.OrgID)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Blueprint) contextValidateProjectName(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "projectName", "body", string(m.ProjectName)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Blueprint) contextValidateSelfLink(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "selfLink", "body", string(m.SelfLink)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Blueprint) contextValidateStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "status", "body", string(m.Status)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Blueprint) contextValidateTotalReleasedVersions(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "totalReleasedVersions", "body", int32(m.TotalReleasedVersions)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Blueprint) contextValidateTotalVersions(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "totalVersions", "body", int32(m.TotalVersions)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Blueprint) contextValidateUpdatedAt(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "updatedAt", "body", strfmt.DateTime(m.UpdatedAt)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Blueprint) contextValidateUpdatedBy(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "updatedBy", "body", string(m.UpdatedBy)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Blueprint) contextValidateValid(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "valid", "body", m.Valid); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Blueprint) contextValidateValidationMessages(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "validationMessages", "body", []*BlueprintValidationMessage(m.ValidationMessages)); err != nil {
+		return err
+	}
+
+	for i := 0; i < len(m.ValidationMessages); i++ {
+
+		if m.ValidationMessages[i] != nil {
+			if err := m.ValidationMessages[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("validationMessages" + "." + strconv.Itoa(i))
 				}

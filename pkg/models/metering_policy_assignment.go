@@ -6,6 +6,7 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
 	"github.com/go-openapi/errors"
@@ -85,7 +86,6 @@ func (m *MeteringPolicyAssignment) Validate(formats strfmt.Registry) error {
 }
 
 func (m *MeteringPolicyAssignment) validateCreatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CreatedAt) { // not required
 		return nil
 	}
@@ -130,7 +130,6 @@ func (m *MeteringPolicyAssignment) validateEntityTypeEnum(path, location string,
 }
 
 func (m *MeteringPolicyAssignment) validateEntityType(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.EntityType) { // not required
 		return nil
 	}
@@ -144,7 +143,6 @@ func (m *MeteringPolicyAssignment) validateEntityType(formats strfmt.Registry) e
 }
 
 func (m *MeteringPolicyAssignment) validateID(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.ID) { // not required
 		return nil
 	}
@@ -157,7 +155,6 @@ func (m *MeteringPolicyAssignment) validateID(formats strfmt.Registry) error {
 }
 
 func (m *MeteringPolicyAssignment) validateLastUpdatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.LastUpdatedAt) { // not required
 		return nil
 	}
@@ -170,7 +167,6 @@ func (m *MeteringPolicyAssignment) validateLastUpdatedAt(formats strfmt.Registry
 }
 
 func (m *MeteringPolicyAssignment) validatePricingCardID(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.PricingCardID) { // not required
 		return nil
 	}
@@ -179,6 +175,11 @@ func (m *MeteringPolicyAssignment) validatePricingCardID(formats strfmt.Registry
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validates this metering policy assignment based on context it is used
+func (m *MeteringPolicyAssignment) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
