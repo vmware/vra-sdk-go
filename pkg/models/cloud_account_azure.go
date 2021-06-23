@@ -45,6 +45,9 @@ type CloudAccountAzure struct {
 	// Example: [ \"us-east-1\", \"ap-northeast-1\" ]
 	EnabledRegionIds []string `json:"enabledRegionIds"`
 
+	// A list of regions that are enabled for provisioning on this cloud account
+	EnabledRegions []*Region `json:"enabledRegions"`
+
 	// The id of this resource instance
 	// Example: 9e49
 	// Required: true
@@ -97,6 +100,10 @@ func (m *CloudAccountAzure) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateEnabledRegions(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateID(formats); err != nil {
 		res = append(res, err)
 	}
@@ -145,6 +152,30 @@ func (m *CloudAccountAzure) validateClientApplicationID(formats strfmt.Registry)
 
 	if err := validate.Required("clientApplicationId", "body", m.ClientApplicationID); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *CloudAccountAzure) validateEnabledRegions(formats strfmt.Registry) error {
+	if swag.IsZero(m.EnabledRegions) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.EnabledRegions); i++ {
+		if swag.IsZero(m.EnabledRegions[i]) { // not required
+			continue
+		}
+
+		if m.EnabledRegions[i] != nil {
+			if err := m.EnabledRegions[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("enabledRegions" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -209,6 +240,10 @@ func (m *CloudAccountAzure) ContextValidate(ctx context.Context, formats strfmt.
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateEnabledRegions(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateTags(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -229,6 +264,24 @@ func (m *CloudAccountAzure) contextValidateLinks(ctx context.Context, formats st
 
 		if val, ok := m.Links[k]; ok {
 			if err := val.ContextValidate(ctx, formats); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CloudAccountAzure) contextValidateEnabledRegions(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.EnabledRegions); i++ {
+
+		if m.EnabledRegions[i] != nil {
+			if err := m.EnabledRegions[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("enabledRegions" + "." + strconv.Itoa(i))
+				}
 				return err
 			}
 		}

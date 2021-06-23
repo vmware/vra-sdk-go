@@ -694,6 +694,63 @@
                 ]
             }
         },
+        "/iaas/api/machines/{machineId}/operations/revert": {
+            "post": {
+                "summary": "Revert snapshot operation for machine",
+                "produces": [
+                    "application/json",
+                    "app/json"
+                ],
+                "description": "Second day revert snapshot operation for machine",
+                "operationId": "revertMachineSnapshot",
+                "responses": {
+                    "202": {
+                        "schema": {
+                            "$ref": "#/definitions/RequestTracker"
+                        },
+                        "description": "successful operation"
+                    },
+                    "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
+                        "description": "Not Found"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "machineId",
+                        "description": "The id of the Machine.",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "id",
+                        "description": "Snapshot id to revert.",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "apiVersion",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
+                        "type": "string",
+                        "required": false
+                    }
+                ],
+                "tags": [
+                    "Compute"
+                ]
+            }
+        },
         "/iaas/api/storage-profiles-vsphere": {
             "post": {
                 "summary": "Create vSphere storage profile",
@@ -4126,7 +4183,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/Deployment"
+                                "$ref": "#/definitions/DeploymentResult"
                             }
                         },
                         "description": "successful operation"
@@ -4214,63 +4271,6 @@
                 ],
                 "tags": [
                     "Location"
-                ]
-            }
-        },
-        "/iaas/api/machines/{id}/operations/revert": {
-            "post": {
-                "summary": "Revert snapshot operation for machine",
-                "produces": [
-                    "application/json",
-                    "app/json"
-                ],
-                "description": "Second day revert snapshot operation for machine",
-                "operationId": "revertMachineSnapshot",
-                "responses": {
-                    "202": {
-                        "schema": {
-                            "$ref": "#/definitions/RequestTracker"
-                        },
-                        "description": "successful operation"
-                    },
-                    "403": {
-                        "schema": {
-                            "$ref": "#/definitions/ServiceErrorResponse"
-                        },
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "schema": {
-                            "$ref": "#/definitions/ServiceErrorResponse"
-                        },
-                        "description": "Not Found"
-                    }
-                },
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id of the Machine.",
-                        "type": "string",
-                        "required": true
-                    },
-                    {
-                        "in": "query",
-                        "name": "id",
-                        "description": "Snapshot id to revert.",
-                        "type": "string",
-                        "required": true
-                    },
-                    {
-                        "in": "query",
-                        "name": "apiVersion",
-                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
-                        "type": "string",
-                        "required": false
-                    }
-                ],
-                "tags": [
-                    "Compute"
                 ]
             }
         },
@@ -10765,7 +10765,7 @@
             }
         }
     },
-    "host": "cava-r-90-055.eng.vmware.com",
+    "host": "cava-r-89-003.eng.vmware.com",
     "schemes": [
         "https"
     ],
@@ -10898,6 +10898,26 @@
                     },
                     "type": "object",
                     "example": "{\"incremental\": \"true\","
+                }
+            }
+        },
+        "RegionSpecification": {
+            "description": "Specification for a region in a cloud account.",
+            "type": "object",
+            "required": [
+                "externalRegionId",
+                "name"
+            ],
+            "properties": {
+                "externalRegionId": {
+                    "description": "Unique identifier of region on the provider side.",
+                    "type": "string",
+                    "example": "us-west"
+                },
+                "name": {
+                    "description": "Name of region on the provider side. In vSphere, the name of the region is different from its id.",
+                    "type": "string",
+                    "example": "us-west"
                 }
             }
         },
@@ -11074,6 +11094,14 @@
                     "type": "boolean",
                     "example": true
                 },
+                "regions": {
+                    "description": "A set of regions to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration. ",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RegionSpecification"
+                    },
+                    "example": "[{ \"name\": \"eu-west-1\",\"externalRegionId\": \"eu-west-1\"}]"
+                },
                 "name": {
                     "description": "A human-friendly name used as an identifier in APIs that support this option.",
                     "type": "string"
@@ -11083,12 +11111,12 @@
                     "type": "string"
                 },
                 "regionIds": {
-                    "description": "A set of Region names to enable provisioning on.",
+                    "description": "A set of Region names to enable provisioning on. Refer to /iaas/cloud-accounts-aws/region-enumeration. Deprecated - use regions to define enabled regions.",
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "example": "[\"us-east-1\", \"us-west-1\"]"
+                    "example": "[ \"us-east-1\", \"ap-northeast-1\" ]"
                 },
                 "tags": {
                     "description": "A set of tag keys and optional values to set on the Cloud Account",
@@ -11453,6 +11481,63 @@
                 }
             }
         },
+        "SaltConfiguration": {
+            "description": "Represents salt configuration settings that has to be applied on the machine. To successfully apply the configurations, remoteAccess property is mandatory. The supported remoteAccess authentication types are usernamePassword and generatedPublicPrivateKey.",
+            "type": "object",
+            "properties": {
+                "installerFileName": {
+                    "description": "Salt minion installer file name on the master.",
+                    "type": "string",
+                    "example": "installer"
+                },
+                "masterId": {
+                    "description": "Salt master id to which the Salt minion will be connected to.",
+                    "type": "string",
+                    "example": "salt-master"
+                },
+                "variables": {
+                    "description": "Parameters required by the state file to run on the deployed minion.",
+                    "type": "object",
+                    "example": "{\"key\" : \"value\"}"
+                },
+                "saltEnvironment": {
+                    "description": "Salt environment to use when running state files.",
+                    "type": "string",
+                    "example": "sse"
+                },
+                "pillarEnvironment": {
+                    "description": "Pillar environment to use when running state files.",
+                    "type": "string",
+                    "example": "pillar-env"
+                },
+                "additionalAuthParams": {
+                    "description": "Additional auth params that can be passed in for provisioning the salt minion. Refer: https://docs.saltproject.io/en/master/topics/cloud/profiles.html",
+                    "type": "object",
+                    "example": "{\"key\" : \"value\"}"
+                },
+                "stateFiles": {
+                    "description": "List of state files to run on the deployed minion.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "/apache.sls",
+                        "/user.sls"
+                    ]
+                },
+                "additionalMinionParams": {
+                    "description": "Additional configuration parameters for the salt minion, to be passed in as dictionary.  Refer: https://docs.saltproject.io/en/latest/ref/configuration/minion.html",
+                    "type": "object",
+                    "example": "{\"key\" : \"value\"}"
+                },
+                "minionId": {
+                    "description": "Salt minion ID to be assigned to the deployed minion.",
+                    "type": "string",
+                    "example": "minion-abc"
+                }
+            }
+        },
         "CloudAccountGcpSpecification": {
             "description": "Specification for a GCP cloud account.<br><br>A cloud account identifies a cloud account type and an account-specific deployment region where the associated cloud account resources are hosted.",
             "type": "object",
@@ -11475,6 +11560,14 @@
                     "type": "boolean",
                     "example": true
                 },
+                "regions": {
+                    "description": "A set of regions to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration. ",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RegionSpecification"
+                    },
+                    "example": "[{ \"name\": \"europe-west2\",\"externalRegionId\": \"europe-west2\"}]"
+                },
                 "clientEmail": {
                     "description": "GCP Client email",
                     "type": "string",
@@ -11489,7 +11582,7 @@
                     "type": "string"
                 },
                 "regionIds": {
-                    "description": "A set of Region names to enable provisioning on. Refer to /iaas/cloud-accounts-gcp/region-enumeration.",
+                    "description": "A set of Region names to enable provisioning on. Refer to /iaas/cloud-accounts-gcp/region-enumeration. Deprecated - use regions to define enabled regions.",
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -11570,6 +11663,14 @@
                     "type": "boolean",
                     "example": false
                 },
+                "regions": {
+                    "description": "A set of regions to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration. ",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RegionSpecification"
+                    },
+                    "example": "[{ \"name\": \"us-east-1\",\"externalRegionId\": \"us-east-1\"}]"
+                },
                 "nsxHostName": {
                     "description": "Host name for the NSX endpoint from the specified workload domain.",
                     "type": "string",
@@ -11585,7 +11686,7 @@
                     "type": "string"
                 },
                 "regionIds": {
-                    "description": "A set of Region names to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration.",
+                    "description": "A set of Region names to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration. Deprecated - use regions to define enabled regions.",
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -11949,6 +12050,14 @@
                     "type": "boolean",
                     "example": true
                 },
+                "regions": {
+                    "description": "A set of regions to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration. ",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RegionSpecification"
+                    },
+                    "example": "[{ \"name\": \"Datacenter:datacenter-3\",\"externalRegionId\": \"Datacenter:datacenter-3\"}]"
+                },
                 "dcid": {
                     "description": "Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors.\nNote: Data collector endpoints are not available in vRA on-prem release.",
                     "type": "string",
@@ -11963,7 +12072,7 @@
                     "type": "string"
                 },
                 "regionIds": {
-                    "description": "A set of datacenter managed object reference identifiers (MoRef) to enable provisioning on. Refer to /iaas/cloud-accounts-vsphere/region-enumeration.",
+                    "description": "A set of datacenter managed object reference identifiers (MoRef) to enable provisioning on. Refer to /iaas/cloud-accounts-vsphere/region-enumeration. Deprecated - use regions to define enabled regions.",
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -12075,7 +12184,7 @@
                     "description": "List of Cloud Zones assigned to this project. You can limit deployment to a single region or allow multi-region placement by adding more than one cloud zone to a project. A cloud zone lists available resources. Use tags on resources to control workload placement.",
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/ZoneAssignmentConfig"
+                        "$ref": "#/definitions/ZoneAssignment"
                     }
                 },
                 "constraints": {
@@ -12418,6 +12527,14 @@
                     "type": "object",
                     "example": "{ \"sampleadapterProjectId\" : \"projectId\" }"
                 },
+                "regions": {
+                    "description": "A set of regions to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration. \n'regions' is a required parameter for AWS, AZURE, GCP, VSPHERE, VMC, VCF cloud account types.",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RegionSpecification"
+                    },
+                    "example": "[{ \"name\": \"East Asia\",\"externalRegionId\": \"eastasia\"}]"
+                },
                 "cloudAccountType": {
                     "description": "Cloud account type",
                     "type": "string",
@@ -12432,7 +12549,7 @@
                     "type": "string"
                 },
                 "regionIds": {
-                    "description": "A set of Region names to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration. \n'regionIds' is not required parameter for NSX-T and NSX-V cloud account types.",
+                    "description": "A set of Region names to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration. \n'regionIds' is not required parameter for NSX-T and NSX-V cloud account types. Deprecated - use regions to define enabled regions.",
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -13004,6 +13121,13 @@
                     "type": "string",
                     "example": "2012-09-27"
                 },
+                "enabledRegions": {
+                    "description": "A list of regions that are enabled for provisioning on this cloud account",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Region"
+                    }
+                },
                 "customProperties": {
                     "description": "Additional properties that may be used to extend the base type.",
                     "additionalProperties": {
@@ -13427,6 +13551,11 @@
                     ],
                     "example": "ON, OFF"
                 },
+                "saltConfiguration": {
+                    "description": "Settings to apply salt configuration on the provisioned machine.",
+                    "type": "object",
+                    "$ref": "#/definitions/SaltConfiguration"
+                },
                 "deploymentId": {
                     "description": "Deployment id that is associated with this resource.",
                     "type": "string",
@@ -13576,6 +13705,14 @@
                     "type": "boolean",
                     "example": true
                 },
+                "regions": {
+                    "description": "A set of regions to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration. ",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RegionSpecification"
+                    },
+                    "example": "[{ \"name\": \"eu-west-1\",\"externalRegionId\": \"eu-west-1\"}]"
+                },
                 "name": {
                     "description": "A human-friendly name used as an identifier in APIs that support this option.",
                     "type": "string"
@@ -13585,7 +13722,7 @@
                     "type": "string"
                 },
                 "regionIds": {
-                    "description": "A set of Region names to enable provisioning on. Refer to /iaas/cloud-accounts-aws/region-enumeration..",
+                    "description": "A set of Region names to enable provisioning on. Refer to /iaas/cloud-accounts-aws/region-enumeration. Deprecated - use regions to define enabled regions.",
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -14180,6 +14317,14 @@
                     "type": "boolean",
                     "example": true
                 },
+                "regions": {
+                    "description": "A set of regions to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration. ",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RegionSpecification"
+                    },
+                    "example": "[{ \"name\": \"East Asia\",\"externalRegionId\": \"eastasia\"}]"
+                },
                 "clientApplicationId": {
                     "type": "string"
                 },
@@ -14195,7 +14340,7 @@
                     "type": "string"
                 },
                 "regionIds": {
-                    "description": "A set of Region names to enable provisioning on.",
+                    "description": "A set of Region names to enable provisioning on. Refer to /iaas/cloud-accounts-aws/region-enumeration. Deprecated - use regions to define enabled regions.",
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -14311,6 +14456,14 @@
                     "type": "boolean",
                     "example": true
                 },
+                "regions": {
+                    "description": "A set of regions to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration. ",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RegionSpecification"
+                    },
+                    "example": "[{ \"name\": \"us-east-1\",\"externalRegionId\": \"us-east-1\"}]"
+                },
                 "name": {
                     "description": "A human-friendly name used as an identifier in APIs that support this option.",
                     "type": "string"
@@ -14320,12 +14473,12 @@
                     "type": "string"
                 },
                 "regionIds": {
-                    "description": "A set of Region names to enable provisioning on.",
+                    "description": "A set of Region names to enable provisioning on. Refer to /iaas/cloud-accounts-aws/region-enumeration. Deprecated - use regions to define enabled regions.",
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "example": "[\"Datacenter:datacenter-2\"]"
+                    "example": "[ \"us-east-1\", \"ap-northeast-1\" ]"
                 },
                 "tags": {
                     "description": "A set of tag keys and optional values to set on the Cloud Account",
@@ -14408,47 +14561,6 @@
                     "items": {
                         "$ref": "#/definitions/NatRule"
                     }
-                }
-            }
-        },
-        "ZoneAssignmentConfig": {
-            "description": "A zone assignment configuration",
-            "type": "object",
-            "properties": {
-                "storageLimitGB": {
-                    "format": "int64",
-                    "description": "Defines an upper limit on storage that can be requested from a cloud zone which is part of this project. Default is 0 (unlimited storage). Please note that this feature is supported only for vSphere cloud zones. Not valid for other cloud zone types.",
-                    "type": "integer",
-                    "example": 20
-                },
-                "cpuLimit": {
-                    "format": "int64",
-                    "description": "The maximum amount of cpus that can be used by this cloud zone. Default is 0 (unlimited cpu).",
-                    "type": "integer",
-                    "example": 2048
-                },
-                "memoryLimitMB": {
-                    "format": "int64",
-                    "description": "The maximum amount of memory that can be used by this cloud zone. Default is 0 (unlimited memory).",
-                    "type": "integer",
-                    "example": 2048
-                },
-                "zoneId": {
-                    "description": "The Cloud Zone Id",
-                    "type": "string",
-                    "example": "77ee1"
-                },
-                "maxNumberInstances": {
-                    "format": "int64",
-                    "description": "The maximum number of instances that can be provisioned in this cloud zone. Default is 0 (unlimited instances).",
-                    "type": "integer",
-                    "example": 50
-                },
-                "priority": {
-                    "format": "int32",
-                    "description": "The priority of this zone in the current project. Lower numbers mean higher priority. Default is 0 (highest)",
-                    "type": "integer",
-                    "example": 1
                 }
             }
         },
@@ -14620,14 +14732,18 @@
             }
         },
         "CloudAccountRegions": {
-            "description": "State object representing a cloud account region.",
+            "description": "State object representing cloud account region.<br><br>**externalRegions** - array[RegionSpecification] - Set of regions that can be enabled for this cloud account.<br>**externalRegionIds** - array[String] - Set of ids of regions that can be enabled for this cloud account.<br>",
             "type": "object",
-            "required": [
-                "externalRegionIds"
-            ],
             "properties": {
+                "externalRegions": {
+                    "description": "A set of regions that can be enabled for this cloud account.",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RegionSpecification"
+                    }
+                },
                 "externalRegionIds": {
-                    "description": "A set of region ids for the cloud account.",
+                    "description": "A set of ids of regions that can be enabled for this cloud account. Deprecated - use externalRegions to obtain enumerated regions.",
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -14672,6 +14788,47 @@
                     "format": "int64",
                     "description": "Total number of elements. In some cases the field may not be populated",
                     "readOnly": true,
+                    "type": "integer",
+                    "example": 1
+                }
+            }
+        },
+        "ZoneAssignmentSpecification": {
+            "description": "A zone assignment configuration",
+            "type": "object",
+            "properties": {
+                "storageLimitGB": {
+                    "format": "int64",
+                    "description": "Defines an upper limit on storage that can be requested from a cloud zone which is part of this project. Default is 0 (unlimited storage). Please note that this feature is supported only for vSphere cloud zones. Not valid for other cloud zone types.",
+                    "type": "integer",
+                    "example": 20
+                },
+                "cpuLimit": {
+                    "format": "int64",
+                    "description": "The maximum amount of cpus that can be used by this cloud zone. Default is 0 (unlimited cpu).",
+                    "type": "integer",
+                    "example": 2048
+                },
+                "memoryLimitMB": {
+                    "format": "int64",
+                    "description": "The maximum amount of memory that can be used by this cloud zone. Default is 0 (unlimited memory).",
+                    "type": "integer",
+                    "example": 2048
+                },
+                "zoneId": {
+                    "description": "The Cloud Zone Id",
+                    "type": "string",
+                    "example": "77ee1"
+                },
+                "maxNumberInstances": {
+                    "format": "int64",
+                    "description": "The maximum number of instances that can be provisioned in this cloud zone. Default is 0 (unlimited instances).",
+                    "type": "integer",
+                    "example": 50
+                },
+                "priority": {
+                    "format": "int32",
+                    "description": "The priority of this zone in the current project. Lower numbers mean higher priority. Default is 0 (highest)",
                     "type": "integer",
                     "example": 1
                 }
@@ -15352,6 +15509,14 @@
                     "type": "boolean",
                     "example": true
                 },
+                "regions": {
+                    "description": "A set of regions to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration.",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RegionSpecification"
+                    },
+                    "example": "[{ \"name\": \"East Asia\",\"externalRegionId\": \"eastasia\"}]"
+                },
                 "clientApplicationId": {
                     "description": "Azure Client Application ID",
                     "type": "string",
@@ -15376,7 +15541,7 @@
                     "type": "string"
                 },
                 "regionIds": {
-                    "description": "A set of Region names to enable provisioning on. Refer to /iaas/cloud-accounts-azure/region-enumeration..",
+                    "description": "A set of Region names to enable provisioning on. Refer to /iaas/cloud-accounts-azure/region-enumeration.Deprecated - use regions to define enabled regions.",
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -15598,6 +15763,14 @@
                     "type": "boolean",
                     "example": true
                 },
+                "regions": {
+                    "description": "A set of regions to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration. ",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RegionSpecification"
+                    },
+                    "example": "[{ \"name\": \"europe-west2\",\"externalRegionId\": \"europe-west2\"}]"
+                },
                 "name": {
                     "description": "A human-friendly name used as an identifier in APIs that support this option.",
                     "type": "string"
@@ -15607,12 +15780,12 @@
                     "type": "string"
                 },
                 "regionIds": {
-                    "description": "A set of Region names to enable provisioning on.",
+                    "description": "A set of Region names to enable provisioning on. Refer to /iaas/cloud-accounts-aws/region-enumeration. Deprecated - use regions to define enabled regions.",
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "example": "[\"us-east1\", \"northamerica-northeast1\"]"
+                    "example": "[ \"us-east-1\", \"ap-northeast-1\" ]"
                 },
                 "tags": {
                     "description": "A set of tag keys and optional values to set on the Cloud Account",
@@ -15872,6 +16045,9 @@
         },
         "UpdateCloudAccountSpecification": {
             "type": "object",
+            "required": [
+                "regionIds"
+            ],
             "properties": {
                 "privateKey": {
                     "description": "Secret access key or password to be used to authenticate with the cloud account",
@@ -15899,6 +16075,14 @@
                     "type": "object",
                     "example": "{ \"sampleadapterProjectId\" : \"projectId\" }"
                 },
+                "regions": {
+                    "description": "A set of regions to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration. \n'regions' is a required parameter for AWS, AZURE, GCP, VSPHERE, VMC, VCF cloud account types.",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RegionSpecification"
+                    },
+                    "example": "[{ \"name\": \"East Asia\",\"externalRegionId\": \"eastasia\"}]"
+                },
                 "name": {
                     "description": "A human-friendly name used as an identifier in APIs that support this option.",
                     "type": "string"
@@ -15908,12 +16092,12 @@
                     "type": "string"
                 },
                 "regionIds": {
-                    "description": "A set of Region names to enable provisioning on.",
+                    "description": "A set of Region names to enable provisioning on. Refer to /iaas/cloud-accounts-aws/region-enumeration. Deprecated - use regions to define enabled regions.",
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "example": "[\"us-east-1\", \"ap-northeast-1\"]"
+                    "example": "[ \"us-east-1\", \"ap-northeast-1\" ]"
                 },
                 "privateKeyId": {
                     "description": "Access key id or username to be used to authenticate with the cloud account",
@@ -16004,6 +16188,34 @@
                     "description": "Current status of the data collector",
                     "type": "string",
                     "example": "ACTIVE, INACTIVE"
+                }
+            }
+        },
+        "DeploymentResult": {
+            "description": "State object representing a query result of deployments.",
+            "type": "object",
+            "properties": {
+                "numberOfElements": {
+                    "format": "int64",
+                    "description": "Number of elements in the current page",
+                    "readOnly": true,
+                    "type": "integer",
+                    "example": 1
+                },
+                "content": {
+                    "description": "List of content items",
+                    "readOnly": true,
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Deployment"
+                    }
+                },
+                "totalElements": {
+                    "format": "int64",
+                    "description": "Total number of elements. In some cases the field may not be populated",
+                    "readOnly": true,
+                    "type": "integer",
+                    "example": 1
                 }
             }
         },
@@ -16524,6 +16736,13 @@
                     "description": "Date when the entity was created. The date is in ISO 8601 and UTC.",
                     "type": "string",
                     "example": "2012-09-27"
+                },
+                "enabledRegions": {
+                    "description": "A list of regions that are enabled for provisioning on this cloud account",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Region"
+                    }
                 },
                 "customProperties": {
                     "description": "Additional properties that may be used to extend the base type.",
@@ -17113,6 +17332,13 @@
                     "type": "string",
                     "example": "2012-09-27"
                 },
+                "enabledRegions": {
+                    "description": "A list of regions that are enabled for provisioning on this cloud account",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Region"
+                    }
+                },
                 "customProperties": {
                     "description": "Additional properties that may be used to extend the base type.",
                     "additionalProperties": {
@@ -17283,6 +17509,14 @@
                     "type": "boolean",
                     "example": true
                 },
+                "regions": {
+                    "description": "A set of regions to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration. ",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RegionSpecification"
+                    },
+                    "example": "[{ \"name\": \"Datacenter:datacenter-3\",\"externalRegionId\": \"Datacenter:datacenter-3\"}]"
+                },
                 "name": {
                     "description": "A human-friendly name used as an identifier in APIs that support this option.",
                     "type": "string"
@@ -17292,12 +17526,12 @@
                     "type": "string"
                 },
                 "regionIds": {
-                    "description": "A set of Region names to enable provisioning on.",
+                    "description": "A set of Region names to enable provisioning on. Refer to /iaas/cloud-accounts-aws/region-enumeration. Deprecated - use regions to define enabled regions.",
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "example": "[\"us-east-1\", \"us-west-1\"]"
+                    "example": "[ \"us-east-1\", \"ap-northeast-1\" ]"
                 },
                 "tags": {
                     "description": "A set of tag keys and optional values to set on the Cloud Account",
@@ -18027,6 +18261,13 @@
                 "startIPAddress"
             ],
             "properties": {
+                "fabricNetworkIds": {
+                    "description": "A list of fabric network Ids that this IP range should be associated with.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "ipVersion": {
                     "description": "IP address version: IPv4 or IPv6. Default: IPv4.",
                     "type": "string",
@@ -18036,7 +18277,7 @@
                     ]
                 },
                 "fabricNetworkId": {
-                    "description": "The Id of the parent fabric network.",
+                    "description": "Deprecated. Use 'fabricNetworkIds'.",
                     "type": "string"
                 },
                 "name": {
@@ -18180,6 +18421,13 @@
                     "type": "string",
                     "example": "2012-09-27"
                 },
+                "enabledRegions": {
+                    "description": "A list of regions that are enabled for provisioning on this cloud account",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Region"
+                    }
+                },
                 "customProperties": {
                     "description": "Additional properties that may be used to extend the base type.",
                     "additionalProperties": {
@@ -18301,6 +18549,14 @@
                     },
                     "example": "[ \"42f3e0d199d134755684cd935435a\" ]"
                 },
+                "regions": {
+                    "description": "A set of regions to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration. ",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RegionSpecification"
+                    },
+                    "example": "[{ \"name\": \"Datacenter:datacenter-3\",\"externalRegionId\": \"Datacenter:datacenter-3\"}]"
+                },
                 "name": {
                     "description": "A human-friendly name used as an identifier in APIs that support this option.",
                     "type": "string"
@@ -18310,12 +18566,12 @@
                     "type": "string"
                 },
                 "regionIds": {
-                    "description": "A set of Region names to enable provisioning on.",
+                    "description": "A set of datacenter managed object reference identifiers (MoRef) to enable provisioning on. Refer to /iaas/cloud-accounts-vsphere/region-enumeration. Deprecated - use regions to define enabled regions.",
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "example": "[\"Datacenter:datacenter-2\"]"
+                    "example": "[ \"Datacenter:datacenter-2\" ]"
                 },
                 "tags": {
                     "description": "A set of tag keys and optional values to set on the Cloud Account",
@@ -18412,8 +18668,15 @@
             "description": "Specification for updating an ExternalNetworkIPRange",
             "type": "object",
             "properties": {
+                "fabricNetworkIds": {
+                    "description": "A list of fabric network Ids that this IP range should be associated with.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "fabricNetworkId": {
-                    "description": "The id of the fabric network that this IP range should be associated with.Use \"\" as value of this field in order to disassociate the IP range from this network.",
+                    "description": "Deprecated. Use 'fabricNetworkIds'.",
                     "type": "string"
                 }
             }
@@ -18630,6 +18893,67 @@
                     "description": "Date when the entity was last updated. The date is ISO 8601 and UTC.",
                     "type": "string",
                     "example": "2012-09-27"
+                }
+            }
+        },
+        "ZoneAssignment": {
+            "description": "A zone assignment",
+            "type": "object",
+            "properties": {
+                "allocatedCpu": {
+                    "format": "int64",
+                    "description": "The amount of CPUs currently allocated.",
+                    "type": "integer"
+                },
+                "storageLimitGB": {
+                    "format": "int64",
+                    "description": "Defines an upper limit on storage that can be requested from a cloud zone which is part of this project. Default is 0 (unlimited storage). Please note that this feature is supported only for vSphere cloud zones. Not valid for other cloud zone types.",
+                    "type": "integer",
+                    "example": 20
+                },
+                "allocatedStorageGB": {
+                    "format": "double",
+                    "description": "The amount of storage currently allocated.",
+                    "type": "number"
+                },
+                "allocatedInstancesCount": {
+                    "format": "int64",
+                    "description": "The number of resource instances currently allocated",
+                    "type": "integer"
+                },
+                "cpuLimit": {
+                    "format": "int64",
+                    "description": "The maximum amount of cpus that can be used by this cloud zone. Default is 0 (unlimited cpu).",
+                    "type": "integer",
+                    "example": 2048
+                },
+                "memoryLimitMB": {
+                    "format": "int64",
+                    "description": "The maximum amount of memory that can be used by this cloud zone. Default is 0 (unlimited memory).",
+                    "type": "integer",
+                    "example": 2048
+                },
+                "allocatedMemoryMB": {
+                    "format": "int64",
+                    "description": "The amount of memory currently allocated.",
+                    "type": "integer"
+                },
+                "zoneId": {
+                    "description": "The Cloud Zone Id",
+                    "type": "string",
+                    "example": "77ee1"
+                },
+                "maxNumberInstances": {
+                    "format": "int64",
+                    "description": "The maximum number of instances that can be provisioned in this cloud zone. Default is 0 (unlimited instances).",
+                    "type": "integer",
+                    "example": 50
+                },
+                "priority": {
+                    "format": "int32",
+                    "description": "The priority of this zone in the current project. Lower numbers mean higher priority. Default is 0 (highest)",
+                    "type": "integer",
+                    "example": 1
                 }
             }
         },
@@ -19081,7 +19405,7 @@
                     "description": "List of configurations for zone assignment to a project.",
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/ZoneAssignmentConfig"
+                        "$ref": "#/definitions/ZoneAssignmentSpecification"
                     }
                 },
                 "name": {
@@ -19262,6 +19586,13 @@
                     "type": "string",
                     "example": "2012-09-27"
                 },
+                "enabledRegions": {
+                    "description": "A list of regions that are enabled for provisioning on this cloud account",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Region"
+                    }
+                },
                 "customProperties": {
                     "description": "Additional properties that may be used to extend the base type.",
                     "additionalProperties": {
@@ -19347,6 +19678,14 @@
                     "type": "boolean",
                     "example": false
                 },
+                "regions": {
+                    "description": "A set of regions to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration. ",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RegionSpecification"
+                    },
+                    "example": "[{ \"name\": \"Datacenter:datacenter-3\",\"externalRegionId\": \"Datacenter:datacenter-3\"}]"
+                },
                 "apiKey": {
                     "description": "VMC API access key",
                     "type": "string"
@@ -19366,7 +19705,7 @@
                     "type": "string"
                 },
                 "regionIds": {
-                    "description": "A set of Region names to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration.",
+                    "description": "A set of Region names to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration. Deprecated - use regions to define enabled regions.",
                     "type": "array",
                     "items": {
                         "type": "string"

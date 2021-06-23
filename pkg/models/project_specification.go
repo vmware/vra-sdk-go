@@ -64,7 +64,7 @@ type ProjectSpecification struct {
 	Viewers []*User `json:"viewers"`
 
 	// List of configurations for zone assignment to a project.
-	ZoneAssignmentConfigurations []*ZoneAssignmentConfig `json:"zoneAssignmentConfigurations"`
+	ZoneAssignmentConfigurations []*ZoneAssignmentSpecification `json:"zoneAssignmentConfigurations"`
 }
 
 // Validate validates this project specification

@@ -12,6 +12,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // UpdateCloudAccountSpecification update cloud account specification
@@ -45,9 +46,15 @@ type UpdateCloudAccountSpecification struct {
 	// Example: [ \"ACDC55DB4MFH6ADG75KK\" ]
 	PrivateKeyID string `json:"privateKeyId,omitempty"`
 
-	// A set of Region names to enable provisioning on.
-	// Example: [\"us-east-1\", \"ap-northeast-1\"]
+	// A set of Region names to enable provisioning on. Refer to /iaas/cloud-accounts-aws/region-enumeration. Deprecated - use regions to define enabled regions.
+	// Example: [ \"us-east-1\", \"ap-northeast-1\" ]
+	// Required: true
 	RegionIds []string `json:"regionIds"`
+
+	// A set of regions to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration.
+	// 'regions' is a required parameter for AWS, AZURE, GCP, VSPHERE, VMC, VCF cloud account types.
+	// Example: [{ \"name\": \"East Asia\",\"externalRegionId\": \"eastasia\"}]
+	Regions []*RegionSpecification `json:"regions"`
 
 	// A set of tag keys and optional values to set on the Cloud Account
 	// Example: [{\"key\": \"env\", \"value\": \"dev\"}]
@@ -58,6 +65,14 @@ type UpdateCloudAccountSpecification struct {
 func (m *UpdateCloudAccountSpecification) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateRegionIds(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateRegions(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateTags(formats); err != nil {
 		res = append(res, err)
 	}
@@ -65,6 +80,39 @@ func (m *UpdateCloudAccountSpecification) Validate(formats strfmt.Registry) erro
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *UpdateCloudAccountSpecification) validateRegionIds(formats strfmt.Registry) error {
+
+	if err := validate.Required("regionIds", "body", m.RegionIds); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *UpdateCloudAccountSpecification) validateRegions(formats strfmt.Registry) error {
+	if swag.IsZero(m.Regions) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Regions); i++ {
+		if swag.IsZero(m.Regions[i]) { // not required
+			continue
+		}
+
+		if m.Regions[i] != nil {
+			if err := m.Regions[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("regions" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -96,6 +144,10 @@ func (m *UpdateCloudAccountSpecification) validateTags(formats strfmt.Registry) 
 func (m *UpdateCloudAccountSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateRegions(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateTags(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -103,6 +155,24 @@ func (m *UpdateCloudAccountSpecification) ContextValidate(ctx context.Context, f
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *UpdateCloudAccountSpecification) contextValidateRegions(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Regions); i++ {
+
+		if m.Regions[i] != nil {
+			if err := m.Regions[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("regions" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

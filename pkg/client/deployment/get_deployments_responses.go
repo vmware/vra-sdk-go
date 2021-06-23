@@ -50,13 +50,13 @@ func NewGetDeploymentsOK() *GetDeploymentsOK {
 successful operation
 */
 type GetDeploymentsOK struct {
-	Payload []*models.IaaSDeployment
+	Payload []*models.DeploymentResult
 }
 
 func (o *GetDeploymentsOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/deployments][%d] getDeploymentsOK  %+v", 200, o.Payload)
 }
-func (o *GetDeploymentsOK) GetPayload() []*models.IaaSDeployment {
+func (o *GetDeploymentsOK) GetPayload() []*models.DeploymentResult {
 	return o.Payload
 }
 

@@ -12,10 +12,10 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ZoneAssignmentConfig A zone assignment configuration
+// ZoneAssignmentSpecification A zone assignment configuration
 //
-// swagger:model ZoneAssignmentConfig
-type ZoneAssignmentConfig struct {
+// swagger:model ZoneAssignmentSpecification
+type ZoneAssignmentSpecification struct {
 
 	// The maximum amount of cpus that can be used by this cloud zone. Default is 0 (unlimited cpu).
 	// Example: 2048
@@ -42,18 +42,18 @@ type ZoneAssignmentConfig struct {
 	ZoneID string `json:"zoneId,omitempty"`
 }
 
-// Validate validates this zone assignment config
-func (m *ZoneAssignmentConfig) Validate(formats strfmt.Registry) error {
+// Validate validates this zone assignment specification
+func (m *ZoneAssignmentSpecification) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this zone assignment config based on context it is used
-func (m *ZoneAssignmentConfig) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validates this zone assignment specification based on context it is used
+func (m *ZoneAssignmentSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *ZoneAssignmentConfig) MarshalBinary() ([]byte, error) {
+func (m *ZoneAssignmentSpecification) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -61,8 +61,8 @@ func (m *ZoneAssignmentConfig) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *ZoneAssignmentConfig) UnmarshalBinary(b []byte) error {
-	var res ZoneAssignmentConfig
+func (m *ZoneAssignmentSpecification) UnmarshalBinary(b []byte) error {
+	var res ZoneAssignmentSpecification
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

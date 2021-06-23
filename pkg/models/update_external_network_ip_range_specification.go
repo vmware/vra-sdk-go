@@ -17,8 +17,11 @@ import (
 // swagger:model UpdateExternalNetworkIPRangeSpecification
 type UpdateExternalNetworkIPRangeSpecification struct {
 
-	// The id of the fabric network that this IP range should be associated with.Use "" as value of this field in order to disassociate the IP range from this network.
+	// Deprecated. Use 'fabricNetworkIds'.
 	FabricNetworkID string `json:"fabricNetworkId,omitempty"`
+
+	// A list of fabric network Ids that this IP range should be associated with.
+	FabricNetworkIds []string `json:"fabricNetworkIds"`
 }
 
 // Validate validates this update external network IP range specification
