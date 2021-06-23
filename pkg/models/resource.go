@@ -17,7 +17,7 @@ import (
 
 // Resource Resource
 //
-// A resource part of a deployment.
+// A resource
 //
 // swagger:model Resource
 type Resource struct {
@@ -26,8 +26,14 @@ type Resource struct {
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"createdAt,omitempty"`
 
-	// A list of other resources this resource depends on
-	DependsOn []string `json:"dependsOn"`
+	// Current ongoing request on the resource
+	CurrentRequest *Request `json:"currentRequest,omitempty"`
+
+	// Deployment to which resource belongs
+	Deployment *DeploymentReference `json:"deployment,omitempty"`
+
+	// Resource deployment id
+	DeploymentID string `json:"deploymentId,omitempty"`
 
 	// A description of the resource
 	Description string `json:"description,omitempty"`
@@ -44,12 +50,21 @@ type Resource struct {
 	// Required: true
 	Name *string `json:"name"`
 
+	// Resource org id
+	OrgID string `json:"orgId,omitempty"`
+
+	// Origin of the resource
+	// Enum: [ONBOARDED MIGRATED]
+	Origin string `json:"origin,omitempty"`
+
+	// Project to which resource's deployment belongs
+	Project *ResourceReference `json:"project,omitempty"`
+
+	// Resource project id
+	ProjectID string `json:"projectId,omitempty"`
+
 	// properties
 	Properties interface{} `json:"properties,omitempty"`
-
-	// The current state of the resource
-	// Enum: [PARTIAL TAINTED OK]
-	State string `json:"state,omitempty"`
 
 	// The current sync status
 	// Enum: [SUCCESS MISSING STALE]
@@ -68,6 +83,14 @@ func (m *Resource) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateCurrentRequest(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDeployment(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateExpense(formats); err != nil {
 		res = append(res, err)
 	}
@@ -80,7 +103,11 @@ func (m *Resource) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateState(formats); err != nil {
+	if err := m.validateOrigin(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateProject(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -105,6 +132,40 @@ func (m *Resource) validateCreatedAt(formats strfmt.Registry) error {
 
 	if err := validate.FormatOf("createdAt", "body", "date-time", m.CreatedAt.String(), formats); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *Resource) validateCurrentRequest(formats strfmt.Registry) error {
+	if swag.IsZero(m.CurrentRequest) { // not required
+		return nil
+	}
+
+	if m.CurrentRequest != nil {
+		if err := m.CurrentRequest.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("currentRequest")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Resource) validateDeployment(formats strfmt.Registry) error {
+	if swag.IsZero(m.Deployment) { // not required
+		return nil
+	}
+
+	if m.Deployment != nil {
+		if err := m.Deployment.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("deployment")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -148,46 +209,60 @@ func (m *Resource) validateName(formats strfmt.Registry) error {
 	return nil
 }
 
-var resourceTypeStatePropEnum []interface{}
+var resourceTypeOriginPropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["PARTIAL","TAINTED","OK"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["ONBOARDED","MIGRATED"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
-		resourceTypeStatePropEnum = append(resourceTypeStatePropEnum, v)
+		resourceTypeOriginPropEnum = append(resourceTypeOriginPropEnum, v)
 	}
 }
 
 const (
 
-	// ResourceStatePARTIAL captures enum value "PARTIAL"
-	ResourceStatePARTIAL string = "PARTIAL"
+	// ResourceOriginONBOARDED captures enum value "ONBOARDED"
+	ResourceOriginONBOARDED string = "ONBOARDED"
 
-	// ResourceStateTAINTED captures enum value "TAINTED"
-	ResourceStateTAINTED string = "TAINTED"
-
-	// ResourceStateOK captures enum value "OK"
-	ResourceStateOK string = "OK"
+	// ResourceOriginMIGRATED captures enum value "MIGRATED"
+	ResourceOriginMIGRATED string = "MIGRATED"
 )
 
 // prop value enum
-func (m *Resource) validateStateEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, resourceTypeStatePropEnum, true); err != nil {
+func (m *Resource) validateOriginEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, resourceTypeOriginPropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (m *Resource) validateState(formats strfmt.Registry) error {
-	if swag.IsZero(m.State) { // not required
+func (m *Resource) validateOrigin(formats strfmt.Registry) error {
+	if swag.IsZero(m.Origin) { // not required
 		return nil
 	}
 
 	// value enum
-	if err := m.validateStateEnum("state", "body", m.State); err != nil {
+	if err := m.validateOriginEnum("origin", "body", m.Origin); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *Resource) validateProject(formats strfmt.Registry) error {
+	if swag.IsZero(m.Project) { // not required
+		return nil
+	}
+
+	if m.Project != nil {
+		if err := m.Project.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("project")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -251,7 +326,19 @@ func (m *Resource) validateType(formats strfmt.Registry) error {
 func (m *Resource) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateCurrentRequest(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateDeployment(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateExpense(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateProject(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -261,12 +348,54 @@ func (m *Resource) ContextValidate(ctx context.Context, formats strfmt.Registry)
 	return nil
 }
 
+func (m *Resource) contextValidateCurrentRequest(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.CurrentRequest != nil {
+		if err := m.CurrentRequest.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("currentRequest")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Resource) contextValidateDeployment(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Deployment != nil {
+		if err := m.Deployment.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("deployment")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *Resource) contextValidateExpense(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Expense != nil {
 		if err := m.Expense.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("expense")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Resource) contextValidateProject(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Project != nil {
+		if err := m.Project.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("project")
 			}
 			return err
 		}

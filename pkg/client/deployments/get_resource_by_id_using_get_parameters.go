@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewGetResourceByIDUsingGETParams creates a new GetResourceByIDUsingGETParams object,
@@ -65,13 +66,19 @@ type GetResourceByIDUsingGETParams struct {
 	*/
 	APIVersion *string
 
-	/* DepID.
+	/* DeploymentID.
 
 	   Deployment ID
 
 	   Format: uuid
 	*/
-	DepID strfmt.UUID
+	DeploymentID strfmt.UUID
+
+	/* Expand.
+
+	   The expanded details of the requested comma separated objects. Ex. currentRequest
+	*/
+	Expand []string
 
 	/* ResourceID.
 
@@ -145,15 +152,26 @@ func (o *GetResourceByIDUsingGETParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
-// WithDepID adds the depID to the get resource by Id using get params
-func (o *GetResourceByIDUsingGETParams) WithDepID(depID strfmt.UUID) *GetResourceByIDUsingGETParams {
-	o.SetDepID(depID)
+// WithDeploymentID adds the deploymentID to the get resource by Id using get params
+func (o *GetResourceByIDUsingGETParams) WithDeploymentID(deploymentID strfmt.UUID) *GetResourceByIDUsingGETParams {
+	o.SetDeploymentID(deploymentID)
 	return o
 }
 
-// SetDepID adds the depId to the get resource by Id using get params
-func (o *GetResourceByIDUsingGETParams) SetDepID(depID strfmt.UUID) {
-	o.DepID = depID
+// SetDeploymentID adds the deploymentId to the get resource by Id using get params
+func (o *GetResourceByIDUsingGETParams) SetDeploymentID(deploymentID strfmt.UUID) {
+	o.DeploymentID = deploymentID
+}
+
+// WithExpand adds the expand to the get resource by Id using get params
+func (o *GetResourceByIDUsingGETParams) WithExpand(expand []string) *GetResourceByIDUsingGETParams {
+	o.SetExpand(expand)
+	return o
+}
+
+// SetExpand adds the expand to the get resource by Id using get params
+func (o *GetResourceByIDUsingGETParams) SetExpand(expand []string) {
+	o.Expand = expand
 }
 
 // WithResourceID adds the resourceID to the get resource by Id using get params
@@ -192,9 +210,20 @@ func (o *GetResourceByIDUsingGETParams) WriteToRequest(r runtime.ClientRequest, 
 		}
 	}
 
-	// path param depId
-	if err := r.SetPathParam("depId", o.DepID.String()); err != nil {
+	// path param deploymentId
+	if err := r.SetPathParam("deploymentId", o.DeploymentID.String()); err != nil {
 		return err
+	}
+
+	if o.Expand != nil {
+
+		// binding items for expand
+		joinedExpand := o.bindParamExpand(reg)
+
+		// query array param expand
+		if err := r.SetQueryParam("expand", joinedExpand...); err != nil {
+			return err
+		}
 	}
 
 	// path param resourceId
@@ -206,4 +235,21 @@ func (o *GetResourceByIDUsingGETParams) WriteToRequest(r runtime.ClientRequest, 
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
+}
+
+// bindParamGetResourceByIDUsingGET binds the parameter expand
+func (o *GetResourceByIDUsingGETParams) bindParamExpand(formats strfmt.Registry) []string {
+	expandIR := o.Expand
+
+	var expandIC []string
+	for _, expandIIR := range expandIR { // explode []string
+
+		expandIIV := expandIIR // string as string
+		expandIC = append(expandIC, expandIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	expandIS := swag.JoinByFormat(expandIC, "multi")
+
+	return expandIS
 }

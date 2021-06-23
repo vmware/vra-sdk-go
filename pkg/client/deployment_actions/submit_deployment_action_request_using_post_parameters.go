@@ -73,13 +73,13 @@ type SubmitDeploymentActionRequestUsingPOSTParams struct {
 	*/
 	APIVersion *string
 
-	/* DepID.
+	/* DeploymentID.
 
 	   Deployment ID
 
 	   Format: uuid
 	*/
-	DepID strfmt.UUID
+	DeploymentID strfmt.UUID
 
 	timeout    time.Duration
 	Context    context.Context
@@ -156,15 +156,15 @@ func (o *SubmitDeploymentActionRequestUsingPOSTParams) SetAPIVersion(aPIVersion 
 	o.APIVersion = aPIVersion
 }
 
-// WithDepID adds the depID to the submit deployment action request using p o s t params
-func (o *SubmitDeploymentActionRequestUsingPOSTParams) WithDepID(depID strfmt.UUID) *SubmitDeploymentActionRequestUsingPOSTParams {
-	o.SetDepID(depID)
+// WithDeploymentID adds the deploymentID to the submit deployment action request using p o s t params
+func (o *SubmitDeploymentActionRequestUsingPOSTParams) WithDeploymentID(deploymentID strfmt.UUID) *SubmitDeploymentActionRequestUsingPOSTParams {
+	o.SetDeploymentID(deploymentID)
 	return o
 }
 
-// SetDepID adds the depId to the submit deployment action request using p o s t params
-func (o *SubmitDeploymentActionRequestUsingPOSTParams) SetDepID(depID strfmt.UUID) {
-	o.DepID = depID
+// SetDeploymentID adds the deploymentId to the submit deployment action request using p o s t params
+func (o *SubmitDeploymentActionRequestUsingPOSTParams) SetDeploymentID(deploymentID strfmt.UUID) {
+	o.DeploymentID = deploymentID
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -197,8 +197,8 @@ func (o *SubmitDeploymentActionRequestUsingPOSTParams) WriteToRequest(r runtime.
 		}
 	}
 
-	// path param depId
-	if err := r.SetPathParam("depId", o.DepID.String()); err != nil {
+	// path param deploymentId
+	if err := r.SetPathParam("deploymentId", o.DeploymentID.String()); err != nil {
 		return err
 	}
 

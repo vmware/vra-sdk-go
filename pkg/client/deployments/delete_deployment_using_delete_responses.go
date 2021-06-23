@@ -47,6 +47,12 @@ func (o *DeleteDeploymentUsingDELETEReader) ReadResponse(response runtime.Client
 			return nil, err
 		}
 		return nil, result
+	case 409:
+		result := NewDeleteDeploymentUsingDELETEConflict()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -66,7 +72,7 @@ type DeleteDeploymentUsingDELETEOK struct {
 }
 
 func (o *DeleteDeploymentUsingDELETEOK) Error() string {
-	return fmt.Sprintf("[DELETE /deployment/api/deployments/{depId}][%d] deleteDeploymentUsingDELETEOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[DELETE /deployment/api/deployments/{deploymentId}][%d] deleteDeploymentUsingDELETEOK  %+v", 200, o.Payload)
 }
 func (o *DeleteDeploymentUsingDELETEOK) GetPayload() *models.Request {
 	return o.Payload
@@ -97,7 +103,7 @@ type DeleteDeploymentUsingDELETEUnauthorized struct {
 }
 
 func (o *DeleteDeploymentUsingDELETEUnauthorized) Error() string {
-	return fmt.Sprintf("[DELETE /deployment/api/deployments/{depId}][%d] deleteDeploymentUsingDELETEUnauthorized ", 401)
+	return fmt.Sprintf("[DELETE /deployment/api/deployments/{deploymentId}][%d] deleteDeploymentUsingDELETEUnauthorized ", 401)
 }
 
 func (o *DeleteDeploymentUsingDELETEUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -118,7 +124,7 @@ type DeleteDeploymentUsingDELETEForbidden struct {
 }
 
 func (o *DeleteDeploymentUsingDELETEForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /deployment/api/deployments/{depId}][%d] deleteDeploymentUsingDELETEForbidden ", 403)
+	return fmt.Sprintf("[DELETE /deployment/api/deployments/{deploymentId}][%d] deleteDeploymentUsingDELETEForbidden ", 403)
 }
 
 func (o *DeleteDeploymentUsingDELETEForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -140,7 +146,7 @@ type DeleteDeploymentUsingDELETENotFound struct {
 }
 
 func (o *DeleteDeploymentUsingDELETENotFound) Error() string {
-	return fmt.Sprintf("[DELETE /deployment/api/deployments/{depId}][%d] deleteDeploymentUsingDELETENotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[DELETE /deployment/api/deployments/{deploymentId}][%d] deleteDeploymentUsingDELETENotFound  %+v", 404, o.Payload)
 }
 func (o *DeleteDeploymentUsingDELETENotFound) GetPayload() *models.Error {
 	return o.Payload
@@ -154,6 +160,27 @@ func (o *DeleteDeploymentUsingDELETENotFound) readResponse(response runtime.Clie
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewDeleteDeploymentUsingDELETEConflict creates a DeleteDeploymentUsingDELETEConflict with default headers values
+func NewDeleteDeploymentUsingDELETEConflict() *DeleteDeploymentUsingDELETEConflict {
+	return &DeleteDeploymentUsingDELETEConflict{}
+}
+
+/* DeleteDeploymentUsingDELETEConflict describes a response with status code 409, with default header values.
+
+Conflict
+*/
+type DeleteDeploymentUsingDELETEConflict struct {
+}
+
+func (o *DeleteDeploymentUsingDELETEConflict) Error() string {
+	return fmt.Sprintf("[DELETE /deployment/api/deployments/{deploymentId}][%d] deleteDeploymentUsingDELETEConflict ", 409)
+}
+
+func (o *DeleteDeploymentUsingDELETEConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

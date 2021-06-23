@@ -65,13 +65,13 @@ type DeleteDeploymentUsingDELETEParams struct {
 	*/
 	APIVersion *string
 
-	/* DepID.
+	/* DeploymentID.
 
 	   Deployment ID
 
 	   Format: uuid
 	*/
-	DepID strfmt.UUID
+	DeploymentID strfmt.UUID
 
 	timeout    time.Duration
 	Context    context.Context
@@ -137,15 +137,15 @@ func (o *DeleteDeploymentUsingDELETEParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
-// WithDepID adds the depID to the delete deployment using d e l e t e params
-func (o *DeleteDeploymentUsingDELETEParams) WithDepID(depID strfmt.UUID) *DeleteDeploymentUsingDELETEParams {
-	o.SetDepID(depID)
+// WithDeploymentID adds the deploymentID to the delete deployment using d e l e t e params
+func (o *DeleteDeploymentUsingDELETEParams) WithDeploymentID(deploymentID strfmt.UUID) *DeleteDeploymentUsingDELETEParams {
+	o.SetDeploymentID(deploymentID)
 	return o
 }
 
-// SetDepID adds the depId to the delete deployment using d e l e t e params
-func (o *DeleteDeploymentUsingDELETEParams) SetDepID(depID strfmt.UUID) {
-	o.DepID = depID
+// SetDeploymentID adds the deploymentId to the delete deployment using d e l e t e params
+func (o *DeleteDeploymentUsingDELETEParams) SetDeploymentID(deploymentID strfmt.UUID) {
+	o.DeploymentID = deploymentID
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -173,8 +173,8 @@ func (o *DeleteDeploymentUsingDELETEParams) WriteToRequest(r runtime.ClientReque
 		}
 	}
 
-	// path param depId
-	if err := r.SetPathParam("depId", o.DepID.String()); err != nil {
+	// path param deploymentId
+	if err := r.SetPathParam("deploymentId", o.DeploymentID.String()); err != nil {
 		return err
 	}
 

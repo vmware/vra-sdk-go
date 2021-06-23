@@ -66,7 +66,7 @@ type SubmitResourceActionRequestUsingPOSTOK struct {
 }
 
 func (o *SubmitResourceActionRequestUsingPOSTOK) Error() string {
-	return fmt.Sprintf("[POST /deployment/api/deployments/{depId}/resources/{resourceId}/requests][%d] submitResourceActionRequestUsingPOSTOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /deployment/api/deployments/{deploymentId}/resources/{resourceId}/requests][%d] submitResourceActionRequestUsingPOSTOK  %+v", 200, o.Payload)
 }
 func (o *SubmitResourceActionRequestUsingPOSTOK) GetPayload() *models.Request {
 	return o.Payload
@@ -97,7 +97,7 @@ type SubmitResourceActionRequestUsingPOSTUnauthorized struct {
 }
 
 func (o *SubmitResourceActionRequestUsingPOSTUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /deployment/api/deployments/{depId}/resources/{resourceId}/requests][%d] submitResourceActionRequestUsingPOSTUnauthorized ", 401)
+	return fmt.Sprintf("[POST /deployment/api/deployments/{deploymentId}/resources/{resourceId}/requests][%d] submitResourceActionRequestUsingPOSTUnauthorized ", 401)
 }
 
 func (o *SubmitResourceActionRequestUsingPOSTUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -118,7 +118,7 @@ type SubmitResourceActionRequestUsingPOSTForbidden struct {
 }
 
 func (o *SubmitResourceActionRequestUsingPOSTForbidden) Error() string {
-	return fmt.Sprintf("[POST /deployment/api/deployments/{depId}/resources/{resourceId}/requests][%d] submitResourceActionRequestUsingPOSTForbidden ", 403)
+	return fmt.Sprintf("[POST /deployment/api/deployments/{deploymentId}/resources/{resourceId}/requests][%d] submitResourceActionRequestUsingPOSTForbidden ", 403)
 }
 
 func (o *SubmitResourceActionRequestUsingPOSTForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -140,7 +140,7 @@ type SubmitResourceActionRequestUsingPOSTNotFound struct {
 }
 
 func (o *SubmitResourceActionRequestUsingPOSTNotFound) Error() string {
-	return fmt.Sprintf("[POST /deployment/api/deployments/{depId}/resources/{resourceId}/requests][%d] submitResourceActionRequestUsingPOSTNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[POST /deployment/api/deployments/{deploymentId}/resources/{resourceId}/requests][%d] submitResourceActionRequestUsingPOSTNotFound  %+v", 404, o.Payload)
 }
 func (o *SubmitResourceActionRequestUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload

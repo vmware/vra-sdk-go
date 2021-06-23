@@ -30,8 +30,6 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	ActionDeploymentRequestUsingPOST(params *ActionDeploymentRequestUsingPOSTParams, opts ...ClientOption) (*ActionDeploymentRequestUsingPOSTOK, error)
-
 	GetDeploymentActionUsingGET(params *GetDeploymentActionUsingGETParams, opts ...ClientOption) (*GetDeploymentActionUsingGETOK, error)
 
 	GetDeploymentActionsUsingGET(params *GetDeploymentActionsUsingGETParams, opts ...ClientOption) (*GetDeploymentActionsUsingGETOK, error)
@@ -48,46 +46,6 @@ type ClientService interface {
 }
 
 /*
-  ActionDeploymentRequestUsingPOST submits action on requests allowable values cancel dismiss
-
-  Cancel can be submitted on In-progress requests and Dismiss can be submitted on Failed requests.
-*/
-func (a *Client) ActionDeploymentRequestUsingPOST(params *ActionDeploymentRequestUsingPOSTParams, opts ...ClientOption) (*ActionDeploymentRequestUsingPOSTOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewActionDeploymentRequestUsingPOSTParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "actionDeploymentRequestUsingPOST",
-		Method:             "POST",
-		PathPattern:        "/deployment/api/requests/{requestId}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &ActionDeploymentRequestUsingPOSTReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*ActionDeploymentRequestUsingPOSTOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for actionDeploymentRequestUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
   GetDeploymentActionUsingGET fetches deployment action
 
   Returns an action for the deployment specified by its Deployment ID and Action ID.
@@ -100,7 +58,7 @@ func (a *Client) GetDeploymentActionUsingGET(params *GetDeploymentActionUsingGET
 	op := &runtime.ClientOperation{
 		ID:                 "getDeploymentActionUsingGET",
 		Method:             "GET",
-		PathPattern:        "/deployment/api/deployments/{depId}/actions/{actionId}",
+		PathPattern:        "/deployment/api/deployments/{deploymentId}/actions/{actionId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -140,7 +98,7 @@ func (a *Client) GetDeploymentActionsUsingGET(params *GetDeploymentActionsUsingG
 	op := &runtime.ClientOperation{
 		ID:                 "getDeploymentActionsUsingGET",
 		Method:             "GET",
-		PathPattern:        "/deployment/api/deployments/{depId}/actions",
+		PathPattern:        "/deployment/api/deployments/{deploymentId}/actions",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -180,7 +138,7 @@ func (a *Client) GetResourceActionUsingGET(params *GetResourceActionUsingGETPara
 	op := &runtime.ClientOperation{
 		ID:                 "getResourceActionUsingGET",
 		Method:             "GET",
-		PathPattern:        "/deployment/api/deployments/{depId}/resources/{resourceId}/actions/{actionId}",
+		PathPattern:        "/deployment/api/deployments/{deploymentId}/resources/{resourceId}/actions/{actionId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -220,7 +178,7 @@ func (a *Client) GetResourceActionsUsingGET(params *GetResourceActionsUsingGETPa
 	op := &runtime.ClientOperation{
 		ID:                 "getResourceActionsUsingGET",
 		Method:             "GET",
-		PathPattern:        "/deployment/api/deployments/{depId}/resources/{resourceId}/actions",
+		PathPattern:        "/deployment/api/deployments/{deploymentId}/resources/{resourceId}/actions",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -260,7 +218,7 @@ func (a *Client) SubmitDeploymentActionRequestUsingPOST(params *SubmitDeployment
 	op := &runtime.ClientOperation{
 		ID:                 "submitDeploymentActionRequestUsingPOST",
 		Method:             "POST",
-		PathPattern:        "/deployment/api/deployments/{depId}/requests",
+		PathPattern:        "/deployment/api/deployments/{deploymentId}/requests",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -300,7 +258,7 @@ func (a *Client) SubmitResourceActionRequestUsingPOST(params *SubmitResourceActi
 	op := &runtime.ClientOperation{
 		ID:                 "submitResourceActionRequestUsingPOST",
 		Method:             "POST",
-		PathPattern:        "/deployment/api/deployments/{depId}/resources/{resourceId}/requests",
+		PathPattern:        "/deployment/api/deployments/{deploymentId}/resources/{resourceId}/requests",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},

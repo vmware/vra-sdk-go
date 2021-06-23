@@ -56,19 +56,19 @@ func NewGetDeploymentResourcesUsingGETOK() *GetDeploymentResourcesUsingGETOK {
 OK
 */
 type GetDeploymentResourcesUsingGETOK struct {
-	Payload *models.PageOfResource
+	Payload *models.PageOfDeploymentResource
 }
 
 func (o *GetDeploymentResourcesUsingGETOK) Error() string {
-	return fmt.Sprintf("[GET /deployment/api/deployments/{depId}/resources][%d] getDeploymentResourcesUsingGETOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}/resources][%d] getDeploymentResourcesUsingGETOK  %+v", 200, o.Payload)
 }
-func (o *GetDeploymentResourcesUsingGETOK) GetPayload() *models.PageOfResource {
+func (o *GetDeploymentResourcesUsingGETOK) GetPayload() *models.PageOfDeploymentResource {
 	return o.Payload
 }
 
 func (o *GetDeploymentResourcesUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.PageOfResource)
+	o.Payload = new(models.PageOfDeploymentResource)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -91,7 +91,7 @@ type GetDeploymentResourcesUsingGETUnauthorized struct {
 }
 
 func (o *GetDeploymentResourcesUsingGETUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /deployment/api/deployments/{depId}/resources][%d] getDeploymentResourcesUsingGETUnauthorized ", 401)
+	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}/resources][%d] getDeploymentResourcesUsingGETUnauthorized ", 401)
 }
 
 func (o *GetDeploymentResourcesUsingGETUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -113,7 +113,7 @@ type GetDeploymentResourcesUsingGETNotFound struct {
 }
 
 func (o *GetDeploymentResourcesUsingGETNotFound) Error() string {
-	return fmt.Sprintf("[GET /deployment/api/deployments/{depId}/resources][%d] getDeploymentResourcesUsingGETNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}/resources][%d] getDeploymentResourcesUsingGETNotFound  %+v", 404, o.Payload)
 }
 func (o *GetDeploymentResourcesUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload

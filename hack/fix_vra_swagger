@@ -277,6 +277,20 @@ def add_400_bad_request(swagger):
                 "description": "Bad Request",
             }
 
+def add_409_conflict(swagger):
+    # List of paths and operations to add a 409 conflict
+    paths = [
+        # This needs to be removed after the bug https://jira.eng.vmware.com/browse/TDS-2733 is fixed
+        ('/deployment/api/deployments/{deploymentId}', 'delete'),
+    ]
+
+    # Update the needed paths
+    for (p, op) in paths:
+        responses = swagger['paths'][p][op]['responses']
+        if '409' not in responses:
+            responses['409'] = {
+                "description": "Conflict",
+            }
 
 def add_default_value_to_boolean_properties(swagger):
     # Update following definition properties of type boolean with specified default value.
@@ -339,6 +353,7 @@ if __name__ == "__main__":
     get_blockdevices_add_dollar_filter(swagger)
     add_404_not_found(swagger)
     add_400_bad_request(swagger)
+    add_409_conflict(swagger)
 
     add_default_value_to_boolean_properties(swagger)
     # change_response_code(swagger)

@@ -65,13 +65,13 @@ type DeleteResourceUsingDELETEParams struct {
 	*/
 	APIVersion *string
 
-	/* DepID.
+	/* DeploymentID.
 
 	   Deployment ID
 
 	   Format: uuid
 	*/
-	DepID strfmt.UUID
+	DeploymentID strfmt.UUID
 
 	/* ResourceID.
 
@@ -145,15 +145,15 @@ func (o *DeleteResourceUsingDELETEParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
-// WithDepID adds the depID to the delete resource using d e l e t e params
-func (o *DeleteResourceUsingDELETEParams) WithDepID(depID strfmt.UUID) *DeleteResourceUsingDELETEParams {
-	o.SetDepID(depID)
+// WithDeploymentID adds the deploymentID to the delete resource using d e l e t e params
+func (o *DeleteResourceUsingDELETEParams) WithDeploymentID(deploymentID strfmt.UUID) *DeleteResourceUsingDELETEParams {
+	o.SetDeploymentID(deploymentID)
 	return o
 }
 
-// SetDepID adds the depId to the delete resource using d e l e t e params
-func (o *DeleteResourceUsingDELETEParams) SetDepID(depID strfmt.UUID) {
-	o.DepID = depID
+// SetDeploymentID adds the deploymentId to the delete resource using d e l e t e params
+func (o *DeleteResourceUsingDELETEParams) SetDeploymentID(deploymentID strfmt.UUID) {
+	o.DeploymentID = deploymentID
 }
 
 // WithResourceID adds the resourceID to the delete resource using d e l e t e params
@@ -192,8 +192,8 @@ func (o *DeleteResourceUsingDELETEParams) WriteToRequest(r runtime.ClientRequest
 		}
 	}
 
-	// path param depId
-	if err := r.SetPathParam("depId", o.DepID.String()); err != nil {
+	// path param deploymentId
+	if err := r.SetPathParam("deploymentId", o.DeploymentID.String()); err != nil {
 		return err
 	}
 

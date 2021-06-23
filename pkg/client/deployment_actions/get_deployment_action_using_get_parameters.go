@@ -71,13 +71,13 @@ type GetDeploymentActionUsingGETParams struct {
 	*/
 	APIVersion *string
 
-	/* DepID.
+	/* DeploymentID.
 
 	   Deployment ID
 
 	   Format: uuid
 	*/
-	DepID strfmt.UUID
+	DeploymentID strfmt.UUID
 
 	timeout    time.Duration
 	Context    context.Context
@@ -154,15 +154,15 @@ func (o *GetDeploymentActionUsingGETParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
-// WithDepID adds the depID to the get deployment action using get params
-func (o *GetDeploymentActionUsingGETParams) WithDepID(depID strfmt.UUID) *GetDeploymentActionUsingGETParams {
-	o.SetDepID(depID)
+// WithDeploymentID adds the deploymentID to the get deployment action using get params
+func (o *GetDeploymentActionUsingGETParams) WithDeploymentID(deploymentID strfmt.UUID) *GetDeploymentActionUsingGETParams {
+	o.SetDeploymentID(deploymentID)
 	return o
 }
 
-// SetDepID adds the depId to the get deployment action using get params
-func (o *GetDeploymentActionUsingGETParams) SetDepID(depID strfmt.UUID) {
-	o.DepID = depID
+// SetDeploymentID adds the deploymentId to the get deployment action using get params
+func (o *GetDeploymentActionUsingGETParams) SetDeploymentID(deploymentID strfmt.UUID) {
+	o.DeploymentID = deploymentID
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -195,8 +195,8 @@ func (o *GetDeploymentActionUsingGETParams) WriteToRequest(r runtime.ClientReque
 		}
 	}
 
-	// path param depId
-	if err := r.SetPathParam("depId", o.DepID.String()); err != nil {
+	// path param deploymentId
+	if err := r.SetPathParam("deploymentId", o.DeploymentID.String()); err != nil {
 		return err
 	}
 

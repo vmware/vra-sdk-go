@@ -60,7 +60,7 @@ type GetDeploymentExpenseHistoryByIDUsingGETOK struct {
 }
 
 func (o *GetDeploymentExpenseHistoryByIDUsingGETOK) Error() string {
-	return fmt.Sprintf("[GET /deployment/api/deployments/{depId}/expense-history][%d] getDeploymentExpenseHistoryByIdUsingGETOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}/expense-history][%d] getDeploymentExpenseHistoryByIdUsingGETOK  %+v", 200, o.Payload)
 }
 func (o *GetDeploymentExpenseHistoryByIDUsingGETOK) GetPayload() *models.DeploymentExpenseHistory {
 	return o.Payload
@@ -91,7 +91,7 @@ type GetDeploymentExpenseHistoryByIDUsingGETUnauthorized struct {
 }
 
 func (o *GetDeploymentExpenseHistoryByIDUsingGETUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /deployment/api/deployments/{depId}/expense-history][%d] getDeploymentExpenseHistoryByIdUsingGETUnauthorized ", 401)
+	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}/expense-history][%d] getDeploymentExpenseHistoryByIdUsingGETUnauthorized ", 401)
 }
 
 func (o *GetDeploymentExpenseHistoryByIDUsingGETUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -113,7 +113,7 @@ type GetDeploymentExpenseHistoryByIDUsingGETNotFound struct {
 }
 
 func (o *GetDeploymentExpenseHistoryByIDUsingGETNotFound) Error() string {
-	return fmt.Sprintf("[GET /deployment/api/deployments/{depId}/expense-history][%d] getDeploymentExpenseHistoryByIdUsingGETNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}/expense-history][%d] getDeploymentExpenseHistoryByIdUsingGETNotFound  %+v", 404, o.Payload)
 }
 func (o *GetDeploymentExpenseHistoryByIDUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload

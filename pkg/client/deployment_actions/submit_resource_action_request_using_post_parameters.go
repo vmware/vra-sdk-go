@@ -73,13 +73,13 @@ type SubmitResourceActionRequestUsingPOSTParams struct {
 	*/
 	APIVersion *string
 
-	/* DepID.
+	/* DeploymentID.
 
 	   Deployment ID
 
 	   Format: uuid
 	*/
-	DepID strfmt.UUID
+	DeploymentID strfmt.UUID
 
 	/* ResourceID.
 
@@ -164,15 +164,15 @@ func (o *SubmitResourceActionRequestUsingPOSTParams) SetAPIVersion(aPIVersion *s
 	o.APIVersion = aPIVersion
 }
 
-// WithDepID adds the depID to the submit resource action request using p o s t params
-func (o *SubmitResourceActionRequestUsingPOSTParams) WithDepID(depID strfmt.UUID) *SubmitResourceActionRequestUsingPOSTParams {
-	o.SetDepID(depID)
+// WithDeploymentID adds the deploymentID to the submit resource action request using p o s t params
+func (o *SubmitResourceActionRequestUsingPOSTParams) WithDeploymentID(deploymentID strfmt.UUID) *SubmitResourceActionRequestUsingPOSTParams {
+	o.SetDeploymentID(deploymentID)
 	return o
 }
 
-// SetDepID adds the depId to the submit resource action request using p o s t params
-func (o *SubmitResourceActionRequestUsingPOSTParams) SetDepID(depID strfmt.UUID) {
-	o.DepID = depID
+// SetDeploymentID adds the deploymentId to the submit resource action request using p o s t params
+func (o *SubmitResourceActionRequestUsingPOSTParams) SetDeploymentID(deploymentID strfmt.UUID) {
+	o.DeploymentID = deploymentID
 }
 
 // WithResourceID adds the resourceID to the submit resource action request using p o s t params
@@ -216,8 +216,8 @@ func (o *SubmitResourceActionRequestUsingPOSTParams) WriteToRequest(r runtime.Cl
 		}
 	}
 
-	// path param depId
-	if err := r.SetPathParam("depId", o.DepID.String()); err != nil {
+	// path param deploymentId
+	if err := r.SetPathParam("deploymentId", o.DeploymentID.String()); err != nil {
 		return err
 	}
 

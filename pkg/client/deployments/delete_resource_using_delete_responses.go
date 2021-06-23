@@ -66,7 +66,7 @@ type DeleteResourceUsingDELETEOK struct {
 }
 
 func (o *DeleteResourceUsingDELETEOK) Error() string {
-	return fmt.Sprintf("[DELETE /deployment/api/deployments/{depId}/resources/{resourceId}][%d] deleteResourceUsingDELETEOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[DELETE /deployment/api/deployments/{deploymentId}/resources/{resourceId}][%d] deleteResourceUsingDELETEOK  %+v", 200, o.Payload)
 }
 func (o *DeleteResourceUsingDELETEOK) GetPayload() *models.Request {
 	return o.Payload
@@ -97,7 +97,7 @@ type DeleteResourceUsingDELETEUnauthorized struct {
 }
 
 func (o *DeleteResourceUsingDELETEUnauthorized) Error() string {
-	return fmt.Sprintf("[DELETE /deployment/api/deployments/{depId}/resources/{resourceId}][%d] deleteResourceUsingDELETEUnauthorized ", 401)
+	return fmt.Sprintf("[DELETE /deployment/api/deployments/{deploymentId}/resources/{resourceId}][%d] deleteResourceUsingDELETEUnauthorized ", 401)
 }
 
 func (o *DeleteResourceUsingDELETEUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -118,7 +118,7 @@ type DeleteResourceUsingDELETEForbidden struct {
 }
 
 func (o *DeleteResourceUsingDELETEForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /deployment/api/deployments/{depId}/resources/{resourceId}][%d] deleteResourceUsingDELETEForbidden ", 403)
+	return fmt.Sprintf("[DELETE /deployment/api/deployments/{deploymentId}/resources/{resourceId}][%d] deleteResourceUsingDELETEForbidden ", 403)
 }
 
 func (o *DeleteResourceUsingDELETEForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -140,7 +140,7 @@ type DeleteResourceUsingDELETENotFound struct {
 }
 
 func (o *DeleteResourceUsingDELETENotFound) Error() string {
-	return fmt.Sprintf("[DELETE /deployment/api/deployments/{depId}/resources/{resourceId}][%d] deleteResourceUsingDELETENotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[DELETE /deployment/api/deployments/{deploymentId}/resources/{resourceId}][%d] deleteResourceUsingDELETENotFound  %+v", 404, o.Payload)
 }
 func (o *DeleteResourceUsingDELETENotFound) GetPayload() *models.Error {
 	return o.Payload

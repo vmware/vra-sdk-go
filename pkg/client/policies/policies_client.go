@@ -30,55 +30,15 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreatePolicyUsingPOST1(params *CreatePolicyUsingPOST1Params, opts ...ClientOption) (*CreatePolicyUsingPOST1OK, error)
-
 	DeletePolicyUsingDELETE1(params *DeletePolicyUsingDELETE1Params, opts ...ClientOption) (*DeletePolicyUsingDELETE1NoContent, error)
+
+	DryRunPolicyUsingPOST(params *DryRunPolicyUsingPOSTParams, opts ...ClientOption) (*DryRunPolicyUsingPOSTOK, error)
 
 	GetPoliciesUsingGET1(params *GetPoliciesUsingGET1Params, opts ...ClientOption) (*GetPoliciesUsingGET1OK, error)
 
 	GetPolicyUsingGET1(params *GetPolicyUsingGET1Params, opts ...ClientOption) (*GetPolicyUsingGET1OK, error)
 
 	SetTransport(transport runtime.ClientTransport)
-}
-
-/*
-  CreatePolicyUsingPOST1 creates a new policy or updates an existing policy
-
-  Create a new policy or update an existing policy based on request body and validate its fields according to business rules.
-*/
-func (a *Client) CreatePolicyUsingPOST1(params *CreatePolicyUsingPOST1Params, opts ...ClientOption) (*CreatePolicyUsingPOST1OK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewCreatePolicyUsingPOST1Params()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "createPolicyUsingPOST_1",
-		Method:             "POST",
-		PathPattern:        "/policy/api/policies",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &CreatePolicyUsingPOST1Reader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*CreatePolicyUsingPOST1OK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for createPolicyUsingPOST_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
 }
 
 /*
@@ -118,6 +78,46 @@ func (a *Client) DeletePolicyUsingDELETE1(params *DeletePolicyUsingDELETE1Params
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for deletePolicyUsingDELETE_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  DryRunPolicyUsingPOST triggers a policy dry run
+
+  Dry-run an existing policy to rehearse actual policy effect on application.
+*/
+func (a *Client) DryRunPolicyUsingPOST(params *DryRunPolicyUsingPOSTParams, opts ...ClientOption) (*DryRunPolicyUsingPOSTOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDryRunPolicyUsingPOSTParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "dryRunPolicyUsingPOST",
+		Method:             "POST",
+		PathPattern:        "/policy/api/policies",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DryRunPolicyUsingPOSTReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DryRunPolicyUsingPOSTOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for dryRunPolicyUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

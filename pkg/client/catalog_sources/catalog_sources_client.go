@@ -162,9 +162,9 @@ func (a *Client) GetUsingGET(params *GetUsingGETParams, opts ...ClientOption) (*
 }
 
 /*
-  PostUsingPOST creates a new catalog source
+  PostUsingPOST creates a new catalog source or update an existing catalog source
 
-  Creates a catalog source and imports catalog items from it.
+  Creates a new catalog source or updates an existing catalog source based on the request body and imports catalog items from it.
 */
 func (a *Client) PostUsingPOST(params *PostUsingPOSTParams, opts ...ClientOption) (*PostUsingPOSTOK, *PostUsingPOSTCreated, error) {
 	// TODO: Validate the params before sending

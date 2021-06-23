@@ -88,19 +88,37 @@ type GetDeploymentResourcesUsingGETParams struct {
 	*/
 	APIVersion *string
 
-	/* DepID.
+	/* DeploymentID.
 
 	   Deployment ID
 
 	   Format: uuid
 	*/
-	DepID strfmt.UUID
+	DeploymentID strfmt.UUID
+
+	/* Expand.
+
+	   The expanded details of the requested comma separated objects. Ex. currentRequest
+	*/
+	Expand []string
 
 	/* Names.
 
 	   Results must have exactly these resource names.
 	*/
 	Names []string
+
+	/* ResourceTypes.
+
+	   A comma-separated list. Results must be associated with one of these resourceType Names.
+	*/
+	ResourceTypes []string
+
+	/* Tags.
+
+	   A comma-separated list. Results must be associated with one of these tags
+	*/
+	Tags []string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -199,15 +217,26 @@ func (o *GetDeploymentResourcesUsingGETParams) SetAPIVersion(aPIVersion *string)
 	o.APIVersion = aPIVersion
 }
 
-// WithDepID adds the depID to the get deployment resources using get params
-func (o *GetDeploymentResourcesUsingGETParams) WithDepID(depID strfmt.UUID) *GetDeploymentResourcesUsingGETParams {
-	o.SetDepID(depID)
+// WithDeploymentID adds the deploymentID to the get deployment resources using get params
+func (o *GetDeploymentResourcesUsingGETParams) WithDeploymentID(deploymentID strfmt.UUID) *GetDeploymentResourcesUsingGETParams {
+	o.SetDeploymentID(deploymentID)
 	return o
 }
 
-// SetDepID adds the depId to the get deployment resources using get params
-func (o *GetDeploymentResourcesUsingGETParams) SetDepID(depID strfmt.UUID) {
-	o.DepID = depID
+// SetDeploymentID adds the deploymentId to the get deployment resources using get params
+func (o *GetDeploymentResourcesUsingGETParams) SetDeploymentID(deploymentID strfmt.UUID) {
+	o.DeploymentID = deploymentID
+}
+
+// WithExpand adds the expand to the get deployment resources using get params
+func (o *GetDeploymentResourcesUsingGETParams) WithExpand(expand []string) *GetDeploymentResourcesUsingGETParams {
+	o.SetExpand(expand)
+	return o
+}
+
+// SetExpand adds the expand to the get deployment resources using get params
+func (o *GetDeploymentResourcesUsingGETParams) SetExpand(expand []string) {
+	o.Expand = expand
 }
 
 // WithNames adds the names to the get deployment resources using get params
@@ -219,6 +248,28 @@ func (o *GetDeploymentResourcesUsingGETParams) WithNames(names []string) *GetDep
 // SetNames adds the names to the get deployment resources using get params
 func (o *GetDeploymentResourcesUsingGETParams) SetNames(names []string) {
 	o.Names = names
+}
+
+// WithResourceTypes adds the resourceTypes to the get deployment resources using get params
+func (o *GetDeploymentResourcesUsingGETParams) WithResourceTypes(resourceTypes []string) *GetDeploymentResourcesUsingGETParams {
+	o.SetResourceTypes(resourceTypes)
+	return o
+}
+
+// SetResourceTypes adds the resourceTypes to the get deployment resources using get params
+func (o *GetDeploymentResourcesUsingGETParams) SetResourceTypes(resourceTypes []string) {
+	o.ResourceTypes = resourceTypes
+}
+
+// WithTags adds the tags to the get deployment resources using get params
+func (o *GetDeploymentResourcesUsingGETParams) WithTags(tags []string) *GetDeploymentResourcesUsingGETParams {
+	o.SetTags(tags)
+	return o
+}
+
+// SetTags adds the tags to the get deployment resources using get params
+func (o *GetDeploymentResourcesUsingGETParams) SetTags(tags []string) {
+	o.Tags = tags
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -291,9 +342,20 @@ func (o *GetDeploymentResourcesUsingGETParams) WriteToRequest(r runtime.ClientRe
 		}
 	}
 
-	// path param depId
-	if err := r.SetPathParam("depId", o.DepID.String()); err != nil {
+	// path param deploymentId
+	if err := r.SetPathParam("deploymentId", o.DeploymentID.String()); err != nil {
 		return err
+	}
+
+	if o.Expand != nil {
+
+		// binding items for expand
+		joinedExpand := o.bindParamExpand(reg)
+
+		// query array param expand
+		if err := r.SetQueryParam("expand", joinedExpand...); err != nil {
+			return err
+		}
 	}
 
 	if o.Names != nil {
@@ -303,6 +365,28 @@ func (o *GetDeploymentResourcesUsingGETParams) WriteToRequest(r runtime.ClientRe
 
 		// query array param names
 		if err := r.SetQueryParam("names", joinedNames...); err != nil {
+			return err
+		}
+	}
+
+	if o.ResourceTypes != nil {
+
+		// binding items for resourceTypes
+		joinedResourceTypes := o.bindParamResourceTypes(reg)
+
+		// query array param resourceTypes
+		if err := r.SetQueryParam("resourceTypes", joinedResourceTypes...); err != nil {
+			return err
+		}
+	}
+
+	if o.Tags != nil {
+
+		// binding items for tags
+		joinedTags := o.bindParamTags(reg)
+
+		// query array param tags
+		if err := r.SetQueryParam("tags", joinedTags...); err != nil {
 			return err
 		}
 	}
@@ -330,6 +414,23 @@ func (o *GetDeploymentResourcesUsingGETParams) bindParamDollarOrderby(formats st
 	return dollarOrderbyIS
 }
 
+// bindParamGetDeploymentResourcesUsingGET binds the parameter expand
+func (o *GetDeploymentResourcesUsingGETParams) bindParamExpand(formats strfmt.Registry) []string {
+	expandIR := o.Expand
+
+	var expandIC []string
+	for _, expandIIR := range expandIR { // explode []string
+
+		expandIIV := expandIIR // string as string
+		expandIC = append(expandIC, expandIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	expandIS := swag.JoinByFormat(expandIC, "multi")
+
+	return expandIS
+}
+
 // bindParamGetDeploymentResourcesUsingGET binds the parameter names
 func (o *GetDeploymentResourcesUsingGETParams) bindParamNames(formats strfmt.Registry) []string {
 	namesIR := o.Names
@@ -345,4 +446,38 @@ func (o *GetDeploymentResourcesUsingGETParams) bindParamNames(formats strfmt.Reg
 	namesIS := swag.JoinByFormat(namesIC, "multi")
 
 	return namesIS
+}
+
+// bindParamGetDeploymentResourcesUsingGET binds the parameter resourceTypes
+func (o *GetDeploymentResourcesUsingGETParams) bindParamResourceTypes(formats strfmt.Registry) []string {
+	resourceTypesIR := o.ResourceTypes
+
+	var resourceTypesIC []string
+	for _, resourceTypesIIR := range resourceTypesIR { // explode []string
+
+		resourceTypesIIV := resourceTypesIIR // string as string
+		resourceTypesIC = append(resourceTypesIC, resourceTypesIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	resourceTypesIS := swag.JoinByFormat(resourceTypesIC, "multi")
+
+	return resourceTypesIS
+}
+
+// bindParamGetDeploymentResourcesUsingGET binds the parameter tags
+func (o *GetDeploymentResourcesUsingGETParams) bindParamTags(formats strfmt.Registry) []string {
+	tagsIR := o.Tags
+
+	var tagsIC []string
+	for _, tagsIIR := range tagsIR { // explode []string
+
+		tagsIIV := tagsIIR // string as string
+		tagsIC = append(tagsIC, tagsIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	tagsIS := swag.JoinByFormat(tagsIC, "multi")
+
+	return tagsIS
 }

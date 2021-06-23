@@ -30,11 +30,7 @@
         },
         {
             "name": "Deployment Actions",
-            "description": "Deployment Request Action Controller"
-        },
-        {
-            "name": "Deployment Requests",
-            "description": "Request Controller"
+            "description": "Deployment Resource Action Controller"
         },
         {
             "name": "Deployments",
@@ -43,6 +39,10 @@
         {
             "name": "Icons",
             "description": "Icons API"
+        },
+        {
+            "name": "Perspective Sync",
+            "description": "Perspective Sync Controller"
         },
         {
             "name": "Policies",
@@ -65,8 +65,20 @@
             "description": "Metering Policy Controller"
         },
         {
+            "name": "Requests",
+            "description": "Deployment Request Controller"
+        },
+        {
+            "name": "Resource Actions",
+            "description": "Resource Action Controller"
+        },
+        {
             "name": "Resource types",
             "description": "Resource Type Controller"
+        },
+        {
+            "name": "Resources",
+            "description": "Resource Controller"
         }
     ],
     "produces": [
@@ -112,6 +124,13 @@
                         "description": "Unauthorized"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             },
             "post": {
@@ -165,6 +184,13 @@
                         "description": "Catalog item or catalog source not found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -201,6 +227,13 @@
                         "description": "Unauthorized"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -298,6 +331,13 @@
                         "description": "Unauthorized"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -340,6 +380,13 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             },
             "patch": {
@@ -386,6 +433,13 @@
                         "description": "Unauthorized"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -462,14 +516,21 @@
                         "description": "Unauthorized"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             },
             "post": {
                 "tags": [
                     "Catalog Sources"
                 ],
-                "summary": "Create a new catalog source.",
-                "description": "Creates a catalog source and imports catalog items from it.",
+                "summary": "Create a new catalog source or update an existing catalog source.",
+                "description": "Creates a new catalog source or updates an existing catalog source based on the request body and imports catalog items from it.",
                 "operationId": "postUsingPOST",
                 "consumes": [
                     "application/json"
@@ -526,6 +587,13 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -568,6 +636,13 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             },
             "delete": {
@@ -602,6 +677,13 @@
                         "description": "Unauthorized"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -702,6 +784,13 @@
                         "description": "Unauthorized"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -752,6 +841,13 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -812,6 +908,13 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -866,6 +969,13 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -916,6 +1026,13 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -976,6 +1093,13 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -1025,6 +1149,13 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -1085,6 +1216,13 @@
                         "description": "Unauthorized"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -1126,6 +1264,13 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -1201,7 +1346,7 @@
                     {
                         "name": "createdAt",
                         "in": "query",
-                        "description": "Comma-separated start and end dates for the interval",
+                        "description": "Comma-separated start and end dates where start date or end date is optional (e.g. [2020-12-01T08:00:00.000Z,2020-12-11T23:59:00.000Z], [2020-11-03T08:00:00.000Z,], [,2020-11-08T08:00:00.000Z]",
                         "required": false,
                         "type": "string",
                         "allowEmptyValue": false
@@ -1286,9 +1431,21 @@
                         "allowEmptyValue": false
                     },
                     {
+                        "name": "lastRequestStatus",
+                        "in": "query",
+                        "description": "A comma-separated list of last request statuses. Allowed values are: ABORTED, APPROVAL_PENDING, APPROVAL_REJECTED, FAILED, INPROGRESS, PENDING and SUCCESSFUL. Results must be associated with one of these last request statuses.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
+                    },
+                    {
                         "name": "lastUpdatedAt",
                         "in": "query",
-                        "description": "Comma-separated start and end dates for the interval",
+                        "description": "Comma-separated start and end dates where start date or end date is optional (e.g. [2020-12-01T08:00:00.000Z,2020-12-11T23:59:00.000Z], [2020-11-03T08:00:00.000Z,], [,2020-11-08T08:00:00.000Z]",
                         "required": false,
                         "type": "string",
                         "allowEmptyValue": false
@@ -1393,6 +1550,13 @@
                         "description": "Unauthorized"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -1509,6 +1673,13 @@
                         "description": "Unauthorized"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -1583,6 +1754,59 @@
                         "description": "Unauthorized"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/deployment/api/deployments/names": {
+            "get": {
+                "tags": [
+                    "Deployments"
+                ],
+                "summary": "Check if a deployment exists.",
+                "description": "Returns OK if a deployment with the supplied name exists.",
+                "operationId": "checkDeploymentNameExistsUsingGET",
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Deployment name",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -1621,10 +1845,17 @@
                         "description": "Not Found"
                     }
                 },
-                "deprecated": false
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": true
             }
         },
-        "/deployment/api/deployments/{depId}": {
+        "/deployment/api/deployments/{deploymentId}": {
             "get": {
                 "tags": [
                     "Deployments"
@@ -1649,7 +1880,7 @@
                         "allowEmptyValue": false
                     },
                     {
-                        "name": "depId",
+                        "name": "deploymentId",
                         "in": "path",
                         "description": "Deployment ID",
                         "required": true,
@@ -1721,6 +1952,13 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             },
             "delete": {
@@ -1739,7 +1977,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "depId",
+                        "name": "deploymentId",
                         "in": "path",
                         "description": "Deployment ID",
                         "required": true,
@@ -1764,6 +2002,13 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             },
             "patch": {
@@ -1785,7 +2030,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "depId",
+                        "name": "deploymentId",
                         "in": "path",
                         "description": "Deployment ID",
                         "required": true,
@@ -1819,10 +2064,17 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
-        "/deployment/api/deployments/{depId}/actions": {
+        "/deployment/api/deployments/{deploymentId}/actions": {
             "get": {
                 "tags": [
                     "Deployment Actions"
@@ -1839,7 +2091,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "depId",
+                        "name": "deploymentId",
                         "in": "path",
                         "description": "Deployment ID",
                         "required": true,
@@ -1864,10 +2116,17 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
-        "/deployment/api/deployments/{depId}/actions/{actionId}": {
+        "/deployment/api/deployments/{deploymentId}/actions/{actionId}": {
             "get": {
                 "tags": [
                     "Deployment Actions"
@@ -1891,7 +2150,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "depId",
+                        "name": "deploymentId",
                         "in": "path",
                         "description": "Deployment ID",
                         "required": true,
@@ -1913,10 +2172,17 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
-        "/deployment/api/deployments/{depId}/expense-history": {
+        "/deployment/api/deployments/{deploymentId}/expense-history": {
             "get": {
                 "tags": [
                     "Deployments"
@@ -1933,7 +2199,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "depId",
+                        "name": "deploymentId",
                         "in": "path",
                         "description": "Deployment ID",
                         "required": true,
@@ -1981,13 +2247,20 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
-        "/deployment/api/deployments/{depId}/requests": {
+        "/deployment/api/deployments/{deploymentId}/requests": {
             "get": {
                 "tags": [
-                    "Deployment Requests"
+                    "Requests"
                 ],
                 "summary": "Fetch deployment requests.",
                 "description": "Returns the requests for the deployment.",
@@ -2038,12 +2311,20 @@
                         "allowEmptyValue": false
                     },
                     {
-                        "name": "depId",
+                        "name": "deploymentId",
                         "in": "path",
                         "description": "Deployment ID",
                         "required": true,
                         "type": "string",
                         "format": "uuid"
+                    },
+                    {
+                        "name": "inprogressRequests",
+                        "in": "query",
+                        "description": "Retrieves the requests that are currently in-progress for a deployment. Incase of a false value the param is ignored.",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": false
                     }
                 ],
                 "responses": {
@@ -2060,6 +2341,13 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             },
             "post": {
@@ -2090,7 +2378,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "depId",
+                        "name": "deploymentId",
                         "in": "path",
                         "description": "Deployment ID",
                         "required": true,
@@ -2115,259 +2403,17 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
-        "/deployment/api/deployments/{depId}/requests/{requestId}": {
-            "get": {
-                "tags": [
-                    "Deployment Requests"
-                ],
-                "summary": "Get the Request.",
-                "description": "Returns the request with the given ID.",
-                "operationId": "getRequestUsingGET",
-                "parameters": [
-                    {
-                        "name": "apiVersion",
-                        "in": "query",
-                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "deleted",
-                        "in": "query",
-                        "description": "Retrieves the request, includes soft-deleted request that have not yet been completely deleted.",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "depId",
-                        "in": "path",
-                        "description": "Deployment ID",
-                        "required": true,
-                        "type": "string",
-                        "format": "uuid"
-                    },
-                    {
-                        "name": "requestId",
-                        "in": "path",
-                        "description": "Request ID",
-                        "required": true,
-                        "type": "string",
-                        "format": "uuid"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/Request"
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized"
-                    },
-                    "404": {
-                        "description": "Not Found"
-                    }
-                },
-                "deprecated": false
-            }
-        },
-        "/deployment/api/deployments/{depId}/requests/{requestId}/events": {
-            "get": {
-                "tags": [
-                    "Deployment Requests"
-                ],
-                "summary": "Fetch Request events.",
-                "description": "Returns all the events for a request.",
-                "operationId": "getRequestEventsUsingGET",
-                "parameters": [
-                    {
-                        "name": "$orderby",
-                        "in": "query",
-                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
-                        "required": false,
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "multi"
-                    },
-                    {
-                        "name": "$skip",
-                        "in": "query",
-                        "description": "Number of records you want to skip",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32",
-                        "x-example": 1
-                    },
-                    {
-                        "name": "$top",
-                        "in": "query",
-                        "description": "Number of records you want",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32",
-                        "x-example": 1
-                    },
-                    {
-                        "name": "apiVersion",
-                        "in": "query",
-                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "deleted",
-                        "in": "query",
-                        "description": "Retrieves the soft-deleted events of the request that have not yet been completely deleted.",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "depId",
-                        "in": "path",
-                        "description": "Deployment ID",
-                        "required": true,
-                        "type": "string",
-                        "format": "uuid"
-                    },
-                    {
-                        "name": "requestId",
-                        "in": "path",
-                        "description": "Request ID",
-                        "required": true,
-                        "type": "string",
-                        "format": "uuid"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/PageOfEvent"
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized"
-                    },
-                    "404": {
-                        "description": "Not Found"
-                    }
-                },
-                "deprecated": false
-            }
-        },
-        "/deployment/api/deployments/{depId}/requests/{requestId}/events/{eventId}/logs": {
-            "get": {
-                "tags": [
-                    "Deployment Requests"
-                ],
-                "summary": "Fetch Event logs.",
-                "description": "Returns the logs for an event.",
-                "operationId": "getEventLogsUsingGET",
-                "parameters": [
-                    {
-                        "name": "$orderby",
-                        "in": "query",
-                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
-                        "required": false,
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "multi"
-                    },
-                    {
-                        "name": "$skip",
-                        "in": "query",
-                        "description": "Number of records you want to skip",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32",
-                        "x-example": 1
-                    },
-                    {
-                        "name": "$top",
-                        "in": "query",
-                        "description": "Number of records you want",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32",
-                        "x-example": 1
-                    },
-                    {
-                        "name": "apiVersion",
-                        "in": "query",
-                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "deleted",
-                        "in": "query",
-                        "description": "Retrieves the soft-deleted event logs that have not yet been completely deleted.",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "depId",
-                        "in": "path",
-                        "description": "Deployment ID",
-                        "required": true,
-                        "type": "string",
-                        "format": "uuid"
-                    },
-                    {
-                        "name": "eventId",
-                        "in": "path",
-                        "description": "Event ID",
-                        "required": true,
-                        "type": "string",
-                        "format": "uuid"
-                    },
-                    {
-                        "name": "requestId",
-                        "in": "path",
-                        "description": "Request ID",
-                        "required": true,
-                        "type": "string",
-                        "format": "uuid"
-                    },
-                    {
-                        "name": "sinceRow",
-                        "in": "query",
-                        "description": "A positive row number from which to show logs.",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32",
-                        "allowEmptyValue": false
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/SliceOfEventLog"
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized"
-                    },
-                    "404": {
-                        "description": "Not Found"
-                    }
-                },
-                "deprecated": false
-            }
-        },
-        "/deployment/api/deployments/{depId}/resources": {
+        "/deployment/api/deployments/{deploymentId}/resources": {
             "get": {
                 "tags": [
                     "Deployments"
@@ -2413,7 +2459,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "depId",
+                        "name": "deploymentId",
                         "in": "path",
                         "description": "Deployment ID",
                         "required": true,
@@ -2421,9 +2467,51 @@
                         "format": "uuid"
                     },
                     {
+                        "name": "expand",
+                        "in": "query",
+                        "description": "The expanded details of the requested comma separated objects. Ex. currentRequest",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "currentRequest"
+                            ]
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false,
+                        "enum": [
+                            "currentRequest"
+                        ]
+                    },
+                    {
                         "name": "names",
                         "in": "query",
                         "description": "Results must have exactly these resource names.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "resourceTypes",
+                        "in": "query",
+                        "description": "A comma-separated list. Results must be associated with one of these resourceType Names.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "tags",
+                        "in": "query",
+                        "description": "A comma-separated list. Results must be associated with one of these tags",
                         "required": false,
                         "type": "array",
                         "items": {
@@ -2437,7 +2525,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/PageOfResource"
+                            "$ref": "#/definitions/PageOfDeploymentResource"
                         }
                     },
                     "401": {
@@ -2447,10 +2535,17 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
-        "/deployment/api/deployments/{depId}/resources/{resourceId}": {
+        "/deployment/api/deployments/{deploymentId}/resources/{resourceId}": {
             "get": {
                 "tags": [
                     "Deployments"
@@ -2467,12 +2562,30 @@
                         "type": "string"
                     },
                     {
-                        "name": "depId",
+                        "name": "deploymentId",
                         "in": "path",
                         "description": "Deployment ID",
                         "required": true,
                         "type": "string",
                         "format": "uuid"
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "description": "The expanded details of the requested comma separated objects. Ex. currentRequest",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "currentRequest"
+                            ]
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false,
+                        "enum": [
+                            "currentRequest"
+                        ]
                     },
                     {
                         "name": "resourceId",
@@ -2487,7 +2600,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/Resource"
+                            "$ref": "#/definitions/DeploymentResource"
                         }
                     },
                     "401": {
@@ -2497,6 +2610,13 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             },
             "delete": {
@@ -2515,7 +2635,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "depId",
+                        "name": "deploymentId",
                         "in": "path",
                         "description": "Deployment ID",
                         "required": true,
@@ -2548,10 +2668,17 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
-        "/deployment/api/deployments/{depId}/resources/{resourceId}/actions": {
+        "/deployment/api/deployments/{deploymentId}/resources/{resourceId}/actions": {
             "get": {
                 "tags": [
                     "Deployment Actions"
@@ -2568,7 +2695,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "depId",
+                        "name": "deploymentId",
                         "in": "path",
                         "description": "Deployment ID",
                         "required": true,
@@ -2601,10 +2728,17 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
-        "/deployment/api/deployments/{depId}/resources/{resourceId}/actions/{actionId}": {
+        "/deployment/api/deployments/{deploymentId}/resources/{resourceId}/actions/{actionId}": {
             "get": {
                 "tags": [
                     "Deployment Actions"
@@ -2628,7 +2762,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "depId",
+                        "name": "deploymentId",
                         "in": "path",
                         "description": "Deployment ID",
                         "required": true,
@@ -2658,10 +2792,17 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
-        "/deployment/api/deployments/{depId}/resources/{resourceId}/requests": {
+        "/deployment/api/deployments/{deploymentId}/resources/{resourceId}/requests": {
             "post": {
                 "tags": [
                     "Deployment Actions"
@@ -2690,7 +2831,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "depId",
+                        "name": "deploymentId",
                         "in": "path",
                         "description": "Deployment ID",
                         "required": true,
@@ -2723,6 +2864,13 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -2758,13 +2906,67 @@
                         }
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
         "/deployment/api/requests/{requestId}": {
+            "get": {
+                "tags": [
+                    "Requests"
+                ],
+                "summary": "Get the Request.",
+                "description": "Returns the request with the given ID.",
+                "operationId": "getRequestUsingGET",
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "requestId",
+                        "in": "path",
+                        "description": "Request ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Request"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            },
             "post": {
                 "tags": [
-                    "Deployment Actions"
+                    "Requests"
                 ],
                 "summary": "Submit action on requests. Allowable values: cancel, dismiss. ",
                 "description": "Cancel can be submitted on In-progress requests and Dismiss can be submitted on Failed requests.",
@@ -2815,6 +3017,185 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/deployment/api/requests/{requestId}/events": {
+            "get": {
+                "tags": [
+                    "Requests"
+                ],
+                "summary": "Fetch Request events.",
+                "description": "Returns all the events for a request.",
+                "operationId": "getRequestEventsUsingGET",
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "requestId",
+                        "in": "path",
+                        "description": "Request ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfEvent"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/deployment/api/requests/{requestId}/events/{eventId}/logs": {
+            "get": {
+                "tags": [
+                    "Requests"
+                ],
+                "summary": "Fetch Event logs.",
+                "description": "Returns the logs for an event.",
+                "operationId": "getEventLogsUsingGET",
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "eventId",
+                        "in": "path",
+                        "description": "Event ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "name": "requestId",
+                        "in": "path",
+                        "description": "Request ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "name": "sinceRow",
+                        "in": "query",
+                        "description": "A positive row number from which to show logs.",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/SliceOfEventLog"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/deployment/api/requests/{requestId}/events/{eventId}/logs/download": {
+            "get": {
+                "tags": [
+                    "Requests"
+                ],
+                "summary": "Fetch Event logs content as a file.",
+                "description": "Returns the log file for an event.",
+                "operationId": "getEventLogsContentUsingGET",
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "eventId",
+                        "in": "path",
+                        "description": "Event ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "name": "requestId",
+                        "in": "path",
+                        "description": "Request ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/StreamingResponseBody"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -2923,6 +3304,13 @@
                         "description": "Unauthorized"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -2964,6 +3352,689 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/deployment/api/resources": {
+            "get": {
+                "tags": [
+                    "Resources"
+                ],
+                "summary": "Fetch all resources.",
+                "description": "Returns a paginated list of resources.",
+                "operationId": "getResourcesUsingGET",
+                "parameters": [
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "$skip",
+                        "in": "query",
+                        "description": "Number of records you want to skip",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "description": "Number of records you want",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "cloudAccounts",
+                        "in": "query",
+                        "description": "A comma-separated list. Results must be associated with one of these cloud accounts.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "cloudTypes",
+                        "in": "query",
+                        "description": "A comma-separated list. Results must be associated with one of these cloud Types",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "description": "The expanded details of the requested comma separated objects. Ex. project, deployment, currentRequest",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "project",
+                                "deployment",
+                                "currentRequest"
+                            ]
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false,
+                        "enum": [
+                            "project",
+                            "deployment",
+                            "currentRequest"
+                        ]
+                    },
+                    {
+                        "name": "projects",
+                        "in": "query",
+                        "description": "A comma-separated list. Results must be associated with one of these project IDs.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "resourceTypes",
+                        "in": "query",
+                        "description": "A comma-separated list. Results must be associated with one of these resourceType Names.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Given string should be part of a searchable field in one of the resources.",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "tags",
+                        "in": "query",
+                        "description": "A comma-separated list. Results must be associated with one of these tags",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfResource"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/deployment/api/resources/filters": {
+            "get": {
+                "tags": [
+                    "Resources"
+                ],
+                "summary": "Returns the Resource filters in context of given user.",
+                "operationId": "getResourceFiltersUsingGET",
+                "parameters": [
+                    {
+                        "name": "ISO3Country",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "ISO3Language",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "country",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "displayCountry",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "displayLanguage",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "displayName",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "displayScript",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "displayVariant",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "language",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "script",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "unicodeLocaleAttributes",
+                        "in": "query",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "unicodeLocaleKeys",
+                        "in": "query",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "variant",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/FilterSchema"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/deployment/api/resources/filters/{filterId}": {
+            "get": {
+                "tags": [
+                    "Resources"
+                ],
+                "summary": "Returns the Resource filter with the supplied ID.",
+                "operationId": "getResourceFilterByIdUsingGET",
+                "parameters": [
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "$skip",
+                        "in": "query",
+                        "description": "Number of records you want to skip",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "description": "Number of records you want",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "filterId",
+                        "in": "path",
+                        "description": "Filter Id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Search string for filters",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfFilterEntry"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/deployment/api/resources/{resourceId}": {
+            "get": {
+                "tags": [
+                    "Resources"
+                ],
+                "summary": "Fetch a specific resource.",
+                "description": "Returns the resource with the supplied ID.",
+                "operationId": "getResourceByIdUsingGET_1",
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "description": "The expanded details of the requested comma separated objects. Ex. project, deployment, currentRequest",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "project",
+                                "deployment",
+                                "currentRequest"
+                            ]
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false,
+                        "enum": [
+                            "project",
+                            "deployment",
+                            "currentRequest"
+                        ]
+                    },
+                    {
+                        "name": "resourceId",
+                        "in": "path",
+                        "description": "Resource ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Resource"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/deployment/api/resources/{resourceId}/actions": {
+            "get": {
+                "tags": [
+                    "Resource Actions"
+                ],
+                "summary": "Fetch available resource actions.",
+                "description": "Returns the complete list of available actions that can be performed on a given resource.",
+                "operationId": "getResourceActionsUsingGET_1",
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "resourceId",
+                        "in": "path",
+                        "description": "Resource ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ResourceAction"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/deployment/api/resources/{resourceId}/actions/{actionId}": {
+            "get": {
+                "tags": [
+                    "Resource Actions"
+                ],
+                "summary": "Fetch resource action.",
+                "description": "Returns an action for the resource specified by its Resource ID and Action ID.",
+                "operationId": "getResourceActionUsingGET_1",
+                "parameters": [
+                    {
+                        "name": "actionId",
+                        "in": "path",
+                        "description": "Action ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "resourceId",
+                        "in": "path",
+                        "description": "Resource ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ResourceAction"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/deployment/api/resources/{resourceId}/requests": {
+            "get": {
+                "tags": [
+                    "Requests"
+                ],
+                "summary": "Get all requests for a resource",
+                "operationId": "listResourceRequestsUsingGET",
+                "parameters": [
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "$skip",
+                        "in": "query",
+                        "description": "Number of records you want to skip",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "description": "Number of records you want",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "resourceId",
+                        "in": "path",
+                        "description": "Resource ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfRequest"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            },
+            "post": {
+                "tags": [
+                    "Resource Actions"
+                ],
+                "summary": "Resource action request.",
+                "description": "Submit a resource action request.",
+                "operationId": "submitResourceActionRequestUsingPOST_1",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "actionRequest",
+                        "description": "actionRequest",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ResourceActionRequest"
+                        }
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "resourceId",
+                        "in": "path",
+                        "description": "Resource ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Request"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -3005,6 +4076,13 @@
                         "description": "Forbidden."
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -3048,6 +4126,13 @@
                         "description": "Icon not found."
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             },
             "delete": {
@@ -3082,6 +4167,13 @@
                         "description": "Forbidden."
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -3162,15 +4254,22 @@
                         }
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             },
             "post": {
                 "tags": [
                     "Policies"
                 ],
-                "summary": "Creates a new policy or updates an existing policy.",
-                "description": "Create a new policy or update an existing policy based on request body and validate its fields according to business rules.",
-                "operationId": "createPolicyUsingPOST_1",
+                "summary": "Trigger a policy dry-run.",
+                "description": "Dry-run an existing policy to rehearse actual policy effect on application.",
+                "operationId": "dryRunPolicyUsingPOST",
                 "consumes": [
                     "application/json"
                 ],
@@ -3183,31 +4282,33 @@
                         "type": "string"
                     },
                     {
+                        "name": "dryRun",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
                         "in": "body",
                         "name": "policy",
-                        "description": "The policy to be created or updated",
+                        "description": "The policy to be created",
                         "required": false,
                         "schema": {
                             "$ref": "#/definitions/Policy"
                         }
-                    },
-                    {
-                        "name": "validationOnly",
-                        "in": "query",
-                        "description": "For a dry run that will do policy validation only instead of creating or updating a policy",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": false
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/Policy"
-                        }
+                        "description": "OK"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -3251,6 +4352,13 @@
                         }
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             },
             "delete": {
@@ -3282,6 +4390,13 @@
                         "description": "No Content"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -3371,6 +4486,13 @@
                         }
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -3407,6 +4529,13 @@
                         }
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -3472,6 +4601,13 @@
                         }
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -3507,6 +4643,102 @@
                         }
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/policy/api/policyTypes/{id}/scopeSchema": {
+            "get": {
+                "tags": [
+                    "Policy Types"
+                ],
+                "summary": "Returns the policy scope schema for the type with the specified ID.",
+                "description": "Return the policy scope schema for the given policy type.",
+                "operationId": "getPolicyTypeScopeSchemaUsingGET",
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Policy type ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/price/api/cloudhealth/perspective-sync": {
+            "post": {
+                "tags": [
+                    "Perspective Sync"
+                ],
+                "summary": "On demand Perspective Sync",
+                "description": "To do on demand perspective sync for within the given org",
+                "operationId": "syncPerspectiveGroupUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseEntity"
+                        }
+                    },
+                    "202": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseEntity"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -3576,6 +4808,13 @@
                         "description": "Unauthorized"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             },
             "post": {
@@ -3626,6 +4865,13 @@
                         "description": "Forbidden"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -3660,6 +4906,13 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             },
             "post": {
@@ -3710,6 +4963,13 @@
                         "description": "Forbidden"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             },
             "patch": {
@@ -3750,6 +5010,13 @@
                         "description": "Unauthorized"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -3792,6 +5059,13 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             },
             "delete": {
@@ -3829,6 +5103,13 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             },
             "patch": {
@@ -3877,6 +5158,13 @@
                         "description": "Unauthorized"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -3961,6 +5249,13 @@
                         "description": "Unauthorized"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             },
             "post": {
@@ -4008,6 +5303,13 @@
                         "description": "Unauthorized"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
         },
@@ -4050,6 +5352,13 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             },
             "put": {
@@ -4102,6 +5411,13 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             },
             "delete": {
@@ -4142,8 +5458,22 @@
                         "description": "Not Found"
                     }
                 },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
                 "deprecated": false
             }
+        }
+    },
+    "securityDefinitions": {
+        "APIKeyHeader": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
         }
     },
     "definitions": {
@@ -4785,12 +6115,12 @@
                     "type": "array",
                     "description": "Expanded resources for the deployment. Content of this property will not be maintained backward compatible",
                     "items": {
-                        "$ref": "#/definitions/Resource"
+                        "$ref": "#/definitions/DeploymentResource"
                     }
                 },
                 "status": {
                     "type": "string",
-                    "description": "Deployment status.",
+                    "description": "Represents the status of deployment with respect to its life cycle operations - create/update/delete.",
                     "enum": [
                         "CREATE_SUCCESSFUL",
                         "CREATE_INPROGRESS",
@@ -4800,10 +6130,7 @@
                         "UPDATE_FAILED",
                         "DELETE_SUCCESSFUL",
                         "DELETE_INPROGRESS",
-                        "DELETE_FAILED",
-                        "ACTION_SUCCESSFUL",
-                        "ACTION_INPROGRESS",
-                        "ACTION_FAILED"
+                        "DELETE_FAILED"
                     ]
                 }
             },
@@ -4839,6 +6166,110 @@
             },
             "title": "DeploymentExpenseHistory",
             "description": "Expense history of a deployment."
+        },
+        "DeploymentReference": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "iconId": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "leaseExpireAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "ownedBy": {
+                    "type": "string"
+                }
+            },
+            "title": "DeploymentReference"
+        },
+        "DeploymentResource": {
+            "type": "object",
+            "required": [
+                "name",
+                "type"
+            ],
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Creation time"
+                },
+                "currentRequest": {
+                    "description": "Current request",
+                    "$ref": "#/definitions/Request"
+                },
+                "dependsOn": {
+                    "type": "array",
+                    "description": "A list of other resources this resource depends on",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A description of the resource"
+                },
+                "expense": {
+                    "description": "Expense associated with the deployment.",
+                    "readOnly": true,
+                    "$ref": "#/definitions/Expense"
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Unique identifier of the resource"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the resource"
+                },
+                "origin": {
+                    "type": "string",
+                    "description": "Origin of the resource",
+                    "enum": [
+                        "ONBOARDED",
+                        "MIGRATED"
+                    ]
+                },
+                "properties": {
+                    "type": "object"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "The current state of the resource",
+                    "enum": [
+                        "PARTIAL",
+                        "TAINTED",
+                        "OK"
+                    ]
+                },
+                "syncStatus": {
+                    "type": "string",
+                    "description": "The current sync status",
+                    "enum": [
+                        "SUCCESS",
+                        "MISSING",
+                        "STALE"
+                    ]
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of the resource"
+                }
+            },
+            "title": "DeploymentResource",
+            "description": "A resource part of a deployment."
         },
         "DeploymentUpdate": {
             "type": "object",
@@ -5058,7 +6489,8 @@
                     "type": "string",
                     "enum": [
                         "MULTISELECT",
-                        "DATE_RANGE"
+                        "DATE_RANGE",
+                        "BOOLEAN"
                     ]
                 }
             },
@@ -5621,6 +7053,50 @@
             },
             "title": "PageOfDeployment"
         },
+        "PageOfDeploymentResource": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DeploymentResource"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfDeploymentResource"
+        },
         "PageOfEvent": {
             "type": "object",
             "properties": {
@@ -6063,19 +7539,26 @@
         },
         "Policy": {
             "type": "object",
+            "required": [
+                "typeId"
+            ],
             "properties": {
                 "createdAt": {
                     "type": "string",
-                    "format": "date-time"
+                    "format": "date-time",
+                    "description": "Policy creation timestamp."
                 },
                 "createdBy": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Policy author."
                 },
                 "criteria": {
+                    "description": "Policy-type-specific target object filter criteria applied during enforcement.",
                     "$ref": "#/definitions/Criteria"
                 },
                 "definition": {
-                    "type": "object"
+                    "type": "object",
+                    "description": "Policy-type-specific settings such as lease limits for lease policies."
                 },
                 "definitionLegend": {
                     "type": "object",
@@ -6084,11 +7567,12 @@
                     }
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The policy description."
                 },
                 "enforcementType": {
                     "type": "string",
-                    "description": "Defines enforcement type for policy. Default is HARD",
+                    "description": "Defines enforcement type for policy. Default enforcement type is HARD.",
                     "enum": [
                         "SOFT",
                         "HARD"
@@ -6096,29 +7580,40 @@
                 },
                 "id": {
                     "type": "string",
-                    "format": "uuid"
+                    "format": "uuid",
+                    "description": "The policy ID."
                 },
                 "lastUpdatedAt": {
                     "type": "string",
-                    "format": "date-time"
+                    "format": "date-time",
+                    "description": "Most recent policy update timestamp."
                 },
                 "lastUpdatedBy": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Most recent policy editor."
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The policy name."
                 },
                 "orgId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The ID of the organization to which the policy belongs."
                 },
                 "projectId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "For project-scoped policies, the ID of the project to which the policy belongs."
+                },
+                "scopeCriteria": {
+                    "description": "Project-based scope criteria to apply policy to multiple projects in the organization. Not allowed for project-scoped policies.",
+                    "$ref": "#/definitions/Criteria"
                 },
                 "statistics": {
                     "$ref": "#/definitions/PolicyStats"
                 },
                 "typeId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The policy type ID."
                 }
             },
             "title": "Policy",
@@ -6332,10 +7827,6 @@
                     "type": "string",
                     "description": "Identifier of the requested blueprint in the form 'UUID:version'"
                 },
-                "cancelCallbackUri": {
-                    "type": "string",
-                    "description": "URL to be called for cancelling execution of the request."
-                },
                 "cancelable": {
                     "type": "boolean",
                     "description": "Indicates whether request can be canceled or not."
@@ -6358,6 +7849,11 @@
                     "type": "string",
                     "format": "date-time",
                     "description": "Creation time (e.g. date format '2019-07-13T23:16:49.310Z')."
+                },
+                "deploymentId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Identifier of the requested deployment id to which the request applies to"
                 },
                 "details": {
                     "type": "string",
@@ -6393,9 +7889,13 @@
                     "type": "string",
                     "description": "User that initiated the request"
                 },
-                "resourceName": {
-                    "type": "string",
-                    "description": "Optional resource name to which the request applies to"
+                "resourceIds": {
+                    "type": "array",
+                    "description": "Optional resource ids to which the request applies to",
+                    "items": {
+                        "type": "string",
+                        "format": "uuid"
+                    }
                 },
                 "status": {
                     "type": "string",
@@ -6440,12 +7940,17 @@
                     "format": "date-time",
                     "description": "Creation time"
                 },
-                "dependsOn": {
-                    "type": "array",
-                    "description": "A list of other resources this resource depends on",
-                    "items": {
-                        "type": "string"
-                    }
+                "currentRequest": {
+                    "description": "Current ongoing request on the resource",
+                    "$ref": "#/definitions/Request"
+                },
+                "deployment": {
+                    "description": "Deployment to which resource belongs",
+                    "$ref": "#/definitions/DeploymentReference"
+                },
+                "deploymentId": {
+                    "type": "string",
+                    "description": "Resource deployment id"
                 },
                 "description": {
                     "type": "string",
@@ -6465,17 +7970,28 @@
                     "type": "string",
                     "description": "Name of the resource"
                 },
+                "orgId": {
+                    "type": "string",
+                    "description": "Resource org id"
+                },
+                "origin": {
+                    "type": "string",
+                    "description": "Origin of the resource",
+                    "enum": [
+                        "ONBOARDED",
+                        "MIGRATED"
+                    ]
+                },
+                "project": {
+                    "description": "Project to which resource's deployment belongs",
+                    "$ref": "#/definitions/ResourceReference"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Resource project id"
+                },
                 "properties": {
                     "type": "object"
-                },
-                "state": {
-                    "type": "string",
-                    "description": "The current state of the resource",
-                    "enum": [
-                        "PARTIAL",
-                        "TAINTED",
-                        "OK"
-                    ]
                 },
                 "syncStatus": {
                     "type": "string",
@@ -6492,7 +8008,7 @@
                 }
             },
             "title": "Resource",
-            "description": "A resource part of a deployment."
+            "description": "A resource"
         },
         "ResourceAction": {
             "type": "object",
@@ -6668,6 +8184,92 @@
             },
             "title": "ResourceType"
         },
+        "ResponseEntity": {
+            "type": "object",
+            "properties": {
+                "body": {
+                    "type": "object"
+                },
+                "statusCode": {
+                    "type": "string",
+                    "enum": [
+                        "100 CONTINUE",
+                        "101 SWITCHING_PROTOCOLS",
+                        "102 PROCESSING",
+                        "103 CHECKPOINT",
+                        "200 OK",
+                        "201 CREATED",
+                        "202 ACCEPTED",
+                        "203 NON_AUTHORITATIVE_INFORMATION",
+                        "204 NO_CONTENT",
+                        "205 RESET_CONTENT",
+                        "206 PARTIAL_CONTENT",
+                        "207 MULTI_STATUS",
+                        "208 ALREADY_REPORTED",
+                        "226 IM_USED",
+                        "300 MULTIPLE_CHOICES",
+                        "301 MOVED_PERMANENTLY",
+                        "302 FOUND",
+                        "302 MOVED_TEMPORARILY",
+                        "303 SEE_OTHER",
+                        "304 NOT_MODIFIED",
+                        "305 USE_PROXY",
+                        "307 TEMPORARY_REDIRECT",
+                        "308 PERMANENT_REDIRECT",
+                        "400 BAD_REQUEST",
+                        "401 UNAUTHORIZED",
+                        "402 PAYMENT_REQUIRED",
+                        "403 FORBIDDEN",
+                        "404 NOT_FOUND",
+                        "405 METHOD_NOT_ALLOWED",
+                        "406 NOT_ACCEPTABLE",
+                        "407 PROXY_AUTHENTICATION_REQUIRED",
+                        "408 REQUEST_TIMEOUT",
+                        "409 CONFLICT",
+                        "410 GONE",
+                        "411 LENGTH_REQUIRED",
+                        "412 PRECONDITION_FAILED",
+                        "413 PAYLOAD_TOO_LARGE",
+                        "413 REQUEST_ENTITY_TOO_LARGE",
+                        "414 URI_TOO_LONG",
+                        "414 REQUEST_URI_TOO_LONG",
+                        "415 UNSUPPORTED_MEDIA_TYPE",
+                        "416 REQUESTED_RANGE_NOT_SATISFIABLE",
+                        "417 EXPECTATION_FAILED",
+                        "418 I_AM_A_TEAPOT",
+                        "419 INSUFFICIENT_SPACE_ON_RESOURCE",
+                        "420 METHOD_FAILURE",
+                        "421 DESTINATION_LOCKED",
+                        "422 UNPROCESSABLE_ENTITY",
+                        "423 LOCKED",
+                        "424 FAILED_DEPENDENCY",
+                        "425 TOO_EARLY",
+                        "426 UPGRADE_REQUIRED",
+                        "428 PRECONDITION_REQUIRED",
+                        "429 TOO_MANY_REQUESTS",
+                        "431 REQUEST_HEADER_FIELDS_TOO_LARGE",
+                        "451 UNAVAILABLE_FOR_LEGAL_REASONS",
+                        "500 INTERNAL_SERVER_ERROR",
+                        "501 NOT_IMPLEMENTED",
+                        "502 BAD_GATEWAY",
+                        "503 SERVICE_UNAVAILABLE",
+                        "504 GATEWAY_TIMEOUT",
+                        "505 HTTP_VERSION_NOT_SUPPORTED",
+                        "506 VARIANT_ALSO_NEGOTIATES",
+                        "507 INSUFFICIENT_STORAGE",
+                        "508 LOOP_DETECTED",
+                        "509 BANDWIDTH_LIMIT_EXCEEDED",
+                        "510 NOT_EXTENDED",
+                        "511 NETWORK_AUTHENTICATION_REQUIRED"
+                    ]
+                },
+                "statusCodeValue": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "ResponseEntity"
+        },
         "SliceOfEventLog": {
             "type": "object",
             "properties": {
@@ -6718,6 +8320,10 @@
                 }
             },
             "title": "Sort"
+        },
+        "StreamingResponseBody": {
+            "type": "object",
+            "title": "StreamingResponseBody"
         },
         "TagBasedMetering": {
             "type": "object",

@@ -65,13 +65,13 @@ type GetDeploymentExpenseHistoryByIDUsingGETParams struct {
 	*/
 	APIVersion *string
 
-	/* DepID.
+	/* DeploymentID.
 
 	   Deployment ID
 
 	   Format: uuid
 	*/
-	DepID strfmt.UUID
+	DeploymentID strfmt.UUID
 
 	/* From.
 
@@ -159,15 +159,15 @@ func (o *GetDeploymentExpenseHistoryByIDUsingGETParams) SetAPIVersion(aPIVersion
 	o.APIVersion = aPIVersion
 }
 
-// WithDepID adds the depID to the get deployment expense history by Id using get params
-func (o *GetDeploymentExpenseHistoryByIDUsingGETParams) WithDepID(depID strfmt.UUID) *GetDeploymentExpenseHistoryByIDUsingGETParams {
-	o.SetDepID(depID)
+// WithDeploymentID adds the deploymentID to the get deployment expense history by Id using get params
+func (o *GetDeploymentExpenseHistoryByIDUsingGETParams) WithDeploymentID(deploymentID strfmt.UUID) *GetDeploymentExpenseHistoryByIDUsingGETParams {
+	o.SetDeploymentID(deploymentID)
 	return o
 }
 
-// SetDepID adds the depId to the get deployment expense history by Id using get params
-func (o *GetDeploymentExpenseHistoryByIDUsingGETParams) SetDepID(depID strfmt.UUID) {
-	o.DepID = depID
+// SetDeploymentID adds the deploymentId to the get deployment expense history by Id using get params
+func (o *GetDeploymentExpenseHistoryByIDUsingGETParams) SetDeploymentID(deploymentID strfmt.UUID) {
+	o.DeploymentID = deploymentID
 }
 
 // WithFrom adds the from to the get deployment expense history by Id using get params
@@ -228,8 +228,8 @@ func (o *GetDeploymentExpenseHistoryByIDUsingGETParams) WriteToRequest(r runtime
 		}
 	}
 
-	// path param depId
-	if err := r.SetPathParam("depId", o.DepID.String()); err != nil {
+	// path param deploymentId
+	if err := r.SetPathParam("deploymentId", o.DeploymentID.String()); err != nil {
 		return err
 	}
 
