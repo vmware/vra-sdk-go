@@ -102,6 +102,12 @@ type ListBlueprintVersionsUsingGETParams struct {
 	*/
 	BlueprintID strfmt.UUID
 
+	/* PropertyGroups.
+
+	   Filter versions with any of the specified property groups
+	*/
+	PropertyGroups []string
+
 	/* Status.
 
 	   Filter by blueprint status: versioned / released
@@ -233,6 +239,17 @@ func (o *ListBlueprintVersionsUsingGETParams) SetBlueprintID(blueprintID strfmt.
 	o.BlueprintID = blueprintID
 }
 
+// WithPropertyGroups adds the propertyGroups to the list blueprint versions using get params
+func (o *ListBlueprintVersionsUsingGETParams) WithPropertyGroups(propertyGroups []string) *ListBlueprintVersionsUsingGETParams {
+	o.SetPropertyGroups(propertyGroups)
+	return o
+}
+
+// SetPropertyGroups adds the propertyGroups to the list blueprint versions using get params
+func (o *ListBlueprintVersionsUsingGETParams) SetPropertyGroups(propertyGroups []string) {
+	o.PropertyGroups = propertyGroups
+}
+
 // WithStatus adds the status to the list blueprint versions using get params
 func (o *ListBlueprintVersionsUsingGETParams) WithStatus(status *string) *ListBlueprintVersionsUsingGETParams {
 	o.SetStatus(status)
@@ -341,6 +358,17 @@ func (o *ListBlueprintVersionsUsingGETParams) WriteToRequest(r runtime.ClientReq
 		return err
 	}
 
+	if o.PropertyGroups != nil {
+
+		// binding items for propertyGroups
+		joinedPropertyGroups := o.bindParamPropertyGroups(reg)
+
+		// query array param propertyGroups
+		if err := r.SetQueryParam("propertyGroups", joinedPropertyGroups...); err != nil {
+			return err
+		}
+	}
+
 	if o.Status != nil {
 
 		// query param status
@@ -413,4 +441,21 @@ func (o *ListBlueprintVersionsUsingGETParams) bindParamDollarSelect(formats strf
 	dollarSelectIS := swag.JoinByFormat(dollarSelectIC, "multi")
 
 	return dollarSelectIS
+}
+
+// bindParamListBlueprintVersionsUsingGET binds the parameter propertyGroups
+func (o *ListBlueprintVersionsUsingGETParams) bindParamPropertyGroups(formats strfmt.Registry) []string {
+	propertyGroupsIR := o.PropertyGroups
+
+	var propertyGroupsIC []string
+	for _, propertyGroupsIIR := range propertyGroupsIR { // explode []string
+
+		propertyGroupsIIV := propertyGroupsIIR // string as string
+		propertyGroupsIC = append(propertyGroupsIC, propertyGroupsIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	propertyGroupsIS := swag.JoinByFormat(propertyGroupsIC, "multi")
+
+	return propertyGroupsIS
 }

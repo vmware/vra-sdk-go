@@ -23,6 +23,9 @@ type BlueprintValidationRequest struct {
 	// Format: uuid
 	BlueprintID strfmt.UUID `json:"blueprintId,omitempty"`
 
+	// Blueprint Version
+	BlueprintVersion string `json:"blueprintVersion,omitempty"`
+
 	// Blueprint YAML content
 	Content string `json:"content,omitempty"`
 

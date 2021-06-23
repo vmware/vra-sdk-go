@@ -29,6 +29,10 @@
             "description": "Blueprint validation API"
         },
         {
+            "name": "Property Groups",
+            "description": "Property groups API"
+        },
+        {
             "name": "Resource Types",
             "description": "Resource types API"
         }
@@ -1024,6 +1028,18 @@
                         "allowEmptyValue": false
                     },
                     {
+                        "name": "propertyGroups",
+                        "in": "query",
+                        "description": "Filter blueprints with any of the specified property groups",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
+                    },
+                    {
                         "name": "released",
                         "in": "query",
                         "description": "Filter blueprints with at least one released version",
@@ -1369,6 +1385,18 @@
                         "required": true,
                         "type": "string",
                         "format": "uuid"
+                    },
+                    {
+                        "name": "propertyGroups",
+                        "in": "query",
+                        "description": "Filter versions with any of the specified property groups",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
                     },
                     {
                         "name": "status",
@@ -1879,6 +1907,324 @@
                 },
                 "deprecated": false
             }
+        },
+        "/properties/api/property-groups": {
+            "get": {
+                "tags": [
+                    "Property Groups"
+                ],
+                "summary": "Lists Property Groups",
+                "operationId": "listPropertyGroupsUsingGET",
+                "parameters": [
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is descending on updatedAt. Sorting is supported on fields createdAt, updatedAt, createdBy, updatedBy, name, type.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "$select",
+                        "in": "query",
+                        "description": "Fields to include . Use * to get all fields.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "$skip",
+                        "in": "query",
+                        "description": "Number of records you want to skip",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "description": "Number of records you want",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Filter by name",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "projects",
+                        "in": "query",
+                        "description": "A comma-separated list. Results must be associated with one of these project IDs.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Search by name and description",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "Filter by type",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false,
+                        "enum": [
+                            "INPUT",
+                            "CONSTANT"
+                        ]
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfPropertyGroup"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "deprecated": false
+            },
+            "post": {
+                "tags": [
+                    "Property Groups"
+                ],
+                "summary": "Creates a property group",
+                "operationId": "createPropertyGroupUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "propertyGroup",
+                        "description": "propertyGroup",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PropertyGroup"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/PropertyGroup"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/properties/api/property-groups/{propertyGroupId}": {
+            "get": {
+                "tags": [
+                    "Property Groups"
+                ],
+                "summary": "Returns property group details",
+                "operationId": "getPropertyGroupUsingGET",
+                "parameters": [
+                    {
+                        "name": "$select",
+                        "in": "query",
+                        "description": "Fields to include in content. Use * to get all fields.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "propertyGroupId",
+                        "in": "path",
+                        "description": "propertyGroupId",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PropertyGroup"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            },
+            "put": {
+                "tags": [
+                    "Property Groups"
+                ],
+                "summary": "Updates a property group",
+                "operationId": "updatePropertyGroupUsingPUT",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "propertyGroup",
+                        "description": "propertyGroup",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PropertyGroup"
+                        }
+                    },
+                    {
+                        "name": "propertyGroupId",
+                        "in": "path",
+                        "description": "propertyGroupId",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PropertyGroup"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            },
+            "delete": {
+                "tags": [
+                    "Property Groups"
+                ],
+                "summary": "Deletes a property group",
+                "operationId": "deletePropertyGroupUsingDELETE",
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /blueprint/api/about",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "propertyGroupId",
+                        "in": "path",
+                        "description": "propertyGroupId",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
         }
     },
     "definitions": {
@@ -2041,47 +2387,6 @@
                 }
             },
             "title": "BlueprintAbout"
-        },
-        "BlueprintExecution": {
-            "type": "object",
-            "properties": {
-                "failureMessage": {
-                    "type": "string",
-                    "description": "Blueprint execution failure message",
-                    "readOnly": true
-                },
-                "inputProperties": {
-                    "type": "object",
-                    "description": "Blueprint execution input properties",
-                    "readOnly": true
-                },
-                "outputProperties": {
-                    "type": "object",
-                    "description": "Blueprint execution output properties",
-                    "readOnly": true
-                },
-                "status": {
-                    "type": "string",
-                    "description": "Blueprint execution status",
-                    "readOnly": true,
-                    "enum": [
-                        "CREATED",
-                        "STARTED",
-                        "FINISHED",
-                        "FAILED",
-                        "CANCELLED"
-                    ]
-                },
-                "tasks": {
-                    "type": "array",
-                    "description": "Blueprint execution tasks",
-                    "readOnly": true,
-                    "items": {
-                        "$ref": "#/definitions/BlueprintTaskExecution"
-                    }
-                }
-            },
-            "title": "BlueprintExecution"
         },
         "BlueprintPlan": {
             "type": "object",
@@ -2334,6 +2639,14 @@
                         "CANCELLED"
                     ]
                 },
+                "targetResources": {
+                    "type": "array",
+                    "description": "Target resources",
+                    "readOnly": true,
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "updatedAt": {
                     "type": "string",
                     "format": "date-time",
@@ -2369,62 +2682,6 @@
                 }
             },
             "title": "BlueprintResourcesPlan"
-        },
-        "BlueprintTaskExecution": {
-            "type": "object",
-            "properties": {
-                "dependsOnTasks": {
-                    "type": "array",
-                    "description": "Tasks depends on other tasks",
-                    "readOnly": true,
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "failureMessage": {
-                    "type": "string",
-                    "description": "Task failure message",
-                    "readOnly": true
-                },
-                "inputProperties": {
-                    "type": "object",
-                    "description": "Task input properties",
-                    "readOnly": true
-                },
-                "outputProperties": {
-                    "type": "object",
-                    "description": "Task output properties",
-                    "readOnly": true
-                },
-                "resourceName": {
-                    "type": "string",
-                    "description": "Resource name",
-                    "readOnly": true
-                },
-                "resourceType": {
-                    "type": "string",
-                    "description": "Resource type",
-                    "readOnly": true
-                },
-                "status": {
-                    "type": "string",
-                    "description": "Task status",
-                    "readOnly": true,
-                    "enum": [
-                        "CREATED",
-                        "STARTED",
-                        "FINISHED",
-                        "FAILED",
-                        "CANCELLED"
-                    ]
-                },
-                "taskName": {
-                    "type": "string",
-                    "description": "Task name",
-                    "readOnly": true
-                }
-            },
-            "title": "BlueprintTaskExecution"
         },
         "BlueprintValidationMessage": {
             "type": "object",
@@ -2472,6 +2729,10 @@
                     "type": "string",
                     "format": "uuid",
                     "description": "Blueprint Id"
+                },
+                "blueprintVersion": {
+                    "type": "string",
+                    "description": "Blueprint Version"
                 },
                 "content": {
                     "type": "string",
@@ -2979,6 +3240,50 @@
             },
             "title": "PageOfContentSource"
         },
+        "PageOfPropertyGroup": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PropertyGroup"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfPropertyGroup"
+        },
         "PageOfResourceType": {
             "type": "object",
             "properties": {
@@ -3067,10 +3372,118 @@
             },
             "title": "PageOfTerraformVersion"
         },
+        "Property": {
+            "type": "object",
+            "properties": {
+                "$data": {
+                    "type": "string",
+                    "description": "Path that can be used to retrieve permissible values"
+                },
+                "$dynamicDefault": {
+                    "type": "string",
+                    "description": "Path that can be used to retrieve single permissible default value"
+                },
+                "const": {
+                    "type": "object",
+                    "description": "Constant value for the property"
+                },
+                "default": {
+                    "type": "object",
+                    "description": "Default value for the property"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Property description"
+                },
+                "encrypted": {
+                    "type": "boolean",
+                    "description": "Flag indicating if property is encrypted"
+                },
+                "enum": {
+                    "type": "array",
+                    "description": "Restrict a value to a fixed set of values for the property",
+                    "items": {
+                        "type": "object"
+                    }
+                },
+                "format": {
+                    "type": "string",
+                    "description": "The expected (and pre-defined) format to be used for string validations. Supported format values include: date-time, email, ip-address, alphanumeric, phone, etc."
+                },
+                "items": {
+                    "description": "Property items defines a schema for the contents of an array",
+                    "$ref": "#/definitions/Property"
+                },
+                "maxItems": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "Maximum number of items for the property"
+                },
+                "maxLength": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "String instance is validated against this keyword for its maximum length"
+                },
+                "maximum": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "Maximum value for the property"
+                },
+                "minItems": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "Minimum number of items for the property"
+                },
+                "minLength": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "String instance is validated against this keyword for its minimum length"
+                },
+                "minimum": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "Minimum value for the property"
+                },
+                "oneOf": {
+                    "type": "array",
+                    "description": "Ensures the given data is valid against only one of the specified schemas",
+                    "items": {
+                        "$ref": "#/definitions/Property"
+                    }
+                },
+                "pattern": {
+                    "type": "string",
+                    "description": "Regular expression to express constraint for the property"
+                },
+                "properties": {
+                    "type": "object",
+                    "description": "Properties within the property",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/Property"
+                    }
+                },
+                "readOnly": {
+                    "type": "boolean",
+                    "description": "Flag indicating if property is read only"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "Property title"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Property type should be among valid types (number, integer, string, array, boolean, object) "
+                }
+            },
+            "title": "Property"
+        },
         "PropertyDefinition": {
             "type": "object",
             "properties": {
                 "$data": {
+                    "type": "string"
+                },
+                "$dynamicDefault": {
                     "type": "string"
                 },
                 "$ref": {
@@ -3080,6 +3493,12 @@
                     "type": "boolean"
                 },
                 "allOf": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PropertyDefinition"
+                    }
+                },
+                "anyOf": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/PropertyDefinition"
@@ -3135,6 +3554,10 @@
                     "type": "integer",
                     "format": "int32"
                 },
+                "maxProperties": {
+                    "type": "integer",
+                    "format": "int32"
+                },
                 "maximum": {
                     "type": "integer",
                     "format": "int64"
@@ -3144,6 +3567,10 @@
                     "format": "int64"
                 },
                 "minLength": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "minProperties": {
                     "type": "integer",
                     "format": "int32"
                 },
@@ -3195,6 +3622,80 @@
                 }
             },
             "title": "PropertyDefinition"
+        },
+        "PropertyGroup": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Created time",
+                    "readOnly": true
+                },
+                "createdBy": {
+                    "type": "string",
+                    "description": "Created by",
+                    "readOnly": true
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Property group description"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Property group display name"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Object ID",
+                    "readOnly": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Property group name"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Org ID",
+                    "readOnly": true
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Project ID"
+                },
+                "projectName": {
+                    "type": "string",
+                    "description": "Project Name",
+                    "readOnly": true
+                },
+                "properties": {
+                    "type": "object",
+                    "description": "Properties",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/Property"
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Property group type",
+                    "enum": [
+                        "INPUT",
+                        "CONSTANT"
+                    ]
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Updated time",
+                    "readOnly": true
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "Updated by",
+                    "readOnly": true
+                }
+            },
+            "title": "PropertyGroup"
         },
         "Provider": {
             "type": "object",

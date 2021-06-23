@@ -112,6 +112,10 @@ type BlueprintRequest struct {
 	// Enum: [CREATED STARTED FINISHED FAILED CANCELLED]
 	Status string `json:"status,omitempty"`
 
+	// Target resources
+	// Read Only: true
+	TargetResources []string `json:"targetResources"`
+
 	// Updated time
 	// Read Only: true
 	// Format: date-time
@@ -335,6 +339,10 @@ func (m *BlueprintRequest) ContextValidate(ctx context.Context, formats strfmt.R
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateTargetResources(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateUpdatedAt(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -455,6 +463,15 @@ func (m *BlueprintRequest) contextValidateRequestTrackerID(ctx context.Context, 
 func (m *BlueprintRequest) contextValidateStatus(ctx context.Context, formats strfmt.Registry) error {
 
 	if err := validate.ReadOnly(ctx, "status", "body", string(m.Status)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *BlueprintRequest) contextValidateTargetResources(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := validate.ReadOnly(ctx, "targetResources", "body", []string(m.TargetResources)); err != nil {
 		return err
 	}
 
