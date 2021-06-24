@@ -37,9 +37,13 @@ type UpdateCloudAccountVsphereSpecification struct {
 	// Example: LVJbZNAkPCJs
 	Password string `json:"password,omitempty"`
 
-	// A set of Region names to enable provisioning on.
-	// Example: [\"Datacenter:datacenter-2\"]
+	// A set of datacenter managed object reference identifiers (MoRef) to enable provisioning on. Refer to /iaas/cloud-accounts-vsphere/region-enumeration. Deprecated - use regions to define enabled regions.
+	// Example: [ \"Datacenter:datacenter-2\" ]
 	RegionIds []string `json:"regionIds"`
+
+	// A set of regions to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration.
+	// Example: [{ \"name\": \"Datacenter:datacenter-3\",\"externalRegionId\": \"Datacenter:datacenter-3\"}]
+	Regions []*RegionSpecification `json:"regions"`
 
 	// A set of tag keys and optional values to set on the Cloud Account
 	// Example: [{\"key\": \"env\", \"value\": \"dev\"}]
@@ -54,6 +58,10 @@ type UpdateCloudAccountVsphereSpecification struct {
 func (m *UpdateCloudAccountVsphereSpecification) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateRegions(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateTags(formats); err != nil {
 		res = append(res, err)
 	}
@@ -61,6 +69,30 @@ func (m *UpdateCloudAccountVsphereSpecification) Validate(formats strfmt.Registr
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *UpdateCloudAccountVsphereSpecification) validateRegions(formats strfmt.Registry) error {
+	if swag.IsZero(m.Regions) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Regions); i++ {
+		if swag.IsZero(m.Regions[i]) { // not required
+			continue
+		}
+
+		if m.Regions[i] != nil {
+			if err := m.Regions[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("regions" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -92,6 +124,10 @@ func (m *UpdateCloudAccountVsphereSpecification) validateTags(formats strfmt.Reg
 func (m *UpdateCloudAccountVsphereSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateRegions(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateTags(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -99,6 +135,24 @@ func (m *UpdateCloudAccountVsphereSpecification) ContextValidate(ctx context.Con
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *UpdateCloudAccountVsphereSpecification) contextValidateRegions(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Regions); i++ {
+
+		if m.Regions[i] != nil {
+			if err := m.Regions[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("regions" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

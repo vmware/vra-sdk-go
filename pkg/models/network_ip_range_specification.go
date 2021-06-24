@@ -28,8 +28,11 @@ type NetworkIPRangeSpecification struct {
 	// Required: true
 	EndIPAddress *string `json:"endIPAddress"`
 
-	// The Id of the parent fabric network.
+	// Deprecated. Use 'fabricNetworkIds'.
 	FabricNetworkID string `json:"fabricNetworkId,omitempty"`
+
+	// A list of fabric network Ids that this IP range should be associated with.
+	FabricNetworkIds []string `json:"fabricNetworkIds"`
 
 	// IP address version: IPv4 or IPv6. Default: IPv4.
 	// Enum: [IPv4 IPv6]

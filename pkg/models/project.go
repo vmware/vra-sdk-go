@@ -92,7 +92,7 @@ type Project struct {
 	Viewers []*User `json:"viewers"`
 
 	// List of Cloud Zones assigned to this project. You can limit deployment to a single region or allow multi-region placement by adding more than one cloud zone to a project. A cloud zone lists available resources. Use tags on resources to control workload placement.
-	Zones []*ZoneAssignmentConfig `json:"zones"`
+	Zones []*ZoneAssignment `json:"zones"`
 }
 
 // Validate validates this project

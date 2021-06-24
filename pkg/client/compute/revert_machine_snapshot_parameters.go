@@ -67,15 +67,15 @@ type RevertMachineSnapshotParams struct {
 
 	/* ID.
 
-	   The id of the Machine.
-	*/
-	PathID string
-
-	/* ID.
-
 	   Snapshot id to revert.
 	*/
-	QueryID string
+	ID string
+
+	/* MachineID.
+
+	   The id of the Machine.
+	*/
+	MachineID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -141,26 +141,26 @@ func (o *RevertMachineSnapshotParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
-// WithPathID adds the id to the revert machine snapshot params
-func (o *RevertMachineSnapshotParams) WithPathID(id string) *RevertMachineSnapshotParams {
-	o.SetPathID(id)
+// WithID adds the id to the revert machine snapshot params
+func (o *RevertMachineSnapshotParams) WithID(id string) *RevertMachineSnapshotParams {
+	o.SetID(id)
 	return o
 }
 
-// SetPathID adds the id to the revert machine snapshot params
-func (o *RevertMachineSnapshotParams) SetPathID(id string) {
-	o.PathID = id
+// SetID adds the id to the revert machine snapshot params
+func (o *RevertMachineSnapshotParams) SetID(id string) {
+	o.ID = id
 }
 
-// WithQueryID adds the id to the revert machine snapshot params
-func (o *RevertMachineSnapshotParams) WithQueryID(id string) *RevertMachineSnapshotParams {
-	o.SetQueryID(id)
+// WithMachineID adds the machineID to the revert machine snapshot params
+func (o *RevertMachineSnapshotParams) WithMachineID(machineID string) *RevertMachineSnapshotParams {
+	o.SetMachineID(machineID)
 	return o
 }
 
-// SetQueryID adds the id to the revert machine snapshot params
-func (o *RevertMachineSnapshotParams) SetQueryID(id string) {
-	o.QueryID = id
+// SetMachineID adds the machineId to the revert machine snapshot params
+func (o *RevertMachineSnapshotParams) SetMachineID(machineID string) {
+	o.MachineID = machineID
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -188,19 +188,19 @@ func (o *RevertMachineSnapshotParams) WriteToRequest(r runtime.ClientRequest, re
 		}
 	}
 
-	// path param id
-	if err := r.SetPathParam("id", o.PathID); err != nil {
-		return err
-	}
-
 	// query param id
-	qrID := o.QueryID
+	qrID := o.ID
 	qID := qrID
 	if qID != "" {
 
 		if err := r.SetQueryParam("id", qID); err != nil {
 			return err
 		}
+	}
+
+	// path param machineId
+	if err := r.SetPathParam("machineId", o.MachineID); err != nil {
+		return err
 	}
 
 	if len(res) > 0 {

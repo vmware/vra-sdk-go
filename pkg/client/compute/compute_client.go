@@ -642,7 +642,7 @@ func (a *Client) RevertMachineSnapshot(params *RevertMachineSnapshotParams, opts
 	op := &runtime.ClientOperation{
 		ID:                 "revertMachineSnapshot",
 		Method:             "POST",
-		PathPattern:        "/iaas/api/machines/{id}/operations/revert",
+		PathPattern:        "/iaas/api/machines/{machineId}/operations/revert",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},

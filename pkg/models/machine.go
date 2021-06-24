@@ -101,6 +101,9 @@ type Machine struct {
 	// Example: 9e49
 	ProjectID string `json:"projectId,omitempty"`
 
+	// Settings to apply salt configuration on the provisioned machine.
+	SaltConfiguration *SaltConfiguration `json:"saltConfiguration,omitempty"`
+
 	// A set of tag keys and optional values that were set on this resource.
 	// Example: [ { \"key\" : \"ownedBy\", \"value\": \"Rainpole\" } ]
 	Tags []*Tag `json:"tags"`
@@ -139,6 +142,10 @@ func (m *Machine) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validatePowerState(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSaltConfiguration(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -282,6 +289,23 @@ func (m *Machine) validatePowerState(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Machine) validateSaltConfiguration(formats strfmt.Registry) error {
+	if swag.IsZero(m.SaltConfiguration) { // not required
+		return nil
+	}
+
+	if m.SaltConfiguration != nil {
+		if err := m.SaltConfiguration.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("saltConfiguration")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *Machine) validateTags(formats strfmt.Registry) error {
 	if swag.IsZero(m.Tags) { // not required
 		return nil
@@ -315,6 +339,10 @@ func (m *Machine) ContextValidate(ctx context.Context, formats strfmt.Registry) 
 	}
 
 	if err := m.contextValidateBootConfig(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSaltConfiguration(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -353,6 +381,20 @@ func (m *Machine) contextValidateBootConfig(ctx context.Context, formats strfmt.
 		if err := m.BootConfig.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("bootConfig")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Machine) contextValidateSaltConfiguration(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SaltConfiguration != nil {
+		if err := m.SaltConfiguration.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("saltConfiguration")
 			}
 			return err
 		}

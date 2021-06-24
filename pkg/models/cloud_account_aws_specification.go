@@ -36,10 +36,14 @@ type CloudAccountAwsSpecification struct {
 	// Required: true
 	Name *string `json:"name"`
 
-	// A set of Region names to enable provisioning on. Refer to /iaas/cloud-accounts-aws/region-enumeration..
+	// A set of Region names to enable provisioning on. Refer to /iaas/cloud-accounts-aws/region-enumeration. Deprecated - use regions to define enabled regions.
 	// Example: [ \"us-east-1\", \"ap-northeast-1\" ]
 	// Required: true
 	RegionIds []string `json:"regionIds"`
+
+	// A set of regions to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration.
+	// Example: [{ \"name\": \"eu-west-1\",\"externalRegionId\": \"eu-west-1\"}]
+	Regions []*RegionSpecification `json:"regions"`
 
 	// Aws Secret Access Key
 	// Example: gfsScK345sGGaVdds222dasdfDDSSasdfdsa34fS
@@ -64,6 +68,10 @@ func (m *CloudAccountAwsSpecification) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateRegionIds(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateRegions(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -108,6 +116,30 @@ func (m *CloudAccountAwsSpecification) validateRegionIds(formats strfmt.Registry
 	return nil
 }
 
+func (m *CloudAccountAwsSpecification) validateRegions(formats strfmt.Registry) error {
+	if swag.IsZero(m.Regions) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Regions); i++ {
+		if swag.IsZero(m.Regions[i]) { // not required
+			continue
+		}
+
+		if m.Regions[i] != nil {
+			if err := m.Regions[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("regions" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *CloudAccountAwsSpecification) validateSecretAccessKey(formats strfmt.Registry) error {
 
 	if err := validate.Required("secretAccessKey", "body", m.SecretAccessKey); err != nil {
@@ -145,6 +177,10 @@ func (m *CloudAccountAwsSpecification) validateTags(formats strfmt.Registry) err
 func (m *CloudAccountAwsSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateRegions(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateTags(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -152,6 +188,24 @@ func (m *CloudAccountAwsSpecification) ContextValidate(ctx context.Context, form
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *CloudAccountAwsSpecification) contextValidateRegions(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Regions); i++ {
+
+		if m.Regions[i] != nil {
+			if err := m.Regions[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("regions" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
