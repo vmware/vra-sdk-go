@@ -1,5 +1,6 @@
 vra-sdk-go
 swagger/vra-combined.json
+swagger/vra-blueprint-fixed.json
 swagger/vra-iaas-fixed.json
 swagger/vra-catalog-deployment-fixed.json
 sdk-test

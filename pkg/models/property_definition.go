@@ -23,6 +23,9 @@ type PropertyDefinition struct {
 	// dollar data
 	DollarData string `json:"$data,omitempty"`
 
+	// dollar dynamic default
+	DollarDynamicDefault string `json:"$dynamicDefault,omitempty"`
+
 	// dollar ref
 	DollarRef string `json:"$ref,omitempty"`
 
@@ -31,6 +34,9 @@ type PropertyDefinition struct {
 
 	// all of
 	AllOf []*PropertyDefinition `json:"allOf"`
+
+	// any of
+	AnyOf []*PropertyDefinition `json:"anyOf"`
 
 	// computed
 	Computed bool `json:"computed,omitempty"`
@@ -71,6 +77,9 @@ type PropertyDefinition struct {
 	// max length
 	MaxLength int32 `json:"maxLength,omitempty"`
 
+	// max properties
+	MaxProperties int32 `json:"maxProperties,omitempty"`
+
 	// maximum
 	Maximum int64 `json:"maximum,omitempty"`
 
@@ -79,6 +88,9 @@ type PropertyDefinition struct {
 
 	// min length
 	MinLength int32 `json:"minLength,omitempty"`
+
+	// min properties
+	MinProperties int32 `json:"minProperties,omitempty"`
 
 	// minimum
 	Minimum int64 `json:"minimum,omitempty"`
@@ -125,6 +137,10 @@ func (m *PropertyDefinition) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateAnyOf(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateItems(formats); err != nil {
 		res = append(res, err)
 	}
@@ -161,6 +177,30 @@ func (m *PropertyDefinition) validateAllOf(formats strfmt.Registry) error {
 			if err := m.AllOf[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("allOf" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *PropertyDefinition) validateAnyOf(formats strfmt.Registry) error {
+	if swag.IsZero(m.AnyOf) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.AnyOf); i++ {
+		if swag.IsZero(m.AnyOf[i]) { // not required
+			continue
+		}
+
+		if m.AnyOf[i] != nil {
+			if err := m.AnyOf[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("anyOf" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -258,6 +298,10 @@ func (m *PropertyDefinition) ContextValidate(ctx context.Context, formats strfmt
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateAnyOf(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateItems(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -288,6 +332,24 @@ func (m *PropertyDefinition) contextValidateAllOf(ctx context.Context, formats s
 			if err := m.AllOf[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("allOf" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *PropertyDefinition) contextValidateAnyOf(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.AnyOf); i++ {
+
+		if m.AnyOf[i] != nil {
+			if err := m.AnyOf[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("anyOf" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

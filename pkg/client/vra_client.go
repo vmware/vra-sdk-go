@@ -58,6 +58,7 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/pricing_card_assignments"
 	"github.com/vmware/vra-sdk-go/pkg/client/pricing_cards"
 	"github.com/vmware/vra-sdk-go/pkg/client/project"
+	"github.com/vmware/vra-sdk-go/pkg/client/property_groups"
 	"github.com/vmware/vra-sdk-go/pkg/client/request"
 	"github.com/vmware/vra-sdk-go/pkg/client/resource_types"
 	"github.com/vmware/vra-sdk-go/pkg/client/security_group"
@@ -157,6 +158,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 	cli.PricingCardAssignments = pricing_card_assignments.New(transport, formats)
 	cli.PricingCards = pricing_cards.New(transport, formats)
 	cli.Project = project.New(transport, formats)
+	cli.PropertyGroups = property_groups.New(transport, formats)
 	cli.Request = request.New(transport, formats)
 	cli.ResourceTypes = resource_types.New(transport, formats)
 	cli.SecurityGroup = security_group.New(transport, formats)
@@ -304,6 +306,8 @@ type MulticloudIaaS struct {
 
 	Project project.ClientService
 
+	PropertyGroups property_groups.ClientService
+
 	Request request.ClientService
 
 	ResourceTypes resource_types.ClientService
@@ -372,6 +376,7 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.PricingCardAssignments.SetTransport(transport)
 	c.PricingCards.SetTransport(transport)
 	c.Project.SetTransport(transport)
+	c.PropertyGroups.SetTransport(transport)
 	c.Request.SetTransport(transport)
 	c.ResourceTypes.SetTransport(transport)
 	c.SecurityGroup.SetTransport(transport)
