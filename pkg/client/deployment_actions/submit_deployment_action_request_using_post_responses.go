@@ -66,7 +66,7 @@ type SubmitDeploymentActionRequestUsingPOSTOK struct {
 }
 
 func (o *SubmitDeploymentActionRequestUsingPOSTOK) Error() string {
-	return fmt.Sprintf("[POST /deployment/api/deployments/{depId}/requests][%d] submitDeploymentActionRequestUsingPOSTOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /deployment/api/deployments/{deploymentId}/requests][%d] submitDeploymentActionRequestUsingPOSTOK  %+v", 200, o.Payload)
 }
 func (o *SubmitDeploymentActionRequestUsingPOSTOK) GetPayload() *models.Request {
 	return o.Payload
@@ -97,7 +97,7 @@ type SubmitDeploymentActionRequestUsingPOSTUnauthorized struct {
 }
 
 func (o *SubmitDeploymentActionRequestUsingPOSTUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /deployment/api/deployments/{depId}/requests][%d] submitDeploymentActionRequestUsingPOSTUnauthorized ", 401)
+	return fmt.Sprintf("[POST /deployment/api/deployments/{deploymentId}/requests][%d] submitDeploymentActionRequestUsingPOSTUnauthorized ", 401)
 }
 
 func (o *SubmitDeploymentActionRequestUsingPOSTUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -118,7 +118,7 @@ type SubmitDeploymentActionRequestUsingPOSTForbidden struct {
 }
 
 func (o *SubmitDeploymentActionRequestUsingPOSTForbidden) Error() string {
-	return fmt.Sprintf("[POST /deployment/api/deployments/{depId}/requests][%d] submitDeploymentActionRequestUsingPOSTForbidden ", 403)
+	return fmt.Sprintf("[POST /deployment/api/deployments/{deploymentId}/requests][%d] submitDeploymentActionRequestUsingPOSTForbidden ", 403)
 }
 
 func (o *SubmitDeploymentActionRequestUsingPOSTForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -140,7 +140,7 @@ type SubmitDeploymentActionRequestUsingPOSTNotFound struct {
 }
 
 func (o *SubmitDeploymentActionRequestUsingPOSTNotFound) Error() string {
-	return fmt.Sprintf("[POST /deployment/api/deployments/{depId}/requests][%d] submitDeploymentActionRequestUsingPOSTNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[POST /deployment/api/deployments/{deploymentId}/requests][%d] submitDeploymentActionRequestUsingPOSTNotFound  %+v", 404, o.Payload)
 }
 func (o *SubmitDeploymentActionRequestUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload

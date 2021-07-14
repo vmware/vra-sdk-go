@@ -66,7 +66,7 @@ type PatchDeploymentUsingPATCHOK struct {
 }
 
 func (o *PatchDeploymentUsingPATCHOK) Error() string {
-	return fmt.Sprintf("[PATCH /deployment/api/deployments/{depId}][%d] patchDeploymentUsingPATCHOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PATCH /deployment/api/deployments/{deploymentId}][%d] patchDeploymentUsingPATCHOK  %+v", 200, o.Payload)
 }
 func (o *PatchDeploymentUsingPATCHOK) GetPayload() *models.Deployment {
 	return o.Payload
@@ -97,7 +97,7 @@ type PatchDeploymentUsingPATCHUnauthorized struct {
 }
 
 func (o *PatchDeploymentUsingPATCHUnauthorized) Error() string {
-	return fmt.Sprintf("[PATCH /deployment/api/deployments/{depId}][%d] patchDeploymentUsingPATCHUnauthorized ", 401)
+	return fmt.Sprintf("[PATCH /deployment/api/deployments/{deploymentId}][%d] patchDeploymentUsingPATCHUnauthorized ", 401)
 }
 
 func (o *PatchDeploymentUsingPATCHUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -118,7 +118,7 @@ type PatchDeploymentUsingPATCHForbidden struct {
 }
 
 func (o *PatchDeploymentUsingPATCHForbidden) Error() string {
-	return fmt.Sprintf("[PATCH /deployment/api/deployments/{depId}][%d] patchDeploymentUsingPATCHForbidden ", 403)
+	return fmt.Sprintf("[PATCH /deployment/api/deployments/{deploymentId}][%d] patchDeploymentUsingPATCHForbidden ", 403)
 }
 
 func (o *PatchDeploymentUsingPATCHForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -140,7 +140,7 @@ type PatchDeploymentUsingPATCHNotFound struct {
 }
 
 func (o *PatchDeploymentUsingPATCHNotFound) Error() string {
-	return fmt.Sprintf("[PATCH /deployment/api/deployments/{depId}][%d] patchDeploymentUsingPATCHNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[PATCH /deployment/api/deployments/{deploymentId}][%d] patchDeploymentUsingPATCHNotFound  %+v", 404, o.Payload)
 }
 func (o *PatchDeploymentUsingPATCHNotFound) GetPayload() *models.Error {
 	return o.Payload

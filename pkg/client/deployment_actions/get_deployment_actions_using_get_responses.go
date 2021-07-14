@@ -60,7 +60,7 @@ type GetDeploymentActionsUsingGETOK struct {
 }
 
 func (o *GetDeploymentActionsUsingGETOK) Error() string {
-	return fmt.Sprintf("[GET /deployment/api/deployments/{depId}/actions][%d] getDeploymentActionsUsingGETOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}/actions][%d] getDeploymentActionsUsingGETOK  %+v", 200, o.Payload)
 }
 func (o *GetDeploymentActionsUsingGETOK) GetPayload() []*models.ResourceAction {
 	return o.Payload
@@ -89,7 +89,7 @@ type GetDeploymentActionsUsingGETUnauthorized struct {
 }
 
 func (o *GetDeploymentActionsUsingGETUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /deployment/api/deployments/{depId}/actions][%d] getDeploymentActionsUsingGETUnauthorized ", 401)
+	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}/actions][%d] getDeploymentActionsUsingGETUnauthorized ", 401)
 }
 
 func (o *GetDeploymentActionsUsingGETUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -111,7 +111,7 @@ type GetDeploymentActionsUsingGETNotFound struct {
 }
 
 func (o *GetDeploymentActionsUsingGETNotFound) Error() string {
-	return fmt.Sprintf("[GET /deployment/api/deployments/{depId}/actions][%d] getDeploymentActionsUsingGETNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}/actions][%d] getDeploymentActionsUsingGETNotFound  %+v", 404, o.Payload)
 }
 func (o *GetDeploymentActionsUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload

@@ -22,54 +22,58 @@ import (
 // swagger:model Policy
 type Policy struct {
 
-	// created at
+	// Policy creation timestamp.
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"createdAt,omitempty"`
 
-	// created by
+	// Policy author.
 	CreatedBy string `json:"createdBy,omitempty"`
 
-	// criteria
+	// Policy-type-specific target object filter criteria applied during enforcement.
 	Criteria *Criteria `json:"criteria,omitempty"`
 
-	// definition
+	// Policy-type-specific settings such as lease limits for lease policies.
 	Definition interface{} `json:"definition,omitempty"`
 
 	// definition legend
 	DefinitionLegend map[string]DataElement `json:"definitionLegend,omitempty"`
 
-	// description
+	// The policy description.
 	Description string `json:"description,omitempty"`
 
-	// Defines enforcement type for policy. Default is HARD
+	// Defines enforcement type for policy. Default enforcement type is HARD.
 	// Enum: [SOFT HARD]
 	EnforcementType string `json:"enforcementType,omitempty"`
 
-	// id
+	// The policy ID.
 	// Format: uuid
 	ID strfmt.UUID `json:"id,omitempty"`
 
-	// last updated at
+	// Most recent policy update timestamp.
 	// Format: date-time
 	LastUpdatedAt strfmt.DateTime `json:"lastUpdatedAt,omitempty"`
 
-	// last updated by
+	// Most recent policy editor.
 	LastUpdatedBy string `json:"lastUpdatedBy,omitempty"`
 
-	// name
+	// The policy name.
 	Name string `json:"name,omitempty"`
 
-	// org Id
+	// The ID of the organization to which the policy belongs.
 	OrgID string `json:"orgId,omitempty"`
 
-	// project Id
+	// For project-scoped policies, the ID of the project to which the policy belongs.
 	ProjectID string `json:"projectId,omitempty"`
+
+	// Project-based scope criteria to apply policy to multiple projects in the organization. Not allowed for project-scoped policies.
+	ScopeCriteria *Criteria `json:"scopeCriteria,omitempty"`
 
 	// statistics
 	Statistics *PolicyStats `json:"statistics,omitempty"`
 
-	// type Id
-	TypeID string `json:"typeId,omitempty"`
+	// The policy type ID.
+	// Required: true
+	TypeID *string `json:"typeId"`
 }
 
 // Validate validates this policy
@@ -100,7 +104,15 @@ func (m *Policy) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateScopeCriteria(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateStatistics(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTypeID(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -226,6 +238,23 @@ func (m *Policy) validateLastUpdatedAt(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Policy) validateScopeCriteria(formats strfmt.Registry) error {
+	if swag.IsZero(m.ScopeCriteria) { // not required
+		return nil
+	}
+
+	if m.ScopeCriteria != nil {
+		if err := m.ScopeCriteria.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("scopeCriteria")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *Policy) validateStatistics(formats strfmt.Registry) error {
 	if swag.IsZero(m.Statistics) { // not required
 		return nil
@@ -243,6 +272,15 @@ func (m *Policy) validateStatistics(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Policy) validateTypeID(formats strfmt.Registry) error {
+
+	if err := validate.Required("typeId", "body", m.TypeID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 // ContextValidate validate this policy based on the context it is used
 func (m *Policy) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -252,6 +290,10 @@ func (m *Policy) ContextValidate(ctx context.Context, formats strfmt.Registry) e
 	}
 
 	if err := m.contextValidateDefinitionLegend(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateScopeCriteria(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -289,6 +331,20 @@ func (m *Policy) contextValidateDefinitionLegend(ctx context.Context, formats st
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *Policy) contextValidateScopeCriteria(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ScopeCriteria != nil {
+		if err := m.ScopeCriteria.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("scopeCriteria")
+			}
+			return err
+		}
 	}
 
 	return nil

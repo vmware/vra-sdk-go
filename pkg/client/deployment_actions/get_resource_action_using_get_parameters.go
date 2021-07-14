@@ -71,13 +71,13 @@ type GetResourceActionUsingGETParams struct {
 	*/
 	APIVersion *string
 
-	/* DepID.
+	/* DeploymentID.
 
 	   Deployment ID
 
 	   Format: uuid
 	*/
-	DepID strfmt.UUID
+	DeploymentID strfmt.UUID
 
 	/* ResourceID.
 
@@ -162,15 +162,15 @@ func (o *GetResourceActionUsingGETParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
-// WithDepID adds the depID to the get resource action using get params
-func (o *GetResourceActionUsingGETParams) WithDepID(depID strfmt.UUID) *GetResourceActionUsingGETParams {
-	o.SetDepID(depID)
+// WithDeploymentID adds the deploymentID to the get resource action using get params
+func (o *GetResourceActionUsingGETParams) WithDeploymentID(deploymentID strfmt.UUID) *GetResourceActionUsingGETParams {
+	o.SetDeploymentID(deploymentID)
 	return o
 }
 
-// SetDepID adds the depId to the get resource action using get params
-func (o *GetResourceActionUsingGETParams) SetDepID(depID strfmt.UUID) {
-	o.DepID = depID
+// SetDeploymentID adds the deploymentId to the get resource action using get params
+func (o *GetResourceActionUsingGETParams) SetDeploymentID(deploymentID strfmt.UUID) {
+	o.DeploymentID = deploymentID
 }
 
 // WithResourceID adds the resourceID to the get resource action using get params
@@ -214,8 +214,8 @@ func (o *GetResourceActionUsingGETParams) WriteToRequest(r runtime.ClientRequest
 		}
 	}
 
-	// path param depId
-	if err := r.SetPathParam("depId", o.DepID.String()); err != nil {
+	// path param deploymentId
+	if err := r.SetPathParam("deploymentId", o.DeploymentID.String()); err != nil {
 		return err
 	}
 

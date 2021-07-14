@@ -56,8 +56,23 @@ def rename_deployment_models(swagger):
         replace_value(swagger, "$ref", oldRef, newRef)
 
 
+def remove_global_security(swagger):
+    if 'securityDefinitions' in swagger:
+        del swagger['securityDefinitions']
+
+
+# See https://jira.eng.vmware.com/browse/TCS-4017 for context
+def remove_security(swagger):
+    for p in swagger['paths']:
+        param_list = swagger['paths'][p]
+        for method in param_list:
+            if 'security' in swagger['paths'][p][method]:
+                del swagger['paths'][p][method]['security']
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    parser.add_argument('--omit-security', action='store_false')
     args = parser.parse_args()
 
     # read in the swagger spec
@@ -65,6 +80,10 @@ if __name__ == "__main__":
 
     add_apiVersion(swagger)
     rename_deployment_models(swagger)
+
+    if args.omit_security:
+        remove_global_security(swagger)
+        remove_security(swagger)
 
     # Overwrite the swagger spec
     f = open(new_filename, "w")

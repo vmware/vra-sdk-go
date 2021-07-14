@@ -58,7 +58,7 @@ type DeploymentFilter struct {
 	TotalPages int32 `json:"totalPages,omitempty"`
 
 	// type
-	// Enum: [MULTISELECT DATE_RANGE]
+	// Enum: [MULTISELECT DATE_RANGE BOOLEAN]
 	Type string `json:"type,omitempty"`
 }
 
@@ -129,7 +129,7 @@ var deploymentFilterTypeTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["MULTISELECT","DATE_RANGE"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["MULTISELECT","DATE_RANGE","BOOLEAN"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -144,6 +144,9 @@ const (
 
 	// DeploymentFilterTypeDATERANGE captures enum value "DATE_RANGE"
 	DeploymentFilterTypeDATERANGE string = "DATE_RANGE"
+
+	// DeploymentFilterTypeBOOLEAN captures enum value "BOOLEAN"
+	DeploymentFilterTypeBOOLEAN string = "BOOLEAN"
 )
 
 // prop value enum

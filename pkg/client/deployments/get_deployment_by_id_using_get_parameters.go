@@ -72,13 +72,13 @@ type GetDeploymentByIDUsingGETParams struct {
 	*/
 	Deleted *bool
 
-	/* DepID.
+	/* DeploymentID.
 
 	   Deployment ID
 
 	   Format: uuid
 	*/
-	DepID strfmt.UUID
+	DeploymentID strfmt.UUID
 
 	/* Expand.
 
@@ -179,15 +179,15 @@ func (o *GetDeploymentByIDUsingGETParams) SetDeleted(deleted *bool) {
 	o.Deleted = deleted
 }
 
-// WithDepID adds the depID to the get deployment by Id using get params
-func (o *GetDeploymentByIDUsingGETParams) WithDepID(depID strfmt.UUID) *GetDeploymentByIDUsingGETParams {
-	o.SetDepID(depID)
+// WithDeploymentID adds the deploymentID to the get deployment by Id using get params
+func (o *GetDeploymentByIDUsingGETParams) WithDeploymentID(deploymentID strfmt.UUID) *GetDeploymentByIDUsingGETParams {
+	o.SetDeploymentID(deploymentID)
 	return o
 }
 
-// SetDepID adds the depId to the get deployment by Id using get params
-func (o *GetDeploymentByIDUsingGETParams) SetDepID(depID strfmt.UUID) {
-	o.DepID = depID
+// SetDeploymentID adds the deploymentId to the get deployment by Id using get params
+func (o *GetDeploymentByIDUsingGETParams) SetDeploymentID(deploymentID strfmt.UUID) {
+	o.DeploymentID = deploymentID
 }
 
 // WithExpand adds the expand to the get deployment by Id using get params
@@ -276,8 +276,8 @@ func (o *GetDeploymentByIDUsingGETParams) WriteToRequest(r runtime.ClientRequest
 		}
 	}
 
-	// path param depId
-	if err := r.SetPathParam("depId", o.DepID.String()); err != nil {
+	// path param deploymentId
+	if err := r.SetPathParam("deploymentId", o.DeploymentID.String()); err != nil {
 		return err
 	}
 

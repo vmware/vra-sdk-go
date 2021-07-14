@@ -28,7 +28,6 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/data_collector"
 	"github.com/vmware/vra-sdk-go/pkg/client/deployment"
 	"github.com/vmware/vra-sdk-go/pkg/client/deployment_actions"
-	"github.com/vmware/vra-sdk-go/pkg/client/deployment_requests"
 	"github.com/vmware/vra-sdk-go/pkg/client/deployments"
 	"github.com/vmware/vra-sdk-go/pkg/client/disk"
 	"github.com/vmware/vra-sdk-go/pkg/client/fabric_aws_volume_types"
@@ -52,6 +51,7 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/network"
 	"github.com/vmware/vra-sdk-go/pkg/client/network_ip_range"
 	"github.com/vmware/vra-sdk-go/pkg/client/network_profile"
+	"github.com/vmware/vra-sdk-go/pkg/client/perspective_sync"
 	"github.com/vmware/vra-sdk-go/pkg/client/policies"
 	"github.com/vmware/vra-sdk-go/pkg/client/policy_decisions"
 	"github.com/vmware/vra-sdk-go/pkg/client/policy_types"
@@ -60,7 +60,10 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/project"
 	"github.com/vmware/vra-sdk-go/pkg/client/property_groups"
 	"github.com/vmware/vra-sdk-go/pkg/client/request"
+	"github.com/vmware/vra-sdk-go/pkg/client/requests"
+	"github.com/vmware/vra-sdk-go/pkg/client/resource_actions"
 	"github.com/vmware/vra-sdk-go/pkg/client/resource_types"
+	"github.com/vmware/vra-sdk-go/pkg/client/resources"
 	"github.com/vmware/vra-sdk-go/pkg/client/security_group"
 	"github.com/vmware/vra-sdk-go/pkg/client/source_control_sync"
 	"github.com/vmware/vra-sdk-go/pkg/client/storage_profile"
@@ -74,7 +77,7 @@ var Default = NewHTTPClient(nil)
 const (
 	// DefaultHost is the default Host
 	// found in Meta (info) section of spec file
-	DefaultHost string = "cava-r-89-003.eng.vmware.com"
+	DefaultHost string = "api.mgmt.cloud.vmware.com"
 	// DefaultBasePath is the default BasePath
 	// found in Meta (info) section of spec file
 	DefaultBasePath string = "/"
@@ -128,7 +131,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 	cli.DataCollector = data_collector.New(transport, formats)
 	cli.Deployment = deployment.New(transport, formats)
 	cli.DeploymentActions = deployment_actions.New(transport, formats)
-	cli.DeploymentRequests = deployment_requests.New(transport, formats)
 	cli.Deployments = deployments.New(transport, formats)
 	cli.Disk = disk.New(transport, formats)
 	cli.FabricawsVolumeTypes = fabric_aws_volume_types.New(transport, formats)
@@ -152,6 +154,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 	cli.Network = network.New(transport, formats)
 	cli.NetworkIPRange = network_ip_range.New(transport, formats)
 	cli.NetworkProfile = network_profile.New(transport, formats)
+	cli.PerspectiveSync = perspective_sync.New(transport, formats)
 	cli.Policies = policies.New(transport, formats)
 	cli.PolicyDecisions = policy_decisions.New(transport, formats)
 	cli.PolicyTypes = policy_types.New(transport, formats)
@@ -160,7 +163,10 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 	cli.Project = project.New(transport, formats)
 	cli.PropertyGroups = property_groups.New(transport, formats)
 	cli.Request = request.New(transport, formats)
+	cli.Requests = requests.New(transport, formats)
+	cli.ResourceActions = resource_actions.New(transport, formats)
 	cli.ResourceTypes = resource_types.New(transport, formats)
+	cli.Resources = resources.New(transport, formats)
 	cli.SecurityGroup = security_group.New(transport, formats)
 	cli.SourceControlSync = source_control_sync.New(transport, formats)
 	cli.StorageProfile = storage_profile.New(transport, formats)
@@ -246,8 +252,6 @@ type MulticloudIaaS struct {
 
 	DeploymentActions deployment_actions.ClientService
 
-	DeploymentRequests deployment_requests.ClientService
-
 	Deployments deployments.ClientService
 
 	Disk disk.ClientService
@@ -294,6 +298,8 @@ type MulticloudIaaS struct {
 
 	NetworkProfile network_profile.ClientService
 
+	PerspectiveSync perspective_sync.ClientService
+
 	Policies policies.ClientService
 
 	PolicyDecisions policy_decisions.ClientService
@@ -310,7 +316,13 @@ type MulticloudIaaS struct {
 
 	Request request.ClientService
 
+	Requests requests.ClientService
+
+	ResourceActions resource_actions.ClientService
+
 	ResourceTypes resource_types.ClientService
+
+	Resources resources.ClientService
 
 	SecurityGroup security_group.ClientService
 
@@ -346,7 +358,6 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.DataCollector.SetTransport(transport)
 	c.Deployment.SetTransport(transport)
 	c.DeploymentActions.SetTransport(transport)
-	c.DeploymentRequests.SetTransport(transport)
 	c.Deployments.SetTransport(transport)
 	c.Disk.SetTransport(transport)
 	c.FabricawsVolumeTypes.SetTransport(transport)
@@ -370,6 +381,7 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.Network.SetTransport(transport)
 	c.NetworkIPRange.SetTransport(transport)
 	c.NetworkProfile.SetTransport(transport)
+	c.PerspectiveSync.SetTransport(transport)
 	c.Policies.SetTransport(transport)
 	c.PolicyDecisions.SetTransport(transport)
 	c.PolicyTypes.SetTransport(transport)
@@ -378,7 +390,10 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.Project.SetTransport(transport)
 	c.PropertyGroups.SetTransport(transport)
 	c.Request.SetTransport(transport)
+	c.Requests.SetTransport(transport)
+	c.ResourceActions.SetTransport(transport)
 	c.ResourceTypes.SetTransport(transport)
+	c.Resources.SetTransport(transport)
 	c.SecurityGroup.SetTransport(transport)
 	c.SourceControlSync.SetTransport(transport)
 	c.StorageProfile.SetTransport(transport)

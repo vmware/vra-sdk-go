@@ -32,6 +32,8 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	GetPolicyTypeByIDUsingGET(params *GetPolicyTypeByIDUsingGETParams, opts ...ClientOption) (*GetPolicyTypeByIDUsingGETOK, error)
 
+	GetPolicyTypeScopeSchemaUsingGET(params *GetPolicyTypeScopeSchemaUsingGETParams, opts ...ClientOption) (*GetPolicyTypeScopeSchemaUsingGETOK, error)
+
 	GetTypesUsingGET1(params *GetTypesUsingGET1Params, opts ...ClientOption) (*GetTypesUsingGET1OK, error)
 
 	SetTransport(transport runtime.ClientTransport)
@@ -74,6 +76,46 @@ func (a *Client) GetPolicyTypeByIDUsingGET(params *GetPolicyTypeByIDUsingGETPara
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getPolicyTypeByIdUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetPolicyTypeScopeSchemaUsingGET returns the policy scope schema for the type with the specified ID
+
+  Return the policy scope schema for the given policy type.
+*/
+func (a *Client) GetPolicyTypeScopeSchemaUsingGET(params *GetPolicyTypeScopeSchemaUsingGETParams, opts ...ClientOption) (*GetPolicyTypeScopeSchemaUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetPolicyTypeScopeSchemaUsingGETParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getPolicyTypeScopeSchemaUsingGET",
+		Method:             "GET",
+		PathPattern:        "/policy/api/policyTypes/{id}/scopeSchema",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetPolicyTypeScopeSchemaUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetPolicyTypeScopeSchemaUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getPolicyTypeScopeSchemaUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

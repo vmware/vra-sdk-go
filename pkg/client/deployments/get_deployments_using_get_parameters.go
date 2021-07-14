@@ -102,7 +102,7 @@ type GetDeploymentsUsingGETParams struct {
 
 	/* CreatedAt.
 
-	   Comma-separated start and end dates for the interval
+	   Comma-separated start and end dates where start date or end date is optional (e.g. [2020-12-01T08:00:00.000Z,2020-12-11T23:59:00.000Z], [2020-11-03T08:00:00.000Z,], [,2020-11-08T08:00:00.000Z]
 	*/
 	CreatedAt *string
 
@@ -148,9 +148,15 @@ type GetDeploymentsUsingGETParams struct {
 	*/
 	Ids []strfmt.UUID
 
+	/* LastRequestStatus.
+
+	   A comma-separated list of last request statuses. Allowed values are: ABORTED, APPROVAL_PENDING, APPROVAL_REJECTED, FAILED, INPROGRESS, PENDING and SUCCESSFUL. Results must be associated with one of these last request statuses.
+	*/
+	LastRequestStatus []string
+
 	/* LastUpdatedAt.
 
-	   Comma-separated start and end dates for the interval
+	   Comma-separated start and end dates where start date or end date is optional (e.g. [2020-12-01T08:00:00.000Z,2020-12-11T23:59:00.000Z], [2020-11-03T08:00:00.000Z,], [,2020-11-08T08:00:00.000Z]
 	*/
 	LastUpdatedAt *string
 
@@ -407,6 +413,17 @@ func (o *GetDeploymentsUsingGETParams) WithIds(ids []strfmt.UUID) *GetDeployment
 // SetIds adds the ids to the get deployments using get params
 func (o *GetDeploymentsUsingGETParams) SetIds(ids []strfmt.UUID) {
 	o.Ids = ids
+}
+
+// WithLastRequestStatus adds the lastRequestStatus to the get deployments using get params
+func (o *GetDeploymentsUsingGETParams) WithLastRequestStatus(lastRequestStatus []string) *GetDeploymentsUsingGETParams {
+	o.SetLastRequestStatus(lastRequestStatus)
+	return o
+}
+
+// SetLastRequestStatus adds the lastRequestStatus to the get deployments using get params
+func (o *GetDeploymentsUsingGETParams) SetLastRequestStatus(lastRequestStatus []string) {
+	o.LastRequestStatus = lastRequestStatus
 }
 
 // WithLastUpdatedAt adds the lastUpdatedAt to the get deployments using get params
@@ -724,6 +741,17 @@ func (o *GetDeploymentsUsingGETParams) WriteToRequest(r runtime.ClientRequest, r
 		}
 	}
 
+	if o.LastRequestStatus != nil {
+
+		// binding items for lastRequestStatus
+		joinedLastRequestStatus := o.bindParamLastRequestStatus(reg)
+
+		// query array param lastRequestStatus
+		if err := r.SetQueryParam("lastRequestStatus", joinedLastRequestStatus...); err != nil {
+			return err
+		}
+	}
+
 	if o.LastUpdatedAt != nil {
 
 		// query param lastUpdatedAt
@@ -930,6 +958,23 @@ func (o *GetDeploymentsUsingGETParams) bindParamIds(formats strfmt.Registry) []s
 	idsIS := swag.JoinByFormat(idsIC, "multi")
 
 	return idsIS
+}
+
+// bindParamGetDeploymentsUsingGET binds the parameter lastRequestStatus
+func (o *GetDeploymentsUsingGETParams) bindParamLastRequestStatus(formats strfmt.Registry) []string {
+	lastRequestStatusIR := o.LastRequestStatus
+
+	var lastRequestStatusIC []string
+	for _, lastRequestStatusIIR := range lastRequestStatusIR { // explode []string
+
+		lastRequestStatusIIV := lastRequestStatusIIR // string as string
+		lastRequestStatusIC = append(lastRequestStatusIC, lastRequestStatusIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	lastRequestStatusIS := swag.JoinByFormat(lastRequestStatusIC, "multi")
+
+	return lastRequestStatusIS
 }
 
 // bindParamGetDeploymentsUsingGET binds the parameter ownedBy

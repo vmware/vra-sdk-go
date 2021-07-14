@@ -30,6 +30,8 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	CheckDeploymentNameExistsUsingGET(params *CheckDeploymentNameExistsUsingGETParams, opts ...ClientOption) (*CheckDeploymentNameExistsUsingGETOK, error)
+
 	CheckDeploymentNameUsingGET(params *CheckDeploymentNameUsingGETParams, opts ...ClientOption) (*CheckDeploymentNameUsingGETOK, error)
 
 	DeleteDeploymentUsingDELETE(params *DeleteDeploymentUsingDELETEParams, opts ...ClientOption) (*DeleteDeploymentUsingDELETEOK, error)
@@ -55,6 +57,46 @@ type ClientService interface {
 	PatchDeploymentUsingPATCH(params *PatchDeploymentUsingPATCHParams, opts ...ClientOption) (*PatchDeploymentUsingPATCHOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  CheckDeploymentNameExistsUsingGET checks if a deployment exists
+
+  Returns OK if a deployment with the supplied name exists.
+*/
+func (a *Client) CheckDeploymentNameExistsUsingGET(params *CheckDeploymentNameExistsUsingGETParams, opts ...ClientOption) (*CheckDeploymentNameExistsUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCheckDeploymentNameExistsUsingGETParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "checkDeploymentNameExistsUsingGET",
+		Method:             "GET",
+		PathPattern:        "/deployment/api/deployments/names",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CheckDeploymentNameExistsUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CheckDeploymentNameExistsUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for checkDeploymentNameExistsUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -110,7 +152,7 @@ func (a *Client) DeleteDeploymentUsingDELETE(params *DeleteDeploymentUsingDELETE
 	op := &runtime.ClientOperation{
 		ID:                 "deleteDeploymentUsingDELETE",
 		Method:             "DELETE",
-		PathPattern:        "/deployment/api/deployments/{depId}",
+		PathPattern:        "/deployment/api/deployments/{deploymentId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -150,7 +192,7 @@ func (a *Client) DeleteResourceUsingDELETE(params *DeleteResourceUsingDELETEPara
 	op := &runtime.ClientOperation{
 		ID:                 "deleteResourceUsingDELETE",
 		Method:             "DELETE",
-		PathPattern:        "/deployment/api/deployments/{depId}/resources/{resourceId}",
+		PathPattern:        "/deployment/api/deployments/{deploymentId}/resources/{resourceId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -190,7 +232,7 @@ func (a *Client) GetDeploymentByIDUsingGET(params *GetDeploymentByIDUsingGETPara
 	op := &runtime.ClientOperation{
 		ID:                 "getDeploymentByIdUsingGET",
 		Method:             "GET",
-		PathPattern:        "/deployment/api/deployments/{depId}",
+		PathPattern:        "/deployment/api/deployments/{deploymentId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -230,7 +272,7 @@ func (a *Client) GetDeploymentExpenseHistoryByIDUsingGET(params *GetDeploymentEx
 	op := &runtime.ClientOperation{
 		ID:                 "getDeploymentExpenseHistoryByIdUsingGET",
 		Method:             "GET",
-		PathPattern:        "/deployment/api/deployments/{depId}/expense-history",
+		PathPattern:        "/deployment/api/deployments/{deploymentId}/expense-history",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -346,7 +388,7 @@ func (a *Client) GetDeploymentResourcesUsingGET(params *GetDeploymentResourcesUs
 	op := &runtime.ClientOperation{
 		ID:                 "getDeploymentResourcesUsingGET",
 		Method:             "GET",
-		PathPattern:        "/deployment/api/deployments/{depId}/resources",
+		PathPattern:        "/deployment/api/deployments/{deploymentId}/resources",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -464,7 +506,7 @@ func (a *Client) GetResourceByIDUsingGET(params *GetResourceByIDUsingGETParams, 
 	op := &runtime.ClientOperation{
 		ID:                 "getResourceByIdUsingGET",
 		Method:             "GET",
-		PathPattern:        "/deployment/api/deployments/{depId}/resources/{resourceId}",
+		PathPattern:        "/deployment/api/deployments/{deploymentId}/resources/{resourceId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -504,7 +546,7 @@ func (a *Client) PatchDeploymentUsingPATCH(params *PatchDeploymentUsingPATCHPara
 	op := &runtime.ClientOperation{
 		ID:                 "patchDeploymentUsingPATCH",
 		Method:             "PATCH",
-		PathPattern:        "/deployment/api/deployments/{depId}",
+		PathPattern:        "/deployment/api/deployments/{deploymentId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},

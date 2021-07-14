@@ -67,13 +67,13 @@ type PatchDeploymentUsingPATCHParams struct {
 	*/
 	APIVersion *string
 
-	/* DepID.
+	/* DeploymentID.
 
 	   Deployment ID
 
 	   Format: uuid
 	*/
-	DepID strfmt.UUID
+	DeploymentID strfmt.UUID
 
 	/* Update.
 
@@ -145,15 +145,15 @@ func (o *PatchDeploymentUsingPATCHParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
-// WithDepID adds the depID to the patch deployment using p a t c h params
-func (o *PatchDeploymentUsingPATCHParams) WithDepID(depID strfmt.UUID) *PatchDeploymentUsingPATCHParams {
-	o.SetDepID(depID)
+// WithDeploymentID adds the deploymentID to the patch deployment using p a t c h params
+func (o *PatchDeploymentUsingPATCHParams) WithDeploymentID(deploymentID strfmt.UUID) *PatchDeploymentUsingPATCHParams {
+	o.SetDeploymentID(deploymentID)
 	return o
 }
 
-// SetDepID adds the depId to the patch deployment using p a t c h params
-func (o *PatchDeploymentUsingPATCHParams) SetDepID(depID strfmt.UUID) {
-	o.DepID = depID
+// SetDeploymentID adds the deploymentId to the patch deployment using p a t c h params
+func (o *PatchDeploymentUsingPATCHParams) SetDeploymentID(deploymentID strfmt.UUID) {
+	o.DeploymentID = deploymentID
 }
 
 // WithUpdate adds the update to the patch deployment using p a t c h params
@@ -192,8 +192,8 @@ func (o *PatchDeploymentUsingPATCHParams) WriteToRequest(r runtime.ClientRequest
 		}
 	}
 
-	// path param depId
-	if err := r.SetPathParam("depId", o.DepID.String()); err != nil {
+	// path param deploymentId
+	if err := r.SetPathParam("deploymentId", o.DeploymentID.String()); err != nil {
 		return err
 	}
 	if o.Update != nil {

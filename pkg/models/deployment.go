@@ -98,10 +98,10 @@ type Deployment struct {
 	ProjectID string `json:"projectId,omitempty"`
 
 	// Expanded resources for the deployment. Content of this property will not be maintained backward compatible
-	Resources []*Resource `json:"resources"`
+	Resources []*DeploymentResource `json:"resources"`
 
-	// Deployment status.
-	// Enum: [CREATE_SUCCESSFUL CREATE_INPROGRESS CREATE_FAILED UPDATE_SUCCESSFUL UPDATE_INPROGRESS UPDATE_FAILED DELETE_SUCCESSFUL DELETE_INPROGRESS DELETE_FAILED ACTION_SUCCESSFUL ACTION_INPROGRESS ACTION_FAILED]
+	// Represents the status of deployment with respect to its life cycle operations - create/update/delete.
+	// Enum: [CREATE_SUCCESSFUL CREATE_INPROGRESS CREATE_FAILED UPDATE_SUCCESSFUL UPDATE_INPROGRESS UPDATE_FAILED DELETE_SUCCESSFUL DELETE_INPROGRESS DELETE_FAILED]
 	Status string `json:"status,omitempty"`
 }
 
@@ -333,7 +333,7 @@ var deploymentTypeStatusPropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["CREATE_SUCCESSFUL","CREATE_INPROGRESS","CREATE_FAILED","UPDATE_SUCCESSFUL","UPDATE_INPROGRESS","UPDATE_FAILED","DELETE_SUCCESSFUL","DELETE_INPROGRESS","DELETE_FAILED","ACTION_SUCCESSFUL","ACTION_INPROGRESS","ACTION_FAILED"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["CREATE_SUCCESSFUL","CREATE_INPROGRESS","CREATE_FAILED","UPDATE_SUCCESSFUL","UPDATE_INPROGRESS","UPDATE_FAILED","DELETE_SUCCESSFUL","DELETE_INPROGRESS","DELETE_FAILED"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -369,15 +369,6 @@ const (
 
 	// DeploymentStatusDELETEFAILED captures enum value "DELETE_FAILED"
 	DeploymentStatusDELETEFAILED string = "DELETE_FAILED"
-
-	// DeploymentStatusACTIONSUCCESSFUL captures enum value "ACTION_SUCCESSFUL"
-	DeploymentStatusACTIONSUCCESSFUL string = "ACTION_SUCCESSFUL"
-
-	// DeploymentStatusACTIONINPROGRESS captures enum value "ACTION_INPROGRESS"
-	DeploymentStatusACTIONINPROGRESS string = "ACTION_INPROGRESS"
-
-	// DeploymentStatusACTIONFAILED captures enum value "ACTION_FAILED"
-	DeploymentStatusACTIONFAILED string = "ACTION_FAILED"
 )
 
 // prop value enum
