@@ -25,11 +25,14 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/compute_gateway"
 	"github.com/vmware/vra-sdk-go/pkg/client/compute_nat"
 	"github.com/vmware/vra-sdk-go/pkg/client/content_source"
+	"github.com/vmware/vra-sdk-go/pkg/client/custom_integrations"
 	"github.com/vmware/vra-sdk-go/pkg/client/data_collector"
 	"github.com/vmware/vra-sdk-go/pkg/client/deployment"
 	"github.com/vmware/vra-sdk-go/pkg/client/deployment_actions"
 	"github.com/vmware/vra-sdk-go/pkg/client/deployments"
 	"github.com/vmware/vra-sdk-go/pkg/client/disk"
+	"github.com/vmware/vra-sdk-go/pkg/client/endpoints"
+	"github.com/vmware/vra-sdk-go/pkg/client/executions"
 	"github.com/vmware/vra-sdk-go/pkg/client/fabric_aws_volume_types"
 	"github.com/vmware/vra-sdk-go/pkg/client/fabric_azure_storage_account"
 	"github.com/vmware/vra-sdk-go/pkg/client/fabric_compute"
@@ -52,6 +55,7 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/network_ip_range"
 	"github.com/vmware/vra-sdk-go/pkg/client/network_profile"
 	"github.com/vmware/vra-sdk-go/pkg/client/perspective_sync"
+	"github.com/vmware/vra-sdk-go/pkg/client/pipelines"
 	"github.com/vmware/vra-sdk-go/pkg/client/policies"
 	"github.com/vmware/vra-sdk-go/pkg/client/policy_decisions"
 	"github.com/vmware/vra-sdk-go/pkg/client/policy_types"
@@ -68,7 +72,10 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/source_control_sync"
 	"github.com/vmware/vra-sdk-go/pkg/client/storage_profile"
 	"github.com/vmware/vra-sdk-go/pkg/client/tags"
+	"github.com/vmware/vra-sdk-go/pkg/client/triggers"
+	"github.com/vmware/vra-sdk-go/pkg/client/user_operations"
 	"github.com/vmware/vra-sdk-go/pkg/client/vcf"
+	"github.com/vmware/vra-sdk-go/pkg/client/variables"
 )
 
 // Default vmware cloud assembly iaas  API HTTP client.
@@ -128,11 +135,14 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 	cli.ComputeGateway = compute_gateway.New(transport, formats)
 	cli.ComputeNat = compute_nat.New(transport, formats)
 	cli.ContentSource = content_source.New(transport, formats)
+	cli.CustomIntegrations = custom_integrations.New(transport, formats)
 	cli.DataCollector = data_collector.New(transport, formats)
 	cli.Deployment = deployment.New(transport, formats)
 	cli.DeploymentActions = deployment_actions.New(transport, formats)
 	cli.Deployments = deployments.New(transport, formats)
 	cli.Disk = disk.New(transport, formats)
+	cli.Endpoints = endpoints.New(transport, formats)
+	cli.Executions = executions.New(transport, formats)
 	cli.FabricawsVolumeTypes = fabric_aws_volume_types.New(transport, formats)
 	cli.FabricAzureStorageAccount = fabric_azure_storage_account.New(transport, formats)
 	cli.FabricCompute = fabric_compute.New(transport, formats)
@@ -155,6 +165,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 	cli.NetworkIPRange = network_ip_range.New(transport, formats)
 	cli.NetworkProfile = network_profile.New(transport, formats)
 	cli.PerspectiveSync = perspective_sync.New(transport, formats)
+	cli.Pipelines = pipelines.New(transport, formats)
 	cli.Policies = policies.New(transport, formats)
 	cli.PolicyDecisions = policy_decisions.New(transport, formats)
 	cli.PolicyTypes = policy_types.New(transport, formats)
@@ -171,7 +182,10 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 	cli.SourceControlSync = source_control_sync.New(transport, formats)
 	cli.StorageProfile = storage_profile.New(transport, formats)
 	cli.Tags = tags.New(transport, formats)
+	cli.Triggers = triggers.New(transport, formats)
+	cli.UserOperations = user_operations.New(transport, formats)
 	cli.Vcf = vcf.New(transport, formats)
+	cli.Variables = variables.New(transport, formats)
 	return cli
 }
 
@@ -246,6 +260,8 @@ type MulticloudIaaS struct {
 
 	ContentSource content_source.ClientService
 
+	CustomIntegrations custom_integrations.ClientService
+
 	DataCollector data_collector.ClientService
 
 	Deployment deployment.ClientService
@@ -255,6 +271,10 @@ type MulticloudIaaS struct {
 	Deployments deployments.ClientService
 
 	Disk disk.ClientService
+
+	Endpoints endpoints.ClientService
+
+	Executions executions.ClientService
 
 	FabricawsVolumeTypes fabric_aws_volume_types.ClientService
 
@@ -300,6 +320,8 @@ type MulticloudIaaS struct {
 
 	PerspectiveSync perspective_sync.ClientService
 
+	Pipelines pipelines.ClientService
+
 	Policies policies.ClientService
 
 	PolicyDecisions policy_decisions.ClientService
@@ -332,7 +354,13 @@ type MulticloudIaaS struct {
 
 	Tags tags.ClientService
 
+	Triggers triggers.ClientService
+
+	UserOperations user_operations.ClientService
+
 	Vcf vcf.ClientService
+
+	Variables variables.ClientService
 
 	Transport runtime.ClientTransport
 }
@@ -355,11 +383,14 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.ComputeGateway.SetTransport(transport)
 	c.ComputeNat.SetTransport(transport)
 	c.ContentSource.SetTransport(transport)
+	c.CustomIntegrations.SetTransport(transport)
 	c.DataCollector.SetTransport(transport)
 	c.Deployment.SetTransport(transport)
 	c.DeploymentActions.SetTransport(transport)
 	c.Deployments.SetTransport(transport)
 	c.Disk.SetTransport(transport)
+	c.Endpoints.SetTransport(transport)
+	c.Executions.SetTransport(transport)
 	c.FabricawsVolumeTypes.SetTransport(transport)
 	c.FabricAzureStorageAccount.SetTransport(transport)
 	c.FabricCompute.SetTransport(transport)
@@ -382,6 +413,7 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.NetworkIPRange.SetTransport(transport)
 	c.NetworkProfile.SetTransport(transport)
 	c.PerspectiveSync.SetTransport(transport)
+	c.Pipelines.SetTransport(transport)
 	c.Policies.SetTransport(transport)
 	c.PolicyDecisions.SetTransport(transport)
 	c.PolicyTypes.SetTransport(transport)
@@ -398,5 +430,8 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.SourceControlSync.SetTransport(transport)
 	c.StorageProfile.SetTransport(transport)
 	c.Tags.SetTransport(transport)
+	c.Triggers.SetTransport(transport)
+	c.UserOperations.SetTransport(transport)
 	c.Vcf.SetTransport(transport)
+	c.Variables.SetTransport(transport)
 }
