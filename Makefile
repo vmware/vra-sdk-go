@@ -10,7 +10,8 @@ swagger: check-swagger
 	./hack/fix_iaas_swagger
 	./hack/fix_blueprint_swagger
 	./hack/fix_catalog_deployment_swagger
-	swagger mixin -c=1 swagger/vra-iaas-fixed.json swagger/vra-blueprint-fixed.json swagger/vra-catalog-deployment-fixed.json swagger/vra-content.json | python3 -mjson.tool > swagger/vra-combined.json
+	./hack/fix_pipeline_swagger
+	swagger mixin -c=1 swagger/vra-iaas-fixed.json swagger/vra-blueprint-fixed.json swagger/vra-catalog-deployment-fixed.json swagger/vra-content.json swagger/vra-pipeline-fixed.json | python3 -mjson.tool > swagger/vra-combined.json
 	./hack/fix_vra_swagger --omit-security
 	swagger generate client -f swagger/vra-combined.json -t pkg
 	./hack/fixup.sh
@@ -34,6 +35,12 @@ update-iaas:
 
 update-content:
 	curl --insecure 'https://${SWAGGER_ENDPOINT}/content/api/swagger/v2/api-docs?group=2019-01-15' | python3 -mjson.tool > swagger/vra-content.json
+
+update-pipeline:
+	curl --insecure 'https://${SWAGGER_ENDPOINT}/pipeline/api/swagger/v2/api-docs?group=2019-10-17' | python3 -mjson.tool > swagger/vra-pipeline.json
+
+test:
+	go build -o sdk-test
 
 clean:
 	rm swagger/vra-combined.json
