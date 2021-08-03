@@ -1,0 +1,41 @@
+#!/usr/bin/env python3
+
+import argparse
+import json
+
+
+# This is the location of the Project swagger
+old_filename = "swagger/vra-project.json"
+new_filename = "swagger/vra-project-fixed.json"
+
+
+def remove_global_security(swagger):
+    if 'securityDefinitions' in swagger:
+        del swagger['securityDefinitions']
+
+
+# See https://jira.eng.vmware.com/browse/TCS-4017 for context
+def remove_security(swagger):
+    for p in swagger['paths']:
+        param_list = swagger['paths'][p]
+        for method in param_list:
+            if 'security' in swagger['paths'][p][method]:
+                del swagger['paths'][p][method]['security']
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--omit-security', action='store_false')
+    args = parser.parse_args()
+
+    # read in the swagger spec
+    swagger = json.loads(open(old_filename).read())
+
+    if args.omit_security:
+        remove_global_security(swagger)
+        remove_security(swagger)
+
+    # Overwrite the swagger spec
+    f = open(new_filename, "w")
+    f.write(json.dumps(swagger, sort_keys=False, indent=2))
+    f.write('\n')

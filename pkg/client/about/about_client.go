@@ -32,6 +32,8 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	GetAboutPage(params *GetAboutPageParams, opts ...ClientOption) (*GetAboutPageOK, error)
 
+	GetAboutPageMixin4(params *GetAboutPageMixin4Params, opts ...ClientOption) (*GetAboutPageMixin4OK, error)
+
 	GetAboutUsingGET(params *GetAboutUsingGETParams, opts ...ClientOption) (*GetAboutUsingGETOK, error)
 
 	GetAboutUsingGET1(params *GetAboutUsingGET1Params, opts ...ClientOption) (*GetAboutUsingGET1OK, error)
@@ -80,6 +82,48 @@ func (a *Client) GetAboutPage(params *GetAboutPageParams, opts ...ClientOption) 
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getAboutPage: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetAboutPageMixin4 gets about page
+
+  The page contains information about the supported API versions and the latest API version. The version parameter is optional but highly recommended.
+If you do not specify explicitly an exact version, you will be calling the latest supported API version.
+Here is an example of a call which specifies the exact version you are using: `GET /project-service/api/projects?apiVersion=2019-01-15`
+*/
+func (a *Client) GetAboutPageMixin4(params *GetAboutPageMixin4Params, opts ...ClientOption) (*GetAboutPageMixin4OK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetAboutPageMixin4Params()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getAboutPageMixin4",
+		Method:             "GET",
+		PathPattern:        "/project-service/api/about",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetAboutPageMixin4Reader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetAboutPageMixin4OK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getAboutPageMixin4: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
