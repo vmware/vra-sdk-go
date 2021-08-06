@@ -1,0 +1,1279 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "2019-01-15",
+        "title": "Project Service API"
+    },
+    "host": "api.mgmt.cloud.vmware.com",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "About",
+            "description": "About page API"
+        },
+        {
+            "name": "Project",
+            "description": "Project Resource Metadata Controller"
+        }
+    ],
+    "paths": {
+        "/project-service/api/about": {
+            "get": {
+                "tags": [
+                    "About"
+                ],
+                "summary": "Get about page",
+                "description": "The page contains information about the supported API versions and the latest API version. The version parameter is optional but highly recommended.\nIf you do not specify explicitly an exact version, you will be calling the latest supported API version.\nHere is an example of a call which specifies the exact version you are using: `GET /project-service/api/projects?apiVersion=2019-01-15`",
+                "operationId": "getAboutPage",
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/About"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/project-service/api/projects": {
+            "get": {
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Get all projects",
+                "description": "Get all projects with specified paging parameters.",
+                "operationId": "getAllProjectsUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "$select",
+                        "in": "query",
+                        "description": "Select a subset of properties to include in the response. Possible values for this parameter are id, name, operationTimeout, constraints.",
+                        "required": false,
+                        "type": "string",
+                        "x-example": "id,name,constraints"
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format. For versioning information refer to /project-service/api/about.",
+                        "required": false,
+                        "type": "string",
+                        "x-example": "2019-01-15"
+                    },
+                    {
+                        "name": "excludeNotSharedProjectsForMember",
+                        "in": "query",
+                        "description": "Filters projects based on the member role and the access to the resources of the project. When the value is true it will not return the projects in which the current user is only member and the project is not with shared resources.",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "excludeViewer",
+                        "in": "query",
+                        "description": "Filters projects based on the viewer role. When the value is true it will not return the projects in which the current user is only viewer and will ignore privileged roles: CodeStream:Developer and CodeStream:Executor, if the user has them. Else it will return all projects that the user can read. The default value is false.",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "withAnyPermission",
+                        "in": "query",
+                        "description": "Optional permissions that, if granted to the user, allow him access to the proper set of projects. If the user actually has any of those permissions, the 'excludeViewer' parameter has no effect.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "'Success' with projects on pages",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfProjects"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            },
+            "post": {
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Creates a project",
+                "operationId": "createUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format. For versioning information refer to /project-service/api/about.",
+                        "required": false,
+                        "type": "string",
+                        "x-example": "2019-01-15"
+                    },
+                    {
+                        "in": "body",
+                        "name": "request",
+                        "description": "The project to create.",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/ProjectSpecification"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "'Created' with the newly created project",
+                        "schema": {
+                            "$ref": "#/definitions/Project"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request - bad data"
+                    },
+                    "403": {
+                        "description": "Forbidden, the user lacks permissions"
+                    },
+                    "409": {
+                        "description": "Conflict, project with this name already exists"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/project-service/api/projects/{id}": {
+            "get": {
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Retrieves a project",
+                "description": "Retrieves a project by id.",
+                "operationId": "getProjectUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format. For versioning information refer to /project-service/api/about.",
+                        "required": false,
+                        "type": "string",
+                        "x-example": "2019-01-15"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the project.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "withAnyPermission",
+                        "in": "query",
+                        "description": "Optional permissions that, if granted to the user, allow him access to the proper set of projects. If the user actually has any of those permissions, the 'excludeViewer' parameter has no effect.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "'Success' with the Project",
+                        "schema": {
+                            "$ref": "#/definitions/Project"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden, the user lacks permissions"
+                    },
+                    "404": {
+                        "description": "'Not found' if no project with the provided id"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            },
+            "delete": {
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Deletes a project",
+                "description": "Deletes a project by id.",
+                "operationId": "deleteProjectUsingDELETE",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format. For versioning information refer to /project-service/api/about.",
+                        "required": false,
+                        "type": "string",
+                        "x-example": "2019-01-15"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the project.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "'Success'",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden, the user lacks permissions"
+                    },
+                    "409": {
+                        "description": "Conflict, when the project is in use"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            },
+            "patch": {
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Modifies a project",
+                "description": "Modifies a project by id. Fields that can be modified: name, description, constraints, properties, cost, operation timeout, shared resources.",
+                "operationId": "modifyProjectUsingPATCH",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format. For versioning information refer to /project-service/api/about.",
+                        "required": false,
+                        "type": "string",
+                        "x-example": "2019-01-15"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the project.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "project",
+                        "description": "project",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UpdateProjectSpecification"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "'Success' with the Project",
+                        "schema": {
+                            "$ref": "#/definitions/Project"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden, the user lacks permissions"
+                    },
+                    "404": {
+                        "description": "'Not found' if no project with the provided id"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/project-service/api/projects/{id}/cost": {
+            "patch": {
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Modifies a project cost",
+                "description": "Modifies the cost of a project specified by id.",
+                "operationId": "modifyProjectCostsUsingPATCH",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format. For versioning information refer to /project-service/api/about.",
+                        "required": false,
+                        "type": "string",
+                        "x-example": "2019-01-15"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the project.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "projectCost",
+                        "description": "projectCost",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ProjectCost"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "'Success' with the Project",
+                        "schema": {
+                            "$ref": "#/definitions/Project"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden, the user lacks permissions"
+                    },
+                    "404": {
+                        "description": "'Not found' if no project with the provided id"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/project-service/api/projects/{id}/principals": {
+            "patch": {
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Modifies principals assigned to a project",
+                "description": "Modifies principals assigned to a project by id.",
+                "operationId": "modifyProjectPrincipalsUsingPATCH",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format. For versioning information refer to /project-service/api/about.",
+                        "required": false,
+                        "type": "string",
+                        "x-example": "2019-01-15"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the project.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "roles",
+                        "description": "roles",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ProjectPrincipalsAssignment"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "'Success' with the Project",
+                        "schema": {
+                            "$ref": "#/definitions/Project"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden, the user lacks permissions"
+                    },
+                    "404": {
+                        "description": "'Not found' if no project with the provided id"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/project-service/api/projects/{id}/resource-metadata": {
+            "get": {
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Retrieves a resource metadata for a project",
+                "description": "Retrieves a resource metadata for a project by id.",
+                "operationId": "getUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format. For versioning information refer to /project-service/api/about.",
+                        "required": false,
+                        "type": "string",
+                        "x-example": "2019-01-15"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "\u0422he id of the project.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "'OK' with the ProjectResourceMetadata",
+                        "schema": {
+                            "$ref": "#/definitions/ProjectResourceMetadata"
+                        }
+                    },
+                    "404": {
+                        "description": "'Not found' if no project with the provided id"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            },
+            "patch": {
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Modifies a project resource metadata",
+                "description": "Modifies the resources metadata of a project specified by id.",
+                "operationId": "updateUsingPATCH",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format. For versioning information refer to /project-service/api/about.",
+                        "required": false,
+                        "type": "string",
+                        "x-example": "2019-01-15"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "\u0422he id of the project.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "request",
+                        "description": "request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ProjectResourceMetadata"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "'OK' with the newly updated project resource metadata",
+                        "schema": {
+                            "$ref": "#/definitions/ProjectResourceMetadata"
+                        }
+                    },
+                    "400": {
+                        "description": "'Bad request' on validation failure"
+                    },
+                    "404": {
+                        "description": "'Not found' if no project with the provided id"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        }
+    },
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    },
+    "definitions": {
+        "About": {
+            "type": "object",
+            "required": [
+                "latestApiVersion",
+                "supportedApis"
+            ],
+            "discriminator": "State object representing an about page that includes api versioning information.",
+            "properties": {
+                "latestApiVersion": {
+                    "type": "string",
+                    "description": "The latest version of the API in yyyy-MM-dd format (UTC)."
+                },
+                "supportedApis": {
+                    "type": "array",
+                    "description": "A collection of all currently supported api versions.",
+                    "items": {
+                        "$ref": "#/definitions/ApiDescription"
+                    }
+                }
+            },
+            "title": "About",
+            "description": "State object representing an about page that includes api versioning information."
+        },
+        "ApiDescription": {
+            "type": "object",
+            "required": [
+                "apiVersion",
+                "documentationLink"
+            ],
+            "properties": {
+                "apiVersion": {
+                    "type": "string",
+                    "description": "The version of the API in yyyy-MM-dd format (UTC)."
+                },
+                "deprecationPolicy": {
+                    "description": "The deprecation policy may contain information whether the api is in deprecated state and when it expires.",
+                    "$ref": "#/definitions/DeprecationPolicy"
+                },
+                "documentationLink": {
+                    "type": "string",
+                    "description": "The link to the documentation of this api version."
+                }
+            },
+            "title": "ApiDescription"
+        },
+        "Condition": {
+            "type": "object",
+            "discriminator": "Definition of a condition a constraint may have.",
+            "properties": {
+                "enforcement": {
+                    "type": "string",
+                    "enum": [
+                        "HARD",
+                        "SOFT"
+                    ]
+                },
+                "expression": {
+                    "$ref": "#/definitions/Tag"
+                },
+                "occurrence": {
+                    "type": "string",
+                    "enum": [
+                        "MUST_OCCUR",
+                        "MUST_NOT_OCCUR"
+                    ]
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "TAG"
+                    ]
+                }
+            },
+            "title": "Condition",
+            "description": "Definition of a condition a constraint may have."
+        },
+        "Constraint": {
+            "type": "object",
+            "discriminator": "Definition of a constraint that one resource may have.",
+            "properties": {
+                "conditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Condition"
+                    }
+                }
+            },
+            "title": "Constraint",
+            "description": "Definition of a constraint that one resource may have."
+        },
+        "DeprecationPolicy": {
+            "type": "object",
+            "properties": {
+                "deprecatedAt": {
+                    "type": "string",
+                    "description": "The date the api was deprecated in yyyy-MM-dd format (UTC). Could be empty if the api is not deprecated."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A free text description that contains information about why this api is deprecated and how to migrate to a newer version."
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "description": "The date the api support will be dropped in yyyy-MM-dd format (UTC). The api may still be available for use after that date but this is not guaranteed."
+                }
+            },
+            "title": "DeprecationPolicy"
+        },
+        "LockRequest": {
+            "type": "object",
+            "properties": {
+                "serviceName": {
+                    "type": "string"
+                }
+            },
+            "title": "LockRequest"
+        },
+        "PageOfProjects": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Project"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "pageable": {
+                    "$ref": "#/definitions/Pageable"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfProjects"
+        },
+        "Pageable": {
+            "type": "object",
+            "properties": {
+                "offset": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "pageNumber": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "pageSize": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "paged": {
+                    "type": "boolean"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "unpaged": {
+                    "type": "boolean"
+                }
+            },
+            "title": "Pageable"
+        },
+        "Principal": {
+            "type": "object",
+            "required": [
+                "email"
+            ],
+            "discriminator": "A representation of a user or group.",
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "example": "administrator@vmware.com",
+                    "description": "The email of the user or name of the group."
+                },
+                "type": {
+                    "type": "string",
+                    "example": "user",
+                    "description": "Type of the principal. Currently supported 'user' (default) and 'group'."
+                }
+            },
+            "title": "Principal",
+            "description": "A representation of a user or group."
+        },
+        "PrincipalRole": {
+            "type": "object",
+            "required": [
+                "email"
+            ],
+            "discriminator": "A representation of a user or group.",
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "example": "administrator@vmware.com",
+                    "description": "The email of the user or name of the group."
+                },
+                "role": {
+                    "type": "string",
+                    "example": "member",
+                    "description": "Role of this member. Currently supported 'member', 'viewer' and 'administrator'."
+                },
+                "type": {
+                    "type": "string",
+                    "example": "user",
+                    "description": "Type of the principal. Currently supported 'user' (default) and 'group'."
+                }
+            },
+            "title": "PrincipalRole",
+            "description": "A representation of a user or group."
+        },
+        "PrincipalRoleAssignment": {
+            "type": "object",
+            "discriminator": "List of user ids to add and remove from a project",
+            "properties": {
+                "add": {
+                    "type": "array",
+                    "description": "Ids of users to add",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "remove": {
+                    "type": "array",
+                    "description": "Ids of users to remove",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "title": "PrincipalRoleAssignment",
+            "description": "List of user ids to add and remove from a project"
+        },
+        "Project": {
+            "type": "object",
+            "discriminator": "A Project is a group of users.",
+            "properties": {
+                "administrators": {
+                    "type": "array",
+                    "example": [
+                        {
+                            "email": "administrator@vmware.com",
+                            "type": "user"
+                        }
+                    ],
+                    "description": "List of administrator users associated with the project. Only administrators can manage project's configuration.",
+                    "items": {
+                        "$ref": "#/definitions/Principal"
+                    }
+                },
+                "constraints": {
+                    "type": "object",
+                    "example": {
+                        "network": {
+                            "conditions": [
+                                {
+                                    "type": "TAG",
+                                    "enforcement": "HARD",
+                                    "occurrence": "MUST_OCCUR",
+                                    "expression": {
+                                        "key": "key",
+                                        "value": "value"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "description": "List of constraints of the project.",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/Constraint"
+                    }
+                },
+                "cost": {
+                    "example": {
+                        "cost": "1000"
+                    },
+                    "description": "Cost of the project. ",
+                    "$ref": "#/definitions/ProjectCost"
+                },
+                "description": {
+                    "type": "string",
+                    "example": "my-description",
+                    "description": "A human-friendly description."
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Id of the project."
+                },
+                "members": {
+                    "type": "array",
+                    "example": [
+                        {
+                            "email": "member@vmware.com",
+                            "type": "user"
+                        }
+                    ],
+                    "description": "List of member users associated with the project. ",
+                    "items": {
+                        "$ref": "#/definitions/Principal"
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "example": "my-name",
+                    "description": "A human-friendly name used as an identifier in APIs that support this option."
+                },
+                "operationTimeout": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The timeout that should be used for Blueprint operations and Provisioning tasks. The timeout is in seconds."
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "The id of the org this project belongs to."
+                },
+                "properties": {
+                    "type": "object",
+                    "example": {
+                        "myproperty": "enforcement",
+                        "__projectPlacementPolicy": "SPREAD",
+                        "__namingTemplate": "my-resource-template",
+                        "__allowTerraformCloudzoneMapping": "true"
+                    },
+                    "description": "List of properties of the project, to be applied to any resource provisioned within the project.\n\nThe property with key __projectPlacementPolicy shows what is the placement policy for the resources provisioned in this project, which can be 1 of only 2 possible values DEFAULT or SPREAD. If not specified, it is set as DEFAULT.\n\nThe property with key __namingTemplate specifies a custom naming template for resources provisioned in this project.\n\nThe property with key __allowTerraformCloudzoneMapping shows if the project allows Terraform cloudzone mapping. It can be set to either true or false. By default, it is set to false.",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "sharedResources": {
+                    "type": "boolean",
+                    "description": "Specifies whether the resources in this projects are shared or not."
+                },
+                "viewers": {
+                    "type": "array",
+                    "example": [
+                        {
+                            "email": "viewer@vmware.com",
+                            "type": "user"
+                        }
+                    ],
+                    "description": "List of viewer users associated with the project. ",
+                    "items": {
+                        "$ref": "#/definitions/Principal"
+                    }
+                }
+            },
+            "title": "Project",
+            "description": "A Project is a group of users."
+        },
+        "ProjectCost": {
+            "type": "object",
+            "discriminator": "A representation of a project cost.",
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "The unique code for the message."
+                },
+                "cost": {
+                    "type": "number",
+                    "description": "The cost of project."
+                },
+                "costSyncTime": {
+                    "type": "string",
+                    "example": "2011-12-03T10:15:30Z",
+                    "description": "The date as of which project cost is calculated. Timestamp format: YYYY-MM-DDThh:mm:ss.SSSZ"
+                },
+                "costUnit": {
+                    "type": "string",
+                    "example": "USD",
+                    "description": "The unit of cost of project. This is a 3 letter currency code."
+                },
+                "message": {
+                    "type": "string",
+                    "description": "The message regarding the project cost."
+                }
+            },
+            "title": "ProjectCost",
+            "description": "A representation of a project cost."
+        },
+        "ProjectPrincipalsAssignment": {
+            "type": "object",
+            "properties": {
+                "modify": {
+                    "type": "array",
+                    "description": "Principal to add or change role in project.",
+                    "items": {
+                        "$ref": "#/definitions/PrincipalRole"
+                    }
+                },
+                "remove": {
+                    "type": "array",
+                    "description": "Principal to remove from project.",
+                    "items": {
+                        "$ref": "#/definitions/PrincipalRole"
+                    }
+                }
+            },
+            "title": "ProjectPrincipalsAssignment"
+        },
+        "ProjectResourceMetadata": {
+            "type": "object",
+            "discriminator": "Metadata related to resources provisioned within a project.",
+            "properties": {
+                "tags": {
+                    "type": "array",
+                    "example": [
+                        {
+                            "key": "key1",
+                            "value": "value1"
+                        },
+                        {
+                            "key": "key1"
+                        }
+                    ],
+                    "description": "List of tags to be applied to any Compute resource provisioned within the project.",
+                    "items": {
+                        "$ref": "#/definitions/Tag"
+                    }
+                }
+            },
+            "title": "ProjectResourceMetadata",
+            "description": "Metadata related to resources provisioned within a project."
+        },
+        "ProjectRoles": {
+            "type": "object",
+            "properties": {
+                "administrators": {
+                    "description": "Administrators to add/or or remove",
+                    "$ref": "#/definitions/PrincipalRoleAssignment"
+                },
+                "members": {
+                    "description": "Members to add and/or remove",
+                    "$ref": "#/definitions/PrincipalRoleAssignment"
+                },
+                "viewers": {
+                    "$ref": "#/definitions/PrincipalRoleAssignment"
+                }
+            },
+            "title": "ProjectRoles"
+        },
+        "ProjectSpecification": {
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "discriminator": "Represents a specification for a project. A Project is a group of users.",
+            "properties": {
+                "administrators": {
+                    "type": "array",
+                    "example": [
+                        {
+                            "email": "administrator@vmware.com",
+                            "type": "user"
+                        }
+                    ],
+                    "description": "List of administrator users associated with the project. Only administrators can manage project's configuration.",
+                    "items": {
+                        "$ref": "#/definitions/Principal"
+                    }
+                },
+                "constraints": {
+                    "type": "object",
+                    "example": {
+                        "network": {
+                            "conditions": [
+                                {
+                                    "type": "TAG",
+                                    "enforcement": "HARD",
+                                    "occurrence": "MUST_OCCUR",
+                                    "expression": {
+                                        "key": "key",
+                                        "value": "value"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "description": "List of constraints of the project.",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/Constraint"
+                    }
+                },
+                "cost": {
+                    "example": {
+                        "cost": "1000"
+                    },
+                    "description": "Cost of the project. ",
+                    "$ref": "#/definitions/ProjectCost"
+                },
+                "description": {
+                    "type": "string",
+                    "example": "my-description",
+                    "description": "A human-friendly description."
+                },
+                "members": {
+                    "type": "array",
+                    "example": [
+                        {
+                            "email": "member@vmware.com",
+                            "type": "user"
+                        }
+                    ],
+                    "description": "List of member users associated with the project. ",
+                    "items": {
+                        "$ref": "#/definitions/Principal"
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "example": "my-name",
+                    "description": "A human-friendly name used as an identifier in APIs that support this option."
+                },
+                "operationTimeout": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The timeout that should be used for Blueprint operations and Provisioning tasks. The timeout is in seconds."
+                },
+                "properties": {
+                    "type": "object",
+                    "example": {
+                        "myproperty": "enforcement",
+                        "__projectPlacementPolicy": "SPREAD",
+                        "__namingTemplate": "my-resource-template-${######}",
+                        "__allowTerraformCloudzoneMapping": "true"
+                    },
+                    "description": "List of properties of the project, to be applied to any resource provisioned within the project.\n\nThe project placement policy is set through the property with key: __projectPlacementPolicy, which can take 1 of only 2 possible values DEFAULT or SPREAD. If not specified, it is set as DEFAULT.\n\nThe naming template of resources provisioned in this project can be specified through the property with key: __namingTemplate.\nHint: Avoid conflicting names by generating digits in names with ${######}\n\nYou can allow Terraform cloudzone mapping through the property with key: __allowTerraformCloudzoneMapping. It can be set to either true or false. By default, it is set to false.",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "sharedResources": {
+                    "type": "boolean",
+                    "description": "Specifies whether the resources in this projects are shared or not."
+                },
+                "viewers": {
+                    "type": "array",
+                    "example": [
+                        {
+                            "email": "viewer@vmware.com",
+                            "type": "user"
+                        }
+                    ],
+                    "description": "List of viewer users associated with the project. ",
+                    "items": {
+                        "$ref": "#/definitions/Principal"
+                    }
+                }
+            },
+            "title": "ProjectSpecification",
+            "description": "Represents a specification for a project. A Project is a group of users."
+        },
+        "Sort": {
+            "type": "object",
+            "properties": {
+                "empty": {
+                    "type": "boolean"
+                },
+                "sorted": {
+                    "type": "boolean"
+                },
+                "unsorted": {
+                    "type": "boolean"
+                }
+            },
+            "title": "Sort"
+        },
+        "Tag": {
+            "type": "object",
+            "discriminator": "A key value pair object.",
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "example": "my-key",
+                    "description": "Key of the object"
+                },
+                "value": {
+                    "type": "string",
+                    "example": "my-value",
+                    "description": "Value of the object"
+                }
+            },
+            "title": "Tag",
+            "description": "A key value pair object."
+        },
+        "UpdateProjectSpecification": {
+            "type": "object",
+            "discriminator": "Represents a specification for a updating a project.",
+            "properties": {
+                "constraints": {
+                    "type": "object",
+                    "example": {
+                        "network": {
+                            "conditions": [
+                                {
+                                    "type": "TAG",
+                                    "enforcement": "HARD",
+                                    "occurrence": "MUST_OCCUR",
+                                    "expression": {
+                                        "key": "key",
+                                        "value": "value"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "description": "List of constraints of the project.",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/Constraint"
+                    }
+                },
+                "description": {
+                    "type": "string",
+                    "example": "my-description",
+                    "description": "A human-friendly description."
+                },
+                "name": {
+                    "type": "string",
+                    "example": "my-name",
+                    "description": "A human-friendly name used as an identifier in APIs that support this option."
+                },
+                "operationTimeout": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The timeout that should be used for Blueprint operations and Provisioning tasks. The timeout is in seconds."
+                },
+                "properties": {
+                    "type": "object",
+                    "example": {
+                        "myproperty": "enforcement",
+                        "__projectPlacementPolicy": "SPREAD",
+                        "__namingTemplate": "my-resource-template-${######}",
+                        "__allowTerraformCloudzoneMapping": "true"
+                    },
+                    "description": "List of properties of the project, to be applied to any resource provisioned within the project.\n\nThe project placement policy is set through the property with key: __projectPlacementPolicy, which can take 1 of only 2 possible values DEFAULT or SPREAD. If not specified, it is set as DEFAULT.\n\nThe naming template of resources provisioned in this project can be specified through the property with key: __namingTemplate.\nHint: Avoid conflicting names by generating digits in names with ${######}\n\nYou can allow Terraform cloudzone mapping through the property with key: __allowTerraformCloudzoneMapping. It can be set to either true or false. By default, it is set to false.",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "sharedResources": {
+                    "type": "boolean",
+                    "description": "Specifies whether the resources in this projects are shared or not."
+                }
+            },
+            "title": "UpdateProjectSpecification",
+            "description": "Represents a specification for a updating a project."
+        }
+    }
+}

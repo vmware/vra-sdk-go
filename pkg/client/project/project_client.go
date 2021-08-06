@@ -32,17 +32,35 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	CreateProject(params *CreateProjectParams, opts ...ClientOption) (*CreateProjectCreated, error)
 
+	CreateUsingPOSTMixin4(params *CreateUsingPOSTMixin4Params, opts ...ClientOption) (*CreateUsingPOSTMixin4Created, error)
+
 	DeleteProject(params *DeleteProjectParams, opts ...ClientOption) (*DeleteProjectNoContent, error)
+
+	DeleteProjectUsingDELETE(params *DeleteProjectUsingDELETEParams, opts ...ClientOption) (*DeleteProjectUsingDELETEOK, error)
+
+	GetAllProjectsUsingGET(params *GetAllProjectsUsingGETParams, opts ...ClientOption) (*GetAllProjectsUsingGETOK, error)
 
 	GetProject(params *GetProjectParams, opts ...ClientOption) (*GetProjectOK, error)
 
 	GetProjectResourceMetadata(params *GetProjectResourceMetadataParams, opts ...ClientOption) (*GetProjectResourceMetadataOK, error)
 
+	GetProjectUsingGET(params *GetProjectUsingGETParams, opts ...ClientOption) (*GetProjectUsingGETOK, error)
+
 	GetProjects(params *GetProjectsParams, opts ...ClientOption) (*GetProjectsOK, error)
+
+	GetUsingGETMixin4(params *GetUsingGETMixin4Params, opts ...ClientOption) (*GetUsingGETMixin4OK, error)
+
+	ModifyProjectCostsUsingPATCH(params *ModifyProjectCostsUsingPATCHParams, opts ...ClientOption) (*ModifyProjectCostsUsingPATCHOK, error)
+
+	ModifyProjectPrincipalsUsingPATCH(params *ModifyProjectPrincipalsUsingPATCHParams, opts ...ClientOption) (*ModifyProjectPrincipalsUsingPATCHOK, error)
+
+	ModifyProjectUsingPATCH(params *ModifyProjectUsingPATCHParams, opts ...ClientOption) (*ModifyProjectUsingPATCHOK, error)
 
 	UpdateProject(params *UpdateProjectParams, opts ...ClientOption) (*UpdateProjectOK, error)
 
 	UpdateProjectResourceMetadata(params *UpdateProjectResourceMetadataParams, opts ...ClientOption) (*UpdateProjectResourceMetadataOK, error)
+
+	UpdateUsingPATCH(params *UpdateUsingPATCHParams, opts ...ClientOption) (*UpdateUsingPATCHOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -88,6 +106,44 @@ func (a *Client) CreateProject(params *CreateProjectParams, opts ...ClientOption
 }
 
 /*
+  CreateUsingPOSTMixin4 creates a project
+*/
+func (a *Client) CreateUsingPOSTMixin4(params *CreateUsingPOSTMixin4Params, opts ...ClientOption) (*CreateUsingPOSTMixin4Created, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateUsingPOSTMixin4Params()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "createUsingPOSTMixin4",
+		Method:             "POST",
+		PathPattern:        "/project-service/api/projects",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CreateUsingPOSTMixin4Reader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CreateUsingPOSTMixin4Created)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for createUsingPOSTMixin4: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   DeleteProject deletes project
 
   Delete project with a given id
@@ -124,6 +180,86 @@ func (a *Client) DeleteProject(params *DeleteProjectParams, opts ...ClientOption
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for deleteProject: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  DeleteProjectUsingDELETE deletes a project
+
+  Deletes a project by id.
+*/
+func (a *Client) DeleteProjectUsingDELETE(params *DeleteProjectUsingDELETEParams, opts ...ClientOption) (*DeleteProjectUsingDELETEOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteProjectUsingDELETEParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteProjectUsingDELETE",
+		Method:             "DELETE",
+		PathPattern:        "/project-service/api/projects/{id}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteProjectUsingDELETEReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteProjectUsingDELETEOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteProjectUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetAllProjectsUsingGET gets all projects
+
+  Get all projects with specified paging parameters.
+*/
+func (a *Client) GetAllProjectsUsingGET(params *GetAllProjectsUsingGETParams, opts ...ClientOption) (*GetAllProjectsUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetAllProjectsUsingGETParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getAllProjectsUsingGET",
+		Method:             "GET",
+		PathPattern:        "/project-service/api/projects",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetAllProjectsUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetAllProjectsUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getAllProjectsUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -208,6 +344,46 @@ func (a *Client) GetProjectResourceMetadata(params *GetProjectResourceMetadataPa
 }
 
 /*
+  GetProjectUsingGET retrieves a project
+
+  Retrieves a project by id.
+*/
+func (a *Client) GetProjectUsingGET(params *GetProjectUsingGETParams, opts ...ClientOption) (*GetProjectUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetProjectUsingGETParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getProjectUsingGET",
+		Method:             "GET",
+		PathPattern:        "/project-service/api/projects/{id}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetProjectUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetProjectUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getProjectUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   GetProjects gets projects
 
   Get all projects
@@ -244,6 +420,166 @@ func (a *Client) GetProjects(params *GetProjectsParams, opts ...ClientOption) (*
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getProjects: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetUsingGETMixin4 retrieves a resource metadata for a project
+
+  Retrieves a resource metadata for a project by id.
+*/
+func (a *Client) GetUsingGETMixin4(params *GetUsingGETMixin4Params, opts ...ClientOption) (*GetUsingGETMixin4OK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetUsingGETMixin4Params()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getUsingGETMixin4",
+		Method:             "GET",
+		PathPattern:        "/project-service/api/projects/{id}/resource-metadata",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetUsingGETMixin4Reader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetUsingGETMixin4OK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getUsingGETMixin4: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  ModifyProjectCostsUsingPATCH modifies a project cost
+
+  Modifies the cost of a project specified by id.
+*/
+func (a *Client) ModifyProjectCostsUsingPATCH(params *ModifyProjectCostsUsingPATCHParams, opts ...ClientOption) (*ModifyProjectCostsUsingPATCHOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewModifyProjectCostsUsingPATCHParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "modifyProjectCostsUsingPATCH",
+		Method:             "PATCH",
+		PathPattern:        "/project-service/api/projects/{id}/cost",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ModifyProjectCostsUsingPATCHReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ModifyProjectCostsUsingPATCHOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for modifyProjectCostsUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  ModifyProjectPrincipalsUsingPATCH modifies principals assigned to a project
+
+  Modifies principals assigned to a project by id.
+*/
+func (a *Client) ModifyProjectPrincipalsUsingPATCH(params *ModifyProjectPrincipalsUsingPATCHParams, opts ...ClientOption) (*ModifyProjectPrincipalsUsingPATCHOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewModifyProjectPrincipalsUsingPATCHParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "modifyProjectPrincipalsUsingPATCH",
+		Method:             "PATCH",
+		PathPattern:        "/project-service/api/projects/{id}/principals",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ModifyProjectPrincipalsUsingPATCHReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ModifyProjectPrincipalsUsingPATCHOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for modifyProjectPrincipalsUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  ModifyProjectUsingPATCH modifies a project
+
+  Modifies a project by id. Fields that can be modified: name, description, constraints, properties, cost, operation timeout, shared resources.
+*/
+func (a *Client) ModifyProjectUsingPATCH(params *ModifyProjectUsingPATCHParams, opts ...ClientOption) (*ModifyProjectUsingPATCHOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewModifyProjectUsingPATCHParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "modifyProjectUsingPATCH",
+		Method:             "PATCH",
+		PathPattern:        "/project-service/api/projects/{id}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ModifyProjectUsingPATCHReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ModifyProjectUsingPATCHOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for modifyProjectUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -324,6 +660,46 @@ func (a *Client) UpdateProjectResourceMetadata(params *UpdateProjectResourceMeta
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for updateProjectResourceMetadata: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UpdateUsingPATCH modifies a project resource metadata
+
+  Modifies the resources metadata of a project specified by id.
+*/
+func (a *Client) UpdateUsingPATCH(params *UpdateUsingPATCHParams, opts ...ClientOption) (*UpdateUsingPATCHOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateUsingPATCHParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "updateUsingPATCH",
+		Method:             "PATCH",
+		PathPattern:        "/project-service/api/projects/{id}/resource-metadata",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateUsingPATCHReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateUsingPATCHOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
