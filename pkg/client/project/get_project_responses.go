@@ -56,19 +56,19 @@ func NewGetProjectOK() *GetProjectOK {
 successful operation
 */
 type GetProjectOK struct {
-	Payload *models.Project
+	Payload *models.IaaSProject
 }
 
 func (o *GetProjectOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/projects/{id}][%d] getProjectOK  %+v", 200, o.Payload)
 }
-func (o *GetProjectOK) GetPayload() *models.Project {
+func (o *GetProjectOK) GetPayload() *models.IaaSProject {
 	return o.Payload
 }
 
 func (o *GetProjectOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Project)
+	o.Payload = new(models.IaaSProject)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

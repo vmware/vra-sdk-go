@@ -71,7 +71,7 @@ type CreateUsingPOSTMixin4Params struct {
 
 	   The project to create.
 	*/
-	Request *models.ProjectSpecification
+	Request models.ProjectSpecification
 
 	timeout    time.Duration
 	Context    context.Context
@@ -138,13 +138,13 @@ func (o *CreateUsingPOSTMixin4Params) SetAPIVersion(aPIVersion *string) {
 }
 
 // WithRequest adds the request to the create using p o s t mixin4 params
-func (o *CreateUsingPOSTMixin4Params) WithRequest(request *models.ProjectSpecification) *CreateUsingPOSTMixin4Params {
+func (o *CreateUsingPOSTMixin4Params) WithRequest(request models.ProjectSpecification) *CreateUsingPOSTMixin4Params {
 	o.SetRequest(request)
 	return o
 }
 
 // SetRequest adds the request to the create using p o s t mixin4 params
-func (o *CreateUsingPOSTMixin4Params) SetRequest(request *models.ProjectSpecification) {
+func (o *CreateUsingPOSTMixin4Params) SetRequest(request models.ProjectSpecification) {
 	o.Request = request
 }
 
@@ -172,10 +172,8 @@ func (o *CreateUsingPOSTMixin4Params) WriteToRequest(r runtime.ClientRequest, re
 			}
 		}
 	}
-	if o.Request != nil {
-		if err := r.SetBodyParam(o.Request); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Request); err != nil {
+		return err
 	}
 
 	if len(res) > 0 {

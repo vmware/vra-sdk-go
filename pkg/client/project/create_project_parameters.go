@@ -71,7 +71,7 @@ type CreateProjectParams struct {
 
 	   Project Specification instance
 	*/
-	Body *models.ProjectSpecification
+	Body *models.IaaSProjectSpecification
 
 	timeout    time.Duration
 	Context    context.Context
@@ -138,13 +138,13 @@ func (o *CreateProjectParams) SetAPIVersion(aPIVersion *string) {
 }
 
 // WithBody adds the body to the create project params
-func (o *CreateProjectParams) WithBody(body *models.ProjectSpecification) *CreateProjectParams {
+func (o *CreateProjectParams) WithBody(body *models.IaaSProjectSpecification) *CreateProjectParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the create project params
-func (o *CreateProjectParams) SetBody(body *models.ProjectSpecification) {
+func (o *CreateProjectParams) SetBody(body *models.IaaSProjectSpecification) {
 	o.Body = body
 }
 

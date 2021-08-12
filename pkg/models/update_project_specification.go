@@ -30,8 +30,8 @@ type UpdateProjectSpecification interface {
 
 	// List of constraints of the project.
 	// Example: {"network":{"conditions":[{"enforcement":"HARD","expression":{"key":"key","value":"value"},"occurrence":"MUST_OCCUR","type":"TAG"}]}}
-	Constraints() map[string]Constraint
-	SetConstraints(map[string]Constraint)
+	Constraints() map[string]ProjectConstraint
+	SetConstraints(map[string]ProjectConstraint)
 
 	// A human-friendly description.
 	// Example: my-description
@@ -68,7 +68,7 @@ type UpdateProjectSpecification interface {
 }
 
 type updateProjectSpecification struct {
-	constraintsField map[string]Constraint
+	constraintsField map[string]ProjectConstraint
 
 	descriptionField string
 
@@ -82,12 +82,12 @@ type updateProjectSpecification struct {
 }
 
 // Constraints gets the constraints of this polymorphic type
-func (m *updateProjectSpecification) Constraints() map[string]Constraint {
+func (m *updateProjectSpecification) Constraints() map[string]ProjectConstraint {
 	return m.constraintsField
 }
 
 // SetConstraints sets the constraints of this polymorphic type
-func (m *updateProjectSpecification) SetConstraints(val map[string]Constraint) {
+func (m *updateProjectSpecification) SetConstraints(val map[string]ProjectConstraint) {
 	m.constraintsField = val
 }
 

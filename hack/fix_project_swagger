@@ -9,6 +9,31 @@ old_filename = "swagger/vra-project.json"
 new_filename = "swagger/vra-project-fixed.json"
 
 
+def replace_value(d, k, v, new):
+    if k in d and d[k] == v:
+        print(d[k])
+        print("found one")
+        d[k] = new
+    for child in d.values():
+        if isinstance(child, dict):
+            replace_value(child, k, v, new)
+        elif isinstance(child, list):
+            for i in child:
+                if isinstance(i, dict):
+                    replace_value(i, k, v, new)
+
+
+def rename_project_models(swagger):
+    definitions = [
+        ('Constraint', 'ProjectConstraint', '#/definitions/Constraint', '#/definitions/ProjectConstraint'),
+    ]
+
+    for (oldDef, newDef, oldRef, newRef) in definitions:
+        v = swagger['definitions'][oldDef]
+        del swagger['definitions'][oldDef]
+        swagger['definitions'][newDef] = v
+        replace_value(swagger, "$ref", oldRef, newRef)
+
 def remove_global_security(swagger):
     if 'securityDefinitions' in swagger:
         del swagger['securityDefinitions']
@@ -30,6 +55,8 @@ if __name__ == "__main__":
 
     # read in the swagger spec
     swagger = json.loads(open(old_filename).read())
+
+    rename_project_models(swagger)
 
     if args.omit_security:
         remove_global_security(swagger)

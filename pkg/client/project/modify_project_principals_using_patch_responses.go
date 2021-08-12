@@ -56,24 +56,24 @@ func NewModifyProjectPrincipalsUsingPATCHOK() *ModifyProjectPrincipalsUsingPATCH
 'Success' with the Project
 */
 type ModifyProjectPrincipalsUsingPATCHOK struct {
-	Payload *models.Project
+	Payload models.Project
 }
 
 func (o *ModifyProjectPrincipalsUsingPATCHOK) Error() string {
 	return fmt.Sprintf("[PATCH /project-service/api/projects/{id}/principals][%d] modifyProjectPrincipalsUsingPATCHOK  %+v", 200, o.Payload)
 }
-func (o *ModifyProjectPrincipalsUsingPATCHOK) GetPayload() *models.Project {
+func (o *ModifyProjectPrincipalsUsingPATCHOK) GetPayload() models.Project {
 	return o.Payload
 }
 
 func (o *ModifyProjectPrincipalsUsingPATCHOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Project)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	// response payload as interface type
+	payload, err := models.UnmarshalProject(response.Body(), consumer)
+	if err != nil {
 		return err
 	}
+	o.Payload = payload
 
 	return nil
 }

@@ -71,7 +71,7 @@ type UpdateProjectParams struct {
 
 	   Project specification
 	*/
-	Body *models.ProjectSpecification
+	Body *models.IaaSProjectSpecification
 
 	/* ID.
 
@@ -144,13 +144,13 @@ func (o *UpdateProjectParams) SetAPIVersion(aPIVersion *string) {
 }
 
 // WithBody adds the body to the update project params
-func (o *UpdateProjectParams) WithBody(body *models.ProjectSpecification) *UpdateProjectParams {
+func (o *UpdateProjectParams) WithBody(body *models.IaaSProjectSpecification) *UpdateProjectParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the update project params
-func (o *UpdateProjectParams) SetBody(body *models.ProjectSpecification) {
+func (o *UpdateProjectParams) SetBody(body *models.IaaSProjectSpecification) {
 	o.Body = body
 }
 

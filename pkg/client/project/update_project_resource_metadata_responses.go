@@ -56,19 +56,19 @@ func NewUpdateProjectResourceMetadataOK() *UpdateProjectResourceMetadataOK {
 successful operation
 */
 type UpdateProjectResourceMetadataOK struct {
-	Payload *models.Project
+	Payload *models.IaaSProject
 }
 
 func (o *UpdateProjectResourceMetadataOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/projects/{id}/resource-metadata][%d] updateProjectResourceMetadataOK  %+v", 200, o.Payload)
 }
-func (o *UpdateProjectResourceMetadataOK) GetPayload() *models.Project {
+func (o *UpdateProjectResourceMetadataOK) GetPayload() *models.IaaSProject {
 	return o.Payload
 }
 
 func (o *UpdateProjectResourceMetadataOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Project)
+	o.Payload = new(models.IaaSProject)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
