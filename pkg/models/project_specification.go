@@ -55,8 +55,8 @@ type ProjectSpecification interface {
 	SetName(*string)
 
 	// The timeout that should be used for Blueprint operations and Provisioning tasks. The timeout is in seconds.
-	OperationTimeout() int64
-	SetOperationTimeout(int64)
+	OperationTimeout() *int64
+	SetOperationTimeout(*int64)
 
 	// List of properties of the project, to be applied to any resource provisioned within the project.
 	//
@@ -94,7 +94,7 @@ type projectSpecification struct {
 
 	nameField *string
 
-	operationTimeoutField int64
+	operationTimeoutField *int64
 
 	propertiesField map[string]string
 
@@ -164,12 +164,12 @@ func (m *projectSpecification) SetName(val *string) {
 }
 
 // OperationTimeout gets the operation timeout of this polymorphic type
-func (m *projectSpecification) OperationTimeout() int64 {
+func (m *projectSpecification) OperationTimeout() *int64 {
 	return m.operationTimeoutField
 }
 
 // SetOperationTimeout sets the operation timeout of this polymorphic type
-func (m *projectSpecification) SetOperationTimeout(val int64) {
+func (m *projectSpecification) SetOperationTimeout(val *int64) {
 	m.operationTimeoutField = val
 }
 

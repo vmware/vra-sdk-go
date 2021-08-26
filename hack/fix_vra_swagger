@@ -307,6 +307,22 @@ def add_default_value_to_boolean_properties(swagger):
             attributes['default'] = defaultValue
 
 
+
+def add_nullable_to_properties(swagger):
+    # Update following definition properties to add x-nullable
+    # See https://github.com/go-swagger/go-swagger/issues/1707
+    paths = [
+        ('ProjectSpecification', 'operationTimeout'),
+        ('IaaSProjectSpecification', 'operationTimeout'),
+    ]
+
+    # Update the needed definitions
+    for (definition, propertyName) in paths:
+        attributes = swagger['definitions'][definition]['properties'][propertyName]
+        if 'x-nullable' not in attributes.keys():
+            attributes['x-nullable'] = True
+
+
 def change_response_code(swagger):
     # List of paths, operations, current status code, and new status code to update the response model
     paths = [
@@ -356,6 +372,7 @@ if __name__ == "__main__":
     add_409_conflict(swagger)
 
     add_default_value_to_boolean_properties(swagger)
+    add_nullable_to_properties(swagger)
     # change_response_code(swagger)
 
     add_error_definition(swagger)
