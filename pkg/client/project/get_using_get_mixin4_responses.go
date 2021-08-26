@@ -50,24 +50,24 @@ func NewGetUsingGETMixin4OK() *GetUsingGETMixin4OK {
 'OK' with the ProjectResourceMetadata
 */
 type GetUsingGETMixin4OK struct {
-	Payload *models.ProjectResourceMetadata
+	Payload models.ProjectResourceMetadata
 }
 
 func (o *GetUsingGETMixin4OK) Error() string {
 	return fmt.Sprintf("[GET /project-service/api/projects/{id}/resource-metadata][%d] getUsingGETMixin4OK  %+v", 200, o.Payload)
 }
-func (o *GetUsingGETMixin4OK) GetPayload() *models.ProjectResourceMetadata {
+func (o *GetUsingGETMixin4OK) GetPayload() models.ProjectResourceMetadata {
 	return o.Payload
 }
 
 func (o *GetUsingGETMixin4OK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProjectResourceMetadata)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	// response payload as interface type
+	payload, err := models.UnmarshalProjectResourceMetadata(response.Body(), consumer)
+	if err != nil {
 		return err
 	}
+	o.Payload = payload
 
 	return nil
 }

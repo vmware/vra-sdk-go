@@ -56,19 +56,19 @@ func NewCreateProjectCreated() *CreateProjectCreated {
 successful operation
 */
 type CreateProjectCreated struct {
-	Payload *models.Project
+	Payload *models.IaaSProject
 }
 
 func (o *CreateProjectCreated) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/projects][%d] createProjectCreated  %+v", 201, o.Payload)
 }
-func (o *CreateProjectCreated) GetPayload() *models.Project {
+func (o *CreateProjectCreated) GetPayload() *models.IaaSProject {
 	return o.Payload
 }
 
 func (o *CreateProjectCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Project)
+	o.Payload = new(models.IaaSProject)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

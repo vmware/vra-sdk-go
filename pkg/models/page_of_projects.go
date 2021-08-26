@@ -6,10 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
+	"encoding/json"
+	"io"
 	"strconv"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -18,9 +22,7 @@ import (
 //
 // swagger:model PageOfProjects
 type PageOfProjects struct {
-
-	// content
-	Content []*Project `json:"content"`
+	contentField []Project
 
 	// empty
 	Empty bool `json:"empty,omitempty"`
@@ -53,6 +55,160 @@ type PageOfProjects struct {
 	TotalPages int32 `json:"totalPages,omitempty"`
 }
 
+// Content gets the content of this base type
+func (m *PageOfProjects) Content() []Project {
+	return m.contentField
+}
+
+// SetContent sets the content of this base type
+func (m *PageOfProjects) SetContent(val []Project) {
+	m.contentField = val
+}
+
+// UnmarshalJSON unmarshals this object with a polymorphic type from a JSON structure
+func (m *PageOfProjects) UnmarshalJSON(raw []byte) error {
+	var data struct {
+		Content json.RawMessage `json:"content"`
+
+		Empty bool `json:"empty,omitempty"`
+
+		First bool `json:"first,omitempty"`
+
+		Last bool `json:"last,omitempty"`
+
+		Number int32 `json:"number,omitempty"`
+
+		NumberOfElements int32 `json:"numberOfElements,omitempty"`
+
+		Pageable *Pageable `json:"pageable,omitempty"`
+
+		Size int32 `json:"size,omitempty"`
+
+		Sort *Sort `json:"sort,omitempty"`
+
+		TotalElements int64 `json:"totalElements,omitempty"`
+
+		TotalPages int32 `json:"totalPages,omitempty"`
+	}
+	buf := bytes.NewBuffer(raw)
+	dec := json.NewDecoder(buf)
+	dec.UseNumber()
+
+	if err := dec.Decode(&data); err != nil {
+		return err
+	}
+
+	var propContent []Project
+	if string(data.Content) != "null" {
+		content, err := UnmarshalProjectSlice(bytes.NewBuffer(data.Content), runtime.JSONConsumer())
+		if err != nil && err != io.EOF {
+			return err
+		}
+		propContent = content
+	}
+
+	var result PageOfProjects
+
+	// content
+	result.contentField = propContent
+
+	// empty
+	result.Empty = data.Empty
+
+	// first
+	result.First = data.First
+
+	// last
+	result.Last = data.Last
+
+	// number
+	result.Number = data.Number
+
+	// numberOfElements
+	result.NumberOfElements = data.NumberOfElements
+
+	// pageable
+	result.Pageable = data.Pageable
+
+	// size
+	result.Size = data.Size
+
+	// sort
+	result.Sort = data.Sort
+
+	// totalElements
+	result.TotalElements = data.TotalElements
+
+	// totalPages
+	result.TotalPages = data.TotalPages
+
+	*m = result
+
+	return nil
+}
+
+// MarshalJSON marshals this object with a polymorphic type to a JSON structure
+func (m PageOfProjects) MarshalJSON() ([]byte, error) {
+	var b1, b2, b3 []byte
+	var err error
+	b1, err = json.Marshal(struct {
+		Empty bool `json:"empty,omitempty"`
+
+		First bool `json:"first,omitempty"`
+
+		Last bool `json:"last,omitempty"`
+
+		Number int32 `json:"number,omitempty"`
+
+		NumberOfElements int32 `json:"numberOfElements,omitempty"`
+
+		Pageable *Pageable `json:"pageable,omitempty"`
+
+		Size int32 `json:"size,omitempty"`
+
+		Sort *Sort `json:"sort,omitempty"`
+
+		TotalElements int64 `json:"totalElements,omitempty"`
+
+		TotalPages int32 `json:"totalPages,omitempty"`
+	}{
+
+		Empty: m.Empty,
+
+		First: m.First,
+
+		Last: m.Last,
+
+		Number: m.Number,
+
+		NumberOfElements: m.NumberOfElements,
+
+		Pageable: m.Pageable,
+
+		Size: m.Size,
+
+		Sort: m.Sort,
+
+		TotalElements: m.TotalElements,
+
+		TotalPages: m.TotalPages,
+	})
+	if err != nil {
+		return nil, err
+	}
+	b2, err = json.Marshal(struct {
+		Content []Project `json:"content"`
+	}{
+
+		Content: m.contentField,
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	return swag.ConcatJSON(b1, b2, b3), nil
+}
+
 // Validate validates this page of projects
 func (m *PageOfProjects) Validate(formats strfmt.Registry) error {
 	var res []error
@@ -76,22 +232,17 @@ func (m *PageOfProjects) Validate(formats strfmt.Registry) error {
 }
 
 func (m *PageOfProjects) validateContent(formats strfmt.Registry) error {
-	if swag.IsZero(m.Content) { // not required
+	if swag.IsZero(m.Content()) { // not required
 		return nil
 	}
 
-	for i := 0; i < len(m.Content); i++ {
-		if swag.IsZero(m.Content[i]) { // not required
-			continue
-		}
+	for i := 0; i < len(m.Content()); i++ {
 
-		if m.Content[i] != nil {
-			if err := m.Content[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("content" + "." + strconv.Itoa(i))
-				}
-				return err
+		if err := m.contentField[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("content" + "." + strconv.Itoa(i))
 			}
+			return err
 		}
 
 	}
@@ -157,15 +308,13 @@ func (m *PageOfProjects) ContextValidate(ctx context.Context, formats strfmt.Reg
 
 func (m *PageOfProjects) contextValidateContent(ctx context.Context, formats strfmt.Registry) error {
 
-	for i := 0; i < len(m.Content); i++ {
+	for i := 0; i < len(m.Content()); i++ {
 
-		if m.Content[i] != nil {
-			if err := m.Content[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("content" + "." + strconv.Itoa(i))
-				}
-				return err
+		if err := m.contentField[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("content" + "." + strconv.Itoa(i))
 			}
+			return err
 		}
 
 	}

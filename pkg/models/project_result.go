@@ -22,7 +22,7 @@ type ProjectResult struct {
 
 	// List of content items
 	// Read Only: true
-	Content []*Project `json:"content"`
+	Content []*IaaSProject `json:"content"`
 
 	// Number of elements in the current page
 	// Example: 1
@@ -97,7 +97,7 @@ func (m *ProjectResult) ContextValidate(ctx context.Context, formats strfmt.Regi
 
 func (m *ProjectResult) contextValidateContent(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := validate.ReadOnly(ctx, "content", "body", []*Project(m.Content)); err != nil {
+	if err := validate.ReadOnly(ctx, "content", "body", []*IaaSProject(m.Content)); err != nil {
 		return err
 	}
 

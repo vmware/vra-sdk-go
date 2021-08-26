@@ -77,7 +77,7 @@ type UpdateUsingPATCHParams struct {
 
 	   request
 	*/
-	Request *models.ProjectResourceMetadata
+	Request models.ProjectResourceMetadata
 
 	timeout    time.Duration
 	Context    context.Context
@@ -155,13 +155,13 @@ func (o *UpdateUsingPATCHParams) SetID(id string) {
 }
 
 // WithRequest adds the request to the update using p a t c h params
-func (o *UpdateUsingPATCHParams) WithRequest(request *models.ProjectResourceMetadata) *UpdateUsingPATCHParams {
+func (o *UpdateUsingPATCHParams) WithRequest(request models.ProjectResourceMetadata) *UpdateUsingPATCHParams {
 	o.SetRequest(request)
 	return o
 }
 
 // SetRequest adds the request to the update using p a t c h params
-func (o *UpdateUsingPATCHParams) SetRequest(request *models.ProjectResourceMetadata) {
+func (o *UpdateUsingPATCHParams) SetRequest(request models.ProjectResourceMetadata) {
 	o.Request = request
 }
 
@@ -194,10 +194,8 @@ func (o *UpdateUsingPATCHParams) WriteToRequest(r runtime.ClientRequest, reg str
 	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
 	}
-	if o.Request != nil {
-		if err := r.SetBodyParam(o.Request); err != nil {
-			return err
-		}
+	if err := r.SetBodyParam(o.Request); err != nil {
+		return err
 	}
 
 	if len(res) > 0 {

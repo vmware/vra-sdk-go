@@ -56,24 +56,24 @@ func NewGetProjectUsingGETOK() *GetProjectUsingGETOK {
 'Success' with the Project
 */
 type GetProjectUsingGETOK struct {
-	Payload *models.Project
+	Payload models.Project
 }
 
 func (o *GetProjectUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /project-service/api/projects/{id}][%d] getProjectUsingGETOK  %+v", 200, o.Payload)
 }
-func (o *GetProjectUsingGETOK) GetPayload() *models.Project {
+func (o *GetProjectUsingGETOK) GetPayload() models.Project {
 	return o.Payload
 }
 
 func (o *GetProjectUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.Project)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	// response payload as interface type
+	payload, err := models.UnmarshalProject(response.Body(), consumer)
+	if err != nil {
 		return err
 	}
+	o.Payload = payload
 
 	return nil
 }

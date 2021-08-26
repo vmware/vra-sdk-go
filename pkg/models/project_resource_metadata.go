@@ -6,26 +6,110 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
+	"encoding/json"
+	"io"
+	"io/ioutil"
 	"strconv"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
-// ProjectResourceMetadata Represents the resource metadata associated with a project
+// ProjectResourceMetadata ProjectResourceMetadata
 //
-// swagger:model ProjectResourceMetadata
-type ProjectResourceMetadata struct {
+// Metadata related to resources provisioned within a project.
+//
+// swagger:discriminator ProjectResourceMetadata Metadata related to resources provisioned within a project.
+type ProjectResourceMetadata interface {
+	runtime.Validatable
+	runtime.ContextValidatable
 
-	// A list of keys and optional values to be applied to compute resources provisioned in a project
-	// Example: [ { \"key\" : \"env\", \"value\": \"dev\" } ]
-	Tags []*Tag `json:"tags"`
+	// List of tags to be applied to any Compute resource provisioned within the project.
+	// Example: [{"key":"key1","value":"value1"},{"key":"key1"}]
+	Tags() []*Tag
+	SetTags([]*Tag)
+
+	// AdditionalProperties in base type shoud be handled just like regular properties
+	// At this moment, the base type property is pushed down to the subtype
+}
+
+type projectResourceMetadata struct {
+	tagsField []*Tag
+}
+
+// Tags gets the tags of this polymorphic type
+func (m *projectResourceMetadata) Tags() []*Tag {
+	return m.tagsField
+}
+
+// SetTags sets the tags of this polymorphic type
+func (m *projectResourceMetadata) SetTags(val []*Tag) {
+	m.tagsField = val
+}
+
+// UnmarshalProjectResourceMetadataSlice unmarshals polymorphic slices of ProjectResourceMetadata
+func UnmarshalProjectResourceMetadataSlice(reader io.Reader, consumer runtime.Consumer) ([]ProjectResourceMetadata, error) {
+	var elements []json.RawMessage
+	if err := consumer.Consume(reader, &elements); err != nil {
+		return nil, err
+	}
+
+	var result []ProjectResourceMetadata
+	for _, element := range elements {
+		obj, err := unmarshalProjectResourceMetadata(element, consumer)
+		if err != nil {
+			return nil, err
+		}
+		result = append(result, obj)
+	}
+	return result, nil
+}
+
+// UnmarshalProjectResourceMetadata unmarshals polymorphic ProjectResourceMetadata
+func UnmarshalProjectResourceMetadata(reader io.Reader, consumer runtime.Consumer) (ProjectResourceMetadata, error) {
+	// we need to read this twice, so first into a buffer
+	data, err := ioutil.ReadAll(reader)
+	if err != nil {
+		return nil, err
+	}
+	return unmarshalProjectResourceMetadata(data, consumer)
+}
+
+func unmarshalProjectResourceMetadata(data []byte, consumer runtime.Consumer) (ProjectResourceMetadata, error) {
+	buf := bytes.NewBuffer(data)
+	buf2 := bytes.NewBuffer(data)
+
+	// the first time this is read is to fetch the value of the Metadata related to resources provisioned within a project. property.
+	var getType struct {
+		MetadataRelatedToResourcesProvisionedWithinaProject string `json:"Metadata related to resources provisioned within a project."`
+	}
+	if err := consumer.Consume(buf, &getType); err != nil {
+		return nil, err
+	}
+
+	if err := validate.RequiredString("Metadata related to resources provisioned within a project.", "body", getType.MetadataRelatedToResourcesProvisionedWithinaProject); err != nil {
+		return nil, err
+	}
+
+	// The value of Metadata related to resources provisioned within a project. is used to determine which type to create and unmarshal the data into
+	switch getType.MetadataRelatedToResourcesProvisionedWithinaProject {
+	case "ProjectResourceMetadata":
+		var result projectResourceMetadata
+		if err := consumer.Consume(buf2, &result); err != nil {
+			return nil, err
+		}
+		return &result, nil
+	}
+	return nil, errors.New(422, "invalid Metadata related to resources provisioned within a project. value: %q", getType.MetadataRelatedToResourcesProvisionedWithinaProject)
 }
 
 // Validate validates this project resource metadata
-func (m *ProjectResourceMetadata) Validate(formats strfmt.Registry) error {
+func (m *projectResourceMetadata) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateTags(formats); err != nil {
@@ -38,18 +122,18 @@ func (m *ProjectResourceMetadata) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *ProjectResourceMetadata) validateTags(formats strfmt.Registry) error {
-	if swag.IsZero(m.Tags) { // not required
+func (m *projectResourceMetadata) validateTags(formats strfmt.Registry) error {
+	if swag.IsZero(m.Tags()) { // not required
 		return nil
 	}
 
-	for i := 0; i < len(m.Tags); i++ {
-		if swag.IsZero(m.Tags[i]) { // not required
+	for i := 0; i < len(m.Tags()); i++ {
+		if swag.IsZero(m.tagsField[i]) { // not required
 			continue
 		}
 
-		if m.Tags[i] != nil {
-			if err := m.Tags[i].Validate(formats); err != nil {
+		if m.tagsField[i] != nil {
+			if err := m.tagsField[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
@@ -63,7 +147,7 @@ func (m *ProjectResourceMetadata) validateTags(formats strfmt.Registry) error {
 }
 
 // ContextValidate validate this project resource metadata based on the context it is used
-func (m *ProjectResourceMetadata) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *projectResourceMetadata) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateTags(ctx, formats); err != nil {
@@ -76,12 +160,12 @@ func (m *ProjectResourceMetadata) ContextValidate(ctx context.Context, formats s
 	return nil
 }
 
-func (m *ProjectResourceMetadata) contextValidateTags(ctx context.Context, formats strfmt.Registry) error {
+func (m *projectResourceMetadata) contextValidateTags(ctx context.Context, formats strfmt.Registry) error {
 
-	for i := 0; i < len(m.Tags); i++ {
+	for i := 0; i < len(m.Tags()); i++ {
 
-		if m.Tags[i] != nil {
-			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
+		if m.tagsField[i] != nil {
+			if err := m.tagsField[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
@@ -91,23 +175,5 @@ func (m *ProjectResourceMetadata) contextValidateTags(ctx context.Context, forma
 
 	}
 
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *ProjectResourceMetadata) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *ProjectResourceMetadata) UnmarshalBinary(b []byte) error {
-	var res ProjectResourceMetadata
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
 	return nil
 }

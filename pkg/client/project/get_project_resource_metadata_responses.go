@@ -56,19 +56,19 @@ func NewGetProjectResourceMetadataOK() *GetProjectResourceMetadataOK {
 successful operation
 */
 type GetProjectResourceMetadataOK struct {
-	Payload *models.ProjectResourceMetadata
+	Payload *models.IaaSProjectResourceMetadata
 }
 
 func (o *GetProjectResourceMetadataOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/projects/{id}/resource-metadata][%d] getProjectResourceMetadataOK  %+v", 200, o.Payload)
 }
-func (o *GetProjectResourceMetadataOK) GetPayload() *models.ProjectResourceMetadata {
+func (o *GetProjectResourceMetadataOK) GetPayload() *models.IaaSProjectResourceMetadata {
 	return o.Payload
 }
 
 func (o *GetProjectResourceMetadataOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProjectResourceMetadata)
+	o.Payload = new(models.IaaSProjectResourceMetadata)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

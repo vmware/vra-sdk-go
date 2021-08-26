@@ -6,102 +6,292 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"bytes"
 	"context"
+	"encoding/json"
+	"io"
+	"io/ioutil"
 	"strconv"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
-// Project Projects link users and cloud zones, thus controlling who can use what cloud resources.<br>**HATEOAS** links:<br>**self** - Project - Self link to this project
+// Project Project
 //
-// swagger:model Project
-type Project struct {
+// A Project is a group of users.
+//
+// swagger:discriminator Project A Project is a group of users.
+type Project interface {
+	runtime.Validatable
+	runtime.ContextValidatable
 
-	// HATEOAS of the entity
-	// Required: true
-	Links map[string]Href `json:"_links"`
+	Administrators() []Principal
+	SetAdministrators([]Principal)
 
-	// List of administrator users associated with the project. Only administrators can manage project's configuration.
-	// Example: [ { \"email\":\"administrator@vmware.com\" } ]
-	Administrators []*User `json:"administrators"`
+	// List of constraints of the project.
+	// Example: {"network":{"conditions":[{"enforcement":"HARD","expression":{"key":"key","value":"value"},"occurrence":"MUST_OCCUR","type":"TAG"}]}}
+	Constraints() map[string]ProjectConstraint
+	SetConstraints(map[string]ProjectConstraint)
 
-	// List of storage, network and extensibility constraints to be applied when provisioning through this project.
-	// Example: {\"network\":[{\"mandatory\": \"true\", \"expression\": \"env:dev\"}],\"storage\":[{\"mandatory\": \"false\", \"expression\": \"gold\"}],\"extensibility\":[{\"mandatory\": \"false\", \"expression\": \"key:value\"}]}
-	Constraints map[string][]Constraint `json:"constraints,omitempty"`
-
-	// Date when the entity was created. The date is in ISO 8601 and UTC.
-	// Example: 2012-09-27
-	CreatedAt string `json:"createdAt,omitempty"`
-
-	// The project custom properties which are added to all requests in this project
-	// Example: { \"property\" : \"value\" }
-	CustomProperties map[string]string `json:"customProperties,omitempty"`
+	Cost() ProjectCost
+	SetCost(ProjectCost)
 
 	// A human-friendly description.
 	// Example: my-description
-	Description string `json:"description,omitempty"`
+	Description() string
+	SetDescription(string)
 
-	// The id of this resource instance
-	// Example: 9e49
-	// Required: true
-	ID *string `json:"id"`
+	// Id of the project.
+	ID() string
+	SetID(string)
 
-	// The naming template to be used for machines provisioned in this project
-	// Example: ${project.name}-test-${####}
-	MachineNamingTemplate string `json:"machineNamingTemplate,omitempty"`
-
-	// List of member users associated with the project.
-	// Example: [ { \"email\":\"member@vmware.com\" } ]
-	Members []*User `json:"members"`
+	Members() []Principal
+	SetMembers([]Principal)
 
 	// A human-friendly name used as an identifier in APIs that support this option.
 	// Example: my-name
-	Name string `json:"name,omitempty"`
+	Name() string
+	SetName(string)
 
-	// The timeout that should be used for Blueprint operations and Provisioning tasks. The timeout is in seconds
-	OperationTimeout int64 `json:"operationTimeout,omitempty"`
+	// The timeout that should be used for Blueprint operations and Provisioning tasks. The timeout is in seconds.
+	OperationTimeout() int64
+	SetOperationTimeout(int64)
 
-	// The id of the organization this entity belongs to.
-	// Example: 9e49
-	OrgID string `json:"orgId,omitempty"`
+	// The id of the org this project belongs to.
+	OrgID() string
+	SetOrgID(string)
 
-	// This field is deprecated. Use orgId instead. The id of the organization this entity belongs to.
-	// Example: deprecated
-	OrganizationID string `json:"organizationId,omitempty"`
-
-	// Email of the user that owns the entity.
-	// Example: csp@vmware.com
-	Owner string `json:"owner,omitempty"`
-
-	// Placement policy for the project. Determines how a zone will be selected for provisioning. DEFAULT or SPREAD.
-	// Example: DEFAULT
-	PlacementPolicy string `json:"placementPolicy,omitempty"`
+	// List of properties of the project, to be applied to any resource provisioned within the project.
+	//
+	// The property with key __projectPlacementPolicy shows what is the placement policy for the resources provisioned in this project, which can be 1 of only 2 possible values DEFAULT or SPREAD. If not specified, it is set as DEFAULT.
+	//
+	// The property with key __namingTemplate specifies a custom naming template for resources provisioned in this project.
+	//
+	// The property with key __allowTerraformCloudzoneMapping shows if the project allows Terraform cloudzone mapping. It can be set to either true or false. By default, it is set to false.
+	// Example: {"__allowTerraformCloudzoneMapping":"true","__namingTemplate":"my-resource-template","__projectPlacementPolicy":"SPREAD","myproperty":"enforcement"}
+	Properties() map[string]string
+	SetProperties(map[string]string)
 
 	// Specifies whether the resources in this projects are shared or not.
-	SharedResources bool `json:"sharedResources,omitempty"`
+	SharedResources() bool
+	SetSharedResources(bool)
 
-	// Date when the entity was last updated. The date is ISO 8601 and UTC.
-	// Example: 2012-09-27
-	UpdatedAt string `json:"updatedAt,omitempty"`
+	Viewers() []Principal
+	SetViewers([]Principal)
 
-	// List of viewer users associated with the project.
-	// Example: [ { \"email\":\"viewer@vmware.com\" } ]
-	Viewers []*User `json:"viewers"`
+	// AdditionalProperties in base type shoud be handled just like regular properties
+	// At this moment, the base type property is pushed down to the subtype
+}
 
-	// List of Cloud Zones assigned to this project. You can limit deployment to a single region or allow multi-region placement by adding more than one cloud zone to a project. A cloud zone lists available resources. Use tags on resources to control workload placement.
-	Zones []*ZoneAssignment `json:"zones"`
+type project struct {
+	administratorsField []Principal
+
+	constraintsField map[string]ProjectConstraint
+
+	costField ProjectCost
+
+	descriptionField string
+
+	idField string
+
+	membersField []Principal
+
+	nameField string
+
+	operationTimeoutField int64
+
+	orgIdField string
+
+	propertiesField map[string]string
+
+	sharedResourcesField bool
+
+	viewersField []Principal
+}
+
+// Administrators gets the administrators of this polymorphic type
+func (m *project) Administrators() []Principal {
+	return m.administratorsField
+}
+
+// SetAdministrators sets the administrators of this polymorphic type
+func (m *project) SetAdministrators(val []Principal) {
+	m.administratorsField = val
+}
+
+// Constraints gets the constraints of this polymorphic type
+func (m *project) Constraints() map[string]ProjectConstraint {
+	return m.constraintsField
+}
+
+// SetConstraints sets the constraints of this polymorphic type
+func (m *project) SetConstraints(val map[string]ProjectConstraint) {
+	m.constraintsField = val
+}
+
+// Cost gets the cost of this polymorphic type
+func (m *project) Cost() ProjectCost {
+	return m.costField
+}
+
+// SetCost sets the cost of this polymorphic type
+func (m *project) SetCost(val ProjectCost) {
+	m.costField = val
+}
+
+// Description gets the description of this polymorphic type
+func (m *project) Description() string {
+	return m.descriptionField
+}
+
+// SetDescription sets the description of this polymorphic type
+func (m *project) SetDescription(val string) {
+	m.descriptionField = val
+}
+
+// ID gets the id of this polymorphic type
+func (m *project) ID() string {
+	return m.idField
+}
+
+// SetID sets the id of this polymorphic type
+func (m *project) SetID(val string) {
+	m.idField = val
+}
+
+// Members gets the members of this polymorphic type
+func (m *project) Members() []Principal {
+	return m.membersField
+}
+
+// SetMembers sets the members of this polymorphic type
+func (m *project) SetMembers(val []Principal) {
+	m.membersField = val
+}
+
+// Name gets the name of this polymorphic type
+func (m *project) Name() string {
+	return m.nameField
+}
+
+// SetName sets the name of this polymorphic type
+func (m *project) SetName(val string) {
+	m.nameField = val
+}
+
+// OperationTimeout gets the operation timeout of this polymorphic type
+func (m *project) OperationTimeout() int64 {
+	return m.operationTimeoutField
+}
+
+// SetOperationTimeout sets the operation timeout of this polymorphic type
+func (m *project) SetOperationTimeout(val int64) {
+	m.operationTimeoutField = val
+}
+
+// OrgID gets the org Id of this polymorphic type
+func (m *project) OrgID() string {
+	return m.orgIdField
+}
+
+// SetOrgID sets the org Id of this polymorphic type
+func (m *project) SetOrgID(val string) {
+	m.orgIdField = val
+}
+
+// Properties gets the properties of this polymorphic type
+func (m *project) Properties() map[string]string {
+	return m.propertiesField
+}
+
+// SetProperties sets the properties of this polymorphic type
+func (m *project) SetProperties(val map[string]string) {
+	m.propertiesField = val
+}
+
+// SharedResources gets the shared resources of this polymorphic type
+func (m *project) SharedResources() bool {
+	return m.sharedResourcesField
+}
+
+// SetSharedResources sets the shared resources of this polymorphic type
+func (m *project) SetSharedResources(val bool) {
+	m.sharedResourcesField = val
+}
+
+// Viewers gets the viewers of this polymorphic type
+func (m *project) Viewers() []Principal {
+	return m.viewersField
+}
+
+// SetViewers sets the viewers of this polymorphic type
+func (m *project) SetViewers(val []Principal) {
+	m.viewersField = val
+}
+
+// UnmarshalProjectSlice unmarshals polymorphic slices of Project
+func UnmarshalProjectSlice(reader io.Reader, consumer runtime.Consumer) ([]Project, error) {
+	var elements []json.RawMessage
+	if err := consumer.Consume(reader, &elements); err != nil {
+		return nil, err
+	}
+
+	var result []Project
+	for _, element := range elements {
+		obj, err := unmarshalProject(element, consumer)
+		if err != nil {
+			return nil, err
+		}
+		result = append(result, obj)
+	}
+	return result, nil
+}
+
+// UnmarshalProject unmarshals polymorphic Project
+func UnmarshalProject(reader io.Reader, consumer runtime.Consumer) (Project, error) {
+	// we need to read this twice, so first into a buffer
+	data, err := ioutil.ReadAll(reader)
+	if err != nil {
+		return nil, err
+	}
+	return unmarshalProject(data, consumer)
+}
+
+func unmarshalProject(data []byte, consumer runtime.Consumer) (Project, error) {
+	buf := bytes.NewBuffer(data)
+	buf2 := bytes.NewBuffer(data)
+
+	// the first time this is read is to fetch the value of the A Project is a group of users. property.
+	var getType struct {
+		AProjectIsaGroupOfUsers string `json:"A Project is a group of users."`
+	}
+	if err := consumer.Consume(buf, &getType); err != nil {
+		return nil, err
+	}
+
+	if err := validate.RequiredString("A Project is a group of users.", "body", getType.AProjectIsaGroupOfUsers); err != nil {
+		return nil, err
+	}
+
+	// The value of A Project is a group of users. is used to determine which type to create and unmarshal the data into
+	switch getType.AProjectIsaGroupOfUsers {
+	case "Project":
+		var result project
+		if err := consumer.Consume(buf2, &result); err != nil {
+			return nil, err
+		}
+		return &result, nil
+	}
+	return nil, errors.New(422, "invalid A Project is a group of users. value: %q", getType.AProjectIsaGroupOfUsers)
 }
 
 // Validate validates this project
-func (m *Project) Validate(formats strfmt.Registry) error {
+func (m *project) Validate(formats strfmt.Registry) error {
 	var res []error
-
-	if err := m.validateLinks(formats); err != nil {
-		res = append(res, err)
-	}
 
 	if err := m.validateAdministrators(formats); err != nil {
 		res = append(res, err)
@@ -111,7 +301,7 @@ func (m *Project) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateID(formats); err != nil {
+	if err := m.validateCost(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -123,28 +313,42 @@ func (m *Project) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateZones(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
 }
 
-func (m *Project) validateLinks(formats strfmt.Registry) error {
-
-	if err := validate.Required("_links", "body", m.Links); err != nil {
-		return err
+func (m *project) validateAdministrators(formats strfmt.Registry) error {
+	if swag.IsZero(m.Administrators()) { // not required
+		return nil
 	}
 
-	for k := range m.Links {
+	for i := 0; i < len(m.Administrators()); i++ {
 
-		if err := validate.Required("_links"+"."+k, "body", m.Links[k]); err != nil {
+		if err := m.administratorsField[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("administrators" + "." + strconv.Itoa(i))
+			}
 			return err
 		}
-		if val, ok := m.Links[k]; ok {
+
+	}
+
+	return nil
+}
+
+func (m *project) validateConstraints(formats strfmt.Registry) error {
+	if swag.IsZero(m.Constraints()) { // not required
+		return nil
+	}
+
+	for k := range m.Constraints() {
+
+		if err := validate.Required("constraints"+"."+k, "body", m.Constraints()[k]); err != nil {
+			return err
+		}
+		if val, ok := m.Constraints()[k]; ok {
 			if err := val.Validate(formats); err != nil {
 				return err
 			}
@@ -155,83 +359,33 @@ func (m *Project) validateLinks(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *Project) validateAdministrators(formats strfmt.Registry) error {
-	if swag.IsZero(m.Administrators) { // not required
+func (m *project) validateCost(formats strfmt.Registry) error {
+	if swag.IsZero(m.Cost()) { // not required
 		return nil
 	}
 
-	for i := 0; i < len(m.Administrators); i++ {
-		if swag.IsZero(m.Administrators[i]) { // not required
-			continue
+	if err := m.Cost().Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("cost")
 		}
-
-		if m.Administrators[i] != nil {
-			if err := m.Administrators[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("administrators" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (m *Project) validateConstraints(formats strfmt.Registry) error {
-	if swag.IsZero(m.Constraints) { // not required
-		return nil
-	}
-
-	for k := range m.Constraints {
-
-		if err := validate.Required("constraints"+"."+k, "body", m.Constraints[k]); err != nil {
-			return err
-		}
-
-		for i := 0; i < len(m.Constraints[k]); i++ {
-
-			if err := m.Constraints[k][i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("constraints" + "." + k + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-
-		}
-
-	}
-
-	return nil
-}
-
-func (m *Project) validateID(formats strfmt.Registry) error {
-
-	if err := validate.Required("id", "body", m.ID); err != nil {
 		return err
 	}
 
 	return nil
 }
 
-func (m *Project) validateMembers(formats strfmt.Registry) error {
-	if swag.IsZero(m.Members) { // not required
+func (m *project) validateMembers(formats strfmt.Registry) error {
+	if swag.IsZero(m.Members()) { // not required
 		return nil
 	}
 
-	for i := 0; i < len(m.Members); i++ {
-		if swag.IsZero(m.Members[i]) { // not required
-			continue
-		}
+	for i := 0; i < len(m.Members()); i++ {
 
-		if m.Members[i] != nil {
-			if err := m.Members[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("members" + "." + strconv.Itoa(i))
-				}
-				return err
+		if err := m.membersField[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("members" + "." + strconv.Itoa(i))
 			}
+			return err
 		}
 
 	}
@@ -239,47 +393,18 @@ func (m *Project) validateMembers(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *Project) validateViewers(formats strfmt.Registry) error {
-	if swag.IsZero(m.Viewers) { // not required
+func (m *project) validateViewers(formats strfmt.Registry) error {
+	if swag.IsZero(m.Viewers()) { // not required
 		return nil
 	}
 
-	for i := 0; i < len(m.Viewers); i++ {
-		if swag.IsZero(m.Viewers[i]) { // not required
-			continue
-		}
+	for i := 0; i < len(m.Viewers()); i++ {
 
-		if m.Viewers[i] != nil {
-			if err := m.Viewers[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("viewers" + "." + strconv.Itoa(i))
-				}
-				return err
+		if err := m.viewersField[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("viewers" + "." + strconv.Itoa(i))
 			}
-		}
-
-	}
-
-	return nil
-}
-
-func (m *Project) validateZones(formats strfmt.Registry) error {
-	if swag.IsZero(m.Zones) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.Zones); i++ {
-		if swag.IsZero(m.Zones[i]) { // not required
-			continue
-		}
-
-		if m.Zones[i] != nil {
-			if err := m.Zones[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("zones" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
+			return err
 		}
 
 	}
@@ -288,18 +413,18 @@ func (m *Project) validateZones(formats strfmt.Registry) error {
 }
 
 // ContextValidate validate this project based on the context it is used
-func (m *Project) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *project) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
-
-	if err := m.contextValidateLinks(ctx, formats); err != nil {
-		res = append(res, err)
-	}
 
 	if err := m.contextValidateAdministrators(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.contextValidateConstraints(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateCost(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -311,25 +436,33 @@ func (m *Project) ContextValidate(ctx context.Context, formats strfmt.Registry) 
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateZones(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
 }
 
-func (m *Project) contextValidateLinks(ctx context.Context, formats strfmt.Registry) error {
+func (m *project) contextValidateAdministrators(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := validate.Required("_links", "body", m.Links); err != nil {
-		return err
+	for i := 0; i < len(m.Administrators()); i++ {
+
+		if err := m.administratorsField[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("administrators" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
 	}
 
-	for k := range m.Links {
+	return nil
+}
 
-		if val, ok := m.Links[k]; ok {
+func (m *project) contextValidateConstraints(ctx context.Context, formats strfmt.Registry) error {
+
+	for k := range m.Constraints() {
+
+		if val, ok := m.Constraints()[k]; ok {
 			if err := val.ContextValidate(ctx, formats); err != nil {
 				return err
 			}
@@ -340,112 +473,46 @@ func (m *Project) contextValidateLinks(ctx context.Context, formats strfmt.Regis
 	return nil
 }
 
-func (m *Project) contextValidateAdministrators(ctx context.Context, formats strfmt.Registry) error {
+func (m *project) contextValidateCost(ctx context.Context, formats strfmt.Registry) error {
 
-	for i := 0; i < len(m.Administrators); i++ {
-
-		if m.Administrators[i] != nil {
-			if err := m.Administrators[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("administrators" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
+	if err := m.Cost().ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("cost")
 		}
-
-	}
-
-	return nil
-}
-
-func (m *Project) contextValidateConstraints(ctx context.Context, formats strfmt.Registry) error {
-
-	for k := range m.Constraints {
-
-		for i := 0; i < len(m.Constraints[k]); i++ {
-
-			if err := m.Constraints[k][i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("constraints" + "." + k + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-
-		}
-
-	}
-
-	return nil
-}
-
-func (m *Project) contextValidateMembers(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.Members); i++ {
-
-		if m.Members[i] != nil {
-			if err := m.Members[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("members" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (m *Project) contextValidateViewers(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.Viewers); i++ {
-
-		if m.Viewers[i] != nil {
-			if err := m.Viewers[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("viewers" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (m *Project) contextValidateZones(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.Zones); i++ {
-
-		if m.Zones[i] != nil {
-			if err := m.Zones[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("zones" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *Project) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *Project) UnmarshalBinary(b []byte) error {
-	var res Project
-	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
-	*m = res
+
+	return nil
+}
+
+func (m *project) contextValidateMembers(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Members()); i++ {
+
+		if err := m.membersField[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("members" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *project) contextValidateViewers(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Viewers()); i++ {
+
+		if err := m.viewersField[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("viewers" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
 	return nil
 }

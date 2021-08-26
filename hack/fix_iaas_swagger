@@ -17,12 +17,19 @@ def replace_value(d, k, v, new):
     for child in d.values():
         if isinstance(child, dict):
             replace_value(child, k, v, new)
-    
+        elif isinstance(child, list):
+            for i in child:
+                if isinstance(i, dict):
+                    replace_value(i, k, v, new)
+
 
 def rename_iaas_models(swagger):
     definitions = [
         ('Deployment', 'IaaSDeployment', '#/definitions/Deployment', '#/definitions/IaaSDeployment'),
         ('About', 'IaaSAbout', '#/definitions/About', '#/definitions/IaaSAbout'),
+        ('Project', 'IaaSProject', '#/definitions/Project', '#/definitions/IaaSProject'),
+        ('ProjectSpecification', 'IaaSProjectSpecification', '#/definitions/ProjectSpecification', '#/definitions/IaaSProjectSpecification'),
+        ('ProjectResourceMetadata', 'IaaSProjectResourceMetadata', '#/definitions/ProjectResourceMetadata', '#/definitions/IaaSProjectResourceMetadata'),
     ]
 
     for (oldDef, newDef, oldRef, newRef) in definitions:
