@@ -49,7 +49,7 @@ type IaaSProjectSpecification struct {
 
 	// The timeout that should be used for Blueprint operations and Provisioning tasks. The timeout is in seconds
 	// Example: 30
-	OperationTimeout int64 `json:"operationTimeout,omitempty"`
+	OperationTimeout *int64 `json:"operationTimeout,omitempty"`
 
 	// Placement policy for the project. Determines how a zone will be selected for provisioning. DEFAULT or SPREAD.
 	// Example: DEFAULT
