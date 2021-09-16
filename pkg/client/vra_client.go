@@ -21,6 +21,7 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/catalog_items"
 	"github.com/vmware/vra-sdk-go/pkg/client/catalog_sources"
 	"github.com/vmware/vra-sdk-go/pkg/client/cloud_account"
+	"github.com/vmware/vra-sdk-go/pkg/client/cluster_plans"
 	"github.com/vmware/vra-sdk-go/pkg/client/compute"
 	"github.com/vmware/vra-sdk-go/pkg/client/compute_gateway"
 	"github.com/vmware/vra-sdk-go/pkg/client/compute_nat"
@@ -46,14 +47,19 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/icons"
 	"github.com/vmware/vra-sdk-go/pkg/client/image_profile"
 	"github.com/vmware/vra-sdk-go/pkg/client/images"
+	"github.com/vmware/vra-sdk-go/pkg/client/kubernetes_clusters"
+	"github.com/vmware/vra-sdk-go/pkg/client/kubernetes_zones"
+	"github.com/vmware/vra-sdk-go/pkg/client/limit_ranges"
 	"github.com/vmware/vra-sdk-go/pkg/client/load_balancer"
 	"github.com/vmware/vra-sdk-go/pkg/client/location"
 	"github.com/vmware/vra-sdk-go/pkg/client/login"
 	"github.com/vmware/vra-sdk-go/pkg/client/marketplace"
 	"github.com/vmware/vra-sdk-go/pkg/client/marketplace_downloads"
+	"github.com/vmware/vra-sdk-go/pkg/client/namespaces"
 	"github.com/vmware/vra-sdk-go/pkg/client/network"
 	"github.com/vmware/vra-sdk-go/pkg/client/network_ip_range"
 	"github.com/vmware/vra-sdk-go/pkg/client/network_profile"
+	"github.com/vmware/vra-sdk-go/pkg/client/p_k_s_endpoints"
 	"github.com/vmware/vra-sdk-go/pkg/client/perspective_sync"
 	"github.com/vmware/vra-sdk-go/pkg/client/pipelines"
 	"github.com/vmware/vra-sdk-go/pkg/client/policies"
@@ -62,15 +68,20 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/pricing_card_assignments"
 	"github.com/vmware/vra-sdk-go/pkg/client/pricing_cards"
 	"github.com/vmware/vra-sdk-go/pkg/client/project"
+	"github.com/vmware/vra-sdk-go/pkg/client/projects"
 	"github.com/vmware/vra-sdk-go/pkg/client/property_groups"
+	"github.com/vmware/vra-sdk-go/pkg/client/provider_requests"
 	"github.com/vmware/vra-sdk-go/pkg/client/request"
 	"github.com/vmware/vra-sdk-go/pkg/client/requests"
 	"github.com/vmware/vra-sdk-go/pkg/client/resource_actions"
+	"github.com/vmware/vra-sdk-go/pkg/client/resource_quotas"
 	"github.com/vmware/vra-sdk-go/pkg/client/resource_types"
 	"github.com/vmware/vra-sdk-go/pkg/client/resources"
 	"github.com/vmware/vra-sdk-go/pkg/client/security_group"
 	"github.com/vmware/vra-sdk-go/pkg/client/source_control_sync"
 	"github.com/vmware/vra-sdk-go/pkg/client/storage_profile"
+	"github.com/vmware/vra-sdk-go/pkg/client/supervisor_clusters"
+	"github.com/vmware/vra-sdk-go/pkg/client/supervisor_namespaces"
 	"github.com/vmware/vra-sdk-go/pkg/client/tags"
 	"github.com/vmware/vra-sdk-go/pkg/client/triggers"
 	"github.com/vmware/vra-sdk-go/pkg/client/user_operations"
@@ -131,6 +142,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 	cli.CatalogItems = catalog_items.New(transport, formats)
 	cli.CatalogSources = catalog_sources.New(transport, formats)
 	cli.CloudAccount = cloud_account.New(transport, formats)
+	cli.ClusterPlans = cluster_plans.New(transport, formats)
 	cli.Compute = compute.New(transport, formats)
 	cli.ComputeGateway = compute_gateway.New(transport, formats)
 	cli.ComputeNat = compute_nat.New(transport, formats)
@@ -156,14 +168,19 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 	cli.Icons = icons.New(transport, formats)
 	cli.ImageProfile = image_profile.New(transport, formats)
 	cli.Images = images.New(transport, formats)
+	cli.KubernetesClusters = kubernetes_clusters.New(transport, formats)
+	cli.KubernetesZones = kubernetes_zones.New(transport, formats)
+	cli.LimitRanges = limit_ranges.New(transport, formats)
 	cli.LoadBalancer = load_balancer.New(transport, formats)
 	cli.Location = location.New(transport, formats)
 	cli.Login = login.New(transport, formats)
 	cli.Marketplace = marketplace.New(transport, formats)
 	cli.MarketplaceDownloads = marketplace_downloads.New(transport, formats)
+	cli.Namespaces = namespaces.New(transport, formats)
 	cli.Network = network.New(transport, formats)
 	cli.NetworkIPRange = network_ip_range.New(transport, formats)
 	cli.NetworkProfile = network_profile.New(transport, formats)
+	cli.PksEndpoints = p_k_s_endpoints.New(transport, formats)
 	cli.PerspectiveSync = perspective_sync.New(transport, formats)
 	cli.Pipelines = pipelines.New(transport, formats)
 	cli.Policies = policies.New(transport, formats)
@@ -172,15 +189,20 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 	cli.PricingCardAssignments = pricing_card_assignments.New(transport, formats)
 	cli.PricingCards = pricing_cards.New(transport, formats)
 	cli.Project = project.New(transport, formats)
+	cli.Projects = projects.New(transport, formats)
 	cli.PropertyGroups = property_groups.New(transport, formats)
+	cli.ProviderRequests = provider_requests.New(transport, formats)
 	cli.Request = request.New(transport, formats)
 	cli.Requests = requests.New(transport, formats)
 	cli.ResourceActions = resource_actions.New(transport, formats)
+	cli.ResourceQuotas = resource_quotas.New(transport, formats)
 	cli.ResourceTypes = resource_types.New(transport, formats)
 	cli.Resources = resources.New(transport, formats)
 	cli.SecurityGroup = security_group.New(transport, formats)
 	cli.SourceControlSync = source_control_sync.New(transport, formats)
 	cli.StorageProfile = storage_profile.New(transport, formats)
+	cli.SupervisorClusters = supervisor_clusters.New(transport, formats)
+	cli.SupervisorNamespaces = supervisor_namespaces.New(transport, formats)
 	cli.Tags = tags.New(transport, formats)
 	cli.Triggers = triggers.New(transport, formats)
 	cli.UserOperations = user_operations.New(transport, formats)
@@ -252,6 +274,8 @@ type MulticloudIaaS struct {
 
 	CloudAccount cloud_account.ClientService
 
+	ClusterPlans cluster_plans.ClientService
+
 	Compute compute.ClientService
 
 	ComputeGateway compute_gateway.ClientService
@@ -302,6 +326,12 @@ type MulticloudIaaS struct {
 
 	Images images.ClientService
 
+	KubernetesClusters kubernetes_clusters.ClientService
+
+	KubernetesZones kubernetes_zones.ClientService
+
+	LimitRanges limit_ranges.ClientService
+
 	LoadBalancer load_balancer.ClientService
 
 	Location location.ClientService
@@ -312,11 +342,15 @@ type MulticloudIaaS struct {
 
 	MarketplaceDownloads marketplace_downloads.ClientService
 
+	Namespaces namespaces.ClientService
+
 	Network network.ClientService
 
 	NetworkIPRange network_ip_range.ClientService
 
 	NetworkProfile network_profile.ClientService
+
+	PksEndpoints p_k_s_endpoints.ClientService
 
 	PerspectiveSync perspective_sync.ClientService
 
@@ -334,13 +368,19 @@ type MulticloudIaaS struct {
 
 	Project project.ClientService
 
+	Projects projects.ClientService
+
 	PropertyGroups property_groups.ClientService
+
+	ProviderRequests provider_requests.ClientService
 
 	Request request.ClientService
 
 	Requests requests.ClientService
 
 	ResourceActions resource_actions.ClientService
+
+	ResourceQuotas resource_quotas.ClientService
 
 	ResourceTypes resource_types.ClientService
 
@@ -351,6 +391,10 @@ type MulticloudIaaS struct {
 	SourceControlSync source_control_sync.ClientService
 
 	StorageProfile storage_profile.ClientService
+
+	SupervisorClusters supervisor_clusters.ClientService
+
+	SupervisorNamespaces supervisor_namespaces.ClientService
 
 	Tags tags.ClientService
 
@@ -379,6 +423,7 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.CatalogItems.SetTransport(transport)
 	c.CatalogSources.SetTransport(transport)
 	c.CloudAccount.SetTransport(transport)
+	c.ClusterPlans.SetTransport(transport)
 	c.Compute.SetTransport(transport)
 	c.ComputeGateway.SetTransport(transport)
 	c.ComputeNat.SetTransport(transport)
@@ -404,14 +449,19 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.Icons.SetTransport(transport)
 	c.ImageProfile.SetTransport(transport)
 	c.Images.SetTransport(transport)
+	c.KubernetesClusters.SetTransport(transport)
+	c.KubernetesZones.SetTransport(transport)
+	c.LimitRanges.SetTransport(transport)
 	c.LoadBalancer.SetTransport(transport)
 	c.Location.SetTransport(transport)
 	c.Login.SetTransport(transport)
 	c.Marketplace.SetTransport(transport)
 	c.MarketplaceDownloads.SetTransport(transport)
+	c.Namespaces.SetTransport(transport)
 	c.Network.SetTransport(transport)
 	c.NetworkIPRange.SetTransport(transport)
 	c.NetworkProfile.SetTransport(transport)
+	c.PksEndpoints.SetTransport(transport)
 	c.PerspectiveSync.SetTransport(transport)
 	c.Pipelines.SetTransport(transport)
 	c.Policies.SetTransport(transport)
@@ -420,15 +470,20 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.PricingCardAssignments.SetTransport(transport)
 	c.PricingCards.SetTransport(transport)
 	c.Project.SetTransport(transport)
+	c.Projects.SetTransport(transport)
 	c.PropertyGroups.SetTransport(transport)
+	c.ProviderRequests.SetTransport(transport)
 	c.Request.SetTransport(transport)
 	c.Requests.SetTransport(transport)
 	c.ResourceActions.SetTransport(transport)
+	c.ResourceQuotas.SetTransport(transport)
 	c.ResourceTypes.SetTransport(transport)
 	c.Resources.SetTransport(transport)
 	c.SecurityGroup.SetTransport(transport)
 	c.SourceControlSync.SetTransport(transport)
 	c.StorageProfile.SetTransport(transport)
+	c.SupervisorClusters.SetTransport(transport)
+	c.SupervisorNamespaces.SetTransport(transport)
 	c.Tags.SetTransport(transport)
 	c.Triggers.SetTransport(transport)
 	c.UserOperations.SetTransport(transport)

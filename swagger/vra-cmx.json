@@ -1,0 +1,5097 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Documentation of the CMX service APIs",
+        "version": "2019-09-12",
+        "title": "CMX Service APIs"
+    },
+    "host": "api.mgmt.cloud.vmware.com",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "Cluster Plans",
+            "description": "Cluster Plan Controller"
+        },
+        {
+            "name": "Kubernetes Clusters",
+            "description": "K 8 S Cluster Controller"
+        },
+        {
+            "name": "Kubernetes Zones",
+            "description": "K 8 S Zone Controller"
+        },
+        {
+            "name": "Limit Ranges",
+            "description": "K 8 S Limit Range Controller"
+        },
+        {
+            "name": "Namespaces",
+            "description": "K 8 S Namespace Controller"
+        },
+        {
+            "name": "PKS Endpoints",
+            "description": "PKS Endpoint Controller"
+        },
+        {
+            "name": "Projects",
+            "description": "Project Controller"
+        },
+        {
+            "name": "Provider Requests",
+            "description": "Provider Request Controller"
+        },
+        {
+            "name": "Resource Quotas",
+            "description": "K 8 S Resource Quota Controller"
+        },
+        {
+            "name": "Supervisor Clusters",
+            "description": "Supervisor Cluster Controller"
+        },
+        {
+            "name": "Supervisor Namespaces",
+            "description": "Supervisor Namespace Controller"
+        }
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/cmx/api/projects/{projectId}/entity-count": {
+            "get": {
+                "tags": [
+                    "Projects"
+                ],
+                "summary": "Retrieve the count of entities per project",
+                "description": "Get all entities for a project by providing a project id",
+                "operationId": "countOfEntitiesInProjectUsingGET",
+                "parameters": [
+                    {
+                        "name": "projectId",
+                        "in": "path",
+                        "description": "projectId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/requests/blueprint/blueprint-provider-request": {
+            "post": {
+                "tags": [
+                    "Provider Requests"
+                ],
+                "summary": "Handle blueprint resources requests",
+                "description": "Handles blueprint requests for resource operations - allocation, provisioning, removal",
+                "operationId": "postUsingPOST",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "request",
+                        "description": "request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ResourceRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ResourceResponse"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            },
+            "patch": {
+                "tags": [
+                    "Provider Requests"
+                ],
+                "summary": "Handles unfinished requests",
+                "description": "Handles unfinished requests that are stopped because of service shutdown or a service outage.",
+                "operationId": "patchUsingPATCH",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "rr",
+                        "description": "rr",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ResumeRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ResourceResponse"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/cluster-plans": {
+            "get": {
+                "tags": [
+                    "Cluster Plans"
+                ],
+                "summary": "Search a cluster plan instance",
+                "description": "Search a cluster plan by name and cloud account id.",
+                "operationId": "searchClusterPlansUsingGET",
+                "parameters": [
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "pageNumber",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "paged",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "sort.sorted",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "sort.unsorted",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "unpaged",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "cloudAccountId",
+                        "in": "query",
+                        "description": "cloudAccountId",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "name",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfClusterPlan"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            },
+            "post": {
+                "tags": [
+                    "Cluster Plans"
+                ],
+                "summary": "Create a cluster plan",
+                "description": "The body shall contains a cluster plan entity.",
+                "operationId": "createUsingPOST",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "plan",
+                        "description": "plan",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ClusterPlan"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ClusterPlan"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/cluster-plans/{id}": {
+            "get": {
+                "tags": [
+                    "Cluster Plans"
+                ],
+                "summary": "Get a Cluster Plan by Id",
+                "description": "Get a Cluster Plan by Id",
+                "operationId": "getUsingGET",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ClusterPlan"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            },
+            "put": {
+                "tags": [
+                    "Cluster Plans"
+                ],
+                "summary": "Update a cluster plan",
+                "description": "The body shall contains the cluster plan mutation entity.",
+                "operationId": "updateUsingPUT",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "in": "body",
+                        "name": "plan",
+                        "description": "plan",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ClusterPlan"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ClusterPlan"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/k8s-zones": {
+            "get": {
+                "tags": [
+                    "Kubernetes Zones"
+                ],
+                "summary": "Get all K8S Zones",
+                "description": "List of all K8S Zones",
+                "operationId": "listZonesUsingGET",
+                "parameters": [
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "pageNumber",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "paged",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "sort.sorted",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "sort.unsorted",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "unpaged",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "expandTags",
+                        "in": "query",
+                        "description": "expandTags",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "projectId",
+                        "in": "query",
+                        "description": "projectId",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfK8SZone"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            },
+            "post": {
+                "tags": [
+                    "Kubernetes Zones"
+                ],
+                "summary": "Create a K8S Zone",
+                "description": "Create a K8S Zone entity",
+                "operationId": "createZoneUsingPOST",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "zone",
+                        "description": "zone",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/K8SZone"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/K8SZone"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/k8s-zones/{id}": {
+            "get": {
+                "tags": [
+                    "Kubernetes Zones"
+                ],
+                "summary": "Get a K8S Zone",
+                "description": "Get a K8S Zone by Id",
+                "operationId": "getZoneUsingGET",
+                "parameters": [
+                    {
+                        "name": "expandTags",
+                        "in": "query",
+                        "description": "expandTags",
+                        "required": false,
+                        "type": "boolean",
+                        "default": true
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/K8SZone"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            },
+            "put": {
+                "tags": [
+                    "Kubernetes Zones"
+                ],
+                "summary": "Update a K8S Zone",
+                "description": "Modify a K8S Zone",
+                "operationId": "updateZoneUsingPUT",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "in": "body",
+                        "name": "zone",
+                        "description": "zone",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/K8SZone"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/K8SZone"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            },
+            "delete": {
+                "tags": [
+                    "Kubernetes Zones"
+                ],
+                "summary": "Delete a K8S Zone",
+                "description": "Remove a K8S Zone",
+                "operationId": "deleteZoneUsingDELETE",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/k8s-zones/{id}/projects": {
+            "put": {
+                "tags": [
+                    "Kubernetes Zones"
+                ],
+                "summary": "Update a K8S Zone project assignments",
+                "description": "Assignment of projects to K8S Zone",
+                "operationId": "updateZoneProjectsUsingPUT",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "in": "body",
+                        "name": "projects",
+                        "description": "projects",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/K8SZoneProjectAssignment"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/K8SZone"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/k8s/clusters": {
+            "get": {
+                "tags": [
+                    "Kubernetes Clusters"
+                ],
+                "summary": "Get all registered K8S Clusters",
+                "description": "Retrieve the managed K8S Clusters ",
+                "operationId": "listUsingGET",
+                "parameters": [
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "pageNumber",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "paged",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "sort.sorted",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "sort.unsorted",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "unpaged",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfK8SCluster"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            },
+            "post": {
+                "tags": [
+                    "Kubernetes Clusters"
+                ],
+                "summary": "Onboard a K8S Cluster",
+                "description": "Onboard a K8S Cluster entity",
+                "operationId": "onboardUsingPOST",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "cluster",
+                        "description": "cluster",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/K8SCluster"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/K8SCluster"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/k8s/clusters/validate": {
+            "put": {
+                "tags": [
+                    "Kubernetes Clusters"
+                ],
+                "summary": "Validate provided K8S Cluster entity",
+                "description": "Validate provided K8S Cluster entity",
+                "operationId": "validateUsingPUT",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "cluster",
+                        "description": "cluster",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/K8SCluster"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/K8sClusterState"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/k8s/clusters/{id}": {
+            "get": {
+                "tags": [
+                    "Kubernetes Clusters"
+                ],
+                "summary": "Find a K8S Cluster by id",
+                "description": "Retrieve a K8S by id",
+                "operationId": "getClusterUsingGET",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/K8SCluster"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            },
+            "put": {
+                "tags": [
+                    "Kubernetes Clusters"
+                ],
+                "summary": "Update a K8S Cluster",
+                "description": "Update K8S Cluster by id",
+                "operationId": "updateUsingPUT_1",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "cluster",
+                        "description": "cluster",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/K8SCluster"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/K8SCluster"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            },
+            "delete": {
+                "tags": [
+                    "Kubernetes Clusters"
+                ],
+                "summary": "Delete a K8S Cluster",
+                "description": "Delete a K8S Cluster by provided id",
+                "operationId": "deleteClusterUsingDELETE",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/k8s/clusters/{id}/kube-config": {
+            "get": {
+                "tags": [
+                    "Kubernetes Clusters"
+                ],
+                "summary": "Get a KubeConfig for a K8S Cluster",
+                "description": "Get a KubeConfig for a K8S Cluster by provided id",
+                "operationId": "getKubeConfigUsingGET",
+                "produces": [
+                    "application/yaml"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "name": "includeCredentials",
+                        "in": "query",
+                        "description": "includeCredentials",
+                        "required": false,
+                        "type": "boolean"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseEntity"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/k8s/clusters/{id}/nodes": {
+            "get": {
+                "tags": [
+                    "Kubernetes Clusters"
+                ],
+                "summary": "Get nodes of K8S Clusters",
+                "description": "Get nodes of K8S Clusters by provided id",
+                "operationId": "getNodesUsingGET",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/NodeList"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/k8s/namespaces": {
+            "get": {
+                "tags": [
+                    "Namespaces"
+                ],
+                "summary": "Get All K8S Namespaces",
+                "description": "Get a list of all K8S Namespaces",
+                "operationId": "listUsingGET_2",
+                "parameters": [
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "pageNumber",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "paged",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "sort.sorted",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "sort.unsorted",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "unpaged",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfK8SNamespace"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            },
+            "post": {
+                "tags": [
+                    "Namespaces"
+                ],
+                "summary": "Create a K8S Namespace",
+                "description": "Create a K8S Namespace",
+                "operationId": "createUsingPOST_1",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "namespace",
+                        "description": "namespace",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/K8SNamespace"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/K8SNamespace"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/k8s/namespaces/{id}": {
+            "get": {
+                "tags": [
+                    "Namespaces"
+                ],
+                "summary": "Get a K8S Namespace by id",
+                "description": "Get a K8S Namespace by id",
+                "operationId": "getUsingGET_2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/K8SNamespace"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            },
+            "put": {
+                "tags": [
+                    "Namespaces"
+                ],
+                "summary": "Update a K8S Namespace description or project",
+                "description": "Update a K8S Namespace description or project by providing namespace id and Namespace entity",
+                "operationId": "updateUsingPUT_2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "in": "body",
+                        "name": "namespace",
+                        "description": "namespace",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/K8SNamespace"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/K8SNamespace"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            },
+            "delete": {
+                "tags": [
+                    "Namespaces"
+                ],
+                "summary": "Delete a K8S Namespace",
+                "description": "Delete a K8S Namespace by id",
+                "operationId": "deleteUsingDELETE",
+                "parameters": [
+                    {
+                        "name": "destroy",
+                        "in": "query",
+                        "description": "destroy",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/k8s/namespaces/{id}/kube-config": {
+            "get": {
+                "tags": [
+                    "Namespaces"
+                ],
+                "summary": "Get KubeConfig for a K8S Namesapce",
+                "description": "Get KubeConfig for a K8S Namesapce by providing a K8S Namespace id",
+                "operationId": "getKubeConfigUsingGET_1",
+                "produces": [
+                    "application/yaml"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseEntity"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/k8s/namespaces/{id}/register": {
+            "put": {
+                "tags": [
+                    "Namespaces"
+                ],
+                "summary": "Onboard existing K8S Namespace",
+                "description": "Onboard existing K8S Namespace by providing namespace id and entity",
+                "operationId": "registerUsingPUT",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    {
+                        "in": "body",
+                        "name": "namespaceState",
+                        "description": "namespaceState",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/K8SNamespace"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/K8SNamespace"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/limit-ranges": {
+            "get": {
+                "tags": [
+                    "Limit Ranges"
+                ],
+                "summary": "Get All K8S LimitRanges",
+                "description": "Get a list of all K8S LimitRanges",
+                "operationId": "listUsingGET_1",
+                "parameters": [
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "pageNumber",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "paged",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "sort.sorted",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "sort.unsorted",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "unpaged",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfK8SLimitRange"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/limit-ranges/{id}": {
+            "get": {
+                "tags": [
+                    "Limit Ranges"
+                ],
+                "summary": "Get a K8S LimitRange by id",
+                "description": "Get a K8S LimitRange by id",
+                "operationId": "getUsingGET_1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/K8SLimitRange"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/pks/endpoints/{id}/clusters": {
+            "get": {
+                "tags": [
+                    "PKS Endpoints"
+                ],
+                "summary": "Get all K8S clusters for a PKS endpoint",
+                "description": "Get all K8S clusters for a PKS endpoint by provided PKS endpoint id",
+                "operationId": "getClustersUsingGET",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/PKSCluster"
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            },
+            "post": {
+                "tags": [
+                    "PKS Endpoints"
+                ],
+                "summary": "Create a K8S cluster",
+                "description": "Create a K8S cluster on PKS endpoint specified by endpoint id",
+                "operationId": "createClusterUsingPOST",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "pksCluster",
+                        "description": "pksCluster",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PKSCluster"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/K8SCluster"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/pks/endpoints/{id}/clusters/{clusterId}": {
+            "put": {
+                "tags": [
+                    "PKS Endpoints"
+                ],
+                "summary": "Update a K8S cluster on a specific endpoint id",
+                "description": "Update a K8S cluster on a PKS endpoint identified by id",
+                "operationId": "updateClusterUsingPUT",
+                "parameters": [
+                    {
+                        "name": "clusterId",
+                        "in": "path",
+                        "description": "clusterId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "pksCluster",
+                        "description": "pksCluster",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PKSCluster"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/K8SCluster"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            },
+            "delete": {
+                "tags": [
+                    "PKS Endpoints"
+                ],
+                "summary": "Destroy a K8S cluster on a specific PKS endpoint",
+                "description": "Destroy and unregister a K8S cluster on PKS endpoint",
+                "operationId": "destroyClusterUsingDELETE",
+                "parameters": [
+                    {
+                        "name": "clusterId",
+                        "in": "path",
+                        "description": "clusterId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/pks/endpoints/{id}/plans": {
+            "get": {
+                "tags": [
+                    "PKS Endpoints"
+                ],
+                "summary": "Get supported plans for a PKS endpoint",
+                "description": "Get supported plans by providing PKS endpoint id",
+                "operationId": "getPlansUsingGET",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/PKSPlan"
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/resource-quotas": {
+            "get": {
+                "tags": [
+                    "Resource Quotas"
+                ],
+                "summary": "Get All K8S ResourceQuotas",
+                "description": "Get a list of all K8S ResourceQuotas",
+                "operationId": "listUsingGET_3",
+                "parameters": [
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "pageNumber",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "paged",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "sort.sorted",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "sort.unsorted",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "unpaged",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfK8SResourceQuota"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/resource-quotas/{id}": {
+            "get": {
+                "tags": [
+                    "Resource Quotas"
+                ],
+                "summary": "Get a K8S ResourceQuota by id",
+                "description": "Get a K8S ResourceQuota by id",
+                "operationId": "getUsingGET_3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/K8SResourceQuota"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/supervisor-clusters": {
+            "get": {
+                "tags": [
+                    "Supervisor Clusters"
+                ],
+                "summary": "Get all managed Supervisor Clusters",
+                "description": "Get all managed Supervisor Clusters",
+                "operationId": "listUsingGET_4",
+                "parameters": [
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "pageNumber",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "paged",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "sort.sorted",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "sort.unsorted",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "unpaged",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfSupervisorCluster"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/supervisor-clusters/endpoint/{endpointSelfLinkId}": {
+            "get": {
+                "tags": [
+                    "Supervisor Clusters"
+                ],
+                "summary": "Get all Supervisor Clusters on a vSphere endpoint",
+                "description": "Get all Supervisor Clusters on a vSphere endpoint by provided id from the endpoint self link",
+                "operationId": "listClustersOnEndpointUsingGET",
+                "parameters": [
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "pageNumber",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "paged",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "sort.sorted",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "sort.unsorted",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "unpaged",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "endpointSelfLinkId",
+                        "in": "path",
+                        "description": "endpointSelfLinkId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "registered",
+                        "in": "query",
+                        "description": "registered",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfSupervisorCluster"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/supervisor-clusters/endpoint/{endpointSelfLinkId}/cluster/{moref}": {
+            "get": {
+                "tags": [
+                    "Supervisor Clusters"
+                ],
+                "summary": "Find a Supervisor Cluster by vSphere moref and vSphere endpoint id",
+                "description": "Retrieve a Supervisor Cluster by vSphere moref and id from the endpoint self link of the vSphere endpoint this cluster is associated to",
+                "operationId": "getClusterUsingGET_1",
+                "parameters": [
+                    {
+                        "name": "endpointSelfLinkId",
+                        "in": "path",
+                        "description": "endpointSelfLinkId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "moref",
+                        "in": "path",
+                        "description": "moref",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/SupervisorCluster"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/supervisor-clusters/{clusterSelfLinkId}": {
+            "delete": {
+                "tags": [
+                    "Supervisor Clusters"
+                ],
+                "summary": "Make a Supervisor Cluster an unmanaged entity",
+                "description": "A valid document self link id shall be provided.",
+                "operationId": "unregisterUsingDELETE",
+                "parameters": [
+                    {
+                        "name": "clusterSelfLinkId",
+                        "in": "path",
+                        "description": "clusterSelfLinkId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/supervisor-clusters/{clusterSelfLinkId}/register": {
+            "put": {
+                "tags": [
+                    "Supervisor Clusters"
+                ],
+                "summary": "Make a Supervisor Cluster a managed entity",
+                "description": "A valid document self link id shall be provided.",
+                "operationId": "registerUsingPUT_1",
+                "parameters": [
+                    {
+                        "name": "clusterSelfLinkId",
+                        "in": "path",
+                        "description": "clusterSelfLinkId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/SupervisorCluster"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/supervisor-clusters/{selfLinkId}": {
+            "get": {
+                "tags": [
+                    "Supervisor Clusters"
+                ],
+                "summary": "Find a Supervisor Cluster by the id from documentSelfLink",
+                "description": "Retrieve a Supervisor Cluster by id from documentSelfLink",
+                "operationId": "getClusterUsingGET_2",
+                "parameters": [
+                    {
+                        "name": "selfLinkId",
+                        "in": "path",
+                        "description": "selfLinkId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/SupervisorCluster"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/supervisor-namespaces": {
+            "get": {
+                "tags": [
+                    "Supervisor Namespaces"
+                ],
+                "summary": "Get all Supervisor Namespaces",
+                "description": "Get all Supervisor Namespaces",
+                "operationId": "listUsingGET_5",
+                "parameters": [
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "pageNumber",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "paged",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "sort.sorted",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "sort.unsorted",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "unpaged",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "clusterSelfLinkId",
+                        "in": "query",
+                        "description": "clusterSelfLinkId",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "registered",
+                        "in": "query",
+                        "description": "registered",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfSupervisorNamespace"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            },
+            "post": {
+                "tags": [
+                    "Supervisor Namespaces"
+                ],
+                "summary": "Create Supervisor Namespace",
+                "description": "Create Supervisor Namespace",
+                "operationId": "createUsingPOST_2",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "dto",
+                        "description": "dto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SupervisorNamespaceCreateDTO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/SupervisorNamespace"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/supervisor-namespaces/{namespaceSelfLinkId}/principals": {
+            "post": {
+                "tags": [
+                    "Supervisor Namespaces"
+                ],
+                "summary": "Sync Supervisor Namespace principals access list",
+                "description": "The body shall contain list of viewer and editor user and groups.",
+                "operationId": "syncUsingPOST",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "accessList",
+                        "description": "accessList",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/SupervisorNamespaceSyncRequestDTO"
+                        }
+                    },
+                    {
+                        "name": "namespaceSelfLinkId",
+                        "in": "path",
+                        "description": "namespaceSelfLinkId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/SupervisorNamespaceSyncResponseDTO"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/supervisor-namespaces/{namespaceSelfLinkId}/principals/{requestId}": {
+            "get": {
+                "tags": [
+                    "Supervisor Namespaces"
+                ],
+                "summary": "Retrieve sync status",
+                "description": "Retrieve sync status.",
+                "operationId": "syncStatusUsingGET",
+                "parameters": [
+                    {
+                        "name": "namespaceSelfLinkId",
+                        "in": "path",
+                        "description": "namespaceSelfLinkId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "requestId",
+                        "in": "path",
+                        "description": "requestId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/SupervisorNamespaceSyncResponseDTO"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/supervisor-namespaces/{namespaceSelfLinkId}/register": {
+            "put": {
+                "tags": [
+                    "Supervisor Namespaces"
+                ],
+                "summary": "Make a Supervisor Namespace a managed entity",
+                "description": "The body shall contain valid projectId, DocumentSelfLink and list of viewer and editor user and groups.",
+                "operationId": "registerUsingPUT_2",
+                "parameters": [
+                    {
+                        "name": "namespaceSelfLinkId",
+                        "in": "path",
+                        "description": "namespaceSelfLinkId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "svNamespace",
+                        "description": "svNamespace",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SupervisorNamespace"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/SupervisorNamespace"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/supervisor-namespaces/{selfLinkId}": {
+            "get": {
+                "tags": [
+                    "Supervisor Namespaces"
+                ],
+                "summary": "Find a Supervisor Namespace by the id from documentSelfLink",
+                "description": "Retrieve a Supervisor Namespace by id from documentSelfLink",
+                "operationId": "getNamespaceUsingGET",
+                "parameters": [
+                    {
+                        "name": "expandStorage",
+                        "in": "query",
+                        "description": "expandStorage",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "selfLinkId",
+                        "in": "path",
+                        "description": "selfLinkId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/SupervisorNamespace"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            },
+            "delete": {
+                "tags": [
+                    "Supervisor Namespaces"
+                ],
+                "summary": "Make not managed a Supervisor Namespace and optionally delete it",
+                "description": "Make not managed a Supervisor Namespace and delete it from cluster if destroy parameter is true",
+                "operationId": "deleteUsingDELETE_1",
+                "parameters": [
+                    {
+                        "name": "destroy",
+                        "in": "query",
+                        "description": "destroy",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "selfLinkId",
+                        "in": "path",
+                        "description": "selfLinkId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            },
+            "patch": {
+                "tags": [
+                    "Supervisor Namespaces"
+                ],
+                "summary": "Update Supervisor Namespace",
+                "description": "Update Supervisor Namespace",
+                "operationId": "updateUsingPATCH",
+                "parameters": [
+                    {
+                        "name": "selfLinkId",
+                        "in": "path",
+                        "description": "selfLinkId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "svNamespaceDto",
+                        "description": "svNamespaceDto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SupervisorNamespaceUpdateDTO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/SupervisorNamespace"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/cmx/api/resources/supervisor-namespaces/{selfLinkId}/resource-quotas": {
+            "get": {
+                "tags": [
+                    "Supervisor Namespaces"
+                ],
+                "summary": "Get Supervisor Namespace Quotas by the id from documentSelfLink",
+                "description": "Retrieve a Supervisor Namespace Quota by id from documentSelfLink",
+                "operationId": "getNamespaceQuotasUsingGET",
+                "parameters": [
+                    {
+                        "name": "selfLinkId",
+                        "in": "path",
+                        "description": "selfLinkId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/SupervisorNamespaceQuota"
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            },
+            "put": {
+                "tags": [
+                    "Supervisor Namespaces"
+                ],
+                "summary": "Set Supervisor Namespace Quotas by the id from documentSelfLink",
+                "description": "Set a Supervisor Namespace Quota by id from documentSelfLink",
+                "operationId": "setNamespaceQuotasUsingPUT",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "quotas",
+                        "description": "quotas",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/SupervisorNamespaceQuota"
+                            }
+                        }
+                    },
+                    {
+                        "name": "selfLinkId",
+                        "in": "path",
+                        "description": "selfLinkId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/SupervisorNamespaceQuota"
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        }
+    },
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    },
+    "definitions": {
+        "AuthCredentialsServiceState": {
+            "type": "object",
+            "properties": {
+                "bearer": {
+                    "type": "boolean"
+                },
+                "customProperties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "documentSelfLink": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "boolean"
+                },
+                "privateKey": {
+                    "type": "string"
+                },
+                "privateKeyId": {
+                    "type": "string"
+                },
+                "publicKey": {
+                    "type": "string"
+                },
+                "tenantLinks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "type": {
+                    "type": "string"
+                },
+                "userEmail": {
+                    "type": "string"
+                }
+            },
+            "title": "AuthCredentialsServiceState"
+        },
+        "AuthorizationContext": {
+            "type": "object",
+            "properties": {
+                "claims": {
+                    "$ref": "#/definitions/Claims"
+                },
+                "guestUser": {
+                    "type": "boolean"
+                },
+                "systemUser": {
+                    "type": "boolean"
+                },
+                "token": {
+                    "type": "string"
+                }
+            },
+            "title": "AuthorizationContext"
+        },
+        "Claims": {
+            "type": "object",
+            "properties": {
+                "audience": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "expirationTime": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "issuedAt": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "issuer": {
+                    "type": "string"
+                },
+                "jwtId": {
+                    "type": "string"
+                },
+                "notBefore": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "properties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "subject": {
+                    "type": "string"
+                }
+            },
+            "title": "Claims"
+        },
+        "ClusterPlan": {
+            "type": "object",
+            "properties": {
+                "cloudAccountId": {
+                    "type": "string"
+                },
+                "createdMillis": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "definition": {
+                    "type": "object"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "orgId": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "TANZU_CLUSTER_PLAN"
+                    ]
+                },
+                "updatedMillis": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "ClusterPlan"
+        },
+        "CompletionHandler": {
+            "type": "object",
+            "title": "CompletionHandler"
+        },
+        "K8SCluster": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "authCredentialsLink": {
+                    "type": "string"
+                },
+                "caCertificate": {
+                    "type": "string"
+                },
+                "clusterType": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "createdMillis": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "credentials": {
+                    "$ref": "#/definitions/AuthCredentialsServiceState"
+                },
+                "customProperties": {
+                    "type": "object"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "directConnection": {
+                    "type": "boolean"
+                },
+                "endpointId": {
+                    "type": "string"
+                },
+                "externalLink": {
+                    "type": "string"
+                },
+                "global": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "installerId": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "kubernetesWorkerInstances": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "lastOperation": {
+                    "type": "string"
+                },
+                "lastOperationMessage": {
+                    "type": "string"
+                },
+                "lastOperationStatus": {
+                    "type": "string"
+                },
+                "lastRefreshedMillis": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/K8SNode"
+                    }
+                },
+                "orgId": {
+                    "type": "string"
+                },
+                "owner": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "string"
+                },
+                "remainingUnreachableRetryThreshold": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "shared": {
+                    "type": "boolean"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "updatedMillis": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "title": "K8SCluster"
+        },
+        "K8SLimitRange": {
+            "type": "object",
+            "properties": {
+                "active": {
+                    "type": "boolean"
+                },
+                "clusterId": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "createdMillis": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "definition": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "managed": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "namespaceId": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "namespaceName": {
+                    "type": "string"
+                },
+                "orgId": {
+                    "type": "string"
+                },
+                "resource": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "updatedMillis": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "K8SLimitRange"
+        },
+        "K8SNamespace": {
+            "type": "object",
+            "properties": {
+                "authCredentialsLink": {
+                    "type": "string"
+                },
+                "clusterId": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "createdMillis": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "customProperties": {
+                    "type": "object"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "installerId": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "orgId": {
+                    "type": "string"
+                },
+                "owner": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "string"
+                },
+                "registered": {
+                    "type": "boolean"
+                },
+                "shared": {
+                    "type": "boolean"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "ALLOCATED",
+                        "READY",
+                        "FAILED",
+                        "UNREACHABLE",
+                        "TERMINATING",
+                        "REMOVED"
+                    ]
+                },
+                "updatedMillis": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "zoneProjectAssignmentId": {
+                    "type": "string",
+                    "format": "uuid"
+                }
+            },
+            "title": "K8SNamespace"
+        },
+        "K8SNode": {
+            "type": "object",
+            "properties": {
+                "allocatablePods": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "cpuCores": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "cpuUsage": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "createdMillis": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "memoryUsage": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "orgId": {
+                    "type": "string"
+                },
+                "totalMemory": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "updatedMillis": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "K8SNode"
+        },
+        "K8SResourceQuota": {
+            "type": "object",
+            "properties": {
+                "active": {
+                    "type": "boolean"
+                },
+                "clusterId": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "createdMillis": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "definition": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "managed": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "namespaceId": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "namespaceName": {
+                    "type": "string"
+                },
+                "orgId": {
+                    "type": "string"
+                },
+                "resource": {
+                    "type": "string"
+                },
+                "updatedMillis": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "usage": {
+                    "type": "string"
+                }
+            },
+            "title": "K8SResourceQuota"
+        },
+        "K8SZone": {
+            "type": "object",
+            "properties": {
+                "clusters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/K8SZoneClusterAssignment"
+                    }
+                },
+                "createdMillis": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "customProperties": {
+                    "type": "object"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "orgId": {
+                    "type": "string"
+                },
+                "projects": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/K8SZoneProjectAssignment"
+                    }
+                },
+                "providerId": {
+                    "type": "string"
+                },
+                "providerType": {
+                    "type": "string",
+                    "enum": [
+                        "PKS_ENDPOINT",
+                        "EXTERNAL",
+                        "OPEN_SHIFT",
+                        "VSPHERE_NAMESPACES"
+                    ]
+                },
+                "resources": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/K8SZoneResourceAssignment"
+                    }
+                },
+                "supervisorClusters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/SupervisorClusterAssignment"
+                    }
+                },
+                "supervisorNamespaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/SupervisorNamespaceAssignment"
+                    }
+                },
+                "tagLinks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TagState"
+                    }
+                },
+                "updatedMillis": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "K8SZone"
+        },
+        "K8SZoneClusterAssignment": {
+            "type": "object",
+            "properties": {
+                "clusterId": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "createdMillis": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "orgId": {
+                    "type": "string"
+                },
+                "pksClusterUuid": {
+                    "type": "string"
+                },
+                "preferMasterIp": {
+                    "type": "boolean"
+                },
+                "priority": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "tagLinks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TagState"
+                    }
+                },
+                "updatedMillis": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "K8SZoneClusterAssignment"
+        },
+        "K8SZoneProjectAssignment": {
+            "type": "object",
+            "properties": {
+                "createdMillis": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "maxNumberNamespaces": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "maxNumberSupervisorNamespaces": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "orgId": {
+                    "type": "string"
+                },
+                "priority": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "projectId": {
+                    "type": "string"
+                },
+                "updatedMillis": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "K8SZoneProjectAssignment"
+        },
+        "K8SZoneResourceAssignment": {
+            "type": "object",
+            "properties": {
+                "createdMillis": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "orgId": {
+                    "type": "string"
+                },
+                "priority": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "resourceId": {
+                    "type": "string"
+                },
+                "resourceType": {
+                    "type": "string",
+                    "enum": [
+                        "PKS_PLAN"
+                    ]
+                },
+                "tagLinks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TagState"
+                    }
+                },
+                "updatedMillis": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "K8SZoneResourceAssignment"
+        },
+        "K8sClusterState": {
+            "type": "object",
+            "properties": {
+                "errorMessages": {
+                    "type": "string"
+                },
+                "errorReported": {
+                    "type": "boolean"
+                },
+                "errorType": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "title": "K8sClusterState"
+        },
+        "Node": {
+            "type": "object",
+            "properties": {
+                "apiVersion": {
+                    "type": "string"
+                },
+                "kind": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/ObjectMeta"
+                },
+                "spec": {
+                    "$ref": "#/definitions/NodeSpec"
+                },
+                "status": {
+                    "$ref": "#/definitions/NodeStatus"
+                }
+            },
+            "title": "Node"
+        },
+        "NodeList": {
+            "type": "object",
+            "properties": {
+                "apiVersion": {
+                    "type": "string"
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Node"
+                    }
+                },
+                "kind": {
+                    "type": "string"
+                }
+            },
+            "title": "NodeList"
+        },
+        "NodeSpec": {
+            "type": "object",
+            "properties": {
+                "externalId": {
+                    "type": "string"
+                },
+                "podCIDR": {
+                    "type": "string"
+                },
+                "providerId": {
+                    "type": "string"
+                },
+                "unschedulable": {
+                    "type": "boolean"
+                }
+            },
+            "title": "NodeSpec"
+        },
+        "NodeStatus": {
+            "type": "object",
+            "properties": {
+                "allocatable": {
+                    "type": "object"
+                },
+                "capacity": {
+                    "type": "object"
+                },
+                "phase": {
+                    "type": "string"
+                }
+            },
+            "title": "NodeStatus"
+        },
+        "ObjectMeta": {
+            "type": "object",
+            "properties": {
+                "annotations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "clusterName": {
+                    "type": "string"
+                },
+                "creationTimestamp": {
+                    "type": "string"
+                },
+                "deletionTimestamp": {
+                    "type": "string"
+                },
+                "generateName": {
+                    "type": "string"
+                },
+                "labels": {
+                    "type": "object"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "namespace": {
+                    "type": "string"
+                },
+                "selfLink": {
+                    "type": "string"
+                },
+                "uid": {
+                    "type": "string"
+                }
+            },
+            "title": "ObjectMeta"
+        },
+        "Operation": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "enum": [
+                        "GET",
+                        "POST",
+                        "PATCH",
+                        "PUT",
+                        "DELETE",
+                        "OPTIONS"
+                    ]
+                },
+                "authorizationContext": {
+                    "$ref": "#/definitions/AuthorizationContext"
+                },
+                "bodyRaw": {
+                    "type": "object"
+                },
+                "commit": {
+                    "type": "boolean"
+                },
+                "completion": {
+                    "$ref": "#/definitions/CompletionHandler"
+                },
+                "connectionSharing": {
+                    "type": "boolean"
+                },
+                "connectionTag": {
+                    "type": "string"
+                },
+                "contentLength": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "contentType": {
+                    "type": "string"
+                },
+                "contextId": {
+                    "type": "string"
+                },
+                "cookies": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "errorResponseBody": {
+                    "$ref": "#/definitions/ServiceErrorResponse"
+                },
+                "expirationMicrosUtc": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "failureLoggingDisabled": {
+                    "type": "boolean"
+                },
+                "forwarded": {
+                    "type": "boolean"
+                },
+                "forwardingDisabled": {
+                    "type": "boolean"
+                },
+                "fromReplication": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "keepAlive": {
+                    "type": "boolean"
+                },
+                "notification": {
+                    "type": "boolean"
+                },
+                "notificationDisabled": {
+                    "type": "boolean"
+                },
+                "options": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "CONNECTION_SHARING",
+                            "KEEP_ALIVE",
+                            "REPLICATED",
+                            "FORWARDED",
+                            "REPLICATION_DISABLED",
+                            "CLONING_DISABLED",
+                            "NOTIFICATION_DISABLED",
+                            "REPLICATED_TARGET",
+                            "FAILURE_LOGGING_DISABLED",
+                            "REMOTE",
+                            "RATE_LIMITED",
+                            "SOCKET_ACTIVE"
+                        ]
+                    }
+                },
+                "peerCertificateChain": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/X509Certificate"
+                    }
+                },
+                "peerPrincipal": {
+                    "$ref": "#/definitions/Principal"
+                },
+                "referer": {
+                    "$ref": "#/definitions/URI"
+                },
+                "refererAsString": {
+                    "type": "string"
+                },
+                "remote": {
+                    "type": "boolean"
+                },
+                "replicationDisabled": {
+                    "type": "boolean"
+                },
+                "requestHeaders": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "responseHeaders": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "retriesRemaining": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "retryCount": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "socketContext": {
+                    "$ref": "#/definitions/SocketContext"
+                },
+                "statusCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "synchronize": {
+                    "type": "boolean"
+                },
+                "synchronizeOwner": {
+                    "type": "boolean"
+                },
+                "synchronizePeer": {
+                    "type": "boolean"
+                },
+                "targetReplicated": {
+                    "type": "boolean"
+                },
+                "transactionId": {
+                    "type": "string"
+                },
+                "update": {
+                    "type": "boolean"
+                },
+                "uri": {
+                    "$ref": "#/definitions/URI"
+                },
+                "withinTransaction": {
+                    "type": "boolean"
+                }
+            },
+            "title": "Operation"
+        },
+        "PKSCluster": {
+            "type": "object",
+            "properties": {
+                "hostnameAddress": {
+                    "type": "string"
+                },
+                "ipAddress": {
+                    "type": "string"
+                },
+                "kubernetes_master_ips": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "last_action": {
+                    "type": "string"
+                },
+                "last_action_description": {
+                    "type": "string"
+                },
+                "last_action_state": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "parameters": {
+                    "type": "object"
+                },
+                "plan_name": {
+                    "type": "string"
+                },
+                "uuid": {
+                    "type": "string"
+                }
+            },
+            "title": "PKSCluster"
+        },
+        "PKSPlan": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "masterInstances": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "workerInstances": {
+                    "type": "string"
+                }
+            },
+            "title": "PKSPlan"
+        },
+        "PageOfClusterPlan": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ClusterPlan"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "pageable": {
+                    "$ref": "#/definitions/Pageable"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfClusterPlan"
+        },
+        "PageOfK8SCluster": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/K8SCluster"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "pageable": {
+                    "$ref": "#/definitions/Pageable"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfK8SCluster"
+        },
+        "PageOfK8SLimitRange": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/K8SLimitRange"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "pageable": {
+                    "$ref": "#/definitions/Pageable"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfK8SLimitRange"
+        },
+        "PageOfK8SNamespace": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/K8SNamespace"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "pageable": {
+                    "$ref": "#/definitions/Pageable"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfK8SNamespace"
+        },
+        "PageOfK8SResourceQuota": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/K8SResourceQuota"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "pageable": {
+                    "$ref": "#/definitions/Pageable"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfK8SResourceQuota"
+        },
+        "PageOfK8SZone": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/K8SZone"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "pageable": {
+                    "$ref": "#/definitions/Pageable"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfK8SZone"
+        },
+        "PageOfSupervisorCluster": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/SupervisorCluster"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "pageable": {
+                    "$ref": "#/definitions/Pageable"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfSupervisorCluster"
+        },
+        "PageOfSupervisorNamespace": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/SupervisorNamespace"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "pageable": {
+                    "$ref": "#/definitions/Pageable"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfSupervisorNamespace"
+        },
+        "Pageable": {
+            "type": "object",
+            "properties": {
+                "offset": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "pageNumber": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "pageSize": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "paged": {
+                    "type": "boolean"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "unpaged": {
+                    "type": "boolean"
+                }
+            },
+            "title": "Pageable"
+        },
+        "Parameter": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "paramDef": {
+                    "type": "string",
+                    "enum": [
+                        "QUERY",
+                        "BODY",
+                        "CONSUMES",
+                        "PRODUCES",
+                        "RESPONSE",
+                        "PATH"
+                    ]
+                },
+                "required": {
+                    "type": "boolean"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "title": "Parameter"
+        },
+        "Principal": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            },
+            "title": "Principal"
+        },
+        "PropertyDescription": {
+            "type": "object",
+            "properties": {
+                "elementDescription": {
+                    "$ref": "#/definitions/PropertyDescription"
+                },
+                "enumValues": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "exampleValue": {
+                    "type": "object"
+                },
+                "fieldDescriptions": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/PropertyDescription"
+                    }
+                },
+                "indexingOptions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "EXPAND",
+                            "FIXED_ITEM_NAME",
+                            "STORE_ONLY",
+                            "TEXT",
+                            "CASE_INSENSITIVE",
+                            "EXCLUDE_FROM_SIGNATURE",
+                            "SORT"
+                        ]
+                    }
+                },
+                "kind": {
+                    "type": "string"
+                },
+                "propertyDocumentation": {
+                    "type": "string"
+                },
+                "typeName": {
+                    "type": "string",
+                    "enum": [
+                        "LONG",
+                        "STRING",
+                        "BYTES",
+                        "PODO",
+                        "COLLECTION",
+                        "MAP",
+                        "BOOLEAN",
+                        "DOUBLE",
+                        "InternetAddressV4",
+                        "InternetAddressV6",
+                        "DATE",
+                        "URI",
+                        "ENUM"
+                    ]
+                },
+                "usageOptions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "SINGLE_ASSIGNMENT",
+                            "OPTIONAL",
+                            "SERVICE_USE",
+                            "INFRASTRUCTURE",
+                            "AUTO_MERGE_IF_NOT_NULL",
+                            "ID",
+                            "LINK",
+                            "LINKS",
+                            "SENSITIVE",
+                            "REQUIRED"
+                        ]
+                    }
+                }
+            },
+            "title": "PropertyDescription"
+        },
+        "PublicKey": {
+            "type": "object",
+            "properties": {
+                "algorithm": {
+                    "type": "string"
+                },
+                "encoded": {
+                    "type": "string",
+                    "format": "byte"
+                },
+                "format": {
+                    "type": "string"
+                }
+            },
+            "title": "PublicKey"
+        },
+        "ResourceRequest": {
+            "type": "object",
+            "properties": {
+                "actionInputProperties": {
+                    "type": "object"
+                },
+                "actionName": {
+                    "type": "string"
+                },
+                "allocationResource": {
+                    "type": "object"
+                },
+                "callbackUrl": {
+                    "type": "string"
+                },
+                "deploymentId": {
+                    "type": "string"
+                },
+                "deploymentName": {
+                    "type": "string"
+                },
+                "operation": {
+                    "type": "string"
+                },
+                "operationTimeoutSeconds": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "projectId": {
+                    "type": "string"
+                },
+                "requestId": {
+                    "type": "string"
+                },
+                "resourceLink": {
+                    "type": "string"
+                },
+                "resourceModifiedProperties": {
+                    "type": "object"
+                },
+                "resourceName": {
+                    "type": "string"
+                },
+                "resourceProperties": {
+                    "type": "object"
+                },
+                "resourceRequestId": {
+                    "type": "string"
+                },
+                "resourceType": {
+                    "type": "string"
+                },
+                "tenantLinks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "title": "ResourceRequest"
+        },
+        "ResourceResponse": {
+            "type": "object",
+            "properties": {
+                "failureMessage": {
+                    "type": "string"
+                },
+                "progressMessage": {
+                    "type": "string"
+                },
+                "resourceLink": {
+                    "type": "string"
+                },
+                "resourceProperties": {
+                    "type": "object"
+                },
+                "resourceRequestId": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "CREATED",
+                        "STARTED",
+                        "FINISHED",
+                        "FAILED",
+                        "CANCELLED",
+                        "UNKNOWN"
+                    ]
+                }
+            },
+            "title": "ResourceResponse"
+        },
+        "ResponseEntity": {
+            "type": "object",
+            "properties": {
+                "body": {
+                    "type": "object"
+                },
+                "statusCode": {
+                    "type": "string",
+                    "enum": [
+                        "CONTINUE",
+                        "SWITCHING_PROTOCOLS",
+                        "PROCESSING",
+                        "CHECKPOINT",
+                        "OK",
+                        "CREATED",
+                        "ACCEPTED",
+                        "NON_AUTHORITATIVE_INFORMATION",
+                        "NO_CONTENT",
+                        "RESET_CONTENT",
+                        "PARTIAL_CONTENT",
+                        "MULTI_STATUS",
+                        "ALREADY_REPORTED",
+                        "IM_USED",
+                        "MULTIPLE_CHOICES",
+                        "MOVED_PERMANENTLY",
+                        "FOUND",
+                        "MOVED_TEMPORARILY",
+                        "SEE_OTHER",
+                        "NOT_MODIFIED",
+                        "USE_PROXY",
+                        "TEMPORARY_REDIRECT",
+                        "PERMANENT_REDIRECT",
+                        "BAD_REQUEST",
+                        "UNAUTHORIZED",
+                        "PAYMENT_REQUIRED",
+                        "FORBIDDEN",
+                        "NOT_FOUND",
+                        "METHOD_NOT_ALLOWED",
+                        "NOT_ACCEPTABLE",
+                        "PROXY_AUTHENTICATION_REQUIRED",
+                        "REQUEST_TIMEOUT",
+                        "CONFLICT",
+                        "GONE",
+                        "LENGTH_REQUIRED",
+                        "PRECONDITION_FAILED",
+                        "PAYLOAD_TOO_LARGE",
+                        "REQUEST_ENTITY_TOO_LARGE",
+                        "URI_TOO_LONG",
+                        "REQUEST_URI_TOO_LONG",
+                        "UNSUPPORTED_MEDIA_TYPE",
+                        "REQUESTED_RANGE_NOT_SATISFIABLE",
+                        "EXPECTATION_FAILED",
+                        "I_AM_A_TEAPOT",
+                        "INSUFFICIENT_SPACE_ON_RESOURCE",
+                        "METHOD_FAILURE",
+                        "DESTINATION_LOCKED",
+                        "UNPROCESSABLE_ENTITY",
+                        "LOCKED",
+                        "FAILED_DEPENDENCY",
+                        "TOO_EARLY",
+                        "UPGRADE_REQUIRED",
+                        "PRECONDITION_REQUIRED",
+                        "TOO_MANY_REQUESTS",
+                        "REQUEST_HEADER_FIELDS_TOO_LARGE",
+                        "UNAVAILABLE_FOR_LEGAL_REASONS",
+                        "INTERNAL_SERVER_ERROR",
+                        "NOT_IMPLEMENTED",
+                        "BAD_GATEWAY",
+                        "SERVICE_UNAVAILABLE",
+                        "GATEWAY_TIMEOUT",
+                        "HTTP_VERSION_NOT_SUPPORTED",
+                        "VARIANT_ALSO_NEGOTIATES",
+                        "INSUFFICIENT_STORAGE",
+                        "LOOP_DETECTED",
+                        "BANDWIDTH_LIMIT_EXCEEDED",
+                        "NOT_EXTENDED",
+                        "NETWORK_AUTHENTICATION_REQUIRED"
+                    ]
+                },
+                "statusCodeValue": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "ResponseEntity"
+        },
+        "ResumeRequest": {
+            "type": "object",
+            "properties": {
+                "actionName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "operation": {
+                    "type": "string"
+                },
+                "requestId": {
+                    "type": "string"
+                },
+                "resourceType": {
+                    "type": "string"
+                }
+            },
+            "title": "ResumeRequest"
+        },
+        "Route": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "enum": [
+                        "GET",
+                        "POST",
+                        "PATCH",
+                        "PUT",
+                        "DELETE",
+                        "OPTIONS"
+                    ]
+                },
+                "description": {
+                    "type": "string"
+                },
+                "handler": {
+                    "$ref": "#/definitions/Operation"
+                },
+                "matcher": {
+                    "$ref": "#/definitions/Operation"
+                },
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Parameter"
+                    }
+                },
+                "path": {
+                    "type": "string"
+                },
+                "supportLevel": {
+                    "type": "string",
+                    "enum": [
+                        "NOT_SUPPORTED",
+                        "INTERNAL",
+                        "DEPRECATED",
+                        "PUBLIC"
+                    ]
+                }
+            },
+            "title": "Route"
+        },
+        "ServerSentEvent": {
+            "type": "object",
+            "properties": {
+                "completionCallback": {
+                    "$ref": "#/definitions/Throwable"
+                },
+                "data": {
+                    "type": "string"
+                },
+                "event": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "retry": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "ServerSentEvent"
+        },
+        "ServiceDocumentDescription": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "documentIndexingOptions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "INDEX_METADATA"
+                        ]
+                    }
+                },
+                "name": {
+                    "type": "string"
+                },
+                "propertyDescriptions": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/PropertyDescription"
+                    }
+                },
+                "serializedStateSizeLimit": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "serviceCapabilities": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "INSTRUMENTATION",
+                            "PERIODIC_MAINTENANCE",
+                            "PERSISTENCE",
+                            "REPLICATION",
+                            "OWNER_SELECTION",
+                            "STRICT_UPDATE_CHECKING",
+                            "HTML_USER_INTERFACE",
+                            "CONCURRENT_UPDATE_HANDLING",
+                            "CONCURRENT_GET_HANDLING",
+                            "IDEMPOTENT_POST",
+                            "ON_DEMAND_LOAD",
+                            "IMMUTABLE",
+                            "LIFO_QUEUE",
+                            "URI_NAMESPACE_OWNER",
+                            "CORE",
+                            "UTILITY",
+                            "FACTORY",
+                            "FACTORY_ITEM",
+                            "DOCUMENT_OWNER",
+                            "TRANSACTION_PENDING",
+                            "STATELESS",
+                            "NONE"
+                        ]
+                    }
+                },
+                "serviceRequestRoutes": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/Route"
+                        }
+                    }
+                },
+                "userInterfaceResourcePath": {
+                    "type": "string"
+                },
+                "versionRetentionFloor": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "versionRetentionLimit": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "ServiceDocumentDescription"
+        },
+        "ServiceErrorResponse": {
+            "type": "object",
+            "properties": {
+                "details": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "SHOULD_RETRY"
+                        ]
+                    }
+                },
+                "documentKind": {
+                    "type": "string"
+                },
+                "errorCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "messageId": {
+                    "type": "string"
+                },
+                "stackTrace": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "statusCode": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "ServiceErrorResponse"
+        },
+        "SocketContext": {
+            "type": "object",
+            "properties": {
+                "lastUseTimeMicros": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "SocketContext"
+        },
+        "Sort": {
+            "type": "object",
+            "properties": {
+                "empty": {
+                    "type": "boolean"
+                },
+                "sorted": {
+                    "type": "boolean"
+                },
+                "unsorted": {
+                    "type": "boolean"
+                }
+            },
+            "title": "Sort"
+        },
+        "StackTraceElement": {
+            "type": "object",
+            "properties": {
+                "classLoaderName": {
+                    "type": "string"
+                },
+                "fileName": {
+                    "type": "string"
+                },
+                "lineNumber": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "methodName": {
+                    "type": "string"
+                },
+                "moduleName": {
+                    "type": "string"
+                },
+                "moduleVersion": {
+                    "type": "string"
+                }
+            },
+            "title": "StackTraceElement"
+        },
+        "StorageSpec": {
+            "type": "object",
+            "properties": {
+                "desc": {
+                    "type": "string"
+                },
+                "documentSelfLink": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "limit": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "title": "StorageSpec"
+        },
+        "SupervisorCluster": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "cpuCapacity": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "cpuUsed": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "documentSelfLink": {
+                    "type": "string"
+                },
+                "endpointLink": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "memoryCapacity": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "memoryUsed": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "moref": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "registered": {
+                    "type": "boolean"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "ON",
+                        "CONFIGURING",
+                        "REMOVING",
+                        "ERROR"
+                    ]
+                },
+                "statusMessage": {
+                    "type": "string"
+                },
+                "storageCapacity": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "storageUsed": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "updatedMillis": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "SupervisorCluster"
+        },
+        "SupervisorClusterAssignment": {
+            "type": "object",
+            "properties": {
+                "clusterSelfLinkId": {
+                    "type": "string"
+                },
+                "createdMillis": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "orgId": {
+                    "type": "string"
+                },
+                "priority": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "tagLinks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TagState"
+                    }
+                },
+                "updatedMillis": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "SupervisorClusterAssignment"
+        },
+        "SupervisorNamespace": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "cluster": {
+                    "type": "string"
+                },
+                "cpuUsed": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "customProperties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "description": {
+                    "type": "string"
+                },
+                "documentSelfLink": {
+                    "type": "string"
+                },
+                "editGroups": {
+                    "type": "string"
+                },
+                "editUsers": {
+                    "type": "string"
+                },
+                "endpointLink": {
+                    "type": "string"
+                },
+                "externalLink": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "memoryUsed": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "owner": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "string"
+                },
+                "registered": {
+                    "type": "boolean"
+                },
+                "selfLinkId": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "READY",
+                        "ALLOCATED",
+                        "ERROR",
+                        "REMOVING"
+                    ]
+                },
+                "statusMessage": {
+                    "type": "string"
+                },
+                "storagePolicies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/StorageSpec"
+                    }
+                },
+                "storageUsed": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "updatedMillis": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "viewGroups": {
+                    "type": "string"
+                },
+                "viewUsers": {
+                    "type": "string"
+                }
+            },
+            "title": "SupervisorNamespace"
+        },
+        "SupervisorNamespaceAssignment": {
+            "type": "object",
+            "properties": {
+                "createdMillis": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "namespaceSelfLinkId": {
+                    "type": "string"
+                },
+                "orgId": {
+                    "type": "string"
+                },
+                "priority": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "tagLinks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TagState"
+                    }
+                },
+                "updatedMillis": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "SupervisorNamespaceAssignment"
+        },
+        "SupervisorNamespaceCreateDTO": {
+            "type": "object",
+            "properties": {
+                "cluster": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "endpointId": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "string"
+                },
+                "storagePolicies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/StorageSpec"
+                    }
+                }
+            },
+            "title": "SupervisorNamespaceCreateDTO"
+        },
+        "SupervisorNamespaceQuota": {
+            "type": "object",
+            "properties": {
+                "definition": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "resource": {
+                    "type": "string"
+                }
+            },
+            "title": "SupervisorNamespaceQuota"
+        },
+        "SupervisorNamespaceSyncRequestDTO": {
+            "type": "object",
+            "properties": {
+                "editGroups": {
+                    "type": "string"
+                },
+                "editUsers": {
+                    "type": "string"
+                },
+                "viewGroups": {
+                    "type": "string"
+                },
+                "viewUsers": {
+                    "type": "string"
+                }
+            },
+            "title": "SupervisorNamespaceSyncRequestDTO"
+        },
+        "SupervisorNamespaceSyncResponseDTO": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "operationTrackerLink": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "IN_PROGRESS",
+                        "COMPLETED",
+                        "FAILED"
+                    ]
+                }
+            },
+            "title": "SupervisorNamespaceSyncResponseDTO"
+        },
+        "SupervisorNamespaceUpdateDTO": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "resourceQuotas": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/SupervisorNamespaceQuota"
+                    }
+                },
+                "storagePolicies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/StorageSpec"
+                    }
+                }
+            },
+            "title": "SupervisorNamespaceUpdateDTO"
+        },
+        "TagState": {
+            "type": "object",
+            "properties": {
+                "deleted": {
+                    "type": "boolean"
+                },
+                "documentAuthPrincipalLink": {
+                    "type": "string"
+                },
+                "documentDescription": {
+                    "$ref": "#/definitions/ServiceDocumentDescription"
+                },
+                "documentEpoch": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "documentExpirationTimeMicros": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "documentKind": {
+                    "type": "string"
+                },
+                "documentOwner": {
+                    "type": "string"
+                },
+                "documentSelfLink": {
+                    "type": "string"
+                },
+                "documentSourceLink": {
+                    "type": "string"
+                },
+                "documentTransactionId": {
+                    "type": "string"
+                },
+                "documentUpdateAction": {
+                    "type": "string"
+                },
+                "documentUpdateTimeMicros": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "documentVersion": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "external": {
+                    "type": "boolean"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "origins": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "SYSTEM",
+                            "USER_DEFINED",
+                            "DISCOVERED"
+                        ]
+                    }
+                },
+                "tenantLinks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "title": "TagState"
+        },
+        "Throwable": {
+            "type": "object",
+            "properties": {
+                "cause": {
+                    "$ref": "#/definitions/Throwable"
+                },
+                "stackTrace": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/StackTraceElement"
+                    }
+                }
+            },
+            "title": "Throwable"
+        },
+        "URI": {
+            "type": "object",
+            "properties": {
+                "absolute": {
+                    "type": "boolean"
+                },
+                "authority": {
+                    "type": "string"
+                },
+                "fragment": {
+                    "type": "string"
+                },
+                "host": {
+                    "type": "string"
+                },
+                "opaque": {
+                    "type": "boolean"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "port": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "query": {
+                    "type": "string"
+                },
+                "rawAuthority": {
+                    "type": "string"
+                },
+                "rawFragment": {
+                    "type": "string"
+                },
+                "rawPath": {
+                    "type": "string"
+                },
+                "rawQuery": {
+                    "type": "string"
+                },
+                "rawSchemeSpecificPart": {
+                    "type": "string"
+                },
+                "rawUserInfo": {
+                    "type": "string"
+                },
+                "scheme": {
+                    "type": "string"
+                },
+                "schemeSpecificPart": {
+                    "type": "string"
+                },
+                "userInfo": {
+                    "type": "string"
+                }
+            },
+            "title": "URI"
+        },
+        "X509Certificate": {
+            "type": "object",
+            "properties": {
+                "encoded": {
+                    "type": "string",
+                    "format": "byte"
+                },
+                "issuerDN": {
+                    "$ref": "#/definitions/Principal"
+                },
+                "notAfter": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "notBefore": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "publicKey": {
+                    "$ref": "#/definitions/PublicKey"
+                },
+                "serialNumber": {
+                    "type": "integer"
+                },
+                "sigAlgName": {
+                    "type": "string"
+                },
+                "sigAlgOID": {
+                    "type": "string"
+                },
+                "sigAlgParams": {
+                    "type": "string",
+                    "format": "byte"
+                },
+                "subjectDN": {
+                    "$ref": "#/definitions/Principal"
+                },
+                "version": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "X509Certificate"
+        }
+    }
+}
