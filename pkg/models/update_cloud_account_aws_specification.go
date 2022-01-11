@@ -12,15 +12,18 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
-// UpdateCloudAccountAwsSpecification update cloud account aws specification
+// UpdateCloudAccountAwsSpecification Specification for a Amazon cloud account.<br><br>A cloud account identifies a cloud account type and an account-specific deployment region or data center where the associated cloud account resources are hosted.
 //
 // swagger:model UpdateCloudAccountAwsSpecification
 type UpdateCloudAccountAwsSpecification struct {
 
-	// access key Id
-	AccessKeyID string `json:"accessKeyId,omitempty"`
+	// Aws Access key ID
+	// Example: ACDC55DB4MFH6ADG75KK
+	// Required: true
+	AccessKeyID *string `json:"accessKeyId"`
 
 	// Create default cloud zones for the enabled regions.
 	// Example: true
@@ -32,19 +35,17 @@ type UpdateCloudAccountAwsSpecification struct {
 	// A human-friendly name used as an identifier in APIs that support this option.
 	Name string `json:"name,omitempty"`
 
-	// A set of Region names to enable provisioning on. Refer to /iaas/cloud-accounts-aws/region-enumeration. Deprecated - use regions to define enabled regions.
-	// Example: [ \"us-east-1\", \"ap-northeast-1\" ]
-	RegionIds []string `json:"regionIds"`
-
-	// A set of regions to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration.
+	// A set of regions to enable provisioning on.Refer to /iaas/api/cloud-accounts/region-enumeration.
 	// Example: [{ \"name\": \"eu-west-1\",\"externalRegionId\": \"eu-west-1\"}]
 	Regions []*RegionSpecification `json:"regions"`
 
-	// secret access key
-	SecretAccessKey string `json:"secretAccessKey,omitempty"`
+	// Aws Secret Access Key
+	// Example: gfsScK345sGGaVdds222dasdfDDSSasdfdsa34fS
+	// Required: true
+	SecretAccessKey *string `json:"secretAccessKey"`
 
 	// A set of tag keys and optional values to set on the Cloud Account
-	// Example: [{\"key\": \"env\", \"value\": \"dev\"}]
+	// Example: [ { \"key\" : \"env\", \"value\": \"dev\" } ]
 	Tags []*Tag `json:"tags"`
 }
 
@@ -52,7 +53,15 @@ type UpdateCloudAccountAwsSpecification struct {
 func (m *UpdateCloudAccountAwsSpecification) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateAccessKeyID(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateRegions(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSecretAccessKey(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -63,6 +72,15 @@ func (m *UpdateCloudAccountAwsSpecification) Validate(formats strfmt.Registry) e
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *UpdateCloudAccountAwsSpecification) validateAccessKeyID(formats strfmt.Registry) error {
+
+	if err := validate.Required("accessKeyId", "body", m.AccessKeyID); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -80,11 +98,22 @@ func (m *UpdateCloudAccountAwsSpecification) validateRegions(formats strfmt.Regi
 			if err := m.Regions[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("regions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("regions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *UpdateCloudAccountAwsSpecification) validateSecretAccessKey(formats strfmt.Registry) error {
+
+	if err := validate.Required("secretAccessKey", "body", m.SecretAccessKey); err != nil {
+		return err
 	}
 
 	return nil
@@ -104,6 +133,8 @@ func (m *UpdateCloudAccountAwsSpecification) validateTags(formats strfmt.Registr
 			if err := m.Tags[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -140,6 +171,8 @@ func (m *UpdateCloudAccountAwsSpecification) contextValidateRegions(ctx context.
 			if err := m.Regions[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("regions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("regions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -158,6 +191,8 @@ func (m *UpdateCloudAccountAwsSpecification) contextValidateTags(ctx context.Con
 			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

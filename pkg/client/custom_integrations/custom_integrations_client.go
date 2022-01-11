@@ -30,7 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateUsingPOST(params *CreateUsingPOSTParams, opts ...ClientOption) (*CreateUsingPOSTOK, error)
+	CreateCustomIntegrationUsingPOST(params *CreateCustomIntegrationUsingPOSTParams, opts ...ClientOption) (*CreateCustomIntegrationUsingPOSTOK, error)
+
+	CreateVersionByIDUsingPOST(params *CreateVersionByIDUsingPOSTParams, opts ...ClientOption) (*CreateVersionByIDUsingPOSTOK, error)
 
 	DeleteDraftByIDUsingDELETE(params *DeleteDraftByIDUsingDELETEParams, opts ...ClientOption) (*DeleteDraftByIDUsingDELETEOK, error)
 
@@ -38,13 +40,13 @@ type ClientService interface {
 
 	DeprecateByIDAndVersionUsingPOST(params *DeprecateByIDAndVersionUsingPOSTParams, opts ...ClientOption) (*DeprecateByIDAndVersionUsingPOSTOK, error)
 
-	GetCustomIntegrationVersionsByIDUsingGET(params *GetCustomIntegrationVersionsByIDUsingGETParams, opts ...ClientOption) (*GetCustomIntegrationVersionsByIDUsingGETOK, error)
+	GetAllCustomIntegrationVersionsByIDUsingGET(params *GetAllCustomIntegrationVersionsByIDUsingGETParams, opts ...ClientOption) (*GetAllCustomIntegrationVersionsByIDUsingGETOK, error)
+
+	GetCustomIntegrationVersionByIDUsingGET(params *GetCustomIntegrationVersionByIDUsingGETParams, opts ...ClientOption) (*GetCustomIntegrationVersionByIDUsingGETOK, error)
 
 	GetCustomIntegrationsUsingGET(params *GetCustomIntegrationsUsingGETParams, opts ...ClientOption) (*GetCustomIntegrationsUsingGETOK, error)
 
 	GetDraftByIDUsingGET(params *GetDraftByIDUsingGETParams, opts ...ClientOption) (*GetDraftByIDUsingGETOK, error)
-
-	GetVersionByIDUsingGETMixin3(params *GetVersionByIDUsingGETMixin3Params, opts ...ClientOption) (*GetVersionByIDUsingGETMixin3OK, error)
 
 	ReleaseByIDAndVersionUsingPOST(params *ReleaseByIDAndVersionUsingPOSTParams, opts ...ClientOption) (*ReleaseByIDAndVersionUsingPOSTOK, error)
 
@@ -52,32 +54,30 @@ type ClientService interface {
 
 	UpdateByIDUsingPUT(params *UpdateByIDUsingPUTParams, opts ...ClientOption) (*UpdateByIDUsingPUTOK, error)
 
-	VersionByIDUsingPOST(params *VersionByIDUsingPOSTParams, opts ...ClientOption) (*VersionByIDUsingPOSTOK, error)
-
 	WithdrawByIDAndVersionUsingPOST(params *WithdrawByIDAndVersionUsingPOSTParams, opts ...ClientOption) (*WithdrawByIDAndVersionUsingPOSTOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  CreateUsingPOST creates a custom integration
+  CreateCustomIntegrationUsingPOST creates a custom integration
 
   Create a Custom Integration to be consumed in pipelines as custom tasks
 */
-func (a *Client) CreateUsingPOST(params *CreateUsingPOSTParams, opts ...ClientOption) (*CreateUsingPOSTOK, error) {
+func (a *Client) CreateCustomIntegrationUsingPOST(params *CreateCustomIntegrationUsingPOSTParams, opts ...ClientOption) (*CreateCustomIntegrationUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateUsingPOSTParams()
+		params = NewCreateCustomIntegrationUsingPOSTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createUsingPOST",
+		ID:                 "createCustomIntegrationUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/codestream/api/custom-integrations",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateUsingPOSTReader{formats: a.formats},
+		Reader:             &CreateCustomIntegrationUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -89,13 +89,53 @@ func (a *Client) CreateUsingPOST(params *CreateUsingPOSTParams, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateUsingPOSTOK)
+	success, ok := result.(*CreateCustomIntegrationUsingPOSTOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for createUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for createCustomIntegrationUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  CreateVersionByIDUsingPOST creates a custom integration version
+
+  Create a Custom Integration version from the current draft
+*/
+func (a *Client) CreateVersionByIDUsingPOST(params *CreateVersionByIDUsingPOSTParams, opts ...ClientOption) (*CreateVersionByIDUsingPOSTOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateVersionByIDUsingPOSTParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "createVersionByIdUsingPOST",
+		Method:             "POST",
+		PathPattern:        "/codestream/api/custom-integrations/{id}/versions",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CreateVersionByIDUsingPOSTReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CreateVersionByIDUsingPOSTOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for createVersionByIdUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -220,24 +260,24 @@ func (a *Client) DeprecateByIDAndVersionUsingPOST(params *DeprecateByIDAndVersio
 }
 
 /*
-  GetCustomIntegrationVersionsByIDUsingGET gets all versions of a custom integration by id
+  GetAllCustomIntegrationVersionsByIDUsingGET gets all versions of a custom integration by id
 
   Get all versions of a Custom Integration with specified id, paging and filter parameters
 */
-func (a *Client) GetCustomIntegrationVersionsByIDUsingGET(params *GetCustomIntegrationVersionsByIDUsingGETParams, opts ...ClientOption) (*GetCustomIntegrationVersionsByIDUsingGETOK, error) {
+func (a *Client) GetAllCustomIntegrationVersionsByIDUsingGET(params *GetAllCustomIntegrationVersionsByIDUsingGETParams, opts ...ClientOption) (*GetAllCustomIntegrationVersionsByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetCustomIntegrationVersionsByIDUsingGETParams()
+		params = NewGetAllCustomIntegrationVersionsByIDUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getCustomIntegrationVersionsByIdUsingGET",
+		ID:                 "getAllCustomIntegrationVersionsByIdUsingGET",
 		Method:             "GET",
 		PathPattern:        "/codestream/api/custom-integrations/{id}/versions",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetCustomIntegrationVersionsByIDUsingGETReader{formats: a.formats},
+		Reader:             &GetAllCustomIntegrationVersionsByIDUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -249,13 +289,53 @@ func (a *Client) GetCustomIntegrationVersionsByIDUsingGET(params *GetCustomInteg
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetCustomIntegrationVersionsByIDUsingGETOK)
+	success, ok := result.(*GetAllCustomIntegrationVersionsByIDUsingGETOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getCustomIntegrationVersionsByIdUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getAllCustomIntegrationVersionsByIdUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetCustomIntegrationVersionByIDUsingGET gets a custom integration by version
+
+  Get a Custom Integration with the given id and version
+*/
+func (a *Client) GetCustomIntegrationVersionByIDUsingGET(params *GetCustomIntegrationVersionByIDUsingGETParams, opts ...ClientOption) (*GetCustomIntegrationVersionByIDUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetCustomIntegrationVersionByIDUsingGETParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getCustomIntegrationVersionByIdUsingGET",
+		Method:             "GET",
+		PathPattern:        "/codestream/api/custom-integrations/{id}/versions/{version}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetCustomIntegrationVersionByIDUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetCustomIntegrationVersionByIDUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getCustomIntegrationVersionByIdUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -336,46 +416,6 @@ func (a *Client) GetDraftByIDUsingGET(params *GetDraftByIDUsingGETParams, opts .
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getDraftByIdUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  GetVersionByIDUsingGETMixin3 gets a custom integration by version
-
-  Get a Custom Integration with the given id and version
-*/
-func (a *Client) GetVersionByIDUsingGETMixin3(params *GetVersionByIDUsingGETMixin3Params, opts ...ClientOption) (*GetVersionByIDUsingGETMixin3OK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetVersionByIDUsingGETMixin3Params()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getVersionByIdUsingGETMixin3",
-		Method:             "GET",
-		PathPattern:        "/codestream/api/custom-integrations/{id}/versions/{version}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetVersionByIDUsingGETMixin3Reader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetVersionByIDUsingGETMixin3OK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getVersionByIdUsingGETMixin3: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -496,46 +536,6 @@ func (a *Client) UpdateByIDUsingPUT(params *UpdateByIDUsingPUTParams, opts ...Cl
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for updateByIdUsingPUT: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  VersionByIDUsingPOST creates a custom integration version
-
-  Create a Custom Integration version from the current draft
-*/
-func (a *Client) VersionByIDUsingPOST(params *VersionByIDUsingPOSTParams, opts ...ClientOption) (*VersionByIDUsingPOSTOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewVersionByIDUsingPOSTParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "versionByIdUsingPOST",
-		Method:             "POST",
-		PathPattern:        "/codestream/api/custom-integrations/{id}/versions",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &VersionByIDUsingPOSTReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*VersionByIDUsingPOSTOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for versionByIdUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

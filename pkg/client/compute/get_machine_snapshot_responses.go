@@ -60,7 +60,7 @@ type GetMachineSnapshotOK struct {
 }
 
 func (o *GetMachineSnapshotOK) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/machines/{id}/snapshots/{id1}][%d] getMachineSnapshotOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /iaas/api/machines/{id}/snapshots/{snapshotId}][%d] getMachineSnapshotOK  %+v", 200, o.Payload)
 }
 func (o *GetMachineSnapshotOK) GetPayload() *models.BlockDevice {
 	return o.Payload
@@ -92,7 +92,7 @@ type GetMachineSnapshotForbidden struct {
 }
 
 func (o *GetMachineSnapshotForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/machines/{id}/snapshots/{id1}][%d] getMachineSnapshotForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[GET /iaas/api/machines/{id}/snapshots/{snapshotId}][%d] getMachineSnapshotForbidden  %+v", 403, o.Payload)
 }
 func (o *GetMachineSnapshotForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
@@ -124,7 +124,7 @@ type GetMachineSnapshotNotFound struct {
 }
 
 func (o *GetMachineSnapshotNotFound) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/machines/{id}/snapshots/{id1}][%d] getMachineSnapshotNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /iaas/api/machines/{id}/snapshots/{snapshotId}][%d] getMachineSnapshotNotFound  %+v", 404, o.Payload)
 }
 func (o *GetMachineSnapshotNotFound) GetPayload() *models.Error {
 	return o.Payload

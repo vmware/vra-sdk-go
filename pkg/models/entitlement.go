@@ -67,6 +67,8 @@ func (m *Entitlement) validateDefinition(formats strfmt.Registry) error {
 		if err := m.Definition.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("definition")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("definition")
 			}
 			return err
 		}
@@ -117,6 +119,8 @@ func (m *Entitlement) contextValidateDefinition(ctx context.Context, formats str
 		if err := m.Definition.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("definition")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("definition")
 			}
 			return err
 		}

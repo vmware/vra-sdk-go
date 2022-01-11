@@ -1557,6 +1557,10 @@
                         "type": "string"
                     }
                 },
+                "shortName": {
+                    "type": "string",
+                    "description": "Short Name"
+                },
                 "support": {
                     "$ref": "#/definitions/Support"
                 },

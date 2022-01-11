@@ -48,6 +48,11 @@ type MachineSpecification struct {
 	// Required: true
 	Flavor *string `json:"flavor"`
 
+	// Provider specific flavor reference. Valid if no flavor property is provided
+	// Example: t2.micro
+	// Required: true
+	FlavorRef *string `json:"flavorRef"`
+
 	// Type of image used for this machine.
 	// Example: vmware-gold-master, ubuntu-latest, rhel-compliant, windows
 	// Required: true
@@ -81,6 +86,9 @@ type MachineSpecification struct {
 	// Settings to remotely connect to the provisioned machine, by public/private key pair or username/password authentication. AWS and vSphere support key pair. Azure supports key pair or username/password.
 	RemoteAccess *RemoteAccessSpecification `json:"remoteAccess,omitempty"`
 
+	// Settings to apply salt configuration on the provisioned machine.
+	SaltConfiguration *SaltConfiguration `json:"saltConfiguration,omitempty"`
+
 	// A set of tag keys and optional values that should be set on any resource that is produced from this specification.
 	// Example: [ { \"key\" : \"ownedBy\", \"value\": \"Rainpole\" } ]
 	Tags []*Tag `json:"tags"`
@@ -107,6 +115,10 @@ func (m *MachineSpecification) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateFlavor(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateFlavorRef(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -138,6 +150,10 @@ func (m *MachineSpecification) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateSaltConfiguration(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateTags(formats); err != nil {
 		res = append(res, err)
 	}
@@ -157,6 +173,8 @@ func (m *MachineSpecification) validateBootConfig(formats strfmt.Registry) error
 		if err := m.BootConfig.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("bootConfig")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bootConfig")
 			}
 			return err
 		}
@@ -174,6 +192,8 @@ func (m *MachineSpecification) validateBootConfigSettings(formats strfmt.Registr
 		if err := m.BootConfigSettings.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("bootConfigSettings")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bootConfigSettings")
 			}
 			return err
 		}
@@ -196,6 +216,8 @@ func (m *MachineSpecification) validateConstraints(formats strfmt.Registry) erro
 			if err := m.Constraints[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("constraints" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("constraints" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -220,6 +242,8 @@ func (m *MachineSpecification) validateDisks(formats strfmt.Registry) error {
 			if err := m.Disks[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("disks" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("disks" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -233,6 +257,15 @@ func (m *MachineSpecification) validateDisks(formats strfmt.Registry) error {
 func (m *MachineSpecification) validateFlavor(formats strfmt.Registry) error {
 
 	if err := validate.Required("flavor", "body", m.Flavor); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *MachineSpecification) validateFlavorRef(formats strfmt.Registry) error {
+
+	if err := validate.Required("flavorRef", "body", m.FlavorRef); err != nil {
 		return err
 	}
 
@@ -262,6 +295,8 @@ func (m *MachineSpecification) validateImageDiskConstraints(formats strfmt.Regis
 			if err := m.ImageDiskConstraints[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("imageDiskConstraints" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("imageDiskConstraints" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -304,6 +339,8 @@ func (m *MachineSpecification) validateNics(formats strfmt.Registry) error {
 			if err := m.Nics[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("nics" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("nics" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -332,6 +369,27 @@ func (m *MachineSpecification) validateRemoteAccess(formats strfmt.Registry) err
 		if err := m.RemoteAccess.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("remoteAccess")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("remoteAccess")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *MachineSpecification) validateSaltConfiguration(formats strfmt.Registry) error {
+	if swag.IsZero(m.SaltConfiguration) { // not required
+		return nil
+	}
+
+	if m.SaltConfiguration != nil {
+		if err := m.SaltConfiguration.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("saltConfiguration")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("saltConfiguration")
 			}
 			return err
 		}
@@ -354,6 +412,8 @@ func (m *MachineSpecification) validateTags(formats strfmt.Registry) error {
 			if err := m.Tags[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -396,6 +456,10 @@ func (m *MachineSpecification) ContextValidate(ctx context.Context, formats strf
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateSaltConfiguration(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateTags(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -412,6 +476,8 @@ func (m *MachineSpecification) contextValidateBootConfig(ctx context.Context, fo
 		if err := m.BootConfig.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("bootConfig")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bootConfig")
 			}
 			return err
 		}
@@ -426,6 +492,8 @@ func (m *MachineSpecification) contextValidateBootConfigSettings(ctx context.Con
 		if err := m.BootConfigSettings.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("bootConfigSettings")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bootConfigSettings")
 			}
 			return err
 		}
@@ -442,6 +510,8 @@ func (m *MachineSpecification) contextValidateConstraints(ctx context.Context, f
 			if err := m.Constraints[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("constraints" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("constraints" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -460,6 +530,8 @@ func (m *MachineSpecification) contextValidateDisks(ctx context.Context, formats
 			if err := m.Disks[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("disks" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("disks" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -478,6 +550,8 @@ func (m *MachineSpecification) contextValidateImageDiskConstraints(ctx context.C
 			if err := m.ImageDiskConstraints[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("imageDiskConstraints" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("imageDiskConstraints" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -496,6 +570,8 @@ func (m *MachineSpecification) contextValidateNics(ctx context.Context, formats 
 			if err := m.Nics[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("nics" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("nics" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -512,6 +588,24 @@ func (m *MachineSpecification) contextValidateRemoteAccess(ctx context.Context, 
 		if err := m.RemoteAccess.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("remoteAccess")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("remoteAccess")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *MachineSpecification) contextValidateSaltConfiguration(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SaltConfiguration != nil {
+		if err := m.SaltConfiguration.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("saltConfiguration")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("saltConfiguration")
 			}
 			return err
 		}
@@ -528,6 +622,8 @@ func (m *MachineSpecification) contextValidateTags(ctx context.Context, formats 
 			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

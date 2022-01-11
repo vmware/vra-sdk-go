@@ -172,6 +172,8 @@ func (m *Deployment) validateBlueprint(formats strfmt.Registry) error {
 		if err := m.Blueprint.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("blueprint")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("blueprint")
 			}
 			return err
 		}
@@ -189,6 +191,8 @@ func (m *Deployment) validateCatalog(formats strfmt.Registry) error {
 		if err := m.Catalog.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("catalog")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("catalog")
 			}
 			return err
 		}
@@ -218,6 +222,8 @@ func (m *Deployment) validateExpense(formats strfmt.Registry) error {
 		if err := m.Expense.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("expense")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("expense")
 			}
 			return err
 		}
@@ -247,6 +253,8 @@ func (m *Deployment) validateLastRequest(formats strfmt.Registry) error {
 		if err := m.LastRequest.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("lastRequest")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("lastRequest")
 			}
 			return err
 		}
@@ -297,6 +305,8 @@ func (m *Deployment) validateProject(formats strfmt.Registry) error {
 		if err := m.Project.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("project")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("project")
 			}
 			return err
 		}
@@ -319,6 +329,8 @@ func (m *Deployment) validateResources(formats strfmt.Registry) error {
 			if err := m.Resources[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("resources" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("resources" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -432,6 +444,8 @@ func (m *Deployment) contextValidateBlueprint(ctx context.Context, formats strfm
 		if err := m.Blueprint.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("blueprint")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("blueprint")
 			}
 			return err
 		}
@@ -446,6 +460,8 @@ func (m *Deployment) contextValidateCatalog(ctx context.Context, formats strfmt.
 		if err := m.Catalog.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("catalog")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("catalog")
 			}
 			return err
 		}
@@ -460,6 +476,8 @@ func (m *Deployment) contextValidateExpense(ctx context.Context, formats strfmt.
 		if err := m.Expense.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("expense")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("expense")
 			}
 			return err
 		}
@@ -474,6 +492,8 @@ func (m *Deployment) contextValidateLastRequest(ctx context.Context, formats str
 		if err := m.LastRequest.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("lastRequest")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("lastRequest")
 			}
 			return err
 		}
@@ -488,6 +508,8 @@ func (m *Deployment) contextValidateProject(ctx context.Context, formats strfmt.
 		if err := m.Project.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("project")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("project")
 			}
 			return err
 		}
@@ -504,6 +526,8 @@ func (m *Deployment) contextValidateResources(ctx context.Context, formats strfm
 			if err := m.Resources[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("resources" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("resources" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

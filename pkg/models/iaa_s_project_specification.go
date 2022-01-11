@@ -115,6 +115,8 @@ func (m *IaaSProjectSpecification) validateAdministrators(formats strfmt.Registr
 			if err := m.Administrators[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("administrators" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("administrators" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -141,6 +143,8 @@ func (m *IaaSProjectSpecification) validateConstraints(formats strfmt.Registry) 
 			if err := m.Constraints[k][i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("constraints" + "." + k + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("constraints" + "." + k + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -166,6 +170,8 @@ func (m *IaaSProjectSpecification) validateMembers(formats strfmt.Registry) erro
 			if err := m.Members[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("members" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("members" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -199,6 +205,8 @@ func (m *IaaSProjectSpecification) validateViewers(formats strfmt.Registry) erro
 			if err := m.Viewers[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("viewers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("viewers" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -223,6 +231,8 @@ func (m *IaaSProjectSpecification) validateZoneAssignmentConfigurations(formats 
 			if err := m.ZoneAssignmentConfigurations[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("zoneAssignmentConfigurations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("zoneAssignmentConfigurations" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -271,6 +281,8 @@ func (m *IaaSProjectSpecification) contextValidateAdministrators(ctx context.Con
 			if err := m.Administrators[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("administrators" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("administrators" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -290,6 +302,8 @@ func (m *IaaSProjectSpecification) contextValidateConstraints(ctx context.Contex
 			if err := m.Constraints[k][i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("constraints" + "." + k + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("constraints" + "." + k + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -309,6 +323,8 @@ func (m *IaaSProjectSpecification) contextValidateMembers(ctx context.Context, f
 			if err := m.Members[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("members" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("members" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -327,6 +343,8 @@ func (m *IaaSProjectSpecification) contextValidateViewers(ctx context.Context, f
 			if err := m.Viewers[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("viewers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("viewers" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -345,6 +363,8 @@ func (m *IaaSProjectSpecification) contextValidateZoneAssignmentConfigurations(c
 			if err := m.ZoneAssignmentConfigurations[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("zoneAssignmentConfigurations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("zoneAssignmentConfigurations" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

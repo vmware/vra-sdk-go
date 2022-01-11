@@ -143,6 +143,8 @@ func (m *Policy) validateCriteria(formats strfmt.Registry) error {
 		if err := m.Criteria.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("criteria")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("criteria")
 			}
 			return err
 		}
@@ -163,6 +165,11 @@ func (m *Policy) validateDefinitionLegend(formats strfmt.Registry) error {
 		}
 		if val, ok := m.DefinitionLegend[k]; ok {
 			if err := val.Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("definitionLegend" + "." + k)
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("definitionLegend" + "." + k)
+				}
 				return err
 			}
 		}
@@ -247,6 +254,8 @@ func (m *Policy) validateScopeCriteria(formats strfmt.Registry) error {
 		if err := m.ScopeCriteria.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("scopeCriteria")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("scopeCriteria")
 			}
 			return err
 		}
@@ -264,6 +273,8 @@ func (m *Policy) validateStatistics(formats strfmt.Registry) error {
 		if err := m.Statistics.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("statistics")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("statistics")
 			}
 			return err
 		}
@@ -313,6 +324,8 @@ func (m *Policy) contextValidateCriteria(ctx context.Context, formats strfmt.Reg
 		if err := m.Criteria.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("criteria")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("criteria")
 			}
 			return err
 		}
@@ -342,6 +355,8 @@ func (m *Policy) contextValidateScopeCriteria(ctx context.Context, formats strfm
 		if err := m.ScopeCriteria.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("scopeCriteria")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("scopeCriteria")
 			}
 			return err
 		}
@@ -356,6 +371,8 @@ func (m *Policy) contextValidateStatistics(ctx context.Context, formats strfmt.R
 		if err := m.Statistics.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("statistics")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("statistics")
 			}
 			return err
 		}

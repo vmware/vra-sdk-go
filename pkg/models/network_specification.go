@@ -96,6 +96,8 @@ func (m *NetworkSpecification) validateConstraints(formats strfmt.Registry) erro
 			if err := m.Constraints[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("constraints" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("constraints" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -138,6 +140,8 @@ func (m *NetworkSpecification) validateTags(formats strfmt.Registry) error {
 			if err := m.Tags[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -174,6 +178,8 @@ func (m *NetworkSpecification) contextValidateConstraints(ctx context.Context, f
 			if err := m.Constraints[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("constraints" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("constraints" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -192,6 +198,8 @@ func (m *NetworkSpecification) contextValidateTags(ctx context.Context, formats 
 			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

@@ -65,6 +65,8 @@ func (m *ContentSources) validateContent(formats strfmt.Registry) error {
 			if err := m.Content[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("content" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("content" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -89,6 +91,8 @@ func (m *ContentSources) validateLinks(formats strfmt.Registry) error {
 			if err := m.Links[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("links" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("links" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -108,6 +112,8 @@ func (m *ContentSources) validatePage(formats strfmt.Registry) error {
 		if err := m.Page.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("page")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("page")
 			}
 			return err
 		}
@@ -146,6 +152,8 @@ func (m *ContentSources) contextValidateContent(ctx context.Context, formats str
 			if err := m.Content[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("content" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("content" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -164,6 +172,8 @@ func (m *ContentSources) contextValidateLinks(ctx context.Context, formats strfm
 			if err := m.Links[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("links" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("links" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -180,6 +190,8 @@ func (m *ContentSources) contextValidatePage(ctx context.Context, formats strfmt
 		if err := m.Page.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("page")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("page")
 			}
 			return err
 		}

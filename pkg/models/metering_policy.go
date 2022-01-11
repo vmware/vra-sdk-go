@@ -192,6 +192,8 @@ func (m *MeteringPolicy) validateFixedPrice(formats strfmt.Registry) error {
 		if err := m.FixedPrice.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("fixedPrice")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("fixedPrice")
 			}
 			return err
 		}
@@ -238,6 +240,8 @@ func (m *MeteringPolicy) validateMeteringItems(formats strfmt.Registry) error {
 			if err := m.MeteringItems[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("meteringItems" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("meteringItems" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -262,6 +266,8 @@ func (m *MeteringPolicy) validateNamedMeteringItems(formats strfmt.Registry) err
 			if err := m.NamedMeteringItems[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("namedMeteringItems" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("namedMeteringItems" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -286,6 +292,8 @@ func (m *MeteringPolicy) validateOneTimeMeteringItems(formats strfmt.Registry) e
 			if err := m.OneTimeMeteringItems[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("oneTimeMeteringItems" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("oneTimeMeteringItems" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -305,6 +313,8 @@ func (m *MeteringPolicy) validatePricingCardAssignmentInfo(formats strfmt.Regist
 		if err := m.PricingCardAssignmentInfo.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("pricingCardAssignmentInfo")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("pricingCardAssignmentInfo")
 			}
 			return err
 		}
@@ -327,6 +337,8 @@ func (m *MeteringPolicy) validateTagBasedMeteringItems(formats strfmt.Registry) 
 			if err := m.TagBasedMeteringItems[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tagBasedMeteringItems" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tagBasedMeteringItems" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -351,6 +363,8 @@ func (m *MeteringPolicy) validateTagBasedOneTimeMeteringItems(formats strfmt.Reg
 			if err := m.TagBasedOneTimeMeteringItems[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tagBasedOneTimeMeteringItems" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tagBasedOneTimeMeteringItems" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -375,6 +389,8 @@ func (m *MeteringPolicy) validateTagBasedRateFactorItems(formats strfmt.Registry
 			if err := m.TagBasedRateFactorItems[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tagBasedRateFactorItems" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tagBasedRateFactorItems" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -433,6 +449,8 @@ func (m *MeteringPolicy) contextValidateFixedPrice(ctx context.Context, formats 
 		if err := m.FixedPrice.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("fixedPrice")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("fixedPrice")
 			}
 			return err
 		}
@@ -449,6 +467,8 @@ func (m *MeteringPolicy) contextValidateMeteringItems(ctx context.Context, forma
 			if err := m.MeteringItems[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("meteringItems" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("meteringItems" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -467,6 +487,8 @@ func (m *MeteringPolicy) contextValidateNamedMeteringItems(ctx context.Context, 
 			if err := m.NamedMeteringItems[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("namedMeteringItems" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("namedMeteringItems" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -485,6 +507,8 @@ func (m *MeteringPolicy) contextValidateOneTimeMeteringItems(ctx context.Context
 			if err := m.OneTimeMeteringItems[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("oneTimeMeteringItems" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("oneTimeMeteringItems" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -501,6 +525,8 @@ func (m *MeteringPolicy) contextValidatePricingCardAssignmentInfo(ctx context.Co
 		if err := m.PricingCardAssignmentInfo.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("pricingCardAssignmentInfo")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("pricingCardAssignmentInfo")
 			}
 			return err
 		}
@@ -517,6 +543,8 @@ func (m *MeteringPolicy) contextValidateTagBasedMeteringItems(ctx context.Contex
 			if err := m.TagBasedMeteringItems[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tagBasedMeteringItems" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tagBasedMeteringItems" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -535,6 +563,8 @@ func (m *MeteringPolicy) contextValidateTagBasedOneTimeMeteringItems(ctx context
 			if err := m.TagBasedOneTimeMeteringItems[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tagBasedOneTimeMeteringItems" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tagBasedOneTimeMeteringItems" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -553,6 +583,8 @@ func (m *MeteringPolicy) contextValidateTagBasedRateFactorItems(ctx context.Cont
 			if err := m.TagBasedRateFactorItems[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tagBasedRateFactorItems" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tagBasedRateFactorItems" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

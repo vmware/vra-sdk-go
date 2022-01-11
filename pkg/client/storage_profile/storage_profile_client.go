@@ -34,6 +34,8 @@ type ClientService interface {
 
 	CreateAzureStorageProfile(params *CreateAzureStorageProfileParams, opts ...ClientOption) (*CreateAzureStorageProfileCreated, error)
 
+	CreateGcpStorageProfile(params *CreateGcpStorageProfileParams, opts ...ClientOption) (*CreateGcpStorageProfileCreated, error)
+
 	CreateStorageProfile(params *CreateStorageProfileParams, opts ...ClientOption) (*CreateStorageProfileCreated, error)
 
 	CreateVSphereStorageProfile(params *CreateVSphereStorageProfileParams, opts ...ClientOption) (*CreateVSphereStorageProfileCreated, error)
@@ -41,6 +43,8 @@ type ClientService interface {
 	DeleteAwsStorageProfile(params *DeleteAwsStorageProfileParams, opts ...ClientOption) (*DeleteAwsStorageProfileNoContent, error)
 
 	DeleteAzureStorageProfile(params *DeleteAzureStorageProfileParams, opts ...ClientOption) (*DeleteAzureStorageProfileNoContent, error)
+
+	DeleteGcpStorageProfile(params *DeleteGcpStorageProfileParams, opts ...ClientOption) (*DeleteGcpStorageProfileNoContent, error)
 
 	DeleteStorageProfile(params *DeleteStorageProfileParams, opts ...ClientOption) (*DeleteStorageProfileNoContent, error)
 
@@ -53,6 +57,10 @@ type ClientService interface {
 	GetAzureStorageProfile(params *GetAzureStorageProfileParams, opts ...ClientOption) (*GetAzureStorageProfileOK, error)
 
 	GetAzureStorageProfiles(params *GetAzureStorageProfilesParams, opts ...ClientOption) (*GetAzureStorageProfilesOK, error)
+
+	GetGcpStorageProfile(params *GetGcpStorageProfileParams, opts ...ClientOption) (*GetGcpStorageProfileOK, error)
+
+	GetGcpStorageProfiles(params *GetGcpStorageProfilesParams, opts ...ClientOption) (*GetGcpStorageProfilesOK, error)
 
 	GetStorageProfile(params *GetStorageProfileParams, opts ...ClientOption) (*GetStorageProfileOK, error)
 
@@ -67,6 +75,8 @@ type ClientService interface {
 	UpdateAwsStorageProfile(params *UpdateAwsStorageProfileParams, opts ...ClientOption) (*UpdateAwsStorageProfileOK, error)
 
 	UpdateAzureStorageProfile(params *UpdateAzureStorageProfileParams, opts ...ClientOption) (*UpdateAzureStorageProfileOK, error)
+
+	UpdateGcpStorageProfile(params *UpdateGcpStorageProfileParams, opts ...ClientOption) (*UpdateGcpStorageProfileOK, error)
 
 	UpdateVSphereStorageProfile(params *UpdateVSphereStorageProfileParams, opts ...ClientOption) (*UpdateVSphereStorageProfileOK, error)
 
@@ -150,6 +160,46 @@ func (a *Client) CreateAzureStorageProfile(params *CreateAzureStorageProfilePara
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for createAzureStorageProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  CreateGcpStorageProfile creates g c p storage profile
+
+  Create GCP storage profile
+*/
+func (a *Client) CreateGcpStorageProfile(params *CreateGcpStorageProfileParams, opts ...ClientOption) (*CreateGcpStorageProfileCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateGcpStorageProfileParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "createGcpStorageProfile",
+		Method:             "POST",
+		PathPattern:        "/iaas/api/storage-profiles-gcp",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CreateGcpStorageProfileReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CreateGcpStorageProfileCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for createGcpStorageProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -310,6 +360,46 @@ func (a *Client) DeleteAzureStorageProfile(params *DeleteAzureStorageProfilePara
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for deleteAzureStorageProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  DeleteGcpStorageProfile deletes g c p storage profile
+
+  Delete GCP storage profile with a given id
+*/
+func (a *Client) DeleteGcpStorageProfile(params *DeleteGcpStorageProfileParams, opts ...ClientOption) (*DeleteGcpStorageProfileNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteGcpStorageProfileParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteGcpStorageProfile",
+		Method:             "DELETE",
+		PathPattern:        "/iaas/api/storage-profiles-gcp/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteGcpStorageProfileReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteGcpStorageProfileNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteGcpStorageProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -550,6 +640,86 @@ func (a *Client) GetAzureStorageProfiles(params *GetAzureStorageProfilesParams, 
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getAzureStorageProfiles: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetGcpStorageProfile gets g c p storage profile
+
+  Get GCP storage profile with a given id
+*/
+func (a *Client) GetGcpStorageProfile(params *GetGcpStorageProfileParams, opts ...ClientOption) (*GetGcpStorageProfileOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetGcpStorageProfileParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getGcpStorageProfile",
+		Method:             "GET",
+		PathPattern:        "/iaas/api/storage-profiles-gcp/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetGcpStorageProfileReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetGcpStorageProfileOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getGcpStorageProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetGcpStorageProfiles gets g c p storage profiles
+
+  Get all GCP storage profiles
+*/
+func (a *Client) GetGcpStorageProfiles(params *GetGcpStorageProfilesParams, opts ...ClientOption) (*GetGcpStorageProfilesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetGcpStorageProfilesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getGcpStorageProfiles",
+		Method:             "GET",
+		PathPattern:        "/iaas/api/storage-profiles-gcp",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetGcpStorageProfilesReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetGcpStorageProfilesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getGcpStorageProfiles: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -830,6 +1000,46 @@ func (a *Client) UpdateAzureStorageProfile(params *UpdateAzureStorageProfilePara
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for updateAzureStorageProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UpdateGcpStorageProfile updates g c p storage profile
+
+  Update GCP storage profile
+*/
+func (a *Client) UpdateGcpStorageProfile(params *UpdateGcpStorageProfileParams, opts ...ClientOption) (*UpdateGcpStorageProfileOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateGcpStorageProfileParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "updateGcpStorageProfile",
+		Method:             "PATCH",
+		PathPattern:        "/iaas/api/storage-profiles-gcp/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateGcpStorageProfileReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateGcpStorageProfileOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateGcpStorageProfile: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

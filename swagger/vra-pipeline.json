@@ -5,7 +5,7 @@
         "version": "2019-10-17",
         "title": "Code Stream APIs"
     },
-    "host": "https://cava-r-89-003.eng.vmware.com",
+    "host": "https://api.mgmt.cloud.vmware.com",
     "basePath": "/",
     "tags": [
         {
@@ -253,7 +253,7 @@
                 ],
                 "summary": "Create a Custom Integration",
                 "description": "Create a Custom Integration to be consumed in pipelines as custom tasks",
-                "operationId": "createUsingPOST",
+                "operationId": "createCustomIntegrationUsingPOST",
                 "consumes": [
                     "application/json"
                 ],
@@ -508,7 +508,7 @@
                 ],
                 "summary": "Get all versions of a Custom Integration by id",
                 "description": "Get all versions of a Custom Integration with specified id, paging and filter parameters",
-                "operationId": "getCustomIntegrationVersionsByIdUsingGET",
+                "operationId": "getAllCustomIntegrationVersionsByIdUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -603,7 +603,7 @@
                 ],
                 "summary": "Create a Custom Integration version",
                 "description": "Create a Custom Integration version from the current draft",
-                "operationId": "versionByIdUsingPOST",
+                "operationId": "createVersionByIdUsingPOST",
                 "consumes": [
                     "application/json"
                 ],
@@ -673,7 +673,7 @@
                 ],
                 "summary": "Get a Custom Integration by version",
                 "description": "Get a Custom Integration with the given id and version",
-                "operationId": "getVersionByIdUsingGET",
+                "operationId": "getCustomIntegrationVersionByIdUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -1296,7 +1296,7 @@
                 ],
                 "summary": "Get all Endpoints",
                 "description": "Get all Endpoints with specified paging and filter parameters",
-                "operationId": "getAllUsingGET_2",
+                "operationId": "getAllEndpointsUsingGET",
                 "produces": [
                     "application/json"
                 ],
@@ -1384,7 +1384,7 @@
                 ],
                 "summary": "Create an Endpoint",
                 "description": "Create an Endpoint based on the given project",
-                "operationId": "createUsingPOST_2",
+                "operationId": "createEndpointUsingPOST",
                 "consumes": [
                     "application/json"
                 ],
@@ -1447,7 +1447,7 @@
                 ],
                 "summary": "Get an Endpoint",
                 "description": "Get an Endpoint with the given id",
-                "operationId": "getByIdUsingGET",
+                "operationId": "getEndpointByIdUsingGET",
                 "produces": [
                     "application/json"
                 ],
@@ -1503,7 +1503,7 @@
                 ],
                 "summary": "Update an Endpoint by id",
                 "description": "Update an Endpoint with the given id",
-                "operationId": "updateByIdUsingPUT_1",
+                "operationId": "updateEndpointByIdUsingPUT",
                 "consumes": [
                     "application/json"
                 ],
@@ -1571,7 +1571,7 @@
                 ],
                 "summary": "Delete an Endpoint by id",
                 "description": "Delete an Endpoint with the given id",
-                "operationId": "deleteUsingDELETE_1",
+                "operationId": "deleteEndpointByIdUsingDELETE",
                 "produces": [
                     "application/json"
                 ],
@@ -1629,7 +1629,7 @@
                 ],
                 "summary": "Get an Endpoint by project and name",
                 "description": "Get an Endpoint with the given project and name",
-                "operationId": "getByNameUsingGET",
+                "operationId": "getEndpointByNameUsingGET",
                 "produces": [
                     "application/json"
                 ],
@@ -1692,7 +1692,7 @@
                 ],
                 "summary": "Update an Endpoint by project and name",
                 "description": "Update an Endpoint with the given project and name",
-                "operationId": "updateByNameUsingPUT_1",
+                "operationId": "updateEndpointByNameUsingPUT",
                 "consumes": [
                     "application/json"
                 ],
@@ -1767,7 +1767,7 @@
                 ],
                 "summary": "Delete an Endpoint by project and name",
                 "description": "Delete an Endpoint with the given name",
-                "operationId": "deleteUsingDELETE_2",
+                "operationId": "deleteEndpointByNameUsingDELETE",
                 "produces": [
                     "application/json"
                 ],
@@ -1832,7 +1832,7 @@
                 ],
                 "summary": "Get all Executions",
                 "description": "Get all Executions with specified paging and filter parameters.",
-                "operationId": "getAllUsingGET_3",
+                "operationId": "getAllExecutionsUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -1920,7 +1920,7 @@
                 ],
                 "summary": "Delete all Executions",
                 "description": "Delete executions that match the specified filter.",
-                "operationId": "deleteAllUsingDELETE",
+                "operationId": "deleteAllExecutionsUsingDELETE",
                 "produces": [
                     "*/*"
                 ],
@@ -1971,7 +1971,7 @@
                 ],
                 "summary": "Get an Execution",
                 "description": "Get an Execution by id",
-                "operationId": "getUsingGET_1",
+                "operationId": "getExecutionByIdUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -2115,7 +2115,7 @@
                 ],
                 "summary": "Delete an Execution by id",
                 "description": "Delete an Execution",
-                "operationId": "deleteUsingDELETE_3",
+                "operationId": "deleteExecutionByIdUsingDELETE",
                 "produces": [
                     "*/*"
                 ],
@@ -2256,7 +2256,7 @@
                 ],
                 "summary": "Get all Gerrit Events",
                 "description": "Get all Gerrit Events",
-                "operationId": "getAllUsingGET_4",
+                "operationId": "getAllGerritEventsUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -2344,7 +2344,7 @@
                 ],
                 "summary": "Manual trigger Gerrit event",
                 "description": "Manual trigger Gerrit event",
-                "operationId": "manualTriggerUsingPOST",
+                "operationId": "manualGerritEventTriggerUsingPOST",
                 "consumes": [
                     "application/json"
                 ],
@@ -2407,7 +2407,7 @@
                 ],
                 "summary": "Get a gerrit Event",
                 "description": "Get a gerrit Event based on id",
-                "operationId": "getByIDUsingGET_2",
+                "operationId": "getGerritEventByIDUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -2463,7 +2463,7 @@
                 ],
                 "summary": "Re-run/Resume Gerrit event",
                 "description": "Re-run/Resume Gerrit event",
-                "operationId": "resumeOrRerunEventUsingPOST_1",
+                "operationId": "resumeOrRerunGerritEventUsingPOST",
                 "consumes": [
                     "application/json"
                 ],
@@ -2529,7 +2529,7 @@
                 ],
                 "summary": "Delete a Gerrit Event",
                 "description": "Delete a Gerrit Event",
-                "operationId": "deleteUsingDELETE_4",
+                "operationId": "deleteGerritEventByIdUsingDELETE",
                 "produces": [
                     "*/*"
                 ],
@@ -2587,7 +2587,7 @@
                 ],
                 "summary": "Get all gerrit listeners",
                 "description": "Get all gerrit listeners",
-                "operationId": "getAllUsingGET_5",
+                "operationId": "getAllGerritListenersUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -2675,7 +2675,7 @@
                 ],
                 "summary": "Create a Gerrit Listener",
                 "description": "Create a Gerrit Listener",
-                "operationId": "createUsingPOST_3",
+                "operationId": "createGerritListenerUsingPOST",
                 "consumes": [
                     "application/json"
                 ],
@@ -2738,7 +2738,7 @@
                 ],
                 "summary": "Validate a Gerrit Listener",
                 "description": "Validate a Gerrit Listener",
-                "operationId": "validateUsingPOST",
+                "operationId": "validateGerritListenerUsingPOST",
                 "consumes": [
                     "application/json"
                 ],
@@ -2801,7 +2801,7 @@
                 ],
                 "summary": "Get a gerrit listener",
                 "description": "Get a gerrit listeners based on id",
-                "operationId": "getByIDUsingGET_3",
+                "operationId": "getGerritListenerByIDUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -2857,7 +2857,7 @@
                 ],
                 "summary": "Clone a Gerrit Listener",
                 "description": "Clone a Gerrit Listener",
-                "operationId": "cloneListenerUsingPOST",
+                "operationId": "cloneGerritListenerUsingPOST",
                 "consumes": [
                     "application/json"
                 ],
@@ -2925,7 +2925,7 @@
                 ],
                 "summary": "Update a Gerrit Listener with id",
                 "description": "Update a Gerrit Listener with id",
-                "operationId": "updateByIdUsingPUT_2",
+                "operationId": "updateGerritListenerByIdUsingPUT",
                 "consumes": [
                     "application/json"
                 ],
@@ -2993,7 +2993,7 @@
                 ],
                 "summary": "Delete a Gerrit Listener with id",
                 "description": "Delete a Gerrit Listener with id",
-                "operationId": "deleteByIdUsingDELETE_1",
+                "operationId": "deleteGerritListenerByIdUsingDELETE",
                 "produces": [
                     "*/*"
                 ],
@@ -3049,7 +3049,7 @@
                 ],
                 "summary": "Patch a Gerrit Listener with id",
                 "description": "Patch a Gerrit Listener with id",
-                "operationId": "patchByIdUsingPATCH_1",
+                "operationId": "patchGerritListenerByIdUsingPATCH",
                 "consumes": [
                     "application/json"
                 ],
@@ -3119,7 +3119,7 @@
                 ],
                 "summary": "Get Gerrit Projects from the Gerrit Listener using id",
                 "description": "Get Gerrit Projects from the Gerrit Listener using id",
-                "operationId": "getGerritProjectsUsingGET",
+                "operationId": "getGerritProjectsByIdUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -3177,7 +3177,7 @@
                 ],
                 "summary": "Get a gerrit listener by project and name",
                 "description": "Get a gerrit listener based on project and name",
-                "operationId": "getByNameUsingGET_1",
+                "operationId": "getGerritListenerByNameUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -3240,7 +3240,7 @@
                 ],
                 "summary": "Clone a Gerrit Listener by project and name",
                 "description": "Clone a Gerrit Listener with the given project and name",
-                "operationId": "cloneByNameUsingPOST",
+                "operationId": "cloneGerritListenerByNameUsingPOST",
                 "consumes": [
                     "application/json"
                 ],
@@ -3315,7 +3315,7 @@
                 ],
                 "summary": "Update a Gerrit Listener with project and name",
                 "description": "Update a Gerrit Listener with project and name",
-                "operationId": "updateByNameUsingPUT_2",
+                "operationId": "updateGerritListenerByNameUsingPUT",
                 "consumes": [
                     "application/json"
                 ],
@@ -3390,7 +3390,7 @@
                 ],
                 "summary": "Delete a Gerrit Listener with project and name",
                 "description": "Delete a Gerrit Listener with project and name",
-                "operationId": "deleteByNameUsingDELETE_1",
+                "operationId": "deleteGerritListenerByNameUsingDELETE",
                 "produces": [
                     "*/*"
                 ],
@@ -3453,7 +3453,7 @@
                 ],
                 "summary": "Patch a Gerrit Listener with project and name",
                 "description": "Patch a Gerrit Listener with project and name",
-                "operationId": "patchByNameUsingPATCH_1",
+                "operationId": "patchGerritListenerByNameUsingPATCH",
                 "consumes": [
                     "application/json"
                 ],
@@ -3530,7 +3530,7 @@
                 ],
                 "summary": "Get Gerrit Projects from the Gerrit Listener using project and name",
                 "description": "Get Gerrit Projects from the Gerrit Listener using project and name",
-                "operationId": "getGerritProjectsUsingGET_1",
+                "operationId": "getGerritProjectsByNameUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -3595,7 +3595,7 @@
                 ],
                 "summary": "Get all gerrit triggers",
                 "description": "Get all gerrit triggers",
-                "operationId": "getAllUsingGET_6",
+                "operationId": "getAllGerritTriggersUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -3683,7 +3683,7 @@
                 ],
                 "summary": "Create a Gerrit Trigger",
                 "description": "Create a Gerrit Trigger",
-                "operationId": "createUsingPOST_4",
+                "operationId": "createGerritTriggerUsingPOST",
                 "consumes": [
                     "application/json"
                 ],
@@ -3746,7 +3746,7 @@
                 ],
                 "summary": "Get a gerrit trigger",
                 "description": "Get a gerrit trigger based on id",
-                "operationId": "getByIdUsingGET_1",
+                "operationId": "getGerritTriggerByIdUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -3802,7 +3802,7 @@
                 ],
                 "summary": "Clone a Gerrit Trigger",
                 "description": "Clone a Gerrit Trigger",
-                "operationId": "cloneTriggerUsingPOST",
+                "operationId": "cloneGerritTriggerUsingPOST",
                 "consumes": [
                     "application/json"
                 ],
@@ -3870,7 +3870,7 @@
                 ],
                 "summary": "Update a Gerrit Trigger with id",
                 "description": "Update a Gerrit Trigger with id",
-                "operationId": "updateByIdUsingPUT_3",
+                "operationId": "updateGerritTriggerByIdUsingPUT",
                 "consumes": [
                     "application/json"
                 ],
@@ -3938,7 +3938,7 @@
                 ],
                 "summary": "Delete a Gerrit Trigger with id",
                 "description": "Delete a Gerrit Trigger with id",
-                "operationId": "deleteUsingDELETE_5",
+                "operationId": "deleteGerritTriggerByIdUsingDELETE",
                 "produces": [
                     "*/*"
                 ],
@@ -3994,7 +3994,7 @@
                 ],
                 "summary": "Patch a Gerrit Trigger with id",
                 "description": "Patch a Gerrit Trigger with id",
-                "operationId": "patchByIdUsingPATCH_2",
+                "operationId": "patchGerritTriggerByIdUsingPATCH",
                 "consumes": [
                     "application/json"
                 ],
@@ -4064,7 +4064,7 @@
                 ],
                 "summary": "Get a gerrit trigger by project and name",
                 "description": "Get a gerrit trigger based on project and name",
-                "operationId": "getByNameUsingGET_2",
+                "operationId": "getGerritTriggerByNameUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -4127,7 +4127,7 @@
                 ],
                 "summary": "Clone a Gerrit Trigger by project and name",
                 "description": "Clone a Gerrit Trigger with the given project and name",
-                "operationId": "cloneByNameUsingPOST_1",
+                "operationId": "cloneGerritTriggerByNameUsingPOST",
                 "consumes": [
                     "application/json"
                 ],
@@ -4202,7 +4202,7 @@
                 ],
                 "summary": "Update a Gerrit Trigger with project and name",
                 "description": "Update a Gerrit Trigger with project and name",
-                "operationId": "updateByNameUsingPUT_3",
+                "operationId": "updateGerritTriggerByNameUsingPUT",
                 "consumes": [
                     "application/json"
                 ],
@@ -4277,7 +4277,7 @@
                 ],
                 "summary": "Delete a Gerrit Trigger with project and name",
                 "description": "Delete a Gerrit Trigger with project and name",
-                "operationId": "deleteByNameUsingDELETE_2",
+                "operationId": "deleteGerritTriggerByNameUsingDELETE",
                 "produces": [
                     "*/*"
                 ],
@@ -4340,7 +4340,7 @@
                 ],
                 "summary": "Patch a Gerrit Trigger with project and name",
                 "description": "Patch a Gerrit Trigger with project and name",
-                "operationId": "patchByNameUsingPATCH_2",
+                "operationId": "patchGerritTriggerByNameUsingPATCH",
                 "consumes": [
                     "application/json"
                 ],
@@ -4417,7 +4417,7 @@
                 ],
                 "summary": "Get all Git Events",
                 "description": "Get all Git Events",
-                "operationId": "getAllUsingGET_7",
+                "operationId": "getAllGitEventsUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -4507,7 +4507,7 @@
                 ],
                 "summary": "Get a Git Event",
                 "description": "Get a Git Event based on id",
-                "operationId": "getByIDUsingGET_4",
+                "operationId": "getGitEventByIDUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -4563,7 +4563,7 @@
                 ],
                 "summary": "Re-run/Resume Git Event",
                 "description": "Re-run/Resume Git Event",
-                "operationId": "resumeOrRerunEventUsingPOST_2",
+                "operationId": "resumeOrRerunGitEventUsingPOST",
                 "consumes": [
                     "application/json"
                 ],
@@ -4629,7 +4629,7 @@
                 ],
                 "summary": "Delete a Git Event",
                 "description": "Delete a Git Event",
-                "operationId": "deleteUsingDELETE_6",
+                "operationId": "deleteGitEventsByIdUsingDELETE",
                 "produces": [
                     "*/*"
                 ],
@@ -4687,7 +4687,7 @@
                 ],
                 "summary": "Get all Git Webhooks",
                 "description": "Get all Git Webhooks",
-                "operationId": "getAllUsingGET_8",
+                "operationId": "getAllGitWebhooksUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -4775,7 +4775,7 @@
                 ],
                 "summary": "Create a Git Webhook",
                 "description": "Create a Git Webhook",
-                "operationId": "createUsingPOST_5",
+                "operationId": "createGitWebhookUsingPOST",
                 "consumes": [
                     "application/json"
                 ],
@@ -4838,7 +4838,7 @@
                 ],
                 "summary": "Get a Git Webhook",
                 "description": "Get a Git Webhook based on id",
-                "operationId": "getByIDUsingGET_5",
+                "operationId": "getGitWebhookByIDUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -4894,7 +4894,7 @@
                 ],
                 "summary": "Update a Git Webhook",
                 "description": "Update a Git Webhook",
-                "operationId": "updateUsingPUT_1",
+                "operationId": "updateGitWebhookByIdUsingPUT",
                 "consumes": [
                     "application/json"
                 ],
@@ -4962,7 +4962,7 @@
                 ],
                 "summary": "Delete a Git Webhook",
                 "description": "Delete a Git Webhook",
-                "operationId": "deleteUsingDELETE_7",
+                "operationId": "deleteGitWebhookByIdUsingDELETE",
                 "produces": [
                     "*/*"
                 ],
@@ -5020,7 +5020,7 @@
                 ],
                 "summary": "Get a Git Webhook by name",
                 "description": "Get a Git Webhook by Name",
-                "operationId": "getByNameUsingGET_3",
+                "operationId": "getGitWebhookByNameUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -5083,7 +5083,7 @@
                 ],
                 "summary": "Update a Git Webhook using name",
                 "description": "Update a Git Webhook using name",
-                "operationId": "updateByNameUsingPUT_4",
+                "operationId": "updateGitWebhookByNameUsingPUT",
                 "consumes": [
                     "application/json"
                 ],
@@ -5158,7 +5158,7 @@
                 ],
                 "summary": "Delete a Git Webhook by name",
                 "description": "Delete a Git Webhook by name",
-                "operationId": "deleteByNameUsingDELETE_3",
+                "operationId": "deleteGitWebhookByNameUsingDELETE",
                 "produces": [
                     "*/*"
                 ],
@@ -5337,7 +5337,7 @@
                 ],
                 "summary": "Get all Pipelines",
                 "description": "Get all Pipelines with specified paging and filter parameters.",
-                "operationId": "getAllUsingGET_9",
+                "operationId": "getAllPipelinesUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -5425,7 +5425,7 @@
                 ],
                 "summary": "Create a Pipeline",
                 "description": "Create a Pipeline based on the given project",
-                "operationId": "createUsingPOST_6",
+                "operationId": "createPipelineUsingPOST",
                 "consumes": [
                     "application/json"
                 ],
@@ -5488,7 +5488,7 @@
                 ],
                 "summary": "Get a Pipeline",
                 "description": "Get a Pipeline with the given id",
-                "operationId": "getUsingGET_2",
+                "operationId": "getPipelineByIdUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -5612,7 +5612,7 @@
                 ],
                 "summary": "Update a Pipeline by id",
                 "description": "Update a Pipeline with the given id",
-                "operationId": "updateUsingPUT_2",
+                "operationId": "updatePipelineUsingPUT",
                 "consumes": [
                     "application/json"
                 ],
@@ -5680,7 +5680,7 @@
                 ],
                 "summary": "Delete a Pipeline by id",
                 "description": "Delete a Pipeline with the given id",
-                "operationId": "deleteUsingDELETE_8",
+                "operationId": "deletePipelineByIdUsingDELETE",
                 "produces": [
                     "*/*"
                 ],
@@ -5736,7 +5736,7 @@
                 ],
                 "summary": "Update a Pipeline by id",
                 "description": "Update a Pipeline with the given id",
-                "operationId": "patchUsingPATCH",
+                "operationId": "patchPipelineUsingPATCH",
                 "consumes": [
                     "application/json"
                 ],
@@ -5901,7 +5901,7 @@
                 ],
                 "summary": "Execute a Pipeline",
                 "description": "Execute a Pipeline based on the given id",
-                "operationId": "executeUsingPOST",
+                "operationId": "executePipelineByIdUsingPOST",
                 "consumes": [
                     "application/json"
                 ],
@@ -6042,7 +6042,7 @@
                 ],
                 "summary": "Get a Pipeline by project and name",
                 "description": "Get a Pipeline with the given project and name",
-                "operationId": "getUsingGET_3",
+                "operationId": "getPipelineByNameUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -6105,7 +6105,7 @@
                 ],
                 "summary": "Clone a Pipeline by project and name",
                 "description": "Clone a Pipeline with the given project and name",
-                "operationId": "cloneByNameUsingPOST_2",
+                "operationId": "clonePipelineByNameUsingPOST",
                 "consumes": [
                     "application/json"
                 ],
@@ -6180,7 +6180,7 @@
                 ],
                 "summary": "Update a Pipeline by project and name",
                 "description": "Update a Pipeline with the given project and name",
-                "operationId": "updateUsingPUT_3",
+                "operationId": "updatePipelineByNameUsingPUT",
                 "consumes": [
                     "application/json"
                 ],
@@ -6255,7 +6255,7 @@
                 ],
                 "summary": "Delete a Pipeline by project and name",
                 "description": "Delete a Pipeline with the given project and name",
-                "operationId": "deleteUsingDELETE_9",
+                "operationId": "deletePipelineByNameUsingDELETE",
                 "produces": [
                     "*/*"
                 ],
@@ -6318,7 +6318,7 @@
                 ],
                 "summary": "Update a Pipeline by project and name",
                 "description": "Update a Pipeline with the given project and name",
-                "operationId": "patchUsingPATCH_1",
+                "operationId": "patchPipelineByNameUsingPATCH",
                 "consumes": [
                     "application/json"
                 ],
@@ -6497,7 +6497,7 @@
                 ],
                 "summary": "Execute a Pipeline",
                 "description": "Execute a Pipeline based on the given project and name",
-                "operationId": "executeByNameUsingPOST",
+                "operationId": "executePipelineByNameUsingPOST",
                 "consumes": [
                     "application/json"
                 ],
@@ -6652,7 +6652,7 @@
                 ],
                 "summary": "Get all Docker Registry Events",
                 "description": "Get all Docker Registry Events",
-                "operationId": "getAllUsingGET",
+                "operationId": "getAllDockerRegistryEventsUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -6742,7 +6742,7 @@
                 ],
                 "summary": "Get a Docker Registry Event",
                 "description": "Get a Docker Registry Event based on id",
-                "operationId": "getByIDUsingGET",
+                "operationId": "getDockerRegistryEventByIDUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -6798,7 +6798,7 @@
                 ],
                 "summary": "Re-run/Resume Docker Registry Event",
                 "description": "Re-run/Resume Docker Registry Event",
-                "operationId": "resumeOrRerunEventUsingPOST",
+                "operationId": "resumeOrRerunDockerRegistryEventUsingPOST",
                 "consumes": [
                     "application/json"
                 ],
@@ -6864,7 +6864,7 @@
                 ],
                 "summary": "Delete a Docker Registry Event",
                 "description": "Delete a Docker Registry Event",
-                "operationId": "deleteUsingDELETE",
+                "operationId": "deleteDockerRegistryEventByIdUsingDELETE",
                 "produces": [
                     "*/*"
                 ],
@@ -6922,7 +6922,7 @@
                 ],
                 "summary": "Get all Docker Registry Webhooks",
                 "description": "Get all Docker Registry Webhooks",
-                "operationId": "getAllUsingGET_1",
+                "operationId": "getAllDockerRegistryWebhooksUsingGET",
                 "produces": [
                     "application/json"
                 ],
@@ -7010,7 +7010,7 @@
                 ],
                 "summary": "Create a Docker Registry Webhook",
                 "description": "Create a Docker Registry Webhook",
-                "operationId": "createUsingPOST_1",
+                "operationId": "createDockerRegistryWebhookUsingPOST",
                 "consumes": [
                     "application/json"
                 ],
@@ -7073,7 +7073,7 @@
                 ],
                 "summary": "Get a Docker Registry Webhook",
                 "description": "Get a Docker Registry Webhook based on id",
-                "operationId": "getByIDUsingGET_1",
+                "operationId": "getDockerRegistryWebhookByIDUsingGET",
                 "produces": [
                     "application/json"
                 ],
@@ -7129,7 +7129,7 @@
                 ],
                 "summary": "Update a Docker Registry Webhook",
                 "description": "Update a Docker Registry Webhook",
-                "operationId": "updateUsingPUT",
+                "operationId": "updateDockerRegistryWebhookByIdUsingPUT",
                 "consumes": [
                     "application/json"
                 ],
@@ -7197,7 +7197,7 @@
                 ],
                 "summary": "Delete a Docker Registry Webhook",
                 "description": "Delete a Docker Registry Webhook",
-                "operationId": "deleteByIdUsingDELETE",
+                "operationId": "deleteDockerRegistryWebhookByIdUsingDELETE",
                 "produces": [
                     "application/json"
                 ],
@@ -7253,7 +7253,7 @@
                 ],
                 "summary": "Patch a Docker Registry Webhook with id",
                 "description": "Patch a Docker Registry Webhook with id",
-                "operationId": "patchByIdUsingPATCH",
+                "operationId": "patchDockerRegistryWebhookByIdUsingPATCH",
                 "consumes": [
                     "application/json"
                 ],
@@ -7323,7 +7323,7 @@
                 ],
                 "summary": "Get a Docker Registry Webhook by name",
                 "description": "Get a Docker Registry Webhook by Name",
-                "operationId": "getNameUsingGET",
+                "operationId": "getDockerRegistryWebhookNameUsingGET",
                 "produces": [
                     "application/json"
                 ],
@@ -7386,7 +7386,7 @@
                 ],
                 "summary": "Update a Docker Registry Webhook using name",
                 "description": "Update a Docker Registry Webhook using name",
-                "operationId": "updateByNameUsingPUT",
+                "operationId": "updateDockerRegistryWebhookByNameUsingPUT",
                 "consumes": [
                     "application/json"
                 ],
@@ -7461,7 +7461,7 @@
                 ],
                 "summary": "Delete a Docker Registry Webhook using name",
                 "description": "Delete a Docker Registry Webhook using name",
-                "operationId": "deleteByNameUsingDELETE",
+                "operationId": "deleteDockerRegistryWebhookByNameUsingDELETE",
                 "produces": [
                     "application/json"
                 ],
@@ -7524,7 +7524,7 @@
                 ],
                 "summary": "Patch a Docker Registry Webhook with project and name",
                 "description": "Patch a Docker Registry Webhook with project and name",
-                "operationId": "patchByNameUsingPATCH",
+                "operationId": "patchDockerRegistryWebhookByNameUsingPATCH",
                 "consumes": [
                     "application/json"
                 ],
@@ -7601,7 +7601,7 @@
                 ],
                 "summary": "Get all User operations",
                 "description": "Get all User operations with specified paging and filter parameters.",
-                "operationId": "getAllUsingGET_10",
+                "operationId": "getAllUserOperationsUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -7691,7 +7691,7 @@
                 ],
                 "summary": "Get a User Operation",
                 "description": "Get a User Operation with the given id",
-                "operationId": "getUsingGET_4",
+                "operationId": "getUserOperationByIdUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -7815,7 +7815,7 @@
                 ],
                 "summary": "Delete a User Operation by id",
                 "description": "Delete a User Operation with the given id",
-                "operationId": "deleteUsingDELETE_10",
+                "operationId": "deleteUserOperationByIdUsingDELETE",
                 "produces": [
                     "*/*"
                 ],
@@ -7941,7 +7941,7 @@
                 ],
                 "summary": "Get all Variables",
                 "description": "Get all Variables with specified paging and filter parameters.",
-                "operationId": "getAllUsingGET_11",
+                "operationId": "getAllVariablesUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -8029,7 +8029,7 @@
                 ],
                 "summary": "Create a Variable",
                 "description": "Creates a Variable based on project name",
-                "operationId": "createUsingPOST_7",
+                "operationId": "createVariableUsingPOST",
                 "consumes": [
                     "application/json"
                 ],
@@ -8092,7 +8092,7 @@
                 ],
                 "summary": "Gets a Variable",
                 "description": "Gets a Variable with the given id",
-                "operationId": "getUsingGET_5",
+                "operationId": "getVariableByIdUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -8148,7 +8148,7 @@
                 ],
                 "summary": "Update a Variable by id",
                 "description": "Updates a Variable with the given id",
-                "operationId": "updateUsingPUT_4",
+                "operationId": "updateVariableByIdUsingPUT",
                 "consumes": [
                     "application/json"
                 ],
@@ -8216,7 +8216,7 @@
                 ],
                 "summary": "Deletes a Variable by Id",
                 "description": "Deletes a Variable with the given Id",
-                "operationId": "deleteUsingDELETE_11",
+                "operationId": "deleteVariableByIdUsingDELETE",
                 "produces": [
                     "*/*"
                 ],
@@ -8274,7 +8274,7 @@
                 ],
                 "summary": "Gets a Variable by project and name",
                 "description": "Get an Variable with the given project and name",
-                "operationId": "getUsingGET_6",
+                "operationId": "getVariableByNameUsingGET",
                 "produces": [
                     "*/*"
                 ],
@@ -8337,7 +8337,7 @@
                 ],
                 "summary": "Updates a Variable by project and name",
                 "description": "Update an Variable with the given project and name",
-                "operationId": "updateUsingPUT_5",
+                "operationId": "updateVariableByNameUsingPUT",
                 "consumes": [
                     "application/json"
                 ],
@@ -8412,7 +8412,7 @@
                 ],
                 "summary": "Deletes a Variable by project and name",
                 "description": "Deletes a Variable with the given name",
-                "operationId": "deleteUsingDELETE_12",
+                "operationId": "deleteVariableByNameUsingDELETE",
                 "produces": [
                     "*/*"
                 ],
@@ -13487,9 +13487,19 @@
                         "type": "string"
                     }
                 },
+                "customProperties": {
+                    "type": "object",
+                    "example": {
+                        "namespace": "builds"
+                    },
+                    "description": "List of custom properties",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
                 "endpoint": {
                     "type": "string",
-                    "description": "Name of the endpoint is docker."
+                    "description": "Name of the endpoint."
                 },
                 "environmentVariables": {
                     "type": "object",
@@ -13517,6 +13527,11 @@
                     "type": "string",
                     "example": "Docker Trusted Registry",
                     "description": "Name of the docker registry."
+                },
+                "type": {
+                    "type": "string",
+                    "example": "DOCKER|K8S",
+                    "description": "Type of the workspace."
                 }
             },
             "title": "Workspace",

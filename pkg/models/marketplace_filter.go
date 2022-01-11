@@ -69,6 +69,8 @@ func (m *MarketplaceFilter) validateEntries(formats strfmt.Registry) error {
 		if err := m.Entries.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("entries")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entries")
 			}
 			return err
 		}
@@ -187,6 +189,8 @@ func (m *MarketplaceFilter) contextValidateEntries(ctx context.Context, formats 
 		if err := m.Entries.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("entries")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("entries")
 			}
 			return err
 		}

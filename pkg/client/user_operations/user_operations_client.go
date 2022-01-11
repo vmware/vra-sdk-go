@@ -30,11 +30,11 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DeleteUsingDELETE10(params *DeleteUsingDELETE10Params, opts ...ClientOption) (*DeleteUsingDELETE10OK, error)
+	DeleteUserOperationByIDUsingDELETE(params *DeleteUserOperationByIDUsingDELETEParams, opts ...ClientOption) (*DeleteUserOperationByIDUsingDELETEOK, error)
 
-	GetAllUsingGET10(params *GetAllUsingGET10Params, opts ...ClientOption) (*GetAllUsingGET10OK, error)
+	GetAllUserOperationsUsingGET(params *GetAllUserOperationsUsingGETParams, opts ...ClientOption) (*GetAllUserOperationsUsingGETOK, error)
 
-	GetUsingGET4(params *GetUsingGET4Params, opts ...ClientOption) (*GetUsingGET4OK, error)
+	GetUserOperationByIDUsingGET(params *GetUserOperationByIDUsingGETParams, opts ...ClientOption) (*GetUserOperationByIDUsingGETOK, error)
 
 	ModifyPatchUserOperationUsingPATCH(params *ModifyPatchUserOperationUsingPATCHParams, opts ...ClientOption) (*ModifyPatchUserOperationUsingPATCHOK, error)
 
@@ -44,24 +44,24 @@ type ClientService interface {
 }
 
 /*
-  DeleteUsingDELETE10 deletes a user operation by id
+  DeleteUserOperationByIDUsingDELETE deletes a user operation by id
 
   Delete a User Operation with the given id
 */
-func (a *Client) DeleteUsingDELETE10(params *DeleteUsingDELETE10Params, opts ...ClientOption) (*DeleteUsingDELETE10OK, error) {
+func (a *Client) DeleteUserOperationByIDUsingDELETE(params *DeleteUserOperationByIDUsingDELETEParams, opts ...ClientOption) (*DeleteUserOperationByIDUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteUsingDELETE10Params()
+		params = NewDeleteUserOperationByIDUsingDELETEParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteUsingDELETE_10",
+		ID:                 "deleteUserOperationByIdUsingDELETE",
 		Method:             "DELETE",
 		PathPattern:        "/codestream/api/user-operations/{id}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteUsingDELETE10Reader{formats: a.formats},
+		Reader:             &DeleteUserOperationByIDUsingDELETEReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -73,35 +73,35 @@ func (a *Client) DeleteUsingDELETE10(params *DeleteUsingDELETE10Params, opts ...
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteUsingDELETE10OK)
+	success, ok := result.(*DeleteUserOperationByIDUsingDELETEOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteUsingDELETE_10: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for deleteUserOperationByIdUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetAllUsingGET10 gets all user operations
+  GetAllUserOperationsUsingGET gets all user operations
 
   Get all User operations with specified paging and filter parameters.
 */
-func (a *Client) GetAllUsingGET10(params *GetAllUsingGET10Params, opts ...ClientOption) (*GetAllUsingGET10OK, error) {
+func (a *Client) GetAllUserOperationsUsingGET(params *GetAllUserOperationsUsingGETParams, opts ...ClientOption) (*GetAllUserOperationsUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetAllUsingGET10Params()
+		params = NewGetAllUserOperationsUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getAllUsingGET_10",
+		ID:                 "getAllUserOperationsUsingGET",
 		Method:             "GET",
 		PathPattern:        "/codestream/api/user-operations",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetAllUsingGET10Reader{formats: a.formats},
+		Reader:             &GetAllUserOperationsUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -113,35 +113,35 @@ func (a *Client) GetAllUsingGET10(params *GetAllUsingGET10Params, opts ...Client
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetAllUsingGET10OK)
+	success, ok := result.(*GetAllUserOperationsUsingGETOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getAllUsingGET_10: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getAllUserOperationsUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetUsingGET4 gets a user operation
+  GetUserOperationByIDUsingGET gets a user operation
 
   Get a User Operation with the given id
 */
-func (a *Client) GetUsingGET4(params *GetUsingGET4Params, opts ...ClientOption) (*GetUsingGET4OK, error) {
+func (a *Client) GetUserOperationByIDUsingGET(params *GetUserOperationByIDUsingGETParams, opts ...ClientOption) (*GetUserOperationByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetUsingGET4Params()
+		params = NewGetUserOperationByIDUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getUsingGET_4",
+		ID:                 "getUserOperationByIdUsingGET",
 		Method:             "GET",
 		PathPattern:        "/codestream/api/user-operations/{id}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetUsingGET4Reader{formats: a.formats},
+		Reader:             &GetUserOperationByIDUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -153,13 +153,13 @@ func (a *Client) GetUsingGET4(params *GetUsingGET4Params, opts ...ClientOption) 
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetUsingGET4OK)
+	success, ok := result.(*GetUserOperationByIDUsingGETOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getUsingGET_4: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getUserOperationByIdUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

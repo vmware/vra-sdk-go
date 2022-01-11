@@ -72,6 +72,11 @@ func (m *ImageProfileSpecification) validateImageMapping(formats strfmt.Registry
 		}
 		if val, ok := m.ImageMapping[k]; ok {
 			if err := val.Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("imageMapping" + "." + k)
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("imageMapping" + "." + k)
+				}
 				return err
 			}
 		}

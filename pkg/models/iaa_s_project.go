@@ -65,12 +65,8 @@ type IaaSProject struct {
 	OperationTimeout int64 `json:"operationTimeout,omitempty"`
 
 	// The id of the organization this entity belongs to.
-	// Example: 9e49
+	// Example: 42413b31-1716-477e-9a88-9dc1c3cb1cdf
 	OrgID string `json:"orgId,omitempty"`
-
-	// This field is deprecated. Use orgId instead. The id of the organization this entity belongs to.
-	// Example: deprecated
-	OrganizationID string `json:"organizationId,omitempty"`
 
 	// Email of the user that owns the entity.
 	// Example: csp@vmware.com
@@ -146,6 +142,11 @@ func (m *IaaSProject) validateLinks(formats strfmt.Registry) error {
 		}
 		if val, ok := m.Links[k]; ok {
 			if err := val.Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("_links" + "." + k)
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("_links" + "." + k)
+				}
 				return err
 			}
 		}
@@ -169,6 +170,8 @@ func (m *IaaSProject) validateAdministrators(formats strfmt.Registry) error {
 			if err := m.Administrators[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("administrators" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("administrators" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -195,6 +198,8 @@ func (m *IaaSProject) validateConstraints(formats strfmt.Registry) error {
 			if err := m.Constraints[k][i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("constraints" + "." + k + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("constraints" + "." + k + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -229,6 +234,8 @@ func (m *IaaSProject) validateMembers(formats strfmt.Registry) error {
 			if err := m.Members[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("members" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("members" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -253,6 +260,8 @@ func (m *IaaSProject) validateViewers(formats strfmt.Registry) error {
 			if err := m.Viewers[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("viewers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("viewers" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -277,6 +286,8 @@ func (m *IaaSProject) validateZones(formats strfmt.Registry) error {
 			if err := m.Zones[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("zones" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("zones" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -348,6 +359,8 @@ func (m *IaaSProject) contextValidateAdministrators(ctx context.Context, formats
 			if err := m.Administrators[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("administrators" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("administrators" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -367,6 +380,8 @@ func (m *IaaSProject) contextValidateConstraints(ctx context.Context, formats st
 			if err := m.Constraints[k][i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("constraints" + "." + k + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("constraints" + "." + k + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -386,6 +401,8 @@ func (m *IaaSProject) contextValidateMembers(ctx context.Context, formats strfmt
 			if err := m.Members[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("members" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("members" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -404,6 +421,8 @@ func (m *IaaSProject) contextValidateViewers(ctx context.Context, formats strfmt
 			if err := m.Viewers[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("viewers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("viewers" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -422,6 +441,8 @@ func (m *IaaSProject) contextValidateZones(ctx context.Context, formats strfmt.R
 			if err := m.Zones[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("zones" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("zones" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

@@ -11,8 +11,6 @@ new_filename = "swagger/vra-project-fixed.json"
 
 def replace_value(d, k, v, new):
     if k in d and d[k] == v:
-        print(d[k])
-        print("found one")
         d[k] = new
     for child in d.values():
         if isinstance(child, dict):

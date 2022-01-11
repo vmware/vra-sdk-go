@@ -30,13 +30,13 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DeleteAllUsingDELETE(params *DeleteAllUsingDELETEParams, opts ...ClientOption) (*DeleteAllUsingDELETEAccepted, error)
+	DeleteAllExecutionsUsingDELETE(params *DeleteAllExecutionsUsingDELETEParams, opts ...ClientOption) (*DeleteAllExecutionsUsingDELETEAccepted, error)
 
-	DeleteUsingDELETE3(params *DeleteUsingDELETE3Params, opts ...ClientOption) (*DeleteUsingDELETE3OK, error)
+	DeleteExecutionByIDUsingDELETE(params *DeleteExecutionByIDUsingDELETEParams, opts ...ClientOption) (*DeleteExecutionByIDUsingDELETEOK, error)
 
-	GetAllUsingGET3(params *GetAllUsingGET3Params, opts ...ClientOption) (*GetAllUsingGET3OK, error)
+	GetAllExecutionsUsingGET(params *GetAllExecutionsUsingGETParams, opts ...ClientOption) (*GetAllExecutionsUsingGETOK, error)
 
-	GetUsingGET1(params *GetUsingGET1Params, opts ...ClientOption) (*GetUsingGET1OK, error)
+	GetExecutionByIDUsingGET(params *GetExecutionByIDUsingGETParams, opts ...ClientOption) (*GetExecutionByIDUsingGETOK, error)
 
 	ModifyExecutionUsingPOST(params *ModifyExecutionUsingPOSTParams, opts ...ClientOption) (*ModifyExecutionUsingPOSTOK, error)
 
@@ -46,24 +46,24 @@ type ClientService interface {
 }
 
 /*
-  DeleteAllUsingDELETE deletes all executions
+  DeleteAllExecutionsUsingDELETE deletes all executions
 
   Delete executions that match the specified filter.
 */
-func (a *Client) DeleteAllUsingDELETE(params *DeleteAllUsingDELETEParams, opts ...ClientOption) (*DeleteAllUsingDELETEAccepted, error) {
+func (a *Client) DeleteAllExecutionsUsingDELETE(params *DeleteAllExecutionsUsingDELETEParams, opts ...ClientOption) (*DeleteAllExecutionsUsingDELETEAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteAllUsingDELETEParams()
+		params = NewDeleteAllExecutionsUsingDELETEParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteAllUsingDELETE",
+		ID:                 "deleteAllExecutionsUsingDELETE",
 		Method:             "DELETE",
 		PathPattern:        "/codestream/api/executions",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteAllUsingDELETEReader{formats: a.formats},
+		Reader:             &DeleteAllExecutionsUsingDELETEReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -75,35 +75,35 @@ func (a *Client) DeleteAllUsingDELETE(params *DeleteAllUsingDELETEParams, opts .
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteAllUsingDELETEAccepted)
+	success, ok := result.(*DeleteAllExecutionsUsingDELETEAccepted)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteAllUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for deleteAllExecutionsUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  DeleteUsingDELETE3 deletes an execution by id
+  DeleteExecutionByIDUsingDELETE deletes an execution by id
 
   Delete an Execution
 */
-func (a *Client) DeleteUsingDELETE3(params *DeleteUsingDELETE3Params, opts ...ClientOption) (*DeleteUsingDELETE3OK, error) {
+func (a *Client) DeleteExecutionByIDUsingDELETE(params *DeleteExecutionByIDUsingDELETEParams, opts ...ClientOption) (*DeleteExecutionByIDUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteUsingDELETE3Params()
+		params = NewDeleteExecutionByIDUsingDELETEParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteUsingDELETE_3",
+		ID:                 "deleteExecutionByIdUsingDELETE",
 		Method:             "DELETE",
 		PathPattern:        "/codestream/api/executions/{id}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteUsingDELETE3Reader{formats: a.formats},
+		Reader:             &DeleteExecutionByIDUsingDELETEReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -115,35 +115,35 @@ func (a *Client) DeleteUsingDELETE3(params *DeleteUsingDELETE3Params, opts ...Cl
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteUsingDELETE3OK)
+	success, ok := result.(*DeleteExecutionByIDUsingDELETEOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteUsingDELETE_3: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for deleteExecutionByIdUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetAllUsingGET3 gets all executions
+  GetAllExecutionsUsingGET gets all executions
 
   Get all Executions with specified paging and filter parameters.
 */
-func (a *Client) GetAllUsingGET3(params *GetAllUsingGET3Params, opts ...ClientOption) (*GetAllUsingGET3OK, error) {
+func (a *Client) GetAllExecutionsUsingGET(params *GetAllExecutionsUsingGETParams, opts ...ClientOption) (*GetAllExecutionsUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetAllUsingGET3Params()
+		params = NewGetAllExecutionsUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getAllUsingGET_3",
+		ID:                 "getAllExecutionsUsingGET",
 		Method:             "GET",
 		PathPattern:        "/codestream/api/executions",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetAllUsingGET3Reader{formats: a.formats},
+		Reader:             &GetAllExecutionsUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -155,35 +155,35 @@ func (a *Client) GetAllUsingGET3(params *GetAllUsingGET3Params, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetAllUsingGET3OK)
+	success, ok := result.(*GetAllExecutionsUsingGETOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getAllUsingGET_3: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getAllExecutionsUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetUsingGET1 gets an execution
+  GetExecutionByIDUsingGET gets an execution
 
   Get an Execution by id
 */
-func (a *Client) GetUsingGET1(params *GetUsingGET1Params, opts ...ClientOption) (*GetUsingGET1OK, error) {
+func (a *Client) GetExecutionByIDUsingGET(params *GetExecutionByIDUsingGETParams, opts ...ClientOption) (*GetExecutionByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetUsingGET1Params()
+		params = NewGetExecutionByIDUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getUsingGET_1",
+		ID:                 "getExecutionByIdUsingGET",
 		Method:             "GET",
 		PathPattern:        "/codestream/api/executions/{id}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetUsingGET1Reader{formats: a.formats},
+		Reader:             &GetExecutionByIDUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -195,13 +195,13 @@ func (a *Client) GetUsingGET1(params *GetUsingGET1Params, opts ...ClientOption) 
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetUsingGET1OK)
+	success, ok := result.(*GetExecutionByIDUsingGETOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getUsingGET_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getExecutionByIdUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

@@ -32,7 +32,7 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	CreateProject(params *CreateProjectParams, opts ...ClientOption) (*CreateProjectCreated, error)
 
-	CreateUsingPOSTMixin4(params *CreateUsingPOSTMixin4Params, opts ...ClientOption) (*CreateUsingPOSTMixin4Created, error)
+	CreateUsingPOST(params *CreateUsingPOSTParams, opts ...ClientOption) (*CreateUsingPOSTCreated, error)
 
 	DeleteProject(params *DeleteProjectParams, opts ...ClientOption) (*DeleteProjectNoContent, error)
 
@@ -55,6 +55,8 @@ type ClientService interface {
 	ModifyProjectPrincipalsUsingPATCH(params *ModifyProjectPrincipalsUsingPATCHParams, opts ...ClientOption) (*ModifyProjectPrincipalsUsingPATCHOK, error)
 
 	ModifyProjectUsingPATCH(params *ModifyProjectUsingPATCHParams, opts ...ClientOption) (*ModifyProjectUsingPATCHOK, error)
+
+	SyncProjectsPrincipalsUsingPOST(params *SyncProjectsPrincipalsUsingPOSTParams, opts ...ClientOption) (*SyncProjectsPrincipalsUsingPOSTOK, error)
 
 	UpdateProject(params *UpdateProjectParams, opts ...ClientOption) (*UpdateProjectOK, error)
 
@@ -106,22 +108,22 @@ func (a *Client) CreateProject(params *CreateProjectParams, opts ...ClientOption
 }
 
 /*
-  CreateUsingPOSTMixin4 creates a project
+  CreateUsingPOST creates a project
 */
-func (a *Client) CreateUsingPOSTMixin4(params *CreateUsingPOSTMixin4Params, opts ...ClientOption) (*CreateUsingPOSTMixin4Created, error) {
+func (a *Client) CreateUsingPOST(params *CreateUsingPOSTParams, opts ...ClientOption) (*CreateUsingPOSTCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateUsingPOSTMixin4Params()
+		params = NewCreateUsingPOSTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createUsingPOSTMixin4",
+		ID:                 "createUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/project-service/api/projects",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateUsingPOSTMixin4Reader{formats: a.formats},
+		Reader:             &CreateUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -133,13 +135,13 @@ func (a *Client) CreateUsingPOSTMixin4(params *CreateUsingPOSTMixin4Params, opts
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateUsingPOSTMixin4Created)
+	success, ok := result.(*CreateUsingPOSTCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for createUsingPOSTMixin4: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for createUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -580,6 +582,44 @@ func (a *Client) ModifyProjectUsingPATCH(params *ModifyProjectUsingPATCHParams, 
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for modifyProjectUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  SyncProjectsPrincipalsUsingPOST syncs principals assigned to any project within user organization
+*/
+func (a *Client) SyncProjectsPrincipalsUsingPOST(params *SyncProjectsPrincipalsUsingPOSTParams, opts ...ClientOption) (*SyncProjectsPrincipalsUsingPOSTOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewSyncProjectsPrincipalsUsingPOSTParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "syncProjectsPrincipalsUsingPOST",
+		Method:             "POST",
+		PathPattern:        "/project-service/api/projects/{id}/sync-principals",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &SyncProjectsPrincipalsUsingPOSTReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*SyncProjectsPrincipalsUsingPOSTOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for syncProjectsPrincipalsUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

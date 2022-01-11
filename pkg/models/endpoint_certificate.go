@@ -185,6 +185,8 @@ func (m *endpointCertificate) validateFingerprints(formats strfmt.Registry) erro
 	if err := m.Fingerprints().Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("fingerprints")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("fingerprints")
 		}
 		return err
 	}
@@ -201,6 +203,8 @@ func (m *endpointCertificate) validateIssuedBy(formats strfmt.Registry) error {
 		if err := m.IssuedBy().Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("issuedBy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("issuedBy")
 			}
 			return err
 		}
@@ -217,6 +221,8 @@ func (m *endpointCertificate) validateIssuedTo(formats strfmt.Registry) error {
 	if err := m.IssuedTo().Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("issuedTo")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("issuedTo")
 		}
 		return err
 	}
@@ -232,6 +238,8 @@ func (m *endpointCertificate) validatePeriodOfValidity(formats strfmt.Registry) 
 	if err := m.PeriodOfValidity().Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("periodOfValidity")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("periodOfValidity")
 		}
 		return err
 	}
@@ -270,6 +278,8 @@ func (m *endpointCertificate) contextValidateFingerprints(ctx context.Context, f
 	if err := m.Fingerprints().ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("fingerprints")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("fingerprints")
 		}
 		return err
 	}
@@ -283,6 +293,8 @@ func (m *endpointCertificate) contextValidateIssuedBy(ctx context.Context, forma
 		if err := m.IssuedBy().ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("issuedBy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("issuedBy")
 			}
 			return err
 		}
@@ -296,6 +308,8 @@ func (m *endpointCertificate) contextValidateIssuedTo(ctx context.Context, forma
 	if err := m.IssuedTo().ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("issuedTo")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("issuedTo")
 		}
 		return err
 	}
@@ -308,6 +322,8 @@ func (m *endpointCertificate) contextValidatePeriodOfValidity(ctx context.Contex
 	if err := m.PeriodOfValidity().ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("periodOfValidity")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("periodOfValidity")
 		}
 		return err
 	}

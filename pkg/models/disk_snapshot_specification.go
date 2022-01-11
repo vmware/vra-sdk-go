@@ -7,7 +7,9 @@ package models
 
 import (
 	"context"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -26,15 +28,83 @@ type DiskSnapshotSpecification struct {
 	// Cloud specific snapshot properties supplied in as name value pairs
 	// Example: {\"incremental\": \"true\",
 	SnapshotProperties map[string]string `json:"snapshotProperties,omitempty"`
+
+	// A set of tag keys and optional values that have to be set on the snapshot in the cloud. Currently supported for Azure Snapshots
+	// Example: [ { \"key\" : \"env\", \"value\": \"dev\" } ]
+	Tags []*Tag `json:"tags"`
 }
 
 // Validate validates this disk snapshot specification
 func (m *DiskSnapshotSpecification) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateTags(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
 	return nil
 }
 
-// ContextValidate validates this disk snapshot specification based on context it is used
+func (m *DiskSnapshotSpecification) validateTags(formats strfmt.Registry) error {
+	if swag.IsZero(m.Tags) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Tags); i++ {
+		if swag.IsZero(m.Tags[i]) { // not required
+			continue
+		}
+
+		if m.Tags[i] != nil {
+			if err := m.Tags[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this disk snapshot specification based on the context it is used
 func (m *DiskSnapshotSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateTags(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *DiskSnapshotSpecification) contextValidateTags(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Tags); i++ {
+
+		if m.Tags[i] != nil {
+			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

@@ -71,6 +71,8 @@ func (m *AboutAPIDescription) validateDeprecationPolicy(formats strfmt.Registry)
 		if err := m.DeprecationPolicy.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("deprecationPolicy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("deprecationPolicy")
 			}
 			return err
 		}
@@ -108,6 +110,8 @@ func (m *AboutAPIDescription) contextValidateDeprecationPolicy(ctx context.Conte
 		if err := m.DeprecationPolicy.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("deprecationPolicy")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("deprecationPolicy")
 			}
 			return err
 		}

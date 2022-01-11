@@ -146,6 +146,8 @@ func (m *ProjectPrincipalsAssignment) validateModify(formats strfmt.Registry) er
 		if err := m.modifyField[i].Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("modify" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("modify" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -165,6 +167,8 @@ func (m *ProjectPrincipalsAssignment) validateRemove(formats strfmt.Registry) er
 		if err := m.removeField[i].Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("remove" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("remove" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -199,6 +203,8 @@ func (m *ProjectPrincipalsAssignment) contextValidateModify(ctx context.Context,
 		if err := m.modifyField[i].ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("modify" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("modify" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -215,6 +221,8 @@ func (m *ProjectPrincipalsAssignment) contextValidateRemove(ctx context.Context,
 		if err := m.removeField[i].ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("remove" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("remove" + "." + strconv.Itoa(i))
 			}
 			return err
 		}

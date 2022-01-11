@@ -30,36 +30,78 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetResourceByIDUsingGET1(params *GetResourceByIDUsingGET1Params, opts ...ClientOption) (*GetResourceByIDUsingGET1OK, error)
+	CreateResourceUsingPOST2(params *CreateResourceUsingPOST2Params, opts ...ClientOption) (*CreateResourceUsingPOST2OK, error)
 
-	GetResourceFilterByIDUsingGET(params *GetResourceFilterByIDUsingGETParams, opts ...ClientOption) (*GetResourceFilterByIDUsingGETOK, error)
+	GetResourceByIDUsingGET5(params *GetResourceByIDUsingGET5Params, opts ...ClientOption) (*GetResourceByIDUsingGET5OK, error)
 
-	GetResourceFiltersUsingGET(params *GetResourceFiltersUsingGETParams, opts ...ClientOption) (*GetResourceFiltersUsingGETOK, error)
+	GetResourceFilterByIDUsingGET2(params *GetResourceFilterByIDUsingGET2Params, opts ...ClientOption) (*GetResourceFilterByIDUsingGET2OK, error)
 
-	GetResourcesUsingGET(params *GetResourcesUsingGETParams, opts ...ClientOption) (*GetResourcesUsingGETOK, error)
+	GetResourceFiltersUsingGET2(params *GetResourceFiltersUsingGET2Params, opts ...ClientOption) (*GetResourceFiltersUsingGET2OK, error)
+
+	GetResourcesUsingGET2(params *GetResourcesUsingGET2Params, opts ...ClientOption) (*GetResourcesUsingGET2OK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  GetResourceByIDUsingGET1 fetches a specific resource
+  CreateResourceUsingPOST2 creates a new resource
+
+  Returns the resource request response.
+*/
+func (a *Client) CreateResourceUsingPOST2(params *CreateResourceUsingPOST2Params, opts ...ClientOption) (*CreateResourceUsingPOST2OK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateResourceUsingPOST2Params()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "createResourceUsingPOST_2",
+		Method:             "POST",
+		PathPattern:        "/deployment/api/resources",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CreateResourceUsingPOST2Reader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CreateResourceUsingPOST2OK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for createResourceUsingPOST_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetResourceByIDUsingGET5 fetches a specific resource
 
   Returns the resource with the supplied ID.
 */
-func (a *Client) GetResourceByIDUsingGET1(params *GetResourceByIDUsingGET1Params, opts ...ClientOption) (*GetResourceByIDUsingGET1OK, error) {
+func (a *Client) GetResourceByIDUsingGET5(params *GetResourceByIDUsingGET5Params, opts ...ClientOption) (*GetResourceByIDUsingGET5OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetResourceByIDUsingGET1Params()
+		params = NewGetResourceByIDUsingGET5Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getResourceByIdUsingGET_1",
+		ID:                 "getResourceByIdUsingGET_5",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/resources/{resourceId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetResourceByIDUsingGET1Reader{formats: a.formats},
+		Reader:             &GetResourceByIDUsingGET5Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -71,33 +113,33 @@ func (a *Client) GetResourceByIDUsingGET1(params *GetResourceByIDUsingGET1Params
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetResourceByIDUsingGET1OK)
+	success, ok := result.(*GetResourceByIDUsingGET5OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getResourceByIdUsingGET_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getResourceByIdUsingGET_5: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetResourceFilterByIDUsingGET returns the resource filter with the supplied ID
+  GetResourceFilterByIDUsingGET2 returns the resource filter with the supplied ID
 */
-func (a *Client) GetResourceFilterByIDUsingGET(params *GetResourceFilterByIDUsingGETParams, opts ...ClientOption) (*GetResourceFilterByIDUsingGETOK, error) {
+func (a *Client) GetResourceFilterByIDUsingGET2(params *GetResourceFilterByIDUsingGET2Params, opts ...ClientOption) (*GetResourceFilterByIDUsingGET2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetResourceFilterByIDUsingGETParams()
+		params = NewGetResourceFilterByIDUsingGET2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getResourceFilterByIdUsingGET",
+		ID:                 "getResourceFilterByIdUsingGET_2",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/resources/filters/{filterId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetResourceFilterByIDUsingGETReader{formats: a.formats},
+		Reader:             &GetResourceFilterByIDUsingGET2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -109,33 +151,33 @@ func (a *Client) GetResourceFilterByIDUsingGET(params *GetResourceFilterByIDUsin
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetResourceFilterByIDUsingGETOK)
+	success, ok := result.(*GetResourceFilterByIDUsingGET2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getResourceFilterByIdUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getResourceFilterByIdUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetResourceFiltersUsingGET returns the resource filters in context of given user
+  GetResourceFiltersUsingGET2 returns the resource filters in context of given user
 */
-func (a *Client) GetResourceFiltersUsingGET(params *GetResourceFiltersUsingGETParams, opts ...ClientOption) (*GetResourceFiltersUsingGETOK, error) {
+func (a *Client) GetResourceFiltersUsingGET2(params *GetResourceFiltersUsingGET2Params, opts ...ClientOption) (*GetResourceFiltersUsingGET2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetResourceFiltersUsingGETParams()
+		params = NewGetResourceFiltersUsingGET2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getResourceFiltersUsingGET",
+		ID:                 "getResourceFiltersUsingGET_2",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/resources/filters",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetResourceFiltersUsingGETReader{formats: a.formats},
+		Reader:             &GetResourceFiltersUsingGET2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -147,35 +189,35 @@ func (a *Client) GetResourceFiltersUsingGET(params *GetResourceFiltersUsingGETPa
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetResourceFiltersUsingGETOK)
+	success, ok := result.(*GetResourceFiltersUsingGET2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getResourceFiltersUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getResourceFiltersUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetResourcesUsingGET fetches all resources
+  GetResourcesUsingGET2 fetches all resources
 
   Returns a paginated list of resources.
 */
-func (a *Client) GetResourcesUsingGET(params *GetResourcesUsingGETParams, opts ...ClientOption) (*GetResourcesUsingGETOK, error) {
+func (a *Client) GetResourcesUsingGET2(params *GetResourcesUsingGET2Params, opts ...ClientOption) (*GetResourcesUsingGET2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetResourcesUsingGETParams()
+		params = NewGetResourcesUsingGET2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getResourcesUsingGET",
+		ID:                 "getResourcesUsingGET_2",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/resources",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetResourcesUsingGETReader{formats: a.formats},
+		Reader:             &GetResourcesUsingGET2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -187,13 +229,13 @@ func (a *Client) GetResourcesUsingGET(params *GetResourcesUsingGETParams, opts .
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetResourcesUsingGETOK)
+	success, ok := result.(*GetResourcesUsingGET2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getResourcesUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getResourcesUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

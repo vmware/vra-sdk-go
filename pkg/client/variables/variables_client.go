@@ -30,44 +30,44 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateUsingPOST7(params *CreateUsingPOST7Params, opts ...ClientOption) (*CreateUsingPOST7OK, error)
+	CreateVariableUsingPOST(params *CreateVariableUsingPOSTParams, opts ...ClientOption) (*CreateVariableUsingPOSTOK, error)
 
-	DeleteUsingDELETE11(params *DeleteUsingDELETE11Params, opts ...ClientOption) (*DeleteUsingDELETE11OK, error)
+	DeleteVariableByIDUsingDELETE(params *DeleteVariableByIDUsingDELETEParams, opts ...ClientOption) (*DeleteVariableByIDUsingDELETEOK, error)
 
-	DeleteUsingDELETE12(params *DeleteUsingDELETE12Params, opts ...ClientOption) (*DeleteUsingDELETE12OK, error)
+	DeleteVariableByNameUsingDELETE(params *DeleteVariableByNameUsingDELETEParams, opts ...ClientOption) (*DeleteVariableByNameUsingDELETEOK, error)
 
-	GetAllUsingGET11(params *GetAllUsingGET11Params, opts ...ClientOption) (*GetAllUsingGET11OK, error)
+	GetAllVariablesUsingGET(params *GetAllVariablesUsingGETParams, opts ...ClientOption) (*GetAllVariablesUsingGETOK, error)
 
-	GetUsingGET5(params *GetUsingGET5Params, opts ...ClientOption) (*GetUsingGET5OK, error)
+	GetVariableByIDUsingGET(params *GetVariableByIDUsingGETParams, opts ...ClientOption) (*GetVariableByIDUsingGETOK, error)
 
-	GetUsingGET6(params *GetUsingGET6Params, opts ...ClientOption) (*GetUsingGET6OK, error)
+	GetVariableByNameUsingGET(params *GetVariableByNameUsingGETParams, opts ...ClientOption) (*GetVariableByNameUsingGETOK, error)
 
-	UpdateUsingPUT4(params *UpdateUsingPUT4Params, opts ...ClientOption) (*UpdateUsingPUT4OK, error)
+	UpdateVariableByIDUsingPUT(params *UpdateVariableByIDUsingPUTParams, opts ...ClientOption) (*UpdateVariableByIDUsingPUTOK, error)
 
-	UpdateUsingPUT5(params *UpdateUsingPUT5Params, opts ...ClientOption) (*UpdateUsingPUT5OK, error)
+	UpdateVariableByNameUsingPUT(params *UpdateVariableByNameUsingPUTParams, opts ...ClientOption) (*UpdateVariableByNameUsingPUTOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  CreateUsingPOST7 creates a variable
+  CreateVariableUsingPOST creates a variable
 
   Creates a Variable based on project name
 */
-func (a *Client) CreateUsingPOST7(params *CreateUsingPOST7Params, opts ...ClientOption) (*CreateUsingPOST7OK, error) {
+func (a *Client) CreateVariableUsingPOST(params *CreateVariableUsingPOSTParams, opts ...ClientOption) (*CreateVariableUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateUsingPOST7Params()
+		params = NewCreateVariableUsingPOSTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createUsingPOST_7",
+		ID:                 "createVariableUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/codestream/api/variables",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateUsingPOST7Reader{formats: a.formats},
+		Reader:             &CreateVariableUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,35 +79,35 @@ func (a *Client) CreateUsingPOST7(params *CreateUsingPOST7Params, opts ...Client
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateUsingPOST7OK)
+	success, ok := result.(*CreateVariableUsingPOSTOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for createUsingPOST_7: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for createVariableUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  DeleteUsingDELETE11 deletes a variable by Id
+  DeleteVariableByIDUsingDELETE deletes a variable by Id
 
   Deletes a Variable with the given Id
 */
-func (a *Client) DeleteUsingDELETE11(params *DeleteUsingDELETE11Params, opts ...ClientOption) (*DeleteUsingDELETE11OK, error) {
+func (a *Client) DeleteVariableByIDUsingDELETE(params *DeleteVariableByIDUsingDELETEParams, opts ...ClientOption) (*DeleteVariableByIDUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteUsingDELETE11Params()
+		params = NewDeleteVariableByIDUsingDELETEParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteUsingDELETE_11",
+		ID:                 "deleteVariableByIdUsingDELETE",
 		Method:             "DELETE",
 		PathPattern:        "/codestream/api/variables/{id}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteUsingDELETE11Reader{formats: a.formats},
+		Reader:             &DeleteVariableByIDUsingDELETEReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -119,35 +119,35 @@ func (a *Client) DeleteUsingDELETE11(params *DeleteUsingDELETE11Params, opts ...
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteUsingDELETE11OK)
+	success, ok := result.(*DeleteVariableByIDUsingDELETEOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteUsingDELETE_11: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for deleteVariableByIdUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  DeleteUsingDELETE12 deletes a variable by project and name
+  DeleteVariableByNameUsingDELETE deletes a variable by project and name
 
   Deletes a Variable with the given name
 */
-func (a *Client) DeleteUsingDELETE12(params *DeleteUsingDELETE12Params, opts ...ClientOption) (*DeleteUsingDELETE12OK, error) {
+func (a *Client) DeleteVariableByNameUsingDELETE(params *DeleteVariableByNameUsingDELETEParams, opts ...ClientOption) (*DeleteVariableByNameUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteUsingDELETE12Params()
+		params = NewDeleteVariableByNameUsingDELETEParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteUsingDELETE_12",
+		ID:                 "deleteVariableByNameUsingDELETE",
 		Method:             "DELETE",
 		PathPattern:        "/codestream/api/variables/{project}/{name}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteUsingDELETE12Reader{formats: a.formats},
+		Reader:             &DeleteVariableByNameUsingDELETEReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -159,35 +159,35 @@ func (a *Client) DeleteUsingDELETE12(params *DeleteUsingDELETE12Params, opts ...
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteUsingDELETE12OK)
+	success, ok := result.(*DeleteVariableByNameUsingDELETEOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteUsingDELETE_12: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for deleteVariableByNameUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetAllUsingGET11 gets all variables
+  GetAllVariablesUsingGET gets all variables
 
   Get all Variables with specified paging and filter parameters.
 */
-func (a *Client) GetAllUsingGET11(params *GetAllUsingGET11Params, opts ...ClientOption) (*GetAllUsingGET11OK, error) {
+func (a *Client) GetAllVariablesUsingGET(params *GetAllVariablesUsingGETParams, opts ...ClientOption) (*GetAllVariablesUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetAllUsingGET11Params()
+		params = NewGetAllVariablesUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getAllUsingGET_11",
+		ID:                 "getAllVariablesUsingGET",
 		Method:             "GET",
 		PathPattern:        "/codestream/api/variables",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetAllUsingGET11Reader{formats: a.formats},
+		Reader:             &GetAllVariablesUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -199,35 +199,35 @@ func (a *Client) GetAllUsingGET11(params *GetAllUsingGET11Params, opts ...Client
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetAllUsingGET11OK)
+	success, ok := result.(*GetAllVariablesUsingGETOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getAllUsingGET_11: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getAllVariablesUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetUsingGET5 gets a variable
+  GetVariableByIDUsingGET gets a variable
 
   Gets a Variable with the given id
 */
-func (a *Client) GetUsingGET5(params *GetUsingGET5Params, opts ...ClientOption) (*GetUsingGET5OK, error) {
+func (a *Client) GetVariableByIDUsingGET(params *GetVariableByIDUsingGETParams, opts ...ClientOption) (*GetVariableByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetUsingGET5Params()
+		params = NewGetVariableByIDUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getUsingGET_5",
+		ID:                 "getVariableByIdUsingGET",
 		Method:             "GET",
 		PathPattern:        "/codestream/api/variables/{id}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetUsingGET5Reader{formats: a.formats},
+		Reader:             &GetVariableByIDUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -239,35 +239,35 @@ func (a *Client) GetUsingGET5(params *GetUsingGET5Params, opts ...ClientOption) 
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetUsingGET5OK)
+	success, ok := result.(*GetVariableByIDUsingGETOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getUsingGET_5: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getVariableByIdUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetUsingGET6 gets a variable by project and name
+  GetVariableByNameUsingGET gets a variable by project and name
 
   Get an Variable with the given project and name
 */
-func (a *Client) GetUsingGET6(params *GetUsingGET6Params, opts ...ClientOption) (*GetUsingGET6OK, error) {
+func (a *Client) GetVariableByNameUsingGET(params *GetVariableByNameUsingGETParams, opts ...ClientOption) (*GetVariableByNameUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetUsingGET6Params()
+		params = NewGetVariableByNameUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getUsingGET_6",
+		ID:                 "getVariableByNameUsingGET",
 		Method:             "GET",
 		PathPattern:        "/codestream/api/variables/{project}/{name}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetUsingGET6Reader{formats: a.formats},
+		Reader:             &GetVariableByNameUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -279,35 +279,35 @@ func (a *Client) GetUsingGET6(params *GetUsingGET6Params, opts ...ClientOption) 
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetUsingGET6OK)
+	success, ok := result.(*GetVariableByNameUsingGETOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getUsingGET_6: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getVariableByNameUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  UpdateUsingPUT4 updates a variable by id
+  UpdateVariableByIDUsingPUT updates a variable by id
 
   Updates a Variable with the given id
 */
-func (a *Client) UpdateUsingPUT4(params *UpdateUsingPUT4Params, opts ...ClientOption) (*UpdateUsingPUT4OK, error) {
+func (a *Client) UpdateVariableByIDUsingPUT(params *UpdateVariableByIDUsingPUTParams, opts ...ClientOption) (*UpdateVariableByIDUsingPUTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewUpdateUsingPUT4Params()
+		params = NewUpdateVariableByIDUsingPUTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "updateUsingPUT_4",
+		ID:                 "updateVariableByIdUsingPUT",
 		Method:             "PUT",
 		PathPattern:        "/codestream/api/variables/{id}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &UpdateUsingPUT4Reader{formats: a.formats},
+		Reader:             &UpdateVariableByIDUsingPUTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -319,35 +319,35 @@ func (a *Client) UpdateUsingPUT4(params *UpdateUsingPUT4Params, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*UpdateUsingPUT4OK)
+	success, ok := result.(*UpdateVariableByIDUsingPUTOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateUsingPUT_4: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for updateVariableByIdUsingPUT: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  UpdateUsingPUT5 updates a variable by project and name
+  UpdateVariableByNameUsingPUT updates a variable by project and name
 
   Update an Variable with the given project and name
 */
-func (a *Client) UpdateUsingPUT5(params *UpdateUsingPUT5Params, opts ...ClientOption) (*UpdateUsingPUT5OK, error) {
+func (a *Client) UpdateVariableByNameUsingPUT(params *UpdateVariableByNameUsingPUTParams, opts ...ClientOption) (*UpdateVariableByNameUsingPUTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewUpdateUsingPUT5Params()
+		params = NewUpdateVariableByNameUsingPUTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "updateUsingPUT_5",
+		ID:                 "updateVariableByNameUsingPUT",
 		Method:             "PUT",
 		PathPattern:        "/codestream/api/variables/{project}/{name}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &UpdateUsingPUT5Reader{formats: a.formats},
+		Reader:             &UpdateVariableByNameUsingPUTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -359,13 +359,13 @@ func (a *Client) UpdateUsingPUT5(params *UpdateUsingPUT5Params, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*UpdateUsingPUT5OK)
+	success, ok := result.(*UpdateVariableByNameUsingPUTOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateUsingPUT_5: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for updateVariableByNameUsingPUT: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

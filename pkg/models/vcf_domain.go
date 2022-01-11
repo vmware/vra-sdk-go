@@ -71,6 +71,8 @@ func (m *VcfDomain) validateNsxResource(formats strfmt.Registry) error {
 		if err := m.NsxResource.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("nsxResource")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("nsxResource")
 			}
 			return err
 		}
@@ -136,6 +138,8 @@ func (m *VcfDomain) validateVsphere(formats strfmt.Registry) error {
 		if err := m.Vsphere.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("vsphere")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vsphere")
 			}
 			return err
 		}
@@ -168,6 +172,8 @@ func (m *VcfDomain) contextValidateNsxResource(ctx context.Context, formats strf
 		if err := m.NsxResource.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("nsxResource")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("nsxResource")
 			}
 			return err
 		}
@@ -182,6 +188,8 @@ func (m *VcfDomain) contextValidateVsphere(ctx context.Context, formats strfmt.R
 		if err := m.Vsphere.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("vsphere")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("vsphere")
 			}
 			return err
 		}

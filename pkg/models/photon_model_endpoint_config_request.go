@@ -94,6 +94,8 @@ func (m *PhotonModelEndpointConfigRequest) validateCustomProperties(formats strf
 		if err := m.CustomProperties.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("customProperties")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("customProperties")
 			}
 			return err
 		}
@@ -111,6 +113,8 @@ func (m *PhotonModelEndpointConfigRequest) validateEndpointProperties(formats st
 		if err := m.EndpointProperties.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("endpointProperties")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("endpointProperties")
 			}
 			return err
 		}
@@ -176,6 +180,8 @@ func (m *PhotonModelEndpointConfigRequest) validateResourceReference(formats str
 		if err := m.ResourceReference.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("resourceReference")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resourceReference")
 			}
 			return err
 		}
@@ -193,6 +199,8 @@ func (m *PhotonModelEndpointConfigRequest) validateTaskReference(formats strfmt.
 		if err := m.TaskReference.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("taskReference")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("taskReference")
 			}
 			return err
 		}
@@ -233,6 +241,8 @@ func (m *PhotonModelEndpointConfigRequest) contextValidateCustomProperties(ctx c
 		if err := m.CustomProperties.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("customProperties")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("customProperties")
 			}
 			return err
 		}
@@ -247,6 +257,8 @@ func (m *PhotonModelEndpointConfigRequest) contextValidateEndpointProperties(ctx
 		if err := m.EndpointProperties.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("endpointProperties")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("endpointProperties")
 			}
 			return err
 		}
@@ -261,6 +273,8 @@ func (m *PhotonModelEndpointConfigRequest) contextValidateResourceReference(ctx 
 		if err := m.ResourceReference.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("resourceReference")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("resourceReference")
 			}
 			return err
 		}
@@ -275,6 +289,8 @@ func (m *PhotonModelEndpointConfigRequest) contextValidateTaskReference(ctx cont
 		if err := m.TaskReference.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("taskReference")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("taskReference")
 			}
 			return err
 		}

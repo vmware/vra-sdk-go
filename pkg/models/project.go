@@ -80,6 +80,9 @@ type Project interface {
 	SharedResources() bool
 	SetSharedResources(bool)
 
+	Supervisors() []Principal
+	SetSupervisors([]Principal)
+
 	Viewers() []Principal
 	SetViewers([]Principal)
 
@@ -109,6 +112,8 @@ type project struct {
 	propertiesField map[string]string
 
 	sharedResourcesField bool
+
+	supervisorsField []Principal
 
 	viewersField []Principal
 }
@@ -223,6 +228,16 @@ func (m *project) SetSharedResources(val bool) {
 	m.sharedResourcesField = val
 }
 
+// Supervisors gets the supervisors of this polymorphic type
+func (m *project) Supervisors() []Principal {
+	return m.supervisorsField
+}
+
+// SetSupervisors sets the supervisors of this polymorphic type
+func (m *project) SetSupervisors(val []Principal) {
+	m.supervisorsField = val
+}
+
 // Viewers gets the viewers of this polymorphic type
 func (m *project) Viewers() []Principal {
 	return m.viewersField
@@ -309,6 +324,10 @@ func (m *project) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateSupervisors(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateViewers(formats); err != nil {
 		res = append(res, err)
 	}
@@ -329,6 +348,8 @@ func (m *project) validateAdministrators(formats strfmt.Registry) error {
 		if err := m.administratorsField[i].Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("administrators" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("administrators" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -350,6 +371,11 @@ func (m *project) validateConstraints(formats strfmt.Registry) error {
 		}
 		if val, ok := m.Constraints()[k]; ok {
 			if err := val.Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("constraints" + "." + k)
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("constraints" + "." + k)
+				}
 				return err
 			}
 		}
@@ -367,6 +393,8 @@ func (m *project) validateCost(formats strfmt.Registry) error {
 	if err := m.Cost().Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("cost")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("cost")
 		}
 		return err
 	}
@@ -384,6 +412,29 @@ func (m *project) validateMembers(formats strfmt.Registry) error {
 		if err := m.membersField[i].Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("members" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("members" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *project) validateSupervisors(formats strfmt.Registry) error {
+	if swag.IsZero(m.Supervisors()) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Supervisors()); i++ {
+
+		if err := m.supervisorsField[i].Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("supervisors" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("supervisors" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -403,6 +454,8 @@ func (m *project) validateViewers(formats strfmt.Registry) error {
 		if err := m.viewersField[i].Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("viewers" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("viewers" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -432,6 +485,10 @@ func (m *project) ContextValidate(ctx context.Context, formats strfmt.Registry) 
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateSupervisors(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateViewers(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -449,6 +506,8 @@ func (m *project) contextValidateAdministrators(ctx context.Context, formats str
 		if err := m.administratorsField[i].ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("administrators" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("administrators" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -478,6 +537,8 @@ func (m *project) contextValidateCost(ctx context.Context, formats strfmt.Regist
 	if err := m.Cost().ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("cost")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("cost")
 		}
 		return err
 	}
@@ -492,6 +553,26 @@ func (m *project) contextValidateMembers(ctx context.Context, formats strfmt.Reg
 		if err := m.membersField[i].ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("members" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("members" + "." + strconv.Itoa(i))
+			}
+			return err
+		}
+
+	}
+
+	return nil
+}
+
+func (m *project) contextValidateSupervisors(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Supervisors()); i++ {
+
+		if err := m.supervisorsField[i].ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("supervisors" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("supervisors" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -508,6 +589,8 @@ func (m *project) contextValidateViewers(ctx context.Context, formats strfmt.Reg
 		if err := m.viewersField[i].ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("viewers" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("viewers" + "." + strconv.Itoa(i))
 			}
 			return err
 		}

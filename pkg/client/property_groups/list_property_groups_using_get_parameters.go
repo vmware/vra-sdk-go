@@ -68,7 +68,7 @@ type ListPropertyGroupsUsingGETParams struct {
 
 	/* DollarSelect.
 
-	   Fields to include . Use * to get all fields.
+	   Fields to include.
 	*/
 	DollarSelect []string
 

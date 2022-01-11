@@ -54,6 +54,8 @@ func (m *TagBasedMeteringItem) validateTagBasedMeterings(formats strfmt.Registry
 			if err := m.TagBasedMeterings[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tagBasedMeterings" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tagBasedMeterings" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -86,6 +88,8 @@ func (m *TagBasedMeteringItem) contextValidateTagBasedMeterings(ctx context.Cont
 			if err := m.TagBasedMeterings[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tagBasedMeterings" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tagBasedMeterings" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

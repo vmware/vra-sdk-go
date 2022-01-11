@@ -34,6 +34,8 @@ type ClientService interface {
 
 	GetFabricVSphereDatastores(params *GetFabricVSphereDatastoresParams, opts ...ClientOption) (*GetFabricVSphereDatastoresOK, error)
 
+	UpdateFabricVsphereDatastore(params *UpdateFabricVsphereDatastoreParams, opts ...ClientOption) (*UpdateFabricVsphereDatastoreOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
 }
 
@@ -114,6 +116,46 @@ func (a *Client) GetFabricVSphereDatastores(params *GetFabricVSphereDatastoresPa
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getFabricVSphereDatastores: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UpdateFabricVsphereDatastore updates fabric v sphere datastore
+
+  Update Fabric vSphere Datastore. Only tag updates are supported.
+*/
+func (a *Client) UpdateFabricVsphereDatastore(params *UpdateFabricVsphereDatastoreParams, opts ...ClientOption) (*UpdateFabricVsphereDatastoreOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateFabricVsphereDatastoreParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "updateFabricVsphereDatastore",
+		Method:             "PATCH",
+		PathPattern:        "/iaas/api/fabric-vsphere-datastores/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateFabricVsphereDatastoreReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateFabricVsphereDatastoreOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateFabricVsphereDatastore: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

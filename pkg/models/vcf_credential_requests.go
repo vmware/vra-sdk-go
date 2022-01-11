@@ -51,6 +51,8 @@ func (m *VcfCredentialRequests) validateCredentials(formats strfmt.Registry) err
 			if err := m.Credentials[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("credentials" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("credentials" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -83,6 +85,8 @@ func (m *VcfCredentialRequests) contextValidateCredentials(ctx context.Context, 
 			if err := m.Credentials[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("credentials" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("credentials" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

@@ -25,19 +25,21 @@ type CloudAccountVmcSpecification struct {
 	AcceptSelfSignedCertificate bool `json:"acceptSelfSignedCertificate,omitempty"`
 
 	// VMC API access key
-	APIKey string `json:"apiKey,omitempty"`
+	// Required: true
+	APIKey *string `json:"apiKey"`
+
+	// Certificate for a cloud account.
+	// Example: {\"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDHjCCAoegAwIBAgIBATANBgkqhkiG9w0BAQsFADCBpjEUMBIGA1UEChMLVk13\\nYXJlIEluYAAc1pw18GT3iAqQRPx0PrjzJhgjIJMla\\n/1Kg4byY4FPSacNiRgY/FG2bPCqZk1yRfzmkFYCW/vU+Dg==\\n-----END CERTIFICATE-----\\n-\"}
+	CertificateInfo *CertificateInfoSpecification `json:"certificateInfo,omitempty"`
 
 	// Create default cloud zones for the enabled regions.
 	// Example: true
 	CreateDefaultZones bool `json:"createDefaultZones,omitempty"`
 
-	// The host name of the CSP service.
-	// Example: console-stg.cloud.vmware.com
-	CspHostName string `json:"cspHostName,omitempty"`
-
 	// Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors
 	// Example: 23959a1e-18bc-4f0c-ac49-b5aeb4b6eef4
-	DcID string `json:"dcId,omitempty"`
+	// Required: true
+	DcID *string `json:"dcId"`
 
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
@@ -61,18 +63,15 @@ type CloudAccountVmcSpecification struct {
 	// Required: true
 	Password *string `json:"password"`
 
-	// A set of Region names to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration. Deprecated - use regions to define enabled regions.
-	// Example: [ \"us-east-1\", \"ap-northeast-1\" ]
-	// Required: true
-	RegionIds []string `json:"regionIds"`
-
-	// A set of regions to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration.
+	// A set of regions to enable provisioning on.Refer to /iaas/api/cloud-accounts/region-enumeration.
 	// Example: [{ \"name\": \"Datacenter:datacenter-3\",\"externalRegionId\": \"Datacenter:datacenter-3\"}]
+	// Required: true
 	Regions []*RegionSpecification `json:"regions"`
 
 	// Identifier of the on-premise SDDC to be used by this cloud account. Note that NSX-V SDDCs are not supported.
 	// Example: CMBU-PRD-NSXT-M8GA-090319
-	SddcID string `json:"sddcId,omitempty"`
+	// Required: true
+	SddcID *string `json:"sddcId"`
 
 	// A set of tag keys and optional values to set on the Cloud Account.Cloud account capability tags may enable different features.
 	// Example: [ { \"key\" : \"env\", \"value\": \"dev\" } ]
@@ -87,6 +86,18 @@ type CloudAccountVmcSpecification struct {
 // Validate validates this cloud account vmc specification
 func (m *CloudAccountVmcSpecification) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateAPIKey(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateCertificateInfo(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDcID(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateHostName(formats); err != nil {
 		res = append(res, err)
@@ -104,11 +115,11 @@ func (m *CloudAccountVmcSpecification) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateRegionIds(formats); err != nil {
+	if err := m.validateRegions(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateRegions(formats); err != nil {
+	if err := m.validateSddcID(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -123,6 +134,43 @@ func (m *CloudAccountVmcSpecification) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *CloudAccountVmcSpecification) validateAPIKey(formats strfmt.Registry) error {
+
+	if err := validate.Required("apiKey", "body", m.APIKey); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *CloudAccountVmcSpecification) validateCertificateInfo(formats strfmt.Registry) error {
+	if swag.IsZero(m.CertificateInfo) { // not required
+		return nil
+	}
+
+	if m.CertificateInfo != nil {
+		if err := m.CertificateInfo.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("certificateInfo")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("certificateInfo")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CloudAccountVmcSpecification) validateDcID(formats strfmt.Registry) error {
+
+	if err := validate.Required("dcId", "body", m.DcID); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -162,18 +210,10 @@ func (m *CloudAccountVmcSpecification) validatePassword(formats strfmt.Registry)
 	return nil
 }
 
-func (m *CloudAccountVmcSpecification) validateRegionIds(formats strfmt.Registry) error {
-
-	if err := validate.Required("regionIds", "body", m.RegionIds); err != nil {
-		return err
-	}
-
-	return nil
-}
-
 func (m *CloudAccountVmcSpecification) validateRegions(formats strfmt.Registry) error {
-	if swag.IsZero(m.Regions) { // not required
-		return nil
+
+	if err := validate.Required("regions", "body", m.Regions); err != nil {
+		return err
 	}
 
 	for i := 0; i < len(m.Regions); i++ {
@@ -185,11 +225,22 @@ func (m *CloudAccountVmcSpecification) validateRegions(formats strfmt.Registry) 
 			if err := m.Regions[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("regions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("regions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *CloudAccountVmcSpecification) validateSddcID(formats strfmt.Registry) error {
+
+	if err := validate.Required("sddcId", "body", m.SddcID); err != nil {
+		return err
 	}
 
 	return nil
@@ -209,6 +260,8 @@ func (m *CloudAccountVmcSpecification) validateTags(formats strfmt.Registry) err
 			if err := m.Tags[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -232,6 +285,10 @@ func (m *CloudAccountVmcSpecification) validateUsername(formats strfmt.Registry)
 func (m *CloudAccountVmcSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateCertificateInfo(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateRegions(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -246,6 +303,22 @@ func (m *CloudAccountVmcSpecification) ContextValidate(ctx context.Context, form
 	return nil
 }
 
+func (m *CloudAccountVmcSpecification) contextValidateCertificateInfo(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.CertificateInfo != nil {
+		if err := m.CertificateInfo.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("certificateInfo")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("certificateInfo")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *CloudAccountVmcSpecification) contextValidateRegions(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.Regions); i++ {
@@ -254,6 +327,8 @@ func (m *CloudAccountVmcSpecification) contextValidateRegions(ctx context.Contex
 			if err := m.Regions[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("regions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("regions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -272,6 +347,8 @@ func (m *CloudAccountVmcSpecification) contextValidateTags(ctx context.Context, 
 			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

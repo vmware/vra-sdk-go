@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewGetTagsParams creates a new GetTagsParams object,
@@ -58,6 +59,36 @@ func NewGetTagsParamsWithHTTPClient(client *http.Client) *GetTagsParams {
    Typically these are written to a http.Request.
 */
 type GetTagsParams struct {
+
+	/* DollarCount.
+
+	   Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.
+	*/
+	DollarCount *bool
+
+	/* DollarFilter.
+
+	   Filter the results by a specified predicate expression. Operators: eq, ne, and, or.
+	*/
+	DollarFilter *string
+
+	/* DollarSelect.
+
+	   Select a subset of properties to include in the response.
+	*/
+	DollarSelect *string
+
+	/* DollarSkip.
+
+	   Number of records you want to skip.
+	*/
+	DollarSkip *int64
+
+	/* DollarTop.
+
+	   Number of records you want to get.
+	*/
+	DollarTop *int64
 
 	/* APIVersion.
 
@@ -118,6 +149,61 @@ func (o *GetTagsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithDollarCount adds the dollarCount to the get tags params
+func (o *GetTagsParams) WithDollarCount(dollarCount *bool) *GetTagsParams {
+	o.SetDollarCount(dollarCount)
+	return o
+}
+
+// SetDollarCount adds the dollarCount to the get tags params
+func (o *GetTagsParams) SetDollarCount(dollarCount *bool) {
+	o.DollarCount = dollarCount
+}
+
+// WithDollarFilter adds the dollarFilter to the get tags params
+func (o *GetTagsParams) WithDollarFilter(dollarFilter *string) *GetTagsParams {
+	o.SetDollarFilter(dollarFilter)
+	return o
+}
+
+// SetDollarFilter adds the dollarFilter to the get tags params
+func (o *GetTagsParams) SetDollarFilter(dollarFilter *string) {
+	o.DollarFilter = dollarFilter
+}
+
+// WithDollarSelect adds the dollarSelect to the get tags params
+func (o *GetTagsParams) WithDollarSelect(dollarSelect *string) *GetTagsParams {
+	o.SetDollarSelect(dollarSelect)
+	return o
+}
+
+// SetDollarSelect adds the dollarSelect to the get tags params
+func (o *GetTagsParams) SetDollarSelect(dollarSelect *string) {
+	o.DollarSelect = dollarSelect
+}
+
+// WithDollarSkip adds the dollarSkip to the get tags params
+func (o *GetTagsParams) WithDollarSkip(dollarSkip *int64) *GetTagsParams {
+	o.SetDollarSkip(dollarSkip)
+	return o
+}
+
+// SetDollarSkip adds the dollarSkip to the get tags params
+func (o *GetTagsParams) SetDollarSkip(dollarSkip *int64) {
+	o.DollarSkip = dollarSkip
+}
+
+// WithDollarTop adds the dollarTop to the get tags params
+func (o *GetTagsParams) WithDollarTop(dollarTop *int64) *GetTagsParams {
+	o.SetDollarTop(dollarTop)
+	return o
+}
+
+// SetDollarTop adds the dollarTop to the get tags params
+func (o *GetTagsParams) SetDollarTop(dollarTop *int64) {
+	o.DollarTop = dollarTop
+}
+
 // WithAPIVersion adds the aPIVersion to the get tags params
 func (o *GetTagsParams) WithAPIVersion(aPIVersion string) *GetTagsParams {
 	o.SetAPIVersion(aPIVersion)
@@ -136,6 +222,91 @@ func (o *GetTagsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Regis
 		return err
 	}
 	var res []error
+
+	if o.DollarCount != nil {
+
+		// query param $count
+		var qrDollarCount bool
+
+		if o.DollarCount != nil {
+			qrDollarCount = *o.DollarCount
+		}
+		qDollarCount := swag.FormatBool(qrDollarCount)
+		if qDollarCount != "" {
+
+			if err := r.SetQueryParam("$count", qDollarCount); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.DollarFilter != nil {
+
+		// query param $filter
+		var qrDollarFilter string
+
+		if o.DollarFilter != nil {
+			qrDollarFilter = *o.DollarFilter
+		}
+		qDollarFilter := qrDollarFilter
+		if qDollarFilter != "" {
+
+			if err := r.SetQueryParam("$filter", qDollarFilter); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.DollarSelect != nil {
+
+		// query param $select
+		var qrDollarSelect string
+
+		if o.DollarSelect != nil {
+			qrDollarSelect = *o.DollarSelect
+		}
+		qDollarSelect := qrDollarSelect
+		if qDollarSelect != "" {
+
+			if err := r.SetQueryParam("$select", qDollarSelect); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.DollarSkip != nil {
+
+		// query param $skip
+		var qrDollarSkip int64
+
+		if o.DollarSkip != nil {
+			qrDollarSkip = *o.DollarSkip
+		}
+		qDollarSkip := swag.FormatInt64(qrDollarSkip)
+		if qDollarSkip != "" {
+
+			if err := r.SetQueryParam("$skip", qDollarSkip); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.DollarTop != nil {
+
+		// query param $top
+		var qrDollarTop int64
+
+		if o.DollarTop != nil {
+			qrDollarTop = *o.DollarTop
+		}
+		qDollarTop := swag.FormatInt64(qrDollarTop)
+		if qDollarTop != "" {
+
+			if err := r.SetQueryParam("$top", qDollarTop); err != nil {
+				return err
+			}
+		}
+	}
 
 	// query param apiVersion
 	qrAPIVersion := o.APIVersion

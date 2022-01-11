@@ -202,7 +202,7 @@ func (a *Client) DeleteMachineSnapshot(params *DeleteMachineSnapshotParams, opts
 	op := &runtime.ClientOperation{
 		ID:                 "deleteMachineSnapshot",
 		Method:             "DELETE",
-		PathPattern:        "/iaas/api/machines/{id}/snapshots/{id1}",
+		PathPattern:        "/iaas/api/machines/{id}/snapshots/{snapshotId}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -282,7 +282,7 @@ func (a *Client) GetMachineSnapshot(params *GetMachineSnapshotParams, opts ...Cl
 	op := &runtime.ClientOperation{
 		ID:                 "getMachineSnapshot",
 		Method:             "GET",
-		PathPattern:        "/iaas/api/machines/{id}/snapshots/{id1}",
+		PathPattern:        "/iaas/api/machines/{id}/snapshots/{snapshotId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -642,7 +642,7 @@ func (a *Client) RevertMachineSnapshot(params *RevertMachineSnapshotParams, opts
 	op := &runtime.ClientOperation{
 		ID:                 "revertMachineSnapshot",
 		Method:             "POST",
-		PathPattern:        "/iaas/api/machines/{machineId}/operations/revert",
+		PathPattern:        "/iaas/api/machines/{id}/operations/revert/{snapshotId}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},

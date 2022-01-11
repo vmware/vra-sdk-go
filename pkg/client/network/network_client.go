@@ -44,6 +44,8 @@ type ClientService interface {
 
 	GetNetworks(params *GetNetworksParams, opts ...ClientOption) (*GetNetworksOK, error)
 
+	PatchMachineNetworkInterface(params *PatchMachineNetworkInterfaceParams, opts ...ClientOption) (*PatchMachineNetworkInterfaceOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
 }
 
@@ -140,7 +142,7 @@ func (a *Client) GetMachineNetworkInterface(params *GetMachineNetworkInterfacePa
 	op := &runtime.ClientOperation{
 		ID:                 "getMachineNetworkInterface",
 		Method:             "GET",
-		PathPattern:        "/iaas/api/machines/{id}/network-interfaces/{id1}",
+		PathPattern:        "/iaas/api/machines/{id}/network-interfaces/{networkId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -324,6 +326,46 @@ func (a *Client) GetNetworks(params *GetNetworksParams, opts ...ClientOption) (*
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getNetworks: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  PatchMachineNetworkInterface patches machine network interface
+
+  Patch network interface with a given id for specific machine. Only name, description, IPv4 address and custom property updates are supported. The change to name and IPv4 address will not propagate to cloud endpoint for provisioned machines.
+*/
+func (a *Client) PatchMachineNetworkInterface(params *PatchMachineNetworkInterfaceParams, opts ...ClientOption) (*PatchMachineNetworkInterfaceOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchMachineNetworkInterfaceParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchMachineNetworkInterface",
+		Method:             "PATCH",
+		PathPattern:        "/iaas/api/machines/{id}/network-interfaces/{networkId}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchMachineNetworkInterfaceReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchMachineNetworkInterfaceOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchMachineNetworkInterface: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

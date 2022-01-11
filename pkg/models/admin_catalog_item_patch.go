@@ -26,6 +26,9 @@ type AdminCatalogItemPatch struct {
 	// Minimum: -128
 	BulkRequestLimit *int32 `json:"bulkRequestLimit,omitempty"`
 
+	// form id
+	FormID string `json:"formId,omitempty"`
+
 	// icon id
 	IconID string `json:"iconId,omitempty"`
 }

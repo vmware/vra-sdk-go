@@ -80,12 +80,8 @@ type Machine struct {
 	Name string `json:"name,omitempty"`
 
 	// The id of the organization this entity belongs to.
-	// Example: 9e49
+	// Example: 42413b31-1716-477e-9a88-9dc1c3cb1cdf
 	OrgID string `json:"orgId,omitempty"`
-
-	// This field is deprecated. Use orgId instead. The id of the organization this entity belongs to.
-	// Example: deprecated
-	OrganizationID string `json:"organizationId,omitempty"`
 
 	// Email of the user that owns the entity.
 	// Example: csp@vmware.com
@@ -101,7 +97,14 @@ type Machine struct {
 	// Example: 9e49
 	ProjectID string `json:"projectId,omitempty"`
 
-	// Settings to apply salt configuration on the provisioned machine.
+	// The provisioning status of the resource. One of three provisioning statuses.
+	// `PROVISIONING`: The resource is being provisioned.
+	// `READY`: The resource is already provisioned.
+	// `SUSPEND`: The resource is being destroyed.
+	//
+	ProvisioningStatus string `json:"provisioningStatus,omitempty"`
+
+	// Salt configuration on the machine
 	SaltConfiguration *SaltConfiguration `json:"saltConfiguration,omitempty"`
 
 	// A set of tag keys and optional values that were set on this resource.
@@ -172,6 +175,11 @@ func (m *Machine) validateLinks(formats strfmt.Registry) error {
 		}
 		if val, ok := m.Links[k]; ok {
 			if err := val.Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("_links" + "." + k)
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("_links" + "." + k)
+				}
 				return err
 			}
 		}
@@ -190,6 +198,8 @@ func (m *Machine) validateBootConfig(formats strfmt.Registry) error {
 		if err := m.BootConfig.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("bootConfig")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bootConfig")
 			}
 			return err
 		}
@@ -298,6 +308,8 @@ func (m *Machine) validateSaltConfiguration(formats strfmt.Registry) error {
 		if err := m.SaltConfiguration.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("saltConfiguration")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("saltConfiguration")
 			}
 			return err
 		}
@@ -320,6 +332,8 @@ func (m *Machine) validateTags(formats strfmt.Registry) error {
 			if err := m.Tags[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -381,6 +395,8 @@ func (m *Machine) contextValidateBootConfig(ctx context.Context, formats strfmt.
 		if err := m.BootConfig.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("bootConfig")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bootConfig")
 			}
 			return err
 		}
@@ -395,6 +411,8 @@ func (m *Machine) contextValidateSaltConfiguration(ctx context.Context, formats 
 		if err := m.SaltConfiguration.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("saltConfiguration")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("saltConfiguration")
 			}
 			return err
 		}
@@ -411,6 +429,8 @@ func (m *Machine) contextValidateTags(ctx context.Context, formats strfmt.Regist
 			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

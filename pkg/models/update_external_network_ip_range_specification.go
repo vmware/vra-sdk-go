@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // UpdateExternalNetworkIPRangeSpecification Specification for updating an ExternalNetworkIPRange
@@ -17,15 +19,34 @@ import (
 // swagger:model UpdateExternalNetworkIPRangeSpecification
 type UpdateExternalNetworkIPRangeSpecification struct {
 
-	// Deprecated. Use 'fabricNetworkIds'.
-	FabricNetworkID string `json:"fabricNetworkId,omitempty"`
-
 	// A list of fabric network Ids that this IP range should be associated with.
+	// Unique: true
 	FabricNetworkIds []string `json:"fabricNetworkIds"`
 }
 
 // Validate validates this update external network IP range specification
 func (m *UpdateExternalNetworkIPRangeSpecification) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateFabricNetworkIds(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *UpdateExternalNetworkIPRangeSpecification) validateFabricNetworkIds(formats strfmt.Registry) error {
+	if swag.IsZero(m.FabricNetworkIds) { // not required
+		return nil
+	}
+
+	if err := validate.UniqueItems("fabricNetworkIds", "body", m.FabricNetworkIds); err != nil {
+		return err
+	}
+
 	return nil
 }
 

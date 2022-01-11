@@ -51,6 +51,8 @@ func (m *VcfDomains) validateDomains(formats strfmt.Registry) error {
 			if err := m.Domains[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("domains" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("domains" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -83,6 +85,8 @@ func (m *VcfDomains) contextValidateDomains(ctx context.Context, formats strfmt.
 			if err := m.Domains[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("domains" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("domains" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

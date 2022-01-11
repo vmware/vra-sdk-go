@@ -48,6 +48,8 @@ func (m *NamedMetering) validateMetering(formats strfmt.Registry) error {
 		if err := m.Metering.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("metering")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("metering")
 			}
 			return err
 		}
@@ -76,6 +78,8 @@ func (m *NamedMetering) contextValidateMetering(ctx context.Context, formats str
 		if err := m.Metering.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("metering")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("metering")
 			}
 			return err
 		}

@@ -65,17 +65,17 @@ type DeleteMachineDiskParams struct {
 	*/
 	APIVersion *string
 
+	/* DiskID.
+
+	   The ID of the disk.
+	*/
+	DiskID string
+
 	/* ID.
 
 	   The ID of the machine.
 	*/
 	ID string
-
-	/* Id1.
-
-	   The ID of the disk.
-	*/
-	Id1 string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -141,6 +141,17 @@ func (o *DeleteMachineDiskParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
+// WithDiskID adds the diskID to the delete machine disk params
+func (o *DeleteMachineDiskParams) WithDiskID(diskID string) *DeleteMachineDiskParams {
+	o.SetDiskID(diskID)
+	return o
+}
+
+// SetDiskID adds the diskId to the delete machine disk params
+func (o *DeleteMachineDiskParams) SetDiskID(diskID string) {
+	o.DiskID = diskID
+}
+
 // WithID adds the id to the delete machine disk params
 func (o *DeleteMachineDiskParams) WithID(id string) *DeleteMachineDiskParams {
 	o.SetID(id)
@@ -150,17 +161,6 @@ func (o *DeleteMachineDiskParams) WithID(id string) *DeleteMachineDiskParams {
 // SetID adds the id to the delete machine disk params
 func (o *DeleteMachineDiskParams) SetID(id string) {
 	o.ID = id
-}
-
-// WithId1 adds the id1 to the delete machine disk params
-func (o *DeleteMachineDiskParams) WithId1(id1 string) *DeleteMachineDiskParams {
-	o.SetId1(id1)
-	return o
-}
-
-// SetId1 adds the id1 to the delete machine disk params
-func (o *DeleteMachineDiskParams) SetId1(id1 string) {
-	o.Id1 = id1
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -188,13 +188,13 @@ func (o *DeleteMachineDiskParams) WriteToRequest(r runtime.ClientRequest, reg st
 		}
 	}
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
+	// path param diskId
+	if err := r.SetPathParam("diskId", o.DiskID); err != nil {
 		return err
 	}
 
-	// path param id1
-	if err := r.SetPathParam("id1", o.Id1); err != nil {
+	// path param id
+	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
 	}
 

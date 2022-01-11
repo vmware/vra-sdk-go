@@ -40,6 +40,9 @@ type CloudAccountVcf struct {
 	// Example: my-description
 	Description string `json:"description,omitempty"`
 
+	// A list of regions that are enabled for provisioning on this cloud account
+	EnabledRegions []*Region `json:"enabledRegions"`
+
 	// The id of this resource instance
 	// Example: 9e49
 	// Required: true
@@ -60,12 +63,8 @@ type CloudAccountVcf struct {
 	NsxUsername *string `json:"nsxUsername"`
 
 	// The id of the organization this entity belongs to.
-	// Example: 9e49
+	// Example: 42413b31-1716-477e-9a88-9dc1c3cb1cdf
 	OrgID string `json:"orgId,omitempty"`
-
-	// This field is deprecated. Use orgId instead. The id of the organization this entity belongs to.
-	// Example: deprecated
-	OrganizationID string `json:"organizationId,omitempty"`
 
 	// Email of the user that owns the entity.
 	// Example: csp@vmware.com
@@ -110,6 +109,10 @@ func (m *CloudAccountVcf) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateLinks(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEnabledRegions(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -168,6 +171,37 @@ func (m *CloudAccountVcf) validateLinks(formats strfmt.Registry) error {
 		}
 		if val, ok := m.Links[k]; ok {
 			if err := val.Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("_links" + "." + k)
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("_links" + "." + k)
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CloudAccountVcf) validateEnabledRegions(formats strfmt.Registry) error {
+	if swag.IsZero(m.EnabledRegions) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.EnabledRegions); i++ {
+		if swag.IsZero(m.EnabledRegions[i]) { // not required
+			continue
+		}
+
+		if m.EnabledRegions[i] != nil {
+			if err := m.EnabledRegions[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("enabledRegions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("enabledRegions" + "." + strconv.Itoa(i))
+				}
 				return err
 			}
 		}
@@ -227,6 +261,8 @@ func (m *CloudAccountVcf) validateTags(formats strfmt.Registry) error {
 			if err := m.Tags[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -281,6 +317,10 @@ func (m *CloudAccountVcf) ContextValidate(ctx context.Context, formats strfmt.Re
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateEnabledRegions(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateTags(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -310,6 +350,26 @@ func (m *CloudAccountVcf) contextValidateLinks(ctx context.Context, formats strf
 	return nil
 }
 
+func (m *CloudAccountVcf) contextValidateEnabledRegions(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.EnabledRegions); i++ {
+
+		if m.EnabledRegions[i] != nil {
+			if err := m.EnabledRegions[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("enabledRegions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("enabledRegions" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *CloudAccountVcf) contextValidateTags(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.Tags); i++ {
@@ -318,6 +378,8 @@ func (m *CloudAccountVcf) contextValidateTags(ctx context.Context, formats strfm
 			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

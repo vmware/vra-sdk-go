@@ -33,7 +33,8 @@ type Resource struct {
 	Deployment *DeploymentReference `json:"deployment,omitempty"`
 
 	// Resource deployment id
-	DeploymentID string `json:"deploymentId,omitempty"`
+	// Format: uuid
+	DeploymentID strfmt.UUID `json:"deploymentId,omitempty"`
 
 	// A description of the resource
 	Description string `json:"description,omitempty"`
@@ -54,7 +55,7 @@ type Resource struct {
 	OrgID string `json:"orgId,omitempty"`
 
 	// Origin of the resource
-	// Enum: [ONBOARDED MIGRATED]
+	// Enum: [DISCOVERED ONBOARDED MIGRATED]
 	Origin string `json:"origin,omitempty"`
 
 	// Project to which resource's deployment belongs
@@ -88,6 +89,10 @@ func (m *Resource) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateDeployment(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDeploymentID(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -146,6 +151,8 @@ func (m *Resource) validateCurrentRequest(formats strfmt.Registry) error {
 		if err := m.CurrentRequest.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("currentRequest")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("currentRequest")
 			}
 			return err
 		}
@@ -163,9 +170,23 @@ func (m *Resource) validateDeployment(formats strfmt.Registry) error {
 		if err := m.Deployment.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("deployment")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("deployment")
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *Resource) validateDeploymentID(formats strfmt.Registry) error {
+	if swag.IsZero(m.DeploymentID) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("deploymentId", "body", "uuid", m.DeploymentID.String(), formats); err != nil {
+		return err
 	}
 
 	return nil
@@ -180,6 +201,8 @@ func (m *Resource) validateExpense(formats strfmt.Registry) error {
 		if err := m.Expense.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("expense")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("expense")
 			}
 			return err
 		}
@@ -213,7 +236,7 @@ var resourceTypeOriginPropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["ONBOARDED","MIGRATED"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["DISCOVERED","ONBOARDED","MIGRATED"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -222,6 +245,9 @@ func init() {
 }
 
 const (
+
+	// ResourceOriginDISCOVERED captures enum value "DISCOVERED"
+	ResourceOriginDISCOVERED string = "DISCOVERED"
 
 	// ResourceOriginONBOARDED captures enum value "ONBOARDED"
 	ResourceOriginONBOARDED string = "ONBOARDED"
@@ -260,6 +286,8 @@ func (m *Resource) validateProject(formats strfmt.Registry) error {
 		if err := m.Project.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("project")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("project")
 			}
 			return err
 		}
@@ -354,6 +382,8 @@ func (m *Resource) contextValidateCurrentRequest(ctx context.Context, formats st
 		if err := m.CurrentRequest.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("currentRequest")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("currentRequest")
 			}
 			return err
 		}
@@ -368,6 +398,8 @@ func (m *Resource) contextValidateDeployment(ctx context.Context, formats strfmt
 		if err := m.Deployment.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("deployment")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("deployment")
 			}
 			return err
 		}
@@ -382,6 +414,8 @@ func (m *Resource) contextValidateExpense(ctx context.Context, formats strfmt.Re
 		if err := m.Expense.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("expense")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("expense")
 			}
 			return err
 		}
@@ -396,6 +430,8 @@ func (m *Resource) contextValidateProject(ctx context.Context, formats strfmt.Re
 		if err := m.Project.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("project")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("project")
 			}
 			return err
 		}

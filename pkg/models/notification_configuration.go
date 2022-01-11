@@ -168,6 +168,8 @@ func (m *notificationConfiguration) validateEmail(formats strfmt.Registry) error
 		if err := m.emailField[i].Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("email" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("email" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -187,6 +189,8 @@ func (m *notificationConfiguration) validateJira(formats strfmt.Registry) error 
 		if err := m.jiraField[i].Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("jira" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("jira" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -206,6 +210,8 @@ func (m *notificationConfiguration) validateWebhook(formats strfmt.Registry) err
 		if err := m.webhookField[i].Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("webhook" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("webhook" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -244,6 +250,8 @@ func (m *notificationConfiguration) contextValidateEmail(ctx context.Context, fo
 		if err := m.emailField[i].ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("email" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("email" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -260,6 +268,8 @@ func (m *notificationConfiguration) contextValidateJira(ctx context.Context, for
 		if err := m.jiraField[i].ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("jira" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("jira" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -276,6 +286,8 @@ func (m *notificationConfiguration) contextValidateWebhook(ctx context.Context, 
 		if err := m.webhookField[i].ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("webhook" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("webhook" + "." + strconv.Itoa(i))
 			}
 			return err
 		}

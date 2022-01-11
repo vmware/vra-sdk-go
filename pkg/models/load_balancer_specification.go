@@ -121,6 +121,8 @@ func (m *LoadBalancerSpecification) validateNics(formats strfmt.Registry) error 
 			if err := m.Nics[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("nics" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("nics" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -155,6 +157,8 @@ func (m *LoadBalancerSpecification) validateRoutes(formats strfmt.Registry) erro
 			if err := m.Routes[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("routes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("routes" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -179,6 +183,8 @@ func (m *LoadBalancerSpecification) validateTags(formats strfmt.Registry) error 
 			if err := m.Tags[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -219,6 +225,8 @@ func (m *LoadBalancerSpecification) contextValidateNics(ctx context.Context, for
 			if err := m.Nics[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("nics" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("nics" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -237,6 +245,8 @@ func (m *LoadBalancerSpecification) contextValidateRoutes(ctx context.Context, f
 			if err := m.Routes[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("routes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("routes" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -255,6 +265,8 @@ func (m *LoadBalancerSpecification) contextValidateTags(ctx context.Context, for
 			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

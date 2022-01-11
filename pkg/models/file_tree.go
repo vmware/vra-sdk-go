@@ -74,6 +74,8 @@ func (m *FileTree) validateTree(formats strfmt.Registry) error {
 			if err := m.Tree[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tree" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tree" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -106,6 +108,8 @@ func (m *FileTree) contextValidateTree(ctx context.Context, formats strfmt.Regis
 			if err := m.Tree[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tree" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tree" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

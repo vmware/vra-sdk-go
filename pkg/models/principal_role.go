@@ -33,7 +33,12 @@ type PrincipalRole interface {
 	Email() *string
 	SetEmail(*string)
 
-	// Role of this member. Currently supported 'member', 'viewer' and 'administrator'.
+	// ID of the user or id of the group in CSP
+	// Example: c493a95e-c4d1-4496-8595-e73902701c95:fe69d7ca-40a6-4de5-8f33-d462f4656938
+	ID() string
+	SetID(string)
+
+	// Role of this member. Currently supported 'member', 'viewer', 'administrator', 'supervisor'.
 	// Example: member
 	Role() string
 	SetRole(string)
@@ -50,6 +55,8 @@ type PrincipalRole interface {
 type principalRole struct {
 	emailField *string
 
+	idField string
+
 	roleField string
 
 	typeField string
@@ -63,6 +70,16 @@ func (m *principalRole) Email() *string {
 // SetEmail sets the email of this polymorphic type
 func (m *principalRole) SetEmail(val *string) {
 	m.emailField = val
+}
+
+// ID gets the id of this polymorphic type
+func (m *principalRole) ID() string {
+	return m.idField
+}
+
+// SetID sets the id of this polymorphic type
+func (m *principalRole) SetID(val string) {
+	m.idField = val
 }
 
 // Role gets the role of this polymorphic type

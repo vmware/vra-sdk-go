@@ -130,6 +130,8 @@ func (m *endpointCertificateChain) validateCertificates(formats strfmt.Registry)
 		if err := m.certificatesField[i].Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("certificates" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("certificates" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -160,6 +162,8 @@ func (m *endpointCertificateChain) contextValidateCertificates(ctx context.Conte
 		if err := m.certificatesField[i].ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("certificates" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("certificates" + "." + strconv.Itoa(i))
 			}
 			return err
 		}

@@ -28,6 +28,10 @@ type CloudAccountVsphereSpecification struct {
 	// Example: [ \"42f3e0d199d134755684cd935435a\" ]
 	AssociatedCloudAccountIds []string `json:"associatedCloudAccountIds"`
 
+	// Certificate for a cloud account.
+	// Example: {\"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDHjCCAoegAwIBAgIBATANBgkqhkiG9w0BAQsFADCBpjEUMBIGA1UEChMLVk13\\nYXJlIEluYAAc1pw18GT3iAqQRPx0PrjzJhgjIJMla\\n/1Kg4byY4FPSacNiRgY/FG2bPCqZk1yRfzmkFYCW/vU+Dg==\\n-----END CERTIFICATE-----\\n-\"}
+	CertificateInfo *CertificateInfoSpecification `json:"certificateInfo,omitempty"`
+
 	// Create default cloud zones for the enabled regions.
 	// Example: true
 	CreateDefaultZones bool `json:"createDefaultZones,omitempty"`
@@ -54,13 +58,9 @@ type CloudAccountVsphereSpecification struct {
 	// Required: true
 	Password *string `json:"password"`
 
-	// A set of datacenter managed object reference identifiers (MoRef) to enable provisioning on. Refer to /iaas/cloud-accounts-vsphere/region-enumeration. Deprecated - use regions to define enabled regions.
-	// Example: [ \"Datacenter:datacenter-2\" ]
-	// Required: true
-	RegionIds []string `json:"regionIds"`
-
-	// A set of regions to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration.
+	// A set of regions to enable provisioning on.Refer to /iaas/api/cloud-accounts/region-enumeration.
 	// Example: [{ \"name\": \"Datacenter:datacenter-3\",\"externalRegionId\": \"Datacenter:datacenter-3\"}]
+	// Required: true
 	Regions []*RegionSpecification `json:"regions"`
 
 	// A set of tag keys and optional values to set on the Cloud Account
@@ -77,6 +77,10 @@ type CloudAccountVsphereSpecification struct {
 func (m *CloudAccountVsphereSpecification) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateCertificateInfo(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateHostName(formats); err != nil {
 		res = append(res, err)
 	}
@@ -86,10 +90,6 @@ func (m *CloudAccountVsphereSpecification) Validate(formats strfmt.Registry) err
 	}
 
 	if err := m.validatePassword(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateRegionIds(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -108,6 +108,25 @@ func (m *CloudAccountVsphereSpecification) Validate(formats strfmt.Registry) err
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *CloudAccountVsphereSpecification) validateCertificateInfo(formats strfmt.Registry) error {
+	if swag.IsZero(m.CertificateInfo) { // not required
+		return nil
+	}
+
+	if m.CertificateInfo != nil {
+		if err := m.CertificateInfo.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("certificateInfo")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("certificateInfo")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -138,18 +157,10 @@ func (m *CloudAccountVsphereSpecification) validatePassword(formats strfmt.Regis
 	return nil
 }
 
-func (m *CloudAccountVsphereSpecification) validateRegionIds(formats strfmt.Registry) error {
-
-	if err := validate.Required("regionIds", "body", m.RegionIds); err != nil {
-		return err
-	}
-
-	return nil
-}
-
 func (m *CloudAccountVsphereSpecification) validateRegions(formats strfmt.Registry) error {
-	if swag.IsZero(m.Regions) { // not required
-		return nil
+
+	if err := validate.Required("regions", "body", m.Regions); err != nil {
+		return err
 	}
 
 	for i := 0; i < len(m.Regions); i++ {
@@ -161,6 +172,8 @@ func (m *CloudAccountVsphereSpecification) validateRegions(formats strfmt.Regist
 			if err := m.Regions[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("regions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("regions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -185,6 +198,8 @@ func (m *CloudAccountVsphereSpecification) validateTags(formats strfmt.Registry)
 			if err := m.Tags[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -208,6 +223,10 @@ func (m *CloudAccountVsphereSpecification) validateUsername(formats strfmt.Regis
 func (m *CloudAccountVsphereSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateCertificateInfo(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateRegions(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -222,6 +241,22 @@ func (m *CloudAccountVsphereSpecification) ContextValidate(ctx context.Context, 
 	return nil
 }
 
+func (m *CloudAccountVsphereSpecification) contextValidateCertificateInfo(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.CertificateInfo != nil {
+		if err := m.CertificateInfo.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("certificateInfo")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("certificateInfo")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *CloudAccountVsphereSpecification) contextValidateRegions(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.Regions); i++ {
@@ -230,6 +265,8 @@ func (m *CloudAccountVsphereSpecification) contextValidateRegions(ctx context.Co
 			if err := m.Regions[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("regions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("regions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -248,6 +285,8 @@ func (m *CloudAccountVsphereSpecification) contextValidateTags(ctx context.Conte
 			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

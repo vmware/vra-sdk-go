@@ -632,6 +632,11 @@ func (m *pipeline) validateInputMeta(formats strfmt.Registry) error {
 		}
 		if val, ok := m.InputMeta()[k]; ok {
 			if err := val.Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("_inputMeta" + "." + k)
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("_inputMeta" + "." + k)
+				}
 				return err
 			}
 		}
@@ -651,6 +656,8 @@ func (m *pipeline) validateWarnings(formats strfmt.Registry) error {
 		if err := m.warningsField[i].Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("_warnings" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("_warnings" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -686,6 +693,8 @@ func (m *pipeline) validateNotifications(formats strfmt.Registry) error {
 	if err := m.Notifications().Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("notifications")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("notifications")
 		}
 		return err
 	}
@@ -703,6 +712,8 @@ func (m *pipeline) validateRollbacks(formats strfmt.Registry) error {
 		if err := m.rollbacksField[i].Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("rollbacks" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("rollbacks" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -724,6 +735,11 @@ func (m *pipeline) validateStages(formats strfmt.Registry) error {
 		}
 		if val, ok := m.Stages()[k]; ok {
 			if err := val.Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("stages" + "." + k)
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("stages" + "." + k)
+				}
 				return err
 			}
 		}
@@ -741,6 +757,8 @@ func (m *pipeline) validateStarred(formats strfmt.Registry) error {
 	if err := m.Starred().Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("starred")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("starred")
 		}
 		return err
 	}
@@ -756,6 +774,8 @@ func (m *pipeline) validateWorkspace(formats strfmt.Registry) error {
 	if err := m.Workspace().Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("workspace")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("workspace")
 		}
 		return err
 	}
@@ -823,6 +843,8 @@ func (m *pipeline) contextValidateWarnings(ctx context.Context, formats strfmt.R
 		if err := m.warningsField[i].ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("_warnings" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("_warnings" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -837,6 +859,8 @@ func (m *pipeline) contextValidateNotifications(ctx context.Context, formats str
 	if err := m.Notifications().ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("notifications")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("notifications")
 		}
 		return err
 	}
@@ -851,6 +875,8 @@ func (m *pipeline) contextValidateRollbacks(ctx context.Context, formats strfmt.
 		if err := m.rollbacksField[i].ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("rollbacks" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("rollbacks" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -880,6 +906,8 @@ func (m *pipeline) contextValidateStarred(ctx context.Context, formats strfmt.Re
 	if err := m.Starred().ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("starred")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("starred")
 		}
 		return err
 	}
@@ -892,6 +920,8 @@ func (m *pipeline) contextValidateWorkspace(ctx context.Context, formats strfmt.
 	if err := m.Workspace().ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("workspace")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("workspace")
 		}
 		return err
 	}

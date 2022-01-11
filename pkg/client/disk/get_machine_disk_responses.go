@@ -60,7 +60,7 @@ type GetMachineDiskOK struct {
 }
 
 func (o *GetMachineDiskOK) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/machines/{id}/disks/{id1}][%d] getMachineDiskOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /iaas/api/machines/{id}/disks/{diskId}][%d] getMachineDiskOK  %+v", 200, o.Payload)
 }
 func (o *GetMachineDiskOK) GetPayload() *models.BlockDevice {
 	return o.Payload
@@ -92,7 +92,7 @@ type GetMachineDiskForbidden struct {
 }
 
 func (o *GetMachineDiskForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/machines/{id}/disks/{id1}][%d] getMachineDiskForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[GET /iaas/api/machines/{id}/disks/{diskId}][%d] getMachineDiskForbidden  %+v", 403, o.Payload)
 }
 func (o *GetMachineDiskForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
@@ -124,7 +124,7 @@ type GetMachineDiskNotFound struct {
 }
 
 func (o *GetMachineDiskNotFound) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/machines/{id}/disks/{id1}][%d] getMachineDiskNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /iaas/api/machines/{id}/disks/{diskId}][%d] getMachineDiskNotFound  %+v", 404, o.Payload)
 }
 func (o *GetMachineDiskNotFound) GetPayload() *models.Error {
 	return o.Payload

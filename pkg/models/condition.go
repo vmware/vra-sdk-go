@@ -234,6 +234,8 @@ func (m *condition) validateExpression(formats strfmt.Registry) error {
 		if err := m.Expression().Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("expression")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("expression")
 			}
 			return err
 		}
@@ -343,6 +345,8 @@ func (m *condition) contextValidateExpression(ctx context.Context, formats strfm
 		if err := m.Expression().ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("expression")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("expression")
 			}
 			return err
 		}

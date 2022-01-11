@@ -105,6 +105,8 @@ func (m *SecurityGroupSpecification) validateRules(formats strfmt.Registry) erro
 			if err := m.Rules[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("rules" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("rules" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -129,6 +131,8 @@ func (m *SecurityGroupSpecification) validateTags(formats strfmt.Registry) error
 			if err := m.Tags[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -165,6 +169,8 @@ func (m *SecurityGroupSpecification) contextValidateRules(ctx context.Context, f
 			if err := m.Rules[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("rules" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("rules" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -183,6 +189,8 @@ func (m *SecurityGroupSpecification) contextValidateTags(ctx context.Context, fo
 			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

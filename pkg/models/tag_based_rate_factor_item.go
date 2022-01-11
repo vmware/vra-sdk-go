@@ -54,6 +54,8 @@ func (m *TagBasedRateFactorItem) validateRateFactors(formats strfmt.Registry) er
 			if err := m.RateFactors[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("rateFactors" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("rateFactors" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -86,6 +88,8 @@ func (m *TagBasedRateFactorItem) contextValidateRateFactors(ctx context.Context,
 			if err := m.RateFactors[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("rateFactors" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("rateFactors" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

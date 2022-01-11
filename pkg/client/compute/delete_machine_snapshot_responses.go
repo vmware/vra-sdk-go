@@ -54,7 +54,7 @@ type DeleteMachineSnapshotAccepted struct {
 }
 
 func (o *DeleteMachineSnapshotAccepted) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}/snapshots/{id1}][%d] deleteMachineSnapshotAccepted  %+v", 202, o.Payload)
+	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}/snapshots/{snapshotId}][%d] deleteMachineSnapshotAccepted  %+v", 202, o.Payload)
 }
 func (o *DeleteMachineSnapshotAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
@@ -86,7 +86,7 @@ type DeleteMachineSnapshotForbidden struct {
 }
 
 func (o *DeleteMachineSnapshotForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}/snapshots/{id1}][%d] deleteMachineSnapshotForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}/snapshots/{snapshotId}][%d] deleteMachineSnapshotForbidden  %+v", 403, o.Payload)
 }
 func (o *DeleteMachineSnapshotForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload

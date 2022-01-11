@@ -5,6 +5,7 @@ swagger/vra-iaas-fixed.json
 swagger/vra-catalog-deployment-fixed.json
 swagger/vra-pipeline-fixed.json
 swagger/vra-project-fixed.json
+swagger/vra-cmx-fixed.json
 sdk-test
 tokens
 examples/cloud_account/cloud_account

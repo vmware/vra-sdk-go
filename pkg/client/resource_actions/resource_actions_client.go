@@ -30,34 +30,34 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetResourceActionUsingGET1(params *GetResourceActionUsingGET1Params, opts ...ClientOption) (*GetResourceActionUsingGET1OK, error)
+	GetResourceActionUsingGET5(params *GetResourceActionUsingGET5Params, opts ...ClientOption) (*GetResourceActionUsingGET5OK, error)
 
-	GetResourceActionsUsingGET1(params *GetResourceActionsUsingGET1Params, opts ...ClientOption) (*GetResourceActionsUsingGET1OK, error)
+	GetResourceActionsUsingGET5(params *GetResourceActionsUsingGET5Params, opts ...ClientOption) (*GetResourceActionsUsingGET5OK, error)
 
-	SubmitResourceActionRequestUsingPOST1(params *SubmitResourceActionRequestUsingPOST1Params, opts ...ClientOption) (*SubmitResourceActionRequestUsingPOST1OK, error)
+	SubmitResourceActionRequestUsingPOST5(params *SubmitResourceActionRequestUsingPOST5Params, opts ...ClientOption) (*SubmitResourceActionRequestUsingPOST5OK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  GetResourceActionUsingGET1 fetches resource action
+  GetResourceActionUsingGET5 fetches resource action
 
   Returns an action for the resource specified by its Resource ID and Action ID.
 */
-func (a *Client) GetResourceActionUsingGET1(params *GetResourceActionUsingGET1Params, opts ...ClientOption) (*GetResourceActionUsingGET1OK, error) {
+func (a *Client) GetResourceActionUsingGET5(params *GetResourceActionUsingGET5Params, opts ...ClientOption) (*GetResourceActionUsingGET5OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetResourceActionUsingGET1Params()
+		params = NewGetResourceActionUsingGET5Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getResourceActionUsingGET_1",
+		ID:                 "getResourceActionUsingGET_5",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/resources/{resourceId}/actions/{actionId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetResourceActionUsingGET1Reader{formats: a.formats},
+		Reader:             &GetResourceActionUsingGET5Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -69,35 +69,35 @@ func (a *Client) GetResourceActionUsingGET1(params *GetResourceActionUsingGET1Pa
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetResourceActionUsingGET1OK)
+	success, ok := result.(*GetResourceActionUsingGET5OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getResourceActionUsingGET_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getResourceActionUsingGET_5: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetResourceActionsUsingGET1 fetches available resource actions
+  GetResourceActionsUsingGET5 fetches available resource actions
 
   Returns the complete list of available actions that can be performed on a given resource.
 */
-func (a *Client) GetResourceActionsUsingGET1(params *GetResourceActionsUsingGET1Params, opts ...ClientOption) (*GetResourceActionsUsingGET1OK, error) {
+func (a *Client) GetResourceActionsUsingGET5(params *GetResourceActionsUsingGET5Params, opts ...ClientOption) (*GetResourceActionsUsingGET5OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetResourceActionsUsingGET1Params()
+		params = NewGetResourceActionsUsingGET5Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getResourceActionsUsingGET_1",
+		ID:                 "getResourceActionsUsingGET_5",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/resources/{resourceId}/actions",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetResourceActionsUsingGET1Reader{formats: a.formats},
+		Reader:             &GetResourceActionsUsingGET5Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -109,35 +109,35 @@ func (a *Client) GetResourceActionsUsingGET1(params *GetResourceActionsUsingGET1
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetResourceActionsUsingGET1OK)
+	success, ok := result.(*GetResourceActionsUsingGET5OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getResourceActionsUsingGET_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getResourceActionsUsingGET_5: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  SubmitResourceActionRequestUsingPOST1 resources action request
+  SubmitResourceActionRequestUsingPOST5 resources action request
 
   Submit a resource action request.
 */
-func (a *Client) SubmitResourceActionRequestUsingPOST1(params *SubmitResourceActionRequestUsingPOST1Params, opts ...ClientOption) (*SubmitResourceActionRequestUsingPOST1OK, error) {
+func (a *Client) SubmitResourceActionRequestUsingPOST5(params *SubmitResourceActionRequestUsingPOST5Params, opts ...ClientOption) (*SubmitResourceActionRequestUsingPOST5OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewSubmitResourceActionRequestUsingPOST1Params()
+		params = NewSubmitResourceActionRequestUsingPOST5Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "submitResourceActionRequestUsingPOST_1",
+		ID:                 "submitResourceActionRequestUsingPOST_5",
 		Method:             "POST",
 		PathPattern:        "/deployment/api/resources/{resourceId}/requests",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &SubmitResourceActionRequestUsingPOST1Reader{formats: a.formats},
+		Reader:             &SubmitResourceActionRequestUsingPOST5Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -149,13 +149,13 @@ func (a *Client) SubmitResourceActionRequestUsingPOST1(params *SubmitResourceAct
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*SubmitResourceActionRequestUsingPOST1OK)
+	success, ok := result.(*SubmitResourceActionRequestUsingPOST5OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for submitResourceActionRequestUsingPOST_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for submitResourceActionRequestUsingPOST_5: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

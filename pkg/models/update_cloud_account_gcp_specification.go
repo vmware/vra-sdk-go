@@ -12,12 +12,18 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
-// UpdateCloudAccountGcpSpecification update cloud account gcp specification
+// UpdateCloudAccountGcpSpecification Specification for a GCP cloud account.<br><br>A cloud account identifies a cloud account type and an account-specific deployment region where the associated cloud account resources are hosted.
 //
 // swagger:model UpdateCloudAccountGcpSpecification
 type UpdateCloudAccountGcpSpecification struct {
+
+	// GCP Client email
+	// Example: 321743978432-compute@developer.gserviceaccount.com
+	// Required: true
+	ClientEmail *string `json:"clientEmail"`
 
 	// Create default cloud zones for the enabled regions.
 	// Example: true
@@ -29,22 +35,49 @@ type UpdateCloudAccountGcpSpecification struct {
 	// A human-friendly name used as an identifier in APIs that support this option.
 	Name string `json:"name,omitempty"`
 
-	// A set of Region names to enable provisioning on. Refer to /iaas/cloud-accounts-aws/region-enumeration. Deprecated - use regions to define enabled regions.
-	// Example: [ \"us-east-1\", \"ap-northeast-1\" ]
-	RegionIds []string `json:"regionIds"`
+	// GCP Private key
+	// Example: -----BEGIN PRIVATE KEY-----\nMIICXgIHAASBgSDHikastc8+I81zCg/qWW8dMr8mqvXQ3qbPAmu0RjxoZVI47tvs\nkYlFAXOf0sPrhO2nUuooJngnHV0639iTTEYG1vckNaW2R6U5QTdQ5Rq5u+uV3pMk\n7w7Vs4n3urQ4jnqt7rTXbC1DNa/PFeAZatbf7ffBBy0IGO0zc128IshYcwIDAQAB\nAoGBALTNl2JxTvq4SDW/3VH0fZkQXWH1MM10oeMbB2qO5beWb11FGaOO77nGKfWc\nbYgfp5Ogrql2yhBvLAXnxH8bcqqwORtFhlyV68U1y4R+8WxDNh0aevxH8hRS/1X5\n963DJm1JlU0E+vStiktN0tC3ebH5hE+1OxbIHSZ+WOWLYX7JAkEA5uigRgKp8ScG\nauUijvdOLZIhHWq9y5Wz+nOHUuDw8P7wOTKU34QJAoWEe771p9Pf/GTA/kr0BQnP\nQvWUDxGzJwJBAN05C6krwPeryFKrKtjOGJIbiIoY72wRnoNcdEEs3HDRhf48YWFo\nriRbZylzzzNFy/gmzT6XJQTfktGqq+FZD9UCQGIJaGrxHJgfmpDuAhMzGsUsYtTr\niRox0D1Iqa7dhE693t5aBG010OF6MLqdZA1CXrn5SRtuVVaCSLZEL/2J5UcCQQDA\nd3MXucNnN4NPuS/L9HMYJWD7lPoosaORcgyK77bSSNgk+u9WSjbH1uYIAIPSffUZ\nbti+jc2dUg5wb+aeZlgJAkEAurrpmpqj5vg087ZngKfFGR5rozDiTsK5DceTV97K\na1Y+Nzl+XWTxDBWk4YPh2ZlKv402hZEfWBYxUDn5ZkH/bw==\n-----END PRIVATE KEY-----\n
+	// Required: true
+	PrivateKey *string `json:"privateKey"`
 
-	// A set of regions to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration.
+	// GCP Private key ID
+	// Example: 027f73d50a19452eedf5775a9b42c5083678abdf
+	// Required: true
+	PrivateKeyID *string `json:"privateKeyId"`
+
+	// GCP Project ID
+	// Example: example-gcp-project
+	// Required: true
+	ProjectID *string `json:"projectId"`
+
+	// A set of regions to enable provisioning on.Refer to /iaas/api/cloud-accounts/region-enumeration.
 	// Example: [{ \"name\": \"europe-west2\",\"externalRegionId\": \"europe-west2\"}]
 	Regions []*RegionSpecification `json:"regions"`
 
 	// A set of tag keys and optional values to set on the Cloud Account
-	// Example: [{\"key\": \"env\", \"value\": \"dev\"}]
+	// Example: [ { \"key\" : \"env\", \"value\": \"dev\" } ]
 	Tags []*Tag `json:"tags"`
 }
 
 // Validate validates this update cloud account gcp specification
 func (m *UpdateCloudAccountGcpSpecification) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateClientEmail(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePrivateKey(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePrivateKeyID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateProjectID(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateRegions(formats); err != nil {
 		res = append(res, err)
@@ -57,6 +90,42 @@ func (m *UpdateCloudAccountGcpSpecification) Validate(formats strfmt.Registry) e
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *UpdateCloudAccountGcpSpecification) validateClientEmail(formats strfmt.Registry) error {
+
+	if err := validate.Required("clientEmail", "body", m.ClientEmail); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *UpdateCloudAccountGcpSpecification) validatePrivateKey(formats strfmt.Registry) error {
+
+	if err := validate.Required("privateKey", "body", m.PrivateKey); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *UpdateCloudAccountGcpSpecification) validatePrivateKeyID(formats strfmt.Registry) error {
+
+	if err := validate.Required("privateKeyId", "body", m.PrivateKeyID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *UpdateCloudAccountGcpSpecification) validateProjectID(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectId", "body", m.ProjectID); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -74,6 +143,8 @@ func (m *UpdateCloudAccountGcpSpecification) validateRegions(formats strfmt.Regi
 			if err := m.Regions[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("regions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("regions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -98,6 +169,8 @@ func (m *UpdateCloudAccountGcpSpecification) validateTags(formats strfmt.Registr
 			if err := m.Tags[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -134,6 +207,8 @@ func (m *UpdateCloudAccountGcpSpecification) contextValidateRegions(ctx context.
 			if err := m.Regions[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("regions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("regions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -152,6 +227,8 @@ func (m *UpdateCloudAccountGcpSpecification) contextValidateTags(ctx context.Con
 			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

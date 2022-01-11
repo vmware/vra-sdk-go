@@ -32,21 +32,21 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	ActOnPipelineUsingPOST(params *ActOnPipelineUsingPOSTParams, opts ...ClientOption) (*ActOnPipelineUsingPOSTOK, error)
 
-	CloneByNameUsingPOST2(params *CloneByNameUsingPOST2Params, opts ...ClientOption) (*CloneByNameUsingPOST2OK, error)
+	ClonePipelineByNameUsingPOST(params *ClonePipelineByNameUsingPOSTParams, opts ...ClientOption) (*ClonePipelineByNameUsingPOSTOK, error)
 
-	CreateUsingPOST6(params *CreateUsingPOST6Params, opts ...ClientOption) (*CreateUsingPOST6OK, error)
+	CreatePipelineUsingPOST(params *CreatePipelineUsingPOSTParams, opts ...ClientOption) (*CreatePipelineUsingPOSTOK, error)
 
-	DeleteUsingDELETE8(params *DeleteUsingDELETE8Params, opts ...ClientOption) (*DeleteUsingDELETE8OK, error)
+	DeletePipelineByIDUsingDELETE(params *DeletePipelineByIDUsingDELETEParams, opts ...ClientOption) (*DeletePipelineByIDUsingDELETEOK, error)
 
-	DeleteUsingDELETE9(params *DeleteUsingDELETE9Params, opts ...ClientOption) (*DeleteUsingDELETE9OK, error)
+	DeletePipelineByNameUsingDELETE(params *DeletePipelineByNameUsingDELETEParams, opts ...ClientOption) (*DeletePipelineByNameUsingDELETEOK, error)
 
-	ExecuteByNameUsingPOST(params *ExecuteByNameUsingPOSTParams, opts ...ClientOption) (*ExecuteByNameUsingPOSTOK, *ExecuteByNameUsingPOSTAccepted, error)
+	ExecutePipelineByIDUsingPOST(params *ExecutePipelineByIDUsingPOSTParams, opts ...ClientOption) (*ExecutePipelineByIDUsingPOSTOK, *ExecutePipelineByIDUsingPOSTAccepted, error)
 
-	ExecuteUsingPOST(params *ExecuteUsingPOSTParams, opts ...ClientOption) (*ExecuteUsingPOSTOK, *ExecuteUsingPOSTAccepted, error)
+	ExecutePipelineByNameUsingPOST(params *ExecutePipelineByNameUsingPOSTParams, opts ...ClientOption) (*ExecutePipelineByNameUsingPOSTOK, *ExecutePipelineByNameUsingPOSTAccepted, error)
 
 	ExportUsingGET(params *ExportUsingGETParams, opts ...ClientOption) (*ExportUsingGETOK, error)
 
-	GetAllUsingGET9(params *GetAllUsingGET9Params, opts ...ClientOption) (*GetAllUsingGET9OK, error)
+	GetAllPipelinesUsingGET(params *GetAllPipelinesUsingGETParams, opts ...ClientOption) (*GetAllPipelinesUsingGETOK, error)
 
 	GetExecutionByIndexAndPipelineIDUsingGET(params *GetExecutionByIndexAndPipelineIDUsingGETParams, opts ...ClientOption) (*GetExecutionByIndexAndPipelineIDUsingGETOK, error)
 
@@ -56,21 +56,21 @@ type ClientService interface {
 
 	GetExecutionsByNameUsingGET(params *GetExecutionsByNameUsingGETParams, opts ...ClientOption) (*GetExecutionsByNameUsingGETOK, error)
 
+	GetPipelineByIDUsingGET(params *GetPipelineByIDUsingGETParams, opts ...ClientOption) (*GetPipelineByIDUsingGETOK, error)
+
+	GetPipelineByNameUsingGET(params *GetPipelineByNameUsingGETParams, opts ...ClientOption) (*GetPipelineByNameUsingGETOK, error)
+
 	GetPipelineTilesUsingGET(params *GetPipelineTilesUsingGETParams, opts ...ClientOption) (*GetPipelineTilesUsingGETOK, error)
-
-	GetUsingGET2(params *GetUsingGET2Params, opts ...ClientOption) (*GetUsingGET2OK, error)
-
-	GetUsingGET3(params *GetUsingGET3Params, opts ...ClientOption) (*GetUsingGET3OK, error)
 
 	ImportYamlUsingPOST(params *ImportYamlUsingPOSTParams, opts ...ClientOption) (*ImportYamlUsingPOSTOK, error)
 
-	PatchUsingPATCH(params *PatchUsingPATCHParams, opts ...ClientOption) (*PatchUsingPATCHOK, error)
+	PatchPipelineByNameUsingPATCH(params *PatchPipelineByNameUsingPATCHParams, opts ...ClientOption) (*PatchPipelineByNameUsingPATCHOK, error)
 
-	PatchUsingPATCH1(params *PatchUsingPATCH1Params, opts ...ClientOption) (*PatchUsingPATCH1OK, error)
+	PatchPipelineUsingPATCH(params *PatchPipelineUsingPATCHParams, opts ...ClientOption) (*PatchPipelineUsingPATCHOK, error)
 
-	UpdateUsingPUT2(params *UpdateUsingPUT2Params, opts ...ClientOption) (*UpdateUsingPUT2OK, error)
+	UpdatePipelineByNameUsingPUT(params *UpdatePipelineByNameUsingPUTParams, opts ...ClientOption) (*UpdatePipelineByNameUsingPUTOK, error)
 
-	UpdateUsingPUT3(params *UpdateUsingPUT3Params, opts ...ClientOption) (*UpdateUsingPUT3OK, error)
+	UpdatePipelineUsingPUT(params *UpdatePipelineUsingPUTParams, opts ...ClientOption) (*UpdatePipelineUsingPUTOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -116,24 +116,24 @@ func (a *Client) ActOnPipelineUsingPOST(params *ActOnPipelineUsingPOSTParams, op
 }
 
 /*
-  CloneByNameUsingPOST2 clones a pipeline by project and name
+  ClonePipelineByNameUsingPOST clones a pipeline by project and name
 
   Clone a Pipeline with the given project and name
 */
-func (a *Client) CloneByNameUsingPOST2(params *CloneByNameUsingPOST2Params, opts ...ClientOption) (*CloneByNameUsingPOST2OK, error) {
+func (a *Client) ClonePipelineByNameUsingPOST(params *ClonePipelineByNameUsingPOSTParams, opts ...ClientOption) (*ClonePipelineByNameUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCloneByNameUsingPOST2Params()
+		params = NewClonePipelineByNameUsingPOSTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "cloneByNameUsingPOST_2",
+		ID:                 "clonePipelineByNameUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/codestream/api/pipelines/{project}/{name}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CloneByNameUsingPOST2Reader{formats: a.formats},
+		Reader:             &ClonePipelineByNameUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -145,35 +145,35 @@ func (a *Client) CloneByNameUsingPOST2(params *CloneByNameUsingPOST2Params, opts
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CloneByNameUsingPOST2OK)
+	success, ok := result.(*ClonePipelineByNameUsingPOSTOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for cloneByNameUsingPOST_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for clonePipelineByNameUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  CreateUsingPOST6 creates a pipeline
+  CreatePipelineUsingPOST creates a pipeline
 
   Create a Pipeline based on the given project
 */
-func (a *Client) CreateUsingPOST6(params *CreateUsingPOST6Params, opts ...ClientOption) (*CreateUsingPOST6OK, error) {
+func (a *Client) CreatePipelineUsingPOST(params *CreatePipelineUsingPOSTParams, opts ...ClientOption) (*CreatePipelineUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateUsingPOST6Params()
+		params = NewCreatePipelineUsingPOSTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createUsingPOST_6",
+		ID:                 "createPipelineUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/codestream/api/pipelines",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateUsingPOST6Reader{formats: a.formats},
+		Reader:             &CreatePipelineUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -185,35 +185,35 @@ func (a *Client) CreateUsingPOST6(params *CreateUsingPOST6Params, opts ...Client
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateUsingPOST6OK)
+	success, ok := result.(*CreatePipelineUsingPOSTOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for createUsingPOST_6: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for createPipelineUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  DeleteUsingDELETE8 deletes a pipeline by id
+  DeletePipelineByIDUsingDELETE deletes a pipeline by id
 
   Delete a Pipeline with the given id
 */
-func (a *Client) DeleteUsingDELETE8(params *DeleteUsingDELETE8Params, opts ...ClientOption) (*DeleteUsingDELETE8OK, error) {
+func (a *Client) DeletePipelineByIDUsingDELETE(params *DeletePipelineByIDUsingDELETEParams, opts ...ClientOption) (*DeletePipelineByIDUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteUsingDELETE8Params()
+		params = NewDeletePipelineByIDUsingDELETEParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteUsingDELETE_8",
+		ID:                 "deletePipelineByIdUsingDELETE",
 		Method:             "DELETE",
 		PathPattern:        "/codestream/api/pipelines/{id}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteUsingDELETE8Reader{formats: a.formats},
+		Reader:             &DeletePipelineByIDUsingDELETEReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -225,35 +225,35 @@ func (a *Client) DeleteUsingDELETE8(params *DeleteUsingDELETE8Params, opts ...Cl
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteUsingDELETE8OK)
+	success, ok := result.(*DeletePipelineByIDUsingDELETEOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteUsingDELETE_8: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for deletePipelineByIdUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  DeleteUsingDELETE9 deletes a pipeline by project and name
+  DeletePipelineByNameUsingDELETE deletes a pipeline by project and name
 
   Delete a Pipeline with the given project and name
 */
-func (a *Client) DeleteUsingDELETE9(params *DeleteUsingDELETE9Params, opts ...ClientOption) (*DeleteUsingDELETE9OK, error) {
+func (a *Client) DeletePipelineByNameUsingDELETE(params *DeletePipelineByNameUsingDELETEParams, opts ...ClientOption) (*DeletePipelineByNameUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteUsingDELETE9Params()
+		params = NewDeletePipelineByNameUsingDELETEParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteUsingDELETE_9",
+		ID:                 "deletePipelineByNameUsingDELETE",
 		Method:             "DELETE",
 		PathPattern:        "/codestream/api/pipelines/{project}/{name}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteUsingDELETE9Reader{formats: a.formats},
+		Reader:             &DeletePipelineByNameUsingDELETEReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -265,35 +265,35 @@ func (a *Client) DeleteUsingDELETE9(params *DeleteUsingDELETE9Params, opts ...Cl
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteUsingDELETE9OK)
+	success, ok := result.(*DeletePipelineByNameUsingDELETEOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteUsingDELETE_9: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for deletePipelineByNameUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  ExecuteByNameUsingPOST executes a pipeline
+  ExecutePipelineByIDUsingPOST executes a pipeline
 
-  Execute a Pipeline based on the given project and name
+  Execute a Pipeline based on the given id
 */
-func (a *Client) ExecuteByNameUsingPOST(params *ExecuteByNameUsingPOSTParams, opts ...ClientOption) (*ExecuteByNameUsingPOSTOK, *ExecuteByNameUsingPOSTAccepted, error) {
+func (a *Client) ExecutePipelineByIDUsingPOST(params *ExecutePipelineByIDUsingPOSTParams, opts ...ClientOption) (*ExecutePipelineByIDUsingPOSTOK, *ExecutePipelineByIDUsingPOSTAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewExecuteByNameUsingPOSTParams()
+		params = NewExecutePipelineByIDUsingPOSTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "executeByNameUsingPOST",
+		ID:                 "executePipelineByIdUsingPOST",
 		Method:             "POST",
-		PathPattern:        "/codestream/api/pipelines/{project}/{name}/executions",
+		PathPattern:        "/codestream/api/pipelines/{id}/executions",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &ExecuteByNameUsingPOSTReader{formats: a.formats},
+		Reader:             &ExecutePipelineByIDUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -306,9 +306,9 @@ func (a *Client) ExecuteByNameUsingPOST(params *ExecuteByNameUsingPOSTParams, op
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *ExecuteByNameUsingPOSTOK:
+	case *ExecutePipelineByIDUsingPOSTOK:
 		return value, nil, nil
-	case *ExecuteByNameUsingPOSTAccepted:
+	case *ExecutePipelineByIDUsingPOSTAccepted:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
@@ -317,24 +317,24 @@ func (a *Client) ExecuteByNameUsingPOST(params *ExecuteByNameUsingPOSTParams, op
 }
 
 /*
-  ExecuteUsingPOST executes a pipeline
+  ExecutePipelineByNameUsingPOST executes a pipeline
 
-  Execute a Pipeline based on the given id
+  Execute a Pipeline based on the given project and name
 */
-func (a *Client) ExecuteUsingPOST(params *ExecuteUsingPOSTParams, opts ...ClientOption) (*ExecuteUsingPOSTOK, *ExecuteUsingPOSTAccepted, error) {
+func (a *Client) ExecutePipelineByNameUsingPOST(params *ExecutePipelineByNameUsingPOSTParams, opts ...ClientOption) (*ExecutePipelineByNameUsingPOSTOK, *ExecutePipelineByNameUsingPOSTAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewExecuteUsingPOSTParams()
+		params = NewExecutePipelineByNameUsingPOSTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "executeUsingPOST",
+		ID:                 "executePipelineByNameUsingPOST",
 		Method:             "POST",
-		PathPattern:        "/codestream/api/pipelines/{id}/executions",
+		PathPattern:        "/codestream/api/pipelines/{project}/{name}/executions",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &ExecuteUsingPOSTReader{formats: a.formats},
+		Reader:             &ExecutePipelineByNameUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -347,9 +347,9 @@ func (a *Client) ExecuteUsingPOST(params *ExecuteUsingPOSTParams, opts ...Client
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *ExecuteUsingPOSTOK:
+	case *ExecutePipelineByNameUsingPOSTOK:
 		return value, nil, nil
-	case *ExecuteUsingPOSTAccepted:
+	case *ExecutePipelineByNameUsingPOSTAccepted:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
@@ -398,24 +398,24 @@ func (a *Client) ExportUsingGET(params *ExportUsingGETParams, opts ...ClientOpti
 }
 
 /*
-  GetAllUsingGET9 gets all pipelines
+  GetAllPipelinesUsingGET gets all pipelines
 
   Get all Pipelines with specified paging and filter parameters.
 */
-func (a *Client) GetAllUsingGET9(params *GetAllUsingGET9Params, opts ...ClientOption) (*GetAllUsingGET9OK, error) {
+func (a *Client) GetAllPipelinesUsingGET(params *GetAllPipelinesUsingGETParams, opts ...ClientOption) (*GetAllPipelinesUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetAllUsingGET9Params()
+		params = NewGetAllPipelinesUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getAllUsingGET_9",
+		ID:                 "getAllPipelinesUsingGET",
 		Method:             "GET",
 		PathPattern:        "/codestream/api/pipelines",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetAllUsingGET9Reader{formats: a.formats},
+		Reader:             &GetAllPipelinesUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -427,13 +427,13 @@ func (a *Client) GetAllUsingGET9(params *GetAllUsingGET9Params, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetAllUsingGET9OK)
+	success, ok := result.(*GetAllPipelinesUsingGETOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getAllUsingGET_9: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getAllPipelinesUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -598,6 +598,86 @@ func (a *Client) GetExecutionsByNameUsingGET(params *GetExecutionsByNameUsingGET
 }
 
 /*
+  GetPipelineByIDUsingGET gets a pipeline
+
+  Get a Pipeline with the given id
+*/
+func (a *Client) GetPipelineByIDUsingGET(params *GetPipelineByIDUsingGETParams, opts ...ClientOption) (*GetPipelineByIDUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetPipelineByIDUsingGETParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getPipelineByIdUsingGET",
+		Method:             "GET",
+		PathPattern:        "/codestream/api/pipelines/{id}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetPipelineByIDUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetPipelineByIDUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getPipelineByIdUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetPipelineByNameUsingGET gets a pipeline by project and name
+
+  Get a Pipeline with the given project and name
+*/
+func (a *Client) GetPipelineByNameUsingGET(params *GetPipelineByNameUsingGETParams, opts ...ClientOption) (*GetPipelineByNameUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetPipelineByNameUsingGETParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getPipelineByNameUsingGET",
+		Method:             "GET",
+		PathPattern:        "/codestream/api/pipelines/{project}/{name}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetPipelineByNameUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetPipelineByNameUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getPipelineByNameUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   GetPipelineTilesUsingGET gets pipeline tiles
 
   Get Pipeline Tiles
@@ -634,86 +714,6 @@ func (a *Client) GetPipelineTilesUsingGET(params *GetPipelineTilesUsingGETParams
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getPipelineTilesUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  GetUsingGET2 gets a pipeline
-
-  Get a Pipeline with the given id
-*/
-func (a *Client) GetUsingGET2(params *GetUsingGET2Params, opts ...ClientOption) (*GetUsingGET2OK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetUsingGET2Params()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getUsingGET_2",
-		Method:             "GET",
-		PathPattern:        "/codestream/api/pipelines/{id}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetUsingGET2Reader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetUsingGET2OK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  GetUsingGET3 gets a pipeline by project and name
-
-  Get a Pipeline with the given project and name
-*/
-func (a *Client) GetUsingGET3(params *GetUsingGET3Params, opts ...ClientOption) (*GetUsingGET3OK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetUsingGET3Params()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getUsingGET_3",
-		Method:             "GET",
-		PathPattern:        "/codestream/api/pipelines/{project}/{name}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetUsingGET3Reader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetUsingGET3OK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getUsingGET_3: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -758,64 +758,24 @@ func (a *Client) ImportYamlUsingPOST(params *ImportYamlUsingPOSTParams, opts ...
 }
 
 /*
-  PatchUsingPATCH updates a pipeline by id
-
-  Update a Pipeline with the given id
-*/
-func (a *Client) PatchUsingPATCH(params *PatchUsingPATCHParams, opts ...ClientOption) (*PatchUsingPATCHOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchUsingPATCHParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchUsingPATCH",
-		Method:             "PATCH",
-		PathPattern:        "/codestream/api/pipelines/{id}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchUsingPATCHReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchUsingPATCHOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  PatchUsingPATCH1 updates a pipeline by project and name
+  PatchPipelineByNameUsingPATCH updates a pipeline by project and name
 
   Update a Pipeline with the given project and name
 */
-func (a *Client) PatchUsingPATCH1(params *PatchUsingPATCH1Params, opts ...ClientOption) (*PatchUsingPATCH1OK, error) {
+func (a *Client) PatchPipelineByNameUsingPATCH(params *PatchPipelineByNameUsingPATCHParams, opts ...ClientOption) (*PatchPipelineByNameUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPatchUsingPATCH1Params()
+		params = NewPatchPipelineByNameUsingPATCHParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "patchUsingPATCH_1",
+		ID:                 "patchPipelineByNameUsingPATCH",
 		Method:             "PATCH",
 		PathPattern:        "/codestream/api/pipelines/{project}/{name}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PatchUsingPATCH1Reader{formats: a.formats},
+		Reader:             &PatchPipelineByNameUsingPATCHReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -827,35 +787,35 @@ func (a *Client) PatchUsingPATCH1(params *PatchUsingPATCH1Params, opts ...Client
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PatchUsingPATCH1OK)
+	success, ok := result.(*PatchPipelineByNameUsingPATCHOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchUsingPATCH_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for patchPipelineByNameUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  UpdateUsingPUT2 updates a pipeline by id
+  PatchPipelineUsingPATCH updates a pipeline by id
 
   Update a Pipeline with the given id
 */
-func (a *Client) UpdateUsingPUT2(params *UpdateUsingPUT2Params, opts ...ClientOption) (*UpdateUsingPUT2OK, error) {
+func (a *Client) PatchPipelineUsingPATCH(params *PatchPipelineUsingPATCHParams, opts ...ClientOption) (*PatchPipelineUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewUpdateUsingPUT2Params()
+		params = NewPatchPipelineUsingPATCHParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "updateUsingPUT_2",
-		Method:             "PUT",
+		ID:                 "patchPipelineUsingPATCH",
+		Method:             "PATCH",
 		PathPattern:        "/codestream/api/pipelines/{id}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &UpdateUsingPUT2Reader{formats: a.formats},
+		Reader:             &PatchPipelineUsingPATCHReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -867,35 +827,35 @@ func (a *Client) UpdateUsingPUT2(params *UpdateUsingPUT2Params, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*UpdateUsingPUT2OK)
+	success, ok := result.(*PatchPipelineUsingPATCHOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateUsingPUT_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for patchPipelineUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  UpdateUsingPUT3 updates a pipeline by project and name
+  UpdatePipelineByNameUsingPUT updates a pipeline by project and name
 
   Update a Pipeline with the given project and name
 */
-func (a *Client) UpdateUsingPUT3(params *UpdateUsingPUT3Params, opts ...ClientOption) (*UpdateUsingPUT3OK, error) {
+func (a *Client) UpdatePipelineByNameUsingPUT(params *UpdatePipelineByNameUsingPUTParams, opts ...ClientOption) (*UpdatePipelineByNameUsingPUTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewUpdateUsingPUT3Params()
+		params = NewUpdatePipelineByNameUsingPUTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "updateUsingPUT_3",
+		ID:                 "updatePipelineByNameUsingPUT",
 		Method:             "PUT",
 		PathPattern:        "/codestream/api/pipelines/{project}/{name}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &UpdateUsingPUT3Reader{formats: a.formats},
+		Reader:             &UpdatePipelineByNameUsingPUTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -907,13 +867,53 @@ func (a *Client) UpdateUsingPUT3(params *UpdateUsingPUT3Params, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*UpdateUsingPUT3OK)
+	success, ok := result.(*UpdatePipelineByNameUsingPUTOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateUsingPUT_3: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for updatePipelineByNameUsingPUT: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UpdatePipelineUsingPUT updates a pipeline by id
+
+  Update a Pipeline with the given id
+*/
+func (a *Client) UpdatePipelineUsingPUT(params *UpdatePipelineUsingPUTParams, opts ...ClientOption) (*UpdatePipelineUsingPUTOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdatePipelineUsingPUTParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "updatePipelineUsingPUT",
+		Method:             "PUT",
+		PathPattern:        "/codestream/api/pipelines/{id}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdatePipelineUsingPUTReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdatePipelineUsingPUTOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updatePipelineUsingPUT: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

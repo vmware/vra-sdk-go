@@ -2,12 +2,16 @@
     "swagger": "2.0",
     "info": {
         "description": "A multi-cloud API for Cloud Automation Services",
-        "version": "2019-01-15",
+        "version": "2020-08-25",
         "title": "VMware Service Broker API"
     },
     "host": "api.mgmt.cloud.vmware.com",
     "basePath": "/",
     "tags": [
+        {
+            "name": "Applications",
+            "description": "Application Controller"
+        },
         {
             "name": "Catalog Admin Items",
             "description": "Catalog Admin Items API"
@@ -39,6 +43,10 @@
         {
             "name": "Icons",
             "description": "Icons API"
+        },
+        {
+            "name": "Notification Scenario Configuration",
+            "description": "Notification Scenario Configuration Controller"
         },
         {
             "name": "Perspective Sync",
@@ -85,6 +93,225 @@
         "application/json"
     ],
     "paths": {
+        "/application/api/applications": {
+            "get": {
+                "tags": [
+                    "Applications"
+                ],
+                "summary": "Fetch all applications.",
+                "description": "Returns a paginated list of applications. Applications with more than 100 resources is not supported.",
+                "operationId": "getApplicationsUsingGET_2",
+                "parameters": [
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "$skip",
+                        "in": "query",
+                        "description": "Number of records you want to skip",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "description": "Number of records you want",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "createdAt",
+                        "in": "query",
+                        "description": "Comma-separated start and end dates where start date or end date is optional (e.g. [2020-12-01T08:00:00.000Z,2020-12-11T23:59:00.000Z], [2020-11-03T08:00:00.000Z,], [,2020-11-08T08:00:00.000Z]",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "description": "The expanded details of the requested comma separated objects. 'resources' option returns resources with all properties.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "resources"
+                            ]
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false,
+                        "enum": [
+                            "resources"
+                        ]
+                    },
+                    {
+                        "name": "ids",
+                        "in": "query",
+                        "description": "A comma-separated list. Only applications with these IDs will be included in the results.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "lastUpdatedAt",
+                        "in": "query",
+                        "description": "Comma-separated start and end dates where start date or end date is optional (e.g. [2020-12-01T08:00:00.000Z,2020-12-11T23:59:00.000Z], [2020-11-03T08:00:00.000Z,], [,2020-11-08T08:00:00.000Z]",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Results must have exactly this name.",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "resourceTypes",
+                        "in": "query",
+                        "description": "A comma-separated list. Results must be associated with one of these resourceType Names.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Given string should either be part of a searchable field in a application or one of application's resources.",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "tags",
+                        "in": "query",
+                        "description": "A comma-separated list. Results must be associated with one of these tags",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfApplication"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/application/api/applications/{appId}": {
+            "get": {
+                "tags": [
+                    "Applications"
+                ],
+                "summary": "Fetch a specific application.",
+                "description": "Returns the application with the supplied ID.",
+                "operationId": "getApplciationByIdUsingGET_2",
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "appId",
+                        "in": "path",
+                        "description": "Application ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "expand",
+                        "in": "query",
+                        "description": "The expanded details of the requested comma separated objects. 'resources' option returns resources with all properties.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "resources"
+                            ]
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false,
+                        "enum": [
+                            "resources"
+                        ]
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Application"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
         "/catalog/api/admin/entitlements": {
             "get": {
                 "tags": [
@@ -92,7 +319,7 @@
                 ],
                 "summary": "Returns all entitlements filtered by projectId.",
                 "description": "Returns all entitlements (filtered by projectId).",
-                "operationId": "getEntitlementsUsingGET",
+                "operationId": "getEntitlementsUsingGET_2",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -139,7 +366,7 @@
                 ],
                 "summary": "Create an entitlement.",
                 "description": "Creates an entitlement for a given project.",
-                "operationId": "createEntitlementUsingPOST",
+                "operationId": "createEntitlementUsingPOST_2",
                 "consumes": [
                     "application/json"
                 ],
@@ -201,7 +428,7 @@
                 ],
                 "summary": "Delete an entitlement.",
                 "description": "Deletes the entitlement with the specified id.",
-                "operationId": "deleteEntitlementUsingDELETE",
+                "operationId": "deleteEntitlementUsingDELETE_2",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -244,7 +471,7 @@
                 ],
                 "summary": "Fetch a list of catalog items.",
                 "description": "Returns a paginated list of catalog items.",
-                "operationId": "getCatalogItemsUsingGET",
+                "operationId": "getCatalogItemsUsingGET_4",
                 "parameters": [
                     {
                         "name": "$orderby",
@@ -285,39 +512,43 @@
                     {
                         "name": "projectId",
                         "in": "query",
-                        "description": "projectId",
+                        "description": "Matches which can be requested within project with the given projectId",
                         "required": false,
-                        "type": "string"
+                        "type": "string",
+                        "allowEmptyValue": false
                     },
                     {
                         "name": "search",
                         "in": "query",
-                        "description": "search",
+                        "description": "Matches will have this string somewhere in their name or description.",
                         "required": false,
-                        "type": "string"
+                        "type": "string",
+                        "allowEmptyValue": false
                     },
                     {
                         "name": "sourceIds",
                         "in": "query",
-                        "description": "sourceIds",
+                        "description": "A list of Content Source IDs. Results will be from one of these sources.",
                         "required": false,
                         "type": "array",
                         "items": {
                             "type": "string",
                             "format": "uuid"
                         },
-                        "collectionFormat": "multi"
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
                     },
                     {
                         "name": "types",
                         "in": "query",
-                        "description": "types",
+                        "description": "A list of Catalog Item Type IDs. Results will be one of these types.",
                         "required": false,
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "collectionFormat": "multi"
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
                     }
                 ],
                 "responses": {
@@ -348,7 +579,7 @@
                 ],
                 "summary": "Find a catalog item with specified id.",
                 "description": "Returns the catalog item with the specified id.",
-                "operationId": "getCatalogItemUsingGET",
+                "operationId": "getCatalogItemUsingGET_4",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -395,7 +626,7 @@
                 ],
                 "summary": "Set an icon or request limit to a catalog item.",
                 "description": "Updates a catalog item with specified icon id or request limit.",
-                "operationId": "updateCatalogItemUsingPATCH",
+                "operationId": "updateCatalogItemUsingPATCH_2",
                 "consumes": [
                     "application/json"
                 ],
@@ -450,7 +681,7 @@
                 ],
                 "summary": "Fetch catalog sources.",
                 "description": "Returns a paginated list of catalog sources.",
-                "operationId": "getPageUsingGET",
+                "operationId": "getPageUsingGET_2",
                 "parameters": [
                     {
                         "name": "$orderby",
@@ -529,9 +760,9 @@
                 "tags": [
                     "Catalog Sources"
                 ],
-                "summary": "Create a new catalog source or update an existing catalog source.",
+                "summary": "Create or update a catalog source. Creating or updating also imports (or re-imports) the associated catalog items.",
                 "description": "Creates a new catalog source or updates an existing catalog source based on the request body and imports catalog items from it.",
-                "operationId": "postUsingPOST",
+                "operationId": "postUsingPOST_2",
                 "consumes": [
                     "application/json"
                 ],
@@ -604,7 +835,7 @@
                 ],
                 "summary": "Fetch a specific catalog source for the given ID.",
                 "description": "Returns the catalog source with the supplied ID.",
-                "operationId": "getUsingGET",
+                "operationId": "getUsingGET_2",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -651,7 +882,7 @@
                 ],
                 "summary": "Delete catalog source.",
                 "description": "Deletes the catalog source with the supplied ID.",
-                "operationId": "deleteUsingDELETE",
+                "operationId": "deleteUsingDELETE_4",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -694,7 +925,7 @@
                 ],
                 "summary": "Fetch a list of catalog items.",
                 "description": "Returns a paginated list of catalog items.",
-                "operationId": "getCatalogItemsUsingGET_1",
+                "operationId": "getCatalogItemsUsingGET_5",
                 "parameters": [
                     {
                         "name": "$orderby",
@@ -801,7 +1032,7 @@
                 ],
                 "summary": "Find a catalog item with specified ID.",
                 "description": "Returns the catalog item with the specified ID.",
-                "operationId": "getCatalogItemUsingGET_1",
+                "operationId": "getCatalogItemUsingGET_5",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -856,9 +1087,9 @@
                 "tags": [
                     "Catalog Items"
                 ],
-                "summary": "Create a deployment.",
-                "description": "Creates a deployment from a catalog item.",
-                "operationId": "requestCatalogItemUsingPOST",
+                "summary": "Create deployments.",
+                "description": "Creates deployments from a catalog item.",
+                "operationId": "requestCatalogItemInstancesUsingPOST_1",
                 "consumes": [
                     "application/json"
                 ],
@@ -892,7 +1123,10 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/CatalogItemRequestResponse"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/CatalogItemRequestResponse"
+                            }
                         }
                     },
                     "400": {
@@ -925,7 +1159,7 @@
                 ],
                 "summary": "Create a request to calculate upfront price for a given catalog item.",
                 "description": "Returns upfront price response for a given catalog item.",
-                "operationId": "submitUpfrontPriceRequestForCatalogItemUsingPOST",
+                "operationId": "submitUpfrontPriceRequestForCatalogItemUsingPOST_2",
                 "consumes": [
                     "application/json"
                 ],
@@ -986,7 +1220,7 @@
                 ],
                 "summary": "Get a response with upfront prices for a given catalog item.",
                 "description": "Returns upfront prices of a given catalog item.",
-                "operationId": "getUpfrontPriceResponseForCatalogItemUsingGET",
+                "operationId": "getUpfrontPriceResponseForCatalogItemUsingGET_2",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -1043,7 +1277,7 @@
                 ],
                 "summary": "Fetch a list of catalog items with versions.",
                 "description": "Returns a paginated list of catalog item versions.",
-                "operationId": "getVersionsUsingGET",
+                "operationId": "getVersionsUsingGET_2",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -1110,7 +1344,7 @@
                 ],
                 "summary": "Fetch detailed catalog item version.",
                 "description": "Returns a detailed catalog item version.",
-                "operationId": "getVersionByIdUsingGET",
+                "operationId": "getVersionByIdUsingGET_2",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -1166,7 +1400,7 @@
                 ],
                 "summary": "Find all Catalog Item Types.",
                 "description": "Returns a paginated list of all available Catalog Item Types.",
-                "operationId": "getTypesUsingGET",
+                "operationId": "getTypesUsingGET_4",
                 "parameters": [
                     {
                         "name": "$orderby",
@@ -1233,7 +1467,7 @@
                 ],
                 "summary": "Fetch catalog item type associated with the specified ID.",
                 "description": "Returns the Catalog Item Type with the specified ID.",
-                "operationId": "getTypeByIdUsingGET",
+                "operationId": "getTypeByIdUsingGET_2",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -1280,8 +1514,8 @@
                     "Deployments"
                 ],
                 "summary": "Fetch all deployments.",
-                "description": "Returns a paginated list of deployments. Deployments with more than 100 resources is not supported.",
-                "operationId": "getDeploymentsUsingGET",
+                "description": "Returns a paginated list of deployments.",
+                "operationId": "getDeploymentsV3UsingGET",
                 "parameters": [
                     {
                         "name": "$orderby",
@@ -1362,7 +1596,7 @@
                     {
                         "name": "expand",
                         "in": "query",
-                        "description": "The expanded details of the requested comma separated objects. 'resources' option returns resources with all properties. Ex. blueprint, project",
+                        "description": "The expanded details of the requested comma separated objects. <br />'resources' option returns resources with summary properties.",
                         "required": false,
                         "type": "array",
                         "items": {
@@ -1386,48 +1620,11 @@
                         ]
                     },
                     {
-                        "name": "expandLastRequest",
-                        "in": "query",
-                        "description": "Expands deployment last request.",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "expandProject",
-                        "in": "query",
-                        "description": "The 'project' field of each resulting deployment will be retrieved.",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "expandResources",
-                        "in": "query",
-                        "description": "The 'resources' field of each resulting deployment will be retrieved.",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": false
-                    },
-                    {
                         "name": "expiresAt",
                         "in": "query",
                         "description": "Comma-separated start and end dates for the interval",
                         "required": false,
                         "type": "string",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "ids",
-                        "in": "query",
-                        "description": "A comma-separated list. Only deployments with these IDs will be included in the results.",
-                        "required": false,
-                        "type": "array",
-                        "items": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "collectionFormat": "multi",
                         "allowEmptyValue": false
                     },
                     {
@@ -1566,7 +1763,7 @@
                     "Deployments"
                 ],
                 "summary": "Returns the Deployment filters in context of given user.",
-                "operationId": "getDeploymentFiltersUsingGET",
+                "operationId": "getDeploymentFiltersUsingGET_2",
                 "parameters": [
                     {
                         "name": "ISO3Country",
@@ -1689,7 +1886,7 @@
                     "Deployments"
                 ],
                 "summary": "Returns the Deployment filter with the supplied ID.",
-                "operationId": "getDeploymentFilterByIdUsingGET",
+                "operationId": "getDeploymentFilterByIdUsingGET_2",
                 "parameters": [
                     {
                         "name": "$orderby",
@@ -1771,7 +1968,7 @@
                 ],
                 "summary": "Check if a deployment exists.",
                 "description": "Returns OK if a deployment with the supplied name exists.",
-                "operationId": "checkDeploymentNameExistsUsingGET",
+                "operationId": "checkDeploymentNameExistsUsingGET_2",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -1817,7 +2014,7 @@
                 ],
                 "summary": "Check if a deployment exists.",
                 "description": "Returns OK if a deployment with the supplied name exists.",
-                "operationId": "checkDeploymentNameUsingGET",
+                "operationId": "checkDeploymentNameUsingGET_2",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -1862,7 +2059,7 @@
                 ],
                 "summary": "Fetch a specific deployment.",
                 "description": "Returns the deployment with the supplied ID.",
-                "operationId": "getDeploymentByIdUsingGET",
+                "operationId": "getDeploymentByIdV3UsingGET",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -1890,7 +2087,7 @@
                     {
                         "name": "expand",
                         "in": "query",
-                        "description": "The expanded details of the requested comma separated objects. 'resources' option returns resources with all properties. Ex. blueprint, project",
+                        "description": "The expanded details of the requested comma separated objects. <br /> 'resources' option returns resources with summary properties",
                         "required": false,
                         "type": "array",
                         "items": {
@@ -1912,30 +2109,6 @@
                             "project",
                             "resources"
                         ]
-                    },
-                    {
-                        "name": "expandLastRequest",
-                        "in": "query",
-                        "description": "Expands deployment last request.",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "expandProject",
-                        "in": "query",
-                        "description": "The 'project' field of the deployment will be retrieved.",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "expandResources",
-                        "in": "query",
-                        "description": "The 'resources' field of the deployment will be retrieved.",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": false
                     }
                 ],
                 "responses": {
@@ -1967,7 +2140,7 @@
                 ],
                 "summary": "Delete a deployment. Effectively triggers a Delete Day2 operation",
                 "description": "Deletes the deployment with the supplied ID, cleans up the associated resources from the Cloud Provider.",
-                "operationId": "deleteDeploymentUsingDELETE",
+                "operationId": "deleteDeploymentUsingDELETE_2",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -2000,6 +2173,9 @@
                     },
                     "404": {
                         "description": "Not Found"
+                    },
+                    "409": {
+                        "description": "Conflict"
                     }
                 },
                 "security": [
@@ -2017,7 +2193,7 @@
                 ],
                 "summary": "Update deployment.",
                 "description": "Updates the deployment with the supplied ID.",
-                "operationId": "patchDeploymentUsingPATCH",
+                "operationId": "patchDeploymentUsingPATCH_2",
                 "consumes": [
                     "application/json"
                 ],
@@ -2081,7 +2257,7 @@
                 ],
                 "summary": "Fetch deployment available actions.",
                 "description": "Returns the complete list of available actions that can be performed on a given deployment.",
-                "operationId": "getDeploymentActionsUsingGET",
+                "operationId": "getDeploymentActionsUsingGET_2",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -2133,7 +2309,7 @@
                 ],
                 "summary": "Fetch deployment action.",
                 "description": "Returns an action for the deployment specified by its Deployment ID and Action ID.",
-                "operationId": "getDeploymentActionUsingGET",
+                "operationId": "getDeploymentActionUsingGET_2",
                 "parameters": [
                     {
                         "name": "actionId",
@@ -2189,7 +2365,7 @@
                 ],
                 "summary": "Fetch a specific deployment's expense history.",
                 "description": "Returns the deployment expense history with the supplied ID.",
-                "operationId": "getDeploymentExpenseHistoryByIdUsingGET",
+                "operationId": "getDeploymentExpenseHistoryByIdUsingGET_2",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -2264,7 +2440,7 @@
                 ],
                 "summary": "Fetch deployment requests.",
                 "description": "Returns the requests for the deployment.",
-                "operationId": "getDeploymentRequestsUsingGET",
+                "operationId": "getDeploymentRequestsUsingGET_2",
                 "parameters": [
                     {
                         "name": "$orderby",
@@ -2356,7 +2532,7 @@
                 ],
                 "summary": "Deployment action request.",
                 "description": "Submit a deployment action request",
-                "operationId": "submitDeploymentActionRequestUsingPOST",
+                "operationId": "submitDeploymentActionRequestUsingPOST_2",
                 "consumes": [
                     "application/json"
                 ],
@@ -2401,6 +2577,9 @@
                     },
                     "404": {
                         "description": "Not Found"
+                    },
+                    "409": {
+                        "description": "Conflict"
                     }
                 },
                 "security": [
@@ -2420,7 +2599,7 @@
                 ],
                 "summary": "Fetch resources associated with a deployment.",
                 "description": "Returns a paginated list of resources corresponding to the deployment with the supplied ID.",
-                "operationId": "getDeploymentResourcesUsingGET",
+                "operationId": "getDeploymentResourcesUsingGET_2",
                 "parameters": [
                     {
                         "name": "$orderby",
@@ -2552,7 +2731,7 @@
                 ],
                 "summary": "Fetch resource associated with a deployment.",
                 "description": "Returns the resource with the specified ID that is correlated with the supplied deployment.",
-                "operationId": "getResourceByIdUsingGET",
+                "operationId": "getResourceByIdUsingGET_4",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -2625,7 +2804,7 @@
                 ],
                 "summary": "Delete resource associated with a deployment. Effectively triggers a Delete Day2 operation.",
                 "description": "Deletes the resource with the specified ID and attempts to delete resource from the Cloud Provider.",
-                "operationId": "deleteResourceUsingDELETE",
+                "operationId": "deleteResourceUsingDELETE_2",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -2685,7 +2864,7 @@
                 ],
                 "summary": "Fetch available resource actions.",
                 "description": "Returns the complete list of available actions that can be performed on a given resource.",
-                "operationId": "getResourceActionsUsingGET",
+                "operationId": "getResourceActionsUsingGET_4",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -2745,7 +2924,7 @@
                 ],
                 "summary": "Fetch resource action.",
                 "description": "Returns an action for the resource specified by its Resource ID and Action ID.",
-                "operationId": "getResourceActionUsingGET",
+                "operationId": "getResourceActionUsingGET_4",
                 "parameters": [
                     {
                         "name": "actionId",
@@ -2809,7 +2988,7 @@
                 ],
                 "summary": "Resource action request.",
                 "description": "Submit a resource action request.",
-                "operationId": "submitResourceActionRequestUsingPOST",
+                "operationId": "submitResourceActionRequestUsingPOST_4",
                 "consumes": [
                     "application/json"
                 ],
@@ -2862,6 +3041,9 @@
                     },
                     "404": {
                         "description": "Not Found"
+                    },
+                    "409": {
+                        "description": "Conflict"
                     }
                 },
                 "security": [
@@ -2880,7 +3062,7 @@
                     "Deployments"
                 ],
                 "summary": "Returns a count of deployments using the project.",
-                "operationId": "getDeploymentsForProjectUsingGET",
+                "operationId": "getDeploymentsForProjectUsingGET_2",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -2923,7 +3105,7 @@
                 ],
                 "summary": "Get the Request.",
                 "description": "Returns the request with the given ID.",
-                "operationId": "getRequestUsingGET",
+                "operationId": "getRequestUsingGET_2",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -2970,7 +3152,7 @@
                 ],
                 "summary": "Submit action on requests. Allowable values: cancel, dismiss. ",
                 "description": "Cancel can be submitted on In-progress requests and Dismiss can be submitted on Failed requests.",
-                "operationId": "actionDeploymentRequestUsingPOST",
+                "operationId": "actionDeploymentRequestUsingPOST_2",
                 "consumes": [
                     "application/json"
                 ],
@@ -3034,7 +3216,7 @@
                 ],
                 "summary": "Fetch Request events.",
                 "description": "Returns all the events for a request.",
-                "operationId": "getRequestEventsUsingGET",
+                "operationId": "getRequestEventsUsingGET_2",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -3083,7 +3265,7 @@
                 ],
                 "summary": "Fetch Event logs.",
                 "description": "Returns the logs for an event.",
-                "operationId": "getEventLogsUsingGET",
+                "operationId": "getEventLogsUsingGET_2",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -3149,7 +3331,7 @@
                 ],
                 "summary": "Fetch Event logs content as a file.",
                 "description": "Returns the log file for an event.",
-                "operationId": "getEventLogsContentUsingGET",
+                "operationId": "getEventLogsContentUsingGET_2",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -3206,7 +3388,7 @@
                 ],
                 "summary": "Fetch all Resource Types.",
                 "description": "Returns a paginated list of Resource Types.",
-                "operationId": "listResourceTypesUsingGET",
+                "operationId": "listResourceTypesUsingGET_2",
                 "parameters": [
                     {
                         "name": "$orderby",
@@ -3321,7 +3503,7 @@
                 ],
                 "summary": "Fetch a specific Resource type.",
                 "description": "Returns the Resource type with the supplied ID.",
-                "operationId": "getResourceTypeUsingGET",
+                "operationId": "getResourceTypeUsingGET_2",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -3369,7 +3551,7 @@
                 ],
                 "summary": "Fetch all resources.",
                 "description": "Returns a paginated list of resources.",
-                "operationId": "getResourcesUsingGET",
+                "operationId": "getResourcesUsingGET_2",
                 "parameters": [
                     {
                         "name": "$orderby",
@@ -3517,6 +3699,54 @@
                     }
                 ],
                 "deprecated": false
+            },
+            "post": {
+                "tags": [
+                    "Resources"
+                ],
+                "summary": "Create a new resource.",
+                "description": "Returns the resource request response.",
+                "operationId": "createResourceUsingPOST_2",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "resource",
+                        "description": "The resource spec to create a resource.",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/ResourceSpecification"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ResourceRequestResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
             }
         },
         "/deployment/api/resources/filters": {
@@ -3525,7 +3755,7 @@
                     "Resources"
                 ],
                 "summary": "Returns the Resource filters in context of given user.",
-                "operationId": "getResourceFiltersUsingGET",
+                "operationId": "getResourceFiltersUsingGET_2",
                 "parameters": [
                     {
                         "name": "ISO3Country",
@@ -3589,6 +3819,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "resourceTypes",
+                        "in": "query",
+                        "description": "A comma-separated list. Only Resources with these types will be included in the results.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
+                    },
+                    {
                         "name": "script",
                         "in": "query",
                         "required": false,
@@ -3648,7 +3890,7 @@
                     "Resources"
                 ],
                 "summary": "Returns the Resource filter with the supplied ID.",
-                "operationId": "getResourceFilterByIdUsingGET",
+                "operationId": "getResourceFilterByIdUsingGET_2",
                 "parameters": [
                     {
                         "name": "$orderby",
@@ -3694,6 +3936,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "resourceTypes",
+                        "in": "query",
+                        "description": "A comma-separated list. Only Resources with these types will be included in the results.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
+                    },
+                    {
                         "name": "search",
                         "in": "query",
                         "description": "Search string for filters",
@@ -3730,7 +3984,7 @@
                 ],
                 "summary": "Fetch a specific resource.",
                 "description": "Returns the resource with the supplied ID.",
-                "operationId": "getResourceByIdUsingGET_1",
+                "operationId": "getResourceByIdUsingGET_5",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -3798,7 +4052,7 @@
                 ],
                 "summary": "Fetch available resource actions.",
                 "description": "Returns the complete list of available actions that can be performed on a given resource.",
-                "operationId": "getResourceActionsUsingGET_1",
+                "operationId": "getResourceActionsUsingGET_5",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -3850,7 +4104,7 @@
                 ],
                 "summary": "Fetch resource action.",
                 "description": "Returns an action for the resource specified by its Resource ID and Action ID.",
-                "operationId": "getResourceActionUsingGET_1",
+                "operationId": "getResourceActionUsingGET_5",
                 "parameters": [
                     {
                         "name": "actionId",
@@ -3905,7 +4159,7 @@
                     "Requests"
                 ],
                 "summary": "Get all requests for a resource",
-                "operationId": "listResourceRequestsUsingGET",
+                "operationId": "listResourceRequestsUsingGET_2",
                 "parameters": [
                     {
                         "name": "$orderby",
@@ -3981,7 +4235,7 @@
                 ],
                 "summary": "Resource action request.",
                 "description": "Submit a resource action request.",
-                "operationId": "submitResourceActionRequestUsingPOST_1",
+                "operationId": "submitResourceActionRequestUsingPOST_5",
                 "consumes": [
                     "application/json"
                 ],
@@ -4026,6 +4280,9 @@
                     },
                     "404": {
                         "description": "Not Found"
+                    },
+                    "409": {
+                        "description": "Conflict"
                     }
                 },
                 "security": [
@@ -4045,7 +4302,7 @@
                 ],
                 "summary": "Upload an icon",
                 "description": "Create an icon.",
-                "operationId": "upload",
+                "operationId": "upload_2",
                 "consumes": [
                     "multipart/form-data"
                 ],
@@ -4093,7 +4350,7 @@
                 ],
                 "summary": "Download an icon",
                 "description": "Download an existing icon by its unique id.",
-                "operationId": "download",
+                "operationId": "download_2",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -4141,7 +4398,7 @@
                 ],
                 "summary": "Delete an icon",
                 "description": "Delete an existing icon by its unique id.",
-                "operationId": "delete",
+                "operationId": "delete_2",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -4177,6 +4434,172 @@
                 "deprecated": false
             }
         },
+        "/notification/api/scenario-configs": {
+            "get": {
+                "tags": [
+                    "Notification Scenario Configuration"
+                ],
+                "summary": "Retrieves all notification scenario configurations of an organization",
+                "operationId": "getAllScenarioConfigsUsingGET_2",
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfNotificationScenarioConfig"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            },
+            "post": {
+                "tags": [
+                    "Notification Scenario Configuration"
+                ],
+                "summary": "Creates or updates a notification scenario configuration of an organization",
+                "operationId": "createOrUpdateUsingPOST_2",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "config",
+                        "description": "The notification scenario configuration to be created or updated",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/NotificationScenarioConfig"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/NotificationScenarioConfig"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/notification/api/scenario-configs/{id}": {
+            "delete": {
+                "tags": [
+                    "Notification Scenario Configuration"
+                ],
+                "summary": "Deletes a notification scenario configuration of an organization",
+                "operationId": "deleteUsingDELETE_5",
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Notification scenario Id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
+        "/notification/api/scenario-configs/{scenarioId}": {
+            "get": {
+                "tags": [
+                    "Notification Scenario Configuration"
+                ],
+                "summary": "Retrieves a notification scenario configuration by scenario id of an organization",
+                "operationId": "getScenarioConfigUsingGET_2",
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "scenarioId",
+                        "in": "path",
+                        "description": "Notification Scenario Id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/NotificationScenarioConfig"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
         "/policy/api/policies": {
             "get": {
                 "tags": [
@@ -4184,7 +4607,7 @@
                 ],
                 "summary": "Returns a paginated list of policies.",
                 "description": "Find all the policies associated with current org.",
-                "operationId": "getPoliciesUsingGET_1",
+                "operationId": "getPoliciesUsingGET_5",
                 "parameters": [
                     {
                         "name": "$orderby",
@@ -4269,7 +4692,7 @@
                 ],
                 "summary": "Trigger a policy dry-run.",
                 "description": "Dry-run an existing policy to rehearse actual policy effect on application.",
-                "operationId": "dryRunPolicyUsingPOST",
+                "operationId": "dryRunPolicyUsingPOST_2",
                 "consumes": [
                     "application/json"
                 ],
@@ -4319,7 +4742,7 @@
                 ],
                 "summary": "Returns a specified policy.",
                 "description": "Find a specific policy based on the input policy id.",
-                "operationId": "getPolicyUsingGET_1",
+                "operationId": "getPolicyUsingGET_5",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -4367,7 +4790,7 @@
                 ],
                 "summary": "Delete a policy",
                 "description": "Delete a specified policy corresponding to its unique id.",
-                "operationId": "deletePolicyUsingDELETE_1",
+                "operationId": "deletePolicyUsingDELETE_5",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -4407,7 +4830,7 @@
                 ],
                 "summary": "Fetch a list of policy decisions.",
                 "description": "Returns a paginated list of policy decisions. If a dryRunId is provided, the return value has a field indicating whether the dry run is complete.",
-                "operationId": "getDecisionsUsingGET",
+                "operationId": "getDecisionsUsingGET_2",
                 "parameters": [
                     {
                         "name": "$orderby",
@@ -4503,7 +4926,7 @@
                 ],
                 "summary": "Returns a policy decision by id.",
                 "description": "Find a specific policy decision based on the input policy decision id.",
-                "operationId": "getDecisionByIdUsingGET",
+                "operationId": "getDecisionByIdUsingGET_2",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -4546,7 +4969,7 @@
                 ],
                 "summary": "Returns a paginated list of policy types.",
                 "description": "Find all the policy types available in the current org.",
-                "operationId": "getTypesUsingGET_1",
+                "operationId": "getTypesUsingGET_5",
                 "parameters": [
                     {
                         "name": "$orderby",
@@ -4618,7 +5041,7 @@
                 ],
                 "summary": "Returns the policy type with the specified ID.",
                 "description": "Find a specific policy type based on the input policy type id.",
-                "operationId": "getPolicyTypeByIdUsingGET",
+                "operationId": "getPolicyTypeByIdUsingGET_2",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -4660,7 +5083,7 @@
                 ],
                 "summary": "Returns the policy scope schema for the type with the specified ID.",
                 "description": "Return the policy scope schema for the given policy type.",
-                "operationId": "getPolicyTypeScopeSchemaUsingGET",
+                "operationId": "getPolicyTypeScopeSchemaUsingGET_2",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -4702,7 +5125,7 @@
                 ],
                 "summary": "On demand Perspective Sync",
                 "description": "To do on demand perspective sync for within the given org",
-                "operationId": "syncPerspectiveGroupUsingPOST",
+                "operationId": "syncPerspectiveGroupUsingPOST_2",
                 "consumes": [
                     "application/json"
                 ],
@@ -4749,7 +5172,7 @@
                 ],
                 "summary": "Fetch all pricing card assignment for private cloud",
                 "description": "Returns a paginated list of pricing card assignments",
-                "operationId": "getAllMeteringPolicyAssignmentsUsingGET",
+                "operationId": "getAllMeteringPolicyAssignmentsUsingGET_2",
                 "parameters": [
                     {
                         "name": "$orderby",
@@ -4823,7 +5246,7 @@
                 ],
                 "summary": "Create a new pricing card assignment",
                 "description": "Create a new pricing card policy assignment based on request body and validate its field according to business rules. Request body with ALL entityType will delete the older assignments for the given pricingCardId",
-                "operationId": "createMeteringPolicyAssignmentUsingPOST",
+                "operationId": "createMeteringPolicyAssignmentUsingPOST_2",
                 "consumes": [
                     "application/json"
                 ],
@@ -4882,7 +5305,7 @@
                 ],
                 "summary": "Fetch pricing card assignment strategy for the Org",
                 "description": "Returns a pricing card assignment strategy for the Org",
-                "operationId": "getMeteringAssignmentStrategyUsingGET",
+                "operationId": "getMeteringAssignmentStrategyUsingGET_2",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -4921,7 +5344,7 @@
                 ],
                 "summary": "Selecting the new pricing card assignment strategy,PROJECT or CLOUDZONE are possible values can be used while creating strategy. Also there can be only one strategy for a given org at a given point of time",
                 "description": "Create a new pricing card assignment strategy based on request body and validate its field according to business rules.",
-                "operationId": "createMeteringAssignmentStrategyUsingPOST",
+                "operationId": "createMeteringAssignmentStrategyUsingPOST_2",
                 "consumes": [
                     "application/json"
                 ],
@@ -4977,7 +5400,7 @@
                     "Pricing Card Assignments"
                 ],
                 "summary": "Updates the pricing card assignment strategy for the Org.",
-                "operationId": "changeMeteringAssignmentStrategyUsingPATCH",
+                "operationId": "changeMeteringAssignmentStrategyUsingPATCH_2",
                 "consumes": [
                     "application/json"
                 ],
@@ -5027,7 +5450,7 @@
                 ],
                 "summary": "Fetch pricing card assignment for private cloud by id",
                 "description": "Returns a pricing card assignments by id",
-                "operationId": "getMeteringPolicyAssignmentUsingGET",
+                "operationId": "getMeteringPolicyAssignmentUsingGET_2",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -5074,7 +5497,7 @@
                 ],
                 "summary": "Delete the pricing card assignment with specified id",
                 "description": "Deletes the pricing card assignment with the specified id",
-                "operationId": "deleteMeteringPolicyAssignmentUsingDELETE",
+                "operationId": "deleteMeteringPolicyAssignmentUsingDELETE_2",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -5117,7 +5540,7 @@
                     "Pricing Card Assignments"
                 ],
                 "summary": "Updates the pricing card assignment id with the supplied id. Request body with ALL entityType will delete the older assignments for the given pricingCardId",
-                "operationId": "patchMeteringPolicyAssignmentUsingPATCH",
+                "operationId": "patchMeteringPolicyAssignmentUsingPATCH_2",
                 "consumes": [
                     "application/json"
                 ],
@@ -5175,7 +5598,7 @@
                 ],
                 "summary": "Fetch all pricing cards for private-policy cloud",
                 "description": "Returns a paginated list of pricing cards",
-                "operationId": "getPoliciesUsingGET",
+                "operationId": "getPoliciesUsingGET_4",
                 "parameters": [
                     {
                         "name": "$orderby",
@@ -5264,7 +5687,7 @@
                 ],
                 "summary": "Create a new pricing card",
                 "description": "Create a new pricing card based on request body and validate its field according to business rules.",
-                "operationId": "createPolicyUsingPOST",
+                "operationId": "createPolicyUsingPOST_2",
                 "consumes": [
                     "application/json"
                 ],
@@ -5320,7 +5743,7 @@
                 ],
                 "summary": "Find the pricing card with specified Id",
                 "description": "Returns the pricing card with the specified id",
-                "operationId": "getPolicyUsingGET",
+                "operationId": "getPolicyUsingGET_4",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -5367,7 +5790,7 @@
                 ],
                 "summary": "Update the pricing card",
                 "description": "Updates the pricing card with the specified Id",
-                "operationId": "updatePolicyUsingPUT",
+                "operationId": "updatePolicyUsingPUT_2",
                 "consumes": [
                     "application/json"
                 ],
@@ -5426,7 +5849,7 @@
                 ],
                 "summary": "Delete the pricing card with specified Id",
                 "description": "Deletes the pricing card with the specified id",
-                "operationId": "deletePolicyUsingDELETE",
+                "operationId": "deletePolicyUsingDELETE_4",
                 "parameters": [
                     {
                         "name": "apiVersion",
@@ -5487,6 +5910,10 @@
                     "minimum": -128,
                     "maximum": 127
                 },
+                "formId": {
+                    "type": "string",
+                    "description": "form id"
+                },
                 "iconId": {
                     "type": "string",
                     "description": "icon id"
@@ -5494,6 +5921,138 @@
             },
             "title": "AdminCatalogItemPatch",
             "description": "A patch to update attributes for a catalog item"
+        },
+        "Application": {
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Creation time"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the application"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Id of the application"
+                },
+                "lastUpdatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Last update time"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the application"
+                },
+                "orgId": {
+                    "type": "string"
+                },
+                "resources": {
+                    "type": "array",
+                    "description": "Resources of the application.",
+                    "items": {
+                        "$ref": "#/definitions/ApplicationResource"
+                    }
+                },
+                "tiers": {
+                    "type": "array",
+                    "description": "Tiers of the application.",
+                    "items": {
+                        "$ref": "#/definitions/ApplicationTier"
+                    }
+                }
+            },
+            "title": "Application",
+            "description": "A group of resources such as machines, network, software, etc... typically provisioned together to deliver a complete/workable application."
+        },
+        "ApplicationResource": {
+            "type": "object",
+            "required": [
+                "name",
+                "type"
+            ],
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Creation time"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A description of the resource"
+                },
+                "expense": {
+                    "description": "Expense associated with the deployment.",
+                    "readOnly": true,
+                    "$ref": "#/definitions/Expense"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the resource"
+                },
+                "origin": {
+                    "type": "string",
+                    "description": "Origin of the resource",
+                    "enum": [
+                        "DISCOVERED",
+                        "ONBOARDED",
+                        "MIGRATED"
+                    ]
+                },
+                "properties": {
+                    "type": "object"
+                },
+                "syncStatus": {
+                    "type": "string",
+                    "description": "The current sync status",
+                    "enum": [
+                        "SUCCESS",
+                        "MISSING",
+                        "STALE"
+                    ]
+                },
+                "tier": {
+                    "$ref": "#/definitions/ApplicationTier"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of the resource"
+                }
+            },
+            "title": "ApplicationResource",
+            "description": "A resource part of an application."
+        },
+        "ApplicationTier": {
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "A description of the tier"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the tier"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the tier"
+                }
+            },
+            "title": "ApplicationTier",
+            "description": "Application tier."
         },
         "CatalogItem": {
             "type": "object",
@@ -6238,6 +6797,7 @@
                     "type": "string",
                     "description": "Origin of the resource",
                     "enum": [
+                        "DISCOVERED",
                         "ONBOARDED",
                         "MIGRATED"
                     ]
@@ -6277,6 +6837,11 @@
                 "description": {
                     "type": "string",
                     "description": "New description of the deployment"
+                },
+                "iconId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "New iconid of the deployment"
                 },
                 "name": {
                     "type": "string",
@@ -6799,6 +7364,37 @@
             },
             "title": "NamedMeteringItem"
         },
+        "NotificationScenarioConfig": {
+            "type": "object",
+            "required": [
+                "enabled",
+                "scenarioId"
+            ],
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Notification scenario enabled"
+                },
+                "scenarioCategory": {
+                    "type": "string",
+                    "description": "Notification scenario category"
+                },
+                "scenarioDescription": {
+                    "type": "string",
+                    "description": "Notification scenario description"
+                },
+                "scenarioId": {
+                    "type": "string",
+                    "description": "Notification scenario id"
+                },
+                "scenarioName": {
+                    "type": "string",
+                    "description": "Notification scenario name"
+                }
+            },
+            "title": "NotificationScenarioConfig",
+            "description": "Represents a notification configuration."
+        },
         "OneTimeMetering": {
             "type": "object",
             "properties": {
@@ -6832,6 +7428,50 @@
             },
             "title": "Page",
             "description": "Project callback response containing count of deployments"
+        },
+        "PageOfApplication": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Application"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfApplication"
         },
         "PageOfCatalogItem": {
             "type": "object",
@@ -7272,6 +7912,50 @@
                 }
             },
             "title": "PageOfMeteringPolicyAssignment"
+        },
+        "PageOfNotificationScenarioConfig": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/NotificationScenarioConfig"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfNotificationScenarioConfig"
         },
         "PageOfPolicy": {
             "type": "object",
@@ -7950,6 +8634,7 @@
                 },
                 "deploymentId": {
                     "type": "string",
+                    "format": "uuid",
                     "description": "Resource deployment id"
                 },
                 "description": {
@@ -7978,6 +8663,7 @@
                     "type": "string",
                     "description": "Origin of the resource",
                     "enum": [
+                        "DISCOVERED",
                         "ONBOARDED",
                         "MIGRATED"
                     ]
@@ -8103,6 +8789,62 @@
                 }
             },
             "title": "ResourceReference"
+        },
+        "ResourceRequestResponse": {
+            "type": "object",
+            "properties": {
+                "deploymentId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Identifier of the requested deployment id to which the request applies to"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Project identifier"
+                },
+                "requestId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Request identifier"
+                },
+                "resourceId": {
+                    "type": "string",
+                    "description": "Resource ID"
+                }
+            },
+            "title": "ResourceRequestResponse",
+            "description": "Resource request response"
+        },
+        "ResourceSpecification": {
+            "type": "object",
+            "required": [
+                "name",
+                "type"
+            ],
+            "properties": {
+                "deploymentId": {
+                    "type": "string",
+                    "description": "Resource deployment id"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the resource"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Resource project id"
+                },
+                "properties": {
+                    "type": "object",
+                    "description": "Resource properties"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of the resource"
+                }
+            },
+            "title": "ResourceSpecification",
+            "description": "Resource spec to create resource"
         },
         "ResourceType": {
             "type": "object",

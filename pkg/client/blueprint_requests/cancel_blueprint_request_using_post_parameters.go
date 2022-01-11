@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewCancelBlueprintRequestUsingPOSTParams creates a new CancelBlueprintRequestUsingPOSTParams object,
@@ -66,14 +65,6 @@ type CancelBlueprintRequestUsingPOSTParams struct {
 	*/
 	APIVersion *string
 
-	/* Force.
-
-	   Force cancellation of in progress tasks
-
-	   Default: true
-	*/
-	Force *bool
-
 	/* RequestID.
 
 	   requestId
@@ -99,18 +90,7 @@ func (o *CancelBlueprintRequestUsingPOSTParams) WithDefaults() *CancelBlueprintR
 //
 // All values with no default are reset to their zero value.
 func (o *CancelBlueprintRequestUsingPOSTParams) SetDefaults() {
-	var (
-		forceDefault = bool(true)
-	)
-
-	val := CancelBlueprintRequestUsingPOSTParams{
-		Force: &forceDefault,
-	}
-
-	val.timeout = o.timeout
-	val.Context = o.Context
-	val.HTTPClient = o.HTTPClient
-	*o = val
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the cancel blueprint request using p o s t params
@@ -157,17 +137,6 @@ func (o *CancelBlueprintRequestUsingPOSTParams) SetAPIVersion(aPIVersion *string
 	o.APIVersion = aPIVersion
 }
 
-// WithForce adds the force to the cancel blueprint request using p o s t params
-func (o *CancelBlueprintRequestUsingPOSTParams) WithForce(force *bool) *CancelBlueprintRequestUsingPOSTParams {
-	o.SetForce(force)
-	return o
-}
-
-// SetForce adds the force to the cancel blueprint request using p o s t params
-func (o *CancelBlueprintRequestUsingPOSTParams) SetForce(force *bool) {
-	o.Force = force
-}
-
 // WithRequestID adds the requestID to the cancel blueprint request using p o s t params
 func (o *CancelBlueprintRequestUsingPOSTParams) WithRequestID(requestID strfmt.UUID) *CancelBlueprintRequestUsingPOSTParams {
 	o.SetRequestID(requestID)
@@ -199,23 +168,6 @@ func (o *CancelBlueprintRequestUsingPOSTParams) WriteToRequest(r runtime.ClientR
 		if qAPIVersion != "" {
 
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.Force != nil {
-
-		// query param force
-		var qrForce bool
-
-		if o.Force != nil {
-			qrForce = *o.Force
-		}
-		qForce := swag.FormatBool(qrForce)
-		if qForce != "" {
-
-			if err := r.SetQueryParam("force", qForce); err != nil {
 				return err
 			}
 		}
