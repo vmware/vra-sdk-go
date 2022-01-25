@@ -82,6 +82,8 @@ func (m *PageOfCatalogItemVersion) validateContent(formats strfmt.Registry) erro
 			if err := m.Content[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("content" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("content" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -101,6 +103,8 @@ func (m *PageOfCatalogItemVersion) validateSort(formats strfmt.Registry) error {
 		if err := m.Sort.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("sort")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sort")
 			}
 			return err
 		}
@@ -135,6 +139,8 @@ func (m *PageOfCatalogItemVersion) contextValidateContent(ctx context.Context, f
 			if err := m.Content[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("content" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("content" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -151,6 +157,8 @@ func (m *PageOfCatalogItemVersion) contextValidateSort(ctx context.Context, form
 		if err := m.Sort.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("sort")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sort")
 			}
 			return err
 		}

@@ -96,6 +96,8 @@ func (m *CatalogItemUpfrontPriceResponse) validateResourcePriceDetails(formats s
 			if err := m.ResourcePriceDetails[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("resourcePriceDetails" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("resourcePriceDetails" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -269,6 +271,8 @@ func (m *CatalogItemUpfrontPriceResponse) contextValidateResourcePriceDetails(ct
 			if err := m.ResourcePriceDetails[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("resourcePriceDetails" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("resourcePriceDetails" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

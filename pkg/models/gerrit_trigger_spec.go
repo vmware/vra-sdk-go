@@ -347,6 +347,8 @@ func (m *gerritTriggerSpec) validateConfigurations(formats strfmt.Registry) erro
 			if err := m.configurationsField[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("configurations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("configurations" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -380,6 +382,8 @@ func (m *gerritTriggerSpec) validateExclusions(formats strfmt.Registry) error {
 			if err := m.exclusionsField[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("exclusions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("exclusions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -413,6 +417,8 @@ func (m *gerritTriggerSpec) validateInclusions(formats strfmt.Registry) error {
 			if err := m.inclusionsField[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("inclusions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("inclusions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -471,6 +477,8 @@ func (m *gerritTriggerSpec) contextValidateConfigurations(ctx context.Context, f
 			if err := m.configurationsField[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("configurations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("configurations" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -489,6 +497,8 @@ func (m *gerritTriggerSpec) contextValidateExclusions(ctx context.Context, forma
 			if err := m.exclusionsField[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("exclusions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("exclusions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -507,6 +517,8 @@ func (m *gerritTriggerSpec) contextValidateInclusions(ctx context.Context, forma
 			if err := m.inclusionsField[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("inclusions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("inclusions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

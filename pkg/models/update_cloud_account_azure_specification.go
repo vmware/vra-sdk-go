@@ -12,18 +12,23 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
-// UpdateCloudAccountAzureSpecification update cloud account azure specification
+// UpdateCloudAccountAzureSpecification Specification for a Azure cloud account.<br><br>A cloud account identifies a cloud account type and an account-specific deployment region or data center where the associated cloud account resources are hosted.
 //
 // swagger:model UpdateCloudAccountAzureSpecification
 type UpdateCloudAccountAzureSpecification struct {
 
-	// client application Id
-	ClientApplicationID string `json:"clientApplicationId,omitempty"`
+	// Azure Client Application ID
+	// Example: 3287dd6e-76d8-41b7-9856-2584969e7739
+	// Required: true
+	ClientApplicationID *string `json:"clientApplicationId"`
 
-	// client application secret key
-	ClientApplicationSecretKey string `json:"clientApplicationSecretKey,omitempty"`
+	// Azure Client Application Secret Key
+	// Example: GDfdasDasdASFas321das32cas2x3dsXCSA76xdcasg=
+	// Required: true
+	ClientApplicationSecretKey *string `json:"clientApplicationSecretKey"`
 
 	// Create default cloud zones for the enabled regions.
 	// Example: true
@@ -35,24 +40,42 @@ type UpdateCloudAccountAzureSpecification struct {
 	// A human-friendly name used as an identifier in APIs that support this option.
 	Name string `json:"name,omitempty"`
 
-	// A set of Region names to enable provisioning on. Refer to /iaas/cloud-accounts-aws/region-enumeration. Deprecated - use regions to define enabled regions.
-	// Example: [\"westus\", \"eastus\"]
-	RegionIds []string `json:"regionIds"`
-
-	// A set of regions to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration.
+	// A set of regions to enable provisioning on.Refer to /iaas/api/cloud-accounts/region-enumeration.
 	// Example: [{ \"name\": \"East Asia\",\"externalRegionId\": \"eastasia\"}]
 	Regions []*RegionSpecification `json:"regions"`
 
+	// Azure Subscribtion ID
+	// Example: 064865b2-e914-4717-b415-8806d17948f7
+	// Required: true
+	SubscriptionID *string `json:"subscriptionId"`
+
 	// A set of tag keys and optional values to set on the Cloud Account
-	// Example: [{\"key\": \"env\", \"value\": \"dev\"}]
+	// Example: [ { \"key\" : \"env\", \"value\": \"dev\" } ]
 	Tags []*Tag `json:"tags"`
+
+	// Azure Tenant ID
+	// Example: 9a13d920-4691-4e2d-b5d5-9c4c1279bc9a
+	// Required: true
+	TenantID *string `json:"tenantId"`
 }
 
 // Validate validates this update cloud account azure specification
 func (m *UpdateCloudAccountAzureSpecification) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateClientApplicationID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateClientApplicationSecretKey(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateRegions(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSubscriptionID(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -60,9 +83,31 @@ func (m *UpdateCloudAccountAzureSpecification) Validate(formats strfmt.Registry)
 		res = append(res, err)
 	}
 
+	if err := m.validateTenantID(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *UpdateCloudAccountAzureSpecification) validateClientApplicationID(formats strfmt.Registry) error {
+
+	if err := validate.Required("clientApplicationId", "body", m.ClientApplicationID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *UpdateCloudAccountAzureSpecification) validateClientApplicationSecretKey(formats strfmt.Registry) error {
+
+	if err := validate.Required("clientApplicationSecretKey", "body", m.ClientApplicationSecretKey); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -80,11 +125,22 @@ func (m *UpdateCloudAccountAzureSpecification) validateRegions(formats strfmt.Re
 			if err := m.Regions[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("regions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("regions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *UpdateCloudAccountAzureSpecification) validateSubscriptionID(formats strfmt.Registry) error {
+
+	if err := validate.Required("subscriptionId", "body", m.SubscriptionID); err != nil {
+		return err
 	}
 
 	return nil
@@ -104,11 +160,22 @@ func (m *UpdateCloudAccountAzureSpecification) validateTags(formats strfmt.Regis
 			if err := m.Tags[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *UpdateCloudAccountAzureSpecification) validateTenantID(formats strfmt.Registry) error {
+
+	if err := validate.Required("tenantId", "body", m.TenantID); err != nil {
+		return err
 	}
 
 	return nil
@@ -140,6 +207,8 @@ func (m *UpdateCloudAccountAzureSpecification) contextValidateRegions(ctx contex
 			if err := m.Regions[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("regions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("regions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -158,6 +227,8 @@ func (m *UpdateCloudAccountAzureSpecification) contextValidateTags(ctx context.C
 			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

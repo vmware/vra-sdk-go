@@ -303,6 +303,8 @@ func (m *projectSpecification) validateAdministrators(formats strfmt.Registry) e
 		if err := m.administratorsField[i].Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("administrators" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("administrators" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -324,6 +326,11 @@ func (m *projectSpecification) validateConstraints(formats strfmt.Registry) erro
 		}
 		if val, ok := m.Constraints()[k]; ok {
 			if err := val.Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("constraints" + "." + k)
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("constraints" + "." + k)
+				}
 				return err
 			}
 		}
@@ -341,6 +348,8 @@ func (m *projectSpecification) validateCost(formats strfmt.Registry) error {
 	if err := m.Cost().Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("cost")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("cost")
 		}
 		return err
 	}
@@ -358,6 +367,8 @@ func (m *projectSpecification) validateMembers(formats strfmt.Registry) error {
 		if err := m.membersField[i].Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("members" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("members" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -386,6 +397,8 @@ func (m *projectSpecification) validateViewers(formats strfmt.Registry) error {
 		if err := m.viewersField[i].Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("viewers" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("viewers" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -432,6 +445,8 @@ func (m *projectSpecification) contextValidateAdministrators(ctx context.Context
 		if err := m.administratorsField[i].ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("administrators" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("administrators" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -461,6 +476,8 @@ func (m *projectSpecification) contextValidateCost(ctx context.Context, formats 
 	if err := m.Cost().ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("cost")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("cost")
 		}
 		return err
 	}
@@ -475,6 +492,8 @@ func (m *projectSpecification) contextValidateMembers(ctx context.Context, forma
 		if err := m.membersField[i].ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("members" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("members" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -491,6 +510,8 @@ func (m *projectSpecification) contextValidateViewers(ctx context.Context, forma
 		if err := m.viewersField[i].ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("viewers" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("viewers" + "." + strconv.Itoa(i))
 			}
 			return err
 		}

@@ -7,9 +7,12 @@ package cloud_account
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
 // EnumeratePrivateImagesVSphereReader is a Reader for the EnumeratePrivateImagesVSphere structure.
@@ -19,41 +22,122 @@ type EnumeratePrivateImagesVSphereReader struct {
 
 // ReadResponse reads a server response into the received o.
 func (o *EnumeratePrivateImagesVSphereReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
-	result := NewEnumeratePrivateImagesVSphereDefault(response.Code())
-	if err := result.readResponse(response, consumer, o.formats); err != nil {
-		return nil, err
-	}
-	if response.Code()/100 == 2 {
+	switch response.Code() {
+	case 202:
+		result := NewEnumeratePrivateImagesVSphereAccepted()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
 		return result, nil
+	case 400:
+		result := NewEnumeratePrivateImagesVSphereBadRequest()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 403:
+		result := NewEnumeratePrivateImagesVSphereForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	default:
+		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
-	return nil, result
 }
 
-// NewEnumeratePrivateImagesVSphereDefault creates a EnumeratePrivateImagesVSphereDefault with default headers values
-func NewEnumeratePrivateImagesVSphereDefault(code int) *EnumeratePrivateImagesVSphereDefault {
-	return &EnumeratePrivateImagesVSphereDefault{
-		_statusCode: code,
-	}
+// NewEnumeratePrivateImagesVSphereAccepted creates a EnumeratePrivateImagesVSphereAccepted with default headers values
+func NewEnumeratePrivateImagesVSphereAccepted() *EnumeratePrivateImagesVSphereAccepted {
+	return &EnumeratePrivateImagesVSphereAccepted{}
 }
 
-/* EnumeratePrivateImagesVSphereDefault describes a response with status code -1, with default header values.
+/* EnumeratePrivateImagesVSphereAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
-type EnumeratePrivateImagesVSphereDefault struct {
-	_statusCode int
+type EnumeratePrivateImagesVSphereAccepted struct {
+	Payload *models.RequestTracker
 }
 
-// Code gets the status code for the enumerate private images v sphere default response
-func (o *EnumeratePrivateImagesVSphereDefault) Code() int {
-	return o._statusCode
+func (o *EnumeratePrivateImagesVSphereAccepted) Error() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vsphere/{id}/private-image-enumeration][%d] enumeratePrivateImagesVSphereAccepted  %+v", 202, o.Payload)
+}
+func (o *EnumeratePrivateImagesVSphereAccepted) GetPayload() *models.RequestTracker {
+	return o.Payload
 }
 
-func (o *EnumeratePrivateImagesVSphereDefault) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vsphere/{id}/private-image-enumeration][%d] enumeratePrivateImagesVSphere default ", o._statusCode)
+func (o *EnumeratePrivateImagesVSphereAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.RequestTracker)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
 }
 
-func (o *EnumeratePrivateImagesVSphereDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+// NewEnumeratePrivateImagesVSphereBadRequest creates a EnumeratePrivateImagesVSphereBadRequest with default headers values
+func NewEnumeratePrivateImagesVSphereBadRequest() *EnumeratePrivateImagesVSphereBadRequest {
+	return &EnumeratePrivateImagesVSphereBadRequest{}
+}
+
+/* EnumeratePrivateImagesVSphereBadRequest describes a response with status code 400, with default header values.
+
+Invalid Request - bad data
+*/
+type EnumeratePrivateImagesVSphereBadRequest struct {
+	Payload *models.Error
+}
+
+func (o *EnumeratePrivateImagesVSphereBadRequest) Error() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vsphere/{id}/private-image-enumeration][%d] enumeratePrivateImagesVSphereBadRequest  %+v", 400, o.Payload)
+}
+func (o *EnumeratePrivateImagesVSphereBadRequest) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *EnumeratePrivateImagesVSphereBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewEnumeratePrivateImagesVSphereForbidden creates a EnumeratePrivateImagesVSphereForbidden with default headers values
+func NewEnumeratePrivateImagesVSphereForbidden() *EnumeratePrivateImagesVSphereForbidden {
+	return &EnumeratePrivateImagesVSphereForbidden{}
+}
+
+/* EnumeratePrivateImagesVSphereForbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type EnumeratePrivateImagesVSphereForbidden struct {
+	Payload *models.ServiceErrorResponse
+}
+
+func (o *EnumeratePrivateImagesVSphereForbidden) Error() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vsphere/{id}/private-image-enumeration][%d] enumeratePrivateImagesVSphereForbidden  %+v", 403, o.Payload)
+}
+func (o *EnumeratePrivateImagesVSphereForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
+}
+
+func (o *EnumeratePrivateImagesVSphereForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

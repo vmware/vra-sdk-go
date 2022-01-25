@@ -30,30 +30,30 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	SyncPerspectiveGroupUsingPOST(params *SyncPerspectiveGroupUsingPOSTParams, opts ...ClientOption) (*SyncPerspectiveGroupUsingPOSTOK, *SyncPerspectiveGroupUsingPOSTAccepted, error)
+	SyncPerspectiveGroupUsingPOST2(params *SyncPerspectiveGroupUsingPOST2Params, opts ...ClientOption) (*SyncPerspectiveGroupUsingPOST2OK, *SyncPerspectiveGroupUsingPOST2Accepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  SyncPerspectiveGroupUsingPOST ons demand perspective sync
+  SyncPerspectiveGroupUsingPOST2 ons demand perspective sync
 
   To do on demand perspective sync for within the given org
 */
-func (a *Client) SyncPerspectiveGroupUsingPOST(params *SyncPerspectiveGroupUsingPOSTParams, opts ...ClientOption) (*SyncPerspectiveGroupUsingPOSTOK, *SyncPerspectiveGroupUsingPOSTAccepted, error) {
+func (a *Client) SyncPerspectiveGroupUsingPOST2(params *SyncPerspectiveGroupUsingPOST2Params, opts ...ClientOption) (*SyncPerspectiveGroupUsingPOST2OK, *SyncPerspectiveGroupUsingPOST2Accepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewSyncPerspectiveGroupUsingPOSTParams()
+		params = NewSyncPerspectiveGroupUsingPOST2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "syncPerspectiveGroupUsingPOST",
+		ID:                 "syncPerspectiveGroupUsingPOST_2",
 		Method:             "POST",
 		PathPattern:        "/price/api/cloudhealth/perspective-sync",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &SyncPerspectiveGroupUsingPOSTReader{formats: a.formats},
+		Reader:             &SyncPerspectiveGroupUsingPOST2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -66,9 +66,9 @@ func (a *Client) SyncPerspectiveGroupUsingPOST(params *SyncPerspectiveGroupUsing
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *SyncPerspectiveGroupUsingPOSTOK:
+	case *SyncPerspectiveGroupUsingPOST2OK:
 		return value, nil, nil
-	case *SyncPerspectiveGroupUsingPOSTAccepted:
+	case *SyncPerspectiveGroupUsingPOST2Accepted:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue

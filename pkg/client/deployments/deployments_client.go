@@ -30,54 +30,54 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CheckDeploymentNameExistsUsingGET(params *CheckDeploymentNameExistsUsingGETParams, opts ...ClientOption) (*CheckDeploymentNameExistsUsingGETOK, error)
+	CheckDeploymentNameExistsUsingGET2(params *CheckDeploymentNameExistsUsingGET2Params, opts ...ClientOption) (*CheckDeploymentNameExistsUsingGET2OK, error)
 
-	CheckDeploymentNameUsingGET(params *CheckDeploymentNameUsingGETParams, opts ...ClientOption) (*CheckDeploymentNameUsingGETOK, error)
+	CheckDeploymentNameUsingGET2(params *CheckDeploymentNameUsingGET2Params, opts ...ClientOption) (*CheckDeploymentNameUsingGET2OK, error)
 
-	DeleteDeploymentUsingDELETE(params *DeleteDeploymentUsingDELETEParams, opts ...ClientOption) (*DeleteDeploymentUsingDELETEOK, error)
+	DeleteDeploymentUsingDELETE2(params *DeleteDeploymentUsingDELETE2Params, opts ...ClientOption) (*DeleteDeploymentUsingDELETE2OK, error)
 
-	DeleteResourceUsingDELETE(params *DeleteResourceUsingDELETEParams, opts ...ClientOption) (*DeleteResourceUsingDELETEOK, error)
+	DeleteResourceUsingDELETE2(params *DeleteResourceUsingDELETE2Params, opts ...ClientOption) (*DeleteResourceUsingDELETE2OK, error)
 
-	GetDeploymentByIDUsingGET(params *GetDeploymentByIDUsingGETParams, opts ...ClientOption) (*GetDeploymentByIDUsingGETOK, error)
+	GetDeploymentByIDV3UsingGET(params *GetDeploymentByIDV3UsingGETParams, opts ...ClientOption) (*GetDeploymentByIDV3UsingGETOK, error)
 
-	GetDeploymentExpenseHistoryByIDUsingGET(params *GetDeploymentExpenseHistoryByIDUsingGETParams, opts ...ClientOption) (*GetDeploymentExpenseHistoryByIDUsingGETOK, error)
+	GetDeploymentExpenseHistoryByIDUsingGET2(params *GetDeploymentExpenseHistoryByIDUsingGET2Params, opts ...ClientOption) (*GetDeploymentExpenseHistoryByIDUsingGET2OK, error)
 
-	GetDeploymentFilterByIDUsingGET(params *GetDeploymentFilterByIDUsingGETParams, opts ...ClientOption) (*GetDeploymentFilterByIDUsingGETOK, error)
+	GetDeploymentFilterByIDUsingGET2(params *GetDeploymentFilterByIDUsingGET2Params, opts ...ClientOption) (*GetDeploymentFilterByIDUsingGET2OK, error)
 
-	GetDeploymentFiltersUsingGET(params *GetDeploymentFiltersUsingGETParams, opts ...ClientOption) (*GetDeploymentFiltersUsingGETOK, error)
+	GetDeploymentFiltersUsingGET2(params *GetDeploymentFiltersUsingGET2Params, opts ...ClientOption) (*GetDeploymentFiltersUsingGET2OK, error)
 
-	GetDeploymentResourcesUsingGET(params *GetDeploymentResourcesUsingGETParams, opts ...ClientOption) (*GetDeploymentResourcesUsingGETOK, error)
+	GetDeploymentResourcesUsingGET2(params *GetDeploymentResourcesUsingGET2Params, opts ...ClientOption) (*GetDeploymentResourcesUsingGET2OK, error)
 
-	GetDeploymentsForProjectUsingGET(params *GetDeploymentsForProjectUsingGETParams, opts ...ClientOption) (*GetDeploymentsForProjectUsingGETOK, error)
+	GetDeploymentsForProjectUsingGET2(params *GetDeploymentsForProjectUsingGET2Params, opts ...ClientOption) (*GetDeploymentsForProjectUsingGET2OK, error)
 
-	GetDeploymentsUsingGET(params *GetDeploymentsUsingGETParams, opts ...ClientOption) (*GetDeploymentsUsingGETOK, error)
+	GetDeploymentsV3UsingGET(params *GetDeploymentsV3UsingGETParams, opts ...ClientOption) (*GetDeploymentsV3UsingGETOK, error)
 
-	GetResourceByIDUsingGET(params *GetResourceByIDUsingGETParams, opts ...ClientOption) (*GetResourceByIDUsingGETOK, error)
+	GetResourceByIDUsingGET4(params *GetResourceByIDUsingGET4Params, opts ...ClientOption) (*GetResourceByIDUsingGET4OK, error)
 
-	PatchDeploymentUsingPATCH(params *PatchDeploymentUsingPATCHParams, opts ...ClientOption) (*PatchDeploymentUsingPATCHOK, error)
+	PatchDeploymentUsingPATCH2(params *PatchDeploymentUsingPATCH2Params, opts ...ClientOption) (*PatchDeploymentUsingPATCH2OK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  CheckDeploymentNameExistsUsingGET checks if a deployment exists
+  CheckDeploymentNameExistsUsingGET2 checks if a deployment exists
 
   Returns OK if a deployment with the supplied name exists.
 */
-func (a *Client) CheckDeploymentNameExistsUsingGET(params *CheckDeploymentNameExistsUsingGETParams, opts ...ClientOption) (*CheckDeploymentNameExistsUsingGETOK, error) {
+func (a *Client) CheckDeploymentNameExistsUsingGET2(params *CheckDeploymentNameExistsUsingGET2Params, opts ...ClientOption) (*CheckDeploymentNameExistsUsingGET2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCheckDeploymentNameExistsUsingGETParams()
+		params = NewCheckDeploymentNameExistsUsingGET2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "checkDeploymentNameExistsUsingGET",
+		ID:                 "checkDeploymentNameExistsUsingGET_2",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/names",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CheckDeploymentNameExistsUsingGETReader{formats: a.formats},
+		Reader:             &CheckDeploymentNameExistsUsingGET2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -89,35 +89,35 @@ func (a *Client) CheckDeploymentNameExistsUsingGET(params *CheckDeploymentNameEx
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CheckDeploymentNameExistsUsingGETOK)
+	success, ok := result.(*CheckDeploymentNameExistsUsingGET2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for checkDeploymentNameExistsUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for checkDeploymentNameExistsUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  CheckDeploymentNameUsingGET checks if a deployment exists
+  CheckDeploymentNameUsingGET2 checks if a deployment exists
 
   Returns OK if a deployment with the supplied name exists.
 */
-func (a *Client) CheckDeploymentNameUsingGET(params *CheckDeploymentNameUsingGETParams, opts ...ClientOption) (*CheckDeploymentNameUsingGETOK, error) {
+func (a *Client) CheckDeploymentNameUsingGET2(params *CheckDeploymentNameUsingGET2Params, opts ...ClientOption) (*CheckDeploymentNameUsingGET2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCheckDeploymentNameUsingGETParams()
+		params = NewCheckDeploymentNameUsingGET2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "checkDeploymentNameUsingGET",
+		ID:                 "checkDeploymentNameUsingGET_2",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/names/{name}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CheckDeploymentNameUsingGETReader{formats: a.formats},
+		Reader:             &CheckDeploymentNameUsingGET2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -129,35 +129,35 @@ func (a *Client) CheckDeploymentNameUsingGET(params *CheckDeploymentNameUsingGET
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CheckDeploymentNameUsingGETOK)
+	success, ok := result.(*CheckDeploymentNameUsingGET2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for checkDeploymentNameUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for checkDeploymentNameUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  DeleteDeploymentUsingDELETE deletes a deployment effectively triggers a delete day2 operation
+  DeleteDeploymentUsingDELETE2 deletes a deployment effectively triggers a delete day2 operation
 
   Deletes the deployment with the supplied ID, cleans up the associated resources from the Cloud Provider.
 */
-func (a *Client) DeleteDeploymentUsingDELETE(params *DeleteDeploymentUsingDELETEParams, opts ...ClientOption) (*DeleteDeploymentUsingDELETEOK, error) {
+func (a *Client) DeleteDeploymentUsingDELETE2(params *DeleteDeploymentUsingDELETE2Params, opts ...ClientOption) (*DeleteDeploymentUsingDELETE2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteDeploymentUsingDELETEParams()
+		params = NewDeleteDeploymentUsingDELETE2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteDeploymentUsingDELETE",
+		ID:                 "deleteDeploymentUsingDELETE_2",
 		Method:             "DELETE",
 		PathPattern:        "/deployment/api/deployments/{deploymentId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteDeploymentUsingDELETEReader{formats: a.formats},
+		Reader:             &DeleteDeploymentUsingDELETE2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -169,35 +169,35 @@ func (a *Client) DeleteDeploymentUsingDELETE(params *DeleteDeploymentUsingDELETE
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteDeploymentUsingDELETEOK)
+	success, ok := result.(*DeleteDeploymentUsingDELETE2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteDeploymentUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for deleteDeploymentUsingDELETE_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  DeleteResourceUsingDELETE deletes resource associated with a deployment effectively triggers a delete day2 operation
+  DeleteResourceUsingDELETE2 deletes resource associated with a deployment effectively triggers a delete day2 operation
 
   Deletes the resource with the specified ID and attempts to delete resource from the Cloud Provider.
 */
-func (a *Client) DeleteResourceUsingDELETE(params *DeleteResourceUsingDELETEParams, opts ...ClientOption) (*DeleteResourceUsingDELETEOK, error) {
+func (a *Client) DeleteResourceUsingDELETE2(params *DeleteResourceUsingDELETE2Params, opts ...ClientOption) (*DeleteResourceUsingDELETE2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteResourceUsingDELETEParams()
+		params = NewDeleteResourceUsingDELETE2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteResourceUsingDELETE",
+		ID:                 "deleteResourceUsingDELETE_2",
 		Method:             "DELETE",
 		PathPattern:        "/deployment/api/deployments/{deploymentId}/resources/{resourceId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteResourceUsingDELETEReader{formats: a.formats},
+		Reader:             &DeleteResourceUsingDELETE2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -209,35 +209,35 @@ func (a *Client) DeleteResourceUsingDELETE(params *DeleteResourceUsingDELETEPara
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteResourceUsingDELETEOK)
+	success, ok := result.(*DeleteResourceUsingDELETE2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteResourceUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for deleteResourceUsingDELETE_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetDeploymentByIDUsingGET fetches a specific deployment
+  GetDeploymentByIDV3UsingGET fetches a specific deployment
 
   Returns the deployment with the supplied ID.
 */
-func (a *Client) GetDeploymentByIDUsingGET(params *GetDeploymentByIDUsingGETParams, opts ...ClientOption) (*GetDeploymentByIDUsingGETOK, error) {
+func (a *Client) GetDeploymentByIDV3UsingGET(params *GetDeploymentByIDV3UsingGETParams, opts ...ClientOption) (*GetDeploymentByIDV3UsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetDeploymentByIDUsingGETParams()
+		params = NewGetDeploymentByIDV3UsingGETParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getDeploymentByIdUsingGET",
+		ID:                 "getDeploymentByIdV3UsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/{deploymentId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetDeploymentByIDUsingGETReader{formats: a.formats},
+		Reader:             &GetDeploymentByIDV3UsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -249,35 +249,35 @@ func (a *Client) GetDeploymentByIDUsingGET(params *GetDeploymentByIDUsingGETPara
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetDeploymentByIDUsingGETOK)
+	success, ok := result.(*GetDeploymentByIDV3UsingGETOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getDeploymentByIdUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getDeploymentByIdV3UsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetDeploymentExpenseHistoryByIDUsingGET fetches a specific deployment s expense history
+  GetDeploymentExpenseHistoryByIDUsingGET2 fetches a specific deployment s expense history
 
   Returns the deployment expense history with the supplied ID.
 */
-func (a *Client) GetDeploymentExpenseHistoryByIDUsingGET(params *GetDeploymentExpenseHistoryByIDUsingGETParams, opts ...ClientOption) (*GetDeploymentExpenseHistoryByIDUsingGETOK, error) {
+func (a *Client) GetDeploymentExpenseHistoryByIDUsingGET2(params *GetDeploymentExpenseHistoryByIDUsingGET2Params, opts ...ClientOption) (*GetDeploymentExpenseHistoryByIDUsingGET2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetDeploymentExpenseHistoryByIDUsingGETParams()
+		params = NewGetDeploymentExpenseHistoryByIDUsingGET2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getDeploymentExpenseHistoryByIdUsingGET",
+		ID:                 "getDeploymentExpenseHistoryByIdUsingGET_2",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/{deploymentId}/expense-history",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetDeploymentExpenseHistoryByIDUsingGETReader{formats: a.formats},
+		Reader:             &GetDeploymentExpenseHistoryByIDUsingGET2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -289,33 +289,33 @@ func (a *Client) GetDeploymentExpenseHistoryByIDUsingGET(params *GetDeploymentEx
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetDeploymentExpenseHistoryByIDUsingGETOK)
+	success, ok := result.(*GetDeploymentExpenseHistoryByIDUsingGET2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getDeploymentExpenseHistoryByIdUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getDeploymentExpenseHistoryByIdUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetDeploymentFilterByIDUsingGET returns the deployment filter with the supplied ID
+  GetDeploymentFilterByIDUsingGET2 returns the deployment filter with the supplied ID
 */
-func (a *Client) GetDeploymentFilterByIDUsingGET(params *GetDeploymentFilterByIDUsingGETParams, opts ...ClientOption) (*GetDeploymentFilterByIDUsingGETOK, error) {
+func (a *Client) GetDeploymentFilterByIDUsingGET2(params *GetDeploymentFilterByIDUsingGET2Params, opts ...ClientOption) (*GetDeploymentFilterByIDUsingGET2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetDeploymentFilterByIDUsingGETParams()
+		params = NewGetDeploymentFilterByIDUsingGET2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getDeploymentFilterByIdUsingGET",
+		ID:                 "getDeploymentFilterByIdUsingGET_2",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/filters/{filterId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetDeploymentFilterByIDUsingGETReader{formats: a.formats},
+		Reader:             &GetDeploymentFilterByIDUsingGET2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -327,33 +327,33 @@ func (a *Client) GetDeploymentFilterByIDUsingGET(params *GetDeploymentFilterByID
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetDeploymentFilterByIDUsingGETOK)
+	success, ok := result.(*GetDeploymentFilterByIDUsingGET2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getDeploymentFilterByIdUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getDeploymentFilterByIdUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetDeploymentFiltersUsingGET returns the deployment filters in context of given user
+  GetDeploymentFiltersUsingGET2 returns the deployment filters in context of given user
 */
-func (a *Client) GetDeploymentFiltersUsingGET(params *GetDeploymentFiltersUsingGETParams, opts ...ClientOption) (*GetDeploymentFiltersUsingGETOK, error) {
+func (a *Client) GetDeploymentFiltersUsingGET2(params *GetDeploymentFiltersUsingGET2Params, opts ...ClientOption) (*GetDeploymentFiltersUsingGET2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetDeploymentFiltersUsingGETParams()
+		params = NewGetDeploymentFiltersUsingGET2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getDeploymentFiltersUsingGET",
+		ID:                 "getDeploymentFiltersUsingGET_2",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/filters",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetDeploymentFiltersUsingGETReader{formats: a.formats},
+		Reader:             &GetDeploymentFiltersUsingGET2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -365,35 +365,35 @@ func (a *Client) GetDeploymentFiltersUsingGET(params *GetDeploymentFiltersUsingG
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetDeploymentFiltersUsingGETOK)
+	success, ok := result.(*GetDeploymentFiltersUsingGET2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getDeploymentFiltersUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getDeploymentFiltersUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetDeploymentResourcesUsingGET fetches resources associated with a deployment
+  GetDeploymentResourcesUsingGET2 fetches resources associated with a deployment
 
   Returns a paginated list of resources corresponding to the deployment with the supplied ID.
 */
-func (a *Client) GetDeploymentResourcesUsingGET(params *GetDeploymentResourcesUsingGETParams, opts ...ClientOption) (*GetDeploymentResourcesUsingGETOK, error) {
+func (a *Client) GetDeploymentResourcesUsingGET2(params *GetDeploymentResourcesUsingGET2Params, opts ...ClientOption) (*GetDeploymentResourcesUsingGET2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetDeploymentResourcesUsingGETParams()
+		params = NewGetDeploymentResourcesUsingGET2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getDeploymentResourcesUsingGET",
+		ID:                 "getDeploymentResourcesUsingGET_2",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/{deploymentId}/resources",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetDeploymentResourcesUsingGETReader{formats: a.formats},
+		Reader:             &GetDeploymentResourcesUsingGET2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -405,33 +405,33 @@ func (a *Client) GetDeploymentResourcesUsingGET(params *GetDeploymentResourcesUs
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetDeploymentResourcesUsingGETOK)
+	success, ok := result.(*GetDeploymentResourcesUsingGET2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getDeploymentResourcesUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getDeploymentResourcesUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetDeploymentsForProjectUsingGET returns a count of deployments using the project
+  GetDeploymentsForProjectUsingGET2 returns a count of deployments using the project
 */
-func (a *Client) GetDeploymentsForProjectUsingGET(params *GetDeploymentsForProjectUsingGETParams, opts ...ClientOption) (*GetDeploymentsForProjectUsingGETOK, error) {
+func (a *Client) GetDeploymentsForProjectUsingGET2(params *GetDeploymentsForProjectUsingGET2Params, opts ...ClientOption) (*GetDeploymentsForProjectUsingGET2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetDeploymentsForProjectUsingGETParams()
+		params = NewGetDeploymentsForProjectUsingGET2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getDeploymentsForProjectUsingGET",
+		ID:                 "getDeploymentsForProjectUsingGET_2",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/projects/{projectId}/deployment-count",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetDeploymentsForProjectUsingGETReader{formats: a.formats},
+		Reader:             &GetDeploymentsForProjectUsingGET2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -443,35 +443,35 @@ func (a *Client) GetDeploymentsForProjectUsingGET(params *GetDeploymentsForProje
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetDeploymentsForProjectUsingGETOK)
+	success, ok := result.(*GetDeploymentsForProjectUsingGET2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getDeploymentsForProjectUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getDeploymentsForProjectUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetDeploymentsUsingGET fetches all deployments
+  GetDeploymentsV3UsingGET fetches all deployments
 
-  Returns a paginated list of deployments. Deployments with more than 100 resources is not supported.
+  Returns a paginated list of deployments.
 */
-func (a *Client) GetDeploymentsUsingGET(params *GetDeploymentsUsingGETParams, opts ...ClientOption) (*GetDeploymentsUsingGETOK, error) {
+func (a *Client) GetDeploymentsV3UsingGET(params *GetDeploymentsV3UsingGETParams, opts ...ClientOption) (*GetDeploymentsV3UsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetDeploymentsUsingGETParams()
+		params = NewGetDeploymentsV3UsingGETParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getDeploymentsUsingGET",
+		ID:                 "getDeploymentsV3UsingGET",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetDeploymentsUsingGETReader{formats: a.formats},
+		Reader:             &GetDeploymentsV3UsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -483,35 +483,35 @@ func (a *Client) GetDeploymentsUsingGET(params *GetDeploymentsUsingGETParams, op
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetDeploymentsUsingGETOK)
+	success, ok := result.(*GetDeploymentsV3UsingGETOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getDeploymentsUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getDeploymentsV3UsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetResourceByIDUsingGET fetches resource associated with a deployment
+  GetResourceByIDUsingGET4 fetches resource associated with a deployment
 
   Returns the resource with the specified ID that is correlated with the supplied deployment.
 */
-func (a *Client) GetResourceByIDUsingGET(params *GetResourceByIDUsingGETParams, opts ...ClientOption) (*GetResourceByIDUsingGETOK, error) {
+func (a *Client) GetResourceByIDUsingGET4(params *GetResourceByIDUsingGET4Params, opts ...ClientOption) (*GetResourceByIDUsingGET4OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetResourceByIDUsingGETParams()
+		params = NewGetResourceByIDUsingGET4Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getResourceByIdUsingGET",
+		ID:                 "getResourceByIdUsingGET_4",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/{deploymentId}/resources/{resourceId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetResourceByIDUsingGETReader{formats: a.formats},
+		Reader:             &GetResourceByIDUsingGET4Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -523,35 +523,35 @@ func (a *Client) GetResourceByIDUsingGET(params *GetResourceByIDUsingGETParams, 
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetResourceByIDUsingGETOK)
+	success, ok := result.(*GetResourceByIDUsingGET4OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getResourceByIdUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getResourceByIdUsingGET_4: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  PatchDeploymentUsingPATCH updates deployment
+  PatchDeploymentUsingPATCH2 updates deployment
 
   Updates the deployment with the supplied ID.
 */
-func (a *Client) PatchDeploymentUsingPATCH(params *PatchDeploymentUsingPATCHParams, opts ...ClientOption) (*PatchDeploymentUsingPATCHOK, error) {
+func (a *Client) PatchDeploymentUsingPATCH2(params *PatchDeploymentUsingPATCH2Params, opts ...ClientOption) (*PatchDeploymentUsingPATCH2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPatchDeploymentUsingPATCHParams()
+		params = NewPatchDeploymentUsingPATCH2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "patchDeploymentUsingPATCH",
+		ID:                 "patchDeploymentUsingPATCH_2",
 		Method:             "PATCH",
 		PathPattern:        "/deployment/api/deployments/{deploymentId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PatchDeploymentUsingPATCHReader{formats: a.formats},
+		Reader:             &PatchDeploymentUsingPATCH2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -563,13 +563,13 @@ func (a *Client) PatchDeploymentUsingPATCH(params *PatchDeploymentUsingPATCHPara
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PatchDeploymentUsingPATCHOK)
+	success, ok := result.(*PatchDeploymentUsingPATCH2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchDeploymentUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for patchDeploymentUsingPATCH_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

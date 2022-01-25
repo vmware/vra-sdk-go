@@ -7,9 +7,12 @@ package cloud_account
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
 // EnumeratePrivateImagesVCFReader is a Reader for the EnumeratePrivateImagesVCF structure.
@@ -19,41 +22,122 @@ type EnumeratePrivateImagesVCFReader struct {
 
 // ReadResponse reads a server response into the received o.
 func (o *EnumeratePrivateImagesVCFReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
-	result := NewEnumeratePrivateImagesVCFDefault(response.Code())
-	if err := result.readResponse(response, consumer, o.formats); err != nil {
-		return nil, err
-	}
-	if response.Code()/100 == 2 {
+	switch response.Code() {
+	case 202:
+		result := NewEnumeratePrivateImagesVCFAccepted()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
 		return result, nil
+	case 400:
+		result := NewEnumeratePrivateImagesVCFBadRequest()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 403:
+		result := NewEnumeratePrivateImagesVCFForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	default:
+		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
-	return nil, result
 }
 
-// NewEnumeratePrivateImagesVCFDefault creates a EnumeratePrivateImagesVCFDefault with default headers values
-func NewEnumeratePrivateImagesVCFDefault(code int) *EnumeratePrivateImagesVCFDefault {
-	return &EnumeratePrivateImagesVCFDefault{
-		_statusCode: code,
-	}
+// NewEnumeratePrivateImagesVCFAccepted creates a EnumeratePrivateImagesVCFAccepted with default headers values
+func NewEnumeratePrivateImagesVCFAccepted() *EnumeratePrivateImagesVCFAccepted {
+	return &EnumeratePrivateImagesVCFAccepted{}
 }
 
-/* EnumeratePrivateImagesVCFDefault describes a response with status code -1, with default header values.
+/* EnumeratePrivateImagesVCFAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
-type EnumeratePrivateImagesVCFDefault struct {
-	_statusCode int
+type EnumeratePrivateImagesVCFAccepted struct {
+	Payload *models.RequestTracker
 }
 
-// Code gets the status code for the enumerate private images v c f default response
-func (o *EnumeratePrivateImagesVCFDefault) Code() int {
-	return o._statusCode
+func (o *EnumeratePrivateImagesVCFAccepted) Error() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vcf/{id}/private-image-enumeration][%d] enumeratePrivateImagesVCFAccepted  %+v", 202, o.Payload)
+}
+func (o *EnumeratePrivateImagesVCFAccepted) GetPayload() *models.RequestTracker {
+	return o.Payload
 }
 
-func (o *EnumeratePrivateImagesVCFDefault) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vcf/{id}/private-image-enumeration][%d] enumeratePrivateImagesVCF default ", o._statusCode)
+func (o *EnumeratePrivateImagesVCFAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.RequestTracker)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
 }
 
-func (o *EnumeratePrivateImagesVCFDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+// NewEnumeratePrivateImagesVCFBadRequest creates a EnumeratePrivateImagesVCFBadRequest with default headers values
+func NewEnumeratePrivateImagesVCFBadRequest() *EnumeratePrivateImagesVCFBadRequest {
+	return &EnumeratePrivateImagesVCFBadRequest{}
+}
+
+/* EnumeratePrivateImagesVCFBadRequest describes a response with status code 400, with default header values.
+
+Invalid Request - bad data
+*/
+type EnumeratePrivateImagesVCFBadRequest struct {
+	Payload *models.Error
+}
+
+func (o *EnumeratePrivateImagesVCFBadRequest) Error() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vcf/{id}/private-image-enumeration][%d] enumeratePrivateImagesVCFBadRequest  %+v", 400, o.Payload)
+}
+func (o *EnumeratePrivateImagesVCFBadRequest) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *EnumeratePrivateImagesVCFBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewEnumeratePrivateImagesVCFForbidden creates a EnumeratePrivateImagesVCFForbidden with default headers values
+func NewEnumeratePrivateImagesVCFForbidden() *EnumeratePrivateImagesVCFForbidden {
+	return &EnumeratePrivateImagesVCFForbidden{}
+}
+
+/* EnumeratePrivateImagesVCFForbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type EnumeratePrivateImagesVCFForbidden struct {
+	Payload *models.ServiceErrorResponse
+}
+
+func (o *EnumeratePrivateImagesVCFForbidden) Error() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vcf/{id}/private-image-enumeration][%d] enumeratePrivateImagesVCFForbidden  %+v", 403, o.Payload)
+}
+func (o *EnumeratePrivateImagesVCFForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
+}
+
+func (o *EnumeratePrivateImagesVCFForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

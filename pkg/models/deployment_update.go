@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // DeploymentUpdate DeploymentUpdate
@@ -22,12 +24,37 @@ type DeploymentUpdate struct {
 	// New description of the deployment
 	Description string `json:"description,omitempty"`
 
+	// New iconid of the deployment
+	// Format: uuid
+	IconID strfmt.UUID `json:"iconId,omitempty"`
+
 	// New name of the deployment
 	Name string `json:"name,omitempty"`
 }
 
 // Validate validates this deployment update
 func (m *DeploymentUpdate) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateIconID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *DeploymentUpdate) validateIconID(formats strfmt.Registry) error {
+	if swag.IsZero(m.IconID) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("iconId", "body", "uuid", m.IconID.String(), formats); err != nil {
+		return err
+	}
+
 	return nil
 }
 

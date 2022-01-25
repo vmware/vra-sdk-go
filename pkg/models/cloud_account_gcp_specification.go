@@ -51,13 +51,9 @@ type CloudAccountGcpSpecification struct {
 	// Required: true
 	ProjectID *string `json:"projectId"`
 
-	// A set of Region names to enable provisioning on. Refer to /iaas/cloud-accounts-gcp/region-enumeration. Deprecated - use regions to define enabled regions.
-	// Example: [ \"us-east1\", \"northamerica-northeast1\" ]
-	// Required: true
-	RegionIds []string `json:"regionIds"`
-
-	// A set of regions to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration.
+	// A set of regions to enable provisioning on.Refer to /iaas/api/cloud-accounts/region-enumeration.
 	// Example: [{ \"name\": \"europe-west2\",\"externalRegionId\": \"europe-west2\"}]
+	// Required: true
 	Regions []*RegionSpecification `json:"regions"`
 
 	// A set of tag keys and optional values to set on the Cloud Account
@@ -86,10 +82,6 @@ func (m *CloudAccountGcpSpecification) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateProjectID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateRegionIds(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -152,18 +144,10 @@ func (m *CloudAccountGcpSpecification) validateProjectID(formats strfmt.Registry
 	return nil
 }
 
-func (m *CloudAccountGcpSpecification) validateRegionIds(formats strfmt.Registry) error {
-
-	if err := validate.Required("regionIds", "body", m.RegionIds); err != nil {
-		return err
-	}
-
-	return nil
-}
-
 func (m *CloudAccountGcpSpecification) validateRegions(formats strfmt.Registry) error {
-	if swag.IsZero(m.Regions) { // not required
-		return nil
+
+	if err := validate.Required("regions", "body", m.Regions); err != nil {
+		return err
 	}
 
 	for i := 0; i < len(m.Regions); i++ {
@@ -175,6 +159,8 @@ func (m *CloudAccountGcpSpecification) validateRegions(formats strfmt.Registry) 
 			if err := m.Regions[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("regions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("regions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -199,6 +185,8 @@ func (m *CloudAccountGcpSpecification) validateTags(formats strfmt.Registry) err
 			if err := m.Tags[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -235,6 +223,8 @@ func (m *CloudAccountGcpSpecification) contextValidateRegions(ctx context.Contex
 			if err := m.Regions[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("regions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("regions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -253,6 +243,8 @@ func (m *CloudAccountGcpSpecification) contextValidateTags(ctx context.Context, 
 			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

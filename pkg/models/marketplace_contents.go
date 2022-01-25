@@ -65,6 +65,8 @@ func (m *MarketplaceContents) validateContent(formats strfmt.Registry) error {
 			if err := m.Content[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("content" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("content" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -89,6 +91,8 @@ func (m *MarketplaceContents) validateLinks(formats strfmt.Registry) error {
 			if err := m.Links[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("links" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("links" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -108,6 +112,8 @@ func (m *MarketplaceContents) validatePage(formats strfmt.Registry) error {
 		if err := m.Page.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("page")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("page")
 			}
 			return err
 		}
@@ -146,6 +152,8 @@ func (m *MarketplaceContents) contextValidateContent(ctx context.Context, format
 			if err := m.Content[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("content" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("content" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -164,6 +172,8 @@ func (m *MarketplaceContents) contextValidateLinks(ctx context.Context, formats 
 			if err := m.Links[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("links" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("links" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -180,6 +190,8 @@ func (m *MarketplaceContents) contextValidatePage(ctx context.Context, formats s
 		if err := m.Page.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("page")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("page")
 			}
 			return err
 		}

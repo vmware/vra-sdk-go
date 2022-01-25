@@ -19,7 +19,7 @@ import (
 // swagger:model UpdateMachineSpecification
 type UpdateMachineSpecification struct {
 
-	// Additional custom properties that may be used to extend the machine. Internal custom properties (for example, prefixed with: "__") can not be updated.
+	// Additional custom properties that may be used to extend the machine. Internal custom properties (for example, prefixed with: "__") are discarded.
 	CustomProperties map[string]string `json:"customProperties,omitempty"`
 
 	// Describes machine within the scope of your organization and is not propagated to the cloud
@@ -58,6 +58,8 @@ func (m *UpdateMachineSpecification) validateTags(formats strfmt.Registry) error
 			if err := m.Tags[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -90,6 +92,8 @@ func (m *UpdateMachineSpecification) contextValidateTags(ctx context.Context, fo
 			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

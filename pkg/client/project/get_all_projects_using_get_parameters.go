@@ -60,6 +60,14 @@ func NewGetAllProjectsUsingGETParamsWithHTTPClient(client *http.Client) *GetAllP
 */
 type GetAllProjectsUsingGETParams struct {
 
+	/* DollarOrderby.
+
+	   Sorting criteria in the format: property (asc | desc). Default sort order is ascending.
+
+	   Format: int32
+	*/
+	DollarOrderby *int32
+
 	/* DollarSelect.
 
 	   Select a subset of properties to include in the response. Possible values for this parameter are id, name, operationTimeout, constraints.
@@ -78,11 +86,36 @@ type GetAllProjectsUsingGETParams struct {
 	*/
 	ExcludeNotSharedProjectsForMember *bool
 
+	/* ExcludeSupervisor.
+
+	   Filters projects based on the supervisor role. When the value istrue it will not return the projects in which the current user is having only supervisor role
+
+	   Default: true
+	*/
+	ExcludeSupervisor *bool
+
 	/* ExcludeViewer.
 
 	   Filters projects based on the viewer role. When the value is true it will not return the projects in which the current user is only viewer and will ignore privileged roles: CodeStream:Developer and CodeStream:Executor, if the user has them. Else it will return all projects that the user can read. The default value is false.
 	*/
 	ExcludeViewer *bool
+
+	/* Page.
+
+	   Results page you want to retrieve (0..N)
+
+	   Format: int32
+	*/
+	Page *int32
+
+	/* Size.
+
+	   Number of records per page.
+
+	   Format: int32
+	   Default: 500
+	*/
+	Size *int32
 
 	/* WithAnyPermission.
 
@@ -107,7 +140,24 @@ func (o *GetAllProjectsUsingGETParams) WithDefaults() *GetAllProjectsUsingGETPar
 //
 // All values with no default are reset to their zero value.
 func (o *GetAllProjectsUsingGETParams) SetDefaults() {
-	// no default values defined for this parameter
+	var (
+		excludeSupervisorDefault = bool(true)
+
+		pageDefault = int32(0)
+
+		sizeDefault = int32(500)
+	)
+
+	val := GetAllProjectsUsingGETParams{
+		ExcludeSupervisor: &excludeSupervisorDefault,
+		Page:              &pageDefault,
+		Size:              &sizeDefault,
+	}
+
+	val.timeout = o.timeout
+	val.Context = o.Context
+	val.HTTPClient = o.HTTPClient
+	*o = val
 }
 
 // WithTimeout adds the timeout to the get all projects using get params
@@ -143,6 +193,17 @@ func (o *GetAllProjectsUsingGETParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithDollarOrderby adds the dollarOrderby to the get all projects using get params
+func (o *GetAllProjectsUsingGETParams) WithDollarOrderby(dollarOrderby *int32) *GetAllProjectsUsingGETParams {
+	o.SetDollarOrderby(dollarOrderby)
+	return o
+}
+
+// SetDollarOrderby adds the dollarOrderby to the get all projects using get params
+func (o *GetAllProjectsUsingGETParams) SetDollarOrderby(dollarOrderby *int32) {
+	o.DollarOrderby = dollarOrderby
+}
+
 // WithDollarSelect adds the dollarSelect to the get all projects using get params
 func (o *GetAllProjectsUsingGETParams) WithDollarSelect(dollarSelect *string) *GetAllProjectsUsingGETParams {
 	o.SetDollarSelect(dollarSelect)
@@ -176,6 +237,17 @@ func (o *GetAllProjectsUsingGETParams) SetExcludeNotSharedProjectsForMember(excl
 	o.ExcludeNotSharedProjectsForMember = excludeNotSharedProjectsForMember
 }
 
+// WithExcludeSupervisor adds the excludeSupervisor to the get all projects using get params
+func (o *GetAllProjectsUsingGETParams) WithExcludeSupervisor(excludeSupervisor *bool) *GetAllProjectsUsingGETParams {
+	o.SetExcludeSupervisor(excludeSupervisor)
+	return o
+}
+
+// SetExcludeSupervisor adds the excludeSupervisor to the get all projects using get params
+func (o *GetAllProjectsUsingGETParams) SetExcludeSupervisor(excludeSupervisor *bool) {
+	o.ExcludeSupervisor = excludeSupervisor
+}
+
 // WithExcludeViewer adds the excludeViewer to the get all projects using get params
 func (o *GetAllProjectsUsingGETParams) WithExcludeViewer(excludeViewer *bool) *GetAllProjectsUsingGETParams {
 	o.SetExcludeViewer(excludeViewer)
@@ -185,6 +257,28 @@ func (o *GetAllProjectsUsingGETParams) WithExcludeViewer(excludeViewer *bool) *G
 // SetExcludeViewer adds the excludeViewer to the get all projects using get params
 func (o *GetAllProjectsUsingGETParams) SetExcludeViewer(excludeViewer *bool) {
 	o.ExcludeViewer = excludeViewer
+}
+
+// WithPage adds the page to the get all projects using get params
+func (o *GetAllProjectsUsingGETParams) WithPage(page *int32) *GetAllProjectsUsingGETParams {
+	o.SetPage(page)
+	return o
+}
+
+// SetPage adds the page to the get all projects using get params
+func (o *GetAllProjectsUsingGETParams) SetPage(page *int32) {
+	o.Page = page
+}
+
+// WithSize adds the size to the get all projects using get params
+func (o *GetAllProjectsUsingGETParams) WithSize(size *int32) *GetAllProjectsUsingGETParams {
+	o.SetSize(size)
+	return o
+}
+
+// SetSize adds the size to the get all projects using get params
+func (o *GetAllProjectsUsingGETParams) SetSize(size *int32) {
+	o.Size = size
 }
 
 // WithWithAnyPermission adds the withAnyPermission to the get all projects using get params
@@ -205,6 +299,23 @@ func (o *GetAllProjectsUsingGETParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 	var res []error
+
+	if o.DollarOrderby != nil {
+
+		// query param $orderby
+		var qrDollarOrderby int32
+
+		if o.DollarOrderby != nil {
+			qrDollarOrderby = *o.DollarOrderby
+		}
+		qDollarOrderby := swag.FormatInt32(qrDollarOrderby)
+		if qDollarOrderby != "" {
+
+			if err := r.SetQueryParam("$orderby", qDollarOrderby); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.DollarSelect != nil {
 
@@ -257,6 +368,23 @@ func (o *GetAllProjectsUsingGETParams) WriteToRequest(r runtime.ClientRequest, r
 		}
 	}
 
+	if o.ExcludeSupervisor != nil {
+
+		// query param excludeSupervisor
+		var qrExcludeSupervisor bool
+
+		if o.ExcludeSupervisor != nil {
+			qrExcludeSupervisor = *o.ExcludeSupervisor
+		}
+		qExcludeSupervisor := swag.FormatBool(qrExcludeSupervisor)
+		if qExcludeSupervisor != "" {
+
+			if err := r.SetQueryParam("excludeSupervisor", qExcludeSupervisor); err != nil {
+				return err
+			}
+		}
+	}
+
 	if o.ExcludeViewer != nil {
 
 		// query param excludeViewer
@@ -269,6 +397,40 @@ func (o *GetAllProjectsUsingGETParams) WriteToRequest(r runtime.ClientRequest, r
 		if qExcludeViewer != "" {
 
 			if err := r.SetQueryParam("excludeViewer", qExcludeViewer); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Page != nil {
+
+		// query param page
+		var qrPage int32
+
+		if o.Page != nil {
+			qrPage = *o.Page
+		}
+		qPage := swag.FormatInt32(qrPage)
+		if qPage != "" {
+
+			if err := r.SetQueryParam("page", qPage); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Size != nil {
+
+		// query param size
+		var qrSize int32
+
+		if o.Size != nil {
+			qrSize = *o.Size
+		}
+		qSize := swag.FormatInt32(qrSize)
+		if qSize != "" {
+
+			if err := r.SetQueryParam("size", qSize); err != nil {
 				return err
 			}
 		}

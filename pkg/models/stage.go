@@ -184,6 +184,11 @@ func (m *stage) validateTasks(formats strfmt.Registry) error {
 		}
 		if val, ok := m.Tasks()[k]; ok {
 			if err := val.Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tasks" + "." + k)
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tasks" + "." + k)
+				}
 				return err
 			}
 		}

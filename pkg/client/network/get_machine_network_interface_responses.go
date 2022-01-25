@@ -60,7 +60,7 @@ type GetMachineNetworkInterfaceOK struct {
 }
 
 func (o *GetMachineNetworkInterfaceOK) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/machines/{id}/network-interfaces/{id1}][%d] getMachineNetworkInterfaceOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /iaas/api/machines/{id}/network-interfaces/{networkId}][%d] getMachineNetworkInterfaceOK  %+v", 200, o.Payload)
 }
 func (o *GetMachineNetworkInterfaceOK) GetPayload() *models.NetworkInterface {
 	return o.Payload
@@ -92,7 +92,7 @@ type GetMachineNetworkInterfaceForbidden struct {
 }
 
 func (o *GetMachineNetworkInterfaceForbidden) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/machines/{id}/network-interfaces/{id1}][%d] getMachineNetworkInterfaceForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[GET /iaas/api/machines/{id}/network-interfaces/{networkId}][%d] getMachineNetworkInterfaceForbidden  %+v", 403, o.Payload)
 }
 func (o *GetMachineNetworkInterfaceForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
@@ -124,7 +124,7 @@ type GetMachineNetworkInterfaceNotFound struct {
 }
 
 func (o *GetMachineNetworkInterfaceNotFound) Error() string {
-	return fmt.Sprintf("[GET /iaas/api/machines/{id}/network-interfaces/{id1}][%d] getMachineNetworkInterfaceNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /iaas/api/machines/{id}/network-interfaces/{networkId}][%d] getMachineNetworkInterfaceNotFound  %+v", 404, o.Payload)
 }
 func (o *GetMachineNetworkInterfaceNotFound) GetPayload() *models.Error {
 	return o.Payload

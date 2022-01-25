@@ -219,6 +219,8 @@ func (m *MarketplaceContentDownloadRequest) validateExecutionMessages(formats st
 			if err := m.ExecutionMessages[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("executionMessages" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("executionMessages" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -379,6 +381,8 @@ func (m *MarketplaceContentDownloadRequest) contextValidateExecutionMessages(ctx
 			if err := m.ExecutionMessages[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("executionMessages" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("executionMessages" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

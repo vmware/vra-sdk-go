@@ -64,6 +64,11 @@ func (m *ImageMapping) validateLinks(formats strfmt.Registry) error {
 		}
 		if val, ok := m.Links[k]; ok {
 			if err := val.Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("_links" + "." + k)
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("_links" + "." + k)
+				}
 				return err
 			}
 		}
@@ -86,6 +91,11 @@ func (m *ImageMapping) validateMapping(formats strfmt.Registry) error {
 		}
 		if val, ok := m.Mapping[k]; ok {
 			if err := val.Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("mapping" + "." + k)
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("mapping" + "." + k)
+				}
 				return err
 			}
 		}

@@ -51,6 +51,8 @@ func (m *RateFactorItem) validateRateFactor(formats strfmt.Registry) error {
 		if err := m.RateFactor.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("rateFactor")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("rateFactor")
 			}
 			return err
 		}
@@ -79,6 +81,8 @@ func (m *RateFactorItem) contextValidateRateFactor(ctx context.Context, formats 
 		if err := m.RateFactor.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("rateFactor")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("rateFactor")
 			}
 			return err
 		}

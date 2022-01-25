@@ -20,11 +20,11 @@ import (
 // swagger:model Property
 type Property struct {
 
-	// Path that can be used to retrieve permissible values
-	DollarData string `json:"$data,omitempty"`
-
 	// Path that can be used to retrieve single permissible default value
 	DollarDynamicDefault string `json:"$dynamicDefault,omitempty"`
+
+	// Path that can be used to retrieve permissible values
+	DollarDynamicEnum string `json:"$dynamicEnum,omitempty"`
 
 	// Constant value for the property
 	Const interface{} `json:"const,omitempty"`
@@ -115,6 +115,8 @@ func (m *Property) validateItems(formats strfmt.Registry) error {
 		if err := m.Items.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("items")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("items")
 			}
 			return err
 		}
@@ -137,6 +139,8 @@ func (m *Property) validateOneOf(formats strfmt.Registry) error {
 			if err := m.OneOf[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("oneOf" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("oneOf" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -159,6 +163,11 @@ func (m *Property) validateProperties(formats strfmt.Registry) error {
 		}
 		if val, ok := m.Properties[k]; ok {
 			if err := val.Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("properties" + "." + k)
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("properties" + "." + k)
+				}
 				return err
 			}
 		}
@@ -196,6 +205,8 @@ func (m *Property) contextValidateItems(ctx context.Context, formats strfmt.Regi
 		if err := m.Items.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("items")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("items")
 			}
 			return err
 		}
@@ -212,6 +223,8 @@ func (m *Property) contextValidateOneOf(ctx context.Context, formats strfmt.Regi
 			if err := m.OneOf[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("oneOf" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("oneOf" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

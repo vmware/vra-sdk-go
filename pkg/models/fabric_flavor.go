@@ -36,7 +36,7 @@ type FabricFlavor struct {
 	DataDiskSizeInMB int32 `json:"dataDiskSizeInMB,omitempty"`
 
 	// The internal identification used by the corresponding cloud end-point
-	// Example: i3.large
+	// Example: 901004
 	ID string `json:"id,omitempty"`
 
 	// Total amount of memory (in megabytes). Not populated when inapplicable.

@@ -599,6 +599,8 @@ func (m *gitEvent) validateServerURL(formats strfmt.Registry) error {
 		if err := m.ServerURL().Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("serverURL")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("serverURL")
 			}
 			return err
 		}
@@ -627,6 +629,8 @@ func (m *gitEvent) contextValidateServerURL(ctx context.Context, formats strfmt.
 		if err := m.ServerURL().ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("serverURL")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("serverURL")
 			}
 			return err
 		}

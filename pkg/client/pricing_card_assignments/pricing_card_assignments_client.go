@@ -30,42 +30,42 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	ChangeMeteringAssignmentStrategyUsingPATCH(params *ChangeMeteringAssignmentStrategyUsingPATCHParams, opts ...ClientOption) (*ChangeMeteringAssignmentStrategyUsingPATCHOK, error)
+	ChangeMeteringAssignmentStrategyUsingPATCH2(params *ChangeMeteringAssignmentStrategyUsingPATCH2Params, opts ...ClientOption) (*ChangeMeteringAssignmentStrategyUsingPATCH2OK, error)
 
-	CreateMeteringAssignmentStrategyUsingPOST(params *CreateMeteringAssignmentStrategyUsingPOSTParams, opts ...ClientOption) (*CreateMeteringAssignmentStrategyUsingPOSTOK, *CreateMeteringAssignmentStrategyUsingPOSTCreated, error)
+	CreateMeteringAssignmentStrategyUsingPOST2(params *CreateMeteringAssignmentStrategyUsingPOST2Params, opts ...ClientOption) (*CreateMeteringAssignmentStrategyUsingPOST2OK, *CreateMeteringAssignmentStrategyUsingPOST2Created, error)
 
-	CreateMeteringPolicyAssignmentUsingPOST(params *CreateMeteringPolicyAssignmentUsingPOSTParams, opts ...ClientOption) (*CreateMeteringPolicyAssignmentUsingPOSTOK, *CreateMeteringPolicyAssignmentUsingPOSTCreated, error)
+	CreateMeteringPolicyAssignmentUsingPOST2(params *CreateMeteringPolicyAssignmentUsingPOST2Params, opts ...ClientOption) (*CreateMeteringPolicyAssignmentUsingPOST2OK, *CreateMeteringPolicyAssignmentUsingPOST2Created, error)
 
-	DeleteMeteringPolicyAssignmentUsingDELETE(params *DeleteMeteringPolicyAssignmentUsingDELETEParams, opts ...ClientOption) (*DeleteMeteringPolicyAssignmentUsingDELETEOK, error)
+	DeleteMeteringPolicyAssignmentUsingDELETE2(params *DeleteMeteringPolicyAssignmentUsingDELETE2Params, opts ...ClientOption) (*DeleteMeteringPolicyAssignmentUsingDELETE2OK, error)
 
-	GetAllMeteringPolicyAssignmentsUsingGET(params *GetAllMeteringPolicyAssignmentsUsingGETParams, opts ...ClientOption) (*GetAllMeteringPolicyAssignmentsUsingGETOK, error)
+	GetAllMeteringPolicyAssignmentsUsingGET2(params *GetAllMeteringPolicyAssignmentsUsingGET2Params, opts ...ClientOption) (*GetAllMeteringPolicyAssignmentsUsingGET2OK, error)
 
-	GetMeteringAssignmentStrategyUsingGET(params *GetMeteringAssignmentStrategyUsingGETParams, opts ...ClientOption) (*GetMeteringAssignmentStrategyUsingGETOK, error)
+	GetMeteringAssignmentStrategyUsingGET2(params *GetMeteringAssignmentStrategyUsingGET2Params, opts ...ClientOption) (*GetMeteringAssignmentStrategyUsingGET2OK, error)
 
-	GetMeteringPolicyAssignmentUsingGET(params *GetMeteringPolicyAssignmentUsingGETParams, opts ...ClientOption) (*GetMeteringPolicyAssignmentUsingGETOK, error)
+	GetMeteringPolicyAssignmentUsingGET2(params *GetMeteringPolicyAssignmentUsingGET2Params, opts ...ClientOption) (*GetMeteringPolicyAssignmentUsingGET2OK, error)
 
-	PatchMeteringPolicyAssignmentUsingPATCH(params *PatchMeteringPolicyAssignmentUsingPATCHParams, opts ...ClientOption) (*PatchMeteringPolicyAssignmentUsingPATCHOK, error)
+	PatchMeteringPolicyAssignmentUsingPATCH2(params *PatchMeteringPolicyAssignmentUsingPATCH2Params, opts ...ClientOption) (*PatchMeteringPolicyAssignmentUsingPATCH2OK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  ChangeMeteringAssignmentStrategyUsingPATCH updates the pricing card assignment strategy for the org
+  ChangeMeteringAssignmentStrategyUsingPATCH2 updates the pricing card assignment strategy for the org
 */
-func (a *Client) ChangeMeteringAssignmentStrategyUsingPATCH(params *ChangeMeteringAssignmentStrategyUsingPATCHParams, opts ...ClientOption) (*ChangeMeteringAssignmentStrategyUsingPATCHOK, error) {
+func (a *Client) ChangeMeteringAssignmentStrategyUsingPATCH2(params *ChangeMeteringAssignmentStrategyUsingPATCH2Params, opts ...ClientOption) (*ChangeMeteringAssignmentStrategyUsingPATCH2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewChangeMeteringAssignmentStrategyUsingPATCHParams()
+		params = NewChangeMeteringAssignmentStrategyUsingPATCH2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "changeMeteringAssignmentStrategyUsingPATCH",
+		ID:                 "changeMeteringAssignmentStrategyUsingPATCH_2",
 		Method:             "PATCH",
 		PathPattern:        "/price/api/private/pricing-card-assignments/strategy",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &ChangeMeteringAssignmentStrategyUsingPATCHReader{formats: a.formats},
+		Reader:             &ChangeMeteringAssignmentStrategyUsingPATCH2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -77,35 +77,35 @@ func (a *Client) ChangeMeteringAssignmentStrategyUsingPATCH(params *ChangeMeteri
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*ChangeMeteringAssignmentStrategyUsingPATCHOK)
+	success, ok := result.(*ChangeMeteringAssignmentStrategyUsingPATCH2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for changeMeteringAssignmentStrategyUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for changeMeteringAssignmentStrategyUsingPATCH_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  CreateMeteringAssignmentStrategyUsingPOST selectings the new pricing card assignment strategy p r o j e c t or c l o u d z o n e are possible values can be used while creating strategy also there can be only one strategy for a given org at a given point of time
+  CreateMeteringAssignmentStrategyUsingPOST2 selectings the new pricing card assignment strategy p r o j e c t or c l o u d z o n e are possible values can be used while creating strategy also there can be only one strategy for a given org at a given point of time
 
   Create a new pricing card assignment strategy based on request body and validate its field according to business rules.
 */
-func (a *Client) CreateMeteringAssignmentStrategyUsingPOST(params *CreateMeteringAssignmentStrategyUsingPOSTParams, opts ...ClientOption) (*CreateMeteringAssignmentStrategyUsingPOSTOK, *CreateMeteringAssignmentStrategyUsingPOSTCreated, error) {
+func (a *Client) CreateMeteringAssignmentStrategyUsingPOST2(params *CreateMeteringAssignmentStrategyUsingPOST2Params, opts ...ClientOption) (*CreateMeteringAssignmentStrategyUsingPOST2OK, *CreateMeteringAssignmentStrategyUsingPOST2Created, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateMeteringAssignmentStrategyUsingPOSTParams()
+		params = NewCreateMeteringAssignmentStrategyUsingPOST2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createMeteringAssignmentStrategyUsingPOST",
+		ID:                 "createMeteringAssignmentStrategyUsingPOST_2",
 		Method:             "POST",
 		PathPattern:        "/price/api/private/pricing-card-assignments/strategy",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateMeteringAssignmentStrategyUsingPOSTReader{formats: a.formats},
+		Reader:             &CreateMeteringAssignmentStrategyUsingPOST2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -118,9 +118,9 @@ func (a *Client) CreateMeteringAssignmentStrategyUsingPOST(params *CreateMeterin
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *CreateMeteringAssignmentStrategyUsingPOSTOK:
+	case *CreateMeteringAssignmentStrategyUsingPOST2OK:
 		return value, nil, nil
-	case *CreateMeteringAssignmentStrategyUsingPOSTCreated:
+	case *CreateMeteringAssignmentStrategyUsingPOST2Created:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
@@ -129,24 +129,24 @@ func (a *Client) CreateMeteringAssignmentStrategyUsingPOST(params *CreateMeterin
 }
 
 /*
-  CreateMeteringPolicyAssignmentUsingPOST creates a new pricing card assignment
+  CreateMeteringPolicyAssignmentUsingPOST2 creates a new pricing card assignment
 
   Create a new pricing card policy assignment based on request body and validate its field according to business rules. Request body with ALL entityType will delete the older assignments for the given pricingCardId
 */
-func (a *Client) CreateMeteringPolicyAssignmentUsingPOST(params *CreateMeteringPolicyAssignmentUsingPOSTParams, opts ...ClientOption) (*CreateMeteringPolicyAssignmentUsingPOSTOK, *CreateMeteringPolicyAssignmentUsingPOSTCreated, error) {
+func (a *Client) CreateMeteringPolicyAssignmentUsingPOST2(params *CreateMeteringPolicyAssignmentUsingPOST2Params, opts ...ClientOption) (*CreateMeteringPolicyAssignmentUsingPOST2OK, *CreateMeteringPolicyAssignmentUsingPOST2Created, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateMeteringPolicyAssignmentUsingPOSTParams()
+		params = NewCreateMeteringPolicyAssignmentUsingPOST2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createMeteringPolicyAssignmentUsingPOST",
+		ID:                 "createMeteringPolicyAssignmentUsingPOST_2",
 		Method:             "POST",
 		PathPattern:        "/price/api/private/pricing-card-assignments",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateMeteringPolicyAssignmentUsingPOSTReader{formats: a.formats},
+		Reader:             &CreateMeteringPolicyAssignmentUsingPOST2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -159,9 +159,9 @@ func (a *Client) CreateMeteringPolicyAssignmentUsingPOST(params *CreateMeteringP
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *CreateMeteringPolicyAssignmentUsingPOSTOK:
+	case *CreateMeteringPolicyAssignmentUsingPOST2OK:
 		return value, nil, nil
-	case *CreateMeteringPolicyAssignmentUsingPOSTCreated:
+	case *CreateMeteringPolicyAssignmentUsingPOST2Created:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
@@ -170,24 +170,24 @@ func (a *Client) CreateMeteringPolicyAssignmentUsingPOST(params *CreateMeteringP
 }
 
 /*
-  DeleteMeteringPolicyAssignmentUsingDELETE deletes the pricing card assignment with specified id
+  DeleteMeteringPolicyAssignmentUsingDELETE2 deletes the pricing card assignment with specified id
 
   Deletes the pricing card assignment with the specified id
 */
-func (a *Client) DeleteMeteringPolicyAssignmentUsingDELETE(params *DeleteMeteringPolicyAssignmentUsingDELETEParams, opts ...ClientOption) (*DeleteMeteringPolicyAssignmentUsingDELETEOK, error) {
+func (a *Client) DeleteMeteringPolicyAssignmentUsingDELETE2(params *DeleteMeteringPolicyAssignmentUsingDELETE2Params, opts ...ClientOption) (*DeleteMeteringPolicyAssignmentUsingDELETE2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteMeteringPolicyAssignmentUsingDELETEParams()
+		params = NewDeleteMeteringPolicyAssignmentUsingDELETE2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteMeteringPolicyAssignmentUsingDELETE",
+		ID:                 "deleteMeteringPolicyAssignmentUsingDELETE_2",
 		Method:             "DELETE",
 		PathPattern:        "/price/api/private/pricing-card-assignments/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteMeteringPolicyAssignmentUsingDELETEReader{formats: a.formats},
+		Reader:             &DeleteMeteringPolicyAssignmentUsingDELETE2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -199,35 +199,35 @@ func (a *Client) DeleteMeteringPolicyAssignmentUsingDELETE(params *DeleteMeterin
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteMeteringPolicyAssignmentUsingDELETEOK)
+	success, ok := result.(*DeleteMeteringPolicyAssignmentUsingDELETE2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteMeteringPolicyAssignmentUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for deleteMeteringPolicyAssignmentUsingDELETE_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetAllMeteringPolicyAssignmentsUsingGET fetches all pricing card assignment for private cloud
+  GetAllMeteringPolicyAssignmentsUsingGET2 fetches all pricing card assignment for private cloud
 
   Returns a paginated list of pricing card assignments
 */
-func (a *Client) GetAllMeteringPolicyAssignmentsUsingGET(params *GetAllMeteringPolicyAssignmentsUsingGETParams, opts ...ClientOption) (*GetAllMeteringPolicyAssignmentsUsingGETOK, error) {
+func (a *Client) GetAllMeteringPolicyAssignmentsUsingGET2(params *GetAllMeteringPolicyAssignmentsUsingGET2Params, opts ...ClientOption) (*GetAllMeteringPolicyAssignmentsUsingGET2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetAllMeteringPolicyAssignmentsUsingGETParams()
+		params = NewGetAllMeteringPolicyAssignmentsUsingGET2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getAllMeteringPolicyAssignmentsUsingGET",
+		ID:                 "getAllMeteringPolicyAssignmentsUsingGET_2",
 		Method:             "GET",
 		PathPattern:        "/price/api/private/pricing-card-assignments",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetAllMeteringPolicyAssignmentsUsingGETReader{formats: a.formats},
+		Reader:             &GetAllMeteringPolicyAssignmentsUsingGET2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -239,35 +239,35 @@ func (a *Client) GetAllMeteringPolicyAssignmentsUsingGET(params *GetAllMeteringP
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetAllMeteringPolicyAssignmentsUsingGETOK)
+	success, ok := result.(*GetAllMeteringPolicyAssignmentsUsingGET2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getAllMeteringPolicyAssignmentsUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getAllMeteringPolicyAssignmentsUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetMeteringAssignmentStrategyUsingGET fetches pricing card assignment strategy for the org
+  GetMeteringAssignmentStrategyUsingGET2 fetches pricing card assignment strategy for the org
 
   Returns a pricing card assignment strategy for the Org
 */
-func (a *Client) GetMeteringAssignmentStrategyUsingGET(params *GetMeteringAssignmentStrategyUsingGETParams, opts ...ClientOption) (*GetMeteringAssignmentStrategyUsingGETOK, error) {
+func (a *Client) GetMeteringAssignmentStrategyUsingGET2(params *GetMeteringAssignmentStrategyUsingGET2Params, opts ...ClientOption) (*GetMeteringAssignmentStrategyUsingGET2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetMeteringAssignmentStrategyUsingGETParams()
+		params = NewGetMeteringAssignmentStrategyUsingGET2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getMeteringAssignmentStrategyUsingGET",
+		ID:                 "getMeteringAssignmentStrategyUsingGET_2",
 		Method:             "GET",
 		PathPattern:        "/price/api/private/pricing-card-assignments/strategy",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetMeteringAssignmentStrategyUsingGETReader{formats: a.formats},
+		Reader:             &GetMeteringAssignmentStrategyUsingGET2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -279,35 +279,35 @@ func (a *Client) GetMeteringAssignmentStrategyUsingGET(params *GetMeteringAssign
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetMeteringAssignmentStrategyUsingGETOK)
+	success, ok := result.(*GetMeteringAssignmentStrategyUsingGET2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getMeteringAssignmentStrategyUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getMeteringAssignmentStrategyUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetMeteringPolicyAssignmentUsingGET fetches pricing card assignment for private cloud by id
+  GetMeteringPolicyAssignmentUsingGET2 fetches pricing card assignment for private cloud by id
 
   Returns a pricing card assignments by id
 */
-func (a *Client) GetMeteringPolicyAssignmentUsingGET(params *GetMeteringPolicyAssignmentUsingGETParams, opts ...ClientOption) (*GetMeteringPolicyAssignmentUsingGETOK, error) {
+func (a *Client) GetMeteringPolicyAssignmentUsingGET2(params *GetMeteringPolicyAssignmentUsingGET2Params, opts ...ClientOption) (*GetMeteringPolicyAssignmentUsingGET2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetMeteringPolicyAssignmentUsingGETParams()
+		params = NewGetMeteringPolicyAssignmentUsingGET2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getMeteringPolicyAssignmentUsingGET",
+		ID:                 "getMeteringPolicyAssignmentUsingGET_2",
 		Method:             "GET",
 		PathPattern:        "/price/api/private/pricing-card-assignments/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetMeteringPolicyAssignmentUsingGETReader{formats: a.formats},
+		Reader:             &GetMeteringPolicyAssignmentUsingGET2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -319,33 +319,33 @@ func (a *Client) GetMeteringPolicyAssignmentUsingGET(params *GetMeteringPolicyAs
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetMeteringPolicyAssignmentUsingGETOK)
+	success, ok := result.(*GetMeteringPolicyAssignmentUsingGET2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getMeteringPolicyAssignmentUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getMeteringPolicyAssignmentUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  PatchMeteringPolicyAssignmentUsingPATCH updates the pricing card assignment id with the supplied id request body with a l l entity type will delete the older assignments for the given pricing card Id
+  PatchMeteringPolicyAssignmentUsingPATCH2 updates the pricing card assignment id with the supplied id request body with a l l entity type will delete the older assignments for the given pricing card Id
 */
-func (a *Client) PatchMeteringPolicyAssignmentUsingPATCH(params *PatchMeteringPolicyAssignmentUsingPATCHParams, opts ...ClientOption) (*PatchMeteringPolicyAssignmentUsingPATCHOK, error) {
+func (a *Client) PatchMeteringPolicyAssignmentUsingPATCH2(params *PatchMeteringPolicyAssignmentUsingPATCH2Params, opts ...ClientOption) (*PatchMeteringPolicyAssignmentUsingPATCH2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPatchMeteringPolicyAssignmentUsingPATCHParams()
+		params = NewPatchMeteringPolicyAssignmentUsingPATCH2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "patchMeteringPolicyAssignmentUsingPATCH",
+		ID:                 "patchMeteringPolicyAssignmentUsingPATCH_2",
 		Method:             "PATCH",
 		PathPattern:        "/price/api/private/pricing-card-assignments/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PatchMeteringPolicyAssignmentUsingPATCHReader{formats: a.formats},
+		Reader:             &PatchMeteringPolicyAssignmentUsingPATCH2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -357,13 +357,13 @@ func (a *Client) PatchMeteringPolicyAssignmentUsingPATCH(params *PatchMeteringPo
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PatchMeteringPolicyAssignmentUsingPATCHOK)
+	success, ok := result.(*PatchMeteringPolicyAssignmentUsingPATCH2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchMeteringPolicyAssignmentUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for patchMeteringPolicyAssignmentUsingPATCH_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

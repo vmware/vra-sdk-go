@@ -77,12 +77,8 @@ type LoadBalancer struct {
 	Name string `json:"name,omitempty"`
 
 	// The id of the organization this entity belongs to.
-	// Example: 9e49
+	// Example: 42413b31-1716-477e-9a88-9dc1c3cb1cdf
 	OrgID string `json:"orgId,omitempty"`
-
-	// This field is deprecated. Use orgId instead. The id of the organization this entity belongs to.
-	// Example: deprecated
-	OrganizationID string `json:"organizationId,omitempty"`
 
 	// Email of the user that owns the entity.
 	// Example: csp@vmware.com
@@ -91,6 +87,13 @@ type LoadBalancer struct {
 	// The id of the project this resource belongs to.
 	// Example: 9e49
 	ProjectID string `json:"projectId,omitempty"`
+
+	// The provisioning status of the resource. One of three provisioning statuses.
+	// `PROVISIONING`: The resource is being provisioned.
+	// `READY`: The resource is already provisioned.
+	// `SUSPEND`: The resource is being destroyed.
+	//
+	ProvisioningStatus string `json:"provisioningStatus,omitempty"`
 
 	// The load balancer route configuration regarding ports and protocols.
 	// Required: true
@@ -160,6 +163,11 @@ func (m *LoadBalancer) validateLinks(formats strfmt.Registry) error {
 		}
 		if val, ok := m.Links[k]; ok {
 			if err := val.Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("_links" + "." + k)
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("_links" + "." + k)
+				}
 				return err
 			}
 		}
@@ -223,6 +231,8 @@ func (m *LoadBalancer) validateRoutes(formats strfmt.Registry) error {
 			if err := m.Routes[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("routes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("routes" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -247,6 +257,8 @@ func (m *LoadBalancer) validateTags(formats strfmt.Registry) error {
 			if err := m.Tags[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -306,6 +318,8 @@ func (m *LoadBalancer) contextValidateRoutes(ctx context.Context, formats strfmt
 			if err := m.Routes[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("routes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("routes" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -324,6 +338,8 @@ func (m *LoadBalancer) contextValidateTags(ctx context.Context, formats strfmt.R
 			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

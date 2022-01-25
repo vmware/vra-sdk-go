@@ -42,7 +42,7 @@ type ClientService interface {
 
 	DeleteBlockDeviceSnapshot(params *DeleteBlockDeviceSnapshotParams, opts ...ClientOption) (*DeleteBlockDeviceSnapshotAccepted, *DeleteBlockDeviceSnapshotNoContent, error)
 
-	DeleteMachineDisk(params *DeleteMachineDiskParams, opts ...ClientOption) (*DeleteMachineDiskAccepted, error)
+	DeleteMachineDisk(params *DeleteMachineDiskParams, opts ...ClientOption) (*DeleteMachineDiskAccepted, *DeleteMachineDiskNoContent, error)
 
 	GetBlockDevice(params *GetBlockDeviceParams, opts ...ClientOption) (*GetBlockDeviceOK, error)
 
@@ -319,7 +319,7 @@ func (a *Client) DeleteBlockDeviceSnapshot(params *DeleteBlockDeviceSnapshotPara
 
   Remove a disk from a given machine.
 */
-func (a *Client) DeleteMachineDisk(params *DeleteMachineDiskParams, opts ...ClientOption) (*DeleteMachineDiskAccepted, error) {
+func (a *Client) DeleteMachineDisk(params *DeleteMachineDiskParams, opts ...ClientOption) (*DeleteMachineDiskAccepted, *DeleteMachineDiskNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteMachineDiskParams()
@@ -327,7 +327,7 @@ func (a *Client) DeleteMachineDisk(params *DeleteMachineDiskParams, opts ...Clie
 	op := &runtime.ClientOperation{
 		ID:                 "deleteMachineDisk",
 		Method:             "DELETE",
-		PathPattern:        "/iaas/api/machines/{id}/disks/{id1}",
+		PathPattern:        "/iaas/api/machines/{id}/disks/{diskId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -342,15 +342,16 @@ func (a *Client) DeleteMachineDisk(params *DeleteMachineDiskParams, opts ...Clie
 
 	result, err := a.transport.Submit(op)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	success, ok := result.(*DeleteMachineDiskAccepted)
-	if ok {
-		return success, nil
+	switch value := result.(type) {
+	case *DeleteMachineDiskAccepted:
+		return value, nil, nil
+	case *DeleteMachineDiskNoContent:
+		return nil, value, nil
 	}
-	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteMachineDisk: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for disk: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -527,7 +528,7 @@ func (a *Client) GetMachineDisk(params *GetMachineDiskParams, opts ...ClientOpti
 	op := &runtime.ClientOperation{
 		ID:                 "getMachineDisk",
 		Method:             "GET",
-		PathPattern:        "/iaas/api/machines/{id}/disks/{id1}",
+		PathPattern:        "/iaas/api/machines/{id}/disks/{diskId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},

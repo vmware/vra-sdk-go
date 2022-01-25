@@ -21,6 +21,10 @@ type FabricFlavorDescription struct {
 	// Example: 4
 	CPUCount int32 `json:"cpuCount,omitempty"`
 
+	// The id of the instance type in the corresponding cloud.
+	// Example: 901004, 901008
+	ID string `json:"id,omitempty"`
+
 	// Total amount of memory (in megabytes). Mandatory for private clouds such as vSphere. Not populated when inapplicable.
 	// Example: 4096
 	MemoryInMB int64 `json:"memoryInMB,omitempty"`

@@ -37,7 +37,12 @@ type Workspace interface {
 	Cache() []string
 	SetCache([]string)
 
-	// Name of the endpoint is docker.
+	// List of custom properties
+	// Example: {"namespace":"builds"}
+	CustomProperties() map[string]string
+	SetCustomProperties(map[string]string)
+
+	// Name of the endpoint.
 	Endpoint() string
 	SetEndpoint(string)
 
@@ -61,6 +66,11 @@ type Workspace interface {
 	Registry() string
 	SetRegistry(string)
 
+	// Type of the workspace.
+	// Example: DOCKER|K8S
+	Type() string
+	SetType(string)
+
 	// AdditionalProperties in base type shoud be handled just like regular properties
 	// At this moment, the base type property is pushed down to the subtype
 }
@@ -69,6 +79,8 @@ type workspace struct {
 	autoCloneForTriggerField bool
 
 	cacheField []string
+
+	customPropertiesField map[string]string
 
 	endpointField string
 
@@ -79,6 +91,8 @@ type workspace struct {
 	pathField string
 
 	registryField string
+
+	typeField string
 }
 
 // AutoCloneForTrigger gets the auto clone for trigger of this polymorphic type
@@ -99,6 +113,16 @@ func (m *workspace) Cache() []string {
 // SetCache sets the cache of this polymorphic type
 func (m *workspace) SetCache(val []string) {
 	m.cacheField = val
+}
+
+// CustomProperties gets the custom properties of this polymorphic type
+func (m *workspace) CustomProperties() map[string]string {
+	return m.customPropertiesField
+}
+
+// SetCustomProperties sets the custom properties of this polymorphic type
+func (m *workspace) SetCustomProperties(val map[string]string) {
+	m.customPropertiesField = val
 }
 
 // Endpoint gets the endpoint of this polymorphic type
@@ -149,6 +173,16 @@ func (m *workspace) Registry() string {
 // SetRegistry sets the registry of this polymorphic type
 func (m *workspace) SetRegistry(val string) {
 	m.registryField = val
+}
+
+// Type gets the type of this polymorphic type
+func (m *workspace) Type() string {
+	return m.typeField
+}
+
+// SetType sets the type of this polymorphic type
+func (m *workspace) SetType(val string) {
+	m.typeField = val
 }
 
 // UnmarshalWorkspaceSlice unmarshals polymorphic slices of Workspace

@@ -28,10 +28,8 @@ type NetworkIPRangeSpecification struct {
 	// Required: true
 	EndIPAddress *string `json:"endIPAddress"`
 
-	// Deprecated. Use 'fabricNetworkIds'.
-	FabricNetworkID string `json:"fabricNetworkId,omitempty"`
-
-	// A list of fabric network Ids that this IP range should be associated with.
+	// The Ids of the fabric networks.
+	// Unique: true
 	FabricNetworkIds []string `json:"fabricNetworkIds"`
 
 	// IP address version: IPv4 or IPv6. Default: IPv4.
@@ -56,6 +54,10 @@ func (m *NetworkIPRangeSpecification) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateEndIPAddress(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateFabricNetworkIds(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -84,6 +86,18 @@ func (m *NetworkIPRangeSpecification) Validate(formats strfmt.Registry) error {
 func (m *NetworkIPRangeSpecification) validateEndIPAddress(formats strfmt.Registry) error {
 
 	if err := validate.Required("endIPAddress", "body", m.EndIPAddress); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *NetworkIPRangeSpecification) validateFabricNetworkIds(formats strfmt.Registry) error {
+	if swag.IsZero(m.FabricNetworkIds) { // not required
+		return nil
+	}
+
+	if err := validate.UniqueItems("fabricNetworkIds", "body", m.FabricNetworkIds); err != nil {
 		return err
 	}
 
@@ -164,6 +178,8 @@ func (m *NetworkIPRangeSpecification) validateTags(formats strfmt.Registry) erro
 			if err := m.Tags[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -196,6 +212,8 @@ func (m *NetworkIPRangeSpecification) contextValidateTags(ctx context.Context, f
 			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

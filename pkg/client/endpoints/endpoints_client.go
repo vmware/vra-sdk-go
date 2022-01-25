@@ -30,27 +30,27 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateUsingPOST2(params *CreateUsingPOST2Params, opts ...ClientOption) (*CreateUsingPOST2OK, error)
+	CreateEndpointUsingPOST(params *CreateEndpointUsingPOSTParams, opts ...ClientOption) (*CreateEndpointUsingPOSTOK, error)
 
-	DeleteUsingDELETE1(params *DeleteUsingDELETE1Params, opts ...ClientOption) (*DeleteUsingDELETE1OK, error)
+	DeleteEndpointByIDUsingDELETE(params *DeleteEndpointByIDUsingDELETEParams, opts ...ClientOption) (*DeleteEndpointByIDUsingDELETEOK, error)
 
-	DeleteUsingDELETE2(params *DeleteUsingDELETE2Params, opts ...ClientOption) (*DeleteUsingDELETE2OK, error)
+	DeleteEndpointByNameUsingDELETE(params *DeleteEndpointByNameUsingDELETEParams, opts ...ClientOption) (*DeleteEndpointByNameUsingDELETEOK, error)
 
-	GetAllUsingGET2(params *GetAllUsingGET2Params, opts ...ClientOption) (*GetAllUsingGET2OK, error)
+	GetAllEndpointsUsingGET(params *GetAllEndpointsUsingGETParams, opts ...ClientOption) (*GetAllEndpointsUsingGETOK, error)
 
-	GetByIDUsingGET(params *GetByIDUsingGETParams, opts ...ClientOption) (*GetByIDUsingGETOK, error)
+	GetEndpointByIDUsingGET(params *GetEndpointByIDUsingGETParams, opts ...ClientOption) (*GetEndpointByIDUsingGETOK, error)
 
-	GetByNameUsingGET(params *GetByNameUsingGETParams, opts ...ClientOption) (*GetByNameUsingGETOK, error)
+	GetEndpointByNameUsingGET(params *GetEndpointByNameUsingGETParams, opts ...ClientOption) (*GetEndpointByNameUsingGETOK, error)
 
 	GetEndpointPropertiesUsingGET(params *GetEndpointPropertiesUsingGETParams, opts ...ClientOption) (*GetEndpointPropertiesUsingGETOK, error)
 
 	GetEndpointTilesUsingGET(params *GetEndpointTilesUsingGETParams, opts ...ClientOption) (*GetEndpointTilesUsingGETOK, error)
 
-	GetUsingGETMixin3(params *GetUsingGETMixin3Params, opts ...ClientOption) (*GetUsingGETMixin3OK, error)
+	GetUsingGET(params *GetUsingGETParams, opts ...ClientOption) (*GetUsingGETOK, error)
 
-	UpdateByIDUsingPUT1(params *UpdateByIDUsingPUT1Params, opts ...ClientOption) (*UpdateByIDUsingPUT1OK, error)
+	UpdateEndpointByIDUsingPUT(params *UpdateEndpointByIDUsingPUTParams, opts ...ClientOption) (*UpdateEndpointByIDUsingPUTOK, error)
 
-	UpdateByNameUsingPUT1(params *UpdateByNameUsingPUT1Params, opts ...ClientOption) (*UpdateByNameUsingPUT1OK, error)
+	UpdateEndpointByNameUsingPUT(params *UpdateEndpointByNameUsingPUTParams, opts ...ClientOption) (*UpdateEndpointByNameUsingPUTOK, error)
 
 	ValidateEndpointUsingPOST(params *ValidateEndpointUsingPOSTParams, opts ...ClientOption) (*ValidateEndpointUsingPOSTOK, error)
 
@@ -58,24 +58,24 @@ type ClientService interface {
 }
 
 /*
-  CreateUsingPOST2 creates an endpoint
+  CreateEndpointUsingPOST creates an endpoint
 
   Create an Endpoint based on the given project
 */
-func (a *Client) CreateUsingPOST2(params *CreateUsingPOST2Params, opts ...ClientOption) (*CreateUsingPOST2OK, error) {
+func (a *Client) CreateEndpointUsingPOST(params *CreateEndpointUsingPOSTParams, opts ...ClientOption) (*CreateEndpointUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateUsingPOST2Params()
+		params = NewCreateEndpointUsingPOSTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createUsingPOST_2",
+		ID:                 "createEndpointUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/codestream/api/endpoints",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateUsingPOST2Reader{formats: a.formats},
+		Reader:             &CreateEndpointUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -87,35 +87,35 @@ func (a *Client) CreateUsingPOST2(params *CreateUsingPOST2Params, opts ...Client
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateUsingPOST2OK)
+	success, ok := result.(*CreateEndpointUsingPOSTOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for createUsingPOST_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for createEndpointUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  DeleteUsingDELETE1 deletes an endpoint by id
+  DeleteEndpointByIDUsingDELETE deletes an endpoint by id
 
   Delete an Endpoint with the given id
 */
-func (a *Client) DeleteUsingDELETE1(params *DeleteUsingDELETE1Params, opts ...ClientOption) (*DeleteUsingDELETE1OK, error) {
+func (a *Client) DeleteEndpointByIDUsingDELETE(params *DeleteEndpointByIDUsingDELETEParams, opts ...ClientOption) (*DeleteEndpointByIDUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteUsingDELETE1Params()
+		params = NewDeleteEndpointByIDUsingDELETEParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteUsingDELETE_1",
+		ID:                 "deleteEndpointByIdUsingDELETE",
 		Method:             "DELETE",
 		PathPattern:        "/codestream/api/endpoints/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteUsingDELETE1Reader{formats: a.formats},
+		Reader:             &DeleteEndpointByIDUsingDELETEReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -127,35 +127,35 @@ func (a *Client) DeleteUsingDELETE1(params *DeleteUsingDELETE1Params, opts ...Cl
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteUsingDELETE1OK)
+	success, ok := result.(*DeleteEndpointByIDUsingDELETEOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteUsingDELETE_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for deleteEndpointByIdUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  DeleteUsingDELETE2 deletes an endpoint by project and name
+  DeleteEndpointByNameUsingDELETE deletes an endpoint by project and name
 
   Delete an Endpoint with the given name
 */
-func (a *Client) DeleteUsingDELETE2(params *DeleteUsingDELETE2Params, opts ...ClientOption) (*DeleteUsingDELETE2OK, error) {
+func (a *Client) DeleteEndpointByNameUsingDELETE(params *DeleteEndpointByNameUsingDELETEParams, opts ...ClientOption) (*DeleteEndpointByNameUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteUsingDELETE2Params()
+		params = NewDeleteEndpointByNameUsingDELETEParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteUsingDELETE_2",
+		ID:                 "deleteEndpointByNameUsingDELETE",
 		Method:             "DELETE",
 		PathPattern:        "/codestream/api/endpoints/{project}/{name}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteUsingDELETE2Reader{formats: a.formats},
+		Reader:             &DeleteEndpointByNameUsingDELETEReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -167,35 +167,35 @@ func (a *Client) DeleteUsingDELETE2(params *DeleteUsingDELETE2Params, opts ...Cl
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteUsingDELETE2OK)
+	success, ok := result.(*DeleteEndpointByNameUsingDELETEOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteUsingDELETE_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for deleteEndpointByNameUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetAllUsingGET2 gets all endpoints
+  GetAllEndpointsUsingGET gets all endpoints
 
   Get all Endpoints with specified paging and filter parameters
 */
-func (a *Client) GetAllUsingGET2(params *GetAllUsingGET2Params, opts ...ClientOption) (*GetAllUsingGET2OK, error) {
+func (a *Client) GetAllEndpointsUsingGET(params *GetAllEndpointsUsingGETParams, opts ...ClientOption) (*GetAllEndpointsUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetAllUsingGET2Params()
+		params = NewGetAllEndpointsUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getAllUsingGET_2",
+		ID:                 "getAllEndpointsUsingGET",
 		Method:             "GET",
 		PathPattern:        "/codestream/api/endpoints",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetAllUsingGET2Reader{formats: a.formats},
+		Reader:             &GetAllEndpointsUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -207,35 +207,35 @@ func (a *Client) GetAllUsingGET2(params *GetAllUsingGET2Params, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetAllUsingGET2OK)
+	success, ok := result.(*GetAllEndpointsUsingGETOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getAllUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getAllEndpointsUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetByIDUsingGET gets an endpoint
+  GetEndpointByIDUsingGET gets an endpoint
 
   Get an Endpoint with the given id
 */
-func (a *Client) GetByIDUsingGET(params *GetByIDUsingGETParams, opts ...ClientOption) (*GetByIDUsingGETOK, error) {
+func (a *Client) GetEndpointByIDUsingGET(params *GetEndpointByIDUsingGETParams, opts ...ClientOption) (*GetEndpointByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetByIDUsingGETParams()
+		params = NewGetEndpointByIDUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getByIdUsingGET",
+		ID:                 "getEndpointByIdUsingGET",
 		Method:             "GET",
 		PathPattern:        "/codestream/api/endpoints/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetByIDUsingGETReader{formats: a.formats},
+		Reader:             &GetEndpointByIDUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -247,35 +247,35 @@ func (a *Client) GetByIDUsingGET(params *GetByIDUsingGETParams, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetByIDUsingGETOK)
+	success, ok := result.(*GetEndpointByIDUsingGETOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getByIdUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getEndpointByIdUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetByNameUsingGET gets an endpoint by project and name
+  GetEndpointByNameUsingGET gets an endpoint by project and name
 
   Get an Endpoint with the given project and name
 */
-func (a *Client) GetByNameUsingGET(params *GetByNameUsingGETParams, opts ...ClientOption) (*GetByNameUsingGETOK, error) {
+func (a *Client) GetEndpointByNameUsingGET(params *GetEndpointByNameUsingGETParams, opts ...ClientOption) (*GetEndpointByNameUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetByNameUsingGETParams()
+		params = NewGetEndpointByNameUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getByNameUsingGET",
+		ID:                 "getEndpointByNameUsingGET",
 		Method:             "GET",
 		PathPattern:        "/codestream/api/endpoints/{project}/{name}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetByNameUsingGETReader{formats: a.formats},
+		Reader:             &GetEndpointByNameUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -287,13 +287,13 @@ func (a *Client) GetByNameUsingGET(params *GetByNameUsingGETParams, opts ...Clie
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetByNameUsingGETOK)
+	success, ok := result.(*GetEndpointByNameUsingGETOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getByNameUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getEndpointByNameUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -378,24 +378,24 @@ func (a *Client) GetEndpointTilesUsingGET(params *GetEndpointTilesUsingGETParams
 }
 
 /*
-  GetUsingGETMixin3 gets endpoint certificate
+  GetUsingGET gets endpoint certificate
 
   Get endpoint certificate chain for validation
 */
-func (a *Client) GetUsingGETMixin3(params *GetUsingGETMixin3Params, opts ...ClientOption) (*GetUsingGETMixin3OK, error) {
+func (a *Client) GetUsingGET(params *GetUsingGETParams, opts ...ClientOption) (*GetUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetUsingGETMixin3Params()
+		params = NewGetUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getUsingGETMixin3",
+		ID:                 "getUsingGET",
 		Method:             "GET",
 		PathPattern:        "/codestream/api/endpoint-certificate",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetUsingGETMixin3Reader{formats: a.formats},
+		Reader:             &GetUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -407,35 +407,35 @@ func (a *Client) GetUsingGETMixin3(params *GetUsingGETMixin3Params, opts ...Clie
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetUsingGETMixin3OK)
+	success, ok := result.(*GetUsingGETOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getUsingGETMixin3: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  UpdateByIDUsingPUT1 updates an endpoint by id
+  UpdateEndpointByIDUsingPUT updates an endpoint by id
 
   Update an Endpoint with the given id
 */
-func (a *Client) UpdateByIDUsingPUT1(params *UpdateByIDUsingPUT1Params, opts ...ClientOption) (*UpdateByIDUsingPUT1OK, error) {
+func (a *Client) UpdateEndpointByIDUsingPUT(params *UpdateEndpointByIDUsingPUTParams, opts ...ClientOption) (*UpdateEndpointByIDUsingPUTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewUpdateByIDUsingPUT1Params()
+		params = NewUpdateEndpointByIDUsingPUTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "updateByIdUsingPUT_1",
+		ID:                 "updateEndpointByIdUsingPUT",
 		Method:             "PUT",
 		PathPattern:        "/codestream/api/endpoints/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &UpdateByIDUsingPUT1Reader{formats: a.formats},
+		Reader:             &UpdateEndpointByIDUsingPUTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -447,35 +447,35 @@ func (a *Client) UpdateByIDUsingPUT1(params *UpdateByIDUsingPUT1Params, opts ...
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*UpdateByIDUsingPUT1OK)
+	success, ok := result.(*UpdateEndpointByIDUsingPUTOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateByIdUsingPUT_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for updateEndpointByIdUsingPUT: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  UpdateByNameUsingPUT1 updates an endpoint by project and name
+  UpdateEndpointByNameUsingPUT updates an endpoint by project and name
 
   Update an Endpoint with the given project and name
 */
-func (a *Client) UpdateByNameUsingPUT1(params *UpdateByNameUsingPUT1Params, opts ...ClientOption) (*UpdateByNameUsingPUT1OK, error) {
+func (a *Client) UpdateEndpointByNameUsingPUT(params *UpdateEndpointByNameUsingPUTParams, opts ...ClientOption) (*UpdateEndpointByNameUsingPUTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewUpdateByNameUsingPUT1Params()
+		params = NewUpdateEndpointByNameUsingPUTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "updateByNameUsingPUT_1",
+		ID:                 "updateEndpointByNameUsingPUT",
 		Method:             "PUT",
 		PathPattern:        "/codestream/api/endpoints/{project}/{name}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &UpdateByNameUsingPUT1Reader{formats: a.formats},
+		Reader:             &UpdateEndpointByNameUsingPUTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -487,13 +487,13 @@ func (a *Client) UpdateByNameUsingPUT1(params *UpdateByNameUsingPUT1Params, opts
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*UpdateByNameUsingPUT1OK)
+	success, ok := result.(*UpdateEndpointByNameUsingPUTOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateByNameUsingPUT_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for updateEndpointByNameUsingPUT: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

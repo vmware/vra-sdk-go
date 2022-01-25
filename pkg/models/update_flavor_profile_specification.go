@@ -28,8 +28,7 @@ type UpdateFlavorProfileSpecification struct {
 	FlavorMapping map[string]FabricFlavorDescription `json:"flavorMapping"`
 
 	// A human-friendly name used as an identifier in APIs that support this option.
-	// Required: true
-	Name *string `json:"name"`
+	Name string `json:"name,omitempty"`
 }
 
 // Validate validates this update flavor profile specification
@@ -37,10 +36,6 @@ func (m *UpdateFlavorProfileSpecification) Validate(formats strfmt.Registry) err
 	var res []error
 
 	if err := m.validateFlavorMapping(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateName(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -63,19 +58,15 @@ func (m *UpdateFlavorProfileSpecification) validateFlavorMapping(formats strfmt.
 		}
 		if val, ok := m.FlavorMapping[k]; ok {
 			if err := val.Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("flavorMapping" + "." + k)
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("flavorMapping" + "." + k)
+				}
 				return err
 			}
 		}
 
-	}
-
-	return nil
-}
-
-func (m *UpdateFlavorProfileSpecification) validateName(formats strfmt.Registry) error {
-
-	if err := validate.Required("name", "body", m.Name); err != nil {
-		return err
 	}
 
 	return nil

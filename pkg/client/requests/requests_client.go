@@ -30,42 +30,42 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	ActionDeploymentRequestUsingPOST(params *ActionDeploymentRequestUsingPOSTParams, opts ...ClientOption) (*ActionDeploymentRequestUsingPOSTOK, error)
+	ActionDeploymentRequestUsingPOST2(params *ActionDeploymentRequestUsingPOST2Params, opts ...ClientOption) (*ActionDeploymentRequestUsingPOST2OK, error)
 
-	GetDeploymentRequestsUsingGET(params *GetDeploymentRequestsUsingGETParams, opts ...ClientOption) (*GetDeploymentRequestsUsingGETOK, error)
+	GetDeploymentRequestsUsingGET2(params *GetDeploymentRequestsUsingGET2Params, opts ...ClientOption) (*GetDeploymentRequestsUsingGET2OK, error)
 
-	GetEventLogsContentUsingGET(params *GetEventLogsContentUsingGETParams, opts ...ClientOption) (*GetEventLogsContentUsingGETOK, error)
+	GetEventLogsContentUsingGET2(params *GetEventLogsContentUsingGET2Params, opts ...ClientOption) (*GetEventLogsContentUsingGET2OK, error)
 
-	GetEventLogsUsingGET(params *GetEventLogsUsingGETParams, opts ...ClientOption) (*GetEventLogsUsingGETOK, error)
+	GetEventLogsUsingGET2(params *GetEventLogsUsingGET2Params, opts ...ClientOption) (*GetEventLogsUsingGET2OK, error)
 
-	GetRequestEventsUsingGET(params *GetRequestEventsUsingGETParams, opts ...ClientOption) (*GetRequestEventsUsingGETOK, error)
+	GetRequestEventsUsingGET2(params *GetRequestEventsUsingGET2Params, opts ...ClientOption) (*GetRequestEventsUsingGET2OK, error)
 
-	GetRequestUsingGET(params *GetRequestUsingGETParams, opts ...ClientOption) (*GetRequestUsingGETOK, error)
+	GetRequestUsingGET2(params *GetRequestUsingGET2Params, opts ...ClientOption) (*GetRequestUsingGET2OK, error)
 
-	ListResourceRequestsUsingGET(params *ListResourceRequestsUsingGETParams, opts ...ClientOption) (*ListResourceRequestsUsingGETOK, error)
+	ListResourceRequestsUsingGET2(params *ListResourceRequestsUsingGET2Params, opts ...ClientOption) (*ListResourceRequestsUsingGET2OK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  ActionDeploymentRequestUsingPOST submits action on requests allowable values cancel dismiss
+  ActionDeploymentRequestUsingPOST2 submits action on requests allowable values cancel dismiss
 
   Cancel can be submitted on In-progress requests and Dismiss can be submitted on Failed requests.
 */
-func (a *Client) ActionDeploymentRequestUsingPOST(params *ActionDeploymentRequestUsingPOSTParams, opts ...ClientOption) (*ActionDeploymentRequestUsingPOSTOK, error) {
+func (a *Client) ActionDeploymentRequestUsingPOST2(params *ActionDeploymentRequestUsingPOST2Params, opts ...ClientOption) (*ActionDeploymentRequestUsingPOST2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewActionDeploymentRequestUsingPOSTParams()
+		params = NewActionDeploymentRequestUsingPOST2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "actionDeploymentRequestUsingPOST",
+		ID:                 "actionDeploymentRequestUsingPOST_2",
 		Method:             "POST",
 		PathPattern:        "/deployment/api/requests/{requestId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &ActionDeploymentRequestUsingPOSTReader{formats: a.formats},
+		Reader:             &ActionDeploymentRequestUsingPOST2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -77,35 +77,35 @@ func (a *Client) ActionDeploymentRequestUsingPOST(params *ActionDeploymentReques
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*ActionDeploymentRequestUsingPOSTOK)
+	success, ok := result.(*ActionDeploymentRequestUsingPOST2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for actionDeploymentRequestUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for actionDeploymentRequestUsingPOST_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetDeploymentRequestsUsingGET fetches deployment requests
+  GetDeploymentRequestsUsingGET2 fetches deployment requests
 
   Returns the requests for the deployment.
 */
-func (a *Client) GetDeploymentRequestsUsingGET(params *GetDeploymentRequestsUsingGETParams, opts ...ClientOption) (*GetDeploymentRequestsUsingGETOK, error) {
+func (a *Client) GetDeploymentRequestsUsingGET2(params *GetDeploymentRequestsUsingGET2Params, opts ...ClientOption) (*GetDeploymentRequestsUsingGET2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetDeploymentRequestsUsingGETParams()
+		params = NewGetDeploymentRequestsUsingGET2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getDeploymentRequestsUsingGET",
+		ID:                 "getDeploymentRequestsUsingGET_2",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/deployments/{deploymentId}/requests",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetDeploymentRequestsUsingGETReader{formats: a.formats},
+		Reader:             &GetDeploymentRequestsUsingGET2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -117,35 +117,35 @@ func (a *Client) GetDeploymentRequestsUsingGET(params *GetDeploymentRequestsUsin
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetDeploymentRequestsUsingGETOK)
+	success, ok := result.(*GetDeploymentRequestsUsingGET2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getDeploymentRequestsUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getDeploymentRequestsUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetEventLogsContentUsingGET fetches event logs content as a file
+  GetEventLogsContentUsingGET2 fetches event logs content as a file
 
   Returns the log file for an event.
 */
-func (a *Client) GetEventLogsContentUsingGET(params *GetEventLogsContentUsingGETParams, opts ...ClientOption) (*GetEventLogsContentUsingGETOK, error) {
+func (a *Client) GetEventLogsContentUsingGET2(params *GetEventLogsContentUsingGET2Params, opts ...ClientOption) (*GetEventLogsContentUsingGET2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetEventLogsContentUsingGETParams()
+		params = NewGetEventLogsContentUsingGET2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getEventLogsContentUsingGET",
+		ID:                 "getEventLogsContentUsingGET_2",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/requests/{requestId}/events/{eventId}/logs/download",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetEventLogsContentUsingGETReader{formats: a.formats},
+		Reader:             &GetEventLogsContentUsingGET2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -157,35 +157,35 @@ func (a *Client) GetEventLogsContentUsingGET(params *GetEventLogsContentUsingGET
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetEventLogsContentUsingGETOK)
+	success, ok := result.(*GetEventLogsContentUsingGET2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getEventLogsContentUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getEventLogsContentUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetEventLogsUsingGET fetches event logs
+  GetEventLogsUsingGET2 fetches event logs
 
   Returns the logs for an event.
 */
-func (a *Client) GetEventLogsUsingGET(params *GetEventLogsUsingGETParams, opts ...ClientOption) (*GetEventLogsUsingGETOK, error) {
+func (a *Client) GetEventLogsUsingGET2(params *GetEventLogsUsingGET2Params, opts ...ClientOption) (*GetEventLogsUsingGET2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetEventLogsUsingGETParams()
+		params = NewGetEventLogsUsingGET2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getEventLogsUsingGET",
+		ID:                 "getEventLogsUsingGET_2",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/requests/{requestId}/events/{eventId}/logs",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetEventLogsUsingGETReader{formats: a.formats},
+		Reader:             &GetEventLogsUsingGET2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -197,35 +197,35 @@ func (a *Client) GetEventLogsUsingGET(params *GetEventLogsUsingGETParams, opts .
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetEventLogsUsingGETOK)
+	success, ok := result.(*GetEventLogsUsingGET2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getEventLogsUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getEventLogsUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetRequestEventsUsingGET fetches request events
+  GetRequestEventsUsingGET2 fetches request events
 
   Returns all the events for a request.
 */
-func (a *Client) GetRequestEventsUsingGET(params *GetRequestEventsUsingGETParams, opts ...ClientOption) (*GetRequestEventsUsingGETOK, error) {
+func (a *Client) GetRequestEventsUsingGET2(params *GetRequestEventsUsingGET2Params, opts ...ClientOption) (*GetRequestEventsUsingGET2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetRequestEventsUsingGETParams()
+		params = NewGetRequestEventsUsingGET2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getRequestEventsUsingGET",
+		ID:                 "getRequestEventsUsingGET_2",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/requests/{requestId}/events",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetRequestEventsUsingGETReader{formats: a.formats},
+		Reader:             &GetRequestEventsUsingGET2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -237,35 +237,35 @@ func (a *Client) GetRequestEventsUsingGET(params *GetRequestEventsUsingGETParams
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetRequestEventsUsingGETOK)
+	success, ok := result.(*GetRequestEventsUsingGET2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getRequestEventsUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getRequestEventsUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetRequestUsingGET gets the request
+  GetRequestUsingGET2 gets the request
 
   Returns the request with the given ID.
 */
-func (a *Client) GetRequestUsingGET(params *GetRequestUsingGETParams, opts ...ClientOption) (*GetRequestUsingGETOK, error) {
+func (a *Client) GetRequestUsingGET2(params *GetRequestUsingGET2Params, opts ...ClientOption) (*GetRequestUsingGET2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetRequestUsingGETParams()
+		params = NewGetRequestUsingGET2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getRequestUsingGET",
+		ID:                 "getRequestUsingGET_2",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/requests/{requestId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetRequestUsingGETReader{formats: a.formats},
+		Reader:             &GetRequestUsingGET2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -277,33 +277,33 @@ func (a *Client) GetRequestUsingGET(params *GetRequestUsingGETParams, opts ...Cl
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetRequestUsingGETOK)
+	success, ok := result.(*GetRequestUsingGET2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getRequestUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getRequestUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  ListResourceRequestsUsingGET gets all requests for a resource
+  ListResourceRequestsUsingGET2 gets all requests for a resource
 */
-func (a *Client) ListResourceRequestsUsingGET(params *ListResourceRequestsUsingGETParams, opts ...ClientOption) (*ListResourceRequestsUsingGETOK, error) {
+func (a *Client) ListResourceRequestsUsingGET2(params *ListResourceRequestsUsingGET2Params, opts ...ClientOption) (*ListResourceRequestsUsingGET2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewListResourceRequestsUsingGETParams()
+		params = NewListResourceRequestsUsingGET2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "listResourceRequestsUsingGET",
+		ID:                 "listResourceRequestsUsingGET_2",
 		Method:             "GET",
 		PathPattern:        "/deployment/api/resources/{resourceId}/requests",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &ListResourceRequestsUsingGETReader{formats: a.formats},
+		Reader:             &ListResourceRequestsUsingGET2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -315,13 +315,13 @@ func (a *Client) ListResourceRequestsUsingGET(params *ListResourceRequestsUsingG
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*ListResourceRequestsUsingGETOK)
+	success, ok := result.(*ListResourceRequestsUsingGET2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for listResourceRequestsUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for listResourceRequestsUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

@@ -177,6 +177,8 @@ func (m *PropertyDefinition) validateAllOf(formats strfmt.Registry) error {
 			if err := m.AllOf[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("allOf" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("allOf" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -201,6 +203,8 @@ func (m *PropertyDefinition) validateAnyOf(formats strfmt.Registry) error {
 			if err := m.AnyOf[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("anyOf" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("anyOf" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -220,6 +224,8 @@ func (m *PropertyDefinition) validateItems(formats strfmt.Registry) error {
 		if err := m.Items.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("items")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("items")
 			}
 			return err
 		}
@@ -237,6 +243,8 @@ func (m *PropertyDefinition) validateNot(formats strfmt.Registry) error {
 		if err := m.Not.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("not")
 			}
 			return err
 		}
@@ -259,6 +267,8 @@ func (m *PropertyDefinition) validateOneOf(formats strfmt.Registry) error {
 			if err := m.OneOf[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("oneOf" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("oneOf" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -281,6 +291,11 @@ func (m *PropertyDefinition) validateProperties(formats strfmt.Registry) error {
 		}
 		if val, ok := m.Properties[k]; ok {
 			if err := val.Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("properties" + "." + k)
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("properties" + "." + k)
+				}
 				return err
 			}
 		}
@@ -332,6 +347,8 @@ func (m *PropertyDefinition) contextValidateAllOf(ctx context.Context, formats s
 			if err := m.AllOf[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("allOf" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("allOf" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -350,6 +367,8 @@ func (m *PropertyDefinition) contextValidateAnyOf(ctx context.Context, formats s
 			if err := m.AnyOf[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("anyOf" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("anyOf" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -366,6 +385,8 @@ func (m *PropertyDefinition) contextValidateItems(ctx context.Context, formats s
 		if err := m.Items.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("items")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("items")
 			}
 			return err
 		}
@@ -380,6 +401,8 @@ func (m *PropertyDefinition) contextValidateNot(ctx context.Context, formats str
 		if err := m.Not.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("not")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("not")
 			}
 			return err
 		}
@@ -396,6 +419,8 @@ func (m *PropertyDefinition) contextValidateOneOf(ctx context.Context, formats s
 			if err := m.OneOf[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("oneOf" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("oneOf" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

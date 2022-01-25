@@ -53,6 +53,9 @@ type MarketplaceContent struct {
 	// Screenshots
 	Screenshots []string `json:"screenshots"`
 
+	// Short Name
+	ShortName string `json:"shortName,omitempty"`
+
 	// support
 	Support *Support `json:"support,omitempty"`
 
@@ -109,6 +112,8 @@ func (m *MarketplaceContent) validateDocuments(formats strfmt.Registry) error {
 			if err := m.Documents[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("documents" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("documents" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -128,6 +133,8 @@ func (m *MarketplaceContent) validateSupport(formats strfmt.Registry) error {
 		if err := m.Support.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("support")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("support")
 			}
 			return err
 		}
@@ -174,6 +181,8 @@ func (m *MarketplaceContent) contextValidateDocuments(ctx context.Context, forma
 			if err := m.Documents[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("documents" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("documents" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -190,6 +199,8 @@ func (m *MarketplaceContent) contextValidateSupport(ctx context.Context, formats
 		if err := m.Support.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("support")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("support")
 			}
 			return err
 		}

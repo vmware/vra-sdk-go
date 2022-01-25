@@ -125,6 +125,8 @@ func (m *ResourceType) validateSchema(formats strfmt.Registry) error {
 		if err := m.Schema.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("schema")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("schema")
 			}
 			return err
 		}
@@ -325,6 +327,8 @@ func (m *ResourceType) contextValidateSchema(ctx context.Context, formats strfmt
 		if err := m.Schema.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("schema")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("schema")
 			}
 			return err
 		}

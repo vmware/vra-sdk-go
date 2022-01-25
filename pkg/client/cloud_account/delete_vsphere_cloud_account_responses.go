@@ -23,6 +23,12 @@ type DeleteVSphereCloudAccountReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteVSphereCloudAccountReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
+	case 202:
+		result := NewDeleteVSphereCloudAccountAccepted()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
 	case 204:
 		result := NewDeleteVSphereCloudAccountNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -38,6 +44,38 @@ func (o *DeleteVSphereCloudAccountReader) ReadResponse(response runtime.ClientRe
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
+}
+
+// NewDeleteVSphereCloudAccountAccepted creates a DeleteVSphereCloudAccountAccepted with default headers values
+func NewDeleteVSphereCloudAccountAccepted() *DeleteVSphereCloudAccountAccepted {
+	return &DeleteVSphereCloudAccountAccepted{}
+}
+
+/* DeleteVSphereCloudAccountAccepted describes a response with status code 202, with default header values.
+
+successful operation
+*/
+type DeleteVSphereCloudAccountAccepted struct {
+	Payload *models.RequestTracker
+}
+
+func (o *DeleteVSphereCloudAccountAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-vsphere/{id}][%d] deleteVSphereCloudAccountAccepted  %+v", 202, o.Payload)
+}
+func (o *DeleteVSphereCloudAccountAccepted) GetPayload() *models.RequestTracker {
+	return o.Payload
+}
+
+func (o *DeleteVSphereCloudAccountAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.RequestTracker)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
 }
 
 // NewDeleteVSphereCloudAccountNoContent creates a DeleteVSphereCloudAccountNoContent with default headers values

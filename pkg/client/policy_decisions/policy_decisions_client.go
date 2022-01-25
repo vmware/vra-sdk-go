@@ -30,32 +30,32 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetDecisionByIDUsingGET(params *GetDecisionByIDUsingGETParams, opts ...ClientOption) (*GetDecisionByIDUsingGETOK, error)
+	GetDecisionByIDUsingGET2(params *GetDecisionByIDUsingGET2Params, opts ...ClientOption) (*GetDecisionByIDUsingGET2OK, error)
 
-	GetDecisionsUsingGET(params *GetDecisionsUsingGETParams, opts ...ClientOption) (*GetDecisionsUsingGETOK, error)
+	GetDecisionsUsingGET2(params *GetDecisionsUsingGET2Params, opts ...ClientOption) (*GetDecisionsUsingGET2OK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  GetDecisionByIDUsingGET returns a policy decision by id
+  GetDecisionByIDUsingGET2 returns a policy decision by id
 
   Find a specific policy decision based on the input policy decision id.
 */
-func (a *Client) GetDecisionByIDUsingGET(params *GetDecisionByIDUsingGETParams, opts ...ClientOption) (*GetDecisionByIDUsingGETOK, error) {
+func (a *Client) GetDecisionByIDUsingGET2(params *GetDecisionByIDUsingGET2Params, opts ...ClientOption) (*GetDecisionByIDUsingGET2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetDecisionByIDUsingGETParams()
+		params = NewGetDecisionByIDUsingGET2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getDecisionByIdUsingGET",
+		ID:                 "getDecisionByIdUsingGET_2",
 		Method:             "GET",
 		PathPattern:        "/policy/api/policyDecisions/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetDecisionByIDUsingGETReader{formats: a.formats},
+		Reader:             &GetDecisionByIDUsingGET2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -67,35 +67,35 @@ func (a *Client) GetDecisionByIDUsingGET(params *GetDecisionByIDUsingGETParams, 
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetDecisionByIDUsingGETOK)
+	success, ok := result.(*GetDecisionByIDUsingGET2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getDecisionByIdUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getDecisionByIdUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetDecisionsUsingGET fetches a list of policy decisions
+  GetDecisionsUsingGET2 fetches a list of policy decisions
 
   Returns a paginated list of policy decisions. If a dryRunId is provided, the return value has a field indicating whether the dry run is complete.
 */
-func (a *Client) GetDecisionsUsingGET(params *GetDecisionsUsingGETParams, opts ...ClientOption) (*GetDecisionsUsingGETOK, error) {
+func (a *Client) GetDecisionsUsingGET2(params *GetDecisionsUsingGET2Params, opts ...ClientOption) (*GetDecisionsUsingGET2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetDecisionsUsingGETParams()
+		params = NewGetDecisionsUsingGET2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getDecisionsUsingGET",
+		ID:                 "getDecisionsUsingGET_2",
 		Method:             "GET",
 		PathPattern:        "/policy/api/policyDecisions",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetDecisionsUsingGETReader{formats: a.formats},
+		Reader:             &GetDecisionsUsingGET2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -107,13 +107,13 @@ func (a *Client) GetDecisionsUsingGET(params *GetDecisionsUsingGETParams, opts .
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetDecisionsUsingGETOK)
+	success, ok := result.(*GetDecisionsUsingGET2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getDecisionsUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getDecisionsUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

@@ -8,10 +8,8 @@ package models
 import (
 	"context"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // NetworkInterfaceSpecification Specification for attaching nic to machine
@@ -34,13 +32,20 @@ type NetworkInterfaceSpecification struct {
 	// Example: 1
 	DeviceIndex int32 `json:"deviceIndex,omitempty"`
 
+	// Id of the fabric network for the network interface. Either networkId or fabricNetworkId can be specified, not both.
+	// Example: 54097407-4532-460c-94a8-8f9e18f4c925
+	FabricNetworkID string `json:"fabricNetworkId,omitempty"`
+
+	// MAC address of the network interface.
+	// Example: [ \"00:50:56:99:d8:34\" ]
+	MacAddress string `json:"macAddress,omitempty"`
+
 	// A human-friendly name used as an identifier in APIs that support this option.
 	Name string `json:"name,omitempty"`
 
-	// Id of the network instance that this network interface plugs into.
-	// Example: dcd9
-	// Required: true
-	NetworkID *string `json:"networkId"`
+	// Id of the network for the network interface. Either networkId or fabricNetworkId can be specified, not both.
+	// Example: 54097407-4532-460c-94a8-8f9e18f4c925
+	NetworkID string `json:"networkId,omitempty"`
 
 	// A list of security group ids which this network interface will be assigned to.
 	SecurityGroupIds []string `json:"securityGroupIds"`
@@ -48,24 +53,6 @@ type NetworkInterfaceSpecification struct {
 
 // Validate validates this network interface specification
 func (m *NetworkInterfaceSpecification) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateNetworkID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *NetworkInterfaceSpecification) validateNetworkID(formats strfmt.Registry) error {
-
-	if err := validate.Required("networkId", "body", m.NetworkID); err != nil {
-		return err
-	}
-
 	return nil
 }
 

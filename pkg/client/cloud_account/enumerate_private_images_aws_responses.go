@@ -7,9 +7,12 @@ package cloud_account
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
 // EnumeratePrivateImagesAWSReader is a Reader for the EnumeratePrivateImagesAWS structure.
@@ -19,41 +22,122 @@ type EnumeratePrivateImagesAWSReader struct {
 
 // ReadResponse reads a server response into the received o.
 func (o *EnumeratePrivateImagesAWSReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
-	result := NewEnumeratePrivateImagesAWSDefault(response.Code())
-	if err := result.readResponse(response, consumer, o.formats); err != nil {
-		return nil, err
-	}
-	if response.Code()/100 == 2 {
+	switch response.Code() {
+	case 202:
+		result := NewEnumeratePrivateImagesAWSAccepted()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
 		return result, nil
+	case 400:
+		result := NewEnumeratePrivateImagesAWSBadRequest()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 403:
+		result := NewEnumeratePrivateImagesAWSForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	default:
+		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
-	return nil, result
 }
 
-// NewEnumeratePrivateImagesAWSDefault creates a EnumeratePrivateImagesAWSDefault with default headers values
-func NewEnumeratePrivateImagesAWSDefault(code int) *EnumeratePrivateImagesAWSDefault {
-	return &EnumeratePrivateImagesAWSDefault{
-		_statusCode: code,
-	}
+// NewEnumeratePrivateImagesAWSAccepted creates a EnumeratePrivateImagesAWSAccepted with default headers values
+func NewEnumeratePrivateImagesAWSAccepted() *EnumeratePrivateImagesAWSAccepted {
+	return &EnumeratePrivateImagesAWSAccepted{}
 }
 
-/* EnumeratePrivateImagesAWSDefault describes a response with status code -1, with default header values.
+/* EnumeratePrivateImagesAWSAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
-type EnumeratePrivateImagesAWSDefault struct {
-	_statusCode int
+type EnumeratePrivateImagesAWSAccepted struct {
+	Payload *models.RequestTracker
 }
 
-// Code gets the status code for the enumerate private images a w s default response
-func (o *EnumeratePrivateImagesAWSDefault) Code() int {
-	return o._statusCode
+func (o *EnumeratePrivateImagesAWSAccepted) Error() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-aws/{id}/private-image-enumeration][%d] enumeratePrivateImagesAWSAccepted  %+v", 202, o.Payload)
+}
+func (o *EnumeratePrivateImagesAWSAccepted) GetPayload() *models.RequestTracker {
+	return o.Payload
 }
 
-func (o *EnumeratePrivateImagesAWSDefault) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-aws/{id}/private-image-enumeration][%d] enumeratePrivateImagesAWS default ", o._statusCode)
+func (o *EnumeratePrivateImagesAWSAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.RequestTracker)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
 }
 
-func (o *EnumeratePrivateImagesAWSDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+// NewEnumeratePrivateImagesAWSBadRequest creates a EnumeratePrivateImagesAWSBadRequest with default headers values
+func NewEnumeratePrivateImagesAWSBadRequest() *EnumeratePrivateImagesAWSBadRequest {
+	return &EnumeratePrivateImagesAWSBadRequest{}
+}
+
+/* EnumeratePrivateImagesAWSBadRequest describes a response with status code 400, with default header values.
+
+Invalid Request - bad data
+*/
+type EnumeratePrivateImagesAWSBadRequest struct {
+	Payload *models.Error
+}
+
+func (o *EnumeratePrivateImagesAWSBadRequest) Error() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-aws/{id}/private-image-enumeration][%d] enumeratePrivateImagesAWSBadRequest  %+v", 400, o.Payload)
+}
+func (o *EnumeratePrivateImagesAWSBadRequest) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *EnumeratePrivateImagesAWSBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewEnumeratePrivateImagesAWSForbidden creates a EnumeratePrivateImagesAWSForbidden with default headers values
+func NewEnumeratePrivateImagesAWSForbidden() *EnumeratePrivateImagesAWSForbidden {
+	return &EnumeratePrivateImagesAWSForbidden{}
+}
+
+/* EnumeratePrivateImagesAWSForbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type EnumeratePrivateImagesAWSForbidden struct {
+	Payload *models.ServiceErrorResponse
+}
+
+func (o *EnumeratePrivateImagesAWSForbidden) Error() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-aws/{id}/private-image-enumeration][%d] enumeratePrivateImagesAWSForbidden  %+v", 403, o.Payload)
+}
+func (o *EnumeratePrivateImagesAWSForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
+}
+
+func (o *EnumeratePrivateImagesAWSForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

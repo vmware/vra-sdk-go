@@ -12,39 +12,135 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
-// UpdateCloudAccountNsxVSpecification update cloud account nsx v specification
+// UpdateCloudAccountNsxVSpecification Specification for an NSX-v cloud account.<br><br>A cloud account identifies a cloud account type and an account-specific deployment region or data center where the associated cloud account resources are hosted.
 //
 // swagger:model UpdateCloudAccountNsxVSpecification
 type UpdateCloudAccountNsxVSpecification struct {
+
+	// Accept self signed certificate when connecting.
+	// Example: false
+	AcceptSelfSignedCertificate bool `json:"acceptSelfSignedCertificate,omitempty"`
 
 	// vSphere cloud account associated with this NSX-V cloud account. NSX-V cloud account can be associated with a single vSphere cloud account.
 	// Example: [ \"42f3e0d199d134755684cd935435a\" ]
 	AssociatedCloudAccountIds []string `json:"associatedCloudAccountIds"`
 
+	// Certificate for a cloud account.
+	// Example: {\"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDHjCCAoegAwIBAgIBATANBgkqhkiG9w0BAQsFADCBpjEUMBIGA1UEChMLVk13\\nYXJlIEluYAAc1pw18GT3iAqQRPx0PrjzJhgjIJMla\\n/1Kg4byY4FPSacNiRgY/FG2bPCqZk1yRfzmkFYCW/vU+Dg==\\n-----END CERTIFICATE-----\\n-\"}
+	CertificateInfo *CertificateInfoSpecification `json:"certificateInfo,omitempty"`
+
+	// Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors.
+	// Note: Data collector endpoints are not available in vRA on-prem release and hence the data collector Id is optional for vRA on-prem.
+	// Example: 23959a1e-18bc-4f0c-ac49-b5aeb4b6eef4
+	// Required: true
+	Dcid *string `json:"dcid"`
+
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
+
+	// Host name for the NSX-v endpoint
+	// Example: nsxv.mycompany.com
+	// Required: true
+	HostName *string `json:"hostName"`
 
 	// A human-friendly name used as an identifier in APIs that support this option.
 	Name string `json:"name,omitempty"`
 
+	// Password for the user used to authenticate with the cloud Account
+	// Example: cndhjslacd90ascdbasyoucbdh
+	// Required: true
+	Password *string `json:"password"`
+
 	// A set of tag keys and optional values to set on the Cloud Account
-	// Example: [{\"key\": \"env\", \"value\": \"dev\"}]
+	// Example: [ { \"key\" : \"env\", \"value\": \"dev\" } ]
 	Tags []*Tag `json:"tags"`
+
+	// Username to authenticate with the cloud account
+	// Example: administrator@mycompany.com
+	// Required: true
+	Username *string `json:"username"`
 }
 
 // Validate validates this update cloud account nsx v specification
 func (m *UpdateCloudAccountNsxVSpecification) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateCertificateInfo(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDcid(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateHostName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePassword(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateTags(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUsername(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *UpdateCloudAccountNsxVSpecification) validateCertificateInfo(formats strfmt.Registry) error {
+	if swag.IsZero(m.CertificateInfo) { // not required
+		return nil
+	}
+
+	if m.CertificateInfo != nil {
+		if err := m.CertificateInfo.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("certificateInfo")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("certificateInfo")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *UpdateCloudAccountNsxVSpecification) validateDcid(formats strfmt.Registry) error {
+
+	if err := validate.Required("dcid", "body", m.Dcid); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *UpdateCloudAccountNsxVSpecification) validateHostName(formats strfmt.Registry) error {
+
+	if err := validate.Required("hostName", "body", m.HostName); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *UpdateCloudAccountNsxVSpecification) validatePassword(formats strfmt.Registry) error {
+
+	if err := validate.Required("password", "body", m.Password); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -62,6 +158,8 @@ func (m *UpdateCloudAccountNsxVSpecification) validateTags(formats strfmt.Regist
 			if err := m.Tags[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -72,9 +170,22 @@ func (m *UpdateCloudAccountNsxVSpecification) validateTags(formats strfmt.Regist
 	return nil
 }
 
+func (m *UpdateCloudAccountNsxVSpecification) validateUsername(formats strfmt.Registry) error {
+
+	if err := validate.Required("username", "body", m.Username); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 // ContextValidate validate this update cloud account nsx v specification based on the context it is used
 func (m *UpdateCloudAccountNsxVSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.contextValidateCertificateInfo(ctx, formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.contextValidateTags(ctx, formats); err != nil {
 		res = append(res, err)
@@ -86,6 +197,22 @@ func (m *UpdateCloudAccountNsxVSpecification) ContextValidate(ctx context.Contex
 	return nil
 }
 
+func (m *UpdateCloudAccountNsxVSpecification) contextValidateCertificateInfo(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.CertificateInfo != nil {
+		if err := m.CertificateInfo.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("certificateInfo")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("certificateInfo")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *UpdateCloudAccountNsxVSpecification) contextValidateTags(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.Tags); i++ {
@@ -94,6 +221,8 @@ func (m *UpdateCloudAccountNsxVSpecification) contextValidateTags(ctx context.Co
 			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

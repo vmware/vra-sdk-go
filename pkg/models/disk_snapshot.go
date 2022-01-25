@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -36,21 +37,13 @@ type DiskSnapshot struct {
 	// Required: true
 	ID *string `json:"id"`
 
-	// Specifies if the snapshot is the current snapshot for the block device. Valid only for vSphere First Class Disks
-	// Example: false
-	IsCurrent bool `json:"isCurrent,omitempty"`
-
 	// A human-friendly name used as an identifier in APIs that support this option.
 	// Example: my-name
 	Name string `json:"name,omitempty"`
 
 	// The id of the organization this entity belongs to.
-	// Example: 9e49
+	// Example: 42413b31-1716-477e-9a88-9dc1c3cb1cdf
 	OrgID string `json:"orgId,omitempty"`
-
-	// This field is deprecated. Use orgId instead. The id of the organization this entity belongs to.
-	// Example: deprecated
-	OrganizationID string `json:"organizationId,omitempty"`
 
 	// Email of the user that owns the entity.
 	// Example: csp@vmware.com
@@ -59,6 +52,10 @@ type DiskSnapshot struct {
 	// Snapshot specific properties
 	// Example: { \"incremental\": \"false\" }
 	SnapshotProperties map[string]string `json:"snapshotProperties,omitempty"`
+
+	// A set of tag keys and optional values that have to be set on the snapshot in the cloud. Currently supported for Azure Snapshots
+	// Example: [ { \"key\" : \"env\", \"value\": \"dev\" } ]
+	Tags []*Tag `json:"tags"`
 
 	// Date when the entity was last updated. The date is ISO 8601 and UTC.
 	// Example: 2012-09-27
@@ -74,6 +71,10 @@ func (m *DiskSnapshot) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTags(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -96,6 +97,11 @@ func (m *DiskSnapshot) validateLinks(formats strfmt.Registry) error {
 		}
 		if val, ok := m.Links[k]; ok {
 			if err := val.Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("_links" + "." + k)
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("_links" + "." + k)
+				}
 				return err
 			}
 		}
@@ -114,11 +120,41 @@ func (m *DiskSnapshot) validateID(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *DiskSnapshot) validateTags(formats strfmt.Registry) error {
+	if swag.IsZero(m.Tags) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Tags); i++ {
+		if swag.IsZero(m.Tags[i]) { // not required
+			continue
+		}
+
+		if m.Tags[i] != nil {
+			if err := m.Tags[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 // ContextValidate validate this disk snapshot based on the context it is used
 func (m *DiskSnapshot) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateLinks(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTags(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -138,6 +174,26 @@ func (m *DiskSnapshot) contextValidateLinks(ctx context.Context, formats strfmt.
 
 		if val, ok := m.Links[k]; ok {
 			if err := val.ContextValidate(ctx, formats); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DiskSnapshot) contextValidateTags(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Tags); i++ {
+
+		if m.Tags[i] != nil {
+			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
+				}
 				return err
 			}
 		}

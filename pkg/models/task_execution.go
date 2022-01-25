@@ -423,6 +423,8 @@ func (m *taskExecution) validateNotifications(formats strfmt.Registry) error {
 		if err := m.notificationsField[i].Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("notifications" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("notifications" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -440,6 +442,8 @@ func (m *taskExecution) validateRollbackConfiguration(formats strfmt.Registry) e
 	if err := m.RollbackConfiguration().Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("rollbackConfiguration")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("rollbackConfiguration")
 		}
 		return err
 	}
@@ -455,6 +459,8 @@ func (m *taskExecution) validateRollbackResponse(formats strfmt.Registry) error 
 	if err := m.RollbackResponse().Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("rollbackResponse")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("rollbackResponse")
 		}
 		return err
 	}
@@ -581,6 +587,8 @@ func (m *taskExecution) contextValidateNotifications(ctx context.Context, format
 		if err := m.notificationsField[i].ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("notifications" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("notifications" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -595,6 +603,8 @@ func (m *taskExecution) contextValidateRollbackConfiguration(ctx context.Context
 	if err := m.RollbackConfiguration().ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("rollbackConfiguration")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("rollbackConfiguration")
 		}
 		return err
 	}
@@ -607,6 +617,8 @@ func (m *taskExecution) contextValidateRollbackResponse(ctx context.Context, for
 	if err := m.RollbackResponse().ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("rollbackResponse")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("rollbackResponse")
 		}
 		return err
 	}

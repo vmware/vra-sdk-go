@@ -188,6 +188,11 @@ func (m *tileInfo) validateInputProperties(formats strfmt.Registry) error {
 		}
 		if val, ok := m.InputProperties()[k]; ok {
 			if err := val.Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("inputProperties" + "." + k)
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("inputProperties" + "." + k)
+				}
 				return err
 			}
 		}
@@ -209,6 +214,11 @@ func (m *tileInfo) validateOutputProperties(formats strfmt.Registry) error {
 		}
 		if val, ok := m.OutputProperties()[k]; ok {
 			if err := val.Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("outputProperties" + "." + k)
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("outputProperties" + "." + k)
+				}
 				return err
 			}
 		}

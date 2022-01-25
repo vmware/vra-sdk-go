@@ -30,32 +30,32 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetTypeByIDUsingGET(params *GetTypeByIDUsingGETParams, opts ...ClientOption) (*GetTypeByIDUsingGETOK, error)
+	GetTypeByIDUsingGET2(params *GetTypeByIDUsingGET2Params, opts ...ClientOption) (*GetTypeByIDUsingGET2OK, error)
 
-	GetTypesUsingGET(params *GetTypesUsingGETParams, opts ...ClientOption) (*GetTypesUsingGETOK, error)
+	GetTypesUsingGET4(params *GetTypesUsingGET4Params, opts ...ClientOption) (*GetTypesUsingGET4OK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  GetTypeByIDUsingGET fetches catalog item type associated with the specified ID
+  GetTypeByIDUsingGET2 fetches catalog item type associated with the specified ID
 
   Returns the Catalog Item Type with the specified ID.
 */
-func (a *Client) GetTypeByIDUsingGET(params *GetTypeByIDUsingGETParams, opts ...ClientOption) (*GetTypeByIDUsingGETOK, error) {
+func (a *Client) GetTypeByIDUsingGET2(params *GetTypeByIDUsingGET2Params, opts ...ClientOption) (*GetTypeByIDUsingGET2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetTypeByIDUsingGETParams()
+		params = NewGetTypeByIDUsingGET2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getTypeByIdUsingGET",
+		ID:                 "getTypeByIdUsingGET_2",
 		Method:             "GET",
 		PathPattern:        "/catalog/api/types/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetTypeByIDUsingGETReader{formats: a.formats},
+		Reader:             &GetTypeByIDUsingGET2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -67,35 +67,35 @@ func (a *Client) GetTypeByIDUsingGET(params *GetTypeByIDUsingGETParams, opts ...
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetTypeByIDUsingGETOK)
+	success, ok := result.(*GetTypeByIDUsingGET2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getTypeByIdUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getTypeByIdUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetTypesUsingGET finds all catalog item types
+  GetTypesUsingGET4 finds all catalog item types
 
   Returns a paginated list of all available Catalog Item Types.
 */
-func (a *Client) GetTypesUsingGET(params *GetTypesUsingGETParams, opts ...ClientOption) (*GetTypesUsingGETOK, error) {
+func (a *Client) GetTypesUsingGET4(params *GetTypesUsingGET4Params, opts ...ClientOption) (*GetTypesUsingGET4OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetTypesUsingGETParams()
+		params = NewGetTypesUsingGET4Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getTypesUsingGET",
+		ID:                 "getTypesUsingGET_4",
 		Method:             "GET",
 		PathPattern:        "/catalog/api/types",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetTypesUsingGETReader{formats: a.formats},
+		Reader:             &GetTypesUsingGET4Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -107,13 +107,13 @@ func (a *Client) GetTypesUsingGET(params *GetTypesUsingGETParams, opts ...Client
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetTypesUsingGETOK)
+	success, ok := result.(*GetTypesUsingGET4OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getTypesUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getTypesUsingGET_4: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

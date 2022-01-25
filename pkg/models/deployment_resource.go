@@ -48,7 +48,7 @@ type DeploymentResource struct {
 	Name *string `json:"name"`
 
 	// Origin of the resource
-	// Enum: [ONBOARDED MIGRATED]
+	// Enum: [DISCOVERED ONBOARDED MIGRATED]
 	Origin string `json:"origin,omitempty"`
 
 	// properties
@@ -134,6 +134,8 @@ func (m *DeploymentResource) validateCurrentRequest(formats strfmt.Registry) err
 		if err := m.CurrentRequest.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("currentRequest")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("currentRequest")
 			}
 			return err
 		}
@@ -151,6 +153,8 @@ func (m *DeploymentResource) validateExpense(formats strfmt.Registry) error {
 		if err := m.Expense.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("expense")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("expense")
 			}
 			return err
 		}
@@ -184,7 +188,7 @@ var deploymentResourceTypeOriginPropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["ONBOARDED","MIGRATED"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["DISCOVERED","ONBOARDED","MIGRATED"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -193,6 +197,9 @@ func init() {
 }
 
 const (
+
+	// DeploymentResourceOriginDISCOVERED captures enum value "DISCOVERED"
+	DeploymentResourceOriginDISCOVERED string = "DISCOVERED"
 
 	// DeploymentResourceOriginONBOARDED captures enum value "ONBOARDED"
 	DeploymentResourceOriginONBOARDED string = "ONBOARDED"
@@ -345,6 +352,8 @@ func (m *DeploymentResource) contextValidateCurrentRequest(ctx context.Context, 
 		if err := m.CurrentRequest.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("currentRequest")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("currentRequest")
 			}
 			return err
 		}
@@ -359,6 +368,8 @@ func (m *DeploymentResource) contextValidateExpense(ctx context.Context, formats
 		if err := m.Expense.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("expense")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("expense")
 			}
 			return err
 		}

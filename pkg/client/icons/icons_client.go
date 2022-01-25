@@ -30,34 +30,34 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	Delete(params *DeleteParams, opts ...ClientOption) (*DeleteNoContent, error)
+	Delete2(params *Delete2Params, opts ...ClientOption) (*Delete2NoContent, error)
 
-	Download(params *DownloadParams, opts ...ClientOption) (*DownloadOK, error)
+	Download2(params *Download2Params, opts ...ClientOption) (*Download2OK, error)
 
-	Upload(params *UploadParams, opts ...ClientOption) (*UploadCreated, error)
+	Upload2(params *Upload2Params, opts ...ClientOption) (*Upload2Created, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  Delete deletes an icon
+  Delete2 deletes an icon
 
   Delete an existing icon by its unique id.
 */
-func (a *Client) Delete(params *DeleteParams, opts ...ClientOption) (*DeleteNoContent, error) {
+func (a *Client) Delete2(params *Delete2Params, opts ...ClientOption) (*Delete2NoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteParams()
+		params = NewDelete2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "delete",
+		ID:                 "delete_2",
 		Method:             "DELETE",
 		PathPattern:        "/icon/api/icons/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteReader{formats: a.formats},
+		Reader:             &Delete2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -69,35 +69,35 @@ func (a *Client) Delete(params *DeleteParams, opts ...ClientOption) (*DeleteNoCo
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteNoContent)
+	success, ok := result.(*Delete2NoContent)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for delete_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  Download downloads an icon
+  Download2 downloads an icon
 
   Download an existing icon by its unique id.
 */
-func (a *Client) Download(params *DownloadParams, opts ...ClientOption) (*DownloadOK, error) {
+func (a *Client) Download2(params *Download2Params, opts ...ClientOption) (*Download2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDownloadParams()
+		params = NewDownload2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "download",
+		ID:                 "download_2",
 		Method:             "GET",
 		PathPattern:        "/icon/api/icons/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DownloadReader{formats: a.formats},
+		Reader:             &Download2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -109,35 +109,35 @@ func (a *Client) Download(params *DownloadParams, opts ...ClientOption) (*Downlo
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DownloadOK)
+	success, ok := result.(*Download2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for download: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for download_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  Upload uploads an icon
+  Upload2 uploads an icon
 
   Create an icon.
 */
-func (a *Client) Upload(params *UploadParams, opts ...ClientOption) (*UploadCreated, error) {
+func (a *Client) Upload2(params *Upload2Params, opts ...ClientOption) (*Upload2Created, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewUploadParams()
+		params = NewUpload2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "upload",
+		ID:                 "upload_2",
 		Method:             "POST",
 		PathPattern:        "/icon/api/icons",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"multipart/form-data"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &UploadReader{formats: a.formats},
+		Reader:             &Upload2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -149,13 +149,13 @@ func (a *Client) Upload(params *UploadParams, opts ...ClientOption) (*UploadCrea
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*UploadCreated)
+	success, ok := result.(*Upload2Created)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for upload: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for upload_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

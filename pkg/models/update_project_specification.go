@@ -223,6 +223,11 @@ func (m *updateProjectSpecification) validateConstraints(formats strfmt.Registry
 		}
 		if val, ok := m.Constraints()[k]; ok {
 			if err := val.Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("constraints" + "." + k)
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("constraints" + "." + k)
+				}
 				return err
 			}
 		}

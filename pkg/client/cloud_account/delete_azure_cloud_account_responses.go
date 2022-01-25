@@ -23,6 +23,12 @@ type DeleteAzureCloudAccountReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteAzureCloudAccountReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
+	case 202:
+		result := NewDeleteAzureCloudAccountAccepted()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
 	case 204:
 		result := NewDeleteAzureCloudAccountNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -38,6 +44,38 @@ func (o *DeleteAzureCloudAccountReader) ReadResponse(response runtime.ClientResp
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
+}
+
+// NewDeleteAzureCloudAccountAccepted creates a DeleteAzureCloudAccountAccepted with default headers values
+func NewDeleteAzureCloudAccountAccepted() *DeleteAzureCloudAccountAccepted {
+	return &DeleteAzureCloudAccountAccepted{}
+}
+
+/* DeleteAzureCloudAccountAccepted describes a response with status code 202, with default header values.
+
+successful operation
+*/
+type DeleteAzureCloudAccountAccepted struct {
+	Payload *models.RequestTracker
+}
+
+func (o *DeleteAzureCloudAccountAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-azure/{id}][%d] deleteAzureCloudAccountAccepted  %+v", 202, o.Payload)
+}
+func (o *DeleteAzureCloudAccountAccepted) GetPayload() *models.RequestTracker {
+	return o.Payload
+}
+
+func (o *DeleteAzureCloudAccountAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.RequestTracker)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
 }
 
 // NewDeleteAzureCloudAccountNoContent creates a DeleteAzureCloudAccountNoContent with default headers values

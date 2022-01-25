@@ -634,6 +634,8 @@ func (m *gitWebhook) validateExclusions(formats strfmt.Registry) error {
 			if err := m.exclusionsField[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("exclusions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("exclusions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -658,6 +660,8 @@ func (m *gitWebhook) validateInclusions(formats strfmt.Registry) error {
 			if err := m.inclusionsField[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("inclusions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("inclusions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -703,6 +707,8 @@ func (m *gitWebhook) contextValidateExclusions(ctx context.Context, formats strf
 			if err := m.exclusionsField[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("exclusions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("exclusions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -721,6 +727,8 @@ func (m *gitWebhook) contextValidateInclusions(ctx context.Context, formats strf
 			if err := m.inclusionsField[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("inclusions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("inclusions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

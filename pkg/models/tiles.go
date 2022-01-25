@@ -130,6 +130,8 @@ func (m *tiles) validateTiles(formats strfmt.Registry) error {
 		if err := m.tilesField[i].Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("tiles" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("tiles" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -160,6 +162,8 @@ func (m *tiles) contextValidateTiles(ctx context.Context, formats strfmt.Registr
 		if err := m.tilesField[i].ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("tiles" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("tiles" + "." + strconv.Itoa(i))
 			}
 			return err
 		}

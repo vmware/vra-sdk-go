@@ -30,34 +30,34 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetPolicyTypeByIDUsingGET(params *GetPolicyTypeByIDUsingGETParams, opts ...ClientOption) (*GetPolicyTypeByIDUsingGETOK, error)
+	GetPolicyTypeByIDUsingGET2(params *GetPolicyTypeByIDUsingGET2Params, opts ...ClientOption) (*GetPolicyTypeByIDUsingGET2OK, error)
 
-	GetPolicyTypeScopeSchemaUsingGET(params *GetPolicyTypeScopeSchemaUsingGETParams, opts ...ClientOption) (*GetPolicyTypeScopeSchemaUsingGETOK, error)
+	GetPolicyTypeScopeSchemaUsingGET2(params *GetPolicyTypeScopeSchemaUsingGET2Params, opts ...ClientOption) (*GetPolicyTypeScopeSchemaUsingGET2OK, error)
 
-	GetTypesUsingGET1(params *GetTypesUsingGET1Params, opts ...ClientOption) (*GetTypesUsingGET1OK, error)
+	GetTypesUsingGET5(params *GetTypesUsingGET5Params, opts ...ClientOption) (*GetTypesUsingGET5OK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  GetPolicyTypeByIDUsingGET returns the policy type with the specified ID
+  GetPolicyTypeByIDUsingGET2 returns the policy type with the specified ID
 
   Find a specific policy type based on the input policy type id.
 */
-func (a *Client) GetPolicyTypeByIDUsingGET(params *GetPolicyTypeByIDUsingGETParams, opts ...ClientOption) (*GetPolicyTypeByIDUsingGETOK, error) {
+func (a *Client) GetPolicyTypeByIDUsingGET2(params *GetPolicyTypeByIDUsingGET2Params, opts ...ClientOption) (*GetPolicyTypeByIDUsingGET2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetPolicyTypeByIDUsingGETParams()
+		params = NewGetPolicyTypeByIDUsingGET2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getPolicyTypeByIdUsingGET",
+		ID:                 "getPolicyTypeByIdUsingGET_2",
 		Method:             "GET",
 		PathPattern:        "/policy/api/policyTypes/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetPolicyTypeByIDUsingGETReader{formats: a.formats},
+		Reader:             &GetPolicyTypeByIDUsingGET2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -69,35 +69,35 @@ func (a *Client) GetPolicyTypeByIDUsingGET(params *GetPolicyTypeByIDUsingGETPara
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetPolicyTypeByIDUsingGETOK)
+	success, ok := result.(*GetPolicyTypeByIDUsingGET2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getPolicyTypeByIdUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getPolicyTypeByIdUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetPolicyTypeScopeSchemaUsingGET returns the policy scope schema for the type with the specified ID
+  GetPolicyTypeScopeSchemaUsingGET2 returns the policy scope schema for the type with the specified ID
 
   Return the policy scope schema for the given policy type.
 */
-func (a *Client) GetPolicyTypeScopeSchemaUsingGET(params *GetPolicyTypeScopeSchemaUsingGETParams, opts ...ClientOption) (*GetPolicyTypeScopeSchemaUsingGETOK, error) {
+func (a *Client) GetPolicyTypeScopeSchemaUsingGET2(params *GetPolicyTypeScopeSchemaUsingGET2Params, opts ...ClientOption) (*GetPolicyTypeScopeSchemaUsingGET2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetPolicyTypeScopeSchemaUsingGETParams()
+		params = NewGetPolicyTypeScopeSchemaUsingGET2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getPolicyTypeScopeSchemaUsingGET",
+		ID:                 "getPolicyTypeScopeSchemaUsingGET_2",
 		Method:             "GET",
 		PathPattern:        "/policy/api/policyTypes/{id}/scopeSchema",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetPolicyTypeScopeSchemaUsingGETReader{formats: a.formats},
+		Reader:             &GetPolicyTypeScopeSchemaUsingGET2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -109,35 +109,35 @@ func (a *Client) GetPolicyTypeScopeSchemaUsingGET(params *GetPolicyTypeScopeSche
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetPolicyTypeScopeSchemaUsingGETOK)
+	success, ok := result.(*GetPolicyTypeScopeSchemaUsingGET2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getPolicyTypeScopeSchemaUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getPolicyTypeScopeSchemaUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetTypesUsingGET1 returns a paginated list of policy types
+  GetTypesUsingGET5 returns a paginated list of policy types
 
   Find all the policy types available in the current org.
 */
-func (a *Client) GetTypesUsingGET1(params *GetTypesUsingGET1Params, opts ...ClientOption) (*GetTypesUsingGET1OK, error) {
+func (a *Client) GetTypesUsingGET5(params *GetTypesUsingGET5Params, opts ...ClientOption) (*GetTypesUsingGET5OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetTypesUsingGET1Params()
+		params = NewGetTypesUsingGET5Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getTypesUsingGET_1",
+		ID:                 "getTypesUsingGET_5",
 		Method:             "GET",
 		PathPattern:        "/policy/api/policyTypes",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetTypesUsingGET1Reader{formats: a.formats},
+		Reader:             &GetTypesUsingGET5Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -149,13 +149,13 @@ func (a *Client) GetTypesUsingGET1(params *GetTypesUsingGET1Params, opts ...Clie
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetTypesUsingGET1OK)
+	success, ok := result.(*GetTypesUsingGET5OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getTypesUsingGET_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getTypesUsingGET_5: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

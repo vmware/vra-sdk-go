@@ -28,6 +28,10 @@ type CloudAccountNsxVSpecification struct {
 	// Example: [ \"42f3e0d199d134755684cd935435a\" ]
 	AssociatedCloudAccountIds []string `json:"associatedCloudAccountIds"`
 
+	// Certificate for a cloud account.
+	// Example: {\"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDHjCCAoegAwIBAgIBATANBgkqhkiG9w0BAQsFADCBpjEUMBIGA1UEChMLVk13\\nYXJlIEluYAAc1pw18GT3iAqQRPx0PrjzJhgjIJMla\\n/1Kg4byY4FPSacNiRgY/FG2bPCqZk1yRfzmkFYCW/vU+Dg==\\n-----END CERTIFICATE-----\\n-\"}
+	CertificateInfo *CertificateInfoSpecification `json:"certificateInfo,omitempty"`
+
 	// Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors.
 	// Note: Data collector endpoints are not available in vRA on-prem release and hence the data collector Id is optional for vRA on-prem.
 	// Example: 23959a1e-18bc-4f0c-ac49-b5aeb4b6eef4
@@ -65,6 +69,10 @@ type CloudAccountNsxVSpecification struct {
 func (m *CloudAccountNsxVSpecification) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateCertificateInfo(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateDcid(formats); err != nil {
 		res = append(res, err)
 	}
@@ -92,6 +100,25 @@ func (m *CloudAccountNsxVSpecification) Validate(formats strfmt.Registry) error 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *CloudAccountNsxVSpecification) validateCertificateInfo(formats strfmt.Registry) error {
+	if swag.IsZero(m.CertificateInfo) { // not required
+		return nil
+	}
+
+	if m.CertificateInfo != nil {
+		if err := m.CertificateInfo.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("certificateInfo")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("certificateInfo")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -145,6 +172,8 @@ func (m *CloudAccountNsxVSpecification) validateTags(formats strfmt.Registry) er
 			if err := m.Tags[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -168,6 +197,10 @@ func (m *CloudAccountNsxVSpecification) validateUsername(formats strfmt.Registry
 func (m *CloudAccountNsxVSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateCertificateInfo(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateTags(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -175,6 +208,22 @@ func (m *CloudAccountNsxVSpecification) ContextValidate(ctx context.Context, for
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *CloudAccountNsxVSpecification) contextValidateCertificateInfo(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.CertificateInfo != nil {
+		if err := m.CertificateInfo.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("certificateInfo")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("certificateInfo")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -186,6 +235,8 @@ func (m *CloudAccountNsxVSpecification) contextValidateTags(ctx context.Context,
 			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

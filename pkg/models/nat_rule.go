@@ -35,7 +35,7 @@ type NatRule struct {
 	// Required: true
 	Index *int32 `json:"index"`
 
-	// Kind of NAT: NAT44/NAT64/NAT66. Only NAT44 is supported currently and it is the default value
+	// Kind of NAT: NAT44/NAT64/NAT66. Only NAT44 is supported currently and it is the default value.
 	// Example: NAT44
 	Kind string `json:"kind,omitempty"`
 

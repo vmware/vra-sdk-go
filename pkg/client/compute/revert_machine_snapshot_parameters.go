@@ -67,15 +67,15 @@ type RevertMachineSnapshotParams struct {
 
 	/* ID.
 
-	   Snapshot id to revert.
+	   The id of the Machine.
 	*/
 	ID string
 
-	/* MachineID.
+	/* SnapshotID.
 
-	   The id of the Machine.
+	   Snapshot id to revert.
 	*/
-	MachineID string
+	SnapshotID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -152,15 +152,15 @@ func (o *RevertMachineSnapshotParams) SetID(id string) {
 	o.ID = id
 }
 
-// WithMachineID adds the machineID to the revert machine snapshot params
-func (o *RevertMachineSnapshotParams) WithMachineID(machineID string) *RevertMachineSnapshotParams {
-	o.SetMachineID(machineID)
+// WithSnapshotID adds the snapshotID to the revert machine snapshot params
+func (o *RevertMachineSnapshotParams) WithSnapshotID(snapshotID string) *RevertMachineSnapshotParams {
+	o.SetSnapshotID(snapshotID)
 	return o
 }
 
-// SetMachineID adds the machineId to the revert machine snapshot params
-func (o *RevertMachineSnapshotParams) SetMachineID(machineID string) {
-	o.MachineID = machineID
+// SetSnapshotID adds the snapshotId to the revert machine snapshot params
+func (o *RevertMachineSnapshotParams) SetSnapshotID(snapshotID string) {
+	o.SnapshotID = snapshotID
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -188,18 +188,13 @@ func (o *RevertMachineSnapshotParams) WriteToRequest(r runtime.ClientRequest, re
 		}
 	}
 
-	// query param id
-	qrID := o.ID
-	qID := qrID
-	if qID != "" {
-
-		if err := r.SetQueryParam("id", qID); err != nil {
-			return err
-		}
+	// path param id
+	if err := r.SetPathParam("id", o.ID); err != nil {
+		return err
 	}
 
-	// path param machineId
-	if err := r.SetPathParam("machineId", o.MachineID); err != nil {
+	// path param snapshotId
+	if err := r.SetPathParam("snapshotId", o.SnapshotID); err != nil {
 		return err
 	}
 

@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// UpdateCloudAccountSpecification update cloud account specification
+// UpdateCloudAccountSpecification Specification for a generic cloud account.<br><br>A cloud account identifies a cloud account type and an account-specific deployment region or data center where the associated cloud account resources are hosted.
 //
 // swagger:model UpdateCloudAccountSpecification
 type UpdateCloudAccountSpecification struct {
@@ -23,6 +23,14 @@ type UpdateCloudAccountSpecification struct {
 	// Cloud accounts to associate with this cloud account
 	// Example: [ \"42f3e0d199d134755684cd935435a\" ]
 	AssociatedCloudAccountIds []string `json:"associatedCloudAccountIds"`
+
+	// Certificate for a cloud account.
+	// Example: {\"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDHjCCAoegAwIBAgIBATANBgkqhkiG9w0BAQsFADCBpjEUMBIGA1UEChMLVk13\\nYXJlIEluYAAc1pw18GT3iAqQRPx0PrjzJhgjIJMla\\n/1Kg4byY4FPSacNiRgY/FG2bPCqZk1yRfzmkFYCW/vU+Dg==\\n-----END CERTIFICATE-----\\n-\"}
+	CertificateInfo *CertificateInfoSpecification `json:"certificateInfo,omitempty"`
+
+	// Cloud Account specific properties supplied in as name value pairs
+	// Example: {\"supportPublicImages\": \"true\", \"acceptSelfSignedCertificate\": \"true\" }
+	CloudAccountProperties map[string]string `json:"cloudAccountProperties,omitempty"`
 
 	// Create default cloud zones for the enabled regions.
 	// Example: true
@@ -39,25 +47,22 @@ type UpdateCloudAccountSpecification struct {
 	Name string `json:"name,omitempty"`
 
 	// Secret access key or password to be used to authenticate with the cloud account
-	// Example: [ \"LVJbZNAkPCJs\" ]
-	PrivateKey string `json:"privateKey,omitempty"`
+	// Example: gfsScK345sGGaVdds222dasdfDDSSasdfdsa34fS
+	// Required: true
+	PrivateKey *string `json:"privateKey"`
 
 	// Access key id or username to be used to authenticate with the cloud account
-	// Example: [ \"ACDC55DB4MFH6ADG75KK\" ]
-	PrivateKeyID string `json:"privateKeyId,omitempty"`
-
-	// A set of Region names to enable provisioning on. Refer to /iaas/cloud-accounts-aws/region-enumeration. Deprecated - use regions to define enabled regions.
-	// Example: [ \"us-east-1\", \"ap-northeast-1\" ]
+	// Example: ACDC55DB4MFH6ADG75KK
 	// Required: true
-	RegionIds []string `json:"regionIds"`
+	PrivateKeyID *string `json:"privateKeyId"`
 
-	// A set of regions to enable provisioning on.Refer to /iaas/cloud-accounts/region-enumeration.
-	// 'regions' is a required parameter for AWS, AZURE, GCP, VSPHERE, VMC, VCF cloud account types.
+	// A set of regions to enable provisioning on.Refer to /iaas/api/cloud-accounts/region-enumeration.
+	// 'regionInfos' is a required parameter for AWS, AZURE, GCP, VSPHERE, VMC, VCF cloud account types.
 	// Example: [{ \"name\": \"East Asia\",\"externalRegionId\": \"eastasia\"}]
 	Regions []*RegionSpecification `json:"regions"`
 
 	// A set of tag keys and optional values to set on the Cloud Account
-	// Example: [{\"key\": \"env\", \"value\": \"dev\"}]
+	// Example: [ { \"key\" : \"env\", \"value\": \"dev\" } ]
 	Tags []*Tag `json:"tags"`
 }
 
@@ -65,7 +70,15 @@ type UpdateCloudAccountSpecification struct {
 func (m *UpdateCloudAccountSpecification) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateRegionIds(formats); err != nil {
+	if err := m.validateCertificateInfo(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePrivateKey(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePrivateKeyID(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -83,9 +96,37 @@ func (m *UpdateCloudAccountSpecification) Validate(formats strfmt.Registry) erro
 	return nil
 }
 
-func (m *UpdateCloudAccountSpecification) validateRegionIds(formats strfmt.Registry) error {
+func (m *UpdateCloudAccountSpecification) validateCertificateInfo(formats strfmt.Registry) error {
+	if swag.IsZero(m.CertificateInfo) { // not required
+		return nil
+	}
 
-	if err := validate.Required("regionIds", "body", m.RegionIds); err != nil {
+	if m.CertificateInfo != nil {
+		if err := m.CertificateInfo.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("certificateInfo")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("certificateInfo")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *UpdateCloudAccountSpecification) validatePrivateKey(formats strfmt.Registry) error {
+
+	if err := validate.Required("privateKey", "body", m.PrivateKey); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *UpdateCloudAccountSpecification) validatePrivateKeyID(formats strfmt.Registry) error {
+
+	if err := validate.Required("privateKeyId", "body", m.PrivateKeyID); err != nil {
 		return err
 	}
 
@@ -106,6 +147,8 @@ func (m *UpdateCloudAccountSpecification) validateRegions(formats strfmt.Registr
 			if err := m.Regions[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("regions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("regions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -130,6 +173,8 @@ func (m *UpdateCloudAccountSpecification) validateTags(formats strfmt.Registry) 
 			if err := m.Tags[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -143,6 +188,10 @@ func (m *UpdateCloudAccountSpecification) validateTags(formats strfmt.Registry) 
 // ContextValidate validate this update cloud account specification based on the context it is used
 func (m *UpdateCloudAccountSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.contextValidateCertificateInfo(ctx, formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.contextValidateRegions(ctx, formats); err != nil {
 		res = append(res, err)
@@ -158,6 +207,22 @@ func (m *UpdateCloudAccountSpecification) ContextValidate(ctx context.Context, f
 	return nil
 }
 
+func (m *UpdateCloudAccountSpecification) contextValidateCertificateInfo(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.CertificateInfo != nil {
+		if err := m.CertificateInfo.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("certificateInfo")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("certificateInfo")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *UpdateCloudAccountSpecification) contextValidateRegions(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.Regions); i++ {
@@ -166,6 +231,8 @@ func (m *UpdateCloudAccountSpecification) contextValidateRegions(ctx context.Con
 			if err := m.Regions[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("regions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("regions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -184,6 +251,8 @@ func (m *UpdateCloudAccountSpecification) contextValidateTags(ctx context.Contex
 			if err := m.Tags[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("tags" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("tags" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

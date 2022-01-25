@@ -70,6 +70,8 @@ func (m *VcfServiceCredentialCreationResponse) validateCredentials(formats strfm
 			if err := m.Credentials[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("credentials" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("credentials" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -147,6 +149,8 @@ func (m *VcfServiceCredentialCreationResponse) contextValidateCredentials(ctx co
 			if err := m.Credentials[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("credentials" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("credentials" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

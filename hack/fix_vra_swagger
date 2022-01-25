@@ -54,7 +54,16 @@ def add_filter_params(swagger):
 # To add a response code in the swagger, enable this method and add the apis
 def add_204(swagger):
     paths = [
-        ('/iaas/api/machines/{id}/disks/{id1}', 'delete'),
+        ('/iaas/api/machines/{id}/disks/{diskId}', 'delete'),
+        # //https://jira.eng.vmware.com/browse/VRAE-10681
+        ('/iaas/api/cloud-accounts-azure/{id}', 'delete'),
+        ('/iaas/api/cloud-accounts-aws/{id}', 'delete'),
+        ('/iaas/api/cloud-accounts-gcp/{id}', 'delete'),
+        ('/iaas/api/cloud-accounts-nsx-t/{id}', 'delete'),
+        ('/iaas/api/cloud-accounts-nsx-v/{id}', 'delete'),
+        ('/iaas/api/cloud-accounts-vcf/{id}', 'delete'),
+        ('/iaas/api/cloud-accounts-vmc/{id}', 'delete'),
+        ('/iaas/api/cloud-accounts-vsphere/{id}', 'delete'),
     ]
 
     # Update the needed paths
@@ -360,7 +369,7 @@ if __name__ == "__main__":
     swagger = json.loads(open(filename).read())
 
     add_filter_params(swagger)
-    # add_204(swagger)
+    add_204(swagger)
     # change_response_model(swagger)
 
     add_blockdevice_persistent(swagger)

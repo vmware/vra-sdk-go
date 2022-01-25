@@ -30,46 +30,46 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateBlueprintFromMappingUsingPOST1(params *CreateBlueprintFromMappingUsingPOST1Params, opts ...ClientOption) (*CreateBlueprintFromMappingUsingPOST1OK, error)
+	CreateBlueprintFromMappingUsingPOST(params *CreateBlueprintFromMappingUsingPOSTParams, opts ...ClientOption) (*CreateBlueprintFromMappingUsingPOSTOK, error)
 
-	CreateBlueprintMappingUsingPOST1(params *CreateBlueprintMappingUsingPOST1Params, opts ...ClientOption) (*CreateBlueprintMappingUsingPOST1OK, error)
+	CreateBlueprintMappingUsingPOST(params *CreateBlueprintMappingUsingPOSTParams, opts ...ClientOption) (*CreateBlueprintMappingUsingPOSTOK, error)
 
-	CreateTerraformVersionUsingPOST1(params *CreateTerraformVersionUsingPOST1Params, opts ...ClientOption) (*CreateTerraformVersionUsingPOST1Created, error)
+	CreateTerraformVersionUsingPOST(params *CreateTerraformVersionUsingPOSTParams, opts ...ClientOption) (*CreateTerraformVersionUsingPOSTCreated, error)
 
-	DeleteTerraformVersionUsingDELETE1(params *DeleteTerraformVersionUsingDELETE1Params, opts ...ClientOption) (*DeleteTerraformVersionUsingDELETE1NoContent, error)
+	DeleteTerraformVersionUsingDELETE(params *DeleteTerraformVersionUsingDELETEParams, opts ...ClientOption) (*DeleteTerraformVersionUsingDELETENoContent, error)
 
-	GetConfigurationSourceTreeUsingGET1(params *GetConfigurationSourceTreeUsingGET1Params, opts ...ClientOption) (*GetConfigurationSourceTreeUsingGET1OK, error)
+	GetConfigurationSourceTreeUsingGET(params *GetConfigurationSourceTreeUsingGETParams, opts ...ClientOption) (*GetConfigurationSourceTreeUsingGETOK, error)
 
-	GetTerraformConfigurationSourceCommitListUsingGET1(params *GetTerraformConfigurationSourceCommitListUsingGET1Params, opts ...ClientOption) (*GetTerraformConfigurationSourceCommitListUsingGET1OK, error)
+	GetTerraformConfigurationSourceCommitListUsingGET(params *GetTerraformConfigurationSourceCommitListUsingGETParams, opts ...ClientOption) (*GetTerraformConfigurationSourceCommitListUsingGETOK, error)
 
-	GetTerraformConfigurationSourcesUsingGET1(params *GetTerraformConfigurationSourcesUsingGET1Params, opts ...ClientOption) (*GetTerraformConfigurationSourcesUsingGET1OK, error)
+	GetTerraformConfigurationSourcesUsingGET(params *GetTerraformConfigurationSourcesUsingGETParams, opts ...ClientOption) (*GetTerraformConfigurationSourcesUsingGETOK, error)
 
-	GetTerraformVersionUsingGET1(params *GetTerraformVersionUsingGET1Params, opts ...ClientOption) (*GetTerraformVersionUsingGET1OK, error)
+	GetTerraformVersionUsingGET(params *GetTerraformVersionUsingGETParams, opts ...ClientOption) (*GetTerraformVersionUsingGETOK, error)
 
-	ListTerraformVersionsUsingGET1(params *ListTerraformVersionsUsingGET1Params, opts ...ClientOption) (*ListTerraformVersionsUsingGET1OK, error)
+	ListTerraformVersionsUsingGET(params *ListTerraformVersionsUsingGETParams, opts ...ClientOption) (*ListTerraformVersionsUsingGETOK, error)
 
-	UpdateTerraformVersionUsingPATCH1(params *UpdateTerraformVersionUsingPATCH1Params, opts ...ClientOption) (*UpdateTerraformVersionUsingPATCH1OK, error)
+	UpdateTerraformVersionUsingPATCH(params *UpdateTerraformVersionUsingPATCHParams, opts ...ClientOption) (*UpdateTerraformVersionUsingPATCHOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  CreateBlueprintFromMappingUsingPOST1 creates a blueprint from a terraform blueprint configuration obtained from create blueprint mapping
+  CreateBlueprintFromMappingUsingPOST creates a blueprint from a terraform blueprint configuration obtained from create blueprint mapping
 */
-func (a *Client) CreateBlueprintFromMappingUsingPOST1(params *CreateBlueprintFromMappingUsingPOST1Params, opts ...ClientOption) (*CreateBlueprintFromMappingUsingPOST1OK, error) {
+func (a *Client) CreateBlueprintFromMappingUsingPOST(params *CreateBlueprintFromMappingUsingPOSTParams, opts ...ClientOption) (*CreateBlueprintFromMappingUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateBlueprintFromMappingUsingPOST1Params()
+		params = NewCreateBlueprintFromMappingUsingPOSTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createBlueprintFromMappingUsingPOST_1",
+		ID:                 "createBlueprintFromMappingUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/blueprint/api/blueprint-integrations/terraform/create-blueprint-from-mapping",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateBlueprintFromMappingUsingPOST1Reader{formats: a.formats},
+		Reader:             &CreateBlueprintFromMappingUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -81,33 +81,33 @@ func (a *Client) CreateBlueprintFromMappingUsingPOST1(params *CreateBlueprintFro
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateBlueprintFromMappingUsingPOST1OK)
+	success, ok := result.(*CreateBlueprintFromMappingUsingPOSTOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for createBlueprintFromMappingUsingPOST_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for createBlueprintFromMappingUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  CreateBlueprintMappingUsingPOST1 retrieves and parses the specified terraform configuration file s and returns relevant information for blueprint construction
+  CreateBlueprintMappingUsingPOST retrieves and parses the specified terraform configuration file s and returns relevant information for blueprint construction
 */
-func (a *Client) CreateBlueprintMappingUsingPOST1(params *CreateBlueprintMappingUsingPOST1Params, opts ...ClientOption) (*CreateBlueprintMappingUsingPOST1OK, error) {
+func (a *Client) CreateBlueprintMappingUsingPOST(params *CreateBlueprintMappingUsingPOSTParams, opts ...ClientOption) (*CreateBlueprintMappingUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateBlueprintMappingUsingPOST1Params()
+		params = NewCreateBlueprintMappingUsingPOSTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createBlueprintMappingUsingPOST_1",
+		ID:                 "createBlueprintMappingUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/blueprint/api/blueprint-integrations/terraform/create-blueprint-mapping",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateBlueprintMappingUsingPOST1Reader{formats: a.formats},
+		Reader:             &CreateBlueprintMappingUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -119,33 +119,33 @@ func (a *Client) CreateBlueprintMappingUsingPOST1(params *CreateBlueprintMapping
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateBlueprintMappingUsingPOST1OK)
+	success, ok := result.(*CreateBlueprintMappingUsingPOSTOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for createBlueprintMappingUsingPOST_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for createBlueprintMappingUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  CreateTerraformVersionUsingPOST1 creates a version
+  CreateTerraformVersionUsingPOST creates a version
 */
-func (a *Client) CreateTerraformVersionUsingPOST1(params *CreateTerraformVersionUsingPOST1Params, opts ...ClientOption) (*CreateTerraformVersionUsingPOST1Created, error) {
+func (a *Client) CreateTerraformVersionUsingPOST(params *CreateTerraformVersionUsingPOSTParams, opts ...ClientOption) (*CreateTerraformVersionUsingPOSTCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateTerraformVersionUsingPOST1Params()
+		params = NewCreateTerraformVersionUsingPOSTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createTerraformVersionUsingPOST_1",
+		ID:                 "createTerraformVersionUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/blueprint/api/blueprint-integrations/terraform/versions",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateTerraformVersionUsingPOST1Reader{formats: a.formats},
+		Reader:             &CreateTerraformVersionUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -157,33 +157,33 @@ func (a *Client) CreateTerraformVersionUsingPOST1(params *CreateTerraformVersion
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateTerraformVersionUsingPOST1Created)
+	success, ok := result.(*CreateTerraformVersionUsingPOSTCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for createTerraformVersionUsingPOST_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for createTerraformVersionUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  DeleteTerraformVersionUsingDELETE1 deletes a terraform version
+  DeleteTerraformVersionUsingDELETE deletes a terraform version
 */
-func (a *Client) DeleteTerraformVersionUsingDELETE1(params *DeleteTerraformVersionUsingDELETE1Params, opts ...ClientOption) (*DeleteTerraformVersionUsingDELETE1NoContent, error) {
+func (a *Client) DeleteTerraformVersionUsingDELETE(params *DeleteTerraformVersionUsingDELETEParams, opts ...ClientOption) (*DeleteTerraformVersionUsingDELETENoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteTerraformVersionUsingDELETE1Params()
+		params = NewDeleteTerraformVersionUsingDELETEParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteTerraformVersionUsingDELETE_1",
+		ID:                 "deleteTerraformVersionUsingDELETE",
 		Method:             "DELETE",
 		PathPattern:        "/blueprint/api/blueprint-integrations/terraform/versions/{versionId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteTerraformVersionUsingDELETE1Reader{formats: a.formats},
+		Reader:             &DeleteTerraformVersionUsingDELETEReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -195,33 +195,33 @@ func (a *Client) DeleteTerraformVersionUsingDELETE1(params *DeleteTerraformVersi
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteTerraformVersionUsingDELETE1NoContent)
+	success, ok := result.(*DeleteTerraformVersionUsingDELETENoContent)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteTerraformVersionUsingDELETE_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for deleteTerraformVersionUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetConfigurationSourceTreeUsingGET1 shows directories of the configuration source repository that correspond to terraform configurations
+  GetConfigurationSourceTreeUsingGET shows directories of the configuration source repository that correspond to terraform configurations
 */
-func (a *Client) GetConfigurationSourceTreeUsingGET1(params *GetConfigurationSourceTreeUsingGET1Params, opts ...ClientOption) (*GetConfigurationSourceTreeUsingGET1OK, error) {
+func (a *Client) GetConfigurationSourceTreeUsingGET(params *GetConfigurationSourceTreeUsingGETParams, opts ...ClientOption) (*GetConfigurationSourceTreeUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetConfigurationSourceTreeUsingGET1Params()
+		params = NewGetConfigurationSourceTreeUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getConfigurationSourceTreeUsingGET_1",
+		ID:                 "getConfigurationSourceTreeUsingGET",
 		Method:             "GET",
 		PathPattern:        "/blueprint/api/blueprint-integrations/terraform/get-configuration-source-tree",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetConfigurationSourceTreeUsingGET1Reader{formats: a.formats},
+		Reader:             &GetConfigurationSourceTreeUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -233,33 +233,33 @@ func (a *Client) GetConfigurationSourceTreeUsingGET1(params *GetConfigurationSou
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetConfigurationSourceTreeUsingGET1OK)
+	success, ok := result.(*GetConfigurationSourceTreeUsingGETOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getConfigurationSourceTreeUsingGET_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getConfigurationSourceTreeUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetTerraformConfigurationSourceCommitListUsingGET1 returns a paginated list of commits for a specified configuration source
+  GetTerraformConfigurationSourceCommitListUsingGET returns a paginated list of commits for a specified configuration source
 */
-func (a *Client) GetTerraformConfigurationSourceCommitListUsingGET1(params *GetTerraformConfigurationSourceCommitListUsingGET1Params, opts ...ClientOption) (*GetTerraformConfigurationSourceCommitListUsingGET1OK, error) {
+func (a *Client) GetTerraformConfigurationSourceCommitListUsingGET(params *GetTerraformConfigurationSourceCommitListUsingGETParams, opts ...ClientOption) (*GetTerraformConfigurationSourceCommitListUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetTerraformConfigurationSourceCommitListUsingGET1Params()
+		params = NewGetTerraformConfigurationSourceCommitListUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getTerraformConfigurationSourceCommitListUsingGET_1",
+		ID:                 "getTerraformConfigurationSourceCommitListUsingGET",
 		Method:             "GET",
 		PathPattern:        "/blueprint/api/blueprint-integrations/terraform/get-configuration-source-commits",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetTerraformConfigurationSourceCommitListUsingGET1Reader{formats: a.formats},
+		Reader:             &GetTerraformConfigurationSourceCommitListUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -271,33 +271,33 @@ func (a *Client) GetTerraformConfigurationSourceCommitListUsingGET1(params *GetT
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetTerraformConfigurationSourceCommitListUsingGET1OK)
+	success, ok := result.(*GetTerraformConfigurationSourceCommitListUsingGETOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getTerraformConfigurationSourceCommitListUsingGET_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getTerraformConfigurationSourceCommitListUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetTerraformConfigurationSourcesUsingGET1 returns a paginated list of configuration sources configured as storage for terraform configurations
+  GetTerraformConfigurationSourcesUsingGET returns a paginated list of configuration sources configured as storage for terraform configurations
 */
-func (a *Client) GetTerraformConfigurationSourcesUsingGET1(params *GetTerraformConfigurationSourcesUsingGET1Params, opts ...ClientOption) (*GetTerraformConfigurationSourcesUsingGET1OK, error) {
+func (a *Client) GetTerraformConfigurationSourcesUsingGET(params *GetTerraformConfigurationSourcesUsingGETParams, opts ...ClientOption) (*GetTerraformConfigurationSourcesUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetTerraformConfigurationSourcesUsingGET1Params()
+		params = NewGetTerraformConfigurationSourcesUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getTerraformConfigurationSourcesUsingGET_1",
+		ID:                 "getTerraformConfigurationSourcesUsingGET",
 		Method:             "GET",
 		PathPattern:        "/blueprint/api/blueprint-integrations/terraform/get-configuration-sources",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetTerraformConfigurationSourcesUsingGET1Reader{formats: a.formats},
+		Reader:             &GetTerraformConfigurationSourcesUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -309,33 +309,33 @@ func (a *Client) GetTerraformConfigurationSourcesUsingGET1(params *GetTerraformC
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetTerraformConfigurationSourcesUsingGET1OK)
+	success, ok := result.(*GetTerraformConfigurationSourcesUsingGETOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getTerraformConfigurationSourcesUsingGET_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getTerraformConfigurationSourcesUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetTerraformVersionUsingGET1 returns terraform version details
+  GetTerraformVersionUsingGET returns terraform version details
 */
-func (a *Client) GetTerraformVersionUsingGET1(params *GetTerraformVersionUsingGET1Params, opts ...ClientOption) (*GetTerraformVersionUsingGET1OK, error) {
+func (a *Client) GetTerraformVersionUsingGET(params *GetTerraformVersionUsingGETParams, opts ...ClientOption) (*GetTerraformVersionUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetTerraformVersionUsingGET1Params()
+		params = NewGetTerraformVersionUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getTerraformVersionUsingGET_1",
+		ID:                 "getTerraformVersionUsingGET",
 		Method:             "GET",
 		PathPattern:        "/blueprint/api/blueprint-integrations/terraform/versions/{versionId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetTerraformVersionUsingGET1Reader{formats: a.formats},
+		Reader:             &GetTerraformVersionUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -347,33 +347,33 @@ func (a *Client) GetTerraformVersionUsingGET1(params *GetTerraformVersionUsingGE
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetTerraformVersionUsingGET1OK)
+	success, ok := result.(*GetTerraformVersionUsingGETOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getTerraformVersionUsingGET_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getTerraformVersionUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  ListTerraformVersionsUsingGET1 lists terraform versions
+  ListTerraformVersionsUsingGET lists terraform versions
 */
-func (a *Client) ListTerraformVersionsUsingGET1(params *ListTerraformVersionsUsingGET1Params, opts ...ClientOption) (*ListTerraformVersionsUsingGET1OK, error) {
+func (a *Client) ListTerraformVersionsUsingGET(params *ListTerraformVersionsUsingGETParams, opts ...ClientOption) (*ListTerraformVersionsUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewListTerraformVersionsUsingGET1Params()
+		params = NewListTerraformVersionsUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "listTerraformVersionsUsingGET_1",
+		ID:                 "listTerraformVersionsUsingGET",
 		Method:             "GET",
 		PathPattern:        "/blueprint/api/blueprint-integrations/terraform/versions",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &ListTerraformVersionsUsingGET1Reader{formats: a.formats},
+		Reader:             &ListTerraformVersionsUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -385,33 +385,33 @@ func (a *Client) ListTerraformVersionsUsingGET1(params *ListTerraformVersionsUsi
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*ListTerraformVersionsUsingGET1OK)
+	success, ok := result.(*ListTerraformVersionsUsingGETOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for listTerraformVersionsUsingGET_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for listTerraformVersionsUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  UpdateTerraformVersionUsingPATCH1 updates a terraform version
+  UpdateTerraformVersionUsingPATCH updates a terraform version
 */
-func (a *Client) UpdateTerraformVersionUsingPATCH1(params *UpdateTerraformVersionUsingPATCH1Params, opts ...ClientOption) (*UpdateTerraformVersionUsingPATCH1OK, error) {
+func (a *Client) UpdateTerraformVersionUsingPATCH(params *UpdateTerraformVersionUsingPATCHParams, opts ...ClientOption) (*UpdateTerraformVersionUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewUpdateTerraformVersionUsingPATCH1Params()
+		params = NewUpdateTerraformVersionUsingPATCHParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "updateTerraformVersionUsingPATCH_1",
+		ID:                 "updateTerraformVersionUsingPATCH",
 		Method:             "PATCH",
 		PathPattern:        "/blueprint/api/blueprint-integrations/terraform/versions/{versionId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &UpdateTerraformVersionUsingPATCH1Reader{formats: a.formats},
+		Reader:             &UpdateTerraformVersionUsingPATCHReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -423,13 +423,13 @@ func (a *Client) UpdateTerraformVersionUsingPATCH1(params *UpdateTerraformVersio
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*UpdateTerraformVersionUsingPATCH1OK)
+	success, ok := result.(*UpdateTerraformVersionUsingPATCHOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateTerraformVersionUsingPATCH_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for updateTerraformVersionUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

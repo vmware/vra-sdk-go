@@ -57,6 +57,8 @@ func (m *BlueprintValidationResponse) validateValidationMessages(formats strfmt.
 			if err := m.ValidationMessages[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("validationMessages" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("validationMessages" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -106,6 +108,8 @@ func (m *BlueprintValidationResponse) contextValidateValidationMessages(ctx cont
 			if err := m.ValidationMessages[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("validationMessages" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("validationMessages" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

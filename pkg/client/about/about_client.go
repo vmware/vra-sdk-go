@@ -48,7 +48,9 @@ type ClientService interface {
 
   The page contains information about the supported API versions and the latest API version. The version parameter is optional but highly recommended.
 If you do not specify explicitly an exact version, you will be calling the latest supported API version.
-Here is an example of a call which specifies the exact version you are using: `GET /iaas/api/network-profiles?apiVersion=2019-01-15`
+Here is an example of a call which specifies the exact version you are using: `GET /iaas/api/network-profiles?apiVersion=2021-07-15`
+
+Note that this version is deprecated: 2019-01-15.
 */
 func (a *Client) GetAboutPage(params *GetAboutPageParams, opts ...ClientOption) (*GetAboutPageOK, error) {
 	// TODO: Validate the params before sending

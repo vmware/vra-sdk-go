@@ -30,69 +30,69 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateAwsCloudAccount(params *CreateAwsCloudAccountParams, opts ...ClientOption) (*CreateAwsCloudAccountCreated, error)
+	CreateAwsCloudAccountAsync(params *CreateAwsCloudAccountAsyncParams, opts ...ClientOption) (*CreateAwsCloudAccountAsyncAccepted, error)
 
-	CreateAzureCloudAccount(params *CreateAzureCloudAccountParams, opts ...ClientOption) (*CreateAzureCloudAccountCreated, error)
+	CreateAzureCloudAccountAsync(params *CreateAzureCloudAccountAsyncParams, opts ...ClientOption) (*CreateAzureCloudAccountAsyncAccepted, error)
 
-	CreateCloudAccount(params *CreateCloudAccountParams, opts ...ClientOption) (*CreateCloudAccountCreated, error)
+	CreateCloudAccountAsync(params *CreateCloudAccountAsyncParams, opts ...ClientOption) (*CreateCloudAccountAsyncAccepted, error)
 
-	CreateGcpCloudAccount(params *CreateGcpCloudAccountParams, opts ...ClientOption) (*CreateGcpCloudAccountCreated, error)
+	CreateGcpCloudAccountAsync(params *CreateGcpCloudAccountAsyncParams, opts ...ClientOption) (*CreateGcpCloudAccountAsyncAccepted, error)
 
-	CreateNsxTCloudAccount(params *CreateNsxTCloudAccountParams, opts ...ClientOption) (*CreateNsxTCloudAccountCreated, error)
+	CreateNsxTCloudAccountAsync(params *CreateNsxTCloudAccountAsyncParams, opts ...ClientOption) (*CreateNsxTCloudAccountAsyncAccepted, error)
 
-	CreateNsxVCloudAccount(params *CreateNsxVCloudAccountParams, opts ...ClientOption) (*CreateNsxVCloudAccountCreated, error)
+	CreateNsxVCloudAccountAsync(params *CreateNsxVCloudAccountAsyncParams, opts ...ClientOption) (*CreateNsxVCloudAccountAsyncAccepted, error)
 
-	CreateVSphereCloudAccount(params *CreateVSphereCloudAccountParams, opts ...ClientOption) (*CreateVSphereCloudAccountCreated, error)
+	CreateVSphereCloudAccountAsync(params *CreateVSphereCloudAccountAsyncParams, opts ...ClientOption) (*CreateVSphereCloudAccountAsyncAccepted, error)
 
-	CreateVcfCloudAccount(params *CreateVcfCloudAccountParams, opts ...ClientOption) (*CreateVcfCloudAccountCreated, error)
+	CreateVcfCloudAccountAsync(params *CreateVcfCloudAccountAsyncParams, opts ...ClientOption) (*CreateVcfCloudAccountAsyncAccepted, error)
 
-	CreateVmcCloudAccount(params *CreateVmcCloudAccountParams, opts ...ClientOption) (*CreateVmcCloudAccountCreated, error)
+	CreateVmcCloudAccountAsync(params *CreateVmcCloudAccountAsyncParams, opts ...ClientOption) (*CreateVmcCloudAccountAsyncAccepted, error)
 
-	DeleteAwsCloudAccount(params *DeleteAwsCloudAccountParams, opts ...ClientOption) (*DeleteAwsCloudAccountNoContent, error)
+	DeleteAwsCloudAccount(params *DeleteAwsCloudAccountParams, opts ...ClientOption) (*DeleteAwsCloudAccountAccepted, *DeleteAwsCloudAccountNoContent, error)
 
-	DeleteAzureCloudAccount(params *DeleteAzureCloudAccountParams, opts ...ClientOption) (*DeleteAzureCloudAccountNoContent, error)
+	DeleteAzureCloudAccount(params *DeleteAzureCloudAccountParams, opts ...ClientOption) (*DeleteAzureCloudAccountAccepted, *DeleteAzureCloudAccountNoContent, error)
 
-	DeleteCloudAccount(params *DeleteCloudAccountParams, opts ...ClientOption) (*DeleteCloudAccountNoContent, error)
+	DeleteCloudAccount(params *DeleteCloudAccountParams, opts ...ClientOption) (*DeleteCloudAccountAccepted, error)
 
-	DeleteCloudAccountNsxT(params *DeleteCloudAccountNsxTParams, opts ...ClientOption) (*DeleteCloudAccountNsxTNoContent, error)
+	DeleteCloudAccountNsxT(params *DeleteCloudAccountNsxTParams, opts ...ClientOption) (*DeleteCloudAccountNsxTAccepted, *DeleteCloudAccountNsxTNoContent, error)
 
-	DeleteCloudAccountNsxV(params *DeleteCloudAccountNsxVParams, opts ...ClientOption) (*DeleteCloudAccountNsxVNoContent, error)
+	DeleteCloudAccountNsxV(params *DeleteCloudAccountNsxVParams, opts ...ClientOption) (*DeleteCloudAccountNsxVAccepted, *DeleteCloudAccountNsxVNoContent, error)
 
-	DeleteGcpCloudAccount(params *DeleteGcpCloudAccountParams, opts ...ClientOption) (*DeleteGcpCloudAccountNoContent, error)
+	DeleteGcpCloudAccount(params *DeleteGcpCloudAccountParams, opts ...ClientOption) (*DeleteGcpCloudAccountAccepted, *DeleteGcpCloudAccountNoContent, error)
 
-	DeleteVSphereCloudAccount(params *DeleteVSphereCloudAccountParams, opts ...ClientOption) (*DeleteVSphereCloudAccountNoContent, error)
+	DeleteVSphereCloudAccount(params *DeleteVSphereCloudAccountParams, opts ...ClientOption) (*DeleteVSphereCloudAccountAccepted, *DeleteVSphereCloudAccountNoContent, error)
 
-	DeleteVcfCloudAccount(params *DeleteVcfCloudAccountParams, opts ...ClientOption) (*DeleteVcfCloudAccountNoContent, error)
+	DeleteVcfCloudAccount(params *DeleteVcfCloudAccountParams, opts ...ClientOption) (*DeleteVcfCloudAccountAccepted, *DeleteVcfCloudAccountNoContent, error)
 
-	DeleteVmcCloudAccount(params *DeleteVmcCloudAccountParams, opts ...ClientOption) (*DeleteVmcCloudAccountNoContent, error)
+	DeleteVmcCloudAccount(params *DeleteVmcCloudAccountParams, opts ...ClientOption) (*DeleteVmcCloudAccountAccepted, *DeleteVmcCloudAccountNoContent, error)
 
-	EnumerateAwsRegions(params *EnumerateAwsRegionsParams, opts ...ClientOption) (*EnumerateAwsRegionsOK, error)
+	EnumerateAwsRegionsAsync(params *EnumerateAwsRegionsAsyncParams, opts ...ClientOption) (*EnumerateAwsRegionsAsyncAccepted, error)
 
-	EnumerateAzureRegions(params *EnumerateAzureRegionsParams, opts ...ClientOption) (*EnumerateAzureRegionsOK, error)
+	EnumerateAzureRegionsAsync(params *EnumerateAzureRegionsAsyncParams, opts ...ClientOption) (*EnumerateAzureRegionsAsyncAccepted, error)
 
-	EnumerateGcpRegions(params *EnumerateGcpRegionsParams, opts ...ClientOption) (*EnumerateGcpRegionsOK, error)
+	EnumerateGcpRegionsAsync(params *EnumerateGcpRegionsAsyncParams, opts ...ClientOption) (*EnumerateGcpRegionsAsyncAccepted, error)
 
-	EnumeratePrivateImages(params *EnumeratePrivateImagesParams, opts ...ClientOption) error
+	EnumeratePrivateImages(params *EnumeratePrivateImagesParams, opts ...ClientOption) (*EnumeratePrivateImagesAccepted, error)
 
-	EnumeratePrivateImagesAWS(params *EnumeratePrivateImagesAWSParams, opts ...ClientOption) error
+	EnumeratePrivateImagesAWS(params *EnumeratePrivateImagesAWSParams, opts ...ClientOption) (*EnumeratePrivateImagesAWSAccepted, error)
 
-	EnumeratePrivateImagesAzure(params *EnumeratePrivateImagesAzureParams, opts ...ClientOption) error
+	EnumeratePrivateImagesAzure(params *EnumeratePrivateImagesAzureParams, opts ...ClientOption) (*EnumeratePrivateImagesAzureAccepted, error)
 
-	EnumeratePrivateImagesGcp(params *EnumeratePrivateImagesGcpParams, opts ...ClientOption) error
+	EnumeratePrivateImagesGcp(params *EnumeratePrivateImagesGcpParams, opts ...ClientOption) (*EnumeratePrivateImagesGcpAccepted, error)
 
-	EnumeratePrivateImagesVCF(params *EnumeratePrivateImagesVCFParams, opts ...ClientOption) error
+	EnumeratePrivateImagesVCF(params *EnumeratePrivateImagesVCFParams, opts ...ClientOption) (*EnumeratePrivateImagesVCFAccepted, error)
 
-	EnumeratePrivateImagesVMC(params *EnumeratePrivateImagesVMCParams, opts ...ClientOption) error
+	EnumeratePrivateImagesVMC(params *EnumeratePrivateImagesVMCParams, opts ...ClientOption) (*EnumeratePrivateImagesVMCAccepted, error)
 
-	EnumeratePrivateImagesVSphere(params *EnumeratePrivateImagesVSphereParams, opts ...ClientOption) error
+	EnumeratePrivateImagesVSphere(params *EnumeratePrivateImagesVSphereParams, opts ...ClientOption) (*EnumeratePrivateImagesVSphereAccepted, error)
 
-	EnumerateRegions(params *EnumerateRegionsParams, opts ...ClientOption) (*EnumerateRegionsOK, error)
+	EnumerateRegionsAsync(params *EnumerateRegionsAsyncParams, opts ...ClientOption) (*EnumerateRegionsAsyncAccepted, error)
 
-	EnumerateVSphereRegions(params *EnumerateVSphereRegionsParams, opts ...ClientOption) (*EnumerateVSphereRegionsOK, error)
+	EnumerateVSphereRegionsAsync(params *EnumerateVSphereRegionsAsyncParams, opts ...ClientOption) (*EnumerateVSphereRegionsAsyncAccepted, error)
 
-	EnumerateVcfRegions(params *EnumerateVcfRegionsParams, opts ...ClientOption) (*EnumerateVcfRegionsOK, error)
+	EnumerateVcfRegionsAsync(params *EnumerateVcfRegionsAsyncParams, opts ...ClientOption) (*EnumerateVcfRegionsAsyncAccepted, error)
 
-	EnumerateVmcRegions(params *EnumerateVmcRegionsParams, opts ...ClientOption) (*EnumerateVmcRegionsOK, error)
+	EnumerateVmcRegionsAsync(params *EnumerateVmcRegionsAsyncParams, opts ...ClientOption) (*EnumerateVmcRegionsAsyncAccepted, error)
 
 	GetAwsCloudAccount(params *GetAwsCloudAccountParams, opts ...ClientOption) (*GetAwsCloudAccountOK, error)
 
@@ -118,6 +118,8 @@ type ClientService interface {
 
 	GetNsxVCloudAccounts(params *GetNsxVCloudAccountsParams, opts ...ClientOption) (*GetNsxVCloudAccountsOK, error)
 
+	GetRegionEnumerationResult(params *GetRegionEnumerationResultParams, opts ...ClientOption) (*GetRegionEnumerationResultOK, error)
+
 	GetVSphereCloudAccount(params *GetVSphereCloudAccountParams, opts ...ClientOption) (*GetVSphereCloudAccountOK, error)
 
 	GetVSphereCloudAccounts(params *GetVSphereCloudAccountsParams, opts ...ClientOption) (*GetVSphereCloudAccountsOK, error)
@@ -130,46 +132,46 @@ type ClientService interface {
 
 	GetVmcCloudAccounts(params *GetVmcCloudAccountsParams, opts ...ClientOption) (*GetVmcCloudAccountsOK, error)
 
-	UpdateAwsCloudAccount(params *UpdateAwsCloudAccountParams, opts ...ClientOption) (*UpdateAwsCloudAccountOK, error)
+	UpdateAWSCloudAccountAsync(params *UpdateAWSCloudAccountAsyncParams, opts ...ClientOption) (*UpdateAWSCloudAccountAsyncAccepted, error)
 
-	UpdateAzureCloudAccount(params *UpdateAzureCloudAccountParams, opts ...ClientOption) (*UpdateAzureCloudAccountOK, error)
+	UpdateAzureCloudAccountAsync(params *UpdateAzureCloudAccountAsyncParams, opts ...ClientOption) (*UpdateAzureCloudAccountAsyncAccepted, error)
 
-	UpdateCloudAccount(params *UpdateCloudAccountParams, opts ...ClientOption) (*UpdateCloudAccountOK, error)
+	UpdateCloudAccountAsync(params *UpdateCloudAccountAsyncParams, opts ...ClientOption) (*UpdateCloudAccountAsyncAccepted, error)
 
-	UpdateGcpCloudAccount(params *UpdateGcpCloudAccountParams, opts ...ClientOption) (*UpdateGcpCloudAccountOK, error)
+	UpdateGcpCloudAccountAsync(params *UpdateGcpCloudAccountAsyncParams, opts ...ClientOption) (*UpdateGcpCloudAccountAsyncAccepted, error)
 
-	UpdateNsxTCloudAccount(params *UpdateNsxTCloudAccountParams, opts ...ClientOption) (*UpdateNsxTCloudAccountOK, error)
+	UpdateNsxTCloudAccountAsync(params *UpdateNsxTCloudAccountAsyncParams, opts ...ClientOption) (*UpdateNsxTCloudAccountAsyncAccepted, error)
 
-	UpdateNsxVCloudAccount(params *UpdateNsxVCloudAccountParams, opts ...ClientOption) (*UpdateNsxVCloudAccountOK, error)
+	UpdateNsxVCloudAccountAsync(params *UpdateNsxVCloudAccountAsyncParams, opts ...ClientOption) (*UpdateNsxVCloudAccountAsyncAccepted, error)
 
-	UpdateVSphereCloudAccount(params *UpdateVSphereCloudAccountParams, opts ...ClientOption) (*UpdateVSphereCloudAccountOK, error)
+	UpdateVMCCloudAccountAsync(params *UpdateVMCCloudAccountAsyncParams, opts ...ClientOption) (*UpdateVMCCloudAccountAsyncAccepted, error)
 
-	UpdateVcfCloudAccount(params *UpdateVcfCloudAccountParams, opts ...ClientOption) (*UpdateVcfCloudAccountOK, error)
+	UpdateVSphereCloudAccountAsync(params *UpdateVSphereCloudAccountAsyncParams, opts ...ClientOption) (*UpdateVSphereCloudAccountAsyncAccepted, error)
 
-	UpdateVmcCloudAccount(params *UpdateVmcCloudAccountParams, opts ...ClientOption) (*UpdateVmcCloudAccountOK, error)
+	UpdateVcfCloudAccountAsync(params *UpdateVcfCloudAccountAsyncParams, opts ...ClientOption) (*UpdateVcfCloudAccountAsyncAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  CreateAwsCloudAccount creates an a w s cloud account
+  CreateAwsCloudAccountAsync creates a cloud account
 
-  Create an AWS cloud account in the current organization
+  Create a cloud account in the current organization
 */
-func (a *Client) CreateAwsCloudAccount(params *CreateAwsCloudAccountParams, opts ...ClientOption) (*CreateAwsCloudAccountCreated, error) {
+func (a *Client) CreateAwsCloudAccountAsync(params *CreateAwsCloudAccountAsyncParams, opts ...ClientOption) (*CreateAwsCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateAwsCloudAccountParams()
+		params = NewCreateAwsCloudAccountAsyncParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createAwsCloudAccount",
+		ID:                 "createAwsCloudAccountAsync",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-aws",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateAwsCloudAccountReader{formats: a.formats},
+		Reader:             &CreateAwsCloudAccountAsyncReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -181,35 +183,35 @@ func (a *Client) CreateAwsCloudAccount(params *CreateAwsCloudAccountParams, opts
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateAwsCloudAccountCreated)
+	success, ok := result.(*CreateAwsCloudAccountAsyncAccepted)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for createAwsCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for createAwsCloudAccountAsync: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  CreateAzureCloudAccount creates an azure cloud account
+  CreateAzureCloudAccountAsync creates a cloud account
 
-  Create an Azure cloud account in the current organization
+  Create a cloud account in the current organization
 */
-func (a *Client) CreateAzureCloudAccount(params *CreateAzureCloudAccountParams, opts ...ClientOption) (*CreateAzureCloudAccountCreated, error) {
+func (a *Client) CreateAzureCloudAccountAsync(params *CreateAzureCloudAccountAsyncParams, opts ...ClientOption) (*CreateAzureCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateAzureCloudAccountParams()
+		params = NewCreateAzureCloudAccountAsyncParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createAzureCloudAccount",
+		ID:                 "createAzureCloudAccountAsync",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-azure",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateAzureCloudAccountReader{formats: a.formats},
+		Reader:             &CreateAzureCloudAccountAsyncReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -221,35 +223,35 @@ func (a *Client) CreateAzureCloudAccount(params *CreateAzureCloudAccountParams, 
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateAzureCloudAccountCreated)
+	success, ok := result.(*CreateAzureCloudAccountAsyncAccepted)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for createAzureCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for createAzureCloudAccountAsync: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  CreateCloudAccount creates a cloud account
+  CreateCloudAccountAsync creates a cloud account
 
   Create a cloud account in the current organization
 */
-func (a *Client) CreateCloudAccount(params *CreateCloudAccountParams, opts ...ClientOption) (*CreateCloudAccountCreated, error) {
+func (a *Client) CreateCloudAccountAsync(params *CreateCloudAccountAsyncParams, opts ...ClientOption) (*CreateCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateCloudAccountParams()
+		params = NewCreateCloudAccountAsyncParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createCloudAccount",
+		ID:                 "createCloudAccountAsync",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateCloudAccountReader{formats: a.formats},
+		Reader:             &CreateCloudAccountAsyncReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -261,35 +263,35 @@ func (a *Client) CreateCloudAccount(params *CreateCloudAccountParams, opts ...Cl
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateCloudAccountCreated)
+	success, ok := result.(*CreateCloudAccountAsyncAccepted)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for createCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for createCloudAccountAsync: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  CreateGcpCloudAccount creates an g c p cloud account
+  CreateGcpCloudAccountAsync creates a cloud account
 
-  Create an GCP cloud account in the current organization
+  Create a cloud account in the current organization
 */
-func (a *Client) CreateGcpCloudAccount(params *CreateGcpCloudAccountParams, opts ...ClientOption) (*CreateGcpCloudAccountCreated, error) {
+func (a *Client) CreateGcpCloudAccountAsync(params *CreateGcpCloudAccountAsyncParams, opts ...ClientOption) (*CreateGcpCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateGcpCloudAccountParams()
+		params = NewCreateGcpCloudAccountAsyncParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createGcpCloudAccount",
+		ID:                 "createGcpCloudAccountAsync",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-gcp",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateGcpCloudAccountReader{formats: a.formats},
+		Reader:             &CreateGcpCloudAccountAsyncReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -301,35 +303,35 @@ func (a *Client) CreateGcpCloudAccount(params *CreateGcpCloudAccountParams, opts
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateGcpCloudAccountCreated)
+	success, ok := result.(*CreateGcpCloudAccountAsyncAccepted)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for createGcpCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for createGcpCloudAccountAsync: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  CreateNsxTCloudAccount creates a n s x t cloud account
+  CreateNsxTCloudAccountAsync creates a cloud account
 
-  Create a NSX-T cloud account in the current organization
+  Create a cloud account in the current organization
 */
-func (a *Client) CreateNsxTCloudAccount(params *CreateNsxTCloudAccountParams, opts ...ClientOption) (*CreateNsxTCloudAccountCreated, error) {
+func (a *Client) CreateNsxTCloudAccountAsync(params *CreateNsxTCloudAccountAsyncParams, opts ...ClientOption) (*CreateNsxTCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateNsxTCloudAccountParams()
+		params = NewCreateNsxTCloudAccountAsyncParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createNsxTCloudAccount",
+		ID:                 "createNsxTCloudAccountAsync",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-nsx-t",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateNsxTCloudAccountReader{formats: a.formats},
+		Reader:             &CreateNsxTCloudAccountAsyncReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -341,35 +343,35 @@ func (a *Client) CreateNsxTCloudAccount(params *CreateNsxTCloudAccountParams, op
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateNsxTCloudAccountCreated)
+	success, ok := result.(*CreateNsxTCloudAccountAsyncAccepted)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for createNsxTCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for createNsxTCloudAccountAsync: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  CreateNsxVCloudAccount creates a n s x v cloud account
+  CreateNsxVCloudAccountAsync creates a cloud account
 
-  Create a NSX-V cloud account within the current organization
+  Create a cloud account in the current organization
 */
-func (a *Client) CreateNsxVCloudAccount(params *CreateNsxVCloudAccountParams, opts ...ClientOption) (*CreateNsxVCloudAccountCreated, error) {
+func (a *Client) CreateNsxVCloudAccountAsync(params *CreateNsxVCloudAccountAsyncParams, opts ...ClientOption) (*CreateNsxVCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateNsxVCloudAccountParams()
+		params = NewCreateNsxVCloudAccountAsyncParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createNsxVCloudAccount",
+		ID:                 "createNsxVCloudAccountAsync",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-nsx-v",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateNsxVCloudAccountReader{formats: a.formats},
+		Reader:             &CreateNsxVCloudAccountAsyncReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -381,35 +383,35 @@ func (a *Client) CreateNsxVCloudAccount(params *CreateNsxVCloudAccountParams, op
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateNsxVCloudAccountCreated)
+	success, ok := result.(*CreateNsxVCloudAccountAsyncAccepted)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for createNsxVCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for createNsxVCloudAccountAsync: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  CreateVSphereCloudAccount creates a v sphere cloud account
+  CreateVSphereCloudAccountAsync creates a cloud account
 
-  Create a vSphere cloud account within the current organization
+  Create a cloud account in the current organization
 */
-func (a *Client) CreateVSphereCloudAccount(params *CreateVSphereCloudAccountParams, opts ...ClientOption) (*CreateVSphereCloudAccountCreated, error) {
+func (a *Client) CreateVSphereCloudAccountAsync(params *CreateVSphereCloudAccountAsyncParams, opts ...ClientOption) (*CreateVSphereCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateVSphereCloudAccountParams()
+		params = NewCreateVSphereCloudAccountAsyncParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createVSphereCloudAccount",
+		ID:                 "createVSphereCloudAccountAsync",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-vsphere",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateVSphereCloudAccountReader{formats: a.formats},
+		Reader:             &CreateVSphereCloudAccountAsyncReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -421,35 +423,35 @@ func (a *Client) CreateVSphereCloudAccount(params *CreateVSphereCloudAccountPara
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateVSphereCloudAccountCreated)
+	success, ok := result.(*CreateVSphereCloudAccountAsyncAccepted)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for createVSphereCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for createVSphereCloudAccountAsync: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  CreateVcfCloudAccount creates an v c f cloud account
+  CreateVcfCloudAccountAsync creates a cloud account
 
-  Create an VCF cloud account in the current organization
+  Create a cloud account in the current organization
 */
-func (a *Client) CreateVcfCloudAccount(params *CreateVcfCloudAccountParams, opts ...ClientOption) (*CreateVcfCloudAccountCreated, error) {
+func (a *Client) CreateVcfCloudAccountAsync(params *CreateVcfCloudAccountAsyncParams, opts ...ClientOption) (*CreateVcfCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateVcfCloudAccountParams()
+		params = NewCreateVcfCloudAccountAsyncParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createVcfCloudAccount",
+		ID:                 "createVcfCloudAccountAsync",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-vcf",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateVcfCloudAccountReader{formats: a.formats},
+		Reader:             &CreateVcfCloudAccountAsyncReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -461,35 +463,35 @@ func (a *Client) CreateVcfCloudAccount(params *CreateVcfCloudAccountParams, opts
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateVcfCloudAccountCreated)
+	success, ok := result.(*CreateVcfCloudAccountAsyncAccepted)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for createVcfCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for createVcfCloudAccountAsync: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  CreateVmcCloudAccount creates an VM c cloud account
+  CreateVmcCloudAccountAsync creates a cloud account
 
-  Create an VMC cloud account in the current organization
+  Create a cloud account in the current organization
 */
-func (a *Client) CreateVmcCloudAccount(params *CreateVmcCloudAccountParams, opts ...ClientOption) (*CreateVmcCloudAccountCreated, error) {
+func (a *Client) CreateVmcCloudAccountAsync(params *CreateVmcCloudAccountAsyncParams, opts ...ClientOption) (*CreateVmcCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateVmcCloudAccountParams()
+		params = NewCreateVmcCloudAccountAsyncParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createVmcCloudAccount",
+		ID:                 "createVmcCloudAccountAsync",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-vmc",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateVmcCloudAccountReader{formats: a.formats},
+		Reader:             &CreateVmcCloudAccountAsyncReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -501,13 +503,13 @@ func (a *Client) CreateVmcCloudAccount(params *CreateVmcCloudAccountParams, opts
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateVmcCloudAccountCreated)
+	success, ok := result.(*CreateVmcCloudAccountAsyncAccepted)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for createVmcCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for createVmcCloudAccountAsync: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -516,7 +518,7 @@ func (a *Client) CreateVmcCloudAccount(params *CreateVmcCloudAccountParams, opts
 
   Delete an AWS cloud account with a given id
 */
-func (a *Client) DeleteAwsCloudAccount(params *DeleteAwsCloudAccountParams, opts ...ClientOption) (*DeleteAwsCloudAccountNoContent, error) {
+func (a *Client) DeleteAwsCloudAccount(params *DeleteAwsCloudAccountParams, opts ...ClientOption) (*DeleteAwsCloudAccountAccepted, *DeleteAwsCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteAwsCloudAccountParams()
@@ -539,15 +541,16 @@ func (a *Client) DeleteAwsCloudAccount(params *DeleteAwsCloudAccountParams, opts
 
 	result, err := a.transport.Submit(op)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	success, ok := result.(*DeleteAwsCloudAccountNoContent)
-	if ok {
-		return success, nil
+	switch value := result.(type) {
+	case *DeleteAwsCloudAccountAccepted:
+		return value, nil, nil
+	case *DeleteAwsCloudAccountNoContent:
+		return nil, value, nil
 	}
-	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteAwsCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for cloud_account: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -556,7 +559,7 @@ func (a *Client) DeleteAwsCloudAccount(params *DeleteAwsCloudAccountParams, opts
 
   Delete an Azure Cloud Account with a given id
 */
-func (a *Client) DeleteAzureCloudAccount(params *DeleteAzureCloudAccountParams, opts ...ClientOption) (*DeleteAzureCloudAccountNoContent, error) {
+func (a *Client) DeleteAzureCloudAccount(params *DeleteAzureCloudAccountParams, opts ...ClientOption) (*DeleteAzureCloudAccountAccepted, *DeleteAzureCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteAzureCloudAccountParams()
@@ -579,15 +582,16 @@ func (a *Client) DeleteAzureCloudAccount(params *DeleteAzureCloudAccountParams, 
 
 	result, err := a.transport.Submit(op)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	success, ok := result.(*DeleteAzureCloudAccountNoContent)
-	if ok {
-		return success, nil
+	switch value := result.(type) {
+	case *DeleteAzureCloudAccountAccepted:
+		return value, nil, nil
+	case *DeleteAzureCloudAccountNoContent:
+		return nil, value, nil
 	}
-	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteAzureCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for cloud_account: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -596,7 +600,7 @@ func (a *Client) DeleteAzureCloudAccount(params *DeleteAzureCloudAccountParams, 
 
   Delete a cloud account with a given id
 */
-func (a *Client) DeleteCloudAccount(params *DeleteCloudAccountParams, opts ...ClientOption) (*DeleteCloudAccountNoContent, error) {
+func (a *Client) DeleteCloudAccount(params *DeleteCloudAccountParams, opts ...ClientOption) (*DeleteCloudAccountAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteCloudAccountParams()
@@ -621,7 +625,7 @@ func (a *Client) DeleteCloudAccount(params *DeleteCloudAccountParams, opts ...Cl
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteCloudAccountNoContent)
+	success, ok := result.(*DeleteCloudAccountAccepted)
 	if ok {
 		return success, nil
 	}
@@ -636,7 +640,7 @@ func (a *Client) DeleteCloudAccount(params *DeleteCloudAccountParams, opts ...Cl
 
   Delete a NSX-T cloud account with a given id
 */
-func (a *Client) DeleteCloudAccountNsxT(params *DeleteCloudAccountNsxTParams, opts ...ClientOption) (*DeleteCloudAccountNsxTNoContent, error) {
+func (a *Client) DeleteCloudAccountNsxT(params *DeleteCloudAccountNsxTParams, opts ...ClientOption) (*DeleteCloudAccountNsxTAccepted, *DeleteCloudAccountNsxTNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteCloudAccountNsxTParams()
@@ -659,15 +663,16 @@ func (a *Client) DeleteCloudAccountNsxT(params *DeleteCloudAccountNsxTParams, op
 
 	result, err := a.transport.Submit(op)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	success, ok := result.(*DeleteCloudAccountNsxTNoContent)
-	if ok {
-		return success, nil
+	switch value := result.(type) {
+	case *DeleteCloudAccountNsxTAccepted:
+		return value, nil, nil
+	case *DeleteCloudAccountNsxTNoContent:
+		return nil, value, nil
 	}
-	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteCloudAccountNsx-T: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for cloud_account: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -676,7 +681,7 @@ func (a *Client) DeleteCloudAccountNsxT(params *DeleteCloudAccountNsxTParams, op
 
   Delete a NSV-V cloud account with a given id
 */
-func (a *Client) DeleteCloudAccountNsxV(params *DeleteCloudAccountNsxVParams, opts ...ClientOption) (*DeleteCloudAccountNsxVNoContent, error) {
+func (a *Client) DeleteCloudAccountNsxV(params *DeleteCloudAccountNsxVParams, opts ...ClientOption) (*DeleteCloudAccountNsxVAccepted, *DeleteCloudAccountNsxVNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteCloudAccountNsxVParams()
@@ -699,15 +704,16 @@ func (a *Client) DeleteCloudAccountNsxV(params *DeleteCloudAccountNsxVParams, op
 
 	result, err := a.transport.Submit(op)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	success, ok := result.(*DeleteCloudAccountNsxVNoContent)
-	if ok {
-		return success, nil
+	switch value := result.(type) {
+	case *DeleteCloudAccountNsxVAccepted:
+		return value, nil, nil
+	case *DeleteCloudAccountNsxVNoContent:
+		return nil, value, nil
 	}
-	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteCloudAccountNsx-V: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for cloud_account: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -716,7 +722,7 @@ func (a *Client) DeleteCloudAccountNsxV(params *DeleteCloudAccountNsxVParams, op
 
   Delete an GCP cloud account with a given id
 */
-func (a *Client) DeleteGcpCloudAccount(params *DeleteGcpCloudAccountParams, opts ...ClientOption) (*DeleteGcpCloudAccountNoContent, error) {
+func (a *Client) DeleteGcpCloudAccount(params *DeleteGcpCloudAccountParams, opts ...ClientOption) (*DeleteGcpCloudAccountAccepted, *DeleteGcpCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteGcpCloudAccountParams()
@@ -739,15 +745,16 @@ func (a *Client) DeleteGcpCloudAccount(params *DeleteGcpCloudAccountParams, opts
 
 	result, err := a.transport.Submit(op)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	success, ok := result.(*DeleteGcpCloudAccountNoContent)
-	if ok {
-		return success, nil
+	switch value := result.(type) {
+	case *DeleteGcpCloudAccountAccepted:
+		return value, nil, nil
+	case *DeleteGcpCloudAccountNoContent:
+		return nil, value, nil
 	}
-	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteGcpCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for cloud_account: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -756,7 +763,7 @@ func (a *Client) DeleteGcpCloudAccount(params *DeleteGcpCloudAccountParams, opts
 
   Delete a vSphere Cloud Account with a given id
 */
-func (a *Client) DeleteVSphereCloudAccount(params *DeleteVSphereCloudAccountParams, opts ...ClientOption) (*DeleteVSphereCloudAccountNoContent, error) {
+func (a *Client) DeleteVSphereCloudAccount(params *DeleteVSphereCloudAccountParams, opts ...ClientOption) (*DeleteVSphereCloudAccountAccepted, *DeleteVSphereCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteVSphereCloudAccountParams()
@@ -779,15 +786,16 @@ func (a *Client) DeleteVSphereCloudAccount(params *DeleteVSphereCloudAccountPara
 
 	result, err := a.transport.Submit(op)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	success, ok := result.(*DeleteVSphereCloudAccountNoContent)
-	if ok {
-		return success, nil
+	switch value := result.(type) {
+	case *DeleteVSphereCloudAccountAccepted:
+		return value, nil, nil
+	case *DeleteVSphereCloudAccountNoContent:
+		return nil, value, nil
 	}
-	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteVSphereCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for cloud_account: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -796,7 +804,7 @@ func (a *Client) DeleteVSphereCloudAccount(params *DeleteVSphereCloudAccountPara
 
   Delete an VCF cloud account with a given id
 */
-func (a *Client) DeleteVcfCloudAccount(params *DeleteVcfCloudAccountParams, opts ...ClientOption) (*DeleteVcfCloudAccountNoContent, error) {
+func (a *Client) DeleteVcfCloudAccount(params *DeleteVcfCloudAccountParams, opts ...ClientOption) (*DeleteVcfCloudAccountAccepted, *DeleteVcfCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteVcfCloudAccountParams()
@@ -819,15 +827,16 @@ func (a *Client) DeleteVcfCloudAccount(params *DeleteVcfCloudAccountParams, opts
 
 	result, err := a.transport.Submit(op)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	success, ok := result.(*DeleteVcfCloudAccountNoContent)
-	if ok {
-		return success, nil
+	switch value := result.(type) {
+	case *DeleteVcfCloudAccountAccepted:
+		return value, nil, nil
+	case *DeleteVcfCloudAccountNoContent:
+		return nil, value, nil
 	}
-	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteVcfCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for cloud_account: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -836,7 +845,7 @@ func (a *Client) DeleteVcfCloudAccount(params *DeleteVcfCloudAccountParams, opts
 
   Delete an VMC cloud account with a given id
 */
-func (a *Client) DeleteVmcCloudAccount(params *DeleteVmcCloudAccountParams, opts ...ClientOption) (*DeleteVmcCloudAccountNoContent, error) {
+func (a *Client) DeleteVmcCloudAccount(params *DeleteVmcCloudAccountParams, opts ...ClientOption) (*DeleteVmcCloudAccountAccepted, *DeleteVmcCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteVmcCloudAccountParams()
@@ -859,37 +868,38 @@ func (a *Client) DeleteVmcCloudAccount(params *DeleteVmcCloudAccountParams, opts
 
 	result, err := a.transport.Submit(op)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	success, ok := result.(*DeleteVmcCloudAccountNoContent)
-	if ok {
-		return success, nil
+	switch value := result.(type) {
+	case *DeleteVmcCloudAccountAccepted:
+		return value, nil, nil
+	case *DeleteVmcCloudAccountNoContent:
+		return nil, value, nil
 	}
-	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteVmcCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for cloud_account: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  EnumerateAwsRegions gets the available regions for specified a w s cloud account
+  EnumerateAwsRegionsAsync gets the available regions for specified a w s cloud account
 
   Get the available regions for specified AWS cloud account
 */
-func (a *Client) EnumerateAwsRegions(params *EnumerateAwsRegionsParams, opts ...ClientOption) (*EnumerateAwsRegionsOK, error) {
+func (a *Client) EnumerateAwsRegionsAsync(params *EnumerateAwsRegionsAsyncParams, opts ...ClientOption) (*EnumerateAwsRegionsAsyncAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewEnumerateAwsRegionsParams()
+		params = NewEnumerateAwsRegionsAsyncParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "enumerateAwsRegions",
+		ID:                 "enumerateAwsRegionsAsync",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-aws/region-enumeration",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &EnumerateAwsRegionsReader{formats: a.formats},
+		Reader:             &EnumerateAwsRegionsAsyncReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -901,35 +911,35 @@ func (a *Client) EnumerateAwsRegions(params *EnumerateAwsRegionsParams, opts ...
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*EnumerateAwsRegionsOK)
+	success, ok := result.(*EnumerateAwsRegionsAsyncAccepted)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for enumerateAwsRegions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for enumerateAwsRegionsAsync: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  EnumerateAzureRegions gets the available regions for specified azure cloud account
+  EnumerateAzureRegionsAsync gets the available regions for specified azure cloud account
 
   Get the available regions for specified Azure cloud account
 */
-func (a *Client) EnumerateAzureRegions(params *EnumerateAzureRegionsParams, opts ...ClientOption) (*EnumerateAzureRegionsOK, error) {
+func (a *Client) EnumerateAzureRegionsAsync(params *EnumerateAzureRegionsAsyncParams, opts ...ClientOption) (*EnumerateAzureRegionsAsyncAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewEnumerateAzureRegionsParams()
+		params = NewEnumerateAzureRegionsAsyncParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "enumerateAzureRegions",
+		ID:                 "enumerateAzureRegionsAsync",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-azure/region-enumeration",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &EnumerateAzureRegionsReader{formats: a.formats},
+		Reader:             &EnumerateAzureRegionsAsyncReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -941,35 +951,35 @@ func (a *Client) EnumerateAzureRegions(params *EnumerateAzureRegionsParams, opts
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*EnumerateAzureRegionsOK)
+	success, ok := result.(*EnumerateAzureRegionsAsyncAccepted)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for enumerateAzureRegions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for enumerateAzureRegionsAsync: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  EnumerateGcpRegions gets the available regions for specified g c p cloud account
+  EnumerateGcpRegionsAsync gets the available regions for specified g c p cloud account
 
   Get the available regions for specified GCP cloud account
 */
-func (a *Client) EnumerateGcpRegions(params *EnumerateGcpRegionsParams, opts ...ClientOption) (*EnumerateGcpRegionsOK, error) {
+func (a *Client) EnumerateGcpRegionsAsync(params *EnumerateGcpRegionsAsyncParams, opts ...ClientOption) (*EnumerateGcpRegionsAsyncAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewEnumerateGcpRegionsParams()
+		params = NewEnumerateGcpRegionsAsyncParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "enumerateGcpRegions",
+		ID:                 "enumerateGcpRegionsAsync",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-gcp/region-enumeration",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &EnumerateGcpRegionsReader{formats: a.formats},
+		Reader:             &EnumerateGcpRegionsAsyncReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -981,20 +991,20 @@ func (a *Client) EnumerateGcpRegions(params *EnumerateGcpRegionsParams, opts ...
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*EnumerateGcpRegionsOK)
+	success, ok := result.(*EnumerateGcpRegionsAsyncAccepted)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for enumerateGcpRegions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for enumerateGcpRegionsAsync: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
   EnumeratePrivateImages enumerates all private images for enabled regions of the specified cloud account
 */
-func (a *Client) EnumeratePrivateImages(params *EnumeratePrivateImagesParams, opts ...ClientOption) error {
+func (a *Client) EnumeratePrivateImages(params *EnumeratePrivateImagesParams, opts ...ClientOption) (*EnumeratePrivateImagesAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewEnumeratePrivateImagesParams()
@@ -1015,17 +1025,24 @@ func (a *Client) EnumeratePrivateImages(params *EnumeratePrivateImagesParams, op
 		opt(op)
 	}
 
-	_, err := a.transport.Submit(op)
+	result, err := a.transport.Submit(op)
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	success, ok := result.(*EnumeratePrivateImagesAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for enumeratePrivateImages: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
   EnumeratePrivateImagesAWS enumerates all private images for enabled regions of the specified a w s account
 */
-func (a *Client) EnumeratePrivateImagesAWS(params *EnumeratePrivateImagesAWSParams, opts ...ClientOption) error {
+func (a *Client) EnumeratePrivateImagesAWS(params *EnumeratePrivateImagesAWSParams, opts ...ClientOption) (*EnumeratePrivateImagesAWSAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewEnumeratePrivateImagesAWSParams()
@@ -1046,17 +1063,24 @@ func (a *Client) EnumeratePrivateImagesAWS(params *EnumeratePrivateImagesAWSPara
 		opt(op)
 	}
 
-	_, err := a.transport.Submit(op)
+	result, err := a.transport.Submit(op)
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	success, ok := result.(*EnumeratePrivateImagesAWSAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for enumeratePrivateImagesAWS: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
   EnumeratePrivateImagesAzure enumerates all private images for enabled regions of the specified azure account
 */
-func (a *Client) EnumeratePrivateImagesAzure(params *EnumeratePrivateImagesAzureParams, opts ...ClientOption) error {
+func (a *Client) EnumeratePrivateImagesAzure(params *EnumeratePrivateImagesAzureParams, opts ...ClientOption) (*EnumeratePrivateImagesAzureAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewEnumeratePrivateImagesAzureParams()
@@ -1077,17 +1101,24 @@ func (a *Client) EnumeratePrivateImagesAzure(params *EnumeratePrivateImagesAzure
 		opt(op)
 	}
 
-	_, err := a.transport.Submit(op)
+	result, err := a.transport.Submit(op)
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	success, ok := result.(*EnumeratePrivateImagesAzureAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for enumeratePrivateImagesAzure: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
   EnumeratePrivateImagesGcp enumerates all private images for enabled regions of the specified g c p account
 */
-func (a *Client) EnumeratePrivateImagesGcp(params *EnumeratePrivateImagesGcpParams, opts ...ClientOption) error {
+func (a *Client) EnumeratePrivateImagesGcp(params *EnumeratePrivateImagesGcpParams, opts ...ClientOption) (*EnumeratePrivateImagesGcpAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewEnumeratePrivateImagesGcpParams()
@@ -1108,17 +1139,24 @@ func (a *Client) EnumeratePrivateImagesGcp(params *EnumeratePrivateImagesGcpPara
 		opt(op)
 	}
 
-	_, err := a.transport.Submit(op)
+	result, err := a.transport.Submit(op)
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	success, ok := result.(*EnumeratePrivateImagesGcpAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for enumeratePrivateImagesGcp: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
   EnumeratePrivateImagesVCF enumerates all private images for enabled regions of the specified v c f account
 */
-func (a *Client) EnumeratePrivateImagesVCF(params *EnumeratePrivateImagesVCFParams, opts ...ClientOption) error {
+func (a *Client) EnumeratePrivateImagesVCF(params *EnumeratePrivateImagesVCFParams, opts ...ClientOption) (*EnumeratePrivateImagesVCFAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewEnumeratePrivateImagesVCFParams()
@@ -1139,17 +1177,24 @@ func (a *Client) EnumeratePrivateImagesVCF(params *EnumeratePrivateImagesVCFPara
 		opt(op)
 	}
 
-	_, err := a.transport.Submit(op)
+	result, err := a.transport.Submit(op)
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	success, ok := result.(*EnumeratePrivateImagesVCFAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for enumeratePrivateImagesVCF: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
   EnumeratePrivateImagesVMC enumerates all private images for enabled regions of the specified VM c account
 */
-func (a *Client) EnumeratePrivateImagesVMC(params *EnumeratePrivateImagesVMCParams, opts ...ClientOption) error {
+func (a *Client) EnumeratePrivateImagesVMC(params *EnumeratePrivateImagesVMCParams, opts ...ClientOption) (*EnumeratePrivateImagesVMCAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewEnumeratePrivateImagesVMCParams()
@@ -1170,17 +1215,24 @@ func (a *Client) EnumeratePrivateImagesVMC(params *EnumeratePrivateImagesVMCPara
 		opt(op)
 	}
 
-	_, err := a.transport.Submit(op)
+	result, err := a.transport.Submit(op)
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	success, ok := result.(*EnumeratePrivateImagesVMCAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for enumeratePrivateImagesVMC: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
   EnumeratePrivateImagesVSphere enumerates all private images for enabled regions of the specified v sphere account
 */
-func (a *Client) EnumeratePrivateImagesVSphere(params *EnumeratePrivateImagesVSphereParams, opts ...ClientOption) error {
+func (a *Client) EnumeratePrivateImagesVSphere(params *EnumeratePrivateImagesVSphereParams, opts ...ClientOption) (*EnumeratePrivateImagesVSphereAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewEnumeratePrivateImagesVSphereParams()
@@ -1201,32 +1253,39 @@ func (a *Client) EnumeratePrivateImagesVSphere(params *EnumeratePrivateImagesVSp
 		opt(op)
 	}
 
-	_, err := a.transport.Submit(op)
+	result, err := a.transport.Submit(op)
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	success, ok := result.(*EnumeratePrivateImagesVSphereAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for enumeratePrivateImagesVSphere: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-  EnumerateRegions gets the available regions for specified cloud account
+  EnumerateRegionsAsync gets the available regions for specified cloud account
 
   Get the available regions for specified cloud account
 */
-func (a *Client) EnumerateRegions(params *EnumerateRegionsParams, opts ...ClientOption) (*EnumerateRegionsOK, error) {
+func (a *Client) EnumerateRegionsAsync(params *EnumerateRegionsAsyncParams, opts ...ClientOption) (*EnumerateRegionsAsyncAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewEnumerateRegionsParams()
+		params = NewEnumerateRegionsAsyncParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "enumerateRegions",
+		ID:                 "enumerateRegionsAsync",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts/region-enumeration",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &EnumerateRegionsReader{formats: a.formats},
+		Reader:             &EnumerateRegionsAsyncReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -1238,35 +1297,35 @@ func (a *Client) EnumerateRegions(params *EnumerateRegionsParams, opts ...Client
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*EnumerateRegionsOK)
+	success, ok := result.(*EnumerateRegionsAsyncAccepted)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for enumerateRegions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for enumerateRegionsAsync: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  EnumerateVSphereRegions gets the available regions for specified v sphere cloud account
+  EnumerateVSphereRegionsAsync gets the available regions for specified v sphere cloud account
 
   Get the available regions for specified vSphere cloud account
 */
-func (a *Client) EnumerateVSphereRegions(params *EnumerateVSphereRegionsParams, opts ...ClientOption) (*EnumerateVSphereRegionsOK, error) {
+func (a *Client) EnumerateVSphereRegionsAsync(params *EnumerateVSphereRegionsAsyncParams, opts ...ClientOption) (*EnumerateVSphereRegionsAsyncAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewEnumerateVSphereRegionsParams()
+		params = NewEnumerateVSphereRegionsAsyncParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "enumerateVSphereRegions",
+		ID:                 "enumerateVSphereRegionsAsync",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-vsphere/region-enumeration",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &EnumerateVSphereRegionsReader{formats: a.formats},
+		Reader:             &EnumerateVSphereRegionsAsyncReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -1278,35 +1337,35 @@ func (a *Client) EnumerateVSphereRegions(params *EnumerateVSphereRegionsParams, 
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*EnumerateVSphereRegionsOK)
+	success, ok := result.(*EnumerateVSphereRegionsAsyncAccepted)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for enumerateVSphereRegions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for enumerateVSphereRegionsAsync: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  EnumerateVcfRegions gets the available regions for specified v c f cloud account
+  EnumerateVcfRegionsAsync gets the available regions for specified v c f cloud account
 
   Get the available regions for specified VCF cloud account
 */
-func (a *Client) EnumerateVcfRegions(params *EnumerateVcfRegionsParams, opts ...ClientOption) (*EnumerateVcfRegionsOK, error) {
+func (a *Client) EnumerateVcfRegionsAsync(params *EnumerateVcfRegionsAsyncParams, opts ...ClientOption) (*EnumerateVcfRegionsAsyncAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewEnumerateVcfRegionsParams()
+		params = NewEnumerateVcfRegionsAsyncParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "enumerateVcfRegions",
+		ID:                 "enumerateVcfRegionsAsync",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-vcf/region-enumeration",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &EnumerateVcfRegionsReader{formats: a.formats},
+		Reader:             &EnumerateVcfRegionsAsyncReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -1318,35 +1377,35 @@ func (a *Client) EnumerateVcfRegions(params *EnumerateVcfRegionsParams, opts ...
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*EnumerateVcfRegionsOK)
+	success, ok := result.(*EnumerateVcfRegionsAsyncAccepted)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for enumerateVcfRegions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for enumerateVcfRegionsAsync: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  EnumerateVmcRegions gets the available regions for specified VM c cloud account
+  EnumerateVmcRegionsAsync gets the available regions for specified VM c cloud account
 
   Get the available regions for specified VMC cloud account
 */
-func (a *Client) EnumerateVmcRegions(params *EnumerateVmcRegionsParams, opts ...ClientOption) (*EnumerateVmcRegionsOK, error) {
+func (a *Client) EnumerateVmcRegionsAsync(params *EnumerateVmcRegionsAsyncParams, opts ...ClientOption) (*EnumerateVmcRegionsAsyncAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewEnumerateVmcRegionsParams()
+		params = NewEnumerateVmcRegionsAsyncParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "enumerateVmcRegions",
+		ID:                 "enumerateVmcRegionsAsync",
 		Method:             "POST",
 		PathPattern:        "/iaas/api/cloud-accounts-vmc/region-enumeration",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &EnumerateVmcRegionsReader{formats: a.formats},
+		Reader:             &EnumerateVmcRegionsAsyncReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -1358,13 +1417,13 @@ func (a *Client) EnumerateVmcRegions(params *EnumerateVmcRegionsParams, opts ...
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*EnumerateVmcRegionsOK)
+	success, ok := result.(*EnumerateVmcRegionsAsyncAccepted)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for enumerateVmcRegions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for enumerateVmcRegionsAsync: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -1849,6 +1908,46 @@ func (a *Client) GetNsxVCloudAccounts(params *GetNsxVCloudAccountsParams, opts .
 }
 
 /*
+  GetRegionEnumerationResult gets region enumeration response
+
+  Get region enumeration response for a given id
+*/
+func (a *Client) GetRegionEnumerationResult(params *GetRegionEnumerationResultParams, opts ...ClientOption) (*GetRegionEnumerationResultOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetRegionEnumerationResultParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getRegionEnumerationResult",
+		Method:             "GET",
+		PathPattern:        "/iaas/api/cloud-accounts/region-enumeration/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetRegionEnumerationResultReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetRegionEnumerationResultOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getRegionEnumerationResult: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   GetVSphereCloudAccount gets an v sphere cloud account
 
   Get an vSphere cloud account with a given id
@@ -2089,24 +2188,24 @@ func (a *Client) GetVmcCloudAccounts(params *GetVmcCloudAccountsParams, opts ...
 }
 
 /*
-  UpdateAwsCloudAccount updates a w s cloud account
+  UpdateAWSCloudAccountAsync updates a w s cloud account
 
   Update AWS cloud account
 */
-func (a *Client) UpdateAwsCloudAccount(params *UpdateAwsCloudAccountParams, opts ...ClientOption) (*UpdateAwsCloudAccountOK, error) {
+func (a *Client) UpdateAWSCloudAccountAsync(params *UpdateAWSCloudAccountAsyncParams, opts ...ClientOption) (*UpdateAWSCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewUpdateAwsCloudAccountParams()
+		params = NewUpdateAWSCloudAccountAsyncParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "updateAwsCloudAccount",
+		ID:                 "updateAWSCloudAccountAsync",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/cloud-accounts-aws/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &UpdateAwsCloudAccountReader{formats: a.formats},
+		Reader:             &UpdateAWSCloudAccountAsyncReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -2118,35 +2217,35 @@ func (a *Client) UpdateAwsCloudAccount(params *UpdateAwsCloudAccountParams, opts
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*UpdateAwsCloudAccountOK)
+	success, ok := result.(*UpdateAWSCloudAccountAsyncAccepted)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateAwsCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for updateAWSCloudAccountAsync: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  UpdateAzureCloudAccount updates azure cloud account
+  UpdateAzureCloudAccountAsync updates azure cloud account
 
   Update Azure cloud account
 */
-func (a *Client) UpdateAzureCloudAccount(params *UpdateAzureCloudAccountParams, opts ...ClientOption) (*UpdateAzureCloudAccountOK, error) {
+func (a *Client) UpdateAzureCloudAccountAsync(params *UpdateAzureCloudAccountAsyncParams, opts ...ClientOption) (*UpdateAzureCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewUpdateAzureCloudAccountParams()
+		params = NewUpdateAzureCloudAccountAsyncParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "updateAzureCloudAccount",
+		ID:                 "updateAzureCloudAccountAsync",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/cloud-accounts-azure/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &UpdateAzureCloudAccountReader{formats: a.formats},
+		Reader:             &UpdateAzureCloudAccountAsyncReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -2158,35 +2257,35 @@ func (a *Client) UpdateAzureCloudAccount(params *UpdateAzureCloudAccountParams, 
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*UpdateAzureCloudAccountOK)
+	success, ok := result.(*UpdateAzureCloudAccountAsyncAccepted)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateAzureCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for updateAzureCloudAccountAsync: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  UpdateCloudAccount updates cloud account
+  UpdateCloudAccountAsync updates cloud account
 
   Update a single CloudAccount
 */
-func (a *Client) UpdateCloudAccount(params *UpdateCloudAccountParams, opts ...ClientOption) (*UpdateCloudAccountOK, error) {
+func (a *Client) UpdateCloudAccountAsync(params *UpdateCloudAccountAsyncParams, opts ...ClientOption) (*UpdateCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewUpdateCloudAccountParams()
+		params = NewUpdateCloudAccountAsyncParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "updateCloudAccount",
+		ID:                 "updateCloudAccountAsync",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/cloud-accounts/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &UpdateCloudAccountReader{formats: a.formats},
+		Reader:             &UpdateCloudAccountAsyncReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -2198,35 +2297,35 @@ func (a *Client) UpdateCloudAccount(params *UpdateCloudAccountParams, opts ...Cl
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*UpdateCloudAccountOK)
+	success, ok := result.(*UpdateCloudAccountAsyncAccepted)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for updateCloudAccountAsync: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  UpdateGcpCloudAccount updates g c p cloud account
+  UpdateGcpCloudAccountAsync updates g c p cloud account
 
   Update GCP cloud account
 */
-func (a *Client) UpdateGcpCloudAccount(params *UpdateGcpCloudAccountParams, opts ...ClientOption) (*UpdateGcpCloudAccountOK, error) {
+func (a *Client) UpdateGcpCloudAccountAsync(params *UpdateGcpCloudAccountAsyncParams, opts ...ClientOption) (*UpdateGcpCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewUpdateGcpCloudAccountParams()
+		params = NewUpdateGcpCloudAccountAsyncParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "updateGcpCloudAccount",
+		ID:                 "updateGcpCloudAccountAsync",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/cloud-accounts-gcp/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &UpdateGcpCloudAccountReader{formats: a.formats},
+		Reader:             &UpdateGcpCloudAccountAsyncReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -2238,35 +2337,35 @@ func (a *Client) UpdateGcpCloudAccount(params *UpdateGcpCloudAccountParams, opts
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*UpdateGcpCloudAccountOK)
+	success, ok := result.(*UpdateGcpCloudAccountAsyncAccepted)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateGcpCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for updateGcpCloudAccountAsync: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  UpdateNsxTCloudAccount updates n s x t cloud account
+  UpdateNsxTCloudAccountAsync updates n s x t cloud account
 
   Update NSX-T cloud account
 */
-func (a *Client) UpdateNsxTCloudAccount(params *UpdateNsxTCloudAccountParams, opts ...ClientOption) (*UpdateNsxTCloudAccountOK, error) {
+func (a *Client) UpdateNsxTCloudAccountAsync(params *UpdateNsxTCloudAccountAsyncParams, opts ...ClientOption) (*UpdateNsxTCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewUpdateNsxTCloudAccountParams()
+		params = NewUpdateNsxTCloudAccountAsyncParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "updateNsxTCloudAccount",
+		ID:                 "updateNsxTCloudAccountAsync",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/cloud-accounts-nsx-t/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &UpdateNsxTCloudAccountReader{formats: a.formats},
+		Reader:             &UpdateNsxTCloudAccountAsyncReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -2278,35 +2377,35 @@ func (a *Client) UpdateNsxTCloudAccount(params *UpdateNsxTCloudAccountParams, op
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*UpdateNsxTCloudAccountOK)
+	success, ok := result.(*UpdateNsxTCloudAccountAsyncAccepted)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateNsxTCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for updateNsxTCloudAccountAsync: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  UpdateNsxVCloudAccount updates n s x v cloud account
+  UpdateNsxVCloudAccountAsync updates n s x v cloud account
 
   Update NSX-V cloud account
 */
-func (a *Client) UpdateNsxVCloudAccount(params *UpdateNsxVCloudAccountParams, opts ...ClientOption) (*UpdateNsxVCloudAccountOK, error) {
+func (a *Client) UpdateNsxVCloudAccountAsync(params *UpdateNsxVCloudAccountAsyncParams, opts ...ClientOption) (*UpdateNsxVCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewUpdateNsxVCloudAccountParams()
+		params = NewUpdateNsxVCloudAccountAsyncParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "updateNsxVCloudAccount",
+		ID:                 "updateNsxVCloudAccountAsync",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/cloud-accounts-nsx-v/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &UpdateNsxVCloudAccountReader{formats: a.formats},
+		Reader:             &UpdateNsxVCloudAccountAsyncReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -2318,115 +2417,35 @@ func (a *Client) UpdateNsxVCloudAccount(params *UpdateNsxVCloudAccountParams, op
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*UpdateNsxVCloudAccountOK)
+	success, ok := result.(*UpdateNsxVCloudAccountAsyncAccepted)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateNsxVCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for updateNsxVCloudAccountAsync: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  UpdateVSphereCloudAccount updates v sphere cloud account
-
-  Update vSphere cloud account
-*/
-func (a *Client) UpdateVSphereCloudAccount(params *UpdateVSphereCloudAccountParams, opts ...ClientOption) (*UpdateVSphereCloudAccountOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewUpdateVSphereCloudAccountParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "updateVSphereCloudAccount",
-		Method:             "PATCH",
-		PathPattern:        "/iaas/api/cloud-accounts-vsphere/{id}",
-		ProducesMediaTypes: []string{"app/json", "application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &UpdateVSphereCloudAccountReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*UpdateVSphereCloudAccountOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateVSphereCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  UpdateVcfCloudAccount updates v c f cloud account
-
-  Update VCF cloud account
-*/
-func (a *Client) UpdateVcfCloudAccount(params *UpdateVcfCloudAccountParams, opts ...ClientOption) (*UpdateVcfCloudAccountOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewUpdateVcfCloudAccountParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "updateVcfCloudAccount",
-		Method:             "PATCH",
-		PathPattern:        "/iaas/api/cloud-accounts-vcf/{id}",
-		ProducesMediaTypes: []string{"app/json", "application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &UpdateVcfCloudAccountReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*UpdateVcfCloudAccountOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateVcfCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  UpdateVmcCloudAccount updates VM c cloud account
+  UpdateVMCCloudAccountAsync updates VM c cloud account
 
   Update VMC cloud account
 */
-func (a *Client) UpdateVmcCloudAccount(params *UpdateVmcCloudAccountParams, opts ...ClientOption) (*UpdateVmcCloudAccountOK, error) {
+func (a *Client) UpdateVMCCloudAccountAsync(params *UpdateVMCCloudAccountAsyncParams, opts ...ClientOption) (*UpdateVMCCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewUpdateVmcCloudAccountParams()
+		params = NewUpdateVMCCloudAccountAsyncParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "updateVmcCloudAccount",
+		ID:                 "updateVMCCloudAccountAsync",
 		Method:             "PATCH",
 		PathPattern:        "/iaas/api/cloud-accounts-vmc/{id}",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &UpdateVmcCloudAccountReader{formats: a.formats},
+		Reader:             &UpdateVMCCloudAccountAsyncReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -2438,13 +2457,93 @@ func (a *Client) UpdateVmcCloudAccount(params *UpdateVmcCloudAccountParams, opts
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*UpdateVmcCloudAccountOK)
+	success, ok := result.(*UpdateVMCCloudAccountAsyncAccepted)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateVmcCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for updateVMCCloudAccountAsync: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UpdateVSphereCloudAccountAsync updates v sphere cloud account
+
+  Update vSphere cloud account
+*/
+func (a *Client) UpdateVSphereCloudAccountAsync(params *UpdateVSphereCloudAccountAsyncParams, opts ...ClientOption) (*UpdateVSphereCloudAccountAsyncAccepted, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateVSphereCloudAccountAsyncParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "updateVSphereCloudAccountAsync",
+		Method:             "PATCH",
+		PathPattern:        "/iaas/api/cloud-accounts-vsphere/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateVSphereCloudAccountAsyncReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateVSphereCloudAccountAsyncAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateVSphereCloudAccountAsync: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UpdateVcfCloudAccountAsync updates v c f cloud account
+
+  Update VCF cloud account
+*/
+func (a *Client) UpdateVcfCloudAccountAsync(params *UpdateVcfCloudAccountAsyncParams, opts ...ClientOption) (*UpdateVcfCloudAccountAsyncAccepted, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateVcfCloudAccountAsyncParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "updateVcfCloudAccountAsync",
+		Method:             "PATCH",
+		PathPattern:        "/iaas/api/cloud-accounts-vcf/{id}",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateVcfCloudAccountAsyncReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateVcfCloudAccountAsyncAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateVcfCloudAccountAsync: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

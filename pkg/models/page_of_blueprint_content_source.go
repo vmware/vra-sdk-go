@@ -82,6 +82,8 @@ func (m *PageOfBlueprintContentSource) validateContent(formats strfmt.Registry) 
 			if err := m.Content[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("content" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("content" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -101,6 +103,8 @@ func (m *PageOfBlueprintContentSource) validateSort(formats strfmt.Registry) err
 		if err := m.Sort.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("sort")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sort")
 			}
 			return err
 		}
@@ -135,6 +139,8 @@ func (m *PageOfBlueprintContentSource) contextValidateContent(ctx context.Contex
 			if err := m.Content[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("content" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("content" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -151,6 +157,8 @@ func (m *PageOfBlueprintContentSource) contextValidateSort(ctx context.Context, 
 		if err := m.Sort.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("sort")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sort")
 			}
 			return err
 		}

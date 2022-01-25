@@ -71,11 +71,11 @@ type GetMachineNetworkInterfaceParams struct {
 	*/
 	ID string
 
-	/* Id1.
+	/* NetworkID.
 
 	   The ID of the network interface.
 	*/
-	Id1 string
+	NetworkID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -152,15 +152,15 @@ func (o *GetMachineNetworkInterfaceParams) SetID(id string) {
 	o.ID = id
 }
 
-// WithId1 adds the id1 to the get machine network interface params
-func (o *GetMachineNetworkInterfaceParams) WithId1(id1 string) *GetMachineNetworkInterfaceParams {
-	o.SetId1(id1)
+// WithNetworkID adds the networkID to the get machine network interface params
+func (o *GetMachineNetworkInterfaceParams) WithNetworkID(networkID string) *GetMachineNetworkInterfaceParams {
+	o.SetNetworkID(networkID)
 	return o
 }
 
-// SetId1 adds the id1 to the get machine network interface params
-func (o *GetMachineNetworkInterfaceParams) SetId1(id1 string) {
-	o.Id1 = id1
+// SetNetworkID adds the networkId to the get machine network interface params
+func (o *GetMachineNetworkInterfaceParams) SetNetworkID(networkID string) {
+	o.NetworkID = networkID
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -193,8 +193,8 @@ func (o *GetMachineNetworkInterfaceParams) WriteToRequest(r runtime.ClientReques
 		return err
 	}
 
-	// path param id1
-	if err := r.SetPathParam("id1", o.Id1); err != nil {
+	// path param networkId
+	if err := r.SetPathParam("networkId", o.NetworkID); err != nil {
 		return err
 	}
 

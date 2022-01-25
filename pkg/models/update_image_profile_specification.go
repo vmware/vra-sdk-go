@@ -28,8 +28,7 @@ type UpdateImageProfileSpecification struct {
 	ImageMapping map[string]FabricImageDescription `json:"imageMapping"`
 
 	// A human-friendly name used as an identifier in APIs that support this option.
-	// Required: true
-	Name *string `json:"name"`
+	Name string `json:"name,omitempty"`
 }
 
 // Validate validates this update image profile specification
@@ -37,10 +36,6 @@ func (m *UpdateImageProfileSpecification) Validate(formats strfmt.Registry) erro
 	var res []error
 
 	if err := m.validateImageMapping(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateName(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -63,19 +58,15 @@ func (m *UpdateImageProfileSpecification) validateImageMapping(formats strfmt.Re
 		}
 		if val, ok := m.ImageMapping[k]; ok {
 			if err := val.Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("imageMapping" + "." + k)
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("imageMapping" + "." + k)
+				}
 				return err
 			}
 		}
 
-	}
-
-	return nil
-}
-
-func (m *UpdateImageProfileSpecification) validateName(formats strfmt.Registry) error {
-
-	if err := validate.Required("name", "body", m.Name); err != nil {
-		return err
 	}
 
 	return nil

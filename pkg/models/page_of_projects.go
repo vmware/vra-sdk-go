@@ -241,6 +241,8 @@ func (m *PageOfProjects) validateContent(formats strfmt.Registry) error {
 		if err := m.contentField[i].Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("content" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("content" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -259,6 +261,8 @@ func (m *PageOfProjects) validatePageable(formats strfmt.Registry) error {
 		if err := m.Pageable.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("pageable")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("pageable")
 			}
 			return err
 		}
@@ -276,6 +280,8 @@ func (m *PageOfProjects) validateSort(formats strfmt.Registry) error {
 		if err := m.Sort.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("sort")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sort")
 			}
 			return err
 		}
@@ -313,6 +319,8 @@ func (m *PageOfProjects) contextValidateContent(ctx context.Context, formats str
 		if err := m.contentField[i].ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("content" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("content" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -328,6 +336,8 @@ func (m *PageOfProjects) contextValidatePageable(ctx context.Context, formats st
 		if err := m.Pageable.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("pageable")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("pageable")
 			}
 			return err
 		}
@@ -342,6 +352,8 @@ func (m *PageOfProjects) contextValidateSort(ctx context.Context, formats strfmt
 		if err := m.Sort.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("sort")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("sort")
 			}
 			return err
 		}

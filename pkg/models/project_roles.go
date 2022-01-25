@@ -25,6 +25,8 @@ type ProjectRoles struct {
 
 	membersField PrincipalRoleAssignment
 
+	supervisorsField PrincipalRoleAssignment
+
 	viewersField PrincipalRoleAssignment
 }
 
@@ -48,6 +50,16 @@ func (m *ProjectRoles) SetMembers(val PrincipalRoleAssignment) {
 	m.membersField = val
 }
 
+// Supervisors gets the supervisors of this base type
+func (m *ProjectRoles) Supervisors() PrincipalRoleAssignment {
+	return m.supervisorsField
+}
+
+// SetSupervisors sets the supervisors of this base type
+func (m *ProjectRoles) SetSupervisors(val PrincipalRoleAssignment) {
+	m.supervisorsField = val
+}
+
 // Viewers gets the viewers of this base type
 func (m *ProjectRoles) Viewers() PrincipalRoleAssignment {
 	return m.viewersField
@@ -64,6 +76,8 @@ func (m *ProjectRoles) UnmarshalJSON(raw []byte) error {
 		Administrators json.RawMessage `json:"administrators,omitempty"`
 
 		Members json.RawMessage `json:"members,omitempty"`
+
+		Supervisors json.RawMessage `json:"supervisors,omitempty"`
 
 		Viewers json.RawMessage `json:"viewers,omitempty"`
 	}
@@ -91,6 +105,14 @@ func (m *ProjectRoles) UnmarshalJSON(raw []byte) error {
 		}
 		propMembers = members
 	}
+	var propSupervisors PrincipalRoleAssignment
+	if string(data.Supervisors) != "null" {
+		supervisors, err := UnmarshalPrincipalRoleAssignment(bytes.NewBuffer(data.Supervisors), runtime.JSONConsumer())
+		if err != nil && err != io.EOF {
+			return err
+		}
+		propSupervisors = supervisors
+	}
 	var propViewers PrincipalRoleAssignment
 	if string(data.Viewers) != "null" {
 		viewers, err := UnmarshalPrincipalRoleAssignment(bytes.NewBuffer(data.Viewers), runtime.JSONConsumer())
@@ -107,6 +129,9 @@ func (m *ProjectRoles) UnmarshalJSON(raw []byte) error {
 
 	// members
 	result.membersField = propMembers
+
+	// supervisors
+	result.supervisorsField = propSupervisors
 
 	// viewers
 	result.viewersField = propViewers
@@ -130,12 +155,16 @@ func (m ProjectRoles) MarshalJSON() ([]byte, error) {
 
 		Members PrincipalRoleAssignment `json:"members,omitempty"`
 
+		Supervisors PrincipalRoleAssignment `json:"supervisors,omitempty"`
+
 		Viewers PrincipalRoleAssignment `json:"viewers,omitempty"`
 	}{
 
 		Administrators: m.administratorsField,
 
 		Members: m.membersField,
+
+		Supervisors: m.supervisorsField,
 
 		Viewers: m.viewersField,
 	})
@@ -158,6 +187,10 @@ func (m *ProjectRoles) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateSupervisors(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateViewers(formats); err != nil {
 		res = append(res, err)
 	}
@@ -176,6 +209,8 @@ func (m *ProjectRoles) validateAdministrators(formats strfmt.Registry) error {
 	if err := m.Administrators().Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("administrators")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("administrators")
 		}
 		return err
 	}
@@ -191,6 +226,25 @@ func (m *ProjectRoles) validateMembers(formats strfmt.Registry) error {
 	if err := m.Members().Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("members")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("members")
+		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *ProjectRoles) validateSupervisors(formats strfmt.Registry) error {
+	if swag.IsZero(m.Supervisors()) { // not required
+		return nil
+	}
+
+	if err := m.Supervisors().Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("supervisors")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("supervisors")
 		}
 		return err
 	}
@@ -206,6 +260,8 @@ func (m *ProjectRoles) validateViewers(formats strfmt.Registry) error {
 	if err := m.Viewers().Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("viewers")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("viewers")
 		}
 		return err
 	}
@@ -225,6 +281,10 @@ func (m *ProjectRoles) ContextValidate(ctx context.Context, formats strfmt.Regis
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateSupervisors(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateViewers(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -240,6 +300,8 @@ func (m *ProjectRoles) contextValidateAdministrators(ctx context.Context, format
 	if err := m.Administrators().ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("administrators")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("administrators")
 		}
 		return err
 	}
@@ -252,6 +314,22 @@ func (m *ProjectRoles) contextValidateMembers(ctx context.Context, formats strfm
 	if err := m.Members().ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("members")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("members")
+		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *ProjectRoles) contextValidateSupervisors(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.Supervisors().ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("supervisors")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("supervisors")
 		}
 		return err
 	}
@@ -264,6 +342,8 @@ func (m *ProjectRoles) contextValidateViewers(ctx context.Context, formats strfm
 	if err := m.Viewers().ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("viewers")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("viewers")
 		}
 		return err
 	}

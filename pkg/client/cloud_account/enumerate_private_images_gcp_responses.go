@@ -7,9 +7,12 @@ package cloud_account
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
 // EnumeratePrivateImagesGcpReader is a Reader for the EnumeratePrivateImagesGcp structure.
@@ -19,41 +22,122 @@ type EnumeratePrivateImagesGcpReader struct {
 
 // ReadResponse reads a server response into the received o.
 func (o *EnumeratePrivateImagesGcpReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
-	result := NewEnumeratePrivateImagesGcpDefault(response.Code())
-	if err := result.readResponse(response, consumer, o.formats); err != nil {
-		return nil, err
-	}
-	if response.Code()/100 == 2 {
+	switch response.Code() {
+	case 202:
+		result := NewEnumeratePrivateImagesGcpAccepted()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
 		return result, nil
+	case 400:
+		result := NewEnumeratePrivateImagesGcpBadRequest()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 403:
+		result := NewEnumeratePrivateImagesGcpForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	default:
+		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
-	return nil, result
 }
 
-// NewEnumeratePrivateImagesGcpDefault creates a EnumeratePrivateImagesGcpDefault with default headers values
-func NewEnumeratePrivateImagesGcpDefault(code int) *EnumeratePrivateImagesGcpDefault {
-	return &EnumeratePrivateImagesGcpDefault{
-		_statusCode: code,
-	}
+// NewEnumeratePrivateImagesGcpAccepted creates a EnumeratePrivateImagesGcpAccepted with default headers values
+func NewEnumeratePrivateImagesGcpAccepted() *EnumeratePrivateImagesGcpAccepted {
+	return &EnumeratePrivateImagesGcpAccepted{}
 }
 
-/* EnumeratePrivateImagesGcpDefault describes a response with status code -1, with default header values.
+/* EnumeratePrivateImagesGcpAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
-type EnumeratePrivateImagesGcpDefault struct {
-	_statusCode int
+type EnumeratePrivateImagesGcpAccepted struct {
+	Payload *models.RequestTracker
 }
 
-// Code gets the status code for the enumerate private images gcp default response
-func (o *EnumeratePrivateImagesGcpDefault) Code() int {
-	return o._statusCode
+func (o *EnumeratePrivateImagesGcpAccepted) Error() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-gcp/{id}/private-image-enumeration][%d] enumeratePrivateImagesGcpAccepted  %+v", 202, o.Payload)
+}
+func (o *EnumeratePrivateImagesGcpAccepted) GetPayload() *models.RequestTracker {
+	return o.Payload
 }
 
-func (o *EnumeratePrivateImagesGcpDefault) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-gcp/{id}/private-image-enumeration][%d] enumeratePrivateImagesGcp default ", o._statusCode)
+func (o *EnumeratePrivateImagesGcpAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.RequestTracker)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
 }
 
-func (o *EnumeratePrivateImagesGcpDefault) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+// NewEnumeratePrivateImagesGcpBadRequest creates a EnumeratePrivateImagesGcpBadRequest with default headers values
+func NewEnumeratePrivateImagesGcpBadRequest() *EnumeratePrivateImagesGcpBadRequest {
+	return &EnumeratePrivateImagesGcpBadRequest{}
+}
+
+/* EnumeratePrivateImagesGcpBadRequest describes a response with status code 400, with default header values.
+
+Invalid Request - bad data
+*/
+type EnumeratePrivateImagesGcpBadRequest struct {
+	Payload *models.Error
+}
+
+func (o *EnumeratePrivateImagesGcpBadRequest) Error() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-gcp/{id}/private-image-enumeration][%d] enumeratePrivateImagesGcpBadRequest  %+v", 400, o.Payload)
+}
+func (o *EnumeratePrivateImagesGcpBadRequest) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *EnumeratePrivateImagesGcpBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewEnumeratePrivateImagesGcpForbidden creates a EnumeratePrivateImagesGcpForbidden with default headers values
+func NewEnumeratePrivateImagesGcpForbidden() *EnumeratePrivateImagesGcpForbidden {
+	return &EnumeratePrivateImagesGcpForbidden{}
+}
+
+/* EnumeratePrivateImagesGcpForbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type EnumeratePrivateImagesGcpForbidden struct {
+	Payload *models.ServiceErrorResponse
+}
+
+func (o *EnumeratePrivateImagesGcpForbidden) Error() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-gcp/{id}/private-image-enumeration][%d] enumeratePrivateImagesGcpForbidden  %+v", 403, o.Payload)
+}
+func (o *EnumeratePrivateImagesGcpForbidden) GetPayload() *models.ServiceErrorResponse {
+	return o.Payload
+}
+
+func (o *EnumeratePrivateImagesGcpForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceErrorResponse)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

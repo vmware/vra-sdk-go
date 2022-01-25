@@ -30,36 +30,36 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DeletePolicyUsingDELETE1(params *DeletePolicyUsingDELETE1Params, opts ...ClientOption) (*DeletePolicyUsingDELETE1NoContent, error)
+	DeletePolicyUsingDELETE5(params *DeletePolicyUsingDELETE5Params, opts ...ClientOption) (*DeletePolicyUsingDELETE5NoContent, error)
 
-	DryRunPolicyUsingPOST(params *DryRunPolicyUsingPOSTParams, opts ...ClientOption) (*DryRunPolicyUsingPOSTOK, error)
+	DryRunPolicyUsingPOST2(params *DryRunPolicyUsingPOST2Params, opts ...ClientOption) (*DryRunPolicyUsingPOST2OK, error)
 
-	GetPoliciesUsingGET1(params *GetPoliciesUsingGET1Params, opts ...ClientOption) (*GetPoliciesUsingGET1OK, error)
+	GetPoliciesUsingGET5(params *GetPoliciesUsingGET5Params, opts ...ClientOption) (*GetPoliciesUsingGET5OK, error)
 
-	GetPolicyUsingGET1(params *GetPolicyUsingGET1Params, opts ...ClientOption) (*GetPolicyUsingGET1OK, error)
+	GetPolicyUsingGET5(params *GetPolicyUsingGET5Params, opts ...ClientOption) (*GetPolicyUsingGET5OK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  DeletePolicyUsingDELETE1 deletes a policy
+  DeletePolicyUsingDELETE5 deletes a policy
 
   Delete a specified policy corresponding to its unique id.
 */
-func (a *Client) DeletePolicyUsingDELETE1(params *DeletePolicyUsingDELETE1Params, opts ...ClientOption) (*DeletePolicyUsingDELETE1NoContent, error) {
+func (a *Client) DeletePolicyUsingDELETE5(params *DeletePolicyUsingDELETE5Params, opts ...ClientOption) (*DeletePolicyUsingDELETE5NoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeletePolicyUsingDELETE1Params()
+		params = NewDeletePolicyUsingDELETE5Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deletePolicyUsingDELETE_1",
+		ID:                 "deletePolicyUsingDELETE_5",
 		Method:             "DELETE",
 		PathPattern:        "/policy/api/policies/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeletePolicyUsingDELETE1Reader{formats: a.formats},
+		Reader:             &DeletePolicyUsingDELETE5Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -71,35 +71,35 @@ func (a *Client) DeletePolicyUsingDELETE1(params *DeletePolicyUsingDELETE1Params
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeletePolicyUsingDELETE1NoContent)
+	success, ok := result.(*DeletePolicyUsingDELETE5NoContent)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deletePolicyUsingDELETE_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for deletePolicyUsingDELETE_5: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  DryRunPolicyUsingPOST triggers a policy dry run
+  DryRunPolicyUsingPOST2 triggers a policy dry run
 
   Dry-run an existing policy to rehearse actual policy effect on application.
 */
-func (a *Client) DryRunPolicyUsingPOST(params *DryRunPolicyUsingPOSTParams, opts ...ClientOption) (*DryRunPolicyUsingPOSTOK, error) {
+func (a *Client) DryRunPolicyUsingPOST2(params *DryRunPolicyUsingPOST2Params, opts ...ClientOption) (*DryRunPolicyUsingPOST2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDryRunPolicyUsingPOSTParams()
+		params = NewDryRunPolicyUsingPOST2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "dryRunPolicyUsingPOST",
+		ID:                 "dryRunPolicyUsingPOST_2",
 		Method:             "POST",
 		PathPattern:        "/policy/api/policies",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DryRunPolicyUsingPOSTReader{formats: a.formats},
+		Reader:             &DryRunPolicyUsingPOST2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -111,35 +111,35 @@ func (a *Client) DryRunPolicyUsingPOST(params *DryRunPolicyUsingPOSTParams, opts
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DryRunPolicyUsingPOSTOK)
+	success, ok := result.(*DryRunPolicyUsingPOST2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for dryRunPolicyUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for dryRunPolicyUsingPOST_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetPoliciesUsingGET1 returns a paginated list of policies
+  GetPoliciesUsingGET5 returns a paginated list of policies
 
   Find all the policies associated with current org.
 */
-func (a *Client) GetPoliciesUsingGET1(params *GetPoliciesUsingGET1Params, opts ...ClientOption) (*GetPoliciesUsingGET1OK, error) {
+func (a *Client) GetPoliciesUsingGET5(params *GetPoliciesUsingGET5Params, opts ...ClientOption) (*GetPoliciesUsingGET5OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetPoliciesUsingGET1Params()
+		params = NewGetPoliciesUsingGET5Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getPoliciesUsingGET_1",
+		ID:                 "getPoliciesUsingGET_5",
 		Method:             "GET",
 		PathPattern:        "/policy/api/policies",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetPoliciesUsingGET1Reader{formats: a.formats},
+		Reader:             &GetPoliciesUsingGET5Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -151,35 +151,35 @@ func (a *Client) GetPoliciesUsingGET1(params *GetPoliciesUsingGET1Params, opts .
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetPoliciesUsingGET1OK)
+	success, ok := result.(*GetPoliciesUsingGET5OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getPoliciesUsingGET_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getPoliciesUsingGET_5: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetPolicyUsingGET1 returns a specified policy
+  GetPolicyUsingGET5 returns a specified policy
 
   Find a specific policy based on the input policy id.
 */
-func (a *Client) GetPolicyUsingGET1(params *GetPolicyUsingGET1Params, opts ...ClientOption) (*GetPolicyUsingGET1OK, error) {
+func (a *Client) GetPolicyUsingGET5(params *GetPolicyUsingGET5Params, opts ...ClientOption) (*GetPolicyUsingGET5OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetPolicyUsingGET1Params()
+		params = NewGetPolicyUsingGET5Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getPolicyUsingGET_1",
+		ID:                 "getPolicyUsingGET_5",
 		Method:             "GET",
 		PathPattern:        "/policy/api/policies/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetPolicyUsingGET1Reader{formats: a.formats},
+		Reader:             &GetPolicyUsingGET5Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -191,13 +191,13 @@ func (a *Client) GetPolicyUsingGET1(params *GetPolicyUsingGET1Params, opts ...Cl
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetPolicyUsingGET1OK)
+	success, ok := result.(*GetPolicyUsingGET5OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getPolicyUsingGET_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getPolicyUsingGET_5: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

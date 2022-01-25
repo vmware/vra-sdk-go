@@ -104,6 +104,8 @@ func (m *ComputeNatSpecification) validateNatRules(formats strfmt.Registry) erro
 			if err := m.NatRules[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("natRules" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("natRules" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -145,6 +147,8 @@ func (m *ComputeNatSpecification) contextValidateNatRules(ctx context.Context, f
 			if err := m.NatRules[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("natRules" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("natRules" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

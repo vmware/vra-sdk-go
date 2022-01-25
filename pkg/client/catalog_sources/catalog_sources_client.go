@@ -30,36 +30,36 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DeleteUsingDELETE(params *DeleteUsingDELETEParams, opts ...ClientOption) (*DeleteUsingDELETENoContent, error)
+	DeleteUsingDELETE4(params *DeleteUsingDELETE4Params, opts ...ClientOption) (*DeleteUsingDELETE4NoContent, error)
 
-	GetPageUsingGET(params *GetPageUsingGETParams, opts ...ClientOption) (*GetPageUsingGETOK, error)
+	GetPageUsingGET2(params *GetPageUsingGET2Params, opts ...ClientOption) (*GetPageUsingGET2OK, error)
 
-	GetUsingGET(params *GetUsingGETParams, opts ...ClientOption) (*GetUsingGETOK, error)
+	GetUsingGET2(params *GetUsingGET2Params, opts ...ClientOption) (*GetUsingGET2OK, error)
 
-	PostUsingPOST(params *PostUsingPOSTParams, opts ...ClientOption) (*PostUsingPOSTOK, *PostUsingPOSTCreated, error)
+	PostUsingPOST2(params *PostUsingPOST2Params, opts ...ClientOption) (*PostUsingPOST2OK, *PostUsingPOST2Created, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  DeleteUsingDELETE deletes catalog source
+  DeleteUsingDELETE4 deletes catalog source
 
   Deletes the catalog source with the supplied ID.
 */
-func (a *Client) DeleteUsingDELETE(params *DeleteUsingDELETEParams, opts ...ClientOption) (*DeleteUsingDELETENoContent, error) {
+func (a *Client) DeleteUsingDELETE4(params *DeleteUsingDELETE4Params, opts ...ClientOption) (*DeleteUsingDELETE4NoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteUsingDELETEParams()
+		params = NewDeleteUsingDELETE4Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteUsingDELETE",
+		ID:                 "deleteUsingDELETE_4",
 		Method:             "DELETE",
 		PathPattern:        "/catalog/api/admin/sources/{sourceId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteUsingDELETEReader{formats: a.formats},
+		Reader:             &DeleteUsingDELETE4Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -71,35 +71,35 @@ func (a *Client) DeleteUsingDELETE(params *DeleteUsingDELETEParams, opts ...Clie
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteUsingDELETENoContent)
+	success, ok := result.(*DeleteUsingDELETE4NoContent)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for deleteUsingDELETE_4: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetPageUsingGET fetches catalog sources
+  GetPageUsingGET2 fetches catalog sources
 
   Returns a paginated list of catalog sources.
 */
-func (a *Client) GetPageUsingGET(params *GetPageUsingGETParams, opts ...ClientOption) (*GetPageUsingGETOK, error) {
+func (a *Client) GetPageUsingGET2(params *GetPageUsingGET2Params, opts ...ClientOption) (*GetPageUsingGET2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetPageUsingGETParams()
+		params = NewGetPageUsingGET2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getPageUsingGET",
+		ID:                 "getPageUsingGET_2",
 		Method:             "GET",
 		PathPattern:        "/catalog/api/admin/sources",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetPageUsingGETReader{formats: a.formats},
+		Reader:             &GetPageUsingGET2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -111,35 +111,35 @@ func (a *Client) GetPageUsingGET(params *GetPageUsingGETParams, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetPageUsingGETOK)
+	success, ok := result.(*GetPageUsingGET2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getPageUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getPageUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetUsingGET fetches a specific catalog source for the given ID
+  GetUsingGET2 fetches a specific catalog source for the given ID
 
   Returns the catalog source with the supplied ID.
 */
-func (a *Client) GetUsingGET(params *GetUsingGETParams, opts ...ClientOption) (*GetUsingGETOK, error) {
+func (a *Client) GetUsingGET2(params *GetUsingGET2Params, opts ...ClientOption) (*GetUsingGET2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetUsingGETParams()
+		params = NewGetUsingGET2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getUsingGET",
+		ID:                 "getUsingGET_2",
 		Method:             "GET",
 		PathPattern:        "/catalog/api/admin/sources/{sourceId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetUsingGETReader{formats: a.formats},
+		Reader:             &GetUsingGET2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -151,35 +151,35 @@ func (a *Client) GetUsingGET(params *GetUsingGETParams, opts ...ClientOption) (*
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetUsingGETOK)
+	success, ok := result.(*GetUsingGET2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  PostUsingPOST creates a new catalog source or update an existing catalog source
+  PostUsingPOST2 creates or update a catalog source creating or updating also imports or re imports the associated catalog items
 
   Creates a new catalog source or updates an existing catalog source based on the request body and imports catalog items from it.
 */
-func (a *Client) PostUsingPOST(params *PostUsingPOSTParams, opts ...ClientOption) (*PostUsingPOSTOK, *PostUsingPOSTCreated, error) {
+func (a *Client) PostUsingPOST2(params *PostUsingPOST2Params, opts ...ClientOption) (*PostUsingPOST2OK, *PostUsingPOST2Created, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPostUsingPOSTParams()
+		params = NewPostUsingPOST2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "postUsingPOST",
+		ID:                 "postUsingPOST_2",
 		Method:             "POST",
 		PathPattern:        "/catalog/api/admin/sources",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PostUsingPOSTReader{formats: a.formats},
+		Reader:             &PostUsingPOST2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -192,9 +192,9 @@ func (a *Client) PostUsingPOST(params *PostUsingPOSTParams, opts ...ClientOption
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *PostUsingPOSTOK:
+	case *PostUsingPOST2OK:
 		return value, nil, nil
-	case *PostUsingPOSTCreated:
+	case *PostUsingPOST2Created:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue

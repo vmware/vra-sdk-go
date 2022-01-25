@@ -38,8 +38,6 @@ type ClientService interface {
 
 	GetComputeGateways(params *GetComputeGatewaysParams, opts ...ClientOption) (*GetComputeGatewaysOK, error)
 
-	ReconfigureComputeGateway(params *ReconfigureComputeGatewayParams, opts ...ClientOption) (*ReconfigureComputeGatewayAccepted, error)
-
 	SetTransport(transport runtime.ClientTransport)
 }
 
@@ -200,46 +198,6 @@ func (a *Client) GetComputeGateways(params *GetComputeGatewaysParams, opts ...Cl
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getComputeGateways: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  ReconfigureComputeGateway deprecateds reconfigure operation for compute gateway
-
-  Deprecated: Day-2 reconfigure operation for compute gateway. Use Day-2 reconfigure operation on compute nat resource instead.
-*/
-func (a *Client) ReconfigureComputeGateway(params *ReconfigureComputeGatewayParams, opts ...ClientOption) (*ReconfigureComputeGatewayAccepted, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewReconfigureComputeGatewayParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "reconfigureComputeGateway",
-		Method:             "POST",
-		PathPattern:        "/iaas/api/compute-gateways/{id}/operations/reconfigure",
-		ProducesMediaTypes: []string{"app/json", "application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &ReconfigureComputeGatewayReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*ReconfigureComputeGatewayAccepted)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for reconfigureComputeGateway: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

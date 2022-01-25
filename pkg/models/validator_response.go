@@ -161,6 +161,8 @@ func (m *validatorResponse) validateMessage(formats strfmt.Registry) error {
 	if err := m.Message().Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("message")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("message")
 		}
 		return err
 	}
@@ -187,6 +189,8 @@ func (m *validatorResponse) contextValidateMessage(ctx context.Context, formats 
 	if err := m.Message().ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("message")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("message")
 		}
 		return err
 	}

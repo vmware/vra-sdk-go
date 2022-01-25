@@ -23,8 +23,8 @@ type DeleteCloudAccountReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteCloudAccountReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-	case 204:
-		result := NewDeleteCloudAccountNoContent()
+	case 202:
+		result := NewDeleteCloudAccountAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -40,23 +40,34 @@ func (o *DeleteCloudAccountReader) ReadResponse(response runtime.ClientResponse,
 	}
 }
 
-// NewDeleteCloudAccountNoContent creates a DeleteCloudAccountNoContent with default headers values
-func NewDeleteCloudAccountNoContent() *DeleteCloudAccountNoContent {
-	return &DeleteCloudAccountNoContent{}
+// NewDeleteCloudAccountAccepted creates a DeleteCloudAccountAccepted with default headers values
+func NewDeleteCloudAccountAccepted() *DeleteCloudAccountAccepted {
+	return &DeleteCloudAccountAccepted{}
 }
 
-/* DeleteCloudAccountNoContent describes a response with status code 204, with default header values.
+/* DeleteCloudAccountAccepted describes a response with status code 202, with default header values.
 
-No Content
+successful operation
 */
-type DeleteCloudAccountNoContent struct {
+type DeleteCloudAccountAccepted struct {
+	Payload *models.RequestTracker
 }
 
-func (o *DeleteCloudAccountNoContent) Error() string {
-	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts/{id}][%d] deleteCloudAccountNoContent ", 204)
+func (o *DeleteCloudAccountAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts/{id}][%d] deleteCloudAccountAccepted  %+v", 202, o.Payload)
+}
+func (o *DeleteCloudAccountAccepted) GetPayload() *models.RequestTracker {
+	return o.Payload
 }
 
-func (o *DeleteCloudAccountNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *DeleteCloudAccountAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.RequestTracker)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

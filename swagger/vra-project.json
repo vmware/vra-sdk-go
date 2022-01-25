@@ -59,6 +59,14 @@
                 ],
                 "parameters": [
                     {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property (asc | desc). Default sort order is ascending.",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
                         "name": "$select",
                         "in": "query",
                         "description": "Select a subset of properties to include in the response. Possible values for this parameter are id, name, operationTimeout, constraints.",
@@ -83,12 +91,39 @@
                         "allowEmptyValue": false
                     },
                     {
+                        "name": "excludeSupervisor",
+                        "in": "query",
+                        "description": "Filters projects based on the supervisor role. When the value istrue it will not return the projects in which the current user is having only supervisor role",
+                        "required": false,
+                        "type": "boolean",
+                        "default": true,
+                        "allowEmptyValue": false
+                    },
+                    {
                         "name": "excludeViewer",
                         "in": "query",
                         "description": "Filters projects based on the viewer role. When the value is true it will not return the projects in which the current user is only viewer and will ignore privileged roles: CodeStream:Developer and CodeStream:Executor, if the user has them. Else it will return all projects that the user can read. The default value is false.",
                         "required": false,
                         "type": "boolean",
                         "allowEmptyValue": false
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Results page you want to retrieve (0..N)",
+                        "required": false,
+                        "type": "integer",
+                        "default": 0,
+                        "format": "int32"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "Number of records per page.",
+                        "required": false,
+                        "type": "integer",
+                        "default": 500,
+                        "format": "int32"
                     },
                     {
                         "name": "withAnyPermission",
@@ -592,6 +627,60 @@
                 ],
                 "deprecated": false
             }
+        },
+        "/project-service/api/projects/{id}/sync-principals": {
+            "post": {
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Sync principals assigned to any project within user organization",
+                "operationId": "syncProjectsPrincipalsUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format. For versioning information refer to /project-service/api/about.",
+                        "required": false,
+                        "type": "string",
+                        "x-example": "2019-01-15"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the project.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "'Success'",
+                        "schema": {
+                            "$ref": "#/definitions/PrincipalRole"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden, the user lacks permissions"
+                    },
+                    "404": {
+                        "description": "'Not found' if no project with the provided id"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
         }
     },
     "securityDefinitions": {
@@ -719,6 +808,53 @@
             },
             "title": "LockRequest"
         },
+        "Page": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "type": "object"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "pageable": {
+                    "$ref": "#/definitions/Pageable"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "Page"
+        },
         "PageOfProjects": {
             "type": "object",
             "properties": {
@@ -826,10 +962,15 @@
                     "example": "administrator@vmware.com",
                     "description": "The email of the user or name of the group."
                 },
+                "id": {
+                    "type": "string",
+                    "example": "c493a95e-c4d1-4496-8595-e73902701c95:fe69d7ca-40a6-4de5-8f33-d462f4656938",
+                    "description": "ID of the user or id of the group in CSP"
+                },
                 "role": {
                     "type": "string",
                     "example": "member",
-                    "description": "Role of this member. Currently supported 'member', 'viewer' and 'administrator'."
+                    "description": "Role of this member. Currently supported 'member', 'viewer', 'administrator', 'supervisor'."
                 },
                 "type": {
                     "type": "string",
@@ -961,6 +1102,19 @@
                     "type": "boolean",
                     "description": "Specifies whether the resources in this projects are shared or not."
                 },
+                "supervisors": {
+                    "type": "array",
+                    "example": [
+                        {
+                            "email": "supervisor@vmware.com",
+                            "type": "user"
+                        }
+                    ],
+                    "description": "List of supervisor users associated with the project. ",
+                    "items": {
+                        "$ref": "#/definitions/Principal"
+                    }
+                },
                 "viewers": {
                     "type": "array",
                     "example": [
@@ -1061,6 +1215,10 @@
                 },
                 "members": {
                     "description": "Members to add and/or remove",
+                    "$ref": "#/definitions/PrincipalRoleAssignment"
+                },
+                "supervisors": {
+                    "description": "Supervisors to add and/or remove",
                     "$ref": "#/definitions/PrincipalRoleAssignment"
                 },
                 "viewers": {
@@ -1274,6 +1432,32 @@
             },
             "title": "UpdateProjectSpecification",
             "description": "Represents a specification for a updating a project."
+        },
+        "User": {
+            "type": "object",
+            "required": [
+                "acct"
+            ],
+            "discriminator": "A representation of a user",
+            "properties": {
+                "acct": {
+                    "type": "string",
+                    "example": "administrator@vmware.com",
+                    "description": "The account identifier string of the user. This field doesn't always equal to the email."
+                },
+                "domain": {
+                    "type": "string",
+                    "example": "vmware.com",
+                    "description": "The domain of the user."
+                },
+                "id": {
+                    "type": "string",
+                    "example": "c493a95e-c4d1-4496-8595-e73902701c95:fe69d7ca-40a6-4de5-8f33-d462f4656938",
+                    "description": "User's Identity Provider ID"
+                }
+            },
+            "title": "User",
+            "description": "A representation of a user"
         }
     }
 }

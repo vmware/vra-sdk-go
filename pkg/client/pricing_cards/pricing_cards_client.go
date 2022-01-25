@@ -30,38 +30,38 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreatePolicyUsingPOST(params *CreatePolicyUsingPOSTParams, opts ...ClientOption) (*CreatePolicyUsingPOSTOK, *CreatePolicyUsingPOSTCreated, error)
+	CreatePolicyUsingPOST2(params *CreatePolicyUsingPOST2Params, opts ...ClientOption) (*CreatePolicyUsingPOST2OK, *CreatePolicyUsingPOST2Created, error)
 
-	DeletePolicyUsingDELETE(params *DeletePolicyUsingDELETEParams, opts ...ClientOption) (*DeletePolicyUsingDELETEOK, *DeletePolicyUsingDELETENoContent, error)
+	DeletePolicyUsingDELETE4(params *DeletePolicyUsingDELETE4Params, opts ...ClientOption) (*DeletePolicyUsingDELETE4OK, *DeletePolicyUsingDELETE4NoContent, error)
 
-	GetPoliciesUsingGET(params *GetPoliciesUsingGETParams, opts ...ClientOption) (*GetPoliciesUsingGETOK, error)
+	GetPoliciesUsingGET4(params *GetPoliciesUsingGET4Params, opts ...ClientOption) (*GetPoliciesUsingGET4OK, error)
 
-	GetPolicyUsingGET(params *GetPolicyUsingGETParams, opts ...ClientOption) (*GetPolicyUsingGETOK, error)
+	GetPolicyUsingGET4(params *GetPolicyUsingGET4Params, opts ...ClientOption) (*GetPolicyUsingGET4OK, error)
 
-	UpdatePolicyUsingPUT(params *UpdatePolicyUsingPUTParams, opts ...ClientOption) (*UpdatePolicyUsingPUTOK, error)
+	UpdatePolicyUsingPUT2(params *UpdatePolicyUsingPUT2Params, opts ...ClientOption) (*UpdatePolicyUsingPUT2OK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  CreatePolicyUsingPOST creates a new pricing card
+  CreatePolicyUsingPOST2 creates a new pricing card
 
   Create a new pricing card based on request body and validate its field according to business rules.
 */
-func (a *Client) CreatePolicyUsingPOST(params *CreatePolicyUsingPOSTParams, opts ...ClientOption) (*CreatePolicyUsingPOSTOK, *CreatePolicyUsingPOSTCreated, error) {
+func (a *Client) CreatePolicyUsingPOST2(params *CreatePolicyUsingPOST2Params, opts ...ClientOption) (*CreatePolicyUsingPOST2OK, *CreatePolicyUsingPOST2Created, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreatePolicyUsingPOSTParams()
+		params = NewCreatePolicyUsingPOST2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createPolicyUsingPOST",
+		ID:                 "createPolicyUsingPOST_2",
 		Method:             "POST",
 		PathPattern:        "/price/api/private/pricing-cards",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreatePolicyUsingPOSTReader{formats: a.formats},
+		Reader:             &CreatePolicyUsingPOST2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -74,9 +74,9 @@ func (a *Client) CreatePolicyUsingPOST(params *CreatePolicyUsingPOSTParams, opts
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *CreatePolicyUsingPOSTOK:
+	case *CreatePolicyUsingPOST2OK:
 		return value, nil, nil
-	case *CreatePolicyUsingPOSTCreated:
+	case *CreatePolicyUsingPOST2Created:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
@@ -85,24 +85,24 @@ func (a *Client) CreatePolicyUsingPOST(params *CreatePolicyUsingPOSTParams, opts
 }
 
 /*
-  DeletePolicyUsingDELETE deletes the pricing card with specified Id
+  DeletePolicyUsingDELETE4 deletes the pricing card with specified Id
 
   Deletes the pricing card with the specified id
 */
-func (a *Client) DeletePolicyUsingDELETE(params *DeletePolicyUsingDELETEParams, opts ...ClientOption) (*DeletePolicyUsingDELETEOK, *DeletePolicyUsingDELETENoContent, error) {
+func (a *Client) DeletePolicyUsingDELETE4(params *DeletePolicyUsingDELETE4Params, opts ...ClientOption) (*DeletePolicyUsingDELETE4OK, *DeletePolicyUsingDELETE4NoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeletePolicyUsingDELETEParams()
+		params = NewDeletePolicyUsingDELETE4Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deletePolicyUsingDELETE",
+		ID:                 "deletePolicyUsingDELETE_4",
 		Method:             "DELETE",
 		PathPattern:        "/price/api/private/pricing-cards/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeletePolicyUsingDELETEReader{formats: a.formats},
+		Reader:             &DeletePolicyUsingDELETE4Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -115,9 +115,9 @@ func (a *Client) DeletePolicyUsingDELETE(params *DeletePolicyUsingDELETEParams, 
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *DeletePolicyUsingDELETEOK:
+	case *DeletePolicyUsingDELETE4OK:
 		return value, nil, nil
-	case *DeletePolicyUsingDELETENoContent:
+	case *DeletePolicyUsingDELETE4NoContent:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
@@ -126,24 +126,24 @@ func (a *Client) DeletePolicyUsingDELETE(params *DeletePolicyUsingDELETEParams, 
 }
 
 /*
-  GetPoliciesUsingGET fetches all pricing cards for private policy cloud
+  GetPoliciesUsingGET4 fetches all pricing cards for private policy cloud
 
   Returns a paginated list of pricing cards
 */
-func (a *Client) GetPoliciesUsingGET(params *GetPoliciesUsingGETParams, opts ...ClientOption) (*GetPoliciesUsingGETOK, error) {
+func (a *Client) GetPoliciesUsingGET4(params *GetPoliciesUsingGET4Params, opts ...ClientOption) (*GetPoliciesUsingGET4OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetPoliciesUsingGETParams()
+		params = NewGetPoliciesUsingGET4Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getPoliciesUsingGET",
+		ID:                 "getPoliciesUsingGET_4",
 		Method:             "GET",
 		PathPattern:        "/price/api/private/pricing-cards",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetPoliciesUsingGETReader{formats: a.formats},
+		Reader:             &GetPoliciesUsingGET4Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -155,35 +155,35 @@ func (a *Client) GetPoliciesUsingGET(params *GetPoliciesUsingGETParams, opts ...
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetPoliciesUsingGETOK)
+	success, ok := result.(*GetPoliciesUsingGET4OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getPoliciesUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getPoliciesUsingGET_4: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetPolicyUsingGET finds the pricing card with specified Id
+  GetPolicyUsingGET4 finds the pricing card with specified Id
 
   Returns the pricing card with the specified id
 */
-func (a *Client) GetPolicyUsingGET(params *GetPolicyUsingGETParams, opts ...ClientOption) (*GetPolicyUsingGETOK, error) {
+func (a *Client) GetPolicyUsingGET4(params *GetPolicyUsingGET4Params, opts ...ClientOption) (*GetPolicyUsingGET4OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetPolicyUsingGETParams()
+		params = NewGetPolicyUsingGET4Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getPolicyUsingGET",
+		ID:                 "getPolicyUsingGET_4",
 		Method:             "GET",
 		PathPattern:        "/price/api/private/pricing-cards/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetPolicyUsingGETReader{formats: a.formats},
+		Reader:             &GetPolicyUsingGET4Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -195,35 +195,35 @@ func (a *Client) GetPolicyUsingGET(params *GetPolicyUsingGETParams, opts ...Clie
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetPolicyUsingGETOK)
+	success, ok := result.(*GetPolicyUsingGET4OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getPolicyUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getPolicyUsingGET_4: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  UpdatePolicyUsingPUT updates the pricing card
+  UpdatePolicyUsingPUT2 updates the pricing card
 
   Updates the pricing card with the specified Id
 */
-func (a *Client) UpdatePolicyUsingPUT(params *UpdatePolicyUsingPUTParams, opts ...ClientOption) (*UpdatePolicyUsingPUTOK, error) {
+func (a *Client) UpdatePolicyUsingPUT2(params *UpdatePolicyUsingPUT2Params, opts ...ClientOption) (*UpdatePolicyUsingPUT2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewUpdatePolicyUsingPUTParams()
+		params = NewUpdatePolicyUsingPUT2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "updatePolicyUsingPUT",
+		ID:                 "updatePolicyUsingPUT_2",
 		Method:             "PUT",
 		PathPattern:        "/price/api/private/pricing-cards/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &UpdatePolicyUsingPUTReader{formats: a.formats},
+		Reader:             &UpdatePolicyUsingPUT2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -235,13 +235,13 @@ func (a *Client) UpdatePolicyUsingPUT(params *UpdatePolicyUsingPUTParams, opts .
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*UpdatePolicyUsingPUTOK)
+	success, ok := result.(*UpdatePolicyUsingPUT2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updatePolicyUsingPUT: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for updatePolicyUsingPUT_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

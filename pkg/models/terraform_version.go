@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -18,6 +19,10 @@ import (
 //
 // swagger:model TerraformVersion
 type TerraformVersion struct {
+
+	// The type of authentication for the download url
+	// Enum: [NONE BASIC]
+	AuthenticationType string `json:"authenticationType,omitempty"`
 
 	// Created time
 	// Read Only: true
@@ -43,6 +48,9 @@ type TerraformVersion struct {
 	// Read Only: true
 	OrgID string `json:"orgId,omitempty"`
 
+	// The password for basic authentication
+	Password string `json:"password,omitempty"`
+
 	// The sha256 checksum of the terraform binary
 	Sha256Checksum string `json:"sha256Checksum,omitempty"`
 
@@ -58,6 +66,9 @@ type TerraformVersion struct {
 	// Download url
 	URL string `json:"url,omitempty"`
 
+	// The user name for basic authentication
+	Username string `json:"username,omitempty"`
+
 	// The numeric version of terraform release
 	Version string `json:"version,omitempty"`
 }
@@ -65,6 +76,10 @@ type TerraformVersion struct {
 // Validate validates this terraform version
 func (m *TerraformVersion) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateAuthenticationType(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateCreatedAt(formats); err != nil {
 		res = append(res, err)
@@ -81,6 +96,48 @@ func (m *TerraformVersion) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+var terraformVersionTypeAuthenticationTypePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["NONE","BASIC"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		terraformVersionTypeAuthenticationTypePropEnum = append(terraformVersionTypeAuthenticationTypePropEnum, v)
+	}
+}
+
+const (
+
+	// TerraformVersionAuthenticationTypeNONE captures enum value "NONE"
+	TerraformVersionAuthenticationTypeNONE string = "NONE"
+
+	// TerraformVersionAuthenticationTypeBASIC captures enum value "BASIC"
+	TerraformVersionAuthenticationTypeBASIC string = "BASIC"
+)
+
+// prop value enum
+func (m *TerraformVersion) validateAuthenticationTypeEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, terraformVersionTypeAuthenticationTypePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *TerraformVersion) validateAuthenticationType(formats strfmt.Registry) error {
+	if swag.IsZero(m.AuthenticationType) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateAuthenticationTypeEnum("authenticationType", "body", m.AuthenticationType); err != nil {
+		return err
+	}
+
 	return nil
 }
 

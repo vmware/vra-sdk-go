@@ -60,7 +60,7 @@ type RevertMachineSnapshotAccepted struct {
 }
 
 func (o *RevertMachineSnapshotAccepted) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/machines/{machineId}/operations/revert][%d] revertMachineSnapshotAccepted  %+v", 202, o.Payload)
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/revert/{snapshotId}][%d] revertMachineSnapshotAccepted  %+v", 202, o.Payload)
 }
 func (o *RevertMachineSnapshotAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
@@ -92,7 +92,7 @@ type RevertMachineSnapshotForbidden struct {
 }
 
 func (o *RevertMachineSnapshotForbidden) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/machines/{machineId}/operations/revert][%d] revertMachineSnapshotForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/revert/{snapshotId}][%d] revertMachineSnapshotForbidden  %+v", 403, o.Payload)
 }
 func (o *RevertMachineSnapshotForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
@@ -124,7 +124,7 @@ type RevertMachineSnapshotNotFound struct {
 }
 
 func (o *RevertMachineSnapshotNotFound) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/machines/{machineId}/operations/revert][%d] revertMachineSnapshotNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/revert/{snapshotId}][%d] revertMachineSnapshotNotFound  %+v", 404, o.Payload)
 }
 func (o *RevertMachineSnapshotNotFound) GetPayload() *models.Error {
 	return o.Payload

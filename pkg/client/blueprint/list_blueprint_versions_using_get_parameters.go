@@ -68,7 +68,7 @@ type ListBlueprintVersionsUsingGETParams struct {
 
 	/* DollarSelect.
 
-	   Fields to include in content. Use * to get all fields.
+	   Fields to include in content.
 	*/
 	DollarSelect []string
 

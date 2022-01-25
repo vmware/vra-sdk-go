@@ -90,6 +90,8 @@ func (m *RouteConfiguration) validateHealthCheckConfiguration(formats strfmt.Reg
 		if err := m.HealthCheckConfiguration.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("healthCheckConfiguration")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("healthCheckConfiguration")
 			}
 			return err
 		}
@@ -154,6 +156,8 @@ func (m *RouteConfiguration) contextValidateHealthCheckConfiguration(ctx context
 		if err := m.HealthCheckConfiguration.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("healthCheckConfiguration")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("healthCheckConfiguration")
 			}
 			return err
 		}

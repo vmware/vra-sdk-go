@@ -130,6 +130,8 @@ func (m *projectConstraint) validateConditions(formats strfmt.Registry) error {
 		if err := m.conditionsField[i].Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("conditions" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("conditions" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -160,6 +162,8 @@ func (m *projectConstraint) contextValidateConditions(ctx context.Context, forma
 		if err := m.conditionsField[i].ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("conditions" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("conditions" + "." + strconv.Itoa(i))
 			}
 			return err
 		}

@@ -12,46 +12,42 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// SaltConfiguration Represents salt configuration settings that has to be applied on the machine. To successfully apply the configurations, remoteAccess property is mandatory. The supported remoteAccess authentication types are usernamePassword and generatedPublicPrivateKey.
+// SaltConfiguration Represents salt configuration settings that has to be applied on the machine.
+// To successfully apply the configurations, remoteAccess property is mandatory.The supported remoteAccess authentication types are usernamePassword and generatedPublicPrivateKey
 //
 // swagger:model SaltConfiguration
 type SaltConfiguration struct {
 
-	// Additional auth params that can be passed in for provisioning the salt minion. Refer: https://docs.saltproject.io/en/master/topics/cloud/profiles.html
-	// Example: {\"key\" : \"value\"}
-	AdditionalAuthParams interface{} `json:"additionalAuthParams,omitempty"`
+	// Additional auth params that can be passed in for provisioning the salt minion.
+	// Refer: https://docs.saltproject.io/en/master/topics/cloud/profiles.html
+	AdditionalAuthParams map[string]string `json:"additionalAuthParams,omitempty"`
 
-	// Additional configuration parameters for the salt minion, to be passed in as dictionary.  Refer: https://docs.saltproject.io/en/latest/ref/configuration/minion.html
-	// Example: {\"key\" : \"value\"}
-	AdditionalMinionParams interface{} `json:"additionalMinionParams,omitempty"`
+	// Additional configuration parameters for the salt minion, to be passed in as dictionary.
+	// Refer: https://docs.saltproject.io/en/latest/ref/configuration/minion.html
+	AdditionalMinionParams map[string]string `json:"additionalMinionParams,omitempty"`
 
 	// Salt minion installer file name on the master.
-	// Example: installer
+	// This property is currently not being used by any SaltStack operation.
 	InstallerFileName string `json:"installerFileName,omitempty"`
 
 	// Salt master id to which the Salt minion will be connected to.
-	// Example: salt-master
 	MasterID string `json:"masterId,omitempty"`
 
 	// Salt minion ID to be assigned to the deployed minion.
-	// Example: minion-abc
 	MinionID string `json:"minionId,omitempty"`
 
 	// Pillar environment to use when running state files.
-	// Example: pillar-env
+	// Refer: https://docs.saltproject.io/en/latest/ref/modules/all/salt.modules.state.html
 	PillarEnvironment string `json:"pillarEnvironment,omitempty"`
 
 	// Salt environment to use when running state files.
-	// Example: sse
 	SaltEnvironment string `json:"saltEnvironment,omitempty"`
 
 	// List of state files to run on the deployed minion.
-	// Example: ["/apache.sls","/user.sls"]
 	StateFiles []string `json:"stateFiles"`
 
 	// Parameters required by the state file to run on the deployed minion.
-	// Example: {\"key\" : \"value\"}
-	Variables interface{} `json:"variables,omitempty"`
+	Variables map[string]string `json:"variables,omitempty"`
 }
 
 // Validate validates this salt configuration

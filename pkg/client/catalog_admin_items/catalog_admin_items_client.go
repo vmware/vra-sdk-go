@@ -30,34 +30,34 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetCatalogItemUsingGET(params *GetCatalogItemUsingGETParams, opts ...ClientOption) (*GetCatalogItemUsingGETOK, error)
+	GetCatalogItemUsingGET4(params *GetCatalogItemUsingGET4Params, opts ...ClientOption) (*GetCatalogItemUsingGET4OK, error)
 
-	GetCatalogItemsUsingGET(params *GetCatalogItemsUsingGETParams, opts ...ClientOption) (*GetCatalogItemsUsingGETOK, error)
+	GetCatalogItemsUsingGET4(params *GetCatalogItemsUsingGET4Params, opts ...ClientOption) (*GetCatalogItemsUsingGET4OK, error)
 
-	UpdateCatalogItemUsingPATCH(params *UpdateCatalogItemUsingPATCHParams, opts ...ClientOption) (*UpdateCatalogItemUsingPATCHOK, error)
+	UpdateCatalogItemUsingPATCH2(params *UpdateCatalogItemUsingPATCH2Params, opts ...ClientOption) (*UpdateCatalogItemUsingPATCH2OK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  GetCatalogItemUsingGET finds a catalog item with specified id
+  GetCatalogItemUsingGET4 finds a catalog item with specified id
 
   Returns the catalog item with the specified id.
 */
-func (a *Client) GetCatalogItemUsingGET(params *GetCatalogItemUsingGETParams, opts ...ClientOption) (*GetCatalogItemUsingGETOK, error) {
+func (a *Client) GetCatalogItemUsingGET4(params *GetCatalogItemUsingGET4Params, opts ...ClientOption) (*GetCatalogItemUsingGET4OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetCatalogItemUsingGETParams()
+		params = NewGetCatalogItemUsingGET4Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getCatalogItemUsingGET",
+		ID:                 "getCatalogItemUsingGET_4",
 		Method:             "GET",
 		PathPattern:        "/catalog/api/admin/items/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetCatalogItemUsingGETReader{formats: a.formats},
+		Reader:             &GetCatalogItemUsingGET4Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -69,35 +69,35 @@ func (a *Client) GetCatalogItemUsingGET(params *GetCatalogItemUsingGETParams, op
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetCatalogItemUsingGETOK)
+	success, ok := result.(*GetCatalogItemUsingGET4OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getCatalogItemUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getCatalogItemUsingGET_4: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetCatalogItemsUsingGET fetches a list of catalog items
+  GetCatalogItemsUsingGET4 fetches a list of catalog items
 
   Returns a paginated list of catalog items.
 */
-func (a *Client) GetCatalogItemsUsingGET(params *GetCatalogItemsUsingGETParams, opts ...ClientOption) (*GetCatalogItemsUsingGETOK, error) {
+func (a *Client) GetCatalogItemsUsingGET4(params *GetCatalogItemsUsingGET4Params, opts ...ClientOption) (*GetCatalogItemsUsingGET4OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetCatalogItemsUsingGETParams()
+		params = NewGetCatalogItemsUsingGET4Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getCatalogItemsUsingGET",
+		ID:                 "getCatalogItemsUsingGET_4",
 		Method:             "GET",
 		PathPattern:        "/catalog/api/admin/items",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetCatalogItemsUsingGETReader{formats: a.formats},
+		Reader:             &GetCatalogItemsUsingGET4Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -109,35 +109,35 @@ func (a *Client) GetCatalogItemsUsingGET(params *GetCatalogItemsUsingGETParams, 
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetCatalogItemsUsingGETOK)
+	success, ok := result.(*GetCatalogItemsUsingGET4OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getCatalogItemsUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getCatalogItemsUsingGET_4: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  UpdateCatalogItemUsingPATCH sets an icon or request limit to a catalog item
+  UpdateCatalogItemUsingPATCH2 sets an icon or request limit to a catalog item
 
   Updates a catalog item with specified icon id or request limit.
 */
-func (a *Client) UpdateCatalogItemUsingPATCH(params *UpdateCatalogItemUsingPATCHParams, opts ...ClientOption) (*UpdateCatalogItemUsingPATCHOK, error) {
+func (a *Client) UpdateCatalogItemUsingPATCH2(params *UpdateCatalogItemUsingPATCH2Params, opts ...ClientOption) (*UpdateCatalogItemUsingPATCH2OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewUpdateCatalogItemUsingPATCHParams()
+		params = NewUpdateCatalogItemUsingPATCH2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "updateCatalogItemUsingPATCH",
+		ID:                 "updateCatalogItemUsingPATCH_2",
 		Method:             "PATCH",
 		PathPattern:        "/catalog/api/admin/items/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &UpdateCatalogItemUsingPATCHReader{formats: a.formats},
+		Reader:             &UpdateCatalogItemUsingPATCH2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -149,13 +149,13 @@ func (a *Client) UpdateCatalogItemUsingPATCH(params *UpdateCatalogItemUsingPATCH
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*UpdateCatalogItemUsingPATCHOK)
+	success, ok := result.(*UpdateCatalogItemUsingPATCH2OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateCatalogItemUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for updateCatalogItemUsingPATCH_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

@@ -30,144 +30,144 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CloneByNameUsingPOST(params *CloneByNameUsingPOSTParams, opts ...ClientOption) (*CloneByNameUsingPOSTOK, error)
+	CloneGerritListenerByNameUsingPOST(params *CloneGerritListenerByNameUsingPOSTParams, opts ...ClientOption) (*CloneGerritListenerByNameUsingPOSTOK, error)
 
-	CloneByNameUsingPOST1(params *CloneByNameUsingPOST1Params, opts ...ClientOption) (*CloneByNameUsingPOST1OK, error)
+	CloneGerritListenerUsingPOST(params *CloneGerritListenerUsingPOSTParams, opts ...ClientOption) (*CloneGerritListenerUsingPOSTOK, error)
 
-	CloneListenerUsingPOST(params *CloneListenerUsingPOSTParams, opts ...ClientOption) (*CloneListenerUsingPOSTOK, error)
+	CloneGerritTriggerByNameUsingPOST(params *CloneGerritTriggerByNameUsingPOSTParams, opts ...ClientOption) (*CloneGerritTriggerByNameUsingPOSTOK, error)
 
-	CloneTriggerUsingPOST(params *CloneTriggerUsingPOSTParams, opts ...ClientOption) (*CloneTriggerUsingPOSTOK, error)
+	CloneGerritTriggerUsingPOST(params *CloneGerritTriggerUsingPOSTParams, opts ...ClientOption) (*CloneGerritTriggerUsingPOSTOK, error)
 
-	CreateUsingPOST1(params *CreateUsingPOST1Params, opts ...ClientOption) (*CreateUsingPOST1OK, error)
+	CreateDockerRegistryWebhookUsingPOST(params *CreateDockerRegistryWebhookUsingPOSTParams, opts ...ClientOption) (*CreateDockerRegistryWebhookUsingPOSTOK, error)
 
-	CreateUsingPOST3(params *CreateUsingPOST3Params, opts ...ClientOption) (*CreateUsingPOST3OK, error)
+	CreateGerritListenerUsingPOST(params *CreateGerritListenerUsingPOSTParams, opts ...ClientOption) (*CreateGerritListenerUsingPOSTOK, error)
 
-	CreateUsingPOST4(params *CreateUsingPOST4Params, opts ...ClientOption) (*CreateUsingPOST4OK, error)
+	CreateGerritTriggerUsingPOST(params *CreateGerritTriggerUsingPOSTParams, opts ...ClientOption) (*CreateGerritTriggerUsingPOSTOK, error)
 
-	CreateUsingPOST5(params *CreateUsingPOST5Params, opts ...ClientOption) (*CreateUsingPOST5OK, error)
+	CreateGitWebhookUsingPOST(params *CreateGitWebhookUsingPOSTParams, opts ...ClientOption) (*CreateGitWebhookUsingPOSTOK, error)
 
-	DeleteByIDUsingDELETE(params *DeleteByIDUsingDELETEParams, opts ...ClientOption) (*DeleteByIDUsingDELETEOK, error)
+	DeleteDockerRegistryEventByIDUsingDELETE(params *DeleteDockerRegistryEventByIDUsingDELETEParams, opts ...ClientOption) (*DeleteDockerRegistryEventByIDUsingDELETEOK, error)
 
-	DeleteByIDUsingDELETE1(params *DeleteByIDUsingDELETE1Params, opts ...ClientOption) (*DeleteByIDUsingDELETE1OK, error)
+	DeleteDockerRegistryWebhookByIDUsingDELETE(params *DeleteDockerRegistryWebhookByIDUsingDELETEParams, opts ...ClientOption) (*DeleteDockerRegistryWebhookByIDUsingDELETEOK, error)
 
-	DeleteByNameUsingDELETE(params *DeleteByNameUsingDELETEParams, opts ...ClientOption) (*DeleteByNameUsingDELETEOK, error)
+	DeleteDockerRegistryWebhookByNameUsingDELETE(params *DeleteDockerRegistryWebhookByNameUsingDELETEParams, opts ...ClientOption) (*DeleteDockerRegistryWebhookByNameUsingDELETEOK, error)
 
-	DeleteByNameUsingDELETE1(params *DeleteByNameUsingDELETE1Params, opts ...ClientOption) (*DeleteByNameUsingDELETE1OK, error)
+	DeleteGerritEventByIDUsingDELETE(params *DeleteGerritEventByIDUsingDELETEParams, opts ...ClientOption) (*DeleteGerritEventByIDUsingDELETEOK, error)
 
-	DeleteByNameUsingDELETE2(params *DeleteByNameUsingDELETE2Params, opts ...ClientOption) (*DeleteByNameUsingDELETE2OK, error)
+	DeleteGerritListenerByIDUsingDELETE(params *DeleteGerritListenerByIDUsingDELETEParams, opts ...ClientOption) (*DeleteGerritListenerByIDUsingDELETEOK, error)
 
-	DeleteByNameUsingDELETE3(params *DeleteByNameUsingDELETE3Params, opts ...ClientOption) (*DeleteByNameUsingDELETE3OK, error)
+	DeleteGerritListenerByNameUsingDELETE(params *DeleteGerritListenerByNameUsingDELETEParams, opts ...ClientOption) (*DeleteGerritListenerByNameUsingDELETEOK, error)
 
-	DeleteUsingDELETEMixin3(params *DeleteUsingDELETEMixin3Params, opts ...ClientOption) (*DeleteUsingDELETEMixin3OK, error)
+	DeleteGerritTriggerByIDUsingDELETE(params *DeleteGerritTriggerByIDUsingDELETEParams, opts ...ClientOption) (*DeleteGerritTriggerByIDUsingDELETEOK, error)
 
-	DeleteUsingDELETE4(params *DeleteUsingDELETE4Params, opts ...ClientOption) (*DeleteUsingDELETE4OK, error)
+	DeleteGerritTriggerByNameUsingDELETE(params *DeleteGerritTriggerByNameUsingDELETEParams, opts ...ClientOption) (*DeleteGerritTriggerByNameUsingDELETEOK, error)
 
-	DeleteUsingDELETE5(params *DeleteUsingDELETE5Params, opts ...ClientOption) (*DeleteUsingDELETE5OK, error)
+	DeleteGitEventsByIDUsingDELETE(params *DeleteGitEventsByIDUsingDELETEParams, opts ...ClientOption) (*DeleteGitEventsByIDUsingDELETEOK, error)
 
-	DeleteUsingDELETE6(params *DeleteUsingDELETE6Params, opts ...ClientOption) (*DeleteUsingDELETE6OK, error)
+	DeleteGitWebhookByIDUsingDELETE(params *DeleteGitWebhookByIDUsingDELETEParams, opts ...ClientOption) (*DeleteGitWebhookByIDUsingDELETEOK, error)
 
-	DeleteUsingDELETE7(params *DeleteUsingDELETE7Params, opts ...ClientOption) (*DeleteUsingDELETE7OK, error)
+	DeleteGitWebhookByNameUsingDELETE(params *DeleteGitWebhookByNameUsingDELETEParams, opts ...ClientOption) (*DeleteGitWebhookByNameUsingDELETEOK, error)
 
-	GetAllUsingGET(params *GetAllUsingGETParams, opts ...ClientOption) (*GetAllUsingGETOK, error)
+	GetAllDockerRegistryEventsUsingGET(params *GetAllDockerRegistryEventsUsingGETParams, opts ...ClientOption) (*GetAllDockerRegistryEventsUsingGETOK, error)
 
-	GetAllUsingGET1(params *GetAllUsingGET1Params, opts ...ClientOption) (*GetAllUsingGET1OK, error)
+	GetAllDockerRegistryWebhooksUsingGET(params *GetAllDockerRegistryWebhooksUsingGETParams, opts ...ClientOption) (*GetAllDockerRegistryWebhooksUsingGETOK, error)
 
-	GetAllUsingGET4(params *GetAllUsingGET4Params, opts ...ClientOption) (*GetAllUsingGET4OK, error)
+	GetAllGerritEventsUsingGET(params *GetAllGerritEventsUsingGETParams, opts ...ClientOption) (*GetAllGerritEventsUsingGETOK, error)
 
-	GetAllUsingGET5(params *GetAllUsingGET5Params, opts ...ClientOption) (*GetAllUsingGET5OK, error)
+	GetAllGerritListenersUsingGET(params *GetAllGerritListenersUsingGETParams, opts ...ClientOption) (*GetAllGerritListenersUsingGETOK, error)
 
-	GetAllUsingGET6(params *GetAllUsingGET6Params, opts ...ClientOption) (*GetAllUsingGET6OK, error)
+	GetAllGerritTriggersUsingGET(params *GetAllGerritTriggersUsingGETParams, opts ...ClientOption) (*GetAllGerritTriggersUsingGETOK, error)
 
-	GetAllUsingGET7(params *GetAllUsingGET7Params, opts ...ClientOption) (*GetAllUsingGET7OK, error)
+	GetAllGitEventsUsingGET(params *GetAllGitEventsUsingGETParams, opts ...ClientOption) (*GetAllGitEventsUsingGETOK, error)
 
-	GetAllUsingGET8(params *GetAllUsingGET8Params, opts ...ClientOption) (*GetAllUsingGET8OK, error)
+	GetAllGitWebhooksUsingGET(params *GetAllGitWebhooksUsingGETParams, opts ...ClientOption) (*GetAllGitWebhooksUsingGETOK, error)
 
-	GetByIDUsingGET2(params *GetByIDUsingGET2Params, opts ...ClientOption) (*GetByIDUsingGET2OK, error)
+	GetDockerRegistryWebhookNameUsingGET(params *GetDockerRegistryWebhookNameUsingGETParams, opts ...ClientOption) (*GetDockerRegistryWebhookNameUsingGETOK, error)
 
-	GetByIDUsingGET3(params *GetByIDUsingGET3Params, opts ...ClientOption) (*GetByIDUsingGET3OK, error)
+	GetGerritEventByIDUsingGET(params *GetGerritEventByIDUsingGETParams, opts ...ClientOption) (*GetGerritEventByIDUsingGETOK, error)
 
-	GetByIDUsingGET4(params *GetByIDUsingGET4Params, opts ...ClientOption) (*GetByIDUsingGET4OK, error)
+	GetGerritListenerByIDUsingGET(params *GetGerritListenerByIDUsingGETParams, opts ...ClientOption) (*GetGerritListenerByIDUsingGETOK, error)
 
-	GetByIDUsingGET5(params *GetByIDUsingGET5Params, opts ...ClientOption) (*GetByIDUsingGET5OK, error)
+	GetGerritListenerByNameUsingGET(params *GetGerritListenerByNameUsingGETParams, opts ...ClientOption) (*GetGerritListenerByNameUsingGETOK, error)
 
-	GetByIDUsingGET1(params *GetByIDUsingGET1Params, opts ...ClientOption) (*GetByIDUsingGET1OK, error)
+	GetGerritProjectsByIDUsingGET(params *GetGerritProjectsByIDUsingGETParams, opts ...ClientOption) (*GetGerritProjectsByIDUsingGETOK, error)
 
-	GetByNameUsingGET1(params *GetByNameUsingGET1Params, opts ...ClientOption) (*GetByNameUsingGET1OK, error)
+	GetGerritProjectsByNameUsingGET(params *GetGerritProjectsByNameUsingGETParams, opts ...ClientOption) (*GetGerritProjectsByNameUsingGETOK, error)
 
-	GetByNameUsingGET2(params *GetByNameUsingGET2Params, opts ...ClientOption) (*GetByNameUsingGET2OK, error)
+	GetGerritTriggerByIDUsingGET(params *GetGerritTriggerByIDUsingGETParams, opts ...ClientOption) (*GetGerritTriggerByIDUsingGETOK, error)
 
-	GetByNameUsingGET3(params *GetByNameUsingGET3Params, opts ...ClientOption) (*GetByNameUsingGET3OK, error)
+	GetGerritTriggerByNameUsingGET(params *GetGerritTriggerByNameUsingGETParams, opts ...ClientOption) (*GetGerritTriggerByNameUsingGETOK, error)
 
-	GetGerritProjectsUsingGET(params *GetGerritProjectsUsingGETParams, opts ...ClientOption) (*GetGerritProjectsUsingGETOK, error)
+	GetGitEventByIDUsingGET(params *GetGitEventByIDUsingGETParams, opts ...ClientOption) (*GetGitEventByIDUsingGETOK, error)
 
-	GetGerritProjectsUsingGET1(params *GetGerritProjectsUsingGET1Params, opts ...ClientOption) (*GetGerritProjectsUsingGET1OK, error)
+	GetGitWebhookByIDUsingGET(params *GetGitWebhookByIDUsingGETParams, opts ...ClientOption) (*GetGitWebhookByIDUsingGETOK, error)
 
-	GetNameUsingGET(params *GetNameUsingGETParams, opts ...ClientOption) (*GetNameUsingGETOK, error)
+	GetGitWebhookByNameUsingGET(params *GetGitWebhookByNameUsingGETParams, opts ...ClientOption) (*GetGitWebhookByNameUsingGETOK, error)
 
 	GetRegistryEventByID(params *GetRegistryEventByIDParams, opts ...ClientOption) (*GetRegistryEventByIDOK, error)
 
 	GetRegistryWebhookByID(params *GetRegistryWebhookByIDParams, opts ...ClientOption) (*GetRegistryWebhookByIDOK, error)
 
-	ManualTriggerUsingPOST(params *ManualTriggerUsingPOSTParams, opts ...ClientOption) (*ManualTriggerUsingPOSTOK, error)
+	ManualGerritEventTriggerUsingPOST(params *ManualGerritEventTriggerUsingPOSTParams, opts ...ClientOption) (*ManualGerritEventTriggerUsingPOSTOK, error)
 
-	PatchByIDUsingPATCH(params *PatchByIDUsingPATCHParams, opts ...ClientOption) (*PatchByIDUsingPATCHOK, error)
+	PatchDockerRegistryWebhookByIDUsingPATCH(params *PatchDockerRegistryWebhookByIDUsingPATCHParams, opts ...ClientOption) (*PatchDockerRegistryWebhookByIDUsingPATCHOK, error)
 
-	PatchByIDUsingPATCH1(params *PatchByIDUsingPATCH1Params, opts ...ClientOption) (*PatchByIDUsingPATCH1OK, error)
+	PatchDockerRegistryWebhookByNameUsingPATCH(params *PatchDockerRegistryWebhookByNameUsingPATCHParams, opts ...ClientOption) (*PatchDockerRegistryWebhookByNameUsingPATCHOK, error)
 
-	PatchByIDUsingPATCH2(params *PatchByIDUsingPATCH2Params, opts ...ClientOption) (*PatchByIDUsingPATCH2OK, error)
+	PatchGerritListenerByIDUsingPATCH(params *PatchGerritListenerByIDUsingPATCHParams, opts ...ClientOption) (*PatchGerritListenerByIDUsingPATCHOK, error)
 
-	PatchByNameUsingPATCH(params *PatchByNameUsingPATCHParams, opts ...ClientOption) (*PatchByNameUsingPATCHOK, error)
+	PatchGerritListenerByNameUsingPATCH(params *PatchGerritListenerByNameUsingPATCHParams, opts ...ClientOption) (*PatchGerritListenerByNameUsingPATCHOK, error)
 
-	PatchByNameUsingPATCH1(params *PatchByNameUsingPATCH1Params, opts ...ClientOption) (*PatchByNameUsingPATCH1OK, error)
+	PatchGerritTriggerByIDUsingPATCH(params *PatchGerritTriggerByIDUsingPATCHParams, opts ...ClientOption) (*PatchGerritTriggerByIDUsingPATCHOK, error)
 
-	PatchByNameUsingPATCH2(params *PatchByNameUsingPATCH2Params, opts ...ClientOption) (*PatchByNameUsingPATCH2OK, error)
+	PatchGerritTriggerByNameUsingPATCH(params *PatchGerritTriggerByNameUsingPATCHParams, opts ...ClientOption) (*PatchGerritTriggerByNameUsingPATCHOK, error)
 
-	ResumeOrRerunEventUsingPOST(params *ResumeOrRerunEventUsingPOSTParams, opts ...ClientOption) (*ResumeOrRerunEventUsingPOSTOK, error)
+	ResumeOrRerunDockerRegistryEventUsingPOST(params *ResumeOrRerunDockerRegistryEventUsingPOSTParams, opts ...ClientOption) (*ResumeOrRerunDockerRegistryEventUsingPOSTOK, error)
 
-	ResumeOrRerunEventUsingPOST1(params *ResumeOrRerunEventUsingPOST1Params, opts ...ClientOption) (*ResumeOrRerunEventUsingPOST1OK, error)
+	ResumeOrRerunGerritEventUsingPOST(params *ResumeOrRerunGerritEventUsingPOSTParams, opts ...ClientOption) (*ResumeOrRerunGerritEventUsingPOSTOK, error)
 
-	ResumeOrRerunEventUsingPOST2(params *ResumeOrRerunEventUsingPOST2Params, opts ...ClientOption) (*ResumeOrRerunEventUsingPOST2OK, error)
+	ResumeOrRerunGitEventUsingPOST(params *ResumeOrRerunGitEventUsingPOSTParams, opts ...ClientOption) (*ResumeOrRerunGitEventUsingPOSTOK, error)
 
-	UpdateByIDUsingPUT2(params *UpdateByIDUsingPUT2Params, opts ...ClientOption) (*UpdateByIDUsingPUT2OK, error)
+	UpdateDockerRegistryWebhookByIDUsingPUT(params *UpdateDockerRegistryWebhookByIDUsingPUTParams, opts ...ClientOption) (*UpdateDockerRegistryWebhookByIDUsingPUTOK, error)
 
-	UpdateByIDUsingPUT3(params *UpdateByIDUsingPUT3Params, opts ...ClientOption) (*UpdateByIDUsingPUT3OK, error)
+	UpdateDockerRegistryWebhookByNameUsingPUT(params *UpdateDockerRegistryWebhookByNameUsingPUTParams, opts ...ClientOption) (*UpdateDockerRegistryWebhookByNameUsingPUTOK, error)
 
-	UpdateByNameUsingPUT(params *UpdateByNameUsingPUTParams, opts ...ClientOption) (*UpdateByNameUsingPUTOK, error)
+	UpdateGerritListenerByIDUsingPUT(params *UpdateGerritListenerByIDUsingPUTParams, opts ...ClientOption) (*UpdateGerritListenerByIDUsingPUTOK, error)
 
-	UpdateByNameUsingPUT2(params *UpdateByNameUsingPUT2Params, opts ...ClientOption) (*UpdateByNameUsingPUT2OK, error)
+	UpdateGerritListenerByNameUsingPUT(params *UpdateGerritListenerByNameUsingPUTParams, opts ...ClientOption) (*UpdateGerritListenerByNameUsingPUTOK, error)
 
-	UpdateByNameUsingPUT3(params *UpdateByNameUsingPUT3Params, opts ...ClientOption) (*UpdateByNameUsingPUT3OK, error)
+	UpdateGerritTriggerByIDUsingPUT(params *UpdateGerritTriggerByIDUsingPUTParams, opts ...ClientOption) (*UpdateGerritTriggerByIDUsingPUTOK, error)
 
-	UpdateByNameUsingPUT4(params *UpdateByNameUsingPUT4Params, opts ...ClientOption) (*UpdateByNameUsingPUT4OK, error)
+	UpdateGerritTriggerByNameUsingPUT(params *UpdateGerritTriggerByNameUsingPUTParams, opts ...ClientOption) (*UpdateGerritTriggerByNameUsingPUTOK, error)
 
-	UpdateUsingPUT(params *UpdateUsingPUTParams, opts ...ClientOption) (*UpdateUsingPUTOK, error)
+	UpdateGitWebhookByIDUsingPUT(params *UpdateGitWebhookByIDUsingPUTParams, opts ...ClientOption) (*UpdateGitWebhookByIDUsingPUTOK, error)
 
-	UpdateUsingPUT1(params *UpdateUsingPUT1Params, opts ...ClientOption) (*UpdateUsingPUT1OK, error)
+	UpdateGitWebhookByNameUsingPUT(params *UpdateGitWebhookByNameUsingPUTParams, opts ...ClientOption) (*UpdateGitWebhookByNameUsingPUTOK, error)
 
-	ValidateUsingPOST(params *ValidateUsingPOSTParams, opts ...ClientOption) (*ValidateUsingPOSTOK, error)
+	ValidateGerritListenerUsingPOST(params *ValidateGerritListenerUsingPOSTParams, opts ...ClientOption) (*ValidateGerritListenerUsingPOSTOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  CloneByNameUsingPOST clones a gerrit listener by project and name
+  CloneGerritListenerByNameUsingPOST clones a gerrit listener by project and name
 
   Clone a Gerrit Listener with the given project and name
 */
-func (a *Client) CloneByNameUsingPOST(params *CloneByNameUsingPOSTParams, opts ...ClientOption) (*CloneByNameUsingPOSTOK, error) {
+func (a *Client) CloneGerritListenerByNameUsingPOST(params *CloneGerritListenerByNameUsingPOSTParams, opts ...ClientOption) (*CloneGerritListenerByNameUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCloneByNameUsingPOSTParams()
+		params = NewCloneGerritListenerByNameUsingPOSTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "cloneByNameUsingPOST",
+		ID:                 "cloneGerritListenerByNameUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/codestream/api/gerrit-listeners/{project}/{name}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CloneByNameUsingPOSTReader{formats: a.formats},
+		Reader:             &CloneGerritListenerByNameUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -179,75 +179,35 @@ func (a *Client) CloneByNameUsingPOST(params *CloneByNameUsingPOSTParams, opts .
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CloneByNameUsingPOSTOK)
+	success, ok := result.(*CloneGerritListenerByNameUsingPOSTOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for cloneByNameUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for cloneGerritListenerByNameUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  CloneByNameUsingPOST1 clones a gerrit trigger by project and name
-
-  Clone a Gerrit Trigger with the given project and name
-*/
-func (a *Client) CloneByNameUsingPOST1(params *CloneByNameUsingPOST1Params, opts ...ClientOption) (*CloneByNameUsingPOST1OK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewCloneByNameUsingPOST1Params()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "cloneByNameUsingPOST_1",
-		Method:             "POST",
-		PathPattern:        "/codestream/api/gerrit-triggers/{project}/{name}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &CloneByNameUsingPOST1Reader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*CloneByNameUsingPOST1OK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for cloneByNameUsingPOST_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  CloneListenerUsingPOST clones a gerrit listener
+  CloneGerritListenerUsingPOST clones a gerrit listener
 
   Clone a Gerrit Listener
 */
-func (a *Client) CloneListenerUsingPOST(params *CloneListenerUsingPOSTParams, opts ...ClientOption) (*CloneListenerUsingPOSTOK, error) {
+func (a *Client) CloneGerritListenerUsingPOST(params *CloneGerritListenerUsingPOSTParams, opts ...ClientOption) (*CloneGerritListenerUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCloneListenerUsingPOSTParams()
+		params = NewCloneGerritListenerUsingPOSTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "cloneListenerUsingPOST",
+		ID:                 "cloneGerritListenerUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/codestream/api/gerrit-listeners/{id}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CloneListenerUsingPOSTReader{formats: a.formats},
+		Reader:             &CloneGerritListenerUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -259,35 +219,75 @@ func (a *Client) CloneListenerUsingPOST(params *CloneListenerUsingPOSTParams, op
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CloneListenerUsingPOSTOK)
+	success, ok := result.(*CloneGerritListenerUsingPOSTOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for cloneListenerUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for cloneGerritListenerUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  CloneTriggerUsingPOST clones a gerrit trigger
+  CloneGerritTriggerByNameUsingPOST clones a gerrit trigger by project and name
+
+  Clone a Gerrit Trigger with the given project and name
+*/
+func (a *Client) CloneGerritTriggerByNameUsingPOST(params *CloneGerritTriggerByNameUsingPOSTParams, opts ...ClientOption) (*CloneGerritTriggerByNameUsingPOSTOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCloneGerritTriggerByNameUsingPOSTParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "cloneGerritTriggerByNameUsingPOST",
+		Method:             "POST",
+		PathPattern:        "/codestream/api/gerrit-triggers/{project}/{name}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CloneGerritTriggerByNameUsingPOSTReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CloneGerritTriggerByNameUsingPOSTOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for cloneGerritTriggerByNameUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  CloneGerritTriggerUsingPOST clones a gerrit trigger
 
   Clone a Gerrit Trigger
 */
-func (a *Client) CloneTriggerUsingPOST(params *CloneTriggerUsingPOSTParams, opts ...ClientOption) (*CloneTriggerUsingPOSTOK, error) {
+func (a *Client) CloneGerritTriggerUsingPOST(params *CloneGerritTriggerUsingPOSTParams, opts ...ClientOption) (*CloneGerritTriggerUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCloneTriggerUsingPOSTParams()
+		params = NewCloneGerritTriggerUsingPOSTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "cloneTriggerUsingPOST",
+		ID:                 "cloneGerritTriggerUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/codestream/api/gerrit-triggers/{id}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CloneTriggerUsingPOSTReader{formats: a.formats},
+		Reader:             &CloneGerritTriggerUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -299,35 +299,35 @@ func (a *Client) CloneTriggerUsingPOST(params *CloneTriggerUsingPOSTParams, opts
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CloneTriggerUsingPOSTOK)
+	success, ok := result.(*CloneGerritTriggerUsingPOSTOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for cloneTriggerUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for cloneGerritTriggerUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  CreateUsingPOST1 creates a docker registry webhook
+  CreateDockerRegistryWebhookUsingPOST creates a docker registry webhook
 
   Create a Docker Registry Webhook
 */
-func (a *Client) CreateUsingPOST1(params *CreateUsingPOST1Params, opts ...ClientOption) (*CreateUsingPOST1OK, error) {
+func (a *Client) CreateDockerRegistryWebhookUsingPOST(params *CreateDockerRegistryWebhookUsingPOSTParams, opts ...ClientOption) (*CreateDockerRegistryWebhookUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateUsingPOST1Params()
+		params = NewCreateDockerRegistryWebhookUsingPOSTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createUsingPOST_1",
+		ID:                 "createDockerRegistryWebhookUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/codestream/api/registry-webhooks",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateUsingPOST1Reader{formats: a.formats},
+		Reader:             &CreateDockerRegistryWebhookUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -339,35 +339,35 @@ func (a *Client) CreateUsingPOST1(params *CreateUsingPOST1Params, opts ...Client
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateUsingPOST1OK)
+	success, ok := result.(*CreateDockerRegistryWebhookUsingPOSTOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for createUsingPOST_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for createDockerRegistryWebhookUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  CreateUsingPOST3 creates a gerrit listener
+  CreateGerritListenerUsingPOST creates a gerrit listener
 
   Create a Gerrit Listener
 */
-func (a *Client) CreateUsingPOST3(params *CreateUsingPOST3Params, opts ...ClientOption) (*CreateUsingPOST3OK, error) {
+func (a *Client) CreateGerritListenerUsingPOST(params *CreateGerritListenerUsingPOSTParams, opts ...ClientOption) (*CreateGerritListenerUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateUsingPOST3Params()
+		params = NewCreateGerritListenerUsingPOSTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createUsingPOST_3",
+		ID:                 "createGerritListenerUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/codestream/api/gerrit-listeners",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateUsingPOST3Reader{formats: a.formats},
+		Reader:             &CreateGerritListenerUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -379,35 +379,35 @@ func (a *Client) CreateUsingPOST3(params *CreateUsingPOST3Params, opts ...Client
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateUsingPOST3OK)
+	success, ok := result.(*CreateGerritListenerUsingPOSTOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for createUsingPOST_3: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for createGerritListenerUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  CreateUsingPOST4 creates a gerrit trigger
+  CreateGerritTriggerUsingPOST creates a gerrit trigger
 
   Create a Gerrit Trigger
 */
-func (a *Client) CreateUsingPOST4(params *CreateUsingPOST4Params, opts ...ClientOption) (*CreateUsingPOST4OK, error) {
+func (a *Client) CreateGerritTriggerUsingPOST(params *CreateGerritTriggerUsingPOSTParams, opts ...ClientOption) (*CreateGerritTriggerUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateUsingPOST4Params()
+		params = NewCreateGerritTriggerUsingPOSTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createUsingPOST_4",
+		ID:                 "createGerritTriggerUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/codestream/api/gerrit-triggers",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateUsingPOST4Reader{formats: a.formats},
+		Reader:             &CreateGerritTriggerUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -419,35 +419,35 @@ func (a *Client) CreateUsingPOST4(params *CreateUsingPOST4Params, opts ...Client
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateUsingPOST4OK)
+	success, ok := result.(*CreateGerritTriggerUsingPOSTOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for createUsingPOST_4: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for createGerritTriggerUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  CreateUsingPOST5 creates a git webhook
+  CreateGitWebhookUsingPOST creates a git webhook
 
   Create a Git Webhook
 */
-func (a *Client) CreateUsingPOST5(params *CreateUsingPOST5Params, opts ...ClientOption) (*CreateUsingPOST5OK, error) {
+func (a *Client) CreateGitWebhookUsingPOST(params *CreateGitWebhookUsingPOSTParams, opts ...ClientOption) (*CreateGitWebhookUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateUsingPOST5Params()
+		params = NewCreateGitWebhookUsingPOSTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createUsingPOST_5",
+		ID:                 "createGitWebhookUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/codestream/api/git-webhooks",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateUsingPOST5Reader{formats: a.formats},
+		Reader:             &CreateGitWebhookUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -459,275 +459,35 @@ func (a *Client) CreateUsingPOST5(params *CreateUsingPOST5Params, opts ...Client
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateUsingPOST5OK)
+	success, ok := result.(*CreateGitWebhookUsingPOSTOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for createUsingPOST_5: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for createGitWebhookUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  DeleteByIDUsingDELETE deletes a docker registry webhook
-
-  Delete a Docker Registry Webhook
-*/
-func (a *Client) DeleteByIDUsingDELETE(params *DeleteByIDUsingDELETEParams, opts ...ClientOption) (*DeleteByIDUsingDELETEOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteByIDUsingDELETEParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteByIdUsingDELETE",
-		Method:             "DELETE",
-		PathPattern:        "/codestream/api/registry-webhooks/{id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteByIDUsingDELETEReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteByIDUsingDELETEOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteByIdUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  DeleteByIDUsingDELETE1 deletes a gerrit listener with id
-
-  Delete a Gerrit Listener with id
-*/
-func (a *Client) DeleteByIDUsingDELETE1(params *DeleteByIDUsingDELETE1Params, opts ...ClientOption) (*DeleteByIDUsingDELETE1OK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteByIDUsingDELETE1Params()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteByIdUsingDELETE_1",
-		Method:             "DELETE",
-		PathPattern:        "/codestream/api/gerrit-listeners/{id}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteByIDUsingDELETE1Reader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteByIDUsingDELETE1OK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteByIdUsingDELETE_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  DeleteByNameUsingDELETE deletes a docker registry webhook using name
-
-  Delete a Docker Registry Webhook using name
-*/
-func (a *Client) DeleteByNameUsingDELETE(params *DeleteByNameUsingDELETEParams, opts ...ClientOption) (*DeleteByNameUsingDELETEOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteByNameUsingDELETEParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteByNameUsingDELETE",
-		Method:             "DELETE",
-		PathPattern:        "/codestream/api/registry-webhooks/{project}/{name}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteByNameUsingDELETEReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteByNameUsingDELETEOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteByNameUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  DeleteByNameUsingDELETE1 deletes a gerrit listener with project and name
-
-  Delete a Gerrit Listener with project and name
-*/
-func (a *Client) DeleteByNameUsingDELETE1(params *DeleteByNameUsingDELETE1Params, opts ...ClientOption) (*DeleteByNameUsingDELETE1OK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteByNameUsingDELETE1Params()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteByNameUsingDELETE_1",
-		Method:             "DELETE",
-		PathPattern:        "/codestream/api/gerrit-listeners/{project}/{name}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteByNameUsingDELETE1Reader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteByNameUsingDELETE1OK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteByNameUsingDELETE_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  DeleteByNameUsingDELETE2 deletes a gerrit trigger with project and name
-
-  Delete a Gerrit Trigger with project and name
-*/
-func (a *Client) DeleteByNameUsingDELETE2(params *DeleteByNameUsingDELETE2Params, opts ...ClientOption) (*DeleteByNameUsingDELETE2OK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteByNameUsingDELETE2Params()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteByNameUsingDELETE_2",
-		Method:             "DELETE",
-		PathPattern:        "/codestream/api/gerrit-triggers/{project}/{name}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteByNameUsingDELETE2Reader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteByNameUsingDELETE2OK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteByNameUsingDELETE_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  DeleteByNameUsingDELETE3 deletes a git webhook by name
-
-  Delete a Git Webhook by name
-*/
-func (a *Client) DeleteByNameUsingDELETE3(params *DeleteByNameUsingDELETE3Params, opts ...ClientOption) (*DeleteByNameUsingDELETE3OK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteByNameUsingDELETE3Params()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteByNameUsingDELETE_3",
-		Method:             "DELETE",
-		PathPattern:        "/codestream/api/git-webhooks/{project}/{name}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteByNameUsingDELETE3Reader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteByNameUsingDELETE3OK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteByNameUsingDELETE_3: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  DeleteUsingDELETEMixin3 deletes a docker registry event
+  DeleteDockerRegistryEventByIDUsingDELETE deletes a docker registry event
 
   Delete a Docker Registry Event
 */
-func (a *Client) DeleteUsingDELETEMixin3(params *DeleteUsingDELETEMixin3Params, opts ...ClientOption) (*DeleteUsingDELETEMixin3OK, error) {
+func (a *Client) DeleteDockerRegistryEventByIDUsingDELETE(params *DeleteDockerRegistryEventByIDUsingDELETEParams, opts ...ClientOption) (*DeleteDockerRegistryEventByIDUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteUsingDELETEMixin3Params()
+		params = NewDeleteDockerRegistryEventByIDUsingDELETEParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteUsingDELETEMixin3",
+		ID:                 "deleteDockerRegistryEventByIdUsingDELETE",
 		Method:             "DELETE",
 		PathPattern:        "/codestream/api/registry-events/{id}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteUsingDELETEMixin3Reader{formats: a.formats},
+		Reader:             &DeleteDockerRegistryEventByIDUsingDELETEReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -739,35 +499,115 @@ func (a *Client) DeleteUsingDELETEMixin3(params *DeleteUsingDELETEMixin3Params, 
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteUsingDELETEMixin3OK)
+	success, ok := result.(*DeleteDockerRegistryEventByIDUsingDELETEOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteUsingDELETEMixin3: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for deleteDockerRegistryEventByIdUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  DeleteUsingDELETE4 deletes a gerrit event
+  DeleteDockerRegistryWebhookByIDUsingDELETE deletes a docker registry webhook
+
+  Delete a Docker Registry Webhook
+*/
+func (a *Client) DeleteDockerRegistryWebhookByIDUsingDELETE(params *DeleteDockerRegistryWebhookByIDUsingDELETEParams, opts ...ClientOption) (*DeleteDockerRegistryWebhookByIDUsingDELETEOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteDockerRegistryWebhookByIDUsingDELETEParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteDockerRegistryWebhookByIdUsingDELETE",
+		Method:             "DELETE",
+		PathPattern:        "/codestream/api/registry-webhooks/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteDockerRegistryWebhookByIDUsingDELETEReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteDockerRegistryWebhookByIDUsingDELETEOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteDockerRegistryWebhookByIdUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  DeleteDockerRegistryWebhookByNameUsingDELETE deletes a docker registry webhook using name
+
+  Delete a Docker Registry Webhook using name
+*/
+func (a *Client) DeleteDockerRegistryWebhookByNameUsingDELETE(params *DeleteDockerRegistryWebhookByNameUsingDELETEParams, opts ...ClientOption) (*DeleteDockerRegistryWebhookByNameUsingDELETEOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteDockerRegistryWebhookByNameUsingDELETEParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteDockerRegistryWebhookByNameUsingDELETE",
+		Method:             "DELETE",
+		PathPattern:        "/codestream/api/registry-webhooks/{project}/{name}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteDockerRegistryWebhookByNameUsingDELETEReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteDockerRegistryWebhookByNameUsingDELETEOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteDockerRegistryWebhookByNameUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  DeleteGerritEventByIDUsingDELETE deletes a gerrit event
 
   Delete a Gerrit Event
 */
-func (a *Client) DeleteUsingDELETE4(params *DeleteUsingDELETE4Params, opts ...ClientOption) (*DeleteUsingDELETE4OK, error) {
+func (a *Client) DeleteGerritEventByIDUsingDELETE(params *DeleteGerritEventByIDUsingDELETEParams, opts ...ClientOption) (*DeleteGerritEventByIDUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteUsingDELETE4Params()
+		params = NewDeleteGerritEventByIDUsingDELETEParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteUsingDELETE_4",
+		ID:                 "deleteGerritEventByIdUsingDELETE",
 		Method:             "DELETE",
 		PathPattern:        "/codestream/api/gerrit-events/{id}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteUsingDELETE4Reader{formats: a.formats},
+		Reader:             &DeleteGerritEventByIDUsingDELETEReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -779,35 +619,115 @@ func (a *Client) DeleteUsingDELETE4(params *DeleteUsingDELETE4Params, opts ...Cl
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteUsingDELETE4OK)
+	success, ok := result.(*DeleteGerritEventByIDUsingDELETEOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteUsingDELETE_4: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for deleteGerritEventByIdUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  DeleteUsingDELETE5 deletes a gerrit trigger with id
+  DeleteGerritListenerByIDUsingDELETE deletes a gerrit listener with id
+
+  Delete a Gerrit Listener with id
+*/
+func (a *Client) DeleteGerritListenerByIDUsingDELETE(params *DeleteGerritListenerByIDUsingDELETEParams, opts ...ClientOption) (*DeleteGerritListenerByIDUsingDELETEOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteGerritListenerByIDUsingDELETEParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteGerritListenerByIdUsingDELETE",
+		Method:             "DELETE",
+		PathPattern:        "/codestream/api/gerrit-listeners/{id}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteGerritListenerByIDUsingDELETEReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteGerritListenerByIDUsingDELETEOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteGerritListenerByIdUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  DeleteGerritListenerByNameUsingDELETE deletes a gerrit listener with project and name
+
+  Delete a Gerrit Listener with project and name
+*/
+func (a *Client) DeleteGerritListenerByNameUsingDELETE(params *DeleteGerritListenerByNameUsingDELETEParams, opts ...ClientOption) (*DeleteGerritListenerByNameUsingDELETEOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteGerritListenerByNameUsingDELETEParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteGerritListenerByNameUsingDELETE",
+		Method:             "DELETE",
+		PathPattern:        "/codestream/api/gerrit-listeners/{project}/{name}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteGerritListenerByNameUsingDELETEReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteGerritListenerByNameUsingDELETEOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteGerritListenerByNameUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  DeleteGerritTriggerByIDUsingDELETE deletes a gerrit trigger with id
 
   Delete a Gerrit Trigger with id
 */
-func (a *Client) DeleteUsingDELETE5(params *DeleteUsingDELETE5Params, opts ...ClientOption) (*DeleteUsingDELETE5OK, error) {
+func (a *Client) DeleteGerritTriggerByIDUsingDELETE(params *DeleteGerritTriggerByIDUsingDELETEParams, opts ...ClientOption) (*DeleteGerritTriggerByIDUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteUsingDELETE5Params()
+		params = NewDeleteGerritTriggerByIDUsingDELETEParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteUsingDELETE_5",
+		ID:                 "deleteGerritTriggerByIdUsingDELETE",
 		Method:             "DELETE",
 		PathPattern:        "/codestream/api/gerrit-triggers/{id}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteUsingDELETE5Reader{formats: a.formats},
+		Reader:             &DeleteGerritTriggerByIDUsingDELETEReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -819,35 +739,75 @@ func (a *Client) DeleteUsingDELETE5(params *DeleteUsingDELETE5Params, opts ...Cl
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteUsingDELETE5OK)
+	success, ok := result.(*DeleteGerritTriggerByIDUsingDELETEOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteUsingDELETE_5: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for deleteGerritTriggerByIdUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  DeleteUsingDELETE6 deletes a git event
+  DeleteGerritTriggerByNameUsingDELETE deletes a gerrit trigger with project and name
+
+  Delete a Gerrit Trigger with project and name
+*/
+func (a *Client) DeleteGerritTriggerByNameUsingDELETE(params *DeleteGerritTriggerByNameUsingDELETEParams, opts ...ClientOption) (*DeleteGerritTriggerByNameUsingDELETEOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteGerritTriggerByNameUsingDELETEParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteGerritTriggerByNameUsingDELETE",
+		Method:             "DELETE",
+		PathPattern:        "/codestream/api/gerrit-triggers/{project}/{name}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteGerritTriggerByNameUsingDELETEReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteGerritTriggerByNameUsingDELETEOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteGerritTriggerByNameUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  DeleteGitEventsByIDUsingDELETE deletes a git event
 
   Delete a Git Event
 */
-func (a *Client) DeleteUsingDELETE6(params *DeleteUsingDELETE6Params, opts ...ClientOption) (*DeleteUsingDELETE6OK, error) {
+func (a *Client) DeleteGitEventsByIDUsingDELETE(params *DeleteGitEventsByIDUsingDELETEParams, opts ...ClientOption) (*DeleteGitEventsByIDUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteUsingDELETE6Params()
+		params = NewDeleteGitEventsByIDUsingDELETEParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteUsingDELETE_6",
+		ID:                 "deleteGitEventsByIdUsingDELETE",
 		Method:             "DELETE",
 		PathPattern:        "/codestream/api/git-events/{id}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteUsingDELETE6Reader{formats: a.formats},
+		Reader:             &DeleteGitEventsByIDUsingDELETEReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -859,35 +819,35 @@ func (a *Client) DeleteUsingDELETE6(params *DeleteUsingDELETE6Params, opts ...Cl
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteUsingDELETE6OK)
+	success, ok := result.(*DeleteGitEventsByIDUsingDELETEOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteUsingDELETE_6: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for deleteGitEventsByIdUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  DeleteUsingDELETE7 deletes a git webhook
+  DeleteGitWebhookByIDUsingDELETE deletes a git webhook
 
   Delete a Git Webhook
 */
-func (a *Client) DeleteUsingDELETE7(params *DeleteUsingDELETE7Params, opts ...ClientOption) (*DeleteUsingDELETE7OK, error) {
+func (a *Client) DeleteGitWebhookByIDUsingDELETE(params *DeleteGitWebhookByIDUsingDELETEParams, opts ...ClientOption) (*DeleteGitWebhookByIDUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteUsingDELETE7Params()
+		params = NewDeleteGitWebhookByIDUsingDELETEParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteUsingDELETE_7",
+		ID:                 "deleteGitWebhookByIdUsingDELETE",
 		Method:             "DELETE",
 		PathPattern:        "/codestream/api/git-webhooks/{id}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteUsingDELETE7Reader{formats: a.formats},
+		Reader:             &DeleteGitWebhookByIDUsingDELETEReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -899,35 +859,75 @@ func (a *Client) DeleteUsingDELETE7(params *DeleteUsingDELETE7Params, opts ...Cl
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteUsingDELETE7OK)
+	success, ok := result.(*DeleteGitWebhookByIDUsingDELETEOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteUsingDELETE_7: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for deleteGitWebhookByIdUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetAllUsingGET gets all docker registry events
+  DeleteGitWebhookByNameUsingDELETE deletes a git webhook by name
+
+  Delete a Git Webhook by name
+*/
+func (a *Client) DeleteGitWebhookByNameUsingDELETE(params *DeleteGitWebhookByNameUsingDELETEParams, opts ...ClientOption) (*DeleteGitWebhookByNameUsingDELETEOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteGitWebhookByNameUsingDELETEParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteGitWebhookByNameUsingDELETE",
+		Method:             "DELETE",
+		PathPattern:        "/codestream/api/git-webhooks/{project}/{name}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteGitWebhookByNameUsingDELETEReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteGitWebhookByNameUsingDELETEOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteGitWebhookByNameUsingDELETE: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetAllDockerRegistryEventsUsingGET gets all docker registry events
 
   Get all Docker Registry Events
 */
-func (a *Client) GetAllUsingGET(params *GetAllUsingGETParams, opts ...ClientOption) (*GetAllUsingGETOK, error) {
+func (a *Client) GetAllDockerRegistryEventsUsingGET(params *GetAllDockerRegistryEventsUsingGETParams, opts ...ClientOption) (*GetAllDockerRegistryEventsUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetAllUsingGETParams()
+		params = NewGetAllDockerRegistryEventsUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getAllUsingGET",
+		ID:                 "getAllDockerRegistryEventsUsingGET",
 		Method:             "GET",
 		PathPattern:        "/codestream/api/registry-events",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetAllUsingGETReader{formats: a.formats},
+		Reader:             &GetAllDockerRegistryEventsUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -939,35 +939,35 @@ func (a *Client) GetAllUsingGET(params *GetAllUsingGETParams, opts ...ClientOpti
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetAllUsingGETOK)
+	success, ok := result.(*GetAllDockerRegistryEventsUsingGETOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getAllUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getAllDockerRegistryEventsUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetAllUsingGET1 gets all docker registry webhooks
+  GetAllDockerRegistryWebhooksUsingGET gets all docker registry webhooks
 
   Get all Docker Registry Webhooks
 */
-func (a *Client) GetAllUsingGET1(params *GetAllUsingGET1Params, opts ...ClientOption) (*GetAllUsingGET1OK, error) {
+func (a *Client) GetAllDockerRegistryWebhooksUsingGET(params *GetAllDockerRegistryWebhooksUsingGETParams, opts ...ClientOption) (*GetAllDockerRegistryWebhooksUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetAllUsingGET1Params()
+		params = NewGetAllDockerRegistryWebhooksUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getAllUsingGET_1",
+		ID:                 "getAllDockerRegistryWebhooksUsingGET",
 		Method:             "GET",
 		PathPattern:        "/codestream/api/registry-webhooks",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetAllUsingGET1Reader{formats: a.formats},
+		Reader:             &GetAllDockerRegistryWebhooksUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -979,35 +979,35 @@ func (a *Client) GetAllUsingGET1(params *GetAllUsingGET1Params, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetAllUsingGET1OK)
+	success, ok := result.(*GetAllDockerRegistryWebhooksUsingGETOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getAllUsingGET_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getAllDockerRegistryWebhooksUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetAllUsingGET4 gets all gerrit events
+  GetAllGerritEventsUsingGET gets all gerrit events
 
   Get all Gerrit Events
 */
-func (a *Client) GetAllUsingGET4(params *GetAllUsingGET4Params, opts ...ClientOption) (*GetAllUsingGET4OK, error) {
+func (a *Client) GetAllGerritEventsUsingGET(params *GetAllGerritEventsUsingGETParams, opts ...ClientOption) (*GetAllGerritEventsUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetAllUsingGET4Params()
+		params = NewGetAllGerritEventsUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getAllUsingGET_4",
+		ID:                 "getAllGerritEventsUsingGET",
 		Method:             "GET",
 		PathPattern:        "/codestream/api/gerrit-events",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetAllUsingGET4Reader{formats: a.formats},
+		Reader:             &GetAllGerritEventsUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -1019,35 +1019,35 @@ func (a *Client) GetAllUsingGET4(params *GetAllUsingGET4Params, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetAllUsingGET4OK)
+	success, ok := result.(*GetAllGerritEventsUsingGETOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getAllUsingGET_4: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getAllGerritEventsUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetAllUsingGET5 gets all gerrit listeners
+  GetAllGerritListenersUsingGET gets all gerrit listeners
 
   Get all gerrit listeners
 */
-func (a *Client) GetAllUsingGET5(params *GetAllUsingGET5Params, opts ...ClientOption) (*GetAllUsingGET5OK, error) {
+func (a *Client) GetAllGerritListenersUsingGET(params *GetAllGerritListenersUsingGETParams, opts ...ClientOption) (*GetAllGerritListenersUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetAllUsingGET5Params()
+		params = NewGetAllGerritListenersUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getAllUsingGET_5",
+		ID:                 "getAllGerritListenersUsingGET",
 		Method:             "GET",
 		PathPattern:        "/codestream/api/gerrit-listeners",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetAllUsingGET5Reader{formats: a.formats},
+		Reader:             &GetAllGerritListenersUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -1059,35 +1059,35 @@ func (a *Client) GetAllUsingGET5(params *GetAllUsingGET5Params, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetAllUsingGET5OK)
+	success, ok := result.(*GetAllGerritListenersUsingGETOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getAllUsingGET_5: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getAllGerritListenersUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetAllUsingGET6 gets all gerrit triggers
+  GetAllGerritTriggersUsingGET gets all gerrit triggers
 
   Get all gerrit triggers
 */
-func (a *Client) GetAllUsingGET6(params *GetAllUsingGET6Params, opts ...ClientOption) (*GetAllUsingGET6OK, error) {
+func (a *Client) GetAllGerritTriggersUsingGET(params *GetAllGerritTriggersUsingGETParams, opts ...ClientOption) (*GetAllGerritTriggersUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetAllUsingGET6Params()
+		params = NewGetAllGerritTriggersUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getAllUsingGET_6",
+		ID:                 "getAllGerritTriggersUsingGET",
 		Method:             "GET",
 		PathPattern:        "/codestream/api/gerrit-triggers",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetAllUsingGET6Reader{formats: a.formats},
+		Reader:             &GetAllGerritTriggersUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -1099,35 +1099,35 @@ func (a *Client) GetAllUsingGET6(params *GetAllUsingGET6Params, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetAllUsingGET6OK)
+	success, ok := result.(*GetAllGerritTriggersUsingGETOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getAllUsingGET_6: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getAllGerritTriggersUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetAllUsingGET7 gets all git events
+  GetAllGitEventsUsingGET gets all git events
 
   Get all Git Events
 */
-func (a *Client) GetAllUsingGET7(params *GetAllUsingGET7Params, opts ...ClientOption) (*GetAllUsingGET7OK, error) {
+func (a *Client) GetAllGitEventsUsingGET(params *GetAllGitEventsUsingGETParams, opts ...ClientOption) (*GetAllGitEventsUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetAllUsingGET7Params()
+		params = NewGetAllGitEventsUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getAllUsingGET_7",
+		ID:                 "getAllGitEventsUsingGET",
 		Method:             "GET",
 		PathPattern:        "/codestream/api/git-events",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetAllUsingGET7Reader{formats: a.formats},
+		Reader:             &GetAllGitEventsUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -1139,35 +1139,35 @@ func (a *Client) GetAllUsingGET7(params *GetAllUsingGET7Params, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetAllUsingGET7OK)
+	success, ok := result.(*GetAllGitEventsUsingGETOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getAllUsingGET_7: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getAllGitEventsUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetAllUsingGET8 gets all git webhooks
+  GetAllGitWebhooksUsingGET gets all git webhooks
 
   Get all Git Webhooks
 */
-func (a *Client) GetAllUsingGET8(params *GetAllUsingGET8Params, opts ...ClientOption) (*GetAllUsingGET8OK, error) {
+func (a *Client) GetAllGitWebhooksUsingGET(params *GetAllGitWebhooksUsingGETParams, opts ...ClientOption) (*GetAllGitWebhooksUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetAllUsingGET8Params()
+		params = NewGetAllGitWebhooksUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getAllUsingGET_8",
+		ID:                 "getAllGitWebhooksUsingGET",
 		Method:             "GET",
 		PathPattern:        "/codestream/api/git-webhooks",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetAllUsingGET8Reader{formats: a.formats},
+		Reader:             &GetAllGitWebhooksUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -1179,435 +1179,35 @@ func (a *Client) GetAllUsingGET8(params *GetAllUsingGET8Params, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetAllUsingGET8OK)
+	success, ok := result.(*GetAllGitWebhooksUsingGETOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getAllUsingGET_8: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getAllGitWebhooksUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetByIDUsingGET2 gets a gerrit event
-
-  Get a gerrit Event based on id
-*/
-func (a *Client) GetByIDUsingGET2(params *GetByIDUsingGET2Params, opts ...ClientOption) (*GetByIDUsingGET2OK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetByIDUsingGET2Params()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getByIDUsingGET_2",
-		Method:             "GET",
-		PathPattern:        "/codestream/api/gerrit-events/{id}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetByIDUsingGET2Reader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetByIDUsingGET2OK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getByIDUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  GetByIDUsingGET3 gets a gerrit listener
-
-  Get a gerrit listeners based on id
-*/
-func (a *Client) GetByIDUsingGET3(params *GetByIDUsingGET3Params, opts ...ClientOption) (*GetByIDUsingGET3OK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetByIDUsingGET3Params()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getByIDUsingGET_3",
-		Method:             "GET",
-		PathPattern:        "/codestream/api/gerrit-listeners/{id}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetByIDUsingGET3Reader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetByIDUsingGET3OK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getByIDUsingGET_3: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  GetByIDUsingGET4 gets a git event
-
-  Get a Git Event based on id
-*/
-func (a *Client) GetByIDUsingGET4(params *GetByIDUsingGET4Params, opts ...ClientOption) (*GetByIDUsingGET4OK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetByIDUsingGET4Params()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getByIDUsingGET_4",
-		Method:             "GET",
-		PathPattern:        "/codestream/api/git-events/{id}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetByIDUsingGET4Reader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetByIDUsingGET4OK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getByIDUsingGET_4: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  GetByIDUsingGET5 gets a git webhook
-
-  Get a Git Webhook based on id
-*/
-func (a *Client) GetByIDUsingGET5(params *GetByIDUsingGET5Params, opts ...ClientOption) (*GetByIDUsingGET5OK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetByIDUsingGET5Params()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getByIDUsingGET_5",
-		Method:             "GET",
-		PathPattern:        "/codestream/api/git-webhooks/{id}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetByIDUsingGET5Reader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetByIDUsingGET5OK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getByIDUsingGET_5: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  GetByIDUsingGET1 gets a gerrit trigger
-
-  Get a gerrit trigger based on id
-*/
-func (a *Client) GetByIDUsingGET1(params *GetByIDUsingGET1Params, opts ...ClientOption) (*GetByIDUsingGET1OK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetByIDUsingGET1Params()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getByIdUsingGET_1",
-		Method:             "GET",
-		PathPattern:        "/codestream/api/gerrit-triggers/{id}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetByIDUsingGET1Reader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetByIDUsingGET1OK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getByIdUsingGET_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  GetByNameUsingGET1 gets a gerrit listener by project and name
-
-  Get a gerrit listener based on project and name
-*/
-func (a *Client) GetByNameUsingGET1(params *GetByNameUsingGET1Params, opts ...ClientOption) (*GetByNameUsingGET1OK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetByNameUsingGET1Params()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getByNameUsingGET_1",
-		Method:             "GET",
-		PathPattern:        "/codestream/api/gerrit-listeners/{project}/{name}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetByNameUsingGET1Reader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetByNameUsingGET1OK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getByNameUsingGET_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  GetByNameUsingGET2 gets a gerrit trigger by project and name
-
-  Get a gerrit trigger based on project and name
-*/
-func (a *Client) GetByNameUsingGET2(params *GetByNameUsingGET2Params, opts ...ClientOption) (*GetByNameUsingGET2OK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetByNameUsingGET2Params()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getByNameUsingGET_2",
-		Method:             "GET",
-		PathPattern:        "/codestream/api/gerrit-triggers/{project}/{name}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetByNameUsingGET2Reader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetByNameUsingGET2OK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getByNameUsingGET_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  GetByNameUsingGET3 gets a git webhook by name
-
-  Get a Git Webhook by Name
-*/
-func (a *Client) GetByNameUsingGET3(params *GetByNameUsingGET3Params, opts ...ClientOption) (*GetByNameUsingGET3OK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetByNameUsingGET3Params()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getByNameUsingGET_3",
-		Method:             "GET",
-		PathPattern:        "/codestream/api/git-webhooks/{project}/{name}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetByNameUsingGET3Reader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetByNameUsingGET3OK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getByNameUsingGET_3: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  GetGerritProjectsUsingGET gets gerrit projects from the gerrit listener using id
-
-  Get Gerrit Projects from the Gerrit Listener using id
-*/
-func (a *Client) GetGerritProjectsUsingGET(params *GetGerritProjectsUsingGETParams, opts ...ClientOption) (*GetGerritProjectsUsingGETOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetGerritProjectsUsingGETParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getGerritProjectsUsingGET",
-		Method:             "GET",
-		PathPattern:        "/codestream/api/gerrit-listeners/{id}/projects",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetGerritProjectsUsingGETReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetGerritProjectsUsingGETOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getGerritProjectsUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  GetGerritProjectsUsingGET1 gets gerrit projects from the gerrit listener using project and name
-
-  Get Gerrit Projects from the Gerrit Listener using project and name
-*/
-func (a *Client) GetGerritProjectsUsingGET1(params *GetGerritProjectsUsingGET1Params, opts ...ClientOption) (*GetGerritProjectsUsingGET1OK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetGerritProjectsUsingGET1Params()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getGerritProjectsUsingGET_1",
-		Method:             "GET",
-		PathPattern:        "/codestream/api/gerrit-listeners/{project}/{name}/projects",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetGerritProjectsUsingGET1Reader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetGerritProjectsUsingGET1OK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getGerritProjectsUsingGET_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  GetNameUsingGET gets a docker registry webhook by name
+  GetDockerRegistryWebhookNameUsingGET gets a docker registry webhook by name
 
   Get a Docker Registry Webhook by Name
 */
-func (a *Client) GetNameUsingGET(params *GetNameUsingGETParams, opts ...ClientOption) (*GetNameUsingGETOK, error) {
+func (a *Client) GetDockerRegistryWebhookNameUsingGET(params *GetDockerRegistryWebhookNameUsingGETParams, opts ...ClientOption) (*GetDockerRegistryWebhookNameUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetNameUsingGETParams()
+		params = NewGetDockerRegistryWebhookNameUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getNameUsingGET",
+		ID:                 "getDockerRegistryWebhookNameUsingGET",
 		Method:             "GET",
 		PathPattern:        "/codestream/api/registry-webhooks/{project}/{name}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetNameUsingGETReader{formats: a.formats},
+		Reader:             &GetDockerRegistryWebhookNameUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -1619,13 +1219,413 @@ func (a *Client) GetNameUsingGET(params *GetNameUsingGETParams, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetNameUsingGETOK)
+	success, ok := result.(*GetDockerRegistryWebhookNameUsingGETOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getNameUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getDockerRegistryWebhookNameUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetGerritEventByIDUsingGET gets a gerrit event
+
+  Get a gerrit Event based on id
+*/
+func (a *Client) GetGerritEventByIDUsingGET(params *GetGerritEventByIDUsingGETParams, opts ...ClientOption) (*GetGerritEventByIDUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetGerritEventByIDUsingGETParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getGerritEventByIDUsingGET",
+		Method:             "GET",
+		PathPattern:        "/codestream/api/gerrit-events/{id}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetGerritEventByIDUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetGerritEventByIDUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getGerritEventByIDUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetGerritListenerByIDUsingGET gets a gerrit listener
+
+  Get a gerrit listeners based on id
+*/
+func (a *Client) GetGerritListenerByIDUsingGET(params *GetGerritListenerByIDUsingGETParams, opts ...ClientOption) (*GetGerritListenerByIDUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetGerritListenerByIDUsingGETParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getGerritListenerByIDUsingGET",
+		Method:             "GET",
+		PathPattern:        "/codestream/api/gerrit-listeners/{id}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetGerritListenerByIDUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetGerritListenerByIDUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getGerritListenerByIDUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetGerritListenerByNameUsingGET gets a gerrit listener by project and name
+
+  Get a gerrit listener based on project and name
+*/
+func (a *Client) GetGerritListenerByNameUsingGET(params *GetGerritListenerByNameUsingGETParams, opts ...ClientOption) (*GetGerritListenerByNameUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetGerritListenerByNameUsingGETParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getGerritListenerByNameUsingGET",
+		Method:             "GET",
+		PathPattern:        "/codestream/api/gerrit-listeners/{project}/{name}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetGerritListenerByNameUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetGerritListenerByNameUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getGerritListenerByNameUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetGerritProjectsByIDUsingGET gets gerrit projects from the gerrit listener using id
+
+  Get Gerrit Projects from the Gerrit Listener using id
+*/
+func (a *Client) GetGerritProjectsByIDUsingGET(params *GetGerritProjectsByIDUsingGETParams, opts ...ClientOption) (*GetGerritProjectsByIDUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetGerritProjectsByIDUsingGETParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getGerritProjectsByIdUsingGET",
+		Method:             "GET",
+		PathPattern:        "/codestream/api/gerrit-listeners/{id}/projects",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetGerritProjectsByIDUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetGerritProjectsByIDUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getGerritProjectsByIdUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetGerritProjectsByNameUsingGET gets gerrit projects from the gerrit listener using project and name
+
+  Get Gerrit Projects from the Gerrit Listener using project and name
+*/
+func (a *Client) GetGerritProjectsByNameUsingGET(params *GetGerritProjectsByNameUsingGETParams, opts ...ClientOption) (*GetGerritProjectsByNameUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetGerritProjectsByNameUsingGETParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getGerritProjectsByNameUsingGET",
+		Method:             "GET",
+		PathPattern:        "/codestream/api/gerrit-listeners/{project}/{name}/projects",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetGerritProjectsByNameUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetGerritProjectsByNameUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getGerritProjectsByNameUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetGerritTriggerByIDUsingGET gets a gerrit trigger
+
+  Get a gerrit trigger based on id
+*/
+func (a *Client) GetGerritTriggerByIDUsingGET(params *GetGerritTriggerByIDUsingGETParams, opts ...ClientOption) (*GetGerritTriggerByIDUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetGerritTriggerByIDUsingGETParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getGerritTriggerByIdUsingGET",
+		Method:             "GET",
+		PathPattern:        "/codestream/api/gerrit-triggers/{id}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetGerritTriggerByIDUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetGerritTriggerByIDUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getGerritTriggerByIdUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetGerritTriggerByNameUsingGET gets a gerrit trigger by project and name
+
+  Get a gerrit trigger based on project and name
+*/
+func (a *Client) GetGerritTriggerByNameUsingGET(params *GetGerritTriggerByNameUsingGETParams, opts ...ClientOption) (*GetGerritTriggerByNameUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetGerritTriggerByNameUsingGETParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getGerritTriggerByNameUsingGET",
+		Method:             "GET",
+		PathPattern:        "/codestream/api/gerrit-triggers/{project}/{name}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetGerritTriggerByNameUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetGerritTriggerByNameUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getGerritTriggerByNameUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetGitEventByIDUsingGET gets a git event
+
+  Get a Git Event based on id
+*/
+func (a *Client) GetGitEventByIDUsingGET(params *GetGitEventByIDUsingGETParams, opts ...ClientOption) (*GetGitEventByIDUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetGitEventByIDUsingGETParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getGitEventByIDUsingGET",
+		Method:             "GET",
+		PathPattern:        "/codestream/api/git-events/{id}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetGitEventByIDUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetGitEventByIDUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getGitEventByIDUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetGitWebhookByIDUsingGET gets a git webhook
+
+  Get a Git Webhook based on id
+*/
+func (a *Client) GetGitWebhookByIDUsingGET(params *GetGitWebhookByIDUsingGETParams, opts ...ClientOption) (*GetGitWebhookByIDUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetGitWebhookByIDUsingGETParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getGitWebhookByIDUsingGET",
+		Method:             "GET",
+		PathPattern:        "/codestream/api/git-webhooks/{id}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetGitWebhookByIDUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetGitWebhookByIDUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getGitWebhookByIDUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetGitWebhookByNameUsingGET gets a git webhook by name
+
+  Get a Git Webhook by Name
+*/
+func (a *Client) GetGitWebhookByNameUsingGET(params *GetGitWebhookByNameUsingGETParams, opts ...ClientOption) (*GetGitWebhookByNameUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetGitWebhookByNameUsingGETParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getGitWebhookByNameUsingGET",
+		Method:             "GET",
+		PathPattern:        "/codestream/api/git-webhooks/{project}/{name}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetGitWebhookByNameUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetGitWebhookByNameUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getGitWebhookByNameUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -1710,24 +1710,24 @@ func (a *Client) GetRegistryWebhookByID(params *GetRegistryWebhookByIDParams, op
 }
 
 /*
-  ManualTriggerUsingPOST manuals trigger gerrit event
+  ManualGerritEventTriggerUsingPOST manuals trigger gerrit event
 
   Manual trigger Gerrit event
 */
-func (a *Client) ManualTriggerUsingPOST(params *ManualTriggerUsingPOSTParams, opts ...ClientOption) (*ManualTriggerUsingPOSTOK, error) {
+func (a *Client) ManualGerritEventTriggerUsingPOST(params *ManualGerritEventTriggerUsingPOSTParams, opts ...ClientOption) (*ManualGerritEventTriggerUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewManualTriggerUsingPOSTParams()
+		params = NewManualGerritEventTriggerUsingPOSTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "manualTriggerUsingPOST",
+		ID:                 "manualGerritEventTriggerUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/codestream/api/gerrit-events",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &ManualTriggerUsingPOSTReader{formats: a.formats},
+		Reader:             &ManualGerritEventTriggerUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -1739,35 +1739,35 @@ func (a *Client) ManualTriggerUsingPOST(params *ManualTriggerUsingPOSTParams, op
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*ManualTriggerUsingPOSTOK)
+	success, ok := result.(*ManualGerritEventTriggerUsingPOSTOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for manualTriggerUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for manualGerritEventTriggerUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  PatchByIDUsingPATCH patches a docker registry webhook with id
+  PatchDockerRegistryWebhookByIDUsingPATCH patches a docker registry webhook with id
 
   Patch a Docker Registry Webhook with id
 */
-func (a *Client) PatchByIDUsingPATCH(params *PatchByIDUsingPATCHParams, opts ...ClientOption) (*PatchByIDUsingPATCHOK, error) {
+func (a *Client) PatchDockerRegistryWebhookByIDUsingPATCH(params *PatchDockerRegistryWebhookByIDUsingPATCHParams, opts ...ClientOption) (*PatchDockerRegistryWebhookByIDUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPatchByIDUsingPATCHParams()
+		params = NewPatchDockerRegistryWebhookByIDUsingPATCHParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "patchByIdUsingPATCH",
+		ID:                 "patchDockerRegistryWebhookByIdUsingPATCH",
 		Method:             "PATCH",
 		PathPattern:        "/codestream/api/registry-webhooks/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PatchByIDUsingPATCHReader{formats: a.formats},
+		Reader:             &PatchDockerRegistryWebhookByIDUsingPATCHReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -1779,115 +1779,35 @@ func (a *Client) PatchByIDUsingPATCH(params *PatchByIDUsingPATCHParams, opts ...
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PatchByIDUsingPATCHOK)
+	success, ok := result.(*PatchDockerRegistryWebhookByIDUsingPATCHOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchByIdUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for patchDockerRegistryWebhookByIdUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  PatchByIDUsingPATCH1 patches a gerrit listener with id
-
-  Patch a Gerrit Listener with id
-*/
-func (a *Client) PatchByIDUsingPATCH1(params *PatchByIDUsingPATCH1Params, opts ...ClientOption) (*PatchByIDUsingPATCH1OK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchByIDUsingPATCH1Params()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchByIdUsingPATCH_1",
-		Method:             "PATCH",
-		PathPattern:        "/codestream/api/gerrit-listeners/{id}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchByIDUsingPATCH1Reader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchByIDUsingPATCH1OK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchByIdUsingPATCH_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  PatchByIDUsingPATCH2 patches a gerrit trigger with id
-
-  Patch a Gerrit Trigger with id
-*/
-func (a *Client) PatchByIDUsingPATCH2(params *PatchByIDUsingPATCH2Params, opts ...ClientOption) (*PatchByIDUsingPATCH2OK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchByIDUsingPATCH2Params()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchByIdUsingPATCH_2",
-		Method:             "PATCH",
-		PathPattern:        "/codestream/api/gerrit-triggers/{id}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchByIDUsingPATCH2Reader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchByIDUsingPATCH2OK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchByIdUsingPATCH_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  PatchByNameUsingPATCH patches a docker registry webhook with project and name
+  PatchDockerRegistryWebhookByNameUsingPATCH patches a docker registry webhook with project and name
 
   Patch a Docker Registry Webhook with project and name
 */
-func (a *Client) PatchByNameUsingPATCH(params *PatchByNameUsingPATCHParams, opts ...ClientOption) (*PatchByNameUsingPATCHOK, error) {
+func (a *Client) PatchDockerRegistryWebhookByNameUsingPATCH(params *PatchDockerRegistryWebhookByNameUsingPATCHParams, opts ...ClientOption) (*PatchDockerRegistryWebhookByNameUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPatchByNameUsingPATCHParams()
+		params = NewPatchDockerRegistryWebhookByNameUsingPATCHParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "patchByNameUsingPATCH",
+		ID:                 "patchDockerRegistryWebhookByNameUsingPATCH",
 		Method:             "PATCH",
 		PathPattern:        "/codestream/api/registry-webhooks/{project}/{name}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PatchByNameUsingPATCHReader{formats: a.formats},
+		Reader:             &PatchDockerRegistryWebhookByNameUsingPATCHReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -1899,35 +1819,75 @@ func (a *Client) PatchByNameUsingPATCH(params *PatchByNameUsingPATCHParams, opts
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PatchByNameUsingPATCHOK)
+	success, ok := result.(*PatchDockerRegistryWebhookByNameUsingPATCHOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchByNameUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for patchDockerRegistryWebhookByNameUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  PatchByNameUsingPATCH1 patches a gerrit listener with project and name
+  PatchGerritListenerByIDUsingPATCH patches a gerrit listener with id
+
+  Patch a Gerrit Listener with id
+*/
+func (a *Client) PatchGerritListenerByIDUsingPATCH(params *PatchGerritListenerByIDUsingPATCHParams, opts ...ClientOption) (*PatchGerritListenerByIDUsingPATCHOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchGerritListenerByIDUsingPATCHParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchGerritListenerByIdUsingPATCH",
+		Method:             "PATCH",
+		PathPattern:        "/codestream/api/gerrit-listeners/{id}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchGerritListenerByIDUsingPATCHReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchGerritListenerByIDUsingPATCHOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchGerritListenerByIdUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  PatchGerritListenerByNameUsingPATCH patches a gerrit listener with project and name
 
   Patch a Gerrit Listener with project and name
 */
-func (a *Client) PatchByNameUsingPATCH1(params *PatchByNameUsingPATCH1Params, opts ...ClientOption) (*PatchByNameUsingPATCH1OK, error) {
+func (a *Client) PatchGerritListenerByNameUsingPATCH(params *PatchGerritListenerByNameUsingPATCHParams, opts ...ClientOption) (*PatchGerritListenerByNameUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPatchByNameUsingPATCH1Params()
+		params = NewPatchGerritListenerByNameUsingPATCHParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "patchByNameUsingPATCH_1",
+		ID:                 "patchGerritListenerByNameUsingPATCH",
 		Method:             "PATCH",
 		PathPattern:        "/codestream/api/gerrit-listeners/{project}/{name}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PatchByNameUsingPATCH1Reader{formats: a.formats},
+		Reader:             &PatchGerritListenerByNameUsingPATCHReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -1939,35 +1899,75 @@ func (a *Client) PatchByNameUsingPATCH1(params *PatchByNameUsingPATCH1Params, op
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PatchByNameUsingPATCH1OK)
+	success, ok := result.(*PatchGerritListenerByNameUsingPATCHOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchByNameUsingPATCH_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for patchGerritListenerByNameUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  PatchByNameUsingPATCH2 patches a gerrit trigger with project and name
+  PatchGerritTriggerByIDUsingPATCH patches a gerrit trigger with id
+
+  Patch a Gerrit Trigger with id
+*/
+func (a *Client) PatchGerritTriggerByIDUsingPATCH(params *PatchGerritTriggerByIDUsingPATCHParams, opts ...ClientOption) (*PatchGerritTriggerByIDUsingPATCHOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchGerritTriggerByIDUsingPATCHParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchGerritTriggerByIdUsingPATCH",
+		Method:             "PATCH",
+		PathPattern:        "/codestream/api/gerrit-triggers/{id}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchGerritTriggerByIDUsingPATCHReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchGerritTriggerByIDUsingPATCHOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchGerritTriggerByIdUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  PatchGerritTriggerByNameUsingPATCH patches a gerrit trigger with project and name
 
   Patch a Gerrit Trigger with project and name
 */
-func (a *Client) PatchByNameUsingPATCH2(params *PatchByNameUsingPATCH2Params, opts ...ClientOption) (*PatchByNameUsingPATCH2OK, error) {
+func (a *Client) PatchGerritTriggerByNameUsingPATCH(params *PatchGerritTriggerByNameUsingPATCHParams, opts ...ClientOption) (*PatchGerritTriggerByNameUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPatchByNameUsingPATCH2Params()
+		params = NewPatchGerritTriggerByNameUsingPATCHParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "patchByNameUsingPATCH_2",
+		ID:                 "patchGerritTriggerByNameUsingPATCH",
 		Method:             "PATCH",
 		PathPattern:        "/codestream/api/gerrit-triggers/{project}/{name}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PatchByNameUsingPATCH2Reader{formats: a.formats},
+		Reader:             &PatchGerritTriggerByNameUsingPATCHReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -1979,35 +1979,35 @@ func (a *Client) PatchByNameUsingPATCH2(params *PatchByNameUsingPATCH2Params, op
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PatchByNameUsingPATCH2OK)
+	success, ok := result.(*PatchGerritTriggerByNameUsingPATCHOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchByNameUsingPATCH_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for patchGerritTriggerByNameUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  ResumeOrRerunEventUsingPOST res run resume docker registry event
+  ResumeOrRerunDockerRegistryEventUsingPOST res run resume docker registry event
 
   Re-run/Resume Docker Registry Event
 */
-func (a *Client) ResumeOrRerunEventUsingPOST(params *ResumeOrRerunEventUsingPOSTParams, opts ...ClientOption) (*ResumeOrRerunEventUsingPOSTOK, error) {
+func (a *Client) ResumeOrRerunDockerRegistryEventUsingPOST(params *ResumeOrRerunDockerRegistryEventUsingPOSTParams, opts ...ClientOption) (*ResumeOrRerunDockerRegistryEventUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewResumeOrRerunEventUsingPOSTParams()
+		params = NewResumeOrRerunDockerRegistryEventUsingPOSTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "resumeOrRerunEventUsingPOST",
+		ID:                 "resumeOrRerunDockerRegistryEventUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/codestream/api/registry-events/{id}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &ResumeOrRerunEventUsingPOSTReader{formats: a.formats},
+		Reader:             &ResumeOrRerunDockerRegistryEventUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -2019,35 +2019,35 @@ func (a *Client) ResumeOrRerunEventUsingPOST(params *ResumeOrRerunEventUsingPOST
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*ResumeOrRerunEventUsingPOSTOK)
+	success, ok := result.(*ResumeOrRerunDockerRegistryEventUsingPOSTOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for resumeOrRerunEventUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for resumeOrRerunDockerRegistryEventUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  ResumeOrRerunEventUsingPOST1 res run resume gerrit event
+  ResumeOrRerunGerritEventUsingPOST res run resume gerrit event
 
   Re-run/Resume Gerrit event
 */
-func (a *Client) ResumeOrRerunEventUsingPOST1(params *ResumeOrRerunEventUsingPOST1Params, opts ...ClientOption) (*ResumeOrRerunEventUsingPOST1OK, error) {
+func (a *Client) ResumeOrRerunGerritEventUsingPOST(params *ResumeOrRerunGerritEventUsingPOSTParams, opts ...ClientOption) (*ResumeOrRerunGerritEventUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewResumeOrRerunEventUsingPOST1Params()
+		params = NewResumeOrRerunGerritEventUsingPOSTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "resumeOrRerunEventUsingPOST_1",
+		ID:                 "resumeOrRerunGerritEventUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/codestream/api/gerrit-events/{id}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &ResumeOrRerunEventUsingPOST1Reader{formats: a.formats},
+		Reader:             &ResumeOrRerunGerritEventUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -2059,35 +2059,35 @@ func (a *Client) ResumeOrRerunEventUsingPOST1(params *ResumeOrRerunEventUsingPOS
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*ResumeOrRerunEventUsingPOST1OK)
+	success, ok := result.(*ResumeOrRerunGerritEventUsingPOSTOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for resumeOrRerunEventUsingPOST_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for resumeOrRerunGerritEventUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  ResumeOrRerunEventUsingPOST2 res run resume git event
+  ResumeOrRerunGitEventUsingPOST res run resume git event
 
   Re-run/Resume Git Event
 */
-func (a *Client) ResumeOrRerunEventUsingPOST2(params *ResumeOrRerunEventUsingPOST2Params, opts ...ClientOption) (*ResumeOrRerunEventUsingPOST2OK, error) {
+func (a *Client) ResumeOrRerunGitEventUsingPOST(params *ResumeOrRerunGitEventUsingPOSTParams, opts ...ClientOption) (*ResumeOrRerunGitEventUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewResumeOrRerunEventUsingPOST2Params()
+		params = NewResumeOrRerunGitEventUsingPOSTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "resumeOrRerunEventUsingPOST_2",
+		ID:                 "resumeOrRerunGitEventUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/codestream/api/git-events/{id}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &ResumeOrRerunEventUsingPOST2Reader{formats: a.formats},
+		Reader:             &ResumeOrRerunGitEventUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -2099,275 +2099,35 @@ func (a *Client) ResumeOrRerunEventUsingPOST2(params *ResumeOrRerunEventUsingPOS
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*ResumeOrRerunEventUsingPOST2OK)
+	success, ok := result.(*ResumeOrRerunGitEventUsingPOSTOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for resumeOrRerunEventUsingPOST_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for resumeOrRerunGitEventUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  UpdateByIDUsingPUT2 updates a gerrit listener with id
-
-  Update a Gerrit Listener with id
-*/
-func (a *Client) UpdateByIDUsingPUT2(params *UpdateByIDUsingPUT2Params, opts ...ClientOption) (*UpdateByIDUsingPUT2OK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewUpdateByIDUsingPUT2Params()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "updateByIdUsingPUT_2",
-		Method:             "PUT",
-		PathPattern:        "/codestream/api/gerrit-listeners/{id}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &UpdateByIDUsingPUT2Reader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*UpdateByIDUsingPUT2OK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateByIdUsingPUT_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  UpdateByIDUsingPUT3 updates a gerrit trigger with id
-
-  Update a Gerrit Trigger with id
-*/
-func (a *Client) UpdateByIDUsingPUT3(params *UpdateByIDUsingPUT3Params, opts ...ClientOption) (*UpdateByIDUsingPUT3OK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewUpdateByIDUsingPUT3Params()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "updateByIdUsingPUT_3",
-		Method:             "PUT",
-		PathPattern:        "/codestream/api/gerrit-triggers/{id}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &UpdateByIDUsingPUT3Reader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*UpdateByIDUsingPUT3OK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateByIdUsingPUT_3: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  UpdateByNameUsingPUT updates a docker registry webhook using name
-
-  Update a Docker Registry Webhook using name
-*/
-func (a *Client) UpdateByNameUsingPUT(params *UpdateByNameUsingPUTParams, opts ...ClientOption) (*UpdateByNameUsingPUTOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewUpdateByNameUsingPUTParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "updateByNameUsingPUT",
-		Method:             "PUT",
-		PathPattern:        "/codestream/api/registry-webhooks/{project}/{name}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &UpdateByNameUsingPUTReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*UpdateByNameUsingPUTOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateByNameUsingPUT: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  UpdateByNameUsingPUT2 updates a gerrit listener with project and name
-
-  Update a Gerrit Listener with project and name
-*/
-func (a *Client) UpdateByNameUsingPUT2(params *UpdateByNameUsingPUT2Params, opts ...ClientOption) (*UpdateByNameUsingPUT2OK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewUpdateByNameUsingPUT2Params()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "updateByNameUsingPUT_2",
-		Method:             "PUT",
-		PathPattern:        "/codestream/api/gerrit-listeners/{project}/{name}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &UpdateByNameUsingPUT2Reader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*UpdateByNameUsingPUT2OK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateByNameUsingPUT_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  UpdateByNameUsingPUT3 updates a gerrit trigger with project and name
-
-  Update a Gerrit Trigger with project and name
-*/
-func (a *Client) UpdateByNameUsingPUT3(params *UpdateByNameUsingPUT3Params, opts ...ClientOption) (*UpdateByNameUsingPUT3OK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewUpdateByNameUsingPUT3Params()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "updateByNameUsingPUT_3",
-		Method:             "PUT",
-		PathPattern:        "/codestream/api/gerrit-triggers/{project}/{name}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &UpdateByNameUsingPUT3Reader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*UpdateByNameUsingPUT3OK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateByNameUsingPUT_3: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  UpdateByNameUsingPUT4 updates a git webhook using name
-
-  Update a Git Webhook using name
-*/
-func (a *Client) UpdateByNameUsingPUT4(params *UpdateByNameUsingPUT4Params, opts ...ClientOption) (*UpdateByNameUsingPUT4OK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewUpdateByNameUsingPUT4Params()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "updateByNameUsingPUT_4",
-		Method:             "PUT",
-		PathPattern:        "/codestream/api/git-webhooks/{project}/{name}",
-		ProducesMediaTypes: []string{"*/*"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &UpdateByNameUsingPUT4Reader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*UpdateByNameUsingPUT4OK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateByNameUsingPUT_4: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  UpdateUsingPUT updates a docker registry webhook
+  UpdateDockerRegistryWebhookByIDUsingPUT updates a docker registry webhook
 
   Update a Docker Registry Webhook
 */
-func (a *Client) UpdateUsingPUT(params *UpdateUsingPUTParams, opts ...ClientOption) (*UpdateUsingPUTOK, error) {
+func (a *Client) UpdateDockerRegistryWebhookByIDUsingPUT(params *UpdateDockerRegistryWebhookByIDUsingPUTParams, opts ...ClientOption) (*UpdateDockerRegistryWebhookByIDUsingPUTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewUpdateUsingPUTParams()
+		params = NewUpdateDockerRegistryWebhookByIDUsingPUTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "updateUsingPUT",
+		ID:                 "updateDockerRegistryWebhookByIdUsingPUT",
 		Method:             "PUT",
 		PathPattern:        "/codestream/api/registry-webhooks/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &UpdateUsingPUTReader{formats: a.formats},
+		Reader:             &UpdateDockerRegistryWebhookByIDUsingPUTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -2379,35 +2139,235 @@ func (a *Client) UpdateUsingPUT(params *UpdateUsingPUTParams, opts ...ClientOpti
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*UpdateUsingPUTOK)
+	success, ok := result.(*UpdateDockerRegistryWebhookByIDUsingPUTOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateUsingPUT: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for updateDockerRegistryWebhookByIdUsingPUT: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  UpdateUsingPUT1 updates a git webhook
+  UpdateDockerRegistryWebhookByNameUsingPUT updates a docker registry webhook using name
+
+  Update a Docker Registry Webhook using name
+*/
+func (a *Client) UpdateDockerRegistryWebhookByNameUsingPUT(params *UpdateDockerRegistryWebhookByNameUsingPUTParams, opts ...ClientOption) (*UpdateDockerRegistryWebhookByNameUsingPUTOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateDockerRegistryWebhookByNameUsingPUTParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "updateDockerRegistryWebhookByNameUsingPUT",
+		Method:             "PUT",
+		PathPattern:        "/codestream/api/registry-webhooks/{project}/{name}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateDockerRegistryWebhookByNameUsingPUTReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateDockerRegistryWebhookByNameUsingPUTOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateDockerRegistryWebhookByNameUsingPUT: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UpdateGerritListenerByIDUsingPUT updates a gerrit listener with id
+
+  Update a Gerrit Listener with id
+*/
+func (a *Client) UpdateGerritListenerByIDUsingPUT(params *UpdateGerritListenerByIDUsingPUTParams, opts ...ClientOption) (*UpdateGerritListenerByIDUsingPUTOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateGerritListenerByIDUsingPUTParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "updateGerritListenerByIdUsingPUT",
+		Method:             "PUT",
+		PathPattern:        "/codestream/api/gerrit-listeners/{id}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateGerritListenerByIDUsingPUTReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateGerritListenerByIDUsingPUTOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateGerritListenerByIdUsingPUT: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UpdateGerritListenerByNameUsingPUT updates a gerrit listener with project and name
+
+  Update a Gerrit Listener with project and name
+*/
+func (a *Client) UpdateGerritListenerByNameUsingPUT(params *UpdateGerritListenerByNameUsingPUTParams, opts ...ClientOption) (*UpdateGerritListenerByNameUsingPUTOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateGerritListenerByNameUsingPUTParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "updateGerritListenerByNameUsingPUT",
+		Method:             "PUT",
+		PathPattern:        "/codestream/api/gerrit-listeners/{project}/{name}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateGerritListenerByNameUsingPUTReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateGerritListenerByNameUsingPUTOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateGerritListenerByNameUsingPUT: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UpdateGerritTriggerByIDUsingPUT updates a gerrit trigger with id
+
+  Update a Gerrit Trigger with id
+*/
+func (a *Client) UpdateGerritTriggerByIDUsingPUT(params *UpdateGerritTriggerByIDUsingPUTParams, opts ...ClientOption) (*UpdateGerritTriggerByIDUsingPUTOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateGerritTriggerByIDUsingPUTParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "updateGerritTriggerByIdUsingPUT",
+		Method:             "PUT",
+		PathPattern:        "/codestream/api/gerrit-triggers/{id}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateGerritTriggerByIDUsingPUTReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateGerritTriggerByIDUsingPUTOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateGerritTriggerByIdUsingPUT: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UpdateGerritTriggerByNameUsingPUT updates a gerrit trigger with project and name
+
+  Update a Gerrit Trigger with project and name
+*/
+func (a *Client) UpdateGerritTriggerByNameUsingPUT(params *UpdateGerritTriggerByNameUsingPUTParams, opts ...ClientOption) (*UpdateGerritTriggerByNameUsingPUTOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateGerritTriggerByNameUsingPUTParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "updateGerritTriggerByNameUsingPUT",
+		Method:             "PUT",
+		PathPattern:        "/codestream/api/gerrit-triggers/{project}/{name}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateGerritTriggerByNameUsingPUTReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateGerritTriggerByNameUsingPUTOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateGerritTriggerByNameUsingPUT: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UpdateGitWebhookByIDUsingPUT updates a git webhook
 
   Update a Git Webhook
 */
-func (a *Client) UpdateUsingPUT1(params *UpdateUsingPUT1Params, opts ...ClientOption) (*UpdateUsingPUT1OK, error) {
+func (a *Client) UpdateGitWebhookByIDUsingPUT(params *UpdateGitWebhookByIDUsingPUTParams, opts ...ClientOption) (*UpdateGitWebhookByIDUsingPUTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewUpdateUsingPUT1Params()
+		params = NewUpdateGitWebhookByIDUsingPUTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "updateUsingPUT_1",
+		ID:                 "updateGitWebhookByIdUsingPUT",
 		Method:             "PUT",
 		PathPattern:        "/codestream/api/git-webhooks/{id}",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &UpdateUsingPUT1Reader{formats: a.formats},
+		Reader:             &UpdateGitWebhookByIDUsingPUTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -2419,35 +2379,75 @@ func (a *Client) UpdateUsingPUT1(params *UpdateUsingPUT1Params, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*UpdateUsingPUT1OK)
+	success, ok := result.(*UpdateGitWebhookByIDUsingPUTOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateUsingPUT_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for updateGitWebhookByIdUsingPUT: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  ValidateUsingPOST validates a gerrit listener
+  UpdateGitWebhookByNameUsingPUT updates a git webhook using name
+
+  Update a Git Webhook using name
+*/
+func (a *Client) UpdateGitWebhookByNameUsingPUT(params *UpdateGitWebhookByNameUsingPUTParams, opts ...ClientOption) (*UpdateGitWebhookByNameUsingPUTOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateGitWebhookByNameUsingPUTParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "updateGitWebhookByNameUsingPUT",
+		Method:             "PUT",
+		PathPattern:        "/codestream/api/git-webhooks/{project}/{name}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateGitWebhookByNameUsingPUTReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateGitWebhookByNameUsingPUTOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for updateGitWebhookByNameUsingPUT: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  ValidateGerritListenerUsingPOST validates a gerrit listener
 
   Validate a Gerrit Listener
 */
-func (a *Client) ValidateUsingPOST(params *ValidateUsingPOSTParams, opts ...ClientOption) (*ValidateUsingPOSTOK, error) {
+func (a *Client) ValidateGerritListenerUsingPOST(params *ValidateGerritListenerUsingPOSTParams, opts ...ClientOption) (*ValidateGerritListenerUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewValidateUsingPOSTParams()
+		params = NewValidateGerritListenerUsingPOSTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "validateUsingPOST",
+		ID:                 "validateGerritListenerUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/codestream/api/gerrit-listeners/validate",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &ValidateUsingPOSTReader{formats: a.formats},
+		Reader:             &ValidateGerritListenerUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -2459,13 +2459,13 @@ func (a *Client) ValidateUsingPOST(params *ValidateUsingPOSTParams, opts ...Clie
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*ValidateUsingPOSTOK)
+	success, ok := result.(*ValidateGerritListenerUsingPOSTOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for validateUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for validateGerritListenerUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

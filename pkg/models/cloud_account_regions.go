@@ -19,10 +19,6 @@ import (
 // swagger:model CloudAccountRegions
 type CloudAccountRegions struct {
 
-	// A set of ids of regions that can be enabled for this cloud account. Deprecated - use externalRegions to obtain enumerated regions.
-	// Example: [ \"us-east-1\", \"ap-northeast-1\" ]
-	ExternalRegionIds []string `json:"externalRegionIds"`
-
 	// A set of regions that can be enabled for this cloud account.
 	ExternalRegions []*RegionSpecification `json:"externalRegions"`
 }
@@ -55,6 +51,8 @@ func (m *CloudAccountRegions) validateExternalRegions(formats strfmt.Registry) e
 			if err := m.ExternalRegions[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("externalRegions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("externalRegions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -87,6 +85,8 @@ func (m *CloudAccountRegions) contextValidateExternalRegions(ctx context.Context
 			if err := m.ExternalRegions[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("externalRegions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("externalRegions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

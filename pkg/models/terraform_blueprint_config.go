@@ -108,6 +108,8 @@ func (m *TerraformBlueprintConfig) validateTerraformToBlueprintMapping(formats s
 		if err := m.TerraformToBlueprintMapping.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("terraformToBlueprintMapping")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("terraformToBlueprintMapping")
 			}
 			return err
 		}
@@ -221,6 +223,8 @@ func (m *TerraformBlueprintConfig) contextValidateTerraformToBlueprintMapping(ct
 		if err := m.TerraformToBlueprintMapping.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("terraformToBlueprintMapping")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("terraformToBlueprintMapping")
 			}
 			return err
 		}

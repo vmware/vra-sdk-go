@@ -71,11 +71,11 @@ type GetMachineSnapshotParams struct {
 	*/
 	ID string
 
-	/* Id1.
+	/* SnapshotID.
 
 	   The ID of the snapshot.
 	*/
-	Id1 string
+	SnapshotID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -152,15 +152,15 @@ func (o *GetMachineSnapshotParams) SetID(id string) {
 	o.ID = id
 }
 
-// WithId1 adds the id1 to the get machine snapshot params
-func (o *GetMachineSnapshotParams) WithId1(id1 string) *GetMachineSnapshotParams {
-	o.SetId1(id1)
+// WithSnapshotID adds the snapshotID to the get machine snapshot params
+func (o *GetMachineSnapshotParams) WithSnapshotID(snapshotID string) *GetMachineSnapshotParams {
+	o.SetSnapshotID(snapshotID)
 	return o
 }
 
-// SetId1 adds the id1 to the get machine snapshot params
-func (o *GetMachineSnapshotParams) SetId1(id1 string) {
-	o.Id1 = id1
+// SetSnapshotID adds the snapshotId to the get machine snapshot params
+func (o *GetMachineSnapshotParams) SetSnapshotID(snapshotID string) {
+	o.SnapshotID = snapshotID
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -193,8 +193,8 @@ func (o *GetMachineSnapshotParams) WriteToRequest(r runtime.ClientRequest, reg s
 		return err
 	}
 
-	// path param id1
-	if err := r.SetPathParam("id1", o.Id1); err != nil {
+	// path param snapshotId
+	if err := r.SetPathParam("snapshotId", o.SnapshotID); err != nil {
 		return err
 	}
 

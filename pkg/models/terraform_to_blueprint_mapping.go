@@ -75,6 +75,8 @@ func (m *TerraformToBlueprintMapping) validateConfigurationSourceReference(forma
 		if err := m.ConfigurationSourceReference.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("configurationSourceReference")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("configurationSourceReference")
 			}
 			return err
 		}
@@ -97,6 +99,8 @@ func (m *TerraformToBlueprintMapping) validateOutputValues(formats strfmt.Regist
 			if err := m.OutputValues[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("outputValues" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("outputValues" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -121,6 +125,8 @@ func (m *TerraformToBlueprintMapping) validateProviders(formats strfmt.Registry)
 			if err := m.Providers[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("providers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("providers" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -145,6 +151,8 @@ func (m *TerraformToBlueprintMapping) validateVariables(formats strfmt.Registry)
 			if err := m.Variables[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("variables" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("variables" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -187,6 +195,8 @@ func (m *TerraformToBlueprintMapping) contextValidateConfigurationSourceReferenc
 		if err := m.ConfigurationSourceReference.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("configurationSourceReference")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("configurationSourceReference")
 			}
 			return err
 		}
@@ -203,6 +213,8 @@ func (m *TerraformToBlueprintMapping) contextValidateOutputValues(ctx context.Co
 			if err := m.OutputValues[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("outputValues" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("outputValues" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -221,6 +233,8 @@ func (m *TerraformToBlueprintMapping) contextValidateProviders(ctx context.Conte
 			if err := m.Providers[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("providers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("providers" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -239,6 +253,8 @@ func (m *TerraformToBlueprintMapping) contextValidateVariables(ctx context.Conte
 			if err := m.Variables[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("variables" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("variables" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

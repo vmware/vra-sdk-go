@@ -65,17 +65,17 @@ type GetMachineDiskParams struct {
 	*/
 	APIVersion *string
 
+	/* DiskID.
+
+	   The ID of the disk.
+	*/
+	DiskID string
+
 	/* ID.
 
 	   The ID of the machine.
 	*/
 	ID string
-
-	/* Id1.
-
-	   The ID of the disk.
-	*/
-	Id1 string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -141,6 +141,17 @@ func (o *GetMachineDiskParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
+// WithDiskID adds the diskID to the get machine disk params
+func (o *GetMachineDiskParams) WithDiskID(diskID string) *GetMachineDiskParams {
+	o.SetDiskID(diskID)
+	return o
+}
+
+// SetDiskID adds the diskId to the get machine disk params
+func (o *GetMachineDiskParams) SetDiskID(diskID string) {
+	o.DiskID = diskID
+}
+
 // WithID adds the id to the get machine disk params
 func (o *GetMachineDiskParams) WithID(id string) *GetMachineDiskParams {
 	o.SetID(id)
@@ -150,17 +161,6 @@ func (o *GetMachineDiskParams) WithID(id string) *GetMachineDiskParams {
 // SetID adds the id to the get machine disk params
 func (o *GetMachineDiskParams) SetID(id string) {
 	o.ID = id
-}
-
-// WithId1 adds the id1 to the get machine disk params
-func (o *GetMachineDiskParams) WithId1(id1 string) *GetMachineDiskParams {
-	o.SetId1(id1)
-	return o
-}
-
-// SetId1 adds the id1 to the get machine disk params
-func (o *GetMachineDiskParams) SetId1(id1 string) {
-	o.Id1 = id1
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -188,13 +188,13 @@ func (o *GetMachineDiskParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		}
 	}
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
+	// path param diskId
+	if err := r.SetPathParam("diskId", o.DiskID); err != nil {
 		return err
 	}
 
-	// path param id1
-	if err := r.SetPathParam("id1", o.Id1); err != nil {
+	// path param id
+	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
 	}
 

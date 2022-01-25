@@ -787,6 +787,11 @@ func (m *execution) validateInputMeta(formats strfmt.Registry) error {
 		}
 		if val, ok := m.InputMeta()[k]; ok {
 			if err := val.Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("_inputMeta" + "." + k)
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("_inputMeta" + "." + k)
+				}
 				return err
 			}
 		}
@@ -808,6 +813,11 @@ func (m *execution) validateOutputMeta(formats strfmt.Registry) error {
 		}
 		if val, ok := m.OutputMeta()[k]; ok {
 			if err := val.Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("_outputMeta" + "." + k)
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("_outputMeta" + "." + k)
+				}
 				return err
 			}
 		}
@@ -845,6 +855,8 @@ func (m *execution) validateNotifications(formats strfmt.Registry) error {
 		if err := m.notificationsField[i].Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("notifications" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("notifications" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -866,6 +878,11 @@ func (m *execution) validateStages(formats strfmt.Registry) error {
 		}
 		if val, ok := m.Stages()[k]; ok {
 			if err := val.Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("stages" + "." + k)
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("stages" + "." + k)
+				}
 				return err
 			}
 		}
@@ -883,6 +900,8 @@ func (m *execution) validateStarred(formats strfmt.Registry) error {
 	if err := m.Starred().Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("starred")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("starred")
 		}
 		return err
 	}
@@ -994,6 +1013,8 @@ func (m *execution) validateWorkspaceResults(formats strfmt.Registry) error {
 			if err := m.workspaceResultsField[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("workspaceResults" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("workspaceResults" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -1075,6 +1096,8 @@ func (m *execution) contextValidateNotifications(ctx context.Context, formats st
 		if err := m.notificationsField[i].ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("notifications" + "." + strconv.Itoa(i))
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("notifications" + "." + strconv.Itoa(i))
 			}
 			return err
 		}
@@ -1104,6 +1127,8 @@ func (m *execution) contextValidateStarred(ctx context.Context, formats strfmt.R
 	if err := m.Starred().ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("starred")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("starred")
 		}
 		return err
 	}
@@ -1119,6 +1144,8 @@ func (m *execution) contextValidateWorkspaceResults(ctx context.Context, formats
 			if err := m.workspaceResultsField[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("workspaceResults" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("workspaceResults" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

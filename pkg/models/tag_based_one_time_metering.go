@@ -51,6 +51,8 @@ func (m *TagBasedOneTimeMetering) validateOneTimeMetering(formats strfmt.Registr
 		if err := m.OneTimeMetering.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("oneTimeMetering")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("oneTimeMetering")
 			}
 			return err
 		}
@@ -79,6 +81,8 @@ func (m *TagBasedOneTimeMetering) contextValidateOneTimeMetering(ctx context.Con
 		if err := m.OneTimeMetering.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("oneTimeMetering")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("oneTimeMetering")
 			}
 			return err
 		}
