@@ -54,10 +54,12 @@ func NewCreateBlueprintUsingPOST1ParamsWithHTTPClient(client *http.Client) *Crea
 	}
 }
 
-/* CreateBlueprintUsingPOST1Params contains all the parameters to send to the API endpoint
-   for the create blueprint using p o s t 1 operation.
+/*
+CreateBlueprintUsingPOST1Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create blueprint using p o s t 1 operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateBlueprintUsingPOST1Params struct {
 

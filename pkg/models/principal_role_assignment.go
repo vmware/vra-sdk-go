@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
@@ -20,7 +19,7 @@ import (
 
 // PrincipalRoleAssignment PrincipalRoleAssignment
 //
-// List of user ids to add and remove from a project
+// # List of user ids to add and remove from a project
 //
 // swagger:discriminator PrincipalRoleAssignment List of user ids to add and remove from a project
 type PrincipalRoleAssignment interface {
@@ -86,7 +85,7 @@ func UnmarshalPrincipalRoleAssignmentSlice(reader io.Reader, consumer runtime.Co
 // UnmarshalPrincipalRoleAssignment unmarshals polymorphic PrincipalRoleAssignment
 func UnmarshalPrincipalRoleAssignment(reader io.Reader, consumer runtime.Consumer) (PrincipalRoleAssignment, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}

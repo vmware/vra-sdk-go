@@ -54,10 +54,12 @@ func NewModifyProjectUsingPATCHParamsWithHTTPClient(client *http.Client) *Modify
 	}
 }
 
-/* ModifyProjectUsingPATCHParams contains all the parameters to send to the API endpoint
-   for the modify project using p a t c h operation.
+/*
+ModifyProjectUsingPATCHParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the modify project using p a t c h operation.
+
+	Typically these are written to a http.Request.
 */
 type ModifyProjectUsingPATCHParams struct {
 

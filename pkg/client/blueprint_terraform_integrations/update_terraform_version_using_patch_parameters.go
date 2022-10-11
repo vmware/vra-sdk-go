@@ -54,10 +54,12 @@ func NewUpdateTerraformVersionUsingPATCHParamsWithHTTPClient(client *http.Client
 	}
 }
 
-/* UpdateTerraformVersionUsingPATCHParams contains all the parameters to send to the API endpoint
-   for the update terraform version using p a t c h operation.
+/*
+UpdateTerraformVersionUsingPATCHParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update terraform version using p a t c h operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateTerraformVersionUsingPATCHParams struct {
 

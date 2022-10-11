@@ -30,6 +30,8 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	ExistingTanzuClustersUsingGET(params *ExistingTanzuClustersUsingGETParams, opts ...ClientOption) (*ExistingTanzuClustersUsingGETOK, error)
+
 	GetClusterUsingGET1(params *GetClusterUsingGET1Params, opts ...ClientOption) (*GetClusterUsingGET1OK, error)
 
 	GetClusterUsingGET2(params *GetClusterUsingGET2Params, opts ...ClientOption) (*GetClusterUsingGET2OK, error)
@@ -46,9 +48,49 @@ type ClientService interface {
 }
 
 /*
-  GetClusterUsingGET1 finds a supervisor cluster by v sphere moref and v sphere endpoint id
+ExistingTanzuClustersUsingGET gets all existing tanzu kubernetes clusters on a supervisor cluster
 
-  Retrieve a Supervisor Cluster by vSphere moref and id from the endpoint self link of the vSphere endpoint this cluster is associated to
+Get all existing tanzu kubernetes clusters on a supervisor cluster.
+*/
+func (a *Client) ExistingTanzuClustersUsingGET(params *ExistingTanzuClustersUsingGETParams, opts ...ClientOption) (*ExistingTanzuClustersUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewExistingTanzuClustersUsingGETParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "existingTanzuClustersUsingGET",
+		Method:             "GET",
+		PathPattern:        "/cmx/api/resources/supervisor-clusters/{selfLinkId}/tanzu-clusters-namespace",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ExistingTanzuClustersUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ExistingTanzuClustersUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for existingTanzuClustersUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetClusterUsingGET1 finds a supervisor cluster by v sphere moref and v sphere endpoint id
+
+Retrieve a Supervisor Cluster by vSphere moref and id from the endpoint self link of the vSphere endpoint this cluster is associated to
 */
 func (a *Client) GetClusterUsingGET1(params *GetClusterUsingGET1Params, opts ...ClientOption) (*GetClusterUsingGET1OK, error) {
 	// TODO: Validate the params before sending
@@ -86,9 +128,9 @@ func (a *Client) GetClusterUsingGET1(params *GetClusterUsingGET1Params, opts ...
 }
 
 /*
-  GetClusterUsingGET2 finds a supervisor cluster by the id from document self link
+GetClusterUsingGET2 finds a supervisor cluster by the id from document self link
 
-  Retrieve a Supervisor Cluster by id from documentSelfLink
+Retrieve a Supervisor Cluster by id from documentSelfLink
 */
 func (a *Client) GetClusterUsingGET2(params *GetClusterUsingGET2Params, opts ...ClientOption) (*GetClusterUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -98,7 +140,7 @@ func (a *Client) GetClusterUsingGET2(params *GetClusterUsingGET2Params, opts ...
 	op := &runtime.ClientOperation{
 		ID:                 "getClusterUsingGET_2",
 		Method:             "GET",
-		PathPattern:        "/cmx/api/resources/supervisor-clusters/{selfLinkId}",
+		PathPattern:        "/cmx/api/resources/supervisor-clusters/{clusterSelfLinkId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -126,9 +168,9 @@ func (a *Client) GetClusterUsingGET2(params *GetClusterUsingGET2Params, opts ...
 }
 
 /*
-  ListClustersOnEndpointUsingGET gets all supervisor clusters on a v sphere endpoint
+ListClustersOnEndpointUsingGET gets all supervisor clusters on a v sphere endpoint
 
-  Get all Supervisor Clusters on a vSphere endpoint by provided id from the endpoint self link
+Get all Supervisor Clusters on a vSphere endpoint by provided id from the endpoint self link
 */
 func (a *Client) ListClustersOnEndpointUsingGET(params *ListClustersOnEndpointUsingGETParams, opts ...ClientOption) (*ListClustersOnEndpointUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -166,9 +208,9 @@ func (a *Client) ListClustersOnEndpointUsingGET(params *ListClustersOnEndpointUs
 }
 
 /*
-  ListUsingGET4 gets all managed supervisor clusters
+ListUsingGET4 gets all managed supervisor clusters
 
-  Get all managed Supervisor Clusters
+Get all managed Supervisor Clusters
 */
 func (a *Client) ListUsingGET4(params *ListUsingGET4Params, opts ...ClientOption) (*ListUsingGET4OK, error) {
 	// TODO: Validate the params before sending
@@ -206,9 +248,9 @@ func (a *Client) ListUsingGET4(params *ListUsingGET4Params, opts ...ClientOption
 }
 
 /*
-  RegisterUsingPUT1 makes a supervisor cluster a managed entity
+RegisterUsingPUT1 makes a supervisor cluster a managed entity
 
-  A valid document self link id shall be provided.
+A valid document self link id shall be provided.
 */
 func (a *Client) RegisterUsingPUT1(params *RegisterUsingPUT1Params, opts ...ClientOption) (*RegisterUsingPUT1OK, error) {
 	// TODO: Validate the params before sending
@@ -246,9 +288,9 @@ func (a *Client) RegisterUsingPUT1(params *RegisterUsingPUT1Params, opts ...Clie
 }
 
 /*
-  UnregisterUsingDELETE makes a supervisor cluster an unmanaged entity
+UnregisterUsingDELETE makes a supervisor cluster an unmanaged entity
 
-  A valid document self link id shall be provided.
+A valid document self link id shall be provided.
 */
 func (a *Client) UnregisterUsingDELETE(params *UnregisterUsingDELETEParams, opts ...ClientOption) (*UnregisterUsingDELETEOK, error) {
 	// TODO: Validate the params before sending

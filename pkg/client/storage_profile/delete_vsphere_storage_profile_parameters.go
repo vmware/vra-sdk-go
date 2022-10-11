@@ -52,10 +52,12 @@ func NewDeleteVSphereStorageProfileParamsWithHTTPClient(client *http.Client) *De
 	}
 }
 
-/* DeleteVSphereStorageProfileParams contains all the parameters to send to the API endpoint
-   for the delete v sphere storage profile operation.
+/*
+DeleteVSphereStorageProfileParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete v sphere storage profile operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteVSphereStorageProfileParams struct {
 

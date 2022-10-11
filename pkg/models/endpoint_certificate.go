@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
@@ -116,7 +115,7 @@ func UnmarshalEndpointCertificateSlice(reader io.Reader, consumer runtime.Consum
 // UnmarshalEndpointCertificate unmarshals polymorphic EndpointCertificate
 func UnmarshalEndpointCertificate(reader io.Reader, consumer runtime.Consumer) (EndpointCertificate, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}

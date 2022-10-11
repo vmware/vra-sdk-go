@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -73,7 +72,7 @@ func UnmarshalProjectResourceMetadataSlice(reader io.Reader, consumer runtime.Co
 // UnmarshalProjectResourceMetadata unmarshals polymorphic ProjectResourceMetadata
 func UnmarshalProjectResourceMetadata(reader io.Reader, consumer runtime.Consumer) (ProjectResourceMetadata, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}

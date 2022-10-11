@@ -51,7 +51,8 @@ func NewUpdateGcpCloudAccountAsyncAccepted() *UpdateGcpCloudAccountAsyncAccepted
 	return &UpdateGcpCloudAccountAsyncAccepted{}
 }
 
-/* UpdateGcpCloudAccountAsyncAccepted describes a response with status code 202, with default header values.
+/*
+UpdateGcpCloudAccountAsyncAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type UpdateGcpCloudAccountAsyncAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this update gcp cloud account async accepted response has a 2xx status code
+func (o *UpdateGcpCloudAccountAsyncAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update gcp cloud account async accepted response has a 3xx status code
+func (o *UpdateGcpCloudAccountAsyncAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update gcp cloud account async accepted response has a 4xx status code
+func (o *UpdateGcpCloudAccountAsyncAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update gcp cloud account async accepted response has a 5xx status code
+func (o *UpdateGcpCloudAccountAsyncAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update gcp cloud account async accepted response a status code equal to that given
+func (o *UpdateGcpCloudAccountAsyncAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *UpdateGcpCloudAccountAsyncAccepted) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-gcp/{id}][%d] updateGcpCloudAccountAsyncAccepted  %+v", 202, o.Payload)
 }
+
+func (o *UpdateGcpCloudAccountAsyncAccepted) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-gcp/{id}][%d] updateGcpCloudAccountAsyncAccepted  %+v", 202, o.Payload)
+}
+
 func (o *UpdateGcpCloudAccountAsyncAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewUpdateGcpCloudAccountAsyncForbidden() *UpdateGcpCloudAccountAsyncForbidd
 	return &UpdateGcpCloudAccountAsyncForbidden{}
 }
 
-/* UpdateGcpCloudAccountAsyncForbidden describes a response with status code 403, with default header values.
+/*
+UpdateGcpCloudAccountAsyncForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type UpdateGcpCloudAccountAsyncForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this update gcp cloud account async forbidden response has a 2xx status code
+func (o *UpdateGcpCloudAccountAsyncForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update gcp cloud account async forbidden response has a 3xx status code
+func (o *UpdateGcpCloudAccountAsyncForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update gcp cloud account async forbidden response has a 4xx status code
+func (o *UpdateGcpCloudAccountAsyncForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update gcp cloud account async forbidden response has a 5xx status code
+func (o *UpdateGcpCloudAccountAsyncForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update gcp cloud account async forbidden response a status code equal to that given
+func (o *UpdateGcpCloudAccountAsyncForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateGcpCloudAccountAsyncForbidden) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-gcp/{id}][%d] updateGcpCloudAccountAsyncForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UpdateGcpCloudAccountAsyncForbidden) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-gcp/{id}][%d] updateGcpCloudAccountAsyncForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UpdateGcpCloudAccountAsyncForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewUpdateGcpCloudAccountAsyncNotFound() *UpdateGcpCloudAccountAsyncNotFound
 	return &UpdateGcpCloudAccountAsyncNotFound{}
 }
 
-/* UpdateGcpCloudAccountAsyncNotFound describes a response with status code 404, with default header values.
+/*
+UpdateGcpCloudAccountAsyncNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type UpdateGcpCloudAccountAsyncNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update gcp cloud account async not found response has a 2xx status code
+func (o *UpdateGcpCloudAccountAsyncNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update gcp cloud account async not found response has a 3xx status code
+func (o *UpdateGcpCloudAccountAsyncNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update gcp cloud account async not found response has a 4xx status code
+func (o *UpdateGcpCloudAccountAsyncNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update gcp cloud account async not found response has a 5xx status code
+func (o *UpdateGcpCloudAccountAsyncNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update gcp cloud account async not found response a status code equal to that given
+func (o *UpdateGcpCloudAccountAsyncNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateGcpCloudAccountAsyncNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-gcp/{id}][%d] updateGcpCloudAccountAsyncNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UpdateGcpCloudAccountAsyncNotFound) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-gcp/{id}][%d] updateGcpCloudAccountAsyncNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UpdateGcpCloudAccountAsyncNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

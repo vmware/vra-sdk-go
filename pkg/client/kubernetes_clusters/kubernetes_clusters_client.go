@@ -30,6 +30,10 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	AssignStatusUsingGET(params *AssignStatusUsingGETParams, opts ...ClientOption) (*AssignStatusUsingGETOK, error)
+
+	AssignUsingPOST(params *AssignUsingPOSTParams, opts ...ClientOption) (*AssignUsingPOSTOK, error)
+
 	DeleteClusterUsingDELETE(params *DeleteClusterUsingDELETEParams, opts ...ClientOption) (*DeleteClusterUsingDELETEOK, error)
 
 	DestroyClusterUsingDELETE(params *DestroyClusterUsingDELETEParams, opts ...ClientOption) (*DestroyClusterUsingDELETEOK, error)
@@ -52,9 +56,89 @@ type ClientService interface {
 }
 
 /*
-  DeleteClusterUsingDELETE deletes a k8 s cluster
+AssignStatusUsingGET retrieves assign status
 
-  Delete a K8S Cluster by provided id
+Retrieve assign status.
+*/
+func (a *Client) AssignStatusUsingGET(params *AssignStatusUsingGETParams, opts ...ClientOption) (*AssignStatusUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewAssignStatusUsingGETParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "assignStatusUsingGET",
+		Method:             "GET",
+		PathPattern:        "/cmx/api/resources/k8s/clusters/assign/{requestId}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &AssignStatusUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*AssignStatusUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for assignStatusUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+AssignUsingPOST assigns k8s cluster to cluster cluster group
+
+Assign K8s cluster to cluster cluster group.
+*/
+func (a *Client) AssignUsingPOST(params *AssignUsingPOSTParams, opts ...ClientOption) (*AssignUsingPOSTOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewAssignUsingPOSTParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "assignUsingPOST",
+		Method:             "POST",
+		PathPattern:        "/cmx/api/resources/k8s/clusters/assign",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &AssignUsingPOSTReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*AssignUsingPOSTOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for assignUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteClusterUsingDELETE deletes a k8 s cluster
+
+Delete a K8S Cluster by provided id
 */
 func (a *Client) DeleteClusterUsingDELETE(params *DeleteClusterUsingDELETEParams, opts ...ClientOption) (*DeleteClusterUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
@@ -92,9 +176,9 @@ func (a *Client) DeleteClusterUsingDELETE(params *DeleteClusterUsingDELETEParams
 }
 
 /*
-  DestroyClusterUsingDELETE destroys a k8 s cluster
+DestroyClusterUsingDELETE destroys a k8 s cluster
 
-  Destroy a K8S Cluster by provided id
+Destroy a K8S Cluster by provided id
 */
 func (a *Client) DestroyClusterUsingDELETE(params *DestroyClusterUsingDELETEParams, opts ...ClientOption) (*DestroyClusterUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
@@ -132,9 +216,9 @@ func (a *Client) DestroyClusterUsingDELETE(params *DestroyClusterUsingDELETEPara
 }
 
 /*
-  GetClusterUsingGET finds a k8 s cluster by id
+GetClusterUsingGET finds a k8 s cluster by id
 
-  Retrieve a K8S by id
+Retrieve a K8S by id
 */
 func (a *Client) GetClusterUsingGET(params *GetClusterUsingGETParams, opts ...ClientOption) (*GetClusterUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -172,9 +256,9 @@ func (a *Client) GetClusterUsingGET(params *GetClusterUsingGETParams, opts ...Cl
 }
 
 /*
-  GetKubeConfigUsingGET gets a kube config for a k8 s cluster
+GetKubeConfigUsingGET gets a kube config for a k8 s cluster
 
-  Get a KubeConfig for a K8S Cluster by provided id
+Get a KubeConfig for a K8S Cluster by provided id
 */
 func (a *Client) GetKubeConfigUsingGET(params *GetKubeConfigUsingGETParams, opts ...ClientOption) (*GetKubeConfigUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -212,9 +296,9 @@ func (a *Client) GetKubeConfigUsingGET(params *GetKubeConfigUsingGETParams, opts
 }
 
 /*
-  GetNodesUsingGET gets nodes of k8 s clusters
+GetNodesUsingGET gets nodes of k8 s clusters
 
-  Get nodes of K8S Clusters by provided id
+Get nodes of K8S Clusters by provided id
 */
 func (a *Client) GetNodesUsingGET(params *GetNodesUsingGETParams, opts ...ClientOption) (*GetNodesUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -252,9 +336,9 @@ func (a *Client) GetNodesUsingGET(params *GetNodesUsingGETParams, opts ...Client
 }
 
 /*
-  ListUsingGET gets all registered k8 s clusters
+ListUsingGET gets all registered k8 s clusters
 
-  Retrieve the managed K8S Clusters
+Retrieve the managed K8S Clusters
 */
 func (a *Client) ListUsingGET(params *ListUsingGETParams, opts ...ClientOption) (*ListUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -292,9 +376,9 @@ func (a *Client) ListUsingGET(params *ListUsingGETParams, opts ...ClientOption) 
 }
 
 /*
-  OnboardUsingPOST onboards a k8 s cluster
+OnboardUsingPOST onboards a k8 s cluster
 
-  Onboard a K8S Cluster entity
+Onboard a K8S Cluster entity
 */
 func (a *Client) OnboardUsingPOST(params *OnboardUsingPOSTParams, opts ...ClientOption) (*OnboardUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -332,9 +416,9 @@ func (a *Client) OnboardUsingPOST(params *OnboardUsingPOSTParams, opts ...Client
 }
 
 /*
-  UpdateUsingPUT1 updates a k8 s cluster
+UpdateUsingPUT1 updates a k8 s cluster
 
-  Update K8S Cluster by id
+Update K8S Cluster by id
 */
 func (a *Client) UpdateUsingPUT1(params *UpdateUsingPUT1Params, opts ...ClientOption) (*UpdateUsingPUT1OK, error) {
 	// TODO: Validate the params before sending
@@ -372,9 +456,9 @@ func (a *Client) UpdateUsingPUT1(params *UpdateUsingPUT1Params, opts ...ClientOp
 }
 
 /*
-  ValidateUsingPUT validates provided k8 s cluster entity
+ValidateUsingPUT validates provided k8 s cluster entity
 
-  Validate provided K8S Cluster entity
+Validate provided K8S Cluster entity
 */
 func (a *Client) ValidateUsingPUT(params *ValidateUsingPUTParams, opts ...ClientOption) (*ValidateUsingPUTOK, error) {
 	// TODO: Validate the params before sending

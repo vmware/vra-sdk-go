@@ -51,7 +51,8 @@ func NewRebootMachineAccepted() *RebootMachineAccepted {
 	return &RebootMachineAccepted{}
 }
 
-/* RebootMachineAccepted describes a response with status code 202, with default header values.
+/*
+RebootMachineAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type RebootMachineAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this reboot machine accepted response has a 2xx status code
+func (o *RebootMachineAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this reboot machine accepted response has a 3xx status code
+func (o *RebootMachineAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this reboot machine accepted response has a 4xx status code
+func (o *RebootMachineAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this reboot machine accepted response has a 5xx status code
+func (o *RebootMachineAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this reboot machine accepted response a status code equal to that given
+func (o *RebootMachineAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *RebootMachineAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/reboot][%d] rebootMachineAccepted  %+v", 202, o.Payload)
 }
+
+func (o *RebootMachineAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/reboot][%d] rebootMachineAccepted  %+v", 202, o.Payload)
+}
+
 func (o *RebootMachineAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewRebootMachineForbidden() *RebootMachineForbidden {
 	return &RebootMachineForbidden{}
 }
 
-/* RebootMachineForbidden describes a response with status code 403, with default header values.
+/*
+RebootMachineForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type RebootMachineForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this reboot machine forbidden response has a 2xx status code
+func (o *RebootMachineForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this reboot machine forbidden response has a 3xx status code
+func (o *RebootMachineForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this reboot machine forbidden response has a 4xx status code
+func (o *RebootMachineForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this reboot machine forbidden response has a 5xx status code
+func (o *RebootMachineForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this reboot machine forbidden response a status code equal to that given
+func (o *RebootMachineForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *RebootMachineForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/reboot][%d] rebootMachineForbidden  %+v", 403, o.Payload)
 }
+
+func (o *RebootMachineForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/reboot][%d] rebootMachineForbidden  %+v", 403, o.Payload)
+}
+
 func (o *RebootMachineForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewRebootMachineNotFound() *RebootMachineNotFound {
 	return &RebootMachineNotFound{}
 }
 
-/* RebootMachineNotFound describes a response with status code 404, with default header values.
+/*
+RebootMachineNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type RebootMachineNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this reboot machine not found response has a 2xx status code
+func (o *RebootMachineNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this reboot machine not found response has a 3xx status code
+func (o *RebootMachineNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this reboot machine not found response has a 4xx status code
+func (o *RebootMachineNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this reboot machine not found response has a 5xx status code
+func (o *RebootMachineNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this reboot machine not found response a status code equal to that given
+func (o *RebootMachineNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *RebootMachineNotFound) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/reboot][%d] rebootMachineNotFound  %+v", 404, o.Payload)
 }
+
+func (o *RebootMachineNotFound) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/reboot][%d] rebootMachineNotFound  %+v", 404, o.Payload)
+}
+
 func (o *RebootMachineNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

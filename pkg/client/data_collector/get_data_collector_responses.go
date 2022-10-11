@@ -51,7 +51,8 @@ func NewGetDataCollectorOK() *GetDataCollectorOK {
 	return &GetDataCollectorOK{}
 }
 
-/* GetDataCollectorOK describes a response with status code 200, with default header values.
+/*
+GetDataCollectorOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetDataCollectorOK struct {
 	Payload *models.DataCollector
 }
 
+// IsSuccess returns true when this get data collector o k response has a 2xx status code
+func (o *GetDataCollectorOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get data collector o k response has a 3xx status code
+func (o *GetDataCollectorOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get data collector o k response has a 4xx status code
+func (o *GetDataCollectorOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get data collector o k response has a 5xx status code
+func (o *GetDataCollectorOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get data collector o k response a status code equal to that given
+func (o *GetDataCollectorOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetDataCollectorOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/data-collectors/{id}][%d] getDataCollectorOK  %+v", 200, o.Payload)
 }
+
+func (o *GetDataCollectorOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/data-collectors/{id}][%d] getDataCollectorOK  %+v", 200, o.Payload)
+}
+
 func (o *GetDataCollectorOK) GetPayload() *models.DataCollector {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetDataCollectorForbidden() *GetDataCollectorForbidden {
 	return &GetDataCollectorForbidden{}
 }
 
-/* GetDataCollectorForbidden describes a response with status code 403, with default header values.
+/*
+GetDataCollectorForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type GetDataCollectorForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get data collector forbidden response has a 2xx status code
+func (o *GetDataCollectorForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get data collector forbidden response has a 3xx status code
+func (o *GetDataCollectorForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get data collector forbidden response has a 4xx status code
+func (o *GetDataCollectorForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get data collector forbidden response has a 5xx status code
+func (o *GetDataCollectorForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get data collector forbidden response a status code equal to that given
+func (o *GetDataCollectorForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetDataCollectorForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/data-collectors/{id}][%d] getDataCollectorForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetDataCollectorForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/data-collectors/{id}][%d] getDataCollectorForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetDataCollectorForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewGetDataCollectorNotFound() *GetDataCollectorNotFound {
 	return &GetDataCollectorNotFound{}
 }
 
-/* GetDataCollectorNotFound describes a response with status code 404, with default header values.
+/*
+GetDataCollectorNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type GetDataCollectorNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get data collector not found response has a 2xx status code
+func (o *GetDataCollectorNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get data collector not found response has a 3xx status code
+func (o *GetDataCollectorNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get data collector not found response has a 4xx status code
+func (o *GetDataCollectorNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get data collector not found response has a 5xx status code
+func (o *GetDataCollectorNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get data collector not found response a status code equal to that given
+func (o *GetDataCollectorNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetDataCollectorNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/data-collectors/{id}][%d] getDataCollectorNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetDataCollectorNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/data-collectors/{id}][%d] getDataCollectorNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetDataCollectorNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

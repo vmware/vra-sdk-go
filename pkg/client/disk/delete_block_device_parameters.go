@@ -53,10 +53,12 @@ func NewDeleteBlockDeviceParamsWithHTTPClient(client *http.Client) *DeleteBlockD
 	}
 }
 
-/* DeleteBlockDeviceParams contains all the parameters to send to the API endpoint
-   for the delete block device operation.
+/*
+DeleteBlockDeviceParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete block device operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteBlockDeviceParams struct {
 

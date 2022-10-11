@@ -52,10 +52,12 @@ func NewDestroyClusterUsingDELETEParamsWithHTTPClient(client *http.Client) *Dest
 	}
 }
 
-/* DestroyClusterUsingDELETEParams contains all the parameters to send to the API endpoint
-   for the destroy cluster using d e l e t e operation.
+/*
+DestroyClusterUsingDELETEParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the destroy cluster using d e l e t e operation.
+
+	Typically these are written to a http.Request.
 */
 type DestroyClusterUsingDELETEParams struct {
 

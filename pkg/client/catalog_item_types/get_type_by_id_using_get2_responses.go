@@ -51,7 +51,8 @@ func NewGetTypeByIDUsingGET2OK() *GetTypeByIDUsingGET2OK {
 	return &GetTypeByIDUsingGET2OK{}
 }
 
-/* GetTypeByIDUsingGET2OK describes a response with status code 200, with default header values.
+/*
+GetTypeByIDUsingGET2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -59,9 +60,39 @@ type GetTypeByIDUsingGET2OK struct {
 	Payload *models.CatalogItemType
 }
 
+// IsSuccess returns true when this get type by Id using g e t2 o k response has a 2xx status code
+func (o *GetTypeByIDUsingGET2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get type by Id using g e t2 o k response has a 3xx status code
+func (o *GetTypeByIDUsingGET2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get type by Id using g e t2 o k response has a 4xx status code
+func (o *GetTypeByIDUsingGET2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get type by Id using g e t2 o k response has a 5xx status code
+func (o *GetTypeByIDUsingGET2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get type by Id using g e t2 o k response a status code equal to that given
+func (o *GetTypeByIDUsingGET2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetTypeByIDUsingGET2OK) Error() string {
 	return fmt.Sprintf("[GET /catalog/api/types/{id}][%d] getTypeByIdUsingGET2OK  %+v", 200, o.Payload)
 }
+
+func (o *GetTypeByIDUsingGET2OK) String() string {
+	return fmt.Sprintf("[GET /catalog/api/types/{id}][%d] getTypeByIdUsingGET2OK  %+v", 200, o.Payload)
+}
+
 func (o *GetTypeByIDUsingGET2OK) GetPayload() *models.CatalogItemType {
 	return o.Payload
 }
@@ -83,14 +114,44 @@ func NewGetTypeByIDUsingGET2Unauthorized() *GetTypeByIDUsingGET2Unauthorized {
 	return &GetTypeByIDUsingGET2Unauthorized{}
 }
 
-/* GetTypeByIDUsingGET2Unauthorized describes a response with status code 401, with default header values.
+/*
+GetTypeByIDUsingGET2Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type GetTypeByIDUsingGET2Unauthorized struct {
 }
 
+// IsSuccess returns true when this get type by Id using g e t2 unauthorized response has a 2xx status code
+func (o *GetTypeByIDUsingGET2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get type by Id using g e t2 unauthorized response has a 3xx status code
+func (o *GetTypeByIDUsingGET2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get type by Id using g e t2 unauthorized response has a 4xx status code
+func (o *GetTypeByIDUsingGET2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get type by Id using g e t2 unauthorized response has a 5xx status code
+func (o *GetTypeByIDUsingGET2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get type by Id using g e t2 unauthorized response a status code equal to that given
+func (o *GetTypeByIDUsingGET2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetTypeByIDUsingGET2Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /catalog/api/types/{id}][%d] getTypeByIdUsingGET2Unauthorized ", 401)
+}
+
+func (o *GetTypeByIDUsingGET2Unauthorized) String() string {
 	return fmt.Sprintf("[GET /catalog/api/types/{id}][%d] getTypeByIdUsingGET2Unauthorized ", 401)
 }
 
@@ -104,7 +165,8 @@ func NewGetTypeByIDUsingGET2NotFound() *GetTypeByIDUsingGET2NotFound {
 	return &GetTypeByIDUsingGET2NotFound{}
 }
 
-/* GetTypeByIDUsingGET2NotFound describes a response with status code 404, with default header values.
+/*
+GetTypeByIDUsingGET2NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -112,9 +174,39 @@ type GetTypeByIDUsingGET2NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get type by Id using g e t2 not found response has a 2xx status code
+func (o *GetTypeByIDUsingGET2NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get type by Id using g e t2 not found response has a 3xx status code
+func (o *GetTypeByIDUsingGET2NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get type by Id using g e t2 not found response has a 4xx status code
+func (o *GetTypeByIDUsingGET2NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get type by Id using g e t2 not found response has a 5xx status code
+func (o *GetTypeByIDUsingGET2NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get type by Id using g e t2 not found response a status code equal to that given
+func (o *GetTypeByIDUsingGET2NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetTypeByIDUsingGET2NotFound) Error() string {
 	return fmt.Sprintf("[GET /catalog/api/types/{id}][%d] getTypeByIdUsingGET2NotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetTypeByIDUsingGET2NotFound) String() string {
+	return fmt.Sprintf("[GET /catalog/api/types/{id}][%d] getTypeByIdUsingGET2NotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetTypeByIDUsingGET2NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

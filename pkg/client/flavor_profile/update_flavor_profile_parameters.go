@@ -54,10 +54,12 @@ func NewUpdateFlavorProfileParamsWithHTTPClient(client *http.Client) *UpdateFlav
 	}
 }
 
-/* UpdateFlavorProfileParams contains all the parameters to send to the API endpoint
-   for the update flavor profile operation.
+/*
+UpdateFlavorProfileParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update flavor profile operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateFlavorProfileParams struct {
 

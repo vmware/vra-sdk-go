@@ -45,7 +45,8 @@ func NewDeleteLoadBalancerOperationAccepted() *DeleteLoadBalancerOperationAccept
 	return &DeleteLoadBalancerOperationAccepted{}
 }
 
-/* DeleteLoadBalancerOperationAccepted describes a response with status code 202, with default header values.
+/*
+DeleteLoadBalancerOperationAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type DeleteLoadBalancerOperationAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this delete load balancer operation accepted response has a 2xx status code
+func (o *DeleteLoadBalancerOperationAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete load balancer operation accepted response has a 3xx status code
+func (o *DeleteLoadBalancerOperationAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete load balancer operation accepted response has a 4xx status code
+func (o *DeleteLoadBalancerOperationAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete load balancer operation accepted response has a 5xx status code
+func (o *DeleteLoadBalancerOperationAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete load balancer operation accepted response a status code equal to that given
+func (o *DeleteLoadBalancerOperationAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteLoadBalancerOperationAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/load-balancers/{id}/operations/delete][%d] deleteLoadBalancerOperationAccepted  %+v", 202, o.Payload)
 }
+
+func (o *DeleteLoadBalancerOperationAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/load-balancers/{id}/operations/delete][%d] deleteLoadBalancerOperationAccepted  %+v", 202, o.Payload)
+}
+
 func (o *DeleteLoadBalancerOperationAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewDeleteLoadBalancerOperationForbidden() *DeleteLoadBalancerOperationForbi
 	return &DeleteLoadBalancerOperationForbidden{}
 }
 
-/* DeleteLoadBalancerOperationForbidden describes a response with status code 403, with default header values.
+/*
+DeleteLoadBalancerOperationForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type DeleteLoadBalancerOperationForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this delete load balancer operation forbidden response has a 2xx status code
+func (o *DeleteLoadBalancerOperationForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete load balancer operation forbidden response has a 3xx status code
+func (o *DeleteLoadBalancerOperationForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete load balancer operation forbidden response has a 4xx status code
+func (o *DeleteLoadBalancerOperationForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete load balancer operation forbidden response has a 5xx status code
+func (o *DeleteLoadBalancerOperationForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete load balancer operation forbidden response a status code equal to that given
+func (o *DeleteLoadBalancerOperationForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteLoadBalancerOperationForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/load-balancers/{id}/operations/delete][%d] deleteLoadBalancerOperationForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DeleteLoadBalancerOperationForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/load-balancers/{id}/operations/delete][%d] deleteLoadBalancerOperationForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DeleteLoadBalancerOperationForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

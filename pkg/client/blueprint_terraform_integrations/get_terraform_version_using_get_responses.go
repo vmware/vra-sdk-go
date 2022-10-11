@@ -57,7 +57,8 @@ func NewGetTerraformVersionUsingGETOK() *GetTerraformVersionUsingGETOK {
 	return &GetTerraformVersionUsingGETOK{}
 }
 
-/* GetTerraformVersionUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetTerraformVersionUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -65,9 +66,39 @@ type GetTerraformVersionUsingGETOK struct {
 	Payload *models.TerraformVersion
 }
 
+// IsSuccess returns true when this get terraform version using g e t o k response has a 2xx status code
+func (o *GetTerraformVersionUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get terraform version using g e t o k response has a 3xx status code
+func (o *GetTerraformVersionUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get terraform version using g e t o k response has a 4xx status code
+func (o *GetTerraformVersionUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get terraform version using g e t o k response has a 5xx status code
+func (o *GetTerraformVersionUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get terraform version using g e t o k response a status code equal to that given
+func (o *GetTerraformVersionUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetTerraformVersionUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/versions/{versionId}][%d] getTerraformVersionUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetTerraformVersionUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/versions/{versionId}][%d] getTerraformVersionUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetTerraformVersionUsingGETOK) GetPayload() *models.TerraformVersion {
 	return o.Payload
 }
@@ -89,14 +120,44 @@ func NewGetTerraformVersionUsingGETUnauthorized() *GetTerraformVersionUsingGETUn
 	return &GetTerraformVersionUsingGETUnauthorized{}
 }
 
-/* GetTerraformVersionUsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+GetTerraformVersionUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type GetTerraformVersionUsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this get terraform version using g e t unauthorized response has a 2xx status code
+func (o *GetTerraformVersionUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get terraform version using g e t unauthorized response has a 3xx status code
+func (o *GetTerraformVersionUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get terraform version using g e t unauthorized response has a 4xx status code
+func (o *GetTerraformVersionUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get terraform version using g e t unauthorized response has a 5xx status code
+func (o *GetTerraformVersionUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get terraform version using g e t unauthorized response a status code equal to that given
+func (o *GetTerraformVersionUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetTerraformVersionUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/versions/{versionId}][%d] getTerraformVersionUsingGETUnauthorized ", 401)
+}
+
+func (o *GetTerraformVersionUsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/versions/{versionId}][%d] getTerraformVersionUsingGETUnauthorized ", 401)
 }
 
@@ -110,14 +171,44 @@ func NewGetTerraformVersionUsingGETForbidden() *GetTerraformVersionUsingGETForbi
 	return &GetTerraformVersionUsingGETForbidden{}
 }
 
-/* GetTerraformVersionUsingGETForbidden describes a response with status code 403, with default header values.
+/*
+GetTerraformVersionUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetTerraformVersionUsingGETForbidden struct {
 }
 
+// IsSuccess returns true when this get terraform version using g e t forbidden response has a 2xx status code
+func (o *GetTerraformVersionUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get terraform version using g e t forbidden response has a 3xx status code
+func (o *GetTerraformVersionUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get terraform version using g e t forbidden response has a 4xx status code
+func (o *GetTerraformVersionUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get terraform version using g e t forbidden response has a 5xx status code
+func (o *GetTerraformVersionUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get terraform version using g e t forbidden response a status code equal to that given
+func (o *GetTerraformVersionUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetTerraformVersionUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/versions/{versionId}][%d] getTerraformVersionUsingGETForbidden ", 403)
+}
+
+func (o *GetTerraformVersionUsingGETForbidden) String() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/versions/{versionId}][%d] getTerraformVersionUsingGETForbidden ", 403)
 }
 
@@ -131,7 +222,8 @@ func NewGetTerraformVersionUsingGETNotFound() *GetTerraformVersionUsingGETNotFou
 	return &GetTerraformVersionUsingGETNotFound{}
 }
 
-/* GetTerraformVersionUsingGETNotFound describes a response with status code 404, with default header values.
+/*
+GetTerraformVersionUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -139,9 +231,39 @@ type GetTerraformVersionUsingGETNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get terraform version using g e t not found response has a 2xx status code
+func (o *GetTerraformVersionUsingGETNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get terraform version using g e t not found response has a 3xx status code
+func (o *GetTerraformVersionUsingGETNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get terraform version using g e t not found response has a 4xx status code
+func (o *GetTerraformVersionUsingGETNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get terraform version using g e t not found response has a 5xx status code
+func (o *GetTerraformVersionUsingGETNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get terraform version using g e t not found response a status code equal to that given
+func (o *GetTerraformVersionUsingGETNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetTerraformVersionUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/versions/{versionId}][%d] getTerraformVersionUsingGETNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetTerraformVersionUsingGETNotFound) String() string {
+	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/versions/{versionId}][%d] getTerraformVersionUsingGETNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetTerraformVersionUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

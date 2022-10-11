@@ -51,7 +51,8 @@ func NewGetPolicyUsingGET4OK() *GetPolicyUsingGET4OK {
 	return &GetPolicyUsingGET4OK{}
 }
 
-/* GetPolicyUsingGET4OK describes a response with status code 200, with default header values.
+/*
+GetPolicyUsingGET4OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -59,9 +60,39 @@ type GetPolicyUsingGET4OK struct {
 	Payload *models.MeteringPolicy
 }
 
+// IsSuccess returns true when this get policy using g e t4 o k response has a 2xx status code
+func (o *GetPolicyUsingGET4OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get policy using g e t4 o k response has a 3xx status code
+func (o *GetPolicyUsingGET4OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get policy using g e t4 o k response has a 4xx status code
+func (o *GetPolicyUsingGET4OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get policy using g e t4 o k response has a 5xx status code
+func (o *GetPolicyUsingGET4OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get policy using g e t4 o k response a status code equal to that given
+func (o *GetPolicyUsingGET4OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetPolicyUsingGET4OK) Error() string {
 	return fmt.Sprintf("[GET /price/api/private/pricing-cards/{id}][%d] getPolicyUsingGET4OK  %+v", 200, o.Payload)
 }
+
+func (o *GetPolicyUsingGET4OK) String() string {
+	return fmt.Sprintf("[GET /price/api/private/pricing-cards/{id}][%d] getPolicyUsingGET4OK  %+v", 200, o.Payload)
+}
+
 func (o *GetPolicyUsingGET4OK) GetPayload() *models.MeteringPolicy {
 	return o.Payload
 }
@@ -83,14 +114,44 @@ func NewGetPolicyUsingGET4Unauthorized() *GetPolicyUsingGET4Unauthorized {
 	return &GetPolicyUsingGET4Unauthorized{}
 }
 
-/* GetPolicyUsingGET4Unauthorized describes a response with status code 401, with default header values.
+/*
+GetPolicyUsingGET4Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type GetPolicyUsingGET4Unauthorized struct {
 }
 
+// IsSuccess returns true when this get policy using g e t4 unauthorized response has a 2xx status code
+func (o *GetPolicyUsingGET4Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get policy using g e t4 unauthorized response has a 3xx status code
+func (o *GetPolicyUsingGET4Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get policy using g e t4 unauthorized response has a 4xx status code
+func (o *GetPolicyUsingGET4Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get policy using g e t4 unauthorized response has a 5xx status code
+func (o *GetPolicyUsingGET4Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get policy using g e t4 unauthorized response a status code equal to that given
+func (o *GetPolicyUsingGET4Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetPolicyUsingGET4Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /price/api/private/pricing-cards/{id}][%d] getPolicyUsingGET4Unauthorized ", 401)
+}
+
+func (o *GetPolicyUsingGET4Unauthorized) String() string {
 	return fmt.Sprintf("[GET /price/api/private/pricing-cards/{id}][%d] getPolicyUsingGET4Unauthorized ", 401)
 }
 
@@ -104,7 +165,8 @@ func NewGetPolicyUsingGET4NotFound() *GetPolicyUsingGET4NotFound {
 	return &GetPolicyUsingGET4NotFound{}
 }
 
-/* GetPolicyUsingGET4NotFound describes a response with status code 404, with default header values.
+/*
+GetPolicyUsingGET4NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -112,9 +174,39 @@ type GetPolicyUsingGET4NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get policy using g e t4 not found response has a 2xx status code
+func (o *GetPolicyUsingGET4NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get policy using g e t4 not found response has a 3xx status code
+func (o *GetPolicyUsingGET4NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get policy using g e t4 not found response has a 4xx status code
+func (o *GetPolicyUsingGET4NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get policy using g e t4 not found response has a 5xx status code
+func (o *GetPolicyUsingGET4NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get policy using g e t4 not found response a status code equal to that given
+func (o *GetPolicyUsingGET4NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetPolicyUsingGET4NotFound) Error() string {
 	return fmt.Sprintf("[GET /price/api/private/pricing-cards/{id}][%d] getPolicyUsingGET4NotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetPolicyUsingGET4NotFound) String() string {
+	return fmt.Sprintf("[GET /price/api/private/pricing-cards/{id}][%d] getPolicyUsingGET4NotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetPolicyUsingGET4NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

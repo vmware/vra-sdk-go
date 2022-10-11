@@ -29,6 +29,24 @@ func (o *ListContentSourcesUsingGETReader) ReadResponse(response runtime.ClientR
 			return nil, err
 		}
 		return result, nil
+	case 401:
+		result := NewListContentSourcesUsingGETUnauthorized()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 403:
+		result := NewListContentSourcesUsingGETForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 404:
+		result := NewListContentSourcesUsingGETNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +57,8 @@ func NewListContentSourcesUsingGETOK() *ListContentSourcesUsingGETOK {
 	return &ListContentSourcesUsingGETOK{}
 }
 
-/* ListContentSourcesUsingGETOK describes a response with status code 200, with default header values.
+/*
+ListContentSourcesUsingGETOK describes a response with status code 200, with default header values.
 
 Content sources
 */
@@ -47,9 +66,39 @@ type ListContentSourcesUsingGETOK struct {
 	Payload *models.ContentSources
 }
 
+// IsSuccess returns true when this list content sources using g e t o k response has a 2xx status code
+func (o *ListContentSourcesUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this list content sources using g e t o k response has a 3xx status code
+func (o *ListContentSourcesUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this list content sources using g e t o k response has a 4xx status code
+func (o *ListContentSourcesUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this list content sources using g e t o k response has a 5xx status code
+func (o *ListContentSourcesUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this list content sources using g e t o k response a status code equal to that given
+func (o *ListContentSourcesUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ListContentSourcesUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /content/api/sources][%d] listContentSourcesUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *ListContentSourcesUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /content/api/sources][%d] listContentSourcesUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *ListContentSourcesUsingGETOK) GetPayload() *models.ContentSources {
 	return o.Payload
 }
@@ -57,6 +106,171 @@ func (o *ListContentSourcesUsingGETOK) GetPayload() *models.ContentSources {
 func (o *ListContentSourcesUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ContentSources)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewListContentSourcesUsingGETUnauthorized creates a ListContentSourcesUsingGETUnauthorized with default headers values
+func NewListContentSourcesUsingGETUnauthorized() *ListContentSourcesUsingGETUnauthorized {
+	return &ListContentSourcesUsingGETUnauthorized{}
+}
+
+/*
+ListContentSourcesUsingGETUnauthorized describes a response with status code 401, with default header values.
+
+Unauthorized
+*/
+type ListContentSourcesUsingGETUnauthorized struct {
+}
+
+// IsSuccess returns true when this list content sources using g e t unauthorized response has a 2xx status code
+func (o *ListContentSourcesUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this list content sources using g e t unauthorized response has a 3xx status code
+func (o *ListContentSourcesUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this list content sources using g e t unauthorized response has a 4xx status code
+func (o *ListContentSourcesUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this list content sources using g e t unauthorized response has a 5xx status code
+func (o *ListContentSourcesUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this list content sources using g e t unauthorized response a status code equal to that given
+func (o *ListContentSourcesUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+func (o *ListContentSourcesUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /content/api/sources][%d] listContentSourcesUsingGETUnauthorized ", 401)
+}
+
+func (o *ListContentSourcesUsingGETUnauthorized) String() string {
+	return fmt.Sprintf("[GET /content/api/sources][%d] listContentSourcesUsingGETUnauthorized ", 401)
+}
+
+func (o *ListContentSourcesUsingGETUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewListContentSourcesUsingGETForbidden creates a ListContentSourcesUsingGETForbidden with default headers values
+func NewListContentSourcesUsingGETForbidden() *ListContentSourcesUsingGETForbidden {
+	return &ListContentSourcesUsingGETForbidden{}
+}
+
+/*
+ListContentSourcesUsingGETForbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type ListContentSourcesUsingGETForbidden struct {
+}
+
+// IsSuccess returns true when this list content sources using g e t forbidden response has a 2xx status code
+func (o *ListContentSourcesUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this list content sources using g e t forbidden response has a 3xx status code
+func (o *ListContentSourcesUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this list content sources using g e t forbidden response has a 4xx status code
+func (o *ListContentSourcesUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this list content sources using g e t forbidden response has a 5xx status code
+func (o *ListContentSourcesUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this list content sources using g e t forbidden response a status code equal to that given
+func (o *ListContentSourcesUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *ListContentSourcesUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /content/api/sources][%d] listContentSourcesUsingGETForbidden ", 403)
+}
+
+func (o *ListContentSourcesUsingGETForbidden) String() string {
+	return fmt.Sprintf("[GET /content/api/sources][%d] listContentSourcesUsingGETForbidden ", 403)
+}
+
+func (o *ListContentSourcesUsingGETForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewListContentSourcesUsingGETNotFound creates a ListContentSourcesUsingGETNotFound with default headers values
+func NewListContentSourcesUsingGETNotFound() *ListContentSourcesUsingGETNotFound {
+	return &ListContentSourcesUsingGETNotFound{}
+}
+
+/*
+ListContentSourcesUsingGETNotFound describes a response with status code 404, with default header values.
+
+Not Found
+*/
+type ListContentSourcesUsingGETNotFound struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this list content sources using g e t not found response has a 2xx status code
+func (o *ListContentSourcesUsingGETNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this list content sources using g e t not found response has a 3xx status code
+func (o *ListContentSourcesUsingGETNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this list content sources using g e t not found response has a 4xx status code
+func (o *ListContentSourcesUsingGETNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this list content sources using g e t not found response has a 5xx status code
+func (o *ListContentSourcesUsingGETNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this list content sources using g e t not found response a status code equal to that given
+func (o *ListContentSourcesUsingGETNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+func (o *ListContentSourcesUsingGETNotFound) Error() string {
+	return fmt.Sprintf("[GET /content/api/sources][%d] listContentSourcesUsingGETNotFound  %+v", 404, o.Payload)
+}
+
+func (o *ListContentSourcesUsingGETNotFound) String() string {
+	return fmt.Sprintf("[GET /content/api/sources][%d] listContentSourcesUsingGETNotFound  %+v", 404, o.Payload)
+}
+
+func (o *ListContentSourcesUsingGETNotFound) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *ListContentSourcesUsingGETNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

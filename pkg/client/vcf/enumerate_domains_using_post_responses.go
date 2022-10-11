@@ -57,7 +57,8 @@ func NewEnumerateDomainsUsingPOSTOK() *EnumerateDomainsUsingPOSTOK {
 	return &EnumerateDomainsUsingPOSTOK{}
 }
 
-/* EnumerateDomainsUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+EnumerateDomainsUsingPOSTOK describes a response with status code 200, with default header values.
 
 Get domains of the vCF endpoint
 */
@@ -65,9 +66,39 @@ type EnumerateDomainsUsingPOSTOK struct {
 	Payload *models.VcfDomains
 }
 
+// IsSuccess returns true when this enumerate domains using p o s t o k response has a 2xx status code
+func (o *EnumerateDomainsUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this enumerate domains using p o s t o k response has a 3xx status code
+func (o *EnumerateDomainsUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this enumerate domains using p o s t o k response has a 4xx status code
+func (o *EnumerateDomainsUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this enumerate domains using p o s t o k response has a 5xx status code
+func (o *EnumerateDomainsUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this enumerate domains using p o s t o k response a status code equal to that given
+func (o *EnumerateDomainsUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *EnumerateDomainsUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /content/api/vcf/domains-enumeration][%d] enumerateDomainsUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *EnumerateDomainsUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /content/api/vcf/domains-enumeration][%d] enumerateDomainsUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *EnumerateDomainsUsingPOSTOK) GetPayload() *models.VcfDomains {
 	return o.Payload
 }
@@ -89,7 +120,8 @@ func NewEnumerateDomainsUsingPOSTBadRequest() *EnumerateDomainsUsingPOSTBadReque
 	return &EnumerateDomainsUsingPOSTBadRequest{}
 }
 
-/* EnumerateDomainsUsingPOSTBadRequest describes a response with status code 400, with default header values.
+/*
+EnumerateDomainsUsingPOSTBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -97,9 +129,39 @@ type EnumerateDomainsUsingPOSTBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this enumerate domains using p o s t bad request response has a 2xx status code
+func (o *EnumerateDomainsUsingPOSTBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this enumerate domains using p o s t bad request response has a 3xx status code
+func (o *EnumerateDomainsUsingPOSTBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this enumerate domains using p o s t bad request response has a 4xx status code
+func (o *EnumerateDomainsUsingPOSTBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this enumerate domains using p o s t bad request response has a 5xx status code
+func (o *EnumerateDomainsUsingPOSTBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this enumerate domains using p o s t bad request response a status code equal to that given
+func (o *EnumerateDomainsUsingPOSTBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *EnumerateDomainsUsingPOSTBadRequest) Error() string {
 	return fmt.Sprintf("[POST /content/api/vcf/domains-enumeration][%d] enumerateDomainsUsingPOSTBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *EnumerateDomainsUsingPOSTBadRequest) String() string {
+	return fmt.Sprintf("[POST /content/api/vcf/domains-enumeration][%d] enumerateDomainsUsingPOSTBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *EnumerateDomainsUsingPOSTBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -121,14 +183,44 @@ func NewEnumerateDomainsUsingPOSTUnauthorized() *EnumerateDomainsUsingPOSTUnauth
 	return &EnumerateDomainsUsingPOSTUnauthorized{}
 }
 
-/* EnumerateDomainsUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+EnumerateDomainsUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type EnumerateDomainsUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this enumerate domains using p o s t unauthorized response has a 2xx status code
+func (o *EnumerateDomainsUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this enumerate domains using p o s t unauthorized response has a 3xx status code
+func (o *EnumerateDomainsUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this enumerate domains using p o s t unauthorized response has a 4xx status code
+func (o *EnumerateDomainsUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this enumerate domains using p o s t unauthorized response has a 5xx status code
+func (o *EnumerateDomainsUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this enumerate domains using p o s t unauthorized response a status code equal to that given
+func (o *EnumerateDomainsUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *EnumerateDomainsUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /content/api/vcf/domains-enumeration][%d] enumerateDomainsUsingPOSTUnauthorized ", 401)
+}
+
+func (o *EnumerateDomainsUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /content/api/vcf/domains-enumeration][%d] enumerateDomainsUsingPOSTUnauthorized ", 401)
 }
 
@@ -142,14 +234,44 @@ func NewEnumerateDomainsUsingPOSTForbidden() *EnumerateDomainsUsingPOSTForbidden
 	return &EnumerateDomainsUsingPOSTForbidden{}
 }
 
-/* EnumerateDomainsUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+EnumerateDomainsUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type EnumerateDomainsUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this enumerate domains using p o s t forbidden response has a 2xx status code
+func (o *EnumerateDomainsUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this enumerate domains using p o s t forbidden response has a 3xx status code
+func (o *EnumerateDomainsUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this enumerate domains using p o s t forbidden response has a 4xx status code
+func (o *EnumerateDomainsUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this enumerate domains using p o s t forbidden response has a 5xx status code
+func (o *EnumerateDomainsUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this enumerate domains using p o s t forbidden response a status code equal to that given
+func (o *EnumerateDomainsUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *EnumerateDomainsUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /content/api/vcf/domains-enumeration][%d] enumerateDomainsUsingPOSTForbidden ", 403)
+}
+
+func (o *EnumerateDomainsUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /content/api/vcf/domains-enumeration][%d] enumerateDomainsUsingPOSTForbidden ", 403)
 }
 

@@ -54,10 +54,12 @@ func NewUpdateCatalogItemUsingPATCH2ParamsWithHTTPClient(client *http.Client) *U
 	}
 }
 
-/* UpdateCatalogItemUsingPATCH2Params contains all the parameters to send to the API endpoint
-   for the update catalog item using p a t c h 2 operation.
+/*
+UpdateCatalogItemUsingPATCH2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update catalog item using p a t c h 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateCatalogItemUsingPATCH2Params struct {
 

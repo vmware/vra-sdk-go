@@ -29,6 +29,12 @@ func (o *UpdateZoneUsingPUTReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return result, nil
+	case 403:
+		result := NewUpdateZoneUsingPUTForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +45,8 @@ func NewUpdateZoneUsingPUTOK() *UpdateZoneUsingPUTOK {
 	return &UpdateZoneUsingPUTOK{}
 }
 
-/* UpdateZoneUsingPUTOK describes a response with status code 200, with default header values.
+/*
+UpdateZoneUsingPUTOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +54,39 @@ type UpdateZoneUsingPUTOK struct {
 	Payload *models.K8SZone
 }
 
+// IsSuccess returns true when this update zone using p u t o k response has a 2xx status code
+func (o *UpdateZoneUsingPUTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update zone using p u t o k response has a 3xx status code
+func (o *UpdateZoneUsingPUTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update zone using p u t o k response has a 4xx status code
+func (o *UpdateZoneUsingPUTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update zone using p u t o k response has a 5xx status code
+func (o *UpdateZoneUsingPUTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update zone using p u t o k response a status code equal to that given
+func (o *UpdateZoneUsingPUTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateZoneUsingPUTOK) Error() string {
 	return fmt.Sprintf("[PUT /cmx/api/resources/k8s-zones/{id}][%d] updateZoneUsingPUTOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateZoneUsingPUTOK) String() string {
+	return fmt.Sprintf("[PUT /cmx/api/resources/k8s-zones/{id}][%d] updateZoneUsingPUTOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateZoneUsingPUTOK) GetPayload() *models.K8SZone {
 	return o.Payload
 }
@@ -62,6 +99,57 @@ func (o *UpdateZoneUsingPUTOK) readResponse(response runtime.ClientResponse, con
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewUpdateZoneUsingPUTForbidden creates a UpdateZoneUsingPUTForbidden with default headers values
+func NewUpdateZoneUsingPUTForbidden() *UpdateZoneUsingPUTForbidden {
+	return &UpdateZoneUsingPUTForbidden{}
+}
+
+/*
+UpdateZoneUsingPUTForbidden describes a response with status code 403, with default header values.
+
+Forbidden, the user lacks permissions
+*/
+type UpdateZoneUsingPUTForbidden struct {
+}
+
+// IsSuccess returns true when this update zone using p u t forbidden response has a 2xx status code
+func (o *UpdateZoneUsingPUTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update zone using p u t forbidden response has a 3xx status code
+func (o *UpdateZoneUsingPUTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update zone using p u t forbidden response has a 4xx status code
+func (o *UpdateZoneUsingPUTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update zone using p u t forbidden response has a 5xx status code
+func (o *UpdateZoneUsingPUTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update zone using p u t forbidden response a status code equal to that given
+func (o *UpdateZoneUsingPUTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *UpdateZoneUsingPUTForbidden) Error() string {
+	return fmt.Sprintf("[PUT /cmx/api/resources/k8s-zones/{id}][%d] updateZoneUsingPUTForbidden ", 403)
+}
+
+func (o *UpdateZoneUsingPUTForbidden) String() string {
+	return fmt.Sprintf("[PUT /cmx/api/resources/k8s-zones/{id}][%d] updateZoneUsingPUTForbidden ", 403)
+}
+
+func (o *UpdateZoneUsingPUTForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

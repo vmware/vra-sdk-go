@@ -53,10 +53,12 @@ func NewGetBlueprintResourcesPlanUsingGET1ParamsWithHTTPClient(client *http.Clie
 	}
 }
 
-/* GetBlueprintResourcesPlanUsingGET1Params contains all the parameters to send to the API endpoint
-   for the get blueprint resources plan using get1 operation.
+/*
+GetBlueprintResourcesPlanUsingGET1Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get blueprint resources plan using get1 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetBlueprintResourcesPlanUsingGET1Params struct {
 

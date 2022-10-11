@@ -51,14 +51,44 @@ func NewCheckDeploymentNameUsingGET2OK() *CheckDeploymentNameUsingGET2OK {
 	return &CheckDeploymentNameUsingGET2OK{}
 }
 
-/* CheckDeploymentNameUsingGET2OK describes a response with status code 200, with default header values.
+/*
+CheckDeploymentNameUsingGET2OK describes a response with status code 200, with default header values.
 
 OK
 */
 type CheckDeploymentNameUsingGET2OK struct {
 }
 
+// IsSuccess returns true when this check deployment name using g e t2 o k response has a 2xx status code
+func (o *CheckDeploymentNameUsingGET2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this check deployment name using g e t2 o k response has a 3xx status code
+func (o *CheckDeploymentNameUsingGET2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this check deployment name using g e t2 o k response has a 4xx status code
+func (o *CheckDeploymentNameUsingGET2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this check deployment name using g e t2 o k response has a 5xx status code
+func (o *CheckDeploymentNameUsingGET2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this check deployment name using g e t2 o k response a status code equal to that given
+func (o *CheckDeploymentNameUsingGET2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CheckDeploymentNameUsingGET2OK) Error() string {
+	return fmt.Sprintf("[GET /deployment/api/deployments/names/{name}][%d] checkDeploymentNameUsingGET2OK ", 200)
+}
+
+func (o *CheckDeploymentNameUsingGET2OK) String() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/names/{name}][%d] checkDeploymentNameUsingGET2OK ", 200)
 }
 
@@ -72,14 +102,44 @@ func NewCheckDeploymentNameUsingGET2Unauthorized() *CheckDeploymentNameUsingGET2
 	return &CheckDeploymentNameUsingGET2Unauthorized{}
 }
 
-/* CheckDeploymentNameUsingGET2Unauthorized describes a response with status code 401, with default header values.
+/*
+CheckDeploymentNameUsingGET2Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type CheckDeploymentNameUsingGET2Unauthorized struct {
 }
 
+// IsSuccess returns true when this check deployment name using g e t2 unauthorized response has a 2xx status code
+func (o *CheckDeploymentNameUsingGET2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this check deployment name using g e t2 unauthorized response has a 3xx status code
+func (o *CheckDeploymentNameUsingGET2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this check deployment name using g e t2 unauthorized response has a 4xx status code
+func (o *CheckDeploymentNameUsingGET2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this check deployment name using g e t2 unauthorized response has a 5xx status code
+func (o *CheckDeploymentNameUsingGET2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this check deployment name using g e t2 unauthorized response a status code equal to that given
+func (o *CheckDeploymentNameUsingGET2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CheckDeploymentNameUsingGET2Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /deployment/api/deployments/names/{name}][%d] checkDeploymentNameUsingGET2Unauthorized ", 401)
+}
+
+func (o *CheckDeploymentNameUsingGET2Unauthorized) String() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/names/{name}][%d] checkDeploymentNameUsingGET2Unauthorized ", 401)
 }
 
@@ -93,7 +153,8 @@ func NewCheckDeploymentNameUsingGET2NotFound() *CheckDeploymentNameUsingGET2NotF
 	return &CheckDeploymentNameUsingGET2NotFound{}
 }
 
-/* CheckDeploymentNameUsingGET2NotFound describes a response with status code 404, with default header values.
+/*
+CheckDeploymentNameUsingGET2NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -101,9 +162,39 @@ type CheckDeploymentNameUsingGET2NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this check deployment name using g e t2 not found response has a 2xx status code
+func (o *CheckDeploymentNameUsingGET2NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this check deployment name using g e t2 not found response has a 3xx status code
+func (o *CheckDeploymentNameUsingGET2NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this check deployment name using g e t2 not found response has a 4xx status code
+func (o *CheckDeploymentNameUsingGET2NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this check deployment name using g e t2 not found response has a 5xx status code
+func (o *CheckDeploymentNameUsingGET2NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this check deployment name using g e t2 not found response a status code equal to that given
+func (o *CheckDeploymentNameUsingGET2NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CheckDeploymentNameUsingGET2NotFound) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/names/{name}][%d] checkDeploymentNameUsingGET2NotFound  %+v", 404, o.Payload)
 }
+
+func (o *CheckDeploymentNameUsingGET2NotFound) String() string {
+	return fmt.Sprintf("[GET /deployment/api/deployments/names/{name}][%d] checkDeploymentNameUsingGET2NotFound  %+v", 404, o.Payload)
+}
+
 func (o *CheckDeploymentNameUsingGET2NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

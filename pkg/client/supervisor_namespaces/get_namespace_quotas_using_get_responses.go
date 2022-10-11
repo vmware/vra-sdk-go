@@ -29,6 +29,12 @@ func (o *GetNamespaceQuotasUsingGETReader) ReadResponse(response runtime.ClientR
 			return nil, err
 		}
 		return result, nil
+	case 403:
+		result := NewGetNamespaceQuotasUsingGETForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +45,8 @@ func NewGetNamespaceQuotasUsingGETOK() *GetNamespaceQuotasUsingGETOK {
 	return &GetNamespaceQuotasUsingGETOK{}
 }
 
-/* GetNamespaceQuotasUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetNamespaceQuotasUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +54,39 @@ type GetNamespaceQuotasUsingGETOK struct {
 	Payload []*models.SupervisorNamespaceQuota
 }
 
+// IsSuccess returns true when this get namespace quotas using g e t o k response has a 2xx status code
+func (o *GetNamespaceQuotasUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get namespace quotas using g e t o k response has a 3xx status code
+func (o *GetNamespaceQuotasUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get namespace quotas using g e t o k response has a 4xx status code
+func (o *GetNamespaceQuotasUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get namespace quotas using g e t o k response has a 5xx status code
+func (o *GetNamespaceQuotasUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get namespace quotas using g e t o k response a status code equal to that given
+func (o *GetNamespaceQuotasUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetNamespaceQuotasUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /cmx/api/resources/supervisor-namespaces/{selfLinkId}/resource-quotas][%d] getNamespaceQuotasUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetNamespaceQuotasUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/supervisor-namespaces/{selfLinkId}/resource-quotas][%d] getNamespaceQuotasUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetNamespaceQuotasUsingGETOK) GetPayload() []*models.SupervisorNamespaceQuota {
 	return o.Payload
 }
@@ -60,6 +97,57 @@ func (o *GetNamespaceQuotasUsingGETOK) readResponse(response runtime.ClientRespo
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewGetNamespaceQuotasUsingGETForbidden creates a GetNamespaceQuotasUsingGETForbidden with default headers values
+func NewGetNamespaceQuotasUsingGETForbidden() *GetNamespaceQuotasUsingGETForbidden {
+	return &GetNamespaceQuotasUsingGETForbidden{}
+}
+
+/*
+GetNamespaceQuotasUsingGETForbidden describes a response with status code 403, with default header values.
+
+Forbidden, the user lacks permissions
+*/
+type GetNamespaceQuotasUsingGETForbidden struct {
+}
+
+// IsSuccess returns true when this get namespace quotas using g e t forbidden response has a 2xx status code
+func (o *GetNamespaceQuotasUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get namespace quotas using g e t forbidden response has a 3xx status code
+func (o *GetNamespaceQuotasUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get namespace quotas using g e t forbidden response has a 4xx status code
+func (o *GetNamespaceQuotasUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get namespace quotas using g e t forbidden response has a 5xx status code
+func (o *GetNamespaceQuotasUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get namespace quotas using g e t forbidden response a status code equal to that given
+func (o *GetNamespaceQuotasUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *GetNamespaceQuotasUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/supervisor-namespaces/{selfLinkId}/resource-quotas][%d] getNamespaceQuotasUsingGETForbidden ", 403)
+}
+
+func (o *GetNamespaceQuotasUsingGETForbidden) String() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/supervisor-namespaces/{selfLinkId}/resource-quotas][%d] getNamespaceQuotasUsingGETForbidden ", 403)
+}
+
+func (o *GetNamespaceQuotasUsingGETForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

@@ -17,7 +17,7 @@ import (
 
 // MeteringAssignmentStrategy MeteringAssignmentStrategy
 //
-// Metering Assignment Strategy
+// # Metering Assignment Strategy
 //
 // swagger:model MeteringAssignmentStrategy
 type MeteringAssignmentStrategy struct {

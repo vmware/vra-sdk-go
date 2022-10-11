@@ -51,7 +51,8 @@ func NewUpdateNetworkProfileOK() *UpdateNetworkProfileOK {
 	return &UpdateNetworkProfileOK{}
 }
 
-/* UpdateNetworkProfileOK describes a response with status code 200, with default header values.
+/*
+UpdateNetworkProfileOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type UpdateNetworkProfileOK struct {
 	Payload *models.NetworkProfile
 }
 
+// IsSuccess returns true when this update network profile o k response has a 2xx status code
+func (o *UpdateNetworkProfileOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update network profile o k response has a 3xx status code
+func (o *UpdateNetworkProfileOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update network profile o k response has a 4xx status code
+func (o *UpdateNetworkProfileOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update network profile o k response has a 5xx status code
+func (o *UpdateNetworkProfileOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update network profile o k response a status code equal to that given
+func (o *UpdateNetworkProfileOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateNetworkProfileOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/network-profiles/{id}][%d] updateNetworkProfileOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateNetworkProfileOK) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/network-profiles/{id}][%d] updateNetworkProfileOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateNetworkProfileOK) GetPayload() *models.NetworkProfile {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewUpdateNetworkProfileForbidden() *UpdateNetworkProfileForbidden {
 	return &UpdateNetworkProfileForbidden{}
 }
 
-/* UpdateNetworkProfileForbidden describes a response with status code 403, with default header values.
+/*
+UpdateNetworkProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type UpdateNetworkProfileForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this update network profile forbidden response has a 2xx status code
+func (o *UpdateNetworkProfileForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update network profile forbidden response has a 3xx status code
+func (o *UpdateNetworkProfileForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update network profile forbidden response has a 4xx status code
+func (o *UpdateNetworkProfileForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update network profile forbidden response has a 5xx status code
+func (o *UpdateNetworkProfileForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update network profile forbidden response a status code equal to that given
+func (o *UpdateNetworkProfileForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateNetworkProfileForbidden) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/network-profiles/{id}][%d] updateNetworkProfileForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UpdateNetworkProfileForbidden) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/network-profiles/{id}][%d] updateNetworkProfileForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UpdateNetworkProfileForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewUpdateNetworkProfileNotFound() *UpdateNetworkProfileNotFound {
 	return &UpdateNetworkProfileNotFound{}
 }
 
-/* UpdateNetworkProfileNotFound describes a response with status code 404, with default header values.
+/*
+UpdateNetworkProfileNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type UpdateNetworkProfileNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update network profile not found response has a 2xx status code
+func (o *UpdateNetworkProfileNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update network profile not found response has a 3xx status code
+func (o *UpdateNetworkProfileNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update network profile not found response has a 4xx status code
+func (o *UpdateNetworkProfileNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update network profile not found response has a 5xx status code
+func (o *UpdateNetworkProfileNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update network profile not found response a status code equal to that given
+func (o *UpdateNetworkProfileNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateNetworkProfileNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/network-profiles/{id}][%d] updateNetworkProfileNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UpdateNetworkProfileNotFound) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/network-profiles/{id}][%d] updateNetworkProfileNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UpdateNetworkProfileNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -63,7 +63,8 @@ func NewGetEndpointByIDUsingGETOK() *GetEndpointByIDUsingGETOK {
 	return &GetEndpointByIDUsingGETOK{}
 }
 
-/* GetEndpointByIDUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetEndpointByIDUsingGETOK describes a response with status code 200, with default header values.
 
 'Success' with the requested Endpoint
 */
@@ -71,9 +72,39 @@ type GetEndpointByIDUsingGETOK struct {
 	Payload models.Endpoint
 }
 
+// IsSuccess returns true when this get endpoint by Id using g e t o k response has a 2xx status code
+func (o *GetEndpointByIDUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get endpoint by Id using g e t o k response has a 3xx status code
+func (o *GetEndpointByIDUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get endpoint by Id using g e t o k response has a 4xx status code
+func (o *GetEndpointByIDUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get endpoint by Id using g e t o k response has a 5xx status code
+func (o *GetEndpointByIDUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get endpoint by Id using g e t o k response a status code equal to that given
+func (o *GetEndpointByIDUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetEndpointByIDUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/endpoints/{id}][%d] getEndpointByIdUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetEndpointByIDUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /codestream/api/endpoints/{id}][%d] getEndpointByIdUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetEndpointByIDUsingGETOK) GetPayload() models.Endpoint {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewGetEndpointByIDUsingGETUnauthorized() *GetEndpointByIDUsingGETUnauthoriz
 	return &GetEndpointByIDUsingGETUnauthorized{}
 }
 
-/* GetEndpointByIDUsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+GetEndpointByIDUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type GetEndpointByIDUsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this get endpoint by Id using g e t unauthorized response has a 2xx status code
+func (o *GetEndpointByIDUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get endpoint by Id using g e t unauthorized response has a 3xx status code
+func (o *GetEndpointByIDUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get endpoint by Id using g e t unauthorized response has a 4xx status code
+func (o *GetEndpointByIDUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get endpoint by Id using g e t unauthorized response has a 5xx status code
+func (o *GetEndpointByIDUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get endpoint by Id using g e t unauthorized response a status code equal to that given
+func (o *GetEndpointByIDUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetEndpointByIDUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/endpoints/{id}][%d] getEndpointByIdUsingGETUnauthorized ", 401)
+}
+
+func (o *GetEndpointByIDUsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /codestream/api/endpoints/{id}][%d] getEndpointByIdUsingGETUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewGetEndpointByIDUsingGETForbidden() *GetEndpointByIDUsingGETForbidden {
 	return &GetEndpointByIDUsingGETForbidden{}
 }
 
-/* GetEndpointByIDUsingGETForbidden describes a response with status code 403, with default header values.
+/*
+GetEndpointByIDUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetEndpointByIDUsingGETForbidden struct {
 }
 
+// IsSuccess returns true when this get endpoint by Id using g e t forbidden response has a 2xx status code
+func (o *GetEndpointByIDUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get endpoint by Id using g e t forbidden response has a 3xx status code
+func (o *GetEndpointByIDUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get endpoint by Id using g e t forbidden response has a 4xx status code
+func (o *GetEndpointByIDUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get endpoint by Id using g e t forbidden response has a 5xx status code
+func (o *GetEndpointByIDUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get endpoint by Id using g e t forbidden response a status code equal to that given
+func (o *GetEndpointByIDUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetEndpointByIDUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/endpoints/{id}][%d] getEndpointByIdUsingGETForbidden ", 403)
+}
+
+func (o *GetEndpointByIDUsingGETForbidden) String() string {
 	return fmt.Sprintf("[GET /codestream/api/endpoints/{id}][%d] getEndpointByIdUsingGETForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewGetEndpointByIDUsingGETNotFound() *GetEndpointByIDUsingGETNotFound {
 	return &GetEndpointByIDUsingGETNotFound{}
 }
 
-/* GetEndpointByIDUsingGETNotFound describes a response with status code 404, with default header values.
+/*
+GetEndpointByIDUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type GetEndpointByIDUsingGETNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get endpoint by Id using g e t not found response has a 2xx status code
+func (o *GetEndpointByIDUsingGETNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get endpoint by Id using g e t not found response has a 3xx status code
+func (o *GetEndpointByIDUsingGETNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get endpoint by Id using g e t not found response has a 4xx status code
+func (o *GetEndpointByIDUsingGETNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get endpoint by Id using g e t not found response has a 5xx status code
+func (o *GetEndpointByIDUsingGETNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get endpoint by Id using g e t not found response a status code equal to that given
+func (o *GetEndpointByIDUsingGETNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetEndpointByIDUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/endpoints/{id}][%d] getEndpointByIdUsingGETNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetEndpointByIDUsingGETNotFound) String() string {
+	return fmt.Sprintf("[GET /codestream/api/endpoints/{id}][%d] getEndpointByIdUsingGETNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetEndpointByIDUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewGetEndpointByIDUsingGETInternalServerError() *GetEndpointByIDUsingGETInt
 	return &GetEndpointByIDUsingGETInternalServerError{}
 }
 
-/* GetEndpointByIDUsingGETInternalServerError describes a response with status code 500, with default header values.
+/*
+GetEndpointByIDUsingGETInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type GetEndpointByIDUsingGETInternalServerError struct {
 }
 
+// IsSuccess returns true when this get endpoint by Id using g e t internal server error response has a 2xx status code
+func (o *GetEndpointByIDUsingGETInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get endpoint by Id using g e t internal server error response has a 3xx status code
+func (o *GetEndpointByIDUsingGETInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get endpoint by Id using g e t internal server error response has a 4xx status code
+func (o *GetEndpointByIDUsingGETInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get endpoint by Id using g e t internal server error response has a 5xx status code
+func (o *GetEndpointByIDUsingGETInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this get endpoint by Id using g e t internal server error response a status code equal to that given
+func (o *GetEndpointByIDUsingGETInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GetEndpointByIDUsingGETInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/endpoints/{id}][%d] getEndpointByIdUsingGETInternalServerError ", 500)
+}
+
+func (o *GetEndpointByIDUsingGETInternalServerError) String() string {
 	return fmt.Sprintf("[GET /codestream/api/endpoints/{id}][%d] getEndpointByIdUsingGETInternalServerError ", 500)
 }
 

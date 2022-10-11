@@ -52,10 +52,12 @@ func NewGetVcfCloudAccountParamsWithHTTPClient(client *http.Client) *GetVcfCloud
 	}
 }
 
-/* GetVcfCloudAccountParams contains all the parameters to send to the API endpoint
-   for the get vcf cloud account operation.
+/*
+GetVcfCloudAccountParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get vcf cloud account operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVcfCloudAccountParams struct {
 

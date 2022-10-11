@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
@@ -121,7 +120,7 @@ func UnmarshalCustomIntegrationsSlice(reader io.Reader, consumer runtime.Consume
 // UnmarshalCustomIntegrations unmarshals polymorphic CustomIntegrations
 func UnmarshalCustomIntegrations(reader io.Reader, consumer runtime.Consumer) (CustomIntegrations, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}

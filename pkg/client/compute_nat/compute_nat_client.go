@@ -44,9 +44,9 @@ type ClientService interface {
 }
 
 /*
-  CreateComputeNat creates a compute nat
+CreateComputeNat creates a compute nat
 
-  Create a new Compute Nat.
+Create a new Compute Nat.
 */
 func (a *Client) CreateComputeNat(params *CreateComputeNatParams, opts ...ClientOption) (*CreateComputeNatAccepted, error) {
 	// TODO: Validate the params before sending
@@ -84,9 +84,9 @@ func (a *Client) CreateComputeNat(params *CreateComputeNatParams, opts ...Client
 }
 
 /*
-  DeleteComputeNat deletes a compute nat
+DeleteComputeNat deletes a compute nat
 
-  Delete compute nat with a given id
+Delete compute nat with a given id
 */
 func (a *Client) DeleteComputeNat(params *DeleteComputeNatParams, opts ...ClientOption) (*DeleteComputeNatAccepted, error) {
 	// TODO: Validate the params before sending
@@ -124,9 +124,9 @@ func (a *Client) DeleteComputeNat(params *DeleteComputeNatParams, opts ...Client
 }
 
 /*
-  GetComputeNat gets a compute nat
+GetComputeNat gets a compute nat
 
-  Get Compute Nat with a given id
+Get Compute Nat with a given id
 */
 func (a *Client) GetComputeNat(params *GetComputeNatParams, opts ...ClientOption) (*GetComputeNatOK, error) {
 	// TODO: Validate the params before sending
@@ -164,9 +164,9 @@ func (a *Client) GetComputeNat(params *GetComputeNatParams, opts ...ClientOption
 }
 
 /*
-  GetComputeNats gets compute nats
+GetComputeNats gets compute nats
 
-  Get all Compute Nats
+Get all Compute Nats
 */
 func (a *Client) GetComputeNats(params *GetComputeNatsParams, opts ...ClientOption) (*GetComputeNatsOK, error) {
 	// TODO: Validate the params before sending
@@ -204,9 +204,9 @@ func (a *Client) GetComputeNats(params *GetComputeNatsParams, opts ...ClientOpti
 }
 
 /*
-  ReconfigureNat reconfigures operation for nat
+ReconfigureNat reconfigures operation for nat
 
-  Day-2 reconfigure operation for nat
+Day-2 reconfigure operation for nat
 */
 func (a *Client) ReconfigureNat(params *ReconfigureNatParams, opts ...ClientOption) (*ReconfigureNatAccepted, error) {
 	// TODO: Validate the params before sending

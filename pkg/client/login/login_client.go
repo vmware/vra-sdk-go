@@ -36,9 +36,10 @@ type ClientService interface {
 }
 
 /*
-  RetrieveAuthToken retrieves auth token for local csp users
+	RetrieveAuthToken retrieves auth token for local csp users
 
-  Retrieve AuthToken for local csp users.
+	Retrieve AuthToken for local csp users.
+
 When accessing other endpoints the `Bearer` authentication scheme and the received `token` must be provided in the `Authorization` request header field as follows:
 `Authorization: Bearer {token}`
 */

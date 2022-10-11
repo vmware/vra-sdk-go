@@ -53,10 +53,12 @@ func NewDeleteComputeGatewayParamsWithHTTPClient(client *http.Client) *DeleteCom
 	}
 }
 
-/* DeleteComputeGatewayParams contains all the parameters to send to the API endpoint
-   for the delete compute gateway operation.
+/*
+DeleteComputeGatewayParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete compute gateway operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteComputeGatewayParams struct {
 

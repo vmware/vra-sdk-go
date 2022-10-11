@@ -51,7 +51,8 @@ func NewCreateOnDemandSecurityGroupAccepted() *CreateOnDemandSecurityGroupAccept
 	return &CreateOnDemandSecurityGroupAccepted{}
 }
 
-/* CreateOnDemandSecurityGroupAccepted describes a response with status code 202, with default header values.
+/*
+CreateOnDemandSecurityGroupAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type CreateOnDemandSecurityGroupAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this create on demand security group accepted response has a 2xx status code
+func (o *CreateOnDemandSecurityGroupAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create on demand security group accepted response has a 3xx status code
+func (o *CreateOnDemandSecurityGroupAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create on demand security group accepted response has a 4xx status code
+func (o *CreateOnDemandSecurityGroupAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create on demand security group accepted response has a 5xx status code
+func (o *CreateOnDemandSecurityGroupAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create on demand security group accepted response a status code equal to that given
+func (o *CreateOnDemandSecurityGroupAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateOnDemandSecurityGroupAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/security-groups][%d] createOnDemandSecurityGroupAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateOnDemandSecurityGroupAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/security-groups][%d] createOnDemandSecurityGroupAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateOnDemandSecurityGroupAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewCreateOnDemandSecurityGroupBadRequest() *CreateOnDemandSecurityGroupBadR
 	return &CreateOnDemandSecurityGroupBadRequest{}
 }
 
-/* CreateOnDemandSecurityGroupBadRequest describes a response with status code 400, with default header values.
+/*
+CreateOnDemandSecurityGroupBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type CreateOnDemandSecurityGroupBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create on demand security group bad request response has a 2xx status code
+func (o *CreateOnDemandSecurityGroupBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create on demand security group bad request response has a 3xx status code
+func (o *CreateOnDemandSecurityGroupBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create on demand security group bad request response has a 4xx status code
+func (o *CreateOnDemandSecurityGroupBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create on demand security group bad request response has a 5xx status code
+func (o *CreateOnDemandSecurityGroupBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create on demand security group bad request response a status code equal to that given
+func (o *CreateOnDemandSecurityGroupBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateOnDemandSecurityGroupBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/security-groups][%d] createOnDemandSecurityGroupBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateOnDemandSecurityGroupBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/security-groups][%d] createOnDemandSecurityGroupBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateOnDemandSecurityGroupBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewCreateOnDemandSecurityGroupForbidden() *CreateOnDemandSecurityGroupForbi
 	return &CreateOnDemandSecurityGroupForbidden{}
 }
 
-/* CreateOnDemandSecurityGroupForbidden describes a response with status code 403, with default header values.
+/*
+CreateOnDemandSecurityGroupForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type CreateOnDemandSecurityGroupForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this create on demand security group forbidden response has a 2xx status code
+func (o *CreateOnDemandSecurityGroupForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create on demand security group forbidden response has a 3xx status code
+func (o *CreateOnDemandSecurityGroupForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create on demand security group forbidden response has a 4xx status code
+func (o *CreateOnDemandSecurityGroupForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create on demand security group forbidden response has a 5xx status code
+func (o *CreateOnDemandSecurityGroupForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create on demand security group forbidden response a status code equal to that given
+func (o *CreateOnDemandSecurityGroupForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateOnDemandSecurityGroupForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/security-groups][%d] createOnDemandSecurityGroupForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CreateOnDemandSecurityGroupForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/security-groups][%d] createOnDemandSecurityGroupForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CreateOnDemandSecurityGroupForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

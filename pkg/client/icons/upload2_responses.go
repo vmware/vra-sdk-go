@@ -51,14 +51,44 @@ func NewUpload2Created() *Upload2Created {
 	return &Upload2Created{}
 }
 
-/* Upload2Created describes a response with status code 201, with default header values.
+/*
+Upload2Created describes a response with status code 201, with default header values.
 
 Success - create an icon.
 */
 type Upload2Created struct {
 }
 
+// IsSuccess returns true when this upload2 created response has a 2xx status code
+func (o *Upload2Created) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this upload2 created response has a 3xx status code
+func (o *Upload2Created) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this upload2 created response has a 4xx status code
+func (o *Upload2Created) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this upload2 created response has a 5xx status code
+func (o *Upload2Created) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this upload2 created response a status code equal to that given
+func (o *Upload2Created) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *Upload2Created) Error() string {
+	return fmt.Sprintf("[POST /icon/api/icons][%d] upload2Created ", 201)
+}
+
+func (o *Upload2Created) String() string {
 	return fmt.Sprintf("[POST /icon/api/icons][%d] upload2Created ", 201)
 }
 
@@ -72,7 +102,8 @@ func NewUpload2BadRequest() *Upload2BadRequest {
 	return &Upload2BadRequest{}
 }
 
-/* Upload2BadRequest describes a response with status code 400, with default header values.
+/*
+Upload2BadRequest describes a response with status code 400, with default header values.
 
 Invalid request - bad data.
 */
@@ -80,9 +111,39 @@ type Upload2BadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this upload2 bad request response has a 2xx status code
+func (o *Upload2BadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this upload2 bad request response has a 3xx status code
+func (o *Upload2BadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this upload2 bad request response has a 4xx status code
+func (o *Upload2BadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this upload2 bad request response has a 5xx status code
+func (o *Upload2BadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this upload2 bad request response a status code equal to that given
+func (o *Upload2BadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *Upload2BadRequest) Error() string {
 	return fmt.Sprintf("[POST /icon/api/icons][%d] upload2BadRequest  %+v", 400, o.Payload)
 }
+
+func (o *Upload2BadRequest) String() string {
+	return fmt.Sprintf("[POST /icon/api/icons][%d] upload2BadRequest  %+v", 400, o.Payload)
+}
+
 func (o *Upload2BadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -104,14 +165,44 @@ func NewUpload2Forbidden() *Upload2Forbidden {
 	return &Upload2Forbidden{}
 }
 
-/* Upload2Forbidden describes a response with status code 403, with default header values.
+/*
+Upload2Forbidden describes a response with status code 403, with default header values.
 
 Forbidden.
 */
 type Upload2Forbidden struct {
 }
 
+// IsSuccess returns true when this upload2 forbidden response has a 2xx status code
+func (o *Upload2Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this upload2 forbidden response has a 3xx status code
+func (o *Upload2Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this upload2 forbidden response has a 4xx status code
+func (o *Upload2Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this upload2 forbidden response has a 5xx status code
+func (o *Upload2Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this upload2 forbidden response a status code equal to that given
+func (o *Upload2Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *Upload2Forbidden) Error() string {
+	return fmt.Sprintf("[POST /icon/api/icons][%d] upload2Forbidden ", 403)
+}
+
+func (o *Upload2Forbidden) String() string {
 	return fmt.Sprintf("[POST /icon/api/icons][%d] upload2Forbidden ", 403)
 }
 

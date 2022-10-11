@@ -36,7 +36,7 @@ type ClientService interface {
 
 	GetKubeConfigUsingGET1(params *GetKubeConfigUsingGET1Params, opts ...ClientOption) (*GetKubeConfigUsingGET1OK, error)
 
-	GetUsingGET2Mixin5(params *GetUsingGET2Mixin5Params, opts ...ClientOption) (*GetUsingGET2Mixin5OK, error)
+	GetUsingGET2Mixin1(params *GetUsingGET2Mixin1Params, opts ...ClientOption) (*GetUsingGET2Mixin1OK, error)
 
 	ListUsingGET2(params *ListUsingGET2Params, opts ...ClientOption) (*ListUsingGET2OK, error)
 
@@ -48,9 +48,9 @@ type ClientService interface {
 }
 
 /*
-  CreateUsingPOST1 creates a k8 s namespace
+CreateUsingPOST1 creates a k8 s namespace
 
-  Create a K8S Namespace
+Create a K8S Namespace
 */
 func (a *Client) CreateUsingPOST1(params *CreateUsingPOST1Params, opts ...ClientOption) (*CreateUsingPOST1OK, error) {
 	// TODO: Validate the params before sending
@@ -88,9 +88,9 @@ func (a *Client) CreateUsingPOST1(params *CreateUsingPOST1Params, opts ...Client
 }
 
 /*
-  DeleteUsingDELETE1 deletes a k8 s namespace
+DeleteUsingDELETE1 deletes a k8 s namespace
 
-  Delete a K8S Namespace by id
+Delete a K8S Namespace by id
 */
 func (a *Client) DeleteUsingDELETE1(params *DeleteUsingDELETE1Params, opts ...ClientOption) (*DeleteUsingDELETE1OK, error) {
 	// TODO: Validate the params before sending
@@ -128,9 +128,9 @@ func (a *Client) DeleteUsingDELETE1(params *DeleteUsingDELETE1Params, opts ...Cl
 }
 
 /*
-  GetKubeConfigUsingGET1 gets kube config for a k8 s namesapce
+GetKubeConfigUsingGET1 gets kube config for a k8 s namespace
 
-  Get KubeConfig for a K8S Namesapce by providing a K8S Namespace id
+Get KubeConfig for a K8S Namespace by providing a K8S Namespace id
 */
 func (a *Client) GetKubeConfigUsingGET1(params *GetKubeConfigUsingGET1Params, opts ...ClientOption) (*GetKubeConfigUsingGET1OK, error) {
 	// TODO: Validate the params before sending
@@ -168,24 +168,24 @@ func (a *Client) GetKubeConfigUsingGET1(params *GetKubeConfigUsingGET1Params, op
 }
 
 /*
-  GetUsingGET2Mixin5 gets a k8 s namespace by id
+GetUsingGET2Mixin1 gets a k8 s namespace by id
 
-  Get a K8S Namespace by id
+Get a K8S Namespace by id
 */
-func (a *Client) GetUsingGET2Mixin5(params *GetUsingGET2Mixin5Params, opts ...ClientOption) (*GetUsingGET2Mixin5OK, error) {
+func (a *Client) GetUsingGET2Mixin1(params *GetUsingGET2Mixin1Params, opts ...ClientOption) (*GetUsingGET2Mixin1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetUsingGET2Mixin5Params()
+		params = NewGetUsingGET2Mixin1Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getUsingGET_2Mixin5",
+		ID:                 "getUsingGET_2Mixin1",
 		Method:             "GET",
 		PathPattern:        "/cmx/api/resources/k8s/namespaces/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetUsingGET2Mixin5Reader{formats: a.formats},
+		Reader:             &GetUsingGET2Mixin1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -197,20 +197,20 @@ func (a *Client) GetUsingGET2Mixin5(params *GetUsingGET2Mixin5Params, opts ...Cl
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetUsingGET2Mixin5OK)
+	success, ok := result.(*GetUsingGET2Mixin1OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getUsingGET_2Mixin5: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getUsingGET_2Mixin1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  ListUsingGET2 gets all k8 s namespaces
+ListUsingGET2 gets all k8 s namespaces
 
-  Get a list of all K8S Namespaces
+Get a list of all K8S Namespaces
 */
 func (a *Client) ListUsingGET2(params *ListUsingGET2Params, opts ...ClientOption) (*ListUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -248,9 +248,9 @@ func (a *Client) ListUsingGET2(params *ListUsingGET2Params, opts ...ClientOption
 }
 
 /*
-  RegisterUsingPUT onboards existing k8 s namespace
+RegisterUsingPUT onboards existing k8 s namespace
 
-  Onboard existing K8S Namespace by providing namespace id and entity
+Onboard existing K8S Namespace by providing namespace id and entity
 */
 func (a *Client) RegisterUsingPUT(params *RegisterUsingPUTParams, opts ...ClientOption) (*RegisterUsingPUTOK, error) {
 	// TODO: Validate the params before sending
@@ -288,9 +288,9 @@ func (a *Client) RegisterUsingPUT(params *RegisterUsingPUTParams, opts ...Client
 }
 
 /*
-  UpdateUsingPUT2 updates a k8 s namespace description or project
+UpdateUsingPUT2 updates a k8 s namespace description or project
 
-  Update a K8S Namespace description or project by providing namespace id and Namespace entity
+Update a K8S Namespace description or project by providing namespace id and Namespace entity
 */
 func (a *Client) UpdateUsingPUT2(params *UpdateUsingPUT2Params, opts ...ClientOption) (*UpdateUsingPUT2OK, error) {
 	// TODO: Validate the params before sending

@@ -52,10 +52,12 @@ func NewGetFabricVSphereDatastoreParamsWithHTTPClient(client *http.Client) *GetF
 	}
 }
 
-/* GetFabricVSphereDatastoreParams contains all the parameters to send to the API endpoint
-   for the get fabric v sphere datastore operation.
+/*
+GetFabricVSphereDatastoreParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get fabric v sphere datastore operation.
+
+	Typically these are written to a http.Request.
 */
 type GetFabricVSphereDatastoreParams struct {
 

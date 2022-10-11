@@ -35,6 +35,12 @@ func (o *GetResourcesUsingGET2Reader) ReadResponse(response runtime.ClientRespon
 			return nil, err
 		}
 		return nil, result
+	case 403:
+		result := NewGetResourcesUsingGET2Forbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -45,7 +51,8 @@ func NewGetResourcesUsingGET2OK() *GetResourcesUsingGET2OK {
 	return &GetResourcesUsingGET2OK{}
 }
 
-/* GetResourcesUsingGET2OK describes a response with status code 200, with default header values.
+/*
+GetResourcesUsingGET2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -53,9 +60,39 @@ type GetResourcesUsingGET2OK struct {
 	Payload *models.PageOfResource
 }
 
+// IsSuccess returns true when this get resources using g e t2 o k response has a 2xx status code
+func (o *GetResourcesUsingGET2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get resources using g e t2 o k response has a 3xx status code
+func (o *GetResourcesUsingGET2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get resources using g e t2 o k response has a 4xx status code
+func (o *GetResourcesUsingGET2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get resources using g e t2 o k response has a 5xx status code
+func (o *GetResourcesUsingGET2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get resources using g e t2 o k response a status code equal to that given
+func (o *GetResourcesUsingGET2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetResourcesUsingGET2OK) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/resources][%d] getResourcesUsingGET2OK  %+v", 200, o.Payload)
 }
+
+func (o *GetResourcesUsingGET2OK) String() string {
+	return fmt.Sprintf("[GET /deployment/api/resources][%d] getResourcesUsingGET2OK  %+v", 200, o.Payload)
+}
+
 func (o *GetResourcesUsingGET2OK) GetPayload() *models.PageOfResource {
 	return o.Payload
 }
@@ -77,18 +114,99 @@ func NewGetResourcesUsingGET2Unauthorized() *GetResourcesUsingGET2Unauthorized {
 	return &GetResourcesUsingGET2Unauthorized{}
 }
 
-/* GetResourcesUsingGET2Unauthorized describes a response with status code 401, with default header values.
+/*
+GetResourcesUsingGET2Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type GetResourcesUsingGET2Unauthorized struct {
 }
 
+// IsSuccess returns true when this get resources using g e t2 unauthorized response has a 2xx status code
+func (o *GetResourcesUsingGET2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get resources using g e t2 unauthorized response has a 3xx status code
+func (o *GetResourcesUsingGET2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get resources using g e t2 unauthorized response has a 4xx status code
+func (o *GetResourcesUsingGET2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get resources using g e t2 unauthorized response has a 5xx status code
+func (o *GetResourcesUsingGET2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get resources using g e t2 unauthorized response a status code equal to that given
+func (o *GetResourcesUsingGET2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetResourcesUsingGET2Unauthorized) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/resources][%d] getResourcesUsingGET2Unauthorized ", 401)
 }
 
+func (o *GetResourcesUsingGET2Unauthorized) String() string {
+	return fmt.Sprintf("[GET /deployment/api/resources][%d] getResourcesUsingGET2Unauthorized ", 401)
+}
+
 func (o *GetResourcesUsingGET2Unauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewGetResourcesUsingGET2Forbidden creates a GetResourcesUsingGET2Forbidden with default headers values
+func NewGetResourcesUsingGET2Forbidden() *GetResourcesUsingGET2Forbidden {
+	return &GetResourcesUsingGET2Forbidden{}
+}
+
+/*
+GetResourcesUsingGET2Forbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type GetResourcesUsingGET2Forbidden struct {
+}
+
+// IsSuccess returns true when this get resources using g e t2 forbidden response has a 2xx status code
+func (o *GetResourcesUsingGET2Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get resources using g e t2 forbidden response has a 3xx status code
+func (o *GetResourcesUsingGET2Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get resources using g e t2 forbidden response has a 4xx status code
+func (o *GetResourcesUsingGET2Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get resources using g e t2 forbidden response has a 5xx status code
+func (o *GetResourcesUsingGET2Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get resources using g e t2 forbidden response a status code equal to that given
+func (o *GetResourcesUsingGET2Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *GetResourcesUsingGET2Forbidden) Error() string {
+	return fmt.Sprintf("[GET /deployment/api/resources][%d] getResourcesUsingGET2Forbidden ", 403)
+}
+
+func (o *GetResourcesUsingGET2Forbidden) String() string {
+	return fmt.Sprintf("[GET /deployment/api/resources][%d] getResourcesUsingGET2Forbidden ", 403)
+}
+
+func (o *GetResourcesUsingGET2Forbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

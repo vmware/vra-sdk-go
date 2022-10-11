@@ -54,10 +54,12 @@ func NewEnumerateAzureRegionsAsyncParamsWithHTTPClient(client *http.Client) *Enu
 	}
 }
 
-/* EnumerateAzureRegionsAsyncParams contains all the parameters to send to the API endpoint
-   for the enumerate azure regions async operation.
+/*
+EnumerateAzureRegionsAsyncParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the enumerate azure regions async operation.
+
+	Typically these are written to a http.Request.
 */
 type EnumerateAzureRegionsAsyncParams struct {
 

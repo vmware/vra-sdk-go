@@ -16,7 +16,7 @@ import (
 
 // CatalogSource CatalogSource
 //
-// Represents a source of templates from which Catalog Items can be created
+// # Represents a source of templates from which Catalog Items can be created
 //
 // swagger:model CatalogSource
 type CatalogSource struct {

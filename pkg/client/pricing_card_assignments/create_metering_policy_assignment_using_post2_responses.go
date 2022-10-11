@@ -57,7 +57,8 @@ func NewCreateMeteringPolicyAssignmentUsingPOST2OK() *CreateMeteringPolicyAssign
 	return &CreateMeteringPolicyAssignmentUsingPOST2OK{}
 }
 
-/* CreateMeteringPolicyAssignmentUsingPOST2OK describes a response with status code 200, with default header values.
+/*
+CreateMeteringPolicyAssignmentUsingPOST2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -65,9 +66,39 @@ type CreateMeteringPolicyAssignmentUsingPOST2OK struct {
 	Payload *models.MeteringPolicyAssignment
 }
 
+// IsSuccess returns true when this create metering policy assignment using p o s t2 o k response has a 2xx status code
+func (o *CreateMeteringPolicyAssignmentUsingPOST2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create metering policy assignment using p o s t2 o k response has a 3xx status code
+func (o *CreateMeteringPolicyAssignmentUsingPOST2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create metering policy assignment using p o s t2 o k response has a 4xx status code
+func (o *CreateMeteringPolicyAssignmentUsingPOST2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create metering policy assignment using p o s t2 o k response has a 5xx status code
+func (o *CreateMeteringPolicyAssignmentUsingPOST2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create metering policy assignment using p o s t2 o k response a status code equal to that given
+func (o *CreateMeteringPolicyAssignmentUsingPOST2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CreateMeteringPolicyAssignmentUsingPOST2OK) Error() string {
 	return fmt.Sprintf("[POST /price/api/private/pricing-card-assignments][%d] createMeteringPolicyAssignmentUsingPOST2OK  %+v", 200, o.Payload)
 }
+
+func (o *CreateMeteringPolicyAssignmentUsingPOST2OK) String() string {
+	return fmt.Sprintf("[POST /price/api/private/pricing-card-assignments][%d] createMeteringPolicyAssignmentUsingPOST2OK  %+v", 200, o.Payload)
+}
+
 func (o *CreateMeteringPolicyAssignmentUsingPOST2OK) GetPayload() *models.MeteringPolicyAssignment {
 	return o.Payload
 }
@@ -89,7 +120,8 @@ func NewCreateMeteringPolicyAssignmentUsingPOST2Created() *CreateMeteringPolicyA
 	return &CreateMeteringPolicyAssignmentUsingPOST2Created{}
 }
 
-/* CreateMeteringPolicyAssignmentUsingPOST2Created describes a response with status code 201, with default header values.
+/*
+CreateMeteringPolicyAssignmentUsingPOST2Created describes a response with status code 201, with default header values.
 
 Created
 */
@@ -97,9 +129,39 @@ type CreateMeteringPolicyAssignmentUsingPOST2Created struct {
 	Payload *models.MeteringPolicyAssignment
 }
 
+// IsSuccess returns true when this create metering policy assignment using p o s t2 created response has a 2xx status code
+func (o *CreateMeteringPolicyAssignmentUsingPOST2Created) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create metering policy assignment using p o s t2 created response has a 3xx status code
+func (o *CreateMeteringPolicyAssignmentUsingPOST2Created) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create metering policy assignment using p o s t2 created response has a 4xx status code
+func (o *CreateMeteringPolicyAssignmentUsingPOST2Created) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create metering policy assignment using p o s t2 created response has a 5xx status code
+func (o *CreateMeteringPolicyAssignmentUsingPOST2Created) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create metering policy assignment using p o s t2 created response a status code equal to that given
+func (o *CreateMeteringPolicyAssignmentUsingPOST2Created) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateMeteringPolicyAssignmentUsingPOST2Created) Error() string {
 	return fmt.Sprintf("[POST /price/api/private/pricing-card-assignments][%d] createMeteringPolicyAssignmentUsingPOST2Created  %+v", 201, o.Payload)
 }
+
+func (o *CreateMeteringPolicyAssignmentUsingPOST2Created) String() string {
+	return fmt.Sprintf("[POST /price/api/private/pricing-card-assignments][%d] createMeteringPolicyAssignmentUsingPOST2Created  %+v", 201, o.Payload)
+}
+
 func (o *CreateMeteringPolicyAssignmentUsingPOST2Created) GetPayload() *models.MeteringPolicyAssignment {
 	return o.Payload
 }
@@ -121,14 +183,44 @@ func NewCreateMeteringPolicyAssignmentUsingPOST2Unauthorized() *CreateMeteringPo
 	return &CreateMeteringPolicyAssignmentUsingPOST2Unauthorized{}
 }
 
-/* CreateMeteringPolicyAssignmentUsingPOST2Unauthorized describes a response with status code 401, with default header values.
+/*
+CreateMeteringPolicyAssignmentUsingPOST2Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type CreateMeteringPolicyAssignmentUsingPOST2Unauthorized struct {
 }
 
+// IsSuccess returns true when this create metering policy assignment using p o s t2 unauthorized response has a 2xx status code
+func (o *CreateMeteringPolicyAssignmentUsingPOST2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create metering policy assignment using p o s t2 unauthorized response has a 3xx status code
+func (o *CreateMeteringPolicyAssignmentUsingPOST2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create metering policy assignment using p o s t2 unauthorized response has a 4xx status code
+func (o *CreateMeteringPolicyAssignmentUsingPOST2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create metering policy assignment using p o s t2 unauthorized response has a 5xx status code
+func (o *CreateMeteringPolicyAssignmentUsingPOST2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create metering policy assignment using p o s t2 unauthorized response a status code equal to that given
+func (o *CreateMeteringPolicyAssignmentUsingPOST2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreateMeteringPolicyAssignmentUsingPOST2Unauthorized) Error() string {
+	return fmt.Sprintf("[POST /price/api/private/pricing-card-assignments][%d] createMeteringPolicyAssignmentUsingPOST2Unauthorized ", 401)
+}
+
+func (o *CreateMeteringPolicyAssignmentUsingPOST2Unauthorized) String() string {
 	return fmt.Sprintf("[POST /price/api/private/pricing-card-assignments][%d] createMeteringPolicyAssignmentUsingPOST2Unauthorized ", 401)
 }
 
@@ -142,14 +234,44 @@ func NewCreateMeteringPolicyAssignmentUsingPOST2Forbidden() *CreateMeteringPolic
 	return &CreateMeteringPolicyAssignmentUsingPOST2Forbidden{}
 }
 
-/* CreateMeteringPolicyAssignmentUsingPOST2Forbidden describes a response with status code 403, with default header values.
+/*
+CreateMeteringPolicyAssignmentUsingPOST2Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type CreateMeteringPolicyAssignmentUsingPOST2Forbidden struct {
 }
 
+// IsSuccess returns true when this create metering policy assignment using p o s t2 forbidden response has a 2xx status code
+func (o *CreateMeteringPolicyAssignmentUsingPOST2Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create metering policy assignment using p o s t2 forbidden response has a 3xx status code
+func (o *CreateMeteringPolicyAssignmentUsingPOST2Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create metering policy assignment using p o s t2 forbidden response has a 4xx status code
+func (o *CreateMeteringPolicyAssignmentUsingPOST2Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create metering policy assignment using p o s t2 forbidden response has a 5xx status code
+func (o *CreateMeteringPolicyAssignmentUsingPOST2Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create metering policy assignment using p o s t2 forbidden response a status code equal to that given
+func (o *CreateMeteringPolicyAssignmentUsingPOST2Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateMeteringPolicyAssignmentUsingPOST2Forbidden) Error() string {
+	return fmt.Sprintf("[POST /price/api/private/pricing-card-assignments][%d] createMeteringPolicyAssignmentUsingPOST2Forbidden ", 403)
+}
+
+func (o *CreateMeteringPolicyAssignmentUsingPOST2Forbidden) String() string {
 	return fmt.Sprintf("[POST /price/api/private/pricing-card-assignments][%d] createMeteringPolicyAssignmentUsingPOST2Forbidden ", 403)
 }
 

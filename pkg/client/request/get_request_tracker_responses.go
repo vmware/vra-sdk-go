@@ -51,7 +51,8 @@ func NewGetRequestTrackerOK() *GetRequestTrackerOK {
 	return &GetRequestTrackerOK{}
 }
 
-/* GetRequestTrackerOK describes a response with status code 200, with default header values.
+/*
+GetRequestTrackerOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetRequestTrackerOK struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this get request tracker o k response has a 2xx status code
+func (o *GetRequestTrackerOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get request tracker o k response has a 3xx status code
+func (o *GetRequestTrackerOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get request tracker o k response has a 4xx status code
+func (o *GetRequestTrackerOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get request tracker o k response has a 5xx status code
+func (o *GetRequestTrackerOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get request tracker o k response a status code equal to that given
+func (o *GetRequestTrackerOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetRequestTrackerOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/request-tracker/{id}][%d] getRequestTrackerOK  %+v", 200, o.Payload)
 }
+
+func (o *GetRequestTrackerOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/request-tracker/{id}][%d] getRequestTrackerOK  %+v", 200, o.Payload)
+}
+
 func (o *GetRequestTrackerOK) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetRequestTrackerForbidden() *GetRequestTrackerForbidden {
 	return &GetRequestTrackerForbidden{}
 }
 
-/* GetRequestTrackerForbidden describes a response with status code 403, with default header values.
+/*
+GetRequestTrackerForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type GetRequestTrackerForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get request tracker forbidden response has a 2xx status code
+func (o *GetRequestTrackerForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get request tracker forbidden response has a 3xx status code
+func (o *GetRequestTrackerForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get request tracker forbidden response has a 4xx status code
+func (o *GetRequestTrackerForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get request tracker forbidden response has a 5xx status code
+func (o *GetRequestTrackerForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get request tracker forbidden response a status code equal to that given
+func (o *GetRequestTrackerForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetRequestTrackerForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/request-tracker/{id}][%d] getRequestTrackerForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetRequestTrackerForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/request-tracker/{id}][%d] getRequestTrackerForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetRequestTrackerForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewGetRequestTrackerNotFound() *GetRequestTrackerNotFound {
 	return &GetRequestTrackerNotFound{}
 }
 
-/* GetRequestTrackerNotFound describes a response with status code 404, with default header values.
+/*
+GetRequestTrackerNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type GetRequestTrackerNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get request tracker not found response has a 2xx status code
+func (o *GetRequestTrackerNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get request tracker not found response has a 3xx status code
+func (o *GetRequestTrackerNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get request tracker not found response has a 4xx status code
+func (o *GetRequestTrackerNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get request tracker not found response has a 5xx status code
+func (o *GetRequestTrackerNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get request tracker not found response a status code equal to that given
+func (o *GetRequestTrackerNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetRequestTrackerNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/request-tracker/{id}][%d] getRequestTrackerNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetRequestTrackerNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/request-tracker/{id}][%d] getRequestTrackerNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetRequestTrackerNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

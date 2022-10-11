@@ -53,10 +53,12 @@ func NewListUsingGET4ParamsWithHTTPClient(client *http.Client) *ListUsingGET4Par
 	}
 }
 
-/* ListUsingGET4Params contains all the parameters to send to the API endpoint
-   for the list using g e t 4 operation.
+/*
+ListUsingGET4Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the list using g e t 4 operation.
+
+	Typically these are written to a http.Request.
 */
 type ListUsingGET4Params struct {
 

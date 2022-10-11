@@ -52,10 +52,12 @@ func NewCountOfEntitiesInProjectUsingGETParamsWithHTTPClient(client *http.Client
 	}
 }
 
-/* CountOfEntitiesInProjectUsingGETParams contains all the parameters to send to the API endpoint
-   for the count of entities in project using g e t operation.
+/*
+CountOfEntitiesInProjectUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the count of entities in project using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type CountOfEntitiesInProjectUsingGETParams struct {
 

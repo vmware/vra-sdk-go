@@ -53,10 +53,12 @@ func NewDeleteComputeNatParamsWithHTTPClient(client *http.Client) *DeleteCompute
 	}
 }
 
-/* DeleteComputeNatParams contains all the parameters to send to the API endpoint
-   for the delete compute nat operation.
+/*
+DeleteComputeNatParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete compute nat operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteComputeNatParams struct {
 

@@ -38,9 +38,9 @@ type ClientService interface {
 }
 
 /*
-  GetFabricImage gets fabric image
+GetFabricImage gets fabric image
 
-  Get fabric image with a given id
+Get fabric image with a given id
 */
 func (a *Client) GetFabricImage(params *GetFabricImageParams, opts ...ClientOption) (*GetFabricImageOK, error) {
 	// TODO: Validate the params before sending
@@ -78,9 +78,9 @@ func (a *Client) GetFabricImage(params *GetFabricImageParams, opts ...ClientOpti
 }
 
 /*
-  GetFabricImages gets fabric images
+GetFabricImages gets fabric images
 
-  Get all fabric images
+Get all fabric images
 */
 func (a *Client) GetFabricImages(params *GetFabricImagesParams, opts ...ClientOption) (*GetFabricImagesOK, error) {
 	// TODO: Validate the params before sending

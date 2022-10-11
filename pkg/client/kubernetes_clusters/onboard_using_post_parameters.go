@@ -54,10 +54,12 @@ func NewOnboardUsingPOSTParamsWithHTTPClient(client *http.Client) *OnboardUsingP
 	}
 }
 
-/* OnboardUsingPOSTParams contains all the parameters to send to the API endpoint
-   for the onboard using p o s t operation.
+/*
+OnboardUsingPOSTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the onboard using p o s t operation.
+
+	Typically these are written to a http.Request.
 */
 type OnboardUsingPOSTParams struct {
 

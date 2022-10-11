@@ -29,6 +29,24 @@ func (o *GetDecisionByIDUsingGET2Reader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return result, nil
+	case 401:
+		result := NewGetDecisionByIDUsingGET2Unauthorized()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 403:
+		result := NewGetDecisionByIDUsingGET2Forbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 404:
+		result := NewGetDecisionByIDUsingGET2NotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +57,8 @@ func NewGetDecisionByIDUsingGET2OK() *GetDecisionByIDUsingGET2OK {
 	return &GetDecisionByIDUsingGET2OK{}
 }
 
-/* GetDecisionByIDUsingGET2OK describes a response with status code 200, with default header values.
+/*
+GetDecisionByIDUsingGET2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +66,39 @@ type GetDecisionByIDUsingGET2OK struct {
 	Payload *models.PolicyDecisionOfObjectNode
 }
 
+// IsSuccess returns true when this get decision by Id using g e t2 o k response has a 2xx status code
+func (o *GetDecisionByIDUsingGET2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get decision by Id using g e t2 o k response has a 3xx status code
+func (o *GetDecisionByIDUsingGET2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get decision by Id using g e t2 o k response has a 4xx status code
+func (o *GetDecisionByIDUsingGET2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get decision by Id using g e t2 o k response has a 5xx status code
+func (o *GetDecisionByIDUsingGET2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get decision by Id using g e t2 o k response a status code equal to that given
+func (o *GetDecisionByIDUsingGET2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetDecisionByIDUsingGET2OK) Error() string {
 	return fmt.Sprintf("[GET /policy/api/policyDecisions/{id}][%d] getDecisionByIdUsingGET2OK  %+v", 200, o.Payload)
 }
+
+func (o *GetDecisionByIDUsingGET2OK) String() string {
+	return fmt.Sprintf("[GET /policy/api/policyDecisions/{id}][%d] getDecisionByIdUsingGET2OK  %+v", 200, o.Payload)
+}
+
 func (o *GetDecisionByIDUsingGET2OK) GetPayload() *models.PolicyDecisionOfObjectNode {
 	return o.Payload
 }
@@ -57,6 +106,171 @@ func (o *GetDecisionByIDUsingGET2OK) GetPayload() *models.PolicyDecisionOfObject
 func (o *GetDecisionByIDUsingGET2OK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.PolicyDecisionOfObjectNode)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetDecisionByIDUsingGET2Unauthorized creates a GetDecisionByIDUsingGET2Unauthorized with default headers values
+func NewGetDecisionByIDUsingGET2Unauthorized() *GetDecisionByIDUsingGET2Unauthorized {
+	return &GetDecisionByIDUsingGET2Unauthorized{}
+}
+
+/*
+GetDecisionByIDUsingGET2Unauthorized describes a response with status code 401, with default header values.
+
+Unauthorized
+*/
+type GetDecisionByIDUsingGET2Unauthorized struct {
+}
+
+// IsSuccess returns true when this get decision by Id using g e t2 unauthorized response has a 2xx status code
+func (o *GetDecisionByIDUsingGET2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get decision by Id using g e t2 unauthorized response has a 3xx status code
+func (o *GetDecisionByIDUsingGET2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get decision by Id using g e t2 unauthorized response has a 4xx status code
+func (o *GetDecisionByIDUsingGET2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get decision by Id using g e t2 unauthorized response has a 5xx status code
+func (o *GetDecisionByIDUsingGET2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get decision by Id using g e t2 unauthorized response a status code equal to that given
+func (o *GetDecisionByIDUsingGET2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+func (o *GetDecisionByIDUsingGET2Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /policy/api/policyDecisions/{id}][%d] getDecisionByIdUsingGET2Unauthorized ", 401)
+}
+
+func (o *GetDecisionByIDUsingGET2Unauthorized) String() string {
+	return fmt.Sprintf("[GET /policy/api/policyDecisions/{id}][%d] getDecisionByIdUsingGET2Unauthorized ", 401)
+}
+
+func (o *GetDecisionByIDUsingGET2Unauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewGetDecisionByIDUsingGET2Forbidden creates a GetDecisionByIDUsingGET2Forbidden with default headers values
+func NewGetDecisionByIDUsingGET2Forbidden() *GetDecisionByIDUsingGET2Forbidden {
+	return &GetDecisionByIDUsingGET2Forbidden{}
+}
+
+/*
+GetDecisionByIDUsingGET2Forbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type GetDecisionByIDUsingGET2Forbidden struct {
+}
+
+// IsSuccess returns true when this get decision by Id using g e t2 forbidden response has a 2xx status code
+func (o *GetDecisionByIDUsingGET2Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get decision by Id using g e t2 forbidden response has a 3xx status code
+func (o *GetDecisionByIDUsingGET2Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get decision by Id using g e t2 forbidden response has a 4xx status code
+func (o *GetDecisionByIDUsingGET2Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get decision by Id using g e t2 forbidden response has a 5xx status code
+func (o *GetDecisionByIDUsingGET2Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get decision by Id using g e t2 forbidden response a status code equal to that given
+func (o *GetDecisionByIDUsingGET2Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *GetDecisionByIDUsingGET2Forbidden) Error() string {
+	return fmt.Sprintf("[GET /policy/api/policyDecisions/{id}][%d] getDecisionByIdUsingGET2Forbidden ", 403)
+}
+
+func (o *GetDecisionByIDUsingGET2Forbidden) String() string {
+	return fmt.Sprintf("[GET /policy/api/policyDecisions/{id}][%d] getDecisionByIdUsingGET2Forbidden ", 403)
+}
+
+func (o *GetDecisionByIDUsingGET2Forbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewGetDecisionByIDUsingGET2NotFound creates a GetDecisionByIDUsingGET2NotFound with default headers values
+func NewGetDecisionByIDUsingGET2NotFound() *GetDecisionByIDUsingGET2NotFound {
+	return &GetDecisionByIDUsingGET2NotFound{}
+}
+
+/*
+GetDecisionByIDUsingGET2NotFound describes a response with status code 404, with default header values.
+
+Not Found
+*/
+type GetDecisionByIDUsingGET2NotFound struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this get decision by Id using g e t2 not found response has a 2xx status code
+func (o *GetDecisionByIDUsingGET2NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get decision by Id using g e t2 not found response has a 3xx status code
+func (o *GetDecisionByIDUsingGET2NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get decision by Id using g e t2 not found response has a 4xx status code
+func (o *GetDecisionByIDUsingGET2NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get decision by Id using g e t2 not found response has a 5xx status code
+func (o *GetDecisionByIDUsingGET2NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get decision by Id using g e t2 not found response a status code equal to that given
+func (o *GetDecisionByIDUsingGET2NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+func (o *GetDecisionByIDUsingGET2NotFound) Error() string {
+	return fmt.Sprintf("[GET /policy/api/policyDecisions/{id}][%d] getDecisionByIdUsingGET2NotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetDecisionByIDUsingGET2NotFound) String() string {
+	return fmt.Sprintf("[GET /policy/api/policyDecisions/{id}][%d] getDecisionByIdUsingGET2NotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetDecisionByIDUsingGET2NotFound) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *GetDecisionByIDUsingGET2NotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

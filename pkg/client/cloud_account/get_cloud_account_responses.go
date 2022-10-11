@@ -51,7 +51,8 @@ func NewGetCloudAccountOK() *GetCloudAccountOK {
 	return &GetCloudAccountOK{}
 }
 
-/* GetCloudAccountOK describes a response with status code 200, with default header values.
+/*
+GetCloudAccountOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetCloudAccountOK struct {
 	Payload *models.CloudAccount
 }
 
+// IsSuccess returns true when this get cloud account o k response has a 2xx status code
+func (o *GetCloudAccountOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get cloud account o k response has a 3xx status code
+func (o *GetCloudAccountOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get cloud account o k response has a 4xx status code
+func (o *GetCloudAccountOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get cloud account o k response has a 5xx status code
+func (o *GetCloudAccountOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get cloud account o k response a status code equal to that given
+func (o *GetCloudAccountOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetCloudAccountOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts/{id}][%d] getCloudAccountOK  %+v", 200, o.Payload)
 }
+
+func (o *GetCloudAccountOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts/{id}][%d] getCloudAccountOK  %+v", 200, o.Payload)
+}
+
 func (o *GetCloudAccountOK) GetPayload() *models.CloudAccount {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetCloudAccountForbidden() *GetCloudAccountForbidden {
 	return &GetCloudAccountForbidden{}
 }
 
-/* GetCloudAccountForbidden describes a response with status code 403, with default header values.
+/*
+GetCloudAccountForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type GetCloudAccountForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get cloud account forbidden response has a 2xx status code
+func (o *GetCloudAccountForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get cloud account forbidden response has a 3xx status code
+func (o *GetCloudAccountForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get cloud account forbidden response has a 4xx status code
+func (o *GetCloudAccountForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get cloud account forbidden response has a 5xx status code
+func (o *GetCloudAccountForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get cloud account forbidden response a status code equal to that given
+func (o *GetCloudAccountForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetCloudAccountForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts/{id}][%d] getCloudAccountForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetCloudAccountForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts/{id}][%d] getCloudAccountForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetCloudAccountForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewGetCloudAccountNotFound() *GetCloudAccountNotFound {
 	return &GetCloudAccountNotFound{}
 }
 
-/* GetCloudAccountNotFound describes a response with status code 404, with default header values.
+/*
+GetCloudAccountNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type GetCloudAccountNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get cloud account not found response has a 2xx status code
+func (o *GetCloudAccountNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get cloud account not found response has a 3xx status code
+func (o *GetCloudAccountNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get cloud account not found response has a 4xx status code
+func (o *GetCloudAccountNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get cloud account not found response has a 5xx status code
+func (o *GetCloudAccountNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get cloud account not found response a status code equal to that given
+func (o *GetCloudAccountNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetCloudAccountNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts/{id}][%d] getCloudAccountNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetCloudAccountNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts/{id}][%d] getCloudAccountNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetCloudAccountNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

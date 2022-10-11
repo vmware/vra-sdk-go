@@ -51,7 +51,8 @@ func NewResizeMachineAccepted() *ResizeMachineAccepted {
 	return &ResizeMachineAccepted{}
 }
 
-/* ResizeMachineAccepted describes a response with status code 202, with default header values.
+/*
+ResizeMachineAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type ResizeMachineAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this resize machine accepted response has a 2xx status code
+func (o *ResizeMachineAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this resize machine accepted response has a 3xx status code
+func (o *ResizeMachineAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this resize machine accepted response has a 4xx status code
+func (o *ResizeMachineAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this resize machine accepted response has a 5xx status code
+func (o *ResizeMachineAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this resize machine accepted response a status code equal to that given
+func (o *ResizeMachineAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ResizeMachineAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/resize][%d] resizeMachineAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ResizeMachineAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/resize][%d] resizeMachineAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ResizeMachineAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewResizeMachineForbidden() *ResizeMachineForbidden {
 	return &ResizeMachineForbidden{}
 }
 
-/* ResizeMachineForbidden describes a response with status code 403, with default header values.
+/*
+ResizeMachineForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type ResizeMachineForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this resize machine forbidden response has a 2xx status code
+func (o *ResizeMachineForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this resize machine forbidden response has a 3xx status code
+func (o *ResizeMachineForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this resize machine forbidden response has a 4xx status code
+func (o *ResizeMachineForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this resize machine forbidden response has a 5xx status code
+func (o *ResizeMachineForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this resize machine forbidden response a status code equal to that given
+func (o *ResizeMachineForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ResizeMachineForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/resize][%d] resizeMachineForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ResizeMachineForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/resize][%d] resizeMachineForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ResizeMachineForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewResizeMachineNotFound() *ResizeMachineNotFound {
 	return &ResizeMachineNotFound{}
 }
 
-/* ResizeMachineNotFound describes a response with status code 404, with default header values.
+/*
+ResizeMachineNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type ResizeMachineNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this resize machine not found response has a 2xx status code
+func (o *ResizeMachineNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this resize machine not found response has a 3xx status code
+func (o *ResizeMachineNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this resize machine not found response has a 4xx status code
+func (o *ResizeMachineNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this resize machine not found response has a 5xx status code
+func (o *ResizeMachineNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this resize machine not found response a status code equal to that given
+func (o *ResizeMachineNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ResizeMachineNotFound) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/resize][%d] resizeMachineNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ResizeMachineNotFound) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/resize][%d] resizeMachineNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ResizeMachineNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

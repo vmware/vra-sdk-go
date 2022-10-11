@@ -52,10 +52,12 @@ func NewGetCustomIntegrationVersionByIDUsingGETParamsWithHTTPClient(client *http
 	}
 }
 
-/* GetCustomIntegrationVersionByIDUsingGETParams contains all the parameters to send to the API endpoint
-   for the get custom integration version by Id using g e t operation.
+/*
+GetCustomIntegrationVersionByIDUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get custom integration version by Id using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetCustomIntegrationVersionByIDUsingGETParams struct {
 

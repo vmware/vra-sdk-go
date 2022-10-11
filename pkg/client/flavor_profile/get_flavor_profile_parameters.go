@@ -52,10 +52,12 @@ func NewGetFlavorProfileParamsWithHTTPClient(client *http.Client) *GetFlavorProf
 	}
 }
 
-/* GetFlavorProfileParams contains all the parameters to send to the API endpoint
-   for the get flavor profile operation.
+/*
+GetFlavorProfileParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get flavor profile operation.
+
+	Typically these are written to a http.Request.
 */
 type GetFlavorProfileParams struct {
 

@@ -42,9 +42,9 @@ type ClientService interface {
 }
 
 /*
-  DeleteUsingDELETE4 deletes catalog source
+DeleteUsingDELETE4 deletes catalog source
 
-  Deletes the catalog source with the supplied ID.
+Deletes the catalog source with the supplied ID.
 */
 func (a *Client) DeleteUsingDELETE4(params *DeleteUsingDELETE4Params, opts ...ClientOption) (*DeleteUsingDELETE4NoContent, error) {
 	// TODO: Validate the params before sending
@@ -82,9 +82,9 @@ func (a *Client) DeleteUsingDELETE4(params *DeleteUsingDELETE4Params, opts ...Cl
 }
 
 /*
-  GetPageUsingGET2 fetches catalog sources
+GetPageUsingGET2 fetches catalog sources
 
-  Returns a paginated list of catalog sources.
+Returns a paginated list of catalog sources.
 */
 func (a *Client) GetPageUsingGET2(params *GetPageUsingGET2Params, opts ...ClientOption) (*GetPageUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -122,9 +122,9 @@ func (a *Client) GetPageUsingGET2(params *GetPageUsingGET2Params, opts ...Client
 }
 
 /*
-  GetUsingGET2 fetches a specific catalog source for the given ID
+GetUsingGET2 fetches a specific catalog source for the given ID
 
-  Returns the catalog source with the supplied ID.
+Returns the catalog source with the supplied ID.
 */
 func (a *Client) GetUsingGET2(params *GetUsingGET2Params, opts ...ClientOption) (*GetUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -162,9 +162,9 @@ func (a *Client) GetUsingGET2(params *GetUsingGET2Params, opts ...ClientOption) 
 }
 
 /*
-  PostUsingPOST2 creates or update a catalog source creating or updating also imports or re imports the associated catalog items
+PostUsingPOST2 creates or update a catalog source creating or updating also imports or re imports the associated catalog items
 
-  Creates a new catalog source or updates an existing catalog source based on the request body and imports catalog items from it.
+Creates a new catalog source or updates an existing catalog source based on the request body and imports catalog items from it.
 */
 func (a *Client) PostUsingPOST2(params *PostUsingPOST2Params, opts ...ClientOption) (*PostUsingPOST2OK, *PostUsingPOST2Created, error) {
 	// TODO: Validate the params before sending

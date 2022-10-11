@@ -29,6 +29,12 @@ func (o *GetUsingGET3Reader) ReadResponse(response runtime.ClientResponse, consu
 			return nil, err
 		}
 		return result, nil
+	case 403:
+		result := NewGetUsingGET3Forbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +45,8 @@ func NewGetUsingGET3OK() *GetUsingGET3OK {
 	return &GetUsingGET3OK{}
 }
 
-/* GetUsingGET3OK describes a response with status code 200, with default header values.
+/*
+GetUsingGET3OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +54,39 @@ type GetUsingGET3OK struct {
 	Payload *models.K8SResourceQuota
 }
 
+// IsSuccess returns true when this get using g e t3 o k response has a 2xx status code
+func (o *GetUsingGET3OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get using g e t3 o k response has a 3xx status code
+func (o *GetUsingGET3OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get using g e t3 o k response has a 4xx status code
+func (o *GetUsingGET3OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get using g e t3 o k response has a 5xx status code
+func (o *GetUsingGET3OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get using g e t3 o k response a status code equal to that given
+func (o *GetUsingGET3OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetUsingGET3OK) Error() string {
 	return fmt.Sprintf("[GET /cmx/api/resources/resource-quotas/{id}][%d] getUsingGET3OK  %+v", 200, o.Payload)
 }
+
+func (o *GetUsingGET3OK) String() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/resource-quotas/{id}][%d] getUsingGET3OK  %+v", 200, o.Payload)
+}
+
 func (o *GetUsingGET3OK) GetPayload() *models.K8SResourceQuota {
 	return o.Payload
 }
@@ -62,6 +99,57 @@ func (o *GetUsingGET3OK) readResponse(response runtime.ClientResponse, consumer 
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewGetUsingGET3Forbidden creates a GetUsingGET3Forbidden with default headers values
+func NewGetUsingGET3Forbidden() *GetUsingGET3Forbidden {
+	return &GetUsingGET3Forbidden{}
+}
+
+/*
+GetUsingGET3Forbidden describes a response with status code 403, with default header values.
+
+Forbidden, the user lacks permissions
+*/
+type GetUsingGET3Forbidden struct {
+}
+
+// IsSuccess returns true when this get using g e t3 forbidden response has a 2xx status code
+func (o *GetUsingGET3Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get using g e t3 forbidden response has a 3xx status code
+func (o *GetUsingGET3Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get using g e t3 forbidden response has a 4xx status code
+func (o *GetUsingGET3Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get using g e t3 forbidden response has a 5xx status code
+func (o *GetUsingGET3Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get using g e t3 forbidden response a status code equal to that given
+func (o *GetUsingGET3Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *GetUsingGET3Forbidden) Error() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/resource-quotas/{id}][%d] getUsingGET3Forbidden ", 403)
+}
+
+func (o *GetUsingGET3Forbidden) String() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/resource-quotas/{id}][%d] getUsingGET3Forbidden ", 403)
+}
+
+func (o *GetUsingGET3Forbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

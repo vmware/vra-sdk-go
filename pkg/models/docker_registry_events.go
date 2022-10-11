@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
@@ -121,7 +120,7 @@ func UnmarshalDockerRegistryEventsSlice(reader io.Reader, consumer runtime.Consu
 // UnmarshalDockerRegistryEvents unmarshals polymorphic DockerRegistryEvents
 func UnmarshalDockerRegistryEvents(reader io.Reader, consumer runtime.Consumer) (DockerRegistryEvents, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}

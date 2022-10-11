@@ -54,10 +54,12 @@ func NewEnumerateRegionsAsyncParamsWithHTTPClient(client *http.Client) *Enumerat
 	}
 }
 
-/* EnumerateRegionsAsyncParams contains all the parameters to send to the API endpoint
-   for the enumerate regions async operation.
+/*
+EnumerateRegionsAsyncParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the enumerate regions async operation.
+
+	Typically these are written to a http.Request.
 */
 type EnumerateRegionsAsyncParams struct {
 

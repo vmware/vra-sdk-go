@@ -53,10 +53,12 @@ func NewGetDecisionsUsingGET2ParamsWithHTTPClient(client *http.Client) *GetDecis
 	}
 }
 
-/* GetDecisionsUsingGET2Params contains all the parameters to send to the API endpoint
-   for the get decisions using g e t 2 operation.
+/*
+GetDecisionsUsingGET2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get decisions using g e t 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetDecisionsUsingGET2Params struct {
 

@@ -38,9 +38,9 @@ type ClientService interface {
 }
 
 /*
-  GetDecisionByIDUsingGET2 returns a policy decision by id
+GetDecisionByIDUsingGET2 returns a policy decision by id
 
-  Find a specific policy decision based on the input policy decision id.
+Find a specific policy decision based on the input policy decision id.
 */
 func (a *Client) GetDecisionByIDUsingGET2(params *GetDecisionByIDUsingGET2Params, opts ...ClientOption) (*GetDecisionByIDUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -78,9 +78,9 @@ func (a *Client) GetDecisionByIDUsingGET2(params *GetDecisionByIDUsingGET2Params
 }
 
 /*
-  GetDecisionsUsingGET2 fetches a list of policy decisions
+GetDecisionsUsingGET2 fetches a list of policy decisions
 
-  Returns a paginated list of policy decisions. If a dryRunId is provided, the return value has a field indicating whether the dry run is complete.
+Returns a paginated list of policy decisions. If a dryRunId is provided, the return value has a field indicating whether the dry run is complete.
 */
 func (a *Client) GetDecisionsUsingGET2(params *GetDecisionsUsingGET2Params, opts ...ClientOption) (*GetDecisionsUsingGET2OK, error) {
 	// TODO: Validate the params before sending

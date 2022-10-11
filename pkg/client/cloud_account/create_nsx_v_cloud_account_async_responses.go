@@ -51,7 +51,8 @@ func NewCreateNsxVCloudAccountAsyncAccepted() *CreateNsxVCloudAccountAsyncAccept
 	return &CreateNsxVCloudAccountAsyncAccepted{}
 }
 
-/* CreateNsxVCloudAccountAsyncAccepted describes a response with status code 202, with default header values.
+/*
+CreateNsxVCloudAccountAsyncAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type CreateNsxVCloudAccountAsyncAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this create nsx v cloud account async accepted response has a 2xx status code
+func (o *CreateNsxVCloudAccountAsyncAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create nsx v cloud account async accepted response has a 3xx status code
+func (o *CreateNsxVCloudAccountAsyncAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create nsx v cloud account async accepted response has a 4xx status code
+func (o *CreateNsxVCloudAccountAsyncAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create nsx v cloud account async accepted response has a 5xx status code
+func (o *CreateNsxVCloudAccountAsyncAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create nsx v cloud account async accepted response a status code equal to that given
+func (o *CreateNsxVCloudAccountAsyncAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateNsxVCloudAccountAsyncAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-nsx-v][%d] createNsxVCloudAccountAsyncAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateNsxVCloudAccountAsyncAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-nsx-v][%d] createNsxVCloudAccountAsyncAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateNsxVCloudAccountAsyncAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewCreateNsxVCloudAccountAsyncBadRequest() *CreateNsxVCloudAccountAsyncBadR
 	return &CreateNsxVCloudAccountAsyncBadRequest{}
 }
 
-/* CreateNsxVCloudAccountAsyncBadRequest describes a response with status code 400, with default header values.
+/*
+CreateNsxVCloudAccountAsyncBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type CreateNsxVCloudAccountAsyncBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create nsx v cloud account async bad request response has a 2xx status code
+func (o *CreateNsxVCloudAccountAsyncBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create nsx v cloud account async bad request response has a 3xx status code
+func (o *CreateNsxVCloudAccountAsyncBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create nsx v cloud account async bad request response has a 4xx status code
+func (o *CreateNsxVCloudAccountAsyncBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create nsx v cloud account async bad request response has a 5xx status code
+func (o *CreateNsxVCloudAccountAsyncBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create nsx v cloud account async bad request response a status code equal to that given
+func (o *CreateNsxVCloudAccountAsyncBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateNsxVCloudAccountAsyncBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-nsx-v][%d] createNsxVCloudAccountAsyncBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateNsxVCloudAccountAsyncBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-nsx-v][%d] createNsxVCloudAccountAsyncBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateNsxVCloudAccountAsyncBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewCreateNsxVCloudAccountAsyncForbidden() *CreateNsxVCloudAccountAsyncForbi
 	return &CreateNsxVCloudAccountAsyncForbidden{}
 }
 
-/* CreateNsxVCloudAccountAsyncForbidden describes a response with status code 403, with default header values.
+/*
+CreateNsxVCloudAccountAsyncForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type CreateNsxVCloudAccountAsyncForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this create nsx v cloud account async forbidden response has a 2xx status code
+func (o *CreateNsxVCloudAccountAsyncForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create nsx v cloud account async forbidden response has a 3xx status code
+func (o *CreateNsxVCloudAccountAsyncForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create nsx v cloud account async forbidden response has a 4xx status code
+func (o *CreateNsxVCloudAccountAsyncForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create nsx v cloud account async forbidden response has a 5xx status code
+func (o *CreateNsxVCloudAccountAsyncForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create nsx v cloud account async forbidden response a status code equal to that given
+func (o *CreateNsxVCloudAccountAsyncForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateNsxVCloudAccountAsyncForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-nsx-v][%d] createNsxVCloudAccountAsyncForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CreateNsxVCloudAccountAsyncForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-nsx-v][%d] createNsxVCloudAccountAsyncForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CreateNsxVCloudAccountAsyncForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

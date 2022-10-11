@@ -51,7 +51,8 @@ func NewEnumerateAwsRegionsAsyncAccepted() *EnumerateAwsRegionsAsyncAccepted {
 	return &EnumerateAwsRegionsAsyncAccepted{}
 }
 
-/* EnumerateAwsRegionsAsyncAccepted describes a response with status code 202, with default header values.
+/*
+EnumerateAwsRegionsAsyncAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type EnumerateAwsRegionsAsyncAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this enumerate aws regions async accepted response has a 2xx status code
+func (o *EnumerateAwsRegionsAsyncAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this enumerate aws regions async accepted response has a 3xx status code
+func (o *EnumerateAwsRegionsAsyncAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this enumerate aws regions async accepted response has a 4xx status code
+func (o *EnumerateAwsRegionsAsyncAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this enumerate aws regions async accepted response has a 5xx status code
+func (o *EnumerateAwsRegionsAsyncAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this enumerate aws regions async accepted response a status code equal to that given
+func (o *EnumerateAwsRegionsAsyncAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *EnumerateAwsRegionsAsyncAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-aws/region-enumeration][%d] enumerateAwsRegionsAsyncAccepted  %+v", 202, o.Payload)
 }
+
+func (o *EnumerateAwsRegionsAsyncAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-aws/region-enumeration][%d] enumerateAwsRegionsAsyncAccepted  %+v", 202, o.Payload)
+}
+
 func (o *EnumerateAwsRegionsAsyncAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewEnumerateAwsRegionsAsyncBadRequest() *EnumerateAwsRegionsAsyncBadRequest
 	return &EnumerateAwsRegionsAsyncBadRequest{}
 }
 
-/* EnumerateAwsRegionsAsyncBadRequest describes a response with status code 400, with default header values.
+/*
+EnumerateAwsRegionsAsyncBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type EnumerateAwsRegionsAsyncBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this enumerate aws regions async bad request response has a 2xx status code
+func (o *EnumerateAwsRegionsAsyncBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this enumerate aws regions async bad request response has a 3xx status code
+func (o *EnumerateAwsRegionsAsyncBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this enumerate aws regions async bad request response has a 4xx status code
+func (o *EnumerateAwsRegionsAsyncBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this enumerate aws regions async bad request response has a 5xx status code
+func (o *EnumerateAwsRegionsAsyncBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this enumerate aws regions async bad request response a status code equal to that given
+func (o *EnumerateAwsRegionsAsyncBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *EnumerateAwsRegionsAsyncBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-aws/region-enumeration][%d] enumerateAwsRegionsAsyncBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *EnumerateAwsRegionsAsyncBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-aws/region-enumeration][%d] enumerateAwsRegionsAsyncBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *EnumerateAwsRegionsAsyncBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewEnumerateAwsRegionsAsyncForbidden() *EnumerateAwsRegionsAsyncForbidden {
 	return &EnumerateAwsRegionsAsyncForbidden{}
 }
 
-/* EnumerateAwsRegionsAsyncForbidden describes a response with status code 403, with default header values.
+/*
+EnumerateAwsRegionsAsyncForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type EnumerateAwsRegionsAsyncForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this enumerate aws regions async forbidden response has a 2xx status code
+func (o *EnumerateAwsRegionsAsyncForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this enumerate aws regions async forbidden response has a 3xx status code
+func (o *EnumerateAwsRegionsAsyncForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this enumerate aws regions async forbidden response has a 4xx status code
+func (o *EnumerateAwsRegionsAsyncForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this enumerate aws regions async forbidden response has a 5xx status code
+func (o *EnumerateAwsRegionsAsyncForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this enumerate aws regions async forbidden response a status code equal to that given
+func (o *EnumerateAwsRegionsAsyncForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *EnumerateAwsRegionsAsyncForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-aws/region-enumeration][%d] enumerateAwsRegionsAsyncForbidden  %+v", 403, o.Payload)
 }
+
+func (o *EnumerateAwsRegionsAsyncForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-aws/region-enumeration][%d] enumerateAwsRegionsAsyncForbidden  %+v", 403, o.Payload)
+}
+
 func (o *EnumerateAwsRegionsAsyncForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

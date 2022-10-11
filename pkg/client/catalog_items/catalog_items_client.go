@@ -48,9 +48,9 @@ type ClientService interface {
 }
 
 /*
-  GetCatalogItemUsingGET5 finds a catalog item with specified ID
+GetCatalogItemUsingGET5 finds a catalog item with specified ID
 
-  Returns the catalog item with the specified ID.
+Returns the catalog item with the specified ID.
 */
 func (a *Client) GetCatalogItemUsingGET5(params *GetCatalogItemUsingGET5Params, opts ...ClientOption) (*GetCatalogItemUsingGET5OK, error) {
 	// TODO: Validate the params before sending
@@ -88,9 +88,9 @@ func (a *Client) GetCatalogItemUsingGET5(params *GetCatalogItemUsingGET5Params, 
 }
 
 /*
-  GetCatalogItemsUsingGET5 fetches a list of catalog items
+GetCatalogItemsUsingGET5 fetches a list of catalog items
 
-  Returns a paginated list of catalog items.
+Returns a paginated list of catalog items.
 */
 func (a *Client) GetCatalogItemsUsingGET5(params *GetCatalogItemsUsingGET5Params, opts ...ClientOption) (*GetCatalogItemsUsingGET5OK, error) {
 	// TODO: Validate the params before sending
@@ -128,9 +128,9 @@ func (a *Client) GetCatalogItemsUsingGET5(params *GetCatalogItemsUsingGET5Params
 }
 
 /*
-  GetUpfrontPriceResponseForCatalogItemUsingGET2 gets a response with upfront prices for a given catalog item
+GetUpfrontPriceResponseForCatalogItemUsingGET2 gets a response with upfront prices for a given catalog item
 
-  Returns upfront prices of a given catalog item.
+Returns upfront prices of a given catalog item.
 */
 func (a *Client) GetUpfrontPriceResponseForCatalogItemUsingGET2(params *GetUpfrontPriceResponseForCatalogItemUsingGET2Params, opts ...ClientOption) (*GetUpfrontPriceResponseForCatalogItemUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -168,9 +168,9 @@ func (a *Client) GetUpfrontPriceResponseForCatalogItemUsingGET2(params *GetUpfro
 }
 
 /*
-  GetVersionByIDUsingGET2 fetches detailed catalog item version
+GetVersionByIDUsingGET2 fetches detailed catalog item version
 
-  Returns a detailed catalog item version.
+Returns a detailed catalog item version.
 */
 func (a *Client) GetVersionByIDUsingGET2(params *GetVersionByIDUsingGET2Params, opts ...ClientOption) (*GetVersionByIDUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -208,9 +208,9 @@ func (a *Client) GetVersionByIDUsingGET2(params *GetVersionByIDUsingGET2Params, 
 }
 
 /*
-  GetVersionsUsingGET2 fetches a list of catalog items with versions
+GetVersionsUsingGET2 fetches a list of catalog items with versions
 
-  Returns a paginated list of catalog item versions.
+Returns a paginated list of catalog item versions.
 */
 func (a *Client) GetVersionsUsingGET2(params *GetVersionsUsingGET2Params, opts ...ClientOption) (*GetVersionsUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -248,9 +248,9 @@ func (a *Client) GetVersionsUsingGET2(params *GetVersionsUsingGET2Params, opts .
 }
 
 /*
-  RequestCatalogItemInstancesUsingPOST1 creates deployments
+RequestCatalogItemInstancesUsingPOST1 creates deployments
 
-  Creates deployments from a catalog item.
+Creates deployments from a catalog item.
 */
 func (a *Client) RequestCatalogItemInstancesUsingPOST1(params *RequestCatalogItemInstancesUsingPOST1Params, opts ...ClientOption) (*RequestCatalogItemInstancesUsingPOST1OK, error) {
 	// TODO: Validate the params before sending
@@ -288,9 +288,9 @@ func (a *Client) RequestCatalogItemInstancesUsingPOST1(params *RequestCatalogIte
 }
 
 /*
-  SubmitUpfrontPriceRequestForCatalogItemUsingPOST2 creates a request to calculate upfront price for a given catalog item
+SubmitUpfrontPriceRequestForCatalogItemUsingPOST2 creates a request to calculate upfront price for a given catalog item
 
-  Returns upfront price response for a given catalog item.
+Returns upfront price response for a given catalog item.
 */
 func (a *Client) SubmitUpfrontPriceRequestForCatalogItemUsingPOST2(params *SubmitUpfrontPriceRequestForCatalogItemUsingPOST2Params, opts ...ClientOption) (*SubmitUpfrontPriceRequestForCatalogItemUsingPOST2OK, error) {
 	// TODO: Validate the params before sending

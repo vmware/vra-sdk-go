@@ -42,14 +42,44 @@ func NewUpdateCatalogItemUsingPATCH2OK() *UpdateCatalogItemUsingPATCH2OK {
 	return &UpdateCatalogItemUsingPATCH2OK{}
 }
 
-/* UpdateCatalogItemUsingPATCH2OK describes a response with status code 200, with default header values.
+/*
+UpdateCatalogItemUsingPATCH2OK describes a response with status code 200, with default header values.
 
 OK
 */
 type UpdateCatalogItemUsingPATCH2OK struct {
 }
 
+// IsSuccess returns true when this update catalog item using p a t c h2 o k response has a 2xx status code
+func (o *UpdateCatalogItemUsingPATCH2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update catalog item using p a t c h2 o k response has a 3xx status code
+func (o *UpdateCatalogItemUsingPATCH2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update catalog item using p a t c h2 o k response has a 4xx status code
+func (o *UpdateCatalogItemUsingPATCH2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update catalog item using p a t c h2 o k response has a 5xx status code
+func (o *UpdateCatalogItemUsingPATCH2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update catalog item using p a t c h2 o k response a status code equal to that given
+func (o *UpdateCatalogItemUsingPATCH2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateCatalogItemUsingPATCH2OK) Error() string {
+	return fmt.Sprintf("[PATCH /catalog/api/admin/items/{id}][%d] updateCatalogItemUsingPATCH2OK ", 200)
+}
+
+func (o *UpdateCatalogItemUsingPATCH2OK) String() string {
 	return fmt.Sprintf("[PATCH /catalog/api/admin/items/{id}][%d] updateCatalogItemUsingPATCH2OK ", 200)
 }
 
@@ -63,14 +93,44 @@ func NewUpdateCatalogItemUsingPATCH2Unauthorized() *UpdateCatalogItemUsingPATCH2
 	return &UpdateCatalogItemUsingPATCH2Unauthorized{}
 }
 
-/* UpdateCatalogItemUsingPATCH2Unauthorized describes a response with status code 401, with default header values.
+/*
+UpdateCatalogItemUsingPATCH2Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type UpdateCatalogItemUsingPATCH2Unauthorized struct {
 }
 
+// IsSuccess returns true when this update catalog item using p a t c h2 unauthorized response has a 2xx status code
+func (o *UpdateCatalogItemUsingPATCH2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update catalog item using p a t c h2 unauthorized response has a 3xx status code
+func (o *UpdateCatalogItemUsingPATCH2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update catalog item using p a t c h2 unauthorized response has a 4xx status code
+func (o *UpdateCatalogItemUsingPATCH2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update catalog item using p a t c h2 unauthorized response has a 5xx status code
+func (o *UpdateCatalogItemUsingPATCH2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update catalog item using p a t c h2 unauthorized response a status code equal to that given
+func (o *UpdateCatalogItemUsingPATCH2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UpdateCatalogItemUsingPATCH2Unauthorized) Error() string {
+	return fmt.Sprintf("[PATCH /catalog/api/admin/items/{id}][%d] updateCatalogItemUsingPATCH2Unauthorized ", 401)
+}
+
+func (o *UpdateCatalogItemUsingPATCH2Unauthorized) String() string {
 	return fmt.Sprintf("[PATCH /catalog/api/admin/items/{id}][%d] updateCatalogItemUsingPATCH2Unauthorized ", 401)
 }
 

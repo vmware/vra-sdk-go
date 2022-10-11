@@ -54,10 +54,12 @@ func NewCloneGerritTriggerByNameUsingPOSTParamsWithHTTPClient(client *http.Clien
 	}
 }
 
-/* CloneGerritTriggerByNameUsingPOSTParams contains all the parameters to send to the API endpoint
-   for the clone gerrit trigger by name using p o s t operation.
+/*
+CloneGerritTriggerByNameUsingPOSTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the clone gerrit trigger by name using p o s t operation.
+
+	Typically these are written to a http.Request.
 */
 type CloneGerritTriggerByNameUsingPOSTParams struct {
 

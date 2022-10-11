@@ -54,10 +54,12 @@ func NewUpdateCloudAccountAsyncParamsWithHTTPClient(client *http.Client) *Update
 	}
 }
 
-/* UpdateCloudAccountAsyncParams contains all the parameters to send to the API endpoint
-   for the update cloud account async operation.
+/*
+UpdateCloudAccountAsyncParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update cloud account async operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateCloudAccountAsyncParams struct {
 

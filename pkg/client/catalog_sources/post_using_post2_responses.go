@@ -69,7 +69,8 @@ func NewPostUsingPOST2OK() *PostUsingPOST2OK {
 	return &PostUsingPOST2OK{}
 }
 
-/* PostUsingPOST2OK describes a response with status code 200, with default header values.
+/*
+PostUsingPOST2OK describes a response with status code 200, with default header values.
 
 Validation is ok
 */
@@ -77,9 +78,39 @@ type PostUsingPOST2OK struct {
 	Payload *models.CatalogSource
 }
 
+// IsSuccess returns true when this post using p o s t2 o k response has a 2xx status code
+func (o *PostUsingPOST2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post using p o s t2 o k response has a 3xx status code
+func (o *PostUsingPOST2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post using p o s t2 o k response has a 4xx status code
+func (o *PostUsingPOST2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post using p o s t2 o k response has a 5xx status code
+func (o *PostUsingPOST2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post using p o s t2 o k response a status code equal to that given
+func (o *PostUsingPOST2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PostUsingPOST2OK) Error() string {
 	return fmt.Sprintf("[POST /catalog/api/admin/sources][%d] postUsingPOST2OK  %+v", 200, o.Payload)
 }
+
+func (o *PostUsingPOST2OK) String() string {
+	return fmt.Sprintf("[POST /catalog/api/admin/sources][%d] postUsingPOST2OK  %+v", 200, o.Payload)
+}
+
 func (o *PostUsingPOST2OK) GetPayload() *models.CatalogSource {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewPostUsingPOST2Created() *PostUsingPOST2Created {
 	return &PostUsingPOST2Created{}
 }
 
-/* PostUsingPOST2Created describes a response with status code 201, with default header values.
+/*
+PostUsingPOST2Created describes a response with status code 201, with default header values.
 
 Created
 */
@@ -109,9 +141,39 @@ type PostUsingPOST2Created struct {
 	Payload *models.CatalogSource
 }
 
+// IsSuccess returns true when this post using p o s t2 created response has a 2xx status code
+func (o *PostUsingPOST2Created) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post using p o s t2 created response has a 3xx status code
+func (o *PostUsingPOST2Created) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post using p o s t2 created response has a 4xx status code
+func (o *PostUsingPOST2Created) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post using p o s t2 created response has a 5xx status code
+func (o *PostUsingPOST2Created) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post using p o s t2 created response a status code equal to that given
+func (o *PostUsingPOST2Created) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *PostUsingPOST2Created) Error() string {
 	return fmt.Sprintf("[POST /catalog/api/admin/sources][%d] postUsingPOST2Created  %+v", 201, o.Payload)
 }
+
+func (o *PostUsingPOST2Created) String() string {
+	return fmt.Sprintf("[POST /catalog/api/admin/sources][%d] postUsingPOST2Created  %+v", 201, o.Payload)
+}
+
 func (o *PostUsingPOST2Created) GetPayload() *models.CatalogSource {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewPostUsingPOST2BadRequest() *PostUsingPOST2BadRequest {
 	return &PostUsingPOST2BadRequest{}
 }
 
-/* PostUsingPOST2BadRequest describes a response with status code 400, with default header values.
+/*
+PostUsingPOST2BadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -141,9 +204,39 @@ type PostUsingPOST2BadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this post using p o s t2 bad request response has a 2xx status code
+func (o *PostUsingPOST2BadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this post using p o s t2 bad request response has a 3xx status code
+func (o *PostUsingPOST2BadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post using p o s t2 bad request response has a 4xx status code
+func (o *PostUsingPOST2BadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this post using p o s t2 bad request response has a 5xx status code
+func (o *PostUsingPOST2BadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post using p o s t2 bad request response a status code equal to that given
+func (o *PostUsingPOST2BadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *PostUsingPOST2BadRequest) Error() string {
 	return fmt.Sprintf("[POST /catalog/api/admin/sources][%d] postUsingPOST2BadRequest  %+v", 400, o.Payload)
 }
+
+func (o *PostUsingPOST2BadRequest) String() string {
+	return fmt.Sprintf("[POST /catalog/api/admin/sources][%d] postUsingPOST2BadRequest  %+v", 400, o.Payload)
+}
+
 func (o *PostUsingPOST2BadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -165,14 +258,44 @@ func NewPostUsingPOST2Unauthorized() *PostUsingPOST2Unauthorized {
 	return &PostUsingPOST2Unauthorized{}
 }
 
-/* PostUsingPOST2Unauthorized describes a response with status code 401, with default header values.
+/*
+PostUsingPOST2Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type PostUsingPOST2Unauthorized struct {
 }
 
+// IsSuccess returns true when this post using p o s t2 unauthorized response has a 2xx status code
+func (o *PostUsingPOST2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this post using p o s t2 unauthorized response has a 3xx status code
+func (o *PostUsingPOST2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post using p o s t2 unauthorized response has a 4xx status code
+func (o *PostUsingPOST2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this post using p o s t2 unauthorized response has a 5xx status code
+func (o *PostUsingPOST2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post using p o s t2 unauthorized response a status code equal to that given
+func (o *PostUsingPOST2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *PostUsingPOST2Unauthorized) Error() string {
+	return fmt.Sprintf("[POST /catalog/api/admin/sources][%d] postUsingPOST2Unauthorized ", 401)
+}
+
+func (o *PostUsingPOST2Unauthorized) String() string {
 	return fmt.Sprintf("[POST /catalog/api/admin/sources][%d] postUsingPOST2Unauthorized ", 401)
 }
 
@@ -186,14 +309,44 @@ func NewPostUsingPOST2Forbidden() *PostUsingPOST2Forbidden {
 	return &PostUsingPOST2Forbidden{}
 }
 
-/* PostUsingPOST2Forbidden describes a response with status code 403, with default header values.
+/*
+PostUsingPOST2Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type PostUsingPOST2Forbidden struct {
 }
 
+// IsSuccess returns true when this post using p o s t2 forbidden response has a 2xx status code
+func (o *PostUsingPOST2Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this post using p o s t2 forbidden response has a 3xx status code
+func (o *PostUsingPOST2Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post using p o s t2 forbidden response has a 4xx status code
+func (o *PostUsingPOST2Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this post using p o s t2 forbidden response has a 5xx status code
+func (o *PostUsingPOST2Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post using p o s t2 forbidden response a status code equal to that given
+func (o *PostUsingPOST2Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *PostUsingPOST2Forbidden) Error() string {
+	return fmt.Sprintf("[POST /catalog/api/admin/sources][%d] postUsingPOST2Forbidden ", 403)
+}
+
+func (o *PostUsingPOST2Forbidden) String() string {
 	return fmt.Sprintf("[POST /catalog/api/admin/sources][%d] postUsingPOST2Forbidden ", 403)
 }
 
@@ -207,7 +360,8 @@ func NewPostUsingPOST2NotFound() *PostUsingPOST2NotFound {
 	return &PostUsingPOST2NotFound{}
 }
 
-/* PostUsingPOST2NotFound describes a response with status code 404, with default header values.
+/*
+PostUsingPOST2NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -215,9 +369,39 @@ type PostUsingPOST2NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this post using p o s t2 not found response has a 2xx status code
+func (o *PostUsingPOST2NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this post using p o s t2 not found response has a 3xx status code
+func (o *PostUsingPOST2NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post using p o s t2 not found response has a 4xx status code
+func (o *PostUsingPOST2NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this post using p o s t2 not found response has a 5xx status code
+func (o *PostUsingPOST2NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post using p o s t2 not found response a status code equal to that given
+func (o *PostUsingPOST2NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *PostUsingPOST2NotFound) Error() string {
 	return fmt.Sprintf("[POST /catalog/api/admin/sources][%d] postUsingPOST2NotFound  %+v", 404, o.Payload)
 }
+
+func (o *PostUsingPOST2NotFound) String() string {
+	return fmt.Sprintf("[POST /catalog/api/admin/sources][%d] postUsingPOST2NotFound  %+v", 404, o.Payload)
+}
+
 func (o *PostUsingPOST2NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

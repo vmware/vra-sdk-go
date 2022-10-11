@@ -54,10 +54,12 @@ func NewUpdateMachineParamsWithHTTPClient(client *http.Client) *UpdateMachinePar
 	}
 }
 
-/* UpdateMachineParams contains all the parameters to send to the API endpoint
-   for the update machine operation.
+/*
+UpdateMachineParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update machine operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateMachineParams struct {
 

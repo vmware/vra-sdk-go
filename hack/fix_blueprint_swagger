@@ -15,6 +15,10 @@ def replace_value(d, k, v, new):
     for child in d.values():
         if isinstance(child, dict):
             replace_value(child, k, v, new)
+        elif isinstance(child, list):
+            for i in child:
+                if isinstance(i, dict):
+                    replace_value(i, k, v, new)
 
 
 def rename_blueprint_models(swagger):

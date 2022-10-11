@@ -54,10 +54,12 @@ func NewUpdateGerritTriggerByIDUsingPUTParamsWithHTTPClient(client *http.Client)
 	}
 }
 
-/* UpdateGerritTriggerByIDUsingPUTParams contains all the parameters to send to the API endpoint
-   for the update gerrit trigger by Id using p u t operation.
+/*
+UpdateGerritTriggerByIDUsingPUTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update gerrit trigger by Id using p u t operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateGerritTriggerByIDUsingPUTParams struct {
 

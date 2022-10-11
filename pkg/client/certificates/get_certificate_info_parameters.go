@@ -52,10 +52,12 @@ func NewGetCertificateInfoParamsWithHTTPClient(client *http.Client) *GetCertific
 	}
 }
 
-/* GetCertificateInfoParams contains all the parameters to send to the API endpoint
-   for the get certificate info operation.
+/*
+GetCertificateInfoParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get certificate info operation.
+
+	Typically these are written to a http.Request.
 */
 type GetCertificateInfoParams struct {
 

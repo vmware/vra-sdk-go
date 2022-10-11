@@ -45,7 +45,8 @@ func NewGetTagsOK() *GetTagsOK {
 	return &GetTagsOK{}
 }
 
-/* GetTagsOK describes a response with status code 200, with default header values.
+/*
+GetTagsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type GetTagsOK struct {
 	Payload *models.TagResult
 }
 
+// IsSuccess returns true when this get tags o k response has a 2xx status code
+func (o *GetTagsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get tags o k response has a 3xx status code
+func (o *GetTagsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get tags o k response has a 4xx status code
+func (o *GetTagsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get tags o k response has a 5xx status code
+func (o *GetTagsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get tags o k response a status code equal to that given
+func (o *GetTagsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetTagsOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/tags][%d] getTagsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetTagsOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/tags][%d] getTagsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetTagsOK) GetPayload() *models.TagResult {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewGetTagsForbidden() *GetTagsForbidden {
 	return &GetTagsForbidden{}
 }
 
-/* GetTagsForbidden describes a response with status code 403, with default header values.
+/*
+GetTagsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type GetTagsForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get tags forbidden response has a 2xx status code
+func (o *GetTagsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get tags forbidden response has a 3xx status code
+func (o *GetTagsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get tags forbidden response has a 4xx status code
+func (o *GetTagsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get tags forbidden response has a 5xx status code
+func (o *GetTagsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get tags forbidden response a status code equal to that given
+func (o *GetTagsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetTagsForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/tags][%d] getTagsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetTagsForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/tags][%d] getTagsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetTagsForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

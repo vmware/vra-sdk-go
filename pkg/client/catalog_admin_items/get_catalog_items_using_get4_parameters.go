@@ -53,10 +53,12 @@ func NewGetCatalogItemsUsingGET4ParamsWithHTTPClient(client *http.Client) *GetCa
 	}
 }
 
-/* GetCatalogItemsUsingGET4Params contains all the parameters to send to the API endpoint
-   for the get catalog items using g e t 4 operation.
+/*
+GetCatalogItemsUsingGET4Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get catalog items using g e t 4 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetCatalogItemsUsingGET4Params struct {
 

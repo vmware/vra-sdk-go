@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
@@ -20,7 +19,7 @@ import (
 
 // PipelinePatchRequest PipelinePatchRequest
 //
-// Patch Request for a Pipeline
+// # Patch Request for a Pipeline
 //
 // swagger:discriminator PipelinePatchRequest Patch Request for a Pipeline
 type PipelinePatchRequest interface {
@@ -139,7 +138,7 @@ func UnmarshalPipelinePatchRequestSlice(reader io.Reader, consumer runtime.Consu
 // UnmarshalPipelinePatchRequest unmarshals polymorphic PipelinePatchRequest
 func UnmarshalPipelinePatchRequest(reader io.Reader, consumer runtime.Consumer) (PipelinePatchRequest, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}

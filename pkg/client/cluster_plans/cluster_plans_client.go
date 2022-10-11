@@ -30,11 +30,13 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreateUsingPOSTMixin5(params *CreateUsingPOSTMixin5Params, opts ...ClientOption) (*CreateUsingPOSTMixin5OK, error)
+	CreateUsingPOST(params *CreateUsingPOSTParams, opts ...ClientOption) (*CreateUsingPOSTOK, error)
 
 	DeleteUsingDELETE(params *DeleteUsingDELETEParams, opts ...ClientOption) (*DeleteUsingDELETEOK, error)
 
-	GetUsingGETMixin5(params *GetUsingGETMixin5Params, opts ...ClientOption) (*GetUsingGETMixin5OK, error)
+	GetUsingGET(params *GetUsingGETParams, opts ...ClientOption) (*GetUsingGETOK, error)
+
+	SearchClusterPlanAggregationsUsingGET(params *SearchClusterPlanAggregationsUsingGETParams, opts ...ClientOption) (*SearchClusterPlanAggregationsUsingGETOK, error)
 
 	SearchClusterPlansUsingGET(params *SearchClusterPlansUsingGETParams, opts ...ClientOption) (*SearchClusterPlansUsingGETOK, error)
 
@@ -44,24 +46,24 @@ type ClientService interface {
 }
 
 /*
-  CreateUsingPOSTMixin5 creates a cluster plan
+CreateUsingPOST creates a cluster plan
 
-  The body shall contain a cluster plan entity.
+The body shall contain a cluster plan entity.
 */
-func (a *Client) CreateUsingPOSTMixin5(params *CreateUsingPOSTMixin5Params, opts ...ClientOption) (*CreateUsingPOSTMixin5OK, error) {
+func (a *Client) CreateUsingPOST(params *CreateUsingPOSTParams, opts ...ClientOption) (*CreateUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateUsingPOSTMixin5Params()
+		params = NewCreateUsingPOSTParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createUsingPOSTMixin5",
+		ID:                 "createUsingPOST",
 		Method:             "POST",
 		PathPattern:        "/cmx/api/resources/cluster-plans",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateUsingPOSTMixin5Reader{formats: a.formats},
+		Reader:             &CreateUsingPOSTReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -73,20 +75,20 @@ func (a *Client) CreateUsingPOSTMixin5(params *CreateUsingPOSTMixin5Params, opts
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateUsingPOSTMixin5OK)
+	success, ok := result.(*CreateUsingPOSTOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for createUsingPOSTMixin5: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for createUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  DeleteUsingDELETE deletes a cluster plan by Id
+DeleteUsingDELETE deletes a cluster plan by Id
 
-  Delete a Cluster Plan identified by id string
+Delete a Cluster Plan identified by id string
 */
 func (a *Client) DeleteUsingDELETE(params *DeleteUsingDELETEParams, opts ...ClientOption) (*DeleteUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
@@ -124,24 +126,24 @@ func (a *Client) DeleteUsingDELETE(params *DeleteUsingDELETEParams, opts ...Clie
 }
 
 /*
-  GetUsingGETMixin5 gets a cluster plan by Id
+GetUsingGET gets a cluster plan by Id
 
-  Get a Cluster Plan by Id
+Get a Cluster Plan by Id
 */
-func (a *Client) GetUsingGETMixin5(params *GetUsingGETMixin5Params, opts ...ClientOption) (*GetUsingGETMixin5OK, error) {
+func (a *Client) GetUsingGET(params *GetUsingGETParams, opts ...ClientOption) (*GetUsingGETOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetUsingGETMixin5Params()
+		params = NewGetUsingGETParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getUsingGETMixin5",
+		ID:                 "getUsingGET",
 		Method:             "GET",
 		PathPattern:        "/cmx/api/resources/cluster-plans/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetUsingGETMixin5Reader{formats: a.formats},
+		Reader:             &GetUsingGETReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -153,20 +155,60 @@ func (a *Client) GetUsingGETMixin5(params *GetUsingGETMixin5Params, opts ...Clie
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetUsingGETMixin5OK)
+	success, ok := result.(*GetUsingGETOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getUsingGETMixin5: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  SearchClusterPlansUsingGET searches a cluster plan instance
+SearchClusterPlanAggregationsUsingGET searches for cluster plan aggregations
 
-  Search a cluster plan by name and cloud account document self link id.
+Search for cluster plan aggregations by name and cloud account document self link id.
+*/
+func (a *Client) SearchClusterPlanAggregationsUsingGET(params *SearchClusterPlanAggregationsUsingGETParams, opts ...ClientOption) (*SearchClusterPlanAggregationsUsingGETOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewSearchClusterPlanAggregationsUsingGETParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "searchClusterPlanAggregationsUsingGET",
+		Method:             "GET",
+		PathPattern:        "/cmx/api/resources/cluster-plans/aggregation",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &SearchClusterPlanAggregationsUsingGETReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*SearchClusterPlanAggregationsUsingGETOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for searchClusterPlanAggregationsUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+SearchClusterPlansUsingGET searches a cluster plan instance
+
+Search a cluster plan by name and cloud account document self link id.
 */
 func (a *Client) SearchClusterPlansUsingGET(params *SearchClusterPlansUsingGETParams, opts ...ClientOption) (*SearchClusterPlansUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -204,9 +246,9 @@ func (a *Client) SearchClusterPlansUsingGET(params *SearchClusterPlansUsingGETPa
 }
 
 /*
-  UpdateUsingPUT updates a cluster plan
+UpdateUsingPUT updates a cluster plan
 
-  The body shall contains the cluster plan mutation entity.
+The body shall contains the cluster plan mutation entity.
 */
 func (a *Client) UpdateUsingPUT(params *UpdateUsingPUTParams, opts ...ClientOption) (*UpdateUsingPUTOK, error) {
 	// TODO: Validate the params before sending

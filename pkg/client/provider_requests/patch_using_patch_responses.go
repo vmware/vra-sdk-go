@@ -29,6 +29,12 @@ func (o *PatchUsingPATCHReader) ReadResponse(response runtime.ClientResponse, co
 			return nil, err
 		}
 		return result, nil
+	case 403:
+		result := NewPatchUsingPATCHForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +45,8 @@ func NewPatchUsingPATCHOK() *PatchUsingPATCHOK {
 	return &PatchUsingPATCHOK{}
 }
 
-/* PatchUsingPATCHOK describes a response with status code 200, with default header values.
+/*
+PatchUsingPATCHOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +54,39 @@ type PatchUsingPATCHOK struct {
 	Payload *models.ResourceResponse
 }
 
+// IsSuccess returns true when this patch using p a t c h o k response has a 2xx status code
+func (o *PatchUsingPATCHOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch using p a t c h o k response has a 3xx status code
+func (o *PatchUsingPATCHOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch using p a t c h o k response has a 4xx status code
+func (o *PatchUsingPATCHOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch using p a t c h o k response has a 5xx status code
+func (o *PatchUsingPATCHOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch using p a t c h o k response a status code equal to that given
+func (o *PatchUsingPATCHOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchUsingPATCHOK) Error() string {
 	return fmt.Sprintf("[PATCH /cmx/api/requests/blueprint/blueprint-provider-request][%d] patchUsingPATCHOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchUsingPATCHOK) String() string {
+	return fmt.Sprintf("[PATCH /cmx/api/requests/blueprint/blueprint-provider-request][%d] patchUsingPATCHOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchUsingPATCHOK) GetPayload() *models.ResourceResponse {
 	return o.Payload
 }
@@ -62,6 +99,57 @@ func (o *PatchUsingPATCHOK) readResponse(response runtime.ClientResponse, consum
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewPatchUsingPATCHForbidden creates a PatchUsingPATCHForbidden with default headers values
+func NewPatchUsingPATCHForbidden() *PatchUsingPATCHForbidden {
+	return &PatchUsingPATCHForbidden{}
+}
+
+/*
+PatchUsingPATCHForbidden describes a response with status code 403, with default header values.
+
+Forbidden, the user lacks permissions
+*/
+type PatchUsingPATCHForbidden struct {
+}
+
+// IsSuccess returns true when this patch using p a t c h forbidden response has a 2xx status code
+func (o *PatchUsingPATCHForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch using p a t c h forbidden response has a 3xx status code
+func (o *PatchUsingPATCHForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch using p a t c h forbidden response has a 4xx status code
+func (o *PatchUsingPATCHForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch using p a t c h forbidden response has a 5xx status code
+func (o *PatchUsingPATCHForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch using p a t c h forbidden response a status code equal to that given
+func (o *PatchUsingPATCHForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *PatchUsingPATCHForbidden) Error() string {
+	return fmt.Sprintf("[PATCH /cmx/api/requests/blueprint/blueprint-provider-request][%d] patchUsingPATCHForbidden ", 403)
+}
+
+func (o *PatchUsingPATCHForbidden) String() string {
+	return fmt.Sprintf("[PATCH /cmx/api/requests/blueprint/blueprint-provider-request][%d] patchUsingPATCHForbidden ", 403)
+}
+
+func (o *PatchUsingPATCHForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

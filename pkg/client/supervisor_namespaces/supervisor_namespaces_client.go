@@ -48,15 +48,15 @@ type ClientService interface {
 
 	SyncUsingPOST(params *SyncUsingPOSTParams, opts ...ClientOption) (*SyncUsingPOSTOK, error)
 
-	UpdateUsingPATCHMixin5(params *UpdateUsingPATCHMixin5Params, opts ...ClientOption) (*UpdateUsingPATCHMixin5OK, error)
+	UpdateUsingPATCH(params *UpdateUsingPATCHParams, opts ...ClientOption) (*UpdateUsingPATCHOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  CreateUsingPOST2 creates supervisor namespace
+CreateUsingPOST2 creates supervisor namespace
 
-  Create Supervisor Namespace
+Create Supervisor Namespace
 */
 func (a *Client) CreateUsingPOST2(params *CreateUsingPOST2Params, opts ...ClientOption) (*CreateUsingPOST2OK, error) {
 	// TODO: Validate the params before sending
@@ -94,9 +94,9 @@ func (a *Client) CreateUsingPOST2(params *CreateUsingPOST2Params, opts ...Client
 }
 
 /*
-  DeleteUsingDELETE2 makes not managed a supervisor namespace and optionally delete it
+DeleteUsingDELETE2 makes not managed a supervisor namespace and optionally delete it
 
-  Make not managed a Supervisor Namespace and delete it from cluster if destroy parameter is true
+Make not managed a Supervisor Namespace and delete it from cluster if destroy parameter is true
 */
 func (a *Client) DeleteUsingDELETE2(params *DeleteUsingDELETE2Params, opts ...ClientOption) (*DeleteUsingDELETE2OK, error) {
 	// TODO: Validate the params before sending
@@ -134,9 +134,9 @@ func (a *Client) DeleteUsingDELETE2(params *DeleteUsingDELETE2Params, opts ...Cl
 }
 
 /*
-  GetNamespaceQuotasUsingGET gets supervisor namespace quotas by the id from document self link
+GetNamespaceQuotasUsingGET gets supervisor namespace quotas by the id from document self link
 
-  Retrieve a Supervisor Namespace Quota by id from documentSelfLink
+Retrieve a Supervisor Namespace Quota by id from documentSelfLink
 */
 func (a *Client) GetNamespaceQuotasUsingGET(params *GetNamespaceQuotasUsingGETParams, opts ...ClientOption) (*GetNamespaceQuotasUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -174,9 +174,9 @@ func (a *Client) GetNamespaceQuotasUsingGET(params *GetNamespaceQuotasUsingGETPa
 }
 
 /*
-  GetNamespaceUsingGET finds a supervisor namespace by the id from document self link
+GetNamespaceUsingGET finds a supervisor namespace by the id from document self link
 
-  Retrieve a Supervisor Namespace by id from documentSelfLink
+Retrieve a Supervisor Namespace by id from documentSelfLink
 */
 func (a *Client) GetNamespaceUsingGET(params *GetNamespaceUsingGETParams, opts ...ClientOption) (*GetNamespaceUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -214,9 +214,9 @@ func (a *Client) GetNamespaceUsingGET(params *GetNamespaceUsingGETParams, opts .
 }
 
 /*
-  ListUsingGET5 gets all supervisor namespaces
+ListUsingGET5 gets all supervisor namespaces
 
-  Get all Supervisor Namespaces
+Get all Supervisor Namespaces
 */
 func (a *Client) ListUsingGET5(params *ListUsingGET5Params, opts ...ClientOption) (*ListUsingGET5OK, error) {
 	// TODO: Validate the params before sending
@@ -254,9 +254,9 @@ func (a *Client) ListUsingGET5(params *ListUsingGET5Params, opts ...ClientOption
 }
 
 /*
-  RegisterUsingPUT2 makes a supervisor namespace a managed entity
+RegisterUsingPUT2 makes a supervisor namespace a managed entity
 
-  The body shall contain valid projectId, DocumentSelfLink and list of viewer and editor user and groups.
+The body shall contain valid projectId, DocumentSelfLink and list of viewer and editor user and groups.
 */
 func (a *Client) RegisterUsingPUT2(params *RegisterUsingPUT2Params, opts ...ClientOption) (*RegisterUsingPUT2OK, error) {
 	// TODO: Validate the params before sending
@@ -294,9 +294,9 @@ func (a *Client) RegisterUsingPUT2(params *RegisterUsingPUT2Params, opts ...Clie
 }
 
 /*
-  SetNamespaceQuotasUsingPUT sets supervisor namespace quotas by the id from document self link
+SetNamespaceQuotasUsingPUT sets supervisor namespace quotas by the id from document self link
 
-  Set a Supervisor Namespace Quota by id from documentSelfLink
+Set a Supervisor Namespace Quota by id from documentSelfLink
 */
 func (a *Client) SetNamespaceQuotasUsingPUT(params *SetNamespaceQuotasUsingPUTParams, opts ...ClientOption) (*SetNamespaceQuotasUsingPUTOK, error) {
 	// TODO: Validate the params before sending
@@ -334,9 +334,9 @@ func (a *Client) SetNamespaceQuotasUsingPUT(params *SetNamespaceQuotasUsingPUTPa
 }
 
 /*
-  SyncStatusUsingGET retrieves sync status
+SyncStatusUsingGET retrieves sync status
 
-  Retrieve sync status.
+Retrieve sync status.
 */
 func (a *Client) SyncStatusUsingGET(params *SyncStatusUsingGETParams, opts ...ClientOption) (*SyncStatusUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -374,9 +374,9 @@ func (a *Client) SyncStatusUsingGET(params *SyncStatusUsingGETParams, opts ...Cl
 }
 
 /*
-  SyncUsingPOST syncs supervisor namespace principals access list
+SyncUsingPOST syncs supervisor namespace principals access list
 
-  The body shall contain list of viewer and editor user and groups.
+The body shall contain list of viewer and editor user and groups.
 */
 func (a *Client) SyncUsingPOST(params *SyncUsingPOSTParams, opts ...ClientOption) (*SyncUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -414,24 +414,24 @@ func (a *Client) SyncUsingPOST(params *SyncUsingPOSTParams, opts ...ClientOption
 }
 
 /*
-  UpdateUsingPATCHMixin5 updates supervisor namespace
+UpdateUsingPATCH updates supervisor namespace
 
-  Update Supervisor Namespace
+Update Supervisor Namespace
 */
-func (a *Client) UpdateUsingPATCHMixin5(params *UpdateUsingPATCHMixin5Params, opts ...ClientOption) (*UpdateUsingPATCHMixin5OK, error) {
+func (a *Client) UpdateUsingPATCH(params *UpdateUsingPATCHParams, opts ...ClientOption) (*UpdateUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewUpdateUsingPATCHMixin5Params()
+		params = NewUpdateUsingPATCHParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "updateUsingPATCHMixin5",
+		ID:                 "updateUsingPATCH",
 		Method:             "PATCH",
 		PathPattern:        "/cmx/api/resources/supervisor-namespaces/{selfLinkId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &UpdateUsingPATCHMixin5Reader{formats: a.formats},
+		Reader:             &UpdateUsingPATCHReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -443,13 +443,13 @@ func (a *Client) UpdateUsingPATCHMixin5(params *UpdateUsingPATCHMixin5Params, op
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*UpdateUsingPATCHMixin5OK)
+	success, ok := result.(*UpdateUsingPATCHOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateUsingPATCHMixin5: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for updateUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

@@ -40,9 +40,9 @@ type ClientService interface {
 }
 
 /*
-  GetFabricVSphereDatastore gets fabric v sphere datastore
+GetFabricVSphereDatastore gets fabric v sphere datastore
 
-  Get fabric vSphere datastore with a given id
+Get fabric vSphere datastore with a given id
 */
 func (a *Client) GetFabricVSphereDatastore(params *GetFabricVSphereDatastoreParams, opts ...ClientOption) (*GetFabricVSphereDatastoreOK, error) {
 	// TODO: Validate the params before sending
@@ -80,9 +80,9 @@ func (a *Client) GetFabricVSphereDatastore(params *GetFabricVSphereDatastorePara
 }
 
 /*
-  GetFabricVSphereDatastores gets fabric v sphere datastores
+GetFabricVSphereDatastores gets fabric v sphere datastores
 
-  Get all fabric vSphere datastores.
+Get all fabric vSphere datastores.
 */
 func (a *Client) GetFabricVSphereDatastores(params *GetFabricVSphereDatastoresParams, opts ...ClientOption) (*GetFabricVSphereDatastoresOK, error) {
 	// TODO: Validate the params before sending
@@ -120,9 +120,9 @@ func (a *Client) GetFabricVSphereDatastores(params *GetFabricVSphereDatastoresPa
 }
 
 /*
-  UpdateFabricVsphereDatastore updates fabric v sphere datastore
+UpdateFabricVsphereDatastore updates fabric v sphere datastore
 
-  Update Fabric vSphere Datastore. Only tag updates are supported.
+Update Fabric vSphere Datastore. Only tag updates are supported.
 */
 func (a *Client) UpdateFabricVsphereDatastore(params *UpdateFabricVsphereDatastoreParams, opts ...ClientOption) (*UpdateFabricVsphereDatastoreOK, error) {
 	// TODO: Validate the params before sending

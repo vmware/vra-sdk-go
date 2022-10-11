@@ -1,8 +1,13 @@
 {
     "swagger": "2.0",
     "info": {
+        "description": "Project Service exposes a REST API, providing access to operations with projects",
         "version": "2019-01-15",
-        "title": "Project Service API"
+        "title": "Project Service API",
+        "license": {
+            "name": "Apache License",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0"
+        }
     },
     "host": "api.mgmt.cloud.vmware.com",
     "basePath": "/",
@@ -34,6 +39,9 @@
                         "schema": {
                             "$ref": "#/definitions/About"
                         }
+                    },
+                    "406": {
+                        "description": "Could not find acceptable representation"
                     }
                 },
                 "security": [
@@ -63,8 +71,7 @@
                         "in": "query",
                         "description": "Sorting criteria in the format: property (asc | desc). Default sort order is ascending.",
                         "required": false,
-                        "type": "integer",
-                        "format": "int32"
+                        "type": "string"
                     },
                     {
                         "name": "$select",
@@ -114,7 +121,8 @@
                         "required": false,
                         "type": "integer",
                         "default": 0,
-                        "format": "int32"
+                        "format": "int32",
+                        "x-example": 5
                     },
                     {
                         "name": "size",
@@ -123,12 +131,13 @@
                         "required": false,
                         "type": "integer",
                         "default": 500,
-                        "format": "int32"
+                        "format": "int32",
+                        "x-example": 100
                     },
                     {
                         "name": "withAnyPermission",
                         "in": "query",
-                        "description": "Optional permissions that, if granted to the user, allow him access to the proper set of projects. If the user actually has any of those permissions, the 'excludeViewer' parameter has no effect.",
+                        "description": "Optional permissions that, if granted to the users, allow them access to the proper set of projects. If the user actually has any of those permissions, the 'excludeViewer' parameter has no effect.",
                         "required": false,
                         "type": "array",
                         "items": {
@@ -144,6 +153,12 @@
                         "schema": {
                             "$ref": "#/definitions/PageOfProjects"
                         }
+                    },
+                    "401": {
+                        "description": "Unauthorized, the user is not authenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden, the user lacks permissions"
                     }
                 },
                 "security": [
@@ -184,6 +199,14 @@
                         "schema": {
                             "$ref": "#/definitions/ProjectSpecification"
                         }
+                    },
+                    {
+                        "name": "validatePrincipals",
+                        "in": "query",
+                        "description": "If true, a limit of 20 principals is enforced. Additionally each principal is validated in the Identity provider and important rules for group email formats are enforced.",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": false
                     }
                 ],
                 "responses": {
@@ -243,7 +266,7 @@
                     {
                         "name": "withAnyPermission",
                         "in": "query",
-                        "description": "Optional permissions that, if granted to the user, allow him access to the proper set of projects. If the user actually has any of those permissions, the 'excludeViewer' parameter has no effect.",
+                        "description": "Optional permissions that, if granted to the users, allow them access to the proper set of projects. If the user actually has any of those permissions, the 'excludeViewer' parameter has no effect.",
                         "required": false,
                         "type": "array",
                         "items": {
@@ -309,6 +332,9 @@
                         "schema": {
                             "type": "object"
                         }
+                    },
+                    "400": {
+                        "description": "Bad request, the project is not deleted"
                     },
                     "403": {
                         "description": "Forbidden, the user lacks permissions"
@@ -484,6 +510,14 @@
                         "type": "string"
                     },
                     {
+                        "name": "validatePrincipals",
+                        "in": "query",
+                        "description": "If true, a limit of 20 principals is enforced. Additionally each principal is validated in the Identity provider and important rules for group email formats are enforced.",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": false
+                    },
+                    {
                         "in": "body",
                         "name": "roles",
                         "description": "roles",
@@ -499,6 +533,9 @@
                         "schema": {
                             "$ref": "#/definitions/Project"
                         }
+                    },
+                    "400": {
+                        "description": "Invalid Request - bad data"
                     },
                     "403": {
                         "description": "Forbidden, the user lacks permissions"
@@ -799,6 +836,43 @@
             },
             "title": "DeprecationPolicy"
         },
+        "Group": {
+            "type": "object",
+            "required": [
+                "displayName"
+            ],
+            "discriminator": "A representation of a group",
+            "properties": {
+                "displayName": {
+                    "type": "string",
+                    "example": "cloudadmin@coke.sqa-horizon.local",
+                    "description": "The account identifier string of the group."
+                },
+                "domain": {
+                    "type": "string",
+                    "example": "vmware.com",
+                    "description": "The domain of the group."
+                },
+                "groupType": {
+                    "type": "string",
+                    "example": "AD_GROUP, USER_GROUP",
+                    "description": "The type of the group"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "c493a95e-c4d1-4496-8595-e73902701c95:fe69d7ca-40a6-4de5-8f33-d462f4656938",
+                    "description": "Group's Identity Provider ID"
+                },
+                "usersCount": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "The number of users added in the group."
+                }
+            },
+            "title": "Group",
+            "description": "A representation of a group"
+        },
         "LockRequest": {
             "type": "object",
             "properties": {
@@ -939,7 +1013,7 @@
                 "email": {
                     "type": "string",
                     "example": "administrator@vmware.com",
-                    "description": "The email of the user or name of the group."
+                    "description": "The username of the user or display name of the group.\n When assigning a group, the email is expected to have the format displayName@domain.\n In the case where the display name in Identity provider is in the format:\n <li> name@domain - email should be written as name@domain@domain\n <li> name (and group has domain) - email should be written as name@domain\n <li> name (and group doesn't have domain) - email should be written as name@\n\nto ensure proper functioning."
                 },
                 "type": {
                     "type": "string",
@@ -960,7 +1034,7 @@
                 "email": {
                     "type": "string",
                     "example": "administrator@vmware.com",
-                    "description": "The email of the user or name of the group."
+                    "description": "The username of the user or display name of the group.\n When assigning a group, the email is expected to have the format displayName@domain.\n In the case where the display name in Identity provider is in the format:\n <li> name@domain - email should be written as name@domain@domain\n <li> name (and group has domain) - email should be written as name@domain\n <li> name (and group doesn't have domain) - email should be written as name@\n\nto ensure proper functioning."
                 },
                 "id": {
                     "type": "string",

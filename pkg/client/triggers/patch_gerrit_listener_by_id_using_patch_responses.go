@@ -63,7 +63,8 @@ func NewPatchGerritListenerByIDUsingPATCHOK() *PatchGerritListenerByIDUsingPATCH
 	return &PatchGerritListenerByIDUsingPATCHOK{}
 }
 
-/* PatchGerritListenerByIDUsingPATCHOK describes a response with status code 200, with default header values.
+/*
+PatchGerritListenerByIDUsingPATCHOK describes a response with status code 200, with default header values.
 
 'Success' with Gerrit Listener patch
 */
@@ -71,9 +72,39 @@ type PatchGerritListenerByIDUsingPATCHOK struct {
 	Payload models.GerritListener
 }
 
+// IsSuccess returns true when this patch gerrit listener by Id using p a t c h o k response has a 2xx status code
+func (o *PatchGerritListenerByIDUsingPATCHOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch gerrit listener by Id using p a t c h o k response has a 3xx status code
+func (o *PatchGerritListenerByIDUsingPATCHOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch gerrit listener by Id using p a t c h o k response has a 4xx status code
+func (o *PatchGerritListenerByIDUsingPATCHOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch gerrit listener by Id using p a t c h o k response has a 5xx status code
+func (o *PatchGerritListenerByIDUsingPATCHOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch gerrit listener by Id using p a t c h o k response a status code equal to that given
+func (o *PatchGerritListenerByIDUsingPATCHOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchGerritListenerByIDUsingPATCHOK) Error() string {
 	return fmt.Sprintf("[PATCH /codestream/api/gerrit-listeners/{id}][%d] patchGerritListenerByIdUsingPATCHOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchGerritListenerByIDUsingPATCHOK) String() string {
+	return fmt.Sprintf("[PATCH /codestream/api/gerrit-listeners/{id}][%d] patchGerritListenerByIdUsingPATCHOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchGerritListenerByIDUsingPATCHOK) GetPayload() models.GerritListener {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewPatchGerritListenerByIDUsingPATCHUnauthorized() *PatchGerritListenerByID
 	return &PatchGerritListenerByIDUsingPATCHUnauthorized{}
 }
 
-/* PatchGerritListenerByIDUsingPATCHUnauthorized describes a response with status code 401, with default header values.
+/*
+PatchGerritListenerByIDUsingPATCHUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type PatchGerritListenerByIDUsingPATCHUnauthorized struct {
 }
 
+// IsSuccess returns true when this patch gerrit listener by Id using p a t c h unauthorized response has a 2xx status code
+func (o *PatchGerritListenerByIDUsingPATCHUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch gerrit listener by Id using p a t c h unauthorized response has a 3xx status code
+func (o *PatchGerritListenerByIDUsingPATCHUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch gerrit listener by Id using p a t c h unauthorized response has a 4xx status code
+func (o *PatchGerritListenerByIDUsingPATCHUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch gerrit listener by Id using p a t c h unauthorized response has a 5xx status code
+func (o *PatchGerritListenerByIDUsingPATCHUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch gerrit listener by Id using p a t c h unauthorized response a status code equal to that given
+func (o *PatchGerritListenerByIDUsingPATCHUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *PatchGerritListenerByIDUsingPATCHUnauthorized) Error() string {
+	return fmt.Sprintf("[PATCH /codestream/api/gerrit-listeners/{id}][%d] patchGerritListenerByIdUsingPATCHUnauthorized ", 401)
+}
+
+func (o *PatchGerritListenerByIDUsingPATCHUnauthorized) String() string {
 	return fmt.Sprintf("[PATCH /codestream/api/gerrit-listeners/{id}][%d] patchGerritListenerByIdUsingPATCHUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewPatchGerritListenerByIDUsingPATCHForbidden() *PatchGerritListenerByIDUsi
 	return &PatchGerritListenerByIDUsingPATCHForbidden{}
 }
 
-/* PatchGerritListenerByIDUsingPATCHForbidden describes a response with status code 403, with default header values.
+/*
+PatchGerritListenerByIDUsingPATCHForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type PatchGerritListenerByIDUsingPATCHForbidden struct {
 }
 
+// IsSuccess returns true when this patch gerrit listener by Id using p a t c h forbidden response has a 2xx status code
+func (o *PatchGerritListenerByIDUsingPATCHForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch gerrit listener by Id using p a t c h forbidden response has a 3xx status code
+func (o *PatchGerritListenerByIDUsingPATCHForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch gerrit listener by Id using p a t c h forbidden response has a 4xx status code
+func (o *PatchGerritListenerByIDUsingPATCHForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch gerrit listener by Id using p a t c h forbidden response has a 5xx status code
+func (o *PatchGerritListenerByIDUsingPATCHForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch gerrit listener by Id using p a t c h forbidden response a status code equal to that given
+func (o *PatchGerritListenerByIDUsingPATCHForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *PatchGerritListenerByIDUsingPATCHForbidden) Error() string {
+	return fmt.Sprintf("[PATCH /codestream/api/gerrit-listeners/{id}][%d] patchGerritListenerByIdUsingPATCHForbidden ", 403)
+}
+
+func (o *PatchGerritListenerByIDUsingPATCHForbidden) String() string {
 	return fmt.Sprintf("[PATCH /codestream/api/gerrit-listeners/{id}][%d] patchGerritListenerByIdUsingPATCHForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewPatchGerritListenerByIDUsingPATCHNotFound() *PatchGerritListenerByIDUsin
 	return &PatchGerritListenerByIDUsingPATCHNotFound{}
 }
 
-/* PatchGerritListenerByIDUsingPATCHNotFound describes a response with status code 404, with default header values.
+/*
+PatchGerritListenerByIDUsingPATCHNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type PatchGerritListenerByIDUsingPATCHNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this patch gerrit listener by Id using p a t c h not found response has a 2xx status code
+func (o *PatchGerritListenerByIDUsingPATCHNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch gerrit listener by Id using p a t c h not found response has a 3xx status code
+func (o *PatchGerritListenerByIDUsingPATCHNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch gerrit listener by Id using p a t c h not found response has a 4xx status code
+func (o *PatchGerritListenerByIDUsingPATCHNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch gerrit listener by Id using p a t c h not found response has a 5xx status code
+func (o *PatchGerritListenerByIDUsingPATCHNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch gerrit listener by Id using p a t c h not found response a status code equal to that given
+func (o *PatchGerritListenerByIDUsingPATCHNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *PatchGerritListenerByIDUsingPATCHNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /codestream/api/gerrit-listeners/{id}][%d] patchGerritListenerByIdUsingPATCHNotFound  %+v", 404, o.Payload)
 }
+
+func (o *PatchGerritListenerByIDUsingPATCHNotFound) String() string {
+	return fmt.Sprintf("[PATCH /codestream/api/gerrit-listeners/{id}][%d] patchGerritListenerByIdUsingPATCHNotFound  %+v", 404, o.Payload)
+}
+
 func (o *PatchGerritListenerByIDUsingPATCHNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewPatchGerritListenerByIDUsingPATCHInternalServerError() *PatchGerritListe
 	return &PatchGerritListenerByIDUsingPATCHInternalServerError{}
 }
 
-/* PatchGerritListenerByIDUsingPATCHInternalServerError describes a response with status code 500, with default header values.
+/*
+PatchGerritListenerByIDUsingPATCHInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type PatchGerritListenerByIDUsingPATCHInternalServerError struct {
 }
 
+// IsSuccess returns true when this patch gerrit listener by Id using p a t c h internal server error response has a 2xx status code
+func (o *PatchGerritListenerByIDUsingPATCHInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch gerrit listener by Id using p a t c h internal server error response has a 3xx status code
+func (o *PatchGerritListenerByIDUsingPATCHInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch gerrit listener by Id using p a t c h internal server error response has a 4xx status code
+func (o *PatchGerritListenerByIDUsingPATCHInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch gerrit listener by Id using p a t c h internal server error response has a 5xx status code
+func (o *PatchGerritListenerByIDUsingPATCHInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this patch gerrit listener by Id using p a t c h internal server error response a status code equal to that given
+func (o *PatchGerritListenerByIDUsingPATCHInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *PatchGerritListenerByIDUsingPATCHInternalServerError) Error() string {
+	return fmt.Sprintf("[PATCH /codestream/api/gerrit-listeners/{id}][%d] patchGerritListenerByIdUsingPATCHInternalServerError ", 500)
+}
+
+func (o *PatchGerritListenerByIDUsingPATCHInternalServerError) String() string {
 	return fmt.Sprintf("[PATCH /codestream/api/gerrit-listeners/{id}][%d] patchGerritListenerByIdUsingPATCHInternalServerError ", 500)
 }
 

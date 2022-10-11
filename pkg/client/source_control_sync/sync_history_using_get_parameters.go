@@ -53,10 +53,12 @@ func NewSyncHistoryUsingGETParamsWithHTTPClient(client *http.Client) *SyncHistor
 	}
 }
 
-/* SyncHistoryUsingGETParams contains all the parameters to send to the API endpoint
-   for the sync history using g e t operation.
+/*
+SyncHistoryUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the sync history using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type SyncHistoryUsingGETParams struct {
 

@@ -52,10 +52,12 @@ func NewDeleteGitWebhookByIDUsingDELETEParamsWithHTTPClient(client *http.Client)
 	}
 }
 
-/* DeleteGitWebhookByIDUsingDELETEParams contains all the parameters to send to the API endpoint
-   for the delete git webhook by Id using d e l e t e operation.
+/*
+DeleteGitWebhookByIDUsingDELETEParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete git webhook by Id using d e l e t e operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteGitWebhookByIDUsingDELETEParams struct {
 

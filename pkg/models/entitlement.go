@@ -30,6 +30,9 @@ type Entitlement struct {
 	// Format: uuid
 	ID *strfmt.UUID `json:"id"`
 
+	// Migrated flag for entitlements
+	Migrated bool `json:"migrated,omitempty"`
+
 	// Project id
 	// Required: true
 	ProjectID *string `json:"projectId"`

@@ -54,10 +54,12 @@ func NewCreateGcpStorageProfileParamsWithHTTPClient(client *http.Client) *Create
 	}
 }
 
-/* CreateGcpStorageProfileParams contains all the parameters to send to the API endpoint
-   for the create gcp storage profile operation.
+/*
+CreateGcpStorageProfileParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create gcp storage profile operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateGcpStorageProfileParams struct {
 

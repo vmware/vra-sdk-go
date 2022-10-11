@@ -51,7 +51,8 @@ func NewGetExternalIPBlockOK() *GetExternalIPBlockOK {
 	return &GetExternalIPBlockOK{}
 }
 
-/* GetExternalIPBlockOK describes a response with status code 200, with default header values.
+/*
+GetExternalIPBlockOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetExternalIPBlockOK struct {
 	Payload *models.FabricNetwork
 }
 
+// IsSuccess returns true when this get external Ip block o k response has a 2xx status code
+func (o *GetExternalIPBlockOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get external Ip block o k response has a 3xx status code
+func (o *GetExternalIPBlockOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get external Ip block o k response has a 4xx status code
+func (o *GetExternalIPBlockOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get external Ip block o k response has a 5xx status code
+func (o *GetExternalIPBlockOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get external Ip block o k response a status code equal to that given
+func (o *GetExternalIPBlockOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetExternalIPBlockOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/external-ip-blocks/{id}][%d] getExternalIpBlockOK  %+v", 200, o.Payload)
 }
+
+func (o *GetExternalIPBlockOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/external-ip-blocks/{id}][%d] getExternalIpBlockOK  %+v", 200, o.Payload)
+}
+
 func (o *GetExternalIPBlockOK) GetPayload() *models.FabricNetwork {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetExternalIPBlockForbidden() *GetExternalIPBlockForbidden {
 	return &GetExternalIPBlockForbidden{}
 }
 
-/* GetExternalIPBlockForbidden describes a response with status code 403, with default header values.
+/*
+GetExternalIPBlockForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type GetExternalIPBlockForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get external Ip block forbidden response has a 2xx status code
+func (o *GetExternalIPBlockForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get external Ip block forbidden response has a 3xx status code
+func (o *GetExternalIPBlockForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get external Ip block forbidden response has a 4xx status code
+func (o *GetExternalIPBlockForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get external Ip block forbidden response has a 5xx status code
+func (o *GetExternalIPBlockForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get external Ip block forbidden response a status code equal to that given
+func (o *GetExternalIPBlockForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetExternalIPBlockForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/external-ip-blocks/{id}][%d] getExternalIpBlockForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetExternalIPBlockForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/external-ip-blocks/{id}][%d] getExternalIpBlockForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetExternalIPBlockForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewGetExternalIPBlockNotFound() *GetExternalIPBlockNotFound {
 	return &GetExternalIPBlockNotFound{}
 }
 
-/* GetExternalIPBlockNotFound describes a response with status code 404, with default header values.
+/*
+GetExternalIPBlockNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type GetExternalIPBlockNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get external Ip block not found response has a 2xx status code
+func (o *GetExternalIPBlockNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get external Ip block not found response has a 3xx status code
+func (o *GetExternalIPBlockNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get external Ip block not found response has a 4xx status code
+func (o *GetExternalIPBlockNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get external Ip block not found response has a 5xx status code
+func (o *GetExternalIPBlockNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get external Ip block not found response a status code equal to that given
+func (o *GetExternalIPBlockNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetExternalIPBlockNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/external-ip-blocks/{id}][%d] getExternalIpBlockNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetExternalIPBlockNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/external-ip-blocks/{id}][%d] getExternalIpBlockNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetExternalIPBlockNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

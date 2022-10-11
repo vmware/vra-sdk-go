@@ -52,10 +52,12 @@ func NewRebootMachineParamsWithHTTPClient(client *http.Client) *RebootMachinePar
 	}
 }
 
-/* RebootMachineParams contains all the parameters to send to the API endpoint
-   for the reboot machine operation.
+/*
+RebootMachineParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the reboot machine operation.
+
+	Typically these are written to a http.Request.
 */
 type RebootMachineParams struct {
 

@@ -24,7 +24,7 @@ type CloudAccountVmcSpecification struct {
 	// Example: false
 	AcceptSelfSignedCertificate bool `json:"acceptSelfSignedCertificate,omitempty"`
 
-	// VMC API access key
+	// VMC API access key. Not mandatory for AAP mode.
 	// Required: true
 	APIKey *string `json:"apiKey"`
 
@@ -36,13 +36,17 @@ type CloudAccountVmcSpecification struct {
 	// Example: true
 	CreateDefaultZones bool `json:"createDefaultZones,omitempty"`
 
-	// Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors
+	// Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors. Not mandatory for AAP mode.
 	// Example: 23959a1e-18bc-4f0c-ac49-b5aeb4b6eef4
 	// Required: true
 	DcID *string `json:"dcId"`
 
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
+
+	// The environment where the agent has been deployed. When the agent has been deployed using the "Add Ons" in VMC UI or Api use "aap".
+	// Example: aap
+	Environment string `json:"environment,omitempty"`
 
 	// Enter the IP address or FQDN of the vCenter Server in the specified SDDC. The cloud proxy belongs on this vCenter.
 	// Example: vc1.vmware.com
@@ -58,7 +62,7 @@ type CloudAccountVmcSpecification struct {
 	// Required: true
 	NsxHostName *string `json:"nsxHostName"`
 
-	// Password for the user used to authenticate with the cloud Account
+	// Password for the user used to authenticate with the cloud Account. Not mandatory for AAP mode.
 	// Example: cndhjslacd90ascdbasyoucbdh
 	// Required: true
 	Password *string `json:"password"`
@@ -77,7 +81,7 @@ type CloudAccountVmcSpecification struct {
 	// Example: [ { \"key\" : \"env\", \"value\": \"dev\" } ]
 	Tags []*Tag `json:"tags"`
 
-	// vCenter user name for the specified SDDC.The specified user requires CloudAdmin credentials. The user does not require CloudGlobalAdmin credentials.
+	// vCenter user name for the specified SDDC.The specified user requires CloudAdmin credentials. The user does not require CloudGlobalAdmin credentials. Not mandatory for AAP mode.
 	// Example: administrator@mycompany.com
 	// Required: true
 	Username *string `json:"username"`

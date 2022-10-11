@@ -54,10 +54,12 @@ func NewUpdateGcpCloudAccountAsyncParamsWithHTTPClient(client *http.Client) *Upd
 	}
 }
 
-/* UpdateGcpCloudAccountAsyncParams contains all the parameters to send to the API endpoint
-   for the update gcp cloud account async operation.
+/*
+UpdateGcpCloudAccountAsyncParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update gcp cloud account async operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateGcpCloudAccountAsyncParams struct {
 

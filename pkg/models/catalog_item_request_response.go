@@ -14,7 +14,7 @@ import (
 
 // CatalogItemRequestResponse CatalogItemRequestResponse
 //
-// The blueprint service's response to a deployment request
+// # The blueprint service's response to a deployment request
 //
 // swagger:model CatalogItemRequestResponse
 type CatalogItemRequestResponse struct {

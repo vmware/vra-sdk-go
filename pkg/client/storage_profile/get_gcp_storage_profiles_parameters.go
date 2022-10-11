@@ -52,10 +52,12 @@ func NewGetGcpStorageProfilesParamsWithHTTPClient(client *http.Client) *GetGcpSt
 	}
 }
 
-/* GetGcpStorageProfilesParams contains all the parameters to send to the API endpoint
-   for the get gcp storage profiles operation.
+/*
+GetGcpStorageProfilesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get gcp storage profiles operation.
+
+	Typically these are written to a http.Request.
 */
 type GetGcpStorageProfilesParams struct {
 

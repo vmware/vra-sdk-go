@@ -51,7 +51,8 @@ func NewUpdateAzureCloudAccountAsyncAccepted() *UpdateAzureCloudAccountAsyncAcce
 	return &UpdateAzureCloudAccountAsyncAccepted{}
 }
 
-/* UpdateAzureCloudAccountAsyncAccepted describes a response with status code 202, with default header values.
+/*
+UpdateAzureCloudAccountAsyncAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type UpdateAzureCloudAccountAsyncAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this update azure cloud account async accepted response has a 2xx status code
+func (o *UpdateAzureCloudAccountAsyncAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update azure cloud account async accepted response has a 3xx status code
+func (o *UpdateAzureCloudAccountAsyncAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update azure cloud account async accepted response has a 4xx status code
+func (o *UpdateAzureCloudAccountAsyncAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update azure cloud account async accepted response has a 5xx status code
+func (o *UpdateAzureCloudAccountAsyncAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update azure cloud account async accepted response a status code equal to that given
+func (o *UpdateAzureCloudAccountAsyncAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *UpdateAzureCloudAccountAsyncAccepted) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-azure/{id}][%d] updateAzureCloudAccountAsyncAccepted  %+v", 202, o.Payload)
 }
+
+func (o *UpdateAzureCloudAccountAsyncAccepted) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-azure/{id}][%d] updateAzureCloudAccountAsyncAccepted  %+v", 202, o.Payload)
+}
+
 func (o *UpdateAzureCloudAccountAsyncAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewUpdateAzureCloudAccountAsyncForbidden() *UpdateAzureCloudAccountAsyncFor
 	return &UpdateAzureCloudAccountAsyncForbidden{}
 }
 
-/* UpdateAzureCloudAccountAsyncForbidden describes a response with status code 403, with default header values.
+/*
+UpdateAzureCloudAccountAsyncForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type UpdateAzureCloudAccountAsyncForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this update azure cloud account async forbidden response has a 2xx status code
+func (o *UpdateAzureCloudAccountAsyncForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update azure cloud account async forbidden response has a 3xx status code
+func (o *UpdateAzureCloudAccountAsyncForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update azure cloud account async forbidden response has a 4xx status code
+func (o *UpdateAzureCloudAccountAsyncForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update azure cloud account async forbidden response has a 5xx status code
+func (o *UpdateAzureCloudAccountAsyncForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update azure cloud account async forbidden response a status code equal to that given
+func (o *UpdateAzureCloudAccountAsyncForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateAzureCloudAccountAsyncForbidden) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-azure/{id}][%d] updateAzureCloudAccountAsyncForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UpdateAzureCloudAccountAsyncForbidden) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-azure/{id}][%d] updateAzureCloudAccountAsyncForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UpdateAzureCloudAccountAsyncForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewUpdateAzureCloudAccountAsyncNotFound() *UpdateAzureCloudAccountAsyncNotF
 	return &UpdateAzureCloudAccountAsyncNotFound{}
 }
 
-/* UpdateAzureCloudAccountAsyncNotFound describes a response with status code 404, with default header values.
+/*
+UpdateAzureCloudAccountAsyncNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type UpdateAzureCloudAccountAsyncNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update azure cloud account async not found response has a 2xx status code
+func (o *UpdateAzureCloudAccountAsyncNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update azure cloud account async not found response has a 3xx status code
+func (o *UpdateAzureCloudAccountAsyncNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update azure cloud account async not found response has a 4xx status code
+func (o *UpdateAzureCloudAccountAsyncNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update azure cloud account async not found response has a 5xx status code
+func (o *UpdateAzureCloudAccountAsyncNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update azure cloud account async not found response a status code equal to that given
+func (o *UpdateAzureCloudAccountAsyncNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateAzureCloudAccountAsyncNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-azure/{id}][%d] updateAzureCloudAccountAsyncNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UpdateAzureCloudAccountAsyncNotFound) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-azure/{id}][%d] updateAzureCloudAccountAsyncNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UpdateAzureCloudAccountAsyncNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

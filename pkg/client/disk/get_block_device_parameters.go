@@ -52,10 +52,12 @@ func NewGetBlockDeviceParamsWithHTTPClient(client *http.Client) *GetBlockDeviceP
 	}
 }
 
-/* GetBlockDeviceParams contains all the parameters to send to the API endpoint
-   for the get block device operation.
+/*
+GetBlockDeviceParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get block device operation.
+
+	Typically these are written to a http.Request.
 */
 type GetBlockDeviceParams struct {
 

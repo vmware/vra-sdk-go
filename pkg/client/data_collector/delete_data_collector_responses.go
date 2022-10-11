@@ -45,14 +45,44 @@ func NewDeleteDataCollectorNoContent() *DeleteDataCollectorNoContent {
 	return &DeleteDataCollectorNoContent{}
 }
 
-/* DeleteDataCollectorNoContent describes a response with status code 204, with default header values.
+/*
+DeleteDataCollectorNoContent describes a response with status code 204, with default header values.
 
 No Content
 */
 type DeleteDataCollectorNoContent struct {
 }
 
+// IsSuccess returns true when this delete data collector no content response has a 2xx status code
+func (o *DeleteDataCollectorNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete data collector no content response has a 3xx status code
+func (o *DeleteDataCollectorNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete data collector no content response has a 4xx status code
+func (o *DeleteDataCollectorNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete data collector no content response has a 5xx status code
+func (o *DeleteDataCollectorNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete data collector no content response a status code equal to that given
+func (o *DeleteDataCollectorNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteDataCollectorNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/data-collectors/{id}][%d] deleteDataCollectorNoContent ", 204)
+}
+
+func (o *DeleteDataCollectorNoContent) String() string {
 	return fmt.Sprintf("[DELETE /iaas/api/data-collectors/{id}][%d] deleteDataCollectorNoContent ", 204)
 }
 
@@ -66,7 +96,8 @@ func NewDeleteDataCollectorForbidden() *DeleteDataCollectorForbidden {
 	return &DeleteDataCollectorForbidden{}
 }
 
-/* DeleteDataCollectorForbidden describes a response with status code 403, with default header values.
+/*
+DeleteDataCollectorForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -74,9 +105,39 @@ type DeleteDataCollectorForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this delete data collector forbidden response has a 2xx status code
+func (o *DeleteDataCollectorForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete data collector forbidden response has a 3xx status code
+func (o *DeleteDataCollectorForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete data collector forbidden response has a 4xx status code
+func (o *DeleteDataCollectorForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete data collector forbidden response has a 5xx status code
+func (o *DeleteDataCollectorForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete data collector forbidden response a status code equal to that given
+func (o *DeleteDataCollectorForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteDataCollectorForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/data-collectors/{id}][%d] deleteDataCollectorForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DeleteDataCollectorForbidden) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/data-collectors/{id}][%d] deleteDataCollectorForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DeleteDataCollectorForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

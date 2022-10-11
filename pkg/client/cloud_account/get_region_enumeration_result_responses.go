@@ -51,7 +51,8 @@ func NewGetRegionEnumerationResultOK() *GetRegionEnumerationResultOK {
 	return &GetRegionEnumerationResultOK{}
 }
 
-/* GetRegionEnumerationResultOK describes a response with status code 200, with default header values.
+/*
+GetRegionEnumerationResultOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetRegionEnumerationResultOK struct {
 	Payload *models.CloudAccountRegions
 }
 
+// IsSuccess returns true when this get region enumeration result o k response has a 2xx status code
+func (o *GetRegionEnumerationResultOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get region enumeration result o k response has a 3xx status code
+func (o *GetRegionEnumerationResultOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get region enumeration result o k response has a 4xx status code
+func (o *GetRegionEnumerationResultOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get region enumeration result o k response has a 5xx status code
+func (o *GetRegionEnumerationResultOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get region enumeration result o k response a status code equal to that given
+func (o *GetRegionEnumerationResultOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetRegionEnumerationResultOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts/region-enumeration/{id}][%d] getRegionEnumerationResultOK  %+v", 200, o.Payload)
 }
+
+func (o *GetRegionEnumerationResultOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts/region-enumeration/{id}][%d] getRegionEnumerationResultOK  %+v", 200, o.Payload)
+}
+
 func (o *GetRegionEnumerationResultOK) GetPayload() *models.CloudAccountRegions {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetRegionEnumerationResultForbidden() *GetRegionEnumerationResultForbidd
 	return &GetRegionEnumerationResultForbidden{}
 }
 
-/* GetRegionEnumerationResultForbidden describes a response with status code 403, with default header values.
+/*
+GetRegionEnumerationResultForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type GetRegionEnumerationResultForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get region enumeration result forbidden response has a 2xx status code
+func (o *GetRegionEnumerationResultForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get region enumeration result forbidden response has a 3xx status code
+func (o *GetRegionEnumerationResultForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get region enumeration result forbidden response has a 4xx status code
+func (o *GetRegionEnumerationResultForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get region enumeration result forbidden response has a 5xx status code
+func (o *GetRegionEnumerationResultForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get region enumeration result forbidden response a status code equal to that given
+func (o *GetRegionEnumerationResultForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetRegionEnumerationResultForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts/region-enumeration/{id}][%d] getRegionEnumerationResultForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetRegionEnumerationResultForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts/region-enumeration/{id}][%d] getRegionEnumerationResultForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetRegionEnumerationResultForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewGetRegionEnumerationResultNotFound() *GetRegionEnumerationResultNotFound
 	return &GetRegionEnumerationResultNotFound{}
 }
 
-/* GetRegionEnumerationResultNotFound describes a response with status code 404, with default header values.
+/*
+GetRegionEnumerationResultNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type GetRegionEnumerationResultNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get region enumeration result not found response has a 2xx status code
+func (o *GetRegionEnumerationResultNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get region enumeration result not found response has a 3xx status code
+func (o *GetRegionEnumerationResultNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get region enumeration result not found response has a 4xx status code
+func (o *GetRegionEnumerationResultNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get region enumeration result not found response has a 5xx status code
+func (o *GetRegionEnumerationResultNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get region enumeration result not found response a status code equal to that given
+func (o *GetRegionEnumerationResultNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetRegionEnumerationResultNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts/region-enumeration/{id}][%d] getRegionEnumerationResultNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetRegionEnumerationResultNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts/region-enumeration/{id}][%d] getRegionEnumerationResultNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetRegionEnumerationResultNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

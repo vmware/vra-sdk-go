@@ -52,10 +52,12 @@ func NewGetGitEventByIDUsingGETParamsWithHTTPClient(client *http.Client) *GetGit
 	}
 }
 
-/* GetGitEventByIDUsingGETParams contains all the parameters to send to the API endpoint
-   for the get git event by ID using g e t operation.
+/*
+GetGitEventByIDUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get git event by ID using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetGitEventByIDUsingGETParams struct {
 

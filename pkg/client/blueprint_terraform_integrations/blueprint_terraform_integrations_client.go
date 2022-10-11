@@ -54,7 +54,7 @@ type ClientService interface {
 }
 
 /*
-  CreateBlueprintFromMappingUsingPOST creates a blueprint from a terraform blueprint configuration obtained from create blueprint mapping
+CreateBlueprintFromMappingUsingPOST creates a blueprint from a terraform blueprint configuration obtained from create blueprint mapping
 */
 func (a *Client) CreateBlueprintFromMappingUsingPOST(params *CreateBlueprintFromMappingUsingPOSTParams, opts ...ClientOption) (*CreateBlueprintFromMappingUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -92,7 +92,7 @@ func (a *Client) CreateBlueprintFromMappingUsingPOST(params *CreateBlueprintFrom
 }
 
 /*
-  CreateBlueprintMappingUsingPOST retrieves and parses the specified terraform configuration file s and returns relevant information for blueprint construction
+CreateBlueprintMappingUsingPOST retrieves and parses the specified terraform configuration file s and returns relevant information for blueprint construction
 */
 func (a *Client) CreateBlueprintMappingUsingPOST(params *CreateBlueprintMappingUsingPOSTParams, opts ...ClientOption) (*CreateBlueprintMappingUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -130,7 +130,7 @@ func (a *Client) CreateBlueprintMappingUsingPOST(params *CreateBlueprintMappingU
 }
 
 /*
-  CreateTerraformVersionUsingPOST creates a version
+CreateTerraformVersionUsingPOST creates a version
 */
 func (a *Client) CreateTerraformVersionUsingPOST(params *CreateTerraformVersionUsingPOSTParams, opts ...ClientOption) (*CreateTerraformVersionUsingPOSTCreated, error) {
 	// TODO: Validate the params before sending
@@ -168,7 +168,7 @@ func (a *Client) CreateTerraformVersionUsingPOST(params *CreateTerraformVersionU
 }
 
 /*
-  DeleteTerraformVersionUsingDELETE deletes a terraform version
+DeleteTerraformVersionUsingDELETE deletes a terraform version
 */
 func (a *Client) DeleteTerraformVersionUsingDELETE(params *DeleteTerraformVersionUsingDELETEParams, opts ...ClientOption) (*DeleteTerraformVersionUsingDELETENoContent, error) {
 	// TODO: Validate the params before sending
@@ -206,7 +206,7 @@ func (a *Client) DeleteTerraformVersionUsingDELETE(params *DeleteTerraformVersio
 }
 
 /*
-  GetConfigurationSourceTreeUsingGET shows directories of the configuration source repository that correspond to terraform configurations
+GetConfigurationSourceTreeUsingGET shows directories of the configuration source repository that correspond to terraform configurations
 */
 func (a *Client) GetConfigurationSourceTreeUsingGET(params *GetConfigurationSourceTreeUsingGETParams, opts ...ClientOption) (*GetConfigurationSourceTreeUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -244,7 +244,7 @@ func (a *Client) GetConfigurationSourceTreeUsingGET(params *GetConfigurationSour
 }
 
 /*
-  GetTerraformConfigurationSourceCommitListUsingGET returns a paginated list of commits for a specified configuration source
+GetTerraformConfigurationSourceCommitListUsingGET returns a paginated list of commits for a specified configuration source
 */
 func (a *Client) GetTerraformConfigurationSourceCommitListUsingGET(params *GetTerraformConfigurationSourceCommitListUsingGETParams, opts ...ClientOption) (*GetTerraformConfigurationSourceCommitListUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -282,7 +282,7 @@ func (a *Client) GetTerraformConfigurationSourceCommitListUsingGET(params *GetTe
 }
 
 /*
-  GetTerraformConfigurationSourcesUsingGET returns a paginated list of configuration sources configured as storage for terraform configurations
+GetTerraformConfigurationSourcesUsingGET returns a paginated list of configuration sources configured as storage for terraform configurations
 */
 func (a *Client) GetTerraformConfigurationSourcesUsingGET(params *GetTerraformConfigurationSourcesUsingGETParams, opts ...ClientOption) (*GetTerraformConfigurationSourcesUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -320,7 +320,7 @@ func (a *Client) GetTerraformConfigurationSourcesUsingGET(params *GetTerraformCo
 }
 
 /*
-  GetTerraformVersionUsingGET returns terraform version details
+GetTerraformVersionUsingGET returns terraform version details
 */
 func (a *Client) GetTerraformVersionUsingGET(params *GetTerraformVersionUsingGETParams, opts ...ClientOption) (*GetTerraformVersionUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -358,7 +358,7 @@ func (a *Client) GetTerraformVersionUsingGET(params *GetTerraformVersionUsingGET
 }
 
 /*
-  ListTerraformVersionsUsingGET lists terraform versions
+ListTerraformVersionsUsingGET lists terraform versions
 */
 func (a *Client) ListTerraformVersionsUsingGET(params *ListTerraformVersionsUsingGETParams, opts ...ClientOption) (*ListTerraformVersionsUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -396,7 +396,7 @@ func (a *Client) ListTerraformVersionsUsingGET(params *ListTerraformVersionsUsin
 }
 
 /*
-  UpdateTerraformVersionUsingPATCH updates a terraform version
+UpdateTerraformVersionUsingPATCH updates a terraform version
 */
 func (a *Client) UpdateTerraformVersionUsingPATCH(params *UpdateTerraformVersionUsingPATCHParams, opts ...ClientOption) (*UpdateTerraformVersionUsingPATCHOK, error) {
 	// TODO: Validate the params before sending

@@ -52,10 +52,12 @@ func NewGetAboutUsingGET1ParamsWithHTTPClient(client *http.Client) *GetAboutUsin
 	}
 }
 
-/* GetAboutUsingGET1Params contains all the parameters to send to the API endpoint
-   for the get about using get1 operation.
+/*
+GetAboutUsingGET1Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get about using get1 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetAboutUsingGET1Params struct {
 	timeout    time.Duration

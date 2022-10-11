@@ -51,7 +51,8 @@ func NewUpdateVSphereStorageProfileOK() *UpdateVSphereStorageProfileOK {
 	return &UpdateVSphereStorageProfileOK{}
 }
 
-/* UpdateVSphereStorageProfileOK describes a response with status code 200, with default header values.
+/*
+UpdateVSphereStorageProfileOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type UpdateVSphereStorageProfileOK struct {
 	Payload *models.VsphereStorageProfile
 }
 
+// IsSuccess returns true when this update v sphere storage profile o k response has a 2xx status code
+func (o *UpdateVSphereStorageProfileOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update v sphere storage profile o k response has a 3xx status code
+func (o *UpdateVSphereStorageProfileOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update v sphere storage profile o k response has a 4xx status code
+func (o *UpdateVSphereStorageProfileOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update v sphere storage profile o k response has a 5xx status code
+func (o *UpdateVSphereStorageProfileOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update v sphere storage profile o k response a status code equal to that given
+func (o *UpdateVSphereStorageProfileOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateVSphereStorageProfileOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-vsphere/{id}][%d] updateVSphereStorageProfileOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateVSphereStorageProfileOK) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-vsphere/{id}][%d] updateVSphereStorageProfileOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateVSphereStorageProfileOK) GetPayload() *models.VsphereStorageProfile {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewUpdateVSphereStorageProfileBadRequest() *UpdateVSphereStorageProfileBadR
 	return &UpdateVSphereStorageProfileBadRequest{}
 }
 
-/* UpdateVSphereStorageProfileBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateVSphereStorageProfileBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type UpdateVSphereStorageProfileBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update v sphere storage profile bad request response has a 2xx status code
+func (o *UpdateVSphereStorageProfileBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update v sphere storage profile bad request response has a 3xx status code
+func (o *UpdateVSphereStorageProfileBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update v sphere storage profile bad request response has a 4xx status code
+func (o *UpdateVSphereStorageProfileBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update v sphere storage profile bad request response has a 5xx status code
+func (o *UpdateVSphereStorageProfileBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update v sphere storage profile bad request response a status code equal to that given
+func (o *UpdateVSphereStorageProfileBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *UpdateVSphereStorageProfileBadRequest) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-vsphere/{id}][%d] updateVSphereStorageProfileBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *UpdateVSphereStorageProfileBadRequest) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-vsphere/{id}][%d] updateVSphereStorageProfileBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *UpdateVSphereStorageProfileBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewUpdateVSphereStorageProfileForbidden() *UpdateVSphereStorageProfileForbi
 	return &UpdateVSphereStorageProfileForbidden{}
 }
 
-/* UpdateVSphereStorageProfileForbidden describes a response with status code 403, with default header values.
+/*
+UpdateVSphereStorageProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type UpdateVSphereStorageProfileForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this update v sphere storage profile forbidden response has a 2xx status code
+func (o *UpdateVSphereStorageProfileForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update v sphere storage profile forbidden response has a 3xx status code
+func (o *UpdateVSphereStorageProfileForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update v sphere storage profile forbidden response has a 4xx status code
+func (o *UpdateVSphereStorageProfileForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update v sphere storage profile forbidden response has a 5xx status code
+func (o *UpdateVSphereStorageProfileForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update v sphere storage profile forbidden response a status code equal to that given
+func (o *UpdateVSphereStorageProfileForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateVSphereStorageProfileForbidden) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-vsphere/{id}][%d] updateVSphereStorageProfileForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UpdateVSphereStorageProfileForbidden) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-vsphere/{id}][%d] updateVSphereStorageProfileForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UpdateVSphereStorageProfileForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

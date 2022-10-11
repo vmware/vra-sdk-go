@@ -63,7 +63,8 @@ func NewGetExecutionByNameAndIndexUsingGETOK() *GetExecutionByNameAndIndexUsingG
 	return &GetExecutionByNameAndIndexUsingGETOK{}
 }
 
-/* GetExecutionByNameAndIndexUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetExecutionByNameAndIndexUsingGETOK describes a response with status code 200, with default header values.
 
 'Success' with the requested Execution
 */
@@ -71,9 +72,39 @@ type GetExecutionByNameAndIndexUsingGETOK struct {
 	Payload models.Execution
 }
 
+// IsSuccess returns true when this get execution by name and index using g e t o k response has a 2xx status code
+func (o *GetExecutionByNameAndIndexUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get execution by name and index using g e t o k response has a 3xx status code
+func (o *GetExecutionByNameAndIndexUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get execution by name and index using g e t o k response has a 4xx status code
+func (o *GetExecutionByNameAndIndexUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get execution by name and index using g e t o k response has a 5xx status code
+func (o *GetExecutionByNameAndIndexUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get execution by name and index using g e t o k response a status code equal to that given
+func (o *GetExecutionByNameAndIndexUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetExecutionByNameAndIndexUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/pipelines/{project}/{name}/executions/{index}][%d] getExecutionByNameAndIndexUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetExecutionByNameAndIndexUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /codestream/api/pipelines/{project}/{name}/executions/{index}][%d] getExecutionByNameAndIndexUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetExecutionByNameAndIndexUsingGETOK) GetPayload() models.Execution {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewGetExecutionByNameAndIndexUsingGETUnauthorized() *GetExecutionByNameAndI
 	return &GetExecutionByNameAndIndexUsingGETUnauthorized{}
 }
 
-/* GetExecutionByNameAndIndexUsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+GetExecutionByNameAndIndexUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type GetExecutionByNameAndIndexUsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this get execution by name and index using g e t unauthorized response has a 2xx status code
+func (o *GetExecutionByNameAndIndexUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get execution by name and index using g e t unauthorized response has a 3xx status code
+func (o *GetExecutionByNameAndIndexUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get execution by name and index using g e t unauthorized response has a 4xx status code
+func (o *GetExecutionByNameAndIndexUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get execution by name and index using g e t unauthorized response has a 5xx status code
+func (o *GetExecutionByNameAndIndexUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get execution by name and index using g e t unauthorized response a status code equal to that given
+func (o *GetExecutionByNameAndIndexUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetExecutionByNameAndIndexUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/pipelines/{project}/{name}/executions/{index}][%d] getExecutionByNameAndIndexUsingGETUnauthorized ", 401)
+}
+
+func (o *GetExecutionByNameAndIndexUsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /codestream/api/pipelines/{project}/{name}/executions/{index}][%d] getExecutionByNameAndIndexUsingGETUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewGetExecutionByNameAndIndexUsingGETForbidden() *GetExecutionByNameAndInde
 	return &GetExecutionByNameAndIndexUsingGETForbidden{}
 }
 
-/* GetExecutionByNameAndIndexUsingGETForbidden describes a response with status code 403, with default header values.
+/*
+GetExecutionByNameAndIndexUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetExecutionByNameAndIndexUsingGETForbidden struct {
 }
 
+// IsSuccess returns true when this get execution by name and index using g e t forbidden response has a 2xx status code
+func (o *GetExecutionByNameAndIndexUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get execution by name and index using g e t forbidden response has a 3xx status code
+func (o *GetExecutionByNameAndIndexUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get execution by name and index using g e t forbidden response has a 4xx status code
+func (o *GetExecutionByNameAndIndexUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get execution by name and index using g e t forbidden response has a 5xx status code
+func (o *GetExecutionByNameAndIndexUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get execution by name and index using g e t forbidden response a status code equal to that given
+func (o *GetExecutionByNameAndIndexUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetExecutionByNameAndIndexUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/pipelines/{project}/{name}/executions/{index}][%d] getExecutionByNameAndIndexUsingGETForbidden ", 403)
+}
+
+func (o *GetExecutionByNameAndIndexUsingGETForbidden) String() string {
 	return fmt.Sprintf("[GET /codestream/api/pipelines/{project}/{name}/executions/{index}][%d] getExecutionByNameAndIndexUsingGETForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewGetExecutionByNameAndIndexUsingGETNotFound() *GetExecutionByNameAndIndex
 	return &GetExecutionByNameAndIndexUsingGETNotFound{}
 }
 
-/* GetExecutionByNameAndIndexUsingGETNotFound describes a response with status code 404, with default header values.
+/*
+GetExecutionByNameAndIndexUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type GetExecutionByNameAndIndexUsingGETNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get execution by name and index using g e t not found response has a 2xx status code
+func (o *GetExecutionByNameAndIndexUsingGETNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get execution by name and index using g e t not found response has a 3xx status code
+func (o *GetExecutionByNameAndIndexUsingGETNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get execution by name and index using g e t not found response has a 4xx status code
+func (o *GetExecutionByNameAndIndexUsingGETNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get execution by name and index using g e t not found response has a 5xx status code
+func (o *GetExecutionByNameAndIndexUsingGETNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get execution by name and index using g e t not found response a status code equal to that given
+func (o *GetExecutionByNameAndIndexUsingGETNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetExecutionByNameAndIndexUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/pipelines/{project}/{name}/executions/{index}][%d] getExecutionByNameAndIndexUsingGETNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetExecutionByNameAndIndexUsingGETNotFound) String() string {
+	return fmt.Sprintf("[GET /codestream/api/pipelines/{project}/{name}/executions/{index}][%d] getExecutionByNameAndIndexUsingGETNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetExecutionByNameAndIndexUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewGetExecutionByNameAndIndexUsingGETInternalServerError() *GetExecutionByN
 	return &GetExecutionByNameAndIndexUsingGETInternalServerError{}
 }
 
-/* GetExecutionByNameAndIndexUsingGETInternalServerError describes a response with status code 500, with default header values.
+/*
+GetExecutionByNameAndIndexUsingGETInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type GetExecutionByNameAndIndexUsingGETInternalServerError struct {
 }
 
+// IsSuccess returns true when this get execution by name and index using g e t internal server error response has a 2xx status code
+func (o *GetExecutionByNameAndIndexUsingGETInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get execution by name and index using g e t internal server error response has a 3xx status code
+func (o *GetExecutionByNameAndIndexUsingGETInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get execution by name and index using g e t internal server error response has a 4xx status code
+func (o *GetExecutionByNameAndIndexUsingGETInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get execution by name and index using g e t internal server error response has a 5xx status code
+func (o *GetExecutionByNameAndIndexUsingGETInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this get execution by name and index using g e t internal server error response a status code equal to that given
+func (o *GetExecutionByNameAndIndexUsingGETInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GetExecutionByNameAndIndexUsingGETInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/pipelines/{project}/{name}/executions/{index}][%d] getExecutionByNameAndIndexUsingGETInternalServerError ", 500)
+}
+
+func (o *GetExecutionByNameAndIndexUsingGETInternalServerError) String() string {
 	return fmt.Sprintf("[GET /codestream/api/pipelines/{project}/{name}/executions/{index}][%d] getExecutionByNameAndIndexUsingGETInternalServerError ", 500)
 }
 

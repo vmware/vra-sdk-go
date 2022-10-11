@@ -53,10 +53,12 @@ func NewGetResourceFiltersUsingGET2ParamsWithHTTPClient(client *http.Client) *Ge
 	}
 }
 
-/* GetResourceFiltersUsingGET2Params contains all the parameters to send to the API endpoint
-   for the get resource filters using g e t 2 operation.
+/*
+GetResourceFiltersUsingGET2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get resource filters using g e t 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetResourceFiltersUsingGET2Params struct {
 

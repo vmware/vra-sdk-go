@@ -45,7 +45,8 @@ func NewGetBlockDevicesOK() *GetBlockDevicesOK {
 	return &GetBlockDevicesOK{}
 }
 
-/* GetBlockDevicesOK describes a response with status code 200, with default header values.
+/*
+GetBlockDevicesOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type GetBlockDevicesOK struct {
 	Payload *models.BlockDeviceResult
 }
 
+// IsSuccess returns true when this get block devices o k response has a 2xx status code
+func (o *GetBlockDevicesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get block devices o k response has a 3xx status code
+func (o *GetBlockDevicesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get block devices o k response has a 4xx status code
+func (o *GetBlockDevicesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get block devices o k response has a 5xx status code
+func (o *GetBlockDevicesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get block devices o k response a status code equal to that given
+func (o *GetBlockDevicesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetBlockDevicesOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/block-devices][%d] getBlockDevicesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetBlockDevicesOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/block-devices][%d] getBlockDevicesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetBlockDevicesOK) GetPayload() *models.BlockDeviceResult {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewGetBlockDevicesForbidden() *GetBlockDevicesForbidden {
 	return &GetBlockDevicesForbidden{}
 }
 
-/* GetBlockDevicesForbidden describes a response with status code 403, with default header values.
+/*
+GetBlockDevicesForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type GetBlockDevicesForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get block devices forbidden response has a 2xx status code
+func (o *GetBlockDevicesForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get block devices forbidden response has a 3xx status code
+func (o *GetBlockDevicesForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get block devices forbidden response has a 4xx status code
+func (o *GetBlockDevicesForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get block devices forbidden response has a 5xx status code
+func (o *GetBlockDevicesForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get block devices forbidden response a status code equal to that given
+func (o *GetBlockDevicesForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetBlockDevicesForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/block-devices][%d] getBlockDevicesForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetBlockDevicesForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/block-devices][%d] getBlockDevicesForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetBlockDevicesForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

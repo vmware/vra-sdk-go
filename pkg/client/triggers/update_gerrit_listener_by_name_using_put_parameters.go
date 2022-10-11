@@ -54,10 +54,12 @@ func NewUpdateGerritListenerByNameUsingPUTParamsWithHTTPClient(client *http.Clie
 	}
 }
 
-/* UpdateGerritListenerByNameUsingPUTParams contains all the parameters to send to the API endpoint
-   for the update gerrit listener by name using p u t operation.
+/*
+UpdateGerritListenerByNameUsingPUTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update gerrit listener by name using p u t operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateGerritListenerByNameUsingPUTParams struct {
 

@@ -52,10 +52,12 @@ func NewResumeOrRerunGitEventUsingPOSTParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* ResumeOrRerunGitEventUsingPOSTParams contains all the parameters to send to the API endpoint
-   for the resume or rerun git event using p o s t operation.
+/*
+ResumeOrRerunGitEventUsingPOSTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the resume or rerun git event using p o s t operation.
+
+	Typically these are written to a http.Request.
 */
 type ResumeOrRerunGitEventUsingPOSTParams struct {
 

@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewGetCatalogItemUsingGET4Params creates a new GetCatalogItemUsingGET4Params object,
@@ -52,10 +53,12 @@ func NewGetCatalogItemUsingGET4ParamsWithHTTPClient(client *http.Client) *GetCat
 	}
 }
 
-/* GetCatalogItemUsingGET4Params contains all the parameters to send to the API endpoint
-   for the get catalog item using g e t 4 operation.
+/*
+GetCatalogItemUsingGET4Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get catalog item using g e t 4 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetCatalogItemUsingGET4Params struct {
 
@@ -72,6 +75,12 @@ type GetCatalogItemUsingGET4Params struct {
 	   Format: uuid
 	*/
 	ID strfmt.UUID
+
+	/* IncludeSource.
+
+	   Includes the Content Source metadata for the Catalog Item
+	*/
+	IncludeSource *bool
 
 	timeout    time.Duration
 	Context    context.Context
@@ -148,6 +157,17 @@ func (o *GetCatalogItemUsingGET4Params) SetID(id strfmt.UUID) {
 	o.ID = id
 }
 
+// WithIncludeSource adds the includeSource to the get catalog item using g e t 4 params
+func (o *GetCatalogItemUsingGET4Params) WithIncludeSource(includeSource *bool) *GetCatalogItemUsingGET4Params {
+	o.SetIncludeSource(includeSource)
+	return o
+}
+
+// SetIncludeSource adds the includeSource to the get catalog item using g e t 4 params
+func (o *GetCatalogItemUsingGET4Params) SetIncludeSource(includeSource *bool) {
+	o.IncludeSource = includeSource
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetCatalogItemUsingGET4Params) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -176,6 +196,23 @@ func (o *GetCatalogItemUsingGET4Params) WriteToRequest(r runtime.ClientRequest, 
 	// path param id
 	if err := r.SetPathParam("id", o.ID.String()); err != nil {
 		return err
+	}
+
+	if o.IncludeSource != nil {
+
+		// query param includeSource
+		var qrIncludeSource bool
+
+		if o.IncludeSource != nil {
+			qrIncludeSource = *o.IncludeSource
+		}
+		qIncludeSource := swag.FormatBool(qrIncludeSource)
+		if qIncludeSource != "" {
+
+			if err := r.SetQueryParam("includeSource", qIncludeSource); err != nil {
+				return err
+			}
+		}
 	}
 
 	if len(res) > 0 {

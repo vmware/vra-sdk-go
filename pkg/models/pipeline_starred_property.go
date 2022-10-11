@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
@@ -88,7 +87,7 @@ func UnmarshalPipelineStarredPropertySlice(reader io.Reader, consumer runtime.Co
 // UnmarshalPipelineStarredProperty unmarshals polymorphic PipelineStarredProperty
 func UnmarshalPipelineStarredProperty(reader io.Reader, consumer runtime.Consumer) (PipelineStarredProperty, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}

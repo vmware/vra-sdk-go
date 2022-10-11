@@ -45,14 +45,44 @@ func NewDeleteFlavorProfileNoContent() *DeleteFlavorProfileNoContent {
 	return &DeleteFlavorProfileNoContent{}
 }
 
-/* DeleteFlavorProfileNoContent describes a response with status code 204, with default header values.
+/*
+DeleteFlavorProfileNoContent describes a response with status code 204, with default header values.
 
 No Content
 */
 type DeleteFlavorProfileNoContent struct {
 }
 
+// IsSuccess returns true when this delete flavor profile no content response has a 2xx status code
+func (o *DeleteFlavorProfileNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete flavor profile no content response has a 3xx status code
+func (o *DeleteFlavorProfileNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete flavor profile no content response has a 4xx status code
+func (o *DeleteFlavorProfileNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete flavor profile no content response has a 5xx status code
+func (o *DeleteFlavorProfileNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete flavor profile no content response a status code equal to that given
+func (o *DeleteFlavorProfileNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteFlavorProfileNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/flavor-profiles/{id}][%d] deleteFlavorProfileNoContent ", 204)
+}
+
+func (o *DeleteFlavorProfileNoContent) String() string {
 	return fmt.Sprintf("[DELETE /iaas/api/flavor-profiles/{id}][%d] deleteFlavorProfileNoContent ", 204)
 }
 
@@ -66,7 +96,8 @@ func NewDeleteFlavorProfileForbidden() *DeleteFlavorProfileForbidden {
 	return &DeleteFlavorProfileForbidden{}
 }
 
-/* DeleteFlavorProfileForbidden describes a response with status code 403, with default header values.
+/*
+DeleteFlavorProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -74,9 +105,39 @@ type DeleteFlavorProfileForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this delete flavor profile forbidden response has a 2xx status code
+func (o *DeleteFlavorProfileForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete flavor profile forbidden response has a 3xx status code
+func (o *DeleteFlavorProfileForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete flavor profile forbidden response has a 4xx status code
+func (o *DeleteFlavorProfileForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete flavor profile forbidden response has a 5xx status code
+func (o *DeleteFlavorProfileForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete flavor profile forbidden response a status code equal to that given
+func (o *DeleteFlavorProfileForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteFlavorProfileForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/flavor-profiles/{id}][%d] deleteFlavorProfileForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DeleteFlavorProfileForbidden) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/flavor-profiles/{id}][%d] deleteFlavorProfileForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DeleteFlavorProfileForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

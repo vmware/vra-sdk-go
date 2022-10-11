@@ -51,7 +51,8 @@ func NewUpdateAwsStorageProfileOK() *UpdateAwsStorageProfileOK {
 	return &UpdateAwsStorageProfileOK{}
 }
 
-/* UpdateAwsStorageProfileOK describes a response with status code 200, with default header values.
+/*
+UpdateAwsStorageProfileOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type UpdateAwsStorageProfileOK struct {
 	Payload *models.AwsStorageProfile
 }
 
+// IsSuccess returns true when this update aws storage profile o k response has a 2xx status code
+func (o *UpdateAwsStorageProfileOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update aws storage profile o k response has a 3xx status code
+func (o *UpdateAwsStorageProfileOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update aws storage profile o k response has a 4xx status code
+func (o *UpdateAwsStorageProfileOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update aws storage profile o k response has a 5xx status code
+func (o *UpdateAwsStorageProfileOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update aws storage profile o k response a status code equal to that given
+func (o *UpdateAwsStorageProfileOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateAwsStorageProfileOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-aws/{id}][%d] updateAwsStorageProfileOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateAwsStorageProfileOK) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-aws/{id}][%d] updateAwsStorageProfileOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateAwsStorageProfileOK) GetPayload() *models.AwsStorageProfile {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewUpdateAwsStorageProfileBadRequest() *UpdateAwsStorageProfileBadRequest {
 	return &UpdateAwsStorageProfileBadRequest{}
 }
 
-/* UpdateAwsStorageProfileBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateAwsStorageProfileBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type UpdateAwsStorageProfileBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update aws storage profile bad request response has a 2xx status code
+func (o *UpdateAwsStorageProfileBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update aws storage profile bad request response has a 3xx status code
+func (o *UpdateAwsStorageProfileBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update aws storage profile bad request response has a 4xx status code
+func (o *UpdateAwsStorageProfileBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update aws storage profile bad request response has a 5xx status code
+func (o *UpdateAwsStorageProfileBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update aws storage profile bad request response a status code equal to that given
+func (o *UpdateAwsStorageProfileBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *UpdateAwsStorageProfileBadRequest) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-aws/{id}][%d] updateAwsStorageProfileBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *UpdateAwsStorageProfileBadRequest) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-aws/{id}][%d] updateAwsStorageProfileBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *UpdateAwsStorageProfileBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewUpdateAwsStorageProfileForbidden() *UpdateAwsStorageProfileForbidden {
 	return &UpdateAwsStorageProfileForbidden{}
 }
 
-/* UpdateAwsStorageProfileForbidden describes a response with status code 403, with default header values.
+/*
+UpdateAwsStorageProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type UpdateAwsStorageProfileForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this update aws storage profile forbidden response has a 2xx status code
+func (o *UpdateAwsStorageProfileForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update aws storage profile forbidden response has a 3xx status code
+func (o *UpdateAwsStorageProfileForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update aws storage profile forbidden response has a 4xx status code
+func (o *UpdateAwsStorageProfileForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update aws storage profile forbidden response has a 5xx status code
+func (o *UpdateAwsStorageProfileForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update aws storage profile forbidden response a status code equal to that given
+func (o *UpdateAwsStorageProfileForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateAwsStorageProfileForbidden) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-aws/{id}][%d] updateAwsStorageProfileForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UpdateAwsStorageProfileForbidden) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/storage-profiles-aws/{id}][%d] updateAwsStorageProfileForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UpdateAwsStorageProfileForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

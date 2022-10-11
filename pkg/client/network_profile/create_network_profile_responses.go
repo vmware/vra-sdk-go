@@ -51,7 +51,8 @@ func NewCreateNetworkProfileCreated() *CreateNetworkProfileCreated {
 	return &CreateNetworkProfileCreated{}
 }
 
-/* CreateNetworkProfileCreated describes a response with status code 201, with default header values.
+/*
+CreateNetworkProfileCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type CreateNetworkProfileCreated struct {
 	Payload *models.NetworkProfile
 }
 
+// IsSuccess returns true when this create network profile created response has a 2xx status code
+func (o *CreateNetworkProfileCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create network profile created response has a 3xx status code
+func (o *CreateNetworkProfileCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create network profile created response has a 4xx status code
+func (o *CreateNetworkProfileCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create network profile created response has a 5xx status code
+func (o *CreateNetworkProfileCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create network profile created response a status code equal to that given
+func (o *CreateNetworkProfileCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateNetworkProfileCreated) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/network-profiles][%d] createNetworkProfileCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateNetworkProfileCreated) String() string {
+	return fmt.Sprintf("[POST /iaas/api/network-profiles][%d] createNetworkProfileCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateNetworkProfileCreated) GetPayload() *models.NetworkProfile {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewCreateNetworkProfileBadRequest() *CreateNetworkProfileBadRequest {
 	return &CreateNetworkProfileBadRequest{}
 }
 
-/* CreateNetworkProfileBadRequest describes a response with status code 400, with default header values.
+/*
+CreateNetworkProfileBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type CreateNetworkProfileBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create network profile bad request response has a 2xx status code
+func (o *CreateNetworkProfileBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create network profile bad request response has a 3xx status code
+func (o *CreateNetworkProfileBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create network profile bad request response has a 4xx status code
+func (o *CreateNetworkProfileBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create network profile bad request response has a 5xx status code
+func (o *CreateNetworkProfileBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create network profile bad request response a status code equal to that given
+func (o *CreateNetworkProfileBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateNetworkProfileBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/network-profiles][%d] createNetworkProfileBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateNetworkProfileBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/network-profiles][%d] createNetworkProfileBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateNetworkProfileBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewCreateNetworkProfileForbidden() *CreateNetworkProfileForbidden {
 	return &CreateNetworkProfileForbidden{}
 }
 
-/* CreateNetworkProfileForbidden describes a response with status code 403, with default header values.
+/*
+CreateNetworkProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type CreateNetworkProfileForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this create network profile forbidden response has a 2xx status code
+func (o *CreateNetworkProfileForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create network profile forbidden response has a 3xx status code
+func (o *CreateNetworkProfileForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create network profile forbidden response has a 4xx status code
+func (o *CreateNetworkProfileForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create network profile forbidden response has a 5xx status code
+func (o *CreateNetworkProfileForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create network profile forbidden response a status code equal to that given
+func (o *CreateNetworkProfileForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateNetworkProfileForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/network-profiles][%d] createNetworkProfileForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CreateNetworkProfileForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/network-profiles][%d] createNetworkProfileForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CreateNetworkProfileForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

@@ -45,7 +45,8 @@ func NewGetRegionsOK() *GetRegionsOK {
 	return &GetRegionsOK{}
 }
 
-/* GetRegionsOK describes a response with status code 200, with default header values.
+/*
+GetRegionsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type GetRegionsOK struct {
 	Payload *models.RegionResult
 }
 
+// IsSuccess returns true when this get regions o k response has a 2xx status code
+func (o *GetRegionsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get regions o k response has a 3xx status code
+func (o *GetRegionsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get regions o k response has a 4xx status code
+func (o *GetRegionsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get regions o k response has a 5xx status code
+func (o *GetRegionsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get regions o k response a status code equal to that given
+func (o *GetRegionsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetRegionsOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/regions][%d] getRegionsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetRegionsOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/regions][%d] getRegionsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetRegionsOK) GetPayload() *models.RegionResult {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewGetRegionsForbidden() *GetRegionsForbidden {
 	return &GetRegionsForbidden{}
 }
 
-/* GetRegionsForbidden describes a response with status code 403, with default header values.
+/*
+GetRegionsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type GetRegionsForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get regions forbidden response has a 2xx status code
+func (o *GetRegionsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get regions forbidden response has a 3xx status code
+func (o *GetRegionsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get regions forbidden response has a 4xx status code
+func (o *GetRegionsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get regions forbidden response has a 5xx status code
+func (o *GetRegionsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get regions forbidden response a status code equal to that given
+func (o *GetRegionsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetRegionsForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/regions][%d] getRegionsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetRegionsForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/regions][%d] getRegionsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetRegionsForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

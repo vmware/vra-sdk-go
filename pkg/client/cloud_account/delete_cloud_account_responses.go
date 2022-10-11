@@ -29,6 +29,12 @@ func (o *DeleteCloudAccountReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return result, nil
+	case 204:
+		result := NewDeleteCloudAccountNoContent()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
 	case 403:
 		result := NewDeleteCloudAccountForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -45,7 +51,8 @@ func NewDeleteCloudAccountAccepted() *DeleteCloudAccountAccepted {
 	return &DeleteCloudAccountAccepted{}
 }
 
-/* DeleteCloudAccountAccepted describes a response with status code 202, with default header values.
+/*
+DeleteCloudAccountAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -53,9 +60,39 @@ type DeleteCloudAccountAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this delete cloud account accepted response has a 2xx status code
+func (o *DeleteCloudAccountAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete cloud account accepted response has a 3xx status code
+func (o *DeleteCloudAccountAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete cloud account accepted response has a 4xx status code
+func (o *DeleteCloudAccountAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete cloud account accepted response has a 5xx status code
+func (o *DeleteCloudAccountAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete cloud account accepted response a status code equal to that given
+func (o *DeleteCloudAccountAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteCloudAccountAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts/{id}][%d] deleteCloudAccountAccepted  %+v", 202, o.Payload)
 }
+
+func (o *DeleteCloudAccountAccepted) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts/{id}][%d] deleteCloudAccountAccepted  %+v", 202, o.Payload)
+}
+
 func (o *DeleteCloudAccountAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -72,12 +109,64 @@ func (o *DeleteCloudAccountAccepted) readResponse(response runtime.ClientRespons
 	return nil
 }
 
+// NewDeleteCloudAccountNoContent creates a DeleteCloudAccountNoContent with default headers values
+func NewDeleteCloudAccountNoContent() *DeleteCloudAccountNoContent {
+	return &DeleteCloudAccountNoContent{}
+}
+
+/*
+DeleteCloudAccountNoContent describes a response with status code 204, with default header values.
+
+No Content
+*/
+type DeleteCloudAccountNoContent struct {
+}
+
+// IsSuccess returns true when this delete cloud account no content response has a 2xx status code
+func (o *DeleteCloudAccountNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete cloud account no content response has a 3xx status code
+func (o *DeleteCloudAccountNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete cloud account no content response has a 4xx status code
+func (o *DeleteCloudAccountNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete cloud account no content response has a 5xx status code
+func (o *DeleteCloudAccountNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete cloud account no content response a status code equal to that given
+func (o *DeleteCloudAccountNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
+func (o *DeleteCloudAccountNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts/{id}][%d] deleteCloudAccountNoContent ", 204)
+}
+
+func (o *DeleteCloudAccountNoContent) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts/{id}][%d] deleteCloudAccountNoContent ", 204)
+}
+
+func (o *DeleteCloudAccountNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
 // NewDeleteCloudAccountForbidden creates a DeleteCloudAccountForbidden with default headers values
 func NewDeleteCloudAccountForbidden() *DeleteCloudAccountForbidden {
 	return &DeleteCloudAccountForbidden{}
 }
 
-/* DeleteCloudAccountForbidden describes a response with status code 403, with default header values.
+/*
+DeleteCloudAccountForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +174,39 @@ type DeleteCloudAccountForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this delete cloud account forbidden response has a 2xx status code
+func (o *DeleteCloudAccountForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete cloud account forbidden response has a 3xx status code
+func (o *DeleteCloudAccountForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete cloud account forbidden response has a 4xx status code
+func (o *DeleteCloudAccountForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete cloud account forbidden response has a 5xx status code
+func (o *DeleteCloudAccountForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete cloud account forbidden response a status code equal to that given
+func (o *DeleteCloudAccountForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteCloudAccountForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts/{id}][%d] deleteCloudAccountForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DeleteCloudAccountForbidden) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts/{id}][%d] deleteCloudAccountForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DeleteCloudAccountForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

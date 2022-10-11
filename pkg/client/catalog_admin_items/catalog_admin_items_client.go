@@ -40,9 +40,9 @@ type ClientService interface {
 }
 
 /*
-  GetCatalogItemUsingGET4 finds a catalog item with specified id
+GetCatalogItemUsingGET4 finds a catalog item with specified id
 
-  Returns the catalog item with the specified id.
+Returns the catalog item with the specified id.
 */
 func (a *Client) GetCatalogItemUsingGET4(params *GetCatalogItemUsingGET4Params, opts ...ClientOption) (*GetCatalogItemUsingGET4OK, error) {
 	// TODO: Validate the params before sending
@@ -80,9 +80,9 @@ func (a *Client) GetCatalogItemUsingGET4(params *GetCatalogItemUsingGET4Params, 
 }
 
 /*
-  GetCatalogItemsUsingGET4 fetches a list of catalog items
+GetCatalogItemsUsingGET4 fetches a list of catalog items
 
-  Returns a paginated list of catalog items.
+Returns a paginated list of catalog items.
 */
 func (a *Client) GetCatalogItemsUsingGET4(params *GetCatalogItemsUsingGET4Params, opts ...ClientOption) (*GetCatalogItemsUsingGET4OK, error) {
 	// TODO: Validate the params before sending
@@ -120,9 +120,9 @@ func (a *Client) GetCatalogItemsUsingGET4(params *GetCatalogItemsUsingGET4Params
 }
 
 /*
-  UpdateCatalogItemUsingPATCH2 sets an icon or request limit to a catalog item
+UpdateCatalogItemUsingPATCH2 sets an icon or request limit to a catalog item
 
-  Updates a catalog item with specified icon id or request limit.
+Updates a catalog item with specified icon id or request limit.
 */
 func (a *Client) UpdateCatalogItemUsingPATCH2(params *UpdateCatalogItemUsingPATCH2Params, opts ...ClientOption) (*UpdateCatalogItemUsingPATCH2OK, error) {
 	// TODO: Validate the params before sending

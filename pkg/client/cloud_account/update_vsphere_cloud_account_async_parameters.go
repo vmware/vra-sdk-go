@@ -54,10 +54,12 @@ func NewUpdateVSphereCloudAccountAsyncParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* UpdateVSphereCloudAccountAsyncParams contains all the parameters to send to the API endpoint
-   for the update v sphere cloud account async operation.
+/*
+UpdateVSphereCloudAccountAsyncParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update v sphere cloud account async operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateVSphereCloudAccountAsyncParams struct {
 

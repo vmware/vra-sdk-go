@@ -51,7 +51,8 @@ func NewDeleteBlockDeviceSnapshotAccepted() *DeleteBlockDeviceSnapshotAccepted {
 	return &DeleteBlockDeviceSnapshotAccepted{}
 }
 
-/* DeleteBlockDeviceSnapshotAccepted describes a response with status code 202, with default header values.
+/*
+DeleteBlockDeviceSnapshotAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type DeleteBlockDeviceSnapshotAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this delete block device snapshot accepted response has a 2xx status code
+func (o *DeleteBlockDeviceSnapshotAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete block device snapshot accepted response has a 3xx status code
+func (o *DeleteBlockDeviceSnapshotAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete block device snapshot accepted response has a 4xx status code
+func (o *DeleteBlockDeviceSnapshotAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete block device snapshot accepted response has a 5xx status code
+func (o *DeleteBlockDeviceSnapshotAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete block device snapshot accepted response a status code equal to that given
+func (o *DeleteBlockDeviceSnapshotAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteBlockDeviceSnapshotAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/block-devices/{id}/snapshots/{id1}][%d] deleteBlockDeviceSnapshotAccepted  %+v", 202, o.Payload)
 }
+
+func (o *DeleteBlockDeviceSnapshotAccepted) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/block-devices/{id}/snapshots/{id1}][%d] deleteBlockDeviceSnapshotAccepted  %+v", 202, o.Payload)
+}
+
 func (o *DeleteBlockDeviceSnapshotAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,14 +114,44 @@ func NewDeleteBlockDeviceSnapshotNoContent() *DeleteBlockDeviceSnapshotNoContent
 	return &DeleteBlockDeviceSnapshotNoContent{}
 }
 
-/* DeleteBlockDeviceSnapshotNoContent describes a response with status code 204, with default header values.
+/*
+DeleteBlockDeviceSnapshotNoContent describes a response with status code 204, with default header values.
 
 No Content
 */
 type DeleteBlockDeviceSnapshotNoContent struct {
 }
 
+// IsSuccess returns true when this delete block device snapshot no content response has a 2xx status code
+func (o *DeleteBlockDeviceSnapshotNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete block device snapshot no content response has a 3xx status code
+func (o *DeleteBlockDeviceSnapshotNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete block device snapshot no content response has a 4xx status code
+func (o *DeleteBlockDeviceSnapshotNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete block device snapshot no content response has a 5xx status code
+func (o *DeleteBlockDeviceSnapshotNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete block device snapshot no content response a status code equal to that given
+func (o *DeleteBlockDeviceSnapshotNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteBlockDeviceSnapshotNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/block-devices/{id}/snapshots/{id1}][%d] deleteBlockDeviceSnapshotNoContent ", 204)
+}
+
+func (o *DeleteBlockDeviceSnapshotNoContent) String() string {
 	return fmt.Sprintf("[DELETE /iaas/api/block-devices/{id}/snapshots/{id1}][%d] deleteBlockDeviceSnapshotNoContent ", 204)
 }
 
@@ -104,7 +165,8 @@ func NewDeleteBlockDeviceSnapshotForbidden() *DeleteBlockDeviceSnapshotForbidden
 	return &DeleteBlockDeviceSnapshotForbidden{}
 }
 
-/* DeleteBlockDeviceSnapshotForbidden describes a response with status code 403, with default header values.
+/*
+DeleteBlockDeviceSnapshotForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -112,9 +174,39 @@ type DeleteBlockDeviceSnapshotForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this delete block device snapshot forbidden response has a 2xx status code
+func (o *DeleteBlockDeviceSnapshotForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete block device snapshot forbidden response has a 3xx status code
+func (o *DeleteBlockDeviceSnapshotForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete block device snapshot forbidden response has a 4xx status code
+func (o *DeleteBlockDeviceSnapshotForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete block device snapshot forbidden response has a 5xx status code
+func (o *DeleteBlockDeviceSnapshotForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete block device snapshot forbidden response a status code equal to that given
+func (o *DeleteBlockDeviceSnapshotForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteBlockDeviceSnapshotForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/block-devices/{id}/snapshots/{id1}][%d] deleteBlockDeviceSnapshotForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DeleteBlockDeviceSnapshotForbidden) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/block-devices/{id}/snapshots/{id1}][%d] deleteBlockDeviceSnapshotForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DeleteBlockDeviceSnapshotForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

@@ -29,6 +29,12 @@ func (o *CreateUsingPOST1Reader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return result, nil
+	case 403:
+		result := NewCreateUsingPOST1Forbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +45,8 @@ func NewCreateUsingPOST1OK() *CreateUsingPOST1OK {
 	return &CreateUsingPOST1OK{}
 }
 
-/* CreateUsingPOST1OK describes a response with status code 200, with default header values.
+/*
+CreateUsingPOST1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +54,39 @@ type CreateUsingPOST1OK struct {
 	Payload *models.K8SNamespace
 }
 
+// IsSuccess returns true when this create using p o s t1 o k response has a 2xx status code
+func (o *CreateUsingPOST1OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create using p o s t1 o k response has a 3xx status code
+func (o *CreateUsingPOST1OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create using p o s t1 o k response has a 4xx status code
+func (o *CreateUsingPOST1OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create using p o s t1 o k response has a 5xx status code
+func (o *CreateUsingPOST1OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create using p o s t1 o k response a status code equal to that given
+func (o *CreateUsingPOST1OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CreateUsingPOST1OK) Error() string {
 	return fmt.Sprintf("[POST /cmx/api/resources/k8s/namespaces][%d] createUsingPOST1OK  %+v", 200, o.Payload)
 }
+
+func (o *CreateUsingPOST1OK) String() string {
+	return fmt.Sprintf("[POST /cmx/api/resources/k8s/namespaces][%d] createUsingPOST1OK  %+v", 200, o.Payload)
+}
+
 func (o *CreateUsingPOST1OK) GetPayload() *models.K8SNamespace {
 	return o.Payload
 }
@@ -62,6 +99,57 @@ func (o *CreateUsingPOST1OK) readResponse(response runtime.ClientResponse, consu
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewCreateUsingPOST1Forbidden creates a CreateUsingPOST1Forbidden with default headers values
+func NewCreateUsingPOST1Forbidden() *CreateUsingPOST1Forbidden {
+	return &CreateUsingPOST1Forbidden{}
+}
+
+/*
+CreateUsingPOST1Forbidden describes a response with status code 403, with default header values.
+
+Forbidden, the user lacks permissions
+*/
+type CreateUsingPOST1Forbidden struct {
+}
+
+// IsSuccess returns true when this create using p o s t1 forbidden response has a 2xx status code
+func (o *CreateUsingPOST1Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create using p o s t1 forbidden response has a 3xx status code
+func (o *CreateUsingPOST1Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create using p o s t1 forbidden response has a 4xx status code
+func (o *CreateUsingPOST1Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create using p o s t1 forbidden response has a 5xx status code
+func (o *CreateUsingPOST1Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create using p o s t1 forbidden response a status code equal to that given
+func (o *CreateUsingPOST1Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *CreateUsingPOST1Forbidden) Error() string {
+	return fmt.Sprintf("[POST /cmx/api/resources/k8s/namespaces][%d] createUsingPOST1Forbidden ", 403)
+}
+
+func (o *CreateUsingPOST1Forbidden) String() string {
+	return fmt.Sprintf("[POST /cmx/api/resources/k8s/namespaces][%d] createUsingPOST1Forbidden ", 403)
+}
+
+func (o *CreateUsingPOST1Forbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

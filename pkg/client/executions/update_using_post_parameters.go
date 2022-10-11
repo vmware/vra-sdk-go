@@ -54,10 +54,12 @@ func NewUpdateUsingPOSTParamsWithHTTPClient(client *http.Client) *UpdateUsingPOS
 	}
 }
 
-/* UpdateUsingPOSTParams contains all the parameters to send to the API endpoint
-   for the update using p o s t operation.
+/*
+UpdateUsingPOSTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update using p o s t operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateUsingPOSTParams struct {
 

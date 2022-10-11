@@ -45,14 +45,44 @@ func NewDeleteZoneNoContent() *DeleteZoneNoContent {
 	return &DeleteZoneNoContent{}
 }
 
-/* DeleteZoneNoContent describes a response with status code 204, with default header values.
+/*
+DeleteZoneNoContent describes a response with status code 204, with default header values.
 
 No Content
 */
 type DeleteZoneNoContent struct {
 }
 
+// IsSuccess returns true when this delete zone no content response has a 2xx status code
+func (o *DeleteZoneNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete zone no content response has a 3xx status code
+func (o *DeleteZoneNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete zone no content response has a 4xx status code
+func (o *DeleteZoneNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete zone no content response has a 5xx status code
+func (o *DeleteZoneNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete zone no content response a status code equal to that given
+func (o *DeleteZoneNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteZoneNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/zones/{id}][%d] deleteZoneNoContent ", 204)
+}
+
+func (o *DeleteZoneNoContent) String() string {
 	return fmt.Sprintf("[DELETE /iaas/api/zones/{id}][%d] deleteZoneNoContent ", 204)
 }
 
@@ -66,7 +96,8 @@ func NewDeleteZoneForbidden() *DeleteZoneForbidden {
 	return &DeleteZoneForbidden{}
 }
 
-/* DeleteZoneForbidden describes a response with status code 403, with default header values.
+/*
+DeleteZoneForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -74,9 +105,39 @@ type DeleteZoneForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this delete zone forbidden response has a 2xx status code
+func (o *DeleteZoneForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete zone forbidden response has a 3xx status code
+func (o *DeleteZoneForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete zone forbidden response has a 4xx status code
+func (o *DeleteZoneForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete zone forbidden response has a 5xx status code
+func (o *DeleteZoneForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete zone forbidden response a status code equal to that given
+func (o *DeleteZoneForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteZoneForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/zones/{id}][%d] deleteZoneForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DeleteZoneForbidden) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/zones/{id}][%d] deleteZoneForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DeleteZoneForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

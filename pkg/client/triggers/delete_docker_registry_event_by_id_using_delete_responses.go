@@ -63,7 +63,8 @@ func NewDeleteDockerRegistryEventByIDUsingDELETEOK() *DeleteDockerRegistryEventB
 	return &DeleteDockerRegistryEventByIDUsingDELETEOK{}
 }
 
-/* DeleteDockerRegistryEventByIDUsingDELETEOK describes a response with status code 200, with default header values.
+/*
+DeleteDockerRegistryEventByIDUsingDELETEOK describes a response with status code 200, with default header values.
 
 'Success' with Delete a Docker Registry Event
 */
@@ -71,9 +72,39 @@ type DeleteDockerRegistryEventByIDUsingDELETEOK struct {
 	Payload models.DockerRegistryEvent
 }
 
+// IsSuccess returns true when this delete docker registry event by Id using d e l e t e o k response has a 2xx status code
+func (o *DeleteDockerRegistryEventByIDUsingDELETEOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete docker registry event by Id using d e l e t e o k response has a 3xx status code
+func (o *DeleteDockerRegistryEventByIDUsingDELETEOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete docker registry event by Id using d e l e t e o k response has a 4xx status code
+func (o *DeleteDockerRegistryEventByIDUsingDELETEOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete docker registry event by Id using d e l e t e o k response has a 5xx status code
+func (o *DeleteDockerRegistryEventByIDUsingDELETEOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete docker registry event by Id using d e l e t e o k response a status code equal to that given
+func (o *DeleteDockerRegistryEventByIDUsingDELETEOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteDockerRegistryEventByIDUsingDELETEOK) Error() string {
 	return fmt.Sprintf("[DELETE /codestream/api/registry-events/{id}][%d] deleteDockerRegistryEventByIdUsingDELETEOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteDockerRegistryEventByIDUsingDELETEOK) String() string {
+	return fmt.Sprintf("[DELETE /codestream/api/registry-events/{id}][%d] deleteDockerRegistryEventByIdUsingDELETEOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteDockerRegistryEventByIDUsingDELETEOK) GetPayload() models.DockerRegistryEvent {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewDeleteDockerRegistryEventByIDUsingDELETEUnauthorized() *DeleteDockerRegi
 	return &DeleteDockerRegistryEventByIDUsingDELETEUnauthorized{}
 }
 
-/* DeleteDockerRegistryEventByIDUsingDELETEUnauthorized describes a response with status code 401, with default header values.
+/*
+DeleteDockerRegistryEventByIDUsingDELETEUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type DeleteDockerRegistryEventByIDUsingDELETEUnauthorized struct {
 }
 
+// IsSuccess returns true when this delete docker registry event by Id using d e l e t e unauthorized response has a 2xx status code
+func (o *DeleteDockerRegistryEventByIDUsingDELETEUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete docker registry event by Id using d e l e t e unauthorized response has a 3xx status code
+func (o *DeleteDockerRegistryEventByIDUsingDELETEUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete docker registry event by Id using d e l e t e unauthorized response has a 4xx status code
+func (o *DeleteDockerRegistryEventByIDUsingDELETEUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete docker registry event by Id using d e l e t e unauthorized response has a 5xx status code
+func (o *DeleteDockerRegistryEventByIDUsingDELETEUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete docker registry event by Id using d e l e t e unauthorized response a status code equal to that given
+func (o *DeleteDockerRegistryEventByIDUsingDELETEUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DeleteDockerRegistryEventByIDUsingDELETEUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/registry-events/{id}][%d] deleteDockerRegistryEventByIdUsingDELETEUnauthorized ", 401)
+}
+
+func (o *DeleteDockerRegistryEventByIDUsingDELETEUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/registry-events/{id}][%d] deleteDockerRegistryEventByIdUsingDELETEUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewDeleteDockerRegistryEventByIDUsingDELETEForbidden() *DeleteDockerRegistr
 	return &DeleteDockerRegistryEventByIDUsingDELETEForbidden{}
 }
 
-/* DeleteDockerRegistryEventByIDUsingDELETEForbidden describes a response with status code 403, with default header values.
+/*
+DeleteDockerRegistryEventByIDUsingDELETEForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type DeleteDockerRegistryEventByIDUsingDELETEForbidden struct {
 }
 
+// IsSuccess returns true when this delete docker registry event by Id using d e l e t e forbidden response has a 2xx status code
+func (o *DeleteDockerRegistryEventByIDUsingDELETEForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete docker registry event by Id using d e l e t e forbidden response has a 3xx status code
+func (o *DeleteDockerRegistryEventByIDUsingDELETEForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete docker registry event by Id using d e l e t e forbidden response has a 4xx status code
+func (o *DeleteDockerRegistryEventByIDUsingDELETEForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete docker registry event by Id using d e l e t e forbidden response has a 5xx status code
+func (o *DeleteDockerRegistryEventByIDUsingDELETEForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete docker registry event by Id using d e l e t e forbidden response a status code equal to that given
+func (o *DeleteDockerRegistryEventByIDUsingDELETEForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteDockerRegistryEventByIDUsingDELETEForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/registry-events/{id}][%d] deleteDockerRegistryEventByIdUsingDELETEForbidden ", 403)
+}
+
+func (o *DeleteDockerRegistryEventByIDUsingDELETEForbidden) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/registry-events/{id}][%d] deleteDockerRegistryEventByIdUsingDELETEForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewDeleteDockerRegistryEventByIDUsingDELETENotFound() *DeleteDockerRegistry
 	return &DeleteDockerRegistryEventByIDUsingDELETENotFound{}
 }
 
-/* DeleteDockerRegistryEventByIDUsingDELETENotFound describes a response with status code 404, with default header values.
+/*
+DeleteDockerRegistryEventByIDUsingDELETENotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type DeleteDockerRegistryEventByIDUsingDELETENotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete docker registry event by Id using d e l e t e not found response has a 2xx status code
+func (o *DeleteDockerRegistryEventByIDUsingDELETENotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete docker registry event by Id using d e l e t e not found response has a 3xx status code
+func (o *DeleteDockerRegistryEventByIDUsingDELETENotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete docker registry event by Id using d e l e t e not found response has a 4xx status code
+func (o *DeleteDockerRegistryEventByIDUsingDELETENotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete docker registry event by Id using d e l e t e not found response has a 5xx status code
+func (o *DeleteDockerRegistryEventByIDUsingDELETENotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete docker registry event by Id using d e l e t e not found response a status code equal to that given
+func (o *DeleteDockerRegistryEventByIDUsingDELETENotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteDockerRegistryEventByIDUsingDELETENotFound) Error() string {
 	return fmt.Sprintf("[DELETE /codestream/api/registry-events/{id}][%d] deleteDockerRegistryEventByIdUsingDELETENotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteDockerRegistryEventByIDUsingDELETENotFound) String() string {
+	return fmt.Sprintf("[DELETE /codestream/api/registry-events/{id}][%d] deleteDockerRegistryEventByIdUsingDELETENotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteDockerRegistryEventByIDUsingDELETENotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewDeleteDockerRegistryEventByIDUsingDELETEInternalServerError() *DeleteDoc
 	return &DeleteDockerRegistryEventByIDUsingDELETEInternalServerError{}
 }
 
-/* DeleteDockerRegistryEventByIDUsingDELETEInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteDockerRegistryEventByIDUsingDELETEInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type DeleteDockerRegistryEventByIDUsingDELETEInternalServerError struct {
 }
 
+// IsSuccess returns true when this delete docker registry event by Id using d e l e t e internal server error response has a 2xx status code
+func (o *DeleteDockerRegistryEventByIDUsingDELETEInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete docker registry event by Id using d e l e t e internal server error response has a 3xx status code
+func (o *DeleteDockerRegistryEventByIDUsingDELETEInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete docker registry event by Id using d e l e t e internal server error response has a 4xx status code
+func (o *DeleteDockerRegistryEventByIDUsingDELETEInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete docker registry event by Id using d e l e t e internal server error response has a 5xx status code
+func (o *DeleteDockerRegistryEventByIDUsingDELETEInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this delete docker registry event by Id using d e l e t e internal server error response a status code equal to that given
+func (o *DeleteDockerRegistryEventByIDUsingDELETEInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *DeleteDockerRegistryEventByIDUsingDELETEInternalServerError) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/registry-events/{id}][%d] deleteDockerRegistryEventByIdUsingDELETEInternalServerError ", 500)
+}
+
+func (o *DeleteDockerRegistryEventByIDUsingDELETEInternalServerError) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/registry-events/{id}][%d] deleteDockerRegistryEventByIdUsingDELETEInternalServerError ", 500)
 }
 

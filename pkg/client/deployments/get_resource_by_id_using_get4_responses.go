@@ -51,7 +51,8 @@ func NewGetResourceByIDUsingGET4OK() *GetResourceByIDUsingGET4OK {
 	return &GetResourceByIDUsingGET4OK{}
 }
 
-/* GetResourceByIDUsingGET4OK describes a response with status code 200, with default header values.
+/*
+GetResourceByIDUsingGET4OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -59,9 +60,39 @@ type GetResourceByIDUsingGET4OK struct {
 	Payload *models.DeploymentResource
 }
 
+// IsSuccess returns true when this get resource by Id using g e t4 o k response has a 2xx status code
+func (o *GetResourceByIDUsingGET4OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get resource by Id using g e t4 o k response has a 3xx status code
+func (o *GetResourceByIDUsingGET4OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get resource by Id using g e t4 o k response has a 4xx status code
+func (o *GetResourceByIDUsingGET4OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get resource by Id using g e t4 o k response has a 5xx status code
+func (o *GetResourceByIDUsingGET4OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get resource by Id using g e t4 o k response a status code equal to that given
+func (o *GetResourceByIDUsingGET4OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetResourceByIDUsingGET4OK) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}/resources/{resourceId}][%d] getResourceByIdUsingGET4OK  %+v", 200, o.Payload)
 }
+
+func (o *GetResourceByIDUsingGET4OK) String() string {
+	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}/resources/{resourceId}][%d] getResourceByIdUsingGET4OK  %+v", 200, o.Payload)
+}
+
 func (o *GetResourceByIDUsingGET4OK) GetPayload() *models.DeploymentResource {
 	return o.Payload
 }
@@ -83,14 +114,44 @@ func NewGetResourceByIDUsingGET4Unauthorized() *GetResourceByIDUsingGET4Unauthor
 	return &GetResourceByIDUsingGET4Unauthorized{}
 }
 
-/* GetResourceByIDUsingGET4Unauthorized describes a response with status code 401, with default header values.
+/*
+GetResourceByIDUsingGET4Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type GetResourceByIDUsingGET4Unauthorized struct {
 }
 
+// IsSuccess returns true when this get resource by Id using g e t4 unauthorized response has a 2xx status code
+func (o *GetResourceByIDUsingGET4Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get resource by Id using g e t4 unauthorized response has a 3xx status code
+func (o *GetResourceByIDUsingGET4Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get resource by Id using g e t4 unauthorized response has a 4xx status code
+func (o *GetResourceByIDUsingGET4Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get resource by Id using g e t4 unauthorized response has a 5xx status code
+func (o *GetResourceByIDUsingGET4Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get resource by Id using g e t4 unauthorized response a status code equal to that given
+func (o *GetResourceByIDUsingGET4Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetResourceByIDUsingGET4Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}/resources/{resourceId}][%d] getResourceByIdUsingGET4Unauthorized ", 401)
+}
+
+func (o *GetResourceByIDUsingGET4Unauthorized) String() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}/resources/{resourceId}][%d] getResourceByIdUsingGET4Unauthorized ", 401)
 }
 
@@ -104,7 +165,8 @@ func NewGetResourceByIDUsingGET4NotFound() *GetResourceByIDUsingGET4NotFound {
 	return &GetResourceByIDUsingGET4NotFound{}
 }
 
-/* GetResourceByIDUsingGET4NotFound describes a response with status code 404, with default header values.
+/*
+GetResourceByIDUsingGET4NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -112,9 +174,39 @@ type GetResourceByIDUsingGET4NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get resource by Id using g e t4 not found response has a 2xx status code
+func (o *GetResourceByIDUsingGET4NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get resource by Id using g e t4 not found response has a 3xx status code
+func (o *GetResourceByIDUsingGET4NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get resource by Id using g e t4 not found response has a 4xx status code
+func (o *GetResourceByIDUsingGET4NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get resource by Id using g e t4 not found response has a 5xx status code
+func (o *GetResourceByIDUsingGET4NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get resource by Id using g e t4 not found response a status code equal to that given
+func (o *GetResourceByIDUsingGET4NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetResourceByIDUsingGET4NotFound) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}/resources/{resourceId}][%d] getResourceByIdUsingGET4NotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetResourceByIDUsingGET4NotFound) String() string {
+	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}/resources/{resourceId}][%d] getResourceByIdUsingGET4NotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetResourceByIDUsingGET4NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

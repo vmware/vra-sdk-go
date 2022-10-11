@@ -42,14 +42,44 @@ func NewDelete2NoContent() *Delete2NoContent {
 	return &Delete2NoContent{}
 }
 
-/* Delete2NoContent describes a response with status code 204, with default header values.
+/*
+Delete2NoContent describes a response with status code 204, with default header values.
 
 Success - delete the icon
 */
 type Delete2NoContent struct {
 }
 
+// IsSuccess returns true when this delete2 no content response has a 2xx status code
+func (o *Delete2NoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete2 no content response has a 3xx status code
+func (o *Delete2NoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete2 no content response has a 4xx status code
+func (o *Delete2NoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete2 no content response has a 5xx status code
+func (o *Delete2NoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete2 no content response a status code equal to that given
+func (o *Delete2NoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *Delete2NoContent) Error() string {
+	return fmt.Sprintf("[DELETE /icon/api/icons/{id}][%d] delete2NoContent ", 204)
+}
+
+func (o *Delete2NoContent) String() string {
 	return fmt.Sprintf("[DELETE /icon/api/icons/{id}][%d] delete2NoContent ", 204)
 }
 
@@ -63,14 +93,44 @@ func NewDelete2Forbidden() *Delete2Forbidden {
 	return &Delete2Forbidden{}
 }
 
-/* Delete2Forbidden describes a response with status code 403, with default header values.
+/*
+Delete2Forbidden describes a response with status code 403, with default header values.
 
 Forbidden.
 */
 type Delete2Forbidden struct {
 }
 
+// IsSuccess returns true when this delete2 forbidden response has a 2xx status code
+func (o *Delete2Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete2 forbidden response has a 3xx status code
+func (o *Delete2Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete2 forbidden response has a 4xx status code
+func (o *Delete2Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete2 forbidden response has a 5xx status code
+func (o *Delete2Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete2 forbidden response a status code equal to that given
+func (o *Delete2Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *Delete2Forbidden) Error() string {
+	return fmt.Sprintf("[DELETE /icon/api/icons/{id}][%d] delete2Forbidden ", 403)
+}
+
+func (o *Delete2Forbidden) String() string {
 	return fmt.Sprintf("[DELETE /icon/api/icons/{id}][%d] delete2Forbidden ", 403)
 }
 

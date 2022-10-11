@@ -51,7 +51,8 @@ func NewCreateFlavorProfileCreated() *CreateFlavorProfileCreated {
 	return &CreateFlavorProfileCreated{}
 }
 
-/* CreateFlavorProfileCreated describes a response with status code 201, with default header values.
+/*
+CreateFlavorProfileCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type CreateFlavorProfileCreated struct {
 	Payload *models.FlavorProfile
 }
 
+// IsSuccess returns true when this create flavor profile created response has a 2xx status code
+func (o *CreateFlavorProfileCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create flavor profile created response has a 3xx status code
+func (o *CreateFlavorProfileCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create flavor profile created response has a 4xx status code
+func (o *CreateFlavorProfileCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create flavor profile created response has a 5xx status code
+func (o *CreateFlavorProfileCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create flavor profile created response a status code equal to that given
+func (o *CreateFlavorProfileCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateFlavorProfileCreated) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/flavor-profiles][%d] createFlavorProfileCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateFlavorProfileCreated) String() string {
+	return fmt.Sprintf("[POST /iaas/api/flavor-profiles][%d] createFlavorProfileCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateFlavorProfileCreated) GetPayload() *models.FlavorProfile {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewCreateFlavorProfileBadRequest() *CreateFlavorProfileBadRequest {
 	return &CreateFlavorProfileBadRequest{}
 }
 
-/* CreateFlavorProfileBadRequest describes a response with status code 400, with default header values.
+/*
+CreateFlavorProfileBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type CreateFlavorProfileBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create flavor profile bad request response has a 2xx status code
+func (o *CreateFlavorProfileBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create flavor profile bad request response has a 3xx status code
+func (o *CreateFlavorProfileBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create flavor profile bad request response has a 4xx status code
+func (o *CreateFlavorProfileBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create flavor profile bad request response has a 5xx status code
+func (o *CreateFlavorProfileBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create flavor profile bad request response a status code equal to that given
+func (o *CreateFlavorProfileBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateFlavorProfileBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/flavor-profiles][%d] createFlavorProfileBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateFlavorProfileBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/flavor-profiles][%d] createFlavorProfileBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateFlavorProfileBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewCreateFlavorProfileForbidden() *CreateFlavorProfileForbidden {
 	return &CreateFlavorProfileForbidden{}
 }
 
-/* CreateFlavorProfileForbidden describes a response with status code 403, with default header values.
+/*
+CreateFlavorProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type CreateFlavorProfileForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this create flavor profile forbidden response has a 2xx status code
+func (o *CreateFlavorProfileForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create flavor profile forbidden response has a 3xx status code
+func (o *CreateFlavorProfileForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create flavor profile forbidden response has a 4xx status code
+func (o *CreateFlavorProfileForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create flavor profile forbidden response has a 5xx status code
+func (o *CreateFlavorProfileForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create flavor profile forbidden response a status code equal to that given
+func (o *CreateFlavorProfileForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateFlavorProfileForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/flavor-profiles][%d] createFlavorProfileForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CreateFlavorProfileForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/flavor-profiles][%d] createFlavorProfileForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CreateFlavorProfileForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

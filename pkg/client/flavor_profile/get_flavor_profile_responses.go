@@ -51,7 +51,8 @@ func NewGetFlavorProfileOK() *GetFlavorProfileOK {
 	return &GetFlavorProfileOK{}
 }
 
-/* GetFlavorProfileOK describes a response with status code 200, with default header values.
+/*
+GetFlavorProfileOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetFlavorProfileOK struct {
 	Payload *models.FlavorProfile
 }
 
+// IsSuccess returns true when this get flavor profile o k response has a 2xx status code
+func (o *GetFlavorProfileOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get flavor profile o k response has a 3xx status code
+func (o *GetFlavorProfileOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flavor profile o k response has a 4xx status code
+func (o *GetFlavorProfileOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get flavor profile o k response has a 5xx status code
+func (o *GetFlavorProfileOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flavor profile o k response a status code equal to that given
+func (o *GetFlavorProfileOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetFlavorProfileOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/flavor-profiles/{id}][%d] getFlavorProfileOK  %+v", 200, o.Payload)
 }
+
+func (o *GetFlavorProfileOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/flavor-profiles/{id}][%d] getFlavorProfileOK  %+v", 200, o.Payload)
+}
+
 func (o *GetFlavorProfileOK) GetPayload() *models.FlavorProfile {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetFlavorProfileForbidden() *GetFlavorProfileForbidden {
 	return &GetFlavorProfileForbidden{}
 }
 
-/* GetFlavorProfileForbidden describes a response with status code 403, with default header values.
+/*
+GetFlavorProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type GetFlavorProfileForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get flavor profile forbidden response has a 2xx status code
+func (o *GetFlavorProfileForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flavor profile forbidden response has a 3xx status code
+func (o *GetFlavorProfileForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flavor profile forbidden response has a 4xx status code
+func (o *GetFlavorProfileForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flavor profile forbidden response has a 5xx status code
+func (o *GetFlavorProfileForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flavor profile forbidden response a status code equal to that given
+func (o *GetFlavorProfileForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetFlavorProfileForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/flavor-profiles/{id}][%d] getFlavorProfileForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetFlavorProfileForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/flavor-profiles/{id}][%d] getFlavorProfileForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetFlavorProfileForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewGetFlavorProfileNotFound() *GetFlavorProfileNotFound {
 	return &GetFlavorProfileNotFound{}
 }
 
-/* GetFlavorProfileNotFound describes a response with status code 404, with default header values.
+/*
+GetFlavorProfileNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type GetFlavorProfileNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get flavor profile not found response has a 2xx status code
+func (o *GetFlavorProfileNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flavor profile not found response has a 3xx status code
+func (o *GetFlavorProfileNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flavor profile not found response has a 4xx status code
+func (o *GetFlavorProfileNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flavor profile not found response has a 5xx status code
+func (o *GetFlavorProfileNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flavor profile not found response a status code equal to that given
+func (o *GetFlavorProfileNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetFlavorProfileNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/flavor-profiles/{id}][%d] getFlavorProfileNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetFlavorProfileNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/flavor-profiles/{id}][%d] getFlavorProfileNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetFlavorProfileNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

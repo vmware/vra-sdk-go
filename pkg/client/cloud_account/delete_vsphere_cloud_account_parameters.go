@@ -52,10 +52,12 @@ func NewDeleteVSphereCloudAccountParamsWithHTTPClient(client *http.Client) *Dele
 	}
 }
 
-/* DeleteVSphereCloudAccountParams contains all the parameters to send to the API endpoint
-   for the delete v sphere cloud account operation.
+/*
+DeleteVSphereCloudAccountParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete v sphere cloud account operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteVSphereCloudAccountParams struct {
 

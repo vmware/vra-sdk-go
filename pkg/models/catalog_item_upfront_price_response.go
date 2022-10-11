@@ -18,7 +18,7 @@ import (
 
 // CatalogItemUpfrontPriceResponse CatalogItemUpfrontPriceResponse
 //
-// The response to a catalog item upfront price request
+// # The response to a catalog item upfront price request
 //
 // swagger:model CatalogItemUpfrontPriceResponse
 type CatalogItemUpfrontPriceResponse struct {

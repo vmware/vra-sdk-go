@@ -57,14 +57,44 @@ func NewDeletePropertyGroupUsingDELETENoContent() *DeletePropertyGroupUsingDELET
 	return &DeletePropertyGroupUsingDELETENoContent{}
 }
 
-/* DeletePropertyGroupUsingDELETENoContent describes a response with status code 204, with default header values.
+/*
+DeletePropertyGroupUsingDELETENoContent describes a response with status code 204, with default header values.
 
 No Content
 */
 type DeletePropertyGroupUsingDELETENoContent struct {
 }
 
+// IsSuccess returns true when this delete property group using d e l e t e no content response has a 2xx status code
+func (o *DeletePropertyGroupUsingDELETENoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete property group using d e l e t e no content response has a 3xx status code
+func (o *DeletePropertyGroupUsingDELETENoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete property group using d e l e t e no content response has a 4xx status code
+func (o *DeletePropertyGroupUsingDELETENoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete property group using d e l e t e no content response has a 5xx status code
+func (o *DeletePropertyGroupUsingDELETENoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete property group using d e l e t e no content response a status code equal to that given
+func (o *DeletePropertyGroupUsingDELETENoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeletePropertyGroupUsingDELETENoContent) Error() string {
+	return fmt.Sprintf("[DELETE /properties/api/property-groups/{propertyGroupId}][%d] deletePropertyGroupUsingDELETENoContent ", 204)
+}
+
+func (o *DeletePropertyGroupUsingDELETENoContent) String() string {
 	return fmt.Sprintf("[DELETE /properties/api/property-groups/{propertyGroupId}][%d] deletePropertyGroupUsingDELETENoContent ", 204)
 }
 
@@ -78,14 +108,44 @@ func NewDeletePropertyGroupUsingDELETEUnauthorized() *DeletePropertyGroupUsingDE
 	return &DeletePropertyGroupUsingDELETEUnauthorized{}
 }
 
-/* DeletePropertyGroupUsingDELETEUnauthorized describes a response with status code 401, with default header values.
+/*
+DeletePropertyGroupUsingDELETEUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type DeletePropertyGroupUsingDELETEUnauthorized struct {
 }
 
+// IsSuccess returns true when this delete property group using d e l e t e unauthorized response has a 2xx status code
+func (o *DeletePropertyGroupUsingDELETEUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete property group using d e l e t e unauthorized response has a 3xx status code
+func (o *DeletePropertyGroupUsingDELETEUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete property group using d e l e t e unauthorized response has a 4xx status code
+func (o *DeletePropertyGroupUsingDELETEUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete property group using d e l e t e unauthorized response has a 5xx status code
+func (o *DeletePropertyGroupUsingDELETEUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete property group using d e l e t e unauthorized response a status code equal to that given
+func (o *DeletePropertyGroupUsingDELETEUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DeletePropertyGroupUsingDELETEUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /properties/api/property-groups/{propertyGroupId}][%d] deletePropertyGroupUsingDELETEUnauthorized ", 401)
+}
+
+func (o *DeletePropertyGroupUsingDELETEUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /properties/api/property-groups/{propertyGroupId}][%d] deletePropertyGroupUsingDELETEUnauthorized ", 401)
 }
 
@@ -99,14 +159,44 @@ func NewDeletePropertyGroupUsingDELETEForbidden() *DeletePropertyGroupUsingDELET
 	return &DeletePropertyGroupUsingDELETEForbidden{}
 }
 
-/* DeletePropertyGroupUsingDELETEForbidden describes a response with status code 403, with default header values.
+/*
+DeletePropertyGroupUsingDELETEForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type DeletePropertyGroupUsingDELETEForbidden struct {
 }
 
+// IsSuccess returns true when this delete property group using d e l e t e forbidden response has a 2xx status code
+func (o *DeletePropertyGroupUsingDELETEForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete property group using d e l e t e forbidden response has a 3xx status code
+func (o *DeletePropertyGroupUsingDELETEForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete property group using d e l e t e forbidden response has a 4xx status code
+func (o *DeletePropertyGroupUsingDELETEForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete property group using d e l e t e forbidden response has a 5xx status code
+func (o *DeletePropertyGroupUsingDELETEForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete property group using d e l e t e forbidden response a status code equal to that given
+func (o *DeletePropertyGroupUsingDELETEForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeletePropertyGroupUsingDELETEForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /properties/api/property-groups/{propertyGroupId}][%d] deletePropertyGroupUsingDELETEForbidden ", 403)
+}
+
+func (o *DeletePropertyGroupUsingDELETEForbidden) String() string {
 	return fmt.Sprintf("[DELETE /properties/api/property-groups/{propertyGroupId}][%d] deletePropertyGroupUsingDELETEForbidden ", 403)
 }
 
@@ -120,7 +210,8 @@ func NewDeletePropertyGroupUsingDELETENotFound() *DeletePropertyGroupUsingDELETE
 	return &DeletePropertyGroupUsingDELETENotFound{}
 }
 
-/* DeletePropertyGroupUsingDELETENotFound describes a response with status code 404, with default header values.
+/*
+DeletePropertyGroupUsingDELETENotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -128,9 +219,39 @@ type DeletePropertyGroupUsingDELETENotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete property group using d e l e t e not found response has a 2xx status code
+func (o *DeletePropertyGroupUsingDELETENotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete property group using d e l e t e not found response has a 3xx status code
+func (o *DeletePropertyGroupUsingDELETENotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete property group using d e l e t e not found response has a 4xx status code
+func (o *DeletePropertyGroupUsingDELETENotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete property group using d e l e t e not found response has a 5xx status code
+func (o *DeletePropertyGroupUsingDELETENotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete property group using d e l e t e not found response a status code equal to that given
+func (o *DeletePropertyGroupUsingDELETENotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeletePropertyGroupUsingDELETENotFound) Error() string {
 	return fmt.Sprintf("[DELETE /properties/api/property-groups/{propertyGroupId}][%d] deletePropertyGroupUsingDELETENotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeletePropertyGroupUsingDELETENotFound) String() string {
+	return fmt.Sprintf("[DELETE /properties/api/property-groups/{propertyGroupId}][%d] deletePropertyGroupUsingDELETENotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeletePropertyGroupUsingDELETENotFound) GetPayload() *models.Error {
 	return o.Payload
 }

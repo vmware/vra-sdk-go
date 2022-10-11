@@ -11,6 +11,8 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
 // GetPolicyTypeScopeSchemaUsingGET2Reader is a Reader for the GetPolicyTypeScopeSchemaUsingGET2 structure.
@@ -27,6 +29,24 @@ func (o *GetPolicyTypeScopeSchemaUsingGET2Reader) ReadResponse(response runtime.
 			return nil, err
 		}
 		return result, nil
+	case 401:
+		result := NewGetPolicyTypeScopeSchemaUsingGET2Unauthorized()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 403:
+		result := NewGetPolicyTypeScopeSchemaUsingGET2Forbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 404:
+		result := NewGetPolicyTypeScopeSchemaUsingGET2NotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -37,7 +57,8 @@ func NewGetPolicyTypeScopeSchemaUsingGET2OK() *GetPolicyTypeScopeSchemaUsingGET2
 	return &GetPolicyTypeScopeSchemaUsingGET2OK{}
 }
 
-/* GetPolicyTypeScopeSchemaUsingGET2OK describes a response with status code 200, with default header values.
+/*
+GetPolicyTypeScopeSchemaUsingGET2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -45,9 +66,39 @@ type GetPolicyTypeScopeSchemaUsingGET2OK struct {
 	Payload interface{}
 }
 
+// IsSuccess returns true when this get policy type scope schema using g e t2 o k response has a 2xx status code
+func (o *GetPolicyTypeScopeSchemaUsingGET2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get policy type scope schema using g e t2 o k response has a 3xx status code
+func (o *GetPolicyTypeScopeSchemaUsingGET2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get policy type scope schema using g e t2 o k response has a 4xx status code
+func (o *GetPolicyTypeScopeSchemaUsingGET2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get policy type scope schema using g e t2 o k response has a 5xx status code
+func (o *GetPolicyTypeScopeSchemaUsingGET2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get policy type scope schema using g e t2 o k response a status code equal to that given
+func (o *GetPolicyTypeScopeSchemaUsingGET2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetPolicyTypeScopeSchemaUsingGET2OK) Error() string {
 	return fmt.Sprintf("[GET /policy/api/policyTypes/{id}/scopeSchema][%d] getPolicyTypeScopeSchemaUsingGET2OK  %+v", 200, o.Payload)
 }
+
+func (o *GetPolicyTypeScopeSchemaUsingGET2OK) String() string {
+	return fmt.Sprintf("[GET /policy/api/policyTypes/{id}/scopeSchema][%d] getPolicyTypeScopeSchemaUsingGET2OK  %+v", 200, o.Payload)
+}
+
 func (o *GetPolicyTypeScopeSchemaUsingGET2OK) GetPayload() interface{} {
 	return o.Payload
 }
@@ -56,6 +107,171 @@ func (o *GetPolicyTypeScopeSchemaUsingGET2OK) readResponse(response runtime.Clie
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetPolicyTypeScopeSchemaUsingGET2Unauthorized creates a GetPolicyTypeScopeSchemaUsingGET2Unauthorized with default headers values
+func NewGetPolicyTypeScopeSchemaUsingGET2Unauthorized() *GetPolicyTypeScopeSchemaUsingGET2Unauthorized {
+	return &GetPolicyTypeScopeSchemaUsingGET2Unauthorized{}
+}
+
+/*
+GetPolicyTypeScopeSchemaUsingGET2Unauthorized describes a response with status code 401, with default header values.
+
+Unauthorized
+*/
+type GetPolicyTypeScopeSchemaUsingGET2Unauthorized struct {
+}
+
+// IsSuccess returns true when this get policy type scope schema using g e t2 unauthorized response has a 2xx status code
+func (o *GetPolicyTypeScopeSchemaUsingGET2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get policy type scope schema using g e t2 unauthorized response has a 3xx status code
+func (o *GetPolicyTypeScopeSchemaUsingGET2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get policy type scope schema using g e t2 unauthorized response has a 4xx status code
+func (o *GetPolicyTypeScopeSchemaUsingGET2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get policy type scope schema using g e t2 unauthorized response has a 5xx status code
+func (o *GetPolicyTypeScopeSchemaUsingGET2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get policy type scope schema using g e t2 unauthorized response a status code equal to that given
+func (o *GetPolicyTypeScopeSchemaUsingGET2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+func (o *GetPolicyTypeScopeSchemaUsingGET2Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /policy/api/policyTypes/{id}/scopeSchema][%d] getPolicyTypeScopeSchemaUsingGET2Unauthorized ", 401)
+}
+
+func (o *GetPolicyTypeScopeSchemaUsingGET2Unauthorized) String() string {
+	return fmt.Sprintf("[GET /policy/api/policyTypes/{id}/scopeSchema][%d] getPolicyTypeScopeSchemaUsingGET2Unauthorized ", 401)
+}
+
+func (o *GetPolicyTypeScopeSchemaUsingGET2Unauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewGetPolicyTypeScopeSchemaUsingGET2Forbidden creates a GetPolicyTypeScopeSchemaUsingGET2Forbidden with default headers values
+func NewGetPolicyTypeScopeSchemaUsingGET2Forbidden() *GetPolicyTypeScopeSchemaUsingGET2Forbidden {
+	return &GetPolicyTypeScopeSchemaUsingGET2Forbidden{}
+}
+
+/*
+GetPolicyTypeScopeSchemaUsingGET2Forbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type GetPolicyTypeScopeSchemaUsingGET2Forbidden struct {
+}
+
+// IsSuccess returns true when this get policy type scope schema using g e t2 forbidden response has a 2xx status code
+func (o *GetPolicyTypeScopeSchemaUsingGET2Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get policy type scope schema using g e t2 forbidden response has a 3xx status code
+func (o *GetPolicyTypeScopeSchemaUsingGET2Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get policy type scope schema using g e t2 forbidden response has a 4xx status code
+func (o *GetPolicyTypeScopeSchemaUsingGET2Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get policy type scope schema using g e t2 forbidden response has a 5xx status code
+func (o *GetPolicyTypeScopeSchemaUsingGET2Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get policy type scope schema using g e t2 forbidden response a status code equal to that given
+func (o *GetPolicyTypeScopeSchemaUsingGET2Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *GetPolicyTypeScopeSchemaUsingGET2Forbidden) Error() string {
+	return fmt.Sprintf("[GET /policy/api/policyTypes/{id}/scopeSchema][%d] getPolicyTypeScopeSchemaUsingGET2Forbidden ", 403)
+}
+
+func (o *GetPolicyTypeScopeSchemaUsingGET2Forbidden) String() string {
+	return fmt.Sprintf("[GET /policy/api/policyTypes/{id}/scopeSchema][%d] getPolicyTypeScopeSchemaUsingGET2Forbidden ", 403)
+}
+
+func (o *GetPolicyTypeScopeSchemaUsingGET2Forbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewGetPolicyTypeScopeSchemaUsingGET2NotFound creates a GetPolicyTypeScopeSchemaUsingGET2NotFound with default headers values
+func NewGetPolicyTypeScopeSchemaUsingGET2NotFound() *GetPolicyTypeScopeSchemaUsingGET2NotFound {
+	return &GetPolicyTypeScopeSchemaUsingGET2NotFound{}
+}
+
+/*
+GetPolicyTypeScopeSchemaUsingGET2NotFound describes a response with status code 404, with default header values.
+
+Not Found
+*/
+type GetPolicyTypeScopeSchemaUsingGET2NotFound struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this get policy type scope schema using g e t2 not found response has a 2xx status code
+func (o *GetPolicyTypeScopeSchemaUsingGET2NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get policy type scope schema using g e t2 not found response has a 3xx status code
+func (o *GetPolicyTypeScopeSchemaUsingGET2NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get policy type scope schema using g e t2 not found response has a 4xx status code
+func (o *GetPolicyTypeScopeSchemaUsingGET2NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get policy type scope schema using g e t2 not found response has a 5xx status code
+func (o *GetPolicyTypeScopeSchemaUsingGET2NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get policy type scope schema using g e t2 not found response a status code equal to that given
+func (o *GetPolicyTypeScopeSchemaUsingGET2NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+func (o *GetPolicyTypeScopeSchemaUsingGET2NotFound) Error() string {
+	return fmt.Sprintf("[GET /policy/api/policyTypes/{id}/scopeSchema][%d] getPolicyTypeScopeSchemaUsingGET2NotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetPolicyTypeScopeSchemaUsingGET2NotFound) String() string {
+	return fmt.Sprintf("[GET /policy/api/policyTypes/{id}/scopeSchema][%d] getPolicyTypeScopeSchemaUsingGET2NotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetPolicyTypeScopeSchemaUsingGET2NotFound) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *GetPolicyTypeScopeSchemaUsingGET2NotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

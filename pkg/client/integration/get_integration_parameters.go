@@ -52,10 +52,12 @@ func NewGetIntegrationParamsWithHTTPClient(client *http.Client) *GetIntegrationP
 	}
 }
 
-/* GetIntegrationParams contains all the parameters to send to the API endpoint
-   for the get integration operation.
+/*
+GetIntegrationParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get integration operation.
+
+	Typically these are written to a http.Request.
 */
 type GetIntegrationParams struct {
 

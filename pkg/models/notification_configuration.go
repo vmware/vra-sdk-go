@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -101,7 +100,7 @@ func UnmarshalNotificationConfigurationSlice(reader io.Reader, consumer runtime.
 // UnmarshalNotificationConfiguration unmarshals polymorphic NotificationConfiguration
 func UnmarshalNotificationConfiguration(reader io.Reader, consumer runtime.Consumer) (NotificationConfiguration, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}

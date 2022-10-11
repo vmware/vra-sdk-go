@@ -52,10 +52,12 @@ func NewResumeOrRerunDockerRegistryEventUsingPOSTParamsWithHTTPClient(client *ht
 	}
 }
 
-/* ResumeOrRerunDockerRegistryEventUsingPOSTParams contains all the parameters to send to the API endpoint
-   for the resume or rerun docker registry event using p o s t operation.
+/*
+ResumeOrRerunDockerRegistryEventUsingPOSTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the resume or rerun docker registry event using p o s t operation.
+
+	Typically these are written to a http.Request.
 */
 type ResumeOrRerunDockerRegistryEventUsingPOSTParams struct {
 

@@ -52,10 +52,12 @@ func NewGetAzureStorageProfileParamsWithHTTPClient(client *http.Client) *GetAzur
 	}
 }
 
-/* GetAzureStorageProfileParams contains all the parameters to send to the API endpoint
-   for the get azure storage profile operation.
+/*
+GetAzureStorageProfileParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get azure storage profile operation.
+
+	Typically these are written to a http.Request.
 */
 type GetAzureStorageProfileParams struct {
 

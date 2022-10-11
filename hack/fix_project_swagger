@@ -23,6 +23,7 @@ def replace_value(d, k, v, new):
 
 def rename_project_models(swagger):
     definitions = [
+        ('About', 'ProjectAbout', '#/definitions/About', '#/definitions/ProjectAbout'),
         ('Constraint', 'ProjectConstraint', '#/definitions/Constraint', '#/definitions/ProjectConstraint'),
     ]
 
@@ -31,6 +32,7 @@ def rename_project_models(swagger):
         del swagger['definitions'][oldDef]
         swagger['definitions'][newDef] = v
         replace_value(swagger, "$ref", oldRef, newRef)
+
 
 def remove_global_security(swagger):
     if 'securityDefinitions' in swagger:

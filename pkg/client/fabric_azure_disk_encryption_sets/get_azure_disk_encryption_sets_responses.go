@@ -51,7 +51,8 @@ func NewGetAzureDiskEncryptionSetsOK() *GetAzureDiskEncryptionSetsOK {
 	return &GetAzureDiskEncryptionSetsOK{}
 }
 
-/* GetAzureDiskEncryptionSetsOK describes a response with status code 200, with default header values.
+/*
+GetAzureDiskEncryptionSetsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetAzureDiskEncryptionSetsOK struct {
 	Payload *models.DiskEncryptionSetList
 }
 
+// IsSuccess returns true when this get azure disk encryption sets o k response has a 2xx status code
+func (o *GetAzureDiskEncryptionSetsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get azure disk encryption sets o k response has a 3xx status code
+func (o *GetAzureDiskEncryptionSetsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get azure disk encryption sets o k response has a 4xx status code
+func (o *GetAzureDiskEncryptionSetsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get azure disk encryption sets o k response has a 5xx status code
+func (o *GetAzureDiskEncryptionSetsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get azure disk encryption sets o k response a status code equal to that given
+func (o *GetAzureDiskEncryptionSetsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetAzureDiskEncryptionSetsOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-azure-disk-encryption-sets][%d] getAzureDiskEncryptionSetsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetAzureDiskEncryptionSetsOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/fabric-azure-disk-encryption-sets][%d] getAzureDiskEncryptionSetsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetAzureDiskEncryptionSetsOK) GetPayload() *models.DiskEncryptionSetList {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetAzureDiskEncryptionSetsForbidden() *GetAzureDiskEncryptionSetsForbidd
 	return &GetAzureDiskEncryptionSetsForbidden{}
 }
 
-/* GetAzureDiskEncryptionSetsForbidden describes a response with status code 403, with default header values.
+/*
+GetAzureDiskEncryptionSetsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type GetAzureDiskEncryptionSetsForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get azure disk encryption sets forbidden response has a 2xx status code
+func (o *GetAzureDiskEncryptionSetsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get azure disk encryption sets forbidden response has a 3xx status code
+func (o *GetAzureDiskEncryptionSetsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get azure disk encryption sets forbidden response has a 4xx status code
+func (o *GetAzureDiskEncryptionSetsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get azure disk encryption sets forbidden response has a 5xx status code
+func (o *GetAzureDiskEncryptionSetsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get azure disk encryption sets forbidden response a status code equal to that given
+func (o *GetAzureDiskEncryptionSetsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetAzureDiskEncryptionSetsForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-azure-disk-encryption-sets][%d] getAzureDiskEncryptionSetsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetAzureDiskEncryptionSetsForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/fabric-azure-disk-encryption-sets][%d] getAzureDiskEncryptionSetsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetAzureDiskEncryptionSetsForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewGetAzureDiskEncryptionSetsNotFound() *GetAzureDiskEncryptionSetsNotFound
 	return &GetAzureDiskEncryptionSetsNotFound{}
 }
 
-/* GetAzureDiskEncryptionSetsNotFound describes a response with status code 404, with default header values.
+/*
+GetAzureDiskEncryptionSetsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type GetAzureDiskEncryptionSetsNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get azure disk encryption sets not found response has a 2xx status code
+func (o *GetAzureDiskEncryptionSetsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get azure disk encryption sets not found response has a 3xx status code
+func (o *GetAzureDiskEncryptionSetsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get azure disk encryption sets not found response has a 4xx status code
+func (o *GetAzureDiskEncryptionSetsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get azure disk encryption sets not found response has a 5xx status code
+func (o *GetAzureDiskEncryptionSetsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get azure disk encryption sets not found response a status code equal to that given
+func (o *GetAzureDiskEncryptionSetsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetAzureDiskEncryptionSetsNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-azure-disk-encryption-sets][%d] getAzureDiskEncryptionSetsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetAzureDiskEncryptionSetsNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/fabric-azure-disk-encryption-sets][%d] getAzureDiskEncryptionSetsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetAzureDiskEncryptionSetsNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

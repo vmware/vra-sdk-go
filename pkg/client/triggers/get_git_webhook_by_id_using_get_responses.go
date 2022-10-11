@@ -63,7 +63,8 @@ func NewGetGitWebhookByIDUsingGETOK() *GetGitWebhookByIDUsingGETOK {
 	return &GetGitWebhookByIDUsingGETOK{}
 }
 
-/* GetGitWebhookByIDUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetGitWebhookByIDUsingGETOK describes a response with status code 200, with default header values.
 
 'Success' with Git Webhook
 */
@@ -71,9 +72,39 @@ type GetGitWebhookByIDUsingGETOK struct {
 	Payload models.GitWebhook
 }
 
+// IsSuccess returns true when this get git webhook by Id using g e t o k response has a 2xx status code
+func (o *GetGitWebhookByIDUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get git webhook by Id using g e t o k response has a 3xx status code
+func (o *GetGitWebhookByIDUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get git webhook by Id using g e t o k response has a 4xx status code
+func (o *GetGitWebhookByIDUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get git webhook by Id using g e t o k response has a 5xx status code
+func (o *GetGitWebhookByIDUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get git webhook by Id using g e t o k response a status code equal to that given
+func (o *GetGitWebhookByIDUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetGitWebhookByIDUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/git-webhooks/{id}][%d] getGitWebhookByIdUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetGitWebhookByIDUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /codestream/api/git-webhooks/{id}][%d] getGitWebhookByIdUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetGitWebhookByIDUsingGETOK) GetPayload() models.GitWebhook {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewGetGitWebhookByIDUsingGETUnauthorized() *GetGitWebhookByIDUsingGETUnauth
 	return &GetGitWebhookByIDUsingGETUnauthorized{}
 }
 
-/* GetGitWebhookByIDUsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+GetGitWebhookByIDUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type GetGitWebhookByIDUsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this get git webhook by Id using g e t unauthorized response has a 2xx status code
+func (o *GetGitWebhookByIDUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get git webhook by Id using g e t unauthorized response has a 3xx status code
+func (o *GetGitWebhookByIDUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get git webhook by Id using g e t unauthorized response has a 4xx status code
+func (o *GetGitWebhookByIDUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get git webhook by Id using g e t unauthorized response has a 5xx status code
+func (o *GetGitWebhookByIDUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get git webhook by Id using g e t unauthorized response a status code equal to that given
+func (o *GetGitWebhookByIDUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetGitWebhookByIDUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/git-webhooks/{id}][%d] getGitWebhookByIdUsingGETUnauthorized ", 401)
+}
+
+func (o *GetGitWebhookByIDUsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /codestream/api/git-webhooks/{id}][%d] getGitWebhookByIdUsingGETUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewGetGitWebhookByIDUsingGETForbidden() *GetGitWebhookByIDUsingGETForbidden
 	return &GetGitWebhookByIDUsingGETForbidden{}
 }
 
-/* GetGitWebhookByIDUsingGETForbidden describes a response with status code 403, with default header values.
+/*
+GetGitWebhookByIDUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetGitWebhookByIDUsingGETForbidden struct {
 }
 
+// IsSuccess returns true when this get git webhook by Id using g e t forbidden response has a 2xx status code
+func (o *GetGitWebhookByIDUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get git webhook by Id using g e t forbidden response has a 3xx status code
+func (o *GetGitWebhookByIDUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get git webhook by Id using g e t forbidden response has a 4xx status code
+func (o *GetGitWebhookByIDUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get git webhook by Id using g e t forbidden response has a 5xx status code
+func (o *GetGitWebhookByIDUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get git webhook by Id using g e t forbidden response a status code equal to that given
+func (o *GetGitWebhookByIDUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetGitWebhookByIDUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/git-webhooks/{id}][%d] getGitWebhookByIdUsingGETForbidden ", 403)
+}
+
+func (o *GetGitWebhookByIDUsingGETForbidden) String() string {
 	return fmt.Sprintf("[GET /codestream/api/git-webhooks/{id}][%d] getGitWebhookByIdUsingGETForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewGetGitWebhookByIDUsingGETNotFound() *GetGitWebhookByIDUsingGETNotFound {
 	return &GetGitWebhookByIDUsingGETNotFound{}
 }
 
-/* GetGitWebhookByIDUsingGETNotFound describes a response with status code 404, with default header values.
+/*
+GetGitWebhookByIDUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type GetGitWebhookByIDUsingGETNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get git webhook by Id using g e t not found response has a 2xx status code
+func (o *GetGitWebhookByIDUsingGETNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get git webhook by Id using g e t not found response has a 3xx status code
+func (o *GetGitWebhookByIDUsingGETNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get git webhook by Id using g e t not found response has a 4xx status code
+func (o *GetGitWebhookByIDUsingGETNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get git webhook by Id using g e t not found response has a 5xx status code
+func (o *GetGitWebhookByIDUsingGETNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get git webhook by Id using g e t not found response a status code equal to that given
+func (o *GetGitWebhookByIDUsingGETNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetGitWebhookByIDUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/git-webhooks/{id}][%d] getGitWebhookByIdUsingGETNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetGitWebhookByIDUsingGETNotFound) String() string {
+	return fmt.Sprintf("[GET /codestream/api/git-webhooks/{id}][%d] getGitWebhookByIdUsingGETNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetGitWebhookByIDUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewGetGitWebhookByIDUsingGETInternalServerError() *GetGitWebhookByIDUsingGE
 	return &GetGitWebhookByIDUsingGETInternalServerError{}
 }
 
-/* GetGitWebhookByIDUsingGETInternalServerError describes a response with status code 500, with default header values.
+/*
+GetGitWebhookByIDUsingGETInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type GetGitWebhookByIDUsingGETInternalServerError struct {
 }
 
+// IsSuccess returns true when this get git webhook by Id using g e t internal server error response has a 2xx status code
+func (o *GetGitWebhookByIDUsingGETInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get git webhook by Id using g e t internal server error response has a 3xx status code
+func (o *GetGitWebhookByIDUsingGETInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get git webhook by Id using g e t internal server error response has a 4xx status code
+func (o *GetGitWebhookByIDUsingGETInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get git webhook by Id using g e t internal server error response has a 5xx status code
+func (o *GetGitWebhookByIDUsingGETInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this get git webhook by Id using g e t internal server error response a status code equal to that given
+func (o *GetGitWebhookByIDUsingGETInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GetGitWebhookByIDUsingGETInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/git-webhooks/{id}][%d] getGitWebhookByIdUsingGETInternalServerError ", 500)
+}
+
+func (o *GetGitWebhookByIDUsingGETInternalServerError) String() string {
 	return fmt.Sprintf("[GET /codestream/api/git-webhooks/{id}][%d] getGitWebhookByIdUsingGETInternalServerError ", 500)
 }
 

@@ -52,10 +52,12 @@ func NewGetAzureCloudAccountParamsWithHTTPClient(client *http.Client) *GetAzureC
 	}
 }
 
-/* GetAzureCloudAccountParams contains all the parameters to send to the API endpoint
-   for the get azure cloud account operation.
+/*
+GetAzureCloudAccountParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get azure cloud account operation.
+
+	Typically these are written to a http.Request.
 */
 type GetAzureCloudAccountParams struct {
 

@@ -52,10 +52,12 @@ func NewGetRegistryEventByIDParamsWithHTTPClient(client *http.Client) *GetRegist
 	}
 }
 
-/* GetRegistryEventByIDParams contains all the parameters to send to the API endpoint
-   for the get registry event by ID operation.
+/*
+GetRegistryEventByIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get registry event by ID operation.
+
+	Typically these are written to a http.Request.
 */
 type GetRegistryEventByIDParams struct {
 

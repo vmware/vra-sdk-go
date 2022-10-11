@@ -51,7 +51,8 @@ func NewUpdateZoneOK() *UpdateZoneOK {
 	return &UpdateZoneOK{}
 }
 
-/* UpdateZoneOK describes a response with status code 200, with default header values.
+/*
+UpdateZoneOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type UpdateZoneOK struct {
 	Payload *models.Zone
 }
 
+// IsSuccess returns true when this update zone o k response has a 2xx status code
+func (o *UpdateZoneOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update zone o k response has a 3xx status code
+func (o *UpdateZoneOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update zone o k response has a 4xx status code
+func (o *UpdateZoneOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update zone o k response has a 5xx status code
+func (o *UpdateZoneOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update zone o k response a status code equal to that given
+func (o *UpdateZoneOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateZoneOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/zones/{id}][%d] updateZoneOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateZoneOK) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/zones/{id}][%d] updateZoneOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateZoneOK) GetPayload() *models.Zone {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewUpdateZoneBadRequest() *UpdateZoneBadRequest {
 	return &UpdateZoneBadRequest{}
 }
 
-/* UpdateZoneBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateZoneBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type UpdateZoneBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update zone bad request response has a 2xx status code
+func (o *UpdateZoneBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update zone bad request response has a 3xx status code
+func (o *UpdateZoneBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update zone bad request response has a 4xx status code
+func (o *UpdateZoneBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update zone bad request response has a 5xx status code
+func (o *UpdateZoneBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update zone bad request response a status code equal to that given
+func (o *UpdateZoneBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *UpdateZoneBadRequest) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/zones/{id}][%d] updateZoneBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *UpdateZoneBadRequest) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/zones/{id}][%d] updateZoneBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *UpdateZoneBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewUpdateZoneForbidden() *UpdateZoneForbidden {
 	return &UpdateZoneForbidden{}
 }
 
-/* UpdateZoneForbidden describes a response with status code 403, with default header values.
+/*
+UpdateZoneForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type UpdateZoneForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this update zone forbidden response has a 2xx status code
+func (o *UpdateZoneForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update zone forbidden response has a 3xx status code
+func (o *UpdateZoneForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update zone forbidden response has a 4xx status code
+func (o *UpdateZoneForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update zone forbidden response has a 5xx status code
+func (o *UpdateZoneForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update zone forbidden response a status code equal to that given
+func (o *UpdateZoneForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateZoneForbidden) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/zones/{id}][%d] updateZoneForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UpdateZoneForbidden) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/zones/{id}][%d] updateZoneForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UpdateZoneForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

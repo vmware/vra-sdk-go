@@ -63,7 +63,8 @@ func NewUpdatePropertyGroupUsingPUTOK() *UpdatePropertyGroupUsingPUTOK {
 	return &UpdatePropertyGroupUsingPUTOK{}
 }
 
-/* UpdatePropertyGroupUsingPUTOK describes a response with status code 200, with default header values.
+/*
+UpdatePropertyGroupUsingPUTOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type UpdatePropertyGroupUsingPUTOK struct {
 	Payload *models.PropertyGroup
 }
 
+// IsSuccess returns true when this update property group using p u t o k response has a 2xx status code
+func (o *UpdatePropertyGroupUsingPUTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update property group using p u t o k response has a 3xx status code
+func (o *UpdatePropertyGroupUsingPUTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update property group using p u t o k response has a 4xx status code
+func (o *UpdatePropertyGroupUsingPUTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update property group using p u t o k response has a 5xx status code
+func (o *UpdatePropertyGroupUsingPUTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update property group using p u t o k response a status code equal to that given
+func (o *UpdatePropertyGroupUsingPUTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdatePropertyGroupUsingPUTOK) Error() string {
 	return fmt.Sprintf("[PUT /properties/api/property-groups/{propertyGroupId}][%d] updatePropertyGroupUsingPUTOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdatePropertyGroupUsingPUTOK) String() string {
+	return fmt.Sprintf("[PUT /properties/api/property-groups/{propertyGroupId}][%d] updatePropertyGroupUsingPUTOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdatePropertyGroupUsingPUTOK) GetPayload() *models.PropertyGroup {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewUpdatePropertyGroupUsingPUTBadRequest() *UpdatePropertyGroupUsingPUTBadR
 	return &UpdatePropertyGroupUsingPUTBadRequest{}
 }
 
-/* UpdatePropertyGroupUsingPUTBadRequest describes a response with status code 400, with default header values.
+/*
+UpdatePropertyGroupUsingPUTBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type UpdatePropertyGroupUsingPUTBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update property group using p u t bad request response has a 2xx status code
+func (o *UpdatePropertyGroupUsingPUTBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update property group using p u t bad request response has a 3xx status code
+func (o *UpdatePropertyGroupUsingPUTBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update property group using p u t bad request response has a 4xx status code
+func (o *UpdatePropertyGroupUsingPUTBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update property group using p u t bad request response has a 5xx status code
+func (o *UpdatePropertyGroupUsingPUTBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update property group using p u t bad request response a status code equal to that given
+func (o *UpdatePropertyGroupUsingPUTBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *UpdatePropertyGroupUsingPUTBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /properties/api/property-groups/{propertyGroupId}][%d] updatePropertyGroupUsingPUTBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *UpdatePropertyGroupUsingPUTBadRequest) String() string {
+	return fmt.Sprintf("[PUT /properties/api/property-groups/{propertyGroupId}][%d] updatePropertyGroupUsingPUTBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *UpdatePropertyGroupUsingPUTBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -127,14 +189,44 @@ func NewUpdatePropertyGroupUsingPUTUnauthorized() *UpdatePropertyGroupUsingPUTUn
 	return &UpdatePropertyGroupUsingPUTUnauthorized{}
 }
 
-/* UpdatePropertyGroupUsingPUTUnauthorized describes a response with status code 401, with default header values.
+/*
+UpdatePropertyGroupUsingPUTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type UpdatePropertyGroupUsingPUTUnauthorized struct {
 }
 
+// IsSuccess returns true when this update property group using p u t unauthorized response has a 2xx status code
+func (o *UpdatePropertyGroupUsingPUTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update property group using p u t unauthorized response has a 3xx status code
+func (o *UpdatePropertyGroupUsingPUTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update property group using p u t unauthorized response has a 4xx status code
+func (o *UpdatePropertyGroupUsingPUTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update property group using p u t unauthorized response has a 5xx status code
+func (o *UpdatePropertyGroupUsingPUTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update property group using p u t unauthorized response a status code equal to that given
+func (o *UpdatePropertyGroupUsingPUTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UpdatePropertyGroupUsingPUTUnauthorized) Error() string {
+	return fmt.Sprintf("[PUT /properties/api/property-groups/{propertyGroupId}][%d] updatePropertyGroupUsingPUTUnauthorized ", 401)
+}
+
+func (o *UpdatePropertyGroupUsingPUTUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /properties/api/property-groups/{propertyGroupId}][%d] updatePropertyGroupUsingPUTUnauthorized ", 401)
 }
 
@@ -148,14 +240,44 @@ func NewUpdatePropertyGroupUsingPUTForbidden() *UpdatePropertyGroupUsingPUTForbi
 	return &UpdatePropertyGroupUsingPUTForbidden{}
 }
 
-/* UpdatePropertyGroupUsingPUTForbidden describes a response with status code 403, with default header values.
+/*
+UpdatePropertyGroupUsingPUTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type UpdatePropertyGroupUsingPUTForbidden struct {
 }
 
+// IsSuccess returns true when this update property group using p u t forbidden response has a 2xx status code
+func (o *UpdatePropertyGroupUsingPUTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update property group using p u t forbidden response has a 3xx status code
+func (o *UpdatePropertyGroupUsingPUTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update property group using p u t forbidden response has a 4xx status code
+func (o *UpdatePropertyGroupUsingPUTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update property group using p u t forbidden response has a 5xx status code
+func (o *UpdatePropertyGroupUsingPUTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update property group using p u t forbidden response a status code equal to that given
+func (o *UpdatePropertyGroupUsingPUTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdatePropertyGroupUsingPUTForbidden) Error() string {
+	return fmt.Sprintf("[PUT /properties/api/property-groups/{propertyGroupId}][%d] updatePropertyGroupUsingPUTForbidden ", 403)
+}
+
+func (o *UpdatePropertyGroupUsingPUTForbidden) String() string {
 	return fmt.Sprintf("[PUT /properties/api/property-groups/{propertyGroupId}][%d] updatePropertyGroupUsingPUTForbidden ", 403)
 }
 
@@ -169,7 +291,8 @@ func NewUpdatePropertyGroupUsingPUTNotFound() *UpdatePropertyGroupUsingPUTNotFou
 	return &UpdatePropertyGroupUsingPUTNotFound{}
 }
 
-/* UpdatePropertyGroupUsingPUTNotFound describes a response with status code 404, with default header values.
+/*
+UpdatePropertyGroupUsingPUTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -177,9 +300,39 @@ type UpdatePropertyGroupUsingPUTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update property group using p u t not found response has a 2xx status code
+func (o *UpdatePropertyGroupUsingPUTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update property group using p u t not found response has a 3xx status code
+func (o *UpdatePropertyGroupUsingPUTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update property group using p u t not found response has a 4xx status code
+func (o *UpdatePropertyGroupUsingPUTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update property group using p u t not found response has a 5xx status code
+func (o *UpdatePropertyGroupUsingPUTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update property group using p u t not found response a status code equal to that given
+func (o *UpdatePropertyGroupUsingPUTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdatePropertyGroupUsingPUTNotFound) Error() string {
 	return fmt.Sprintf("[PUT /properties/api/property-groups/{propertyGroupId}][%d] updatePropertyGroupUsingPUTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UpdatePropertyGroupUsingPUTNotFound) String() string {
+	return fmt.Sprintf("[PUT /properties/api/property-groups/{propertyGroupId}][%d] updatePropertyGroupUsingPUTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UpdatePropertyGroupUsingPUTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

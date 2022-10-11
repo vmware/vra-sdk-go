@@ -42,9 +42,9 @@ type ClientService interface {
 }
 
 /*
-  CreateDataCollector creates data collector
+	CreateDataCollector creates data collector
 
-  Create a new Data Collector.
+	Create a new Data Collector.
 
 Note: Data collector endpoints are not available in vRA on-prem release.
 */
@@ -84,9 +84,9 @@ func (a *Client) CreateDataCollector(params *CreateDataCollectorParams, opts ...
 }
 
 /*
-  DeleteDataCollector deletes data collector
+	DeleteDataCollector deletes data collector
 
-  Delete Data Collector with a given id.
+	Delete Data Collector with a given id.
 
 Note: Data collector endpoints are not available in vRA on-prem release.
 */
@@ -126,9 +126,9 @@ func (a *Client) DeleteDataCollector(params *DeleteDataCollectorParams, opts ...
 }
 
 /*
-  GetDataCollector gets data collector
+	GetDataCollector gets data collector
 
-  Get Data Collector with a given id.
+	Get Data Collector with a given id.
 
 Note: Data collector endpoints are not available in vRA on-prem release.
 */
@@ -168,9 +168,9 @@ func (a *Client) GetDataCollector(params *GetDataCollectorParams, opts ...Client
 }
 
 /*
-  GetDataCollectors gets data collectors
+	GetDataCollectors gets data collectors
 
-  Get all Data Collectors.
+	Get all Data Collectors.
 
 Note: Data collector endpoints are not available in vRA on-prem release.
 */

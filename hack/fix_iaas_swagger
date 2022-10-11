@@ -23,8 +23,8 @@ def replace_value(d, k, v, new):
 
 def rename_iaas_models(swagger):
     definitions = [
-        ('Deployment', 'IaaSDeployment', '#/definitions/Deployment', '#/definitions/IaaSDeployment'),
         ('About', 'IaaSAbout', '#/definitions/About', '#/definitions/IaaSAbout'),
+        ('Deployment', 'IaaSDeployment', '#/definitions/Deployment', '#/definitions/IaaSDeployment'),
         ('Project', 'IaaSProject', '#/definitions/Project', '#/definitions/IaaSProject'),
         ('ProjectSpecification', 'IaaSProjectSpecification', '#/definitions/ProjectSpecification', '#/definitions/IaaSProjectSpecification'),
         ('ProjectResourceMetadata', 'IaaSProjectResourceMetadata', '#/definitions/ProjectResourceMetadata', '#/definitions/IaaSProjectResourceMetadata'),

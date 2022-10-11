@@ -29,6 +29,12 @@ func (o *GetKubeConfigUsingGET1Reader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return result, nil
+	case 403:
+		result := NewGetKubeConfigUsingGET1Forbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +45,8 @@ func NewGetKubeConfigUsingGET1OK() *GetKubeConfigUsingGET1OK {
 	return &GetKubeConfigUsingGET1OK{}
 }
 
-/* GetKubeConfigUsingGET1OK describes a response with status code 200, with default header values.
+/*
+GetKubeConfigUsingGET1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +54,39 @@ type GetKubeConfigUsingGET1OK struct {
 	Payload *models.ResponseEntity
 }
 
+// IsSuccess returns true when this get kube config using g e t1 o k response has a 2xx status code
+func (o *GetKubeConfigUsingGET1OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get kube config using g e t1 o k response has a 3xx status code
+func (o *GetKubeConfigUsingGET1OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get kube config using g e t1 o k response has a 4xx status code
+func (o *GetKubeConfigUsingGET1OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get kube config using g e t1 o k response has a 5xx status code
+func (o *GetKubeConfigUsingGET1OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get kube config using g e t1 o k response a status code equal to that given
+func (o *GetKubeConfigUsingGET1OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetKubeConfigUsingGET1OK) Error() string {
 	return fmt.Sprintf("[GET /cmx/api/resources/k8s/namespaces/{id}/kube-config][%d] getKubeConfigUsingGET1OK  %+v", 200, o.Payload)
 }
+
+func (o *GetKubeConfigUsingGET1OK) String() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/k8s/namespaces/{id}/kube-config][%d] getKubeConfigUsingGET1OK  %+v", 200, o.Payload)
+}
+
 func (o *GetKubeConfigUsingGET1OK) GetPayload() *models.ResponseEntity {
 	return o.Payload
 }
@@ -62,6 +99,57 @@ func (o *GetKubeConfigUsingGET1OK) readResponse(response runtime.ClientResponse,
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewGetKubeConfigUsingGET1Forbidden creates a GetKubeConfigUsingGET1Forbidden with default headers values
+func NewGetKubeConfigUsingGET1Forbidden() *GetKubeConfigUsingGET1Forbidden {
+	return &GetKubeConfigUsingGET1Forbidden{}
+}
+
+/*
+GetKubeConfigUsingGET1Forbidden describes a response with status code 403, with default header values.
+
+Forbidden, the user lacks permissions
+*/
+type GetKubeConfigUsingGET1Forbidden struct {
+}
+
+// IsSuccess returns true when this get kube config using g e t1 forbidden response has a 2xx status code
+func (o *GetKubeConfigUsingGET1Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get kube config using g e t1 forbidden response has a 3xx status code
+func (o *GetKubeConfigUsingGET1Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get kube config using g e t1 forbidden response has a 4xx status code
+func (o *GetKubeConfigUsingGET1Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get kube config using g e t1 forbidden response has a 5xx status code
+func (o *GetKubeConfigUsingGET1Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get kube config using g e t1 forbidden response a status code equal to that given
+func (o *GetKubeConfigUsingGET1Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *GetKubeConfigUsingGET1Forbidden) Error() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/k8s/namespaces/{id}/kube-config][%d] getKubeConfigUsingGET1Forbidden ", 403)
+}
+
+func (o *GetKubeConfigUsingGET1Forbidden) String() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/k8s/namespaces/{id}/kube-config][%d] getKubeConfigUsingGET1Forbidden ", 403)
+}
+
+func (o *GetKubeConfigUsingGET1Forbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

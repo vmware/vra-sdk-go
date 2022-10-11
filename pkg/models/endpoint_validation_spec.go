@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
@@ -20,7 +19,7 @@ import (
 
 // EndpointValidationSpec EndpointValidationSpec
 //
-// Endpoint validation specification
+// # Endpoint validation specification
 //
 // swagger:discriminator EndpointValidationSpec Endpoint validation specification
 type EndpointValidationSpec interface {
@@ -174,7 +173,7 @@ func UnmarshalEndpointValidationSpecSlice(reader io.Reader, consumer runtime.Con
 // UnmarshalEndpointValidationSpec unmarshals polymorphic EndpointValidationSpec
 func UnmarshalEndpointValidationSpec(reader io.Reader, consumer runtime.Consumer) (EndpointValidationSpec, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}

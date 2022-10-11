@@ -52,10 +52,12 @@ func NewDeletePipelineByIDUsingDELETEParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* DeletePipelineByIDUsingDELETEParams contains all the parameters to send to the API endpoint
-   for the delete pipeline by Id using d e l e t e operation.
+/*
+DeletePipelineByIDUsingDELETEParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete pipeline by Id using d e l e t e operation.
+
+	Typically these are written to a http.Request.
 */
 type DeletePipelineByIDUsingDELETEParams struct {
 

@@ -51,7 +51,8 @@ func NewDeleteMachineDiskAccepted() *DeleteMachineDiskAccepted {
 	return &DeleteMachineDiskAccepted{}
 }
 
-/* DeleteMachineDiskAccepted describes a response with status code 202, with default header values.
+/*
+DeleteMachineDiskAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type DeleteMachineDiskAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this delete machine disk accepted response has a 2xx status code
+func (o *DeleteMachineDiskAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete machine disk accepted response has a 3xx status code
+func (o *DeleteMachineDiskAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete machine disk accepted response has a 4xx status code
+func (o *DeleteMachineDiskAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete machine disk accepted response has a 5xx status code
+func (o *DeleteMachineDiskAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete machine disk accepted response a status code equal to that given
+func (o *DeleteMachineDiskAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteMachineDiskAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}/disks/{diskId}][%d] deleteMachineDiskAccepted  %+v", 202, o.Payload)
 }
+
+func (o *DeleteMachineDiskAccepted) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}/disks/{diskId}][%d] deleteMachineDiskAccepted  %+v", 202, o.Payload)
+}
+
 func (o *DeleteMachineDiskAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,14 +114,44 @@ func NewDeleteMachineDiskNoContent() *DeleteMachineDiskNoContent {
 	return &DeleteMachineDiskNoContent{}
 }
 
-/* DeleteMachineDiskNoContent describes a response with status code 204, with default header values.
+/*
+DeleteMachineDiskNoContent describes a response with status code 204, with default header values.
 
 No Content
 */
 type DeleteMachineDiskNoContent struct {
 }
 
+// IsSuccess returns true when this delete machine disk no content response has a 2xx status code
+func (o *DeleteMachineDiskNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete machine disk no content response has a 3xx status code
+func (o *DeleteMachineDiskNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete machine disk no content response has a 4xx status code
+func (o *DeleteMachineDiskNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete machine disk no content response has a 5xx status code
+func (o *DeleteMachineDiskNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete machine disk no content response a status code equal to that given
+func (o *DeleteMachineDiskNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteMachineDiskNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}/disks/{diskId}][%d] deleteMachineDiskNoContent ", 204)
+}
+
+func (o *DeleteMachineDiskNoContent) String() string {
 	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}/disks/{diskId}][%d] deleteMachineDiskNoContent ", 204)
 }
 
@@ -104,7 +165,8 @@ func NewDeleteMachineDiskForbidden() *DeleteMachineDiskForbidden {
 	return &DeleteMachineDiskForbidden{}
 }
 
-/* DeleteMachineDiskForbidden describes a response with status code 403, with default header values.
+/*
+DeleteMachineDiskForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -112,9 +174,39 @@ type DeleteMachineDiskForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this delete machine disk forbidden response has a 2xx status code
+func (o *DeleteMachineDiskForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete machine disk forbidden response has a 3xx status code
+func (o *DeleteMachineDiskForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete machine disk forbidden response has a 4xx status code
+func (o *DeleteMachineDiskForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete machine disk forbidden response has a 5xx status code
+func (o *DeleteMachineDiskForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete machine disk forbidden response a status code equal to that given
+func (o *DeleteMachineDiskForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteMachineDiskForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}/disks/{diskId}][%d] deleteMachineDiskForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DeleteMachineDiskForbidden) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}/disks/{diskId}][%d] deleteMachineDiskForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DeleteMachineDiskForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

@@ -47,7 +47,7 @@ type Integration struct {
 	IntegrationProperties map[string]string `json:"integrationProperties"`
 
 	// Integration type
-	// Example: Active directory, Ansible, IPAM, vRO, GitHub
+	// Example: activedirectory | ansible | ipam | vro | com.github.saas
 	// Required: true
 	IntegrationType *string `json:"integrationType"`
 

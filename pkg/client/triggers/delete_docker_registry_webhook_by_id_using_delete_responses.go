@@ -63,7 +63,8 @@ func NewDeleteDockerRegistryWebhookByIDUsingDELETEOK() *DeleteDockerRegistryWebh
 	return &DeleteDockerRegistryWebhookByIDUsingDELETEOK{}
 }
 
-/* DeleteDockerRegistryWebhookByIDUsingDELETEOK describes a response with status code 200, with default header values.
+/*
+DeleteDockerRegistryWebhookByIDUsingDELETEOK describes a response with status code 200, with default header values.
 
 'Success' with Docker Registry Webhook Delete
 */
@@ -71,9 +72,39 @@ type DeleteDockerRegistryWebhookByIDUsingDELETEOK struct {
 	Payload models.DockerRegistryWebHook
 }
 
+// IsSuccess returns true when this delete docker registry webhook by Id using d e l e t e o k response has a 2xx status code
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETEOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete docker registry webhook by Id using d e l e t e o k response has a 3xx status code
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETEOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete docker registry webhook by Id using d e l e t e o k response has a 4xx status code
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETEOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete docker registry webhook by Id using d e l e t e o k response has a 5xx status code
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETEOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete docker registry webhook by Id using d e l e t e o k response a status code equal to that given
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETEOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteDockerRegistryWebhookByIDUsingDELETEOK) Error() string {
 	return fmt.Sprintf("[DELETE /codestream/api/registry-webhooks/{id}][%d] deleteDockerRegistryWebhookByIdUsingDELETEOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETEOK) String() string {
+	return fmt.Sprintf("[DELETE /codestream/api/registry-webhooks/{id}][%d] deleteDockerRegistryWebhookByIdUsingDELETEOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteDockerRegistryWebhookByIDUsingDELETEOK) GetPayload() models.DockerRegistryWebHook {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewDeleteDockerRegistryWebhookByIDUsingDELETEUnauthorized() *DeleteDockerRe
 	return &DeleteDockerRegistryWebhookByIDUsingDELETEUnauthorized{}
 }
 
-/* DeleteDockerRegistryWebhookByIDUsingDELETEUnauthorized describes a response with status code 401, with default header values.
+/*
+DeleteDockerRegistryWebhookByIDUsingDELETEUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type DeleteDockerRegistryWebhookByIDUsingDELETEUnauthorized struct {
 }
 
+// IsSuccess returns true when this delete docker registry webhook by Id using d e l e t e unauthorized response has a 2xx status code
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETEUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete docker registry webhook by Id using d e l e t e unauthorized response has a 3xx status code
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETEUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete docker registry webhook by Id using d e l e t e unauthorized response has a 4xx status code
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETEUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete docker registry webhook by Id using d e l e t e unauthorized response has a 5xx status code
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETEUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete docker registry webhook by Id using d e l e t e unauthorized response a status code equal to that given
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETEUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DeleteDockerRegistryWebhookByIDUsingDELETEUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/registry-webhooks/{id}][%d] deleteDockerRegistryWebhookByIdUsingDELETEUnauthorized ", 401)
+}
+
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETEUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/registry-webhooks/{id}][%d] deleteDockerRegistryWebhookByIdUsingDELETEUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewDeleteDockerRegistryWebhookByIDUsingDELETEForbidden() *DeleteDockerRegis
 	return &DeleteDockerRegistryWebhookByIDUsingDELETEForbidden{}
 }
 
-/* DeleteDockerRegistryWebhookByIDUsingDELETEForbidden describes a response with status code 403, with default header values.
+/*
+DeleteDockerRegistryWebhookByIDUsingDELETEForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type DeleteDockerRegistryWebhookByIDUsingDELETEForbidden struct {
 }
 
+// IsSuccess returns true when this delete docker registry webhook by Id using d e l e t e forbidden response has a 2xx status code
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETEForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete docker registry webhook by Id using d e l e t e forbidden response has a 3xx status code
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETEForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete docker registry webhook by Id using d e l e t e forbidden response has a 4xx status code
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETEForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete docker registry webhook by Id using d e l e t e forbidden response has a 5xx status code
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETEForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete docker registry webhook by Id using d e l e t e forbidden response a status code equal to that given
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETEForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteDockerRegistryWebhookByIDUsingDELETEForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/registry-webhooks/{id}][%d] deleteDockerRegistryWebhookByIdUsingDELETEForbidden ", 403)
+}
+
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETEForbidden) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/registry-webhooks/{id}][%d] deleteDockerRegistryWebhookByIdUsingDELETEForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewDeleteDockerRegistryWebhookByIDUsingDELETENotFound() *DeleteDockerRegist
 	return &DeleteDockerRegistryWebhookByIDUsingDELETENotFound{}
 }
 
-/* DeleteDockerRegistryWebhookByIDUsingDELETENotFound describes a response with status code 404, with default header values.
+/*
+DeleteDockerRegistryWebhookByIDUsingDELETENotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type DeleteDockerRegistryWebhookByIDUsingDELETENotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete docker registry webhook by Id using d e l e t e not found response has a 2xx status code
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETENotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete docker registry webhook by Id using d e l e t e not found response has a 3xx status code
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETENotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete docker registry webhook by Id using d e l e t e not found response has a 4xx status code
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETENotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete docker registry webhook by Id using d e l e t e not found response has a 5xx status code
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETENotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete docker registry webhook by Id using d e l e t e not found response a status code equal to that given
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETENotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteDockerRegistryWebhookByIDUsingDELETENotFound) Error() string {
 	return fmt.Sprintf("[DELETE /codestream/api/registry-webhooks/{id}][%d] deleteDockerRegistryWebhookByIdUsingDELETENotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETENotFound) String() string {
+	return fmt.Sprintf("[DELETE /codestream/api/registry-webhooks/{id}][%d] deleteDockerRegistryWebhookByIdUsingDELETENotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteDockerRegistryWebhookByIDUsingDELETENotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewDeleteDockerRegistryWebhookByIDUsingDELETEInternalServerError() *DeleteD
 	return &DeleteDockerRegistryWebhookByIDUsingDELETEInternalServerError{}
 }
 
-/* DeleteDockerRegistryWebhookByIDUsingDELETEInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteDockerRegistryWebhookByIDUsingDELETEInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type DeleteDockerRegistryWebhookByIDUsingDELETEInternalServerError struct {
 }
 
+// IsSuccess returns true when this delete docker registry webhook by Id using d e l e t e internal server error response has a 2xx status code
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETEInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete docker registry webhook by Id using d e l e t e internal server error response has a 3xx status code
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETEInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete docker registry webhook by Id using d e l e t e internal server error response has a 4xx status code
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETEInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete docker registry webhook by Id using d e l e t e internal server error response has a 5xx status code
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETEInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this delete docker registry webhook by Id using d e l e t e internal server error response a status code equal to that given
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETEInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *DeleteDockerRegistryWebhookByIDUsingDELETEInternalServerError) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/registry-webhooks/{id}][%d] deleteDockerRegistryWebhookByIdUsingDELETEInternalServerError ", 500)
+}
+
+func (o *DeleteDockerRegistryWebhookByIDUsingDELETEInternalServerError) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/registry-webhooks/{id}][%d] deleteDockerRegistryWebhookByIdUsingDELETEInternalServerError ", 500)
 }
 

@@ -40,9 +40,9 @@ type ClientService interface {
 }
 
 /*
-  GetResourceActionUsingGET5 fetches resource action
+GetResourceActionUsingGET5 fetches resource action
 
-  Returns an action for the resource specified by its Resource ID and Action ID.
+Returns an action for the resource specified by its Resource ID and Action ID.
 */
 func (a *Client) GetResourceActionUsingGET5(params *GetResourceActionUsingGET5Params, opts ...ClientOption) (*GetResourceActionUsingGET5OK, error) {
 	// TODO: Validate the params before sending
@@ -80,9 +80,9 @@ func (a *Client) GetResourceActionUsingGET5(params *GetResourceActionUsingGET5Pa
 }
 
 /*
-  GetResourceActionsUsingGET5 fetches available resource actions
+GetResourceActionsUsingGET5 fetches available resource actions
 
-  Returns the complete list of available actions that can be performed on a given resource.
+Returns the complete list of available actions that can be performed on a given resource.
 */
 func (a *Client) GetResourceActionsUsingGET5(params *GetResourceActionsUsingGET5Params, opts ...ClientOption) (*GetResourceActionsUsingGET5OK, error) {
 	// TODO: Validate the params before sending
@@ -120,9 +120,9 @@ func (a *Client) GetResourceActionsUsingGET5(params *GetResourceActionsUsingGET5
 }
 
 /*
-  SubmitResourceActionRequestUsingPOST5 resources action request
+SubmitResourceActionRequestUsingPOST5 resources action request
 
-  Submit a resource action request.
+Submit a resource action request.
 */
 func (a *Client) SubmitResourceActionRequestUsingPOST5(params *SubmitResourceActionRequestUsingPOST5Params, opts ...ClientOption) (*SubmitResourceActionRequestUsingPOST5OK, error) {
 	// TODO: Validate the params before sending

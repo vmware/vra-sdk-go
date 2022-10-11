@@ -51,7 +51,8 @@ func NewGetProjectUsingGETOK() *GetProjectUsingGETOK {
 	return &GetProjectUsingGETOK{}
 }
 
-/* GetProjectUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetProjectUsingGETOK describes a response with status code 200, with default header values.
 
 'Success' with the Project
 */
@@ -59,9 +60,39 @@ type GetProjectUsingGETOK struct {
 	Payload models.Project
 }
 
+// IsSuccess returns true when this get project using g e t o k response has a 2xx status code
+func (o *GetProjectUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get project using g e t o k response has a 3xx status code
+func (o *GetProjectUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get project using g e t o k response has a 4xx status code
+func (o *GetProjectUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get project using g e t o k response has a 5xx status code
+func (o *GetProjectUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get project using g e t o k response a status code equal to that given
+func (o *GetProjectUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetProjectUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /project-service/api/projects/{id}][%d] getProjectUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetProjectUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /project-service/api/projects/{id}][%d] getProjectUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetProjectUsingGETOK) GetPayload() models.Project {
 	return o.Payload
 }
@@ -83,14 +114,44 @@ func NewGetProjectUsingGETForbidden() *GetProjectUsingGETForbidden {
 	return &GetProjectUsingGETForbidden{}
 }
 
-/* GetProjectUsingGETForbidden describes a response with status code 403, with default header values.
+/*
+GetProjectUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden, the user lacks permissions
 */
 type GetProjectUsingGETForbidden struct {
 }
 
+// IsSuccess returns true when this get project using g e t forbidden response has a 2xx status code
+func (o *GetProjectUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get project using g e t forbidden response has a 3xx status code
+func (o *GetProjectUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get project using g e t forbidden response has a 4xx status code
+func (o *GetProjectUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get project using g e t forbidden response has a 5xx status code
+func (o *GetProjectUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get project using g e t forbidden response a status code equal to that given
+func (o *GetProjectUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetProjectUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /project-service/api/projects/{id}][%d] getProjectUsingGETForbidden ", 403)
+}
+
+func (o *GetProjectUsingGETForbidden) String() string {
 	return fmt.Sprintf("[GET /project-service/api/projects/{id}][%d] getProjectUsingGETForbidden ", 403)
 }
 
@@ -104,7 +165,8 @@ func NewGetProjectUsingGETNotFound() *GetProjectUsingGETNotFound {
 	return &GetProjectUsingGETNotFound{}
 }
 
-/* GetProjectUsingGETNotFound describes a response with status code 404, with default header values.
+/*
+GetProjectUsingGETNotFound describes a response with status code 404, with default header values.
 
 'Not found' if no project with the provided id
 */
@@ -112,9 +174,39 @@ type GetProjectUsingGETNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get project using g e t not found response has a 2xx status code
+func (o *GetProjectUsingGETNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get project using g e t not found response has a 3xx status code
+func (o *GetProjectUsingGETNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get project using g e t not found response has a 4xx status code
+func (o *GetProjectUsingGETNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get project using g e t not found response has a 5xx status code
+func (o *GetProjectUsingGETNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get project using g e t not found response a status code equal to that given
+func (o *GetProjectUsingGETNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetProjectUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /project-service/api/projects/{id}][%d] getProjectUsingGETNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetProjectUsingGETNotFound) String() string {
+	return fmt.Sprintf("[GET /project-service/api/projects/{id}][%d] getProjectUsingGETNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetProjectUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

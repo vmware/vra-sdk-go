@@ -52,10 +52,12 @@ func NewGetNsxTCloudAccountParamsWithHTTPClient(client *http.Client) *GetNsxTClo
 	}
 }
 
-/* GetNsxTCloudAccountParams contains all the parameters to send to the API endpoint
-   for the get nsx t cloud account operation.
+/*
+GetNsxTCloudAccountParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get nsx t cloud account operation.
+
+	Typically these are written to a http.Request.
 */
 type GetNsxTCloudAccountParams struct {
 

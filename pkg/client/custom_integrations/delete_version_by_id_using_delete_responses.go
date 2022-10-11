@@ -63,7 +63,8 @@ func NewDeleteVersionByIDUsingDELETEOK() *DeleteVersionByIDUsingDELETEOK {
 	return &DeleteVersionByIDUsingDELETEOK{}
 }
 
-/* DeleteVersionByIDUsingDELETEOK describes a response with status code 200, with default header values.
+/*
+DeleteVersionByIDUsingDELETEOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type DeleteVersionByIDUsingDELETEOK struct {
 	Payload models.CustomIntegration
 }
 
+// IsSuccess returns true when this delete version by Id using d e l e t e o k response has a 2xx status code
+func (o *DeleteVersionByIDUsingDELETEOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete version by Id using d e l e t e o k response has a 3xx status code
+func (o *DeleteVersionByIDUsingDELETEOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete version by Id using d e l e t e o k response has a 4xx status code
+func (o *DeleteVersionByIDUsingDELETEOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete version by Id using d e l e t e o k response has a 5xx status code
+func (o *DeleteVersionByIDUsingDELETEOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete version by Id using d e l e t e o k response a status code equal to that given
+func (o *DeleteVersionByIDUsingDELETEOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteVersionByIDUsingDELETEOK) Error() string {
 	return fmt.Sprintf("[DELETE /codestream/api/custom-integrations/{id}/versions/{version}][%d] deleteVersionByIdUsingDELETEOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteVersionByIDUsingDELETEOK) String() string {
+	return fmt.Sprintf("[DELETE /codestream/api/custom-integrations/{id}/versions/{version}][%d] deleteVersionByIdUsingDELETEOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteVersionByIDUsingDELETEOK) GetPayload() models.CustomIntegration {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewDeleteVersionByIDUsingDELETEUnauthorized() *DeleteVersionByIDUsingDELETE
 	return &DeleteVersionByIDUsingDELETEUnauthorized{}
 }
 
-/* DeleteVersionByIDUsingDELETEUnauthorized describes a response with status code 401, with default header values.
+/*
+DeleteVersionByIDUsingDELETEUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type DeleteVersionByIDUsingDELETEUnauthorized struct {
 }
 
+// IsSuccess returns true when this delete version by Id using d e l e t e unauthorized response has a 2xx status code
+func (o *DeleteVersionByIDUsingDELETEUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete version by Id using d e l e t e unauthorized response has a 3xx status code
+func (o *DeleteVersionByIDUsingDELETEUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete version by Id using d e l e t e unauthorized response has a 4xx status code
+func (o *DeleteVersionByIDUsingDELETEUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete version by Id using d e l e t e unauthorized response has a 5xx status code
+func (o *DeleteVersionByIDUsingDELETEUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete version by Id using d e l e t e unauthorized response a status code equal to that given
+func (o *DeleteVersionByIDUsingDELETEUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DeleteVersionByIDUsingDELETEUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/custom-integrations/{id}/versions/{version}][%d] deleteVersionByIdUsingDELETEUnauthorized ", 401)
+}
+
+func (o *DeleteVersionByIDUsingDELETEUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/custom-integrations/{id}/versions/{version}][%d] deleteVersionByIdUsingDELETEUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewDeleteVersionByIDUsingDELETEForbidden() *DeleteVersionByIDUsingDELETEFor
 	return &DeleteVersionByIDUsingDELETEForbidden{}
 }
 
-/* DeleteVersionByIDUsingDELETEForbidden describes a response with status code 403, with default header values.
+/*
+DeleteVersionByIDUsingDELETEForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type DeleteVersionByIDUsingDELETEForbidden struct {
 }
 
+// IsSuccess returns true when this delete version by Id using d e l e t e forbidden response has a 2xx status code
+func (o *DeleteVersionByIDUsingDELETEForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete version by Id using d e l e t e forbidden response has a 3xx status code
+func (o *DeleteVersionByIDUsingDELETEForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete version by Id using d e l e t e forbidden response has a 4xx status code
+func (o *DeleteVersionByIDUsingDELETEForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete version by Id using d e l e t e forbidden response has a 5xx status code
+func (o *DeleteVersionByIDUsingDELETEForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete version by Id using d e l e t e forbidden response a status code equal to that given
+func (o *DeleteVersionByIDUsingDELETEForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteVersionByIDUsingDELETEForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/custom-integrations/{id}/versions/{version}][%d] deleteVersionByIdUsingDELETEForbidden ", 403)
+}
+
+func (o *DeleteVersionByIDUsingDELETEForbidden) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/custom-integrations/{id}/versions/{version}][%d] deleteVersionByIdUsingDELETEForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewDeleteVersionByIDUsingDELETENotFound() *DeleteVersionByIDUsingDELETENotF
 	return &DeleteVersionByIDUsingDELETENotFound{}
 }
 
-/* DeleteVersionByIDUsingDELETENotFound describes a response with status code 404, with default header values.
+/*
+DeleteVersionByIDUsingDELETENotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type DeleteVersionByIDUsingDELETENotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete version by Id using d e l e t e not found response has a 2xx status code
+func (o *DeleteVersionByIDUsingDELETENotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete version by Id using d e l e t e not found response has a 3xx status code
+func (o *DeleteVersionByIDUsingDELETENotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete version by Id using d e l e t e not found response has a 4xx status code
+func (o *DeleteVersionByIDUsingDELETENotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete version by Id using d e l e t e not found response has a 5xx status code
+func (o *DeleteVersionByIDUsingDELETENotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete version by Id using d e l e t e not found response a status code equal to that given
+func (o *DeleteVersionByIDUsingDELETENotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteVersionByIDUsingDELETENotFound) Error() string {
 	return fmt.Sprintf("[DELETE /codestream/api/custom-integrations/{id}/versions/{version}][%d] deleteVersionByIdUsingDELETENotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteVersionByIDUsingDELETENotFound) String() string {
+	return fmt.Sprintf("[DELETE /codestream/api/custom-integrations/{id}/versions/{version}][%d] deleteVersionByIdUsingDELETENotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteVersionByIDUsingDELETENotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewDeleteVersionByIDUsingDELETEInternalServerError() *DeleteVersionByIDUsin
 	return &DeleteVersionByIDUsingDELETEInternalServerError{}
 }
 
-/* DeleteVersionByIDUsingDELETEInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteVersionByIDUsingDELETEInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type DeleteVersionByIDUsingDELETEInternalServerError struct {
 }
 
+// IsSuccess returns true when this delete version by Id using d e l e t e internal server error response has a 2xx status code
+func (o *DeleteVersionByIDUsingDELETEInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete version by Id using d e l e t e internal server error response has a 3xx status code
+func (o *DeleteVersionByIDUsingDELETEInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete version by Id using d e l e t e internal server error response has a 4xx status code
+func (o *DeleteVersionByIDUsingDELETEInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete version by Id using d e l e t e internal server error response has a 5xx status code
+func (o *DeleteVersionByIDUsingDELETEInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this delete version by Id using d e l e t e internal server error response a status code equal to that given
+func (o *DeleteVersionByIDUsingDELETEInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *DeleteVersionByIDUsingDELETEInternalServerError) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/custom-integrations/{id}/versions/{version}][%d] deleteVersionByIdUsingDELETEInternalServerError ", 500)
+}
+
+func (o *DeleteVersionByIDUsingDELETEInternalServerError) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/custom-integrations/{id}/versions/{version}][%d] deleteVersionByIdUsingDELETEInternalServerError ", 500)
 }
 

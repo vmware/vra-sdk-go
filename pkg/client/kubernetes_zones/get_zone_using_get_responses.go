@@ -29,6 +29,12 @@ func (o *GetZoneUsingGETReader) ReadResponse(response runtime.ClientResponse, co
 			return nil, err
 		}
 		return result, nil
+	case 403:
+		result := NewGetZoneUsingGETForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +45,8 @@ func NewGetZoneUsingGETOK() *GetZoneUsingGETOK {
 	return &GetZoneUsingGETOK{}
 }
 
-/* GetZoneUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetZoneUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +54,39 @@ type GetZoneUsingGETOK struct {
 	Payload *models.K8SZone
 }
 
+// IsSuccess returns true when this get zone using g e t o k response has a 2xx status code
+func (o *GetZoneUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get zone using g e t o k response has a 3xx status code
+func (o *GetZoneUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get zone using g e t o k response has a 4xx status code
+func (o *GetZoneUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get zone using g e t o k response has a 5xx status code
+func (o *GetZoneUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get zone using g e t o k response a status code equal to that given
+func (o *GetZoneUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetZoneUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /cmx/api/resources/k8s-zones/{id}][%d] getZoneUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetZoneUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/k8s-zones/{id}][%d] getZoneUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetZoneUsingGETOK) GetPayload() *models.K8SZone {
 	return o.Payload
 }
@@ -62,6 +99,57 @@ func (o *GetZoneUsingGETOK) readResponse(response runtime.ClientResponse, consum
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewGetZoneUsingGETForbidden creates a GetZoneUsingGETForbidden with default headers values
+func NewGetZoneUsingGETForbidden() *GetZoneUsingGETForbidden {
+	return &GetZoneUsingGETForbidden{}
+}
+
+/*
+GetZoneUsingGETForbidden describes a response with status code 403, with default header values.
+
+Forbidden, the user lacks permissions
+*/
+type GetZoneUsingGETForbidden struct {
+}
+
+// IsSuccess returns true when this get zone using g e t forbidden response has a 2xx status code
+func (o *GetZoneUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get zone using g e t forbidden response has a 3xx status code
+func (o *GetZoneUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get zone using g e t forbidden response has a 4xx status code
+func (o *GetZoneUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get zone using g e t forbidden response has a 5xx status code
+func (o *GetZoneUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get zone using g e t forbidden response a status code equal to that given
+func (o *GetZoneUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *GetZoneUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/k8s-zones/{id}][%d] getZoneUsingGETForbidden ", 403)
+}
+
+func (o *GetZoneUsingGETForbidden) String() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/k8s-zones/{id}][%d] getZoneUsingGETForbidden ", 403)
+}
+
+func (o *GetZoneUsingGETForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

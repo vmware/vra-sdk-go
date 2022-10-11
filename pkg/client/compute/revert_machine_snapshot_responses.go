@@ -51,7 +51,8 @@ func NewRevertMachineSnapshotAccepted() *RevertMachineSnapshotAccepted {
 	return &RevertMachineSnapshotAccepted{}
 }
 
-/* RevertMachineSnapshotAccepted describes a response with status code 202, with default header values.
+/*
+RevertMachineSnapshotAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type RevertMachineSnapshotAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this revert machine snapshot accepted response has a 2xx status code
+func (o *RevertMachineSnapshotAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this revert machine snapshot accepted response has a 3xx status code
+func (o *RevertMachineSnapshotAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this revert machine snapshot accepted response has a 4xx status code
+func (o *RevertMachineSnapshotAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this revert machine snapshot accepted response has a 5xx status code
+func (o *RevertMachineSnapshotAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this revert machine snapshot accepted response a status code equal to that given
+func (o *RevertMachineSnapshotAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *RevertMachineSnapshotAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/revert/{snapshotId}][%d] revertMachineSnapshotAccepted  %+v", 202, o.Payload)
 }
+
+func (o *RevertMachineSnapshotAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/revert/{snapshotId}][%d] revertMachineSnapshotAccepted  %+v", 202, o.Payload)
+}
+
 func (o *RevertMachineSnapshotAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewRevertMachineSnapshotForbidden() *RevertMachineSnapshotForbidden {
 	return &RevertMachineSnapshotForbidden{}
 }
 
-/* RevertMachineSnapshotForbidden describes a response with status code 403, with default header values.
+/*
+RevertMachineSnapshotForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type RevertMachineSnapshotForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this revert machine snapshot forbidden response has a 2xx status code
+func (o *RevertMachineSnapshotForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this revert machine snapshot forbidden response has a 3xx status code
+func (o *RevertMachineSnapshotForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this revert machine snapshot forbidden response has a 4xx status code
+func (o *RevertMachineSnapshotForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this revert machine snapshot forbidden response has a 5xx status code
+func (o *RevertMachineSnapshotForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this revert machine snapshot forbidden response a status code equal to that given
+func (o *RevertMachineSnapshotForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *RevertMachineSnapshotForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/revert/{snapshotId}][%d] revertMachineSnapshotForbidden  %+v", 403, o.Payload)
 }
+
+func (o *RevertMachineSnapshotForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/revert/{snapshotId}][%d] revertMachineSnapshotForbidden  %+v", 403, o.Payload)
+}
+
 func (o *RevertMachineSnapshotForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewRevertMachineSnapshotNotFound() *RevertMachineSnapshotNotFound {
 	return &RevertMachineSnapshotNotFound{}
 }
 
-/* RevertMachineSnapshotNotFound describes a response with status code 404, with default header values.
+/*
+RevertMachineSnapshotNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type RevertMachineSnapshotNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this revert machine snapshot not found response has a 2xx status code
+func (o *RevertMachineSnapshotNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this revert machine snapshot not found response has a 3xx status code
+func (o *RevertMachineSnapshotNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this revert machine snapshot not found response has a 4xx status code
+func (o *RevertMachineSnapshotNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this revert machine snapshot not found response has a 5xx status code
+func (o *RevertMachineSnapshotNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this revert machine snapshot not found response a status code equal to that given
+func (o *RevertMachineSnapshotNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *RevertMachineSnapshotNotFound) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/revert/{snapshotId}][%d] revertMachineSnapshotNotFound  %+v", 404, o.Payload)
 }
+
+func (o *RevertMachineSnapshotNotFound) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/revert/{snapshotId}][%d] revertMachineSnapshotNotFound  %+v", 404, o.Payload)
+}
+
 func (o *RevertMachineSnapshotNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

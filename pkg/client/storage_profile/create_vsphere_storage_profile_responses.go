@@ -51,7 +51,8 @@ func NewCreateVSphereStorageProfileCreated() *CreateVSphereStorageProfileCreated
 	return &CreateVSphereStorageProfileCreated{}
 }
 
-/* CreateVSphereStorageProfileCreated describes a response with status code 201, with default header values.
+/*
+CreateVSphereStorageProfileCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type CreateVSphereStorageProfileCreated struct {
 	Payload *models.VsphereStorageProfile
 }
 
+// IsSuccess returns true when this create v sphere storage profile created response has a 2xx status code
+func (o *CreateVSphereStorageProfileCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create v sphere storage profile created response has a 3xx status code
+func (o *CreateVSphereStorageProfileCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create v sphere storage profile created response has a 4xx status code
+func (o *CreateVSphereStorageProfileCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create v sphere storage profile created response has a 5xx status code
+func (o *CreateVSphereStorageProfileCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create v sphere storage profile created response a status code equal to that given
+func (o *CreateVSphereStorageProfileCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateVSphereStorageProfileCreated) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/storage-profiles-vsphere][%d] createVSphereStorageProfileCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateVSphereStorageProfileCreated) String() string {
+	return fmt.Sprintf("[POST /iaas/api/storage-profiles-vsphere][%d] createVSphereStorageProfileCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateVSphereStorageProfileCreated) GetPayload() *models.VsphereStorageProfile {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewCreateVSphereStorageProfileBadRequest() *CreateVSphereStorageProfileBadR
 	return &CreateVSphereStorageProfileBadRequest{}
 }
 
-/* CreateVSphereStorageProfileBadRequest describes a response with status code 400, with default header values.
+/*
+CreateVSphereStorageProfileBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type CreateVSphereStorageProfileBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create v sphere storage profile bad request response has a 2xx status code
+func (o *CreateVSphereStorageProfileBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create v sphere storage profile bad request response has a 3xx status code
+func (o *CreateVSphereStorageProfileBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create v sphere storage profile bad request response has a 4xx status code
+func (o *CreateVSphereStorageProfileBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create v sphere storage profile bad request response has a 5xx status code
+func (o *CreateVSphereStorageProfileBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create v sphere storage profile bad request response a status code equal to that given
+func (o *CreateVSphereStorageProfileBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateVSphereStorageProfileBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/storage-profiles-vsphere][%d] createVSphereStorageProfileBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateVSphereStorageProfileBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/storage-profiles-vsphere][%d] createVSphereStorageProfileBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateVSphereStorageProfileBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewCreateVSphereStorageProfileForbidden() *CreateVSphereStorageProfileForbi
 	return &CreateVSphereStorageProfileForbidden{}
 }
 
-/* CreateVSphereStorageProfileForbidden describes a response with status code 403, with default header values.
+/*
+CreateVSphereStorageProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type CreateVSphereStorageProfileForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this create v sphere storage profile forbidden response has a 2xx status code
+func (o *CreateVSphereStorageProfileForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create v sphere storage profile forbidden response has a 3xx status code
+func (o *CreateVSphereStorageProfileForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create v sphere storage profile forbidden response has a 4xx status code
+func (o *CreateVSphereStorageProfileForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create v sphere storage profile forbidden response has a 5xx status code
+func (o *CreateVSphereStorageProfileForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create v sphere storage profile forbidden response a status code equal to that given
+func (o *CreateVSphereStorageProfileForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateVSphereStorageProfileForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/storage-profiles-vsphere][%d] createVSphereStorageProfileForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CreateVSphereStorageProfileForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/storage-profiles-vsphere][%d] createVSphereStorageProfileForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CreateVSphereStorageProfileForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

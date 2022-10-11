@@ -40,9 +40,9 @@ type ClientService interface {
 }
 
 /*
-  GetPolicyTypeByIDUsingGET2 returns the policy type with the specified ID
+GetPolicyTypeByIDUsingGET2 returns the policy type with the specified ID
 
-  Find a specific policy type based on the input policy type id.
+Find a specific policy type based on the input policy type id.
 */
 func (a *Client) GetPolicyTypeByIDUsingGET2(params *GetPolicyTypeByIDUsingGET2Params, opts ...ClientOption) (*GetPolicyTypeByIDUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -80,9 +80,9 @@ func (a *Client) GetPolicyTypeByIDUsingGET2(params *GetPolicyTypeByIDUsingGET2Pa
 }
 
 /*
-  GetPolicyTypeScopeSchemaUsingGET2 returns the policy scope schema for the type with the specified ID
+GetPolicyTypeScopeSchemaUsingGET2 returns the policy scope schema for the type with the specified ID
 
-  Return the policy scope schema for the given policy type.
+Return the policy scope schema for the given policy type.
 */
 func (a *Client) GetPolicyTypeScopeSchemaUsingGET2(params *GetPolicyTypeScopeSchemaUsingGET2Params, opts ...ClientOption) (*GetPolicyTypeScopeSchemaUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -120,9 +120,9 @@ func (a *Client) GetPolicyTypeScopeSchemaUsingGET2(params *GetPolicyTypeScopeSch
 }
 
 /*
-  GetTypesUsingGET5 returns a paginated list of policy types
+GetTypesUsingGET5 returns a paginated list of policy types
 
-  Find all the policy types available in the current org.
+Find all the policy types available in the current org.
 */
 func (a *Client) GetTypesUsingGET5(params *GetTypesUsingGET5Params, opts ...ClientOption) (*GetTypesUsingGET5OK, error) {
 	// TODO: Validate the params before sending

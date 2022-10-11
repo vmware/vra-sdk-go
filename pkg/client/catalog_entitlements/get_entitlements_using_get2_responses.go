@@ -45,7 +45,8 @@ func NewGetEntitlementsUsingGET2OK() *GetEntitlementsUsingGET2OK {
 	return &GetEntitlementsUsingGET2OK{}
 }
 
-/* GetEntitlementsUsingGET2OK describes a response with status code 200, with default header values.
+/*
+GetEntitlementsUsingGET2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -53,9 +54,39 @@ type GetEntitlementsUsingGET2OK struct {
 	Payload []*models.Entitlement
 }
 
+// IsSuccess returns true when this get entitlements using g e t2 o k response has a 2xx status code
+func (o *GetEntitlementsUsingGET2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get entitlements using g e t2 o k response has a 3xx status code
+func (o *GetEntitlementsUsingGET2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get entitlements using g e t2 o k response has a 4xx status code
+func (o *GetEntitlementsUsingGET2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get entitlements using g e t2 o k response has a 5xx status code
+func (o *GetEntitlementsUsingGET2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get entitlements using g e t2 o k response a status code equal to that given
+func (o *GetEntitlementsUsingGET2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetEntitlementsUsingGET2OK) Error() string {
 	return fmt.Sprintf("[GET /catalog/api/admin/entitlements][%d] getEntitlementsUsingGET2OK  %+v", 200, o.Payload)
 }
+
+func (o *GetEntitlementsUsingGET2OK) String() string {
+	return fmt.Sprintf("[GET /catalog/api/admin/entitlements][%d] getEntitlementsUsingGET2OK  %+v", 200, o.Payload)
+}
+
 func (o *GetEntitlementsUsingGET2OK) GetPayload() []*models.Entitlement {
 	return o.Payload
 }
@@ -75,14 +106,44 @@ func NewGetEntitlementsUsingGET2Unauthorized() *GetEntitlementsUsingGET2Unauthor
 	return &GetEntitlementsUsingGET2Unauthorized{}
 }
 
-/* GetEntitlementsUsingGET2Unauthorized describes a response with status code 401, with default header values.
+/*
+GetEntitlementsUsingGET2Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type GetEntitlementsUsingGET2Unauthorized struct {
 }
 
+// IsSuccess returns true when this get entitlements using g e t2 unauthorized response has a 2xx status code
+func (o *GetEntitlementsUsingGET2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get entitlements using g e t2 unauthorized response has a 3xx status code
+func (o *GetEntitlementsUsingGET2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get entitlements using g e t2 unauthorized response has a 4xx status code
+func (o *GetEntitlementsUsingGET2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get entitlements using g e t2 unauthorized response has a 5xx status code
+func (o *GetEntitlementsUsingGET2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get entitlements using g e t2 unauthorized response a status code equal to that given
+func (o *GetEntitlementsUsingGET2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetEntitlementsUsingGET2Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /catalog/api/admin/entitlements][%d] getEntitlementsUsingGET2Unauthorized ", 401)
+}
+
+func (o *GetEntitlementsUsingGET2Unauthorized) String() string {
 	return fmt.Sprintf("[GET /catalog/api/admin/entitlements][%d] getEntitlementsUsingGET2Unauthorized ", 401)
 }
 

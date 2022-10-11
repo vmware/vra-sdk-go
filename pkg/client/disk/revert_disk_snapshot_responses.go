@@ -51,7 +51,8 @@ func NewRevertDiskSnapshotAccepted() *RevertDiskSnapshotAccepted {
 	return &RevertDiskSnapshotAccepted{}
 }
 
-/* RevertDiskSnapshotAccepted describes a response with status code 202, with default header values.
+/*
+RevertDiskSnapshotAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type RevertDiskSnapshotAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this revert disk snapshot accepted response has a 2xx status code
+func (o *RevertDiskSnapshotAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this revert disk snapshot accepted response has a 3xx status code
+func (o *RevertDiskSnapshotAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this revert disk snapshot accepted response has a 4xx status code
+func (o *RevertDiskSnapshotAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this revert disk snapshot accepted response has a 5xx status code
+func (o *RevertDiskSnapshotAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this revert disk snapshot accepted response a status code equal to that given
+func (o *RevertDiskSnapshotAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *RevertDiskSnapshotAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/revert][%d] revertDiskSnapshotAccepted  %+v", 202, o.Payload)
 }
+
+func (o *RevertDiskSnapshotAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/revert][%d] revertDiskSnapshotAccepted  %+v", 202, o.Payload)
+}
+
 func (o *RevertDiskSnapshotAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewRevertDiskSnapshotForbidden() *RevertDiskSnapshotForbidden {
 	return &RevertDiskSnapshotForbidden{}
 }
 
-/* RevertDiskSnapshotForbidden describes a response with status code 403, with default header values.
+/*
+RevertDiskSnapshotForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type RevertDiskSnapshotForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this revert disk snapshot forbidden response has a 2xx status code
+func (o *RevertDiskSnapshotForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this revert disk snapshot forbidden response has a 3xx status code
+func (o *RevertDiskSnapshotForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this revert disk snapshot forbidden response has a 4xx status code
+func (o *RevertDiskSnapshotForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this revert disk snapshot forbidden response has a 5xx status code
+func (o *RevertDiskSnapshotForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this revert disk snapshot forbidden response a status code equal to that given
+func (o *RevertDiskSnapshotForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *RevertDiskSnapshotForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/revert][%d] revertDiskSnapshotForbidden  %+v", 403, o.Payload)
 }
+
+func (o *RevertDiskSnapshotForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/revert][%d] revertDiskSnapshotForbidden  %+v", 403, o.Payload)
+}
+
 func (o *RevertDiskSnapshotForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewRevertDiskSnapshotNotFound() *RevertDiskSnapshotNotFound {
 	return &RevertDiskSnapshotNotFound{}
 }
 
-/* RevertDiskSnapshotNotFound describes a response with status code 404, with default header values.
+/*
+RevertDiskSnapshotNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type RevertDiskSnapshotNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this revert disk snapshot not found response has a 2xx status code
+func (o *RevertDiskSnapshotNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this revert disk snapshot not found response has a 3xx status code
+func (o *RevertDiskSnapshotNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this revert disk snapshot not found response has a 4xx status code
+func (o *RevertDiskSnapshotNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this revert disk snapshot not found response has a 5xx status code
+func (o *RevertDiskSnapshotNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this revert disk snapshot not found response a status code equal to that given
+func (o *RevertDiskSnapshotNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *RevertDiskSnapshotNotFound) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/revert][%d] revertDiskSnapshotNotFound  %+v", 404, o.Payload)
 }
+
+func (o *RevertDiskSnapshotNotFound) String() string {
+	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/revert][%d] revertDiskSnapshotNotFound  %+v", 404, o.Payload)
+}
+
 func (o *RevertDiskSnapshotNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -52,10 +52,12 @@ func NewGetDockerRegistryWebhookNameUsingGETParamsWithHTTPClient(client *http.Cl
 	}
 }
 
-/* GetDockerRegistryWebhookNameUsingGETParams contains all the parameters to send to the API endpoint
-   for the get docker registry webhook name using g e t operation.
+/*
+GetDockerRegistryWebhookNameUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get docker registry webhook name using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetDockerRegistryWebhookNameUsingGETParams struct {
 

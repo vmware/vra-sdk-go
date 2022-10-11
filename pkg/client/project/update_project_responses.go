@@ -51,7 +51,8 @@ func NewUpdateProjectOK() *UpdateProjectOK {
 	return &UpdateProjectOK{}
 }
 
-/* UpdateProjectOK describes a response with status code 200, with default header values.
+/*
+UpdateProjectOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type UpdateProjectOK struct {
 	Payload *models.IaaSProject
 }
 
+// IsSuccess returns true when this update project o k response has a 2xx status code
+func (o *UpdateProjectOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update project o k response has a 3xx status code
+func (o *UpdateProjectOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update project o k response has a 4xx status code
+func (o *UpdateProjectOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update project o k response has a 5xx status code
+func (o *UpdateProjectOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update project o k response a status code equal to that given
+func (o *UpdateProjectOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateProjectOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/projects/{id}][%d] updateProjectOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateProjectOK) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/projects/{id}][%d] updateProjectOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateProjectOK) GetPayload() *models.IaaSProject {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewUpdateProjectBadRequest() *UpdateProjectBadRequest {
 	return &UpdateProjectBadRequest{}
 }
 
-/* UpdateProjectBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateProjectBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type UpdateProjectBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update project bad request response has a 2xx status code
+func (o *UpdateProjectBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update project bad request response has a 3xx status code
+func (o *UpdateProjectBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update project bad request response has a 4xx status code
+func (o *UpdateProjectBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update project bad request response has a 5xx status code
+func (o *UpdateProjectBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update project bad request response a status code equal to that given
+func (o *UpdateProjectBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *UpdateProjectBadRequest) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/projects/{id}][%d] updateProjectBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *UpdateProjectBadRequest) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/projects/{id}][%d] updateProjectBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *UpdateProjectBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewUpdateProjectForbidden() *UpdateProjectForbidden {
 	return &UpdateProjectForbidden{}
 }
 
-/* UpdateProjectForbidden describes a response with status code 403, with default header values.
+/*
+UpdateProjectForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type UpdateProjectForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this update project forbidden response has a 2xx status code
+func (o *UpdateProjectForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update project forbidden response has a 3xx status code
+func (o *UpdateProjectForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update project forbidden response has a 4xx status code
+func (o *UpdateProjectForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update project forbidden response has a 5xx status code
+func (o *UpdateProjectForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update project forbidden response a status code equal to that given
+func (o *UpdateProjectForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateProjectForbidden) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/projects/{id}][%d] updateProjectForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UpdateProjectForbidden) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/projects/{id}][%d] updateProjectForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UpdateProjectForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

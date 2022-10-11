@@ -54,10 +54,12 @@ func NewEnumerateGcpRegionsAsyncParamsWithHTTPClient(client *http.Client) *Enume
 	}
 }
 
-/* EnumerateGcpRegionsAsyncParams contains all the parameters to send to the API endpoint
-   for the enumerate gcp regions async operation.
+/*
+EnumerateGcpRegionsAsyncParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the enumerate gcp regions async operation.
+
+	Typically these are written to a http.Request.
 */
 type EnumerateGcpRegionsAsyncParams struct {
 

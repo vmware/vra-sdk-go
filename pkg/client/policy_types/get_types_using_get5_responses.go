@@ -29,6 +29,18 @@ func (o *GetTypesUsingGET5Reader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return result, nil
+	case 401:
+		result := NewGetTypesUsingGET5Unauthorized()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 403:
+		result := NewGetTypesUsingGET5Forbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +51,8 @@ func NewGetTypesUsingGET5OK() *GetTypesUsingGET5OK {
 	return &GetTypesUsingGET5OK{}
 }
 
-/* GetTypesUsingGET5OK describes a response with status code 200, with default header values.
+/*
+GetTypesUsingGET5OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +60,39 @@ type GetTypesUsingGET5OK struct {
 	Payload *models.PageOfPolicyType
 }
 
+// IsSuccess returns true when this get types using g e t5 o k response has a 2xx status code
+func (o *GetTypesUsingGET5OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get types using g e t5 o k response has a 3xx status code
+func (o *GetTypesUsingGET5OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get types using g e t5 o k response has a 4xx status code
+func (o *GetTypesUsingGET5OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get types using g e t5 o k response has a 5xx status code
+func (o *GetTypesUsingGET5OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get types using g e t5 o k response a status code equal to that given
+func (o *GetTypesUsingGET5OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetTypesUsingGET5OK) Error() string {
 	return fmt.Sprintf("[GET /policy/api/policyTypes][%d] getTypesUsingGET5OK  %+v", 200, o.Payload)
 }
+
+func (o *GetTypesUsingGET5OK) String() string {
+	return fmt.Sprintf("[GET /policy/api/policyTypes][%d] getTypesUsingGET5OK  %+v", 200, o.Payload)
+}
+
 func (o *GetTypesUsingGET5OK) GetPayload() *models.PageOfPolicyType {
 	return o.Payload
 }
@@ -62,6 +105,108 @@ func (o *GetTypesUsingGET5OK) readResponse(response runtime.ClientResponse, cons
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewGetTypesUsingGET5Unauthorized creates a GetTypesUsingGET5Unauthorized with default headers values
+func NewGetTypesUsingGET5Unauthorized() *GetTypesUsingGET5Unauthorized {
+	return &GetTypesUsingGET5Unauthorized{}
+}
+
+/*
+GetTypesUsingGET5Unauthorized describes a response with status code 401, with default header values.
+
+Unauthorized
+*/
+type GetTypesUsingGET5Unauthorized struct {
+}
+
+// IsSuccess returns true when this get types using g e t5 unauthorized response has a 2xx status code
+func (o *GetTypesUsingGET5Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get types using g e t5 unauthorized response has a 3xx status code
+func (o *GetTypesUsingGET5Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get types using g e t5 unauthorized response has a 4xx status code
+func (o *GetTypesUsingGET5Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get types using g e t5 unauthorized response has a 5xx status code
+func (o *GetTypesUsingGET5Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get types using g e t5 unauthorized response a status code equal to that given
+func (o *GetTypesUsingGET5Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+func (o *GetTypesUsingGET5Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /policy/api/policyTypes][%d] getTypesUsingGET5Unauthorized ", 401)
+}
+
+func (o *GetTypesUsingGET5Unauthorized) String() string {
+	return fmt.Sprintf("[GET /policy/api/policyTypes][%d] getTypesUsingGET5Unauthorized ", 401)
+}
+
+func (o *GetTypesUsingGET5Unauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewGetTypesUsingGET5Forbidden creates a GetTypesUsingGET5Forbidden with default headers values
+func NewGetTypesUsingGET5Forbidden() *GetTypesUsingGET5Forbidden {
+	return &GetTypesUsingGET5Forbidden{}
+}
+
+/*
+GetTypesUsingGET5Forbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type GetTypesUsingGET5Forbidden struct {
+}
+
+// IsSuccess returns true when this get types using g e t5 forbidden response has a 2xx status code
+func (o *GetTypesUsingGET5Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get types using g e t5 forbidden response has a 3xx status code
+func (o *GetTypesUsingGET5Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get types using g e t5 forbidden response has a 4xx status code
+func (o *GetTypesUsingGET5Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get types using g e t5 forbidden response has a 5xx status code
+func (o *GetTypesUsingGET5Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get types using g e t5 forbidden response a status code equal to that given
+func (o *GetTypesUsingGET5Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *GetTypesUsingGET5Forbidden) Error() string {
+	return fmt.Sprintf("[GET /policy/api/policyTypes][%d] getTypesUsingGET5Forbidden ", 403)
+}
+
+func (o *GetTypesUsingGET5Forbidden) String() string {
+	return fmt.Sprintf("[GET /policy/api/policyTypes][%d] getTypesUsingGET5Forbidden ", 403)
+}
+
+func (o *GetTypesUsingGET5Forbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

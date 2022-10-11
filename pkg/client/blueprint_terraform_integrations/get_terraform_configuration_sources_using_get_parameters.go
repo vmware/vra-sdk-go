@@ -53,10 +53,12 @@ func NewGetTerraformConfigurationSourcesUsingGETParamsWithHTTPClient(client *htt
 	}
 }
 
-/* GetTerraformConfigurationSourcesUsingGETParams contains all the parameters to send to the API endpoint
-   for the get terraform configuration sources using g e t operation.
+/*
+GetTerraformConfigurationSourcesUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get terraform configuration sources using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetTerraformConfigurationSourcesUsingGETParams struct {
 

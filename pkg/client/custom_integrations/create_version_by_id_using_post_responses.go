@@ -63,7 +63,8 @@ func NewCreateVersionByIDUsingPOSTOK() *CreateVersionByIDUsingPOSTOK {
 	return &CreateVersionByIDUsingPOSTOK{}
 }
 
-/* CreateVersionByIDUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+CreateVersionByIDUsingPOSTOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type CreateVersionByIDUsingPOSTOK struct {
 	Payload models.CustomIntegration
 }
 
+// IsSuccess returns true when this create version by Id using p o s t o k response has a 2xx status code
+func (o *CreateVersionByIDUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create version by Id using p o s t o k response has a 3xx status code
+func (o *CreateVersionByIDUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create version by Id using p o s t o k response has a 4xx status code
+func (o *CreateVersionByIDUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create version by Id using p o s t o k response has a 5xx status code
+func (o *CreateVersionByIDUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create version by Id using p o s t o k response a status code equal to that given
+func (o *CreateVersionByIDUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CreateVersionByIDUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions][%d] createVersionByIdUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *CreateVersionByIDUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions][%d] createVersionByIdUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *CreateVersionByIDUsingPOSTOK) GetPayload() models.CustomIntegration {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewCreateVersionByIDUsingPOSTUnauthorized() *CreateVersionByIDUsingPOSTUnau
 	return &CreateVersionByIDUsingPOSTUnauthorized{}
 }
 
-/* CreateVersionByIDUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateVersionByIDUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type CreateVersionByIDUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this create version by Id using p o s t unauthorized response has a 2xx status code
+func (o *CreateVersionByIDUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create version by Id using p o s t unauthorized response has a 3xx status code
+func (o *CreateVersionByIDUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create version by Id using p o s t unauthorized response has a 4xx status code
+func (o *CreateVersionByIDUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create version by Id using p o s t unauthorized response has a 5xx status code
+func (o *CreateVersionByIDUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create version by Id using p o s t unauthorized response a status code equal to that given
+func (o *CreateVersionByIDUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreateVersionByIDUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions][%d] createVersionByIdUsingPOSTUnauthorized ", 401)
+}
+
+func (o *CreateVersionByIDUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions][%d] createVersionByIdUsingPOSTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewCreateVersionByIDUsingPOSTForbidden() *CreateVersionByIDUsingPOSTForbidd
 	return &CreateVersionByIDUsingPOSTForbidden{}
 }
 
-/* CreateVersionByIDUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+CreateVersionByIDUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type CreateVersionByIDUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this create version by Id using p o s t forbidden response has a 2xx status code
+func (o *CreateVersionByIDUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create version by Id using p o s t forbidden response has a 3xx status code
+func (o *CreateVersionByIDUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create version by Id using p o s t forbidden response has a 4xx status code
+func (o *CreateVersionByIDUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create version by Id using p o s t forbidden response has a 5xx status code
+func (o *CreateVersionByIDUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create version by Id using p o s t forbidden response a status code equal to that given
+func (o *CreateVersionByIDUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateVersionByIDUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions][%d] createVersionByIdUsingPOSTForbidden ", 403)
+}
+
+func (o *CreateVersionByIDUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions][%d] createVersionByIdUsingPOSTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewCreateVersionByIDUsingPOSTNotFound() *CreateVersionByIDUsingPOSTNotFound
 	return &CreateVersionByIDUsingPOSTNotFound{}
 }
 
-/* CreateVersionByIDUsingPOSTNotFound describes a response with status code 404, with default header values.
+/*
+CreateVersionByIDUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type CreateVersionByIDUsingPOSTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create version by Id using p o s t not found response has a 2xx status code
+func (o *CreateVersionByIDUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create version by Id using p o s t not found response has a 3xx status code
+func (o *CreateVersionByIDUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create version by Id using p o s t not found response has a 4xx status code
+func (o *CreateVersionByIDUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create version by Id using p o s t not found response has a 5xx status code
+func (o *CreateVersionByIDUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create version by Id using p o s t not found response a status code equal to that given
+func (o *CreateVersionByIDUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CreateVersionByIDUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions][%d] createVersionByIdUsingPOSTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CreateVersionByIDUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions][%d] createVersionByIdUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CreateVersionByIDUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewCreateVersionByIDUsingPOSTInternalServerError() *CreateVersionByIDUsingP
 	return &CreateVersionByIDUsingPOSTInternalServerError{}
 }
 
-/* CreateVersionByIDUsingPOSTInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateVersionByIDUsingPOSTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CreateVersionByIDUsingPOSTInternalServerError struct {
 }
 
+// IsSuccess returns true when this create version by Id using p o s t internal server error response has a 2xx status code
+func (o *CreateVersionByIDUsingPOSTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create version by Id using p o s t internal server error response has a 3xx status code
+func (o *CreateVersionByIDUsingPOSTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create version by Id using p o s t internal server error response has a 4xx status code
+func (o *CreateVersionByIDUsingPOSTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create version by Id using p o s t internal server error response has a 5xx status code
+func (o *CreateVersionByIDUsingPOSTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this create version by Id using p o s t internal server error response a status code equal to that given
+func (o *CreateVersionByIDUsingPOSTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CreateVersionByIDUsingPOSTInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions][%d] createVersionByIdUsingPOSTInternalServerError ", 500)
+}
+
+func (o *CreateVersionByIDUsingPOSTInternalServerError) String() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions][%d] createVersionByIdUsingPOSTInternalServerError ", 500)
 }
 

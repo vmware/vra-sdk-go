@@ -52,10 +52,12 @@ func NewPowerOnMachineParamsWithHTTPClient(client *http.Client) *PowerOnMachineP
 	}
 }
 
-/* PowerOnMachineParams contains all the parameters to send to the API endpoint
-   for the power on machine operation.
+/*
+PowerOnMachineParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the power on machine operation.
+
+	Typically these are written to a http.Request.
 */
 type PowerOnMachineParams struct {
 

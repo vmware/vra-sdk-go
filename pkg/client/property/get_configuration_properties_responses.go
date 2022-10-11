@@ -45,7 +45,8 @@ func NewGetConfigurationPropertiesOK() *GetConfigurationPropertiesOK {
 	return &GetConfigurationPropertiesOK{}
 }
 
-/* GetConfigurationPropertiesOK describes a response with status code 200, with default header values.
+/*
+GetConfigurationPropertiesOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type GetConfigurationPropertiesOK struct {
 	Payload *models.ConfigurationProperty
 }
 
+// IsSuccess returns true when this get configuration properties o k response has a 2xx status code
+func (o *GetConfigurationPropertiesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get configuration properties o k response has a 3xx status code
+func (o *GetConfigurationPropertiesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get configuration properties o k response has a 4xx status code
+func (o *GetConfigurationPropertiesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get configuration properties o k response has a 5xx status code
+func (o *GetConfigurationPropertiesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get configuration properties o k response a status code equal to that given
+func (o *GetConfigurationPropertiesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetConfigurationPropertiesOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/configuration-properties][%d] getConfigurationPropertiesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetConfigurationPropertiesOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/configuration-properties][%d] getConfigurationPropertiesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetConfigurationPropertiesOK) GetPayload() *models.ConfigurationProperty {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewGetConfigurationPropertiesForbidden() *GetConfigurationPropertiesForbidd
 	return &GetConfigurationPropertiesForbidden{}
 }
 
-/* GetConfigurationPropertiesForbidden describes a response with status code 403, with default header values.
+/*
+GetConfigurationPropertiesForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type GetConfigurationPropertiesForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get configuration properties forbidden response has a 2xx status code
+func (o *GetConfigurationPropertiesForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get configuration properties forbidden response has a 3xx status code
+func (o *GetConfigurationPropertiesForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get configuration properties forbidden response has a 4xx status code
+func (o *GetConfigurationPropertiesForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get configuration properties forbidden response has a 5xx status code
+func (o *GetConfigurationPropertiesForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get configuration properties forbidden response a status code equal to that given
+func (o *GetConfigurationPropertiesForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetConfigurationPropertiesForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/configuration-properties][%d] getConfigurationPropertiesForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetConfigurationPropertiesForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/configuration-properties][%d] getConfigurationPropertiesForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetConfigurationPropertiesForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

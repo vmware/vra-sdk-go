@@ -52,10 +52,12 @@ func NewCreateDataCollectorParamsWithHTTPClient(client *http.Client) *CreateData
 	}
 }
 
-/* CreateDataCollectorParams contains all the parameters to send to the API endpoint
-   for the create data collector operation.
+/*
+CreateDataCollectorParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create data collector operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateDataCollectorParams struct {
 

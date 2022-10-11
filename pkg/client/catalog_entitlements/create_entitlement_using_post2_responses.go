@@ -63,7 +63,8 @@ func NewCreateEntitlementUsingPOST2OK() *CreateEntitlementUsingPOST2OK {
 	return &CreateEntitlementUsingPOST2OK{}
 }
 
-/* CreateEntitlementUsingPOST2OK describes a response with status code 200, with default header values.
+/*
+CreateEntitlementUsingPOST2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type CreateEntitlementUsingPOST2OK struct {
 	Payload *models.Entitlement
 }
 
+// IsSuccess returns true when this create entitlement using p o s t2 o k response has a 2xx status code
+func (o *CreateEntitlementUsingPOST2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create entitlement using p o s t2 o k response has a 3xx status code
+func (o *CreateEntitlementUsingPOST2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create entitlement using p o s t2 o k response has a 4xx status code
+func (o *CreateEntitlementUsingPOST2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create entitlement using p o s t2 o k response has a 5xx status code
+func (o *CreateEntitlementUsingPOST2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create entitlement using p o s t2 o k response a status code equal to that given
+func (o *CreateEntitlementUsingPOST2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CreateEntitlementUsingPOST2OK) Error() string {
 	return fmt.Sprintf("[POST /catalog/api/admin/entitlements][%d] createEntitlementUsingPOST2OK  %+v", 200, o.Payload)
 }
+
+func (o *CreateEntitlementUsingPOST2OK) String() string {
+	return fmt.Sprintf("[POST /catalog/api/admin/entitlements][%d] createEntitlementUsingPOST2OK  %+v", 200, o.Payload)
+}
+
 func (o *CreateEntitlementUsingPOST2OK) GetPayload() *models.Entitlement {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewCreateEntitlementUsingPOST2Created() *CreateEntitlementUsingPOST2Created
 	return &CreateEntitlementUsingPOST2Created{}
 }
 
-/* CreateEntitlementUsingPOST2Created describes a response with status code 201, with default header values.
+/*
+CreateEntitlementUsingPOST2Created describes a response with status code 201, with default header values.
 
 Created
 */
@@ -103,9 +135,39 @@ type CreateEntitlementUsingPOST2Created struct {
 	Payload *models.Entitlement
 }
 
+// IsSuccess returns true when this create entitlement using p o s t2 created response has a 2xx status code
+func (o *CreateEntitlementUsingPOST2Created) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create entitlement using p o s t2 created response has a 3xx status code
+func (o *CreateEntitlementUsingPOST2Created) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create entitlement using p o s t2 created response has a 4xx status code
+func (o *CreateEntitlementUsingPOST2Created) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create entitlement using p o s t2 created response has a 5xx status code
+func (o *CreateEntitlementUsingPOST2Created) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create entitlement using p o s t2 created response a status code equal to that given
+func (o *CreateEntitlementUsingPOST2Created) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateEntitlementUsingPOST2Created) Error() string {
 	return fmt.Sprintf("[POST /catalog/api/admin/entitlements][%d] createEntitlementUsingPOST2Created  %+v", 201, o.Payload)
 }
+
+func (o *CreateEntitlementUsingPOST2Created) String() string {
+	return fmt.Sprintf("[POST /catalog/api/admin/entitlements][%d] createEntitlementUsingPOST2Created  %+v", 201, o.Payload)
+}
+
 func (o *CreateEntitlementUsingPOST2Created) GetPayload() *models.Entitlement {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewCreateEntitlementUsingPOST2BadRequest() *CreateEntitlementUsingPOST2BadR
 	return &CreateEntitlementUsingPOST2BadRequest{}
 }
 
-/* CreateEntitlementUsingPOST2BadRequest describes a response with status code 400, with default header values.
+/*
+CreateEntitlementUsingPOST2BadRequest describes a response with status code 400, with default header values.
 
 Catalog item or source cannot be entitled to the project
 */
@@ -135,9 +198,39 @@ type CreateEntitlementUsingPOST2BadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create entitlement using p o s t2 bad request response has a 2xx status code
+func (o *CreateEntitlementUsingPOST2BadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create entitlement using p o s t2 bad request response has a 3xx status code
+func (o *CreateEntitlementUsingPOST2BadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create entitlement using p o s t2 bad request response has a 4xx status code
+func (o *CreateEntitlementUsingPOST2BadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create entitlement using p o s t2 bad request response has a 5xx status code
+func (o *CreateEntitlementUsingPOST2BadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create entitlement using p o s t2 bad request response a status code equal to that given
+func (o *CreateEntitlementUsingPOST2BadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateEntitlementUsingPOST2BadRequest) Error() string {
 	return fmt.Sprintf("[POST /catalog/api/admin/entitlements][%d] createEntitlementUsingPOST2BadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateEntitlementUsingPOST2BadRequest) String() string {
+	return fmt.Sprintf("[POST /catalog/api/admin/entitlements][%d] createEntitlementUsingPOST2BadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateEntitlementUsingPOST2BadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -159,14 +252,44 @@ func NewCreateEntitlementUsingPOST2Unauthorized() *CreateEntitlementUsingPOST2Un
 	return &CreateEntitlementUsingPOST2Unauthorized{}
 }
 
-/* CreateEntitlementUsingPOST2Unauthorized describes a response with status code 401, with default header values.
+/*
+CreateEntitlementUsingPOST2Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type CreateEntitlementUsingPOST2Unauthorized struct {
 }
 
+// IsSuccess returns true when this create entitlement using p o s t2 unauthorized response has a 2xx status code
+func (o *CreateEntitlementUsingPOST2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create entitlement using p o s t2 unauthorized response has a 3xx status code
+func (o *CreateEntitlementUsingPOST2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create entitlement using p o s t2 unauthorized response has a 4xx status code
+func (o *CreateEntitlementUsingPOST2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create entitlement using p o s t2 unauthorized response has a 5xx status code
+func (o *CreateEntitlementUsingPOST2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create entitlement using p o s t2 unauthorized response a status code equal to that given
+func (o *CreateEntitlementUsingPOST2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreateEntitlementUsingPOST2Unauthorized) Error() string {
+	return fmt.Sprintf("[POST /catalog/api/admin/entitlements][%d] createEntitlementUsingPOST2Unauthorized ", 401)
+}
+
+func (o *CreateEntitlementUsingPOST2Unauthorized) String() string {
 	return fmt.Sprintf("[POST /catalog/api/admin/entitlements][%d] createEntitlementUsingPOST2Unauthorized ", 401)
 }
 
@@ -180,7 +303,8 @@ func NewCreateEntitlementUsingPOST2NotFound() *CreateEntitlementUsingPOST2NotFou
 	return &CreateEntitlementUsingPOST2NotFound{}
 }
 
-/* CreateEntitlementUsingPOST2NotFound describes a response with status code 404, with default header values.
+/*
+CreateEntitlementUsingPOST2NotFound describes a response with status code 404, with default header values.
 
 Catalog item or catalog source not found
 */
@@ -188,9 +312,39 @@ type CreateEntitlementUsingPOST2NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create entitlement using p o s t2 not found response has a 2xx status code
+func (o *CreateEntitlementUsingPOST2NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create entitlement using p o s t2 not found response has a 3xx status code
+func (o *CreateEntitlementUsingPOST2NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create entitlement using p o s t2 not found response has a 4xx status code
+func (o *CreateEntitlementUsingPOST2NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create entitlement using p o s t2 not found response has a 5xx status code
+func (o *CreateEntitlementUsingPOST2NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create entitlement using p o s t2 not found response a status code equal to that given
+func (o *CreateEntitlementUsingPOST2NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CreateEntitlementUsingPOST2NotFound) Error() string {
 	return fmt.Sprintf("[POST /catalog/api/admin/entitlements][%d] createEntitlementUsingPOST2NotFound  %+v", 404, o.Payload)
 }
+
+func (o *CreateEntitlementUsingPOST2NotFound) String() string {
+	return fmt.Sprintf("[POST /catalog/api/admin/entitlements][%d] createEntitlementUsingPOST2NotFound  %+v", 404, o.Payload)
+}
+
 func (o *CreateEntitlementUsingPOST2NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

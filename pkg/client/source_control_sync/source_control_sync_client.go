@@ -42,7 +42,7 @@ type ClientService interface {
 }
 
 /*
-  GetSyncRequestUsingGET gets a sync request by id
+GetSyncRequestUsingGET gets a sync request by id
 */
 func (a *Client) GetSyncRequestUsingGET(params *GetSyncRequestUsingGETParams, opts ...ClientOption) (*GetSyncRequestUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -80,9 +80,9 @@ func (a *Client) GetSyncRequestUsingGET(params *GetSyncRequestUsingGETParams, op
 }
 
 /*
-  ScheduleSyncAllUsingPOST submits sync request for the projects
+ScheduleSyncAllUsingPOST submits sync request for the projects
 
-  Request sync for the sources belonging to the user's projects or specified projects
+Request sync for the sources belonging to the user's projects or specified projects
 */
 func (a *Client) ScheduleSyncAllUsingPOST(params *ScheduleSyncAllUsingPOSTParams, opts ...ClientOption) (*ScheduleSyncAllUsingPOSTAccepted, error) {
 	// TODO: Validate the params before sending
@@ -120,9 +120,9 @@ func (a *Client) ScheduleSyncAllUsingPOST(params *ScheduleSyncAllUsingPOSTParams
 }
 
 /*
-  ScheduleSyncUsingPOST creates a sync request
+ScheduleSyncUsingPOST creates a sync request
 
-  Request sync for a content source
+Request sync for a content source
 */
 func (a *Client) ScheduleSyncUsingPOST(params *ScheduleSyncUsingPOSTParams, opts ...ClientOption) (*ScheduleSyncUsingPOSTAccepted, error) {
 	// TODO: Validate the params before sending
@@ -160,9 +160,9 @@ func (a *Client) ScheduleSyncUsingPOST(params *ScheduleSyncUsingPOSTParams, opts
 }
 
 /*
-  SyncHistoryUsingGET gets sync history
+SyncHistoryUsingGET gets sync history
 
-  Get history for files synced via source control sync
+Get history for files synced via source control sync
 */
 func (a *Client) SyncHistoryUsingGET(params *SyncHistoryUsingGETParams, opts ...ClientOption) (*SyncHistoryUsingGETOK, error) {
 	// TODO: Validate the params before sending

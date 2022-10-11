@@ -52,10 +52,12 @@ func NewSyncStatusUsingGETParamsWithHTTPClient(client *http.Client) *SyncStatusU
 	}
 }
 
-/* SyncStatusUsingGETParams contains all the parameters to send to the API endpoint
-   for the sync status using g e t operation.
+/*
+SyncStatusUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the sync status using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type SyncStatusUsingGETParams struct {
 

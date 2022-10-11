@@ -36,9 +36,9 @@ type ClientService interface {
 }
 
 /*
-  GetImages gets images
+GetImages gets images
 
-  Get all images defined in ImageProfile.
+Get all images defined in ImageProfile.
 */
 func (a *Client) GetImages(params *GetImagesParams, opts ...ClientOption) (*GetImagesOK, error) {
 	// TODO: Validate the params before sending

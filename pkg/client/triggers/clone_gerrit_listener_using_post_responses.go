@@ -63,7 +63,8 @@ func NewCloneGerritListenerUsingPOSTOK() *CloneGerritListenerUsingPOSTOK {
 	return &CloneGerritListenerUsingPOSTOK{}
 }
 
-/* CloneGerritListenerUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+CloneGerritListenerUsingPOSTOK describes a response with status code 200, with default header values.
 
 'Success' with Gerrit Listener Clone
 */
@@ -71,9 +72,39 @@ type CloneGerritListenerUsingPOSTOK struct {
 	Payload models.GerritListener
 }
 
+// IsSuccess returns true when this clone gerrit listener using p o s t o k response has a 2xx status code
+func (o *CloneGerritListenerUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this clone gerrit listener using p o s t o k response has a 3xx status code
+func (o *CloneGerritListenerUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this clone gerrit listener using p o s t o k response has a 4xx status code
+func (o *CloneGerritListenerUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this clone gerrit listener using p o s t o k response has a 5xx status code
+func (o *CloneGerritListenerUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this clone gerrit listener using p o s t o k response a status code equal to that given
+func (o *CloneGerritListenerUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CloneGerritListenerUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-listeners/{id}][%d] cloneGerritListenerUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *CloneGerritListenerUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-listeners/{id}][%d] cloneGerritListenerUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *CloneGerritListenerUsingPOSTOK) GetPayload() models.GerritListener {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewCloneGerritListenerUsingPOSTUnauthorized() *CloneGerritListenerUsingPOST
 	return &CloneGerritListenerUsingPOSTUnauthorized{}
 }
 
-/* CloneGerritListenerUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+CloneGerritListenerUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type CloneGerritListenerUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this clone gerrit listener using p o s t unauthorized response has a 2xx status code
+func (o *CloneGerritListenerUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this clone gerrit listener using p o s t unauthorized response has a 3xx status code
+func (o *CloneGerritListenerUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this clone gerrit listener using p o s t unauthorized response has a 4xx status code
+func (o *CloneGerritListenerUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this clone gerrit listener using p o s t unauthorized response has a 5xx status code
+func (o *CloneGerritListenerUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this clone gerrit listener using p o s t unauthorized response a status code equal to that given
+func (o *CloneGerritListenerUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CloneGerritListenerUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-listeners/{id}][%d] cloneGerritListenerUsingPOSTUnauthorized ", 401)
+}
+
+func (o *CloneGerritListenerUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-listeners/{id}][%d] cloneGerritListenerUsingPOSTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewCloneGerritListenerUsingPOSTForbidden() *CloneGerritListenerUsingPOSTFor
 	return &CloneGerritListenerUsingPOSTForbidden{}
 }
 
-/* CloneGerritListenerUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+CloneGerritListenerUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type CloneGerritListenerUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this clone gerrit listener using p o s t forbidden response has a 2xx status code
+func (o *CloneGerritListenerUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this clone gerrit listener using p o s t forbidden response has a 3xx status code
+func (o *CloneGerritListenerUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this clone gerrit listener using p o s t forbidden response has a 4xx status code
+func (o *CloneGerritListenerUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this clone gerrit listener using p o s t forbidden response has a 5xx status code
+func (o *CloneGerritListenerUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this clone gerrit listener using p o s t forbidden response a status code equal to that given
+func (o *CloneGerritListenerUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CloneGerritListenerUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-listeners/{id}][%d] cloneGerritListenerUsingPOSTForbidden ", 403)
+}
+
+func (o *CloneGerritListenerUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-listeners/{id}][%d] cloneGerritListenerUsingPOSTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewCloneGerritListenerUsingPOSTNotFound() *CloneGerritListenerUsingPOSTNotF
 	return &CloneGerritListenerUsingPOSTNotFound{}
 }
 
-/* CloneGerritListenerUsingPOSTNotFound describes a response with status code 404, with default header values.
+/*
+CloneGerritListenerUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type CloneGerritListenerUsingPOSTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this clone gerrit listener using p o s t not found response has a 2xx status code
+func (o *CloneGerritListenerUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this clone gerrit listener using p o s t not found response has a 3xx status code
+func (o *CloneGerritListenerUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this clone gerrit listener using p o s t not found response has a 4xx status code
+func (o *CloneGerritListenerUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this clone gerrit listener using p o s t not found response has a 5xx status code
+func (o *CloneGerritListenerUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this clone gerrit listener using p o s t not found response a status code equal to that given
+func (o *CloneGerritListenerUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CloneGerritListenerUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-listeners/{id}][%d] cloneGerritListenerUsingPOSTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CloneGerritListenerUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-listeners/{id}][%d] cloneGerritListenerUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CloneGerritListenerUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewCloneGerritListenerUsingPOSTInternalServerError() *CloneGerritListenerUs
 	return &CloneGerritListenerUsingPOSTInternalServerError{}
 }
 
-/* CloneGerritListenerUsingPOSTInternalServerError describes a response with status code 500, with default header values.
+/*
+CloneGerritListenerUsingPOSTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CloneGerritListenerUsingPOSTInternalServerError struct {
 }
 
+// IsSuccess returns true when this clone gerrit listener using p o s t internal server error response has a 2xx status code
+func (o *CloneGerritListenerUsingPOSTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this clone gerrit listener using p o s t internal server error response has a 3xx status code
+func (o *CloneGerritListenerUsingPOSTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this clone gerrit listener using p o s t internal server error response has a 4xx status code
+func (o *CloneGerritListenerUsingPOSTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this clone gerrit listener using p o s t internal server error response has a 5xx status code
+func (o *CloneGerritListenerUsingPOSTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this clone gerrit listener using p o s t internal server error response a status code equal to that given
+func (o *CloneGerritListenerUsingPOSTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CloneGerritListenerUsingPOSTInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-listeners/{id}][%d] cloneGerritListenerUsingPOSTInternalServerError ", 500)
+}
+
+func (o *CloneGerritListenerUsingPOSTInternalServerError) String() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-listeners/{id}][%d] cloneGerritListenerUsingPOSTInternalServerError ", 500)
 }
 

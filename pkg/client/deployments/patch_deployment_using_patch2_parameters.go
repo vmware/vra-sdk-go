@@ -54,10 +54,12 @@ func NewPatchDeploymentUsingPATCH2ParamsWithHTTPClient(client *http.Client) *Pat
 	}
 }
 
-/* PatchDeploymentUsingPATCH2Params contains all the parameters to send to the API endpoint
-   for the patch deployment using p a t c h 2 operation.
+/*
+PatchDeploymentUsingPATCH2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the patch deployment using p a t c h 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type PatchDeploymentUsingPATCH2Params struct {
 

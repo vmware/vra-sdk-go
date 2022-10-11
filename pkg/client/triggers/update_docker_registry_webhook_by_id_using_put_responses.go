@@ -63,7 +63,8 @@ func NewUpdateDockerRegistryWebhookByIDUsingPUTOK() *UpdateDockerRegistryWebhook
 	return &UpdateDockerRegistryWebhookByIDUsingPUTOK{}
 }
 
-/* UpdateDockerRegistryWebhookByIDUsingPUTOK describes a response with status code 200, with default header values.
+/*
+UpdateDockerRegistryWebhookByIDUsingPUTOK describes a response with status code 200, with default header values.
 
 'Success' with Docker Registry Webhook Update
 */
@@ -71,9 +72,39 @@ type UpdateDockerRegistryWebhookByIDUsingPUTOK struct {
 	Payload models.DockerRegistryWebHook
 }
 
+// IsSuccess returns true when this update docker registry webhook by Id using p u t o k response has a 2xx status code
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update docker registry webhook by Id using p u t o k response has a 3xx status code
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update docker registry webhook by Id using p u t o k response has a 4xx status code
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update docker registry webhook by Id using p u t o k response has a 5xx status code
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update docker registry webhook by Id using p u t o k response a status code equal to that given
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateDockerRegistryWebhookByIDUsingPUTOK) Error() string {
 	return fmt.Sprintf("[PUT /codestream/api/registry-webhooks/{id}][%d] updateDockerRegistryWebhookByIdUsingPUTOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTOK) String() string {
+	return fmt.Sprintf("[PUT /codestream/api/registry-webhooks/{id}][%d] updateDockerRegistryWebhookByIdUsingPUTOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateDockerRegistryWebhookByIDUsingPUTOK) GetPayload() models.DockerRegistryWebHook {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewUpdateDockerRegistryWebhookByIDUsingPUTUnauthorized() *UpdateDockerRegis
 	return &UpdateDockerRegistryWebhookByIDUsingPUTUnauthorized{}
 }
 
-/* UpdateDockerRegistryWebhookByIDUsingPUTUnauthorized describes a response with status code 401, with default header values.
+/*
+UpdateDockerRegistryWebhookByIDUsingPUTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type UpdateDockerRegistryWebhookByIDUsingPUTUnauthorized struct {
 }
 
+// IsSuccess returns true when this update docker registry webhook by Id using p u t unauthorized response has a 2xx status code
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update docker registry webhook by Id using p u t unauthorized response has a 3xx status code
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update docker registry webhook by Id using p u t unauthorized response has a 4xx status code
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update docker registry webhook by Id using p u t unauthorized response has a 5xx status code
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update docker registry webhook by Id using p u t unauthorized response a status code equal to that given
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UpdateDockerRegistryWebhookByIDUsingPUTUnauthorized) Error() string {
+	return fmt.Sprintf("[PUT /codestream/api/registry-webhooks/{id}][%d] updateDockerRegistryWebhookByIdUsingPUTUnauthorized ", 401)
+}
+
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /codestream/api/registry-webhooks/{id}][%d] updateDockerRegistryWebhookByIdUsingPUTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewUpdateDockerRegistryWebhookByIDUsingPUTForbidden() *UpdateDockerRegistry
 	return &UpdateDockerRegistryWebhookByIDUsingPUTForbidden{}
 }
 
-/* UpdateDockerRegistryWebhookByIDUsingPUTForbidden describes a response with status code 403, with default header values.
+/*
+UpdateDockerRegistryWebhookByIDUsingPUTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type UpdateDockerRegistryWebhookByIDUsingPUTForbidden struct {
 }
 
+// IsSuccess returns true when this update docker registry webhook by Id using p u t forbidden response has a 2xx status code
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update docker registry webhook by Id using p u t forbidden response has a 3xx status code
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update docker registry webhook by Id using p u t forbidden response has a 4xx status code
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update docker registry webhook by Id using p u t forbidden response has a 5xx status code
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update docker registry webhook by Id using p u t forbidden response a status code equal to that given
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateDockerRegistryWebhookByIDUsingPUTForbidden) Error() string {
+	return fmt.Sprintf("[PUT /codestream/api/registry-webhooks/{id}][%d] updateDockerRegistryWebhookByIdUsingPUTForbidden ", 403)
+}
+
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTForbidden) String() string {
 	return fmt.Sprintf("[PUT /codestream/api/registry-webhooks/{id}][%d] updateDockerRegistryWebhookByIdUsingPUTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewUpdateDockerRegistryWebhookByIDUsingPUTNotFound() *UpdateDockerRegistryW
 	return &UpdateDockerRegistryWebhookByIDUsingPUTNotFound{}
 }
 
-/* UpdateDockerRegistryWebhookByIDUsingPUTNotFound describes a response with status code 404, with default header values.
+/*
+UpdateDockerRegistryWebhookByIDUsingPUTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type UpdateDockerRegistryWebhookByIDUsingPUTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update docker registry webhook by Id using p u t not found response has a 2xx status code
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update docker registry webhook by Id using p u t not found response has a 3xx status code
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update docker registry webhook by Id using p u t not found response has a 4xx status code
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update docker registry webhook by Id using p u t not found response has a 5xx status code
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update docker registry webhook by Id using p u t not found response a status code equal to that given
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateDockerRegistryWebhookByIDUsingPUTNotFound) Error() string {
 	return fmt.Sprintf("[PUT /codestream/api/registry-webhooks/{id}][%d] updateDockerRegistryWebhookByIdUsingPUTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTNotFound) String() string {
+	return fmt.Sprintf("[PUT /codestream/api/registry-webhooks/{id}][%d] updateDockerRegistryWebhookByIdUsingPUTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UpdateDockerRegistryWebhookByIDUsingPUTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewUpdateDockerRegistryWebhookByIDUsingPUTInternalServerError() *UpdateDock
 	return &UpdateDockerRegistryWebhookByIDUsingPUTInternalServerError{}
 }
 
-/* UpdateDockerRegistryWebhookByIDUsingPUTInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateDockerRegistryWebhookByIDUsingPUTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type UpdateDockerRegistryWebhookByIDUsingPUTInternalServerError struct {
 }
 
+// IsSuccess returns true when this update docker registry webhook by Id using p u t internal server error response has a 2xx status code
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update docker registry webhook by Id using p u t internal server error response has a 3xx status code
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update docker registry webhook by Id using p u t internal server error response has a 4xx status code
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update docker registry webhook by Id using p u t internal server error response has a 5xx status code
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this update docker registry webhook by Id using p u t internal server error response a status code equal to that given
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *UpdateDockerRegistryWebhookByIDUsingPUTInternalServerError) Error() string {
+	return fmt.Sprintf("[PUT /codestream/api/registry-webhooks/{id}][%d] updateDockerRegistryWebhookByIdUsingPUTInternalServerError ", 500)
+}
+
+func (o *UpdateDockerRegistryWebhookByIDUsingPUTInternalServerError) String() string {
 	return fmt.Sprintf("[PUT /codestream/api/registry-webhooks/{id}][%d] updateDockerRegistryWebhookByIdUsingPUTInternalServerError ", 500)
 }
 

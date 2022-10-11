@@ -57,7 +57,8 @@ func NewGetBlueprintInputsSchemaUsingGET1OK() *GetBlueprintInputsSchemaUsingGET1
 	return &GetBlueprintInputsSchemaUsingGET1OK{}
 }
 
-/* GetBlueprintInputsSchemaUsingGET1OK describes a response with status code 200, with default header values.
+/*
+GetBlueprintInputsSchemaUsingGET1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -65,9 +66,39 @@ type GetBlueprintInputsSchemaUsingGET1OK struct {
 	Payload *models.PropertyDefinition
 }
 
+// IsSuccess returns true when this get blueprint inputs schema using g e t1 o k response has a 2xx status code
+func (o *GetBlueprintInputsSchemaUsingGET1OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get blueprint inputs schema using g e t1 o k response has a 3xx status code
+func (o *GetBlueprintInputsSchemaUsingGET1OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get blueprint inputs schema using g e t1 o k response has a 4xx status code
+func (o *GetBlueprintInputsSchemaUsingGET1OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get blueprint inputs schema using g e t1 o k response has a 5xx status code
+func (o *GetBlueprintInputsSchemaUsingGET1OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get blueprint inputs schema using g e t1 o k response a status code equal to that given
+func (o *GetBlueprintInputsSchemaUsingGET1OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetBlueprintInputsSchemaUsingGET1OK) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprints/{blueprintId}/inputs-schema][%d] getBlueprintInputsSchemaUsingGET1OK  %+v", 200, o.Payload)
 }
+
+func (o *GetBlueprintInputsSchemaUsingGET1OK) String() string {
+	return fmt.Sprintf("[GET /blueprint/api/blueprints/{blueprintId}/inputs-schema][%d] getBlueprintInputsSchemaUsingGET1OK  %+v", 200, o.Payload)
+}
+
 func (o *GetBlueprintInputsSchemaUsingGET1OK) GetPayload() *models.PropertyDefinition {
 	return o.Payload
 }
@@ -89,14 +120,44 @@ func NewGetBlueprintInputsSchemaUsingGET1Unauthorized() *GetBlueprintInputsSchem
 	return &GetBlueprintInputsSchemaUsingGET1Unauthorized{}
 }
 
-/* GetBlueprintInputsSchemaUsingGET1Unauthorized describes a response with status code 401, with default header values.
+/*
+GetBlueprintInputsSchemaUsingGET1Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type GetBlueprintInputsSchemaUsingGET1Unauthorized struct {
 }
 
+// IsSuccess returns true when this get blueprint inputs schema using g e t1 unauthorized response has a 2xx status code
+func (o *GetBlueprintInputsSchemaUsingGET1Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get blueprint inputs schema using g e t1 unauthorized response has a 3xx status code
+func (o *GetBlueprintInputsSchemaUsingGET1Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get blueprint inputs schema using g e t1 unauthorized response has a 4xx status code
+func (o *GetBlueprintInputsSchemaUsingGET1Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get blueprint inputs schema using g e t1 unauthorized response has a 5xx status code
+func (o *GetBlueprintInputsSchemaUsingGET1Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get blueprint inputs schema using g e t1 unauthorized response a status code equal to that given
+func (o *GetBlueprintInputsSchemaUsingGET1Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetBlueprintInputsSchemaUsingGET1Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /blueprint/api/blueprints/{blueprintId}/inputs-schema][%d] getBlueprintInputsSchemaUsingGET1Unauthorized ", 401)
+}
+
+func (o *GetBlueprintInputsSchemaUsingGET1Unauthorized) String() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprints/{blueprintId}/inputs-schema][%d] getBlueprintInputsSchemaUsingGET1Unauthorized ", 401)
 }
 
@@ -110,14 +171,44 @@ func NewGetBlueprintInputsSchemaUsingGET1Forbidden() *GetBlueprintInputsSchemaUs
 	return &GetBlueprintInputsSchemaUsingGET1Forbidden{}
 }
 
-/* GetBlueprintInputsSchemaUsingGET1Forbidden describes a response with status code 403, with default header values.
+/*
+GetBlueprintInputsSchemaUsingGET1Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetBlueprintInputsSchemaUsingGET1Forbidden struct {
 }
 
+// IsSuccess returns true when this get blueprint inputs schema using g e t1 forbidden response has a 2xx status code
+func (o *GetBlueprintInputsSchemaUsingGET1Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get blueprint inputs schema using g e t1 forbidden response has a 3xx status code
+func (o *GetBlueprintInputsSchemaUsingGET1Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get blueprint inputs schema using g e t1 forbidden response has a 4xx status code
+func (o *GetBlueprintInputsSchemaUsingGET1Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get blueprint inputs schema using g e t1 forbidden response has a 5xx status code
+func (o *GetBlueprintInputsSchemaUsingGET1Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get blueprint inputs schema using g e t1 forbidden response a status code equal to that given
+func (o *GetBlueprintInputsSchemaUsingGET1Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetBlueprintInputsSchemaUsingGET1Forbidden) Error() string {
+	return fmt.Sprintf("[GET /blueprint/api/blueprints/{blueprintId}/inputs-schema][%d] getBlueprintInputsSchemaUsingGET1Forbidden ", 403)
+}
+
+func (o *GetBlueprintInputsSchemaUsingGET1Forbidden) String() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprints/{blueprintId}/inputs-schema][%d] getBlueprintInputsSchemaUsingGET1Forbidden ", 403)
 }
 
@@ -131,7 +222,8 @@ func NewGetBlueprintInputsSchemaUsingGET1NotFound() *GetBlueprintInputsSchemaUsi
 	return &GetBlueprintInputsSchemaUsingGET1NotFound{}
 }
 
-/* GetBlueprintInputsSchemaUsingGET1NotFound describes a response with status code 404, with default header values.
+/*
+GetBlueprintInputsSchemaUsingGET1NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -139,9 +231,39 @@ type GetBlueprintInputsSchemaUsingGET1NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get blueprint inputs schema using g e t1 not found response has a 2xx status code
+func (o *GetBlueprintInputsSchemaUsingGET1NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get blueprint inputs schema using g e t1 not found response has a 3xx status code
+func (o *GetBlueprintInputsSchemaUsingGET1NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get blueprint inputs schema using g e t1 not found response has a 4xx status code
+func (o *GetBlueprintInputsSchemaUsingGET1NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get blueprint inputs schema using g e t1 not found response has a 5xx status code
+func (o *GetBlueprintInputsSchemaUsingGET1NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get blueprint inputs schema using g e t1 not found response a status code equal to that given
+func (o *GetBlueprintInputsSchemaUsingGET1NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetBlueprintInputsSchemaUsingGET1NotFound) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprints/{blueprintId}/inputs-schema][%d] getBlueprintInputsSchemaUsingGET1NotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetBlueprintInputsSchemaUsingGET1NotFound) String() string {
+	return fmt.Sprintf("[GET /blueprint/api/blueprints/{blueprintId}/inputs-schema][%d] getBlueprintInputsSchemaUsingGET1NotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetBlueprintInputsSchemaUsingGET1NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

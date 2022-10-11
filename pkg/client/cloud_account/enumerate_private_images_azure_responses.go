@@ -51,7 +51,8 @@ func NewEnumeratePrivateImagesAzureAccepted() *EnumeratePrivateImagesAzureAccept
 	return &EnumeratePrivateImagesAzureAccepted{}
 }
 
-/* EnumeratePrivateImagesAzureAccepted describes a response with status code 202, with default header values.
+/*
+EnumeratePrivateImagesAzureAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type EnumeratePrivateImagesAzureAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this enumerate private images azure accepted response has a 2xx status code
+func (o *EnumeratePrivateImagesAzureAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this enumerate private images azure accepted response has a 3xx status code
+func (o *EnumeratePrivateImagesAzureAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this enumerate private images azure accepted response has a 4xx status code
+func (o *EnumeratePrivateImagesAzureAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this enumerate private images azure accepted response has a 5xx status code
+func (o *EnumeratePrivateImagesAzureAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this enumerate private images azure accepted response a status code equal to that given
+func (o *EnumeratePrivateImagesAzureAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *EnumeratePrivateImagesAzureAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-azure/{id}/private-image-enumeration][%d] enumeratePrivateImagesAzureAccepted  %+v", 202, o.Payload)
 }
+
+func (o *EnumeratePrivateImagesAzureAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-azure/{id}/private-image-enumeration][%d] enumeratePrivateImagesAzureAccepted  %+v", 202, o.Payload)
+}
+
 func (o *EnumeratePrivateImagesAzureAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewEnumeratePrivateImagesAzureBadRequest() *EnumeratePrivateImagesAzureBadR
 	return &EnumeratePrivateImagesAzureBadRequest{}
 }
 
-/* EnumeratePrivateImagesAzureBadRequest describes a response with status code 400, with default header values.
+/*
+EnumeratePrivateImagesAzureBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type EnumeratePrivateImagesAzureBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this enumerate private images azure bad request response has a 2xx status code
+func (o *EnumeratePrivateImagesAzureBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this enumerate private images azure bad request response has a 3xx status code
+func (o *EnumeratePrivateImagesAzureBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this enumerate private images azure bad request response has a 4xx status code
+func (o *EnumeratePrivateImagesAzureBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this enumerate private images azure bad request response has a 5xx status code
+func (o *EnumeratePrivateImagesAzureBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this enumerate private images azure bad request response a status code equal to that given
+func (o *EnumeratePrivateImagesAzureBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *EnumeratePrivateImagesAzureBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-azure/{id}/private-image-enumeration][%d] enumeratePrivateImagesAzureBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *EnumeratePrivateImagesAzureBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-azure/{id}/private-image-enumeration][%d] enumeratePrivateImagesAzureBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *EnumeratePrivateImagesAzureBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewEnumeratePrivateImagesAzureForbidden() *EnumeratePrivateImagesAzureForbi
 	return &EnumeratePrivateImagesAzureForbidden{}
 }
 
-/* EnumeratePrivateImagesAzureForbidden describes a response with status code 403, with default header values.
+/*
+EnumeratePrivateImagesAzureForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type EnumeratePrivateImagesAzureForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this enumerate private images azure forbidden response has a 2xx status code
+func (o *EnumeratePrivateImagesAzureForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this enumerate private images azure forbidden response has a 3xx status code
+func (o *EnumeratePrivateImagesAzureForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this enumerate private images azure forbidden response has a 4xx status code
+func (o *EnumeratePrivateImagesAzureForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this enumerate private images azure forbidden response has a 5xx status code
+func (o *EnumeratePrivateImagesAzureForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this enumerate private images azure forbidden response a status code equal to that given
+func (o *EnumeratePrivateImagesAzureForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *EnumeratePrivateImagesAzureForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-azure/{id}/private-image-enumeration][%d] enumeratePrivateImagesAzureForbidden  %+v", 403, o.Payload)
 }
+
+func (o *EnumeratePrivateImagesAzureForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-azure/{id}/private-image-enumeration][%d] enumeratePrivateImagesAzureForbidden  %+v", 403, o.Payload)
+}
+
 func (o *EnumeratePrivateImagesAzureForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

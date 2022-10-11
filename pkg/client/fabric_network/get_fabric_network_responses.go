@@ -51,7 +51,8 @@ func NewGetFabricNetworkOK() *GetFabricNetworkOK {
 	return &GetFabricNetworkOK{}
 }
 
-/* GetFabricNetworkOK describes a response with status code 200, with default header values.
+/*
+GetFabricNetworkOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetFabricNetworkOK struct {
 	Payload *models.FabricNetwork
 }
 
+// IsSuccess returns true when this get fabric network o k response has a 2xx status code
+func (o *GetFabricNetworkOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get fabric network o k response has a 3xx status code
+func (o *GetFabricNetworkOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get fabric network o k response has a 4xx status code
+func (o *GetFabricNetworkOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get fabric network o k response has a 5xx status code
+func (o *GetFabricNetworkOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get fabric network o k response a status code equal to that given
+func (o *GetFabricNetworkOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetFabricNetworkOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-networks/{id}][%d] getFabricNetworkOK  %+v", 200, o.Payload)
 }
+
+func (o *GetFabricNetworkOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/fabric-networks/{id}][%d] getFabricNetworkOK  %+v", 200, o.Payload)
+}
+
 func (o *GetFabricNetworkOK) GetPayload() *models.FabricNetwork {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetFabricNetworkForbidden() *GetFabricNetworkForbidden {
 	return &GetFabricNetworkForbidden{}
 }
 
-/* GetFabricNetworkForbidden describes a response with status code 403, with default header values.
+/*
+GetFabricNetworkForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type GetFabricNetworkForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get fabric network forbidden response has a 2xx status code
+func (o *GetFabricNetworkForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get fabric network forbidden response has a 3xx status code
+func (o *GetFabricNetworkForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get fabric network forbidden response has a 4xx status code
+func (o *GetFabricNetworkForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get fabric network forbidden response has a 5xx status code
+func (o *GetFabricNetworkForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get fabric network forbidden response a status code equal to that given
+func (o *GetFabricNetworkForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetFabricNetworkForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-networks/{id}][%d] getFabricNetworkForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetFabricNetworkForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/fabric-networks/{id}][%d] getFabricNetworkForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetFabricNetworkForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewGetFabricNetworkNotFound() *GetFabricNetworkNotFound {
 	return &GetFabricNetworkNotFound{}
 }
 
-/* GetFabricNetworkNotFound describes a response with status code 404, with default header values.
+/*
+GetFabricNetworkNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type GetFabricNetworkNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get fabric network not found response has a 2xx status code
+func (o *GetFabricNetworkNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get fabric network not found response has a 3xx status code
+func (o *GetFabricNetworkNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get fabric network not found response has a 4xx status code
+func (o *GetFabricNetworkNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get fabric network not found response has a 5xx status code
+func (o *GetFabricNetworkNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get fabric network not found response a status code equal to that given
+func (o *GetFabricNetworkNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetFabricNetworkNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-networks/{id}][%d] getFabricNetworkNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetFabricNetworkNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/fabric-networks/{id}][%d] getFabricNetworkNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetFabricNetworkNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

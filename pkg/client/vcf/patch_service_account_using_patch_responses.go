@@ -29,6 +29,30 @@ func (o *PatchServiceAccountUsingPATCHReader) ReadResponse(response runtime.Clie
 			return nil, err
 		}
 		return result, nil
+	case 204:
+		result := NewPatchServiceAccountUsingPATCHNoContent()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
+	case 401:
+		result := NewPatchServiceAccountUsingPATCHUnauthorized()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 403:
+		result := NewPatchServiceAccountUsingPATCHForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 404:
+		result := NewPatchServiceAccountUsingPATCHNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +63,8 @@ func NewPatchServiceAccountUsingPATCHOK() *PatchServiceAccountUsingPATCHOK {
 	return &PatchServiceAccountUsingPATCHOK{}
 }
 
-/* PatchServiceAccountUsingPATCHOK describes a response with status code 200, with default header values.
+/*
+PatchServiceAccountUsingPATCHOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +72,39 @@ type PatchServiceAccountUsingPATCHOK struct {
 	Payload []*models.VcfServiceCredential
 }
 
+// IsSuccess returns true when this patch service account using p a t c h o k response has a 2xx status code
+func (o *PatchServiceAccountUsingPATCHOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch service account using p a t c h o k response has a 3xx status code
+func (o *PatchServiceAccountUsingPATCHOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch service account using p a t c h o k response has a 4xx status code
+func (o *PatchServiceAccountUsingPATCHOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch service account using p a t c h o k response has a 5xx status code
+func (o *PatchServiceAccountUsingPATCHOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch service account using p a t c h o k response a status code equal to that given
+func (o *PatchServiceAccountUsingPATCHOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchServiceAccountUsingPATCHOK) Error() string {
 	return fmt.Sprintf("[PATCH /content/api/vcf/{integrationId}/domain/{domainId}/service-accounts][%d] patchServiceAccountUsingPATCHOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchServiceAccountUsingPATCHOK) String() string {
+	return fmt.Sprintf("[PATCH /content/api/vcf/{integrationId}/domain/{domainId}/service-accounts][%d] patchServiceAccountUsingPATCHOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchServiceAccountUsingPATCHOK) GetPayload() []*models.VcfServiceCredential {
 	return o.Payload
 }
@@ -58,6 +113,232 @@ func (o *PatchServiceAccountUsingPATCHOK) readResponse(response runtime.ClientRe
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPatchServiceAccountUsingPATCHNoContent creates a PatchServiceAccountUsingPATCHNoContent with default headers values
+func NewPatchServiceAccountUsingPATCHNoContent() *PatchServiceAccountUsingPATCHNoContent {
+	return &PatchServiceAccountUsingPATCHNoContent{}
+}
+
+/*
+PatchServiceAccountUsingPATCHNoContent describes a response with status code 204, with default header values.
+
+(empty)
+*/
+type PatchServiceAccountUsingPATCHNoContent struct {
+	Payload []*models.VcfServiceCredential
+}
+
+// IsSuccess returns true when this patch service account using p a t c h no content response has a 2xx status code
+func (o *PatchServiceAccountUsingPATCHNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch service account using p a t c h no content response has a 3xx status code
+func (o *PatchServiceAccountUsingPATCHNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch service account using p a t c h no content response has a 4xx status code
+func (o *PatchServiceAccountUsingPATCHNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch service account using p a t c h no content response has a 5xx status code
+func (o *PatchServiceAccountUsingPATCHNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch service account using p a t c h no content response a status code equal to that given
+func (o *PatchServiceAccountUsingPATCHNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
+func (o *PatchServiceAccountUsingPATCHNoContent) Error() string {
+	return fmt.Sprintf("[PATCH /content/api/vcf/{integrationId}/domain/{domainId}/service-accounts][%d] patchServiceAccountUsingPATCHNoContent  %+v", 204, o.Payload)
+}
+
+func (o *PatchServiceAccountUsingPATCHNoContent) String() string {
+	return fmt.Sprintf("[PATCH /content/api/vcf/{integrationId}/domain/{domainId}/service-accounts][%d] patchServiceAccountUsingPATCHNoContent  %+v", 204, o.Payload)
+}
+
+func (o *PatchServiceAccountUsingPATCHNoContent) GetPayload() []*models.VcfServiceCredential {
+	return o.Payload
+}
+
+func (o *PatchServiceAccountUsingPATCHNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPatchServiceAccountUsingPATCHUnauthorized creates a PatchServiceAccountUsingPATCHUnauthorized with default headers values
+func NewPatchServiceAccountUsingPATCHUnauthorized() *PatchServiceAccountUsingPATCHUnauthorized {
+	return &PatchServiceAccountUsingPATCHUnauthorized{}
+}
+
+/*
+PatchServiceAccountUsingPATCHUnauthorized describes a response with status code 401, with default header values.
+
+Unauthorized
+*/
+type PatchServiceAccountUsingPATCHUnauthorized struct {
+}
+
+// IsSuccess returns true when this patch service account using p a t c h unauthorized response has a 2xx status code
+func (o *PatchServiceAccountUsingPATCHUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch service account using p a t c h unauthorized response has a 3xx status code
+func (o *PatchServiceAccountUsingPATCHUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch service account using p a t c h unauthorized response has a 4xx status code
+func (o *PatchServiceAccountUsingPATCHUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch service account using p a t c h unauthorized response has a 5xx status code
+func (o *PatchServiceAccountUsingPATCHUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch service account using p a t c h unauthorized response a status code equal to that given
+func (o *PatchServiceAccountUsingPATCHUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+func (o *PatchServiceAccountUsingPATCHUnauthorized) Error() string {
+	return fmt.Sprintf("[PATCH /content/api/vcf/{integrationId}/domain/{domainId}/service-accounts][%d] patchServiceAccountUsingPATCHUnauthorized ", 401)
+}
+
+func (o *PatchServiceAccountUsingPATCHUnauthorized) String() string {
+	return fmt.Sprintf("[PATCH /content/api/vcf/{integrationId}/domain/{domainId}/service-accounts][%d] patchServiceAccountUsingPATCHUnauthorized ", 401)
+}
+
+func (o *PatchServiceAccountUsingPATCHUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewPatchServiceAccountUsingPATCHForbidden creates a PatchServiceAccountUsingPATCHForbidden with default headers values
+func NewPatchServiceAccountUsingPATCHForbidden() *PatchServiceAccountUsingPATCHForbidden {
+	return &PatchServiceAccountUsingPATCHForbidden{}
+}
+
+/*
+PatchServiceAccountUsingPATCHForbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type PatchServiceAccountUsingPATCHForbidden struct {
+}
+
+// IsSuccess returns true when this patch service account using p a t c h forbidden response has a 2xx status code
+func (o *PatchServiceAccountUsingPATCHForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch service account using p a t c h forbidden response has a 3xx status code
+func (o *PatchServiceAccountUsingPATCHForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch service account using p a t c h forbidden response has a 4xx status code
+func (o *PatchServiceAccountUsingPATCHForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch service account using p a t c h forbidden response has a 5xx status code
+func (o *PatchServiceAccountUsingPATCHForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch service account using p a t c h forbidden response a status code equal to that given
+func (o *PatchServiceAccountUsingPATCHForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *PatchServiceAccountUsingPATCHForbidden) Error() string {
+	return fmt.Sprintf("[PATCH /content/api/vcf/{integrationId}/domain/{domainId}/service-accounts][%d] patchServiceAccountUsingPATCHForbidden ", 403)
+}
+
+func (o *PatchServiceAccountUsingPATCHForbidden) String() string {
+	return fmt.Sprintf("[PATCH /content/api/vcf/{integrationId}/domain/{domainId}/service-accounts][%d] patchServiceAccountUsingPATCHForbidden ", 403)
+}
+
+func (o *PatchServiceAccountUsingPATCHForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewPatchServiceAccountUsingPATCHNotFound creates a PatchServiceAccountUsingPATCHNotFound with default headers values
+func NewPatchServiceAccountUsingPATCHNotFound() *PatchServiceAccountUsingPATCHNotFound {
+	return &PatchServiceAccountUsingPATCHNotFound{}
+}
+
+/*
+PatchServiceAccountUsingPATCHNotFound describes a response with status code 404, with default header values.
+
+Not Found
+*/
+type PatchServiceAccountUsingPATCHNotFound struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this patch service account using p a t c h not found response has a 2xx status code
+func (o *PatchServiceAccountUsingPATCHNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch service account using p a t c h not found response has a 3xx status code
+func (o *PatchServiceAccountUsingPATCHNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch service account using p a t c h not found response has a 4xx status code
+func (o *PatchServiceAccountUsingPATCHNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch service account using p a t c h not found response has a 5xx status code
+func (o *PatchServiceAccountUsingPATCHNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch service account using p a t c h not found response a status code equal to that given
+func (o *PatchServiceAccountUsingPATCHNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+func (o *PatchServiceAccountUsingPATCHNotFound) Error() string {
+	return fmt.Sprintf("[PATCH /content/api/vcf/{integrationId}/domain/{domainId}/service-accounts][%d] patchServiceAccountUsingPATCHNotFound  %+v", 404, o.Payload)
+}
+
+func (o *PatchServiceAccountUsingPATCHNotFound) String() string {
+	return fmt.Sprintf("[PATCH /content/api/vcf/{integrationId}/domain/{domainId}/service-accounts][%d] patchServiceAccountUsingPATCHNotFound  %+v", 404, o.Payload)
+}
+
+func (o *PatchServiceAccountUsingPATCHNotFound) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *PatchServiceAccountUsingPATCHNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

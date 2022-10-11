@@ -51,7 +51,8 @@ func NewGetInternalNetworkIPRangeOK() *GetInternalNetworkIPRangeOK {
 	return &GetInternalNetworkIPRangeOK{}
 }
 
-/* GetInternalNetworkIPRangeOK describes a response with status code 200, with default header values.
+/*
+GetInternalNetworkIPRangeOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetInternalNetworkIPRangeOK struct {
 	Payload *models.NetworkIPRange
 }
 
+// IsSuccess returns true when this get internal network Ip range o k response has a 2xx status code
+func (o *GetInternalNetworkIPRangeOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get internal network Ip range o k response has a 3xx status code
+func (o *GetInternalNetworkIPRangeOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get internal network Ip range o k response has a 4xx status code
+func (o *GetInternalNetworkIPRangeOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get internal network Ip range o k response has a 5xx status code
+func (o *GetInternalNetworkIPRangeOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get internal network Ip range o k response a status code equal to that given
+func (o *GetInternalNetworkIPRangeOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetInternalNetworkIPRangeOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/network-ip-ranges/{id}][%d] getInternalNetworkIpRangeOK  %+v", 200, o.Payload)
 }
+
+func (o *GetInternalNetworkIPRangeOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/network-ip-ranges/{id}][%d] getInternalNetworkIpRangeOK  %+v", 200, o.Payload)
+}
+
 func (o *GetInternalNetworkIPRangeOK) GetPayload() *models.NetworkIPRange {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetInternalNetworkIPRangeForbidden() *GetInternalNetworkIPRangeForbidden
 	return &GetInternalNetworkIPRangeForbidden{}
 }
 
-/* GetInternalNetworkIPRangeForbidden describes a response with status code 403, with default header values.
+/*
+GetInternalNetworkIPRangeForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type GetInternalNetworkIPRangeForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get internal network Ip range forbidden response has a 2xx status code
+func (o *GetInternalNetworkIPRangeForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get internal network Ip range forbidden response has a 3xx status code
+func (o *GetInternalNetworkIPRangeForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get internal network Ip range forbidden response has a 4xx status code
+func (o *GetInternalNetworkIPRangeForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get internal network Ip range forbidden response has a 5xx status code
+func (o *GetInternalNetworkIPRangeForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get internal network Ip range forbidden response a status code equal to that given
+func (o *GetInternalNetworkIPRangeForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetInternalNetworkIPRangeForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/network-ip-ranges/{id}][%d] getInternalNetworkIpRangeForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetInternalNetworkIPRangeForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/network-ip-ranges/{id}][%d] getInternalNetworkIpRangeForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetInternalNetworkIPRangeForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewGetInternalNetworkIPRangeNotFound() *GetInternalNetworkIPRangeNotFound {
 	return &GetInternalNetworkIPRangeNotFound{}
 }
 
-/* GetInternalNetworkIPRangeNotFound describes a response with status code 404, with default header values.
+/*
+GetInternalNetworkIPRangeNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type GetInternalNetworkIPRangeNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get internal network Ip range not found response has a 2xx status code
+func (o *GetInternalNetworkIPRangeNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get internal network Ip range not found response has a 3xx status code
+func (o *GetInternalNetworkIPRangeNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get internal network Ip range not found response has a 4xx status code
+func (o *GetInternalNetworkIPRangeNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get internal network Ip range not found response has a 5xx status code
+func (o *GetInternalNetworkIPRangeNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get internal network Ip range not found response a status code equal to that given
+func (o *GetInternalNetworkIPRangeNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetInternalNetworkIPRangeNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/network-ip-ranges/{id}][%d] getInternalNetworkIpRangeNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetInternalNetworkIPRangeNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/network-ip-ranges/{id}][%d] getInternalNetworkIpRangeNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetInternalNetworkIPRangeNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

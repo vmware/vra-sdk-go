@@ -36,9 +36,9 @@ type ClientService interface {
 }
 
 /*
-  GetFabricFlavors gets fabric flavors
+GetFabricFlavors gets fabric flavors
 
-  Get all fabric flavors
+Get all fabric flavors
 */
 func (a *Client) GetFabricFlavors(params *GetFabricFlavorsParams, opts ...ClientOption) (*GetFabricFlavorsOK, error) {
 	// TODO: Validate the params before sending

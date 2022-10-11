@@ -40,9 +40,9 @@ type ClientService interface {
 }
 
 /*
-  CreateEntitlementUsingPOST2 creates an entitlement
+CreateEntitlementUsingPOST2 creates an entitlement
 
-  Creates an entitlement for a given project.
+Creates an entitlement for a given project.
 */
 func (a *Client) CreateEntitlementUsingPOST2(params *CreateEntitlementUsingPOST2Params, opts ...ClientOption) (*CreateEntitlementUsingPOST2OK, *CreateEntitlementUsingPOST2Created, error) {
 	// TODO: Validate the params before sending
@@ -81,9 +81,9 @@ func (a *Client) CreateEntitlementUsingPOST2(params *CreateEntitlementUsingPOST2
 }
 
 /*
-  DeleteEntitlementUsingDELETE2 deletes an entitlement
+DeleteEntitlementUsingDELETE2 deletes an entitlement
 
-  Deletes the entitlement with the specified id.
+Deletes the entitlement with the specified id.
 */
 func (a *Client) DeleteEntitlementUsingDELETE2(params *DeleteEntitlementUsingDELETE2Params, opts ...ClientOption) (*DeleteEntitlementUsingDELETE2NoContent, error) {
 	// TODO: Validate the params before sending
@@ -121,9 +121,9 @@ func (a *Client) DeleteEntitlementUsingDELETE2(params *DeleteEntitlementUsingDEL
 }
 
 /*
-  GetEntitlementsUsingGET2 returns all entitlements filtered by project Id
+GetEntitlementsUsingGET2 returns all entitlements filtered by project Id
 
-  Returns all entitlements (filtered by projectId).
+Returns all entitlements (filtered by projectId).
 */
 func (a *Client) GetEntitlementsUsingGET2(params *GetEntitlementsUsingGET2Params, opts ...ClientOption) (*GetEntitlementsUsingGET2OK, error) {
 	// TODO: Validate the params before sending

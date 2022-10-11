@@ -57,7 +57,8 @@ func NewReleaseBlueprintVersionUsingPOST1OK() *ReleaseBlueprintVersionUsingPOST1
 	return &ReleaseBlueprintVersionUsingPOST1OK{}
 }
 
-/* ReleaseBlueprintVersionUsingPOST1OK describes a response with status code 200, with default header values.
+/*
+ReleaseBlueprintVersionUsingPOST1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -65,9 +66,39 @@ type ReleaseBlueprintVersionUsingPOST1OK struct {
 	Payload *models.BlueprintVersion
 }
 
+// IsSuccess returns true when this release blueprint version using p o s t1 o k response has a 2xx status code
+func (o *ReleaseBlueprintVersionUsingPOST1OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this release blueprint version using p o s t1 o k response has a 3xx status code
+func (o *ReleaseBlueprintVersionUsingPOST1OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this release blueprint version using p o s t1 o k response has a 4xx status code
+func (o *ReleaseBlueprintVersionUsingPOST1OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this release blueprint version using p o s t1 o k response has a 5xx status code
+func (o *ReleaseBlueprintVersionUsingPOST1OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this release blueprint version using p o s t1 o k response a status code equal to that given
+func (o *ReleaseBlueprintVersionUsingPOST1OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReleaseBlueprintVersionUsingPOST1OK) Error() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprints/{blueprintId}/versions/{version}/actions/release][%d] releaseBlueprintVersionUsingPOST1OK  %+v", 200, o.Payload)
 }
+
+func (o *ReleaseBlueprintVersionUsingPOST1OK) String() string {
+	return fmt.Sprintf("[POST /blueprint/api/blueprints/{blueprintId}/versions/{version}/actions/release][%d] releaseBlueprintVersionUsingPOST1OK  %+v", 200, o.Payload)
+}
+
 func (o *ReleaseBlueprintVersionUsingPOST1OK) GetPayload() *models.BlueprintVersion {
 	return o.Payload
 }
@@ -89,14 +120,44 @@ func NewReleaseBlueprintVersionUsingPOST1Unauthorized() *ReleaseBlueprintVersion
 	return &ReleaseBlueprintVersionUsingPOST1Unauthorized{}
 }
 
-/* ReleaseBlueprintVersionUsingPOST1Unauthorized describes a response with status code 401, with default header values.
+/*
+ReleaseBlueprintVersionUsingPOST1Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type ReleaseBlueprintVersionUsingPOST1Unauthorized struct {
 }
 
+// IsSuccess returns true when this release blueprint version using p o s t1 unauthorized response has a 2xx status code
+func (o *ReleaseBlueprintVersionUsingPOST1Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this release blueprint version using p o s t1 unauthorized response has a 3xx status code
+func (o *ReleaseBlueprintVersionUsingPOST1Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this release blueprint version using p o s t1 unauthorized response has a 4xx status code
+func (o *ReleaseBlueprintVersionUsingPOST1Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this release blueprint version using p o s t1 unauthorized response has a 5xx status code
+func (o *ReleaseBlueprintVersionUsingPOST1Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this release blueprint version using p o s t1 unauthorized response a status code equal to that given
+func (o *ReleaseBlueprintVersionUsingPOST1Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ReleaseBlueprintVersionUsingPOST1Unauthorized) Error() string {
+	return fmt.Sprintf("[POST /blueprint/api/blueprints/{blueprintId}/versions/{version}/actions/release][%d] releaseBlueprintVersionUsingPOST1Unauthorized ", 401)
+}
+
+func (o *ReleaseBlueprintVersionUsingPOST1Unauthorized) String() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprints/{blueprintId}/versions/{version}/actions/release][%d] releaseBlueprintVersionUsingPOST1Unauthorized ", 401)
 }
 
@@ -110,14 +171,44 @@ func NewReleaseBlueprintVersionUsingPOST1Forbidden() *ReleaseBlueprintVersionUsi
 	return &ReleaseBlueprintVersionUsingPOST1Forbidden{}
 }
 
-/* ReleaseBlueprintVersionUsingPOST1Forbidden describes a response with status code 403, with default header values.
+/*
+ReleaseBlueprintVersionUsingPOST1Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type ReleaseBlueprintVersionUsingPOST1Forbidden struct {
 }
 
+// IsSuccess returns true when this release blueprint version using p o s t1 forbidden response has a 2xx status code
+func (o *ReleaseBlueprintVersionUsingPOST1Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this release blueprint version using p o s t1 forbidden response has a 3xx status code
+func (o *ReleaseBlueprintVersionUsingPOST1Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this release blueprint version using p o s t1 forbidden response has a 4xx status code
+func (o *ReleaseBlueprintVersionUsingPOST1Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this release blueprint version using p o s t1 forbidden response has a 5xx status code
+func (o *ReleaseBlueprintVersionUsingPOST1Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this release blueprint version using p o s t1 forbidden response a status code equal to that given
+func (o *ReleaseBlueprintVersionUsingPOST1Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ReleaseBlueprintVersionUsingPOST1Forbidden) Error() string {
+	return fmt.Sprintf("[POST /blueprint/api/blueprints/{blueprintId}/versions/{version}/actions/release][%d] releaseBlueprintVersionUsingPOST1Forbidden ", 403)
+}
+
+func (o *ReleaseBlueprintVersionUsingPOST1Forbidden) String() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprints/{blueprintId}/versions/{version}/actions/release][%d] releaseBlueprintVersionUsingPOST1Forbidden ", 403)
 }
 
@@ -131,7 +222,8 @@ func NewReleaseBlueprintVersionUsingPOST1NotFound() *ReleaseBlueprintVersionUsin
 	return &ReleaseBlueprintVersionUsingPOST1NotFound{}
 }
 
-/* ReleaseBlueprintVersionUsingPOST1NotFound describes a response with status code 404, with default header values.
+/*
+ReleaseBlueprintVersionUsingPOST1NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -139,9 +231,39 @@ type ReleaseBlueprintVersionUsingPOST1NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this release blueprint version using p o s t1 not found response has a 2xx status code
+func (o *ReleaseBlueprintVersionUsingPOST1NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this release blueprint version using p o s t1 not found response has a 3xx status code
+func (o *ReleaseBlueprintVersionUsingPOST1NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this release blueprint version using p o s t1 not found response has a 4xx status code
+func (o *ReleaseBlueprintVersionUsingPOST1NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this release blueprint version using p o s t1 not found response has a 5xx status code
+func (o *ReleaseBlueprintVersionUsingPOST1NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this release blueprint version using p o s t1 not found response a status code equal to that given
+func (o *ReleaseBlueprintVersionUsingPOST1NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReleaseBlueprintVersionUsingPOST1NotFound) Error() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprints/{blueprintId}/versions/{version}/actions/release][%d] releaseBlueprintVersionUsingPOST1NotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReleaseBlueprintVersionUsingPOST1NotFound) String() string {
+	return fmt.Sprintf("[POST /blueprint/api/blueprints/{blueprintId}/versions/{version}/actions/release][%d] releaseBlueprintVersionUsingPOST1NotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReleaseBlueprintVersionUsingPOST1NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

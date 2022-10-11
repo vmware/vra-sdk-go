@@ -44,9 +44,9 @@ type ClientService interface {
 }
 
 /*
-  CreateResourceUsingPOST2 creates a new resource
+CreateResourceUsingPOST2 creates a new resource
 
-  Returns the resource request response.
+Returns the resource request response.
 */
 func (a *Client) CreateResourceUsingPOST2(params *CreateResourceUsingPOST2Params, opts ...ClientOption) (*CreateResourceUsingPOST2OK, error) {
 	// TODO: Validate the params before sending
@@ -84,9 +84,9 @@ func (a *Client) CreateResourceUsingPOST2(params *CreateResourceUsingPOST2Params
 }
 
 /*
-  GetResourceByIDUsingGET5 fetches a specific resource
+GetResourceByIDUsingGET5 fetches a specific resource
 
-  Returns the resource with the supplied ID.
+Returns the resource with the supplied ID.
 */
 func (a *Client) GetResourceByIDUsingGET5(params *GetResourceByIDUsingGET5Params, opts ...ClientOption) (*GetResourceByIDUsingGET5OK, error) {
 	// TODO: Validate the params before sending
@@ -124,7 +124,7 @@ func (a *Client) GetResourceByIDUsingGET5(params *GetResourceByIDUsingGET5Params
 }
 
 /*
-  GetResourceFilterByIDUsingGET2 returns the resource filter with the supplied ID
+GetResourceFilterByIDUsingGET2 returns the resource filter with the supplied ID
 */
 func (a *Client) GetResourceFilterByIDUsingGET2(params *GetResourceFilterByIDUsingGET2Params, opts ...ClientOption) (*GetResourceFilterByIDUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -162,7 +162,7 @@ func (a *Client) GetResourceFilterByIDUsingGET2(params *GetResourceFilterByIDUsi
 }
 
 /*
-  GetResourceFiltersUsingGET2 returns the resource filters in context of given user
+GetResourceFiltersUsingGET2 returns the resource filters in context of given user
 */
 func (a *Client) GetResourceFiltersUsingGET2(params *GetResourceFiltersUsingGET2Params, opts ...ClientOption) (*GetResourceFiltersUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -200,9 +200,9 @@ func (a *Client) GetResourceFiltersUsingGET2(params *GetResourceFiltersUsingGET2
 }
 
 /*
-  GetResourcesUsingGET2 fetches all resources
+GetResourcesUsingGET2 fetches all resources
 
-  Returns a paginated list of resources.
+Returns a paginated list of resources.
 */
 func (a *Client) GetResourcesUsingGET2(params *GetResourcesUsingGET2Params, opts ...ClientOption) (*GetResourcesUsingGET2OK, error) {
 	// TODO: Validate the params before sending

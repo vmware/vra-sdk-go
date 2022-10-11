@@ -19,6 +19,9 @@ import (
 // swagger:model UpdateMachineSpecification
 type UpdateMachineSpecification struct {
 
+	// A valid cloud config data in json-escaped yaml syntax
+	BootConfig *MachineBootConfig `json:"bootConfig,omitempty"`
+
 	// Additional custom properties that may be used to extend the machine. Internal custom properties (for example, prefixed with: "__") are discarded.
 	CustomProperties map[string]string `json:"customProperties,omitempty"`
 
@@ -34,6 +37,10 @@ type UpdateMachineSpecification struct {
 func (m *UpdateMachineSpecification) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateBootConfig(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateTags(formats); err != nil {
 		res = append(res, err)
 	}
@@ -41,6 +48,25 @@ func (m *UpdateMachineSpecification) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *UpdateMachineSpecification) validateBootConfig(formats strfmt.Registry) error {
+	if swag.IsZero(m.BootConfig) { // not required
+		return nil
+	}
+
+	if m.BootConfig != nil {
+		if err := m.BootConfig.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bootConfig")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bootConfig")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -74,6 +100,10 @@ func (m *UpdateMachineSpecification) validateTags(formats strfmt.Registry) error
 func (m *UpdateMachineSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateBootConfig(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateTags(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -81,6 +111,22 @@ func (m *UpdateMachineSpecification) ContextValidate(ctx context.Context, format
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *UpdateMachineSpecification) contextValidateBootConfig(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BootConfig != nil {
+		if err := m.BootConfig.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("bootConfig")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("bootConfig")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

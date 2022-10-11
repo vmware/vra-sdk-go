@@ -52,10 +52,12 @@ func NewDelete2ParamsWithHTTPClient(client *http.Client) *Delete2Params {
 	}
 }
 
-/* Delete2Params contains all the parameters to send to the API endpoint
-   for the delete 2 operation.
+/*
+Delete2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type Delete2Params struct {
 

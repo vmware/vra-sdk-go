@@ -52,10 +52,12 @@ func NewGetAwsCloudAccountParamsWithHTTPClient(client *http.Client) *GetAwsCloud
 	}
 }
 
-/* GetAwsCloudAccountParams contains all the parameters to send to the API endpoint
-   for the get aws cloud account operation.
+/*
+GetAwsCloudAccountParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get aws cloud account operation.
+
+	Typically these are written to a http.Request.
 */
 type GetAwsCloudAccountParams struct {
 

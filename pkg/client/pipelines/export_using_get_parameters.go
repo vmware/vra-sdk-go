@@ -52,10 +52,12 @@ func NewExportUsingGETParamsWithHTTPClient(client *http.Client) *ExportUsingGETP
 	}
 }
 
-/* ExportUsingGETParams contains all the parameters to send to the API endpoint
-   for the export using g e t operation.
+/*
+ExportUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the export using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type ExportUsingGETParams struct {
 
@@ -71,6 +73,22 @@ type ExportUsingGETParams struct {
 	*/
 	APIVersion string
 
+	/* CustomIntegration.
+
+	   Name of the Custom Integration to be exported
+
+	   Default: "pipeline-as-code"
+	*/
+	CustomIntegration *string
+
+	/* CustomIntegrationVersions.
+
+	   Comma separated list of versions of the given custom integration to be exported
+
+	   Default: "1st,2nd,3rd"
+	*/
+	CustomIntegrationVersions *string
+
 	/* Endpoints.
 
 	   Comma separated list of endpoints to be exported in a given project
@@ -78,6 +96,22 @@ type ExportUsingGETParams struct {
 	   Default: "Jenkins, Jira"
 	*/
 	Endpoints *string
+
+	/* ExportAllCustomIntegrationVersions.
+
+	   Flag to state if all versions of given custom integration need to be exported
+
+	   Default: "false"
+	*/
+	ExportAllCustomIntegrationVersions *string
+
+	/* ExportOnlyReleasedCustomIntegrationVersions.
+
+	   Flag to state if only released versions of given custom integration need to be exported
+
+	   Default: "false"
+	*/
+	ExportOnlyReleasedCustomIntegrationVersions *string
 
 	/* Pipeline.
 
@@ -121,7 +155,15 @@ func (o *ExportUsingGETParams) WithDefaults() *ExportUsingGETParams {
 // All values with no default are reset to their zero value.
 func (o *ExportUsingGETParams) SetDefaults() {
 	var (
+		customIntegrationDefault = string("pipeline-as-code")
+
+		customIntegrationVersionsDefault = string("1st,2nd,3rd")
+
 		endpointsDefault = string("Jenkins, Jira")
+
+		exportAllCustomIntegrationVersionsDefault = string("false")
+
+		exportOnlyReleasedCustomIntegrationVersionsDefault = string("false")
 
 		pipelineDefault = string("Deploy Production")
 
@@ -131,7 +173,11 @@ func (o *ExportUsingGETParams) SetDefaults() {
 	)
 
 	val := ExportUsingGETParams{
-		Endpoints: &endpointsDefault,
+		CustomIntegration:                           &customIntegrationDefault,
+		CustomIntegrationVersions:                   &customIntegrationVersionsDefault,
+		Endpoints:                                   &endpointsDefault,
+		ExportAllCustomIntegrationVersions:          &exportAllCustomIntegrationVersionsDefault,
+		ExportOnlyReleasedCustomIntegrationVersions: &exportOnlyReleasedCustomIntegrationVersionsDefault,
 		Pipeline:  &pipelineDefault,
 		Pipelines: &pipelinesDefault,
 		Project:   &projectDefault,
@@ -198,6 +244,28 @@ func (o *ExportUsingGETParams) SetAPIVersion(aPIVersion string) {
 	o.APIVersion = aPIVersion
 }
 
+// WithCustomIntegration adds the customIntegration to the export using get params
+func (o *ExportUsingGETParams) WithCustomIntegration(customIntegration *string) *ExportUsingGETParams {
+	o.SetCustomIntegration(customIntegration)
+	return o
+}
+
+// SetCustomIntegration adds the customIntegration to the export using get params
+func (o *ExportUsingGETParams) SetCustomIntegration(customIntegration *string) {
+	o.CustomIntegration = customIntegration
+}
+
+// WithCustomIntegrationVersions adds the customIntegrationVersions to the export using get params
+func (o *ExportUsingGETParams) WithCustomIntegrationVersions(customIntegrationVersions *string) *ExportUsingGETParams {
+	o.SetCustomIntegrationVersions(customIntegrationVersions)
+	return o
+}
+
+// SetCustomIntegrationVersions adds the customIntegrationVersions to the export using get params
+func (o *ExportUsingGETParams) SetCustomIntegrationVersions(customIntegrationVersions *string) {
+	o.CustomIntegrationVersions = customIntegrationVersions
+}
+
 // WithEndpoints adds the endpoints to the export using get params
 func (o *ExportUsingGETParams) WithEndpoints(endpoints *string) *ExportUsingGETParams {
 	o.SetEndpoints(endpoints)
@@ -207,6 +275,28 @@ func (o *ExportUsingGETParams) WithEndpoints(endpoints *string) *ExportUsingGETP
 // SetEndpoints adds the endpoints to the export using get params
 func (o *ExportUsingGETParams) SetEndpoints(endpoints *string) {
 	o.Endpoints = endpoints
+}
+
+// WithExportAllCustomIntegrationVersions adds the exportAllCustomIntegrationVersions to the export using get params
+func (o *ExportUsingGETParams) WithExportAllCustomIntegrationVersions(exportAllCustomIntegrationVersions *string) *ExportUsingGETParams {
+	o.SetExportAllCustomIntegrationVersions(exportAllCustomIntegrationVersions)
+	return o
+}
+
+// SetExportAllCustomIntegrationVersions adds the exportAllCustomIntegrationVersions to the export using get params
+func (o *ExportUsingGETParams) SetExportAllCustomIntegrationVersions(exportAllCustomIntegrationVersions *string) {
+	o.ExportAllCustomIntegrationVersions = exportAllCustomIntegrationVersions
+}
+
+// WithExportOnlyReleasedCustomIntegrationVersions adds the exportOnlyReleasedCustomIntegrationVersions to the export using get params
+func (o *ExportUsingGETParams) WithExportOnlyReleasedCustomIntegrationVersions(exportOnlyReleasedCustomIntegrationVersions *string) *ExportUsingGETParams {
+	o.SetExportOnlyReleasedCustomIntegrationVersions(exportOnlyReleasedCustomIntegrationVersions)
+	return o
+}
+
+// SetExportOnlyReleasedCustomIntegrationVersions adds the exportOnlyReleasedCustomIntegrationVersions to the export using get params
+func (o *ExportUsingGETParams) SetExportOnlyReleasedCustomIntegrationVersions(exportOnlyReleasedCustomIntegrationVersions *string) {
+	o.ExportOnlyReleasedCustomIntegrationVersions = exportOnlyReleasedCustomIntegrationVersions
 }
 
 // WithPipeline adds the pipeline to the export using get params
@@ -263,6 +353,40 @@ func (o *ExportUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		return err
 	}
 
+	if o.CustomIntegration != nil {
+
+		// query param customIntegration
+		var qrCustomIntegration string
+
+		if o.CustomIntegration != nil {
+			qrCustomIntegration = *o.CustomIntegration
+		}
+		qCustomIntegration := qrCustomIntegration
+		if qCustomIntegration != "" {
+
+			if err := r.SetQueryParam("customIntegration", qCustomIntegration); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.CustomIntegrationVersions != nil {
+
+		// query param customIntegrationVersions
+		var qrCustomIntegrationVersions string
+
+		if o.CustomIntegrationVersions != nil {
+			qrCustomIntegrationVersions = *o.CustomIntegrationVersions
+		}
+		qCustomIntegrationVersions := qrCustomIntegrationVersions
+		if qCustomIntegrationVersions != "" {
+
+			if err := r.SetQueryParam("customIntegrationVersions", qCustomIntegrationVersions); err != nil {
+				return err
+			}
+		}
+	}
+
 	if o.Endpoints != nil {
 
 		// query param endpoints
@@ -275,6 +399,40 @@ func (o *ExportUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		if qEndpoints != "" {
 
 			if err := r.SetQueryParam("endpoints", qEndpoints); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.ExportAllCustomIntegrationVersions != nil {
+
+		// query param exportAllCustomIntegrationVersions
+		var qrExportAllCustomIntegrationVersions string
+
+		if o.ExportAllCustomIntegrationVersions != nil {
+			qrExportAllCustomIntegrationVersions = *o.ExportAllCustomIntegrationVersions
+		}
+		qExportAllCustomIntegrationVersions := qrExportAllCustomIntegrationVersions
+		if qExportAllCustomIntegrationVersions != "" {
+
+			if err := r.SetQueryParam("exportAllCustomIntegrationVersions", qExportAllCustomIntegrationVersions); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.ExportOnlyReleasedCustomIntegrationVersions != nil {
+
+		// query param exportOnlyReleasedCustomIntegrationVersions
+		var qrExportOnlyReleasedCustomIntegrationVersions string
+
+		if o.ExportOnlyReleasedCustomIntegrationVersions != nil {
+			qrExportOnlyReleasedCustomIntegrationVersions = *o.ExportOnlyReleasedCustomIntegrationVersions
+		}
+		qExportOnlyReleasedCustomIntegrationVersions := qrExportOnlyReleasedCustomIntegrationVersions
+		if qExportOnlyReleasedCustomIntegrationVersions != "" {
+
+			if err := r.SetQueryParam("exportOnlyReleasedCustomIntegrationVersions", qExportOnlyReleasedCustomIntegrationVersions); err != nil {
 				return err
 			}
 		}

@@ -51,7 +51,8 @@ func NewGetMachineDisksOK() *GetMachineDisksOK {
 	return &GetMachineDisksOK{}
 }
 
-/* GetMachineDisksOK describes a response with status code 200, with default header values.
+/*
+GetMachineDisksOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetMachineDisksOK struct {
 	Payload *models.BlockDeviceResult
 }
 
+// IsSuccess returns true when this get machine disks o k response has a 2xx status code
+func (o *GetMachineDisksOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get machine disks o k response has a 3xx status code
+func (o *GetMachineDisksOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get machine disks o k response has a 4xx status code
+func (o *GetMachineDisksOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get machine disks o k response has a 5xx status code
+func (o *GetMachineDisksOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get machine disks o k response a status code equal to that given
+func (o *GetMachineDisksOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetMachineDisksOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/machines/{id}/disks][%d] getMachineDisksOK  %+v", 200, o.Payload)
 }
+
+func (o *GetMachineDisksOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/machines/{id}/disks][%d] getMachineDisksOK  %+v", 200, o.Payload)
+}
+
 func (o *GetMachineDisksOK) GetPayload() *models.BlockDeviceResult {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetMachineDisksForbidden() *GetMachineDisksForbidden {
 	return &GetMachineDisksForbidden{}
 }
 
-/* GetMachineDisksForbidden describes a response with status code 403, with default header values.
+/*
+GetMachineDisksForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type GetMachineDisksForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get machine disks forbidden response has a 2xx status code
+func (o *GetMachineDisksForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get machine disks forbidden response has a 3xx status code
+func (o *GetMachineDisksForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get machine disks forbidden response has a 4xx status code
+func (o *GetMachineDisksForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get machine disks forbidden response has a 5xx status code
+func (o *GetMachineDisksForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get machine disks forbidden response a status code equal to that given
+func (o *GetMachineDisksForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetMachineDisksForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/machines/{id}/disks][%d] getMachineDisksForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetMachineDisksForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/machines/{id}/disks][%d] getMachineDisksForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetMachineDisksForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewGetMachineDisksNotFound() *GetMachineDisksNotFound {
 	return &GetMachineDisksNotFound{}
 }
 
-/* GetMachineDisksNotFound describes a response with status code 404, with default header values.
+/*
+GetMachineDisksNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type GetMachineDisksNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get machine disks not found response has a 2xx status code
+func (o *GetMachineDisksNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get machine disks not found response has a 3xx status code
+func (o *GetMachineDisksNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get machine disks not found response has a 4xx status code
+func (o *GetMachineDisksNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get machine disks not found response has a 5xx status code
+func (o *GetMachineDisksNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get machine disks not found response a status code equal to that given
+func (o *GetMachineDisksNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetMachineDisksNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/machines/{id}/disks][%d] getMachineDisksNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetMachineDisksNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/machines/{id}/disks][%d] getMachineDisksNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetMachineDisksNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

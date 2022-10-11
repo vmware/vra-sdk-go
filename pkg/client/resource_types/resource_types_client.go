@@ -42,7 +42,7 @@ type ClientService interface {
 }
 
 /*
-  GetResourceTypeUsingGET returns resource type details
+GetResourceTypeUsingGET returns resource type details
 */
 func (a *Client) GetResourceTypeUsingGET(params *GetResourceTypeUsingGETParams, opts ...ClientOption) (*GetResourceTypeUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -80,9 +80,9 @@ func (a *Client) GetResourceTypeUsingGET(params *GetResourceTypeUsingGETParams, 
 }
 
 /*
-  GetResourceTypeUsingGET2 fetches a specific resource type
+GetResourceTypeUsingGET2 fetches a specific resource type
 
-  Returns the Resource type with the supplied ID.
+Returns the Resource type with the supplied ID.
 */
 func (a *Client) GetResourceTypeUsingGET2(params *GetResourceTypeUsingGET2Params, opts ...ClientOption) (*GetResourceTypeUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) GetResourceTypeUsingGET2(params *GetResourceTypeUsingGET2Params
 }
 
 /*
-  ListResourceTypesUsingGET lists resource types
+ListResourceTypesUsingGET lists resource types
 */
 func (a *Client) ListResourceTypesUsingGET(params *ListResourceTypesUsingGETParams, opts ...ClientOption) (*ListResourceTypesUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -158,9 +158,9 @@ func (a *Client) ListResourceTypesUsingGET(params *ListResourceTypesUsingGETPara
 }
 
 /*
-  ListResourceTypesUsingGET2 fetches all resource types
+ListResourceTypesUsingGET2 fetches all resource types
 
-  Returns a paginated list of Resource Types.
+Returns a paginated list of Resource Types.
 */
 func (a *Client) ListResourceTypesUsingGET2(params *ListResourceTypesUsingGET2Params, opts ...ClientOption) (*ListResourceTypesUsingGET2OK, error) {
 	// TODO: Validate the params before sending

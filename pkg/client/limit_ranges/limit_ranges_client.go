@@ -38,9 +38,9 @@ type ClientService interface {
 }
 
 /*
-  GetUsingGET1 gets a k8 s limit range by id
+GetUsingGET1 gets a k8 s limit range by id
 
-  Get a K8S LimitRange by id
+Get a K8S LimitRange by id
 */
 func (a *Client) GetUsingGET1(params *GetUsingGET1Params, opts ...ClientOption) (*GetUsingGET1OK, error) {
 	// TODO: Validate the params before sending
@@ -78,9 +78,9 @@ func (a *Client) GetUsingGET1(params *GetUsingGET1Params, opts ...ClientOption) 
 }
 
 /*
-  ListUsingGET1 gets all k8 s limit ranges
+ListUsingGET1 gets all k8 s limit ranges
 
-  Get a list of all K8S LimitRanges
+Get a list of all K8S LimitRanges
 */
 func (a *Client) ListUsingGET1(params *ListUsingGET1Params, opts ...ClientOption) (*ListUsingGET1OK, error) {
 	// TODO: Validate the params before sending

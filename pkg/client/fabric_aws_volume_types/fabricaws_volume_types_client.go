@@ -36,9 +36,9 @@ type ClientService interface {
 }
 
 /*
-  GetFabricAwsVolumeTypes gets fabric a w s volume types
+GetFabricAwsVolumeTypes gets fabric a w s volume types
 
-  Get all fabric AWS volume types.
+Get all fabric AWS volume types.
 */
 func (a *Client) GetFabricAwsVolumeTypes(params *GetFabricAwsVolumeTypesParams, opts ...ClientOption) (*GetFabricAwsVolumeTypesOK, error) {
 	// TODO: Validate the params before sending

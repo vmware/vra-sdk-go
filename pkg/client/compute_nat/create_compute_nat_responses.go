@@ -51,7 +51,8 @@ func NewCreateComputeNatAccepted() *CreateComputeNatAccepted {
 	return &CreateComputeNatAccepted{}
 }
 
-/* CreateComputeNatAccepted describes a response with status code 202, with default header values.
+/*
+CreateComputeNatAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type CreateComputeNatAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this create compute nat accepted response has a 2xx status code
+func (o *CreateComputeNatAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create compute nat accepted response has a 3xx status code
+func (o *CreateComputeNatAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create compute nat accepted response has a 4xx status code
+func (o *CreateComputeNatAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create compute nat accepted response has a 5xx status code
+func (o *CreateComputeNatAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create compute nat accepted response a status code equal to that given
+func (o *CreateComputeNatAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateComputeNatAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/compute-nats][%d] createComputeNatAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateComputeNatAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/compute-nats][%d] createComputeNatAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateComputeNatAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewCreateComputeNatBadRequest() *CreateComputeNatBadRequest {
 	return &CreateComputeNatBadRequest{}
 }
 
-/* CreateComputeNatBadRequest describes a response with status code 400, with default header values.
+/*
+CreateComputeNatBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type CreateComputeNatBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create compute nat bad request response has a 2xx status code
+func (o *CreateComputeNatBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create compute nat bad request response has a 3xx status code
+func (o *CreateComputeNatBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create compute nat bad request response has a 4xx status code
+func (o *CreateComputeNatBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create compute nat bad request response has a 5xx status code
+func (o *CreateComputeNatBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create compute nat bad request response a status code equal to that given
+func (o *CreateComputeNatBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateComputeNatBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/compute-nats][%d] createComputeNatBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateComputeNatBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/compute-nats][%d] createComputeNatBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateComputeNatBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewCreateComputeNatForbidden() *CreateComputeNatForbidden {
 	return &CreateComputeNatForbidden{}
 }
 
-/* CreateComputeNatForbidden describes a response with status code 403, with default header values.
+/*
+CreateComputeNatForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type CreateComputeNatForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this create compute nat forbidden response has a 2xx status code
+func (o *CreateComputeNatForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create compute nat forbidden response has a 3xx status code
+func (o *CreateComputeNatForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create compute nat forbidden response has a 4xx status code
+func (o *CreateComputeNatForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create compute nat forbidden response has a 5xx status code
+func (o *CreateComputeNatForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create compute nat forbidden response a status code equal to that given
+func (o *CreateComputeNatForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateComputeNatForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/compute-nats][%d] createComputeNatForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CreateComputeNatForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/compute-nats][%d] createComputeNatForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CreateComputeNatForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

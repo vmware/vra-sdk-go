@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewGetZonesParams creates a new GetZonesParams object,
@@ -52,12 +53,26 @@ func NewGetZonesParamsWithHTTPClient(client *http.Client) *GetZonesParams {
 	}
 }
 
-/* GetZonesParams contains all the parameters to send to the API endpoint
-   for the get zones operation.
+/*
+GetZonesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get zones operation.
+
+	Typically these are written to a http.Request.
 */
 type GetZonesParams struct {
+
+	/* DollarSkip.
+
+	   Number of records you want to skip.
+	*/
+	DollarSkip *int64
+
+	/* DollarTop.
+
+	   Number of records you want to get.
+	*/
+	DollarTop *int64
 
 	/* APIVersion.
 
@@ -118,6 +133,28 @@ func (o *GetZonesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithDollarSkip adds the dollarSkip to the get zones params
+func (o *GetZonesParams) WithDollarSkip(dollarSkip *int64) *GetZonesParams {
+	o.SetDollarSkip(dollarSkip)
+	return o
+}
+
+// SetDollarSkip adds the dollarSkip to the get zones params
+func (o *GetZonesParams) SetDollarSkip(dollarSkip *int64) {
+	o.DollarSkip = dollarSkip
+}
+
+// WithDollarTop adds the dollarTop to the get zones params
+func (o *GetZonesParams) WithDollarTop(dollarTop *int64) *GetZonesParams {
+	o.SetDollarTop(dollarTop)
+	return o
+}
+
+// SetDollarTop adds the dollarTop to the get zones params
+func (o *GetZonesParams) SetDollarTop(dollarTop *int64) {
+	o.DollarTop = dollarTop
+}
+
 // WithAPIVersion adds the aPIVersion to the get zones params
 func (o *GetZonesParams) WithAPIVersion(aPIVersion *string) *GetZonesParams {
 	o.SetAPIVersion(aPIVersion)
@@ -136,6 +173,40 @@ func (o *GetZonesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Regi
 		return err
 	}
 	var res []error
+
+	if o.DollarSkip != nil {
+
+		// query param $skip
+		var qrDollarSkip int64
+
+		if o.DollarSkip != nil {
+			qrDollarSkip = *o.DollarSkip
+		}
+		qDollarSkip := swag.FormatInt64(qrDollarSkip)
+		if qDollarSkip != "" {
+
+			if err := r.SetQueryParam("$skip", qDollarSkip); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.DollarTop != nil {
+
+		// query param $top
+		var qrDollarTop int64
+
+		if o.DollarTop != nil {
+			qrDollarTop = *o.DollarTop
+		}
+		qDollarTop := swag.FormatInt64(qrDollarTop)
+		if qDollarTop != "" {
+
+			if err := r.SetQueryParam("$top", qDollarTop); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.APIVersion != nil {
 

@@ -29,6 +29,12 @@ func (o *GetDeploymentsForProjectUsingGET2Reader) ReadResponse(response runtime.
 			return nil, err
 		}
 		return result, nil
+	case 401:
+		result := NewGetDeploymentsForProjectUsingGET2Unauthorized()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +45,8 @@ func NewGetDeploymentsForProjectUsingGET2OK() *GetDeploymentsForProjectUsingGET2
 	return &GetDeploymentsForProjectUsingGET2OK{}
 }
 
-/* GetDeploymentsForProjectUsingGET2OK describes a response with status code 200, with default header values.
+/*
+GetDeploymentsForProjectUsingGET2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +54,39 @@ type GetDeploymentsForProjectUsingGET2OK struct {
 	Payload *models.Page
 }
 
+// IsSuccess returns true when this get deployments for project using g e t2 o k response has a 2xx status code
+func (o *GetDeploymentsForProjectUsingGET2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get deployments for project using g e t2 o k response has a 3xx status code
+func (o *GetDeploymentsForProjectUsingGET2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get deployments for project using g e t2 o k response has a 4xx status code
+func (o *GetDeploymentsForProjectUsingGET2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get deployments for project using g e t2 o k response has a 5xx status code
+func (o *GetDeploymentsForProjectUsingGET2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get deployments for project using g e t2 o k response a status code equal to that given
+func (o *GetDeploymentsForProjectUsingGET2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetDeploymentsForProjectUsingGET2OK) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/projects/{projectId}/deployment-count][%d] getDeploymentsForProjectUsingGET2OK  %+v", 200, o.Payload)
 }
+
+func (o *GetDeploymentsForProjectUsingGET2OK) String() string {
+	return fmt.Sprintf("[GET /deployment/api/projects/{projectId}/deployment-count][%d] getDeploymentsForProjectUsingGET2OK  %+v", 200, o.Payload)
+}
+
 func (o *GetDeploymentsForProjectUsingGET2OK) GetPayload() *models.Page {
 	return o.Payload
 }
@@ -62,6 +99,57 @@ func (o *GetDeploymentsForProjectUsingGET2OK) readResponse(response runtime.Clie
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewGetDeploymentsForProjectUsingGET2Unauthorized creates a GetDeploymentsForProjectUsingGET2Unauthorized with default headers values
+func NewGetDeploymentsForProjectUsingGET2Unauthorized() *GetDeploymentsForProjectUsingGET2Unauthorized {
+	return &GetDeploymentsForProjectUsingGET2Unauthorized{}
+}
+
+/*
+GetDeploymentsForProjectUsingGET2Unauthorized describes a response with status code 401, with default header values.
+
+Unauthorized
+*/
+type GetDeploymentsForProjectUsingGET2Unauthorized struct {
+}
+
+// IsSuccess returns true when this get deployments for project using g e t2 unauthorized response has a 2xx status code
+func (o *GetDeploymentsForProjectUsingGET2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get deployments for project using g e t2 unauthorized response has a 3xx status code
+func (o *GetDeploymentsForProjectUsingGET2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get deployments for project using g e t2 unauthorized response has a 4xx status code
+func (o *GetDeploymentsForProjectUsingGET2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get deployments for project using g e t2 unauthorized response has a 5xx status code
+func (o *GetDeploymentsForProjectUsingGET2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get deployments for project using g e t2 unauthorized response a status code equal to that given
+func (o *GetDeploymentsForProjectUsingGET2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+func (o *GetDeploymentsForProjectUsingGET2Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /deployment/api/projects/{projectId}/deployment-count][%d] getDeploymentsForProjectUsingGET2Unauthorized ", 401)
+}
+
+func (o *GetDeploymentsForProjectUsingGET2Unauthorized) String() string {
+	return fmt.Sprintf("[GET /deployment/api/projects/{projectId}/deployment-count][%d] getDeploymentsForProjectUsingGET2Unauthorized ", 401)
+}
+
+func (o *GetDeploymentsForProjectUsingGET2Unauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

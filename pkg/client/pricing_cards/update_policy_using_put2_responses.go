@@ -51,7 +51,8 @@ func NewUpdatePolicyUsingPUT2OK() *UpdatePolicyUsingPUT2OK {
 	return &UpdatePolicyUsingPUT2OK{}
 }
 
-/* UpdatePolicyUsingPUT2OK describes a response with status code 200, with default header values.
+/*
+UpdatePolicyUsingPUT2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -59,9 +60,39 @@ type UpdatePolicyUsingPUT2OK struct {
 	Payload *models.MeteringPolicy
 }
 
+// IsSuccess returns true when this update policy using p u t2 o k response has a 2xx status code
+func (o *UpdatePolicyUsingPUT2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update policy using p u t2 o k response has a 3xx status code
+func (o *UpdatePolicyUsingPUT2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update policy using p u t2 o k response has a 4xx status code
+func (o *UpdatePolicyUsingPUT2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update policy using p u t2 o k response has a 5xx status code
+func (o *UpdatePolicyUsingPUT2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update policy using p u t2 o k response a status code equal to that given
+func (o *UpdatePolicyUsingPUT2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdatePolicyUsingPUT2OK) Error() string {
 	return fmt.Sprintf("[PUT /price/api/private/pricing-cards/{id}][%d] updatePolicyUsingPUT2OK  %+v", 200, o.Payload)
 }
+
+func (o *UpdatePolicyUsingPUT2OK) String() string {
+	return fmt.Sprintf("[PUT /price/api/private/pricing-cards/{id}][%d] updatePolicyUsingPUT2OK  %+v", 200, o.Payload)
+}
+
 func (o *UpdatePolicyUsingPUT2OK) GetPayload() *models.MeteringPolicy {
 	return o.Payload
 }
@@ -83,14 +114,44 @@ func NewUpdatePolicyUsingPUT2Unauthorized() *UpdatePolicyUsingPUT2Unauthorized {
 	return &UpdatePolicyUsingPUT2Unauthorized{}
 }
 
-/* UpdatePolicyUsingPUT2Unauthorized describes a response with status code 401, with default header values.
+/*
+UpdatePolicyUsingPUT2Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type UpdatePolicyUsingPUT2Unauthorized struct {
 }
 
+// IsSuccess returns true when this update policy using p u t2 unauthorized response has a 2xx status code
+func (o *UpdatePolicyUsingPUT2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update policy using p u t2 unauthorized response has a 3xx status code
+func (o *UpdatePolicyUsingPUT2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update policy using p u t2 unauthorized response has a 4xx status code
+func (o *UpdatePolicyUsingPUT2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update policy using p u t2 unauthorized response has a 5xx status code
+func (o *UpdatePolicyUsingPUT2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update policy using p u t2 unauthorized response a status code equal to that given
+func (o *UpdatePolicyUsingPUT2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UpdatePolicyUsingPUT2Unauthorized) Error() string {
+	return fmt.Sprintf("[PUT /price/api/private/pricing-cards/{id}][%d] updatePolicyUsingPUT2Unauthorized ", 401)
+}
+
+func (o *UpdatePolicyUsingPUT2Unauthorized) String() string {
 	return fmt.Sprintf("[PUT /price/api/private/pricing-cards/{id}][%d] updatePolicyUsingPUT2Unauthorized ", 401)
 }
 
@@ -104,7 +165,8 @@ func NewUpdatePolicyUsingPUT2NotFound() *UpdatePolicyUsingPUT2NotFound {
 	return &UpdatePolicyUsingPUT2NotFound{}
 }
 
-/* UpdatePolicyUsingPUT2NotFound describes a response with status code 404, with default header values.
+/*
+UpdatePolicyUsingPUT2NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -112,9 +174,39 @@ type UpdatePolicyUsingPUT2NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update policy using p u t2 not found response has a 2xx status code
+func (o *UpdatePolicyUsingPUT2NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update policy using p u t2 not found response has a 3xx status code
+func (o *UpdatePolicyUsingPUT2NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update policy using p u t2 not found response has a 4xx status code
+func (o *UpdatePolicyUsingPUT2NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update policy using p u t2 not found response has a 5xx status code
+func (o *UpdatePolicyUsingPUT2NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update policy using p u t2 not found response a status code equal to that given
+func (o *UpdatePolicyUsingPUT2NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdatePolicyUsingPUT2NotFound) Error() string {
 	return fmt.Sprintf("[PUT /price/api/private/pricing-cards/{id}][%d] updatePolicyUsingPUT2NotFound  %+v", 404, o.Payload)
 }
+
+func (o *UpdatePolicyUsingPUT2NotFound) String() string {
+	return fmt.Sprintf("[PUT /price/api/private/pricing-cards/{id}][%d] updatePolicyUsingPUT2NotFound  %+v", 404, o.Payload)
+}
+
 func (o *UpdatePolicyUsingPUT2NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

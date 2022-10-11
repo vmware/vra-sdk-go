@@ -52,10 +52,12 @@ func NewGetAllGitWebhooksUsingGETParamsWithHTTPClient(client *http.Client) *GetA
 	}
 }
 
-/* GetAllGitWebhooksUsingGETParams contains all the parameters to send to the API endpoint
-   for the get all git webhooks using g e t operation.
+/*
+GetAllGitWebhooksUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get all git webhooks using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetAllGitWebhooksUsingGETParams struct {
 

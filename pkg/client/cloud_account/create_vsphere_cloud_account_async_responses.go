@@ -51,7 +51,8 @@ func NewCreateVSphereCloudAccountAsyncAccepted() *CreateVSphereCloudAccountAsync
 	return &CreateVSphereCloudAccountAsyncAccepted{}
 }
 
-/* CreateVSphereCloudAccountAsyncAccepted describes a response with status code 202, with default header values.
+/*
+CreateVSphereCloudAccountAsyncAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type CreateVSphereCloudAccountAsyncAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this create v sphere cloud account async accepted response has a 2xx status code
+func (o *CreateVSphereCloudAccountAsyncAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create v sphere cloud account async accepted response has a 3xx status code
+func (o *CreateVSphereCloudAccountAsyncAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create v sphere cloud account async accepted response has a 4xx status code
+func (o *CreateVSphereCloudAccountAsyncAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create v sphere cloud account async accepted response has a 5xx status code
+func (o *CreateVSphereCloudAccountAsyncAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create v sphere cloud account async accepted response a status code equal to that given
+func (o *CreateVSphereCloudAccountAsyncAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateVSphereCloudAccountAsyncAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vsphere][%d] createVSphereCloudAccountAsyncAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateVSphereCloudAccountAsyncAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vsphere][%d] createVSphereCloudAccountAsyncAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateVSphereCloudAccountAsyncAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewCreateVSphereCloudAccountAsyncBadRequest() *CreateVSphereCloudAccountAsy
 	return &CreateVSphereCloudAccountAsyncBadRequest{}
 }
 
-/* CreateVSphereCloudAccountAsyncBadRequest describes a response with status code 400, with default header values.
+/*
+CreateVSphereCloudAccountAsyncBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type CreateVSphereCloudAccountAsyncBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create v sphere cloud account async bad request response has a 2xx status code
+func (o *CreateVSphereCloudAccountAsyncBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create v sphere cloud account async bad request response has a 3xx status code
+func (o *CreateVSphereCloudAccountAsyncBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create v sphere cloud account async bad request response has a 4xx status code
+func (o *CreateVSphereCloudAccountAsyncBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create v sphere cloud account async bad request response has a 5xx status code
+func (o *CreateVSphereCloudAccountAsyncBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create v sphere cloud account async bad request response a status code equal to that given
+func (o *CreateVSphereCloudAccountAsyncBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateVSphereCloudAccountAsyncBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vsphere][%d] createVSphereCloudAccountAsyncBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateVSphereCloudAccountAsyncBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vsphere][%d] createVSphereCloudAccountAsyncBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateVSphereCloudAccountAsyncBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewCreateVSphereCloudAccountAsyncForbidden() *CreateVSphereCloudAccountAsyn
 	return &CreateVSphereCloudAccountAsyncForbidden{}
 }
 
-/* CreateVSphereCloudAccountAsyncForbidden describes a response with status code 403, with default header values.
+/*
+CreateVSphereCloudAccountAsyncForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type CreateVSphereCloudAccountAsyncForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this create v sphere cloud account async forbidden response has a 2xx status code
+func (o *CreateVSphereCloudAccountAsyncForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create v sphere cloud account async forbidden response has a 3xx status code
+func (o *CreateVSphereCloudAccountAsyncForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create v sphere cloud account async forbidden response has a 4xx status code
+func (o *CreateVSphereCloudAccountAsyncForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create v sphere cloud account async forbidden response has a 5xx status code
+func (o *CreateVSphereCloudAccountAsyncForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create v sphere cloud account async forbidden response a status code equal to that given
+func (o *CreateVSphereCloudAccountAsyncForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateVSphereCloudAccountAsyncForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vsphere][%d] createVSphereCloudAccountAsyncForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CreateVSphereCloudAccountAsyncForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vsphere][%d] createVSphereCloudAccountAsyncForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CreateVSphereCloudAccountAsyncForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

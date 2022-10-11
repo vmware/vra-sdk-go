@@ -51,7 +51,8 @@ func NewGetDeploymentByIDV3UsingGETOK() *GetDeploymentByIDV3UsingGETOK {
 	return &GetDeploymentByIDV3UsingGETOK{}
 }
 
-/* GetDeploymentByIDV3UsingGETOK describes a response with status code 200, with default header values.
+/*
+GetDeploymentByIDV3UsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -59,9 +60,39 @@ type GetDeploymentByIDV3UsingGETOK struct {
 	Payload *models.Deployment
 }
 
+// IsSuccess returns true when this get deployment by Id v3 using g e t o k response has a 2xx status code
+func (o *GetDeploymentByIDV3UsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get deployment by Id v3 using g e t o k response has a 3xx status code
+func (o *GetDeploymentByIDV3UsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get deployment by Id v3 using g e t o k response has a 4xx status code
+func (o *GetDeploymentByIDV3UsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get deployment by Id v3 using g e t o k response has a 5xx status code
+func (o *GetDeploymentByIDV3UsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get deployment by Id v3 using g e t o k response a status code equal to that given
+func (o *GetDeploymentByIDV3UsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetDeploymentByIDV3UsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}][%d] getDeploymentByIdV3UsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetDeploymentByIDV3UsingGETOK) String() string {
+	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}][%d] getDeploymentByIdV3UsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetDeploymentByIDV3UsingGETOK) GetPayload() *models.Deployment {
 	return o.Payload
 }
@@ -83,14 +114,44 @@ func NewGetDeploymentByIDV3UsingGETUnauthorized() *GetDeploymentByIDV3UsingGETUn
 	return &GetDeploymentByIDV3UsingGETUnauthorized{}
 }
 
-/* GetDeploymentByIDV3UsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+GetDeploymentByIDV3UsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type GetDeploymentByIDV3UsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this get deployment by Id v3 using g e t unauthorized response has a 2xx status code
+func (o *GetDeploymentByIDV3UsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get deployment by Id v3 using g e t unauthorized response has a 3xx status code
+func (o *GetDeploymentByIDV3UsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get deployment by Id v3 using g e t unauthorized response has a 4xx status code
+func (o *GetDeploymentByIDV3UsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get deployment by Id v3 using g e t unauthorized response has a 5xx status code
+func (o *GetDeploymentByIDV3UsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get deployment by Id v3 using g e t unauthorized response a status code equal to that given
+func (o *GetDeploymentByIDV3UsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetDeploymentByIDV3UsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}][%d] getDeploymentByIdV3UsingGETUnauthorized ", 401)
+}
+
+func (o *GetDeploymentByIDV3UsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}][%d] getDeploymentByIdV3UsingGETUnauthorized ", 401)
 }
 
@@ -104,7 +165,8 @@ func NewGetDeploymentByIDV3UsingGETNotFound() *GetDeploymentByIDV3UsingGETNotFou
 	return &GetDeploymentByIDV3UsingGETNotFound{}
 }
 
-/* GetDeploymentByIDV3UsingGETNotFound describes a response with status code 404, with default header values.
+/*
+GetDeploymentByIDV3UsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -112,9 +174,39 @@ type GetDeploymentByIDV3UsingGETNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get deployment by Id v3 using g e t not found response has a 2xx status code
+func (o *GetDeploymentByIDV3UsingGETNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get deployment by Id v3 using g e t not found response has a 3xx status code
+func (o *GetDeploymentByIDV3UsingGETNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get deployment by Id v3 using g e t not found response has a 4xx status code
+func (o *GetDeploymentByIDV3UsingGETNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get deployment by Id v3 using g e t not found response has a 5xx status code
+func (o *GetDeploymentByIDV3UsingGETNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get deployment by Id v3 using g e t not found response a status code equal to that given
+func (o *GetDeploymentByIDV3UsingGETNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetDeploymentByIDV3UsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}][%d] getDeploymentByIdV3UsingGETNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetDeploymentByIDV3UsingGETNotFound) String() string {
+	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}][%d] getDeploymentByIdV3UsingGETNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetDeploymentByIDV3UsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

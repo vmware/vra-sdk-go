@@ -63,7 +63,8 @@ func NewReleaseByIDAndVersionUsingPOSTOK() *ReleaseByIDAndVersionUsingPOSTOK {
 	return &ReleaseByIDAndVersionUsingPOSTOK{}
 }
 
-/* ReleaseByIDAndVersionUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+ReleaseByIDAndVersionUsingPOSTOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type ReleaseByIDAndVersionUsingPOSTOK struct {
 	Payload models.CustomIntegration
 }
 
+// IsSuccess returns true when this release by Id and version using p o s t o k response has a 2xx status code
+func (o *ReleaseByIDAndVersionUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this release by Id and version using p o s t o k response has a 3xx status code
+func (o *ReleaseByIDAndVersionUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this release by Id and version using p o s t o k response has a 4xx status code
+func (o *ReleaseByIDAndVersionUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this release by Id and version using p o s t o k response has a 5xx status code
+func (o *ReleaseByIDAndVersionUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this release by Id and version using p o s t o k response a status code equal to that given
+func (o *ReleaseByIDAndVersionUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReleaseByIDAndVersionUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/release][%d] releaseByIdAndVersionUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *ReleaseByIDAndVersionUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/release][%d] releaseByIdAndVersionUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *ReleaseByIDAndVersionUsingPOSTOK) GetPayload() models.CustomIntegration {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewReleaseByIDAndVersionUsingPOSTUnauthorized() *ReleaseByIDAndVersionUsing
 	return &ReleaseByIDAndVersionUsingPOSTUnauthorized{}
 }
 
-/* ReleaseByIDAndVersionUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+ReleaseByIDAndVersionUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type ReleaseByIDAndVersionUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this release by Id and version using p o s t unauthorized response has a 2xx status code
+func (o *ReleaseByIDAndVersionUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this release by Id and version using p o s t unauthorized response has a 3xx status code
+func (o *ReleaseByIDAndVersionUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this release by Id and version using p o s t unauthorized response has a 4xx status code
+func (o *ReleaseByIDAndVersionUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this release by Id and version using p o s t unauthorized response has a 5xx status code
+func (o *ReleaseByIDAndVersionUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this release by Id and version using p o s t unauthorized response a status code equal to that given
+func (o *ReleaseByIDAndVersionUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ReleaseByIDAndVersionUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/release][%d] releaseByIdAndVersionUsingPOSTUnauthorized ", 401)
+}
+
+func (o *ReleaseByIDAndVersionUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/release][%d] releaseByIdAndVersionUsingPOSTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewReleaseByIDAndVersionUsingPOSTForbidden() *ReleaseByIDAndVersionUsingPOS
 	return &ReleaseByIDAndVersionUsingPOSTForbidden{}
 }
 
-/* ReleaseByIDAndVersionUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+ReleaseByIDAndVersionUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type ReleaseByIDAndVersionUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this release by Id and version using p o s t forbidden response has a 2xx status code
+func (o *ReleaseByIDAndVersionUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this release by Id and version using p o s t forbidden response has a 3xx status code
+func (o *ReleaseByIDAndVersionUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this release by Id and version using p o s t forbidden response has a 4xx status code
+func (o *ReleaseByIDAndVersionUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this release by Id and version using p o s t forbidden response has a 5xx status code
+func (o *ReleaseByIDAndVersionUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this release by Id and version using p o s t forbidden response a status code equal to that given
+func (o *ReleaseByIDAndVersionUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ReleaseByIDAndVersionUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/release][%d] releaseByIdAndVersionUsingPOSTForbidden ", 403)
+}
+
+func (o *ReleaseByIDAndVersionUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/release][%d] releaseByIdAndVersionUsingPOSTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewReleaseByIDAndVersionUsingPOSTNotFound() *ReleaseByIDAndVersionUsingPOST
 	return &ReleaseByIDAndVersionUsingPOSTNotFound{}
 }
 
-/* ReleaseByIDAndVersionUsingPOSTNotFound describes a response with status code 404, with default header values.
+/*
+ReleaseByIDAndVersionUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type ReleaseByIDAndVersionUsingPOSTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this release by Id and version using p o s t not found response has a 2xx status code
+func (o *ReleaseByIDAndVersionUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this release by Id and version using p o s t not found response has a 3xx status code
+func (o *ReleaseByIDAndVersionUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this release by Id and version using p o s t not found response has a 4xx status code
+func (o *ReleaseByIDAndVersionUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this release by Id and version using p o s t not found response has a 5xx status code
+func (o *ReleaseByIDAndVersionUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this release by Id and version using p o s t not found response a status code equal to that given
+func (o *ReleaseByIDAndVersionUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ReleaseByIDAndVersionUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/release][%d] releaseByIdAndVersionUsingPOSTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ReleaseByIDAndVersionUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/release][%d] releaseByIdAndVersionUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ReleaseByIDAndVersionUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewReleaseByIDAndVersionUsingPOSTInternalServerError() *ReleaseByIDAndVersi
 	return &ReleaseByIDAndVersionUsingPOSTInternalServerError{}
 }
 
-/* ReleaseByIDAndVersionUsingPOSTInternalServerError describes a response with status code 500, with default header values.
+/*
+ReleaseByIDAndVersionUsingPOSTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ReleaseByIDAndVersionUsingPOSTInternalServerError struct {
 }
 
+// IsSuccess returns true when this release by Id and version using p o s t internal server error response has a 2xx status code
+func (o *ReleaseByIDAndVersionUsingPOSTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this release by Id and version using p o s t internal server error response has a 3xx status code
+func (o *ReleaseByIDAndVersionUsingPOSTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this release by Id and version using p o s t internal server error response has a 4xx status code
+func (o *ReleaseByIDAndVersionUsingPOSTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this release by Id and version using p o s t internal server error response has a 5xx status code
+func (o *ReleaseByIDAndVersionUsingPOSTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this release by Id and version using p o s t internal server error response a status code equal to that given
+func (o *ReleaseByIDAndVersionUsingPOSTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ReleaseByIDAndVersionUsingPOSTInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/release][%d] releaseByIdAndVersionUsingPOSTInternalServerError ", 500)
+}
+
+func (o *ReleaseByIDAndVersionUsingPOSTInternalServerError) String() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/release][%d] releaseByIdAndVersionUsingPOSTInternalServerError ", 500)
 }
 

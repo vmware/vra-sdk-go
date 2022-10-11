@@ -14,7 +14,7 @@ import (
 
 // ResourceActionRequest ResourceActionRequest
 //
-// Represents a resource day-two request
+// # Represents a resource day-two request
 //
 // swagger:model ResourceActionRequest
 type ResourceActionRequest struct {

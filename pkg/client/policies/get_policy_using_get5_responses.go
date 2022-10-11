@@ -29,6 +29,24 @@ func (o *GetPolicyUsingGET5Reader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return result, nil
+	case 401:
+		result := NewGetPolicyUsingGET5Unauthorized()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 403:
+		result := NewGetPolicyUsingGET5Forbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 404:
+		result := NewGetPolicyUsingGET5NotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +57,8 @@ func NewGetPolicyUsingGET5OK() *GetPolicyUsingGET5OK {
 	return &GetPolicyUsingGET5OK{}
 }
 
-/* GetPolicyUsingGET5OK describes a response with status code 200, with default header values.
+/*
+GetPolicyUsingGET5OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +66,39 @@ type GetPolicyUsingGET5OK struct {
 	Payload *models.Policy
 }
 
+// IsSuccess returns true when this get policy using g e t5 o k response has a 2xx status code
+func (o *GetPolicyUsingGET5OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get policy using g e t5 o k response has a 3xx status code
+func (o *GetPolicyUsingGET5OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get policy using g e t5 o k response has a 4xx status code
+func (o *GetPolicyUsingGET5OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get policy using g e t5 o k response has a 5xx status code
+func (o *GetPolicyUsingGET5OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get policy using g e t5 o k response a status code equal to that given
+func (o *GetPolicyUsingGET5OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetPolicyUsingGET5OK) Error() string {
 	return fmt.Sprintf("[GET /policy/api/policies/{id}][%d] getPolicyUsingGET5OK  %+v", 200, o.Payload)
 }
+
+func (o *GetPolicyUsingGET5OK) String() string {
+	return fmt.Sprintf("[GET /policy/api/policies/{id}][%d] getPolicyUsingGET5OK  %+v", 200, o.Payload)
+}
+
 func (o *GetPolicyUsingGET5OK) GetPayload() *models.Policy {
 	return o.Payload
 }
@@ -57,6 +106,171 @@ func (o *GetPolicyUsingGET5OK) GetPayload() *models.Policy {
 func (o *GetPolicyUsingGET5OK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Policy)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetPolicyUsingGET5Unauthorized creates a GetPolicyUsingGET5Unauthorized with default headers values
+func NewGetPolicyUsingGET5Unauthorized() *GetPolicyUsingGET5Unauthorized {
+	return &GetPolicyUsingGET5Unauthorized{}
+}
+
+/*
+GetPolicyUsingGET5Unauthorized describes a response with status code 401, with default header values.
+
+Unauthorized
+*/
+type GetPolicyUsingGET5Unauthorized struct {
+}
+
+// IsSuccess returns true when this get policy using g e t5 unauthorized response has a 2xx status code
+func (o *GetPolicyUsingGET5Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get policy using g e t5 unauthorized response has a 3xx status code
+func (o *GetPolicyUsingGET5Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get policy using g e t5 unauthorized response has a 4xx status code
+func (o *GetPolicyUsingGET5Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get policy using g e t5 unauthorized response has a 5xx status code
+func (o *GetPolicyUsingGET5Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get policy using g e t5 unauthorized response a status code equal to that given
+func (o *GetPolicyUsingGET5Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+func (o *GetPolicyUsingGET5Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /policy/api/policies/{id}][%d] getPolicyUsingGET5Unauthorized ", 401)
+}
+
+func (o *GetPolicyUsingGET5Unauthorized) String() string {
+	return fmt.Sprintf("[GET /policy/api/policies/{id}][%d] getPolicyUsingGET5Unauthorized ", 401)
+}
+
+func (o *GetPolicyUsingGET5Unauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewGetPolicyUsingGET5Forbidden creates a GetPolicyUsingGET5Forbidden with default headers values
+func NewGetPolicyUsingGET5Forbidden() *GetPolicyUsingGET5Forbidden {
+	return &GetPolicyUsingGET5Forbidden{}
+}
+
+/*
+GetPolicyUsingGET5Forbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type GetPolicyUsingGET5Forbidden struct {
+}
+
+// IsSuccess returns true when this get policy using g e t5 forbidden response has a 2xx status code
+func (o *GetPolicyUsingGET5Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get policy using g e t5 forbidden response has a 3xx status code
+func (o *GetPolicyUsingGET5Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get policy using g e t5 forbidden response has a 4xx status code
+func (o *GetPolicyUsingGET5Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get policy using g e t5 forbidden response has a 5xx status code
+func (o *GetPolicyUsingGET5Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get policy using g e t5 forbidden response a status code equal to that given
+func (o *GetPolicyUsingGET5Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *GetPolicyUsingGET5Forbidden) Error() string {
+	return fmt.Sprintf("[GET /policy/api/policies/{id}][%d] getPolicyUsingGET5Forbidden ", 403)
+}
+
+func (o *GetPolicyUsingGET5Forbidden) String() string {
+	return fmt.Sprintf("[GET /policy/api/policies/{id}][%d] getPolicyUsingGET5Forbidden ", 403)
+}
+
+func (o *GetPolicyUsingGET5Forbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewGetPolicyUsingGET5NotFound creates a GetPolicyUsingGET5NotFound with default headers values
+func NewGetPolicyUsingGET5NotFound() *GetPolicyUsingGET5NotFound {
+	return &GetPolicyUsingGET5NotFound{}
+}
+
+/*
+GetPolicyUsingGET5NotFound describes a response with status code 404, with default header values.
+
+Not Found
+*/
+type GetPolicyUsingGET5NotFound struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this get policy using g e t5 not found response has a 2xx status code
+func (o *GetPolicyUsingGET5NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get policy using g e t5 not found response has a 3xx status code
+func (o *GetPolicyUsingGET5NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get policy using g e t5 not found response has a 4xx status code
+func (o *GetPolicyUsingGET5NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get policy using g e t5 not found response has a 5xx status code
+func (o *GetPolicyUsingGET5NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get policy using g e t5 not found response a status code equal to that given
+func (o *GetPolicyUsingGET5NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+func (o *GetPolicyUsingGET5NotFound) Error() string {
+	return fmt.Sprintf("[GET /policy/api/policies/{id}][%d] getPolicyUsingGET5NotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetPolicyUsingGET5NotFound) String() string {
+	return fmt.Sprintf("[GET /policy/api/policies/{id}][%d] getPolicyUsingGET5NotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetPolicyUsingGET5NotFound) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *GetPolicyUsingGET5NotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

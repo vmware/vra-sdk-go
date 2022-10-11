@@ -52,10 +52,12 @@ func NewGetFabricImageParamsWithHTTPClient(client *http.Client) *GetFabricImageP
 	}
 }
 
-/* GetFabricImageParams contains all the parameters to send to the API endpoint
-   for the get fabric image operation.
+/*
+GetFabricImageParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get fabric image operation.
+
+	Typically these are written to a http.Request.
 */
 type GetFabricImageParams struct {
 

@@ -53,10 +53,12 @@ func NewGetCatalogItemsUsingGET5ParamsWithHTTPClient(client *http.Client) *GetCa
 	}
 }
 
-/* GetCatalogItemsUsingGET5Params contains all the parameters to send to the API endpoint
-   for the get catalog items using g e t 5 operation.
+/*
+GetCatalogItemsUsingGET5Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get catalog items using g e t 5 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetCatalogItemsUsingGET5Params struct {
 

@@ -63,7 +63,8 @@ func NewModifyPatchUserOperationUsingPATCHOK() *ModifyPatchUserOperationUsingPAT
 	return &ModifyPatchUserOperationUsingPATCHOK{}
 }
 
-/* ModifyPatchUserOperationUsingPATCHOK describes a response with status code 200, with default header values.
+/*
+ModifyPatchUserOperationUsingPATCHOK describes a response with status code 200, with default header values.
 
 'Success' with the modified User Operation
 */
@@ -71,9 +72,39 @@ type ModifyPatchUserOperationUsingPATCHOK struct {
 	Payload *models.UserOpResource
 }
 
+// IsSuccess returns true when this modify patch user operation using p a t c h o k response has a 2xx status code
+func (o *ModifyPatchUserOperationUsingPATCHOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this modify patch user operation using p a t c h o k response has a 3xx status code
+func (o *ModifyPatchUserOperationUsingPATCHOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this modify patch user operation using p a t c h o k response has a 4xx status code
+func (o *ModifyPatchUserOperationUsingPATCHOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this modify patch user operation using p a t c h o k response has a 5xx status code
+func (o *ModifyPatchUserOperationUsingPATCHOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this modify patch user operation using p a t c h o k response a status code equal to that given
+func (o *ModifyPatchUserOperationUsingPATCHOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ModifyPatchUserOperationUsingPATCHOK) Error() string {
 	return fmt.Sprintf("[PATCH /codestream/api/user-operations/{id}][%d] modifyPatchUserOperationUsingPATCHOK  %+v", 200, o.Payload)
 }
+
+func (o *ModifyPatchUserOperationUsingPATCHOK) String() string {
+	return fmt.Sprintf("[PATCH /codestream/api/user-operations/{id}][%d] modifyPatchUserOperationUsingPATCHOK  %+v", 200, o.Payload)
+}
+
 func (o *ModifyPatchUserOperationUsingPATCHOK) GetPayload() *models.UserOpResource {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewModifyPatchUserOperationUsingPATCHUnauthorized() *ModifyPatchUserOperati
 	return &ModifyPatchUserOperationUsingPATCHUnauthorized{}
 }
 
-/* ModifyPatchUserOperationUsingPATCHUnauthorized describes a response with status code 401, with default header values.
+/*
+ModifyPatchUserOperationUsingPATCHUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type ModifyPatchUserOperationUsingPATCHUnauthorized struct {
 }
 
+// IsSuccess returns true when this modify patch user operation using p a t c h unauthorized response has a 2xx status code
+func (o *ModifyPatchUserOperationUsingPATCHUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this modify patch user operation using p a t c h unauthorized response has a 3xx status code
+func (o *ModifyPatchUserOperationUsingPATCHUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this modify patch user operation using p a t c h unauthorized response has a 4xx status code
+func (o *ModifyPatchUserOperationUsingPATCHUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this modify patch user operation using p a t c h unauthorized response has a 5xx status code
+func (o *ModifyPatchUserOperationUsingPATCHUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this modify patch user operation using p a t c h unauthorized response a status code equal to that given
+func (o *ModifyPatchUserOperationUsingPATCHUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ModifyPatchUserOperationUsingPATCHUnauthorized) Error() string {
+	return fmt.Sprintf("[PATCH /codestream/api/user-operations/{id}][%d] modifyPatchUserOperationUsingPATCHUnauthorized ", 401)
+}
+
+func (o *ModifyPatchUserOperationUsingPATCHUnauthorized) String() string {
 	return fmt.Sprintf("[PATCH /codestream/api/user-operations/{id}][%d] modifyPatchUserOperationUsingPATCHUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewModifyPatchUserOperationUsingPATCHForbidden() *ModifyPatchUserOperationU
 	return &ModifyPatchUserOperationUsingPATCHForbidden{}
 }
 
-/* ModifyPatchUserOperationUsingPATCHForbidden describes a response with status code 403, with default header values.
+/*
+ModifyPatchUserOperationUsingPATCHForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type ModifyPatchUserOperationUsingPATCHForbidden struct {
 }
 
+// IsSuccess returns true when this modify patch user operation using p a t c h forbidden response has a 2xx status code
+func (o *ModifyPatchUserOperationUsingPATCHForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this modify patch user operation using p a t c h forbidden response has a 3xx status code
+func (o *ModifyPatchUserOperationUsingPATCHForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this modify patch user operation using p a t c h forbidden response has a 4xx status code
+func (o *ModifyPatchUserOperationUsingPATCHForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this modify patch user operation using p a t c h forbidden response has a 5xx status code
+func (o *ModifyPatchUserOperationUsingPATCHForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this modify patch user operation using p a t c h forbidden response a status code equal to that given
+func (o *ModifyPatchUserOperationUsingPATCHForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ModifyPatchUserOperationUsingPATCHForbidden) Error() string {
+	return fmt.Sprintf("[PATCH /codestream/api/user-operations/{id}][%d] modifyPatchUserOperationUsingPATCHForbidden ", 403)
+}
+
+func (o *ModifyPatchUserOperationUsingPATCHForbidden) String() string {
 	return fmt.Sprintf("[PATCH /codestream/api/user-operations/{id}][%d] modifyPatchUserOperationUsingPATCHForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewModifyPatchUserOperationUsingPATCHNotFound() *ModifyPatchUserOperationUs
 	return &ModifyPatchUserOperationUsingPATCHNotFound{}
 }
 
-/* ModifyPatchUserOperationUsingPATCHNotFound describes a response with status code 404, with default header values.
+/*
+ModifyPatchUserOperationUsingPATCHNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type ModifyPatchUserOperationUsingPATCHNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this modify patch user operation using p a t c h not found response has a 2xx status code
+func (o *ModifyPatchUserOperationUsingPATCHNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this modify patch user operation using p a t c h not found response has a 3xx status code
+func (o *ModifyPatchUserOperationUsingPATCHNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this modify patch user operation using p a t c h not found response has a 4xx status code
+func (o *ModifyPatchUserOperationUsingPATCHNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this modify patch user operation using p a t c h not found response has a 5xx status code
+func (o *ModifyPatchUserOperationUsingPATCHNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this modify patch user operation using p a t c h not found response a status code equal to that given
+func (o *ModifyPatchUserOperationUsingPATCHNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ModifyPatchUserOperationUsingPATCHNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /codestream/api/user-operations/{id}][%d] modifyPatchUserOperationUsingPATCHNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ModifyPatchUserOperationUsingPATCHNotFound) String() string {
+	return fmt.Sprintf("[PATCH /codestream/api/user-operations/{id}][%d] modifyPatchUserOperationUsingPATCHNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ModifyPatchUserOperationUsingPATCHNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewModifyPatchUserOperationUsingPATCHInternalServerError() *ModifyPatchUser
 	return &ModifyPatchUserOperationUsingPATCHInternalServerError{}
 }
 
-/* ModifyPatchUserOperationUsingPATCHInternalServerError describes a response with status code 500, with default header values.
+/*
+ModifyPatchUserOperationUsingPATCHInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ModifyPatchUserOperationUsingPATCHInternalServerError struct {
 }
 
+// IsSuccess returns true when this modify patch user operation using p a t c h internal server error response has a 2xx status code
+func (o *ModifyPatchUserOperationUsingPATCHInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this modify patch user operation using p a t c h internal server error response has a 3xx status code
+func (o *ModifyPatchUserOperationUsingPATCHInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this modify patch user operation using p a t c h internal server error response has a 4xx status code
+func (o *ModifyPatchUserOperationUsingPATCHInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this modify patch user operation using p a t c h internal server error response has a 5xx status code
+func (o *ModifyPatchUserOperationUsingPATCHInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this modify patch user operation using p a t c h internal server error response a status code equal to that given
+func (o *ModifyPatchUserOperationUsingPATCHInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ModifyPatchUserOperationUsingPATCHInternalServerError) Error() string {
+	return fmt.Sprintf("[PATCH /codestream/api/user-operations/{id}][%d] modifyPatchUserOperationUsingPATCHInternalServerError ", 500)
+}
+
+func (o *ModifyPatchUserOperationUsingPATCHInternalServerError) String() string {
 	return fmt.Sprintf("[PATCH /codestream/api/user-operations/{id}][%d] modifyPatchUserOperationUsingPATCHInternalServerError ", 500)
 }
 

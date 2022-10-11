@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewGetNetworkProfilesParams creates a new GetNetworkProfilesParams object,
@@ -52,18 +53,44 @@ func NewGetNetworkProfilesParamsWithHTTPClient(client *http.Client) *GetNetworkP
 	}
 }
 
-/* GetNetworkProfilesParams contains all the parameters to send to the API endpoint
-   for the get network profiles operation.
+/*
+GetNetworkProfilesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get network profiles operation.
+
+	Typically these are written to a http.Request.
 */
 type GetNetworkProfilesParams struct {
 
+	/* DollarCount.
+
+	   Flag which when specified, regardless of the assigned value, shows the total number of records. If the collection has a filter it shows the number of records matching the filter.
+	*/
+	DollarCount *bool
+
 	/* DollarFilter.
 
-	   Add a filter to return limited results
+	   Filter the results by a specified predicate expression. Operators: eq, ne, and, or.
 	*/
 	DollarFilter *string
+
+	/* DollarSelect.
+
+	   Select a subset of properties to include in the response.
+	*/
+	DollarSelect *string
+
+	/* DollarSkip.
+
+	   Number of records you want to skip.
+	*/
+	DollarSkip *int64
+
+	/* DollarTop.
+
+	   Number of records you want to get.
+	*/
+	DollarTop *int64
 
 	/* APIVersion.
 
@@ -124,6 +151,17 @@ func (o *GetNetworkProfilesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithDollarCount adds the dollarCount to the get network profiles params
+func (o *GetNetworkProfilesParams) WithDollarCount(dollarCount *bool) *GetNetworkProfilesParams {
+	o.SetDollarCount(dollarCount)
+	return o
+}
+
+// SetDollarCount adds the dollarCount to the get network profiles params
+func (o *GetNetworkProfilesParams) SetDollarCount(dollarCount *bool) {
+	o.DollarCount = dollarCount
+}
+
 // WithDollarFilter adds the dollarFilter to the get network profiles params
 func (o *GetNetworkProfilesParams) WithDollarFilter(dollarFilter *string) *GetNetworkProfilesParams {
 	o.SetDollarFilter(dollarFilter)
@@ -133,6 +171,39 @@ func (o *GetNetworkProfilesParams) WithDollarFilter(dollarFilter *string) *GetNe
 // SetDollarFilter adds the dollarFilter to the get network profiles params
 func (o *GetNetworkProfilesParams) SetDollarFilter(dollarFilter *string) {
 	o.DollarFilter = dollarFilter
+}
+
+// WithDollarSelect adds the dollarSelect to the get network profiles params
+func (o *GetNetworkProfilesParams) WithDollarSelect(dollarSelect *string) *GetNetworkProfilesParams {
+	o.SetDollarSelect(dollarSelect)
+	return o
+}
+
+// SetDollarSelect adds the dollarSelect to the get network profiles params
+func (o *GetNetworkProfilesParams) SetDollarSelect(dollarSelect *string) {
+	o.DollarSelect = dollarSelect
+}
+
+// WithDollarSkip adds the dollarSkip to the get network profiles params
+func (o *GetNetworkProfilesParams) WithDollarSkip(dollarSkip *int64) *GetNetworkProfilesParams {
+	o.SetDollarSkip(dollarSkip)
+	return o
+}
+
+// SetDollarSkip adds the dollarSkip to the get network profiles params
+func (o *GetNetworkProfilesParams) SetDollarSkip(dollarSkip *int64) {
+	o.DollarSkip = dollarSkip
+}
+
+// WithDollarTop adds the dollarTop to the get network profiles params
+func (o *GetNetworkProfilesParams) WithDollarTop(dollarTop *int64) *GetNetworkProfilesParams {
+	o.SetDollarTop(dollarTop)
+	return o
+}
+
+// SetDollarTop adds the dollarTop to the get network profiles params
+func (o *GetNetworkProfilesParams) SetDollarTop(dollarTop *int64) {
+	o.DollarTop = dollarTop
 }
 
 // WithAPIVersion adds the aPIVersion to the get network profiles params
@@ -154,6 +225,23 @@ func (o *GetNetworkProfilesParams) WriteToRequest(r runtime.ClientRequest, reg s
 	}
 	var res []error
 
+	if o.DollarCount != nil {
+
+		// query param $count
+		var qrDollarCount bool
+
+		if o.DollarCount != nil {
+			qrDollarCount = *o.DollarCount
+		}
+		qDollarCount := swag.FormatBool(qrDollarCount)
+		if qDollarCount != "" {
+
+			if err := r.SetQueryParam("$count", qDollarCount); err != nil {
+				return err
+			}
+		}
+	}
+
 	if o.DollarFilter != nil {
 
 		// query param $filter
@@ -166,6 +254,57 @@ func (o *GetNetworkProfilesParams) WriteToRequest(r runtime.ClientRequest, reg s
 		if qDollarFilter != "" {
 
 			if err := r.SetQueryParam("$filter", qDollarFilter); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.DollarSelect != nil {
+
+		// query param $select
+		var qrDollarSelect string
+
+		if o.DollarSelect != nil {
+			qrDollarSelect = *o.DollarSelect
+		}
+		qDollarSelect := qrDollarSelect
+		if qDollarSelect != "" {
+
+			if err := r.SetQueryParam("$select", qDollarSelect); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.DollarSkip != nil {
+
+		// query param $skip
+		var qrDollarSkip int64
+
+		if o.DollarSkip != nil {
+			qrDollarSkip = *o.DollarSkip
+		}
+		qDollarSkip := swag.FormatInt64(qrDollarSkip)
+		if qDollarSkip != "" {
+
+			if err := r.SetQueryParam("$skip", qDollarSkip); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.DollarTop != nil {
+
+		// query param $top
+		var qrDollarTop int64
+
+		if o.DollarTop != nil {
+			qrDollarTop = *o.DollarTop
+		}
+		qDollarTop := swag.FormatInt64(qrDollarTop)
+		if qDollarTop != "" {
+
+			if err := r.SetQueryParam("$top", qDollarTop); err != nil {
 				return err
 			}
 		}

@@ -63,7 +63,8 @@ func NewDeletePipelineByNameUsingDELETEOK() *DeletePipelineByNameUsingDELETEOK {
 	return &DeletePipelineByNameUsingDELETEOK{}
 }
 
-/* DeletePipelineByNameUsingDELETEOK describes a response with status code 200, with default header values.
+/*
+DeletePipelineByNameUsingDELETEOK describes a response with status code 200, with default header values.
 
 'Success' with the deleted Pipeline
 */
@@ -71,9 +72,39 @@ type DeletePipelineByNameUsingDELETEOK struct {
 	Payload models.Pipeline
 }
 
+// IsSuccess returns true when this delete pipeline by name using d e l e t e o k response has a 2xx status code
+func (o *DeletePipelineByNameUsingDELETEOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete pipeline by name using d e l e t e o k response has a 3xx status code
+func (o *DeletePipelineByNameUsingDELETEOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete pipeline by name using d e l e t e o k response has a 4xx status code
+func (o *DeletePipelineByNameUsingDELETEOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete pipeline by name using d e l e t e o k response has a 5xx status code
+func (o *DeletePipelineByNameUsingDELETEOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete pipeline by name using d e l e t e o k response a status code equal to that given
+func (o *DeletePipelineByNameUsingDELETEOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeletePipelineByNameUsingDELETEOK) Error() string {
 	return fmt.Sprintf("[DELETE /codestream/api/pipelines/{project}/{name}][%d] deletePipelineByNameUsingDELETEOK  %+v", 200, o.Payload)
 }
+
+func (o *DeletePipelineByNameUsingDELETEOK) String() string {
+	return fmt.Sprintf("[DELETE /codestream/api/pipelines/{project}/{name}][%d] deletePipelineByNameUsingDELETEOK  %+v", 200, o.Payload)
+}
+
 func (o *DeletePipelineByNameUsingDELETEOK) GetPayload() models.Pipeline {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewDeletePipelineByNameUsingDELETEUnauthorized() *DeletePipelineByNameUsing
 	return &DeletePipelineByNameUsingDELETEUnauthorized{}
 }
 
-/* DeletePipelineByNameUsingDELETEUnauthorized describes a response with status code 401, with default header values.
+/*
+DeletePipelineByNameUsingDELETEUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type DeletePipelineByNameUsingDELETEUnauthorized struct {
 }
 
+// IsSuccess returns true when this delete pipeline by name using d e l e t e unauthorized response has a 2xx status code
+func (o *DeletePipelineByNameUsingDELETEUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete pipeline by name using d e l e t e unauthorized response has a 3xx status code
+func (o *DeletePipelineByNameUsingDELETEUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete pipeline by name using d e l e t e unauthorized response has a 4xx status code
+func (o *DeletePipelineByNameUsingDELETEUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete pipeline by name using d e l e t e unauthorized response has a 5xx status code
+func (o *DeletePipelineByNameUsingDELETEUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete pipeline by name using d e l e t e unauthorized response a status code equal to that given
+func (o *DeletePipelineByNameUsingDELETEUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DeletePipelineByNameUsingDELETEUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/pipelines/{project}/{name}][%d] deletePipelineByNameUsingDELETEUnauthorized ", 401)
+}
+
+func (o *DeletePipelineByNameUsingDELETEUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/pipelines/{project}/{name}][%d] deletePipelineByNameUsingDELETEUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewDeletePipelineByNameUsingDELETEForbidden() *DeletePipelineByNameUsingDEL
 	return &DeletePipelineByNameUsingDELETEForbidden{}
 }
 
-/* DeletePipelineByNameUsingDELETEForbidden describes a response with status code 403, with default header values.
+/*
+DeletePipelineByNameUsingDELETEForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type DeletePipelineByNameUsingDELETEForbidden struct {
 }
 
+// IsSuccess returns true when this delete pipeline by name using d e l e t e forbidden response has a 2xx status code
+func (o *DeletePipelineByNameUsingDELETEForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete pipeline by name using d e l e t e forbidden response has a 3xx status code
+func (o *DeletePipelineByNameUsingDELETEForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete pipeline by name using d e l e t e forbidden response has a 4xx status code
+func (o *DeletePipelineByNameUsingDELETEForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete pipeline by name using d e l e t e forbidden response has a 5xx status code
+func (o *DeletePipelineByNameUsingDELETEForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete pipeline by name using d e l e t e forbidden response a status code equal to that given
+func (o *DeletePipelineByNameUsingDELETEForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeletePipelineByNameUsingDELETEForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/pipelines/{project}/{name}][%d] deletePipelineByNameUsingDELETEForbidden ", 403)
+}
+
+func (o *DeletePipelineByNameUsingDELETEForbidden) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/pipelines/{project}/{name}][%d] deletePipelineByNameUsingDELETEForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewDeletePipelineByNameUsingDELETENotFound() *DeletePipelineByNameUsingDELE
 	return &DeletePipelineByNameUsingDELETENotFound{}
 }
 
-/* DeletePipelineByNameUsingDELETENotFound describes a response with status code 404, with default header values.
+/*
+DeletePipelineByNameUsingDELETENotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type DeletePipelineByNameUsingDELETENotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete pipeline by name using d e l e t e not found response has a 2xx status code
+func (o *DeletePipelineByNameUsingDELETENotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete pipeline by name using d e l e t e not found response has a 3xx status code
+func (o *DeletePipelineByNameUsingDELETENotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete pipeline by name using d e l e t e not found response has a 4xx status code
+func (o *DeletePipelineByNameUsingDELETENotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete pipeline by name using d e l e t e not found response has a 5xx status code
+func (o *DeletePipelineByNameUsingDELETENotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete pipeline by name using d e l e t e not found response a status code equal to that given
+func (o *DeletePipelineByNameUsingDELETENotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeletePipelineByNameUsingDELETENotFound) Error() string {
 	return fmt.Sprintf("[DELETE /codestream/api/pipelines/{project}/{name}][%d] deletePipelineByNameUsingDELETENotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeletePipelineByNameUsingDELETENotFound) String() string {
+	return fmt.Sprintf("[DELETE /codestream/api/pipelines/{project}/{name}][%d] deletePipelineByNameUsingDELETENotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeletePipelineByNameUsingDELETENotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewDeletePipelineByNameUsingDELETEInternalServerError() *DeletePipelineByNa
 	return &DeletePipelineByNameUsingDELETEInternalServerError{}
 }
 
-/* DeletePipelineByNameUsingDELETEInternalServerError describes a response with status code 500, with default header values.
+/*
+DeletePipelineByNameUsingDELETEInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type DeletePipelineByNameUsingDELETEInternalServerError struct {
 }
 
+// IsSuccess returns true when this delete pipeline by name using d e l e t e internal server error response has a 2xx status code
+func (o *DeletePipelineByNameUsingDELETEInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete pipeline by name using d e l e t e internal server error response has a 3xx status code
+func (o *DeletePipelineByNameUsingDELETEInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete pipeline by name using d e l e t e internal server error response has a 4xx status code
+func (o *DeletePipelineByNameUsingDELETEInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete pipeline by name using d e l e t e internal server error response has a 5xx status code
+func (o *DeletePipelineByNameUsingDELETEInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this delete pipeline by name using d e l e t e internal server error response a status code equal to that given
+func (o *DeletePipelineByNameUsingDELETEInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *DeletePipelineByNameUsingDELETEInternalServerError) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/pipelines/{project}/{name}][%d] deletePipelineByNameUsingDELETEInternalServerError ", 500)
+}
+
+func (o *DeletePipelineByNameUsingDELETEInternalServerError) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/pipelines/{project}/{name}][%d] deletePipelineByNameUsingDELETEInternalServerError ", 500)
 }
 

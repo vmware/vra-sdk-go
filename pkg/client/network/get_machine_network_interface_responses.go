@@ -51,7 +51,8 @@ func NewGetMachineNetworkInterfaceOK() *GetMachineNetworkInterfaceOK {
 	return &GetMachineNetworkInterfaceOK{}
 }
 
-/* GetMachineNetworkInterfaceOK describes a response with status code 200, with default header values.
+/*
+GetMachineNetworkInterfaceOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetMachineNetworkInterfaceOK struct {
 	Payload *models.NetworkInterface
 }
 
+// IsSuccess returns true when this get machine network interface o k response has a 2xx status code
+func (o *GetMachineNetworkInterfaceOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get machine network interface o k response has a 3xx status code
+func (o *GetMachineNetworkInterfaceOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get machine network interface o k response has a 4xx status code
+func (o *GetMachineNetworkInterfaceOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get machine network interface o k response has a 5xx status code
+func (o *GetMachineNetworkInterfaceOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get machine network interface o k response a status code equal to that given
+func (o *GetMachineNetworkInterfaceOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetMachineNetworkInterfaceOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/machines/{id}/network-interfaces/{networkId}][%d] getMachineNetworkInterfaceOK  %+v", 200, o.Payload)
 }
+
+func (o *GetMachineNetworkInterfaceOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/machines/{id}/network-interfaces/{networkId}][%d] getMachineNetworkInterfaceOK  %+v", 200, o.Payload)
+}
+
 func (o *GetMachineNetworkInterfaceOK) GetPayload() *models.NetworkInterface {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetMachineNetworkInterfaceForbidden() *GetMachineNetworkInterfaceForbidd
 	return &GetMachineNetworkInterfaceForbidden{}
 }
 
-/* GetMachineNetworkInterfaceForbidden describes a response with status code 403, with default header values.
+/*
+GetMachineNetworkInterfaceForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type GetMachineNetworkInterfaceForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get machine network interface forbidden response has a 2xx status code
+func (o *GetMachineNetworkInterfaceForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get machine network interface forbidden response has a 3xx status code
+func (o *GetMachineNetworkInterfaceForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get machine network interface forbidden response has a 4xx status code
+func (o *GetMachineNetworkInterfaceForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get machine network interface forbidden response has a 5xx status code
+func (o *GetMachineNetworkInterfaceForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get machine network interface forbidden response a status code equal to that given
+func (o *GetMachineNetworkInterfaceForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetMachineNetworkInterfaceForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/machines/{id}/network-interfaces/{networkId}][%d] getMachineNetworkInterfaceForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetMachineNetworkInterfaceForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/machines/{id}/network-interfaces/{networkId}][%d] getMachineNetworkInterfaceForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetMachineNetworkInterfaceForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewGetMachineNetworkInterfaceNotFound() *GetMachineNetworkInterfaceNotFound
 	return &GetMachineNetworkInterfaceNotFound{}
 }
 
-/* GetMachineNetworkInterfaceNotFound describes a response with status code 404, with default header values.
+/*
+GetMachineNetworkInterfaceNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type GetMachineNetworkInterfaceNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get machine network interface not found response has a 2xx status code
+func (o *GetMachineNetworkInterfaceNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get machine network interface not found response has a 3xx status code
+func (o *GetMachineNetworkInterfaceNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get machine network interface not found response has a 4xx status code
+func (o *GetMachineNetworkInterfaceNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get machine network interface not found response has a 5xx status code
+func (o *GetMachineNetworkInterfaceNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get machine network interface not found response a status code equal to that given
+func (o *GetMachineNetworkInterfaceNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetMachineNetworkInterfaceNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/machines/{id}/network-interfaces/{networkId}][%d] getMachineNetworkInterfaceNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetMachineNetworkInterfaceNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/machines/{id}/network-interfaces/{networkId}][%d] getMachineNetworkInterfaceNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetMachineNetworkInterfaceNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

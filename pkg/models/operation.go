@@ -6,14 +6,11 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"bytes"
 	"context"
 	"encoding/json"
-	"io"
 	"strconv"
 
 	"github.com/go-openapi/errors"
-	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
@@ -94,7 +91,8 @@ type Operation struct {
 	// peer certificate chain
 	PeerCertificateChain []*X509Certificate `json:"peerCertificateChain"`
 
-	peerPrincipalField Principal
+	// peer principal
+	PeerPrincipal *Principal `json:"peerPrincipal,omitempty"`
 
 	// referer
 	Referer *URI `json:"referer,omitempty"`
@@ -149,439 +147,6 @@ type Operation struct {
 
 	// within transaction
 	WithinTransaction bool `json:"withinTransaction,omitempty"`
-}
-
-// PeerPrincipal gets the peer principal of this base type
-func (m *Operation) PeerPrincipal() Principal {
-	return m.peerPrincipalField
-}
-
-// SetPeerPrincipal sets the peer principal of this base type
-func (m *Operation) SetPeerPrincipal(val Principal) {
-	m.peerPrincipalField = val
-}
-
-// UnmarshalJSON unmarshals this object with a polymorphic type from a JSON structure
-func (m *Operation) UnmarshalJSON(raw []byte) error {
-	var data struct {
-		Action string `json:"action,omitempty"`
-
-		AuthorizationContext *AuthorizationContext `json:"authorizationContext,omitempty"`
-
-		BodyRaw interface{} `json:"bodyRaw,omitempty"`
-
-		Commit bool `json:"commit,omitempty"`
-
-		Completion CompletionHandler `json:"completion,omitempty"`
-
-		ConnectionSharing bool `json:"connectionSharing,omitempty"`
-
-		ConnectionTag string `json:"connectionTag,omitempty"`
-
-		ContentLength int64 `json:"contentLength,omitempty"`
-
-		ContentType string `json:"contentType,omitempty"`
-
-		ContextID string `json:"contextId,omitempty"`
-
-		Cookies map[string]string `json:"cookies,omitempty"`
-
-		ErrorResponseBody *ServiceErrorResponse `json:"errorResponseBody,omitempty"`
-
-		ExpirationMicrosUtc int64 `json:"expirationMicrosUtc,omitempty"`
-
-		FailureLoggingDisabled bool `json:"failureLoggingDisabled,omitempty"`
-
-		Forwarded bool `json:"forwarded,omitempty"`
-
-		ForwardingDisabled bool `json:"forwardingDisabled,omitempty"`
-
-		FromReplication bool `json:"fromReplication,omitempty"`
-
-		ID int64 `json:"id,omitempty"`
-
-		KeepAlive bool `json:"keepAlive,omitempty"`
-
-		Notification bool `json:"notification,omitempty"`
-
-		NotificationDisabled bool `json:"notificationDisabled,omitempty"`
-
-		Options []string `json:"options"`
-
-		PeerCertificateChain []*X509Certificate `json:"peerCertificateChain"`
-
-		PeerPrincipal json.RawMessage `json:"peerPrincipal,omitempty"`
-
-		Referer *URI `json:"referer,omitempty"`
-
-		RefererAsString string `json:"refererAsString,omitempty"`
-
-		Remote bool `json:"remote,omitempty"`
-
-		ReplicationDisabled bool `json:"replicationDisabled,omitempty"`
-
-		RequestHeaders map[string]string `json:"requestHeaders,omitempty"`
-
-		ResponseHeaders map[string]string `json:"responseHeaders,omitempty"`
-
-		RetriesRemaining int32 `json:"retriesRemaining,omitempty"`
-
-		RetryCount int32 `json:"retryCount,omitempty"`
-
-		SocketContext *SocketContext `json:"socketContext,omitempty"`
-
-		StatusCode int32 `json:"statusCode,omitempty"`
-
-		Synchronize bool `json:"synchronize,omitempty"`
-
-		SynchronizeOwner bool `json:"synchronizeOwner,omitempty"`
-
-		SynchronizePeer bool `json:"synchronizePeer,omitempty"`
-
-		TargetReplicated bool `json:"targetReplicated,omitempty"`
-
-		TransactionID string `json:"transactionId,omitempty"`
-
-		Update bool `json:"update,omitempty"`
-
-		URI *URI `json:"uri,omitempty"`
-
-		WithinTransaction bool `json:"withinTransaction,omitempty"`
-	}
-	buf := bytes.NewBuffer(raw)
-	dec := json.NewDecoder(buf)
-	dec.UseNumber()
-
-	if err := dec.Decode(&data); err != nil {
-		return err
-	}
-
-	var propPeerPrincipal Principal
-	if string(data.PeerPrincipal) != "null" {
-		peerPrincipal, err := UnmarshalPrincipal(bytes.NewBuffer(data.PeerPrincipal), runtime.JSONConsumer())
-		if err != nil && err != io.EOF {
-			return err
-		}
-		propPeerPrincipal = peerPrincipal
-	}
-
-	var result Operation
-
-	// action
-	result.Action = data.Action
-
-	// authorizationContext
-	result.AuthorizationContext = data.AuthorizationContext
-
-	// bodyRaw
-	result.BodyRaw = data.BodyRaw
-
-	// commit
-	result.Commit = data.Commit
-
-	// completion
-	result.Completion = data.Completion
-
-	// connectionSharing
-	result.ConnectionSharing = data.ConnectionSharing
-
-	// connectionTag
-	result.ConnectionTag = data.ConnectionTag
-
-	// contentLength
-	result.ContentLength = data.ContentLength
-
-	// contentType
-	result.ContentType = data.ContentType
-
-	// contextId
-	result.ContextID = data.ContextID
-
-	// cookies
-	result.Cookies = data.Cookies
-
-	// errorResponseBody
-	result.ErrorResponseBody = data.ErrorResponseBody
-
-	// expirationMicrosUtc
-	result.ExpirationMicrosUtc = data.ExpirationMicrosUtc
-
-	// failureLoggingDisabled
-	result.FailureLoggingDisabled = data.FailureLoggingDisabled
-
-	// forwarded
-	result.Forwarded = data.Forwarded
-
-	// forwardingDisabled
-	result.ForwardingDisabled = data.ForwardingDisabled
-
-	// fromReplication
-	result.FromReplication = data.FromReplication
-
-	// id
-	result.ID = data.ID
-
-	// keepAlive
-	result.KeepAlive = data.KeepAlive
-
-	// notification
-	result.Notification = data.Notification
-
-	// notificationDisabled
-	result.NotificationDisabled = data.NotificationDisabled
-
-	// options
-	result.Options = data.Options
-
-	// peerCertificateChain
-	result.PeerCertificateChain = data.PeerCertificateChain
-
-	// peerPrincipal
-	result.peerPrincipalField = propPeerPrincipal
-
-	// referer
-	result.Referer = data.Referer
-
-	// refererAsString
-	result.RefererAsString = data.RefererAsString
-
-	// remote
-	result.Remote = data.Remote
-
-	// replicationDisabled
-	result.ReplicationDisabled = data.ReplicationDisabled
-
-	// requestHeaders
-	result.RequestHeaders = data.RequestHeaders
-
-	// responseHeaders
-	result.ResponseHeaders = data.ResponseHeaders
-
-	// retriesRemaining
-	result.RetriesRemaining = data.RetriesRemaining
-
-	// retryCount
-	result.RetryCount = data.RetryCount
-
-	// socketContext
-	result.SocketContext = data.SocketContext
-
-	// statusCode
-	result.StatusCode = data.StatusCode
-
-	// synchronize
-	result.Synchronize = data.Synchronize
-
-	// synchronizeOwner
-	result.SynchronizeOwner = data.SynchronizeOwner
-
-	// synchronizePeer
-	result.SynchronizePeer = data.SynchronizePeer
-
-	// targetReplicated
-	result.TargetReplicated = data.TargetReplicated
-
-	// transactionId
-	result.TransactionID = data.TransactionID
-
-	// update
-	result.Update = data.Update
-
-	// uri
-	result.URI = data.URI
-
-	// withinTransaction
-	result.WithinTransaction = data.WithinTransaction
-
-	*m = result
-
-	return nil
-}
-
-// MarshalJSON marshals this object with a polymorphic type to a JSON structure
-func (m Operation) MarshalJSON() ([]byte, error) {
-	var b1, b2, b3 []byte
-	var err error
-	b1, err = json.Marshal(struct {
-		Action string `json:"action,omitempty"`
-
-		AuthorizationContext *AuthorizationContext `json:"authorizationContext,omitempty"`
-
-		BodyRaw interface{} `json:"bodyRaw,omitempty"`
-
-		Commit bool `json:"commit,omitempty"`
-
-		Completion CompletionHandler `json:"completion,omitempty"`
-
-		ConnectionSharing bool `json:"connectionSharing,omitempty"`
-
-		ConnectionTag string `json:"connectionTag,omitempty"`
-
-		ContentLength int64 `json:"contentLength,omitempty"`
-
-		ContentType string `json:"contentType,omitempty"`
-
-		ContextID string `json:"contextId,omitempty"`
-
-		Cookies map[string]string `json:"cookies,omitempty"`
-
-		ErrorResponseBody *ServiceErrorResponse `json:"errorResponseBody,omitempty"`
-
-		ExpirationMicrosUtc int64 `json:"expirationMicrosUtc,omitempty"`
-
-		FailureLoggingDisabled bool `json:"failureLoggingDisabled,omitempty"`
-
-		Forwarded bool `json:"forwarded,omitempty"`
-
-		ForwardingDisabled bool `json:"forwardingDisabled,omitempty"`
-
-		FromReplication bool `json:"fromReplication,omitempty"`
-
-		ID int64 `json:"id,omitempty"`
-
-		KeepAlive bool `json:"keepAlive,omitempty"`
-
-		Notification bool `json:"notification,omitempty"`
-
-		NotificationDisabled bool `json:"notificationDisabled,omitempty"`
-
-		Options []string `json:"options"`
-
-		PeerCertificateChain []*X509Certificate `json:"peerCertificateChain"`
-
-		Referer *URI `json:"referer,omitempty"`
-
-		RefererAsString string `json:"refererAsString,omitempty"`
-
-		Remote bool `json:"remote,omitempty"`
-
-		ReplicationDisabled bool `json:"replicationDisabled,omitempty"`
-
-		RequestHeaders map[string]string `json:"requestHeaders,omitempty"`
-
-		ResponseHeaders map[string]string `json:"responseHeaders,omitempty"`
-
-		RetriesRemaining int32 `json:"retriesRemaining,omitempty"`
-
-		RetryCount int32 `json:"retryCount,omitempty"`
-
-		SocketContext *SocketContext `json:"socketContext,omitempty"`
-
-		StatusCode int32 `json:"statusCode,omitempty"`
-
-		Synchronize bool `json:"synchronize,omitempty"`
-
-		SynchronizeOwner bool `json:"synchronizeOwner,omitempty"`
-
-		SynchronizePeer bool `json:"synchronizePeer,omitempty"`
-
-		TargetReplicated bool `json:"targetReplicated,omitempty"`
-
-		TransactionID string `json:"transactionId,omitempty"`
-
-		Update bool `json:"update,omitempty"`
-
-		URI *URI `json:"uri,omitempty"`
-
-		WithinTransaction bool `json:"withinTransaction,omitempty"`
-	}{
-
-		Action: m.Action,
-
-		AuthorizationContext: m.AuthorizationContext,
-
-		BodyRaw: m.BodyRaw,
-
-		Commit: m.Commit,
-
-		Completion: m.Completion,
-
-		ConnectionSharing: m.ConnectionSharing,
-
-		ConnectionTag: m.ConnectionTag,
-
-		ContentLength: m.ContentLength,
-
-		ContentType: m.ContentType,
-
-		ContextID: m.ContextID,
-
-		Cookies: m.Cookies,
-
-		ErrorResponseBody: m.ErrorResponseBody,
-
-		ExpirationMicrosUtc: m.ExpirationMicrosUtc,
-
-		FailureLoggingDisabled: m.FailureLoggingDisabled,
-
-		Forwarded: m.Forwarded,
-
-		ForwardingDisabled: m.ForwardingDisabled,
-
-		FromReplication: m.FromReplication,
-
-		ID: m.ID,
-
-		KeepAlive: m.KeepAlive,
-
-		Notification: m.Notification,
-
-		NotificationDisabled: m.NotificationDisabled,
-
-		Options: m.Options,
-
-		PeerCertificateChain: m.PeerCertificateChain,
-
-		Referer: m.Referer,
-
-		RefererAsString: m.RefererAsString,
-
-		Remote: m.Remote,
-
-		ReplicationDisabled: m.ReplicationDisabled,
-
-		RequestHeaders: m.RequestHeaders,
-
-		ResponseHeaders: m.ResponseHeaders,
-
-		RetriesRemaining: m.RetriesRemaining,
-
-		RetryCount: m.RetryCount,
-
-		SocketContext: m.SocketContext,
-
-		StatusCode: m.StatusCode,
-
-		Synchronize: m.Synchronize,
-
-		SynchronizeOwner: m.SynchronizeOwner,
-
-		SynchronizePeer: m.SynchronizePeer,
-
-		TargetReplicated: m.TargetReplicated,
-
-		TransactionID: m.TransactionID,
-
-		Update: m.Update,
-
-		URI: m.URI,
-
-		WithinTransaction: m.WithinTransaction,
-	})
-	if err != nil {
-		return nil, err
-	}
-	b2, err = json.Marshal(struct {
-		PeerPrincipal Principal `json:"peerPrincipal,omitempty"`
-	}{
-
-		PeerPrincipal: m.peerPrincipalField,
-	})
-	if err != nil {
-		return nil, err
-	}
-
-	return swag.ConcatJSON(b1, b2, b3), nil
 }
 
 // Validate validates this operation
@@ -785,17 +350,19 @@ func (m *Operation) validatePeerCertificateChain(formats strfmt.Registry) error 
 }
 
 func (m *Operation) validatePeerPrincipal(formats strfmt.Registry) error {
-	if swag.IsZero(m.PeerPrincipal()) { // not required
+	if swag.IsZero(m.PeerPrincipal) { // not required
 		return nil
 	}
 
-	if err := m.PeerPrincipal().Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("peerPrincipal")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("peerPrincipal")
+	if m.PeerPrincipal != nil {
+		if err := m.PeerPrincipal.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("peerPrincipal")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("peerPrincipal")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -950,13 +517,15 @@ func (m *Operation) contextValidatePeerCertificateChain(ctx context.Context, for
 
 func (m *Operation) contextValidatePeerPrincipal(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.PeerPrincipal().ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("peerPrincipal")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("peerPrincipal")
+	if m.PeerPrincipal != nil {
+		if err := m.PeerPrincipal.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("peerPrincipal")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("peerPrincipal")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil

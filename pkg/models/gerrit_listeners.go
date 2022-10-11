@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
@@ -121,7 +120,7 @@ func UnmarshalGerritListenersSlice(reader io.Reader, consumer runtime.Consumer) 
 // UnmarshalGerritListeners unmarshals polymorphic GerritListeners
 func UnmarshalGerritListeners(reader io.Reader, consumer runtime.Consumer) (GerritListeners, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}

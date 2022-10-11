@@ -29,6 +29,24 @@ func (o *ScheduleSyncAllUsingPOSTReader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return result, nil
+	case 401:
+		result := NewScheduleSyncAllUsingPOSTUnauthorized()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 403:
+		result := NewScheduleSyncAllUsingPOSTForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 404:
+		result := NewScheduleSyncAllUsingPOSTNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +57,8 @@ func NewScheduleSyncAllUsingPOSTAccepted() *ScheduleSyncAllUsingPOSTAccepted {
 	return &ScheduleSyncAllUsingPOSTAccepted{}
 }
 
-/* ScheduleSyncAllUsingPOSTAccepted describes a response with status code 202, with default header values.
+/*
+ScheduleSyncAllUsingPOSTAccepted describes a response with status code 202, with default header values.
 
 Submitted sync requests
 */
@@ -47,9 +66,39 @@ type ScheduleSyncAllUsingPOSTAccepted struct {
 	Payload *models.SourceControlSyncRequests
 }
 
+// IsSuccess returns true when this schedule sync all using p o s t accepted response has a 2xx status code
+func (o *ScheduleSyncAllUsingPOSTAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this schedule sync all using p o s t accepted response has a 3xx status code
+func (o *ScheduleSyncAllUsingPOSTAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this schedule sync all using p o s t accepted response has a 4xx status code
+func (o *ScheduleSyncAllUsingPOSTAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this schedule sync all using p o s t accepted response has a 5xx status code
+func (o *ScheduleSyncAllUsingPOSTAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this schedule sync all using p o s t accepted response a status code equal to that given
+func (o *ScheduleSyncAllUsingPOSTAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ScheduleSyncAllUsingPOSTAccepted) Error() string {
 	return fmt.Sprintf("[POST /content/api/sourcecontrol/sync-all-requests][%d] scheduleSyncAllUsingPOSTAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ScheduleSyncAllUsingPOSTAccepted) String() string {
+	return fmt.Sprintf("[POST /content/api/sourcecontrol/sync-all-requests][%d] scheduleSyncAllUsingPOSTAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ScheduleSyncAllUsingPOSTAccepted) GetPayload() *models.SourceControlSyncRequests {
 	return o.Payload
 }
@@ -57,6 +106,171 @@ func (o *ScheduleSyncAllUsingPOSTAccepted) GetPayload() *models.SourceControlSyn
 func (o *ScheduleSyncAllUsingPOSTAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.SourceControlSyncRequests)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewScheduleSyncAllUsingPOSTUnauthorized creates a ScheduleSyncAllUsingPOSTUnauthorized with default headers values
+func NewScheduleSyncAllUsingPOSTUnauthorized() *ScheduleSyncAllUsingPOSTUnauthorized {
+	return &ScheduleSyncAllUsingPOSTUnauthorized{}
+}
+
+/*
+ScheduleSyncAllUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+
+Unauthorized
+*/
+type ScheduleSyncAllUsingPOSTUnauthorized struct {
+}
+
+// IsSuccess returns true when this schedule sync all using p o s t unauthorized response has a 2xx status code
+func (o *ScheduleSyncAllUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this schedule sync all using p o s t unauthorized response has a 3xx status code
+func (o *ScheduleSyncAllUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this schedule sync all using p o s t unauthorized response has a 4xx status code
+func (o *ScheduleSyncAllUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this schedule sync all using p o s t unauthorized response has a 5xx status code
+func (o *ScheduleSyncAllUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this schedule sync all using p o s t unauthorized response a status code equal to that given
+func (o *ScheduleSyncAllUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+func (o *ScheduleSyncAllUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /content/api/sourcecontrol/sync-all-requests][%d] scheduleSyncAllUsingPOSTUnauthorized ", 401)
+}
+
+func (o *ScheduleSyncAllUsingPOSTUnauthorized) String() string {
+	return fmt.Sprintf("[POST /content/api/sourcecontrol/sync-all-requests][%d] scheduleSyncAllUsingPOSTUnauthorized ", 401)
+}
+
+func (o *ScheduleSyncAllUsingPOSTUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewScheduleSyncAllUsingPOSTForbidden creates a ScheduleSyncAllUsingPOSTForbidden with default headers values
+func NewScheduleSyncAllUsingPOSTForbidden() *ScheduleSyncAllUsingPOSTForbidden {
+	return &ScheduleSyncAllUsingPOSTForbidden{}
+}
+
+/*
+ScheduleSyncAllUsingPOSTForbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type ScheduleSyncAllUsingPOSTForbidden struct {
+}
+
+// IsSuccess returns true when this schedule sync all using p o s t forbidden response has a 2xx status code
+func (o *ScheduleSyncAllUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this schedule sync all using p o s t forbidden response has a 3xx status code
+func (o *ScheduleSyncAllUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this schedule sync all using p o s t forbidden response has a 4xx status code
+func (o *ScheduleSyncAllUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this schedule sync all using p o s t forbidden response has a 5xx status code
+func (o *ScheduleSyncAllUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this schedule sync all using p o s t forbidden response a status code equal to that given
+func (o *ScheduleSyncAllUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *ScheduleSyncAllUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /content/api/sourcecontrol/sync-all-requests][%d] scheduleSyncAllUsingPOSTForbidden ", 403)
+}
+
+func (o *ScheduleSyncAllUsingPOSTForbidden) String() string {
+	return fmt.Sprintf("[POST /content/api/sourcecontrol/sync-all-requests][%d] scheduleSyncAllUsingPOSTForbidden ", 403)
+}
+
+func (o *ScheduleSyncAllUsingPOSTForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewScheduleSyncAllUsingPOSTNotFound creates a ScheduleSyncAllUsingPOSTNotFound with default headers values
+func NewScheduleSyncAllUsingPOSTNotFound() *ScheduleSyncAllUsingPOSTNotFound {
+	return &ScheduleSyncAllUsingPOSTNotFound{}
+}
+
+/*
+ScheduleSyncAllUsingPOSTNotFound describes a response with status code 404, with default header values.
+
+Not Found
+*/
+type ScheduleSyncAllUsingPOSTNotFound struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this schedule sync all using p o s t not found response has a 2xx status code
+func (o *ScheduleSyncAllUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this schedule sync all using p o s t not found response has a 3xx status code
+func (o *ScheduleSyncAllUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this schedule sync all using p o s t not found response has a 4xx status code
+func (o *ScheduleSyncAllUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this schedule sync all using p o s t not found response has a 5xx status code
+func (o *ScheduleSyncAllUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this schedule sync all using p o s t not found response a status code equal to that given
+func (o *ScheduleSyncAllUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+func (o *ScheduleSyncAllUsingPOSTNotFound) Error() string {
+	return fmt.Sprintf("[POST /content/api/sourcecontrol/sync-all-requests][%d] scheduleSyncAllUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
+func (o *ScheduleSyncAllUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /content/api/sourcecontrol/sync-all-requests][%d] scheduleSyncAllUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
+func (o *ScheduleSyncAllUsingPOSTNotFound) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *ScheduleSyncAllUsingPOSTNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

@@ -52,10 +52,12 @@ func NewGetComputeGatewayParamsWithHTTPClient(client *http.Client) *GetComputeGa
 	}
 }
 
-/* GetComputeGatewayParams contains all the parameters to send to the API endpoint
-   for the get compute gateway operation.
+/*
+GetComputeGatewayParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get compute gateway operation.
+
+	Typically these are written to a http.Request.
 */
 type GetComputeGatewayParams struct {
 

@@ -52,10 +52,12 @@ func NewDeleteVersionByIDUsingDELETEParamsWithHTTPClient(client *http.Client) *D
 	}
 }
 
-/* DeleteVersionByIDUsingDELETEParams contains all the parameters to send to the API endpoint
-   for the delete version by Id using d e l e t e operation.
+/*
+DeleteVersionByIDUsingDELETEParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete version by Id using d e l e t e operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteVersionByIDUsingDELETEParams struct {
 

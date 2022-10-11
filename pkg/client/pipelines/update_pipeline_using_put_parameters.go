@@ -54,10 +54,12 @@ func NewUpdatePipelineUsingPUTParamsWithHTTPClient(client *http.Client) *UpdateP
 	}
 }
 
-/* UpdatePipelineUsingPUTParams contains all the parameters to send to the API endpoint
-   for the update pipeline using p u t operation.
+/*
+UpdatePipelineUsingPUTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update pipeline using p u t operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdatePipelineUsingPUTParams struct {
 

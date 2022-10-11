@@ -54,10 +54,12 @@ func NewCreateStorageProfileParamsWithHTTPClient(client *http.Client) *CreateSto
 	}
 }
 
-/* CreateStorageProfileParams contains all the parameters to send to the API endpoint
-   for the create storage profile operation.
+/*
+CreateStorageProfileParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create storage profile operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateStorageProfileParams struct {
 

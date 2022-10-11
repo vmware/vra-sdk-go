@@ -29,6 +29,18 @@ func (o *GetAllProjectsUsingGETReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return result, nil
+	case 401:
+		result := NewGetAllProjectsUsingGETUnauthorized()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 403:
+		result := NewGetAllProjectsUsingGETForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +51,8 @@ func NewGetAllProjectsUsingGETOK() *GetAllProjectsUsingGETOK {
 	return &GetAllProjectsUsingGETOK{}
 }
 
-/* GetAllProjectsUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetAllProjectsUsingGETOK describes a response with status code 200, with default header values.
 
 'Success' with projects on pages
 */
@@ -47,9 +60,39 @@ type GetAllProjectsUsingGETOK struct {
 	Payload *models.PageOfProjects
 }
 
+// IsSuccess returns true when this get all projects using g e t o k response has a 2xx status code
+func (o *GetAllProjectsUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get all projects using g e t o k response has a 3xx status code
+func (o *GetAllProjectsUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all projects using g e t o k response has a 4xx status code
+func (o *GetAllProjectsUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get all projects using g e t o k response has a 5xx status code
+func (o *GetAllProjectsUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all projects using g e t o k response a status code equal to that given
+func (o *GetAllProjectsUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetAllProjectsUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /project-service/api/projects][%d] getAllProjectsUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetAllProjectsUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /project-service/api/projects][%d] getAllProjectsUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetAllProjectsUsingGETOK) GetPayload() *models.PageOfProjects {
 	return o.Payload
 }
@@ -62,6 +105,108 @@ func (o *GetAllProjectsUsingGETOK) readResponse(response runtime.ClientResponse,
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewGetAllProjectsUsingGETUnauthorized creates a GetAllProjectsUsingGETUnauthorized with default headers values
+func NewGetAllProjectsUsingGETUnauthorized() *GetAllProjectsUsingGETUnauthorized {
+	return &GetAllProjectsUsingGETUnauthorized{}
+}
+
+/*
+GetAllProjectsUsingGETUnauthorized describes a response with status code 401, with default header values.
+
+Unauthorized, the user is not authenticated
+*/
+type GetAllProjectsUsingGETUnauthorized struct {
+}
+
+// IsSuccess returns true when this get all projects using g e t unauthorized response has a 2xx status code
+func (o *GetAllProjectsUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get all projects using g e t unauthorized response has a 3xx status code
+func (o *GetAllProjectsUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all projects using g e t unauthorized response has a 4xx status code
+func (o *GetAllProjectsUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get all projects using g e t unauthorized response has a 5xx status code
+func (o *GetAllProjectsUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all projects using g e t unauthorized response a status code equal to that given
+func (o *GetAllProjectsUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+func (o *GetAllProjectsUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /project-service/api/projects][%d] getAllProjectsUsingGETUnauthorized ", 401)
+}
+
+func (o *GetAllProjectsUsingGETUnauthorized) String() string {
+	return fmt.Sprintf("[GET /project-service/api/projects][%d] getAllProjectsUsingGETUnauthorized ", 401)
+}
+
+func (o *GetAllProjectsUsingGETUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewGetAllProjectsUsingGETForbidden creates a GetAllProjectsUsingGETForbidden with default headers values
+func NewGetAllProjectsUsingGETForbidden() *GetAllProjectsUsingGETForbidden {
+	return &GetAllProjectsUsingGETForbidden{}
+}
+
+/*
+GetAllProjectsUsingGETForbidden describes a response with status code 403, with default header values.
+
+Forbidden, the user lacks permissions
+*/
+type GetAllProjectsUsingGETForbidden struct {
+}
+
+// IsSuccess returns true when this get all projects using g e t forbidden response has a 2xx status code
+func (o *GetAllProjectsUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get all projects using g e t forbidden response has a 3xx status code
+func (o *GetAllProjectsUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all projects using g e t forbidden response has a 4xx status code
+func (o *GetAllProjectsUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get all projects using g e t forbidden response has a 5xx status code
+func (o *GetAllProjectsUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all projects using g e t forbidden response a status code equal to that given
+func (o *GetAllProjectsUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *GetAllProjectsUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /project-service/api/projects][%d] getAllProjectsUsingGETForbidden ", 403)
+}
+
+func (o *GetAllProjectsUsingGETForbidden) String() string {
+	return fmt.Sprintf("[GET /project-service/api/projects][%d] getAllProjectsUsingGETForbidden ", 403)
+}
+
+func (o *GetAllProjectsUsingGETForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

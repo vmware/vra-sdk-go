@@ -52,10 +52,12 @@ func NewEnumeratePrivateImagesParamsWithHTTPClient(client *http.Client) *Enumera
 	}
 }
 
-/* EnumeratePrivateImagesParams contains all the parameters to send to the API endpoint
-   for the enumerate private images operation.
+/*
+EnumeratePrivateImagesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the enumerate private images operation.
+
+	Typically these are written to a http.Request.
 */
 type EnumeratePrivateImagesParams struct {
 

@@ -38,15 +38,15 @@ type ClientService interface {
 
 	GetCustomNameByProjectID(params *GetCustomNameByProjectIDParams, opts ...ClientOption) (*GetCustomNameByProjectIDOK, error)
 
-	UpdateCustomName(params *UpdateCustomNameParams, opts ...ClientOption) (*UpdateCustomNameNoContent, error)
+	UpdateCustomName(params *UpdateCustomNameParams, opts ...ClientOption) (*UpdateCustomNameOK, *UpdateCustomNameNoContent, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  CreateCustomName creates custom name
+CreateCustomName creates custom name
 
-  Create Custom Name
+Create Custom Name
 */
 func (a *Client) CreateCustomName(params *CreateCustomNameParams, opts ...ClientOption) (*CreateCustomNameCreated, error) {
 	// TODO: Validate the params before sending
@@ -84,9 +84,9 @@ func (a *Client) CreateCustomName(params *CreateCustomNameParams, opts ...Client
 }
 
 /*
-  DeleteCustomname deletes custom name
+DeleteCustomname deletes custom name
 
-  Delete custom name with a given id
+Delete custom name with a given id
 */
 func (a *Client) DeleteCustomname(params *DeleteCustomnameParams, opts ...ClientOption) (*DeleteCustomnameNoContent, error) {
 	// TODO: Validate the params before sending
@@ -124,9 +124,9 @@ func (a *Client) DeleteCustomname(params *DeleteCustomnameParams, opts ...Client
 }
 
 /*
-  GetCustomName gets custom name by Id
+GetCustomName gets custom name by Id
 
-  Get Custom Name by Id
+Get Custom Name by Id
 */
 func (a *Client) GetCustomName(params *GetCustomNameParams, opts ...ClientOption) (*GetCustomNameOK, error) {
 	// TODO: Validate the params before sending
@@ -164,9 +164,9 @@ func (a *Client) GetCustomName(params *GetCustomNameParams, opts ...ClientOption
 }
 
 /*
-  GetCustomNameByProjectID gets custom names for project Id
+GetCustomNameByProjectID gets custom names for project Id
 
-  Get Custom Names For Project Id
+Get Custom Names For Project Id
 */
 func (a *Client) GetCustomNameByProjectID(params *GetCustomNameByProjectIDParams, opts ...ClientOption) (*GetCustomNameByProjectIDOK, error) {
 	// TODO: Validate the params before sending
@@ -204,17 +204,17 @@ func (a *Client) GetCustomNameByProjectID(params *GetCustomNameByProjectIDParams
 }
 
 /*
-  UpdateCustomName updates custom name
+UpdateCustomName updates custom name
 
-  Update custom name
+Update custom name
 */
-func (a *Client) UpdateCustomName(params *UpdateCustomNameParams, opts ...ClientOption) (*UpdateCustomNameNoContent, error) {
+func (a *Client) UpdateCustomName(params *UpdateCustomNameParams, opts ...ClientOption) (*UpdateCustomNameOK, *UpdateCustomNameNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewUpdateCustomNameParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "update custom name",
+		ID:                 "updateCustomName",
 		Method:             "PUT",
 		PathPattern:        "/iaas/api/naming",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
@@ -231,15 +231,16 @@ func (a *Client) UpdateCustomName(params *UpdateCustomNameParams, opts ...Client
 
 	result, err := a.transport.Submit(op)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	success, ok := result.(*UpdateCustomNameNoContent)
-	if ok {
-		return success, nil
+	switch value := result.(type) {
+	case *UpdateCustomNameOK:
+		return value, nil, nil
+	case *UpdateCustomNameNoContent:
+		return nil, value, nil
 	}
-	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for update custom name: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for custom_naming: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

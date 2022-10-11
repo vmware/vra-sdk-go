@@ -51,7 +51,8 @@ func NewUpdateIntegrationAsyncAccepted() *UpdateIntegrationAsyncAccepted {
 	return &UpdateIntegrationAsyncAccepted{}
 }
 
-/* UpdateIntegrationAsyncAccepted describes a response with status code 202, with default header values.
+/*
+UpdateIntegrationAsyncAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type UpdateIntegrationAsyncAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this update integration async accepted response has a 2xx status code
+func (o *UpdateIntegrationAsyncAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update integration async accepted response has a 3xx status code
+func (o *UpdateIntegrationAsyncAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update integration async accepted response has a 4xx status code
+func (o *UpdateIntegrationAsyncAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update integration async accepted response has a 5xx status code
+func (o *UpdateIntegrationAsyncAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update integration async accepted response a status code equal to that given
+func (o *UpdateIntegrationAsyncAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *UpdateIntegrationAsyncAccepted) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/integrations/{id}][%d] updateIntegrationAsyncAccepted  %+v", 202, o.Payload)
 }
+
+func (o *UpdateIntegrationAsyncAccepted) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/integrations/{id}][%d] updateIntegrationAsyncAccepted  %+v", 202, o.Payload)
+}
+
 func (o *UpdateIntegrationAsyncAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewUpdateIntegrationAsyncForbidden() *UpdateIntegrationAsyncForbidden {
 	return &UpdateIntegrationAsyncForbidden{}
 }
 
-/* UpdateIntegrationAsyncForbidden describes a response with status code 403, with default header values.
+/*
+UpdateIntegrationAsyncForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type UpdateIntegrationAsyncForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this update integration async forbidden response has a 2xx status code
+func (o *UpdateIntegrationAsyncForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update integration async forbidden response has a 3xx status code
+func (o *UpdateIntegrationAsyncForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update integration async forbidden response has a 4xx status code
+func (o *UpdateIntegrationAsyncForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update integration async forbidden response has a 5xx status code
+func (o *UpdateIntegrationAsyncForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update integration async forbidden response a status code equal to that given
+func (o *UpdateIntegrationAsyncForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateIntegrationAsyncForbidden) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/integrations/{id}][%d] updateIntegrationAsyncForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UpdateIntegrationAsyncForbidden) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/integrations/{id}][%d] updateIntegrationAsyncForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UpdateIntegrationAsyncForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewUpdateIntegrationAsyncNotFound() *UpdateIntegrationAsyncNotFound {
 	return &UpdateIntegrationAsyncNotFound{}
 }
 
-/* UpdateIntegrationAsyncNotFound describes a response with status code 404, with default header values.
+/*
+UpdateIntegrationAsyncNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type UpdateIntegrationAsyncNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update integration async not found response has a 2xx status code
+func (o *UpdateIntegrationAsyncNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update integration async not found response has a 3xx status code
+func (o *UpdateIntegrationAsyncNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update integration async not found response has a 4xx status code
+func (o *UpdateIntegrationAsyncNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update integration async not found response has a 5xx status code
+func (o *UpdateIntegrationAsyncNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update integration async not found response a status code equal to that given
+func (o *UpdateIntegrationAsyncNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateIntegrationAsyncNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/integrations/{id}][%d] updateIntegrationAsyncNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UpdateIntegrationAsyncNotFound) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/integrations/{id}][%d] updateIntegrationAsyncNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UpdateIntegrationAsyncNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

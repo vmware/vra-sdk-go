@@ -51,7 +51,8 @@ func NewGetComputesOK() *GetComputesOK {
 	return &GetComputesOK{}
 }
 
-/* GetComputesOK describes a response with status code 200, with default header values.
+/*
+GetComputesOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetComputesOK struct {
 	Payload *models.FabricComputeResult
 }
 
+// IsSuccess returns true when this get computes o k response has a 2xx status code
+func (o *GetComputesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get computes o k response has a 3xx status code
+func (o *GetComputesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get computes o k response has a 4xx status code
+func (o *GetComputesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get computes o k response has a 5xx status code
+func (o *GetComputesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get computes o k response a status code equal to that given
+func (o *GetComputesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetComputesOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/zones/{id}/computes][%d] getComputesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetComputesOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/zones/{id}/computes][%d] getComputesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetComputesOK) GetPayload() *models.FabricComputeResult {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetComputesForbidden() *GetComputesForbidden {
 	return &GetComputesForbidden{}
 }
 
-/* GetComputesForbidden describes a response with status code 403, with default header values.
+/*
+GetComputesForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type GetComputesForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get computes forbidden response has a 2xx status code
+func (o *GetComputesForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get computes forbidden response has a 3xx status code
+func (o *GetComputesForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get computes forbidden response has a 4xx status code
+func (o *GetComputesForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get computes forbidden response has a 5xx status code
+func (o *GetComputesForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get computes forbidden response a status code equal to that given
+func (o *GetComputesForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetComputesForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/zones/{id}/computes][%d] getComputesForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetComputesForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/zones/{id}/computes][%d] getComputesForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetComputesForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewGetComputesNotFound() *GetComputesNotFound {
 	return &GetComputesNotFound{}
 }
 
-/* GetComputesNotFound describes a response with status code 404, with default header values.
+/*
+GetComputesNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type GetComputesNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get computes not found response has a 2xx status code
+func (o *GetComputesNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get computes not found response has a 3xx status code
+func (o *GetComputesNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get computes not found response has a 4xx status code
+func (o *GetComputesNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get computes not found response has a 5xx status code
+func (o *GetComputesNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get computes not found response a status code equal to that given
+func (o *GetComputesNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetComputesNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/zones/{id}/computes][%d] getComputesNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetComputesNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/zones/{id}/computes][%d] getComputesNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetComputesNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

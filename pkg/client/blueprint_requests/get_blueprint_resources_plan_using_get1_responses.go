@@ -57,7 +57,8 @@ func NewGetBlueprintResourcesPlanUsingGET1OK() *GetBlueprintResourcesPlanUsingGE
 	return &GetBlueprintResourcesPlanUsingGET1OK{}
 }
 
-/* GetBlueprintResourcesPlanUsingGET1OK describes a response with status code 200, with default header values.
+/*
+GetBlueprintResourcesPlanUsingGET1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -65,9 +66,39 @@ type GetBlueprintResourcesPlanUsingGET1OK struct {
 	Payload *models.BlueprintResourcesPlan
 }
 
+// IsSuccess returns true when this get blueprint resources plan using g e t1 o k response has a 2xx status code
+func (o *GetBlueprintResourcesPlanUsingGET1OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get blueprint resources plan using g e t1 o k response has a 3xx status code
+func (o *GetBlueprintResourcesPlanUsingGET1OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get blueprint resources plan using g e t1 o k response has a 4xx status code
+func (o *GetBlueprintResourcesPlanUsingGET1OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get blueprint resources plan using g e t1 o k response has a 5xx status code
+func (o *GetBlueprintResourcesPlanUsingGET1OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get blueprint resources plan using g e t1 o k response a status code equal to that given
+func (o *GetBlueprintResourcesPlanUsingGET1OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetBlueprintResourcesPlanUsingGET1OK) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-requests/{requestId}/resources-plan][%d] getBlueprintResourcesPlanUsingGET1OK  %+v", 200, o.Payload)
 }
+
+func (o *GetBlueprintResourcesPlanUsingGET1OK) String() string {
+	return fmt.Sprintf("[GET /blueprint/api/blueprint-requests/{requestId}/resources-plan][%d] getBlueprintResourcesPlanUsingGET1OK  %+v", 200, o.Payload)
+}
+
 func (o *GetBlueprintResourcesPlanUsingGET1OK) GetPayload() *models.BlueprintResourcesPlan {
 	return o.Payload
 }
@@ -89,14 +120,44 @@ func NewGetBlueprintResourcesPlanUsingGET1Unauthorized() *GetBlueprintResourcesP
 	return &GetBlueprintResourcesPlanUsingGET1Unauthorized{}
 }
 
-/* GetBlueprintResourcesPlanUsingGET1Unauthorized describes a response with status code 401, with default header values.
+/*
+GetBlueprintResourcesPlanUsingGET1Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type GetBlueprintResourcesPlanUsingGET1Unauthorized struct {
 }
 
+// IsSuccess returns true when this get blueprint resources plan using g e t1 unauthorized response has a 2xx status code
+func (o *GetBlueprintResourcesPlanUsingGET1Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get blueprint resources plan using g e t1 unauthorized response has a 3xx status code
+func (o *GetBlueprintResourcesPlanUsingGET1Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get blueprint resources plan using g e t1 unauthorized response has a 4xx status code
+func (o *GetBlueprintResourcesPlanUsingGET1Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get blueprint resources plan using g e t1 unauthorized response has a 5xx status code
+func (o *GetBlueprintResourcesPlanUsingGET1Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get blueprint resources plan using g e t1 unauthorized response a status code equal to that given
+func (o *GetBlueprintResourcesPlanUsingGET1Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetBlueprintResourcesPlanUsingGET1Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /blueprint/api/blueprint-requests/{requestId}/resources-plan][%d] getBlueprintResourcesPlanUsingGET1Unauthorized ", 401)
+}
+
+func (o *GetBlueprintResourcesPlanUsingGET1Unauthorized) String() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-requests/{requestId}/resources-plan][%d] getBlueprintResourcesPlanUsingGET1Unauthorized ", 401)
 }
 
@@ -110,14 +171,44 @@ func NewGetBlueprintResourcesPlanUsingGET1Forbidden() *GetBlueprintResourcesPlan
 	return &GetBlueprintResourcesPlanUsingGET1Forbidden{}
 }
 
-/* GetBlueprintResourcesPlanUsingGET1Forbidden describes a response with status code 403, with default header values.
+/*
+GetBlueprintResourcesPlanUsingGET1Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetBlueprintResourcesPlanUsingGET1Forbidden struct {
 }
 
+// IsSuccess returns true when this get blueprint resources plan using g e t1 forbidden response has a 2xx status code
+func (o *GetBlueprintResourcesPlanUsingGET1Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get blueprint resources plan using g e t1 forbidden response has a 3xx status code
+func (o *GetBlueprintResourcesPlanUsingGET1Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get blueprint resources plan using g e t1 forbidden response has a 4xx status code
+func (o *GetBlueprintResourcesPlanUsingGET1Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get blueprint resources plan using g e t1 forbidden response has a 5xx status code
+func (o *GetBlueprintResourcesPlanUsingGET1Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get blueprint resources plan using g e t1 forbidden response a status code equal to that given
+func (o *GetBlueprintResourcesPlanUsingGET1Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetBlueprintResourcesPlanUsingGET1Forbidden) Error() string {
+	return fmt.Sprintf("[GET /blueprint/api/blueprint-requests/{requestId}/resources-plan][%d] getBlueprintResourcesPlanUsingGET1Forbidden ", 403)
+}
+
+func (o *GetBlueprintResourcesPlanUsingGET1Forbidden) String() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-requests/{requestId}/resources-plan][%d] getBlueprintResourcesPlanUsingGET1Forbidden ", 403)
 }
 
@@ -131,7 +222,8 @@ func NewGetBlueprintResourcesPlanUsingGET1NotFound() *GetBlueprintResourcesPlanU
 	return &GetBlueprintResourcesPlanUsingGET1NotFound{}
 }
 
-/* GetBlueprintResourcesPlanUsingGET1NotFound describes a response with status code 404, with default header values.
+/*
+GetBlueprintResourcesPlanUsingGET1NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -139,9 +231,39 @@ type GetBlueprintResourcesPlanUsingGET1NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get blueprint resources plan using g e t1 not found response has a 2xx status code
+func (o *GetBlueprintResourcesPlanUsingGET1NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get blueprint resources plan using g e t1 not found response has a 3xx status code
+func (o *GetBlueprintResourcesPlanUsingGET1NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get blueprint resources plan using g e t1 not found response has a 4xx status code
+func (o *GetBlueprintResourcesPlanUsingGET1NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get blueprint resources plan using g e t1 not found response has a 5xx status code
+func (o *GetBlueprintResourcesPlanUsingGET1NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get blueprint resources plan using g e t1 not found response a status code equal to that given
+func (o *GetBlueprintResourcesPlanUsingGET1NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetBlueprintResourcesPlanUsingGET1NotFound) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-requests/{requestId}/resources-plan][%d] getBlueprintResourcesPlanUsingGET1NotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetBlueprintResourcesPlanUsingGET1NotFound) String() string {
+	return fmt.Sprintf("[GET /blueprint/api/blueprint-requests/{requestId}/resources-plan][%d] getBlueprintResourcesPlanUsingGET1NotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetBlueprintResourcesPlanUsingGET1NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

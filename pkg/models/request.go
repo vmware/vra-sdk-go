@@ -88,7 +88,7 @@ type Request struct {
 	ResourceIds []strfmt.UUID `json:"resourceIds"`
 
 	// Request overall execution status.
-	// Enum: [CREATED PENDING INITIALIZATION CHECKING_APPROVAL APPROVAL_PENDING INPROGRESS COMPLETION APPROVAL_REJECTED ABORTED SUCCESSFUL FAILED]
+	// Enum: [CREATED PENDING INITIALIZATION CHECKING_APPROVAL APPROVAL_PENDING USER_INTERACTION_PENDING INPROGRESS COMPLETION APPROVAL_REJECTED ABORTED SUCCESSFUL FAILED]
 	Status string `json:"status,omitempty"`
 
 	// The total number of tasks need to be completed to fulfil this request.
@@ -282,7 +282,7 @@ var requestTypeStatusPropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["CREATED","PENDING","INITIALIZATION","CHECKING_APPROVAL","APPROVAL_PENDING","INPROGRESS","COMPLETION","APPROVAL_REJECTED","ABORTED","SUCCESSFUL","FAILED"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["CREATED","PENDING","INITIALIZATION","CHECKING_APPROVAL","APPROVAL_PENDING","USER_INTERACTION_PENDING","INPROGRESS","COMPLETION","APPROVAL_REJECTED","ABORTED","SUCCESSFUL","FAILED"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -306,6 +306,9 @@ const (
 
 	// RequestStatusAPPROVALPENDING captures enum value "APPROVAL_PENDING"
 	RequestStatusAPPROVALPENDING string = "APPROVAL_PENDING"
+
+	// RequestStatusUSERINTERACTIONPENDING captures enum value "USER_INTERACTION_PENDING"
+	RequestStatusUSERINTERACTIONPENDING string = "USER_INTERACTION_PENDING"
 
 	// RequestStatusINPROGRESS captures enum value "INPROGRESS"
 	RequestStatusINPROGRESS string = "INPROGRESS"

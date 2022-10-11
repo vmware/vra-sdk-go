@@ -45,7 +45,8 @@ func NewDeleteDeploymentAccepted() *DeleteDeploymentAccepted {
 	return &DeleteDeploymentAccepted{}
 }
 
-/* DeleteDeploymentAccepted describes a response with status code 202, with default header values.
+/*
+DeleteDeploymentAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type DeleteDeploymentAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this delete deployment accepted response has a 2xx status code
+func (o *DeleteDeploymentAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete deployment accepted response has a 3xx status code
+func (o *DeleteDeploymentAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete deployment accepted response has a 4xx status code
+func (o *DeleteDeploymentAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete deployment accepted response has a 5xx status code
+func (o *DeleteDeploymentAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete deployment accepted response a status code equal to that given
+func (o *DeleteDeploymentAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteDeploymentAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/deployments/{id}][%d] deleteDeploymentAccepted  %+v", 202, o.Payload)
 }
+
+func (o *DeleteDeploymentAccepted) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/deployments/{id}][%d] deleteDeploymentAccepted  %+v", 202, o.Payload)
+}
+
 func (o *DeleteDeploymentAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewDeleteDeploymentForbidden() *DeleteDeploymentForbidden {
 	return &DeleteDeploymentForbidden{}
 }
 
-/* DeleteDeploymentForbidden describes a response with status code 403, with default header values.
+/*
+DeleteDeploymentForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type DeleteDeploymentForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this delete deployment forbidden response has a 2xx status code
+func (o *DeleteDeploymentForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete deployment forbidden response has a 3xx status code
+func (o *DeleteDeploymentForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete deployment forbidden response has a 4xx status code
+func (o *DeleteDeploymentForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete deployment forbidden response has a 5xx status code
+func (o *DeleteDeploymentForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete deployment forbidden response a status code equal to that given
+func (o *DeleteDeploymentForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteDeploymentForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/deployments/{id}][%d] deleteDeploymentForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DeleteDeploymentForbidden) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/deployments/{id}][%d] deleteDeploymentForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DeleteDeploymentForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

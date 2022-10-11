@@ -16,7 +16,7 @@ import (
 
 // ResourceSpecification ResourceSpecification
 //
-// Resource spec to create resource
+// # Resource spec to create resource
 //
 // swagger:model ResourceSpecification
 type ResourceSpecification struct {

@@ -52,10 +52,12 @@ func NewGetTypeByIDUsingGET2ParamsWithHTTPClient(client *http.Client) *GetTypeBy
 	}
 }
 
-/* GetTypeByIDUsingGET2Params contains all the parameters to send to the API endpoint
-   for the get type by Id using g e t 2 operation.
+/*
+GetTypeByIDUsingGET2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get type by Id using g e t 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetTypeByIDUsingGET2Params struct {
 

@@ -63,7 +63,8 @@ func NewPatchDockerRegistryWebhookByNameUsingPATCHOK() *PatchDockerRegistryWebho
 	return &PatchDockerRegistryWebhookByNameUsingPATCHOK{}
 }
 
-/* PatchDockerRegistryWebhookByNameUsingPATCHOK describes a response with status code 200, with default header values.
+/*
+PatchDockerRegistryWebhookByNameUsingPATCHOK describes a response with status code 200, with default header values.
 
 'Success' with Docker Registry Webhook patch
 */
@@ -71,9 +72,39 @@ type PatchDockerRegistryWebhookByNameUsingPATCHOK struct {
 	Payload models.DockerRegistryWebHook
 }
 
+// IsSuccess returns true when this patch docker registry webhook by name using p a t c h o k response has a 2xx status code
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch docker registry webhook by name using p a t c h o k response has a 3xx status code
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch docker registry webhook by name using p a t c h o k response has a 4xx status code
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch docker registry webhook by name using p a t c h o k response has a 5xx status code
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch docker registry webhook by name using p a t c h o k response a status code equal to that given
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchDockerRegistryWebhookByNameUsingPATCHOK) Error() string {
 	return fmt.Sprintf("[PATCH /codestream/api/registry-webhooks/{project}/{name}][%d] patchDockerRegistryWebhookByNameUsingPATCHOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHOK) String() string {
+	return fmt.Sprintf("[PATCH /codestream/api/registry-webhooks/{project}/{name}][%d] patchDockerRegistryWebhookByNameUsingPATCHOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchDockerRegistryWebhookByNameUsingPATCHOK) GetPayload() models.DockerRegistryWebHook {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewPatchDockerRegistryWebhookByNameUsingPATCHUnauthorized() *PatchDockerReg
 	return &PatchDockerRegistryWebhookByNameUsingPATCHUnauthorized{}
 }
 
-/* PatchDockerRegistryWebhookByNameUsingPATCHUnauthorized describes a response with status code 401, with default header values.
+/*
+PatchDockerRegistryWebhookByNameUsingPATCHUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type PatchDockerRegistryWebhookByNameUsingPATCHUnauthorized struct {
 }
 
+// IsSuccess returns true when this patch docker registry webhook by name using p a t c h unauthorized response has a 2xx status code
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch docker registry webhook by name using p a t c h unauthorized response has a 3xx status code
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch docker registry webhook by name using p a t c h unauthorized response has a 4xx status code
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch docker registry webhook by name using p a t c h unauthorized response has a 5xx status code
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch docker registry webhook by name using p a t c h unauthorized response a status code equal to that given
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *PatchDockerRegistryWebhookByNameUsingPATCHUnauthorized) Error() string {
+	return fmt.Sprintf("[PATCH /codestream/api/registry-webhooks/{project}/{name}][%d] patchDockerRegistryWebhookByNameUsingPATCHUnauthorized ", 401)
+}
+
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHUnauthorized) String() string {
 	return fmt.Sprintf("[PATCH /codestream/api/registry-webhooks/{project}/{name}][%d] patchDockerRegistryWebhookByNameUsingPATCHUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewPatchDockerRegistryWebhookByNameUsingPATCHForbidden() *PatchDockerRegist
 	return &PatchDockerRegistryWebhookByNameUsingPATCHForbidden{}
 }
 
-/* PatchDockerRegistryWebhookByNameUsingPATCHForbidden describes a response with status code 403, with default header values.
+/*
+PatchDockerRegistryWebhookByNameUsingPATCHForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type PatchDockerRegistryWebhookByNameUsingPATCHForbidden struct {
 }
 
+// IsSuccess returns true when this patch docker registry webhook by name using p a t c h forbidden response has a 2xx status code
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch docker registry webhook by name using p a t c h forbidden response has a 3xx status code
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch docker registry webhook by name using p a t c h forbidden response has a 4xx status code
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch docker registry webhook by name using p a t c h forbidden response has a 5xx status code
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch docker registry webhook by name using p a t c h forbidden response a status code equal to that given
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *PatchDockerRegistryWebhookByNameUsingPATCHForbidden) Error() string {
+	return fmt.Sprintf("[PATCH /codestream/api/registry-webhooks/{project}/{name}][%d] patchDockerRegistryWebhookByNameUsingPATCHForbidden ", 403)
+}
+
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHForbidden) String() string {
 	return fmt.Sprintf("[PATCH /codestream/api/registry-webhooks/{project}/{name}][%d] patchDockerRegistryWebhookByNameUsingPATCHForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewPatchDockerRegistryWebhookByNameUsingPATCHNotFound() *PatchDockerRegistr
 	return &PatchDockerRegistryWebhookByNameUsingPATCHNotFound{}
 }
 
-/* PatchDockerRegistryWebhookByNameUsingPATCHNotFound describes a response with status code 404, with default header values.
+/*
+PatchDockerRegistryWebhookByNameUsingPATCHNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type PatchDockerRegistryWebhookByNameUsingPATCHNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this patch docker registry webhook by name using p a t c h not found response has a 2xx status code
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch docker registry webhook by name using p a t c h not found response has a 3xx status code
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch docker registry webhook by name using p a t c h not found response has a 4xx status code
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch docker registry webhook by name using p a t c h not found response has a 5xx status code
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch docker registry webhook by name using p a t c h not found response a status code equal to that given
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *PatchDockerRegistryWebhookByNameUsingPATCHNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /codestream/api/registry-webhooks/{project}/{name}][%d] patchDockerRegistryWebhookByNameUsingPATCHNotFound  %+v", 404, o.Payload)
 }
+
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHNotFound) String() string {
+	return fmt.Sprintf("[PATCH /codestream/api/registry-webhooks/{project}/{name}][%d] patchDockerRegistryWebhookByNameUsingPATCHNotFound  %+v", 404, o.Payload)
+}
+
 func (o *PatchDockerRegistryWebhookByNameUsingPATCHNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewPatchDockerRegistryWebhookByNameUsingPATCHInternalServerError() *PatchDo
 	return &PatchDockerRegistryWebhookByNameUsingPATCHInternalServerError{}
 }
 
-/* PatchDockerRegistryWebhookByNameUsingPATCHInternalServerError describes a response with status code 500, with default header values.
+/*
+PatchDockerRegistryWebhookByNameUsingPATCHInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type PatchDockerRegistryWebhookByNameUsingPATCHInternalServerError struct {
 }
 
+// IsSuccess returns true when this patch docker registry webhook by name using p a t c h internal server error response has a 2xx status code
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch docker registry webhook by name using p a t c h internal server error response has a 3xx status code
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch docker registry webhook by name using p a t c h internal server error response has a 4xx status code
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch docker registry webhook by name using p a t c h internal server error response has a 5xx status code
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this patch docker registry webhook by name using p a t c h internal server error response a status code equal to that given
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *PatchDockerRegistryWebhookByNameUsingPATCHInternalServerError) Error() string {
+	return fmt.Sprintf("[PATCH /codestream/api/registry-webhooks/{project}/{name}][%d] patchDockerRegistryWebhookByNameUsingPATCHInternalServerError ", 500)
+}
+
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHInternalServerError) String() string {
 	return fmt.Sprintf("[PATCH /codestream/api/registry-webhooks/{project}/{name}][%d] patchDockerRegistryWebhookByNameUsingPATCHInternalServerError ", 500)
 }
 

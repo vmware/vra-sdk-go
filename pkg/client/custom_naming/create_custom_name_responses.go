@@ -57,7 +57,8 @@ func NewCreateCustomNameCreated() *CreateCustomNameCreated {
 	return &CreateCustomNameCreated{}
 }
 
-/* CreateCustomNameCreated describes a response with status code 201, with default header values.
+/*
+CreateCustomNameCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -65,9 +66,39 @@ type CreateCustomNameCreated struct {
 	Payload *models.CustomNaming
 }
 
+// IsSuccess returns true when this create custom name created response has a 2xx status code
+func (o *CreateCustomNameCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create custom name created response has a 3xx status code
+func (o *CreateCustomNameCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create custom name created response has a 4xx status code
+func (o *CreateCustomNameCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create custom name created response has a 5xx status code
+func (o *CreateCustomNameCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create custom name created response a status code equal to that given
+func (o *CreateCustomNameCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateCustomNameCreated) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/naming][%d] createCustomNameCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateCustomNameCreated) String() string {
+	return fmt.Sprintf("[POST /iaas/api/naming][%d] createCustomNameCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateCustomNameCreated) GetPayload() *models.CustomNaming {
 	return o.Payload
 }
@@ -89,7 +120,8 @@ func NewCreateCustomNameBadRequest() *CreateCustomNameBadRequest {
 	return &CreateCustomNameBadRequest{}
 }
 
-/* CreateCustomNameBadRequest describes a response with status code 400, with default header values.
+/*
+CreateCustomNameBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -97,9 +129,39 @@ type CreateCustomNameBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create custom name bad request response has a 2xx status code
+func (o *CreateCustomNameBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create custom name bad request response has a 3xx status code
+func (o *CreateCustomNameBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create custom name bad request response has a 4xx status code
+func (o *CreateCustomNameBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create custom name bad request response has a 5xx status code
+func (o *CreateCustomNameBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create custom name bad request response a status code equal to that given
+func (o *CreateCustomNameBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateCustomNameBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/naming][%d] createCustomNameBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateCustomNameBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/naming][%d] createCustomNameBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateCustomNameBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -121,7 +183,8 @@ func NewCreateCustomNameForbidden() *CreateCustomNameForbidden {
 	return &CreateCustomNameForbidden{}
 }
 
-/* CreateCustomNameForbidden describes a response with status code 403, with default header values.
+/*
+CreateCustomNameForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -129,9 +192,39 @@ type CreateCustomNameForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this create custom name forbidden response has a 2xx status code
+func (o *CreateCustomNameForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create custom name forbidden response has a 3xx status code
+func (o *CreateCustomNameForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create custom name forbidden response has a 4xx status code
+func (o *CreateCustomNameForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create custom name forbidden response has a 5xx status code
+func (o *CreateCustomNameForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create custom name forbidden response a status code equal to that given
+func (o *CreateCustomNameForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateCustomNameForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/naming][%d] createCustomNameForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CreateCustomNameForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/naming][%d] createCustomNameForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CreateCustomNameForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -153,7 +246,8 @@ func NewCreateCustomNameNotFound() *CreateCustomNameNotFound {
 	return &CreateCustomNameNotFound{}
 }
 
-/* CreateCustomNameNotFound describes a response with status code 404, with default header values.
+/*
+CreateCustomNameNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -161,9 +255,39 @@ type CreateCustomNameNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create custom name not found response has a 2xx status code
+func (o *CreateCustomNameNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create custom name not found response has a 3xx status code
+func (o *CreateCustomNameNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create custom name not found response has a 4xx status code
+func (o *CreateCustomNameNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create custom name not found response has a 5xx status code
+func (o *CreateCustomNameNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create custom name not found response a status code equal to that given
+func (o *CreateCustomNameNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CreateCustomNameNotFound) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/naming][%d] createCustomNameNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CreateCustomNameNotFound) String() string {
+	return fmt.Sprintf("[POST /iaas/api/naming][%d] createCustomNameNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CreateCustomNameNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

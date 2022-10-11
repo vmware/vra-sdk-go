@@ -54,10 +54,12 @@ func NewCreateIntegrationAsyncParamsWithHTTPClient(client *http.Client) *CreateI
 	}
 }
 
-/* CreateIntegrationAsyncParams contains all the parameters to send to the API endpoint
-   for the create integration async operation.
+/*
+CreateIntegrationAsyncParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create integration async operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateIntegrationAsyncParams struct {
 

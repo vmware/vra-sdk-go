@@ -53,10 +53,12 @@ func NewGetTypesUsingGET4ParamsWithHTTPClient(client *http.Client) *GetTypesUsin
 	}
 }
 
-/* GetTypesUsingGET4Params contains all the parameters to send to the API endpoint
-   for the get types using g e t 4 operation.
+/*
+GetTypesUsingGET4Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get types using g e t 4 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetTypesUsingGET4Params struct {
 

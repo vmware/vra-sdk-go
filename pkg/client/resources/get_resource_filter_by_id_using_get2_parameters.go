@@ -53,10 +53,12 @@ func NewGetResourceFilterByIDUsingGET2ParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* GetResourceFilterByIDUsingGET2Params contains all the parameters to send to the API endpoint
-   for the get resource filter by Id using g e t 2 operation.
+/*
+GetResourceFilterByIDUsingGET2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get resource filter by Id using g e t 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetResourceFilterByIDUsingGET2Params struct {
 
@@ -93,6 +95,12 @@ type GetResourceFilterByIDUsingGET2Params struct {
 	   Filter Id
 	*/
 	FilterID string
+
+	/* Projects.
+
+	   A comma-separated list. Results must be associated with one of these project IDs.
+	*/
+	Projects []string
 
 	/* ResourceTypes.
 
@@ -214,6 +222,17 @@ func (o *GetResourceFilterByIDUsingGET2Params) SetFilterID(filterID string) {
 	o.FilterID = filterID
 }
 
+// WithProjects adds the projects to the get resource filter by Id using g e t 2 params
+func (o *GetResourceFilterByIDUsingGET2Params) WithProjects(projects []string) *GetResourceFilterByIDUsingGET2Params {
+	o.SetProjects(projects)
+	return o
+}
+
+// SetProjects adds the projects to the get resource filter by Id using g e t 2 params
+func (o *GetResourceFilterByIDUsingGET2Params) SetProjects(projects []string) {
+	o.Projects = projects
+}
+
 // WithResourceTypes adds the resourceTypes to the get resource filter by Id using g e t 2 params
 func (o *GetResourceFilterByIDUsingGET2Params) WithResourceTypes(resourceTypes []string) *GetResourceFilterByIDUsingGET2Params {
 	o.SetResourceTypes(resourceTypes)
@@ -311,6 +330,17 @@ func (o *GetResourceFilterByIDUsingGET2Params) WriteToRequest(r runtime.ClientRe
 		return err
 	}
 
+	if o.Projects != nil {
+
+		// binding items for projects
+		joinedProjects := o.bindParamProjects(reg)
+
+		// query array param projects
+		if err := r.SetQueryParam("projects", joinedProjects...); err != nil {
+			return err
+		}
+	}
+
 	if o.ResourceTypes != nil {
 
 		// binding items for resourceTypes
@@ -360,6 +390,23 @@ func (o *GetResourceFilterByIDUsingGET2Params) bindParamDollarOrderby(formats st
 	dollarOrderbyIS := swag.JoinByFormat(dollarOrderbyIC, "multi")
 
 	return dollarOrderbyIS
+}
+
+// bindParamGetResourceFilterByIDUsingGET2 binds the parameter projects
+func (o *GetResourceFilterByIDUsingGET2Params) bindParamProjects(formats strfmt.Registry) []string {
+	projectsIR := o.Projects
+
+	var projectsIC []string
+	for _, projectsIIR := range projectsIR { // explode []string
+
+		projectsIIV := projectsIIR // string as string
+		projectsIC = append(projectsIC, projectsIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	projectsIS := swag.JoinByFormat(projectsIC, "multi")
+
+	return projectsIS
 }
 
 // bindParamGetResourceFilterByIDUsingGET2 binds the parameter resourceTypes

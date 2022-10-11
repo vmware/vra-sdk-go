@@ -51,7 +51,8 @@ func NewGetFabricImageOK() *GetFabricImageOK {
 	return &GetFabricImageOK{}
 }
 
-/* GetFabricImageOK describes a response with status code 200, with default header values.
+/*
+GetFabricImageOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetFabricImageOK struct {
 	Payload *models.FabricImage
 }
 
+// IsSuccess returns true when this get fabric image o k response has a 2xx status code
+func (o *GetFabricImageOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get fabric image o k response has a 3xx status code
+func (o *GetFabricImageOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get fabric image o k response has a 4xx status code
+func (o *GetFabricImageOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get fabric image o k response has a 5xx status code
+func (o *GetFabricImageOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get fabric image o k response a status code equal to that given
+func (o *GetFabricImageOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetFabricImageOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-images/{id}][%d] getFabricImageOK  %+v", 200, o.Payload)
 }
+
+func (o *GetFabricImageOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/fabric-images/{id}][%d] getFabricImageOK  %+v", 200, o.Payload)
+}
+
 func (o *GetFabricImageOK) GetPayload() *models.FabricImage {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetFabricImageForbidden() *GetFabricImageForbidden {
 	return &GetFabricImageForbidden{}
 }
 
-/* GetFabricImageForbidden describes a response with status code 403, with default header values.
+/*
+GetFabricImageForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type GetFabricImageForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get fabric image forbidden response has a 2xx status code
+func (o *GetFabricImageForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get fabric image forbidden response has a 3xx status code
+func (o *GetFabricImageForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get fabric image forbidden response has a 4xx status code
+func (o *GetFabricImageForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get fabric image forbidden response has a 5xx status code
+func (o *GetFabricImageForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get fabric image forbidden response a status code equal to that given
+func (o *GetFabricImageForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetFabricImageForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-images/{id}][%d] getFabricImageForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetFabricImageForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/fabric-images/{id}][%d] getFabricImageForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetFabricImageForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewGetFabricImageNotFound() *GetFabricImageNotFound {
 	return &GetFabricImageNotFound{}
 }
 
-/* GetFabricImageNotFound describes a response with status code 404, with default header values.
+/*
+GetFabricImageNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type GetFabricImageNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get fabric image not found response has a 2xx status code
+func (o *GetFabricImageNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get fabric image not found response has a 3xx status code
+func (o *GetFabricImageNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get fabric image not found response has a 4xx status code
+func (o *GetFabricImageNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get fabric image not found response has a 5xx status code
+func (o *GetFabricImageNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get fabric image not found response a status code equal to that given
+func (o *GetFabricImageNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetFabricImageNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-images/{id}][%d] getFabricImageNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetFabricImageNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/fabric-images/{id}][%d] getFabricImageNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetFabricImageNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

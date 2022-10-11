@@ -51,7 +51,8 @@ func NewCreateDataCollectorCreated() *CreateDataCollectorCreated {
 	return &CreateDataCollectorCreated{}
 }
 
-/* CreateDataCollectorCreated describes a response with status code 201, with default header values.
+/*
+CreateDataCollectorCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type CreateDataCollectorCreated struct {
 	Payload *models.DataCollectorRegistration
 }
 
+// IsSuccess returns true when this create data collector created response has a 2xx status code
+func (o *CreateDataCollectorCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create data collector created response has a 3xx status code
+func (o *CreateDataCollectorCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create data collector created response has a 4xx status code
+func (o *CreateDataCollectorCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create data collector created response has a 5xx status code
+func (o *CreateDataCollectorCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create data collector created response a status code equal to that given
+func (o *CreateDataCollectorCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateDataCollectorCreated) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/data-collectors][%d] createDataCollectorCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateDataCollectorCreated) String() string {
+	return fmt.Sprintf("[POST /iaas/api/data-collectors][%d] createDataCollectorCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateDataCollectorCreated) GetPayload() *models.DataCollectorRegistration {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewCreateDataCollectorBadRequest() *CreateDataCollectorBadRequest {
 	return &CreateDataCollectorBadRequest{}
 }
 
-/* CreateDataCollectorBadRequest describes a response with status code 400, with default header values.
+/*
+CreateDataCollectorBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type CreateDataCollectorBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create data collector bad request response has a 2xx status code
+func (o *CreateDataCollectorBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create data collector bad request response has a 3xx status code
+func (o *CreateDataCollectorBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create data collector bad request response has a 4xx status code
+func (o *CreateDataCollectorBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create data collector bad request response has a 5xx status code
+func (o *CreateDataCollectorBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create data collector bad request response a status code equal to that given
+func (o *CreateDataCollectorBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateDataCollectorBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/data-collectors][%d] createDataCollectorBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateDataCollectorBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/data-collectors][%d] createDataCollectorBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateDataCollectorBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewCreateDataCollectorForbidden() *CreateDataCollectorForbidden {
 	return &CreateDataCollectorForbidden{}
 }
 
-/* CreateDataCollectorForbidden describes a response with status code 403, with default header values.
+/*
+CreateDataCollectorForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type CreateDataCollectorForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this create data collector forbidden response has a 2xx status code
+func (o *CreateDataCollectorForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create data collector forbidden response has a 3xx status code
+func (o *CreateDataCollectorForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create data collector forbidden response has a 4xx status code
+func (o *CreateDataCollectorForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create data collector forbidden response has a 5xx status code
+func (o *CreateDataCollectorForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create data collector forbidden response a status code equal to that given
+func (o *CreateDataCollectorForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateDataCollectorForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/data-collectors][%d] createDataCollectorForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CreateDataCollectorForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/data-collectors][%d] createDataCollectorForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CreateDataCollectorForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

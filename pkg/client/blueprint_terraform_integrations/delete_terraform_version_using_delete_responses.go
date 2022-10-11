@@ -57,14 +57,44 @@ func NewDeleteTerraformVersionUsingDELETENoContent() *DeleteTerraformVersionUsin
 	return &DeleteTerraformVersionUsingDELETENoContent{}
 }
 
-/* DeleteTerraformVersionUsingDELETENoContent describes a response with status code 204, with default header values.
+/*
+DeleteTerraformVersionUsingDELETENoContent describes a response with status code 204, with default header values.
 
 No Content
 */
 type DeleteTerraformVersionUsingDELETENoContent struct {
 }
 
+// IsSuccess returns true when this delete terraform version using d e l e t e no content response has a 2xx status code
+func (o *DeleteTerraformVersionUsingDELETENoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete terraform version using d e l e t e no content response has a 3xx status code
+func (o *DeleteTerraformVersionUsingDELETENoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete terraform version using d e l e t e no content response has a 4xx status code
+func (o *DeleteTerraformVersionUsingDELETENoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete terraform version using d e l e t e no content response has a 5xx status code
+func (o *DeleteTerraformVersionUsingDELETENoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete terraform version using d e l e t e no content response a status code equal to that given
+func (o *DeleteTerraformVersionUsingDELETENoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteTerraformVersionUsingDELETENoContent) Error() string {
+	return fmt.Sprintf("[DELETE /blueprint/api/blueprint-integrations/terraform/versions/{versionId}][%d] deleteTerraformVersionUsingDELETENoContent ", 204)
+}
+
+func (o *DeleteTerraformVersionUsingDELETENoContent) String() string {
 	return fmt.Sprintf("[DELETE /blueprint/api/blueprint-integrations/terraform/versions/{versionId}][%d] deleteTerraformVersionUsingDELETENoContent ", 204)
 }
 
@@ -78,14 +108,44 @@ func NewDeleteTerraformVersionUsingDELETEUnauthorized() *DeleteTerraformVersionU
 	return &DeleteTerraformVersionUsingDELETEUnauthorized{}
 }
 
-/* DeleteTerraformVersionUsingDELETEUnauthorized describes a response with status code 401, with default header values.
+/*
+DeleteTerraformVersionUsingDELETEUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type DeleteTerraformVersionUsingDELETEUnauthorized struct {
 }
 
+// IsSuccess returns true when this delete terraform version using d e l e t e unauthorized response has a 2xx status code
+func (o *DeleteTerraformVersionUsingDELETEUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete terraform version using d e l e t e unauthorized response has a 3xx status code
+func (o *DeleteTerraformVersionUsingDELETEUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete terraform version using d e l e t e unauthorized response has a 4xx status code
+func (o *DeleteTerraformVersionUsingDELETEUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete terraform version using d e l e t e unauthorized response has a 5xx status code
+func (o *DeleteTerraformVersionUsingDELETEUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete terraform version using d e l e t e unauthorized response a status code equal to that given
+func (o *DeleteTerraformVersionUsingDELETEUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DeleteTerraformVersionUsingDELETEUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /blueprint/api/blueprint-integrations/terraform/versions/{versionId}][%d] deleteTerraformVersionUsingDELETEUnauthorized ", 401)
+}
+
+func (o *DeleteTerraformVersionUsingDELETEUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /blueprint/api/blueprint-integrations/terraform/versions/{versionId}][%d] deleteTerraformVersionUsingDELETEUnauthorized ", 401)
 }
 
@@ -99,14 +159,44 @@ func NewDeleteTerraformVersionUsingDELETEForbidden() *DeleteTerraformVersionUsin
 	return &DeleteTerraformVersionUsingDELETEForbidden{}
 }
 
-/* DeleteTerraformVersionUsingDELETEForbidden describes a response with status code 403, with default header values.
+/*
+DeleteTerraformVersionUsingDELETEForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type DeleteTerraformVersionUsingDELETEForbidden struct {
 }
 
+// IsSuccess returns true when this delete terraform version using d e l e t e forbidden response has a 2xx status code
+func (o *DeleteTerraformVersionUsingDELETEForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete terraform version using d e l e t e forbidden response has a 3xx status code
+func (o *DeleteTerraformVersionUsingDELETEForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete terraform version using d e l e t e forbidden response has a 4xx status code
+func (o *DeleteTerraformVersionUsingDELETEForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete terraform version using d e l e t e forbidden response has a 5xx status code
+func (o *DeleteTerraformVersionUsingDELETEForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete terraform version using d e l e t e forbidden response a status code equal to that given
+func (o *DeleteTerraformVersionUsingDELETEForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteTerraformVersionUsingDELETEForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /blueprint/api/blueprint-integrations/terraform/versions/{versionId}][%d] deleteTerraformVersionUsingDELETEForbidden ", 403)
+}
+
+func (o *DeleteTerraformVersionUsingDELETEForbidden) String() string {
 	return fmt.Sprintf("[DELETE /blueprint/api/blueprint-integrations/terraform/versions/{versionId}][%d] deleteTerraformVersionUsingDELETEForbidden ", 403)
 }
 
@@ -120,7 +210,8 @@ func NewDeleteTerraformVersionUsingDELETENotFound() *DeleteTerraformVersionUsing
 	return &DeleteTerraformVersionUsingDELETENotFound{}
 }
 
-/* DeleteTerraformVersionUsingDELETENotFound describes a response with status code 404, with default header values.
+/*
+DeleteTerraformVersionUsingDELETENotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -128,9 +219,39 @@ type DeleteTerraformVersionUsingDELETENotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete terraform version using d e l e t e not found response has a 2xx status code
+func (o *DeleteTerraformVersionUsingDELETENotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete terraform version using d e l e t e not found response has a 3xx status code
+func (o *DeleteTerraformVersionUsingDELETENotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete terraform version using d e l e t e not found response has a 4xx status code
+func (o *DeleteTerraformVersionUsingDELETENotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete terraform version using d e l e t e not found response has a 5xx status code
+func (o *DeleteTerraformVersionUsingDELETENotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete terraform version using d e l e t e not found response a status code equal to that given
+func (o *DeleteTerraformVersionUsingDELETENotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteTerraformVersionUsingDELETENotFound) Error() string {
 	return fmt.Sprintf("[DELETE /blueprint/api/blueprint-integrations/terraform/versions/{versionId}][%d] deleteTerraformVersionUsingDELETENotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteTerraformVersionUsingDELETENotFound) String() string {
+	return fmt.Sprintf("[DELETE /blueprint/api/blueprint-integrations/terraform/versions/{versionId}][%d] deleteTerraformVersionUsingDELETENotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteTerraformVersionUsingDELETENotFound) GetPayload() *models.Error {
 	return o.Payload
 }

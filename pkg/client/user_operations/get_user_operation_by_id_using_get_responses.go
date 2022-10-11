@@ -63,7 +63,8 @@ func NewGetUserOperationByIDUsingGETOK() *GetUserOperationByIDUsingGETOK {
 	return &GetUserOperationByIDUsingGETOK{}
 }
 
-/* GetUserOperationByIDUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetUserOperationByIDUsingGETOK describes a response with status code 200, with default header values.
 
 'Success' with the requested User Operation
 */
@@ -71,9 +72,39 @@ type GetUserOperationByIDUsingGETOK struct {
 	Payload models.UserOperation
 }
 
+// IsSuccess returns true when this get user operation by Id using g e t o k response has a 2xx status code
+func (o *GetUserOperationByIDUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get user operation by Id using g e t o k response has a 3xx status code
+func (o *GetUserOperationByIDUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get user operation by Id using g e t o k response has a 4xx status code
+func (o *GetUserOperationByIDUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get user operation by Id using g e t o k response has a 5xx status code
+func (o *GetUserOperationByIDUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get user operation by Id using g e t o k response a status code equal to that given
+func (o *GetUserOperationByIDUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetUserOperationByIDUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/user-operations/{id}][%d] getUserOperationByIdUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetUserOperationByIDUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /codestream/api/user-operations/{id}][%d] getUserOperationByIdUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetUserOperationByIDUsingGETOK) GetPayload() models.UserOperation {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewGetUserOperationByIDUsingGETUnauthorized() *GetUserOperationByIDUsingGET
 	return &GetUserOperationByIDUsingGETUnauthorized{}
 }
 
-/* GetUserOperationByIDUsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+GetUserOperationByIDUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type GetUserOperationByIDUsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this get user operation by Id using g e t unauthorized response has a 2xx status code
+func (o *GetUserOperationByIDUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get user operation by Id using g e t unauthorized response has a 3xx status code
+func (o *GetUserOperationByIDUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get user operation by Id using g e t unauthorized response has a 4xx status code
+func (o *GetUserOperationByIDUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get user operation by Id using g e t unauthorized response has a 5xx status code
+func (o *GetUserOperationByIDUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get user operation by Id using g e t unauthorized response a status code equal to that given
+func (o *GetUserOperationByIDUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetUserOperationByIDUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/user-operations/{id}][%d] getUserOperationByIdUsingGETUnauthorized ", 401)
+}
+
+func (o *GetUserOperationByIDUsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /codestream/api/user-operations/{id}][%d] getUserOperationByIdUsingGETUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewGetUserOperationByIDUsingGETForbidden() *GetUserOperationByIDUsingGETFor
 	return &GetUserOperationByIDUsingGETForbidden{}
 }
 
-/* GetUserOperationByIDUsingGETForbidden describes a response with status code 403, with default header values.
+/*
+GetUserOperationByIDUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetUserOperationByIDUsingGETForbidden struct {
 }
 
+// IsSuccess returns true when this get user operation by Id using g e t forbidden response has a 2xx status code
+func (o *GetUserOperationByIDUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get user operation by Id using g e t forbidden response has a 3xx status code
+func (o *GetUserOperationByIDUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get user operation by Id using g e t forbidden response has a 4xx status code
+func (o *GetUserOperationByIDUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get user operation by Id using g e t forbidden response has a 5xx status code
+func (o *GetUserOperationByIDUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get user operation by Id using g e t forbidden response a status code equal to that given
+func (o *GetUserOperationByIDUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetUserOperationByIDUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/user-operations/{id}][%d] getUserOperationByIdUsingGETForbidden ", 403)
+}
+
+func (o *GetUserOperationByIDUsingGETForbidden) String() string {
 	return fmt.Sprintf("[GET /codestream/api/user-operations/{id}][%d] getUserOperationByIdUsingGETForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewGetUserOperationByIDUsingGETNotFound() *GetUserOperationByIDUsingGETNotF
 	return &GetUserOperationByIDUsingGETNotFound{}
 }
 
-/* GetUserOperationByIDUsingGETNotFound describes a response with status code 404, with default header values.
+/*
+GetUserOperationByIDUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type GetUserOperationByIDUsingGETNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get user operation by Id using g e t not found response has a 2xx status code
+func (o *GetUserOperationByIDUsingGETNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get user operation by Id using g e t not found response has a 3xx status code
+func (o *GetUserOperationByIDUsingGETNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get user operation by Id using g e t not found response has a 4xx status code
+func (o *GetUserOperationByIDUsingGETNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get user operation by Id using g e t not found response has a 5xx status code
+func (o *GetUserOperationByIDUsingGETNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get user operation by Id using g e t not found response a status code equal to that given
+func (o *GetUserOperationByIDUsingGETNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetUserOperationByIDUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/user-operations/{id}][%d] getUserOperationByIdUsingGETNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetUserOperationByIDUsingGETNotFound) String() string {
+	return fmt.Sprintf("[GET /codestream/api/user-operations/{id}][%d] getUserOperationByIdUsingGETNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetUserOperationByIDUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewGetUserOperationByIDUsingGETInternalServerError() *GetUserOperationByIDU
 	return &GetUserOperationByIDUsingGETInternalServerError{}
 }
 
-/* GetUserOperationByIDUsingGETInternalServerError describes a response with status code 500, with default header values.
+/*
+GetUserOperationByIDUsingGETInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type GetUserOperationByIDUsingGETInternalServerError struct {
 }
 
+// IsSuccess returns true when this get user operation by Id using g e t internal server error response has a 2xx status code
+func (o *GetUserOperationByIDUsingGETInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get user operation by Id using g e t internal server error response has a 3xx status code
+func (o *GetUserOperationByIDUsingGETInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get user operation by Id using g e t internal server error response has a 4xx status code
+func (o *GetUserOperationByIDUsingGETInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get user operation by Id using g e t internal server error response has a 5xx status code
+func (o *GetUserOperationByIDUsingGETInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this get user operation by Id using g e t internal server error response a status code equal to that given
+func (o *GetUserOperationByIDUsingGETInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GetUserOperationByIDUsingGETInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/user-operations/{id}][%d] getUserOperationByIdUsingGETInternalServerError ", 500)
+}
+
+func (o *GetUserOperationByIDUsingGETInternalServerError) String() string {
 	return fmt.Sprintf("[GET /codestream/api/user-operations/{id}][%d] getUserOperationByIdUsingGETInternalServerError ", 500)
 }
 

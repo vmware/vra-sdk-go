@@ -3,7 +3,11 @@
     "info": {
         "description": "A multi-cloud Blueprint API for Cloud Automation Services",
         "version": "2019-09-12",
-        "title": "VMware Cloud Assembly Blueprint API"
+        "title": "VMware Cloud Assembly Blueprint API",
+        "license": {
+            "name": "Copyright (c) 2022 VMware, Inc. All Rights Reserved.",
+            "url": "https://www.vmware.com/cloud-solutions.html"
+        }
     },
     "host": "api.mgmt.cloud.vmware.com",
     "basePath": "/",
@@ -55,6 +59,15 @@
                         "schema": {
                             "$ref": "#/definitions/BlueprintAbout"
                         }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
                     }
                 },
                 "security": [
@@ -3922,9 +3935,6 @@
                     "additionalProperties": {
                         "$ref": "#/definitions/PropertyDefinition"
                     }
-                },
-                "readOnly": {
-                    "type": "boolean"
                 },
                 "recreateOnUpdate": {
                     "type": "boolean"

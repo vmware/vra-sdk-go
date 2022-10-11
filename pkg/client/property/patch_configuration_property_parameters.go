@@ -54,10 +54,12 @@ func NewPatchConfigurationPropertyParamsWithHTTPClient(client *http.Client) *Pat
 	}
 }
 
-/* PatchConfigurationPropertyParams contains all the parameters to send to the API endpoint
-   for the patch configuration property operation.
+/*
+PatchConfigurationPropertyParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the patch configuration property operation.
+
+	Typically these are written to a http.Request.
 */
 type PatchConfigurationPropertyParams struct {
 

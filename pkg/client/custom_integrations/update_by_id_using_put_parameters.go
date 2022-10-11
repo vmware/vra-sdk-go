@@ -54,10 +54,12 @@ func NewUpdateByIDUsingPUTParamsWithHTTPClient(client *http.Client) *UpdateByIDU
 	}
 }
 
-/* UpdateByIDUsingPUTParams contains all the parameters to send to the API endpoint
-   for the update by Id using p u t operation.
+/*
+UpdateByIDUsingPUTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update by Id using p u t operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateByIDUsingPUTParams struct {
 

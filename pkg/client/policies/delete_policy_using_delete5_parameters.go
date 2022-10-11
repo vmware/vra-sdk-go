@@ -52,10 +52,12 @@ func NewDeletePolicyUsingDELETE5ParamsWithHTTPClient(client *http.Client) *Delet
 	}
 }
 
-/* DeletePolicyUsingDELETE5Params contains all the parameters to send to the API endpoint
-   for the delete policy using d e l e t e 5 operation.
+/*
+DeletePolicyUsingDELETE5Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete policy using d e l e t e 5 operation.
+
+	Typically these are written to a http.Request.
 */
 type DeletePolicyUsingDELETE5Params struct {
 

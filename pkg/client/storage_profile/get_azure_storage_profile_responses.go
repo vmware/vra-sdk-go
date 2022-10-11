@@ -51,7 +51,8 @@ func NewGetAzureStorageProfileOK() *GetAzureStorageProfileOK {
 	return &GetAzureStorageProfileOK{}
 }
 
-/* GetAzureStorageProfileOK describes a response with status code 200, with default header values.
+/*
+GetAzureStorageProfileOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetAzureStorageProfileOK struct {
 	Payload *models.AzureStorageProfile
 }
 
+// IsSuccess returns true when this get azure storage profile o k response has a 2xx status code
+func (o *GetAzureStorageProfileOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get azure storage profile o k response has a 3xx status code
+func (o *GetAzureStorageProfileOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get azure storage profile o k response has a 4xx status code
+func (o *GetAzureStorageProfileOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get azure storage profile o k response has a 5xx status code
+func (o *GetAzureStorageProfileOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get azure storage profile o k response a status code equal to that given
+func (o *GetAzureStorageProfileOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetAzureStorageProfileOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/storage-profiles-azure/{id}][%d] getAzureStorageProfileOK  %+v", 200, o.Payload)
 }
+
+func (o *GetAzureStorageProfileOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/storage-profiles-azure/{id}][%d] getAzureStorageProfileOK  %+v", 200, o.Payload)
+}
+
 func (o *GetAzureStorageProfileOK) GetPayload() *models.AzureStorageProfile {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetAzureStorageProfileForbidden() *GetAzureStorageProfileForbidden {
 	return &GetAzureStorageProfileForbidden{}
 }
 
-/* GetAzureStorageProfileForbidden describes a response with status code 403, with default header values.
+/*
+GetAzureStorageProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type GetAzureStorageProfileForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get azure storage profile forbidden response has a 2xx status code
+func (o *GetAzureStorageProfileForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get azure storage profile forbidden response has a 3xx status code
+func (o *GetAzureStorageProfileForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get azure storage profile forbidden response has a 4xx status code
+func (o *GetAzureStorageProfileForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get azure storage profile forbidden response has a 5xx status code
+func (o *GetAzureStorageProfileForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get azure storage profile forbidden response a status code equal to that given
+func (o *GetAzureStorageProfileForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetAzureStorageProfileForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/storage-profiles-azure/{id}][%d] getAzureStorageProfileForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetAzureStorageProfileForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/storage-profiles-azure/{id}][%d] getAzureStorageProfileForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetAzureStorageProfileForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewGetAzureStorageProfileNotFound() *GetAzureStorageProfileNotFound {
 	return &GetAzureStorageProfileNotFound{}
 }
 
-/* GetAzureStorageProfileNotFound describes a response with status code 404, with default header values.
+/*
+GetAzureStorageProfileNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type GetAzureStorageProfileNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get azure storage profile not found response has a 2xx status code
+func (o *GetAzureStorageProfileNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get azure storage profile not found response has a 3xx status code
+func (o *GetAzureStorageProfileNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get azure storage profile not found response has a 4xx status code
+func (o *GetAzureStorageProfileNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get azure storage profile not found response has a 5xx status code
+func (o *GetAzureStorageProfileNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get azure storage profile not found response a status code equal to that given
+func (o *GetAzureStorageProfileNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetAzureStorageProfileNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/storage-profiles-azure/{id}][%d] getAzureStorageProfileNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetAzureStorageProfileNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/storage-profiles-azure/{id}][%d] getAzureStorageProfileNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetAzureStorageProfileNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

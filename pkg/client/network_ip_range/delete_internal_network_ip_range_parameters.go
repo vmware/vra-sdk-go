@@ -52,10 +52,12 @@ func NewDeleteInternalNetworkIPRangeParamsWithHTTPClient(client *http.Client) *D
 	}
 }
 
-/* DeleteInternalNetworkIPRangeParams contains all the parameters to send to the API endpoint
-   for the delete internal network IP range operation.
+/*
+DeleteInternalNetworkIPRangeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete internal network IP range operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteInternalNetworkIPRangeParams struct {
 

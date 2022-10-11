@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -414,7 +413,7 @@ func UnmarshalGerritTriggerSlice(reader io.Reader, consumer runtime.Consumer) ([
 // UnmarshalGerritTrigger unmarshals polymorphic GerritTrigger
 func UnmarshalGerritTrigger(reader io.Reader, consumer runtime.Consumer) (GerritTrigger, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}

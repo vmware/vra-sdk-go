@@ -36,7 +36,7 @@ type ClientService interface {
 
 	DeleteMachine(params *DeleteMachineParams, opts ...ClientOption) (*DeleteMachineAccepted, error)
 
-	DeleteMachineSnapshot(params *DeleteMachineSnapshotParams, opts ...ClientOption) (*DeleteMachineSnapshotAccepted, error)
+	DeleteMachineSnapshot(params *DeleteMachineSnapshotParams, opts ...ClientOption) (*DeleteMachineSnapshotAccepted, *DeleteMachineSnapshotNoContent, error)
 
 	GetMachine(params *GetMachineParams, opts ...ClientOption) (*GetMachineOK, error)
 
@@ -70,9 +70,9 @@ type ClientService interface {
 }
 
 /*
-  CreateMachine creates machine
+CreateMachine creates machine
 
-  Create machine
+Create machine
 */
 func (a *Client) CreateMachine(params *CreateMachineParams, opts ...ClientOption) (*CreateMachineAccepted, error) {
 	// TODO: Validate the params before sending
@@ -110,9 +110,9 @@ func (a *Client) CreateMachine(params *CreateMachineParams, opts ...ClientOption
 }
 
 /*
-  CreateMachineSnapshot creates snapshot operation for machine
+CreateMachineSnapshot creates snapshot operation for machine
 
-  Second day create snapshot operation for machine
+Second day create snapshot operation for machine
 */
 func (a *Client) CreateMachineSnapshot(params *CreateMachineSnapshotParams, opts ...ClientOption) (*CreateMachineSnapshotAccepted, error) {
 	// TODO: Validate the params before sending
@@ -150,9 +150,9 @@ func (a *Client) CreateMachineSnapshot(params *CreateMachineSnapshotParams, opts
 }
 
 /*
-  DeleteMachine deletes machine
+DeleteMachine deletes machine
 
-  Delete Machine with a given id
+Delete Machine with a given id
 */
 func (a *Client) DeleteMachine(params *DeleteMachineParams, opts ...ClientOption) (*DeleteMachineAccepted, error) {
 	// TODO: Validate the params before sending
@@ -190,11 +190,11 @@ func (a *Client) DeleteMachine(params *DeleteMachineParams, opts ...ClientOption
 }
 
 /*
-  DeleteMachineSnapshot deletes snapshot operation for machine
+DeleteMachineSnapshot deletes snapshot operation for machine
 
-  Second day delete snapshot operation for machine
+Second day delete snapshot operation for machine
 */
-func (a *Client) DeleteMachineSnapshot(params *DeleteMachineSnapshotParams, opts ...ClientOption) (*DeleteMachineSnapshotAccepted, error) {
+func (a *Client) DeleteMachineSnapshot(params *DeleteMachineSnapshotParams, opts ...ClientOption) (*DeleteMachineSnapshotAccepted, *DeleteMachineSnapshotNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteMachineSnapshotParams()
@@ -217,22 +217,23 @@ func (a *Client) DeleteMachineSnapshot(params *DeleteMachineSnapshotParams, opts
 
 	result, err := a.transport.Submit(op)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	success, ok := result.(*DeleteMachineSnapshotAccepted)
-	if ok {
-		return success, nil
+	switch value := result.(type) {
+	case *DeleteMachineSnapshotAccepted:
+		return value, nil, nil
+	case *DeleteMachineSnapshotNoContent:
+		return nil, value, nil
 	}
-	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteMachineSnapshot: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for compute: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetMachine gets machine
+GetMachine gets machine
 
-  Get machine with a given id
+Get machine with a given id
 */
 func (a *Client) GetMachine(params *GetMachineParams, opts ...ClientOption) (*GetMachineOK, error) {
 	// TODO: Validate the params before sending
@@ -270,9 +271,9 @@ func (a *Client) GetMachine(params *GetMachineParams, opts ...ClientOption) (*Ge
 }
 
 /*
-  GetMachineSnapshot gets machine snapshot
+GetMachineSnapshot gets machine snapshot
 
-  Get snapshot with a given id for specific machine
+Get snapshot with a given id for specific machine
 */
 func (a *Client) GetMachineSnapshot(params *GetMachineSnapshotParams, opts ...ClientOption) (*GetMachineSnapshotOK, error) {
 	// TODO: Validate the params before sending
@@ -310,9 +311,9 @@ func (a *Client) GetMachineSnapshot(params *GetMachineSnapshotParams, opts ...Cl
 }
 
 /*
-  GetMachineSnapshots gets machine snapshots information
+GetMachineSnapshots gets machine snapshots information
 
-  Get machine snapshots information
+Get machine snapshots information
 */
 func (a *Client) GetMachineSnapshots(params *GetMachineSnapshotsParams, opts ...ClientOption) (*GetMachineSnapshotsOK, error) {
 	// TODO: Validate the params before sending
@@ -350,9 +351,9 @@ func (a *Client) GetMachineSnapshots(params *GetMachineSnapshotsParams, opts ...
 }
 
 /*
-  GetMachines gets machines
+GetMachines gets machines
 
-  Get all machines
+Get all machines
 */
 func (a *Client) GetMachines(params *GetMachinesParams, opts ...ClientOption) (*GetMachinesOK, error) {
 	// TODO: Validate the params before sending
@@ -390,9 +391,9 @@ func (a *Client) GetMachines(params *GetMachinesParams, opts ...ClientOption) (*
 }
 
 /*
-  PowerOffMachine powers off operation for machine
+PowerOffMachine powers off operation for machine
 
-  Second day power-off operation for machine
+Second day power-off operation for machine
 */
 func (a *Client) PowerOffMachine(params *PowerOffMachineParams, opts ...ClientOption) (*PowerOffMachineAccepted, error) {
 	// TODO: Validate the params before sending
@@ -430,9 +431,9 @@ func (a *Client) PowerOffMachine(params *PowerOffMachineParams, opts ...ClientOp
 }
 
 /*
-  PowerOnMachine powers on operation for machine
+PowerOnMachine powers on operation for machine
 
-  Second day power-on operation for machine
+Second day power-on operation for machine
 */
 func (a *Client) PowerOnMachine(params *PowerOnMachineParams, opts ...ClientOption) (*PowerOnMachineAccepted, error) {
 	// TODO: Validate the params before sending
@@ -470,9 +471,9 @@ func (a *Client) PowerOnMachine(params *PowerOnMachineParams, opts ...ClientOpti
 }
 
 /*
-  RebootMachine reboots operation for machine
+RebootMachine reboots operation for machine
 
-  Second day reboot operation for machine
+Second day reboot operation for machine
 */
 func (a *Client) RebootMachine(params *RebootMachineParams, opts ...ClientOption) (*RebootMachineAccepted, error) {
 	// TODO: Validate the params before sending
@@ -510,9 +511,9 @@ func (a *Client) RebootMachine(params *RebootMachineParams, opts ...ClientOption
 }
 
 /*
-  ResetMachine resets operation for machine
+ResetMachine resets operation for machine
 
-  Second day reset operation for machine
+Second day reset operation for machine
 */
 func (a *Client) ResetMachine(params *ResetMachineParams, opts ...ClientOption) (*ResetMachineAccepted, error) {
 	// TODO: Validate the params before sending
@@ -550,9 +551,9 @@ func (a *Client) ResetMachine(params *ResetMachineParams, opts ...ClientOption) 
 }
 
 /*
-  ResizeMachine resizes operation for machine
+ResizeMachine resizes operation for machine
 
-  Second day resize operation for machine
+Second day resize operation for machine
 */
 func (a *Client) ResizeMachine(params *ResizeMachineParams, opts ...ClientOption) (*ResizeMachineAccepted, error) {
 	// TODO: Validate the params before sending
@@ -590,9 +591,9 @@ func (a *Client) ResizeMachine(params *ResizeMachineParams, opts ...ClientOption
 }
 
 /*
-  RestartMachine restarts operation for machine
+RestartMachine restarts operation for machine
 
-  Second day restart operation for machine
+Second day restart operation for machine
 */
 func (a *Client) RestartMachine(params *RestartMachineParams, opts ...ClientOption) (*RestartMachineAccepted, error) {
 	// TODO: Validate the params before sending
@@ -630,9 +631,9 @@ func (a *Client) RestartMachine(params *RestartMachineParams, opts ...ClientOpti
 }
 
 /*
-  RevertMachineSnapshot reverts snapshot operation for machine
+RevertMachineSnapshot reverts snapshot operation for machine
 
-  Second day revert snapshot operation for machine
+Second day revert snapshot operation for machine
 */
 func (a *Client) RevertMachineSnapshot(params *RevertMachineSnapshotParams, opts ...ClientOption) (*RevertMachineSnapshotAccepted, error) {
 	// TODO: Validate the params before sending
@@ -670,9 +671,9 @@ func (a *Client) RevertMachineSnapshot(params *RevertMachineSnapshotParams, opts
 }
 
 /*
-  ShutdownMachine shuts down operation for machine
+ShutdownMachine shuts down operation for machine
 
-  Second day shut down operation machine
+Second day shut down operation machine
 */
 func (a *Client) ShutdownMachine(params *ShutdownMachineParams, opts ...ClientOption) (*ShutdownMachineAccepted, error) {
 	// TODO: Validate the params before sending
@@ -710,9 +711,9 @@ func (a *Client) ShutdownMachine(params *ShutdownMachineParams, opts ...ClientOp
 }
 
 /*
-  SuspendMachine suspends operation for machine
+SuspendMachine suspends operation for machine
 
-  Second day suspend operation for machine
+Second day suspend operation for machine
 */
 func (a *Client) SuspendMachine(params *SuspendMachineParams, opts ...ClientOption) (*SuspendMachineAccepted, error) {
 	// TODO: Validate the params before sending
@@ -750,9 +751,9 @@ func (a *Client) SuspendMachine(params *SuspendMachineParams, opts ...ClientOpti
 }
 
 /*
-  UpdateMachine updates machine
+UpdateMachine updates machine
 
-  Update machine. Only description, tag and custom property updates are supported. All other properties in the MachineSpecification body are ignored.
+Update machine. Only description, tag, custom property and bootConfig updates are supported. Please note that all existing tags, assigned to this machine, that are not implicitly added in the Patch body, will be unassigned from this machine!All other properties in the MachineSpecification body are ignored.
 */
 func (a *Client) UpdateMachine(params *UpdateMachineParams, opts ...ClientOption) (*UpdateMachineOK, error) {
 	// TODO: Validate the params before sending

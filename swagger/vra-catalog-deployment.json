@@ -3,15 +3,15 @@
     "info": {
         "description": "A multi-cloud API for Cloud Automation Services",
         "version": "2020-08-25",
-        "title": "VMware Service Broker API"
+        "title": "VMware Service Broker API",
+        "license": {
+            "name": "Copyright (c) 2022 VMware, Inc. All Rights Reserved.",
+            "url": "https://www.vmware.com/cloud-solutions.html"
+        }
     },
     "host": "api.mgmt.cloud.vmware.com",
     "basePath": "/",
     "tags": [
-        {
-            "name": "Applications",
-            "description": "Application Controller"
-        },
         {
             "name": "Catalog Admin Items",
             "description": "Catalog Admin Items API"
@@ -87,231 +87,16 @@
         {
             "name": "Resources",
             "description": "Resource Controller"
+        },
+        {
+            "name": "User Events",
+            "description": "User Event Controller"
         }
     ],
     "produces": [
         "application/json"
     ],
     "paths": {
-        "/application/api/applications": {
-            "get": {
-                "tags": [
-                    "Applications"
-                ],
-                "summary": "Fetch all applications.",
-                "description": "Returns a paginated list of applications. Applications with more than 100 resources is not supported.",
-                "operationId": "getApplicationsUsingGET_2",
-                "parameters": [
-                    {
-                        "name": "$orderby",
-                        "in": "query",
-                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
-                        "required": false,
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "multi"
-                    },
-                    {
-                        "name": "$skip",
-                        "in": "query",
-                        "description": "Number of records you want to skip",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32",
-                        "x-example": 1
-                    },
-                    {
-                        "name": "$top",
-                        "in": "query",
-                        "description": "Number of records you want",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32",
-                        "x-example": 1
-                    },
-                    {
-                        "name": "apiVersion",
-                        "in": "query",
-                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "createdAt",
-                        "in": "query",
-                        "description": "Comma-separated start and end dates where start date or end date is optional (e.g. [2020-12-01T08:00:00.000Z,2020-12-11T23:59:00.000Z], [2020-11-03T08:00:00.000Z,], [,2020-11-08T08:00:00.000Z]",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "expand",
-                        "in": "query",
-                        "description": "The expanded details of the requested comma separated objects. 'resources' option returns resources with all properties.",
-                        "required": false,
-                        "type": "array",
-                        "items": {
-                            "type": "string",
-                            "enum": [
-                                "resources"
-                            ]
-                        },
-                        "collectionFormat": "multi",
-                        "allowEmptyValue": false,
-                        "enum": [
-                            "resources"
-                        ]
-                    },
-                    {
-                        "name": "ids",
-                        "in": "query",
-                        "description": "A comma-separated list. Only applications with these IDs will be included in the results.",
-                        "required": false,
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "multi",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "lastUpdatedAt",
-                        "in": "query",
-                        "description": "Comma-separated start and end dates where start date or end date is optional (e.g. [2020-12-01T08:00:00.000Z,2020-12-11T23:59:00.000Z], [2020-11-03T08:00:00.000Z,], [,2020-11-08T08:00:00.000Z]",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "name",
-                        "in": "query",
-                        "description": "Results must have exactly this name.",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "resourceTypes",
-                        "in": "query",
-                        "description": "A comma-separated list. Results must be associated with one of these resourceType Names.",
-                        "required": false,
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "multi",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "search",
-                        "in": "query",
-                        "description": "Given string should either be part of a searchable field in a application or one of application's resources.",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "tags",
-                        "in": "query",
-                        "description": "A comma-separated list. Results must be associated with one of these tags",
-                        "required": false,
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "multi",
-                        "allowEmptyValue": false
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/PageOfApplication"
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized"
-                    }
-                },
-                "security": [
-                    {
-                        "APIKeyHeader": [
-                            "global"
-                        ]
-                    }
-                ],
-                "deprecated": false
-            }
-        },
-        "/application/api/applications/{appId}": {
-            "get": {
-                "tags": [
-                    "Applications"
-                ],
-                "summary": "Fetch a specific application.",
-                "description": "Returns the application with the supplied ID.",
-                "operationId": "getApplciationByIdUsingGET_2",
-                "parameters": [
-                    {
-                        "name": "apiVersion",
-                        "in": "query",
-                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "appId",
-                        "in": "path",
-                        "description": "Application ID",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "expand",
-                        "in": "query",
-                        "description": "The expanded details of the requested comma separated objects. 'resources' option returns resources with all properties.",
-                        "required": false,
-                        "type": "array",
-                        "items": {
-                            "type": "string",
-                            "enum": [
-                                "resources"
-                            ]
-                        },
-                        "collectionFormat": "multi",
-                        "allowEmptyValue": false,
-                        "enum": [
-                            "resources"
-                        ]
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/Application"
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized"
-                    },
-                    "404": {
-                        "description": "Not Found"
-                    }
-                },
-                "security": [
-                    {
-                        "APIKeyHeader": [
-                            "global"
-                        ]
-                    }
-                ],
-                "deprecated": false
-            }
-        },
         "/catalog/api/admin/entitlements": {
             "get": {
                 "tags": [
@@ -595,6 +380,14 @@
                         "required": true,
                         "type": "string",
                         "format": "uuid"
+                    },
+                    {
+                        "name": "includeSource",
+                        "in": "query",
+                        "description": "Includes the Content Source metadata for the Catalog Item",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": false
                     }
                 ],
                 "responses": {
@@ -1606,7 +1399,8 @@
                                 "catalog",
                                 "lastRequest",
                                 "project",
-                                "resources"
+                                "resources",
+                                "inprogressRequests"
                             ]
                         },
                         "collectionFormat": "multi",
@@ -1616,7 +1410,8 @@
                             "catalog",
                             "lastRequest",
                             "project",
-                            "resources"
+                            "resources",
+                            "inprogressRequests"
                         ]
                     },
                     {
@@ -1932,6 +1727,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "projects",
+                        "in": "query",
+                        "description": "A comma-separated list. Results must be associated with one of these project IDs.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
+                    },
+                    {
                         "name": "search",
                         "in": "query",
                         "description": "Search string for filters",
@@ -2097,7 +1904,8 @@
                                 "catalog",
                                 "lastRequest",
                                 "project",
-                                "resources"
+                                "resources",
+                                "inprogressRequests"
                             ]
                         },
                         "collectionFormat": "multi",
@@ -2107,7 +1915,8 @@
                             "catalog",
                             "lastRequest",
                             "project",
-                            "resources"
+                            "resources",
+                            "inprogressRequests"
                         ]
                     }
                 ],
@@ -3056,6 +2865,84 @@
                 "deprecated": false
             }
         },
+        "/deployment/api/deployments/{deploymentId}/userEvents": {
+            "get": {
+                "tags": [
+                    "User Events"
+                ],
+                "summary": "Get user events for deployment.",
+                "description": "Returns paged user events for given deployment ID. User events represent: Create, Day2, Approval or vRO User Interaction",
+                "operationId": "getUserEventsUsingGET_2",
+                "parameters": [
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property (asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "$skip",
+                        "in": "query",
+                        "description": "Number of records you want to skip",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "description": "Number of records you want",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "x-example": 1
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "deploymentId",
+                        "in": "path",
+                        "description": "Deployment ID",
+                        "required": true,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfUserEvent"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
         "/deployment/api/projects/{projectId}/deployment-count": {
             "get": {
                 "tags": [
@@ -3076,8 +2963,7 @@
                         "in": "path",
                         "description": "Project ID",
                         "required": true,
-                        "type": "string",
-                        "format": "uuid"
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -3086,6 +2972,9 @@
                         "schema": {
                             "$ref": "#/definitions/Page"
                         }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
                     }
                 },
                 "security": [
@@ -3689,6 +3578,9 @@
                     },
                     "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     }
                 },
                 "security": [
@@ -3737,6 +3629,9 @@
                     },
                     "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     }
                 },
                 "security": [
@@ -3936,6 +3831,18 @@
                         "type": "string"
                     },
                     {
+                        "name": "projects",
+                        "in": "query",
+                        "description": "A comma-separated list. Results must be associated with one of these project IDs.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "allowEmptyValue": false
+                    },
+                    {
                         "name": "resourceTypes",
                         "in": "query",
                         "description": "A comma-separated list. Only Resources with these types will be included in the results.",
@@ -4033,6 +3940,9 @@
                     },
                     "401": {
                         "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     }
                 },
                 "security": [
@@ -4457,6 +4367,9 @@
                             "$ref": "#/definitions/PageOfNotificationScenarioConfig"
                         }
                     },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
                     "403": {
                         "description": "Forbidden"
                     }
@@ -4503,44 +4416,15 @@
                         "schema": {
                             "$ref": "#/definitions/NotificationScenarioConfig"
                         }
-                    }
-                },
-                "security": [
-                    {
-                        "APIKeyHeader": [
-                            "global"
-                        ]
-                    }
-                ],
-                "deprecated": false
-            }
-        },
-        "/notification/api/scenario-configs/{id}": {
-            "delete": {
-                "tags": [
-                    "Notification Scenario Configuration"
-                ],
-                "summary": "Deletes a notification scenario configuration of an organization",
-                "operationId": "deleteUsingDELETE_5",
-                "parameters": [
-                    {
-                        "name": "apiVersion",
-                        "in": "query",
-                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
-                        "required": false,
-                        "type": "string"
                     },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Notification scenario Id",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "204": {
-                        "description": "No Content"
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     }
                 },
                 "security": [
@@ -4583,11 +4467,56 @@
                             "$ref": "#/definitions/NotificationScenarioConfig"
                         }
                     },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
                     "403": {
                         "description": "Forbidden"
                     },
                     "404": {
                         "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "APIKeyHeader": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            },
+            "delete": {
+                "tags": [
+                    "Notification Scenario Configuration"
+                ],
+                "summary": "Deletes a notification scenario configuration by scenario id of an organization",
+                "operationId": "deleteUsingDELETE_5",
+                "parameters": [
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). If you do not specify explicitly an exact version, you will be calling the latest supported API version.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "scenarioId",
+                        "in": "path",
+                        "description": "Notification scenario Id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     }
                 },
                 "security": [
@@ -4675,6 +4604,12 @@
                         "schema": {
                             "$ref": "#/definitions/PageOfPolicy"
                         }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     }
                 },
                 "security": [
@@ -4690,9 +4625,9 @@
                 "tags": [
                     "Policies"
                 ],
-                "summary": "Trigger a policy dry-run.",
-                "description": "Dry-run an existing policy to rehearse actual policy effect on application.",
-                "operationId": "dryRunPolicyUsingPOST_2",
+                "summary": "Creates a new policy or updates an existing policy.",
+                "description": "Create a new policy or update an existing policy based on request body and validate its fields according to business rules.",
+                "operationId": "createPolicyUsingPOST_5",
                 "consumes": [
                     "application/json"
                 ],
@@ -4705,24 +4640,44 @@
                         "type": "string"
                     },
                     {
-                        "name": "dryRun",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
                         "in": "body",
                         "name": "policy",
-                        "description": "The policy to be created",
+                        "description": "The policy to be created or updated",
                         "required": false,
                         "schema": {
                             "$ref": "#/definitions/Policy"
                         }
+                    },
+                    {
+                        "name": "validationOnly",
+                        "in": "query",
+                        "description": "For a dry run that will do policy validation only instead of creating or updating a policy",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": false
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK"
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Policy"
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/Policy"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     }
                 },
                 "security": [
@@ -4773,6 +4728,15 @@
                         "schema": {
                             "$ref": "#/definitions/Policy"
                         }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
                     }
                 },
                 "security": [
@@ -4811,6 +4775,12 @@
                 "responses": {
                     "204": {
                         "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     }
                 },
                 "security": [
@@ -4907,6 +4877,12 @@
                         "schema": {
                             "$ref": "#/definitions/PageOfPolicyDecisionOfObjectNode"
                         }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     }
                 },
                 "security": [
@@ -4950,6 +4926,15 @@
                         "schema": {
                             "$ref": "#/definitions/PolicyDecisionOfObjectNode"
                         }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
                     }
                 },
                 "security": [
@@ -5022,6 +5007,12 @@
                         "schema": {
                             "$ref": "#/definitions/PageOfPolicyType"
                         }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     }
                 },
                 "security": [
@@ -5064,6 +5055,18 @@
                         "schema": {
                             "$ref": "#/definitions/PolicyType"
                         }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
                     }
                 },
                 "security": [
@@ -5106,6 +5109,15 @@
                         "schema": {
                             "type": "object"
                         }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
                     }
                 },
                 "security": [
@@ -5687,7 +5699,7 @@
                 ],
                 "summary": "Create a new pricing card",
                 "description": "Create a new pricing card based on request body and validate its field according to business rules.",
-                "operationId": "createPolicyUsingPOST_2",
+                "operationId": "createPolicyUsingPOST_4",
                 "consumes": [
                     "application/json"
                 ],
@@ -5922,138 +5934,6 @@
             "title": "AdminCatalogItemPatch",
             "description": "A patch to update attributes for a catalog item"
         },
-        "Application": {
-            "type": "object",
-            "required": [
-                "name"
-            ],
-            "properties": {
-                "createdAt": {
-                    "type": "string",
-                    "format": "date-time",
-                    "description": "Creation time"
-                },
-                "description": {
-                    "type": "string",
-                    "description": "Description of the application"
-                },
-                "id": {
-                    "type": "string",
-                    "description": "Id of the application"
-                },
-                "lastUpdatedAt": {
-                    "type": "string",
-                    "format": "date-time",
-                    "description": "Last update time"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "Name of the application"
-                },
-                "orgId": {
-                    "type": "string"
-                },
-                "resources": {
-                    "type": "array",
-                    "description": "Resources of the application.",
-                    "items": {
-                        "$ref": "#/definitions/ApplicationResource"
-                    }
-                },
-                "tiers": {
-                    "type": "array",
-                    "description": "Tiers of the application.",
-                    "items": {
-                        "$ref": "#/definitions/ApplicationTier"
-                    }
-                }
-            },
-            "title": "Application",
-            "description": "A group of resources such as machines, network, software, etc... typically provisioned together to deliver a complete/workable application."
-        },
-        "ApplicationResource": {
-            "type": "object",
-            "required": [
-                "name",
-                "type"
-            ],
-            "properties": {
-                "createdAt": {
-                    "type": "string",
-                    "format": "date-time",
-                    "description": "Creation time"
-                },
-                "description": {
-                    "type": "string",
-                    "description": "A description of the resource"
-                },
-                "expense": {
-                    "description": "Expense associated with the deployment.",
-                    "readOnly": true,
-                    "$ref": "#/definitions/Expense"
-                },
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier of the resource"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "Name of the resource"
-                },
-                "origin": {
-                    "type": "string",
-                    "description": "Origin of the resource",
-                    "enum": [
-                        "DISCOVERED",
-                        "ONBOARDED",
-                        "MIGRATED"
-                    ]
-                },
-                "properties": {
-                    "type": "object"
-                },
-                "syncStatus": {
-                    "type": "string",
-                    "description": "The current sync status",
-                    "enum": [
-                        "SUCCESS",
-                        "MISSING",
-                        "STALE"
-                    ]
-                },
-                "tier": {
-                    "$ref": "#/definitions/ApplicationTier"
-                },
-                "type": {
-                    "type": "string",
-                    "description": "Type of the resource"
-                }
-            },
-            "title": "ApplicationResource",
-            "description": "A resource part of an application."
-        },
-        "ApplicationTier": {
-            "type": "object",
-            "required": [
-                "name"
-            ],
-            "properties": {
-                "description": {
-                    "type": "string",
-                    "description": "A description of the tier"
-                },
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier of the tier"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "Name of the tier"
-                }
-            },
-            "title": "ApplicationTier",
-            "description": "Application tier."
-        },
         "CatalogItem": {
             "type": "object",
             "required": [
@@ -6082,6 +5962,10 @@
                 "description": {
                     "type": "string",
                     "description": "CatalogItem description"
+                },
+                "externalId": {
+                    "type": "string",
+                    "description": "External ID"
                 },
                 "formId": {
                     "type": "string",
@@ -6378,6 +6262,10 @@
                     "type": "string",
                     "description": "Description"
                 },
+                "externalId": {
+                    "type": "string",
+                    "description": "External ID"
+                },
                 "formId": {
                     "type": "string",
                     "description": "Form ID"
@@ -6629,6 +6517,10 @@
                     "format": "uuid",
                     "description": "Id of the deployment"
                 },
+                "inprogressRequests": {
+                    "type": "object",
+                    "description": "Requests that are in-progress for this deployment at this time"
+                },
                 "inputs": {
                     "type": "object",
                     "description": "The inputs that were used to request this deployment"
@@ -6868,6 +6760,10 @@
                     "format": "uuid",
                     "description": "Entitlement id"
                 },
+                "migrated": {
+                    "type": "boolean",
+                    "description": "Migrated flag for entitlements"
+                },
                 "projectId": {
                     "type": "string",
                     "description": "Project id"
@@ -6912,6 +6808,10 @@
                     "type": "string",
                     "format": "date-time",
                     "description": "Timestamp of the Event (e.g. date format '2019-07-13T23:16:49.310Z')."
+                },
+                "userEvent": {
+                    "type": "boolean",
+                    "description": "Indicates if the event represents user input."
                 }
             },
             "title": "Event",
@@ -7428,50 +7328,6 @@
             },
             "title": "Page",
             "description": "Project callback response containing count of deployments"
-        },
-        "PageOfApplication": {
-            "type": "object",
-            "properties": {
-                "content": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Application"
-                    }
-                },
-                "empty": {
-                    "type": "boolean"
-                },
-                "first": {
-                    "type": "boolean"
-                },
-                "last": {
-                    "type": "boolean"
-                },
-                "number": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "numberOfElements": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "size": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "sort": {
-                    "$ref": "#/definitions/Sort"
-                },
-                "totalElements": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "totalPages": {
-                    "type": "integer",
-                    "format": "int32"
-                }
-            },
-            "title": "PageOfApplication"
         },
         "PageOfCatalogItem": {
             "type": "object",
@@ -8221,6 +8077,50 @@
             },
             "title": "PageOfResourceType"
         },
+        "PageOfUserEvent": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/UserEvent"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfUserEvent"
+        },
         "Policy": {
             "type": "object",
             "required": [
@@ -8396,6 +8296,9 @@
                     "type": "boolean"
                 },
                 "enableEnforcementType": {
+                    "type": "boolean"
+                },
+                "enableSingleProjectScope": {
                     "type": "boolean"
                 },
                 "enableUpdateNotification": {
@@ -8590,6 +8493,7 @@
                         "INITIALIZATION",
                         "CHECKING_APPROVAL",
                         "APPROVAL_PENDING",
+                        "USER_INTERACTION_PENDING",
                         "INPROGRESS",
                         "COMPLETION",
                         "APPROVAL_REJECTED",
@@ -9159,6 +9063,78 @@
             },
             "title": "TimeSeriesValue",
             "description": "A timeseries object containing timestamp and price value at the timestamp"
+        },
+        "UserEvent": {
+            "type": "object",
+            "required": [
+                "id",
+                "name",
+                "requestId",
+                "requestedBy",
+                "resourceIds",
+                "status"
+            ],
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Time at which the event was created"
+                },
+                "details": {
+                    "type": "string",
+                    "description": "Details of the user event. If the event is a user interaction the details contain the vRO Manual User Interaction ID."
+                },
+                "id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Id"
+                },
+                "inputs": {
+                    "type": "object",
+                    "description": "User event inputs. If user event is a user interaction the inputs form can be retrieved from Orchestrator Gateway API /vro/forms/user-interaction/{userInteractionId}"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Short user-friendly label of the event"
+                },
+                "outputs": {
+                    "type": "object",
+                    "description": "User event outputs"
+                },
+                "requestId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Request id"
+                },
+                "requestedBy": {
+                    "type": "string",
+                    "description": "User that initiated the event"
+                },
+                "resourceIds": {
+                    "type": "array",
+                    "description": "Resource id",
+                    "items": {
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "description": "User event status.",
+                    "enum": [
+                        "SUCCESSFUL",
+                        "FAILED",
+                        "PENDING"
+                    ]
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Time at which the event was updated"
+                }
+            },
+            "title": "UserEvent",
+            "description": "Represents events which require user input."
         }
     }
 }

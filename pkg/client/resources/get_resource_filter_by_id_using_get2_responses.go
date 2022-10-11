@@ -45,7 +45,8 @@ func NewGetResourceFilterByIDUsingGET2OK() *GetResourceFilterByIDUsingGET2OK {
 	return &GetResourceFilterByIDUsingGET2OK{}
 }
 
-/* GetResourceFilterByIDUsingGET2OK describes a response with status code 200, with default header values.
+/*
+GetResourceFilterByIDUsingGET2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -53,9 +54,39 @@ type GetResourceFilterByIDUsingGET2OK struct {
 	Payload *models.PageOfFilterEntry
 }
 
+// IsSuccess returns true when this get resource filter by Id using g e t2 o k response has a 2xx status code
+func (o *GetResourceFilterByIDUsingGET2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get resource filter by Id using g e t2 o k response has a 3xx status code
+func (o *GetResourceFilterByIDUsingGET2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get resource filter by Id using g e t2 o k response has a 4xx status code
+func (o *GetResourceFilterByIDUsingGET2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get resource filter by Id using g e t2 o k response has a 5xx status code
+func (o *GetResourceFilterByIDUsingGET2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get resource filter by Id using g e t2 o k response a status code equal to that given
+func (o *GetResourceFilterByIDUsingGET2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetResourceFilterByIDUsingGET2OK) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/resources/filters/{filterId}][%d] getResourceFilterByIdUsingGET2OK  %+v", 200, o.Payload)
 }
+
+func (o *GetResourceFilterByIDUsingGET2OK) String() string {
+	return fmt.Sprintf("[GET /deployment/api/resources/filters/{filterId}][%d] getResourceFilterByIdUsingGET2OK  %+v", 200, o.Payload)
+}
+
 func (o *GetResourceFilterByIDUsingGET2OK) GetPayload() *models.PageOfFilterEntry {
 	return o.Payload
 }
@@ -77,14 +108,44 @@ func NewGetResourceFilterByIDUsingGET2Unauthorized() *GetResourceFilterByIDUsing
 	return &GetResourceFilterByIDUsingGET2Unauthorized{}
 }
 
-/* GetResourceFilterByIDUsingGET2Unauthorized describes a response with status code 401, with default header values.
+/*
+GetResourceFilterByIDUsingGET2Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type GetResourceFilterByIDUsingGET2Unauthorized struct {
 }
 
+// IsSuccess returns true when this get resource filter by Id using g e t2 unauthorized response has a 2xx status code
+func (o *GetResourceFilterByIDUsingGET2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get resource filter by Id using g e t2 unauthorized response has a 3xx status code
+func (o *GetResourceFilterByIDUsingGET2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get resource filter by Id using g e t2 unauthorized response has a 4xx status code
+func (o *GetResourceFilterByIDUsingGET2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get resource filter by Id using g e t2 unauthorized response has a 5xx status code
+func (o *GetResourceFilterByIDUsingGET2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get resource filter by Id using g e t2 unauthorized response a status code equal to that given
+func (o *GetResourceFilterByIDUsingGET2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetResourceFilterByIDUsingGET2Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /deployment/api/resources/filters/{filterId}][%d] getResourceFilterByIdUsingGET2Unauthorized ", 401)
+}
+
+func (o *GetResourceFilterByIDUsingGET2Unauthorized) String() string {
 	return fmt.Sprintf("[GET /deployment/api/resources/filters/{filterId}][%d] getResourceFilterByIdUsingGET2Unauthorized ", 401)
 }
 

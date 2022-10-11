@@ -51,7 +51,8 @@ func NewGetDeploymentExpenseHistoryByIDUsingGET2OK() *GetDeploymentExpenseHistor
 	return &GetDeploymentExpenseHistoryByIDUsingGET2OK{}
 }
 
-/* GetDeploymentExpenseHistoryByIDUsingGET2OK describes a response with status code 200, with default header values.
+/*
+GetDeploymentExpenseHistoryByIDUsingGET2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -59,9 +60,39 @@ type GetDeploymentExpenseHistoryByIDUsingGET2OK struct {
 	Payload *models.DeploymentExpenseHistory
 }
 
+// IsSuccess returns true when this get deployment expense history by Id using g e t2 o k response has a 2xx status code
+func (o *GetDeploymentExpenseHistoryByIDUsingGET2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get deployment expense history by Id using g e t2 o k response has a 3xx status code
+func (o *GetDeploymentExpenseHistoryByIDUsingGET2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get deployment expense history by Id using g e t2 o k response has a 4xx status code
+func (o *GetDeploymentExpenseHistoryByIDUsingGET2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get deployment expense history by Id using g e t2 o k response has a 5xx status code
+func (o *GetDeploymentExpenseHistoryByIDUsingGET2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get deployment expense history by Id using g e t2 o k response a status code equal to that given
+func (o *GetDeploymentExpenseHistoryByIDUsingGET2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetDeploymentExpenseHistoryByIDUsingGET2OK) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}/expense-history][%d] getDeploymentExpenseHistoryByIdUsingGET2OK  %+v", 200, o.Payload)
 }
+
+func (o *GetDeploymentExpenseHistoryByIDUsingGET2OK) String() string {
+	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}/expense-history][%d] getDeploymentExpenseHistoryByIdUsingGET2OK  %+v", 200, o.Payload)
+}
+
 func (o *GetDeploymentExpenseHistoryByIDUsingGET2OK) GetPayload() *models.DeploymentExpenseHistory {
 	return o.Payload
 }
@@ -83,14 +114,44 @@ func NewGetDeploymentExpenseHistoryByIDUsingGET2Unauthorized() *GetDeploymentExp
 	return &GetDeploymentExpenseHistoryByIDUsingGET2Unauthorized{}
 }
 
-/* GetDeploymentExpenseHistoryByIDUsingGET2Unauthorized describes a response with status code 401, with default header values.
+/*
+GetDeploymentExpenseHistoryByIDUsingGET2Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type GetDeploymentExpenseHistoryByIDUsingGET2Unauthorized struct {
 }
 
+// IsSuccess returns true when this get deployment expense history by Id using g e t2 unauthorized response has a 2xx status code
+func (o *GetDeploymentExpenseHistoryByIDUsingGET2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get deployment expense history by Id using g e t2 unauthorized response has a 3xx status code
+func (o *GetDeploymentExpenseHistoryByIDUsingGET2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get deployment expense history by Id using g e t2 unauthorized response has a 4xx status code
+func (o *GetDeploymentExpenseHistoryByIDUsingGET2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get deployment expense history by Id using g e t2 unauthorized response has a 5xx status code
+func (o *GetDeploymentExpenseHistoryByIDUsingGET2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get deployment expense history by Id using g e t2 unauthorized response a status code equal to that given
+func (o *GetDeploymentExpenseHistoryByIDUsingGET2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetDeploymentExpenseHistoryByIDUsingGET2Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}/expense-history][%d] getDeploymentExpenseHistoryByIdUsingGET2Unauthorized ", 401)
+}
+
+func (o *GetDeploymentExpenseHistoryByIDUsingGET2Unauthorized) String() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}/expense-history][%d] getDeploymentExpenseHistoryByIdUsingGET2Unauthorized ", 401)
 }
 
@@ -104,7 +165,8 @@ func NewGetDeploymentExpenseHistoryByIDUsingGET2NotFound() *GetDeploymentExpense
 	return &GetDeploymentExpenseHistoryByIDUsingGET2NotFound{}
 }
 
-/* GetDeploymentExpenseHistoryByIDUsingGET2NotFound describes a response with status code 404, with default header values.
+/*
+GetDeploymentExpenseHistoryByIDUsingGET2NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -112,9 +174,39 @@ type GetDeploymentExpenseHistoryByIDUsingGET2NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get deployment expense history by Id using g e t2 not found response has a 2xx status code
+func (o *GetDeploymentExpenseHistoryByIDUsingGET2NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get deployment expense history by Id using g e t2 not found response has a 3xx status code
+func (o *GetDeploymentExpenseHistoryByIDUsingGET2NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get deployment expense history by Id using g e t2 not found response has a 4xx status code
+func (o *GetDeploymentExpenseHistoryByIDUsingGET2NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get deployment expense history by Id using g e t2 not found response has a 5xx status code
+func (o *GetDeploymentExpenseHistoryByIDUsingGET2NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get deployment expense history by Id using g e t2 not found response a status code equal to that given
+func (o *GetDeploymentExpenseHistoryByIDUsingGET2NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetDeploymentExpenseHistoryByIDUsingGET2NotFound) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}/expense-history][%d] getDeploymentExpenseHistoryByIdUsingGET2NotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetDeploymentExpenseHistoryByIDUsingGET2NotFound) String() string {
+	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}/expense-history][%d] getDeploymentExpenseHistoryByIdUsingGET2NotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetDeploymentExpenseHistoryByIDUsingGET2NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

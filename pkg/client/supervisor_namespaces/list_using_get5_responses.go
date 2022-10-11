@@ -29,6 +29,12 @@ func (o *ListUsingGET5Reader) ReadResponse(response runtime.ClientResponse, cons
 			return nil, err
 		}
 		return result, nil
+	case 403:
+		result := NewListUsingGET5Forbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +45,8 @@ func NewListUsingGET5OK() *ListUsingGET5OK {
 	return &ListUsingGET5OK{}
 }
 
-/* ListUsingGET5OK describes a response with status code 200, with default header values.
+/*
+ListUsingGET5OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +54,39 @@ type ListUsingGET5OK struct {
 	Payload *models.PageOfSupervisorNamespace
 }
 
+// IsSuccess returns true when this list using g e t5 o k response has a 2xx status code
+func (o *ListUsingGET5OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this list using g e t5 o k response has a 3xx status code
+func (o *ListUsingGET5OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this list using g e t5 o k response has a 4xx status code
+func (o *ListUsingGET5OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this list using g e t5 o k response has a 5xx status code
+func (o *ListUsingGET5OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this list using g e t5 o k response a status code equal to that given
+func (o *ListUsingGET5OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ListUsingGET5OK) Error() string {
 	return fmt.Sprintf("[GET /cmx/api/resources/supervisor-namespaces][%d] listUsingGET5OK  %+v", 200, o.Payload)
 }
+
+func (o *ListUsingGET5OK) String() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/supervisor-namespaces][%d] listUsingGET5OK  %+v", 200, o.Payload)
+}
+
 func (o *ListUsingGET5OK) GetPayload() *models.PageOfSupervisorNamespace {
 	return o.Payload
 }
@@ -62,6 +99,57 @@ func (o *ListUsingGET5OK) readResponse(response runtime.ClientResponse, consumer
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewListUsingGET5Forbidden creates a ListUsingGET5Forbidden with default headers values
+func NewListUsingGET5Forbidden() *ListUsingGET5Forbidden {
+	return &ListUsingGET5Forbidden{}
+}
+
+/*
+ListUsingGET5Forbidden describes a response with status code 403, with default header values.
+
+Forbidden, the user lacks permissions
+*/
+type ListUsingGET5Forbidden struct {
+}
+
+// IsSuccess returns true when this list using g e t5 forbidden response has a 2xx status code
+func (o *ListUsingGET5Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this list using g e t5 forbidden response has a 3xx status code
+func (o *ListUsingGET5Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this list using g e t5 forbidden response has a 4xx status code
+func (o *ListUsingGET5Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this list using g e t5 forbidden response has a 5xx status code
+func (o *ListUsingGET5Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this list using g e t5 forbidden response a status code equal to that given
+func (o *ListUsingGET5Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *ListUsingGET5Forbidden) Error() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/supervisor-namespaces][%d] listUsingGET5Forbidden ", 403)
+}
+
+func (o *ListUsingGET5Forbidden) String() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/supervisor-namespaces][%d] listUsingGET5Forbidden ", 403)
+}
+
+func (o *ListUsingGET5Forbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

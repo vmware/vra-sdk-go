@@ -63,7 +63,8 @@ func NewGetAllGitEventsUsingGETOK() *GetAllGitEventsUsingGETOK {
 	return &GetAllGitEventsUsingGETOK{}
 }
 
-/* GetAllGitEventsUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetAllGitEventsUsingGETOK describes a response with status code 200, with default header values.
 
 'Success' with get of Git Events
 */
@@ -71,9 +72,39 @@ type GetAllGitEventsUsingGETOK struct {
 	Payload models.GitEvents
 }
 
+// IsSuccess returns true when this get all git events using g e t o k response has a 2xx status code
+func (o *GetAllGitEventsUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get all git events using g e t o k response has a 3xx status code
+func (o *GetAllGitEventsUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all git events using g e t o k response has a 4xx status code
+func (o *GetAllGitEventsUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get all git events using g e t o k response has a 5xx status code
+func (o *GetAllGitEventsUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all git events using g e t o k response a status code equal to that given
+func (o *GetAllGitEventsUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetAllGitEventsUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/git-events][%d] getAllGitEventsUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetAllGitEventsUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /codestream/api/git-events][%d] getAllGitEventsUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetAllGitEventsUsingGETOK) GetPayload() models.GitEvents {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewGetAllGitEventsUsingGETUnauthorized() *GetAllGitEventsUsingGETUnauthoriz
 	return &GetAllGitEventsUsingGETUnauthorized{}
 }
 
-/* GetAllGitEventsUsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+GetAllGitEventsUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type GetAllGitEventsUsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this get all git events using g e t unauthorized response has a 2xx status code
+func (o *GetAllGitEventsUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get all git events using g e t unauthorized response has a 3xx status code
+func (o *GetAllGitEventsUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all git events using g e t unauthorized response has a 4xx status code
+func (o *GetAllGitEventsUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get all git events using g e t unauthorized response has a 5xx status code
+func (o *GetAllGitEventsUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all git events using g e t unauthorized response a status code equal to that given
+func (o *GetAllGitEventsUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetAllGitEventsUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/git-events][%d] getAllGitEventsUsingGETUnauthorized ", 401)
+}
+
+func (o *GetAllGitEventsUsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /codestream/api/git-events][%d] getAllGitEventsUsingGETUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewGetAllGitEventsUsingGETForbidden() *GetAllGitEventsUsingGETForbidden {
 	return &GetAllGitEventsUsingGETForbidden{}
 }
 
-/* GetAllGitEventsUsingGETForbidden describes a response with status code 403, with default header values.
+/*
+GetAllGitEventsUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetAllGitEventsUsingGETForbidden struct {
 }
 
+// IsSuccess returns true when this get all git events using g e t forbidden response has a 2xx status code
+func (o *GetAllGitEventsUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get all git events using g e t forbidden response has a 3xx status code
+func (o *GetAllGitEventsUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all git events using g e t forbidden response has a 4xx status code
+func (o *GetAllGitEventsUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get all git events using g e t forbidden response has a 5xx status code
+func (o *GetAllGitEventsUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all git events using g e t forbidden response a status code equal to that given
+func (o *GetAllGitEventsUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetAllGitEventsUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/git-events][%d] getAllGitEventsUsingGETForbidden ", 403)
+}
+
+func (o *GetAllGitEventsUsingGETForbidden) String() string {
 	return fmt.Sprintf("[GET /codestream/api/git-events][%d] getAllGitEventsUsingGETForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewGetAllGitEventsUsingGETNotFound() *GetAllGitEventsUsingGETNotFound {
 	return &GetAllGitEventsUsingGETNotFound{}
 }
 
-/* GetAllGitEventsUsingGETNotFound describes a response with status code 404, with default header values.
+/*
+GetAllGitEventsUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type GetAllGitEventsUsingGETNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get all git events using g e t not found response has a 2xx status code
+func (o *GetAllGitEventsUsingGETNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get all git events using g e t not found response has a 3xx status code
+func (o *GetAllGitEventsUsingGETNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all git events using g e t not found response has a 4xx status code
+func (o *GetAllGitEventsUsingGETNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get all git events using g e t not found response has a 5xx status code
+func (o *GetAllGitEventsUsingGETNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all git events using g e t not found response a status code equal to that given
+func (o *GetAllGitEventsUsingGETNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetAllGitEventsUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/git-events][%d] getAllGitEventsUsingGETNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetAllGitEventsUsingGETNotFound) String() string {
+	return fmt.Sprintf("[GET /codestream/api/git-events][%d] getAllGitEventsUsingGETNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetAllGitEventsUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewGetAllGitEventsUsingGETInternalServerError() *GetAllGitEventsUsingGETInt
 	return &GetAllGitEventsUsingGETInternalServerError{}
 }
 
-/* GetAllGitEventsUsingGETInternalServerError describes a response with status code 500, with default header values.
+/*
+GetAllGitEventsUsingGETInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type GetAllGitEventsUsingGETInternalServerError struct {
 }
 
+// IsSuccess returns true when this get all git events using g e t internal server error response has a 2xx status code
+func (o *GetAllGitEventsUsingGETInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get all git events using g e t internal server error response has a 3xx status code
+func (o *GetAllGitEventsUsingGETInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all git events using g e t internal server error response has a 4xx status code
+func (o *GetAllGitEventsUsingGETInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get all git events using g e t internal server error response has a 5xx status code
+func (o *GetAllGitEventsUsingGETInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this get all git events using g e t internal server error response a status code equal to that given
+func (o *GetAllGitEventsUsingGETInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GetAllGitEventsUsingGETInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/git-events][%d] getAllGitEventsUsingGETInternalServerError ", 500)
+}
+
+func (o *GetAllGitEventsUsingGETInternalServerError) String() string {
 	return fmt.Sprintf("[GET /codestream/api/git-events][%d] getAllGitEventsUsingGETInternalServerError ", 500)
 }
 

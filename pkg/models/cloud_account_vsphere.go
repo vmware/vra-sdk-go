@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -23,6 +24,10 @@ type CloudAccountVsphere struct {
 	// HATEOAS of the entity
 	// Required: true
 	Links map[string]Href `json:"_links"`
+
+	// Workload mobility associations to other vSphere cloud accounts. ID refers to an associated cloud account, and directionality can be unidirectional or bidirectional.
+	// Example: { \"42f3e0d199d134755684cd935435a\": \"BIDIRECTIONAL\" }
+	AssociatedMobilityCloudAccountIds map[string]string `json:"associatedMobilityCloudAccountIds,omitempty"`
 
 	// Date when the entity was created. The date is in ISO 8601 and UTC.
 	// Example: 2012-09-27
@@ -87,6 +92,10 @@ func (m *CloudAccountVsphere) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateAssociatedMobilityCloudAccountIds(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateEnabledRegions(formats); err != nil {
 		res = append(res, err)
 	}
@@ -133,6 +142,43 @@ func (m *CloudAccountVsphere) validateLinks(formats strfmt.Registry) error {
 				}
 				return err
 			}
+		}
+
+	}
+
+	return nil
+}
+
+// additional properties value enum
+var cloudAccountVsphereAssociatedMobilityCloudAccountIdsValueEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["UNIDIRECTIONAL","BIDIRECTIONAL"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		cloudAccountVsphereAssociatedMobilityCloudAccountIdsValueEnum = append(cloudAccountVsphereAssociatedMobilityCloudAccountIdsValueEnum, v)
+	}
+}
+
+func (m *CloudAccountVsphere) validateAssociatedMobilityCloudAccountIdsValueEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, cloudAccountVsphereAssociatedMobilityCloudAccountIdsValueEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *CloudAccountVsphere) validateAssociatedMobilityCloudAccountIds(formats strfmt.Registry) error {
+	if swag.IsZero(m.AssociatedMobilityCloudAccountIds) { // not required
+		return nil
+	}
+
+	for k := range m.AssociatedMobilityCloudAccountIds {
+
+		// value enum
+		if err := m.validateAssociatedMobilityCloudAccountIdsValueEnum("associatedMobilityCloudAccountIds"+"."+k, "body", m.AssociatedMobilityCloudAccountIds[k]); err != nil {
+			return err
 		}
 
 	}

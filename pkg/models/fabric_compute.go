@@ -58,6 +58,10 @@ type FabricCompute struct {
 	// Example: PROVISIONING, READY, SUSPEND, STOPPED, RETIRED
 	LifecycleState string `json:"lifecycleState,omitempty"`
 
+	// What percent of the total available memory on the compute will be used for VM provisioning. This value can be more than 100. e.g. If the compute has 100gb of memory and this value is set to 80, then vRA will act as if this compute has only 80gb. If it is 120, then vRA will act as if this compute has 120gb thus allowing 20gb overallocation. Applies only for private cloud computes.
+	// Example: 120
+	MaximumAllowedMemoryAllocationPercent int32 `json:"maximumAllowedMemoryAllocationPercent,omitempty"`
+
 	// A human-friendly name used as an identifier in APIs that support this option.
 	// Example: my-name
 	Name string `json:"name,omitempty"`

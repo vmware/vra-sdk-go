@@ -63,7 +63,8 @@ func NewValidateGerritListenerUsingPOSTOK() *ValidateGerritListenerUsingPOSTOK {
 	return &ValidateGerritListenerUsingPOSTOK{}
 }
 
-/* ValidateGerritListenerUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+ValidateGerritListenerUsingPOSTOK describes a response with status code 200, with default header values.
 
 'Success' with Gerrit Listener Validation
 */
@@ -71,9 +72,39 @@ type ValidateGerritListenerUsingPOSTOK struct {
 	Payload models.GerritListener
 }
 
+// IsSuccess returns true when this validate gerrit listener using p o s t o k response has a 2xx status code
+func (o *ValidateGerritListenerUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this validate gerrit listener using p o s t o k response has a 3xx status code
+func (o *ValidateGerritListenerUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this validate gerrit listener using p o s t o k response has a 4xx status code
+func (o *ValidateGerritListenerUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this validate gerrit listener using p o s t o k response has a 5xx status code
+func (o *ValidateGerritListenerUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this validate gerrit listener using p o s t o k response a status code equal to that given
+func (o *ValidateGerritListenerUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ValidateGerritListenerUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-listeners/validate][%d] validateGerritListenerUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *ValidateGerritListenerUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-listeners/validate][%d] validateGerritListenerUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *ValidateGerritListenerUsingPOSTOK) GetPayload() models.GerritListener {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewValidateGerritListenerUsingPOSTUnauthorized() *ValidateGerritListenerUsi
 	return &ValidateGerritListenerUsingPOSTUnauthorized{}
 }
 
-/* ValidateGerritListenerUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+ValidateGerritListenerUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type ValidateGerritListenerUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this validate gerrit listener using p o s t unauthorized response has a 2xx status code
+func (o *ValidateGerritListenerUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this validate gerrit listener using p o s t unauthorized response has a 3xx status code
+func (o *ValidateGerritListenerUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this validate gerrit listener using p o s t unauthorized response has a 4xx status code
+func (o *ValidateGerritListenerUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this validate gerrit listener using p o s t unauthorized response has a 5xx status code
+func (o *ValidateGerritListenerUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this validate gerrit listener using p o s t unauthorized response a status code equal to that given
+func (o *ValidateGerritListenerUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ValidateGerritListenerUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-listeners/validate][%d] validateGerritListenerUsingPOSTUnauthorized ", 401)
+}
+
+func (o *ValidateGerritListenerUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-listeners/validate][%d] validateGerritListenerUsingPOSTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewValidateGerritListenerUsingPOSTForbidden() *ValidateGerritListenerUsingP
 	return &ValidateGerritListenerUsingPOSTForbidden{}
 }
 
-/* ValidateGerritListenerUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+ValidateGerritListenerUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type ValidateGerritListenerUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this validate gerrit listener using p o s t forbidden response has a 2xx status code
+func (o *ValidateGerritListenerUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this validate gerrit listener using p o s t forbidden response has a 3xx status code
+func (o *ValidateGerritListenerUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this validate gerrit listener using p o s t forbidden response has a 4xx status code
+func (o *ValidateGerritListenerUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this validate gerrit listener using p o s t forbidden response has a 5xx status code
+func (o *ValidateGerritListenerUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this validate gerrit listener using p o s t forbidden response a status code equal to that given
+func (o *ValidateGerritListenerUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ValidateGerritListenerUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-listeners/validate][%d] validateGerritListenerUsingPOSTForbidden ", 403)
+}
+
+func (o *ValidateGerritListenerUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-listeners/validate][%d] validateGerritListenerUsingPOSTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewValidateGerritListenerUsingPOSTNotFound() *ValidateGerritListenerUsingPO
 	return &ValidateGerritListenerUsingPOSTNotFound{}
 }
 
-/* ValidateGerritListenerUsingPOSTNotFound describes a response with status code 404, with default header values.
+/*
+ValidateGerritListenerUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type ValidateGerritListenerUsingPOSTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this validate gerrit listener using p o s t not found response has a 2xx status code
+func (o *ValidateGerritListenerUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this validate gerrit listener using p o s t not found response has a 3xx status code
+func (o *ValidateGerritListenerUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this validate gerrit listener using p o s t not found response has a 4xx status code
+func (o *ValidateGerritListenerUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this validate gerrit listener using p o s t not found response has a 5xx status code
+func (o *ValidateGerritListenerUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this validate gerrit listener using p o s t not found response a status code equal to that given
+func (o *ValidateGerritListenerUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ValidateGerritListenerUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-listeners/validate][%d] validateGerritListenerUsingPOSTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ValidateGerritListenerUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-listeners/validate][%d] validateGerritListenerUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ValidateGerritListenerUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewValidateGerritListenerUsingPOSTInternalServerError() *ValidateGerritList
 	return &ValidateGerritListenerUsingPOSTInternalServerError{}
 }
 
-/* ValidateGerritListenerUsingPOSTInternalServerError describes a response with status code 500, with default header values.
+/*
+ValidateGerritListenerUsingPOSTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ValidateGerritListenerUsingPOSTInternalServerError struct {
 }
 
+// IsSuccess returns true when this validate gerrit listener using p o s t internal server error response has a 2xx status code
+func (o *ValidateGerritListenerUsingPOSTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this validate gerrit listener using p o s t internal server error response has a 3xx status code
+func (o *ValidateGerritListenerUsingPOSTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this validate gerrit listener using p o s t internal server error response has a 4xx status code
+func (o *ValidateGerritListenerUsingPOSTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this validate gerrit listener using p o s t internal server error response has a 5xx status code
+func (o *ValidateGerritListenerUsingPOSTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this validate gerrit listener using p o s t internal server error response a status code equal to that given
+func (o *ValidateGerritListenerUsingPOSTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ValidateGerritListenerUsingPOSTInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-listeners/validate][%d] validateGerritListenerUsingPOSTInternalServerError ", 500)
+}
+
+func (o *ValidateGerritListenerUsingPOSTInternalServerError) String() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-listeners/validate][%d] validateGerritListenerUsingPOSTInternalServerError ", 500)
 }
 

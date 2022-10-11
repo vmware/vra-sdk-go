@@ -53,10 +53,12 @@ func NewListContentSourcesUsingGETParamsWithHTTPClient(client *http.Client) *Lis
 	}
 }
 
-/* ListContentSourcesUsingGETParams contains all the parameters to send to the API endpoint
-   for the list content sources using g e t operation.
+/*
+ListContentSourcesUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the list content sources using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type ListContentSourcesUsingGETParams struct {
 

@@ -54,10 +54,12 @@ func NewPatchDockerRegistryWebhookByIDUsingPATCHParamsWithHTTPClient(client *htt
 	}
 }
 
-/* PatchDockerRegistryWebhookByIDUsingPATCHParams contains all the parameters to send to the API endpoint
-   for the patch docker registry webhook by Id using p a t c h operation.
+/*
+PatchDockerRegistryWebhookByIDUsingPATCHParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the patch docker registry webhook by Id using p a t c h operation.
+
+	Typically these are written to a http.Request.
 */
 type PatchDockerRegistryWebhookByIDUsingPATCHParams struct {
 
@@ -73,11 +75,11 @@ type PatchDockerRegistryWebhookByIDUsingPATCHParams struct {
 	*/
 	APIVersion string
 
-	/* DockerRegistryWebhookPatch.
+	/* EnablePatch.
 
-	   dockerRegistryWebhookPatch
+	   enablePatch
 	*/
-	DockerRegistryWebhookPatch models.DockerRegistryWebhookPatch
+	EnablePatch models.WebhookEnablePatch
 
 	/* ID.
 
@@ -160,15 +162,15 @@ func (o *PatchDockerRegistryWebhookByIDUsingPATCHParams) SetAPIVersion(aPIVersio
 	o.APIVersion = aPIVersion
 }
 
-// WithDockerRegistryWebhookPatch adds the dockerRegistryWebhookPatch to the patch docker registry webhook by Id using p a t c h params
-func (o *PatchDockerRegistryWebhookByIDUsingPATCHParams) WithDockerRegistryWebhookPatch(dockerRegistryWebhookPatch models.DockerRegistryWebhookPatch) *PatchDockerRegistryWebhookByIDUsingPATCHParams {
-	o.SetDockerRegistryWebhookPatch(dockerRegistryWebhookPatch)
+// WithEnablePatch adds the enablePatch to the patch docker registry webhook by Id using p a t c h params
+func (o *PatchDockerRegistryWebhookByIDUsingPATCHParams) WithEnablePatch(enablePatch models.WebhookEnablePatch) *PatchDockerRegistryWebhookByIDUsingPATCHParams {
+	o.SetEnablePatch(enablePatch)
 	return o
 }
 
-// SetDockerRegistryWebhookPatch adds the dockerRegistryWebhookPatch to the patch docker registry webhook by Id using p a t c h params
-func (o *PatchDockerRegistryWebhookByIDUsingPATCHParams) SetDockerRegistryWebhookPatch(dockerRegistryWebhookPatch models.DockerRegistryWebhookPatch) {
-	o.DockerRegistryWebhookPatch = dockerRegistryWebhookPatch
+// SetEnablePatch adds the enablePatch to the patch docker registry webhook by Id using p a t c h params
+func (o *PatchDockerRegistryWebhookByIDUsingPATCHParams) SetEnablePatch(enablePatch models.WebhookEnablePatch) {
+	o.EnablePatch = enablePatch
 }
 
 // WithID adds the id to the patch docker registry webhook by Id using p a t c h params
@@ -202,7 +204,7 @@ func (o *PatchDockerRegistryWebhookByIDUsingPATCHParams) WriteToRequest(r runtim
 	if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 		return err
 	}
-	if err := r.SetBodyParam(o.DockerRegistryWebhookPatch); err != nil {
+	if err := r.SetBodyParam(o.EnablePatch); err != nil {
 		return err
 	}
 

@@ -45,14 +45,44 @@ func NewDeleteNetworkProfileNoContent() *DeleteNetworkProfileNoContent {
 	return &DeleteNetworkProfileNoContent{}
 }
 
-/* DeleteNetworkProfileNoContent describes a response with status code 204, with default header values.
+/*
+DeleteNetworkProfileNoContent describes a response with status code 204, with default header values.
 
 No Content
 */
 type DeleteNetworkProfileNoContent struct {
 }
 
+// IsSuccess returns true when this delete network profile no content response has a 2xx status code
+func (o *DeleteNetworkProfileNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete network profile no content response has a 3xx status code
+func (o *DeleteNetworkProfileNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete network profile no content response has a 4xx status code
+func (o *DeleteNetworkProfileNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete network profile no content response has a 5xx status code
+func (o *DeleteNetworkProfileNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete network profile no content response a status code equal to that given
+func (o *DeleteNetworkProfileNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteNetworkProfileNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/network-profiles/{id}][%d] deleteNetworkProfileNoContent ", 204)
+}
+
+func (o *DeleteNetworkProfileNoContent) String() string {
 	return fmt.Sprintf("[DELETE /iaas/api/network-profiles/{id}][%d] deleteNetworkProfileNoContent ", 204)
 }
 
@@ -66,7 +96,8 @@ func NewDeleteNetworkProfileForbidden() *DeleteNetworkProfileForbidden {
 	return &DeleteNetworkProfileForbidden{}
 }
 
-/* DeleteNetworkProfileForbidden describes a response with status code 403, with default header values.
+/*
+DeleteNetworkProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -74,9 +105,39 @@ type DeleteNetworkProfileForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this delete network profile forbidden response has a 2xx status code
+func (o *DeleteNetworkProfileForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete network profile forbidden response has a 3xx status code
+func (o *DeleteNetworkProfileForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete network profile forbidden response has a 4xx status code
+func (o *DeleteNetworkProfileForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete network profile forbidden response has a 5xx status code
+func (o *DeleteNetworkProfileForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete network profile forbidden response a status code equal to that given
+func (o *DeleteNetworkProfileForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteNetworkProfileForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/network-profiles/{id}][%d] deleteNetworkProfileForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DeleteNetworkProfileForbidden) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/network-profiles/{id}][%d] deleteNetworkProfileForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DeleteNetworkProfileForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

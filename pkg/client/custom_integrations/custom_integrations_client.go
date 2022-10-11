@@ -52,6 +52,8 @@ type ClientService interface {
 
 	RestoreByIDAndVersionUsingPOST(params *RestoreByIDAndVersionUsingPOSTParams, opts ...ClientOption) (*RestoreByIDAndVersionUsingPOSTOK, error)
 
+	ToggleLatestUsingPATCH(params *ToggleLatestUsingPATCHParams, opts ...ClientOption) (*ToggleLatestUsingPATCHOK, error)
+
 	UpdateByIDUsingPUT(params *UpdateByIDUsingPUTParams, opts ...ClientOption) (*UpdateByIDUsingPUTOK, error)
 
 	WithdrawByIDAndVersionUsingPOST(params *WithdrawByIDAndVersionUsingPOSTParams, opts ...ClientOption) (*WithdrawByIDAndVersionUsingPOSTOK, error)
@@ -60,9 +62,9 @@ type ClientService interface {
 }
 
 /*
-  CreateCustomIntegrationUsingPOST creates a custom integration
+CreateCustomIntegrationUsingPOST creates a custom integration
 
-  Create a Custom Integration to be consumed in pipelines as custom tasks
+Create a Custom Integration to be consumed in pipelines as custom tasks
 */
 func (a *Client) CreateCustomIntegrationUsingPOST(params *CreateCustomIntegrationUsingPOSTParams, opts ...ClientOption) (*CreateCustomIntegrationUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -100,9 +102,9 @@ func (a *Client) CreateCustomIntegrationUsingPOST(params *CreateCustomIntegratio
 }
 
 /*
-  CreateVersionByIDUsingPOST creates a custom integration version
+CreateVersionByIDUsingPOST creates a custom integration version
 
-  Create a Custom Integration version from the current draft
+Create a Custom Integration version from the current draft
 */
 func (a *Client) CreateVersionByIDUsingPOST(params *CreateVersionByIDUsingPOSTParams, opts ...ClientOption) (*CreateVersionByIDUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -140,9 +142,9 @@ func (a *Client) CreateVersionByIDUsingPOST(params *CreateVersionByIDUsingPOSTPa
 }
 
 /*
-  DeleteDraftByIDUsingDELETE deletes a custom integration and its versions
+DeleteDraftByIDUsingDELETE deletes a custom integration and its versions
 
-  Delete a Custom Integration with the given id and all its versions
+Delete a Custom Integration with the given id and all its versions
 */
 func (a *Client) DeleteDraftByIDUsingDELETE(params *DeleteDraftByIDUsingDELETEParams, opts ...ClientOption) (*DeleteDraftByIDUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
@@ -180,9 +182,9 @@ func (a *Client) DeleteDraftByIDUsingDELETE(params *DeleteDraftByIDUsingDELETEPa
 }
 
 /*
-  DeleteVersionByIDUsingDELETE deletes a custom integration version
+DeleteVersionByIDUsingDELETE deletes a custom integration version
 
-  Delete a Custom Integration version with the given id and version
+Delete a Custom Integration version with the given id and version
 */
 func (a *Client) DeleteVersionByIDUsingDELETE(params *DeleteVersionByIDUsingDELETEParams, opts ...ClientOption) (*DeleteVersionByIDUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
@@ -220,9 +222,9 @@ func (a *Client) DeleteVersionByIDUsingDELETE(params *DeleteVersionByIDUsingDELE
 }
 
 /*
-  DeprecateByIDAndVersionUsingPOST deprecates a custom integration version
+DeprecateByIDAndVersionUsingPOST deprecates a custom integration version
 
-  Deprecate a Custom Integration version
+Deprecate a Custom Integration version
 */
 func (a *Client) DeprecateByIDAndVersionUsingPOST(params *DeprecateByIDAndVersionUsingPOSTParams, opts ...ClientOption) (*DeprecateByIDAndVersionUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -260,9 +262,9 @@ func (a *Client) DeprecateByIDAndVersionUsingPOST(params *DeprecateByIDAndVersio
 }
 
 /*
-  GetAllCustomIntegrationVersionsByIDUsingGET gets all versions of a custom integration by id
+GetAllCustomIntegrationVersionsByIDUsingGET gets all versions of a custom integration by id
 
-  Get all versions of a Custom Integration with specified id, paging and filter parameters
+Get all versions of a Custom Integration with specified id, paging and filter parameters
 */
 func (a *Client) GetAllCustomIntegrationVersionsByIDUsingGET(params *GetAllCustomIntegrationVersionsByIDUsingGETParams, opts ...ClientOption) (*GetAllCustomIntegrationVersionsByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -300,9 +302,9 @@ func (a *Client) GetAllCustomIntegrationVersionsByIDUsingGET(params *GetAllCusto
 }
 
 /*
-  GetCustomIntegrationVersionByIDUsingGET gets a custom integration by version
+GetCustomIntegrationVersionByIDUsingGET gets a custom integration by version
 
-  Get a Custom Integration with the given id and version
+Get a Custom Integration with the given id and version
 */
 func (a *Client) GetCustomIntegrationVersionByIDUsingGET(params *GetCustomIntegrationVersionByIDUsingGETParams, opts ...ClientOption) (*GetCustomIntegrationVersionByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -340,9 +342,9 @@ func (a *Client) GetCustomIntegrationVersionByIDUsingGET(params *GetCustomIntegr
 }
 
 /*
-  GetCustomIntegrationsUsingGET gets all custom integrations
+GetCustomIntegrationsUsingGET gets all custom integrations
 
-  Get all Custom Integrations with specified paging and filter parameters.
+Get all Custom Integrations with specified paging and filter parameters.
 */
 func (a *Client) GetCustomIntegrationsUsingGET(params *GetCustomIntegrationsUsingGETParams, opts ...ClientOption) (*GetCustomIntegrationsUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -380,9 +382,9 @@ func (a *Client) GetCustomIntegrationsUsingGET(params *GetCustomIntegrationsUsin
 }
 
 /*
-  GetDraftByIDUsingGET gets a custom integration by id
+GetDraftByIDUsingGET gets a custom integration by id
 
-  Get details of a Custom Integration with the given id
+Get details of a Custom Integration with the given id
 */
 func (a *Client) GetDraftByIDUsingGET(params *GetDraftByIDUsingGETParams, opts ...ClientOption) (*GetDraftByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -420,9 +422,9 @@ func (a *Client) GetDraftByIDUsingGET(params *GetDraftByIDUsingGETParams, opts .
 }
 
 /*
-  ReleaseByIDAndVersionUsingPOST releases a custom integration version
+ReleaseByIDAndVersionUsingPOST releases a custom integration version
 
-  Release a Custom Integration version to be consumable in pipelines
+Release a Custom Integration version to be consumable in pipelines
 */
 func (a *Client) ReleaseByIDAndVersionUsingPOST(params *ReleaseByIDAndVersionUsingPOSTParams, opts ...ClientOption) (*ReleaseByIDAndVersionUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -460,9 +462,9 @@ func (a *Client) ReleaseByIDAndVersionUsingPOST(params *ReleaseByIDAndVersionUsi
 }
 
 /*
-  RestoreByIDAndVersionUsingPOST restores a custom integration from a version to current draft
+RestoreByIDAndVersionUsingPOST restores a custom integration from a version to current draft
 
-  Restore a Custom Integration from the given version to the current draft
+Restore a Custom Integration from the given version to the current draft
 */
 func (a *Client) RestoreByIDAndVersionUsingPOST(params *RestoreByIDAndVersionUsingPOSTParams, opts ...ClientOption) (*RestoreByIDAndVersionUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -500,9 +502,49 @@ func (a *Client) RestoreByIDAndVersionUsingPOST(params *RestoreByIDAndVersionUsi
 }
 
 /*
-  UpdateByIDUsingPUT updates a custom integration by id
+ToggleLatestUsingPATCH sets unset a release version as l a t e s t
 
-  Update a Custom Integration with the given id
+Sets a released Custom Integration version as 'LATEST' or unsets a version from 'LATEST'
+*/
+func (a *Client) ToggleLatestUsingPATCH(params *ToggleLatestUsingPATCHParams, opts ...ClientOption) (*ToggleLatestUsingPATCHOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewToggleLatestUsingPATCHParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "toggleLatestUsingPATCH",
+		Method:             "PATCH",
+		PathPattern:        "/codestream/api/custom-integrations/{id}/versions/{version}",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ToggleLatestUsingPATCHReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ToggleLatestUsingPATCHOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for toggleLatestUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateByIDUsingPUT updates a custom integration by id
+
+Update a Custom Integration with the given id
 */
 func (a *Client) UpdateByIDUsingPUT(params *UpdateByIDUsingPUTParams, opts ...ClientOption) (*UpdateByIDUsingPUTOK, error) {
 	// TODO: Validate the params before sending
@@ -540,9 +582,9 @@ func (a *Client) UpdateByIDUsingPUT(params *UpdateByIDUsingPUTParams, opts ...Cl
 }
 
 /*
-  WithdrawByIDAndVersionUsingPOST withdraws a custom integration version
+WithdrawByIDAndVersionUsingPOST withdraws a custom integration version
 
-  Withdraw a released/deprecated Custom Integration version to make it un-consumable in pipelines
+Withdraw a released/deprecated Custom Integration version to make it un-consumable in pipelines
 */
 func (a *Client) WithdrawByIDAndVersionUsingPOST(params *WithdrawByIDAndVersionUsingPOSTParams, opts ...ClientOption) (*WithdrawByIDAndVersionUsingPOSTOK, error) {
 	// TODO: Validate the params before sending

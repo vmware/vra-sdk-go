@@ -53,10 +53,12 @@ func NewGetEventLogsUsingGET2ParamsWithHTTPClient(client *http.Client) *GetEvent
 	}
 }
 
-/* GetEventLogsUsingGET2Params contains all the parameters to send to the API endpoint
-   for the get event logs using g e t 2 operation.
+/*
+GetEventLogsUsingGET2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get event logs using g e t 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetEventLogsUsingGET2Params struct {
 

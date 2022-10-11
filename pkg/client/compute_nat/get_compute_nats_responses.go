@@ -45,7 +45,8 @@ func NewGetComputeNatsOK() *GetComputeNatsOK {
 	return &GetComputeNatsOK{}
 }
 
-/* GetComputeNatsOK describes a response with status code 200, with default header values.
+/*
+GetComputeNatsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type GetComputeNatsOK struct {
 	Payload *models.ComputeNatResult
 }
 
+// IsSuccess returns true when this get compute nats o k response has a 2xx status code
+func (o *GetComputeNatsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get compute nats o k response has a 3xx status code
+func (o *GetComputeNatsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get compute nats o k response has a 4xx status code
+func (o *GetComputeNatsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get compute nats o k response has a 5xx status code
+func (o *GetComputeNatsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get compute nats o k response a status code equal to that given
+func (o *GetComputeNatsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetComputeNatsOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/compute-nats][%d] getComputeNatsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetComputeNatsOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/compute-nats][%d] getComputeNatsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetComputeNatsOK) GetPayload() *models.ComputeNatResult {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewGetComputeNatsForbidden() *GetComputeNatsForbidden {
 	return &GetComputeNatsForbidden{}
 }
 
-/* GetComputeNatsForbidden describes a response with status code 403, with default header values.
+/*
+GetComputeNatsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type GetComputeNatsForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get compute nats forbidden response has a 2xx status code
+func (o *GetComputeNatsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get compute nats forbidden response has a 3xx status code
+func (o *GetComputeNatsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get compute nats forbidden response has a 4xx status code
+func (o *GetComputeNatsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get compute nats forbidden response has a 5xx status code
+func (o *GetComputeNatsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get compute nats forbidden response a status code equal to that given
+func (o *GetComputeNatsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetComputeNatsForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/compute-nats][%d] getComputeNatsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetComputeNatsForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/compute-nats][%d] getComputeNatsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetComputeNatsForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

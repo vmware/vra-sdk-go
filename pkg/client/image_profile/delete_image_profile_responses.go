@@ -45,14 +45,44 @@ func NewDeleteImageProfileNoContent() *DeleteImageProfileNoContent {
 	return &DeleteImageProfileNoContent{}
 }
 
-/* DeleteImageProfileNoContent describes a response with status code 204, with default header values.
+/*
+DeleteImageProfileNoContent describes a response with status code 204, with default header values.
 
 No Content
 */
 type DeleteImageProfileNoContent struct {
 }
 
+// IsSuccess returns true when this delete image profile no content response has a 2xx status code
+func (o *DeleteImageProfileNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete image profile no content response has a 3xx status code
+func (o *DeleteImageProfileNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete image profile no content response has a 4xx status code
+func (o *DeleteImageProfileNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete image profile no content response has a 5xx status code
+func (o *DeleteImageProfileNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete image profile no content response a status code equal to that given
+func (o *DeleteImageProfileNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteImageProfileNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/image-profiles/{id}][%d] deleteImageProfileNoContent ", 204)
+}
+
+func (o *DeleteImageProfileNoContent) String() string {
 	return fmt.Sprintf("[DELETE /iaas/api/image-profiles/{id}][%d] deleteImageProfileNoContent ", 204)
 }
 
@@ -66,7 +96,8 @@ func NewDeleteImageProfileForbidden() *DeleteImageProfileForbidden {
 	return &DeleteImageProfileForbidden{}
 }
 
-/* DeleteImageProfileForbidden describes a response with status code 403, with default header values.
+/*
+DeleteImageProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -74,9 +105,39 @@ type DeleteImageProfileForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this delete image profile forbidden response has a 2xx status code
+func (o *DeleteImageProfileForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete image profile forbidden response has a 3xx status code
+func (o *DeleteImageProfileForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete image profile forbidden response has a 4xx status code
+func (o *DeleteImageProfileForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete image profile forbidden response has a 5xx status code
+func (o *DeleteImageProfileForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete image profile forbidden response a status code equal to that given
+func (o *DeleteImageProfileForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteImageProfileForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/image-profiles/{id}][%d] deleteImageProfileForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DeleteImageProfileForbidden) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/image-profiles/{id}][%d] deleteImageProfileForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DeleteImageProfileForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

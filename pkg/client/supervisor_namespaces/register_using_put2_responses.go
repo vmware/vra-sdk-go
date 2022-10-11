@@ -29,6 +29,12 @@ func (o *RegisterUsingPUT2Reader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return result, nil
+	case 403:
+		result := NewRegisterUsingPUT2Forbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +45,8 @@ func NewRegisterUsingPUT2OK() *RegisterUsingPUT2OK {
 	return &RegisterUsingPUT2OK{}
 }
 
-/* RegisterUsingPUT2OK describes a response with status code 200, with default header values.
+/*
+RegisterUsingPUT2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +54,39 @@ type RegisterUsingPUT2OK struct {
 	Payload *models.SupervisorNamespace
 }
 
+// IsSuccess returns true when this register using p u t2 o k response has a 2xx status code
+func (o *RegisterUsingPUT2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this register using p u t2 o k response has a 3xx status code
+func (o *RegisterUsingPUT2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this register using p u t2 o k response has a 4xx status code
+func (o *RegisterUsingPUT2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this register using p u t2 o k response has a 5xx status code
+func (o *RegisterUsingPUT2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this register using p u t2 o k response a status code equal to that given
+func (o *RegisterUsingPUT2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *RegisterUsingPUT2OK) Error() string {
 	return fmt.Sprintf("[PUT /cmx/api/resources/supervisor-namespaces/{namespaceSelfLinkId}/register][%d] registerUsingPUT2OK  %+v", 200, o.Payload)
 }
+
+func (o *RegisterUsingPUT2OK) String() string {
+	return fmt.Sprintf("[PUT /cmx/api/resources/supervisor-namespaces/{namespaceSelfLinkId}/register][%d] registerUsingPUT2OK  %+v", 200, o.Payload)
+}
+
 func (o *RegisterUsingPUT2OK) GetPayload() *models.SupervisorNamespace {
 	return o.Payload
 }
@@ -62,6 +99,57 @@ func (o *RegisterUsingPUT2OK) readResponse(response runtime.ClientResponse, cons
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewRegisterUsingPUT2Forbidden creates a RegisterUsingPUT2Forbidden with default headers values
+func NewRegisterUsingPUT2Forbidden() *RegisterUsingPUT2Forbidden {
+	return &RegisterUsingPUT2Forbidden{}
+}
+
+/*
+RegisterUsingPUT2Forbidden describes a response with status code 403, with default header values.
+
+Forbidden, the user lacks permissions
+*/
+type RegisterUsingPUT2Forbidden struct {
+}
+
+// IsSuccess returns true when this register using p u t2 forbidden response has a 2xx status code
+func (o *RegisterUsingPUT2Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this register using p u t2 forbidden response has a 3xx status code
+func (o *RegisterUsingPUT2Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this register using p u t2 forbidden response has a 4xx status code
+func (o *RegisterUsingPUT2Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this register using p u t2 forbidden response has a 5xx status code
+func (o *RegisterUsingPUT2Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this register using p u t2 forbidden response a status code equal to that given
+func (o *RegisterUsingPUT2Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *RegisterUsingPUT2Forbidden) Error() string {
+	return fmt.Sprintf("[PUT /cmx/api/resources/supervisor-namespaces/{namespaceSelfLinkId}/register][%d] registerUsingPUT2Forbidden ", 403)
+}
+
+func (o *RegisterUsingPUT2Forbidden) String() string {
+	return fmt.Sprintf("[PUT /cmx/api/resources/supervisor-namespaces/{namespaceSelfLinkId}/register][%d] registerUsingPUT2Forbidden ", 403)
+}
+
+func (o *RegisterUsingPUT2Forbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

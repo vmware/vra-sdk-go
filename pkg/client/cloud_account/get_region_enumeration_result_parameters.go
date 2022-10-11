@@ -52,10 +52,12 @@ func NewGetRegionEnumerationResultParamsWithHTTPClient(client *http.Client) *Get
 	}
 }
 
-/* GetRegionEnumerationResultParams contains all the parameters to send to the API endpoint
-   for the get region enumeration result operation.
+/*
+GetRegionEnumerationResultParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get region enumeration result operation.
+
+	Typically these are written to a http.Request.
 */
 type GetRegionEnumerationResultParams struct {
 

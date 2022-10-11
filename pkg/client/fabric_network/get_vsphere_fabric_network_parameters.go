@@ -52,10 +52,12 @@ func NewGetVsphereFabricNetworkParamsWithHTTPClient(client *http.Client) *GetVsp
 	}
 }
 
-/* GetVsphereFabricNetworkParams contains all the parameters to send to the API endpoint
-   for the get vsphere fabric network operation.
+/*
+GetVsphereFabricNetworkParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get vsphere fabric network operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVsphereFabricNetworkParams struct {
 

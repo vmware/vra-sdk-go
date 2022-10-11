@@ -52,10 +52,12 @@ func NewDeleteCloudAccountNsxTParamsWithHTTPClient(client *http.Client) *DeleteC
 	}
 }
 
-/* DeleteCloudAccountNsxTParams contains all the parameters to send to the API endpoint
-   for the delete cloud account nsx t operation.
+/*
+DeleteCloudAccountNsxTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete cloud account nsx t operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteCloudAccountNsxTParams struct {
 

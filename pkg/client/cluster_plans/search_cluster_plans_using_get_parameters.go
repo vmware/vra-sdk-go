@@ -53,10 +53,12 @@ func NewSearchClusterPlansUsingGETParamsWithHTTPClient(client *http.Client) *Sea
 	}
 }
 
-/* SearchClusterPlansUsingGETParams contains all the parameters to send to the API endpoint
-   for the search cluster plans using g e t operation.
+/*
+SearchClusterPlansUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the search cluster plans using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type SearchClusterPlansUsingGETParams struct {
 

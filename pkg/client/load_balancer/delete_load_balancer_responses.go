@@ -45,7 +45,8 @@ func NewDeleteLoadBalancerAccepted() *DeleteLoadBalancerAccepted {
 	return &DeleteLoadBalancerAccepted{}
 }
 
-/* DeleteLoadBalancerAccepted describes a response with status code 202, with default header values.
+/*
+DeleteLoadBalancerAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type DeleteLoadBalancerAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this delete load balancer accepted response has a 2xx status code
+func (o *DeleteLoadBalancerAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete load balancer accepted response has a 3xx status code
+func (o *DeleteLoadBalancerAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete load balancer accepted response has a 4xx status code
+func (o *DeleteLoadBalancerAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete load balancer accepted response has a 5xx status code
+func (o *DeleteLoadBalancerAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete load balancer accepted response a status code equal to that given
+func (o *DeleteLoadBalancerAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteLoadBalancerAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/load-balancers/{id}][%d] deleteLoadBalancerAccepted  %+v", 202, o.Payload)
 }
+
+func (o *DeleteLoadBalancerAccepted) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/load-balancers/{id}][%d] deleteLoadBalancerAccepted  %+v", 202, o.Payload)
+}
+
 func (o *DeleteLoadBalancerAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewDeleteLoadBalancerForbidden() *DeleteLoadBalancerForbidden {
 	return &DeleteLoadBalancerForbidden{}
 }
 
-/* DeleteLoadBalancerForbidden describes a response with status code 403, with default header values.
+/*
+DeleteLoadBalancerForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type DeleteLoadBalancerForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this delete load balancer forbidden response has a 2xx status code
+func (o *DeleteLoadBalancerForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete load balancer forbidden response has a 3xx status code
+func (o *DeleteLoadBalancerForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete load balancer forbidden response has a 4xx status code
+func (o *DeleteLoadBalancerForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete load balancer forbidden response has a 5xx status code
+func (o *DeleteLoadBalancerForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete load balancer forbidden response a status code equal to that given
+func (o *DeleteLoadBalancerForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteLoadBalancerForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/load-balancers/{id}][%d] deleteLoadBalancerForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DeleteLoadBalancerForbidden) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/load-balancers/{id}][%d] deleteLoadBalancerForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DeleteLoadBalancerForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

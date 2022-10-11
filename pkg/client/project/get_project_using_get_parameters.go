@@ -53,10 +53,12 @@ func NewGetProjectUsingGETParamsWithHTTPClient(client *http.Client) *GetProjectU
 	}
 }
 
-/* GetProjectUsingGETParams contains all the parameters to send to the API endpoint
-   for the get project using g e t operation.
+/*
+GetProjectUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get project using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetProjectUsingGETParams struct {
 
@@ -74,7 +76,7 @@ type GetProjectUsingGETParams struct {
 
 	/* WithAnyPermission.
 
-	   Optional permissions that, if granted to the user, allow him access to the proper set of projects. If the user actually has any of those permissions, the 'excludeViewer' parameter has no effect.
+	   Optional permissions that, if granted to the users, allow them access to the proper set of projects. If the user actually has any of those permissions, the 'excludeViewer' parameter has no effect.
 	*/
 	WithAnyPermission []string
 

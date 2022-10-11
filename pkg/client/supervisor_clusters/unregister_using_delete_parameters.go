@@ -52,10 +52,12 @@ func NewUnregisterUsingDELETEParamsWithHTTPClient(client *http.Client) *Unregist
 	}
 }
 
-/* UnregisterUsingDELETEParams contains all the parameters to send to the API endpoint
-   for the unregister using d e l e t e operation.
+/*
+UnregisterUsingDELETEParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the unregister using d e l e t e operation.
+
+	Typically these are written to a http.Request.
 */
 type UnregisterUsingDELETEParams struct {
 

@@ -52,10 +52,12 @@ func NewGetVSphereStorageProfilesParamsWithHTTPClient(client *http.Client) *GetV
 	}
 }
 
-/* GetVSphereStorageProfilesParams contains all the parameters to send to the API endpoint
-   for the get v sphere storage profiles operation.
+/*
+GetVSphereStorageProfilesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v sphere storage profiles operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVSphereStorageProfilesParams struct {
 

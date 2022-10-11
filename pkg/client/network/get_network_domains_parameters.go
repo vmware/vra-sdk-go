@@ -52,10 +52,12 @@ func NewGetNetworkDomainsParamsWithHTTPClient(client *http.Client) *GetNetworkDo
 	}
 }
 
-/* GetNetworkDomainsParams contains all the parameters to send to the API endpoint
-   for the get network domains operation.
+/*
+GetNetworkDomainsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get network domains operation.
+
+	Typically these are written to a http.Request.
 */
 type GetNetworkDomainsParams struct {
 

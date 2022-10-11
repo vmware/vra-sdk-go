@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  CreatePropertyGroupUsingPOST creates a property group
+CreatePropertyGroupUsingPOST creates a property group
 */
 func (a *Client) CreatePropertyGroupUsingPOST(params *CreatePropertyGroupUsingPOSTParams, opts ...ClientOption) (*CreatePropertyGroupUsingPOSTCreated, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreatePropertyGroupUsingPOST(params *CreatePropertyGroupUsingPO
 }
 
 /*
-  DeletePropertyGroupUsingDELETE deletes a property group
+DeletePropertyGroupUsingDELETE deletes a property group
 */
 func (a *Client) DeletePropertyGroupUsingDELETE(params *DeletePropertyGroupUsingDELETEParams, opts ...ClientOption) (*DeletePropertyGroupUsingDELETENoContent, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeletePropertyGroupUsingDELETE(params *DeletePropertyGroupUsing
 }
 
 /*
-  GetPropertyGroupUsingGET returns property group details
+GetPropertyGroupUsingGET returns property group details
 */
 func (a *Client) GetPropertyGroupUsingGET(params *GetPropertyGroupUsingGETParams, opts ...ClientOption) (*GetPropertyGroupUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -158,7 +158,7 @@ func (a *Client) GetPropertyGroupUsingGET(params *GetPropertyGroupUsingGETParams
 }
 
 /*
-  ListPropertyGroupsUsingGET lists property groups
+ListPropertyGroupsUsingGET lists property groups
 */
 func (a *Client) ListPropertyGroupsUsingGET(params *ListPropertyGroupsUsingGETParams, opts ...ClientOption) (*ListPropertyGroupsUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -196,7 +196,7 @@ func (a *Client) ListPropertyGroupsUsingGET(params *ListPropertyGroupsUsingGETPa
 }
 
 /*
-  UpdatePropertyGroupUsingPUT updates a property group
+UpdatePropertyGroupUsingPUT updates a property group
 */
 func (a *Client) UpdatePropertyGroupUsingPUT(params *UpdatePropertyGroupUsingPUTParams, opts ...ClientOption) (*UpdatePropertyGroupUsingPUTOK, error) {
 	// TODO: Validate the params before sending

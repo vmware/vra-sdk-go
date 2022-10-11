@@ -54,10 +54,12 @@ func NewUpdateImageProfileParamsWithHTTPClient(client *http.Client) *UpdateImage
 	}
 }
 
-/* UpdateImageProfileParams contains all the parameters to send to the API endpoint
-   for the update image profile operation.
+/*
+UpdateImageProfileParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update image profile operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateImageProfileParams struct {
 

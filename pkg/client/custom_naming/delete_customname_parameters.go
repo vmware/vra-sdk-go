@@ -52,10 +52,12 @@ func NewDeleteCustomnameParamsWithHTTPClient(client *http.Client) *DeleteCustomn
 	}
 }
 
-/* DeleteCustomnameParams contains all the parameters to send to the API endpoint
-   for the delete customname operation.
+/*
+DeleteCustomnameParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete customname operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteCustomnameParams struct {
 

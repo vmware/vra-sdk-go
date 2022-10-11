@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
@@ -204,7 +203,7 @@ func UnmarshalWebhookEventConfigSlice(reader io.Reader, consumer runtime.Consume
 // UnmarshalWebhookEventConfig unmarshals polymorphic WebhookEventConfig
 func UnmarshalWebhookEventConfig(reader io.Reader, consumer runtime.Consumer) (WebhookEventConfig, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}

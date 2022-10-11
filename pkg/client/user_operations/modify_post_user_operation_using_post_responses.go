@@ -63,7 +63,8 @@ func NewModifyPostUserOperationUsingPOSTOK() *ModifyPostUserOperationUsingPOSTOK
 	return &ModifyPostUserOperationUsingPOSTOK{}
 }
 
-/* ModifyPostUserOperationUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+ModifyPostUserOperationUsingPOSTOK describes a response with status code 200, with default header values.
 
 'Success' with the modified User Operation
 */
@@ -71,9 +72,39 @@ type ModifyPostUserOperationUsingPOSTOK struct {
 	Payload *models.UserOpResource
 }
 
+// IsSuccess returns true when this modify post user operation using p o s t o k response has a 2xx status code
+func (o *ModifyPostUserOperationUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this modify post user operation using p o s t o k response has a 3xx status code
+func (o *ModifyPostUserOperationUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this modify post user operation using p o s t o k response has a 4xx status code
+func (o *ModifyPostUserOperationUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this modify post user operation using p o s t o k response has a 5xx status code
+func (o *ModifyPostUserOperationUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this modify post user operation using p o s t o k response a status code equal to that given
+func (o *ModifyPostUserOperationUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ModifyPostUserOperationUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/user-operations/{id}][%d] modifyPostUserOperationUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *ModifyPostUserOperationUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /codestream/api/user-operations/{id}][%d] modifyPostUserOperationUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *ModifyPostUserOperationUsingPOSTOK) GetPayload() *models.UserOpResource {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewModifyPostUserOperationUsingPOSTUnauthorized() *ModifyPostUserOperationU
 	return &ModifyPostUserOperationUsingPOSTUnauthorized{}
 }
 
-/* ModifyPostUserOperationUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+ModifyPostUserOperationUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type ModifyPostUserOperationUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this modify post user operation using p o s t unauthorized response has a 2xx status code
+func (o *ModifyPostUserOperationUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this modify post user operation using p o s t unauthorized response has a 3xx status code
+func (o *ModifyPostUserOperationUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this modify post user operation using p o s t unauthorized response has a 4xx status code
+func (o *ModifyPostUserOperationUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this modify post user operation using p o s t unauthorized response has a 5xx status code
+func (o *ModifyPostUserOperationUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this modify post user operation using p o s t unauthorized response a status code equal to that given
+func (o *ModifyPostUserOperationUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ModifyPostUserOperationUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/user-operations/{id}][%d] modifyPostUserOperationUsingPOSTUnauthorized ", 401)
+}
+
+func (o *ModifyPostUserOperationUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /codestream/api/user-operations/{id}][%d] modifyPostUserOperationUsingPOSTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewModifyPostUserOperationUsingPOSTForbidden() *ModifyPostUserOperationUsin
 	return &ModifyPostUserOperationUsingPOSTForbidden{}
 }
 
-/* ModifyPostUserOperationUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+ModifyPostUserOperationUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type ModifyPostUserOperationUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this modify post user operation using p o s t forbidden response has a 2xx status code
+func (o *ModifyPostUserOperationUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this modify post user operation using p o s t forbidden response has a 3xx status code
+func (o *ModifyPostUserOperationUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this modify post user operation using p o s t forbidden response has a 4xx status code
+func (o *ModifyPostUserOperationUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this modify post user operation using p o s t forbidden response has a 5xx status code
+func (o *ModifyPostUserOperationUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this modify post user operation using p o s t forbidden response a status code equal to that given
+func (o *ModifyPostUserOperationUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ModifyPostUserOperationUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/user-operations/{id}][%d] modifyPostUserOperationUsingPOSTForbidden ", 403)
+}
+
+func (o *ModifyPostUserOperationUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /codestream/api/user-operations/{id}][%d] modifyPostUserOperationUsingPOSTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewModifyPostUserOperationUsingPOSTNotFound() *ModifyPostUserOperationUsing
 	return &ModifyPostUserOperationUsingPOSTNotFound{}
 }
 
-/* ModifyPostUserOperationUsingPOSTNotFound describes a response with status code 404, with default header values.
+/*
+ModifyPostUserOperationUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type ModifyPostUserOperationUsingPOSTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this modify post user operation using p o s t not found response has a 2xx status code
+func (o *ModifyPostUserOperationUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this modify post user operation using p o s t not found response has a 3xx status code
+func (o *ModifyPostUserOperationUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this modify post user operation using p o s t not found response has a 4xx status code
+func (o *ModifyPostUserOperationUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this modify post user operation using p o s t not found response has a 5xx status code
+func (o *ModifyPostUserOperationUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this modify post user operation using p o s t not found response a status code equal to that given
+func (o *ModifyPostUserOperationUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ModifyPostUserOperationUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/user-operations/{id}][%d] modifyPostUserOperationUsingPOSTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ModifyPostUserOperationUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /codestream/api/user-operations/{id}][%d] modifyPostUserOperationUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ModifyPostUserOperationUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewModifyPostUserOperationUsingPOSTInternalServerError() *ModifyPostUserOpe
 	return &ModifyPostUserOperationUsingPOSTInternalServerError{}
 }
 
-/* ModifyPostUserOperationUsingPOSTInternalServerError describes a response with status code 500, with default header values.
+/*
+ModifyPostUserOperationUsingPOSTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ModifyPostUserOperationUsingPOSTInternalServerError struct {
 }
 
+// IsSuccess returns true when this modify post user operation using p o s t internal server error response has a 2xx status code
+func (o *ModifyPostUserOperationUsingPOSTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this modify post user operation using p o s t internal server error response has a 3xx status code
+func (o *ModifyPostUserOperationUsingPOSTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this modify post user operation using p o s t internal server error response has a 4xx status code
+func (o *ModifyPostUserOperationUsingPOSTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this modify post user operation using p o s t internal server error response has a 5xx status code
+func (o *ModifyPostUserOperationUsingPOSTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this modify post user operation using p o s t internal server error response a status code equal to that given
+func (o *ModifyPostUserOperationUsingPOSTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ModifyPostUserOperationUsingPOSTInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/user-operations/{id}][%d] modifyPostUserOperationUsingPOSTInternalServerError ", 500)
+}
+
+func (o *ModifyPostUserOperationUsingPOSTInternalServerError) String() string {
 	return fmt.Sprintf("[POST /codestream/api/user-operations/{id}][%d] modifyPostUserOperationUsingPOSTInternalServerError ", 500)
 }
 

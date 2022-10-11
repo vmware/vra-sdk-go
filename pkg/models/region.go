@@ -23,7 +23,7 @@ type Region struct {
 	// Required: true
 	Links map[string]Href `json:"_links"`
 
-	// The id of the cloud account this region belongs to.
+	// The id of the cloud account this region belongs to. For some cloud accounts this field will be populated with the associated cloud account id
 	// Example: 9e49
 	CloudAccountID string `json:"cloudAccountId,omitempty"`
 

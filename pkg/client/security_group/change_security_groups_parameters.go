@@ -54,10 +54,12 @@ func NewChangeSecurityGroupsParamsWithHTTPClient(client *http.Client) *ChangeSec
 	}
 }
 
-/* ChangeSecurityGroupsParams contains all the parameters to send to the API endpoint
-   for the change security groups operation.
+/*
+ChangeSecurityGroupsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the change security groups operation.
+
+	Typically these are written to a http.Request.
 */
 type ChangeSecurityGroupsParams struct {
 

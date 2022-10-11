@@ -52,10 +52,12 @@ func NewGetConfigurationPropertiesParamsWithHTTPClient(client *http.Client) *Get
 	}
 }
 
-/* GetConfigurationPropertiesParams contains all the parameters to send to the API endpoint
-   for the get configuration properties operation.
+/*
+GetConfigurationPropertiesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get configuration properties operation.
+
+	Typically these are written to a http.Request.
 */
 type GetConfigurationPropertiesParams struct {
 

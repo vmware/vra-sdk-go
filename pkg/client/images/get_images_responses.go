@@ -45,7 +45,8 @@ func NewGetImagesOK() *GetImagesOK {
 	return &GetImagesOK{}
 }
 
-/* GetImagesOK describes a response with status code 200, with default header values.
+/*
+GetImagesOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type GetImagesOK struct {
 	Payload *models.ImageResult
 }
 
+// IsSuccess returns true when this get images o k response has a 2xx status code
+func (o *GetImagesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get images o k response has a 3xx status code
+func (o *GetImagesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get images o k response has a 4xx status code
+func (o *GetImagesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get images o k response has a 5xx status code
+func (o *GetImagesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get images o k response a status code equal to that given
+func (o *GetImagesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetImagesOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/images][%d] getImagesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetImagesOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/images][%d] getImagesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetImagesOK) GetPayload() *models.ImageResult {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewGetImagesForbidden() *GetImagesForbidden {
 	return &GetImagesForbidden{}
 }
 
-/* GetImagesForbidden describes a response with status code 403, with default header values.
+/*
+GetImagesForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type GetImagesForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get images forbidden response has a 2xx status code
+func (o *GetImagesForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get images forbidden response has a 3xx status code
+func (o *GetImagesForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get images forbidden response has a 4xx status code
+func (o *GetImagesForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get images forbidden response has a 5xx status code
+func (o *GetImagesForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get images forbidden response a status code equal to that given
+func (o *GetImagesForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetImagesForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/images][%d] getImagesForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetImagesForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/images][%d] getImagesForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetImagesForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

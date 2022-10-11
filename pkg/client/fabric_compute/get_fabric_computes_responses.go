@@ -45,7 +45,8 @@ func NewGetFabricComputesOK() *GetFabricComputesOK {
 	return &GetFabricComputesOK{}
 }
 
-/* GetFabricComputesOK describes a response with status code 200, with default header values.
+/*
+GetFabricComputesOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type GetFabricComputesOK struct {
 	Payload *models.FabricComputeResult
 }
 
+// IsSuccess returns true when this get fabric computes o k response has a 2xx status code
+func (o *GetFabricComputesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get fabric computes o k response has a 3xx status code
+func (o *GetFabricComputesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get fabric computes o k response has a 4xx status code
+func (o *GetFabricComputesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get fabric computes o k response has a 5xx status code
+func (o *GetFabricComputesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get fabric computes o k response a status code equal to that given
+func (o *GetFabricComputesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetFabricComputesOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-computes][%d] getFabricComputesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetFabricComputesOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/fabric-computes][%d] getFabricComputesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetFabricComputesOK) GetPayload() *models.FabricComputeResult {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewGetFabricComputesForbidden() *GetFabricComputesForbidden {
 	return &GetFabricComputesForbidden{}
 }
 
-/* GetFabricComputesForbidden describes a response with status code 403, with default header values.
+/*
+GetFabricComputesForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type GetFabricComputesForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get fabric computes forbidden response has a 2xx status code
+func (o *GetFabricComputesForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get fabric computes forbidden response has a 3xx status code
+func (o *GetFabricComputesForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get fabric computes forbidden response has a 4xx status code
+func (o *GetFabricComputesForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get fabric computes forbidden response has a 5xx status code
+func (o *GetFabricComputesForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get fabric computes forbidden response a status code equal to that given
+func (o *GetFabricComputesForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetFabricComputesForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-computes][%d] getFabricComputesForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetFabricComputesForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/fabric-computes][%d] getFabricComputesForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetFabricComputesForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

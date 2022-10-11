@@ -54,10 +54,12 @@ func NewCreateGerritTriggerUsingPOSTParamsWithHTTPClient(client *http.Client) *C
 	}
 }
 
-/* CreateGerritTriggerUsingPOSTParams contains all the parameters to send to the API endpoint
-   for the create gerrit trigger using p o s t operation.
+/*
+CreateGerritTriggerUsingPOSTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create gerrit trigger using p o s t operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateGerritTriggerUsingPOSTParams struct {
 

@@ -54,10 +54,12 @@ func NewModifyPostUserOperationUsingPOSTParamsWithHTTPClient(client *http.Client
 	}
 }
 
-/* ModifyPostUserOperationUsingPOSTParams contains all the parameters to send to the API endpoint
-   for the modify post user operation using p o s t operation.
+/*
+ModifyPostUserOperationUsingPOSTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the modify post user operation using p o s t operation.
+
+	Typically these are written to a http.Request.
 */
 type ModifyPostUserOperationUsingPOSTParams struct {
 

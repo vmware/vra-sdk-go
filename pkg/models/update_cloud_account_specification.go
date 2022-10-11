@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -24,6 +25,10 @@ type UpdateCloudAccountSpecification struct {
 	// Example: [ \"42f3e0d199d134755684cd935435a\" ]
 	AssociatedCloudAccountIds []string `json:"associatedCloudAccountIds"`
 
+	// Cloud Account IDs and directionalities create associations to other vSphere cloud accounts that can be used for workload mobility. ID refers to an associated cloud account, and directionality can be unidirectional or bidirectional. Only supported on vSphere cloud accounts.
+	// Example: { \"42f3e0d199d134755684cd935435a\": \"BIDIRECTIONAL\" }
+	AssociatedMobilityCloudAccountIds map[string]string `json:"associatedMobilityCloudAccountIds,omitempty"`
+
 	// Certificate for a cloud account.
 	// Example: {\"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDHjCCAoegAwIBAgIBATANBgkqhkiG9w0BAQsFADCBpjEUMBIGA1UEChMLVk13\\nYXJlIEluYAAc1pw18GT3iAqQRPx0PrjzJhgjIJMla\\n/1Kg4byY4FPSacNiRgY/FG2bPCqZk1yRfzmkFYCW/vU+Dg==\\n-----END CERTIFICATE-----\\n-\"}
 	CertificateInfo *CertificateInfoSpecification `json:"certificateInfo,omitempty"`
@@ -36,7 +41,9 @@ type UpdateCloudAccountSpecification struct {
 	// Example: true
 	CreateDefaultZones bool `json:"createDefaultZones,omitempty"`
 
-	// Additional custom properties that may be used to extend the Cloud Account.
+	// Additional custom properties that may be used to extend the Cloud Account. In case of AAP, provide environment property here.Example: "customProperties": {
+	//         "environment": "aap"
+	//     }
 	// Example: { \"sampleadapterProjectId\" : \"projectId\" }
 	CustomProperties map[string]string `json:"customProperties,omitempty"`
 
@@ -46,7 +53,7 @@ type UpdateCloudAccountSpecification struct {
 	// A human-friendly name used as an identifier in APIs that support this option.
 	Name string `json:"name,omitempty"`
 
-	// Secret access key or password to be used to authenticate with the cloud account
+	// Secret access key or password to be used to authenticate with the cloud account. In case of AAP pass a dummy value.
 	// Example: gfsScK345sGGaVdds222dasdfDDSSasdfdsa34fS
 	// Required: true
 	PrivateKey *string `json:"privateKey"`
@@ -69,6 +76,10 @@ type UpdateCloudAccountSpecification struct {
 // Validate validates this update cloud account specification
 func (m *UpdateCloudAccountSpecification) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateAssociatedMobilityCloudAccountIds(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateCertificateInfo(formats); err != nil {
 		res = append(res, err)
@@ -93,6 +104,43 @@ func (m *UpdateCloudAccountSpecification) Validate(formats strfmt.Registry) erro
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// additional properties value enum
+var updateCloudAccountSpecificationAssociatedMobilityCloudAccountIdsValueEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["UNIDIRECTIONAL","BIDIRECTIONAL"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		updateCloudAccountSpecificationAssociatedMobilityCloudAccountIdsValueEnum = append(updateCloudAccountSpecificationAssociatedMobilityCloudAccountIdsValueEnum, v)
+	}
+}
+
+func (m *UpdateCloudAccountSpecification) validateAssociatedMobilityCloudAccountIdsValueEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, updateCloudAccountSpecificationAssociatedMobilityCloudAccountIdsValueEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *UpdateCloudAccountSpecification) validateAssociatedMobilityCloudAccountIds(formats strfmt.Registry) error {
+	if swag.IsZero(m.AssociatedMobilityCloudAccountIds) { // not required
+		return nil
+	}
+
+	for k := range m.AssociatedMobilityCloudAccountIds {
+
+		// value enum
+		if err := m.validateAssociatedMobilityCloudAccountIdsValueEnum("associatedMobilityCloudAccountIds"+"."+k, "body", m.AssociatedMobilityCloudAccountIds[k]); err != nil {
+			return err
+		}
+
+	}
+
 	return nil
 }
 

@@ -30,6 +30,9 @@ type SupervisorNamespace struct {
 	// cpu used
 	CPUUsed int64 `json:"cpuUsed,omitempty"`
 
+	// created millis
+	CreatedMillis int64 `json:"createdMillis,omitempty"`
+
 	// custom properties
 	CustomProperties map[string]string `json:"customProperties,omitempty"`
 
@@ -54,6 +57,10 @@ type SupervisorNamespace struct {
 	// id
 	ID string `json:"id,omitempty"`
 
+	// installer Id
+	// Format: uuid
+	InstallerID strfmt.UUID `json:"installerId,omitempty"`
+
 	// memory used
 	MemoryUsed int64 `json:"memoryUsed,omitempty"`
 
@@ -63,11 +70,20 @@ type SupervisorNamespace struct {
 	// owner
 	Owner string `json:"owner,omitempty"`
 
+	// owner groups
+	OwnerGroups string `json:"ownerGroups,omitempty"`
+
+	// owner users
+	OwnerUsers string `json:"ownerUsers,omitempty"`
+
 	// project Id
 	ProjectID string `json:"projectId,omitempty"`
 
 	// registered
 	Registered bool `json:"registered,omitempty"`
+
+	// resource quotas
+	ResourceQuotas []*SupervisorNamespaceQuota `json:"resourceQuotas"`
 
 	// self link Id
 	SelfLinkID string `json:"selfLinkId,omitempty"`
@@ -102,6 +118,14 @@ type SupervisorNamespace struct {
 func (m *SupervisorNamespace) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateInstallerID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateResourceQuotas(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateStatus(formats); err != nil {
 		res = append(res, err)
 	}
@@ -113,6 +137,44 @@ func (m *SupervisorNamespace) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *SupervisorNamespace) validateInstallerID(formats strfmt.Registry) error {
+	if swag.IsZero(m.InstallerID) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("installerId", "body", "uuid", m.InstallerID.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SupervisorNamespace) validateResourceQuotas(formats strfmt.Registry) error {
+	if swag.IsZero(m.ResourceQuotas) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ResourceQuotas); i++ {
+		if swag.IsZero(m.ResourceQuotas[i]) { // not required
+			continue
+		}
+
+		if m.ResourceQuotas[i] != nil {
+			if err := m.ResourceQuotas[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("resourceQuotas" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("resourceQuotas" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -194,6 +256,10 @@ func (m *SupervisorNamespace) validateStoragePolicies(formats strfmt.Registry) e
 func (m *SupervisorNamespace) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateResourceQuotas(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateStoragePolicies(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -201,6 +267,26 @@ func (m *SupervisorNamespace) ContextValidate(ctx context.Context, formats strfm
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *SupervisorNamespace) contextValidateResourceQuotas(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ResourceQuotas); i++ {
+
+		if m.ResourceQuotas[i] != nil {
+			if err := m.ResourceQuotas[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("resourceQuotas" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("resourceQuotas" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

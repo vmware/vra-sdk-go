@@ -45,7 +45,8 @@ func NewGetDeploymentsV3UsingGETOK() *GetDeploymentsV3UsingGETOK {
 	return &GetDeploymentsV3UsingGETOK{}
 }
 
-/* GetDeploymentsV3UsingGETOK describes a response with status code 200, with default header values.
+/*
+GetDeploymentsV3UsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -53,9 +54,39 @@ type GetDeploymentsV3UsingGETOK struct {
 	Payload *models.PageOfDeployment
 }
 
+// IsSuccess returns true when this get deployments v3 using g e t o k response has a 2xx status code
+func (o *GetDeploymentsV3UsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get deployments v3 using g e t o k response has a 3xx status code
+func (o *GetDeploymentsV3UsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get deployments v3 using g e t o k response has a 4xx status code
+func (o *GetDeploymentsV3UsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get deployments v3 using g e t o k response has a 5xx status code
+func (o *GetDeploymentsV3UsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get deployments v3 using g e t o k response a status code equal to that given
+func (o *GetDeploymentsV3UsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetDeploymentsV3UsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments][%d] getDeploymentsV3UsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetDeploymentsV3UsingGETOK) String() string {
+	return fmt.Sprintf("[GET /deployment/api/deployments][%d] getDeploymentsV3UsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetDeploymentsV3UsingGETOK) GetPayload() *models.PageOfDeployment {
 	return o.Payload
 }
@@ -77,14 +108,44 @@ func NewGetDeploymentsV3UsingGETUnauthorized() *GetDeploymentsV3UsingGETUnauthor
 	return &GetDeploymentsV3UsingGETUnauthorized{}
 }
 
-/* GetDeploymentsV3UsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+GetDeploymentsV3UsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type GetDeploymentsV3UsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this get deployments v3 using g e t unauthorized response has a 2xx status code
+func (o *GetDeploymentsV3UsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get deployments v3 using g e t unauthorized response has a 3xx status code
+func (o *GetDeploymentsV3UsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get deployments v3 using g e t unauthorized response has a 4xx status code
+func (o *GetDeploymentsV3UsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get deployments v3 using g e t unauthorized response has a 5xx status code
+func (o *GetDeploymentsV3UsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get deployments v3 using g e t unauthorized response a status code equal to that given
+func (o *GetDeploymentsV3UsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetDeploymentsV3UsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /deployment/api/deployments][%d] getDeploymentsV3UsingGETUnauthorized ", 401)
+}
+
+func (o *GetDeploymentsV3UsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments][%d] getDeploymentsV3UsingGETUnauthorized ", 401)
 }
 

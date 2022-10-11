@@ -51,7 +51,8 @@ func NewUpdateFabricNetworkOK() *UpdateFabricNetworkOK {
 	return &UpdateFabricNetworkOK{}
 }
 
-/* UpdateFabricNetworkOK describes a response with status code 200, with default header values.
+/*
+UpdateFabricNetworkOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type UpdateFabricNetworkOK struct {
 	Payload *models.FabricNetwork
 }
 
+// IsSuccess returns true when this update fabric network o k response has a 2xx status code
+func (o *UpdateFabricNetworkOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update fabric network o k response has a 3xx status code
+func (o *UpdateFabricNetworkOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update fabric network o k response has a 4xx status code
+func (o *UpdateFabricNetworkOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update fabric network o k response has a 5xx status code
+func (o *UpdateFabricNetworkOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update fabric network o k response a status code equal to that given
+func (o *UpdateFabricNetworkOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateFabricNetworkOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/fabric-networks/{id}][%d] updateFabricNetworkOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateFabricNetworkOK) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/fabric-networks/{id}][%d] updateFabricNetworkOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateFabricNetworkOK) GetPayload() *models.FabricNetwork {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewUpdateFabricNetworkForbidden() *UpdateFabricNetworkForbidden {
 	return &UpdateFabricNetworkForbidden{}
 }
 
-/* UpdateFabricNetworkForbidden describes a response with status code 403, with default header values.
+/*
+UpdateFabricNetworkForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type UpdateFabricNetworkForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this update fabric network forbidden response has a 2xx status code
+func (o *UpdateFabricNetworkForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update fabric network forbidden response has a 3xx status code
+func (o *UpdateFabricNetworkForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update fabric network forbidden response has a 4xx status code
+func (o *UpdateFabricNetworkForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update fabric network forbidden response has a 5xx status code
+func (o *UpdateFabricNetworkForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update fabric network forbidden response a status code equal to that given
+func (o *UpdateFabricNetworkForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateFabricNetworkForbidden) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/fabric-networks/{id}][%d] updateFabricNetworkForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UpdateFabricNetworkForbidden) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/fabric-networks/{id}][%d] updateFabricNetworkForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UpdateFabricNetworkForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewUpdateFabricNetworkNotFound() *UpdateFabricNetworkNotFound {
 	return &UpdateFabricNetworkNotFound{}
 }
 
-/* UpdateFabricNetworkNotFound describes a response with status code 404, with default header values.
+/*
+UpdateFabricNetworkNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type UpdateFabricNetworkNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update fabric network not found response has a 2xx status code
+func (o *UpdateFabricNetworkNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update fabric network not found response has a 3xx status code
+func (o *UpdateFabricNetworkNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update fabric network not found response has a 4xx status code
+func (o *UpdateFabricNetworkNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update fabric network not found response has a 5xx status code
+func (o *UpdateFabricNetworkNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update fabric network not found response a status code equal to that given
+func (o *UpdateFabricNetworkNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateFabricNetworkNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/fabric-networks/{id}][%d] updateFabricNetworkNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UpdateFabricNetworkNotFound) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/fabric-networks/{id}][%d] updateFabricNetworkNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UpdateFabricNetworkNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

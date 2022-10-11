@@ -52,10 +52,12 @@ func NewGetInternalNetworkIPRangeParamsWithHTTPClient(client *http.Client) *GetI
 	}
 }
 
-/* GetInternalNetworkIPRangeParams contains all the parameters to send to the API endpoint
-   for the get internal network IP range operation.
+/*
+GetInternalNetworkIPRangeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get internal network IP range operation.
+
+	Typically these are written to a http.Request.
 */
 type GetInternalNetworkIPRangeParams struct {
 

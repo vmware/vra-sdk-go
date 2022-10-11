@@ -45,7 +45,8 @@ func NewChangeMeteringAssignmentStrategyUsingPATCH2OK() *ChangeMeteringAssignmen
 	return &ChangeMeteringAssignmentStrategyUsingPATCH2OK{}
 }
 
-/* ChangeMeteringAssignmentStrategyUsingPATCH2OK describes a response with status code 200, with default header values.
+/*
+ChangeMeteringAssignmentStrategyUsingPATCH2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -53,9 +54,39 @@ type ChangeMeteringAssignmentStrategyUsingPATCH2OK struct {
 	Payload *models.MeteringAssignmentStrategy
 }
 
+// IsSuccess returns true when this change metering assignment strategy using p a t c h2 o k response has a 2xx status code
+func (o *ChangeMeteringAssignmentStrategyUsingPATCH2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this change metering assignment strategy using p a t c h2 o k response has a 3xx status code
+func (o *ChangeMeteringAssignmentStrategyUsingPATCH2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this change metering assignment strategy using p a t c h2 o k response has a 4xx status code
+func (o *ChangeMeteringAssignmentStrategyUsingPATCH2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this change metering assignment strategy using p a t c h2 o k response has a 5xx status code
+func (o *ChangeMeteringAssignmentStrategyUsingPATCH2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this change metering assignment strategy using p a t c h2 o k response a status code equal to that given
+func (o *ChangeMeteringAssignmentStrategyUsingPATCH2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ChangeMeteringAssignmentStrategyUsingPATCH2OK) Error() string {
 	return fmt.Sprintf("[PATCH /price/api/private/pricing-card-assignments/strategy][%d] changeMeteringAssignmentStrategyUsingPATCH2OK  %+v", 200, o.Payload)
 }
+
+func (o *ChangeMeteringAssignmentStrategyUsingPATCH2OK) String() string {
+	return fmt.Sprintf("[PATCH /price/api/private/pricing-card-assignments/strategy][%d] changeMeteringAssignmentStrategyUsingPATCH2OK  %+v", 200, o.Payload)
+}
+
 func (o *ChangeMeteringAssignmentStrategyUsingPATCH2OK) GetPayload() *models.MeteringAssignmentStrategy {
 	return o.Payload
 }
@@ -77,14 +108,44 @@ func NewChangeMeteringAssignmentStrategyUsingPATCH2Unauthorized() *ChangeMeterin
 	return &ChangeMeteringAssignmentStrategyUsingPATCH2Unauthorized{}
 }
 
-/* ChangeMeteringAssignmentStrategyUsingPATCH2Unauthorized describes a response with status code 401, with default header values.
+/*
+ChangeMeteringAssignmentStrategyUsingPATCH2Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type ChangeMeteringAssignmentStrategyUsingPATCH2Unauthorized struct {
 }
 
+// IsSuccess returns true when this change metering assignment strategy using p a t c h2 unauthorized response has a 2xx status code
+func (o *ChangeMeteringAssignmentStrategyUsingPATCH2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this change metering assignment strategy using p a t c h2 unauthorized response has a 3xx status code
+func (o *ChangeMeteringAssignmentStrategyUsingPATCH2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this change metering assignment strategy using p a t c h2 unauthorized response has a 4xx status code
+func (o *ChangeMeteringAssignmentStrategyUsingPATCH2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this change metering assignment strategy using p a t c h2 unauthorized response has a 5xx status code
+func (o *ChangeMeteringAssignmentStrategyUsingPATCH2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this change metering assignment strategy using p a t c h2 unauthorized response a status code equal to that given
+func (o *ChangeMeteringAssignmentStrategyUsingPATCH2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ChangeMeteringAssignmentStrategyUsingPATCH2Unauthorized) Error() string {
+	return fmt.Sprintf("[PATCH /price/api/private/pricing-card-assignments/strategy][%d] changeMeteringAssignmentStrategyUsingPATCH2Unauthorized ", 401)
+}
+
+func (o *ChangeMeteringAssignmentStrategyUsingPATCH2Unauthorized) String() string {
 	return fmt.Sprintf("[PATCH /price/api/private/pricing-card-assignments/strategy][%d] changeMeteringAssignmentStrategyUsingPATCH2Unauthorized ", 401)
 }
 

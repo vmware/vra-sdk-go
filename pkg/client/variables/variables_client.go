@@ -50,9 +50,9 @@ type ClientService interface {
 }
 
 /*
-  CreateVariableUsingPOST creates a variable
+CreateVariableUsingPOST creates a variable
 
-  Creates a Variable based on project name
+Creates a Variable based on project name
 */
 func (a *Client) CreateVariableUsingPOST(params *CreateVariableUsingPOSTParams, opts ...ClientOption) (*CreateVariableUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -90,9 +90,9 @@ func (a *Client) CreateVariableUsingPOST(params *CreateVariableUsingPOSTParams, 
 }
 
 /*
-  DeleteVariableByIDUsingDELETE deletes a variable by Id
+DeleteVariableByIDUsingDELETE deletes a variable by Id
 
-  Deletes a Variable with the given Id
+Deletes a Variable with the given Id
 */
 func (a *Client) DeleteVariableByIDUsingDELETE(params *DeleteVariableByIDUsingDELETEParams, opts ...ClientOption) (*DeleteVariableByIDUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
@@ -130,9 +130,9 @@ func (a *Client) DeleteVariableByIDUsingDELETE(params *DeleteVariableByIDUsingDE
 }
 
 /*
-  DeleteVariableByNameUsingDELETE deletes a variable by project and name
+DeleteVariableByNameUsingDELETE deletes a variable by project and name
 
-  Deletes a Variable with the given name
+Deletes a Variable with the given name
 */
 func (a *Client) DeleteVariableByNameUsingDELETE(params *DeleteVariableByNameUsingDELETEParams, opts ...ClientOption) (*DeleteVariableByNameUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
@@ -170,9 +170,9 @@ func (a *Client) DeleteVariableByNameUsingDELETE(params *DeleteVariableByNameUsi
 }
 
 /*
-  GetAllVariablesUsingGET gets all variables
+GetAllVariablesUsingGET gets all variables
 
-  Get all Variables with specified paging and filter parameters.
+Get all Variables with specified paging and filter parameters.
 */
 func (a *Client) GetAllVariablesUsingGET(params *GetAllVariablesUsingGETParams, opts ...ClientOption) (*GetAllVariablesUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -210,9 +210,9 @@ func (a *Client) GetAllVariablesUsingGET(params *GetAllVariablesUsingGETParams, 
 }
 
 /*
-  GetVariableByIDUsingGET gets a variable
+GetVariableByIDUsingGET gets a variable
 
-  Gets a Variable with the given id
+Gets a Variable with the given id
 */
 func (a *Client) GetVariableByIDUsingGET(params *GetVariableByIDUsingGETParams, opts ...ClientOption) (*GetVariableByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -250,9 +250,9 @@ func (a *Client) GetVariableByIDUsingGET(params *GetVariableByIDUsingGETParams, 
 }
 
 /*
-  GetVariableByNameUsingGET gets a variable by project and name
+GetVariableByNameUsingGET gets a variable by project and name
 
-  Get an Variable with the given project and name
+Get an Variable with the given project and name
 */
 func (a *Client) GetVariableByNameUsingGET(params *GetVariableByNameUsingGETParams, opts ...ClientOption) (*GetVariableByNameUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -290,9 +290,9 @@ func (a *Client) GetVariableByNameUsingGET(params *GetVariableByNameUsingGETPara
 }
 
 /*
-  UpdateVariableByIDUsingPUT updates a variable by id
+UpdateVariableByIDUsingPUT updates a variable by id
 
-  Updates a Variable with the given id
+Updates a Variable with the given id
 */
 func (a *Client) UpdateVariableByIDUsingPUT(params *UpdateVariableByIDUsingPUTParams, opts ...ClientOption) (*UpdateVariableByIDUsingPUTOK, error) {
 	// TODO: Validate the params before sending
@@ -330,9 +330,9 @@ func (a *Client) UpdateVariableByIDUsingPUT(params *UpdateVariableByIDUsingPUTPa
 }
 
 /*
-  UpdateVariableByNameUsingPUT updates a variable by project and name
+UpdateVariableByNameUsingPUT updates a variable by project and name
 
-  Update an Variable with the given project and name
+Update an Variable with the given project and name
 */
 func (a *Client) UpdateVariableByNameUsingPUT(params *UpdateVariableByNameUsingPUTParams, opts ...ClientOption) (*UpdateVariableByNameUsingPUTOK, error) {
 	// TODO: Validate the params before sending

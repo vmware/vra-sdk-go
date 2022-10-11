@@ -54,10 +54,12 @@ func NewUpdateVcfCloudAccountAsyncParamsWithHTTPClient(client *http.Client) *Upd
 	}
 }
 
-/* UpdateVcfCloudAccountAsyncParams contains all the parameters to send to the API endpoint
-   for the update vcf cloud account async operation.
+/*
+UpdateVcfCloudAccountAsyncParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update vcf cloud account async operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateVcfCloudAccountAsyncParams struct {
 

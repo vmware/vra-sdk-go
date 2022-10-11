@@ -51,7 +51,8 @@ func NewSubmitUpfrontPriceRequestForCatalogItemUsingPOST2OK() *SubmitUpfrontPric
 	return &SubmitUpfrontPriceRequestForCatalogItemUsingPOST2OK{}
 }
 
-/* SubmitUpfrontPriceRequestForCatalogItemUsingPOST2OK describes a response with status code 200, with default header values.
+/*
+SubmitUpfrontPriceRequestForCatalogItemUsingPOST2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -59,9 +60,39 @@ type SubmitUpfrontPriceRequestForCatalogItemUsingPOST2OK struct {
 	Payload *models.CatalogItemUpfrontPriceResponse
 }
 
+// IsSuccess returns true when this submit upfront price request for catalog item using p o s t2 o k response has a 2xx status code
+func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOST2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this submit upfront price request for catalog item using p o s t2 o k response has a 3xx status code
+func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOST2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit upfront price request for catalog item using p o s t2 o k response has a 4xx status code
+func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOST2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this submit upfront price request for catalog item using p o s t2 o k response has a 5xx status code
+func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOST2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit upfront price request for catalog item using p o s t2 o k response a status code equal to that given
+func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOST2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOST2OK) Error() string {
 	return fmt.Sprintf("[POST /catalog/api/items/{id}/upfront-prices][%d] submitUpfrontPriceRequestForCatalogItemUsingPOST2OK  %+v", 200, o.Payload)
 }
+
+func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOST2OK) String() string {
+	return fmt.Sprintf("[POST /catalog/api/items/{id}/upfront-prices][%d] submitUpfrontPriceRequestForCatalogItemUsingPOST2OK  %+v", 200, o.Payload)
+}
+
 func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOST2OK) GetPayload() *models.CatalogItemUpfrontPriceResponse {
 	return o.Payload
 }
@@ -83,14 +114,44 @@ func NewSubmitUpfrontPriceRequestForCatalogItemUsingPOST2Unauthorized() *SubmitU
 	return &SubmitUpfrontPriceRequestForCatalogItemUsingPOST2Unauthorized{}
 }
 
-/* SubmitUpfrontPriceRequestForCatalogItemUsingPOST2Unauthorized describes a response with status code 401, with default header values.
+/*
+SubmitUpfrontPriceRequestForCatalogItemUsingPOST2Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type SubmitUpfrontPriceRequestForCatalogItemUsingPOST2Unauthorized struct {
 }
 
+// IsSuccess returns true when this submit upfront price request for catalog item using p o s t2 unauthorized response has a 2xx status code
+func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOST2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit upfront price request for catalog item using p o s t2 unauthorized response has a 3xx status code
+func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOST2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit upfront price request for catalog item using p o s t2 unauthorized response has a 4xx status code
+func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOST2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit upfront price request for catalog item using p o s t2 unauthorized response has a 5xx status code
+func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOST2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit upfront price request for catalog item using p o s t2 unauthorized response a status code equal to that given
+func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOST2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOST2Unauthorized) Error() string {
+	return fmt.Sprintf("[POST /catalog/api/items/{id}/upfront-prices][%d] submitUpfrontPriceRequestForCatalogItemUsingPOST2Unauthorized ", 401)
+}
+
+func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOST2Unauthorized) String() string {
 	return fmt.Sprintf("[POST /catalog/api/items/{id}/upfront-prices][%d] submitUpfrontPriceRequestForCatalogItemUsingPOST2Unauthorized ", 401)
 }
 
@@ -104,7 +165,8 @@ func NewSubmitUpfrontPriceRequestForCatalogItemUsingPOST2NotFound() *SubmitUpfro
 	return &SubmitUpfrontPriceRequestForCatalogItemUsingPOST2NotFound{}
 }
 
-/* SubmitUpfrontPriceRequestForCatalogItemUsingPOST2NotFound describes a response with status code 404, with default header values.
+/*
+SubmitUpfrontPriceRequestForCatalogItemUsingPOST2NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -112,9 +174,39 @@ type SubmitUpfrontPriceRequestForCatalogItemUsingPOST2NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this submit upfront price request for catalog item using p o s t2 not found response has a 2xx status code
+func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOST2NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit upfront price request for catalog item using p o s t2 not found response has a 3xx status code
+func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOST2NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit upfront price request for catalog item using p o s t2 not found response has a 4xx status code
+func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOST2NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit upfront price request for catalog item using p o s t2 not found response has a 5xx status code
+func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOST2NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit upfront price request for catalog item using p o s t2 not found response a status code equal to that given
+func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOST2NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOST2NotFound) Error() string {
 	return fmt.Sprintf("[POST /catalog/api/items/{id}/upfront-prices][%d] submitUpfrontPriceRequestForCatalogItemUsingPOST2NotFound  %+v", 404, o.Payload)
 }
+
+func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOST2NotFound) String() string {
+	return fmt.Sprintf("[POST /catalog/api/items/{id}/upfront-prices][%d] submitUpfrontPriceRequestForCatalogItemUsingPOST2NotFound  %+v", 404, o.Payload)
+}
+
 func (o *SubmitUpfrontPriceRequestForCatalogItemUsingPOST2NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

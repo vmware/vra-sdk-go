@@ -63,7 +63,8 @@ func NewRestoreByIDAndVersionUsingPOSTOK() *RestoreByIDAndVersionUsingPOSTOK {
 	return &RestoreByIDAndVersionUsingPOSTOK{}
 }
 
-/* RestoreByIDAndVersionUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+RestoreByIDAndVersionUsingPOSTOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type RestoreByIDAndVersionUsingPOSTOK struct {
 	Payload models.CustomIntegration
 }
 
+// IsSuccess returns true when this restore by Id and version using p o s t o k response has a 2xx status code
+func (o *RestoreByIDAndVersionUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this restore by Id and version using p o s t o k response has a 3xx status code
+func (o *RestoreByIDAndVersionUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this restore by Id and version using p o s t o k response has a 4xx status code
+func (o *RestoreByIDAndVersionUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this restore by Id and version using p o s t o k response has a 5xx status code
+func (o *RestoreByIDAndVersionUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this restore by Id and version using p o s t o k response a status code equal to that given
+func (o *RestoreByIDAndVersionUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *RestoreByIDAndVersionUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/restore][%d] restoreByIdAndVersionUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *RestoreByIDAndVersionUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/restore][%d] restoreByIdAndVersionUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *RestoreByIDAndVersionUsingPOSTOK) GetPayload() models.CustomIntegration {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewRestoreByIDAndVersionUsingPOSTUnauthorized() *RestoreByIDAndVersionUsing
 	return &RestoreByIDAndVersionUsingPOSTUnauthorized{}
 }
 
-/* RestoreByIDAndVersionUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+RestoreByIDAndVersionUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type RestoreByIDAndVersionUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this restore by Id and version using p o s t unauthorized response has a 2xx status code
+func (o *RestoreByIDAndVersionUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this restore by Id and version using p o s t unauthorized response has a 3xx status code
+func (o *RestoreByIDAndVersionUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this restore by Id and version using p o s t unauthorized response has a 4xx status code
+func (o *RestoreByIDAndVersionUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this restore by Id and version using p o s t unauthorized response has a 5xx status code
+func (o *RestoreByIDAndVersionUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this restore by Id and version using p o s t unauthorized response a status code equal to that given
+func (o *RestoreByIDAndVersionUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *RestoreByIDAndVersionUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/restore][%d] restoreByIdAndVersionUsingPOSTUnauthorized ", 401)
+}
+
+func (o *RestoreByIDAndVersionUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/restore][%d] restoreByIdAndVersionUsingPOSTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewRestoreByIDAndVersionUsingPOSTForbidden() *RestoreByIDAndVersionUsingPOS
 	return &RestoreByIDAndVersionUsingPOSTForbidden{}
 }
 
-/* RestoreByIDAndVersionUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+RestoreByIDAndVersionUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type RestoreByIDAndVersionUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this restore by Id and version using p o s t forbidden response has a 2xx status code
+func (o *RestoreByIDAndVersionUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this restore by Id and version using p o s t forbidden response has a 3xx status code
+func (o *RestoreByIDAndVersionUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this restore by Id and version using p o s t forbidden response has a 4xx status code
+func (o *RestoreByIDAndVersionUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this restore by Id and version using p o s t forbidden response has a 5xx status code
+func (o *RestoreByIDAndVersionUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this restore by Id and version using p o s t forbidden response a status code equal to that given
+func (o *RestoreByIDAndVersionUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *RestoreByIDAndVersionUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/restore][%d] restoreByIdAndVersionUsingPOSTForbidden ", 403)
+}
+
+func (o *RestoreByIDAndVersionUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/restore][%d] restoreByIdAndVersionUsingPOSTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewRestoreByIDAndVersionUsingPOSTNotFound() *RestoreByIDAndVersionUsingPOST
 	return &RestoreByIDAndVersionUsingPOSTNotFound{}
 }
 
-/* RestoreByIDAndVersionUsingPOSTNotFound describes a response with status code 404, with default header values.
+/*
+RestoreByIDAndVersionUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type RestoreByIDAndVersionUsingPOSTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this restore by Id and version using p o s t not found response has a 2xx status code
+func (o *RestoreByIDAndVersionUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this restore by Id and version using p o s t not found response has a 3xx status code
+func (o *RestoreByIDAndVersionUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this restore by Id and version using p o s t not found response has a 4xx status code
+func (o *RestoreByIDAndVersionUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this restore by Id and version using p o s t not found response has a 5xx status code
+func (o *RestoreByIDAndVersionUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this restore by Id and version using p o s t not found response a status code equal to that given
+func (o *RestoreByIDAndVersionUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *RestoreByIDAndVersionUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/restore][%d] restoreByIdAndVersionUsingPOSTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *RestoreByIDAndVersionUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/restore][%d] restoreByIdAndVersionUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *RestoreByIDAndVersionUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewRestoreByIDAndVersionUsingPOSTInternalServerError() *RestoreByIDAndVersi
 	return &RestoreByIDAndVersionUsingPOSTInternalServerError{}
 }
 
-/* RestoreByIDAndVersionUsingPOSTInternalServerError describes a response with status code 500, with default header values.
+/*
+RestoreByIDAndVersionUsingPOSTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type RestoreByIDAndVersionUsingPOSTInternalServerError struct {
 }
 
+// IsSuccess returns true when this restore by Id and version using p o s t internal server error response has a 2xx status code
+func (o *RestoreByIDAndVersionUsingPOSTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this restore by Id and version using p o s t internal server error response has a 3xx status code
+func (o *RestoreByIDAndVersionUsingPOSTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this restore by Id and version using p o s t internal server error response has a 4xx status code
+func (o *RestoreByIDAndVersionUsingPOSTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this restore by Id and version using p o s t internal server error response has a 5xx status code
+func (o *RestoreByIDAndVersionUsingPOSTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this restore by Id and version using p o s t internal server error response a status code equal to that given
+func (o *RestoreByIDAndVersionUsingPOSTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *RestoreByIDAndVersionUsingPOSTInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/restore][%d] restoreByIdAndVersionUsingPOSTInternalServerError ", 500)
+}
+
+func (o *RestoreByIDAndVersionUsingPOSTInternalServerError) String() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/restore][%d] restoreByIdAndVersionUsingPOSTInternalServerError ", 500)
 }
 

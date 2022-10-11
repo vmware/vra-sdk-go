@@ -63,7 +63,8 @@ func NewGetGerritListenerByNameUsingGETOK() *GetGerritListenerByNameUsingGETOK {
 	return &GetGerritListenerByNameUsingGETOK{}
 }
 
-/* GetGerritListenerByNameUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetGerritListenerByNameUsingGETOK describes a response with status code 200, with default header values.
 
 'Success' with gerrit listener
 */
@@ -71,9 +72,39 @@ type GetGerritListenerByNameUsingGETOK struct {
 	Payload models.GerritListener
 }
 
+// IsSuccess returns true when this get gerrit listener by name using g e t o k response has a 2xx status code
+func (o *GetGerritListenerByNameUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get gerrit listener by name using g e t o k response has a 3xx status code
+func (o *GetGerritListenerByNameUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get gerrit listener by name using g e t o k response has a 4xx status code
+func (o *GetGerritListenerByNameUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get gerrit listener by name using g e t o k response has a 5xx status code
+func (o *GetGerritListenerByNameUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get gerrit listener by name using g e t o k response a status code equal to that given
+func (o *GetGerritListenerByNameUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetGerritListenerByNameUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/gerrit-listeners/{project}/{name}][%d] getGerritListenerByNameUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetGerritListenerByNameUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /codestream/api/gerrit-listeners/{project}/{name}][%d] getGerritListenerByNameUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetGerritListenerByNameUsingGETOK) GetPayload() models.GerritListener {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewGetGerritListenerByNameUsingGETUnauthorized() *GetGerritListenerByNameUs
 	return &GetGerritListenerByNameUsingGETUnauthorized{}
 }
 
-/* GetGerritListenerByNameUsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+GetGerritListenerByNameUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type GetGerritListenerByNameUsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this get gerrit listener by name using g e t unauthorized response has a 2xx status code
+func (o *GetGerritListenerByNameUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get gerrit listener by name using g e t unauthorized response has a 3xx status code
+func (o *GetGerritListenerByNameUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get gerrit listener by name using g e t unauthorized response has a 4xx status code
+func (o *GetGerritListenerByNameUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get gerrit listener by name using g e t unauthorized response has a 5xx status code
+func (o *GetGerritListenerByNameUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get gerrit listener by name using g e t unauthorized response a status code equal to that given
+func (o *GetGerritListenerByNameUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetGerritListenerByNameUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/gerrit-listeners/{project}/{name}][%d] getGerritListenerByNameUsingGETUnauthorized ", 401)
+}
+
+func (o *GetGerritListenerByNameUsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /codestream/api/gerrit-listeners/{project}/{name}][%d] getGerritListenerByNameUsingGETUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewGetGerritListenerByNameUsingGETForbidden() *GetGerritListenerByNameUsing
 	return &GetGerritListenerByNameUsingGETForbidden{}
 }
 
-/* GetGerritListenerByNameUsingGETForbidden describes a response with status code 403, with default header values.
+/*
+GetGerritListenerByNameUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetGerritListenerByNameUsingGETForbidden struct {
 }
 
+// IsSuccess returns true when this get gerrit listener by name using g e t forbidden response has a 2xx status code
+func (o *GetGerritListenerByNameUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get gerrit listener by name using g e t forbidden response has a 3xx status code
+func (o *GetGerritListenerByNameUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get gerrit listener by name using g e t forbidden response has a 4xx status code
+func (o *GetGerritListenerByNameUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get gerrit listener by name using g e t forbidden response has a 5xx status code
+func (o *GetGerritListenerByNameUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get gerrit listener by name using g e t forbidden response a status code equal to that given
+func (o *GetGerritListenerByNameUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetGerritListenerByNameUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/gerrit-listeners/{project}/{name}][%d] getGerritListenerByNameUsingGETForbidden ", 403)
+}
+
+func (o *GetGerritListenerByNameUsingGETForbidden) String() string {
 	return fmt.Sprintf("[GET /codestream/api/gerrit-listeners/{project}/{name}][%d] getGerritListenerByNameUsingGETForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewGetGerritListenerByNameUsingGETNotFound() *GetGerritListenerByNameUsingG
 	return &GetGerritListenerByNameUsingGETNotFound{}
 }
 
-/* GetGerritListenerByNameUsingGETNotFound describes a response with status code 404, with default header values.
+/*
+GetGerritListenerByNameUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type GetGerritListenerByNameUsingGETNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get gerrit listener by name using g e t not found response has a 2xx status code
+func (o *GetGerritListenerByNameUsingGETNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get gerrit listener by name using g e t not found response has a 3xx status code
+func (o *GetGerritListenerByNameUsingGETNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get gerrit listener by name using g e t not found response has a 4xx status code
+func (o *GetGerritListenerByNameUsingGETNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get gerrit listener by name using g e t not found response has a 5xx status code
+func (o *GetGerritListenerByNameUsingGETNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get gerrit listener by name using g e t not found response a status code equal to that given
+func (o *GetGerritListenerByNameUsingGETNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetGerritListenerByNameUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/gerrit-listeners/{project}/{name}][%d] getGerritListenerByNameUsingGETNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetGerritListenerByNameUsingGETNotFound) String() string {
+	return fmt.Sprintf("[GET /codestream/api/gerrit-listeners/{project}/{name}][%d] getGerritListenerByNameUsingGETNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetGerritListenerByNameUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewGetGerritListenerByNameUsingGETInternalServerError() *GetGerritListenerB
 	return &GetGerritListenerByNameUsingGETInternalServerError{}
 }
 
-/* GetGerritListenerByNameUsingGETInternalServerError describes a response with status code 500, with default header values.
+/*
+GetGerritListenerByNameUsingGETInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type GetGerritListenerByNameUsingGETInternalServerError struct {
 }
 
+// IsSuccess returns true when this get gerrit listener by name using g e t internal server error response has a 2xx status code
+func (o *GetGerritListenerByNameUsingGETInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get gerrit listener by name using g e t internal server error response has a 3xx status code
+func (o *GetGerritListenerByNameUsingGETInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get gerrit listener by name using g e t internal server error response has a 4xx status code
+func (o *GetGerritListenerByNameUsingGETInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get gerrit listener by name using g e t internal server error response has a 5xx status code
+func (o *GetGerritListenerByNameUsingGETInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this get gerrit listener by name using g e t internal server error response a status code equal to that given
+func (o *GetGerritListenerByNameUsingGETInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GetGerritListenerByNameUsingGETInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/gerrit-listeners/{project}/{name}][%d] getGerritListenerByNameUsingGETInternalServerError ", 500)
+}
+
+func (o *GetGerritListenerByNameUsingGETInternalServerError) String() string {
 	return fmt.Sprintf("[GET /codestream/api/gerrit-listeners/{project}/{name}][%d] getGerritListenerByNameUsingGETInternalServerError ", 500)
 }
 

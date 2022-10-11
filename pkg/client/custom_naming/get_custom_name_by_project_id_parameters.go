@@ -52,10 +52,12 @@ func NewGetCustomNameByProjectIDParamsWithHTTPClient(client *http.Client) *GetCu
 	}
 }
 
-/* GetCustomNameByProjectIDParams contains all the parameters to send to the API endpoint
-   for the get custom name by project Id operation.
+/*
+GetCustomNameByProjectIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get custom name by project Id operation.
+
+	Typically these are written to a http.Request.
 */
 type GetCustomNameByProjectIDParams struct {
 

@@ -52,10 +52,12 @@ func NewGetAllExecutionsUsingGETParamsWithHTTPClient(client *http.Client) *GetAl
 	}
 }
 
-/* GetAllExecutionsUsingGETParams contains all the parameters to send to the API endpoint
-   for the get all executions using g e t operation.
+/*
+GetAllExecutionsUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get all executions using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetAllExecutionsUsingGETParams struct {
 

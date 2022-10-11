@@ -45,7 +45,8 @@ func NewGetSyncRequestUsingGETOK() *GetSyncRequestUsingGETOK {
 	return &GetSyncRequestUsingGETOK{}
 }
 
-/* GetSyncRequestUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetSyncRequestUsingGETOK describes a response with status code 200, with default header values.
 
 Sync request for id
 */
@@ -53,9 +54,39 @@ type GetSyncRequestUsingGETOK struct {
 	Payload *models.SourceControlSyncRequest
 }
 
+// IsSuccess returns true when this get sync request using g e t o k response has a 2xx status code
+func (o *GetSyncRequestUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get sync request using g e t o k response has a 3xx status code
+func (o *GetSyncRequestUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get sync request using g e t o k response has a 4xx status code
+func (o *GetSyncRequestUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get sync request using g e t o k response has a 5xx status code
+func (o *GetSyncRequestUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get sync request using g e t o k response a status code equal to that given
+func (o *GetSyncRequestUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetSyncRequestUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /content/api/sourcecontrol/sync-requests/{id}][%d] getSyncRequestUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetSyncRequestUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /content/api/sourcecontrol/sync-requests/{id}][%d] getSyncRequestUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetSyncRequestUsingGETOK) GetPayload() *models.SourceControlSyncRequest {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewGetSyncRequestUsingGETNotFound() *GetSyncRequestUsingGETNotFound {
 	return &GetSyncRequestUsingGETNotFound{}
 }
 
-/* GetSyncRequestUsingGETNotFound describes a response with status code 404, with default header values.
+/*
+GetSyncRequestUsingGETNotFound describes a response with status code 404, with default header values.
 
 request not found
 */
@@ -85,9 +117,39 @@ type GetSyncRequestUsingGETNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get sync request using g e t not found response has a 2xx status code
+func (o *GetSyncRequestUsingGETNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get sync request using g e t not found response has a 3xx status code
+func (o *GetSyncRequestUsingGETNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get sync request using g e t not found response has a 4xx status code
+func (o *GetSyncRequestUsingGETNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get sync request using g e t not found response has a 5xx status code
+func (o *GetSyncRequestUsingGETNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get sync request using g e t not found response a status code equal to that given
+func (o *GetSyncRequestUsingGETNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetSyncRequestUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /content/api/sourcecontrol/sync-requests/{id}][%d] getSyncRequestUsingGETNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetSyncRequestUsingGETNotFound) String() string {
+	return fmt.Sprintf("[GET /content/api/sourcecontrol/sync-requests/{id}][%d] getSyncRequestUsingGETNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetSyncRequestUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -52,10 +52,12 @@ func NewShutdownMachineParamsWithHTTPClient(client *http.Client) *ShutdownMachin
 	}
 }
 
-/* ShutdownMachineParams contains all the parameters to send to the API endpoint
-   for the shutdown machine operation.
+/*
+ShutdownMachineParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the shutdown machine operation.
+
+	Typically these are written to a http.Request.
 */
 type ShutdownMachineParams struct {
 

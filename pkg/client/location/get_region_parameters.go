@@ -52,10 +52,12 @@ func NewGetRegionParamsWithHTTPClient(client *http.Client) *GetRegionParams {
 	}
 }
 
-/* GetRegionParams contains all the parameters to send to the API endpoint
-   for the get region operation.
+/*
+GetRegionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get region operation.
+
+	Typically these are written to a http.Request.
 */
 type GetRegionParams struct {
 

@@ -52,10 +52,12 @@ func NewSuspendMachineParamsWithHTTPClient(client *http.Client) *SuspendMachineP
 	}
 }
 
-/* SuspendMachineParams contains all the parameters to send to the API endpoint
-   for the suspend machine operation.
+/*
+SuspendMachineParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the suspend machine operation.
+
+	Typically these are written to a http.Request.
 */
 type SuspendMachineParams struct {
 

@@ -33,8 +33,8 @@ type NetworkProfile struct {
 	// Example: 2012-09-27
 	CreatedAt string `json:"createdAt,omitempty"`
 
-	// Additional properties that may be used to extend the Network Profile object that is produced from this specification.  For isolationType security group, datastoreId identifies the Compute Resource Edge datastore. computeCluster and resourcePoolId identify the Compute Resource Edge cluster. For isolationType subnet, distributedLogicalRouterStateLink identifies the on-demand network distributed local router.  onDemandNetworkIPAssignmentType identifies the on-demand network IP range assignment type static, dynamic, or mixed.
-	// Example: { \"resourcePoolId\" : \"resource-pool-1\", \"datastoreId\" : \"StoragePod:group-p87839\", \"computeCluster\" : \"/resources/compute/1234\", \"distributedLogicalRouterStateLink\" : \"/resources/routers/1234\", \"onDemandNetworkIPAssignmentType\" : \"dynamic\"}
+	// Additional properties that may be used to extend the Network Profile object that is produced from this specification.  For isolationType security group, datastoreId identifies the Compute Resource Edge datastore. computeCluster and resourcePoolId identify the Compute Resource Edge cluster. For isolationType subnet, distributedLogicalRouterStateLink identifies the on-demand network distributed local router (NSX-V only). For isolationType subnet, tier0LogicalRouterStateLink identifies the on-demand network tier-0 logical router (NSX-T only). onDemandNetworkIPAssignmentType identifies the on-demand network IP range assignment type static, dynamic, or mixed.
+	// Example: { \"resourcePoolId\" : \"resource-pool-1\", \"datastoreId\" : \"StoragePod:group-p87839\", \"computeCluster\" : \"/resources/compute/1234\", \"distributedLogicalRouterStateLink\" : \"/resources/routers/1234\", \"tier0LogicalRouterStateLink\" : \"/resources/routers/2345\", \"onDemandNetworkIPAssignmentType\" : \"dynamic\"}
 	CustomProperties map[string]string `json:"customProperties,omitempty"`
 
 	// A human-friendly description.

@@ -40,9 +40,9 @@ type ClientService interface {
 }
 
 /*
-  DeleteRequest deletes request
+DeleteRequest deletes request
 
-  Delete a single Request
+Delete a single Request
 */
 func (a *Client) DeleteRequest(params *DeleteRequestParams, opts ...ClientOption) (*DeleteRequestNoContent, error) {
 	// TODO: Validate the params before sending
@@ -80,9 +80,9 @@ func (a *Client) DeleteRequest(params *DeleteRequestParams, opts ...ClientOption
 }
 
 /*
-  GetRequestTracker gets request tracker
+GetRequestTracker gets request tracker
 
-  Get request tracker with a given id
+Get request tracker with a given id
 */
 func (a *Client) GetRequestTracker(params *GetRequestTrackerParams, opts ...ClientOption) (*GetRequestTrackerOK, error) {
 	// TODO: Validate the params before sending
@@ -120,9 +120,9 @@ func (a *Client) GetRequestTracker(params *GetRequestTrackerParams, opts ...Clie
 }
 
 /*
-  GetRequestTrackers gets request tracker
+GetRequestTrackers gets request tracker
 
-  Get all request trackers
+Get all request trackers
 */
 func (a *Client) GetRequestTrackers(params *GetRequestTrackersParams, opts ...ClientOption) (*GetRequestTrackersOK, error) {
 	// TODO: Validate the params before sending

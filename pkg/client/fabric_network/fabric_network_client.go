@@ -46,9 +46,9 @@ type ClientService interface {
 }
 
 /*
-  GetFabricNetwork gets fabric network
+GetFabricNetwork gets fabric network
 
-  Get fabric network with a given id
+Get fabric network with a given id
 */
 func (a *Client) GetFabricNetwork(params *GetFabricNetworkParams, opts ...ClientOption) (*GetFabricNetworkOK, error) {
 	// TODO: Validate the params before sending
@@ -86,9 +86,9 @@ func (a *Client) GetFabricNetwork(params *GetFabricNetworkParams, opts ...Client
 }
 
 /*
-  GetFabricNetworks gets fabric networks
+GetFabricNetworks gets fabric networks
 
-  Get all fabric networks.
+Get all fabric networks.
 */
 func (a *Client) GetFabricNetworks(params *GetFabricNetworksParams, opts ...ClientOption) (*GetFabricNetworksOK, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) GetFabricNetworks(params *GetFabricNetworksParams, opts ...Clie
 }
 
 /*
-  GetVsphereFabricNetwork gets v sphere fabric network
+GetVsphereFabricNetwork gets v sphere fabric network
 
-  Get vSphere fabric network with a given id
+Get vSphere fabric network with a given id
 */
 func (a *Client) GetVsphereFabricNetwork(params *GetVsphereFabricNetworkParams, opts ...ClientOption) (*GetVsphereFabricNetworkOK, error) {
 	// TODO: Validate the params before sending
@@ -166,9 +166,9 @@ func (a *Client) GetVsphereFabricNetwork(params *GetVsphereFabricNetworkParams, 
 }
 
 /*
-  GetVsphereFabricNetworks gets v sphere fabric networks
+GetVsphereFabricNetworks gets v sphere fabric networks
 
-  Get all vSphere fabric networks.
+Get all vSphere fabric networks.
 */
 func (a *Client) GetVsphereFabricNetworks(params *GetVsphereFabricNetworksParams, opts ...ClientOption) (*GetVsphereFabricNetworksOK, error) {
 	// TODO: Validate the params before sending
@@ -206,9 +206,9 @@ func (a *Client) GetVsphereFabricNetworks(params *GetVsphereFabricNetworksParams
 }
 
 /*
-  UpdateFabricNetwork updates fabric network
+UpdateFabricNetwork updates fabric network
 
-  Update fabric network. Only tag updates are supported.
+Update fabric network. Only tag updates are supported.
 */
 func (a *Client) UpdateFabricNetwork(params *UpdateFabricNetworkParams, opts ...ClientOption) (*UpdateFabricNetworkOK, error) {
 	// TODO: Validate the params before sending
@@ -246,9 +246,9 @@ func (a *Client) UpdateFabricNetwork(params *UpdateFabricNetworkParams, opts ...
 }
 
 /*
-  UpdatevSphereFabricNetwork updates v sphere fabric network
+UpdatevSphereFabricNetwork updates v sphere fabric network
 
-  Update vSphere fabric network.
+Update vSphere fabric network.
 */
 func (a *Client) UpdatevSphereFabricNetwork(params *UpdatevSphereFabricNetworkParams, opts ...ClientOption) (*UpdatevSphereFabricNetworkOK, error) {
 	// TODO: Validate the params before sending

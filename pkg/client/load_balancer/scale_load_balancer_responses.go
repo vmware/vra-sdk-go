@@ -51,7 +51,8 @@ func NewScaleLoadBalancerAccepted() *ScaleLoadBalancerAccepted {
 	return &ScaleLoadBalancerAccepted{}
 }
 
-/* ScaleLoadBalancerAccepted describes a response with status code 202, with default header values.
+/*
+ScaleLoadBalancerAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type ScaleLoadBalancerAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this scale load balancer accepted response has a 2xx status code
+func (o *ScaleLoadBalancerAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this scale load balancer accepted response has a 3xx status code
+func (o *ScaleLoadBalancerAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this scale load balancer accepted response has a 4xx status code
+func (o *ScaleLoadBalancerAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this scale load balancer accepted response has a 5xx status code
+func (o *ScaleLoadBalancerAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this scale load balancer accepted response a status code equal to that given
+func (o *ScaleLoadBalancerAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ScaleLoadBalancerAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/load-balancers/{id}/operations/scale][%d] scaleLoadBalancerAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ScaleLoadBalancerAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/load-balancers/{id}/operations/scale][%d] scaleLoadBalancerAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ScaleLoadBalancerAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewScaleLoadBalancerForbidden() *ScaleLoadBalancerForbidden {
 	return &ScaleLoadBalancerForbidden{}
 }
 
-/* ScaleLoadBalancerForbidden describes a response with status code 403, with default header values.
+/*
+ScaleLoadBalancerForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type ScaleLoadBalancerForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this scale load balancer forbidden response has a 2xx status code
+func (o *ScaleLoadBalancerForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this scale load balancer forbidden response has a 3xx status code
+func (o *ScaleLoadBalancerForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this scale load balancer forbidden response has a 4xx status code
+func (o *ScaleLoadBalancerForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this scale load balancer forbidden response has a 5xx status code
+func (o *ScaleLoadBalancerForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this scale load balancer forbidden response a status code equal to that given
+func (o *ScaleLoadBalancerForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ScaleLoadBalancerForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/load-balancers/{id}/operations/scale][%d] scaleLoadBalancerForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ScaleLoadBalancerForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/load-balancers/{id}/operations/scale][%d] scaleLoadBalancerForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ScaleLoadBalancerForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewScaleLoadBalancerNotFound() *ScaleLoadBalancerNotFound {
 	return &ScaleLoadBalancerNotFound{}
 }
 
-/* ScaleLoadBalancerNotFound describes a response with status code 404, with default header values.
+/*
+ScaleLoadBalancerNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type ScaleLoadBalancerNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this scale load balancer not found response has a 2xx status code
+func (o *ScaleLoadBalancerNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this scale load balancer not found response has a 3xx status code
+func (o *ScaleLoadBalancerNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this scale load balancer not found response has a 4xx status code
+func (o *ScaleLoadBalancerNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this scale load balancer not found response has a 5xx status code
+func (o *ScaleLoadBalancerNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this scale load balancer not found response a status code equal to that given
+func (o *ScaleLoadBalancerNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ScaleLoadBalancerNotFound) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/load-balancers/{id}/operations/scale][%d] scaleLoadBalancerNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ScaleLoadBalancerNotFound) String() string {
+	return fmt.Sprintf("[POST /iaas/api/load-balancers/{id}/operations/scale][%d] scaleLoadBalancerNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ScaleLoadBalancerNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

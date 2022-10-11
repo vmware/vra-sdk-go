@@ -51,7 +51,8 @@ func NewGetDiskSnapshotsOK() *GetDiskSnapshotsOK {
 	return &GetDiskSnapshotsOK{}
 }
 
-/* GetDiskSnapshotsOK describes a response with status code 200, with default header values.
+/*
+GetDiskSnapshotsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetDiskSnapshotsOK struct {
 	Payload []*models.DiskSnapshot
 }
 
+// IsSuccess returns true when this get disk snapshots o k response has a 2xx status code
+func (o *GetDiskSnapshotsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get disk snapshots o k response has a 3xx status code
+func (o *GetDiskSnapshotsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get disk snapshots o k response has a 4xx status code
+func (o *GetDiskSnapshotsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get disk snapshots o k response has a 5xx status code
+func (o *GetDiskSnapshotsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get disk snapshots o k response a status code equal to that given
+func (o *GetDiskSnapshotsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetDiskSnapshotsOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/block-devices/{id}/snapshots][%d] getDiskSnapshotsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetDiskSnapshotsOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/block-devices/{id}/snapshots][%d] getDiskSnapshotsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetDiskSnapshotsOK) GetPayload() []*models.DiskSnapshot {
 	return o.Payload
 }
@@ -81,7 +112,8 @@ func NewGetDiskSnapshotsForbidden() *GetDiskSnapshotsForbidden {
 	return &GetDiskSnapshotsForbidden{}
 }
 
-/* GetDiskSnapshotsForbidden describes a response with status code 403, with default header values.
+/*
+GetDiskSnapshotsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -89,9 +121,39 @@ type GetDiskSnapshotsForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get disk snapshots forbidden response has a 2xx status code
+func (o *GetDiskSnapshotsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get disk snapshots forbidden response has a 3xx status code
+func (o *GetDiskSnapshotsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get disk snapshots forbidden response has a 4xx status code
+func (o *GetDiskSnapshotsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get disk snapshots forbidden response has a 5xx status code
+func (o *GetDiskSnapshotsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get disk snapshots forbidden response a status code equal to that given
+func (o *GetDiskSnapshotsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetDiskSnapshotsForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/block-devices/{id}/snapshots][%d] getDiskSnapshotsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetDiskSnapshotsForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/block-devices/{id}/snapshots][%d] getDiskSnapshotsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetDiskSnapshotsForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -113,7 +175,8 @@ func NewGetDiskSnapshotsNotFound() *GetDiskSnapshotsNotFound {
 	return &GetDiskSnapshotsNotFound{}
 }
 
-/* GetDiskSnapshotsNotFound describes a response with status code 404, with default header values.
+/*
+GetDiskSnapshotsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -121,9 +184,39 @@ type GetDiskSnapshotsNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get disk snapshots not found response has a 2xx status code
+func (o *GetDiskSnapshotsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get disk snapshots not found response has a 3xx status code
+func (o *GetDiskSnapshotsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get disk snapshots not found response has a 4xx status code
+func (o *GetDiskSnapshotsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get disk snapshots not found response has a 5xx status code
+func (o *GetDiskSnapshotsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get disk snapshots not found response a status code equal to that given
+func (o *GetDiskSnapshotsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetDiskSnapshotsNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/block-devices/{id}/snapshots][%d] getDiskSnapshotsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetDiskSnapshotsNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/block-devices/{id}/snapshots][%d] getDiskSnapshotsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetDiskSnapshotsNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

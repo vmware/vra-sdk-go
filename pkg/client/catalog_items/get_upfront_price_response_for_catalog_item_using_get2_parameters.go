@@ -52,10 +52,12 @@ func NewGetUpfrontPriceResponseForCatalogItemUsingGET2ParamsWithHTTPClient(clien
 	}
 }
 
-/* GetUpfrontPriceResponseForCatalogItemUsingGET2Params contains all the parameters to send to the API endpoint
-   for the get upfront price response for catalog item using g e t 2 operation.
+/*
+GetUpfrontPriceResponseForCatalogItemUsingGET2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get upfront price response for catalog item using g e t 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetUpfrontPriceResponseForCatalogItemUsingGET2Params struct {
 

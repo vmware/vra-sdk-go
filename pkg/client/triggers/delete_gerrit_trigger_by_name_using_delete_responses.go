@@ -63,7 +63,8 @@ func NewDeleteGerritTriggerByNameUsingDELETEOK() *DeleteGerritTriggerByNameUsing
 	return &DeleteGerritTriggerByNameUsingDELETEOK{}
 }
 
-/* DeleteGerritTriggerByNameUsingDELETEOK describes a response with status code 200, with default header values.
+/*
+DeleteGerritTriggerByNameUsingDELETEOK describes a response with status code 200, with default header values.
 
 'Success' with Gerrit Trigger Delete
 */
@@ -71,9 +72,39 @@ type DeleteGerritTriggerByNameUsingDELETEOK struct {
 	Payload models.GerritTrigger
 }
 
+// IsSuccess returns true when this delete gerrit trigger by name using d e l e t e o k response has a 2xx status code
+func (o *DeleteGerritTriggerByNameUsingDELETEOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete gerrit trigger by name using d e l e t e o k response has a 3xx status code
+func (o *DeleteGerritTriggerByNameUsingDELETEOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete gerrit trigger by name using d e l e t e o k response has a 4xx status code
+func (o *DeleteGerritTriggerByNameUsingDELETEOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete gerrit trigger by name using d e l e t e o k response has a 5xx status code
+func (o *DeleteGerritTriggerByNameUsingDELETEOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete gerrit trigger by name using d e l e t e o k response a status code equal to that given
+func (o *DeleteGerritTriggerByNameUsingDELETEOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteGerritTriggerByNameUsingDELETEOK) Error() string {
 	return fmt.Sprintf("[DELETE /codestream/api/gerrit-triggers/{project}/{name}][%d] deleteGerritTriggerByNameUsingDELETEOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteGerritTriggerByNameUsingDELETEOK) String() string {
+	return fmt.Sprintf("[DELETE /codestream/api/gerrit-triggers/{project}/{name}][%d] deleteGerritTriggerByNameUsingDELETEOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteGerritTriggerByNameUsingDELETEOK) GetPayload() models.GerritTrigger {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewDeleteGerritTriggerByNameUsingDELETEUnauthorized() *DeleteGerritTriggerB
 	return &DeleteGerritTriggerByNameUsingDELETEUnauthorized{}
 }
 
-/* DeleteGerritTriggerByNameUsingDELETEUnauthorized describes a response with status code 401, with default header values.
+/*
+DeleteGerritTriggerByNameUsingDELETEUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type DeleteGerritTriggerByNameUsingDELETEUnauthorized struct {
 }
 
+// IsSuccess returns true when this delete gerrit trigger by name using d e l e t e unauthorized response has a 2xx status code
+func (o *DeleteGerritTriggerByNameUsingDELETEUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete gerrit trigger by name using d e l e t e unauthorized response has a 3xx status code
+func (o *DeleteGerritTriggerByNameUsingDELETEUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete gerrit trigger by name using d e l e t e unauthorized response has a 4xx status code
+func (o *DeleteGerritTriggerByNameUsingDELETEUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete gerrit trigger by name using d e l e t e unauthorized response has a 5xx status code
+func (o *DeleteGerritTriggerByNameUsingDELETEUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete gerrit trigger by name using d e l e t e unauthorized response a status code equal to that given
+func (o *DeleteGerritTriggerByNameUsingDELETEUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DeleteGerritTriggerByNameUsingDELETEUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/gerrit-triggers/{project}/{name}][%d] deleteGerritTriggerByNameUsingDELETEUnauthorized ", 401)
+}
+
+func (o *DeleteGerritTriggerByNameUsingDELETEUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/gerrit-triggers/{project}/{name}][%d] deleteGerritTriggerByNameUsingDELETEUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewDeleteGerritTriggerByNameUsingDELETEForbidden() *DeleteGerritTriggerByNa
 	return &DeleteGerritTriggerByNameUsingDELETEForbidden{}
 }
 
-/* DeleteGerritTriggerByNameUsingDELETEForbidden describes a response with status code 403, with default header values.
+/*
+DeleteGerritTriggerByNameUsingDELETEForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type DeleteGerritTriggerByNameUsingDELETEForbidden struct {
 }
 
+// IsSuccess returns true when this delete gerrit trigger by name using d e l e t e forbidden response has a 2xx status code
+func (o *DeleteGerritTriggerByNameUsingDELETEForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete gerrit trigger by name using d e l e t e forbidden response has a 3xx status code
+func (o *DeleteGerritTriggerByNameUsingDELETEForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete gerrit trigger by name using d e l e t e forbidden response has a 4xx status code
+func (o *DeleteGerritTriggerByNameUsingDELETEForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete gerrit trigger by name using d e l e t e forbidden response has a 5xx status code
+func (o *DeleteGerritTriggerByNameUsingDELETEForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete gerrit trigger by name using d e l e t e forbidden response a status code equal to that given
+func (o *DeleteGerritTriggerByNameUsingDELETEForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteGerritTriggerByNameUsingDELETEForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/gerrit-triggers/{project}/{name}][%d] deleteGerritTriggerByNameUsingDELETEForbidden ", 403)
+}
+
+func (o *DeleteGerritTriggerByNameUsingDELETEForbidden) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/gerrit-triggers/{project}/{name}][%d] deleteGerritTriggerByNameUsingDELETEForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewDeleteGerritTriggerByNameUsingDELETENotFound() *DeleteGerritTriggerByNam
 	return &DeleteGerritTriggerByNameUsingDELETENotFound{}
 }
 
-/* DeleteGerritTriggerByNameUsingDELETENotFound describes a response with status code 404, with default header values.
+/*
+DeleteGerritTriggerByNameUsingDELETENotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type DeleteGerritTriggerByNameUsingDELETENotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete gerrit trigger by name using d e l e t e not found response has a 2xx status code
+func (o *DeleteGerritTriggerByNameUsingDELETENotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete gerrit trigger by name using d e l e t e not found response has a 3xx status code
+func (o *DeleteGerritTriggerByNameUsingDELETENotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete gerrit trigger by name using d e l e t e not found response has a 4xx status code
+func (o *DeleteGerritTriggerByNameUsingDELETENotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete gerrit trigger by name using d e l e t e not found response has a 5xx status code
+func (o *DeleteGerritTriggerByNameUsingDELETENotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete gerrit trigger by name using d e l e t e not found response a status code equal to that given
+func (o *DeleteGerritTriggerByNameUsingDELETENotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteGerritTriggerByNameUsingDELETENotFound) Error() string {
 	return fmt.Sprintf("[DELETE /codestream/api/gerrit-triggers/{project}/{name}][%d] deleteGerritTriggerByNameUsingDELETENotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteGerritTriggerByNameUsingDELETENotFound) String() string {
+	return fmt.Sprintf("[DELETE /codestream/api/gerrit-triggers/{project}/{name}][%d] deleteGerritTriggerByNameUsingDELETENotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteGerritTriggerByNameUsingDELETENotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewDeleteGerritTriggerByNameUsingDELETEInternalServerError() *DeleteGerritT
 	return &DeleteGerritTriggerByNameUsingDELETEInternalServerError{}
 }
 
-/* DeleteGerritTriggerByNameUsingDELETEInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteGerritTriggerByNameUsingDELETEInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type DeleteGerritTriggerByNameUsingDELETEInternalServerError struct {
 }
 
+// IsSuccess returns true when this delete gerrit trigger by name using d e l e t e internal server error response has a 2xx status code
+func (o *DeleteGerritTriggerByNameUsingDELETEInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete gerrit trigger by name using d e l e t e internal server error response has a 3xx status code
+func (o *DeleteGerritTriggerByNameUsingDELETEInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete gerrit trigger by name using d e l e t e internal server error response has a 4xx status code
+func (o *DeleteGerritTriggerByNameUsingDELETEInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete gerrit trigger by name using d e l e t e internal server error response has a 5xx status code
+func (o *DeleteGerritTriggerByNameUsingDELETEInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this delete gerrit trigger by name using d e l e t e internal server error response a status code equal to that given
+func (o *DeleteGerritTriggerByNameUsingDELETEInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *DeleteGerritTriggerByNameUsingDELETEInternalServerError) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/gerrit-triggers/{project}/{name}][%d] deleteGerritTriggerByNameUsingDELETEInternalServerError ", 500)
+}
+
+func (o *DeleteGerritTriggerByNameUsingDELETEInternalServerError) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/gerrit-triggers/{project}/{name}][%d] deleteGerritTriggerByNameUsingDELETEInternalServerError ", 500)
 }
 

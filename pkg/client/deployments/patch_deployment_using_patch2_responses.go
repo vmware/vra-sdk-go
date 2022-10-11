@@ -57,7 +57,8 @@ func NewPatchDeploymentUsingPATCH2OK() *PatchDeploymentUsingPATCH2OK {
 	return &PatchDeploymentUsingPATCH2OK{}
 }
 
-/* PatchDeploymentUsingPATCH2OK describes a response with status code 200, with default header values.
+/*
+PatchDeploymentUsingPATCH2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -65,9 +66,39 @@ type PatchDeploymentUsingPATCH2OK struct {
 	Payload *models.Deployment
 }
 
+// IsSuccess returns true when this patch deployment using p a t c h2 o k response has a 2xx status code
+func (o *PatchDeploymentUsingPATCH2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch deployment using p a t c h2 o k response has a 3xx status code
+func (o *PatchDeploymentUsingPATCH2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch deployment using p a t c h2 o k response has a 4xx status code
+func (o *PatchDeploymentUsingPATCH2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch deployment using p a t c h2 o k response has a 5xx status code
+func (o *PatchDeploymentUsingPATCH2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch deployment using p a t c h2 o k response a status code equal to that given
+func (o *PatchDeploymentUsingPATCH2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchDeploymentUsingPATCH2OK) Error() string {
 	return fmt.Sprintf("[PATCH /deployment/api/deployments/{deploymentId}][%d] patchDeploymentUsingPATCH2OK  %+v", 200, o.Payload)
 }
+
+func (o *PatchDeploymentUsingPATCH2OK) String() string {
+	return fmt.Sprintf("[PATCH /deployment/api/deployments/{deploymentId}][%d] patchDeploymentUsingPATCH2OK  %+v", 200, o.Payload)
+}
+
 func (o *PatchDeploymentUsingPATCH2OK) GetPayload() *models.Deployment {
 	return o.Payload
 }
@@ -89,14 +120,44 @@ func NewPatchDeploymentUsingPATCH2Unauthorized() *PatchDeploymentUsingPATCH2Unau
 	return &PatchDeploymentUsingPATCH2Unauthorized{}
 }
 
-/* PatchDeploymentUsingPATCH2Unauthorized describes a response with status code 401, with default header values.
+/*
+PatchDeploymentUsingPATCH2Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type PatchDeploymentUsingPATCH2Unauthorized struct {
 }
 
+// IsSuccess returns true when this patch deployment using p a t c h2 unauthorized response has a 2xx status code
+func (o *PatchDeploymentUsingPATCH2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch deployment using p a t c h2 unauthorized response has a 3xx status code
+func (o *PatchDeploymentUsingPATCH2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch deployment using p a t c h2 unauthorized response has a 4xx status code
+func (o *PatchDeploymentUsingPATCH2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch deployment using p a t c h2 unauthorized response has a 5xx status code
+func (o *PatchDeploymentUsingPATCH2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch deployment using p a t c h2 unauthorized response a status code equal to that given
+func (o *PatchDeploymentUsingPATCH2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *PatchDeploymentUsingPATCH2Unauthorized) Error() string {
+	return fmt.Sprintf("[PATCH /deployment/api/deployments/{deploymentId}][%d] patchDeploymentUsingPATCH2Unauthorized ", 401)
+}
+
+func (o *PatchDeploymentUsingPATCH2Unauthorized) String() string {
 	return fmt.Sprintf("[PATCH /deployment/api/deployments/{deploymentId}][%d] patchDeploymentUsingPATCH2Unauthorized ", 401)
 }
 
@@ -110,14 +171,44 @@ func NewPatchDeploymentUsingPATCH2Forbidden() *PatchDeploymentUsingPATCH2Forbidd
 	return &PatchDeploymentUsingPATCH2Forbidden{}
 }
 
-/* PatchDeploymentUsingPATCH2Forbidden describes a response with status code 403, with default header values.
+/*
+PatchDeploymentUsingPATCH2Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type PatchDeploymentUsingPATCH2Forbidden struct {
 }
 
+// IsSuccess returns true when this patch deployment using p a t c h2 forbidden response has a 2xx status code
+func (o *PatchDeploymentUsingPATCH2Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch deployment using p a t c h2 forbidden response has a 3xx status code
+func (o *PatchDeploymentUsingPATCH2Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch deployment using p a t c h2 forbidden response has a 4xx status code
+func (o *PatchDeploymentUsingPATCH2Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch deployment using p a t c h2 forbidden response has a 5xx status code
+func (o *PatchDeploymentUsingPATCH2Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch deployment using p a t c h2 forbidden response a status code equal to that given
+func (o *PatchDeploymentUsingPATCH2Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *PatchDeploymentUsingPATCH2Forbidden) Error() string {
+	return fmt.Sprintf("[PATCH /deployment/api/deployments/{deploymentId}][%d] patchDeploymentUsingPATCH2Forbidden ", 403)
+}
+
+func (o *PatchDeploymentUsingPATCH2Forbidden) String() string {
 	return fmt.Sprintf("[PATCH /deployment/api/deployments/{deploymentId}][%d] patchDeploymentUsingPATCH2Forbidden ", 403)
 }
 
@@ -131,7 +222,8 @@ func NewPatchDeploymentUsingPATCH2NotFound() *PatchDeploymentUsingPATCH2NotFound
 	return &PatchDeploymentUsingPATCH2NotFound{}
 }
 
-/* PatchDeploymentUsingPATCH2NotFound describes a response with status code 404, with default header values.
+/*
+PatchDeploymentUsingPATCH2NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -139,9 +231,39 @@ type PatchDeploymentUsingPATCH2NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this patch deployment using p a t c h2 not found response has a 2xx status code
+func (o *PatchDeploymentUsingPATCH2NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch deployment using p a t c h2 not found response has a 3xx status code
+func (o *PatchDeploymentUsingPATCH2NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch deployment using p a t c h2 not found response has a 4xx status code
+func (o *PatchDeploymentUsingPATCH2NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch deployment using p a t c h2 not found response has a 5xx status code
+func (o *PatchDeploymentUsingPATCH2NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch deployment using p a t c h2 not found response a status code equal to that given
+func (o *PatchDeploymentUsingPATCH2NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *PatchDeploymentUsingPATCH2NotFound) Error() string {
 	return fmt.Sprintf("[PATCH /deployment/api/deployments/{deploymentId}][%d] patchDeploymentUsingPATCH2NotFound  %+v", 404, o.Payload)
 }
+
+func (o *PatchDeploymentUsingPATCH2NotFound) String() string {
+	return fmt.Sprintf("[PATCH /deployment/api/deployments/{deploymentId}][%d] patchDeploymentUsingPATCH2NotFound  %+v", 404, o.Payload)
+}
+
 func (o *PatchDeploymentUsingPATCH2NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

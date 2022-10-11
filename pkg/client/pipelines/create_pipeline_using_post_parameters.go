@@ -54,10 +54,12 @@ func NewCreatePipelineUsingPOSTParamsWithHTTPClient(client *http.Client) *Create
 	}
 }
 
-/* CreatePipelineUsingPOSTParams contains all the parameters to send to the API endpoint
-   for the create pipeline using p o s t operation.
+/*
+CreatePipelineUsingPOSTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create pipeline using p o s t operation.
+
+	Typically these are written to a http.Request.
 */
 type CreatePipelineUsingPOSTParams struct {
 

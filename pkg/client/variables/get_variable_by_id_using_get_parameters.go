@@ -52,10 +52,12 @@ func NewGetVariableByIDUsingGETParamsWithHTTPClient(client *http.Client) *GetVar
 	}
 }
 
-/* GetVariableByIDUsingGETParams contains all the parameters to send to the API endpoint
-   for the get variable by Id using g e t operation.
+/*
+GetVariableByIDUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get variable by Id using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVariableByIDUsingGETParams struct {
 

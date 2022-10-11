@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -71,7 +70,7 @@ func UnmarshalProjectConstraintSlice(reader io.Reader, consumer runtime.Consumer
 // UnmarshalProjectConstraint unmarshals polymorphic ProjectConstraint
 func UnmarshalProjectConstraint(reader io.Reader, consumer runtime.Consumer) (ProjectConstraint, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}

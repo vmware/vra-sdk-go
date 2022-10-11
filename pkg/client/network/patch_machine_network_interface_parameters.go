@@ -54,10 +54,12 @@ func NewPatchMachineNetworkInterfaceParamsWithHTTPClient(client *http.Client) *P
 	}
 }
 
-/* PatchMachineNetworkInterfaceParams contains all the parameters to send to the API endpoint
-   for the patch machine network interface operation.
+/*
+PatchMachineNetworkInterfaceParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the patch machine network interface operation.
+
+	Typically these are written to a http.Request.
 */
 type PatchMachineNetworkInterfaceParams struct {
 

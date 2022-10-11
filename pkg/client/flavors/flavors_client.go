@@ -36,9 +36,9 @@ type ClientService interface {
 }
 
 /*
-  GetFlavors gets flavors
+GetFlavors gets flavors
 
-  Get all flavors defined in FlavorProfile
+Get all flavors defined in FlavorProfile
 */
 func (a *Client) GetFlavors(params *GetFlavorsParams, opts ...ClientOption) (*GetFlavorsOK, error) {
 	// TODO: Validate the params before sending

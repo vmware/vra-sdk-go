@@ -54,10 +54,12 @@ func NewUpdateAwsStorageProfileParamsWithHTTPClient(client *http.Client) *Update
 	}
 }
 
-/* UpdateAwsStorageProfileParams contains all the parameters to send to the API endpoint
-   for the update aws storage profile operation.
+/*
+UpdateAwsStorageProfileParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update aws storage profile operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateAwsStorageProfileParams struct {
 

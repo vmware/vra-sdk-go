@@ -52,10 +52,12 @@ func NewDeleteMeteringPolicyAssignmentUsingDELETE2ParamsWithHTTPClient(client *h
 	}
 }
 
-/* DeleteMeteringPolicyAssignmentUsingDELETE2Params contains all the parameters to send to the API endpoint
-   for the delete metering policy assignment using d e l e t e 2 operation.
+/*
+DeleteMeteringPolicyAssignmentUsingDELETE2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete metering policy assignment using d e l e t e 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteMeteringPolicyAssignmentUsingDELETE2Params struct {
 

@@ -26,6 +26,12 @@ func (o *DeleteUsingDELETE2Reader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return result, nil
+	case 403:
+		result := NewDeleteUsingDELETE2Forbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -36,18 +42,99 @@ func NewDeleteUsingDELETE2OK() *DeleteUsingDELETE2OK {
 	return &DeleteUsingDELETE2OK{}
 }
 
-/* DeleteUsingDELETE2OK describes a response with status code 200, with default header values.
+/*
+DeleteUsingDELETE2OK describes a response with status code 200, with default header values.
 
 OK
 */
 type DeleteUsingDELETE2OK struct {
 }
 
+// IsSuccess returns true when this delete using d e l e t e2 o k response has a 2xx status code
+func (o *DeleteUsingDELETE2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete using d e l e t e2 o k response has a 3xx status code
+func (o *DeleteUsingDELETE2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete using d e l e t e2 o k response has a 4xx status code
+func (o *DeleteUsingDELETE2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete using d e l e t e2 o k response has a 5xx status code
+func (o *DeleteUsingDELETE2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete using d e l e t e2 o k response a status code equal to that given
+func (o *DeleteUsingDELETE2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteUsingDELETE2OK) Error() string {
 	return fmt.Sprintf("[DELETE /cmx/api/resources/supervisor-namespaces/{selfLinkId}][%d] deleteUsingDELETE2OK ", 200)
 }
 
+func (o *DeleteUsingDELETE2OK) String() string {
+	return fmt.Sprintf("[DELETE /cmx/api/resources/supervisor-namespaces/{selfLinkId}][%d] deleteUsingDELETE2OK ", 200)
+}
+
 func (o *DeleteUsingDELETE2OK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewDeleteUsingDELETE2Forbidden creates a DeleteUsingDELETE2Forbidden with default headers values
+func NewDeleteUsingDELETE2Forbidden() *DeleteUsingDELETE2Forbidden {
+	return &DeleteUsingDELETE2Forbidden{}
+}
+
+/*
+DeleteUsingDELETE2Forbidden describes a response with status code 403, with default header values.
+
+Forbidden, the user lacks permissions
+*/
+type DeleteUsingDELETE2Forbidden struct {
+}
+
+// IsSuccess returns true when this delete using d e l e t e2 forbidden response has a 2xx status code
+func (o *DeleteUsingDELETE2Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete using d e l e t e2 forbidden response has a 3xx status code
+func (o *DeleteUsingDELETE2Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete using d e l e t e2 forbidden response has a 4xx status code
+func (o *DeleteUsingDELETE2Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete using d e l e t e2 forbidden response has a 5xx status code
+func (o *DeleteUsingDELETE2Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete using d e l e t e2 forbidden response a status code equal to that given
+func (o *DeleteUsingDELETE2Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *DeleteUsingDELETE2Forbidden) Error() string {
+	return fmt.Sprintf("[DELETE /cmx/api/resources/supervisor-namespaces/{selfLinkId}][%d] deleteUsingDELETE2Forbidden ", 403)
+}
+
+func (o *DeleteUsingDELETE2Forbidden) String() string {
+	return fmt.Sprintf("[DELETE /cmx/api/resources/supervisor-namespaces/{selfLinkId}][%d] deleteUsingDELETE2Forbidden ", 403)
+}
+
+func (o *DeleteUsingDELETE2Forbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

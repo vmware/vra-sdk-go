@@ -63,7 +63,8 @@ func NewUpdateGitWebhookByIDUsingPUTOK() *UpdateGitWebhookByIDUsingPUTOK {
 	return &UpdateGitWebhookByIDUsingPUTOK{}
 }
 
-/* UpdateGitWebhookByIDUsingPUTOK describes a response with status code 200, with default header values.
+/*
+UpdateGitWebhookByIDUsingPUTOK describes a response with status code 200, with default header values.
 
 'Success' with Git Webhook Update
 */
@@ -71,9 +72,39 @@ type UpdateGitWebhookByIDUsingPUTOK struct {
 	Payload models.GitWebhook
 }
 
+// IsSuccess returns true when this update git webhook by Id using p u t o k response has a 2xx status code
+func (o *UpdateGitWebhookByIDUsingPUTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update git webhook by Id using p u t o k response has a 3xx status code
+func (o *UpdateGitWebhookByIDUsingPUTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update git webhook by Id using p u t o k response has a 4xx status code
+func (o *UpdateGitWebhookByIDUsingPUTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update git webhook by Id using p u t o k response has a 5xx status code
+func (o *UpdateGitWebhookByIDUsingPUTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update git webhook by Id using p u t o k response a status code equal to that given
+func (o *UpdateGitWebhookByIDUsingPUTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateGitWebhookByIDUsingPUTOK) Error() string {
 	return fmt.Sprintf("[PUT /codestream/api/git-webhooks/{id}][%d] updateGitWebhookByIdUsingPUTOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateGitWebhookByIDUsingPUTOK) String() string {
+	return fmt.Sprintf("[PUT /codestream/api/git-webhooks/{id}][%d] updateGitWebhookByIdUsingPUTOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateGitWebhookByIDUsingPUTOK) GetPayload() models.GitWebhook {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewUpdateGitWebhookByIDUsingPUTUnauthorized() *UpdateGitWebhookByIDUsingPUT
 	return &UpdateGitWebhookByIDUsingPUTUnauthorized{}
 }
 
-/* UpdateGitWebhookByIDUsingPUTUnauthorized describes a response with status code 401, with default header values.
+/*
+UpdateGitWebhookByIDUsingPUTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type UpdateGitWebhookByIDUsingPUTUnauthorized struct {
 }
 
+// IsSuccess returns true when this update git webhook by Id using p u t unauthorized response has a 2xx status code
+func (o *UpdateGitWebhookByIDUsingPUTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update git webhook by Id using p u t unauthorized response has a 3xx status code
+func (o *UpdateGitWebhookByIDUsingPUTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update git webhook by Id using p u t unauthorized response has a 4xx status code
+func (o *UpdateGitWebhookByIDUsingPUTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update git webhook by Id using p u t unauthorized response has a 5xx status code
+func (o *UpdateGitWebhookByIDUsingPUTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update git webhook by Id using p u t unauthorized response a status code equal to that given
+func (o *UpdateGitWebhookByIDUsingPUTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UpdateGitWebhookByIDUsingPUTUnauthorized) Error() string {
+	return fmt.Sprintf("[PUT /codestream/api/git-webhooks/{id}][%d] updateGitWebhookByIdUsingPUTUnauthorized ", 401)
+}
+
+func (o *UpdateGitWebhookByIDUsingPUTUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /codestream/api/git-webhooks/{id}][%d] updateGitWebhookByIdUsingPUTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewUpdateGitWebhookByIDUsingPUTForbidden() *UpdateGitWebhookByIDUsingPUTFor
 	return &UpdateGitWebhookByIDUsingPUTForbidden{}
 }
 
-/* UpdateGitWebhookByIDUsingPUTForbidden describes a response with status code 403, with default header values.
+/*
+UpdateGitWebhookByIDUsingPUTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type UpdateGitWebhookByIDUsingPUTForbidden struct {
 }
 
+// IsSuccess returns true when this update git webhook by Id using p u t forbidden response has a 2xx status code
+func (o *UpdateGitWebhookByIDUsingPUTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update git webhook by Id using p u t forbidden response has a 3xx status code
+func (o *UpdateGitWebhookByIDUsingPUTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update git webhook by Id using p u t forbidden response has a 4xx status code
+func (o *UpdateGitWebhookByIDUsingPUTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update git webhook by Id using p u t forbidden response has a 5xx status code
+func (o *UpdateGitWebhookByIDUsingPUTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update git webhook by Id using p u t forbidden response a status code equal to that given
+func (o *UpdateGitWebhookByIDUsingPUTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateGitWebhookByIDUsingPUTForbidden) Error() string {
+	return fmt.Sprintf("[PUT /codestream/api/git-webhooks/{id}][%d] updateGitWebhookByIdUsingPUTForbidden ", 403)
+}
+
+func (o *UpdateGitWebhookByIDUsingPUTForbidden) String() string {
 	return fmt.Sprintf("[PUT /codestream/api/git-webhooks/{id}][%d] updateGitWebhookByIdUsingPUTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewUpdateGitWebhookByIDUsingPUTNotFound() *UpdateGitWebhookByIDUsingPUTNotF
 	return &UpdateGitWebhookByIDUsingPUTNotFound{}
 }
 
-/* UpdateGitWebhookByIDUsingPUTNotFound describes a response with status code 404, with default header values.
+/*
+UpdateGitWebhookByIDUsingPUTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type UpdateGitWebhookByIDUsingPUTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update git webhook by Id using p u t not found response has a 2xx status code
+func (o *UpdateGitWebhookByIDUsingPUTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update git webhook by Id using p u t not found response has a 3xx status code
+func (o *UpdateGitWebhookByIDUsingPUTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update git webhook by Id using p u t not found response has a 4xx status code
+func (o *UpdateGitWebhookByIDUsingPUTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update git webhook by Id using p u t not found response has a 5xx status code
+func (o *UpdateGitWebhookByIDUsingPUTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update git webhook by Id using p u t not found response a status code equal to that given
+func (o *UpdateGitWebhookByIDUsingPUTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateGitWebhookByIDUsingPUTNotFound) Error() string {
 	return fmt.Sprintf("[PUT /codestream/api/git-webhooks/{id}][%d] updateGitWebhookByIdUsingPUTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UpdateGitWebhookByIDUsingPUTNotFound) String() string {
+	return fmt.Sprintf("[PUT /codestream/api/git-webhooks/{id}][%d] updateGitWebhookByIdUsingPUTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UpdateGitWebhookByIDUsingPUTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewUpdateGitWebhookByIDUsingPUTInternalServerError() *UpdateGitWebhookByIDU
 	return &UpdateGitWebhookByIDUsingPUTInternalServerError{}
 }
 
-/* UpdateGitWebhookByIDUsingPUTInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateGitWebhookByIDUsingPUTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type UpdateGitWebhookByIDUsingPUTInternalServerError struct {
 }
 
+// IsSuccess returns true when this update git webhook by Id using p u t internal server error response has a 2xx status code
+func (o *UpdateGitWebhookByIDUsingPUTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update git webhook by Id using p u t internal server error response has a 3xx status code
+func (o *UpdateGitWebhookByIDUsingPUTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update git webhook by Id using p u t internal server error response has a 4xx status code
+func (o *UpdateGitWebhookByIDUsingPUTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update git webhook by Id using p u t internal server error response has a 5xx status code
+func (o *UpdateGitWebhookByIDUsingPUTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this update git webhook by Id using p u t internal server error response a status code equal to that given
+func (o *UpdateGitWebhookByIDUsingPUTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *UpdateGitWebhookByIDUsingPUTInternalServerError) Error() string {
+	return fmt.Sprintf("[PUT /codestream/api/git-webhooks/{id}][%d] updateGitWebhookByIdUsingPUTInternalServerError ", 500)
+}
+
+func (o *UpdateGitWebhookByIDUsingPUTInternalServerError) String() string {
 	return fmt.Sprintf("[PUT /codestream/api/git-webhooks/{id}][%d] updateGitWebhookByIdUsingPUTInternalServerError ", 500)
 }
 

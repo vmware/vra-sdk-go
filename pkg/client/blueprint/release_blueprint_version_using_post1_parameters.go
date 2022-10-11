@@ -52,10 +52,12 @@ func NewReleaseBlueprintVersionUsingPOST1ParamsWithHTTPClient(client *http.Clien
 	}
 }
 
-/* ReleaseBlueprintVersionUsingPOST1Params contains all the parameters to send to the API endpoint
-   for the release blueprint version using p o s t 1 operation.
+/*
+ReleaseBlueprintVersionUsingPOST1Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the release blueprint version using p o s t 1 operation.
+
+	Typically these are written to a http.Request.
 */
 type ReleaseBlueprintVersionUsingPOST1Params struct {
 

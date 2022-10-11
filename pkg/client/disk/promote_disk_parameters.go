@@ -52,10 +52,12 @@ func NewPromoteDiskParamsWithHTTPClient(client *http.Client) *PromoteDiskParams 
 	}
 }
 
-/* PromoteDiskParams contains all the parameters to send to the API endpoint
-   for the promote disk operation.
+/*
+PromoteDiskParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the promote disk operation.
+
+	Typically these are written to a http.Request.
 */
 type PromoteDiskParams struct {
 

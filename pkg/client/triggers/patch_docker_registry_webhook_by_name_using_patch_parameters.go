@@ -54,10 +54,12 @@ func NewPatchDockerRegistryWebhookByNameUsingPATCHParamsWithHTTPClient(client *h
 	}
 }
 
-/* PatchDockerRegistryWebhookByNameUsingPATCHParams contains all the parameters to send to the API endpoint
-   for the patch docker registry webhook by name using p a t c h operation.
+/*
+PatchDockerRegistryWebhookByNameUsingPATCHParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the patch docker registry webhook by name using p a t c h operation.
+
+	Typically these are written to a http.Request.
 */
 type PatchDockerRegistryWebhookByNameUsingPATCHParams struct {
 
@@ -73,11 +75,11 @@ type PatchDockerRegistryWebhookByNameUsingPATCHParams struct {
 	*/
 	APIVersion string
 
-	/* DockerRegistryWebhookPatch.
+	/* EnablePatch.
 
-	   dockerRegistryWebhookPatch
+	   enablePatch
 	*/
-	DockerRegistryWebhookPatch models.DockerRegistryWebhookPatch
+	EnablePatch models.WebhookEnablePatch
 
 	/* Name.
 
@@ -166,15 +168,15 @@ func (o *PatchDockerRegistryWebhookByNameUsingPATCHParams) SetAPIVersion(aPIVers
 	o.APIVersion = aPIVersion
 }
 
-// WithDockerRegistryWebhookPatch adds the dockerRegistryWebhookPatch to the patch docker registry webhook by name using p a t c h params
-func (o *PatchDockerRegistryWebhookByNameUsingPATCHParams) WithDockerRegistryWebhookPatch(dockerRegistryWebhookPatch models.DockerRegistryWebhookPatch) *PatchDockerRegistryWebhookByNameUsingPATCHParams {
-	o.SetDockerRegistryWebhookPatch(dockerRegistryWebhookPatch)
+// WithEnablePatch adds the enablePatch to the patch docker registry webhook by name using p a t c h params
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHParams) WithEnablePatch(enablePatch models.WebhookEnablePatch) *PatchDockerRegistryWebhookByNameUsingPATCHParams {
+	o.SetEnablePatch(enablePatch)
 	return o
 }
 
-// SetDockerRegistryWebhookPatch adds the dockerRegistryWebhookPatch to the patch docker registry webhook by name using p a t c h params
-func (o *PatchDockerRegistryWebhookByNameUsingPATCHParams) SetDockerRegistryWebhookPatch(dockerRegistryWebhookPatch models.DockerRegistryWebhookPatch) {
-	o.DockerRegistryWebhookPatch = dockerRegistryWebhookPatch
+// SetEnablePatch adds the enablePatch to the patch docker registry webhook by name using p a t c h params
+func (o *PatchDockerRegistryWebhookByNameUsingPATCHParams) SetEnablePatch(enablePatch models.WebhookEnablePatch) {
+	o.EnablePatch = enablePatch
 }
 
 // WithName adds the name to the patch docker registry webhook by name using p a t c h params
@@ -219,7 +221,7 @@ func (o *PatchDockerRegistryWebhookByNameUsingPATCHParams) WriteToRequest(r runt
 	if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
 		return err
 	}
-	if err := r.SetBodyParam(o.DockerRegistryWebhookPatch); err != nil {
+	if err := r.SetBodyParam(o.EnablePatch); err != nil {
 		return err
 	}
 

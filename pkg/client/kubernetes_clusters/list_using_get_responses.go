@@ -29,6 +29,12 @@ func (o *ListUsingGETReader) ReadResponse(response runtime.ClientResponse, consu
 			return nil, err
 		}
 		return result, nil
+	case 403:
+		result := NewListUsingGETForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +45,8 @@ func NewListUsingGETOK() *ListUsingGETOK {
 	return &ListUsingGETOK{}
 }
 
-/* ListUsingGETOK describes a response with status code 200, with default header values.
+/*
+ListUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +54,39 @@ type ListUsingGETOK struct {
 	Payload *models.PageOfK8SCluster
 }
 
+// IsSuccess returns true when this list using g e t o k response has a 2xx status code
+func (o *ListUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this list using g e t o k response has a 3xx status code
+func (o *ListUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this list using g e t o k response has a 4xx status code
+func (o *ListUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this list using g e t o k response has a 5xx status code
+func (o *ListUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this list using g e t o k response a status code equal to that given
+func (o *ListUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ListUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /cmx/api/resources/k8s/clusters][%d] listUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *ListUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/k8s/clusters][%d] listUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *ListUsingGETOK) GetPayload() *models.PageOfK8SCluster {
 	return o.Payload
 }
@@ -62,6 +99,57 @@ func (o *ListUsingGETOK) readResponse(response runtime.ClientResponse, consumer 
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewListUsingGETForbidden creates a ListUsingGETForbidden with default headers values
+func NewListUsingGETForbidden() *ListUsingGETForbidden {
+	return &ListUsingGETForbidden{}
+}
+
+/*
+ListUsingGETForbidden describes a response with status code 403, with default header values.
+
+Forbidden, the user lacks permissions
+*/
+type ListUsingGETForbidden struct {
+}
+
+// IsSuccess returns true when this list using g e t forbidden response has a 2xx status code
+func (o *ListUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this list using g e t forbidden response has a 3xx status code
+func (o *ListUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this list using g e t forbidden response has a 4xx status code
+func (o *ListUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this list using g e t forbidden response has a 5xx status code
+func (o *ListUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this list using g e t forbidden response a status code equal to that given
+func (o *ListUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *ListUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/k8s/clusters][%d] listUsingGETForbidden ", 403)
+}
+
+func (o *ListUsingGETForbidden) String() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/k8s/clusters][%d] listUsingGETForbidden ", 403)
+}
+
+func (o *ListUsingGETForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

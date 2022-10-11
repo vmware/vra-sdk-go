@@ -69,7 +69,8 @@ func NewExecutePipelineByIDUsingPOSTOK() *ExecutePipelineByIDUsingPOSTOK {
 	return &ExecutePipelineByIDUsingPOSTOK{}
 }
 
-/* ExecutePipelineByIDUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+ExecutePipelineByIDUsingPOSTOK describes a response with status code 200, with default header values.
 
 'Success' with the created execution response
 */
@@ -77,9 +78,39 @@ type ExecutePipelineByIDUsingPOSTOK struct {
 	Payload models.ExecutionResponse
 }
 
+// IsSuccess returns true when this execute pipeline by Id using p o s t o k response has a 2xx status code
+func (o *ExecutePipelineByIDUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this execute pipeline by Id using p o s t o k response has a 3xx status code
+func (o *ExecutePipelineByIDUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this execute pipeline by Id using p o s t o k response has a 4xx status code
+func (o *ExecutePipelineByIDUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this execute pipeline by Id using p o s t o k response has a 5xx status code
+func (o *ExecutePipelineByIDUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this execute pipeline by Id using p o s t o k response a status code equal to that given
+func (o *ExecutePipelineByIDUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ExecutePipelineByIDUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/pipelines/{id}/executions][%d] executePipelineByIdUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *ExecutePipelineByIDUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /codestream/api/pipelines/{id}/executions][%d] executePipelineByIdUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *ExecutePipelineByIDUsingPOSTOK) GetPayload() models.ExecutionResponse {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewExecutePipelineByIDUsingPOSTAccepted() *ExecutePipelineByIDUsingPOSTAcce
 	return &ExecutePipelineByIDUsingPOSTAccepted{}
 }
 
-/* ExecutePipelineByIDUsingPOSTAccepted describes a response with status code 202, with default header values.
+/*
+ExecutePipelineByIDUsingPOSTAccepted describes a response with status code 202, with default header values.
 
 Accepted
 */
@@ -109,9 +141,39 @@ type ExecutePipelineByIDUsingPOSTAccepted struct {
 	Payload models.ExecutionResponse
 }
 
+// IsSuccess returns true when this execute pipeline by Id using p o s t accepted response has a 2xx status code
+func (o *ExecutePipelineByIDUsingPOSTAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this execute pipeline by Id using p o s t accepted response has a 3xx status code
+func (o *ExecutePipelineByIDUsingPOSTAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this execute pipeline by Id using p o s t accepted response has a 4xx status code
+func (o *ExecutePipelineByIDUsingPOSTAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this execute pipeline by Id using p o s t accepted response has a 5xx status code
+func (o *ExecutePipelineByIDUsingPOSTAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this execute pipeline by Id using p o s t accepted response a status code equal to that given
+func (o *ExecutePipelineByIDUsingPOSTAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ExecutePipelineByIDUsingPOSTAccepted) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/pipelines/{id}/executions][%d] executePipelineByIdUsingPOSTAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ExecutePipelineByIDUsingPOSTAccepted) String() string {
+	return fmt.Sprintf("[POST /codestream/api/pipelines/{id}/executions][%d] executePipelineByIdUsingPOSTAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ExecutePipelineByIDUsingPOSTAccepted) GetPayload() models.ExecutionResponse {
 	return o.Payload
 }
@@ -133,14 +195,44 @@ func NewExecutePipelineByIDUsingPOSTUnauthorized() *ExecutePipelineByIDUsingPOST
 	return &ExecutePipelineByIDUsingPOSTUnauthorized{}
 }
 
-/* ExecutePipelineByIDUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+ExecutePipelineByIDUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type ExecutePipelineByIDUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this execute pipeline by Id using p o s t unauthorized response has a 2xx status code
+func (o *ExecutePipelineByIDUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this execute pipeline by Id using p o s t unauthorized response has a 3xx status code
+func (o *ExecutePipelineByIDUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this execute pipeline by Id using p o s t unauthorized response has a 4xx status code
+func (o *ExecutePipelineByIDUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this execute pipeline by Id using p o s t unauthorized response has a 5xx status code
+func (o *ExecutePipelineByIDUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this execute pipeline by Id using p o s t unauthorized response a status code equal to that given
+func (o *ExecutePipelineByIDUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ExecutePipelineByIDUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/pipelines/{id}/executions][%d] executePipelineByIdUsingPOSTUnauthorized ", 401)
+}
+
+func (o *ExecutePipelineByIDUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /codestream/api/pipelines/{id}/executions][%d] executePipelineByIdUsingPOSTUnauthorized ", 401)
 }
 
@@ -154,14 +246,44 @@ func NewExecutePipelineByIDUsingPOSTForbidden() *ExecutePipelineByIDUsingPOSTFor
 	return &ExecutePipelineByIDUsingPOSTForbidden{}
 }
 
-/* ExecutePipelineByIDUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+ExecutePipelineByIDUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type ExecutePipelineByIDUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this execute pipeline by Id using p o s t forbidden response has a 2xx status code
+func (o *ExecutePipelineByIDUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this execute pipeline by Id using p o s t forbidden response has a 3xx status code
+func (o *ExecutePipelineByIDUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this execute pipeline by Id using p o s t forbidden response has a 4xx status code
+func (o *ExecutePipelineByIDUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this execute pipeline by Id using p o s t forbidden response has a 5xx status code
+func (o *ExecutePipelineByIDUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this execute pipeline by Id using p o s t forbidden response a status code equal to that given
+func (o *ExecutePipelineByIDUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ExecutePipelineByIDUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/pipelines/{id}/executions][%d] executePipelineByIdUsingPOSTForbidden ", 403)
+}
+
+func (o *ExecutePipelineByIDUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /codestream/api/pipelines/{id}/executions][%d] executePipelineByIdUsingPOSTForbidden ", 403)
 }
 
@@ -175,7 +297,8 @@ func NewExecutePipelineByIDUsingPOSTNotFound() *ExecutePipelineByIDUsingPOSTNotF
 	return &ExecutePipelineByIDUsingPOSTNotFound{}
 }
 
-/* ExecutePipelineByIDUsingPOSTNotFound describes a response with status code 404, with default header values.
+/*
+ExecutePipelineByIDUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -183,9 +306,39 @@ type ExecutePipelineByIDUsingPOSTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this execute pipeline by Id using p o s t not found response has a 2xx status code
+func (o *ExecutePipelineByIDUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this execute pipeline by Id using p o s t not found response has a 3xx status code
+func (o *ExecutePipelineByIDUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this execute pipeline by Id using p o s t not found response has a 4xx status code
+func (o *ExecutePipelineByIDUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this execute pipeline by Id using p o s t not found response has a 5xx status code
+func (o *ExecutePipelineByIDUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this execute pipeline by Id using p o s t not found response a status code equal to that given
+func (o *ExecutePipelineByIDUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ExecutePipelineByIDUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/pipelines/{id}/executions][%d] executePipelineByIdUsingPOSTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ExecutePipelineByIDUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /codestream/api/pipelines/{id}/executions][%d] executePipelineByIdUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ExecutePipelineByIDUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -207,14 +360,44 @@ func NewExecutePipelineByIDUsingPOSTInternalServerError() *ExecutePipelineByIDUs
 	return &ExecutePipelineByIDUsingPOSTInternalServerError{}
 }
 
-/* ExecutePipelineByIDUsingPOSTInternalServerError describes a response with status code 500, with default header values.
+/*
+ExecutePipelineByIDUsingPOSTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ExecutePipelineByIDUsingPOSTInternalServerError struct {
 }
 
+// IsSuccess returns true when this execute pipeline by Id using p o s t internal server error response has a 2xx status code
+func (o *ExecutePipelineByIDUsingPOSTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this execute pipeline by Id using p o s t internal server error response has a 3xx status code
+func (o *ExecutePipelineByIDUsingPOSTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this execute pipeline by Id using p o s t internal server error response has a 4xx status code
+func (o *ExecutePipelineByIDUsingPOSTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this execute pipeline by Id using p o s t internal server error response has a 5xx status code
+func (o *ExecutePipelineByIDUsingPOSTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this execute pipeline by Id using p o s t internal server error response a status code equal to that given
+func (o *ExecutePipelineByIDUsingPOSTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ExecutePipelineByIDUsingPOSTInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/pipelines/{id}/executions][%d] executePipelineByIdUsingPOSTInternalServerError ", 500)
+}
+
+func (o *ExecutePipelineByIDUsingPOSTInternalServerError) String() string {
 	return fmt.Sprintf("[POST /codestream/api/pipelines/{id}/executions][%d] executePipelineByIdUsingPOSTInternalServerError ", 500)
 }
 

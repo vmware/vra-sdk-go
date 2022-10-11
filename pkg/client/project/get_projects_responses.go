@@ -45,7 +45,8 @@ func NewGetProjectsOK() *GetProjectsOK {
 	return &GetProjectsOK{}
 }
 
-/* GetProjectsOK describes a response with status code 200, with default header values.
+/*
+GetProjectsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type GetProjectsOK struct {
 	Payload *models.ProjectResult
 }
 
+// IsSuccess returns true when this get projects o k response has a 2xx status code
+func (o *GetProjectsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get projects o k response has a 3xx status code
+func (o *GetProjectsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get projects o k response has a 4xx status code
+func (o *GetProjectsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get projects o k response has a 5xx status code
+func (o *GetProjectsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get projects o k response a status code equal to that given
+func (o *GetProjectsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetProjectsOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/projects][%d] getProjectsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetProjectsOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/projects][%d] getProjectsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetProjectsOK) GetPayload() *models.ProjectResult {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewGetProjectsForbidden() *GetProjectsForbidden {
 	return &GetProjectsForbidden{}
 }
 
-/* GetProjectsForbidden describes a response with status code 403, with default header values.
+/*
+GetProjectsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type GetProjectsForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get projects forbidden response has a 2xx status code
+func (o *GetProjectsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get projects forbidden response has a 3xx status code
+func (o *GetProjectsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get projects forbidden response has a 4xx status code
+func (o *GetProjectsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get projects forbidden response has a 5xx status code
+func (o *GetProjectsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get projects forbidden response a status code equal to that given
+func (o *GetProjectsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetProjectsForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/projects][%d] getProjectsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetProjectsForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/projects][%d] getProjectsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetProjectsForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

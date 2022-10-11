@@ -54,10 +54,12 @@ func NewUpdateDockerRegistryWebhookByNameUsingPUTParamsWithHTTPClient(client *ht
 	}
 }
 
-/* UpdateDockerRegistryWebhookByNameUsingPUTParams contains all the parameters to send to the API endpoint
-   for the update docker registry webhook by name using p u t operation.
+/*
+UpdateDockerRegistryWebhookByNameUsingPUTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update docker registry webhook by name using p u t operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateDockerRegistryWebhookByNameUsingPUTParams struct {
 

@@ -54,10 +54,12 @@ func NewPatchGerritTriggerByIDUsingPATCHParamsWithHTTPClient(client *http.Client
 	}
 }
 
-/* PatchGerritTriggerByIDUsingPATCHParams contains all the parameters to send to the API endpoint
-   for the patch gerrit trigger by Id using p a t c h operation.
+/*
+PatchGerritTriggerByIDUsingPATCHParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the patch gerrit trigger by Id using p a t c h operation.
+
+	Typically these are written to a http.Request.
 */
 type PatchGerritTriggerByIDUsingPATCHParams struct {
 

@@ -54,10 +54,12 @@ func NewUpdatePolicyUsingPUT2ParamsWithHTTPClient(client *http.Client) *UpdatePo
 	}
 }
 
-/* UpdatePolicyUsingPUT2Params contains all the parameters to send to the API endpoint
-   for the update policy using p u t 2 operation.
+/*
+UpdatePolicyUsingPUT2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update policy using p u t 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdatePolicyUsingPUT2Params struct {
 

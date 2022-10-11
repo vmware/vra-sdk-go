@@ -26,6 +26,12 @@ func (o *DeleteUsingDELETE1Reader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return result, nil
+	case 403:
+		result := NewDeleteUsingDELETE1Forbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -36,18 +42,99 @@ func NewDeleteUsingDELETE1OK() *DeleteUsingDELETE1OK {
 	return &DeleteUsingDELETE1OK{}
 }
 
-/* DeleteUsingDELETE1OK describes a response with status code 200, with default header values.
+/*
+DeleteUsingDELETE1OK describes a response with status code 200, with default header values.
 
 OK
 */
 type DeleteUsingDELETE1OK struct {
 }
 
+// IsSuccess returns true when this delete using d e l e t e1 o k response has a 2xx status code
+func (o *DeleteUsingDELETE1OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete using d e l e t e1 o k response has a 3xx status code
+func (o *DeleteUsingDELETE1OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete using d e l e t e1 o k response has a 4xx status code
+func (o *DeleteUsingDELETE1OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete using d e l e t e1 o k response has a 5xx status code
+func (o *DeleteUsingDELETE1OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete using d e l e t e1 o k response a status code equal to that given
+func (o *DeleteUsingDELETE1OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteUsingDELETE1OK) Error() string {
 	return fmt.Sprintf("[DELETE /cmx/api/resources/k8s/namespaces/{id}][%d] deleteUsingDELETE1OK ", 200)
 }
 
+func (o *DeleteUsingDELETE1OK) String() string {
+	return fmt.Sprintf("[DELETE /cmx/api/resources/k8s/namespaces/{id}][%d] deleteUsingDELETE1OK ", 200)
+}
+
 func (o *DeleteUsingDELETE1OK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewDeleteUsingDELETE1Forbidden creates a DeleteUsingDELETE1Forbidden with default headers values
+func NewDeleteUsingDELETE1Forbidden() *DeleteUsingDELETE1Forbidden {
+	return &DeleteUsingDELETE1Forbidden{}
+}
+
+/*
+DeleteUsingDELETE1Forbidden describes a response with status code 403, with default header values.
+
+Forbidden, the user lacks permissions
+*/
+type DeleteUsingDELETE1Forbidden struct {
+}
+
+// IsSuccess returns true when this delete using d e l e t e1 forbidden response has a 2xx status code
+func (o *DeleteUsingDELETE1Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete using d e l e t e1 forbidden response has a 3xx status code
+func (o *DeleteUsingDELETE1Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete using d e l e t e1 forbidden response has a 4xx status code
+func (o *DeleteUsingDELETE1Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete using d e l e t e1 forbidden response has a 5xx status code
+func (o *DeleteUsingDELETE1Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete using d e l e t e1 forbidden response a status code equal to that given
+func (o *DeleteUsingDELETE1Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *DeleteUsingDELETE1Forbidden) Error() string {
+	return fmt.Sprintf("[DELETE /cmx/api/resources/k8s/namespaces/{id}][%d] deleteUsingDELETE1Forbidden ", 403)
+}
+
+func (o *DeleteUsingDELETE1Forbidden) String() string {
+	return fmt.Sprintf("[DELETE /cmx/api/resources/k8s/namespaces/{id}][%d] deleteUsingDELETE1Forbidden ", 403)
+}
+
+func (o *DeleteUsingDELETE1Forbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

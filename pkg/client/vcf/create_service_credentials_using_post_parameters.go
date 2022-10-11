@@ -54,10 +54,12 @@ func NewCreateServiceCredentialsUsingPOSTParamsWithHTTPClient(client *http.Clien
 	}
 }
 
-/* CreateServiceCredentialsUsingPOSTParams contains all the parameters to send to the API endpoint
-   for the create service credentials using p o s t operation.
+/*
+CreateServiceCredentialsUsingPOSTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create service credentials using p o s t operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateServiceCredentialsUsingPOSTParams struct {
 

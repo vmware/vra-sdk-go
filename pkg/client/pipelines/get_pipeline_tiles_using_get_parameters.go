@@ -52,10 +52,12 @@ func NewGetPipelineTilesUsingGETParamsWithHTTPClient(client *http.Client) *GetPi
 	}
 }
 
-/* GetPipelineTilesUsingGETParams contains all the parameters to send to the API endpoint
-   for the get pipeline tiles using g e t operation.
+/*
+GetPipelineTilesUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get pipeline tiles using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetPipelineTilesUsingGETParams struct {
 

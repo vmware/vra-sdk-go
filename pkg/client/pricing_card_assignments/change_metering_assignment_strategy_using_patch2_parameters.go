@@ -54,10 +54,12 @@ func NewChangeMeteringAssignmentStrategyUsingPATCH2ParamsWithHTTPClient(client *
 	}
 }
 
-/* ChangeMeteringAssignmentStrategyUsingPATCH2Params contains all the parameters to send to the API endpoint
-   for the change metering assignment strategy using p a t c h 2 operation.
+/*
+ChangeMeteringAssignmentStrategyUsingPATCH2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the change metering assignment strategy using p a t c h 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type ChangeMeteringAssignmentStrategyUsingPATCH2Params struct {
 

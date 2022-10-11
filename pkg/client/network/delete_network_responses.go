@@ -45,7 +45,8 @@ func NewDeleteNetworkAccepted() *DeleteNetworkAccepted {
 	return &DeleteNetworkAccepted{}
 }
 
-/* DeleteNetworkAccepted describes a response with status code 202, with default header values.
+/*
+DeleteNetworkAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type DeleteNetworkAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this delete network accepted response has a 2xx status code
+func (o *DeleteNetworkAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete network accepted response has a 3xx status code
+func (o *DeleteNetworkAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete network accepted response has a 4xx status code
+func (o *DeleteNetworkAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete network accepted response has a 5xx status code
+func (o *DeleteNetworkAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete network accepted response a status code equal to that given
+func (o *DeleteNetworkAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteNetworkAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/networks/{id}][%d] deleteNetworkAccepted  %+v", 202, o.Payload)
 }
+
+func (o *DeleteNetworkAccepted) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/networks/{id}][%d] deleteNetworkAccepted  %+v", 202, o.Payload)
+}
+
 func (o *DeleteNetworkAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewDeleteNetworkForbidden() *DeleteNetworkForbidden {
 	return &DeleteNetworkForbidden{}
 }
 
-/* DeleteNetworkForbidden describes a response with status code 403, with default header values.
+/*
+DeleteNetworkForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type DeleteNetworkForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this delete network forbidden response has a 2xx status code
+func (o *DeleteNetworkForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete network forbidden response has a 3xx status code
+func (o *DeleteNetworkForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete network forbidden response has a 4xx status code
+func (o *DeleteNetworkForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete network forbidden response has a 5xx status code
+func (o *DeleteNetworkForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete network forbidden response a status code equal to that given
+func (o *DeleteNetworkForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteNetworkForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/networks/{id}][%d] deleteNetworkForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DeleteNetworkForbidden) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/networks/{id}][%d] deleteNetworkForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DeleteNetworkForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

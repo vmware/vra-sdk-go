@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
@@ -162,7 +161,7 @@ func UnmarshalUpdateProjectSpecificationSlice(reader io.Reader, consumer runtime
 // UnmarshalUpdateProjectSpecification unmarshals polymorphic UpdateProjectSpecification
 func UnmarshalUpdateProjectSpecification(reader io.Reader, consumer runtime.Consumer) (UpdateProjectSpecification, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}

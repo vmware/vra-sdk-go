@@ -57,7 +57,8 @@ func NewCreateBlueprintFromMappingUsingPOSTOK() *CreateBlueprintFromMappingUsing
 	return &CreateBlueprintFromMappingUsingPOSTOK{}
 }
 
-/* CreateBlueprintFromMappingUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+CreateBlueprintFromMappingUsingPOSTOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -65,9 +66,39 @@ type CreateBlueprintFromMappingUsingPOSTOK struct {
 	Payload *models.Blueprint
 }
 
+// IsSuccess returns true when this create blueprint from mapping using p o s t o k response has a 2xx status code
+func (o *CreateBlueprintFromMappingUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create blueprint from mapping using p o s t o k response has a 3xx status code
+func (o *CreateBlueprintFromMappingUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create blueprint from mapping using p o s t o k response has a 4xx status code
+func (o *CreateBlueprintFromMappingUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create blueprint from mapping using p o s t o k response has a 5xx status code
+func (o *CreateBlueprintFromMappingUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create blueprint from mapping using p o s t o k response a status code equal to that given
+func (o *CreateBlueprintFromMappingUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CreateBlueprintFromMappingUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprint-integrations/terraform/create-blueprint-from-mapping][%d] createBlueprintFromMappingUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *CreateBlueprintFromMappingUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /blueprint/api/blueprint-integrations/terraform/create-blueprint-from-mapping][%d] createBlueprintFromMappingUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *CreateBlueprintFromMappingUsingPOSTOK) GetPayload() *models.Blueprint {
 	return o.Payload
 }
@@ -89,7 +120,8 @@ func NewCreateBlueprintFromMappingUsingPOSTBadRequest() *CreateBlueprintFromMapp
 	return &CreateBlueprintFromMappingUsingPOSTBadRequest{}
 }
 
-/* CreateBlueprintFromMappingUsingPOSTBadRequest describes a response with status code 400, with default header values.
+/*
+CreateBlueprintFromMappingUsingPOSTBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -97,9 +129,39 @@ type CreateBlueprintFromMappingUsingPOSTBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create blueprint from mapping using p o s t bad request response has a 2xx status code
+func (o *CreateBlueprintFromMappingUsingPOSTBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create blueprint from mapping using p o s t bad request response has a 3xx status code
+func (o *CreateBlueprintFromMappingUsingPOSTBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create blueprint from mapping using p o s t bad request response has a 4xx status code
+func (o *CreateBlueprintFromMappingUsingPOSTBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create blueprint from mapping using p o s t bad request response has a 5xx status code
+func (o *CreateBlueprintFromMappingUsingPOSTBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create blueprint from mapping using p o s t bad request response a status code equal to that given
+func (o *CreateBlueprintFromMappingUsingPOSTBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateBlueprintFromMappingUsingPOSTBadRequest) Error() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprint-integrations/terraform/create-blueprint-from-mapping][%d] createBlueprintFromMappingUsingPOSTBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateBlueprintFromMappingUsingPOSTBadRequest) String() string {
+	return fmt.Sprintf("[POST /blueprint/api/blueprint-integrations/terraform/create-blueprint-from-mapping][%d] createBlueprintFromMappingUsingPOSTBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateBlueprintFromMappingUsingPOSTBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -121,14 +183,44 @@ func NewCreateBlueprintFromMappingUsingPOSTUnauthorized() *CreateBlueprintFromMa
 	return &CreateBlueprintFromMappingUsingPOSTUnauthorized{}
 }
 
-/* CreateBlueprintFromMappingUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateBlueprintFromMappingUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type CreateBlueprintFromMappingUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this create blueprint from mapping using p o s t unauthorized response has a 2xx status code
+func (o *CreateBlueprintFromMappingUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create blueprint from mapping using p o s t unauthorized response has a 3xx status code
+func (o *CreateBlueprintFromMappingUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create blueprint from mapping using p o s t unauthorized response has a 4xx status code
+func (o *CreateBlueprintFromMappingUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create blueprint from mapping using p o s t unauthorized response has a 5xx status code
+func (o *CreateBlueprintFromMappingUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create blueprint from mapping using p o s t unauthorized response a status code equal to that given
+func (o *CreateBlueprintFromMappingUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreateBlueprintFromMappingUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /blueprint/api/blueprint-integrations/terraform/create-blueprint-from-mapping][%d] createBlueprintFromMappingUsingPOSTUnauthorized ", 401)
+}
+
+func (o *CreateBlueprintFromMappingUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprint-integrations/terraform/create-blueprint-from-mapping][%d] createBlueprintFromMappingUsingPOSTUnauthorized ", 401)
 }
 
@@ -142,14 +234,44 @@ func NewCreateBlueprintFromMappingUsingPOSTForbidden() *CreateBlueprintFromMappi
 	return &CreateBlueprintFromMappingUsingPOSTForbidden{}
 }
 
-/* CreateBlueprintFromMappingUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+CreateBlueprintFromMappingUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type CreateBlueprintFromMappingUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this create blueprint from mapping using p o s t forbidden response has a 2xx status code
+func (o *CreateBlueprintFromMappingUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create blueprint from mapping using p o s t forbidden response has a 3xx status code
+func (o *CreateBlueprintFromMappingUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create blueprint from mapping using p o s t forbidden response has a 4xx status code
+func (o *CreateBlueprintFromMappingUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create blueprint from mapping using p o s t forbidden response has a 5xx status code
+func (o *CreateBlueprintFromMappingUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create blueprint from mapping using p o s t forbidden response a status code equal to that given
+func (o *CreateBlueprintFromMappingUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateBlueprintFromMappingUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /blueprint/api/blueprint-integrations/terraform/create-blueprint-from-mapping][%d] createBlueprintFromMappingUsingPOSTForbidden ", 403)
+}
+
+func (o *CreateBlueprintFromMappingUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprint-integrations/terraform/create-blueprint-from-mapping][%d] createBlueprintFromMappingUsingPOSTForbidden ", 403)
 }
 

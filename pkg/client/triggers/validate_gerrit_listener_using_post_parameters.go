@@ -54,10 +54,12 @@ func NewValidateGerritListenerUsingPOSTParamsWithHTTPClient(client *http.Client)
 	}
 }
 
-/* ValidateGerritListenerUsingPOSTParams contains all the parameters to send to the API endpoint
-   for the validate gerrit listener using p o s t operation.
+/*
+ValidateGerritListenerUsingPOSTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the validate gerrit listener using p o s t operation.
+
+	Typically these are written to a http.Request.
 */
 type ValidateGerritListenerUsingPOSTParams struct {
 

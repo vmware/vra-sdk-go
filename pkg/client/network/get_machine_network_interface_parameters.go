@@ -52,10 +52,12 @@ func NewGetMachineNetworkInterfaceParamsWithHTTPClient(client *http.Client) *Get
 	}
 }
 
-/* GetMachineNetworkInterfaceParams contains all the parameters to send to the API endpoint
-   for the get machine network interface operation.
+/*
+GetMachineNetworkInterfaceParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get machine network interface operation.
+
+	Typically these are written to a http.Request.
 */
 type GetMachineNetworkInterfaceParams struct {
 

@@ -52,7 +52,7 @@ type ClientService interface {
 
 	DeleteAzureCloudAccount(params *DeleteAzureCloudAccountParams, opts ...ClientOption) (*DeleteAzureCloudAccountAccepted, *DeleteAzureCloudAccountNoContent, error)
 
-	DeleteCloudAccount(params *DeleteCloudAccountParams, opts ...ClientOption) (*DeleteCloudAccountAccepted, error)
+	DeleteCloudAccount(params *DeleteCloudAccountParams, opts ...ClientOption) (*DeleteCloudAccountAccepted, *DeleteCloudAccountNoContent, error)
 
 	DeleteCloudAccountNsxT(params *DeleteCloudAccountNsxTParams, opts ...ClientOption) (*DeleteCloudAccountNsxTAccepted, *DeleteCloudAccountNsxTNoContent, error)
 
@@ -132,6 +132,8 @@ type ClientService interface {
 
 	GetVmcCloudAccounts(params *GetVmcCloudAccountsParams, opts ...ClientOption) (*GetVmcCloudAccountsOK, error)
 
+	RunEndpointHealthCheck(params *RunEndpointHealthCheckParams, opts ...ClientOption) (*RunEndpointHealthCheckAccepted, error)
+
 	UpdateAWSCloudAccountAsync(params *UpdateAWSCloudAccountAsyncParams, opts ...ClientOption) (*UpdateAWSCloudAccountAsyncAccepted, error)
 
 	UpdateAzureCloudAccountAsync(params *UpdateAzureCloudAccountAsyncParams, opts ...ClientOption) (*UpdateAzureCloudAccountAsyncAccepted, error)
@@ -154,9 +156,9 @@ type ClientService interface {
 }
 
 /*
-  CreateAwsCloudAccountAsync creates a cloud account
+CreateAwsCloudAccountAsync creates a cloud account
 
-  Create a cloud account in the current organization
+Create a cloud account in the current organization
 */
 func (a *Client) CreateAwsCloudAccountAsync(params *CreateAwsCloudAccountAsyncParams, opts ...ClientOption) (*CreateAwsCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
@@ -194,9 +196,9 @@ func (a *Client) CreateAwsCloudAccountAsync(params *CreateAwsCloudAccountAsyncPa
 }
 
 /*
-  CreateAzureCloudAccountAsync creates a cloud account
+CreateAzureCloudAccountAsync creates a cloud account
 
-  Create a cloud account in the current organization
+Create a cloud account in the current organization
 */
 func (a *Client) CreateAzureCloudAccountAsync(params *CreateAzureCloudAccountAsyncParams, opts ...ClientOption) (*CreateAzureCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
@@ -234,9 +236,9 @@ func (a *Client) CreateAzureCloudAccountAsync(params *CreateAzureCloudAccountAsy
 }
 
 /*
-  CreateCloudAccountAsync creates a cloud account
+CreateCloudAccountAsync creates a cloud account
 
-  Create a cloud account in the current organization
+Create a cloud account in the current organization
 */
 func (a *Client) CreateCloudAccountAsync(params *CreateCloudAccountAsyncParams, opts ...ClientOption) (*CreateCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
@@ -274,9 +276,9 @@ func (a *Client) CreateCloudAccountAsync(params *CreateCloudAccountAsyncParams, 
 }
 
 /*
-  CreateGcpCloudAccountAsync creates a cloud account
+CreateGcpCloudAccountAsync creates a cloud account
 
-  Create a cloud account in the current organization
+Create a cloud account in the current organization
 */
 func (a *Client) CreateGcpCloudAccountAsync(params *CreateGcpCloudAccountAsyncParams, opts ...ClientOption) (*CreateGcpCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
@@ -314,9 +316,9 @@ func (a *Client) CreateGcpCloudAccountAsync(params *CreateGcpCloudAccountAsyncPa
 }
 
 /*
-  CreateNsxTCloudAccountAsync creates a cloud account
+CreateNsxTCloudAccountAsync creates a cloud account
 
-  Create a cloud account in the current organization
+Create a cloud account in the current organization
 */
 func (a *Client) CreateNsxTCloudAccountAsync(params *CreateNsxTCloudAccountAsyncParams, opts ...ClientOption) (*CreateNsxTCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
@@ -354,9 +356,9 @@ func (a *Client) CreateNsxTCloudAccountAsync(params *CreateNsxTCloudAccountAsync
 }
 
 /*
-  CreateNsxVCloudAccountAsync creates a cloud account
+CreateNsxVCloudAccountAsync creates a cloud account
 
-  Create a cloud account in the current organization
+Create a cloud account in the current organization
 */
 func (a *Client) CreateNsxVCloudAccountAsync(params *CreateNsxVCloudAccountAsyncParams, opts ...ClientOption) (*CreateNsxVCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
@@ -394,9 +396,9 @@ func (a *Client) CreateNsxVCloudAccountAsync(params *CreateNsxVCloudAccountAsync
 }
 
 /*
-  CreateVSphereCloudAccountAsync creates a cloud account
+CreateVSphereCloudAccountAsync creates a cloud account
 
-  Create a cloud account in the current organization
+Create a cloud account in the current organization
 */
 func (a *Client) CreateVSphereCloudAccountAsync(params *CreateVSphereCloudAccountAsyncParams, opts ...ClientOption) (*CreateVSphereCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
@@ -434,9 +436,9 @@ func (a *Client) CreateVSphereCloudAccountAsync(params *CreateVSphereCloudAccoun
 }
 
 /*
-  CreateVcfCloudAccountAsync creates a cloud account
+CreateVcfCloudAccountAsync creates a cloud account
 
-  Create a cloud account in the current organization
+Create a cloud account in the current organization
 */
 func (a *Client) CreateVcfCloudAccountAsync(params *CreateVcfCloudAccountAsyncParams, opts ...ClientOption) (*CreateVcfCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
@@ -474,9 +476,9 @@ func (a *Client) CreateVcfCloudAccountAsync(params *CreateVcfCloudAccountAsyncPa
 }
 
 /*
-  CreateVmcCloudAccountAsync creates a cloud account
+CreateVmcCloudAccountAsync creates a cloud account
 
-  Create a cloud account in the current organization
+Create a cloud account in the current organization
 */
 func (a *Client) CreateVmcCloudAccountAsync(params *CreateVmcCloudAccountAsyncParams, opts ...ClientOption) (*CreateVmcCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
@@ -514,9 +516,9 @@ func (a *Client) CreateVmcCloudAccountAsync(params *CreateVmcCloudAccountAsyncPa
 }
 
 /*
-  DeleteAwsCloudAccount deletes an a w s cloud account
+DeleteAwsCloudAccount deletes an a w s cloud account
 
-  Delete an AWS cloud account with a given id
+Delete an AWS cloud account with a given id
 */
 func (a *Client) DeleteAwsCloudAccount(params *DeleteAwsCloudAccountParams, opts ...ClientOption) (*DeleteAwsCloudAccountAccepted, *DeleteAwsCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
@@ -555,9 +557,9 @@ func (a *Client) DeleteAwsCloudAccount(params *DeleteAwsCloudAccountParams, opts
 }
 
 /*
-  DeleteAzureCloudAccount deletes an azure cloud account
+DeleteAzureCloudAccount deletes an azure cloud account
 
-  Delete an Azure Cloud Account with a given id
+Delete an Azure Cloud Account with a given id
 */
 func (a *Client) DeleteAzureCloudAccount(params *DeleteAzureCloudAccountParams, opts ...ClientOption) (*DeleteAzureCloudAccountAccepted, *DeleteAzureCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
@@ -596,11 +598,11 @@ func (a *Client) DeleteAzureCloudAccount(params *DeleteAzureCloudAccountParams, 
 }
 
 /*
-  DeleteCloudAccount deletes a cloud account
+DeleteCloudAccount deletes a cloud account
 
-  Delete a cloud account with a given id
+Delete a cloud account with a given id
 */
-func (a *Client) DeleteCloudAccount(params *DeleteCloudAccountParams, opts ...ClientOption) (*DeleteCloudAccountAccepted, error) {
+func (a *Client) DeleteCloudAccount(params *DeleteCloudAccountParams, opts ...ClientOption) (*DeleteCloudAccountAccepted, *DeleteCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteCloudAccountParams()
@@ -623,22 +625,23 @@ func (a *Client) DeleteCloudAccount(params *DeleteCloudAccountParams, opts ...Cl
 
 	result, err := a.transport.Submit(op)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	success, ok := result.(*DeleteCloudAccountAccepted)
-	if ok {
-		return success, nil
+	switch value := result.(type) {
+	case *DeleteCloudAccountAccepted:
+		return value, nil, nil
+	case *DeleteCloudAccountNoContent:
+		return nil, value, nil
 	}
-	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteCloudAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for cloud_account: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  DeleteCloudAccountNsxT deletes a n s x t cloud account
+DeleteCloudAccountNsxT deletes a n s x t cloud account
 
-  Delete a NSX-T cloud account with a given id
+Delete a NSX-T cloud account with a given id
 */
 func (a *Client) DeleteCloudAccountNsxT(params *DeleteCloudAccountNsxTParams, opts ...ClientOption) (*DeleteCloudAccountNsxTAccepted, *DeleteCloudAccountNsxTNoContent, error) {
 	// TODO: Validate the params before sending
@@ -677,9 +680,9 @@ func (a *Client) DeleteCloudAccountNsxT(params *DeleteCloudAccountNsxTParams, op
 }
 
 /*
-  DeleteCloudAccountNsxV deletes a n s v v cloud account
+DeleteCloudAccountNsxV deletes a n s v v cloud account
 
-  Delete a NSV-V cloud account with a given id
+Delete a NSV-V cloud account with a given id
 */
 func (a *Client) DeleteCloudAccountNsxV(params *DeleteCloudAccountNsxVParams, opts ...ClientOption) (*DeleteCloudAccountNsxVAccepted, *DeleteCloudAccountNsxVNoContent, error) {
 	// TODO: Validate the params before sending
@@ -718,9 +721,9 @@ func (a *Client) DeleteCloudAccountNsxV(params *DeleteCloudAccountNsxVParams, op
 }
 
 /*
-  DeleteGcpCloudAccount deletes an g c p cloud account
+DeleteGcpCloudAccount deletes an g c p cloud account
 
-  Delete an GCP cloud account with a given id
+Delete an GCP cloud account with a given id
 */
 func (a *Client) DeleteGcpCloudAccount(params *DeleteGcpCloudAccountParams, opts ...ClientOption) (*DeleteGcpCloudAccountAccepted, *DeleteGcpCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
@@ -759,9 +762,9 @@ func (a *Client) DeleteGcpCloudAccount(params *DeleteGcpCloudAccountParams, opts
 }
 
 /*
-  DeleteVSphereCloudAccount deletes a v sphere cloud account
+DeleteVSphereCloudAccount deletes a v sphere cloud account
 
-  Delete a vSphere Cloud Account with a given id
+Delete a vSphere Cloud Account with a given id
 */
 func (a *Client) DeleteVSphereCloudAccount(params *DeleteVSphereCloudAccountParams, opts ...ClientOption) (*DeleteVSphereCloudAccountAccepted, *DeleteVSphereCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
@@ -800,9 +803,9 @@ func (a *Client) DeleteVSphereCloudAccount(params *DeleteVSphereCloudAccountPara
 }
 
 /*
-  DeleteVcfCloudAccount deletes an v c f cloud account
+DeleteVcfCloudAccount deletes an v c f cloud account
 
-  Delete an VCF cloud account with a given id
+Delete an VCF cloud account with a given id
 */
 func (a *Client) DeleteVcfCloudAccount(params *DeleteVcfCloudAccountParams, opts ...ClientOption) (*DeleteVcfCloudAccountAccepted, *DeleteVcfCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
@@ -841,9 +844,9 @@ func (a *Client) DeleteVcfCloudAccount(params *DeleteVcfCloudAccountParams, opts
 }
 
 /*
-  DeleteVmcCloudAccount deletes an VM c cloud account
+DeleteVmcCloudAccount deletes an VM c cloud account
 
-  Delete an VMC cloud account with a given id
+Delete an VMC cloud account with a given id
 */
 func (a *Client) DeleteVmcCloudAccount(params *DeleteVmcCloudAccountParams, opts ...ClientOption) (*DeleteVmcCloudAccountAccepted, *DeleteVmcCloudAccountNoContent, error) {
 	// TODO: Validate the params before sending
@@ -882,9 +885,9 @@ func (a *Client) DeleteVmcCloudAccount(params *DeleteVmcCloudAccountParams, opts
 }
 
 /*
-  EnumerateAwsRegionsAsync gets the available regions for specified a w s cloud account
+EnumerateAwsRegionsAsync gets the available regions for specified a w s cloud account
 
-  Get the available regions for specified AWS cloud account
+Get the available regions for specified AWS cloud account
 */
 func (a *Client) EnumerateAwsRegionsAsync(params *EnumerateAwsRegionsAsyncParams, opts ...ClientOption) (*EnumerateAwsRegionsAsyncAccepted, error) {
 	// TODO: Validate the params before sending
@@ -922,9 +925,9 @@ func (a *Client) EnumerateAwsRegionsAsync(params *EnumerateAwsRegionsAsyncParams
 }
 
 /*
-  EnumerateAzureRegionsAsync gets the available regions for specified azure cloud account
+EnumerateAzureRegionsAsync gets the available regions for specified azure cloud account
 
-  Get the available regions for specified Azure cloud account
+Get the available regions for specified Azure cloud account
 */
 func (a *Client) EnumerateAzureRegionsAsync(params *EnumerateAzureRegionsAsyncParams, opts ...ClientOption) (*EnumerateAzureRegionsAsyncAccepted, error) {
 	// TODO: Validate the params before sending
@@ -962,9 +965,9 @@ func (a *Client) EnumerateAzureRegionsAsync(params *EnumerateAzureRegionsAsyncPa
 }
 
 /*
-  EnumerateGcpRegionsAsync gets the available regions for specified g c p cloud account
+EnumerateGcpRegionsAsync gets the available regions for specified g c p cloud account
 
-  Get the available regions for specified GCP cloud account
+Get the available regions for specified GCP cloud account
 */
 func (a *Client) EnumerateGcpRegionsAsync(params *EnumerateGcpRegionsAsyncParams, opts ...ClientOption) (*EnumerateGcpRegionsAsyncAccepted, error) {
 	// TODO: Validate the params before sending
@@ -1002,7 +1005,7 @@ func (a *Client) EnumerateGcpRegionsAsync(params *EnumerateGcpRegionsAsyncParams
 }
 
 /*
-  EnumeratePrivateImages enumerates all private images for enabled regions of the specified cloud account
+EnumeratePrivateImages enumerates all private images for enabled regions of the specified cloud account
 */
 func (a *Client) EnumeratePrivateImages(params *EnumeratePrivateImagesParams, opts ...ClientOption) (*EnumeratePrivateImagesAccepted, error) {
 	// TODO: Validate the params before sending
@@ -1040,7 +1043,7 @@ func (a *Client) EnumeratePrivateImages(params *EnumeratePrivateImagesParams, op
 }
 
 /*
-  EnumeratePrivateImagesAWS enumerates all private images for enabled regions of the specified a w s account
+EnumeratePrivateImagesAWS enumerates all private images for enabled regions of the specified a w s account
 */
 func (a *Client) EnumeratePrivateImagesAWS(params *EnumeratePrivateImagesAWSParams, opts ...ClientOption) (*EnumeratePrivateImagesAWSAccepted, error) {
 	// TODO: Validate the params before sending
@@ -1078,7 +1081,7 @@ func (a *Client) EnumeratePrivateImagesAWS(params *EnumeratePrivateImagesAWSPara
 }
 
 /*
-  EnumeratePrivateImagesAzure enumerates all private images for enabled regions of the specified azure account
+EnumeratePrivateImagesAzure enumerates all private images for enabled regions of the specified azure account
 */
 func (a *Client) EnumeratePrivateImagesAzure(params *EnumeratePrivateImagesAzureParams, opts ...ClientOption) (*EnumeratePrivateImagesAzureAccepted, error) {
 	// TODO: Validate the params before sending
@@ -1116,7 +1119,7 @@ func (a *Client) EnumeratePrivateImagesAzure(params *EnumeratePrivateImagesAzure
 }
 
 /*
-  EnumeratePrivateImagesGcp enumerates all private images for enabled regions of the specified g c p account
+EnumeratePrivateImagesGcp enumerates all private images for enabled regions of the specified g c p account
 */
 func (a *Client) EnumeratePrivateImagesGcp(params *EnumeratePrivateImagesGcpParams, opts ...ClientOption) (*EnumeratePrivateImagesGcpAccepted, error) {
 	// TODO: Validate the params before sending
@@ -1154,7 +1157,7 @@ func (a *Client) EnumeratePrivateImagesGcp(params *EnumeratePrivateImagesGcpPara
 }
 
 /*
-  EnumeratePrivateImagesVCF enumerates all private images for enabled regions of the specified v c f account
+EnumeratePrivateImagesVCF enumerates all private images for enabled regions of the specified v c f account
 */
 func (a *Client) EnumeratePrivateImagesVCF(params *EnumeratePrivateImagesVCFParams, opts ...ClientOption) (*EnumeratePrivateImagesVCFAccepted, error) {
 	// TODO: Validate the params before sending
@@ -1192,7 +1195,7 @@ func (a *Client) EnumeratePrivateImagesVCF(params *EnumeratePrivateImagesVCFPara
 }
 
 /*
-  EnumeratePrivateImagesVMC enumerates all private images for enabled regions of the specified VM c account
+EnumeratePrivateImagesVMC enumerates all private images for enabled regions of the specified VM c account
 */
 func (a *Client) EnumeratePrivateImagesVMC(params *EnumeratePrivateImagesVMCParams, opts ...ClientOption) (*EnumeratePrivateImagesVMCAccepted, error) {
 	// TODO: Validate the params before sending
@@ -1230,7 +1233,7 @@ func (a *Client) EnumeratePrivateImagesVMC(params *EnumeratePrivateImagesVMCPara
 }
 
 /*
-  EnumeratePrivateImagesVSphere enumerates all private images for enabled regions of the specified v sphere account
+EnumeratePrivateImagesVSphere enumerates all private images for enabled regions of the specified v sphere account
 */
 func (a *Client) EnumeratePrivateImagesVSphere(params *EnumeratePrivateImagesVSphereParams, opts ...ClientOption) (*EnumeratePrivateImagesVSphereAccepted, error) {
 	// TODO: Validate the params before sending
@@ -1268,9 +1271,9 @@ func (a *Client) EnumeratePrivateImagesVSphere(params *EnumeratePrivateImagesVSp
 }
 
 /*
-  EnumerateRegionsAsync gets the available regions for specified cloud account
+EnumerateRegionsAsync gets the available regions for specified cloud account
 
-  Get the available regions for specified cloud account
+Get the available regions for specified cloud account
 */
 func (a *Client) EnumerateRegionsAsync(params *EnumerateRegionsAsyncParams, opts ...ClientOption) (*EnumerateRegionsAsyncAccepted, error) {
 	// TODO: Validate the params before sending
@@ -1308,9 +1311,9 @@ func (a *Client) EnumerateRegionsAsync(params *EnumerateRegionsAsyncParams, opts
 }
 
 /*
-  EnumerateVSphereRegionsAsync gets the available regions for specified v sphere cloud account
+EnumerateVSphereRegionsAsync gets the available regions for specified v sphere cloud account
 
-  Get the available regions for specified vSphere cloud account
+Get the available regions for specified vSphere cloud account
 */
 func (a *Client) EnumerateVSphereRegionsAsync(params *EnumerateVSphereRegionsAsyncParams, opts ...ClientOption) (*EnumerateVSphereRegionsAsyncAccepted, error) {
 	// TODO: Validate the params before sending
@@ -1348,9 +1351,9 @@ func (a *Client) EnumerateVSphereRegionsAsync(params *EnumerateVSphereRegionsAsy
 }
 
 /*
-  EnumerateVcfRegionsAsync gets the available regions for specified v c f cloud account
+EnumerateVcfRegionsAsync gets the available regions for specified v c f cloud account
 
-  Get the available regions for specified VCF cloud account
+Get the available regions for specified VCF cloud account
 */
 func (a *Client) EnumerateVcfRegionsAsync(params *EnumerateVcfRegionsAsyncParams, opts ...ClientOption) (*EnumerateVcfRegionsAsyncAccepted, error) {
 	// TODO: Validate the params before sending
@@ -1388,9 +1391,9 @@ func (a *Client) EnumerateVcfRegionsAsync(params *EnumerateVcfRegionsAsyncParams
 }
 
 /*
-  EnumerateVmcRegionsAsync gets the available regions for specified VM c cloud account
+EnumerateVmcRegionsAsync gets the available regions for specified VM c cloud account
 
-  Get the available regions for specified VMC cloud account
+Get the available regions for specified VMC cloud account
 */
 func (a *Client) EnumerateVmcRegionsAsync(params *EnumerateVmcRegionsAsyncParams, opts ...ClientOption) (*EnumerateVmcRegionsAsyncAccepted, error) {
 	// TODO: Validate the params before sending
@@ -1428,9 +1431,9 @@ func (a *Client) EnumerateVmcRegionsAsync(params *EnumerateVmcRegionsAsyncParams
 }
 
 /*
-  GetAwsCloudAccount gets an a w s cloud account
+GetAwsCloudAccount gets an a w s cloud account
 
-  Get an AWS cloud account with a given id
+Get an AWS cloud account with a given id
 */
 func (a *Client) GetAwsCloudAccount(params *GetAwsCloudAccountParams, opts ...ClientOption) (*GetAwsCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -1468,9 +1471,9 @@ func (a *Client) GetAwsCloudAccount(params *GetAwsCloudAccountParams, opts ...Cl
 }
 
 /*
-  GetAwsCloudAccounts gets a w s cloud accounts
+GetAwsCloudAccounts gets a w s cloud accounts
 
-  Get all AWS cloud accounts within the current organization
+Get all AWS cloud accounts within the current organization
 */
 func (a *Client) GetAwsCloudAccounts(params *GetAwsCloudAccountsParams, opts ...ClientOption) (*GetAwsCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
@@ -1508,9 +1511,9 @@ func (a *Client) GetAwsCloudAccounts(params *GetAwsCloudAccountsParams, opts ...
 }
 
 /*
-  GetAzureCloudAccount gets an azure cloud account
+GetAzureCloudAccount gets an azure cloud account
 
-  Get an Azure Cloud Account with a given id
+Get an Azure Cloud Account with a given id
 */
 func (a *Client) GetAzureCloudAccount(params *GetAzureCloudAccountParams, opts ...ClientOption) (*GetAzureCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -1548,9 +1551,9 @@ func (a *Client) GetAzureCloudAccount(params *GetAzureCloudAccountParams, opts .
 }
 
 /*
-  GetAzureCloudAccounts gets azure cloud accounts
+GetAzureCloudAccounts gets azure cloud accounts
 
-  Get all Azure cloud accounts within the current organization
+Get all Azure cloud accounts within the current organization
 */
 func (a *Client) GetAzureCloudAccounts(params *GetAzureCloudAccountsParams, opts ...ClientOption) (*GetAzureCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
@@ -1588,9 +1591,9 @@ func (a *Client) GetAzureCloudAccounts(params *GetAzureCloudAccountsParams, opts
 }
 
 /*
-  GetCloudAccount gets cloud account
+GetCloudAccount gets cloud account
 
-  Get cloud account with a given id
+Get cloud account with a given id
 */
 func (a *Client) GetCloudAccount(params *GetCloudAccountParams, opts ...ClientOption) (*GetCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -1628,9 +1631,9 @@ func (a *Client) GetCloudAccount(params *GetCloudAccountParams, opts ...ClientOp
 }
 
 /*
-  GetCloudAccounts gets cloud accounts
+GetCloudAccounts gets cloud accounts
 
-  Get all cloud accounts within the current organization
+Get all cloud accounts within the current organization
 */
 func (a *Client) GetCloudAccounts(params *GetCloudAccountsParams, opts ...ClientOption) (*GetCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
@@ -1668,9 +1671,9 @@ func (a *Client) GetCloudAccounts(params *GetCloudAccountsParams, opts ...Client
 }
 
 /*
-  GetGcpCloudAccount gets an g c p cloud account
+GetGcpCloudAccount gets an g c p cloud account
 
-  Get an GCP cloud account with a given id
+Get an GCP cloud account with a given id
 */
 func (a *Client) GetGcpCloudAccount(params *GetGcpCloudAccountParams, opts ...ClientOption) (*GetGcpCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -1708,9 +1711,9 @@ func (a *Client) GetGcpCloudAccount(params *GetGcpCloudAccountParams, opts ...Cl
 }
 
 /*
-  GetGcpCloudAccounts gets g c p cloud accounts
+GetGcpCloudAccounts gets g c p cloud accounts
 
-  Get all GCP cloud accounts within the current organization
+Get all GCP cloud accounts within the current organization
 */
 func (a *Client) GetGcpCloudAccounts(params *GetGcpCloudAccountsParams, opts ...ClientOption) (*GetGcpCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
@@ -1748,9 +1751,9 @@ func (a *Client) GetGcpCloudAccounts(params *GetGcpCloudAccountsParams, opts ...
 }
 
 /*
-  GetNsxTCloudAccount gets an n s x t cloud account
+GetNsxTCloudAccount gets an n s x t cloud account
 
-  Get an NSX-T cloud account with a given id
+Get an NSX-T cloud account with a given id
 */
 func (a *Client) GetNsxTCloudAccount(params *GetNsxTCloudAccountParams, opts ...ClientOption) (*GetNsxTCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -1788,9 +1791,9 @@ func (a *Client) GetNsxTCloudAccount(params *GetNsxTCloudAccountParams, opts ...
 }
 
 /*
-  GetNsxTCloudAccounts gets n s x t cloud accounts
+GetNsxTCloudAccounts gets n s x t cloud accounts
 
-  Get all NSX-T cloud accounts within the current organization
+Get all NSX-T cloud accounts within the current organization
 */
 func (a *Client) GetNsxTCloudAccounts(params *GetNsxTCloudAccountsParams, opts ...ClientOption) (*GetNsxTCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
@@ -1828,9 +1831,9 @@ func (a *Client) GetNsxTCloudAccounts(params *GetNsxTCloudAccountsParams, opts .
 }
 
 /*
-  GetNsxVCloudAccount gets an n s x v cloud account
+GetNsxVCloudAccount gets an n s x v cloud account
 
-  Get an NSX-V cloud account with a given id
+Get an NSX-V cloud account with a given id
 */
 func (a *Client) GetNsxVCloudAccount(params *GetNsxVCloudAccountParams, opts ...ClientOption) (*GetNsxVCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -1868,9 +1871,9 @@ func (a *Client) GetNsxVCloudAccount(params *GetNsxVCloudAccountParams, opts ...
 }
 
 /*
-  GetNsxVCloudAccounts gets n s x v cloud accounts
+GetNsxVCloudAccounts gets n s x v cloud accounts
 
-  Get all NSX-V cloud accounts within the current organization
+Get all NSX-V cloud accounts within the current organization
 */
 func (a *Client) GetNsxVCloudAccounts(params *GetNsxVCloudAccountsParams, opts ...ClientOption) (*GetNsxVCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
@@ -1908,9 +1911,9 @@ func (a *Client) GetNsxVCloudAccounts(params *GetNsxVCloudAccountsParams, opts .
 }
 
 /*
-  GetRegionEnumerationResult gets region enumeration response
+GetRegionEnumerationResult gets region enumeration response
 
-  Get region enumeration response for a given id
+Get region enumeration response for a given id
 */
 func (a *Client) GetRegionEnumerationResult(params *GetRegionEnumerationResultParams, opts ...ClientOption) (*GetRegionEnumerationResultOK, error) {
 	// TODO: Validate the params before sending
@@ -1948,9 +1951,9 @@ func (a *Client) GetRegionEnumerationResult(params *GetRegionEnumerationResultPa
 }
 
 /*
-  GetVSphereCloudAccount gets an v sphere cloud account
+GetVSphereCloudAccount gets an v sphere cloud account
 
-  Get an vSphere cloud account with a given id
+Get an vSphere cloud account with a given id
 */
 func (a *Client) GetVSphereCloudAccount(params *GetVSphereCloudAccountParams, opts ...ClientOption) (*GetVSphereCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -1988,9 +1991,9 @@ func (a *Client) GetVSphereCloudAccount(params *GetVSphereCloudAccountParams, op
 }
 
 /*
-  GetVSphereCloudAccounts gets v sphere cloud accounts
+GetVSphereCloudAccounts gets v sphere cloud accounts
 
-  Get all vSphere cloud accounts within the current organization
+Get all vSphere cloud accounts within the current organization
 */
 func (a *Client) GetVSphereCloudAccounts(params *GetVSphereCloudAccountsParams, opts ...ClientOption) (*GetVSphereCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
@@ -2028,9 +2031,9 @@ func (a *Client) GetVSphereCloudAccounts(params *GetVSphereCloudAccountsParams, 
 }
 
 /*
-  GetVcfCloudAccount gets an v c f cloud account
+GetVcfCloudAccount gets an v c f cloud account
 
-  Get an VCF cloud account with a given id
+Get an VCF cloud account with a given id
 */
 func (a *Client) GetVcfCloudAccount(params *GetVcfCloudAccountParams, opts ...ClientOption) (*GetVcfCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -2068,9 +2071,9 @@ func (a *Client) GetVcfCloudAccount(params *GetVcfCloudAccountParams, opts ...Cl
 }
 
 /*
-  GetVcfCloudAccounts gets v c f cloud accounts
+GetVcfCloudAccounts gets v c f cloud accounts
 
-  Get all VCF cloud accounts within the current organization
+Get all VCF cloud accounts within the current organization
 */
 func (a *Client) GetVcfCloudAccounts(params *GetVcfCloudAccountsParams, opts ...ClientOption) (*GetVcfCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
@@ -2108,9 +2111,9 @@ func (a *Client) GetVcfCloudAccounts(params *GetVcfCloudAccountsParams, opts ...
 }
 
 /*
-  GetVmcCloudAccount gets an VM c cloud account
+GetVmcCloudAccount gets an VM c cloud account
 
-  Get an VMC cloud account with a given id
+Get an VMC cloud account with a given id
 */
 func (a *Client) GetVmcCloudAccount(params *GetVmcCloudAccountParams, opts ...ClientOption) (*GetVmcCloudAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -2148,9 +2151,9 @@ func (a *Client) GetVmcCloudAccount(params *GetVmcCloudAccountParams, opts ...Cl
 }
 
 /*
-  GetVmcCloudAccounts gets VM c cloud accounts
+GetVmcCloudAccounts gets VM c cloud accounts
 
-  Get all VMC cloud accounts within the current organization
+Get all VMC cloud accounts within the current organization
 */
 func (a *Client) GetVmcCloudAccounts(params *GetVmcCloudAccountsParams, opts ...ClientOption) (*GetVmcCloudAccountsOK, error) {
 	// TODO: Validate the params before sending
@@ -2188,9 +2191,49 @@ func (a *Client) GetVmcCloudAccounts(params *GetVmcCloudAccountsParams, opts ...
 }
 
 /*
-  UpdateAWSCloudAccountAsync updates a w s cloud account
+RunEndpointHealthCheck starts cloud account health check
 
-  Update AWS cloud account
+Starts cloud account health check identified by its endpoint state
+*/
+func (a *Client) RunEndpointHealthCheck(params *RunEndpointHealthCheckParams, opts ...ClientOption) (*RunEndpointHealthCheckAccepted, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewRunEndpointHealthCheckParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "runEndpointHealthCheck",
+		Method:             "POST",
+		PathPattern:        "/iaas/api/cloud-accounts/{id}/health-check",
+		ProducesMediaTypes: []string{"app/json", "application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &RunEndpointHealthCheckReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*RunEndpointHealthCheckAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for runEndpointHealthCheck: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateAWSCloudAccountAsync updates a w s cloud account
+
+Update AWS cloud account
 */
 func (a *Client) UpdateAWSCloudAccountAsync(params *UpdateAWSCloudAccountAsyncParams, opts ...ClientOption) (*UpdateAWSCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
@@ -2228,9 +2271,9 @@ func (a *Client) UpdateAWSCloudAccountAsync(params *UpdateAWSCloudAccountAsyncPa
 }
 
 /*
-  UpdateAzureCloudAccountAsync updates azure cloud account
+UpdateAzureCloudAccountAsync updates azure cloud account
 
-  Update Azure cloud account
+Update Azure cloud account
 */
 func (a *Client) UpdateAzureCloudAccountAsync(params *UpdateAzureCloudAccountAsyncParams, opts ...ClientOption) (*UpdateAzureCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
@@ -2268,9 +2311,9 @@ func (a *Client) UpdateAzureCloudAccountAsync(params *UpdateAzureCloudAccountAsy
 }
 
 /*
-  UpdateCloudAccountAsync updates cloud account
+UpdateCloudAccountAsync updates cloud account
 
-  Update a single CloudAccount
+Update a single CloudAccount
 */
 func (a *Client) UpdateCloudAccountAsync(params *UpdateCloudAccountAsyncParams, opts ...ClientOption) (*UpdateCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
@@ -2308,9 +2351,9 @@ func (a *Client) UpdateCloudAccountAsync(params *UpdateCloudAccountAsyncParams, 
 }
 
 /*
-  UpdateGcpCloudAccountAsync updates g c p cloud account
+UpdateGcpCloudAccountAsync updates g c p cloud account
 
-  Update GCP cloud account
+Update GCP cloud account
 */
 func (a *Client) UpdateGcpCloudAccountAsync(params *UpdateGcpCloudAccountAsyncParams, opts ...ClientOption) (*UpdateGcpCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
@@ -2348,9 +2391,9 @@ func (a *Client) UpdateGcpCloudAccountAsync(params *UpdateGcpCloudAccountAsyncPa
 }
 
 /*
-  UpdateNsxTCloudAccountAsync updates n s x t cloud account
+UpdateNsxTCloudAccountAsync updates n s x t cloud account
 
-  Update NSX-T cloud account
+Update NSX-T cloud account
 */
 func (a *Client) UpdateNsxTCloudAccountAsync(params *UpdateNsxTCloudAccountAsyncParams, opts ...ClientOption) (*UpdateNsxTCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
@@ -2388,9 +2431,9 @@ func (a *Client) UpdateNsxTCloudAccountAsync(params *UpdateNsxTCloudAccountAsync
 }
 
 /*
-  UpdateNsxVCloudAccountAsync updates n s x v cloud account
+UpdateNsxVCloudAccountAsync updates n s x v cloud account
 
-  Update NSX-V cloud account
+Update NSX-V cloud account
 */
 func (a *Client) UpdateNsxVCloudAccountAsync(params *UpdateNsxVCloudAccountAsyncParams, opts ...ClientOption) (*UpdateNsxVCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
@@ -2428,9 +2471,9 @@ func (a *Client) UpdateNsxVCloudAccountAsync(params *UpdateNsxVCloudAccountAsync
 }
 
 /*
-  UpdateVMCCloudAccountAsync updates VM c cloud account
+UpdateVMCCloudAccountAsync updates VM c cloud account
 
-  Update VMC cloud account
+Update VMC cloud account
 */
 func (a *Client) UpdateVMCCloudAccountAsync(params *UpdateVMCCloudAccountAsyncParams, opts ...ClientOption) (*UpdateVMCCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
@@ -2468,9 +2511,9 @@ func (a *Client) UpdateVMCCloudAccountAsync(params *UpdateVMCCloudAccountAsyncPa
 }
 
 /*
-  UpdateVSphereCloudAccountAsync updates v sphere cloud account
+UpdateVSphereCloudAccountAsync updates v sphere cloud account
 
-  Update vSphere cloud account
+Update vSphere cloud account
 */
 func (a *Client) UpdateVSphereCloudAccountAsync(params *UpdateVSphereCloudAccountAsyncParams, opts ...ClientOption) (*UpdateVSphereCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending
@@ -2508,9 +2551,9 @@ func (a *Client) UpdateVSphereCloudAccountAsync(params *UpdateVSphereCloudAccoun
 }
 
 /*
-  UpdateVcfCloudAccountAsync updates v c f cloud account
+UpdateVcfCloudAccountAsync updates v c f cloud account
 
-  Update VCF cloud account
+Update VCF cloud account
 */
 func (a *Client) UpdateVcfCloudAccountAsync(params *UpdateVcfCloudAccountAsyncParams, opts ...ClientOption) (*UpdateVcfCloudAccountAsyncAccepted, error) {
 	// TODO: Validate the params before sending

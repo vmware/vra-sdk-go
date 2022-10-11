@@ -52,10 +52,12 @@ func NewDeprecateByIDAndVersionUsingPOSTParamsWithHTTPClient(client *http.Client
 	}
 }
 
-/* DeprecateByIDAndVersionUsingPOSTParams contains all the parameters to send to the API endpoint
-   for the deprecate by Id and version using p o s t operation.
+/*
+DeprecateByIDAndVersionUsingPOSTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the deprecate by Id and version using p o s t operation.
+
+	Typically these are written to a http.Request.
 */
 type DeprecateByIDAndVersionUsingPOSTParams struct {
 

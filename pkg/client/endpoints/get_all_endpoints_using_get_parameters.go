@@ -52,10 +52,12 @@ func NewGetAllEndpointsUsingGETParamsWithHTTPClient(client *http.Client) *GetAll
 	}
 }
 
-/* GetAllEndpointsUsingGETParams contains all the parameters to send to the API endpoint
-   for the get all endpoints using g e t operation.
+/*
+GetAllEndpointsUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get all endpoints using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetAllEndpointsUsingGETParams struct {
 

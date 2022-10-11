@@ -53,10 +53,12 @@ func NewGetPolicyUsingGET5ParamsWithHTTPClient(client *http.Client) *GetPolicyUs
 	}
 }
 
-/* GetPolicyUsingGET5Params contains all the parameters to send to the API endpoint
-   for the get policy using g e t 5 operation.
+/*
+GetPolicyUsingGET5Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get policy using g e t 5 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetPolicyUsingGET5Params struct {
 

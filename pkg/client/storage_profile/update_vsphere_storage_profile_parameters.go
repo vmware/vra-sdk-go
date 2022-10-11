@@ -54,10 +54,12 @@ func NewUpdateVSphereStorageProfileParamsWithHTTPClient(client *http.Client) *Up
 	}
 }
 
-/* UpdateVSphereStorageProfileParams contains all the parameters to send to the API endpoint
-   for the update v sphere storage profile operation.
+/*
+UpdateVSphereStorageProfileParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update v sphere storage profile operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateVSphereStorageProfileParams struct {
 

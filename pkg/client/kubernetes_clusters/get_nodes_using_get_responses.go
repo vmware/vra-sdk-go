@@ -29,6 +29,12 @@ func (o *GetNodesUsingGETReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return result, nil
+	case 403:
+		result := NewGetNodesUsingGETForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +45,8 @@ func NewGetNodesUsingGETOK() *GetNodesUsingGETOK {
 	return &GetNodesUsingGETOK{}
 }
 
-/* GetNodesUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetNodesUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +54,39 @@ type GetNodesUsingGETOK struct {
 	Payload *models.NodeList
 }
 
+// IsSuccess returns true when this get nodes using g e t o k response has a 2xx status code
+func (o *GetNodesUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get nodes using g e t o k response has a 3xx status code
+func (o *GetNodesUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get nodes using g e t o k response has a 4xx status code
+func (o *GetNodesUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get nodes using g e t o k response has a 5xx status code
+func (o *GetNodesUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get nodes using g e t o k response a status code equal to that given
+func (o *GetNodesUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetNodesUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /cmx/api/resources/k8s/clusters/{id}/nodes][%d] getNodesUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetNodesUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/k8s/clusters/{id}/nodes][%d] getNodesUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetNodesUsingGETOK) GetPayload() *models.NodeList {
 	return o.Payload
 }
@@ -62,6 +99,57 @@ func (o *GetNodesUsingGETOK) readResponse(response runtime.ClientResponse, consu
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewGetNodesUsingGETForbidden creates a GetNodesUsingGETForbidden with default headers values
+func NewGetNodesUsingGETForbidden() *GetNodesUsingGETForbidden {
+	return &GetNodesUsingGETForbidden{}
+}
+
+/*
+GetNodesUsingGETForbidden describes a response with status code 403, with default header values.
+
+Forbidden, the user lacks permissions
+*/
+type GetNodesUsingGETForbidden struct {
+}
+
+// IsSuccess returns true when this get nodes using g e t forbidden response has a 2xx status code
+func (o *GetNodesUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get nodes using g e t forbidden response has a 3xx status code
+func (o *GetNodesUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get nodes using g e t forbidden response has a 4xx status code
+func (o *GetNodesUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get nodes using g e t forbidden response has a 5xx status code
+func (o *GetNodesUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get nodes using g e t forbidden response a status code equal to that given
+func (o *GetNodesUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *GetNodesUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/k8s/clusters/{id}/nodes][%d] getNodesUsingGETForbidden ", 403)
+}
+
+func (o *GetNodesUsingGETForbidden) String() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/k8s/clusters/{id}/nodes][%d] getNodesUsingGETForbidden ", 403)
+}
+
+func (o *GetNodesUsingGETForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

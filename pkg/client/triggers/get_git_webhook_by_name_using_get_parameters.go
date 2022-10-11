@@ -52,10 +52,12 @@ func NewGetGitWebhookByNameUsingGETParamsWithHTTPClient(client *http.Client) *Ge
 	}
 }
 
-/* GetGitWebhookByNameUsingGETParams contains all the parameters to send to the API endpoint
-   for the get git webhook by name using g e t operation.
+/*
+GetGitWebhookByNameUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get git webhook by name using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetGitWebhookByNameUsingGETParams struct {
 

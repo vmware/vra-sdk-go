@@ -6,247 +6,191 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"bytes"
 	"context"
-	"encoding/json"
-	"io"
-	"io/ioutil"
 
 	"github.com/go-openapi/errors"
-	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/validate"
+	"github.com/go-openapi/swag"
 )
 
 // Workspace Workspace
 //
-// Model which contains details about container and host for executing continuous integration tasks.
-//
-// swagger:discriminator Workspace Model which contains details about container and host for executing continuous integration tasks.
-type Workspace interface {
-	runtime.Validatable
-	runtime.ContextValidatable
+// swagger:model Workspace
+type Workspace struct {
 
-	// Indicates that git clone will be performed automatically.
-	// Example: true
-	AutoCloneForTrigger() bool
-	SetAutoCloneForTrigger(bool)
+	// full name
+	FullName *FullName `json:"fullName,omitempty"`
 
-	// List of paths to store artifacts and logs.
-	// Example: ["/root/.m2","/temp/"]
-	Cache() []string
-	SetCache([]string)
+	// meta
+	Meta *Meta `json:"meta,omitempty"`
 
-	// List of custom properties
-	// Example: {"namespace":"builds"}
-	CustomProperties() map[string]string
-	SetCustomProperties(map[string]string)
-
-	// Name of the endpoint.
-	Endpoint() string
-	SetEndpoint(string)
-
-	// List of environment variables and their values
-	// Example: {"foo":"bar","property_one":"value_one","property_two":"value_two"}
-	EnvironmentVariables() map[string]string
-	SetEnvironmentVariables(map[string]string)
-
-	// Image to create CI container.
-	// Example: fedora:latest
-	Image() string
-	SetImage(string)
-
-	// Working directory for executing commands.
-	// Example: /usr/administrator/
-	Path() string
-	SetPath(string)
-
-	// Name of the docker registry.
-	// Example: Docker Trusted Registry
-	Registry() string
-	SetRegistry(string)
-
-	// Type of the workspace.
-	// Example: DOCKER|K8S
-	Type() string
-	SetType(string)
-
-	// AdditionalProperties in base type shoud be handled just like regular properties
-	// At this moment, the base type property is pushed down to the subtype
-}
-
-type workspace struct {
-	autoCloneForTriggerField bool
-
-	cacheField []string
-
-	customPropertiesField map[string]string
-
-	endpointField string
-
-	environmentVariablesField map[string]string
-
-	imageField string
-
-	pathField string
-
-	registryField string
-
-	typeField string
-}
-
-// AutoCloneForTrigger gets the auto clone for trigger of this polymorphic type
-func (m *workspace) AutoCloneForTrigger() bool {
-	return m.autoCloneForTriggerField
-}
-
-// SetAutoCloneForTrigger sets the auto clone for trigger of this polymorphic type
-func (m *workspace) SetAutoCloneForTrigger(val bool) {
-	m.autoCloneForTriggerField = val
-}
-
-// Cache gets the cache of this polymorphic type
-func (m *workspace) Cache() []string {
-	return m.cacheField
-}
-
-// SetCache sets the cache of this polymorphic type
-func (m *workspace) SetCache(val []string) {
-	m.cacheField = val
-}
-
-// CustomProperties gets the custom properties of this polymorphic type
-func (m *workspace) CustomProperties() map[string]string {
-	return m.customPropertiesField
-}
-
-// SetCustomProperties sets the custom properties of this polymorphic type
-func (m *workspace) SetCustomProperties(val map[string]string) {
-	m.customPropertiesField = val
-}
-
-// Endpoint gets the endpoint of this polymorphic type
-func (m *workspace) Endpoint() string {
-	return m.endpointField
-}
-
-// SetEndpoint sets the endpoint of this polymorphic type
-func (m *workspace) SetEndpoint(val string) {
-	m.endpointField = val
-}
-
-// EnvironmentVariables gets the environment variables of this polymorphic type
-func (m *workspace) EnvironmentVariables() map[string]string {
-	return m.environmentVariablesField
-}
-
-// SetEnvironmentVariables sets the environment variables of this polymorphic type
-func (m *workspace) SetEnvironmentVariables(val map[string]string) {
-	m.environmentVariablesField = val
-}
-
-// Image gets the image of this polymorphic type
-func (m *workspace) Image() string {
-	return m.imageField
-}
-
-// SetImage sets the image of this polymorphic type
-func (m *workspace) SetImage(val string) {
-	m.imageField = val
-}
-
-// Path gets the path of this polymorphic type
-func (m *workspace) Path() string {
-	return m.pathField
-}
-
-// SetPath sets the path of this polymorphic type
-func (m *workspace) SetPath(val string) {
-	m.pathField = val
-}
-
-// Registry gets the registry of this polymorphic type
-func (m *workspace) Registry() string {
-	return m.registryField
-}
-
-// SetRegistry sets the registry of this polymorphic type
-func (m *workspace) SetRegistry(val string) {
-	m.registryField = val
-}
-
-// Type gets the type of this polymorphic type
-func (m *workspace) Type() string {
-	return m.typeField
-}
-
-// SetType sets the type of this polymorphic type
-func (m *workspace) SetType(val string) {
-	m.typeField = val
-}
-
-// UnmarshalWorkspaceSlice unmarshals polymorphic slices of Workspace
-func UnmarshalWorkspaceSlice(reader io.Reader, consumer runtime.Consumer) ([]Workspace, error) {
-	var elements []json.RawMessage
-	if err := consumer.Consume(reader, &elements); err != nil {
-		return nil, err
-	}
-
-	var result []Workspace
-	for _, element := range elements {
-		obj, err := unmarshalWorkspace(element, consumer)
-		if err != nil {
-			return nil, err
-		}
-		result = append(result, obj)
-	}
-	return result, nil
-}
-
-// UnmarshalWorkspace unmarshals polymorphic Workspace
-func UnmarshalWorkspace(reader io.Reader, consumer runtime.Consumer) (Workspace, error) {
-	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
-	if err != nil {
-		return nil, err
-	}
-	return unmarshalWorkspace(data, consumer)
-}
-
-func unmarshalWorkspace(data []byte, consumer runtime.Consumer) (Workspace, error) {
-	buf := bytes.NewBuffer(data)
-	buf2 := bytes.NewBuffer(data)
-
-	// the first time this is read is to fetch the value of the Model which contains details about container and host for executing continuous integration tasks. property.
-	var getType struct {
-		ModelWhichContainsDetailsAboutContainerAndHostForExecutingContinuousIntegrationTasks string `json:"Model which contains details about container and host for executing continuous integration tasks."`
-	}
-	if err := consumer.Consume(buf, &getType); err != nil {
-		return nil, err
-	}
-
-	if err := validate.RequiredString("Model which contains details about container and host for executing continuous integration tasks.", "body", getType.ModelWhichContainsDetailsAboutContainerAndHostForExecutingContinuousIntegrationTasks); err != nil {
-		return nil, err
-	}
-
-	// The value of Model which contains details about container and host for executing continuous integration tasks. is used to determine which type to create and unmarshal the data into
-	switch getType.ModelWhichContainsDetailsAboutContainerAndHostForExecutingContinuousIntegrationTasks {
-	case "Workspace":
-		var result workspace
-		if err := consumer.Consume(buf2, &result); err != nil {
-			return nil, err
-		}
-		return &result, nil
-	}
-	return nil, errors.New(422, "invalid Model which contains details about container and host for executing continuous integration tasks. value: %q", getType.ModelWhichContainsDetailsAboutContainerAndHostForExecutingContinuousIntegrationTasks)
+	// type
+	Type *Type `json:"type,omitempty"`
 }
 
 // Validate validates this workspace
-func (m *workspace) Validate(formats strfmt.Registry) error {
+func (m *Workspace) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateFullName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMeta(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
 	return nil
 }
 
-// ContextValidate validates this workspace based on context it is used
-func (m *workspace) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *Workspace) validateFullName(formats strfmt.Registry) error {
+	if swag.IsZero(m.FullName) { // not required
+		return nil
+	}
+
+	if m.FullName != nil {
+		if err := m.FullName.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("fullName")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("fullName")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Workspace) validateMeta(formats strfmt.Registry) error {
+	if swag.IsZero(m.Meta) { // not required
+		return nil
+	}
+
+	if m.Meta != nil {
+		if err := m.Meta.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("meta")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("meta")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Workspace) validateType(formats strfmt.Registry) error {
+	if swag.IsZero(m.Type) { // not required
+		return nil
+	}
+
+	if m.Type != nil {
+		if err := m.Type.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this workspace based on the context it is used
+func (m *Workspace) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateFullName(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMeta(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *Workspace) contextValidateFullName(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.FullName != nil {
+		if err := m.FullName.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("fullName")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("fullName")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Workspace) contextValidateMeta(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Meta != nil {
+		if err := m.Meta.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("meta")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("meta")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *Workspace) contextValidateType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Type != nil {
+		if err := m.Type.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *Workspace) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *Workspace) UnmarshalBinary(b []byte) error {
+	var res Workspace
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
 	return nil
 }

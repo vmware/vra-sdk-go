@@ -30,7 +30,7 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreatePolicyUsingPOST2(params *CreatePolicyUsingPOST2Params, opts ...ClientOption) (*CreatePolicyUsingPOST2OK, *CreatePolicyUsingPOST2Created, error)
+	CreatePolicyUsingPOST4(params *CreatePolicyUsingPOST4Params, opts ...ClientOption) (*CreatePolicyUsingPOST4OK, *CreatePolicyUsingPOST4Created, error)
 
 	DeletePolicyUsingDELETE4(params *DeletePolicyUsingDELETE4Params, opts ...ClientOption) (*DeletePolicyUsingDELETE4OK, *DeletePolicyUsingDELETE4NoContent, error)
 
@@ -44,24 +44,24 @@ type ClientService interface {
 }
 
 /*
-  CreatePolicyUsingPOST2 creates a new pricing card
+CreatePolicyUsingPOST4 creates a new pricing card
 
-  Create a new pricing card based on request body and validate its field according to business rules.
+Create a new pricing card based on request body and validate its field according to business rules.
 */
-func (a *Client) CreatePolicyUsingPOST2(params *CreatePolicyUsingPOST2Params, opts ...ClientOption) (*CreatePolicyUsingPOST2OK, *CreatePolicyUsingPOST2Created, error) {
+func (a *Client) CreatePolicyUsingPOST4(params *CreatePolicyUsingPOST4Params, opts ...ClientOption) (*CreatePolicyUsingPOST4OK, *CreatePolicyUsingPOST4Created, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreatePolicyUsingPOST2Params()
+		params = NewCreatePolicyUsingPOST4Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createPolicyUsingPOST_2",
+		ID:                 "createPolicyUsingPOST_4",
 		Method:             "POST",
 		PathPattern:        "/price/api/private/pricing-cards",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreatePolicyUsingPOST2Reader{formats: a.formats},
+		Reader:             &CreatePolicyUsingPOST4Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -74,9 +74,9 @@ func (a *Client) CreatePolicyUsingPOST2(params *CreatePolicyUsingPOST2Params, op
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *CreatePolicyUsingPOST2OK:
+	case *CreatePolicyUsingPOST4OK:
 		return value, nil, nil
-	case *CreatePolicyUsingPOST2Created:
+	case *CreatePolicyUsingPOST4Created:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
@@ -85,9 +85,9 @@ func (a *Client) CreatePolicyUsingPOST2(params *CreatePolicyUsingPOST2Params, op
 }
 
 /*
-  DeletePolicyUsingDELETE4 deletes the pricing card with specified Id
+DeletePolicyUsingDELETE4 deletes the pricing card with specified Id
 
-  Deletes the pricing card with the specified id
+Deletes the pricing card with the specified id
 */
 func (a *Client) DeletePolicyUsingDELETE4(params *DeletePolicyUsingDELETE4Params, opts ...ClientOption) (*DeletePolicyUsingDELETE4OK, *DeletePolicyUsingDELETE4NoContent, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) DeletePolicyUsingDELETE4(params *DeletePolicyUsingDELETE4Params
 }
 
 /*
-  GetPoliciesUsingGET4 fetches all pricing cards for private policy cloud
+GetPoliciesUsingGET4 fetches all pricing cards for private policy cloud
 
-  Returns a paginated list of pricing cards
+Returns a paginated list of pricing cards
 */
 func (a *Client) GetPoliciesUsingGET4(params *GetPoliciesUsingGET4Params, opts ...ClientOption) (*GetPoliciesUsingGET4OK, error) {
 	// TODO: Validate the params before sending
@@ -166,9 +166,9 @@ func (a *Client) GetPoliciesUsingGET4(params *GetPoliciesUsingGET4Params, opts .
 }
 
 /*
-  GetPolicyUsingGET4 finds the pricing card with specified Id
+GetPolicyUsingGET4 finds the pricing card with specified Id
 
-  Returns the pricing card with the specified id
+Returns the pricing card with the specified id
 */
 func (a *Client) GetPolicyUsingGET4(params *GetPolicyUsingGET4Params, opts ...ClientOption) (*GetPolicyUsingGET4OK, error) {
 	// TODO: Validate the params before sending
@@ -206,9 +206,9 @@ func (a *Client) GetPolicyUsingGET4(params *GetPolicyUsingGET4Params, opts ...Cl
 }
 
 /*
-  UpdatePolicyUsingPUT2 updates the pricing card
+UpdatePolicyUsingPUT2 updates the pricing card
 
-  Updates the pricing card with the specified Id
+Updates the pricing card with the specified Id
 */
 func (a *Client) UpdatePolicyUsingPUT2(params *UpdatePolicyUsingPUT2Params, opts ...ClientOption) (*UpdatePolicyUsingPUT2OK, error) {
 	// TODO: Validate the params before sending

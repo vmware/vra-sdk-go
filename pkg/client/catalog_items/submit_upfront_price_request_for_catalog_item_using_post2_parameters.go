@@ -54,10 +54,12 @@ func NewSubmitUpfrontPriceRequestForCatalogItemUsingPOST2ParamsWithHTTPClient(cl
 	}
 }
 
-/* SubmitUpfrontPriceRequestForCatalogItemUsingPOST2Params contains all the parameters to send to the API endpoint
-   for the submit upfront price request for catalog item using p o s t 2 operation.
+/*
+SubmitUpfrontPriceRequestForCatalogItemUsingPOST2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the submit upfront price request for catalog item using p o s t 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type SubmitUpfrontPriceRequestForCatalogItemUsingPOST2Params struct {
 

@@ -51,7 +51,8 @@ func NewReconfigureNatAccepted() *ReconfigureNatAccepted {
 	return &ReconfigureNatAccepted{}
 }
 
-/* ReconfigureNatAccepted describes a response with status code 202, with default header values.
+/*
+ReconfigureNatAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type ReconfigureNatAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this reconfigure nat accepted response has a 2xx status code
+func (o *ReconfigureNatAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this reconfigure nat accepted response has a 3xx status code
+func (o *ReconfigureNatAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this reconfigure nat accepted response has a 4xx status code
+func (o *ReconfigureNatAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this reconfigure nat accepted response has a 5xx status code
+func (o *ReconfigureNatAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this reconfigure nat accepted response a status code equal to that given
+func (o *ReconfigureNatAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ReconfigureNatAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/compute-nats/{id}/operations/reconfigure][%d] reconfigureNatAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ReconfigureNatAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/compute-nats/{id}/operations/reconfigure][%d] reconfigureNatAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ReconfigureNatAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewReconfigureNatBadRequest() *ReconfigureNatBadRequest {
 	return &ReconfigureNatBadRequest{}
 }
 
-/* ReconfigureNatBadRequest describes a response with status code 400, with default header values.
+/*
+ReconfigureNatBadRequest describes a response with status code 400, with default header values.
 
 NAT rules cannot be null
 */
@@ -91,9 +123,39 @@ type ReconfigureNatBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this reconfigure nat bad request response has a 2xx status code
+func (o *ReconfigureNatBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this reconfigure nat bad request response has a 3xx status code
+func (o *ReconfigureNatBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this reconfigure nat bad request response has a 4xx status code
+func (o *ReconfigureNatBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this reconfigure nat bad request response has a 5xx status code
+func (o *ReconfigureNatBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this reconfigure nat bad request response a status code equal to that given
+func (o *ReconfigureNatBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReconfigureNatBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/compute-nats/{id}/operations/reconfigure][%d] reconfigureNatBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReconfigureNatBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/compute-nats/{id}/operations/reconfigure][%d] reconfigureNatBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReconfigureNatBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewReconfigureNatForbidden() *ReconfigureNatForbidden {
 	return &ReconfigureNatForbidden{}
 }
 
-/* ReconfigureNatForbidden describes a response with status code 403, with default header values.
+/*
+ReconfigureNatForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type ReconfigureNatForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this reconfigure nat forbidden response has a 2xx status code
+func (o *ReconfigureNatForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this reconfigure nat forbidden response has a 3xx status code
+func (o *ReconfigureNatForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this reconfigure nat forbidden response has a 4xx status code
+func (o *ReconfigureNatForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this reconfigure nat forbidden response has a 5xx status code
+func (o *ReconfigureNatForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this reconfigure nat forbidden response a status code equal to that given
+func (o *ReconfigureNatForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ReconfigureNatForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/compute-nats/{id}/operations/reconfigure][%d] reconfigureNatForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ReconfigureNatForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/compute-nats/{id}/operations/reconfigure][%d] reconfigureNatForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ReconfigureNatForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

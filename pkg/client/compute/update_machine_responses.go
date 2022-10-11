@@ -51,7 +51,8 @@ func NewUpdateMachineOK() *UpdateMachineOK {
 	return &UpdateMachineOK{}
 }
 
-/* UpdateMachineOK describes a response with status code 200, with default header values.
+/*
+UpdateMachineOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type UpdateMachineOK struct {
 	Payload *models.Machine
 }
 
+// IsSuccess returns true when this update machine o k response has a 2xx status code
+func (o *UpdateMachineOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update machine o k response has a 3xx status code
+func (o *UpdateMachineOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update machine o k response has a 4xx status code
+func (o *UpdateMachineOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update machine o k response has a 5xx status code
+func (o *UpdateMachineOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update machine o k response a status code equal to that given
+func (o *UpdateMachineOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateMachineOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/machines/{id}][%d] updateMachineOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateMachineOK) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/machines/{id}][%d] updateMachineOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateMachineOK) GetPayload() *models.Machine {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewUpdateMachineForbidden() *UpdateMachineForbidden {
 	return &UpdateMachineForbidden{}
 }
 
-/* UpdateMachineForbidden describes a response with status code 403, with default header values.
+/*
+UpdateMachineForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type UpdateMachineForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this update machine forbidden response has a 2xx status code
+func (o *UpdateMachineForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update machine forbidden response has a 3xx status code
+func (o *UpdateMachineForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update machine forbidden response has a 4xx status code
+func (o *UpdateMachineForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update machine forbidden response has a 5xx status code
+func (o *UpdateMachineForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update machine forbidden response a status code equal to that given
+func (o *UpdateMachineForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateMachineForbidden) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/machines/{id}][%d] updateMachineForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UpdateMachineForbidden) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/machines/{id}][%d] updateMachineForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UpdateMachineForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewUpdateMachineNotFound() *UpdateMachineNotFound {
 	return &UpdateMachineNotFound{}
 }
 
-/* UpdateMachineNotFound describes a response with status code 404, with default header values.
+/*
+UpdateMachineNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type UpdateMachineNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update machine not found response has a 2xx status code
+func (o *UpdateMachineNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update machine not found response has a 3xx status code
+func (o *UpdateMachineNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update machine not found response has a 4xx status code
+func (o *UpdateMachineNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update machine not found response has a 5xx status code
+func (o *UpdateMachineNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update machine not found response a status code equal to that given
+func (o *UpdateMachineNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateMachineNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/machines/{id}][%d] updateMachineNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UpdateMachineNotFound) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/machines/{id}][%d] updateMachineNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UpdateMachineNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

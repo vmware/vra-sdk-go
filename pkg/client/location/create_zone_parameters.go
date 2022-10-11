@@ -54,10 +54,12 @@ func NewCreateZoneParamsWithHTTPClient(client *http.Client) *CreateZoneParams {
 	}
 }
 
-/* CreateZoneParams contains all the parameters to send to the API endpoint
-   for the create zone operation.
+/*
+CreateZoneParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create zone operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateZoneParams struct {
 

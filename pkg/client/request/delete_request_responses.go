@@ -45,14 +45,44 @@ func NewDeleteRequestNoContent() *DeleteRequestNoContent {
 	return &DeleteRequestNoContent{}
 }
 
-/* DeleteRequestNoContent describes a response with status code 204, with default header values.
+/*
+DeleteRequestNoContent describes a response with status code 204, with default header values.
 
 No Content
 */
 type DeleteRequestNoContent struct {
 }
 
+// IsSuccess returns true when this delete request no content response has a 2xx status code
+func (o *DeleteRequestNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete request no content response has a 3xx status code
+func (o *DeleteRequestNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete request no content response has a 4xx status code
+func (o *DeleteRequestNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete request no content response has a 5xx status code
+func (o *DeleteRequestNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete request no content response a status code equal to that given
+func (o *DeleteRequestNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteRequestNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/request-tracker/{id}][%d] deleteRequestNoContent ", 204)
+}
+
+func (o *DeleteRequestNoContent) String() string {
 	return fmt.Sprintf("[DELETE /iaas/api/request-tracker/{id}][%d] deleteRequestNoContent ", 204)
 }
 
@@ -66,7 +96,8 @@ func NewDeleteRequestForbidden() *DeleteRequestForbidden {
 	return &DeleteRequestForbidden{}
 }
 
-/* DeleteRequestForbidden describes a response with status code 403, with default header values.
+/*
+DeleteRequestForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -74,9 +105,39 @@ type DeleteRequestForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this delete request forbidden response has a 2xx status code
+func (o *DeleteRequestForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete request forbidden response has a 3xx status code
+func (o *DeleteRequestForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete request forbidden response has a 4xx status code
+func (o *DeleteRequestForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete request forbidden response has a 5xx status code
+func (o *DeleteRequestForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete request forbidden response a status code equal to that given
+func (o *DeleteRequestForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteRequestForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/request-tracker/{id}][%d] deleteRequestForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DeleteRequestForbidden) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/request-tracker/{id}][%d] deleteRequestForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DeleteRequestForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

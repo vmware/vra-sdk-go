@@ -23,6 +23,12 @@ type UpdateCustomNameReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *UpdateCustomNameReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
+	case 200:
+		result := NewUpdateCustomNameOK()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
 	case 204:
 		result := NewUpdateCustomNameNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -52,19 +58,112 @@ func (o *UpdateCustomNameReader) ReadResponse(response runtime.ClientResponse, c
 	}
 }
 
+// NewUpdateCustomNameOK creates a UpdateCustomNameOK with default headers values
+func NewUpdateCustomNameOK() *UpdateCustomNameOK {
+	return &UpdateCustomNameOK{}
+}
+
+/*
+UpdateCustomNameOK describes a response with status code 200, with default header values.
+
+successful operation
+*/
+type UpdateCustomNameOK struct {
+	Payload *models.CustomNaming
+}
+
+// IsSuccess returns true when this update custom name o k response has a 2xx status code
+func (o *UpdateCustomNameOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update custom name o k response has a 3xx status code
+func (o *UpdateCustomNameOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update custom name o k response has a 4xx status code
+func (o *UpdateCustomNameOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update custom name o k response has a 5xx status code
+func (o *UpdateCustomNameOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update custom name o k response a status code equal to that given
+func (o *UpdateCustomNameOK) IsCode(code int) bool {
+	return code == 200
+}
+
+func (o *UpdateCustomNameOK) Error() string {
+	return fmt.Sprintf("[PUT /iaas/api/naming][%d] updateCustomNameOK  %+v", 200, o.Payload)
+}
+
+func (o *UpdateCustomNameOK) String() string {
+	return fmt.Sprintf("[PUT /iaas/api/naming][%d] updateCustomNameOK  %+v", 200, o.Payload)
+}
+
+func (o *UpdateCustomNameOK) GetPayload() *models.CustomNaming {
+	return o.Payload
+}
+
+func (o *UpdateCustomNameOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.CustomNaming)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
 // NewUpdateCustomNameNoContent creates a UpdateCustomNameNoContent with default headers values
 func NewUpdateCustomNameNoContent() *UpdateCustomNameNoContent {
 	return &UpdateCustomNameNoContent{}
 }
 
-/* UpdateCustomNameNoContent describes a response with status code 204, with default header values.
+/*
+UpdateCustomNameNoContent describes a response with status code 204, with default header values.
 
 No Content
 */
 type UpdateCustomNameNoContent struct {
 }
 
+// IsSuccess returns true when this update custom name no content response has a 2xx status code
+func (o *UpdateCustomNameNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update custom name no content response has a 3xx status code
+func (o *UpdateCustomNameNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update custom name no content response has a 4xx status code
+func (o *UpdateCustomNameNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update custom name no content response has a 5xx status code
+func (o *UpdateCustomNameNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update custom name no content response a status code equal to that given
+func (o *UpdateCustomNameNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *UpdateCustomNameNoContent) Error() string {
+	return fmt.Sprintf("[PUT /iaas/api/naming][%d] updateCustomNameNoContent ", 204)
+}
+
+func (o *UpdateCustomNameNoContent) String() string {
 	return fmt.Sprintf("[PUT /iaas/api/naming][%d] updateCustomNameNoContent ", 204)
 }
 
@@ -78,7 +177,8 @@ func NewUpdateCustomNameBadRequest() *UpdateCustomNameBadRequest {
 	return &UpdateCustomNameBadRequest{}
 }
 
-/* UpdateCustomNameBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateCustomNameBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -86,9 +186,39 @@ type UpdateCustomNameBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update custom name bad request response has a 2xx status code
+func (o *UpdateCustomNameBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update custom name bad request response has a 3xx status code
+func (o *UpdateCustomNameBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update custom name bad request response has a 4xx status code
+func (o *UpdateCustomNameBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update custom name bad request response has a 5xx status code
+func (o *UpdateCustomNameBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update custom name bad request response a status code equal to that given
+func (o *UpdateCustomNameBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *UpdateCustomNameBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /iaas/api/naming][%d] updateCustomNameBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *UpdateCustomNameBadRequest) String() string {
+	return fmt.Sprintf("[PUT /iaas/api/naming][%d] updateCustomNameBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *UpdateCustomNameBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -110,7 +240,8 @@ func NewUpdateCustomNameForbidden() *UpdateCustomNameForbidden {
 	return &UpdateCustomNameForbidden{}
 }
 
-/* UpdateCustomNameForbidden describes a response with status code 403, with default header values.
+/*
+UpdateCustomNameForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -118,9 +249,39 @@ type UpdateCustomNameForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this update custom name forbidden response has a 2xx status code
+func (o *UpdateCustomNameForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update custom name forbidden response has a 3xx status code
+func (o *UpdateCustomNameForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update custom name forbidden response has a 4xx status code
+func (o *UpdateCustomNameForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update custom name forbidden response has a 5xx status code
+func (o *UpdateCustomNameForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update custom name forbidden response a status code equal to that given
+func (o *UpdateCustomNameForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateCustomNameForbidden) Error() string {
 	return fmt.Sprintf("[PUT /iaas/api/naming][%d] updateCustomNameForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UpdateCustomNameForbidden) String() string {
+	return fmt.Sprintf("[PUT /iaas/api/naming][%d] updateCustomNameForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UpdateCustomNameForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -142,7 +303,8 @@ func NewUpdateCustomNameNotFound() *UpdateCustomNameNotFound {
 	return &UpdateCustomNameNotFound{}
 }
 
-/* UpdateCustomNameNotFound describes a response with status code 404, with default header values.
+/*
+UpdateCustomNameNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -150,9 +312,39 @@ type UpdateCustomNameNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update custom name not found response has a 2xx status code
+func (o *UpdateCustomNameNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update custom name not found response has a 3xx status code
+func (o *UpdateCustomNameNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update custom name not found response has a 4xx status code
+func (o *UpdateCustomNameNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update custom name not found response has a 5xx status code
+func (o *UpdateCustomNameNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update custom name not found response a status code equal to that given
+func (o *UpdateCustomNameNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateCustomNameNotFound) Error() string {
 	return fmt.Sprintf("[PUT /iaas/api/naming][%d] updateCustomNameNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UpdateCustomNameNotFound) String() string {
+	return fmt.Sprintf("[PUT /iaas/api/naming][%d] updateCustomNameNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UpdateCustomNameNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

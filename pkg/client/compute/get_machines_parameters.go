@@ -53,16 +53,18 @@ func NewGetMachinesParamsWithHTTPClient(client *http.Client) *GetMachinesParams 
 	}
 }
 
-/* GetMachinesParams contains all the parameters to send to the API endpoint
-   for the get machines operation.
+/*
+GetMachinesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get machines operation.
+
+	Typically these are written to a http.Request.
 */
 type GetMachinesParams struct {
 
 	/* DollarCount.
 
-	   Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.
+	   Flag which when specified, regardless of the assigned value, shows the total number of records. If the collection has a filter it shows the number of records matching the filter.
 	*/
 	DollarCount *bool
 
@@ -95,6 +97,12 @@ type GetMachinesParams struct {
 	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
 	APIVersion *string
+
+	/* SkipOperationLinks.
+
+	   If set to true will not return operation links.
+	*/
+	SkipOperationLinks *bool
 
 	timeout    time.Duration
 	Context    context.Context
@@ -215,6 +223,17 @@ func (o *GetMachinesParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
+// WithSkipOperationLinks adds the skipOperationLinks to the get machines params
+func (o *GetMachinesParams) WithSkipOperationLinks(skipOperationLinks *bool) *GetMachinesParams {
+	o.SetSkipOperationLinks(skipOperationLinks)
+	return o
+}
+
+// SetSkipOperationLinks adds the skipOperationLinks to the get machines params
+func (o *GetMachinesParams) SetSkipOperationLinks(skipOperationLinks *bool) {
+	o.SkipOperationLinks = skipOperationLinks
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetMachinesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -320,6 +339,23 @@ func (o *GetMachinesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		if qAPIVersion != "" {
 
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SkipOperationLinks != nil {
+
+		// query param skipOperationLinks
+		var qrSkipOperationLinks bool
+
+		if o.SkipOperationLinks != nil {
+			qrSkipOperationLinks = *o.SkipOperationLinks
+		}
+		qSkipOperationLinks := swag.FormatBool(qrSkipOperationLinks)
+		if qSkipOperationLinks != "" {
+
+			if err := r.SetQueryParam("skipOperationLinks", qSkipOperationLinks); err != nil {
 				return err
 			}
 		}

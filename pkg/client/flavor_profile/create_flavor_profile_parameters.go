@@ -54,10 +54,12 @@ func NewCreateFlavorProfileParamsWithHTTPClient(client *http.Client) *CreateFlav
 	}
 }
 
-/* CreateFlavorProfileParams contains all the parameters to send to the API endpoint
-   for the create flavor profile operation.
+/*
+CreateFlavorProfileParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create flavor profile operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateFlavorProfileParams struct {
 

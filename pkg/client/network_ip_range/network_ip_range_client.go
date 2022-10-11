@@ -54,9 +54,9 @@ type ClientService interface {
 }
 
 /*
-  CreateInternalNetworkIPRange creates internal network IP range
+CreateInternalNetworkIPRange creates internal network IP range
 
-  Creates an internal network IP range.
+Creates an internal network IP range.
 */
 func (a *Client) CreateInternalNetworkIPRange(params *CreateInternalNetworkIPRangeParams, opts ...ClientOption) (*CreateInternalNetworkIPRangeCreated, error) {
 	// TODO: Validate the params before sending
@@ -94,9 +94,9 @@ func (a *Client) CreateInternalNetworkIPRange(params *CreateInternalNetworkIPRan
 }
 
 /*
-  DeleteInternalNetworkIPRange deletes internal network IP range
+DeleteInternalNetworkIPRange deletes internal network IP range
 
-  Delete internal network IP range with a given id
+Delete internal network IP range with a given id
 */
 func (a *Client) DeleteInternalNetworkIPRange(params *DeleteInternalNetworkIPRangeParams, opts ...ClientOption) (*DeleteInternalNetworkIPRangeNoContent, error) {
 	// TODO: Validate the params before sending
@@ -134,9 +134,9 @@ func (a *Client) DeleteInternalNetworkIPRange(params *DeleteInternalNetworkIPRan
 }
 
 /*
-  GetExternalIPBlock gets specific external IP block by id
+GetExternalIPBlock gets specific external IP block by id
 
-  An external IP block is network coming from external IPAM provider that can be used to create subnetworks inside it
+An external IP block is network coming from external IPAM provider that can be used to create subnetworks inside it
 */
 func (a *Client) GetExternalIPBlock(params *GetExternalIPBlockParams, opts ...ClientOption) (*GetExternalIPBlockOK, error) {
 	// TODO: Validate the params before sending
@@ -174,9 +174,9 @@ func (a *Client) GetExternalIPBlock(params *GetExternalIPBlockParams, opts ...Cl
 }
 
 /*
-  GetExternalIPBlocks gets all external IP blocks
+GetExternalIPBlocks gets all external IP blocks
 
-  An external IP block is network coming from external IPAM provider that can be used to create subnetworks inside it
+An external IP block is network coming from external IPAM provider that can be used to create subnetworks inside it
 */
 func (a *Client) GetExternalIPBlocks(params *GetExternalIPBlocksParams, opts ...ClientOption) (*GetExternalIPBlocksOK, error) {
 	// TODO: Validate the params before sending
@@ -214,9 +214,9 @@ func (a *Client) GetExternalIPBlocks(params *GetExternalIPBlocksParams, opts ...
 }
 
 /*
-  GetExternalNetworkIPRange gets external IP a m network IP range
+GetExternalNetworkIPRange gets external IP a m network IP range
 
-  Get external IPAM network IP range with a given id
+Get external IPAM network IP range with a given id
 */
 func (a *Client) GetExternalNetworkIPRange(params *GetExternalNetworkIPRangeParams, opts ...ClientOption) (*GetExternalNetworkIPRangeOK, error) {
 	// TODO: Validate the params before sending
@@ -254,9 +254,9 @@ func (a *Client) GetExternalNetworkIPRange(params *GetExternalNetworkIPRangePara
 }
 
 /*
-  GetExternalNetworkIPRanges gets external IP a m network IP ranges
+GetExternalNetworkIPRanges gets external IP a m network IP ranges
 
-  Get all external IPAM network IP ranges
+Get all external IPAM network IP ranges
 */
 func (a *Client) GetExternalNetworkIPRanges(params *GetExternalNetworkIPRangesParams, opts ...ClientOption) (*GetExternalNetworkIPRangesOK, error) {
 	// TODO: Validate the params before sending
@@ -294,9 +294,9 @@ func (a *Client) GetExternalNetworkIPRanges(params *GetExternalNetworkIPRangesPa
 }
 
 /*
-  GetInternalNetworkIPRange gets internal IP a m network IP range
+GetInternalNetworkIPRange gets internal IP a m network IP range
 
-  Get internal IPAM network IP range with a given id
+Get internal IPAM network IP range with a given id
 */
 func (a *Client) GetInternalNetworkIPRange(params *GetInternalNetworkIPRangeParams, opts ...ClientOption) (*GetInternalNetworkIPRangeOK, error) {
 	// TODO: Validate the params before sending
@@ -334,9 +334,9 @@ func (a *Client) GetInternalNetworkIPRange(params *GetInternalNetworkIPRangePara
 }
 
 /*
-  GetInternalNetworkIPRanges gets internal IP a m network IP ranges
+GetInternalNetworkIPRanges gets internal IP a m network IP ranges
 
-  Get all internal IPAM network IP ranges
+Get all internal IPAM network IP ranges
 */
 func (a *Client) GetInternalNetworkIPRanges(params *GetInternalNetworkIPRangesParams, opts ...ClientOption) (*GetInternalNetworkIPRangesOK, error) {
 	// TODO: Validate the params before sending
@@ -374,9 +374,9 @@ func (a *Client) GetInternalNetworkIPRanges(params *GetInternalNetworkIPRangesPa
 }
 
 /*
-  UpdateExternalNetworkIPRange updates external IP a m network IP range
+UpdateExternalNetworkIPRange updates external IP a m network IP range
 
-  Assign the external IPAM network IP range to a different network and/or change the tags of the external IPAM network IP range.
+Assign the external IPAM network IP range to a different network and/or change the tags of the external IPAM network IP range.
 */
 func (a *Client) UpdateExternalNetworkIPRange(params *UpdateExternalNetworkIPRangeParams, opts ...ClientOption) (*UpdateExternalNetworkIPRangeOK, error) {
 	// TODO: Validate the params before sending
@@ -414,9 +414,9 @@ func (a *Client) UpdateExternalNetworkIPRange(params *UpdateExternalNetworkIPRan
 }
 
 /*
-  UpdateInternalNetworkIPRange updates internal network IP range
+UpdateInternalNetworkIPRange updates internal network IP range
 
-  Update internal network IP range.
+Update internal network IP range.
 */
 func (a *Client) UpdateInternalNetworkIPRange(params *UpdateInternalNetworkIPRangeParams, opts ...ClientOption) (*UpdateInternalNetworkIPRangeOK, error) {
 	// TODO: Validate the params before sending

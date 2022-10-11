@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
@@ -105,7 +104,7 @@ func UnmarshalVersionRequestSlice(reader io.Reader, consumer runtime.Consumer) (
 // UnmarshalVersionRequest unmarshals polymorphic VersionRequest
 func UnmarshalVersionRequest(reader io.Reader, consumer runtime.Consumer) (VersionRequest, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}

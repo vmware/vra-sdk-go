@@ -51,7 +51,8 @@ func NewEnumeratePrivateImagesVCFAccepted() *EnumeratePrivateImagesVCFAccepted {
 	return &EnumeratePrivateImagesVCFAccepted{}
 }
 
-/* EnumeratePrivateImagesVCFAccepted describes a response with status code 202, with default header values.
+/*
+EnumeratePrivateImagesVCFAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type EnumeratePrivateImagesVCFAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this enumerate private images v c f accepted response has a 2xx status code
+func (o *EnumeratePrivateImagesVCFAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this enumerate private images v c f accepted response has a 3xx status code
+func (o *EnumeratePrivateImagesVCFAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this enumerate private images v c f accepted response has a 4xx status code
+func (o *EnumeratePrivateImagesVCFAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this enumerate private images v c f accepted response has a 5xx status code
+func (o *EnumeratePrivateImagesVCFAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this enumerate private images v c f accepted response a status code equal to that given
+func (o *EnumeratePrivateImagesVCFAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *EnumeratePrivateImagesVCFAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vcf/{id}/private-image-enumeration][%d] enumeratePrivateImagesVCFAccepted  %+v", 202, o.Payload)
 }
+
+func (o *EnumeratePrivateImagesVCFAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vcf/{id}/private-image-enumeration][%d] enumeratePrivateImagesVCFAccepted  %+v", 202, o.Payload)
+}
+
 func (o *EnumeratePrivateImagesVCFAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewEnumeratePrivateImagesVCFBadRequest() *EnumeratePrivateImagesVCFBadReque
 	return &EnumeratePrivateImagesVCFBadRequest{}
 }
 
-/* EnumeratePrivateImagesVCFBadRequest describes a response with status code 400, with default header values.
+/*
+EnumeratePrivateImagesVCFBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type EnumeratePrivateImagesVCFBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this enumerate private images v c f bad request response has a 2xx status code
+func (o *EnumeratePrivateImagesVCFBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this enumerate private images v c f bad request response has a 3xx status code
+func (o *EnumeratePrivateImagesVCFBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this enumerate private images v c f bad request response has a 4xx status code
+func (o *EnumeratePrivateImagesVCFBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this enumerate private images v c f bad request response has a 5xx status code
+func (o *EnumeratePrivateImagesVCFBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this enumerate private images v c f bad request response a status code equal to that given
+func (o *EnumeratePrivateImagesVCFBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *EnumeratePrivateImagesVCFBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vcf/{id}/private-image-enumeration][%d] enumeratePrivateImagesVCFBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *EnumeratePrivateImagesVCFBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vcf/{id}/private-image-enumeration][%d] enumeratePrivateImagesVCFBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *EnumeratePrivateImagesVCFBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewEnumeratePrivateImagesVCFForbidden() *EnumeratePrivateImagesVCFForbidden
 	return &EnumeratePrivateImagesVCFForbidden{}
 }
 
-/* EnumeratePrivateImagesVCFForbidden describes a response with status code 403, with default header values.
+/*
+EnumeratePrivateImagesVCFForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type EnumeratePrivateImagesVCFForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this enumerate private images v c f forbidden response has a 2xx status code
+func (o *EnumeratePrivateImagesVCFForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this enumerate private images v c f forbidden response has a 3xx status code
+func (o *EnumeratePrivateImagesVCFForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this enumerate private images v c f forbidden response has a 4xx status code
+func (o *EnumeratePrivateImagesVCFForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this enumerate private images v c f forbidden response has a 5xx status code
+func (o *EnumeratePrivateImagesVCFForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this enumerate private images v c f forbidden response a status code equal to that given
+func (o *EnumeratePrivateImagesVCFForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *EnumeratePrivateImagesVCFForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vcf/{id}/private-image-enumeration][%d] enumeratePrivateImagesVCFForbidden  %+v", 403, o.Payload)
 }
+
+func (o *EnumeratePrivateImagesVCFForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vcf/{id}/private-image-enumeration][%d] enumeratePrivateImagesVCFForbidden  %+v", 403, o.Payload)
+}
+
 func (o *EnumeratePrivateImagesVCFForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

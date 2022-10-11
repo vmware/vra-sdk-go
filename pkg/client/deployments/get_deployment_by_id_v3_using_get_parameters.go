@@ -53,10 +53,12 @@ func NewGetDeploymentByIDV3UsingGETParamsWithHTTPClient(client *http.Client) *Ge
 	}
 }
 
-/* GetDeploymentByIDV3UsingGETParams contains all the parameters to send to the API endpoint
-   for the get deployment by Id v3 using g e t operation.
+/*
+GetDeploymentByIDV3UsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get deployment by Id v3 using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetDeploymentByIDV3UsingGETParams struct {
 

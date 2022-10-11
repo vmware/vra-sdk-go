@@ -48,7 +48,7 @@ type ClientService interface {
 }
 
 /*
-  CancelBlueprintRequestUsingPOST cancels request
+CancelBlueprintRequestUsingPOST cancels request
 */
 func (a *Client) CancelBlueprintRequestUsingPOST(params *CancelBlueprintRequestUsingPOSTParams, opts ...ClientOption) (*CancelBlueprintRequestUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -86,7 +86,7 @@ func (a *Client) CancelBlueprintRequestUsingPOST(params *CancelBlueprintRequestU
 }
 
 /*
-  CreateBlueprintRequestUsingPOST1 creates a blueprint request
+CreateBlueprintRequestUsingPOST1 creates a blueprint request
 */
 func (a *Client) CreateBlueprintRequestUsingPOST1(params *CreateBlueprintRequestUsingPOST1Params, opts ...ClientOption) (*CreateBlueprintRequestUsingPOST1Created, *CreateBlueprintRequestUsingPOST1Accepted, error) {
 	// TODO: Validate the params before sending
@@ -125,7 +125,7 @@ func (a *Client) CreateBlueprintRequestUsingPOST1(params *CreateBlueprintRequest
 }
 
 /*
-  DeleteBlueprintRequestUsingDELETE1 deletes request
+DeleteBlueprintRequestUsingDELETE1 deletes request
 */
 func (a *Client) DeleteBlueprintRequestUsingDELETE1(params *DeleteBlueprintRequestUsingDELETE1Params, opts ...ClientOption) (*DeleteBlueprintRequestUsingDELETE1NoContent, error) {
 	// TODO: Validate the params before sending
@@ -163,7 +163,7 @@ func (a *Client) DeleteBlueprintRequestUsingDELETE1(params *DeleteBlueprintReque
 }
 
 /*
-  GetBlueprintPlanUsingGET1 returns request plan
+GetBlueprintPlanUsingGET1 returns request plan
 */
 func (a *Client) GetBlueprintPlanUsingGET1(params *GetBlueprintPlanUsingGET1Params, opts ...ClientOption) (*GetBlueprintPlanUsingGET1OK, error) {
 	// TODO: Validate the params before sending
@@ -201,7 +201,7 @@ func (a *Client) GetBlueprintPlanUsingGET1(params *GetBlueprintPlanUsingGET1Para
 }
 
 /*
-  GetBlueprintRequestUsingGET1 returns blueprint request details
+GetBlueprintRequestUsingGET1 returns blueprint request details
 */
 func (a *Client) GetBlueprintRequestUsingGET1(params *GetBlueprintRequestUsingGET1Params, opts ...ClientOption) (*GetBlueprintRequestUsingGET1OK, error) {
 	// TODO: Validate the params before sending
@@ -239,7 +239,7 @@ func (a *Client) GetBlueprintRequestUsingGET1(params *GetBlueprintRequestUsingGE
 }
 
 /*
-  GetBlueprintResourcesPlanUsingGET1 returns request resources plan
+GetBlueprintResourcesPlanUsingGET1 returns request resources plan
 */
 func (a *Client) GetBlueprintResourcesPlanUsingGET1(params *GetBlueprintResourcesPlanUsingGET1Params, opts ...ClientOption) (*GetBlueprintResourcesPlanUsingGET1OK, error) {
 	// TODO: Validate the params before sending
@@ -277,7 +277,7 @@ func (a *Client) GetBlueprintResourcesPlanUsingGET1(params *GetBlueprintResource
 }
 
 /*
-  ListBlueprintRequestsUsingGET1 lists blueprint requests
+ListBlueprintRequestsUsingGET1 lists blueprint requests
 */
 func (a *Client) ListBlueprintRequestsUsingGET1(params *ListBlueprintRequestsUsingGET1Params, opts ...ClientOption) (*ListBlueprintRequestsUsingGET1OK, error) {
 	// TODO: Validate the params before sending

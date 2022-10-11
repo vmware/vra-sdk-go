@@ -57,7 +57,8 @@ func NewCreateMeteringAssignmentStrategyUsingPOST2OK() *CreateMeteringAssignment
 	return &CreateMeteringAssignmentStrategyUsingPOST2OK{}
 }
 
-/* CreateMeteringAssignmentStrategyUsingPOST2OK describes a response with status code 200, with default header values.
+/*
+CreateMeteringAssignmentStrategyUsingPOST2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -65,9 +66,39 @@ type CreateMeteringAssignmentStrategyUsingPOST2OK struct {
 	Payload *models.MeteringAssignmentStrategy
 }
 
+// IsSuccess returns true when this create metering assignment strategy using p o s t2 o k response has a 2xx status code
+func (o *CreateMeteringAssignmentStrategyUsingPOST2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create metering assignment strategy using p o s t2 o k response has a 3xx status code
+func (o *CreateMeteringAssignmentStrategyUsingPOST2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create metering assignment strategy using p o s t2 o k response has a 4xx status code
+func (o *CreateMeteringAssignmentStrategyUsingPOST2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create metering assignment strategy using p o s t2 o k response has a 5xx status code
+func (o *CreateMeteringAssignmentStrategyUsingPOST2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create metering assignment strategy using p o s t2 o k response a status code equal to that given
+func (o *CreateMeteringAssignmentStrategyUsingPOST2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CreateMeteringAssignmentStrategyUsingPOST2OK) Error() string {
 	return fmt.Sprintf("[POST /price/api/private/pricing-card-assignments/strategy][%d] createMeteringAssignmentStrategyUsingPOST2OK  %+v", 200, o.Payload)
 }
+
+func (o *CreateMeteringAssignmentStrategyUsingPOST2OK) String() string {
+	return fmt.Sprintf("[POST /price/api/private/pricing-card-assignments/strategy][%d] createMeteringAssignmentStrategyUsingPOST2OK  %+v", 200, o.Payload)
+}
+
 func (o *CreateMeteringAssignmentStrategyUsingPOST2OK) GetPayload() *models.MeteringAssignmentStrategy {
 	return o.Payload
 }
@@ -89,7 +120,8 @@ func NewCreateMeteringAssignmentStrategyUsingPOST2Created() *CreateMeteringAssig
 	return &CreateMeteringAssignmentStrategyUsingPOST2Created{}
 }
 
-/* CreateMeteringAssignmentStrategyUsingPOST2Created describes a response with status code 201, with default header values.
+/*
+CreateMeteringAssignmentStrategyUsingPOST2Created describes a response with status code 201, with default header values.
 
 Created
 */
@@ -97,9 +129,39 @@ type CreateMeteringAssignmentStrategyUsingPOST2Created struct {
 	Payload *models.MeteringAssignmentStrategy
 }
 
+// IsSuccess returns true when this create metering assignment strategy using p o s t2 created response has a 2xx status code
+func (o *CreateMeteringAssignmentStrategyUsingPOST2Created) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create metering assignment strategy using p o s t2 created response has a 3xx status code
+func (o *CreateMeteringAssignmentStrategyUsingPOST2Created) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create metering assignment strategy using p o s t2 created response has a 4xx status code
+func (o *CreateMeteringAssignmentStrategyUsingPOST2Created) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create metering assignment strategy using p o s t2 created response has a 5xx status code
+func (o *CreateMeteringAssignmentStrategyUsingPOST2Created) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create metering assignment strategy using p o s t2 created response a status code equal to that given
+func (o *CreateMeteringAssignmentStrategyUsingPOST2Created) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateMeteringAssignmentStrategyUsingPOST2Created) Error() string {
 	return fmt.Sprintf("[POST /price/api/private/pricing-card-assignments/strategy][%d] createMeteringAssignmentStrategyUsingPOST2Created  %+v", 201, o.Payload)
 }
+
+func (o *CreateMeteringAssignmentStrategyUsingPOST2Created) String() string {
+	return fmt.Sprintf("[POST /price/api/private/pricing-card-assignments/strategy][%d] createMeteringAssignmentStrategyUsingPOST2Created  %+v", 201, o.Payload)
+}
+
 func (o *CreateMeteringAssignmentStrategyUsingPOST2Created) GetPayload() *models.MeteringAssignmentStrategy {
 	return o.Payload
 }
@@ -121,14 +183,44 @@ func NewCreateMeteringAssignmentStrategyUsingPOST2Unauthorized() *CreateMetering
 	return &CreateMeteringAssignmentStrategyUsingPOST2Unauthorized{}
 }
 
-/* CreateMeteringAssignmentStrategyUsingPOST2Unauthorized describes a response with status code 401, with default header values.
+/*
+CreateMeteringAssignmentStrategyUsingPOST2Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type CreateMeteringAssignmentStrategyUsingPOST2Unauthorized struct {
 }
 
+// IsSuccess returns true when this create metering assignment strategy using p o s t2 unauthorized response has a 2xx status code
+func (o *CreateMeteringAssignmentStrategyUsingPOST2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create metering assignment strategy using p o s t2 unauthorized response has a 3xx status code
+func (o *CreateMeteringAssignmentStrategyUsingPOST2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create metering assignment strategy using p o s t2 unauthorized response has a 4xx status code
+func (o *CreateMeteringAssignmentStrategyUsingPOST2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create metering assignment strategy using p o s t2 unauthorized response has a 5xx status code
+func (o *CreateMeteringAssignmentStrategyUsingPOST2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create metering assignment strategy using p o s t2 unauthorized response a status code equal to that given
+func (o *CreateMeteringAssignmentStrategyUsingPOST2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreateMeteringAssignmentStrategyUsingPOST2Unauthorized) Error() string {
+	return fmt.Sprintf("[POST /price/api/private/pricing-card-assignments/strategy][%d] createMeteringAssignmentStrategyUsingPOST2Unauthorized ", 401)
+}
+
+func (o *CreateMeteringAssignmentStrategyUsingPOST2Unauthorized) String() string {
 	return fmt.Sprintf("[POST /price/api/private/pricing-card-assignments/strategy][%d] createMeteringAssignmentStrategyUsingPOST2Unauthorized ", 401)
 }
 
@@ -142,14 +234,44 @@ func NewCreateMeteringAssignmentStrategyUsingPOST2Forbidden() *CreateMeteringAss
 	return &CreateMeteringAssignmentStrategyUsingPOST2Forbidden{}
 }
 
-/* CreateMeteringAssignmentStrategyUsingPOST2Forbidden describes a response with status code 403, with default header values.
+/*
+CreateMeteringAssignmentStrategyUsingPOST2Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type CreateMeteringAssignmentStrategyUsingPOST2Forbidden struct {
 }
 
+// IsSuccess returns true when this create metering assignment strategy using p o s t2 forbidden response has a 2xx status code
+func (o *CreateMeteringAssignmentStrategyUsingPOST2Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create metering assignment strategy using p o s t2 forbidden response has a 3xx status code
+func (o *CreateMeteringAssignmentStrategyUsingPOST2Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create metering assignment strategy using p o s t2 forbidden response has a 4xx status code
+func (o *CreateMeteringAssignmentStrategyUsingPOST2Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create metering assignment strategy using p o s t2 forbidden response has a 5xx status code
+func (o *CreateMeteringAssignmentStrategyUsingPOST2Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create metering assignment strategy using p o s t2 forbidden response a status code equal to that given
+func (o *CreateMeteringAssignmentStrategyUsingPOST2Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateMeteringAssignmentStrategyUsingPOST2Forbidden) Error() string {
+	return fmt.Sprintf("[POST /price/api/private/pricing-card-assignments/strategy][%d] createMeteringAssignmentStrategyUsingPOST2Forbidden ", 403)
+}
+
+func (o *CreateMeteringAssignmentStrategyUsingPOST2Forbidden) String() string {
 	return fmt.Sprintf("[POST /price/api/private/pricing-card-assignments/strategy][%d] createMeteringAssignmentStrategyUsingPOST2Forbidden ", 403)
 }
 

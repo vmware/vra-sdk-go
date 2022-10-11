@@ -52,10 +52,12 @@ func NewGetLoadBalancersParamsWithHTTPClient(client *http.Client) *GetLoadBalanc
 	}
 }
 
-/* GetLoadBalancersParams contains all the parameters to send to the API endpoint
-   for the get load balancers operation.
+/*
+GetLoadBalancersParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get load balancers operation.
+
+	Typically these are written to a http.Request.
 */
 type GetLoadBalancersParams struct {
 

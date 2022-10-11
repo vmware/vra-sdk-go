@@ -51,7 +51,8 @@ func NewCreateComputeGatewayAccepted() *CreateComputeGatewayAccepted {
 	return &CreateComputeGatewayAccepted{}
 }
 
-/* CreateComputeGatewayAccepted describes a response with status code 202, with default header values.
+/*
+CreateComputeGatewayAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type CreateComputeGatewayAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this create compute gateway accepted response has a 2xx status code
+func (o *CreateComputeGatewayAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create compute gateway accepted response has a 3xx status code
+func (o *CreateComputeGatewayAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create compute gateway accepted response has a 4xx status code
+func (o *CreateComputeGatewayAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create compute gateway accepted response has a 5xx status code
+func (o *CreateComputeGatewayAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create compute gateway accepted response a status code equal to that given
+func (o *CreateComputeGatewayAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateComputeGatewayAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/compute-gateways][%d] createComputeGatewayAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateComputeGatewayAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/compute-gateways][%d] createComputeGatewayAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateComputeGatewayAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewCreateComputeGatewayBadRequest() *CreateComputeGatewayBadRequest {
 	return &CreateComputeGatewayBadRequest{}
 }
 
-/* CreateComputeGatewayBadRequest describes a response with status code 400, with default header values.
+/*
+CreateComputeGatewayBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type CreateComputeGatewayBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create compute gateway bad request response has a 2xx status code
+func (o *CreateComputeGatewayBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create compute gateway bad request response has a 3xx status code
+func (o *CreateComputeGatewayBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create compute gateway bad request response has a 4xx status code
+func (o *CreateComputeGatewayBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create compute gateway bad request response has a 5xx status code
+func (o *CreateComputeGatewayBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create compute gateway bad request response a status code equal to that given
+func (o *CreateComputeGatewayBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateComputeGatewayBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/compute-gateways][%d] createComputeGatewayBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateComputeGatewayBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/compute-gateways][%d] createComputeGatewayBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateComputeGatewayBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewCreateComputeGatewayForbidden() *CreateComputeGatewayForbidden {
 	return &CreateComputeGatewayForbidden{}
 }
 
-/* CreateComputeGatewayForbidden describes a response with status code 403, with default header values.
+/*
+CreateComputeGatewayForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type CreateComputeGatewayForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this create compute gateway forbidden response has a 2xx status code
+func (o *CreateComputeGatewayForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create compute gateway forbidden response has a 3xx status code
+func (o *CreateComputeGatewayForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create compute gateway forbidden response has a 4xx status code
+func (o *CreateComputeGatewayForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create compute gateway forbidden response has a 5xx status code
+func (o *CreateComputeGatewayForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create compute gateway forbidden response a status code equal to that given
+func (o *CreateComputeGatewayForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateComputeGatewayForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/compute-gateways][%d] createComputeGatewayForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CreateComputeGatewayForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/compute-gateways][%d] createComputeGatewayForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CreateComputeGatewayForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

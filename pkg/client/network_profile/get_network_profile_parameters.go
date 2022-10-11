@@ -52,10 +52,12 @@ func NewGetNetworkProfileParamsWithHTTPClient(client *http.Client) *GetNetworkPr
 	}
 }
 
-/* GetNetworkProfileParams contains all the parameters to send to the API endpoint
-   for the get network profile operation.
+/*
+GetNetworkProfileParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get network profile operation.
+
+	Typically these are written to a http.Request.
 */
 type GetNetworkProfileParams struct {
 

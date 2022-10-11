@@ -51,7 +51,8 @@ func NewPatchMachineNetworkInterfaceOK() *PatchMachineNetworkInterfaceOK {
 	return &PatchMachineNetworkInterfaceOK{}
 }
 
-/* PatchMachineNetworkInterfaceOK describes a response with status code 200, with default header values.
+/*
+PatchMachineNetworkInterfaceOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type PatchMachineNetworkInterfaceOK struct {
 	Payload *models.NetworkInterface
 }
 
+// IsSuccess returns true when this patch machine network interface o k response has a 2xx status code
+func (o *PatchMachineNetworkInterfaceOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch machine network interface o k response has a 3xx status code
+func (o *PatchMachineNetworkInterfaceOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch machine network interface o k response has a 4xx status code
+func (o *PatchMachineNetworkInterfaceOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch machine network interface o k response has a 5xx status code
+func (o *PatchMachineNetworkInterfaceOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch machine network interface o k response a status code equal to that given
+func (o *PatchMachineNetworkInterfaceOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchMachineNetworkInterfaceOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/machines/{id}/network-interfaces/{networkId}][%d] patchMachineNetworkInterfaceOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchMachineNetworkInterfaceOK) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/machines/{id}/network-interfaces/{networkId}][%d] patchMachineNetworkInterfaceOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchMachineNetworkInterfaceOK) GetPayload() *models.NetworkInterface {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPatchMachineNetworkInterfaceForbidden() *PatchMachineNetworkInterfaceFor
 	return &PatchMachineNetworkInterfaceForbidden{}
 }
 
-/* PatchMachineNetworkInterfaceForbidden describes a response with status code 403, with default header values.
+/*
+PatchMachineNetworkInterfaceForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type PatchMachineNetworkInterfaceForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this patch machine network interface forbidden response has a 2xx status code
+func (o *PatchMachineNetworkInterfaceForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch machine network interface forbidden response has a 3xx status code
+func (o *PatchMachineNetworkInterfaceForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch machine network interface forbidden response has a 4xx status code
+func (o *PatchMachineNetworkInterfaceForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch machine network interface forbidden response has a 5xx status code
+func (o *PatchMachineNetworkInterfaceForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch machine network interface forbidden response a status code equal to that given
+func (o *PatchMachineNetworkInterfaceForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *PatchMachineNetworkInterfaceForbidden) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/machines/{id}/network-interfaces/{networkId}][%d] patchMachineNetworkInterfaceForbidden  %+v", 403, o.Payload)
 }
+
+func (o *PatchMachineNetworkInterfaceForbidden) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/machines/{id}/network-interfaces/{networkId}][%d] patchMachineNetworkInterfaceForbidden  %+v", 403, o.Payload)
+}
+
 func (o *PatchMachineNetworkInterfaceForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewPatchMachineNetworkInterfaceNotFound() *PatchMachineNetworkInterfaceNotF
 	return &PatchMachineNetworkInterfaceNotFound{}
 }
 
-/* PatchMachineNetworkInterfaceNotFound describes a response with status code 404, with default header values.
+/*
+PatchMachineNetworkInterfaceNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type PatchMachineNetworkInterfaceNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this patch machine network interface not found response has a 2xx status code
+func (o *PatchMachineNetworkInterfaceNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch machine network interface not found response has a 3xx status code
+func (o *PatchMachineNetworkInterfaceNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch machine network interface not found response has a 4xx status code
+func (o *PatchMachineNetworkInterfaceNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch machine network interface not found response has a 5xx status code
+func (o *PatchMachineNetworkInterfaceNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch machine network interface not found response a status code equal to that given
+func (o *PatchMachineNetworkInterfaceNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *PatchMachineNetworkInterfaceNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/machines/{id}/network-interfaces/{networkId}][%d] patchMachineNetworkInterfaceNotFound  %+v", 404, o.Payload)
 }
+
+func (o *PatchMachineNetworkInterfaceNotFound) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/machines/{id}/network-interfaces/{networkId}][%d] patchMachineNetworkInterfaceNotFound  %+v", 404, o.Payload)
+}
+
 func (o *PatchMachineNetworkInterfaceNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

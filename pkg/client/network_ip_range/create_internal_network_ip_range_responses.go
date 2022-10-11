@@ -51,7 +51,8 @@ func NewCreateInternalNetworkIPRangeCreated() *CreateInternalNetworkIPRangeCreat
 	return &CreateInternalNetworkIPRangeCreated{}
 }
 
-/* CreateInternalNetworkIPRangeCreated describes a response with status code 201, with default header values.
+/*
+CreateInternalNetworkIPRangeCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type CreateInternalNetworkIPRangeCreated struct {
 	Payload *models.NetworkIPRange
 }
 
+// IsSuccess returns true when this create internal network Ip range created response has a 2xx status code
+func (o *CreateInternalNetworkIPRangeCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create internal network Ip range created response has a 3xx status code
+func (o *CreateInternalNetworkIPRangeCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create internal network Ip range created response has a 4xx status code
+func (o *CreateInternalNetworkIPRangeCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create internal network Ip range created response has a 5xx status code
+func (o *CreateInternalNetworkIPRangeCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create internal network Ip range created response a status code equal to that given
+func (o *CreateInternalNetworkIPRangeCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateInternalNetworkIPRangeCreated) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/network-ip-ranges][%d] createInternalNetworkIpRangeCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateInternalNetworkIPRangeCreated) String() string {
+	return fmt.Sprintf("[POST /iaas/api/network-ip-ranges][%d] createInternalNetworkIpRangeCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateInternalNetworkIPRangeCreated) GetPayload() *models.NetworkIPRange {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewCreateInternalNetworkIPRangeBadRequest() *CreateInternalNetworkIPRangeBa
 	return &CreateInternalNetworkIPRangeBadRequest{}
 }
 
-/* CreateInternalNetworkIPRangeBadRequest describes a response with status code 400, with default header values.
+/*
+CreateInternalNetworkIPRangeBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type CreateInternalNetworkIPRangeBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create internal network Ip range bad request response has a 2xx status code
+func (o *CreateInternalNetworkIPRangeBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create internal network Ip range bad request response has a 3xx status code
+func (o *CreateInternalNetworkIPRangeBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create internal network Ip range bad request response has a 4xx status code
+func (o *CreateInternalNetworkIPRangeBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create internal network Ip range bad request response has a 5xx status code
+func (o *CreateInternalNetworkIPRangeBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create internal network Ip range bad request response a status code equal to that given
+func (o *CreateInternalNetworkIPRangeBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateInternalNetworkIPRangeBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/network-ip-ranges][%d] createInternalNetworkIpRangeBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateInternalNetworkIPRangeBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/network-ip-ranges][%d] createInternalNetworkIpRangeBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateInternalNetworkIPRangeBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewCreateInternalNetworkIPRangeForbidden() *CreateInternalNetworkIPRangeFor
 	return &CreateInternalNetworkIPRangeForbidden{}
 }
 
-/* CreateInternalNetworkIPRangeForbidden describes a response with status code 403, with default header values.
+/*
+CreateInternalNetworkIPRangeForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type CreateInternalNetworkIPRangeForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this create internal network Ip range forbidden response has a 2xx status code
+func (o *CreateInternalNetworkIPRangeForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create internal network Ip range forbidden response has a 3xx status code
+func (o *CreateInternalNetworkIPRangeForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create internal network Ip range forbidden response has a 4xx status code
+func (o *CreateInternalNetworkIPRangeForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create internal network Ip range forbidden response has a 5xx status code
+func (o *CreateInternalNetworkIPRangeForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create internal network Ip range forbidden response a status code equal to that given
+func (o *CreateInternalNetworkIPRangeForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateInternalNetworkIPRangeForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/network-ip-ranges][%d] createInternalNetworkIpRangeForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CreateInternalNetworkIPRangeForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/network-ip-ranges][%d] createInternalNetworkIpRangeForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CreateInternalNetworkIPRangeForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

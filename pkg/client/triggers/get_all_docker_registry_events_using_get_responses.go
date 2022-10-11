@@ -63,7 +63,8 @@ func NewGetAllDockerRegistryEventsUsingGETOK() *GetAllDockerRegistryEventsUsingG
 	return &GetAllDockerRegistryEventsUsingGETOK{}
 }
 
-/* GetAllDockerRegistryEventsUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetAllDockerRegistryEventsUsingGETOK describes a response with status code 200, with default header values.
 
 'Success' with get of Docker Registry Events
 */
@@ -71,9 +72,39 @@ type GetAllDockerRegistryEventsUsingGETOK struct {
 	Payload models.DockerRegistryEvents
 }
 
+// IsSuccess returns true when this get all docker registry events using g e t o k response has a 2xx status code
+func (o *GetAllDockerRegistryEventsUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get all docker registry events using g e t o k response has a 3xx status code
+func (o *GetAllDockerRegistryEventsUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all docker registry events using g e t o k response has a 4xx status code
+func (o *GetAllDockerRegistryEventsUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get all docker registry events using g e t o k response has a 5xx status code
+func (o *GetAllDockerRegistryEventsUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all docker registry events using g e t o k response a status code equal to that given
+func (o *GetAllDockerRegistryEventsUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetAllDockerRegistryEventsUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/registry-events][%d] getAllDockerRegistryEventsUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetAllDockerRegistryEventsUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /codestream/api/registry-events][%d] getAllDockerRegistryEventsUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetAllDockerRegistryEventsUsingGETOK) GetPayload() models.DockerRegistryEvents {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewGetAllDockerRegistryEventsUsingGETUnauthorized() *GetAllDockerRegistryEv
 	return &GetAllDockerRegistryEventsUsingGETUnauthorized{}
 }
 
-/* GetAllDockerRegistryEventsUsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+GetAllDockerRegistryEventsUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type GetAllDockerRegistryEventsUsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this get all docker registry events using g e t unauthorized response has a 2xx status code
+func (o *GetAllDockerRegistryEventsUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get all docker registry events using g e t unauthorized response has a 3xx status code
+func (o *GetAllDockerRegistryEventsUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all docker registry events using g e t unauthorized response has a 4xx status code
+func (o *GetAllDockerRegistryEventsUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get all docker registry events using g e t unauthorized response has a 5xx status code
+func (o *GetAllDockerRegistryEventsUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all docker registry events using g e t unauthorized response a status code equal to that given
+func (o *GetAllDockerRegistryEventsUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetAllDockerRegistryEventsUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/registry-events][%d] getAllDockerRegistryEventsUsingGETUnauthorized ", 401)
+}
+
+func (o *GetAllDockerRegistryEventsUsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /codestream/api/registry-events][%d] getAllDockerRegistryEventsUsingGETUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewGetAllDockerRegistryEventsUsingGETForbidden() *GetAllDockerRegistryEvent
 	return &GetAllDockerRegistryEventsUsingGETForbidden{}
 }
 
-/* GetAllDockerRegistryEventsUsingGETForbidden describes a response with status code 403, with default header values.
+/*
+GetAllDockerRegistryEventsUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetAllDockerRegistryEventsUsingGETForbidden struct {
 }
 
+// IsSuccess returns true when this get all docker registry events using g e t forbidden response has a 2xx status code
+func (o *GetAllDockerRegistryEventsUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get all docker registry events using g e t forbidden response has a 3xx status code
+func (o *GetAllDockerRegistryEventsUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all docker registry events using g e t forbidden response has a 4xx status code
+func (o *GetAllDockerRegistryEventsUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get all docker registry events using g e t forbidden response has a 5xx status code
+func (o *GetAllDockerRegistryEventsUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all docker registry events using g e t forbidden response a status code equal to that given
+func (o *GetAllDockerRegistryEventsUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetAllDockerRegistryEventsUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/registry-events][%d] getAllDockerRegistryEventsUsingGETForbidden ", 403)
+}
+
+func (o *GetAllDockerRegistryEventsUsingGETForbidden) String() string {
 	return fmt.Sprintf("[GET /codestream/api/registry-events][%d] getAllDockerRegistryEventsUsingGETForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewGetAllDockerRegistryEventsUsingGETNotFound() *GetAllDockerRegistryEvents
 	return &GetAllDockerRegistryEventsUsingGETNotFound{}
 }
 
-/* GetAllDockerRegistryEventsUsingGETNotFound describes a response with status code 404, with default header values.
+/*
+GetAllDockerRegistryEventsUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type GetAllDockerRegistryEventsUsingGETNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get all docker registry events using g e t not found response has a 2xx status code
+func (o *GetAllDockerRegistryEventsUsingGETNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get all docker registry events using g e t not found response has a 3xx status code
+func (o *GetAllDockerRegistryEventsUsingGETNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all docker registry events using g e t not found response has a 4xx status code
+func (o *GetAllDockerRegistryEventsUsingGETNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get all docker registry events using g e t not found response has a 5xx status code
+func (o *GetAllDockerRegistryEventsUsingGETNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all docker registry events using g e t not found response a status code equal to that given
+func (o *GetAllDockerRegistryEventsUsingGETNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetAllDockerRegistryEventsUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/registry-events][%d] getAllDockerRegistryEventsUsingGETNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetAllDockerRegistryEventsUsingGETNotFound) String() string {
+	return fmt.Sprintf("[GET /codestream/api/registry-events][%d] getAllDockerRegistryEventsUsingGETNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetAllDockerRegistryEventsUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewGetAllDockerRegistryEventsUsingGETInternalServerError() *GetAllDockerReg
 	return &GetAllDockerRegistryEventsUsingGETInternalServerError{}
 }
 
-/* GetAllDockerRegistryEventsUsingGETInternalServerError describes a response with status code 500, with default header values.
+/*
+GetAllDockerRegistryEventsUsingGETInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type GetAllDockerRegistryEventsUsingGETInternalServerError struct {
 }
 
+// IsSuccess returns true when this get all docker registry events using g e t internal server error response has a 2xx status code
+func (o *GetAllDockerRegistryEventsUsingGETInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get all docker registry events using g e t internal server error response has a 3xx status code
+func (o *GetAllDockerRegistryEventsUsingGETInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all docker registry events using g e t internal server error response has a 4xx status code
+func (o *GetAllDockerRegistryEventsUsingGETInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get all docker registry events using g e t internal server error response has a 5xx status code
+func (o *GetAllDockerRegistryEventsUsingGETInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this get all docker registry events using g e t internal server error response a status code equal to that given
+func (o *GetAllDockerRegistryEventsUsingGETInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GetAllDockerRegistryEventsUsingGETInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/registry-events][%d] getAllDockerRegistryEventsUsingGETInternalServerError ", 500)
+}
+
+func (o *GetAllDockerRegistryEventsUsingGETInternalServerError) String() string {
 	return fmt.Sprintf("[GET /codestream/api/registry-events][%d] getAllDockerRegistryEventsUsingGETInternalServerError ", 500)
 }
 

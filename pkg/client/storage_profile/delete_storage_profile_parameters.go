@@ -52,10 +52,12 @@ func NewDeleteStorageProfileParamsWithHTTPClient(client *http.Client) *DeleteSto
 	}
 }
 
-/* DeleteStorageProfileParams contains all the parameters to send to the API endpoint
-   for the delete storage profile operation.
+/*
+DeleteStorageProfileParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete storage profile operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteStorageProfileParams struct {
 

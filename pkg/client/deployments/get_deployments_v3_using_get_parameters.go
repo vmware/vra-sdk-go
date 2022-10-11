@@ -53,10 +53,12 @@ func NewGetDeploymentsV3UsingGETParamsWithHTTPClient(client *http.Client) *GetDe
 	}
 }
 
-/* GetDeploymentsV3UsingGETParams contains all the parameters to send to the API endpoint
-   for the get deployments v3 using g e t operation.
+/*
+GetDeploymentsV3UsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get deployments v3 using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetDeploymentsV3UsingGETParams struct {
 

@@ -102,11 +102,16 @@ func main() {
 	apiclient := client.New(transport, strfmt.Default)
 
 	fmt.Printf("Creating cloud account %s\n", *cloudAccountNamePtr)
-	createResp, err := apiclient.CloudAccount.CreateAwsCloudAccount(cloud_account.NewCreateAwsCloudAccountParams().WithBody(&models.CloudAccountAwsSpecification{
+	createResp, err := apiclient.CloudAccount.CreateAwsCloudAccountAsync(cloud_account.NewCreateAwsCloudAccountAsyncParams().WithBody(&models.CloudAccountAwsSpecification{
 		Name:            cloudAccountNamePtr,
 		AccessKeyID:     withString(accessKeyID),
 		SecretAccessKey: withString(secretAccessKey),
-		RegionIds:       []string{"us-west-2"},
+		Regions: []*models.RegionSpecification{
+			&models.RegionSpecification{
+				ExternalRegionID: withString("us-west-2"),
+				Name:             withString("us-west-2"),
+			},
+		},
 		/* Tags: []*models.Tag{&models.Tag{
 			Key: withString("key"),
 			Value: withString("value"),
@@ -114,7 +119,7 @@ func main() {
 	}))
 
 	if err != nil {
-		if _, ok := err.(*cloud_account.CreateAwsCloudAccountBadRequest); ok {
+		if _, ok := err.(*cloud_account.CreateAwsCloudAccountAsyncBadRequest); ok {
 			fmt.Printf("Cloud account '%s' already exists\n", *cloudAccountNamePtr)
 		} else {
 			fmt.Printf("Unknown error: %+v\n", err)
@@ -135,9 +140,9 @@ func main() {
 	}
 
 	if *deletePtr && id != "" {
-		resp, err := apiclient.CloudAccount.DeleteAwsCloudAccount(cloud_account.NewDeleteAwsCloudAccountParams().WithID(id))
+		_, _, err := apiclient.CloudAccount.DeleteAwsCloudAccount(cloud_account.NewDeleteAwsCloudAccountParams().WithID(id))
 		if err != nil {
-			fmt.Printf("Error with delete: %s %+v %+v\n", *cloudAccountNamePtr, resp, err)
+			fmt.Printf("Error with delete: %s %+v\n", *cloudAccountNamePtr, err)
 		} else {
 			fmt.Printf("Deleted cloud account: %s\n", *cloudAccountNamePtr)
 		}

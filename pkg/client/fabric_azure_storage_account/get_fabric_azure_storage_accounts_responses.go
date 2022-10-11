@@ -45,7 +45,8 @@ func NewGetFabricAzureStorageAccountsOK() *GetFabricAzureStorageAccountsOK {
 	return &GetFabricAzureStorageAccountsOK{}
 }
 
-/* GetFabricAzureStorageAccountsOK describes a response with status code 200, with default header values.
+/*
+GetFabricAzureStorageAccountsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type GetFabricAzureStorageAccountsOK struct {
 	Payload *models.FabricAzureStorageAccountResult
 }
 
+// IsSuccess returns true when this get fabric azure storage accounts o k response has a 2xx status code
+func (o *GetFabricAzureStorageAccountsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get fabric azure storage accounts o k response has a 3xx status code
+func (o *GetFabricAzureStorageAccountsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get fabric azure storage accounts o k response has a 4xx status code
+func (o *GetFabricAzureStorageAccountsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get fabric azure storage accounts o k response has a 5xx status code
+func (o *GetFabricAzureStorageAccountsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get fabric azure storage accounts o k response a status code equal to that given
+func (o *GetFabricAzureStorageAccountsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetFabricAzureStorageAccountsOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-azure-storage-accounts][%d] getFabricAzureStorageAccountsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetFabricAzureStorageAccountsOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/fabric-azure-storage-accounts][%d] getFabricAzureStorageAccountsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetFabricAzureStorageAccountsOK) GetPayload() *models.FabricAzureStorageAccountResult {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewGetFabricAzureStorageAccountsForbidden() *GetFabricAzureStorageAccountsF
 	return &GetFabricAzureStorageAccountsForbidden{}
 }
 
-/* GetFabricAzureStorageAccountsForbidden describes a response with status code 403, with default header values.
+/*
+GetFabricAzureStorageAccountsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type GetFabricAzureStorageAccountsForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get fabric azure storage accounts forbidden response has a 2xx status code
+func (o *GetFabricAzureStorageAccountsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get fabric azure storage accounts forbidden response has a 3xx status code
+func (o *GetFabricAzureStorageAccountsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get fabric azure storage accounts forbidden response has a 4xx status code
+func (o *GetFabricAzureStorageAccountsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get fabric azure storage accounts forbidden response has a 5xx status code
+func (o *GetFabricAzureStorageAccountsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get fabric azure storage accounts forbidden response a status code equal to that given
+func (o *GetFabricAzureStorageAccountsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetFabricAzureStorageAccountsForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-azure-storage-accounts][%d] getFabricAzureStorageAccountsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetFabricAzureStorageAccountsForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/fabric-azure-storage-accounts][%d] getFabricAzureStorageAccountsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetFabricAzureStorageAccountsForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

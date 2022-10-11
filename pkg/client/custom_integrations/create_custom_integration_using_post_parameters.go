@@ -54,10 +54,12 @@ func NewCreateCustomIntegrationUsingPOSTParamsWithHTTPClient(client *http.Client
 	}
 }
 
-/* CreateCustomIntegrationUsingPOSTParams contains all the parameters to send to the API endpoint
-   for the create custom integration using p o s t operation.
+/*
+CreateCustomIntegrationUsingPOSTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create custom integration using p o s t operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateCustomIntegrationUsingPOSTParams struct {
 

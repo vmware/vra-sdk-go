@@ -54,10 +54,12 @@ func NewUpdateAzureCloudAccountAsyncParamsWithHTTPClient(client *http.Client) *U
 	}
 }
 
-/* UpdateAzureCloudAccountAsyncParams contains all the parameters to send to the API endpoint
-   for the update azure cloud account async operation.
+/*
+UpdateAzureCloudAccountAsyncParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update azure cloud account async operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateAzureCloudAccountAsyncParams struct {
 

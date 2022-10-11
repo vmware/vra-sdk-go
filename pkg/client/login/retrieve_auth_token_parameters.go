@@ -54,10 +54,12 @@ func NewRetrieveAuthTokenParamsWithHTTPClient(client *http.Client) *RetrieveAuth
 	}
 }
 
-/* RetrieveAuthTokenParams contains all the parameters to send to the API endpoint
-   for the retrieve auth token operation.
+/*
+RetrieveAuthTokenParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the retrieve auth token operation.
+
+	Typically these are written to a http.Request.
 */
 type RetrieveAuthTokenParams struct {
 

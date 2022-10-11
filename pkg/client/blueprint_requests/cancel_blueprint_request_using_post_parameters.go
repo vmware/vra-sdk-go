@@ -52,10 +52,12 @@ func NewCancelBlueprintRequestUsingPOSTParamsWithHTTPClient(client *http.Client)
 	}
 }
 
-/* CancelBlueprintRequestUsingPOSTParams contains all the parameters to send to the API endpoint
-   for the cancel blueprint request using p o s t operation.
+/*
+CancelBlueprintRequestUsingPOSTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the cancel blueprint request using p o s t operation.
+
+	Typically these are written to a http.Request.
 */
 type CancelBlueprintRequestUsingPOSTParams struct {
 

@@ -52,10 +52,12 @@ func NewGetPipelineByNameUsingGETParamsWithHTTPClient(client *http.Client) *GetP
 	}
 }
 
-/* GetPipelineByNameUsingGETParams contains all the parameters to send to the API endpoint
-   for the get pipeline by name using g e t operation.
+/*
+GetPipelineByNameUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get pipeline by name using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetPipelineByNameUsingGETParams struct {
 

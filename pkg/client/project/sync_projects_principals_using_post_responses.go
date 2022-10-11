@@ -51,7 +51,8 @@ func NewSyncProjectsPrincipalsUsingPOSTOK() *SyncProjectsPrincipalsUsingPOSTOK {
 	return &SyncProjectsPrincipalsUsingPOSTOK{}
 }
 
-/* SyncProjectsPrincipalsUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+SyncProjectsPrincipalsUsingPOSTOK describes a response with status code 200, with default header values.
 
 'Success'
 */
@@ -59,9 +60,39 @@ type SyncProjectsPrincipalsUsingPOSTOK struct {
 	Payload models.PrincipalRole
 }
 
+// IsSuccess returns true when this sync projects principals using p o s t o k response has a 2xx status code
+func (o *SyncProjectsPrincipalsUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this sync projects principals using p o s t o k response has a 3xx status code
+func (o *SyncProjectsPrincipalsUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this sync projects principals using p o s t o k response has a 4xx status code
+func (o *SyncProjectsPrincipalsUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this sync projects principals using p o s t o k response has a 5xx status code
+func (o *SyncProjectsPrincipalsUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this sync projects principals using p o s t o k response a status code equal to that given
+func (o *SyncProjectsPrincipalsUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SyncProjectsPrincipalsUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /project-service/api/projects/{id}/sync-principals][%d] syncProjectsPrincipalsUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *SyncProjectsPrincipalsUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /project-service/api/projects/{id}/sync-principals][%d] syncProjectsPrincipalsUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *SyncProjectsPrincipalsUsingPOSTOK) GetPayload() models.PrincipalRole {
 	return o.Payload
 }
@@ -83,14 +114,44 @@ func NewSyncProjectsPrincipalsUsingPOSTForbidden() *SyncProjectsPrincipalsUsingP
 	return &SyncProjectsPrincipalsUsingPOSTForbidden{}
 }
 
-/* SyncProjectsPrincipalsUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+SyncProjectsPrincipalsUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden, the user lacks permissions
 */
 type SyncProjectsPrincipalsUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this sync projects principals using p o s t forbidden response has a 2xx status code
+func (o *SyncProjectsPrincipalsUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this sync projects principals using p o s t forbidden response has a 3xx status code
+func (o *SyncProjectsPrincipalsUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this sync projects principals using p o s t forbidden response has a 4xx status code
+func (o *SyncProjectsPrincipalsUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this sync projects principals using p o s t forbidden response has a 5xx status code
+func (o *SyncProjectsPrincipalsUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this sync projects principals using p o s t forbidden response a status code equal to that given
+func (o *SyncProjectsPrincipalsUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *SyncProjectsPrincipalsUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /project-service/api/projects/{id}/sync-principals][%d] syncProjectsPrincipalsUsingPOSTForbidden ", 403)
+}
+
+func (o *SyncProjectsPrincipalsUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /project-service/api/projects/{id}/sync-principals][%d] syncProjectsPrincipalsUsingPOSTForbidden ", 403)
 }
 
@@ -104,7 +165,8 @@ func NewSyncProjectsPrincipalsUsingPOSTNotFound() *SyncProjectsPrincipalsUsingPO
 	return &SyncProjectsPrincipalsUsingPOSTNotFound{}
 }
 
-/* SyncProjectsPrincipalsUsingPOSTNotFound describes a response with status code 404, with default header values.
+/*
+SyncProjectsPrincipalsUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 'Not found' if no project with the provided id
 */
@@ -112,9 +174,39 @@ type SyncProjectsPrincipalsUsingPOSTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this sync projects principals using p o s t not found response has a 2xx status code
+func (o *SyncProjectsPrincipalsUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this sync projects principals using p o s t not found response has a 3xx status code
+func (o *SyncProjectsPrincipalsUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this sync projects principals using p o s t not found response has a 4xx status code
+func (o *SyncProjectsPrincipalsUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this sync projects principals using p o s t not found response has a 5xx status code
+func (o *SyncProjectsPrincipalsUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this sync projects principals using p o s t not found response a status code equal to that given
+func (o *SyncProjectsPrincipalsUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *SyncProjectsPrincipalsUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /project-service/api/projects/{id}/sync-principals][%d] syncProjectsPrincipalsUsingPOSTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *SyncProjectsPrincipalsUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /project-service/api/projects/{id}/sync-principals][%d] syncProjectsPrincipalsUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *SyncProjectsPrincipalsUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

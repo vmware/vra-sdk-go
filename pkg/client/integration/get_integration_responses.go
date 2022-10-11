@@ -51,7 +51,8 @@ func NewGetIntegrationOK() *GetIntegrationOK {
 	return &GetIntegrationOK{}
 }
 
-/* GetIntegrationOK describes a response with status code 200, with default header values.
+/*
+GetIntegrationOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetIntegrationOK struct {
 	Payload *models.Integration
 }
 
+// IsSuccess returns true when this get integration o k response has a 2xx status code
+func (o *GetIntegrationOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get integration o k response has a 3xx status code
+func (o *GetIntegrationOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get integration o k response has a 4xx status code
+func (o *GetIntegrationOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get integration o k response has a 5xx status code
+func (o *GetIntegrationOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get integration o k response a status code equal to that given
+func (o *GetIntegrationOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetIntegrationOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/integrations/{id}][%d] getIntegrationOK  %+v", 200, o.Payload)
 }
+
+func (o *GetIntegrationOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/integrations/{id}][%d] getIntegrationOK  %+v", 200, o.Payload)
+}
+
 func (o *GetIntegrationOK) GetPayload() *models.Integration {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetIntegrationForbidden() *GetIntegrationForbidden {
 	return &GetIntegrationForbidden{}
 }
 
-/* GetIntegrationForbidden describes a response with status code 403, with default header values.
+/*
+GetIntegrationForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type GetIntegrationForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get integration forbidden response has a 2xx status code
+func (o *GetIntegrationForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get integration forbidden response has a 3xx status code
+func (o *GetIntegrationForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get integration forbidden response has a 4xx status code
+func (o *GetIntegrationForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get integration forbidden response has a 5xx status code
+func (o *GetIntegrationForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get integration forbidden response a status code equal to that given
+func (o *GetIntegrationForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetIntegrationForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/integrations/{id}][%d] getIntegrationForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetIntegrationForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/integrations/{id}][%d] getIntegrationForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetIntegrationForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewGetIntegrationNotFound() *GetIntegrationNotFound {
 	return &GetIntegrationNotFound{}
 }
 
-/* GetIntegrationNotFound describes a response with status code 404, with default header values.
+/*
+GetIntegrationNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type GetIntegrationNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get integration not found response has a 2xx status code
+func (o *GetIntegrationNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get integration not found response has a 3xx status code
+func (o *GetIntegrationNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get integration not found response has a 4xx status code
+func (o *GetIntegrationNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get integration not found response has a 5xx status code
+func (o *GetIntegrationNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get integration not found response a status code equal to that given
+func (o *GetIntegrationNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetIntegrationNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/integrations/{id}][%d] getIntegrationNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetIntegrationNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/integrations/{id}][%d] getIntegrationNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetIntegrationNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

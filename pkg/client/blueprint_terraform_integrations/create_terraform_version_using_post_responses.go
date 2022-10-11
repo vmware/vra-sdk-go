@@ -57,7 +57,8 @@ func NewCreateTerraformVersionUsingPOSTCreated() *CreateTerraformVersionUsingPOS
 	return &CreateTerraformVersionUsingPOSTCreated{}
 }
 
-/* CreateTerraformVersionUsingPOSTCreated describes a response with status code 201, with default header values.
+/*
+CreateTerraformVersionUsingPOSTCreated describes a response with status code 201, with default header values.
 
 Created
 */
@@ -65,9 +66,39 @@ type CreateTerraformVersionUsingPOSTCreated struct {
 	Payload *models.TerraformVersion
 }
 
+// IsSuccess returns true when this create terraform version using p o s t created response has a 2xx status code
+func (o *CreateTerraformVersionUsingPOSTCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create terraform version using p o s t created response has a 3xx status code
+func (o *CreateTerraformVersionUsingPOSTCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create terraform version using p o s t created response has a 4xx status code
+func (o *CreateTerraformVersionUsingPOSTCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create terraform version using p o s t created response has a 5xx status code
+func (o *CreateTerraformVersionUsingPOSTCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create terraform version using p o s t created response a status code equal to that given
+func (o *CreateTerraformVersionUsingPOSTCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateTerraformVersionUsingPOSTCreated) Error() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprint-integrations/terraform/versions][%d] createTerraformVersionUsingPOSTCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateTerraformVersionUsingPOSTCreated) String() string {
+	return fmt.Sprintf("[POST /blueprint/api/blueprint-integrations/terraform/versions][%d] createTerraformVersionUsingPOSTCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateTerraformVersionUsingPOSTCreated) GetPayload() *models.TerraformVersion {
 	return o.Payload
 }
@@ -89,7 +120,8 @@ func NewCreateTerraformVersionUsingPOSTBadRequest() *CreateTerraformVersionUsing
 	return &CreateTerraformVersionUsingPOSTBadRequest{}
 }
 
-/* CreateTerraformVersionUsingPOSTBadRequest describes a response with status code 400, with default header values.
+/*
+CreateTerraformVersionUsingPOSTBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -97,9 +129,39 @@ type CreateTerraformVersionUsingPOSTBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create terraform version using p o s t bad request response has a 2xx status code
+func (o *CreateTerraformVersionUsingPOSTBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create terraform version using p o s t bad request response has a 3xx status code
+func (o *CreateTerraformVersionUsingPOSTBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create terraform version using p o s t bad request response has a 4xx status code
+func (o *CreateTerraformVersionUsingPOSTBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create terraform version using p o s t bad request response has a 5xx status code
+func (o *CreateTerraformVersionUsingPOSTBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create terraform version using p o s t bad request response a status code equal to that given
+func (o *CreateTerraformVersionUsingPOSTBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateTerraformVersionUsingPOSTBadRequest) Error() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprint-integrations/terraform/versions][%d] createTerraformVersionUsingPOSTBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateTerraformVersionUsingPOSTBadRequest) String() string {
+	return fmt.Sprintf("[POST /blueprint/api/blueprint-integrations/terraform/versions][%d] createTerraformVersionUsingPOSTBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateTerraformVersionUsingPOSTBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -121,14 +183,44 @@ func NewCreateTerraformVersionUsingPOSTUnauthorized() *CreateTerraformVersionUsi
 	return &CreateTerraformVersionUsingPOSTUnauthorized{}
 }
 
-/* CreateTerraformVersionUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateTerraformVersionUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type CreateTerraformVersionUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this create terraform version using p o s t unauthorized response has a 2xx status code
+func (o *CreateTerraformVersionUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create terraform version using p o s t unauthorized response has a 3xx status code
+func (o *CreateTerraformVersionUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create terraform version using p o s t unauthorized response has a 4xx status code
+func (o *CreateTerraformVersionUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create terraform version using p o s t unauthorized response has a 5xx status code
+func (o *CreateTerraformVersionUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create terraform version using p o s t unauthorized response a status code equal to that given
+func (o *CreateTerraformVersionUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreateTerraformVersionUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /blueprint/api/blueprint-integrations/terraform/versions][%d] createTerraformVersionUsingPOSTUnauthorized ", 401)
+}
+
+func (o *CreateTerraformVersionUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprint-integrations/terraform/versions][%d] createTerraformVersionUsingPOSTUnauthorized ", 401)
 }
 
@@ -142,14 +234,44 @@ func NewCreateTerraformVersionUsingPOSTForbidden() *CreateTerraformVersionUsingP
 	return &CreateTerraformVersionUsingPOSTForbidden{}
 }
 
-/* CreateTerraformVersionUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+CreateTerraformVersionUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type CreateTerraformVersionUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this create terraform version using p o s t forbidden response has a 2xx status code
+func (o *CreateTerraformVersionUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create terraform version using p o s t forbidden response has a 3xx status code
+func (o *CreateTerraformVersionUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create terraform version using p o s t forbidden response has a 4xx status code
+func (o *CreateTerraformVersionUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create terraform version using p o s t forbidden response has a 5xx status code
+func (o *CreateTerraformVersionUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create terraform version using p o s t forbidden response a status code equal to that given
+func (o *CreateTerraformVersionUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateTerraformVersionUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /blueprint/api/blueprint-integrations/terraform/versions][%d] createTerraformVersionUsingPOSTForbidden ", 403)
+}
+
+func (o *CreateTerraformVersionUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprint-integrations/terraform/versions][%d] createTerraformVersionUsingPOSTForbidden ", 403)
 }
 

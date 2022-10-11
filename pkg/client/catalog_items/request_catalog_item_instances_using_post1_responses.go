@@ -63,7 +63,8 @@ func NewRequestCatalogItemInstancesUsingPOST1OK() *RequestCatalogItemInstancesUs
 	return &RequestCatalogItemInstancesUsingPOST1OK{}
 }
 
-/* RequestCatalogItemInstancesUsingPOST1OK describes a response with status code 200, with default header values.
+/*
+RequestCatalogItemInstancesUsingPOST1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type RequestCatalogItemInstancesUsingPOST1OK struct {
 	Payload []*models.CatalogItemRequestResponse
 }
 
+// IsSuccess returns true when this request catalog item instances using p o s t1 o k response has a 2xx status code
+func (o *RequestCatalogItemInstancesUsingPOST1OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this request catalog item instances using p o s t1 o k response has a 3xx status code
+func (o *RequestCatalogItemInstancesUsingPOST1OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this request catalog item instances using p o s t1 o k response has a 4xx status code
+func (o *RequestCatalogItemInstancesUsingPOST1OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this request catalog item instances using p o s t1 o k response has a 5xx status code
+func (o *RequestCatalogItemInstancesUsingPOST1OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this request catalog item instances using p o s t1 o k response a status code equal to that given
+func (o *RequestCatalogItemInstancesUsingPOST1OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *RequestCatalogItemInstancesUsingPOST1OK) Error() string {
 	return fmt.Sprintf("[POST /catalog/api/items/{id}/request][%d] requestCatalogItemInstancesUsingPOST1OK  %+v", 200, o.Payload)
 }
+
+func (o *RequestCatalogItemInstancesUsingPOST1OK) String() string {
+	return fmt.Sprintf("[POST /catalog/api/items/{id}/request][%d] requestCatalogItemInstancesUsingPOST1OK  %+v", 200, o.Payload)
+}
+
 func (o *RequestCatalogItemInstancesUsingPOST1OK) GetPayload() []*models.CatalogItemRequestResponse {
 	return o.Payload
 }
@@ -93,7 +124,8 @@ func NewRequestCatalogItemInstancesUsingPOST1BadRequest() *RequestCatalogItemIns
 	return &RequestCatalogItemInstancesUsingPOST1BadRequest{}
 }
 
-/* RequestCatalogItemInstancesUsingPOST1BadRequest describes a response with status code 400, with default header values.
+/*
+RequestCatalogItemInstancesUsingPOST1BadRequest describes a response with status code 400, with default header values.
 
 Invalid request - bad data.
 */
@@ -101,9 +133,39 @@ type RequestCatalogItemInstancesUsingPOST1BadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this request catalog item instances using p o s t1 bad request response has a 2xx status code
+func (o *RequestCatalogItemInstancesUsingPOST1BadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this request catalog item instances using p o s t1 bad request response has a 3xx status code
+func (o *RequestCatalogItemInstancesUsingPOST1BadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this request catalog item instances using p o s t1 bad request response has a 4xx status code
+func (o *RequestCatalogItemInstancesUsingPOST1BadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this request catalog item instances using p o s t1 bad request response has a 5xx status code
+func (o *RequestCatalogItemInstancesUsingPOST1BadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this request catalog item instances using p o s t1 bad request response a status code equal to that given
+func (o *RequestCatalogItemInstancesUsingPOST1BadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *RequestCatalogItemInstancesUsingPOST1BadRequest) Error() string {
 	return fmt.Sprintf("[POST /catalog/api/items/{id}/request][%d] requestCatalogItemInstancesUsingPOST1BadRequest  %+v", 400, o.Payload)
 }
+
+func (o *RequestCatalogItemInstancesUsingPOST1BadRequest) String() string {
+	return fmt.Sprintf("[POST /catalog/api/items/{id}/request][%d] requestCatalogItemInstancesUsingPOST1BadRequest  %+v", 400, o.Payload)
+}
+
 func (o *RequestCatalogItemInstancesUsingPOST1BadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -125,14 +187,44 @@ func NewRequestCatalogItemInstancesUsingPOST1Unauthorized() *RequestCatalogItemI
 	return &RequestCatalogItemInstancesUsingPOST1Unauthorized{}
 }
 
-/* RequestCatalogItemInstancesUsingPOST1Unauthorized describes a response with status code 401, with default header values.
+/*
+RequestCatalogItemInstancesUsingPOST1Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type RequestCatalogItemInstancesUsingPOST1Unauthorized struct {
 }
 
+// IsSuccess returns true when this request catalog item instances using p o s t1 unauthorized response has a 2xx status code
+func (o *RequestCatalogItemInstancesUsingPOST1Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this request catalog item instances using p o s t1 unauthorized response has a 3xx status code
+func (o *RequestCatalogItemInstancesUsingPOST1Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this request catalog item instances using p o s t1 unauthorized response has a 4xx status code
+func (o *RequestCatalogItemInstancesUsingPOST1Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this request catalog item instances using p o s t1 unauthorized response has a 5xx status code
+func (o *RequestCatalogItemInstancesUsingPOST1Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this request catalog item instances using p o s t1 unauthorized response a status code equal to that given
+func (o *RequestCatalogItemInstancesUsingPOST1Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *RequestCatalogItemInstancesUsingPOST1Unauthorized) Error() string {
+	return fmt.Sprintf("[POST /catalog/api/items/{id}/request][%d] requestCatalogItemInstancesUsingPOST1Unauthorized ", 401)
+}
+
+func (o *RequestCatalogItemInstancesUsingPOST1Unauthorized) String() string {
 	return fmt.Sprintf("[POST /catalog/api/items/{id}/request][%d] requestCatalogItemInstancesUsingPOST1Unauthorized ", 401)
 }
 
@@ -146,14 +238,44 @@ func NewRequestCatalogItemInstancesUsingPOST1Forbidden() *RequestCatalogItemInst
 	return &RequestCatalogItemInstancesUsingPOST1Forbidden{}
 }
 
-/* RequestCatalogItemInstancesUsingPOST1Forbidden describes a response with status code 403, with default header values.
+/*
+RequestCatalogItemInstancesUsingPOST1Forbidden describes a response with status code 403, with default header values.
 
 Forbidden.
 */
 type RequestCatalogItemInstancesUsingPOST1Forbidden struct {
 }
 
+// IsSuccess returns true when this request catalog item instances using p o s t1 forbidden response has a 2xx status code
+func (o *RequestCatalogItemInstancesUsingPOST1Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this request catalog item instances using p o s t1 forbidden response has a 3xx status code
+func (o *RequestCatalogItemInstancesUsingPOST1Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this request catalog item instances using p o s t1 forbidden response has a 4xx status code
+func (o *RequestCatalogItemInstancesUsingPOST1Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this request catalog item instances using p o s t1 forbidden response has a 5xx status code
+func (o *RequestCatalogItemInstancesUsingPOST1Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this request catalog item instances using p o s t1 forbidden response a status code equal to that given
+func (o *RequestCatalogItemInstancesUsingPOST1Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *RequestCatalogItemInstancesUsingPOST1Forbidden) Error() string {
+	return fmt.Sprintf("[POST /catalog/api/items/{id}/request][%d] requestCatalogItemInstancesUsingPOST1Forbidden ", 403)
+}
+
+func (o *RequestCatalogItemInstancesUsingPOST1Forbidden) String() string {
 	return fmt.Sprintf("[POST /catalog/api/items/{id}/request][%d] requestCatalogItemInstancesUsingPOST1Forbidden ", 403)
 }
 
@@ -167,7 +289,8 @@ func NewRequestCatalogItemInstancesUsingPOST1NotFound() *RequestCatalogItemInsta
 	return &RequestCatalogItemInstancesUsingPOST1NotFound{}
 }
 
-/* RequestCatalogItemInstancesUsingPOST1NotFound describes a response with status code 404, with default header values.
+/*
+RequestCatalogItemInstancesUsingPOST1NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -175,9 +298,39 @@ type RequestCatalogItemInstancesUsingPOST1NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this request catalog item instances using p o s t1 not found response has a 2xx status code
+func (o *RequestCatalogItemInstancesUsingPOST1NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this request catalog item instances using p o s t1 not found response has a 3xx status code
+func (o *RequestCatalogItemInstancesUsingPOST1NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this request catalog item instances using p o s t1 not found response has a 4xx status code
+func (o *RequestCatalogItemInstancesUsingPOST1NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this request catalog item instances using p o s t1 not found response has a 5xx status code
+func (o *RequestCatalogItemInstancesUsingPOST1NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this request catalog item instances using p o s t1 not found response a status code equal to that given
+func (o *RequestCatalogItemInstancesUsingPOST1NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *RequestCatalogItemInstancesUsingPOST1NotFound) Error() string {
 	return fmt.Sprintf("[POST /catalog/api/items/{id}/request][%d] requestCatalogItemInstancesUsingPOST1NotFound  %+v", 404, o.Payload)
 }
+
+func (o *RequestCatalogItemInstancesUsingPOST1NotFound) String() string {
+	return fmt.Sprintf("[POST /catalog/api/items/{id}/request][%d] requestCatalogItemInstancesUsingPOST1NotFound  %+v", 404, o.Payload)
+}
+
 func (o *RequestCatalogItemInstancesUsingPOST1NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

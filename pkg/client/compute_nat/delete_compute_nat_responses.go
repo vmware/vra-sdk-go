@@ -45,7 +45,8 @@ func NewDeleteComputeNatAccepted() *DeleteComputeNatAccepted {
 	return &DeleteComputeNatAccepted{}
 }
 
-/* DeleteComputeNatAccepted describes a response with status code 202, with default header values.
+/*
+DeleteComputeNatAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type DeleteComputeNatAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this delete compute nat accepted response has a 2xx status code
+func (o *DeleteComputeNatAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete compute nat accepted response has a 3xx status code
+func (o *DeleteComputeNatAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete compute nat accepted response has a 4xx status code
+func (o *DeleteComputeNatAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete compute nat accepted response has a 5xx status code
+func (o *DeleteComputeNatAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete compute nat accepted response a status code equal to that given
+func (o *DeleteComputeNatAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteComputeNatAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/compute-nats/{id}][%d] deleteComputeNatAccepted  %+v", 202, o.Payload)
 }
+
+func (o *DeleteComputeNatAccepted) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/compute-nats/{id}][%d] deleteComputeNatAccepted  %+v", 202, o.Payload)
+}
+
 func (o *DeleteComputeNatAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewDeleteComputeNatForbidden() *DeleteComputeNatForbidden {
 	return &DeleteComputeNatForbidden{}
 }
 
-/* DeleteComputeNatForbidden describes a response with status code 403, with default header values.
+/*
+DeleteComputeNatForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type DeleteComputeNatForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this delete compute nat forbidden response has a 2xx status code
+func (o *DeleteComputeNatForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete compute nat forbidden response has a 3xx status code
+func (o *DeleteComputeNatForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete compute nat forbidden response has a 4xx status code
+func (o *DeleteComputeNatForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete compute nat forbidden response has a 5xx status code
+func (o *DeleteComputeNatForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete compute nat forbidden response a status code equal to that given
+func (o *DeleteComputeNatForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteComputeNatForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/compute-nats/{id}][%d] deleteComputeNatForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DeleteComputeNatForbidden) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/compute-nats/{id}][%d] deleteComputeNatForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DeleteComputeNatForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -27,6 +28,10 @@ type CloudAccountVsphereSpecification struct {
 	// NSX-V or NSX-T account to associate with this vSphere cloud account. vSphere cloud account can be a single NSX-V cloud account or a single NSX-T cloud account.
 	// Example: [ \"42f3e0d199d134755684cd935435a\" ]
 	AssociatedCloudAccountIds []string `json:"associatedCloudAccountIds"`
+
+	// Cloud account IDs and directionalities create associations to other vSphere cloud accounts that can be used for workload mobility. ID refers to an associated cloud account, and directionality can be unidirectional or bidirectional.
+	// Example: { \"42f3e0d199d134755684cd935435a\": \"BIDIRECTIONAL\" }
+	AssociatedMobilityCloudAccountIds map[string]string `json:"associatedMobilityCloudAccountIds,omitempty"`
 
 	// Certificate for a cloud account.
 	// Example: {\"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDHjCCAoegAwIBAgIBATANBgkqhkiG9w0BAQsFADCBpjEUMBIGA1UEChMLVk13\\nYXJlIEluYAAc1pw18GT3iAqQRPx0PrjzJhgjIJMla\\n/1Kg4byY4FPSacNiRgY/FG2bPCqZk1yRfzmkFYCW/vU+Dg==\\n-----END CERTIFICATE-----\\n-\"}
@@ -77,6 +82,10 @@ type CloudAccountVsphereSpecification struct {
 func (m *CloudAccountVsphereSpecification) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateAssociatedMobilityCloudAccountIds(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateCertificateInfo(formats); err != nil {
 		res = append(res, err)
 	}
@@ -108,6 +117,43 @@ func (m *CloudAccountVsphereSpecification) Validate(formats strfmt.Registry) err
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+// additional properties value enum
+var cloudAccountVsphereSpecificationAssociatedMobilityCloudAccountIdsValueEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["UNIDIRECTIONAL","BIDIRECTIONAL"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		cloudAccountVsphereSpecificationAssociatedMobilityCloudAccountIdsValueEnum = append(cloudAccountVsphereSpecificationAssociatedMobilityCloudAccountIdsValueEnum, v)
+	}
+}
+
+func (m *CloudAccountVsphereSpecification) validateAssociatedMobilityCloudAccountIdsValueEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, cloudAccountVsphereSpecificationAssociatedMobilityCloudAccountIdsValueEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *CloudAccountVsphereSpecification) validateAssociatedMobilityCloudAccountIds(formats strfmt.Registry) error {
+	if swag.IsZero(m.AssociatedMobilityCloudAccountIds) { // not required
+		return nil
+	}
+
+	for k := range m.AssociatedMobilityCloudAccountIds {
+
+		// value enum
+		if err := m.validateAssociatedMobilityCloudAccountIdsValueEnum("associatedMobilityCloudAccountIds"+"."+k, "body", m.AssociatedMobilityCloudAccountIds[k]); err != nil {
+			return err
+		}
+
+	}
+
 	return nil
 }
 

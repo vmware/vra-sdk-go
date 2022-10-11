@@ -150,9 +150,9 @@ type ClientService interface {
 }
 
 /*
-  CloneGerritListenerByNameUsingPOST clones a gerrit listener by project and name
+CloneGerritListenerByNameUsingPOST clones a gerrit listener by project and name
 
-  Clone a Gerrit Listener with the given project and name
+Clone a Gerrit Listener with the given project and name
 */
 func (a *Client) CloneGerritListenerByNameUsingPOST(params *CloneGerritListenerByNameUsingPOSTParams, opts ...ClientOption) (*CloneGerritListenerByNameUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -190,9 +190,9 @@ func (a *Client) CloneGerritListenerByNameUsingPOST(params *CloneGerritListenerB
 }
 
 /*
-  CloneGerritListenerUsingPOST clones a gerrit listener
+CloneGerritListenerUsingPOST clones a gerrit listener
 
-  Clone a Gerrit Listener
+Clone a Gerrit Listener
 */
 func (a *Client) CloneGerritListenerUsingPOST(params *CloneGerritListenerUsingPOSTParams, opts ...ClientOption) (*CloneGerritListenerUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -230,9 +230,9 @@ func (a *Client) CloneGerritListenerUsingPOST(params *CloneGerritListenerUsingPO
 }
 
 /*
-  CloneGerritTriggerByNameUsingPOST clones a gerrit trigger by project and name
+CloneGerritTriggerByNameUsingPOST clones a gerrit trigger by project and name
 
-  Clone a Gerrit Trigger with the given project and name
+Clone a Gerrit Trigger with the given project and name
 */
 func (a *Client) CloneGerritTriggerByNameUsingPOST(params *CloneGerritTriggerByNameUsingPOSTParams, opts ...ClientOption) (*CloneGerritTriggerByNameUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -270,9 +270,9 @@ func (a *Client) CloneGerritTriggerByNameUsingPOST(params *CloneGerritTriggerByN
 }
 
 /*
-  CloneGerritTriggerUsingPOST clones a gerrit trigger
+CloneGerritTriggerUsingPOST clones a gerrit trigger
 
-  Clone a Gerrit Trigger
+Clone a Gerrit Trigger
 */
 func (a *Client) CloneGerritTriggerUsingPOST(params *CloneGerritTriggerUsingPOSTParams, opts ...ClientOption) (*CloneGerritTriggerUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -310,9 +310,9 @@ func (a *Client) CloneGerritTriggerUsingPOST(params *CloneGerritTriggerUsingPOST
 }
 
 /*
-  CreateDockerRegistryWebhookUsingPOST creates a docker registry webhook
+CreateDockerRegistryWebhookUsingPOST creates a docker registry webhook
 
-  Create a Docker Registry Webhook
+Create a Docker Registry Webhook
 */
 func (a *Client) CreateDockerRegistryWebhookUsingPOST(params *CreateDockerRegistryWebhookUsingPOSTParams, opts ...ClientOption) (*CreateDockerRegistryWebhookUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -350,9 +350,9 @@ func (a *Client) CreateDockerRegistryWebhookUsingPOST(params *CreateDockerRegist
 }
 
 /*
-  CreateGerritListenerUsingPOST creates a gerrit listener
+CreateGerritListenerUsingPOST creates a gerrit listener
 
-  Create a Gerrit Listener
+Create a Gerrit Listener
 */
 func (a *Client) CreateGerritListenerUsingPOST(params *CreateGerritListenerUsingPOSTParams, opts ...ClientOption) (*CreateGerritListenerUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -390,9 +390,9 @@ func (a *Client) CreateGerritListenerUsingPOST(params *CreateGerritListenerUsing
 }
 
 /*
-  CreateGerritTriggerUsingPOST creates a gerrit trigger
+CreateGerritTriggerUsingPOST creates a gerrit trigger
 
-  Create a Gerrit Trigger
+Create a Gerrit Trigger
 */
 func (a *Client) CreateGerritTriggerUsingPOST(params *CreateGerritTriggerUsingPOSTParams, opts ...ClientOption) (*CreateGerritTriggerUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -430,9 +430,9 @@ func (a *Client) CreateGerritTriggerUsingPOST(params *CreateGerritTriggerUsingPO
 }
 
 /*
-  CreateGitWebhookUsingPOST creates a git webhook
+CreateGitWebhookUsingPOST creates a git webhook
 
-  Create a Git Webhook
+Create a Git Webhook
 */
 func (a *Client) CreateGitWebhookUsingPOST(params *CreateGitWebhookUsingPOSTParams, opts ...ClientOption) (*CreateGitWebhookUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -470,9 +470,9 @@ func (a *Client) CreateGitWebhookUsingPOST(params *CreateGitWebhookUsingPOSTPara
 }
 
 /*
-  DeleteDockerRegistryEventByIDUsingDELETE deletes a docker registry event
+DeleteDockerRegistryEventByIDUsingDELETE deletes a docker registry event
 
-  Delete a Docker Registry Event
+Delete a Docker Registry Event
 */
 func (a *Client) DeleteDockerRegistryEventByIDUsingDELETE(params *DeleteDockerRegistryEventByIDUsingDELETEParams, opts ...ClientOption) (*DeleteDockerRegistryEventByIDUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
@@ -510,9 +510,9 @@ func (a *Client) DeleteDockerRegistryEventByIDUsingDELETE(params *DeleteDockerRe
 }
 
 /*
-  DeleteDockerRegistryWebhookByIDUsingDELETE deletes a docker registry webhook
+DeleteDockerRegistryWebhookByIDUsingDELETE deletes a docker registry webhook
 
-  Delete a Docker Registry Webhook
+Delete a Docker Registry Webhook
 */
 func (a *Client) DeleteDockerRegistryWebhookByIDUsingDELETE(params *DeleteDockerRegistryWebhookByIDUsingDELETEParams, opts ...ClientOption) (*DeleteDockerRegistryWebhookByIDUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
@@ -550,9 +550,9 @@ func (a *Client) DeleteDockerRegistryWebhookByIDUsingDELETE(params *DeleteDocker
 }
 
 /*
-  DeleteDockerRegistryWebhookByNameUsingDELETE deletes a docker registry webhook using name
+DeleteDockerRegistryWebhookByNameUsingDELETE deletes a docker registry webhook using name
 
-  Delete a Docker Registry Webhook using name
+Delete a Docker Registry Webhook using name
 */
 func (a *Client) DeleteDockerRegistryWebhookByNameUsingDELETE(params *DeleteDockerRegistryWebhookByNameUsingDELETEParams, opts ...ClientOption) (*DeleteDockerRegistryWebhookByNameUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
@@ -590,9 +590,9 @@ func (a *Client) DeleteDockerRegistryWebhookByNameUsingDELETE(params *DeleteDock
 }
 
 /*
-  DeleteGerritEventByIDUsingDELETE deletes a gerrit event
+DeleteGerritEventByIDUsingDELETE deletes a gerrit event
 
-  Delete a Gerrit Event
+Delete a Gerrit Event
 */
 func (a *Client) DeleteGerritEventByIDUsingDELETE(params *DeleteGerritEventByIDUsingDELETEParams, opts ...ClientOption) (*DeleteGerritEventByIDUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
@@ -630,9 +630,9 @@ func (a *Client) DeleteGerritEventByIDUsingDELETE(params *DeleteGerritEventByIDU
 }
 
 /*
-  DeleteGerritListenerByIDUsingDELETE deletes a gerrit listener with id
+DeleteGerritListenerByIDUsingDELETE deletes a gerrit listener with id
 
-  Delete a Gerrit Listener with id
+Delete a Gerrit Listener with id
 */
 func (a *Client) DeleteGerritListenerByIDUsingDELETE(params *DeleteGerritListenerByIDUsingDELETEParams, opts ...ClientOption) (*DeleteGerritListenerByIDUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
@@ -670,9 +670,9 @@ func (a *Client) DeleteGerritListenerByIDUsingDELETE(params *DeleteGerritListene
 }
 
 /*
-  DeleteGerritListenerByNameUsingDELETE deletes a gerrit listener with project and name
+DeleteGerritListenerByNameUsingDELETE deletes a gerrit listener with project and name
 
-  Delete a Gerrit Listener with project and name
+Delete a Gerrit Listener with project and name
 */
 func (a *Client) DeleteGerritListenerByNameUsingDELETE(params *DeleteGerritListenerByNameUsingDELETEParams, opts ...ClientOption) (*DeleteGerritListenerByNameUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
@@ -710,9 +710,9 @@ func (a *Client) DeleteGerritListenerByNameUsingDELETE(params *DeleteGerritListe
 }
 
 /*
-  DeleteGerritTriggerByIDUsingDELETE deletes a gerrit trigger with id
+DeleteGerritTriggerByIDUsingDELETE deletes a gerrit trigger with id
 
-  Delete a Gerrit Trigger with id
+Delete a Gerrit Trigger with id
 */
 func (a *Client) DeleteGerritTriggerByIDUsingDELETE(params *DeleteGerritTriggerByIDUsingDELETEParams, opts ...ClientOption) (*DeleteGerritTriggerByIDUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
@@ -750,9 +750,9 @@ func (a *Client) DeleteGerritTriggerByIDUsingDELETE(params *DeleteGerritTriggerB
 }
 
 /*
-  DeleteGerritTriggerByNameUsingDELETE deletes a gerrit trigger with project and name
+DeleteGerritTriggerByNameUsingDELETE deletes a gerrit trigger with project and name
 
-  Delete a Gerrit Trigger with project and name
+Delete a Gerrit Trigger with project and name
 */
 func (a *Client) DeleteGerritTriggerByNameUsingDELETE(params *DeleteGerritTriggerByNameUsingDELETEParams, opts ...ClientOption) (*DeleteGerritTriggerByNameUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
@@ -790,9 +790,9 @@ func (a *Client) DeleteGerritTriggerByNameUsingDELETE(params *DeleteGerritTrigge
 }
 
 /*
-  DeleteGitEventsByIDUsingDELETE deletes a git event
+DeleteGitEventsByIDUsingDELETE deletes a git event
 
-  Delete a Git Event
+Delete a Git Event
 */
 func (a *Client) DeleteGitEventsByIDUsingDELETE(params *DeleteGitEventsByIDUsingDELETEParams, opts ...ClientOption) (*DeleteGitEventsByIDUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
@@ -830,9 +830,9 @@ func (a *Client) DeleteGitEventsByIDUsingDELETE(params *DeleteGitEventsByIDUsing
 }
 
 /*
-  DeleteGitWebhookByIDUsingDELETE deletes a git webhook
+DeleteGitWebhookByIDUsingDELETE deletes a git webhook
 
-  Delete a Git Webhook
+Delete a Git Webhook
 */
 func (a *Client) DeleteGitWebhookByIDUsingDELETE(params *DeleteGitWebhookByIDUsingDELETEParams, opts ...ClientOption) (*DeleteGitWebhookByIDUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
@@ -870,9 +870,9 @@ func (a *Client) DeleteGitWebhookByIDUsingDELETE(params *DeleteGitWebhookByIDUsi
 }
 
 /*
-  DeleteGitWebhookByNameUsingDELETE deletes a git webhook by name
+DeleteGitWebhookByNameUsingDELETE deletes a git webhook by name
 
-  Delete a Git Webhook by name
+Delete a Git Webhook by name
 */
 func (a *Client) DeleteGitWebhookByNameUsingDELETE(params *DeleteGitWebhookByNameUsingDELETEParams, opts ...ClientOption) (*DeleteGitWebhookByNameUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
@@ -910,9 +910,9 @@ func (a *Client) DeleteGitWebhookByNameUsingDELETE(params *DeleteGitWebhookByNam
 }
 
 /*
-  GetAllDockerRegistryEventsUsingGET gets all docker registry events
+GetAllDockerRegistryEventsUsingGET gets all docker registry events
 
-  Get all Docker Registry Events
+Get all Docker Registry Events
 */
 func (a *Client) GetAllDockerRegistryEventsUsingGET(params *GetAllDockerRegistryEventsUsingGETParams, opts ...ClientOption) (*GetAllDockerRegistryEventsUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -950,9 +950,9 @@ func (a *Client) GetAllDockerRegistryEventsUsingGET(params *GetAllDockerRegistry
 }
 
 /*
-  GetAllDockerRegistryWebhooksUsingGET gets all docker registry webhooks
+GetAllDockerRegistryWebhooksUsingGET gets all docker registry webhooks
 
-  Get all Docker Registry Webhooks
+Get all Docker Registry Webhooks
 */
 func (a *Client) GetAllDockerRegistryWebhooksUsingGET(params *GetAllDockerRegistryWebhooksUsingGETParams, opts ...ClientOption) (*GetAllDockerRegistryWebhooksUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -990,9 +990,9 @@ func (a *Client) GetAllDockerRegistryWebhooksUsingGET(params *GetAllDockerRegist
 }
 
 /*
-  GetAllGerritEventsUsingGET gets all gerrit events
+GetAllGerritEventsUsingGET gets all gerrit events
 
-  Get all Gerrit Events
+Get all Gerrit Events
 */
 func (a *Client) GetAllGerritEventsUsingGET(params *GetAllGerritEventsUsingGETParams, opts ...ClientOption) (*GetAllGerritEventsUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -1030,9 +1030,9 @@ func (a *Client) GetAllGerritEventsUsingGET(params *GetAllGerritEventsUsingGETPa
 }
 
 /*
-  GetAllGerritListenersUsingGET gets all gerrit listeners
+GetAllGerritListenersUsingGET gets all gerrit listeners
 
-  Get all gerrit listeners
+Get all gerrit listeners
 */
 func (a *Client) GetAllGerritListenersUsingGET(params *GetAllGerritListenersUsingGETParams, opts ...ClientOption) (*GetAllGerritListenersUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -1070,9 +1070,9 @@ func (a *Client) GetAllGerritListenersUsingGET(params *GetAllGerritListenersUsin
 }
 
 /*
-  GetAllGerritTriggersUsingGET gets all gerrit triggers
+GetAllGerritTriggersUsingGET gets all gerrit triggers
 
-  Get all gerrit triggers
+Get all gerrit triggers
 */
 func (a *Client) GetAllGerritTriggersUsingGET(params *GetAllGerritTriggersUsingGETParams, opts ...ClientOption) (*GetAllGerritTriggersUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -1110,9 +1110,9 @@ func (a *Client) GetAllGerritTriggersUsingGET(params *GetAllGerritTriggersUsingG
 }
 
 /*
-  GetAllGitEventsUsingGET gets all git events
+GetAllGitEventsUsingGET gets all git events
 
-  Get all Git Events
+Get all Git Events
 */
 func (a *Client) GetAllGitEventsUsingGET(params *GetAllGitEventsUsingGETParams, opts ...ClientOption) (*GetAllGitEventsUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -1150,9 +1150,9 @@ func (a *Client) GetAllGitEventsUsingGET(params *GetAllGitEventsUsingGETParams, 
 }
 
 /*
-  GetAllGitWebhooksUsingGET gets all git webhooks
+GetAllGitWebhooksUsingGET gets all git webhooks
 
-  Get all Git Webhooks
+Get all Git Webhooks
 */
 func (a *Client) GetAllGitWebhooksUsingGET(params *GetAllGitWebhooksUsingGETParams, opts ...ClientOption) (*GetAllGitWebhooksUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -1190,9 +1190,9 @@ func (a *Client) GetAllGitWebhooksUsingGET(params *GetAllGitWebhooksUsingGETPara
 }
 
 /*
-  GetDockerRegistryWebhookNameUsingGET gets a docker registry webhook by name
+GetDockerRegistryWebhookNameUsingGET gets a docker registry webhook by name
 
-  Get a Docker Registry Webhook by Name
+Get a Docker Registry Webhook by Name
 */
 func (a *Client) GetDockerRegistryWebhookNameUsingGET(params *GetDockerRegistryWebhookNameUsingGETParams, opts ...ClientOption) (*GetDockerRegistryWebhookNameUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -1230,9 +1230,9 @@ func (a *Client) GetDockerRegistryWebhookNameUsingGET(params *GetDockerRegistryW
 }
 
 /*
-  GetGerritEventByIDUsingGET gets a gerrit event
+GetGerritEventByIDUsingGET gets a gerrit event
 
-  Get a gerrit Event based on id
+Get a gerrit Event based on id
 */
 func (a *Client) GetGerritEventByIDUsingGET(params *GetGerritEventByIDUsingGETParams, opts ...ClientOption) (*GetGerritEventByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -1270,9 +1270,9 @@ func (a *Client) GetGerritEventByIDUsingGET(params *GetGerritEventByIDUsingGETPa
 }
 
 /*
-  GetGerritListenerByIDUsingGET gets a gerrit listener
+GetGerritListenerByIDUsingGET gets a gerrit listener
 
-  Get a gerrit listeners based on id
+Get a gerrit listeners based on id
 */
 func (a *Client) GetGerritListenerByIDUsingGET(params *GetGerritListenerByIDUsingGETParams, opts ...ClientOption) (*GetGerritListenerByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -1310,9 +1310,9 @@ func (a *Client) GetGerritListenerByIDUsingGET(params *GetGerritListenerByIDUsin
 }
 
 /*
-  GetGerritListenerByNameUsingGET gets a gerrit listener by project and name
+GetGerritListenerByNameUsingGET gets a gerrit listener by project and name
 
-  Get a gerrit listener based on project and name
+Get a gerrit listener based on project and name
 */
 func (a *Client) GetGerritListenerByNameUsingGET(params *GetGerritListenerByNameUsingGETParams, opts ...ClientOption) (*GetGerritListenerByNameUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -1350,9 +1350,9 @@ func (a *Client) GetGerritListenerByNameUsingGET(params *GetGerritListenerByName
 }
 
 /*
-  GetGerritProjectsByIDUsingGET gets gerrit projects from the gerrit listener using id
+GetGerritProjectsByIDUsingGET gets gerrit projects from the gerrit listener using id
 
-  Get Gerrit Projects from the Gerrit Listener using id
+Get Gerrit Projects from the Gerrit Listener using id
 */
 func (a *Client) GetGerritProjectsByIDUsingGET(params *GetGerritProjectsByIDUsingGETParams, opts ...ClientOption) (*GetGerritProjectsByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -1390,9 +1390,9 @@ func (a *Client) GetGerritProjectsByIDUsingGET(params *GetGerritProjectsByIDUsin
 }
 
 /*
-  GetGerritProjectsByNameUsingGET gets gerrit projects from the gerrit listener using project and name
+GetGerritProjectsByNameUsingGET gets gerrit projects from the gerrit listener using project and name
 
-  Get Gerrit Projects from the Gerrit Listener using project and name
+Get Gerrit Projects from the Gerrit Listener using project and name
 */
 func (a *Client) GetGerritProjectsByNameUsingGET(params *GetGerritProjectsByNameUsingGETParams, opts ...ClientOption) (*GetGerritProjectsByNameUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -1430,9 +1430,9 @@ func (a *Client) GetGerritProjectsByNameUsingGET(params *GetGerritProjectsByName
 }
 
 /*
-  GetGerritTriggerByIDUsingGET gets a gerrit trigger
+GetGerritTriggerByIDUsingGET gets a gerrit trigger
 
-  Get a gerrit trigger based on id
+Get a gerrit trigger based on id
 */
 func (a *Client) GetGerritTriggerByIDUsingGET(params *GetGerritTriggerByIDUsingGETParams, opts ...ClientOption) (*GetGerritTriggerByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -1470,9 +1470,9 @@ func (a *Client) GetGerritTriggerByIDUsingGET(params *GetGerritTriggerByIDUsingG
 }
 
 /*
-  GetGerritTriggerByNameUsingGET gets a gerrit trigger by project and name
+GetGerritTriggerByNameUsingGET gets a gerrit trigger by project and name
 
-  Get a gerrit trigger based on project and name
+Get a gerrit trigger based on project and name
 */
 func (a *Client) GetGerritTriggerByNameUsingGET(params *GetGerritTriggerByNameUsingGETParams, opts ...ClientOption) (*GetGerritTriggerByNameUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -1510,9 +1510,9 @@ func (a *Client) GetGerritTriggerByNameUsingGET(params *GetGerritTriggerByNameUs
 }
 
 /*
-  GetGitEventByIDUsingGET gets a git event
+GetGitEventByIDUsingGET gets a git event
 
-  Get a Git Event based on id
+Get a Git Event based on id
 */
 func (a *Client) GetGitEventByIDUsingGET(params *GetGitEventByIDUsingGETParams, opts ...ClientOption) (*GetGitEventByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -1550,9 +1550,9 @@ func (a *Client) GetGitEventByIDUsingGET(params *GetGitEventByIDUsingGETParams, 
 }
 
 /*
-  GetGitWebhookByIDUsingGET gets a git webhook
+GetGitWebhookByIDUsingGET gets a git webhook
 
-  Get a Git Webhook based on id
+Get a Git Webhook based on id
 */
 func (a *Client) GetGitWebhookByIDUsingGET(params *GetGitWebhookByIDUsingGETParams, opts ...ClientOption) (*GetGitWebhookByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -1590,9 +1590,9 @@ func (a *Client) GetGitWebhookByIDUsingGET(params *GetGitWebhookByIDUsingGETPara
 }
 
 /*
-  GetGitWebhookByNameUsingGET gets a git webhook by name
+GetGitWebhookByNameUsingGET gets a git webhook by name
 
-  Get a Git Webhook by Name
+Get a Git Webhook by Name
 */
 func (a *Client) GetGitWebhookByNameUsingGET(params *GetGitWebhookByNameUsingGETParams, opts ...ClientOption) (*GetGitWebhookByNameUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -1630,9 +1630,9 @@ func (a *Client) GetGitWebhookByNameUsingGET(params *GetGitWebhookByNameUsingGET
 }
 
 /*
-  GetRegistryEventByID gets a docker registry event
+GetRegistryEventByID gets a docker registry event
 
-  Get a Docker Registry Event based on id
+Get a Docker Registry Event based on id
 */
 func (a *Client) GetRegistryEventByID(params *GetRegistryEventByIDParams, opts ...ClientOption) (*GetRegistryEventByIDOK, error) {
 	// TODO: Validate the params before sending
@@ -1670,9 +1670,9 @@ func (a *Client) GetRegistryEventByID(params *GetRegistryEventByIDParams, opts .
 }
 
 /*
-  GetRegistryWebhookByID gets a docker registry webhook
+GetRegistryWebhookByID gets a docker registry webhook
 
-  Get a Docker Registry Webhook based on id
+Get a Docker Registry Webhook based on id
 */
 func (a *Client) GetRegistryWebhookByID(params *GetRegistryWebhookByIDParams, opts ...ClientOption) (*GetRegistryWebhookByIDOK, error) {
 	// TODO: Validate the params before sending
@@ -1710,9 +1710,9 @@ func (a *Client) GetRegistryWebhookByID(params *GetRegistryWebhookByIDParams, op
 }
 
 /*
-  ManualGerritEventTriggerUsingPOST manuals trigger gerrit event
+ManualGerritEventTriggerUsingPOST manuals trigger gerrit event
 
-  Manual trigger Gerrit event
+Manual trigger Gerrit event
 */
 func (a *Client) ManualGerritEventTriggerUsingPOST(params *ManualGerritEventTriggerUsingPOSTParams, opts ...ClientOption) (*ManualGerritEventTriggerUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -1750,9 +1750,9 @@ func (a *Client) ManualGerritEventTriggerUsingPOST(params *ManualGerritEventTrig
 }
 
 /*
-  PatchDockerRegistryWebhookByIDUsingPATCH patches a docker registry webhook with id
+PatchDockerRegistryWebhookByIDUsingPATCH patches a docker registry webhook with id
 
-  Patch a Docker Registry Webhook with id
+Patch a Docker Registry Webhook with id
 */
 func (a *Client) PatchDockerRegistryWebhookByIDUsingPATCH(params *PatchDockerRegistryWebhookByIDUsingPATCHParams, opts ...ClientOption) (*PatchDockerRegistryWebhookByIDUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
@@ -1790,9 +1790,9 @@ func (a *Client) PatchDockerRegistryWebhookByIDUsingPATCH(params *PatchDockerReg
 }
 
 /*
-  PatchDockerRegistryWebhookByNameUsingPATCH patches a docker registry webhook with project and name
+PatchDockerRegistryWebhookByNameUsingPATCH patches a docker registry webhook with project and name
 
-  Patch a Docker Registry Webhook with project and name
+Patch a Docker Registry Webhook with project and name
 */
 func (a *Client) PatchDockerRegistryWebhookByNameUsingPATCH(params *PatchDockerRegistryWebhookByNameUsingPATCHParams, opts ...ClientOption) (*PatchDockerRegistryWebhookByNameUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
@@ -1830,9 +1830,9 @@ func (a *Client) PatchDockerRegistryWebhookByNameUsingPATCH(params *PatchDockerR
 }
 
 /*
-  PatchGerritListenerByIDUsingPATCH patches a gerrit listener with id
+PatchGerritListenerByIDUsingPATCH patches a gerrit listener with id
 
-  Patch a Gerrit Listener with id
+Patch a Gerrit Listener with id
 */
 func (a *Client) PatchGerritListenerByIDUsingPATCH(params *PatchGerritListenerByIDUsingPATCHParams, opts ...ClientOption) (*PatchGerritListenerByIDUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
@@ -1870,9 +1870,9 @@ func (a *Client) PatchGerritListenerByIDUsingPATCH(params *PatchGerritListenerBy
 }
 
 /*
-  PatchGerritListenerByNameUsingPATCH patches a gerrit listener with project and name
+PatchGerritListenerByNameUsingPATCH patches a gerrit listener with project and name
 
-  Patch a Gerrit Listener with project and name
+Patch a Gerrit Listener with project and name
 */
 func (a *Client) PatchGerritListenerByNameUsingPATCH(params *PatchGerritListenerByNameUsingPATCHParams, opts ...ClientOption) (*PatchGerritListenerByNameUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
@@ -1910,9 +1910,9 @@ func (a *Client) PatchGerritListenerByNameUsingPATCH(params *PatchGerritListener
 }
 
 /*
-  PatchGerritTriggerByIDUsingPATCH patches a gerrit trigger with id
+PatchGerritTriggerByIDUsingPATCH patches a gerrit trigger with id
 
-  Patch a Gerrit Trigger with id
+Patch a Gerrit Trigger with id
 */
 func (a *Client) PatchGerritTriggerByIDUsingPATCH(params *PatchGerritTriggerByIDUsingPATCHParams, opts ...ClientOption) (*PatchGerritTriggerByIDUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
@@ -1950,9 +1950,9 @@ func (a *Client) PatchGerritTriggerByIDUsingPATCH(params *PatchGerritTriggerByID
 }
 
 /*
-  PatchGerritTriggerByNameUsingPATCH patches a gerrit trigger with project and name
+PatchGerritTriggerByNameUsingPATCH patches a gerrit trigger with project and name
 
-  Patch a Gerrit Trigger with project and name
+Patch a Gerrit Trigger with project and name
 */
 func (a *Client) PatchGerritTriggerByNameUsingPATCH(params *PatchGerritTriggerByNameUsingPATCHParams, opts ...ClientOption) (*PatchGerritTriggerByNameUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
@@ -1990,9 +1990,9 @@ func (a *Client) PatchGerritTriggerByNameUsingPATCH(params *PatchGerritTriggerBy
 }
 
 /*
-  ResumeOrRerunDockerRegistryEventUsingPOST res run resume docker registry event
+ResumeOrRerunDockerRegistryEventUsingPOST res run resume docker registry event
 
-  Re-run/Resume Docker Registry Event
+Re-run/Resume Docker Registry Event
 */
 func (a *Client) ResumeOrRerunDockerRegistryEventUsingPOST(params *ResumeOrRerunDockerRegistryEventUsingPOSTParams, opts ...ClientOption) (*ResumeOrRerunDockerRegistryEventUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -2030,9 +2030,9 @@ func (a *Client) ResumeOrRerunDockerRegistryEventUsingPOST(params *ResumeOrRerun
 }
 
 /*
-  ResumeOrRerunGerritEventUsingPOST res run resume gerrit event
+ResumeOrRerunGerritEventUsingPOST res run resume gerrit event
 
-  Re-run/Resume Gerrit event
+Re-run/Resume Gerrit event
 */
 func (a *Client) ResumeOrRerunGerritEventUsingPOST(params *ResumeOrRerunGerritEventUsingPOSTParams, opts ...ClientOption) (*ResumeOrRerunGerritEventUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -2070,9 +2070,9 @@ func (a *Client) ResumeOrRerunGerritEventUsingPOST(params *ResumeOrRerunGerritEv
 }
 
 /*
-  ResumeOrRerunGitEventUsingPOST res run resume git event
+ResumeOrRerunGitEventUsingPOST res run resume git event
 
-  Re-run/Resume Git Event
+Re-run/Resume Git Event
 */
 func (a *Client) ResumeOrRerunGitEventUsingPOST(params *ResumeOrRerunGitEventUsingPOSTParams, opts ...ClientOption) (*ResumeOrRerunGitEventUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -2110,9 +2110,9 @@ func (a *Client) ResumeOrRerunGitEventUsingPOST(params *ResumeOrRerunGitEventUsi
 }
 
 /*
-  UpdateDockerRegistryWebhookByIDUsingPUT updates a docker registry webhook
+UpdateDockerRegistryWebhookByIDUsingPUT updates a docker registry webhook
 
-  Update a Docker Registry Webhook
+Update a Docker Registry Webhook
 */
 func (a *Client) UpdateDockerRegistryWebhookByIDUsingPUT(params *UpdateDockerRegistryWebhookByIDUsingPUTParams, opts ...ClientOption) (*UpdateDockerRegistryWebhookByIDUsingPUTOK, error) {
 	// TODO: Validate the params before sending
@@ -2150,9 +2150,9 @@ func (a *Client) UpdateDockerRegistryWebhookByIDUsingPUT(params *UpdateDockerReg
 }
 
 /*
-  UpdateDockerRegistryWebhookByNameUsingPUT updates a docker registry webhook using name
+UpdateDockerRegistryWebhookByNameUsingPUT updates a docker registry webhook using name
 
-  Update a Docker Registry Webhook using name
+Update a Docker Registry Webhook using name
 */
 func (a *Client) UpdateDockerRegistryWebhookByNameUsingPUT(params *UpdateDockerRegistryWebhookByNameUsingPUTParams, opts ...ClientOption) (*UpdateDockerRegistryWebhookByNameUsingPUTOK, error) {
 	// TODO: Validate the params before sending
@@ -2190,9 +2190,9 @@ func (a *Client) UpdateDockerRegistryWebhookByNameUsingPUT(params *UpdateDockerR
 }
 
 /*
-  UpdateGerritListenerByIDUsingPUT updates a gerrit listener with id
+UpdateGerritListenerByIDUsingPUT updates a gerrit listener with id
 
-  Update a Gerrit Listener with id
+Update a Gerrit Listener with id
 */
 func (a *Client) UpdateGerritListenerByIDUsingPUT(params *UpdateGerritListenerByIDUsingPUTParams, opts ...ClientOption) (*UpdateGerritListenerByIDUsingPUTOK, error) {
 	// TODO: Validate the params before sending
@@ -2230,9 +2230,9 @@ func (a *Client) UpdateGerritListenerByIDUsingPUT(params *UpdateGerritListenerBy
 }
 
 /*
-  UpdateGerritListenerByNameUsingPUT updates a gerrit listener with project and name
+UpdateGerritListenerByNameUsingPUT updates a gerrit listener with project and name
 
-  Update a Gerrit Listener with project and name
+Update a Gerrit Listener with project and name
 */
 func (a *Client) UpdateGerritListenerByNameUsingPUT(params *UpdateGerritListenerByNameUsingPUTParams, opts ...ClientOption) (*UpdateGerritListenerByNameUsingPUTOK, error) {
 	// TODO: Validate the params before sending
@@ -2270,9 +2270,9 @@ func (a *Client) UpdateGerritListenerByNameUsingPUT(params *UpdateGerritListener
 }
 
 /*
-  UpdateGerritTriggerByIDUsingPUT updates a gerrit trigger with id
+UpdateGerritTriggerByIDUsingPUT updates a gerrit trigger with id
 
-  Update a Gerrit Trigger with id
+Update a Gerrit Trigger with id
 */
 func (a *Client) UpdateGerritTriggerByIDUsingPUT(params *UpdateGerritTriggerByIDUsingPUTParams, opts ...ClientOption) (*UpdateGerritTriggerByIDUsingPUTOK, error) {
 	// TODO: Validate the params before sending
@@ -2310,9 +2310,9 @@ func (a *Client) UpdateGerritTriggerByIDUsingPUT(params *UpdateGerritTriggerByID
 }
 
 /*
-  UpdateGerritTriggerByNameUsingPUT updates a gerrit trigger with project and name
+UpdateGerritTriggerByNameUsingPUT updates a gerrit trigger with project and name
 
-  Update a Gerrit Trigger with project and name
+Update a Gerrit Trigger with project and name
 */
 func (a *Client) UpdateGerritTriggerByNameUsingPUT(params *UpdateGerritTriggerByNameUsingPUTParams, opts ...ClientOption) (*UpdateGerritTriggerByNameUsingPUTOK, error) {
 	// TODO: Validate the params before sending
@@ -2350,9 +2350,9 @@ func (a *Client) UpdateGerritTriggerByNameUsingPUT(params *UpdateGerritTriggerBy
 }
 
 /*
-  UpdateGitWebhookByIDUsingPUT updates a git webhook
+UpdateGitWebhookByIDUsingPUT updates a git webhook
 
-  Update a Git Webhook
+Update a Git Webhook
 */
 func (a *Client) UpdateGitWebhookByIDUsingPUT(params *UpdateGitWebhookByIDUsingPUTParams, opts ...ClientOption) (*UpdateGitWebhookByIDUsingPUTOK, error) {
 	// TODO: Validate the params before sending
@@ -2390,9 +2390,9 @@ func (a *Client) UpdateGitWebhookByIDUsingPUT(params *UpdateGitWebhookByIDUsingP
 }
 
 /*
-  UpdateGitWebhookByNameUsingPUT updates a git webhook using name
+UpdateGitWebhookByNameUsingPUT updates a git webhook using name
 
-  Update a Git Webhook using name
+Update a Git Webhook using name
 */
 func (a *Client) UpdateGitWebhookByNameUsingPUT(params *UpdateGitWebhookByNameUsingPUTParams, opts ...ClientOption) (*UpdateGitWebhookByNameUsingPUTOK, error) {
 	// TODO: Validate the params before sending
@@ -2430,9 +2430,9 @@ func (a *Client) UpdateGitWebhookByNameUsingPUT(params *UpdateGitWebhookByNameUs
 }
 
 /*
-  ValidateGerritListenerUsingPOST validates a gerrit listener
+ValidateGerritListenerUsingPOST validates a gerrit listener
 
-  Validate a Gerrit Listener
+Validate a Gerrit Listener
 */
 func (a *Client) ValidateGerritListenerUsingPOST(params *ValidateGerritListenerUsingPOSTParams, opts ...ClientOption) (*ValidateGerritListenerUsingPOSTOK, error) {
 	// TODO: Validate the params before sending

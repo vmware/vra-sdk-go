@@ -54,10 +54,12 @@ func NewManualGerritEventTriggerUsingPOSTParamsWithHTTPClient(client *http.Clien
 	}
 }
 
-/* ManualGerritEventTriggerUsingPOSTParams contains all the parameters to send to the API endpoint
-   for the manual gerrit event trigger using p o s t operation.
+/*
+ManualGerritEventTriggerUsingPOSTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the manual gerrit event trigger using p o s t operation.
+
+	Typically these are written to a http.Request.
 */
 type ManualGerritEventTriggerUsingPOSTParams struct {
 

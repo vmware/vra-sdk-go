@@ -54,10 +54,12 @@ func NewUpdateFabricVsphereDatastoreParamsWithHTTPClient(client *http.Client) *U
 	}
 }
 
-/* UpdateFabricVsphereDatastoreParams contains all the parameters to send to the API endpoint
-   for the update fabric vsphere datastore operation.
+/*
+UpdateFabricVsphereDatastoreParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update fabric vsphere datastore operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateFabricVsphereDatastoreParams struct {
 

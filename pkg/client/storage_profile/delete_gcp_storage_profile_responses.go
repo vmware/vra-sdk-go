@@ -45,14 +45,44 @@ func NewDeleteGcpStorageProfileNoContent() *DeleteGcpStorageProfileNoContent {
 	return &DeleteGcpStorageProfileNoContent{}
 }
 
-/* DeleteGcpStorageProfileNoContent describes a response with status code 204, with default header values.
+/*
+DeleteGcpStorageProfileNoContent describes a response with status code 204, with default header values.
 
 No Content
 */
 type DeleteGcpStorageProfileNoContent struct {
 }
 
+// IsSuccess returns true when this delete gcp storage profile no content response has a 2xx status code
+func (o *DeleteGcpStorageProfileNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete gcp storage profile no content response has a 3xx status code
+func (o *DeleteGcpStorageProfileNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete gcp storage profile no content response has a 4xx status code
+func (o *DeleteGcpStorageProfileNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete gcp storage profile no content response has a 5xx status code
+func (o *DeleteGcpStorageProfileNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete gcp storage profile no content response a status code equal to that given
+func (o *DeleteGcpStorageProfileNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteGcpStorageProfileNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/storage-profiles-gcp/{id}][%d] deleteGcpStorageProfileNoContent ", 204)
+}
+
+func (o *DeleteGcpStorageProfileNoContent) String() string {
 	return fmt.Sprintf("[DELETE /iaas/api/storage-profiles-gcp/{id}][%d] deleteGcpStorageProfileNoContent ", 204)
 }
 
@@ -66,7 +96,8 @@ func NewDeleteGcpStorageProfileForbidden() *DeleteGcpStorageProfileForbidden {
 	return &DeleteGcpStorageProfileForbidden{}
 }
 
-/* DeleteGcpStorageProfileForbidden describes a response with status code 403, with default header values.
+/*
+DeleteGcpStorageProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -74,9 +105,39 @@ type DeleteGcpStorageProfileForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this delete gcp storage profile forbidden response has a 2xx status code
+func (o *DeleteGcpStorageProfileForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete gcp storage profile forbidden response has a 3xx status code
+func (o *DeleteGcpStorageProfileForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete gcp storage profile forbidden response has a 4xx status code
+func (o *DeleteGcpStorageProfileForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete gcp storage profile forbidden response has a 5xx status code
+func (o *DeleteGcpStorageProfileForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete gcp storage profile forbidden response a status code equal to that given
+func (o *DeleteGcpStorageProfileForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteGcpStorageProfileForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/storage-profiles-gcp/{id}][%d] deleteGcpStorageProfileForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DeleteGcpStorageProfileForbidden) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/storage-profiles-gcp/{id}][%d] deleteGcpStorageProfileForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DeleteGcpStorageProfileForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

@@ -53,10 +53,12 @@ func NewGetTypesUsingGET5ParamsWithHTTPClient(client *http.Client) *GetTypesUsin
 	}
 }
 
-/* GetTypesUsingGET5Params contains all the parameters to send to the API endpoint
-   for the get types using g e t 5 operation.
+/*
+GetTypesUsingGET5Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get types using g e t 5 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetTypesUsingGET5Params struct {
 
