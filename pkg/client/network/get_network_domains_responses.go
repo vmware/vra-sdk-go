@@ -45,7 +45,8 @@ func NewGetNetworkDomainsOK() *GetNetworkDomainsOK {
 	return &GetNetworkDomainsOK{}
 }
 
-/* GetNetworkDomainsOK describes a response with status code 200, with default header values.
+/*
+GetNetworkDomainsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type GetNetworkDomainsOK struct {
 	Payload *models.NetworkDomainResult
 }
 
+// IsSuccess returns true when this get network domains o k response has a 2xx status code
+func (o *GetNetworkDomainsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get network domains o k response has a 3xx status code
+func (o *GetNetworkDomainsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get network domains o k response has a 4xx status code
+func (o *GetNetworkDomainsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get network domains o k response has a 5xx status code
+func (o *GetNetworkDomainsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get network domains o k response a status code equal to that given
+func (o *GetNetworkDomainsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetNetworkDomainsOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/network-domains][%d] getNetworkDomainsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetNetworkDomainsOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/network-domains][%d] getNetworkDomainsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetNetworkDomainsOK) GetPayload() *models.NetworkDomainResult {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewGetNetworkDomainsForbidden() *GetNetworkDomainsForbidden {
 	return &GetNetworkDomainsForbidden{}
 }
 
-/* GetNetworkDomainsForbidden describes a response with status code 403, with default header values.
+/*
+GetNetworkDomainsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type GetNetworkDomainsForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get network domains forbidden response has a 2xx status code
+func (o *GetNetworkDomainsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get network domains forbidden response has a 3xx status code
+func (o *GetNetworkDomainsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get network domains forbidden response has a 4xx status code
+func (o *GetNetworkDomainsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get network domains forbidden response has a 5xx status code
+func (o *GetNetworkDomainsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get network domains forbidden response a status code equal to that given
+func (o *GetNetworkDomainsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetNetworkDomainsForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/network-domains][%d] getNetworkDomainsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetNetworkDomainsForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/network-domains][%d] getNetworkDomainsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetNetworkDomainsForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

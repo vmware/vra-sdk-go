@@ -52,10 +52,12 @@ func NewGetFabricAzureStorageAccountParamsWithHTTPClient(client *http.Client) *G
 	}
 }
 
-/* GetFabricAzureStorageAccountParams contains all the parameters to send to the API endpoint
-   for the get fabric azure storage account operation.
+/*
+GetFabricAzureStorageAccountParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get fabric azure storage account operation.
+
+	Typically these are written to a http.Request.
 */
 type GetFabricAzureStorageAccountParams struct {
 

@@ -29,6 +29,12 @@ func (o *UpdateUsingPUT2Reader) ReadResponse(response runtime.ClientResponse, co
 			return nil, err
 		}
 		return result, nil
+	case 403:
+		result := NewUpdateUsingPUT2Forbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +45,8 @@ func NewUpdateUsingPUT2OK() *UpdateUsingPUT2OK {
 	return &UpdateUsingPUT2OK{}
 }
 
-/* UpdateUsingPUT2OK describes a response with status code 200, with default header values.
+/*
+UpdateUsingPUT2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +54,39 @@ type UpdateUsingPUT2OK struct {
 	Payload *models.K8SNamespace
 }
 
+// IsSuccess returns true when this update using p u t2 o k response has a 2xx status code
+func (o *UpdateUsingPUT2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update using p u t2 o k response has a 3xx status code
+func (o *UpdateUsingPUT2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update using p u t2 o k response has a 4xx status code
+func (o *UpdateUsingPUT2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update using p u t2 o k response has a 5xx status code
+func (o *UpdateUsingPUT2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update using p u t2 o k response a status code equal to that given
+func (o *UpdateUsingPUT2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateUsingPUT2OK) Error() string {
 	return fmt.Sprintf("[PUT /cmx/api/resources/k8s/namespaces/{id}][%d] updateUsingPUT2OK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateUsingPUT2OK) String() string {
+	return fmt.Sprintf("[PUT /cmx/api/resources/k8s/namespaces/{id}][%d] updateUsingPUT2OK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateUsingPUT2OK) GetPayload() *models.K8SNamespace {
 	return o.Payload
 }
@@ -62,6 +99,57 @@ func (o *UpdateUsingPUT2OK) readResponse(response runtime.ClientResponse, consum
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewUpdateUsingPUT2Forbidden creates a UpdateUsingPUT2Forbidden with default headers values
+func NewUpdateUsingPUT2Forbidden() *UpdateUsingPUT2Forbidden {
+	return &UpdateUsingPUT2Forbidden{}
+}
+
+/*
+UpdateUsingPUT2Forbidden describes a response with status code 403, with default header values.
+
+Forbidden, the user lacks permissions
+*/
+type UpdateUsingPUT2Forbidden struct {
+}
+
+// IsSuccess returns true when this update using p u t2 forbidden response has a 2xx status code
+func (o *UpdateUsingPUT2Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update using p u t2 forbidden response has a 3xx status code
+func (o *UpdateUsingPUT2Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update using p u t2 forbidden response has a 4xx status code
+func (o *UpdateUsingPUT2Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update using p u t2 forbidden response has a 5xx status code
+func (o *UpdateUsingPUT2Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update using p u t2 forbidden response a status code equal to that given
+func (o *UpdateUsingPUT2Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *UpdateUsingPUT2Forbidden) Error() string {
+	return fmt.Sprintf("[PUT /cmx/api/resources/k8s/namespaces/{id}][%d] updateUsingPUT2Forbidden ", 403)
+}
+
+func (o *UpdateUsingPUT2Forbidden) String() string {
+	return fmt.Sprintf("[PUT /cmx/api/resources/k8s/namespaces/{id}][%d] updateUsingPUT2Forbidden ", 403)
+}
+
+func (o *UpdateUsingPUT2Forbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

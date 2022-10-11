@@ -51,7 +51,8 @@ func NewUpdatevSphereFabricNetworkOK() *UpdatevSphereFabricNetworkOK {
 	return &UpdatevSphereFabricNetworkOK{}
 }
 
-/* UpdatevSphereFabricNetworkOK describes a response with status code 200, with default header values.
+/*
+UpdatevSphereFabricNetworkOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type UpdatevSphereFabricNetworkOK struct {
 	Payload *models.FabricNetworkVsphere
 }
 
+// IsSuccess returns true when this updatev sphere fabric network o k response has a 2xx status code
+func (o *UpdatevSphereFabricNetworkOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this updatev sphere fabric network o k response has a 3xx status code
+func (o *UpdatevSphereFabricNetworkOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this updatev sphere fabric network o k response has a 4xx status code
+func (o *UpdatevSphereFabricNetworkOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this updatev sphere fabric network o k response has a 5xx status code
+func (o *UpdatevSphereFabricNetworkOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this updatev sphere fabric network o k response a status code equal to that given
+func (o *UpdatevSphereFabricNetworkOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdatevSphereFabricNetworkOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/fabric-networks-vsphere/{id}][%d] updatevSphereFabricNetworkOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdatevSphereFabricNetworkOK) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/fabric-networks-vsphere/{id}][%d] updatevSphereFabricNetworkOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdatevSphereFabricNetworkOK) GetPayload() *models.FabricNetworkVsphere {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewUpdatevSphereFabricNetworkForbidden() *UpdatevSphereFabricNetworkForbidd
 	return &UpdatevSphereFabricNetworkForbidden{}
 }
 
-/* UpdatevSphereFabricNetworkForbidden describes a response with status code 403, with default header values.
+/*
+UpdatevSphereFabricNetworkForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type UpdatevSphereFabricNetworkForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this updatev sphere fabric network forbidden response has a 2xx status code
+func (o *UpdatevSphereFabricNetworkForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this updatev sphere fabric network forbidden response has a 3xx status code
+func (o *UpdatevSphereFabricNetworkForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this updatev sphere fabric network forbidden response has a 4xx status code
+func (o *UpdatevSphereFabricNetworkForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this updatev sphere fabric network forbidden response has a 5xx status code
+func (o *UpdatevSphereFabricNetworkForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this updatev sphere fabric network forbidden response a status code equal to that given
+func (o *UpdatevSphereFabricNetworkForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdatevSphereFabricNetworkForbidden) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/fabric-networks-vsphere/{id}][%d] updatevSphereFabricNetworkForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UpdatevSphereFabricNetworkForbidden) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/fabric-networks-vsphere/{id}][%d] updatevSphereFabricNetworkForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UpdatevSphereFabricNetworkForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewUpdatevSphereFabricNetworkNotFound() *UpdatevSphereFabricNetworkNotFound
 	return &UpdatevSphereFabricNetworkNotFound{}
 }
 
-/* UpdatevSphereFabricNetworkNotFound describes a response with status code 404, with default header values.
+/*
+UpdatevSphereFabricNetworkNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type UpdatevSphereFabricNetworkNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this updatev sphere fabric network not found response has a 2xx status code
+func (o *UpdatevSphereFabricNetworkNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this updatev sphere fabric network not found response has a 3xx status code
+func (o *UpdatevSphereFabricNetworkNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this updatev sphere fabric network not found response has a 4xx status code
+func (o *UpdatevSphereFabricNetworkNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this updatev sphere fabric network not found response has a 5xx status code
+func (o *UpdatevSphereFabricNetworkNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this updatev sphere fabric network not found response a status code equal to that given
+func (o *UpdatevSphereFabricNetworkNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdatevSphereFabricNetworkNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/fabric-networks-vsphere/{id}][%d] updatevSphereFabricNetworkNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UpdatevSphereFabricNetworkNotFound) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/fabric-networks-vsphere/{id}][%d] updatevSphereFabricNetworkNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UpdatevSphereFabricNetworkNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -50,9 +50,9 @@ type ClientService interface {
 }
 
 /*
-  CreateZone creates zone
+CreateZone creates zone
 
-  Create zone
+Create zone
 */
 func (a *Client) CreateZone(params *CreateZoneParams, opts ...ClientOption) (*CreateZoneCreated, error) {
 	// TODO: Validate the params before sending
@@ -90,9 +90,9 @@ func (a *Client) CreateZone(params *CreateZoneParams, opts ...ClientOption) (*Cr
 }
 
 /*
-  DeleteZone deletes a zone
+DeleteZone deletes a zone
 
-  Delete a zone
+Delete a zone
 */
 func (a *Client) DeleteZone(params *DeleteZoneParams, opts ...ClientOption) (*DeleteZoneNoContent, error) {
 	// TODO: Validate the params before sending
@@ -130,9 +130,9 @@ func (a *Client) DeleteZone(params *DeleteZoneParams, opts ...ClientOption) (*De
 }
 
 /*
-  GetComputes gets computes
+GetComputes gets computes
 
-  Get zone's computes by given zone ID
+Get zone's computes by given zone ID
 */
 func (a *Client) GetComputes(params *GetComputesParams, opts ...ClientOption) (*GetComputesOK, error) {
 	// TODO: Validate the params before sending
@@ -170,9 +170,9 @@ func (a *Client) GetComputes(params *GetComputesParams, opts ...ClientOption) (*
 }
 
 /*
-  GetRegion gets region
+GetRegion gets region
 
-  Get Region with a given id
+Get Region with a given id
 */
 func (a *Client) GetRegion(params *GetRegionParams, opts ...ClientOption) (*GetRegionOK, error) {
 	// TODO: Validate the params before sending
@@ -210,9 +210,9 @@ func (a *Client) GetRegion(params *GetRegionParams, opts ...ClientOption) (*GetR
 }
 
 /*
-  GetRegions gets regions
+GetRegions gets regions
 
-  Get all regions
+Get all regions
 */
 func (a *Client) GetRegions(params *GetRegionsParams, opts ...ClientOption) (*GetRegionsOK, error) {
 	// TODO: Validate the params before sending
@@ -250,9 +250,9 @@ func (a *Client) GetRegions(params *GetRegionsParams, opts ...ClientOption) (*Ge
 }
 
 /*
-  GetZone gets zone
+GetZone gets zone
 
-  Get zone with given id
+Get zone with given id
 */
 func (a *Client) GetZone(params *GetZoneParams, opts ...ClientOption) (*GetZoneOK, error) {
 	// TODO: Validate the params before sending
@@ -290,9 +290,9 @@ func (a *Client) GetZone(params *GetZoneParams, opts ...ClientOption) (*GetZoneO
 }
 
 /*
-  GetZones gets zones
+GetZones gets zones
 
-  Get all zones
+Get all zones
 */
 func (a *Client) GetZones(params *GetZonesParams, opts ...ClientOption) (*GetZonesOK, error) {
 	// TODO: Validate the params before sending
@@ -330,9 +330,9 @@ func (a *Client) GetZones(params *GetZonesParams, opts ...ClientOption) (*GetZon
 }
 
 /*
-  UpdateZone updates zone
+UpdateZone updates zone
 
-  Update zone
+Update zone
 */
 func (a *Client) UpdateZone(params *UpdateZoneParams, opts ...ClientOption) (*UpdateZoneOK, error) {
 	// TODO: Validate the params before sending

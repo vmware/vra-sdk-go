@@ -52,10 +52,12 @@ func NewGetVersionByIDUsingGET2ParamsWithHTTPClient(client *http.Client) *GetVer
 	}
 }
 
-/* GetVersionByIDUsingGET2Params contains all the parameters to send to the API endpoint
-   for the get version by Id using g e t 2 operation.
+/*
+GetVersionByIDUsingGET2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get version by Id using g e t 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetVersionByIDUsingGET2Params struct {
 

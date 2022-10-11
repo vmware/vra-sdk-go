@@ -40,9 +40,9 @@ type ClientService interface {
 }
 
 /*
-  Delete2 deletes an icon
+Delete2 deletes an icon
 
-  Delete an existing icon by its unique id.
+Delete an existing icon by its unique id.
 */
 func (a *Client) Delete2(params *Delete2Params, opts ...ClientOption) (*Delete2NoContent, error) {
 	// TODO: Validate the params before sending
@@ -80,9 +80,9 @@ func (a *Client) Delete2(params *Delete2Params, opts ...ClientOption) (*Delete2N
 }
 
 /*
-  Download2 downloads an icon
+Download2 downloads an icon
 
-  Download an existing icon by its unique id.
+Download an existing icon by its unique id.
 */
 func (a *Client) Download2(params *Download2Params, opts ...ClientOption) (*Download2OK, error) {
 	// TODO: Validate the params before sending
@@ -120,9 +120,9 @@ func (a *Client) Download2(params *Download2Params, opts ...ClientOption) (*Down
 }
 
 /*
-  Upload2 uploads an icon
+Upload2 uploads an icon
 
-  Create an icon.
+Create an icon.
 */
 func (a *Client) Upload2(params *Upload2Params, opts ...ClientOption) (*Upload2Created, error) {
 	// TODO: Validate the params before sending

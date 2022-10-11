@@ -52,10 +52,12 @@ func NewGetEndpointByNameUsingGETParamsWithHTTPClient(client *http.Client) *GetE
 	}
 }
 
-/* GetEndpointByNameUsingGETParams contains all the parameters to send to the API endpoint
-   for the get endpoint by name using g e t operation.
+/*
+GetEndpointByNameUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get endpoint by name using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetEndpointByNameUsingGETParams struct {
 

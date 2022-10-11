@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
@@ -616,7 +615,7 @@ func UnmarshalUserOperationSlice(reader io.Reader, consumer runtime.Consumer) ([
 // UnmarshalUserOperation unmarshals polymorphic UserOperation
 func UnmarshalUserOperation(reader io.Reader, consumer runtime.Consumer) (UserOperation, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}

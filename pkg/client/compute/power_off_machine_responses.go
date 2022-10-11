@@ -51,7 +51,8 @@ func NewPowerOffMachineAccepted() *PowerOffMachineAccepted {
 	return &PowerOffMachineAccepted{}
 }
 
-/* PowerOffMachineAccepted describes a response with status code 202, with default header values.
+/*
+PowerOffMachineAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type PowerOffMachineAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this power off machine accepted response has a 2xx status code
+func (o *PowerOffMachineAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this power off machine accepted response has a 3xx status code
+func (o *PowerOffMachineAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this power off machine accepted response has a 4xx status code
+func (o *PowerOffMachineAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this power off machine accepted response has a 5xx status code
+func (o *PowerOffMachineAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this power off machine accepted response a status code equal to that given
+func (o *PowerOffMachineAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *PowerOffMachineAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/power-off][%d] powerOffMachineAccepted  %+v", 202, o.Payload)
 }
+
+func (o *PowerOffMachineAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/power-off][%d] powerOffMachineAccepted  %+v", 202, o.Payload)
+}
+
 func (o *PowerOffMachineAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPowerOffMachineForbidden() *PowerOffMachineForbidden {
 	return &PowerOffMachineForbidden{}
 }
 
-/* PowerOffMachineForbidden describes a response with status code 403, with default header values.
+/*
+PowerOffMachineForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type PowerOffMachineForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this power off machine forbidden response has a 2xx status code
+func (o *PowerOffMachineForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this power off machine forbidden response has a 3xx status code
+func (o *PowerOffMachineForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this power off machine forbidden response has a 4xx status code
+func (o *PowerOffMachineForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this power off machine forbidden response has a 5xx status code
+func (o *PowerOffMachineForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this power off machine forbidden response a status code equal to that given
+func (o *PowerOffMachineForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *PowerOffMachineForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/power-off][%d] powerOffMachineForbidden  %+v", 403, o.Payload)
 }
+
+func (o *PowerOffMachineForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/power-off][%d] powerOffMachineForbidden  %+v", 403, o.Payload)
+}
+
 func (o *PowerOffMachineForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewPowerOffMachineNotFound() *PowerOffMachineNotFound {
 	return &PowerOffMachineNotFound{}
 }
 
-/* PowerOffMachineNotFound describes a response with status code 404, with default header values.
+/*
+PowerOffMachineNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type PowerOffMachineNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this power off machine not found response has a 2xx status code
+func (o *PowerOffMachineNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this power off machine not found response has a 3xx status code
+func (o *PowerOffMachineNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this power off machine not found response has a 4xx status code
+func (o *PowerOffMachineNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this power off machine not found response has a 5xx status code
+func (o *PowerOffMachineNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this power off machine not found response a status code equal to that given
+func (o *PowerOffMachineNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *PowerOffMachineNotFound) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/power-off][%d] powerOffMachineNotFound  %+v", 404, o.Payload)
 }
+
+func (o *PowerOffMachineNotFound) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/power-off][%d] powerOffMachineNotFound  %+v", 404, o.Payload)
+}
+
 func (o *PowerOffMachineNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

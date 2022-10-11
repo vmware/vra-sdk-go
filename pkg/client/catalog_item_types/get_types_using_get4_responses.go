@@ -45,7 +45,8 @@ func NewGetTypesUsingGET4OK() *GetTypesUsingGET4OK {
 	return &GetTypesUsingGET4OK{}
 }
 
-/* GetTypesUsingGET4OK describes a response with status code 200, with default header values.
+/*
+GetTypesUsingGET4OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -53,9 +54,39 @@ type GetTypesUsingGET4OK struct {
 	Payload *models.PageOfCatalogItemType
 }
 
+// IsSuccess returns true when this get types using g e t4 o k response has a 2xx status code
+func (o *GetTypesUsingGET4OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get types using g e t4 o k response has a 3xx status code
+func (o *GetTypesUsingGET4OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get types using g e t4 o k response has a 4xx status code
+func (o *GetTypesUsingGET4OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get types using g e t4 o k response has a 5xx status code
+func (o *GetTypesUsingGET4OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get types using g e t4 o k response a status code equal to that given
+func (o *GetTypesUsingGET4OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetTypesUsingGET4OK) Error() string {
 	return fmt.Sprintf("[GET /catalog/api/types][%d] getTypesUsingGET4OK  %+v", 200, o.Payload)
 }
+
+func (o *GetTypesUsingGET4OK) String() string {
+	return fmt.Sprintf("[GET /catalog/api/types][%d] getTypesUsingGET4OK  %+v", 200, o.Payload)
+}
+
 func (o *GetTypesUsingGET4OK) GetPayload() *models.PageOfCatalogItemType {
 	return o.Payload
 }
@@ -77,14 +108,44 @@ func NewGetTypesUsingGET4Unauthorized() *GetTypesUsingGET4Unauthorized {
 	return &GetTypesUsingGET4Unauthorized{}
 }
 
-/* GetTypesUsingGET4Unauthorized describes a response with status code 401, with default header values.
+/*
+GetTypesUsingGET4Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type GetTypesUsingGET4Unauthorized struct {
 }
 
+// IsSuccess returns true when this get types using g e t4 unauthorized response has a 2xx status code
+func (o *GetTypesUsingGET4Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get types using g e t4 unauthorized response has a 3xx status code
+func (o *GetTypesUsingGET4Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get types using g e t4 unauthorized response has a 4xx status code
+func (o *GetTypesUsingGET4Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get types using g e t4 unauthorized response has a 5xx status code
+func (o *GetTypesUsingGET4Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get types using g e t4 unauthorized response a status code equal to that given
+func (o *GetTypesUsingGET4Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetTypesUsingGET4Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /catalog/api/types][%d] getTypesUsingGET4Unauthorized ", 401)
+}
+
+func (o *GetTypesUsingGET4Unauthorized) String() string {
 	return fmt.Sprintf("[GET /catalog/api/types][%d] getTypesUsingGET4Unauthorized ", 401)
 }
 

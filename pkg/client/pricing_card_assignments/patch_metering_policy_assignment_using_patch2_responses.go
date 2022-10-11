@@ -45,7 +45,8 @@ func NewPatchMeteringPolicyAssignmentUsingPATCH2OK() *PatchMeteringPolicyAssignm
 	return &PatchMeteringPolicyAssignmentUsingPATCH2OK{}
 }
 
-/* PatchMeteringPolicyAssignmentUsingPATCH2OK describes a response with status code 200, with default header values.
+/*
+PatchMeteringPolicyAssignmentUsingPATCH2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -53,9 +54,39 @@ type PatchMeteringPolicyAssignmentUsingPATCH2OK struct {
 	Payload *models.MeteringPolicyAssignment
 }
 
+// IsSuccess returns true when this patch metering policy assignment using p a t c h2 o k response has a 2xx status code
+func (o *PatchMeteringPolicyAssignmentUsingPATCH2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch metering policy assignment using p a t c h2 o k response has a 3xx status code
+func (o *PatchMeteringPolicyAssignmentUsingPATCH2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch metering policy assignment using p a t c h2 o k response has a 4xx status code
+func (o *PatchMeteringPolicyAssignmentUsingPATCH2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch metering policy assignment using p a t c h2 o k response has a 5xx status code
+func (o *PatchMeteringPolicyAssignmentUsingPATCH2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch metering policy assignment using p a t c h2 o k response a status code equal to that given
+func (o *PatchMeteringPolicyAssignmentUsingPATCH2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchMeteringPolicyAssignmentUsingPATCH2OK) Error() string {
 	return fmt.Sprintf("[PATCH /price/api/private/pricing-card-assignments/{id}][%d] patchMeteringPolicyAssignmentUsingPATCH2OK  %+v", 200, o.Payload)
 }
+
+func (o *PatchMeteringPolicyAssignmentUsingPATCH2OK) String() string {
+	return fmt.Sprintf("[PATCH /price/api/private/pricing-card-assignments/{id}][%d] patchMeteringPolicyAssignmentUsingPATCH2OK  %+v", 200, o.Payload)
+}
+
 func (o *PatchMeteringPolicyAssignmentUsingPATCH2OK) GetPayload() *models.MeteringPolicyAssignment {
 	return o.Payload
 }
@@ -77,14 +108,44 @@ func NewPatchMeteringPolicyAssignmentUsingPATCH2Unauthorized() *PatchMeteringPol
 	return &PatchMeteringPolicyAssignmentUsingPATCH2Unauthorized{}
 }
 
-/* PatchMeteringPolicyAssignmentUsingPATCH2Unauthorized describes a response with status code 401, with default header values.
+/*
+PatchMeteringPolicyAssignmentUsingPATCH2Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type PatchMeteringPolicyAssignmentUsingPATCH2Unauthorized struct {
 }
 
+// IsSuccess returns true when this patch metering policy assignment using p a t c h2 unauthorized response has a 2xx status code
+func (o *PatchMeteringPolicyAssignmentUsingPATCH2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch metering policy assignment using p a t c h2 unauthorized response has a 3xx status code
+func (o *PatchMeteringPolicyAssignmentUsingPATCH2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch metering policy assignment using p a t c h2 unauthorized response has a 4xx status code
+func (o *PatchMeteringPolicyAssignmentUsingPATCH2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch metering policy assignment using p a t c h2 unauthorized response has a 5xx status code
+func (o *PatchMeteringPolicyAssignmentUsingPATCH2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch metering policy assignment using p a t c h2 unauthorized response a status code equal to that given
+func (o *PatchMeteringPolicyAssignmentUsingPATCH2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *PatchMeteringPolicyAssignmentUsingPATCH2Unauthorized) Error() string {
+	return fmt.Sprintf("[PATCH /price/api/private/pricing-card-assignments/{id}][%d] patchMeteringPolicyAssignmentUsingPATCH2Unauthorized ", 401)
+}
+
+func (o *PatchMeteringPolicyAssignmentUsingPATCH2Unauthorized) String() string {
 	return fmt.Sprintf("[PATCH /price/api/private/pricing-card-assignments/{id}][%d] patchMeteringPolicyAssignmentUsingPATCH2Unauthorized ", 401)
 }
 

@@ -26,6 +26,12 @@ func (o *DeleteUsingDELETEReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return result, nil
+	case 403:
+		result := NewDeleteUsingDELETEForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -36,18 +42,99 @@ func NewDeleteUsingDELETEOK() *DeleteUsingDELETEOK {
 	return &DeleteUsingDELETEOK{}
 }
 
-/* DeleteUsingDELETEOK describes a response with status code 200, with default header values.
+/*
+DeleteUsingDELETEOK describes a response with status code 200, with default header values.
 
 OK
 */
 type DeleteUsingDELETEOK struct {
 }
 
+// IsSuccess returns true when this delete using d e l e t e o k response has a 2xx status code
+func (o *DeleteUsingDELETEOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete using d e l e t e o k response has a 3xx status code
+func (o *DeleteUsingDELETEOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete using d e l e t e o k response has a 4xx status code
+func (o *DeleteUsingDELETEOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete using d e l e t e o k response has a 5xx status code
+func (o *DeleteUsingDELETEOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete using d e l e t e o k response a status code equal to that given
+func (o *DeleteUsingDELETEOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteUsingDELETEOK) Error() string {
 	return fmt.Sprintf("[DELETE /cmx/api/resources/cluster-plans/{id}][%d] deleteUsingDELETEOK ", 200)
 }
 
+func (o *DeleteUsingDELETEOK) String() string {
+	return fmt.Sprintf("[DELETE /cmx/api/resources/cluster-plans/{id}][%d] deleteUsingDELETEOK ", 200)
+}
+
 func (o *DeleteUsingDELETEOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewDeleteUsingDELETEForbidden creates a DeleteUsingDELETEForbidden with default headers values
+func NewDeleteUsingDELETEForbidden() *DeleteUsingDELETEForbidden {
+	return &DeleteUsingDELETEForbidden{}
+}
+
+/*
+DeleteUsingDELETEForbidden describes a response with status code 403, with default header values.
+
+Forbidden, the user lacks permissions
+*/
+type DeleteUsingDELETEForbidden struct {
+}
+
+// IsSuccess returns true when this delete using d e l e t e forbidden response has a 2xx status code
+func (o *DeleteUsingDELETEForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete using d e l e t e forbidden response has a 3xx status code
+func (o *DeleteUsingDELETEForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete using d e l e t e forbidden response has a 4xx status code
+func (o *DeleteUsingDELETEForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete using d e l e t e forbidden response has a 5xx status code
+func (o *DeleteUsingDELETEForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete using d e l e t e forbidden response a status code equal to that given
+func (o *DeleteUsingDELETEForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *DeleteUsingDELETEForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /cmx/api/resources/cluster-plans/{id}][%d] deleteUsingDELETEForbidden ", 403)
+}
+
+func (o *DeleteUsingDELETEForbidden) String() string {
+	return fmt.Sprintf("[DELETE /cmx/api/resources/cluster-plans/{id}][%d] deleteUsingDELETEForbidden ", 403)
+}
+
+func (o *DeleteUsingDELETEForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

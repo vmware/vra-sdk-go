@@ -54,10 +54,12 @@ func NewEnumerateVmcRegionsAsyncParamsWithHTTPClient(client *http.Client) *Enume
 	}
 }
 
-/* EnumerateVmcRegionsAsyncParams contains all the parameters to send to the API endpoint
-   for the enumerate vmc regions async operation.
+/*
+EnumerateVmcRegionsAsyncParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the enumerate vmc regions async operation.
+
+	Typically these are written to a http.Request.
 */
 type EnumerateVmcRegionsAsyncParams struct {
 

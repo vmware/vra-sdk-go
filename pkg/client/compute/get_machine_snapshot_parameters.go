@@ -52,10 +52,12 @@ func NewGetMachineSnapshotParamsWithHTTPClient(client *http.Client) *GetMachineS
 	}
 }
 
-/* GetMachineSnapshotParams contains all the parameters to send to the API endpoint
-   for the get machine snapshot operation.
+/*
+GetMachineSnapshotParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get machine snapshot operation.
+
+	Typically these are written to a http.Request.
 */
 type GetMachineSnapshotParams struct {
 

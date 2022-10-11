@@ -32,7 +32,7 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	CreateProject(params *CreateProjectParams, opts ...ClientOption) (*CreateProjectCreated, error)
 
-	CreateUsingPOST(params *CreateUsingPOSTParams, opts ...ClientOption) (*CreateUsingPOSTCreated, error)
+	CreateUsingPOSTMixin5(params *CreateUsingPOSTMixin5Params, opts ...ClientOption) (*CreateUsingPOSTMixin5Created, error)
 
 	DeleteProject(params *DeleteProjectParams, opts ...ClientOption) (*DeleteProjectNoContent, error)
 
@@ -48,7 +48,7 @@ type ClientService interface {
 
 	GetProjects(params *GetProjectsParams, opts ...ClientOption) (*GetProjectsOK, error)
 
-	GetUsingGETMixin4(params *GetUsingGETMixin4Params, opts ...ClientOption) (*GetUsingGETMixin4OK, error)
+	GetUsingGETMixin5(params *GetUsingGETMixin5Params, opts ...ClientOption) (*GetUsingGETMixin5OK, error)
 
 	ModifyProjectCostsUsingPATCH(params *ModifyProjectCostsUsingPATCHParams, opts ...ClientOption) (*ModifyProjectCostsUsingPATCHOK, error)
 
@@ -62,15 +62,15 @@ type ClientService interface {
 
 	UpdateProjectResourceMetadata(params *UpdateProjectResourceMetadataParams, opts ...ClientOption) (*UpdateProjectResourceMetadataOK, error)
 
-	UpdateUsingPATCH(params *UpdateUsingPATCHParams, opts ...ClientOption) (*UpdateUsingPATCHOK, error)
+	UpdateUsingPATCHMixin5(params *UpdateUsingPATCHMixin5Params, opts ...ClientOption) (*UpdateUsingPATCHMixin5OK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  CreateProject creates project
+CreateProject creates project
 
-  Create project
+Create project
 */
 func (a *Client) CreateProject(params *CreateProjectParams, opts ...ClientOption) (*CreateProjectCreated, error) {
 	// TODO: Validate the params before sending
@@ -108,22 +108,22 @@ func (a *Client) CreateProject(params *CreateProjectParams, opts ...ClientOption
 }
 
 /*
-  CreateUsingPOST creates a project
+CreateUsingPOSTMixin5 creates a project
 */
-func (a *Client) CreateUsingPOST(params *CreateUsingPOSTParams, opts ...ClientOption) (*CreateUsingPOSTCreated, error) {
+func (a *Client) CreateUsingPOSTMixin5(params *CreateUsingPOSTMixin5Params, opts ...ClientOption) (*CreateUsingPOSTMixin5Created, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreateUsingPOSTParams()
+		params = NewCreateUsingPOSTMixin5Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createUsingPOST",
+		ID:                 "createUsingPOSTMixin5",
 		Method:             "POST",
 		PathPattern:        "/project-service/api/projects",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreateUsingPOSTReader{formats: a.formats},
+		Reader:             &CreateUsingPOSTMixin5Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -135,20 +135,20 @@ func (a *Client) CreateUsingPOST(params *CreateUsingPOSTParams, opts ...ClientOp
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*CreateUsingPOSTCreated)
+	success, ok := result.(*CreateUsingPOSTMixin5Created)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for createUsingPOST: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for createUsingPOSTMixin5: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  DeleteProject deletes project
+DeleteProject deletes project
 
-  Delete project with a given id
+Delete project with a given id
 */
 func (a *Client) DeleteProject(params *DeleteProjectParams, opts ...ClientOption) (*DeleteProjectNoContent, error) {
 	// TODO: Validate the params before sending
@@ -186,9 +186,9 @@ func (a *Client) DeleteProject(params *DeleteProjectParams, opts ...ClientOption
 }
 
 /*
-  DeleteProjectUsingDELETE deletes a project
+DeleteProjectUsingDELETE deletes a project
 
-  Deletes a project by id.
+Deletes a project by id.
 */
 func (a *Client) DeleteProjectUsingDELETE(params *DeleteProjectUsingDELETEParams, opts ...ClientOption) (*DeleteProjectUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
@@ -226,9 +226,9 @@ func (a *Client) DeleteProjectUsingDELETE(params *DeleteProjectUsingDELETEParams
 }
 
 /*
-  GetAllProjectsUsingGET gets all projects
+GetAllProjectsUsingGET gets all projects
 
-  Get all projects with specified paging parameters.
+Get all projects with specified paging parameters.
 */
 func (a *Client) GetAllProjectsUsingGET(params *GetAllProjectsUsingGETParams, opts ...ClientOption) (*GetAllProjectsUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -266,9 +266,9 @@ func (a *Client) GetAllProjectsUsingGET(params *GetAllProjectsUsingGETParams, op
 }
 
 /*
-  GetProject gets project
+GetProject gets project
 
-  Get project with a given id
+Get project with a given id
 */
 func (a *Client) GetProject(params *GetProjectParams, opts ...ClientOption) (*GetProjectOK, error) {
 	// TODO: Validate the params before sending
@@ -306,9 +306,9 @@ func (a *Client) GetProject(params *GetProjectParams, opts ...ClientOption) (*Ge
 }
 
 /*
-  GetProjectResourceMetadata gets project resource metadata
+GetProjectResourceMetadata gets project resource metadata
 
-  Get project resource metadata by a given project id
+Get project resource metadata by a given project id
 */
 func (a *Client) GetProjectResourceMetadata(params *GetProjectResourceMetadataParams, opts ...ClientOption) (*GetProjectResourceMetadataOK, error) {
 	// TODO: Validate the params before sending
@@ -346,9 +346,9 @@ func (a *Client) GetProjectResourceMetadata(params *GetProjectResourceMetadataPa
 }
 
 /*
-  GetProjectUsingGET retrieves a project
+GetProjectUsingGET retrieves a project
 
-  Retrieves a project by id.
+Retrieves a project by id.
 */
 func (a *Client) GetProjectUsingGET(params *GetProjectUsingGETParams, opts ...ClientOption) (*GetProjectUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -386,9 +386,9 @@ func (a *Client) GetProjectUsingGET(params *GetProjectUsingGETParams, opts ...Cl
 }
 
 /*
-  GetProjects gets projects
+GetProjects gets projects
 
-  Get all projects
+Get all projects
 */
 func (a *Client) GetProjects(params *GetProjectsParams, opts ...ClientOption) (*GetProjectsOK, error) {
 	// TODO: Validate the params before sending
@@ -426,24 +426,24 @@ func (a *Client) GetProjects(params *GetProjectsParams, opts ...ClientOption) (*
 }
 
 /*
-  GetUsingGETMixin4 retrieves a resource metadata for a project
+GetUsingGETMixin5 retrieves a resource metadata for a project
 
-  Retrieves a resource metadata for a project by id.
+Retrieves a resource metadata for a project by id.
 */
-func (a *Client) GetUsingGETMixin4(params *GetUsingGETMixin4Params, opts ...ClientOption) (*GetUsingGETMixin4OK, error) {
+func (a *Client) GetUsingGETMixin5(params *GetUsingGETMixin5Params, opts ...ClientOption) (*GetUsingGETMixin5OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetUsingGETMixin4Params()
+		params = NewGetUsingGETMixin5Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getUsingGETMixin4",
+		ID:                 "getUsingGETMixin5",
 		Method:             "GET",
 		PathPattern:        "/project-service/api/projects/{id}/resource-metadata",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetUsingGETMixin4Reader{formats: a.formats},
+		Reader:             &GetUsingGETMixin5Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -455,20 +455,20 @@ func (a *Client) GetUsingGETMixin4(params *GetUsingGETMixin4Params, opts ...Clie
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetUsingGETMixin4OK)
+	success, ok := result.(*GetUsingGETMixin5OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getUsingGETMixin4: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getUsingGETMixin5: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  ModifyProjectCostsUsingPATCH modifies a project cost
+ModifyProjectCostsUsingPATCH modifies a project cost
 
-  Modifies the cost of a project specified by id.
+Modifies the cost of a project specified by id.
 */
 func (a *Client) ModifyProjectCostsUsingPATCH(params *ModifyProjectCostsUsingPATCHParams, opts ...ClientOption) (*ModifyProjectCostsUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
@@ -506,9 +506,9 @@ func (a *Client) ModifyProjectCostsUsingPATCH(params *ModifyProjectCostsUsingPAT
 }
 
 /*
-  ModifyProjectPrincipalsUsingPATCH modifies principals assigned to a project
+ModifyProjectPrincipalsUsingPATCH modifies principals assigned to a project
 
-  Modifies principals assigned to a project by id.
+Modifies principals assigned to a project by id.
 */
 func (a *Client) ModifyProjectPrincipalsUsingPATCH(params *ModifyProjectPrincipalsUsingPATCHParams, opts ...ClientOption) (*ModifyProjectPrincipalsUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
@@ -546,9 +546,9 @@ func (a *Client) ModifyProjectPrincipalsUsingPATCH(params *ModifyProjectPrincipa
 }
 
 /*
-  ModifyProjectUsingPATCH modifies a project
+ModifyProjectUsingPATCH modifies a project
 
-  Modifies a project by id. Fields that can be modified: name, description, constraints, properties, cost, operation timeout, shared resources.
+Modifies a project by id. Fields that can be modified: name, description, constraints, properties, cost, operation timeout, shared resources.
 */
 func (a *Client) ModifyProjectUsingPATCH(params *ModifyProjectUsingPATCHParams, opts ...ClientOption) (*ModifyProjectUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
@@ -586,7 +586,7 @@ func (a *Client) ModifyProjectUsingPATCH(params *ModifyProjectUsingPATCHParams, 
 }
 
 /*
-  SyncProjectsPrincipalsUsingPOST syncs principals assigned to any project within user organization
+SyncProjectsPrincipalsUsingPOST syncs principals assigned to any project within user organization
 */
 func (a *Client) SyncProjectsPrincipalsUsingPOST(params *SyncProjectsPrincipalsUsingPOSTParams, opts ...ClientOption) (*SyncProjectsPrincipalsUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -624,9 +624,9 @@ func (a *Client) SyncProjectsPrincipalsUsingPOST(params *SyncProjectsPrincipalsU
 }
 
 /*
-  UpdateProject updates project
+UpdateProject updates project
 
-  Update project
+Update project
 */
 func (a *Client) UpdateProject(params *UpdateProjectParams, opts ...ClientOption) (*UpdateProjectOK, error) {
 	// TODO: Validate the params before sending
@@ -664,9 +664,9 @@ func (a *Client) UpdateProject(params *UpdateProjectParams, opts ...ClientOption
 }
 
 /*
-  UpdateProjectResourceMetadata updates project resource metadata
+UpdateProjectResourceMetadata updates project resource metadata
 
-  Update project resource metadata by a given project id
+Update project resource metadata by a given project id
 */
 func (a *Client) UpdateProjectResourceMetadata(params *UpdateProjectResourceMetadataParams, opts ...ClientOption) (*UpdateProjectResourceMetadataOK, error) {
 	// TODO: Validate the params before sending
@@ -704,24 +704,24 @@ func (a *Client) UpdateProjectResourceMetadata(params *UpdateProjectResourceMeta
 }
 
 /*
-  UpdateUsingPATCH modifies a project resource metadata
+UpdateUsingPATCHMixin5 modifies a project resource metadata
 
-  Modifies the resources metadata of a project specified by id.
+Modifies the resources metadata of a project specified by id.
 */
-func (a *Client) UpdateUsingPATCH(params *UpdateUsingPATCHParams, opts ...ClientOption) (*UpdateUsingPATCHOK, error) {
+func (a *Client) UpdateUsingPATCHMixin5(params *UpdateUsingPATCHMixin5Params, opts ...ClientOption) (*UpdateUsingPATCHMixin5OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewUpdateUsingPATCHParams()
+		params = NewUpdateUsingPATCHMixin5Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "updateUsingPATCH",
+		ID:                 "updateUsingPATCHMixin5",
 		Method:             "PATCH",
 		PathPattern:        "/project-service/api/projects/{id}/resource-metadata",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &UpdateUsingPATCHReader{formats: a.formats},
+		Reader:             &UpdateUsingPATCHMixin5Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -733,13 +733,13 @@ func (a *Client) UpdateUsingPATCH(params *UpdateUsingPATCHParams, opts ...Client
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*UpdateUsingPATCHOK)
+	success, ok := result.(*UpdateUsingPATCHMixin5OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for updateUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for updateUsingPATCHMixin5: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

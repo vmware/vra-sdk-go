@@ -16,7 +16,7 @@ import (
 
 // PolicyType PolicyType
 //
-// A type of policy that includes the schema of the policy itself and the schema of the objects affected by the policy
+// # A type of policy that includes the schema of the policy itself and the schema of the objects affected by the policy
 //
 // swagger:model PolicyType
 type PolicyType struct {

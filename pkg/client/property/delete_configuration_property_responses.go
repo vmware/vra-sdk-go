@@ -45,7 +45,8 @@ func NewDeleteConfigurationPropertyOK() *DeleteConfigurationPropertyOK {
 	return &DeleteConfigurationPropertyOK{}
 }
 
-/* DeleteConfigurationPropertyOK describes a response with status code 200, with default header values.
+/*
+DeleteConfigurationPropertyOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type DeleteConfigurationPropertyOK struct {
 	Payload *models.ConfigurationProperty
 }
 
+// IsSuccess returns true when this delete configuration property o k response has a 2xx status code
+func (o *DeleteConfigurationPropertyOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete configuration property o k response has a 3xx status code
+func (o *DeleteConfigurationPropertyOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete configuration property o k response has a 4xx status code
+func (o *DeleteConfigurationPropertyOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete configuration property o k response has a 5xx status code
+func (o *DeleteConfigurationPropertyOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete configuration property o k response a status code equal to that given
+func (o *DeleteConfigurationPropertyOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteConfigurationPropertyOK) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/configuration-properties/{id}][%d] deleteConfigurationPropertyOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteConfigurationPropertyOK) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/configuration-properties/{id}][%d] deleteConfigurationPropertyOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteConfigurationPropertyOK) GetPayload() *models.ConfigurationProperty {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewDeleteConfigurationPropertyForbidden() *DeleteConfigurationPropertyForbi
 	return &DeleteConfigurationPropertyForbidden{}
 }
 
-/* DeleteConfigurationPropertyForbidden describes a response with status code 403, with default header values.
+/*
+DeleteConfigurationPropertyForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type DeleteConfigurationPropertyForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this delete configuration property forbidden response has a 2xx status code
+func (o *DeleteConfigurationPropertyForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete configuration property forbidden response has a 3xx status code
+func (o *DeleteConfigurationPropertyForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete configuration property forbidden response has a 4xx status code
+func (o *DeleteConfigurationPropertyForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete configuration property forbidden response has a 5xx status code
+func (o *DeleteConfigurationPropertyForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete configuration property forbidden response a status code equal to that given
+func (o *DeleteConfigurationPropertyForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteConfigurationPropertyForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/configuration-properties/{id}][%d] deleteConfigurationPropertyForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DeleteConfigurationPropertyForbidden) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/configuration-properties/{id}][%d] deleteConfigurationPropertyForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DeleteConfigurationPropertyForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

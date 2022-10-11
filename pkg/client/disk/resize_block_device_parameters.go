@@ -53,10 +53,12 @@ func NewResizeBlockDeviceParamsWithHTTPClient(client *http.Client) *ResizeBlockD
 	}
 }
 
-/* ResizeBlockDeviceParams contains all the parameters to send to the API endpoint
-   for the resize block device operation.
+/*
+ResizeBlockDeviceParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the resize block device operation.
+
+	Typically these are written to a http.Request.
 */
 type ResizeBlockDeviceParams struct {
 
@@ -79,6 +81,12 @@ type ResizeBlockDeviceParams struct {
 	   The ID of the block device.
 	*/
 	ID string
+
+	/* UseSdrs.
+
+	   Only applicable for vSphere block-devices deployed on SDRS cluster. If set to true, SDRS Recommendation will be used for resize operation.
+	*/
+	UseSdrs *bool
 
 	timeout    time.Duration
 	Context    context.Context
@@ -166,6 +174,17 @@ func (o *ResizeBlockDeviceParams) SetID(id string) {
 	o.ID = id
 }
 
+// WithUseSdrs adds the useSdrs to the resize block device params
+func (o *ResizeBlockDeviceParams) WithUseSdrs(useSdrs *bool) *ResizeBlockDeviceParams {
+	o.SetUseSdrs(useSdrs)
+	return o
+}
+
+// SetUseSdrs adds the useSdrs to the resize block device params
+func (o *ResizeBlockDeviceParams) SetUseSdrs(useSdrs *bool) {
+	o.UseSdrs = useSdrs
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *ResizeBlockDeviceParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -204,6 +223,23 @@ func (o *ResizeBlockDeviceParams) WriteToRequest(r runtime.ClientRequest, reg st
 	// path param id
 	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
+	}
+
+	if o.UseSdrs != nil {
+
+		// query param useSdrs
+		var qrUseSdrs bool
+
+		if o.UseSdrs != nil {
+			qrUseSdrs = *o.UseSdrs
+		}
+		qUseSdrs := swag.FormatBool(qrUseSdrs)
+		if qUseSdrs != "" {
+
+			if err := r.SetQueryParam("useSdrs", qUseSdrs); err != nil {
+				return err
+			}
+		}
 	}
 
 	if len(res) > 0 {

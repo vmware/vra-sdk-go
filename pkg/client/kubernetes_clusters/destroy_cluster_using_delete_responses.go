@@ -26,6 +26,12 @@ func (o *DestroyClusterUsingDELETEReader) ReadResponse(response runtime.ClientRe
 			return nil, err
 		}
 		return result, nil
+	case 403:
+		result := NewDestroyClusterUsingDELETEForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -36,18 +42,99 @@ func NewDestroyClusterUsingDELETEOK() *DestroyClusterUsingDELETEOK {
 	return &DestroyClusterUsingDELETEOK{}
 }
 
-/* DestroyClusterUsingDELETEOK describes a response with status code 200, with default header values.
+/*
+DestroyClusterUsingDELETEOK describes a response with status code 200, with default header values.
 
 OK
 */
 type DestroyClusterUsingDELETEOK struct {
 }
 
+// IsSuccess returns true when this destroy cluster using d e l e t e o k response has a 2xx status code
+func (o *DestroyClusterUsingDELETEOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this destroy cluster using d e l e t e o k response has a 3xx status code
+func (o *DestroyClusterUsingDELETEOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this destroy cluster using d e l e t e o k response has a 4xx status code
+func (o *DestroyClusterUsingDELETEOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this destroy cluster using d e l e t e o k response has a 5xx status code
+func (o *DestroyClusterUsingDELETEOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this destroy cluster using d e l e t e o k response a status code equal to that given
+func (o *DestroyClusterUsingDELETEOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DestroyClusterUsingDELETEOK) Error() string {
 	return fmt.Sprintf("[DELETE /cmx/api/resources/k8s/clusters/{id}/destroy][%d] destroyClusterUsingDELETEOK ", 200)
 }
 
+func (o *DestroyClusterUsingDELETEOK) String() string {
+	return fmt.Sprintf("[DELETE /cmx/api/resources/k8s/clusters/{id}/destroy][%d] destroyClusterUsingDELETEOK ", 200)
+}
+
 func (o *DestroyClusterUsingDELETEOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewDestroyClusterUsingDELETEForbidden creates a DestroyClusterUsingDELETEForbidden with default headers values
+func NewDestroyClusterUsingDELETEForbidden() *DestroyClusterUsingDELETEForbidden {
+	return &DestroyClusterUsingDELETEForbidden{}
+}
+
+/*
+DestroyClusterUsingDELETEForbidden describes a response with status code 403, with default header values.
+
+Forbidden, the user lacks permissions
+*/
+type DestroyClusterUsingDELETEForbidden struct {
+}
+
+// IsSuccess returns true when this destroy cluster using d e l e t e forbidden response has a 2xx status code
+func (o *DestroyClusterUsingDELETEForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this destroy cluster using d e l e t e forbidden response has a 3xx status code
+func (o *DestroyClusterUsingDELETEForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this destroy cluster using d e l e t e forbidden response has a 4xx status code
+func (o *DestroyClusterUsingDELETEForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this destroy cluster using d e l e t e forbidden response has a 5xx status code
+func (o *DestroyClusterUsingDELETEForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this destroy cluster using d e l e t e forbidden response a status code equal to that given
+func (o *DestroyClusterUsingDELETEForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *DestroyClusterUsingDELETEForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /cmx/api/resources/k8s/clusters/{id}/destroy][%d] destroyClusterUsingDELETEForbidden ", 403)
+}
+
+func (o *DestroyClusterUsingDELETEForbidden) String() string {
+	return fmt.Sprintf("[DELETE /cmx/api/resources/k8s/clusters/{id}/destroy][%d] destroyClusterUsingDELETEForbidden ", 403)
+}
+
+func (o *DestroyClusterUsingDELETEForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

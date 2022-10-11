@@ -52,10 +52,12 @@ func NewGetContentSourceUsingGETParamsWithHTTPClient(client *http.Client) *GetCo
 	}
 }
 
-/* GetContentSourceUsingGETParams contains all the parameters to send to the API endpoint
-   for the get content source using g e t operation.
+/*
+GetContentSourceUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get content source using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetContentSourceUsingGETParams struct {
 

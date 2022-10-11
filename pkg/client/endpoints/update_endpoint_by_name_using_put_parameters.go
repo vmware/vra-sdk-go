@@ -54,10 +54,12 @@ func NewUpdateEndpointByNameUsingPUTParamsWithHTTPClient(client *http.Client) *U
 	}
 }
 
-/* UpdateEndpointByNameUsingPUTParams contains all the parameters to send to the API endpoint
-   for the update endpoint by name using p u t operation.
+/*
+UpdateEndpointByNameUsingPUTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update endpoint by name using p u t operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateEndpointByNameUsingPUTParams struct {
 

@@ -52,10 +52,12 @@ func NewCheckDeploymentNameExistsUsingGET2ParamsWithHTTPClient(client *http.Clie
 	}
 }
 
-/* CheckDeploymentNameExistsUsingGET2Params contains all the parameters to send to the API endpoint
-   for the check deployment name exists using g e t 2 operation.
+/*
+CheckDeploymentNameExistsUsingGET2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the check deployment name exists using g e t 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type CheckDeploymentNameExistsUsingGET2Params struct {
 

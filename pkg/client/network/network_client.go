@@ -50,9 +50,9 @@ type ClientService interface {
 }
 
 /*
-  CreateNetwork creates network
+CreateNetwork creates network
 
-  Provision a new network based on the passed in constraints. The network should be destroyed after the machine is destroyed to free up resources.
+Provision a new network based on the passed in constraints. The network should be destroyed after the machine is destroyed to free up resources.
 */
 func (a *Client) CreateNetwork(params *CreateNetworkParams, opts ...ClientOption) (*CreateNetworkAccepted, error) {
 	// TODO: Validate the params before sending
@@ -90,9 +90,9 @@ func (a *Client) CreateNetwork(params *CreateNetworkParams, opts ...ClientOption
 }
 
 /*
-  DeleteNetwork deletes a network
+DeleteNetwork deletes a network
 
-  Delete a network with a given id
+Delete a network with a given id
 */
 func (a *Client) DeleteNetwork(params *DeleteNetworkParams, opts ...ClientOption) (*DeleteNetworkAccepted, error) {
 	// TODO: Validate the params before sending
@@ -130,9 +130,9 @@ func (a *Client) DeleteNetwork(params *DeleteNetworkParams, opts ...ClientOption
 }
 
 /*
-  GetMachineNetworkInterface gets machine network interface
+GetMachineNetworkInterface gets machine network interface
 
-  Get network interface with a given id for specific machine
+Get network interface with a given id for specific machine
 */
 func (a *Client) GetMachineNetworkInterface(params *GetMachineNetworkInterfaceParams, opts ...ClientOption) (*GetMachineNetworkInterfaceOK, error) {
 	// TODO: Validate the params before sending
@@ -170,9 +170,9 @@ func (a *Client) GetMachineNetworkInterface(params *GetMachineNetworkInterfacePa
 }
 
 /*
-  GetNetwork gets network
+GetNetwork gets network
 
-  Get network with a given id
+Get network with a given id
 */
 func (a *Client) GetNetwork(params *GetNetworkParams, opts ...ClientOption) (*GetNetworkOK, error) {
 	// TODO: Validate the params before sending
@@ -210,9 +210,9 @@ func (a *Client) GetNetwork(params *GetNetworkParams, opts ...ClientOption) (*Ge
 }
 
 /*
-  GetNetworkDomain gets network domain
+GetNetworkDomain gets network domain
 
-  Get network domain with a given id
+Get network domain with a given id
 */
 func (a *Client) GetNetworkDomain(params *GetNetworkDomainParams, opts ...ClientOption) (*GetNetworkDomainOK, error) {
 	// TODO: Validate the params before sending
@@ -250,9 +250,9 @@ func (a *Client) GetNetworkDomain(params *GetNetworkDomainParams, opts ...Client
 }
 
 /*
-  GetNetworkDomains gets network domains
+GetNetworkDomains gets network domains
 
-  Get all network domains.
+Get all network domains.
 */
 func (a *Client) GetNetworkDomains(params *GetNetworkDomainsParams, opts ...ClientOption) (*GetNetworkDomainsOK, error) {
 	// TODO: Validate the params before sending
@@ -290,9 +290,9 @@ func (a *Client) GetNetworkDomains(params *GetNetworkDomainsParams, opts ...Clie
 }
 
 /*
-  GetNetworks gets networks
+GetNetworks gets networks
 
-  Get all networks
+Get all networks
 */
 func (a *Client) GetNetworks(params *GetNetworksParams, opts ...ClientOption) (*GetNetworksOK, error) {
 	// TODO: Validate the params before sending
@@ -330,9 +330,9 @@ func (a *Client) GetNetworks(params *GetNetworksParams, opts ...ClientOption) (*
 }
 
 /*
-  PatchMachineNetworkInterface patches machine network interface
+PatchMachineNetworkInterface patches machine network interface
 
-  Patch network interface with a given id for specific machine. Only name, description, IPv4 address and custom property updates are supported. The change to name and IPv4 address will not propagate to cloud endpoint for provisioned machines.
+Patch network interface with a given id for specific machine. Only name, description, IPv4 address and custom property updates are supported. The change to name and IPv4 address will not propagate to cloud endpoint for provisioned machines.
 */
 func (a *Client) PatchMachineNetworkInterface(params *PatchMachineNetworkInterfaceParams, opts ...ClientOption) (*PatchMachineNetworkInterfaceOK, error) {
 	// TODO: Validate the params before sending

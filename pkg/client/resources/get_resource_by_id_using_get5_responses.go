@@ -35,6 +35,12 @@ func (o *GetResourceByIDUsingGET5Reader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return nil, result
+	case 403:
+		result := NewGetResourceByIDUsingGET5Forbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -45,7 +51,8 @@ func NewGetResourceByIDUsingGET5OK() *GetResourceByIDUsingGET5OK {
 	return &GetResourceByIDUsingGET5OK{}
 }
 
-/* GetResourceByIDUsingGET5OK describes a response with status code 200, with default header values.
+/*
+GetResourceByIDUsingGET5OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -53,9 +60,39 @@ type GetResourceByIDUsingGET5OK struct {
 	Payload *models.Resource
 }
 
+// IsSuccess returns true when this get resource by Id using g e t5 o k response has a 2xx status code
+func (o *GetResourceByIDUsingGET5OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get resource by Id using g e t5 o k response has a 3xx status code
+func (o *GetResourceByIDUsingGET5OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get resource by Id using g e t5 o k response has a 4xx status code
+func (o *GetResourceByIDUsingGET5OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get resource by Id using g e t5 o k response has a 5xx status code
+func (o *GetResourceByIDUsingGET5OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get resource by Id using g e t5 o k response a status code equal to that given
+func (o *GetResourceByIDUsingGET5OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetResourceByIDUsingGET5OK) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/resources/{resourceId}][%d] getResourceByIdUsingGET5OK  %+v", 200, o.Payload)
 }
+
+func (o *GetResourceByIDUsingGET5OK) String() string {
+	return fmt.Sprintf("[GET /deployment/api/resources/{resourceId}][%d] getResourceByIdUsingGET5OK  %+v", 200, o.Payload)
+}
+
 func (o *GetResourceByIDUsingGET5OK) GetPayload() *models.Resource {
 	return o.Payload
 }
@@ -77,18 +114,99 @@ func NewGetResourceByIDUsingGET5Unauthorized() *GetResourceByIDUsingGET5Unauthor
 	return &GetResourceByIDUsingGET5Unauthorized{}
 }
 
-/* GetResourceByIDUsingGET5Unauthorized describes a response with status code 401, with default header values.
+/*
+GetResourceByIDUsingGET5Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type GetResourceByIDUsingGET5Unauthorized struct {
 }
 
+// IsSuccess returns true when this get resource by Id using g e t5 unauthorized response has a 2xx status code
+func (o *GetResourceByIDUsingGET5Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get resource by Id using g e t5 unauthorized response has a 3xx status code
+func (o *GetResourceByIDUsingGET5Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get resource by Id using g e t5 unauthorized response has a 4xx status code
+func (o *GetResourceByIDUsingGET5Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get resource by Id using g e t5 unauthorized response has a 5xx status code
+func (o *GetResourceByIDUsingGET5Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get resource by Id using g e t5 unauthorized response a status code equal to that given
+func (o *GetResourceByIDUsingGET5Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetResourceByIDUsingGET5Unauthorized) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/resources/{resourceId}][%d] getResourceByIdUsingGET5Unauthorized ", 401)
 }
 
+func (o *GetResourceByIDUsingGET5Unauthorized) String() string {
+	return fmt.Sprintf("[GET /deployment/api/resources/{resourceId}][%d] getResourceByIdUsingGET5Unauthorized ", 401)
+}
+
 func (o *GetResourceByIDUsingGET5Unauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewGetResourceByIDUsingGET5Forbidden creates a GetResourceByIDUsingGET5Forbidden with default headers values
+func NewGetResourceByIDUsingGET5Forbidden() *GetResourceByIDUsingGET5Forbidden {
+	return &GetResourceByIDUsingGET5Forbidden{}
+}
+
+/*
+GetResourceByIDUsingGET5Forbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type GetResourceByIDUsingGET5Forbidden struct {
+}
+
+// IsSuccess returns true when this get resource by Id using g e t5 forbidden response has a 2xx status code
+func (o *GetResourceByIDUsingGET5Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get resource by Id using g e t5 forbidden response has a 3xx status code
+func (o *GetResourceByIDUsingGET5Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get resource by Id using g e t5 forbidden response has a 4xx status code
+func (o *GetResourceByIDUsingGET5Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get resource by Id using g e t5 forbidden response has a 5xx status code
+func (o *GetResourceByIDUsingGET5Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get resource by Id using g e t5 forbidden response a status code equal to that given
+func (o *GetResourceByIDUsingGET5Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *GetResourceByIDUsingGET5Forbidden) Error() string {
+	return fmt.Sprintf("[GET /deployment/api/resources/{resourceId}][%d] getResourceByIdUsingGET5Forbidden ", 403)
+}
+
+func (o *GetResourceByIDUsingGET5Forbidden) String() string {
+	return fmt.Sprintf("[GET /deployment/api/resources/{resourceId}][%d] getResourceByIdUsingGET5Forbidden ", 403)
+}
+
+func (o *GetResourceByIDUsingGET5Forbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

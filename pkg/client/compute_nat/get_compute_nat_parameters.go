@@ -52,10 +52,12 @@ func NewGetComputeNatParamsWithHTTPClient(client *http.Client) *GetComputeNatPar
 	}
 }
 
-/* GetComputeNatParams contains all the parameters to send to the API endpoint
-   for the get compute nat operation.
+/*
+GetComputeNatParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get compute nat operation.
+
+	Typically these are written to a http.Request.
 */
 type GetComputeNatParams struct {
 

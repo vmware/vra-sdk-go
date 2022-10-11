@@ -57,7 +57,8 @@ func NewValidateBlueprintUsingPOST1OK() *ValidateBlueprintUsingPOST1OK {
 	return &ValidateBlueprintUsingPOST1OK{}
 }
 
-/* ValidateBlueprintUsingPOST1OK describes a response with status code 200, with default header values.
+/*
+ValidateBlueprintUsingPOST1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -65,9 +66,39 @@ type ValidateBlueprintUsingPOST1OK struct {
 	Payload *models.BlueprintValidationResponse
 }
 
+// IsSuccess returns true when this validate blueprint using p o s t1 o k response has a 2xx status code
+func (o *ValidateBlueprintUsingPOST1OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this validate blueprint using p o s t1 o k response has a 3xx status code
+func (o *ValidateBlueprintUsingPOST1OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this validate blueprint using p o s t1 o k response has a 4xx status code
+func (o *ValidateBlueprintUsingPOST1OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this validate blueprint using p o s t1 o k response has a 5xx status code
+func (o *ValidateBlueprintUsingPOST1OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this validate blueprint using p o s t1 o k response a status code equal to that given
+func (o *ValidateBlueprintUsingPOST1OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ValidateBlueprintUsingPOST1OK) Error() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprint-validation][%d] validateBlueprintUsingPOST1OK  %+v", 200, o.Payload)
 }
+
+func (o *ValidateBlueprintUsingPOST1OK) String() string {
+	return fmt.Sprintf("[POST /blueprint/api/blueprint-validation][%d] validateBlueprintUsingPOST1OK  %+v", 200, o.Payload)
+}
+
 func (o *ValidateBlueprintUsingPOST1OK) GetPayload() *models.BlueprintValidationResponse {
 	return o.Payload
 }
@@ -89,7 +120,8 @@ func NewValidateBlueprintUsingPOST1BadRequest() *ValidateBlueprintUsingPOST1BadR
 	return &ValidateBlueprintUsingPOST1BadRequest{}
 }
 
-/* ValidateBlueprintUsingPOST1BadRequest describes a response with status code 400, with default header values.
+/*
+ValidateBlueprintUsingPOST1BadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -97,9 +129,39 @@ type ValidateBlueprintUsingPOST1BadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this validate blueprint using p o s t1 bad request response has a 2xx status code
+func (o *ValidateBlueprintUsingPOST1BadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this validate blueprint using p o s t1 bad request response has a 3xx status code
+func (o *ValidateBlueprintUsingPOST1BadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this validate blueprint using p o s t1 bad request response has a 4xx status code
+func (o *ValidateBlueprintUsingPOST1BadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this validate blueprint using p o s t1 bad request response has a 5xx status code
+func (o *ValidateBlueprintUsingPOST1BadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this validate blueprint using p o s t1 bad request response a status code equal to that given
+func (o *ValidateBlueprintUsingPOST1BadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ValidateBlueprintUsingPOST1BadRequest) Error() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprint-validation][%d] validateBlueprintUsingPOST1BadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ValidateBlueprintUsingPOST1BadRequest) String() string {
+	return fmt.Sprintf("[POST /blueprint/api/blueprint-validation][%d] validateBlueprintUsingPOST1BadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ValidateBlueprintUsingPOST1BadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -121,14 +183,44 @@ func NewValidateBlueprintUsingPOST1Unauthorized() *ValidateBlueprintUsingPOST1Un
 	return &ValidateBlueprintUsingPOST1Unauthorized{}
 }
 
-/* ValidateBlueprintUsingPOST1Unauthorized describes a response with status code 401, with default header values.
+/*
+ValidateBlueprintUsingPOST1Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type ValidateBlueprintUsingPOST1Unauthorized struct {
 }
 
+// IsSuccess returns true when this validate blueprint using p o s t1 unauthorized response has a 2xx status code
+func (o *ValidateBlueprintUsingPOST1Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this validate blueprint using p o s t1 unauthorized response has a 3xx status code
+func (o *ValidateBlueprintUsingPOST1Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this validate blueprint using p o s t1 unauthorized response has a 4xx status code
+func (o *ValidateBlueprintUsingPOST1Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this validate blueprint using p o s t1 unauthorized response has a 5xx status code
+func (o *ValidateBlueprintUsingPOST1Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this validate blueprint using p o s t1 unauthorized response a status code equal to that given
+func (o *ValidateBlueprintUsingPOST1Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ValidateBlueprintUsingPOST1Unauthorized) Error() string {
+	return fmt.Sprintf("[POST /blueprint/api/blueprint-validation][%d] validateBlueprintUsingPOST1Unauthorized ", 401)
+}
+
+func (o *ValidateBlueprintUsingPOST1Unauthorized) String() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprint-validation][%d] validateBlueprintUsingPOST1Unauthorized ", 401)
 }
 
@@ -142,14 +234,44 @@ func NewValidateBlueprintUsingPOST1Forbidden() *ValidateBlueprintUsingPOST1Forbi
 	return &ValidateBlueprintUsingPOST1Forbidden{}
 }
 
-/* ValidateBlueprintUsingPOST1Forbidden describes a response with status code 403, with default header values.
+/*
+ValidateBlueprintUsingPOST1Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type ValidateBlueprintUsingPOST1Forbidden struct {
 }
 
+// IsSuccess returns true when this validate blueprint using p o s t1 forbidden response has a 2xx status code
+func (o *ValidateBlueprintUsingPOST1Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this validate blueprint using p o s t1 forbidden response has a 3xx status code
+func (o *ValidateBlueprintUsingPOST1Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this validate blueprint using p o s t1 forbidden response has a 4xx status code
+func (o *ValidateBlueprintUsingPOST1Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this validate blueprint using p o s t1 forbidden response has a 5xx status code
+func (o *ValidateBlueprintUsingPOST1Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this validate blueprint using p o s t1 forbidden response a status code equal to that given
+func (o *ValidateBlueprintUsingPOST1Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ValidateBlueprintUsingPOST1Forbidden) Error() string {
+	return fmt.Sprintf("[POST /blueprint/api/blueprint-validation][%d] validateBlueprintUsingPOST1Forbidden ", 403)
+}
+
+func (o *ValidateBlueprintUsingPOST1Forbidden) String() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprint-validation][%d] validateBlueprintUsingPOST1Forbidden ", 403)
 }
 

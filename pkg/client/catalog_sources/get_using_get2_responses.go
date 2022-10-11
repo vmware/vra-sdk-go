@@ -51,7 +51,8 @@ func NewGetUsingGET2OK() *GetUsingGET2OK {
 	return &GetUsingGET2OK{}
 }
 
-/* GetUsingGET2OK describes a response with status code 200, with default header values.
+/*
+GetUsingGET2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -59,9 +60,39 @@ type GetUsingGET2OK struct {
 	Payload *models.CatalogSource
 }
 
+// IsSuccess returns true when this get using g e t2 o k response has a 2xx status code
+func (o *GetUsingGET2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get using g e t2 o k response has a 3xx status code
+func (o *GetUsingGET2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get using g e t2 o k response has a 4xx status code
+func (o *GetUsingGET2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get using g e t2 o k response has a 5xx status code
+func (o *GetUsingGET2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get using g e t2 o k response a status code equal to that given
+func (o *GetUsingGET2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetUsingGET2OK) Error() string {
 	return fmt.Sprintf("[GET /catalog/api/admin/sources/{sourceId}][%d] getUsingGET2OK  %+v", 200, o.Payload)
 }
+
+func (o *GetUsingGET2OK) String() string {
+	return fmt.Sprintf("[GET /catalog/api/admin/sources/{sourceId}][%d] getUsingGET2OK  %+v", 200, o.Payload)
+}
+
 func (o *GetUsingGET2OK) GetPayload() *models.CatalogSource {
 	return o.Payload
 }
@@ -83,14 +114,44 @@ func NewGetUsingGET2Unauthorized() *GetUsingGET2Unauthorized {
 	return &GetUsingGET2Unauthorized{}
 }
 
-/* GetUsingGET2Unauthorized describes a response with status code 401, with default header values.
+/*
+GetUsingGET2Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type GetUsingGET2Unauthorized struct {
 }
 
+// IsSuccess returns true when this get using g e t2 unauthorized response has a 2xx status code
+func (o *GetUsingGET2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get using g e t2 unauthorized response has a 3xx status code
+func (o *GetUsingGET2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get using g e t2 unauthorized response has a 4xx status code
+func (o *GetUsingGET2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get using g e t2 unauthorized response has a 5xx status code
+func (o *GetUsingGET2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get using g e t2 unauthorized response a status code equal to that given
+func (o *GetUsingGET2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetUsingGET2Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /catalog/api/admin/sources/{sourceId}][%d] getUsingGET2Unauthorized ", 401)
+}
+
+func (o *GetUsingGET2Unauthorized) String() string {
 	return fmt.Sprintf("[GET /catalog/api/admin/sources/{sourceId}][%d] getUsingGET2Unauthorized ", 401)
 }
 
@@ -104,7 +165,8 @@ func NewGetUsingGET2NotFound() *GetUsingGET2NotFound {
 	return &GetUsingGET2NotFound{}
 }
 
-/* GetUsingGET2NotFound describes a response with status code 404, with default header values.
+/*
+GetUsingGET2NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -112,9 +174,39 @@ type GetUsingGET2NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get using g e t2 not found response has a 2xx status code
+func (o *GetUsingGET2NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get using g e t2 not found response has a 3xx status code
+func (o *GetUsingGET2NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get using g e t2 not found response has a 4xx status code
+func (o *GetUsingGET2NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get using g e t2 not found response has a 5xx status code
+func (o *GetUsingGET2NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get using g e t2 not found response a status code equal to that given
+func (o *GetUsingGET2NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetUsingGET2NotFound) Error() string {
 	return fmt.Sprintf("[GET /catalog/api/admin/sources/{sourceId}][%d] getUsingGET2NotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetUsingGET2NotFound) String() string {
+	return fmt.Sprintf("[GET /catalog/api/admin/sources/{sourceId}][%d] getUsingGET2NotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetUsingGET2NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

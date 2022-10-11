@@ -51,7 +51,8 @@ func NewGetFabricVSphereStoragePolicyOK() *GetFabricVSphereStoragePolicyOK {
 	return &GetFabricVSphereStoragePolicyOK{}
 }
 
-/* GetFabricVSphereStoragePolicyOK describes a response with status code 200, with default header values.
+/*
+GetFabricVSphereStoragePolicyOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetFabricVSphereStoragePolicyOK struct {
 	Payload *models.FabricVsphereStoragePolicy
 }
 
+// IsSuccess returns true when this get fabric v sphere storage policy o k response has a 2xx status code
+func (o *GetFabricVSphereStoragePolicyOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get fabric v sphere storage policy o k response has a 3xx status code
+func (o *GetFabricVSphereStoragePolicyOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get fabric v sphere storage policy o k response has a 4xx status code
+func (o *GetFabricVSphereStoragePolicyOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get fabric v sphere storage policy o k response has a 5xx status code
+func (o *GetFabricVSphereStoragePolicyOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get fabric v sphere storage policy o k response a status code equal to that given
+func (o *GetFabricVSphereStoragePolicyOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetFabricVSphereStoragePolicyOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-storage-policies/{id}][%d] getFabricVSphereStoragePolicyOK  %+v", 200, o.Payload)
 }
+
+func (o *GetFabricVSphereStoragePolicyOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-storage-policies/{id}][%d] getFabricVSphereStoragePolicyOK  %+v", 200, o.Payload)
+}
+
 func (o *GetFabricVSphereStoragePolicyOK) GetPayload() *models.FabricVsphereStoragePolicy {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetFabricVSphereStoragePolicyForbidden() *GetFabricVSphereStoragePolicyF
 	return &GetFabricVSphereStoragePolicyForbidden{}
 }
 
-/* GetFabricVSphereStoragePolicyForbidden describes a response with status code 403, with default header values.
+/*
+GetFabricVSphereStoragePolicyForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type GetFabricVSphereStoragePolicyForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get fabric v sphere storage policy forbidden response has a 2xx status code
+func (o *GetFabricVSphereStoragePolicyForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get fabric v sphere storage policy forbidden response has a 3xx status code
+func (o *GetFabricVSphereStoragePolicyForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get fabric v sphere storage policy forbidden response has a 4xx status code
+func (o *GetFabricVSphereStoragePolicyForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get fabric v sphere storage policy forbidden response has a 5xx status code
+func (o *GetFabricVSphereStoragePolicyForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get fabric v sphere storage policy forbidden response a status code equal to that given
+func (o *GetFabricVSphereStoragePolicyForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetFabricVSphereStoragePolicyForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-storage-policies/{id}][%d] getFabricVSphereStoragePolicyForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetFabricVSphereStoragePolicyForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-storage-policies/{id}][%d] getFabricVSphereStoragePolicyForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetFabricVSphereStoragePolicyForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewGetFabricVSphereStoragePolicyNotFound() *GetFabricVSphereStoragePolicyNo
 	return &GetFabricVSphereStoragePolicyNotFound{}
 }
 
-/* GetFabricVSphereStoragePolicyNotFound describes a response with status code 404, with default header values.
+/*
+GetFabricVSphereStoragePolicyNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type GetFabricVSphereStoragePolicyNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get fabric v sphere storage policy not found response has a 2xx status code
+func (o *GetFabricVSphereStoragePolicyNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get fabric v sphere storage policy not found response has a 3xx status code
+func (o *GetFabricVSphereStoragePolicyNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get fabric v sphere storage policy not found response has a 4xx status code
+func (o *GetFabricVSphereStoragePolicyNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get fabric v sphere storage policy not found response has a 5xx status code
+func (o *GetFabricVSphereStoragePolicyNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get fabric v sphere storage policy not found response a status code equal to that given
+func (o *GetFabricVSphereStoragePolicyNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetFabricVSphereStoragePolicyNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-storage-policies/{id}][%d] getFabricVSphereStoragePolicyNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetFabricVSphereStoragePolicyNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-storage-policies/{id}][%d] getFabricVSphereStoragePolicyNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetFabricVSphereStoragePolicyNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

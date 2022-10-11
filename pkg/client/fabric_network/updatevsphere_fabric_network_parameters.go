@@ -54,10 +54,12 @@ func NewUpdatevSphereFabricNetworkParamsWithHTTPClient(client *http.Client) *Upd
 	}
 }
 
-/* UpdatevSphereFabricNetworkParams contains all the parameters to send to the API endpoint
-   for the updatev sphere fabric network operation.
+/*
+UpdatevSphereFabricNetworkParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the updatev sphere fabric network operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdatevSphereFabricNetworkParams struct {
 

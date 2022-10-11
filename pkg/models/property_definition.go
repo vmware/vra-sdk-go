@@ -107,9 +107,6 @@ type PropertyDefinition struct {
 	// properties
 	Properties map[string]PropertyDefinition `json:"properties,omitempty"`
 
-	// read only
-	ReadOnly bool `json:"readOnly,omitempty"`
-
 	// recreate on update
 	RecreateOnUpdate bool `json:"recreateOnUpdate,omitempty"`
 

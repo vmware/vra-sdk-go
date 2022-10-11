@@ -57,7 +57,8 @@ func NewListResourceTypesUsingGETOK() *ListResourceTypesUsingGETOK {
 	return &ListResourceTypesUsingGETOK{}
 }
 
-/* ListResourceTypesUsingGETOK describes a response with status code 200, with default header values.
+/*
+ListResourceTypesUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -65,9 +66,39 @@ type ListResourceTypesUsingGETOK struct {
 	Payload *models.PageOfResourceType
 }
 
+// IsSuccess returns true when this list resource types using g e t o k response has a 2xx status code
+func (o *ListResourceTypesUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this list resource types using g e t o k response has a 3xx status code
+func (o *ListResourceTypesUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this list resource types using g e t o k response has a 4xx status code
+func (o *ListResourceTypesUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this list resource types using g e t o k response has a 5xx status code
+func (o *ListResourceTypesUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this list resource types using g e t o k response a status code equal to that given
+func (o *ListResourceTypesUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ListResourceTypesUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/resource-types][%d] listResourceTypesUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *ListResourceTypesUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /blueprint/api/resource-types][%d] listResourceTypesUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *ListResourceTypesUsingGETOK) GetPayload() *models.PageOfResourceType {
 	return o.Payload
 }
@@ -89,7 +120,8 @@ func NewListResourceTypesUsingGETBadRequest() *ListResourceTypesUsingGETBadReque
 	return &ListResourceTypesUsingGETBadRequest{}
 }
 
-/* ListResourceTypesUsingGETBadRequest describes a response with status code 400, with default header values.
+/*
+ListResourceTypesUsingGETBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -97,9 +129,39 @@ type ListResourceTypesUsingGETBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this list resource types using g e t bad request response has a 2xx status code
+func (o *ListResourceTypesUsingGETBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this list resource types using g e t bad request response has a 3xx status code
+func (o *ListResourceTypesUsingGETBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this list resource types using g e t bad request response has a 4xx status code
+func (o *ListResourceTypesUsingGETBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this list resource types using g e t bad request response has a 5xx status code
+func (o *ListResourceTypesUsingGETBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this list resource types using g e t bad request response a status code equal to that given
+func (o *ListResourceTypesUsingGETBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ListResourceTypesUsingGETBadRequest) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/resource-types][%d] listResourceTypesUsingGETBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ListResourceTypesUsingGETBadRequest) String() string {
+	return fmt.Sprintf("[GET /blueprint/api/resource-types][%d] listResourceTypesUsingGETBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ListResourceTypesUsingGETBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -121,14 +183,44 @@ func NewListResourceTypesUsingGETUnauthorized() *ListResourceTypesUsingGETUnauth
 	return &ListResourceTypesUsingGETUnauthorized{}
 }
 
-/* ListResourceTypesUsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+ListResourceTypesUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type ListResourceTypesUsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this list resource types using g e t unauthorized response has a 2xx status code
+func (o *ListResourceTypesUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this list resource types using g e t unauthorized response has a 3xx status code
+func (o *ListResourceTypesUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this list resource types using g e t unauthorized response has a 4xx status code
+func (o *ListResourceTypesUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this list resource types using g e t unauthorized response has a 5xx status code
+func (o *ListResourceTypesUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this list resource types using g e t unauthorized response a status code equal to that given
+func (o *ListResourceTypesUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ListResourceTypesUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /blueprint/api/resource-types][%d] listResourceTypesUsingGETUnauthorized ", 401)
+}
+
+func (o *ListResourceTypesUsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /blueprint/api/resource-types][%d] listResourceTypesUsingGETUnauthorized ", 401)
 }
 
@@ -142,14 +234,44 @@ func NewListResourceTypesUsingGETForbidden() *ListResourceTypesUsingGETForbidden
 	return &ListResourceTypesUsingGETForbidden{}
 }
 
-/* ListResourceTypesUsingGETForbidden describes a response with status code 403, with default header values.
+/*
+ListResourceTypesUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type ListResourceTypesUsingGETForbidden struct {
 }
 
+// IsSuccess returns true when this list resource types using g e t forbidden response has a 2xx status code
+func (o *ListResourceTypesUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this list resource types using g e t forbidden response has a 3xx status code
+func (o *ListResourceTypesUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this list resource types using g e t forbidden response has a 4xx status code
+func (o *ListResourceTypesUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this list resource types using g e t forbidden response has a 5xx status code
+func (o *ListResourceTypesUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this list resource types using g e t forbidden response a status code equal to that given
+func (o *ListResourceTypesUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ListResourceTypesUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /blueprint/api/resource-types][%d] listResourceTypesUsingGETForbidden ", 403)
+}
+
+func (o *ListResourceTypesUsingGETForbidden) String() string {
 	return fmt.Sprintf("[GET /blueprint/api/resource-types][%d] listResourceTypesUsingGETForbidden ", 403)
 }
 

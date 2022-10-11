@@ -29,6 +29,12 @@ func (o *GetClusterUsingGET1Reader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return result, nil
+	case 403:
+		result := NewGetClusterUsingGET1Forbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +45,8 @@ func NewGetClusterUsingGET1OK() *GetClusterUsingGET1OK {
 	return &GetClusterUsingGET1OK{}
 }
 
-/* GetClusterUsingGET1OK describes a response with status code 200, with default header values.
+/*
+GetClusterUsingGET1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +54,39 @@ type GetClusterUsingGET1OK struct {
 	Payload *models.SupervisorCluster
 }
 
+// IsSuccess returns true when this get cluster using g e t1 o k response has a 2xx status code
+func (o *GetClusterUsingGET1OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get cluster using g e t1 o k response has a 3xx status code
+func (o *GetClusterUsingGET1OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get cluster using g e t1 o k response has a 4xx status code
+func (o *GetClusterUsingGET1OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get cluster using g e t1 o k response has a 5xx status code
+func (o *GetClusterUsingGET1OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get cluster using g e t1 o k response a status code equal to that given
+func (o *GetClusterUsingGET1OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetClusterUsingGET1OK) Error() string {
 	return fmt.Sprintf("[GET /cmx/api/resources/supervisor-clusters/endpoint/{endpointSelfLinkId}/cluster/{moref}][%d] getClusterUsingGET1OK  %+v", 200, o.Payload)
 }
+
+func (o *GetClusterUsingGET1OK) String() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/supervisor-clusters/endpoint/{endpointSelfLinkId}/cluster/{moref}][%d] getClusterUsingGET1OK  %+v", 200, o.Payload)
+}
+
 func (o *GetClusterUsingGET1OK) GetPayload() *models.SupervisorCluster {
 	return o.Payload
 }
@@ -62,6 +99,57 @@ func (o *GetClusterUsingGET1OK) readResponse(response runtime.ClientResponse, co
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewGetClusterUsingGET1Forbidden creates a GetClusterUsingGET1Forbidden with default headers values
+func NewGetClusterUsingGET1Forbidden() *GetClusterUsingGET1Forbidden {
+	return &GetClusterUsingGET1Forbidden{}
+}
+
+/*
+GetClusterUsingGET1Forbidden describes a response with status code 403, with default header values.
+
+Forbidden, the user lacks permissions
+*/
+type GetClusterUsingGET1Forbidden struct {
+}
+
+// IsSuccess returns true when this get cluster using g e t1 forbidden response has a 2xx status code
+func (o *GetClusterUsingGET1Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get cluster using g e t1 forbidden response has a 3xx status code
+func (o *GetClusterUsingGET1Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get cluster using g e t1 forbidden response has a 4xx status code
+func (o *GetClusterUsingGET1Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get cluster using g e t1 forbidden response has a 5xx status code
+func (o *GetClusterUsingGET1Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get cluster using g e t1 forbidden response a status code equal to that given
+func (o *GetClusterUsingGET1Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *GetClusterUsingGET1Forbidden) Error() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/supervisor-clusters/endpoint/{endpointSelfLinkId}/cluster/{moref}][%d] getClusterUsingGET1Forbidden ", 403)
+}
+
+func (o *GetClusterUsingGET1Forbidden) String() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/supervisor-clusters/endpoint/{endpointSelfLinkId}/cluster/{moref}][%d] getClusterUsingGET1Forbidden ", 403)
+}
+
+func (o *GetClusterUsingGET1Forbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

@@ -51,7 +51,8 @@ func NewDeleteVmcCloudAccountAccepted() *DeleteVmcCloudAccountAccepted {
 	return &DeleteVmcCloudAccountAccepted{}
 }
 
-/* DeleteVmcCloudAccountAccepted describes a response with status code 202, with default header values.
+/*
+DeleteVmcCloudAccountAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type DeleteVmcCloudAccountAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this delete vmc cloud account accepted response has a 2xx status code
+func (o *DeleteVmcCloudAccountAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete vmc cloud account accepted response has a 3xx status code
+func (o *DeleteVmcCloudAccountAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete vmc cloud account accepted response has a 4xx status code
+func (o *DeleteVmcCloudAccountAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete vmc cloud account accepted response has a 5xx status code
+func (o *DeleteVmcCloudAccountAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete vmc cloud account accepted response a status code equal to that given
+func (o *DeleteVmcCloudAccountAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteVmcCloudAccountAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-vmc/{id}][%d] deleteVmcCloudAccountAccepted  %+v", 202, o.Payload)
 }
+
+func (o *DeleteVmcCloudAccountAccepted) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-vmc/{id}][%d] deleteVmcCloudAccountAccepted  %+v", 202, o.Payload)
+}
+
 func (o *DeleteVmcCloudAccountAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,14 +114,44 @@ func NewDeleteVmcCloudAccountNoContent() *DeleteVmcCloudAccountNoContent {
 	return &DeleteVmcCloudAccountNoContent{}
 }
 
-/* DeleteVmcCloudAccountNoContent describes a response with status code 204, with default header values.
+/*
+DeleteVmcCloudAccountNoContent describes a response with status code 204, with default header values.
 
 No Content
 */
 type DeleteVmcCloudAccountNoContent struct {
 }
 
+// IsSuccess returns true when this delete vmc cloud account no content response has a 2xx status code
+func (o *DeleteVmcCloudAccountNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete vmc cloud account no content response has a 3xx status code
+func (o *DeleteVmcCloudAccountNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete vmc cloud account no content response has a 4xx status code
+func (o *DeleteVmcCloudAccountNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete vmc cloud account no content response has a 5xx status code
+func (o *DeleteVmcCloudAccountNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete vmc cloud account no content response a status code equal to that given
+func (o *DeleteVmcCloudAccountNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteVmcCloudAccountNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-vmc/{id}][%d] deleteVmcCloudAccountNoContent ", 204)
+}
+
+func (o *DeleteVmcCloudAccountNoContent) String() string {
 	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-vmc/{id}][%d] deleteVmcCloudAccountNoContent ", 204)
 }
 
@@ -104,7 +165,8 @@ func NewDeleteVmcCloudAccountForbidden() *DeleteVmcCloudAccountForbidden {
 	return &DeleteVmcCloudAccountForbidden{}
 }
 
-/* DeleteVmcCloudAccountForbidden describes a response with status code 403, with default header values.
+/*
+DeleteVmcCloudAccountForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -112,9 +174,39 @@ type DeleteVmcCloudAccountForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this delete vmc cloud account forbidden response has a 2xx status code
+func (o *DeleteVmcCloudAccountForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete vmc cloud account forbidden response has a 3xx status code
+func (o *DeleteVmcCloudAccountForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete vmc cloud account forbidden response has a 4xx status code
+func (o *DeleteVmcCloudAccountForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete vmc cloud account forbidden response has a 5xx status code
+func (o *DeleteVmcCloudAccountForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete vmc cloud account forbidden response a status code equal to that given
+func (o *DeleteVmcCloudAccountForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteVmcCloudAccountForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-vmc/{id}][%d] deleteVmcCloudAccountForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DeleteVmcCloudAccountForbidden) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-vmc/{id}][%d] deleteVmcCloudAccountForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DeleteVmcCloudAccountForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

@@ -36,7 +36,7 @@ type ClientService interface {
 }
 
 /*
-  ValidateBlueprintUsingPOST1 validates a blueprint
+ValidateBlueprintUsingPOST1 validates a blueprint
 */
 func (a *Client) ValidateBlueprintUsingPOST1(params *ValidateBlueprintUsingPOST1Params, opts ...ClientOption) (*ValidateBlueprintUsingPOST1OK, error) {
 	// TODO: Validate the params before sending

@@ -32,9 +32,6 @@ type K8SCluster struct {
 	// cluster type
 	ClusterType string `json:"clusterType,omitempty"`
 
-	// content
-	Content string `json:"content,omitempty"`
-
 	// created millis
 	CreatedMillis int64 `json:"createdMillis,omitempty"`
 

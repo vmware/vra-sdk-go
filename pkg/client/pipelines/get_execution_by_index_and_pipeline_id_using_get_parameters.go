@@ -52,10 +52,12 @@ func NewGetExecutionByIndexAndPipelineIDUsingGETParamsWithHTTPClient(client *htt
 	}
 }
 
-/* GetExecutionByIndexAndPipelineIDUsingGETParams contains all the parameters to send to the API endpoint
-   for the get execution by index and pipeline Id using g e t operation.
+/*
+GetExecutionByIndexAndPipelineIDUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get execution by index and pipeline Id using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetExecutionByIndexAndPipelineIDUsingGETParams struct {
 
@@ -82,6 +84,12 @@ type GetExecutionByIndexAndPipelineIDUsingGETParams struct {
 	   The index of the Execution
 	*/
 	Index string
+
+	/* QueryParams.
+
+	   Value of 'expand' type for the execution
+	*/
+	QueryParams *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -180,6 +188,17 @@ func (o *GetExecutionByIndexAndPipelineIDUsingGETParams) SetIndex(index string) 
 	o.Index = index
 }
 
+// WithQueryParams adds the queryParams to the get execution by index and pipeline Id using get params
+func (o *GetExecutionByIndexAndPipelineIDUsingGETParams) WithQueryParams(queryParams *string) *GetExecutionByIndexAndPipelineIDUsingGETParams {
+	o.SetQueryParams(queryParams)
+	return o
+}
+
+// SetQueryParams adds the queryParams to the get execution by index and pipeline Id using get params
+func (o *GetExecutionByIndexAndPipelineIDUsingGETParams) SetQueryParams(queryParams *string) {
+	o.QueryParams = queryParams
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetExecutionByIndexAndPipelineIDUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -209,6 +228,23 @@ func (o *GetExecutionByIndexAndPipelineIDUsingGETParams) WriteToRequest(r runtim
 	// path param index
 	if err := r.SetPathParam("index", o.Index); err != nil {
 		return err
+	}
+
+	if o.QueryParams != nil {
+
+		// query param queryParams
+		var qrQueryParams string
+
+		if o.QueryParams != nil {
+			qrQueryParams = *o.QueryParams
+		}
+		qQueryParams := qrQueryParams
+		if qQueryParams != "" {
+
+			if err := r.SetQueryParam("queryParams", qQueryParams); err != nil {
+				return err
+			}
+		}
 	}
 
 	if len(res) > 0 {

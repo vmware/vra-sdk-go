@@ -51,7 +51,8 @@ func NewGetCertificateInfoOK() *GetCertificateInfoOK {
 	return &GetCertificateInfoOK{}
 }
 
-/* GetCertificateInfoOK describes a response with status code 200, with default header values.
+/*
+GetCertificateInfoOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetCertificateInfoOK struct {
 	Payload *models.CertificateInfo
 }
 
+// IsSuccess returns true when this get certificate info o k response has a 2xx status code
+func (o *GetCertificateInfoOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get certificate info o k response has a 3xx status code
+func (o *GetCertificateInfoOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get certificate info o k response has a 4xx status code
+func (o *GetCertificateInfoOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get certificate info o k response has a 5xx status code
+func (o *GetCertificateInfoOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get certificate info o k response a status code equal to that given
+func (o *GetCertificateInfoOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetCertificateInfoOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/certificates/{id}][%d] getCertificateInfoOK  %+v", 200, o.Payload)
 }
+
+func (o *GetCertificateInfoOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/certificates/{id}][%d] getCertificateInfoOK  %+v", 200, o.Payload)
+}
+
 func (o *GetCertificateInfoOK) GetPayload() *models.CertificateInfo {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetCertificateInfoForbidden() *GetCertificateInfoForbidden {
 	return &GetCertificateInfoForbidden{}
 }
 
-/* GetCertificateInfoForbidden describes a response with status code 403, with default header values.
+/*
+GetCertificateInfoForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type GetCertificateInfoForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get certificate info forbidden response has a 2xx status code
+func (o *GetCertificateInfoForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get certificate info forbidden response has a 3xx status code
+func (o *GetCertificateInfoForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get certificate info forbidden response has a 4xx status code
+func (o *GetCertificateInfoForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get certificate info forbidden response has a 5xx status code
+func (o *GetCertificateInfoForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get certificate info forbidden response a status code equal to that given
+func (o *GetCertificateInfoForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetCertificateInfoForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/certificates/{id}][%d] getCertificateInfoForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetCertificateInfoForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/certificates/{id}][%d] getCertificateInfoForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetCertificateInfoForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewGetCertificateInfoNotFound() *GetCertificateInfoNotFound {
 	return &GetCertificateInfoNotFound{}
 }
 
-/* GetCertificateInfoNotFound describes a response with status code 404, with default header values.
+/*
+GetCertificateInfoNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type GetCertificateInfoNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get certificate info not found response has a 2xx status code
+func (o *GetCertificateInfoNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get certificate info not found response has a 3xx status code
+func (o *GetCertificateInfoNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get certificate info not found response has a 4xx status code
+func (o *GetCertificateInfoNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get certificate info not found response has a 5xx status code
+func (o *GetCertificateInfoNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get certificate info not found response a status code equal to that given
+func (o *GetCertificateInfoNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetCertificateInfoNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/certificates/{id}][%d] getCertificateInfoNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetCertificateInfoNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/certificates/{id}][%d] getCertificateInfoNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetCertificateInfoNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

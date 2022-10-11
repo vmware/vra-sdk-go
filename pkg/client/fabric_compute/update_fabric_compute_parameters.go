@@ -54,10 +54,12 @@ func NewUpdateFabricComputeParamsWithHTTPClient(client *http.Client) *UpdateFabr
 	}
 }
 
-/* UpdateFabricComputeParams contains all the parameters to send to the API endpoint
-   for the update fabric compute operation.
+/*
+UpdateFabricComputeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update fabric compute operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateFabricComputeParams struct {
 

@@ -52,10 +52,12 @@ func NewGetRegistryWebhookByIDParamsWithHTTPClient(client *http.Client) *GetRegi
 	}
 }
 
-/* GetRegistryWebhookByIDParams contains all the parameters to send to the API endpoint
-   for the get registry webhook by ID operation.
+/*
+GetRegistryWebhookByIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get registry webhook by ID operation.
+
+	Typically these are written to a http.Request.
 */
 type GetRegistryWebhookByIDParams struct {
 

@@ -27,7 +27,9 @@ type CloudAccountRegionEnumerationSpecification struct {
 	// Example: b8b7a918-342e-4a53-a3b0-b935da0fe601
 	CloudAccountID string `json:"cloudAccountId,omitempty"`
 
-	// Cloud Account specific properties supplied in as name value pairs
+	// Cloud Account specific properties supplied in as name value pairs. In case of AAP, provide environment property here. Example: "cloudAccountProperties": {
+	//         "environment": "aap"
+	//     }
 	// Example: {\"supportPublicImages\": \"true\", \"acceptSelfSignedCertificate\": \"true\" }
 	// Required: true
 	CloudAccountProperties map[string]string `json:"cloudAccountProperties"`

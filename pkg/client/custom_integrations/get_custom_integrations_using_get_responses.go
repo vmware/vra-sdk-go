@@ -63,7 +63,8 @@ func NewGetCustomIntegrationsUsingGETOK() *GetCustomIntegrationsUsingGETOK {
 	return &GetCustomIntegrationsUsingGETOK{}
 }
 
-/* GetCustomIntegrationsUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetCustomIntegrationsUsingGETOK describes a response with status code 200, with default header values.
 
 'Success' with the requested Custom Integrations
 */
@@ -71,9 +72,39 @@ type GetCustomIntegrationsUsingGETOK struct {
 	Payload models.CustomIntegrations
 }
 
+// IsSuccess returns true when this get custom integrations using g e t o k response has a 2xx status code
+func (o *GetCustomIntegrationsUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get custom integrations using g e t o k response has a 3xx status code
+func (o *GetCustomIntegrationsUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get custom integrations using g e t o k response has a 4xx status code
+func (o *GetCustomIntegrationsUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get custom integrations using g e t o k response has a 5xx status code
+func (o *GetCustomIntegrationsUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get custom integrations using g e t o k response a status code equal to that given
+func (o *GetCustomIntegrationsUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetCustomIntegrationsUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/custom-integrations][%d] getCustomIntegrationsUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetCustomIntegrationsUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /codestream/api/custom-integrations][%d] getCustomIntegrationsUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetCustomIntegrationsUsingGETOK) GetPayload() models.CustomIntegrations {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewGetCustomIntegrationsUsingGETUnauthorized() *GetCustomIntegrationsUsingG
 	return &GetCustomIntegrationsUsingGETUnauthorized{}
 }
 
-/* GetCustomIntegrationsUsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+GetCustomIntegrationsUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type GetCustomIntegrationsUsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this get custom integrations using g e t unauthorized response has a 2xx status code
+func (o *GetCustomIntegrationsUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get custom integrations using g e t unauthorized response has a 3xx status code
+func (o *GetCustomIntegrationsUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get custom integrations using g e t unauthorized response has a 4xx status code
+func (o *GetCustomIntegrationsUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get custom integrations using g e t unauthorized response has a 5xx status code
+func (o *GetCustomIntegrationsUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get custom integrations using g e t unauthorized response a status code equal to that given
+func (o *GetCustomIntegrationsUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetCustomIntegrationsUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/custom-integrations][%d] getCustomIntegrationsUsingGETUnauthorized ", 401)
+}
+
+func (o *GetCustomIntegrationsUsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /codestream/api/custom-integrations][%d] getCustomIntegrationsUsingGETUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewGetCustomIntegrationsUsingGETForbidden() *GetCustomIntegrationsUsingGETF
 	return &GetCustomIntegrationsUsingGETForbidden{}
 }
 
-/* GetCustomIntegrationsUsingGETForbidden describes a response with status code 403, with default header values.
+/*
+GetCustomIntegrationsUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetCustomIntegrationsUsingGETForbidden struct {
 }
 
+// IsSuccess returns true when this get custom integrations using g e t forbidden response has a 2xx status code
+func (o *GetCustomIntegrationsUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get custom integrations using g e t forbidden response has a 3xx status code
+func (o *GetCustomIntegrationsUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get custom integrations using g e t forbidden response has a 4xx status code
+func (o *GetCustomIntegrationsUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get custom integrations using g e t forbidden response has a 5xx status code
+func (o *GetCustomIntegrationsUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get custom integrations using g e t forbidden response a status code equal to that given
+func (o *GetCustomIntegrationsUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetCustomIntegrationsUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/custom-integrations][%d] getCustomIntegrationsUsingGETForbidden ", 403)
+}
+
+func (o *GetCustomIntegrationsUsingGETForbidden) String() string {
 	return fmt.Sprintf("[GET /codestream/api/custom-integrations][%d] getCustomIntegrationsUsingGETForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewGetCustomIntegrationsUsingGETNotFound() *GetCustomIntegrationsUsingGETNo
 	return &GetCustomIntegrationsUsingGETNotFound{}
 }
 
-/* GetCustomIntegrationsUsingGETNotFound describes a response with status code 404, with default header values.
+/*
+GetCustomIntegrationsUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type GetCustomIntegrationsUsingGETNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get custom integrations using g e t not found response has a 2xx status code
+func (o *GetCustomIntegrationsUsingGETNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get custom integrations using g e t not found response has a 3xx status code
+func (o *GetCustomIntegrationsUsingGETNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get custom integrations using g e t not found response has a 4xx status code
+func (o *GetCustomIntegrationsUsingGETNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get custom integrations using g e t not found response has a 5xx status code
+func (o *GetCustomIntegrationsUsingGETNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get custom integrations using g e t not found response a status code equal to that given
+func (o *GetCustomIntegrationsUsingGETNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetCustomIntegrationsUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/custom-integrations][%d] getCustomIntegrationsUsingGETNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetCustomIntegrationsUsingGETNotFound) String() string {
+	return fmt.Sprintf("[GET /codestream/api/custom-integrations][%d] getCustomIntegrationsUsingGETNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetCustomIntegrationsUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewGetCustomIntegrationsUsingGETInternalServerError() *GetCustomIntegration
 	return &GetCustomIntegrationsUsingGETInternalServerError{}
 }
 
-/* GetCustomIntegrationsUsingGETInternalServerError describes a response with status code 500, with default header values.
+/*
+GetCustomIntegrationsUsingGETInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type GetCustomIntegrationsUsingGETInternalServerError struct {
 }
 
+// IsSuccess returns true when this get custom integrations using g e t internal server error response has a 2xx status code
+func (o *GetCustomIntegrationsUsingGETInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get custom integrations using g e t internal server error response has a 3xx status code
+func (o *GetCustomIntegrationsUsingGETInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get custom integrations using g e t internal server error response has a 4xx status code
+func (o *GetCustomIntegrationsUsingGETInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get custom integrations using g e t internal server error response has a 5xx status code
+func (o *GetCustomIntegrationsUsingGETInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this get custom integrations using g e t internal server error response a status code equal to that given
+func (o *GetCustomIntegrationsUsingGETInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GetCustomIntegrationsUsingGETInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/custom-integrations][%d] getCustomIntegrationsUsingGETInternalServerError ", 500)
+}
+
+func (o *GetCustomIntegrationsUsingGETInternalServerError) String() string {
 	return fmt.Sprintf("[GET /codestream/api/custom-integrations][%d] getCustomIntegrationsUsingGETInternalServerError ", 500)
 }
 

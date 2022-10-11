@@ -63,7 +63,8 @@ func NewUpdatePipelineByNameUsingPUTOK() *UpdatePipelineByNameUsingPUTOK {
 	return &UpdatePipelineByNameUsingPUTOK{}
 }
 
-/* UpdatePipelineByNameUsingPUTOK describes a response with status code 200, with default header values.
+/*
+UpdatePipelineByNameUsingPUTOK describes a response with status code 200, with default header values.
 
 'Success' with the updated Pipeline
 */
@@ -71,9 +72,39 @@ type UpdatePipelineByNameUsingPUTOK struct {
 	Payload models.Pipeline
 }
 
+// IsSuccess returns true when this update pipeline by name using p u t o k response has a 2xx status code
+func (o *UpdatePipelineByNameUsingPUTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update pipeline by name using p u t o k response has a 3xx status code
+func (o *UpdatePipelineByNameUsingPUTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update pipeline by name using p u t o k response has a 4xx status code
+func (o *UpdatePipelineByNameUsingPUTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update pipeline by name using p u t o k response has a 5xx status code
+func (o *UpdatePipelineByNameUsingPUTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update pipeline by name using p u t o k response a status code equal to that given
+func (o *UpdatePipelineByNameUsingPUTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdatePipelineByNameUsingPUTOK) Error() string {
 	return fmt.Sprintf("[PUT /codestream/api/pipelines/{project}/{name}][%d] updatePipelineByNameUsingPUTOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdatePipelineByNameUsingPUTOK) String() string {
+	return fmt.Sprintf("[PUT /codestream/api/pipelines/{project}/{name}][%d] updatePipelineByNameUsingPUTOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdatePipelineByNameUsingPUTOK) GetPayload() models.Pipeline {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewUpdatePipelineByNameUsingPUTUnauthorized() *UpdatePipelineByNameUsingPUT
 	return &UpdatePipelineByNameUsingPUTUnauthorized{}
 }
 
-/* UpdatePipelineByNameUsingPUTUnauthorized describes a response with status code 401, with default header values.
+/*
+UpdatePipelineByNameUsingPUTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type UpdatePipelineByNameUsingPUTUnauthorized struct {
 }
 
+// IsSuccess returns true when this update pipeline by name using p u t unauthorized response has a 2xx status code
+func (o *UpdatePipelineByNameUsingPUTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update pipeline by name using p u t unauthorized response has a 3xx status code
+func (o *UpdatePipelineByNameUsingPUTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update pipeline by name using p u t unauthorized response has a 4xx status code
+func (o *UpdatePipelineByNameUsingPUTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update pipeline by name using p u t unauthorized response has a 5xx status code
+func (o *UpdatePipelineByNameUsingPUTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update pipeline by name using p u t unauthorized response a status code equal to that given
+func (o *UpdatePipelineByNameUsingPUTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UpdatePipelineByNameUsingPUTUnauthorized) Error() string {
+	return fmt.Sprintf("[PUT /codestream/api/pipelines/{project}/{name}][%d] updatePipelineByNameUsingPUTUnauthorized ", 401)
+}
+
+func (o *UpdatePipelineByNameUsingPUTUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /codestream/api/pipelines/{project}/{name}][%d] updatePipelineByNameUsingPUTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewUpdatePipelineByNameUsingPUTForbidden() *UpdatePipelineByNameUsingPUTFor
 	return &UpdatePipelineByNameUsingPUTForbidden{}
 }
 
-/* UpdatePipelineByNameUsingPUTForbidden describes a response with status code 403, with default header values.
+/*
+UpdatePipelineByNameUsingPUTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type UpdatePipelineByNameUsingPUTForbidden struct {
 }
 
+// IsSuccess returns true when this update pipeline by name using p u t forbidden response has a 2xx status code
+func (o *UpdatePipelineByNameUsingPUTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update pipeline by name using p u t forbidden response has a 3xx status code
+func (o *UpdatePipelineByNameUsingPUTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update pipeline by name using p u t forbidden response has a 4xx status code
+func (o *UpdatePipelineByNameUsingPUTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update pipeline by name using p u t forbidden response has a 5xx status code
+func (o *UpdatePipelineByNameUsingPUTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update pipeline by name using p u t forbidden response a status code equal to that given
+func (o *UpdatePipelineByNameUsingPUTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdatePipelineByNameUsingPUTForbidden) Error() string {
+	return fmt.Sprintf("[PUT /codestream/api/pipelines/{project}/{name}][%d] updatePipelineByNameUsingPUTForbidden ", 403)
+}
+
+func (o *UpdatePipelineByNameUsingPUTForbidden) String() string {
 	return fmt.Sprintf("[PUT /codestream/api/pipelines/{project}/{name}][%d] updatePipelineByNameUsingPUTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewUpdatePipelineByNameUsingPUTNotFound() *UpdatePipelineByNameUsingPUTNotF
 	return &UpdatePipelineByNameUsingPUTNotFound{}
 }
 
-/* UpdatePipelineByNameUsingPUTNotFound describes a response with status code 404, with default header values.
+/*
+UpdatePipelineByNameUsingPUTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type UpdatePipelineByNameUsingPUTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update pipeline by name using p u t not found response has a 2xx status code
+func (o *UpdatePipelineByNameUsingPUTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update pipeline by name using p u t not found response has a 3xx status code
+func (o *UpdatePipelineByNameUsingPUTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update pipeline by name using p u t not found response has a 4xx status code
+func (o *UpdatePipelineByNameUsingPUTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update pipeline by name using p u t not found response has a 5xx status code
+func (o *UpdatePipelineByNameUsingPUTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update pipeline by name using p u t not found response a status code equal to that given
+func (o *UpdatePipelineByNameUsingPUTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdatePipelineByNameUsingPUTNotFound) Error() string {
 	return fmt.Sprintf("[PUT /codestream/api/pipelines/{project}/{name}][%d] updatePipelineByNameUsingPUTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UpdatePipelineByNameUsingPUTNotFound) String() string {
+	return fmt.Sprintf("[PUT /codestream/api/pipelines/{project}/{name}][%d] updatePipelineByNameUsingPUTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UpdatePipelineByNameUsingPUTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewUpdatePipelineByNameUsingPUTInternalServerError() *UpdatePipelineByNameU
 	return &UpdatePipelineByNameUsingPUTInternalServerError{}
 }
 
-/* UpdatePipelineByNameUsingPUTInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdatePipelineByNameUsingPUTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type UpdatePipelineByNameUsingPUTInternalServerError struct {
 }
 
+// IsSuccess returns true when this update pipeline by name using p u t internal server error response has a 2xx status code
+func (o *UpdatePipelineByNameUsingPUTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update pipeline by name using p u t internal server error response has a 3xx status code
+func (o *UpdatePipelineByNameUsingPUTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update pipeline by name using p u t internal server error response has a 4xx status code
+func (o *UpdatePipelineByNameUsingPUTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update pipeline by name using p u t internal server error response has a 5xx status code
+func (o *UpdatePipelineByNameUsingPUTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this update pipeline by name using p u t internal server error response a status code equal to that given
+func (o *UpdatePipelineByNameUsingPUTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *UpdatePipelineByNameUsingPUTInternalServerError) Error() string {
+	return fmt.Sprintf("[PUT /codestream/api/pipelines/{project}/{name}][%d] updatePipelineByNameUsingPUTInternalServerError ", 500)
+}
+
+func (o *UpdatePipelineByNameUsingPUTInternalServerError) String() string {
 	return fmt.Sprintf("[PUT /codestream/api/pipelines/{project}/{name}][%d] updatePipelineByNameUsingPUTInternalServerError ", 500)
 }
 

@@ -51,7 +51,8 @@ func NewGetNetworkOK() *GetNetworkOK {
 	return &GetNetworkOK{}
 }
 
-/* GetNetworkOK describes a response with status code 200, with default header values.
+/*
+GetNetworkOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetNetworkOK struct {
 	Payload *models.Network
 }
 
+// IsSuccess returns true when this get network o k response has a 2xx status code
+func (o *GetNetworkOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get network o k response has a 3xx status code
+func (o *GetNetworkOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get network o k response has a 4xx status code
+func (o *GetNetworkOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get network o k response has a 5xx status code
+func (o *GetNetworkOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get network o k response a status code equal to that given
+func (o *GetNetworkOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetNetworkOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/networks/{id}][%d] getNetworkOK  %+v", 200, o.Payload)
 }
+
+func (o *GetNetworkOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/networks/{id}][%d] getNetworkOK  %+v", 200, o.Payload)
+}
+
 func (o *GetNetworkOK) GetPayload() *models.Network {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetNetworkForbidden() *GetNetworkForbidden {
 	return &GetNetworkForbidden{}
 }
 
-/* GetNetworkForbidden describes a response with status code 403, with default header values.
+/*
+GetNetworkForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type GetNetworkForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get network forbidden response has a 2xx status code
+func (o *GetNetworkForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get network forbidden response has a 3xx status code
+func (o *GetNetworkForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get network forbidden response has a 4xx status code
+func (o *GetNetworkForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get network forbidden response has a 5xx status code
+func (o *GetNetworkForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get network forbidden response a status code equal to that given
+func (o *GetNetworkForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetNetworkForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/networks/{id}][%d] getNetworkForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetNetworkForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/networks/{id}][%d] getNetworkForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetNetworkForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewGetNetworkNotFound() *GetNetworkNotFound {
 	return &GetNetworkNotFound{}
 }
 
-/* GetNetworkNotFound describes a response with status code 404, with default header values.
+/*
+GetNetworkNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type GetNetworkNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get network not found response has a 2xx status code
+func (o *GetNetworkNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get network not found response has a 3xx status code
+func (o *GetNetworkNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get network not found response has a 4xx status code
+func (o *GetNetworkNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get network not found response has a 5xx status code
+func (o *GetNetworkNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get network not found response a status code equal to that given
+func (o *GetNetworkNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetNetworkNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/networks/{id}][%d] getNetworkNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetNetworkNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/networks/{id}][%d] getNetworkNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetNetworkNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -52,10 +52,12 @@ func NewSyncPerspectiveGroupUsingPOST2ParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* SyncPerspectiveGroupUsingPOST2Params contains all the parameters to send to the API endpoint
-   for the sync perspective group using p o s t 2 operation.
+/*
+SyncPerspectiveGroupUsingPOST2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the sync perspective group using p o s t 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type SyncPerspectiveGroupUsingPOST2Params struct {
 

@@ -63,7 +63,8 @@ func NewPatchGerritTriggerByIDUsingPATCHOK() *PatchGerritTriggerByIDUsingPATCHOK
 	return &PatchGerritTriggerByIDUsingPATCHOK{}
 }
 
-/* PatchGerritTriggerByIDUsingPATCHOK describes a response with status code 200, with default header values.
+/*
+PatchGerritTriggerByIDUsingPATCHOK describes a response with status code 200, with default header values.
 
 'Success' with Gerrit Trigger patch
 */
@@ -71,9 +72,39 @@ type PatchGerritTriggerByIDUsingPATCHOK struct {
 	Payload models.GerritTrigger
 }
 
+// IsSuccess returns true when this patch gerrit trigger by Id using p a t c h o k response has a 2xx status code
+func (o *PatchGerritTriggerByIDUsingPATCHOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch gerrit trigger by Id using p a t c h o k response has a 3xx status code
+func (o *PatchGerritTriggerByIDUsingPATCHOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch gerrit trigger by Id using p a t c h o k response has a 4xx status code
+func (o *PatchGerritTriggerByIDUsingPATCHOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch gerrit trigger by Id using p a t c h o k response has a 5xx status code
+func (o *PatchGerritTriggerByIDUsingPATCHOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch gerrit trigger by Id using p a t c h o k response a status code equal to that given
+func (o *PatchGerritTriggerByIDUsingPATCHOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchGerritTriggerByIDUsingPATCHOK) Error() string {
 	return fmt.Sprintf("[PATCH /codestream/api/gerrit-triggers/{id}][%d] patchGerritTriggerByIdUsingPATCHOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchGerritTriggerByIDUsingPATCHOK) String() string {
+	return fmt.Sprintf("[PATCH /codestream/api/gerrit-triggers/{id}][%d] patchGerritTriggerByIdUsingPATCHOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchGerritTriggerByIDUsingPATCHOK) GetPayload() models.GerritTrigger {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewPatchGerritTriggerByIDUsingPATCHUnauthorized() *PatchGerritTriggerByIDUs
 	return &PatchGerritTriggerByIDUsingPATCHUnauthorized{}
 }
 
-/* PatchGerritTriggerByIDUsingPATCHUnauthorized describes a response with status code 401, with default header values.
+/*
+PatchGerritTriggerByIDUsingPATCHUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type PatchGerritTriggerByIDUsingPATCHUnauthorized struct {
 }
 
+// IsSuccess returns true when this patch gerrit trigger by Id using p a t c h unauthorized response has a 2xx status code
+func (o *PatchGerritTriggerByIDUsingPATCHUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch gerrit trigger by Id using p a t c h unauthorized response has a 3xx status code
+func (o *PatchGerritTriggerByIDUsingPATCHUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch gerrit trigger by Id using p a t c h unauthorized response has a 4xx status code
+func (o *PatchGerritTriggerByIDUsingPATCHUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch gerrit trigger by Id using p a t c h unauthorized response has a 5xx status code
+func (o *PatchGerritTriggerByIDUsingPATCHUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch gerrit trigger by Id using p a t c h unauthorized response a status code equal to that given
+func (o *PatchGerritTriggerByIDUsingPATCHUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *PatchGerritTriggerByIDUsingPATCHUnauthorized) Error() string {
+	return fmt.Sprintf("[PATCH /codestream/api/gerrit-triggers/{id}][%d] patchGerritTriggerByIdUsingPATCHUnauthorized ", 401)
+}
+
+func (o *PatchGerritTriggerByIDUsingPATCHUnauthorized) String() string {
 	return fmt.Sprintf("[PATCH /codestream/api/gerrit-triggers/{id}][%d] patchGerritTriggerByIdUsingPATCHUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewPatchGerritTriggerByIDUsingPATCHForbidden() *PatchGerritTriggerByIDUsing
 	return &PatchGerritTriggerByIDUsingPATCHForbidden{}
 }
 
-/* PatchGerritTriggerByIDUsingPATCHForbidden describes a response with status code 403, with default header values.
+/*
+PatchGerritTriggerByIDUsingPATCHForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type PatchGerritTriggerByIDUsingPATCHForbidden struct {
 }
 
+// IsSuccess returns true when this patch gerrit trigger by Id using p a t c h forbidden response has a 2xx status code
+func (o *PatchGerritTriggerByIDUsingPATCHForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch gerrit trigger by Id using p a t c h forbidden response has a 3xx status code
+func (o *PatchGerritTriggerByIDUsingPATCHForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch gerrit trigger by Id using p a t c h forbidden response has a 4xx status code
+func (o *PatchGerritTriggerByIDUsingPATCHForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch gerrit trigger by Id using p a t c h forbidden response has a 5xx status code
+func (o *PatchGerritTriggerByIDUsingPATCHForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch gerrit trigger by Id using p a t c h forbidden response a status code equal to that given
+func (o *PatchGerritTriggerByIDUsingPATCHForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *PatchGerritTriggerByIDUsingPATCHForbidden) Error() string {
+	return fmt.Sprintf("[PATCH /codestream/api/gerrit-triggers/{id}][%d] patchGerritTriggerByIdUsingPATCHForbidden ", 403)
+}
+
+func (o *PatchGerritTriggerByIDUsingPATCHForbidden) String() string {
 	return fmt.Sprintf("[PATCH /codestream/api/gerrit-triggers/{id}][%d] patchGerritTriggerByIdUsingPATCHForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewPatchGerritTriggerByIDUsingPATCHNotFound() *PatchGerritTriggerByIDUsingP
 	return &PatchGerritTriggerByIDUsingPATCHNotFound{}
 }
 
-/* PatchGerritTriggerByIDUsingPATCHNotFound describes a response with status code 404, with default header values.
+/*
+PatchGerritTriggerByIDUsingPATCHNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type PatchGerritTriggerByIDUsingPATCHNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this patch gerrit trigger by Id using p a t c h not found response has a 2xx status code
+func (o *PatchGerritTriggerByIDUsingPATCHNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch gerrit trigger by Id using p a t c h not found response has a 3xx status code
+func (o *PatchGerritTriggerByIDUsingPATCHNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch gerrit trigger by Id using p a t c h not found response has a 4xx status code
+func (o *PatchGerritTriggerByIDUsingPATCHNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch gerrit trigger by Id using p a t c h not found response has a 5xx status code
+func (o *PatchGerritTriggerByIDUsingPATCHNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch gerrit trigger by Id using p a t c h not found response a status code equal to that given
+func (o *PatchGerritTriggerByIDUsingPATCHNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *PatchGerritTriggerByIDUsingPATCHNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /codestream/api/gerrit-triggers/{id}][%d] patchGerritTriggerByIdUsingPATCHNotFound  %+v", 404, o.Payload)
 }
+
+func (o *PatchGerritTriggerByIDUsingPATCHNotFound) String() string {
+	return fmt.Sprintf("[PATCH /codestream/api/gerrit-triggers/{id}][%d] patchGerritTriggerByIdUsingPATCHNotFound  %+v", 404, o.Payload)
+}
+
 func (o *PatchGerritTriggerByIDUsingPATCHNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewPatchGerritTriggerByIDUsingPATCHInternalServerError() *PatchGerritTrigge
 	return &PatchGerritTriggerByIDUsingPATCHInternalServerError{}
 }
 
-/* PatchGerritTriggerByIDUsingPATCHInternalServerError describes a response with status code 500, with default header values.
+/*
+PatchGerritTriggerByIDUsingPATCHInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type PatchGerritTriggerByIDUsingPATCHInternalServerError struct {
 }
 
+// IsSuccess returns true when this patch gerrit trigger by Id using p a t c h internal server error response has a 2xx status code
+func (o *PatchGerritTriggerByIDUsingPATCHInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch gerrit trigger by Id using p a t c h internal server error response has a 3xx status code
+func (o *PatchGerritTriggerByIDUsingPATCHInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch gerrit trigger by Id using p a t c h internal server error response has a 4xx status code
+func (o *PatchGerritTriggerByIDUsingPATCHInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch gerrit trigger by Id using p a t c h internal server error response has a 5xx status code
+func (o *PatchGerritTriggerByIDUsingPATCHInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this patch gerrit trigger by Id using p a t c h internal server error response a status code equal to that given
+func (o *PatchGerritTriggerByIDUsingPATCHInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *PatchGerritTriggerByIDUsingPATCHInternalServerError) Error() string {
+	return fmt.Sprintf("[PATCH /codestream/api/gerrit-triggers/{id}][%d] patchGerritTriggerByIdUsingPATCHInternalServerError ", 500)
+}
+
+func (o *PatchGerritTriggerByIDUsingPATCHInternalServerError) String() string {
 	return fmt.Sprintf("[PATCH /codestream/api/gerrit-triggers/{id}][%d] patchGerritTriggerByIdUsingPATCHInternalServerError ", 500)
 }
 

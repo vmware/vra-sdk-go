@@ -52,10 +52,12 @@ func NewGetEndpointTilesUsingGETParamsWithHTTPClient(client *http.Client) *GetEn
 	}
 }
 
-/* GetEndpointTilesUsingGETParams contains all the parameters to send to the API endpoint
-   for the get endpoint tiles using g e t operation.
+/*
+GetEndpointTilesUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get endpoint tiles using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetEndpointTilesUsingGETParams struct {
 

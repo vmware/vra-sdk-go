@@ -52,10 +52,12 @@ func NewDeleteZoneUsingDELETEParamsWithHTTPClient(client *http.Client) *DeleteZo
 	}
 }
 
-/* DeleteZoneUsingDELETEParams contains all the parameters to send to the API endpoint
-   for the delete zone using d e l e t e operation.
+/*
+DeleteZoneUsingDELETEParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete zone using d e l e t e operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteZoneUsingDELETEParams struct {
 

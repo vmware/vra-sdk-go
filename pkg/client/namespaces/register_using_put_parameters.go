@@ -54,10 +54,12 @@ func NewRegisterUsingPUTParamsWithHTTPClient(client *http.Client) *RegisterUsing
 	}
 }
 
-/* RegisterUsingPUTParams contains all the parameters to send to the API endpoint
-   for the register using p u t operation.
+/*
+RegisterUsingPUTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the register using p u t operation.
+
+	Typically these are written to a http.Request.
 */
 type RegisterUsingPUTParams struct {
 

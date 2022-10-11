@@ -63,7 +63,8 @@ func NewDeleteDeploymentUsingDELETE2OK() *DeleteDeploymentUsingDELETE2OK {
 	return &DeleteDeploymentUsingDELETE2OK{}
 }
 
-/* DeleteDeploymentUsingDELETE2OK describes a response with status code 200, with default header values.
+/*
+DeleteDeploymentUsingDELETE2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type DeleteDeploymentUsingDELETE2OK struct {
 	Payload *models.Request
 }
 
+// IsSuccess returns true when this delete deployment using d e l e t e2 o k response has a 2xx status code
+func (o *DeleteDeploymentUsingDELETE2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete deployment using d e l e t e2 o k response has a 3xx status code
+func (o *DeleteDeploymentUsingDELETE2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete deployment using d e l e t e2 o k response has a 4xx status code
+func (o *DeleteDeploymentUsingDELETE2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete deployment using d e l e t e2 o k response has a 5xx status code
+func (o *DeleteDeploymentUsingDELETE2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete deployment using d e l e t e2 o k response a status code equal to that given
+func (o *DeleteDeploymentUsingDELETE2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteDeploymentUsingDELETE2OK) Error() string {
 	return fmt.Sprintf("[DELETE /deployment/api/deployments/{deploymentId}][%d] deleteDeploymentUsingDELETE2OK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteDeploymentUsingDELETE2OK) String() string {
+	return fmt.Sprintf("[DELETE /deployment/api/deployments/{deploymentId}][%d] deleteDeploymentUsingDELETE2OK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteDeploymentUsingDELETE2OK) GetPayload() *models.Request {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewDeleteDeploymentUsingDELETE2Unauthorized() *DeleteDeploymentUsingDELETE2
 	return &DeleteDeploymentUsingDELETE2Unauthorized{}
 }
 
-/* DeleteDeploymentUsingDELETE2Unauthorized describes a response with status code 401, with default header values.
+/*
+DeleteDeploymentUsingDELETE2Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type DeleteDeploymentUsingDELETE2Unauthorized struct {
 }
 
+// IsSuccess returns true when this delete deployment using d e l e t e2 unauthorized response has a 2xx status code
+func (o *DeleteDeploymentUsingDELETE2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete deployment using d e l e t e2 unauthorized response has a 3xx status code
+func (o *DeleteDeploymentUsingDELETE2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete deployment using d e l e t e2 unauthorized response has a 4xx status code
+func (o *DeleteDeploymentUsingDELETE2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete deployment using d e l e t e2 unauthorized response has a 5xx status code
+func (o *DeleteDeploymentUsingDELETE2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete deployment using d e l e t e2 unauthorized response a status code equal to that given
+func (o *DeleteDeploymentUsingDELETE2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DeleteDeploymentUsingDELETE2Unauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /deployment/api/deployments/{deploymentId}][%d] deleteDeploymentUsingDELETE2Unauthorized ", 401)
+}
+
+func (o *DeleteDeploymentUsingDELETE2Unauthorized) String() string {
 	return fmt.Sprintf("[DELETE /deployment/api/deployments/{deploymentId}][%d] deleteDeploymentUsingDELETE2Unauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewDeleteDeploymentUsingDELETE2Forbidden() *DeleteDeploymentUsingDELETE2For
 	return &DeleteDeploymentUsingDELETE2Forbidden{}
 }
 
-/* DeleteDeploymentUsingDELETE2Forbidden describes a response with status code 403, with default header values.
+/*
+DeleteDeploymentUsingDELETE2Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type DeleteDeploymentUsingDELETE2Forbidden struct {
 }
 
+// IsSuccess returns true when this delete deployment using d e l e t e2 forbidden response has a 2xx status code
+func (o *DeleteDeploymentUsingDELETE2Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete deployment using d e l e t e2 forbidden response has a 3xx status code
+func (o *DeleteDeploymentUsingDELETE2Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete deployment using d e l e t e2 forbidden response has a 4xx status code
+func (o *DeleteDeploymentUsingDELETE2Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete deployment using d e l e t e2 forbidden response has a 5xx status code
+func (o *DeleteDeploymentUsingDELETE2Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete deployment using d e l e t e2 forbidden response a status code equal to that given
+func (o *DeleteDeploymentUsingDELETE2Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteDeploymentUsingDELETE2Forbidden) Error() string {
+	return fmt.Sprintf("[DELETE /deployment/api/deployments/{deploymentId}][%d] deleteDeploymentUsingDELETE2Forbidden ", 403)
+}
+
+func (o *DeleteDeploymentUsingDELETE2Forbidden) String() string {
 	return fmt.Sprintf("[DELETE /deployment/api/deployments/{deploymentId}][%d] deleteDeploymentUsingDELETE2Forbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewDeleteDeploymentUsingDELETE2NotFound() *DeleteDeploymentUsingDELETE2NotF
 	return &DeleteDeploymentUsingDELETE2NotFound{}
 }
 
-/* DeleteDeploymentUsingDELETE2NotFound describes a response with status code 404, with default header values.
+/*
+DeleteDeploymentUsingDELETE2NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type DeleteDeploymentUsingDELETE2NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete deployment using d e l e t e2 not found response has a 2xx status code
+func (o *DeleteDeploymentUsingDELETE2NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete deployment using d e l e t e2 not found response has a 3xx status code
+func (o *DeleteDeploymentUsingDELETE2NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete deployment using d e l e t e2 not found response has a 4xx status code
+func (o *DeleteDeploymentUsingDELETE2NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete deployment using d e l e t e2 not found response has a 5xx status code
+func (o *DeleteDeploymentUsingDELETE2NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete deployment using d e l e t e2 not found response a status code equal to that given
+func (o *DeleteDeploymentUsingDELETE2NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteDeploymentUsingDELETE2NotFound) Error() string {
 	return fmt.Sprintf("[DELETE /deployment/api/deployments/{deploymentId}][%d] deleteDeploymentUsingDELETE2NotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteDeploymentUsingDELETE2NotFound) String() string {
+	return fmt.Sprintf("[DELETE /deployment/api/deployments/{deploymentId}][%d] deleteDeploymentUsingDELETE2NotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteDeploymentUsingDELETE2NotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewDeleteDeploymentUsingDELETE2Conflict() *DeleteDeploymentUsingDELETE2Conf
 	return &DeleteDeploymentUsingDELETE2Conflict{}
 }
 
-/* DeleteDeploymentUsingDELETE2Conflict describes a response with status code 409, with default header values.
+/*
+DeleteDeploymentUsingDELETE2Conflict describes a response with status code 409, with default header values.
 
 Conflict
 */
 type DeleteDeploymentUsingDELETE2Conflict struct {
 }
 
+// IsSuccess returns true when this delete deployment using d e l e t e2 conflict response has a 2xx status code
+func (o *DeleteDeploymentUsingDELETE2Conflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete deployment using d e l e t e2 conflict response has a 3xx status code
+func (o *DeleteDeploymentUsingDELETE2Conflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete deployment using d e l e t e2 conflict response has a 4xx status code
+func (o *DeleteDeploymentUsingDELETE2Conflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete deployment using d e l e t e2 conflict response has a 5xx status code
+func (o *DeleteDeploymentUsingDELETE2Conflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete deployment using d e l e t e2 conflict response a status code equal to that given
+func (o *DeleteDeploymentUsingDELETE2Conflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *DeleteDeploymentUsingDELETE2Conflict) Error() string {
+	return fmt.Sprintf("[DELETE /deployment/api/deployments/{deploymentId}][%d] deleteDeploymentUsingDELETE2Conflict ", 409)
+}
+
+func (o *DeleteDeploymentUsingDELETE2Conflict) String() string {
 	return fmt.Sprintf("[DELETE /deployment/api/deployments/{deploymentId}][%d] deleteDeploymentUsingDELETE2Conflict ", 409)
 }
 

@@ -29,6 +29,12 @@ func (o *RegisterUsingPUT1Reader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return result, nil
+	case 403:
+		result := NewRegisterUsingPUT1Forbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +45,8 @@ func NewRegisterUsingPUT1OK() *RegisterUsingPUT1OK {
 	return &RegisterUsingPUT1OK{}
 }
 
-/* RegisterUsingPUT1OK describes a response with status code 200, with default header values.
+/*
+RegisterUsingPUT1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +54,39 @@ type RegisterUsingPUT1OK struct {
 	Payload *models.SupervisorCluster
 }
 
+// IsSuccess returns true when this register using p u t1 o k response has a 2xx status code
+func (o *RegisterUsingPUT1OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this register using p u t1 o k response has a 3xx status code
+func (o *RegisterUsingPUT1OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this register using p u t1 o k response has a 4xx status code
+func (o *RegisterUsingPUT1OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this register using p u t1 o k response has a 5xx status code
+func (o *RegisterUsingPUT1OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this register using p u t1 o k response a status code equal to that given
+func (o *RegisterUsingPUT1OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *RegisterUsingPUT1OK) Error() string {
 	return fmt.Sprintf("[PUT /cmx/api/resources/supervisor-clusters/{clusterSelfLinkId}/register][%d] registerUsingPUT1OK  %+v", 200, o.Payload)
 }
+
+func (o *RegisterUsingPUT1OK) String() string {
+	return fmt.Sprintf("[PUT /cmx/api/resources/supervisor-clusters/{clusterSelfLinkId}/register][%d] registerUsingPUT1OK  %+v", 200, o.Payload)
+}
+
 func (o *RegisterUsingPUT1OK) GetPayload() *models.SupervisorCluster {
 	return o.Payload
 }
@@ -62,6 +99,57 @@ func (o *RegisterUsingPUT1OK) readResponse(response runtime.ClientResponse, cons
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewRegisterUsingPUT1Forbidden creates a RegisterUsingPUT1Forbidden with default headers values
+func NewRegisterUsingPUT1Forbidden() *RegisterUsingPUT1Forbidden {
+	return &RegisterUsingPUT1Forbidden{}
+}
+
+/*
+RegisterUsingPUT1Forbidden describes a response with status code 403, with default header values.
+
+Forbidden, the user lacks permissions
+*/
+type RegisterUsingPUT1Forbidden struct {
+}
+
+// IsSuccess returns true when this register using p u t1 forbidden response has a 2xx status code
+func (o *RegisterUsingPUT1Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this register using p u t1 forbidden response has a 3xx status code
+func (o *RegisterUsingPUT1Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this register using p u t1 forbidden response has a 4xx status code
+func (o *RegisterUsingPUT1Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this register using p u t1 forbidden response has a 5xx status code
+func (o *RegisterUsingPUT1Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this register using p u t1 forbidden response a status code equal to that given
+func (o *RegisterUsingPUT1Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *RegisterUsingPUT1Forbidden) Error() string {
+	return fmt.Sprintf("[PUT /cmx/api/resources/supervisor-clusters/{clusterSelfLinkId}/register][%d] registerUsingPUT1Forbidden ", 403)
+}
+
+func (o *RegisterUsingPUT1Forbidden) String() string {
+	return fmt.Sprintf("[PUT /cmx/api/resources/supervisor-clusters/{clusterSelfLinkId}/register][%d] registerUsingPUT1Forbidden ", 403)
+}
+
+func (o *RegisterUsingPUT1Forbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

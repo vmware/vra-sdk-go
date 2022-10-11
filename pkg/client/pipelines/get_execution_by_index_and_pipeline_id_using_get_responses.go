@@ -63,7 +63,8 @@ func NewGetExecutionByIndexAndPipelineIDUsingGETOK() *GetExecutionByIndexAndPipe
 	return &GetExecutionByIndexAndPipelineIDUsingGETOK{}
 }
 
-/* GetExecutionByIndexAndPipelineIDUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetExecutionByIndexAndPipelineIDUsingGETOK describes a response with status code 200, with default header values.
 
 'Success' with the requested Execution
 */
@@ -71,9 +72,39 @@ type GetExecutionByIndexAndPipelineIDUsingGETOK struct {
 	Payload models.Execution
 }
 
+// IsSuccess returns true when this get execution by index and pipeline Id using g e t o k response has a 2xx status code
+func (o *GetExecutionByIndexAndPipelineIDUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get execution by index and pipeline Id using g e t o k response has a 3xx status code
+func (o *GetExecutionByIndexAndPipelineIDUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get execution by index and pipeline Id using g e t o k response has a 4xx status code
+func (o *GetExecutionByIndexAndPipelineIDUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get execution by index and pipeline Id using g e t o k response has a 5xx status code
+func (o *GetExecutionByIndexAndPipelineIDUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get execution by index and pipeline Id using g e t o k response a status code equal to that given
+func (o *GetExecutionByIndexAndPipelineIDUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetExecutionByIndexAndPipelineIDUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/pipelines/{id}/executions/{index}][%d] getExecutionByIndexAndPipelineIdUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetExecutionByIndexAndPipelineIDUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /codestream/api/pipelines/{id}/executions/{index}][%d] getExecutionByIndexAndPipelineIdUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetExecutionByIndexAndPipelineIDUsingGETOK) GetPayload() models.Execution {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewGetExecutionByIndexAndPipelineIDUsingGETUnauthorized() *GetExecutionByIn
 	return &GetExecutionByIndexAndPipelineIDUsingGETUnauthorized{}
 }
 
-/* GetExecutionByIndexAndPipelineIDUsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+GetExecutionByIndexAndPipelineIDUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type GetExecutionByIndexAndPipelineIDUsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this get execution by index and pipeline Id using g e t unauthorized response has a 2xx status code
+func (o *GetExecutionByIndexAndPipelineIDUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get execution by index and pipeline Id using g e t unauthorized response has a 3xx status code
+func (o *GetExecutionByIndexAndPipelineIDUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get execution by index and pipeline Id using g e t unauthorized response has a 4xx status code
+func (o *GetExecutionByIndexAndPipelineIDUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get execution by index and pipeline Id using g e t unauthorized response has a 5xx status code
+func (o *GetExecutionByIndexAndPipelineIDUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get execution by index and pipeline Id using g e t unauthorized response a status code equal to that given
+func (o *GetExecutionByIndexAndPipelineIDUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetExecutionByIndexAndPipelineIDUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/pipelines/{id}/executions/{index}][%d] getExecutionByIndexAndPipelineIdUsingGETUnauthorized ", 401)
+}
+
+func (o *GetExecutionByIndexAndPipelineIDUsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /codestream/api/pipelines/{id}/executions/{index}][%d] getExecutionByIndexAndPipelineIdUsingGETUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewGetExecutionByIndexAndPipelineIDUsingGETForbidden() *GetExecutionByIndex
 	return &GetExecutionByIndexAndPipelineIDUsingGETForbidden{}
 }
 
-/* GetExecutionByIndexAndPipelineIDUsingGETForbidden describes a response with status code 403, with default header values.
+/*
+GetExecutionByIndexAndPipelineIDUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetExecutionByIndexAndPipelineIDUsingGETForbidden struct {
 }
 
+// IsSuccess returns true when this get execution by index and pipeline Id using g e t forbidden response has a 2xx status code
+func (o *GetExecutionByIndexAndPipelineIDUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get execution by index and pipeline Id using g e t forbidden response has a 3xx status code
+func (o *GetExecutionByIndexAndPipelineIDUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get execution by index and pipeline Id using g e t forbidden response has a 4xx status code
+func (o *GetExecutionByIndexAndPipelineIDUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get execution by index and pipeline Id using g e t forbidden response has a 5xx status code
+func (o *GetExecutionByIndexAndPipelineIDUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get execution by index and pipeline Id using g e t forbidden response a status code equal to that given
+func (o *GetExecutionByIndexAndPipelineIDUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetExecutionByIndexAndPipelineIDUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/pipelines/{id}/executions/{index}][%d] getExecutionByIndexAndPipelineIdUsingGETForbidden ", 403)
+}
+
+func (o *GetExecutionByIndexAndPipelineIDUsingGETForbidden) String() string {
 	return fmt.Sprintf("[GET /codestream/api/pipelines/{id}/executions/{index}][%d] getExecutionByIndexAndPipelineIdUsingGETForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewGetExecutionByIndexAndPipelineIDUsingGETNotFound() *GetExecutionByIndexA
 	return &GetExecutionByIndexAndPipelineIDUsingGETNotFound{}
 }
 
-/* GetExecutionByIndexAndPipelineIDUsingGETNotFound describes a response with status code 404, with default header values.
+/*
+GetExecutionByIndexAndPipelineIDUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type GetExecutionByIndexAndPipelineIDUsingGETNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get execution by index and pipeline Id using g e t not found response has a 2xx status code
+func (o *GetExecutionByIndexAndPipelineIDUsingGETNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get execution by index and pipeline Id using g e t not found response has a 3xx status code
+func (o *GetExecutionByIndexAndPipelineIDUsingGETNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get execution by index and pipeline Id using g e t not found response has a 4xx status code
+func (o *GetExecutionByIndexAndPipelineIDUsingGETNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get execution by index and pipeline Id using g e t not found response has a 5xx status code
+func (o *GetExecutionByIndexAndPipelineIDUsingGETNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get execution by index and pipeline Id using g e t not found response a status code equal to that given
+func (o *GetExecutionByIndexAndPipelineIDUsingGETNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetExecutionByIndexAndPipelineIDUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/pipelines/{id}/executions/{index}][%d] getExecutionByIndexAndPipelineIdUsingGETNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetExecutionByIndexAndPipelineIDUsingGETNotFound) String() string {
+	return fmt.Sprintf("[GET /codestream/api/pipelines/{id}/executions/{index}][%d] getExecutionByIndexAndPipelineIdUsingGETNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetExecutionByIndexAndPipelineIDUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewGetExecutionByIndexAndPipelineIDUsingGETInternalServerError() *GetExecut
 	return &GetExecutionByIndexAndPipelineIDUsingGETInternalServerError{}
 }
 
-/* GetExecutionByIndexAndPipelineIDUsingGETInternalServerError describes a response with status code 500, with default header values.
+/*
+GetExecutionByIndexAndPipelineIDUsingGETInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type GetExecutionByIndexAndPipelineIDUsingGETInternalServerError struct {
 }
 
+// IsSuccess returns true when this get execution by index and pipeline Id using g e t internal server error response has a 2xx status code
+func (o *GetExecutionByIndexAndPipelineIDUsingGETInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get execution by index and pipeline Id using g e t internal server error response has a 3xx status code
+func (o *GetExecutionByIndexAndPipelineIDUsingGETInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get execution by index and pipeline Id using g e t internal server error response has a 4xx status code
+func (o *GetExecutionByIndexAndPipelineIDUsingGETInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get execution by index and pipeline Id using g e t internal server error response has a 5xx status code
+func (o *GetExecutionByIndexAndPipelineIDUsingGETInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this get execution by index and pipeline Id using g e t internal server error response a status code equal to that given
+func (o *GetExecutionByIndexAndPipelineIDUsingGETInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GetExecutionByIndexAndPipelineIDUsingGETInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/pipelines/{id}/executions/{index}][%d] getExecutionByIndexAndPipelineIdUsingGETInternalServerError ", 500)
+}
+
+func (o *GetExecutionByIndexAndPipelineIDUsingGETInternalServerError) String() string {
 	return fmt.Sprintf("[GET /codestream/api/pipelines/{id}/executions/{index}][%d] getExecutionByIndexAndPipelineIdUsingGETInternalServerError ", 500)
 }
 

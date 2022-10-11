@@ -52,10 +52,12 @@ func NewPowerOffMachineParamsWithHTTPClient(client *http.Client) *PowerOffMachin
 	}
 }
 
-/* PowerOffMachineParams contains all the parameters to send to the API endpoint
-   for the power off machine operation.
+/*
+PowerOffMachineParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the power off machine operation.
+
+	Typically these are written to a http.Request.
 */
 type PowerOffMachineParams struct {
 

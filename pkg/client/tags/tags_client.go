@@ -36,9 +36,9 @@ type ClientService interface {
 }
 
 /*
-  GetTags gets tags
+GetTags gets tags
 
-  Get all tags
+Get all tags
 */
 func (a *Client) GetTags(params *GetTagsParams, opts ...ClientOption) (*GetTagsOK, error) {
 	// TODO: Validate the params before sending

@@ -46,7 +46,7 @@ type ClientService interface {
 
 	GetEndpointTilesUsingGET(params *GetEndpointTilesUsingGETParams, opts ...ClientOption) (*GetEndpointTilesUsingGETOK, error)
 
-	GetUsingGET(params *GetUsingGETParams, opts ...ClientOption) (*GetUsingGETOK, error)
+	GetUsingGETMixin4(params *GetUsingGETMixin4Params, opts ...ClientOption) (*GetUsingGETMixin4OK, error)
 
 	UpdateEndpointByIDUsingPUT(params *UpdateEndpointByIDUsingPUTParams, opts ...ClientOption) (*UpdateEndpointByIDUsingPUTOK, error)
 
@@ -58,9 +58,9 @@ type ClientService interface {
 }
 
 /*
-  CreateEndpointUsingPOST creates an endpoint
+CreateEndpointUsingPOST creates an endpoint
 
-  Create an Endpoint based on the given project
+Create an Endpoint based on the given project
 */
 func (a *Client) CreateEndpointUsingPOST(params *CreateEndpointUsingPOSTParams, opts ...ClientOption) (*CreateEndpointUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -98,9 +98,9 @@ func (a *Client) CreateEndpointUsingPOST(params *CreateEndpointUsingPOSTParams, 
 }
 
 /*
-  DeleteEndpointByIDUsingDELETE deletes an endpoint by id
+DeleteEndpointByIDUsingDELETE deletes an endpoint by id
 
-  Delete an Endpoint with the given id
+Delete an Endpoint with the given id
 */
 func (a *Client) DeleteEndpointByIDUsingDELETE(params *DeleteEndpointByIDUsingDELETEParams, opts ...ClientOption) (*DeleteEndpointByIDUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
@@ -138,9 +138,9 @@ func (a *Client) DeleteEndpointByIDUsingDELETE(params *DeleteEndpointByIDUsingDE
 }
 
 /*
-  DeleteEndpointByNameUsingDELETE deletes an endpoint by project and name
+DeleteEndpointByNameUsingDELETE deletes an endpoint by project and name
 
-  Delete an Endpoint with the given name
+Delete an Endpoint with the given name
 */
 func (a *Client) DeleteEndpointByNameUsingDELETE(params *DeleteEndpointByNameUsingDELETEParams, opts ...ClientOption) (*DeleteEndpointByNameUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
@@ -178,9 +178,9 @@ func (a *Client) DeleteEndpointByNameUsingDELETE(params *DeleteEndpointByNameUsi
 }
 
 /*
-  GetAllEndpointsUsingGET gets all endpoints
+GetAllEndpointsUsingGET gets all endpoints
 
-  Get all Endpoints with specified paging and filter parameters
+Get all Endpoints with specified paging and filter parameters
 */
 func (a *Client) GetAllEndpointsUsingGET(params *GetAllEndpointsUsingGETParams, opts ...ClientOption) (*GetAllEndpointsUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -218,9 +218,9 @@ func (a *Client) GetAllEndpointsUsingGET(params *GetAllEndpointsUsingGETParams, 
 }
 
 /*
-  GetEndpointByIDUsingGET gets an endpoint
+GetEndpointByIDUsingGET gets an endpoint
 
-  Get an Endpoint with the given id
+Get an Endpoint with the given id
 */
 func (a *Client) GetEndpointByIDUsingGET(params *GetEndpointByIDUsingGETParams, opts ...ClientOption) (*GetEndpointByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -258,9 +258,9 @@ func (a *Client) GetEndpointByIDUsingGET(params *GetEndpointByIDUsingGETParams, 
 }
 
 /*
-  GetEndpointByNameUsingGET gets an endpoint by project and name
+GetEndpointByNameUsingGET gets an endpoint by project and name
 
-  Get an Endpoint with the given project and name
+Get an Endpoint with the given project and name
 */
 func (a *Client) GetEndpointByNameUsingGET(params *GetEndpointByNameUsingGETParams, opts ...ClientOption) (*GetEndpointByNameUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -298,9 +298,9 @@ func (a *Client) GetEndpointByNameUsingGET(params *GetEndpointByNameUsingGETPara
 }
 
 /*
-  GetEndpointPropertiesUsingGET gets endpoint properties
+GetEndpointPropertiesUsingGET gets endpoint properties
 
-  Get endpoint properties with the given endpoint type
+Get endpoint properties with the given endpoint type
 */
 func (a *Client) GetEndpointPropertiesUsingGET(params *GetEndpointPropertiesUsingGETParams, opts ...ClientOption) (*GetEndpointPropertiesUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -338,9 +338,9 @@ func (a *Client) GetEndpointPropertiesUsingGET(params *GetEndpointPropertiesUsin
 }
 
 /*
-  GetEndpointTilesUsingGET gets all endpoint tiles
+GetEndpointTilesUsingGET gets all endpoint tiles
 
-  Get all supported endpoint tiles
+Get all supported endpoint tiles
 */
 func (a *Client) GetEndpointTilesUsingGET(params *GetEndpointTilesUsingGETParams, opts ...ClientOption) (*GetEndpointTilesUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -378,24 +378,24 @@ func (a *Client) GetEndpointTilesUsingGET(params *GetEndpointTilesUsingGETParams
 }
 
 /*
-  GetUsingGET gets endpoint certificate
+GetUsingGETMixin4 gets endpoint certificate
 
-  Get endpoint certificate chain for validation
+Get endpoint certificate chain for validation
 */
-func (a *Client) GetUsingGET(params *GetUsingGETParams, opts ...ClientOption) (*GetUsingGETOK, error) {
+func (a *Client) GetUsingGETMixin4(params *GetUsingGETMixin4Params, opts ...ClientOption) (*GetUsingGETMixin4OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetUsingGETParams()
+		params = NewGetUsingGETMixin4Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getUsingGET",
+		ID:                 "getUsingGETMixin4",
 		Method:             "GET",
 		PathPattern:        "/codestream/api/endpoint-certificate",
 		ProducesMediaTypes: []string{"*/*"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetUsingGETReader{formats: a.formats},
+		Reader:             &GetUsingGETMixin4Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -407,20 +407,20 @@ func (a *Client) GetUsingGET(params *GetUsingGETParams, opts ...ClientOption) (*
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetUsingGETOK)
+	success, ok := result.(*GetUsingGETMixin4OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getUsingGETMixin4: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  UpdateEndpointByIDUsingPUT updates an endpoint by id
+UpdateEndpointByIDUsingPUT updates an endpoint by id
 
-  Update an Endpoint with the given id
+Update an Endpoint with the given id
 */
 func (a *Client) UpdateEndpointByIDUsingPUT(params *UpdateEndpointByIDUsingPUTParams, opts ...ClientOption) (*UpdateEndpointByIDUsingPUTOK, error) {
 	// TODO: Validate the params before sending
@@ -458,9 +458,9 @@ func (a *Client) UpdateEndpointByIDUsingPUT(params *UpdateEndpointByIDUsingPUTPa
 }
 
 /*
-  UpdateEndpointByNameUsingPUT updates an endpoint by project and name
+UpdateEndpointByNameUsingPUT updates an endpoint by project and name
 
-  Update an Endpoint with the given project and name
+Update an Endpoint with the given project and name
 */
 func (a *Client) UpdateEndpointByNameUsingPUT(params *UpdateEndpointByNameUsingPUTParams, opts ...ClientOption) (*UpdateEndpointByNameUsingPUTOK, error) {
 	// TODO: Validate the params before sending
@@ -498,9 +498,9 @@ func (a *Client) UpdateEndpointByNameUsingPUT(params *UpdateEndpointByNameUsingP
 }
 
 /*
-  ValidateEndpointUsingPOST validates endpoint
+ValidateEndpointUsingPOST validates endpoint
 
-  Validates the given endpoint
+Validates the given endpoint
 */
 func (a *Client) ValidateEndpointUsingPOST(params *ValidateEndpointUsingPOSTParams, opts ...ClientOption) (*ValidateEndpointUsingPOSTOK, error) {
 	// TODO: Validate the params before sending

@@ -42,9 +42,9 @@ type ClientService interface {
 }
 
 /*
-  CreateContentSourceUsingPOST creates a content source
+CreateContentSourceUsingPOST creates a content source
 
-  Returns the new content source
+Returns the new content source
 */
 func (a *Client) CreateContentSourceUsingPOST(params *CreateContentSourceUsingPOSTParams, opts ...ClientOption) (*CreateContentSourceUsingPOSTCreated, error) {
 	// TODO: Validate the params before sending
@@ -82,7 +82,7 @@ func (a *Client) CreateContentSourceUsingPOST(params *CreateContentSourceUsingPO
 }
 
 /*
-  DeleteContentSourceUsingDELETE deletes a content source
+DeleteContentSourceUsingDELETE deletes a content source
 */
 func (a *Client) DeleteContentSourceUsingDELETE(params *DeleteContentSourceUsingDELETEParams, opts ...ClientOption) (*DeleteContentSourceUsingDELETENoContent, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) DeleteContentSourceUsingDELETE(params *DeleteContentSourceUsing
 }
 
 /*
-  GetContentSourceUsingGET gets a content source
+GetContentSourceUsingGET gets a content source
 */
 func (a *Client) GetContentSourceUsingGET(params *GetContentSourceUsingGETParams, opts ...ClientOption) (*GetContentSourceUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -158,9 +158,9 @@ func (a *Client) GetContentSourceUsingGET(params *GetContentSourceUsingGETParams
 }
 
 /*
-  ListContentSourcesUsingGET gets content sources
+ListContentSourcesUsingGET gets content sources
 
-  Use filter parameters to narrow down the results
+Use filter parameters to narrow down the results
 */
 func (a *Client) ListContentSourcesUsingGET(params *ListContentSourcesUsingGETParams, opts ...ClientOption) (*ListContentSourcesUsingGETOK, error) {
 	// TODO: Validate the params before sending

@@ -51,7 +51,8 @@ func NewDeleteGcpCloudAccountAccepted() *DeleteGcpCloudAccountAccepted {
 	return &DeleteGcpCloudAccountAccepted{}
 }
 
-/* DeleteGcpCloudAccountAccepted describes a response with status code 202, with default header values.
+/*
+DeleteGcpCloudAccountAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type DeleteGcpCloudAccountAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this delete gcp cloud account accepted response has a 2xx status code
+func (o *DeleteGcpCloudAccountAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete gcp cloud account accepted response has a 3xx status code
+func (o *DeleteGcpCloudAccountAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete gcp cloud account accepted response has a 4xx status code
+func (o *DeleteGcpCloudAccountAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete gcp cloud account accepted response has a 5xx status code
+func (o *DeleteGcpCloudAccountAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete gcp cloud account accepted response a status code equal to that given
+func (o *DeleteGcpCloudAccountAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteGcpCloudAccountAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-gcp/{id}][%d] deleteGcpCloudAccountAccepted  %+v", 202, o.Payload)
 }
+
+func (o *DeleteGcpCloudAccountAccepted) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-gcp/{id}][%d] deleteGcpCloudAccountAccepted  %+v", 202, o.Payload)
+}
+
 func (o *DeleteGcpCloudAccountAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,14 +114,44 @@ func NewDeleteGcpCloudAccountNoContent() *DeleteGcpCloudAccountNoContent {
 	return &DeleteGcpCloudAccountNoContent{}
 }
 
-/* DeleteGcpCloudAccountNoContent describes a response with status code 204, with default header values.
+/*
+DeleteGcpCloudAccountNoContent describes a response with status code 204, with default header values.
 
 No Content
 */
 type DeleteGcpCloudAccountNoContent struct {
 }
 
+// IsSuccess returns true when this delete gcp cloud account no content response has a 2xx status code
+func (o *DeleteGcpCloudAccountNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete gcp cloud account no content response has a 3xx status code
+func (o *DeleteGcpCloudAccountNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete gcp cloud account no content response has a 4xx status code
+func (o *DeleteGcpCloudAccountNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete gcp cloud account no content response has a 5xx status code
+func (o *DeleteGcpCloudAccountNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete gcp cloud account no content response a status code equal to that given
+func (o *DeleteGcpCloudAccountNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteGcpCloudAccountNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-gcp/{id}][%d] deleteGcpCloudAccountNoContent ", 204)
+}
+
+func (o *DeleteGcpCloudAccountNoContent) String() string {
 	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-gcp/{id}][%d] deleteGcpCloudAccountNoContent ", 204)
 }
 
@@ -104,7 +165,8 @@ func NewDeleteGcpCloudAccountForbidden() *DeleteGcpCloudAccountForbidden {
 	return &DeleteGcpCloudAccountForbidden{}
 }
 
-/* DeleteGcpCloudAccountForbidden describes a response with status code 403, with default header values.
+/*
+DeleteGcpCloudAccountForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -112,9 +174,39 @@ type DeleteGcpCloudAccountForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this delete gcp cloud account forbidden response has a 2xx status code
+func (o *DeleteGcpCloudAccountForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete gcp cloud account forbidden response has a 3xx status code
+func (o *DeleteGcpCloudAccountForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete gcp cloud account forbidden response has a 4xx status code
+func (o *DeleteGcpCloudAccountForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete gcp cloud account forbidden response has a 5xx status code
+func (o *DeleteGcpCloudAccountForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete gcp cloud account forbidden response a status code equal to that given
+func (o *DeleteGcpCloudAccountForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteGcpCloudAccountForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-gcp/{id}][%d] deleteGcpCloudAccountForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DeleteGcpCloudAccountForbidden) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-gcp/{id}][%d] deleteGcpCloudAccountForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DeleteGcpCloudAccountForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

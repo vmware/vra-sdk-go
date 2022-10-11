@@ -51,24 +51,55 @@ func NewGetMachineSnapshotOK() *GetMachineSnapshotOK {
 	return &GetMachineSnapshotOK{}
 }
 
-/* GetMachineSnapshotOK describes a response with status code 200, with default header values.
+/*
+GetMachineSnapshotOK describes a response with status code 200, with default header values.
 
 successful operation
 */
 type GetMachineSnapshotOK struct {
-	Payload *models.BlockDevice
+	Payload *models.Snapshot
+}
+
+// IsSuccess returns true when this get machine snapshot o k response has a 2xx status code
+func (o *GetMachineSnapshotOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get machine snapshot o k response has a 3xx status code
+func (o *GetMachineSnapshotOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get machine snapshot o k response has a 4xx status code
+func (o *GetMachineSnapshotOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get machine snapshot o k response has a 5xx status code
+func (o *GetMachineSnapshotOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get machine snapshot o k response a status code equal to that given
+func (o *GetMachineSnapshotOK) IsCode(code int) bool {
+	return code == 200
 }
 
 func (o *GetMachineSnapshotOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/machines/{id}/snapshots/{snapshotId}][%d] getMachineSnapshotOK  %+v", 200, o.Payload)
 }
-func (o *GetMachineSnapshotOK) GetPayload() *models.BlockDevice {
+
+func (o *GetMachineSnapshotOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/machines/{id}/snapshots/{snapshotId}][%d] getMachineSnapshotOK  %+v", 200, o.Payload)
+}
+
+func (o *GetMachineSnapshotOK) GetPayload() *models.Snapshot {
 	return o.Payload
 }
 
 func (o *GetMachineSnapshotOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.BlockDevice)
+	o.Payload = new(models.Snapshot)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -83,7 +114,8 @@ func NewGetMachineSnapshotForbidden() *GetMachineSnapshotForbidden {
 	return &GetMachineSnapshotForbidden{}
 }
 
-/* GetMachineSnapshotForbidden describes a response with status code 403, with default header values.
+/*
+GetMachineSnapshotForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type GetMachineSnapshotForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get machine snapshot forbidden response has a 2xx status code
+func (o *GetMachineSnapshotForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get machine snapshot forbidden response has a 3xx status code
+func (o *GetMachineSnapshotForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get machine snapshot forbidden response has a 4xx status code
+func (o *GetMachineSnapshotForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get machine snapshot forbidden response has a 5xx status code
+func (o *GetMachineSnapshotForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get machine snapshot forbidden response a status code equal to that given
+func (o *GetMachineSnapshotForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetMachineSnapshotForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/machines/{id}/snapshots/{snapshotId}][%d] getMachineSnapshotForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetMachineSnapshotForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/machines/{id}/snapshots/{snapshotId}][%d] getMachineSnapshotForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetMachineSnapshotForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewGetMachineSnapshotNotFound() *GetMachineSnapshotNotFound {
 	return &GetMachineSnapshotNotFound{}
 }
 
-/* GetMachineSnapshotNotFound describes a response with status code 404, with default header values.
+/*
+GetMachineSnapshotNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type GetMachineSnapshotNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get machine snapshot not found response has a 2xx status code
+func (o *GetMachineSnapshotNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get machine snapshot not found response has a 3xx status code
+func (o *GetMachineSnapshotNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get machine snapshot not found response has a 4xx status code
+func (o *GetMachineSnapshotNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get machine snapshot not found response has a 5xx status code
+func (o *GetMachineSnapshotNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get machine snapshot not found response a status code equal to that given
+func (o *GetMachineSnapshotNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetMachineSnapshotNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/machines/{id}/snapshots/{snapshotId}][%d] getMachineSnapshotNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetMachineSnapshotNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/machines/{id}/snapshots/{snapshotId}][%d] getMachineSnapshotNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetMachineSnapshotNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

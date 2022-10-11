@@ -53,10 +53,12 @@ func NewGetDataCollectorsParamsWithHTTPClient(client *http.Client) *GetDataColle
 	}
 }
 
-/* GetDataCollectorsParams contains all the parameters to send to the API endpoint
-   for the get data collectors operation.
+/*
+GetDataCollectorsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get data collectors operation.
+
+	Typically these are written to a http.Request.
 */
 type GetDataCollectorsParams struct {
 

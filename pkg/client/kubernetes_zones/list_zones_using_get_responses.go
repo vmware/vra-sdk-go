@@ -29,6 +29,12 @@ func (o *ListZonesUsingGETReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return result, nil
+	case 403:
+		result := NewListZonesUsingGETForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +45,8 @@ func NewListZonesUsingGETOK() *ListZonesUsingGETOK {
 	return &ListZonesUsingGETOK{}
 }
 
-/* ListZonesUsingGETOK describes a response with status code 200, with default header values.
+/*
+ListZonesUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +54,39 @@ type ListZonesUsingGETOK struct {
 	Payload *models.PageOfK8SZone
 }
 
+// IsSuccess returns true when this list zones using g e t o k response has a 2xx status code
+func (o *ListZonesUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this list zones using g e t o k response has a 3xx status code
+func (o *ListZonesUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this list zones using g e t o k response has a 4xx status code
+func (o *ListZonesUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this list zones using g e t o k response has a 5xx status code
+func (o *ListZonesUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this list zones using g e t o k response a status code equal to that given
+func (o *ListZonesUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ListZonesUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /cmx/api/resources/k8s-zones][%d] listZonesUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *ListZonesUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/k8s-zones][%d] listZonesUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *ListZonesUsingGETOK) GetPayload() *models.PageOfK8SZone {
 	return o.Payload
 }
@@ -62,6 +99,57 @@ func (o *ListZonesUsingGETOK) readResponse(response runtime.ClientResponse, cons
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewListZonesUsingGETForbidden creates a ListZonesUsingGETForbidden with default headers values
+func NewListZonesUsingGETForbidden() *ListZonesUsingGETForbidden {
+	return &ListZonesUsingGETForbidden{}
+}
+
+/*
+ListZonesUsingGETForbidden describes a response with status code 403, with default header values.
+
+Forbidden, the user lacks permissions
+*/
+type ListZonesUsingGETForbidden struct {
+}
+
+// IsSuccess returns true when this list zones using g e t forbidden response has a 2xx status code
+func (o *ListZonesUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this list zones using g e t forbidden response has a 3xx status code
+func (o *ListZonesUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this list zones using g e t forbidden response has a 4xx status code
+func (o *ListZonesUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this list zones using g e t forbidden response has a 5xx status code
+func (o *ListZonesUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this list zones using g e t forbidden response a status code equal to that given
+func (o *ListZonesUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *ListZonesUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/k8s-zones][%d] listZonesUsingGETForbidden ", 403)
+}
+
+func (o *ListZonesUsingGETForbidden) String() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/k8s-zones][%d] listZonesUsingGETForbidden ", 403)
+}
+
+func (o *ListZonesUsingGETForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

@@ -51,7 +51,8 @@ func NewGetStorageProfileOK() *GetStorageProfileOK {
 	return &GetStorageProfileOK{}
 }
 
-/* GetStorageProfileOK describes a response with status code 200, with default header values.
+/*
+GetStorageProfileOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetStorageProfileOK struct {
 	Payload *models.StorageProfile
 }
 
+// IsSuccess returns true when this get storage profile o k response has a 2xx status code
+func (o *GetStorageProfileOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get storage profile o k response has a 3xx status code
+func (o *GetStorageProfileOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get storage profile o k response has a 4xx status code
+func (o *GetStorageProfileOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get storage profile o k response has a 5xx status code
+func (o *GetStorageProfileOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get storage profile o k response a status code equal to that given
+func (o *GetStorageProfileOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetStorageProfileOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/storage-profiles/{id}][%d] getStorageProfileOK  %+v", 200, o.Payload)
 }
+
+func (o *GetStorageProfileOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/storage-profiles/{id}][%d] getStorageProfileOK  %+v", 200, o.Payload)
+}
+
 func (o *GetStorageProfileOK) GetPayload() *models.StorageProfile {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetStorageProfileForbidden() *GetStorageProfileForbidden {
 	return &GetStorageProfileForbidden{}
 }
 
-/* GetStorageProfileForbidden describes a response with status code 403, with default header values.
+/*
+GetStorageProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type GetStorageProfileForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get storage profile forbidden response has a 2xx status code
+func (o *GetStorageProfileForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get storage profile forbidden response has a 3xx status code
+func (o *GetStorageProfileForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get storage profile forbidden response has a 4xx status code
+func (o *GetStorageProfileForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get storage profile forbidden response has a 5xx status code
+func (o *GetStorageProfileForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get storage profile forbidden response a status code equal to that given
+func (o *GetStorageProfileForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetStorageProfileForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/storage-profiles/{id}][%d] getStorageProfileForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetStorageProfileForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/storage-profiles/{id}][%d] getStorageProfileForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetStorageProfileForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewGetStorageProfileNotFound() *GetStorageProfileNotFound {
 	return &GetStorageProfileNotFound{}
 }
 
-/* GetStorageProfileNotFound describes a response with status code 404, with default header values.
+/*
+GetStorageProfileNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type GetStorageProfileNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get storage profile not found response has a 2xx status code
+func (o *GetStorageProfileNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get storage profile not found response has a 3xx status code
+func (o *GetStorageProfileNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get storage profile not found response has a 4xx status code
+func (o *GetStorageProfileNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get storage profile not found response has a 5xx status code
+func (o *GetStorageProfileNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get storage profile not found response a status code equal to that given
+func (o *GetStorageProfileNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetStorageProfileNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/storage-profiles/{id}][%d] getStorageProfileNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetStorageProfileNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/storage-profiles/{id}][%d] getStorageProfileNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetStorageProfileNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

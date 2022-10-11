@@ -53,10 +53,12 @@ func NewListBlueprintRequestsUsingGET1ParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* ListBlueprintRequestsUsingGET1Params contains all the parameters to send to the API endpoint
-   for the list blueprint requests using get1 operation.
+/*
+ListBlueprintRequestsUsingGET1Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the list blueprint requests using get1 operation.
+
+	Typically these are written to a http.Request.
 */
 type ListBlueprintRequestsUsingGET1Params struct {
 

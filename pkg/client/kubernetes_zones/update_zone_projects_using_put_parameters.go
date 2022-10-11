@@ -54,10 +54,12 @@ func NewUpdateZoneProjectsUsingPUTParamsWithHTTPClient(client *http.Client) *Upd
 	}
 }
 
-/* UpdateZoneProjectsUsingPUTParams contains all the parameters to send to the API endpoint
-   for the update zone projects using p u t operation.
+/*
+UpdateZoneProjectsUsingPUTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update zone projects using p u t operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateZoneProjectsUsingPUTParams struct {
 

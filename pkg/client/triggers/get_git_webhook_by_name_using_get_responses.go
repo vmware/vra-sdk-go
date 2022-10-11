@@ -63,7 +63,8 @@ func NewGetGitWebhookByNameUsingGETOK() *GetGitWebhookByNameUsingGETOK {
 	return &GetGitWebhookByNameUsingGETOK{}
 }
 
-/* GetGitWebhookByNameUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetGitWebhookByNameUsingGETOK describes a response with status code 200, with default header values.
 
 'Success' with Git Webhook
 */
@@ -71,9 +72,39 @@ type GetGitWebhookByNameUsingGETOK struct {
 	Payload models.GitWebhook
 }
 
+// IsSuccess returns true when this get git webhook by name using g e t o k response has a 2xx status code
+func (o *GetGitWebhookByNameUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get git webhook by name using g e t o k response has a 3xx status code
+func (o *GetGitWebhookByNameUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get git webhook by name using g e t o k response has a 4xx status code
+func (o *GetGitWebhookByNameUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get git webhook by name using g e t o k response has a 5xx status code
+func (o *GetGitWebhookByNameUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get git webhook by name using g e t o k response a status code equal to that given
+func (o *GetGitWebhookByNameUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetGitWebhookByNameUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/git-webhooks/{project}/{name}][%d] getGitWebhookByNameUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetGitWebhookByNameUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /codestream/api/git-webhooks/{project}/{name}][%d] getGitWebhookByNameUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetGitWebhookByNameUsingGETOK) GetPayload() models.GitWebhook {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewGetGitWebhookByNameUsingGETUnauthorized() *GetGitWebhookByNameUsingGETUn
 	return &GetGitWebhookByNameUsingGETUnauthorized{}
 }
 
-/* GetGitWebhookByNameUsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+GetGitWebhookByNameUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type GetGitWebhookByNameUsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this get git webhook by name using g e t unauthorized response has a 2xx status code
+func (o *GetGitWebhookByNameUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get git webhook by name using g e t unauthorized response has a 3xx status code
+func (o *GetGitWebhookByNameUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get git webhook by name using g e t unauthorized response has a 4xx status code
+func (o *GetGitWebhookByNameUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get git webhook by name using g e t unauthorized response has a 5xx status code
+func (o *GetGitWebhookByNameUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get git webhook by name using g e t unauthorized response a status code equal to that given
+func (o *GetGitWebhookByNameUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetGitWebhookByNameUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/git-webhooks/{project}/{name}][%d] getGitWebhookByNameUsingGETUnauthorized ", 401)
+}
+
+func (o *GetGitWebhookByNameUsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /codestream/api/git-webhooks/{project}/{name}][%d] getGitWebhookByNameUsingGETUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewGetGitWebhookByNameUsingGETForbidden() *GetGitWebhookByNameUsingGETForbi
 	return &GetGitWebhookByNameUsingGETForbidden{}
 }
 
-/* GetGitWebhookByNameUsingGETForbidden describes a response with status code 403, with default header values.
+/*
+GetGitWebhookByNameUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetGitWebhookByNameUsingGETForbidden struct {
 }
 
+// IsSuccess returns true when this get git webhook by name using g e t forbidden response has a 2xx status code
+func (o *GetGitWebhookByNameUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get git webhook by name using g e t forbidden response has a 3xx status code
+func (o *GetGitWebhookByNameUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get git webhook by name using g e t forbidden response has a 4xx status code
+func (o *GetGitWebhookByNameUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get git webhook by name using g e t forbidden response has a 5xx status code
+func (o *GetGitWebhookByNameUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get git webhook by name using g e t forbidden response a status code equal to that given
+func (o *GetGitWebhookByNameUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetGitWebhookByNameUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/git-webhooks/{project}/{name}][%d] getGitWebhookByNameUsingGETForbidden ", 403)
+}
+
+func (o *GetGitWebhookByNameUsingGETForbidden) String() string {
 	return fmt.Sprintf("[GET /codestream/api/git-webhooks/{project}/{name}][%d] getGitWebhookByNameUsingGETForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewGetGitWebhookByNameUsingGETNotFound() *GetGitWebhookByNameUsingGETNotFou
 	return &GetGitWebhookByNameUsingGETNotFound{}
 }
 
-/* GetGitWebhookByNameUsingGETNotFound describes a response with status code 404, with default header values.
+/*
+GetGitWebhookByNameUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type GetGitWebhookByNameUsingGETNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get git webhook by name using g e t not found response has a 2xx status code
+func (o *GetGitWebhookByNameUsingGETNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get git webhook by name using g e t not found response has a 3xx status code
+func (o *GetGitWebhookByNameUsingGETNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get git webhook by name using g e t not found response has a 4xx status code
+func (o *GetGitWebhookByNameUsingGETNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get git webhook by name using g e t not found response has a 5xx status code
+func (o *GetGitWebhookByNameUsingGETNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get git webhook by name using g e t not found response a status code equal to that given
+func (o *GetGitWebhookByNameUsingGETNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetGitWebhookByNameUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/git-webhooks/{project}/{name}][%d] getGitWebhookByNameUsingGETNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetGitWebhookByNameUsingGETNotFound) String() string {
+	return fmt.Sprintf("[GET /codestream/api/git-webhooks/{project}/{name}][%d] getGitWebhookByNameUsingGETNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetGitWebhookByNameUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewGetGitWebhookByNameUsingGETInternalServerError() *GetGitWebhookByNameUsi
 	return &GetGitWebhookByNameUsingGETInternalServerError{}
 }
 
-/* GetGitWebhookByNameUsingGETInternalServerError describes a response with status code 500, with default header values.
+/*
+GetGitWebhookByNameUsingGETInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type GetGitWebhookByNameUsingGETInternalServerError struct {
 }
 
+// IsSuccess returns true when this get git webhook by name using g e t internal server error response has a 2xx status code
+func (o *GetGitWebhookByNameUsingGETInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get git webhook by name using g e t internal server error response has a 3xx status code
+func (o *GetGitWebhookByNameUsingGETInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get git webhook by name using g e t internal server error response has a 4xx status code
+func (o *GetGitWebhookByNameUsingGETInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get git webhook by name using g e t internal server error response has a 5xx status code
+func (o *GetGitWebhookByNameUsingGETInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this get git webhook by name using g e t internal server error response a status code equal to that given
+func (o *GetGitWebhookByNameUsingGETInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GetGitWebhookByNameUsingGETInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/git-webhooks/{project}/{name}][%d] getGitWebhookByNameUsingGETInternalServerError ", 500)
+}
+
+func (o *GetGitWebhookByNameUsingGETInternalServerError) String() string {
 	return fmt.Sprintf("[GET /codestream/api/git-webhooks/{project}/{name}][%d] getGitWebhookByNameUsingGETInternalServerError ", 500)
 }
 

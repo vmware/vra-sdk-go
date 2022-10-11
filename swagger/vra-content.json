@@ -1,9 +1,13 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "APIs for Marketplace and Source Control Integration",
+        "description": "APIs for Content and Source Control Integration",
         "version": "2019-01-15",
-        "title": "VMware Cloud Assembly Content APIs"
+        "title": "VMware Cloud Assembly Content APIs",
+        "license": {
+            "name": "Copyright (c) 2022 VMware, Inc. All Rights Reserved.",
+            "url": "https://www.vmware.com/cloud-solutions.html"
+        }
     },
     "host": "api.mgmt.cloud.vmware.com",
     "basePath": "/",
@@ -15,14 +19,6 @@
         {
             "name": "Content Source",
             "description": "Content Source API"
-        },
-        {
-            "name": "Marketplace",
-            "description": "Marketplace API"
-        },
-        {
-            "name": "Marketplace Downloads",
-            "description": "Marketplace Download API"
         },
         {
             "name": "Source Control Sync",
@@ -54,467 +50,15 @@
                         "schema": {
                             "$ref": "#/definitions/ContentAbout"
                         }
-                    }
-                },
-                "deprecated": false
-            }
-        },
-        "/content/api/marketplace/download-history": {
-            "get": {
-                "tags": [
-                    "Marketplace Downloads"
-                ],
-                "summary": "Get download history",
-                "description": "Get download history for the content downloaded from Marketplace",
-                "operationId": "downloadHistoryUsingGET",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "apiVersion",
-                        "in": "query",
-                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information, please refer to /content/api/about",
-                        "required": false,
-                        "type": "string"
                     },
-                    {
-                        "name": "contentName",
-                        "in": "query",
-                        "description": "Search based on content name",
-                        "required": false,
-                        "type": "string"
+                    "401": {
+                        "description": "Unauthorized"
                     },
-                    {
-                        "name": "contentType",
-                        "in": "query",
-                        "description": "Search based on content type",
-                        "required": false,
-                        "type": "string",
-                        "enum": [
-                            "BLUEPRINT",
-                            "IMAGE",
-                            "ABX_SCRIPTS",
-                            "TERRAFORM_CONFIGURATION"
-                        ]
-                    },
-                    {
-                        "name": "status",
-                        "in": "query",
-                        "description": "Search based on download status",
-                        "required": false,
-                        "type": "string",
-                        "enum": [
-                            "FAILED",
-                            "ADDED"
-                        ]
-                    },
-                    {
-                        "name": "targetIds",
-                        "in": "query",
-                        "description": "Search based on target Ids",
-                        "required": false,
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "multi"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Download history",
-                        "schema": {
-                            "$ref": "#/definitions/MarketplaceDownloadHistory"
-                        }
-                    }
-                },
-                "deprecated": false
-            }
-        },
-        "/content/api/marketplace/download-requests": {
-            "post": {
-                "tags": [
-                    "Marketplace Downloads"
-                ],
-                "summary": "Submit download request",
-                "description": "Submit a download request for a content",
-                "operationId": "downloadRequestUsingPOST",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "apiVersion",
-                        "in": "query",
-                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information, please refer to /content/api/about",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "downloadRequest",
-                        "description": "downloadRequest",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/MarketplaceContentDownloadRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "202": {
-                        "description": "Submitted download request",
-                        "schema": {
-                            "$ref": "#/definitions/MarketplaceContentDownloadRequest"
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid source type"
+                    "403": {
+                        "description": "Forbidden"
                     },
                     "404": {
-                        "description": "source not found"
-                    }
-                },
-                "deprecated": false
-            }
-        },
-        "/content/api/marketplace/download-requests/{id}": {
-            "get": {
-                "tags": [
-                    "Marketplace Downloads"
-                ],
-                "summary": "Get download request",
-                "description": "Get a download request by Id",
-                "operationId": "getRequestByIdUsingGET",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "apiVersion",
-                        "in": "query",
-                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information, please refer to /content/api/about",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "ID of the download request",
-                        "required": true,
-                        "type": "string",
-                        "format": "uuid"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Download request for id",
-                        "schema": {
-                            "$ref": "#/definitions/MarketplaceContentDownloadRequest"
-                        }
-                    },
-                    "404": {
-                        "description": "request not found"
-                    }
-                },
-                "deprecated": false
-            }
-        },
-        "/content/api/marketplace/sources/{sourceId}/contents": {
-            "get": {
-                "tags": [
-                    "Marketplace"
-                ],
-                "summary": "Search for content based on the search term",
-                "operationId": "search",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "apiVersion",
-                        "in": "query",
-                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information, please refer to /content/api/about",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "search",
-                        "in": "query",
-                        "description": "Full-text search term",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "sourceId",
-                        "in": "path",
-                        "description": "Content Source Id",
-                        "required": true,
-                        "type": "string",
-                        "format": "uuid"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Search result",
-                        "schema": {
-                            "$ref": "#/definitions/MarketplaceContents"
-                        }
-                    },
-                    "404": {
-                        "description": "Source not found"
-                    }
-                },
-                "deprecated": false
-            }
-        },
-        "/content/api/marketplace/sources/{sourceId}/contents/{contentId}": {
-            "get": {
-                "tags": [
-                    "Marketplace"
-                ],
-                "summary": "Get content details",
-                "operationId": "getDetails",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "apiVersion",
-                        "in": "query",
-                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information, please refer to /content/api/about",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "contentId",
-                        "in": "path",
-                        "description": "Content Id",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "sourceId",
-                        "in": "path",
-                        "description": "Content Source Id",
-                        "required": true,
-                        "type": "string",
-                        "format": "uuid"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Content Details",
-                        "schema": {
-                            "$ref": "#/definitions/MarketplaceContent"
-                        }
-                    },
-                    "404": {
-                        "description": "Source or Content not found"
-                    }
-                },
-                "deprecated": false
-            }
-        },
-        "/content/api/marketplace/sources/{sourceId}/contents/{contentId}/link": {
-            "get": {
-                "tags": [
-                    "Marketplace"
-                ],
-                "summary": "Get link to the content",
-                "operationId": "getLink",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "apiVersion",
-                        "in": "query",
-                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information, please refer to /content/api/about",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "contentId",
-                        "in": "path",
-                        "description": "Content Id",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "sourceId",
-                        "in": "path",
-                        "description": "Content Source Id",
-                        "required": true,
-                        "type": "string",
-                        "format": "uuid"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Link to Content",
-                        "schema": {
-                            "$ref": "#/definitions/MarketplaceContentLink"
-                        }
-                    },
-                    "404": {
-                        "description": "Source or Content not found"
-                    }
-                },
-                "deprecated": false
-            }
-        },
-        "/content/api/marketplace/sources/{sourceId}/contents/{contentId}/reviews": {
-            "get": {
-                "tags": [
-                    "Marketplace"
-                ],
-                "summary": "Get reviews for the content",
-                "operationId": "getReviews",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "apiVersion",
-                        "in": "query",
-                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information, please refer to /content/api/about",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "contentId",
-                        "in": "path",
-                        "description": "Content Id",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "sourceId",
-                        "in": "path",
-                        "description": "Content Source Id",
-                        "required": true,
-                        "type": "string",
-                        "format": "uuid"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Content Reviews",
-                        "schema": {
-                            "$ref": "#/definitions/MarketplaceContentReviews"
-                        }
-                    },
-                    "404": {
-                        "description": "Source or Content not found"
-                    }
-                },
-                "deprecated": false
-            }
-        },
-        "/content/api/marketplace/sources/{sourceId}/filters": {
-            "get": {
-                "tags": [
-                    "Marketplace"
-                ],
-                "summary": "Lists filters by endpoint",
-                "operationId": "filtersUsingGET",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "apiVersion",
-                        "in": "query",
-                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information, please refer to /content/api/about",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "expand",
-                        "in": "query",
-                        "description": "expand",
-                        "required": false,
-                        "type": "boolean",
-                        "default": false,
-                        "allowEmptyValue": false,
-                        "x-example": false
-                    },
-                    {
-                        "name": "sourceId",
-                        "in": "path",
-                        "description": "Content Source Id",
-                        "required": true,
-                        "type": "string",
-                        "format": "uuid"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Marketplace filters",
-                        "schema": {
-                            "$ref": "#/definitions/MarketplaceFilterSchema"
-                        }
-                    },
-                    "404": {
-                        "description": "Source not found"
-                    }
-                },
-                "deprecated": false
-            }
-        },
-        "/content/api/marketplace/sources/{sourceId}/filters/{filterId}": {
-            "get": {
-                "tags": [
-                    "Marketplace"
-                ],
-                "summary": "Lists filter entries for a filter",
-                "operationId": "filterItemsUsingGET",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "apiVersion",
-                        "in": "query",
-                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information, please refer to /content/api/about",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "filterId",
-                        "in": "path",
-                        "description": "Filter type",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name",
-                        "in": "query",
-                        "description": "Filters items by name",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": false
-                    },
-                    {
-                        "name": "sourceId",
-                        "in": "path",
-                        "description": "Content Source Id",
-                        "required": true,
-                        "type": "string",
-                        "format": "uuid"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Filter entries",
-                        "schema": {
-                            "$ref": "#/definitions/MarketplaceFilterEntries"
-                        }
-                    },
-                    "404": {
-                        "description": "Source or Filter not found"
+                        "description": "Not Found"
                     }
                 },
                 "deprecated": false
@@ -558,6 +102,15 @@
                         "schema": {
                             "$ref": "#/definitions/SourceControlSyncRequests"
                         }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
                     }
                 },
                 "deprecated": false
@@ -647,6 +200,15 @@
                         "schema": {
                             "$ref": "#/definitions/SourceControlSyncHistory"
                         }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
                     }
                 },
                 "deprecated": false
@@ -828,6 +390,7 @@
                             "enum": [
                                 "com.gitlab",
                                 "com.github",
+                                "com.github.enterprise",
                                 "com.vmware.marketplace"
                             ]
                         },
@@ -835,6 +398,7 @@
                         "enum": [
                             "com.gitlab",
                             "com.github",
+                            "com.github.enterprise",
                             "com.vmware.marketplace"
                         ]
                     }
@@ -845,6 +409,15 @@
                         "schema": {
                             "$ref": "#/definitions/ContentSources"
                         }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
                     }
                 },
                 "deprecated": false
@@ -931,6 +504,12 @@
                             "$ref": "#/definitions/ContentSource"
                         }
                     },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
                     "404": {
                         "description": "Content source not found"
                     }
@@ -966,6 +545,15 @@
                 "responses": {
                     "204": {
                         "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
                     }
                 },
                 "deprecated": false
@@ -1140,6 +728,15 @@
                 "responses": {
                     "204": {
                         "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
                     }
                 },
                 "deprecated": false
@@ -1148,7 +745,7 @@
                 "tags": [
                     "VCF"
                 ],
-                "summary": "patchServiceAccount",
+                "summary": "Patch a service account",
                 "operationId": "patchServiceAccountUsingPATCH",
                 "produces": [
                     "application/json"
@@ -1190,6 +787,23 @@
                                 "$ref": "#/definitions/VcfServiceCredential"
                             }
                         }
+                    },
+                    "204": {
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/VcfServiceCredential"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
                     }
                 },
                 "deprecated": false
@@ -1231,6 +845,15 @@
                 "responses": {
                     "204": {
                         "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
                     }
                 },
                 "deprecated": false
@@ -1313,7 +936,8 @@
                         "repository": "string",
                         "branch": "string",
                         "path": "string",
-                        "endpointId": "string"
+                        "endpointId": "string",
+                        "requestScopeOrg": "boolean"
                     },
                     "description": "Source custom configuration"
                 },
@@ -1371,6 +995,7 @@
                     "description": "Content Source type",
                     "enum": [
                         "com.github",
+                        "com.github.enterprise",
                         "com.gitlab",
                         "org.bitbucket",
                         "com.vmware.marketplace"
@@ -1424,24 +1049,6 @@
             },
             "title": "CustomProperties"
         },
-        "Document": {
-            "type": "object",
-            "properties": {
-                "downloadUrl": {
-                    "type": "string",
-                    "description": "Document Link"
-                },
-                "title": {
-                    "type": "string",
-                    "description": "Document Title"
-                },
-                "type": {
-                    "type": "string",
-                    "description": "Document Type"
-                }
-            },
-            "title": "Document"
-        },
         "EndpointProperties": {
             "type": "object",
             "properties": {
@@ -1478,17 +1085,6 @@
             },
             "title": "EndpointProperties"
         },
-        "ExecutionMessage": {
-            "type": "object",
-            "properties": {
-                "message": {
-                    "type": "string",
-                    "description": "Execution Message",
-                    "readOnly": true
-                }
-            },
-            "title": "ExecutionMessage"
-        },
         "Link": {
             "type": "object",
             "properties": {
@@ -1500,437 +1096,6 @@
                 }
             },
             "title": "Link"
-        },
-        "MarketplaceContent": {
-            "type": "object",
-            "properties": {
-                "description": {
-                    "type": "string",
-                    "description": "Description"
-                },
-                "developer": {
-                    "type": "string",
-                    "description": "Developer"
-                },
-                "displayName": {
-                    "type": "string",
-                    "description": "Display Name"
-                },
-                "documents": {
-                    "type": "array",
-                    "description": "Documents",
-                    "items": {
-                        "$ref": "#/definitions/Document"
-                    }
-                },
-                "eula": {
-                    "type": "string",
-                    "description": "EULA"
-                },
-                "highlights": {
-                    "type": "array",
-                    "description": "Highlights",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "icon": {
-                    "type": "string",
-                    "description": "Icon"
-                },
-                "id": {
-                    "type": "string",
-                    "description": "ID"
-                },
-                "overview": {
-                    "type": "string",
-                    "description": "Overview"
-                },
-                "rating": {
-                    "type": "string",
-                    "description": "Rating"
-                },
-                "screenshots": {
-                    "type": "array",
-                    "description": "Screenshots",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "shortName": {
-                    "type": "string",
-                    "description": "Short Name"
-                },
-                "support": {
-                    "$ref": "#/definitions/Support"
-                },
-                "techSpecs": {
-                    "type": "string",
-                    "description": "Tech Specs"
-                },
-                "totalReviews": {
-                    "type": "integer",
-                    "format": "int32",
-                    "description": "Total Reviews"
-                },
-                "updatedAt": {
-                    "type": "string",
-                    "format": "date-time",
-                    "description": "Updated Date"
-                },
-                "version": {
-                    "type": "string",
-                    "description": "Version"
-                },
-                "video": {
-                    "type": "string",
-                    "description": "Video"
-                }
-            },
-            "title": "MarketplaceContent"
-        },
-        "MarketplaceContentDownloadRequest": {
-            "type": "object",
-            "required": [
-                "contentId",
-                "contentName",
-                "contentType",
-                "sourceId",
-                "targetId",
-                "targetType"
-            ],
-            "properties": {
-                "contentId": {
-                    "type": "string",
-                    "description": "Content Id"
-                },
-                "contentName": {
-                    "type": "string",
-                    "description": "Content Name"
-                },
-                "contentType": {
-                    "type": "string",
-                    "description": "Content Type",
-                    "enum": [
-                        "BLUEPRINT",
-                        "IMAGE",
-                        "ABX_SCRIPTS",
-                        "TERRAFORM_CONFIGURATION"
-                    ]
-                },
-                "createdAt": {
-                    "type": "string",
-                    "format": "date-time",
-                    "description": "Request Created Time",
-                    "readOnly": true
-                },
-                "downloadedContentId": {
-                    "type": "string",
-                    "description": "Downloaded Content Id",
-                    "readOnly": true
-                },
-                "executionMessages": {
-                    "type": "array",
-                    "description": "Execution Messages",
-                    "readOnly": true,
-                    "items": {
-                        "$ref": "#/definitions/ExecutionMessage"
-                    }
-                },
-                "id": {
-                    "type": "string",
-                    "format": "uuid",
-                    "description": "Request Id",
-                    "readOnly": true
-                },
-                "lastUpdatedAt": {
-                    "type": "string",
-                    "format": "date-time",
-                    "description": "Request Last Updated Time",
-                    "readOnly": true
-                },
-                "sourceId": {
-                    "type": "string",
-                    "format": "uuid",
-                    "description": "Content Source Id"
-                },
-                "status": {
-                    "type": "string",
-                    "description": "Request Status",
-                    "readOnly": true
-                },
-                "targetId": {
-                    "type": "string",
-                    "description": "Target Id"
-                },
-                "targetType": {
-                    "type": "string",
-                    "description": "Target Type",
-                    "enum": [
-                        "PROJECT"
-                    ]
-                }
-            },
-            "title": "MarketplaceContentDownloadRequest"
-        },
-        "MarketplaceContentLink": {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "Content Id"
-                },
-                "link": {
-                    "type": "string",
-                    "description": "Content Link"
-                }
-            },
-            "title": "MarketplaceContentLink"
-        },
-        "MarketplaceContentReview": {
-            "type": "object",
-            "properties": {
-                "comment": {
-                    "type": "string",
-                    "description": "Comment"
-                },
-                "contentId": {
-                    "type": "string",
-                    "description": "Content ID"
-                },
-                "id": {
-                    "type": "string",
-                    "description": "Review ID"
-                },
-                "rating": {
-                    "type": "string",
-                    "description": "Rating"
-                },
-                "title": {
-                    "type": "string",
-                    "description": "Title"
-                },
-                "user": {
-                    "type": "string",
-                    "description": "User"
-                }
-            },
-            "title": "MarketplaceContentReview"
-        },
-        "MarketplaceContentReviews": {
-            "type": "object",
-            "properties": {
-                "content": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/MarketplaceContentReview"
-                    }
-                },
-                "links": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Link"
-                    }
-                },
-                "page": {
-                    "$ref": "#/definitions/PageMetadata"
-                }
-            },
-            "title": "MarketplaceContentReviews"
-        },
-        "MarketplaceContents": {
-            "type": "object",
-            "properties": {
-                "content": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/MarketplaceContent"
-                    }
-                },
-                "links": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Link"
-                    }
-                },
-                "page": {
-                    "$ref": "#/definitions/PageMetadata"
-                }
-            },
-            "title": "MarketplaceContents"
-        },
-        "MarketplaceDownloadHistory": {
-            "type": "object",
-            "properties": {
-                "content": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/MarketplaceDownloadHistoryItem"
-                    }
-                },
-                "links": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Link"
-                    }
-                },
-                "page": {
-                    "$ref": "#/definitions/PageMetadata"
-                }
-            },
-            "title": "MarketplaceDownloadHistory"
-        },
-        "MarketplaceDownloadHistoryItem": {
-            "type": "object",
-            "properties": {
-                "contentId": {
-                    "type": "string",
-                    "description": "Downloaded Content Id"
-                },
-                "contentName": {
-                    "type": "string",
-                    "description": "Downloaded Content Name"
-                },
-                "contentType": {
-                    "type": "string",
-                    "description": "Downloaded Content Type",
-                    "enum": [
-                        "BLUEPRINT",
-                        "IMAGE",
-                        "ABX_SCRIPTS",
-                        "TERRAFORM_CONFIGURATION"
-                    ]
-                },
-                "downloadedOn": {
-                    "type": "string",
-                    "format": "date-time",
-                    "description": "Downloaded On"
-                },
-                "id": {
-                    "type": "string",
-                    "description": "History Id"
-                },
-                "status": {
-                    "type": "string",
-                    "description": "Download Status",
-                    "enum": [
-                        "FAILED",
-                        "ADDED"
-                    ]
-                },
-                "targetId": {
-                    "type": "string",
-                    "description": "Target Id"
-                },
-                "targetName": {
-                    "type": "string",
-                    "description": "Target Name"
-                },
-                "targetType": {
-                    "type": "string",
-                    "description": "Target Type",
-                    "enum": [
-                        "PROJECT"
-                    ]
-                },
-                "updatedOn": {
-                    "type": "string",
-                    "format": "date-time",
-                    "description": "Updated On"
-                },
-                "username": {
-                    "type": "string",
-                    "description": "Username"
-                }
-            },
-            "title": "MarketplaceDownloadHistoryItem"
-        },
-        "MarketplaceFilter": {
-            "type": "object",
-            "properties": {
-                "entries": {
-                    "$ref": "#/definitions/MarketplaceFilterEntries"
-                },
-                "id": {
-                    "type": "string",
-                    "description": "Filter Id"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "Filter Display Name"
-                },
-                "type": {
-                    "type": "string",
-                    "description": "Filter Type",
-                    "enum": [
-                        "COLLECTION",
-                        "DATE",
-                        "NUMBER"
-                    ]
-                },
-                "valueType": {
-                    "type": "string",
-                    "description": "Filter Value Type",
-                    "enum": [
-                        "RANGE",
-                        "SINGLE",
-                        "MULTIPLE"
-                    ]
-                }
-            },
-            "title": "MarketplaceFilter"
-        },
-        "MarketplaceFilterEntries": {
-            "type": "object",
-            "properties": {
-                "content": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/MarketplaceFilterEntry"
-                    }
-                },
-                "links": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Link"
-                    }
-                },
-                "page": {
-                    "$ref": "#/definitions/PageMetadata"
-                }
-            },
-            "title": "MarketplaceFilterEntries"
-        },
-        "MarketplaceFilterEntry": {
-            "type": "object",
-            "properties": {
-                "count": {
-                    "type": "integer",
-                    "format": "int64",
-                    "example": 0,
-                    "description": "Entry count for this filter"
-                },
-                "id": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "Filter Entry Display Name"
-                }
-            },
-            "title": "MarketplaceFilterEntry"
-        },
-        "MarketplaceFilterSchema": {
-            "type": "object",
-            "properties": {
-                "filters": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/MarketplaceFilter"
-                    }
-                }
-            },
-            "title": "MarketplaceFilterSchema"
         },
         "NsxAccount": {
             "type": "object",
@@ -2212,32 +1377,6 @@
                 }
             },
             "title": "SourceControlSyncRequests"
-        },
-        "Support": {
-            "type": "object",
-            "properties": {
-                "email": {
-                    "type": "string",
-                    "description": "Support Email"
-                },
-                "hours": {
-                    "type": "string",
-                    "description": "Support Hours"
-                },
-                "phone": {
-                    "type": "string",
-                    "description": "Support Phone"
-                },
-                "statement": {
-                    "type": "string",
-                    "description": "Support Statement"
-                },
-                "url": {
-                    "type": "string",
-                    "description": "Support URL"
-                }
-            },
-            "title": "Support"
         },
         "SupportedApi": {
             "type": "object",

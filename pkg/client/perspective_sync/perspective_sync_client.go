@@ -36,9 +36,9 @@ type ClientService interface {
 }
 
 /*
-  SyncPerspectiveGroupUsingPOST2 ons demand perspective sync
+SyncPerspectiveGroupUsingPOST2 ons demand perspective sync
 
-  To do on demand perspective sync for within the given org
+To do on demand perspective sync for within the given org
 */
 func (a *Client) SyncPerspectiveGroupUsingPOST2(params *SyncPerspectiveGroupUsingPOST2Params, opts ...ClientOption) (*SyncPerspectiveGroupUsingPOST2OK, *SyncPerspectiveGroupUsingPOST2Accepted, error) {
 	// TODO: Validate the params before sending

@@ -36,9 +36,9 @@ type ClientService interface {
 }
 
 /*
-  CountOfEntitiesInProjectUsingGET retrieves the count of entities per project
+CountOfEntitiesInProjectUsingGET retrieves the count of entities per project
 
-  Get all entities for a project by providing a project id
+Get all entities for a project by providing a project id
 */
 func (a *Client) CountOfEntitiesInProjectUsingGET(params *CountOfEntitiesInProjectUsingGETParams, opts ...ClientOption) (*CountOfEntitiesInProjectUsingGETOK, error) {
 	// TODO: Validate the params before sending

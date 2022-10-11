@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
@@ -310,7 +309,7 @@ func UnmarshalDockerRegistryWebHookSpecSlice(reader io.Reader, consumer runtime.
 // UnmarshalDockerRegistryWebHookSpec unmarshals polymorphic DockerRegistryWebHookSpec
 func UnmarshalDockerRegistryWebHookSpec(reader io.Reader, consumer runtime.Consumer) (DockerRegistryWebHookSpec, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}

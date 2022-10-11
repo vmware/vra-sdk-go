@@ -54,10 +54,12 @@ func NewCreateNsxTCloudAccountAsyncParamsWithHTTPClient(client *http.Client) *Cr
 	}
 }
 
-/* CreateNsxTCloudAccountAsyncParams contains all the parameters to send to the API endpoint
-   for the create nsx t cloud account async operation.
+/*
+CreateNsxTCloudAccountAsyncParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create nsx t cloud account async operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateNsxTCloudAccountAsyncParams struct {
 

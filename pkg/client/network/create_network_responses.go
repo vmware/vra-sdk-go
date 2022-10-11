@@ -51,7 +51,8 @@ func NewCreateNetworkAccepted() *CreateNetworkAccepted {
 	return &CreateNetworkAccepted{}
 }
 
-/* CreateNetworkAccepted describes a response with status code 202, with default header values.
+/*
+CreateNetworkAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type CreateNetworkAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this create network accepted response has a 2xx status code
+func (o *CreateNetworkAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create network accepted response has a 3xx status code
+func (o *CreateNetworkAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create network accepted response has a 4xx status code
+func (o *CreateNetworkAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create network accepted response has a 5xx status code
+func (o *CreateNetworkAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create network accepted response a status code equal to that given
+func (o *CreateNetworkAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateNetworkAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/networks][%d] createNetworkAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateNetworkAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/networks][%d] createNetworkAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateNetworkAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewCreateNetworkBadRequest() *CreateNetworkBadRequest {
 	return &CreateNetworkBadRequest{}
 }
 
-/* CreateNetworkBadRequest describes a response with status code 400, with default header values.
+/*
+CreateNetworkBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type CreateNetworkBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create network bad request response has a 2xx status code
+func (o *CreateNetworkBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create network bad request response has a 3xx status code
+func (o *CreateNetworkBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create network bad request response has a 4xx status code
+func (o *CreateNetworkBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create network bad request response has a 5xx status code
+func (o *CreateNetworkBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create network bad request response a status code equal to that given
+func (o *CreateNetworkBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateNetworkBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/networks][%d] createNetworkBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateNetworkBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/networks][%d] createNetworkBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateNetworkBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewCreateNetworkForbidden() *CreateNetworkForbidden {
 	return &CreateNetworkForbidden{}
 }
 
-/* CreateNetworkForbidden describes a response with status code 403, with default header values.
+/*
+CreateNetworkForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type CreateNetworkForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this create network forbidden response has a 2xx status code
+func (o *CreateNetworkForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create network forbidden response has a 3xx status code
+func (o *CreateNetworkForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create network forbidden response has a 4xx status code
+func (o *CreateNetworkForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create network forbidden response has a 5xx status code
+func (o *CreateNetworkForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create network forbidden response a status code equal to that given
+func (o *CreateNetworkForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateNetworkForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/networks][%d] createNetworkForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CreateNetworkForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/networks][%d] createNetworkForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CreateNetworkForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

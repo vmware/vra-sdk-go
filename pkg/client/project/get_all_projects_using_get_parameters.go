@@ -53,20 +53,20 @@ func NewGetAllProjectsUsingGETParamsWithHTTPClient(client *http.Client) *GetAllP
 	}
 }
 
-/* GetAllProjectsUsingGETParams contains all the parameters to send to the API endpoint
-   for the get all projects using g e t operation.
+/*
+GetAllProjectsUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get all projects using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetAllProjectsUsingGETParams struct {
 
 	/* DollarOrderby.
 
 	   Sorting criteria in the format: property (asc | desc). Default sort order is ascending.
-
-	   Format: int32
 	*/
-	DollarOrderby *int32
+	DollarOrderby *string
 
 	/* DollarSelect.
 
@@ -119,7 +119,7 @@ type GetAllProjectsUsingGETParams struct {
 
 	/* WithAnyPermission.
 
-	   Optional permissions that, if granted to the user, allow him access to the proper set of projects. If the user actually has any of those permissions, the 'excludeViewer' parameter has no effect.
+	   Optional permissions that, if granted to the users, allow them access to the proper set of projects. If the user actually has any of those permissions, the 'excludeViewer' parameter has no effect.
 	*/
 	WithAnyPermission []string
 
@@ -194,13 +194,13 @@ func (o *GetAllProjectsUsingGETParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithDollarOrderby adds the dollarOrderby to the get all projects using get params
-func (o *GetAllProjectsUsingGETParams) WithDollarOrderby(dollarOrderby *int32) *GetAllProjectsUsingGETParams {
+func (o *GetAllProjectsUsingGETParams) WithDollarOrderby(dollarOrderby *string) *GetAllProjectsUsingGETParams {
 	o.SetDollarOrderby(dollarOrderby)
 	return o
 }
 
 // SetDollarOrderby adds the dollarOrderby to the get all projects using get params
-func (o *GetAllProjectsUsingGETParams) SetDollarOrderby(dollarOrderby *int32) {
+func (o *GetAllProjectsUsingGETParams) SetDollarOrderby(dollarOrderby *string) {
 	o.DollarOrderby = dollarOrderby
 }
 
@@ -303,12 +303,12 @@ func (o *GetAllProjectsUsingGETParams) WriteToRequest(r runtime.ClientRequest, r
 	if o.DollarOrderby != nil {
 
 		// query param $orderby
-		var qrDollarOrderby int32
+		var qrDollarOrderby string
 
 		if o.DollarOrderby != nil {
 			qrDollarOrderby = *o.DollarOrderby
 		}
-		qDollarOrderby := swag.FormatInt32(qrDollarOrderby)
+		qDollarOrderby := qrDollarOrderby
 		if qDollarOrderby != "" {
 
 			if err := r.SetQueryParam("$orderby", qDollarOrderby); err != nil {

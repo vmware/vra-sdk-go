@@ -51,7 +51,8 @@ func NewCreateDeploymentCreated() *CreateDeploymentCreated {
 	return &CreateDeploymentCreated{}
 }
 
-/* CreateDeploymentCreated describes a response with status code 201, with default header values.
+/*
+CreateDeploymentCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type CreateDeploymentCreated struct {
 	Payload *models.IaaSDeployment
 }
 
+// IsSuccess returns true when this create deployment created response has a 2xx status code
+func (o *CreateDeploymentCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create deployment created response has a 3xx status code
+func (o *CreateDeploymentCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create deployment created response has a 4xx status code
+func (o *CreateDeploymentCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create deployment created response has a 5xx status code
+func (o *CreateDeploymentCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create deployment created response a status code equal to that given
+func (o *CreateDeploymentCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateDeploymentCreated) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/deployments][%d] createDeploymentCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateDeploymentCreated) String() string {
+	return fmt.Sprintf("[POST /iaas/api/deployments][%d] createDeploymentCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateDeploymentCreated) GetPayload() *models.IaaSDeployment {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewCreateDeploymentBadRequest() *CreateDeploymentBadRequest {
 	return &CreateDeploymentBadRequest{}
 }
 
-/* CreateDeploymentBadRequest describes a response with status code 400, with default header values.
+/*
+CreateDeploymentBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type CreateDeploymentBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create deployment bad request response has a 2xx status code
+func (o *CreateDeploymentBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create deployment bad request response has a 3xx status code
+func (o *CreateDeploymentBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create deployment bad request response has a 4xx status code
+func (o *CreateDeploymentBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create deployment bad request response has a 5xx status code
+func (o *CreateDeploymentBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create deployment bad request response a status code equal to that given
+func (o *CreateDeploymentBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateDeploymentBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/deployments][%d] createDeploymentBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateDeploymentBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/deployments][%d] createDeploymentBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateDeploymentBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewCreateDeploymentForbidden() *CreateDeploymentForbidden {
 	return &CreateDeploymentForbidden{}
 }
 
-/* CreateDeploymentForbidden describes a response with status code 403, with default header values.
+/*
+CreateDeploymentForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type CreateDeploymentForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this create deployment forbidden response has a 2xx status code
+func (o *CreateDeploymentForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create deployment forbidden response has a 3xx status code
+func (o *CreateDeploymentForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create deployment forbidden response has a 4xx status code
+func (o *CreateDeploymentForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create deployment forbidden response has a 5xx status code
+func (o *CreateDeploymentForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create deployment forbidden response a status code equal to that given
+func (o *CreateDeploymentForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateDeploymentForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/deployments][%d] createDeploymentForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CreateDeploymentForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/deployments][%d] createDeploymentForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CreateDeploymentForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

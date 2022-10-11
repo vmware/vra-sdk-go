@@ -51,7 +51,8 @@ func NewModifyProjectCostsUsingPATCHOK() *ModifyProjectCostsUsingPATCHOK {
 	return &ModifyProjectCostsUsingPATCHOK{}
 }
 
-/* ModifyProjectCostsUsingPATCHOK describes a response with status code 200, with default header values.
+/*
+ModifyProjectCostsUsingPATCHOK describes a response with status code 200, with default header values.
 
 'Success' with the Project
 */
@@ -59,9 +60,39 @@ type ModifyProjectCostsUsingPATCHOK struct {
 	Payload models.Project
 }
 
+// IsSuccess returns true when this modify project costs using p a t c h o k response has a 2xx status code
+func (o *ModifyProjectCostsUsingPATCHOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this modify project costs using p a t c h o k response has a 3xx status code
+func (o *ModifyProjectCostsUsingPATCHOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this modify project costs using p a t c h o k response has a 4xx status code
+func (o *ModifyProjectCostsUsingPATCHOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this modify project costs using p a t c h o k response has a 5xx status code
+func (o *ModifyProjectCostsUsingPATCHOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this modify project costs using p a t c h o k response a status code equal to that given
+func (o *ModifyProjectCostsUsingPATCHOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ModifyProjectCostsUsingPATCHOK) Error() string {
 	return fmt.Sprintf("[PATCH /project-service/api/projects/{id}/cost][%d] modifyProjectCostsUsingPATCHOK  %+v", 200, o.Payload)
 }
+
+func (o *ModifyProjectCostsUsingPATCHOK) String() string {
+	return fmt.Sprintf("[PATCH /project-service/api/projects/{id}/cost][%d] modifyProjectCostsUsingPATCHOK  %+v", 200, o.Payload)
+}
+
 func (o *ModifyProjectCostsUsingPATCHOK) GetPayload() models.Project {
 	return o.Payload
 }
@@ -83,14 +114,44 @@ func NewModifyProjectCostsUsingPATCHForbidden() *ModifyProjectCostsUsingPATCHFor
 	return &ModifyProjectCostsUsingPATCHForbidden{}
 }
 
-/* ModifyProjectCostsUsingPATCHForbidden describes a response with status code 403, with default header values.
+/*
+ModifyProjectCostsUsingPATCHForbidden describes a response with status code 403, with default header values.
 
 Forbidden, the user lacks permissions
 */
 type ModifyProjectCostsUsingPATCHForbidden struct {
 }
 
+// IsSuccess returns true when this modify project costs using p a t c h forbidden response has a 2xx status code
+func (o *ModifyProjectCostsUsingPATCHForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this modify project costs using p a t c h forbidden response has a 3xx status code
+func (o *ModifyProjectCostsUsingPATCHForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this modify project costs using p a t c h forbidden response has a 4xx status code
+func (o *ModifyProjectCostsUsingPATCHForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this modify project costs using p a t c h forbidden response has a 5xx status code
+func (o *ModifyProjectCostsUsingPATCHForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this modify project costs using p a t c h forbidden response a status code equal to that given
+func (o *ModifyProjectCostsUsingPATCHForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ModifyProjectCostsUsingPATCHForbidden) Error() string {
+	return fmt.Sprintf("[PATCH /project-service/api/projects/{id}/cost][%d] modifyProjectCostsUsingPATCHForbidden ", 403)
+}
+
+func (o *ModifyProjectCostsUsingPATCHForbidden) String() string {
 	return fmt.Sprintf("[PATCH /project-service/api/projects/{id}/cost][%d] modifyProjectCostsUsingPATCHForbidden ", 403)
 }
 
@@ -104,7 +165,8 @@ func NewModifyProjectCostsUsingPATCHNotFound() *ModifyProjectCostsUsingPATCHNotF
 	return &ModifyProjectCostsUsingPATCHNotFound{}
 }
 
-/* ModifyProjectCostsUsingPATCHNotFound describes a response with status code 404, with default header values.
+/*
+ModifyProjectCostsUsingPATCHNotFound describes a response with status code 404, with default header values.
 
 'Not found' if no project with the provided id
 */
@@ -112,9 +174,39 @@ type ModifyProjectCostsUsingPATCHNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this modify project costs using p a t c h not found response has a 2xx status code
+func (o *ModifyProjectCostsUsingPATCHNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this modify project costs using p a t c h not found response has a 3xx status code
+func (o *ModifyProjectCostsUsingPATCHNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this modify project costs using p a t c h not found response has a 4xx status code
+func (o *ModifyProjectCostsUsingPATCHNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this modify project costs using p a t c h not found response has a 5xx status code
+func (o *ModifyProjectCostsUsingPATCHNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this modify project costs using p a t c h not found response a status code equal to that given
+func (o *ModifyProjectCostsUsingPATCHNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ModifyProjectCostsUsingPATCHNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /project-service/api/projects/{id}/cost][%d] modifyProjectCostsUsingPATCHNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ModifyProjectCostsUsingPATCHNotFound) String() string {
+	return fmt.Sprintf("[PATCH /project-service/api/projects/{id}/cost][%d] modifyProjectCostsUsingPATCHNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ModifyProjectCostsUsingPATCHNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

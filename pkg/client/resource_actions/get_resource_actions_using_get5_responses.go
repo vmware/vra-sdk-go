@@ -51,7 +51,8 @@ func NewGetResourceActionsUsingGET5OK() *GetResourceActionsUsingGET5OK {
 	return &GetResourceActionsUsingGET5OK{}
 }
 
-/* GetResourceActionsUsingGET5OK describes a response with status code 200, with default header values.
+/*
+GetResourceActionsUsingGET5OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -59,9 +60,39 @@ type GetResourceActionsUsingGET5OK struct {
 	Payload []*models.ResourceAction
 }
 
+// IsSuccess returns true when this get resource actions using g e t5 o k response has a 2xx status code
+func (o *GetResourceActionsUsingGET5OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get resource actions using g e t5 o k response has a 3xx status code
+func (o *GetResourceActionsUsingGET5OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get resource actions using g e t5 o k response has a 4xx status code
+func (o *GetResourceActionsUsingGET5OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get resource actions using g e t5 o k response has a 5xx status code
+func (o *GetResourceActionsUsingGET5OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get resource actions using g e t5 o k response a status code equal to that given
+func (o *GetResourceActionsUsingGET5OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetResourceActionsUsingGET5OK) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/resources/{resourceId}/actions][%d] getResourceActionsUsingGET5OK  %+v", 200, o.Payload)
 }
+
+func (o *GetResourceActionsUsingGET5OK) String() string {
+	return fmt.Sprintf("[GET /deployment/api/resources/{resourceId}/actions][%d] getResourceActionsUsingGET5OK  %+v", 200, o.Payload)
+}
+
 func (o *GetResourceActionsUsingGET5OK) GetPayload() []*models.ResourceAction {
 	return o.Payload
 }
@@ -81,14 +112,44 @@ func NewGetResourceActionsUsingGET5Unauthorized() *GetResourceActionsUsingGET5Un
 	return &GetResourceActionsUsingGET5Unauthorized{}
 }
 
-/* GetResourceActionsUsingGET5Unauthorized describes a response with status code 401, with default header values.
+/*
+GetResourceActionsUsingGET5Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type GetResourceActionsUsingGET5Unauthorized struct {
 }
 
+// IsSuccess returns true when this get resource actions using g e t5 unauthorized response has a 2xx status code
+func (o *GetResourceActionsUsingGET5Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get resource actions using g e t5 unauthorized response has a 3xx status code
+func (o *GetResourceActionsUsingGET5Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get resource actions using g e t5 unauthorized response has a 4xx status code
+func (o *GetResourceActionsUsingGET5Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get resource actions using g e t5 unauthorized response has a 5xx status code
+func (o *GetResourceActionsUsingGET5Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get resource actions using g e t5 unauthorized response a status code equal to that given
+func (o *GetResourceActionsUsingGET5Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetResourceActionsUsingGET5Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /deployment/api/resources/{resourceId}/actions][%d] getResourceActionsUsingGET5Unauthorized ", 401)
+}
+
+func (o *GetResourceActionsUsingGET5Unauthorized) String() string {
 	return fmt.Sprintf("[GET /deployment/api/resources/{resourceId}/actions][%d] getResourceActionsUsingGET5Unauthorized ", 401)
 }
 
@@ -102,7 +163,8 @@ func NewGetResourceActionsUsingGET5NotFound() *GetResourceActionsUsingGET5NotFou
 	return &GetResourceActionsUsingGET5NotFound{}
 }
 
-/* GetResourceActionsUsingGET5NotFound describes a response with status code 404, with default header values.
+/*
+GetResourceActionsUsingGET5NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -110,9 +172,39 @@ type GetResourceActionsUsingGET5NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get resource actions using g e t5 not found response has a 2xx status code
+func (o *GetResourceActionsUsingGET5NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get resource actions using g e t5 not found response has a 3xx status code
+func (o *GetResourceActionsUsingGET5NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get resource actions using g e t5 not found response has a 4xx status code
+func (o *GetResourceActionsUsingGET5NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get resource actions using g e t5 not found response has a 5xx status code
+func (o *GetResourceActionsUsingGET5NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get resource actions using g e t5 not found response a status code equal to that given
+func (o *GetResourceActionsUsingGET5NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetResourceActionsUsingGET5NotFound) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/resources/{resourceId}/actions][%d] getResourceActionsUsingGET5NotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetResourceActionsUsingGET5NotFound) String() string {
+	return fmt.Sprintf("[GET /deployment/api/resources/{resourceId}/actions][%d] getResourceActionsUsingGET5NotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetResourceActionsUsingGET5NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

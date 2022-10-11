@@ -63,7 +63,8 @@ func NewGetRegistryWebhookByIDOK() *GetRegistryWebhookByIDOK {
 	return &GetRegistryWebhookByIDOK{}
 }
 
-/* GetRegistryWebhookByIDOK describes a response with status code 200, with default header values.
+/*
+GetRegistryWebhookByIDOK describes a response with status code 200, with default header values.
 
 'Success' with get on Docker Registry Webhook
 */
@@ -71,9 +72,39 @@ type GetRegistryWebhookByIDOK struct {
 	Payload models.DockerRegistryWebHook
 }
 
+// IsSuccess returns true when this get registry webhook by Id o k response has a 2xx status code
+func (o *GetRegistryWebhookByIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get registry webhook by Id o k response has a 3xx status code
+func (o *GetRegistryWebhookByIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get registry webhook by Id o k response has a 4xx status code
+func (o *GetRegistryWebhookByIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get registry webhook by Id o k response has a 5xx status code
+func (o *GetRegistryWebhookByIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get registry webhook by Id o k response a status code equal to that given
+func (o *GetRegistryWebhookByIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetRegistryWebhookByIDOK) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/registry-webhooks/{id}][%d] getRegistryWebhookByIdOK  %+v", 200, o.Payload)
 }
+
+func (o *GetRegistryWebhookByIDOK) String() string {
+	return fmt.Sprintf("[GET /codestream/api/registry-webhooks/{id}][%d] getRegistryWebhookByIdOK  %+v", 200, o.Payload)
+}
+
 func (o *GetRegistryWebhookByIDOK) GetPayload() models.DockerRegistryWebHook {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewGetRegistryWebhookByIDUnauthorized() *GetRegistryWebhookByIDUnauthorized
 	return &GetRegistryWebhookByIDUnauthorized{}
 }
 
-/* GetRegistryWebhookByIDUnauthorized describes a response with status code 401, with default header values.
+/*
+GetRegistryWebhookByIDUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type GetRegistryWebhookByIDUnauthorized struct {
 }
 
+// IsSuccess returns true when this get registry webhook by Id unauthorized response has a 2xx status code
+func (o *GetRegistryWebhookByIDUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get registry webhook by Id unauthorized response has a 3xx status code
+func (o *GetRegistryWebhookByIDUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get registry webhook by Id unauthorized response has a 4xx status code
+func (o *GetRegistryWebhookByIDUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get registry webhook by Id unauthorized response has a 5xx status code
+func (o *GetRegistryWebhookByIDUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get registry webhook by Id unauthorized response a status code equal to that given
+func (o *GetRegistryWebhookByIDUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetRegistryWebhookByIDUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/registry-webhooks/{id}][%d] getRegistryWebhookByIdUnauthorized ", 401)
+}
+
+func (o *GetRegistryWebhookByIDUnauthorized) String() string {
 	return fmt.Sprintf("[GET /codestream/api/registry-webhooks/{id}][%d] getRegistryWebhookByIdUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewGetRegistryWebhookByIDForbidden() *GetRegistryWebhookByIDForbidden {
 	return &GetRegistryWebhookByIDForbidden{}
 }
 
-/* GetRegistryWebhookByIDForbidden describes a response with status code 403, with default header values.
+/*
+GetRegistryWebhookByIDForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetRegistryWebhookByIDForbidden struct {
 }
 
+// IsSuccess returns true when this get registry webhook by Id forbidden response has a 2xx status code
+func (o *GetRegistryWebhookByIDForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get registry webhook by Id forbidden response has a 3xx status code
+func (o *GetRegistryWebhookByIDForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get registry webhook by Id forbidden response has a 4xx status code
+func (o *GetRegistryWebhookByIDForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get registry webhook by Id forbidden response has a 5xx status code
+func (o *GetRegistryWebhookByIDForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get registry webhook by Id forbidden response a status code equal to that given
+func (o *GetRegistryWebhookByIDForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetRegistryWebhookByIDForbidden) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/registry-webhooks/{id}][%d] getRegistryWebhookByIdForbidden ", 403)
+}
+
+func (o *GetRegistryWebhookByIDForbidden) String() string {
 	return fmt.Sprintf("[GET /codestream/api/registry-webhooks/{id}][%d] getRegistryWebhookByIdForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewGetRegistryWebhookByIDNotFound() *GetRegistryWebhookByIDNotFound {
 	return &GetRegistryWebhookByIDNotFound{}
 }
 
-/* GetRegistryWebhookByIDNotFound describes a response with status code 404, with default header values.
+/*
+GetRegistryWebhookByIDNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type GetRegistryWebhookByIDNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get registry webhook by Id not found response has a 2xx status code
+func (o *GetRegistryWebhookByIDNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get registry webhook by Id not found response has a 3xx status code
+func (o *GetRegistryWebhookByIDNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get registry webhook by Id not found response has a 4xx status code
+func (o *GetRegistryWebhookByIDNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get registry webhook by Id not found response has a 5xx status code
+func (o *GetRegistryWebhookByIDNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get registry webhook by Id not found response a status code equal to that given
+func (o *GetRegistryWebhookByIDNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetRegistryWebhookByIDNotFound) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/registry-webhooks/{id}][%d] getRegistryWebhookByIdNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetRegistryWebhookByIDNotFound) String() string {
+	return fmt.Sprintf("[GET /codestream/api/registry-webhooks/{id}][%d] getRegistryWebhookByIdNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetRegistryWebhookByIDNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewGetRegistryWebhookByIDInternalServerError() *GetRegistryWebhookByIDInter
 	return &GetRegistryWebhookByIDInternalServerError{}
 }
 
-/* GetRegistryWebhookByIDInternalServerError describes a response with status code 500, with default header values.
+/*
+GetRegistryWebhookByIDInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type GetRegistryWebhookByIDInternalServerError struct {
 }
 
+// IsSuccess returns true when this get registry webhook by Id internal server error response has a 2xx status code
+func (o *GetRegistryWebhookByIDInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get registry webhook by Id internal server error response has a 3xx status code
+func (o *GetRegistryWebhookByIDInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get registry webhook by Id internal server error response has a 4xx status code
+func (o *GetRegistryWebhookByIDInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get registry webhook by Id internal server error response has a 5xx status code
+func (o *GetRegistryWebhookByIDInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this get registry webhook by Id internal server error response a status code equal to that given
+func (o *GetRegistryWebhookByIDInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GetRegistryWebhookByIDInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/registry-webhooks/{id}][%d] getRegistryWebhookByIdInternalServerError ", 500)
+}
+
+func (o *GetRegistryWebhookByIDInternalServerError) String() string {
 	return fmt.Sprintf("[GET /codestream/api/registry-webhooks/{id}][%d] getRegistryWebhookByIdInternalServerError ", 500)
 }
 

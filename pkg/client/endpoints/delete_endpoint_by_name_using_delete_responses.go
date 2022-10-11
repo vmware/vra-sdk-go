@@ -63,7 +63,8 @@ func NewDeleteEndpointByNameUsingDELETEOK() *DeleteEndpointByNameUsingDELETEOK {
 	return &DeleteEndpointByNameUsingDELETEOK{}
 }
 
-/* DeleteEndpointByNameUsingDELETEOK describes a response with status code 200, with default header values.
+/*
+DeleteEndpointByNameUsingDELETEOK describes a response with status code 200, with default header values.
 
 'Success' with the deleted Endpoint
 */
@@ -71,9 +72,39 @@ type DeleteEndpointByNameUsingDELETEOK struct {
 	Payload models.Endpoint
 }
 
+// IsSuccess returns true when this delete endpoint by name using d e l e t e o k response has a 2xx status code
+func (o *DeleteEndpointByNameUsingDELETEOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete endpoint by name using d e l e t e o k response has a 3xx status code
+func (o *DeleteEndpointByNameUsingDELETEOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete endpoint by name using d e l e t e o k response has a 4xx status code
+func (o *DeleteEndpointByNameUsingDELETEOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete endpoint by name using d e l e t e o k response has a 5xx status code
+func (o *DeleteEndpointByNameUsingDELETEOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete endpoint by name using d e l e t e o k response a status code equal to that given
+func (o *DeleteEndpointByNameUsingDELETEOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteEndpointByNameUsingDELETEOK) Error() string {
 	return fmt.Sprintf("[DELETE /codestream/api/endpoints/{project}/{name}][%d] deleteEndpointByNameUsingDELETEOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteEndpointByNameUsingDELETEOK) String() string {
+	return fmt.Sprintf("[DELETE /codestream/api/endpoints/{project}/{name}][%d] deleteEndpointByNameUsingDELETEOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteEndpointByNameUsingDELETEOK) GetPayload() models.Endpoint {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewDeleteEndpointByNameUsingDELETEUnauthorized() *DeleteEndpointByNameUsing
 	return &DeleteEndpointByNameUsingDELETEUnauthorized{}
 }
 
-/* DeleteEndpointByNameUsingDELETEUnauthorized describes a response with status code 401, with default header values.
+/*
+DeleteEndpointByNameUsingDELETEUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type DeleteEndpointByNameUsingDELETEUnauthorized struct {
 }
 
+// IsSuccess returns true when this delete endpoint by name using d e l e t e unauthorized response has a 2xx status code
+func (o *DeleteEndpointByNameUsingDELETEUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete endpoint by name using d e l e t e unauthorized response has a 3xx status code
+func (o *DeleteEndpointByNameUsingDELETEUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete endpoint by name using d e l e t e unauthorized response has a 4xx status code
+func (o *DeleteEndpointByNameUsingDELETEUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete endpoint by name using d e l e t e unauthorized response has a 5xx status code
+func (o *DeleteEndpointByNameUsingDELETEUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete endpoint by name using d e l e t e unauthorized response a status code equal to that given
+func (o *DeleteEndpointByNameUsingDELETEUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DeleteEndpointByNameUsingDELETEUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/endpoints/{project}/{name}][%d] deleteEndpointByNameUsingDELETEUnauthorized ", 401)
+}
+
+func (o *DeleteEndpointByNameUsingDELETEUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/endpoints/{project}/{name}][%d] deleteEndpointByNameUsingDELETEUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewDeleteEndpointByNameUsingDELETEForbidden() *DeleteEndpointByNameUsingDEL
 	return &DeleteEndpointByNameUsingDELETEForbidden{}
 }
 
-/* DeleteEndpointByNameUsingDELETEForbidden describes a response with status code 403, with default header values.
+/*
+DeleteEndpointByNameUsingDELETEForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type DeleteEndpointByNameUsingDELETEForbidden struct {
 }
 
+// IsSuccess returns true when this delete endpoint by name using d e l e t e forbidden response has a 2xx status code
+func (o *DeleteEndpointByNameUsingDELETEForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete endpoint by name using d e l e t e forbidden response has a 3xx status code
+func (o *DeleteEndpointByNameUsingDELETEForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete endpoint by name using d e l e t e forbidden response has a 4xx status code
+func (o *DeleteEndpointByNameUsingDELETEForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete endpoint by name using d e l e t e forbidden response has a 5xx status code
+func (o *DeleteEndpointByNameUsingDELETEForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete endpoint by name using d e l e t e forbidden response a status code equal to that given
+func (o *DeleteEndpointByNameUsingDELETEForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteEndpointByNameUsingDELETEForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/endpoints/{project}/{name}][%d] deleteEndpointByNameUsingDELETEForbidden ", 403)
+}
+
+func (o *DeleteEndpointByNameUsingDELETEForbidden) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/endpoints/{project}/{name}][%d] deleteEndpointByNameUsingDELETEForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewDeleteEndpointByNameUsingDELETENotFound() *DeleteEndpointByNameUsingDELE
 	return &DeleteEndpointByNameUsingDELETENotFound{}
 }
 
-/* DeleteEndpointByNameUsingDELETENotFound describes a response with status code 404, with default header values.
+/*
+DeleteEndpointByNameUsingDELETENotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type DeleteEndpointByNameUsingDELETENotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete endpoint by name using d e l e t e not found response has a 2xx status code
+func (o *DeleteEndpointByNameUsingDELETENotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete endpoint by name using d e l e t e not found response has a 3xx status code
+func (o *DeleteEndpointByNameUsingDELETENotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete endpoint by name using d e l e t e not found response has a 4xx status code
+func (o *DeleteEndpointByNameUsingDELETENotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete endpoint by name using d e l e t e not found response has a 5xx status code
+func (o *DeleteEndpointByNameUsingDELETENotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete endpoint by name using d e l e t e not found response a status code equal to that given
+func (o *DeleteEndpointByNameUsingDELETENotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteEndpointByNameUsingDELETENotFound) Error() string {
 	return fmt.Sprintf("[DELETE /codestream/api/endpoints/{project}/{name}][%d] deleteEndpointByNameUsingDELETENotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteEndpointByNameUsingDELETENotFound) String() string {
+	return fmt.Sprintf("[DELETE /codestream/api/endpoints/{project}/{name}][%d] deleteEndpointByNameUsingDELETENotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteEndpointByNameUsingDELETENotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewDeleteEndpointByNameUsingDELETEInternalServerError() *DeleteEndpointByNa
 	return &DeleteEndpointByNameUsingDELETEInternalServerError{}
 }
 
-/* DeleteEndpointByNameUsingDELETEInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteEndpointByNameUsingDELETEInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type DeleteEndpointByNameUsingDELETEInternalServerError struct {
 }
 
+// IsSuccess returns true when this delete endpoint by name using d e l e t e internal server error response has a 2xx status code
+func (o *DeleteEndpointByNameUsingDELETEInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete endpoint by name using d e l e t e internal server error response has a 3xx status code
+func (o *DeleteEndpointByNameUsingDELETEInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete endpoint by name using d e l e t e internal server error response has a 4xx status code
+func (o *DeleteEndpointByNameUsingDELETEInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete endpoint by name using d e l e t e internal server error response has a 5xx status code
+func (o *DeleteEndpointByNameUsingDELETEInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this delete endpoint by name using d e l e t e internal server error response a status code equal to that given
+func (o *DeleteEndpointByNameUsingDELETEInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *DeleteEndpointByNameUsingDELETEInternalServerError) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/endpoints/{project}/{name}][%d] deleteEndpointByNameUsingDELETEInternalServerError ", 500)
+}
+
+func (o *DeleteEndpointByNameUsingDELETEInternalServerError) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/endpoints/{project}/{name}][%d] deleteEndpointByNameUsingDELETEInternalServerError ", 500)
 }
 

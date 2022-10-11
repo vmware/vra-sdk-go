@@ -54,10 +54,12 @@ func NewCreateImageProfileParamsWithHTTPClient(client *http.Client) *CreateImage
 	}
 }
 
-/* CreateImageProfileParams contains all the parameters to send to the API endpoint
-   for the create image profile operation.
+/*
+CreateImageProfileParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create image profile operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateImageProfileParams struct {
 

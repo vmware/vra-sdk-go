@@ -54,10 +54,12 @@ func NewCreateVcfCloudAccountAsyncParamsWithHTTPClient(client *http.Client) *Cre
 	}
 }
 
-/* CreateVcfCloudAccountAsyncParams contains all the parameters to send to the API endpoint
-   for the create vcf cloud account async operation.
+/*
+CreateVcfCloudAccountAsyncParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create vcf cloud account async operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateVcfCloudAccountAsyncParams struct {
 

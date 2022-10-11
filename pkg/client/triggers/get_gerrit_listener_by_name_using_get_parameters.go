@@ -52,10 +52,12 @@ func NewGetGerritListenerByNameUsingGETParamsWithHTTPClient(client *http.Client)
 	}
 }
 
-/* GetGerritListenerByNameUsingGETParams contains all the parameters to send to the API endpoint
-   for the get gerrit listener by name using g e t operation.
+/*
+GetGerritListenerByNameUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get gerrit listener by name using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetGerritListenerByNameUsingGETParams struct {
 

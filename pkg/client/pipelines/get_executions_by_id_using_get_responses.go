@@ -63,7 +63,8 @@ func NewGetExecutionsByIDUsingGETOK() *GetExecutionsByIDUsingGETOK {
 	return &GetExecutionsByIDUsingGETOK{}
 }
 
-/* GetExecutionsByIDUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetExecutionsByIDUsingGETOK describes a response with status code 200, with default header values.
 
 'Success' with Executions on pages
 */
@@ -71,9 +72,39 @@ type GetExecutionsByIDUsingGETOK struct {
 	Payload models.Executions
 }
 
+// IsSuccess returns true when this get executions by Id using g e t o k response has a 2xx status code
+func (o *GetExecutionsByIDUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get executions by Id using g e t o k response has a 3xx status code
+func (o *GetExecutionsByIDUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get executions by Id using g e t o k response has a 4xx status code
+func (o *GetExecutionsByIDUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get executions by Id using g e t o k response has a 5xx status code
+func (o *GetExecutionsByIDUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get executions by Id using g e t o k response a status code equal to that given
+func (o *GetExecutionsByIDUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetExecutionsByIDUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/pipelines/{id}/executions][%d] getExecutionsByIdUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetExecutionsByIDUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /codestream/api/pipelines/{id}/executions][%d] getExecutionsByIdUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetExecutionsByIDUsingGETOK) GetPayload() models.Executions {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewGetExecutionsByIDUsingGETUnauthorized() *GetExecutionsByIDUsingGETUnauth
 	return &GetExecutionsByIDUsingGETUnauthorized{}
 }
 
-/* GetExecutionsByIDUsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+GetExecutionsByIDUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type GetExecutionsByIDUsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this get executions by Id using g e t unauthorized response has a 2xx status code
+func (o *GetExecutionsByIDUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get executions by Id using g e t unauthorized response has a 3xx status code
+func (o *GetExecutionsByIDUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get executions by Id using g e t unauthorized response has a 4xx status code
+func (o *GetExecutionsByIDUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get executions by Id using g e t unauthorized response has a 5xx status code
+func (o *GetExecutionsByIDUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get executions by Id using g e t unauthorized response a status code equal to that given
+func (o *GetExecutionsByIDUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetExecutionsByIDUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/pipelines/{id}/executions][%d] getExecutionsByIdUsingGETUnauthorized ", 401)
+}
+
+func (o *GetExecutionsByIDUsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /codestream/api/pipelines/{id}/executions][%d] getExecutionsByIdUsingGETUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewGetExecutionsByIDUsingGETForbidden() *GetExecutionsByIDUsingGETForbidden
 	return &GetExecutionsByIDUsingGETForbidden{}
 }
 
-/* GetExecutionsByIDUsingGETForbidden describes a response with status code 403, with default header values.
+/*
+GetExecutionsByIDUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetExecutionsByIDUsingGETForbidden struct {
 }
 
+// IsSuccess returns true when this get executions by Id using g e t forbidden response has a 2xx status code
+func (o *GetExecutionsByIDUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get executions by Id using g e t forbidden response has a 3xx status code
+func (o *GetExecutionsByIDUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get executions by Id using g e t forbidden response has a 4xx status code
+func (o *GetExecutionsByIDUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get executions by Id using g e t forbidden response has a 5xx status code
+func (o *GetExecutionsByIDUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get executions by Id using g e t forbidden response a status code equal to that given
+func (o *GetExecutionsByIDUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetExecutionsByIDUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/pipelines/{id}/executions][%d] getExecutionsByIdUsingGETForbidden ", 403)
+}
+
+func (o *GetExecutionsByIDUsingGETForbidden) String() string {
 	return fmt.Sprintf("[GET /codestream/api/pipelines/{id}/executions][%d] getExecutionsByIdUsingGETForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewGetExecutionsByIDUsingGETNotFound() *GetExecutionsByIDUsingGETNotFound {
 	return &GetExecutionsByIDUsingGETNotFound{}
 }
 
-/* GetExecutionsByIDUsingGETNotFound describes a response with status code 404, with default header values.
+/*
+GetExecutionsByIDUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type GetExecutionsByIDUsingGETNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get executions by Id using g e t not found response has a 2xx status code
+func (o *GetExecutionsByIDUsingGETNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get executions by Id using g e t not found response has a 3xx status code
+func (o *GetExecutionsByIDUsingGETNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get executions by Id using g e t not found response has a 4xx status code
+func (o *GetExecutionsByIDUsingGETNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get executions by Id using g e t not found response has a 5xx status code
+func (o *GetExecutionsByIDUsingGETNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get executions by Id using g e t not found response a status code equal to that given
+func (o *GetExecutionsByIDUsingGETNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetExecutionsByIDUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/pipelines/{id}/executions][%d] getExecutionsByIdUsingGETNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetExecutionsByIDUsingGETNotFound) String() string {
+	return fmt.Sprintf("[GET /codestream/api/pipelines/{id}/executions][%d] getExecutionsByIdUsingGETNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetExecutionsByIDUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewGetExecutionsByIDUsingGETInternalServerError() *GetExecutionsByIDUsingGE
 	return &GetExecutionsByIDUsingGETInternalServerError{}
 }
 
-/* GetExecutionsByIDUsingGETInternalServerError describes a response with status code 500, with default header values.
+/*
+GetExecutionsByIDUsingGETInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type GetExecutionsByIDUsingGETInternalServerError struct {
 }
 
+// IsSuccess returns true when this get executions by Id using g e t internal server error response has a 2xx status code
+func (o *GetExecutionsByIDUsingGETInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get executions by Id using g e t internal server error response has a 3xx status code
+func (o *GetExecutionsByIDUsingGETInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get executions by Id using g e t internal server error response has a 4xx status code
+func (o *GetExecutionsByIDUsingGETInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get executions by Id using g e t internal server error response has a 5xx status code
+func (o *GetExecutionsByIDUsingGETInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this get executions by Id using g e t internal server error response a status code equal to that given
+func (o *GetExecutionsByIDUsingGETInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GetExecutionsByIDUsingGETInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/pipelines/{id}/executions][%d] getExecutionsByIdUsingGETInternalServerError ", 500)
+}
+
+func (o *GetExecutionsByIDUsingGETInternalServerError) String() string {
 	return fmt.Sprintf("[GET /codestream/api/pipelines/{id}/executions][%d] getExecutionsByIdUsingGETInternalServerError ", 500)
 }
 

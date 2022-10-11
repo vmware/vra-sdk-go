@@ -51,7 +51,8 @@ func NewGetZoneOK() *GetZoneOK {
 	return &GetZoneOK{}
 }
 
-/* GetZoneOK describes a response with status code 200, with default header values.
+/*
+GetZoneOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetZoneOK struct {
 	Payload *models.Zone
 }
 
+// IsSuccess returns true when this get zone o k response has a 2xx status code
+func (o *GetZoneOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get zone o k response has a 3xx status code
+func (o *GetZoneOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get zone o k response has a 4xx status code
+func (o *GetZoneOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get zone o k response has a 5xx status code
+func (o *GetZoneOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get zone o k response a status code equal to that given
+func (o *GetZoneOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetZoneOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/zones/{id}][%d] getZoneOK  %+v", 200, o.Payload)
 }
+
+func (o *GetZoneOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/zones/{id}][%d] getZoneOK  %+v", 200, o.Payload)
+}
+
 func (o *GetZoneOK) GetPayload() *models.Zone {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetZoneForbidden() *GetZoneForbidden {
 	return &GetZoneForbidden{}
 }
 
-/* GetZoneForbidden describes a response with status code 403, with default header values.
+/*
+GetZoneForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type GetZoneForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get zone forbidden response has a 2xx status code
+func (o *GetZoneForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get zone forbidden response has a 3xx status code
+func (o *GetZoneForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get zone forbidden response has a 4xx status code
+func (o *GetZoneForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get zone forbidden response has a 5xx status code
+func (o *GetZoneForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get zone forbidden response a status code equal to that given
+func (o *GetZoneForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetZoneForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/zones/{id}][%d] getZoneForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetZoneForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/zones/{id}][%d] getZoneForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetZoneForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewGetZoneNotFound() *GetZoneNotFound {
 	return &GetZoneNotFound{}
 }
 
-/* GetZoneNotFound describes a response with status code 404, with default header values.
+/*
+GetZoneNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type GetZoneNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get zone not found response has a 2xx status code
+func (o *GetZoneNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get zone not found response has a 3xx status code
+func (o *GetZoneNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get zone not found response has a 4xx status code
+func (o *GetZoneNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get zone not found response has a 5xx status code
+func (o *GetZoneNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get zone not found response a status code equal to that given
+func (o *GetZoneNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetZoneNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/zones/{id}][%d] getZoneNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetZoneNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/zones/{id}][%d] getZoneNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetZoneNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

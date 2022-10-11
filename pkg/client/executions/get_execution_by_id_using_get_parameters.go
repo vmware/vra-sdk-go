@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewGetExecutionByIDUsingGETParams creates a new GetExecutionByIDUsingGETParams object,
@@ -53,10 +52,12 @@ func NewGetExecutionByIDUsingGETParamsWithHTTPClient(client *http.Client) *GetEx
 	}
 }
 
-/* GetExecutionByIDUsingGETParams contains all the parameters to send to the API endpoint
-   for the get execution by Id using g e t operation.
+/*
+GetExecutionByIDUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get execution by Id using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetExecutionByIDUsingGETParams struct {
 
@@ -80,9 +81,9 @@ type GetExecutionByIDUsingGETParams struct {
 
 	/* QueryParams.
 
-	   queryParams
+	   Value of 'expand' type for the execution
 	*/
-	QueryParams []string
+	QueryParams *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -171,13 +172,13 @@ func (o *GetExecutionByIDUsingGETParams) SetID(id string) {
 }
 
 // WithQueryParams adds the queryParams to the get execution by Id using get params
-func (o *GetExecutionByIDUsingGETParams) WithQueryParams(queryParams []string) *GetExecutionByIDUsingGETParams {
+func (o *GetExecutionByIDUsingGETParams) WithQueryParams(queryParams *string) *GetExecutionByIDUsingGETParams {
 	o.SetQueryParams(queryParams)
 	return o
 }
 
 // SetQueryParams adds the queryParams to the get execution by Id using get params
-func (o *GetExecutionByIDUsingGETParams) SetQueryParams(queryParams []string) {
+func (o *GetExecutionByIDUsingGETParams) SetQueryParams(queryParams *string) {
 	o.QueryParams = queryParams
 }
 
@@ -209,12 +210,18 @@ func (o *GetExecutionByIDUsingGETParams) WriteToRequest(r runtime.ClientRequest,
 
 	if o.QueryParams != nil {
 
-		// binding items for queryParams
-		joinedQueryParams := o.bindParamQueryParams(reg)
+		// query param queryParams
+		var qrQueryParams string
 
-		// query array param queryParams
-		if err := r.SetQueryParam("queryParams", joinedQueryParams...); err != nil {
-			return err
+		if o.QueryParams != nil {
+			qrQueryParams = *o.QueryParams
+		}
+		qQueryParams := qrQueryParams
+		if qQueryParams != "" {
+
+			if err := r.SetQueryParam("queryParams", qQueryParams); err != nil {
+				return err
+			}
 		}
 	}
 
@@ -222,21 +229,4 @@ func (o *GetExecutionByIDUsingGETParams) WriteToRequest(r runtime.ClientRequest,
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
-}
-
-// bindParamGetExecutionByIDUsingGET binds the parameter queryParams
-func (o *GetExecutionByIDUsingGETParams) bindParamQueryParams(formats strfmt.Registry) []string {
-	queryParamsIR := o.QueryParams
-
-	var queryParamsIC []string
-	for _, queryParamsIIR := range queryParamsIR { // explode []string
-
-		queryParamsIIV := queryParamsIIR // string as string
-		queryParamsIC = append(queryParamsIC, queryParamsIIV)
-	}
-
-	// items.CollectionFormat: ""
-	queryParamsIS := swag.JoinByFormat(queryParamsIC, "")
-
-	return queryParamsIS
 }

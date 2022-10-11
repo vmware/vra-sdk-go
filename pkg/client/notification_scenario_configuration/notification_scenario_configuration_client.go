@@ -42,7 +42,7 @@ type ClientService interface {
 }
 
 /*
-  CreateOrUpdateUsingPOST2 creates or updates a notification scenario configuration of an organization
+CreateOrUpdateUsingPOST2 creates or updates a notification scenario configuration of an organization
 */
 func (a *Client) CreateOrUpdateUsingPOST2(params *CreateOrUpdateUsingPOST2Params, opts ...ClientOption) (*CreateOrUpdateUsingPOST2OK, error) {
 	// TODO: Validate the params before sending
@@ -80,7 +80,7 @@ func (a *Client) CreateOrUpdateUsingPOST2(params *CreateOrUpdateUsingPOST2Params
 }
 
 /*
-  DeleteUsingDELETE5 deletes a notification scenario configuration of an organization
+DeleteUsingDELETE5 deletes a notification scenario configuration by scenario id of an organization
 */
 func (a *Client) DeleteUsingDELETE5(params *DeleteUsingDELETE5Params, opts ...ClientOption) (*DeleteUsingDELETE5NoContent, error) {
 	// TODO: Validate the params before sending
@@ -90,7 +90,7 @@ func (a *Client) DeleteUsingDELETE5(params *DeleteUsingDELETE5Params, opts ...Cl
 	op := &runtime.ClientOperation{
 		ID:                 "deleteUsingDELETE_5",
 		Method:             "DELETE",
-		PathPattern:        "/notification/api/scenario-configs/{id}",
+		PathPattern:        "/notification/api/scenario-configs/{scenarioId}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -118,7 +118,7 @@ func (a *Client) DeleteUsingDELETE5(params *DeleteUsingDELETE5Params, opts ...Cl
 }
 
 /*
-  GetAllScenarioConfigsUsingGET2 retrieves all notification scenario configurations of an organization
+GetAllScenarioConfigsUsingGET2 retrieves all notification scenario configurations of an organization
 */
 func (a *Client) GetAllScenarioConfigsUsingGET2(params *GetAllScenarioConfigsUsingGET2Params, opts ...ClientOption) (*GetAllScenarioConfigsUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -156,7 +156,7 @@ func (a *Client) GetAllScenarioConfigsUsingGET2(params *GetAllScenarioConfigsUsi
 }
 
 /*
-  GetScenarioConfigUsingGET2 retrieves a notification scenario configuration by scenario id of an organization
+GetScenarioConfigUsingGET2 retrieves a notification scenario configuration by scenario id of an organization
 */
 func (a *Client) GetScenarioConfigUsingGET2(params *GetScenarioConfigUsingGET2Params, opts ...ClientOption) (*GetScenarioConfigUsingGET2OK, error) {
 	// TODO: Validate the params before sending

@@ -52,18 +52,20 @@ func NewGetClusterUsingGET2ParamsWithHTTPClient(client *http.Client) *GetCluster
 	}
 }
 
-/* GetClusterUsingGET2Params contains all the parameters to send to the API endpoint
-   for the get cluster using g e t 2 operation.
+/*
+GetClusterUsingGET2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get cluster using g e t 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetClusterUsingGET2Params struct {
 
-	/* SelfLinkID.
+	/* ClusterSelfLinkID.
 
-	   selfLinkId
+	   clusterSelfLinkId
 	*/
-	SelfLinkID string
+	ClusterSelfLinkID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -118,15 +120,15 @@ func (o *GetClusterUsingGET2Params) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithSelfLinkID adds the selfLinkID to the get cluster using g e t 2 params
-func (o *GetClusterUsingGET2Params) WithSelfLinkID(selfLinkID string) *GetClusterUsingGET2Params {
-	o.SetSelfLinkID(selfLinkID)
+// WithClusterSelfLinkID adds the clusterSelfLinkID to the get cluster using g e t 2 params
+func (o *GetClusterUsingGET2Params) WithClusterSelfLinkID(clusterSelfLinkID string) *GetClusterUsingGET2Params {
+	o.SetClusterSelfLinkID(clusterSelfLinkID)
 	return o
 }
 
-// SetSelfLinkID adds the selfLinkId to the get cluster using g e t 2 params
-func (o *GetClusterUsingGET2Params) SetSelfLinkID(selfLinkID string) {
-	o.SelfLinkID = selfLinkID
+// SetClusterSelfLinkID adds the clusterSelfLinkId to the get cluster using g e t 2 params
+func (o *GetClusterUsingGET2Params) SetClusterSelfLinkID(clusterSelfLinkID string) {
+	o.ClusterSelfLinkID = clusterSelfLinkID
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -137,8 +139,8 @@ func (o *GetClusterUsingGET2Params) WriteToRequest(r runtime.ClientRequest, reg 
 	}
 	var res []error
 
-	// path param selfLinkId
-	if err := r.SetPathParam("selfLinkId", o.SelfLinkID); err != nil {
+	// path param clusterSelfLinkId
+	if err := r.SetPathParam("clusterSelfLinkId", o.ClusterSelfLinkID); err != nil {
 		return err
 	}
 

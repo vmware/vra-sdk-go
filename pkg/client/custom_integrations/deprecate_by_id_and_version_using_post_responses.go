@@ -63,7 +63,8 @@ func NewDeprecateByIDAndVersionUsingPOSTOK() *DeprecateByIDAndVersionUsingPOSTOK
 	return &DeprecateByIDAndVersionUsingPOSTOK{}
 }
 
-/* DeprecateByIDAndVersionUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+DeprecateByIDAndVersionUsingPOSTOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type DeprecateByIDAndVersionUsingPOSTOK struct {
 	Payload models.CustomIntegration
 }
 
+// IsSuccess returns true when this deprecate by Id and version using p o s t o k response has a 2xx status code
+func (o *DeprecateByIDAndVersionUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this deprecate by Id and version using p o s t o k response has a 3xx status code
+func (o *DeprecateByIDAndVersionUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this deprecate by Id and version using p o s t o k response has a 4xx status code
+func (o *DeprecateByIDAndVersionUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this deprecate by Id and version using p o s t o k response has a 5xx status code
+func (o *DeprecateByIDAndVersionUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this deprecate by Id and version using p o s t o k response a status code equal to that given
+func (o *DeprecateByIDAndVersionUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeprecateByIDAndVersionUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/deprecate][%d] deprecateByIdAndVersionUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *DeprecateByIDAndVersionUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/deprecate][%d] deprecateByIdAndVersionUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *DeprecateByIDAndVersionUsingPOSTOK) GetPayload() models.CustomIntegration {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewDeprecateByIDAndVersionUsingPOSTUnauthorized() *DeprecateByIDAndVersionU
 	return &DeprecateByIDAndVersionUsingPOSTUnauthorized{}
 }
 
-/* DeprecateByIDAndVersionUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+DeprecateByIDAndVersionUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type DeprecateByIDAndVersionUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this deprecate by Id and version using p o s t unauthorized response has a 2xx status code
+func (o *DeprecateByIDAndVersionUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this deprecate by Id and version using p o s t unauthorized response has a 3xx status code
+func (o *DeprecateByIDAndVersionUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this deprecate by Id and version using p o s t unauthorized response has a 4xx status code
+func (o *DeprecateByIDAndVersionUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this deprecate by Id and version using p o s t unauthorized response has a 5xx status code
+func (o *DeprecateByIDAndVersionUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this deprecate by Id and version using p o s t unauthorized response a status code equal to that given
+func (o *DeprecateByIDAndVersionUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DeprecateByIDAndVersionUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/deprecate][%d] deprecateByIdAndVersionUsingPOSTUnauthorized ", 401)
+}
+
+func (o *DeprecateByIDAndVersionUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/deprecate][%d] deprecateByIdAndVersionUsingPOSTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewDeprecateByIDAndVersionUsingPOSTForbidden() *DeprecateByIDAndVersionUsin
 	return &DeprecateByIDAndVersionUsingPOSTForbidden{}
 }
 
-/* DeprecateByIDAndVersionUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+DeprecateByIDAndVersionUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type DeprecateByIDAndVersionUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this deprecate by Id and version using p o s t forbidden response has a 2xx status code
+func (o *DeprecateByIDAndVersionUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this deprecate by Id and version using p o s t forbidden response has a 3xx status code
+func (o *DeprecateByIDAndVersionUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this deprecate by Id and version using p o s t forbidden response has a 4xx status code
+func (o *DeprecateByIDAndVersionUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this deprecate by Id and version using p o s t forbidden response has a 5xx status code
+func (o *DeprecateByIDAndVersionUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this deprecate by Id and version using p o s t forbidden response a status code equal to that given
+func (o *DeprecateByIDAndVersionUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeprecateByIDAndVersionUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/deprecate][%d] deprecateByIdAndVersionUsingPOSTForbidden ", 403)
+}
+
+func (o *DeprecateByIDAndVersionUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/deprecate][%d] deprecateByIdAndVersionUsingPOSTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewDeprecateByIDAndVersionUsingPOSTNotFound() *DeprecateByIDAndVersionUsing
 	return &DeprecateByIDAndVersionUsingPOSTNotFound{}
 }
 
-/* DeprecateByIDAndVersionUsingPOSTNotFound describes a response with status code 404, with default header values.
+/*
+DeprecateByIDAndVersionUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type DeprecateByIDAndVersionUsingPOSTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this deprecate by Id and version using p o s t not found response has a 2xx status code
+func (o *DeprecateByIDAndVersionUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this deprecate by Id and version using p o s t not found response has a 3xx status code
+func (o *DeprecateByIDAndVersionUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this deprecate by Id and version using p o s t not found response has a 4xx status code
+func (o *DeprecateByIDAndVersionUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this deprecate by Id and version using p o s t not found response has a 5xx status code
+func (o *DeprecateByIDAndVersionUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this deprecate by Id and version using p o s t not found response a status code equal to that given
+func (o *DeprecateByIDAndVersionUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeprecateByIDAndVersionUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/deprecate][%d] deprecateByIdAndVersionUsingPOSTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeprecateByIDAndVersionUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/deprecate][%d] deprecateByIdAndVersionUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeprecateByIDAndVersionUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewDeprecateByIDAndVersionUsingPOSTInternalServerError() *DeprecateByIDAndV
 	return &DeprecateByIDAndVersionUsingPOSTInternalServerError{}
 }
 
-/* DeprecateByIDAndVersionUsingPOSTInternalServerError describes a response with status code 500, with default header values.
+/*
+DeprecateByIDAndVersionUsingPOSTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type DeprecateByIDAndVersionUsingPOSTInternalServerError struct {
 }
 
+// IsSuccess returns true when this deprecate by Id and version using p o s t internal server error response has a 2xx status code
+func (o *DeprecateByIDAndVersionUsingPOSTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this deprecate by Id and version using p o s t internal server error response has a 3xx status code
+func (o *DeprecateByIDAndVersionUsingPOSTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this deprecate by Id and version using p o s t internal server error response has a 4xx status code
+func (o *DeprecateByIDAndVersionUsingPOSTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this deprecate by Id and version using p o s t internal server error response has a 5xx status code
+func (o *DeprecateByIDAndVersionUsingPOSTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this deprecate by Id and version using p o s t internal server error response a status code equal to that given
+func (o *DeprecateByIDAndVersionUsingPOSTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *DeprecateByIDAndVersionUsingPOSTInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/deprecate][%d] deprecateByIdAndVersionUsingPOSTInternalServerError ", 500)
+}
+
+func (o *DeprecateByIDAndVersionUsingPOSTInternalServerError) String() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/deprecate][%d] deprecateByIdAndVersionUsingPOSTInternalServerError ", 500)
 }
 

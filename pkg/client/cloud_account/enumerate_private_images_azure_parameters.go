@@ -52,10 +52,12 @@ func NewEnumeratePrivateImagesAzureParamsWithHTTPClient(client *http.Client) *En
 	}
 }
 
-/* EnumeratePrivateImagesAzureParams contains all the parameters to send to the API endpoint
-   for the enumerate private images azure operation.
+/*
+EnumeratePrivateImagesAzureParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the enumerate private images azure operation.
+
+	Typically these are written to a http.Request.
 */
 type EnumeratePrivateImagesAzureParams struct {
 

@@ -57,7 +57,8 @@ func NewGetTerraformConfigurationSourceCommitListUsingGETOK() *GetTerraformConfi
 	return &GetTerraformConfigurationSourceCommitListUsingGETOK{}
 }
 
-/* GetTerraformConfigurationSourceCommitListUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetTerraformConfigurationSourceCommitListUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -65,9 +66,39 @@ type GetTerraformConfigurationSourceCommitListUsingGETOK struct {
 	Payload *models.PageOfCommitDetails
 }
 
+// IsSuccess returns true when this get terraform configuration source commit list using g e t o k response has a 2xx status code
+func (o *GetTerraformConfigurationSourceCommitListUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get terraform configuration source commit list using g e t o k response has a 3xx status code
+func (o *GetTerraformConfigurationSourceCommitListUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get terraform configuration source commit list using g e t o k response has a 4xx status code
+func (o *GetTerraformConfigurationSourceCommitListUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get terraform configuration source commit list using g e t o k response has a 5xx status code
+func (o *GetTerraformConfigurationSourceCommitListUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get terraform configuration source commit list using g e t o k response a status code equal to that given
+func (o *GetTerraformConfigurationSourceCommitListUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetTerraformConfigurationSourceCommitListUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/get-configuration-source-commits][%d] getTerraformConfigurationSourceCommitListUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetTerraformConfigurationSourceCommitListUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/get-configuration-source-commits][%d] getTerraformConfigurationSourceCommitListUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetTerraformConfigurationSourceCommitListUsingGETOK) GetPayload() *models.PageOfCommitDetails {
 	return o.Payload
 }
@@ -89,7 +120,8 @@ func NewGetTerraformConfigurationSourceCommitListUsingGETBadRequest() *GetTerraf
 	return &GetTerraformConfigurationSourceCommitListUsingGETBadRequest{}
 }
 
-/* GetTerraformConfigurationSourceCommitListUsingGETBadRequest describes a response with status code 400, with default header values.
+/*
+GetTerraformConfigurationSourceCommitListUsingGETBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -97,9 +129,39 @@ type GetTerraformConfigurationSourceCommitListUsingGETBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get terraform configuration source commit list using g e t bad request response has a 2xx status code
+func (o *GetTerraformConfigurationSourceCommitListUsingGETBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get terraform configuration source commit list using g e t bad request response has a 3xx status code
+func (o *GetTerraformConfigurationSourceCommitListUsingGETBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get terraform configuration source commit list using g e t bad request response has a 4xx status code
+func (o *GetTerraformConfigurationSourceCommitListUsingGETBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get terraform configuration source commit list using g e t bad request response has a 5xx status code
+func (o *GetTerraformConfigurationSourceCommitListUsingGETBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get terraform configuration source commit list using g e t bad request response a status code equal to that given
+func (o *GetTerraformConfigurationSourceCommitListUsingGETBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GetTerraformConfigurationSourceCommitListUsingGETBadRequest) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/get-configuration-source-commits][%d] getTerraformConfigurationSourceCommitListUsingGETBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *GetTerraformConfigurationSourceCommitListUsingGETBadRequest) String() string {
+	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/get-configuration-source-commits][%d] getTerraformConfigurationSourceCommitListUsingGETBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *GetTerraformConfigurationSourceCommitListUsingGETBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -121,14 +183,44 @@ func NewGetTerraformConfigurationSourceCommitListUsingGETUnauthorized() *GetTerr
 	return &GetTerraformConfigurationSourceCommitListUsingGETUnauthorized{}
 }
 
-/* GetTerraformConfigurationSourceCommitListUsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+GetTerraformConfigurationSourceCommitListUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type GetTerraformConfigurationSourceCommitListUsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this get terraform configuration source commit list using g e t unauthorized response has a 2xx status code
+func (o *GetTerraformConfigurationSourceCommitListUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get terraform configuration source commit list using g e t unauthorized response has a 3xx status code
+func (o *GetTerraformConfigurationSourceCommitListUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get terraform configuration source commit list using g e t unauthorized response has a 4xx status code
+func (o *GetTerraformConfigurationSourceCommitListUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get terraform configuration source commit list using g e t unauthorized response has a 5xx status code
+func (o *GetTerraformConfigurationSourceCommitListUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get terraform configuration source commit list using g e t unauthorized response a status code equal to that given
+func (o *GetTerraformConfigurationSourceCommitListUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetTerraformConfigurationSourceCommitListUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/get-configuration-source-commits][%d] getTerraformConfigurationSourceCommitListUsingGETUnauthorized ", 401)
+}
+
+func (o *GetTerraformConfigurationSourceCommitListUsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/get-configuration-source-commits][%d] getTerraformConfigurationSourceCommitListUsingGETUnauthorized ", 401)
 }
 
@@ -142,14 +234,44 @@ func NewGetTerraformConfigurationSourceCommitListUsingGETForbidden() *GetTerrafo
 	return &GetTerraformConfigurationSourceCommitListUsingGETForbidden{}
 }
 
-/* GetTerraformConfigurationSourceCommitListUsingGETForbidden describes a response with status code 403, with default header values.
+/*
+GetTerraformConfigurationSourceCommitListUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetTerraformConfigurationSourceCommitListUsingGETForbidden struct {
 }
 
+// IsSuccess returns true when this get terraform configuration source commit list using g e t forbidden response has a 2xx status code
+func (o *GetTerraformConfigurationSourceCommitListUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get terraform configuration source commit list using g e t forbidden response has a 3xx status code
+func (o *GetTerraformConfigurationSourceCommitListUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get terraform configuration source commit list using g e t forbidden response has a 4xx status code
+func (o *GetTerraformConfigurationSourceCommitListUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get terraform configuration source commit list using g e t forbidden response has a 5xx status code
+func (o *GetTerraformConfigurationSourceCommitListUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get terraform configuration source commit list using g e t forbidden response a status code equal to that given
+func (o *GetTerraformConfigurationSourceCommitListUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetTerraformConfigurationSourceCommitListUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/get-configuration-source-commits][%d] getTerraformConfigurationSourceCommitListUsingGETForbidden ", 403)
+}
+
+func (o *GetTerraformConfigurationSourceCommitListUsingGETForbidden) String() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/get-configuration-source-commits][%d] getTerraformConfigurationSourceCommitListUsingGETForbidden ", 403)
 }
 

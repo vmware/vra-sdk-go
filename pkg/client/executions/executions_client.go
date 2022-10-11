@@ -46,9 +46,9 @@ type ClientService interface {
 }
 
 /*
-  DeleteAllExecutionsUsingDELETE deletes all executions
+DeleteAllExecutionsUsingDELETE deletes all executions
 
-  Delete executions that match the specified filter.
+Delete executions that match the specified filter.
 */
 func (a *Client) DeleteAllExecutionsUsingDELETE(params *DeleteAllExecutionsUsingDELETEParams, opts ...ClientOption) (*DeleteAllExecutionsUsingDELETEAccepted, error) {
 	// TODO: Validate the params before sending
@@ -86,9 +86,9 @@ func (a *Client) DeleteAllExecutionsUsingDELETE(params *DeleteAllExecutionsUsing
 }
 
 /*
-  DeleteExecutionByIDUsingDELETE deletes an execution by id
+DeleteExecutionByIDUsingDELETE deletes an execution by id
 
-  Delete an Execution
+Delete an Execution
 */
 func (a *Client) DeleteExecutionByIDUsingDELETE(params *DeleteExecutionByIDUsingDELETEParams, opts ...ClientOption) (*DeleteExecutionByIDUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) DeleteExecutionByIDUsingDELETE(params *DeleteExecutionByIDUsing
 }
 
 /*
-  GetAllExecutionsUsingGET gets all executions
+GetAllExecutionsUsingGET gets all executions
 
-  Get all Executions with specified paging and filter parameters.
+Get all Executions with specified paging and filter parameters.
 */
 func (a *Client) GetAllExecutionsUsingGET(params *GetAllExecutionsUsingGETParams, opts ...ClientOption) (*GetAllExecutionsUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -166,9 +166,9 @@ func (a *Client) GetAllExecutionsUsingGET(params *GetAllExecutionsUsingGETParams
 }
 
 /*
-  GetExecutionByIDUsingGET gets an execution
+GetExecutionByIDUsingGET gets an execution
 
-  Get an Execution by id
+Get an Execution by id
 */
 func (a *Client) GetExecutionByIDUsingGET(params *GetExecutionByIDUsingGETParams, opts ...ClientOption) (*GetExecutionByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -206,9 +206,9 @@ func (a *Client) GetExecutionByIDUsingGET(params *GetExecutionByIDUsingGETParams
 }
 
 /*
-  ModifyExecutionUsingPOST acts on an execution
+ModifyExecutionUsingPOST acts on an execution
 
-  Actions supported are pause, resume, cancel and tag
+Actions supported are pause, resume, cancel and tag
 */
 func (a *Client) ModifyExecutionUsingPOST(params *ModifyExecutionUsingPOSTParams, opts ...ClientOption) (*ModifyExecutionUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -246,9 +246,9 @@ func (a *Client) ModifyExecutionUsingPOST(params *ModifyExecutionUsingPOSTParams
 }
 
 /*
-  UpdateUsingPOST updates a batch of user operations
+UpdateUsingPOST updates a batch of user operations
 
-  Approves/ Rejects a set of user operations
+Approves/ Rejects a set of user operations
 */
 func (a *Client) UpdateUsingPOST(params *UpdateUsingPOSTParams, opts ...ClientOption) (*UpdateUsingPOSTOK, error) {
 	// TODO: Validate the params before sending

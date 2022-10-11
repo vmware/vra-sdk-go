@@ -55,10 +55,12 @@ func NewPostUsingPOST2ParamsWithHTTPClient(client *http.Client) *PostUsingPOST2P
 	}
 }
 
-/* PostUsingPOST2Params contains all the parameters to send to the API endpoint
-   for the post using p o s t 2 operation.
+/*
+PostUsingPOST2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post using p o s t 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type PostUsingPOST2Params struct {
 

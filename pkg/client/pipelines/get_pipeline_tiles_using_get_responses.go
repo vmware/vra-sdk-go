@@ -63,7 +63,8 @@ func NewGetPipelineTilesUsingGETOK() *GetPipelineTilesUsingGETOK {
 	return &GetPipelineTilesUsingGETOK{}
 }
 
-/* GetPipelineTilesUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetPipelineTilesUsingGETOK describes a response with status code 200, with default header values.
 
 'Success' with the requested Pipeline Tiles
 */
@@ -71,9 +72,39 @@ type GetPipelineTilesUsingGETOK struct {
 	Payload models.Tiles
 }
 
+// IsSuccess returns true when this get pipeline tiles using g e t o k response has a 2xx status code
+func (o *GetPipelineTilesUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get pipeline tiles using g e t o k response has a 3xx status code
+func (o *GetPipelineTilesUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get pipeline tiles using g e t o k response has a 4xx status code
+func (o *GetPipelineTilesUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get pipeline tiles using g e t o k response has a 5xx status code
+func (o *GetPipelineTilesUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get pipeline tiles using g e t o k response a status code equal to that given
+func (o *GetPipelineTilesUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetPipelineTilesUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/pipeline-tiles][%d] getPipelineTilesUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetPipelineTilesUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /codestream/api/pipeline-tiles][%d] getPipelineTilesUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetPipelineTilesUsingGETOK) GetPayload() models.Tiles {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewGetPipelineTilesUsingGETUnauthorized() *GetPipelineTilesUsingGETUnauthor
 	return &GetPipelineTilesUsingGETUnauthorized{}
 }
 
-/* GetPipelineTilesUsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+GetPipelineTilesUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type GetPipelineTilesUsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this get pipeline tiles using g e t unauthorized response has a 2xx status code
+func (o *GetPipelineTilesUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get pipeline tiles using g e t unauthorized response has a 3xx status code
+func (o *GetPipelineTilesUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get pipeline tiles using g e t unauthorized response has a 4xx status code
+func (o *GetPipelineTilesUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get pipeline tiles using g e t unauthorized response has a 5xx status code
+func (o *GetPipelineTilesUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get pipeline tiles using g e t unauthorized response a status code equal to that given
+func (o *GetPipelineTilesUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetPipelineTilesUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/pipeline-tiles][%d] getPipelineTilesUsingGETUnauthorized ", 401)
+}
+
+func (o *GetPipelineTilesUsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /codestream/api/pipeline-tiles][%d] getPipelineTilesUsingGETUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewGetPipelineTilesUsingGETForbidden() *GetPipelineTilesUsingGETForbidden {
 	return &GetPipelineTilesUsingGETForbidden{}
 }
 
-/* GetPipelineTilesUsingGETForbidden describes a response with status code 403, with default header values.
+/*
+GetPipelineTilesUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetPipelineTilesUsingGETForbidden struct {
 }
 
+// IsSuccess returns true when this get pipeline tiles using g e t forbidden response has a 2xx status code
+func (o *GetPipelineTilesUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get pipeline tiles using g e t forbidden response has a 3xx status code
+func (o *GetPipelineTilesUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get pipeline tiles using g e t forbidden response has a 4xx status code
+func (o *GetPipelineTilesUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get pipeline tiles using g e t forbidden response has a 5xx status code
+func (o *GetPipelineTilesUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get pipeline tiles using g e t forbidden response a status code equal to that given
+func (o *GetPipelineTilesUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetPipelineTilesUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/pipeline-tiles][%d] getPipelineTilesUsingGETForbidden ", 403)
+}
+
+func (o *GetPipelineTilesUsingGETForbidden) String() string {
 	return fmt.Sprintf("[GET /codestream/api/pipeline-tiles][%d] getPipelineTilesUsingGETForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewGetPipelineTilesUsingGETNotFound() *GetPipelineTilesUsingGETNotFound {
 	return &GetPipelineTilesUsingGETNotFound{}
 }
 
-/* GetPipelineTilesUsingGETNotFound describes a response with status code 404, with default header values.
+/*
+GetPipelineTilesUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type GetPipelineTilesUsingGETNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get pipeline tiles using g e t not found response has a 2xx status code
+func (o *GetPipelineTilesUsingGETNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get pipeline tiles using g e t not found response has a 3xx status code
+func (o *GetPipelineTilesUsingGETNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get pipeline tiles using g e t not found response has a 4xx status code
+func (o *GetPipelineTilesUsingGETNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get pipeline tiles using g e t not found response has a 5xx status code
+func (o *GetPipelineTilesUsingGETNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get pipeline tiles using g e t not found response a status code equal to that given
+func (o *GetPipelineTilesUsingGETNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetPipelineTilesUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/pipeline-tiles][%d] getPipelineTilesUsingGETNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetPipelineTilesUsingGETNotFound) String() string {
+	return fmt.Sprintf("[GET /codestream/api/pipeline-tiles][%d] getPipelineTilesUsingGETNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetPipelineTilesUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewGetPipelineTilesUsingGETInternalServerError() *GetPipelineTilesUsingGETI
 	return &GetPipelineTilesUsingGETInternalServerError{}
 }
 
-/* GetPipelineTilesUsingGETInternalServerError describes a response with status code 500, with default header values.
+/*
+GetPipelineTilesUsingGETInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type GetPipelineTilesUsingGETInternalServerError struct {
 }
 
+// IsSuccess returns true when this get pipeline tiles using g e t internal server error response has a 2xx status code
+func (o *GetPipelineTilesUsingGETInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get pipeline tiles using g e t internal server error response has a 3xx status code
+func (o *GetPipelineTilesUsingGETInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get pipeline tiles using g e t internal server error response has a 4xx status code
+func (o *GetPipelineTilesUsingGETInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get pipeline tiles using g e t internal server error response has a 5xx status code
+func (o *GetPipelineTilesUsingGETInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this get pipeline tiles using g e t internal server error response a status code equal to that given
+func (o *GetPipelineTilesUsingGETInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GetPipelineTilesUsingGETInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/pipeline-tiles][%d] getPipelineTilesUsingGETInternalServerError ", 500)
+}
+
+func (o *GetPipelineTilesUsingGETInternalServerError) String() string {
 	return fmt.Sprintf("[GET /codestream/api/pipeline-tiles][%d] getPipelineTilesUsingGETInternalServerError ", 500)
 }
 

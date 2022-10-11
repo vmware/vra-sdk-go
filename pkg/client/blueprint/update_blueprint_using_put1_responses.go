@@ -57,7 +57,8 @@ func NewUpdateBlueprintUsingPUT1OK() *UpdateBlueprintUsingPUT1OK {
 	return &UpdateBlueprintUsingPUT1OK{}
 }
 
-/* UpdateBlueprintUsingPUT1OK describes a response with status code 200, with default header values.
+/*
+UpdateBlueprintUsingPUT1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -65,9 +66,39 @@ type UpdateBlueprintUsingPUT1OK struct {
 	Payload *models.Blueprint
 }
 
+// IsSuccess returns true when this update blueprint using p u t1 o k response has a 2xx status code
+func (o *UpdateBlueprintUsingPUT1OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update blueprint using p u t1 o k response has a 3xx status code
+func (o *UpdateBlueprintUsingPUT1OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update blueprint using p u t1 o k response has a 4xx status code
+func (o *UpdateBlueprintUsingPUT1OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update blueprint using p u t1 o k response has a 5xx status code
+func (o *UpdateBlueprintUsingPUT1OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update blueprint using p u t1 o k response a status code equal to that given
+func (o *UpdateBlueprintUsingPUT1OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateBlueprintUsingPUT1OK) Error() string {
 	return fmt.Sprintf("[PUT /blueprint/api/blueprints/{blueprintId}][%d] updateBlueprintUsingPUT1OK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateBlueprintUsingPUT1OK) String() string {
+	return fmt.Sprintf("[PUT /blueprint/api/blueprints/{blueprintId}][%d] updateBlueprintUsingPUT1OK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateBlueprintUsingPUT1OK) GetPayload() *models.Blueprint {
 	return o.Payload
 }
@@ -89,14 +120,44 @@ func NewUpdateBlueprintUsingPUT1Unauthorized() *UpdateBlueprintUsingPUT1Unauthor
 	return &UpdateBlueprintUsingPUT1Unauthorized{}
 }
 
-/* UpdateBlueprintUsingPUT1Unauthorized describes a response with status code 401, with default header values.
+/*
+UpdateBlueprintUsingPUT1Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type UpdateBlueprintUsingPUT1Unauthorized struct {
 }
 
+// IsSuccess returns true when this update blueprint using p u t1 unauthorized response has a 2xx status code
+func (o *UpdateBlueprintUsingPUT1Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update blueprint using p u t1 unauthorized response has a 3xx status code
+func (o *UpdateBlueprintUsingPUT1Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update blueprint using p u t1 unauthorized response has a 4xx status code
+func (o *UpdateBlueprintUsingPUT1Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update blueprint using p u t1 unauthorized response has a 5xx status code
+func (o *UpdateBlueprintUsingPUT1Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update blueprint using p u t1 unauthorized response a status code equal to that given
+func (o *UpdateBlueprintUsingPUT1Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UpdateBlueprintUsingPUT1Unauthorized) Error() string {
+	return fmt.Sprintf("[PUT /blueprint/api/blueprints/{blueprintId}][%d] updateBlueprintUsingPUT1Unauthorized ", 401)
+}
+
+func (o *UpdateBlueprintUsingPUT1Unauthorized) String() string {
 	return fmt.Sprintf("[PUT /blueprint/api/blueprints/{blueprintId}][%d] updateBlueprintUsingPUT1Unauthorized ", 401)
 }
 
@@ -110,14 +171,44 @@ func NewUpdateBlueprintUsingPUT1Forbidden() *UpdateBlueprintUsingPUT1Forbidden {
 	return &UpdateBlueprintUsingPUT1Forbidden{}
 }
 
-/* UpdateBlueprintUsingPUT1Forbidden describes a response with status code 403, with default header values.
+/*
+UpdateBlueprintUsingPUT1Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type UpdateBlueprintUsingPUT1Forbidden struct {
 }
 
+// IsSuccess returns true when this update blueprint using p u t1 forbidden response has a 2xx status code
+func (o *UpdateBlueprintUsingPUT1Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update blueprint using p u t1 forbidden response has a 3xx status code
+func (o *UpdateBlueprintUsingPUT1Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update blueprint using p u t1 forbidden response has a 4xx status code
+func (o *UpdateBlueprintUsingPUT1Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update blueprint using p u t1 forbidden response has a 5xx status code
+func (o *UpdateBlueprintUsingPUT1Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update blueprint using p u t1 forbidden response a status code equal to that given
+func (o *UpdateBlueprintUsingPUT1Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateBlueprintUsingPUT1Forbidden) Error() string {
+	return fmt.Sprintf("[PUT /blueprint/api/blueprints/{blueprintId}][%d] updateBlueprintUsingPUT1Forbidden ", 403)
+}
+
+func (o *UpdateBlueprintUsingPUT1Forbidden) String() string {
 	return fmt.Sprintf("[PUT /blueprint/api/blueprints/{blueprintId}][%d] updateBlueprintUsingPUT1Forbidden ", 403)
 }
 
@@ -131,7 +222,8 @@ func NewUpdateBlueprintUsingPUT1NotFound() *UpdateBlueprintUsingPUT1NotFound {
 	return &UpdateBlueprintUsingPUT1NotFound{}
 }
 
-/* UpdateBlueprintUsingPUT1NotFound describes a response with status code 404, with default header values.
+/*
+UpdateBlueprintUsingPUT1NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -139,9 +231,39 @@ type UpdateBlueprintUsingPUT1NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update blueprint using p u t1 not found response has a 2xx status code
+func (o *UpdateBlueprintUsingPUT1NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update blueprint using p u t1 not found response has a 3xx status code
+func (o *UpdateBlueprintUsingPUT1NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update blueprint using p u t1 not found response has a 4xx status code
+func (o *UpdateBlueprintUsingPUT1NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update blueprint using p u t1 not found response has a 5xx status code
+func (o *UpdateBlueprintUsingPUT1NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update blueprint using p u t1 not found response a status code equal to that given
+func (o *UpdateBlueprintUsingPUT1NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateBlueprintUsingPUT1NotFound) Error() string {
 	return fmt.Sprintf("[PUT /blueprint/api/blueprints/{blueprintId}][%d] updateBlueprintUsingPUT1NotFound  %+v", 404, o.Payload)
 }
+
+func (o *UpdateBlueprintUsingPUT1NotFound) String() string {
+	return fmt.Sprintf("[PUT /blueprint/api/blueprints/{blueprintId}][%d] updateBlueprintUsingPUT1NotFound  %+v", 404, o.Payload)
+}
+
 func (o *UpdateBlueprintUsingPUT1NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
@@ -158,7 +157,7 @@ func UnmarshalEndpointSpecSlice(reader io.Reader, consumer runtime.Consumer) ([]
 // UnmarshalEndpointSpec unmarshals polymorphic EndpointSpec
 func UnmarshalEndpointSpec(reader io.Reader, consumer runtime.Consumer) (EndpointSpec, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}

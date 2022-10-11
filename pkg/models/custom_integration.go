@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
@@ -88,10 +87,20 @@ type CustomIntegration interface {
 	Project() string
 	SetProject(string)
 
+	// Id/name of a released version, which is marked as latest.
+	// Example: Version 2
+	SourceVersion() string
+	SetSourceVersion(string)
+
 	// Release status of the Custom Integration
 	// Example: NONE/RELEASED/DEPRECATED
 	Status() string
 	SetStatus(string)
+
+	// A set of tag keys and optional values that were set on on the resource.
+	// Example: [{"key":"env","value":"dev"}]
+	Tags() []string
+	SetTags([]string)
 
 	// Date when the entity was last updated. The date is in ISO 8601 with time zone.
 	// Example: 2019-09-16 09:25:38.065065+00
@@ -142,7 +151,11 @@ type customIntegration struct {
 
 	projectField string
 
+	sourceVersionField string
+
 	statusField string
+
+	tagsField []string
 
 	updatedAtField string
 
@@ -273,6 +286,16 @@ func (m *customIntegration) SetProject(val string) {
 	m.projectField = val
 }
 
+// SourceVersion gets the source version of this polymorphic type
+func (m *customIntegration) SourceVersion() string {
+	return m.sourceVersionField
+}
+
+// SetSourceVersion sets the source version of this polymorphic type
+func (m *customIntegration) SetSourceVersion(val string) {
+	m.sourceVersionField = val
+}
+
 // Status gets the status of this polymorphic type
 func (m *customIntegration) Status() string {
 	return m.statusField
@@ -281,6 +304,16 @@ func (m *customIntegration) Status() string {
 // SetStatus sets the status of this polymorphic type
 func (m *customIntegration) SetStatus(val string) {
 	m.statusField = val
+}
+
+// Tags gets the tags of this polymorphic type
+func (m *customIntegration) Tags() []string {
+	return m.tagsField
+}
+
+// SetTags sets the tags of this polymorphic type
+func (m *customIntegration) SetTags(val []string) {
+	m.tagsField = val
 }
 
 // UpdatedAt gets the updated at of this polymorphic type
@@ -344,7 +377,7 @@ func UnmarshalCustomIntegrationSlice(reader io.Reader, consumer runtime.Consumer
 // UnmarshalCustomIntegration unmarshals polymorphic CustomIntegration
 func UnmarshalCustomIntegration(reader io.Reader, consumer runtime.Consumer) (CustomIntegration, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}

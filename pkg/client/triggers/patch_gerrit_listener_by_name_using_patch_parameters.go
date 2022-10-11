@@ -54,10 +54,12 @@ func NewPatchGerritListenerByNameUsingPATCHParamsWithHTTPClient(client *http.Cli
 	}
 }
 
-/* PatchGerritListenerByNameUsingPATCHParams contains all the parameters to send to the API endpoint
-   for the patch gerrit listener by name using p a t c h operation.
+/*
+PatchGerritListenerByNameUsingPATCHParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the patch gerrit listener by name using p a t c h operation.
+
+	Typically these are written to a http.Request.
 */
 type PatchGerritListenerByNameUsingPATCHParams struct {
 

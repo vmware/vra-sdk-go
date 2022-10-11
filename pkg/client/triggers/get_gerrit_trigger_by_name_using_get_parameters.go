@@ -52,10 +52,12 @@ func NewGetGerritTriggerByNameUsingGETParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* GetGerritTriggerByNameUsingGETParams contains all the parameters to send to the API endpoint
-   for the get gerrit trigger by name using g e t operation.
+/*
+GetGerritTriggerByNameUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get gerrit trigger by name using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetGerritTriggerByNameUsingGETParams struct {
 

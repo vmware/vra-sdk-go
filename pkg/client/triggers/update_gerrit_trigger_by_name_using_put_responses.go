@@ -63,7 +63,8 @@ func NewUpdateGerritTriggerByNameUsingPUTOK() *UpdateGerritTriggerByNameUsingPUT
 	return &UpdateGerritTriggerByNameUsingPUTOK{}
 }
 
-/* UpdateGerritTriggerByNameUsingPUTOK describes a response with status code 200, with default header values.
+/*
+UpdateGerritTriggerByNameUsingPUTOK describes a response with status code 200, with default header values.
 
 'Success' with Gerrit Trigger Update
 */
@@ -71,9 +72,39 @@ type UpdateGerritTriggerByNameUsingPUTOK struct {
 	Payload models.GerritTrigger
 }
 
+// IsSuccess returns true when this update gerrit trigger by name using p u t o k response has a 2xx status code
+func (o *UpdateGerritTriggerByNameUsingPUTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update gerrit trigger by name using p u t o k response has a 3xx status code
+func (o *UpdateGerritTriggerByNameUsingPUTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update gerrit trigger by name using p u t o k response has a 4xx status code
+func (o *UpdateGerritTriggerByNameUsingPUTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update gerrit trigger by name using p u t o k response has a 5xx status code
+func (o *UpdateGerritTriggerByNameUsingPUTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update gerrit trigger by name using p u t o k response a status code equal to that given
+func (o *UpdateGerritTriggerByNameUsingPUTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateGerritTriggerByNameUsingPUTOK) Error() string {
 	return fmt.Sprintf("[PUT /codestream/api/gerrit-triggers/{project}/{name}][%d] updateGerritTriggerByNameUsingPUTOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateGerritTriggerByNameUsingPUTOK) String() string {
+	return fmt.Sprintf("[PUT /codestream/api/gerrit-triggers/{project}/{name}][%d] updateGerritTriggerByNameUsingPUTOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateGerritTriggerByNameUsingPUTOK) GetPayload() models.GerritTrigger {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewUpdateGerritTriggerByNameUsingPUTUnauthorized() *UpdateGerritTriggerByNa
 	return &UpdateGerritTriggerByNameUsingPUTUnauthorized{}
 }
 
-/* UpdateGerritTriggerByNameUsingPUTUnauthorized describes a response with status code 401, with default header values.
+/*
+UpdateGerritTriggerByNameUsingPUTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type UpdateGerritTriggerByNameUsingPUTUnauthorized struct {
 }
 
+// IsSuccess returns true when this update gerrit trigger by name using p u t unauthorized response has a 2xx status code
+func (o *UpdateGerritTriggerByNameUsingPUTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update gerrit trigger by name using p u t unauthorized response has a 3xx status code
+func (o *UpdateGerritTriggerByNameUsingPUTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update gerrit trigger by name using p u t unauthorized response has a 4xx status code
+func (o *UpdateGerritTriggerByNameUsingPUTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update gerrit trigger by name using p u t unauthorized response has a 5xx status code
+func (o *UpdateGerritTriggerByNameUsingPUTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update gerrit trigger by name using p u t unauthorized response a status code equal to that given
+func (o *UpdateGerritTriggerByNameUsingPUTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UpdateGerritTriggerByNameUsingPUTUnauthorized) Error() string {
+	return fmt.Sprintf("[PUT /codestream/api/gerrit-triggers/{project}/{name}][%d] updateGerritTriggerByNameUsingPUTUnauthorized ", 401)
+}
+
+func (o *UpdateGerritTriggerByNameUsingPUTUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /codestream/api/gerrit-triggers/{project}/{name}][%d] updateGerritTriggerByNameUsingPUTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewUpdateGerritTriggerByNameUsingPUTForbidden() *UpdateGerritTriggerByNameU
 	return &UpdateGerritTriggerByNameUsingPUTForbidden{}
 }
 
-/* UpdateGerritTriggerByNameUsingPUTForbidden describes a response with status code 403, with default header values.
+/*
+UpdateGerritTriggerByNameUsingPUTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type UpdateGerritTriggerByNameUsingPUTForbidden struct {
 }
 
+// IsSuccess returns true when this update gerrit trigger by name using p u t forbidden response has a 2xx status code
+func (o *UpdateGerritTriggerByNameUsingPUTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update gerrit trigger by name using p u t forbidden response has a 3xx status code
+func (o *UpdateGerritTriggerByNameUsingPUTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update gerrit trigger by name using p u t forbidden response has a 4xx status code
+func (o *UpdateGerritTriggerByNameUsingPUTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update gerrit trigger by name using p u t forbidden response has a 5xx status code
+func (o *UpdateGerritTriggerByNameUsingPUTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update gerrit trigger by name using p u t forbidden response a status code equal to that given
+func (o *UpdateGerritTriggerByNameUsingPUTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateGerritTriggerByNameUsingPUTForbidden) Error() string {
+	return fmt.Sprintf("[PUT /codestream/api/gerrit-triggers/{project}/{name}][%d] updateGerritTriggerByNameUsingPUTForbidden ", 403)
+}
+
+func (o *UpdateGerritTriggerByNameUsingPUTForbidden) String() string {
 	return fmt.Sprintf("[PUT /codestream/api/gerrit-triggers/{project}/{name}][%d] updateGerritTriggerByNameUsingPUTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewUpdateGerritTriggerByNameUsingPUTNotFound() *UpdateGerritTriggerByNameUs
 	return &UpdateGerritTriggerByNameUsingPUTNotFound{}
 }
 
-/* UpdateGerritTriggerByNameUsingPUTNotFound describes a response with status code 404, with default header values.
+/*
+UpdateGerritTriggerByNameUsingPUTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type UpdateGerritTriggerByNameUsingPUTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update gerrit trigger by name using p u t not found response has a 2xx status code
+func (o *UpdateGerritTriggerByNameUsingPUTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update gerrit trigger by name using p u t not found response has a 3xx status code
+func (o *UpdateGerritTriggerByNameUsingPUTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update gerrit trigger by name using p u t not found response has a 4xx status code
+func (o *UpdateGerritTriggerByNameUsingPUTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update gerrit trigger by name using p u t not found response has a 5xx status code
+func (o *UpdateGerritTriggerByNameUsingPUTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update gerrit trigger by name using p u t not found response a status code equal to that given
+func (o *UpdateGerritTriggerByNameUsingPUTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateGerritTriggerByNameUsingPUTNotFound) Error() string {
 	return fmt.Sprintf("[PUT /codestream/api/gerrit-triggers/{project}/{name}][%d] updateGerritTriggerByNameUsingPUTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UpdateGerritTriggerByNameUsingPUTNotFound) String() string {
+	return fmt.Sprintf("[PUT /codestream/api/gerrit-triggers/{project}/{name}][%d] updateGerritTriggerByNameUsingPUTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UpdateGerritTriggerByNameUsingPUTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewUpdateGerritTriggerByNameUsingPUTInternalServerError() *UpdateGerritTrig
 	return &UpdateGerritTriggerByNameUsingPUTInternalServerError{}
 }
 
-/* UpdateGerritTriggerByNameUsingPUTInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateGerritTriggerByNameUsingPUTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type UpdateGerritTriggerByNameUsingPUTInternalServerError struct {
 }
 
+// IsSuccess returns true when this update gerrit trigger by name using p u t internal server error response has a 2xx status code
+func (o *UpdateGerritTriggerByNameUsingPUTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update gerrit trigger by name using p u t internal server error response has a 3xx status code
+func (o *UpdateGerritTriggerByNameUsingPUTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update gerrit trigger by name using p u t internal server error response has a 4xx status code
+func (o *UpdateGerritTriggerByNameUsingPUTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update gerrit trigger by name using p u t internal server error response has a 5xx status code
+func (o *UpdateGerritTriggerByNameUsingPUTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this update gerrit trigger by name using p u t internal server error response a status code equal to that given
+func (o *UpdateGerritTriggerByNameUsingPUTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *UpdateGerritTriggerByNameUsingPUTInternalServerError) Error() string {
+	return fmt.Sprintf("[PUT /codestream/api/gerrit-triggers/{project}/{name}][%d] updateGerritTriggerByNameUsingPUTInternalServerError ", 500)
+}
+
+func (o *UpdateGerritTriggerByNameUsingPUTInternalServerError) String() string {
 	return fmt.Sprintf("[PUT /codestream/api/gerrit-triggers/{project}/{name}][%d] updateGerritTriggerByNameUsingPUTInternalServerError ", 500)
 }
 

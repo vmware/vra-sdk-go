@@ -41,6 +41,10 @@ type CloudAccountVmcRegionEnumerationSpecification struct {
 	// Example: 23959a1e-18bc-4f0c-ac49-b5aeb4b6eef4
 	DcID string `json:"dcId,omitempty"`
 
+	// The environment where the agent has been deployed. When the agent has been deployed using the "Add Ons" in VMC UI or Api use "aap".
+	// Example: aap
+	Environment string `json:"environment,omitempty"`
+
 	// Enter the IP address or FQDN of the vCenter Server in the specified SDDC. The cloud proxy belongs on this vCenter.  Either provide hostName or provide a cloudAccountId of an existing account.
 	// Example: vc1.vmware.com
 	HostName string `json:"hostName,omitempty"`

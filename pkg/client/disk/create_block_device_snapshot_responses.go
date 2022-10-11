@@ -51,7 +51,8 @@ func NewCreateBlockDeviceSnapshotAccepted() *CreateBlockDeviceSnapshotAccepted {
 	return &CreateBlockDeviceSnapshotAccepted{}
 }
 
-/* CreateBlockDeviceSnapshotAccepted describes a response with status code 202, with default header values.
+/*
+CreateBlockDeviceSnapshotAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type CreateBlockDeviceSnapshotAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this create block device snapshot accepted response has a 2xx status code
+func (o *CreateBlockDeviceSnapshotAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create block device snapshot accepted response has a 3xx status code
+func (o *CreateBlockDeviceSnapshotAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create block device snapshot accepted response has a 4xx status code
+func (o *CreateBlockDeviceSnapshotAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create block device snapshot accepted response has a 5xx status code
+func (o *CreateBlockDeviceSnapshotAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create block device snapshot accepted response a status code equal to that given
+func (o *CreateBlockDeviceSnapshotAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateBlockDeviceSnapshotAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/snapshots][%d] createBlockDeviceSnapshotAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateBlockDeviceSnapshotAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/snapshots][%d] createBlockDeviceSnapshotAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateBlockDeviceSnapshotAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,14 +114,44 @@ func NewCreateBlockDeviceSnapshotNoContent() *CreateBlockDeviceSnapshotNoContent
 	return &CreateBlockDeviceSnapshotNoContent{}
 }
 
-/* CreateBlockDeviceSnapshotNoContent describes a response with status code 204, with default header values.
+/*
+CreateBlockDeviceSnapshotNoContent describes a response with status code 204, with default header values.
 
 No Content
 */
 type CreateBlockDeviceSnapshotNoContent struct {
 }
 
+// IsSuccess returns true when this create block device snapshot no content response has a 2xx status code
+func (o *CreateBlockDeviceSnapshotNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create block device snapshot no content response has a 3xx status code
+func (o *CreateBlockDeviceSnapshotNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create block device snapshot no content response has a 4xx status code
+func (o *CreateBlockDeviceSnapshotNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create block device snapshot no content response has a 5xx status code
+func (o *CreateBlockDeviceSnapshotNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create block device snapshot no content response a status code equal to that given
+func (o *CreateBlockDeviceSnapshotNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *CreateBlockDeviceSnapshotNoContent) Error() string {
+	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/snapshots][%d] createBlockDeviceSnapshotNoContent ", 204)
+}
+
+func (o *CreateBlockDeviceSnapshotNoContent) String() string {
 	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/snapshots][%d] createBlockDeviceSnapshotNoContent ", 204)
 }
 
@@ -104,7 +165,8 @@ func NewCreateBlockDeviceSnapshotForbidden() *CreateBlockDeviceSnapshotForbidden
 	return &CreateBlockDeviceSnapshotForbidden{}
 }
 
-/* CreateBlockDeviceSnapshotForbidden describes a response with status code 403, with default header values.
+/*
+CreateBlockDeviceSnapshotForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -112,9 +174,39 @@ type CreateBlockDeviceSnapshotForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this create block device snapshot forbidden response has a 2xx status code
+func (o *CreateBlockDeviceSnapshotForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create block device snapshot forbidden response has a 3xx status code
+func (o *CreateBlockDeviceSnapshotForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create block device snapshot forbidden response has a 4xx status code
+func (o *CreateBlockDeviceSnapshotForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create block device snapshot forbidden response has a 5xx status code
+func (o *CreateBlockDeviceSnapshotForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create block device snapshot forbidden response a status code equal to that given
+func (o *CreateBlockDeviceSnapshotForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateBlockDeviceSnapshotForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/snapshots][%d] createBlockDeviceSnapshotForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CreateBlockDeviceSnapshotForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/snapshots][%d] createBlockDeviceSnapshotForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CreateBlockDeviceSnapshotForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

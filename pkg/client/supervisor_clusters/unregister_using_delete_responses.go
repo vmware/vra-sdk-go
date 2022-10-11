@@ -26,6 +26,12 @@ func (o *UnregisterUsingDELETEReader) ReadResponse(response runtime.ClientRespon
 			return nil, err
 		}
 		return result, nil
+	case 403:
+		result := NewUnregisterUsingDELETEForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -36,18 +42,99 @@ func NewUnregisterUsingDELETEOK() *UnregisterUsingDELETEOK {
 	return &UnregisterUsingDELETEOK{}
 }
 
-/* UnregisterUsingDELETEOK describes a response with status code 200, with default header values.
+/*
+UnregisterUsingDELETEOK describes a response with status code 200, with default header values.
 
 OK
 */
 type UnregisterUsingDELETEOK struct {
 }
 
+// IsSuccess returns true when this unregister using d e l e t e o k response has a 2xx status code
+func (o *UnregisterUsingDELETEOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this unregister using d e l e t e o k response has a 3xx status code
+func (o *UnregisterUsingDELETEOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this unregister using d e l e t e o k response has a 4xx status code
+func (o *UnregisterUsingDELETEOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this unregister using d e l e t e o k response has a 5xx status code
+func (o *UnregisterUsingDELETEOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this unregister using d e l e t e o k response a status code equal to that given
+func (o *UnregisterUsingDELETEOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UnregisterUsingDELETEOK) Error() string {
 	return fmt.Sprintf("[DELETE /cmx/api/resources/supervisor-clusters/{clusterSelfLinkId}][%d] unregisterUsingDELETEOK ", 200)
 }
 
+func (o *UnregisterUsingDELETEOK) String() string {
+	return fmt.Sprintf("[DELETE /cmx/api/resources/supervisor-clusters/{clusterSelfLinkId}][%d] unregisterUsingDELETEOK ", 200)
+}
+
 func (o *UnregisterUsingDELETEOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewUnregisterUsingDELETEForbidden creates a UnregisterUsingDELETEForbidden with default headers values
+func NewUnregisterUsingDELETEForbidden() *UnregisterUsingDELETEForbidden {
+	return &UnregisterUsingDELETEForbidden{}
+}
+
+/*
+UnregisterUsingDELETEForbidden describes a response with status code 403, with default header values.
+
+Forbidden, the user lacks permissions
+*/
+type UnregisterUsingDELETEForbidden struct {
+}
+
+// IsSuccess returns true when this unregister using d e l e t e forbidden response has a 2xx status code
+func (o *UnregisterUsingDELETEForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this unregister using d e l e t e forbidden response has a 3xx status code
+func (o *UnregisterUsingDELETEForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this unregister using d e l e t e forbidden response has a 4xx status code
+func (o *UnregisterUsingDELETEForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this unregister using d e l e t e forbidden response has a 5xx status code
+func (o *UnregisterUsingDELETEForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this unregister using d e l e t e forbidden response a status code equal to that given
+func (o *UnregisterUsingDELETEForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *UnregisterUsingDELETEForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /cmx/api/resources/supervisor-clusters/{clusterSelfLinkId}][%d] unregisterUsingDELETEForbidden ", 403)
+}
+
+func (o *UnregisterUsingDELETEForbidden) String() string {
+	return fmt.Sprintf("[DELETE /cmx/api/resources/supervisor-clusters/{clusterSelfLinkId}][%d] unregisterUsingDELETEForbidden ", 403)
+}
+
+func (o *UnregisterUsingDELETEForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

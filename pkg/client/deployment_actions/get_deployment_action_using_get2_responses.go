@@ -51,7 +51,8 @@ func NewGetDeploymentActionUsingGET2OK() *GetDeploymentActionUsingGET2OK {
 	return &GetDeploymentActionUsingGET2OK{}
 }
 
-/* GetDeploymentActionUsingGET2OK describes a response with status code 200, with default header values.
+/*
+GetDeploymentActionUsingGET2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -59,9 +60,39 @@ type GetDeploymentActionUsingGET2OK struct {
 	Payload *models.ResourceAction
 }
 
+// IsSuccess returns true when this get deployment action using g e t2 o k response has a 2xx status code
+func (o *GetDeploymentActionUsingGET2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get deployment action using g e t2 o k response has a 3xx status code
+func (o *GetDeploymentActionUsingGET2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get deployment action using g e t2 o k response has a 4xx status code
+func (o *GetDeploymentActionUsingGET2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get deployment action using g e t2 o k response has a 5xx status code
+func (o *GetDeploymentActionUsingGET2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get deployment action using g e t2 o k response a status code equal to that given
+func (o *GetDeploymentActionUsingGET2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetDeploymentActionUsingGET2OK) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}/actions/{actionId}][%d] getDeploymentActionUsingGET2OK  %+v", 200, o.Payload)
 }
+
+func (o *GetDeploymentActionUsingGET2OK) String() string {
+	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}/actions/{actionId}][%d] getDeploymentActionUsingGET2OK  %+v", 200, o.Payload)
+}
+
 func (o *GetDeploymentActionUsingGET2OK) GetPayload() *models.ResourceAction {
 	return o.Payload
 }
@@ -83,14 +114,44 @@ func NewGetDeploymentActionUsingGET2Unauthorized() *GetDeploymentActionUsingGET2
 	return &GetDeploymentActionUsingGET2Unauthorized{}
 }
 
-/* GetDeploymentActionUsingGET2Unauthorized describes a response with status code 401, with default header values.
+/*
+GetDeploymentActionUsingGET2Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type GetDeploymentActionUsingGET2Unauthorized struct {
 }
 
+// IsSuccess returns true when this get deployment action using g e t2 unauthorized response has a 2xx status code
+func (o *GetDeploymentActionUsingGET2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get deployment action using g e t2 unauthorized response has a 3xx status code
+func (o *GetDeploymentActionUsingGET2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get deployment action using g e t2 unauthorized response has a 4xx status code
+func (o *GetDeploymentActionUsingGET2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get deployment action using g e t2 unauthorized response has a 5xx status code
+func (o *GetDeploymentActionUsingGET2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get deployment action using g e t2 unauthorized response a status code equal to that given
+func (o *GetDeploymentActionUsingGET2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetDeploymentActionUsingGET2Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}/actions/{actionId}][%d] getDeploymentActionUsingGET2Unauthorized ", 401)
+}
+
+func (o *GetDeploymentActionUsingGET2Unauthorized) String() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}/actions/{actionId}][%d] getDeploymentActionUsingGET2Unauthorized ", 401)
 }
 
@@ -104,7 +165,8 @@ func NewGetDeploymentActionUsingGET2NotFound() *GetDeploymentActionUsingGET2NotF
 	return &GetDeploymentActionUsingGET2NotFound{}
 }
 
-/* GetDeploymentActionUsingGET2NotFound describes a response with status code 404, with default header values.
+/*
+GetDeploymentActionUsingGET2NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -112,9 +174,39 @@ type GetDeploymentActionUsingGET2NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get deployment action using g e t2 not found response has a 2xx status code
+func (o *GetDeploymentActionUsingGET2NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get deployment action using g e t2 not found response has a 3xx status code
+func (o *GetDeploymentActionUsingGET2NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get deployment action using g e t2 not found response has a 4xx status code
+func (o *GetDeploymentActionUsingGET2NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get deployment action using g e t2 not found response has a 5xx status code
+func (o *GetDeploymentActionUsingGET2NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get deployment action using g e t2 not found response a status code equal to that given
+func (o *GetDeploymentActionUsingGET2NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetDeploymentActionUsingGET2NotFound) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}/actions/{actionId}][%d] getDeploymentActionUsingGET2NotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetDeploymentActionUsingGET2NotFound) String() string {
+	return fmt.Sprintf("[GET /deployment/api/deployments/{deploymentId}/actions/{actionId}][%d] getDeploymentActionUsingGET2NotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetDeploymentActionUsingGET2NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

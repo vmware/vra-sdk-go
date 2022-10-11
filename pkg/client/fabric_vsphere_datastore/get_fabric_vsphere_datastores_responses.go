@@ -45,7 +45,8 @@ func NewGetFabricVSphereDatastoresOK() *GetFabricVSphereDatastoresOK {
 	return &GetFabricVSphereDatastoresOK{}
 }
 
-/* GetFabricVSphereDatastoresOK describes a response with status code 200, with default header values.
+/*
+GetFabricVSphereDatastoresOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type GetFabricVSphereDatastoresOK struct {
 	Payload *models.FabricVsphereDatastoreResult
 }
 
+// IsSuccess returns true when this get fabric v sphere datastores o k response has a 2xx status code
+func (o *GetFabricVSphereDatastoresOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get fabric v sphere datastores o k response has a 3xx status code
+func (o *GetFabricVSphereDatastoresOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get fabric v sphere datastores o k response has a 4xx status code
+func (o *GetFabricVSphereDatastoresOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get fabric v sphere datastores o k response has a 5xx status code
+func (o *GetFabricVSphereDatastoresOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get fabric v sphere datastores o k response a status code equal to that given
+func (o *GetFabricVSphereDatastoresOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetFabricVSphereDatastoresOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-datastores][%d] getFabricVSphereDatastoresOK  %+v", 200, o.Payload)
 }
+
+func (o *GetFabricVSphereDatastoresOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-datastores][%d] getFabricVSphereDatastoresOK  %+v", 200, o.Payload)
+}
+
 func (o *GetFabricVSphereDatastoresOK) GetPayload() *models.FabricVsphereDatastoreResult {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewGetFabricVSphereDatastoresForbidden() *GetFabricVSphereDatastoresForbidd
 	return &GetFabricVSphereDatastoresForbidden{}
 }
 
-/* GetFabricVSphereDatastoresForbidden describes a response with status code 403, with default header values.
+/*
+GetFabricVSphereDatastoresForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type GetFabricVSphereDatastoresForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get fabric v sphere datastores forbidden response has a 2xx status code
+func (o *GetFabricVSphereDatastoresForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get fabric v sphere datastores forbidden response has a 3xx status code
+func (o *GetFabricVSphereDatastoresForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get fabric v sphere datastores forbidden response has a 4xx status code
+func (o *GetFabricVSphereDatastoresForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get fabric v sphere datastores forbidden response has a 5xx status code
+func (o *GetFabricVSphereDatastoresForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get fabric v sphere datastores forbidden response a status code equal to that given
+func (o *GetFabricVSphereDatastoresForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetFabricVSphereDatastoresForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-datastores][%d] getFabricVSphereDatastoresForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetFabricVSphereDatastoresForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/fabric-vsphere-datastores][%d] getFabricVSphereDatastoresForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetFabricVSphereDatastoresForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

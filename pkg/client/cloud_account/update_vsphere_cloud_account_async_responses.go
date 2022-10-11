@@ -51,7 +51,8 @@ func NewUpdateVSphereCloudAccountAsyncAccepted() *UpdateVSphereCloudAccountAsync
 	return &UpdateVSphereCloudAccountAsyncAccepted{}
 }
 
-/* UpdateVSphereCloudAccountAsyncAccepted describes a response with status code 202, with default header values.
+/*
+UpdateVSphereCloudAccountAsyncAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type UpdateVSphereCloudAccountAsyncAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this update v sphere cloud account async accepted response has a 2xx status code
+func (o *UpdateVSphereCloudAccountAsyncAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update v sphere cloud account async accepted response has a 3xx status code
+func (o *UpdateVSphereCloudAccountAsyncAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update v sphere cloud account async accepted response has a 4xx status code
+func (o *UpdateVSphereCloudAccountAsyncAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update v sphere cloud account async accepted response has a 5xx status code
+func (o *UpdateVSphereCloudAccountAsyncAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update v sphere cloud account async accepted response a status code equal to that given
+func (o *UpdateVSphereCloudAccountAsyncAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *UpdateVSphereCloudAccountAsyncAccepted) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-vsphere/{id}][%d] updateVSphereCloudAccountAsyncAccepted  %+v", 202, o.Payload)
 }
+
+func (o *UpdateVSphereCloudAccountAsyncAccepted) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-vsphere/{id}][%d] updateVSphereCloudAccountAsyncAccepted  %+v", 202, o.Payload)
+}
+
 func (o *UpdateVSphereCloudAccountAsyncAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewUpdateVSphereCloudAccountAsyncForbidden() *UpdateVSphereCloudAccountAsyn
 	return &UpdateVSphereCloudAccountAsyncForbidden{}
 }
 
-/* UpdateVSphereCloudAccountAsyncForbidden describes a response with status code 403, with default header values.
+/*
+UpdateVSphereCloudAccountAsyncForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type UpdateVSphereCloudAccountAsyncForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this update v sphere cloud account async forbidden response has a 2xx status code
+func (o *UpdateVSphereCloudAccountAsyncForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update v sphere cloud account async forbidden response has a 3xx status code
+func (o *UpdateVSphereCloudAccountAsyncForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update v sphere cloud account async forbidden response has a 4xx status code
+func (o *UpdateVSphereCloudAccountAsyncForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update v sphere cloud account async forbidden response has a 5xx status code
+func (o *UpdateVSphereCloudAccountAsyncForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update v sphere cloud account async forbidden response a status code equal to that given
+func (o *UpdateVSphereCloudAccountAsyncForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateVSphereCloudAccountAsyncForbidden) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-vsphere/{id}][%d] updateVSphereCloudAccountAsyncForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UpdateVSphereCloudAccountAsyncForbidden) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-vsphere/{id}][%d] updateVSphereCloudAccountAsyncForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UpdateVSphereCloudAccountAsyncForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewUpdateVSphereCloudAccountAsyncNotFound() *UpdateVSphereCloudAccountAsync
 	return &UpdateVSphereCloudAccountAsyncNotFound{}
 }
 
-/* UpdateVSphereCloudAccountAsyncNotFound describes a response with status code 404, with default header values.
+/*
+UpdateVSphereCloudAccountAsyncNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type UpdateVSphereCloudAccountAsyncNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update v sphere cloud account async not found response has a 2xx status code
+func (o *UpdateVSphereCloudAccountAsyncNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update v sphere cloud account async not found response has a 3xx status code
+func (o *UpdateVSphereCloudAccountAsyncNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update v sphere cloud account async not found response has a 4xx status code
+func (o *UpdateVSphereCloudAccountAsyncNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update v sphere cloud account async not found response has a 5xx status code
+func (o *UpdateVSphereCloudAccountAsyncNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update v sphere cloud account async not found response a status code equal to that given
+func (o *UpdateVSphereCloudAccountAsyncNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateVSphereCloudAccountAsyncNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-vsphere/{id}][%d] updateVSphereCloudAccountAsyncNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UpdateVSphereCloudAccountAsyncNotFound) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-vsphere/{id}][%d] updateVSphereCloudAccountAsyncNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UpdateVSphereCloudAccountAsyncNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

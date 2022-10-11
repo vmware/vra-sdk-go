@@ -51,7 +51,8 @@ func NewPromoteDiskAccepted() *PromoteDiskAccepted {
 	return &PromoteDiskAccepted{}
 }
 
-/* PromoteDiskAccepted describes a response with status code 202, with default header values.
+/*
+PromoteDiskAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type PromoteDiskAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this promote disk accepted response has a 2xx status code
+func (o *PromoteDiskAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this promote disk accepted response has a 3xx status code
+func (o *PromoteDiskAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this promote disk accepted response has a 4xx status code
+func (o *PromoteDiskAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this promote disk accepted response has a 5xx status code
+func (o *PromoteDiskAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this promote disk accepted response a status code equal to that given
+func (o *PromoteDiskAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *PromoteDiskAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/promote][%d] promoteDiskAccepted  %+v", 202, o.Payload)
 }
+
+func (o *PromoteDiskAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/promote][%d] promoteDiskAccepted  %+v", 202, o.Payload)
+}
+
 func (o *PromoteDiskAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPromoteDiskForbidden() *PromoteDiskForbidden {
 	return &PromoteDiskForbidden{}
 }
 
-/* PromoteDiskForbidden describes a response with status code 403, with default header values.
+/*
+PromoteDiskForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type PromoteDiskForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this promote disk forbidden response has a 2xx status code
+func (o *PromoteDiskForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this promote disk forbidden response has a 3xx status code
+func (o *PromoteDiskForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this promote disk forbidden response has a 4xx status code
+func (o *PromoteDiskForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this promote disk forbidden response has a 5xx status code
+func (o *PromoteDiskForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this promote disk forbidden response a status code equal to that given
+func (o *PromoteDiskForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *PromoteDiskForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/promote][%d] promoteDiskForbidden  %+v", 403, o.Payload)
 }
+
+func (o *PromoteDiskForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/promote][%d] promoteDiskForbidden  %+v", 403, o.Payload)
+}
+
 func (o *PromoteDiskForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewPromoteDiskNotFound() *PromoteDiskNotFound {
 	return &PromoteDiskNotFound{}
 }
 
-/* PromoteDiskNotFound describes a response with status code 404, with default header values.
+/*
+PromoteDiskNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type PromoteDiskNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this promote disk not found response has a 2xx status code
+func (o *PromoteDiskNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this promote disk not found response has a 3xx status code
+func (o *PromoteDiskNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this promote disk not found response has a 4xx status code
+func (o *PromoteDiskNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this promote disk not found response has a 5xx status code
+func (o *PromoteDiskNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this promote disk not found response a status code equal to that given
+func (o *PromoteDiskNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *PromoteDiskNotFound) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/promote][%d] promoteDiskNotFound  %+v", 404, o.Payload)
 }
+
+func (o *PromoteDiskNotFound) String() string {
+	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/promote][%d] promoteDiskNotFound  %+v", 404, o.Payload)
+}
+
 func (o *PromoteDiskNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

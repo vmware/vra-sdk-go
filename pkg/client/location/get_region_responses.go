@@ -51,7 +51,8 @@ func NewGetRegionOK() *GetRegionOK {
 	return &GetRegionOK{}
 }
 
-/* GetRegionOK describes a response with status code 200, with default header values.
+/*
+GetRegionOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetRegionOK struct {
 	Payload *models.Region
 }
 
+// IsSuccess returns true when this get region o k response has a 2xx status code
+func (o *GetRegionOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get region o k response has a 3xx status code
+func (o *GetRegionOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get region o k response has a 4xx status code
+func (o *GetRegionOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get region o k response has a 5xx status code
+func (o *GetRegionOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get region o k response a status code equal to that given
+func (o *GetRegionOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetRegionOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/regions/{id}][%d] getRegionOK  %+v", 200, o.Payload)
 }
+
+func (o *GetRegionOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/regions/{id}][%d] getRegionOK  %+v", 200, o.Payload)
+}
+
 func (o *GetRegionOK) GetPayload() *models.Region {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetRegionForbidden() *GetRegionForbidden {
 	return &GetRegionForbidden{}
 }
 
-/* GetRegionForbidden describes a response with status code 403, with default header values.
+/*
+GetRegionForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type GetRegionForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get region forbidden response has a 2xx status code
+func (o *GetRegionForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get region forbidden response has a 3xx status code
+func (o *GetRegionForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get region forbidden response has a 4xx status code
+func (o *GetRegionForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get region forbidden response has a 5xx status code
+func (o *GetRegionForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get region forbidden response a status code equal to that given
+func (o *GetRegionForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetRegionForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/regions/{id}][%d] getRegionForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetRegionForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/regions/{id}][%d] getRegionForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetRegionForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewGetRegionNotFound() *GetRegionNotFound {
 	return &GetRegionNotFound{}
 }
 
-/* GetRegionNotFound describes a response with status code 404, with default header values.
+/*
+GetRegionNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type GetRegionNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get region not found response has a 2xx status code
+func (o *GetRegionNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get region not found response has a 3xx status code
+func (o *GetRegionNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get region not found response has a 4xx status code
+func (o *GetRegionNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get region not found response has a 5xx status code
+func (o *GetRegionNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get region not found response a status code equal to that given
+func (o *GetRegionNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetRegionNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/regions/{id}][%d] getRegionNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetRegionNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/regions/{id}][%d] getRegionNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetRegionNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

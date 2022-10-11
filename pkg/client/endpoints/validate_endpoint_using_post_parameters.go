@@ -54,10 +54,12 @@ func NewValidateEndpointUsingPOSTParamsWithHTTPClient(client *http.Client) *Vali
 	}
 }
 
-/* ValidateEndpointUsingPOSTParams contains all the parameters to send to the API endpoint
-   for the validate endpoint using p o s t operation.
+/*
+ValidateEndpointUsingPOSTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the validate endpoint using p o s t operation.
+
+	Typically these are written to a http.Request.
 */
 type ValidateEndpointUsingPOSTParams struct {
 

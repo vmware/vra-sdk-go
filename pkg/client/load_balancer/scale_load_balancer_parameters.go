@@ -54,10 +54,12 @@ func NewScaleLoadBalancerParamsWithHTTPClient(client *http.Client) *ScaleLoadBal
 	}
 }
 
-/* ScaleLoadBalancerParams contains all the parameters to send to the API endpoint
-   for the scale load balancer operation.
+/*
+ScaleLoadBalancerParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the scale load balancer operation.
+
+	Typically these are written to a http.Request.
 */
 type ScaleLoadBalancerParams struct {
 

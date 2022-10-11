@@ -26,7 +26,8 @@ type ClusterPlan struct {
 	// created millis
 	CreatedMillis int64 `json:"createdMillis,omitempty"`
 
-	// definition
+	// The definition varies depending on the type of cluster plan. Example shown below is for cluster plans of type TANZU_CLUSTER_PLAN. In that case the definition is equivalent to the spec of a Tanzu Kubernetes cluster in JSON format. Here is a documentation https://docs.vmware.com/en/VMware-vSphere/7.0/vmware-vsphere-with-tanzu/GUID-B1034373-8C38-4FE2-9517-345BF7271A1E.html
+	// example: {"spec":{"distribution":{"version":"1.20"},"topology":{"controlPlane":{"count":1,"class":"best-effort-xsmall","storageClass":"vsan-default-storage-policy"},"workers":{"count":1,"class":"best-effort-xsmall","storageClass":"vsan-default-storage-policy"}},"settings":{"storage":{"defaultClass":"","classes":[]}}}}
 	Definition interface{} `json:"definition,omitempty"`
 
 	// description

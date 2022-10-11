@@ -63,7 +63,8 @@ func NewWithdrawByIDAndVersionUsingPOSTOK() *WithdrawByIDAndVersionUsingPOSTOK {
 	return &WithdrawByIDAndVersionUsingPOSTOK{}
 }
 
-/* WithdrawByIDAndVersionUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+WithdrawByIDAndVersionUsingPOSTOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type WithdrawByIDAndVersionUsingPOSTOK struct {
 	Payload models.CustomIntegration
 }
 
+// IsSuccess returns true when this withdraw by Id and version using p o s t o k response has a 2xx status code
+func (o *WithdrawByIDAndVersionUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this withdraw by Id and version using p o s t o k response has a 3xx status code
+func (o *WithdrawByIDAndVersionUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this withdraw by Id and version using p o s t o k response has a 4xx status code
+func (o *WithdrawByIDAndVersionUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this withdraw by Id and version using p o s t o k response has a 5xx status code
+func (o *WithdrawByIDAndVersionUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this withdraw by Id and version using p o s t o k response a status code equal to that given
+func (o *WithdrawByIDAndVersionUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *WithdrawByIDAndVersionUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/withdraw][%d] withdrawByIdAndVersionUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *WithdrawByIDAndVersionUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/withdraw][%d] withdrawByIdAndVersionUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *WithdrawByIDAndVersionUsingPOSTOK) GetPayload() models.CustomIntegration {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewWithdrawByIDAndVersionUsingPOSTUnauthorized() *WithdrawByIDAndVersionUsi
 	return &WithdrawByIDAndVersionUsingPOSTUnauthorized{}
 }
 
-/* WithdrawByIDAndVersionUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+WithdrawByIDAndVersionUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type WithdrawByIDAndVersionUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this withdraw by Id and version using p o s t unauthorized response has a 2xx status code
+func (o *WithdrawByIDAndVersionUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this withdraw by Id and version using p o s t unauthorized response has a 3xx status code
+func (o *WithdrawByIDAndVersionUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this withdraw by Id and version using p o s t unauthorized response has a 4xx status code
+func (o *WithdrawByIDAndVersionUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this withdraw by Id and version using p o s t unauthorized response has a 5xx status code
+func (o *WithdrawByIDAndVersionUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this withdraw by Id and version using p o s t unauthorized response a status code equal to that given
+func (o *WithdrawByIDAndVersionUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *WithdrawByIDAndVersionUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/withdraw][%d] withdrawByIdAndVersionUsingPOSTUnauthorized ", 401)
+}
+
+func (o *WithdrawByIDAndVersionUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/withdraw][%d] withdrawByIdAndVersionUsingPOSTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewWithdrawByIDAndVersionUsingPOSTForbidden() *WithdrawByIDAndVersionUsingP
 	return &WithdrawByIDAndVersionUsingPOSTForbidden{}
 }
 
-/* WithdrawByIDAndVersionUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+WithdrawByIDAndVersionUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type WithdrawByIDAndVersionUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this withdraw by Id and version using p o s t forbidden response has a 2xx status code
+func (o *WithdrawByIDAndVersionUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this withdraw by Id and version using p o s t forbidden response has a 3xx status code
+func (o *WithdrawByIDAndVersionUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this withdraw by Id and version using p o s t forbidden response has a 4xx status code
+func (o *WithdrawByIDAndVersionUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this withdraw by Id and version using p o s t forbidden response has a 5xx status code
+func (o *WithdrawByIDAndVersionUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this withdraw by Id and version using p o s t forbidden response a status code equal to that given
+func (o *WithdrawByIDAndVersionUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *WithdrawByIDAndVersionUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/withdraw][%d] withdrawByIdAndVersionUsingPOSTForbidden ", 403)
+}
+
+func (o *WithdrawByIDAndVersionUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/withdraw][%d] withdrawByIdAndVersionUsingPOSTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewWithdrawByIDAndVersionUsingPOSTNotFound() *WithdrawByIDAndVersionUsingPO
 	return &WithdrawByIDAndVersionUsingPOSTNotFound{}
 }
 
-/* WithdrawByIDAndVersionUsingPOSTNotFound describes a response with status code 404, with default header values.
+/*
+WithdrawByIDAndVersionUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type WithdrawByIDAndVersionUsingPOSTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this withdraw by Id and version using p o s t not found response has a 2xx status code
+func (o *WithdrawByIDAndVersionUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this withdraw by Id and version using p o s t not found response has a 3xx status code
+func (o *WithdrawByIDAndVersionUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this withdraw by Id and version using p o s t not found response has a 4xx status code
+func (o *WithdrawByIDAndVersionUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this withdraw by Id and version using p o s t not found response has a 5xx status code
+func (o *WithdrawByIDAndVersionUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this withdraw by Id and version using p o s t not found response a status code equal to that given
+func (o *WithdrawByIDAndVersionUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *WithdrawByIDAndVersionUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/withdraw][%d] withdrawByIdAndVersionUsingPOSTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *WithdrawByIDAndVersionUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/withdraw][%d] withdrawByIdAndVersionUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *WithdrawByIDAndVersionUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewWithdrawByIDAndVersionUsingPOSTInternalServerError() *WithdrawByIDAndVer
 	return &WithdrawByIDAndVersionUsingPOSTInternalServerError{}
 }
 
-/* WithdrawByIDAndVersionUsingPOSTInternalServerError describes a response with status code 500, with default header values.
+/*
+WithdrawByIDAndVersionUsingPOSTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type WithdrawByIDAndVersionUsingPOSTInternalServerError struct {
 }
 
+// IsSuccess returns true when this withdraw by Id and version using p o s t internal server error response has a 2xx status code
+func (o *WithdrawByIDAndVersionUsingPOSTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this withdraw by Id and version using p o s t internal server error response has a 3xx status code
+func (o *WithdrawByIDAndVersionUsingPOSTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this withdraw by Id and version using p o s t internal server error response has a 4xx status code
+func (o *WithdrawByIDAndVersionUsingPOSTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this withdraw by Id and version using p o s t internal server error response has a 5xx status code
+func (o *WithdrawByIDAndVersionUsingPOSTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this withdraw by Id and version using p o s t internal server error response a status code equal to that given
+func (o *WithdrawByIDAndVersionUsingPOSTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *WithdrawByIDAndVersionUsingPOSTInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/withdraw][%d] withdrawByIdAndVersionUsingPOSTInternalServerError ", 500)
+}
+
+func (o *WithdrawByIDAndVersionUsingPOSTInternalServerError) String() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations/{id}/versions/{version}/withdraw][%d] withdrawByIdAndVersionUsingPOSTInternalServerError ", 500)
 }
 

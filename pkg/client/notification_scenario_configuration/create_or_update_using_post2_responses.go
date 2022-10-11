@@ -29,6 +29,24 @@ func (o *CreateOrUpdateUsingPOST2Reader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return result, nil
+	case 400:
+		result := NewCreateOrUpdateUsingPOST2BadRequest()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 401:
+		result := NewCreateOrUpdateUsingPOST2Unauthorized()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 403:
+		result := NewCreateOrUpdateUsingPOST2Forbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +57,8 @@ func NewCreateOrUpdateUsingPOST2OK() *CreateOrUpdateUsingPOST2OK {
 	return &CreateOrUpdateUsingPOST2OK{}
 }
 
-/* CreateOrUpdateUsingPOST2OK describes a response with status code 200, with default header values.
+/*
+CreateOrUpdateUsingPOST2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +66,39 @@ type CreateOrUpdateUsingPOST2OK struct {
 	Payload *models.NotificationScenarioConfig
 }
 
+// IsSuccess returns true when this create or update using p o s t2 o k response has a 2xx status code
+func (o *CreateOrUpdateUsingPOST2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create or update using p o s t2 o k response has a 3xx status code
+func (o *CreateOrUpdateUsingPOST2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create or update using p o s t2 o k response has a 4xx status code
+func (o *CreateOrUpdateUsingPOST2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create or update using p o s t2 o k response has a 5xx status code
+func (o *CreateOrUpdateUsingPOST2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create or update using p o s t2 o k response a status code equal to that given
+func (o *CreateOrUpdateUsingPOST2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CreateOrUpdateUsingPOST2OK) Error() string {
 	return fmt.Sprintf("[POST /notification/api/scenario-configs][%d] createOrUpdateUsingPOST2OK  %+v", 200, o.Payload)
 }
+
+func (o *CreateOrUpdateUsingPOST2OK) String() string {
+	return fmt.Sprintf("[POST /notification/api/scenario-configs][%d] createOrUpdateUsingPOST2OK  %+v", 200, o.Payload)
+}
+
 func (o *CreateOrUpdateUsingPOST2OK) GetPayload() *models.NotificationScenarioConfig {
 	return o.Payload
 }
@@ -62,6 +111,171 @@ func (o *CreateOrUpdateUsingPOST2OK) readResponse(response runtime.ClientRespons
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewCreateOrUpdateUsingPOST2BadRequest creates a CreateOrUpdateUsingPOST2BadRequest with default headers values
+func NewCreateOrUpdateUsingPOST2BadRequest() *CreateOrUpdateUsingPOST2BadRequest {
+	return &CreateOrUpdateUsingPOST2BadRequest{}
+}
+
+/*
+CreateOrUpdateUsingPOST2BadRequest describes a response with status code 400, with default header values.
+
+Bad Request
+*/
+type CreateOrUpdateUsingPOST2BadRequest struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this create or update using p o s t2 bad request response has a 2xx status code
+func (o *CreateOrUpdateUsingPOST2BadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create or update using p o s t2 bad request response has a 3xx status code
+func (o *CreateOrUpdateUsingPOST2BadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create or update using p o s t2 bad request response has a 4xx status code
+func (o *CreateOrUpdateUsingPOST2BadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create or update using p o s t2 bad request response has a 5xx status code
+func (o *CreateOrUpdateUsingPOST2BadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create or update using p o s t2 bad request response a status code equal to that given
+func (o *CreateOrUpdateUsingPOST2BadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+func (o *CreateOrUpdateUsingPOST2BadRequest) Error() string {
+	return fmt.Sprintf("[POST /notification/api/scenario-configs][%d] createOrUpdateUsingPOST2BadRequest  %+v", 400, o.Payload)
+}
+
+func (o *CreateOrUpdateUsingPOST2BadRequest) String() string {
+	return fmt.Sprintf("[POST /notification/api/scenario-configs][%d] createOrUpdateUsingPOST2BadRequest  %+v", 400, o.Payload)
+}
+
+func (o *CreateOrUpdateUsingPOST2BadRequest) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *CreateOrUpdateUsingPOST2BadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCreateOrUpdateUsingPOST2Unauthorized creates a CreateOrUpdateUsingPOST2Unauthorized with default headers values
+func NewCreateOrUpdateUsingPOST2Unauthorized() *CreateOrUpdateUsingPOST2Unauthorized {
+	return &CreateOrUpdateUsingPOST2Unauthorized{}
+}
+
+/*
+CreateOrUpdateUsingPOST2Unauthorized describes a response with status code 401, with default header values.
+
+Unauthorized
+*/
+type CreateOrUpdateUsingPOST2Unauthorized struct {
+}
+
+// IsSuccess returns true when this create or update using p o s t2 unauthorized response has a 2xx status code
+func (o *CreateOrUpdateUsingPOST2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create or update using p o s t2 unauthorized response has a 3xx status code
+func (o *CreateOrUpdateUsingPOST2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create or update using p o s t2 unauthorized response has a 4xx status code
+func (o *CreateOrUpdateUsingPOST2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create or update using p o s t2 unauthorized response has a 5xx status code
+func (o *CreateOrUpdateUsingPOST2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create or update using p o s t2 unauthorized response a status code equal to that given
+func (o *CreateOrUpdateUsingPOST2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+func (o *CreateOrUpdateUsingPOST2Unauthorized) Error() string {
+	return fmt.Sprintf("[POST /notification/api/scenario-configs][%d] createOrUpdateUsingPOST2Unauthorized ", 401)
+}
+
+func (o *CreateOrUpdateUsingPOST2Unauthorized) String() string {
+	return fmt.Sprintf("[POST /notification/api/scenario-configs][%d] createOrUpdateUsingPOST2Unauthorized ", 401)
+}
+
+func (o *CreateOrUpdateUsingPOST2Unauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewCreateOrUpdateUsingPOST2Forbidden creates a CreateOrUpdateUsingPOST2Forbidden with default headers values
+func NewCreateOrUpdateUsingPOST2Forbidden() *CreateOrUpdateUsingPOST2Forbidden {
+	return &CreateOrUpdateUsingPOST2Forbidden{}
+}
+
+/*
+CreateOrUpdateUsingPOST2Forbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type CreateOrUpdateUsingPOST2Forbidden struct {
+}
+
+// IsSuccess returns true when this create or update using p o s t2 forbidden response has a 2xx status code
+func (o *CreateOrUpdateUsingPOST2Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create or update using p o s t2 forbidden response has a 3xx status code
+func (o *CreateOrUpdateUsingPOST2Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create or update using p o s t2 forbidden response has a 4xx status code
+func (o *CreateOrUpdateUsingPOST2Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create or update using p o s t2 forbidden response has a 5xx status code
+func (o *CreateOrUpdateUsingPOST2Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create or update using p o s t2 forbidden response a status code equal to that given
+func (o *CreateOrUpdateUsingPOST2Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *CreateOrUpdateUsingPOST2Forbidden) Error() string {
+	return fmt.Sprintf("[POST /notification/api/scenario-configs][%d] createOrUpdateUsingPOST2Forbidden ", 403)
+}
+
+func (o *CreateOrUpdateUsingPOST2Forbidden) String() string {
+	return fmt.Sprintf("[POST /notification/api/scenario-configs][%d] createOrUpdateUsingPOST2Forbidden ", 403)
+}
+
+func (o *CreateOrUpdateUsingPOST2Forbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

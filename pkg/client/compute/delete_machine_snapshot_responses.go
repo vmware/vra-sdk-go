@@ -29,6 +29,12 @@ func (o *DeleteMachineSnapshotReader) ReadResponse(response runtime.ClientRespon
 			return nil, err
 		}
 		return result, nil
+	case 204:
+		result := NewDeleteMachineSnapshotNoContent()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
 	case 403:
 		result := NewDeleteMachineSnapshotForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -45,7 +51,8 @@ func NewDeleteMachineSnapshotAccepted() *DeleteMachineSnapshotAccepted {
 	return &DeleteMachineSnapshotAccepted{}
 }
 
-/* DeleteMachineSnapshotAccepted describes a response with status code 202, with default header values.
+/*
+DeleteMachineSnapshotAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -53,9 +60,39 @@ type DeleteMachineSnapshotAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this delete machine snapshot accepted response has a 2xx status code
+func (o *DeleteMachineSnapshotAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete machine snapshot accepted response has a 3xx status code
+func (o *DeleteMachineSnapshotAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete machine snapshot accepted response has a 4xx status code
+func (o *DeleteMachineSnapshotAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete machine snapshot accepted response has a 5xx status code
+func (o *DeleteMachineSnapshotAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete machine snapshot accepted response a status code equal to that given
+func (o *DeleteMachineSnapshotAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteMachineSnapshotAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}/snapshots/{snapshotId}][%d] deleteMachineSnapshotAccepted  %+v", 202, o.Payload)
 }
+
+func (o *DeleteMachineSnapshotAccepted) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}/snapshots/{snapshotId}][%d] deleteMachineSnapshotAccepted  %+v", 202, o.Payload)
+}
+
 func (o *DeleteMachineSnapshotAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -72,12 +109,64 @@ func (o *DeleteMachineSnapshotAccepted) readResponse(response runtime.ClientResp
 	return nil
 }
 
+// NewDeleteMachineSnapshotNoContent creates a DeleteMachineSnapshotNoContent with default headers values
+func NewDeleteMachineSnapshotNoContent() *DeleteMachineSnapshotNoContent {
+	return &DeleteMachineSnapshotNoContent{}
+}
+
+/*
+DeleteMachineSnapshotNoContent describes a response with status code 204, with default header values.
+
+No Content
+*/
+type DeleteMachineSnapshotNoContent struct {
+}
+
+// IsSuccess returns true when this delete machine snapshot no content response has a 2xx status code
+func (o *DeleteMachineSnapshotNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete machine snapshot no content response has a 3xx status code
+func (o *DeleteMachineSnapshotNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete machine snapshot no content response has a 4xx status code
+func (o *DeleteMachineSnapshotNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete machine snapshot no content response has a 5xx status code
+func (o *DeleteMachineSnapshotNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete machine snapshot no content response a status code equal to that given
+func (o *DeleteMachineSnapshotNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
+func (o *DeleteMachineSnapshotNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}/snapshots/{snapshotId}][%d] deleteMachineSnapshotNoContent ", 204)
+}
+
+func (o *DeleteMachineSnapshotNoContent) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}/snapshots/{snapshotId}][%d] deleteMachineSnapshotNoContent ", 204)
+}
+
+func (o *DeleteMachineSnapshotNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
 // NewDeleteMachineSnapshotForbidden creates a DeleteMachineSnapshotForbidden with default headers values
 func NewDeleteMachineSnapshotForbidden() *DeleteMachineSnapshotForbidden {
 	return &DeleteMachineSnapshotForbidden{}
 }
 
-/* DeleteMachineSnapshotForbidden describes a response with status code 403, with default header values.
+/*
+DeleteMachineSnapshotForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +174,39 @@ type DeleteMachineSnapshotForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this delete machine snapshot forbidden response has a 2xx status code
+func (o *DeleteMachineSnapshotForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete machine snapshot forbidden response has a 3xx status code
+func (o *DeleteMachineSnapshotForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete machine snapshot forbidden response has a 4xx status code
+func (o *DeleteMachineSnapshotForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete machine snapshot forbidden response has a 5xx status code
+func (o *DeleteMachineSnapshotForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete machine snapshot forbidden response a status code equal to that given
+func (o *DeleteMachineSnapshotForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteMachineSnapshotForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}/snapshots/{snapshotId}][%d] deleteMachineSnapshotForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DeleteMachineSnapshotForbidden) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}/snapshots/{snapshotId}][%d] deleteMachineSnapshotForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DeleteMachineSnapshotForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

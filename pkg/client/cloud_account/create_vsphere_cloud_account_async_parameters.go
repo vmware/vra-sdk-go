@@ -54,10 +54,12 @@ func NewCreateVSphereCloudAccountAsyncParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* CreateVSphereCloudAccountAsyncParams contains all the parameters to send to the API endpoint
-   for the create v sphere cloud account async operation.
+/*
+CreateVSphereCloudAccountAsyncParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create v sphere cloud account async operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateVSphereCloudAccountAsyncParams struct {
 

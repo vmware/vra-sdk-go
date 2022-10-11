@@ -51,7 +51,8 @@ func NewCreateMachineAccepted() *CreateMachineAccepted {
 	return &CreateMachineAccepted{}
 }
 
-/* CreateMachineAccepted describes a response with status code 202, with default header values.
+/*
+CreateMachineAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type CreateMachineAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this create machine accepted response has a 2xx status code
+func (o *CreateMachineAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create machine accepted response has a 3xx status code
+func (o *CreateMachineAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create machine accepted response has a 4xx status code
+func (o *CreateMachineAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create machine accepted response has a 5xx status code
+func (o *CreateMachineAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create machine accepted response a status code equal to that given
+func (o *CreateMachineAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateMachineAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines][%d] createMachineAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateMachineAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines][%d] createMachineAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateMachineAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewCreateMachineBadRequest() *CreateMachineBadRequest {
 	return &CreateMachineBadRequest{}
 }
 
-/* CreateMachineBadRequest describes a response with status code 400, with default header values.
+/*
+CreateMachineBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type CreateMachineBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create machine bad request response has a 2xx status code
+func (o *CreateMachineBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create machine bad request response has a 3xx status code
+func (o *CreateMachineBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create machine bad request response has a 4xx status code
+func (o *CreateMachineBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create machine bad request response has a 5xx status code
+func (o *CreateMachineBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create machine bad request response a status code equal to that given
+func (o *CreateMachineBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateMachineBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines][%d] createMachineBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateMachineBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines][%d] createMachineBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateMachineBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewCreateMachineForbidden() *CreateMachineForbidden {
 	return &CreateMachineForbidden{}
 }
 
-/* CreateMachineForbidden describes a response with status code 403, with default header values.
+/*
+CreateMachineForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type CreateMachineForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this create machine forbidden response has a 2xx status code
+func (o *CreateMachineForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create machine forbidden response has a 3xx status code
+func (o *CreateMachineForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create machine forbidden response has a 4xx status code
+func (o *CreateMachineForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create machine forbidden response has a 5xx status code
+func (o *CreateMachineForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create machine forbidden response a status code equal to that given
+func (o *CreateMachineForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateMachineForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines][%d] createMachineForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CreateMachineForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines][%d] createMachineForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CreateMachineForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

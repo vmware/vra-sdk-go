@@ -52,10 +52,12 @@ func NewDeleteMachineSnapshotParamsWithHTTPClient(client *http.Client) *DeleteMa
 	}
 }
 
-/* DeleteMachineSnapshotParams contains all the parameters to send to the API endpoint
-   for the delete machine snapshot operation.
+/*
+DeleteMachineSnapshotParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete machine snapshot operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteMachineSnapshotParams struct {
 

@@ -63,7 +63,8 @@ func NewDeleteEndpointByIDUsingDELETEOK() *DeleteEndpointByIDUsingDELETEOK {
 	return &DeleteEndpointByIDUsingDELETEOK{}
 }
 
-/* DeleteEndpointByIDUsingDELETEOK describes a response with status code 200, with default header values.
+/*
+DeleteEndpointByIDUsingDELETEOK describes a response with status code 200, with default header values.
 
 'Success' with the deleted Endpoint
 */
@@ -71,9 +72,39 @@ type DeleteEndpointByIDUsingDELETEOK struct {
 	Payload models.Endpoint
 }
 
+// IsSuccess returns true when this delete endpoint by Id using d e l e t e o k response has a 2xx status code
+func (o *DeleteEndpointByIDUsingDELETEOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete endpoint by Id using d e l e t e o k response has a 3xx status code
+func (o *DeleteEndpointByIDUsingDELETEOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete endpoint by Id using d e l e t e o k response has a 4xx status code
+func (o *DeleteEndpointByIDUsingDELETEOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete endpoint by Id using d e l e t e o k response has a 5xx status code
+func (o *DeleteEndpointByIDUsingDELETEOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete endpoint by Id using d e l e t e o k response a status code equal to that given
+func (o *DeleteEndpointByIDUsingDELETEOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteEndpointByIDUsingDELETEOK) Error() string {
 	return fmt.Sprintf("[DELETE /codestream/api/endpoints/{id}][%d] deleteEndpointByIdUsingDELETEOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteEndpointByIDUsingDELETEOK) String() string {
+	return fmt.Sprintf("[DELETE /codestream/api/endpoints/{id}][%d] deleteEndpointByIdUsingDELETEOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteEndpointByIDUsingDELETEOK) GetPayload() models.Endpoint {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewDeleteEndpointByIDUsingDELETEUnauthorized() *DeleteEndpointByIDUsingDELE
 	return &DeleteEndpointByIDUsingDELETEUnauthorized{}
 }
 
-/* DeleteEndpointByIDUsingDELETEUnauthorized describes a response with status code 401, with default header values.
+/*
+DeleteEndpointByIDUsingDELETEUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type DeleteEndpointByIDUsingDELETEUnauthorized struct {
 }
 
+// IsSuccess returns true when this delete endpoint by Id using d e l e t e unauthorized response has a 2xx status code
+func (o *DeleteEndpointByIDUsingDELETEUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete endpoint by Id using d e l e t e unauthorized response has a 3xx status code
+func (o *DeleteEndpointByIDUsingDELETEUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete endpoint by Id using d e l e t e unauthorized response has a 4xx status code
+func (o *DeleteEndpointByIDUsingDELETEUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete endpoint by Id using d e l e t e unauthorized response has a 5xx status code
+func (o *DeleteEndpointByIDUsingDELETEUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete endpoint by Id using d e l e t e unauthorized response a status code equal to that given
+func (o *DeleteEndpointByIDUsingDELETEUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DeleteEndpointByIDUsingDELETEUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/endpoints/{id}][%d] deleteEndpointByIdUsingDELETEUnauthorized ", 401)
+}
+
+func (o *DeleteEndpointByIDUsingDELETEUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/endpoints/{id}][%d] deleteEndpointByIdUsingDELETEUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewDeleteEndpointByIDUsingDELETEForbidden() *DeleteEndpointByIDUsingDELETEF
 	return &DeleteEndpointByIDUsingDELETEForbidden{}
 }
 
-/* DeleteEndpointByIDUsingDELETEForbidden describes a response with status code 403, with default header values.
+/*
+DeleteEndpointByIDUsingDELETEForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type DeleteEndpointByIDUsingDELETEForbidden struct {
 }
 
+// IsSuccess returns true when this delete endpoint by Id using d e l e t e forbidden response has a 2xx status code
+func (o *DeleteEndpointByIDUsingDELETEForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete endpoint by Id using d e l e t e forbidden response has a 3xx status code
+func (o *DeleteEndpointByIDUsingDELETEForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete endpoint by Id using d e l e t e forbidden response has a 4xx status code
+func (o *DeleteEndpointByIDUsingDELETEForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete endpoint by Id using d e l e t e forbidden response has a 5xx status code
+func (o *DeleteEndpointByIDUsingDELETEForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete endpoint by Id using d e l e t e forbidden response a status code equal to that given
+func (o *DeleteEndpointByIDUsingDELETEForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteEndpointByIDUsingDELETEForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/endpoints/{id}][%d] deleteEndpointByIdUsingDELETEForbidden ", 403)
+}
+
+func (o *DeleteEndpointByIDUsingDELETEForbidden) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/endpoints/{id}][%d] deleteEndpointByIdUsingDELETEForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewDeleteEndpointByIDUsingDELETENotFound() *DeleteEndpointByIDUsingDELETENo
 	return &DeleteEndpointByIDUsingDELETENotFound{}
 }
 
-/* DeleteEndpointByIDUsingDELETENotFound describes a response with status code 404, with default header values.
+/*
+DeleteEndpointByIDUsingDELETENotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type DeleteEndpointByIDUsingDELETENotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete endpoint by Id using d e l e t e not found response has a 2xx status code
+func (o *DeleteEndpointByIDUsingDELETENotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete endpoint by Id using d e l e t e not found response has a 3xx status code
+func (o *DeleteEndpointByIDUsingDELETENotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete endpoint by Id using d e l e t e not found response has a 4xx status code
+func (o *DeleteEndpointByIDUsingDELETENotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete endpoint by Id using d e l e t e not found response has a 5xx status code
+func (o *DeleteEndpointByIDUsingDELETENotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete endpoint by Id using d e l e t e not found response a status code equal to that given
+func (o *DeleteEndpointByIDUsingDELETENotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteEndpointByIDUsingDELETENotFound) Error() string {
 	return fmt.Sprintf("[DELETE /codestream/api/endpoints/{id}][%d] deleteEndpointByIdUsingDELETENotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteEndpointByIDUsingDELETENotFound) String() string {
+	return fmt.Sprintf("[DELETE /codestream/api/endpoints/{id}][%d] deleteEndpointByIdUsingDELETENotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteEndpointByIDUsingDELETENotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewDeleteEndpointByIDUsingDELETEInternalServerError() *DeleteEndpointByIDUs
 	return &DeleteEndpointByIDUsingDELETEInternalServerError{}
 }
 
-/* DeleteEndpointByIDUsingDELETEInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteEndpointByIDUsingDELETEInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type DeleteEndpointByIDUsingDELETEInternalServerError struct {
 }
 
+// IsSuccess returns true when this delete endpoint by Id using d e l e t e internal server error response has a 2xx status code
+func (o *DeleteEndpointByIDUsingDELETEInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete endpoint by Id using d e l e t e internal server error response has a 3xx status code
+func (o *DeleteEndpointByIDUsingDELETEInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete endpoint by Id using d e l e t e internal server error response has a 4xx status code
+func (o *DeleteEndpointByIDUsingDELETEInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete endpoint by Id using d e l e t e internal server error response has a 5xx status code
+func (o *DeleteEndpointByIDUsingDELETEInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this delete endpoint by Id using d e l e t e internal server error response a status code equal to that given
+func (o *DeleteEndpointByIDUsingDELETEInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *DeleteEndpointByIDUsingDELETEInternalServerError) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/endpoints/{id}][%d] deleteEndpointByIdUsingDELETEInternalServerError ", 500)
+}
+
+func (o *DeleteEndpointByIDUsingDELETEInternalServerError) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/endpoints/{id}][%d] deleteEndpointByIdUsingDELETEInternalServerError ", 500)
 }
 

@@ -51,7 +51,8 @@ func NewDeleteBlockDeviceAccepted() *DeleteBlockDeviceAccepted {
 	return &DeleteBlockDeviceAccepted{}
 }
 
-/* DeleteBlockDeviceAccepted describes a response with status code 202, with default header values.
+/*
+DeleteBlockDeviceAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type DeleteBlockDeviceAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this delete block device accepted response has a 2xx status code
+func (o *DeleteBlockDeviceAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete block device accepted response has a 3xx status code
+func (o *DeleteBlockDeviceAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete block device accepted response has a 4xx status code
+func (o *DeleteBlockDeviceAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete block device accepted response has a 5xx status code
+func (o *DeleteBlockDeviceAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete block device accepted response a status code equal to that given
+func (o *DeleteBlockDeviceAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteBlockDeviceAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/block-devices/{id}][%d] deleteBlockDeviceAccepted  %+v", 202, o.Payload)
 }
+
+func (o *DeleteBlockDeviceAccepted) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/block-devices/{id}][%d] deleteBlockDeviceAccepted  %+v", 202, o.Payload)
+}
+
 func (o *DeleteBlockDeviceAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,14 +114,44 @@ func NewDeleteBlockDeviceNoContent() *DeleteBlockDeviceNoContent {
 	return &DeleteBlockDeviceNoContent{}
 }
 
-/* DeleteBlockDeviceNoContent describes a response with status code 204, with default header values.
+/*
+DeleteBlockDeviceNoContent describes a response with status code 204, with default header values.
 
 No Content
 */
 type DeleteBlockDeviceNoContent struct {
 }
 
+// IsSuccess returns true when this delete block device no content response has a 2xx status code
+func (o *DeleteBlockDeviceNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete block device no content response has a 3xx status code
+func (o *DeleteBlockDeviceNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete block device no content response has a 4xx status code
+func (o *DeleteBlockDeviceNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete block device no content response has a 5xx status code
+func (o *DeleteBlockDeviceNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete block device no content response a status code equal to that given
+func (o *DeleteBlockDeviceNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteBlockDeviceNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/block-devices/{id}][%d] deleteBlockDeviceNoContent ", 204)
+}
+
+func (o *DeleteBlockDeviceNoContent) String() string {
 	return fmt.Sprintf("[DELETE /iaas/api/block-devices/{id}][%d] deleteBlockDeviceNoContent ", 204)
 }
 
@@ -104,7 +165,8 @@ func NewDeleteBlockDeviceForbidden() *DeleteBlockDeviceForbidden {
 	return &DeleteBlockDeviceForbidden{}
 }
 
-/* DeleteBlockDeviceForbidden describes a response with status code 403, with default header values.
+/*
+DeleteBlockDeviceForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -112,9 +174,39 @@ type DeleteBlockDeviceForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this delete block device forbidden response has a 2xx status code
+func (o *DeleteBlockDeviceForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete block device forbidden response has a 3xx status code
+func (o *DeleteBlockDeviceForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete block device forbidden response has a 4xx status code
+func (o *DeleteBlockDeviceForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete block device forbidden response has a 5xx status code
+func (o *DeleteBlockDeviceForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete block device forbidden response a status code equal to that given
+func (o *DeleteBlockDeviceForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteBlockDeviceForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/block-devices/{id}][%d] deleteBlockDeviceForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DeleteBlockDeviceForbidden) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/block-devices/{id}][%d] deleteBlockDeviceForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DeleteBlockDeviceForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

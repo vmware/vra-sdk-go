@@ -29,6 +29,12 @@ func (o *ModifyProjectPrincipalsUsingPATCHReader) ReadResponse(response runtime.
 			return nil, err
 		}
 		return result, nil
+	case 400:
+		result := NewModifyProjectPrincipalsUsingPATCHBadRequest()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 403:
 		result := NewModifyProjectPrincipalsUsingPATCHForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -51,7 +57,8 @@ func NewModifyProjectPrincipalsUsingPATCHOK() *ModifyProjectPrincipalsUsingPATCH
 	return &ModifyProjectPrincipalsUsingPATCHOK{}
 }
 
-/* ModifyProjectPrincipalsUsingPATCHOK describes a response with status code 200, with default header values.
+/*
+ModifyProjectPrincipalsUsingPATCHOK describes a response with status code 200, with default header values.
 
 'Success' with the Project
 */
@@ -59,9 +66,39 @@ type ModifyProjectPrincipalsUsingPATCHOK struct {
 	Payload models.Project
 }
 
+// IsSuccess returns true when this modify project principals using p a t c h o k response has a 2xx status code
+func (o *ModifyProjectPrincipalsUsingPATCHOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this modify project principals using p a t c h o k response has a 3xx status code
+func (o *ModifyProjectPrincipalsUsingPATCHOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this modify project principals using p a t c h o k response has a 4xx status code
+func (o *ModifyProjectPrincipalsUsingPATCHOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this modify project principals using p a t c h o k response has a 5xx status code
+func (o *ModifyProjectPrincipalsUsingPATCHOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this modify project principals using p a t c h o k response a status code equal to that given
+func (o *ModifyProjectPrincipalsUsingPATCHOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ModifyProjectPrincipalsUsingPATCHOK) Error() string {
 	return fmt.Sprintf("[PATCH /project-service/api/projects/{id}/principals][%d] modifyProjectPrincipalsUsingPATCHOK  %+v", 200, o.Payload)
 }
+
+func (o *ModifyProjectPrincipalsUsingPATCHOK) String() string {
+	return fmt.Sprintf("[PATCH /project-service/api/projects/{id}/principals][%d] modifyProjectPrincipalsUsingPATCHOK  %+v", 200, o.Payload)
+}
+
 func (o *ModifyProjectPrincipalsUsingPATCHOK) GetPayload() models.Project {
 	return o.Payload
 }
@@ -78,19 +115,112 @@ func (o *ModifyProjectPrincipalsUsingPATCHOK) readResponse(response runtime.Clie
 	return nil
 }
 
+// NewModifyProjectPrincipalsUsingPATCHBadRequest creates a ModifyProjectPrincipalsUsingPATCHBadRequest with default headers values
+func NewModifyProjectPrincipalsUsingPATCHBadRequest() *ModifyProjectPrincipalsUsingPATCHBadRequest {
+	return &ModifyProjectPrincipalsUsingPATCHBadRequest{}
+}
+
+/*
+ModifyProjectPrincipalsUsingPATCHBadRequest describes a response with status code 400, with default header values.
+
+Invalid Request - bad data
+*/
+type ModifyProjectPrincipalsUsingPATCHBadRequest struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this modify project principals using p a t c h bad request response has a 2xx status code
+func (o *ModifyProjectPrincipalsUsingPATCHBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this modify project principals using p a t c h bad request response has a 3xx status code
+func (o *ModifyProjectPrincipalsUsingPATCHBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this modify project principals using p a t c h bad request response has a 4xx status code
+func (o *ModifyProjectPrincipalsUsingPATCHBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this modify project principals using p a t c h bad request response has a 5xx status code
+func (o *ModifyProjectPrincipalsUsingPATCHBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this modify project principals using p a t c h bad request response a status code equal to that given
+func (o *ModifyProjectPrincipalsUsingPATCHBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+func (o *ModifyProjectPrincipalsUsingPATCHBadRequest) Error() string {
+	return fmt.Sprintf("[PATCH /project-service/api/projects/{id}/principals][%d] modifyProjectPrincipalsUsingPATCHBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *ModifyProjectPrincipalsUsingPATCHBadRequest) String() string {
+	return fmt.Sprintf("[PATCH /project-service/api/projects/{id}/principals][%d] modifyProjectPrincipalsUsingPATCHBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *ModifyProjectPrincipalsUsingPATCHBadRequest) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *ModifyProjectPrincipalsUsingPATCHBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
 // NewModifyProjectPrincipalsUsingPATCHForbidden creates a ModifyProjectPrincipalsUsingPATCHForbidden with default headers values
 func NewModifyProjectPrincipalsUsingPATCHForbidden() *ModifyProjectPrincipalsUsingPATCHForbidden {
 	return &ModifyProjectPrincipalsUsingPATCHForbidden{}
 }
 
-/* ModifyProjectPrincipalsUsingPATCHForbidden describes a response with status code 403, with default header values.
+/*
+ModifyProjectPrincipalsUsingPATCHForbidden describes a response with status code 403, with default header values.
 
 Forbidden, the user lacks permissions
 */
 type ModifyProjectPrincipalsUsingPATCHForbidden struct {
 }
 
+// IsSuccess returns true when this modify project principals using p a t c h forbidden response has a 2xx status code
+func (o *ModifyProjectPrincipalsUsingPATCHForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this modify project principals using p a t c h forbidden response has a 3xx status code
+func (o *ModifyProjectPrincipalsUsingPATCHForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this modify project principals using p a t c h forbidden response has a 4xx status code
+func (o *ModifyProjectPrincipalsUsingPATCHForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this modify project principals using p a t c h forbidden response has a 5xx status code
+func (o *ModifyProjectPrincipalsUsingPATCHForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this modify project principals using p a t c h forbidden response a status code equal to that given
+func (o *ModifyProjectPrincipalsUsingPATCHForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ModifyProjectPrincipalsUsingPATCHForbidden) Error() string {
+	return fmt.Sprintf("[PATCH /project-service/api/projects/{id}/principals][%d] modifyProjectPrincipalsUsingPATCHForbidden ", 403)
+}
+
+func (o *ModifyProjectPrincipalsUsingPATCHForbidden) String() string {
 	return fmt.Sprintf("[PATCH /project-service/api/projects/{id}/principals][%d] modifyProjectPrincipalsUsingPATCHForbidden ", 403)
 }
 
@@ -104,7 +234,8 @@ func NewModifyProjectPrincipalsUsingPATCHNotFound() *ModifyProjectPrincipalsUsin
 	return &ModifyProjectPrincipalsUsingPATCHNotFound{}
 }
 
-/* ModifyProjectPrincipalsUsingPATCHNotFound describes a response with status code 404, with default header values.
+/*
+ModifyProjectPrincipalsUsingPATCHNotFound describes a response with status code 404, with default header values.
 
 'Not found' if no project with the provided id
 */
@@ -112,9 +243,39 @@ type ModifyProjectPrincipalsUsingPATCHNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this modify project principals using p a t c h not found response has a 2xx status code
+func (o *ModifyProjectPrincipalsUsingPATCHNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this modify project principals using p a t c h not found response has a 3xx status code
+func (o *ModifyProjectPrincipalsUsingPATCHNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this modify project principals using p a t c h not found response has a 4xx status code
+func (o *ModifyProjectPrincipalsUsingPATCHNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this modify project principals using p a t c h not found response has a 5xx status code
+func (o *ModifyProjectPrincipalsUsingPATCHNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this modify project principals using p a t c h not found response a status code equal to that given
+func (o *ModifyProjectPrincipalsUsingPATCHNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ModifyProjectPrincipalsUsingPATCHNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /project-service/api/projects/{id}/principals][%d] modifyProjectPrincipalsUsingPATCHNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ModifyProjectPrincipalsUsingPATCHNotFound) String() string {
+	return fmt.Sprintf("[PATCH /project-service/api/projects/{id}/principals][%d] modifyProjectPrincipalsUsingPATCHNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ModifyProjectPrincipalsUsingPATCHNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

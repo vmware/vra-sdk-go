@@ -29,6 +29,12 @@ func (o *OnboardUsingPOSTReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return result, nil
+	case 403:
+		result := NewOnboardUsingPOSTForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +45,8 @@ func NewOnboardUsingPOSTOK() *OnboardUsingPOSTOK {
 	return &OnboardUsingPOSTOK{}
 }
 
-/* OnboardUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+OnboardUsingPOSTOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +54,39 @@ type OnboardUsingPOSTOK struct {
 	Payload *models.K8SCluster
 }
 
+// IsSuccess returns true when this onboard using p o s t o k response has a 2xx status code
+func (o *OnboardUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this onboard using p o s t o k response has a 3xx status code
+func (o *OnboardUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this onboard using p o s t o k response has a 4xx status code
+func (o *OnboardUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this onboard using p o s t o k response has a 5xx status code
+func (o *OnboardUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this onboard using p o s t o k response a status code equal to that given
+func (o *OnboardUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *OnboardUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /cmx/api/resources/k8s/clusters][%d] onboardUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *OnboardUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /cmx/api/resources/k8s/clusters][%d] onboardUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *OnboardUsingPOSTOK) GetPayload() *models.K8SCluster {
 	return o.Payload
 }
@@ -62,6 +99,57 @@ func (o *OnboardUsingPOSTOK) readResponse(response runtime.ClientResponse, consu
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewOnboardUsingPOSTForbidden creates a OnboardUsingPOSTForbidden with default headers values
+func NewOnboardUsingPOSTForbidden() *OnboardUsingPOSTForbidden {
+	return &OnboardUsingPOSTForbidden{}
+}
+
+/*
+OnboardUsingPOSTForbidden describes a response with status code 403, with default header values.
+
+Forbidden, the user lacks permissions
+*/
+type OnboardUsingPOSTForbidden struct {
+}
+
+// IsSuccess returns true when this onboard using p o s t forbidden response has a 2xx status code
+func (o *OnboardUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this onboard using p o s t forbidden response has a 3xx status code
+func (o *OnboardUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this onboard using p o s t forbidden response has a 4xx status code
+func (o *OnboardUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this onboard using p o s t forbidden response has a 5xx status code
+func (o *OnboardUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this onboard using p o s t forbidden response a status code equal to that given
+func (o *OnboardUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *OnboardUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /cmx/api/resources/k8s/clusters][%d] onboardUsingPOSTForbidden ", 403)
+}
+
+func (o *OnboardUsingPOSTForbidden) String() string {
+	return fmt.Sprintf("[POST /cmx/api/resources/k8s/clusters][%d] onboardUsingPOSTForbidden ", 403)
+}
+
+func (o *OnboardUsingPOSTForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

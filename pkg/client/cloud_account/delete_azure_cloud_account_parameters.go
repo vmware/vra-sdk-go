@@ -52,10 +52,12 @@ func NewDeleteAzureCloudAccountParamsWithHTTPClient(client *http.Client) *Delete
 	}
 }
 
-/* DeleteAzureCloudAccountParams contains all the parameters to send to the API endpoint
-   for the delete azure cloud account operation.
+/*
+DeleteAzureCloudAccountParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete azure cloud account operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteAzureCloudAccountParams struct {
 

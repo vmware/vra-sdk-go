@@ -52,10 +52,12 @@ func NewDeleteUsingDELETE5ParamsWithHTTPClient(client *http.Client) *DeleteUsing
 	}
 }
 
-/* DeleteUsingDELETE5Params contains all the parameters to send to the API endpoint
-   for the delete using d e l e t e 5 operation.
+/*
+DeleteUsingDELETE5Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete using d e l e t e 5 operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteUsingDELETE5Params struct {
 
@@ -65,11 +67,11 @@ type DeleteUsingDELETE5Params struct {
 	*/
 	APIVersion *string
 
-	/* ID.
+	/* ScenarioID.
 
 	   Notification scenario Id
 	*/
-	ID string
+	ScenarioID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -135,15 +137,15 @@ func (o *DeleteUsingDELETE5Params) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
-// WithID adds the id to the delete using d e l e t e 5 params
-func (o *DeleteUsingDELETE5Params) WithID(id string) *DeleteUsingDELETE5Params {
-	o.SetID(id)
+// WithScenarioID adds the scenarioID to the delete using d e l e t e 5 params
+func (o *DeleteUsingDELETE5Params) WithScenarioID(scenarioID string) *DeleteUsingDELETE5Params {
+	o.SetScenarioID(scenarioID)
 	return o
 }
 
-// SetID adds the id to the delete using d e l e t e 5 params
-func (o *DeleteUsingDELETE5Params) SetID(id string) {
-	o.ID = id
+// SetScenarioID adds the scenarioId to the delete using d e l e t e 5 params
+func (o *DeleteUsingDELETE5Params) SetScenarioID(scenarioID string) {
+	o.ScenarioID = scenarioID
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -171,8 +173,8 @@ func (o *DeleteUsingDELETE5Params) WriteToRequest(r runtime.ClientRequest, reg s
 		}
 	}
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
+	// path param scenarioId
+	if err := r.SetPathParam("scenarioId", o.ScenarioID); err != nil {
 		return err
 	}
 

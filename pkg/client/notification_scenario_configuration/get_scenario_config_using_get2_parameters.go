@@ -52,10 +52,12 @@ func NewGetScenarioConfigUsingGET2ParamsWithHTTPClient(client *http.Client) *Get
 	}
 }
 
-/* GetScenarioConfigUsingGET2Params contains all the parameters to send to the API endpoint
-   for the get scenario config using g e t 2 operation.
+/*
+GetScenarioConfigUsingGET2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get scenario config using g e t 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetScenarioConfigUsingGET2Params struct {
 

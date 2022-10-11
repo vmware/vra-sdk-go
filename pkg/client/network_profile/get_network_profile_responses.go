@@ -51,7 +51,8 @@ func NewGetNetworkProfileOK() *GetNetworkProfileOK {
 	return &GetNetworkProfileOK{}
 }
 
-/* GetNetworkProfileOK describes a response with status code 200, with default header values.
+/*
+GetNetworkProfileOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetNetworkProfileOK struct {
 	Payload *models.NetworkProfile
 }
 
+// IsSuccess returns true when this get network profile o k response has a 2xx status code
+func (o *GetNetworkProfileOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get network profile o k response has a 3xx status code
+func (o *GetNetworkProfileOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get network profile o k response has a 4xx status code
+func (o *GetNetworkProfileOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get network profile o k response has a 5xx status code
+func (o *GetNetworkProfileOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get network profile o k response a status code equal to that given
+func (o *GetNetworkProfileOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetNetworkProfileOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/network-profiles/{id}][%d] getNetworkProfileOK  %+v", 200, o.Payload)
 }
+
+func (o *GetNetworkProfileOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/network-profiles/{id}][%d] getNetworkProfileOK  %+v", 200, o.Payload)
+}
+
 func (o *GetNetworkProfileOK) GetPayload() *models.NetworkProfile {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetNetworkProfileForbidden() *GetNetworkProfileForbidden {
 	return &GetNetworkProfileForbidden{}
 }
 
-/* GetNetworkProfileForbidden describes a response with status code 403, with default header values.
+/*
+GetNetworkProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type GetNetworkProfileForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get network profile forbidden response has a 2xx status code
+func (o *GetNetworkProfileForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get network profile forbidden response has a 3xx status code
+func (o *GetNetworkProfileForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get network profile forbidden response has a 4xx status code
+func (o *GetNetworkProfileForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get network profile forbidden response has a 5xx status code
+func (o *GetNetworkProfileForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get network profile forbidden response a status code equal to that given
+func (o *GetNetworkProfileForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetNetworkProfileForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/network-profiles/{id}][%d] getNetworkProfileForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetNetworkProfileForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/network-profiles/{id}][%d] getNetworkProfileForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetNetworkProfileForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewGetNetworkProfileNotFound() *GetNetworkProfileNotFound {
 	return &GetNetworkProfileNotFound{}
 }
 
-/* GetNetworkProfileNotFound describes a response with status code 404, with default header values.
+/*
+GetNetworkProfileNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type GetNetworkProfileNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get network profile not found response has a 2xx status code
+func (o *GetNetworkProfileNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get network profile not found response has a 3xx status code
+func (o *GetNetworkProfileNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get network profile not found response has a 4xx status code
+func (o *GetNetworkProfileNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get network profile not found response has a 5xx status code
+func (o *GetNetworkProfileNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get network profile not found response a status code equal to that given
+func (o *GetNetworkProfileNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetNetworkProfileNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/network-profiles/{id}][%d] getNetworkProfileNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetNetworkProfileNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/network-profiles/{id}][%d] getNetworkProfileNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetNetworkProfileNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

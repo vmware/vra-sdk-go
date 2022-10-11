@@ -63,7 +63,8 @@ func NewSubmitResourceActionRequestUsingPOST5OK() *SubmitResourceActionRequestUs
 	return &SubmitResourceActionRequestUsingPOST5OK{}
 }
 
-/* SubmitResourceActionRequestUsingPOST5OK describes a response with status code 200, with default header values.
+/*
+SubmitResourceActionRequestUsingPOST5OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type SubmitResourceActionRequestUsingPOST5OK struct {
 	Payload *models.Request
 }
 
+// IsSuccess returns true when this submit resource action request using p o s t5 o k response has a 2xx status code
+func (o *SubmitResourceActionRequestUsingPOST5OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this submit resource action request using p o s t5 o k response has a 3xx status code
+func (o *SubmitResourceActionRequestUsingPOST5OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit resource action request using p o s t5 o k response has a 4xx status code
+func (o *SubmitResourceActionRequestUsingPOST5OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this submit resource action request using p o s t5 o k response has a 5xx status code
+func (o *SubmitResourceActionRequestUsingPOST5OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit resource action request using p o s t5 o k response a status code equal to that given
+func (o *SubmitResourceActionRequestUsingPOST5OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SubmitResourceActionRequestUsingPOST5OK) Error() string {
 	return fmt.Sprintf("[POST /deployment/api/resources/{resourceId}/requests][%d] submitResourceActionRequestUsingPOST5OK  %+v", 200, o.Payload)
 }
+
+func (o *SubmitResourceActionRequestUsingPOST5OK) String() string {
+	return fmt.Sprintf("[POST /deployment/api/resources/{resourceId}/requests][%d] submitResourceActionRequestUsingPOST5OK  %+v", 200, o.Payload)
+}
+
 func (o *SubmitResourceActionRequestUsingPOST5OK) GetPayload() *models.Request {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewSubmitResourceActionRequestUsingPOST5Unauthorized() *SubmitResourceActio
 	return &SubmitResourceActionRequestUsingPOST5Unauthorized{}
 }
 
-/* SubmitResourceActionRequestUsingPOST5Unauthorized describes a response with status code 401, with default header values.
+/*
+SubmitResourceActionRequestUsingPOST5Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type SubmitResourceActionRequestUsingPOST5Unauthorized struct {
 }
 
+// IsSuccess returns true when this submit resource action request using p o s t5 unauthorized response has a 2xx status code
+func (o *SubmitResourceActionRequestUsingPOST5Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit resource action request using p o s t5 unauthorized response has a 3xx status code
+func (o *SubmitResourceActionRequestUsingPOST5Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit resource action request using p o s t5 unauthorized response has a 4xx status code
+func (o *SubmitResourceActionRequestUsingPOST5Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit resource action request using p o s t5 unauthorized response has a 5xx status code
+func (o *SubmitResourceActionRequestUsingPOST5Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit resource action request using p o s t5 unauthorized response a status code equal to that given
+func (o *SubmitResourceActionRequestUsingPOST5Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SubmitResourceActionRequestUsingPOST5Unauthorized) Error() string {
+	return fmt.Sprintf("[POST /deployment/api/resources/{resourceId}/requests][%d] submitResourceActionRequestUsingPOST5Unauthorized ", 401)
+}
+
+func (o *SubmitResourceActionRequestUsingPOST5Unauthorized) String() string {
 	return fmt.Sprintf("[POST /deployment/api/resources/{resourceId}/requests][%d] submitResourceActionRequestUsingPOST5Unauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewSubmitResourceActionRequestUsingPOST5Forbidden() *SubmitResourceActionRe
 	return &SubmitResourceActionRequestUsingPOST5Forbidden{}
 }
 
-/* SubmitResourceActionRequestUsingPOST5Forbidden describes a response with status code 403, with default header values.
+/*
+SubmitResourceActionRequestUsingPOST5Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type SubmitResourceActionRequestUsingPOST5Forbidden struct {
 }
 
+// IsSuccess returns true when this submit resource action request using p o s t5 forbidden response has a 2xx status code
+func (o *SubmitResourceActionRequestUsingPOST5Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit resource action request using p o s t5 forbidden response has a 3xx status code
+func (o *SubmitResourceActionRequestUsingPOST5Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit resource action request using p o s t5 forbidden response has a 4xx status code
+func (o *SubmitResourceActionRequestUsingPOST5Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit resource action request using p o s t5 forbidden response has a 5xx status code
+func (o *SubmitResourceActionRequestUsingPOST5Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit resource action request using p o s t5 forbidden response a status code equal to that given
+func (o *SubmitResourceActionRequestUsingPOST5Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *SubmitResourceActionRequestUsingPOST5Forbidden) Error() string {
+	return fmt.Sprintf("[POST /deployment/api/resources/{resourceId}/requests][%d] submitResourceActionRequestUsingPOST5Forbidden ", 403)
+}
+
+func (o *SubmitResourceActionRequestUsingPOST5Forbidden) String() string {
 	return fmt.Sprintf("[POST /deployment/api/resources/{resourceId}/requests][%d] submitResourceActionRequestUsingPOST5Forbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewSubmitResourceActionRequestUsingPOST5NotFound() *SubmitResourceActionReq
 	return &SubmitResourceActionRequestUsingPOST5NotFound{}
 }
 
-/* SubmitResourceActionRequestUsingPOST5NotFound describes a response with status code 404, with default header values.
+/*
+SubmitResourceActionRequestUsingPOST5NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type SubmitResourceActionRequestUsingPOST5NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this submit resource action request using p o s t5 not found response has a 2xx status code
+func (o *SubmitResourceActionRequestUsingPOST5NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit resource action request using p o s t5 not found response has a 3xx status code
+func (o *SubmitResourceActionRequestUsingPOST5NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit resource action request using p o s t5 not found response has a 4xx status code
+func (o *SubmitResourceActionRequestUsingPOST5NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit resource action request using p o s t5 not found response has a 5xx status code
+func (o *SubmitResourceActionRequestUsingPOST5NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit resource action request using p o s t5 not found response a status code equal to that given
+func (o *SubmitResourceActionRequestUsingPOST5NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *SubmitResourceActionRequestUsingPOST5NotFound) Error() string {
 	return fmt.Sprintf("[POST /deployment/api/resources/{resourceId}/requests][%d] submitResourceActionRequestUsingPOST5NotFound  %+v", 404, o.Payload)
 }
+
+func (o *SubmitResourceActionRequestUsingPOST5NotFound) String() string {
+	return fmt.Sprintf("[POST /deployment/api/resources/{resourceId}/requests][%d] submitResourceActionRequestUsingPOST5NotFound  %+v", 404, o.Payload)
+}
+
 func (o *SubmitResourceActionRequestUsingPOST5NotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewSubmitResourceActionRequestUsingPOST5Conflict() *SubmitResourceActionReq
 	return &SubmitResourceActionRequestUsingPOST5Conflict{}
 }
 
-/* SubmitResourceActionRequestUsingPOST5Conflict describes a response with status code 409, with default header values.
+/*
+SubmitResourceActionRequestUsingPOST5Conflict describes a response with status code 409, with default header values.
 
 Conflict
 */
 type SubmitResourceActionRequestUsingPOST5Conflict struct {
 }
 
+// IsSuccess returns true when this submit resource action request using p o s t5 conflict response has a 2xx status code
+func (o *SubmitResourceActionRequestUsingPOST5Conflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit resource action request using p o s t5 conflict response has a 3xx status code
+func (o *SubmitResourceActionRequestUsingPOST5Conflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit resource action request using p o s t5 conflict response has a 4xx status code
+func (o *SubmitResourceActionRequestUsingPOST5Conflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit resource action request using p o s t5 conflict response has a 5xx status code
+func (o *SubmitResourceActionRequestUsingPOST5Conflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit resource action request using p o s t5 conflict response a status code equal to that given
+func (o *SubmitResourceActionRequestUsingPOST5Conflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *SubmitResourceActionRequestUsingPOST5Conflict) Error() string {
+	return fmt.Sprintf("[POST /deployment/api/resources/{resourceId}/requests][%d] submitResourceActionRequestUsingPOST5Conflict ", 409)
+}
+
+func (o *SubmitResourceActionRequestUsingPOST5Conflict) String() string {
 	return fmt.Sprintf("[POST /deployment/api/resources/{resourceId}/requests][%d] submitResourceActionRequestUsingPOST5Conflict ", 409)
 }
 

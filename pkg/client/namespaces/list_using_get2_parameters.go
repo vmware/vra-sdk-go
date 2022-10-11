@@ -53,12 +53,75 @@ func NewListUsingGET2ParamsWithHTTPClient(client *http.Client) *ListUsingGET2Par
 	}
 }
 
-/* ListUsingGET2Params contains all the parameters to send to the API endpoint
-   for the list using g e t 2 operation.
+/*
+ListUsingGET2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the list using g e t 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type ListUsingGET2Params struct {
+
+	// ID.
+	ID *string
+
+	// LocalAddressAddressMCGlobal.
+	LocalAddressAddressMCGlobal *bool
+
+	// LocalAddressAddressMCLinkLocal.
+	LocalAddressAddressMCLinkLocal *bool
+
+	// LocalAddressAddressMCNodeLocal.
+	LocalAddressAddressMCNodeLocal *bool
+
+	// LocalAddressAddressMCOrgLocal.
+	LocalAddressAddressMCOrgLocal *bool
+
+	// LocalAddressAddressMCSiteLocal.
+	LocalAddressAddressMCSiteLocal *bool
+
+	// LocalAddressAddressAddress.
+	//
+	// Format: byte
+	LocalAddressAddressAddress *strfmt.Base64
+
+	// LocalAddressAddressAnyLocalAddress.
+	LocalAddressAddressAnyLocalAddress *bool
+
+	// LocalAddressAddressCanonicalHostName.
+	LocalAddressAddressCanonicalHostName *string
+
+	// LocalAddressAddressHostAddress.
+	LocalAddressAddressHostAddress *string
+
+	// LocalAddressAddressHostName.
+	LocalAddressAddressHostName *string
+
+	// LocalAddressAddressLinkLocalAddress.
+	LocalAddressAddressLinkLocalAddress *bool
+
+	// LocalAddressAddressLoopbackAddress.
+	LocalAddressAddressLoopbackAddress *bool
+
+	// LocalAddressAddressMulticastAddress.
+	LocalAddressAddressMulticastAddress *bool
+
+	// LocalAddressAddressSiteLocalAddress.
+	LocalAddressAddressSiteLocalAddress *bool
+
+	// LocalAddressHostName.
+	LocalAddressHostName *string
+
+	// LocalAddressHostString.
+	LocalAddressHostString *string
+
+	// LocalAddressPort.
+	//
+	// Format: int32
+	LocalAddressPort *int32
+
+	// LocalAddressUnresolved.
+	LocalAddressUnresolved *bool
 
 	// Offset.
 	//
@@ -78,11 +141,158 @@ type ListUsingGET2Params struct {
 	// Paged.
 	Paged *bool
 
+	// RemoteAddressAddressMCGlobal.
+	RemoteAddressAddressMCGlobal *bool
+
+	// RemoteAddressAddressMCLinkLocal.
+	RemoteAddressAddressMCLinkLocal *bool
+
+	// RemoteAddressAddressMCNodeLocal.
+	RemoteAddressAddressMCNodeLocal *bool
+
+	// RemoteAddressAddressMCOrgLocal.
+	RemoteAddressAddressMCOrgLocal *bool
+
+	// RemoteAddressAddressMCSiteLocal.
+	RemoteAddressAddressMCSiteLocal *bool
+
+	// RemoteAddressAddressAddress.
+	//
+	// Format: byte
+	RemoteAddressAddressAddress *strfmt.Base64
+
+	// RemoteAddressAddressAnyLocalAddress.
+	RemoteAddressAddressAnyLocalAddress *bool
+
+	// RemoteAddressAddressCanonicalHostName.
+	RemoteAddressAddressCanonicalHostName *string
+
+	// RemoteAddressAddressHostAddress.
+	RemoteAddressAddressHostAddress *string
+
+	// RemoteAddressAddressHostName.
+	RemoteAddressAddressHostName *string
+
+	// RemoteAddressAddressLinkLocalAddress.
+	RemoteAddressAddressLinkLocalAddress *bool
+
+	// RemoteAddressAddressLoopbackAddress.
+	RemoteAddressAddressLoopbackAddress *bool
+
+	// RemoteAddressAddressMulticastAddress.
+	RemoteAddressAddressMulticastAddress *bool
+
+	// RemoteAddressAddressSiteLocalAddress.
+	RemoteAddressAddressSiteLocalAddress *bool
+
+	// RemoteAddressHostName.
+	RemoteAddressHostName *string
+
+	// RemoteAddressHostString.
+	RemoteAddressHostString *string
+
+	// RemoteAddressPort.
+	//
+	// Format: int32
+	RemoteAddressPort *int32
+
+	// RemoteAddressUnresolved.
+	RemoteAddressUnresolved *bool
+
 	// SortSorted.
 	SortSorted *bool
 
 	// SortUnsorted.
 	SortUnsorted *bool
+
+	// SslInfoPeerCertificates0TBSCertificate.
+	//
+	// Format: byte
+	SslInfoPeerCertificates0TBSCertificate *strfmt.Base64
+
+	// SslInfoPeerCertificates0BasicConstraints.
+	//
+	// Format: int32
+	SslInfoPeerCertificates0BasicConstraints *int32
+
+	// SslInfoPeerCertificates0Encoded.
+	//
+	// Format: byte
+	SslInfoPeerCertificates0Encoded *strfmt.Base64
+
+	// SslInfoPeerCertificates0ExtendedKeyUsage.
+	SslInfoPeerCertificates0ExtendedKeyUsage []string
+
+	// SslInfoPeerCertificates0IssuerDNName.
+	SslInfoPeerCertificates0IssuerDNName *string
+
+	// SslInfoPeerCertificates0IssuerUniqueID.
+	SslInfoPeerCertificates0IssuerUniqueID []bool
+
+	// SslInfoPeerCertificates0IssuerX500PrincipalEncoded.
+	//
+	// Format: byte
+	SslInfoPeerCertificates0IssuerX500PrincipalEncoded *strfmt.Base64
+
+	// SslInfoPeerCertificates0IssuerX500PrincipalName.
+	SslInfoPeerCertificates0IssuerX500PrincipalName *string
+
+	// SslInfoPeerCertificates0KeyUsage.
+	SslInfoPeerCertificates0KeyUsage []bool
+
+	// SslInfoPeerCertificates0NotAfter.
+	//
+	// Format: date-time
+	SslInfoPeerCertificates0NotAfter *strfmt.DateTime
+
+	// SslInfoPeerCertificates0NotBefore.
+	//
+	// Format: date-time
+	SslInfoPeerCertificates0NotBefore *strfmt.DateTime
+
+	// SslInfoPeerCertificates0SerialNumber.
+	SslInfoPeerCertificates0SerialNumber *int64
+
+	// SslInfoPeerCertificates0SigAlgName.
+	SslInfoPeerCertificates0SigAlgName *string
+
+	// SslInfoPeerCertificates0SigAlgOID.
+	SslInfoPeerCertificates0SigAlgOID *string
+
+	// SslInfoPeerCertificates0SigAlgParams.
+	//
+	// Format: byte
+	SslInfoPeerCertificates0SigAlgParams *strfmt.Base64
+
+	// SslInfoPeerCertificates0Signature.
+	//
+	// Format: byte
+	SslInfoPeerCertificates0Signature *strfmt.Base64
+
+	// SslInfoPeerCertificates0SubjectDNName.
+	SslInfoPeerCertificates0SubjectDNName *string
+
+	// SslInfoPeerCertificates0SubjectUniqueID.
+	SslInfoPeerCertificates0SubjectUniqueID []bool
+
+	// SslInfoPeerCertificates0SubjectX500PrincipalEncoded.
+	//
+	// Format: byte
+	SslInfoPeerCertificates0SubjectX500PrincipalEncoded *strfmt.Base64
+
+	// SslInfoPeerCertificates0SubjectX500PrincipalName.
+	SslInfoPeerCertificates0SubjectX500PrincipalName *string
+
+	// SslInfoPeerCertificates0Type.
+	SslInfoPeerCertificates0Type *string
+
+	// SslInfoPeerCertificates0Version.
+	//
+	// Format: int32
+	SslInfoPeerCertificates0Version *int32
+
+	// SslInfoSessionID.
+	SslInfoSessionID *string
 
 	// Unpaged.
 	Unpaged *bool
@@ -140,6 +350,215 @@ func (o *ListUsingGET2Params) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithID adds the id to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithID(id *string) *ListUsingGET2Params {
+	o.SetID(id)
+	return o
+}
+
+// SetID adds the id to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetID(id *string) {
+	o.ID = id
+}
+
+// WithLocalAddressAddressMCGlobal adds the localAddressAddressMCGlobal to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithLocalAddressAddressMCGlobal(localAddressAddressMCGlobal *bool) *ListUsingGET2Params {
+	o.SetLocalAddressAddressMCGlobal(localAddressAddressMCGlobal)
+	return o
+}
+
+// SetLocalAddressAddressMCGlobal adds the localAddressAddressMCGlobal to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetLocalAddressAddressMCGlobal(localAddressAddressMCGlobal *bool) {
+	o.LocalAddressAddressMCGlobal = localAddressAddressMCGlobal
+}
+
+// WithLocalAddressAddressMCLinkLocal adds the localAddressAddressMCLinkLocal to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithLocalAddressAddressMCLinkLocal(localAddressAddressMCLinkLocal *bool) *ListUsingGET2Params {
+	o.SetLocalAddressAddressMCLinkLocal(localAddressAddressMCLinkLocal)
+	return o
+}
+
+// SetLocalAddressAddressMCLinkLocal adds the localAddressAddressMCLinkLocal to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetLocalAddressAddressMCLinkLocal(localAddressAddressMCLinkLocal *bool) {
+	o.LocalAddressAddressMCLinkLocal = localAddressAddressMCLinkLocal
+}
+
+// WithLocalAddressAddressMCNodeLocal adds the localAddressAddressMCNodeLocal to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithLocalAddressAddressMCNodeLocal(localAddressAddressMCNodeLocal *bool) *ListUsingGET2Params {
+	o.SetLocalAddressAddressMCNodeLocal(localAddressAddressMCNodeLocal)
+	return o
+}
+
+// SetLocalAddressAddressMCNodeLocal adds the localAddressAddressMCNodeLocal to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetLocalAddressAddressMCNodeLocal(localAddressAddressMCNodeLocal *bool) {
+	o.LocalAddressAddressMCNodeLocal = localAddressAddressMCNodeLocal
+}
+
+// WithLocalAddressAddressMCOrgLocal adds the localAddressAddressMCOrgLocal to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithLocalAddressAddressMCOrgLocal(localAddressAddressMCOrgLocal *bool) *ListUsingGET2Params {
+	o.SetLocalAddressAddressMCOrgLocal(localAddressAddressMCOrgLocal)
+	return o
+}
+
+// SetLocalAddressAddressMCOrgLocal adds the localAddressAddressMCOrgLocal to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetLocalAddressAddressMCOrgLocal(localAddressAddressMCOrgLocal *bool) {
+	o.LocalAddressAddressMCOrgLocal = localAddressAddressMCOrgLocal
+}
+
+// WithLocalAddressAddressMCSiteLocal adds the localAddressAddressMCSiteLocal to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithLocalAddressAddressMCSiteLocal(localAddressAddressMCSiteLocal *bool) *ListUsingGET2Params {
+	o.SetLocalAddressAddressMCSiteLocal(localAddressAddressMCSiteLocal)
+	return o
+}
+
+// SetLocalAddressAddressMCSiteLocal adds the localAddressAddressMCSiteLocal to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetLocalAddressAddressMCSiteLocal(localAddressAddressMCSiteLocal *bool) {
+	o.LocalAddressAddressMCSiteLocal = localAddressAddressMCSiteLocal
+}
+
+// WithLocalAddressAddressAddress adds the localAddressAddressAddress to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithLocalAddressAddressAddress(localAddressAddressAddress *strfmt.Base64) *ListUsingGET2Params {
+	o.SetLocalAddressAddressAddress(localAddressAddressAddress)
+	return o
+}
+
+// SetLocalAddressAddressAddress adds the localAddressAddressAddress to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetLocalAddressAddressAddress(localAddressAddressAddress *strfmt.Base64) {
+	o.LocalAddressAddressAddress = localAddressAddressAddress
+}
+
+// WithLocalAddressAddressAnyLocalAddress adds the localAddressAddressAnyLocalAddress to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithLocalAddressAddressAnyLocalAddress(localAddressAddressAnyLocalAddress *bool) *ListUsingGET2Params {
+	o.SetLocalAddressAddressAnyLocalAddress(localAddressAddressAnyLocalAddress)
+	return o
+}
+
+// SetLocalAddressAddressAnyLocalAddress adds the localAddressAddressAnyLocalAddress to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetLocalAddressAddressAnyLocalAddress(localAddressAddressAnyLocalAddress *bool) {
+	o.LocalAddressAddressAnyLocalAddress = localAddressAddressAnyLocalAddress
+}
+
+// WithLocalAddressAddressCanonicalHostName adds the localAddressAddressCanonicalHostName to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithLocalAddressAddressCanonicalHostName(localAddressAddressCanonicalHostName *string) *ListUsingGET2Params {
+	o.SetLocalAddressAddressCanonicalHostName(localAddressAddressCanonicalHostName)
+	return o
+}
+
+// SetLocalAddressAddressCanonicalHostName adds the localAddressAddressCanonicalHostName to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetLocalAddressAddressCanonicalHostName(localAddressAddressCanonicalHostName *string) {
+	o.LocalAddressAddressCanonicalHostName = localAddressAddressCanonicalHostName
+}
+
+// WithLocalAddressAddressHostAddress adds the localAddressAddressHostAddress to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithLocalAddressAddressHostAddress(localAddressAddressHostAddress *string) *ListUsingGET2Params {
+	o.SetLocalAddressAddressHostAddress(localAddressAddressHostAddress)
+	return o
+}
+
+// SetLocalAddressAddressHostAddress adds the localAddressAddressHostAddress to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetLocalAddressAddressHostAddress(localAddressAddressHostAddress *string) {
+	o.LocalAddressAddressHostAddress = localAddressAddressHostAddress
+}
+
+// WithLocalAddressAddressHostName adds the localAddressAddressHostName to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithLocalAddressAddressHostName(localAddressAddressHostName *string) *ListUsingGET2Params {
+	o.SetLocalAddressAddressHostName(localAddressAddressHostName)
+	return o
+}
+
+// SetLocalAddressAddressHostName adds the localAddressAddressHostName to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetLocalAddressAddressHostName(localAddressAddressHostName *string) {
+	o.LocalAddressAddressHostName = localAddressAddressHostName
+}
+
+// WithLocalAddressAddressLinkLocalAddress adds the localAddressAddressLinkLocalAddress to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithLocalAddressAddressLinkLocalAddress(localAddressAddressLinkLocalAddress *bool) *ListUsingGET2Params {
+	o.SetLocalAddressAddressLinkLocalAddress(localAddressAddressLinkLocalAddress)
+	return o
+}
+
+// SetLocalAddressAddressLinkLocalAddress adds the localAddressAddressLinkLocalAddress to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetLocalAddressAddressLinkLocalAddress(localAddressAddressLinkLocalAddress *bool) {
+	o.LocalAddressAddressLinkLocalAddress = localAddressAddressLinkLocalAddress
+}
+
+// WithLocalAddressAddressLoopbackAddress adds the localAddressAddressLoopbackAddress to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithLocalAddressAddressLoopbackAddress(localAddressAddressLoopbackAddress *bool) *ListUsingGET2Params {
+	o.SetLocalAddressAddressLoopbackAddress(localAddressAddressLoopbackAddress)
+	return o
+}
+
+// SetLocalAddressAddressLoopbackAddress adds the localAddressAddressLoopbackAddress to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetLocalAddressAddressLoopbackAddress(localAddressAddressLoopbackAddress *bool) {
+	o.LocalAddressAddressLoopbackAddress = localAddressAddressLoopbackAddress
+}
+
+// WithLocalAddressAddressMulticastAddress adds the localAddressAddressMulticastAddress to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithLocalAddressAddressMulticastAddress(localAddressAddressMulticastAddress *bool) *ListUsingGET2Params {
+	o.SetLocalAddressAddressMulticastAddress(localAddressAddressMulticastAddress)
+	return o
+}
+
+// SetLocalAddressAddressMulticastAddress adds the localAddressAddressMulticastAddress to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetLocalAddressAddressMulticastAddress(localAddressAddressMulticastAddress *bool) {
+	o.LocalAddressAddressMulticastAddress = localAddressAddressMulticastAddress
+}
+
+// WithLocalAddressAddressSiteLocalAddress adds the localAddressAddressSiteLocalAddress to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithLocalAddressAddressSiteLocalAddress(localAddressAddressSiteLocalAddress *bool) *ListUsingGET2Params {
+	o.SetLocalAddressAddressSiteLocalAddress(localAddressAddressSiteLocalAddress)
+	return o
+}
+
+// SetLocalAddressAddressSiteLocalAddress adds the localAddressAddressSiteLocalAddress to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetLocalAddressAddressSiteLocalAddress(localAddressAddressSiteLocalAddress *bool) {
+	o.LocalAddressAddressSiteLocalAddress = localAddressAddressSiteLocalAddress
+}
+
+// WithLocalAddressHostName adds the localAddressHostName to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithLocalAddressHostName(localAddressHostName *string) *ListUsingGET2Params {
+	o.SetLocalAddressHostName(localAddressHostName)
+	return o
+}
+
+// SetLocalAddressHostName adds the localAddressHostName to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetLocalAddressHostName(localAddressHostName *string) {
+	o.LocalAddressHostName = localAddressHostName
+}
+
+// WithLocalAddressHostString adds the localAddressHostString to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithLocalAddressHostString(localAddressHostString *string) *ListUsingGET2Params {
+	o.SetLocalAddressHostString(localAddressHostString)
+	return o
+}
+
+// SetLocalAddressHostString adds the localAddressHostString to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetLocalAddressHostString(localAddressHostString *string) {
+	o.LocalAddressHostString = localAddressHostString
+}
+
+// WithLocalAddressPort adds the localAddressPort to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithLocalAddressPort(localAddressPort *int32) *ListUsingGET2Params {
+	o.SetLocalAddressPort(localAddressPort)
+	return o
+}
+
+// SetLocalAddressPort adds the localAddressPort to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetLocalAddressPort(localAddressPort *int32) {
+	o.LocalAddressPort = localAddressPort
+}
+
+// WithLocalAddressUnresolved adds the localAddressUnresolved to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithLocalAddressUnresolved(localAddressUnresolved *bool) *ListUsingGET2Params {
+	o.SetLocalAddressUnresolved(localAddressUnresolved)
+	return o
+}
+
+// SetLocalAddressUnresolved adds the localAddressUnresolved to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetLocalAddressUnresolved(localAddressUnresolved *bool) {
+	o.LocalAddressUnresolved = localAddressUnresolved
+}
+
 // WithOffset adds the offset to the list using g e t 2 params
 func (o *ListUsingGET2Params) WithOffset(offset *int64) *ListUsingGET2Params {
 	o.SetOffset(offset)
@@ -184,6 +603,204 @@ func (o *ListUsingGET2Params) SetPaged(paged *bool) {
 	o.Paged = paged
 }
 
+// WithRemoteAddressAddressMCGlobal adds the remoteAddressAddressMCGlobal to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithRemoteAddressAddressMCGlobal(remoteAddressAddressMCGlobal *bool) *ListUsingGET2Params {
+	o.SetRemoteAddressAddressMCGlobal(remoteAddressAddressMCGlobal)
+	return o
+}
+
+// SetRemoteAddressAddressMCGlobal adds the remoteAddressAddressMCGlobal to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetRemoteAddressAddressMCGlobal(remoteAddressAddressMCGlobal *bool) {
+	o.RemoteAddressAddressMCGlobal = remoteAddressAddressMCGlobal
+}
+
+// WithRemoteAddressAddressMCLinkLocal adds the remoteAddressAddressMCLinkLocal to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithRemoteAddressAddressMCLinkLocal(remoteAddressAddressMCLinkLocal *bool) *ListUsingGET2Params {
+	o.SetRemoteAddressAddressMCLinkLocal(remoteAddressAddressMCLinkLocal)
+	return o
+}
+
+// SetRemoteAddressAddressMCLinkLocal adds the remoteAddressAddressMCLinkLocal to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetRemoteAddressAddressMCLinkLocal(remoteAddressAddressMCLinkLocal *bool) {
+	o.RemoteAddressAddressMCLinkLocal = remoteAddressAddressMCLinkLocal
+}
+
+// WithRemoteAddressAddressMCNodeLocal adds the remoteAddressAddressMCNodeLocal to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithRemoteAddressAddressMCNodeLocal(remoteAddressAddressMCNodeLocal *bool) *ListUsingGET2Params {
+	o.SetRemoteAddressAddressMCNodeLocal(remoteAddressAddressMCNodeLocal)
+	return o
+}
+
+// SetRemoteAddressAddressMCNodeLocal adds the remoteAddressAddressMCNodeLocal to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetRemoteAddressAddressMCNodeLocal(remoteAddressAddressMCNodeLocal *bool) {
+	o.RemoteAddressAddressMCNodeLocal = remoteAddressAddressMCNodeLocal
+}
+
+// WithRemoteAddressAddressMCOrgLocal adds the remoteAddressAddressMCOrgLocal to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithRemoteAddressAddressMCOrgLocal(remoteAddressAddressMCOrgLocal *bool) *ListUsingGET2Params {
+	o.SetRemoteAddressAddressMCOrgLocal(remoteAddressAddressMCOrgLocal)
+	return o
+}
+
+// SetRemoteAddressAddressMCOrgLocal adds the remoteAddressAddressMCOrgLocal to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetRemoteAddressAddressMCOrgLocal(remoteAddressAddressMCOrgLocal *bool) {
+	o.RemoteAddressAddressMCOrgLocal = remoteAddressAddressMCOrgLocal
+}
+
+// WithRemoteAddressAddressMCSiteLocal adds the remoteAddressAddressMCSiteLocal to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithRemoteAddressAddressMCSiteLocal(remoteAddressAddressMCSiteLocal *bool) *ListUsingGET2Params {
+	o.SetRemoteAddressAddressMCSiteLocal(remoteAddressAddressMCSiteLocal)
+	return o
+}
+
+// SetRemoteAddressAddressMCSiteLocal adds the remoteAddressAddressMCSiteLocal to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetRemoteAddressAddressMCSiteLocal(remoteAddressAddressMCSiteLocal *bool) {
+	o.RemoteAddressAddressMCSiteLocal = remoteAddressAddressMCSiteLocal
+}
+
+// WithRemoteAddressAddressAddress adds the remoteAddressAddressAddress to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithRemoteAddressAddressAddress(remoteAddressAddressAddress *strfmt.Base64) *ListUsingGET2Params {
+	o.SetRemoteAddressAddressAddress(remoteAddressAddressAddress)
+	return o
+}
+
+// SetRemoteAddressAddressAddress adds the remoteAddressAddressAddress to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetRemoteAddressAddressAddress(remoteAddressAddressAddress *strfmt.Base64) {
+	o.RemoteAddressAddressAddress = remoteAddressAddressAddress
+}
+
+// WithRemoteAddressAddressAnyLocalAddress adds the remoteAddressAddressAnyLocalAddress to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithRemoteAddressAddressAnyLocalAddress(remoteAddressAddressAnyLocalAddress *bool) *ListUsingGET2Params {
+	o.SetRemoteAddressAddressAnyLocalAddress(remoteAddressAddressAnyLocalAddress)
+	return o
+}
+
+// SetRemoteAddressAddressAnyLocalAddress adds the remoteAddressAddressAnyLocalAddress to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetRemoteAddressAddressAnyLocalAddress(remoteAddressAddressAnyLocalAddress *bool) {
+	o.RemoteAddressAddressAnyLocalAddress = remoteAddressAddressAnyLocalAddress
+}
+
+// WithRemoteAddressAddressCanonicalHostName adds the remoteAddressAddressCanonicalHostName to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithRemoteAddressAddressCanonicalHostName(remoteAddressAddressCanonicalHostName *string) *ListUsingGET2Params {
+	o.SetRemoteAddressAddressCanonicalHostName(remoteAddressAddressCanonicalHostName)
+	return o
+}
+
+// SetRemoteAddressAddressCanonicalHostName adds the remoteAddressAddressCanonicalHostName to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetRemoteAddressAddressCanonicalHostName(remoteAddressAddressCanonicalHostName *string) {
+	o.RemoteAddressAddressCanonicalHostName = remoteAddressAddressCanonicalHostName
+}
+
+// WithRemoteAddressAddressHostAddress adds the remoteAddressAddressHostAddress to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithRemoteAddressAddressHostAddress(remoteAddressAddressHostAddress *string) *ListUsingGET2Params {
+	o.SetRemoteAddressAddressHostAddress(remoteAddressAddressHostAddress)
+	return o
+}
+
+// SetRemoteAddressAddressHostAddress adds the remoteAddressAddressHostAddress to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetRemoteAddressAddressHostAddress(remoteAddressAddressHostAddress *string) {
+	o.RemoteAddressAddressHostAddress = remoteAddressAddressHostAddress
+}
+
+// WithRemoteAddressAddressHostName adds the remoteAddressAddressHostName to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithRemoteAddressAddressHostName(remoteAddressAddressHostName *string) *ListUsingGET2Params {
+	o.SetRemoteAddressAddressHostName(remoteAddressAddressHostName)
+	return o
+}
+
+// SetRemoteAddressAddressHostName adds the remoteAddressAddressHostName to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetRemoteAddressAddressHostName(remoteAddressAddressHostName *string) {
+	o.RemoteAddressAddressHostName = remoteAddressAddressHostName
+}
+
+// WithRemoteAddressAddressLinkLocalAddress adds the remoteAddressAddressLinkLocalAddress to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithRemoteAddressAddressLinkLocalAddress(remoteAddressAddressLinkLocalAddress *bool) *ListUsingGET2Params {
+	o.SetRemoteAddressAddressLinkLocalAddress(remoteAddressAddressLinkLocalAddress)
+	return o
+}
+
+// SetRemoteAddressAddressLinkLocalAddress adds the remoteAddressAddressLinkLocalAddress to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetRemoteAddressAddressLinkLocalAddress(remoteAddressAddressLinkLocalAddress *bool) {
+	o.RemoteAddressAddressLinkLocalAddress = remoteAddressAddressLinkLocalAddress
+}
+
+// WithRemoteAddressAddressLoopbackAddress adds the remoteAddressAddressLoopbackAddress to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithRemoteAddressAddressLoopbackAddress(remoteAddressAddressLoopbackAddress *bool) *ListUsingGET2Params {
+	o.SetRemoteAddressAddressLoopbackAddress(remoteAddressAddressLoopbackAddress)
+	return o
+}
+
+// SetRemoteAddressAddressLoopbackAddress adds the remoteAddressAddressLoopbackAddress to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetRemoteAddressAddressLoopbackAddress(remoteAddressAddressLoopbackAddress *bool) {
+	o.RemoteAddressAddressLoopbackAddress = remoteAddressAddressLoopbackAddress
+}
+
+// WithRemoteAddressAddressMulticastAddress adds the remoteAddressAddressMulticastAddress to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithRemoteAddressAddressMulticastAddress(remoteAddressAddressMulticastAddress *bool) *ListUsingGET2Params {
+	o.SetRemoteAddressAddressMulticastAddress(remoteAddressAddressMulticastAddress)
+	return o
+}
+
+// SetRemoteAddressAddressMulticastAddress adds the remoteAddressAddressMulticastAddress to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetRemoteAddressAddressMulticastAddress(remoteAddressAddressMulticastAddress *bool) {
+	o.RemoteAddressAddressMulticastAddress = remoteAddressAddressMulticastAddress
+}
+
+// WithRemoteAddressAddressSiteLocalAddress adds the remoteAddressAddressSiteLocalAddress to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithRemoteAddressAddressSiteLocalAddress(remoteAddressAddressSiteLocalAddress *bool) *ListUsingGET2Params {
+	o.SetRemoteAddressAddressSiteLocalAddress(remoteAddressAddressSiteLocalAddress)
+	return o
+}
+
+// SetRemoteAddressAddressSiteLocalAddress adds the remoteAddressAddressSiteLocalAddress to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetRemoteAddressAddressSiteLocalAddress(remoteAddressAddressSiteLocalAddress *bool) {
+	o.RemoteAddressAddressSiteLocalAddress = remoteAddressAddressSiteLocalAddress
+}
+
+// WithRemoteAddressHostName adds the remoteAddressHostName to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithRemoteAddressHostName(remoteAddressHostName *string) *ListUsingGET2Params {
+	o.SetRemoteAddressHostName(remoteAddressHostName)
+	return o
+}
+
+// SetRemoteAddressHostName adds the remoteAddressHostName to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetRemoteAddressHostName(remoteAddressHostName *string) {
+	o.RemoteAddressHostName = remoteAddressHostName
+}
+
+// WithRemoteAddressHostString adds the remoteAddressHostString to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithRemoteAddressHostString(remoteAddressHostString *string) *ListUsingGET2Params {
+	o.SetRemoteAddressHostString(remoteAddressHostString)
+	return o
+}
+
+// SetRemoteAddressHostString adds the remoteAddressHostString to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetRemoteAddressHostString(remoteAddressHostString *string) {
+	o.RemoteAddressHostString = remoteAddressHostString
+}
+
+// WithRemoteAddressPort adds the remoteAddressPort to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithRemoteAddressPort(remoteAddressPort *int32) *ListUsingGET2Params {
+	o.SetRemoteAddressPort(remoteAddressPort)
+	return o
+}
+
+// SetRemoteAddressPort adds the remoteAddressPort to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetRemoteAddressPort(remoteAddressPort *int32) {
+	o.RemoteAddressPort = remoteAddressPort
+}
+
+// WithRemoteAddressUnresolved adds the remoteAddressUnresolved to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithRemoteAddressUnresolved(remoteAddressUnresolved *bool) *ListUsingGET2Params {
+	o.SetRemoteAddressUnresolved(remoteAddressUnresolved)
+	return o
+}
+
+// SetRemoteAddressUnresolved adds the remoteAddressUnresolved to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetRemoteAddressUnresolved(remoteAddressUnresolved *bool) {
+	o.RemoteAddressUnresolved = remoteAddressUnresolved
+}
+
 // WithSortSorted adds the sortSorted to the list using g e t 2 params
 func (o *ListUsingGET2Params) WithSortSorted(sortSorted *bool) *ListUsingGET2Params {
 	o.SetSortSorted(sortSorted)
@@ -206,6 +823,259 @@ func (o *ListUsingGET2Params) SetSortUnsorted(sortUnsorted *bool) {
 	o.SortUnsorted = sortUnsorted
 }
 
+// WithSslInfoPeerCertificates0TBSCertificate adds the sslInfoPeerCertificates0TBSCertificate to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithSslInfoPeerCertificates0TBSCertificate(sslInfoPeerCertificates0TBSCertificate *strfmt.Base64) *ListUsingGET2Params {
+	o.SetSslInfoPeerCertificates0TBSCertificate(sslInfoPeerCertificates0TBSCertificate)
+	return o
+}
+
+// SetSslInfoPeerCertificates0TBSCertificate adds the sslInfoPeerCertificates0TBSCertificate to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetSslInfoPeerCertificates0TBSCertificate(sslInfoPeerCertificates0TBSCertificate *strfmt.Base64) {
+	o.SslInfoPeerCertificates0TBSCertificate = sslInfoPeerCertificates0TBSCertificate
+}
+
+// WithSslInfoPeerCertificates0BasicConstraints adds the sslInfoPeerCertificates0BasicConstraints to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithSslInfoPeerCertificates0BasicConstraints(sslInfoPeerCertificates0BasicConstraints *int32) *ListUsingGET2Params {
+	o.SetSslInfoPeerCertificates0BasicConstraints(sslInfoPeerCertificates0BasicConstraints)
+	return o
+}
+
+// SetSslInfoPeerCertificates0BasicConstraints adds the sslInfoPeerCertificates0BasicConstraints to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetSslInfoPeerCertificates0BasicConstraints(sslInfoPeerCertificates0BasicConstraints *int32) {
+	o.SslInfoPeerCertificates0BasicConstraints = sslInfoPeerCertificates0BasicConstraints
+}
+
+// WithSslInfoPeerCertificates0Encoded adds the sslInfoPeerCertificates0Encoded to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithSslInfoPeerCertificates0Encoded(sslInfoPeerCertificates0Encoded *strfmt.Base64) *ListUsingGET2Params {
+	o.SetSslInfoPeerCertificates0Encoded(sslInfoPeerCertificates0Encoded)
+	return o
+}
+
+// SetSslInfoPeerCertificates0Encoded adds the sslInfoPeerCertificates0Encoded to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetSslInfoPeerCertificates0Encoded(sslInfoPeerCertificates0Encoded *strfmt.Base64) {
+	o.SslInfoPeerCertificates0Encoded = sslInfoPeerCertificates0Encoded
+}
+
+// WithSslInfoPeerCertificates0ExtendedKeyUsage adds the sslInfoPeerCertificates0ExtendedKeyUsage to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithSslInfoPeerCertificates0ExtendedKeyUsage(sslInfoPeerCertificates0ExtendedKeyUsage []string) *ListUsingGET2Params {
+	o.SetSslInfoPeerCertificates0ExtendedKeyUsage(sslInfoPeerCertificates0ExtendedKeyUsage)
+	return o
+}
+
+// SetSslInfoPeerCertificates0ExtendedKeyUsage adds the sslInfoPeerCertificates0ExtendedKeyUsage to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetSslInfoPeerCertificates0ExtendedKeyUsage(sslInfoPeerCertificates0ExtendedKeyUsage []string) {
+	o.SslInfoPeerCertificates0ExtendedKeyUsage = sslInfoPeerCertificates0ExtendedKeyUsage
+}
+
+// WithSslInfoPeerCertificates0IssuerDNName adds the sslInfoPeerCertificates0IssuerDNName to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithSslInfoPeerCertificates0IssuerDNName(sslInfoPeerCertificates0IssuerDNName *string) *ListUsingGET2Params {
+	o.SetSslInfoPeerCertificates0IssuerDNName(sslInfoPeerCertificates0IssuerDNName)
+	return o
+}
+
+// SetSslInfoPeerCertificates0IssuerDNName adds the sslInfoPeerCertificates0IssuerDNName to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetSslInfoPeerCertificates0IssuerDNName(sslInfoPeerCertificates0IssuerDNName *string) {
+	o.SslInfoPeerCertificates0IssuerDNName = sslInfoPeerCertificates0IssuerDNName
+}
+
+// WithSslInfoPeerCertificates0IssuerUniqueID adds the sslInfoPeerCertificates0IssuerUniqueID to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithSslInfoPeerCertificates0IssuerUniqueID(sslInfoPeerCertificates0IssuerUniqueID []bool) *ListUsingGET2Params {
+	o.SetSslInfoPeerCertificates0IssuerUniqueID(sslInfoPeerCertificates0IssuerUniqueID)
+	return o
+}
+
+// SetSslInfoPeerCertificates0IssuerUniqueID adds the sslInfoPeerCertificates0IssuerUniqueId to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetSslInfoPeerCertificates0IssuerUniqueID(sslInfoPeerCertificates0IssuerUniqueID []bool) {
+	o.SslInfoPeerCertificates0IssuerUniqueID = sslInfoPeerCertificates0IssuerUniqueID
+}
+
+// WithSslInfoPeerCertificates0IssuerX500PrincipalEncoded adds the sslInfoPeerCertificates0IssuerX500PrincipalEncoded to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithSslInfoPeerCertificates0IssuerX500PrincipalEncoded(sslInfoPeerCertificates0IssuerX500PrincipalEncoded *strfmt.Base64) *ListUsingGET2Params {
+	o.SetSslInfoPeerCertificates0IssuerX500PrincipalEncoded(sslInfoPeerCertificates0IssuerX500PrincipalEncoded)
+	return o
+}
+
+// SetSslInfoPeerCertificates0IssuerX500PrincipalEncoded adds the sslInfoPeerCertificates0IssuerX500PrincipalEncoded to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetSslInfoPeerCertificates0IssuerX500PrincipalEncoded(sslInfoPeerCertificates0IssuerX500PrincipalEncoded *strfmt.Base64) {
+	o.SslInfoPeerCertificates0IssuerX500PrincipalEncoded = sslInfoPeerCertificates0IssuerX500PrincipalEncoded
+}
+
+// WithSslInfoPeerCertificates0IssuerX500PrincipalName adds the sslInfoPeerCertificates0IssuerX500PrincipalName to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithSslInfoPeerCertificates0IssuerX500PrincipalName(sslInfoPeerCertificates0IssuerX500PrincipalName *string) *ListUsingGET2Params {
+	o.SetSslInfoPeerCertificates0IssuerX500PrincipalName(sslInfoPeerCertificates0IssuerX500PrincipalName)
+	return o
+}
+
+// SetSslInfoPeerCertificates0IssuerX500PrincipalName adds the sslInfoPeerCertificates0IssuerX500PrincipalName to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetSslInfoPeerCertificates0IssuerX500PrincipalName(sslInfoPeerCertificates0IssuerX500PrincipalName *string) {
+	o.SslInfoPeerCertificates0IssuerX500PrincipalName = sslInfoPeerCertificates0IssuerX500PrincipalName
+}
+
+// WithSslInfoPeerCertificates0KeyUsage adds the sslInfoPeerCertificates0KeyUsage to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithSslInfoPeerCertificates0KeyUsage(sslInfoPeerCertificates0KeyUsage []bool) *ListUsingGET2Params {
+	o.SetSslInfoPeerCertificates0KeyUsage(sslInfoPeerCertificates0KeyUsage)
+	return o
+}
+
+// SetSslInfoPeerCertificates0KeyUsage adds the sslInfoPeerCertificates0KeyUsage to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetSslInfoPeerCertificates0KeyUsage(sslInfoPeerCertificates0KeyUsage []bool) {
+	o.SslInfoPeerCertificates0KeyUsage = sslInfoPeerCertificates0KeyUsage
+}
+
+// WithSslInfoPeerCertificates0NotAfter adds the sslInfoPeerCertificates0NotAfter to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithSslInfoPeerCertificates0NotAfter(sslInfoPeerCertificates0NotAfter *strfmt.DateTime) *ListUsingGET2Params {
+	o.SetSslInfoPeerCertificates0NotAfter(sslInfoPeerCertificates0NotAfter)
+	return o
+}
+
+// SetSslInfoPeerCertificates0NotAfter adds the sslInfoPeerCertificates0NotAfter to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetSslInfoPeerCertificates0NotAfter(sslInfoPeerCertificates0NotAfter *strfmt.DateTime) {
+	o.SslInfoPeerCertificates0NotAfter = sslInfoPeerCertificates0NotAfter
+}
+
+// WithSslInfoPeerCertificates0NotBefore adds the sslInfoPeerCertificates0NotBefore to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithSslInfoPeerCertificates0NotBefore(sslInfoPeerCertificates0NotBefore *strfmt.DateTime) *ListUsingGET2Params {
+	o.SetSslInfoPeerCertificates0NotBefore(sslInfoPeerCertificates0NotBefore)
+	return o
+}
+
+// SetSslInfoPeerCertificates0NotBefore adds the sslInfoPeerCertificates0NotBefore to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetSslInfoPeerCertificates0NotBefore(sslInfoPeerCertificates0NotBefore *strfmt.DateTime) {
+	o.SslInfoPeerCertificates0NotBefore = sslInfoPeerCertificates0NotBefore
+}
+
+// WithSslInfoPeerCertificates0SerialNumber adds the sslInfoPeerCertificates0SerialNumber to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithSslInfoPeerCertificates0SerialNumber(sslInfoPeerCertificates0SerialNumber *int64) *ListUsingGET2Params {
+	o.SetSslInfoPeerCertificates0SerialNumber(sslInfoPeerCertificates0SerialNumber)
+	return o
+}
+
+// SetSslInfoPeerCertificates0SerialNumber adds the sslInfoPeerCertificates0SerialNumber to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetSslInfoPeerCertificates0SerialNumber(sslInfoPeerCertificates0SerialNumber *int64) {
+	o.SslInfoPeerCertificates0SerialNumber = sslInfoPeerCertificates0SerialNumber
+}
+
+// WithSslInfoPeerCertificates0SigAlgName adds the sslInfoPeerCertificates0SigAlgName to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithSslInfoPeerCertificates0SigAlgName(sslInfoPeerCertificates0SigAlgName *string) *ListUsingGET2Params {
+	o.SetSslInfoPeerCertificates0SigAlgName(sslInfoPeerCertificates0SigAlgName)
+	return o
+}
+
+// SetSslInfoPeerCertificates0SigAlgName adds the sslInfoPeerCertificates0SigAlgName to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetSslInfoPeerCertificates0SigAlgName(sslInfoPeerCertificates0SigAlgName *string) {
+	o.SslInfoPeerCertificates0SigAlgName = sslInfoPeerCertificates0SigAlgName
+}
+
+// WithSslInfoPeerCertificates0SigAlgOID adds the sslInfoPeerCertificates0SigAlgOID to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithSslInfoPeerCertificates0SigAlgOID(sslInfoPeerCertificates0SigAlgOID *string) *ListUsingGET2Params {
+	o.SetSslInfoPeerCertificates0SigAlgOID(sslInfoPeerCertificates0SigAlgOID)
+	return o
+}
+
+// SetSslInfoPeerCertificates0SigAlgOID adds the sslInfoPeerCertificates0SigAlgOId to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetSslInfoPeerCertificates0SigAlgOID(sslInfoPeerCertificates0SigAlgOID *string) {
+	o.SslInfoPeerCertificates0SigAlgOID = sslInfoPeerCertificates0SigAlgOID
+}
+
+// WithSslInfoPeerCertificates0SigAlgParams adds the sslInfoPeerCertificates0SigAlgParams to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithSslInfoPeerCertificates0SigAlgParams(sslInfoPeerCertificates0SigAlgParams *strfmt.Base64) *ListUsingGET2Params {
+	o.SetSslInfoPeerCertificates0SigAlgParams(sslInfoPeerCertificates0SigAlgParams)
+	return o
+}
+
+// SetSslInfoPeerCertificates0SigAlgParams adds the sslInfoPeerCertificates0SigAlgParams to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetSslInfoPeerCertificates0SigAlgParams(sslInfoPeerCertificates0SigAlgParams *strfmt.Base64) {
+	o.SslInfoPeerCertificates0SigAlgParams = sslInfoPeerCertificates0SigAlgParams
+}
+
+// WithSslInfoPeerCertificates0Signature adds the sslInfoPeerCertificates0Signature to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithSslInfoPeerCertificates0Signature(sslInfoPeerCertificates0Signature *strfmt.Base64) *ListUsingGET2Params {
+	o.SetSslInfoPeerCertificates0Signature(sslInfoPeerCertificates0Signature)
+	return o
+}
+
+// SetSslInfoPeerCertificates0Signature adds the sslInfoPeerCertificates0Signature to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetSslInfoPeerCertificates0Signature(sslInfoPeerCertificates0Signature *strfmt.Base64) {
+	o.SslInfoPeerCertificates0Signature = sslInfoPeerCertificates0Signature
+}
+
+// WithSslInfoPeerCertificates0SubjectDNName adds the sslInfoPeerCertificates0SubjectDNName to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithSslInfoPeerCertificates0SubjectDNName(sslInfoPeerCertificates0SubjectDNName *string) *ListUsingGET2Params {
+	o.SetSslInfoPeerCertificates0SubjectDNName(sslInfoPeerCertificates0SubjectDNName)
+	return o
+}
+
+// SetSslInfoPeerCertificates0SubjectDNName adds the sslInfoPeerCertificates0SubjectDNName to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetSslInfoPeerCertificates0SubjectDNName(sslInfoPeerCertificates0SubjectDNName *string) {
+	o.SslInfoPeerCertificates0SubjectDNName = sslInfoPeerCertificates0SubjectDNName
+}
+
+// WithSslInfoPeerCertificates0SubjectUniqueID adds the sslInfoPeerCertificates0SubjectUniqueID to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithSslInfoPeerCertificates0SubjectUniqueID(sslInfoPeerCertificates0SubjectUniqueID []bool) *ListUsingGET2Params {
+	o.SetSslInfoPeerCertificates0SubjectUniqueID(sslInfoPeerCertificates0SubjectUniqueID)
+	return o
+}
+
+// SetSslInfoPeerCertificates0SubjectUniqueID adds the sslInfoPeerCertificates0SubjectUniqueId to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetSslInfoPeerCertificates0SubjectUniqueID(sslInfoPeerCertificates0SubjectUniqueID []bool) {
+	o.SslInfoPeerCertificates0SubjectUniqueID = sslInfoPeerCertificates0SubjectUniqueID
+}
+
+// WithSslInfoPeerCertificates0SubjectX500PrincipalEncoded adds the sslInfoPeerCertificates0SubjectX500PrincipalEncoded to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithSslInfoPeerCertificates0SubjectX500PrincipalEncoded(sslInfoPeerCertificates0SubjectX500PrincipalEncoded *strfmt.Base64) *ListUsingGET2Params {
+	o.SetSslInfoPeerCertificates0SubjectX500PrincipalEncoded(sslInfoPeerCertificates0SubjectX500PrincipalEncoded)
+	return o
+}
+
+// SetSslInfoPeerCertificates0SubjectX500PrincipalEncoded adds the sslInfoPeerCertificates0SubjectX500PrincipalEncoded to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetSslInfoPeerCertificates0SubjectX500PrincipalEncoded(sslInfoPeerCertificates0SubjectX500PrincipalEncoded *strfmt.Base64) {
+	o.SslInfoPeerCertificates0SubjectX500PrincipalEncoded = sslInfoPeerCertificates0SubjectX500PrincipalEncoded
+}
+
+// WithSslInfoPeerCertificates0SubjectX500PrincipalName adds the sslInfoPeerCertificates0SubjectX500PrincipalName to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithSslInfoPeerCertificates0SubjectX500PrincipalName(sslInfoPeerCertificates0SubjectX500PrincipalName *string) *ListUsingGET2Params {
+	o.SetSslInfoPeerCertificates0SubjectX500PrincipalName(sslInfoPeerCertificates0SubjectX500PrincipalName)
+	return o
+}
+
+// SetSslInfoPeerCertificates0SubjectX500PrincipalName adds the sslInfoPeerCertificates0SubjectX500PrincipalName to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetSslInfoPeerCertificates0SubjectX500PrincipalName(sslInfoPeerCertificates0SubjectX500PrincipalName *string) {
+	o.SslInfoPeerCertificates0SubjectX500PrincipalName = sslInfoPeerCertificates0SubjectX500PrincipalName
+}
+
+// WithSslInfoPeerCertificates0Type adds the sslInfoPeerCertificates0Type to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithSslInfoPeerCertificates0Type(sslInfoPeerCertificates0Type *string) *ListUsingGET2Params {
+	o.SetSslInfoPeerCertificates0Type(sslInfoPeerCertificates0Type)
+	return o
+}
+
+// SetSslInfoPeerCertificates0Type adds the sslInfoPeerCertificates0Type to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetSslInfoPeerCertificates0Type(sslInfoPeerCertificates0Type *string) {
+	o.SslInfoPeerCertificates0Type = sslInfoPeerCertificates0Type
+}
+
+// WithSslInfoPeerCertificates0Version adds the sslInfoPeerCertificates0Version to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithSslInfoPeerCertificates0Version(sslInfoPeerCertificates0Version *int32) *ListUsingGET2Params {
+	o.SetSslInfoPeerCertificates0Version(sslInfoPeerCertificates0Version)
+	return o
+}
+
+// SetSslInfoPeerCertificates0Version adds the sslInfoPeerCertificates0Version to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetSslInfoPeerCertificates0Version(sslInfoPeerCertificates0Version *int32) {
+	o.SslInfoPeerCertificates0Version = sslInfoPeerCertificates0Version
+}
+
+// WithSslInfoSessionID adds the sslInfoSessionID to the list using g e t 2 params
+func (o *ListUsingGET2Params) WithSslInfoSessionID(sslInfoSessionID *string) *ListUsingGET2Params {
+	o.SetSslInfoSessionID(sslInfoSessionID)
+	return o
+}
+
+// SetSslInfoSessionID adds the sslInfoSessionId to the list using g e t 2 params
+func (o *ListUsingGET2Params) SetSslInfoSessionID(sslInfoSessionID *string) {
+	o.SslInfoSessionID = sslInfoSessionID
+}
+
 // WithUnpaged adds the unpaged to the list using g e t 2 params
 func (o *ListUsingGET2Params) WithUnpaged(unpaged *bool) *ListUsingGET2Params {
 	o.SetUnpaged(unpaged)
@@ -224,6 +1094,329 @@ func (o *ListUsingGET2Params) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		return err
 	}
 	var res []error
+
+	if o.ID != nil {
+
+		// query param id
+		var qrID string
+
+		if o.ID != nil {
+			qrID = *o.ID
+		}
+		qID := qrID
+		if qID != "" {
+
+			if err := r.SetQueryParam("id", qID); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.LocalAddressAddressMCGlobal != nil {
+
+		// query param localAddress.address.MCGlobal
+		var qrLocalAddressAddressMCGlobal bool
+
+		if o.LocalAddressAddressMCGlobal != nil {
+			qrLocalAddressAddressMCGlobal = *o.LocalAddressAddressMCGlobal
+		}
+		qLocalAddressAddressMCGlobal := swag.FormatBool(qrLocalAddressAddressMCGlobal)
+		if qLocalAddressAddressMCGlobal != "" {
+
+			if err := r.SetQueryParam("localAddress.address.MCGlobal", qLocalAddressAddressMCGlobal); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.LocalAddressAddressMCLinkLocal != nil {
+
+		// query param localAddress.address.MCLinkLocal
+		var qrLocalAddressAddressMCLinkLocal bool
+
+		if o.LocalAddressAddressMCLinkLocal != nil {
+			qrLocalAddressAddressMCLinkLocal = *o.LocalAddressAddressMCLinkLocal
+		}
+		qLocalAddressAddressMCLinkLocal := swag.FormatBool(qrLocalAddressAddressMCLinkLocal)
+		if qLocalAddressAddressMCLinkLocal != "" {
+
+			if err := r.SetQueryParam("localAddress.address.MCLinkLocal", qLocalAddressAddressMCLinkLocal); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.LocalAddressAddressMCNodeLocal != nil {
+
+		// query param localAddress.address.MCNodeLocal
+		var qrLocalAddressAddressMCNodeLocal bool
+
+		if o.LocalAddressAddressMCNodeLocal != nil {
+			qrLocalAddressAddressMCNodeLocal = *o.LocalAddressAddressMCNodeLocal
+		}
+		qLocalAddressAddressMCNodeLocal := swag.FormatBool(qrLocalAddressAddressMCNodeLocal)
+		if qLocalAddressAddressMCNodeLocal != "" {
+
+			if err := r.SetQueryParam("localAddress.address.MCNodeLocal", qLocalAddressAddressMCNodeLocal); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.LocalAddressAddressMCOrgLocal != nil {
+
+		// query param localAddress.address.MCOrgLocal
+		var qrLocalAddressAddressMCOrgLocal bool
+
+		if o.LocalAddressAddressMCOrgLocal != nil {
+			qrLocalAddressAddressMCOrgLocal = *o.LocalAddressAddressMCOrgLocal
+		}
+		qLocalAddressAddressMCOrgLocal := swag.FormatBool(qrLocalAddressAddressMCOrgLocal)
+		if qLocalAddressAddressMCOrgLocal != "" {
+
+			if err := r.SetQueryParam("localAddress.address.MCOrgLocal", qLocalAddressAddressMCOrgLocal); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.LocalAddressAddressMCSiteLocal != nil {
+
+		// query param localAddress.address.MCSiteLocal
+		var qrLocalAddressAddressMCSiteLocal bool
+
+		if o.LocalAddressAddressMCSiteLocal != nil {
+			qrLocalAddressAddressMCSiteLocal = *o.LocalAddressAddressMCSiteLocal
+		}
+		qLocalAddressAddressMCSiteLocal := swag.FormatBool(qrLocalAddressAddressMCSiteLocal)
+		if qLocalAddressAddressMCSiteLocal != "" {
+
+			if err := r.SetQueryParam("localAddress.address.MCSiteLocal", qLocalAddressAddressMCSiteLocal); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.LocalAddressAddressAddress != nil {
+
+		// query param localAddress.address.address
+		var qrLocalAddressAddressAddress strfmt.Base64
+
+		if o.LocalAddressAddressAddress != nil {
+			qrLocalAddressAddressAddress = *o.LocalAddressAddressAddress
+		}
+		qLocalAddressAddressAddress := qrLocalAddressAddressAddress.String()
+		if qLocalAddressAddressAddress != "" {
+
+			if err := r.SetQueryParam("localAddress.address.address", qLocalAddressAddressAddress); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.LocalAddressAddressAnyLocalAddress != nil {
+
+		// query param localAddress.address.anyLocalAddress
+		var qrLocalAddressAddressAnyLocalAddress bool
+
+		if o.LocalAddressAddressAnyLocalAddress != nil {
+			qrLocalAddressAddressAnyLocalAddress = *o.LocalAddressAddressAnyLocalAddress
+		}
+		qLocalAddressAddressAnyLocalAddress := swag.FormatBool(qrLocalAddressAddressAnyLocalAddress)
+		if qLocalAddressAddressAnyLocalAddress != "" {
+
+			if err := r.SetQueryParam("localAddress.address.anyLocalAddress", qLocalAddressAddressAnyLocalAddress); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.LocalAddressAddressCanonicalHostName != nil {
+
+		// query param localAddress.address.canonicalHostName
+		var qrLocalAddressAddressCanonicalHostName string
+
+		if o.LocalAddressAddressCanonicalHostName != nil {
+			qrLocalAddressAddressCanonicalHostName = *o.LocalAddressAddressCanonicalHostName
+		}
+		qLocalAddressAddressCanonicalHostName := qrLocalAddressAddressCanonicalHostName
+		if qLocalAddressAddressCanonicalHostName != "" {
+
+			if err := r.SetQueryParam("localAddress.address.canonicalHostName", qLocalAddressAddressCanonicalHostName); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.LocalAddressAddressHostAddress != nil {
+
+		// query param localAddress.address.hostAddress
+		var qrLocalAddressAddressHostAddress string
+
+		if o.LocalAddressAddressHostAddress != nil {
+			qrLocalAddressAddressHostAddress = *o.LocalAddressAddressHostAddress
+		}
+		qLocalAddressAddressHostAddress := qrLocalAddressAddressHostAddress
+		if qLocalAddressAddressHostAddress != "" {
+
+			if err := r.SetQueryParam("localAddress.address.hostAddress", qLocalAddressAddressHostAddress); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.LocalAddressAddressHostName != nil {
+
+		// query param localAddress.address.hostName
+		var qrLocalAddressAddressHostName string
+
+		if o.LocalAddressAddressHostName != nil {
+			qrLocalAddressAddressHostName = *o.LocalAddressAddressHostName
+		}
+		qLocalAddressAddressHostName := qrLocalAddressAddressHostName
+		if qLocalAddressAddressHostName != "" {
+
+			if err := r.SetQueryParam("localAddress.address.hostName", qLocalAddressAddressHostName); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.LocalAddressAddressLinkLocalAddress != nil {
+
+		// query param localAddress.address.linkLocalAddress
+		var qrLocalAddressAddressLinkLocalAddress bool
+
+		if o.LocalAddressAddressLinkLocalAddress != nil {
+			qrLocalAddressAddressLinkLocalAddress = *o.LocalAddressAddressLinkLocalAddress
+		}
+		qLocalAddressAddressLinkLocalAddress := swag.FormatBool(qrLocalAddressAddressLinkLocalAddress)
+		if qLocalAddressAddressLinkLocalAddress != "" {
+
+			if err := r.SetQueryParam("localAddress.address.linkLocalAddress", qLocalAddressAddressLinkLocalAddress); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.LocalAddressAddressLoopbackAddress != nil {
+
+		// query param localAddress.address.loopbackAddress
+		var qrLocalAddressAddressLoopbackAddress bool
+
+		if o.LocalAddressAddressLoopbackAddress != nil {
+			qrLocalAddressAddressLoopbackAddress = *o.LocalAddressAddressLoopbackAddress
+		}
+		qLocalAddressAddressLoopbackAddress := swag.FormatBool(qrLocalAddressAddressLoopbackAddress)
+		if qLocalAddressAddressLoopbackAddress != "" {
+
+			if err := r.SetQueryParam("localAddress.address.loopbackAddress", qLocalAddressAddressLoopbackAddress); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.LocalAddressAddressMulticastAddress != nil {
+
+		// query param localAddress.address.multicastAddress
+		var qrLocalAddressAddressMulticastAddress bool
+
+		if o.LocalAddressAddressMulticastAddress != nil {
+			qrLocalAddressAddressMulticastAddress = *o.LocalAddressAddressMulticastAddress
+		}
+		qLocalAddressAddressMulticastAddress := swag.FormatBool(qrLocalAddressAddressMulticastAddress)
+		if qLocalAddressAddressMulticastAddress != "" {
+
+			if err := r.SetQueryParam("localAddress.address.multicastAddress", qLocalAddressAddressMulticastAddress); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.LocalAddressAddressSiteLocalAddress != nil {
+
+		// query param localAddress.address.siteLocalAddress
+		var qrLocalAddressAddressSiteLocalAddress bool
+
+		if o.LocalAddressAddressSiteLocalAddress != nil {
+			qrLocalAddressAddressSiteLocalAddress = *o.LocalAddressAddressSiteLocalAddress
+		}
+		qLocalAddressAddressSiteLocalAddress := swag.FormatBool(qrLocalAddressAddressSiteLocalAddress)
+		if qLocalAddressAddressSiteLocalAddress != "" {
+
+			if err := r.SetQueryParam("localAddress.address.siteLocalAddress", qLocalAddressAddressSiteLocalAddress); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.LocalAddressHostName != nil {
+
+		// query param localAddress.hostName
+		var qrLocalAddressHostName string
+
+		if o.LocalAddressHostName != nil {
+			qrLocalAddressHostName = *o.LocalAddressHostName
+		}
+		qLocalAddressHostName := qrLocalAddressHostName
+		if qLocalAddressHostName != "" {
+
+			if err := r.SetQueryParam("localAddress.hostName", qLocalAddressHostName); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.LocalAddressHostString != nil {
+
+		// query param localAddress.hostString
+		var qrLocalAddressHostString string
+
+		if o.LocalAddressHostString != nil {
+			qrLocalAddressHostString = *o.LocalAddressHostString
+		}
+		qLocalAddressHostString := qrLocalAddressHostString
+		if qLocalAddressHostString != "" {
+
+			if err := r.SetQueryParam("localAddress.hostString", qLocalAddressHostString); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.LocalAddressPort != nil {
+
+		// query param localAddress.port
+		var qrLocalAddressPort int32
+
+		if o.LocalAddressPort != nil {
+			qrLocalAddressPort = *o.LocalAddressPort
+		}
+		qLocalAddressPort := swag.FormatInt32(qrLocalAddressPort)
+		if qLocalAddressPort != "" {
+
+			if err := r.SetQueryParam("localAddress.port", qLocalAddressPort); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.LocalAddressUnresolved != nil {
+
+		// query param localAddress.unresolved
+		var qrLocalAddressUnresolved bool
+
+		if o.LocalAddressUnresolved != nil {
+			qrLocalAddressUnresolved = *o.LocalAddressUnresolved
+		}
+		qLocalAddressUnresolved := swag.FormatBool(qrLocalAddressUnresolved)
+		if qLocalAddressUnresolved != "" {
+
+			if err := r.SetQueryParam("localAddress.unresolved", qLocalAddressUnresolved); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Offset != nil {
 
@@ -293,6 +1486,312 @@ func (o *ListUsingGET2Params) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		}
 	}
 
+	if o.RemoteAddressAddressMCGlobal != nil {
+
+		// query param remoteAddress.address.MCGlobal
+		var qrRemoteAddressAddressMCGlobal bool
+
+		if o.RemoteAddressAddressMCGlobal != nil {
+			qrRemoteAddressAddressMCGlobal = *o.RemoteAddressAddressMCGlobal
+		}
+		qRemoteAddressAddressMCGlobal := swag.FormatBool(qrRemoteAddressAddressMCGlobal)
+		if qRemoteAddressAddressMCGlobal != "" {
+
+			if err := r.SetQueryParam("remoteAddress.address.MCGlobal", qRemoteAddressAddressMCGlobal); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.RemoteAddressAddressMCLinkLocal != nil {
+
+		// query param remoteAddress.address.MCLinkLocal
+		var qrRemoteAddressAddressMCLinkLocal bool
+
+		if o.RemoteAddressAddressMCLinkLocal != nil {
+			qrRemoteAddressAddressMCLinkLocal = *o.RemoteAddressAddressMCLinkLocal
+		}
+		qRemoteAddressAddressMCLinkLocal := swag.FormatBool(qrRemoteAddressAddressMCLinkLocal)
+		if qRemoteAddressAddressMCLinkLocal != "" {
+
+			if err := r.SetQueryParam("remoteAddress.address.MCLinkLocal", qRemoteAddressAddressMCLinkLocal); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.RemoteAddressAddressMCNodeLocal != nil {
+
+		// query param remoteAddress.address.MCNodeLocal
+		var qrRemoteAddressAddressMCNodeLocal bool
+
+		if o.RemoteAddressAddressMCNodeLocal != nil {
+			qrRemoteAddressAddressMCNodeLocal = *o.RemoteAddressAddressMCNodeLocal
+		}
+		qRemoteAddressAddressMCNodeLocal := swag.FormatBool(qrRemoteAddressAddressMCNodeLocal)
+		if qRemoteAddressAddressMCNodeLocal != "" {
+
+			if err := r.SetQueryParam("remoteAddress.address.MCNodeLocal", qRemoteAddressAddressMCNodeLocal); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.RemoteAddressAddressMCOrgLocal != nil {
+
+		// query param remoteAddress.address.MCOrgLocal
+		var qrRemoteAddressAddressMCOrgLocal bool
+
+		if o.RemoteAddressAddressMCOrgLocal != nil {
+			qrRemoteAddressAddressMCOrgLocal = *o.RemoteAddressAddressMCOrgLocal
+		}
+		qRemoteAddressAddressMCOrgLocal := swag.FormatBool(qrRemoteAddressAddressMCOrgLocal)
+		if qRemoteAddressAddressMCOrgLocal != "" {
+
+			if err := r.SetQueryParam("remoteAddress.address.MCOrgLocal", qRemoteAddressAddressMCOrgLocal); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.RemoteAddressAddressMCSiteLocal != nil {
+
+		// query param remoteAddress.address.MCSiteLocal
+		var qrRemoteAddressAddressMCSiteLocal bool
+
+		if o.RemoteAddressAddressMCSiteLocal != nil {
+			qrRemoteAddressAddressMCSiteLocal = *o.RemoteAddressAddressMCSiteLocal
+		}
+		qRemoteAddressAddressMCSiteLocal := swag.FormatBool(qrRemoteAddressAddressMCSiteLocal)
+		if qRemoteAddressAddressMCSiteLocal != "" {
+
+			if err := r.SetQueryParam("remoteAddress.address.MCSiteLocal", qRemoteAddressAddressMCSiteLocal); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.RemoteAddressAddressAddress != nil {
+
+		// query param remoteAddress.address.address
+		var qrRemoteAddressAddressAddress strfmt.Base64
+
+		if o.RemoteAddressAddressAddress != nil {
+			qrRemoteAddressAddressAddress = *o.RemoteAddressAddressAddress
+		}
+		qRemoteAddressAddressAddress := qrRemoteAddressAddressAddress.String()
+		if qRemoteAddressAddressAddress != "" {
+
+			if err := r.SetQueryParam("remoteAddress.address.address", qRemoteAddressAddressAddress); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.RemoteAddressAddressAnyLocalAddress != nil {
+
+		// query param remoteAddress.address.anyLocalAddress
+		var qrRemoteAddressAddressAnyLocalAddress bool
+
+		if o.RemoteAddressAddressAnyLocalAddress != nil {
+			qrRemoteAddressAddressAnyLocalAddress = *o.RemoteAddressAddressAnyLocalAddress
+		}
+		qRemoteAddressAddressAnyLocalAddress := swag.FormatBool(qrRemoteAddressAddressAnyLocalAddress)
+		if qRemoteAddressAddressAnyLocalAddress != "" {
+
+			if err := r.SetQueryParam("remoteAddress.address.anyLocalAddress", qRemoteAddressAddressAnyLocalAddress); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.RemoteAddressAddressCanonicalHostName != nil {
+
+		// query param remoteAddress.address.canonicalHostName
+		var qrRemoteAddressAddressCanonicalHostName string
+
+		if o.RemoteAddressAddressCanonicalHostName != nil {
+			qrRemoteAddressAddressCanonicalHostName = *o.RemoteAddressAddressCanonicalHostName
+		}
+		qRemoteAddressAddressCanonicalHostName := qrRemoteAddressAddressCanonicalHostName
+		if qRemoteAddressAddressCanonicalHostName != "" {
+
+			if err := r.SetQueryParam("remoteAddress.address.canonicalHostName", qRemoteAddressAddressCanonicalHostName); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.RemoteAddressAddressHostAddress != nil {
+
+		// query param remoteAddress.address.hostAddress
+		var qrRemoteAddressAddressHostAddress string
+
+		if o.RemoteAddressAddressHostAddress != nil {
+			qrRemoteAddressAddressHostAddress = *o.RemoteAddressAddressHostAddress
+		}
+		qRemoteAddressAddressHostAddress := qrRemoteAddressAddressHostAddress
+		if qRemoteAddressAddressHostAddress != "" {
+
+			if err := r.SetQueryParam("remoteAddress.address.hostAddress", qRemoteAddressAddressHostAddress); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.RemoteAddressAddressHostName != nil {
+
+		// query param remoteAddress.address.hostName
+		var qrRemoteAddressAddressHostName string
+
+		if o.RemoteAddressAddressHostName != nil {
+			qrRemoteAddressAddressHostName = *o.RemoteAddressAddressHostName
+		}
+		qRemoteAddressAddressHostName := qrRemoteAddressAddressHostName
+		if qRemoteAddressAddressHostName != "" {
+
+			if err := r.SetQueryParam("remoteAddress.address.hostName", qRemoteAddressAddressHostName); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.RemoteAddressAddressLinkLocalAddress != nil {
+
+		// query param remoteAddress.address.linkLocalAddress
+		var qrRemoteAddressAddressLinkLocalAddress bool
+
+		if o.RemoteAddressAddressLinkLocalAddress != nil {
+			qrRemoteAddressAddressLinkLocalAddress = *o.RemoteAddressAddressLinkLocalAddress
+		}
+		qRemoteAddressAddressLinkLocalAddress := swag.FormatBool(qrRemoteAddressAddressLinkLocalAddress)
+		if qRemoteAddressAddressLinkLocalAddress != "" {
+
+			if err := r.SetQueryParam("remoteAddress.address.linkLocalAddress", qRemoteAddressAddressLinkLocalAddress); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.RemoteAddressAddressLoopbackAddress != nil {
+
+		// query param remoteAddress.address.loopbackAddress
+		var qrRemoteAddressAddressLoopbackAddress bool
+
+		if o.RemoteAddressAddressLoopbackAddress != nil {
+			qrRemoteAddressAddressLoopbackAddress = *o.RemoteAddressAddressLoopbackAddress
+		}
+		qRemoteAddressAddressLoopbackAddress := swag.FormatBool(qrRemoteAddressAddressLoopbackAddress)
+		if qRemoteAddressAddressLoopbackAddress != "" {
+
+			if err := r.SetQueryParam("remoteAddress.address.loopbackAddress", qRemoteAddressAddressLoopbackAddress); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.RemoteAddressAddressMulticastAddress != nil {
+
+		// query param remoteAddress.address.multicastAddress
+		var qrRemoteAddressAddressMulticastAddress bool
+
+		if o.RemoteAddressAddressMulticastAddress != nil {
+			qrRemoteAddressAddressMulticastAddress = *o.RemoteAddressAddressMulticastAddress
+		}
+		qRemoteAddressAddressMulticastAddress := swag.FormatBool(qrRemoteAddressAddressMulticastAddress)
+		if qRemoteAddressAddressMulticastAddress != "" {
+
+			if err := r.SetQueryParam("remoteAddress.address.multicastAddress", qRemoteAddressAddressMulticastAddress); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.RemoteAddressAddressSiteLocalAddress != nil {
+
+		// query param remoteAddress.address.siteLocalAddress
+		var qrRemoteAddressAddressSiteLocalAddress bool
+
+		if o.RemoteAddressAddressSiteLocalAddress != nil {
+			qrRemoteAddressAddressSiteLocalAddress = *o.RemoteAddressAddressSiteLocalAddress
+		}
+		qRemoteAddressAddressSiteLocalAddress := swag.FormatBool(qrRemoteAddressAddressSiteLocalAddress)
+		if qRemoteAddressAddressSiteLocalAddress != "" {
+
+			if err := r.SetQueryParam("remoteAddress.address.siteLocalAddress", qRemoteAddressAddressSiteLocalAddress); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.RemoteAddressHostName != nil {
+
+		// query param remoteAddress.hostName
+		var qrRemoteAddressHostName string
+
+		if o.RemoteAddressHostName != nil {
+			qrRemoteAddressHostName = *o.RemoteAddressHostName
+		}
+		qRemoteAddressHostName := qrRemoteAddressHostName
+		if qRemoteAddressHostName != "" {
+
+			if err := r.SetQueryParam("remoteAddress.hostName", qRemoteAddressHostName); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.RemoteAddressHostString != nil {
+
+		// query param remoteAddress.hostString
+		var qrRemoteAddressHostString string
+
+		if o.RemoteAddressHostString != nil {
+			qrRemoteAddressHostString = *o.RemoteAddressHostString
+		}
+		qRemoteAddressHostString := qrRemoteAddressHostString
+		if qRemoteAddressHostString != "" {
+
+			if err := r.SetQueryParam("remoteAddress.hostString", qRemoteAddressHostString); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.RemoteAddressPort != nil {
+
+		// query param remoteAddress.port
+		var qrRemoteAddressPort int32
+
+		if o.RemoteAddressPort != nil {
+			qrRemoteAddressPort = *o.RemoteAddressPort
+		}
+		qRemoteAddressPort := swag.FormatInt32(qrRemoteAddressPort)
+		if qRemoteAddressPort != "" {
+
+			if err := r.SetQueryParam("remoteAddress.port", qRemoteAddressPort); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.RemoteAddressUnresolved != nil {
+
+		// query param remoteAddress.unresolved
+		var qrRemoteAddressUnresolved bool
+
+		if o.RemoteAddressUnresolved != nil {
+			qrRemoteAddressUnresolved = *o.RemoteAddressUnresolved
+		}
+		qRemoteAddressUnresolved := swag.FormatBool(qrRemoteAddressUnresolved)
+		if qRemoteAddressUnresolved != "" {
+
+			if err := r.SetQueryParam("remoteAddress.unresolved", qRemoteAddressUnresolved); err != nil {
+				return err
+			}
+		}
+	}
+
 	if o.SortSorted != nil {
 
 		// query param sort.sorted
@@ -327,6 +1826,373 @@ func (o *ListUsingGET2Params) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		}
 	}
 
+	if o.SslInfoPeerCertificates0TBSCertificate != nil {
+
+		// query param sslInfo.peerCertificates[0].TBSCertificate
+		var qrSslInfoPeerCertificates0TBSCertificate strfmt.Base64
+
+		if o.SslInfoPeerCertificates0TBSCertificate != nil {
+			qrSslInfoPeerCertificates0TBSCertificate = *o.SslInfoPeerCertificates0TBSCertificate
+		}
+		qSslInfoPeerCertificates0TBSCertificate := qrSslInfoPeerCertificates0TBSCertificate.String()
+		if qSslInfoPeerCertificates0TBSCertificate != "" {
+
+			if err := r.SetQueryParam("sslInfo.peerCertificates[0].TBSCertificate", qSslInfoPeerCertificates0TBSCertificate); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SslInfoPeerCertificates0BasicConstraints != nil {
+
+		// query param sslInfo.peerCertificates[0].basicConstraints
+		var qrSslInfoPeerCertificates0BasicConstraints int32
+
+		if o.SslInfoPeerCertificates0BasicConstraints != nil {
+			qrSslInfoPeerCertificates0BasicConstraints = *o.SslInfoPeerCertificates0BasicConstraints
+		}
+		qSslInfoPeerCertificates0BasicConstraints := swag.FormatInt32(qrSslInfoPeerCertificates0BasicConstraints)
+		if qSslInfoPeerCertificates0BasicConstraints != "" {
+
+			if err := r.SetQueryParam("sslInfo.peerCertificates[0].basicConstraints", qSslInfoPeerCertificates0BasicConstraints); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SslInfoPeerCertificates0Encoded != nil {
+
+		// query param sslInfo.peerCertificates[0].encoded
+		var qrSslInfoPeerCertificates0Encoded strfmt.Base64
+
+		if o.SslInfoPeerCertificates0Encoded != nil {
+			qrSslInfoPeerCertificates0Encoded = *o.SslInfoPeerCertificates0Encoded
+		}
+		qSslInfoPeerCertificates0Encoded := qrSslInfoPeerCertificates0Encoded.String()
+		if qSslInfoPeerCertificates0Encoded != "" {
+
+			if err := r.SetQueryParam("sslInfo.peerCertificates[0].encoded", qSslInfoPeerCertificates0Encoded); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SslInfoPeerCertificates0ExtendedKeyUsage != nil {
+
+		// binding items for sslInfo.peerCertificates[0].extendedKeyUsage
+		joinedSslInfoPeerCertificates0ExtendedKeyUsage := o.bindParamSslInfoPeerCertificates0ExtendedKeyUsage(reg)
+
+		// query array param sslInfo.peerCertificates[0].extendedKeyUsage
+		if err := r.SetQueryParam("sslInfo.peerCertificates[0].extendedKeyUsage", joinedSslInfoPeerCertificates0ExtendedKeyUsage...); err != nil {
+			return err
+		}
+	}
+
+	if o.SslInfoPeerCertificates0IssuerDNName != nil {
+
+		// query param sslInfo.peerCertificates[0].issuerDN.name
+		var qrSslInfoPeerCertificates0IssuerDNName string
+
+		if o.SslInfoPeerCertificates0IssuerDNName != nil {
+			qrSslInfoPeerCertificates0IssuerDNName = *o.SslInfoPeerCertificates0IssuerDNName
+		}
+		qSslInfoPeerCertificates0IssuerDNName := qrSslInfoPeerCertificates0IssuerDNName
+		if qSslInfoPeerCertificates0IssuerDNName != "" {
+
+			if err := r.SetQueryParam("sslInfo.peerCertificates[0].issuerDN.name", qSslInfoPeerCertificates0IssuerDNName); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SslInfoPeerCertificates0IssuerUniqueID != nil {
+
+		// binding items for sslInfo.peerCertificates[0].issuerUniqueID
+		joinedSslInfoPeerCertificates0IssuerUniqueID := o.bindParamSslInfoPeerCertificates0IssuerUniqueID(reg)
+
+		// query array param sslInfo.peerCertificates[0].issuerUniqueID
+		if err := r.SetQueryParam("sslInfo.peerCertificates[0].issuerUniqueID", joinedSslInfoPeerCertificates0IssuerUniqueID...); err != nil {
+			return err
+		}
+	}
+
+	if o.SslInfoPeerCertificates0IssuerX500PrincipalEncoded != nil {
+
+		// query param sslInfo.peerCertificates[0].issuerX500Principal.encoded
+		var qrSslInfoPeerCertificates0IssuerX500PrincipalEncoded strfmt.Base64
+
+		if o.SslInfoPeerCertificates0IssuerX500PrincipalEncoded != nil {
+			qrSslInfoPeerCertificates0IssuerX500PrincipalEncoded = *o.SslInfoPeerCertificates0IssuerX500PrincipalEncoded
+		}
+		qSslInfoPeerCertificates0IssuerX500PrincipalEncoded := qrSslInfoPeerCertificates0IssuerX500PrincipalEncoded.String()
+		if qSslInfoPeerCertificates0IssuerX500PrincipalEncoded != "" {
+
+			if err := r.SetQueryParam("sslInfo.peerCertificates[0].issuerX500Principal.encoded", qSslInfoPeerCertificates0IssuerX500PrincipalEncoded); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SslInfoPeerCertificates0IssuerX500PrincipalName != nil {
+
+		// query param sslInfo.peerCertificates[0].issuerX500Principal.name
+		var qrSslInfoPeerCertificates0IssuerX500PrincipalName string
+
+		if o.SslInfoPeerCertificates0IssuerX500PrincipalName != nil {
+			qrSslInfoPeerCertificates0IssuerX500PrincipalName = *o.SslInfoPeerCertificates0IssuerX500PrincipalName
+		}
+		qSslInfoPeerCertificates0IssuerX500PrincipalName := qrSslInfoPeerCertificates0IssuerX500PrincipalName
+		if qSslInfoPeerCertificates0IssuerX500PrincipalName != "" {
+
+			if err := r.SetQueryParam("sslInfo.peerCertificates[0].issuerX500Principal.name", qSslInfoPeerCertificates0IssuerX500PrincipalName); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SslInfoPeerCertificates0KeyUsage != nil {
+
+		// binding items for sslInfo.peerCertificates[0].keyUsage
+		joinedSslInfoPeerCertificates0KeyUsage := o.bindParamSslInfoPeerCertificates0KeyUsage(reg)
+
+		// query array param sslInfo.peerCertificates[0].keyUsage
+		if err := r.SetQueryParam("sslInfo.peerCertificates[0].keyUsage", joinedSslInfoPeerCertificates0KeyUsage...); err != nil {
+			return err
+		}
+	}
+
+	if o.SslInfoPeerCertificates0NotAfter != nil {
+
+		// query param sslInfo.peerCertificates[0].notAfter
+		var qrSslInfoPeerCertificates0NotAfter strfmt.DateTime
+
+		if o.SslInfoPeerCertificates0NotAfter != nil {
+			qrSslInfoPeerCertificates0NotAfter = *o.SslInfoPeerCertificates0NotAfter
+		}
+		qSslInfoPeerCertificates0NotAfter := qrSslInfoPeerCertificates0NotAfter.String()
+		if qSslInfoPeerCertificates0NotAfter != "" {
+
+			if err := r.SetQueryParam("sslInfo.peerCertificates[0].notAfter", qSslInfoPeerCertificates0NotAfter); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SslInfoPeerCertificates0NotBefore != nil {
+
+		// query param sslInfo.peerCertificates[0].notBefore
+		var qrSslInfoPeerCertificates0NotBefore strfmt.DateTime
+
+		if o.SslInfoPeerCertificates0NotBefore != nil {
+			qrSslInfoPeerCertificates0NotBefore = *o.SslInfoPeerCertificates0NotBefore
+		}
+		qSslInfoPeerCertificates0NotBefore := qrSslInfoPeerCertificates0NotBefore.String()
+		if qSslInfoPeerCertificates0NotBefore != "" {
+
+			if err := r.SetQueryParam("sslInfo.peerCertificates[0].notBefore", qSslInfoPeerCertificates0NotBefore); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SslInfoPeerCertificates0SerialNumber != nil {
+
+		// query param sslInfo.peerCertificates[0].serialNumber
+		var qrSslInfoPeerCertificates0SerialNumber int64
+
+		if o.SslInfoPeerCertificates0SerialNumber != nil {
+			qrSslInfoPeerCertificates0SerialNumber = *o.SslInfoPeerCertificates0SerialNumber
+		}
+		qSslInfoPeerCertificates0SerialNumber := swag.FormatInt64(qrSslInfoPeerCertificates0SerialNumber)
+		if qSslInfoPeerCertificates0SerialNumber != "" {
+
+			if err := r.SetQueryParam("sslInfo.peerCertificates[0].serialNumber", qSslInfoPeerCertificates0SerialNumber); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SslInfoPeerCertificates0SigAlgName != nil {
+
+		// query param sslInfo.peerCertificates[0].sigAlgName
+		var qrSslInfoPeerCertificates0SigAlgName string
+
+		if o.SslInfoPeerCertificates0SigAlgName != nil {
+			qrSslInfoPeerCertificates0SigAlgName = *o.SslInfoPeerCertificates0SigAlgName
+		}
+		qSslInfoPeerCertificates0SigAlgName := qrSslInfoPeerCertificates0SigAlgName
+		if qSslInfoPeerCertificates0SigAlgName != "" {
+
+			if err := r.SetQueryParam("sslInfo.peerCertificates[0].sigAlgName", qSslInfoPeerCertificates0SigAlgName); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SslInfoPeerCertificates0SigAlgOID != nil {
+
+		// query param sslInfo.peerCertificates[0].sigAlgOID
+		var qrSslInfoPeerCertificates0SigAlgOID string
+
+		if o.SslInfoPeerCertificates0SigAlgOID != nil {
+			qrSslInfoPeerCertificates0SigAlgOID = *o.SslInfoPeerCertificates0SigAlgOID
+		}
+		qSslInfoPeerCertificates0SigAlgOID := qrSslInfoPeerCertificates0SigAlgOID
+		if qSslInfoPeerCertificates0SigAlgOID != "" {
+
+			if err := r.SetQueryParam("sslInfo.peerCertificates[0].sigAlgOID", qSslInfoPeerCertificates0SigAlgOID); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SslInfoPeerCertificates0SigAlgParams != nil {
+
+		// query param sslInfo.peerCertificates[0].sigAlgParams
+		var qrSslInfoPeerCertificates0SigAlgParams strfmt.Base64
+
+		if o.SslInfoPeerCertificates0SigAlgParams != nil {
+			qrSslInfoPeerCertificates0SigAlgParams = *o.SslInfoPeerCertificates0SigAlgParams
+		}
+		qSslInfoPeerCertificates0SigAlgParams := qrSslInfoPeerCertificates0SigAlgParams.String()
+		if qSslInfoPeerCertificates0SigAlgParams != "" {
+
+			if err := r.SetQueryParam("sslInfo.peerCertificates[0].sigAlgParams", qSslInfoPeerCertificates0SigAlgParams); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SslInfoPeerCertificates0Signature != nil {
+
+		// query param sslInfo.peerCertificates[0].signature
+		var qrSslInfoPeerCertificates0Signature strfmt.Base64
+
+		if o.SslInfoPeerCertificates0Signature != nil {
+			qrSslInfoPeerCertificates0Signature = *o.SslInfoPeerCertificates0Signature
+		}
+		qSslInfoPeerCertificates0Signature := qrSslInfoPeerCertificates0Signature.String()
+		if qSslInfoPeerCertificates0Signature != "" {
+
+			if err := r.SetQueryParam("sslInfo.peerCertificates[0].signature", qSslInfoPeerCertificates0Signature); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SslInfoPeerCertificates0SubjectDNName != nil {
+
+		// query param sslInfo.peerCertificates[0].subjectDN.name
+		var qrSslInfoPeerCertificates0SubjectDNName string
+
+		if o.SslInfoPeerCertificates0SubjectDNName != nil {
+			qrSslInfoPeerCertificates0SubjectDNName = *o.SslInfoPeerCertificates0SubjectDNName
+		}
+		qSslInfoPeerCertificates0SubjectDNName := qrSslInfoPeerCertificates0SubjectDNName
+		if qSslInfoPeerCertificates0SubjectDNName != "" {
+
+			if err := r.SetQueryParam("sslInfo.peerCertificates[0].subjectDN.name", qSslInfoPeerCertificates0SubjectDNName); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SslInfoPeerCertificates0SubjectUniqueID != nil {
+
+		// binding items for sslInfo.peerCertificates[0].subjectUniqueID
+		joinedSslInfoPeerCertificates0SubjectUniqueID := o.bindParamSslInfoPeerCertificates0SubjectUniqueID(reg)
+
+		// query array param sslInfo.peerCertificates[0].subjectUniqueID
+		if err := r.SetQueryParam("sslInfo.peerCertificates[0].subjectUniqueID", joinedSslInfoPeerCertificates0SubjectUniqueID...); err != nil {
+			return err
+		}
+	}
+
+	if o.SslInfoPeerCertificates0SubjectX500PrincipalEncoded != nil {
+
+		// query param sslInfo.peerCertificates[0].subjectX500Principal.encoded
+		var qrSslInfoPeerCertificates0SubjectX500PrincipalEncoded strfmt.Base64
+
+		if o.SslInfoPeerCertificates0SubjectX500PrincipalEncoded != nil {
+			qrSslInfoPeerCertificates0SubjectX500PrincipalEncoded = *o.SslInfoPeerCertificates0SubjectX500PrincipalEncoded
+		}
+		qSslInfoPeerCertificates0SubjectX500PrincipalEncoded := qrSslInfoPeerCertificates0SubjectX500PrincipalEncoded.String()
+		if qSslInfoPeerCertificates0SubjectX500PrincipalEncoded != "" {
+
+			if err := r.SetQueryParam("sslInfo.peerCertificates[0].subjectX500Principal.encoded", qSslInfoPeerCertificates0SubjectX500PrincipalEncoded); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SslInfoPeerCertificates0SubjectX500PrincipalName != nil {
+
+		// query param sslInfo.peerCertificates[0].subjectX500Principal.name
+		var qrSslInfoPeerCertificates0SubjectX500PrincipalName string
+
+		if o.SslInfoPeerCertificates0SubjectX500PrincipalName != nil {
+			qrSslInfoPeerCertificates0SubjectX500PrincipalName = *o.SslInfoPeerCertificates0SubjectX500PrincipalName
+		}
+		qSslInfoPeerCertificates0SubjectX500PrincipalName := qrSslInfoPeerCertificates0SubjectX500PrincipalName
+		if qSslInfoPeerCertificates0SubjectX500PrincipalName != "" {
+
+			if err := r.SetQueryParam("sslInfo.peerCertificates[0].subjectX500Principal.name", qSslInfoPeerCertificates0SubjectX500PrincipalName); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SslInfoPeerCertificates0Type != nil {
+
+		// query param sslInfo.peerCertificates[0].type
+		var qrSslInfoPeerCertificates0Type string
+
+		if o.SslInfoPeerCertificates0Type != nil {
+			qrSslInfoPeerCertificates0Type = *o.SslInfoPeerCertificates0Type
+		}
+		qSslInfoPeerCertificates0Type := qrSslInfoPeerCertificates0Type
+		if qSslInfoPeerCertificates0Type != "" {
+
+			if err := r.SetQueryParam("sslInfo.peerCertificates[0].type", qSslInfoPeerCertificates0Type); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SslInfoPeerCertificates0Version != nil {
+
+		// query param sslInfo.peerCertificates[0].version
+		var qrSslInfoPeerCertificates0Version int32
+
+		if o.SslInfoPeerCertificates0Version != nil {
+			qrSslInfoPeerCertificates0Version = *o.SslInfoPeerCertificates0Version
+		}
+		qSslInfoPeerCertificates0Version := swag.FormatInt32(qrSslInfoPeerCertificates0Version)
+		if qSslInfoPeerCertificates0Version != "" {
+
+			if err := r.SetQueryParam("sslInfo.peerCertificates[0].version", qSslInfoPeerCertificates0Version); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SslInfoSessionID != nil {
+
+		// query param sslInfo.sessionId
+		var qrSslInfoSessionID string
+
+		if o.SslInfoSessionID != nil {
+			qrSslInfoSessionID = *o.SslInfoSessionID
+		}
+		qSslInfoSessionID := qrSslInfoSessionID
+		if qSslInfoSessionID != "" {
+
+			if err := r.SetQueryParam("sslInfo.sessionId", qSslInfoSessionID); err != nil {
+				return err
+			}
+		}
+	}
+
 	if o.Unpaged != nil {
 
 		// query param unpaged
@@ -348,4 +2214,72 @@ func (o *ListUsingGET2Params) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
+}
+
+// bindParamListUsingGET2 binds the parameter sslInfo.peerCertificates[0].extendedKeyUsage
+func (o *ListUsingGET2Params) bindParamSslInfoPeerCertificates0ExtendedKeyUsage(formats strfmt.Registry) []string {
+	sslInfoPeerCertificates0ExtendedKeyUsageIR := o.SslInfoPeerCertificates0ExtendedKeyUsage
+
+	var sslInfoPeerCertificates0ExtendedKeyUsageIC []string
+	for _, sslInfoPeerCertificates0ExtendedKeyUsageIIR := range sslInfoPeerCertificates0ExtendedKeyUsageIR { // explode []string
+
+		sslInfoPeerCertificates0ExtendedKeyUsageIIV := sslInfoPeerCertificates0ExtendedKeyUsageIIR // string as string
+		sslInfoPeerCertificates0ExtendedKeyUsageIC = append(sslInfoPeerCertificates0ExtendedKeyUsageIC, sslInfoPeerCertificates0ExtendedKeyUsageIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	sslInfoPeerCertificates0ExtendedKeyUsageIS := swag.JoinByFormat(sslInfoPeerCertificates0ExtendedKeyUsageIC, "multi")
+
+	return sslInfoPeerCertificates0ExtendedKeyUsageIS
+}
+
+// bindParamListUsingGET2 binds the parameter sslInfo.peerCertificates[0].issuerUniqueID
+func (o *ListUsingGET2Params) bindParamSslInfoPeerCertificates0IssuerUniqueID(formats strfmt.Registry) []string {
+	sslInfoPeerCertificates0IssuerUniqueIDIR := o.SslInfoPeerCertificates0IssuerUniqueID
+
+	var sslInfoPeerCertificates0IssuerUniqueIDIC []string
+	for _, sslInfoPeerCertificates0IssuerUniqueIDIIR := range sslInfoPeerCertificates0IssuerUniqueIDIR { // explode []bool
+
+		sslInfoPeerCertificates0IssuerUniqueIDIIV := swag.FormatBool(sslInfoPeerCertificates0IssuerUniqueIDIIR) // bool as string
+		sslInfoPeerCertificates0IssuerUniqueIDIC = append(sslInfoPeerCertificates0IssuerUniqueIDIC, sslInfoPeerCertificates0IssuerUniqueIDIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	sslInfoPeerCertificates0IssuerUniqueIDIS := swag.JoinByFormat(sslInfoPeerCertificates0IssuerUniqueIDIC, "multi")
+
+	return sslInfoPeerCertificates0IssuerUniqueIDIS
+}
+
+// bindParamListUsingGET2 binds the parameter sslInfo.peerCertificates[0].keyUsage
+func (o *ListUsingGET2Params) bindParamSslInfoPeerCertificates0KeyUsage(formats strfmt.Registry) []string {
+	sslInfoPeerCertificates0KeyUsageIR := o.SslInfoPeerCertificates0KeyUsage
+
+	var sslInfoPeerCertificates0KeyUsageIC []string
+	for _, sslInfoPeerCertificates0KeyUsageIIR := range sslInfoPeerCertificates0KeyUsageIR { // explode []bool
+
+		sslInfoPeerCertificates0KeyUsageIIV := swag.FormatBool(sslInfoPeerCertificates0KeyUsageIIR) // bool as string
+		sslInfoPeerCertificates0KeyUsageIC = append(sslInfoPeerCertificates0KeyUsageIC, sslInfoPeerCertificates0KeyUsageIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	sslInfoPeerCertificates0KeyUsageIS := swag.JoinByFormat(sslInfoPeerCertificates0KeyUsageIC, "multi")
+
+	return sslInfoPeerCertificates0KeyUsageIS
+}
+
+// bindParamListUsingGET2 binds the parameter sslInfo.peerCertificates[0].subjectUniqueID
+func (o *ListUsingGET2Params) bindParamSslInfoPeerCertificates0SubjectUniqueID(formats strfmt.Registry) []string {
+	sslInfoPeerCertificates0SubjectUniqueIDIR := o.SslInfoPeerCertificates0SubjectUniqueID
+
+	var sslInfoPeerCertificates0SubjectUniqueIDIC []string
+	for _, sslInfoPeerCertificates0SubjectUniqueIDIIR := range sslInfoPeerCertificates0SubjectUniqueIDIR { // explode []bool
+
+		sslInfoPeerCertificates0SubjectUniqueIDIIV := swag.FormatBool(sslInfoPeerCertificates0SubjectUniqueIDIIR) // bool as string
+		sslInfoPeerCertificates0SubjectUniqueIDIC = append(sslInfoPeerCertificates0SubjectUniqueIDIC, sslInfoPeerCertificates0SubjectUniqueIDIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	sslInfoPeerCertificates0SubjectUniqueIDIS := swag.JoinByFormat(sslInfoPeerCertificates0SubjectUniqueIDIC, "multi")
+
+	return sslInfoPeerCertificates0SubjectUniqueIDIS
 }

@@ -53,10 +53,12 @@ func NewListUsingGET1ParamsWithHTTPClient(client *http.Client) *ListUsingGET1Par
 	}
 }
 
-/* ListUsingGET1Params contains all the parameters to send to the API endpoint
-   for the list using get1 operation.
+/*
+ListUsingGET1Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the list using get1 operation.
+
+	Typically these are written to a http.Request.
 */
 type ListUsingGET1Params struct {
 

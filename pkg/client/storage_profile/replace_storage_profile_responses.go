@@ -51,7 +51,8 @@ func NewReplaceStorageProfileOK() *ReplaceStorageProfileOK {
 	return &ReplaceStorageProfileOK{}
 }
 
-/* ReplaceStorageProfileOK describes a response with status code 200, with default header values.
+/*
+ReplaceStorageProfileOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type ReplaceStorageProfileOK struct {
 	Payload *models.StorageProfile
 }
 
+// IsSuccess returns true when this replace storage profile o k response has a 2xx status code
+func (o *ReplaceStorageProfileOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this replace storage profile o k response has a 3xx status code
+func (o *ReplaceStorageProfileOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace storage profile o k response has a 4xx status code
+func (o *ReplaceStorageProfileOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this replace storage profile o k response has a 5xx status code
+func (o *ReplaceStorageProfileOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace storage profile o k response a status code equal to that given
+func (o *ReplaceStorageProfileOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ReplaceStorageProfileOK) Error() string {
 	return fmt.Sprintf("[PUT /iaas/api/storage-profiles/{id}][%d] replaceStorageProfileOK  %+v", 200, o.Payload)
 }
+
+func (o *ReplaceStorageProfileOK) String() string {
+	return fmt.Sprintf("[PUT /iaas/api/storage-profiles/{id}][%d] replaceStorageProfileOK  %+v", 200, o.Payload)
+}
+
 func (o *ReplaceStorageProfileOK) GetPayload() *models.StorageProfile {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewReplaceStorageProfileBadRequest() *ReplaceStorageProfileBadRequest {
 	return &ReplaceStorageProfileBadRequest{}
 }
 
-/* ReplaceStorageProfileBadRequest describes a response with status code 400, with default header values.
+/*
+ReplaceStorageProfileBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type ReplaceStorageProfileBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this replace storage profile bad request response has a 2xx status code
+func (o *ReplaceStorageProfileBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace storage profile bad request response has a 3xx status code
+func (o *ReplaceStorageProfileBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace storage profile bad request response has a 4xx status code
+func (o *ReplaceStorageProfileBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace storage profile bad request response has a 5xx status code
+func (o *ReplaceStorageProfileBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace storage profile bad request response a status code equal to that given
+func (o *ReplaceStorageProfileBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReplaceStorageProfileBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /iaas/api/storage-profiles/{id}][%d] replaceStorageProfileBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReplaceStorageProfileBadRequest) String() string {
+	return fmt.Sprintf("[PUT /iaas/api/storage-profiles/{id}][%d] replaceStorageProfileBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReplaceStorageProfileBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewReplaceStorageProfileForbidden() *ReplaceStorageProfileForbidden {
 	return &ReplaceStorageProfileForbidden{}
 }
 
-/* ReplaceStorageProfileForbidden describes a response with status code 403, with default header values.
+/*
+ReplaceStorageProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type ReplaceStorageProfileForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this replace storage profile forbidden response has a 2xx status code
+func (o *ReplaceStorageProfileForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this replace storage profile forbidden response has a 3xx status code
+func (o *ReplaceStorageProfileForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this replace storage profile forbidden response has a 4xx status code
+func (o *ReplaceStorageProfileForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this replace storage profile forbidden response has a 5xx status code
+func (o *ReplaceStorageProfileForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this replace storage profile forbidden response a status code equal to that given
+func (o *ReplaceStorageProfileForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ReplaceStorageProfileForbidden) Error() string {
 	return fmt.Sprintf("[PUT /iaas/api/storage-profiles/{id}][%d] replaceStorageProfileForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ReplaceStorageProfileForbidden) String() string {
+	return fmt.Sprintf("[PUT /iaas/api/storage-profiles/{id}][%d] replaceStorageProfileForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ReplaceStorageProfileForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

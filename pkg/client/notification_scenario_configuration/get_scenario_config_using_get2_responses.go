@@ -29,6 +29,12 @@ func (o *GetScenarioConfigUsingGET2Reader) ReadResponse(response runtime.ClientR
 			return nil, err
 		}
 		return result, nil
+	case 401:
+		result := NewGetScenarioConfigUsingGET2Unauthorized()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 403:
 		result := NewGetScenarioConfigUsingGET2Forbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -51,7 +57,8 @@ func NewGetScenarioConfigUsingGET2OK() *GetScenarioConfigUsingGET2OK {
 	return &GetScenarioConfigUsingGET2OK{}
 }
 
-/* GetScenarioConfigUsingGET2OK describes a response with status code 200, with default header values.
+/*
+GetScenarioConfigUsingGET2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -59,9 +66,39 @@ type GetScenarioConfigUsingGET2OK struct {
 	Payload *models.NotificationScenarioConfig
 }
 
+// IsSuccess returns true when this get scenario config using g e t2 o k response has a 2xx status code
+func (o *GetScenarioConfigUsingGET2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get scenario config using g e t2 o k response has a 3xx status code
+func (o *GetScenarioConfigUsingGET2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get scenario config using g e t2 o k response has a 4xx status code
+func (o *GetScenarioConfigUsingGET2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get scenario config using g e t2 o k response has a 5xx status code
+func (o *GetScenarioConfigUsingGET2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get scenario config using g e t2 o k response a status code equal to that given
+func (o *GetScenarioConfigUsingGET2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetScenarioConfigUsingGET2OK) Error() string {
 	return fmt.Sprintf("[GET /notification/api/scenario-configs/{scenarioId}][%d] getScenarioConfigUsingGET2OK  %+v", 200, o.Payload)
 }
+
+func (o *GetScenarioConfigUsingGET2OK) String() string {
+	return fmt.Sprintf("[GET /notification/api/scenario-configs/{scenarioId}][%d] getScenarioConfigUsingGET2OK  %+v", 200, o.Payload)
+}
+
 func (o *GetScenarioConfigUsingGET2OK) GetPayload() *models.NotificationScenarioConfig {
 	return o.Payload
 }
@@ -78,19 +115,100 @@ func (o *GetScenarioConfigUsingGET2OK) readResponse(response runtime.ClientRespo
 	return nil
 }
 
+// NewGetScenarioConfigUsingGET2Unauthorized creates a GetScenarioConfigUsingGET2Unauthorized with default headers values
+func NewGetScenarioConfigUsingGET2Unauthorized() *GetScenarioConfigUsingGET2Unauthorized {
+	return &GetScenarioConfigUsingGET2Unauthorized{}
+}
+
+/*
+GetScenarioConfigUsingGET2Unauthorized describes a response with status code 401, with default header values.
+
+Unauthorized
+*/
+type GetScenarioConfigUsingGET2Unauthorized struct {
+}
+
+// IsSuccess returns true when this get scenario config using g e t2 unauthorized response has a 2xx status code
+func (o *GetScenarioConfigUsingGET2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get scenario config using g e t2 unauthorized response has a 3xx status code
+func (o *GetScenarioConfigUsingGET2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get scenario config using g e t2 unauthorized response has a 4xx status code
+func (o *GetScenarioConfigUsingGET2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get scenario config using g e t2 unauthorized response has a 5xx status code
+func (o *GetScenarioConfigUsingGET2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get scenario config using g e t2 unauthorized response a status code equal to that given
+func (o *GetScenarioConfigUsingGET2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+func (o *GetScenarioConfigUsingGET2Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /notification/api/scenario-configs/{scenarioId}][%d] getScenarioConfigUsingGET2Unauthorized ", 401)
+}
+
+func (o *GetScenarioConfigUsingGET2Unauthorized) String() string {
+	return fmt.Sprintf("[GET /notification/api/scenario-configs/{scenarioId}][%d] getScenarioConfigUsingGET2Unauthorized ", 401)
+}
+
+func (o *GetScenarioConfigUsingGET2Unauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
 // NewGetScenarioConfigUsingGET2Forbidden creates a GetScenarioConfigUsingGET2Forbidden with default headers values
 func NewGetScenarioConfigUsingGET2Forbidden() *GetScenarioConfigUsingGET2Forbidden {
 	return &GetScenarioConfigUsingGET2Forbidden{}
 }
 
-/* GetScenarioConfigUsingGET2Forbidden describes a response with status code 403, with default header values.
+/*
+GetScenarioConfigUsingGET2Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetScenarioConfigUsingGET2Forbidden struct {
 }
 
+// IsSuccess returns true when this get scenario config using g e t2 forbidden response has a 2xx status code
+func (o *GetScenarioConfigUsingGET2Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get scenario config using g e t2 forbidden response has a 3xx status code
+func (o *GetScenarioConfigUsingGET2Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get scenario config using g e t2 forbidden response has a 4xx status code
+func (o *GetScenarioConfigUsingGET2Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get scenario config using g e t2 forbidden response has a 5xx status code
+func (o *GetScenarioConfigUsingGET2Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get scenario config using g e t2 forbidden response a status code equal to that given
+func (o *GetScenarioConfigUsingGET2Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetScenarioConfigUsingGET2Forbidden) Error() string {
+	return fmt.Sprintf("[GET /notification/api/scenario-configs/{scenarioId}][%d] getScenarioConfigUsingGET2Forbidden ", 403)
+}
+
+func (o *GetScenarioConfigUsingGET2Forbidden) String() string {
 	return fmt.Sprintf("[GET /notification/api/scenario-configs/{scenarioId}][%d] getScenarioConfigUsingGET2Forbidden ", 403)
 }
 
@@ -104,7 +222,8 @@ func NewGetScenarioConfigUsingGET2NotFound() *GetScenarioConfigUsingGET2NotFound
 	return &GetScenarioConfigUsingGET2NotFound{}
 }
 
-/* GetScenarioConfigUsingGET2NotFound describes a response with status code 404, with default header values.
+/*
+GetScenarioConfigUsingGET2NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -112,9 +231,39 @@ type GetScenarioConfigUsingGET2NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get scenario config using g e t2 not found response has a 2xx status code
+func (o *GetScenarioConfigUsingGET2NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get scenario config using g e t2 not found response has a 3xx status code
+func (o *GetScenarioConfigUsingGET2NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get scenario config using g e t2 not found response has a 4xx status code
+func (o *GetScenarioConfigUsingGET2NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get scenario config using g e t2 not found response has a 5xx status code
+func (o *GetScenarioConfigUsingGET2NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get scenario config using g e t2 not found response a status code equal to that given
+func (o *GetScenarioConfigUsingGET2NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetScenarioConfigUsingGET2NotFound) Error() string {
 	return fmt.Sprintf("[GET /notification/api/scenario-configs/{scenarioId}][%d] getScenarioConfigUsingGET2NotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetScenarioConfigUsingGET2NotFound) String() string {
+	return fmt.Sprintf("[GET /notification/api/scenario-configs/{scenarioId}][%d] getScenarioConfigUsingGET2NotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetScenarioConfigUsingGET2NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

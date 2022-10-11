@@ -54,10 +54,12 @@ func NewCreateLoadBalancerParamsWithHTTPClient(client *http.Client) *CreateLoadB
 	}
 }
 
-/* CreateLoadBalancerParams contains all the parameters to send to the API endpoint
-   for the create load balancer operation.
+/*
+CreateLoadBalancerParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create load balancer operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateLoadBalancerParams struct {
 

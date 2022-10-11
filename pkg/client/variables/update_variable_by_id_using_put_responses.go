@@ -63,7 +63,8 @@ func NewUpdateVariableByIDUsingPUTOK() *UpdateVariableByIDUsingPUTOK {
 	return &UpdateVariableByIDUsingPUTOK{}
 }
 
-/* UpdateVariableByIDUsingPUTOK describes a response with status code 200, with default header values.
+/*
+UpdateVariableByIDUsingPUTOK describes a response with status code 200, with default header values.
 
 'Success' with the updated Variable
 */
@@ -71,9 +72,39 @@ type UpdateVariableByIDUsingPUTOK struct {
 	Payload *models.Variable
 }
 
+// IsSuccess returns true when this update variable by Id using p u t o k response has a 2xx status code
+func (o *UpdateVariableByIDUsingPUTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update variable by Id using p u t o k response has a 3xx status code
+func (o *UpdateVariableByIDUsingPUTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update variable by Id using p u t o k response has a 4xx status code
+func (o *UpdateVariableByIDUsingPUTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update variable by Id using p u t o k response has a 5xx status code
+func (o *UpdateVariableByIDUsingPUTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update variable by Id using p u t o k response a status code equal to that given
+func (o *UpdateVariableByIDUsingPUTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateVariableByIDUsingPUTOK) Error() string {
 	return fmt.Sprintf("[PUT /codestream/api/variables/{id}][%d] updateVariableByIdUsingPUTOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateVariableByIDUsingPUTOK) String() string {
+	return fmt.Sprintf("[PUT /codestream/api/variables/{id}][%d] updateVariableByIdUsingPUTOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateVariableByIDUsingPUTOK) GetPayload() *models.Variable {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewUpdateVariableByIDUsingPUTUnauthorized() *UpdateVariableByIDUsingPUTUnau
 	return &UpdateVariableByIDUsingPUTUnauthorized{}
 }
 
-/* UpdateVariableByIDUsingPUTUnauthorized describes a response with status code 401, with default header values.
+/*
+UpdateVariableByIDUsingPUTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type UpdateVariableByIDUsingPUTUnauthorized struct {
 }
 
+// IsSuccess returns true when this update variable by Id using p u t unauthorized response has a 2xx status code
+func (o *UpdateVariableByIDUsingPUTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update variable by Id using p u t unauthorized response has a 3xx status code
+func (o *UpdateVariableByIDUsingPUTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update variable by Id using p u t unauthorized response has a 4xx status code
+func (o *UpdateVariableByIDUsingPUTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update variable by Id using p u t unauthorized response has a 5xx status code
+func (o *UpdateVariableByIDUsingPUTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update variable by Id using p u t unauthorized response a status code equal to that given
+func (o *UpdateVariableByIDUsingPUTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UpdateVariableByIDUsingPUTUnauthorized) Error() string {
+	return fmt.Sprintf("[PUT /codestream/api/variables/{id}][%d] updateVariableByIdUsingPUTUnauthorized ", 401)
+}
+
+func (o *UpdateVariableByIDUsingPUTUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /codestream/api/variables/{id}][%d] updateVariableByIdUsingPUTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewUpdateVariableByIDUsingPUTForbidden() *UpdateVariableByIDUsingPUTForbidd
 	return &UpdateVariableByIDUsingPUTForbidden{}
 }
 
-/* UpdateVariableByIDUsingPUTForbidden describes a response with status code 403, with default header values.
+/*
+UpdateVariableByIDUsingPUTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type UpdateVariableByIDUsingPUTForbidden struct {
 }
 
+// IsSuccess returns true when this update variable by Id using p u t forbidden response has a 2xx status code
+func (o *UpdateVariableByIDUsingPUTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update variable by Id using p u t forbidden response has a 3xx status code
+func (o *UpdateVariableByIDUsingPUTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update variable by Id using p u t forbidden response has a 4xx status code
+func (o *UpdateVariableByIDUsingPUTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update variable by Id using p u t forbidden response has a 5xx status code
+func (o *UpdateVariableByIDUsingPUTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update variable by Id using p u t forbidden response a status code equal to that given
+func (o *UpdateVariableByIDUsingPUTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateVariableByIDUsingPUTForbidden) Error() string {
+	return fmt.Sprintf("[PUT /codestream/api/variables/{id}][%d] updateVariableByIdUsingPUTForbidden ", 403)
+}
+
+func (o *UpdateVariableByIDUsingPUTForbidden) String() string {
 	return fmt.Sprintf("[PUT /codestream/api/variables/{id}][%d] updateVariableByIdUsingPUTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewUpdateVariableByIDUsingPUTNotFound() *UpdateVariableByIDUsingPUTNotFound
 	return &UpdateVariableByIDUsingPUTNotFound{}
 }
 
-/* UpdateVariableByIDUsingPUTNotFound describes a response with status code 404, with default header values.
+/*
+UpdateVariableByIDUsingPUTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type UpdateVariableByIDUsingPUTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update variable by Id using p u t not found response has a 2xx status code
+func (o *UpdateVariableByIDUsingPUTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update variable by Id using p u t not found response has a 3xx status code
+func (o *UpdateVariableByIDUsingPUTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update variable by Id using p u t not found response has a 4xx status code
+func (o *UpdateVariableByIDUsingPUTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update variable by Id using p u t not found response has a 5xx status code
+func (o *UpdateVariableByIDUsingPUTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update variable by Id using p u t not found response a status code equal to that given
+func (o *UpdateVariableByIDUsingPUTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateVariableByIDUsingPUTNotFound) Error() string {
 	return fmt.Sprintf("[PUT /codestream/api/variables/{id}][%d] updateVariableByIdUsingPUTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UpdateVariableByIDUsingPUTNotFound) String() string {
+	return fmt.Sprintf("[PUT /codestream/api/variables/{id}][%d] updateVariableByIdUsingPUTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UpdateVariableByIDUsingPUTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewUpdateVariableByIDUsingPUTInternalServerError() *UpdateVariableByIDUsing
 	return &UpdateVariableByIDUsingPUTInternalServerError{}
 }
 
-/* UpdateVariableByIDUsingPUTInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateVariableByIDUsingPUTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type UpdateVariableByIDUsingPUTInternalServerError struct {
 }
 
+// IsSuccess returns true when this update variable by Id using p u t internal server error response has a 2xx status code
+func (o *UpdateVariableByIDUsingPUTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update variable by Id using p u t internal server error response has a 3xx status code
+func (o *UpdateVariableByIDUsingPUTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update variable by Id using p u t internal server error response has a 4xx status code
+func (o *UpdateVariableByIDUsingPUTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update variable by Id using p u t internal server error response has a 5xx status code
+func (o *UpdateVariableByIDUsingPUTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this update variable by Id using p u t internal server error response a status code equal to that given
+func (o *UpdateVariableByIDUsingPUTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *UpdateVariableByIDUsingPUTInternalServerError) Error() string {
+	return fmt.Sprintf("[PUT /codestream/api/variables/{id}][%d] updateVariableByIdUsingPUTInternalServerError ", 500)
+}
+
+func (o *UpdateVariableByIDUsingPUTInternalServerError) String() string {
 	return fmt.Sprintf("[PUT /codestream/api/variables/{id}][%d] updateVariableByIdUsingPUTInternalServerError ", 500)
 }
 

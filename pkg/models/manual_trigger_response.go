@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
@@ -88,7 +87,7 @@ func UnmarshalManualTriggerResponseSlice(reader io.Reader, consumer runtime.Cons
 // UnmarshalManualTriggerResponse unmarshals polymorphic ManualTriggerResponse
 func UnmarshalManualTriggerResponse(reader io.Reader, consumer runtime.Consumer) (ManualTriggerResponse, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}

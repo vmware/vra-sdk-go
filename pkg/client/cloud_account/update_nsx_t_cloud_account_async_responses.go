@@ -51,7 +51,8 @@ func NewUpdateNsxTCloudAccountAsyncAccepted() *UpdateNsxTCloudAccountAsyncAccept
 	return &UpdateNsxTCloudAccountAsyncAccepted{}
 }
 
-/* UpdateNsxTCloudAccountAsyncAccepted describes a response with status code 202, with default header values.
+/*
+UpdateNsxTCloudAccountAsyncAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type UpdateNsxTCloudAccountAsyncAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this update nsx t cloud account async accepted response has a 2xx status code
+func (o *UpdateNsxTCloudAccountAsyncAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update nsx t cloud account async accepted response has a 3xx status code
+func (o *UpdateNsxTCloudAccountAsyncAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update nsx t cloud account async accepted response has a 4xx status code
+func (o *UpdateNsxTCloudAccountAsyncAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update nsx t cloud account async accepted response has a 5xx status code
+func (o *UpdateNsxTCloudAccountAsyncAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update nsx t cloud account async accepted response a status code equal to that given
+func (o *UpdateNsxTCloudAccountAsyncAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *UpdateNsxTCloudAccountAsyncAccepted) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-nsx-t/{id}][%d] updateNsxTCloudAccountAsyncAccepted  %+v", 202, o.Payload)
 }
+
+func (o *UpdateNsxTCloudAccountAsyncAccepted) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-nsx-t/{id}][%d] updateNsxTCloudAccountAsyncAccepted  %+v", 202, o.Payload)
+}
+
 func (o *UpdateNsxTCloudAccountAsyncAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewUpdateNsxTCloudAccountAsyncForbidden() *UpdateNsxTCloudAccountAsyncForbi
 	return &UpdateNsxTCloudAccountAsyncForbidden{}
 }
 
-/* UpdateNsxTCloudAccountAsyncForbidden describes a response with status code 403, with default header values.
+/*
+UpdateNsxTCloudAccountAsyncForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type UpdateNsxTCloudAccountAsyncForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this update nsx t cloud account async forbidden response has a 2xx status code
+func (o *UpdateNsxTCloudAccountAsyncForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update nsx t cloud account async forbidden response has a 3xx status code
+func (o *UpdateNsxTCloudAccountAsyncForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update nsx t cloud account async forbidden response has a 4xx status code
+func (o *UpdateNsxTCloudAccountAsyncForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update nsx t cloud account async forbidden response has a 5xx status code
+func (o *UpdateNsxTCloudAccountAsyncForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update nsx t cloud account async forbidden response a status code equal to that given
+func (o *UpdateNsxTCloudAccountAsyncForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateNsxTCloudAccountAsyncForbidden) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-nsx-t/{id}][%d] updateNsxTCloudAccountAsyncForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UpdateNsxTCloudAccountAsyncForbidden) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-nsx-t/{id}][%d] updateNsxTCloudAccountAsyncForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UpdateNsxTCloudAccountAsyncForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewUpdateNsxTCloudAccountAsyncNotFound() *UpdateNsxTCloudAccountAsyncNotFou
 	return &UpdateNsxTCloudAccountAsyncNotFound{}
 }
 
-/* UpdateNsxTCloudAccountAsyncNotFound describes a response with status code 404, with default header values.
+/*
+UpdateNsxTCloudAccountAsyncNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type UpdateNsxTCloudAccountAsyncNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update nsx t cloud account async not found response has a 2xx status code
+func (o *UpdateNsxTCloudAccountAsyncNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update nsx t cloud account async not found response has a 3xx status code
+func (o *UpdateNsxTCloudAccountAsyncNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update nsx t cloud account async not found response has a 4xx status code
+func (o *UpdateNsxTCloudAccountAsyncNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update nsx t cloud account async not found response has a 5xx status code
+func (o *UpdateNsxTCloudAccountAsyncNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update nsx t cloud account async not found response a status code equal to that given
+func (o *UpdateNsxTCloudAccountAsyncNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateNsxTCloudAccountAsyncNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-nsx-t/{id}][%d] updateNsxTCloudAccountAsyncNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UpdateNsxTCloudAccountAsyncNotFound) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-nsx-t/{id}][%d] updateNsxTCloudAccountAsyncNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UpdateNsxTCloudAccountAsyncNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

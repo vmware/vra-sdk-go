@@ -51,7 +51,8 @@ func NewUpdateImageProfileOK() *UpdateImageProfileOK {
 	return &UpdateImageProfileOK{}
 }
 
-/* UpdateImageProfileOK describes a response with status code 200, with default header values.
+/*
+UpdateImageProfileOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type UpdateImageProfileOK struct {
 	Payload *models.ImageProfile
 }
 
+// IsSuccess returns true when this update image profile o k response has a 2xx status code
+func (o *UpdateImageProfileOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update image profile o k response has a 3xx status code
+func (o *UpdateImageProfileOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update image profile o k response has a 4xx status code
+func (o *UpdateImageProfileOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update image profile o k response has a 5xx status code
+func (o *UpdateImageProfileOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update image profile o k response a status code equal to that given
+func (o *UpdateImageProfileOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateImageProfileOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/image-profiles/{id}][%d] updateImageProfileOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateImageProfileOK) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/image-profiles/{id}][%d] updateImageProfileOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateImageProfileOK) GetPayload() *models.ImageProfile {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewUpdateImageProfileForbidden() *UpdateImageProfileForbidden {
 	return &UpdateImageProfileForbidden{}
 }
 
-/* UpdateImageProfileForbidden describes a response with status code 403, with default header values.
+/*
+UpdateImageProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type UpdateImageProfileForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this update image profile forbidden response has a 2xx status code
+func (o *UpdateImageProfileForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update image profile forbidden response has a 3xx status code
+func (o *UpdateImageProfileForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update image profile forbidden response has a 4xx status code
+func (o *UpdateImageProfileForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update image profile forbidden response has a 5xx status code
+func (o *UpdateImageProfileForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update image profile forbidden response a status code equal to that given
+func (o *UpdateImageProfileForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateImageProfileForbidden) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/image-profiles/{id}][%d] updateImageProfileForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UpdateImageProfileForbidden) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/image-profiles/{id}][%d] updateImageProfileForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UpdateImageProfileForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewUpdateImageProfileNotFound() *UpdateImageProfileNotFound {
 	return &UpdateImageProfileNotFound{}
 }
 
-/* UpdateImageProfileNotFound describes a response with status code 404, with default header values.
+/*
+UpdateImageProfileNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type UpdateImageProfileNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update image profile not found response has a 2xx status code
+func (o *UpdateImageProfileNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update image profile not found response has a 3xx status code
+func (o *UpdateImageProfileNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update image profile not found response has a 4xx status code
+func (o *UpdateImageProfileNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update image profile not found response has a 5xx status code
+func (o *UpdateImageProfileNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update image profile not found response a status code equal to that given
+func (o *UpdateImageProfileNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateImageProfileNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/image-profiles/{id}][%d] updateImageProfileNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UpdateImageProfileNotFound) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/image-profiles/{id}][%d] updateImageProfileNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UpdateImageProfileNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

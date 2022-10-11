@@ -52,10 +52,12 @@ func NewGetAboutPageParamsWithHTTPClient(client *http.Client) *GetAboutPageParam
 	}
 }
 
-/* GetAboutPageParams contains all the parameters to send to the API endpoint
-   for the get about page operation.
+/*
+GetAboutPageParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get about page operation.
+
+	Typically these are written to a http.Request.
 */
 type GetAboutPageParams struct {
 	timeout    time.Duration

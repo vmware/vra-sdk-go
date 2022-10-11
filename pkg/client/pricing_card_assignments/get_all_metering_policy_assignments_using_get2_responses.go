@@ -45,7 +45,8 @@ func NewGetAllMeteringPolicyAssignmentsUsingGET2OK() *GetAllMeteringPolicyAssign
 	return &GetAllMeteringPolicyAssignmentsUsingGET2OK{}
 }
 
-/* GetAllMeteringPolicyAssignmentsUsingGET2OK describes a response with status code 200, with default header values.
+/*
+GetAllMeteringPolicyAssignmentsUsingGET2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -53,9 +54,39 @@ type GetAllMeteringPolicyAssignmentsUsingGET2OK struct {
 	Payload *models.PageOfMeteringPolicyAssignment
 }
 
+// IsSuccess returns true when this get all metering policy assignments using g e t2 o k response has a 2xx status code
+func (o *GetAllMeteringPolicyAssignmentsUsingGET2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get all metering policy assignments using g e t2 o k response has a 3xx status code
+func (o *GetAllMeteringPolicyAssignmentsUsingGET2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all metering policy assignments using g e t2 o k response has a 4xx status code
+func (o *GetAllMeteringPolicyAssignmentsUsingGET2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get all metering policy assignments using g e t2 o k response has a 5xx status code
+func (o *GetAllMeteringPolicyAssignmentsUsingGET2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all metering policy assignments using g e t2 o k response a status code equal to that given
+func (o *GetAllMeteringPolicyAssignmentsUsingGET2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetAllMeteringPolicyAssignmentsUsingGET2OK) Error() string {
 	return fmt.Sprintf("[GET /price/api/private/pricing-card-assignments][%d] getAllMeteringPolicyAssignmentsUsingGET2OK  %+v", 200, o.Payload)
 }
+
+func (o *GetAllMeteringPolicyAssignmentsUsingGET2OK) String() string {
+	return fmt.Sprintf("[GET /price/api/private/pricing-card-assignments][%d] getAllMeteringPolicyAssignmentsUsingGET2OK  %+v", 200, o.Payload)
+}
+
 func (o *GetAllMeteringPolicyAssignmentsUsingGET2OK) GetPayload() *models.PageOfMeteringPolicyAssignment {
 	return o.Payload
 }
@@ -77,14 +108,44 @@ func NewGetAllMeteringPolicyAssignmentsUsingGET2Unauthorized() *GetAllMeteringPo
 	return &GetAllMeteringPolicyAssignmentsUsingGET2Unauthorized{}
 }
 
-/* GetAllMeteringPolicyAssignmentsUsingGET2Unauthorized describes a response with status code 401, with default header values.
+/*
+GetAllMeteringPolicyAssignmentsUsingGET2Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type GetAllMeteringPolicyAssignmentsUsingGET2Unauthorized struct {
 }
 
+// IsSuccess returns true when this get all metering policy assignments using g e t2 unauthorized response has a 2xx status code
+func (o *GetAllMeteringPolicyAssignmentsUsingGET2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get all metering policy assignments using g e t2 unauthorized response has a 3xx status code
+func (o *GetAllMeteringPolicyAssignmentsUsingGET2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all metering policy assignments using g e t2 unauthorized response has a 4xx status code
+func (o *GetAllMeteringPolicyAssignmentsUsingGET2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get all metering policy assignments using g e t2 unauthorized response has a 5xx status code
+func (o *GetAllMeteringPolicyAssignmentsUsingGET2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all metering policy assignments using g e t2 unauthorized response a status code equal to that given
+func (o *GetAllMeteringPolicyAssignmentsUsingGET2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetAllMeteringPolicyAssignmentsUsingGET2Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /price/api/private/pricing-card-assignments][%d] getAllMeteringPolicyAssignmentsUsingGET2Unauthorized ", 401)
+}
+
+func (o *GetAllMeteringPolicyAssignmentsUsingGET2Unauthorized) String() string {
 	return fmt.Sprintf("[GET /price/api/private/pricing-card-assignments][%d] getAllMeteringPolicyAssignmentsUsingGET2Unauthorized ", 401)
 }
 

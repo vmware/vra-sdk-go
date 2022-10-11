@@ -54,10 +54,12 @@ func NewValidateUsingPUTParamsWithHTTPClient(client *http.Client) *ValidateUsing
 	}
 }
 
-/* ValidateUsingPUTParams contains all the parameters to send to the API endpoint
-   for the validate using p u t operation.
+/*
+ValidateUsingPUTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the validate using p u t operation.
+
+	Typically these are written to a http.Request.
 */
 type ValidateUsingPUTParams struct {
 

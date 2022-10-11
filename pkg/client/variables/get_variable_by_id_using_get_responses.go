@@ -63,7 +63,8 @@ func NewGetVariableByIDUsingGETOK() *GetVariableByIDUsingGETOK {
 	return &GetVariableByIDUsingGETOK{}
 }
 
-/* GetVariableByIDUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetVariableByIDUsingGETOK describes a response with status code 200, with default header values.
 
 'Success' with the requested Variable
 */
@@ -71,9 +72,39 @@ type GetVariableByIDUsingGETOK struct {
 	Payload *models.Variable
 }
 
+// IsSuccess returns true when this get variable by Id using g e t o k response has a 2xx status code
+func (o *GetVariableByIDUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get variable by Id using g e t o k response has a 3xx status code
+func (o *GetVariableByIDUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get variable by Id using g e t o k response has a 4xx status code
+func (o *GetVariableByIDUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get variable by Id using g e t o k response has a 5xx status code
+func (o *GetVariableByIDUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get variable by Id using g e t o k response a status code equal to that given
+func (o *GetVariableByIDUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetVariableByIDUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/variables/{id}][%d] getVariableByIdUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetVariableByIDUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /codestream/api/variables/{id}][%d] getVariableByIdUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetVariableByIDUsingGETOK) GetPayload() *models.Variable {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewGetVariableByIDUsingGETUnauthorized() *GetVariableByIDUsingGETUnauthoriz
 	return &GetVariableByIDUsingGETUnauthorized{}
 }
 
-/* GetVariableByIDUsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+GetVariableByIDUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type GetVariableByIDUsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this get variable by Id using g e t unauthorized response has a 2xx status code
+func (o *GetVariableByIDUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get variable by Id using g e t unauthorized response has a 3xx status code
+func (o *GetVariableByIDUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get variable by Id using g e t unauthorized response has a 4xx status code
+func (o *GetVariableByIDUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get variable by Id using g e t unauthorized response has a 5xx status code
+func (o *GetVariableByIDUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get variable by Id using g e t unauthorized response a status code equal to that given
+func (o *GetVariableByIDUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetVariableByIDUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/variables/{id}][%d] getVariableByIdUsingGETUnauthorized ", 401)
+}
+
+func (o *GetVariableByIDUsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /codestream/api/variables/{id}][%d] getVariableByIdUsingGETUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewGetVariableByIDUsingGETForbidden() *GetVariableByIDUsingGETForbidden {
 	return &GetVariableByIDUsingGETForbidden{}
 }
 
-/* GetVariableByIDUsingGETForbidden describes a response with status code 403, with default header values.
+/*
+GetVariableByIDUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetVariableByIDUsingGETForbidden struct {
 }
 
+// IsSuccess returns true when this get variable by Id using g e t forbidden response has a 2xx status code
+func (o *GetVariableByIDUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get variable by Id using g e t forbidden response has a 3xx status code
+func (o *GetVariableByIDUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get variable by Id using g e t forbidden response has a 4xx status code
+func (o *GetVariableByIDUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get variable by Id using g e t forbidden response has a 5xx status code
+func (o *GetVariableByIDUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get variable by Id using g e t forbidden response a status code equal to that given
+func (o *GetVariableByIDUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetVariableByIDUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/variables/{id}][%d] getVariableByIdUsingGETForbidden ", 403)
+}
+
+func (o *GetVariableByIDUsingGETForbidden) String() string {
 	return fmt.Sprintf("[GET /codestream/api/variables/{id}][%d] getVariableByIdUsingGETForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewGetVariableByIDUsingGETNotFound() *GetVariableByIDUsingGETNotFound {
 	return &GetVariableByIDUsingGETNotFound{}
 }
 
-/* GetVariableByIDUsingGETNotFound describes a response with status code 404, with default header values.
+/*
+GetVariableByIDUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type GetVariableByIDUsingGETNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get variable by Id using g e t not found response has a 2xx status code
+func (o *GetVariableByIDUsingGETNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get variable by Id using g e t not found response has a 3xx status code
+func (o *GetVariableByIDUsingGETNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get variable by Id using g e t not found response has a 4xx status code
+func (o *GetVariableByIDUsingGETNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get variable by Id using g e t not found response has a 5xx status code
+func (o *GetVariableByIDUsingGETNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get variable by Id using g e t not found response a status code equal to that given
+func (o *GetVariableByIDUsingGETNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetVariableByIDUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/variables/{id}][%d] getVariableByIdUsingGETNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetVariableByIDUsingGETNotFound) String() string {
+	return fmt.Sprintf("[GET /codestream/api/variables/{id}][%d] getVariableByIdUsingGETNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetVariableByIDUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewGetVariableByIDUsingGETInternalServerError() *GetVariableByIDUsingGETInt
 	return &GetVariableByIDUsingGETInternalServerError{}
 }
 
-/* GetVariableByIDUsingGETInternalServerError describes a response with status code 500, with default header values.
+/*
+GetVariableByIDUsingGETInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type GetVariableByIDUsingGETInternalServerError struct {
 }
 
+// IsSuccess returns true when this get variable by Id using g e t internal server error response has a 2xx status code
+func (o *GetVariableByIDUsingGETInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get variable by Id using g e t internal server error response has a 3xx status code
+func (o *GetVariableByIDUsingGETInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get variable by Id using g e t internal server error response has a 4xx status code
+func (o *GetVariableByIDUsingGETInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get variable by Id using g e t internal server error response has a 5xx status code
+func (o *GetVariableByIDUsingGETInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this get variable by Id using g e t internal server error response a status code equal to that given
+func (o *GetVariableByIDUsingGETInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GetVariableByIDUsingGETInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/variables/{id}][%d] getVariableByIdUsingGETInternalServerError ", 500)
+}
+
+func (o *GetVariableByIDUsingGETInternalServerError) String() string {
 	return fmt.Sprintf("[GET /codestream/api/variables/{id}][%d] getVariableByIdUsingGETInternalServerError ", 500)
 }
 

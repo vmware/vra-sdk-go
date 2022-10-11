@@ -51,7 +51,8 @@ func NewCreateCloudAccountAsyncAccepted() *CreateCloudAccountAsyncAccepted {
 	return &CreateCloudAccountAsyncAccepted{}
 }
 
-/* CreateCloudAccountAsyncAccepted describes a response with status code 202, with default header values.
+/*
+CreateCloudAccountAsyncAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type CreateCloudAccountAsyncAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this create cloud account async accepted response has a 2xx status code
+func (o *CreateCloudAccountAsyncAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create cloud account async accepted response has a 3xx status code
+func (o *CreateCloudAccountAsyncAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create cloud account async accepted response has a 4xx status code
+func (o *CreateCloudAccountAsyncAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create cloud account async accepted response has a 5xx status code
+func (o *CreateCloudAccountAsyncAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create cloud account async accepted response a status code equal to that given
+func (o *CreateCloudAccountAsyncAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateCloudAccountAsyncAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts][%d] createCloudAccountAsyncAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateCloudAccountAsyncAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts][%d] createCloudAccountAsyncAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateCloudAccountAsyncAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewCreateCloudAccountAsyncBadRequest() *CreateCloudAccountAsyncBadRequest {
 	return &CreateCloudAccountAsyncBadRequest{}
 }
 
-/* CreateCloudAccountAsyncBadRequest describes a response with status code 400, with default header values.
+/*
+CreateCloudAccountAsyncBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type CreateCloudAccountAsyncBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create cloud account async bad request response has a 2xx status code
+func (o *CreateCloudAccountAsyncBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create cloud account async bad request response has a 3xx status code
+func (o *CreateCloudAccountAsyncBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create cloud account async bad request response has a 4xx status code
+func (o *CreateCloudAccountAsyncBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create cloud account async bad request response has a 5xx status code
+func (o *CreateCloudAccountAsyncBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create cloud account async bad request response a status code equal to that given
+func (o *CreateCloudAccountAsyncBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateCloudAccountAsyncBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts][%d] createCloudAccountAsyncBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateCloudAccountAsyncBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts][%d] createCloudAccountAsyncBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateCloudAccountAsyncBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewCreateCloudAccountAsyncForbidden() *CreateCloudAccountAsyncForbidden {
 	return &CreateCloudAccountAsyncForbidden{}
 }
 
-/* CreateCloudAccountAsyncForbidden describes a response with status code 403, with default header values.
+/*
+CreateCloudAccountAsyncForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type CreateCloudAccountAsyncForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this create cloud account async forbidden response has a 2xx status code
+func (o *CreateCloudAccountAsyncForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create cloud account async forbidden response has a 3xx status code
+func (o *CreateCloudAccountAsyncForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create cloud account async forbidden response has a 4xx status code
+func (o *CreateCloudAccountAsyncForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create cloud account async forbidden response has a 5xx status code
+func (o *CreateCloudAccountAsyncForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create cloud account async forbidden response a status code equal to that given
+func (o *CreateCloudAccountAsyncForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateCloudAccountAsyncForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts][%d] createCloudAccountAsyncForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CreateCloudAccountAsyncForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts][%d] createCloudAccountAsyncForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CreateCloudAccountAsyncForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

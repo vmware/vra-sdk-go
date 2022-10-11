@@ -51,7 +51,8 @@ func NewUpdateVMCCloudAccountAsyncAccepted() *UpdateVMCCloudAccountAsyncAccepted
 	return &UpdateVMCCloudAccountAsyncAccepted{}
 }
 
-/* UpdateVMCCloudAccountAsyncAccepted describes a response with status code 202, with default header values.
+/*
+UpdateVMCCloudAccountAsyncAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type UpdateVMCCloudAccountAsyncAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this update Vm c cloud account async accepted response has a 2xx status code
+func (o *UpdateVMCCloudAccountAsyncAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update Vm c cloud account async accepted response has a 3xx status code
+func (o *UpdateVMCCloudAccountAsyncAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update Vm c cloud account async accepted response has a 4xx status code
+func (o *UpdateVMCCloudAccountAsyncAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update Vm c cloud account async accepted response has a 5xx status code
+func (o *UpdateVMCCloudAccountAsyncAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update Vm c cloud account async accepted response a status code equal to that given
+func (o *UpdateVMCCloudAccountAsyncAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *UpdateVMCCloudAccountAsyncAccepted) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-vmc/{id}][%d] updateVmCCloudAccountAsyncAccepted  %+v", 202, o.Payload)
 }
+
+func (o *UpdateVMCCloudAccountAsyncAccepted) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-vmc/{id}][%d] updateVmCCloudAccountAsyncAccepted  %+v", 202, o.Payload)
+}
+
 func (o *UpdateVMCCloudAccountAsyncAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewUpdateVMCCloudAccountAsyncForbidden() *UpdateVMCCloudAccountAsyncForbidd
 	return &UpdateVMCCloudAccountAsyncForbidden{}
 }
 
-/* UpdateVMCCloudAccountAsyncForbidden describes a response with status code 403, with default header values.
+/*
+UpdateVMCCloudAccountAsyncForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type UpdateVMCCloudAccountAsyncForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this update Vm c cloud account async forbidden response has a 2xx status code
+func (o *UpdateVMCCloudAccountAsyncForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update Vm c cloud account async forbidden response has a 3xx status code
+func (o *UpdateVMCCloudAccountAsyncForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update Vm c cloud account async forbidden response has a 4xx status code
+func (o *UpdateVMCCloudAccountAsyncForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update Vm c cloud account async forbidden response has a 5xx status code
+func (o *UpdateVMCCloudAccountAsyncForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update Vm c cloud account async forbidden response a status code equal to that given
+func (o *UpdateVMCCloudAccountAsyncForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateVMCCloudAccountAsyncForbidden) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-vmc/{id}][%d] updateVmCCloudAccountAsyncForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UpdateVMCCloudAccountAsyncForbidden) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-vmc/{id}][%d] updateVmCCloudAccountAsyncForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UpdateVMCCloudAccountAsyncForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewUpdateVMCCloudAccountAsyncNotFound() *UpdateVMCCloudAccountAsyncNotFound
 	return &UpdateVMCCloudAccountAsyncNotFound{}
 }
 
-/* UpdateVMCCloudAccountAsyncNotFound describes a response with status code 404, with default header values.
+/*
+UpdateVMCCloudAccountAsyncNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type UpdateVMCCloudAccountAsyncNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update Vm c cloud account async not found response has a 2xx status code
+func (o *UpdateVMCCloudAccountAsyncNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update Vm c cloud account async not found response has a 3xx status code
+func (o *UpdateVMCCloudAccountAsyncNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update Vm c cloud account async not found response has a 4xx status code
+func (o *UpdateVMCCloudAccountAsyncNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update Vm c cloud account async not found response has a 5xx status code
+func (o *UpdateVMCCloudAccountAsyncNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update Vm c cloud account async not found response a status code equal to that given
+func (o *UpdateVMCCloudAccountAsyncNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateVMCCloudAccountAsyncNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-vmc/{id}][%d] updateVmCCloudAccountAsyncNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UpdateVMCCloudAccountAsyncNotFound) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/cloud-accounts-vmc/{id}][%d] updateVmCCloudAccountAsyncNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UpdateVMCCloudAccountAsyncNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

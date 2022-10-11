@@ -16,7 +16,7 @@ import (
 
 // DeploymentUpdate DeploymentUpdate
 //
-// A deployment update request
+// # A deployment update request
 //
 // swagger:model DeploymentUpdate
 type DeploymentUpdate struct {

@@ -53,10 +53,12 @@ func NewListBlueprintVersionsUsingGETParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* ListBlueprintVersionsUsingGETParams contains all the parameters to send to the API endpoint
-   for the list blueprint versions using g e t operation.
+/*
+ListBlueprintVersionsUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the list blueprint versions using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type ListBlueprintVersionsUsingGETParams struct {
 

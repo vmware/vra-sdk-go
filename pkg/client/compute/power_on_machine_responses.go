@@ -51,7 +51,8 @@ func NewPowerOnMachineAccepted() *PowerOnMachineAccepted {
 	return &PowerOnMachineAccepted{}
 }
 
-/* PowerOnMachineAccepted describes a response with status code 202, with default header values.
+/*
+PowerOnMachineAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type PowerOnMachineAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this power on machine accepted response has a 2xx status code
+func (o *PowerOnMachineAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this power on machine accepted response has a 3xx status code
+func (o *PowerOnMachineAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this power on machine accepted response has a 4xx status code
+func (o *PowerOnMachineAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this power on machine accepted response has a 5xx status code
+func (o *PowerOnMachineAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this power on machine accepted response a status code equal to that given
+func (o *PowerOnMachineAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *PowerOnMachineAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/power-on][%d] powerOnMachineAccepted  %+v", 202, o.Payload)
 }
+
+func (o *PowerOnMachineAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/power-on][%d] powerOnMachineAccepted  %+v", 202, o.Payload)
+}
+
 func (o *PowerOnMachineAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPowerOnMachineForbidden() *PowerOnMachineForbidden {
 	return &PowerOnMachineForbidden{}
 }
 
-/* PowerOnMachineForbidden describes a response with status code 403, with default header values.
+/*
+PowerOnMachineForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type PowerOnMachineForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this power on machine forbidden response has a 2xx status code
+func (o *PowerOnMachineForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this power on machine forbidden response has a 3xx status code
+func (o *PowerOnMachineForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this power on machine forbidden response has a 4xx status code
+func (o *PowerOnMachineForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this power on machine forbidden response has a 5xx status code
+func (o *PowerOnMachineForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this power on machine forbidden response a status code equal to that given
+func (o *PowerOnMachineForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *PowerOnMachineForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/power-on][%d] powerOnMachineForbidden  %+v", 403, o.Payload)
 }
+
+func (o *PowerOnMachineForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/power-on][%d] powerOnMachineForbidden  %+v", 403, o.Payload)
+}
+
 func (o *PowerOnMachineForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewPowerOnMachineNotFound() *PowerOnMachineNotFound {
 	return &PowerOnMachineNotFound{}
 }
 
-/* PowerOnMachineNotFound describes a response with status code 404, with default header values.
+/*
+PowerOnMachineNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type PowerOnMachineNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this power on machine not found response has a 2xx status code
+func (o *PowerOnMachineNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this power on machine not found response has a 3xx status code
+func (o *PowerOnMachineNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this power on machine not found response has a 4xx status code
+func (o *PowerOnMachineNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this power on machine not found response has a 5xx status code
+func (o *PowerOnMachineNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this power on machine not found response a status code equal to that given
+func (o *PowerOnMachineNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *PowerOnMachineNotFound) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/power-on][%d] powerOnMachineNotFound  %+v", 404, o.Payload)
 }
+
+func (o *PowerOnMachineNotFound) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/power-on][%d] powerOnMachineNotFound  %+v", 404, o.Payload)
+}
+
 func (o *PowerOnMachineNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

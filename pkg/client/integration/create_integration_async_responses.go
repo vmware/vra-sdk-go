@@ -51,7 +51,8 @@ func NewCreateIntegrationAsyncAccepted() *CreateIntegrationAsyncAccepted {
 	return &CreateIntegrationAsyncAccepted{}
 }
 
-/* CreateIntegrationAsyncAccepted describes a response with status code 202, with default header values.
+/*
+CreateIntegrationAsyncAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type CreateIntegrationAsyncAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this create integration async accepted response has a 2xx status code
+func (o *CreateIntegrationAsyncAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create integration async accepted response has a 3xx status code
+func (o *CreateIntegrationAsyncAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create integration async accepted response has a 4xx status code
+func (o *CreateIntegrationAsyncAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create integration async accepted response has a 5xx status code
+func (o *CreateIntegrationAsyncAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create integration async accepted response a status code equal to that given
+func (o *CreateIntegrationAsyncAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateIntegrationAsyncAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/integrations][%d] createIntegrationAsyncAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateIntegrationAsyncAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/integrations][%d] createIntegrationAsyncAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateIntegrationAsyncAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewCreateIntegrationAsyncBadRequest() *CreateIntegrationAsyncBadRequest {
 	return &CreateIntegrationAsyncBadRequest{}
 }
 
-/* CreateIntegrationAsyncBadRequest describes a response with status code 400, with default header values.
+/*
+CreateIntegrationAsyncBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type CreateIntegrationAsyncBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create integration async bad request response has a 2xx status code
+func (o *CreateIntegrationAsyncBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create integration async bad request response has a 3xx status code
+func (o *CreateIntegrationAsyncBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create integration async bad request response has a 4xx status code
+func (o *CreateIntegrationAsyncBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create integration async bad request response has a 5xx status code
+func (o *CreateIntegrationAsyncBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create integration async bad request response a status code equal to that given
+func (o *CreateIntegrationAsyncBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateIntegrationAsyncBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/integrations][%d] createIntegrationAsyncBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateIntegrationAsyncBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/integrations][%d] createIntegrationAsyncBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateIntegrationAsyncBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewCreateIntegrationAsyncForbidden() *CreateIntegrationAsyncForbidden {
 	return &CreateIntegrationAsyncForbidden{}
 }
 
-/* CreateIntegrationAsyncForbidden describes a response with status code 403, with default header values.
+/*
+CreateIntegrationAsyncForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type CreateIntegrationAsyncForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this create integration async forbidden response has a 2xx status code
+func (o *CreateIntegrationAsyncForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create integration async forbidden response has a 3xx status code
+func (o *CreateIntegrationAsyncForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create integration async forbidden response has a 4xx status code
+func (o *CreateIntegrationAsyncForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create integration async forbidden response has a 5xx status code
+func (o *CreateIntegrationAsyncForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create integration async forbidden response a status code equal to that given
+func (o *CreateIntegrationAsyncForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateIntegrationAsyncForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/integrations][%d] createIntegrationAsyncForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CreateIntegrationAsyncForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/integrations][%d] createIntegrationAsyncForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CreateIntegrationAsyncForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

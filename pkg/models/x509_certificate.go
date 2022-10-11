@@ -6,13 +6,9 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"bytes"
 	"context"
-	"encoding/json"
-	"io"
 
 	"github.com/go-openapi/errors"
-	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
@@ -27,7 +23,8 @@ type X509Certificate struct {
 	// Format: byte
 	Encoded strfmt.Base64 `json:"encoded,omitempty"`
 
-	issuerDNField Principal
+	// issuer d n
+	IssuerDN *Principal `json:"issuerDN,omitempty"`
 
 	// not after
 	// Format: date-time
@@ -53,182 +50,11 @@ type X509Certificate struct {
 	// Format: byte
 	SigAlgParams strfmt.Base64 `json:"sigAlgParams,omitempty"`
 
-	subjectDNField Principal
+	// subject d n
+	SubjectDN *Principal `json:"subjectDN,omitempty"`
 
 	// version
 	Version int32 `json:"version,omitempty"`
-}
-
-// IssuerDN gets the issuer d n of this base type
-func (m *X509Certificate) IssuerDN() Principal {
-	return m.issuerDNField
-}
-
-// SetIssuerDN sets the issuer d n of this base type
-func (m *X509Certificate) SetIssuerDN(val Principal) {
-	m.issuerDNField = val
-}
-
-// SubjectDN gets the subject d n of this base type
-func (m *X509Certificate) SubjectDN() Principal {
-	return m.subjectDNField
-}
-
-// SetSubjectDN sets the subject d n of this base type
-func (m *X509Certificate) SetSubjectDN(val Principal) {
-	m.subjectDNField = val
-}
-
-// UnmarshalJSON unmarshals this object with a polymorphic type from a JSON structure
-func (m *X509Certificate) UnmarshalJSON(raw []byte) error {
-	var data struct {
-		Encoded strfmt.Base64 `json:"encoded,omitempty"`
-
-		IssuerDN json.RawMessage `json:"issuerDN,omitempty"`
-
-		NotAfter strfmt.DateTime `json:"notAfter,omitempty"`
-
-		NotBefore strfmt.DateTime `json:"notBefore,omitempty"`
-
-		PublicKey *PublicKey `json:"publicKey,omitempty"`
-
-		SerialNumber int64 `json:"serialNumber,omitempty"`
-
-		SigAlgName string `json:"sigAlgName,omitempty"`
-
-		SigAlgOID string `json:"sigAlgOID,omitempty"`
-
-		SigAlgParams strfmt.Base64 `json:"sigAlgParams,omitempty"`
-
-		SubjectDN json.RawMessage `json:"subjectDN,omitempty"`
-
-		Version int32 `json:"version,omitempty"`
-	}
-	buf := bytes.NewBuffer(raw)
-	dec := json.NewDecoder(buf)
-	dec.UseNumber()
-
-	if err := dec.Decode(&data); err != nil {
-		return err
-	}
-
-	var propIssuerDN Principal
-	if string(data.IssuerDN) != "null" {
-		issuerDN, err := UnmarshalPrincipal(bytes.NewBuffer(data.IssuerDN), runtime.JSONConsumer())
-		if err != nil && err != io.EOF {
-			return err
-		}
-		propIssuerDN = issuerDN
-	}
-	var propSubjectDN Principal
-	if string(data.SubjectDN) != "null" {
-		subjectDN, err := UnmarshalPrincipal(bytes.NewBuffer(data.SubjectDN), runtime.JSONConsumer())
-		if err != nil && err != io.EOF {
-			return err
-		}
-		propSubjectDN = subjectDN
-	}
-
-	var result X509Certificate
-
-	// encoded
-	result.Encoded = data.Encoded
-
-	// issuerDN
-	result.issuerDNField = propIssuerDN
-
-	// notAfter
-	result.NotAfter = data.NotAfter
-
-	// notBefore
-	result.NotBefore = data.NotBefore
-
-	// publicKey
-	result.PublicKey = data.PublicKey
-
-	// serialNumber
-	result.SerialNumber = data.SerialNumber
-
-	// sigAlgName
-	result.SigAlgName = data.SigAlgName
-
-	// sigAlgOID
-	result.SigAlgOID = data.SigAlgOID
-
-	// sigAlgParams
-	result.SigAlgParams = data.SigAlgParams
-
-	// subjectDN
-	result.subjectDNField = propSubjectDN
-
-	// version
-	result.Version = data.Version
-
-	*m = result
-
-	return nil
-}
-
-// MarshalJSON marshals this object with a polymorphic type to a JSON structure
-func (m X509Certificate) MarshalJSON() ([]byte, error) {
-	var b1, b2, b3 []byte
-	var err error
-	b1, err = json.Marshal(struct {
-		Encoded strfmt.Base64 `json:"encoded,omitempty"`
-
-		NotAfter strfmt.DateTime `json:"notAfter,omitempty"`
-
-		NotBefore strfmt.DateTime `json:"notBefore,omitempty"`
-
-		PublicKey *PublicKey `json:"publicKey,omitempty"`
-
-		SerialNumber int64 `json:"serialNumber,omitempty"`
-
-		SigAlgName string `json:"sigAlgName,omitempty"`
-
-		SigAlgOID string `json:"sigAlgOID,omitempty"`
-
-		SigAlgParams strfmt.Base64 `json:"sigAlgParams,omitempty"`
-
-		Version int32 `json:"version,omitempty"`
-	}{
-
-		Encoded: m.Encoded,
-
-		NotAfter: m.NotAfter,
-
-		NotBefore: m.NotBefore,
-
-		PublicKey: m.PublicKey,
-
-		SerialNumber: m.SerialNumber,
-
-		SigAlgName: m.SigAlgName,
-
-		SigAlgOID: m.SigAlgOID,
-
-		SigAlgParams: m.SigAlgParams,
-
-		Version: m.Version,
-	})
-	if err != nil {
-		return nil, err
-	}
-	b2, err = json.Marshal(struct {
-		IssuerDN Principal `json:"issuerDN,omitempty"`
-
-		SubjectDN Principal `json:"subjectDN,omitempty"`
-	}{
-
-		IssuerDN: m.issuerDNField,
-
-		SubjectDN: m.subjectDNField,
-	})
-	if err != nil {
-		return nil, err
-	}
-
-	return swag.ConcatJSON(b1, b2, b3), nil
 }
 
 // Validate validates this x509 certificate
@@ -262,17 +88,19 @@ func (m *X509Certificate) Validate(formats strfmt.Registry) error {
 }
 
 func (m *X509Certificate) validateIssuerDN(formats strfmt.Registry) error {
-	if swag.IsZero(m.IssuerDN()) { // not required
+	if swag.IsZero(m.IssuerDN) { // not required
 		return nil
 	}
 
-	if err := m.IssuerDN().Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("issuerDN")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("issuerDN")
+	if m.IssuerDN != nil {
+		if err := m.IssuerDN.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("issuerDN")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("issuerDN")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -322,17 +150,19 @@ func (m *X509Certificate) validatePublicKey(formats strfmt.Registry) error {
 }
 
 func (m *X509Certificate) validateSubjectDN(formats strfmt.Registry) error {
-	if swag.IsZero(m.SubjectDN()) { // not required
+	if swag.IsZero(m.SubjectDN) { // not required
 		return nil
 	}
 
-	if err := m.SubjectDN().Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("subjectDN")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("subjectDN")
+	if m.SubjectDN != nil {
+		if err := m.SubjectDN.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("subjectDN")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("subjectDN")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -362,13 +192,15 @@ func (m *X509Certificate) ContextValidate(ctx context.Context, formats strfmt.Re
 
 func (m *X509Certificate) contextValidateIssuerDN(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.IssuerDN().ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("issuerDN")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("issuerDN")
+	if m.IssuerDN != nil {
+		if err := m.IssuerDN.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("issuerDN")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("issuerDN")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -392,13 +224,15 @@ func (m *X509Certificate) contextValidatePublicKey(ctx context.Context, formats 
 
 func (m *X509Certificate) contextValidateSubjectDN(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.SubjectDN().ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("subjectDN")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("subjectDN")
+	if m.SubjectDN != nil {
+		if err := m.SubjectDN.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("subjectDN")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("subjectDN")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil

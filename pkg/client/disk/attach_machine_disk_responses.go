@@ -57,7 +57,8 @@ func NewAttachMachineDiskOK() *AttachMachineDiskOK {
 	return &AttachMachineDiskOK{}
 }
 
-/* AttachMachineDiskOK describes a response with status code 200, with default header values.
+/*
+AttachMachineDiskOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -65,9 +66,39 @@ type AttachMachineDiskOK struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this attach machine disk o k response has a 2xx status code
+func (o *AttachMachineDiskOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this attach machine disk o k response has a 3xx status code
+func (o *AttachMachineDiskOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this attach machine disk o k response has a 4xx status code
+func (o *AttachMachineDiskOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this attach machine disk o k response has a 5xx status code
+func (o *AttachMachineDiskOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this attach machine disk o k response a status code equal to that given
+func (o *AttachMachineDiskOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AttachMachineDiskOK) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/disks][%d] attachMachineDiskOK  %+v", 200, o.Payload)
 }
+
+func (o *AttachMachineDiskOK) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/disks][%d] attachMachineDiskOK  %+v", 200, o.Payload)
+}
+
 func (o *AttachMachineDiskOK) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -89,7 +120,8 @@ func NewAttachMachineDiskBadRequest() *AttachMachineDiskBadRequest {
 	return &AttachMachineDiskBadRequest{}
 }
 
-/* AttachMachineDiskBadRequest describes a response with status code 400, with default header values.
+/*
+AttachMachineDiskBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -97,9 +129,39 @@ type AttachMachineDiskBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this attach machine disk bad request response has a 2xx status code
+func (o *AttachMachineDiskBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this attach machine disk bad request response has a 3xx status code
+func (o *AttachMachineDiskBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this attach machine disk bad request response has a 4xx status code
+func (o *AttachMachineDiskBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this attach machine disk bad request response has a 5xx status code
+func (o *AttachMachineDiskBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this attach machine disk bad request response a status code equal to that given
+func (o *AttachMachineDiskBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AttachMachineDiskBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/disks][%d] attachMachineDiskBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AttachMachineDiskBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/disks][%d] attachMachineDiskBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AttachMachineDiskBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -121,7 +183,8 @@ func NewAttachMachineDiskForbidden() *AttachMachineDiskForbidden {
 	return &AttachMachineDiskForbidden{}
 }
 
-/* AttachMachineDiskForbidden describes a response with status code 403, with default header values.
+/*
+AttachMachineDiskForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -129,9 +192,39 @@ type AttachMachineDiskForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this attach machine disk forbidden response has a 2xx status code
+func (o *AttachMachineDiskForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this attach machine disk forbidden response has a 3xx status code
+func (o *AttachMachineDiskForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this attach machine disk forbidden response has a 4xx status code
+func (o *AttachMachineDiskForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this attach machine disk forbidden response has a 5xx status code
+func (o *AttachMachineDiskForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this attach machine disk forbidden response a status code equal to that given
+func (o *AttachMachineDiskForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AttachMachineDiskForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/disks][%d] attachMachineDiskForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AttachMachineDiskForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/disks][%d] attachMachineDiskForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AttachMachineDiskForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -153,7 +246,8 @@ func NewAttachMachineDiskNotFound() *AttachMachineDiskNotFound {
 	return &AttachMachineDiskNotFound{}
 }
 
-/* AttachMachineDiskNotFound describes a response with status code 404, with default header values.
+/*
+AttachMachineDiskNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -161,9 +255,39 @@ type AttachMachineDiskNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this attach machine disk not found response has a 2xx status code
+func (o *AttachMachineDiskNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this attach machine disk not found response has a 3xx status code
+func (o *AttachMachineDiskNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this attach machine disk not found response has a 4xx status code
+func (o *AttachMachineDiskNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this attach machine disk not found response has a 5xx status code
+func (o *AttachMachineDiskNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this attach machine disk not found response a status code equal to that given
+func (o *AttachMachineDiskNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AttachMachineDiskNotFound) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/disks][%d] attachMachineDiskNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AttachMachineDiskNotFound) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/disks][%d] attachMachineDiskNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AttachMachineDiskNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

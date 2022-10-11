@@ -51,14 +51,44 @@ func NewDeleteProjectNoContent() *DeleteProjectNoContent {
 	return &DeleteProjectNoContent{}
 }
 
-/* DeleteProjectNoContent describes a response with status code 204, with default header values.
+/*
+DeleteProjectNoContent describes a response with status code 204, with default header values.
 
 No Content
 */
 type DeleteProjectNoContent struct {
 }
 
+// IsSuccess returns true when this delete project no content response has a 2xx status code
+func (o *DeleteProjectNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete project no content response has a 3xx status code
+func (o *DeleteProjectNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete project no content response has a 4xx status code
+func (o *DeleteProjectNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete project no content response has a 5xx status code
+func (o *DeleteProjectNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete project no content response a status code equal to that given
+func (o *DeleteProjectNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteProjectNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/projects/{id}][%d] deleteProjectNoContent ", 204)
+}
+
+func (o *DeleteProjectNoContent) String() string {
 	return fmt.Sprintf("[DELETE /iaas/api/projects/{id}][%d] deleteProjectNoContent ", 204)
 }
 
@@ -72,7 +102,8 @@ func NewDeleteProjectForbidden() *DeleteProjectForbidden {
 	return &DeleteProjectForbidden{}
 }
 
-/* DeleteProjectForbidden describes a response with status code 403, with default header values.
+/*
+DeleteProjectForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -80,9 +111,39 @@ type DeleteProjectForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this delete project forbidden response has a 2xx status code
+func (o *DeleteProjectForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete project forbidden response has a 3xx status code
+func (o *DeleteProjectForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete project forbidden response has a 4xx status code
+func (o *DeleteProjectForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete project forbidden response has a 5xx status code
+func (o *DeleteProjectForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete project forbidden response a status code equal to that given
+func (o *DeleteProjectForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteProjectForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/projects/{id}][%d] deleteProjectForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DeleteProjectForbidden) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/projects/{id}][%d] deleteProjectForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DeleteProjectForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -104,7 +165,8 @@ func NewDeleteProjectConflict() *DeleteProjectConflict {
 	return &DeleteProjectConflict{}
 }
 
-/* DeleteProjectConflict describes a response with status code 409, with default header values.
+/*
+DeleteProjectConflict describes a response with status code 409, with default header values.
 
 Conflict, when the project is in use
 */
@@ -112,9 +174,39 @@ type DeleteProjectConflict struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this delete project conflict response has a 2xx status code
+func (o *DeleteProjectConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete project conflict response has a 3xx status code
+func (o *DeleteProjectConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete project conflict response has a 4xx status code
+func (o *DeleteProjectConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete project conflict response has a 5xx status code
+func (o *DeleteProjectConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete project conflict response a status code equal to that given
+func (o *DeleteProjectConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *DeleteProjectConflict) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/projects/{id}][%d] deleteProjectConflict  %+v", 409, o.Payload)
 }
+
+func (o *DeleteProjectConflict) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/projects/{id}][%d] deleteProjectConflict  %+v", 409, o.Payload)
+}
+
 func (o *DeleteProjectConflict) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

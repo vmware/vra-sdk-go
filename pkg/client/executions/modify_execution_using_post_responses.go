@@ -63,7 +63,8 @@ func NewModifyExecutionUsingPOSTOK() *ModifyExecutionUsingPOSTOK {
 	return &ModifyExecutionUsingPOSTOK{}
 }
 
-/* ModifyExecutionUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+ModifyExecutionUsingPOSTOK describes a response with status code 200, with default header values.
 
 'Success' with Execution
 */
@@ -71,9 +72,39 @@ type ModifyExecutionUsingPOSTOK struct {
 	Payload models.Execution
 }
 
+// IsSuccess returns true when this modify execution using p o s t o k response has a 2xx status code
+func (o *ModifyExecutionUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this modify execution using p o s t o k response has a 3xx status code
+func (o *ModifyExecutionUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this modify execution using p o s t o k response has a 4xx status code
+func (o *ModifyExecutionUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this modify execution using p o s t o k response has a 5xx status code
+func (o *ModifyExecutionUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this modify execution using p o s t o k response a status code equal to that given
+func (o *ModifyExecutionUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ModifyExecutionUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/executions/{id}][%d] modifyExecutionUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *ModifyExecutionUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /codestream/api/executions/{id}][%d] modifyExecutionUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *ModifyExecutionUsingPOSTOK) GetPayload() models.Execution {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewModifyExecutionUsingPOSTUnauthorized() *ModifyExecutionUsingPOSTUnauthor
 	return &ModifyExecutionUsingPOSTUnauthorized{}
 }
 
-/* ModifyExecutionUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+ModifyExecutionUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type ModifyExecutionUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this modify execution using p o s t unauthorized response has a 2xx status code
+func (o *ModifyExecutionUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this modify execution using p o s t unauthorized response has a 3xx status code
+func (o *ModifyExecutionUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this modify execution using p o s t unauthorized response has a 4xx status code
+func (o *ModifyExecutionUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this modify execution using p o s t unauthorized response has a 5xx status code
+func (o *ModifyExecutionUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this modify execution using p o s t unauthorized response a status code equal to that given
+func (o *ModifyExecutionUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ModifyExecutionUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/executions/{id}][%d] modifyExecutionUsingPOSTUnauthorized ", 401)
+}
+
+func (o *ModifyExecutionUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /codestream/api/executions/{id}][%d] modifyExecutionUsingPOSTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewModifyExecutionUsingPOSTForbidden() *ModifyExecutionUsingPOSTForbidden {
 	return &ModifyExecutionUsingPOSTForbidden{}
 }
 
-/* ModifyExecutionUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+ModifyExecutionUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type ModifyExecutionUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this modify execution using p o s t forbidden response has a 2xx status code
+func (o *ModifyExecutionUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this modify execution using p o s t forbidden response has a 3xx status code
+func (o *ModifyExecutionUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this modify execution using p o s t forbidden response has a 4xx status code
+func (o *ModifyExecutionUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this modify execution using p o s t forbidden response has a 5xx status code
+func (o *ModifyExecutionUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this modify execution using p o s t forbidden response a status code equal to that given
+func (o *ModifyExecutionUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ModifyExecutionUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/executions/{id}][%d] modifyExecutionUsingPOSTForbidden ", 403)
+}
+
+func (o *ModifyExecutionUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /codestream/api/executions/{id}][%d] modifyExecutionUsingPOSTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewModifyExecutionUsingPOSTNotFound() *ModifyExecutionUsingPOSTNotFound {
 	return &ModifyExecutionUsingPOSTNotFound{}
 }
 
-/* ModifyExecutionUsingPOSTNotFound describes a response with status code 404, with default header values.
+/*
+ModifyExecutionUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type ModifyExecutionUsingPOSTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this modify execution using p o s t not found response has a 2xx status code
+func (o *ModifyExecutionUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this modify execution using p o s t not found response has a 3xx status code
+func (o *ModifyExecutionUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this modify execution using p o s t not found response has a 4xx status code
+func (o *ModifyExecutionUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this modify execution using p o s t not found response has a 5xx status code
+func (o *ModifyExecutionUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this modify execution using p o s t not found response a status code equal to that given
+func (o *ModifyExecutionUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ModifyExecutionUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/executions/{id}][%d] modifyExecutionUsingPOSTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ModifyExecutionUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /codestream/api/executions/{id}][%d] modifyExecutionUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ModifyExecutionUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewModifyExecutionUsingPOSTInternalServerError() *ModifyExecutionUsingPOSTI
 	return &ModifyExecutionUsingPOSTInternalServerError{}
 }
 
-/* ModifyExecutionUsingPOSTInternalServerError describes a response with status code 500, with default header values.
+/*
+ModifyExecutionUsingPOSTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ModifyExecutionUsingPOSTInternalServerError struct {
 }
 
+// IsSuccess returns true when this modify execution using p o s t internal server error response has a 2xx status code
+func (o *ModifyExecutionUsingPOSTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this modify execution using p o s t internal server error response has a 3xx status code
+func (o *ModifyExecutionUsingPOSTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this modify execution using p o s t internal server error response has a 4xx status code
+func (o *ModifyExecutionUsingPOSTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this modify execution using p o s t internal server error response has a 5xx status code
+func (o *ModifyExecutionUsingPOSTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this modify execution using p o s t internal server error response a status code equal to that given
+func (o *ModifyExecutionUsingPOSTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ModifyExecutionUsingPOSTInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/executions/{id}][%d] modifyExecutionUsingPOSTInternalServerError ", 500)
+}
+
+func (o *ModifyExecutionUsingPOSTInternalServerError) String() string {
 	return fmt.Sprintf("[POST /codestream/api/executions/{id}][%d] modifyExecutionUsingPOSTInternalServerError ", 500)
 }
 

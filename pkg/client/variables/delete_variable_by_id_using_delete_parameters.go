@@ -52,10 +52,12 @@ func NewDeleteVariableByIDUsingDELETEParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* DeleteVariableByIDUsingDELETEParams contains all the parameters to send to the API endpoint
-   for the delete variable by Id using d e l e t e operation.
+/*
+DeleteVariableByIDUsingDELETEParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete variable by Id using d e l e t e operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteVariableByIDUsingDELETEParams struct {
 

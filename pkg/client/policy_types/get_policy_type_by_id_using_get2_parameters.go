@@ -52,10 +52,12 @@ func NewGetPolicyTypeByIDUsingGET2ParamsWithHTTPClient(client *http.Client) *Get
 	}
 }
 
-/* GetPolicyTypeByIDUsingGET2Params contains all the parameters to send to the API endpoint
-   for the get policy type by Id using g e t 2 operation.
+/*
+GetPolicyTypeByIDUsingGET2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get policy type by Id using g e t 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetPolicyTypeByIDUsingGET2Params struct {
 

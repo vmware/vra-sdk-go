@@ -45,7 +45,8 @@ func NewGetNetworksOK() *GetNetworksOK {
 	return &GetNetworksOK{}
 }
 
-/* GetNetworksOK describes a response with status code 200, with default header values.
+/*
+GetNetworksOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type GetNetworksOK struct {
 	Payload *models.NetworkResult
 }
 
+// IsSuccess returns true when this get networks o k response has a 2xx status code
+func (o *GetNetworksOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get networks o k response has a 3xx status code
+func (o *GetNetworksOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get networks o k response has a 4xx status code
+func (o *GetNetworksOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get networks o k response has a 5xx status code
+func (o *GetNetworksOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get networks o k response a status code equal to that given
+func (o *GetNetworksOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetNetworksOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/networks][%d] getNetworksOK  %+v", 200, o.Payload)
 }
+
+func (o *GetNetworksOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/networks][%d] getNetworksOK  %+v", 200, o.Payload)
+}
+
 func (o *GetNetworksOK) GetPayload() *models.NetworkResult {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewGetNetworksForbidden() *GetNetworksForbidden {
 	return &GetNetworksForbidden{}
 }
 
-/* GetNetworksForbidden describes a response with status code 403, with default header values.
+/*
+GetNetworksForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type GetNetworksForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get networks forbidden response has a 2xx status code
+func (o *GetNetworksForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get networks forbidden response has a 3xx status code
+func (o *GetNetworksForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get networks forbidden response has a 4xx status code
+func (o *GetNetworksForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get networks forbidden response has a 5xx status code
+func (o *GetNetworksForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get networks forbidden response a status code equal to that given
+func (o *GetNetworksForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetNetworksForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/networks][%d] getNetworksForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetNetworksForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/networks][%d] getNetworksForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetNetworksForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

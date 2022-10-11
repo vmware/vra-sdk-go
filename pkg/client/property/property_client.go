@@ -42,9 +42,9 @@ type ClientService interface {
 }
 
 /*
-  DeleteConfigurationProperty deletes a configuration property
+DeleteConfigurationProperty deletes a configuration property
 
-  Delete a configuration property
+Delete a configuration property
 */
 func (a *Client) DeleteConfigurationProperty(params *DeleteConfigurationPropertyParams, opts ...ClientOption) (*DeleteConfigurationPropertyOK, error) {
 	// TODO: Validate the params before sending
@@ -82,9 +82,9 @@ func (a *Client) DeleteConfigurationProperty(params *DeleteConfigurationProperty
 }
 
 /*
-  GetConfigurationProperties gets configuration properties
+GetConfigurationProperties gets configuration properties
 
-  Get all configuration properties
+Get all configuration properties
 */
 func (a *Client) GetConfigurationProperties(params *GetConfigurationPropertiesParams, opts ...ClientOption) (*GetConfigurationPropertiesOK, error) {
 	// TODO: Validate the params before sending
@@ -122,9 +122,9 @@ func (a *Client) GetConfigurationProperties(params *GetConfigurationPropertiesPa
 }
 
 /*
-  GetConfigurationProperty gets single configuration property
+GetConfigurationProperty gets single configuration property
 
-  Get single configuration property
+Get single configuration property
 */
 func (a *Client) GetConfigurationProperty(params *GetConfigurationPropertyParams, opts ...ClientOption) (*GetConfigurationPropertyOK, error) {
 	// TODO: Validate the params before sending
@@ -162,9 +162,9 @@ func (a *Client) GetConfigurationProperty(params *GetConfigurationPropertyParams
 }
 
 /*
-  PatchConfigurationProperty updates or create configuration property
+PatchConfigurationProperty updates or create configuration property
 
-  Update or create configuration property.
+Update or create configuration property.
 */
 func (a *Client) PatchConfigurationProperty(params *PatchConfigurationPropertyParams, opts ...ClientOption) (*PatchConfigurationPropertyOK, error) {
 	// TODO: Validate the params before sending

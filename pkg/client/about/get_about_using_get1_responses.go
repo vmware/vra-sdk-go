@@ -29,6 +29,24 @@ func (o *GetAboutUsingGET1Reader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return result, nil
+	case 401:
+		result := NewGetAboutUsingGET1Unauthorized()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 403:
+		result := NewGetAboutUsingGET1Forbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 404:
+		result := NewGetAboutUsingGET1NotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +57,8 @@ func NewGetAboutUsingGET1OK() *GetAboutUsingGET1OK {
 	return &GetAboutUsingGET1OK{}
 }
 
-/* GetAboutUsingGET1OK describes a response with status code 200, with default header values.
+/*
+GetAboutUsingGET1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +66,39 @@ type GetAboutUsingGET1OK struct {
 	Payload *models.BlueprintAbout
 }
 
+// IsSuccess returns true when this get about using g e t1 o k response has a 2xx status code
+func (o *GetAboutUsingGET1OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get about using g e t1 o k response has a 3xx status code
+func (o *GetAboutUsingGET1OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get about using g e t1 o k response has a 4xx status code
+func (o *GetAboutUsingGET1OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get about using g e t1 o k response has a 5xx status code
+func (o *GetAboutUsingGET1OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get about using g e t1 o k response a status code equal to that given
+func (o *GetAboutUsingGET1OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetAboutUsingGET1OK) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/about][%d] getAboutUsingGET1OK  %+v", 200, o.Payload)
 }
+
+func (o *GetAboutUsingGET1OK) String() string {
+	return fmt.Sprintf("[GET /blueprint/api/about][%d] getAboutUsingGET1OK  %+v", 200, o.Payload)
+}
+
 func (o *GetAboutUsingGET1OK) GetPayload() *models.BlueprintAbout {
 	return o.Payload
 }
@@ -57,6 +106,171 @@ func (o *GetAboutUsingGET1OK) GetPayload() *models.BlueprintAbout {
 func (o *GetAboutUsingGET1OK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.BlueprintAbout)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewGetAboutUsingGET1Unauthorized creates a GetAboutUsingGET1Unauthorized with default headers values
+func NewGetAboutUsingGET1Unauthorized() *GetAboutUsingGET1Unauthorized {
+	return &GetAboutUsingGET1Unauthorized{}
+}
+
+/*
+GetAboutUsingGET1Unauthorized describes a response with status code 401, with default header values.
+
+Unauthorized
+*/
+type GetAboutUsingGET1Unauthorized struct {
+}
+
+// IsSuccess returns true when this get about using g e t1 unauthorized response has a 2xx status code
+func (o *GetAboutUsingGET1Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get about using g e t1 unauthorized response has a 3xx status code
+func (o *GetAboutUsingGET1Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get about using g e t1 unauthorized response has a 4xx status code
+func (o *GetAboutUsingGET1Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get about using g e t1 unauthorized response has a 5xx status code
+func (o *GetAboutUsingGET1Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get about using g e t1 unauthorized response a status code equal to that given
+func (o *GetAboutUsingGET1Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+func (o *GetAboutUsingGET1Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /blueprint/api/about][%d] getAboutUsingGET1Unauthorized ", 401)
+}
+
+func (o *GetAboutUsingGET1Unauthorized) String() string {
+	return fmt.Sprintf("[GET /blueprint/api/about][%d] getAboutUsingGET1Unauthorized ", 401)
+}
+
+func (o *GetAboutUsingGET1Unauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewGetAboutUsingGET1Forbidden creates a GetAboutUsingGET1Forbidden with default headers values
+func NewGetAboutUsingGET1Forbidden() *GetAboutUsingGET1Forbidden {
+	return &GetAboutUsingGET1Forbidden{}
+}
+
+/*
+GetAboutUsingGET1Forbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type GetAboutUsingGET1Forbidden struct {
+}
+
+// IsSuccess returns true when this get about using g e t1 forbidden response has a 2xx status code
+func (o *GetAboutUsingGET1Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get about using g e t1 forbidden response has a 3xx status code
+func (o *GetAboutUsingGET1Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get about using g e t1 forbidden response has a 4xx status code
+func (o *GetAboutUsingGET1Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get about using g e t1 forbidden response has a 5xx status code
+func (o *GetAboutUsingGET1Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get about using g e t1 forbidden response a status code equal to that given
+func (o *GetAboutUsingGET1Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *GetAboutUsingGET1Forbidden) Error() string {
+	return fmt.Sprintf("[GET /blueprint/api/about][%d] getAboutUsingGET1Forbidden ", 403)
+}
+
+func (o *GetAboutUsingGET1Forbidden) String() string {
+	return fmt.Sprintf("[GET /blueprint/api/about][%d] getAboutUsingGET1Forbidden ", 403)
+}
+
+func (o *GetAboutUsingGET1Forbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewGetAboutUsingGET1NotFound creates a GetAboutUsingGET1NotFound with default headers values
+func NewGetAboutUsingGET1NotFound() *GetAboutUsingGET1NotFound {
+	return &GetAboutUsingGET1NotFound{}
+}
+
+/*
+GetAboutUsingGET1NotFound describes a response with status code 404, with default header values.
+
+Not Found
+*/
+type GetAboutUsingGET1NotFound struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this get about using g e t1 not found response has a 2xx status code
+func (o *GetAboutUsingGET1NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get about using g e t1 not found response has a 3xx status code
+func (o *GetAboutUsingGET1NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get about using g e t1 not found response has a 4xx status code
+func (o *GetAboutUsingGET1NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get about using g e t1 not found response has a 5xx status code
+func (o *GetAboutUsingGET1NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get about using g e t1 not found response a status code equal to that given
+func (o *GetAboutUsingGET1NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+func (o *GetAboutUsingGET1NotFound) Error() string {
+	return fmt.Sprintf("[GET /blueprint/api/about][%d] getAboutUsingGET1NotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetAboutUsingGET1NotFound) String() string {
+	return fmt.Sprintf("[GET /blueprint/api/about][%d] getAboutUsingGET1NotFound  %+v", 404, o.Payload)
+}
+
+func (o *GetAboutUsingGET1NotFound) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *GetAboutUsingGET1NotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

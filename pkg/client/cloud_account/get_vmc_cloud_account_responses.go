@@ -51,7 +51,8 @@ func NewGetVmcCloudAccountOK() *GetVmcCloudAccountOK {
 	return &GetVmcCloudAccountOK{}
 }
 
-/* GetVmcCloudAccountOK describes a response with status code 200, with default header values.
+/*
+GetVmcCloudAccountOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetVmcCloudAccountOK struct {
 	Payload *models.CloudAccountVmc
 }
 
+// IsSuccess returns true when this get vmc cloud account o k response has a 2xx status code
+func (o *GetVmcCloudAccountOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get vmc cloud account o k response has a 3xx status code
+func (o *GetVmcCloudAccountOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get vmc cloud account o k response has a 4xx status code
+func (o *GetVmcCloudAccountOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get vmc cloud account o k response has a 5xx status code
+func (o *GetVmcCloudAccountOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get vmc cloud account o k response a status code equal to that given
+func (o *GetVmcCloudAccountOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetVmcCloudAccountOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vmc/{id}][%d] getVmcCloudAccountOK  %+v", 200, o.Payload)
 }
+
+func (o *GetVmcCloudAccountOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vmc/{id}][%d] getVmcCloudAccountOK  %+v", 200, o.Payload)
+}
+
 func (o *GetVmcCloudAccountOK) GetPayload() *models.CloudAccountVmc {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetVmcCloudAccountForbidden() *GetVmcCloudAccountForbidden {
 	return &GetVmcCloudAccountForbidden{}
 }
 
-/* GetVmcCloudAccountForbidden describes a response with status code 403, with default header values.
+/*
+GetVmcCloudAccountForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type GetVmcCloudAccountForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get vmc cloud account forbidden response has a 2xx status code
+func (o *GetVmcCloudAccountForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get vmc cloud account forbidden response has a 3xx status code
+func (o *GetVmcCloudAccountForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get vmc cloud account forbidden response has a 4xx status code
+func (o *GetVmcCloudAccountForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get vmc cloud account forbidden response has a 5xx status code
+func (o *GetVmcCloudAccountForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get vmc cloud account forbidden response a status code equal to that given
+func (o *GetVmcCloudAccountForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetVmcCloudAccountForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vmc/{id}][%d] getVmcCloudAccountForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetVmcCloudAccountForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vmc/{id}][%d] getVmcCloudAccountForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetVmcCloudAccountForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewGetVmcCloudAccountNotFound() *GetVmcCloudAccountNotFound {
 	return &GetVmcCloudAccountNotFound{}
 }
 
-/* GetVmcCloudAccountNotFound describes a response with status code 404, with default header values.
+/*
+GetVmcCloudAccountNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type GetVmcCloudAccountNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get vmc cloud account not found response has a 2xx status code
+func (o *GetVmcCloudAccountNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get vmc cloud account not found response has a 3xx status code
+func (o *GetVmcCloudAccountNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get vmc cloud account not found response has a 4xx status code
+func (o *GetVmcCloudAccountNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get vmc cloud account not found response has a 5xx status code
+func (o *GetVmcCloudAccountNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get vmc cloud account not found response a status code equal to that given
+func (o *GetVmcCloudAccountNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetVmcCloudAccountNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vmc/{id}][%d] getVmcCloudAccountNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetVmcCloudAccountNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vmc/{id}][%d] getVmcCloudAccountNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetVmcCloudAccountNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

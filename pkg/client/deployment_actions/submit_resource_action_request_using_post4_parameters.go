@@ -54,10 +54,12 @@ func NewSubmitResourceActionRequestUsingPOST4ParamsWithHTTPClient(client *http.C
 	}
 }
 
-/* SubmitResourceActionRequestUsingPOST4Params contains all the parameters to send to the API endpoint
-   for the submit resource action request using p o s t 4 operation.
+/*
+SubmitResourceActionRequestUsingPOST4Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the submit resource action request using p o s t 4 operation.
+
+	Typically these are written to a http.Request.
 */
 type SubmitResourceActionRequestUsingPOST4Params struct {
 

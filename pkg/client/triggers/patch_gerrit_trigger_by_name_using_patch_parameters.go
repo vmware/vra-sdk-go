@@ -54,10 +54,12 @@ func NewPatchGerritTriggerByNameUsingPATCHParamsWithHTTPClient(client *http.Clie
 	}
 }
 
-/* PatchGerritTriggerByNameUsingPATCHParams contains all the parameters to send to the API endpoint
-   for the patch gerrit trigger by name using p a t c h operation.
+/*
+PatchGerritTriggerByNameUsingPATCHParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the patch gerrit trigger by name using p a t c h operation.
+
+	Typically these are written to a http.Request.
 */
 type PatchGerritTriggerByNameUsingPATCHParams struct {
 

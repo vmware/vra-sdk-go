@@ -38,9 +38,9 @@ type ClientService interface {
 }
 
 /*
-  GetUsingGET3 gets a k8 s resource quota by id
+GetUsingGET3 gets a k8 s resource quota by id
 
-  Get a K8S ResourceQuota by id
+Get a K8S ResourceQuota by id
 */
 func (a *Client) GetUsingGET3(params *GetUsingGET3Params, opts ...ClientOption) (*GetUsingGET3OK, error) {
 	// TODO: Validate the params before sending
@@ -78,9 +78,9 @@ func (a *Client) GetUsingGET3(params *GetUsingGET3Params, opts ...ClientOption) 
 }
 
 /*
-  ListUsingGET3 gets all k8 s resource quotas
+ListUsingGET3 gets all k8 s resource quotas
 
-  Get a list of all K8S ResourceQuotas
+Get a list of all K8S ResourceQuotas
 */
 func (a *Client) ListUsingGET3(params *ListUsingGET3Params, opts ...ClientOption) (*ListUsingGET3OK, error) {
 	// TODO: Validate the params before sending

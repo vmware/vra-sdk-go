@@ -54,10 +54,12 @@ func NewEnumerateVSphereRegionsAsyncParamsWithHTTPClient(client *http.Client) *E
 	}
 }
 
-/* EnumerateVSphereRegionsAsyncParams contains all the parameters to send to the API endpoint
-   for the enumerate v sphere regions async operation.
+/*
+EnumerateVSphereRegionsAsyncParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the enumerate v sphere regions async operation.
+
+	Typically these are written to a http.Request.
 */
 type EnumerateVSphereRegionsAsyncParams struct {
 

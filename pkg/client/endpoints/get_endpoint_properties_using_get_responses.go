@@ -63,7 +63,8 @@ func NewGetEndpointPropertiesUsingGETOK() *GetEndpointPropertiesUsingGETOK {
 	return &GetEndpointPropertiesUsingGETOK{}
 }
 
-/* GetEndpointPropertiesUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetEndpointPropertiesUsingGETOK describes a response with status code 200, with default header values.
 
 'Success' with endpoint properties
 */
@@ -71,9 +72,39 @@ type GetEndpointPropertiesUsingGETOK struct {
 	Payload interface{}
 }
 
+// IsSuccess returns true when this get endpoint properties using g e t o k response has a 2xx status code
+func (o *GetEndpointPropertiesUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get endpoint properties using g e t o k response has a 3xx status code
+func (o *GetEndpointPropertiesUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get endpoint properties using g e t o k response has a 4xx status code
+func (o *GetEndpointPropertiesUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get endpoint properties using g e t o k response has a 5xx status code
+func (o *GetEndpointPropertiesUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get endpoint properties using g e t o k response a status code equal to that given
+func (o *GetEndpointPropertiesUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetEndpointPropertiesUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/endpoint-tiles/{type}][%d] getEndpointPropertiesUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetEndpointPropertiesUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /codestream/api/endpoint-tiles/{type}][%d] getEndpointPropertiesUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetEndpointPropertiesUsingGETOK) GetPayload() interface{} {
 	return o.Payload
 }
@@ -93,14 +124,44 @@ func NewGetEndpointPropertiesUsingGETUnauthorized() *GetEndpointPropertiesUsingG
 	return &GetEndpointPropertiesUsingGETUnauthorized{}
 }
 
-/* GetEndpointPropertiesUsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+GetEndpointPropertiesUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type GetEndpointPropertiesUsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this get endpoint properties using g e t unauthorized response has a 2xx status code
+func (o *GetEndpointPropertiesUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get endpoint properties using g e t unauthorized response has a 3xx status code
+func (o *GetEndpointPropertiesUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get endpoint properties using g e t unauthorized response has a 4xx status code
+func (o *GetEndpointPropertiesUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get endpoint properties using g e t unauthorized response has a 5xx status code
+func (o *GetEndpointPropertiesUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get endpoint properties using g e t unauthorized response a status code equal to that given
+func (o *GetEndpointPropertiesUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetEndpointPropertiesUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/endpoint-tiles/{type}][%d] getEndpointPropertiesUsingGETUnauthorized ", 401)
+}
+
+func (o *GetEndpointPropertiesUsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /codestream/api/endpoint-tiles/{type}][%d] getEndpointPropertiesUsingGETUnauthorized ", 401)
 }
 
@@ -114,14 +175,44 @@ func NewGetEndpointPropertiesUsingGETForbidden() *GetEndpointPropertiesUsingGETF
 	return &GetEndpointPropertiesUsingGETForbidden{}
 }
 
-/* GetEndpointPropertiesUsingGETForbidden describes a response with status code 403, with default header values.
+/*
+GetEndpointPropertiesUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetEndpointPropertiesUsingGETForbidden struct {
 }
 
+// IsSuccess returns true when this get endpoint properties using g e t forbidden response has a 2xx status code
+func (o *GetEndpointPropertiesUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get endpoint properties using g e t forbidden response has a 3xx status code
+func (o *GetEndpointPropertiesUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get endpoint properties using g e t forbidden response has a 4xx status code
+func (o *GetEndpointPropertiesUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get endpoint properties using g e t forbidden response has a 5xx status code
+func (o *GetEndpointPropertiesUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get endpoint properties using g e t forbidden response a status code equal to that given
+func (o *GetEndpointPropertiesUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetEndpointPropertiesUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/endpoint-tiles/{type}][%d] getEndpointPropertiesUsingGETForbidden ", 403)
+}
+
+func (o *GetEndpointPropertiesUsingGETForbidden) String() string {
 	return fmt.Sprintf("[GET /codestream/api/endpoint-tiles/{type}][%d] getEndpointPropertiesUsingGETForbidden ", 403)
 }
 
@@ -135,7 +226,8 @@ func NewGetEndpointPropertiesUsingGETNotFound() *GetEndpointPropertiesUsingGETNo
 	return &GetEndpointPropertiesUsingGETNotFound{}
 }
 
-/* GetEndpointPropertiesUsingGETNotFound describes a response with status code 404, with default header values.
+/*
+GetEndpointPropertiesUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -143,9 +235,39 @@ type GetEndpointPropertiesUsingGETNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get endpoint properties using g e t not found response has a 2xx status code
+func (o *GetEndpointPropertiesUsingGETNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get endpoint properties using g e t not found response has a 3xx status code
+func (o *GetEndpointPropertiesUsingGETNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get endpoint properties using g e t not found response has a 4xx status code
+func (o *GetEndpointPropertiesUsingGETNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get endpoint properties using g e t not found response has a 5xx status code
+func (o *GetEndpointPropertiesUsingGETNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get endpoint properties using g e t not found response a status code equal to that given
+func (o *GetEndpointPropertiesUsingGETNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetEndpointPropertiesUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/endpoint-tiles/{type}][%d] getEndpointPropertiesUsingGETNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetEndpointPropertiesUsingGETNotFound) String() string {
+	return fmt.Sprintf("[GET /codestream/api/endpoint-tiles/{type}][%d] getEndpointPropertiesUsingGETNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetEndpointPropertiesUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -167,14 +289,44 @@ func NewGetEndpointPropertiesUsingGETInternalServerError() *GetEndpointPropertie
 	return &GetEndpointPropertiesUsingGETInternalServerError{}
 }
 
-/* GetEndpointPropertiesUsingGETInternalServerError describes a response with status code 500, with default header values.
+/*
+GetEndpointPropertiesUsingGETInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type GetEndpointPropertiesUsingGETInternalServerError struct {
 }
 
+// IsSuccess returns true when this get endpoint properties using g e t internal server error response has a 2xx status code
+func (o *GetEndpointPropertiesUsingGETInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get endpoint properties using g e t internal server error response has a 3xx status code
+func (o *GetEndpointPropertiesUsingGETInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get endpoint properties using g e t internal server error response has a 4xx status code
+func (o *GetEndpointPropertiesUsingGETInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get endpoint properties using g e t internal server error response has a 5xx status code
+func (o *GetEndpointPropertiesUsingGETInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this get endpoint properties using g e t internal server error response a status code equal to that given
+func (o *GetEndpointPropertiesUsingGETInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GetEndpointPropertiesUsingGETInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/endpoint-tiles/{type}][%d] getEndpointPropertiesUsingGETInternalServerError ", 500)
+}
+
+func (o *GetEndpointPropertiesUsingGETInternalServerError) String() string {
 	return fmt.Sprintf("[GET /codestream/api/endpoint-tiles/{type}][%d] getEndpointPropertiesUsingGETInternalServerError ", 500)
 }
 

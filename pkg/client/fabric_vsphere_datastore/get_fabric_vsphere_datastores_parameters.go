@@ -53,16 +53,18 @@ func NewGetFabricVSphereDatastoresParamsWithHTTPClient(client *http.Client) *Get
 	}
 }
 
-/* GetFabricVSphereDatastoresParams contains all the parameters to send to the API endpoint
-   for the get fabric v sphere datastores operation.
+/*
+GetFabricVSphereDatastoresParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get fabric v sphere datastores operation.
+
+	Typically these are written to a http.Request.
 */
 type GetFabricVSphereDatastoresParams struct {
 
 	/* DollarCount.
 
-	   Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.
+	   Flag which when specified, regardless of the assigned value, shows the total number of records. If the collection has a filter it shows the number of records matching the filter.
 	*/
 	DollarCount *bool
 

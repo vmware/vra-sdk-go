@@ -54,10 +54,12 @@ func NewEnumerateAwsRegionsAsyncParamsWithHTTPClient(client *http.Client) *Enume
 	}
 }
 
-/* EnumerateAwsRegionsAsyncParams contains all the parameters to send to the API endpoint
-   for the enumerate aws regions async operation.
+/*
+EnumerateAwsRegionsAsyncParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the enumerate aws regions async operation.
+
+	Typically these are written to a http.Request.
 */
 type EnumerateAwsRegionsAsyncParams struct {
 

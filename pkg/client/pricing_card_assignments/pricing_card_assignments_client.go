@@ -50,7 +50,7 @@ type ClientService interface {
 }
 
 /*
-  ChangeMeteringAssignmentStrategyUsingPATCH2 updates the pricing card assignment strategy for the org
+ChangeMeteringAssignmentStrategyUsingPATCH2 updates the pricing card assignment strategy for the org
 */
 func (a *Client) ChangeMeteringAssignmentStrategyUsingPATCH2(params *ChangeMeteringAssignmentStrategyUsingPATCH2Params, opts ...ClientOption) (*ChangeMeteringAssignmentStrategyUsingPATCH2OK, error) {
 	// TODO: Validate the params before sending
@@ -88,9 +88,9 @@ func (a *Client) ChangeMeteringAssignmentStrategyUsingPATCH2(params *ChangeMeter
 }
 
 /*
-  CreateMeteringAssignmentStrategyUsingPOST2 selectings the new pricing card assignment strategy p r o j e c t or c l o u d z o n e are possible values can be used while creating strategy also there can be only one strategy for a given org at a given point of time
+CreateMeteringAssignmentStrategyUsingPOST2 selectings the new pricing card assignment strategy p r o j e c t or c l o u d z o n e are possible values can be used while creating strategy also there can be only one strategy for a given org at a given point of time
 
-  Create a new pricing card assignment strategy based on request body and validate its field according to business rules.
+Create a new pricing card assignment strategy based on request body and validate its field according to business rules.
 */
 func (a *Client) CreateMeteringAssignmentStrategyUsingPOST2(params *CreateMeteringAssignmentStrategyUsingPOST2Params, opts ...ClientOption) (*CreateMeteringAssignmentStrategyUsingPOST2OK, *CreateMeteringAssignmentStrategyUsingPOST2Created, error) {
 	// TODO: Validate the params before sending
@@ -129,9 +129,9 @@ func (a *Client) CreateMeteringAssignmentStrategyUsingPOST2(params *CreateMeteri
 }
 
 /*
-  CreateMeteringPolicyAssignmentUsingPOST2 creates a new pricing card assignment
+CreateMeteringPolicyAssignmentUsingPOST2 creates a new pricing card assignment
 
-  Create a new pricing card policy assignment based on request body and validate its field according to business rules. Request body with ALL entityType will delete the older assignments for the given pricingCardId
+Create a new pricing card policy assignment based on request body and validate its field according to business rules. Request body with ALL entityType will delete the older assignments for the given pricingCardId
 */
 func (a *Client) CreateMeteringPolicyAssignmentUsingPOST2(params *CreateMeteringPolicyAssignmentUsingPOST2Params, opts ...ClientOption) (*CreateMeteringPolicyAssignmentUsingPOST2OK, *CreateMeteringPolicyAssignmentUsingPOST2Created, error) {
 	// TODO: Validate the params before sending
@@ -170,9 +170,9 @@ func (a *Client) CreateMeteringPolicyAssignmentUsingPOST2(params *CreateMetering
 }
 
 /*
-  DeleteMeteringPolicyAssignmentUsingDELETE2 deletes the pricing card assignment with specified id
+DeleteMeteringPolicyAssignmentUsingDELETE2 deletes the pricing card assignment with specified id
 
-  Deletes the pricing card assignment with the specified id
+Deletes the pricing card assignment with the specified id
 */
 func (a *Client) DeleteMeteringPolicyAssignmentUsingDELETE2(params *DeleteMeteringPolicyAssignmentUsingDELETE2Params, opts ...ClientOption) (*DeleteMeteringPolicyAssignmentUsingDELETE2OK, error) {
 	// TODO: Validate the params before sending
@@ -210,9 +210,9 @@ func (a *Client) DeleteMeteringPolicyAssignmentUsingDELETE2(params *DeleteMeteri
 }
 
 /*
-  GetAllMeteringPolicyAssignmentsUsingGET2 fetches all pricing card assignment for private cloud
+GetAllMeteringPolicyAssignmentsUsingGET2 fetches all pricing card assignment for private cloud
 
-  Returns a paginated list of pricing card assignments
+Returns a paginated list of pricing card assignments
 */
 func (a *Client) GetAllMeteringPolicyAssignmentsUsingGET2(params *GetAllMeteringPolicyAssignmentsUsingGET2Params, opts ...ClientOption) (*GetAllMeteringPolicyAssignmentsUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -250,9 +250,9 @@ func (a *Client) GetAllMeteringPolicyAssignmentsUsingGET2(params *GetAllMetering
 }
 
 /*
-  GetMeteringAssignmentStrategyUsingGET2 fetches pricing card assignment strategy for the org
+GetMeteringAssignmentStrategyUsingGET2 fetches pricing card assignment strategy for the org
 
-  Returns a pricing card assignment strategy for the Org
+Returns a pricing card assignment strategy for the Org
 */
 func (a *Client) GetMeteringAssignmentStrategyUsingGET2(params *GetMeteringAssignmentStrategyUsingGET2Params, opts ...ClientOption) (*GetMeteringAssignmentStrategyUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -290,9 +290,9 @@ func (a *Client) GetMeteringAssignmentStrategyUsingGET2(params *GetMeteringAssig
 }
 
 /*
-  GetMeteringPolicyAssignmentUsingGET2 fetches pricing card assignment for private cloud by id
+GetMeteringPolicyAssignmentUsingGET2 fetches pricing card assignment for private cloud by id
 
-  Returns a pricing card assignments by id
+Returns a pricing card assignments by id
 */
 func (a *Client) GetMeteringPolicyAssignmentUsingGET2(params *GetMeteringPolicyAssignmentUsingGET2Params, opts ...ClientOption) (*GetMeteringPolicyAssignmentUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -330,7 +330,7 @@ func (a *Client) GetMeteringPolicyAssignmentUsingGET2(params *GetMeteringPolicyA
 }
 
 /*
-  PatchMeteringPolicyAssignmentUsingPATCH2 updates the pricing card assignment id with the supplied id request body with a l l entity type will delete the older assignments for the given pricing card Id
+PatchMeteringPolicyAssignmentUsingPATCH2 updates the pricing card assignment id with the supplied id request body with a l l entity type will delete the older assignments for the given pricing card Id
 */
 func (a *Client) PatchMeteringPolicyAssignmentUsingPATCH2(params *PatchMeteringPolicyAssignmentUsingPATCH2Params, opts ...ClientOption) (*PatchMeteringPolicyAssignmentUsingPATCH2OK, error) {
 	// TODO: Validate the params before sending

@@ -63,7 +63,8 @@ func NewCreatePipelineUsingPOSTOK() *CreatePipelineUsingPOSTOK {
 	return &CreatePipelineUsingPOSTOK{}
 }
 
-/* CreatePipelineUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+CreatePipelineUsingPOSTOK describes a response with status code 200, with default header values.
 
 'Success' with the created Pipeline
 */
@@ -71,9 +72,39 @@ type CreatePipelineUsingPOSTOK struct {
 	Payload models.Pipeline
 }
 
+// IsSuccess returns true when this create pipeline using p o s t o k response has a 2xx status code
+func (o *CreatePipelineUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create pipeline using p o s t o k response has a 3xx status code
+func (o *CreatePipelineUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create pipeline using p o s t o k response has a 4xx status code
+func (o *CreatePipelineUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create pipeline using p o s t o k response has a 5xx status code
+func (o *CreatePipelineUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create pipeline using p o s t o k response a status code equal to that given
+func (o *CreatePipelineUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CreatePipelineUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/pipelines][%d] createPipelineUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *CreatePipelineUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /codestream/api/pipelines][%d] createPipelineUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *CreatePipelineUsingPOSTOK) GetPayload() models.Pipeline {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewCreatePipelineUsingPOSTUnauthorized() *CreatePipelineUsingPOSTUnauthoriz
 	return &CreatePipelineUsingPOSTUnauthorized{}
 }
 
-/* CreatePipelineUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+CreatePipelineUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type CreatePipelineUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this create pipeline using p o s t unauthorized response has a 2xx status code
+func (o *CreatePipelineUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create pipeline using p o s t unauthorized response has a 3xx status code
+func (o *CreatePipelineUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create pipeline using p o s t unauthorized response has a 4xx status code
+func (o *CreatePipelineUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create pipeline using p o s t unauthorized response has a 5xx status code
+func (o *CreatePipelineUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create pipeline using p o s t unauthorized response a status code equal to that given
+func (o *CreatePipelineUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreatePipelineUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/pipelines][%d] createPipelineUsingPOSTUnauthorized ", 401)
+}
+
+func (o *CreatePipelineUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /codestream/api/pipelines][%d] createPipelineUsingPOSTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewCreatePipelineUsingPOSTForbidden() *CreatePipelineUsingPOSTForbidden {
 	return &CreatePipelineUsingPOSTForbidden{}
 }
 
-/* CreatePipelineUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+CreatePipelineUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type CreatePipelineUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this create pipeline using p o s t forbidden response has a 2xx status code
+func (o *CreatePipelineUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create pipeline using p o s t forbidden response has a 3xx status code
+func (o *CreatePipelineUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create pipeline using p o s t forbidden response has a 4xx status code
+func (o *CreatePipelineUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create pipeline using p o s t forbidden response has a 5xx status code
+func (o *CreatePipelineUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create pipeline using p o s t forbidden response a status code equal to that given
+func (o *CreatePipelineUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreatePipelineUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/pipelines][%d] createPipelineUsingPOSTForbidden ", 403)
+}
+
+func (o *CreatePipelineUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /codestream/api/pipelines][%d] createPipelineUsingPOSTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewCreatePipelineUsingPOSTNotFound() *CreatePipelineUsingPOSTNotFound {
 	return &CreatePipelineUsingPOSTNotFound{}
 }
 
-/* CreatePipelineUsingPOSTNotFound describes a response with status code 404, with default header values.
+/*
+CreatePipelineUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type CreatePipelineUsingPOSTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create pipeline using p o s t not found response has a 2xx status code
+func (o *CreatePipelineUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create pipeline using p o s t not found response has a 3xx status code
+func (o *CreatePipelineUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create pipeline using p o s t not found response has a 4xx status code
+func (o *CreatePipelineUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create pipeline using p o s t not found response has a 5xx status code
+func (o *CreatePipelineUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create pipeline using p o s t not found response a status code equal to that given
+func (o *CreatePipelineUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CreatePipelineUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/pipelines][%d] createPipelineUsingPOSTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CreatePipelineUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /codestream/api/pipelines][%d] createPipelineUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CreatePipelineUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewCreatePipelineUsingPOSTInternalServerError() *CreatePipelineUsingPOSTInt
 	return &CreatePipelineUsingPOSTInternalServerError{}
 }
 
-/* CreatePipelineUsingPOSTInternalServerError describes a response with status code 500, with default header values.
+/*
+CreatePipelineUsingPOSTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CreatePipelineUsingPOSTInternalServerError struct {
 }
 
+// IsSuccess returns true when this create pipeline using p o s t internal server error response has a 2xx status code
+func (o *CreatePipelineUsingPOSTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create pipeline using p o s t internal server error response has a 3xx status code
+func (o *CreatePipelineUsingPOSTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create pipeline using p o s t internal server error response has a 4xx status code
+func (o *CreatePipelineUsingPOSTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create pipeline using p o s t internal server error response has a 5xx status code
+func (o *CreatePipelineUsingPOSTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this create pipeline using p o s t internal server error response a status code equal to that given
+func (o *CreatePipelineUsingPOSTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CreatePipelineUsingPOSTInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/pipelines][%d] createPipelineUsingPOSTInternalServerError ", 500)
+}
+
+func (o *CreatePipelineUsingPOSTInternalServerError) String() string {
 	return fmt.Sprintf("[POST /codestream/api/pipelines][%d] createPipelineUsingPOSTInternalServerError ", 500)
 }
 

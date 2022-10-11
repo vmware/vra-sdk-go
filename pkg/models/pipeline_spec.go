@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -22,7 +21,7 @@ import (
 
 // PipelineSpec PipelineSpec
 //
-// Pipeline Specification
+// # Pipeline Specification
 //
 // swagger:discriminator PipelineSpec Pipeline Specification
 type PipelineSpec interface {
@@ -108,8 +107,9 @@ type PipelineSpec interface {
 	Tags() []string
 	SetTags([]string)
 
-	Workspace() Workspace
-	SetWorkspace(Workspace)
+	// Represents the configuration to be used for CI and Custom tasks.
+	Workspace() *Workspace
+	SetWorkspace(*Workspace)
 
 	// AdditionalProperties in base type shoud be handled just like regular properties
 	// At this moment, the base type property is pushed down to the subtype
@@ -150,7 +150,7 @@ type pipelineSpec struct {
 
 	tagsField []string
 
-	workspaceField Workspace
+	workspaceField *Workspace
 }
 
 // InputMeta gets the input meta of this polymorphic type
@@ -324,12 +324,12 @@ func (m *pipelineSpec) SetTags(val []string) {
 }
 
 // Workspace gets the workspace of this polymorphic type
-func (m *pipelineSpec) Workspace() Workspace {
+func (m *pipelineSpec) Workspace() *Workspace {
 	return m.workspaceField
 }
 
 // SetWorkspace sets the workspace of this polymorphic type
-func (m *pipelineSpec) SetWorkspace(val Workspace) {
+func (m *pipelineSpec) SetWorkspace(val *Workspace) {
 	m.workspaceField = val
 }
 
@@ -354,7 +354,7 @@ func UnmarshalPipelineSpecSlice(reader io.Reader, consumer runtime.Consumer) ([]
 // UnmarshalPipelineSpec unmarshals polymorphic PipelineSpec
 func UnmarshalPipelineSpec(reader io.Reader, consumer runtime.Consumer) (PipelineSpec, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}
@@ -561,13 +561,15 @@ func (m *pipelineSpec) validateWorkspace(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if err := m.Workspace().Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("workspace")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("workspace")
+	if m.Workspace() != nil {
+		if err := m.Workspace().Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("workspace")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("workspace")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -685,13 +687,15 @@ func (m *pipelineSpec) contextValidateStarred(ctx context.Context, formats strfm
 
 func (m *pipelineSpec) contextValidateWorkspace(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.Workspace().ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("workspace")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("workspace")
+	if m.Workspace() != nil {
+		if err := m.Workspace().ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("workspace")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("workspace")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil

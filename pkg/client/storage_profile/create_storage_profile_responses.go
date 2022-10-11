@@ -51,7 +51,8 @@ func NewCreateStorageProfileCreated() *CreateStorageProfileCreated {
 	return &CreateStorageProfileCreated{}
 }
 
-/* CreateStorageProfileCreated describes a response with status code 201, with default header values.
+/*
+CreateStorageProfileCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type CreateStorageProfileCreated struct {
 	Payload *models.StorageProfile
 }
 
+// IsSuccess returns true when this create storage profile created response has a 2xx status code
+func (o *CreateStorageProfileCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create storage profile created response has a 3xx status code
+func (o *CreateStorageProfileCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create storage profile created response has a 4xx status code
+func (o *CreateStorageProfileCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create storage profile created response has a 5xx status code
+func (o *CreateStorageProfileCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create storage profile created response a status code equal to that given
+func (o *CreateStorageProfileCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateStorageProfileCreated) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/storage-profiles][%d] createStorageProfileCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateStorageProfileCreated) String() string {
+	return fmt.Sprintf("[POST /iaas/api/storage-profiles][%d] createStorageProfileCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateStorageProfileCreated) GetPayload() *models.StorageProfile {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewCreateStorageProfileBadRequest() *CreateStorageProfileBadRequest {
 	return &CreateStorageProfileBadRequest{}
 }
 
-/* CreateStorageProfileBadRequest describes a response with status code 400, with default header values.
+/*
+CreateStorageProfileBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type CreateStorageProfileBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create storage profile bad request response has a 2xx status code
+func (o *CreateStorageProfileBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create storage profile bad request response has a 3xx status code
+func (o *CreateStorageProfileBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create storage profile bad request response has a 4xx status code
+func (o *CreateStorageProfileBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create storage profile bad request response has a 5xx status code
+func (o *CreateStorageProfileBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create storage profile bad request response a status code equal to that given
+func (o *CreateStorageProfileBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateStorageProfileBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/storage-profiles][%d] createStorageProfileBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateStorageProfileBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/storage-profiles][%d] createStorageProfileBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateStorageProfileBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewCreateStorageProfileForbidden() *CreateStorageProfileForbidden {
 	return &CreateStorageProfileForbidden{}
 }
 
-/* CreateStorageProfileForbidden describes a response with status code 403, with default header values.
+/*
+CreateStorageProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type CreateStorageProfileForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this create storage profile forbidden response has a 2xx status code
+func (o *CreateStorageProfileForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create storage profile forbidden response has a 3xx status code
+func (o *CreateStorageProfileForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create storage profile forbidden response has a 4xx status code
+func (o *CreateStorageProfileForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create storage profile forbidden response has a 5xx status code
+func (o *CreateStorageProfileForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create storage profile forbidden response a status code equal to that given
+func (o *CreateStorageProfileForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateStorageProfileForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/storage-profiles][%d] createStorageProfileForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CreateStorageProfileForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/storage-profiles][%d] createStorageProfileForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CreateStorageProfileForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

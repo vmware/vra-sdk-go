@@ -54,10 +54,12 @@ func NewUpdateIntegrationAsyncParamsWithHTTPClient(client *http.Client) *UpdateI
 	}
 }
 
-/* UpdateIntegrationAsyncParams contains all the parameters to send to the API endpoint
-   for the update integration async operation.
+/*
+UpdateIntegrationAsyncParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update integration async operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateIntegrationAsyncParams struct {
 

@@ -57,14 +57,44 @@ func NewCancelBlueprintRequestUsingPOSTOK() *CancelBlueprintRequestUsingPOSTOK {
 	return &CancelBlueprintRequestUsingPOSTOK{}
 }
 
-/* CancelBlueprintRequestUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+CancelBlueprintRequestUsingPOSTOK describes a response with status code 200, with default header values.
 
 OK
 */
 type CancelBlueprintRequestUsingPOSTOK struct {
 }
 
+// IsSuccess returns true when this cancel blueprint request using p o s t o k response has a 2xx status code
+func (o *CancelBlueprintRequestUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this cancel blueprint request using p o s t o k response has a 3xx status code
+func (o *CancelBlueprintRequestUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cancel blueprint request using p o s t o k response has a 4xx status code
+func (o *CancelBlueprintRequestUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cancel blueprint request using p o s t o k response has a 5xx status code
+func (o *CancelBlueprintRequestUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cancel blueprint request using p o s t o k response a status code equal to that given
+func (o *CancelBlueprintRequestUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CancelBlueprintRequestUsingPOSTOK) Error() string {
+	return fmt.Sprintf("[POST /blueprint/api/blueprint-requests/{requestId}/actions/cancel][%d] cancelBlueprintRequestUsingPOSTOK ", 200)
+}
+
+func (o *CancelBlueprintRequestUsingPOSTOK) String() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprint-requests/{requestId}/actions/cancel][%d] cancelBlueprintRequestUsingPOSTOK ", 200)
 }
 
@@ -78,14 +108,44 @@ func NewCancelBlueprintRequestUsingPOSTUnauthorized() *CancelBlueprintRequestUsi
 	return &CancelBlueprintRequestUsingPOSTUnauthorized{}
 }
 
-/* CancelBlueprintRequestUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+CancelBlueprintRequestUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type CancelBlueprintRequestUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this cancel blueprint request using p o s t unauthorized response has a 2xx status code
+func (o *CancelBlueprintRequestUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cancel blueprint request using p o s t unauthorized response has a 3xx status code
+func (o *CancelBlueprintRequestUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cancel blueprint request using p o s t unauthorized response has a 4xx status code
+func (o *CancelBlueprintRequestUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cancel blueprint request using p o s t unauthorized response has a 5xx status code
+func (o *CancelBlueprintRequestUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cancel blueprint request using p o s t unauthorized response a status code equal to that given
+func (o *CancelBlueprintRequestUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CancelBlueprintRequestUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /blueprint/api/blueprint-requests/{requestId}/actions/cancel][%d] cancelBlueprintRequestUsingPOSTUnauthorized ", 401)
+}
+
+func (o *CancelBlueprintRequestUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprint-requests/{requestId}/actions/cancel][%d] cancelBlueprintRequestUsingPOSTUnauthorized ", 401)
 }
 
@@ -99,14 +159,44 @@ func NewCancelBlueprintRequestUsingPOSTForbidden() *CancelBlueprintRequestUsingP
 	return &CancelBlueprintRequestUsingPOSTForbidden{}
 }
 
-/* CancelBlueprintRequestUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+CancelBlueprintRequestUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type CancelBlueprintRequestUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this cancel blueprint request using p o s t forbidden response has a 2xx status code
+func (o *CancelBlueprintRequestUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cancel blueprint request using p o s t forbidden response has a 3xx status code
+func (o *CancelBlueprintRequestUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cancel blueprint request using p o s t forbidden response has a 4xx status code
+func (o *CancelBlueprintRequestUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cancel blueprint request using p o s t forbidden response has a 5xx status code
+func (o *CancelBlueprintRequestUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cancel blueprint request using p o s t forbidden response a status code equal to that given
+func (o *CancelBlueprintRequestUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CancelBlueprintRequestUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /blueprint/api/blueprint-requests/{requestId}/actions/cancel][%d] cancelBlueprintRequestUsingPOSTForbidden ", 403)
+}
+
+func (o *CancelBlueprintRequestUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprint-requests/{requestId}/actions/cancel][%d] cancelBlueprintRequestUsingPOSTForbidden ", 403)
 }
 
@@ -120,7 +210,8 @@ func NewCancelBlueprintRequestUsingPOSTNotFound() *CancelBlueprintRequestUsingPO
 	return &CancelBlueprintRequestUsingPOSTNotFound{}
 }
 
-/* CancelBlueprintRequestUsingPOSTNotFound describes a response with status code 404, with default header values.
+/*
+CancelBlueprintRequestUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -128,9 +219,39 @@ type CancelBlueprintRequestUsingPOSTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this cancel blueprint request using p o s t not found response has a 2xx status code
+func (o *CancelBlueprintRequestUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cancel blueprint request using p o s t not found response has a 3xx status code
+func (o *CancelBlueprintRequestUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cancel blueprint request using p o s t not found response has a 4xx status code
+func (o *CancelBlueprintRequestUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cancel blueprint request using p o s t not found response has a 5xx status code
+func (o *CancelBlueprintRequestUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cancel blueprint request using p o s t not found response a status code equal to that given
+func (o *CancelBlueprintRequestUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CancelBlueprintRequestUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /blueprint/api/blueprint-requests/{requestId}/actions/cancel][%d] cancelBlueprintRequestUsingPOSTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CancelBlueprintRequestUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /blueprint/api/blueprint-requests/{requestId}/actions/cancel][%d] cancelBlueprintRequestUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CancelBlueprintRequestUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

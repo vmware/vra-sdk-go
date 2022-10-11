@@ -45,7 +45,8 @@ func NewGetLoadBalancersOK() *GetLoadBalancersOK {
 	return &GetLoadBalancersOK{}
 }
 
-/* GetLoadBalancersOK describes a response with status code 200, with default header values.
+/*
+GetLoadBalancersOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type GetLoadBalancersOK struct {
 	Payload *models.LoadBalancerResult
 }
 
+// IsSuccess returns true when this get load balancers o k response has a 2xx status code
+func (o *GetLoadBalancersOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get load balancers o k response has a 3xx status code
+func (o *GetLoadBalancersOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get load balancers o k response has a 4xx status code
+func (o *GetLoadBalancersOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get load balancers o k response has a 5xx status code
+func (o *GetLoadBalancersOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get load balancers o k response a status code equal to that given
+func (o *GetLoadBalancersOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetLoadBalancersOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/load-balancers][%d] getLoadBalancersOK  %+v", 200, o.Payload)
 }
+
+func (o *GetLoadBalancersOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/load-balancers][%d] getLoadBalancersOK  %+v", 200, o.Payload)
+}
+
 func (o *GetLoadBalancersOK) GetPayload() *models.LoadBalancerResult {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewGetLoadBalancersForbidden() *GetLoadBalancersForbidden {
 	return &GetLoadBalancersForbidden{}
 }
 
-/* GetLoadBalancersForbidden describes a response with status code 403, with default header values.
+/*
+GetLoadBalancersForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type GetLoadBalancersForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get load balancers forbidden response has a 2xx status code
+func (o *GetLoadBalancersForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get load balancers forbidden response has a 3xx status code
+func (o *GetLoadBalancersForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get load balancers forbidden response has a 4xx status code
+func (o *GetLoadBalancersForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get load balancers forbidden response has a 5xx status code
+func (o *GetLoadBalancersForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get load balancers forbidden response a status code equal to that given
+func (o *GetLoadBalancersForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetLoadBalancersForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/load-balancers][%d] getLoadBalancersForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetLoadBalancersForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/load-balancers][%d] getLoadBalancersForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetLoadBalancersForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

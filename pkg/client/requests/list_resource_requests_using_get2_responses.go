@@ -51,7 +51,8 @@ func NewListResourceRequestsUsingGET2OK() *ListResourceRequestsUsingGET2OK {
 	return &ListResourceRequestsUsingGET2OK{}
 }
 
-/* ListResourceRequestsUsingGET2OK describes a response with status code 200, with default header values.
+/*
+ListResourceRequestsUsingGET2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -59,9 +60,39 @@ type ListResourceRequestsUsingGET2OK struct {
 	Payload *models.PageOfRequest
 }
 
+// IsSuccess returns true when this list resource requests using g e t2 o k response has a 2xx status code
+func (o *ListResourceRequestsUsingGET2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this list resource requests using g e t2 o k response has a 3xx status code
+func (o *ListResourceRequestsUsingGET2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this list resource requests using g e t2 o k response has a 4xx status code
+func (o *ListResourceRequestsUsingGET2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this list resource requests using g e t2 o k response has a 5xx status code
+func (o *ListResourceRequestsUsingGET2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this list resource requests using g e t2 o k response a status code equal to that given
+func (o *ListResourceRequestsUsingGET2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ListResourceRequestsUsingGET2OK) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/resources/{resourceId}/requests][%d] listResourceRequestsUsingGET2OK  %+v", 200, o.Payload)
 }
+
+func (o *ListResourceRequestsUsingGET2OK) String() string {
+	return fmt.Sprintf("[GET /deployment/api/resources/{resourceId}/requests][%d] listResourceRequestsUsingGET2OK  %+v", 200, o.Payload)
+}
+
 func (o *ListResourceRequestsUsingGET2OK) GetPayload() *models.PageOfRequest {
 	return o.Payload
 }
@@ -83,14 +114,44 @@ func NewListResourceRequestsUsingGET2Unauthorized() *ListResourceRequestsUsingGE
 	return &ListResourceRequestsUsingGET2Unauthorized{}
 }
 
-/* ListResourceRequestsUsingGET2Unauthorized describes a response with status code 401, with default header values.
+/*
+ListResourceRequestsUsingGET2Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type ListResourceRequestsUsingGET2Unauthorized struct {
 }
 
+// IsSuccess returns true when this list resource requests using g e t2 unauthorized response has a 2xx status code
+func (o *ListResourceRequestsUsingGET2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this list resource requests using g e t2 unauthorized response has a 3xx status code
+func (o *ListResourceRequestsUsingGET2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this list resource requests using g e t2 unauthorized response has a 4xx status code
+func (o *ListResourceRequestsUsingGET2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this list resource requests using g e t2 unauthorized response has a 5xx status code
+func (o *ListResourceRequestsUsingGET2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this list resource requests using g e t2 unauthorized response a status code equal to that given
+func (o *ListResourceRequestsUsingGET2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ListResourceRequestsUsingGET2Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /deployment/api/resources/{resourceId}/requests][%d] listResourceRequestsUsingGET2Unauthorized ", 401)
+}
+
+func (o *ListResourceRequestsUsingGET2Unauthorized) String() string {
 	return fmt.Sprintf("[GET /deployment/api/resources/{resourceId}/requests][%d] listResourceRequestsUsingGET2Unauthorized ", 401)
 }
 
@@ -104,7 +165,8 @@ func NewListResourceRequestsUsingGET2NotFound() *ListResourceRequestsUsingGET2No
 	return &ListResourceRequestsUsingGET2NotFound{}
 }
 
-/* ListResourceRequestsUsingGET2NotFound describes a response with status code 404, with default header values.
+/*
+ListResourceRequestsUsingGET2NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -112,9 +174,39 @@ type ListResourceRequestsUsingGET2NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this list resource requests using g e t2 not found response has a 2xx status code
+func (o *ListResourceRequestsUsingGET2NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this list resource requests using g e t2 not found response has a 3xx status code
+func (o *ListResourceRequestsUsingGET2NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this list resource requests using g e t2 not found response has a 4xx status code
+func (o *ListResourceRequestsUsingGET2NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this list resource requests using g e t2 not found response has a 5xx status code
+func (o *ListResourceRequestsUsingGET2NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this list resource requests using g e t2 not found response a status code equal to that given
+func (o *ListResourceRequestsUsingGET2NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ListResourceRequestsUsingGET2NotFound) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/resources/{resourceId}/requests][%d] listResourceRequestsUsingGET2NotFound  %+v", 404, o.Payload)
 }
+
+func (o *ListResourceRequestsUsingGET2NotFound) String() string {
+	return fmt.Sprintf("[GET /deployment/api/resources/{resourceId}/requests][%d] listResourceRequestsUsingGET2NotFound  %+v", 404, o.Payload)
+}
+
 func (o *ListResourceRequestsUsingGET2NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

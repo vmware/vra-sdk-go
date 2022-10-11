@@ -57,7 +57,8 @@ func NewGetDomainsUsingGETOK() *GetDomainsUsingGETOK {
 	return &GetDomainsUsingGETOK{}
 }
 
-/* GetDomainsUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetDomainsUsingGETOK describes a response with status code 200, with default header values.
 
 Get domains of the vCF endpoint
 */
@@ -65,9 +66,39 @@ type GetDomainsUsingGETOK struct {
 	Payload *models.VcfDomain
 }
 
+// IsSuccess returns true when this get domains using g e t o k response has a 2xx status code
+func (o *GetDomainsUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get domains using g e t o k response has a 3xx status code
+func (o *GetDomainsUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get domains using g e t o k response has a 4xx status code
+func (o *GetDomainsUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get domains using g e t o k response has a 5xx status code
+func (o *GetDomainsUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get domains using g e t o k response a status code equal to that given
+func (o *GetDomainsUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetDomainsUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /content/api/vcf/{integrationId}/domains][%d] getDomainsUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetDomainsUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /content/api/vcf/{integrationId}/domains][%d] getDomainsUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetDomainsUsingGETOK) GetPayload() *models.VcfDomain {
 	return o.Payload
 }
@@ -89,7 +120,8 @@ func NewGetDomainsUsingGETBadRequest() *GetDomainsUsingGETBadRequest {
 	return &GetDomainsUsingGETBadRequest{}
 }
 
-/* GetDomainsUsingGETBadRequest describes a response with status code 400, with default header values.
+/*
+GetDomainsUsingGETBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -97,9 +129,39 @@ type GetDomainsUsingGETBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get domains using g e t bad request response has a 2xx status code
+func (o *GetDomainsUsingGETBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get domains using g e t bad request response has a 3xx status code
+func (o *GetDomainsUsingGETBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get domains using g e t bad request response has a 4xx status code
+func (o *GetDomainsUsingGETBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get domains using g e t bad request response has a 5xx status code
+func (o *GetDomainsUsingGETBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get domains using g e t bad request response a status code equal to that given
+func (o *GetDomainsUsingGETBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GetDomainsUsingGETBadRequest) Error() string {
 	return fmt.Sprintf("[GET /content/api/vcf/{integrationId}/domains][%d] getDomainsUsingGETBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *GetDomainsUsingGETBadRequest) String() string {
+	return fmt.Sprintf("[GET /content/api/vcf/{integrationId}/domains][%d] getDomainsUsingGETBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *GetDomainsUsingGETBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -121,14 +183,44 @@ func NewGetDomainsUsingGETUnauthorized() *GetDomainsUsingGETUnauthorized {
 	return &GetDomainsUsingGETUnauthorized{}
 }
 
-/* GetDomainsUsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+GetDomainsUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type GetDomainsUsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this get domains using g e t unauthorized response has a 2xx status code
+func (o *GetDomainsUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get domains using g e t unauthorized response has a 3xx status code
+func (o *GetDomainsUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get domains using g e t unauthorized response has a 4xx status code
+func (o *GetDomainsUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get domains using g e t unauthorized response has a 5xx status code
+func (o *GetDomainsUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get domains using g e t unauthorized response a status code equal to that given
+func (o *GetDomainsUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetDomainsUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /content/api/vcf/{integrationId}/domains][%d] getDomainsUsingGETUnauthorized ", 401)
+}
+
+func (o *GetDomainsUsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /content/api/vcf/{integrationId}/domains][%d] getDomainsUsingGETUnauthorized ", 401)
 }
 
@@ -142,14 +234,44 @@ func NewGetDomainsUsingGETForbidden() *GetDomainsUsingGETForbidden {
 	return &GetDomainsUsingGETForbidden{}
 }
 
-/* GetDomainsUsingGETForbidden describes a response with status code 403, with default header values.
+/*
+GetDomainsUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetDomainsUsingGETForbidden struct {
 }
 
+// IsSuccess returns true when this get domains using g e t forbidden response has a 2xx status code
+func (o *GetDomainsUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get domains using g e t forbidden response has a 3xx status code
+func (o *GetDomainsUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get domains using g e t forbidden response has a 4xx status code
+func (o *GetDomainsUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get domains using g e t forbidden response has a 5xx status code
+func (o *GetDomainsUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get domains using g e t forbidden response a status code equal to that given
+func (o *GetDomainsUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetDomainsUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /content/api/vcf/{integrationId}/domains][%d] getDomainsUsingGETForbidden ", 403)
+}
+
+func (o *GetDomainsUsingGETForbidden) String() string {
 	return fmt.Sprintf("[GET /content/api/vcf/{integrationId}/domains][%d] getDomainsUsingGETForbidden ", 403)
 }
 

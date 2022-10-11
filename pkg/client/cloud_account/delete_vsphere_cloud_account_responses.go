@@ -51,7 +51,8 @@ func NewDeleteVSphereCloudAccountAccepted() *DeleteVSphereCloudAccountAccepted {
 	return &DeleteVSphereCloudAccountAccepted{}
 }
 
-/* DeleteVSphereCloudAccountAccepted describes a response with status code 202, with default header values.
+/*
+DeleteVSphereCloudAccountAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type DeleteVSphereCloudAccountAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this delete v sphere cloud account accepted response has a 2xx status code
+func (o *DeleteVSphereCloudAccountAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete v sphere cloud account accepted response has a 3xx status code
+func (o *DeleteVSphereCloudAccountAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete v sphere cloud account accepted response has a 4xx status code
+func (o *DeleteVSphereCloudAccountAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete v sphere cloud account accepted response has a 5xx status code
+func (o *DeleteVSphereCloudAccountAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete v sphere cloud account accepted response a status code equal to that given
+func (o *DeleteVSphereCloudAccountAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteVSphereCloudAccountAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-vsphere/{id}][%d] deleteVSphereCloudAccountAccepted  %+v", 202, o.Payload)
 }
+
+func (o *DeleteVSphereCloudAccountAccepted) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-vsphere/{id}][%d] deleteVSphereCloudAccountAccepted  %+v", 202, o.Payload)
+}
+
 func (o *DeleteVSphereCloudAccountAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,14 +114,44 @@ func NewDeleteVSphereCloudAccountNoContent() *DeleteVSphereCloudAccountNoContent
 	return &DeleteVSphereCloudAccountNoContent{}
 }
 
-/* DeleteVSphereCloudAccountNoContent describes a response with status code 204, with default header values.
+/*
+DeleteVSphereCloudAccountNoContent describes a response with status code 204, with default header values.
 
 No Content
 */
 type DeleteVSphereCloudAccountNoContent struct {
 }
 
+// IsSuccess returns true when this delete v sphere cloud account no content response has a 2xx status code
+func (o *DeleteVSphereCloudAccountNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete v sphere cloud account no content response has a 3xx status code
+func (o *DeleteVSphereCloudAccountNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete v sphere cloud account no content response has a 4xx status code
+func (o *DeleteVSphereCloudAccountNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete v sphere cloud account no content response has a 5xx status code
+func (o *DeleteVSphereCloudAccountNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete v sphere cloud account no content response a status code equal to that given
+func (o *DeleteVSphereCloudAccountNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteVSphereCloudAccountNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-vsphere/{id}][%d] deleteVSphereCloudAccountNoContent ", 204)
+}
+
+func (o *DeleteVSphereCloudAccountNoContent) String() string {
 	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-vsphere/{id}][%d] deleteVSphereCloudAccountNoContent ", 204)
 }
 
@@ -104,7 +165,8 @@ func NewDeleteVSphereCloudAccountForbidden() *DeleteVSphereCloudAccountForbidden
 	return &DeleteVSphereCloudAccountForbidden{}
 }
 
-/* DeleteVSphereCloudAccountForbidden describes a response with status code 403, with default header values.
+/*
+DeleteVSphereCloudAccountForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -112,9 +174,39 @@ type DeleteVSphereCloudAccountForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this delete v sphere cloud account forbidden response has a 2xx status code
+func (o *DeleteVSphereCloudAccountForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete v sphere cloud account forbidden response has a 3xx status code
+func (o *DeleteVSphereCloudAccountForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete v sphere cloud account forbidden response has a 4xx status code
+func (o *DeleteVSphereCloudAccountForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete v sphere cloud account forbidden response has a 5xx status code
+func (o *DeleteVSphereCloudAccountForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete v sphere cloud account forbidden response a status code equal to that given
+func (o *DeleteVSphereCloudAccountForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteVSphereCloudAccountForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-vsphere/{id}][%d] deleteVSphereCloudAccountForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DeleteVSphereCloudAccountForbidden) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-vsphere/{id}][%d] deleteVSphereCloudAccountForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DeleteVSphereCloudAccountForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

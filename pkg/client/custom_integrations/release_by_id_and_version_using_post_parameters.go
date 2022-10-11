@@ -52,10 +52,12 @@ func NewReleaseByIDAndVersionUsingPOSTParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* ReleaseByIDAndVersionUsingPOSTParams contains all the parameters to send to the API endpoint
-   for the release by Id and version using p o s t operation.
+/*
+ReleaseByIDAndVersionUsingPOSTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the release by Id and version using p o s t operation.
+
+	Typically these are written to a http.Request.
 */
 type ReleaseByIDAndVersionUsingPOSTParams struct {
 

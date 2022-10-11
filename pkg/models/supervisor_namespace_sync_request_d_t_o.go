@@ -23,6 +23,12 @@ type SupervisorNamespaceSyncRequestDTO struct {
 	// edit users
 	EditUsers string `json:"editUsers,omitempty"`
 
+	// owner groups
+	OwnerGroups string `json:"ownerGroups,omitempty"`
+
+	// owner users
+	OwnerUsers string `json:"ownerUsers,omitempty"`
+
 	// view groups
 	ViewGroups string `json:"viewGroups,omitempty"`
 

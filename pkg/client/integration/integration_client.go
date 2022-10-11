@@ -32,7 +32,7 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	CreateIntegrationAsync(params *CreateIntegrationAsyncParams, opts ...ClientOption) (*CreateIntegrationAsyncAccepted, error)
 
-	DeleteIntegration(params *DeleteIntegrationParams, opts ...ClientOption) (*DeleteIntegrationAccepted, error)
+	DeleteIntegration(params *DeleteIntegrationParams, opts ...ClientOption) (*DeleteIntegrationAccepted, *DeleteIntegrationNoContent, error)
 
 	GetIntegration(params *GetIntegrationParams, opts ...ClientOption) (*GetIntegrationOK, error)
 
@@ -44,9 +44,9 @@ type ClientService interface {
 }
 
 /*
-  CreateIntegrationAsync creates an integration
+CreateIntegrationAsync creates an integration
 
-  Create an integration in the current organization asynchronously
+Create an integration in the current organization asynchronously
 */
 func (a *Client) CreateIntegrationAsync(params *CreateIntegrationAsyncParams, opts ...ClientOption) (*CreateIntegrationAsyncAccepted, error) {
 	// TODO: Validate the params before sending
@@ -84,11 +84,11 @@ func (a *Client) CreateIntegrationAsync(params *CreateIntegrationAsyncParams, op
 }
 
 /*
-  DeleteIntegration deletes an integration
+DeleteIntegration deletes an integration
 
-  Delete an integration with a given id asynchronously
+Delete an integration with a given id asynchronously
 */
-func (a *Client) DeleteIntegration(params *DeleteIntegrationParams, opts ...ClientOption) (*DeleteIntegrationAccepted, error) {
+func (a *Client) DeleteIntegration(params *DeleteIntegrationParams, opts ...ClientOption) (*DeleteIntegrationAccepted, *DeleteIntegrationNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteIntegrationParams()
@@ -111,22 +111,23 @@ func (a *Client) DeleteIntegration(params *DeleteIntegrationParams, opts ...Clie
 
 	result, err := a.transport.Submit(op)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	success, ok := result.(*DeleteIntegrationAccepted)
-	if ok {
-		return success, nil
+	switch value := result.(type) {
+	case *DeleteIntegrationAccepted:
+		return value, nil, nil
+	case *DeleteIntegrationNoContent:
+		return nil, value, nil
 	}
-	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteIntegration: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for integration: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-  GetIntegration gets an integration
+GetIntegration gets an integration
 
-  Get an integration with a given id
+Get an integration with a given id
 */
 func (a *Client) GetIntegration(params *GetIntegrationParams, opts ...ClientOption) (*GetIntegrationOK, error) {
 	// TODO: Validate the params before sending
@@ -164,9 +165,9 @@ func (a *Client) GetIntegration(params *GetIntegrationParams, opts ...ClientOpti
 }
 
 /*
-  GetIntegrations gets integrations
+GetIntegrations gets integrations
 
-  Get all integrations within the current organization
+Get all integrations within the current organization
 */
 func (a *Client) GetIntegrations(params *GetIntegrationsParams, opts ...ClientOption) (*GetIntegrationsOK, error) {
 	// TODO: Validate the params before sending
@@ -204,9 +205,9 @@ func (a *Client) GetIntegrations(params *GetIntegrationsParams, opts ...ClientOp
 }
 
 /*
-  UpdateIntegrationAsync updates an integration
+UpdateIntegrationAsync updates an integration
 
-  Update a single integration asynchronously
+Update a single integration asynchronously
 */
 func (a *Client) UpdateIntegrationAsync(params *UpdateIntegrationAsyncParams, opts ...ClientOption) (*UpdateIntegrationAsyncAccepted, error) {
 	// TODO: Validate the params before sending

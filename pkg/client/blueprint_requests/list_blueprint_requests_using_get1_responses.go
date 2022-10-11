@@ -57,7 +57,8 @@ func NewListBlueprintRequestsUsingGET1OK() *ListBlueprintRequestsUsingGET1OK {
 	return &ListBlueprintRequestsUsingGET1OK{}
 }
 
-/* ListBlueprintRequestsUsingGET1OK describes a response with status code 200, with default header values.
+/*
+ListBlueprintRequestsUsingGET1OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -65,9 +66,39 @@ type ListBlueprintRequestsUsingGET1OK struct {
 	Payload *models.PageOfBlueprintRequest
 }
 
+// IsSuccess returns true when this list blueprint requests using g e t1 o k response has a 2xx status code
+func (o *ListBlueprintRequestsUsingGET1OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this list blueprint requests using g e t1 o k response has a 3xx status code
+func (o *ListBlueprintRequestsUsingGET1OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this list blueprint requests using g e t1 o k response has a 4xx status code
+func (o *ListBlueprintRequestsUsingGET1OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this list blueprint requests using g e t1 o k response has a 5xx status code
+func (o *ListBlueprintRequestsUsingGET1OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this list blueprint requests using g e t1 o k response a status code equal to that given
+func (o *ListBlueprintRequestsUsingGET1OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ListBlueprintRequestsUsingGET1OK) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-requests][%d] listBlueprintRequestsUsingGET1OK  %+v", 200, o.Payload)
 }
+
+func (o *ListBlueprintRequestsUsingGET1OK) String() string {
+	return fmt.Sprintf("[GET /blueprint/api/blueprint-requests][%d] listBlueprintRequestsUsingGET1OK  %+v", 200, o.Payload)
+}
+
 func (o *ListBlueprintRequestsUsingGET1OK) GetPayload() *models.PageOfBlueprintRequest {
 	return o.Payload
 }
@@ -89,7 +120,8 @@ func NewListBlueprintRequestsUsingGET1BadRequest() *ListBlueprintRequestsUsingGE
 	return &ListBlueprintRequestsUsingGET1BadRequest{}
 }
 
-/* ListBlueprintRequestsUsingGET1BadRequest describes a response with status code 400, with default header values.
+/*
+ListBlueprintRequestsUsingGET1BadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -97,9 +129,39 @@ type ListBlueprintRequestsUsingGET1BadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this list blueprint requests using g e t1 bad request response has a 2xx status code
+func (o *ListBlueprintRequestsUsingGET1BadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this list blueprint requests using g e t1 bad request response has a 3xx status code
+func (o *ListBlueprintRequestsUsingGET1BadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this list blueprint requests using g e t1 bad request response has a 4xx status code
+func (o *ListBlueprintRequestsUsingGET1BadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this list blueprint requests using g e t1 bad request response has a 5xx status code
+func (o *ListBlueprintRequestsUsingGET1BadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this list blueprint requests using g e t1 bad request response a status code equal to that given
+func (o *ListBlueprintRequestsUsingGET1BadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ListBlueprintRequestsUsingGET1BadRequest) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-requests][%d] listBlueprintRequestsUsingGET1BadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ListBlueprintRequestsUsingGET1BadRequest) String() string {
+	return fmt.Sprintf("[GET /blueprint/api/blueprint-requests][%d] listBlueprintRequestsUsingGET1BadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ListBlueprintRequestsUsingGET1BadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -121,14 +183,44 @@ func NewListBlueprintRequestsUsingGET1Unauthorized() *ListBlueprintRequestsUsing
 	return &ListBlueprintRequestsUsingGET1Unauthorized{}
 }
 
-/* ListBlueprintRequestsUsingGET1Unauthorized describes a response with status code 401, with default header values.
+/*
+ListBlueprintRequestsUsingGET1Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type ListBlueprintRequestsUsingGET1Unauthorized struct {
 }
 
+// IsSuccess returns true when this list blueprint requests using g e t1 unauthorized response has a 2xx status code
+func (o *ListBlueprintRequestsUsingGET1Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this list blueprint requests using g e t1 unauthorized response has a 3xx status code
+func (o *ListBlueprintRequestsUsingGET1Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this list blueprint requests using g e t1 unauthorized response has a 4xx status code
+func (o *ListBlueprintRequestsUsingGET1Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this list blueprint requests using g e t1 unauthorized response has a 5xx status code
+func (o *ListBlueprintRequestsUsingGET1Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this list blueprint requests using g e t1 unauthorized response a status code equal to that given
+func (o *ListBlueprintRequestsUsingGET1Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ListBlueprintRequestsUsingGET1Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /blueprint/api/blueprint-requests][%d] listBlueprintRequestsUsingGET1Unauthorized ", 401)
+}
+
+func (o *ListBlueprintRequestsUsingGET1Unauthorized) String() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-requests][%d] listBlueprintRequestsUsingGET1Unauthorized ", 401)
 }
 
@@ -142,14 +234,44 @@ func NewListBlueprintRequestsUsingGET1Forbidden() *ListBlueprintRequestsUsingGET
 	return &ListBlueprintRequestsUsingGET1Forbidden{}
 }
 
-/* ListBlueprintRequestsUsingGET1Forbidden describes a response with status code 403, with default header values.
+/*
+ListBlueprintRequestsUsingGET1Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type ListBlueprintRequestsUsingGET1Forbidden struct {
 }
 
+// IsSuccess returns true when this list blueprint requests using g e t1 forbidden response has a 2xx status code
+func (o *ListBlueprintRequestsUsingGET1Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this list blueprint requests using g e t1 forbidden response has a 3xx status code
+func (o *ListBlueprintRequestsUsingGET1Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this list blueprint requests using g e t1 forbidden response has a 4xx status code
+func (o *ListBlueprintRequestsUsingGET1Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this list blueprint requests using g e t1 forbidden response has a 5xx status code
+func (o *ListBlueprintRequestsUsingGET1Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this list blueprint requests using g e t1 forbidden response a status code equal to that given
+func (o *ListBlueprintRequestsUsingGET1Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ListBlueprintRequestsUsingGET1Forbidden) Error() string {
+	return fmt.Sprintf("[GET /blueprint/api/blueprint-requests][%d] listBlueprintRequestsUsingGET1Forbidden ", 403)
+}
+
+func (o *ListBlueprintRequestsUsingGET1Forbidden) String() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-requests][%d] listBlueprintRequestsUsingGET1Forbidden ", 403)
 }
 

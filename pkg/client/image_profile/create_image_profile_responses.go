@@ -51,7 +51,8 @@ func NewCreateImageProfileCreated() *CreateImageProfileCreated {
 	return &CreateImageProfileCreated{}
 }
 
-/* CreateImageProfileCreated describes a response with status code 201, with default header values.
+/*
+CreateImageProfileCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type CreateImageProfileCreated struct {
 	Payload *models.ImageProfile
 }
 
+// IsSuccess returns true when this create image profile created response has a 2xx status code
+func (o *CreateImageProfileCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create image profile created response has a 3xx status code
+func (o *CreateImageProfileCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create image profile created response has a 4xx status code
+func (o *CreateImageProfileCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create image profile created response has a 5xx status code
+func (o *CreateImageProfileCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create image profile created response a status code equal to that given
+func (o *CreateImageProfileCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateImageProfileCreated) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/image-profiles][%d] createImageProfileCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateImageProfileCreated) String() string {
+	return fmt.Sprintf("[POST /iaas/api/image-profiles][%d] createImageProfileCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateImageProfileCreated) GetPayload() *models.ImageProfile {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewCreateImageProfileBadRequest() *CreateImageProfileBadRequest {
 	return &CreateImageProfileBadRequest{}
 }
 
-/* CreateImageProfileBadRequest describes a response with status code 400, with default header values.
+/*
+CreateImageProfileBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type CreateImageProfileBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create image profile bad request response has a 2xx status code
+func (o *CreateImageProfileBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create image profile bad request response has a 3xx status code
+func (o *CreateImageProfileBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create image profile bad request response has a 4xx status code
+func (o *CreateImageProfileBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create image profile bad request response has a 5xx status code
+func (o *CreateImageProfileBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create image profile bad request response a status code equal to that given
+func (o *CreateImageProfileBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateImageProfileBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/image-profiles][%d] createImageProfileBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateImageProfileBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/image-profiles][%d] createImageProfileBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateImageProfileBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewCreateImageProfileForbidden() *CreateImageProfileForbidden {
 	return &CreateImageProfileForbidden{}
 }
 
-/* CreateImageProfileForbidden describes a response with status code 403, with default header values.
+/*
+CreateImageProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type CreateImageProfileForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this create image profile forbidden response has a 2xx status code
+func (o *CreateImageProfileForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create image profile forbidden response has a 3xx status code
+func (o *CreateImageProfileForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create image profile forbidden response has a 4xx status code
+func (o *CreateImageProfileForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create image profile forbidden response has a 5xx status code
+func (o *CreateImageProfileForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create image profile forbidden response a status code equal to that given
+func (o *CreateImageProfileForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateImageProfileForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/image-profiles][%d] createImageProfileForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CreateImageProfileForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/image-profiles][%d] createImageProfileForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CreateImageProfileForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

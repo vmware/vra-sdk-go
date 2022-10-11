@@ -51,7 +51,8 @@ func NewGetNsxTCloudAccountOK() *GetNsxTCloudAccountOK {
 	return &GetNsxTCloudAccountOK{}
 }
 
-/* GetNsxTCloudAccountOK describes a response with status code 200, with default header values.
+/*
+GetNsxTCloudAccountOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetNsxTCloudAccountOK struct {
 	Payload *models.CloudAccountNsxT
 }
 
+// IsSuccess returns true when this get nsx t cloud account o k response has a 2xx status code
+func (o *GetNsxTCloudAccountOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get nsx t cloud account o k response has a 3xx status code
+func (o *GetNsxTCloudAccountOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get nsx t cloud account o k response has a 4xx status code
+func (o *GetNsxTCloudAccountOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get nsx t cloud account o k response has a 5xx status code
+func (o *GetNsxTCloudAccountOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get nsx t cloud account o k response a status code equal to that given
+func (o *GetNsxTCloudAccountOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetNsxTCloudAccountOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-nsx-t/{id}][%d] getNsxTCloudAccountOK  %+v", 200, o.Payload)
 }
+
+func (o *GetNsxTCloudAccountOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-nsx-t/{id}][%d] getNsxTCloudAccountOK  %+v", 200, o.Payload)
+}
+
 func (o *GetNsxTCloudAccountOK) GetPayload() *models.CloudAccountNsxT {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetNsxTCloudAccountForbidden() *GetNsxTCloudAccountForbidden {
 	return &GetNsxTCloudAccountForbidden{}
 }
 
-/* GetNsxTCloudAccountForbidden describes a response with status code 403, with default header values.
+/*
+GetNsxTCloudAccountForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type GetNsxTCloudAccountForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get nsx t cloud account forbidden response has a 2xx status code
+func (o *GetNsxTCloudAccountForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get nsx t cloud account forbidden response has a 3xx status code
+func (o *GetNsxTCloudAccountForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get nsx t cloud account forbidden response has a 4xx status code
+func (o *GetNsxTCloudAccountForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get nsx t cloud account forbidden response has a 5xx status code
+func (o *GetNsxTCloudAccountForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get nsx t cloud account forbidden response a status code equal to that given
+func (o *GetNsxTCloudAccountForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetNsxTCloudAccountForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-nsx-t/{id}][%d] getNsxTCloudAccountForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetNsxTCloudAccountForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-nsx-t/{id}][%d] getNsxTCloudAccountForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetNsxTCloudAccountForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewGetNsxTCloudAccountNotFound() *GetNsxTCloudAccountNotFound {
 	return &GetNsxTCloudAccountNotFound{}
 }
 
-/* GetNsxTCloudAccountNotFound describes a response with status code 404, with default header values.
+/*
+GetNsxTCloudAccountNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type GetNsxTCloudAccountNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get nsx t cloud account not found response has a 2xx status code
+func (o *GetNsxTCloudAccountNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get nsx t cloud account not found response has a 3xx status code
+func (o *GetNsxTCloudAccountNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get nsx t cloud account not found response has a 4xx status code
+func (o *GetNsxTCloudAccountNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get nsx t cloud account not found response has a 5xx status code
+func (o *GetNsxTCloudAccountNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get nsx t cloud account not found response a status code equal to that given
+func (o *GetNsxTCloudAccountNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetNsxTCloudAccountNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-nsx-t/{id}][%d] getNsxTCloudAccountNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetNsxTCloudAccountNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-nsx-t/{id}][%d] getNsxTCloudAccountNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetNsxTCloudAccountNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

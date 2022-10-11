@@ -63,7 +63,8 @@ func NewDeleteAllExecutionsUsingDELETEAccepted() *DeleteAllExecutionsUsingDELETE
 	return &DeleteAllExecutionsUsingDELETEAccepted{}
 }
 
-/* DeleteAllExecutionsUsingDELETEAccepted describes a response with status code 202, with default header values.
+/*
+DeleteAllExecutionsUsingDELETEAccepted describes a response with status code 202, with default header values.
 
 Count of executions to be deleted
 */
@@ -71,9 +72,39 @@ type DeleteAllExecutionsUsingDELETEAccepted struct {
 	Payload models.Executions
 }
 
+// IsSuccess returns true when this delete all executions using d e l e t e accepted response has a 2xx status code
+func (o *DeleteAllExecutionsUsingDELETEAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete all executions using d e l e t e accepted response has a 3xx status code
+func (o *DeleteAllExecutionsUsingDELETEAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete all executions using d e l e t e accepted response has a 4xx status code
+func (o *DeleteAllExecutionsUsingDELETEAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete all executions using d e l e t e accepted response has a 5xx status code
+func (o *DeleteAllExecutionsUsingDELETEAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete all executions using d e l e t e accepted response a status code equal to that given
+func (o *DeleteAllExecutionsUsingDELETEAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteAllExecutionsUsingDELETEAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /codestream/api/executions][%d] deleteAllExecutionsUsingDELETEAccepted  %+v", 202, o.Payload)
 }
+
+func (o *DeleteAllExecutionsUsingDELETEAccepted) String() string {
+	return fmt.Sprintf("[DELETE /codestream/api/executions][%d] deleteAllExecutionsUsingDELETEAccepted  %+v", 202, o.Payload)
+}
+
 func (o *DeleteAllExecutionsUsingDELETEAccepted) GetPayload() models.Executions {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewDeleteAllExecutionsUsingDELETEUnauthorized() *DeleteAllExecutionsUsingDE
 	return &DeleteAllExecutionsUsingDELETEUnauthorized{}
 }
 
-/* DeleteAllExecutionsUsingDELETEUnauthorized describes a response with status code 401, with default header values.
+/*
+DeleteAllExecutionsUsingDELETEUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type DeleteAllExecutionsUsingDELETEUnauthorized struct {
 }
 
+// IsSuccess returns true when this delete all executions using d e l e t e unauthorized response has a 2xx status code
+func (o *DeleteAllExecutionsUsingDELETEUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete all executions using d e l e t e unauthorized response has a 3xx status code
+func (o *DeleteAllExecutionsUsingDELETEUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete all executions using d e l e t e unauthorized response has a 4xx status code
+func (o *DeleteAllExecutionsUsingDELETEUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete all executions using d e l e t e unauthorized response has a 5xx status code
+func (o *DeleteAllExecutionsUsingDELETEUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete all executions using d e l e t e unauthorized response a status code equal to that given
+func (o *DeleteAllExecutionsUsingDELETEUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DeleteAllExecutionsUsingDELETEUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/executions][%d] deleteAllExecutionsUsingDELETEUnauthorized ", 401)
+}
+
+func (o *DeleteAllExecutionsUsingDELETEUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/executions][%d] deleteAllExecutionsUsingDELETEUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewDeleteAllExecutionsUsingDELETEForbidden() *DeleteAllExecutionsUsingDELET
 	return &DeleteAllExecutionsUsingDELETEForbidden{}
 }
 
-/* DeleteAllExecutionsUsingDELETEForbidden describes a response with status code 403, with default header values.
+/*
+DeleteAllExecutionsUsingDELETEForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type DeleteAllExecutionsUsingDELETEForbidden struct {
 }
 
+// IsSuccess returns true when this delete all executions using d e l e t e forbidden response has a 2xx status code
+func (o *DeleteAllExecutionsUsingDELETEForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete all executions using d e l e t e forbidden response has a 3xx status code
+func (o *DeleteAllExecutionsUsingDELETEForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete all executions using d e l e t e forbidden response has a 4xx status code
+func (o *DeleteAllExecutionsUsingDELETEForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete all executions using d e l e t e forbidden response has a 5xx status code
+func (o *DeleteAllExecutionsUsingDELETEForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete all executions using d e l e t e forbidden response a status code equal to that given
+func (o *DeleteAllExecutionsUsingDELETEForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteAllExecutionsUsingDELETEForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/executions][%d] deleteAllExecutionsUsingDELETEForbidden ", 403)
+}
+
+func (o *DeleteAllExecutionsUsingDELETEForbidden) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/executions][%d] deleteAllExecutionsUsingDELETEForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewDeleteAllExecutionsUsingDELETENotFound() *DeleteAllExecutionsUsingDELETE
 	return &DeleteAllExecutionsUsingDELETENotFound{}
 }
 
-/* DeleteAllExecutionsUsingDELETENotFound describes a response with status code 404, with default header values.
+/*
+DeleteAllExecutionsUsingDELETENotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type DeleteAllExecutionsUsingDELETENotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete all executions using d e l e t e not found response has a 2xx status code
+func (o *DeleteAllExecutionsUsingDELETENotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete all executions using d e l e t e not found response has a 3xx status code
+func (o *DeleteAllExecutionsUsingDELETENotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete all executions using d e l e t e not found response has a 4xx status code
+func (o *DeleteAllExecutionsUsingDELETENotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete all executions using d e l e t e not found response has a 5xx status code
+func (o *DeleteAllExecutionsUsingDELETENotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete all executions using d e l e t e not found response a status code equal to that given
+func (o *DeleteAllExecutionsUsingDELETENotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteAllExecutionsUsingDELETENotFound) Error() string {
 	return fmt.Sprintf("[DELETE /codestream/api/executions][%d] deleteAllExecutionsUsingDELETENotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteAllExecutionsUsingDELETENotFound) String() string {
+	return fmt.Sprintf("[DELETE /codestream/api/executions][%d] deleteAllExecutionsUsingDELETENotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteAllExecutionsUsingDELETENotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewDeleteAllExecutionsUsingDELETEInternalServerError() *DeleteAllExecutions
 	return &DeleteAllExecutionsUsingDELETEInternalServerError{}
 }
 
-/* DeleteAllExecutionsUsingDELETEInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteAllExecutionsUsingDELETEInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type DeleteAllExecutionsUsingDELETEInternalServerError struct {
 }
 
+// IsSuccess returns true when this delete all executions using d e l e t e internal server error response has a 2xx status code
+func (o *DeleteAllExecutionsUsingDELETEInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete all executions using d e l e t e internal server error response has a 3xx status code
+func (o *DeleteAllExecutionsUsingDELETEInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete all executions using d e l e t e internal server error response has a 4xx status code
+func (o *DeleteAllExecutionsUsingDELETEInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete all executions using d e l e t e internal server error response has a 5xx status code
+func (o *DeleteAllExecutionsUsingDELETEInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this delete all executions using d e l e t e internal server error response a status code equal to that given
+func (o *DeleteAllExecutionsUsingDELETEInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *DeleteAllExecutionsUsingDELETEInternalServerError) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/executions][%d] deleteAllExecutionsUsingDELETEInternalServerError ", 500)
+}
+
+func (o *DeleteAllExecutionsUsingDELETEInternalServerError) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/executions][%d] deleteAllExecutionsUsingDELETEInternalServerError ", 500)
 }
 

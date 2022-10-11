@@ -52,10 +52,12 @@ func NewGetPolicyTypeScopeSchemaUsingGET2ParamsWithHTTPClient(client *http.Clien
 	}
 }
 
-/* GetPolicyTypeScopeSchemaUsingGET2Params contains all the parameters to send to the API endpoint
-   for the get policy type scope schema using g e t 2 operation.
+/*
+GetPolicyTypeScopeSchemaUsingGET2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get policy type scope schema using g e t 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetPolicyTypeScopeSchemaUsingGET2Params struct {
 

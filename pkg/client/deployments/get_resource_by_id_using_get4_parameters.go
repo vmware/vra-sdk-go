@@ -53,10 +53,12 @@ func NewGetResourceByIDUsingGET4ParamsWithHTTPClient(client *http.Client) *GetRe
 	}
 }
 
-/* GetResourceByIDUsingGET4Params contains all the parameters to send to the API endpoint
-   for the get resource by Id using g e t 4 operation.
+/*
+GetResourceByIDUsingGET4Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get resource by Id using g e t 4 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetResourceByIDUsingGET4Params struct {
 

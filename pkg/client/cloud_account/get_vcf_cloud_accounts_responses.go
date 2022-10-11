@@ -45,7 +45,8 @@ func NewGetVcfCloudAccountsOK() *GetVcfCloudAccountsOK {
 	return &GetVcfCloudAccountsOK{}
 }
 
-/* GetVcfCloudAccountsOK describes a response with status code 200, with default header values.
+/*
+GetVcfCloudAccountsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type GetVcfCloudAccountsOK struct {
 	Payload *models.CloudAccountVcfResult
 }
 
+// IsSuccess returns true when this get vcf cloud accounts o k response has a 2xx status code
+func (o *GetVcfCloudAccountsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get vcf cloud accounts o k response has a 3xx status code
+func (o *GetVcfCloudAccountsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get vcf cloud accounts o k response has a 4xx status code
+func (o *GetVcfCloudAccountsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get vcf cloud accounts o k response has a 5xx status code
+func (o *GetVcfCloudAccountsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get vcf cloud accounts o k response a status code equal to that given
+func (o *GetVcfCloudAccountsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetVcfCloudAccountsOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vcf][%d] getVcfCloudAccountsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetVcfCloudAccountsOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vcf][%d] getVcfCloudAccountsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetVcfCloudAccountsOK) GetPayload() *models.CloudAccountVcfResult {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewGetVcfCloudAccountsForbidden() *GetVcfCloudAccountsForbidden {
 	return &GetVcfCloudAccountsForbidden{}
 }
 
-/* GetVcfCloudAccountsForbidden describes a response with status code 403, with default header values.
+/*
+GetVcfCloudAccountsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type GetVcfCloudAccountsForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get vcf cloud accounts forbidden response has a 2xx status code
+func (o *GetVcfCloudAccountsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get vcf cloud accounts forbidden response has a 3xx status code
+func (o *GetVcfCloudAccountsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get vcf cloud accounts forbidden response has a 4xx status code
+func (o *GetVcfCloudAccountsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get vcf cloud accounts forbidden response has a 5xx status code
+func (o *GetVcfCloudAccountsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get vcf cloud accounts forbidden response a status code equal to that given
+func (o *GetVcfCloudAccountsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetVcfCloudAccountsForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vcf][%d] getVcfCloudAccountsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetVcfCloudAccountsForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vcf][%d] getVcfCloudAccountsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetVcfCloudAccountsForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

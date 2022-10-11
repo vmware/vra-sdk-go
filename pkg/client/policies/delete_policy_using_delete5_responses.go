@@ -26,6 +26,18 @@ func (o *DeletePolicyUsingDELETE5Reader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return result, nil
+	case 401:
+		result := NewDeletePolicyUsingDELETE5Unauthorized()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 403:
+		result := NewDeletePolicyUsingDELETE5Forbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -36,18 +48,150 @@ func NewDeletePolicyUsingDELETE5NoContent() *DeletePolicyUsingDELETE5NoContent {
 	return &DeletePolicyUsingDELETE5NoContent{}
 }
 
-/* DeletePolicyUsingDELETE5NoContent describes a response with status code 204, with default header values.
+/*
+DeletePolicyUsingDELETE5NoContent describes a response with status code 204, with default header values.
 
 No Content
 */
 type DeletePolicyUsingDELETE5NoContent struct {
 }
 
+// IsSuccess returns true when this delete policy using d e l e t e5 no content response has a 2xx status code
+func (o *DeletePolicyUsingDELETE5NoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete policy using d e l e t e5 no content response has a 3xx status code
+func (o *DeletePolicyUsingDELETE5NoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete policy using d e l e t e5 no content response has a 4xx status code
+func (o *DeletePolicyUsingDELETE5NoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete policy using d e l e t e5 no content response has a 5xx status code
+func (o *DeletePolicyUsingDELETE5NoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete policy using d e l e t e5 no content response a status code equal to that given
+func (o *DeletePolicyUsingDELETE5NoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeletePolicyUsingDELETE5NoContent) Error() string {
 	return fmt.Sprintf("[DELETE /policy/api/policies/{id}][%d] deletePolicyUsingDELETE5NoContent ", 204)
 }
 
+func (o *DeletePolicyUsingDELETE5NoContent) String() string {
+	return fmt.Sprintf("[DELETE /policy/api/policies/{id}][%d] deletePolicyUsingDELETE5NoContent ", 204)
+}
+
 func (o *DeletePolicyUsingDELETE5NoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewDeletePolicyUsingDELETE5Unauthorized creates a DeletePolicyUsingDELETE5Unauthorized with default headers values
+func NewDeletePolicyUsingDELETE5Unauthorized() *DeletePolicyUsingDELETE5Unauthorized {
+	return &DeletePolicyUsingDELETE5Unauthorized{}
+}
+
+/*
+DeletePolicyUsingDELETE5Unauthorized describes a response with status code 401, with default header values.
+
+Unauthorized
+*/
+type DeletePolicyUsingDELETE5Unauthorized struct {
+}
+
+// IsSuccess returns true when this delete policy using d e l e t e5 unauthorized response has a 2xx status code
+func (o *DeletePolicyUsingDELETE5Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete policy using d e l e t e5 unauthorized response has a 3xx status code
+func (o *DeletePolicyUsingDELETE5Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete policy using d e l e t e5 unauthorized response has a 4xx status code
+func (o *DeletePolicyUsingDELETE5Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete policy using d e l e t e5 unauthorized response has a 5xx status code
+func (o *DeletePolicyUsingDELETE5Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete policy using d e l e t e5 unauthorized response a status code equal to that given
+func (o *DeletePolicyUsingDELETE5Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+func (o *DeletePolicyUsingDELETE5Unauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /policy/api/policies/{id}][%d] deletePolicyUsingDELETE5Unauthorized ", 401)
+}
+
+func (o *DeletePolicyUsingDELETE5Unauthorized) String() string {
+	return fmt.Sprintf("[DELETE /policy/api/policies/{id}][%d] deletePolicyUsingDELETE5Unauthorized ", 401)
+}
+
+func (o *DeletePolicyUsingDELETE5Unauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewDeletePolicyUsingDELETE5Forbidden creates a DeletePolicyUsingDELETE5Forbidden with default headers values
+func NewDeletePolicyUsingDELETE5Forbidden() *DeletePolicyUsingDELETE5Forbidden {
+	return &DeletePolicyUsingDELETE5Forbidden{}
+}
+
+/*
+DeletePolicyUsingDELETE5Forbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type DeletePolicyUsingDELETE5Forbidden struct {
+}
+
+// IsSuccess returns true when this delete policy using d e l e t e5 forbidden response has a 2xx status code
+func (o *DeletePolicyUsingDELETE5Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete policy using d e l e t e5 forbidden response has a 3xx status code
+func (o *DeletePolicyUsingDELETE5Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete policy using d e l e t e5 forbidden response has a 4xx status code
+func (o *DeletePolicyUsingDELETE5Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete policy using d e l e t e5 forbidden response has a 5xx status code
+func (o *DeletePolicyUsingDELETE5Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete policy using d e l e t e5 forbidden response a status code equal to that given
+func (o *DeletePolicyUsingDELETE5Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *DeletePolicyUsingDELETE5Forbidden) Error() string {
+	return fmt.Sprintf("[DELETE /policy/api/policies/{id}][%d] deletePolicyUsingDELETE5Forbidden ", 403)
+}
+
+func (o *DeletePolicyUsingDELETE5Forbidden) String() string {
+	return fmt.Sprintf("[DELETE /policy/api/policies/{id}][%d] deletePolicyUsingDELETE5Forbidden ", 403)
+}
+
+func (o *DeletePolicyUsingDELETE5Forbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

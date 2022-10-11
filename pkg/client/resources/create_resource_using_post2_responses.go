@@ -35,6 +35,12 @@ func (o *CreateResourceUsingPOST2Reader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return nil, result
+	case 403:
+		result := NewCreateResourceUsingPOST2Forbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -45,7 +51,8 @@ func NewCreateResourceUsingPOST2OK() *CreateResourceUsingPOST2OK {
 	return &CreateResourceUsingPOST2OK{}
 }
 
-/* CreateResourceUsingPOST2OK describes a response with status code 200, with default header values.
+/*
+CreateResourceUsingPOST2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -53,9 +60,39 @@ type CreateResourceUsingPOST2OK struct {
 	Payload *models.ResourceRequestResponse
 }
 
+// IsSuccess returns true when this create resource using p o s t2 o k response has a 2xx status code
+func (o *CreateResourceUsingPOST2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create resource using p o s t2 o k response has a 3xx status code
+func (o *CreateResourceUsingPOST2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create resource using p o s t2 o k response has a 4xx status code
+func (o *CreateResourceUsingPOST2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create resource using p o s t2 o k response has a 5xx status code
+func (o *CreateResourceUsingPOST2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create resource using p o s t2 o k response a status code equal to that given
+func (o *CreateResourceUsingPOST2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CreateResourceUsingPOST2OK) Error() string {
 	return fmt.Sprintf("[POST /deployment/api/resources][%d] createResourceUsingPOST2OK  %+v", 200, o.Payload)
 }
+
+func (o *CreateResourceUsingPOST2OK) String() string {
+	return fmt.Sprintf("[POST /deployment/api/resources][%d] createResourceUsingPOST2OK  %+v", 200, o.Payload)
+}
+
 func (o *CreateResourceUsingPOST2OK) GetPayload() *models.ResourceRequestResponse {
 	return o.Payload
 }
@@ -77,18 +114,99 @@ func NewCreateResourceUsingPOST2Unauthorized() *CreateResourceUsingPOST2Unauthor
 	return &CreateResourceUsingPOST2Unauthorized{}
 }
 
-/* CreateResourceUsingPOST2Unauthorized describes a response with status code 401, with default header values.
+/*
+CreateResourceUsingPOST2Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type CreateResourceUsingPOST2Unauthorized struct {
 }
 
+// IsSuccess returns true when this create resource using p o s t2 unauthorized response has a 2xx status code
+func (o *CreateResourceUsingPOST2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create resource using p o s t2 unauthorized response has a 3xx status code
+func (o *CreateResourceUsingPOST2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create resource using p o s t2 unauthorized response has a 4xx status code
+func (o *CreateResourceUsingPOST2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create resource using p o s t2 unauthorized response has a 5xx status code
+func (o *CreateResourceUsingPOST2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create resource using p o s t2 unauthorized response a status code equal to that given
+func (o *CreateResourceUsingPOST2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreateResourceUsingPOST2Unauthorized) Error() string {
 	return fmt.Sprintf("[POST /deployment/api/resources][%d] createResourceUsingPOST2Unauthorized ", 401)
 }
 
+func (o *CreateResourceUsingPOST2Unauthorized) String() string {
+	return fmt.Sprintf("[POST /deployment/api/resources][%d] createResourceUsingPOST2Unauthorized ", 401)
+}
+
 func (o *CreateResourceUsingPOST2Unauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewCreateResourceUsingPOST2Forbidden creates a CreateResourceUsingPOST2Forbidden with default headers values
+func NewCreateResourceUsingPOST2Forbidden() *CreateResourceUsingPOST2Forbidden {
+	return &CreateResourceUsingPOST2Forbidden{}
+}
+
+/*
+CreateResourceUsingPOST2Forbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type CreateResourceUsingPOST2Forbidden struct {
+}
+
+// IsSuccess returns true when this create resource using p o s t2 forbidden response has a 2xx status code
+func (o *CreateResourceUsingPOST2Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create resource using p o s t2 forbidden response has a 3xx status code
+func (o *CreateResourceUsingPOST2Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create resource using p o s t2 forbidden response has a 4xx status code
+func (o *CreateResourceUsingPOST2Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create resource using p o s t2 forbidden response has a 5xx status code
+func (o *CreateResourceUsingPOST2Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create resource using p o s t2 forbidden response a status code equal to that given
+func (o *CreateResourceUsingPOST2Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *CreateResourceUsingPOST2Forbidden) Error() string {
+	return fmt.Sprintf("[POST /deployment/api/resources][%d] createResourceUsingPOST2Forbidden ", 403)
+}
+
+func (o *CreateResourceUsingPOST2Forbidden) String() string {
+	return fmt.Sprintf("[POST /deployment/api/resources][%d] createResourceUsingPOST2Forbidden ", 403)
+}
+
+func (o *CreateResourceUsingPOST2Forbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

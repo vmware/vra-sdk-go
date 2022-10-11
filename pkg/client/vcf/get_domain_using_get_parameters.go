@@ -52,10 +52,12 @@ func NewGetDomainUsingGETParamsWithHTTPClient(client *http.Client) *GetDomainUsi
 	}
 }
 
-/* GetDomainUsingGETParams contains all the parameters to send to the API endpoint
-   for the get domain using g e t operation.
+/*
+GetDomainUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get domain using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetDomainUsingGETParams struct {
 

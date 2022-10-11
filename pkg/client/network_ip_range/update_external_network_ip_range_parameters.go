@@ -54,10 +54,12 @@ func NewUpdateExternalNetworkIPRangeParamsWithHTTPClient(client *http.Client) *U
 	}
 }
 
-/* UpdateExternalNetworkIPRangeParams contains all the parameters to send to the API endpoint
-   for the update external network IP range operation.
+/*
+UpdateExternalNetworkIPRangeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update external network IP range operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateExternalNetworkIPRangeParams struct {
 

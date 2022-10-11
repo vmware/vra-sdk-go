@@ -52,10 +52,12 @@ func NewRestoreBlueprintVersionUsingPOST1ParamsWithHTTPClient(client *http.Clien
 	}
 }
 
-/* RestoreBlueprintVersionUsingPOST1Params contains all the parameters to send to the API endpoint
-   for the restore blueprint version using p o s t 1 operation.
+/*
+RestoreBlueprintVersionUsingPOST1Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the restore blueprint version using p o s t 1 operation.
+
+	Typically these are written to a http.Request.
 */
 type RestoreBlueprintVersionUsingPOST1Params struct {
 

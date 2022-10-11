@@ -52,10 +52,12 @@ func NewDeleteGerritListenerByIDUsingDELETEParamsWithHTTPClient(client *http.Cli
 	}
 }
 
-/* DeleteGerritListenerByIDUsingDELETEParams contains all the parameters to send to the API endpoint
-   for the delete gerrit listener by Id using d e l e t e operation.
+/*
+DeleteGerritListenerByIDUsingDELETEParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete gerrit listener by Id using d e l e t e operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteGerritListenerByIDUsingDELETEParams struct {
 

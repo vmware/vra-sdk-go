@@ -45,14 +45,44 @@ func NewDeleteAzureStorageProfileNoContent() *DeleteAzureStorageProfileNoContent
 	return &DeleteAzureStorageProfileNoContent{}
 }
 
-/* DeleteAzureStorageProfileNoContent describes a response with status code 204, with default header values.
+/*
+DeleteAzureStorageProfileNoContent describes a response with status code 204, with default header values.
 
 No Content
 */
 type DeleteAzureStorageProfileNoContent struct {
 }
 
+// IsSuccess returns true when this delete azure storage profile no content response has a 2xx status code
+func (o *DeleteAzureStorageProfileNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete azure storage profile no content response has a 3xx status code
+func (o *DeleteAzureStorageProfileNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete azure storage profile no content response has a 4xx status code
+func (o *DeleteAzureStorageProfileNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete azure storage profile no content response has a 5xx status code
+func (o *DeleteAzureStorageProfileNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete azure storage profile no content response a status code equal to that given
+func (o *DeleteAzureStorageProfileNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteAzureStorageProfileNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/storage-profiles-azure/{id}][%d] deleteAzureStorageProfileNoContent ", 204)
+}
+
+func (o *DeleteAzureStorageProfileNoContent) String() string {
 	return fmt.Sprintf("[DELETE /iaas/api/storage-profiles-azure/{id}][%d] deleteAzureStorageProfileNoContent ", 204)
 }
 
@@ -66,7 +96,8 @@ func NewDeleteAzureStorageProfileForbidden() *DeleteAzureStorageProfileForbidden
 	return &DeleteAzureStorageProfileForbidden{}
 }
 
-/* DeleteAzureStorageProfileForbidden describes a response with status code 403, with default header values.
+/*
+DeleteAzureStorageProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -74,9 +105,39 @@ type DeleteAzureStorageProfileForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this delete azure storage profile forbidden response has a 2xx status code
+func (o *DeleteAzureStorageProfileForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete azure storage profile forbidden response has a 3xx status code
+func (o *DeleteAzureStorageProfileForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete azure storage profile forbidden response has a 4xx status code
+func (o *DeleteAzureStorageProfileForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete azure storage profile forbidden response has a 5xx status code
+func (o *DeleteAzureStorageProfileForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete azure storage profile forbidden response a status code equal to that given
+func (o *DeleteAzureStorageProfileForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteAzureStorageProfileForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/storage-profiles-azure/{id}][%d] deleteAzureStorageProfileForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DeleteAzureStorageProfileForbidden) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/storage-profiles-azure/{id}][%d] deleteAzureStorageProfileForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DeleteAzureStorageProfileForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

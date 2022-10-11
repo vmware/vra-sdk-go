@@ -63,7 +63,8 @@ func NewResumeOrRerunGitEventUsingPOSTOK() *ResumeOrRerunGitEventUsingPOSTOK {
 	return &ResumeOrRerunGitEventUsingPOSTOK{}
 }
 
-/* ResumeOrRerunGitEventUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+ResumeOrRerunGitEventUsingPOSTOK describes a response with status code 200, with default header values.
 
 'Success' with Re-run/Resume Git Event
 */
@@ -71,9 +72,39 @@ type ResumeOrRerunGitEventUsingPOSTOK struct {
 	Payload models.GitEvent
 }
 
+// IsSuccess returns true when this resume or rerun git event using p o s t o k response has a 2xx status code
+func (o *ResumeOrRerunGitEventUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this resume or rerun git event using p o s t o k response has a 3xx status code
+func (o *ResumeOrRerunGitEventUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this resume or rerun git event using p o s t o k response has a 4xx status code
+func (o *ResumeOrRerunGitEventUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this resume or rerun git event using p o s t o k response has a 5xx status code
+func (o *ResumeOrRerunGitEventUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this resume or rerun git event using p o s t o k response a status code equal to that given
+func (o *ResumeOrRerunGitEventUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ResumeOrRerunGitEventUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/git-events/{id}][%d] resumeOrRerunGitEventUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *ResumeOrRerunGitEventUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /codestream/api/git-events/{id}][%d] resumeOrRerunGitEventUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *ResumeOrRerunGitEventUsingPOSTOK) GetPayload() models.GitEvent {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewResumeOrRerunGitEventUsingPOSTUnauthorized() *ResumeOrRerunGitEventUsing
 	return &ResumeOrRerunGitEventUsingPOSTUnauthorized{}
 }
 
-/* ResumeOrRerunGitEventUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+ResumeOrRerunGitEventUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type ResumeOrRerunGitEventUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this resume or rerun git event using p o s t unauthorized response has a 2xx status code
+func (o *ResumeOrRerunGitEventUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this resume or rerun git event using p o s t unauthorized response has a 3xx status code
+func (o *ResumeOrRerunGitEventUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this resume or rerun git event using p o s t unauthorized response has a 4xx status code
+func (o *ResumeOrRerunGitEventUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this resume or rerun git event using p o s t unauthorized response has a 5xx status code
+func (o *ResumeOrRerunGitEventUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this resume or rerun git event using p o s t unauthorized response a status code equal to that given
+func (o *ResumeOrRerunGitEventUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ResumeOrRerunGitEventUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/git-events/{id}][%d] resumeOrRerunGitEventUsingPOSTUnauthorized ", 401)
+}
+
+func (o *ResumeOrRerunGitEventUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /codestream/api/git-events/{id}][%d] resumeOrRerunGitEventUsingPOSTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewResumeOrRerunGitEventUsingPOSTForbidden() *ResumeOrRerunGitEventUsingPOS
 	return &ResumeOrRerunGitEventUsingPOSTForbidden{}
 }
 
-/* ResumeOrRerunGitEventUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+ResumeOrRerunGitEventUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type ResumeOrRerunGitEventUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this resume or rerun git event using p o s t forbidden response has a 2xx status code
+func (o *ResumeOrRerunGitEventUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this resume or rerun git event using p o s t forbidden response has a 3xx status code
+func (o *ResumeOrRerunGitEventUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this resume or rerun git event using p o s t forbidden response has a 4xx status code
+func (o *ResumeOrRerunGitEventUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this resume or rerun git event using p o s t forbidden response has a 5xx status code
+func (o *ResumeOrRerunGitEventUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this resume or rerun git event using p o s t forbidden response a status code equal to that given
+func (o *ResumeOrRerunGitEventUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ResumeOrRerunGitEventUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/git-events/{id}][%d] resumeOrRerunGitEventUsingPOSTForbidden ", 403)
+}
+
+func (o *ResumeOrRerunGitEventUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /codestream/api/git-events/{id}][%d] resumeOrRerunGitEventUsingPOSTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewResumeOrRerunGitEventUsingPOSTNotFound() *ResumeOrRerunGitEventUsingPOST
 	return &ResumeOrRerunGitEventUsingPOSTNotFound{}
 }
 
-/* ResumeOrRerunGitEventUsingPOSTNotFound describes a response with status code 404, with default header values.
+/*
+ResumeOrRerunGitEventUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type ResumeOrRerunGitEventUsingPOSTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this resume or rerun git event using p o s t not found response has a 2xx status code
+func (o *ResumeOrRerunGitEventUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this resume or rerun git event using p o s t not found response has a 3xx status code
+func (o *ResumeOrRerunGitEventUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this resume or rerun git event using p o s t not found response has a 4xx status code
+func (o *ResumeOrRerunGitEventUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this resume or rerun git event using p o s t not found response has a 5xx status code
+func (o *ResumeOrRerunGitEventUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this resume or rerun git event using p o s t not found response a status code equal to that given
+func (o *ResumeOrRerunGitEventUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ResumeOrRerunGitEventUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/git-events/{id}][%d] resumeOrRerunGitEventUsingPOSTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ResumeOrRerunGitEventUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /codestream/api/git-events/{id}][%d] resumeOrRerunGitEventUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ResumeOrRerunGitEventUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewResumeOrRerunGitEventUsingPOSTInternalServerError() *ResumeOrRerunGitEve
 	return &ResumeOrRerunGitEventUsingPOSTInternalServerError{}
 }
 
-/* ResumeOrRerunGitEventUsingPOSTInternalServerError describes a response with status code 500, with default header values.
+/*
+ResumeOrRerunGitEventUsingPOSTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ResumeOrRerunGitEventUsingPOSTInternalServerError struct {
 }
 
+// IsSuccess returns true when this resume or rerun git event using p o s t internal server error response has a 2xx status code
+func (o *ResumeOrRerunGitEventUsingPOSTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this resume or rerun git event using p o s t internal server error response has a 3xx status code
+func (o *ResumeOrRerunGitEventUsingPOSTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this resume or rerun git event using p o s t internal server error response has a 4xx status code
+func (o *ResumeOrRerunGitEventUsingPOSTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this resume or rerun git event using p o s t internal server error response has a 5xx status code
+func (o *ResumeOrRerunGitEventUsingPOSTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this resume or rerun git event using p o s t internal server error response a status code equal to that given
+func (o *ResumeOrRerunGitEventUsingPOSTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ResumeOrRerunGitEventUsingPOSTInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/git-events/{id}][%d] resumeOrRerunGitEventUsingPOSTInternalServerError ", 500)
+}
+
+func (o *ResumeOrRerunGitEventUsingPOSTInternalServerError) String() string {
 	return fmt.Sprintf("[POST /codestream/api/git-events/{id}][%d] resumeOrRerunGitEventUsingPOSTInternalServerError ", 500)
 }
 

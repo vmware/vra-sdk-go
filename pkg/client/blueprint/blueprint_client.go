@@ -60,7 +60,7 @@ type ClientService interface {
 }
 
 /*
-  CreateBlueprintUsingPOST1 creates a blueprint
+CreateBlueprintUsingPOST1 creates a blueprint
 */
 func (a *Client) CreateBlueprintUsingPOST1(params *CreateBlueprintUsingPOST1Params, opts ...ClientOption) (*CreateBlueprintUsingPOST1Created, error) {
 	// TODO: Validate the params before sending
@@ -98,7 +98,7 @@ func (a *Client) CreateBlueprintUsingPOST1(params *CreateBlueprintUsingPOST1Para
 }
 
 /*
-  CreateBlueprintVersionUsingPOST1 creates version for the given blueprint ID
+CreateBlueprintVersionUsingPOST1 creates version for the given blueprint ID
 */
 func (a *Client) CreateBlueprintVersionUsingPOST1(params *CreateBlueprintVersionUsingPOST1Params, opts ...ClientOption) (*CreateBlueprintVersionUsingPOST1Created, error) {
 	// TODO: Validate the params before sending
@@ -136,7 +136,7 @@ func (a *Client) CreateBlueprintVersionUsingPOST1(params *CreateBlueprintVersion
 }
 
 /*
-  DeleteBlueprintUsingDELETE1 deletes a blueprint
+DeleteBlueprintUsingDELETE1 deletes a blueprint
 */
 func (a *Client) DeleteBlueprintUsingDELETE1(params *DeleteBlueprintUsingDELETE1Params, opts ...ClientOption) (*DeleteBlueprintUsingDELETE1NoContent, error) {
 	// TODO: Validate the params before sending
@@ -174,7 +174,7 @@ func (a *Client) DeleteBlueprintUsingDELETE1(params *DeleteBlueprintUsingDELETE1
 }
 
 /*
-  GetBlueprintInputsSchemaUsingGET1 returns blueprint inputs schema
+GetBlueprintInputsSchemaUsingGET1 returns blueprint inputs schema
 */
 func (a *Client) GetBlueprintInputsSchemaUsingGET1(params *GetBlueprintInputsSchemaUsingGET1Params, opts ...ClientOption) (*GetBlueprintInputsSchemaUsingGET1OK, error) {
 	// TODO: Validate the params before sending
@@ -212,7 +212,7 @@ func (a *Client) GetBlueprintInputsSchemaUsingGET1(params *GetBlueprintInputsSch
 }
 
 /*
-  GetBlueprintUsingGET1 returns blueprint details
+GetBlueprintUsingGET1 returns blueprint details
 */
 func (a *Client) GetBlueprintUsingGET1(params *GetBlueprintUsingGET1Params, opts ...ClientOption) (*GetBlueprintUsingGET1OK, error) {
 	// TODO: Validate the params before sending
@@ -250,7 +250,7 @@ func (a *Client) GetBlueprintUsingGET1(params *GetBlueprintUsingGET1Params, opts
 }
 
 /*
-  GetBlueprintVersionInputsSchemaUsingGET1 returns blueprint version inputs schema
+GetBlueprintVersionInputsSchemaUsingGET1 returns blueprint version inputs schema
 */
 func (a *Client) GetBlueprintVersionInputsSchemaUsingGET1(params *GetBlueprintVersionInputsSchemaUsingGET1Params, opts ...ClientOption) (*GetBlueprintVersionInputsSchemaUsingGET1OK, error) {
 	// TODO: Validate the params before sending
@@ -288,7 +288,7 @@ func (a *Client) GetBlueprintVersionInputsSchemaUsingGET1(params *GetBlueprintVe
 }
 
 /*
-  GetBlueprintVersionUsingGET1 returns versioned blueprint details
+GetBlueprintVersionUsingGET1 returns versioned blueprint details
 */
 func (a *Client) GetBlueprintVersionUsingGET1(params *GetBlueprintVersionUsingGET1Params, opts ...ClientOption) (*GetBlueprintVersionUsingGET1OK, error) {
 	// TODO: Validate the params before sending
@@ -326,7 +326,7 @@ func (a *Client) GetBlueprintVersionUsingGET1(params *GetBlueprintVersionUsingGE
 }
 
 /*
-  ListBlueprintVersionsUsingGET lists blueprint versions
+ListBlueprintVersionsUsingGET lists blueprint versions
 */
 func (a *Client) ListBlueprintVersionsUsingGET(params *ListBlueprintVersionsUsingGETParams, opts ...ClientOption) (*ListBlueprintVersionsUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -364,7 +364,7 @@ func (a *Client) ListBlueprintVersionsUsingGET(params *ListBlueprintVersionsUsin
 }
 
 /*
-  ListBlueprintsUsingGET1 lists draft blueprint
+ListBlueprintsUsingGET1 lists draft blueprint
 */
 func (a *Client) ListBlueprintsUsingGET1(params *ListBlueprintsUsingGET1Params, opts ...ClientOption) (*ListBlueprintsUsingGET1OK, error) {
 	// TODO: Validate the params before sending
@@ -402,7 +402,7 @@ func (a *Client) ListBlueprintsUsingGET1(params *ListBlueprintsUsingGET1Params, 
 }
 
 /*
-  ReleaseBlueprintVersionUsingPOST1 releases versioned blueprint to catalog
+ReleaseBlueprintVersionUsingPOST1 releases versioned blueprint to catalog
 */
 func (a *Client) ReleaseBlueprintVersionUsingPOST1(params *ReleaseBlueprintVersionUsingPOST1Params, opts ...ClientOption) (*ReleaseBlueprintVersionUsingPOST1OK, error) {
 	// TODO: Validate the params before sending
@@ -440,7 +440,7 @@ func (a *Client) ReleaseBlueprintVersionUsingPOST1(params *ReleaseBlueprintVersi
 }
 
 /*
-  RestoreBlueprintVersionUsingPOST1 restores content of draft from versioned blueprint
+RestoreBlueprintVersionUsingPOST1 restores content of draft from versioned blueprint
 */
 func (a *Client) RestoreBlueprintVersionUsingPOST1(params *RestoreBlueprintVersionUsingPOST1Params, opts ...ClientOption) (*RestoreBlueprintVersionUsingPOST1OK, error) {
 	// TODO: Validate the params before sending
@@ -478,7 +478,7 @@ func (a *Client) RestoreBlueprintVersionUsingPOST1(params *RestoreBlueprintVersi
 }
 
 /*
-  UnReleaseBlueprintVersionUsingPOST1 uns release versioned blueprint from catalog
+UnReleaseBlueprintVersionUsingPOST1 uns release versioned blueprint from catalog
 */
 func (a *Client) UnReleaseBlueprintVersionUsingPOST1(params *UnReleaseBlueprintVersionUsingPOST1Params, opts ...ClientOption) (*UnReleaseBlueprintVersionUsingPOST1OK, error) {
 	// TODO: Validate the params before sending
@@ -516,7 +516,7 @@ func (a *Client) UnReleaseBlueprintVersionUsingPOST1(params *UnReleaseBlueprintV
 }
 
 /*
-  UpdateBlueprintUsingPUT1 updates a blueprint
+UpdateBlueprintUsingPUT1 updates a blueprint
 */
 func (a *Client) UpdateBlueprintUsingPUT1(params *UpdateBlueprintUsingPUT1Params, opts ...ClientOption) (*UpdateBlueprintUsingPUT1OK, error) {
 	// TODO: Validate the params before sending

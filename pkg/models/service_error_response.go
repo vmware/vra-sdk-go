@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// ServiceErrorResponse service error response
+// ServiceErrorResponse ServiceErrorResponse
 //
 // swagger:model ServiceErrorResponse
 type ServiceErrorResponse struct {
@@ -35,9 +35,6 @@ type ServiceErrorResponse struct {
 
 	// message Id
 	MessageID string `json:"messageId,omitempty"`
-
-	// server error Id
-	ServerErrorID string `json:"serverErrorId,omitempty"`
 
 	// stack trace
 	StackTrace []string `json:"stackTrace"`

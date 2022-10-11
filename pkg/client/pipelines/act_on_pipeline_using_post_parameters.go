@@ -54,10 +54,12 @@ func NewActOnPipelineUsingPOSTParamsWithHTTPClient(client *http.Client) *ActOnPi
 	}
 }
 
-/* ActOnPipelineUsingPOSTParams contains all the parameters to send to the API endpoint
-   for the act on pipeline using p o s t operation.
+/*
+ActOnPipelineUsingPOSTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the act on pipeline using p o s t operation.
+
+	Typically these are written to a http.Request.
 */
 type ActOnPipelineUsingPOSTParams struct {
 

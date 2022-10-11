@@ -63,7 +63,8 @@ func NewCloneGerritTriggerUsingPOSTOK() *CloneGerritTriggerUsingPOSTOK {
 	return &CloneGerritTriggerUsingPOSTOK{}
 }
 
-/* CloneGerritTriggerUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+CloneGerritTriggerUsingPOSTOK describes a response with status code 200, with default header values.
 
 'Success' with Gerrit Trigger Clone
 */
@@ -71,9 +72,39 @@ type CloneGerritTriggerUsingPOSTOK struct {
 	Payload models.GerritTrigger
 }
 
+// IsSuccess returns true when this clone gerrit trigger using p o s t o k response has a 2xx status code
+func (o *CloneGerritTriggerUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this clone gerrit trigger using p o s t o k response has a 3xx status code
+func (o *CloneGerritTriggerUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this clone gerrit trigger using p o s t o k response has a 4xx status code
+func (o *CloneGerritTriggerUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this clone gerrit trigger using p o s t o k response has a 5xx status code
+func (o *CloneGerritTriggerUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this clone gerrit trigger using p o s t o k response a status code equal to that given
+func (o *CloneGerritTriggerUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CloneGerritTriggerUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-triggers/{id}][%d] cloneGerritTriggerUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *CloneGerritTriggerUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-triggers/{id}][%d] cloneGerritTriggerUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *CloneGerritTriggerUsingPOSTOK) GetPayload() models.GerritTrigger {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewCloneGerritTriggerUsingPOSTUnauthorized() *CloneGerritTriggerUsingPOSTUn
 	return &CloneGerritTriggerUsingPOSTUnauthorized{}
 }
 
-/* CloneGerritTriggerUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+CloneGerritTriggerUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type CloneGerritTriggerUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this clone gerrit trigger using p o s t unauthorized response has a 2xx status code
+func (o *CloneGerritTriggerUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this clone gerrit trigger using p o s t unauthorized response has a 3xx status code
+func (o *CloneGerritTriggerUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this clone gerrit trigger using p o s t unauthorized response has a 4xx status code
+func (o *CloneGerritTriggerUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this clone gerrit trigger using p o s t unauthorized response has a 5xx status code
+func (o *CloneGerritTriggerUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this clone gerrit trigger using p o s t unauthorized response a status code equal to that given
+func (o *CloneGerritTriggerUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CloneGerritTriggerUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-triggers/{id}][%d] cloneGerritTriggerUsingPOSTUnauthorized ", 401)
+}
+
+func (o *CloneGerritTriggerUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-triggers/{id}][%d] cloneGerritTriggerUsingPOSTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewCloneGerritTriggerUsingPOSTForbidden() *CloneGerritTriggerUsingPOSTForbi
 	return &CloneGerritTriggerUsingPOSTForbidden{}
 }
 
-/* CloneGerritTriggerUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+CloneGerritTriggerUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type CloneGerritTriggerUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this clone gerrit trigger using p o s t forbidden response has a 2xx status code
+func (o *CloneGerritTriggerUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this clone gerrit trigger using p o s t forbidden response has a 3xx status code
+func (o *CloneGerritTriggerUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this clone gerrit trigger using p o s t forbidden response has a 4xx status code
+func (o *CloneGerritTriggerUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this clone gerrit trigger using p o s t forbidden response has a 5xx status code
+func (o *CloneGerritTriggerUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this clone gerrit trigger using p o s t forbidden response a status code equal to that given
+func (o *CloneGerritTriggerUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CloneGerritTriggerUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-triggers/{id}][%d] cloneGerritTriggerUsingPOSTForbidden ", 403)
+}
+
+func (o *CloneGerritTriggerUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-triggers/{id}][%d] cloneGerritTriggerUsingPOSTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewCloneGerritTriggerUsingPOSTNotFound() *CloneGerritTriggerUsingPOSTNotFou
 	return &CloneGerritTriggerUsingPOSTNotFound{}
 }
 
-/* CloneGerritTriggerUsingPOSTNotFound describes a response with status code 404, with default header values.
+/*
+CloneGerritTriggerUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type CloneGerritTriggerUsingPOSTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this clone gerrit trigger using p o s t not found response has a 2xx status code
+func (o *CloneGerritTriggerUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this clone gerrit trigger using p o s t not found response has a 3xx status code
+func (o *CloneGerritTriggerUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this clone gerrit trigger using p o s t not found response has a 4xx status code
+func (o *CloneGerritTriggerUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this clone gerrit trigger using p o s t not found response has a 5xx status code
+func (o *CloneGerritTriggerUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this clone gerrit trigger using p o s t not found response a status code equal to that given
+func (o *CloneGerritTriggerUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CloneGerritTriggerUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-triggers/{id}][%d] cloneGerritTriggerUsingPOSTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CloneGerritTriggerUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-triggers/{id}][%d] cloneGerritTriggerUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CloneGerritTriggerUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewCloneGerritTriggerUsingPOSTInternalServerError() *CloneGerritTriggerUsin
 	return &CloneGerritTriggerUsingPOSTInternalServerError{}
 }
 
-/* CloneGerritTriggerUsingPOSTInternalServerError describes a response with status code 500, with default header values.
+/*
+CloneGerritTriggerUsingPOSTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CloneGerritTriggerUsingPOSTInternalServerError struct {
 }
 
+// IsSuccess returns true when this clone gerrit trigger using p o s t internal server error response has a 2xx status code
+func (o *CloneGerritTriggerUsingPOSTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this clone gerrit trigger using p o s t internal server error response has a 3xx status code
+func (o *CloneGerritTriggerUsingPOSTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this clone gerrit trigger using p o s t internal server error response has a 4xx status code
+func (o *CloneGerritTriggerUsingPOSTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this clone gerrit trigger using p o s t internal server error response has a 5xx status code
+func (o *CloneGerritTriggerUsingPOSTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this clone gerrit trigger using p o s t internal server error response a status code equal to that given
+func (o *CloneGerritTriggerUsingPOSTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CloneGerritTriggerUsingPOSTInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-triggers/{id}][%d] cloneGerritTriggerUsingPOSTInternalServerError ", 500)
+}
+
+func (o *CloneGerritTriggerUsingPOSTInternalServerError) String() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-triggers/{id}][%d] cloneGerritTriggerUsingPOSTInternalServerError ", 500)
 }
 

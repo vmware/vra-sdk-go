@@ -38,9 +38,9 @@ type ClientService interface {
 }
 
 /*
-  GetFabricVSphereStoragePolicies gets fabric v sphere storage polices
+GetFabricVSphereStoragePolicies gets fabric v sphere storage polices
 
-  Get all fabric vSphere storage polices.
+Get all fabric vSphere storage polices.
 */
 func (a *Client) GetFabricVSphereStoragePolicies(params *GetFabricVSphereStoragePoliciesParams, opts ...ClientOption) (*GetFabricVSphereStoragePoliciesOK, error) {
 	// TODO: Validate the params before sending
@@ -78,9 +78,9 @@ func (a *Client) GetFabricVSphereStoragePolicies(params *GetFabricVSphereStorage
 }
 
 /*
-  GetFabricVSphereStoragePolicy gets fabric v sphere storage policy
+GetFabricVSphereStoragePolicy gets fabric v sphere storage policy
 
-  Get fabric vSphere storage policy with a given id
+Get fabric vSphere storage policy with a given id
 */
 func (a *Client) GetFabricVSphereStoragePolicy(params *GetFabricVSphereStoragePolicyParams, opts ...ClientOption) (*GetFabricVSphereStoragePolicyOK, error) {
 	// TODO: Validate the params before sending

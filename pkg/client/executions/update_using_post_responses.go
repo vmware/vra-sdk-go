@@ -63,7 +63,8 @@ func NewUpdateUsingPOSTOK() *UpdateUsingPOSTOK {
 	return &UpdateUsingPOSTOK{}
 }
 
-/* UpdateUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+UpdateUsingPOSTOK describes a response with status code 200, with default header values.
 
 Approved/Rejected all selected user operations successfully.
 */
@@ -71,9 +72,39 @@ type UpdateUsingPOSTOK struct {
 	Payload models.BatchUserOperationResponse
 }
 
+// IsSuccess returns true when this update using p o s t o k response has a 2xx status code
+func (o *UpdateUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update using p o s t o k response has a 3xx status code
+func (o *UpdateUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update using p o s t o k response has a 4xx status code
+func (o *UpdateUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update using p o s t o k response has a 5xx status code
+func (o *UpdateUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update using p o s t o k response a status code equal to that given
+func (o *UpdateUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/batch-user-operations][%d] updateUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /codestream/api/batch-user-operations][%d] updateUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateUsingPOSTOK) GetPayload() models.BatchUserOperationResponse {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewUpdateUsingPOSTUnauthorized() *UpdateUsingPOSTUnauthorized {
 	return &UpdateUsingPOSTUnauthorized{}
 }
 
-/* UpdateUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+UpdateUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type UpdateUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this update using p o s t unauthorized response has a 2xx status code
+func (o *UpdateUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update using p o s t unauthorized response has a 3xx status code
+func (o *UpdateUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update using p o s t unauthorized response has a 4xx status code
+func (o *UpdateUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update using p o s t unauthorized response has a 5xx status code
+func (o *UpdateUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update using p o s t unauthorized response a status code equal to that given
+func (o *UpdateUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UpdateUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/batch-user-operations][%d] updateUsingPOSTUnauthorized ", 401)
+}
+
+func (o *UpdateUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /codestream/api/batch-user-operations][%d] updateUsingPOSTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewUpdateUsingPOSTForbidden() *UpdateUsingPOSTForbidden {
 	return &UpdateUsingPOSTForbidden{}
 }
 
-/* UpdateUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+UpdateUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type UpdateUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this update using p o s t forbidden response has a 2xx status code
+func (o *UpdateUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update using p o s t forbidden response has a 3xx status code
+func (o *UpdateUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update using p o s t forbidden response has a 4xx status code
+func (o *UpdateUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update using p o s t forbidden response has a 5xx status code
+func (o *UpdateUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update using p o s t forbidden response a status code equal to that given
+func (o *UpdateUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/batch-user-operations][%d] updateUsingPOSTForbidden ", 403)
+}
+
+func (o *UpdateUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /codestream/api/batch-user-operations][%d] updateUsingPOSTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewUpdateUsingPOSTNotFound() *UpdateUsingPOSTNotFound {
 	return &UpdateUsingPOSTNotFound{}
 }
 
-/* UpdateUsingPOSTNotFound describes a response with status code 404, with default header values.
+/*
+UpdateUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type UpdateUsingPOSTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update using p o s t not found response has a 2xx status code
+func (o *UpdateUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update using p o s t not found response has a 3xx status code
+func (o *UpdateUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update using p o s t not found response has a 4xx status code
+func (o *UpdateUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update using p o s t not found response has a 5xx status code
+func (o *UpdateUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update using p o s t not found response a status code equal to that given
+func (o *UpdateUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/batch-user-operations][%d] updateUsingPOSTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UpdateUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /codestream/api/batch-user-operations][%d] updateUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UpdateUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewUpdateUsingPOSTInternalServerError() *UpdateUsingPOSTInternalServerError
 	return &UpdateUsingPOSTInternalServerError{}
 }
 
-/* UpdateUsingPOSTInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateUsingPOSTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type UpdateUsingPOSTInternalServerError struct {
 }
 
+// IsSuccess returns true when this update using p o s t internal server error response has a 2xx status code
+func (o *UpdateUsingPOSTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update using p o s t internal server error response has a 3xx status code
+func (o *UpdateUsingPOSTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update using p o s t internal server error response has a 4xx status code
+func (o *UpdateUsingPOSTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update using p o s t internal server error response has a 5xx status code
+func (o *UpdateUsingPOSTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this update using p o s t internal server error response a status code equal to that given
+func (o *UpdateUsingPOSTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *UpdateUsingPOSTInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/batch-user-operations][%d] updateUsingPOSTInternalServerError ", 500)
+}
+
+func (o *UpdateUsingPOSTInternalServerError) String() string {
 	return fmt.Sprintf("[POST /codestream/api/batch-user-operations][%d] updateUsingPOSTInternalServerError ", 500)
 }
 

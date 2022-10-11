@@ -54,10 +54,12 @@ func NewScheduleSyncAllUsingPOSTParamsWithHTTPClient(client *http.Client) *Sched
 	}
 }
 
-/* ScheduleSyncAllUsingPOSTParams contains all the parameters to send to the API endpoint
-   for the schedule sync all using p o s t operation.
+/*
+ScheduleSyncAllUsingPOSTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the schedule sync all using p o s t operation.
+
+	Typically these are written to a http.Request.
 */
 type ScheduleSyncAllUsingPOSTParams struct {
 

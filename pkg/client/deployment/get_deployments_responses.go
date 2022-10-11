@@ -45,7 +45,8 @@ func NewGetDeploymentsOK() *GetDeploymentsOK {
 	return &GetDeploymentsOK{}
 }
 
-/* GetDeploymentsOK describes a response with status code 200, with default header values.
+/*
+GetDeploymentsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type GetDeploymentsOK struct {
 	Payload []*models.DeploymentResult
 }
 
+// IsSuccess returns true when this get deployments o k response has a 2xx status code
+func (o *GetDeploymentsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get deployments o k response has a 3xx status code
+func (o *GetDeploymentsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get deployments o k response has a 4xx status code
+func (o *GetDeploymentsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get deployments o k response has a 5xx status code
+func (o *GetDeploymentsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get deployments o k response a status code equal to that given
+func (o *GetDeploymentsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetDeploymentsOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/deployments][%d] getDeploymentsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetDeploymentsOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/deployments][%d] getDeploymentsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetDeploymentsOK) GetPayload() []*models.DeploymentResult {
 	return o.Payload
 }
@@ -75,7 +106,8 @@ func NewGetDeploymentsForbidden() *GetDeploymentsForbidden {
 	return &GetDeploymentsForbidden{}
 }
 
-/* GetDeploymentsForbidden describes a response with status code 403, with default header values.
+/*
+GetDeploymentsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -83,9 +115,39 @@ type GetDeploymentsForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get deployments forbidden response has a 2xx status code
+func (o *GetDeploymentsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get deployments forbidden response has a 3xx status code
+func (o *GetDeploymentsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get deployments forbidden response has a 4xx status code
+func (o *GetDeploymentsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get deployments forbidden response has a 5xx status code
+func (o *GetDeploymentsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get deployments forbidden response a status code equal to that given
+func (o *GetDeploymentsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetDeploymentsForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/deployments][%d] getDeploymentsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetDeploymentsForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/deployments][%d] getDeploymentsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetDeploymentsForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

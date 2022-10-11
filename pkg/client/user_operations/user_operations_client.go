@@ -44,9 +44,9 @@ type ClientService interface {
 }
 
 /*
-  DeleteUserOperationByIDUsingDELETE deletes a user operation by id
+DeleteUserOperationByIDUsingDELETE deletes a user operation by id
 
-  Delete a User Operation with the given id
+Delete a User Operation with the given id
 */
 func (a *Client) DeleteUserOperationByIDUsingDELETE(params *DeleteUserOperationByIDUsingDELETEParams, opts ...ClientOption) (*DeleteUserOperationByIDUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
@@ -84,9 +84,9 @@ func (a *Client) DeleteUserOperationByIDUsingDELETE(params *DeleteUserOperationB
 }
 
 /*
-  GetAllUserOperationsUsingGET gets all user operations
+GetAllUserOperationsUsingGET gets all user operations
 
-  Get all User operations with specified paging and filter parameters.
+Get all User operations with specified paging and filter parameters.
 */
 func (a *Client) GetAllUserOperationsUsingGET(params *GetAllUserOperationsUsingGETParams, opts ...ClientOption) (*GetAllUserOperationsUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -124,9 +124,9 @@ func (a *Client) GetAllUserOperationsUsingGET(params *GetAllUserOperationsUsingG
 }
 
 /*
-  GetUserOperationByIDUsingGET gets a user operation
+GetUserOperationByIDUsingGET gets a user operation
 
-  Get a User Operation with the given id
+Get a User Operation with the given id
 */
 func (a *Client) GetUserOperationByIDUsingGET(params *GetUserOperationByIDUsingGETParams, opts ...ClientOption) (*GetUserOperationByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -164,9 +164,9 @@ func (a *Client) GetUserOperationByIDUsingGET(params *GetUserOperationByIDUsingG
 }
 
 /*
-  ModifyPatchUserOperationUsingPATCH modifies a user operation
+ModifyPatchUserOperationUsingPATCH modifies a user operation
 
-  Modify a User Operation with the given id
+Modify a User Operation with the given id
 */
 func (a *Client) ModifyPatchUserOperationUsingPATCH(params *ModifyPatchUserOperationUsingPATCHParams, opts ...ClientOption) (*ModifyPatchUserOperationUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
@@ -204,9 +204,9 @@ func (a *Client) ModifyPatchUserOperationUsingPATCH(params *ModifyPatchUserOpera
 }
 
 /*
-  ModifyPostUserOperationUsingPOST modifies a user operation
+ModifyPostUserOperationUsingPOST modifies a user operation
 
-  Modify a User Operation with the given id
+Modify a User Operation with the given id
 */
 func (a *Client) ModifyPostUserOperationUsingPOST(params *ModifyPostUserOperationUsingPOSTParams, opts ...ClientOption) (*ModifyPostUserOperationUsingPOSTOK, error) {
 	// TODO: Validate the params before sending

@@ -52,10 +52,12 @@ func NewGetFabricAwsVolumeTypesParamsWithHTTPClient(client *http.Client) *GetFab
 	}
 }
 
-/* GetFabricAwsVolumeTypesParams contains all the parameters to send to the API endpoint
-   for the get fabric aws volume types operation.
+/*
+GetFabricAwsVolumeTypesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get fabric aws volume types operation.
+
+	Typically these are written to a http.Request.
 */
 type GetFabricAwsVolumeTypesParams struct {
 

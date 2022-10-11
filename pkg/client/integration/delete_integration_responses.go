@@ -29,6 +29,12 @@ func (o *DeleteIntegrationReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return result, nil
+	case 204:
+		result := NewDeleteIntegrationNoContent()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
 	case 403:
 		result := NewDeleteIntegrationForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -45,7 +51,8 @@ func NewDeleteIntegrationAccepted() *DeleteIntegrationAccepted {
 	return &DeleteIntegrationAccepted{}
 }
 
-/* DeleteIntegrationAccepted describes a response with status code 202, with default header values.
+/*
+DeleteIntegrationAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -53,9 +60,39 @@ type DeleteIntegrationAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this delete integration accepted response has a 2xx status code
+func (o *DeleteIntegrationAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete integration accepted response has a 3xx status code
+func (o *DeleteIntegrationAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete integration accepted response has a 4xx status code
+func (o *DeleteIntegrationAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete integration accepted response has a 5xx status code
+func (o *DeleteIntegrationAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete integration accepted response a status code equal to that given
+func (o *DeleteIntegrationAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteIntegrationAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/integrations/{id}][%d] deleteIntegrationAccepted  %+v", 202, o.Payload)
 }
+
+func (o *DeleteIntegrationAccepted) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/integrations/{id}][%d] deleteIntegrationAccepted  %+v", 202, o.Payload)
+}
+
 func (o *DeleteIntegrationAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -72,12 +109,64 @@ func (o *DeleteIntegrationAccepted) readResponse(response runtime.ClientResponse
 	return nil
 }
 
+// NewDeleteIntegrationNoContent creates a DeleteIntegrationNoContent with default headers values
+func NewDeleteIntegrationNoContent() *DeleteIntegrationNoContent {
+	return &DeleteIntegrationNoContent{}
+}
+
+/*
+DeleteIntegrationNoContent describes a response with status code 204, with default header values.
+
+No Content
+*/
+type DeleteIntegrationNoContent struct {
+}
+
+// IsSuccess returns true when this delete integration no content response has a 2xx status code
+func (o *DeleteIntegrationNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete integration no content response has a 3xx status code
+func (o *DeleteIntegrationNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete integration no content response has a 4xx status code
+func (o *DeleteIntegrationNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete integration no content response has a 5xx status code
+func (o *DeleteIntegrationNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete integration no content response a status code equal to that given
+func (o *DeleteIntegrationNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
+func (o *DeleteIntegrationNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/integrations/{id}][%d] deleteIntegrationNoContent ", 204)
+}
+
+func (o *DeleteIntegrationNoContent) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/integrations/{id}][%d] deleteIntegrationNoContent ", 204)
+}
+
+func (o *DeleteIntegrationNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
 // NewDeleteIntegrationForbidden creates a DeleteIntegrationForbidden with default headers values
 func NewDeleteIntegrationForbidden() *DeleteIntegrationForbidden {
 	return &DeleteIntegrationForbidden{}
 }
 
-/* DeleteIntegrationForbidden describes a response with status code 403, with default header values.
+/*
+DeleteIntegrationForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +174,39 @@ type DeleteIntegrationForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this delete integration forbidden response has a 2xx status code
+func (o *DeleteIntegrationForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete integration forbidden response has a 3xx status code
+func (o *DeleteIntegrationForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete integration forbidden response has a 4xx status code
+func (o *DeleteIntegrationForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete integration forbidden response has a 5xx status code
+func (o *DeleteIntegrationForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete integration forbidden response a status code equal to that given
+func (o *DeleteIntegrationForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteIntegrationForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/integrations/{id}][%d] deleteIntegrationForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DeleteIntegrationForbidden) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/integrations/{id}][%d] deleteIntegrationForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DeleteIntegrationForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

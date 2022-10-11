@@ -54,10 +54,12 @@ func NewCreateMachineSnapshotParamsWithHTTPClient(client *http.Client) *CreateMa
 	}
 }
 
-/* CreateMachineSnapshotParams contains all the parameters to send to the API endpoint
-   for the create machine snapshot operation.
+/*
+CreateMachineSnapshotParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create machine snapshot operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateMachineSnapshotParams struct {
 

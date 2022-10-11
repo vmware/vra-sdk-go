@@ -52,10 +52,12 @@ func NewGetResourceTypeUsingGETParamsWithHTTPClient(client *http.Client) *GetRes
 	}
 }
 
-/* GetResourceTypeUsingGETParams contains all the parameters to send to the API endpoint
-   for the get resource type using g e t operation.
+/*
+GetResourceTypeUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get resource type using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetResourceTypeUsingGETParams struct {
 

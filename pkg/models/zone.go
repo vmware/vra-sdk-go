@@ -44,7 +44,7 @@ type Zone struct {
 	// Example: us-east-1
 	ExternalRegionID string `json:"externalRegionId,omitempty"`
 
-	// The folder relative path to the datacenter where resources are deployed to. (only applicable for vSphere cloud zones)
+	// The folder relative path to the datacenter where resources are deployed to. If a non-existent folder name is passed, a new folder will be created in the respective datacenter when a machine is provisioned via the cloud zone. (only applicable for vSphere cloud zones)
 	// Example: test-folder
 	Folder string `json:"folder,omitempty"`
 

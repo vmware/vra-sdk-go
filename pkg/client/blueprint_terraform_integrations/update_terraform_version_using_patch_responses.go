@@ -57,7 +57,8 @@ func NewUpdateTerraformVersionUsingPATCHOK() *UpdateTerraformVersionUsingPATCHOK
 	return &UpdateTerraformVersionUsingPATCHOK{}
 }
 
-/* UpdateTerraformVersionUsingPATCHOK describes a response with status code 200, with default header values.
+/*
+UpdateTerraformVersionUsingPATCHOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -65,9 +66,39 @@ type UpdateTerraformVersionUsingPATCHOK struct {
 	Payload *models.TerraformVersion
 }
 
+// IsSuccess returns true when this update terraform version using p a t c h o k response has a 2xx status code
+func (o *UpdateTerraformVersionUsingPATCHOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update terraform version using p a t c h o k response has a 3xx status code
+func (o *UpdateTerraformVersionUsingPATCHOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update terraform version using p a t c h o k response has a 4xx status code
+func (o *UpdateTerraformVersionUsingPATCHOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update terraform version using p a t c h o k response has a 5xx status code
+func (o *UpdateTerraformVersionUsingPATCHOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update terraform version using p a t c h o k response a status code equal to that given
+func (o *UpdateTerraformVersionUsingPATCHOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateTerraformVersionUsingPATCHOK) Error() string {
 	return fmt.Sprintf("[PATCH /blueprint/api/blueprint-integrations/terraform/versions/{versionId}][%d] updateTerraformVersionUsingPATCHOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateTerraformVersionUsingPATCHOK) String() string {
+	return fmt.Sprintf("[PATCH /blueprint/api/blueprint-integrations/terraform/versions/{versionId}][%d] updateTerraformVersionUsingPATCHOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateTerraformVersionUsingPATCHOK) GetPayload() *models.TerraformVersion {
 	return o.Payload
 }
@@ -89,14 +120,44 @@ func NewUpdateTerraformVersionUsingPATCHUnauthorized() *UpdateTerraformVersionUs
 	return &UpdateTerraformVersionUsingPATCHUnauthorized{}
 }
 
-/* UpdateTerraformVersionUsingPATCHUnauthorized describes a response with status code 401, with default header values.
+/*
+UpdateTerraformVersionUsingPATCHUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type UpdateTerraformVersionUsingPATCHUnauthorized struct {
 }
 
+// IsSuccess returns true when this update terraform version using p a t c h unauthorized response has a 2xx status code
+func (o *UpdateTerraformVersionUsingPATCHUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update terraform version using p a t c h unauthorized response has a 3xx status code
+func (o *UpdateTerraformVersionUsingPATCHUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update terraform version using p a t c h unauthorized response has a 4xx status code
+func (o *UpdateTerraformVersionUsingPATCHUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update terraform version using p a t c h unauthorized response has a 5xx status code
+func (o *UpdateTerraformVersionUsingPATCHUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update terraform version using p a t c h unauthorized response a status code equal to that given
+func (o *UpdateTerraformVersionUsingPATCHUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UpdateTerraformVersionUsingPATCHUnauthorized) Error() string {
+	return fmt.Sprintf("[PATCH /blueprint/api/blueprint-integrations/terraform/versions/{versionId}][%d] updateTerraformVersionUsingPATCHUnauthorized ", 401)
+}
+
+func (o *UpdateTerraformVersionUsingPATCHUnauthorized) String() string {
 	return fmt.Sprintf("[PATCH /blueprint/api/blueprint-integrations/terraform/versions/{versionId}][%d] updateTerraformVersionUsingPATCHUnauthorized ", 401)
 }
 
@@ -110,14 +171,44 @@ func NewUpdateTerraformVersionUsingPATCHForbidden() *UpdateTerraformVersionUsing
 	return &UpdateTerraformVersionUsingPATCHForbidden{}
 }
 
-/* UpdateTerraformVersionUsingPATCHForbidden describes a response with status code 403, with default header values.
+/*
+UpdateTerraformVersionUsingPATCHForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type UpdateTerraformVersionUsingPATCHForbidden struct {
 }
 
+// IsSuccess returns true when this update terraform version using p a t c h forbidden response has a 2xx status code
+func (o *UpdateTerraformVersionUsingPATCHForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update terraform version using p a t c h forbidden response has a 3xx status code
+func (o *UpdateTerraformVersionUsingPATCHForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update terraform version using p a t c h forbidden response has a 4xx status code
+func (o *UpdateTerraformVersionUsingPATCHForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update terraform version using p a t c h forbidden response has a 5xx status code
+func (o *UpdateTerraformVersionUsingPATCHForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update terraform version using p a t c h forbidden response a status code equal to that given
+func (o *UpdateTerraformVersionUsingPATCHForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateTerraformVersionUsingPATCHForbidden) Error() string {
+	return fmt.Sprintf("[PATCH /blueprint/api/blueprint-integrations/terraform/versions/{versionId}][%d] updateTerraformVersionUsingPATCHForbidden ", 403)
+}
+
+func (o *UpdateTerraformVersionUsingPATCHForbidden) String() string {
 	return fmt.Sprintf("[PATCH /blueprint/api/blueprint-integrations/terraform/versions/{versionId}][%d] updateTerraformVersionUsingPATCHForbidden ", 403)
 }
 
@@ -131,7 +222,8 @@ func NewUpdateTerraformVersionUsingPATCHNotFound() *UpdateTerraformVersionUsingP
 	return &UpdateTerraformVersionUsingPATCHNotFound{}
 }
 
-/* UpdateTerraformVersionUsingPATCHNotFound describes a response with status code 404, with default header values.
+/*
+UpdateTerraformVersionUsingPATCHNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -139,9 +231,39 @@ type UpdateTerraformVersionUsingPATCHNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update terraform version using p a t c h not found response has a 2xx status code
+func (o *UpdateTerraformVersionUsingPATCHNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update terraform version using p a t c h not found response has a 3xx status code
+func (o *UpdateTerraformVersionUsingPATCHNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update terraform version using p a t c h not found response has a 4xx status code
+func (o *UpdateTerraformVersionUsingPATCHNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update terraform version using p a t c h not found response has a 5xx status code
+func (o *UpdateTerraformVersionUsingPATCHNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update terraform version using p a t c h not found response a status code equal to that given
+func (o *UpdateTerraformVersionUsingPATCHNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateTerraformVersionUsingPATCHNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /blueprint/api/blueprint-integrations/terraform/versions/{versionId}][%d] updateTerraformVersionUsingPATCHNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UpdateTerraformVersionUsingPATCHNotFound) String() string {
+	return fmt.Sprintf("[PATCH /blueprint/api/blueprint-integrations/terraform/versions/{versionId}][%d] updateTerraformVersionUsingPATCHNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UpdateTerraformVersionUsingPATCHNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

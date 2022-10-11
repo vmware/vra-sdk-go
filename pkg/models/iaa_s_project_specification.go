@@ -51,13 +51,13 @@ type IaaSProjectSpecification struct {
 	// Example: 30
 	OperationTimeout *int64 `json:"operationTimeout,omitempty"`
 
-	// Placement policy for the project. Determines how a zone will be selected for provisioning. DEFAULT or SPREAD.
+	// Placement policy for the project. Determines how a zone will be selected for provisioning. DEFAULT, SPREAD or SPREAD_MEMORY.
 	// Example: DEFAULT
 	PlacementPolicy string `json:"placementPolicy,omitempty"`
 
 	// Specifies whether the resources in this projects are shared or not. If not set default will be used.
 	// Example: true
-	SharedResources bool `json:"sharedResources,omitempty"`
+	SharedResources *bool `json:"sharedResources,omitempty"`
 
 	// List of viewer users associated with the project.
 	// Example: [{ \"email\":\"viewer@vmware.com\" }]

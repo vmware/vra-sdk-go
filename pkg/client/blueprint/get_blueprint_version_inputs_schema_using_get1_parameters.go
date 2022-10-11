@@ -52,10 +52,12 @@ func NewGetBlueprintVersionInputsSchemaUsingGET1ParamsWithHTTPClient(client *htt
 	}
 }
 
-/* GetBlueprintVersionInputsSchemaUsingGET1Params contains all the parameters to send to the API endpoint
-   for the get blueprint version inputs schema using get1 operation.
+/*
+GetBlueprintVersionInputsSchemaUsingGET1Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get blueprint version inputs schema using get1 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetBlueprintVersionInputsSchemaUsingGET1Params struct {
 

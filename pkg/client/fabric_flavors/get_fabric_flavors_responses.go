@@ -45,7 +45,8 @@ func NewGetFabricFlavorsOK() *GetFabricFlavorsOK {
 	return &GetFabricFlavorsOK{}
 }
 
-/* GetFabricFlavorsOK describes a response with status code 200, with default header values.
+/*
+GetFabricFlavorsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type GetFabricFlavorsOK struct {
 	Payload *models.FabricFlavorResult
 }
 
+// IsSuccess returns true when this get fabric flavors o k response has a 2xx status code
+func (o *GetFabricFlavorsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get fabric flavors o k response has a 3xx status code
+func (o *GetFabricFlavorsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get fabric flavors o k response has a 4xx status code
+func (o *GetFabricFlavorsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get fabric flavors o k response has a 5xx status code
+func (o *GetFabricFlavorsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get fabric flavors o k response a status code equal to that given
+func (o *GetFabricFlavorsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetFabricFlavorsOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-flavors][%d] getFabricFlavorsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetFabricFlavorsOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/fabric-flavors][%d] getFabricFlavorsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetFabricFlavorsOK) GetPayload() *models.FabricFlavorResult {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewGetFabricFlavorsForbidden() *GetFabricFlavorsForbidden {
 	return &GetFabricFlavorsForbidden{}
 }
 
-/* GetFabricFlavorsForbidden describes a response with status code 403, with default header values.
+/*
+GetFabricFlavorsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type GetFabricFlavorsForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get fabric flavors forbidden response has a 2xx status code
+func (o *GetFabricFlavorsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get fabric flavors forbidden response has a 3xx status code
+func (o *GetFabricFlavorsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get fabric flavors forbidden response has a 4xx status code
+func (o *GetFabricFlavorsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get fabric flavors forbidden response has a 5xx status code
+func (o *GetFabricFlavorsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get fabric flavors forbidden response a status code equal to that given
+func (o *GetFabricFlavorsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetFabricFlavorsForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/fabric-flavors][%d] getFabricFlavorsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetFabricFlavorsForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/fabric-flavors][%d] getFabricFlavorsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetFabricFlavorsForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

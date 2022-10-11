@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -550,7 +549,7 @@ func UnmarshalGitWebhookSlice(reader io.Reader, consumer runtime.Consumer) ([]Gi
 // UnmarshalGitWebhook unmarshals polymorphic GitWebhook
 func UnmarshalGitWebhook(reader io.Reader, consumer runtime.Consumer) (GitWebhook, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}

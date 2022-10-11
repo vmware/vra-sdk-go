@@ -52,10 +52,12 @@ func NewDeleteGerritTriggerByNameUsingDELETEParamsWithHTTPClient(client *http.Cl
 	}
 }
 
-/* DeleteGerritTriggerByNameUsingDELETEParams contains all the parameters to send to the API endpoint
-   for the delete gerrit trigger by name using d e l e t e operation.
+/*
+DeleteGerritTriggerByNameUsingDELETEParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete gerrit trigger by name using d e l e t e operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteGerritTriggerByNameUsingDELETEParams struct {
 

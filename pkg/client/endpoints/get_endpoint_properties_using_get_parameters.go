@@ -52,10 +52,12 @@ func NewGetEndpointPropertiesUsingGETParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* GetEndpointPropertiesUsingGETParams contains all the parameters to send to the API endpoint
-   for the get endpoint properties using g e t operation.
+/*
+GetEndpointPropertiesUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get endpoint properties using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetEndpointPropertiesUsingGETParams struct {
 

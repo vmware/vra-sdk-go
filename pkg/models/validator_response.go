@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
@@ -104,7 +103,7 @@ func UnmarshalValidatorResponseSlice(reader io.Reader, consumer runtime.Consumer
 // UnmarshalValidatorResponse unmarshals polymorphic ValidatorResponse
 func UnmarshalValidatorResponse(reader io.Reader, consumer runtime.Consumer) (ValidatorResponse, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}

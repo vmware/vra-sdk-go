@@ -17,7 +17,7 @@ import (
 
 // Resource Resource
 //
-// A resource
+// # A resource
 //
 // swagger:model Resource
 type Resource struct {

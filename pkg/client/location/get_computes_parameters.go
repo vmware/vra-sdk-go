@@ -52,10 +52,12 @@ func NewGetComputesParamsWithHTTPClient(client *http.Client) *GetComputesParams 
 	}
 }
 
-/* GetComputesParams contains all the parameters to send to the API endpoint
-   for the get computes operation.
+/*
+GetComputesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get computes operation.
+
+	Typically these are written to a http.Request.
 */
 type GetComputesParams struct {
 

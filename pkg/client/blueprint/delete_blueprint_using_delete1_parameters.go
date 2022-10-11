@@ -52,10 +52,12 @@ func NewDeleteBlueprintUsingDELETE1ParamsWithHTTPClient(client *http.Client) *De
 	}
 }
 
-/* DeleteBlueprintUsingDELETE1Params contains all the parameters to send to the API endpoint
-   for the delete blueprint using d e l e t e 1 operation.
+/*
+DeleteBlueprintUsingDELETE1Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete blueprint using d e l e t e 1 operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteBlueprintUsingDELETE1Params struct {
 

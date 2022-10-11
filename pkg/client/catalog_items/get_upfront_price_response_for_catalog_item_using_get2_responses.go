@@ -51,7 +51,8 @@ func NewGetUpfrontPriceResponseForCatalogItemUsingGET2OK() *GetUpfrontPriceRespo
 	return &GetUpfrontPriceResponseForCatalogItemUsingGET2OK{}
 }
 
-/* GetUpfrontPriceResponseForCatalogItemUsingGET2OK describes a response with status code 200, with default header values.
+/*
+GetUpfrontPriceResponseForCatalogItemUsingGET2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -59,9 +60,39 @@ type GetUpfrontPriceResponseForCatalogItemUsingGET2OK struct {
 	Payload *models.CatalogItemUpfrontPriceResponse
 }
 
+// IsSuccess returns true when this get upfront price response for catalog item using g e t2 o k response has a 2xx status code
+func (o *GetUpfrontPriceResponseForCatalogItemUsingGET2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get upfront price response for catalog item using g e t2 o k response has a 3xx status code
+func (o *GetUpfrontPriceResponseForCatalogItemUsingGET2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get upfront price response for catalog item using g e t2 o k response has a 4xx status code
+func (o *GetUpfrontPriceResponseForCatalogItemUsingGET2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get upfront price response for catalog item using g e t2 o k response has a 5xx status code
+func (o *GetUpfrontPriceResponseForCatalogItemUsingGET2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get upfront price response for catalog item using g e t2 o k response a status code equal to that given
+func (o *GetUpfrontPriceResponseForCatalogItemUsingGET2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetUpfrontPriceResponseForCatalogItemUsingGET2OK) Error() string {
 	return fmt.Sprintf("[GET /catalog/api/items/{id}/upfront-prices/{upfrontPriceId}][%d] getUpfrontPriceResponseForCatalogItemUsingGET2OK  %+v", 200, o.Payload)
 }
+
+func (o *GetUpfrontPriceResponseForCatalogItemUsingGET2OK) String() string {
+	return fmt.Sprintf("[GET /catalog/api/items/{id}/upfront-prices/{upfrontPriceId}][%d] getUpfrontPriceResponseForCatalogItemUsingGET2OK  %+v", 200, o.Payload)
+}
+
 func (o *GetUpfrontPriceResponseForCatalogItemUsingGET2OK) GetPayload() *models.CatalogItemUpfrontPriceResponse {
 	return o.Payload
 }
@@ -83,14 +114,44 @@ func NewGetUpfrontPriceResponseForCatalogItemUsingGET2Unauthorized() *GetUpfront
 	return &GetUpfrontPriceResponseForCatalogItemUsingGET2Unauthorized{}
 }
 
-/* GetUpfrontPriceResponseForCatalogItemUsingGET2Unauthorized describes a response with status code 401, with default header values.
+/*
+GetUpfrontPriceResponseForCatalogItemUsingGET2Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type GetUpfrontPriceResponseForCatalogItemUsingGET2Unauthorized struct {
 }
 
+// IsSuccess returns true when this get upfront price response for catalog item using g e t2 unauthorized response has a 2xx status code
+func (o *GetUpfrontPriceResponseForCatalogItemUsingGET2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get upfront price response for catalog item using g e t2 unauthorized response has a 3xx status code
+func (o *GetUpfrontPriceResponseForCatalogItemUsingGET2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get upfront price response for catalog item using g e t2 unauthorized response has a 4xx status code
+func (o *GetUpfrontPriceResponseForCatalogItemUsingGET2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get upfront price response for catalog item using g e t2 unauthorized response has a 5xx status code
+func (o *GetUpfrontPriceResponseForCatalogItemUsingGET2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get upfront price response for catalog item using g e t2 unauthorized response a status code equal to that given
+func (o *GetUpfrontPriceResponseForCatalogItemUsingGET2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetUpfrontPriceResponseForCatalogItemUsingGET2Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /catalog/api/items/{id}/upfront-prices/{upfrontPriceId}][%d] getUpfrontPriceResponseForCatalogItemUsingGET2Unauthorized ", 401)
+}
+
+func (o *GetUpfrontPriceResponseForCatalogItemUsingGET2Unauthorized) String() string {
 	return fmt.Sprintf("[GET /catalog/api/items/{id}/upfront-prices/{upfrontPriceId}][%d] getUpfrontPriceResponseForCatalogItemUsingGET2Unauthorized ", 401)
 }
 
@@ -104,7 +165,8 @@ func NewGetUpfrontPriceResponseForCatalogItemUsingGET2NotFound() *GetUpfrontPric
 	return &GetUpfrontPriceResponseForCatalogItemUsingGET2NotFound{}
 }
 
-/* GetUpfrontPriceResponseForCatalogItemUsingGET2NotFound describes a response with status code 404, with default header values.
+/*
+GetUpfrontPriceResponseForCatalogItemUsingGET2NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -112,9 +174,39 @@ type GetUpfrontPriceResponseForCatalogItemUsingGET2NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get upfront price response for catalog item using g e t2 not found response has a 2xx status code
+func (o *GetUpfrontPriceResponseForCatalogItemUsingGET2NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get upfront price response for catalog item using g e t2 not found response has a 3xx status code
+func (o *GetUpfrontPriceResponseForCatalogItemUsingGET2NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get upfront price response for catalog item using g e t2 not found response has a 4xx status code
+func (o *GetUpfrontPriceResponseForCatalogItemUsingGET2NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get upfront price response for catalog item using g e t2 not found response has a 5xx status code
+func (o *GetUpfrontPriceResponseForCatalogItemUsingGET2NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get upfront price response for catalog item using g e t2 not found response a status code equal to that given
+func (o *GetUpfrontPriceResponseForCatalogItemUsingGET2NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetUpfrontPriceResponseForCatalogItemUsingGET2NotFound) Error() string {
 	return fmt.Sprintf("[GET /catalog/api/items/{id}/upfront-prices/{upfrontPriceId}][%d] getUpfrontPriceResponseForCatalogItemUsingGET2NotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetUpfrontPriceResponseForCatalogItemUsingGET2NotFound) String() string {
+	return fmt.Sprintf("[GET /catalog/api/items/{id}/upfront-prices/{upfrontPriceId}][%d] getUpfrontPriceResponseForCatalogItemUsingGET2NotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetUpfrontPriceResponseForCatalogItemUsingGET2NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

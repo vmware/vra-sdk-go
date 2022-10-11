@@ -53,10 +53,12 @@ func NewGetNamespaceUsingGETParamsWithHTTPClient(client *http.Client) *GetNamesp
 	}
 }
 
-/* GetNamespaceUsingGETParams contains all the parameters to send to the API endpoint
-   for the get namespace using g e t operation.
+/*
+GetNamespaceUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get namespace using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetNamespaceUsingGETParams struct {
 

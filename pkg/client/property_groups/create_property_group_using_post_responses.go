@@ -57,7 +57,8 @@ func NewCreatePropertyGroupUsingPOSTCreated() *CreatePropertyGroupUsingPOSTCreat
 	return &CreatePropertyGroupUsingPOSTCreated{}
 }
 
-/* CreatePropertyGroupUsingPOSTCreated describes a response with status code 201, with default header values.
+/*
+CreatePropertyGroupUsingPOSTCreated describes a response with status code 201, with default header values.
 
 Created
 */
@@ -65,9 +66,39 @@ type CreatePropertyGroupUsingPOSTCreated struct {
 	Payload *models.PropertyGroup
 }
 
+// IsSuccess returns true when this create property group using p o s t created response has a 2xx status code
+func (o *CreatePropertyGroupUsingPOSTCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create property group using p o s t created response has a 3xx status code
+func (o *CreatePropertyGroupUsingPOSTCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create property group using p o s t created response has a 4xx status code
+func (o *CreatePropertyGroupUsingPOSTCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create property group using p o s t created response has a 5xx status code
+func (o *CreatePropertyGroupUsingPOSTCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create property group using p o s t created response a status code equal to that given
+func (o *CreatePropertyGroupUsingPOSTCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreatePropertyGroupUsingPOSTCreated) Error() string {
 	return fmt.Sprintf("[POST /properties/api/property-groups][%d] createPropertyGroupUsingPOSTCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreatePropertyGroupUsingPOSTCreated) String() string {
+	return fmt.Sprintf("[POST /properties/api/property-groups][%d] createPropertyGroupUsingPOSTCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreatePropertyGroupUsingPOSTCreated) GetPayload() *models.PropertyGroup {
 	return o.Payload
 }
@@ -89,7 +120,8 @@ func NewCreatePropertyGroupUsingPOSTBadRequest() *CreatePropertyGroupUsingPOSTBa
 	return &CreatePropertyGroupUsingPOSTBadRequest{}
 }
 
-/* CreatePropertyGroupUsingPOSTBadRequest describes a response with status code 400, with default header values.
+/*
+CreatePropertyGroupUsingPOSTBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -97,9 +129,39 @@ type CreatePropertyGroupUsingPOSTBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create property group using p o s t bad request response has a 2xx status code
+func (o *CreatePropertyGroupUsingPOSTBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create property group using p o s t bad request response has a 3xx status code
+func (o *CreatePropertyGroupUsingPOSTBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create property group using p o s t bad request response has a 4xx status code
+func (o *CreatePropertyGroupUsingPOSTBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create property group using p o s t bad request response has a 5xx status code
+func (o *CreatePropertyGroupUsingPOSTBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create property group using p o s t bad request response a status code equal to that given
+func (o *CreatePropertyGroupUsingPOSTBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreatePropertyGroupUsingPOSTBadRequest) Error() string {
 	return fmt.Sprintf("[POST /properties/api/property-groups][%d] createPropertyGroupUsingPOSTBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreatePropertyGroupUsingPOSTBadRequest) String() string {
+	return fmt.Sprintf("[POST /properties/api/property-groups][%d] createPropertyGroupUsingPOSTBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreatePropertyGroupUsingPOSTBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -121,14 +183,44 @@ func NewCreatePropertyGroupUsingPOSTUnauthorized() *CreatePropertyGroupUsingPOST
 	return &CreatePropertyGroupUsingPOSTUnauthorized{}
 }
 
-/* CreatePropertyGroupUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+CreatePropertyGroupUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type CreatePropertyGroupUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this create property group using p o s t unauthorized response has a 2xx status code
+func (o *CreatePropertyGroupUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create property group using p o s t unauthorized response has a 3xx status code
+func (o *CreatePropertyGroupUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create property group using p o s t unauthorized response has a 4xx status code
+func (o *CreatePropertyGroupUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create property group using p o s t unauthorized response has a 5xx status code
+func (o *CreatePropertyGroupUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create property group using p o s t unauthorized response a status code equal to that given
+func (o *CreatePropertyGroupUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreatePropertyGroupUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /properties/api/property-groups][%d] createPropertyGroupUsingPOSTUnauthorized ", 401)
+}
+
+func (o *CreatePropertyGroupUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /properties/api/property-groups][%d] createPropertyGroupUsingPOSTUnauthorized ", 401)
 }
 
@@ -142,14 +234,44 @@ func NewCreatePropertyGroupUsingPOSTForbidden() *CreatePropertyGroupUsingPOSTFor
 	return &CreatePropertyGroupUsingPOSTForbidden{}
 }
 
-/* CreatePropertyGroupUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+CreatePropertyGroupUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type CreatePropertyGroupUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this create property group using p o s t forbidden response has a 2xx status code
+func (o *CreatePropertyGroupUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create property group using p o s t forbidden response has a 3xx status code
+func (o *CreatePropertyGroupUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create property group using p o s t forbidden response has a 4xx status code
+func (o *CreatePropertyGroupUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create property group using p o s t forbidden response has a 5xx status code
+func (o *CreatePropertyGroupUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create property group using p o s t forbidden response a status code equal to that given
+func (o *CreatePropertyGroupUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreatePropertyGroupUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /properties/api/property-groups][%d] createPropertyGroupUsingPOSTForbidden ", 403)
+}
+
+func (o *CreatePropertyGroupUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /properties/api/property-groups][%d] createPropertyGroupUsingPOSTForbidden ", 403)
 }
 

@@ -27,9 +27,6 @@ type K8SNamespace struct {
 	// Format: uuid
 	ClusterID strfmt.UUID `json:"clusterId,omitempty"`
 
-	// content
-	Content string `json:"content,omitempty"`
-
 	// created millis
 	CreatedMillis int64 `json:"createdMillis,omitempty"`
 

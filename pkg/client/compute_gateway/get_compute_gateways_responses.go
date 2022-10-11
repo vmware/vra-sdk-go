@@ -45,7 +45,8 @@ func NewGetComputeGatewaysOK() *GetComputeGatewaysOK {
 	return &GetComputeGatewaysOK{}
 }
 
-/* GetComputeGatewaysOK describes a response with status code 200, with default header values.
+/*
+GetComputeGatewaysOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type GetComputeGatewaysOK struct {
 	Payload *models.ComputeGatewayResult
 }
 
+// IsSuccess returns true when this get compute gateways o k response has a 2xx status code
+func (o *GetComputeGatewaysOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get compute gateways o k response has a 3xx status code
+func (o *GetComputeGatewaysOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get compute gateways o k response has a 4xx status code
+func (o *GetComputeGatewaysOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get compute gateways o k response has a 5xx status code
+func (o *GetComputeGatewaysOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get compute gateways o k response a status code equal to that given
+func (o *GetComputeGatewaysOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetComputeGatewaysOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/compute-gateways][%d] getComputeGatewaysOK  %+v", 200, o.Payload)
 }
+
+func (o *GetComputeGatewaysOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/compute-gateways][%d] getComputeGatewaysOK  %+v", 200, o.Payload)
+}
+
 func (o *GetComputeGatewaysOK) GetPayload() *models.ComputeGatewayResult {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewGetComputeGatewaysForbidden() *GetComputeGatewaysForbidden {
 	return &GetComputeGatewaysForbidden{}
 }
 
-/* GetComputeGatewaysForbidden describes a response with status code 403, with default header values.
+/*
+GetComputeGatewaysForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type GetComputeGatewaysForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get compute gateways forbidden response has a 2xx status code
+func (o *GetComputeGatewaysForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get compute gateways forbidden response has a 3xx status code
+func (o *GetComputeGatewaysForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get compute gateways forbidden response has a 4xx status code
+func (o *GetComputeGatewaysForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get compute gateways forbidden response has a 5xx status code
+func (o *GetComputeGatewaysForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get compute gateways forbidden response a status code equal to that given
+func (o *GetComputeGatewaysForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetComputeGatewaysForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/compute-gateways][%d] getComputeGatewaysForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetComputeGatewaysForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/compute-gateways][%d] getComputeGatewaysForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetComputeGatewaysForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

@@ -45,14 +45,44 @@ func NewDeleteVSphereStorageProfileNoContent() *DeleteVSphereStorageProfileNoCon
 	return &DeleteVSphereStorageProfileNoContent{}
 }
 
-/* DeleteVSphereStorageProfileNoContent describes a response with status code 204, with default header values.
+/*
+DeleteVSphereStorageProfileNoContent describes a response with status code 204, with default header values.
 
 No Content
 */
 type DeleteVSphereStorageProfileNoContent struct {
 }
 
+// IsSuccess returns true when this delete v sphere storage profile no content response has a 2xx status code
+func (o *DeleteVSphereStorageProfileNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete v sphere storage profile no content response has a 3xx status code
+func (o *DeleteVSphereStorageProfileNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete v sphere storage profile no content response has a 4xx status code
+func (o *DeleteVSphereStorageProfileNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete v sphere storage profile no content response has a 5xx status code
+func (o *DeleteVSphereStorageProfileNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete v sphere storage profile no content response a status code equal to that given
+func (o *DeleteVSphereStorageProfileNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteVSphereStorageProfileNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/storage-profiles-vsphere/{id}][%d] deleteVSphereStorageProfileNoContent ", 204)
+}
+
+func (o *DeleteVSphereStorageProfileNoContent) String() string {
 	return fmt.Sprintf("[DELETE /iaas/api/storage-profiles-vsphere/{id}][%d] deleteVSphereStorageProfileNoContent ", 204)
 }
 
@@ -66,7 +96,8 @@ func NewDeleteVSphereStorageProfileForbidden() *DeleteVSphereStorageProfileForbi
 	return &DeleteVSphereStorageProfileForbidden{}
 }
 
-/* DeleteVSphereStorageProfileForbidden describes a response with status code 403, with default header values.
+/*
+DeleteVSphereStorageProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -74,9 +105,39 @@ type DeleteVSphereStorageProfileForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this delete v sphere storage profile forbidden response has a 2xx status code
+func (o *DeleteVSphereStorageProfileForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete v sphere storage profile forbidden response has a 3xx status code
+func (o *DeleteVSphereStorageProfileForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete v sphere storage profile forbidden response has a 4xx status code
+func (o *DeleteVSphereStorageProfileForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete v sphere storage profile forbidden response has a 5xx status code
+func (o *DeleteVSphereStorageProfileForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete v sphere storage profile forbidden response a status code equal to that given
+func (o *DeleteVSphereStorageProfileForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteVSphereStorageProfileForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/storage-profiles-vsphere/{id}][%d] deleteVSphereStorageProfileForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DeleteVSphereStorageProfileForbidden) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/storage-profiles-vsphere/{id}][%d] deleteVSphereStorageProfileForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DeleteVSphereStorageProfileForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

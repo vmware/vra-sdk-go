@@ -52,10 +52,12 @@ func NewGetCustomIntegrationsUsingGETParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* GetCustomIntegrationsUsingGETParams contains all the parameters to send to the API endpoint
-   for the get custom integrations using g e t operation.
+/*
+GetCustomIntegrationsUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get custom integrations using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetCustomIntegrationsUsingGETParams struct {
 

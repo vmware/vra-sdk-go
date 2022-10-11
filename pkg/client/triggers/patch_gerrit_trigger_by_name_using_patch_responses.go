@@ -63,7 +63,8 @@ func NewPatchGerritTriggerByNameUsingPATCHOK() *PatchGerritTriggerByNameUsingPAT
 	return &PatchGerritTriggerByNameUsingPATCHOK{}
 }
 
-/* PatchGerritTriggerByNameUsingPATCHOK describes a response with status code 200, with default header values.
+/*
+PatchGerritTriggerByNameUsingPATCHOK describes a response with status code 200, with default header values.
 
 'Success' with Gerrit Trigger patch
 */
@@ -71,9 +72,39 @@ type PatchGerritTriggerByNameUsingPATCHOK struct {
 	Payload models.GerritTrigger
 }
 
+// IsSuccess returns true when this patch gerrit trigger by name using p a t c h o k response has a 2xx status code
+func (o *PatchGerritTriggerByNameUsingPATCHOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch gerrit trigger by name using p a t c h o k response has a 3xx status code
+func (o *PatchGerritTriggerByNameUsingPATCHOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch gerrit trigger by name using p a t c h o k response has a 4xx status code
+func (o *PatchGerritTriggerByNameUsingPATCHOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch gerrit trigger by name using p a t c h o k response has a 5xx status code
+func (o *PatchGerritTriggerByNameUsingPATCHOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch gerrit trigger by name using p a t c h o k response a status code equal to that given
+func (o *PatchGerritTriggerByNameUsingPATCHOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchGerritTriggerByNameUsingPATCHOK) Error() string {
 	return fmt.Sprintf("[PATCH /codestream/api/gerrit-triggers/{project}/{name}][%d] patchGerritTriggerByNameUsingPATCHOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchGerritTriggerByNameUsingPATCHOK) String() string {
+	return fmt.Sprintf("[PATCH /codestream/api/gerrit-triggers/{project}/{name}][%d] patchGerritTriggerByNameUsingPATCHOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchGerritTriggerByNameUsingPATCHOK) GetPayload() models.GerritTrigger {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewPatchGerritTriggerByNameUsingPATCHUnauthorized() *PatchGerritTriggerByNa
 	return &PatchGerritTriggerByNameUsingPATCHUnauthorized{}
 }
 
-/* PatchGerritTriggerByNameUsingPATCHUnauthorized describes a response with status code 401, with default header values.
+/*
+PatchGerritTriggerByNameUsingPATCHUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type PatchGerritTriggerByNameUsingPATCHUnauthorized struct {
 }
 
+// IsSuccess returns true when this patch gerrit trigger by name using p a t c h unauthorized response has a 2xx status code
+func (o *PatchGerritTriggerByNameUsingPATCHUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch gerrit trigger by name using p a t c h unauthorized response has a 3xx status code
+func (o *PatchGerritTriggerByNameUsingPATCHUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch gerrit trigger by name using p a t c h unauthorized response has a 4xx status code
+func (o *PatchGerritTriggerByNameUsingPATCHUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch gerrit trigger by name using p a t c h unauthorized response has a 5xx status code
+func (o *PatchGerritTriggerByNameUsingPATCHUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch gerrit trigger by name using p a t c h unauthorized response a status code equal to that given
+func (o *PatchGerritTriggerByNameUsingPATCHUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *PatchGerritTriggerByNameUsingPATCHUnauthorized) Error() string {
+	return fmt.Sprintf("[PATCH /codestream/api/gerrit-triggers/{project}/{name}][%d] patchGerritTriggerByNameUsingPATCHUnauthorized ", 401)
+}
+
+func (o *PatchGerritTriggerByNameUsingPATCHUnauthorized) String() string {
 	return fmt.Sprintf("[PATCH /codestream/api/gerrit-triggers/{project}/{name}][%d] patchGerritTriggerByNameUsingPATCHUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewPatchGerritTriggerByNameUsingPATCHForbidden() *PatchGerritTriggerByNameU
 	return &PatchGerritTriggerByNameUsingPATCHForbidden{}
 }
 
-/* PatchGerritTriggerByNameUsingPATCHForbidden describes a response with status code 403, with default header values.
+/*
+PatchGerritTriggerByNameUsingPATCHForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type PatchGerritTriggerByNameUsingPATCHForbidden struct {
 }
 
+// IsSuccess returns true when this patch gerrit trigger by name using p a t c h forbidden response has a 2xx status code
+func (o *PatchGerritTriggerByNameUsingPATCHForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch gerrit trigger by name using p a t c h forbidden response has a 3xx status code
+func (o *PatchGerritTriggerByNameUsingPATCHForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch gerrit trigger by name using p a t c h forbidden response has a 4xx status code
+func (o *PatchGerritTriggerByNameUsingPATCHForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch gerrit trigger by name using p a t c h forbidden response has a 5xx status code
+func (o *PatchGerritTriggerByNameUsingPATCHForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch gerrit trigger by name using p a t c h forbidden response a status code equal to that given
+func (o *PatchGerritTriggerByNameUsingPATCHForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *PatchGerritTriggerByNameUsingPATCHForbidden) Error() string {
+	return fmt.Sprintf("[PATCH /codestream/api/gerrit-triggers/{project}/{name}][%d] patchGerritTriggerByNameUsingPATCHForbidden ", 403)
+}
+
+func (o *PatchGerritTriggerByNameUsingPATCHForbidden) String() string {
 	return fmt.Sprintf("[PATCH /codestream/api/gerrit-triggers/{project}/{name}][%d] patchGerritTriggerByNameUsingPATCHForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewPatchGerritTriggerByNameUsingPATCHNotFound() *PatchGerritTriggerByNameUs
 	return &PatchGerritTriggerByNameUsingPATCHNotFound{}
 }
 
-/* PatchGerritTriggerByNameUsingPATCHNotFound describes a response with status code 404, with default header values.
+/*
+PatchGerritTriggerByNameUsingPATCHNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type PatchGerritTriggerByNameUsingPATCHNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this patch gerrit trigger by name using p a t c h not found response has a 2xx status code
+func (o *PatchGerritTriggerByNameUsingPATCHNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch gerrit trigger by name using p a t c h not found response has a 3xx status code
+func (o *PatchGerritTriggerByNameUsingPATCHNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch gerrit trigger by name using p a t c h not found response has a 4xx status code
+func (o *PatchGerritTriggerByNameUsingPATCHNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch gerrit trigger by name using p a t c h not found response has a 5xx status code
+func (o *PatchGerritTriggerByNameUsingPATCHNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch gerrit trigger by name using p a t c h not found response a status code equal to that given
+func (o *PatchGerritTriggerByNameUsingPATCHNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *PatchGerritTriggerByNameUsingPATCHNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /codestream/api/gerrit-triggers/{project}/{name}][%d] patchGerritTriggerByNameUsingPATCHNotFound  %+v", 404, o.Payload)
 }
+
+func (o *PatchGerritTriggerByNameUsingPATCHNotFound) String() string {
+	return fmt.Sprintf("[PATCH /codestream/api/gerrit-triggers/{project}/{name}][%d] patchGerritTriggerByNameUsingPATCHNotFound  %+v", 404, o.Payload)
+}
+
 func (o *PatchGerritTriggerByNameUsingPATCHNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewPatchGerritTriggerByNameUsingPATCHInternalServerError() *PatchGerritTrig
 	return &PatchGerritTriggerByNameUsingPATCHInternalServerError{}
 }
 
-/* PatchGerritTriggerByNameUsingPATCHInternalServerError describes a response with status code 500, with default header values.
+/*
+PatchGerritTriggerByNameUsingPATCHInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type PatchGerritTriggerByNameUsingPATCHInternalServerError struct {
 }
 
+// IsSuccess returns true when this patch gerrit trigger by name using p a t c h internal server error response has a 2xx status code
+func (o *PatchGerritTriggerByNameUsingPATCHInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch gerrit trigger by name using p a t c h internal server error response has a 3xx status code
+func (o *PatchGerritTriggerByNameUsingPATCHInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch gerrit trigger by name using p a t c h internal server error response has a 4xx status code
+func (o *PatchGerritTriggerByNameUsingPATCHInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch gerrit trigger by name using p a t c h internal server error response has a 5xx status code
+func (o *PatchGerritTriggerByNameUsingPATCHInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this patch gerrit trigger by name using p a t c h internal server error response a status code equal to that given
+func (o *PatchGerritTriggerByNameUsingPATCHInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *PatchGerritTriggerByNameUsingPATCHInternalServerError) Error() string {
+	return fmt.Sprintf("[PATCH /codestream/api/gerrit-triggers/{project}/{name}][%d] patchGerritTriggerByNameUsingPATCHInternalServerError ", 500)
+}
+
+func (o *PatchGerritTriggerByNameUsingPATCHInternalServerError) String() string {
 	return fmt.Sprintf("[PATCH /codestream/api/gerrit-triggers/{project}/{name}][%d] patchGerritTriggerByNameUsingPATCHInternalServerError ", 500)
 }
 

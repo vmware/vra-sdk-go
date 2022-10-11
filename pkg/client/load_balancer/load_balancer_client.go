@@ -48,9 +48,9 @@ type ClientService interface {
 }
 
 /*
-  CreateLoadBalancer creates load balancer
+CreateLoadBalancer creates load balancer
 
-  Create load balancer
+Create load balancer
 */
 func (a *Client) CreateLoadBalancer(params *CreateLoadBalancerParams, opts ...ClientOption) (*CreateLoadBalancerAccepted, error) {
 	// TODO: Validate the params before sending
@@ -88,9 +88,9 @@ func (a *Client) CreateLoadBalancer(params *CreateLoadBalancerParams, opts ...Cl
 }
 
 /*
-  DeleteLoadBalancer deletes load balancer
+DeleteLoadBalancer deletes load balancer
 
-  Delete load balancer with a given id
+Delete load balancer with a given id
 */
 func (a *Client) DeleteLoadBalancer(params *DeleteLoadBalancerParams, opts ...ClientOption) (*DeleteLoadBalancerAccepted, error) {
 	// TODO: Validate the params before sending
@@ -128,9 +128,9 @@ func (a *Client) DeleteLoadBalancer(params *DeleteLoadBalancerParams, opts ...Cl
 }
 
 /*
-  DeleteLoadBalancerOperation deletes operation for load balancer
+DeleteLoadBalancerOperation deletes operation for load balancer
 
-  Second day delete operation for load balancer
+Second day delete operation for load balancer
 */
 func (a *Client) DeleteLoadBalancerOperation(params *DeleteLoadBalancerOperationParams, opts ...ClientOption) (*DeleteLoadBalancerOperationAccepted, error) {
 	// TODO: Validate the params before sending
@@ -168,9 +168,9 @@ func (a *Client) DeleteLoadBalancerOperation(params *DeleteLoadBalancerOperation
 }
 
 /*
-  GetLoadBalancer gets load balancer
+GetLoadBalancer gets load balancer
 
-  Get load balancer with a given id
+Get load balancer with a given id
 */
 func (a *Client) GetLoadBalancer(params *GetLoadBalancerParams, opts ...ClientOption) (*GetLoadBalancerOK, error) {
 	// TODO: Validate the params before sending
@@ -208,9 +208,9 @@ func (a *Client) GetLoadBalancer(params *GetLoadBalancerParams, opts ...ClientOp
 }
 
 /*
-  GetLoadBalancerNetworkInterface gets load balancer network interface
+GetLoadBalancerNetworkInterface gets load balancer network interface
 
-  Get network interface with a given id for specific load balancer
+Get network interface with a given id for specific load balancer
 */
 func (a *Client) GetLoadBalancerNetworkInterface(params *GetLoadBalancerNetworkInterfaceParams, opts ...ClientOption) (*GetLoadBalancerNetworkInterfaceOK, error) {
 	// TODO: Validate the params before sending
@@ -248,9 +248,9 @@ func (a *Client) GetLoadBalancerNetworkInterface(params *GetLoadBalancerNetworkI
 }
 
 /*
-  GetLoadBalancers gets load balancers
+GetLoadBalancers gets load balancers
 
-  Get all load balancers
+Get all load balancers
 */
 func (a *Client) GetLoadBalancers(params *GetLoadBalancersParams, opts ...ClientOption) (*GetLoadBalancersOK, error) {
 	// TODO: Validate the params before sending
@@ -288,9 +288,9 @@ func (a *Client) GetLoadBalancers(params *GetLoadBalancersParams, opts ...Client
 }
 
 /*
-  ScaleLoadBalancer scales operation for load balancer
+ScaleLoadBalancer scales operation for load balancer
 
-  Second day scale operation for load balancer
+Second day scale operation for load balancer
 */
 func (a *Client) ScaleLoadBalancer(params *ScaleLoadBalancerParams, opts ...ClientOption) (*ScaleLoadBalancerAccepted, error) {
 	// TODO: Validate the params before sending

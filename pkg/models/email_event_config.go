@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
@@ -171,7 +170,7 @@ func UnmarshalEmailEventConfigSlice(reader io.Reader, consumer runtime.Consumer)
 // UnmarshalEmailEventConfig unmarshals polymorphic EmailEventConfig
 func UnmarshalEmailEventConfig(reader io.Reader, consumer runtime.Consumer) (EmailEventConfig, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}

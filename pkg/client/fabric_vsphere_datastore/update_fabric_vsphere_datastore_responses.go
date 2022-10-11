@@ -51,7 +51,8 @@ func NewUpdateFabricVsphereDatastoreOK() *UpdateFabricVsphereDatastoreOK {
 	return &UpdateFabricVsphereDatastoreOK{}
 }
 
-/* UpdateFabricVsphereDatastoreOK describes a response with status code 200, with default header values.
+/*
+UpdateFabricVsphereDatastoreOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type UpdateFabricVsphereDatastoreOK struct {
 	Payload *models.FabricVsphereDatastore
 }
 
+// IsSuccess returns true when this update fabric vsphere datastore o k response has a 2xx status code
+func (o *UpdateFabricVsphereDatastoreOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update fabric vsphere datastore o k response has a 3xx status code
+func (o *UpdateFabricVsphereDatastoreOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update fabric vsphere datastore o k response has a 4xx status code
+func (o *UpdateFabricVsphereDatastoreOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update fabric vsphere datastore o k response has a 5xx status code
+func (o *UpdateFabricVsphereDatastoreOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update fabric vsphere datastore o k response a status code equal to that given
+func (o *UpdateFabricVsphereDatastoreOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateFabricVsphereDatastoreOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/fabric-vsphere-datastores/{id}][%d] updateFabricVsphereDatastoreOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateFabricVsphereDatastoreOK) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/fabric-vsphere-datastores/{id}][%d] updateFabricVsphereDatastoreOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateFabricVsphereDatastoreOK) GetPayload() *models.FabricVsphereDatastore {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewUpdateFabricVsphereDatastoreForbidden() *UpdateFabricVsphereDatastoreFor
 	return &UpdateFabricVsphereDatastoreForbidden{}
 }
 
-/* UpdateFabricVsphereDatastoreForbidden describes a response with status code 403, with default header values.
+/*
+UpdateFabricVsphereDatastoreForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type UpdateFabricVsphereDatastoreForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this update fabric vsphere datastore forbidden response has a 2xx status code
+func (o *UpdateFabricVsphereDatastoreForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update fabric vsphere datastore forbidden response has a 3xx status code
+func (o *UpdateFabricVsphereDatastoreForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update fabric vsphere datastore forbidden response has a 4xx status code
+func (o *UpdateFabricVsphereDatastoreForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update fabric vsphere datastore forbidden response has a 5xx status code
+func (o *UpdateFabricVsphereDatastoreForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update fabric vsphere datastore forbidden response a status code equal to that given
+func (o *UpdateFabricVsphereDatastoreForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateFabricVsphereDatastoreForbidden) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/fabric-vsphere-datastores/{id}][%d] updateFabricVsphereDatastoreForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UpdateFabricVsphereDatastoreForbidden) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/fabric-vsphere-datastores/{id}][%d] updateFabricVsphereDatastoreForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UpdateFabricVsphereDatastoreForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewUpdateFabricVsphereDatastoreNotFound() *UpdateFabricVsphereDatastoreNotF
 	return &UpdateFabricVsphereDatastoreNotFound{}
 }
 
-/* UpdateFabricVsphereDatastoreNotFound describes a response with status code 404, with default header values.
+/*
+UpdateFabricVsphereDatastoreNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type UpdateFabricVsphereDatastoreNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update fabric vsphere datastore not found response has a 2xx status code
+func (o *UpdateFabricVsphereDatastoreNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update fabric vsphere datastore not found response has a 3xx status code
+func (o *UpdateFabricVsphereDatastoreNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update fabric vsphere datastore not found response has a 4xx status code
+func (o *UpdateFabricVsphereDatastoreNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update fabric vsphere datastore not found response has a 5xx status code
+func (o *UpdateFabricVsphereDatastoreNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update fabric vsphere datastore not found response a status code equal to that given
+func (o *UpdateFabricVsphereDatastoreNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateFabricVsphereDatastoreNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/fabric-vsphere-datastores/{id}][%d] updateFabricVsphereDatastoreNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UpdateFabricVsphereDatastoreNotFound) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/fabric-vsphere-datastores/{id}][%d] updateFabricVsphereDatastoreNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UpdateFabricVsphereDatastoreNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

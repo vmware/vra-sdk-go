@@ -46,9 +46,9 @@ type ClientService interface {
 }
 
 /*
-  CreateZoneUsingPOST creates a k8 s zone
+CreateZoneUsingPOST creates a k8 s zone
 
-  Create a K8S Zone entity
+Create a K8S Zone entity
 */
 func (a *Client) CreateZoneUsingPOST(params *CreateZoneUsingPOSTParams, opts ...ClientOption) (*CreateZoneUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -86,9 +86,9 @@ func (a *Client) CreateZoneUsingPOST(params *CreateZoneUsingPOSTParams, opts ...
 }
 
 /*
-  DeleteZoneUsingDELETE deletes a k8 s zone
+DeleteZoneUsingDELETE deletes a k8 s zone
 
-  Remove a K8S Zone
+Remove a K8S Zone
 */
 func (a *Client) DeleteZoneUsingDELETE(params *DeleteZoneUsingDELETEParams, opts ...ClientOption) (*DeleteZoneUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) DeleteZoneUsingDELETE(params *DeleteZoneUsingDELETEParams, opts
 }
 
 /*
-  GetZoneUsingGET gets a k8 s zone
+GetZoneUsingGET gets a k8 s zone
 
-  Get a K8S Zone by Id
+Get a K8S Zone by Id
 */
 func (a *Client) GetZoneUsingGET(params *GetZoneUsingGETParams, opts ...ClientOption) (*GetZoneUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -166,9 +166,9 @@ func (a *Client) GetZoneUsingGET(params *GetZoneUsingGETParams, opts ...ClientOp
 }
 
 /*
-  ListZonesUsingGET gets all k8 s zones
+ListZonesUsingGET gets all k8 s zones
 
-  List of all K8S Zones
+List of all K8S Zones
 */
 func (a *Client) ListZonesUsingGET(params *ListZonesUsingGETParams, opts ...ClientOption) (*ListZonesUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -206,9 +206,9 @@ func (a *Client) ListZonesUsingGET(params *ListZonesUsingGETParams, opts ...Clie
 }
 
 /*
-  UpdateZoneProjectsUsingPUT updates a k8 s zone project assignments
+UpdateZoneProjectsUsingPUT updates a k8 s zone project assignments
 
-  Assignment of projects to K8S Zone
+Assignment of projects to K8S Zone
 */
 func (a *Client) UpdateZoneProjectsUsingPUT(params *UpdateZoneProjectsUsingPUTParams, opts ...ClientOption) (*UpdateZoneProjectsUsingPUTOK, error) {
 	// TODO: Validate the params before sending
@@ -246,9 +246,9 @@ func (a *Client) UpdateZoneProjectsUsingPUT(params *UpdateZoneProjectsUsingPUTPa
 }
 
 /*
-  UpdateZoneUsingPUT updates a k8 s zone
+UpdateZoneUsingPUT updates a k8 s zone
 
-  Modify a K8S Zone
+Modify a K8S Zone
 */
 func (a *Client) UpdateZoneUsingPUT(params *UpdateZoneUsingPUTParams, opts ...ClientOption) (*UpdateZoneUsingPUTOK, error) {
 	// TODO: Validate the params before sending

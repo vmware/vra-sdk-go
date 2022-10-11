@@ -63,7 +63,8 @@ func NewActOnPipelineUsingPOSTOK() *ActOnPipelineUsingPOSTOK {
 	return &ActOnPipelineUsingPOSTOK{}
 }
 
-/* ActOnPipelineUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+ActOnPipelineUsingPOSTOK describes a response with status code 200, with default header values.
 
 'Success' with the cloned Pipeline
 */
@@ -71,9 +72,39 @@ type ActOnPipelineUsingPOSTOK struct {
 	Payload models.Pipeline
 }
 
+// IsSuccess returns true when this act on pipeline using p o s t o k response has a 2xx status code
+func (o *ActOnPipelineUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this act on pipeline using p o s t o k response has a 3xx status code
+func (o *ActOnPipelineUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this act on pipeline using p o s t o k response has a 4xx status code
+func (o *ActOnPipelineUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this act on pipeline using p o s t o k response has a 5xx status code
+func (o *ActOnPipelineUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this act on pipeline using p o s t o k response a status code equal to that given
+func (o *ActOnPipelineUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ActOnPipelineUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/pipelines/{id}][%d] actOnPipelineUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *ActOnPipelineUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /codestream/api/pipelines/{id}][%d] actOnPipelineUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *ActOnPipelineUsingPOSTOK) GetPayload() models.Pipeline {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewActOnPipelineUsingPOSTUnauthorized() *ActOnPipelineUsingPOSTUnauthorized
 	return &ActOnPipelineUsingPOSTUnauthorized{}
 }
 
-/* ActOnPipelineUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+ActOnPipelineUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type ActOnPipelineUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this act on pipeline using p o s t unauthorized response has a 2xx status code
+func (o *ActOnPipelineUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this act on pipeline using p o s t unauthorized response has a 3xx status code
+func (o *ActOnPipelineUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this act on pipeline using p o s t unauthorized response has a 4xx status code
+func (o *ActOnPipelineUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this act on pipeline using p o s t unauthorized response has a 5xx status code
+func (o *ActOnPipelineUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this act on pipeline using p o s t unauthorized response a status code equal to that given
+func (o *ActOnPipelineUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ActOnPipelineUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/pipelines/{id}][%d] actOnPipelineUsingPOSTUnauthorized ", 401)
+}
+
+func (o *ActOnPipelineUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /codestream/api/pipelines/{id}][%d] actOnPipelineUsingPOSTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewActOnPipelineUsingPOSTForbidden() *ActOnPipelineUsingPOSTForbidden {
 	return &ActOnPipelineUsingPOSTForbidden{}
 }
 
-/* ActOnPipelineUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+ActOnPipelineUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type ActOnPipelineUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this act on pipeline using p o s t forbidden response has a 2xx status code
+func (o *ActOnPipelineUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this act on pipeline using p o s t forbidden response has a 3xx status code
+func (o *ActOnPipelineUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this act on pipeline using p o s t forbidden response has a 4xx status code
+func (o *ActOnPipelineUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this act on pipeline using p o s t forbidden response has a 5xx status code
+func (o *ActOnPipelineUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this act on pipeline using p o s t forbidden response a status code equal to that given
+func (o *ActOnPipelineUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ActOnPipelineUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/pipelines/{id}][%d] actOnPipelineUsingPOSTForbidden ", 403)
+}
+
+func (o *ActOnPipelineUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /codestream/api/pipelines/{id}][%d] actOnPipelineUsingPOSTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewActOnPipelineUsingPOSTNotFound() *ActOnPipelineUsingPOSTNotFound {
 	return &ActOnPipelineUsingPOSTNotFound{}
 }
 
-/* ActOnPipelineUsingPOSTNotFound describes a response with status code 404, with default header values.
+/*
+ActOnPipelineUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type ActOnPipelineUsingPOSTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this act on pipeline using p o s t not found response has a 2xx status code
+func (o *ActOnPipelineUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this act on pipeline using p o s t not found response has a 3xx status code
+func (o *ActOnPipelineUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this act on pipeline using p o s t not found response has a 4xx status code
+func (o *ActOnPipelineUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this act on pipeline using p o s t not found response has a 5xx status code
+func (o *ActOnPipelineUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this act on pipeline using p o s t not found response a status code equal to that given
+func (o *ActOnPipelineUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ActOnPipelineUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/pipelines/{id}][%d] actOnPipelineUsingPOSTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ActOnPipelineUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /codestream/api/pipelines/{id}][%d] actOnPipelineUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ActOnPipelineUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewActOnPipelineUsingPOSTInternalServerError() *ActOnPipelineUsingPOSTInter
 	return &ActOnPipelineUsingPOSTInternalServerError{}
 }
 
-/* ActOnPipelineUsingPOSTInternalServerError describes a response with status code 500, with default header values.
+/*
+ActOnPipelineUsingPOSTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ActOnPipelineUsingPOSTInternalServerError struct {
 }
 
+// IsSuccess returns true when this act on pipeline using p o s t internal server error response has a 2xx status code
+func (o *ActOnPipelineUsingPOSTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this act on pipeline using p o s t internal server error response has a 3xx status code
+func (o *ActOnPipelineUsingPOSTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this act on pipeline using p o s t internal server error response has a 4xx status code
+func (o *ActOnPipelineUsingPOSTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this act on pipeline using p o s t internal server error response has a 5xx status code
+func (o *ActOnPipelineUsingPOSTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this act on pipeline using p o s t internal server error response a status code equal to that given
+func (o *ActOnPipelineUsingPOSTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ActOnPipelineUsingPOSTInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/pipelines/{id}][%d] actOnPipelineUsingPOSTInternalServerError ", 500)
+}
+
+func (o *ActOnPipelineUsingPOSTInternalServerError) String() string {
 	return fmt.Sprintf("[POST /codestream/api/pipelines/{id}][%d] actOnPipelineUsingPOSTInternalServerError ", 500)
 }
 

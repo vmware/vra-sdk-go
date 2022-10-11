@@ -51,7 +51,8 @@ func NewGetSingleDeploymentOK() *GetSingleDeploymentOK {
 	return &GetSingleDeploymentOK{}
 }
 
-/* GetSingleDeploymentOK describes a response with status code 200, with default header values.
+/*
+GetSingleDeploymentOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetSingleDeploymentOK struct {
 	Payload *models.IaaSDeployment
 }
 
+// IsSuccess returns true when this get single deployment o k response has a 2xx status code
+func (o *GetSingleDeploymentOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get single deployment o k response has a 3xx status code
+func (o *GetSingleDeploymentOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get single deployment o k response has a 4xx status code
+func (o *GetSingleDeploymentOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get single deployment o k response has a 5xx status code
+func (o *GetSingleDeploymentOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get single deployment o k response a status code equal to that given
+func (o *GetSingleDeploymentOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetSingleDeploymentOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/deployments/{id}][%d] getSingleDeploymentOK  %+v", 200, o.Payload)
 }
+
+func (o *GetSingleDeploymentOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/deployments/{id}][%d] getSingleDeploymentOK  %+v", 200, o.Payload)
+}
+
 func (o *GetSingleDeploymentOK) GetPayload() *models.IaaSDeployment {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetSingleDeploymentForbidden() *GetSingleDeploymentForbidden {
 	return &GetSingleDeploymentForbidden{}
 }
 
-/* GetSingleDeploymentForbidden describes a response with status code 403, with default header values.
+/*
+GetSingleDeploymentForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type GetSingleDeploymentForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get single deployment forbidden response has a 2xx status code
+func (o *GetSingleDeploymentForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get single deployment forbidden response has a 3xx status code
+func (o *GetSingleDeploymentForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get single deployment forbidden response has a 4xx status code
+func (o *GetSingleDeploymentForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get single deployment forbidden response has a 5xx status code
+func (o *GetSingleDeploymentForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get single deployment forbidden response a status code equal to that given
+func (o *GetSingleDeploymentForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetSingleDeploymentForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/deployments/{id}][%d] getSingleDeploymentForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetSingleDeploymentForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/deployments/{id}][%d] getSingleDeploymentForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetSingleDeploymentForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewGetSingleDeploymentNotFound() *GetSingleDeploymentNotFound {
 	return &GetSingleDeploymentNotFound{}
 }
 
-/* GetSingleDeploymentNotFound describes a response with status code 404, with default header values.
+/*
+GetSingleDeploymentNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type GetSingleDeploymentNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get single deployment not found response has a 2xx status code
+func (o *GetSingleDeploymentNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get single deployment not found response has a 3xx status code
+func (o *GetSingleDeploymentNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get single deployment not found response has a 4xx status code
+func (o *GetSingleDeploymentNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get single deployment not found response has a 5xx status code
+func (o *GetSingleDeploymentNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get single deployment not found response a status code equal to that given
+func (o *GetSingleDeploymentNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetSingleDeploymentNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/deployments/{id}][%d] getSingleDeploymentNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetSingleDeploymentNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/deployments/{id}][%d] getSingleDeploymentNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetSingleDeploymentNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

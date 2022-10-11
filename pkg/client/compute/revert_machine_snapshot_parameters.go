@@ -52,10 +52,12 @@ func NewRevertMachineSnapshotParamsWithHTTPClient(client *http.Client) *RevertMa
 	}
 }
 
-/* RevertMachineSnapshotParams contains all the parameters to send to the API endpoint
-   for the revert machine snapshot operation.
+/*
+RevertMachineSnapshotParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the revert machine snapshot operation.
+
+	Typically these are written to a http.Request.
 */
 type RevertMachineSnapshotParams struct {
 

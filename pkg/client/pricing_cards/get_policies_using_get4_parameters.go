@@ -53,10 +53,12 @@ func NewGetPoliciesUsingGET4ParamsWithHTTPClient(client *http.Client) *GetPolici
 	}
 }
 
-/* GetPoliciesUsingGET4Params contains all the parameters to send to the API endpoint
-   for the get policies using g e t 4 operation.
+/*
+GetPoliciesUsingGET4Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get policies using g e t 4 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetPoliciesUsingGET4Params struct {
 

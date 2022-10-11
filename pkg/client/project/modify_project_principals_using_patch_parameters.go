@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 
 	"github.com/vmware/vra-sdk-go/pkg/models"
 )
@@ -54,10 +55,12 @@ func NewModifyProjectPrincipalsUsingPATCHParamsWithHTTPClient(client *http.Clien
 	}
 }
 
-/* ModifyProjectPrincipalsUsingPATCHParams contains all the parameters to send to the API endpoint
-   for the modify project principals using p a t c h operation.
+/*
+ModifyProjectPrincipalsUsingPATCHParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the modify project principals using p a t c h operation.
+
+	Typically these are written to a http.Request.
 */
 type ModifyProjectPrincipalsUsingPATCHParams struct {
 
@@ -78,6 +81,12 @@ type ModifyProjectPrincipalsUsingPATCHParams struct {
 	   roles
 	*/
 	Roles *models.ProjectPrincipalsAssignment
+
+	/* ValidatePrincipals.
+
+	   If true, a limit of 20 principals is enforced. Additionally each principal is validated in the Identity provider and important rules for group email formats are enforced.
+	*/
+	ValidatePrincipals *bool
 
 	timeout    time.Duration
 	Context    context.Context
@@ -165,6 +174,17 @@ func (o *ModifyProjectPrincipalsUsingPATCHParams) SetRoles(roles *models.Project
 	o.Roles = roles
 }
 
+// WithValidatePrincipals adds the validatePrincipals to the modify project principals using p a t c h params
+func (o *ModifyProjectPrincipalsUsingPATCHParams) WithValidatePrincipals(validatePrincipals *bool) *ModifyProjectPrincipalsUsingPATCHParams {
+	o.SetValidatePrincipals(validatePrincipals)
+	return o
+}
+
+// SetValidatePrincipals adds the validatePrincipals to the modify project principals using p a t c h params
+func (o *ModifyProjectPrincipalsUsingPATCHParams) SetValidatePrincipals(validatePrincipals *bool) {
+	o.ValidatePrincipals = validatePrincipals
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *ModifyProjectPrincipalsUsingPATCHParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -197,6 +217,23 @@ func (o *ModifyProjectPrincipalsUsingPATCHParams) WriteToRequest(r runtime.Clien
 	if o.Roles != nil {
 		if err := r.SetBodyParam(o.Roles); err != nil {
 			return err
+		}
+	}
+
+	if o.ValidatePrincipals != nil {
+
+		// query param validatePrincipals
+		var qrValidatePrincipals bool
+
+		if o.ValidatePrincipals != nil {
+			qrValidatePrincipals = *o.ValidatePrincipals
+		}
+		qValidatePrincipals := swag.FormatBool(qrValidatePrincipals)
+		if qValidatePrincipals != "" {
+
+			if err := r.SetQueryParam("validatePrincipals", qValidatePrincipals); err != nil {
+				return err
+			}
 		}
 	}
 

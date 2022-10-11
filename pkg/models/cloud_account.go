@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -23,6 +24,10 @@ type CloudAccount struct {
 	// HATEOAS of the entity
 	// Required: true
 	Links map[string]Href `json:"_links"`
+
+	// Workload mobility associations to other vSphere cloud accounts. ID refers to an associated cloud account, and directionality can be unidirectional or bidirectional. Only supported on vSphere Cloud Accounts.
+	// Example: { \"42f3e0d199d134755684cd935435a\": \"BIDIRECTIONAL\" }
+	AssociatedMobilityCloudAccountIds map[string]string `json:"associatedMobilityCloudAccountIds,omitempty"`
 
 	// Cloud account specific properties
 	// Example: { \"hostName\": \"vcenter.mycompany.com\" }
@@ -49,10 +54,16 @@ type CloudAccount struct {
 	// A list of regions that are enabled for provisioning on this cloud account
 	EnabledRegions []*Region `json:"enabledRegions"`
 
+	// Indicates the health of the cloud account. If false, this means there is no connectivity to the cloud provider or the credentials are invalid.
+	Healthy bool `json:"healthy,omitempty"`
+
 	// The id of this resource instance
 	// Example: 9e49
 	// Required: true
 	ID *string `json:"id"`
+
+	// Indicates if the  cloud account is undergoing maintenance. If true, it can't be used for provisioning and scheduled enumeration is not triggered.
+	InMaintenanceMode bool `json:"inMaintenanceMode,omitempty"`
 
 	// A human-friendly name used as an identifier in APIs that support this option.
 	// Example: my-name
@@ -80,6 +91,10 @@ func (m *CloudAccount) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateLinks(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateAssociatedMobilityCloudAccountIds(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -129,6 +144,43 @@ func (m *CloudAccount) validateLinks(formats strfmt.Registry) error {
 				}
 				return err
 			}
+		}
+
+	}
+
+	return nil
+}
+
+// additional properties value enum
+var cloudAccountAssociatedMobilityCloudAccountIdsValueEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["UNIDIRECTIONAL","BIDIRECTIONAL"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		cloudAccountAssociatedMobilityCloudAccountIdsValueEnum = append(cloudAccountAssociatedMobilityCloudAccountIdsValueEnum, v)
+	}
+}
+
+func (m *CloudAccount) validateAssociatedMobilityCloudAccountIdsValueEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, cloudAccountAssociatedMobilityCloudAccountIdsValueEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *CloudAccount) validateAssociatedMobilityCloudAccountIds(formats strfmt.Registry) error {
+	if swag.IsZero(m.AssociatedMobilityCloudAccountIds) { // not required
+		return nil
+	}
+
+	for k := range m.AssociatedMobilityCloudAccountIds {
+
+		// value enum
+		if err := m.validateAssociatedMobilityCloudAccountIdsValueEnum("associatedMobilityCloudAccountIds"+"."+k, "body", m.AssociatedMobilityCloudAccountIds[k]); err != nil {
+			return err
 		}
 
 	}

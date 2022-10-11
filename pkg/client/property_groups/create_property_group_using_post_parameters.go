@@ -54,10 +54,12 @@ func NewCreatePropertyGroupUsingPOSTParamsWithHTTPClient(client *http.Client) *C
 	}
 }
 
-/* CreatePropertyGroupUsingPOSTParams contains all the parameters to send to the API endpoint
-   for the create property group using p o s t operation.
+/*
+CreatePropertyGroupUsingPOSTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create property group using p o s t operation.
+
+	Typically these are written to a http.Request.
 */
 type CreatePropertyGroupUsingPOSTParams struct {
 

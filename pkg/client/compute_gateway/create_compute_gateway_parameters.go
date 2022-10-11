@@ -54,10 +54,12 @@ func NewCreateComputeGatewayParamsWithHTTPClient(client *http.Client) *CreateCom
 	}
 }
 
-/* CreateComputeGatewayParams contains all the parameters to send to the API endpoint
-   for the create compute gateway operation.
+/*
+CreateComputeGatewayParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create compute gateway operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateComputeGatewayParams struct {
 

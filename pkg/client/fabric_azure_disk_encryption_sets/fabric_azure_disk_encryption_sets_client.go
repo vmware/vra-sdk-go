@@ -36,9 +36,9 @@ type ClientService interface {
 }
 
 /*
-  GetAzureDiskEncryptionSets gets azure disk encryption sets
+GetAzureDiskEncryptionSets gets azure disk encryption sets
 
-  Get all Azure disk encryption sets
+Get all Azure disk encryption sets
 */
 func (a *Client) GetAzureDiskEncryptionSets(params *GetAzureDiskEncryptionSetsParams, opts ...ClientOption) (*GetAzureDiskEncryptionSetsOK, error) {
 	// TODO: Validate the params before sending

@@ -45,7 +45,8 @@ func NewDeleteMachineAccepted() *DeleteMachineAccepted {
 	return &DeleteMachineAccepted{}
 }
 
-/* DeleteMachineAccepted describes a response with status code 202, with default header values.
+/*
+DeleteMachineAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type DeleteMachineAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this delete machine accepted response has a 2xx status code
+func (o *DeleteMachineAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete machine accepted response has a 3xx status code
+func (o *DeleteMachineAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete machine accepted response has a 4xx status code
+func (o *DeleteMachineAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete machine accepted response has a 5xx status code
+func (o *DeleteMachineAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete machine accepted response a status code equal to that given
+func (o *DeleteMachineAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteMachineAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}][%d] deleteMachineAccepted  %+v", 202, o.Payload)
 }
+
+func (o *DeleteMachineAccepted) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}][%d] deleteMachineAccepted  %+v", 202, o.Payload)
+}
+
 func (o *DeleteMachineAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewDeleteMachineForbidden() *DeleteMachineForbidden {
 	return &DeleteMachineForbidden{}
 }
 
-/* DeleteMachineForbidden describes a response with status code 403, with default header values.
+/*
+DeleteMachineForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type DeleteMachineForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this delete machine forbidden response has a 2xx status code
+func (o *DeleteMachineForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete machine forbidden response has a 3xx status code
+func (o *DeleteMachineForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete machine forbidden response has a 4xx status code
+func (o *DeleteMachineForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete machine forbidden response has a 5xx status code
+func (o *DeleteMachineForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete machine forbidden response a status code equal to that given
+func (o *DeleteMachineForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteMachineForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}][%d] deleteMachineForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DeleteMachineForbidden) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/machines/{id}][%d] deleteMachineForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DeleteMachineForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

@@ -63,7 +63,8 @@ func NewDeleteDraftByIDUsingDELETEOK() *DeleteDraftByIDUsingDELETEOK {
 	return &DeleteDraftByIDUsingDELETEOK{}
 }
 
-/* DeleteDraftByIDUsingDELETEOK describes a response with status code 200, with default header values.
+/*
+DeleteDraftByIDUsingDELETEOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type DeleteDraftByIDUsingDELETEOK struct {
 	Payload models.CustomIntegration
 }
 
+// IsSuccess returns true when this delete draft by Id using d e l e t e o k response has a 2xx status code
+func (o *DeleteDraftByIDUsingDELETEOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete draft by Id using d e l e t e o k response has a 3xx status code
+func (o *DeleteDraftByIDUsingDELETEOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete draft by Id using d e l e t e o k response has a 4xx status code
+func (o *DeleteDraftByIDUsingDELETEOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete draft by Id using d e l e t e o k response has a 5xx status code
+func (o *DeleteDraftByIDUsingDELETEOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete draft by Id using d e l e t e o k response a status code equal to that given
+func (o *DeleteDraftByIDUsingDELETEOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteDraftByIDUsingDELETEOK) Error() string {
 	return fmt.Sprintf("[DELETE /codestream/api/custom-integrations/{id}][%d] deleteDraftByIdUsingDELETEOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteDraftByIDUsingDELETEOK) String() string {
+	return fmt.Sprintf("[DELETE /codestream/api/custom-integrations/{id}][%d] deleteDraftByIdUsingDELETEOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteDraftByIDUsingDELETEOK) GetPayload() models.CustomIntegration {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewDeleteDraftByIDUsingDELETEUnauthorized() *DeleteDraftByIDUsingDELETEUnau
 	return &DeleteDraftByIDUsingDELETEUnauthorized{}
 }
 
-/* DeleteDraftByIDUsingDELETEUnauthorized describes a response with status code 401, with default header values.
+/*
+DeleteDraftByIDUsingDELETEUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type DeleteDraftByIDUsingDELETEUnauthorized struct {
 }
 
+// IsSuccess returns true when this delete draft by Id using d e l e t e unauthorized response has a 2xx status code
+func (o *DeleteDraftByIDUsingDELETEUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete draft by Id using d e l e t e unauthorized response has a 3xx status code
+func (o *DeleteDraftByIDUsingDELETEUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete draft by Id using d e l e t e unauthorized response has a 4xx status code
+func (o *DeleteDraftByIDUsingDELETEUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete draft by Id using d e l e t e unauthorized response has a 5xx status code
+func (o *DeleteDraftByIDUsingDELETEUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete draft by Id using d e l e t e unauthorized response a status code equal to that given
+func (o *DeleteDraftByIDUsingDELETEUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DeleteDraftByIDUsingDELETEUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/custom-integrations/{id}][%d] deleteDraftByIdUsingDELETEUnauthorized ", 401)
+}
+
+func (o *DeleteDraftByIDUsingDELETEUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/custom-integrations/{id}][%d] deleteDraftByIdUsingDELETEUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewDeleteDraftByIDUsingDELETEForbidden() *DeleteDraftByIDUsingDELETEForbidd
 	return &DeleteDraftByIDUsingDELETEForbidden{}
 }
 
-/* DeleteDraftByIDUsingDELETEForbidden describes a response with status code 403, with default header values.
+/*
+DeleteDraftByIDUsingDELETEForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type DeleteDraftByIDUsingDELETEForbidden struct {
 }
 
+// IsSuccess returns true when this delete draft by Id using d e l e t e forbidden response has a 2xx status code
+func (o *DeleteDraftByIDUsingDELETEForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete draft by Id using d e l e t e forbidden response has a 3xx status code
+func (o *DeleteDraftByIDUsingDELETEForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete draft by Id using d e l e t e forbidden response has a 4xx status code
+func (o *DeleteDraftByIDUsingDELETEForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete draft by Id using d e l e t e forbidden response has a 5xx status code
+func (o *DeleteDraftByIDUsingDELETEForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete draft by Id using d e l e t e forbidden response a status code equal to that given
+func (o *DeleteDraftByIDUsingDELETEForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteDraftByIDUsingDELETEForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/custom-integrations/{id}][%d] deleteDraftByIdUsingDELETEForbidden ", 403)
+}
+
+func (o *DeleteDraftByIDUsingDELETEForbidden) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/custom-integrations/{id}][%d] deleteDraftByIdUsingDELETEForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewDeleteDraftByIDUsingDELETENotFound() *DeleteDraftByIDUsingDELETENotFound
 	return &DeleteDraftByIDUsingDELETENotFound{}
 }
 
-/* DeleteDraftByIDUsingDELETENotFound describes a response with status code 404, with default header values.
+/*
+DeleteDraftByIDUsingDELETENotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type DeleteDraftByIDUsingDELETENotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete draft by Id using d e l e t e not found response has a 2xx status code
+func (o *DeleteDraftByIDUsingDELETENotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete draft by Id using d e l e t e not found response has a 3xx status code
+func (o *DeleteDraftByIDUsingDELETENotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete draft by Id using d e l e t e not found response has a 4xx status code
+func (o *DeleteDraftByIDUsingDELETENotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete draft by Id using d e l e t e not found response has a 5xx status code
+func (o *DeleteDraftByIDUsingDELETENotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete draft by Id using d e l e t e not found response a status code equal to that given
+func (o *DeleteDraftByIDUsingDELETENotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteDraftByIDUsingDELETENotFound) Error() string {
 	return fmt.Sprintf("[DELETE /codestream/api/custom-integrations/{id}][%d] deleteDraftByIdUsingDELETENotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteDraftByIDUsingDELETENotFound) String() string {
+	return fmt.Sprintf("[DELETE /codestream/api/custom-integrations/{id}][%d] deleteDraftByIdUsingDELETENotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteDraftByIDUsingDELETENotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewDeleteDraftByIDUsingDELETEInternalServerError() *DeleteDraftByIDUsingDEL
 	return &DeleteDraftByIDUsingDELETEInternalServerError{}
 }
 
-/* DeleteDraftByIDUsingDELETEInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteDraftByIDUsingDELETEInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type DeleteDraftByIDUsingDELETEInternalServerError struct {
 }
 
+// IsSuccess returns true when this delete draft by Id using d e l e t e internal server error response has a 2xx status code
+func (o *DeleteDraftByIDUsingDELETEInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete draft by Id using d e l e t e internal server error response has a 3xx status code
+func (o *DeleteDraftByIDUsingDELETEInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete draft by Id using d e l e t e internal server error response has a 4xx status code
+func (o *DeleteDraftByIDUsingDELETEInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete draft by Id using d e l e t e internal server error response has a 5xx status code
+func (o *DeleteDraftByIDUsingDELETEInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this delete draft by Id using d e l e t e internal server error response a status code equal to that given
+func (o *DeleteDraftByIDUsingDELETEInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *DeleteDraftByIDUsingDELETEInternalServerError) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/custom-integrations/{id}][%d] deleteDraftByIdUsingDELETEInternalServerError ", 500)
+}
+
+func (o *DeleteDraftByIDUsingDELETEInternalServerError) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/custom-integrations/{id}][%d] deleteDraftByIdUsingDELETEInternalServerError ", 500)
 }
 

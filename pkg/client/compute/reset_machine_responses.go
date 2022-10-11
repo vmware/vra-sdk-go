@@ -51,7 +51,8 @@ func NewResetMachineAccepted() *ResetMachineAccepted {
 	return &ResetMachineAccepted{}
 }
 
-/* ResetMachineAccepted describes a response with status code 202, with default header values.
+/*
+ResetMachineAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type ResetMachineAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this reset machine accepted response has a 2xx status code
+func (o *ResetMachineAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this reset machine accepted response has a 3xx status code
+func (o *ResetMachineAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this reset machine accepted response has a 4xx status code
+func (o *ResetMachineAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this reset machine accepted response has a 5xx status code
+func (o *ResetMachineAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this reset machine accepted response a status code equal to that given
+func (o *ResetMachineAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ResetMachineAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/reset][%d] resetMachineAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ResetMachineAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/reset][%d] resetMachineAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ResetMachineAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewResetMachineForbidden() *ResetMachineForbidden {
 	return &ResetMachineForbidden{}
 }
 
-/* ResetMachineForbidden describes a response with status code 403, with default header values.
+/*
+ResetMachineForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type ResetMachineForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this reset machine forbidden response has a 2xx status code
+func (o *ResetMachineForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this reset machine forbidden response has a 3xx status code
+func (o *ResetMachineForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this reset machine forbidden response has a 4xx status code
+func (o *ResetMachineForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this reset machine forbidden response has a 5xx status code
+func (o *ResetMachineForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this reset machine forbidden response a status code equal to that given
+func (o *ResetMachineForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ResetMachineForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/reset][%d] resetMachineForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ResetMachineForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/reset][%d] resetMachineForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ResetMachineForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewResetMachineNotFound() *ResetMachineNotFound {
 	return &ResetMachineNotFound{}
 }
 
-/* ResetMachineNotFound describes a response with status code 404, with default header values.
+/*
+ResetMachineNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type ResetMachineNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this reset machine not found response has a 2xx status code
+func (o *ResetMachineNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this reset machine not found response has a 3xx status code
+func (o *ResetMachineNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this reset machine not found response has a 4xx status code
+func (o *ResetMachineNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this reset machine not found response has a 5xx status code
+func (o *ResetMachineNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this reset machine not found response a status code equal to that given
+func (o *ResetMachineNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ResetMachineNotFound) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/reset][%d] resetMachineNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ResetMachineNotFound) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/reset][%d] resetMachineNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ResetMachineNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

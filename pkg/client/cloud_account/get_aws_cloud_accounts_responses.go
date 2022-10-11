@@ -45,7 +45,8 @@ func NewGetAwsCloudAccountsOK() *GetAwsCloudAccountsOK {
 	return &GetAwsCloudAccountsOK{}
 }
 
-/* GetAwsCloudAccountsOK describes a response with status code 200, with default header values.
+/*
+GetAwsCloudAccountsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type GetAwsCloudAccountsOK struct {
 	Payload *models.CloudAccountAwsResult
 }
 
+// IsSuccess returns true when this get aws cloud accounts o k response has a 2xx status code
+func (o *GetAwsCloudAccountsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get aws cloud accounts o k response has a 3xx status code
+func (o *GetAwsCloudAccountsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get aws cloud accounts o k response has a 4xx status code
+func (o *GetAwsCloudAccountsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get aws cloud accounts o k response has a 5xx status code
+func (o *GetAwsCloudAccountsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get aws cloud accounts o k response a status code equal to that given
+func (o *GetAwsCloudAccountsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetAwsCloudAccountsOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-aws][%d] getAwsCloudAccountsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetAwsCloudAccountsOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-aws][%d] getAwsCloudAccountsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetAwsCloudAccountsOK) GetPayload() *models.CloudAccountAwsResult {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewGetAwsCloudAccountsForbidden() *GetAwsCloudAccountsForbidden {
 	return &GetAwsCloudAccountsForbidden{}
 }
 
-/* GetAwsCloudAccountsForbidden describes a response with status code 403, with default header values.
+/*
+GetAwsCloudAccountsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type GetAwsCloudAccountsForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get aws cloud accounts forbidden response has a 2xx status code
+func (o *GetAwsCloudAccountsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get aws cloud accounts forbidden response has a 3xx status code
+func (o *GetAwsCloudAccountsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get aws cloud accounts forbidden response has a 4xx status code
+func (o *GetAwsCloudAccountsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get aws cloud accounts forbidden response has a 5xx status code
+func (o *GetAwsCloudAccountsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get aws cloud accounts forbidden response a status code equal to that given
+func (o *GetAwsCloudAccountsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetAwsCloudAccountsForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-aws][%d] getAwsCloudAccountsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetAwsCloudAccountsForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-aws][%d] getAwsCloudAccountsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetAwsCloudAccountsForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

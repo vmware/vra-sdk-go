@@ -51,7 +51,8 @@ func NewEnumerateVSphereRegionsAsyncAccepted() *EnumerateVSphereRegionsAsyncAcce
 	return &EnumerateVSphereRegionsAsyncAccepted{}
 }
 
-/* EnumerateVSphereRegionsAsyncAccepted describes a response with status code 202, with default header values.
+/*
+EnumerateVSphereRegionsAsyncAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type EnumerateVSphereRegionsAsyncAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this enumerate v sphere regions async accepted response has a 2xx status code
+func (o *EnumerateVSphereRegionsAsyncAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this enumerate v sphere regions async accepted response has a 3xx status code
+func (o *EnumerateVSphereRegionsAsyncAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this enumerate v sphere regions async accepted response has a 4xx status code
+func (o *EnumerateVSphereRegionsAsyncAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this enumerate v sphere regions async accepted response has a 5xx status code
+func (o *EnumerateVSphereRegionsAsyncAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this enumerate v sphere regions async accepted response a status code equal to that given
+func (o *EnumerateVSphereRegionsAsyncAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *EnumerateVSphereRegionsAsyncAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vsphere/region-enumeration][%d] enumerateVSphereRegionsAsyncAccepted  %+v", 202, o.Payload)
 }
+
+func (o *EnumerateVSphereRegionsAsyncAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vsphere/region-enumeration][%d] enumerateVSphereRegionsAsyncAccepted  %+v", 202, o.Payload)
+}
+
 func (o *EnumerateVSphereRegionsAsyncAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewEnumerateVSphereRegionsAsyncBadRequest() *EnumerateVSphereRegionsAsyncBa
 	return &EnumerateVSphereRegionsAsyncBadRequest{}
 }
 
-/* EnumerateVSphereRegionsAsyncBadRequest describes a response with status code 400, with default header values.
+/*
+EnumerateVSphereRegionsAsyncBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type EnumerateVSphereRegionsAsyncBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this enumerate v sphere regions async bad request response has a 2xx status code
+func (o *EnumerateVSphereRegionsAsyncBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this enumerate v sphere regions async bad request response has a 3xx status code
+func (o *EnumerateVSphereRegionsAsyncBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this enumerate v sphere regions async bad request response has a 4xx status code
+func (o *EnumerateVSphereRegionsAsyncBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this enumerate v sphere regions async bad request response has a 5xx status code
+func (o *EnumerateVSphereRegionsAsyncBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this enumerate v sphere regions async bad request response a status code equal to that given
+func (o *EnumerateVSphereRegionsAsyncBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *EnumerateVSphereRegionsAsyncBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vsphere/region-enumeration][%d] enumerateVSphereRegionsAsyncBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *EnumerateVSphereRegionsAsyncBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vsphere/region-enumeration][%d] enumerateVSphereRegionsAsyncBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *EnumerateVSphereRegionsAsyncBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewEnumerateVSphereRegionsAsyncForbidden() *EnumerateVSphereRegionsAsyncFor
 	return &EnumerateVSphereRegionsAsyncForbidden{}
 }
 
-/* EnumerateVSphereRegionsAsyncForbidden describes a response with status code 403, with default header values.
+/*
+EnumerateVSphereRegionsAsyncForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type EnumerateVSphereRegionsAsyncForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this enumerate v sphere regions async forbidden response has a 2xx status code
+func (o *EnumerateVSphereRegionsAsyncForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this enumerate v sphere regions async forbidden response has a 3xx status code
+func (o *EnumerateVSphereRegionsAsyncForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this enumerate v sphere regions async forbidden response has a 4xx status code
+func (o *EnumerateVSphereRegionsAsyncForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this enumerate v sphere regions async forbidden response has a 5xx status code
+func (o *EnumerateVSphereRegionsAsyncForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this enumerate v sphere regions async forbidden response a status code equal to that given
+func (o *EnumerateVSphereRegionsAsyncForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *EnumerateVSphereRegionsAsyncForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vsphere/region-enumeration][%d] enumerateVSphereRegionsAsyncForbidden  %+v", 403, o.Payload)
 }
+
+func (o *EnumerateVSphereRegionsAsyncForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vsphere/region-enumeration][%d] enumerateVSphereRegionsAsyncForbidden  %+v", 403, o.Payload)
+}
+
 func (o *EnumerateVSphereRegionsAsyncForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

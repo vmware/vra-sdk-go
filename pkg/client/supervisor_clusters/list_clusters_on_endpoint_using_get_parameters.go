@@ -53,10 +53,12 @@ func NewListClustersOnEndpointUsingGETParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* ListClustersOnEndpointUsingGETParams contains all the parameters to send to the API endpoint
-   for the list clusters on endpoint using g e t operation.
+/*
+ListClustersOnEndpointUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the list clusters on endpoint using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type ListClustersOnEndpointUsingGETParams struct {
 

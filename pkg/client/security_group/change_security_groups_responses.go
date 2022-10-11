@@ -57,7 +57,8 @@ func NewChangeSecurityGroupsAccepted() *ChangeSecurityGroupsAccepted {
 	return &ChangeSecurityGroupsAccepted{}
 }
 
-/* ChangeSecurityGroupsAccepted describes a response with status code 202, with default header values.
+/*
+ChangeSecurityGroupsAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -65,9 +66,39 @@ type ChangeSecurityGroupsAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this change security groups accepted response has a 2xx status code
+func (o *ChangeSecurityGroupsAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this change security groups accepted response has a 3xx status code
+func (o *ChangeSecurityGroupsAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this change security groups accepted response has a 4xx status code
+func (o *ChangeSecurityGroupsAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this change security groups accepted response has a 5xx status code
+func (o *ChangeSecurityGroupsAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this change security groups accepted response a status code equal to that given
+func (o *ChangeSecurityGroupsAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ChangeSecurityGroupsAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/change-security-groups][%d] changeSecurityGroupsAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ChangeSecurityGroupsAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/change-security-groups][%d] changeSecurityGroupsAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ChangeSecurityGroupsAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -89,7 +120,8 @@ func NewChangeSecurityGroupsBadRequest() *ChangeSecurityGroupsBadRequest {
 	return &ChangeSecurityGroupsBadRequest{}
 }
 
-/* ChangeSecurityGroupsBadRequest describes a response with status code 400, with default header values.
+/*
+ChangeSecurityGroupsBadRequest describes a response with status code 400, with default header values.
 
 Change security groups action is not supported for a machine cluster
 */
@@ -97,9 +129,39 @@ type ChangeSecurityGroupsBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this change security groups bad request response has a 2xx status code
+func (o *ChangeSecurityGroupsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this change security groups bad request response has a 3xx status code
+func (o *ChangeSecurityGroupsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this change security groups bad request response has a 4xx status code
+func (o *ChangeSecurityGroupsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this change security groups bad request response has a 5xx status code
+func (o *ChangeSecurityGroupsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this change security groups bad request response a status code equal to that given
+func (o *ChangeSecurityGroupsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ChangeSecurityGroupsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/change-security-groups][%d] changeSecurityGroupsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ChangeSecurityGroupsBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/change-security-groups][%d] changeSecurityGroupsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ChangeSecurityGroupsBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -121,7 +183,8 @@ func NewChangeSecurityGroupsForbidden() *ChangeSecurityGroupsForbidden {
 	return &ChangeSecurityGroupsForbidden{}
 }
 
-/* ChangeSecurityGroupsForbidden describes a response with status code 403, with default header values.
+/*
+ChangeSecurityGroupsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -129,9 +192,39 @@ type ChangeSecurityGroupsForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this change security groups forbidden response has a 2xx status code
+func (o *ChangeSecurityGroupsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this change security groups forbidden response has a 3xx status code
+func (o *ChangeSecurityGroupsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this change security groups forbidden response has a 4xx status code
+func (o *ChangeSecurityGroupsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this change security groups forbidden response has a 5xx status code
+func (o *ChangeSecurityGroupsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this change security groups forbidden response a status code equal to that given
+func (o *ChangeSecurityGroupsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ChangeSecurityGroupsForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/change-security-groups][%d] changeSecurityGroupsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ChangeSecurityGroupsForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/change-security-groups][%d] changeSecurityGroupsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ChangeSecurityGroupsForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -153,7 +246,8 @@ func NewChangeSecurityGroupsNotFound() *ChangeSecurityGroupsNotFound {
 	return &ChangeSecurityGroupsNotFound{}
 }
 
-/* ChangeSecurityGroupsNotFound describes a response with status code 404, with default header values.
+/*
+ChangeSecurityGroupsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -161,9 +255,39 @@ type ChangeSecurityGroupsNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this change security groups not found response has a 2xx status code
+func (o *ChangeSecurityGroupsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this change security groups not found response has a 3xx status code
+func (o *ChangeSecurityGroupsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this change security groups not found response has a 4xx status code
+func (o *ChangeSecurityGroupsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this change security groups not found response has a 5xx status code
+func (o *ChangeSecurityGroupsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this change security groups not found response a status code equal to that given
+func (o *ChangeSecurityGroupsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ChangeSecurityGroupsNotFound) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/change-security-groups][%d] changeSecurityGroupsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ChangeSecurityGroupsNotFound) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/change-security-groups][%d] changeSecurityGroupsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ChangeSecurityGroupsNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

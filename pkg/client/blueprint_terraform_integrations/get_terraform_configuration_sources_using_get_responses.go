@@ -51,7 +51,8 @@ func NewGetTerraformConfigurationSourcesUsingGETOK() *GetTerraformConfigurationS
 	return &GetTerraformConfigurationSourcesUsingGETOK{}
 }
 
-/* GetTerraformConfigurationSourcesUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetTerraformConfigurationSourcesUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -59,9 +60,39 @@ type GetTerraformConfigurationSourcesUsingGETOK struct {
 	Payload *models.PageOfBlueprintContentSource
 }
 
+// IsSuccess returns true when this get terraform configuration sources using g e t o k response has a 2xx status code
+func (o *GetTerraformConfigurationSourcesUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get terraform configuration sources using g e t o k response has a 3xx status code
+func (o *GetTerraformConfigurationSourcesUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get terraform configuration sources using g e t o k response has a 4xx status code
+func (o *GetTerraformConfigurationSourcesUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get terraform configuration sources using g e t o k response has a 5xx status code
+func (o *GetTerraformConfigurationSourcesUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get terraform configuration sources using g e t o k response a status code equal to that given
+func (o *GetTerraformConfigurationSourcesUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetTerraformConfigurationSourcesUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/get-configuration-sources][%d] getTerraformConfigurationSourcesUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetTerraformConfigurationSourcesUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/get-configuration-sources][%d] getTerraformConfigurationSourcesUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetTerraformConfigurationSourcesUsingGETOK) GetPayload() *models.PageOfBlueprintContentSource {
 	return o.Payload
 }
@@ -83,14 +114,44 @@ func NewGetTerraformConfigurationSourcesUsingGETUnauthorized() *GetTerraformConf
 	return &GetTerraformConfigurationSourcesUsingGETUnauthorized{}
 }
 
-/* GetTerraformConfigurationSourcesUsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+GetTerraformConfigurationSourcesUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type GetTerraformConfigurationSourcesUsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this get terraform configuration sources using g e t unauthorized response has a 2xx status code
+func (o *GetTerraformConfigurationSourcesUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get terraform configuration sources using g e t unauthorized response has a 3xx status code
+func (o *GetTerraformConfigurationSourcesUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get terraform configuration sources using g e t unauthorized response has a 4xx status code
+func (o *GetTerraformConfigurationSourcesUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get terraform configuration sources using g e t unauthorized response has a 5xx status code
+func (o *GetTerraformConfigurationSourcesUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get terraform configuration sources using g e t unauthorized response a status code equal to that given
+func (o *GetTerraformConfigurationSourcesUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetTerraformConfigurationSourcesUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/get-configuration-sources][%d] getTerraformConfigurationSourcesUsingGETUnauthorized ", 401)
+}
+
+func (o *GetTerraformConfigurationSourcesUsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/get-configuration-sources][%d] getTerraformConfigurationSourcesUsingGETUnauthorized ", 401)
 }
 
@@ -104,14 +165,44 @@ func NewGetTerraformConfigurationSourcesUsingGETForbidden() *GetTerraformConfigu
 	return &GetTerraformConfigurationSourcesUsingGETForbidden{}
 }
 
-/* GetTerraformConfigurationSourcesUsingGETForbidden describes a response with status code 403, with default header values.
+/*
+GetTerraformConfigurationSourcesUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetTerraformConfigurationSourcesUsingGETForbidden struct {
 }
 
+// IsSuccess returns true when this get terraform configuration sources using g e t forbidden response has a 2xx status code
+func (o *GetTerraformConfigurationSourcesUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get terraform configuration sources using g e t forbidden response has a 3xx status code
+func (o *GetTerraformConfigurationSourcesUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get terraform configuration sources using g e t forbidden response has a 4xx status code
+func (o *GetTerraformConfigurationSourcesUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get terraform configuration sources using g e t forbidden response has a 5xx status code
+func (o *GetTerraformConfigurationSourcesUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get terraform configuration sources using g e t forbidden response a status code equal to that given
+func (o *GetTerraformConfigurationSourcesUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetTerraformConfigurationSourcesUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/get-configuration-sources][%d] getTerraformConfigurationSourcesUsingGETForbidden ", 403)
+}
+
+func (o *GetTerraformConfigurationSourcesUsingGETForbidden) String() string {
 	return fmt.Sprintf("[GET /blueprint/api/blueprint-integrations/terraform/get-configuration-sources][%d] getTerraformConfigurationSourcesUsingGETForbidden ", 403)
 }
 

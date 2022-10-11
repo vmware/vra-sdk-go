@@ -57,7 +57,8 @@ func NewUpdateExternalNetworkIPRangeOK() *UpdateExternalNetworkIPRangeOK {
 	return &UpdateExternalNetworkIPRangeOK{}
 }
 
-/* UpdateExternalNetworkIPRangeOK describes a response with status code 200, with default header values.
+/*
+UpdateExternalNetworkIPRangeOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -65,9 +66,39 @@ type UpdateExternalNetworkIPRangeOK struct {
 	Payload *models.ExternalNetworkIPRange
 }
 
+// IsSuccess returns true when this update external network Ip range o k response has a 2xx status code
+func (o *UpdateExternalNetworkIPRangeOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update external network Ip range o k response has a 3xx status code
+func (o *UpdateExternalNetworkIPRangeOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update external network Ip range o k response has a 4xx status code
+func (o *UpdateExternalNetworkIPRangeOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update external network Ip range o k response has a 5xx status code
+func (o *UpdateExternalNetworkIPRangeOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update external network Ip range o k response a status code equal to that given
+func (o *UpdateExternalNetworkIPRangeOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateExternalNetworkIPRangeOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/external-network-ip-ranges/{id}][%d] updateExternalNetworkIpRangeOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateExternalNetworkIPRangeOK) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/external-network-ip-ranges/{id}][%d] updateExternalNetworkIpRangeOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateExternalNetworkIPRangeOK) GetPayload() *models.ExternalNetworkIPRange {
 	return o.Payload
 }
@@ -89,7 +120,8 @@ func NewUpdateExternalNetworkIPRangeBadRequest() *UpdateExternalNetworkIPRangeBa
 	return &UpdateExternalNetworkIPRangeBadRequest{}
 }
 
-/* UpdateExternalNetworkIPRangeBadRequest describes a response with status code 400, with default header values.
+/*
+UpdateExternalNetworkIPRangeBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -97,9 +129,39 @@ type UpdateExternalNetworkIPRangeBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update external network Ip range bad request response has a 2xx status code
+func (o *UpdateExternalNetworkIPRangeBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update external network Ip range bad request response has a 3xx status code
+func (o *UpdateExternalNetworkIPRangeBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update external network Ip range bad request response has a 4xx status code
+func (o *UpdateExternalNetworkIPRangeBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update external network Ip range bad request response has a 5xx status code
+func (o *UpdateExternalNetworkIPRangeBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update external network Ip range bad request response a status code equal to that given
+func (o *UpdateExternalNetworkIPRangeBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *UpdateExternalNetworkIPRangeBadRequest) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/external-network-ip-ranges/{id}][%d] updateExternalNetworkIpRangeBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *UpdateExternalNetworkIPRangeBadRequest) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/external-network-ip-ranges/{id}][%d] updateExternalNetworkIpRangeBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *UpdateExternalNetworkIPRangeBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -121,7 +183,8 @@ func NewUpdateExternalNetworkIPRangeForbidden() *UpdateExternalNetworkIPRangeFor
 	return &UpdateExternalNetworkIPRangeForbidden{}
 }
 
-/* UpdateExternalNetworkIPRangeForbidden describes a response with status code 403, with default header values.
+/*
+UpdateExternalNetworkIPRangeForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -129,9 +192,39 @@ type UpdateExternalNetworkIPRangeForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this update external network Ip range forbidden response has a 2xx status code
+func (o *UpdateExternalNetworkIPRangeForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update external network Ip range forbidden response has a 3xx status code
+func (o *UpdateExternalNetworkIPRangeForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update external network Ip range forbidden response has a 4xx status code
+func (o *UpdateExternalNetworkIPRangeForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update external network Ip range forbidden response has a 5xx status code
+func (o *UpdateExternalNetworkIPRangeForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update external network Ip range forbidden response a status code equal to that given
+func (o *UpdateExternalNetworkIPRangeForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateExternalNetworkIPRangeForbidden) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/external-network-ip-ranges/{id}][%d] updateExternalNetworkIpRangeForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UpdateExternalNetworkIPRangeForbidden) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/external-network-ip-ranges/{id}][%d] updateExternalNetworkIpRangeForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UpdateExternalNetworkIPRangeForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -153,7 +246,8 @@ func NewUpdateExternalNetworkIPRangeNotFound() *UpdateExternalNetworkIPRangeNotF
 	return &UpdateExternalNetworkIPRangeNotFound{}
 }
 
-/* UpdateExternalNetworkIPRangeNotFound describes a response with status code 404, with default header values.
+/*
+UpdateExternalNetworkIPRangeNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -161,9 +255,39 @@ type UpdateExternalNetworkIPRangeNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update external network Ip range not found response has a 2xx status code
+func (o *UpdateExternalNetworkIPRangeNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update external network Ip range not found response has a 3xx status code
+func (o *UpdateExternalNetworkIPRangeNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update external network Ip range not found response has a 4xx status code
+func (o *UpdateExternalNetworkIPRangeNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update external network Ip range not found response has a 5xx status code
+func (o *UpdateExternalNetworkIPRangeNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update external network Ip range not found response a status code equal to that given
+func (o *UpdateExternalNetworkIPRangeNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateExternalNetworkIPRangeNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/external-network-ip-ranges/{id}][%d] updateExternalNetworkIpRangeNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UpdateExternalNetworkIPRangeNotFound) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/external-network-ip-ranges/{id}][%d] updateExternalNetworkIpRangeNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UpdateExternalNetworkIPRangeNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

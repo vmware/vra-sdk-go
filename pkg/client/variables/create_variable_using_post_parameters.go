@@ -54,10 +54,12 @@ func NewCreateVariableUsingPOSTParamsWithHTTPClient(client *http.Client) *Create
 	}
 }
 
-/* CreateVariableUsingPOSTParams contains all the parameters to send to the API endpoint
-   for the create variable using p o s t operation.
+/*
+CreateVariableUsingPOSTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create variable using p o s t operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateVariableUsingPOSTParams struct {
 

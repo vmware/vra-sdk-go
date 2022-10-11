@@ -51,7 +51,8 @@ func NewCreateProjectCreated() *CreateProjectCreated {
 	return &CreateProjectCreated{}
 }
 
-/* CreateProjectCreated describes a response with status code 201, with default header values.
+/*
+CreateProjectCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type CreateProjectCreated struct {
 	Payload *models.IaaSProject
 }
 
+// IsSuccess returns true when this create project created response has a 2xx status code
+func (o *CreateProjectCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create project created response has a 3xx status code
+func (o *CreateProjectCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create project created response has a 4xx status code
+func (o *CreateProjectCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create project created response has a 5xx status code
+func (o *CreateProjectCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create project created response a status code equal to that given
+func (o *CreateProjectCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateProjectCreated) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/projects][%d] createProjectCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateProjectCreated) String() string {
+	return fmt.Sprintf("[POST /iaas/api/projects][%d] createProjectCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateProjectCreated) GetPayload() *models.IaaSProject {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewCreateProjectBadRequest() *CreateProjectBadRequest {
 	return &CreateProjectBadRequest{}
 }
 
-/* CreateProjectBadRequest describes a response with status code 400, with default header values.
+/*
+CreateProjectBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type CreateProjectBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create project bad request response has a 2xx status code
+func (o *CreateProjectBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create project bad request response has a 3xx status code
+func (o *CreateProjectBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create project bad request response has a 4xx status code
+func (o *CreateProjectBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create project bad request response has a 5xx status code
+func (o *CreateProjectBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create project bad request response a status code equal to that given
+func (o *CreateProjectBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateProjectBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/projects][%d] createProjectBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateProjectBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/projects][%d] createProjectBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateProjectBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewCreateProjectForbidden() *CreateProjectForbidden {
 	return &CreateProjectForbidden{}
 }
 
-/* CreateProjectForbidden describes a response with status code 403, with default header values.
+/*
+CreateProjectForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type CreateProjectForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this create project forbidden response has a 2xx status code
+func (o *CreateProjectForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create project forbidden response has a 3xx status code
+func (o *CreateProjectForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create project forbidden response has a 4xx status code
+func (o *CreateProjectForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create project forbidden response has a 5xx status code
+func (o *CreateProjectForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create project forbidden response a status code equal to that given
+func (o *CreateProjectForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateProjectForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/projects][%d] createProjectForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CreateProjectForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/projects][%d] createProjectForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CreateProjectForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

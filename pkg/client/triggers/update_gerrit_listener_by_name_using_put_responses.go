@@ -63,7 +63,8 @@ func NewUpdateGerritListenerByNameUsingPUTOK() *UpdateGerritListenerByNameUsingP
 	return &UpdateGerritListenerByNameUsingPUTOK{}
 }
 
-/* UpdateGerritListenerByNameUsingPUTOK describes a response with status code 200, with default header values.
+/*
+UpdateGerritListenerByNameUsingPUTOK describes a response with status code 200, with default header values.
 
 'Success' with Gerrit Listener Update
 */
@@ -71,9 +72,39 @@ type UpdateGerritListenerByNameUsingPUTOK struct {
 	Payload models.GerritListener
 }
 
+// IsSuccess returns true when this update gerrit listener by name using p u t o k response has a 2xx status code
+func (o *UpdateGerritListenerByNameUsingPUTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update gerrit listener by name using p u t o k response has a 3xx status code
+func (o *UpdateGerritListenerByNameUsingPUTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update gerrit listener by name using p u t o k response has a 4xx status code
+func (o *UpdateGerritListenerByNameUsingPUTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update gerrit listener by name using p u t o k response has a 5xx status code
+func (o *UpdateGerritListenerByNameUsingPUTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update gerrit listener by name using p u t o k response a status code equal to that given
+func (o *UpdateGerritListenerByNameUsingPUTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateGerritListenerByNameUsingPUTOK) Error() string {
 	return fmt.Sprintf("[PUT /codestream/api/gerrit-listeners/{project}/{name}][%d] updateGerritListenerByNameUsingPUTOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateGerritListenerByNameUsingPUTOK) String() string {
+	return fmt.Sprintf("[PUT /codestream/api/gerrit-listeners/{project}/{name}][%d] updateGerritListenerByNameUsingPUTOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateGerritListenerByNameUsingPUTOK) GetPayload() models.GerritListener {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewUpdateGerritListenerByNameUsingPUTUnauthorized() *UpdateGerritListenerBy
 	return &UpdateGerritListenerByNameUsingPUTUnauthorized{}
 }
 
-/* UpdateGerritListenerByNameUsingPUTUnauthorized describes a response with status code 401, with default header values.
+/*
+UpdateGerritListenerByNameUsingPUTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type UpdateGerritListenerByNameUsingPUTUnauthorized struct {
 }
 
+// IsSuccess returns true when this update gerrit listener by name using p u t unauthorized response has a 2xx status code
+func (o *UpdateGerritListenerByNameUsingPUTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update gerrit listener by name using p u t unauthorized response has a 3xx status code
+func (o *UpdateGerritListenerByNameUsingPUTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update gerrit listener by name using p u t unauthorized response has a 4xx status code
+func (o *UpdateGerritListenerByNameUsingPUTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update gerrit listener by name using p u t unauthorized response has a 5xx status code
+func (o *UpdateGerritListenerByNameUsingPUTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update gerrit listener by name using p u t unauthorized response a status code equal to that given
+func (o *UpdateGerritListenerByNameUsingPUTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UpdateGerritListenerByNameUsingPUTUnauthorized) Error() string {
+	return fmt.Sprintf("[PUT /codestream/api/gerrit-listeners/{project}/{name}][%d] updateGerritListenerByNameUsingPUTUnauthorized ", 401)
+}
+
+func (o *UpdateGerritListenerByNameUsingPUTUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /codestream/api/gerrit-listeners/{project}/{name}][%d] updateGerritListenerByNameUsingPUTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewUpdateGerritListenerByNameUsingPUTForbidden() *UpdateGerritListenerByNam
 	return &UpdateGerritListenerByNameUsingPUTForbidden{}
 }
 
-/* UpdateGerritListenerByNameUsingPUTForbidden describes a response with status code 403, with default header values.
+/*
+UpdateGerritListenerByNameUsingPUTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type UpdateGerritListenerByNameUsingPUTForbidden struct {
 }
 
+// IsSuccess returns true when this update gerrit listener by name using p u t forbidden response has a 2xx status code
+func (o *UpdateGerritListenerByNameUsingPUTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update gerrit listener by name using p u t forbidden response has a 3xx status code
+func (o *UpdateGerritListenerByNameUsingPUTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update gerrit listener by name using p u t forbidden response has a 4xx status code
+func (o *UpdateGerritListenerByNameUsingPUTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update gerrit listener by name using p u t forbidden response has a 5xx status code
+func (o *UpdateGerritListenerByNameUsingPUTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update gerrit listener by name using p u t forbidden response a status code equal to that given
+func (o *UpdateGerritListenerByNameUsingPUTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateGerritListenerByNameUsingPUTForbidden) Error() string {
+	return fmt.Sprintf("[PUT /codestream/api/gerrit-listeners/{project}/{name}][%d] updateGerritListenerByNameUsingPUTForbidden ", 403)
+}
+
+func (o *UpdateGerritListenerByNameUsingPUTForbidden) String() string {
 	return fmt.Sprintf("[PUT /codestream/api/gerrit-listeners/{project}/{name}][%d] updateGerritListenerByNameUsingPUTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewUpdateGerritListenerByNameUsingPUTNotFound() *UpdateGerritListenerByName
 	return &UpdateGerritListenerByNameUsingPUTNotFound{}
 }
 
-/* UpdateGerritListenerByNameUsingPUTNotFound describes a response with status code 404, with default header values.
+/*
+UpdateGerritListenerByNameUsingPUTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type UpdateGerritListenerByNameUsingPUTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update gerrit listener by name using p u t not found response has a 2xx status code
+func (o *UpdateGerritListenerByNameUsingPUTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update gerrit listener by name using p u t not found response has a 3xx status code
+func (o *UpdateGerritListenerByNameUsingPUTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update gerrit listener by name using p u t not found response has a 4xx status code
+func (o *UpdateGerritListenerByNameUsingPUTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update gerrit listener by name using p u t not found response has a 5xx status code
+func (o *UpdateGerritListenerByNameUsingPUTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update gerrit listener by name using p u t not found response a status code equal to that given
+func (o *UpdateGerritListenerByNameUsingPUTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateGerritListenerByNameUsingPUTNotFound) Error() string {
 	return fmt.Sprintf("[PUT /codestream/api/gerrit-listeners/{project}/{name}][%d] updateGerritListenerByNameUsingPUTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UpdateGerritListenerByNameUsingPUTNotFound) String() string {
+	return fmt.Sprintf("[PUT /codestream/api/gerrit-listeners/{project}/{name}][%d] updateGerritListenerByNameUsingPUTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UpdateGerritListenerByNameUsingPUTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewUpdateGerritListenerByNameUsingPUTInternalServerError() *UpdateGerritLis
 	return &UpdateGerritListenerByNameUsingPUTInternalServerError{}
 }
 
-/* UpdateGerritListenerByNameUsingPUTInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateGerritListenerByNameUsingPUTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type UpdateGerritListenerByNameUsingPUTInternalServerError struct {
 }
 
+// IsSuccess returns true when this update gerrit listener by name using p u t internal server error response has a 2xx status code
+func (o *UpdateGerritListenerByNameUsingPUTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update gerrit listener by name using p u t internal server error response has a 3xx status code
+func (o *UpdateGerritListenerByNameUsingPUTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update gerrit listener by name using p u t internal server error response has a 4xx status code
+func (o *UpdateGerritListenerByNameUsingPUTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update gerrit listener by name using p u t internal server error response has a 5xx status code
+func (o *UpdateGerritListenerByNameUsingPUTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this update gerrit listener by name using p u t internal server error response a status code equal to that given
+func (o *UpdateGerritListenerByNameUsingPUTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *UpdateGerritListenerByNameUsingPUTInternalServerError) Error() string {
+	return fmt.Sprintf("[PUT /codestream/api/gerrit-listeners/{project}/{name}][%d] updateGerritListenerByNameUsingPUTInternalServerError ", 500)
+}
+
+func (o *UpdateGerritListenerByNameUsingPUTInternalServerError) String() string {
 	return fmt.Sprintf("[PUT /codestream/api/gerrit-listeners/{project}/{name}][%d] updateGerritListenerByNameUsingPUTInternalServerError ", 500)
 }
 

@@ -53,10 +53,12 @@ func NewListResourceTypesUsingGET2ParamsWithHTTPClient(client *http.Client) *Lis
 	}
 }
 
-/* ListResourceTypesUsingGET2Params contains all the parameters to send to the API endpoint
-   for the list resource types using g e t 2 operation.
+/*
+ListResourceTypesUsingGET2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the list resource types using g e t 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type ListResourceTypesUsingGET2Params struct {
 

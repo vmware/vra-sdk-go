@@ -540,6 +540,20 @@
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
                         "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$top",
+                        "description": "Number of records you want to get.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$skip",
+                        "description": "Number of records you want to skip.",
+                        "type": "integer",
+                        "required": false
                     }
                 ],
                 "tags": [
@@ -776,8 +790,14 @@
                     "app/json"
                 ],
                 "description": "Update custom name",
-                "operationId": "update custom name",
+                "operationId": "updateCustomName",
                 "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/CustomNaming"
+                        },
+                        "description": "successful operation"
+                    },
                     "400": {
                         "schema": {
                             "$ref": "#/definitions/ServiceErrorResponse"
@@ -916,6 +936,20 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$top",
+                        "description": "Number of records you want to get.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$skip",
+                        "description": "Number of records you want to skip.",
+                        "type": "integer",
                         "required": false
                     }
                 ],
@@ -1065,6 +1099,9 @@
                             "$ref": "#/definitions/RequestTracker"
                         },
                         "description": "successful operation"
+                    },
+                    "204": {
+                        "description": "No Content"
                     },
                     "403": {
                         "schema": {
@@ -1979,6 +2016,13 @@
                 "parameters": [
                     {
                         "in": "query",
+                        "name": "skipOperationLinks",
+                        "description": "If set to true will not return operation links.",
+                        "type": "boolean",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
@@ -2001,7 +2045,7 @@
                     {
                         "in": "query",
                         "name": "$count",
-                        "description": "Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
+                        "description": "Flag which when specified, regardless of the assigned value, shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
                         "type": "boolean",
                         "required": false
                     },
@@ -2407,7 +2451,7 @@
                     {
                         "in": "query",
                         "name": "$count",
-                        "description": "Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
+                        "description": "Flag which when specified, regardless of the assigned value, shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
                         "type": "boolean",
                         "required": false
                     },
@@ -2543,7 +2587,7 @@
                     {
                         "in": "query",
                         "name": "$count",
-                        "description": "Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
+                        "description": "Flag which when specified, regardless of the assigned value, shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
                         "type": "boolean",
                         "required": false
                     },
@@ -2581,7 +2625,7 @@
                     "application/json",
                     "app/json"
                 ],
-                "description": "Update machine. Only description, tag and custom property updates are supported. All other properties in the MachineSpecification body are ignored.",
+                "description": "Update machine. Only description, tag, custom property and bootConfig updates are supported. Please note that all existing tags, assigned to this machine, that are not implicitly added in the Patch body, will be unassigned from this machine!All other properties in the MachineSpecification body are ignored.",
                 "operationId": "updateMachine",
                 "responses": {
                     "200": {
@@ -3086,7 +3130,7 @@
                     {
                         "in": "query",
                         "name": "$count",
-                        "description": "Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
+                        "description": "Flag which when specified, regardless of the assigned value, shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
                         "type": "boolean",
                         "required": false
                     },
@@ -3175,7 +3219,7 @@
                 "responses": {
                     "200": {
                         "schema": {
-                            "$ref": "#/definitions/BlockDevice"
+                            "$ref": "#/definitions/Snapshot"
                         },
                         "description": "successful operation"
                     },
@@ -3240,6 +3284,9 @@
                             "$ref": "#/definitions/RequestTracker"
                         },
                         "description": "successful operation"
+                    },
+                    "204": {
+                        "description": "No Content"
                     },
                     "403": {
                         "schema": {
@@ -3613,7 +3660,7 @@
                     {
                         "in": "query",
                         "name": "$count",
-                        "description": "Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
+                        "description": "Flag which when specified, regardless of the assigned value, shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
                         "type": "boolean",
                         "required": false
                     },
@@ -3907,6 +3954,9 @@
                             "$ref": "#/definitions/RequestTracker"
                         },
                         "description": "successful operation"
+                    },
+                    "204": {
+                        "description": "No Content"
                     },
                     "403": {
                         "schema": {
@@ -4980,6 +5030,9 @@
                         },
                         "description": "successful operation"
                     },
+                    "204": {
+                        "description": "No Content"
+                    },
                     "403": {
                         "schema": {
                             "$ref": "#/definitions/ServiceErrorResponse"
@@ -5063,7 +5116,7 @@
                     {
                         "in": "query",
                         "name": "$count",
-                        "description": "Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
+                        "description": "Flag which when specified, regardless of the assigned value, shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
                         "type": "boolean",
                         "required": false
                     },
@@ -5301,6 +5354,9 @@
                             "$ref": "#/definitions/RequestTracker"
                         },
                         "description": "successful operation"
+                    },
+                    "204": {
+                        "description": "No Content"
                     },
                     "403": {
                         "schema": {
@@ -5703,6 +5759,9 @@
                         },
                         "description": "successful operation"
                     },
+                    "204": {
+                        "description": "No Content"
+                    },
                     "403": {
                         "schema": {
                             "$ref": "#/definitions/ServiceErrorResponse"
@@ -5912,7 +5971,7 @@
                     {
                         "in": "query",
                         "name": "$count",
-                        "description": "Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
+                        "description": "Flag which when specified, regardless of the assigned value, shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
                         "type": "boolean",
                         "required": false
                     },
@@ -5965,6 +6024,20 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$top",
+                        "description": "Number of records you want to get.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$skip",
+                        "description": "Number of records you want to skip.",
+                        "type": "integer",
                         "required": false
                     }
                 ],
@@ -6318,6 +6391,20 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$top",
+                        "description": "Number of records you want to get.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$skip",
+                        "description": "Number of records you want to skip.",
+                        "type": "integer",
                         "required": false
                     }
                 ],
@@ -6915,7 +7002,7 @@
                     {
                         "in": "query",
                         "name": "$count",
-                        "description": "Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
+                        "description": "Flag which when specified, regardless of the assigned value, shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
                         "type": "boolean",
                         "required": false
                     },
@@ -7429,6 +7516,20 @@
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
                         "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$top",
+                        "description": "Number of records you want to get.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$skip",
+                        "description": "Number of records you want to skip.",
+                        "type": "integer",
+                        "required": false
                     }
                 ],
                 "tags": [
@@ -7653,6 +7754,20 @@
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
                         "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$top",
+                        "description": "Number of records you want to get.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$skip",
+                        "description": "Number of records you want to skip.",
+                        "type": "integer",
+                        "required": false
                     }
                 ],
                 "tags": [
@@ -7772,7 +7887,7 @@
                     {
                         "in": "query",
                         "name": "$count",
-                        "description": "Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
+                        "description": "Flag which when specified, regardless of the assigned value, shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
                         "type": "boolean",
                         "required": false
                     },
@@ -7890,6 +8005,20 @@
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
                         "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$top",
+                        "description": "Number of records you want to get.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$skip",
+                        "description": "Number of records you want to skip.",
+                        "type": "integer",
+                        "required": false
                     }
                 ],
                 "tags": [
@@ -7960,6 +8089,92 @@
                 ],
                 "tags": [
                     "Compute Nat"
+                ]
+            }
+        },
+        "/iaas/api/folders": {
+            "get": {
+                "summary": "Get folders",
+                "produces": [
+                    "application/json",
+                    "app/json"
+                ],
+                "description": "Get all folders within the current organization",
+                "operationId": "getFolders",
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/FolderResult"
+                        },
+                        "description": "successful operation"
+                    },
+                    "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
+                        "description": "Forbidden"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "apiVersion",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$top",
+                        "description": "Number of records you want to get.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$skip",
+                        "description": "Number of records you want to skip.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$count",
+                        "description": "Flag which when specified, regardless of the assigned value, shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
+                        "type": "boolean",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$select",
+                        "description": "Select a subset of properties to include in the response.",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$filter",
+                        "description": "Filter the results by a specified predicate expression. Operators: eq, ne, and, or.",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "cloudAccountId",
+                        "description": "The ID of a vcenter cloud account.",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "externalRegionId",
+                        "description": "The external unique identifier of the region associated with the vcenter cloud account.",
+                        "type": "string",
+                        "required": false
+                    }
+                ],
+                "tags": [
+                    "Folders"
                 ]
             }
         },
@@ -8161,6 +8376,9 @@
                             "$ref": "#/definitions/RequestTracker"
                         },
                         "description": "successful operation"
+                    },
+                    "204": {
+                        "description": "No Content"
                     },
                     "403": {
                         "schema": {
@@ -8509,7 +8727,7 @@
                     {
                         "in": "query",
                         "name": "rebootMachine",
-                        "description": "Only applicable for vSphere VMs with the Hot Add option enabled. If set to false, VM is resized without reboot.",
+                        "description": "Only applicable for vSphere VMs with the CPU Hot Add or Memory Hot Plug options enabled. If set to false, VM is resized without reboot.",
                         "type": "boolean",
                         "required": false
                     },
@@ -8797,6 +9015,13 @@
                         "description": "Resize Capacity in GB",
                         "type": "integer",
                         "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "useSdrs",
+                        "description": "Only applicable for vSphere block-devices deployed on SDRS cluster. If set to true, SDRS Recommendation will be used for resize operation.",
+                        "type": "boolean",
+                        "required": false
                     },
                     {
                         "in": "query",
@@ -10009,6 +10234,20 @@
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
                         "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$top",
+                        "description": "Number of records you want to get.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$skip",
+                        "description": "Number of records you want to skip.",
+                        "type": "integer",
+                        "required": false
                     }
                 ],
                 "tags": [
@@ -10187,7 +10426,7 @@
                     {
                         "in": "query",
                         "name": "$count",
-                        "description": "Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
+                        "description": "Flag which when specified, regardless of the assigned value, shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
                         "type": "boolean",
                         "required": false
                     },
@@ -10618,7 +10857,7 @@
                     "application/json",
                     "app/json"
                 ],
-                "description": "The page contains information about the supported API versions and the latest API version. The version parameter is optional but highly recommended.\nIf you do not specify explicitly an exact version, you will be calling the latest supported API version.\nHere is an example of a call which specifies the exact version you are using: `GET /iaas/api/network-profiles?apiVersion=2021-07-15`\n\nNote that this version is deprecated: 2019-01-15.",
+                "description": "The page contains information about the supported API versions and the latest API version. The version parameter is optional but highly recommended.\nIf you do not specify explicitly an exact version, you will be calling the latest supported General Availability API version.\nHere is an example of a call which specifies the exact version you are using: `GET /iaas/api/network-profiles?apiVersion=2021-07-15`\n\nNote that this version is deprecated: 2019-01-15.",
                 "operationId": "getAboutPage",
                 "responses": {
                     "200": {
@@ -10939,6 +11178,9 @@
                         },
                         "description": "successful operation"
                     },
+                    "204": {
+                        "description": "No Content"
+                    },
                     "403": {
                         "schema": {
                             "$ref": "#/definitions/ServiceErrorResponse"
@@ -11022,7 +11264,7 @@
                     {
                         "in": "query",
                         "name": "$count",
-                        "description": "Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
+                        "description": "Flag which when specified, regardless of the assigned value, shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
                         "type": "boolean",
                         "required": false
                     },
@@ -11354,6 +11596,20 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$top",
+                        "description": "Number of records you want to get.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$skip",
+                        "description": "Number of records you want to skip.",
+                        "type": "integer",
                         "required": false
                     }
                 ],
@@ -11691,7 +11947,7 @@
                     {
                         "in": "query",
                         "name": "$count",
-                        "description": "Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
+                        "description": "Flag which when specified, regardless of the assigned value, shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
                         "type": "boolean",
                         "required": false
                     },
@@ -11954,6 +12210,9 @@
                             "$ref": "#/definitions/RequestTracker"
                         },
                         "description": "successful operation"
+                    },
+                    "204": {
+                        "description": "No Content"
                     },
                     "403": {
                         "schema": {
@@ -12465,7 +12724,7 @@
                     {
                         "in": "query",
                         "name": "$count",
-                        "description": "Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
+                        "description": "Flag which when specified, regardless of the assigned value, shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
                         "type": "boolean",
                         "required": false
                     },
@@ -12605,6 +12864,70 @@
                 ]
             }
         },
+        "/iaas/api/cloud-accounts/{id}/health-check": {
+            "post": {
+                "summary": "Starts cloud account health check",
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "app/json"
+                ],
+                "description": "Starts cloud account health check identified by its endpoint state",
+                "operationId": "runEndpointHealthCheck",
+                "responses": {
+                    "202": {
+                        "schema": {
+                            "$ref": "#/definitions/RequestTracker"
+                        },
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
+                        "description": "Invalid Request - bad data"
+                    },
+                    "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
+                        "description": "Forbidden"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The ID of the Cloud account",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "apiVersion",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "periodicHealthCheckId",
+                        "description": "If query param is provided then the endpoint health check is not started manually from the UI, but after a scheduled process.",
+                        "type": "string",
+                        "required": false
+                    }
+                ],
+                "tags": [
+                    "Cloud Account"
+                ]
+            }
+        },
         "/iaas/api/integrations/{id}": {
             "patch": {
                 "summary": "Update an integration",
@@ -12732,6 +13055,9 @@
                             "$ref": "#/definitions/RequestTracker"
                         },
                         "description": "successful operation"
+                    },
+                    "204": {
+                        "description": "No Content"
                     },
                     "403": {
                         "schema": {
@@ -12861,6 +13187,20 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$top",
+                        "description": "Number of records you want to get.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$skip",
+                        "description": "Number of records you want to skip.",
+                        "type": "integer",
                         "required": false
                     }
                 ],
@@ -13119,6 +13459,41 @@
                         "in": "query",
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$top",
+                        "description": "Number of records you want to get.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$skip",
+                        "description": "Number of records you want to skip.",
+                        "type": "integer",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$count",
+                        "description": "Flag which when specified, regardless of the assigned value, shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
+                        "type": "boolean",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$select",
+                        "description": "Select a subset of properties to include in the response.",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "$filter",
+                        "description": "Filter the results by a specified predicate expression. Operators: eq, ne, and, or.",
                         "type": "string",
                         "required": false
                     }
@@ -13393,7 +13768,7 @@
                     {
                         "in": "query",
                         "name": "$count",
-                        "description": "Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
+                        "description": "Flag which when specified, regardless of the assigned value, shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
                         "type": "boolean",
                         "required": false
                     },
@@ -13667,6 +14042,9 @@
                             "$ref": "#/definitions/RequestTracker"
                         },
                         "description": "successful operation"
+                    },
+                    "204": {
+                        "description": "No Content"
                     },
                     "403": {
                         "schema": {
@@ -14936,6 +15314,10 @@
                     "type": "string",
                     "example": "vsphere, aws, azure, nsxv, nsxt"
                 },
+                "inMaintenanceMode": {
+                    "description": "Indicates if the  cloud account is undergoing maintenance. If true, it can't be used for provisioning and scheduled enumeration is not triggered.",
+                    "type": "boolean"
+                },
                 "description": {
                     "description": "A human-friendly description.",
                     "type": "string",
@@ -14974,6 +15356,10 @@
                     "type": "object",
                     "example": "{ \"isExternal\" : \"false\" }"
                 },
+                "healthy": {
+                    "description": "Indicates the health of the cloud account. If false, this means there is no connectivity to the cloud provider or the credentials are invalid.",
+                    "type": "boolean"
+                },
                 "name": {
                     "description": "A human-friendly name used as an identifier in APIs that support this option.",
                     "type": "string",
@@ -14983,6 +15369,18 @@
                     "description": "The id of this resource instance",
                     "type": "string",
                     "example": "9e49"
+                },
+                "associatedMobilityCloudAccountIds": {
+                    "description": "Workload mobility associations to other vSphere cloud accounts. ID refers to an associated cloud account, and directionality can be unidirectional or bidirectional. Only supported on vSphere Cloud Accounts.",
+                    "additionalProperties": {
+                        "type": "string",
+                        "enum": [
+                            "UNIDIRECTIONAL",
+                            "BIDIRECTIONAL"
+                        ]
+                    },
+                    "type": "object",
+                    "example": "{ \"42f3e0d199d134755684cd935435a\": \"BIDIRECTIONAL\" }"
                 },
                 "updatedAt": {
                     "description": "Date when the entity was last updated. The date is ISO 8601 and UTC.",
@@ -14995,6 +15393,12 @@
             "description": "Specification for updating a FabricCompute",
             "type": "object",
             "properties": {
+                "maximumAllowedMemoryAllocationPercent": {
+                    "format": "int32",
+                    "description": "What percent of the total available memory on the compute will be used for VM provisioning.This value can be more than 100. e.g. If the compute has 100gb of memory and this value is set to80, then vRA will act as if this compute has only 80gb. If it is 120, then vRA will act as if this compute has 120gb thus allowing 20gb overallocation. Applies only for private cloud computes.",
+                    "type": "integer",
+                    "example": 120
+                },
                 "tags": {
                     "description": "A set of tag keys and optional values that were set on this resource instance.",
                     "type": "array",
@@ -17126,7 +17530,7 @@
                     "example": "us-west"
                 },
                 "cloudAccountId": {
-                    "description": "The id of the cloud account this region belongs to.",
+                    "description": "The id of the cloud account this region belongs to. For some cloud accounts this field will be populated with the associated cloud account id",
                     "type": "string",
                     "example": "9e49"
                 },
@@ -17506,7 +17910,7 @@
                     "example": "[ { \"key\" : \"env\", \"value\": \"dev\" } ]"
                 },
                 "password": {
-                    "description": "Password for the user used to authenticate with the cloud Account",
+                    "description": "Password for the user used to authenticate with the cloud Account. Not mandatory for AAP mode.",
                     "type": "string",
                     "example": "cndhjslacd90ascdbasyoucbdh"
                 },
@@ -17515,8 +17919,13 @@
                     "type": "boolean",
                     "example": true
                 },
+                "environment": {
+                    "description": "The environment where the agent has been deployed. When the agent has been deployed using the \"Add Ons\" in VMC UI or Api use \"aap\".",
+                    "type": "string",
+                    "example": "aap"
+                },
                 "dcId": {
-                    "description": "Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors",
+                    "description": "Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors. Not mandatory for AAP mode.",
                     "type": "string",
                     "example": "23959a1e-18bc-4f0c-ac49-b5aeb4b6eef4"
                 },
@@ -17525,7 +17934,7 @@
                     "type": "string"
                 },
                 "username": {
-                    "description": "vCenter user name for the specified SDDC.The specified user requires CloudAdmin credentials. The user does not require CloudGlobalAdmin credentials.",
+                    "description": "vCenter user name for the specified SDDC.The specified user requires CloudAdmin credentials. The user does not require CloudGlobalAdmin credentials. Not mandatory for AAP mode.",
                     "type": "string",
                     "example": "administrator@mycompany.com"
                 }
@@ -17720,12 +18129,12 @@
                     "example": "[ \"6543\" ]"
                 },
                 "customProperties": {
-                    "description": "Additional properties that may be used to extend the Network Profile object that is produced from this specification.  For isolationType security group, datastoreId identifies the Compute Resource Edge datastore. computeCluster and resourcePoolId identify the Compute Resource Edge cluster. For isolationType subnet, distributedLogicalRouterStateLink identifies the on-demand network distributed local router.  onDemandNetworkIPAssignmentType identifies the on-demand network IP range assignment type static, dynamic, or mixed.",
+                    "description": "Additional properties that may be used to extend the Network Profile object that is produced from this specification.  For isolationType security group, datastoreId identifies the Compute Resource Edge datastore. computeCluster and resourcePoolId identify the Compute Resource Edge cluster. For isolationType subnet, distributedLogicalRouterStateLink identifies the on-demand network distributed local router (NSX-V only). For isolationType subnet, tier0LogicalRouterStateLink identifies the on-demand network tier-0 logical router (NSX-T only). onDemandNetworkIPAssignmentType identifies the on-demand network IP range assignment type static, dynamic, or mixed.",
                     "additionalProperties": {
                         "type": "string"
                     },
                     "type": "object",
-                    "example": "{ \"resourcePoolId\" : \"resource-pool-1\", \"datastoreId\" : \"StoragePod:group-p87839\", \"computeCluster\" : \"/resources/compute/1234\", \"distributedLogicalRouterStateLink\" : \"/resources/routers/1234\", \"onDemandNetworkIPAssignmentType\" : \"dynamic\"}"
+                    "example": "{ \"resourcePoolId\" : \"resource-pool-1\", \"datastoreId\" : \"StoragePod:group-p87839\", \"computeCluster\" : \"/resources/compute/1234\", \"distributedLogicalRouterStateLink\" : \"/resources/routers/1234\", \"tier0LogicalRouterStateLink\" : \"/resources/routers/2345\", \"onDemandNetworkIPAssignmentType\" : \"dynamic\"}"
                 },
                 "regionId": {
                     "description": "The Id of the region for which this profile is created",
@@ -18045,7 +18454,7 @@
                     "type": "string"
                 },
                 "placementPolicy": {
-                    "description": "Placement policy for the zone. One of DEFAULT, SPREAD or BINPACK.",
+                    "description": "Placement policy for the zone. One of DEFAULT, SPREAD, BINPACK or SPREAD_MEMORY.",
                     "type": "string",
                     "example": "DEFAULT"
                 },
@@ -18642,7 +19051,7 @@
                     "type": "string"
                 },
                 "placementPolicy": {
-                    "description": "Placement policy for the project. Determines how a zone will be selected for provisioning. DEFAULT or SPREAD.",
+                    "description": "Placement policy for the project. Determines how a zone will be selected for provisioning. DEFAULT, SPREAD or SPREAD_MEMORY.",
                     "type": "string",
                     "example": "DEFAULT"
                 },
@@ -18676,6 +19085,10 @@
                         "type": "string"
                     },
                     "type": "object"
+                },
+                "bootConfig": {
+                    "description": "A valid cloud config data in json-escaped yaml syntax",
+                    "$ref": "#/definitions/MachineBootConfig"
                 },
                 "description": {
                     "description": "Describes machine within the scope of your organization and is not propagated to the cloud",
@@ -19501,16 +19914,6 @@
                     },
                     "example": "[ \"42f3e0d199d134755684cd935435a\" ]"
                 },
-                "password": {
-                    "description": "Password for the user used to authenticate with the cloud Account",
-                    "type": "string",
-                    "example": "cndhjslacd90ascdbasyoucbdh"
-                },
-                "createDefaultZones": {
-                    "description": "Create default cloud zones for the enabled regions.",
-                    "type": "boolean",
-                    "example": true
-                },
                 "regions": {
                     "description": "A set of regions to enable provisioning on.Refer to /iaas/api/cloud-accounts/region-enumeration. ",
                     "type": "array",
@@ -19518,15 +19921,6 @@
                         "$ref": "#/definitions/RegionSpecification"
                     },
                     "example": "[{ \"name\": \"Datacenter:datacenter-3\",\"externalRegionId\": \"Datacenter:datacenter-3\"}]"
-                },
-                "dcid": {
-                    "description": "Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors.\nNote: Data collector endpoints are not available in vRA on-prem release.",
-                    "type": "string",
-                    "example": "23959a1e-18bc-4f0c-ac49-b5aeb4b6eef4"
-                },
-                "name": {
-                    "description": "A human-friendly name used as an identifier in APIs that support this option.",
-                    "type": "string"
                 },
                 "description": {
                     "description": "A human-friendly description.",
@@ -19537,11 +19931,6 @@
                     "$ref": "#/definitions/CertificateInfoSpecification",
                     "example": "{\"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDHjCCAoegAwIBAgIBATANBgkqhkiG9w0BAQsFADCBpjEUMBIGA1UEChMLVk13\\nYXJlIEluYAAc1pw18GT3iAqQRPx0PrjzJhgjIJMla\\n/1Kg4byY4FPSacNiRgY/FG2bPCqZk1yRfzmkFYCW/vU+Dg==\\n-----END CERTIFICATE-----\\n-\"}"
                 },
-                "username": {
-                    "description": "Username to authenticate with the cloud account",
-                    "type": "string",
-                    "example": "administrator@mycompany.com"
-                },
                 "tags": {
                     "description": "A set of tag keys and optional values to set on the Cloud Account",
                     "type": "array",
@@ -19549,6 +19938,42 @@
                         "$ref": "#/definitions/Tag"
                     },
                     "example": "[ { \"key\" : \"env\", \"value\": \"dev\" } ]"
+                },
+                "password": {
+                    "description": "Password for the user used to authenticate with the cloud Account",
+                    "type": "string",
+                    "example": "cndhjslacd90ascdbasyoucbdh"
+                },
+                "createDefaultZones": {
+                    "description": "Create default cloud zones for the enabled regions.",
+                    "type": "boolean",
+                    "example": true
+                },
+                "dcid": {
+                    "description": "Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors.\nNote: Data collector endpoints are not available in vRA on-prem release.",
+                    "type": "string",
+                    "example": "23959a1e-18bc-4f0c-ac49-b5aeb4b6eef4"
+                },
+                "name": {
+                    "description": "A human-friendly name used as an identifier in APIs that support this option.",
+                    "type": "string"
+                },
+                "associatedMobilityCloudAccountIds": {
+                    "description": "Cloud account IDs and directionalities create associations to other vSphere cloud accounts that can be used for workload mobility. ID refers to an associated cloud account, and directionality can be unidirectional or bidirectional.",
+                    "additionalProperties": {
+                        "type": "string",
+                        "enum": [
+                            "UNIDIRECTIONAL",
+                            "BIDIRECTIONAL"
+                        ]
+                    },
+                    "type": "object",
+                    "example": "{ \"42f3e0d199d134755684cd935435a\": \"BIDIRECTIONAL\" }"
+                },
+                "username": {
+                    "description": "Username to authenticate with the cloud account",
+                    "type": "string",
+                    "example": "administrator@mycompany.com"
                 }
             }
         },
@@ -19772,11 +20197,6 @@
                     "type": "object",
                     "example": "{\"supportPublicImages\": \"true\", \"acceptSelfSignedCertificate\": \"true\" }"
                 },
-                "privateKey": {
-                    "description": "Secret access key or password to be used to authenticate with the cloud account",
-                    "type": "string",
-                    "example": "gfsScK345sGGaVdds222dasdfDDSSasdfdsa34fS"
-                },
                 "associatedCloudAccountIds": {
                     "description": "Cloud accounts to associate with this cloud account",
                     "type": "array",
@@ -19784,19 +20204,6 @@
                         "type": "string"
                     },
                     "example": "[ \"42f3e0d199d134755684cd935435a\" ]"
-                },
-                "createDefaultZones": {
-                    "description": "Create default cloud zones for the enabled regions.",
-                    "type": "boolean",
-                    "example": true
-                },
-                "customProperties": {
-                    "description": "Additional custom properties that may be used to extend the Cloud Account.",
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "type": "object",
-                    "example": "{ \"sampleadapterProjectId\" : \"projectId\" }"
                 },
                 "regions": {
                     "description": "A set of regions to enable provisioning on.Refer to /iaas/api/cloud-accounts/region-enumeration. \n'regionInfos' is a required parameter for AWS, AZURE, GCP, VSPHERE, VMC, VCF cloud account types.",
@@ -19809,11 +20216,7 @@
                 "cloudAccountType": {
                     "description": "Cloud account type",
                     "type": "string",
-                    "example": "vsphere, aws, azure, nsxv, nsxt"
-                },
-                "name": {
-                    "description": "A human-friendly name used as an identifier in APIs that support this option.",
-                    "type": "string"
+                    "example": "vsphere, aws, azure, nsxv, nsxt, vmc"
                 },
                 "description": {
                     "description": "A human-friendly description.",
@@ -19824,11 +20227,6 @@
                     "$ref": "#/definitions/CertificateInfoSpecification",
                     "example": "{\"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDHjCCAoegAwIBAgIBATANBgkqhkiG9w0BAQsFADCBpjEUMBIGA1UEChMLVk13\\nYXJlIEluYAAc1pw18GT3iAqQRPx0PrjzJhgjIJMla\\n/1Kg4byY4FPSacNiRgY/FG2bPCqZk1yRfzmkFYCW/vU+Dg==\\n-----END CERTIFICATE-----\\n-\"}"
                 },
-                "privateKeyId": {
-                    "description": "Access key id or username to be used to authenticate with the cloud account",
-                    "type": "string",
-                    "example": "ACDC55DB4MFH6ADG75KK"
-                },
                 "tags": {
                     "description": "A set of tag keys and optional values to set on the Cloud Account",
                     "type": "array",
@@ -19836,6 +20234,45 @@
                         "$ref": "#/definitions/Tag"
                     },
                     "example": "[ { \"key\" : \"env\", \"value\": \"dev\" } ]"
+                },
+                "privateKey": {
+                    "description": "Secret access key or password to be used to authenticate with the cloud account. In case of AAP pass a dummy value.",
+                    "type": "string",
+                    "example": "gfsScK345sGGaVdds222dasdfDDSSasdfdsa34fS"
+                },
+                "createDefaultZones": {
+                    "description": "Create default cloud zones for the enabled regions.",
+                    "type": "boolean",
+                    "example": true
+                },
+                "customProperties": {
+                    "description": "Additional custom properties that may be used to extend the Cloud Account. In case of AAP, provide environment property here.Example: \"customProperties\": {\n        \"environment\": \"aap\"\n    } ",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "type": "object",
+                    "example": "{ \"sampleadapterProjectId\" : \"projectId\" }"
+                },
+                "name": {
+                    "description": "A human-friendly name used as an identifier in APIs that support this option.",
+                    "type": "string"
+                },
+                "associatedMobilityCloudAccountIds": {
+                    "description": "Cloud Account IDs and directionalities create associations to other vSphere cloud accounts that can be used for workload mobility. ID refers to an associated cloud account, and directionality can be unidirectional or bidirectional. Only supported on vSphere cloud accounts.",
+                    "additionalProperties": {
+                        "type": "string",
+                        "enum": [
+                            "UNIDIRECTIONAL",
+                            "BIDIRECTIONAL"
+                        ]
+                    },
+                    "type": "object",
+                    "example": "{ \"42f3e0d199d134755684cd935435a\": \"BIDIRECTIONAL\" }"
+                },
+                "privateKeyId": {
+                    "description": "Access key id or username to be used to authenticate with the cloud account",
+                    "type": "string",
+                    "example": "ACDC55DB4MFH6ADG75KK"
                 }
             }
         },
@@ -20295,6 +20732,10 @@
                     "description": "Subnet prefix length (synonymous with \"netmask\")",
                     "type": "integer"
                 },
+                "integrationId": {
+                    "description": "ID of the IPAM integration this IP range belongs to",
+                    "type": "string"
+                },
                 "startIPAddress": {
                     "description": "Start IP address of the range.",
                     "type": "string"
@@ -20468,6 +20909,80 @@
                 }
             }
         },
+        "Folder": {
+            "description": "Represents a structure that holds details of vSphere folders**HATEOAS** links:<br>**self** - Folder - Self link to this folder",
+            "type": "object",
+            "required": [
+                "_links",
+                "id"
+            ],
+            "properties": {
+                "owner": {
+                    "description": "Email of the user that owns the entity.",
+                    "type": "string",
+                    "example": "csp@vmware.com"
+                },
+                "createdAt": {
+                    "description": "Date when the entity was created. The date is in ISO 8601 and UTC.",
+                    "type": "string",
+                    "example": "2012-09-27"
+                },
+                "cloudAccountIds": {
+                    "uniqueItems": true,
+                    "description": "A set of cloud account IDs that are associated with the particular Folder",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": "[ \"cloud-account-id-1\", \"cloud-account-id-2\" } ]"
+                },
+                "customProperties": {
+                    "description": "Additional properties that may be used to extend the base type.",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "type": "object",
+                    "example": "{ \"folderType\" : \"1\" }"
+                },
+                "_links": {
+                    "description": "HATEOAS of the entity",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/Href"
+                    },
+                    "type": "object"
+                },
+                "name": {
+                    "description": "A human-friendly name used as an identifier in APIs that support this option.",
+                    "type": "string",
+                    "example": "my-name"
+                },
+                "description": {
+                    "description": "A human-friendly description.",
+                    "type": "string",
+                    "example": "my-description"
+                },
+                "externalId": {
+                    "description": "External entity Id on the provider side.",
+                    "type": "string",
+                    "example": "i-cfe4-e241-e53b-756a9a2e25d2"
+                },
+                "id": {
+                    "description": "The id of this resource instance",
+                    "type": "string",
+                    "example": "9e49"
+                },
+                "orgId": {
+                    "description": "The id of the organization this entity belongs to.",
+                    "type": "string",
+                    "example": "42413b31-1716-477e-9a88-9dc1c3cb1cdf"
+                },
+                "updatedAt": {
+                    "description": "Date when the entity was last updated. The date is ISO 8601 and UTC.",
+                    "type": "string",
+                    "example": "2012-09-27"
+                }
+            }
+        },
         "FabricAzureStorageAccountResult": {
             "description": "State object representing a query result of Azure storage accounts.",
             "type": "object",
@@ -20514,6 +21029,11 @@
                     "description": "Password for the user used to authenticate with the cloud Account. Either provide password or provide a cloudAccountId of an existing account.",
                     "type": "string",
                     "example": "cndhjslacd90ascdbasyoucbdh"
+                },
+                "environment": {
+                    "description": "The environment where the agent has been deployed. When the agent has been deployed using the \"Add Ons\" in VMC UI or Api use \"aap\".",
+                    "type": "string",
+                    "example": "aap"
                 },
                 "apiKey": {
                     "description": "VMC API access key. Either provide apiKey or provide a cloudAccountId of an existing account.",
@@ -21560,7 +22080,7 @@
             ],
             "properties": {
                 "cloudAccountProperties": {
-                    "description": "Cloud Account specific properties supplied in as name value pairs",
+                    "description": "Cloud Account specific properties supplied in as name value pairs. In case of AAP, provide environment property here. Example: \"cloudAccountProperties\": {\n        \"environment\": \"aap\"\n    }",
                     "additionalProperties": {
                         "type": "string"
                     },
@@ -21851,7 +22371,7 @@
                     "example": "{\"supportPublicImages\": \"true\", \"acceptSelfSignedCertificate\": \"true\" }"
                 },
                 "privateKey": {
-                    "description": "Secret access key or password to be used to authenticate with the cloud account",
+                    "description": "Secret access key or password to be used to authenticate with the cloud account. In case of AAP pass a dummy value.",
                     "type": "string",
                     "example": "gfsScK345sGGaVdds222dasdfDDSSasdfdsa34fS"
                 },
@@ -21869,7 +22389,7 @@
                     "example": true
                 },
                 "customProperties": {
-                    "description": "Additional custom properties that may be used to extend the Cloud Account.",
+                    "description": "Additional custom properties that may be used to extend the Cloud Account. In case of AAP, provide environment property here.Example: \"customProperties\": {\n        \"environment\": \"aap\"\n    } ",
                     "additionalProperties": {
                         "type": "string"
                     },
@@ -21891,6 +22411,18 @@
                 "description": {
                     "description": "A human-friendly description.",
                     "type": "string"
+                },
+                "associatedMobilityCloudAccountIds": {
+                    "description": "Cloud Account IDs and directionalities create associations to other vSphere cloud accounts that can be used for workload mobility. ID refers to an associated cloud account, and directionality can be unidirectional or bidirectional. Only supported on vSphere cloud accounts.",
+                    "additionalProperties": {
+                        "type": "string",
+                        "enum": [
+                            "UNIDIRECTIONAL",
+                            "BIDIRECTIONAL"
+                        ]
+                    },
+                    "type": "object",
+                    "example": "{ \"42f3e0d199d134755684cd935435a\": \"BIDIRECTIONAL\" }"
                 },
                 "certificateInfo": {
                     "description": "Certificate for a cloud account.",
@@ -22216,6 +22748,18 @@
                     "description": "The id of this resource instance",
                     "type": "string",
                     "example": "9e49"
+                },
+                "associatedMobilityCloudAccountIds": {
+                    "description": "Workload mobility associations to other vSphere cloud accounts. ID refers to an associated cloud account, and directionality can be unidirectional or bidirectional.",
+                    "additionalProperties": {
+                        "type": "string",
+                        "enum": [
+                            "UNIDIRECTIONAL",
+                            "BIDIRECTIONAL"
+                        ]
+                    },
+                    "type": "object",
+                    "example": "{ \"42f3e0d199d134755684cd935435a\": \"BIDIRECTIONAL\" }"
                 },
                 "updatedAt": {
                     "description": "Date when the entity was last updated. The date is ISO 8601 and UTC.",
@@ -22576,6 +23120,34 @@
                 }
             }
         },
+        "FolderResult": {
+            "description": "State object representing a query result of folders.",
+            "type": "object",
+            "properties": {
+                "numberOfElements": {
+                    "format": "int64",
+                    "description": "Number of elements in the current page",
+                    "readOnly": true,
+                    "type": "integer",
+                    "example": 1
+                },
+                "content": {
+                    "description": "List of content items",
+                    "readOnly": true,
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Folder"
+                    }
+                },
+                "totalElements": {
+                    "format": "int64",
+                    "description": "Total number of elements. In some cases the field may not be populated",
+                    "readOnly": true,
+                    "type": "integer",
+                    "example": 1
+                }
+            }
+        },
         "DiskSnapshot": {
             "description": "Represents a disk snapshot",
             "type": "object",
@@ -22900,6 +23472,12 @@
                     "type": "string",
                     "example": "PROVISIONING, READY, SUSPEND, STOPPED, RETIRED"
                 },
+                "maximumAllowedMemoryAllocationPercent": {
+                    "format": "int32",
+                    "description": "What percent of the total available memory on the compute will be used for VM provisioning. This value can be more than 100. e.g. If the compute has 100gb of memory and this value is set to 80, then vRA will act as if this compute has only 80gb. If it is 120, then vRA will act as if this compute has 120gb thus allowing 20gb overallocation. Applies only for private cloud computes.",
+                    "type": "integer",
+                    "example": 120
+                },
                 "_links": {
                     "description": "HATEOAS of the entity",
                     "additionalProperties": {
@@ -23142,16 +23720,6 @@
                     },
                     "example": "[ \"42f3e0d199d134755684cd935435a\" ]"
                 },
-                "password": {
-                    "description": "Password for the user used to authenticate with the cloud Account",
-                    "type": "string",
-                    "example": "cndhjslacd90ascdbasyoucbdh"
-                },
-                "createDefaultZones": {
-                    "description": "Create default cloud zones for the enabled regions.",
-                    "type": "boolean",
-                    "example": true
-                },
                 "regions": {
                     "description": "A set of regions to enable provisioning on.Refer to /iaas/api/cloud-accounts/region-enumeration. ",
                     "type": "array",
@@ -23159,15 +23727,6 @@
                         "$ref": "#/definitions/RegionSpecification"
                     },
                     "example": "[{ \"name\": \"Datacenter:datacenter-3\",\"externalRegionId\": \"Datacenter:datacenter-3\"}]"
-                },
-                "dcid": {
-                    "description": "Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors.\nNote: Data collector endpoints are not available in vRA on-prem release.",
-                    "type": "string",
-                    "example": "23959a1e-18bc-4f0c-ac49-b5aeb4b6eef4"
-                },
-                "name": {
-                    "description": "A human-friendly name used as an identifier in APIs that support this option.",
-                    "type": "string"
                 },
                 "description": {
                     "description": "A human-friendly description.",
@@ -23178,11 +23737,6 @@
                     "$ref": "#/definitions/CertificateInfoSpecification",
                     "example": "{\"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIDHjCCAoegAwIBAgIBATANBgkqhkiG9w0BAQsFADCBpjEUMBIGA1UEChMLVk13\\nYXJlIEluYAAc1pw18GT3iAqQRPx0PrjzJhgjIJMla\\n/1Kg4byY4FPSacNiRgY/FG2bPCqZk1yRfzmkFYCW/vU+Dg==\\n-----END CERTIFICATE-----\\n-\"}"
                 },
-                "username": {
-                    "description": "Username to authenticate with the cloud account",
-                    "type": "string",
-                    "example": "administrator@mycompany.com"
-                },
                 "tags": {
                     "description": "A set of tag keys and optional values to set on the Cloud Account",
                     "type": "array",
@@ -23190,6 +23744,42 @@
                         "$ref": "#/definitions/Tag"
                     },
                     "example": "[ { \"key\" : \"env\", \"value\": \"dev\" } ]"
+                },
+                "password": {
+                    "description": "Password for the user used to authenticate with the cloud Account",
+                    "type": "string",
+                    "example": "cndhjslacd90ascdbasyoucbdh"
+                },
+                "createDefaultZones": {
+                    "description": "Create default cloud zones for the enabled regions.",
+                    "type": "boolean",
+                    "example": true
+                },
+                "dcid": {
+                    "description": "Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors.\nNote: Data collector endpoints are not available in vRA on-prem release.",
+                    "type": "string",
+                    "example": "23959a1e-18bc-4f0c-ac49-b5aeb4b6eef4"
+                },
+                "name": {
+                    "description": "A human-friendly name used as an identifier in APIs that support this option.",
+                    "type": "string"
+                },
+                "associatedMobilityCloudAccountIds": {
+                    "description": "Cloud account IDs and directionalities create associations to other vSphere cloud accounts that can be used for workload mobility. ID refers to an associated cloud account, and directionality can be unidirectional or bidirectional.",
+                    "additionalProperties": {
+                        "type": "string",
+                        "enum": [
+                            "UNIDIRECTIONAL",
+                            "BIDIRECTIONAL"
+                        ]
+                    },
+                    "type": "object",
+                    "example": "{ \"42f3e0d199d134755684cd935435a\": \"BIDIRECTIONAL\" }"
+                },
+                "username": {
+                    "description": "Username to authenticate with the cloud account",
+                    "type": "string",
+                    "example": "administrator@mycompany.com"
                 }
             }
         },
@@ -23264,7 +23854,7 @@
                 "integrationType": {
                     "description": "Integration type",
                     "type": "string",
-                    "example": "Active directory, Ansible, IPAM, vRO, GitHub"
+                    "example": "activedirectory | ansible | ipam | vro | com.github.saas"
                 },
                 "customProperties": {
                     "description": "Additional properties that may be used to extend the base type.",
@@ -23414,7 +24004,7 @@
                     "example": "{\"__isDefaultPlacementZone\": \"true\"}"
                 },
                 "folder": {
-                    "description": "The folder relative path to the datacenter where resources are deployed to. (only applicable for vSphere cloud zones)",
+                    "description": "The folder relative path to the datacenter where resources are deployed to. If a non-existent folder name is passed, a new folder will be created in the respective datacenter when a machine is provisioned via the cloud zone. (only applicable for vSphere cloud zones)",
                     "type": "string",
                     "example": "test-folder"
                 },
@@ -23599,12 +24189,12 @@
                     "example": "2012-09-27"
                 },
                 "customProperties": {
-                    "description": "Additional properties that may be used to extend the Network Profile object that is produced from this specification.  For isolationType security group, datastoreId identifies the Compute Resource Edge datastore. computeCluster and resourcePoolId identify the Compute Resource Edge cluster. For isolationType subnet, distributedLogicalRouterStateLink identifies the on-demand network distributed local router.  onDemandNetworkIPAssignmentType identifies the on-demand network IP range assignment type static, dynamic, or mixed.",
+                    "description": "Additional properties that may be used to extend the Network Profile object that is produced from this specification.  For isolationType security group, datastoreId identifies the Compute Resource Edge datastore. computeCluster and resourcePoolId identify the Compute Resource Edge cluster. For isolationType subnet, distributedLogicalRouterStateLink identifies the on-demand network distributed local router (NSX-V only). For isolationType subnet, tier0LogicalRouterStateLink identifies the on-demand network tier-0 logical router (NSX-T only). onDemandNetworkIPAssignmentType identifies the on-demand network IP range assignment type static, dynamic, or mixed.",
                     "additionalProperties": {
                         "type": "string"
                     },
                     "type": "object",
-                    "example": "{ \"resourcePoolId\" : \"resource-pool-1\", \"datastoreId\" : \"StoragePod:group-p87839\", \"computeCluster\" : \"/resources/compute/1234\", \"distributedLogicalRouterStateLink\" : \"/resources/routers/1234\", \"onDemandNetworkIPAssignmentType\" : \"dynamic\"}"
+                    "example": "{ \"resourcePoolId\" : \"resource-pool-1\", \"datastoreId\" : \"StoragePod:group-p87839\", \"computeCluster\" : \"/resources/compute/1234\", \"distributedLogicalRouterStateLink\" : \"/resources/routers/1234\", \"tier0LogicalRouterStateLink\" : \"/resources/routers/2345\", \"onDemandNetworkIPAssignmentType\" : \"dynamic\"}"
                 },
                 "name": {
                     "description": "A human-friendly name used as an identifier in APIs that support this option.",
@@ -23877,7 +24467,7 @@
                     "example": "[{ \"name\": \"Datacenter:datacenter-3\",\"externalRegionId\": \"Datacenter:datacenter-3\"}]"
                 },
                 "apiKey": {
-                    "description": "VMC API access key",
+                    "description": "VMC API access key. Not mandatory for AAP mode.",
                     "type": "string"
                 },
                 "nsxHostName": {
@@ -23908,7 +24498,7 @@
                     "example": "[ { \"key\" : \"env\", \"value\": \"dev\" } ]"
                 },
                 "password": {
-                    "description": "Password for the user used to authenticate with the cloud Account",
+                    "description": "Password for the user used to authenticate with the cloud Account. Not mandatory for AAP mode.",
                     "type": "string",
                     "example": "cndhjslacd90ascdbasyoucbdh"
                 },
@@ -23917,8 +24507,13 @@
                     "type": "boolean",
                     "example": true
                 },
+                "environment": {
+                    "description": "The environment where the agent has been deployed. When the agent has been deployed using the \"Add Ons\" in VMC UI or Api use \"aap\".",
+                    "type": "string",
+                    "example": "aap"
+                },
                 "dcId": {
-                    "description": "Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors",
+                    "description": "Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors. Not mandatory for AAP mode.",
                     "type": "string",
                     "example": "23959a1e-18bc-4f0c-ac49-b5aeb4b6eef4"
                 },
@@ -23927,7 +24522,7 @@
                     "type": "string"
                 },
                 "username": {
-                    "description": "vCenter user name for the specified SDDC.The specified user requires CloudAdmin credentials. The user does not require CloudGlobalAdmin credentials.",
+                    "description": "vCenter user name for the specified SDDC.The specified user requires CloudAdmin credentials. The user does not require CloudGlobalAdmin credentials. Not mandatory for AAP mode.",
                     "type": "string",
                     "example": "administrator@mycompany.com"
                 }
@@ -24047,7 +24642,11 @@
     },
     "swagger": "2.0",
     "info": {
-        "description": "A multi-cloud IaaS API for Cloud Automation Services",
+        "license": {
+            "name": "Apache License",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0"
+        },
+        "description": "IAAS API is a RESTful service, which allows users to execute provisioning related UI actions via an API. <br><br>This page describes the RESTful APIs for IAAS API. The APIs facilitate CRUD operations on the various resources and entities used throughout Cloud Assembly(Cloud Accounts, Cloud zones, Computes, Mappings, etc.) and allows operations on them (creating a cloud account, patching a machine, creating image progile, etc.).<br><br>The APIs that list collections of resources  also support OData like implementation. Below query params can be used across different IAAS API endpoints<br><br><ol><li>`$orderby` -  returns a result with the rows being sorted by the values of provided attribute.<br>`/iaas/api/cloud-accounts?$orderby=name%20desc`</li><br><li>`$top` - number of records you want to get.<br>`/iaas/api/cloud-accounts?$top=20`</li><br><li>`$skip` - number of records you want to skip.<br>`/iaas/api/cloud-accounts?$skip=10`</li><br><li>`$select` - select a subset of properties to include in the response.<br>`/iaas/api/cloud-accounts?$select=id`</li><br><li>`$filter` - filter the results by a specified predicate expression. Operators: eq, ne, and, or.<br>`/iaas/api/cloud-accounts?$filter=name%20eq%20'ABC*'` - name starts with 'ABC'<br>`/iaas/api/cloud-accounts?$filter=name%20eq%20'*ABC*'` - name contains 'ABC'<br>`/iaas/api/cloud-accounts?$filter=name%20eq%20'*ABC'` - name ends with 'ABC'<br><b>/iaas/api/projects</b> and <b>/iaas/api/deployments</b> support different format for partial match: <br>`/iaas/api/projects?$filter=startswith(name, 'ABC')` - name starts with 'ABC'<br>`/iaas/api/projects?$filter=substringof('ABC', name)` - name contains 'ABC'<br>`/iaas/api/projects?$filter=endswith(name, 'ABC')` - name ends with 'ABC'<br>`/iaas/api/cloud-accounts?$filter=name%20ne%20'example-cloud-account'%20or%20customProperties.isExternal%20eq%20'false'`</li><br><li>`$count` - flag which when specified, regardless of the assigned value, shows the total number of records. If the collection has a filter it shows the number of records matching the filter.<br>`/iaas/api/cloud-accounts?$count=true`<br></li></ol>",
         "title": "VMware Cloud Assembly IaaS API",
         "version": "2021-07-15"
     },
@@ -24114,6 +24713,9 @@
         },
         {
             "name": "Flavors"
+        },
+        {
+            "name": "Folders"
         },
         {
             "name": "Image Profile"

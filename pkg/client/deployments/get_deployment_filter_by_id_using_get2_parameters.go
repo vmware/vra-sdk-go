@@ -53,10 +53,12 @@ func NewGetDeploymentFilterByIDUsingGET2ParamsWithHTTPClient(client *http.Client
 	}
 }
 
-/* GetDeploymentFilterByIDUsingGET2Params contains all the parameters to send to the API endpoint
-   for the get deployment filter by Id using g e t 2 operation.
+/*
+GetDeploymentFilterByIDUsingGET2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get deployment filter by Id using g e t 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetDeploymentFilterByIDUsingGET2Params struct {
 
@@ -93,6 +95,12 @@ type GetDeploymentFilterByIDUsingGET2Params struct {
 	   Filter Id
 	*/
 	FilterID string
+
+	/* Projects.
+
+	   A comma-separated list. Results must be associated with one of these project IDs.
+	*/
+	Projects []string
 
 	/* Search.
 
@@ -208,6 +216,17 @@ func (o *GetDeploymentFilterByIDUsingGET2Params) SetFilterID(filterID string) {
 	o.FilterID = filterID
 }
 
+// WithProjects adds the projects to the get deployment filter by Id using g e t 2 params
+func (o *GetDeploymentFilterByIDUsingGET2Params) WithProjects(projects []string) *GetDeploymentFilterByIDUsingGET2Params {
+	o.SetProjects(projects)
+	return o
+}
+
+// SetProjects adds the projects to the get deployment filter by Id using g e t 2 params
+func (o *GetDeploymentFilterByIDUsingGET2Params) SetProjects(projects []string) {
+	o.Projects = projects
+}
+
 // WithSearch adds the search to the get deployment filter by Id using g e t 2 params
 func (o *GetDeploymentFilterByIDUsingGET2Params) WithSearch(search *string) *GetDeploymentFilterByIDUsingGET2Params {
 	o.SetSearch(search)
@@ -294,6 +313,17 @@ func (o *GetDeploymentFilterByIDUsingGET2Params) WriteToRequest(r runtime.Client
 		return err
 	}
 
+	if o.Projects != nil {
+
+		// binding items for projects
+		joinedProjects := o.bindParamProjects(reg)
+
+		// query array param projects
+		if err := r.SetQueryParam("projects", joinedProjects...); err != nil {
+			return err
+		}
+	}
+
 	if o.Search != nil {
 
 		// query param search
@@ -332,4 +362,21 @@ func (o *GetDeploymentFilterByIDUsingGET2Params) bindParamDollarOrderby(formats 
 	dollarOrderbyIS := swag.JoinByFormat(dollarOrderbyIC, "multi")
 
 	return dollarOrderbyIS
+}
+
+// bindParamGetDeploymentFilterByIDUsingGET2 binds the parameter projects
+func (o *GetDeploymentFilterByIDUsingGET2Params) bindParamProjects(formats strfmt.Registry) []string {
+	projectsIR := o.Projects
+
+	var projectsIC []string
+	for _, projectsIIR := range projectsIR { // explode []string
+
+		projectsIIV := projectsIIR // string as string
+		projectsIC = append(projectsIC, projectsIIV)
+	}
+
+	// items.CollectionFormat: "multi"
+	projectsIS := swag.JoinByFormat(projectsIC, "multi")
+
+	return projectsIS
 }

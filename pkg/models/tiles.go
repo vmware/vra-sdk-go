@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -71,7 +70,7 @@ func UnmarshalTilesSlice(reader io.Reader, consumer runtime.Consumer) ([]Tiles, 
 // UnmarshalTiles unmarshals polymorphic Tiles
 func UnmarshalTiles(reader io.Reader, consumer runtime.Consumer) (Tiles, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}

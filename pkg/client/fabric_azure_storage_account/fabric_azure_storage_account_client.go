@@ -38,9 +38,9 @@ type ClientService interface {
 }
 
 /*
-  GetFabricAzureStorageAccount gets fabric azure storage account
+GetFabricAzureStorageAccount gets fabric azure storage account
 
-  Get fabric Azure storage account with a given id
+Get fabric Azure storage account with a given id
 */
 func (a *Client) GetFabricAzureStorageAccount(params *GetFabricAzureStorageAccountParams, opts ...ClientOption) (*GetFabricAzureStorageAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -78,9 +78,9 @@ func (a *Client) GetFabricAzureStorageAccount(params *GetFabricAzureStorageAccou
 }
 
 /*
-  GetFabricAzureStorageAccounts gets fabric azure storage accounts
+GetFabricAzureStorageAccounts gets fabric azure storage accounts
 
-  Get all fabric Azure storage accounts.
+Get all fabric Azure storage accounts.
 */
 func (a *Client) GetFabricAzureStorageAccounts(params *GetFabricAzureStorageAccountsParams, opts ...ClientOption) (*GetFabricAzureStorageAccountsOK, error) {
 	// TODO: Validate the params before sending

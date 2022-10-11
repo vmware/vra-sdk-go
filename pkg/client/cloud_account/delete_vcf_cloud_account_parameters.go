@@ -52,10 +52,12 @@ func NewDeleteVcfCloudAccountParamsWithHTTPClient(client *http.Client) *DeleteVc
 	}
 }
 
-/* DeleteVcfCloudAccountParams contains all the parameters to send to the API endpoint
-   for the delete vcf cloud account operation.
+/*
+DeleteVcfCloudAccountParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete vcf cloud account operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteVcfCloudAccountParams struct {
 

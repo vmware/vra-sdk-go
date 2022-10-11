@@ -52,10 +52,12 @@ func NewDeleteFlavorProfileParamsWithHTTPClient(client *http.Client) *DeleteFlav
 	}
 }
 
-/* DeleteFlavorProfileParams contains all the parameters to send to the API endpoint
-   for the delete flavor profile operation.
+/*
+DeleteFlavorProfileParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete flavor profile operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteFlavorProfileParams struct {
 

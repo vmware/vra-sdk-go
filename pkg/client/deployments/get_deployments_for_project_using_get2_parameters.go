@@ -52,10 +52,12 @@ func NewGetDeploymentsForProjectUsingGET2ParamsWithHTTPClient(client *http.Clien
 	}
 }
 
-/* GetDeploymentsForProjectUsingGET2Params contains all the parameters to send to the API endpoint
-   for the get deployments for project using g e t 2 operation.
+/*
+GetDeploymentsForProjectUsingGET2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get deployments for project using g e t 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetDeploymentsForProjectUsingGET2Params struct {
 
@@ -68,10 +70,8 @@ type GetDeploymentsForProjectUsingGET2Params struct {
 	/* ProjectID.
 
 	   Project ID
-
-	   Format: uuid
 	*/
-	ProjectID strfmt.UUID
+	ProjectID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -138,13 +138,13 @@ func (o *GetDeploymentsForProjectUsingGET2Params) SetAPIVersion(aPIVersion *stri
 }
 
 // WithProjectID adds the projectID to the get deployments for project using g e t 2 params
-func (o *GetDeploymentsForProjectUsingGET2Params) WithProjectID(projectID strfmt.UUID) *GetDeploymentsForProjectUsingGET2Params {
+func (o *GetDeploymentsForProjectUsingGET2Params) WithProjectID(projectID string) *GetDeploymentsForProjectUsingGET2Params {
 	o.SetProjectID(projectID)
 	return o
 }
 
 // SetProjectID adds the projectId to the get deployments for project using g e t 2 params
-func (o *GetDeploymentsForProjectUsingGET2Params) SetProjectID(projectID strfmt.UUID) {
+func (o *GetDeploymentsForProjectUsingGET2Params) SetProjectID(projectID string) {
 	o.ProjectID = projectID
 }
 
@@ -174,7 +174,7 @@ func (o *GetDeploymentsForProjectUsingGET2Params) WriteToRequest(r runtime.Clien
 	}
 
 	// path param projectId
-	if err := r.SetPathParam("projectId", o.ProjectID.String()); err != nil {
+	if err := r.SetPathParam("projectId", o.ProjectID); err != nil {
 		return err
 	}
 

@@ -11,7 +11,7 @@ import (
 	"github.com/go-openapi/strfmt"
 
 	"github.com/vmware/vra-sdk-go/pkg/client/about"
-	"github.com/vmware/vra-sdk-go/pkg/client/applications"
+	"github.com/vmware/vra-sdk-go/pkg/client/about_the_service"
 	"github.com/vmware/vra-sdk-go/pkg/client/blueprint"
 	"github.com/vmware/vra-sdk-go/pkg/client/blueprint_requests"
 	"github.com/vmware/vra-sdk-go/pkg/client/blueprint_terraform_integrations"
@@ -48,9 +48,11 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/fabric_vsphere_storage_policies"
 	"github.com/vmware/vra-sdk-go/pkg/client/flavor_profile"
 	"github.com/vmware/vra-sdk-go/pkg/client/flavors"
+	"github.com/vmware/vra-sdk-go/pkg/client/folders"
 	"github.com/vmware/vra-sdk-go/pkg/client/icons"
 	"github.com/vmware/vra-sdk-go/pkg/client/image_profile"
 	"github.com/vmware/vra-sdk-go/pkg/client/images"
+	"github.com/vmware/vra-sdk-go/pkg/client/installers"
 	"github.com/vmware/vra-sdk-go/pkg/client/integration"
 	"github.com/vmware/vra-sdk-go/pkg/client/kubernetes_clusters"
 	"github.com/vmware/vra-sdk-go/pkg/client/kubernetes_zones"
@@ -58,14 +60,17 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/load_balancer"
 	"github.com/vmware/vra-sdk-go/pkg/client/location"
 	"github.com/vmware/vra-sdk-go/pkg/client/login"
-	"github.com/vmware/vra-sdk-go/pkg/client/marketplace"
-	"github.com/vmware/vra-sdk-go/pkg/client/marketplace_downloads"
 	"github.com/vmware/vra-sdk-go/pkg/client/namespaces"
 	"github.com/vmware/vra-sdk-go/pkg/client/network"
 	"github.com/vmware/vra-sdk-go/pkg/client/network_ip_range"
 	"github.com/vmware/vra-sdk-go/pkg/client/network_profile"
 	"github.com/vmware/vra-sdk-go/pkg/client/notification_scenario_configuration"
-	"github.com/vmware/vra-sdk-go/pkg/client/p_k_s_endpoints"
+	"github.com/vmware/vra-sdk-go/pkg/client/onboarding_blueprints"
+	"github.com/vmware/vra-sdk-go/pkg/client/onboarding_deployments"
+	"github.com/vmware/vra-sdk-go/pkg/client/onboarding_plan_execution"
+	"github.com/vmware/vra-sdk-go/pkg/client/onboarding_plans"
+	"github.com/vmware/vra-sdk-go/pkg/client/onboarding_resources"
+	"github.com/vmware/vra-sdk-go/pkg/client/pks_endpoints"
 	"github.com/vmware/vra-sdk-go/pkg/client/perspective_sync"
 	"github.com/vmware/vra-sdk-go/pkg/client/pipelines"
 	"github.com/vmware/vra-sdk-go/pkg/client/policies"
@@ -78,6 +83,7 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/property"
 	"github.com/vmware/vra-sdk-go/pkg/client/property_groups"
 	"github.com/vmware/vra-sdk-go/pkg/client/provider_requests"
+	"github.com/vmware/vra-sdk-go/pkg/client/query_for_discovered_machines"
 	"github.com/vmware/vra-sdk-go/pkg/client/request"
 	"github.com/vmware/vra-sdk-go/pkg/client/requests"
 	"github.com/vmware/vra-sdk-go/pkg/client/resource_actions"
@@ -89,15 +95,18 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/storage_profile"
 	"github.com/vmware/vra-sdk-go/pkg/client/supervisor_clusters"
 	"github.com/vmware/vra-sdk-go/pkg/client/supervisor_namespaces"
+	"github.com/vmware/vra-sdk-go/pkg/client/t_m_c_endpoints"
 	"github.com/vmware/vra-sdk-go/pkg/client/tags"
 	"github.com/vmware/vra-sdk-go/pkg/client/triggers"
+	"github.com/vmware/vra-sdk-go/pkg/client/unregister_machines"
+	"github.com/vmware/vra-sdk-go/pkg/client/user_events"
 	"github.com/vmware/vra-sdk-go/pkg/client/user_operations"
 	"github.com/vmware/vra-sdk-go/pkg/client/vcf"
-	"github.com/vmware/vra-sdk-go/pkg/client/v_sphere_endpoints"
+	"github.com/vmware/vra-sdk-go/pkg/client/vsphere_endpoints"
 	"github.com/vmware/vra-sdk-go/pkg/client/variables"
 )
 
-// Default vmware cloud assembly iaas  API HTTP client.
+// Default vmware cloud assembly blueprint API HTTP client.
 var Default = NewHTTPClient(nil)
 
 const (
@@ -112,14 +121,14 @@ const (
 // DefaultSchemes are the default schemes found in Meta (info) section of spec file
 var DefaultSchemes = []string{"https"}
 
-// NewHTTPClient creates a new vmware cloud assembly iaas  API HTTP client.
-func NewHTTPClient(formats strfmt.Registry) *MulticloudIaaS {
+// NewHTTPClient creates a new vmware cloud assembly blueprint API HTTP client.
+func NewHTTPClient(formats strfmt.Registry) *API {
 	return NewHTTPClientWithConfig(formats, nil)
 }
 
-// NewHTTPClientWithConfig creates a new vmware cloud assembly iaas  API HTTP client,
+// NewHTTPClientWithConfig creates a new vmware cloud assembly blueprint API HTTP client,
 // using a customizable transport config.
-func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *MulticloudIaaS {
+func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *API {
 	// ensure nullable parameters have default
 	if cfg == nil {
 		cfg = DefaultTransportConfig()
@@ -130,17 +139,17 @@ func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *Mul
 	return New(transport, formats)
 }
 
-// New creates a new vmware cloud assembly iaas  API client
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *MulticloudIaaS {
+// New creates a new vmware cloud assembly blueprint API client
+func New(transport runtime.ClientTransport, formats strfmt.Registry) *API {
 	// ensure nullable parameters have default
 	if formats == nil {
 		formats = strfmt.Default
 	}
 
-	cli := new(MulticloudIaaS)
+	cli := new(API)
 	cli.Transport = transport
 	cli.About = about.New(transport, formats)
-	cli.Applications = applications.New(transport, formats)
+	cli.AboutTheService = about_the_service.New(transport, formats)
 	cli.Blueprint = blueprint.New(transport, formats)
 	cli.BlueprintRequests = blueprint_requests.New(transport, formats)
 	cli.BlueprintTerraformIntegrations = blueprint_terraform_integrations.New(transport, formats)
@@ -177,9 +186,11 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 	cli.FabricvSphereStoragePolicies = fabric_vsphere_storage_policies.New(transport, formats)
 	cli.FlavorProfile = flavor_profile.New(transport, formats)
 	cli.Flavors = flavors.New(transport, formats)
+	cli.Folders = folders.New(transport, formats)
 	cli.Icons = icons.New(transport, formats)
 	cli.ImageProfile = image_profile.New(transport, formats)
 	cli.Images = images.New(transport, formats)
+	cli.Installers = installers.New(transport, formats)
 	cli.Integration = integration.New(transport, formats)
 	cli.KubernetesClusters = kubernetes_clusters.New(transport, formats)
 	cli.KubernetesZones = kubernetes_zones.New(transport, formats)
@@ -187,14 +198,17 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 	cli.LoadBalancer = load_balancer.New(transport, formats)
 	cli.Location = location.New(transport, formats)
 	cli.Login = login.New(transport, formats)
-	cli.Marketplace = marketplace.New(transport, formats)
-	cli.MarketplaceDownloads = marketplace_downloads.New(transport, formats)
 	cli.Namespaces = namespaces.New(transport, formats)
 	cli.Network = network.New(transport, formats)
 	cli.NetworkIPRange = network_ip_range.New(transport, formats)
 	cli.NetworkProfile = network_profile.New(transport, formats)
 	cli.NotificationScenarioConfiguration = notification_scenario_configuration.New(transport, formats)
-	cli.PksEndpoints = p_k_s_endpoints.New(transport, formats)
+	cli.OnboardingBlueprints = onboarding_blueprints.New(transport, formats)
+	cli.OnboardingDeployments = onboarding_deployments.New(transport, formats)
+	cli.OnboardingPlanExecution = onboarding_plan_execution.New(transport, formats)
+	cli.OnboardingPlans = onboarding_plans.New(transport, formats)
+	cli.OnboardingResources = onboarding_resources.New(transport, formats)
+	cli.PksEndpoints = pks_endpoints.New(transport, formats)
 	cli.PerspectiveSync = perspective_sync.New(transport, formats)
 	cli.Pipelines = pipelines.New(transport, formats)
 	cli.Policies = policies.New(transport, formats)
@@ -207,6 +221,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 	cli.Property = property.New(transport, formats)
 	cli.PropertyGroups = property_groups.New(transport, formats)
 	cli.ProviderRequests = provider_requests.New(transport, formats)
+	cli.QueryForDiscoveredMachines = query_for_discovered_machines.New(transport, formats)
 	cli.Request = request.New(transport, formats)
 	cli.Requests = requests.New(transport, formats)
 	cli.ResourceActions = resource_actions.New(transport, formats)
@@ -218,11 +233,14 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Multicloud
 	cli.StorageProfile = storage_profile.New(transport, formats)
 	cli.SupervisorClusters = supervisor_clusters.New(transport, formats)
 	cli.SupervisorNamespaces = supervisor_namespaces.New(transport, formats)
+	cli.TmcEndpoints = t_m_c_endpoints.New(transport, formats)
 	cli.Tags = tags.New(transport, formats)
 	cli.Triggers = triggers.New(transport, formats)
+	cli.UnregisterMachines = unregister_machines.New(transport, formats)
+	cli.UserEvents = user_events.New(transport, formats)
 	cli.UserOperations = user_operations.New(transport, formats)
 	cli.Vcf = vcf.New(transport, formats)
-	cli.VSphereEndpoints = v_sphere_endpoints.New(transport, formats)
+	cli.VSphereEndpoints = vsphere_endpoints.New(transport, formats)
 	cli.Variables = variables.New(transport, formats)
 	return cli
 }
@@ -266,11 +284,11 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 	return cfg
 }
 
-// MulticloudIaaS is a client for vmware cloud assembly iaas  API
-type MulticloudIaaS struct {
+// API is a client for vmware cloud assembly blueprint API
+type API struct {
 	About about.ClientService
 
-	Applications applications.ClientService
+	AboutTheService about_the_service.ClientService
 
 	Blueprint blueprint.ClientService
 
@@ -344,11 +362,15 @@ type MulticloudIaaS struct {
 
 	Flavors flavors.ClientService
 
+	Folders folders.ClientService
+
 	Icons icons.ClientService
 
 	ImageProfile image_profile.ClientService
 
 	Images images.ClientService
+
+	Installers installers.ClientService
 
 	Integration integration.ClientService
 
@@ -364,10 +386,6 @@ type MulticloudIaaS struct {
 
 	Login login.ClientService
 
-	Marketplace marketplace.ClientService
-
-	MarketplaceDownloads marketplace_downloads.ClientService
-
 	Namespaces namespaces.ClientService
 
 	Network network.ClientService
@@ -378,7 +396,17 @@ type MulticloudIaaS struct {
 
 	NotificationScenarioConfiguration notification_scenario_configuration.ClientService
 
-	PksEndpoints p_k_s_endpoints.ClientService
+	OnboardingBlueprints onboarding_blueprints.ClientService
+
+	OnboardingDeployments onboarding_deployments.ClientService
+
+	OnboardingPlanExecution onboarding_plan_execution.ClientService
+
+	OnboardingPlans onboarding_plans.ClientService
+
+	OnboardingResources onboarding_resources.ClientService
+
+	PksEndpoints pks_endpoints.ClientService
 
 	PerspectiveSync perspective_sync.ClientService
 
@@ -404,6 +432,8 @@ type MulticloudIaaS struct {
 
 	ProviderRequests provider_requests.ClientService
 
+	QueryForDiscoveredMachines query_for_discovered_machines.ClientService
+
 	Request request.ClientService
 
 	Requests requests.ClientService
@@ -426,15 +456,21 @@ type MulticloudIaaS struct {
 
 	SupervisorNamespaces supervisor_namespaces.ClientService
 
+	TmcEndpoints t_m_c_endpoints.ClientService
+
 	Tags tags.ClientService
 
 	Triggers triggers.ClientService
+
+	UnregisterMachines unregister_machines.ClientService
+
+	UserEvents user_events.ClientService
 
 	UserOperations user_operations.ClientService
 
 	Vcf vcf.ClientService
 
-	VSphereEndpoints v_sphere_endpoints.ClientService
+	VSphereEndpoints vsphere_endpoints.ClientService
 
 	Variables variables.ClientService
 
@@ -442,10 +478,10 @@ type MulticloudIaaS struct {
 }
 
 // SetTransport changes the transport on the client and all its subresources
-func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
+func (c *API) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
 	c.About.SetTransport(transport)
-	c.Applications.SetTransport(transport)
+	c.AboutTheService.SetTransport(transport)
 	c.Blueprint.SetTransport(transport)
 	c.BlueprintRequests.SetTransport(transport)
 	c.BlueprintTerraformIntegrations.SetTransport(transport)
@@ -482,9 +518,11 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.FabricvSphereStoragePolicies.SetTransport(transport)
 	c.FlavorProfile.SetTransport(transport)
 	c.Flavors.SetTransport(transport)
+	c.Folders.SetTransport(transport)
 	c.Icons.SetTransport(transport)
 	c.ImageProfile.SetTransport(transport)
 	c.Images.SetTransport(transport)
+	c.Installers.SetTransport(transport)
 	c.Integration.SetTransport(transport)
 	c.KubernetesClusters.SetTransport(transport)
 	c.KubernetesZones.SetTransport(transport)
@@ -492,13 +530,16 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.LoadBalancer.SetTransport(transport)
 	c.Location.SetTransport(transport)
 	c.Login.SetTransport(transport)
-	c.Marketplace.SetTransport(transport)
-	c.MarketplaceDownloads.SetTransport(transport)
 	c.Namespaces.SetTransport(transport)
 	c.Network.SetTransport(transport)
 	c.NetworkIPRange.SetTransport(transport)
 	c.NetworkProfile.SetTransport(transport)
 	c.NotificationScenarioConfiguration.SetTransport(transport)
+	c.OnboardingBlueprints.SetTransport(transport)
+	c.OnboardingDeployments.SetTransport(transport)
+	c.OnboardingPlanExecution.SetTransport(transport)
+	c.OnboardingPlans.SetTransport(transport)
+	c.OnboardingResources.SetTransport(transport)
 	c.PksEndpoints.SetTransport(transport)
 	c.PerspectiveSync.SetTransport(transport)
 	c.Pipelines.SetTransport(transport)
@@ -512,6 +553,7 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.Property.SetTransport(transport)
 	c.PropertyGroups.SetTransport(transport)
 	c.ProviderRequests.SetTransport(transport)
+	c.QueryForDiscoveredMachines.SetTransport(transport)
 	c.Request.SetTransport(transport)
 	c.Requests.SetTransport(transport)
 	c.ResourceActions.SetTransport(transport)
@@ -523,8 +565,11 @@ func (c *MulticloudIaaS) SetTransport(transport runtime.ClientTransport) {
 	c.StorageProfile.SetTransport(transport)
 	c.SupervisorClusters.SetTransport(transport)
 	c.SupervisorNamespaces.SetTransport(transport)
+	c.TmcEndpoints.SetTransport(transport)
 	c.Tags.SetTransport(transport)
 	c.Triggers.SetTransport(transport)
+	c.UnregisterMachines.SetTransport(transport)
+	c.UserEvents.SetTransport(transport)
 	c.UserOperations.SetTransport(transport)
 	c.Vcf.SetTransport(transport)
 	c.VSphereEndpoints.SetTransport(transport)

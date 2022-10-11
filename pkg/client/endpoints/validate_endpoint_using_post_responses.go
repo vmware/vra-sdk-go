@@ -63,7 +63,8 @@ func NewValidateEndpointUsingPOSTOK() *ValidateEndpointUsingPOSTOK {
 	return &ValidateEndpointUsingPOSTOK{}
 }
 
-/* ValidateEndpointUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+ValidateEndpointUsingPOSTOK describes a response with status code 200, with default header values.
 
 'Success' with endpoint validations
 */
@@ -71,9 +72,39 @@ type ValidateEndpointUsingPOSTOK struct {
 	Payload *models.TileExecutorResponse
 }
 
+// IsSuccess returns true when this validate endpoint using p o s t o k response has a 2xx status code
+func (o *ValidateEndpointUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this validate endpoint using p o s t o k response has a 3xx status code
+func (o *ValidateEndpointUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this validate endpoint using p o s t o k response has a 4xx status code
+func (o *ValidateEndpointUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this validate endpoint using p o s t o k response has a 5xx status code
+func (o *ValidateEndpointUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this validate endpoint using p o s t o k response a status code equal to that given
+func (o *ValidateEndpointUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ValidateEndpointUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/endpoint-validation][%d] validateEndpointUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *ValidateEndpointUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /codestream/api/endpoint-validation][%d] validateEndpointUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *ValidateEndpointUsingPOSTOK) GetPayload() *models.TileExecutorResponse {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewValidateEndpointUsingPOSTUnauthorized() *ValidateEndpointUsingPOSTUnauth
 	return &ValidateEndpointUsingPOSTUnauthorized{}
 }
 
-/* ValidateEndpointUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+ValidateEndpointUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type ValidateEndpointUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this validate endpoint using p o s t unauthorized response has a 2xx status code
+func (o *ValidateEndpointUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this validate endpoint using p o s t unauthorized response has a 3xx status code
+func (o *ValidateEndpointUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this validate endpoint using p o s t unauthorized response has a 4xx status code
+func (o *ValidateEndpointUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this validate endpoint using p o s t unauthorized response has a 5xx status code
+func (o *ValidateEndpointUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this validate endpoint using p o s t unauthorized response a status code equal to that given
+func (o *ValidateEndpointUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ValidateEndpointUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/endpoint-validation][%d] validateEndpointUsingPOSTUnauthorized ", 401)
+}
+
+func (o *ValidateEndpointUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /codestream/api/endpoint-validation][%d] validateEndpointUsingPOSTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewValidateEndpointUsingPOSTForbidden() *ValidateEndpointUsingPOSTForbidden
 	return &ValidateEndpointUsingPOSTForbidden{}
 }
 
-/* ValidateEndpointUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+ValidateEndpointUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type ValidateEndpointUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this validate endpoint using p o s t forbidden response has a 2xx status code
+func (o *ValidateEndpointUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this validate endpoint using p o s t forbidden response has a 3xx status code
+func (o *ValidateEndpointUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this validate endpoint using p o s t forbidden response has a 4xx status code
+func (o *ValidateEndpointUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this validate endpoint using p o s t forbidden response has a 5xx status code
+func (o *ValidateEndpointUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this validate endpoint using p o s t forbidden response a status code equal to that given
+func (o *ValidateEndpointUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ValidateEndpointUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/endpoint-validation][%d] validateEndpointUsingPOSTForbidden ", 403)
+}
+
+func (o *ValidateEndpointUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /codestream/api/endpoint-validation][%d] validateEndpointUsingPOSTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewValidateEndpointUsingPOSTNotFound() *ValidateEndpointUsingPOSTNotFound {
 	return &ValidateEndpointUsingPOSTNotFound{}
 }
 
-/* ValidateEndpointUsingPOSTNotFound describes a response with status code 404, with default header values.
+/*
+ValidateEndpointUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type ValidateEndpointUsingPOSTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this validate endpoint using p o s t not found response has a 2xx status code
+func (o *ValidateEndpointUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this validate endpoint using p o s t not found response has a 3xx status code
+func (o *ValidateEndpointUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this validate endpoint using p o s t not found response has a 4xx status code
+func (o *ValidateEndpointUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this validate endpoint using p o s t not found response has a 5xx status code
+func (o *ValidateEndpointUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this validate endpoint using p o s t not found response a status code equal to that given
+func (o *ValidateEndpointUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ValidateEndpointUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/endpoint-validation][%d] validateEndpointUsingPOSTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ValidateEndpointUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /codestream/api/endpoint-validation][%d] validateEndpointUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ValidateEndpointUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewValidateEndpointUsingPOSTInternalServerError() *ValidateEndpointUsingPOS
 	return &ValidateEndpointUsingPOSTInternalServerError{}
 }
 
-/* ValidateEndpointUsingPOSTInternalServerError describes a response with status code 500, with default header values.
+/*
+ValidateEndpointUsingPOSTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ValidateEndpointUsingPOSTInternalServerError struct {
 }
 
+// IsSuccess returns true when this validate endpoint using p o s t internal server error response has a 2xx status code
+func (o *ValidateEndpointUsingPOSTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this validate endpoint using p o s t internal server error response has a 3xx status code
+func (o *ValidateEndpointUsingPOSTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this validate endpoint using p o s t internal server error response has a 4xx status code
+func (o *ValidateEndpointUsingPOSTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this validate endpoint using p o s t internal server error response has a 5xx status code
+func (o *ValidateEndpointUsingPOSTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this validate endpoint using p o s t internal server error response a status code equal to that given
+func (o *ValidateEndpointUsingPOSTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ValidateEndpointUsingPOSTInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/endpoint-validation][%d] validateEndpointUsingPOSTInternalServerError ", 500)
+}
+
+func (o *ValidateEndpointUsingPOSTInternalServerError) String() string {
 	return fmt.Sprintf("[POST /codestream/api/endpoint-validation][%d] validateEndpointUsingPOSTInternalServerError ", 500)
 }
 

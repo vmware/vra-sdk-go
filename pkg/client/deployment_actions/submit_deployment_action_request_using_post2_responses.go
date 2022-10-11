@@ -63,7 +63,8 @@ func NewSubmitDeploymentActionRequestUsingPOST2OK() *SubmitDeploymentActionReque
 	return &SubmitDeploymentActionRequestUsingPOST2OK{}
 }
 
-/* SubmitDeploymentActionRequestUsingPOST2OK describes a response with status code 200, with default header values.
+/*
+SubmitDeploymentActionRequestUsingPOST2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type SubmitDeploymentActionRequestUsingPOST2OK struct {
 	Payload *models.Request
 }
 
+// IsSuccess returns true when this submit deployment action request using p o s t2 o k response has a 2xx status code
+func (o *SubmitDeploymentActionRequestUsingPOST2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this submit deployment action request using p o s t2 o k response has a 3xx status code
+func (o *SubmitDeploymentActionRequestUsingPOST2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit deployment action request using p o s t2 o k response has a 4xx status code
+func (o *SubmitDeploymentActionRequestUsingPOST2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this submit deployment action request using p o s t2 o k response has a 5xx status code
+func (o *SubmitDeploymentActionRequestUsingPOST2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit deployment action request using p o s t2 o k response a status code equal to that given
+func (o *SubmitDeploymentActionRequestUsingPOST2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SubmitDeploymentActionRequestUsingPOST2OK) Error() string {
 	return fmt.Sprintf("[POST /deployment/api/deployments/{deploymentId}/requests][%d] submitDeploymentActionRequestUsingPOST2OK  %+v", 200, o.Payload)
 }
+
+func (o *SubmitDeploymentActionRequestUsingPOST2OK) String() string {
+	return fmt.Sprintf("[POST /deployment/api/deployments/{deploymentId}/requests][%d] submitDeploymentActionRequestUsingPOST2OK  %+v", 200, o.Payload)
+}
+
 func (o *SubmitDeploymentActionRequestUsingPOST2OK) GetPayload() *models.Request {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewSubmitDeploymentActionRequestUsingPOST2Unauthorized() *SubmitDeploymentA
 	return &SubmitDeploymentActionRequestUsingPOST2Unauthorized{}
 }
 
-/* SubmitDeploymentActionRequestUsingPOST2Unauthorized describes a response with status code 401, with default header values.
+/*
+SubmitDeploymentActionRequestUsingPOST2Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type SubmitDeploymentActionRequestUsingPOST2Unauthorized struct {
 }
 
+// IsSuccess returns true when this submit deployment action request using p o s t2 unauthorized response has a 2xx status code
+func (o *SubmitDeploymentActionRequestUsingPOST2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit deployment action request using p o s t2 unauthorized response has a 3xx status code
+func (o *SubmitDeploymentActionRequestUsingPOST2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit deployment action request using p o s t2 unauthorized response has a 4xx status code
+func (o *SubmitDeploymentActionRequestUsingPOST2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit deployment action request using p o s t2 unauthorized response has a 5xx status code
+func (o *SubmitDeploymentActionRequestUsingPOST2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit deployment action request using p o s t2 unauthorized response a status code equal to that given
+func (o *SubmitDeploymentActionRequestUsingPOST2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SubmitDeploymentActionRequestUsingPOST2Unauthorized) Error() string {
+	return fmt.Sprintf("[POST /deployment/api/deployments/{deploymentId}/requests][%d] submitDeploymentActionRequestUsingPOST2Unauthorized ", 401)
+}
+
+func (o *SubmitDeploymentActionRequestUsingPOST2Unauthorized) String() string {
 	return fmt.Sprintf("[POST /deployment/api/deployments/{deploymentId}/requests][%d] submitDeploymentActionRequestUsingPOST2Unauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewSubmitDeploymentActionRequestUsingPOST2Forbidden() *SubmitDeploymentActi
 	return &SubmitDeploymentActionRequestUsingPOST2Forbidden{}
 }
 
-/* SubmitDeploymentActionRequestUsingPOST2Forbidden describes a response with status code 403, with default header values.
+/*
+SubmitDeploymentActionRequestUsingPOST2Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type SubmitDeploymentActionRequestUsingPOST2Forbidden struct {
 }
 
+// IsSuccess returns true when this submit deployment action request using p o s t2 forbidden response has a 2xx status code
+func (o *SubmitDeploymentActionRequestUsingPOST2Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit deployment action request using p o s t2 forbidden response has a 3xx status code
+func (o *SubmitDeploymentActionRequestUsingPOST2Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit deployment action request using p o s t2 forbidden response has a 4xx status code
+func (o *SubmitDeploymentActionRequestUsingPOST2Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit deployment action request using p o s t2 forbidden response has a 5xx status code
+func (o *SubmitDeploymentActionRequestUsingPOST2Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit deployment action request using p o s t2 forbidden response a status code equal to that given
+func (o *SubmitDeploymentActionRequestUsingPOST2Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *SubmitDeploymentActionRequestUsingPOST2Forbidden) Error() string {
+	return fmt.Sprintf("[POST /deployment/api/deployments/{deploymentId}/requests][%d] submitDeploymentActionRequestUsingPOST2Forbidden ", 403)
+}
+
+func (o *SubmitDeploymentActionRequestUsingPOST2Forbidden) String() string {
 	return fmt.Sprintf("[POST /deployment/api/deployments/{deploymentId}/requests][%d] submitDeploymentActionRequestUsingPOST2Forbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewSubmitDeploymentActionRequestUsingPOST2NotFound() *SubmitDeploymentActio
 	return &SubmitDeploymentActionRequestUsingPOST2NotFound{}
 }
 
-/* SubmitDeploymentActionRequestUsingPOST2NotFound describes a response with status code 404, with default header values.
+/*
+SubmitDeploymentActionRequestUsingPOST2NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type SubmitDeploymentActionRequestUsingPOST2NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this submit deployment action request using p o s t2 not found response has a 2xx status code
+func (o *SubmitDeploymentActionRequestUsingPOST2NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit deployment action request using p o s t2 not found response has a 3xx status code
+func (o *SubmitDeploymentActionRequestUsingPOST2NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit deployment action request using p o s t2 not found response has a 4xx status code
+func (o *SubmitDeploymentActionRequestUsingPOST2NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit deployment action request using p o s t2 not found response has a 5xx status code
+func (o *SubmitDeploymentActionRequestUsingPOST2NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit deployment action request using p o s t2 not found response a status code equal to that given
+func (o *SubmitDeploymentActionRequestUsingPOST2NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *SubmitDeploymentActionRequestUsingPOST2NotFound) Error() string {
 	return fmt.Sprintf("[POST /deployment/api/deployments/{deploymentId}/requests][%d] submitDeploymentActionRequestUsingPOST2NotFound  %+v", 404, o.Payload)
 }
+
+func (o *SubmitDeploymentActionRequestUsingPOST2NotFound) String() string {
+	return fmt.Sprintf("[POST /deployment/api/deployments/{deploymentId}/requests][%d] submitDeploymentActionRequestUsingPOST2NotFound  %+v", 404, o.Payload)
+}
+
 func (o *SubmitDeploymentActionRequestUsingPOST2NotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewSubmitDeploymentActionRequestUsingPOST2Conflict() *SubmitDeploymentActio
 	return &SubmitDeploymentActionRequestUsingPOST2Conflict{}
 }
 
-/* SubmitDeploymentActionRequestUsingPOST2Conflict describes a response with status code 409, with default header values.
+/*
+SubmitDeploymentActionRequestUsingPOST2Conflict describes a response with status code 409, with default header values.
 
 Conflict
 */
 type SubmitDeploymentActionRequestUsingPOST2Conflict struct {
 }
 
+// IsSuccess returns true when this submit deployment action request using p o s t2 conflict response has a 2xx status code
+func (o *SubmitDeploymentActionRequestUsingPOST2Conflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this submit deployment action request using p o s t2 conflict response has a 3xx status code
+func (o *SubmitDeploymentActionRequestUsingPOST2Conflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this submit deployment action request using p o s t2 conflict response has a 4xx status code
+func (o *SubmitDeploymentActionRequestUsingPOST2Conflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this submit deployment action request using p o s t2 conflict response has a 5xx status code
+func (o *SubmitDeploymentActionRequestUsingPOST2Conflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this submit deployment action request using p o s t2 conflict response a status code equal to that given
+func (o *SubmitDeploymentActionRequestUsingPOST2Conflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *SubmitDeploymentActionRequestUsingPOST2Conflict) Error() string {
+	return fmt.Sprintf("[POST /deployment/api/deployments/{deploymentId}/requests][%d] submitDeploymentActionRequestUsingPOST2Conflict ", 409)
+}
+
+func (o *SubmitDeploymentActionRequestUsingPOST2Conflict) String() string {
 	return fmt.Sprintf("[POST /deployment/api/deployments/{deploymentId}/requests][%d] submitDeploymentActionRequestUsingPOST2Conflict ", 409)
 }
 

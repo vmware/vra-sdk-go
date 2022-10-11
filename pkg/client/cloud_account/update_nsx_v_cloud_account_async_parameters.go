@@ -54,10 +54,12 @@ func NewUpdateNsxVCloudAccountAsyncParamsWithHTTPClient(client *http.Client) *Up
 	}
 }
 
-/* UpdateNsxVCloudAccountAsyncParams contains all the parameters to send to the API endpoint
-   for the update nsx v cloud account async operation.
+/*
+UpdateNsxVCloudAccountAsyncParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update nsx v cloud account async operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateNsxVCloudAccountAsyncParams struct {
 

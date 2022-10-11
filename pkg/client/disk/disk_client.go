@@ -64,9 +64,9 @@ type ClientService interface {
 }
 
 /*
-  PromoteDisk promotes operation on disk
+PromoteDisk promotes operation on disk
 
-  Second day promote operation on disk. Applicable for vSphere Block Devices only
+Second day promote operation on disk. Applicable for vSphere Block Devices only
 */
 func (a *Client) PromoteDisk(params *PromoteDiskParams, opts ...ClientOption) (*PromoteDiskAccepted, error) {
 	// TODO: Validate the params before sending
@@ -104,9 +104,9 @@ func (a *Client) PromoteDisk(params *PromoteDiskParams, opts ...ClientOption) (*
 }
 
 /*
-  AttachMachineDisk attaches machine disk
+AttachMachineDisk attaches machine disk
 
-  Attach a disk to a machine.
+Attach a disk to a machine.
 */
 func (a *Client) AttachMachineDisk(params *AttachMachineDiskParams, opts ...ClientOption) (*AttachMachineDiskOK, error) {
 	// TODO: Validate the params before sending
@@ -144,14 +144,14 @@ func (a *Client) AttachMachineDisk(params *AttachMachineDiskParams, opts ...Clie
 }
 
 /*
-  CreateBlockDevice creates block device
+CreateBlockDevice creates block device
 
-  Following disk custom properties can be passed while creating a block device:
+Following disk custom properties can be passed while creating a block device:
 
-    1. dataStore: Defines name of the datastore in which the disk has to be provisioned.
-    2. storagePolicy: Defines name of the storage policy in which the disk has to be provisioned. If name of the datastore is specified in the custom properties then, datastore takes precedence.
-    3. provisioningType: Defines the type of provisioning. For eg. thick/thin.
-    4. resourceGroupName: Defines the Azure resource group name where the disk needs to be provisioned.
+ 1. dataStore: Defines name of the datastore in which the disk has to be provisioned.
+ 2. storagePolicy: Defines name of the storage policy in which the disk has to be provisioned. If name of the datastore is specified in the custom properties then, datastore takes precedence.
+ 3. provisioningType: Defines the type of provisioning. For eg. thick/thin.
+ 4. resourceGroupName: Defines the Azure resource group name where the disk needs to be provisioned.
 */
 func (a *Client) CreateBlockDevice(params *CreateBlockDeviceParams, opts ...ClientOption) (*CreateBlockDeviceAccepted, error) {
 	// TODO: Validate the params before sending
@@ -189,9 +189,9 @@ func (a *Client) CreateBlockDevice(params *CreateBlockDeviceParams, opts ...Clie
 }
 
 /*
-  CreateBlockDeviceSnapshot creates snapshot operation for block device
+CreateBlockDeviceSnapshot creates snapshot operation for block device
 
-  Second day create snapshot operation for Block device
+Second day create snapshot operation for Block device
 */
 func (a *Client) CreateBlockDeviceSnapshot(params *CreateBlockDeviceSnapshotParams, opts ...ClientOption) (*CreateBlockDeviceSnapshotAccepted, *CreateBlockDeviceSnapshotNoContent, error) {
 	// TODO: Validate the params before sending
@@ -230,9 +230,10 @@ func (a *Client) CreateBlockDeviceSnapshot(params *CreateBlockDeviceSnapshotPara
 }
 
 /*
-  DeleteBlockDevice deletes a block device
+	DeleteBlockDevice deletes a block device
 
-  Delete a BlockDevice
+	Delete a BlockDevice
+
 1. A block device cannot be deleted when attached to a machine.
 2. A block device with persistent property set to 'false' is deleted.
 3. A block device with persistent property set to 'true' needs an additional parameter 'purge' to be set to true, for deletion.
@@ -274,9 +275,9 @@ func (a *Client) DeleteBlockDevice(params *DeleteBlockDeviceParams, opts ...Clie
 }
 
 /*
-  DeleteBlockDeviceSnapshot deletes snapshot operation for block device
+DeleteBlockDeviceSnapshot deletes snapshot operation for block device
 
-  Second day delete snapshot operation for Block device
+Second day delete snapshot operation for Block device
 */
 func (a *Client) DeleteBlockDeviceSnapshot(params *DeleteBlockDeviceSnapshotParams, opts ...ClientOption) (*DeleteBlockDeviceSnapshotAccepted, *DeleteBlockDeviceSnapshotNoContent, error) {
 	// TODO: Validate the params before sending
@@ -315,9 +316,9 @@ func (a *Client) DeleteBlockDeviceSnapshot(params *DeleteBlockDeviceSnapshotPara
 }
 
 /*
-  DeleteMachineDisk deletes machine disk
+DeleteMachineDisk deletes machine disk
 
-  Remove a disk from a given machine.
+Remove a disk from a given machine.
 */
 func (a *Client) DeleteMachineDisk(params *DeleteMachineDiskParams, opts ...ClientOption) (*DeleteMachineDiskAccepted, *DeleteMachineDiskNoContent, error) {
 	// TODO: Validate the params before sending
@@ -356,9 +357,9 @@ func (a *Client) DeleteMachineDisk(params *DeleteMachineDiskParams, opts ...Clie
 }
 
 /*
-  GetBlockDevice gets block device
+GetBlockDevice gets block device
 
-  Get a single BlockDevice
+Get a single BlockDevice
 */
 func (a *Client) GetBlockDevice(params *GetBlockDeviceParams, opts ...ClientOption) (*GetBlockDeviceOK, error) {
 	// TODO: Validate the params before sending
@@ -396,9 +397,9 @@ func (a *Client) GetBlockDevice(params *GetBlockDeviceParams, opts ...ClientOpti
 }
 
 /*
-  GetBlockDevices gets block devices
+GetBlockDevices gets block devices
 
-  Get all BlockDevices
+Get all BlockDevices
 */
 func (a *Client) GetBlockDevices(params *GetBlockDevicesParams, opts ...ClientOption) (*GetBlockDevicesOK, error) {
 	// TODO: Validate the params before sending
@@ -436,9 +437,9 @@ func (a *Client) GetBlockDevices(params *GetBlockDevicesParams, opts ...ClientOp
 }
 
 /*
-  GetDiskSnapshot gets disk snapshot
+GetDiskSnapshot gets disk snapshot
 
-  Get snapshot with a given id for specific disk
+Get snapshot with a given id for specific disk
 */
 func (a *Client) GetDiskSnapshot(params *GetDiskSnapshotParams, opts ...ClientOption) (*GetDiskSnapshotOK, error) {
 	// TODO: Validate the params before sending
@@ -476,9 +477,9 @@ func (a *Client) GetDiskSnapshot(params *GetDiskSnapshotParams, opts ...ClientOp
 }
 
 /*
-  GetDiskSnapshots gets disk snapshots information
+GetDiskSnapshots gets disk snapshots information
 
-  Get disk snapshots information
+Get disk snapshots information
 */
 func (a *Client) GetDiskSnapshots(params *GetDiskSnapshotsParams, opts ...ClientOption) (*GetDiskSnapshotsOK, error) {
 	// TODO: Validate the params before sending
@@ -516,9 +517,9 @@ func (a *Client) GetDiskSnapshots(params *GetDiskSnapshotsParams, opts ...Client
 }
 
 /*
-  GetMachineDisk gets machine disk
+GetMachineDisk gets machine disk
 
-  Get disk with a given id for specific machine
+Get disk with a given id for specific machine
 */
 func (a *Client) GetMachineDisk(params *GetMachineDiskParams, opts ...ClientOption) (*GetMachineDiskOK, error) {
 	// TODO: Validate the params before sending
@@ -556,9 +557,9 @@ func (a *Client) GetMachineDisk(params *GetMachineDiskParams, opts ...ClientOpti
 }
 
 /*
-  GetMachineDisks gets machine disks
+GetMachineDisks gets machine disks
 
-  Get all machine disks
+Get all machine disks
 */
 func (a *Client) GetMachineDisks(params *GetMachineDisksParams, opts ...ClientOption) (*GetMachineDisksOK, error) {
 	// TODO: Validate the params before sending
@@ -596,9 +597,9 @@ func (a *Client) GetMachineDisks(params *GetMachineDisksParams, opts ...ClientOp
 }
 
 /*
-  ResizeBlockDevice resizes block device
+ResizeBlockDevice resizes block device
 
-  Resize operation on block device.
+Resize operation on block device.
 */
 func (a *Client) ResizeBlockDevice(params *ResizeBlockDeviceParams, opts ...ClientOption) (*ResizeBlockDeviceAccepted, *ResizeBlockDeviceNoContent, error) {
 	// TODO: Validate the params before sending
@@ -637,9 +638,9 @@ func (a *Client) ResizeBlockDevice(params *ResizeBlockDeviceParams, opts ...Clie
 }
 
 /*
-  RevertDiskSnapshot reverts snapshot operation for block device
+RevertDiskSnapshot reverts snapshot operation for block device
 
-  Second day revert snapshot operation for Block device
+Second day revert snapshot operation for Block device
 */
 func (a *Client) RevertDiskSnapshot(params *RevertDiskSnapshotParams, opts ...ClientOption) (*RevertDiskSnapshotAccepted, error) {
 	// TODO: Validate the params before sending

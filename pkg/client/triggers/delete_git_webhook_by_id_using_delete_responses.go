@@ -63,7 +63,8 @@ func NewDeleteGitWebhookByIDUsingDELETEOK() *DeleteGitWebhookByIDUsingDELETEOK {
 	return &DeleteGitWebhookByIDUsingDELETEOK{}
 }
 
-/* DeleteGitWebhookByIDUsingDELETEOK describes a response with status code 200, with default header values.
+/*
+DeleteGitWebhookByIDUsingDELETEOK describes a response with status code 200, with default header values.
 
 'Success' with Git Webhook Delete
 */
@@ -71,9 +72,39 @@ type DeleteGitWebhookByIDUsingDELETEOK struct {
 	Payload models.GitWebhook
 }
 
+// IsSuccess returns true when this delete git webhook by Id using d e l e t e o k response has a 2xx status code
+func (o *DeleteGitWebhookByIDUsingDELETEOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete git webhook by Id using d e l e t e o k response has a 3xx status code
+func (o *DeleteGitWebhookByIDUsingDELETEOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete git webhook by Id using d e l e t e o k response has a 4xx status code
+func (o *DeleteGitWebhookByIDUsingDELETEOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete git webhook by Id using d e l e t e o k response has a 5xx status code
+func (o *DeleteGitWebhookByIDUsingDELETEOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete git webhook by Id using d e l e t e o k response a status code equal to that given
+func (o *DeleteGitWebhookByIDUsingDELETEOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteGitWebhookByIDUsingDELETEOK) Error() string {
 	return fmt.Sprintf("[DELETE /codestream/api/git-webhooks/{id}][%d] deleteGitWebhookByIdUsingDELETEOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteGitWebhookByIDUsingDELETEOK) String() string {
+	return fmt.Sprintf("[DELETE /codestream/api/git-webhooks/{id}][%d] deleteGitWebhookByIdUsingDELETEOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteGitWebhookByIDUsingDELETEOK) GetPayload() models.GitWebhook {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewDeleteGitWebhookByIDUsingDELETEUnauthorized() *DeleteGitWebhookByIDUsing
 	return &DeleteGitWebhookByIDUsingDELETEUnauthorized{}
 }
 
-/* DeleteGitWebhookByIDUsingDELETEUnauthorized describes a response with status code 401, with default header values.
+/*
+DeleteGitWebhookByIDUsingDELETEUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type DeleteGitWebhookByIDUsingDELETEUnauthorized struct {
 }
 
+// IsSuccess returns true when this delete git webhook by Id using d e l e t e unauthorized response has a 2xx status code
+func (o *DeleteGitWebhookByIDUsingDELETEUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete git webhook by Id using d e l e t e unauthorized response has a 3xx status code
+func (o *DeleteGitWebhookByIDUsingDELETEUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete git webhook by Id using d e l e t e unauthorized response has a 4xx status code
+func (o *DeleteGitWebhookByIDUsingDELETEUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete git webhook by Id using d e l e t e unauthorized response has a 5xx status code
+func (o *DeleteGitWebhookByIDUsingDELETEUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete git webhook by Id using d e l e t e unauthorized response a status code equal to that given
+func (o *DeleteGitWebhookByIDUsingDELETEUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DeleteGitWebhookByIDUsingDELETEUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/git-webhooks/{id}][%d] deleteGitWebhookByIdUsingDELETEUnauthorized ", 401)
+}
+
+func (o *DeleteGitWebhookByIDUsingDELETEUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/git-webhooks/{id}][%d] deleteGitWebhookByIdUsingDELETEUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewDeleteGitWebhookByIDUsingDELETEForbidden() *DeleteGitWebhookByIDUsingDEL
 	return &DeleteGitWebhookByIDUsingDELETEForbidden{}
 }
 
-/* DeleteGitWebhookByIDUsingDELETEForbidden describes a response with status code 403, with default header values.
+/*
+DeleteGitWebhookByIDUsingDELETEForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type DeleteGitWebhookByIDUsingDELETEForbidden struct {
 }
 
+// IsSuccess returns true when this delete git webhook by Id using d e l e t e forbidden response has a 2xx status code
+func (o *DeleteGitWebhookByIDUsingDELETEForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete git webhook by Id using d e l e t e forbidden response has a 3xx status code
+func (o *DeleteGitWebhookByIDUsingDELETEForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete git webhook by Id using d e l e t e forbidden response has a 4xx status code
+func (o *DeleteGitWebhookByIDUsingDELETEForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete git webhook by Id using d e l e t e forbidden response has a 5xx status code
+func (o *DeleteGitWebhookByIDUsingDELETEForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete git webhook by Id using d e l e t e forbidden response a status code equal to that given
+func (o *DeleteGitWebhookByIDUsingDELETEForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteGitWebhookByIDUsingDELETEForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/git-webhooks/{id}][%d] deleteGitWebhookByIdUsingDELETEForbidden ", 403)
+}
+
+func (o *DeleteGitWebhookByIDUsingDELETEForbidden) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/git-webhooks/{id}][%d] deleteGitWebhookByIdUsingDELETEForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewDeleteGitWebhookByIDUsingDELETENotFound() *DeleteGitWebhookByIDUsingDELE
 	return &DeleteGitWebhookByIDUsingDELETENotFound{}
 }
 
-/* DeleteGitWebhookByIDUsingDELETENotFound describes a response with status code 404, with default header values.
+/*
+DeleteGitWebhookByIDUsingDELETENotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type DeleteGitWebhookByIDUsingDELETENotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete git webhook by Id using d e l e t e not found response has a 2xx status code
+func (o *DeleteGitWebhookByIDUsingDELETENotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete git webhook by Id using d e l e t e not found response has a 3xx status code
+func (o *DeleteGitWebhookByIDUsingDELETENotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete git webhook by Id using d e l e t e not found response has a 4xx status code
+func (o *DeleteGitWebhookByIDUsingDELETENotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete git webhook by Id using d e l e t e not found response has a 5xx status code
+func (o *DeleteGitWebhookByIDUsingDELETENotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete git webhook by Id using d e l e t e not found response a status code equal to that given
+func (o *DeleteGitWebhookByIDUsingDELETENotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteGitWebhookByIDUsingDELETENotFound) Error() string {
 	return fmt.Sprintf("[DELETE /codestream/api/git-webhooks/{id}][%d] deleteGitWebhookByIdUsingDELETENotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteGitWebhookByIDUsingDELETENotFound) String() string {
+	return fmt.Sprintf("[DELETE /codestream/api/git-webhooks/{id}][%d] deleteGitWebhookByIdUsingDELETENotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteGitWebhookByIDUsingDELETENotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewDeleteGitWebhookByIDUsingDELETEInternalServerError() *DeleteGitWebhookBy
 	return &DeleteGitWebhookByIDUsingDELETEInternalServerError{}
 }
 
-/* DeleteGitWebhookByIDUsingDELETEInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteGitWebhookByIDUsingDELETEInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type DeleteGitWebhookByIDUsingDELETEInternalServerError struct {
 }
 
+// IsSuccess returns true when this delete git webhook by Id using d e l e t e internal server error response has a 2xx status code
+func (o *DeleteGitWebhookByIDUsingDELETEInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete git webhook by Id using d e l e t e internal server error response has a 3xx status code
+func (o *DeleteGitWebhookByIDUsingDELETEInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete git webhook by Id using d e l e t e internal server error response has a 4xx status code
+func (o *DeleteGitWebhookByIDUsingDELETEInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete git webhook by Id using d e l e t e internal server error response has a 5xx status code
+func (o *DeleteGitWebhookByIDUsingDELETEInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this delete git webhook by Id using d e l e t e internal server error response a status code equal to that given
+func (o *DeleteGitWebhookByIDUsingDELETEInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *DeleteGitWebhookByIDUsingDELETEInternalServerError) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/git-webhooks/{id}][%d] deleteGitWebhookByIdUsingDELETEInternalServerError ", 500)
+}
+
+func (o *DeleteGitWebhookByIDUsingDELETEInternalServerError) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/git-webhooks/{id}][%d] deleteGitWebhookByIdUsingDELETEInternalServerError ", 500)
 }
 

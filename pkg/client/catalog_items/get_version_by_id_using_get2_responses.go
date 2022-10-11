@@ -51,7 +51,8 @@ func NewGetVersionByIDUsingGET2OK() *GetVersionByIDUsingGET2OK {
 	return &GetVersionByIDUsingGET2OK{}
 }
 
-/* GetVersionByIDUsingGET2OK describes a response with status code 200, with default header values.
+/*
+GetVersionByIDUsingGET2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -59,9 +60,39 @@ type GetVersionByIDUsingGET2OK struct {
 	Payload *models.CatalogItemVersion
 }
 
+// IsSuccess returns true when this get version by Id using g e t2 o k response has a 2xx status code
+func (o *GetVersionByIDUsingGET2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get version by Id using g e t2 o k response has a 3xx status code
+func (o *GetVersionByIDUsingGET2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get version by Id using g e t2 o k response has a 4xx status code
+func (o *GetVersionByIDUsingGET2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get version by Id using g e t2 o k response has a 5xx status code
+func (o *GetVersionByIDUsingGET2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get version by Id using g e t2 o k response a status code equal to that given
+func (o *GetVersionByIDUsingGET2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetVersionByIDUsingGET2OK) Error() string {
 	return fmt.Sprintf("[GET /catalog/api/items/{id}/versions/{versionId}][%d] getVersionByIdUsingGET2OK  %+v", 200, o.Payload)
 }
+
+func (o *GetVersionByIDUsingGET2OK) String() string {
+	return fmt.Sprintf("[GET /catalog/api/items/{id}/versions/{versionId}][%d] getVersionByIdUsingGET2OK  %+v", 200, o.Payload)
+}
+
 func (o *GetVersionByIDUsingGET2OK) GetPayload() *models.CatalogItemVersion {
 	return o.Payload
 }
@@ -83,14 +114,44 @@ func NewGetVersionByIDUsingGET2Unauthorized() *GetVersionByIDUsingGET2Unauthoriz
 	return &GetVersionByIDUsingGET2Unauthorized{}
 }
 
-/* GetVersionByIDUsingGET2Unauthorized describes a response with status code 401, with default header values.
+/*
+GetVersionByIDUsingGET2Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type GetVersionByIDUsingGET2Unauthorized struct {
 }
 
+// IsSuccess returns true when this get version by Id using g e t2 unauthorized response has a 2xx status code
+func (o *GetVersionByIDUsingGET2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get version by Id using g e t2 unauthorized response has a 3xx status code
+func (o *GetVersionByIDUsingGET2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get version by Id using g e t2 unauthorized response has a 4xx status code
+func (o *GetVersionByIDUsingGET2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get version by Id using g e t2 unauthorized response has a 5xx status code
+func (o *GetVersionByIDUsingGET2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get version by Id using g e t2 unauthorized response a status code equal to that given
+func (o *GetVersionByIDUsingGET2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetVersionByIDUsingGET2Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /catalog/api/items/{id}/versions/{versionId}][%d] getVersionByIdUsingGET2Unauthorized ", 401)
+}
+
+func (o *GetVersionByIDUsingGET2Unauthorized) String() string {
 	return fmt.Sprintf("[GET /catalog/api/items/{id}/versions/{versionId}][%d] getVersionByIdUsingGET2Unauthorized ", 401)
 }
 
@@ -104,7 +165,8 @@ func NewGetVersionByIDUsingGET2NotFound() *GetVersionByIDUsingGET2NotFound {
 	return &GetVersionByIDUsingGET2NotFound{}
 }
 
-/* GetVersionByIDUsingGET2NotFound describes a response with status code 404, with default header values.
+/*
+GetVersionByIDUsingGET2NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -112,9 +174,39 @@ type GetVersionByIDUsingGET2NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get version by Id using g e t2 not found response has a 2xx status code
+func (o *GetVersionByIDUsingGET2NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get version by Id using g e t2 not found response has a 3xx status code
+func (o *GetVersionByIDUsingGET2NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get version by Id using g e t2 not found response has a 4xx status code
+func (o *GetVersionByIDUsingGET2NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get version by Id using g e t2 not found response has a 5xx status code
+func (o *GetVersionByIDUsingGET2NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get version by Id using g e t2 not found response a status code equal to that given
+func (o *GetVersionByIDUsingGET2NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetVersionByIDUsingGET2NotFound) Error() string {
 	return fmt.Sprintf("[GET /catalog/api/items/{id}/versions/{versionId}][%d] getVersionByIdUsingGET2NotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetVersionByIDUsingGET2NotFound) String() string {
+	return fmt.Sprintf("[GET /catalog/api/items/{id}/versions/{versionId}][%d] getVersionByIdUsingGET2NotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetVersionByIDUsingGET2NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

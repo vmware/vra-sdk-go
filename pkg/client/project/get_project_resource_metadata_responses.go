@@ -51,7 +51,8 @@ func NewGetProjectResourceMetadataOK() *GetProjectResourceMetadataOK {
 	return &GetProjectResourceMetadataOK{}
 }
 
-/* GetProjectResourceMetadataOK describes a response with status code 200, with default header values.
+/*
+GetProjectResourceMetadataOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetProjectResourceMetadataOK struct {
 	Payload *models.IaaSProjectResourceMetadata
 }
 
+// IsSuccess returns true when this get project resource metadata o k response has a 2xx status code
+func (o *GetProjectResourceMetadataOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get project resource metadata o k response has a 3xx status code
+func (o *GetProjectResourceMetadataOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get project resource metadata o k response has a 4xx status code
+func (o *GetProjectResourceMetadataOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get project resource metadata o k response has a 5xx status code
+func (o *GetProjectResourceMetadataOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get project resource metadata o k response a status code equal to that given
+func (o *GetProjectResourceMetadataOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetProjectResourceMetadataOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/projects/{id}/resource-metadata][%d] getProjectResourceMetadataOK  %+v", 200, o.Payload)
 }
+
+func (o *GetProjectResourceMetadataOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/projects/{id}/resource-metadata][%d] getProjectResourceMetadataOK  %+v", 200, o.Payload)
+}
+
 func (o *GetProjectResourceMetadataOK) GetPayload() *models.IaaSProjectResourceMetadata {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetProjectResourceMetadataForbidden() *GetProjectResourceMetadataForbidd
 	return &GetProjectResourceMetadataForbidden{}
 }
 
-/* GetProjectResourceMetadataForbidden describes a response with status code 403, with default header values.
+/*
+GetProjectResourceMetadataForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type GetProjectResourceMetadataForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get project resource metadata forbidden response has a 2xx status code
+func (o *GetProjectResourceMetadataForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get project resource metadata forbidden response has a 3xx status code
+func (o *GetProjectResourceMetadataForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get project resource metadata forbidden response has a 4xx status code
+func (o *GetProjectResourceMetadataForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get project resource metadata forbidden response has a 5xx status code
+func (o *GetProjectResourceMetadataForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get project resource metadata forbidden response a status code equal to that given
+func (o *GetProjectResourceMetadataForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetProjectResourceMetadataForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/projects/{id}/resource-metadata][%d] getProjectResourceMetadataForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetProjectResourceMetadataForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/projects/{id}/resource-metadata][%d] getProjectResourceMetadataForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetProjectResourceMetadataForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewGetProjectResourceMetadataNotFound() *GetProjectResourceMetadataNotFound
 	return &GetProjectResourceMetadataNotFound{}
 }
 
-/* GetProjectResourceMetadataNotFound describes a response with status code 404, with default header values.
+/*
+GetProjectResourceMetadataNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type GetProjectResourceMetadataNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get project resource metadata not found response has a 2xx status code
+func (o *GetProjectResourceMetadataNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get project resource metadata not found response has a 3xx status code
+func (o *GetProjectResourceMetadataNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get project resource metadata not found response has a 4xx status code
+func (o *GetProjectResourceMetadataNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get project resource metadata not found response has a 5xx status code
+func (o *GetProjectResourceMetadataNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get project resource metadata not found response a status code equal to that given
+func (o *GetProjectResourceMetadataNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetProjectResourceMetadataNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/projects/{id}/resource-metadata][%d] getProjectResourceMetadataNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetProjectResourceMetadataNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/projects/{id}/resource-metadata][%d] getProjectResourceMetadataNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetProjectResourceMetadataNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

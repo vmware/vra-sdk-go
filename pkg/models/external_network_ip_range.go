@@ -61,6 +61,9 @@ type ExternalNetworkIPRange struct {
 	// Required: true
 	ID *string `json:"id"`
 
+	// ID of the IPAM integration this IP range belongs to
+	IntegrationID string `json:"integrationId,omitempty"`
+
 	// IP address version: IPv4 or IPv6. Default: IPv4.
 	// Enum: [IPv4 IPv6]
 	IPVersion string `json:"ipVersion,omitempty"`

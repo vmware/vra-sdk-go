@@ -45,7 +45,8 @@ func NewScheduleSyncUsingPOSTAccepted() *ScheduleSyncUsingPOSTAccepted {
 	return &ScheduleSyncUsingPOSTAccepted{}
 }
 
-/* ScheduleSyncUsingPOSTAccepted describes a response with status code 202, with default header values.
+/*
+ScheduleSyncUsingPOSTAccepted describes a response with status code 202, with default header values.
 
 Submitted sync requests
 */
@@ -53,9 +54,39 @@ type ScheduleSyncUsingPOSTAccepted struct {
 	Payload *models.SourceControlSyncRequest
 }
 
+// IsSuccess returns true when this schedule sync using p o s t accepted response has a 2xx status code
+func (o *ScheduleSyncUsingPOSTAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this schedule sync using p o s t accepted response has a 3xx status code
+func (o *ScheduleSyncUsingPOSTAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this schedule sync using p o s t accepted response has a 4xx status code
+func (o *ScheduleSyncUsingPOSTAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this schedule sync using p o s t accepted response has a 5xx status code
+func (o *ScheduleSyncUsingPOSTAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this schedule sync using p o s t accepted response a status code equal to that given
+func (o *ScheduleSyncUsingPOSTAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ScheduleSyncUsingPOSTAccepted) Error() string {
 	return fmt.Sprintf("[POST /content/api/sourcecontrol/sync-requests][%d] scheduleSyncUsingPOSTAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ScheduleSyncUsingPOSTAccepted) String() string {
+	return fmt.Sprintf("[POST /content/api/sourcecontrol/sync-requests][%d] scheduleSyncUsingPOSTAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ScheduleSyncUsingPOSTAccepted) GetPayload() *models.SourceControlSyncRequest {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewScheduleSyncUsingPOSTNotFound() *ScheduleSyncUsingPOSTNotFound {
 	return &ScheduleSyncUsingPOSTNotFound{}
 }
 
-/* ScheduleSyncUsingPOSTNotFound describes a response with status code 404, with default header values.
+/*
+ScheduleSyncUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 source not found
 */
@@ -85,9 +117,39 @@ type ScheduleSyncUsingPOSTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this schedule sync using p o s t not found response has a 2xx status code
+func (o *ScheduleSyncUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this schedule sync using p o s t not found response has a 3xx status code
+func (o *ScheduleSyncUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this schedule sync using p o s t not found response has a 4xx status code
+func (o *ScheduleSyncUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this schedule sync using p o s t not found response has a 5xx status code
+func (o *ScheduleSyncUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this schedule sync using p o s t not found response a status code equal to that given
+func (o *ScheduleSyncUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ScheduleSyncUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /content/api/sourcecontrol/sync-requests][%d] scheduleSyncUsingPOSTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ScheduleSyncUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /content/api/sourcecontrol/sync-requests][%d] scheduleSyncUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ScheduleSyncUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

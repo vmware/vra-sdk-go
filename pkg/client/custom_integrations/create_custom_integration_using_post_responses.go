@@ -63,7 +63,8 @@ func NewCreateCustomIntegrationUsingPOSTOK() *CreateCustomIntegrationUsingPOSTOK
 	return &CreateCustomIntegrationUsingPOSTOK{}
 }
 
-/* CreateCustomIntegrationUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+CreateCustomIntegrationUsingPOSTOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type CreateCustomIntegrationUsingPOSTOK struct {
 	Payload models.CustomIntegration
 }
 
+// IsSuccess returns true when this create custom integration using p o s t o k response has a 2xx status code
+func (o *CreateCustomIntegrationUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create custom integration using p o s t o k response has a 3xx status code
+func (o *CreateCustomIntegrationUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create custom integration using p o s t o k response has a 4xx status code
+func (o *CreateCustomIntegrationUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create custom integration using p o s t o k response has a 5xx status code
+func (o *CreateCustomIntegrationUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create custom integration using p o s t o k response a status code equal to that given
+func (o *CreateCustomIntegrationUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CreateCustomIntegrationUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations][%d] createCustomIntegrationUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *CreateCustomIntegrationUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations][%d] createCustomIntegrationUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *CreateCustomIntegrationUsingPOSTOK) GetPayload() models.CustomIntegration {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewCreateCustomIntegrationUsingPOSTUnauthorized() *CreateCustomIntegrationU
 	return &CreateCustomIntegrationUsingPOSTUnauthorized{}
 }
 
-/* CreateCustomIntegrationUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateCustomIntegrationUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type CreateCustomIntegrationUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this create custom integration using p o s t unauthorized response has a 2xx status code
+func (o *CreateCustomIntegrationUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create custom integration using p o s t unauthorized response has a 3xx status code
+func (o *CreateCustomIntegrationUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create custom integration using p o s t unauthorized response has a 4xx status code
+func (o *CreateCustomIntegrationUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create custom integration using p o s t unauthorized response has a 5xx status code
+func (o *CreateCustomIntegrationUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create custom integration using p o s t unauthorized response a status code equal to that given
+func (o *CreateCustomIntegrationUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreateCustomIntegrationUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations][%d] createCustomIntegrationUsingPOSTUnauthorized ", 401)
+}
+
+func (o *CreateCustomIntegrationUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations][%d] createCustomIntegrationUsingPOSTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewCreateCustomIntegrationUsingPOSTForbidden() *CreateCustomIntegrationUsin
 	return &CreateCustomIntegrationUsingPOSTForbidden{}
 }
 
-/* CreateCustomIntegrationUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+CreateCustomIntegrationUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type CreateCustomIntegrationUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this create custom integration using p o s t forbidden response has a 2xx status code
+func (o *CreateCustomIntegrationUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create custom integration using p o s t forbidden response has a 3xx status code
+func (o *CreateCustomIntegrationUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create custom integration using p o s t forbidden response has a 4xx status code
+func (o *CreateCustomIntegrationUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create custom integration using p o s t forbidden response has a 5xx status code
+func (o *CreateCustomIntegrationUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create custom integration using p o s t forbidden response a status code equal to that given
+func (o *CreateCustomIntegrationUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateCustomIntegrationUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations][%d] createCustomIntegrationUsingPOSTForbidden ", 403)
+}
+
+func (o *CreateCustomIntegrationUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations][%d] createCustomIntegrationUsingPOSTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewCreateCustomIntegrationUsingPOSTNotFound() *CreateCustomIntegrationUsing
 	return &CreateCustomIntegrationUsingPOSTNotFound{}
 }
 
-/* CreateCustomIntegrationUsingPOSTNotFound describes a response with status code 404, with default header values.
+/*
+CreateCustomIntegrationUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type CreateCustomIntegrationUsingPOSTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create custom integration using p o s t not found response has a 2xx status code
+func (o *CreateCustomIntegrationUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create custom integration using p o s t not found response has a 3xx status code
+func (o *CreateCustomIntegrationUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create custom integration using p o s t not found response has a 4xx status code
+func (o *CreateCustomIntegrationUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create custom integration using p o s t not found response has a 5xx status code
+func (o *CreateCustomIntegrationUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create custom integration using p o s t not found response a status code equal to that given
+func (o *CreateCustomIntegrationUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CreateCustomIntegrationUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations][%d] createCustomIntegrationUsingPOSTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CreateCustomIntegrationUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations][%d] createCustomIntegrationUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CreateCustomIntegrationUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewCreateCustomIntegrationUsingPOSTInternalServerError() *CreateCustomInteg
 	return &CreateCustomIntegrationUsingPOSTInternalServerError{}
 }
 
-/* CreateCustomIntegrationUsingPOSTInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateCustomIntegrationUsingPOSTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CreateCustomIntegrationUsingPOSTInternalServerError struct {
 }
 
+// IsSuccess returns true when this create custom integration using p o s t internal server error response has a 2xx status code
+func (o *CreateCustomIntegrationUsingPOSTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create custom integration using p o s t internal server error response has a 3xx status code
+func (o *CreateCustomIntegrationUsingPOSTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create custom integration using p o s t internal server error response has a 4xx status code
+func (o *CreateCustomIntegrationUsingPOSTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create custom integration using p o s t internal server error response has a 5xx status code
+func (o *CreateCustomIntegrationUsingPOSTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this create custom integration using p o s t internal server error response a status code equal to that given
+func (o *CreateCustomIntegrationUsingPOSTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CreateCustomIntegrationUsingPOSTInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/custom-integrations][%d] createCustomIntegrationUsingPOSTInternalServerError ", 500)
+}
+
+func (o *CreateCustomIntegrationUsingPOSTInternalServerError) String() string {
 	return fmt.Sprintf("[POST /codestream/api/custom-integrations][%d] createCustomIntegrationUsingPOSTInternalServerError ", 500)
 }
 

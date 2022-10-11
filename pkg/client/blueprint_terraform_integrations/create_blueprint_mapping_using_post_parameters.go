@@ -54,10 +54,12 @@ func NewCreateBlueprintMappingUsingPOSTParamsWithHTTPClient(client *http.Client)
 	}
 }
 
-/* CreateBlueprintMappingUsingPOSTParams contains all the parameters to send to the API endpoint
-   for the create blueprint mapping using p o s t operation.
+/*
+CreateBlueprintMappingUsingPOSTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create blueprint mapping using p o s t operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateBlueprintMappingUsingPOSTParams struct {
 

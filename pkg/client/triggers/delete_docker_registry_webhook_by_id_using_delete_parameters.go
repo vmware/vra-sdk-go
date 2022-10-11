@@ -52,10 +52,12 @@ func NewDeleteDockerRegistryWebhookByIDUsingDELETEParamsWithHTTPClient(client *h
 	}
 }
 
-/* DeleteDockerRegistryWebhookByIDUsingDELETEParams contains all the parameters to send to the API endpoint
-   for the delete docker registry webhook by Id using d e l e t e operation.
+/*
+DeleteDockerRegistryWebhookByIDUsingDELETEParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete docker registry webhook by Id using d e l e t e operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteDockerRegistryWebhookByIDUsingDELETEParams struct {
 

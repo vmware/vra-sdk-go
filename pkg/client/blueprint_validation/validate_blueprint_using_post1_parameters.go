@@ -54,10 +54,12 @@ func NewValidateBlueprintUsingPOST1ParamsWithHTTPClient(client *http.Client) *Va
 	}
 }
 
-/* ValidateBlueprintUsingPOST1Params contains all the parameters to send to the API endpoint
-   for the validate blueprint using p o s t 1 operation.
+/*
+ValidateBlueprintUsingPOST1Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the validate blueprint using p o s t 1 operation.
+
+	Typically these are written to a http.Request.
 */
 type ValidateBlueprintUsingPOST1Params struct {
 

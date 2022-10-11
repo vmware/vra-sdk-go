@@ -54,10 +54,12 @@ func NewUpdateInternalNetworkIPRangeParamsWithHTTPClient(client *http.Client) *U
 	}
 }
 
-/* UpdateInternalNetworkIPRangeParams contains all the parameters to send to the API endpoint
-   for the update internal network IP range operation.
+/*
+UpdateInternalNetworkIPRangeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update internal network IP range operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateInternalNetworkIPRangeParams struct {
 

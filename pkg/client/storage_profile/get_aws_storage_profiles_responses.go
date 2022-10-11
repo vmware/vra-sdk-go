@@ -45,7 +45,8 @@ func NewGetAwsStorageProfilesOK() *GetAwsStorageProfilesOK {
 	return &GetAwsStorageProfilesOK{}
 }
 
-/* GetAwsStorageProfilesOK describes a response with status code 200, with default header values.
+/*
+GetAwsStorageProfilesOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type GetAwsStorageProfilesOK struct {
 	Payload *models.StorageProfileAwsResult
 }
 
+// IsSuccess returns true when this get aws storage profiles o k response has a 2xx status code
+func (o *GetAwsStorageProfilesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get aws storage profiles o k response has a 3xx status code
+func (o *GetAwsStorageProfilesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get aws storage profiles o k response has a 4xx status code
+func (o *GetAwsStorageProfilesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get aws storage profiles o k response has a 5xx status code
+func (o *GetAwsStorageProfilesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get aws storage profiles o k response a status code equal to that given
+func (o *GetAwsStorageProfilesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetAwsStorageProfilesOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/storage-profiles-aws][%d] getAwsStorageProfilesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetAwsStorageProfilesOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/storage-profiles-aws][%d] getAwsStorageProfilesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetAwsStorageProfilesOK) GetPayload() *models.StorageProfileAwsResult {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewGetAwsStorageProfilesForbidden() *GetAwsStorageProfilesForbidden {
 	return &GetAwsStorageProfilesForbidden{}
 }
 
-/* GetAwsStorageProfilesForbidden describes a response with status code 403, with default header values.
+/*
+GetAwsStorageProfilesForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type GetAwsStorageProfilesForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get aws storage profiles forbidden response has a 2xx status code
+func (o *GetAwsStorageProfilesForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get aws storage profiles forbidden response has a 3xx status code
+func (o *GetAwsStorageProfilesForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get aws storage profiles forbidden response has a 4xx status code
+func (o *GetAwsStorageProfilesForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get aws storage profiles forbidden response has a 5xx status code
+func (o *GetAwsStorageProfilesForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get aws storage profiles forbidden response a status code equal to that given
+func (o *GetAwsStorageProfilesForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetAwsStorageProfilesForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/storage-profiles-aws][%d] getAwsStorageProfilesForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetAwsStorageProfilesForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/storage-profiles-aws][%d] getAwsStorageProfilesForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetAwsStorageProfilesForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

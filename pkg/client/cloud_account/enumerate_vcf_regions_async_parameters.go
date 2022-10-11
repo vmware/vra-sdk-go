@@ -54,10 +54,12 @@ func NewEnumerateVcfRegionsAsyncParamsWithHTTPClient(client *http.Client) *Enume
 	}
 }
 
-/* EnumerateVcfRegionsAsyncParams contains all the parameters to send to the API endpoint
-   for the enumerate vcf regions async operation.
+/*
+EnumerateVcfRegionsAsyncParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the enumerate vcf regions async operation.
+
+	Typically these are written to a http.Request.
 */
 type EnumerateVcfRegionsAsyncParams struct {
 

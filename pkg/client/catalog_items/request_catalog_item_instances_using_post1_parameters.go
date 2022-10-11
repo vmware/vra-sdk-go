@@ -54,10 +54,12 @@ func NewRequestCatalogItemInstancesUsingPOST1ParamsWithHTTPClient(client *http.C
 	}
 }
 
-/* RequestCatalogItemInstancesUsingPOST1Params contains all the parameters to send to the API endpoint
-   for the request catalog item instances using p o s t 1 operation.
+/*
+RequestCatalogItemInstancesUsingPOST1Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the request catalog item instances using p o s t 1 operation.
+
+	Typically these are written to a http.Request.
 */
 type RequestCatalogItemInstancesUsingPOST1Params struct {
 

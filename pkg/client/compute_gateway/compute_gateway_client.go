@@ -42,9 +42,9 @@ type ClientService interface {
 }
 
 /*
-  CreateComputeGateway creates a compute gateway
+CreateComputeGateway creates a compute gateway
 
-  Create a new compute gateway.
+Create a new compute gateway.
 */
 func (a *Client) CreateComputeGateway(params *CreateComputeGatewayParams, opts ...ClientOption) (*CreateComputeGatewayAccepted, error) {
 	// TODO: Validate the params before sending
@@ -82,9 +82,9 @@ func (a *Client) CreateComputeGateway(params *CreateComputeGatewayParams, opts .
 }
 
 /*
-  DeleteComputeGateway deletes a compute gateway
+DeleteComputeGateway deletes a compute gateway
 
-  Delete compute gateway with a given id
+Delete compute gateway with a given id
 */
 func (a *Client) DeleteComputeGateway(params *DeleteComputeGatewayParams, opts ...ClientOption) (*DeleteComputeGatewayAccepted, error) {
 	// TODO: Validate the params before sending
@@ -122,9 +122,9 @@ func (a *Client) DeleteComputeGateway(params *DeleteComputeGatewayParams, opts .
 }
 
 /*
-  GetComputeGateway gets a compute gateway
+GetComputeGateway gets a compute gateway
 
-  Get compute gateway with a given id
+Get compute gateway with a given id
 */
 func (a *Client) GetComputeGateway(params *GetComputeGatewayParams, opts ...ClientOption) (*GetComputeGatewayOK, error) {
 	// TODO: Validate the params before sending
@@ -162,9 +162,9 @@ func (a *Client) GetComputeGateway(params *GetComputeGatewayParams, opts ...Clie
 }
 
 /*
-  GetComputeGateways gets compute gateways
+GetComputeGateways gets compute gateways
 
-  Get all compute gateways
+Get all compute gateways
 */
 func (a *Client) GetComputeGateways(params *GetComputeGatewaysParams, opts ...ClientOption) (*GetComputeGatewaysOK, error) {
 	// TODO: Validate the params before sending

@@ -54,10 +54,12 @@ func NewCreateVSphereStorageProfileParamsWithHTTPClient(client *http.Client) *Cr
 	}
 }
 
-/* CreateVSphereStorageProfileParams contains all the parameters to send to the API endpoint
-   for the create v sphere storage profile operation.
+/*
+CreateVSphereStorageProfileParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create v sphere storage profile operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateVSphereStorageProfileParams struct {
 

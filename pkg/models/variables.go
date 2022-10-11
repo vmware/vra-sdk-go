@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
@@ -21,7 +20,7 @@ import (
 
 // Variables Variables
 //
-// A list of Variable instances
+// # A list of Variable instances
 //
 // swagger:discriminator Variables A list of Variable instances
 type Variables interface {
@@ -121,7 +120,7 @@ func UnmarshalVariablesSlice(reader io.Reader, consumer runtime.Consumer) ([]Var
 // UnmarshalVariables unmarshals polymorphic Variables
 func UnmarshalVariables(reader io.Reader, consumer runtime.Consumer) (Variables, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}

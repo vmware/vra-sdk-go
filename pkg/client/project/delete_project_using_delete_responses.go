@@ -11,6 +11,8 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
 // DeleteProjectUsingDELETEReader is a Reader for the DeleteProjectUsingDELETE structure.
@@ -27,6 +29,12 @@ func (o *DeleteProjectUsingDELETEReader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return result, nil
+	case 400:
+		result := NewDeleteProjectUsingDELETEBadRequest()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 403:
 		result := NewDeleteProjectUsingDELETEForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -49,7 +57,8 @@ func NewDeleteProjectUsingDELETEOK() *DeleteProjectUsingDELETEOK {
 	return &DeleteProjectUsingDELETEOK{}
 }
 
-/* DeleteProjectUsingDELETEOK describes a response with status code 200, with default header values.
+/*
+DeleteProjectUsingDELETEOK describes a response with status code 200, with default header values.
 
 'Success'
 */
@@ -57,9 +66,39 @@ type DeleteProjectUsingDELETEOK struct {
 	Payload interface{}
 }
 
+// IsSuccess returns true when this delete project using d e l e t e o k response has a 2xx status code
+func (o *DeleteProjectUsingDELETEOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete project using d e l e t e o k response has a 3xx status code
+func (o *DeleteProjectUsingDELETEOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete project using d e l e t e o k response has a 4xx status code
+func (o *DeleteProjectUsingDELETEOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete project using d e l e t e o k response has a 5xx status code
+func (o *DeleteProjectUsingDELETEOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete project using d e l e t e o k response a status code equal to that given
+func (o *DeleteProjectUsingDELETEOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteProjectUsingDELETEOK) Error() string {
 	return fmt.Sprintf("[DELETE /project-service/api/projects/{id}][%d] deleteProjectUsingDELETEOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteProjectUsingDELETEOK) String() string {
+	return fmt.Sprintf("[DELETE /project-service/api/projects/{id}][%d] deleteProjectUsingDELETEOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteProjectUsingDELETEOK) GetPayload() interface{} {
 	return o.Payload
 }
@@ -74,19 +113,112 @@ func (o *DeleteProjectUsingDELETEOK) readResponse(response runtime.ClientRespons
 	return nil
 }
 
+// NewDeleteProjectUsingDELETEBadRequest creates a DeleteProjectUsingDELETEBadRequest with default headers values
+func NewDeleteProjectUsingDELETEBadRequest() *DeleteProjectUsingDELETEBadRequest {
+	return &DeleteProjectUsingDELETEBadRequest{}
+}
+
+/*
+DeleteProjectUsingDELETEBadRequest describes a response with status code 400, with default header values.
+
+Bad request, the project is not deleted
+*/
+type DeleteProjectUsingDELETEBadRequest struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this delete project using d e l e t e bad request response has a 2xx status code
+func (o *DeleteProjectUsingDELETEBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete project using d e l e t e bad request response has a 3xx status code
+func (o *DeleteProjectUsingDELETEBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete project using d e l e t e bad request response has a 4xx status code
+func (o *DeleteProjectUsingDELETEBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete project using d e l e t e bad request response has a 5xx status code
+func (o *DeleteProjectUsingDELETEBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete project using d e l e t e bad request response a status code equal to that given
+func (o *DeleteProjectUsingDELETEBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+func (o *DeleteProjectUsingDELETEBadRequest) Error() string {
+	return fmt.Sprintf("[DELETE /project-service/api/projects/{id}][%d] deleteProjectUsingDELETEBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *DeleteProjectUsingDELETEBadRequest) String() string {
+	return fmt.Sprintf("[DELETE /project-service/api/projects/{id}][%d] deleteProjectUsingDELETEBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *DeleteProjectUsingDELETEBadRequest) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *DeleteProjectUsingDELETEBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
 // NewDeleteProjectUsingDELETEForbidden creates a DeleteProjectUsingDELETEForbidden with default headers values
 func NewDeleteProjectUsingDELETEForbidden() *DeleteProjectUsingDELETEForbidden {
 	return &DeleteProjectUsingDELETEForbidden{}
 }
 
-/* DeleteProjectUsingDELETEForbidden describes a response with status code 403, with default header values.
+/*
+DeleteProjectUsingDELETEForbidden describes a response with status code 403, with default header values.
 
 Forbidden, the user lacks permissions
 */
 type DeleteProjectUsingDELETEForbidden struct {
 }
 
+// IsSuccess returns true when this delete project using d e l e t e forbidden response has a 2xx status code
+func (o *DeleteProjectUsingDELETEForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete project using d e l e t e forbidden response has a 3xx status code
+func (o *DeleteProjectUsingDELETEForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete project using d e l e t e forbidden response has a 4xx status code
+func (o *DeleteProjectUsingDELETEForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete project using d e l e t e forbidden response has a 5xx status code
+func (o *DeleteProjectUsingDELETEForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete project using d e l e t e forbidden response a status code equal to that given
+func (o *DeleteProjectUsingDELETEForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteProjectUsingDELETEForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /project-service/api/projects/{id}][%d] deleteProjectUsingDELETEForbidden ", 403)
+}
+
+func (o *DeleteProjectUsingDELETEForbidden) String() string {
 	return fmt.Sprintf("[DELETE /project-service/api/projects/{id}][%d] deleteProjectUsingDELETEForbidden ", 403)
 }
 
@@ -100,14 +232,44 @@ func NewDeleteProjectUsingDELETEConflict() *DeleteProjectUsingDELETEConflict {
 	return &DeleteProjectUsingDELETEConflict{}
 }
 
-/* DeleteProjectUsingDELETEConflict describes a response with status code 409, with default header values.
+/*
+DeleteProjectUsingDELETEConflict describes a response with status code 409, with default header values.
 
 Conflict, when the project is in use
 */
 type DeleteProjectUsingDELETEConflict struct {
 }
 
+// IsSuccess returns true when this delete project using d e l e t e conflict response has a 2xx status code
+func (o *DeleteProjectUsingDELETEConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete project using d e l e t e conflict response has a 3xx status code
+func (o *DeleteProjectUsingDELETEConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete project using d e l e t e conflict response has a 4xx status code
+func (o *DeleteProjectUsingDELETEConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete project using d e l e t e conflict response has a 5xx status code
+func (o *DeleteProjectUsingDELETEConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete project using d e l e t e conflict response a status code equal to that given
+func (o *DeleteProjectUsingDELETEConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *DeleteProjectUsingDELETEConflict) Error() string {
+	return fmt.Sprintf("[DELETE /project-service/api/projects/{id}][%d] deleteProjectUsingDELETEConflict ", 409)
+}
+
+func (o *DeleteProjectUsingDELETEConflict) String() string {
 	return fmt.Sprintf("[DELETE /project-service/api/projects/{id}][%d] deleteProjectUsingDELETEConflict ", 409)
 }
 

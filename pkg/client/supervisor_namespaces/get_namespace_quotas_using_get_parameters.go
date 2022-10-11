@@ -52,10 +52,12 @@ func NewGetNamespaceQuotasUsingGETParamsWithHTTPClient(client *http.Client) *Get
 	}
 }
 
-/* GetNamespaceQuotasUsingGETParams contains all the parameters to send to the API endpoint
-   for the get namespace quotas using g e t operation.
+/*
+GetNamespaceQuotasUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get namespace quotas using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetNamespaceQuotasUsingGETParams struct {
 

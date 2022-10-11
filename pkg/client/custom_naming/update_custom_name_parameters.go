@@ -54,10 +54,12 @@ func NewUpdateCustomNameParamsWithHTTPClient(client *http.Client) *UpdateCustomN
 	}
 }
 
-/* UpdateCustomNameParams contains all the parameters to send to the API endpoint
-   for the update custom name operation.
+/*
+UpdateCustomNameParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update custom name operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateCustomNameParams struct {
 

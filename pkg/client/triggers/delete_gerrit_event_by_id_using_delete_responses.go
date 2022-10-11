@@ -63,7 +63,8 @@ func NewDeleteGerritEventByIDUsingDELETEOK() *DeleteGerritEventByIDUsingDELETEOK
 	return &DeleteGerritEventByIDUsingDELETEOK{}
 }
 
-/* DeleteGerritEventByIDUsingDELETEOK describes a response with status code 200, with default header values.
+/*
+DeleteGerritEventByIDUsingDELETEOK describes a response with status code 200, with default header values.
 
 'Success' with Delete a Gerrit Event
 */
@@ -71,9 +72,39 @@ type DeleteGerritEventByIDUsingDELETEOK struct {
 	Payload models.GerritEvent
 }
 
+// IsSuccess returns true when this delete gerrit event by Id using d e l e t e o k response has a 2xx status code
+func (o *DeleteGerritEventByIDUsingDELETEOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete gerrit event by Id using d e l e t e o k response has a 3xx status code
+func (o *DeleteGerritEventByIDUsingDELETEOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete gerrit event by Id using d e l e t e o k response has a 4xx status code
+func (o *DeleteGerritEventByIDUsingDELETEOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete gerrit event by Id using d e l e t e o k response has a 5xx status code
+func (o *DeleteGerritEventByIDUsingDELETEOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete gerrit event by Id using d e l e t e o k response a status code equal to that given
+func (o *DeleteGerritEventByIDUsingDELETEOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteGerritEventByIDUsingDELETEOK) Error() string {
 	return fmt.Sprintf("[DELETE /codestream/api/gerrit-events/{id}][%d] deleteGerritEventByIdUsingDELETEOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteGerritEventByIDUsingDELETEOK) String() string {
+	return fmt.Sprintf("[DELETE /codestream/api/gerrit-events/{id}][%d] deleteGerritEventByIdUsingDELETEOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteGerritEventByIDUsingDELETEOK) GetPayload() models.GerritEvent {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewDeleteGerritEventByIDUsingDELETEUnauthorized() *DeleteGerritEventByIDUsi
 	return &DeleteGerritEventByIDUsingDELETEUnauthorized{}
 }
 
-/* DeleteGerritEventByIDUsingDELETEUnauthorized describes a response with status code 401, with default header values.
+/*
+DeleteGerritEventByIDUsingDELETEUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type DeleteGerritEventByIDUsingDELETEUnauthorized struct {
 }
 
+// IsSuccess returns true when this delete gerrit event by Id using d e l e t e unauthorized response has a 2xx status code
+func (o *DeleteGerritEventByIDUsingDELETEUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete gerrit event by Id using d e l e t e unauthorized response has a 3xx status code
+func (o *DeleteGerritEventByIDUsingDELETEUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete gerrit event by Id using d e l e t e unauthorized response has a 4xx status code
+func (o *DeleteGerritEventByIDUsingDELETEUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete gerrit event by Id using d e l e t e unauthorized response has a 5xx status code
+func (o *DeleteGerritEventByIDUsingDELETEUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete gerrit event by Id using d e l e t e unauthorized response a status code equal to that given
+func (o *DeleteGerritEventByIDUsingDELETEUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DeleteGerritEventByIDUsingDELETEUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/gerrit-events/{id}][%d] deleteGerritEventByIdUsingDELETEUnauthorized ", 401)
+}
+
+func (o *DeleteGerritEventByIDUsingDELETEUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/gerrit-events/{id}][%d] deleteGerritEventByIdUsingDELETEUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewDeleteGerritEventByIDUsingDELETEForbidden() *DeleteGerritEventByIDUsingD
 	return &DeleteGerritEventByIDUsingDELETEForbidden{}
 }
 
-/* DeleteGerritEventByIDUsingDELETEForbidden describes a response with status code 403, with default header values.
+/*
+DeleteGerritEventByIDUsingDELETEForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type DeleteGerritEventByIDUsingDELETEForbidden struct {
 }
 
+// IsSuccess returns true when this delete gerrit event by Id using d e l e t e forbidden response has a 2xx status code
+func (o *DeleteGerritEventByIDUsingDELETEForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete gerrit event by Id using d e l e t e forbidden response has a 3xx status code
+func (o *DeleteGerritEventByIDUsingDELETEForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete gerrit event by Id using d e l e t e forbidden response has a 4xx status code
+func (o *DeleteGerritEventByIDUsingDELETEForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete gerrit event by Id using d e l e t e forbidden response has a 5xx status code
+func (o *DeleteGerritEventByIDUsingDELETEForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete gerrit event by Id using d e l e t e forbidden response a status code equal to that given
+func (o *DeleteGerritEventByIDUsingDELETEForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteGerritEventByIDUsingDELETEForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/gerrit-events/{id}][%d] deleteGerritEventByIdUsingDELETEForbidden ", 403)
+}
+
+func (o *DeleteGerritEventByIDUsingDELETEForbidden) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/gerrit-events/{id}][%d] deleteGerritEventByIdUsingDELETEForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewDeleteGerritEventByIDUsingDELETENotFound() *DeleteGerritEventByIDUsingDE
 	return &DeleteGerritEventByIDUsingDELETENotFound{}
 }
 
-/* DeleteGerritEventByIDUsingDELETENotFound describes a response with status code 404, with default header values.
+/*
+DeleteGerritEventByIDUsingDELETENotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type DeleteGerritEventByIDUsingDELETENotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete gerrit event by Id using d e l e t e not found response has a 2xx status code
+func (o *DeleteGerritEventByIDUsingDELETENotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete gerrit event by Id using d e l e t e not found response has a 3xx status code
+func (o *DeleteGerritEventByIDUsingDELETENotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete gerrit event by Id using d e l e t e not found response has a 4xx status code
+func (o *DeleteGerritEventByIDUsingDELETENotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete gerrit event by Id using d e l e t e not found response has a 5xx status code
+func (o *DeleteGerritEventByIDUsingDELETENotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete gerrit event by Id using d e l e t e not found response a status code equal to that given
+func (o *DeleteGerritEventByIDUsingDELETENotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteGerritEventByIDUsingDELETENotFound) Error() string {
 	return fmt.Sprintf("[DELETE /codestream/api/gerrit-events/{id}][%d] deleteGerritEventByIdUsingDELETENotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteGerritEventByIDUsingDELETENotFound) String() string {
+	return fmt.Sprintf("[DELETE /codestream/api/gerrit-events/{id}][%d] deleteGerritEventByIdUsingDELETENotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteGerritEventByIDUsingDELETENotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewDeleteGerritEventByIDUsingDELETEInternalServerError() *DeleteGerritEvent
 	return &DeleteGerritEventByIDUsingDELETEInternalServerError{}
 }
 
-/* DeleteGerritEventByIDUsingDELETEInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteGerritEventByIDUsingDELETEInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type DeleteGerritEventByIDUsingDELETEInternalServerError struct {
 }
 
+// IsSuccess returns true when this delete gerrit event by Id using d e l e t e internal server error response has a 2xx status code
+func (o *DeleteGerritEventByIDUsingDELETEInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete gerrit event by Id using d e l e t e internal server error response has a 3xx status code
+func (o *DeleteGerritEventByIDUsingDELETEInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete gerrit event by Id using d e l e t e internal server error response has a 4xx status code
+func (o *DeleteGerritEventByIDUsingDELETEInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete gerrit event by Id using d e l e t e internal server error response has a 5xx status code
+func (o *DeleteGerritEventByIDUsingDELETEInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this delete gerrit event by Id using d e l e t e internal server error response a status code equal to that given
+func (o *DeleteGerritEventByIDUsingDELETEInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *DeleteGerritEventByIDUsingDELETEInternalServerError) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/gerrit-events/{id}][%d] deleteGerritEventByIdUsingDELETEInternalServerError ", 500)
+}
+
+func (o *DeleteGerritEventByIDUsingDELETEInternalServerError) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/gerrit-events/{id}][%d] deleteGerritEventByIdUsingDELETEInternalServerError ", 500)
 }
 

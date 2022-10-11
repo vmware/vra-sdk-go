@@ -16,7 +16,7 @@ import (
 
 // CatalogItemRequest CatalogItemRequest
 //
-// A request to create a deployment based on a catalog item
+// # A request to create a deployment based on a catalog item
 //
 // swagger:model CatalogItemRequest
 type CatalogItemRequest struct {

@@ -52,10 +52,12 @@ func NewSyncProjectsPrincipalsUsingPOSTParamsWithHTTPClient(client *http.Client)
 	}
 }
 
-/* SyncProjectsPrincipalsUsingPOSTParams contains all the parameters to send to the API endpoint
-   for the sync projects principals using p o s t operation.
+/*
+SyncProjectsPrincipalsUsingPOSTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the sync projects principals using p o s t operation.
+
+	Typically these are written to a http.Request.
 */
 type SyncProjectsPrincipalsUsingPOSTParams struct {
 

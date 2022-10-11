@@ -63,7 +63,8 @@ func NewCreateGerritTriggerUsingPOSTOK() *CreateGerritTriggerUsingPOSTOK {
 	return &CreateGerritTriggerUsingPOSTOK{}
 }
 
-/* CreateGerritTriggerUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+CreateGerritTriggerUsingPOSTOK describes a response with status code 200, with default header values.
 
 'Success' with Gerrit Trigger Creation
 */
@@ -71,9 +72,39 @@ type CreateGerritTriggerUsingPOSTOK struct {
 	Payload models.GerritTrigger
 }
 
+// IsSuccess returns true when this create gerrit trigger using p o s t o k response has a 2xx status code
+func (o *CreateGerritTriggerUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create gerrit trigger using p o s t o k response has a 3xx status code
+func (o *CreateGerritTriggerUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create gerrit trigger using p o s t o k response has a 4xx status code
+func (o *CreateGerritTriggerUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create gerrit trigger using p o s t o k response has a 5xx status code
+func (o *CreateGerritTriggerUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create gerrit trigger using p o s t o k response a status code equal to that given
+func (o *CreateGerritTriggerUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CreateGerritTriggerUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-triggers][%d] createGerritTriggerUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *CreateGerritTriggerUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-triggers][%d] createGerritTriggerUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *CreateGerritTriggerUsingPOSTOK) GetPayload() models.GerritTrigger {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewCreateGerritTriggerUsingPOSTUnauthorized() *CreateGerritTriggerUsingPOST
 	return &CreateGerritTriggerUsingPOSTUnauthorized{}
 }
 
-/* CreateGerritTriggerUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateGerritTriggerUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type CreateGerritTriggerUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this create gerrit trigger using p o s t unauthorized response has a 2xx status code
+func (o *CreateGerritTriggerUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create gerrit trigger using p o s t unauthorized response has a 3xx status code
+func (o *CreateGerritTriggerUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create gerrit trigger using p o s t unauthorized response has a 4xx status code
+func (o *CreateGerritTriggerUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create gerrit trigger using p o s t unauthorized response has a 5xx status code
+func (o *CreateGerritTriggerUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create gerrit trigger using p o s t unauthorized response a status code equal to that given
+func (o *CreateGerritTriggerUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreateGerritTriggerUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-triggers][%d] createGerritTriggerUsingPOSTUnauthorized ", 401)
+}
+
+func (o *CreateGerritTriggerUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-triggers][%d] createGerritTriggerUsingPOSTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewCreateGerritTriggerUsingPOSTForbidden() *CreateGerritTriggerUsingPOSTFor
 	return &CreateGerritTriggerUsingPOSTForbidden{}
 }
 
-/* CreateGerritTriggerUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+CreateGerritTriggerUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type CreateGerritTriggerUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this create gerrit trigger using p o s t forbidden response has a 2xx status code
+func (o *CreateGerritTriggerUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create gerrit trigger using p o s t forbidden response has a 3xx status code
+func (o *CreateGerritTriggerUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create gerrit trigger using p o s t forbidden response has a 4xx status code
+func (o *CreateGerritTriggerUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create gerrit trigger using p o s t forbidden response has a 5xx status code
+func (o *CreateGerritTriggerUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create gerrit trigger using p o s t forbidden response a status code equal to that given
+func (o *CreateGerritTriggerUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateGerritTriggerUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-triggers][%d] createGerritTriggerUsingPOSTForbidden ", 403)
+}
+
+func (o *CreateGerritTriggerUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-triggers][%d] createGerritTriggerUsingPOSTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewCreateGerritTriggerUsingPOSTNotFound() *CreateGerritTriggerUsingPOSTNotF
 	return &CreateGerritTriggerUsingPOSTNotFound{}
 }
 
-/* CreateGerritTriggerUsingPOSTNotFound describes a response with status code 404, with default header values.
+/*
+CreateGerritTriggerUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type CreateGerritTriggerUsingPOSTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create gerrit trigger using p o s t not found response has a 2xx status code
+func (o *CreateGerritTriggerUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create gerrit trigger using p o s t not found response has a 3xx status code
+func (o *CreateGerritTriggerUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create gerrit trigger using p o s t not found response has a 4xx status code
+func (o *CreateGerritTriggerUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create gerrit trigger using p o s t not found response has a 5xx status code
+func (o *CreateGerritTriggerUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create gerrit trigger using p o s t not found response a status code equal to that given
+func (o *CreateGerritTriggerUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CreateGerritTriggerUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-triggers][%d] createGerritTriggerUsingPOSTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CreateGerritTriggerUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-triggers][%d] createGerritTriggerUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CreateGerritTriggerUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewCreateGerritTriggerUsingPOSTInternalServerError() *CreateGerritTriggerUs
 	return &CreateGerritTriggerUsingPOSTInternalServerError{}
 }
 
-/* CreateGerritTriggerUsingPOSTInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateGerritTriggerUsingPOSTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CreateGerritTriggerUsingPOSTInternalServerError struct {
 }
 
+// IsSuccess returns true when this create gerrit trigger using p o s t internal server error response has a 2xx status code
+func (o *CreateGerritTriggerUsingPOSTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create gerrit trigger using p o s t internal server error response has a 3xx status code
+func (o *CreateGerritTriggerUsingPOSTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create gerrit trigger using p o s t internal server error response has a 4xx status code
+func (o *CreateGerritTriggerUsingPOSTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create gerrit trigger using p o s t internal server error response has a 5xx status code
+func (o *CreateGerritTriggerUsingPOSTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this create gerrit trigger using p o s t internal server error response a status code equal to that given
+func (o *CreateGerritTriggerUsingPOSTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CreateGerritTriggerUsingPOSTInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-triggers][%d] createGerritTriggerUsingPOSTInternalServerError ", 500)
+}
+
+func (o *CreateGerritTriggerUsingPOSTInternalServerError) String() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-triggers][%d] createGerritTriggerUsingPOSTInternalServerError ", 500)
 }
 

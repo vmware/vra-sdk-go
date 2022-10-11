@@ -55,15 +55,6 @@ def add_filter_params(swagger):
 def add_204(swagger):
     paths = [
         ('/iaas/api/machines/{id}/disks/{diskId}', 'delete'),
-        # //https://jira.eng.vmware.com/browse/VRAE-10681
-        ('/iaas/api/cloud-accounts-azure/{id}', 'delete'),
-        ('/iaas/api/cloud-accounts-aws/{id}', 'delete'),
-        ('/iaas/api/cloud-accounts-gcp/{id}', 'delete'),
-        ('/iaas/api/cloud-accounts-nsx-t/{id}', 'delete'),
-        ('/iaas/api/cloud-accounts-nsx-v/{id}', 'delete'),
-        ('/iaas/api/cloud-accounts-vcf/{id}', 'delete'),
-        ('/iaas/api/cloud-accounts-vmc/{id}', 'delete'),
-        ('/iaas/api/cloud-accounts-vsphere/{id}', 'delete'),
     ]
 
     # Update the needed paths
@@ -73,18 +64,20 @@ def add_204(swagger):
             responses['204'] = {"description": "No Content"}
 
 
-# Enable this to list of paths, operations, and status code to update the response model
-# add the apis that needs to be updated
-def change_response_model(swagger):
-    # List of paths, operations, and status code to update the response model
+def add_409_conflict(swagger):
+    # List of paths and operations to add a 409 conflict
     paths = [
-        ('/iaas/api/machines/{id}/disks', 'post', '200', '#/definitions/RequestTracker'),
+        # This needs to be removed after the bug https://jira.eng.vmware.com/browse/TDS-2733 is fixed
+        ('/deployment/api/deployments/{deploymentId}', 'delete'),
     ]
 
     # Update the needed paths
-    for (p, op, response_code, response_model) in paths:
-        schema = swagger['paths'][p][op]['responses'][response_code]['schema']
-        schema['$ref'] = response_model
+    for (p, op) in paths:
+        responses = swagger['paths'][p][op]['responses']
+        if '409' not in responses:
+            responses['409'] = {
+                "description": "Conflict",
+            }
 
 
 def add_error_definition(swagger):
@@ -120,193 +113,13 @@ def add_error_definition(swagger):
                     responses[response]['schema'] = { "$ref": "#/definitions/Error" }
 
 
-def add_global_security(swagger):
-    security_def = {
-        "Bearer": {
-            "type": "apiKey",
-            "in": "header",
-            "name": "Authorization"
-        }
-    }
-
-    if 'securityDefinitions' not in swagger:
-        swagger['securityDefinitions'] = security_def
-
-
-def add_security(swagger):
-    exclude_paths = [
-        '/iaas/api/about',
-        '/iaas/api/login',
-        '/blueprint/api/about'
-    ]
-    bearer_security = [
-        {"Bearer": []},
-    ]
-
-    # Update the needed paths
-    for p in swagger['paths']:
-        if p in exclude_paths:
-            continue
-        param_list = swagger['paths'][p]
-        for method in param_list:
-            if 'security' not in swagger['paths'][p][method]:
-                swagger['paths'][p][method]['security'] = bearer_security
-    
-
-def add_blockdevice_persistent(swagger):
-    persistent = {
-        "description": "Indicates whether the block device survives a delete action.",
-        "type": "boolean",
-        "example": True,
-    }
-    bd_props = swagger['definitions']['BlockDevice']['properties']
-    if 'persistent' not in bd_props:
-        bd_props['persistent'] = persistent
-
-    bd_props = swagger['definitions']['BlockDeviceSpecification']['properties']
-    if 'persistent' not in bd_props:
-        bd_props['persistent'] = persistent
-
-
-def add_blockdevice_delete_purge(swagger):
-    bd = swagger['paths']['/iaas/api/block-devices/{id}']['delete']
-    for p in bd['parameters']:
-        if p['name'] == 'purge':
-            return
-    bd['parameters'].append({
-        "in": "query",
-        "name": "purge",
-        "description": "Indicates if the disk has to be completely destroyed or should be kept in the system. Valid only for block devices with 'persistent' set to true.",
-        "type": "boolean",
-        "required": False
-    })
-
-
-# This needs to be removed after the bug https://jira.eng.vmware.com/browse/VCOM-25699 is fixed
-def get_blockdevices_add_dollar_filter(swagger):
-    bd = swagger['paths']['/iaas/api/block-devices']
-    bd['get'] = {
-        "summary": "Get BlockDevices",
-        "produces": [
-            "application/json",
-            "app/json"
-        ],
-        "description": "Get all BlockDevices",
-        "operationId": "getBlockDevices",
-        "responses": {
-            "200": {
-                "schema": {
-                    "$ref": "#/definitions/BlockDeviceResult"
-                },
-                "description": "successful operation"
-            },
-            "403": {
-                "schema": {
-                    "$ref": "#/definitions/ServiceErrorResponse"
-                },
-                "description": "Forbidden"
-            }
-        },
-        "parameters": [
-            {
-                "in": "query",
-                "name": "apiVersion",
-                "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
-                "type": "string",
-                "required": False
-            },
-            {
-                "in": "query",
-                "name": "$top",
-                "description": "Number of records you want to get.",
-                "type": "integer",
-                "required": False
-            },
-            {
-                "in": "query",
-                "name": "$skip",
-                "description": "Number of records you want to skip.",
-                "type": "integer",
-                "required": False
-            },
-            {
-                "in": "query",
-                "name": "$count",
-                "description": "Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.",
-                "type": "boolean",
-                "required": False
-            },
-            {
-                "in": "query",
-                "name": "$select",
-                "description": "Select a subset of properties to include in the response.",
-                "type": "string",
-                "required": False
-            },
-            {
-                "in": "query",
-                "name": "$filter",
-                "description": "Filter the results by a specified predicate expression. Operators: eq, ne, and, or.",
-                "type": "string",
-                "required": False
-            }
-        ],
-        "tags": [
-            "Disk"
-        ]
-    }
-
-
-def add_404_not_found(swagger):
-    # List of paths and operations to add a 404 not found
-    paths = [
-        ('/iaas/api/block-devices/{id}', 'get'),
-    ]
-
-    # Update the needed paths
-    for (p, op) in paths:
-        responses = swagger['paths'][p][op]['responses']
-        if '404' not in responses:
-            responses['404'] = {
-                "description": "Not Found",
-            }
-
-
-def add_400_bad_request(swagger):
-    # List of paths and operations to add a 400 bad request
-    paths = [
-        ('/catalog/api/items/{id}/request', 'post'),
-    ]
-
-    # Update the needed paths
-    for (p, op) in paths:
-        responses = swagger['paths'][p][op]['responses']
-        if '400' not in responses:
-            responses['400'] = {
-                "description": "Bad Request",
-            }
-
-def add_409_conflict(swagger):
-    # List of paths and operations to add a 409 conflict
-    paths = [
-        # This needs to be removed after the bug https://jira.eng.vmware.com/browse/TDS-2733 is fixed
-        ('/deployment/api/deployments/{deploymentId}', 'delete'),
-    ]
-
-    # Update the needed paths
-    for (p, op) in paths:
-        responses = swagger['paths'][p][op]['responses']
-        if '409' not in responses:
-            responses['409'] = {
-                "description": "Conflict",
-            }
-
 def add_default_value_to_boolean_properties(swagger):
     # Update following definition properties of type boolean with specified default value.
     paths = [
         ('FabricNetworkVsphereSpecification', 'isDefault', False),
         ('FabricNetworkVsphereSpecification', 'isPublic', False),
         ('ProjectSpecification', 'sharedResources', True),
+        ('IaaSProjectSpecification', 'sharedResources', True),
     ]
 
     # Update the needed definitions
@@ -314,7 +127,6 @@ def add_default_value_to_boolean_properties(swagger):
         attributes = swagger['definitions'][definition]['properties'][propertyName]
         if 'default' not in attributes.keys():
             attributes['default'] = defaultValue
-
 
 
 def add_nullable_to_properties(swagger):
@@ -332,32 +144,40 @@ def add_nullable_to_properties(swagger):
             attributes['x-nullable'] = True
 
 
-def change_response_code(swagger):
-    # List of paths, operations, current status code, and new status code to update the response model
-    paths = [
-        ('/iaas/api/block-devices/{id}/operations/snapshots', 'post', '200', '202'),
+def add_global_security(swagger):
+    security_def = {
+        "Bearer": {
+            "type": "apiKey",
+            "in": "header",
+            "name": "Authorization"
+        }
+    }
+
+    if 'securityDefinitions' not in swagger:
+        swagger['securityDefinitions'] = security_def
+
+
+def add_security(swagger):
+    exclude_paths = [
+        '/iaas/api/about',
+        '/iaas/api/login',
+        '/blueprint/api/about',
+        '/codestream/api/about',
+        '/content/api/about',
+        '/project-service/api/about',
+    ]
+    bearer_security = [
+        {"Bearer": []},
     ]
 
     # Update the needed paths
-    for (p, op, old_response_code, new_response_code) in paths:
-        responses = swagger['paths'][p][op]['responses']
-        if old_response_code in responses :
-            responses[new_response_code] = responses[old_response_code]
-            del responses[old_response_code]
-
-
-def change_property_type(swagger):
-    # List of paths, operations, parameters, current type and new type to update
-    paths = [
-        ('/iaas/api/projects', 'get', '$filter', 'boolean', 'string'),
-    ]
-
-    # Update the needed paths
-    for (p, op, parameter, old_type, new_type) in paths:
-        param_list = swagger['paths'][p][op]['parameters']
-        for i in range(len(param_list)):
-            if param_list[i]['name'] == parameter and param_list[i]['type'] == old_type:
-                param_list[i]['type'] = new_type
+    for p in swagger['paths']:
+        if p in exclude_paths:
+            continue
+        param_list = swagger['paths'][p]
+        for method in param_list:
+            if 'security' not in swagger['paths'][p][method]:
+                swagger['paths'][p][method]['security'] = bearer_security
 
 
 if __name__ == "__main__":
@@ -370,23 +190,10 @@ if __name__ == "__main__":
 
     add_filter_params(swagger)
     add_204(swagger)
-    # change_response_model(swagger)
-
-    add_blockdevice_persistent(swagger)
-    add_blockdevice_delete_purge(swagger)
-    # This needs to be removed after the bug https://jira.eng.vmware.com/browse/VCOM-25699 is fixed
-    get_blockdevices_add_dollar_filter(swagger)
-    add_404_not_found(swagger)
-    add_400_bad_request(swagger)
     add_409_conflict(swagger)
-
+    add_error_definition(swagger)
     add_default_value_to_boolean_properties(swagger)
     add_nullable_to_properties(swagger)
-    # change_response_code(swagger)
-
-    add_error_definition(swagger)
-
-    change_property_type(swagger)
 
     if args.omit_security:
         add_global_security(swagger)

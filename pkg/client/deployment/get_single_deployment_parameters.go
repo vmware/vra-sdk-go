@@ -52,10 +52,12 @@ func NewGetSingleDeploymentParamsWithHTTPClient(client *http.Client) *GetSingleD
 	}
 }
 
-/* GetSingleDeploymentParams contains all the parameters to send to the API endpoint
-   for the get single deployment operation.
+/*
+GetSingleDeploymentParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get single deployment operation.
+
+	Typically these are written to a http.Request.
 */
 type GetSingleDeploymentParams struct {
 

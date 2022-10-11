@@ -44,9 +44,9 @@ type ClientService interface {
 }
 
 /*
-  CreateNetworkProfile creates network profile
+CreateNetworkProfile creates network profile
 
-  Create network profile
+Create network profile
 */
 func (a *Client) CreateNetworkProfile(params *CreateNetworkProfileParams, opts ...ClientOption) (*CreateNetworkProfileCreated, error) {
 	// TODO: Validate the params before sending
@@ -84,9 +84,9 @@ func (a *Client) CreateNetworkProfile(params *CreateNetworkProfileParams, opts .
 }
 
 /*
-  DeleteNetworkProfile deletes network profile
+DeleteNetworkProfile deletes network profile
 
-  Delete network profile with a given id
+Delete network profile with a given id
 */
 func (a *Client) DeleteNetworkProfile(params *DeleteNetworkProfileParams, opts ...ClientOption) (*DeleteNetworkProfileNoContent, error) {
 	// TODO: Validate the params before sending
@@ -124,9 +124,9 @@ func (a *Client) DeleteNetworkProfile(params *DeleteNetworkProfileParams, opts .
 }
 
 /*
-  GetNetworkProfile gets network profile
+GetNetworkProfile gets network profile
 
-  Get network profile with a given id
+Get network profile with a given id
 */
 func (a *Client) GetNetworkProfile(params *GetNetworkProfileParams, opts ...ClientOption) (*GetNetworkProfileOK, error) {
 	// TODO: Validate the params before sending
@@ -164,9 +164,9 @@ func (a *Client) GetNetworkProfile(params *GetNetworkProfileParams, opts ...Clie
 }
 
 /*
-  GetNetworkProfiles gets network profiles
+GetNetworkProfiles gets network profiles
 
-  Get all network profiles
+Get all network profiles
 */
 func (a *Client) GetNetworkProfiles(params *GetNetworkProfilesParams, opts ...ClientOption) (*GetNetworkProfilesOK, error) {
 	// TODO: Validate the params before sending
@@ -204,9 +204,9 @@ func (a *Client) GetNetworkProfiles(params *GetNetworkProfilesParams, opts ...Cl
 }
 
 /*
-  UpdateNetworkProfile updates network profile
+UpdateNetworkProfile updates network profile
 
-  Update network profile
+Update network profile
 */
 func (a *Client) UpdateNetworkProfile(params *UpdateNetworkProfileParams, opts ...ClientOption) (*UpdateNetworkProfileOK, error) {
 	// TODO: Validate the params before sending

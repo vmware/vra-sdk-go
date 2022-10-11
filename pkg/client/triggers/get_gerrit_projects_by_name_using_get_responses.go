@@ -63,7 +63,8 @@ func NewGetGerritProjectsByNameUsingGETOK() *GetGerritProjectsByNameUsingGETOK {
 	return &GetGerritProjectsByNameUsingGETOK{}
 }
 
-/* GetGerritProjectsByNameUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetGerritProjectsByNameUsingGETOK describes a response with status code 200, with default header values.
 
 'Success' with gerrit projects
 */
@@ -71,9 +72,39 @@ type GetGerritProjectsByNameUsingGETOK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this get gerrit projects by name using g e t o k response has a 2xx status code
+func (o *GetGerritProjectsByNameUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get gerrit projects by name using g e t o k response has a 3xx status code
+func (o *GetGerritProjectsByNameUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get gerrit projects by name using g e t o k response has a 4xx status code
+func (o *GetGerritProjectsByNameUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get gerrit projects by name using g e t o k response has a 5xx status code
+func (o *GetGerritProjectsByNameUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get gerrit projects by name using g e t o k response a status code equal to that given
+func (o *GetGerritProjectsByNameUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetGerritProjectsByNameUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/gerrit-listeners/{project}/{name}/projects][%d] getGerritProjectsByNameUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetGerritProjectsByNameUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /codestream/api/gerrit-listeners/{project}/{name}/projects][%d] getGerritProjectsByNameUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetGerritProjectsByNameUsingGETOK) GetPayload() string {
 	return o.Payload
 }
@@ -93,14 +124,44 @@ func NewGetGerritProjectsByNameUsingGETUnauthorized() *GetGerritProjectsByNameUs
 	return &GetGerritProjectsByNameUsingGETUnauthorized{}
 }
 
-/* GetGerritProjectsByNameUsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+GetGerritProjectsByNameUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type GetGerritProjectsByNameUsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this get gerrit projects by name using g e t unauthorized response has a 2xx status code
+func (o *GetGerritProjectsByNameUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get gerrit projects by name using g e t unauthorized response has a 3xx status code
+func (o *GetGerritProjectsByNameUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get gerrit projects by name using g e t unauthorized response has a 4xx status code
+func (o *GetGerritProjectsByNameUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get gerrit projects by name using g e t unauthorized response has a 5xx status code
+func (o *GetGerritProjectsByNameUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get gerrit projects by name using g e t unauthorized response a status code equal to that given
+func (o *GetGerritProjectsByNameUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetGerritProjectsByNameUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/gerrit-listeners/{project}/{name}/projects][%d] getGerritProjectsByNameUsingGETUnauthorized ", 401)
+}
+
+func (o *GetGerritProjectsByNameUsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /codestream/api/gerrit-listeners/{project}/{name}/projects][%d] getGerritProjectsByNameUsingGETUnauthorized ", 401)
 }
 
@@ -114,14 +175,44 @@ func NewGetGerritProjectsByNameUsingGETForbidden() *GetGerritProjectsByNameUsing
 	return &GetGerritProjectsByNameUsingGETForbidden{}
 }
 
-/* GetGerritProjectsByNameUsingGETForbidden describes a response with status code 403, with default header values.
+/*
+GetGerritProjectsByNameUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetGerritProjectsByNameUsingGETForbidden struct {
 }
 
+// IsSuccess returns true when this get gerrit projects by name using g e t forbidden response has a 2xx status code
+func (o *GetGerritProjectsByNameUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get gerrit projects by name using g e t forbidden response has a 3xx status code
+func (o *GetGerritProjectsByNameUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get gerrit projects by name using g e t forbidden response has a 4xx status code
+func (o *GetGerritProjectsByNameUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get gerrit projects by name using g e t forbidden response has a 5xx status code
+func (o *GetGerritProjectsByNameUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get gerrit projects by name using g e t forbidden response a status code equal to that given
+func (o *GetGerritProjectsByNameUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetGerritProjectsByNameUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/gerrit-listeners/{project}/{name}/projects][%d] getGerritProjectsByNameUsingGETForbidden ", 403)
+}
+
+func (o *GetGerritProjectsByNameUsingGETForbidden) String() string {
 	return fmt.Sprintf("[GET /codestream/api/gerrit-listeners/{project}/{name}/projects][%d] getGerritProjectsByNameUsingGETForbidden ", 403)
 }
 
@@ -135,7 +226,8 @@ func NewGetGerritProjectsByNameUsingGETNotFound() *GetGerritProjectsByNameUsingG
 	return &GetGerritProjectsByNameUsingGETNotFound{}
 }
 
-/* GetGerritProjectsByNameUsingGETNotFound describes a response with status code 404, with default header values.
+/*
+GetGerritProjectsByNameUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -143,9 +235,39 @@ type GetGerritProjectsByNameUsingGETNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get gerrit projects by name using g e t not found response has a 2xx status code
+func (o *GetGerritProjectsByNameUsingGETNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get gerrit projects by name using g e t not found response has a 3xx status code
+func (o *GetGerritProjectsByNameUsingGETNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get gerrit projects by name using g e t not found response has a 4xx status code
+func (o *GetGerritProjectsByNameUsingGETNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get gerrit projects by name using g e t not found response has a 5xx status code
+func (o *GetGerritProjectsByNameUsingGETNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get gerrit projects by name using g e t not found response a status code equal to that given
+func (o *GetGerritProjectsByNameUsingGETNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetGerritProjectsByNameUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/gerrit-listeners/{project}/{name}/projects][%d] getGerritProjectsByNameUsingGETNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetGerritProjectsByNameUsingGETNotFound) String() string {
+	return fmt.Sprintf("[GET /codestream/api/gerrit-listeners/{project}/{name}/projects][%d] getGerritProjectsByNameUsingGETNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetGerritProjectsByNameUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -167,14 +289,44 @@ func NewGetGerritProjectsByNameUsingGETInternalServerError() *GetGerritProjectsB
 	return &GetGerritProjectsByNameUsingGETInternalServerError{}
 }
 
-/* GetGerritProjectsByNameUsingGETInternalServerError describes a response with status code 500, with default header values.
+/*
+GetGerritProjectsByNameUsingGETInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type GetGerritProjectsByNameUsingGETInternalServerError struct {
 }
 
+// IsSuccess returns true when this get gerrit projects by name using g e t internal server error response has a 2xx status code
+func (o *GetGerritProjectsByNameUsingGETInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get gerrit projects by name using g e t internal server error response has a 3xx status code
+func (o *GetGerritProjectsByNameUsingGETInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get gerrit projects by name using g e t internal server error response has a 4xx status code
+func (o *GetGerritProjectsByNameUsingGETInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get gerrit projects by name using g e t internal server error response has a 5xx status code
+func (o *GetGerritProjectsByNameUsingGETInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this get gerrit projects by name using g e t internal server error response a status code equal to that given
+func (o *GetGerritProjectsByNameUsingGETInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GetGerritProjectsByNameUsingGETInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/gerrit-listeners/{project}/{name}/projects][%d] getGerritProjectsByNameUsingGETInternalServerError ", 500)
+}
+
+func (o *GetGerritProjectsByNameUsingGETInternalServerError) String() string {
 	return fmt.Sprintf("[GET /codestream/api/gerrit-listeners/{project}/{name}/projects][%d] getGerritProjectsByNameUsingGETInternalServerError ", 500)
 }
 

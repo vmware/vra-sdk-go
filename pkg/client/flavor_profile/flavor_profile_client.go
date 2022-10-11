@@ -44,9 +44,9 @@ type ClientService interface {
 }
 
 /*
-  CreateFlavorProfile creates flavor profile
+CreateFlavorProfile creates flavor profile
 
-  Create flavor profile
+Create flavor profile
 */
 func (a *Client) CreateFlavorProfile(params *CreateFlavorProfileParams, opts ...ClientOption) (*CreateFlavorProfileCreated, error) {
 	// TODO: Validate the params before sending
@@ -84,9 +84,9 @@ func (a *Client) CreateFlavorProfile(params *CreateFlavorProfileParams, opts ...
 }
 
 /*
-  DeleteFlavorProfile deletes flavor profile
+DeleteFlavorProfile deletes flavor profile
 
-  Delete flavor profile with a given id
+Delete flavor profile with a given id
 */
 func (a *Client) DeleteFlavorProfile(params *DeleteFlavorProfileParams, opts ...ClientOption) (*DeleteFlavorProfileNoContent, error) {
 	// TODO: Validate the params before sending
@@ -124,9 +124,9 @@ func (a *Client) DeleteFlavorProfile(params *DeleteFlavorProfileParams, opts ...
 }
 
 /*
-  GetFlavorProfile gets flavor profile
+GetFlavorProfile gets flavor profile
 
-  Get flavor profile with a given id
+Get flavor profile with a given id
 */
 func (a *Client) GetFlavorProfile(params *GetFlavorProfileParams, opts ...ClientOption) (*GetFlavorProfileOK, error) {
 	// TODO: Validate the params before sending
@@ -164,9 +164,9 @@ func (a *Client) GetFlavorProfile(params *GetFlavorProfileParams, opts ...Client
 }
 
 /*
-  GetFlavorProfiles gets flavor profile
+GetFlavorProfiles gets flavor profile
 
-  Get all flavor profile
+Get all flavor profile
 */
 func (a *Client) GetFlavorProfiles(params *GetFlavorProfilesParams, opts ...ClientOption) (*GetFlavorProfilesOK, error) {
 	// TODO: Validate the params before sending
@@ -204,9 +204,9 @@ func (a *Client) GetFlavorProfiles(params *GetFlavorProfilesParams, opts ...Clie
 }
 
 /*
-  UpdateFlavorProfile updates flavor profile
+UpdateFlavorProfile updates flavor profile
 
-  Update flavor profile
+Update flavor profile
 */
 func (a *Client) UpdateFlavorProfile(params *UpdateFlavorProfileParams, opts ...ClientOption) (*UpdateFlavorProfileOK, error) {
 	// TODO: Validate the params before sending

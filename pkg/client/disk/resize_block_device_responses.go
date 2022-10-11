@@ -51,7 +51,8 @@ func NewResizeBlockDeviceAccepted() *ResizeBlockDeviceAccepted {
 	return &ResizeBlockDeviceAccepted{}
 }
 
-/* ResizeBlockDeviceAccepted describes a response with status code 202, with default header values.
+/*
+ResizeBlockDeviceAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type ResizeBlockDeviceAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this resize block device accepted response has a 2xx status code
+func (o *ResizeBlockDeviceAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this resize block device accepted response has a 3xx status code
+func (o *ResizeBlockDeviceAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this resize block device accepted response has a 4xx status code
+func (o *ResizeBlockDeviceAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this resize block device accepted response has a 5xx status code
+func (o *ResizeBlockDeviceAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this resize block device accepted response a status code equal to that given
+func (o *ResizeBlockDeviceAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ResizeBlockDeviceAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}][%d] resizeBlockDeviceAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ResizeBlockDeviceAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}][%d] resizeBlockDeviceAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ResizeBlockDeviceAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,14 +114,44 @@ func NewResizeBlockDeviceNoContent() *ResizeBlockDeviceNoContent {
 	return &ResizeBlockDeviceNoContent{}
 }
 
-/* ResizeBlockDeviceNoContent describes a response with status code 204, with default header values.
+/*
+ResizeBlockDeviceNoContent describes a response with status code 204, with default header values.
 
 No Content
 */
 type ResizeBlockDeviceNoContent struct {
 }
 
+// IsSuccess returns true when this resize block device no content response has a 2xx status code
+func (o *ResizeBlockDeviceNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this resize block device no content response has a 3xx status code
+func (o *ResizeBlockDeviceNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this resize block device no content response has a 4xx status code
+func (o *ResizeBlockDeviceNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this resize block device no content response has a 5xx status code
+func (o *ResizeBlockDeviceNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this resize block device no content response a status code equal to that given
+func (o *ResizeBlockDeviceNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *ResizeBlockDeviceNoContent) Error() string {
+	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}][%d] resizeBlockDeviceNoContent ", 204)
+}
+
+func (o *ResizeBlockDeviceNoContent) String() string {
 	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}][%d] resizeBlockDeviceNoContent ", 204)
 }
 
@@ -104,7 +165,8 @@ func NewResizeBlockDeviceForbidden() *ResizeBlockDeviceForbidden {
 	return &ResizeBlockDeviceForbidden{}
 }
 
-/* ResizeBlockDeviceForbidden describes a response with status code 403, with default header values.
+/*
+ResizeBlockDeviceForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -112,9 +174,39 @@ type ResizeBlockDeviceForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this resize block device forbidden response has a 2xx status code
+func (o *ResizeBlockDeviceForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this resize block device forbidden response has a 3xx status code
+func (o *ResizeBlockDeviceForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this resize block device forbidden response has a 4xx status code
+func (o *ResizeBlockDeviceForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this resize block device forbidden response has a 5xx status code
+func (o *ResizeBlockDeviceForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this resize block device forbidden response a status code equal to that given
+func (o *ResizeBlockDeviceForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ResizeBlockDeviceForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}][%d] resizeBlockDeviceForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ResizeBlockDeviceForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}][%d] resizeBlockDeviceForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ResizeBlockDeviceForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

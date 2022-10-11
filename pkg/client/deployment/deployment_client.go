@@ -42,9 +42,9 @@ type ClientService interface {
 }
 
 /*
-  CreateDeployment creates deployment
+CreateDeployment creates deployment
 
-  Create a new Deployment.
+Create a new Deployment.
 */
 func (a *Client) CreateDeployment(params *CreateDeploymentParams, opts ...ClientOption) (*CreateDeploymentCreated, error) {
 	// TODO: Validate the params before sending
@@ -82,9 +82,9 @@ func (a *Client) CreateDeployment(params *CreateDeploymentParams, opts ...Client
 }
 
 /*
-  DeleteDeployment deletes a deployment
+DeleteDeployment deletes a deployment
 
-  Delete a deployment.
+Delete a deployment.
 */
 func (a *Client) DeleteDeployment(params *DeleteDeploymentParams, opts ...ClientOption) (*DeleteDeploymentAccepted, error) {
 	// TODO: Validate the params before sending
@@ -122,9 +122,9 @@ func (a *Client) DeleteDeployment(params *DeleteDeploymentParams, opts ...Client
 }
 
 /*
-  GetDeployments gets deployments
+GetDeployments gets deployments
 
-  Get all deployments.
+Get all deployments.
 */
 func (a *Client) GetDeployments(params *GetDeploymentsParams, opts ...ClientOption) (*GetDeploymentsOK, error) {
 	// TODO: Validate the params before sending
@@ -162,9 +162,9 @@ func (a *Client) GetDeployments(params *GetDeploymentsParams, opts ...ClientOpti
 }
 
 /*
-  GetSingleDeployment gets a single deployment
+GetSingleDeployment gets a single deployment
 
-  Get a single deployment.
+Get a single deployment.
 */
 func (a *Client) GetSingleDeployment(params *GetSingleDeploymentParams, opts ...ClientOption) (*GetSingleDeploymentOK, error) {
 	// TODO: Validate the params before sending

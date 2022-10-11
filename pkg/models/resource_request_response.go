@@ -16,7 +16,7 @@ import (
 
 // ResourceRequestResponse ResourceRequestResponse
 //
-// Resource request response
+// # Resource request response
 //
 // swagger:model ResourceRequestResponse
 type ResourceRequestResponse struct {

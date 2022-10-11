@@ -45,7 +45,8 @@ func NewGetFlavorsOK() *GetFlavorsOK {
 	return &GetFlavorsOK{}
 }
 
-/* GetFlavorsOK describes a response with status code 200, with default header values.
+/*
+GetFlavorsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type GetFlavorsOK struct {
 	Payload *models.FlavorResult
 }
 
+// IsSuccess returns true when this get flavors o k response has a 2xx status code
+func (o *GetFlavorsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get flavors o k response has a 3xx status code
+func (o *GetFlavorsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flavors o k response has a 4xx status code
+func (o *GetFlavorsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get flavors o k response has a 5xx status code
+func (o *GetFlavorsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flavors o k response a status code equal to that given
+func (o *GetFlavorsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetFlavorsOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/flavors][%d] getFlavorsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetFlavorsOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/flavors][%d] getFlavorsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetFlavorsOK) GetPayload() *models.FlavorResult {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewGetFlavorsForbidden() *GetFlavorsForbidden {
 	return &GetFlavorsForbidden{}
 }
 
-/* GetFlavorsForbidden describes a response with status code 403, with default header values.
+/*
+GetFlavorsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type GetFlavorsForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get flavors forbidden response has a 2xx status code
+func (o *GetFlavorsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get flavors forbidden response has a 3xx status code
+func (o *GetFlavorsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get flavors forbidden response has a 4xx status code
+func (o *GetFlavorsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get flavors forbidden response has a 5xx status code
+func (o *GetFlavorsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get flavors forbidden response a status code equal to that given
+func (o *GetFlavorsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetFlavorsForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/flavors][%d] getFlavorsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetFlavorsForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/flavors][%d] getFlavorsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetFlavorsForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

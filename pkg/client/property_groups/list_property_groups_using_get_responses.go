@@ -57,7 +57,8 @@ func NewListPropertyGroupsUsingGETOK() *ListPropertyGroupsUsingGETOK {
 	return &ListPropertyGroupsUsingGETOK{}
 }
 
-/* ListPropertyGroupsUsingGETOK describes a response with status code 200, with default header values.
+/*
+ListPropertyGroupsUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -65,9 +66,39 @@ type ListPropertyGroupsUsingGETOK struct {
 	Payload *models.PageOfPropertyGroup
 }
 
+// IsSuccess returns true when this list property groups using g e t o k response has a 2xx status code
+func (o *ListPropertyGroupsUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this list property groups using g e t o k response has a 3xx status code
+func (o *ListPropertyGroupsUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this list property groups using g e t o k response has a 4xx status code
+func (o *ListPropertyGroupsUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this list property groups using g e t o k response has a 5xx status code
+func (o *ListPropertyGroupsUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this list property groups using g e t o k response a status code equal to that given
+func (o *ListPropertyGroupsUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ListPropertyGroupsUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /properties/api/property-groups][%d] listPropertyGroupsUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *ListPropertyGroupsUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /properties/api/property-groups][%d] listPropertyGroupsUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *ListPropertyGroupsUsingGETOK) GetPayload() *models.PageOfPropertyGroup {
 	return o.Payload
 }
@@ -89,7 +120,8 @@ func NewListPropertyGroupsUsingGETBadRequest() *ListPropertyGroupsUsingGETBadReq
 	return &ListPropertyGroupsUsingGETBadRequest{}
 }
 
-/* ListPropertyGroupsUsingGETBadRequest describes a response with status code 400, with default header values.
+/*
+ListPropertyGroupsUsingGETBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -97,9 +129,39 @@ type ListPropertyGroupsUsingGETBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this list property groups using g e t bad request response has a 2xx status code
+func (o *ListPropertyGroupsUsingGETBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this list property groups using g e t bad request response has a 3xx status code
+func (o *ListPropertyGroupsUsingGETBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this list property groups using g e t bad request response has a 4xx status code
+func (o *ListPropertyGroupsUsingGETBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this list property groups using g e t bad request response has a 5xx status code
+func (o *ListPropertyGroupsUsingGETBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this list property groups using g e t bad request response a status code equal to that given
+func (o *ListPropertyGroupsUsingGETBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ListPropertyGroupsUsingGETBadRequest) Error() string {
 	return fmt.Sprintf("[GET /properties/api/property-groups][%d] listPropertyGroupsUsingGETBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ListPropertyGroupsUsingGETBadRequest) String() string {
+	return fmt.Sprintf("[GET /properties/api/property-groups][%d] listPropertyGroupsUsingGETBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ListPropertyGroupsUsingGETBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -121,14 +183,44 @@ func NewListPropertyGroupsUsingGETUnauthorized() *ListPropertyGroupsUsingGETUnau
 	return &ListPropertyGroupsUsingGETUnauthorized{}
 }
 
-/* ListPropertyGroupsUsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+ListPropertyGroupsUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type ListPropertyGroupsUsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this list property groups using g e t unauthorized response has a 2xx status code
+func (o *ListPropertyGroupsUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this list property groups using g e t unauthorized response has a 3xx status code
+func (o *ListPropertyGroupsUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this list property groups using g e t unauthorized response has a 4xx status code
+func (o *ListPropertyGroupsUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this list property groups using g e t unauthorized response has a 5xx status code
+func (o *ListPropertyGroupsUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this list property groups using g e t unauthorized response a status code equal to that given
+func (o *ListPropertyGroupsUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ListPropertyGroupsUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /properties/api/property-groups][%d] listPropertyGroupsUsingGETUnauthorized ", 401)
+}
+
+func (o *ListPropertyGroupsUsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /properties/api/property-groups][%d] listPropertyGroupsUsingGETUnauthorized ", 401)
 }
 
@@ -142,14 +234,44 @@ func NewListPropertyGroupsUsingGETForbidden() *ListPropertyGroupsUsingGETForbidd
 	return &ListPropertyGroupsUsingGETForbidden{}
 }
 
-/* ListPropertyGroupsUsingGETForbidden describes a response with status code 403, with default header values.
+/*
+ListPropertyGroupsUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type ListPropertyGroupsUsingGETForbidden struct {
 }
 
+// IsSuccess returns true when this list property groups using g e t forbidden response has a 2xx status code
+func (o *ListPropertyGroupsUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this list property groups using g e t forbidden response has a 3xx status code
+func (o *ListPropertyGroupsUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this list property groups using g e t forbidden response has a 4xx status code
+func (o *ListPropertyGroupsUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this list property groups using g e t forbidden response has a 5xx status code
+func (o *ListPropertyGroupsUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this list property groups using g e t forbidden response a status code equal to that given
+func (o *ListPropertyGroupsUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ListPropertyGroupsUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /properties/api/property-groups][%d] listPropertyGroupsUsingGETForbidden ", 403)
+}
+
+func (o *ListPropertyGroupsUsingGETForbidden) String() string {
 	return fmt.Sprintf("[GET /properties/api/property-groups][%d] listPropertyGroupsUsingGETForbidden ", 403)
 }
 

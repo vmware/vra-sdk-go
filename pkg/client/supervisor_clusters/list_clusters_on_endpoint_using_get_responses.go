@@ -29,6 +29,12 @@ func (o *ListClustersOnEndpointUsingGETReader) ReadResponse(response runtime.Cli
 			return nil, err
 		}
 		return result, nil
+	case 403:
+		result := NewListClustersOnEndpointUsingGETForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +45,8 @@ func NewListClustersOnEndpointUsingGETOK() *ListClustersOnEndpointUsingGETOK {
 	return &ListClustersOnEndpointUsingGETOK{}
 }
 
-/* ListClustersOnEndpointUsingGETOK describes a response with status code 200, with default header values.
+/*
+ListClustersOnEndpointUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +54,39 @@ type ListClustersOnEndpointUsingGETOK struct {
 	Payload *models.PageOfSupervisorCluster
 }
 
+// IsSuccess returns true when this list clusters on endpoint using g e t o k response has a 2xx status code
+func (o *ListClustersOnEndpointUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this list clusters on endpoint using g e t o k response has a 3xx status code
+func (o *ListClustersOnEndpointUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this list clusters on endpoint using g e t o k response has a 4xx status code
+func (o *ListClustersOnEndpointUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this list clusters on endpoint using g e t o k response has a 5xx status code
+func (o *ListClustersOnEndpointUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this list clusters on endpoint using g e t o k response a status code equal to that given
+func (o *ListClustersOnEndpointUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ListClustersOnEndpointUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /cmx/api/resources/supervisor-clusters/endpoint/{endpointSelfLinkId}][%d] listClustersOnEndpointUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *ListClustersOnEndpointUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/supervisor-clusters/endpoint/{endpointSelfLinkId}][%d] listClustersOnEndpointUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *ListClustersOnEndpointUsingGETOK) GetPayload() *models.PageOfSupervisorCluster {
 	return o.Payload
 }
@@ -62,6 +99,57 @@ func (o *ListClustersOnEndpointUsingGETOK) readResponse(response runtime.ClientR
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewListClustersOnEndpointUsingGETForbidden creates a ListClustersOnEndpointUsingGETForbidden with default headers values
+func NewListClustersOnEndpointUsingGETForbidden() *ListClustersOnEndpointUsingGETForbidden {
+	return &ListClustersOnEndpointUsingGETForbidden{}
+}
+
+/*
+ListClustersOnEndpointUsingGETForbidden describes a response with status code 403, with default header values.
+
+Forbidden, the user lacks permissions
+*/
+type ListClustersOnEndpointUsingGETForbidden struct {
+}
+
+// IsSuccess returns true when this list clusters on endpoint using g e t forbidden response has a 2xx status code
+func (o *ListClustersOnEndpointUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this list clusters on endpoint using g e t forbidden response has a 3xx status code
+func (o *ListClustersOnEndpointUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this list clusters on endpoint using g e t forbidden response has a 4xx status code
+func (o *ListClustersOnEndpointUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this list clusters on endpoint using g e t forbidden response has a 5xx status code
+func (o *ListClustersOnEndpointUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this list clusters on endpoint using g e t forbidden response a status code equal to that given
+func (o *ListClustersOnEndpointUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *ListClustersOnEndpointUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/supervisor-clusters/endpoint/{endpointSelfLinkId}][%d] listClustersOnEndpointUsingGETForbidden ", 403)
+}
+
+func (o *ListClustersOnEndpointUsingGETForbidden) String() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/supervisor-clusters/endpoint/{endpointSelfLinkId}][%d] listClustersOnEndpointUsingGETForbidden ", 403)
+}
+
+func (o *ListClustersOnEndpointUsingGETForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

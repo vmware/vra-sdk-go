@@ -51,7 +51,8 @@ func NewSyncPerspectiveGroupUsingPOST2OK() *SyncPerspectiveGroupUsingPOST2OK {
 	return &SyncPerspectiveGroupUsingPOST2OK{}
 }
 
-/* SyncPerspectiveGroupUsingPOST2OK describes a response with status code 200, with default header values.
+/*
+SyncPerspectiveGroupUsingPOST2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -59,9 +60,39 @@ type SyncPerspectiveGroupUsingPOST2OK struct {
 	Payload *models.ResponseEntity
 }
 
+// IsSuccess returns true when this sync perspective group using p o s t2 o k response has a 2xx status code
+func (o *SyncPerspectiveGroupUsingPOST2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this sync perspective group using p o s t2 o k response has a 3xx status code
+func (o *SyncPerspectiveGroupUsingPOST2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this sync perspective group using p o s t2 o k response has a 4xx status code
+func (o *SyncPerspectiveGroupUsingPOST2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this sync perspective group using p o s t2 o k response has a 5xx status code
+func (o *SyncPerspectiveGroupUsingPOST2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this sync perspective group using p o s t2 o k response a status code equal to that given
+func (o *SyncPerspectiveGroupUsingPOST2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SyncPerspectiveGroupUsingPOST2OK) Error() string {
 	return fmt.Sprintf("[POST /price/api/cloudhealth/perspective-sync][%d] syncPerspectiveGroupUsingPOST2OK  %+v", 200, o.Payload)
 }
+
+func (o *SyncPerspectiveGroupUsingPOST2OK) String() string {
+	return fmt.Sprintf("[POST /price/api/cloudhealth/perspective-sync][%d] syncPerspectiveGroupUsingPOST2OK  %+v", 200, o.Payload)
+}
+
 func (o *SyncPerspectiveGroupUsingPOST2OK) GetPayload() *models.ResponseEntity {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewSyncPerspectiveGroupUsingPOST2Accepted() *SyncPerspectiveGroupUsingPOST2
 	return &SyncPerspectiveGroupUsingPOST2Accepted{}
 }
 
-/* SyncPerspectiveGroupUsingPOST2Accepted describes a response with status code 202, with default header values.
+/*
+SyncPerspectiveGroupUsingPOST2Accepted describes a response with status code 202, with default header values.
 
 OK
 */
@@ -91,9 +123,39 @@ type SyncPerspectiveGroupUsingPOST2Accepted struct {
 	Payload *models.ResponseEntity
 }
 
+// IsSuccess returns true when this sync perspective group using p o s t2 accepted response has a 2xx status code
+func (o *SyncPerspectiveGroupUsingPOST2Accepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this sync perspective group using p o s t2 accepted response has a 3xx status code
+func (o *SyncPerspectiveGroupUsingPOST2Accepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this sync perspective group using p o s t2 accepted response has a 4xx status code
+func (o *SyncPerspectiveGroupUsingPOST2Accepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this sync perspective group using p o s t2 accepted response has a 5xx status code
+func (o *SyncPerspectiveGroupUsingPOST2Accepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this sync perspective group using p o s t2 accepted response a status code equal to that given
+func (o *SyncPerspectiveGroupUsingPOST2Accepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *SyncPerspectiveGroupUsingPOST2Accepted) Error() string {
 	return fmt.Sprintf("[POST /price/api/cloudhealth/perspective-sync][%d] syncPerspectiveGroupUsingPOST2Accepted  %+v", 202, o.Payload)
 }
+
+func (o *SyncPerspectiveGroupUsingPOST2Accepted) String() string {
+	return fmt.Sprintf("[POST /price/api/cloudhealth/perspective-sync][%d] syncPerspectiveGroupUsingPOST2Accepted  %+v", 202, o.Payload)
+}
+
 func (o *SyncPerspectiveGroupUsingPOST2Accepted) GetPayload() *models.ResponseEntity {
 	return o.Payload
 }
@@ -115,14 +177,44 @@ func NewSyncPerspectiveGroupUsingPOST2Unauthorized() *SyncPerspectiveGroupUsingP
 	return &SyncPerspectiveGroupUsingPOST2Unauthorized{}
 }
 
-/* SyncPerspectiveGroupUsingPOST2Unauthorized describes a response with status code 401, with default header values.
+/*
+SyncPerspectiveGroupUsingPOST2Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type SyncPerspectiveGroupUsingPOST2Unauthorized struct {
 }
 
+// IsSuccess returns true when this sync perspective group using p o s t2 unauthorized response has a 2xx status code
+func (o *SyncPerspectiveGroupUsingPOST2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this sync perspective group using p o s t2 unauthorized response has a 3xx status code
+func (o *SyncPerspectiveGroupUsingPOST2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this sync perspective group using p o s t2 unauthorized response has a 4xx status code
+func (o *SyncPerspectiveGroupUsingPOST2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this sync perspective group using p o s t2 unauthorized response has a 5xx status code
+func (o *SyncPerspectiveGroupUsingPOST2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this sync perspective group using p o s t2 unauthorized response a status code equal to that given
+func (o *SyncPerspectiveGroupUsingPOST2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SyncPerspectiveGroupUsingPOST2Unauthorized) Error() string {
+	return fmt.Sprintf("[POST /price/api/cloudhealth/perspective-sync][%d] syncPerspectiveGroupUsingPOST2Unauthorized ", 401)
+}
+
+func (o *SyncPerspectiveGroupUsingPOST2Unauthorized) String() string {
 	return fmt.Sprintf("[POST /price/api/cloudhealth/perspective-sync][%d] syncPerspectiveGroupUsingPOST2Unauthorized ", 401)
 }
 

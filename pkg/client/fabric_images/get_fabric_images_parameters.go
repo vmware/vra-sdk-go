@@ -53,16 +53,18 @@ func NewGetFabricImagesParamsWithHTTPClient(client *http.Client) *GetFabricImage
 	}
 }
 
-/* GetFabricImagesParams contains all the parameters to send to the API endpoint
-   for the get fabric images operation.
+/*
+GetFabricImagesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get fabric images operation.
+
+	Typically these are written to a http.Request.
 */
 type GetFabricImagesParams struct {
 
 	/* DollarCount.
 
-	   Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.
+	   Flag which when specified, regardless of the assigned value, shows the total number of records. If the collection has a filter it shows the number of records matching the filter.
 	*/
 	DollarCount *bool
 

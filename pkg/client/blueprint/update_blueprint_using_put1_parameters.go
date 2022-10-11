@@ -54,10 +54,12 @@ func NewUpdateBlueprintUsingPUT1ParamsWithHTTPClient(client *http.Client) *Updat
 	}
 }
 
-/* UpdateBlueprintUsingPUT1Params contains all the parameters to send to the API endpoint
-   for the update blueprint using p u t 1 operation.
+/*
+UpdateBlueprintUsingPUT1Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update blueprint using p u t 1 operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateBlueprintUsingPUT1Params struct {
 

@@ -51,7 +51,8 @@ func NewDownload2OK() *Download2OK {
 	return &Download2OK{}
 }
 
-/* Download2OK describes a response with status code 200, with default header values.
+/*
+Download2OK describes a response with status code 200, with default header values.
 
 Success - return the catalog icon.
 */
@@ -59,9 +60,39 @@ type Download2OK struct {
 	Payload strfmt.Base64
 }
 
+// IsSuccess returns true when this download2 o k response has a 2xx status code
+func (o *Download2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this download2 o k response has a 3xx status code
+func (o *Download2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this download2 o k response has a 4xx status code
+func (o *Download2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this download2 o k response has a 5xx status code
+func (o *Download2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this download2 o k response a status code equal to that given
+func (o *Download2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *Download2OK) Error() string {
 	return fmt.Sprintf("[GET /icon/api/icons/{id}][%d] download2OK  %+v", 200, o.Payload)
 }
+
+func (o *Download2OK) String() string {
+	return fmt.Sprintf("[GET /icon/api/icons/{id}][%d] download2OK  %+v", 200, o.Payload)
+}
+
 func (o *Download2OK) GetPayload() strfmt.Base64 {
 	return o.Payload
 }
@@ -81,7 +112,8 @@ func NewDownload2BadRequest() *Download2BadRequest {
 	return &Download2BadRequest{}
 }
 
-/* Download2BadRequest describes a response with status code 400, with default header values.
+/*
+Download2BadRequest describes a response with status code 400, with default header values.
 
 Invalid request - bad data.
 */
@@ -89,9 +121,39 @@ type Download2BadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this download2 bad request response has a 2xx status code
+func (o *Download2BadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this download2 bad request response has a 3xx status code
+func (o *Download2BadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this download2 bad request response has a 4xx status code
+func (o *Download2BadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this download2 bad request response has a 5xx status code
+func (o *Download2BadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this download2 bad request response a status code equal to that given
+func (o *Download2BadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *Download2BadRequest) Error() string {
 	return fmt.Sprintf("[GET /icon/api/icons/{id}][%d] download2BadRequest  %+v", 400, o.Payload)
 }
+
+func (o *Download2BadRequest) String() string {
+	return fmt.Sprintf("[GET /icon/api/icons/{id}][%d] download2BadRequest  %+v", 400, o.Payload)
+}
+
 func (o *Download2BadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -113,7 +175,8 @@ func NewDownload2NotFound() *Download2NotFound {
 	return &Download2NotFound{}
 }
 
-/* Download2NotFound describes a response with status code 404, with default header values.
+/*
+Download2NotFound describes a response with status code 404, with default header values.
 
 Icon not found.
 */
@@ -121,9 +184,39 @@ type Download2NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this download2 not found response has a 2xx status code
+func (o *Download2NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this download2 not found response has a 3xx status code
+func (o *Download2NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this download2 not found response has a 4xx status code
+func (o *Download2NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this download2 not found response has a 5xx status code
+func (o *Download2NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this download2 not found response a status code equal to that given
+func (o *Download2NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *Download2NotFound) Error() string {
 	return fmt.Sprintf("[GET /icon/api/icons/{id}][%d] download2NotFound  %+v", 404, o.Payload)
 }
+
+func (o *Download2NotFound) String() string {
+	return fmt.Sprintf("[GET /icon/api/icons/{id}][%d] download2NotFound  %+v", 404, o.Payload)
+}
+
 func (o *Download2NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

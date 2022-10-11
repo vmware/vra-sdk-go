@@ -51,7 +51,8 @@ func NewGetExternalNetworkIPRangeOK() *GetExternalNetworkIPRangeOK {
 	return &GetExternalNetworkIPRangeOK{}
 }
 
-/* GetExternalNetworkIPRangeOK describes a response with status code 200, with default header values.
+/*
+GetExternalNetworkIPRangeOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetExternalNetworkIPRangeOK struct {
 	Payload *models.ExternalNetworkIPRange
 }
 
+// IsSuccess returns true when this get external network Ip range o k response has a 2xx status code
+func (o *GetExternalNetworkIPRangeOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get external network Ip range o k response has a 3xx status code
+func (o *GetExternalNetworkIPRangeOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get external network Ip range o k response has a 4xx status code
+func (o *GetExternalNetworkIPRangeOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get external network Ip range o k response has a 5xx status code
+func (o *GetExternalNetworkIPRangeOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get external network Ip range o k response a status code equal to that given
+func (o *GetExternalNetworkIPRangeOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetExternalNetworkIPRangeOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/external-network-ip-ranges/{id}][%d] getExternalNetworkIpRangeOK  %+v", 200, o.Payload)
 }
+
+func (o *GetExternalNetworkIPRangeOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/external-network-ip-ranges/{id}][%d] getExternalNetworkIpRangeOK  %+v", 200, o.Payload)
+}
+
 func (o *GetExternalNetworkIPRangeOK) GetPayload() *models.ExternalNetworkIPRange {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetExternalNetworkIPRangeForbidden() *GetExternalNetworkIPRangeForbidden
 	return &GetExternalNetworkIPRangeForbidden{}
 }
 
-/* GetExternalNetworkIPRangeForbidden describes a response with status code 403, with default header values.
+/*
+GetExternalNetworkIPRangeForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type GetExternalNetworkIPRangeForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get external network Ip range forbidden response has a 2xx status code
+func (o *GetExternalNetworkIPRangeForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get external network Ip range forbidden response has a 3xx status code
+func (o *GetExternalNetworkIPRangeForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get external network Ip range forbidden response has a 4xx status code
+func (o *GetExternalNetworkIPRangeForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get external network Ip range forbidden response has a 5xx status code
+func (o *GetExternalNetworkIPRangeForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get external network Ip range forbidden response a status code equal to that given
+func (o *GetExternalNetworkIPRangeForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetExternalNetworkIPRangeForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/external-network-ip-ranges/{id}][%d] getExternalNetworkIpRangeForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetExternalNetworkIPRangeForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/external-network-ip-ranges/{id}][%d] getExternalNetworkIpRangeForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetExternalNetworkIPRangeForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewGetExternalNetworkIPRangeNotFound() *GetExternalNetworkIPRangeNotFound {
 	return &GetExternalNetworkIPRangeNotFound{}
 }
 
-/* GetExternalNetworkIPRangeNotFound describes a response with status code 404, with default header values.
+/*
+GetExternalNetworkIPRangeNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type GetExternalNetworkIPRangeNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get external network Ip range not found response has a 2xx status code
+func (o *GetExternalNetworkIPRangeNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get external network Ip range not found response has a 3xx status code
+func (o *GetExternalNetworkIPRangeNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get external network Ip range not found response has a 4xx status code
+func (o *GetExternalNetworkIPRangeNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get external network Ip range not found response has a 5xx status code
+func (o *GetExternalNetworkIPRangeNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get external network Ip range not found response a status code equal to that given
+func (o *GetExternalNetworkIPRangeNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetExternalNetworkIPRangeNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/external-network-ip-ranges/{id}][%d] getExternalNetworkIpRangeNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetExternalNetworkIPRangeNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/external-network-ip-ranges/{id}][%d] getExternalNetworkIpRangeNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetExternalNetworkIPRangeNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

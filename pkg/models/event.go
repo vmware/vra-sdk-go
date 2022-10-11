@@ -45,6 +45,9 @@ type Event struct {
 	// Required: true
 	// Format: date-time
 	Timestamp *strfmt.DateTime `json:"timestamp"`
+
+	// Indicates if the event represents user input.
+	UserEvent bool `json:"userEvent,omitempty"`
 }
 
 // Validate validates this event

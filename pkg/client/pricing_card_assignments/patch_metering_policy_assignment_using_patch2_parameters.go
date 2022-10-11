@@ -54,10 +54,12 @@ func NewPatchMeteringPolicyAssignmentUsingPATCH2ParamsWithHTTPClient(client *htt
 	}
 }
 
-/* PatchMeteringPolicyAssignmentUsingPATCH2Params contains all the parameters to send to the API endpoint
-   for the patch metering policy assignment using p a t c h 2 operation.
+/*
+PatchMeteringPolicyAssignmentUsingPATCH2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the patch metering policy assignment using p a t c h 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type PatchMeteringPolicyAssignmentUsingPATCH2Params struct {
 

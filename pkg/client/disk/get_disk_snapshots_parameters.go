@@ -52,10 +52,12 @@ func NewGetDiskSnapshotsParamsWithHTTPClient(client *http.Client) *GetDiskSnapsh
 	}
 }
 
-/* GetDiskSnapshotsParams contains all the parameters to send to the API endpoint
-   for the get disk snapshots operation.
+/*
+GetDiskSnapshotsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get disk snapshots operation.
+
+	Typically these are written to a http.Request.
 */
 type GetDiskSnapshotsParams struct {
 

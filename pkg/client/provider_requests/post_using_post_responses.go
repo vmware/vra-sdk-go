@@ -29,6 +29,12 @@ func (o *PostUsingPOSTReader) ReadResponse(response runtime.ClientResponse, cons
 			return nil, err
 		}
 		return result, nil
+	case 403:
+		result := NewPostUsingPOSTForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +45,8 @@ func NewPostUsingPOSTOK() *PostUsingPOSTOK {
 	return &PostUsingPOSTOK{}
 }
 
-/* PostUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+PostUsingPOSTOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +54,39 @@ type PostUsingPOSTOK struct {
 	Payload *models.ResourceResponse
 }
 
+// IsSuccess returns true when this post using p o s t o k response has a 2xx status code
+func (o *PostUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post using p o s t o k response has a 3xx status code
+func (o *PostUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post using p o s t o k response has a 4xx status code
+func (o *PostUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post using p o s t o k response has a 5xx status code
+func (o *PostUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post using p o s t o k response a status code equal to that given
+func (o *PostUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PostUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /cmx/api/requests/blueprint/blueprint-provider-request][%d] postUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *PostUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /cmx/api/requests/blueprint/blueprint-provider-request][%d] postUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *PostUsingPOSTOK) GetPayload() *models.ResourceResponse {
 	return o.Payload
 }
@@ -62,6 +99,57 @@ func (o *PostUsingPOSTOK) readResponse(response runtime.ClientResponse, consumer
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewPostUsingPOSTForbidden creates a PostUsingPOSTForbidden with default headers values
+func NewPostUsingPOSTForbidden() *PostUsingPOSTForbidden {
+	return &PostUsingPOSTForbidden{}
+}
+
+/*
+PostUsingPOSTForbidden describes a response with status code 403, with default header values.
+
+Forbidden, the user lacks permissions
+*/
+type PostUsingPOSTForbidden struct {
+}
+
+// IsSuccess returns true when this post using p o s t forbidden response has a 2xx status code
+func (o *PostUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this post using p o s t forbidden response has a 3xx status code
+func (o *PostUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post using p o s t forbidden response has a 4xx status code
+func (o *PostUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this post using p o s t forbidden response has a 5xx status code
+func (o *PostUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post using p o s t forbidden response a status code equal to that given
+func (o *PostUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *PostUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /cmx/api/requests/blueprint/blueprint-provider-request][%d] postUsingPOSTForbidden ", 403)
+}
+
+func (o *PostUsingPOSTForbidden) String() string {
+	return fmt.Sprintf("[POST /cmx/api/requests/blueprint/blueprint-provider-request][%d] postUsingPOSTForbidden ", 403)
+}
+
+func (o *PostUsingPOSTForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

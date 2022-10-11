@@ -40,9 +40,9 @@ type ClientService interface {
 }
 
 /*
-  GetFabricCompute gets fabric compute
+GetFabricCompute gets fabric compute
 
-  Get fabric compute with a given id
+Get fabric compute with a given id
 */
 func (a *Client) GetFabricCompute(params *GetFabricComputeParams, opts ...ClientOption) (*GetFabricComputeOK, error) {
 	// TODO: Validate the params before sending
@@ -80,9 +80,9 @@ func (a *Client) GetFabricCompute(params *GetFabricComputeParams, opts ...Client
 }
 
 /*
-  GetFabricComputes gets fabric computes
+GetFabricComputes gets fabric computes
 
-  Get all fabric computes.
+Get all fabric computes.
 */
 func (a *Client) GetFabricComputes(params *GetFabricComputesParams, opts ...ClientOption) (*GetFabricComputesOK, error) {
 	// TODO: Validate the params before sending
@@ -120,9 +120,9 @@ func (a *Client) GetFabricComputes(params *GetFabricComputesParams, opts ...Clie
 }
 
 /*
-  UpdateFabricCompute updates fabric compute
+UpdateFabricCompute updates fabric compute
 
-  Update fabric compute. Only tag updates are supported.
+Update fabric compute. Only tag updates are supported.
 */
 func (a *Client) UpdateFabricCompute(params *UpdateFabricComputeParams, opts ...ClientOption) (*UpdateFabricComputeOK, error) {
 	// TODO: Validate the params before sending

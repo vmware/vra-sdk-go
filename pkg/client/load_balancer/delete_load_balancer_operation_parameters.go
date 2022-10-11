@@ -53,10 +53,12 @@ func NewDeleteLoadBalancerOperationParamsWithHTTPClient(client *http.Client) *De
 	}
 }
 
-/* DeleteLoadBalancerOperationParams contains all the parameters to send to the API endpoint
-   for the delete load balancer operation operation.
+/*
+DeleteLoadBalancerOperationParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete load balancer operation operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteLoadBalancerOperationParams struct {
 

@@ -54,10 +54,12 @@ func NewReconfigureNatParamsWithHTTPClient(client *http.Client) *ReconfigureNatP
 	}
 }
 
-/* ReconfigureNatParams contains all the parameters to send to the API endpoint
-   for the reconfigure nat operation.
+/*
+ReconfigureNatParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the reconfigure nat operation.
+
+	Typically these are written to a http.Request.
 */
 type ReconfigureNatParams struct {
 

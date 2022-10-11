@@ -54,10 +54,12 @@ func NewSubmitResourceActionRequestUsingPOST5ParamsWithHTTPClient(client *http.C
 	}
 }
 
-/* SubmitResourceActionRequestUsingPOST5Params contains all the parameters to send to the API endpoint
-   for the submit resource action request using p o s t 5 operation.
+/*
+SubmitResourceActionRequestUsingPOST5Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the submit resource action request using p o s t 5 operation.
+
+	Typically these are written to a http.Request.
 */
 type SubmitResourceActionRequestUsingPOST5Params struct {
 

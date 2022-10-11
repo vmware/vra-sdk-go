@@ -45,7 +45,8 @@ func NewGetSecurityGroupsOK() *GetSecurityGroupsOK {
 	return &GetSecurityGroupsOK{}
 }
 
-/* GetSecurityGroupsOK describes a response with status code 200, with default header values.
+/*
+GetSecurityGroupsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type GetSecurityGroupsOK struct {
 	Payload *models.SecurityGroupResult
 }
 
+// IsSuccess returns true when this get security groups o k response has a 2xx status code
+func (o *GetSecurityGroupsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get security groups o k response has a 3xx status code
+func (o *GetSecurityGroupsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get security groups o k response has a 4xx status code
+func (o *GetSecurityGroupsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get security groups o k response has a 5xx status code
+func (o *GetSecurityGroupsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get security groups o k response a status code equal to that given
+func (o *GetSecurityGroupsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetSecurityGroupsOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/security-groups][%d] getSecurityGroupsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetSecurityGroupsOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/security-groups][%d] getSecurityGroupsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetSecurityGroupsOK) GetPayload() *models.SecurityGroupResult {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewGetSecurityGroupsForbidden() *GetSecurityGroupsForbidden {
 	return &GetSecurityGroupsForbidden{}
 }
 
-/* GetSecurityGroupsForbidden describes a response with status code 403, with default header values.
+/*
+GetSecurityGroupsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type GetSecurityGroupsForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get security groups forbidden response has a 2xx status code
+func (o *GetSecurityGroupsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get security groups forbidden response has a 3xx status code
+func (o *GetSecurityGroupsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get security groups forbidden response has a 4xx status code
+func (o *GetSecurityGroupsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get security groups forbidden response has a 5xx status code
+func (o *GetSecurityGroupsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get security groups forbidden response a status code equal to that given
+func (o *GetSecurityGroupsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetSecurityGroupsForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/security-groups][%d] getSecurityGroupsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetSecurityGroupsForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/security-groups][%d] getSecurityGroupsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetSecurityGroupsForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

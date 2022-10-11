@@ -63,7 +63,8 @@ func NewClonePipelineByNameUsingPOSTOK() *ClonePipelineByNameUsingPOSTOK {
 	return &ClonePipelineByNameUsingPOSTOK{}
 }
 
-/* ClonePipelineByNameUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+ClonePipelineByNameUsingPOSTOK describes a response with status code 200, with default header values.
 
 'Success' with the cloned Pipeline
 */
@@ -71,9 +72,39 @@ type ClonePipelineByNameUsingPOSTOK struct {
 	Payload models.Pipeline
 }
 
+// IsSuccess returns true when this clone pipeline by name using p o s t o k response has a 2xx status code
+func (o *ClonePipelineByNameUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this clone pipeline by name using p o s t o k response has a 3xx status code
+func (o *ClonePipelineByNameUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this clone pipeline by name using p o s t o k response has a 4xx status code
+func (o *ClonePipelineByNameUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this clone pipeline by name using p o s t o k response has a 5xx status code
+func (o *ClonePipelineByNameUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this clone pipeline by name using p o s t o k response a status code equal to that given
+func (o *ClonePipelineByNameUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ClonePipelineByNameUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/pipelines/{project}/{name}][%d] clonePipelineByNameUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *ClonePipelineByNameUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /codestream/api/pipelines/{project}/{name}][%d] clonePipelineByNameUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *ClonePipelineByNameUsingPOSTOK) GetPayload() models.Pipeline {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewClonePipelineByNameUsingPOSTUnauthorized() *ClonePipelineByNameUsingPOST
 	return &ClonePipelineByNameUsingPOSTUnauthorized{}
 }
 
-/* ClonePipelineByNameUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+ClonePipelineByNameUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type ClonePipelineByNameUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this clone pipeline by name using p o s t unauthorized response has a 2xx status code
+func (o *ClonePipelineByNameUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this clone pipeline by name using p o s t unauthorized response has a 3xx status code
+func (o *ClonePipelineByNameUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this clone pipeline by name using p o s t unauthorized response has a 4xx status code
+func (o *ClonePipelineByNameUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this clone pipeline by name using p o s t unauthorized response has a 5xx status code
+func (o *ClonePipelineByNameUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this clone pipeline by name using p o s t unauthorized response a status code equal to that given
+func (o *ClonePipelineByNameUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ClonePipelineByNameUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/pipelines/{project}/{name}][%d] clonePipelineByNameUsingPOSTUnauthorized ", 401)
+}
+
+func (o *ClonePipelineByNameUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /codestream/api/pipelines/{project}/{name}][%d] clonePipelineByNameUsingPOSTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewClonePipelineByNameUsingPOSTForbidden() *ClonePipelineByNameUsingPOSTFor
 	return &ClonePipelineByNameUsingPOSTForbidden{}
 }
 
-/* ClonePipelineByNameUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+ClonePipelineByNameUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type ClonePipelineByNameUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this clone pipeline by name using p o s t forbidden response has a 2xx status code
+func (o *ClonePipelineByNameUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this clone pipeline by name using p o s t forbidden response has a 3xx status code
+func (o *ClonePipelineByNameUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this clone pipeline by name using p o s t forbidden response has a 4xx status code
+func (o *ClonePipelineByNameUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this clone pipeline by name using p o s t forbidden response has a 5xx status code
+func (o *ClonePipelineByNameUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this clone pipeline by name using p o s t forbidden response a status code equal to that given
+func (o *ClonePipelineByNameUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ClonePipelineByNameUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/pipelines/{project}/{name}][%d] clonePipelineByNameUsingPOSTForbidden ", 403)
+}
+
+func (o *ClonePipelineByNameUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /codestream/api/pipelines/{project}/{name}][%d] clonePipelineByNameUsingPOSTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewClonePipelineByNameUsingPOSTNotFound() *ClonePipelineByNameUsingPOSTNotF
 	return &ClonePipelineByNameUsingPOSTNotFound{}
 }
 
-/* ClonePipelineByNameUsingPOSTNotFound describes a response with status code 404, with default header values.
+/*
+ClonePipelineByNameUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type ClonePipelineByNameUsingPOSTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this clone pipeline by name using p o s t not found response has a 2xx status code
+func (o *ClonePipelineByNameUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this clone pipeline by name using p o s t not found response has a 3xx status code
+func (o *ClonePipelineByNameUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this clone pipeline by name using p o s t not found response has a 4xx status code
+func (o *ClonePipelineByNameUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this clone pipeline by name using p o s t not found response has a 5xx status code
+func (o *ClonePipelineByNameUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this clone pipeline by name using p o s t not found response a status code equal to that given
+func (o *ClonePipelineByNameUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ClonePipelineByNameUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/pipelines/{project}/{name}][%d] clonePipelineByNameUsingPOSTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ClonePipelineByNameUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /codestream/api/pipelines/{project}/{name}][%d] clonePipelineByNameUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ClonePipelineByNameUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewClonePipelineByNameUsingPOSTInternalServerError() *ClonePipelineByNameUs
 	return &ClonePipelineByNameUsingPOSTInternalServerError{}
 }
 
-/* ClonePipelineByNameUsingPOSTInternalServerError describes a response with status code 500, with default header values.
+/*
+ClonePipelineByNameUsingPOSTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ClonePipelineByNameUsingPOSTInternalServerError struct {
 }
 
+// IsSuccess returns true when this clone pipeline by name using p o s t internal server error response has a 2xx status code
+func (o *ClonePipelineByNameUsingPOSTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this clone pipeline by name using p o s t internal server error response has a 3xx status code
+func (o *ClonePipelineByNameUsingPOSTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this clone pipeline by name using p o s t internal server error response has a 4xx status code
+func (o *ClonePipelineByNameUsingPOSTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this clone pipeline by name using p o s t internal server error response has a 5xx status code
+func (o *ClonePipelineByNameUsingPOSTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this clone pipeline by name using p o s t internal server error response a status code equal to that given
+func (o *ClonePipelineByNameUsingPOSTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ClonePipelineByNameUsingPOSTInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/pipelines/{project}/{name}][%d] clonePipelineByNameUsingPOSTInternalServerError ", 500)
+}
+
+func (o *ClonePipelineByNameUsingPOSTInternalServerError) String() string {
 	return fmt.Sprintf("[POST /codestream/api/pipelines/{project}/{name}][%d] clonePipelineByNameUsingPOSTInternalServerError ", 500)
 }
 

@@ -84,9 +84,9 @@ type ClientService interface {
 }
 
 /*
-  CreateAwsStorageProfile creates a w s storage profile
+CreateAwsStorageProfile creates a w s storage profile
 
-  Create AWS storage profile
+Create AWS storage profile
 */
 func (a *Client) CreateAwsStorageProfile(params *CreateAwsStorageProfileParams, opts ...ClientOption) (*CreateAwsStorageProfileCreated, error) {
 	// TODO: Validate the params before sending
@@ -124,9 +124,9 @@ func (a *Client) CreateAwsStorageProfile(params *CreateAwsStorageProfileParams, 
 }
 
 /*
-  CreateAzureStorageProfile creates azure storage profile
+CreateAzureStorageProfile creates azure storage profile
 
-  Create Azure storage profile
+Create Azure storage profile
 */
 func (a *Client) CreateAzureStorageProfile(params *CreateAzureStorageProfileParams, opts ...ClientOption) (*CreateAzureStorageProfileCreated, error) {
 	// TODO: Validate the params before sending
@@ -164,9 +164,9 @@ func (a *Client) CreateAzureStorageProfile(params *CreateAzureStorageProfilePara
 }
 
 /*
-  CreateGcpStorageProfile creates g c p storage profile
+CreateGcpStorageProfile creates g c p storage profile
 
-  Create GCP storage profile
+Create GCP storage profile
 */
 func (a *Client) CreateGcpStorageProfile(params *CreateGcpStorageProfileParams, opts ...ClientOption) (*CreateGcpStorageProfileCreated, error) {
 	// TODO: Validate the params before sending
@@ -204,9 +204,9 @@ func (a *Client) CreateGcpStorageProfile(params *CreateGcpStorageProfileParams, 
 }
 
 /*
-  CreateStorageProfile creates storage profile
+CreateStorageProfile creates storage profile
 
-  Create storage profile
+Create storage profile
 */
 func (a *Client) CreateStorageProfile(params *CreateStorageProfileParams, opts ...ClientOption) (*CreateStorageProfileCreated, error) {
 	// TODO: Validate the params before sending
@@ -244,9 +244,9 @@ func (a *Client) CreateStorageProfile(params *CreateStorageProfileParams, opts .
 }
 
 /*
-  CreateVSphereStorageProfile creates v sphere storage profile
+CreateVSphereStorageProfile creates v sphere storage profile
 
-  Create vSphere storage profile
+Create vSphere storage profile
 */
 func (a *Client) CreateVSphereStorageProfile(params *CreateVSphereStorageProfileParams, opts ...ClientOption) (*CreateVSphereStorageProfileCreated, error) {
 	// TODO: Validate the params before sending
@@ -284,9 +284,9 @@ func (a *Client) CreateVSphereStorageProfile(params *CreateVSphereStorageProfile
 }
 
 /*
-  DeleteAwsStorageProfile deletes a w s storage profile
+DeleteAwsStorageProfile deletes a w s storage profile
 
-  Delete AWS storage profile with a given id
+Delete AWS storage profile with a given id
 */
 func (a *Client) DeleteAwsStorageProfile(params *DeleteAwsStorageProfileParams, opts ...ClientOption) (*DeleteAwsStorageProfileNoContent, error) {
 	// TODO: Validate the params before sending
@@ -324,9 +324,9 @@ func (a *Client) DeleteAwsStorageProfile(params *DeleteAwsStorageProfileParams, 
 }
 
 /*
-  DeleteAzureStorageProfile deletes azure storage profile
+DeleteAzureStorageProfile deletes azure storage profile
 
-  Delete Azure storage profile with a given id
+Delete Azure storage profile with a given id
 */
 func (a *Client) DeleteAzureStorageProfile(params *DeleteAzureStorageProfileParams, opts ...ClientOption) (*DeleteAzureStorageProfileNoContent, error) {
 	// TODO: Validate the params before sending
@@ -364,9 +364,9 @@ func (a *Client) DeleteAzureStorageProfile(params *DeleteAzureStorageProfilePara
 }
 
 /*
-  DeleteGcpStorageProfile deletes g c p storage profile
+DeleteGcpStorageProfile deletes g c p storage profile
 
-  Delete GCP storage profile with a given id
+Delete GCP storage profile with a given id
 */
 func (a *Client) DeleteGcpStorageProfile(params *DeleteGcpStorageProfileParams, opts ...ClientOption) (*DeleteGcpStorageProfileNoContent, error) {
 	// TODO: Validate the params before sending
@@ -404,9 +404,9 @@ func (a *Client) DeleteGcpStorageProfile(params *DeleteGcpStorageProfileParams, 
 }
 
 /*
-  DeleteStorageProfile deletes storage profile
+DeleteStorageProfile deletes storage profile
 
-  Delete storage profile with a given id
+Delete storage profile with a given id
 */
 func (a *Client) DeleteStorageProfile(params *DeleteStorageProfileParams, opts ...ClientOption) (*DeleteStorageProfileNoContent, error) {
 	// TODO: Validate the params before sending
@@ -444,9 +444,9 @@ func (a *Client) DeleteStorageProfile(params *DeleteStorageProfileParams, opts .
 }
 
 /*
-  DeleteVSphereStorageProfile deletes v sphere storage profile
+DeleteVSphereStorageProfile deletes v sphere storage profile
 
-  Delete vSphere storage profile with a given id
+Delete vSphere storage profile with a given id
 */
 func (a *Client) DeleteVSphereStorageProfile(params *DeleteVSphereStorageProfileParams, opts ...ClientOption) (*DeleteVSphereStorageProfileNoContent, error) {
 	// TODO: Validate the params before sending
@@ -484,9 +484,9 @@ func (a *Client) DeleteVSphereStorageProfile(params *DeleteVSphereStorageProfile
 }
 
 /*
-  GetAwsStorageProfile gets a w s storage profile
+GetAwsStorageProfile gets a w s storage profile
 
-  Get AWS storage profile with a given id
+Get AWS storage profile with a given id
 */
 func (a *Client) GetAwsStorageProfile(params *GetAwsStorageProfileParams, opts ...ClientOption) (*GetAwsStorageProfileOK, error) {
 	// TODO: Validate the params before sending
@@ -524,9 +524,9 @@ func (a *Client) GetAwsStorageProfile(params *GetAwsStorageProfileParams, opts .
 }
 
 /*
-  GetAwsStorageProfiles gets a w s storage profiles
+GetAwsStorageProfiles gets a w s storage profiles
 
-  Get all AWS storage profiles
+Get all AWS storage profiles
 */
 func (a *Client) GetAwsStorageProfiles(params *GetAwsStorageProfilesParams, opts ...ClientOption) (*GetAwsStorageProfilesOK, error) {
 	// TODO: Validate the params before sending
@@ -564,9 +564,9 @@ func (a *Client) GetAwsStorageProfiles(params *GetAwsStorageProfilesParams, opts
 }
 
 /*
-  GetAzureStorageProfile gets azure storage profile
+GetAzureStorageProfile gets azure storage profile
 
-  Get Azure storage profile with a given id
+Get Azure storage profile with a given id
 */
 func (a *Client) GetAzureStorageProfile(params *GetAzureStorageProfileParams, opts ...ClientOption) (*GetAzureStorageProfileOK, error) {
 	// TODO: Validate the params before sending
@@ -604,9 +604,9 @@ func (a *Client) GetAzureStorageProfile(params *GetAzureStorageProfileParams, op
 }
 
 /*
-  GetAzureStorageProfiles gets azure storage profiles
+GetAzureStorageProfiles gets azure storage profiles
 
-  Get all Azure storage profiles
+Get all Azure storage profiles
 */
 func (a *Client) GetAzureStorageProfiles(params *GetAzureStorageProfilesParams, opts ...ClientOption) (*GetAzureStorageProfilesOK, error) {
 	// TODO: Validate the params before sending
@@ -644,9 +644,9 @@ func (a *Client) GetAzureStorageProfiles(params *GetAzureStorageProfilesParams, 
 }
 
 /*
-  GetGcpStorageProfile gets g c p storage profile
+GetGcpStorageProfile gets g c p storage profile
 
-  Get GCP storage profile with a given id
+Get GCP storage profile with a given id
 */
 func (a *Client) GetGcpStorageProfile(params *GetGcpStorageProfileParams, opts ...ClientOption) (*GetGcpStorageProfileOK, error) {
 	// TODO: Validate the params before sending
@@ -684,9 +684,9 @@ func (a *Client) GetGcpStorageProfile(params *GetGcpStorageProfileParams, opts .
 }
 
 /*
-  GetGcpStorageProfiles gets g c p storage profiles
+GetGcpStorageProfiles gets g c p storage profiles
 
-  Get all GCP storage profiles
+Get all GCP storage profiles
 */
 func (a *Client) GetGcpStorageProfiles(params *GetGcpStorageProfilesParams, opts ...ClientOption) (*GetGcpStorageProfilesOK, error) {
 	// TODO: Validate the params before sending
@@ -724,9 +724,9 @@ func (a *Client) GetGcpStorageProfiles(params *GetGcpStorageProfilesParams, opts
 }
 
 /*
-  GetStorageProfile gets storage profile
+GetStorageProfile gets storage profile
 
-  Get storage profile with a given id
+Get storage profile with a given id
 */
 func (a *Client) GetStorageProfile(params *GetStorageProfileParams, opts ...ClientOption) (*GetStorageProfileOK, error) {
 	// TODO: Validate the params before sending
@@ -764,9 +764,9 @@ func (a *Client) GetStorageProfile(params *GetStorageProfileParams, opts ...Clie
 }
 
 /*
-  GetStorageProfiles gets storage profiles
+GetStorageProfiles gets storage profiles
 
-  Get all storage profiles
+Get all storage profiles
 */
 func (a *Client) GetStorageProfiles(params *GetStorageProfilesParams, opts ...ClientOption) (*GetStorageProfilesOK, error) {
 	// TODO: Validate the params before sending
@@ -804,9 +804,9 @@ func (a *Client) GetStorageProfiles(params *GetStorageProfilesParams, opts ...Cl
 }
 
 /*
-  GetVSphereStorageProfile gets v sphere storage profile
+GetVSphereStorageProfile gets v sphere storage profile
 
-  Get vSphere storage profile with a given id
+Get vSphere storage profile with a given id
 */
 func (a *Client) GetVSphereStorageProfile(params *GetVSphereStorageProfileParams, opts ...ClientOption) (*GetVSphereStorageProfileOK, error) {
 	// TODO: Validate the params before sending
@@ -844,9 +844,9 @@ func (a *Client) GetVSphereStorageProfile(params *GetVSphereStorageProfileParams
 }
 
 /*
-  GetVSphereStorageProfiles gets v sphere storage profiles
+GetVSphereStorageProfiles gets v sphere storage profiles
 
-  Get all vSphere storage profiles
+Get all vSphere storage profiles
 */
 func (a *Client) GetVSphereStorageProfiles(params *GetVSphereStorageProfilesParams, opts ...ClientOption) (*GetVSphereStorageProfilesOK, error) {
 	// TODO: Validate the params before sending
@@ -884,9 +884,9 @@ func (a *Client) GetVSphereStorageProfiles(params *GetVSphereStorageProfilesPara
 }
 
 /*
-  ReplaceStorageProfile replaces storage profile
+ReplaceStorageProfile replaces storage profile
 
-  Replace storage profile with a given id
+Replace storage profile with a given id
 */
 func (a *Client) ReplaceStorageProfile(params *ReplaceStorageProfileParams, opts ...ClientOption) (*ReplaceStorageProfileOK, error) {
 	// TODO: Validate the params before sending
@@ -924,9 +924,9 @@ func (a *Client) ReplaceStorageProfile(params *ReplaceStorageProfileParams, opts
 }
 
 /*
-  UpdateAwsStorageProfile updates a w s storage profile
+UpdateAwsStorageProfile updates a w s storage profile
 
-  Update AWS storage profile
+Update AWS storage profile
 */
 func (a *Client) UpdateAwsStorageProfile(params *UpdateAwsStorageProfileParams, opts ...ClientOption) (*UpdateAwsStorageProfileOK, error) {
 	// TODO: Validate the params before sending
@@ -964,9 +964,9 @@ func (a *Client) UpdateAwsStorageProfile(params *UpdateAwsStorageProfileParams, 
 }
 
 /*
-  UpdateAzureStorageProfile updates azure storage profile
+UpdateAzureStorageProfile updates azure storage profile
 
-  Update Azure storage profile
+Update Azure storage profile
 */
 func (a *Client) UpdateAzureStorageProfile(params *UpdateAzureStorageProfileParams, opts ...ClientOption) (*UpdateAzureStorageProfileOK, error) {
 	// TODO: Validate the params before sending
@@ -1004,9 +1004,9 @@ func (a *Client) UpdateAzureStorageProfile(params *UpdateAzureStorageProfilePara
 }
 
 /*
-  UpdateGcpStorageProfile updates g c p storage profile
+UpdateGcpStorageProfile updates g c p storage profile
 
-  Update GCP storage profile
+Update GCP storage profile
 */
 func (a *Client) UpdateGcpStorageProfile(params *UpdateGcpStorageProfileParams, opts ...ClientOption) (*UpdateGcpStorageProfileOK, error) {
 	// TODO: Validate the params before sending
@@ -1044,9 +1044,9 @@ func (a *Client) UpdateGcpStorageProfile(params *UpdateGcpStorageProfileParams, 
 }
 
 /*
-  UpdateVSphereStorageProfile updates v sphere storage profile
+UpdateVSphereStorageProfile updates v sphere storage profile
 
-  Update vSphere storage profile
+Update vSphere storage profile
 */
 func (a *Client) UpdateVSphereStorageProfile(params *UpdateVSphereStorageProfileParams, opts ...ClientOption) (*UpdateVSphereStorageProfileOK, error) {
 	// TODO: Validate the params before sending

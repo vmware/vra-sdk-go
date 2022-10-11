@@ -54,10 +54,12 @@ func NewPatchUsingPATCHParamsWithHTTPClient(client *http.Client) *PatchUsingPATC
 	}
 }
 
-/* PatchUsingPATCHParams contains all the parameters to send to the API endpoint
-   for the patch using p a t c h operation.
+/*
+PatchUsingPATCHParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the patch using p a t c h operation.
+
+	Typically these are written to a http.Request.
 */
 type PatchUsingPATCHParams struct {
 

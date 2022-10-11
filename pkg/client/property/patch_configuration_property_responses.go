@@ -51,7 +51,8 @@ func NewPatchConfigurationPropertyOK() *PatchConfigurationPropertyOK {
 	return &PatchConfigurationPropertyOK{}
 }
 
-/* PatchConfigurationPropertyOK describes a response with status code 200, with default header values.
+/*
+PatchConfigurationPropertyOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type PatchConfigurationPropertyOK struct {
 	Payload *models.ConfigurationProperty
 }
 
+// IsSuccess returns true when this patch configuration property o k response has a 2xx status code
+func (o *PatchConfigurationPropertyOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch configuration property o k response has a 3xx status code
+func (o *PatchConfigurationPropertyOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch configuration property o k response has a 4xx status code
+func (o *PatchConfigurationPropertyOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch configuration property o k response has a 5xx status code
+func (o *PatchConfigurationPropertyOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch configuration property o k response a status code equal to that given
+func (o *PatchConfigurationPropertyOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchConfigurationPropertyOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/configuration-properties][%d] patchConfigurationPropertyOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchConfigurationPropertyOK) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/configuration-properties][%d] patchConfigurationPropertyOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchConfigurationPropertyOK) GetPayload() *models.ConfigurationProperty {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPatchConfigurationPropertyForbidden() *PatchConfigurationPropertyForbidd
 	return &PatchConfigurationPropertyForbidden{}
 }
 
-/* PatchConfigurationPropertyForbidden describes a response with status code 403, with default header values.
+/*
+PatchConfigurationPropertyForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type PatchConfigurationPropertyForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this patch configuration property forbidden response has a 2xx status code
+func (o *PatchConfigurationPropertyForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch configuration property forbidden response has a 3xx status code
+func (o *PatchConfigurationPropertyForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch configuration property forbidden response has a 4xx status code
+func (o *PatchConfigurationPropertyForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch configuration property forbidden response has a 5xx status code
+func (o *PatchConfigurationPropertyForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch configuration property forbidden response a status code equal to that given
+func (o *PatchConfigurationPropertyForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *PatchConfigurationPropertyForbidden) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/configuration-properties][%d] patchConfigurationPropertyForbidden  %+v", 403, o.Payload)
 }
+
+func (o *PatchConfigurationPropertyForbidden) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/configuration-properties][%d] patchConfigurationPropertyForbidden  %+v", 403, o.Payload)
+}
+
 func (o *PatchConfigurationPropertyForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewPatchConfigurationPropertyNotFound() *PatchConfigurationPropertyNotFound
 	return &PatchConfigurationPropertyNotFound{}
 }
 
-/* PatchConfigurationPropertyNotFound describes a response with status code 404, with default header values.
+/*
+PatchConfigurationPropertyNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type PatchConfigurationPropertyNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this patch configuration property not found response has a 2xx status code
+func (o *PatchConfigurationPropertyNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch configuration property not found response has a 3xx status code
+func (o *PatchConfigurationPropertyNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch configuration property not found response has a 4xx status code
+func (o *PatchConfigurationPropertyNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch configuration property not found response has a 5xx status code
+func (o *PatchConfigurationPropertyNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch configuration property not found response a status code equal to that given
+func (o *PatchConfigurationPropertyNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *PatchConfigurationPropertyNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/configuration-properties][%d] patchConfigurationPropertyNotFound  %+v", 404, o.Payload)
 }
+
+func (o *PatchConfigurationPropertyNotFound) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/configuration-properties][%d] patchConfigurationPropertyNotFound  %+v", 404, o.Payload)
+}
+
 func (o *PatchConfigurationPropertyNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

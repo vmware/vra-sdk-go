@@ -52,10 +52,12 @@ func NewGetDeploymentActionUsingGET2ParamsWithHTTPClient(client *http.Client) *G
 	}
 }
 
-/* GetDeploymentActionUsingGET2Params contains all the parameters to send to the API endpoint
-   for the get deployment action using g e t 2 operation.
+/*
+GetDeploymentActionUsingGET2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get deployment action using g e t 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetDeploymentActionUsingGET2Params struct {
 

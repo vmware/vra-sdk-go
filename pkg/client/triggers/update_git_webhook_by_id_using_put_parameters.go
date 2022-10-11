@@ -54,10 +54,12 @@ func NewUpdateGitWebhookByIDUsingPUTParamsWithHTTPClient(client *http.Client) *U
 	}
 }
 
-/* UpdateGitWebhookByIDUsingPUTParams contains all the parameters to send to the API endpoint
-   for the update git webhook by Id using p u t operation.
+/*
+UpdateGitWebhookByIDUsingPUTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the update git webhook by Id using p u t operation.
+
+	Typically these are written to a http.Request.
 */
 type UpdateGitWebhookByIDUsingPUTParams struct {
 

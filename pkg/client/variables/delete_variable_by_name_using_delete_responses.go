@@ -63,7 +63,8 @@ func NewDeleteVariableByNameUsingDELETEOK() *DeleteVariableByNameUsingDELETEOK {
 	return &DeleteVariableByNameUsingDELETEOK{}
 }
 
-/* DeleteVariableByNameUsingDELETEOK describes a response with status code 200, with default header values.
+/*
+DeleteVariableByNameUsingDELETEOK describes a response with status code 200, with default header values.
 
 'Success' with deleted Variable
 */
@@ -71,9 +72,39 @@ type DeleteVariableByNameUsingDELETEOK struct {
 	Payload *models.Variable
 }
 
+// IsSuccess returns true when this delete variable by name using d e l e t e o k response has a 2xx status code
+func (o *DeleteVariableByNameUsingDELETEOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete variable by name using d e l e t e o k response has a 3xx status code
+func (o *DeleteVariableByNameUsingDELETEOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete variable by name using d e l e t e o k response has a 4xx status code
+func (o *DeleteVariableByNameUsingDELETEOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete variable by name using d e l e t e o k response has a 5xx status code
+func (o *DeleteVariableByNameUsingDELETEOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete variable by name using d e l e t e o k response a status code equal to that given
+func (o *DeleteVariableByNameUsingDELETEOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteVariableByNameUsingDELETEOK) Error() string {
 	return fmt.Sprintf("[DELETE /codestream/api/variables/{project}/{name}][%d] deleteVariableByNameUsingDELETEOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteVariableByNameUsingDELETEOK) String() string {
+	return fmt.Sprintf("[DELETE /codestream/api/variables/{project}/{name}][%d] deleteVariableByNameUsingDELETEOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteVariableByNameUsingDELETEOK) GetPayload() *models.Variable {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewDeleteVariableByNameUsingDELETEUnauthorized() *DeleteVariableByNameUsing
 	return &DeleteVariableByNameUsingDELETEUnauthorized{}
 }
 
-/* DeleteVariableByNameUsingDELETEUnauthorized describes a response with status code 401, with default header values.
+/*
+DeleteVariableByNameUsingDELETEUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type DeleteVariableByNameUsingDELETEUnauthorized struct {
 }
 
+// IsSuccess returns true when this delete variable by name using d e l e t e unauthorized response has a 2xx status code
+func (o *DeleteVariableByNameUsingDELETEUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete variable by name using d e l e t e unauthorized response has a 3xx status code
+func (o *DeleteVariableByNameUsingDELETEUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete variable by name using d e l e t e unauthorized response has a 4xx status code
+func (o *DeleteVariableByNameUsingDELETEUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete variable by name using d e l e t e unauthorized response has a 5xx status code
+func (o *DeleteVariableByNameUsingDELETEUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete variable by name using d e l e t e unauthorized response a status code equal to that given
+func (o *DeleteVariableByNameUsingDELETEUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DeleteVariableByNameUsingDELETEUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/variables/{project}/{name}][%d] deleteVariableByNameUsingDELETEUnauthorized ", 401)
+}
+
+func (o *DeleteVariableByNameUsingDELETEUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/variables/{project}/{name}][%d] deleteVariableByNameUsingDELETEUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewDeleteVariableByNameUsingDELETEForbidden() *DeleteVariableByNameUsingDEL
 	return &DeleteVariableByNameUsingDELETEForbidden{}
 }
 
-/* DeleteVariableByNameUsingDELETEForbidden describes a response with status code 403, with default header values.
+/*
+DeleteVariableByNameUsingDELETEForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type DeleteVariableByNameUsingDELETEForbidden struct {
 }
 
+// IsSuccess returns true when this delete variable by name using d e l e t e forbidden response has a 2xx status code
+func (o *DeleteVariableByNameUsingDELETEForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete variable by name using d e l e t e forbidden response has a 3xx status code
+func (o *DeleteVariableByNameUsingDELETEForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete variable by name using d e l e t e forbidden response has a 4xx status code
+func (o *DeleteVariableByNameUsingDELETEForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete variable by name using d e l e t e forbidden response has a 5xx status code
+func (o *DeleteVariableByNameUsingDELETEForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete variable by name using d e l e t e forbidden response a status code equal to that given
+func (o *DeleteVariableByNameUsingDELETEForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteVariableByNameUsingDELETEForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/variables/{project}/{name}][%d] deleteVariableByNameUsingDELETEForbidden ", 403)
+}
+
+func (o *DeleteVariableByNameUsingDELETEForbidden) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/variables/{project}/{name}][%d] deleteVariableByNameUsingDELETEForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewDeleteVariableByNameUsingDELETENotFound() *DeleteVariableByNameUsingDELE
 	return &DeleteVariableByNameUsingDELETENotFound{}
 }
 
-/* DeleteVariableByNameUsingDELETENotFound describes a response with status code 404, with default header values.
+/*
+DeleteVariableByNameUsingDELETENotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type DeleteVariableByNameUsingDELETENotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete variable by name using d e l e t e not found response has a 2xx status code
+func (o *DeleteVariableByNameUsingDELETENotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete variable by name using d e l e t e not found response has a 3xx status code
+func (o *DeleteVariableByNameUsingDELETENotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete variable by name using d e l e t e not found response has a 4xx status code
+func (o *DeleteVariableByNameUsingDELETENotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete variable by name using d e l e t e not found response has a 5xx status code
+func (o *DeleteVariableByNameUsingDELETENotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete variable by name using d e l e t e not found response a status code equal to that given
+func (o *DeleteVariableByNameUsingDELETENotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteVariableByNameUsingDELETENotFound) Error() string {
 	return fmt.Sprintf("[DELETE /codestream/api/variables/{project}/{name}][%d] deleteVariableByNameUsingDELETENotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteVariableByNameUsingDELETENotFound) String() string {
+	return fmt.Sprintf("[DELETE /codestream/api/variables/{project}/{name}][%d] deleteVariableByNameUsingDELETENotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteVariableByNameUsingDELETENotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewDeleteVariableByNameUsingDELETEInternalServerError() *DeleteVariableByNa
 	return &DeleteVariableByNameUsingDELETEInternalServerError{}
 }
 
-/* DeleteVariableByNameUsingDELETEInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteVariableByNameUsingDELETEInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type DeleteVariableByNameUsingDELETEInternalServerError struct {
 }
 
+// IsSuccess returns true when this delete variable by name using d e l e t e internal server error response has a 2xx status code
+func (o *DeleteVariableByNameUsingDELETEInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete variable by name using d e l e t e internal server error response has a 3xx status code
+func (o *DeleteVariableByNameUsingDELETEInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete variable by name using d e l e t e internal server error response has a 4xx status code
+func (o *DeleteVariableByNameUsingDELETEInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete variable by name using d e l e t e internal server error response has a 5xx status code
+func (o *DeleteVariableByNameUsingDELETEInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this delete variable by name using d e l e t e internal server error response a status code equal to that given
+func (o *DeleteVariableByNameUsingDELETEInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *DeleteVariableByNameUsingDELETEInternalServerError) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/variables/{project}/{name}][%d] deleteVariableByNameUsingDELETEInternalServerError ", 500)
+}
+
+func (o *DeleteVariableByNameUsingDELETEInternalServerError) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/variables/{project}/{name}][%d] deleteVariableByNameUsingDELETEInternalServerError ", 500)
 }
 

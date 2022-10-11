@@ -38,9 +38,9 @@ type ClientService interface {
 }
 
 /*
-  PatchUsingPATCH handles unfinished requests
+PatchUsingPATCH handles unfinished requests
 
-  Handles unfinished requests that are stopped because of service shutdown or a service outage.
+Handles unfinished requests that are stopped because of service shutdown or a service outage.
 */
 func (a *Client) PatchUsingPATCH(params *PatchUsingPATCHParams, opts ...ClientOption) (*PatchUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
@@ -78,9 +78,9 @@ func (a *Client) PatchUsingPATCH(params *PatchUsingPATCHParams, opts ...ClientOp
 }
 
 /*
-  PostUsingPOST handles blueprint resources requests
+PostUsingPOST handles blueprint resources requests
 
-  Handles blueprint requests for resource operations - allocation, provisioning, removal
+Handles blueprint requests for resource operations - allocation, provisioning, removal
 */
 func (a *Client) PostUsingPOST(params *PostUsingPOSTParams, opts ...ClientOption) (*PostUsingPOSTOK, error) {
 	// TODO: Validate the params before sending

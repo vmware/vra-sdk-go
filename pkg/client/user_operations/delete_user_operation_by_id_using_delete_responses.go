@@ -63,7 +63,8 @@ func NewDeleteUserOperationByIDUsingDELETEOK() *DeleteUserOperationByIDUsingDELE
 	return &DeleteUserOperationByIDUsingDELETEOK{}
 }
 
-/* DeleteUserOperationByIDUsingDELETEOK describes a response with status code 200, with default header values.
+/*
+DeleteUserOperationByIDUsingDELETEOK describes a response with status code 200, with default header values.
 
 'Success' with the deleted User Operation
 */
@@ -71,9 +72,39 @@ type DeleteUserOperationByIDUsingDELETEOK struct {
 	Payload models.UserOperation
 }
 
+// IsSuccess returns true when this delete user operation by Id using d e l e t e o k response has a 2xx status code
+func (o *DeleteUserOperationByIDUsingDELETEOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete user operation by Id using d e l e t e o k response has a 3xx status code
+func (o *DeleteUserOperationByIDUsingDELETEOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete user operation by Id using d e l e t e o k response has a 4xx status code
+func (o *DeleteUserOperationByIDUsingDELETEOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete user operation by Id using d e l e t e o k response has a 5xx status code
+func (o *DeleteUserOperationByIDUsingDELETEOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete user operation by Id using d e l e t e o k response a status code equal to that given
+func (o *DeleteUserOperationByIDUsingDELETEOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteUserOperationByIDUsingDELETEOK) Error() string {
 	return fmt.Sprintf("[DELETE /codestream/api/user-operations/{id}][%d] deleteUserOperationByIdUsingDELETEOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteUserOperationByIDUsingDELETEOK) String() string {
+	return fmt.Sprintf("[DELETE /codestream/api/user-operations/{id}][%d] deleteUserOperationByIdUsingDELETEOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteUserOperationByIDUsingDELETEOK) GetPayload() models.UserOperation {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewDeleteUserOperationByIDUsingDELETEUnauthorized() *DeleteUserOperationByI
 	return &DeleteUserOperationByIDUsingDELETEUnauthorized{}
 }
 
-/* DeleteUserOperationByIDUsingDELETEUnauthorized describes a response with status code 401, with default header values.
+/*
+DeleteUserOperationByIDUsingDELETEUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type DeleteUserOperationByIDUsingDELETEUnauthorized struct {
 }
 
+// IsSuccess returns true when this delete user operation by Id using d e l e t e unauthorized response has a 2xx status code
+func (o *DeleteUserOperationByIDUsingDELETEUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete user operation by Id using d e l e t e unauthorized response has a 3xx status code
+func (o *DeleteUserOperationByIDUsingDELETEUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete user operation by Id using d e l e t e unauthorized response has a 4xx status code
+func (o *DeleteUserOperationByIDUsingDELETEUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete user operation by Id using d e l e t e unauthorized response has a 5xx status code
+func (o *DeleteUserOperationByIDUsingDELETEUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete user operation by Id using d e l e t e unauthorized response a status code equal to that given
+func (o *DeleteUserOperationByIDUsingDELETEUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DeleteUserOperationByIDUsingDELETEUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/user-operations/{id}][%d] deleteUserOperationByIdUsingDELETEUnauthorized ", 401)
+}
+
+func (o *DeleteUserOperationByIDUsingDELETEUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/user-operations/{id}][%d] deleteUserOperationByIdUsingDELETEUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewDeleteUserOperationByIDUsingDELETEForbidden() *DeleteUserOperationByIDUs
 	return &DeleteUserOperationByIDUsingDELETEForbidden{}
 }
 
-/* DeleteUserOperationByIDUsingDELETEForbidden describes a response with status code 403, with default header values.
+/*
+DeleteUserOperationByIDUsingDELETEForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type DeleteUserOperationByIDUsingDELETEForbidden struct {
 }
 
+// IsSuccess returns true when this delete user operation by Id using d e l e t e forbidden response has a 2xx status code
+func (o *DeleteUserOperationByIDUsingDELETEForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete user operation by Id using d e l e t e forbidden response has a 3xx status code
+func (o *DeleteUserOperationByIDUsingDELETEForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete user operation by Id using d e l e t e forbidden response has a 4xx status code
+func (o *DeleteUserOperationByIDUsingDELETEForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete user operation by Id using d e l e t e forbidden response has a 5xx status code
+func (o *DeleteUserOperationByIDUsingDELETEForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete user operation by Id using d e l e t e forbidden response a status code equal to that given
+func (o *DeleteUserOperationByIDUsingDELETEForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteUserOperationByIDUsingDELETEForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/user-operations/{id}][%d] deleteUserOperationByIdUsingDELETEForbidden ", 403)
+}
+
+func (o *DeleteUserOperationByIDUsingDELETEForbidden) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/user-operations/{id}][%d] deleteUserOperationByIdUsingDELETEForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewDeleteUserOperationByIDUsingDELETENotFound() *DeleteUserOperationByIDUsi
 	return &DeleteUserOperationByIDUsingDELETENotFound{}
 }
 
-/* DeleteUserOperationByIDUsingDELETENotFound describes a response with status code 404, with default header values.
+/*
+DeleteUserOperationByIDUsingDELETENotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type DeleteUserOperationByIDUsingDELETENotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete user operation by Id using d e l e t e not found response has a 2xx status code
+func (o *DeleteUserOperationByIDUsingDELETENotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete user operation by Id using d e l e t e not found response has a 3xx status code
+func (o *DeleteUserOperationByIDUsingDELETENotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete user operation by Id using d e l e t e not found response has a 4xx status code
+func (o *DeleteUserOperationByIDUsingDELETENotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete user operation by Id using d e l e t e not found response has a 5xx status code
+func (o *DeleteUserOperationByIDUsingDELETENotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete user operation by Id using d e l e t e not found response a status code equal to that given
+func (o *DeleteUserOperationByIDUsingDELETENotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteUserOperationByIDUsingDELETENotFound) Error() string {
 	return fmt.Sprintf("[DELETE /codestream/api/user-operations/{id}][%d] deleteUserOperationByIdUsingDELETENotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteUserOperationByIDUsingDELETENotFound) String() string {
+	return fmt.Sprintf("[DELETE /codestream/api/user-operations/{id}][%d] deleteUserOperationByIdUsingDELETENotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteUserOperationByIDUsingDELETENotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewDeleteUserOperationByIDUsingDELETEInternalServerError() *DeleteUserOpera
 	return &DeleteUserOperationByIDUsingDELETEInternalServerError{}
 }
 
-/* DeleteUserOperationByIDUsingDELETEInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteUserOperationByIDUsingDELETEInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type DeleteUserOperationByIDUsingDELETEInternalServerError struct {
 }
 
+// IsSuccess returns true when this delete user operation by Id using d e l e t e internal server error response has a 2xx status code
+func (o *DeleteUserOperationByIDUsingDELETEInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete user operation by Id using d e l e t e internal server error response has a 3xx status code
+func (o *DeleteUserOperationByIDUsingDELETEInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete user operation by Id using d e l e t e internal server error response has a 4xx status code
+func (o *DeleteUserOperationByIDUsingDELETEInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete user operation by Id using d e l e t e internal server error response has a 5xx status code
+func (o *DeleteUserOperationByIDUsingDELETEInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this delete user operation by Id using d e l e t e internal server error response a status code equal to that given
+func (o *DeleteUserOperationByIDUsingDELETEInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *DeleteUserOperationByIDUsingDELETEInternalServerError) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/user-operations/{id}][%d] deleteUserOperationByIdUsingDELETEInternalServerError ", 500)
+}
+
+func (o *DeleteUserOperationByIDUsingDELETEInternalServerError) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/user-operations/{id}][%d] deleteUserOperationByIdUsingDELETEInternalServerError ", 500)
 }
 

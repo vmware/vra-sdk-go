@@ -51,7 +51,8 @@ func NewDeleteCloudAccountNsxTAccepted() *DeleteCloudAccountNsxTAccepted {
 	return &DeleteCloudAccountNsxTAccepted{}
 }
 
-/* DeleteCloudAccountNsxTAccepted describes a response with status code 202, with default header values.
+/*
+DeleteCloudAccountNsxTAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type DeleteCloudAccountNsxTAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this delete cloud account nsx t accepted response has a 2xx status code
+func (o *DeleteCloudAccountNsxTAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete cloud account nsx t accepted response has a 3xx status code
+func (o *DeleteCloudAccountNsxTAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete cloud account nsx t accepted response has a 4xx status code
+func (o *DeleteCloudAccountNsxTAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete cloud account nsx t accepted response has a 5xx status code
+func (o *DeleteCloudAccountNsxTAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete cloud account nsx t accepted response a status code equal to that given
+func (o *DeleteCloudAccountNsxTAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteCloudAccountNsxTAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-nsx-t/{id}][%d] deleteCloudAccountNsxTAccepted  %+v", 202, o.Payload)
 }
+
+func (o *DeleteCloudAccountNsxTAccepted) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-nsx-t/{id}][%d] deleteCloudAccountNsxTAccepted  %+v", 202, o.Payload)
+}
+
 func (o *DeleteCloudAccountNsxTAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,14 +114,44 @@ func NewDeleteCloudAccountNsxTNoContent() *DeleteCloudAccountNsxTNoContent {
 	return &DeleteCloudAccountNsxTNoContent{}
 }
 
-/* DeleteCloudAccountNsxTNoContent describes a response with status code 204, with default header values.
+/*
+DeleteCloudAccountNsxTNoContent describes a response with status code 204, with default header values.
 
 No Content
 */
 type DeleteCloudAccountNsxTNoContent struct {
 }
 
+// IsSuccess returns true when this delete cloud account nsx t no content response has a 2xx status code
+func (o *DeleteCloudAccountNsxTNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete cloud account nsx t no content response has a 3xx status code
+func (o *DeleteCloudAccountNsxTNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete cloud account nsx t no content response has a 4xx status code
+func (o *DeleteCloudAccountNsxTNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete cloud account nsx t no content response has a 5xx status code
+func (o *DeleteCloudAccountNsxTNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete cloud account nsx t no content response a status code equal to that given
+func (o *DeleteCloudAccountNsxTNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteCloudAccountNsxTNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-nsx-t/{id}][%d] deleteCloudAccountNsxTNoContent ", 204)
+}
+
+func (o *DeleteCloudAccountNsxTNoContent) String() string {
 	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-nsx-t/{id}][%d] deleteCloudAccountNsxTNoContent ", 204)
 }
 
@@ -104,7 +165,8 @@ func NewDeleteCloudAccountNsxTForbidden() *DeleteCloudAccountNsxTForbidden {
 	return &DeleteCloudAccountNsxTForbidden{}
 }
 
-/* DeleteCloudAccountNsxTForbidden describes a response with status code 403, with default header values.
+/*
+DeleteCloudAccountNsxTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -112,9 +174,39 @@ type DeleteCloudAccountNsxTForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this delete cloud account nsx t forbidden response has a 2xx status code
+func (o *DeleteCloudAccountNsxTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete cloud account nsx t forbidden response has a 3xx status code
+func (o *DeleteCloudAccountNsxTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete cloud account nsx t forbidden response has a 4xx status code
+func (o *DeleteCloudAccountNsxTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete cloud account nsx t forbidden response has a 5xx status code
+func (o *DeleteCloudAccountNsxTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete cloud account nsx t forbidden response a status code equal to that given
+func (o *DeleteCloudAccountNsxTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteCloudAccountNsxTForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-nsx-t/{id}][%d] deleteCloudAccountNsxTForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DeleteCloudAccountNsxTForbidden) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-nsx-t/{id}][%d] deleteCloudAccountNsxTForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DeleteCloudAccountNsxTForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

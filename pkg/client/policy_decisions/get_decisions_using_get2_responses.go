@@ -29,6 +29,18 @@ func (o *GetDecisionsUsingGET2Reader) ReadResponse(response runtime.ClientRespon
 			return nil, err
 		}
 		return result, nil
+	case 401:
+		result := NewGetDecisionsUsingGET2Unauthorized()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 403:
+		result := NewGetDecisionsUsingGET2Forbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +51,8 @@ func NewGetDecisionsUsingGET2OK() *GetDecisionsUsingGET2OK {
 	return &GetDecisionsUsingGET2OK{}
 }
 
-/* GetDecisionsUsingGET2OK describes a response with status code 200, with default header values.
+/*
+GetDecisionsUsingGET2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +60,39 @@ type GetDecisionsUsingGET2OK struct {
 	Payload *models.PageOfPolicyDecisionOfObjectNode
 }
 
+// IsSuccess returns true when this get decisions using g e t2 o k response has a 2xx status code
+func (o *GetDecisionsUsingGET2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get decisions using g e t2 o k response has a 3xx status code
+func (o *GetDecisionsUsingGET2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get decisions using g e t2 o k response has a 4xx status code
+func (o *GetDecisionsUsingGET2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get decisions using g e t2 o k response has a 5xx status code
+func (o *GetDecisionsUsingGET2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get decisions using g e t2 o k response a status code equal to that given
+func (o *GetDecisionsUsingGET2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetDecisionsUsingGET2OK) Error() string {
 	return fmt.Sprintf("[GET /policy/api/policyDecisions][%d] getDecisionsUsingGET2OK  %+v", 200, o.Payload)
 }
+
+func (o *GetDecisionsUsingGET2OK) String() string {
+	return fmt.Sprintf("[GET /policy/api/policyDecisions][%d] getDecisionsUsingGET2OK  %+v", 200, o.Payload)
+}
+
 func (o *GetDecisionsUsingGET2OK) GetPayload() *models.PageOfPolicyDecisionOfObjectNode {
 	return o.Payload
 }
@@ -62,6 +105,108 @@ func (o *GetDecisionsUsingGET2OK) readResponse(response runtime.ClientResponse, 
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewGetDecisionsUsingGET2Unauthorized creates a GetDecisionsUsingGET2Unauthorized with default headers values
+func NewGetDecisionsUsingGET2Unauthorized() *GetDecisionsUsingGET2Unauthorized {
+	return &GetDecisionsUsingGET2Unauthorized{}
+}
+
+/*
+GetDecisionsUsingGET2Unauthorized describes a response with status code 401, with default header values.
+
+Unauthorized
+*/
+type GetDecisionsUsingGET2Unauthorized struct {
+}
+
+// IsSuccess returns true when this get decisions using g e t2 unauthorized response has a 2xx status code
+func (o *GetDecisionsUsingGET2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get decisions using g e t2 unauthorized response has a 3xx status code
+func (o *GetDecisionsUsingGET2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get decisions using g e t2 unauthorized response has a 4xx status code
+func (o *GetDecisionsUsingGET2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get decisions using g e t2 unauthorized response has a 5xx status code
+func (o *GetDecisionsUsingGET2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get decisions using g e t2 unauthorized response a status code equal to that given
+func (o *GetDecisionsUsingGET2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+func (o *GetDecisionsUsingGET2Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /policy/api/policyDecisions][%d] getDecisionsUsingGET2Unauthorized ", 401)
+}
+
+func (o *GetDecisionsUsingGET2Unauthorized) String() string {
+	return fmt.Sprintf("[GET /policy/api/policyDecisions][%d] getDecisionsUsingGET2Unauthorized ", 401)
+}
+
+func (o *GetDecisionsUsingGET2Unauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewGetDecisionsUsingGET2Forbidden creates a GetDecisionsUsingGET2Forbidden with default headers values
+func NewGetDecisionsUsingGET2Forbidden() *GetDecisionsUsingGET2Forbidden {
+	return &GetDecisionsUsingGET2Forbidden{}
+}
+
+/*
+GetDecisionsUsingGET2Forbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type GetDecisionsUsingGET2Forbidden struct {
+}
+
+// IsSuccess returns true when this get decisions using g e t2 forbidden response has a 2xx status code
+func (o *GetDecisionsUsingGET2Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get decisions using g e t2 forbidden response has a 3xx status code
+func (o *GetDecisionsUsingGET2Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get decisions using g e t2 forbidden response has a 4xx status code
+func (o *GetDecisionsUsingGET2Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get decisions using g e t2 forbidden response has a 5xx status code
+func (o *GetDecisionsUsingGET2Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get decisions using g e t2 forbidden response a status code equal to that given
+func (o *GetDecisionsUsingGET2Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *GetDecisionsUsingGET2Forbidden) Error() string {
+	return fmt.Sprintf("[GET /policy/api/policyDecisions][%d] getDecisionsUsingGET2Forbidden ", 403)
+}
+
+func (o *GetDecisionsUsingGET2Forbidden) String() string {
+	return fmt.Sprintf("[GET /policy/api/policyDecisions][%d] getDecisionsUsingGET2Forbidden ", 403)
+}
+
+func (o *GetDecisionsUsingGET2Forbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

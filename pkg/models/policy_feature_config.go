@@ -23,6 +23,9 @@ type PolicyFeatureConfig struct {
 	// enable enforcement type
 	EnableEnforcementType bool `json:"enableEnforcementType,omitempty"`
 
+	// enable single project scope
+	EnableSingleProjectScope bool `json:"enableSingleProjectScope,omitempty"`
+
 	// enable update notification
 	EnableUpdateNotification bool `json:"enableUpdateNotification,omitempty"`
 }

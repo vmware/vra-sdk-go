@@ -60,9 +60,9 @@ type ClientService interface {
 }
 
 /*
-  CheckDeploymentNameExistsUsingGET2 checks if a deployment exists
+CheckDeploymentNameExistsUsingGET2 checks if a deployment exists
 
-  Returns OK if a deployment with the supplied name exists.
+Returns OK if a deployment with the supplied name exists.
 */
 func (a *Client) CheckDeploymentNameExistsUsingGET2(params *CheckDeploymentNameExistsUsingGET2Params, opts ...ClientOption) (*CheckDeploymentNameExistsUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -100,9 +100,9 @@ func (a *Client) CheckDeploymentNameExistsUsingGET2(params *CheckDeploymentNameE
 }
 
 /*
-  CheckDeploymentNameUsingGET2 checks if a deployment exists
+CheckDeploymentNameUsingGET2 checks if a deployment exists
 
-  Returns OK if a deployment with the supplied name exists.
+Returns OK if a deployment with the supplied name exists.
 */
 func (a *Client) CheckDeploymentNameUsingGET2(params *CheckDeploymentNameUsingGET2Params, opts ...ClientOption) (*CheckDeploymentNameUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -140,9 +140,9 @@ func (a *Client) CheckDeploymentNameUsingGET2(params *CheckDeploymentNameUsingGE
 }
 
 /*
-  DeleteDeploymentUsingDELETE2 deletes a deployment effectively triggers a delete day2 operation
+DeleteDeploymentUsingDELETE2 deletes a deployment effectively triggers a delete day2 operation
 
-  Deletes the deployment with the supplied ID, cleans up the associated resources from the Cloud Provider.
+Deletes the deployment with the supplied ID, cleans up the associated resources from the Cloud Provider.
 */
 func (a *Client) DeleteDeploymentUsingDELETE2(params *DeleteDeploymentUsingDELETE2Params, opts ...ClientOption) (*DeleteDeploymentUsingDELETE2OK, error) {
 	// TODO: Validate the params before sending
@@ -180,9 +180,9 @@ func (a *Client) DeleteDeploymentUsingDELETE2(params *DeleteDeploymentUsingDELET
 }
 
 /*
-  DeleteResourceUsingDELETE2 deletes resource associated with a deployment effectively triggers a delete day2 operation
+DeleteResourceUsingDELETE2 deletes resource associated with a deployment effectively triggers a delete day2 operation
 
-  Deletes the resource with the specified ID and attempts to delete resource from the Cloud Provider.
+Deletes the resource with the specified ID and attempts to delete resource from the Cloud Provider.
 */
 func (a *Client) DeleteResourceUsingDELETE2(params *DeleteResourceUsingDELETE2Params, opts ...ClientOption) (*DeleteResourceUsingDELETE2OK, error) {
 	// TODO: Validate the params before sending
@@ -220,9 +220,9 @@ func (a *Client) DeleteResourceUsingDELETE2(params *DeleteResourceUsingDELETE2Pa
 }
 
 /*
-  GetDeploymentByIDV3UsingGET fetches a specific deployment
+GetDeploymentByIDV3UsingGET fetches a specific deployment
 
-  Returns the deployment with the supplied ID.
+Returns the deployment with the supplied ID.
 */
 func (a *Client) GetDeploymentByIDV3UsingGET(params *GetDeploymentByIDV3UsingGETParams, opts ...ClientOption) (*GetDeploymentByIDV3UsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -260,9 +260,9 @@ func (a *Client) GetDeploymentByIDV3UsingGET(params *GetDeploymentByIDV3UsingGET
 }
 
 /*
-  GetDeploymentExpenseHistoryByIDUsingGET2 fetches a specific deployment s expense history
+GetDeploymentExpenseHistoryByIDUsingGET2 fetches a specific deployment s expense history
 
-  Returns the deployment expense history with the supplied ID.
+Returns the deployment expense history with the supplied ID.
 */
 func (a *Client) GetDeploymentExpenseHistoryByIDUsingGET2(params *GetDeploymentExpenseHistoryByIDUsingGET2Params, opts ...ClientOption) (*GetDeploymentExpenseHistoryByIDUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -300,7 +300,7 @@ func (a *Client) GetDeploymentExpenseHistoryByIDUsingGET2(params *GetDeploymentE
 }
 
 /*
-  GetDeploymentFilterByIDUsingGET2 returns the deployment filter with the supplied ID
+GetDeploymentFilterByIDUsingGET2 returns the deployment filter with the supplied ID
 */
 func (a *Client) GetDeploymentFilterByIDUsingGET2(params *GetDeploymentFilterByIDUsingGET2Params, opts ...ClientOption) (*GetDeploymentFilterByIDUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -338,7 +338,7 @@ func (a *Client) GetDeploymentFilterByIDUsingGET2(params *GetDeploymentFilterByI
 }
 
 /*
-  GetDeploymentFiltersUsingGET2 returns the deployment filters in context of given user
+GetDeploymentFiltersUsingGET2 returns the deployment filters in context of given user
 */
 func (a *Client) GetDeploymentFiltersUsingGET2(params *GetDeploymentFiltersUsingGET2Params, opts ...ClientOption) (*GetDeploymentFiltersUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -376,9 +376,9 @@ func (a *Client) GetDeploymentFiltersUsingGET2(params *GetDeploymentFiltersUsing
 }
 
 /*
-  GetDeploymentResourcesUsingGET2 fetches resources associated with a deployment
+GetDeploymentResourcesUsingGET2 fetches resources associated with a deployment
 
-  Returns a paginated list of resources corresponding to the deployment with the supplied ID.
+Returns a paginated list of resources corresponding to the deployment with the supplied ID.
 */
 func (a *Client) GetDeploymentResourcesUsingGET2(params *GetDeploymentResourcesUsingGET2Params, opts ...ClientOption) (*GetDeploymentResourcesUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -416,7 +416,7 @@ func (a *Client) GetDeploymentResourcesUsingGET2(params *GetDeploymentResourcesU
 }
 
 /*
-  GetDeploymentsForProjectUsingGET2 returns a count of deployments using the project
+GetDeploymentsForProjectUsingGET2 returns a count of deployments using the project
 */
 func (a *Client) GetDeploymentsForProjectUsingGET2(params *GetDeploymentsForProjectUsingGET2Params, opts ...ClientOption) (*GetDeploymentsForProjectUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -454,9 +454,9 @@ func (a *Client) GetDeploymentsForProjectUsingGET2(params *GetDeploymentsForProj
 }
 
 /*
-  GetDeploymentsV3UsingGET fetches all deployments
+GetDeploymentsV3UsingGET fetches all deployments
 
-  Returns a paginated list of deployments.
+Returns a paginated list of deployments.
 */
 func (a *Client) GetDeploymentsV3UsingGET(params *GetDeploymentsV3UsingGETParams, opts ...ClientOption) (*GetDeploymentsV3UsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -494,9 +494,9 @@ func (a *Client) GetDeploymentsV3UsingGET(params *GetDeploymentsV3UsingGETParams
 }
 
 /*
-  GetResourceByIDUsingGET4 fetches resource associated with a deployment
+GetResourceByIDUsingGET4 fetches resource associated with a deployment
 
-  Returns the resource with the specified ID that is correlated with the supplied deployment.
+Returns the resource with the specified ID that is correlated with the supplied deployment.
 */
 func (a *Client) GetResourceByIDUsingGET4(params *GetResourceByIDUsingGET4Params, opts ...ClientOption) (*GetResourceByIDUsingGET4OK, error) {
 	// TODO: Validate the params before sending
@@ -534,9 +534,9 @@ func (a *Client) GetResourceByIDUsingGET4(params *GetResourceByIDUsingGET4Params
 }
 
 /*
-  PatchDeploymentUsingPATCH2 updates deployment
+PatchDeploymentUsingPATCH2 updates deployment
 
-  Updates the deployment with the supplied ID.
+Updates the deployment with the supplied ID.
 */
 func (a *Client) PatchDeploymentUsingPATCH2(params *PatchDeploymentUsingPATCH2Params, opts ...ClientOption) (*PatchDeploymentUsingPATCH2OK, error) {
 	// TODO: Validate the params before sending

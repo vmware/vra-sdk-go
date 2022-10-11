@@ -53,10 +53,12 @@ func NewDeleteNetworkParamsWithHTTPClient(client *http.Client) *DeleteNetworkPar
 	}
 }
 
-/* DeleteNetworkParams contains all the parameters to send to the API endpoint
-   for the delete network operation.
+/*
+DeleteNetworkParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete network operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteNetworkParams struct {
 

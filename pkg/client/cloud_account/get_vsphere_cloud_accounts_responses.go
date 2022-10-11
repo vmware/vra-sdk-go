@@ -45,7 +45,8 @@ func NewGetVSphereCloudAccountsOK() *GetVSphereCloudAccountsOK {
 	return &GetVSphereCloudAccountsOK{}
 }
 
-/* GetVSphereCloudAccountsOK describes a response with status code 200, with default header values.
+/*
+GetVSphereCloudAccountsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type GetVSphereCloudAccountsOK struct {
 	Payload *models.CloudAccountVsphereResult
 }
 
+// IsSuccess returns true when this get v sphere cloud accounts o k response has a 2xx status code
+func (o *GetVSphereCloudAccountsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v sphere cloud accounts o k response has a 3xx status code
+func (o *GetVSphereCloudAccountsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v sphere cloud accounts o k response has a 4xx status code
+func (o *GetVSphereCloudAccountsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v sphere cloud accounts o k response has a 5xx status code
+func (o *GetVSphereCloudAccountsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v sphere cloud accounts o k response a status code equal to that given
+func (o *GetVSphereCloudAccountsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetVSphereCloudAccountsOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vsphere][%d] getVSphereCloudAccountsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetVSphereCloudAccountsOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vsphere][%d] getVSphereCloudAccountsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetVSphereCloudAccountsOK) GetPayload() *models.CloudAccountVsphereResult {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewGetVSphereCloudAccountsForbidden() *GetVSphereCloudAccountsForbidden {
 	return &GetVSphereCloudAccountsForbidden{}
 }
 
-/* GetVSphereCloudAccountsForbidden describes a response with status code 403, with default header values.
+/*
+GetVSphereCloudAccountsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type GetVSphereCloudAccountsForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get v sphere cloud accounts forbidden response has a 2xx status code
+func (o *GetVSphereCloudAccountsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get v sphere cloud accounts forbidden response has a 3xx status code
+func (o *GetVSphereCloudAccountsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v sphere cloud accounts forbidden response has a 4xx status code
+func (o *GetVSphereCloudAccountsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get v sphere cloud accounts forbidden response has a 5xx status code
+func (o *GetVSphereCloudAccountsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v sphere cloud accounts forbidden response a status code equal to that given
+func (o *GetVSphereCloudAccountsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetVSphereCloudAccountsForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vsphere][%d] getVSphereCloudAccountsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetVSphereCloudAccountsForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/cloud-accounts-vsphere][%d] getVSphereCloudAccountsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetVSphereCloudAccountsForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

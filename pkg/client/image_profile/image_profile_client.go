@@ -44,9 +44,9 @@ type ClientService interface {
 }
 
 /*
-  CreateImageProfile creates image profile
+CreateImageProfile creates image profile
 
-  Create image profile
+Create image profile
 */
 func (a *Client) CreateImageProfile(params *CreateImageProfileParams, opts ...ClientOption) (*CreateImageProfileCreated, error) {
 	// TODO: Validate the params before sending
@@ -84,9 +84,9 @@ func (a *Client) CreateImageProfile(params *CreateImageProfileParams, opts ...Cl
 }
 
 /*
-  DeleteImageProfile deletes image profile
+DeleteImageProfile deletes image profile
 
-  Delete image profile with a given id
+Delete image profile with a given id
 */
 func (a *Client) DeleteImageProfile(params *DeleteImageProfileParams, opts ...ClientOption) (*DeleteImageProfileNoContent, error) {
 	// TODO: Validate the params before sending
@@ -124,9 +124,9 @@ func (a *Client) DeleteImageProfile(params *DeleteImageProfileParams, opts ...Cl
 }
 
 /*
-  GetImageProfile gets image profile
+GetImageProfile gets image profile
 
-  Get image profile with a given id
+Get image profile with a given id
 */
 func (a *Client) GetImageProfile(params *GetImageProfileParams, opts ...ClientOption) (*GetImageProfileOK, error) {
 	// TODO: Validate the params before sending
@@ -164,9 +164,9 @@ func (a *Client) GetImageProfile(params *GetImageProfileParams, opts ...ClientOp
 }
 
 /*
-  GetImageProfiles gets image profile
+GetImageProfiles gets image profile
 
-  Get all image profiles
+Get all image profiles
 */
 func (a *Client) GetImageProfiles(params *GetImageProfilesParams, opts ...ClientOption) (*GetImageProfilesOK, error) {
 	// TODO: Validate the params before sending
@@ -204,9 +204,9 @@ func (a *Client) GetImageProfiles(params *GetImageProfilesParams, opts ...Client
 }
 
 /*
-  UpdateImageProfile updates image profile
+UpdateImageProfile updates image profile
 
-  Update image profile
+Update image profile
 */
 func (a *Client) UpdateImageProfile(params *UpdateImageProfileParams, opts ...ClientOption) (*UpdateImageProfileOK, error) {
 	// TODO: Validate the params before sending

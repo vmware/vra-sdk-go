@@ -64,6 +64,9 @@ type Deployment struct {
 	// Format: uuid
 	ID strfmt.UUID `json:"id,omitempty"`
 
+	// Requests that are in-progress for this deployment at this time
+	InprogressRequests interface{} `json:"inprogressRequests,omitempty"`
+
 	// The inputs that were used to request this deployment
 	Inputs interface{} `json:"inputs,omitempty"`
 

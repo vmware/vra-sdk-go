@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -29,8 +28,10 @@ type ProjectSpecification interface {
 	runtime.Validatable
 	runtime.ContextValidatable
 
-	Administrators() []Principal
-	SetAdministrators([]Principal)
+	// List of administrator users associated with the project. Only administrators can manage project's configuration.
+	// Example: [{"email":"administrator@vmware.com","type":"user"}]
+	Administrators() []*Principal
+	SetAdministrators([]*Principal)
 
 	// List of constraints of the project.
 	// Example: {"network":{"conditions":[{"enforcement":"HARD","expression":{"key":"key","value":"value"},"occurrence":"MUST_OCCUR","type":"TAG"}]}}
@@ -45,8 +46,10 @@ type ProjectSpecification interface {
 	Description() string
 	SetDescription(string)
 
-	Members() []Principal
-	SetMembers([]Principal)
+	// List of member users associated with the project.
+	// Example: [{"email":"member@vmware.com","type":"user"}]
+	Members() []*Principal
+	SetMembers([]*Principal)
 
 	// A human-friendly name used as an identifier in APIs that support this option.
 	// Example: my-name
@@ -74,15 +77,17 @@ type ProjectSpecification interface {
 	SharedResources() *bool
 	SetSharedResources(*bool)
 
-	Viewers() []Principal
-	SetViewers([]Principal)
+	// List of viewer users associated with the project.
+	// Example: [{"email":"viewer@vmware.com","type":"user"}]
+	Viewers() []*Principal
+	SetViewers([]*Principal)
 
 	// AdditionalProperties in base type shoud be handled just like regular properties
 	// At this moment, the base type property is pushed down to the subtype
 }
 
 type projectSpecification struct {
-	administratorsField []Principal
+	administratorsField []*Principal
 
 	constraintsField map[string]ProjectConstraint
 
@@ -90,7 +95,7 @@ type projectSpecification struct {
 
 	descriptionField string
 
-	membersField []Principal
+	membersField []*Principal
 
 	nameField *string
 
@@ -100,16 +105,16 @@ type projectSpecification struct {
 
 	sharedResourcesField *bool
 
-	viewersField []Principal
+	viewersField []*Principal
 }
 
 // Administrators gets the administrators of this polymorphic type
-func (m *projectSpecification) Administrators() []Principal {
+func (m *projectSpecification) Administrators() []*Principal {
 	return m.administratorsField
 }
 
 // SetAdministrators sets the administrators of this polymorphic type
-func (m *projectSpecification) SetAdministrators(val []Principal) {
+func (m *projectSpecification) SetAdministrators(val []*Principal) {
 	m.administratorsField = val
 }
 
@@ -144,12 +149,12 @@ func (m *projectSpecification) SetDescription(val string) {
 }
 
 // Members gets the members of this polymorphic type
-func (m *projectSpecification) Members() []Principal {
+func (m *projectSpecification) Members() []*Principal {
 	return m.membersField
 }
 
 // SetMembers sets the members of this polymorphic type
-func (m *projectSpecification) SetMembers(val []Principal) {
+func (m *projectSpecification) SetMembers(val []*Principal) {
 	m.membersField = val
 }
 
@@ -194,12 +199,12 @@ func (m *projectSpecification) SetSharedResources(val *bool) {
 }
 
 // Viewers gets the viewers of this polymorphic type
-func (m *projectSpecification) Viewers() []Principal {
+func (m *projectSpecification) Viewers() []*Principal {
 	return m.viewersField
 }
 
 // SetViewers sets the viewers of this polymorphic type
-func (m *projectSpecification) SetViewers(val []Principal) {
+func (m *projectSpecification) SetViewers(val []*Principal) {
 	m.viewersField = val
 }
 
@@ -224,7 +229,7 @@ func UnmarshalProjectSpecificationSlice(reader io.Reader, consumer runtime.Consu
 // UnmarshalProjectSpecification unmarshals polymorphic ProjectSpecification
 func UnmarshalProjectSpecification(reader io.Reader, consumer runtime.Consumer) (ProjectSpecification, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}
@@ -299,14 +304,19 @@ func (m *projectSpecification) validateAdministrators(formats strfmt.Registry) e
 	}
 
 	for i := 0; i < len(m.Administrators()); i++ {
+		if swag.IsZero(m.administratorsField[i]) { // not required
+			continue
+		}
 
-		if err := m.administratorsField[i].Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("administrators" + "." + strconv.Itoa(i))
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("administrators" + "." + strconv.Itoa(i))
+		if m.administratorsField[i] != nil {
+			if err := m.administratorsField[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("administrators" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("administrators" + "." + strconv.Itoa(i))
+				}
+				return err
 			}
-			return err
 		}
 
 	}
@@ -363,14 +373,19 @@ func (m *projectSpecification) validateMembers(formats strfmt.Registry) error {
 	}
 
 	for i := 0; i < len(m.Members()); i++ {
+		if swag.IsZero(m.membersField[i]) { // not required
+			continue
+		}
 
-		if err := m.membersField[i].Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("members" + "." + strconv.Itoa(i))
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("members" + "." + strconv.Itoa(i))
+		if m.membersField[i] != nil {
+			if err := m.membersField[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("members" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("members" + "." + strconv.Itoa(i))
+				}
+				return err
 			}
-			return err
 		}
 
 	}
@@ -393,14 +408,19 @@ func (m *projectSpecification) validateViewers(formats strfmt.Registry) error {
 	}
 
 	for i := 0; i < len(m.Viewers()); i++ {
+		if swag.IsZero(m.viewersField[i]) { // not required
+			continue
+		}
 
-		if err := m.viewersField[i].Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("viewers" + "." + strconv.Itoa(i))
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("viewers" + "." + strconv.Itoa(i))
+		if m.viewersField[i] != nil {
+			if err := m.viewersField[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("viewers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("viewers" + "." + strconv.Itoa(i))
+				}
+				return err
 			}
-			return err
 		}
 
 	}
@@ -442,13 +462,15 @@ func (m *projectSpecification) contextValidateAdministrators(ctx context.Context
 
 	for i := 0; i < len(m.Administrators()); i++ {
 
-		if err := m.administratorsField[i].ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("administrators" + "." + strconv.Itoa(i))
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("administrators" + "." + strconv.Itoa(i))
+		if m.administratorsField[i] != nil {
+			if err := m.administratorsField[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("administrators" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("administrators" + "." + strconv.Itoa(i))
+				}
+				return err
 			}
-			return err
 		}
 
 	}
@@ -489,13 +511,15 @@ func (m *projectSpecification) contextValidateMembers(ctx context.Context, forma
 
 	for i := 0; i < len(m.Members()); i++ {
 
-		if err := m.membersField[i].ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("members" + "." + strconv.Itoa(i))
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("members" + "." + strconv.Itoa(i))
+		if m.membersField[i] != nil {
+			if err := m.membersField[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("members" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("members" + "." + strconv.Itoa(i))
+				}
+				return err
 			}
-			return err
 		}
 
 	}
@@ -507,13 +531,15 @@ func (m *projectSpecification) contextValidateViewers(ctx context.Context, forma
 
 	for i := 0; i < len(m.Viewers()); i++ {
 
-		if err := m.viewersField[i].ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("viewers" + "." + strconv.Itoa(i))
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("viewers" + "." + strconv.Itoa(i))
+		if m.viewersField[i] != nil {
+			if err := m.viewersField[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("viewers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("viewers" + "." + strconv.Itoa(i))
+				}
+				return err
 			}
-			return err
 		}
 
 	}

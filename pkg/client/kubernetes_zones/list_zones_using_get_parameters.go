@@ -53,10 +53,12 @@ func NewListZonesUsingGETParamsWithHTTPClient(client *http.Client) *ListZonesUsi
 	}
 }
 
-/* ListZonesUsingGETParams contains all the parameters to send to the API endpoint
-   for the list zones using g e t operation.
+/*
+ListZonesUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the list zones using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type ListZonesUsingGETParams struct {
 
@@ -89,6 +91,12 @@ type ListZonesUsingGETParams struct {
 	   projectId
 	*/
 	ProjectID *string
+
+	/* ProviderID.
+
+	   providerId
+	*/
+	ProviderID *string
 
 	// SortSorted.
 	SortSorted *bool
@@ -216,6 +224,17 @@ func (o *ListZonesUsingGETParams) WithProjectID(projectID *string) *ListZonesUsi
 // SetProjectID adds the projectId to the list zones using get params
 func (o *ListZonesUsingGETParams) SetProjectID(projectID *string) {
 	o.ProjectID = projectID
+}
+
+// WithProviderID adds the providerID to the list zones using get params
+func (o *ListZonesUsingGETParams) WithProviderID(providerID *string) *ListZonesUsingGETParams {
+	o.SetProviderID(providerID)
+	return o
+}
+
+// SetProviderID adds the providerId to the list zones using get params
+func (o *ListZonesUsingGETParams) SetProviderID(providerID *string) {
+	o.ProviderID = providerID
 }
 
 // WithSortSorted adds the sortSorted to the list zones using get params
@@ -356,6 +375,23 @@ func (o *ListZonesUsingGETParams) WriteToRequest(r runtime.ClientRequest, reg st
 		if qProjectID != "" {
 
 			if err := r.SetQueryParam("projectId", qProjectID); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.ProviderID != nil {
+
+		// query param providerId
+		var qrProviderID string
+
+		if o.ProviderID != nil {
+			qrProviderID = *o.ProviderID
+		}
+		qProviderID := qrProviderID
+		if qProviderID != "" {
+
+			if err := r.SetQueryParam("providerId", qProviderID); err != nil {
 				return err
 			}
 		}

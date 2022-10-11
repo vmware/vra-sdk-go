@@ -16,7 +16,7 @@ import (
 
 // AdminCatalogItemPatch AdminCatalogItemPatch
 //
-// A patch to update attributes for a catalog item
+// # A patch to update attributes for a catalog item
 //
 // swagger:model AdminCatalogItemPatch
 type AdminCatalogItemPatch struct {

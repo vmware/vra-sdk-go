@@ -52,10 +52,12 @@ func NewGetMeteringPolicyAssignmentUsingGET2ParamsWithHTTPClient(client *http.Cl
 	}
 }
 
-/* GetMeteringPolicyAssignmentUsingGET2Params contains all the parameters to send to the API endpoint
-   for the get metering policy assignment using g e t 2 operation.
+/*
+GetMeteringPolicyAssignmentUsingGET2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get metering policy assignment using g e t 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetMeteringPolicyAssignmentUsingGET2Params struct {
 

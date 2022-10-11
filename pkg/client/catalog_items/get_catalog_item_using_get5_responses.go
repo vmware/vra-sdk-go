@@ -51,7 +51,8 @@ func NewGetCatalogItemUsingGET5OK() *GetCatalogItemUsingGET5OK {
 	return &GetCatalogItemUsingGET5OK{}
 }
 
-/* GetCatalogItemUsingGET5OK describes a response with status code 200, with default header values.
+/*
+GetCatalogItemUsingGET5OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -59,9 +60,39 @@ type GetCatalogItemUsingGET5OK struct {
 	Payload *models.CatalogItem
 }
 
+// IsSuccess returns true when this get catalog item using g e t5 o k response has a 2xx status code
+func (o *GetCatalogItemUsingGET5OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get catalog item using g e t5 o k response has a 3xx status code
+func (o *GetCatalogItemUsingGET5OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get catalog item using g e t5 o k response has a 4xx status code
+func (o *GetCatalogItemUsingGET5OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get catalog item using g e t5 o k response has a 5xx status code
+func (o *GetCatalogItemUsingGET5OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get catalog item using g e t5 o k response a status code equal to that given
+func (o *GetCatalogItemUsingGET5OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetCatalogItemUsingGET5OK) Error() string {
 	return fmt.Sprintf("[GET /catalog/api/items/{id}][%d] getCatalogItemUsingGET5OK  %+v", 200, o.Payload)
 }
+
+func (o *GetCatalogItemUsingGET5OK) String() string {
+	return fmt.Sprintf("[GET /catalog/api/items/{id}][%d] getCatalogItemUsingGET5OK  %+v", 200, o.Payload)
+}
+
 func (o *GetCatalogItemUsingGET5OK) GetPayload() *models.CatalogItem {
 	return o.Payload
 }
@@ -83,14 +114,44 @@ func NewGetCatalogItemUsingGET5Unauthorized() *GetCatalogItemUsingGET5Unauthoriz
 	return &GetCatalogItemUsingGET5Unauthorized{}
 }
 
-/* GetCatalogItemUsingGET5Unauthorized describes a response with status code 401, with default header values.
+/*
+GetCatalogItemUsingGET5Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type GetCatalogItemUsingGET5Unauthorized struct {
 }
 
+// IsSuccess returns true when this get catalog item using g e t5 unauthorized response has a 2xx status code
+func (o *GetCatalogItemUsingGET5Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get catalog item using g e t5 unauthorized response has a 3xx status code
+func (o *GetCatalogItemUsingGET5Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get catalog item using g e t5 unauthorized response has a 4xx status code
+func (o *GetCatalogItemUsingGET5Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get catalog item using g e t5 unauthorized response has a 5xx status code
+func (o *GetCatalogItemUsingGET5Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get catalog item using g e t5 unauthorized response a status code equal to that given
+func (o *GetCatalogItemUsingGET5Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetCatalogItemUsingGET5Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /catalog/api/items/{id}][%d] getCatalogItemUsingGET5Unauthorized ", 401)
+}
+
+func (o *GetCatalogItemUsingGET5Unauthorized) String() string {
 	return fmt.Sprintf("[GET /catalog/api/items/{id}][%d] getCatalogItemUsingGET5Unauthorized ", 401)
 }
 
@@ -104,7 +165,8 @@ func NewGetCatalogItemUsingGET5NotFound() *GetCatalogItemUsingGET5NotFound {
 	return &GetCatalogItemUsingGET5NotFound{}
 }
 
-/* GetCatalogItemUsingGET5NotFound describes a response with status code 404, with default header values.
+/*
+GetCatalogItemUsingGET5NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -112,9 +174,39 @@ type GetCatalogItemUsingGET5NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get catalog item using g e t5 not found response has a 2xx status code
+func (o *GetCatalogItemUsingGET5NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get catalog item using g e t5 not found response has a 3xx status code
+func (o *GetCatalogItemUsingGET5NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get catalog item using g e t5 not found response has a 4xx status code
+func (o *GetCatalogItemUsingGET5NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get catalog item using g e t5 not found response has a 5xx status code
+func (o *GetCatalogItemUsingGET5NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get catalog item using g e t5 not found response a status code equal to that given
+func (o *GetCatalogItemUsingGET5NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetCatalogItemUsingGET5NotFound) Error() string {
 	return fmt.Sprintf("[GET /catalog/api/items/{id}][%d] getCatalogItemUsingGET5NotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetCatalogItemUsingGET5NotFound) String() string {
+	return fmt.Sprintf("[GET /catalog/api/items/{id}][%d] getCatalogItemUsingGET5NotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetCatalogItemUsingGET5NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

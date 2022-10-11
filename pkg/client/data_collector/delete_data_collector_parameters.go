@@ -52,10 +52,12 @@ func NewDeleteDataCollectorParamsWithHTTPClient(client *http.Client) *DeleteData
 	}
 }
 
-/* DeleteDataCollectorParams contains all the parameters to send to the API endpoint
-   for the delete data collector operation.
+/*
+DeleteDataCollectorParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete data collector operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteDataCollectorParams struct {
 

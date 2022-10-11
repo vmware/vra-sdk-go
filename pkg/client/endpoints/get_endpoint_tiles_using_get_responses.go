@@ -63,7 +63,8 @@ func NewGetEndpointTilesUsingGETOK() *GetEndpointTilesUsingGETOK {
 	return &GetEndpointTilesUsingGETOK{}
 }
 
-/* GetEndpointTilesUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetEndpointTilesUsingGETOK describes a response with status code 200, with default header values.
 
 'Success' with supported endpoint tiles
 */
@@ -71,9 +72,39 @@ type GetEndpointTilesUsingGETOK struct {
 	Payload models.Tiles
 }
 
+// IsSuccess returns true when this get endpoint tiles using g e t o k response has a 2xx status code
+func (o *GetEndpointTilesUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get endpoint tiles using g e t o k response has a 3xx status code
+func (o *GetEndpointTilesUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get endpoint tiles using g e t o k response has a 4xx status code
+func (o *GetEndpointTilesUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get endpoint tiles using g e t o k response has a 5xx status code
+func (o *GetEndpointTilesUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get endpoint tiles using g e t o k response a status code equal to that given
+func (o *GetEndpointTilesUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetEndpointTilesUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/endpoint-tiles][%d] getEndpointTilesUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetEndpointTilesUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /codestream/api/endpoint-tiles][%d] getEndpointTilesUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetEndpointTilesUsingGETOK) GetPayload() models.Tiles {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewGetEndpointTilesUsingGETUnauthorized() *GetEndpointTilesUsingGETUnauthor
 	return &GetEndpointTilesUsingGETUnauthorized{}
 }
 
-/* GetEndpointTilesUsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+GetEndpointTilesUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type GetEndpointTilesUsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this get endpoint tiles using g e t unauthorized response has a 2xx status code
+func (o *GetEndpointTilesUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get endpoint tiles using g e t unauthorized response has a 3xx status code
+func (o *GetEndpointTilesUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get endpoint tiles using g e t unauthorized response has a 4xx status code
+func (o *GetEndpointTilesUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get endpoint tiles using g e t unauthorized response has a 5xx status code
+func (o *GetEndpointTilesUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get endpoint tiles using g e t unauthorized response a status code equal to that given
+func (o *GetEndpointTilesUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetEndpointTilesUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/endpoint-tiles][%d] getEndpointTilesUsingGETUnauthorized ", 401)
+}
+
+func (o *GetEndpointTilesUsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /codestream/api/endpoint-tiles][%d] getEndpointTilesUsingGETUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewGetEndpointTilesUsingGETForbidden() *GetEndpointTilesUsingGETForbidden {
 	return &GetEndpointTilesUsingGETForbidden{}
 }
 
-/* GetEndpointTilesUsingGETForbidden describes a response with status code 403, with default header values.
+/*
+GetEndpointTilesUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetEndpointTilesUsingGETForbidden struct {
 }
 
+// IsSuccess returns true when this get endpoint tiles using g e t forbidden response has a 2xx status code
+func (o *GetEndpointTilesUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get endpoint tiles using g e t forbidden response has a 3xx status code
+func (o *GetEndpointTilesUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get endpoint tiles using g e t forbidden response has a 4xx status code
+func (o *GetEndpointTilesUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get endpoint tiles using g e t forbidden response has a 5xx status code
+func (o *GetEndpointTilesUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get endpoint tiles using g e t forbidden response a status code equal to that given
+func (o *GetEndpointTilesUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetEndpointTilesUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/endpoint-tiles][%d] getEndpointTilesUsingGETForbidden ", 403)
+}
+
+func (o *GetEndpointTilesUsingGETForbidden) String() string {
 	return fmt.Sprintf("[GET /codestream/api/endpoint-tiles][%d] getEndpointTilesUsingGETForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewGetEndpointTilesUsingGETNotFound() *GetEndpointTilesUsingGETNotFound {
 	return &GetEndpointTilesUsingGETNotFound{}
 }
 
-/* GetEndpointTilesUsingGETNotFound describes a response with status code 404, with default header values.
+/*
+GetEndpointTilesUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type GetEndpointTilesUsingGETNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get endpoint tiles using g e t not found response has a 2xx status code
+func (o *GetEndpointTilesUsingGETNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get endpoint tiles using g e t not found response has a 3xx status code
+func (o *GetEndpointTilesUsingGETNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get endpoint tiles using g e t not found response has a 4xx status code
+func (o *GetEndpointTilesUsingGETNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get endpoint tiles using g e t not found response has a 5xx status code
+func (o *GetEndpointTilesUsingGETNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get endpoint tiles using g e t not found response a status code equal to that given
+func (o *GetEndpointTilesUsingGETNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetEndpointTilesUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/endpoint-tiles][%d] getEndpointTilesUsingGETNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetEndpointTilesUsingGETNotFound) String() string {
+	return fmt.Sprintf("[GET /codestream/api/endpoint-tiles][%d] getEndpointTilesUsingGETNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetEndpointTilesUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewGetEndpointTilesUsingGETInternalServerError() *GetEndpointTilesUsingGETI
 	return &GetEndpointTilesUsingGETInternalServerError{}
 }
 
-/* GetEndpointTilesUsingGETInternalServerError describes a response with status code 500, with default header values.
+/*
+GetEndpointTilesUsingGETInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type GetEndpointTilesUsingGETInternalServerError struct {
 }
 
+// IsSuccess returns true when this get endpoint tiles using g e t internal server error response has a 2xx status code
+func (o *GetEndpointTilesUsingGETInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get endpoint tiles using g e t internal server error response has a 3xx status code
+func (o *GetEndpointTilesUsingGETInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get endpoint tiles using g e t internal server error response has a 4xx status code
+func (o *GetEndpointTilesUsingGETInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get endpoint tiles using g e t internal server error response has a 5xx status code
+func (o *GetEndpointTilesUsingGETInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this get endpoint tiles using g e t internal server error response a status code equal to that given
+func (o *GetEndpointTilesUsingGETInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GetEndpointTilesUsingGETInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/endpoint-tiles][%d] getEndpointTilesUsingGETInternalServerError ", 500)
+}
+
+func (o *GetEndpointTilesUsingGETInternalServerError) String() string {
 	return fmt.Sprintf("[GET /codestream/api/endpoint-tiles][%d] getEndpointTilesUsingGETInternalServerError ", 500)
 }
 

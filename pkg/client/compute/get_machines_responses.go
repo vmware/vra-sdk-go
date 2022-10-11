@@ -45,7 +45,8 @@ func NewGetMachinesOK() *GetMachinesOK {
 	return &GetMachinesOK{}
 }
 
-/* GetMachinesOK describes a response with status code 200, with default header values.
+/*
+GetMachinesOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type GetMachinesOK struct {
 	Payload *models.MachineResult
 }
 
+// IsSuccess returns true when this get machines o k response has a 2xx status code
+func (o *GetMachinesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get machines o k response has a 3xx status code
+func (o *GetMachinesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get machines o k response has a 4xx status code
+func (o *GetMachinesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get machines o k response has a 5xx status code
+func (o *GetMachinesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get machines o k response a status code equal to that given
+func (o *GetMachinesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetMachinesOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/machines][%d] getMachinesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetMachinesOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/machines][%d] getMachinesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetMachinesOK) GetPayload() *models.MachineResult {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewGetMachinesForbidden() *GetMachinesForbidden {
 	return &GetMachinesForbidden{}
 }
 
-/* GetMachinesForbidden describes a response with status code 403, with default header values.
+/*
+GetMachinesForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type GetMachinesForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get machines forbidden response has a 2xx status code
+func (o *GetMachinesForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get machines forbidden response has a 3xx status code
+func (o *GetMachinesForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get machines forbidden response has a 4xx status code
+func (o *GetMachinesForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get machines forbidden response has a 5xx status code
+func (o *GetMachinesForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get machines forbidden response a status code equal to that given
+func (o *GetMachinesForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetMachinesForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/machines][%d] getMachinesForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetMachinesForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/machines][%d] getMachinesForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetMachinesForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

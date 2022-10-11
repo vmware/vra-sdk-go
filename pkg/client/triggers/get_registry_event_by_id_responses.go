@@ -63,7 +63,8 @@ func NewGetRegistryEventByIDOK() *GetRegistryEventByIDOK {
 	return &GetRegistryEventByIDOK{}
 }
 
-/* GetRegistryEventByIDOK describes a response with status code 200, with default header values.
+/*
+GetRegistryEventByIDOK describes a response with status code 200, with default header values.
 
 'Success' with Docker Registry Event
 */
@@ -71,9 +72,39 @@ type GetRegistryEventByIDOK struct {
 	Payload models.DockerRegistryEvent
 }
 
+// IsSuccess returns true when this get registry event by Id o k response has a 2xx status code
+func (o *GetRegistryEventByIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get registry event by Id o k response has a 3xx status code
+func (o *GetRegistryEventByIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get registry event by Id o k response has a 4xx status code
+func (o *GetRegistryEventByIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get registry event by Id o k response has a 5xx status code
+func (o *GetRegistryEventByIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get registry event by Id o k response a status code equal to that given
+func (o *GetRegistryEventByIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetRegistryEventByIDOK) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/registry-events/{id}][%d] getRegistryEventByIdOK  %+v", 200, o.Payload)
 }
+
+func (o *GetRegistryEventByIDOK) String() string {
+	return fmt.Sprintf("[GET /codestream/api/registry-events/{id}][%d] getRegistryEventByIdOK  %+v", 200, o.Payload)
+}
+
 func (o *GetRegistryEventByIDOK) GetPayload() models.DockerRegistryEvent {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewGetRegistryEventByIDUnauthorized() *GetRegistryEventByIDUnauthorized {
 	return &GetRegistryEventByIDUnauthorized{}
 }
 
-/* GetRegistryEventByIDUnauthorized describes a response with status code 401, with default header values.
+/*
+GetRegistryEventByIDUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type GetRegistryEventByIDUnauthorized struct {
 }
 
+// IsSuccess returns true when this get registry event by Id unauthorized response has a 2xx status code
+func (o *GetRegistryEventByIDUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get registry event by Id unauthorized response has a 3xx status code
+func (o *GetRegistryEventByIDUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get registry event by Id unauthorized response has a 4xx status code
+func (o *GetRegistryEventByIDUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get registry event by Id unauthorized response has a 5xx status code
+func (o *GetRegistryEventByIDUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get registry event by Id unauthorized response a status code equal to that given
+func (o *GetRegistryEventByIDUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetRegistryEventByIDUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/registry-events/{id}][%d] getRegistryEventByIdUnauthorized ", 401)
+}
+
+func (o *GetRegistryEventByIDUnauthorized) String() string {
 	return fmt.Sprintf("[GET /codestream/api/registry-events/{id}][%d] getRegistryEventByIdUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewGetRegistryEventByIDForbidden() *GetRegistryEventByIDForbidden {
 	return &GetRegistryEventByIDForbidden{}
 }
 
-/* GetRegistryEventByIDForbidden describes a response with status code 403, with default header values.
+/*
+GetRegistryEventByIDForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetRegistryEventByIDForbidden struct {
 }
 
+// IsSuccess returns true when this get registry event by Id forbidden response has a 2xx status code
+func (o *GetRegistryEventByIDForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get registry event by Id forbidden response has a 3xx status code
+func (o *GetRegistryEventByIDForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get registry event by Id forbidden response has a 4xx status code
+func (o *GetRegistryEventByIDForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get registry event by Id forbidden response has a 5xx status code
+func (o *GetRegistryEventByIDForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get registry event by Id forbidden response a status code equal to that given
+func (o *GetRegistryEventByIDForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetRegistryEventByIDForbidden) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/registry-events/{id}][%d] getRegistryEventByIdForbidden ", 403)
+}
+
+func (o *GetRegistryEventByIDForbidden) String() string {
 	return fmt.Sprintf("[GET /codestream/api/registry-events/{id}][%d] getRegistryEventByIdForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewGetRegistryEventByIDNotFound() *GetRegistryEventByIDNotFound {
 	return &GetRegistryEventByIDNotFound{}
 }
 
-/* GetRegistryEventByIDNotFound describes a response with status code 404, with default header values.
+/*
+GetRegistryEventByIDNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type GetRegistryEventByIDNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get registry event by Id not found response has a 2xx status code
+func (o *GetRegistryEventByIDNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get registry event by Id not found response has a 3xx status code
+func (o *GetRegistryEventByIDNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get registry event by Id not found response has a 4xx status code
+func (o *GetRegistryEventByIDNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get registry event by Id not found response has a 5xx status code
+func (o *GetRegistryEventByIDNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get registry event by Id not found response a status code equal to that given
+func (o *GetRegistryEventByIDNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetRegistryEventByIDNotFound) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/registry-events/{id}][%d] getRegistryEventByIdNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetRegistryEventByIDNotFound) String() string {
+	return fmt.Sprintf("[GET /codestream/api/registry-events/{id}][%d] getRegistryEventByIdNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetRegistryEventByIDNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewGetRegistryEventByIDInternalServerError() *GetRegistryEventByIDInternalS
 	return &GetRegistryEventByIDInternalServerError{}
 }
 
-/* GetRegistryEventByIDInternalServerError describes a response with status code 500, with default header values.
+/*
+GetRegistryEventByIDInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type GetRegistryEventByIDInternalServerError struct {
 }
 
+// IsSuccess returns true when this get registry event by Id internal server error response has a 2xx status code
+func (o *GetRegistryEventByIDInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get registry event by Id internal server error response has a 3xx status code
+func (o *GetRegistryEventByIDInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get registry event by Id internal server error response has a 4xx status code
+func (o *GetRegistryEventByIDInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get registry event by Id internal server error response has a 5xx status code
+func (o *GetRegistryEventByIDInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this get registry event by Id internal server error response a status code equal to that given
+func (o *GetRegistryEventByIDInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GetRegistryEventByIDInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/registry-events/{id}][%d] getRegistryEventByIdInternalServerError ", 500)
+}
+
+func (o *GetRegistryEventByIDInternalServerError) String() string {
 	return fmt.Sprintf("[GET /codestream/api/registry-events/{id}][%d] getRegistryEventByIdInternalServerError ", 500)
 }
 

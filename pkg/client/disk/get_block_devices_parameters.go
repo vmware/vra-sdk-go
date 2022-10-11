@@ -53,16 +53,18 @@ func NewGetBlockDevicesParamsWithHTTPClient(client *http.Client) *GetBlockDevice
 	}
 }
 
-/* GetBlockDevicesParams contains all the parameters to send to the API endpoint
-   for the get block devices operation.
+/*
+GetBlockDevicesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get block devices operation.
+
+	Typically these are written to a http.Request.
 */
 type GetBlockDevicesParams struct {
 
 	/* DollarCount.
 
-	   Flag which when specified shows the total number of records. If the collection has a filter it shows the number of records matching the filter.
+	   Flag which when specified, regardless of the assigned value, shows the total number of records. If the collection has a filter it shows the number of records matching the filter.
 	*/
 	DollarCount *bool
 
@@ -71,12 +73,6 @@ type GetBlockDevicesParams struct {
 	   Filter the results by a specified predicate expression. Operators: eq, ne, and, or.
 	*/
 	DollarFilter *string
-
-	/* DollarSelect.
-
-	   Select a subset of properties to include in the response.
-	*/
-	DollarSelect *string
 
 	/* DollarSkip.
 
@@ -171,17 +167,6 @@ func (o *GetBlockDevicesParams) SetDollarFilter(dollarFilter *string) {
 	o.DollarFilter = dollarFilter
 }
 
-// WithDollarSelect adds the dollarSelect to the get block devices params
-func (o *GetBlockDevicesParams) WithDollarSelect(dollarSelect *string) *GetBlockDevicesParams {
-	o.SetDollarSelect(dollarSelect)
-	return o
-}
-
-// SetDollarSelect adds the dollarSelect to the get block devices params
-func (o *GetBlockDevicesParams) SetDollarSelect(dollarSelect *string) {
-	o.DollarSelect = dollarSelect
-}
-
 // WithDollarSkip adds the dollarSkip to the get block devices params
 func (o *GetBlockDevicesParams) WithDollarSkip(dollarSkip *int64) *GetBlockDevicesParams {
 	o.SetDollarSkip(dollarSkip)
@@ -252,23 +237,6 @@ func (o *GetBlockDevicesParams) WriteToRequest(r runtime.ClientRequest, reg strf
 		if qDollarFilter != "" {
 
 			if err := r.SetQueryParam("$filter", qDollarFilter); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.DollarSelect != nil {
-
-		// query param $select
-		var qrDollarSelect string
-
-		if o.DollarSelect != nil {
-			qrDollarSelect = *o.DollarSelect
-		}
-		qDollarSelect := qrDollarSelect
-		if qDollarSelect != "" {
-
-			if err := r.SetQueryParam("$select", qDollarSelect); err != nil {
 				return err
 			}
 		}

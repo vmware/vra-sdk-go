@@ -63,7 +63,8 @@ func NewCreateDockerRegistryWebhookUsingPOSTOK() *CreateDockerRegistryWebhookUsi
 	return &CreateDockerRegistryWebhookUsingPOSTOK{}
 }
 
-/* CreateDockerRegistryWebhookUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+CreateDockerRegistryWebhookUsingPOSTOK describes a response with status code 200, with default header values.
 
 'Success' with Creation of Docker Registry Webhook
 */
@@ -71,9 +72,39 @@ type CreateDockerRegistryWebhookUsingPOSTOK struct {
 	Payload models.DockerRegistryWebHook
 }
 
+// IsSuccess returns true when this create docker registry webhook using p o s t o k response has a 2xx status code
+func (o *CreateDockerRegistryWebhookUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create docker registry webhook using p o s t o k response has a 3xx status code
+func (o *CreateDockerRegistryWebhookUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create docker registry webhook using p o s t o k response has a 4xx status code
+func (o *CreateDockerRegistryWebhookUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create docker registry webhook using p o s t o k response has a 5xx status code
+func (o *CreateDockerRegistryWebhookUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create docker registry webhook using p o s t o k response a status code equal to that given
+func (o *CreateDockerRegistryWebhookUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CreateDockerRegistryWebhookUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/registry-webhooks][%d] createDockerRegistryWebhookUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *CreateDockerRegistryWebhookUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /codestream/api/registry-webhooks][%d] createDockerRegistryWebhookUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *CreateDockerRegistryWebhookUsingPOSTOK) GetPayload() models.DockerRegistryWebHook {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewCreateDockerRegistryWebhookUsingPOSTUnauthorized() *CreateDockerRegistry
 	return &CreateDockerRegistryWebhookUsingPOSTUnauthorized{}
 }
 
-/* CreateDockerRegistryWebhookUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateDockerRegistryWebhookUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type CreateDockerRegistryWebhookUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this create docker registry webhook using p o s t unauthorized response has a 2xx status code
+func (o *CreateDockerRegistryWebhookUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create docker registry webhook using p o s t unauthorized response has a 3xx status code
+func (o *CreateDockerRegistryWebhookUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create docker registry webhook using p o s t unauthorized response has a 4xx status code
+func (o *CreateDockerRegistryWebhookUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create docker registry webhook using p o s t unauthorized response has a 5xx status code
+func (o *CreateDockerRegistryWebhookUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create docker registry webhook using p o s t unauthorized response a status code equal to that given
+func (o *CreateDockerRegistryWebhookUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreateDockerRegistryWebhookUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/registry-webhooks][%d] createDockerRegistryWebhookUsingPOSTUnauthorized ", 401)
+}
+
+func (o *CreateDockerRegistryWebhookUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /codestream/api/registry-webhooks][%d] createDockerRegistryWebhookUsingPOSTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewCreateDockerRegistryWebhookUsingPOSTForbidden() *CreateDockerRegistryWeb
 	return &CreateDockerRegistryWebhookUsingPOSTForbidden{}
 }
 
-/* CreateDockerRegistryWebhookUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+CreateDockerRegistryWebhookUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type CreateDockerRegistryWebhookUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this create docker registry webhook using p o s t forbidden response has a 2xx status code
+func (o *CreateDockerRegistryWebhookUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create docker registry webhook using p o s t forbidden response has a 3xx status code
+func (o *CreateDockerRegistryWebhookUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create docker registry webhook using p o s t forbidden response has a 4xx status code
+func (o *CreateDockerRegistryWebhookUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create docker registry webhook using p o s t forbidden response has a 5xx status code
+func (o *CreateDockerRegistryWebhookUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create docker registry webhook using p o s t forbidden response a status code equal to that given
+func (o *CreateDockerRegistryWebhookUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateDockerRegistryWebhookUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/registry-webhooks][%d] createDockerRegistryWebhookUsingPOSTForbidden ", 403)
+}
+
+func (o *CreateDockerRegistryWebhookUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /codestream/api/registry-webhooks][%d] createDockerRegistryWebhookUsingPOSTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewCreateDockerRegistryWebhookUsingPOSTNotFound() *CreateDockerRegistryWebh
 	return &CreateDockerRegistryWebhookUsingPOSTNotFound{}
 }
 
-/* CreateDockerRegistryWebhookUsingPOSTNotFound describes a response with status code 404, with default header values.
+/*
+CreateDockerRegistryWebhookUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type CreateDockerRegistryWebhookUsingPOSTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create docker registry webhook using p o s t not found response has a 2xx status code
+func (o *CreateDockerRegistryWebhookUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create docker registry webhook using p o s t not found response has a 3xx status code
+func (o *CreateDockerRegistryWebhookUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create docker registry webhook using p o s t not found response has a 4xx status code
+func (o *CreateDockerRegistryWebhookUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create docker registry webhook using p o s t not found response has a 5xx status code
+func (o *CreateDockerRegistryWebhookUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create docker registry webhook using p o s t not found response a status code equal to that given
+func (o *CreateDockerRegistryWebhookUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CreateDockerRegistryWebhookUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/registry-webhooks][%d] createDockerRegistryWebhookUsingPOSTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CreateDockerRegistryWebhookUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /codestream/api/registry-webhooks][%d] createDockerRegistryWebhookUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CreateDockerRegistryWebhookUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewCreateDockerRegistryWebhookUsingPOSTInternalServerError() *CreateDockerR
 	return &CreateDockerRegistryWebhookUsingPOSTInternalServerError{}
 }
 
-/* CreateDockerRegistryWebhookUsingPOSTInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateDockerRegistryWebhookUsingPOSTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CreateDockerRegistryWebhookUsingPOSTInternalServerError struct {
 }
 
+// IsSuccess returns true when this create docker registry webhook using p o s t internal server error response has a 2xx status code
+func (o *CreateDockerRegistryWebhookUsingPOSTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create docker registry webhook using p o s t internal server error response has a 3xx status code
+func (o *CreateDockerRegistryWebhookUsingPOSTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create docker registry webhook using p o s t internal server error response has a 4xx status code
+func (o *CreateDockerRegistryWebhookUsingPOSTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create docker registry webhook using p o s t internal server error response has a 5xx status code
+func (o *CreateDockerRegistryWebhookUsingPOSTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this create docker registry webhook using p o s t internal server error response a status code equal to that given
+func (o *CreateDockerRegistryWebhookUsingPOSTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CreateDockerRegistryWebhookUsingPOSTInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/registry-webhooks][%d] createDockerRegistryWebhookUsingPOSTInternalServerError ", 500)
+}
+
+func (o *CreateDockerRegistryWebhookUsingPOSTInternalServerError) String() string {
 	return fmt.Sprintf("[POST /codestream/api/registry-webhooks][%d] createDockerRegistryWebhookUsingPOSTInternalServerError ", 500)
 }
 

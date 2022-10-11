@@ -45,7 +45,8 @@ func NewGetDeploymentFilterByIDUsingGET2OK() *GetDeploymentFilterByIDUsingGET2OK
 	return &GetDeploymentFilterByIDUsingGET2OK{}
 }
 
-/* GetDeploymentFilterByIDUsingGET2OK describes a response with status code 200, with default header values.
+/*
+GetDeploymentFilterByIDUsingGET2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -53,9 +54,39 @@ type GetDeploymentFilterByIDUsingGET2OK struct {
 	Payload *models.PageOfFilterEntry
 }
 
+// IsSuccess returns true when this get deployment filter by Id using g e t2 o k response has a 2xx status code
+func (o *GetDeploymentFilterByIDUsingGET2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get deployment filter by Id using g e t2 o k response has a 3xx status code
+func (o *GetDeploymentFilterByIDUsingGET2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get deployment filter by Id using g e t2 o k response has a 4xx status code
+func (o *GetDeploymentFilterByIDUsingGET2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get deployment filter by Id using g e t2 o k response has a 5xx status code
+func (o *GetDeploymentFilterByIDUsingGET2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get deployment filter by Id using g e t2 o k response a status code equal to that given
+func (o *GetDeploymentFilterByIDUsingGET2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetDeploymentFilterByIDUsingGET2OK) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/filters/{filterId}][%d] getDeploymentFilterByIdUsingGET2OK  %+v", 200, o.Payload)
 }
+
+func (o *GetDeploymentFilterByIDUsingGET2OK) String() string {
+	return fmt.Sprintf("[GET /deployment/api/deployments/filters/{filterId}][%d] getDeploymentFilterByIdUsingGET2OK  %+v", 200, o.Payload)
+}
+
 func (o *GetDeploymentFilterByIDUsingGET2OK) GetPayload() *models.PageOfFilterEntry {
 	return o.Payload
 }
@@ -77,14 +108,44 @@ func NewGetDeploymentFilterByIDUsingGET2Unauthorized() *GetDeploymentFilterByIDU
 	return &GetDeploymentFilterByIDUsingGET2Unauthorized{}
 }
 
-/* GetDeploymentFilterByIDUsingGET2Unauthorized describes a response with status code 401, with default header values.
+/*
+GetDeploymentFilterByIDUsingGET2Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type GetDeploymentFilterByIDUsingGET2Unauthorized struct {
 }
 
+// IsSuccess returns true when this get deployment filter by Id using g e t2 unauthorized response has a 2xx status code
+func (o *GetDeploymentFilterByIDUsingGET2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get deployment filter by Id using g e t2 unauthorized response has a 3xx status code
+func (o *GetDeploymentFilterByIDUsingGET2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get deployment filter by Id using g e t2 unauthorized response has a 4xx status code
+func (o *GetDeploymentFilterByIDUsingGET2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get deployment filter by Id using g e t2 unauthorized response has a 5xx status code
+func (o *GetDeploymentFilterByIDUsingGET2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get deployment filter by Id using g e t2 unauthorized response a status code equal to that given
+func (o *GetDeploymentFilterByIDUsingGET2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetDeploymentFilterByIDUsingGET2Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /deployment/api/deployments/filters/{filterId}][%d] getDeploymentFilterByIdUsingGET2Unauthorized ", 401)
+}
+
+func (o *GetDeploymentFilterByIDUsingGET2Unauthorized) String() string {
 	return fmt.Sprintf("[GET /deployment/api/deployments/filters/{filterId}][%d] getDeploymentFilterByIdUsingGET2Unauthorized ", 401)
 }
 

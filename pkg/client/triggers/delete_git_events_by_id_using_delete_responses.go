@@ -63,7 +63,8 @@ func NewDeleteGitEventsByIDUsingDELETEOK() *DeleteGitEventsByIDUsingDELETEOK {
 	return &DeleteGitEventsByIDUsingDELETEOK{}
 }
 
-/* DeleteGitEventsByIDUsingDELETEOK describes a response with status code 200, with default header values.
+/*
+DeleteGitEventsByIDUsingDELETEOK describes a response with status code 200, with default header values.
 
 'Success' with Delete a Git Event
 */
@@ -71,9 +72,39 @@ type DeleteGitEventsByIDUsingDELETEOK struct {
 	Payload models.GitEvent
 }
 
+// IsSuccess returns true when this delete git events by Id using d e l e t e o k response has a 2xx status code
+func (o *DeleteGitEventsByIDUsingDELETEOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete git events by Id using d e l e t e o k response has a 3xx status code
+func (o *DeleteGitEventsByIDUsingDELETEOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete git events by Id using d e l e t e o k response has a 4xx status code
+func (o *DeleteGitEventsByIDUsingDELETEOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete git events by Id using d e l e t e o k response has a 5xx status code
+func (o *DeleteGitEventsByIDUsingDELETEOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete git events by Id using d e l e t e o k response a status code equal to that given
+func (o *DeleteGitEventsByIDUsingDELETEOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteGitEventsByIDUsingDELETEOK) Error() string {
 	return fmt.Sprintf("[DELETE /codestream/api/git-events/{id}][%d] deleteGitEventsByIdUsingDELETEOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteGitEventsByIDUsingDELETEOK) String() string {
+	return fmt.Sprintf("[DELETE /codestream/api/git-events/{id}][%d] deleteGitEventsByIdUsingDELETEOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteGitEventsByIDUsingDELETEOK) GetPayload() models.GitEvent {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewDeleteGitEventsByIDUsingDELETEUnauthorized() *DeleteGitEventsByIDUsingDE
 	return &DeleteGitEventsByIDUsingDELETEUnauthorized{}
 }
 
-/* DeleteGitEventsByIDUsingDELETEUnauthorized describes a response with status code 401, with default header values.
+/*
+DeleteGitEventsByIDUsingDELETEUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type DeleteGitEventsByIDUsingDELETEUnauthorized struct {
 }
 
+// IsSuccess returns true when this delete git events by Id using d e l e t e unauthorized response has a 2xx status code
+func (o *DeleteGitEventsByIDUsingDELETEUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete git events by Id using d e l e t e unauthorized response has a 3xx status code
+func (o *DeleteGitEventsByIDUsingDELETEUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete git events by Id using d e l e t e unauthorized response has a 4xx status code
+func (o *DeleteGitEventsByIDUsingDELETEUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete git events by Id using d e l e t e unauthorized response has a 5xx status code
+func (o *DeleteGitEventsByIDUsingDELETEUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete git events by Id using d e l e t e unauthorized response a status code equal to that given
+func (o *DeleteGitEventsByIDUsingDELETEUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DeleteGitEventsByIDUsingDELETEUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/git-events/{id}][%d] deleteGitEventsByIdUsingDELETEUnauthorized ", 401)
+}
+
+func (o *DeleteGitEventsByIDUsingDELETEUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/git-events/{id}][%d] deleteGitEventsByIdUsingDELETEUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewDeleteGitEventsByIDUsingDELETEForbidden() *DeleteGitEventsByIDUsingDELET
 	return &DeleteGitEventsByIDUsingDELETEForbidden{}
 }
 
-/* DeleteGitEventsByIDUsingDELETEForbidden describes a response with status code 403, with default header values.
+/*
+DeleteGitEventsByIDUsingDELETEForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type DeleteGitEventsByIDUsingDELETEForbidden struct {
 }
 
+// IsSuccess returns true when this delete git events by Id using d e l e t e forbidden response has a 2xx status code
+func (o *DeleteGitEventsByIDUsingDELETEForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete git events by Id using d e l e t e forbidden response has a 3xx status code
+func (o *DeleteGitEventsByIDUsingDELETEForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete git events by Id using d e l e t e forbidden response has a 4xx status code
+func (o *DeleteGitEventsByIDUsingDELETEForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete git events by Id using d e l e t e forbidden response has a 5xx status code
+func (o *DeleteGitEventsByIDUsingDELETEForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete git events by Id using d e l e t e forbidden response a status code equal to that given
+func (o *DeleteGitEventsByIDUsingDELETEForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteGitEventsByIDUsingDELETEForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/git-events/{id}][%d] deleteGitEventsByIdUsingDELETEForbidden ", 403)
+}
+
+func (o *DeleteGitEventsByIDUsingDELETEForbidden) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/git-events/{id}][%d] deleteGitEventsByIdUsingDELETEForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewDeleteGitEventsByIDUsingDELETENotFound() *DeleteGitEventsByIDUsingDELETE
 	return &DeleteGitEventsByIDUsingDELETENotFound{}
 }
 
-/* DeleteGitEventsByIDUsingDELETENotFound describes a response with status code 404, with default header values.
+/*
+DeleteGitEventsByIDUsingDELETENotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type DeleteGitEventsByIDUsingDELETENotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete git events by Id using d e l e t e not found response has a 2xx status code
+func (o *DeleteGitEventsByIDUsingDELETENotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete git events by Id using d e l e t e not found response has a 3xx status code
+func (o *DeleteGitEventsByIDUsingDELETENotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete git events by Id using d e l e t e not found response has a 4xx status code
+func (o *DeleteGitEventsByIDUsingDELETENotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete git events by Id using d e l e t e not found response has a 5xx status code
+func (o *DeleteGitEventsByIDUsingDELETENotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete git events by Id using d e l e t e not found response a status code equal to that given
+func (o *DeleteGitEventsByIDUsingDELETENotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteGitEventsByIDUsingDELETENotFound) Error() string {
 	return fmt.Sprintf("[DELETE /codestream/api/git-events/{id}][%d] deleteGitEventsByIdUsingDELETENotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteGitEventsByIDUsingDELETENotFound) String() string {
+	return fmt.Sprintf("[DELETE /codestream/api/git-events/{id}][%d] deleteGitEventsByIdUsingDELETENotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteGitEventsByIDUsingDELETENotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewDeleteGitEventsByIDUsingDELETEInternalServerError() *DeleteGitEventsByID
 	return &DeleteGitEventsByIDUsingDELETEInternalServerError{}
 }
 
-/* DeleteGitEventsByIDUsingDELETEInternalServerError describes a response with status code 500, with default header values.
+/*
+DeleteGitEventsByIDUsingDELETEInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type DeleteGitEventsByIDUsingDELETEInternalServerError struct {
 }
 
+// IsSuccess returns true when this delete git events by Id using d e l e t e internal server error response has a 2xx status code
+func (o *DeleteGitEventsByIDUsingDELETEInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete git events by Id using d e l e t e internal server error response has a 3xx status code
+func (o *DeleteGitEventsByIDUsingDELETEInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete git events by Id using d e l e t e internal server error response has a 4xx status code
+func (o *DeleteGitEventsByIDUsingDELETEInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete git events by Id using d e l e t e internal server error response has a 5xx status code
+func (o *DeleteGitEventsByIDUsingDELETEInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this delete git events by Id using d e l e t e internal server error response a status code equal to that given
+func (o *DeleteGitEventsByIDUsingDELETEInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *DeleteGitEventsByIDUsingDELETEInternalServerError) Error() string {
+	return fmt.Sprintf("[DELETE /codestream/api/git-events/{id}][%d] deleteGitEventsByIdUsingDELETEInternalServerError ", 500)
+}
+
+func (o *DeleteGitEventsByIDUsingDELETEInternalServerError) String() string {
 	return fmt.Sprintf("[DELETE /codestream/api/git-events/{id}][%d] deleteGitEventsByIdUsingDELETEInternalServerError ", 500)
 }
 

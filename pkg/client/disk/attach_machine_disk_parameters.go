@@ -54,10 +54,12 @@ func NewAttachMachineDiskParamsWithHTTPClient(client *http.Client) *AttachMachin
 	}
 }
 
-/* AttachMachineDiskParams contains all the parameters to send to the API endpoint
-   for the attach machine disk operation.
+/*
+AttachMachineDiskParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the attach machine disk operation.
+
+	Typically these are written to a http.Request.
 */
 type AttachMachineDiskParams struct {
 

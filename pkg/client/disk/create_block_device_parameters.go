@@ -54,10 +54,12 @@ func NewCreateBlockDeviceParamsWithHTTPClient(client *http.Client) *CreateBlockD
 	}
 }
 
-/* CreateBlockDeviceParams contains all the parameters to send to the API endpoint
-   for the create block device operation.
+/*
+CreateBlockDeviceParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create block device operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateBlockDeviceParams struct {
 

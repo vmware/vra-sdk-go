@@ -52,10 +52,12 @@ func NewGetGerritProjectsByIDUsingGETParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* GetGerritProjectsByIDUsingGETParams contains all the parameters to send to the API endpoint
-   for the get gerrit projects by Id using g e t operation.
+/*
+GetGerritProjectsByIDUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get gerrit projects by Id using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetGerritProjectsByIDUsingGETParams struct {
 

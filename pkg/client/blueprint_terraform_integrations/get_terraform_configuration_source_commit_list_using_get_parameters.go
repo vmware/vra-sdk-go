@@ -52,10 +52,12 @@ func NewGetTerraformConfigurationSourceCommitListUsingGETParamsWithHTTPClient(cl
 	}
 }
 
-/* GetTerraformConfigurationSourceCommitListUsingGETParams contains all the parameters to send to the API endpoint
-   for the get terraform configuration source commit list using g e t operation.
+/*
+GetTerraformConfigurationSourceCommitListUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get terraform configuration source commit list using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetTerraformConfigurationSourceCommitListUsingGETParams struct {
 

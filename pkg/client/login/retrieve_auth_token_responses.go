@@ -51,7 +51,8 @@ func NewRetrieveAuthTokenOK() *RetrieveAuthTokenOK {
 	return &RetrieveAuthTokenOK{}
 }
 
-/* RetrieveAuthTokenOK describes a response with status code 200, with default header values.
+/*
+RetrieveAuthTokenOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type RetrieveAuthTokenOK struct {
 	Payload *models.AuthResponse
 }
 
+// IsSuccess returns true when this retrieve auth token o k response has a 2xx status code
+func (o *RetrieveAuthTokenOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this retrieve auth token o k response has a 3xx status code
+func (o *RetrieveAuthTokenOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this retrieve auth token o k response has a 4xx status code
+func (o *RetrieveAuthTokenOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this retrieve auth token o k response has a 5xx status code
+func (o *RetrieveAuthTokenOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this retrieve auth token o k response a status code equal to that given
+func (o *RetrieveAuthTokenOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *RetrieveAuthTokenOK) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/login][%d] retrieveAuthTokenOK  %+v", 200, o.Payload)
 }
+
+func (o *RetrieveAuthTokenOK) String() string {
+	return fmt.Sprintf("[POST /iaas/api/login][%d] retrieveAuthTokenOK  %+v", 200, o.Payload)
+}
+
 func (o *RetrieveAuthTokenOK) GetPayload() *models.AuthResponse {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewRetrieveAuthTokenBadRequest() *RetrieveAuthTokenBadRequest {
 	return &RetrieveAuthTokenBadRequest{}
 }
 
-/* RetrieveAuthTokenBadRequest describes a response with status code 400, with default header values.
+/*
+RetrieveAuthTokenBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type RetrieveAuthTokenBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this retrieve auth token bad request response has a 2xx status code
+func (o *RetrieveAuthTokenBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this retrieve auth token bad request response has a 3xx status code
+func (o *RetrieveAuthTokenBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this retrieve auth token bad request response has a 4xx status code
+func (o *RetrieveAuthTokenBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this retrieve auth token bad request response has a 5xx status code
+func (o *RetrieveAuthTokenBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this retrieve auth token bad request response a status code equal to that given
+func (o *RetrieveAuthTokenBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *RetrieveAuthTokenBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/login][%d] retrieveAuthTokenBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *RetrieveAuthTokenBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/login][%d] retrieveAuthTokenBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *RetrieveAuthTokenBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewRetrieveAuthTokenForbidden() *RetrieveAuthTokenForbidden {
 	return &RetrieveAuthTokenForbidden{}
 }
 
-/* RetrieveAuthTokenForbidden describes a response with status code 403, with default header values.
+/*
+RetrieveAuthTokenForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type RetrieveAuthTokenForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this retrieve auth token forbidden response has a 2xx status code
+func (o *RetrieveAuthTokenForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this retrieve auth token forbidden response has a 3xx status code
+func (o *RetrieveAuthTokenForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this retrieve auth token forbidden response has a 4xx status code
+func (o *RetrieveAuthTokenForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this retrieve auth token forbidden response has a 5xx status code
+func (o *RetrieveAuthTokenForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this retrieve auth token forbidden response a status code equal to that given
+func (o *RetrieveAuthTokenForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *RetrieveAuthTokenForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/login][%d] retrieveAuthTokenForbidden  %+v", 403, o.Payload)
 }
+
+func (o *RetrieveAuthTokenForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/login][%d] retrieveAuthTokenForbidden  %+v", 403, o.Payload)
+}
+
 func (o *RetrieveAuthTokenForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

@@ -19,6 +19,10 @@ import (
 // swagger:model FabricComputeSpecification
 type FabricComputeSpecification struct {
 
+	// What percent of the total available memory on the compute will be used for VM provisioning.This value can be more than 100. e.g. If the compute has 100gb of memory and this value is set to80, then vRA will act as if this compute has only 80gb. If it is 120, then vRA will act as if this compute has 120gb thus allowing 20gb overallocation. Applies only for private cloud computes.
+	// Example: 120
+	MaximumAllowedMemoryAllocationPercent int32 `json:"maximumAllowedMemoryAllocationPercent,omitempty"`
+
 	// A set of tag keys and optional values that were set on this resource instance.
 	// Example: [ { \"key\" : \"?\", \"value\": \"Environment\" } ]
 	Tags []*Tag `json:"tags"`

@@ -57,7 +57,8 @@ func NewGetResourceTypeUsingGETOK() *GetResourceTypeUsingGETOK {
 	return &GetResourceTypeUsingGETOK{}
 }
 
-/* GetResourceTypeUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetResourceTypeUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -65,9 +66,39 @@ type GetResourceTypeUsingGETOK struct {
 	Payload *models.ResourceType
 }
 
+// IsSuccess returns true when this get resource type using g e t o k response has a 2xx status code
+func (o *GetResourceTypeUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get resource type using g e t o k response has a 3xx status code
+func (o *GetResourceTypeUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get resource type using g e t o k response has a 4xx status code
+func (o *GetResourceTypeUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get resource type using g e t o k response has a 5xx status code
+func (o *GetResourceTypeUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get resource type using g e t o k response a status code equal to that given
+func (o *GetResourceTypeUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetResourceTypeUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/resource-types/{resourceTypeId}][%d] getResourceTypeUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetResourceTypeUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /blueprint/api/resource-types/{resourceTypeId}][%d] getResourceTypeUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetResourceTypeUsingGETOK) GetPayload() *models.ResourceType {
 	return o.Payload
 }
@@ -89,14 +120,44 @@ func NewGetResourceTypeUsingGETUnauthorized() *GetResourceTypeUsingGETUnauthoriz
 	return &GetResourceTypeUsingGETUnauthorized{}
 }
 
-/* GetResourceTypeUsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+GetResourceTypeUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type GetResourceTypeUsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this get resource type using g e t unauthorized response has a 2xx status code
+func (o *GetResourceTypeUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get resource type using g e t unauthorized response has a 3xx status code
+func (o *GetResourceTypeUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get resource type using g e t unauthorized response has a 4xx status code
+func (o *GetResourceTypeUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get resource type using g e t unauthorized response has a 5xx status code
+func (o *GetResourceTypeUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get resource type using g e t unauthorized response a status code equal to that given
+func (o *GetResourceTypeUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetResourceTypeUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /blueprint/api/resource-types/{resourceTypeId}][%d] getResourceTypeUsingGETUnauthorized ", 401)
+}
+
+func (o *GetResourceTypeUsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /blueprint/api/resource-types/{resourceTypeId}][%d] getResourceTypeUsingGETUnauthorized ", 401)
 }
 
@@ -110,14 +171,44 @@ func NewGetResourceTypeUsingGETForbidden() *GetResourceTypeUsingGETForbidden {
 	return &GetResourceTypeUsingGETForbidden{}
 }
 
-/* GetResourceTypeUsingGETForbidden describes a response with status code 403, with default header values.
+/*
+GetResourceTypeUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetResourceTypeUsingGETForbidden struct {
 }
 
+// IsSuccess returns true when this get resource type using g e t forbidden response has a 2xx status code
+func (o *GetResourceTypeUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get resource type using g e t forbidden response has a 3xx status code
+func (o *GetResourceTypeUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get resource type using g e t forbidden response has a 4xx status code
+func (o *GetResourceTypeUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get resource type using g e t forbidden response has a 5xx status code
+func (o *GetResourceTypeUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get resource type using g e t forbidden response a status code equal to that given
+func (o *GetResourceTypeUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetResourceTypeUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /blueprint/api/resource-types/{resourceTypeId}][%d] getResourceTypeUsingGETForbidden ", 403)
+}
+
+func (o *GetResourceTypeUsingGETForbidden) String() string {
 	return fmt.Sprintf("[GET /blueprint/api/resource-types/{resourceTypeId}][%d] getResourceTypeUsingGETForbidden ", 403)
 }
 
@@ -131,7 +222,8 @@ func NewGetResourceTypeUsingGETNotFound() *GetResourceTypeUsingGETNotFound {
 	return &GetResourceTypeUsingGETNotFound{}
 }
 
-/* GetResourceTypeUsingGETNotFound describes a response with status code 404, with default header values.
+/*
+GetResourceTypeUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -139,9 +231,39 @@ type GetResourceTypeUsingGETNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get resource type using g e t not found response has a 2xx status code
+func (o *GetResourceTypeUsingGETNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get resource type using g e t not found response has a 3xx status code
+func (o *GetResourceTypeUsingGETNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get resource type using g e t not found response has a 4xx status code
+func (o *GetResourceTypeUsingGETNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get resource type using g e t not found response has a 5xx status code
+func (o *GetResourceTypeUsingGETNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get resource type using g e t not found response a status code equal to that given
+func (o *GetResourceTypeUsingGETNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetResourceTypeUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /blueprint/api/resource-types/{resourceTypeId}][%d] getResourceTypeUsingGETNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetResourceTypeUsingGETNotFound) String() string {
+	return fmt.Sprintf("[GET /blueprint/api/resource-types/{resourceTypeId}][%d] getResourceTypeUsingGETNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetResourceTypeUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

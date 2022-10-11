@@ -3,9 +3,13 @@
     "info": {
         "description": "Code Stream is a continuous integration and continuous delivery (CICD) tool that you use to build Pipelines that model the software release process in your DevOps lifecycle. By creating Pipelines, you build the code infrastructure that delivers your software rapidly and continuously.\n\nThis page describes the RESTful APIs for Code Stream. The APIs facilitate CRUD operations on the various resources and entities used throughout Code Stream (Pipelines, Endpoints, Variables, etc.) and allow operations on them (executing a Pipeline, validating an Endpoint connection, etc.).\n\nThe APIs that list collections of resources  also support OData like implementation. Below query params can be used across Code Stream entities.\n\nExample:\n\n1. `$orderby` - returns a result with the rows being sorted by the values of provided attribute.\n\n    ```/codestream/api/endpoints?$orderby=name%20desc```\n\n2. `$top`, `$skip` - `$top` returns the requested number of resources. Used with `$skip`, the client can skip a given number of resources.\n\n    ```/codestream/api/endpoints?$expand=true&$top=10&$skip=2```\n\n3. `page` and `$size` - page used in conjunction with `$size` helps in pagination of resources.\n\n    ```/codestream/api/endpoints?$expand=true&page=0&$size=5```\n\n4. `$filter` - `$filter` returns a subset of resources that satisfy the given predicate expression.\n\n    ```\n    /codestream/api/endpoints?$filter=startswith(name, 'ABC')\n    /codestream/api/endpoints?$filter=toupper(name) eq 'ABCD-JENKINS'\n    /codestream/api/endpoints?$filter=substringof(%27bc%27,tolower(name))\n    /codestream/api/endpoints?$filter=name eq 'ABCD' and project eq 'demo'\n",
         "version": "2019-10-17",
-        "title": "Code Stream APIs"
+        "title": "Code Stream APIs",
+        "license": {
+            "name": "Copyright (c) 2022 VMware, Inc. All Rights Reserved.",
+            "url": "https://www.vmware.com/cloud-solutions.html"
+        }
     },
-    "host": "https://api.mgmt.cloud.vmware.com",
+    "host": "api.mgmt.cloud.vmware.com",
     "basePath": "/",
     "tags": [
         {
@@ -741,6 +745,81 @@
                     "*/*"
                 ],
                 "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The ID of the Custom Integration",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "description": "The version of the Custom Integration",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /codestream/api/about",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/CustomIntegration"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "deprecated": false
+            },
+            "patch": {
+                "tags": [
+                    "Custom Integrations"
+                ],
+                "summary": "Set/Unset a release version as 'LATEST'.",
+                "description": "Sets a released Custom Integration version as 'LATEST' or unsets a version from 'LATEST'",
+                "operationId": "toggleLatestUsingPATCH",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Patch Request for a custom integration",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CustomIntegrationPatchRequest"
+                        }
+                    },
                     {
                         "name": "id",
                         "in": "path",
@@ -1984,6 +2063,14 @@
                         "type": "string"
                     },
                     {
+                        "name": "queryParams",
+                        "in": "query",
+                        "description": "Value of 'expand' type for the execution",
+                        "required": false,
+                        "type": "string",
+                        "x-example": "expand=PIPELINE_STAGE_TASK"
+                    },
+                    {
                         "name": "apiVersion",
                         "in": "query",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /codestream/api/about",
@@ -1997,18 +2084,6 @@
                         "description": "Bearer token",
                         "required": true,
                         "type": "string"
-                    },
-                    {
-                        "name": "queryParams",
-                        "in": "query",
-                        "description": "queryParams",
-                        "required": false,
-                        "items": {
-                            "type": "object",
-                            "additionalProperties": {
-                                "type": "string"
-                            }
-                        }
                     }
                 ],
                 "responses": {
@@ -2172,12 +2247,28 @@
                     "Pipelines"
                 ],
                 "summary": "Export",
-                "description": "Exports a single pipeline (and endpoints referred in that pipeline) or list of pipelines/ endpoints as 'YAML' in a given project",
+                "description": "Exports a single pipeline (and endpoints referred in that pipeline) or a list of pipelines/endpoints in a given project or a custom integration with given list of versions as 'YAML' in a given project",
                 "operationId": "exportUsingGET",
                 "produces": [
                     "application/x-yaml"
                 ],
                 "parameters": [
+                    {
+                        "name": "customIntegration",
+                        "in": "query",
+                        "description": "Name of the Custom Integration to be exported",
+                        "required": false,
+                        "type": "string",
+                        "default": "pipeline-as-code"
+                    },
+                    {
+                        "name": "customIntegrationVersions",
+                        "in": "query",
+                        "description": "Comma separated list of versions of the given custom integration to be exported",
+                        "required": false,
+                        "type": "string",
+                        "default": "1st,2nd,3rd"
+                    },
                     {
                         "name": "endpoints",
                         "in": "query",
@@ -2185,6 +2276,22 @@
                         "required": false,
                         "type": "string",
                         "default": "Jenkins, Jira"
+                    },
+                    {
+                        "name": "exportAllCustomIntegrationVersions",
+                        "in": "query",
+                        "description": "Flag to state if all versions of given custom integration need to be exported",
+                        "required": false,
+                        "type": "string",
+                        "default": "false"
+                    },
+                    {
+                        "name": "exportOnlyReleasedCustomIntegrationVersions",
+                        "in": "query",
+                        "description": "Flag to state if only released versions of given custom integration need to be exported",
+                        "required": false,
+                        "type": "string",
+                        "default": "false"
                     },
                     {
                         "name": "pipeline",
@@ -5997,6 +6104,14 @@
                         "type": "string"
                     },
                     {
+                        "name": "queryParams",
+                        "in": "query",
+                        "description": "Value of 'expand' type for the execution",
+                        "required": false,
+                        "type": "string",
+                        "x-example": "expand=PIPELINE_STAGE_TASK"
+                    },
+                    {
                         "name": "apiVersion",
                         "in": "query",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /codestream/api/about",
@@ -6605,6 +6720,14 @@
                         "description": "The project the Pipeline belongs to",
                         "required": true,
                         "type": "string"
+                    },
+                    {
+                        "name": "queryParams",
+                        "in": "query",
+                        "description": "Value of 'expand' type for the execution",
+                        "required": false,
+                        "type": "string",
+                        "x-example": "expand=PIPELINE_STAGE_TASK"
                     },
                     {
                         "name": "apiVersion",
@@ -7278,11 +7401,11 @@
                     },
                     {
                         "in": "body",
-                        "name": "dockerRegistryWebhookPatch",
-                        "description": "dockerRegistryWebhookPatch",
+                        "name": "enablePatch",
+                        "description": "enablePatch",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/DockerRegistryWebhookPatch"
+                            "$ref": "#/definitions/WebhookEnablePatch"
                         }
                     },
                     {
@@ -7549,11 +7672,11 @@
                     },
                     {
                         "in": "body",
-                        "name": "dockerRegistryWebhookPatch",
-                        "description": "dockerRegistryWebhookPatch",
+                        "name": "enablePatch",
+                        "description": "enablePatch",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/DockerRegistryWebhookPatch"
+                            "$ref": "#/definitions/WebhookEnablePatch"
                         }
                     },
                     {
@@ -8768,10 +8891,28 @@
                     "example": "My-Project",
                     "description": "The project this entity belongs to."
                 },
+                "sourceVersion": {
+                    "type": "string",
+                    "example": "Version 2",
+                    "description": "Id/name of a released version, which is marked as latest."
+                },
                 "status": {
                     "type": "string",
                     "example": "NONE/RELEASED/DEPRECATED",
                     "description": "Release status of the Custom Integration"
+                },
+                "tags": {
+                    "type": "array",
+                    "example": [
+                        {
+                            "key": "env",
+                            "value": "dev"
+                        }
+                    ],
+                    "description": "A set of tag keys and optional values that were set on on the resource.",
+                    "items": {
+                        "type": "string"
+                    }
                 },
                 "updatedAt": {
                     "type": "string",
@@ -8796,6 +8937,19 @@
             },
             "title": "CustomIntegration",
             "description": "Represents a Custom Integration."
+        },
+        "CustomIntegrationPatchRequest": {
+            "type": "object",
+            "discriminator": "Patch Request for a CustomIntegration",
+            "properties": {
+                "setLatest": {
+                    "type": "boolean",
+                    "example": true,
+                    "description": "Indicates if a version of CustomIntegration should be set as 'LATEST'"
+                }
+            },
+            "title": "CustomIntegrationPatchRequest",
+            "description": "Patch Request for a CustomIntegration"
         },
         "CustomIntegrationSpec": {
             "type": "object",
@@ -9284,19 +9438,6 @@
             },
             "title": "DockerRegistryWebHookSpec",
             "description": "Docker Registry Webhook specification."
-        },
-        "DockerRegistryWebhookPatch": {
-            "type": "object",
-            "discriminator": "Docker Registry Webhook Patch details.",
-            "properties": {
-                "enabled": {
-                    "type": "boolean",
-                    "example": true,
-                    "description": "Indicates whether Docker webhook is enabled or not."
-                }
-            },
-            "title": "DockerRegistryWebhookPatch",
-            "description": "Docker Registry Webhook Patch details."
         },
         "DockerRegistryWebhooks": {
             "type": "object",
@@ -13406,6 +13547,19 @@
             },
             "title": "VersionRequest",
             "description": "Request object for version of a Custom Integration."
+        },
+        "WebhookEnablePatch": {
+            "type": "object",
+            "discriminator": "Git/Docker Registry Webhook Patch details.",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "example": true,
+                    "description": "Indicates whether Git/Docker webhook is enabled or not."
+                }
+            },
+            "title": "WebhookEnablePatch",
+            "description": "Git/Docker Registry Webhook Patch details."
         },
         "WebhookEventConfig": {
             "type": "object",

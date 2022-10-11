@@ -57,7 +57,8 @@ func NewGetCustomNameOK() *GetCustomNameOK {
 	return &GetCustomNameOK{}
 }
 
-/* GetCustomNameOK describes a response with status code 200, with default header values.
+/*
+GetCustomNameOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -65,9 +66,39 @@ type GetCustomNameOK struct {
 	Payload *models.CustomNaming
 }
 
+// IsSuccess returns true when this get custom name o k response has a 2xx status code
+func (o *GetCustomNameOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get custom name o k response has a 3xx status code
+func (o *GetCustomNameOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get custom name o k response has a 4xx status code
+func (o *GetCustomNameOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get custom name o k response has a 5xx status code
+func (o *GetCustomNameOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get custom name o k response a status code equal to that given
+func (o *GetCustomNameOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetCustomNameOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/naming/{id}][%d] getCustomNameOK  %+v", 200, o.Payload)
 }
+
+func (o *GetCustomNameOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/naming/{id}][%d] getCustomNameOK  %+v", 200, o.Payload)
+}
+
 func (o *GetCustomNameOK) GetPayload() *models.CustomNaming {
 	return o.Payload
 }
@@ -89,7 +120,8 @@ func NewGetCustomNameBadRequest() *GetCustomNameBadRequest {
 	return &GetCustomNameBadRequest{}
 }
 
-/* GetCustomNameBadRequest describes a response with status code 400, with default header values.
+/*
+GetCustomNameBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -97,9 +129,39 @@ type GetCustomNameBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get custom name bad request response has a 2xx status code
+func (o *GetCustomNameBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get custom name bad request response has a 3xx status code
+func (o *GetCustomNameBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get custom name bad request response has a 4xx status code
+func (o *GetCustomNameBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get custom name bad request response has a 5xx status code
+func (o *GetCustomNameBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get custom name bad request response a status code equal to that given
+func (o *GetCustomNameBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GetCustomNameBadRequest) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/naming/{id}][%d] getCustomNameBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *GetCustomNameBadRequest) String() string {
+	return fmt.Sprintf("[GET /iaas/api/naming/{id}][%d] getCustomNameBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *GetCustomNameBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -121,7 +183,8 @@ func NewGetCustomNameForbidden() *GetCustomNameForbidden {
 	return &GetCustomNameForbidden{}
 }
 
-/* GetCustomNameForbidden describes a response with status code 403, with default header values.
+/*
+GetCustomNameForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -129,9 +192,39 @@ type GetCustomNameForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get custom name forbidden response has a 2xx status code
+func (o *GetCustomNameForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get custom name forbidden response has a 3xx status code
+func (o *GetCustomNameForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get custom name forbidden response has a 4xx status code
+func (o *GetCustomNameForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get custom name forbidden response has a 5xx status code
+func (o *GetCustomNameForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get custom name forbidden response a status code equal to that given
+func (o *GetCustomNameForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetCustomNameForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/naming/{id}][%d] getCustomNameForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetCustomNameForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/naming/{id}][%d] getCustomNameForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetCustomNameForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -153,7 +246,8 @@ func NewGetCustomNameNotFound() *GetCustomNameNotFound {
 	return &GetCustomNameNotFound{}
 }
 
-/* GetCustomNameNotFound describes a response with status code 404, with default header values.
+/*
+GetCustomNameNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -161,9 +255,39 @@ type GetCustomNameNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get custom name not found response has a 2xx status code
+func (o *GetCustomNameNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get custom name not found response has a 3xx status code
+func (o *GetCustomNameNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get custom name not found response has a 4xx status code
+func (o *GetCustomNameNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get custom name not found response has a 5xx status code
+func (o *GetCustomNameNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get custom name not found response a status code equal to that given
+func (o *GetCustomNameNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetCustomNameNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/naming/{id}][%d] getCustomNameNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetCustomNameNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/naming/{id}][%d] getCustomNameNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetCustomNameNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -52,10 +52,12 @@ func NewDeleteGitEventsByIDUsingDELETEParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* DeleteGitEventsByIDUsingDELETEParams contains all the parameters to send to the API endpoint
-   for the delete git events by Id using d e l e t e operation.
+/*
+DeleteGitEventsByIDUsingDELETEParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete git events by Id using d e l e t e operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteGitEventsByIDUsingDELETEParams struct {
 

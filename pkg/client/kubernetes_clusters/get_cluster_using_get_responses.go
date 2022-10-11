@@ -29,6 +29,12 @@ func (o *GetClusterUsingGETReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return result, nil
+	case 403:
+		result := NewGetClusterUsingGETForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +45,8 @@ func NewGetClusterUsingGETOK() *GetClusterUsingGETOK {
 	return &GetClusterUsingGETOK{}
 }
 
-/* GetClusterUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetClusterUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +54,39 @@ type GetClusterUsingGETOK struct {
 	Payload *models.K8SCluster
 }
 
+// IsSuccess returns true when this get cluster using g e t o k response has a 2xx status code
+func (o *GetClusterUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get cluster using g e t o k response has a 3xx status code
+func (o *GetClusterUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get cluster using g e t o k response has a 4xx status code
+func (o *GetClusterUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get cluster using g e t o k response has a 5xx status code
+func (o *GetClusterUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get cluster using g e t o k response a status code equal to that given
+func (o *GetClusterUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetClusterUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /cmx/api/resources/k8s/clusters/{id}][%d] getClusterUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetClusterUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/k8s/clusters/{id}][%d] getClusterUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetClusterUsingGETOK) GetPayload() *models.K8SCluster {
 	return o.Payload
 }
@@ -62,6 +99,57 @@ func (o *GetClusterUsingGETOK) readResponse(response runtime.ClientResponse, con
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewGetClusterUsingGETForbidden creates a GetClusterUsingGETForbidden with default headers values
+func NewGetClusterUsingGETForbidden() *GetClusterUsingGETForbidden {
+	return &GetClusterUsingGETForbidden{}
+}
+
+/*
+GetClusterUsingGETForbidden describes a response with status code 403, with default header values.
+
+Forbidden, the user lacks permissions
+*/
+type GetClusterUsingGETForbidden struct {
+}
+
+// IsSuccess returns true when this get cluster using g e t forbidden response has a 2xx status code
+func (o *GetClusterUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get cluster using g e t forbidden response has a 3xx status code
+func (o *GetClusterUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get cluster using g e t forbidden response has a 4xx status code
+func (o *GetClusterUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get cluster using g e t forbidden response has a 5xx status code
+func (o *GetClusterUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get cluster using g e t forbidden response a status code equal to that given
+func (o *GetClusterUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *GetClusterUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/k8s/clusters/{id}][%d] getClusterUsingGETForbidden ", 403)
+}
+
+func (o *GetClusterUsingGETForbidden) String() string {
+	return fmt.Sprintf("[GET /cmx/api/resources/k8s/clusters/{id}][%d] getClusterUsingGETForbidden ", 403)
+}
+
+func (o *GetClusterUsingGETForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

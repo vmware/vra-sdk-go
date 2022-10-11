@@ -52,10 +52,12 @@ func NewGetResourceActionUsingGET5ParamsWithHTTPClient(client *http.Client) *Get
 	}
 }
 
-/* GetResourceActionUsingGET5Params contains all the parameters to send to the API endpoint
-   for the get resource action using g e t 5 operation.
+/*
+GetResourceActionUsingGET5Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get resource action using g e t 5 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetResourceActionUsingGET5Params struct {
 

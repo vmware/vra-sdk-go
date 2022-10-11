@@ -52,10 +52,12 @@ func NewGetZoneParamsWithHTTPClient(client *http.Client) *GetZoneParams {
 	}
 }
 
-/* GetZoneParams contains all the parameters to send to the API endpoint
-   for the get zone operation.
+/*
+GetZoneParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get zone operation.
+
+	Typically these are written to a http.Request.
 */
 type GetZoneParams struct {
 

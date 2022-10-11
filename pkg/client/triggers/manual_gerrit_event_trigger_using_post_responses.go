@@ -63,7 +63,8 @@ func NewManualGerritEventTriggerUsingPOSTOK() *ManualGerritEventTriggerUsingPOST
 	return &ManualGerritEventTriggerUsingPOSTOK{}
 }
 
-/* ManualGerritEventTriggerUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+ManualGerritEventTriggerUsingPOSTOK describes a response with status code 200, with default header values.
 
 'Success' with Manual trigger Gerrit event
 */
@@ -71,9 +72,39 @@ type ManualGerritEventTriggerUsingPOSTOK struct {
 	Payload models.ManualTriggerResponse
 }
 
+// IsSuccess returns true when this manual gerrit event trigger using p o s t o k response has a 2xx status code
+func (o *ManualGerritEventTriggerUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this manual gerrit event trigger using p o s t o k response has a 3xx status code
+func (o *ManualGerritEventTriggerUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this manual gerrit event trigger using p o s t o k response has a 4xx status code
+func (o *ManualGerritEventTriggerUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this manual gerrit event trigger using p o s t o k response has a 5xx status code
+func (o *ManualGerritEventTriggerUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this manual gerrit event trigger using p o s t o k response a status code equal to that given
+func (o *ManualGerritEventTriggerUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ManualGerritEventTriggerUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-events][%d] manualGerritEventTriggerUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *ManualGerritEventTriggerUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-events][%d] manualGerritEventTriggerUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *ManualGerritEventTriggerUsingPOSTOK) GetPayload() models.ManualTriggerResponse {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewManualGerritEventTriggerUsingPOSTUnauthorized() *ManualGerritEventTrigge
 	return &ManualGerritEventTriggerUsingPOSTUnauthorized{}
 }
 
-/* ManualGerritEventTriggerUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+ManualGerritEventTriggerUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type ManualGerritEventTriggerUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this manual gerrit event trigger using p o s t unauthorized response has a 2xx status code
+func (o *ManualGerritEventTriggerUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this manual gerrit event trigger using p o s t unauthorized response has a 3xx status code
+func (o *ManualGerritEventTriggerUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this manual gerrit event trigger using p o s t unauthorized response has a 4xx status code
+func (o *ManualGerritEventTriggerUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this manual gerrit event trigger using p o s t unauthorized response has a 5xx status code
+func (o *ManualGerritEventTriggerUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this manual gerrit event trigger using p o s t unauthorized response a status code equal to that given
+func (o *ManualGerritEventTriggerUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ManualGerritEventTriggerUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-events][%d] manualGerritEventTriggerUsingPOSTUnauthorized ", 401)
+}
+
+func (o *ManualGerritEventTriggerUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-events][%d] manualGerritEventTriggerUsingPOSTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewManualGerritEventTriggerUsingPOSTForbidden() *ManualGerritEventTriggerUs
 	return &ManualGerritEventTriggerUsingPOSTForbidden{}
 }
 
-/* ManualGerritEventTriggerUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+ManualGerritEventTriggerUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type ManualGerritEventTriggerUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this manual gerrit event trigger using p o s t forbidden response has a 2xx status code
+func (o *ManualGerritEventTriggerUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this manual gerrit event trigger using p o s t forbidden response has a 3xx status code
+func (o *ManualGerritEventTriggerUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this manual gerrit event trigger using p o s t forbidden response has a 4xx status code
+func (o *ManualGerritEventTriggerUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this manual gerrit event trigger using p o s t forbidden response has a 5xx status code
+func (o *ManualGerritEventTriggerUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this manual gerrit event trigger using p o s t forbidden response a status code equal to that given
+func (o *ManualGerritEventTriggerUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ManualGerritEventTriggerUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-events][%d] manualGerritEventTriggerUsingPOSTForbidden ", 403)
+}
+
+func (o *ManualGerritEventTriggerUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-events][%d] manualGerritEventTriggerUsingPOSTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewManualGerritEventTriggerUsingPOSTNotFound() *ManualGerritEventTriggerUsi
 	return &ManualGerritEventTriggerUsingPOSTNotFound{}
 }
 
-/* ManualGerritEventTriggerUsingPOSTNotFound describes a response with status code 404, with default header values.
+/*
+ManualGerritEventTriggerUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type ManualGerritEventTriggerUsingPOSTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this manual gerrit event trigger using p o s t not found response has a 2xx status code
+func (o *ManualGerritEventTriggerUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this manual gerrit event trigger using p o s t not found response has a 3xx status code
+func (o *ManualGerritEventTriggerUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this manual gerrit event trigger using p o s t not found response has a 4xx status code
+func (o *ManualGerritEventTriggerUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this manual gerrit event trigger using p o s t not found response has a 5xx status code
+func (o *ManualGerritEventTriggerUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this manual gerrit event trigger using p o s t not found response a status code equal to that given
+func (o *ManualGerritEventTriggerUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ManualGerritEventTriggerUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-events][%d] manualGerritEventTriggerUsingPOSTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ManualGerritEventTriggerUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-events][%d] manualGerritEventTriggerUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ManualGerritEventTriggerUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewManualGerritEventTriggerUsingPOSTInternalServerError() *ManualGerritEven
 	return &ManualGerritEventTriggerUsingPOSTInternalServerError{}
 }
 
-/* ManualGerritEventTriggerUsingPOSTInternalServerError describes a response with status code 500, with default header values.
+/*
+ManualGerritEventTriggerUsingPOSTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ManualGerritEventTriggerUsingPOSTInternalServerError struct {
 }
 
+// IsSuccess returns true when this manual gerrit event trigger using p o s t internal server error response has a 2xx status code
+func (o *ManualGerritEventTriggerUsingPOSTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this manual gerrit event trigger using p o s t internal server error response has a 3xx status code
+func (o *ManualGerritEventTriggerUsingPOSTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this manual gerrit event trigger using p o s t internal server error response has a 4xx status code
+func (o *ManualGerritEventTriggerUsingPOSTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this manual gerrit event trigger using p o s t internal server error response has a 5xx status code
+func (o *ManualGerritEventTriggerUsingPOSTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this manual gerrit event trigger using p o s t internal server error response a status code equal to that given
+func (o *ManualGerritEventTriggerUsingPOSTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ManualGerritEventTriggerUsingPOSTInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-events][%d] manualGerritEventTriggerUsingPOSTInternalServerError ", 500)
+}
+
+func (o *ManualGerritEventTriggerUsingPOSTInternalServerError) String() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-events][%d] manualGerritEventTriggerUsingPOSTInternalServerError ", 500)
 }
 

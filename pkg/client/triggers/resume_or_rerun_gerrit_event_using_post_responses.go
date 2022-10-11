@@ -63,7 +63,8 @@ func NewResumeOrRerunGerritEventUsingPOSTOK() *ResumeOrRerunGerritEventUsingPOST
 	return &ResumeOrRerunGerritEventUsingPOSTOK{}
 }
 
-/* ResumeOrRerunGerritEventUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+ResumeOrRerunGerritEventUsingPOSTOK describes a response with status code 200, with default header values.
 
 'Success' with Re-run/Resume Gerrit event
 */
@@ -71,9 +72,39 @@ type ResumeOrRerunGerritEventUsingPOSTOK struct {
 	Payload models.GerritEvent
 }
 
+// IsSuccess returns true when this resume or rerun gerrit event using p o s t o k response has a 2xx status code
+func (o *ResumeOrRerunGerritEventUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this resume or rerun gerrit event using p o s t o k response has a 3xx status code
+func (o *ResumeOrRerunGerritEventUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this resume or rerun gerrit event using p o s t o k response has a 4xx status code
+func (o *ResumeOrRerunGerritEventUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this resume or rerun gerrit event using p o s t o k response has a 5xx status code
+func (o *ResumeOrRerunGerritEventUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this resume or rerun gerrit event using p o s t o k response a status code equal to that given
+func (o *ResumeOrRerunGerritEventUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ResumeOrRerunGerritEventUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-events/{id}][%d] resumeOrRerunGerritEventUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *ResumeOrRerunGerritEventUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-events/{id}][%d] resumeOrRerunGerritEventUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *ResumeOrRerunGerritEventUsingPOSTOK) GetPayload() models.GerritEvent {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewResumeOrRerunGerritEventUsingPOSTUnauthorized() *ResumeOrRerunGerritEven
 	return &ResumeOrRerunGerritEventUsingPOSTUnauthorized{}
 }
 
-/* ResumeOrRerunGerritEventUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+ResumeOrRerunGerritEventUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type ResumeOrRerunGerritEventUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this resume or rerun gerrit event using p o s t unauthorized response has a 2xx status code
+func (o *ResumeOrRerunGerritEventUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this resume or rerun gerrit event using p o s t unauthorized response has a 3xx status code
+func (o *ResumeOrRerunGerritEventUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this resume or rerun gerrit event using p o s t unauthorized response has a 4xx status code
+func (o *ResumeOrRerunGerritEventUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this resume or rerun gerrit event using p o s t unauthorized response has a 5xx status code
+func (o *ResumeOrRerunGerritEventUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this resume or rerun gerrit event using p o s t unauthorized response a status code equal to that given
+func (o *ResumeOrRerunGerritEventUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ResumeOrRerunGerritEventUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-events/{id}][%d] resumeOrRerunGerritEventUsingPOSTUnauthorized ", 401)
+}
+
+func (o *ResumeOrRerunGerritEventUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-events/{id}][%d] resumeOrRerunGerritEventUsingPOSTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewResumeOrRerunGerritEventUsingPOSTForbidden() *ResumeOrRerunGerritEventUs
 	return &ResumeOrRerunGerritEventUsingPOSTForbidden{}
 }
 
-/* ResumeOrRerunGerritEventUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+ResumeOrRerunGerritEventUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type ResumeOrRerunGerritEventUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this resume or rerun gerrit event using p o s t forbidden response has a 2xx status code
+func (o *ResumeOrRerunGerritEventUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this resume or rerun gerrit event using p o s t forbidden response has a 3xx status code
+func (o *ResumeOrRerunGerritEventUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this resume or rerun gerrit event using p o s t forbidden response has a 4xx status code
+func (o *ResumeOrRerunGerritEventUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this resume or rerun gerrit event using p o s t forbidden response has a 5xx status code
+func (o *ResumeOrRerunGerritEventUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this resume or rerun gerrit event using p o s t forbidden response a status code equal to that given
+func (o *ResumeOrRerunGerritEventUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ResumeOrRerunGerritEventUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-events/{id}][%d] resumeOrRerunGerritEventUsingPOSTForbidden ", 403)
+}
+
+func (o *ResumeOrRerunGerritEventUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-events/{id}][%d] resumeOrRerunGerritEventUsingPOSTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewResumeOrRerunGerritEventUsingPOSTNotFound() *ResumeOrRerunGerritEventUsi
 	return &ResumeOrRerunGerritEventUsingPOSTNotFound{}
 }
 
-/* ResumeOrRerunGerritEventUsingPOSTNotFound describes a response with status code 404, with default header values.
+/*
+ResumeOrRerunGerritEventUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type ResumeOrRerunGerritEventUsingPOSTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this resume or rerun gerrit event using p o s t not found response has a 2xx status code
+func (o *ResumeOrRerunGerritEventUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this resume or rerun gerrit event using p o s t not found response has a 3xx status code
+func (o *ResumeOrRerunGerritEventUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this resume or rerun gerrit event using p o s t not found response has a 4xx status code
+func (o *ResumeOrRerunGerritEventUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this resume or rerun gerrit event using p o s t not found response has a 5xx status code
+func (o *ResumeOrRerunGerritEventUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this resume or rerun gerrit event using p o s t not found response a status code equal to that given
+func (o *ResumeOrRerunGerritEventUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ResumeOrRerunGerritEventUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-events/{id}][%d] resumeOrRerunGerritEventUsingPOSTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ResumeOrRerunGerritEventUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-events/{id}][%d] resumeOrRerunGerritEventUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ResumeOrRerunGerritEventUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewResumeOrRerunGerritEventUsingPOSTInternalServerError() *ResumeOrRerunGer
 	return &ResumeOrRerunGerritEventUsingPOSTInternalServerError{}
 }
 
-/* ResumeOrRerunGerritEventUsingPOSTInternalServerError describes a response with status code 500, with default header values.
+/*
+ResumeOrRerunGerritEventUsingPOSTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ResumeOrRerunGerritEventUsingPOSTInternalServerError struct {
 }
 
+// IsSuccess returns true when this resume or rerun gerrit event using p o s t internal server error response has a 2xx status code
+func (o *ResumeOrRerunGerritEventUsingPOSTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this resume or rerun gerrit event using p o s t internal server error response has a 3xx status code
+func (o *ResumeOrRerunGerritEventUsingPOSTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this resume or rerun gerrit event using p o s t internal server error response has a 4xx status code
+func (o *ResumeOrRerunGerritEventUsingPOSTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this resume or rerun gerrit event using p o s t internal server error response has a 5xx status code
+func (o *ResumeOrRerunGerritEventUsingPOSTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this resume or rerun gerrit event using p o s t internal server error response a status code equal to that given
+func (o *ResumeOrRerunGerritEventUsingPOSTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ResumeOrRerunGerritEventUsingPOSTInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/gerrit-events/{id}][%d] resumeOrRerunGerritEventUsingPOSTInternalServerError ", 500)
+}
+
+func (o *ResumeOrRerunGerritEventUsingPOSTInternalServerError) String() string {
 	return fmt.Sprintf("[POST /codestream/api/gerrit-events/{id}][%d] resumeOrRerunGerritEventUsingPOSTInternalServerError ", 500)
 }
 

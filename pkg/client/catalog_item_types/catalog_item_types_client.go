@@ -38,9 +38,9 @@ type ClientService interface {
 }
 
 /*
-  GetTypeByIDUsingGET2 fetches catalog item type associated with the specified ID
+GetTypeByIDUsingGET2 fetches catalog item type associated with the specified ID
 
-  Returns the Catalog Item Type with the specified ID.
+Returns the Catalog Item Type with the specified ID.
 */
 func (a *Client) GetTypeByIDUsingGET2(params *GetTypeByIDUsingGET2Params, opts ...ClientOption) (*GetTypeByIDUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -78,9 +78,9 @@ func (a *Client) GetTypeByIDUsingGET2(params *GetTypeByIDUsingGET2Params, opts .
 }
 
 /*
-  GetTypesUsingGET4 finds all catalog item types
+GetTypesUsingGET4 finds all catalog item types
 
-  Returns a paginated list of all available Catalog Item Types.
+Returns a paginated list of all available Catalog Item Types.
 */
 func (a *Client) GetTypesUsingGET4(params *GetTypesUsingGET4Params, opts ...ClientOption) (*GetTypesUsingGET4OK, error) {
 	// TODO: Validate the params before sending

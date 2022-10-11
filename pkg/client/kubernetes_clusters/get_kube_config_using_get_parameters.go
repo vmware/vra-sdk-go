@@ -53,10 +53,12 @@ func NewGetKubeConfigUsingGETParamsWithHTTPClient(client *http.Client) *GetKubeC
 	}
 }
 
-/* GetKubeConfigUsingGETParams contains all the parameters to send to the API endpoint
-   for the get kube config using g e t operation.
+/*
+GetKubeConfigUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get kube config using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetKubeConfigUsingGETParams struct {
 
@@ -67,6 +69,12 @@ type GetKubeConfigUsingGETParams struct {
 	   Format: uuid
 	*/
 	ID strfmt.UUID
+
+	/* IgnoreTMC.
+
+	   ignoreTMC
+	*/
+	IgnoreTMC *bool
 
 	/* IncludeCredentials.
 
@@ -91,7 +99,18 @@ func (o *GetKubeConfigUsingGETParams) WithDefaults() *GetKubeConfigUsingGETParam
 //
 // All values with no default are reset to their zero value.
 func (o *GetKubeConfigUsingGETParams) SetDefaults() {
-	// no default values defined for this parameter
+	var (
+		ignoreTMCDefault = bool(false)
+	)
+
+	val := GetKubeConfigUsingGETParams{
+		IgnoreTMC: &ignoreTMCDefault,
+	}
+
+	val.timeout = o.timeout
+	val.Context = o.Context
+	val.HTTPClient = o.HTTPClient
+	*o = val
 }
 
 // WithTimeout adds the timeout to the get kube config using get params
@@ -138,6 +157,17 @@ func (o *GetKubeConfigUsingGETParams) SetID(id strfmt.UUID) {
 	o.ID = id
 }
 
+// WithIgnoreTMC adds the ignoreTMC to the get kube config using get params
+func (o *GetKubeConfigUsingGETParams) WithIgnoreTMC(ignoreTMC *bool) *GetKubeConfigUsingGETParams {
+	o.SetIgnoreTMC(ignoreTMC)
+	return o
+}
+
+// SetIgnoreTMC adds the ignoreTMC to the get kube config using get params
+func (o *GetKubeConfigUsingGETParams) SetIgnoreTMC(ignoreTMC *bool) {
+	o.IgnoreTMC = ignoreTMC
+}
+
 // WithIncludeCredentials adds the includeCredentials to the get kube config using get params
 func (o *GetKubeConfigUsingGETParams) WithIncludeCredentials(includeCredentials *bool) *GetKubeConfigUsingGETParams {
 	o.SetIncludeCredentials(includeCredentials)
@@ -160,6 +190,23 @@ func (o *GetKubeConfigUsingGETParams) WriteToRequest(r runtime.ClientRequest, re
 	// path param id
 	if err := r.SetPathParam("id", o.ID.String()); err != nil {
 		return err
+	}
+
+	if o.IgnoreTMC != nil {
+
+		// query param ignoreTMC
+		var qrIgnoreTMC bool
+
+		if o.IgnoreTMC != nil {
+			qrIgnoreTMC = *o.IgnoreTMC
+		}
+		qIgnoreTMC := swag.FormatBool(qrIgnoreTMC)
+		if qIgnoreTMC != "" {
+
+			if err := r.SetQueryParam("ignoreTMC", qIgnoreTMC); err != nil {
+				return err
+			}
+		}
 	}
 
 	if o.IncludeCredentials != nil {

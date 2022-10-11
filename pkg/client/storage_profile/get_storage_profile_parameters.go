@@ -52,10 +52,12 @@ func NewGetStorageProfileParamsWithHTTPClient(client *http.Client) *GetStoragePr
 	}
 }
 
-/* GetStorageProfileParams contains all the parameters to send to the API endpoint
-   for the get storage profile operation.
+/*
+GetStorageProfileParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get storage profile operation.
+
+	Typically these are written to a http.Request.
 */
 type GetStorageProfileParams struct {
 

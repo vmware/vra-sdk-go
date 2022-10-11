@@ -51,7 +51,8 @@ func NewGetImageProfileOK() *GetImageProfileOK {
 	return &GetImageProfileOK{}
 }
 
-/* GetImageProfileOK describes a response with status code 200, with default header values.
+/*
+GetImageProfileOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetImageProfileOK struct {
 	Payload *models.ImageProfile
 }
 
+// IsSuccess returns true when this get image profile o k response has a 2xx status code
+func (o *GetImageProfileOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get image profile o k response has a 3xx status code
+func (o *GetImageProfileOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get image profile o k response has a 4xx status code
+func (o *GetImageProfileOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get image profile o k response has a 5xx status code
+func (o *GetImageProfileOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get image profile o k response a status code equal to that given
+func (o *GetImageProfileOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetImageProfileOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/image-profiles/{id}][%d] getImageProfileOK  %+v", 200, o.Payload)
 }
+
+func (o *GetImageProfileOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/image-profiles/{id}][%d] getImageProfileOK  %+v", 200, o.Payload)
+}
+
 func (o *GetImageProfileOK) GetPayload() *models.ImageProfile {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewGetImageProfileForbidden() *GetImageProfileForbidden {
 	return &GetImageProfileForbidden{}
 }
 
-/* GetImageProfileForbidden describes a response with status code 403, with default header values.
+/*
+GetImageProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type GetImageProfileForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get image profile forbidden response has a 2xx status code
+func (o *GetImageProfileForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get image profile forbidden response has a 3xx status code
+func (o *GetImageProfileForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get image profile forbidden response has a 4xx status code
+func (o *GetImageProfileForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get image profile forbidden response has a 5xx status code
+func (o *GetImageProfileForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get image profile forbidden response a status code equal to that given
+func (o *GetImageProfileForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetImageProfileForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/image-profiles/{id}][%d] getImageProfileForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetImageProfileForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/image-profiles/{id}][%d] getImageProfileForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetImageProfileForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewGetImageProfileNotFound() *GetImageProfileNotFound {
 	return &GetImageProfileNotFound{}
 }
 
-/* GetImageProfileNotFound describes a response with status code 404, with default header values.
+/*
+GetImageProfileNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type GetImageProfileNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get image profile not found response has a 2xx status code
+func (o *GetImageProfileNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get image profile not found response has a 3xx status code
+func (o *GetImageProfileNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get image profile not found response has a 4xx status code
+func (o *GetImageProfileNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get image profile not found response has a 5xx status code
+func (o *GetImageProfileNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get image profile not found response a status code equal to that given
+func (o *GetImageProfileNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetImageProfileNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/image-profiles/{id}][%d] getImageProfileNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetImageProfileNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/image-profiles/{id}][%d] getImageProfileNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetImageProfileNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

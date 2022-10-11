@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
@@ -158,7 +157,7 @@ func UnmarshalRollbackResponseSlice(reader io.Reader, consumer runtime.Consumer)
 // UnmarshalRollbackResponse unmarshals polymorphic RollbackResponse
 func UnmarshalRollbackResponse(reader io.Reader, consumer runtime.Consumer) (RollbackResponse, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}

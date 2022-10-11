@@ -52,10 +52,12 @@ func NewGetRequestTrackerParamsWithHTTPClient(client *http.Client) *GetRequestTr
 	}
 }
 
-/* GetRequestTrackerParams contains all the parameters to send to the API endpoint
-   for the get request tracker operation.
+/*
+GetRequestTrackerParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get request tracker operation.
+
+	Typically these are written to a http.Request.
 */
 type GetRequestTrackerParams struct {
 

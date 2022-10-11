@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewGetNsxVCloudAccountsParams creates a new GetNsxVCloudAccountsParams object,
@@ -52,12 +53,26 @@ func NewGetNsxVCloudAccountsParamsWithHTTPClient(client *http.Client) *GetNsxVCl
 	}
 }
 
-/* GetNsxVCloudAccountsParams contains all the parameters to send to the API endpoint
-   for the get nsx v cloud accounts operation.
+/*
+GetNsxVCloudAccountsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get nsx v cloud accounts operation.
+
+	Typically these are written to a http.Request.
 */
 type GetNsxVCloudAccountsParams struct {
+
+	/* DollarSkip.
+
+	   Number of records you want to skip.
+	*/
+	DollarSkip *int64
+
+	/* DollarTop.
+
+	   Number of records you want to get.
+	*/
+	DollarTop *int64
 
 	/* APIVersion.
 
@@ -118,6 +133,28 @@ func (o *GetNsxVCloudAccountsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithDollarSkip adds the dollarSkip to the get nsx v cloud accounts params
+func (o *GetNsxVCloudAccountsParams) WithDollarSkip(dollarSkip *int64) *GetNsxVCloudAccountsParams {
+	o.SetDollarSkip(dollarSkip)
+	return o
+}
+
+// SetDollarSkip adds the dollarSkip to the get nsx v cloud accounts params
+func (o *GetNsxVCloudAccountsParams) SetDollarSkip(dollarSkip *int64) {
+	o.DollarSkip = dollarSkip
+}
+
+// WithDollarTop adds the dollarTop to the get nsx v cloud accounts params
+func (o *GetNsxVCloudAccountsParams) WithDollarTop(dollarTop *int64) *GetNsxVCloudAccountsParams {
+	o.SetDollarTop(dollarTop)
+	return o
+}
+
+// SetDollarTop adds the dollarTop to the get nsx v cloud accounts params
+func (o *GetNsxVCloudAccountsParams) SetDollarTop(dollarTop *int64) {
+	o.DollarTop = dollarTop
+}
+
 // WithAPIVersion adds the aPIVersion to the get nsx v cloud accounts params
 func (o *GetNsxVCloudAccountsParams) WithAPIVersion(aPIVersion *string) *GetNsxVCloudAccountsParams {
 	o.SetAPIVersion(aPIVersion)
@@ -136,6 +173,40 @@ func (o *GetNsxVCloudAccountsParams) WriteToRequest(r runtime.ClientRequest, reg
 		return err
 	}
 	var res []error
+
+	if o.DollarSkip != nil {
+
+		// query param $skip
+		var qrDollarSkip int64
+
+		if o.DollarSkip != nil {
+			qrDollarSkip = *o.DollarSkip
+		}
+		qDollarSkip := swag.FormatInt64(qrDollarSkip)
+		if qDollarSkip != "" {
+
+			if err := r.SetQueryParam("$skip", qDollarSkip); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.DollarTop != nil {
+
+		// query param $top
+		var qrDollarTop int64
+
+		if o.DollarTop != nil {
+			qrDollarTop = *o.DollarTop
+		}
+		qDollarTop := swag.FormatInt64(qrDollarTop)
+		if qDollarTop != "" {
+
+			if err := r.SetQueryParam("$top", qDollarTop); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.APIVersion != nil {
 

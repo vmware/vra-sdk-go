@@ -16,7 +16,7 @@ import (
 
 // TimeSeriesValue TimeSeriesValue
 //
-// A timeseries object containing timestamp and price value at the timestamp
+// # A timeseries object containing timestamp and price value at the timestamp
 //
 // swagger:model TimeSeriesValue
 type TimeSeriesValue struct {

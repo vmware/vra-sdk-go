@@ -63,7 +63,8 @@ func NewGetAllGerritTriggersUsingGETOK() *GetAllGerritTriggersUsingGETOK {
 	return &GetAllGerritTriggersUsingGETOK{}
 }
 
-/* GetAllGerritTriggersUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetAllGerritTriggersUsingGETOK describes a response with status code 200, with default header values.
 
 'Success' with get of gerrit triggers
 */
@@ -71,9 +72,39 @@ type GetAllGerritTriggersUsingGETOK struct {
 	Payload models.GerritTriggers
 }
 
+// IsSuccess returns true when this get all gerrit triggers using g e t o k response has a 2xx status code
+func (o *GetAllGerritTriggersUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get all gerrit triggers using g e t o k response has a 3xx status code
+func (o *GetAllGerritTriggersUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all gerrit triggers using g e t o k response has a 4xx status code
+func (o *GetAllGerritTriggersUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get all gerrit triggers using g e t o k response has a 5xx status code
+func (o *GetAllGerritTriggersUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all gerrit triggers using g e t o k response a status code equal to that given
+func (o *GetAllGerritTriggersUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetAllGerritTriggersUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/gerrit-triggers][%d] getAllGerritTriggersUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetAllGerritTriggersUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /codestream/api/gerrit-triggers][%d] getAllGerritTriggersUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetAllGerritTriggersUsingGETOK) GetPayload() models.GerritTriggers {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewGetAllGerritTriggersUsingGETUnauthorized() *GetAllGerritTriggersUsingGET
 	return &GetAllGerritTriggersUsingGETUnauthorized{}
 }
 
-/* GetAllGerritTriggersUsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+GetAllGerritTriggersUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type GetAllGerritTriggersUsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this get all gerrit triggers using g e t unauthorized response has a 2xx status code
+func (o *GetAllGerritTriggersUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get all gerrit triggers using g e t unauthorized response has a 3xx status code
+func (o *GetAllGerritTriggersUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all gerrit triggers using g e t unauthorized response has a 4xx status code
+func (o *GetAllGerritTriggersUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get all gerrit triggers using g e t unauthorized response has a 5xx status code
+func (o *GetAllGerritTriggersUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all gerrit triggers using g e t unauthorized response a status code equal to that given
+func (o *GetAllGerritTriggersUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetAllGerritTriggersUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/gerrit-triggers][%d] getAllGerritTriggersUsingGETUnauthorized ", 401)
+}
+
+func (o *GetAllGerritTriggersUsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /codestream/api/gerrit-triggers][%d] getAllGerritTriggersUsingGETUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewGetAllGerritTriggersUsingGETForbidden() *GetAllGerritTriggersUsingGETFor
 	return &GetAllGerritTriggersUsingGETForbidden{}
 }
 
-/* GetAllGerritTriggersUsingGETForbidden describes a response with status code 403, with default header values.
+/*
+GetAllGerritTriggersUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetAllGerritTriggersUsingGETForbidden struct {
 }
 
+// IsSuccess returns true when this get all gerrit triggers using g e t forbidden response has a 2xx status code
+func (o *GetAllGerritTriggersUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get all gerrit triggers using g e t forbidden response has a 3xx status code
+func (o *GetAllGerritTriggersUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all gerrit triggers using g e t forbidden response has a 4xx status code
+func (o *GetAllGerritTriggersUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get all gerrit triggers using g e t forbidden response has a 5xx status code
+func (o *GetAllGerritTriggersUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all gerrit triggers using g e t forbidden response a status code equal to that given
+func (o *GetAllGerritTriggersUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetAllGerritTriggersUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/gerrit-triggers][%d] getAllGerritTriggersUsingGETForbidden ", 403)
+}
+
+func (o *GetAllGerritTriggersUsingGETForbidden) String() string {
 	return fmt.Sprintf("[GET /codestream/api/gerrit-triggers][%d] getAllGerritTriggersUsingGETForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewGetAllGerritTriggersUsingGETNotFound() *GetAllGerritTriggersUsingGETNotF
 	return &GetAllGerritTriggersUsingGETNotFound{}
 }
 
-/* GetAllGerritTriggersUsingGETNotFound describes a response with status code 404, with default header values.
+/*
+GetAllGerritTriggersUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type GetAllGerritTriggersUsingGETNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get all gerrit triggers using g e t not found response has a 2xx status code
+func (o *GetAllGerritTriggersUsingGETNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get all gerrit triggers using g e t not found response has a 3xx status code
+func (o *GetAllGerritTriggersUsingGETNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all gerrit triggers using g e t not found response has a 4xx status code
+func (o *GetAllGerritTriggersUsingGETNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get all gerrit triggers using g e t not found response has a 5xx status code
+func (o *GetAllGerritTriggersUsingGETNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all gerrit triggers using g e t not found response a status code equal to that given
+func (o *GetAllGerritTriggersUsingGETNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetAllGerritTriggersUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/gerrit-triggers][%d] getAllGerritTriggersUsingGETNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetAllGerritTriggersUsingGETNotFound) String() string {
+	return fmt.Sprintf("[GET /codestream/api/gerrit-triggers][%d] getAllGerritTriggersUsingGETNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetAllGerritTriggersUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewGetAllGerritTriggersUsingGETInternalServerError() *GetAllGerritTriggersU
 	return &GetAllGerritTriggersUsingGETInternalServerError{}
 }
 
-/* GetAllGerritTriggersUsingGETInternalServerError describes a response with status code 500, with default header values.
+/*
+GetAllGerritTriggersUsingGETInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type GetAllGerritTriggersUsingGETInternalServerError struct {
 }
 
+// IsSuccess returns true when this get all gerrit triggers using g e t internal server error response has a 2xx status code
+func (o *GetAllGerritTriggersUsingGETInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get all gerrit triggers using g e t internal server error response has a 3xx status code
+func (o *GetAllGerritTriggersUsingGETInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all gerrit triggers using g e t internal server error response has a 4xx status code
+func (o *GetAllGerritTriggersUsingGETInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get all gerrit triggers using g e t internal server error response has a 5xx status code
+func (o *GetAllGerritTriggersUsingGETInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this get all gerrit triggers using g e t internal server error response a status code equal to that given
+func (o *GetAllGerritTriggersUsingGETInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GetAllGerritTriggersUsingGETInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/gerrit-triggers][%d] getAllGerritTriggersUsingGETInternalServerError ", 500)
+}
+
+func (o *GetAllGerritTriggersUsingGETInternalServerError) String() string {
 	return fmt.Sprintf("[GET /codestream/api/gerrit-triggers][%d] getAllGerritTriggersUsingGETInternalServerError ", 500)
 }
 

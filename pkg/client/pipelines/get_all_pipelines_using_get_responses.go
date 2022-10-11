@@ -63,7 +63,8 @@ func NewGetAllPipelinesUsingGETOK() *GetAllPipelinesUsingGETOK {
 	return &GetAllPipelinesUsingGETOK{}
 }
 
-/* GetAllPipelinesUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetAllPipelinesUsingGETOK describes a response with status code 200, with default header values.
 
 'Success' with the requested Pipelines
 */
@@ -71,9 +72,39 @@ type GetAllPipelinesUsingGETOK struct {
 	Payload models.Pipelines
 }
 
+// IsSuccess returns true when this get all pipelines using g e t o k response has a 2xx status code
+func (o *GetAllPipelinesUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get all pipelines using g e t o k response has a 3xx status code
+func (o *GetAllPipelinesUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all pipelines using g e t o k response has a 4xx status code
+func (o *GetAllPipelinesUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get all pipelines using g e t o k response has a 5xx status code
+func (o *GetAllPipelinesUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all pipelines using g e t o k response a status code equal to that given
+func (o *GetAllPipelinesUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetAllPipelinesUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/pipelines][%d] getAllPipelinesUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetAllPipelinesUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /codestream/api/pipelines][%d] getAllPipelinesUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetAllPipelinesUsingGETOK) GetPayload() models.Pipelines {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewGetAllPipelinesUsingGETUnauthorized() *GetAllPipelinesUsingGETUnauthoriz
 	return &GetAllPipelinesUsingGETUnauthorized{}
 }
 
-/* GetAllPipelinesUsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+GetAllPipelinesUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type GetAllPipelinesUsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this get all pipelines using g e t unauthorized response has a 2xx status code
+func (o *GetAllPipelinesUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get all pipelines using g e t unauthorized response has a 3xx status code
+func (o *GetAllPipelinesUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all pipelines using g e t unauthorized response has a 4xx status code
+func (o *GetAllPipelinesUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get all pipelines using g e t unauthorized response has a 5xx status code
+func (o *GetAllPipelinesUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all pipelines using g e t unauthorized response a status code equal to that given
+func (o *GetAllPipelinesUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetAllPipelinesUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/pipelines][%d] getAllPipelinesUsingGETUnauthorized ", 401)
+}
+
+func (o *GetAllPipelinesUsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /codestream/api/pipelines][%d] getAllPipelinesUsingGETUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewGetAllPipelinesUsingGETForbidden() *GetAllPipelinesUsingGETForbidden {
 	return &GetAllPipelinesUsingGETForbidden{}
 }
 
-/* GetAllPipelinesUsingGETForbidden describes a response with status code 403, with default header values.
+/*
+GetAllPipelinesUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetAllPipelinesUsingGETForbidden struct {
 }
 
+// IsSuccess returns true when this get all pipelines using g e t forbidden response has a 2xx status code
+func (o *GetAllPipelinesUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get all pipelines using g e t forbidden response has a 3xx status code
+func (o *GetAllPipelinesUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all pipelines using g e t forbidden response has a 4xx status code
+func (o *GetAllPipelinesUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get all pipelines using g e t forbidden response has a 5xx status code
+func (o *GetAllPipelinesUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all pipelines using g e t forbidden response a status code equal to that given
+func (o *GetAllPipelinesUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetAllPipelinesUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/pipelines][%d] getAllPipelinesUsingGETForbidden ", 403)
+}
+
+func (o *GetAllPipelinesUsingGETForbidden) String() string {
 	return fmt.Sprintf("[GET /codestream/api/pipelines][%d] getAllPipelinesUsingGETForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewGetAllPipelinesUsingGETNotFound() *GetAllPipelinesUsingGETNotFound {
 	return &GetAllPipelinesUsingGETNotFound{}
 }
 
-/* GetAllPipelinesUsingGETNotFound describes a response with status code 404, with default header values.
+/*
+GetAllPipelinesUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type GetAllPipelinesUsingGETNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get all pipelines using g e t not found response has a 2xx status code
+func (o *GetAllPipelinesUsingGETNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get all pipelines using g e t not found response has a 3xx status code
+func (o *GetAllPipelinesUsingGETNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all pipelines using g e t not found response has a 4xx status code
+func (o *GetAllPipelinesUsingGETNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get all pipelines using g e t not found response has a 5xx status code
+func (o *GetAllPipelinesUsingGETNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all pipelines using g e t not found response a status code equal to that given
+func (o *GetAllPipelinesUsingGETNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetAllPipelinesUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/pipelines][%d] getAllPipelinesUsingGETNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetAllPipelinesUsingGETNotFound) String() string {
+	return fmt.Sprintf("[GET /codestream/api/pipelines][%d] getAllPipelinesUsingGETNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetAllPipelinesUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewGetAllPipelinesUsingGETInternalServerError() *GetAllPipelinesUsingGETInt
 	return &GetAllPipelinesUsingGETInternalServerError{}
 }
 
-/* GetAllPipelinesUsingGETInternalServerError describes a response with status code 500, with default header values.
+/*
+GetAllPipelinesUsingGETInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type GetAllPipelinesUsingGETInternalServerError struct {
 }
 
+// IsSuccess returns true when this get all pipelines using g e t internal server error response has a 2xx status code
+func (o *GetAllPipelinesUsingGETInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get all pipelines using g e t internal server error response has a 3xx status code
+func (o *GetAllPipelinesUsingGETInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all pipelines using g e t internal server error response has a 4xx status code
+func (o *GetAllPipelinesUsingGETInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get all pipelines using g e t internal server error response has a 5xx status code
+func (o *GetAllPipelinesUsingGETInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this get all pipelines using g e t internal server error response a status code equal to that given
+func (o *GetAllPipelinesUsingGETInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GetAllPipelinesUsingGETInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/pipelines][%d] getAllPipelinesUsingGETInternalServerError ", 500)
+}
+
+func (o *GetAllPipelinesUsingGETInternalServerError) String() string {
 	return fmt.Sprintf("[GET /codestream/api/pipelines][%d] getAllPipelinesUsingGETInternalServerError ", 500)
 }
 

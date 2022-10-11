@@ -29,6 +29,18 @@ func (o *GetContentSourceUsingGETReader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return result, nil
+	case 401:
+		result := NewGetContentSourceUsingGETUnauthorized()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 403:
+		result := NewGetContentSourceUsingGETForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 404:
 		result := NewGetContentSourceUsingGETNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -45,7 +57,8 @@ func NewGetContentSourceUsingGETOK() *GetContentSourceUsingGETOK {
 	return &GetContentSourceUsingGETOK{}
 }
 
-/* GetContentSourceUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetContentSourceUsingGETOK describes a response with status code 200, with default header values.
 
 Content source
 */
@@ -53,9 +66,39 @@ type GetContentSourceUsingGETOK struct {
 	Payload *models.ContentSource
 }
 
+// IsSuccess returns true when this get content source using g e t o k response has a 2xx status code
+func (o *GetContentSourceUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get content source using g e t o k response has a 3xx status code
+func (o *GetContentSourceUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get content source using g e t o k response has a 4xx status code
+func (o *GetContentSourceUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get content source using g e t o k response has a 5xx status code
+func (o *GetContentSourceUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get content source using g e t o k response a status code equal to that given
+func (o *GetContentSourceUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetContentSourceUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /content/api/sources/{id}][%d] getContentSourceUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetContentSourceUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /content/api/sources/{id}][%d] getContentSourceUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetContentSourceUsingGETOK) GetPayload() *models.ContentSource {
 	return o.Payload
 }
@@ -72,12 +115,115 @@ func (o *GetContentSourceUsingGETOK) readResponse(response runtime.ClientRespons
 	return nil
 }
 
+// NewGetContentSourceUsingGETUnauthorized creates a GetContentSourceUsingGETUnauthorized with default headers values
+func NewGetContentSourceUsingGETUnauthorized() *GetContentSourceUsingGETUnauthorized {
+	return &GetContentSourceUsingGETUnauthorized{}
+}
+
+/*
+GetContentSourceUsingGETUnauthorized describes a response with status code 401, with default header values.
+
+Unauthorized
+*/
+type GetContentSourceUsingGETUnauthorized struct {
+}
+
+// IsSuccess returns true when this get content source using g e t unauthorized response has a 2xx status code
+func (o *GetContentSourceUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get content source using g e t unauthorized response has a 3xx status code
+func (o *GetContentSourceUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get content source using g e t unauthorized response has a 4xx status code
+func (o *GetContentSourceUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get content source using g e t unauthorized response has a 5xx status code
+func (o *GetContentSourceUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get content source using g e t unauthorized response a status code equal to that given
+func (o *GetContentSourceUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+func (o *GetContentSourceUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /content/api/sources/{id}][%d] getContentSourceUsingGETUnauthorized ", 401)
+}
+
+func (o *GetContentSourceUsingGETUnauthorized) String() string {
+	return fmt.Sprintf("[GET /content/api/sources/{id}][%d] getContentSourceUsingGETUnauthorized ", 401)
+}
+
+func (o *GetContentSourceUsingGETUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewGetContentSourceUsingGETForbidden creates a GetContentSourceUsingGETForbidden with default headers values
+func NewGetContentSourceUsingGETForbidden() *GetContentSourceUsingGETForbidden {
+	return &GetContentSourceUsingGETForbidden{}
+}
+
+/*
+GetContentSourceUsingGETForbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type GetContentSourceUsingGETForbidden struct {
+}
+
+// IsSuccess returns true when this get content source using g e t forbidden response has a 2xx status code
+func (o *GetContentSourceUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get content source using g e t forbidden response has a 3xx status code
+func (o *GetContentSourceUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get content source using g e t forbidden response has a 4xx status code
+func (o *GetContentSourceUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get content source using g e t forbidden response has a 5xx status code
+func (o *GetContentSourceUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get content source using g e t forbidden response a status code equal to that given
+func (o *GetContentSourceUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *GetContentSourceUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /content/api/sources/{id}][%d] getContentSourceUsingGETForbidden ", 403)
+}
+
+func (o *GetContentSourceUsingGETForbidden) String() string {
+	return fmt.Sprintf("[GET /content/api/sources/{id}][%d] getContentSourceUsingGETForbidden ", 403)
+}
+
+func (o *GetContentSourceUsingGETForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
 // NewGetContentSourceUsingGETNotFound creates a GetContentSourceUsingGETNotFound with default headers values
 func NewGetContentSourceUsingGETNotFound() *GetContentSourceUsingGETNotFound {
 	return &GetContentSourceUsingGETNotFound{}
 }
 
-/* GetContentSourceUsingGETNotFound describes a response with status code 404, with default header values.
+/*
+GetContentSourceUsingGETNotFound describes a response with status code 404, with default header values.
 
 Content source not found
 */
@@ -85,9 +231,39 @@ type GetContentSourceUsingGETNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get content source using g e t not found response has a 2xx status code
+func (o *GetContentSourceUsingGETNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get content source using g e t not found response has a 3xx status code
+func (o *GetContentSourceUsingGETNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get content source using g e t not found response has a 4xx status code
+func (o *GetContentSourceUsingGETNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get content source using g e t not found response has a 5xx status code
+func (o *GetContentSourceUsingGETNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get content source using g e t not found response a status code equal to that given
+func (o *GetContentSourceUsingGETNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetContentSourceUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /content/api/sources/{id}][%d] getContentSourceUsingGETNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetContentSourceUsingGETNotFound) String() string {
+	return fmt.Sprintf("[GET /content/api/sources/{id}][%d] getContentSourceUsingGETNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetContentSourceUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

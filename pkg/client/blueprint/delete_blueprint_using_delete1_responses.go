@@ -57,14 +57,44 @@ func NewDeleteBlueprintUsingDELETE1NoContent() *DeleteBlueprintUsingDELETE1NoCon
 	return &DeleteBlueprintUsingDELETE1NoContent{}
 }
 
-/* DeleteBlueprintUsingDELETE1NoContent describes a response with status code 204, with default header values.
+/*
+DeleteBlueprintUsingDELETE1NoContent describes a response with status code 204, with default header values.
 
 No Content
 */
 type DeleteBlueprintUsingDELETE1NoContent struct {
 }
 
+// IsSuccess returns true when this delete blueprint using d e l e t e1 no content response has a 2xx status code
+func (o *DeleteBlueprintUsingDELETE1NoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete blueprint using d e l e t e1 no content response has a 3xx status code
+func (o *DeleteBlueprintUsingDELETE1NoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete blueprint using d e l e t e1 no content response has a 4xx status code
+func (o *DeleteBlueprintUsingDELETE1NoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete blueprint using d e l e t e1 no content response has a 5xx status code
+func (o *DeleteBlueprintUsingDELETE1NoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete blueprint using d e l e t e1 no content response a status code equal to that given
+func (o *DeleteBlueprintUsingDELETE1NoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteBlueprintUsingDELETE1NoContent) Error() string {
+	return fmt.Sprintf("[DELETE /blueprint/api/blueprints/{blueprintId}][%d] deleteBlueprintUsingDELETE1NoContent ", 204)
+}
+
+func (o *DeleteBlueprintUsingDELETE1NoContent) String() string {
 	return fmt.Sprintf("[DELETE /blueprint/api/blueprints/{blueprintId}][%d] deleteBlueprintUsingDELETE1NoContent ", 204)
 }
 
@@ -78,14 +108,44 @@ func NewDeleteBlueprintUsingDELETE1Unauthorized() *DeleteBlueprintUsingDELETE1Un
 	return &DeleteBlueprintUsingDELETE1Unauthorized{}
 }
 
-/* DeleteBlueprintUsingDELETE1Unauthorized describes a response with status code 401, with default header values.
+/*
+DeleteBlueprintUsingDELETE1Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type DeleteBlueprintUsingDELETE1Unauthorized struct {
 }
 
+// IsSuccess returns true when this delete blueprint using d e l e t e1 unauthorized response has a 2xx status code
+func (o *DeleteBlueprintUsingDELETE1Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete blueprint using d e l e t e1 unauthorized response has a 3xx status code
+func (o *DeleteBlueprintUsingDELETE1Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete blueprint using d e l e t e1 unauthorized response has a 4xx status code
+func (o *DeleteBlueprintUsingDELETE1Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete blueprint using d e l e t e1 unauthorized response has a 5xx status code
+func (o *DeleteBlueprintUsingDELETE1Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete blueprint using d e l e t e1 unauthorized response a status code equal to that given
+func (o *DeleteBlueprintUsingDELETE1Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DeleteBlueprintUsingDELETE1Unauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /blueprint/api/blueprints/{blueprintId}][%d] deleteBlueprintUsingDELETE1Unauthorized ", 401)
+}
+
+func (o *DeleteBlueprintUsingDELETE1Unauthorized) String() string {
 	return fmt.Sprintf("[DELETE /blueprint/api/blueprints/{blueprintId}][%d] deleteBlueprintUsingDELETE1Unauthorized ", 401)
 }
 
@@ -99,14 +159,44 @@ func NewDeleteBlueprintUsingDELETE1Forbidden() *DeleteBlueprintUsingDELETE1Forbi
 	return &DeleteBlueprintUsingDELETE1Forbidden{}
 }
 
-/* DeleteBlueprintUsingDELETE1Forbidden describes a response with status code 403, with default header values.
+/*
+DeleteBlueprintUsingDELETE1Forbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type DeleteBlueprintUsingDELETE1Forbidden struct {
 }
 
+// IsSuccess returns true when this delete blueprint using d e l e t e1 forbidden response has a 2xx status code
+func (o *DeleteBlueprintUsingDELETE1Forbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete blueprint using d e l e t e1 forbidden response has a 3xx status code
+func (o *DeleteBlueprintUsingDELETE1Forbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete blueprint using d e l e t e1 forbidden response has a 4xx status code
+func (o *DeleteBlueprintUsingDELETE1Forbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete blueprint using d e l e t e1 forbidden response has a 5xx status code
+func (o *DeleteBlueprintUsingDELETE1Forbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete blueprint using d e l e t e1 forbidden response a status code equal to that given
+func (o *DeleteBlueprintUsingDELETE1Forbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteBlueprintUsingDELETE1Forbidden) Error() string {
+	return fmt.Sprintf("[DELETE /blueprint/api/blueprints/{blueprintId}][%d] deleteBlueprintUsingDELETE1Forbidden ", 403)
+}
+
+func (o *DeleteBlueprintUsingDELETE1Forbidden) String() string {
 	return fmt.Sprintf("[DELETE /blueprint/api/blueprints/{blueprintId}][%d] deleteBlueprintUsingDELETE1Forbidden ", 403)
 }
 
@@ -120,7 +210,8 @@ func NewDeleteBlueprintUsingDELETE1NotFound() *DeleteBlueprintUsingDELETE1NotFou
 	return &DeleteBlueprintUsingDELETE1NotFound{}
 }
 
-/* DeleteBlueprintUsingDELETE1NotFound describes a response with status code 404, with default header values.
+/*
+DeleteBlueprintUsingDELETE1NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -128,9 +219,39 @@ type DeleteBlueprintUsingDELETE1NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete blueprint using d e l e t e1 not found response has a 2xx status code
+func (o *DeleteBlueprintUsingDELETE1NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete blueprint using d e l e t e1 not found response has a 3xx status code
+func (o *DeleteBlueprintUsingDELETE1NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete blueprint using d e l e t e1 not found response has a 4xx status code
+func (o *DeleteBlueprintUsingDELETE1NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete blueprint using d e l e t e1 not found response has a 5xx status code
+func (o *DeleteBlueprintUsingDELETE1NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete blueprint using d e l e t e1 not found response a status code equal to that given
+func (o *DeleteBlueprintUsingDELETE1NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteBlueprintUsingDELETE1NotFound) Error() string {
 	return fmt.Sprintf("[DELETE /blueprint/api/blueprints/{blueprintId}][%d] deleteBlueprintUsingDELETE1NotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteBlueprintUsingDELETE1NotFound) String() string {
+	return fmt.Sprintf("[DELETE /blueprint/api/blueprints/{blueprintId}][%d] deleteBlueprintUsingDELETE1NotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteBlueprintUsingDELETE1NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

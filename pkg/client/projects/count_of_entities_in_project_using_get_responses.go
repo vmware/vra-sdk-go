@@ -27,6 +27,12 @@ func (o *CountOfEntitiesInProjectUsingGETReader) ReadResponse(response runtime.C
 			return nil, err
 		}
 		return result, nil
+	case 403:
+		result := NewCountOfEntitiesInProjectUsingGETForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -37,7 +43,8 @@ func NewCountOfEntitiesInProjectUsingGETOK() *CountOfEntitiesInProjectUsingGETOK
 	return &CountOfEntitiesInProjectUsingGETOK{}
 }
 
-/* CountOfEntitiesInProjectUsingGETOK describes a response with status code 200, with default header values.
+/*
+CountOfEntitiesInProjectUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -45,9 +52,39 @@ type CountOfEntitiesInProjectUsingGETOK struct {
 	Payload map[string]string
 }
 
+// IsSuccess returns true when this count of entities in project using g e t o k response has a 2xx status code
+func (o *CountOfEntitiesInProjectUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this count of entities in project using g e t o k response has a 3xx status code
+func (o *CountOfEntitiesInProjectUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this count of entities in project using g e t o k response has a 4xx status code
+func (o *CountOfEntitiesInProjectUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this count of entities in project using g e t o k response has a 5xx status code
+func (o *CountOfEntitiesInProjectUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this count of entities in project using g e t o k response a status code equal to that given
+func (o *CountOfEntitiesInProjectUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CountOfEntitiesInProjectUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /cmx/api/projects/{projectId}/entity-count][%d] countOfEntitiesInProjectUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *CountOfEntitiesInProjectUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /cmx/api/projects/{projectId}/entity-count][%d] countOfEntitiesInProjectUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *CountOfEntitiesInProjectUsingGETOK) GetPayload() map[string]string {
 	return o.Payload
 }
@@ -58,6 +95,57 @@ func (o *CountOfEntitiesInProjectUsingGETOK) readResponse(response runtime.Clien
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewCountOfEntitiesInProjectUsingGETForbidden creates a CountOfEntitiesInProjectUsingGETForbidden with default headers values
+func NewCountOfEntitiesInProjectUsingGETForbidden() *CountOfEntitiesInProjectUsingGETForbidden {
+	return &CountOfEntitiesInProjectUsingGETForbidden{}
+}
+
+/*
+CountOfEntitiesInProjectUsingGETForbidden describes a response with status code 403, with default header values.
+
+Forbidden, the user lacks permissions
+*/
+type CountOfEntitiesInProjectUsingGETForbidden struct {
+}
+
+// IsSuccess returns true when this count of entities in project using g e t forbidden response has a 2xx status code
+func (o *CountOfEntitiesInProjectUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this count of entities in project using g e t forbidden response has a 3xx status code
+func (o *CountOfEntitiesInProjectUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this count of entities in project using g e t forbidden response has a 4xx status code
+func (o *CountOfEntitiesInProjectUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this count of entities in project using g e t forbidden response has a 5xx status code
+func (o *CountOfEntitiesInProjectUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this count of entities in project using g e t forbidden response a status code equal to that given
+func (o *CountOfEntitiesInProjectUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *CountOfEntitiesInProjectUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /cmx/api/projects/{projectId}/entity-count][%d] countOfEntitiesInProjectUsingGETForbidden ", 403)
+}
+
+func (o *CountOfEntitiesInProjectUsingGETForbidden) String() string {
+	return fmt.Sprintf("[GET /cmx/api/projects/{projectId}/entity-count][%d] countOfEntitiesInProjectUsingGETForbidden ", 403)
+}
+
+func (o *CountOfEntitiesInProjectUsingGETForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
@@ -123,7 +122,7 @@ func UnmarshalCustomIntegrationSpecSlice(reader io.Reader, consumer runtime.Cons
 // UnmarshalCustomIntegrationSpec unmarshals polymorphic CustomIntegrationSpec
 func UnmarshalCustomIntegrationSpec(reader io.Reader, consumer runtime.Consumer) (CustomIntegrationSpec, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}

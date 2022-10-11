@@ -54,10 +54,12 @@ func NewModifyPatchUserOperationUsingPATCHParamsWithHTTPClient(client *http.Clie
 	}
 }
 
-/* ModifyPatchUserOperationUsingPATCHParams contains all the parameters to send to the API endpoint
-   for the modify patch user operation using p a t c h operation.
+/*
+ModifyPatchUserOperationUsingPATCHParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the modify patch user operation using p a t c h operation.
+
+	Typically these are written to a http.Request.
 */
 type ModifyPatchUserOperationUsingPATCHParams struct {
 

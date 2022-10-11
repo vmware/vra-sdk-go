@@ -53,10 +53,12 @@ func NewGetDeploymentResourcesUsingGET2ParamsWithHTTPClient(client *http.Client)
 	}
 }
 
-/* GetDeploymentResourcesUsingGET2Params contains all the parameters to send to the API endpoint
-   for the get deployment resources using g e t 2 operation.
+/*
+GetDeploymentResourcesUsingGET2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get deployment resources using g e t 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetDeploymentResourcesUsingGET2Params struct {
 

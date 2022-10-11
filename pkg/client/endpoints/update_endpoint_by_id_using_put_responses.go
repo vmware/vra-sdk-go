@@ -63,7 +63,8 @@ func NewUpdateEndpointByIDUsingPUTOK() *UpdateEndpointByIDUsingPUTOK {
 	return &UpdateEndpointByIDUsingPUTOK{}
 }
 
-/* UpdateEndpointByIDUsingPUTOK describes a response with status code 200, with default header values.
+/*
+UpdateEndpointByIDUsingPUTOK describes a response with status code 200, with default header values.
 
 'Success' with the updated Endpoint
 */
@@ -71,9 +72,39 @@ type UpdateEndpointByIDUsingPUTOK struct {
 	Payload models.Endpoint
 }
 
+// IsSuccess returns true when this update endpoint by Id using p u t o k response has a 2xx status code
+func (o *UpdateEndpointByIDUsingPUTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update endpoint by Id using p u t o k response has a 3xx status code
+func (o *UpdateEndpointByIDUsingPUTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update endpoint by Id using p u t o k response has a 4xx status code
+func (o *UpdateEndpointByIDUsingPUTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update endpoint by Id using p u t o k response has a 5xx status code
+func (o *UpdateEndpointByIDUsingPUTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update endpoint by Id using p u t o k response a status code equal to that given
+func (o *UpdateEndpointByIDUsingPUTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateEndpointByIDUsingPUTOK) Error() string {
 	return fmt.Sprintf("[PUT /codestream/api/endpoints/{id}][%d] updateEndpointByIdUsingPUTOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateEndpointByIDUsingPUTOK) String() string {
+	return fmt.Sprintf("[PUT /codestream/api/endpoints/{id}][%d] updateEndpointByIdUsingPUTOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateEndpointByIDUsingPUTOK) GetPayload() models.Endpoint {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewUpdateEndpointByIDUsingPUTUnauthorized() *UpdateEndpointByIDUsingPUTUnau
 	return &UpdateEndpointByIDUsingPUTUnauthorized{}
 }
 
-/* UpdateEndpointByIDUsingPUTUnauthorized describes a response with status code 401, with default header values.
+/*
+UpdateEndpointByIDUsingPUTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type UpdateEndpointByIDUsingPUTUnauthorized struct {
 }
 
+// IsSuccess returns true when this update endpoint by Id using p u t unauthorized response has a 2xx status code
+func (o *UpdateEndpointByIDUsingPUTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update endpoint by Id using p u t unauthorized response has a 3xx status code
+func (o *UpdateEndpointByIDUsingPUTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update endpoint by Id using p u t unauthorized response has a 4xx status code
+func (o *UpdateEndpointByIDUsingPUTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update endpoint by Id using p u t unauthorized response has a 5xx status code
+func (o *UpdateEndpointByIDUsingPUTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update endpoint by Id using p u t unauthorized response a status code equal to that given
+func (o *UpdateEndpointByIDUsingPUTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UpdateEndpointByIDUsingPUTUnauthorized) Error() string {
+	return fmt.Sprintf("[PUT /codestream/api/endpoints/{id}][%d] updateEndpointByIdUsingPUTUnauthorized ", 401)
+}
+
+func (o *UpdateEndpointByIDUsingPUTUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /codestream/api/endpoints/{id}][%d] updateEndpointByIdUsingPUTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewUpdateEndpointByIDUsingPUTForbidden() *UpdateEndpointByIDUsingPUTForbidd
 	return &UpdateEndpointByIDUsingPUTForbidden{}
 }
 
-/* UpdateEndpointByIDUsingPUTForbidden describes a response with status code 403, with default header values.
+/*
+UpdateEndpointByIDUsingPUTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type UpdateEndpointByIDUsingPUTForbidden struct {
 }
 
+// IsSuccess returns true when this update endpoint by Id using p u t forbidden response has a 2xx status code
+func (o *UpdateEndpointByIDUsingPUTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update endpoint by Id using p u t forbidden response has a 3xx status code
+func (o *UpdateEndpointByIDUsingPUTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update endpoint by Id using p u t forbidden response has a 4xx status code
+func (o *UpdateEndpointByIDUsingPUTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update endpoint by Id using p u t forbidden response has a 5xx status code
+func (o *UpdateEndpointByIDUsingPUTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update endpoint by Id using p u t forbidden response a status code equal to that given
+func (o *UpdateEndpointByIDUsingPUTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateEndpointByIDUsingPUTForbidden) Error() string {
+	return fmt.Sprintf("[PUT /codestream/api/endpoints/{id}][%d] updateEndpointByIdUsingPUTForbidden ", 403)
+}
+
+func (o *UpdateEndpointByIDUsingPUTForbidden) String() string {
 	return fmt.Sprintf("[PUT /codestream/api/endpoints/{id}][%d] updateEndpointByIdUsingPUTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewUpdateEndpointByIDUsingPUTNotFound() *UpdateEndpointByIDUsingPUTNotFound
 	return &UpdateEndpointByIDUsingPUTNotFound{}
 }
 
-/* UpdateEndpointByIDUsingPUTNotFound describes a response with status code 404, with default header values.
+/*
+UpdateEndpointByIDUsingPUTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type UpdateEndpointByIDUsingPUTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update endpoint by Id using p u t not found response has a 2xx status code
+func (o *UpdateEndpointByIDUsingPUTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update endpoint by Id using p u t not found response has a 3xx status code
+func (o *UpdateEndpointByIDUsingPUTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update endpoint by Id using p u t not found response has a 4xx status code
+func (o *UpdateEndpointByIDUsingPUTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update endpoint by Id using p u t not found response has a 5xx status code
+func (o *UpdateEndpointByIDUsingPUTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update endpoint by Id using p u t not found response a status code equal to that given
+func (o *UpdateEndpointByIDUsingPUTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateEndpointByIDUsingPUTNotFound) Error() string {
 	return fmt.Sprintf("[PUT /codestream/api/endpoints/{id}][%d] updateEndpointByIdUsingPUTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UpdateEndpointByIDUsingPUTNotFound) String() string {
+	return fmt.Sprintf("[PUT /codestream/api/endpoints/{id}][%d] updateEndpointByIdUsingPUTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UpdateEndpointByIDUsingPUTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewUpdateEndpointByIDUsingPUTInternalServerError() *UpdateEndpointByIDUsing
 	return &UpdateEndpointByIDUsingPUTInternalServerError{}
 }
 
-/* UpdateEndpointByIDUsingPUTInternalServerError describes a response with status code 500, with default header values.
+/*
+UpdateEndpointByIDUsingPUTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type UpdateEndpointByIDUsingPUTInternalServerError struct {
 }
 
+// IsSuccess returns true when this update endpoint by Id using p u t internal server error response has a 2xx status code
+func (o *UpdateEndpointByIDUsingPUTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update endpoint by Id using p u t internal server error response has a 3xx status code
+func (o *UpdateEndpointByIDUsingPUTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update endpoint by Id using p u t internal server error response has a 4xx status code
+func (o *UpdateEndpointByIDUsingPUTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update endpoint by Id using p u t internal server error response has a 5xx status code
+func (o *UpdateEndpointByIDUsingPUTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this update endpoint by Id using p u t internal server error response a status code equal to that given
+func (o *UpdateEndpointByIDUsingPUTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *UpdateEndpointByIDUsingPUTInternalServerError) Error() string {
+	return fmt.Sprintf("[PUT /codestream/api/endpoints/{id}][%d] updateEndpointByIdUsingPUTInternalServerError ", 500)
+}
+
+func (o *UpdateEndpointByIDUsingPUTInternalServerError) String() string {
 	return fmt.Sprintf("[PUT /codestream/api/endpoints/{id}][%d] updateEndpointByIdUsingPUTInternalServerError ", 500)
 }
 

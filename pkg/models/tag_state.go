@@ -66,8 +66,20 @@ type TagState struct {
 	// key
 	Key string `json:"key,omitempty"`
 
+	// msp auth link
+	MspAuthLink string `json:"mspAuthLink,omitempty"`
+
+	// org auth link
+	OrgAuthLink string `json:"orgAuthLink,omitempty"`
+
 	// origins
 	Origins []string `json:"origins"`
+
+	// owner auth link
+	OwnerAuthLink string `json:"ownerAuthLink,omitempty"`
+
+	// project auth link
+	ProjectAuthLink string `json:"projectAuthLink,omitempty"`
 
 	// tenant links
 	TenantLinks []string `json:"tenantLinks"`

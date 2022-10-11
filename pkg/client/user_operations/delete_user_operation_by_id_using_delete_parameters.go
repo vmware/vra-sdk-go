@@ -52,10 +52,12 @@ func NewDeleteUserOperationByIDUsingDELETEParamsWithHTTPClient(client *http.Clie
 	}
 }
 
-/* DeleteUserOperationByIDUsingDELETEParams contains all the parameters to send to the API endpoint
-   for the delete user operation by Id using d e l e t e operation.
+/*
+DeleteUserOperationByIDUsingDELETEParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete user operation by Id using d e l e t e operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteUserOperationByIDUsingDELETEParams struct {
 

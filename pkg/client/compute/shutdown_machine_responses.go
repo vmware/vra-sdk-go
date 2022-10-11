@@ -51,7 +51,8 @@ func NewShutdownMachineAccepted() *ShutdownMachineAccepted {
 	return &ShutdownMachineAccepted{}
 }
 
-/* ShutdownMachineAccepted describes a response with status code 202, with default header values.
+/*
+ShutdownMachineAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type ShutdownMachineAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this shutdown machine accepted response has a 2xx status code
+func (o *ShutdownMachineAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this shutdown machine accepted response has a 3xx status code
+func (o *ShutdownMachineAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this shutdown machine accepted response has a 4xx status code
+func (o *ShutdownMachineAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this shutdown machine accepted response has a 5xx status code
+func (o *ShutdownMachineAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this shutdown machine accepted response a status code equal to that given
+func (o *ShutdownMachineAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ShutdownMachineAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/shutdown][%d] shutdownMachineAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ShutdownMachineAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/shutdown][%d] shutdownMachineAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ShutdownMachineAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewShutdownMachineForbidden() *ShutdownMachineForbidden {
 	return &ShutdownMachineForbidden{}
 }
 
-/* ShutdownMachineForbidden describes a response with status code 403, with default header values.
+/*
+ShutdownMachineForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type ShutdownMachineForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this shutdown machine forbidden response has a 2xx status code
+func (o *ShutdownMachineForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this shutdown machine forbidden response has a 3xx status code
+func (o *ShutdownMachineForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this shutdown machine forbidden response has a 4xx status code
+func (o *ShutdownMachineForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this shutdown machine forbidden response has a 5xx status code
+func (o *ShutdownMachineForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this shutdown machine forbidden response a status code equal to that given
+func (o *ShutdownMachineForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ShutdownMachineForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/shutdown][%d] shutdownMachineForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ShutdownMachineForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/shutdown][%d] shutdownMachineForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ShutdownMachineForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewShutdownMachineNotFound() *ShutdownMachineNotFound {
 	return &ShutdownMachineNotFound{}
 }
 
-/* ShutdownMachineNotFound describes a response with status code 404, with default header values.
+/*
+ShutdownMachineNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type ShutdownMachineNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this shutdown machine not found response has a 2xx status code
+func (o *ShutdownMachineNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this shutdown machine not found response has a 3xx status code
+func (o *ShutdownMachineNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this shutdown machine not found response has a 4xx status code
+func (o *ShutdownMachineNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this shutdown machine not found response has a 5xx status code
+func (o *ShutdownMachineNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this shutdown machine not found response a status code equal to that given
+func (o *ShutdownMachineNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ShutdownMachineNotFound) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/shutdown][%d] shutdownMachineNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ShutdownMachineNotFound) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/shutdown][%d] shutdownMachineNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ShutdownMachineNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -51,14 +51,44 @@ func NewDeleteMeteringPolicyAssignmentUsingDELETE2OK() *DeleteMeteringPolicyAssi
 	return &DeleteMeteringPolicyAssignmentUsingDELETE2OK{}
 }
 
-/* DeleteMeteringPolicyAssignmentUsingDELETE2OK describes a response with status code 200, with default header values.
+/*
+DeleteMeteringPolicyAssignmentUsingDELETE2OK describes a response with status code 200, with default header values.
 
 No Content
 */
 type DeleteMeteringPolicyAssignmentUsingDELETE2OK struct {
 }
 
+// IsSuccess returns true when this delete metering policy assignment using d e l e t e2 o k response has a 2xx status code
+func (o *DeleteMeteringPolicyAssignmentUsingDELETE2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete metering policy assignment using d e l e t e2 o k response has a 3xx status code
+func (o *DeleteMeteringPolicyAssignmentUsingDELETE2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete metering policy assignment using d e l e t e2 o k response has a 4xx status code
+func (o *DeleteMeteringPolicyAssignmentUsingDELETE2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete metering policy assignment using d e l e t e2 o k response has a 5xx status code
+func (o *DeleteMeteringPolicyAssignmentUsingDELETE2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete metering policy assignment using d e l e t e2 o k response a status code equal to that given
+func (o *DeleteMeteringPolicyAssignmentUsingDELETE2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteMeteringPolicyAssignmentUsingDELETE2OK) Error() string {
+	return fmt.Sprintf("[DELETE /price/api/private/pricing-card-assignments/{id}][%d] deleteMeteringPolicyAssignmentUsingDELETE2OK ", 200)
+}
+
+func (o *DeleteMeteringPolicyAssignmentUsingDELETE2OK) String() string {
 	return fmt.Sprintf("[DELETE /price/api/private/pricing-card-assignments/{id}][%d] deleteMeteringPolicyAssignmentUsingDELETE2OK ", 200)
 }
 
@@ -72,14 +102,44 @@ func NewDeleteMeteringPolicyAssignmentUsingDELETE2Unauthorized() *DeleteMetering
 	return &DeleteMeteringPolicyAssignmentUsingDELETE2Unauthorized{}
 }
 
-/* DeleteMeteringPolicyAssignmentUsingDELETE2Unauthorized describes a response with status code 401, with default header values.
+/*
+DeleteMeteringPolicyAssignmentUsingDELETE2Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type DeleteMeteringPolicyAssignmentUsingDELETE2Unauthorized struct {
 }
 
+// IsSuccess returns true when this delete metering policy assignment using d e l e t e2 unauthorized response has a 2xx status code
+func (o *DeleteMeteringPolicyAssignmentUsingDELETE2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete metering policy assignment using d e l e t e2 unauthorized response has a 3xx status code
+func (o *DeleteMeteringPolicyAssignmentUsingDELETE2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete metering policy assignment using d e l e t e2 unauthorized response has a 4xx status code
+func (o *DeleteMeteringPolicyAssignmentUsingDELETE2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete metering policy assignment using d e l e t e2 unauthorized response has a 5xx status code
+func (o *DeleteMeteringPolicyAssignmentUsingDELETE2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete metering policy assignment using d e l e t e2 unauthorized response a status code equal to that given
+func (o *DeleteMeteringPolicyAssignmentUsingDELETE2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DeleteMeteringPolicyAssignmentUsingDELETE2Unauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /price/api/private/pricing-card-assignments/{id}][%d] deleteMeteringPolicyAssignmentUsingDELETE2Unauthorized ", 401)
+}
+
+func (o *DeleteMeteringPolicyAssignmentUsingDELETE2Unauthorized) String() string {
 	return fmt.Sprintf("[DELETE /price/api/private/pricing-card-assignments/{id}][%d] deleteMeteringPolicyAssignmentUsingDELETE2Unauthorized ", 401)
 }
 
@@ -93,7 +153,8 @@ func NewDeleteMeteringPolicyAssignmentUsingDELETE2NotFound() *DeleteMeteringPoli
 	return &DeleteMeteringPolicyAssignmentUsingDELETE2NotFound{}
 }
 
-/* DeleteMeteringPolicyAssignmentUsingDELETE2NotFound describes a response with status code 404, with default header values.
+/*
+DeleteMeteringPolicyAssignmentUsingDELETE2NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -101,9 +162,39 @@ type DeleteMeteringPolicyAssignmentUsingDELETE2NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete metering policy assignment using d e l e t e2 not found response has a 2xx status code
+func (o *DeleteMeteringPolicyAssignmentUsingDELETE2NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete metering policy assignment using d e l e t e2 not found response has a 3xx status code
+func (o *DeleteMeteringPolicyAssignmentUsingDELETE2NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete metering policy assignment using d e l e t e2 not found response has a 4xx status code
+func (o *DeleteMeteringPolicyAssignmentUsingDELETE2NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete metering policy assignment using d e l e t e2 not found response has a 5xx status code
+func (o *DeleteMeteringPolicyAssignmentUsingDELETE2NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete metering policy assignment using d e l e t e2 not found response a status code equal to that given
+func (o *DeleteMeteringPolicyAssignmentUsingDELETE2NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeleteMeteringPolicyAssignmentUsingDELETE2NotFound) Error() string {
 	return fmt.Sprintf("[DELETE /price/api/private/pricing-card-assignments/{id}][%d] deleteMeteringPolicyAssignmentUsingDELETE2NotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeleteMeteringPolicyAssignmentUsingDELETE2NotFound) String() string {
+	return fmt.Sprintf("[DELETE /price/api/private/pricing-card-assignments/{id}][%d] deleteMeteringPolicyAssignmentUsingDELETE2NotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeleteMeteringPolicyAssignmentUsingDELETE2NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

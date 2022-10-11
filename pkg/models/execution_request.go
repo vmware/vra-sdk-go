@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
@@ -20,7 +19,7 @@ import (
 
 // ExecutionRequest ExecutionRequest
 //
-// Execution Request for a pipeline
+// # Execution Request for a pipeline
 //
 // swagger:discriminator ExecutionRequest Execution Request for a pipeline
 type ExecutionRequest interface {
@@ -150,7 +149,7 @@ func UnmarshalExecutionRequestSlice(reader io.Reader, consumer runtime.Consumer)
 // UnmarshalExecutionRequest unmarshals polymorphic ExecutionRequest
 func UnmarshalExecutionRequest(reader io.Reader, consumer runtime.Consumer) (ExecutionRequest, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}

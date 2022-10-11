@@ -10,7 +10,6 @@ import (
 	"context"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
@@ -27,7 +26,14 @@ type PrincipalRole interface {
 	runtime.Validatable
 	runtime.ContextValidatable
 
-	// The email of the user or name of the group.
+	// The username of the user or display name of the group.
+	//  When assigning a group, the email is expected to have the format displayName@domain.
+	//  In the case where the display name in Identity provider is in the format:
+	//  <li> name@domain - email should be written as name@domain@domain
+	//  <li> name (and group has domain) - email should be written as name@domain
+	//  <li> name (and group doesn't have domain) - email should be written as name@
+	//
+	// to ensure proper functioning.
 	// Example: administrator@vmware.com
 	// Required: true
 	Email() *string
@@ -123,7 +129,7 @@ func UnmarshalPrincipalRoleSlice(reader io.Reader, consumer runtime.Consumer) ([
 // UnmarshalPrincipalRole unmarshals polymorphic PrincipalRole
 func UnmarshalPrincipalRole(reader io.Reader, consumer runtime.Consumer) (PrincipalRole, error) {
 	// we need to read this twice, so first into a buffer
-	data, err := ioutil.ReadAll(reader)
+	data, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}

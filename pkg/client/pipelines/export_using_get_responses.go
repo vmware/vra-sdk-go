@@ -63,7 +63,8 @@ func NewExportUsingGETOK() *ExportUsingGETOK {
 	return &ExportUsingGETOK{}
 }
 
-/* ExportUsingGETOK describes a response with status code 200, with default header values.
+/*
+ExportUsingGETOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type ExportUsingGETOK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this export using g e t o k response has a 2xx status code
+func (o *ExportUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this export using g e t o k response has a 3xx status code
+func (o *ExportUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this export using g e t o k response has a 4xx status code
+func (o *ExportUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this export using g e t o k response has a 5xx status code
+func (o *ExportUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this export using g e t o k response a status code equal to that given
+func (o *ExportUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ExportUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/export][%d] exportUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *ExportUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /codestream/api/export][%d] exportUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *ExportUsingGETOK) GetPayload() string {
 	return o.Payload
 }
@@ -93,14 +124,44 @@ func NewExportUsingGETUnauthorized() *ExportUsingGETUnauthorized {
 	return &ExportUsingGETUnauthorized{}
 }
 
-/* ExportUsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+ExportUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type ExportUsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this export using g e t unauthorized response has a 2xx status code
+func (o *ExportUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this export using g e t unauthorized response has a 3xx status code
+func (o *ExportUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this export using g e t unauthorized response has a 4xx status code
+func (o *ExportUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this export using g e t unauthorized response has a 5xx status code
+func (o *ExportUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this export using g e t unauthorized response a status code equal to that given
+func (o *ExportUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ExportUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/export][%d] exportUsingGETUnauthorized ", 401)
+}
+
+func (o *ExportUsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /codestream/api/export][%d] exportUsingGETUnauthorized ", 401)
 }
 
@@ -114,14 +175,44 @@ func NewExportUsingGETForbidden() *ExportUsingGETForbidden {
 	return &ExportUsingGETForbidden{}
 }
 
-/* ExportUsingGETForbidden describes a response with status code 403, with default header values.
+/*
+ExportUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type ExportUsingGETForbidden struct {
 }
 
+// IsSuccess returns true when this export using g e t forbidden response has a 2xx status code
+func (o *ExportUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this export using g e t forbidden response has a 3xx status code
+func (o *ExportUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this export using g e t forbidden response has a 4xx status code
+func (o *ExportUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this export using g e t forbidden response has a 5xx status code
+func (o *ExportUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this export using g e t forbidden response a status code equal to that given
+func (o *ExportUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ExportUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/export][%d] exportUsingGETForbidden ", 403)
+}
+
+func (o *ExportUsingGETForbidden) String() string {
 	return fmt.Sprintf("[GET /codestream/api/export][%d] exportUsingGETForbidden ", 403)
 }
 
@@ -135,7 +226,8 @@ func NewExportUsingGETNotFound() *ExportUsingGETNotFound {
 	return &ExportUsingGETNotFound{}
 }
 
-/* ExportUsingGETNotFound describes a response with status code 404, with default header values.
+/*
+ExportUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -143,9 +235,39 @@ type ExportUsingGETNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this export using g e t not found response has a 2xx status code
+func (o *ExportUsingGETNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this export using g e t not found response has a 3xx status code
+func (o *ExportUsingGETNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this export using g e t not found response has a 4xx status code
+func (o *ExportUsingGETNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this export using g e t not found response has a 5xx status code
+func (o *ExportUsingGETNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this export using g e t not found response a status code equal to that given
+func (o *ExportUsingGETNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ExportUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/export][%d] exportUsingGETNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ExportUsingGETNotFound) String() string {
+	return fmt.Sprintf("[GET /codestream/api/export][%d] exportUsingGETNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ExportUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -167,14 +289,44 @@ func NewExportUsingGETInternalServerError() *ExportUsingGETInternalServerError {
 	return &ExportUsingGETInternalServerError{}
 }
 
-/* ExportUsingGETInternalServerError describes a response with status code 500, with default header values.
+/*
+ExportUsingGETInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ExportUsingGETInternalServerError struct {
 }
 
+// IsSuccess returns true when this export using g e t internal server error response has a 2xx status code
+func (o *ExportUsingGETInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this export using g e t internal server error response has a 3xx status code
+func (o *ExportUsingGETInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this export using g e t internal server error response has a 4xx status code
+func (o *ExportUsingGETInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this export using g e t internal server error response has a 5xx status code
+func (o *ExportUsingGETInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this export using g e t internal server error response a status code equal to that given
+func (o *ExportUsingGETInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ExportUsingGETInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/export][%d] exportUsingGETInternalServerError ", 500)
+}
+
+func (o *ExportUsingGETInternalServerError) String() string {
 	return fmt.Sprintf("[GET /codestream/api/export][%d] exportUsingGETInternalServerError ", 500)
 }
 

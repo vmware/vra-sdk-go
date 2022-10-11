@@ -51,7 +51,8 @@ func NewCreateZoneCreated() *CreateZoneCreated {
 	return &CreateZoneCreated{}
 }
 
-/* CreateZoneCreated describes a response with status code 201, with default header values.
+/*
+CreateZoneCreated describes a response with status code 201, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type CreateZoneCreated struct {
 	Payload *models.Zone
 }
 
+// IsSuccess returns true when this create zone created response has a 2xx status code
+func (o *CreateZoneCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create zone created response has a 3xx status code
+func (o *CreateZoneCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create zone created response has a 4xx status code
+func (o *CreateZoneCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create zone created response has a 5xx status code
+func (o *CreateZoneCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create zone created response a status code equal to that given
+func (o *CreateZoneCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateZoneCreated) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/zones][%d] createZoneCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateZoneCreated) String() string {
+	return fmt.Sprintf("[POST /iaas/api/zones][%d] createZoneCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateZoneCreated) GetPayload() *models.Zone {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewCreateZoneBadRequest() *CreateZoneBadRequest {
 	return &CreateZoneBadRequest{}
 }
 
-/* CreateZoneBadRequest describes a response with status code 400, with default header values.
+/*
+CreateZoneBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type CreateZoneBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create zone bad request response has a 2xx status code
+func (o *CreateZoneBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create zone bad request response has a 3xx status code
+func (o *CreateZoneBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create zone bad request response has a 4xx status code
+func (o *CreateZoneBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create zone bad request response has a 5xx status code
+func (o *CreateZoneBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create zone bad request response a status code equal to that given
+func (o *CreateZoneBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateZoneBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/zones][%d] createZoneBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateZoneBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/zones][%d] createZoneBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateZoneBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewCreateZoneForbidden() *CreateZoneForbidden {
 	return &CreateZoneForbidden{}
 }
 
-/* CreateZoneForbidden describes a response with status code 403, with default header values.
+/*
+CreateZoneForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type CreateZoneForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this create zone forbidden response has a 2xx status code
+func (o *CreateZoneForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create zone forbidden response has a 3xx status code
+func (o *CreateZoneForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create zone forbidden response has a 4xx status code
+func (o *CreateZoneForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create zone forbidden response has a 5xx status code
+func (o *CreateZoneForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create zone forbidden response a status code equal to that given
+func (o *CreateZoneForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateZoneForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/zones][%d] createZoneForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CreateZoneForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/zones][%d] createZoneForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CreateZoneForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

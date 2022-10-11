@@ -52,10 +52,12 @@ func NewGetFabricFlavorsParamsWithHTTPClient(client *http.Client) *GetFabricFlav
 	}
 }
 
-/* GetFabricFlavorsParams contains all the parameters to send to the API endpoint
-   for the get fabric flavors operation.
+/*
+GetFabricFlavorsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get fabric flavors operation.
+
+	Typically these are written to a http.Request.
 */
 type GetFabricFlavorsParams struct {
 

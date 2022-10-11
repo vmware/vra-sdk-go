@@ -53,10 +53,12 @@ func NewResizeMachineParamsWithHTTPClient(client *http.Client) *ResizeMachinePar
 	}
 }
 
-/* ResizeMachineParams contains all the parameters to send to the API endpoint
-   for the resize machine operation.
+/*
+ResizeMachineParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the resize machine operation.
+
+	Typically these are written to a http.Request.
 */
 type ResizeMachineParams struct {
 
@@ -98,7 +100,7 @@ type ResizeMachineParams struct {
 
 	/* RebootMachine.
 
-	   Only applicable for vSphere VMs with the Hot Add option enabled. If set to false, VM is resized without reboot.
+	   Only applicable for vSphere VMs with the CPU Hot Add or Memory Hot Plug options enabled. If set to false, VM is resized without reboot.
 	*/
 	RebootMachine *bool
 

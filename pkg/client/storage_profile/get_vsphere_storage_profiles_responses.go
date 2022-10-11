@@ -45,7 +45,8 @@ func NewGetVSphereStorageProfilesOK() *GetVSphereStorageProfilesOK {
 	return &GetVSphereStorageProfilesOK{}
 }
 
-/* GetVSphereStorageProfilesOK describes a response with status code 200, with default header values.
+/*
+GetVSphereStorageProfilesOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -53,9 +54,39 @@ type GetVSphereStorageProfilesOK struct {
 	Payload *models.StorageProfileVsphereResult
 }
 
+// IsSuccess returns true when this get v sphere storage profiles o k response has a 2xx status code
+func (o *GetVSphereStorageProfilesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v sphere storage profiles o k response has a 3xx status code
+func (o *GetVSphereStorageProfilesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v sphere storage profiles o k response has a 4xx status code
+func (o *GetVSphereStorageProfilesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v sphere storage profiles o k response has a 5xx status code
+func (o *GetVSphereStorageProfilesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v sphere storage profiles o k response a status code equal to that given
+func (o *GetVSphereStorageProfilesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetVSphereStorageProfilesOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/storage-profiles-vsphere][%d] getVSphereStorageProfilesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetVSphereStorageProfilesOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/storage-profiles-vsphere][%d] getVSphereStorageProfilesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetVSphereStorageProfilesOK) GetPayload() *models.StorageProfileVsphereResult {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewGetVSphereStorageProfilesForbidden() *GetVSphereStorageProfilesForbidden
 	return &GetVSphereStorageProfilesForbidden{}
 }
 
-/* GetVSphereStorageProfilesForbidden describes a response with status code 403, with default header values.
+/*
+GetVSphereStorageProfilesForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -85,9 +117,39 @@ type GetVSphereStorageProfilesForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get v sphere storage profiles forbidden response has a 2xx status code
+func (o *GetVSphereStorageProfilesForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get v sphere storage profiles forbidden response has a 3xx status code
+func (o *GetVSphereStorageProfilesForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v sphere storage profiles forbidden response has a 4xx status code
+func (o *GetVSphereStorageProfilesForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get v sphere storage profiles forbidden response has a 5xx status code
+func (o *GetVSphereStorageProfilesForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v sphere storage profiles forbidden response a status code equal to that given
+func (o *GetVSphereStorageProfilesForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetVSphereStorageProfilesForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/storage-profiles-vsphere][%d] getVSphereStorageProfilesForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetVSphereStorageProfilesForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/storage-profiles-vsphere][%d] getVSphereStorageProfilesForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetVSphereStorageProfilesForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

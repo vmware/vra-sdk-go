@@ -51,7 +51,8 @@ func NewCreateVcfCloudAccountAsyncAccepted() *CreateVcfCloudAccountAsyncAccepted
 	return &CreateVcfCloudAccountAsyncAccepted{}
 }
 
-/* CreateVcfCloudAccountAsyncAccepted describes a response with status code 202, with default header values.
+/*
+CreateVcfCloudAccountAsyncAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type CreateVcfCloudAccountAsyncAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this create vcf cloud account async accepted response has a 2xx status code
+func (o *CreateVcfCloudAccountAsyncAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create vcf cloud account async accepted response has a 3xx status code
+func (o *CreateVcfCloudAccountAsyncAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create vcf cloud account async accepted response has a 4xx status code
+func (o *CreateVcfCloudAccountAsyncAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create vcf cloud account async accepted response has a 5xx status code
+func (o *CreateVcfCloudAccountAsyncAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create vcf cloud account async accepted response a status code equal to that given
+func (o *CreateVcfCloudAccountAsyncAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateVcfCloudAccountAsyncAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vcf][%d] createVcfCloudAccountAsyncAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateVcfCloudAccountAsyncAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vcf][%d] createVcfCloudAccountAsyncAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateVcfCloudAccountAsyncAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewCreateVcfCloudAccountAsyncBadRequest() *CreateVcfCloudAccountAsyncBadReq
 	return &CreateVcfCloudAccountAsyncBadRequest{}
 }
 
-/* CreateVcfCloudAccountAsyncBadRequest describes a response with status code 400, with default header values.
+/*
+CreateVcfCloudAccountAsyncBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type CreateVcfCloudAccountAsyncBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create vcf cloud account async bad request response has a 2xx status code
+func (o *CreateVcfCloudAccountAsyncBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create vcf cloud account async bad request response has a 3xx status code
+func (o *CreateVcfCloudAccountAsyncBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create vcf cloud account async bad request response has a 4xx status code
+func (o *CreateVcfCloudAccountAsyncBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create vcf cloud account async bad request response has a 5xx status code
+func (o *CreateVcfCloudAccountAsyncBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create vcf cloud account async bad request response a status code equal to that given
+func (o *CreateVcfCloudAccountAsyncBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateVcfCloudAccountAsyncBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vcf][%d] createVcfCloudAccountAsyncBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateVcfCloudAccountAsyncBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vcf][%d] createVcfCloudAccountAsyncBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateVcfCloudAccountAsyncBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewCreateVcfCloudAccountAsyncForbidden() *CreateVcfCloudAccountAsyncForbidd
 	return &CreateVcfCloudAccountAsyncForbidden{}
 }
 
-/* CreateVcfCloudAccountAsyncForbidden describes a response with status code 403, with default header values.
+/*
+CreateVcfCloudAccountAsyncForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type CreateVcfCloudAccountAsyncForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this create vcf cloud account async forbidden response has a 2xx status code
+func (o *CreateVcfCloudAccountAsyncForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create vcf cloud account async forbidden response has a 3xx status code
+func (o *CreateVcfCloudAccountAsyncForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create vcf cloud account async forbidden response has a 4xx status code
+func (o *CreateVcfCloudAccountAsyncForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create vcf cloud account async forbidden response has a 5xx status code
+func (o *CreateVcfCloudAccountAsyncForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create vcf cloud account async forbidden response a status code equal to that given
+func (o *CreateVcfCloudAccountAsyncForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateVcfCloudAccountAsyncForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vcf][%d] createVcfCloudAccountAsyncForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CreateVcfCloudAccountAsyncForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vcf][%d] createVcfCloudAccountAsyncForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CreateVcfCloudAccountAsyncForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

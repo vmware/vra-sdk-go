@@ -36,9 +36,9 @@ type ClientService interface {
 }
 
 /*
-  GetCertificateInfo gets certificate info
+GetCertificateInfo gets certificate info
 
-  Get certificate info
+Get certificate info
 */
 func (a *Client) GetCertificateInfo(params *GetCertificateInfoParams, opts ...ClientOption) (*GetCertificateInfoOK, error) {
 	// TODO: Validate the params before sending

@@ -45,7 +45,8 @@ func NewGetCatalogItemsUsingGET4OK() *GetCatalogItemsUsingGET4OK {
 	return &GetCatalogItemsUsingGET4OK{}
 }
 
-/* GetCatalogItemsUsingGET4OK describes a response with status code 200, with default header values.
+/*
+GetCatalogItemsUsingGET4OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -53,9 +54,39 @@ type GetCatalogItemsUsingGET4OK struct {
 	Payload *models.PageOfCatalogItem
 }
 
+// IsSuccess returns true when this get catalog items using g e t4 o k response has a 2xx status code
+func (o *GetCatalogItemsUsingGET4OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get catalog items using g e t4 o k response has a 3xx status code
+func (o *GetCatalogItemsUsingGET4OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get catalog items using g e t4 o k response has a 4xx status code
+func (o *GetCatalogItemsUsingGET4OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get catalog items using g e t4 o k response has a 5xx status code
+func (o *GetCatalogItemsUsingGET4OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get catalog items using g e t4 o k response a status code equal to that given
+func (o *GetCatalogItemsUsingGET4OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetCatalogItemsUsingGET4OK) Error() string {
 	return fmt.Sprintf("[GET /catalog/api/admin/items][%d] getCatalogItemsUsingGET4OK  %+v", 200, o.Payload)
 }
+
+func (o *GetCatalogItemsUsingGET4OK) String() string {
+	return fmt.Sprintf("[GET /catalog/api/admin/items][%d] getCatalogItemsUsingGET4OK  %+v", 200, o.Payload)
+}
+
 func (o *GetCatalogItemsUsingGET4OK) GetPayload() *models.PageOfCatalogItem {
 	return o.Payload
 }
@@ -77,14 +108,44 @@ func NewGetCatalogItemsUsingGET4Unauthorized() *GetCatalogItemsUsingGET4Unauthor
 	return &GetCatalogItemsUsingGET4Unauthorized{}
 }
 
-/* GetCatalogItemsUsingGET4Unauthorized describes a response with status code 401, with default header values.
+/*
+GetCatalogItemsUsingGET4Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type GetCatalogItemsUsingGET4Unauthorized struct {
 }
 
+// IsSuccess returns true when this get catalog items using g e t4 unauthorized response has a 2xx status code
+func (o *GetCatalogItemsUsingGET4Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get catalog items using g e t4 unauthorized response has a 3xx status code
+func (o *GetCatalogItemsUsingGET4Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get catalog items using g e t4 unauthorized response has a 4xx status code
+func (o *GetCatalogItemsUsingGET4Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get catalog items using g e t4 unauthorized response has a 5xx status code
+func (o *GetCatalogItemsUsingGET4Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get catalog items using g e t4 unauthorized response a status code equal to that given
+func (o *GetCatalogItemsUsingGET4Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetCatalogItemsUsingGET4Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /catalog/api/admin/items][%d] getCatalogItemsUsingGET4Unauthorized ", 401)
+}
+
+func (o *GetCatalogItemsUsingGET4Unauthorized) String() string {
 	return fmt.Sprintf("[GET /catalog/api/admin/items][%d] getCatalogItemsUsingGET4Unauthorized ", 401)
 }
 

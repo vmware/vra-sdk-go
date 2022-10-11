@@ -54,10 +54,12 @@ func NewCreateBlockDeviceSnapshotParamsWithHTTPClient(client *http.Client) *Crea
 	}
 }
 
-/* CreateBlockDeviceSnapshotParams contains all the parameters to send to the API endpoint
-   for the create block device snapshot operation.
+/*
+CreateBlockDeviceSnapshotParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create block device snapshot operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateBlockDeviceSnapshotParams struct {
 

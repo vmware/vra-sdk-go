@@ -57,7 +57,8 @@ func NewGetCustomNameByProjectIDOK() *GetCustomNameByProjectIDOK {
 	return &GetCustomNameByProjectIDOK{}
 }
 
-/* GetCustomNameByProjectIDOK describes a response with status code 200, with default header values.
+/*
+GetCustomNameByProjectIDOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -65,9 +66,39 @@ type GetCustomNameByProjectIDOK struct {
 	Payload *models.CustomNaming
 }
 
+// IsSuccess returns true when this get custom name by project Id o k response has a 2xx status code
+func (o *GetCustomNameByProjectIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get custom name by project Id o k response has a 3xx status code
+func (o *GetCustomNameByProjectIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get custom name by project Id o k response has a 4xx status code
+func (o *GetCustomNameByProjectIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get custom name by project Id o k response has a 5xx status code
+func (o *GetCustomNameByProjectIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get custom name by project Id o k response a status code equal to that given
+func (o *GetCustomNameByProjectIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetCustomNameByProjectIDOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/naming/projectId/{id}][%d] getCustomNameByProjectIdOK  %+v", 200, o.Payload)
 }
+
+func (o *GetCustomNameByProjectIDOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/naming/projectId/{id}][%d] getCustomNameByProjectIdOK  %+v", 200, o.Payload)
+}
+
 func (o *GetCustomNameByProjectIDOK) GetPayload() *models.CustomNaming {
 	return o.Payload
 }
@@ -89,7 +120,8 @@ func NewGetCustomNameByProjectIDBadRequest() *GetCustomNameByProjectIDBadRequest
 	return &GetCustomNameByProjectIDBadRequest{}
 }
 
-/* GetCustomNameByProjectIDBadRequest describes a response with status code 400, with default header values.
+/*
+GetCustomNameByProjectIDBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -97,9 +129,39 @@ type GetCustomNameByProjectIDBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get custom name by project Id bad request response has a 2xx status code
+func (o *GetCustomNameByProjectIDBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get custom name by project Id bad request response has a 3xx status code
+func (o *GetCustomNameByProjectIDBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get custom name by project Id bad request response has a 4xx status code
+func (o *GetCustomNameByProjectIDBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get custom name by project Id bad request response has a 5xx status code
+func (o *GetCustomNameByProjectIDBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get custom name by project Id bad request response a status code equal to that given
+func (o *GetCustomNameByProjectIDBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GetCustomNameByProjectIDBadRequest) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/naming/projectId/{id}][%d] getCustomNameByProjectIdBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *GetCustomNameByProjectIDBadRequest) String() string {
+	return fmt.Sprintf("[GET /iaas/api/naming/projectId/{id}][%d] getCustomNameByProjectIdBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *GetCustomNameByProjectIDBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -121,7 +183,8 @@ func NewGetCustomNameByProjectIDForbidden() *GetCustomNameByProjectIDForbidden {
 	return &GetCustomNameByProjectIDForbidden{}
 }
 
-/* GetCustomNameByProjectIDForbidden describes a response with status code 403, with default header values.
+/*
+GetCustomNameByProjectIDForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -129,9 +192,39 @@ type GetCustomNameByProjectIDForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get custom name by project Id forbidden response has a 2xx status code
+func (o *GetCustomNameByProjectIDForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get custom name by project Id forbidden response has a 3xx status code
+func (o *GetCustomNameByProjectIDForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get custom name by project Id forbidden response has a 4xx status code
+func (o *GetCustomNameByProjectIDForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get custom name by project Id forbidden response has a 5xx status code
+func (o *GetCustomNameByProjectIDForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get custom name by project Id forbidden response a status code equal to that given
+func (o *GetCustomNameByProjectIDForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetCustomNameByProjectIDForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/naming/projectId/{id}][%d] getCustomNameByProjectIdForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetCustomNameByProjectIDForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/naming/projectId/{id}][%d] getCustomNameByProjectIdForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetCustomNameByProjectIDForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -153,7 +246,8 @@ func NewGetCustomNameByProjectIDNotFound() *GetCustomNameByProjectIDNotFound {
 	return &GetCustomNameByProjectIDNotFound{}
 }
 
-/* GetCustomNameByProjectIDNotFound describes a response with status code 404, with default header values.
+/*
+GetCustomNameByProjectIDNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -161,9 +255,39 @@ type GetCustomNameByProjectIDNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get custom name by project Id not found response has a 2xx status code
+func (o *GetCustomNameByProjectIDNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get custom name by project Id not found response has a 3xx status code
+func (o *GetCustomNameByProjectIDNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get custom name by project Id not found response has a 4xx status code
+func (o *GetCustomNameByProjectIDNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get custom name by project Id not found response has a 5xx status code
+func (o *GetCustomNameByProjectIDNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get custom name by project Id not found response a status code equal to that given
+func (o *GetCustomNameByProjectIDNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetCustomNameByProjectIDNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/naming/projectId/{id}][%d] getCustomNameByProjectIdNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetCustomNameByProjectIDNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/naming/projectId/{id}][%d] getCustomNameByProjectIdNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetCustomNameByProjectIDNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

@@ -51,7 +51,8 @@ func NewGetEventLogsContentUsingGET2OK() *GetEventLogsContentUsingGET2OK {
 	return &GetEventLogsContentUsingGET2OK{}
 }
 
-/* GetEventLogsContentUsingGET2OK describes a response with status code 200, with default header values.
+/*
+GetEventLogsContentUsingGET2OK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -59,9 +60,39 @@ type GetEventLogsContentUsingGET2OK struct {
 	Payload models.StreamingResponseBody
 }
 
+// IsSuccess returns true when this get event logs content using g e t2 o k response has a 2xx status code
+func (o *GetEventLogsContentUsingGET2OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get event logs content using g e t2 o k response has a 3xx status code
+func (o *GetEventLogsContentUsingGET2OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get event logs content using g e t2 o k response has a 4xx status code
+func (o *GetEventLogsContentUsingGET2OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get event logs content using g e t2 o k response has a 5xx status code
+func (o *GetEventLogsContentUsingGET2OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get event logs content using g e t2 o k response a status code equal to that given
+func (o *GetEventLogsContentUsingGET2OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetEventLogsContentUsingGET2OK) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/requests/{requestId}/events/{eventId}/logs/download][%d] getEventLogsContentUsingGET2OK  %+v", 200, o.Payload)
 }
+
+func (o *GetEventLogsContentUsingGET2OK) String() string {
+	return fmt.Sprintf("[GET /deployment/api/requests/{requestId}/events/{eventId}/logs/download][%d] getEventLogsContentUsingGET2OK  %+v", 200, o.Payload)
+}
+
 func (o *GetEventLogsContentUsingGET2OK) GetPayload() models.StreamingResponseBody {
 	return o.Payload
 }
@@ -81,14 +112,44 @@ func NewGetEventLogsContentUsingGET2Unauthorized() *GetEventLogsContentUsingGET2
 	return &GetEventLogsContentUsingGET2Unauthorized{}
 }
 
-/* GetEventLogsContentUsingGET2Unauthorized describes a response with status code 401, with default header values.
+/*
+GetEventLogsContentUsingGET2Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type GetEventLogsContentUsingGET2Unauthorized struct {
 }
 
+// IsSuccess returns true when this get event logs content using g e t2 unauthorized response has a 2xx status code
+func (o *GetEventLogsContentUsingGET2Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get event logs content using g e t2 unauthorized response has a 3xx status code
+func (o *GetEventLogsContentUsingGET2Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get event logs content using g e t2 unauthorized response has a 4xx status code
+func (o *GetEventLogsContentUsingGET2Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get event logs content using g e t2 unauthorized response has a 5xx status code
+func (o *GetEventLogsContentUsingGET2Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get event logs content using g e t2 unauthorized response a status code equal to that given
+func (o *GetEventLogsContentUsingGET2Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetEventLogsContentUsingGET2Unauthorized) Error() string {
+	return fmt.Sprintf("[GET /deployment/api/requests/{requestId}/events/{eventId}/logs/download][%d] getEventLogsContentUsingGET2Unauthorized ", 401)
+}
+
+func (o *GetEventLogsContentUsingGET2Unauthorized) String() string {
 	return fmt.Sprintf("[GET /deployment/api/requests/{requestId}/events/{eventId}/logs/download][%d] getEventLogsContentUsingGET2Unauthorized ", 401)
 }
 
@@ -102,7 +163,8 @@ func NewGetEventLogsContentUsingGET2NotFound() *GetEventLogsContentUsingGET2NotF
 	return &GetEventLogsContentUsingGET2NotFound{}
 }
 
-/* GetEventLogsContentUsingGET2NotFound describes a response with status code 404, with default header values.
+/*
+GetEventLogsContentUsingGET2NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -110,9 +172,39 @@ type GetEventLogsContentUsingGET2NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get event logs content using g e t2 not found response has a 2xx status code
+func (o *GetEventLogsContentUsingGET2NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get event logs content using g e t2 not found response has a 3xx status code
+func (o *GetEventLogsContentUsingGET2NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get event logs content using g e t2 not found response has a 4xx status code
+func (o *GetEventLogsContentUsingGET2NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get event logs content using g e t2 not found response has a 5xx status code
+func (o *GetEventLogsContentUsingGET2NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get event logs content using g e t2 not found response a status code equal to that given
+func (o *GetEventLogsContentUsingGET2NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetEventLogsContentUsingGET2NotFound) Error() string {
 	return fmt.Sprintf("[GET /deployment/api/requests/{requestId}/events/{eventId}/logs/download][%d] getEventLogsContentUsingGET2NotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetEventLogsContentUsingGET2NotFound) String() string {
+	return fmt.Sprintf("[GET /deployment/api/requests/{requestId}/events/{eventId}/logs/download][%d] getEventLogsContentUsingGET2NotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetEventLogsContentUsingGET2NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

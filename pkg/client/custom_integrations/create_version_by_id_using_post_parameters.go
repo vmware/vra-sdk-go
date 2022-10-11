@@ -54,10 +54,12 @@ func NewCreateVersionByIDUsingPOSTParamsWithHTTPClient(client *http.Client) *Cre
 	}
 }
 
-/* CreateVersionByIDUsingPOSTParams contains all the parameters to send to the API endpoint
-   for the create version by Id using p o s t operation.
+/*
+CreateVersionByIDUsingPOSTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the create version by Id using p o s t operation.
+
+	Typically these are written to a http.Request.
 */
 type CreateVersionByIDUsingPOSTParams struct {
 

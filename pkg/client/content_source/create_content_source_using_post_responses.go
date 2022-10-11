@@ -51,7 +51,8 @@ func NewCreateContentSourceUsingPOSTCreated() *CreateContentSourceUsingPOSTCreat
 	return &CreateContentSourceUsingPOSTCreated{}
 }
 
-/* CreateContentSourceUsingPOSTCreated describes a response with status code 201, with default header values.
+/*
+CreateContentSourceUsingPOSTCreated describes a response with status code 201, with default header values.
 
 Created content source
 */
@@ -59,9 +60,39 @@ type CreateContentSourceUsingPOSTCreated struct {
 	Payload *models.ContentSource
 }
 
+// IsSuccess returns true when this create content source using p o s t created response has a 2xx status code
+func (o *CreateContentSourceUsingPOSTCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create content source using p o s t created response has a 3xx status code
+func (o *CreateContentSourceUsingPOSTCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create content source using p o s t created response has a 4xx status code
+func (o *CreateContentSourceUsingPOSTCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create content source using p o s t created response has a 5xx status code
+func (o *CreateContentSourceUsingPOSTCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create content source using p o s t created response a status code equal to that given
+func (o *CreateContentSourceUsingPOSTCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *CreateContentSourceUsingPOSTCreated) Error() string {
 	return fmt.Sprintf("[POST /content/api/sources][%d] createContentSourceUsingPOSTCreated  %+v", 201, o.Payload)
 }
+
+func (o *CreateContentSourceUsingPOSTCreated) String() string {
+	return fmt.Sprintf("[POST /content/api/sources][%d] createContentSourceUsingPOSTCreated  %+v", 201, o.Payload)
+}
+
 func (o *CreateContentSourceUsingPOSTCreated) GetPayload() *models.ContentSource {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewCreateContentSourceUsingPOSTBadRequest() *CreateContentSourceUsingPOSTBa
 	return &CreateContentSourceUsingPOSTBadRequest{}
 }
 
-/* CreateContentSourceUsingPOSTBadRequest describes a response with status code 400, with default header values.
+/*
+CreateContentSourceUsingPOSTBadRequest describes a response with status code 400, with default header values.
 
 Invalid request data
 */
@@ -91,9 +123,39 @@ type CreateContentSourceUsingPOSTBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create content source using p o s t bad request response has a 2xx status code
+func (o *CreateContentSourceUsingPOSTBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create content source using p o s t bad request response has a 3xx status code
+func (o *CreateContentSourceUsingPOSTBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create content source using p o s t bad request response has a 4xx status code
+func (o *CreateContentSourceUsingPOSTBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create content source using p o s t bad request response has a 5xx status code
+func (o *CreateContentSourceUsingPOSTBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create content source using p o s t bad request response a status code equal to that given
+func (o *CreateContentSourceUsingPOSTBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateContentSourceUsingPOSTBadRequest) Error() string {
 	return fmt.Sprintf("[POST /content/api/sources][%d] createContentSourceUsingPOSTBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateContentSourceUsingPOSTBadRequest) String() string {
+	return fmt.Sprintf("[POST /content/api/sources][%d] createContentSourceUsingPOSTBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateContentSourceUsingPOSTBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,14 +177,44 @@ func NewCreateContentSourceUsingPOSTForbidden() *CreateContentSourceUsingPOSTFor
 	return &CreateContentSourceUsingPOSTForbidden{}
 }
 
-/* CreateContentSourceUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+CreateContentSourceUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Invalid project id or integration id
 */
 type CreateContentSourceUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this create content source using p o s t forbidden response has a 2xx status code
+func (o *CreateContentSourceUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create content source using p o s t forbidden response has a 3xx status code
+func (o *CreateContentSourceUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create content source using p o s t forbidden response has a 4xx status code
+func (o *CreateContentSourceUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create content source using p o s t forbidden response has a 5xx status code
+func (o *CreateContentSourceUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create content source using p o s t forbidden response a status code equal to that given
+func (o *CreateContentSourceUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateContentSourceUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /content/api/sources][%d] createContentSourceUsingPOSTForbidden ", 403)
+}
+
+func (o *CreateContentSourceUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /content/api/sources][%d] createContentSourceUsingPOSTForbidden ", 403)
 }
 

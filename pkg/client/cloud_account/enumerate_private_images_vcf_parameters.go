@@ -52,10 +52,12 @@ func NewEnumeratePrivateImagesVCFParamsWithHTTPClient(client *http.Client) *Enum
 	}
 }
 
-/* EnumeratePrivateImagesVCFParams contains all the parameters to send to the API endpoint
-   for the enumerate private images v c f operation.
+/*
+EnumeratePrivateImagesVCFParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the enumerate private images v c f operation.
+
+	Typically these are written to a http.Request.
 */
 type EnumeratePrivateImagesVCFParams struct {
 

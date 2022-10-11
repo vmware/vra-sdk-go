@@ -63,7 +63,8 @@ func NewCreateVariableUsingPOSTOK() *CreateVariableUsingPOSTOK {
 	return &CreateVariableUsingPOSTOK{}
 }
 
-/* CreateVariableUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+CreateVariableUsingPOSTOK describes a response with status code 200, with default header values.
 
 'Success' with Variable creation
 */
@@ -71,9 +72,39 @@ type CreateVariableUsingPOSTOK struct {
 	Payload *models.Variable
 }
 
+// IsSuccess returns true when this create variable using p o s t o k response has a 2xx status code
+func (o *CreateVariableUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create variable using p o s t o k response has a 3xx status code
+func (o *CreateVariableUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create variable using p o s t o k response has a 4xx status code
+func (o *CreateVariableUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create variable using p o s t o k response has a 5xx status code
+func (o *CreateVariableUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create variable using p o s t o k response a status code equal to that given
+func (o *CreateVariableUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CreateVariableUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/variables][%d] createVariableUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *CreateVariableUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /codestream/api/variables][%d] createVariableUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *CreateVariableUsingPOSTOK) GetPayload() *models.Variable {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewCreateVariableUsingPOSTUnauthorized() *CreateVariableUsingPOSTUnauthoriz
 	return &CreateVariableUsingPOSTUnauthorized{}
 }
 
-/* CreateVariableUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateVariableUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type CreateVariableUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this create variable using p o s t unauthorized response has a 2xx status code
+func (o *CreateVariableUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create variable using p o s t unauthorized response has a 3xx status code
+func (o *CreateVariableUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create variable using p o s t unauthorized response has a 4xx status code
+func (o *CreateVariableUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create variable using p o s t unauthorized response has a 5xx status code
+func (o *CreateVariableUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create variable using p o s t unauthorized response a status code equal to that given
+func (o *CreateVariableUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreateVariableUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/variables][%d] createVariableUsingPOSTUnauthorized ", 401)
+}
+
+func (o *CreateVariableUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /codestream/api/variables][%d] createVariableUsingPOSTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewCreateVariableUsingPOSTForbidden() *CreateVariableUsingPOSTForbidden {
 	return &CreateVariableUsingPOSTForbidden{}
 }
 
-/* CreateVariableUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+CreateVariableUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type CreateVariableUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this create variable using p o s t forbidden response has a 2xx status code
+func (o *CreateVariableUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create variable using p o s t forbidden response has a 3xx status code
+func (o *CreateVariableUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create variable using p o s t forbidden response has a 4xx status code
+func (o *CreateVariableUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create variable using p o s t forbidden response has a 5xx status code
+func (o *CreateVariableUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create variable using p o s t forbidden response a status code equal to that given
+func (o *CreateVariableUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateVariableUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/variables][%d] createVariableUsingPOSTForbidden ", 403)
+}
+
+func (o *CreateVariableUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /codestream/api/variables][%d] createVariableUsingPOSTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewCreateVariableUsingPOSTNotFound() *CreateVariableUsingPOSTNotFound {
 	return &CreateVariableUsingPOSTNotFound{}
 }
 
-/* CreateVariableUsingPOSTNotFound describes a response with status code 404, with default header values.
+/*
+CreateVariableUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type CreateVariableUsingPOSTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create variable using p o s t not found response has a 2xx status code
+func (o *CreateVariableUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create variable using p o s t not found response has a 3xx status code
+func (o *CreateVariableUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create variable using p o s t not found response has a 4xx status code
+func (o *CreateVariableUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create variable using p o s t not found response has a 5xx status code
+func (o *CreateVariableUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create variable using p o s t not found response a status code equal to that given
+func (o *CreateVariableUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CreateVariableUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/variables][%d] createVariableUsingPOSTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CreateVariableUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /codestream/api/variables][%d] createVariableUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CreateVariableUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewCreateVariableUsingPOSTInternalServerError() *CreateVariableUsingPOSTInt
 	return &CreateVariableUsingPOSTInternalServerError{}
 }
 
-/* CreateVariableUsingPOSTInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateVariableUsingPOSTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CreateVariableUsingPOSTInternalServerError struct {
 }
 
+// IsSuccess returns true when this create variable using p o s t internal server error response has a 2xx status code
+func (o *CreateVariableUsingPOSTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create variable using p o s t internal server error response has a 3xx status code
+func (o *CreateVariableUsingPOSTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create variable using p o s t internal server error response has a 4xx status code
+func (o *CreateVariableUsingPOSTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create variable using p o s t internal server error response has a 5xx status code
+func (o *CreateVariableUsingPOSTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this create variable using p o s t internal server error response a status code equal to that given
+func (o *CreateVariableUsingPOSTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CreateVariableUsingPOSTInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/variables][%d] createVariableUsingPOSTInternalServerError ", 500)
+}
+
+func (o *CreateVariableUsingPOSTInternalServerError) String() string {
 	return fmt.Sprintf("[POST /codestream/api/variables][%d] createVariableUsingPOSTInternalServerError ", 500)
 }
 

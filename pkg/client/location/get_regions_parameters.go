@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewGetRegionsParams creates a new GetRegionsParams object,
@@ -52,10 +53,12 @@ func NewGetRegionsParamsWithHTTPClient(client *http.Client) *GetRegionsParams {
 	}
 }
 
-/* GetRegionsParams contains all the parameters to send to the API endpoint
-   for the get regions operation.
+/*
+GetRegionsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get regions operation.
+
+	Typically these are written to a http.Request.
 */
 type GetRegionsParams struct {
 
@@ -64,6 +67,18 @@ type GetRegionsParams struct {
 	   Add a filter to return limited results
 	*/
 	DollarFilter *string
+
+	/* DollarSkip.
+
+	   Number of records you want to skip.
+	*/
+	DollarSkip *int64
+
+	/* DollarTop.
+
+	   Number of records you want to get.
+	*/
+	DollarTop *int64
 
 	/* APIVersion.
 
@@ -135,6 +150,28 @@ func (o *GetRegionsParams) SetDollarFilter(dollarFilter *string) {
 	o.DollarFilter = dollarFilter
 }
 
+// WithDollarSkip adds the dollarSkip to the get regions params
+func (o *GetRegionsParams) WithDollarSkip(dollarSkip *int64) *GetRegionsParams {
+	o.SetDollarSkip(dollarSkip)
+	return o
+}
+
+// SetDollarSkip adds the dollarSkip to the get regions params
+func (o *GetRegionsParams) SetDollarSkip(dollarSkip *int64) {
+	o.DollarSkip = dollarSkip
+}
+
+// WithDollarTop adds the dollarTop to the get regions params
+func (o *GetRegionsParams) WithDollarTop(dollarTop *int64) *GetRegionsParams {
+	o.SetDollarTop(dollarTop)
+	return o
+}
+
+// SetDollarTop adds the dollarTop to the get regions params
+func (o *GetRegionsParams) SetDollarTop(dollarTop *int64) {
+	o.DollarTop = dollarTop
+}
+
 // WithAPIVersion adds the aPIVersion to the get regions params
 func (o *GetRegionsParams) WithAPIVersion(aPIVersion *string) *GetRegionsParams {
 	o.SetAPIVersion(aPIVersion)
@@ -166,6 +203,40 @@ func (o *GetRegionsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Re
 		if qDollarFilter != "" {
 
 			if err := r.SetQueryParam("$filter", qDollarFilter); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.DollarSkip != nil {
+
+		// query param $skip
+		var qrDollarSkip int64
+
+		if o.DollarSkip != nil {
+			qrDollarSkip = *o.DollarSkip
+		}
+		qDollarSkip := swag.FormatInt64(qrDollarSkip)
+		if qDollarSkip != "" {
+
+			if err := r.SetQueryParam("$skip", qDollarSkip); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.DollarTop != nil {
+
+		// query param $top
+		var qrDollarTop int64
+
+		if o.DollarTop != nil {
+			qrDollarTop = *o.DollarTop
+		}
+		qDollarTop := swag.FormatInt64(qrDollarTop)
+		if qDollarTop != "" {
+
+			if err := r.SetQueryParam("$top", qDollarTop); err != nil {
 				return err
 			}
 		}

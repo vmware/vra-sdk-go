@@ -52,10 +52,12 @@ func NewGetExternalIPBlockParamsWithHTTPClient(client *http.Client) *GetExternal
 	}
 }
 
-/* GetExternalIPBlockParams contains all the parameters to send to the API endpoint
-   for the get external Ip block operation.
+/*
+GetExternalIPBlockParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get external Ip block operation.
+
+	Typically these are written to a http.Request.
 */
 type GetExternalIPBlockParams struct {
 

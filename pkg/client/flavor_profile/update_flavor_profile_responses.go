@@ -51,7 +51,8 @@ func NewUpdateFlavorProfileOK() *UpdateFlavorProfileOK {
 	return &UpdateFlavorProfileOK{}
 }
 
-/* UpdateFlavorProfileOK describes a response with status code 200, with default header values.
+/*
+UpdateFlavorProfileOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type UpdateFlavorProfileOK struct {
 	Payload *models.FlavorProfile
 }
 
+// IsSuccess returns true when this update flavor profile o k response has a 2xx status code
+func (o *UpdateFlavorProfileOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update flavor profile o k response has a 3xx status code
+func (o *UpdateFlavorProfileOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update flavor profile o k response has a 4xx status code
+func (o *UpdateFlavorProfileOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update flavor profile o k response has a 5xx status code
+func (o *UpdateFlavorProfileOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update flavor profile o k response a status code equal to that given
+func (o *UpdateFlavorProfileOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateFlavorProfileOK) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/flavor-profiles/{id}][%d] updateFlavorProfileOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateFlavorProfileOK) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/flavor-profiles/{id}][%d] updateFlavorProfileOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateFlavorProfileOK) GetPayload() *models.FlavorProfile {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewUpdateFlavorProfileForbidden() *UpdateFlavorProfileForbidden {
 	return &UpdateFlavorProfileForbidden{}
 }
 
-/* UpdateFlavorProfileForbidden describes a response with status code 403, with default header values.
+/*
+UpdateFlavorProfileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type UpdateFlavorProfileForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this update flavor profile forbidden response has a 2xx status code
+func (o *UpdateFlavorProfileForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update flavor profile forbidden response has a 3xx status code
+func (o *UpdateFlavorProfileForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update flavor profile forbidden response has a 4xx status code
+func (o *UpdateFlavorProfileForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update flavor profile forbidden response has a 5xx status code
+func (o *UpdateFlavorProfileForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update flavor profile forbidden response a status code equal to that given
+func (o *UpdateFlavorProfileForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UpdateFlavorProfileForbidden) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/flavor-profiles/{id}][%d] updateFlavorProfileForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UpdateFlavorProfileForbidden) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/flavor-profiles/{id}][%d] updateFlavorProfileForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UpdateFlavorProfileForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewUpdateFlavorProfileNotFound() *UpdateFlavorProfileNotFound {
 	return &UpdateFlavorProfileNotFound{}
 }
 
-/* UpdateFlavorProfileNotFound describes a response with status code 404, with default header values.
+/*
+UpdateFlavorProfileNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type UpdateFlavorProfileNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this update flavor profile not found response has a 2xx status code
+func (o *UpdateFlavorProfileNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update flavor profile not found response has a 3xx status code
+func (o *UpdateFlavorProfileNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update flavor profile not found response has a 4xx status code
+func (o *UpdateFlavorProfileNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update flavor profile not found response has a 5xx status code
+func (o *UpdateFlavorProfileNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update flavor profile not found response a status code equal to that given
+func (o *UpdateFlavorProfileNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UpdateFlavorProfileNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /iaas/api/flavor-profiles/{id}][%d] updateFlavorProfileNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UpdateFlavorProfileNotFound) String() string {
+	return fmt.Sprintf("[PATCH /iaas/api/flavor-profiles/{id}][%d] updateFlavorProfileNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UpdateFlavorProfileNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

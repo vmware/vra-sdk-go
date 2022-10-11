@@ -48,9 +48,9 @@ type ClientService interface {
 }
 
 /*
-  ActionDeploymentRequestUsingPOST2 submits action on requests allowable values cancel dismiss
+ActionDeploymentRequestUsingPOST2 submits action on requests allowable values cancel dismiss
 
-  Cancel can be submitted on In-progress requests and Dismiss can be submitted on Failed requests.
+Cancel can be submitted on In-progress requests and Dismiss can be submitted on Failed requests.
 */
 func (a *Client) ActionDeploymentRequestUsingPOST2(params *ActionDeploymentRequestUsingPOST2Params, opts ...ClientOption) (*ActionDeploymentRequestUsingPOST2OK, error) {
 	// TODO: Validate the params before sending
@@ -88,9 +88,9 @@ func (a *Client) ActionDeploymentRequestUsingPOST2(params *ActionDeploymentReque
 }
 
 /*
-  GetDeploymentRequestsUsingGET2 fetches deployment requests
+GetDeploymentRequestsUsingGET2 fetches deployment requests
 
-  Returns the requests for the deployment.
+Returns the requests for the deployment.
 */
 func (a *Client) GetDeploymentRequestsUsingGET2(params *GetDeploymentRequestsUsingGET2Params, opts ...ClientOption) (*GetDeploymentRequestsUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -128,9 +128,9 @@ func (a *Client) GetDeploymentRequestsUsingGET2(params *GetDeploymentRequestsUsi
 }
 
 /*
-  GetEventLogsContentUsingGET2 fetches event logs content as a file
+GetEventLogsContentUsingGET2 fetches event logs content as a file
 
-  Returns the log file for an event.
+Returns the log file for an event.
 */
 func (a *Client) GetEventLogsContentUsingGET2(params *GetEventLogsContentUsingGET2Params, opts ...ClientOption) (*GetEventLogsContentUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -168,9 +168,9 @@ func (a *Client) GetEventLogsContentUsingGET2(params *GetEventLogsContentUsingGE
 }
 
 /*
-  GetEventLogsUsingGET2 fetches event logs
+GetEventLogsUsingGET2 fetches event logs
 
-  Returns the logs for an event.
+Returns the logs for an event.
 */
 func (a *Client) GetEventLogsUsingGET2(params *GetEventLogsUsingGET2Params, opts ...ClientOption) (*GetEventLogsUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -208,9 +208,9 @@ func (a *Client) GetEventLogsUsingGET2(params *GetEventLogsUsingGET2Params, opts
 }
 
 /*
-  GetRequestEventsUsingGET2 fetches request events
+GetRequestEventsUsingGET2 fetches request events
 
-  Returns all the events for a request.
+Returns all the events for a request.
 */
 func (a *Client) GetRequestEventsUsingGET2(params *GetRequestEventsUsingGET2Params, opts ...ClientOption) (*GetRequestEventsUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -248,9 +248,9 @@ func (a *Client) GetRequestEventsUsingGET2(params *GetRequestEventsUsingGET2Para
 }
 
 /*
-  GetRequestUsingGET2 gets the request
+GetRequestUsingGET2 gets the request
 
-  Returns the request with the given ID.
+Returns the request with the given ID.
 */
 func (a *Client) GetRequestUsingGET2(params *GetRequestUsingGET2Params, opts ...ClientOption) (*GetRequestUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -288,7 +288,7 @@ func (a *Client) GetRequestUsingGET2(params *GetRequestUsingGET2Params, opts ...
 }
 
 /*
-  ListResourceRequestsUsingGET2 gets all requests for a resource
+ListResourceRequestsUsingGET2 gets all requests for a resource
 */
 func (a *Client) ListResourceRequestsUsingGET2(params *ListResourceRequestsUsingGET2Params, opts ...ClientOption) (*ListResourceRequestsUsingGET2OK, error) {
 	// TODO: Validate the params before sending

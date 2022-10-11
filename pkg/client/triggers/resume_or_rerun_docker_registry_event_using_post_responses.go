@@ -63,7 +63,8 @@ func NewResumeOrRerunDockerRegistryEventUsingPOSTOK() *ResumeOrRerunDockerRegist
 	return &ResumeOrRerunDockerRegistryEventUsingPOSTOK{}
 }
 
-/* ResumeOrRerunDockerRegistryEventUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+ResumeOrRerunDockerRegistryEventUsingPOSTOK describes a response with status code 200, with default header values.
 
 'Success' with Re-run/Resume Docker Registry Event
 */
@@ -71,9 +72,39 @@ type ResumeOrRerunDockerRegistryEventUsingPOSTOK struct {
 	Payload models.DockerRegistryEvent
 }
 
+// IsSuccess returns true when this resume or rerun docker registry event using p o s t o k response has a 2xx status code
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this resume or rerun docker registry event using p o s t o k response has a 3xx status code
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this resume or rerun docker registry event using p o s t o k response has a 4xx status code
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this resume or rerun docker registry event using p o s t o k response has a 5xx status code
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this resume or rerun docker registry event using p o s t o k response a status code equal to that given
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ResumeOrRerunDockerRegistryEventUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/registry-events/{id}][%d] resumeOrRerunDockerRegistryEventUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /codestream/api/registry-events/{id}][%d] resumeOrRerunDockerRegistryEventUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *ResumeOrRerunDockerRegistryEventUsingPOSTOK) GetPayload() models.DockerRegistryEvent {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewResumeOrRerunDockerRegistryEventUsingPOSTUnauthorized() *ResumeOrRerunDo
 	return &ResumeOrRerunDockerRegistryEventUsingPOSTUnauthorized{}
 }
 
-/* ResumeOrRerunDockerRegistryEventUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+ResumeOrRerunDockerRegistryEventUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type ResumeOrRerunDockerRegistryEventUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this resume or rerun docker registry event using p o s t unauthorized response has a 2xx status code
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this resume or rerun docker registry event using p o s t unauthorized response has a 3xx status code
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this resume or rerun docker registry event using p o s t unauthorized response has a 4xx status code
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this resume or rerun docker registry event using p o s t unauthorized response has a 5xx status code
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this resume or rerun docker registry event using p o s t unauthorized response a status code equal to that given
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ResumeOrRerunDockerRegistryEventUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/registry-events/{id}][%d] resumeOrRerunDockerRegistryEventUsingPOSTUnauthorized ", 401)
+}
+
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /codestream/api/registry-events/{id}][%d] resumeOrRerunDockerRegistryEventUsingPOSTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewResumeOrRerunDockerRegistryEventUsingPOSTForbidden() *ResumeOrRerunDocke
 	return &ResumeOrRerunDockerRegistryEventUsingPOSTForbidden{}
 }
 
-/* ResumeOrRerunDockerRegistryEventUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+ResumeOrRerunDockerRegistryEventUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type ResumeOrRerunDockerRegistryEventUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this resume or rerun docker registry event using p o s t forbidden response has a 2xx status code
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this resume or rerun docker registry event using p o s t forbidden response has a 3xx status code
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this resume or rerun docker registry event using p o s t forbidden response has a 4xx status code
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this resume or rerun docker registry event using p o s t forbidden response has a 5xx status code
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this resume or rerun docker registry event using p o s t forbidden response a status code equal to that given
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ResumeOrRerunDockerRegistryEventUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/registry-events/{id}][%d] resumeOrRerunDockerRegistryEventUsingPOSTForbidden ", 403)
+}
+
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /codestream/api/registry-events/{id}][%d] resumeOrRerunDockerRegistryEventUsingPOSTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewResumeOrRerunDockerRegistryEventUsingPOSTNotFound() *ResumeOrRerunDocker
 	return &ResumeOrRerunDockerRegistryEventUsingPOSTNotFound{}
 }
 
-/* ResumeOrRerunDockerRegistryEventUsingPOSTNotFound describes a response with status code 404, with default header values.
+/*
+ResumeOrRerunDockerRegistryEventUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type ResumeOrRerunDockerRegistryEventUsingPOSTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this resume or rerun docker registry event using p o s t not found response has a 2xx status code
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this resume or rerun docker registry event using p o s t not found response has a 3xx status code
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this resume or rerun docker registry event using p o s t not found response has a 4xx status code
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this resume or rerun docker registry event using p o s t not found response has a 5xx status code
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this resume or rerun docker registry event using p o s t not found response a status code equal to that given
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ResumeOrRerunDockerRegistryEventUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/registry-events/{id}][%d] resumeOrRerunDockerRegistryEventUsingPOSTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /codestream/api/registry-events/{id}][%d] resumeOrRerunDockerRegistryEventUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ResumeOrRerunDockerRegistryEventUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewResumeOrRerunDockerRegistryEventUsingPOSTInternalServerError() *ResumeOr
 	return &ResumeOrRerunDockerRegistryEventUsingPOSTInternalServerError{}
 }
 
-/* ResumeOrRerunDockerRegistryEventUsingPOSTInternalServerError describes a response with status code 500, with default header values.
+/*
+ResumeOrRerunDockerRegistryEventUsingPOSTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ResumeOrRerunDockerRegistryEventUsingPOSTInternalServerError struct {
 }
 
+// IsSuccess returns true when this resume or rerun docker registry event using p o s t internal server error response has a 2xx status code
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this resume or rerun docker registry event using p o s t internal server error response has a 3xx status code
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this resume or rerun docker registry event using p o s t internal server error response has a 4xx status code
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this resume or rerun docker registry event using p o s t internal server error response has a 5xx status code
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this resume or rerun docker registry event using p o s t internal server error response a status code equal to that given
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ResumeOrRerunDockerRegistryEventUsingPOSTInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/registry-events/{id}][%d] resumeOrRerunDockerRegistryEventUsingPOSTInternalServerError ", 500)
+}
+
+func (o *ResumeOrRerunDockerRegistryEventUsingPOSTInternalServerError) String() string {
 	return fmt.Sprintf("[POST /codestream/api/registry-events/{id}][%d] resumeOrRerunDockerRegistryEventUsingPOSTInternalServerError ", 500)
 }
 

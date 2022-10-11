@@ -7,9 +7,12 @@ package vcf
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/vmware/vra-sdk-go/pkg/models"
 )
 
 // DeleteServiceAccountUsingDELETEReader is a Reader for the DeleteServiceAccountUsingDELETE structure.
@@ -26,6 +29,24 @@ func (o *DeleteServiceAccountUsingDELETEReader) ReadResponse(response runtime.Cl
 			return nil, err
 		}
 		return result, nil
+	case 401:
+		result := NewDeleteServiceAccountUsingDELETEUnauthorized()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 403:
+		result := NewDeleteServiceAccountUsingDELETEForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 404:
+		result := NewDeleteServiceAccountUsingDELETENotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -36,18 +57,213 @@ func NewDeleteServiceAccountUsingDELETENoContent() *DeleteServiceAccountUsingDEL
 	return &DeleteServiceAccountUsingDELETENoContent{}
 }
 
-/* DeleteServiceAccountUsingDELETENoContent describes a response with status code 204, with default header values.
+/*
+DeleteServiceAccountUsingDELETENoContent describes a response with status code 204, with default header values.
 
 No Content
 */
 type DeleteServiceAccountUsingDELETENoContent struct {
 }
 
+// IsSuccess returns true when this delete service account using d e l e t e no content response has a 2xx status code
+func (o *DeleteServiceAccountUsingDELETENoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete service account using d e l e t e no content response has a 3xx status code
+func (o *DeleteServiceAccountUsingDELETENoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete service account using d e l e t e no content response has a 4xx status code
+func (o *DeleteServiceAccountUsingDELETENoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete service account using d e l e t e no content response has a 5xx status code
+func (o *DeleteServiceAccountUsingDELETENoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete service account using d e l e t e no content response a status code equal to that given
+func (o *DeleteServiceAccountUsingDELETENoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteServiceAccountUsingDELETENoContent) Error() string {
 	return fmt.Sprintf("[DELETE /content/api/vcf/{integrationId}/domain/{domainId}/service-accounts][%d] deleteServiceAccountUsingDELETENoContent ", 204)
 }
 
+func (o *DeleteServiceAccountUsingDELETENoContent) String() string {
+	return fmt.Sprintf("[DELETE /content/api/vcf/{integrationId}/domain/{domainId}/service-accounts][%d] deleteServiceAccountUsingDELETENoContent ", 204)
+}
+
 func (o *DeleteServiceAccountUsingDELETENoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewDeleteServiceAccountUsingDELETEUnauthorized creates a DeleteServiceAccountUsingDELETEUnauthorized with default headers values
+func NewDeleteServiceAccountUsingDELETEUnauthorized() *DeleteServiceAccountUsingDELETEUnauthorized {
+	return &DeleteServiceAccountUsingDELETEUnauthorized{}
+}
+
+/*
+DeleteServiceAccountUsingDELETEUnauthorized describes a response with status code 401, with default header values.
+
+Unauthorized
+*/
+type DeleteServiceAccountUsingDELETEUnauthorized struct {
+}
+
+// IsSuccess returns true when this delete service account using d e l e t e unauthorized response has a 2xx status code
+func (o *DeleteServiceAccountUsingDELETEUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete service account using d e l e t e unauthorized response has a 3xx status code
+func (o *DeleteServiceAccountUsingDELETEUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete service account using d e l e t e unauthorized response has a 4xx status code
+func (o *DeleteServiceAccountUsingDELETEUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete service account using d e l e t e unauthorized response has a 5xx status code
+func (o *DeleteServiceAccountUsingDELETEUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete service account using d e l e t e unauthorized response a status code equal to that given
+func (o *DeleteServiceAccountUsingDELETEUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+func (o *DeleteServiceAccountUsingDELETEUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /content/api/vcf/{integrationId}/domain/{domainId}/service-accounts][%d] deleteServiceAccountUsingDELETEUnauthorized ", 401)
+}
+
+func (o *DeleteServiceAccountUsingDELETEUnauthorized) String() string {
+	return fmt.Sprintf("[DELETE /content/api/vcf/{integrationId}/domain/{domainId}/service-accounts][%d] deleteServiceAccountUsingDELETEUnauthorized ", 401)
+}
+
+func (o *DeleteServiceAccountUsingDELETEUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewDeleteServiceAccountUsingDELETEForbidden creates a DeleteServiceAccountUsingDELETEForbidden with default headers values
+func NewDeleteServiceAccountUsingDELETEForbidden() *DeleteServiceAccountUsingDELETEForbidden {
+	return &DeleteServiceAccountUsingDELETEForbidden{}
+}
+
+/*
+DeleteServiceAccountUsingDELETEForbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type DeleteServiceAccountUsingDELETEForbidden struct {
+}
+
+// IsSuccess returns true when this delete service account using d e l e t e forbidden response has a 2xx status code
+func (o *DeleteServiceAccountUsingDELETEForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete service account using d e l e t e forbidden response has a 3xx status code
+func (o *DeleteServiceAccountUsingDELETEForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete service account using d e l e t e forbidden response has a 4xx status code
+func (o *DeleteServiceAccountUsingDELETEForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete service account using d e l e t e forbidden response has a 5xx status code
+func (o *DeleteServiceAccountUsingDELETEForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete service account using d e l e t e forbidden response a status code equal to that given
+func (o *DeleteServiceAccountUsingDELETEForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *DeleteServiceAccountUsingDELETEForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /content/api/vcf/{integrationId}/domain/{domainId}/service-accounts][%d] deleteServiceAccountUsingDELETEForbidden ", 403)
+}
+
+func (o *DeleteServiceAccountUsingDELETEForbidden) String() string {
+	return fmt.Sprintf("[DELETE /content/api/vcf/{integrationId}/domain/{domainId}/service-accounts][%d] deleteServiceAccountUsingDELETEForbidden ", 403)
+}
+
+func (o *DeleteServiceAccountUsingDELETEForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewDeleteServiceAccountUsingDELETENotFound creates a DeleteServiceAccountUsingDELETENotFound with default headers values
+func NewDeleteServiceAccountUsingDELETENotFound() *DeleteServiceAccountUsingDELETENotFound {
+	return &DeleteServiceAccountUsingDELETENotFound{}
+}
+
+/*
+DeleteServiceAccountUsingDELETENotFound describes a response with status code 404, with default header values.
+
+Not Found
+*/
+type DeleteServiceAccountUsingDELETENotFound struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this delete service account using d e l e t e not found response has a 2xx status code
+func (o *DeleteServiceAccountUsingDELETENotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete service account using d e l e t e not found response has a 3xx status code
+func (o *DeleteServiceAccountUsingDELETENotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete service account using d e l e t e not found response has a 4xx status code
+func (o *DeleteServiceAccountUsingDELETENotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete service account using d e l e t e not found response has a 5xx status code
+func (o *DeleteServiceAccountUsingDELETENotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete service account using d e l e t e not found response a status code equal to that given
+func (o *DeleteServiceAccountUsingDELETENotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+func (o *DeleteServiceAccountUsingDELETENotFound) Error() string {
+	return fmt.Sprintf("[DELETE /content/api/vcf/{integrationId}/domain/{domainId}/service-accounts][%d] deleteServiceAccountUsingDELETENotFound  %+v", 404, o.Payload)
+}
+
+func (o *DeleteServiceAccountUsingDELETENotFound) String() string {
+	return fmt.Sprintf("[DELETE /content/api/vcf/{integrationId}/domain/{domainId}/service-accounts][%d] deleteServiceAccountUsingDELETENotFound  %+v", 404, o.Payload)
+}
+
+func (o *DeleteServiceAccountUsingDELETENotFound) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *DeleteServiceAccountUsingDELETENotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

@@ -51,7 +51,8 @@ func NewCreateMachineSnapshotAccepted() *CreateMachineSnapshotAccepted {
 	return &CreateMachineSnapshotAccepted{}
 }
 
-/* CreateMachineSnapshotAccepted describes a response with status code 202, with default header values.
+/*
+CreateMachineSnapshotAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type CreateMachineSnapshotAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this create machine snapshot accepted response has a 2xx status code
+func (o *CreateMachineSnapshotAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create machine snapshot accepted response has a 3xx status code
+func (o *CreateMachineSnapshotAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create machine snapshot accepted response has a 4xx status code
+func (o *CreateMachineSnapshotAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create machine snapshot accepted response has a 5xx status code
+func (o *CreateMachineSnapshotAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create machine snapshot accepted response a status code equal to that given
+func (o *CreateMachineSnapshotAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *CreateMachineSnapshotAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/snapshots][%d] createMachineSnapshotAccepted  %+v", 202, o.Payload)
 }
+
+func (o *CreateMachineSnapshotAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/snapshots][%d] createMachineSnapshotAccepted  %+v", 202, o.Payload)
+}
+
 func (o *CreateMachineSnapshotAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewCreateMachineSnapshotForbidden() *CreateMachineSnapshotForbidden {
 	return &CreateMachineSnapshotForbidden{}
 }
 
-/* CreateMachineSnapshotForbidden describes a response with status code 403, with default header values.
+/*
+CreateMachineSnapshotForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -91,9 +123,39 @@ type CreateMachineSnapshotForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this create machine snapshot forbidden response has a 2xx status code
+func (o *CreateMachineSnapshotForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create machine snapshot forbidden response has a 3xx status code
+func (o *CreateMachineSnapshotForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create machine snapshot forbidden response has a 4xx status code
+func (o *CreateMachineSnapshotForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create machine snapshot forbidden response has a 5xx status code
+func (o *CreateMachineSnapshotForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create machine snapshot forbidden response a status code equal to that given
+func (o *CreateMachineSnapshotForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateMachineSnapshotForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/snapshots][%d] createMachineSnapshotForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CreateMachineSnapshotForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/snapshots][%d] createMachineSnapshotForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CreateMachineSnapshotForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewCreateMachineSnapshotNotFound() *CreateMachineSnapshotNotFound {
 	return &CreateMachineSnapshotNotFound{}
 }
 
-/* CreateMachineSnapshotNotFound describes a response with status code 404, with default header values.
+/*
+CreateMachineSnapshotNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -123,9 +186,39 @@ type CreateMachineSnapshotNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create machine snapshot not found response has a 2xx status code
+func (o *CreateMachineSnapshotNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create machine snapshot not found response has a 3xx status code
+func (o *CreateMachineSnapshotNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create machine snapshot not found response has a 4xx status code
+func (o *CreateMachineSnapshotNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create machine snapshot not found response has a 5xx status code
+func (o *CreateMachineSnapshotNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create machine snapshot not found response a status code equal to that given
+func (o *CreateMachineSnapshotNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CreateMachineSnapshotNotFound) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/snapshots][%d] createMachineSnapshotNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CreateMachineSnapshotNotFound) String() string {
+	return fmt.Sprintf("[POST /iaas/api/machines/{id}/operations/snapshots][%d] createMachineSnapshotNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CreateMachineSnapshotNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

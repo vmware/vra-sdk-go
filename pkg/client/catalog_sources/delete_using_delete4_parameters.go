@@ -52,10 +52,12 @@ func NewDeleteUsingDELETE4ParamsWithHTTPClient(client *http.Client) *DeleteUsing
 	}
 }
 
-/* DeleteUsingDELETE4Params contains all the parameters to send to the API endpoint
-   for the delete using d e l e t e 4 operation.
+/*
+DeleteUsingDELETE4Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete using d e l e t e 4 operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteUsingDELETE4Params struct {
 

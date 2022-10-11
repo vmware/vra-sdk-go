@@ -76,9 +76,9 @@ type ClientService interface {
 }
 
 /*
-  ActOnPipelineUsingPOST clones a pipeline
+ActOnPipelineUsingPOST clones a pipeline
 
-  Clone a Pipeline with the given id
+Clone a Pipeline with the given id
 */
 func (a *Client) ActOnPipelineUsingPOST(params *ActOnPipelineUsingPOSTParams, opts ...ClientOption) (*ActOnPipelineUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -116,9 +116,9 @@ func (a *Client) ActOnPipelineUsingPOST(params *ActOnPipelineUsingPOSTParams, op
 }
 
 /*
-  ClonePipelineByNameUsingPOST clones a pipeline by project and name
+ClonePipelineByNameUsingPOST clones a pipeline by project and name
 
-  Clone a Pipeline with the given project and name
+Clone a Pipeline with the given project and name
 */
 func (a *Client) ClonePipelineByNameUsingPOST(params *ClonePipelineByNameUsingPOSTParams, opts ...ClientOption) (*ClonePipelineByNameUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -156,9 +156,9 @@ func (a *Client) ClonePipelineByNameUsingPOST(params *ClonePipelineByNameUsingPO
 }
 
 /*
-  CreatePipelineUsingPOST creates a pipeline
+CreatePipelineUsingPOST creates a pipeline
 
-  Create a Pipeline based on the given project
+Create a Pipeline based on the given project
 */
 func (a *Client) CreatePipelineUsingPOST(params *CreatePipelineUsingPOSTParams, opts ...ClientOption) (*CreatePipelineUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -196,9 +196,9 @@ func (a *Client) CreatePipelineUsingPOST(params *CreatePipelineUsingPOSTParams, 
 }
 
 /*
-  DeletePipelineByIDUsingDELETE deletes a pipeline by id
+DeletePipelineByIDUsingDELETE deletes a pipeline by id
 
-  Delete a Pipeline with the given id
+Delete a Pipeline with the given id
 */
 func (a *Client) DeletePipelineByIDUsingDELETE(params *DeletePipelineByIDUsingDELETEParams, opts ...ClientOption) (*DeletePipelineByIDUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
@@ -236,9 +236,9 @@ func (a *Client) DeletePipelineByIDUsingDELETE(params *DeletePipelineByIDUsingDE
 }
 
 /*
-  DeletePipelineByNameUsingDELETE deletes a pipeline by project and name
+DeletePipelineByNameUsingDELETE deletes a pipeline by project and name
 
-  Delete a Pipeline with the given project and name
+Delete a Pipeline with the given project and name
 */
 func (a *Client) DeletePipelineByNameUsingDELETE(params *DeletePipelineByNameUsingDELETEParams, opts ...ClientOption) (*DeletePipelineByNameUsingDELETEOK, error) {
 	// TODO: Validate the params before sending
@@ -276,9 +276,9 @@ func (a *Client) DeletePipelineByNameUsingDELETE(params *DeletePipelineByNameUsi
 }
 
 /*
-  ExecutePipelineByIDUsingPOST executes a pipeline
+ExecutePipelineByIDUsingPOST executes a pipeline
 
-  Execute a Pipeline based on the given id
+Execute a Pipeline based on the given id
 */
 func (a *Client) ExecutePipelineByIDUsingPOST(params *ExecutePipelineByIDUsingPOSTParams, opts ...ClientOption) (*ExecutePipelineByIDUsingPOSTOK, *ExecutePipelineByIDUsingPOSTAccepted, error) {
 	// TODO: Validate the params before sending
@@ -317,9 +317,9 @@ func (a *Client) ExecutePipelineByIDUsingPOST(params *ExecutePipelineByIDUsingPO
 }
 
 /*
-  ExecutePipelineByNameUsingPOST executes a pipeline
+ExecutePipelineByNameUsingPOST executes a pipeline
 
-  Execute a Pipeline based on the given project and name
+Execute a Pipeline based on the given project and name
 */
 func (a *Client) ExecutePipelineByNameUsingPOST(params *ExecutePipelineByNameUsingPOSTParams, opts ...ClientOption) (*ExecutePipelineByNameUsingPOSTOK, *ExecutePipelineByNameUsingPOSTAccepted, error) {
 	// TODO: Validate the params before sending
@@ -358,9 +358,9 @@ func (a *Client) ExecutePipelineByNameUsingPOST(params *ExecutePipelineByNameUsi
 }
 
 /*
-  ExportUsingGET exports
+ExportUsingGET exports
 
-  Exports a single pipeline (and endpoints referred in that pipeline) or list of pipelines/ endpoints as 'YAML' in a given project
+Exports a single pipeline (and endpoints referred in that pipeline) or a list of pipelines/endpoints in a given project or a custom integration with given list of versions as 'YAML' in a given project
 */
 func (a *Client) ExportUsingGET(params *ExportUsingGETParams, opts ...ClientOption) (*ExportUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -398,9 +398,9 @@ func (a *Client) ExportUsingGET(params *ExportUsingGETParams, opts ...ClientOpti
 }
 
 /*
-  GetAllPipelinesUsingGET gets all pipelines
+GetAllPipelinesUsingGET gets all pipelines
 
-  Get all Pipelines with specified paging and filter parameters.
+Get all Pipelines with specified paging and filter parameters.
 */
 func (a *Client) GetAllPipelinesUsingGET(params *GetAllPipelinesUsingGETParams, opts ...ClientOption) (*GetAllPipelinesUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -438,9 +438,9 @@ func (a *Client) GetAllPipelinesUsingGET(params *GetAllPipelinesUsingGETParams, 
 }
 
 /*
-  GetExecutionByIndexAndPipelineIDUsingGET gets an execution
+GetExecutionByIndexAndPipelineIDUsingGET gets an execution
 
-  Get an Execution based on the given pipeline id and execution index
+Get an Execution based on the given pipeline id and execution index
 */
 func (a *Client) GetExecutionByIndexAndPipelineIDUsingGET(params *GetExecutionByIndexAndPipelineIDUsingGETParams, opts ...ClientOption) (*GetExecutionByIndexAndPipelineIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -478,9 +478,9 @@ func (a *Client) GetExecutionByIndexAndPipelineIDUsingGET(params *GetExecutionBy
 }
 
 /*
-  GetExecutionByNameAndIndexUsingGET gets an execution
+GetExecutionByNameAndIndexUsingGET gets an execution
 
-  Get an Execution based on the given pipeline id and execution index
+Get an Execution based on the given pipeline id and execution index
 */
 func (a *Client) GetExecutionByNameAndIndexUsingGET(params *GetExecutionByNameAndIndexUsingGETParams, opts ...ClientOption) (*GetExecutionByNameAndIndexUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -518,9 +518,9 @@ func (a *Client) GetExecutionByNameAndIndexUsingGET(params *GetExecutionByNameAn
 }
 
 /*
-  GetExecutionsByIDUsingGET gets all executions of a pipeline
+GetExecutionsByIDUsingGET gets all executions of a pipeline
 
-  Get all Executions of a Pipeline with specified paging and filter parameters.
+Get all Executions of a Pipeline with specified paging and filter parameters.
 */
 func (a *Client) GetExecutionsByIDUsingGET(params *GetExecutionsByIDUsingGETParams, opts ...ClientOption) (*GetExecutionsByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -558,9 +558,9 @@ func (a *Client) GetExecutionsByIDUsingGET(params *GetExecutionsByIDUsingGETPara
 }
 
 /*
-  GetExecutionsByNameUsingGET gets all executions of a pipeline
+GetExecutionsByNameUsingGET gets all executions of a pipeline
 
-  Get all Executions of a Pipeline with specified paging and filter parameters.
+Get all Executions of a Pipeline with specified paging and filter parameters.
 */
 func (a *Client) GetExecutionsByNameUsingGET(params *GetExecutionsByNameUsingGETParams, opts ...ClientOption) (*GetExecutionsByNameUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -598,9 +598,9 @@ func (a *Client) GetExecutionsByNameUsingGET(params *GetExecutionsByNameUsingGET
 }
 
 /*
-  GetPipelineByIDUsingGET gets a pipeline
+GetPipelineByIDUsingGET gets a pipeline
 
-  Get a Pipeline with the given id
+Get a Pipeline with the given id
 */
 func (a *Client) GetPipelineByIDUsingGET(params *GetPipelineByIDUsingGETParams, opts ...ClientOption) (*GetPipelineByIDUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -638,9 +638,9 @@ func (a *Client) GetPipelineByIDUsingGET(params *GetPipelineByIDUsingGETParams, 
 }
 
 /*
-  GetPipelineByNameUsingGET gets a pipeline by project and name
+GetPipelineByNameUsingGET gets a pipeline by project and name
 
-  Get a Pipeline with the given project and name
+Get a Pipeline with the given project and name
 */
 func (a *Client) GetPipelineByNameUsingGET(params *GetPipelineByNameUsingGETParams, opts ...ClientOption) (*GetPipelineByNameUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -678,9 +678,9 @@ func (a *Client) GetPipelineByNameUsingGET(params *GetPipelineByNameUsingGETPara
 }
 
 /*
-  GetPipelineTilesUsingGET gets pipeline tiles
+GetPipelineTilesUsingGET gets pipeline tiles
 
-  Get Pipeline Tiles
+Get Pipeline Tiles
 */
 func (a *Client) GetPipelineTilesUsingGET(params *GetPipelineTilesUsingGETParams, opts ...ClientOption) (*GetPipelineTilesUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -718,9 +718,9 @@ func (a *Client) GetPipelineTilesUsingGET(params *GetPipelineTilesUsingGETParams
 }
 
 /*
-  ImportYamlUsingPOST imports
+ImportYamlUsingPOST imports
 
-  Imports pipeline(s)/endpoint(s) into Code Stream.
+Imports pipeline(s)/endpoint(s) into Code Stream.
 */
 func (a *Client) ImportYamlUsingPOST(params *ImportYamlUsingPOSTParams, opts ...ClientOption) (*ImportYamlUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -758,9 +758,9 @@ func (a *Client) ImportYamlUsingPOST(params *ImportYamlUsingPOSTParams, opts ...
 }
 
 /*
-  PatchPipelineByNameUsingPATCH updates a pipeline by project and name
+PatchPipelineByNameUsingPATCH updates a pipeline by project and name
 
-  Update a Pipeline with the given project and name
+Update a Pipeline with the given project and name
 */
 func (a *Client) PatchPipelineByNameUsingPATCH(params *PatchPipelineByNameUsingPATCHParams, opts ...ClientOption) (*PatchPipelineByNameUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
@@ -798,9 +798,9 @@ func (a *Client) PatchPipelineByNameUsingPATCH(params *PatchPipelineByNameUsingP
 }
 
 /*
-  PatchPipelineUsingPATCH updates a pipeline by id
+PatchPipelineUsingPATCH updates a pipeline by id
 
-  Update a Pipeline with the given id
+Update a Pipeline with the given id
 */
 func (a *Client) PatchPipelineUsingPATCH(params *PatchPipelineUsingPATCHParams, opts ...ClientOption) (*PatchPipelineUsingPATCHOK, error) {
 	// TODO: Validate the params before sending
@@ -838,9 +838,9 @@ func (a *Client) PatchPipelineUsingPATCH(params *PatchPipelineUsingPATCHParams, 
 }
 
 /*
-  UpdatePipelineByNameUsingPUT updates a pipeline by project and name
+UpdatePipelineByNameUsingPUT updates a pipeline by project and name
 
-  Update a Pipeline with the given project and name
+Update a Pipeline with the given project and name
 */
 func (a *Client) UpdatePipelineByNameUsingPUT(params *UpdatePipelineByNameUsingPUTParams, opts ...ClientOption) (*UpdatePipelineByNameUsingPUTOK, error) {
 	// TODO: Validate the params before sending
@@ -878,9 +878,9 @@ func (a *Client) UpdatePipelineByNameUsingPUT(params *UpdatePipelineByNameUsingP
 }
 
 /*
-  UpdatePipelineUsingPUT updates a pipeline by id
+UpdatePipelineUsingPUT updates a pipeline by id
 
-  Update a Pipeline with the given id
+Update a Pipeline with the given id
 */
 func (a *Client) UpdatePipelineUsingPUT(params *UpdatePipelineUsingPUTParams, opts ...ClientOption) (*UpdatePipelineUsingPUTOK, error) {
 	// TODO: Validate the params before sending

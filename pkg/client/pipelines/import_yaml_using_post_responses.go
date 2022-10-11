@@ -63,7 +63,8 @@ func NewImportYamlUsingPOSTOK() *ImportYamlUsingPOSTOK {
 	return &ImportYamlUsingPOSTOK{}
 }
 
-/* ImportYamlUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+ImportYamlUsingPOSTOK describes a response with status code 200, with default header values.
 
 Data imported successfully
 */
@@ -71,9 +72,39 @@ type ImportYamlUsingPOSTOK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this import yaml using p o s t o k response has a 2xx status code
+func (o *ImportYamlUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this import yaml using p o s t o k response has a 3xx status code
+func (o *ImportYamlUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this import yaml using p o s t o k response has a 4xx status code
+func (o *ImportYamlUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this import yaml using p o s t o k response has a 5xx status code
+func (o *ImportYamlUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this import yaml using p o s t o k response a status code equal to that given
+func (o *ImportYamlUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ImportYamlUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/import][%d] importYamlUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *ImportYamlUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /codestream/api/import][%d] importYamlUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *ImportYamlUsingPOSTOK) GetPayload() string {
 	return o.Payload
 }
@@ -93,14 +124,44 @@ func NewImportYamlUsingPOSTUnauthorized() *ImportYamlUsingPOSTUnauthorized {
 	return &ImportYamlUsingPOSTUnauthorized{}
 }
 
-/* ImportYamlUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+ImportYamlUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type ImportYamlUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this import yaml using p o s t unauthorized response has a 2xx status code
+func (o *ImportYamlUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this import yaml using p o s t unauthorized response has a 3xx status code
+func (o *ImportYamlUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this import yaml using p o s t unauthorized response has a 4xx status code
+func (o *ImportYamlUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this import yaml using p o s t unauthorized response has a 5xx status code
+func (o *ImportYamlUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this import yaml using p o s t unauthorized response a status code equal to that given
+func (o *ImportYamlUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ImportYamlUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/import][%d] importYamlUsingPOSTUnauthorized ", 401)
+}
+
+func (o *ImportYamlUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /codestream/api/import][%d] importYamlUsingPOSTUnauthorized ", 401)
 }
 
@@ -114,14 +175,44 @@ func NewImportYamlUsingPOSTForbidden() *ImportYamlUsingPOSTForbidden {
 	return &ImportYamlUsingPOSTForbidden{}
 }
 
-/* ImportYamlUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+ImportYamlUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type ImportYamlUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this import yaml using p o s t forbidden response has a 2xx status code
+func (o *ImportYamlUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this import yaml using p o s t forbidden response has a 3xx status code
+func (o *ImportYamlUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this import yaml using p o s t forbidden response has a 4xx status code
+func (o *ImportYamlUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this import yaml using p o s t forbidden response has a 5xx status code
+func (o *ImportYamlUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this import yaml using p o s t forbidden response a status code equal to that given
+func (o *ImportYamlUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ImportYamlUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/import][%d] importYamlUsingPOSTForbidden ", 403)
+}
+
+func (o *ImportYamlUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /codestream/api/import][%d] importYamlUsingPOSTForbidden ", 403)
 }
 
@@ -135,7 +226,8 @@ func NewImportYamlUsingPOSTNotFound() *ImportYamlUsingPOSTNotFound {
 	return &ImportYamlUsingPOSTNotFound{}
 }
 
-/* ImportYamlUsingPOSTNotFound describes a response with status code 404, with default header values.
+/*
+ImportYamlUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -143,9 +235,39 @@ type ImportYamlUsingPOSTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this import yaml using p o s t not found response has a 2xx status code
+func (o *ImportYamlUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this import yaml using p o s t not found response has a 3xx status code
+func (o *ImportYamlUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this import yaml using p o s t not found response has a 4xx status code
+func (o *ImportYamlUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this import yaml using p o s t not found response has a 5xx status code
+func (o *ImportYamlUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this import yaml using p o s t not found response a status code equal to that given
+func (o *ImportYamlUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ImportYamlUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/import][%d] importYamlUsingPOSTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ImportYamlUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /codestream/api/import][%d] importYamlUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ImportYamlUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -167,14 +289,44 @@ func NewImportYamlUsingPOSTInternalServerError() *ImportYamlUsingPOSTInternalSer
 	return &ImportYamlUsingPOSTInternalServerError{}
 }
 
-/* ImportYamlUsingPOSTInternalServerError describes a response with status code 500, with default header values.
+/*
+ImportYamlUsingPOSTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ImportYamlUsingPOSTInternalServerError struct {
 }
 
+// IsSuccess returns true when this import yaml using p o s t internal server error response has a 2xx status code
+func (o *ImportYamlUsingPOSTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this import yaml using p o s t internal server error response has a 3xx status code
+func (o *ImportYamlUsingPOSTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this import yaml using p o s t internal server error response has a 4xx status code
+func (o *ImportYamlUsingPOSTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this import yaml using p o s t internal server error response has a 5xx status code
+func (o *ImportYamlUsingPOSTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this import yaml using p o s t internal server error response a status code equal to that given
+func (o *ImportYamlUsingPOSTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ImportYamlUsingPOSTInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/import][%d] importYamlUsingPOSTInternalServerError ", 500)
+}
+
+func (o *ImportYamlUsingPOSTInternalServerError) String() string {
 	return fmt.Sprintf("[POST /codestream/api/import][%d] importYamlUsingPOSTInternalServerError ", 500)
 }
 

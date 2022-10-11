@@ -53,10 +53,12 @@ func NewListPropertyGroupsUsingGETParamsWithHTTPClient(client *http.Client) *Lis
 	}
 }
 
-/* ListPropertyGroupsUsingGETParams contains all the parameters to send to the API endpoint
-   for the list property groups using g e t operation.
+/*
+ListPropertyGroupsUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the list property groups using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type ListPropertyGroupsUsingGETParams struct {
 

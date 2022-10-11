@@ -48,9 +48,9 @@ type ClientService interface {
 }
 
 /*
-  ChangeSecurityGroups changes security groups for a v sphere machine
+ChangeSecurityGroups changes security groups for a v sphere machine
 
-   Change security groups for a vSphere machine network interfaces. Securing group that is part of the same deployment can be added or removed for a machine network interface.
+	Change security groups for a vSphere machine network interfaces. Securing group that is part of the same deployment can be added or removed for a machine network interface.
 */
 func (a *Client) ChangeSecurityGroups(params *ChangeSecurityGroupsParams, opts ...ClientOption) (*ChangeSecurityGroupsAccepted, error) {
 	// TODO: Validate the params before sending
@@ -88,9 +88,9 @@ func (a *Client) ChangeSecurityGroups(params *ChangeSecurityGroupsParams, opts .
 }
 
 /*
-  CreateOnDemandSecurityGroup creates on demand security group
+CreateOnDemandSecurityGroup creates on demand security group
 
-  Provision a new on-demand security group
+Provision a new on-demand security group
 */
 func (a *Client) CreateOnDemandSecurityGroup(params *CreateOnDemandSecurityGroupParams, opts ...ClientOption) (*CreateOnDemandSecurityGroupAccepted, error) {
 	// TODO: Validate the params before sending
@@ -128,9 +128,9 @@ func (a *Client) CreateOnDemandSecurityGroup(params *CreateOnDemandSecurityGroup
 }
 
 /*
-  DeleteSecurityGroup deletes an on demand security group
+DeleteSecurityGroup deletes an on demand security group
 
-  Delete an on-demand security group with a given id
+Delete an on-demand security group with a given id
 */
 func (a *Client) DeleteSecurityGroup(params *DeleteSecurityGroupParams, opts ...ClientOption) (*DeleteSecurityGroupAccepted, *DeleteSecurityGroupNoContent, error) {
 	// TODO: Validate the params before sending
@@ -169,9 +169,9 @@ func (a *Client) DeleteSecurityGroup(params *DeleteSecurityGroupParams, opts ...
 }
 
 /*
-  GetSecurityGroup gets security group
+GetSecurityGroup gets security group
 
-  Get security group with a given id
+Get security group with a given id
 */
 func (a *Client) GetSecurityGroup(params *GetSecurityGroupParams, opts ...ClientOption) (*GetSecurityGroupOK, error) {
 	// TODO: Validate the params before sending
@@ -209,9 +209,9 @@ func (a *Client) GetSecurityGroup(params *GetSecurityGroupParams, opts ...Client
 }
 
 /*
-  GetSecurityGroups gets security groups
+GetSecurityGroups gets security groups
 
-  Get all security groups
+Get all security groups
 */
 func (a *Client) GetSecurityGroups(params *GetSecurityGroupsParams, opts ...ClientOption) (*GetSecurityGroupsOK, error) {
 	// TODO: Validate the params before sending
@@ -249,9 +249,9 @@ func (a *Client) GetSecurityGroups(params *GetSecurityGroupsParams, opts ...Clie
 }
 
 /*
-  ReconfigureSecurityGroup reconfigures operation for security group
+ReconfigureSecurityGroup reconfigures operation for security group
 
-  Day-2 reconfigure operation for new security groups provisioned by vRA. This is not supported for 'existing' security groups
+Day-2 reconfigure operation for new security groups provisioned by vRA. This is not supported for 'existing' security groups
 */
 func (a *Client) ReconfigureSecurityGroup(params *ReconfigureSecurityGroupParams, opts ...ClientOption) (*ReconfigureSecurityGroupAccepted, error) {
 	// TODO: Validate the params before sending
@@ -289,9 +289,9 @@ func (a *Client) ReconfigureSecurityGroup(params *ReconfigureSecurityGroupParams
 }
 
 /*
-  UpdateSecurityGroup updates security group
+UpdateSecurityGroup updates security group
 
-  Update security group. Only tag updates are supported.
+Update security group. Only tag updates are supported.
 */
 func (a *Client) UpdateSecurityGroup(params *UpdateSecurityGroupParams, opts ...ClientOption) (*UpdateSecurityGroupOK, error) {
 	// TODO: Validate the params before sending

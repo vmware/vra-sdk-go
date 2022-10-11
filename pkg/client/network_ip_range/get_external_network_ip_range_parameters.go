@@ -52,10 +52,12 @@ func NewGetExternalNetworkIPRangeParamsWithHTTPClient(client *http.Client) *GetE
 	}
 }
 
-/* GetExternalNetworkIPRangeParams contains all the parameters to send to the API endpoint
-   for the get external network IP range operation.
+/*
+GetExternalNetworkIPRangeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get external network IP range operation.
+
+	Typically these are written to a http.Request.
 */
 type GetExternalNetworkIPRangeParams struct {
 

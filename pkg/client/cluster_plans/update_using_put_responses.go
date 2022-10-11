@@ -29,6 +29,12 @@ func (o *UpdateUsingPUTReader) ReadResponse(response runtime.ClientResponse, con
 			return nil, err
 		}
 		return result, nil
+	case 403:
+		result := NewUpdateUsingPUTForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +45,8 @@ func NewUpdateUsingPUTOK() *UpdateUsingPUTOK {
 	return &UpdateUsingPUTOK{}
 }
 
-/* UpdateUsingPUTOK describes a response with status code 200, with default header values.
+/*
+UpdateUsingPUTOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +54,39 @@ type UpdateUsingPUTOK struct {
 	Payload *models.ClusterPlan
 }
 
+// IsSuccess returns true when this update using p u t o k response has a 2xx status code
+func (o *UpdateUsingPUTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update using p u t o k response has a 3xx status code
+func (o *UpdateUsingPUTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update using p u t o k response has a 4xx status code
+func (o *UpdateUsingPUTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update using p u t o k response has a 5xx status code
+func (o *UpdateUsingPUTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update using p u t o k response a status code equal to that given
+func (o *UpdateUsingPUTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateUsingPUTOK) Error() string {
 	return fmt.Sprintf("[PUT /cmx/api/resources/cluster-plans/{id}][%d] updateUsingPUTOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateUsingPUTOK) String() string {
+	return fmt.Sprintf("[PUT /cmx/api/resources/cluster-plans/{id}][%d] updateUsingPUTOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateUsingPUTOK) GetPayload() *models.ClusterPlan {
 	return o.Payload
 }
@@ -62,6 +99,57 @@ func (o *UpdateUsingPUTOK) readResponse(response runtime.ClientResponse, consume
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewUpdateUsingPUTForbidden creates a UpdateUsingPUTForbidden with default headers values
+func NewUpdateUsingPUTForbidden() *UpdateUsingPUTForbidden {
+	return &UpdateUsingPUTForbidden{}
+}
+
+/*
+UpdateUsingPUTForbidden describes a response with status code 403, with default header values.
+
+Forbidden, the user lacks permissions
+*/
+type UpdateUsingPUTForbidden struct {
+}
+
+// IsSuccess returns true when this update using p u t forbidden response has a 2xx status code
+func (o *UpdateUsingPUTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update using p u t forbidden response has a 3xx status code
+func (o *UpdateUsingPUTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update using p u t forbidden response has a 4xx status code
+func (o *UpdateUsingPUTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update using p u t forbidden response has a 5xx status code
+func (o *UpdateUsingPUTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update using p u t forbidden response a status code equal to that given
+func (o *UpdateUsingPUTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *UpdateUsingPUTForbidden) Error() string {
+	return fmt.Sprintf("[PUT /cmx/api/resources/cluster-plans/{id}][%d] updateUsingPUTForbidden ", 403)
+}
+
+func (o *UpdateUsingPUTForbidden) String() string {
+	return fmt.Sprintf("[PUT /cmx/api/resources/cluster-plans/{id}][%d] updateUsingPUTForbidden ", 403)
+}
+
+func (o *UpdateUsingPUTForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

@@ -46,9 +46,9 @@ type ClientService interface {
 }
 
 /*
-  GetDeploymentActionUsingGET2 fetches deployment action
+GetDeploymentActionUsingGET2 fetches deployment action
 
-  Returns an action for the deployment specified by its Deployment ID and Action ID.
+Returns an action for the deployment specified by its Deployment ID and Action ID.
 */
 func (a *Client) GetDeploymentActionUsingGET2(params *GetDeploymentActionUsingGET2Params, opts ...ClientOption) (*GetDeploymentActionUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -86,9 +86,9 @@ func (a *Client) GetDeploymentActionUsingGET2(params *GetDeploymentActionUsingGE
 }
 
 /*
-  GetDeploymentActionsUsingGET2 fetches deployment available actions
+GetDeploymentActionsUsingGET2 fetches deployment available actions
 
-  Returns the complete list of available actions that can be performed on a given deployment.
+Returns the complete list of available actions that can be performed on a given deployment.
 */
 func (a *Client) GetDeploymentActionsUsingGET2(params *GetDeploymentActionsUsingGET2Params, opts ...ClientOption) (*GetDeploymentActionsUsingGET2OK, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) GetDeploymentActionsUsingGET2(params *GetDeploymentActionsUsing
 }
 
 /*
-  GetResourceActionUsingGET4 fetches resource action
+GetResourceActionUsingGET4 fetches resource action
 
-  Returns an action for the resource specified by its Resource ID and Action ID.
+Returns an action for the resource specified by its Resource ID and Action ID.
 */
 func (a *Client) GetResourceActionUsingGET4(params *GetResourceActionUsingGET4Params, opts ...ClientOption) (*GetResourceActionUsingGET4OK, error) {
 	// TODO: Validate the params before sending
@@ -166,9 +166,9 @@ func (a *Client) GetResourceActionUsingGET4(params *GetResourceActionUsingGET4Pa
 }
 
 /*
-  GetResourceActionsUsingGET4 fetches available resource actions
+GetResourceActionsUsingGET4 fetches available resource actions
 
-  Returns the complete list of available actions that can be performed on a given resource.
+Returns the complete list of available actions that can be performed on a given resource.
 */
 func (a *Client) GetResourceActionsUsingGET4(params *GetResourceActionsUsingGET4Params, opts ...ClientOption) (*GetResourceActionsUsingGET4OK, error) {
 	// TODO: Validate the params before sending
@@ -206,9 +206,9 @@ func (a *Client) GetResourceActionsUsingGET4(params *GetResourceActionsUsingGET4
 }
 
 /*
-  SubmitDeploymentActionRequestUsingPOST2 deployments action request
+SubmitDeploymentActionRequestUsingPOST2 deployments action request
 
-  Submit a deployment action request
+Submit a deployment action request
 */
 func (a *Client) SubmitDeploymentActionRequestUsingPOST2(params *SubmitDeploymentActionRequestUsingPOST2Params, opts ...ClientOption) (*SubmitDeploymentActionRequestUsingPOST2OK, error) {
 	// TODO: Validate the params before sending
@@ -246,9 +246,9 @@ func (a *Client) SubmitDeploymentActionRequestUsingPOST2(params *SubmitDeploymen
 }
 
 /*
-  SubmitResourceActionRequestUsingPOST4 resources action request
+SubmitResourceActionRequestUsingPOST4 resources action request
 
-  Submit a resource action request.
+Submit a resource action request.
 */
 func (a *Client) SubmitResourceActionRequestUsingPOST4(params *SubmitResourceActionRequestUsingPOST4Params, opts ...ClientOption) (*SubmitResourceActionRequestUsingPOST4OK, error) {
 	// TODO: Validate the params before sending

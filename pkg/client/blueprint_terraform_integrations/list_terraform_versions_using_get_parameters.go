@@ -53,10 +53,12 @@ func NewListTerraformVersionsUsingGETParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* ListTerraformVersionsUsingGETParams contains all the parameters to send to the API endpoint
-   for the list terraform versions using g e t operation.
+/*
+ListTerraformVersionsUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the list terraform versions using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type ListTerraformVersionsUsingGETParams struct {
 

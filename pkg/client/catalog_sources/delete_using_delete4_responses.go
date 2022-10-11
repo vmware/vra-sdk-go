@@ -42,14 +42,44 @@ func NewDeleteUsingDELETE4NoContent() *DeleteUsingDELETE4NoContent {
 	return &DeleteUsingDELETE4NoContent{}
 }
 
-/* DeleteUsingDELETE4NoContent describes a response with status code 204, with default header values.
+/*
+DeleteUsingDELETE4NoContent describes a response with status code 204, with default header values.
 
 No Content
 */
 type DeleteUsingDELETE4NoContent struct {
 }
 
+// IsSuccess returns true when this delete using d e l e t e4 no content response has a 2xx status code
+func (o *DeleteUsingDELETE4NoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete using d e l e t e4 no content response has a 3xx status code
+func (o *DeleteUsingDELETE4NoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete using d e l e t e4 no content response has a 4xx status code
+func (o *DeleteUsingDELETE4NoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete using d e l e t e4 no content response has a 5xx status code
+func (o *DeleteUsingDELETE4NoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete using d e l e t e4 no content response a status code equal to that given
+func (o *DeleteUsingDELETE4NoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteUsingDELETE4NoContent) Error() string {
+	return fmt.Sprintf("[DELETE /catalog/api/admin/sources/{sourceId}][%d] deleteUsingDELETE4NoContent ", 204)
+}
+
+func (o *DeleteUsingDELETE4NoContent) String() string {
 	return fmt.Sprintf("[DELETE /catalog/api/admin/sources/{sourceId}][%d] deleteUsingDELETE4NoContent ", 204)
 }
 
@@ -63,14 +93,44 @@ func NewDeleteUsingDELETE4Unauthorized() *DeleteUsingDELETE4Unauthorized {
 	return &DeleteUsingDELETE4Unauthorized{}
 }
 
-/* DeleteUsingDELETE4Unauthorized describes a response with status code 401, with default header values.
+/*
+DeleteUsingDELETE4Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type DeleteUsingDELETE4Unauthorized struct {
 }
 
+// IsSuccess returns true when this delete using d e l e t e4 unauthorized response has a 2xx status code
+func (o *DeleteUsingDELETE4Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete using d e l e t e4 unauthorized response has a 3xx status code
+func (o *DeleteUsingDELETE4Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete using d e l e t e4 unauthorized response has a 4xx status code
+func (o *DeleteUsingDELETE4Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete using d e l e t e4 unauthorized response has a 5xx status code
+func (o *DeleteUsingDELETE4Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete using d e l e t e4 unauthorized response a status code equal to that given
+func (o *DeleteUsingDELETE4Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DeleteUsingDELETE4Unauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /catalog/api/admin/sources/{sourceId}][%d] deleteUsingDELETE4Unauthorized ", 401)
+}
+
+func (o *DeleteUsingDELETE4Unauthorized) String() string {
 	return fmt.Sprintf("[DELETE /catalog/api/admin/sources/{sourceId}][%d] deleteUsingDELETE4Unauthorized ", 401)
 }
 

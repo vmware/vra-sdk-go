@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewGetKubeConfigUsingGET1Params creates a new GetKubeConfigUsingGET1Params object,
@@ -52,10 +53,12 @@ func NewGetKubeConfigUsingGET1ParamsWithHTTPClient(client *http.Client) *GetKube
 	}
 }
 
-/* GetKubeConfigUsingGET1Params contains all the parameters to send to the API endpoint
-   for the get kube config using get1 operation.
+/*
+GetKubeConfigUsingGET1Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get kube config using get1 operation.
+
+	Typically these are written to a http.Request.
 */
 type GetKubeConfigUsingGET1Params struct {
 
@@ -66,6 +69,12 @@ type GetKubeConfigUsingGET1Params struct {
 	   Format: uuid
 	*/
 	ID strfmt.UUID
+
+	/* IgnoreTMC.
+
+	   ignoreTMC
+	*/
+	IgnoreTMC *bool
 
 	timeout    time.Duration
 	Context    context.Context
@@ -84,7 +93,18 @@ func (o *GetKubeConfigUsingGET1Params) WithDefaults() *GetKubeConfigUsingGET1Par
 //
 // All values with no default are reset to their zero value.
 func (o *GetKubeConfigUsingGET1Params) SetDefaults() {
-	// no default values defined for this parameter
+	var (
+		ignoreTMCDefault = bool(false)
+	)
+
+	val := GetKubeConfigUsingGET1Params{
+		IgnoreTMC: &ignoreTMCDefault,
+	}
+
+	val.timeout = o.timeout
+	val.Context = o.Context
+	val.HTTPClient = o.HTTPClient
+	*o = val
 }
 
 // WithTimeout adds the timeout to the get kube config using get1 params
@@ -131,6 +151,17 @@ func (o *GetKubeConfigUsingGET1Params) SetID(id strfmt.UUID) {
 	o.ID = id
 }
 
+// WithIgnoreTMC adds the ignoreTMC to the get kube config using get1 params
+func (o *GetKubeConfigUsingGET1Params) WithIgnoreTMC(ignoreTMC *bool) *GetKubeConfigUsingGET1Params {
+	o.SetIgnoreTMC(ignoreTMC)
+	return o
+}
+
+// SetIgnoreTMC adds the ignoreTMC to the get kube config using get1 params
+func (o *GetKubeConfigUsingGET1Params) SetIgnoreTMC(ignoreTMC *bool) {
+	o.IgnoreTMC = ignoreTMC
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetKubeConfigUsingGET1Params) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -142,6 +173,23 @@ func (o *GetKubeConfigUsingGET1Params) WriteToRequest(r runtime.ClientRequest, r
 	// path param id
 	if err := r.SetPathParam("id", o.ID.String()); err != nil {
 		return err
+	}
+
+	if o.IgnoreTMC != nil {
+
+		// query param ignoreTMC
+		var qrIgnoreTMC bool
+
+		if o.IgnoreTMC != nil {
+			qrIgnoreTMC = *o.IgnoreTMC
+		}
+		qIgnoreTMC := swag.FormatBool(qrIgnoreTMC)
+		if qIgnoreTMC != "" {
+
+			if err := r.SetQueryParam("ignoreTMC", qIgnoreTMC); err != nil {
+				return err
+			}
+		}
 	}
 
 	if len(res) > 0 {

@@ -63,7 +63,8 @@ func NewPatchPipelineUsingPATCHOK() *PatchPipelineUsingPATCHOK {
 	return &PatchPipelineUsingPATCHOK{}
 }
 
-/* PatchPipelineUsingPATCHOK describes a response with status code 200, with default header values.
+/*
+PatchPipelineUsingPATCHOK describes a response with status code 200, with default header values.
 
 'Success' with the updated Pipeline
 */
@@ -71,9 +72,39 @@ type PatchPipelineUsingPATCHOK struct {
 	Payload models.Pipeline
 }
 
+// IsSuccess returns true when this patch pipeline using p a t c h o k response has a 2xx status code
+func (o *PatchPipelineUsingPATCHOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch pipeline using p a t c h o k response has a 3xx status code
+func (o *PatchPipelineUsingPATCHOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch pipeline using p a t c h o k response has a 4xx status code
+func (o *PatchPipelineUsingPATCHOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch pipeline using p a t c h o k response has a 5xx status code
+func (o *PatchPipelineUsingPATCHOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch pipeline using p a t c h o k response a status code equal to that given
+func (o *PatchPipelineUsingPATCHOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchPipelineUsingPATCHOK) Error() string {
 	return fmt.Sprintf("[PATCH /codestream/api/pipelines/{id}][%d] patchPipelineUsingPATCHOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchPipelineUsingPATCHOK) String() string {
+	return fmt.Sprintf("[PATCH /codestream/api/pipelines/{id}][%d] patchPipelineUsingPATCHOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchPipelineUsingPATCHOK) GetPayload() models.Pipeline {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewPatchPipelineUsingPATCHUnauthorized() *PatchPipelineUsingPATCHUnauthoriz
 	return &PatchPipelineUsingPATCHUnauthorized{}
 }
 
-/* PatchPipelineUsingPATCHUnauthorized describes a response with status code 401, with default header values.
+/*
+PatchPipelineUsingPATCHUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type PatchPipelineUsingPATCHUnauthorized struct {
 }
 
+// IsSuccess returns true when this patch pipeline using p a t c h unauthorized response has a 2xx status code
+func (o *PatchPipelineUsingPATCHUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch pipeline using p a t c h unauthorized response has a 3xx status code
+func (o *PatchPipelineUsingPATCHUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch pipeline using p a t c h unauthorized response has a 4xx status code
+func (o *PatchPipelineUsingPATCHUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch pipeline using p a t c h unauthorized response has a 5xx status code
+func (o *PatchPipelineUsingPATCHUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch pipeline using p a t c h unauthorized response a status code equal to that given
+func (o *PatchPipelineUsingPATCHUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *PatchPipelineUsingPATCHUnauthorized) Error() string {
+	return fmt.Sprintf("[PATCH /codestream/api/pipelines/{id}][%d] patchPipelineUsingPATCHUnauthorized ", 401)
+}
+
+func (o *PatchPipelineUsingPATCHUnauthorized) String() string {
 	return fmt.Sprintf("[PATCH /codestream/api/pipelines/{id}][%d] patchPipelineUsingPATCHUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewPatchPipelineUsingPATCHForbidden() *PatchPipelineUsingPATCHForbidden {
 	return &PatchPipelineUsingPATCHForbidden{}
 }
 
-/* PatchPipelineUsingPATCHForbidden describes a response with status code 403, with default header values.
+/*
+PatchPipelineUsingPATCHForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type PatchPipelineUsingPATCHForbidden struct {
 }
 
+// IsSuccess returns true when this patch pipeline using p a t c h forbidden response has a 2xx status code
+func (o *PatchPipelineUsingPATCHForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch pipeline using p a t c h forbidden response has a 3xx status code
+func (o *PatchPipelineUsingPATCHForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch pipeline using p a t c h forbidden response has a 4xx status code
+func (o *PatchPipelineUsingPATCHForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch pipeline using p a t c h forbidden response has a 5xx status code
+func (o *PatchPipelineUsingPATCHForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch pipeline using p a t c h forbidden response a status code equal to that given
+func (o *PatchPipelineUsingPATCHForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *PatchPipelineUsingPATCHForbidden) Error() string {
+	return fmt.Sprintf("[PATCH /codestream/api/pipelines/{id}][%d] patchPipelineUsingPATCHForbidden ", 403)
+}
+
+func (o *PatchPipelineUsingPATCHForbidden) String() string {
 	return fmt.Sprintf("[PATCH /codestream/api/pipelines/{id}][%d] patchPipelineUsingPATCHForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewPatchPipelineUsingPATCHNotFound() *PatchPipelineUsingPATCHNotFound {
 	return &PatchPipelineUsingPATCHNotFound{}
 }
 
-/* PatchPipelineUsingPATCHNotFound describes a response with status code 404, with default header values.
+/*
+PatchPipelineUsingPATCHNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type PatchPipelineUsingPATCHNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this patch pipeline using p a t c h not found response has a 2xx status code
+func (o *PatchPipelineUsingPATCHNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch pipeline using p a t c h not found response has a 3xx status code
+func (o *PatchPipelineUsingPATCHNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch pipeline using p a t c h not found response has a 4xx status code
+func (o *PatchPipelineUsingPATCHNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch pipeline using p a t c h not found response has a 5xx status code
+func (o *PatchPipelineUsingPATCHNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch pipeline using p a t c h not found response a status code equal to that given
+func (o *PatchPipelineUsingPATCHNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *PatchPipelineUsingPATCHNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /codestream/api/pipelines/{id}][%d] patchPipelineUsingPATCHNotFound  %+v", 404, o.Payload)
 }
+
+func (o *PatchPipelineUsingPATCHNotFound) String() string {
+	return fmt.Sprintf("[PATCH /codestream/api/pipelines/{id}][%d] patchPipelineUsingPATCHNotFound  %+v", 404, o.Payload)
+}
+
 func (o *PatchPipelineUsingPATCHNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewPatchPipelineUsingPATCHInternalServerError() *PatchPipelineUsingPATCHInt
 	return &PatchPipelineUsingPATCHInternalServerError{}
 }
 
-/* PatchPipelineUsingPATCHInternalServerError describes a response with status code 500, with default header values.
+/*
+PatchPipelineUsingPATCHInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type PatchPipelineUsingPATCHInternalServerError struct {
 }
 
+// IsSuccess returns true when this patch pipeline using p a t c h internal server error response has a 2xx status code
+func (o *PatchPipelineUsingPATCHInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch pipeline using p a t c h internal server error response has a 3xx status code
+func (o *PatchPipelineUsingPATCHInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch pipeline using p a t c h internal server error response has a 4xx status code
+func (o *PatchPipelineUsingPATCHInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch pipeline using p a t c h internal server error response has a 5xx status code
+func (o *PatchPipelineUsingPATCHInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this patch pipeline using p a t c h internal server error response a status code equal to that given
+func (o *PatchPipelineUsingPATCHInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *PatchPipelineUsingPATCHInternalServerError) Error() string {
+	return fmt.Sprintf("[PATCH /codestream/api/pipelines/{id}][%d] patchPipelineUsingPATCHInternalServerError ", 500)
+}
+
+func (o *PatchPipelineUsingPATCHInternalServerError) String() string {
 	return fmt.Sprintf("[PATCH /codestream/api/pipelines/{id}][%d] patchPipelineUsingPATCHInternalServerError ", 500)
 }
 

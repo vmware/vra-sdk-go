@@ -21,7 +21,7 @@ import (
 type ContentSource struct {
 
 	// Source custom configuration
-	// Example: {"branch":"string","contentType":"string","endpointId":"string","integrationId":"string","path":"string","repository":"string"}
+	// Example: {"branch":"string","contentType":"string","endpointId":"string","integrationId":"string","path":"string","repository":"string","requestScopeOrg":"boolean"}
 	Config interface{} `json:"config,omitempty"`
 
 	// Creation time
@@ -68,7 +68,7 @@ type ContentSource struct {
 
 	// Content Source type
 	// Required: true
-	// Enum: [com.github com.gitlab org.bitbucket com.vmware.marketplace]
+	// Enum: [com.github com.github.enterprise com.gitlab org.bitbucket com.vmware.marketplace]
 	TypeID *string `json:"typeId"`
 }
 
@@ -165,7 +165,7 @@ var contentSourceTypeTypeIDPropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["com.github","com.gitlab","org.bitbucket","com.vmware.marketplace"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["com.github","com.github.enterprise","com.gitlab","org.bitbucket","com.vmware.marketplace"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -177,6 +177,9 @@ const (
 
 	// ContentSourceTypeIDComDotGithub captures enum value "com.github"
 	ContentSourceTypeIDComDotGithub string = "com.github"
+
+	// ContentSourceTypeIDComDotGithubDotEnterprise captures enum value "com.github.enterprise"
+	ContentSourceTypeIDComDotGithubDotEnterprise string = "com.github.enterprise"
 
 	// ContentSourceTypeIDComDotGitlab captures enum value "com.gitlab"
 	ContentSourceTypeIDComDotGitlab string = "com.gitlab"

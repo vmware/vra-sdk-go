@@ -63,7 +63,8 @@ func NewCreateEndpointUsingPOSTOK() *CreateEndpointUsingPOSTOK {
 	return &CreateEndpointUsingPOSTOK{}
 }
 
-/* CreateEndpointUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+CreateEndpointUsingPOSTOK describes a response with status code 200, with default header values.
 
 'Success' with the created Endpoint
 */
@@ -71,9 +72,39 @@ type CreateEndpointUsingPOSTOK struct {
 	Payload models.Endpoint
 }
 
+// IsSuccess returns true when this create endpoint using p o s t o k response has a 2xx status code
+func (o *CreateEndpointUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create endpoint using p o s t o k response has a 3xx status code
+func (o *CreateEndpointUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create endpoint using p o s t o k response has a 4xx status code
+func (o *CreateEndpointUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create endpoint using p o s t o k response has a 5xx status code
+func (o *CreateEndpointUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create endpoint using p o s t o k response a status code equal to that given
+func (o *CreateEndpointUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CreateEndpointUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/endpoints][%d] createEndpointUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *CreateEndpointUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /codestream/api/endpoints][%d] createEndpointUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *CreateEndpointUsingPOSTOK) GetPayload() models.Endpoint {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewCreateEndpointUsingPOSTUnauthorized() *CreateEndpointUsingPOSTUnauthoriz
 	return &CreateEndpointUsingPOSTUnauthorized{}
 }
 
-/* CreateEndpointUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateEndpointUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type CreateEndpointUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this create endpoint using p o s t unauthorized response has a 2xx status code
+func (o *CreateEndpointUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create endpoint using p o s t unauthorized response has a 3xx status code
+func (o *CreateEndpointUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create endpoint using p o s t unauthorized response has a 4xx status code
+func (o *CreateEndpointUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create endpoint using p o s t unauthorized response has a 5xx status code
+func (o *CreateEndpointUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create endpoint using p o s t unauthorized response a status code equal to that given
+func (o *CreateEndpointUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreateEndpointUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/endpoints][%d] createEndpointUsingPOSTUnauthorized ", 401)
+}
+
+func (o *CreateEndpointUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /codestream/api/endpoints][%d] createEndpointUsingPOSTUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewCreateEndpointUsingPOSTForbidden() *CreateEndpointUsingPOSTForbidden {
 	return &CreateEndpointUsingPOSTForbidden{}
 }
 
-/* CreateEndpointUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+CreateEndpointUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type CreateEndpointUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this create endpoint using p o s t forbidden response has a 2xx status code
+func (o *CreateEndpointUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create endpoint using p o s t forbidden response has a 3xx status code
+func (o *CreateEndpointUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create endpoint using p o s t forbidden response has a 4xx status code
+func (o *CreateEndpointUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create endpoint using p o s t forbidden response has a 5xx status code
+func (o *CreateEndpointUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create endpoint using p o s t forbidden response a status code equal to that given
+func (o *CreateEndpointUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateEndpointUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/endpoints][%d] createEndpointUsingPOSTForbidden ", 403)
+}
+
+func (o *CreateEndpointUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /codestream/api/endpoints][%d] createEndpointUsingPOSTForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewCreateEndpointUsingPOSTNotFound() *CreateEndpointUsingPOSTNotFound {
 	return &CreateEndpointUsingPOSTNotFound{}
 }
 
-/* CreateEndpointUsingPOSTNotFound describes a response with status code 404, with default header values.
+/*
+CreateEndpointUsingPOSTNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type CreateEndpointUsingPOSTNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create endpoint using p o s t not found response has a 2xx status code
+func (o *CreateEndpointUsingPOSTNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create endpoint using p o s t not found response has a 3xx status code
+func (o *CreateEndpointUsingPOSTNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create endpoint using p o s t not found response has a 4xx status code
+func (o *CreateEndpointUsingPOSTNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create endpoint using p o s t not found response has a 5xx status code
+func (o *CreateEndpointUsingPOSTNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create endpoint using p o s t not found response a status code equal to that given
+func (o *CreateEndpointUsingPOSTNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CreateEndpointUsingPOSTNotFound) Error() string {
 	return fmt.Sprintf("[POST /codestream/api/endpoints][%d] createEndpointUsingPOSTNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CreateEndpointUsingPOSTNotFound) String() string {
+	return fmt.Sprintf("[POST /codestream/api/endpoints][%d] createEndpointUsingPOSTNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CreateEndpointUsingPOSTNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewCreateEndpointUsingPOSTInternalServerError() *CreateEndpointUsingPOSTInt
 	return &CreateEndpointUsingPOSTInternalServerError{}
 }
 
-/* CreateEndpointUsingPOSTInternalServerError describes a response with status code 500, with default header values.
+/*
+CreateEndpointUsingPOSTInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CreateEndpointUsingPOSTInternalServerError struct {
 }
 
+// IsSuccess returns true when this create endpoint using p o s t internal server error response has a 2xx status code
+func (o *CreateEndpointUsingPOSTInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create endpoint using p o s t internal server error response has a 3xx status code
+func (o *CreateEndpointUsingPOSTInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create endpoint using p o s t internal server error response has a 4xx status code
+func (o *CreateEndpointUsingPOSTInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create endpoint using p o s t internal server error response has a 5xx status code
+func (o *CreateEndpointUsingPOSTInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this create endpoint using p o s t internal server error response a status code equal to that given
+func (o *CreateEndpointUsingPOSTInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CreateEndpointUsingPOSTInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /codestream/api/endpoints][%d] createEndpointUsingPOSTInternalServerError ", 500)
+}
+
+func (o *CreateEndpointUsingPOSTInternalServerError) String() string {
 	return fmt.Sprintf("[POST /codestream/api/endpoints][%d] createEndpointUsingPOSTInternalServerError ", 500)
 }
 

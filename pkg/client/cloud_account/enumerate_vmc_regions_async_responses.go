@@ -51,7 +51,8 @@ func NewEnumerateVmcRegionsAsyncAccepted() *EnumerateVmcRegionsAsyncAccepted {
 	return &EnumerateVmcRegionsAsyncAccepted{}
 }
 
-/* EnumerateVmcRegionsAsyncAccepted describes a response with status code 202, with default header values.
+/*
+EnumerateVmcRegionsAsyncAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type EnumerateVmcRegionsAsyncAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this enumerate vmc regions async accepted response has a 2xx status code
+func (o *EnumerateVmcRegionsAsyncAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this enumerate vmc regions async accepted response has a 3xx status code
+func (o *EnumerateVmcRegionsAsyncAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this enumerate vmc regions async accepted response has a 4xx status code
+func (o *EnumerateVmcRegionsAsyncAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this enumerate vmc regions async accepted response has a 5xx status code
+func (o *EnumerateVmcRegionsAsyncAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this enumerate vmc regions async accepted response a status code equal to that given
+func (o *EnumerateVmcRegionsAsyncAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *EnumerateVmcRegionsAsyncAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vmc/region-enumeration][%d] enumerateVmcRegionsAsyncAccepted  %+v", 202, o.Payload)
 }
+
+func (o *EnumerateVmcRegionsAsyncAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vmc/region-enumeration][%d] enumerateVmcRegionsAsyncAccepted  %+v", 202, o.Payload)
+}
+
 func (o *EnumerateVmcRegionsAsyncAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewEnumerateVmcRegionsAsyncBadRequest() *EnumerateVmcRegionsAsyncBadRequest
 	return &EnumerateVmcRegionsAsyncBadRequest{}
 }
 
-/* EnumerateVmcRegionsAsyncBadRequest describes a response with status code 400, with default header values.
+/*
+EnumerateVmcRegionsAsyncBadRequest describes a response with status code 400, with default header values.
 
 Invalid Request - bad data
 */
@@ -91,9 +123,39 @@ type EnumerateVmcRegionsAsyncBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this enumerate vmc regions async bad request response has a 2xx status code
+func (o *EnumerateVmcRegionsAsyncBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this enumerate vmc regions async bad request response has a 3xx status code
+func (o *EnumerateVmcRegionsAsyncBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this enumerate vmc regions async bad request response has a 4xx status code
+func (o *EnumerateVmcRegionsAsyncBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this enumerate vmc regions async bad request response has a 5xx status code
+func (o *EnumerateVmcRegionsAsyncBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this enumerate vmc regions async bad request response a status code equal to that given
+func (o *EnumerateVmcRegionsAsyncBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *EnumerateVmcRegionsAsyncBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vmc/region-enumeration][%d] enumerateVmcRegionsAsyncBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *EnumerateVmcRegionsAsyncBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vmc/region-enumeration][%d] enumerateVmcRegionsAsyncBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *EnumerateVmcRegionsAsyncBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewEnumerateVmcRegionsAsyncForbidden() *EnumerateVmcRegionsAsyncForbidden {
 	return &EnumerateVmcRegionsAsyncForbidden{}
 }
 
-/* EnumerateVmcRegionsAsyncForbidden describes a response with status code 403, with default header values.
+/*
+EnumerateVmcRegionsAsyncForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type EnumerateVmcRegionsAsyncForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this enumerate vmc regions async forbidden response has a 2xx status code
+func (o *EnumerateVmcRegionsAsyncForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this enumerate vmc regions async forbidden response has a 3xx status code
+func (o *EnumerateVmcRegionsAsyncForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this enumerate vmc regions async forbidden response has a 4xx status code
+func (o *EnumerateVmcRegionsAsyncForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this enumerate vmc regions async forbidden response has a 5xx status code
+func (o *EnumerateVmcRegionsAsyncForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this enumerate vmc regions async forbidden response a status code equal to that given
+func (o *EnumerateVmcRegionsAsyncForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *EnumerateVmcRegionsAsyncForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vmc/region-enumeration][%d] enumerateVmcRegionsAsyncForbidden  %+v", 403, o.Payload)
 }
+
+func (o *EnumerateVmcRegionsAsyncForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/cloud-accounts-vmc/region-enumeration][%d] enumerateVmcRegionsAsyncForbidden  %+v", 403, o.Payload)
+}
+
 func (o *EnumerateVmcRegionsAsyncForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

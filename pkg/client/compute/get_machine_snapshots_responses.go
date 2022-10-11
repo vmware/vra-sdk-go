@@ -51,7 +51,8 @@ func NewGetMachineSnapshotsOK() *GetMachineSnapshotsOK {
 	return &GetMachineSnapshotsOK{}
 }
 
-/* GetMachineSnapshotsOK describes a response with status code 200, with default header values.
+/*
+GetMachineSnapshotsOK describes a response with status code 200, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type GetMachineSnapshotsOK struct {
 	Payload []*models.Snapshot
 }
 
+// IsSuccess returns true when this get machine snapshots o k response has a 2xx status code
+func (o *GetMachineSnapshotsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get machine snapshots o k response has a 3xx status code
+func (o *GetMachineSnapshotsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get machine snapshots o k response has a 4xx status code
+func (o *GetMachineSnapshotsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get machine snapshots o k response has a 5xx status code
+func (o *GetMachineSnapshotsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get machine snapshots o k response a status code equal to that given
+func (o *GetMachineSnapshotsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetMachineSnapshotsOK) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/machines/{id}/snapshots][%d] getMachineSnapshotsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetMachineSnapshotsOK) String() string {
+	return fmt.Sprintf("[GET /iaas/api/machines/{id}/snapshots][%d] getMachineSnapshotsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetMachineSnapshotsOK) GetPayload() []*models.Snapshot {
 	return o.Payload
 }
@@ -81,7 +112,8 @@ func NewGetMachineSnapshotsForbidden() *GetMachineSnapshotsForbidden {
 	return &GetMachineSnapshotsForbidden{}
 }
 
-/* GetMachineSnapshotsForbidden describes a response with status code 403, with default header values.
+/*
+GetMachineSnapshotsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -89,9 +121,39 @@ type GetMachineSnapshotsForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this get machine snapshots forbidden response has a 2xx status code
+func (o *GetMachineSnapshotsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get machine snapshots forbidden response has a 3xx status code
+func (o *GetMachineSnapshotsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get machine snapshots forbidden response has a 4xx status code
+func (o *GetMachineSnapshotsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get machine snapshots forbidden response has a 5xx status code
+func (o *GetMachineSnapshotsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get machine snapshots forbidden response a status code equal to that given
+func (o *GetMachineSnapshotsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetMachineSnapshotsForbidden) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/machines/{id}/snapshots][%d] getMachineSnapshotsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GetMachineSnapshotsForbidden) String() string {
+	return fmt.Sprintf("[GET /iaas/api/machines/{id}/snapshots][%d] getMachineSnapshotsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GetMachineSnapshotsForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }
@@ -113,7 +175,8 @@ func NewGetMachineSnapshotsNotFound() *GetMachineSnapshotsNotFound {
 	return &GetMachineSnapshotsNotFound{}
 }
 
-/* GetMachineSnapshotsNotFound describes a response with status code 404, with default header values.
+/*
+GetMachineSnapshotsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -121,9 +184,39 @@ type GetMachineSnapshotsNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get machine snapshots not found response has a 2xx status code
+func (o *GetMachineSnapshotsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get machine snapshots not found response has a 3xx status code
+func (o *GetMachineSnapshotsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get machine snapshots not found response has a 4xx status code
+func (o *GetMachineSnapshotsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get machine snapshots not found response has a 5xx status code
+func (o *GetMachineSnapshotsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get machine snapshots not found response a status code equal to that given
+func (o *GetMachineSnapshotsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetMachineSnapshotsNotFound) Error() string {
 	return fmt.Sprintf("[GET /iaas/api/machines/{id}/snapshots][%d] getMachineSnapshotsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetMachineSnapshotsNotFound) String() string {
+	return fmt.Sprintf("[GET /iaas/api/machines/{id}/snapshots][%d] getMachineSnapshotsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetMachineSnapshotsNotFound) GetPayload() *models.Error {
 	return o.Payload
 }

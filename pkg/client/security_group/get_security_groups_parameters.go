@@ -52,10 +52,12 @@ func NewGetSecurityGroupsParamsWithHTTPClient(client *http.Client) *GetSecurityG
 	}
 }
 
-/* GetSecurityGroupsParams contains all the parameters to send to the API endpoint
-   for the get security groups operation.
+/*
+GetSecurityGroupsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get security groups operation.
+
+	Typically these are written to a http.Request.
 */
 type GetSecurityGroupsParams struct {
 

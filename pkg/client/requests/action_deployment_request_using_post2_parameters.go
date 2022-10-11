@@ -52,10 +52,12 @@ func NewActionDeploymentRequestUsingPOST2ParamsWithHTTPClient(client *http.Clien
 	}
 }
 
-/* ActionDeploymentRequestUsingPOST2Params contains all the parameters to send to the API endpoint
-   for the action deployment request using p o s t 2 operation.
+/*
+ActionDeploymentRequestUsingPOST2Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the action deployment request using p o s t 2 operation.
+
+	Typically these are written to a http.Request.
 */
 type ActionDeploymentRequestUsingPOST2Params struct {
 

@@ -53,10 +53,12 @@ func NewListUsingGET3ParamsWithHTTPClient(client *http.Client) *ListUsingGET3Par
 	}
 }
 
-/* ListUsingGET3Params contains all the parameters to send to the API endpoint
-   for the list using g e t 3 operation.
+/*
+ListUsingGET3Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the list using g e t 3 operation.
+
+	Typically these are written to a http.Request.
 */
 type ListUsingGET3Params struct {
 

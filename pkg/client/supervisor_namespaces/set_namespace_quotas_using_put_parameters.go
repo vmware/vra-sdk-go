@@ -54,10 +54,12 @@ func NewSetNamespaceQuotasUsingPUTParamsWithHTTPClient(client *http.Client) *Set
 	}
 }
 
-/* SetNamespaceQuotasUsingPUTParams contains all the parameters to send to the API endpoint
-   for the set namespace quotas using p u t operation.
+/*
+SetNamespaceQuotasUsingPUTParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the set namespace quotas using p u t operation.
+
+	Typically these are written to a http.Request.
 */
 type SetNamespaceQuotasUsingPUTParams struct {
 

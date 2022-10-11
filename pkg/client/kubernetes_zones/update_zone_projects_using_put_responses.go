@@ -29,6 +29,12 @@ func (o *UpdateZoneProjectsUsingPUTReader) ReadResponse(response runtime.ClientR
 			return nil, err
 		}
 		return result, nil
+	case 403:
+		result := NewUpdateZoneProjectsUsingPUTForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +45,8 @@ func NewUpdateZoneProjectsUsingPUTOK() *UpdateZoneProjectsUsingPUTOK {
 	return &UpdateZoneProjectsUsingPUTOK{}
 }
 
-/* UpdateZoneProjectsUsingPUTOK describes a response with status code 200, with default header values.
+/*
+UpdateZoneProjectsUsingPUTOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +54,39 @@ type UpdateZoneProjectsUsingPUTOK struct {
 	Payload *models.K8SZone
 }
 
+// IsSuccess returns true when this update zone projects using p u t o k response has a 2xx status code
+func (o *UpdateZoneProjectsUsingPUTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this update zone projects using p u t o k response has a 3xx status code
+func (o *UpdateZoneProjectsUsingPUTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update zone projects using p u t o k response has a 4xx status code
+func (o *UpdateZoneProjectsUsingPUTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this update zone projects using p u t o k response has a 5xx status code
+func (o *UpdateZoneProjectsUsingPUTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update zone projects using p u t o k response a status code equal to that given
+func (o *UpdateZoneProjectsUsingPUTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UpdateZoneProjectsUsingPUTOK) Error() string {
 	return fmt.Sprintf("[PUT /cmx/api/resources/k8s-zones/{id}/projects][%d] updateZoneProjectsUsingPUTOK  %+v", 200, o.Payload)
 }
+
+func (o *UpdateZoneProjectsUsingPUTOK) String() string {
+	return fmt.Sprintf("[PUT /cmx/api/resources/k8s-zones/{id}/projects][%d] updateZoneProjectsUsingPUTOK  %+v", 200, o.Payload)
+}
+
 func (o *UpdateZoneProjectsUsingPUTOK) GetPayload() *models.K8SZone {
 	return o.Payload
 }
@@ -62,6 +99,57 @@ func (o *UpdateZoneProjectsUsingPUTOK) readResponse(response runtime.ClientRespo
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewUpdateZoneProjectsUsingPUTForbidden creates a UpdateZoneProjectsUsingPUTForbidden with default headers values
+func NewUpdateZoneProjectsUsingPUTForbidden() *UpdateZoneProjectsUsingPUTForbidden {
+	return &UpdateZoneProjectsUsingPUTForbidden{}
+}
+
+/*
+UpdateZoneProjectsUsingPUTForbidden describes a response with status code 403, with default header values.
+
+Forbidden, the user lacks permissions
+*/
+type UpdateZoneProjectsUsingPUTForbidden struct {
+}
+
+// IsSuccess returns true when this update zone projects using p u t forbidden response has a 2xx status code
+func (o *UpdateZoneProjectsUsingPUTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this update zone projects using p u t forbidden response has a 3xx status code
+func (o *UpdateZoneProjectsUsingPUTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this update zone projects using p u t forbidden response has a 4xx status code
+func (o *UpdateZoneProjectsUsingPUTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this update zone projects using p u t forbidden response has a 5xx status code
+func (o *UpdateZoneProjectsUsingPUTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this update zone projects using p u t forbidden response a status code equal to that given
+func (o *UpdateZoneProjectsUsingPUTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *UpdateZoneProjectsUsingPUTForbidden) Error() string {
+	return fmt.Sprintf("[PUT /cmx/api/resources/k8s-zones/{id}/projects][%d] updateZoneProjectsUsingPUTForbidden ", 403)
+}
+
+func (o *UpdateZoneProjectsUsingPUTForbidden) String() string {
+	return fmt.Sprintf("[PUT /cmx/api/resources/k8s-zones/{id}/projects][%d] updateZoneProjectsUsingPUTForbidden ", 403)
+}
+
+func (o *UpdateZoneProjectsUsingPUTForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

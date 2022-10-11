@@ -52,10 +52,12 @@ func NewGetGerritEventByIDUsingGETParamsWithHTTPClient(client *http.Client) *Get
 	}
 }
 
-/* GetGerritEventByIDUsingGETParams contains all the parameters to send to the API endpoint
-   for the get gerrit event by ID using g e t operation.
+/*
+GetGerritEventByIDUsingGETParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get gerrit event by ID using g e t operation.
+
+	Typically these are written to a http.Request.
 */
 type GetGerritEventByIDUsingGETParams struct {
 

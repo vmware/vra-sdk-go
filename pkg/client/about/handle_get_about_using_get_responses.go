@@ -63,7 +63,8 @@ func NewHandleGetAboutUsingGETOK() *HandleGetAboutUsingGETOK {
 	return &HandleGetAboutUsingGETOK{}
 }
 
-/* HandleGetAboutUsingGETOK describes a response with status code 200, with default header values.
+/*
+HandleGetAboutUsingGETOK describes a response with status code 200, with default header values.
 
 'Success' with the requested Endpoint
 */
@@ -71,9 +72,39 @@ type HandleGetAboutUsingGETOK struct {
 	Payload models.About
 }
 
+// IsSuccess returns true when this handle get about using g e t o k response has a 2xx status code
+func (o *HandleGetAboutUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this handle get about using g e t o k response has a 3xx status code
+func (o *HandleGetAboutUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this handle get about using g e t o k response has a 4xx status code
+func (o *HandleGetAboutUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this handle get about using g e t o k response has a 5xx status code
+func (o *HandleGetAboutUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this handle get about using g e t o k response a status code equal to that given
+func (o *HandleGetAboutUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *HandleGetAboutUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/about][%d] handleGetAboutUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *HandleGetAboutUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /codestream/api/about][%d] handleGetAboutUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *HandleGetAboutUsingGETOK) GetPayload() models.About {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewHandleGetAboutUsingGETUnauthorized() *HandleGetAboutUsingGETUnauthorized
 	return &HandleGetAboutUsingGETUnauthorized{}
 }
 
-/* HandleGetAboutUsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+HandleGetAboutUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type HandleGetAboutUsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this handle get about using g e t unauthorized response has a 2xx status code
+func (o *HandleGetAboutUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this handle get about using g e t unauthorized response has a 3xx status code
+func (o *HandleGetAboutUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this handle get about using g e t unauthorized response has a 4xx status code
+func (o *HandleGetAboutUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this handle get about using g e t unauthorized response has a 5xx status code
+func (o *HandleGetAboutUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this handle get about using g e t unauthorized response a status code equal to that given
+func (o *HandleGetAboutUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *HandleGetAboutUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/about][%d] handleGetAboutUsingGETUnauthorized ", 401)
+}
+
+func (o *HandleGetAboutUsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /codestream/api/about][%d] handleGetAboutUsingGETUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewHandleGetAboutUsingGETForbidden() *HandleGetAboutUsingGETForbidden {
 	return &HandleGetAboutUsingGETForbidden{}
 }
 
-/* HandleGetAboutUsingGETForbidden describes a response with status code 403, with default header values.
+/*
+HandleGetAboutUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type HandleGetAboutUsingGETForbidden struct {
 }
 
+// IsSuccess returns true when this handle get about using g e t forbidden response has a 2xx status code
+func (o *HandleGetAboutUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this handle get about using g e t forbidden response has a 3xx status code
+func (o *HandleGetAboutUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this handle get about using g e t forbidden response has a 4xx status code
+func (o *HandleGetAboutUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this handle get about using g e t forbidden response has a 5xx status code
+func (o *HandleGetAboutUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this handle get about using g e t forbidden response a status code equal to that given
+func (o *HandleGetAboutUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *HandleGetAboutUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/about][%d] handleGetAboutUsingGETForbidden ", 403)
+}
+
+func (o *HandleGetAboutUsingGETForbidden) String() string {
 	return fmt.Sprintf("[GET /codestream/api/about][%d] handleGetAboutUsingGETForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewHandleGetAboutUsingGETNotFound() *HandleGetAboutUsingGETNotFound {
 	return &HandleGetAboutUsingGETNotFound{}
 }
 
-/* HandleGetAboutUsingGETNotFound describes a response with status code 404, with default header values.
+/*
+HandleGetAboutUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type HandleGetAboutUsingGETNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this handle get about using g e t not found response has a 2xx status code
+func (o *HandleGetAboutUsingGETNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this handle get about using g e t not found response has a 3xx status code
+func (o *HandleGetAboutUsingGETNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this handle get about using g e t not found response has a 4xx status code
+func (o *HandleGetAboutUsingGETNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this handle get about using g e t not found response has a 5xx status code
+func (o *HandleGetAboutUsingGETNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this handle get about using g e t not found response a status code equal to that given
+func (o *HandleGetAboutUsingGETNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *HandleGetAboutUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/about][%d] handleGetAboutUsingGETNotFound  %+v", 404, o.Payload)
 }
+
+func (o *HandleGetAboutUsingGETNotFound) String() string {
+	return fmt.Sprintf("[GET /codestream/api/about][%d] handleGetAboutUsingGETNotFound  %+v", 404, o.Payload)
+}
+
 func (o *HandleGetAboutUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewHandleGetAboutUsingGETInternalServerError() *HandleGetAboutUsingGETInter
 	return &HandleGetAboutUsingGETInternalServerError{}
 }
 
-/* HandleGetAboutUsingGETInternalServerError describes a response with status code 500, with default header values.
+/*
+HandleGetAboutUsingGETInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type HandleGetAboutUsingGETInternalServerError struct {
 }
 
+// IsSuccess returns true when this handle get about using g e t internal server error response has a 2xx status code
+func (o *HandleGetAboutUsingGETInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this handle get about using g e t internal server error response has a 3xx status code
+func (o *HandleGetAboutUsingGETInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this handle get about using g e t internal server error response has a 4xx status code
+func (o *HandleGetAboutUsingGETInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this handle get about using g e t internal server error response has a 5xx status code
+func (o *HandleGetAboutUsingGETInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this handle get about using g e t internal server error response a status code equal to that given
+func (o *HandleGetAboutUsingGETInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *HandleGetAboutUsingGETInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/about][%d] handleGetAboutUsingGETInternalServerError ", 500)
+}
+
+func (o *HandleGetAboutUsingGETInternalServerError) String() string {
 	return fmt.Sprintf("[GET /codestream/api/about][%d] handleGetAboutUsingGETInternalServerError ", 500)
 }
 

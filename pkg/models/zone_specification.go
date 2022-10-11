@@ -39,7 +39,7 @@ type ZoneSpecification struct {
 	// Required: true
 	Name *string `json:"name"`
 
-	// Placement policy for the zone. One of DEFAULT, SPREAD or BINPACK.
+	// Placement policy for the zone. One of DEFAULT, SPREAD, BINPACK or SPREAD_MEMORY.
 	// Example: DEFAULT
 	PlacementPolicy string `json:"placementPolicy,omitempty"`
 

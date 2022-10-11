@@ -57,7 +57,8 @@ func NewCreateServiceCredentialsUsingPOSTOK() *CreateServiceCredentialsUsingPOST
 	return &CreateServiceCredentialsUsingPOSTOK{}
 }
 
-/* CreateServiceCredentialsUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+CreateServiceCredentialsUsingPOSTOK describes a response with status code 200, with default header values.
 
 Create Service credentials
 */
@@ -65,9 +66,39 @@ type CreateServiceCredentialsUsingPOSTOK struct {
 	Payload *models.VcfServiceCredentialCreationResponse
 }
 
+// IsSuccess returns true when this create service credentials using p o s t o k response has a 2xx status code
+func (o *CreateServiceCredentialsUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create service credentials using p o s t o k response has a 3xx status code
+func (o *CreateServiceCredentialsUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create service credentials using p o s t o k response has a 4xx status code
+func (o *CreateServiceCredentialsUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create service credentials using p o s t o k response has a 5xx status code
+func (o *CreateServiceCredentialsUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create service credentials using p o s t o k response a status code equal to that given
+func (o *CreateServiceCredentialsUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CreateServiceCredentialsUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /content/api/vcf/{integrationId}/domain/{domainId}/service-accounts][%d] createServiceCredentialsUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *CreateServiceCredentialsUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /content/api/vcf/{integrationId}/domain/{domainId}/service-accounts][%d] createServiceCredentialsUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *CreateServiceCredentialsUsingPOSTOK) GetPayload() *models.VcfServiceCredentialCreationResponse {
 	return o.Payload
 }
@@ -89,7 +120,8 @@ func NewCreateServiceCredentialsUsingPOSTBadRequest() *CreateServiceCredentialsU
 	return &CreateServiceCredentialsUsingPOSTBadRequest{}
 }
 
-/* CreateServiceCredentialsUsingPOSTBadRequest describes a response with status code 400, with default header values.
+/*
+CreateServiceCredentialsUsingPOSTBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -97,9 +129,39 @@ type CreateServiceCredentialsUsingPOSTBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this create service credentials using p o s t bad request response has a 2xx status code
+func (o *CreateServiceCredentialsUsingPOSTBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create service credentials using p o s t bad request response has a 3xx status code
+func (o *CreateServiceCredentialsUsingPOSTBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create service credentials using p o s t bad request response has a 4xx status code
+func (o *CreateServiceCredentialsUsingPOSTBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create service credentials using p o s t bad request response has a 5xx status code
+func (o *CreateServiceCredentialsUsingPOSTBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create service credentials using p o s t bad request response a status code equal to that given
+func (o *CreateServiceCredentialsUsingPOSTBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CreateServiceCredentialsUsingPOSTBadRequest) Error() string {
 	return fmt.Sprintf("[POST /content/api/vcf/{integrationId}/domain/{domainId}/service-accounts][%d] createServiceCredentialsUsingPOSTBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CreateServiceCredentialsUsingPOSTBadRequest) String() string {
+	return fmt.Sprintf("[POST /content/api/vcf/{integrationId}/domain/{domainId}/service-accounts][%d] createServiceCredentialsUsingPOSTBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CreateServiceCredentialsUsingPOSTBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -121,14 +183,44 @@ func NewCreateServiceCredentialsUsingPOSTUnauthorized() *CreateServiceCredential
 	return &CreateServiceCredentialsUsingPOSTUnauthorized{}
 }
 
-/* CreateServiceCredentialsUsingPOSTUnauthorized describes a response with status code 401, with default header values.
+/*
+CreateServiceCredentialsUsingPOSTUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type CreateServiceCredentialsUsingPOSTUnauthorized struct {
 }
 
+// IsSuccess returns true when this create service credentials using p o s t unauthorized response has a 2xx status code
+func (o *CreateServiceCredentialsUsingPOSTUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create service credentials using p o s t unauthorized response has a 3xx status code
+func (o *CreateServiceCredentialsUsingPOSTUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create service credentials using p o s t unauthorized response has a 4xx status code
+func (o *CreateServiceCredentialsUsingPOSTUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create service credentials using p o s t unauthorized response has a 5xx status code
+func (o *CreateServiceCredentialsUsingPOSTUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create service credentials using p o s t unauthorized response a status code equal to that given
+func (o *CreateServiceCredentialsUsingPOSTUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CreateServiceCredentialsUsingPOSTUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /content/api/vcf/{integrationId}/domain/{domainId}/service-accounts][%d] createServiceCredentialsUsingPOSTUnauthorized ", 401)
+}
+
+func (o *CreateServiceCredentialsUsingPOSTUnauthorized) String() string {
 	return fmt.Sprintf("[POST /content/api/vcf/{integrationId}/domain/{domainId}/service-accounts][%d] createServiceCredentialsUsingPOSTUnauthorized ", 401)
 }
 
@@ -142,14 +234,44 @@ func NewCreateServiceCredentialsUsingPOSTForbidden() *CreateServiceCredentialsUs
 	return &CreateServiceCredentialsUsingPOSTForbidden{}
 }
 
-/* CreateServiceCredentialsUsingPOSTForbidden describes a response with status code 403, with default header values.
+/*
+CreateServiceCredentialsUsingPOSTForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type CreateServiceCredentialsUsingPOSTForbidden struct {
 }
 
+// IsSuccess returns true when this create service credentials using p o s t forbidden response has a 2xx status code
+func (o *CreateServiceCredentialsUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create service credentials using p o s t forbidden response has a 3xx status code
+func (o *CreateServiceCredentialsUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create service credentials using p o s t forbidden response has a 4xx status code
+func (o *CreateServiceCredentialsUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create service credentials using p o s t forbidden response has a 5xx status code
+func (o *CreateServiceCredentialsUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create service credentials using p o s t forbidden response a status code equal to that given
+func (o *CreateServiceCredentialsUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CreateServiceCredentialsUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /content/api/vcf/{integrationId}/domain/{domainId}/service-accounts][%d] createServiceCredentialsUsingPOSTForbidden ", 403)
+}
+
+func (o *CreateServiceCredentialsUsingPOSTForbidden) String() string {
 	return fmt.Sprintf("[POST /content/api/vcf/{integrationId}/domain/{domainId}/service-accounts][%d] createServiceCredentialsUsingPOSTForbidden ", 403)
 }
 

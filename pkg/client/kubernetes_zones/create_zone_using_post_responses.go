@@ -29,6 +29,12 @@ func (o *CreateZoneUsingPOSTReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return result, nil
+	case 403:
+		result := NewCreateZoneUsingPOSTForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -39,7 +45,8 @@ func NewCreateZoneUsingPOSTOK() *CreateZoneUsingPOSTOK {
 	return &CreateZoneUsingPOSTOK{}
 }
 
-/* CreateZoneUsingPOSTOK describes a response with status code 200, with default header values.
+/*
+CreateZoneUsingPOSTOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -47,9 +54,39 @@ type CreateZoneUsingPOSTOK struct {
 	Payload *models.K8SZone
 }
 
+// IsSuccess returns true when this create zone using p o s t o k response has a 2xx status code
+func (o *CreateZoneUsingPOSTOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this create zone using p o s t o k response has a 3xx status code
+func (o *CreateZoneUsingPOSTOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create zone using p o s t o k response has a 4xx status code
+func (o *CreateZoneUsingPOSTOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this create zone using p o s t o k response has a 5xx status code
+func (o *CreateZoneUsingPOSTOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create zone using p o s t o k response a status code equal to that given
+func (o *CreateZoneUsingPOSTOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CreateZoneUsingPOSTOK) Error() string {
 	return fmt.Sprintf("[POST /cmx/api/resources/k8s-zones][%d] createZoneUsingPOSTOK  %+v", 200, o.Payload)
 }
+
+func (o *CreateZoneUsingPOSTOK) String() string {
+	return fmt.Sprintf("[POST /cmx/api/resources/k8s-zones][%d] createZoneUsingPOSTOK  %+v", 200, o.Payload)
+}
+
 func (o *CreateZoneUsingPOSTOK) GetPayload() *models.K8SZone {
 	return o.Payload
 }
@@ -62,6 +99,57 @@ func (o *CreateZoneUsingPOSTOK) readResponse(response runtime.ClientResponse, co
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewCreateZoneUsingPOSTForbidden creates a CreateZoneUsingPOSTForbidden with default headers values
+func NewCreateZoneUsingPOSTForbidden() *CreateZoneUsingPOSTForbidden {
+	return &CreateZoneUsingPOSTForbidden{}
+}
+
+/*
+CreateZoneUsingPOSTForbidden describes a response with status code 403, with default header values.
+
+Forbidden, the user lacks permissions
+*/
+type CreateZoneUsingPOSTForbidden struct {
+}
+
+// IsSuccess returns true when this create zone using p o s t forbidden response has a 2xx status code
+func (o *CreateZoneUsingPOSTForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this create zone using p o s t forbidden response has a 3xx status code
+func (o *CreateZoneUsingPOSTForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this create zone using p o s t forbidden response has a 4xx status code
+func (o *CreateZoneUsingPOSTForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this create zone using p o s t forbidden response has a 5xx status code
+func (o *CreateZoneUsingPOSTForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this create zone using p o s t forbidden response a status code equal to that given
+func (o *CreateZoneUsingPOSTForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *CreateZoneUsingPOSTForbidden) Error() string {
+	return fmt.Sprintf("[POST /cmx/api/resources/k8s-zones][%d] createZoneUsingPOSTForbidden ", 403)
+}
+
+func (o *CreateZoneUsingPOSTForbidden) String() string {
+	return fmt.Sprintf("[POST /cmx/api/resources/k8s-zones][%d] createZoneUsingPOSTForbidden ", 403)
+}
+
+func (o *CreateZoneUsingPOSTForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

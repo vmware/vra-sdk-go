@@ -51,7 +51,8 @@ func NewReconfigureSecurityGroupAccepted() *ReconfigureSecurityGroupAccepted {
 	return &ReconfigureSecurityGroupAccepted{}
 }
 
-/* ReconfigureSecurityGroupAccepted describes a response with status code 202, with default header values.
+/*
+ReconfigureSecurityGroupAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type ReconfigureSecurityGroupAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this reconfigure security group accepted response has a 2xx status code
+func (o *ReconfigureSecurityGroupAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this reconfigure security group accepted response has a 3xx status code
+func (o *ReconfigureSecurityGroupAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this reconfigure security group accepted response has a 4xx status code
+func (o *ReconfigureSecurityGroupAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this reconfigure security group accepted response has a 5xx status code
+func (o *ReconfigureSecurityGroupAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this reconfigure security group accepted response a status code equal to that given
+func (o *ReconfigureSecurityGroupAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *ReconfigureSecurityGroupAccepted) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/security-groups/{id}/operations/reconfigure][%d] reconfigureSecurityGroupAccepted  %+v", 202, o.Payload)
 }
+
+func (o *ReconfigureSecurityGroupAccepted) String() string {
+	return fmt.Sprintf("[POST /iaas/api/security-groups/{id}/operations/reconfigure][%d] reconfigureSecurityGroupAccepted  %+v", 202, o.Payload)
+}
+
 func (o *ReconfigureSecurityGroupAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewReconfigureSecurityGroupBadRequest() *ReconfigureSecurityGroupBadRequest
 	return &ReconfigureSecurityGroupBadRequest{}
 }
 
-/* ReconfigureSecurityGroupBadRequest describes a response with status code 400, with default header values.
+/*
+ReconfigureSecurityGroupBadRequest describes a response with status code 400, with default header values.
 
 Reconfigure is not supported for 'existing' type of security group.
 */
@@ -91,9 +123,39 @@ type ReconfigureSecurityGroupBadRequest struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this reconfigure security group bad request response has a 2xx status code
+func (o *ReconfigureSecurityGroupBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this reconfigure security group bad request response has a 3xx status code
+func (o *ReconfigureSecurityGroupBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this reconfigure security group bad request response has a 4xx status code
+func (o *ReconfigureSecurityGroupBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this reconfigure security group bad request response has a 5xx status code
+func (o *ReconfigureSecurityGroupBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this reconfigure security group bad request response a status code equal to that given
+func (o *ReconfigureSecurityGroupBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ReconfigureSecurityGroupBadRequest) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/security-groups/{id}/operations/reconfigure][%d] reconfigureSecurityGroupBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ReconfigureSecurityGroupBadRequest) String() string {
+	return fmt.Sprintf("[POST /iaas/api/security-groups/{id}/operations/reconfigure][%d] reconfigureSecurityGroupBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ReconfigureSecurityGroupBadRequest) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewReconfigureSecurityGroupForbidden() *ReconfigureSecurityGroupForbidden {
 	return &ReconfigureSecurityGroupForbidden{}
 }
 
-/* ReconfigureSecurityGroupForbidden describes a response with status code 403, with default header values.
+/*
+ReconfigureSecurityGroupForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -123,9 +186,39 @@ type ReconfigureSecurityGroupForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this reconfigure security group forbidden response has a 2xx status code
+func (o *ReconfigureSecurityGroupForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this reconfigure security group forbidden response has a 3xx status code
+func (o *ReconfigureSecurityGroupForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this reconfigure security group forbidden response has a 4xx status code
+func (o *ReconfigureSecurityGroupForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this reconfigure security group forbidden response has a 5xx status code
+func (o *ReconfigureSecurityGroupForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this reconfigure security group forbidden response a status code equal to that given
+func (o *ReconfigureSecurityGroupForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ReconfigureSecurityGroupForbidden) Error() string {
 	return fmt.Sprintf("[POST /iaas/api/security-groups/{id}/operations/reconfigure][%d] reconfigureSecurityGroupForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ReconfigureSecurityGroupForbidden) String() string {
+	return fmt.Sprintf("[POST /iaas/api/security-groups/{id}/operations/reconfigure][%d] reconfigureSecurityGroupForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ReconfigureSecurityGroupForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

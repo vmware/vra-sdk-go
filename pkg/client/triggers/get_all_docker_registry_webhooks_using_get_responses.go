@@ -63,7 +63,8 @@ func NewGetAllDockerRegistryWebhooksUsingGETOK() *GetAllDockerRegistryWebhooksUs
 	return &GetAllDockerRegistryWebhooksUsingGETOK{}
 }
 
-/* GetAllDockerRegistryWebhooksUsingGETOK describes a response with status code 200, with default header values.
+/*
+GetAllDockerRegistryWebhooksUsingGETOK describes a response with status code 200, with default header values.
 
 'Success' with get of Docker Registry Webhooks
 */
@@ -71,9 +72,39 @@ type GetAllDockerRegistryWebhooksUsingGETOK struct {
 	Payload models.DockerRegistryWebhooks
 }
 
+// IsSuccess returns true when this get all docker registry webhooks using g e t o k response has a 2xx status code
+func (o *GetAllDockerRegistryWebhooksUsingGETOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get all docker registry webhooks using g e t o k response has a 3xx status code
+func (o *GetAllDockerRegistryWebhooksUsingGETOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all docker registry webhooks using g e t o k response has a 4xx status code
+func (o *GetAllDockerRegistryWebhooksUsingGETOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get all docker registry webhooks using g e t o k response has a 5xx status code
+func (o *GetAllDockerRegistryWebhooksUsingGETOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all docker registry webhooks using g e t o k response a status code equal to that given
+func (o *GetAllDockerRegistryWebhooksUsingGETOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetAllDockerRegistryWebhooksUsingGETOK) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/registry-webhooks][%d] getAllDockerRegistryWebhooksUsingGETOK  %+v", 200, o.Payload)
 }
+
+func (o *GetAllDockerRegistryWebhooksUsingGETOK) String() string {
+	return fmt.Sprintf("[GET /codestream/api/registry-webhooks][%d] getAllDockerRegistryWebhooksUsingGETOK  %+v", 200, o.Payload)
+}
+
 func (o *GetAllDockerRegistryWebhooksUsingGETOK) GetPayload() models.DockerRegistryWebhooks {
 	return o.Payload
 }
@@ -95,14 +126,44 @@ func NewGetAllDockerRegistryWebhooksUsingGETUnauthorized() *GetAllDockerRegistry
 	return &GetAllDockerRegistryWebhooksUsingGETUnauthorized{}
 }
 
-/* GetAllDockerRegistryWebhooksUsingGETUnauthorized describes a response with status code 401, with default header values.
+/*
+GetAllDockerRegistryWebhooksUsingGETUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized Request
 */
 type GetAllDockerRegistryWebhooksUsingGETUnauthorized struct {
 }
 
+// IsSuccess returns true when this get all docker registry webhooks using g e t unauthorized response has a 2xx status code
+func (o *GetAllDockerRegistryWebhooksUsingGETUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get all docker registry webhooks using g e t unauthorized response has a 3xx status code
+func (o *GetAllDockerRegistryWebhooksUsingGETUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all docker registry webhooks using g e t unauthorized response has a 4xx status code
+func (o *GetAllDockerRegistryWebhooksUsingGETUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get all docker registry webhooks using g e t unauthorized response has a 5xx status code
+func (o *GetAllDockerRegistryWebhooksUsingGETUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all docker registry webhooks using g e t unauthorized response a status code equal to that given
+func (o *GetAllDockerRegistryWebhooksUsingGETUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GetAllDockerRegistryWebhooksUsingGETUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/registry-webhooks][%d] getAllDockerRegistryWebhooksUsingGETUnauthorized ", 401)
+}
+
+func (o *GetAllDockerRegistryWebhooksUsingGETUnauthorized) String() string {
 	return fmt.Sprintf("[GET /codestream/api/registry-webhooks][%d] getAllDockerRegistryWebhooksUsingGETUnauthorized ", 401)
 }
 
@@ -116,14 +177,44 @@ func NewGetAllDockerRegistryWebhooksUsingGETForbidden() *GetAllDockerRegistryWeb
 	return &GetAllDockerRegistryWebhooksUsingGETForbidden{}
 }
 
-/* GetAllDockerRegistryWebhooksUsingGETForbidden describes a response with status code 403, with default header values.
+/*
+GetAllDockerRegistryWebhooksUsingGETForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
 type GetAllDockerRegistryWebhooksUsingGETForbidden struct {
 }
 
+// IsSuccess returns true when this get all docker registry webhooks using g e t forbidden response has a 2xx status code
+func (o *GetAllDockerRegistryWebhooksUsingGETForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get all docker registry webhooks using g e t forbidden response has a 3xx status code
+func (o *GetAllDockerRegistryWebhooksUsingGETForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all docker registry webhooks using g e t forbidden response has a 4xx status code
+func (o *GetAllDockerRegistryWebhooksUsingGETForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get all docker registry webhooks using g e t forbidden response has a 5xx status code
+func (o *GetAllDockerRegistryWebhooksUsingGETForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all docker registry webhooks using g e t forbidden response a status code equal to that given
+func (o *GetAllDockerRegistryWebhooksUsingGETForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GetAllDockerRegistryWebhooksUsingGETForbidden) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/registry-webhooks][%d] getAllDockerRegistryWebhooksUsingGETForbidden ", 403)
+}
+
+func (o *GetAllDockerRegistryWebhooksUsingGETForbidden) String() string {
 	return fmt.Sprintf("[GET /codestream/api/registry-webhooks][%d] getAllDockerRegistryWebhooksUsingGETForbidden ", 403)
 }
 
@@ -137,7 +228,8 @@ func NewGetAllDockerRegistryWebhooksUsingGETNotFound() *GetAllDockerRegistryWebh
 	return &GetAllDockerRegistryWebhooksUsingGETNotFound{}
 }
 
-/* GetAllDockerRegistryWebhooksUsingGETNotFound describes a response with status code 404, with default header values.
+/*
+GetAllDockerRegistryWebhooksUsingGETNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -145,9 +237,39 @@ type GetAllDockerRegistryWebhooksUsingGETNotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this get all docker registry webhooks using g e t not found response has a 2xx status code
+func (o *GetAllDockerRegistryWebhooksUsingGETNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get all docker registry webhooks using g e t not found response has a 3xx status code
+func (o *GetAllDockerRegistryWebhooksUsingGETNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all docker registry webhooks using g e t not found response has a 4xx status code
+func (o *GetAllDockerRegistryWebhooksUsingGETNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this get all docker registry webhooks using g e t not found response has a 5xx status code
+func (o *GetAllDockerRegistryWebhooksUsingGETNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get all docker registry webhooks using g e t not found response a status code equal to that given
+func (o *GetAllDockerRegistryWebhooksUsingGETNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GetAllDockerRegistryWebhooksUsingGETNotFound) Error() string {
 	return fmt.Sprintf("[GET /codestream/api/registry-webhooks][%d] getAllDockerRegistryWebhooksUsingGETNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GetAllDockerRegistryWebhooksUsingGETNotFound) String() string {
+	return fmt.Sprintf("[GET /codestream/api/registry-webhooks][%d] getAllDockerRegistryWebhooksUsingGETNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GetAllDockerRegistryWebhooksUsingGETNotFound) GetPayload() *models.Error {
 	return o.Payload
 }
@@ -169,14 +291,44 @@ func NewGetAllDockerRegistryWebhooksUsingGETInternalServerError() *GetAllDockerR
 	return &GetAllDockerRegistryWebhooksUsingGETInternalServerError{}
 }
 
-/* GetAllDockerRegistryWebhooksUsingGETInternalServerError describes a response with status code 500, with default header values.
+/*
+GetAllDockerRegistryWebhooksUsingGETInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type GetAllDockerRegistryWebhooksUsingGETInternalServerError struct {
 }
 
+// IsSuccess returns true when this get all docker registry webhooks using g e t internal server error response has a 2xx status code
+func (o *GetAllDockerRegistryWebhooksUsingGETInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this get all docker registry webhooks using g e t internal server error response has a 3xx status code
+func (o *GetAllDockerRegistryWebhooksUsingGETInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get all docker registry webhooks using g e t internal server error response has a 4xx status code
+func (o *GetAllDockerRegistryWebhooksUsingGETInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get all docker registry webhooks using g e t internal server error response has a 5xx status code
+func (o *GetAllDockerRegistryWebhooksUsingGETInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this get all docker registry webhooks using g e t internal server error response a status code equal to that given
+func (o *GetAllDockerRegistryWebhooksUsingGETInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GetAllDockerRegistryWebhooksUsingGETInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /codestream/api/registry-webhooks][%d] getAllDockerRegistryWebhooksUsingGETInternalServerError ", 500)
+}
+
+func (o *GetAllDockerRegistryWebhooksUsingGETInternalServerError) String() string {
 	return fmt.Sprintf("[GET /codestream/api/registry-webhooks][%d] getAllDockerRegistryWebhooksUsingGETInternalServerError ", 500)
 }
 

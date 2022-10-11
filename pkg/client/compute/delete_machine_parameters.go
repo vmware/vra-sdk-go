@@ -53,10 +53,12 @@ func NewDeleteMachineParamsWithHTTPClient(client *http.Client) *DeleteMachinePar
 	}
 }
 
-/* DeleteMachineParams contains all the parameters to send to the API endpoint
-   for the delete machine operation.
+/*
+DeleteMachineParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete machine operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteMachineParams struct {
 

@@ -57,14 +57,44 @@ func NewDeletePolicyUsingDELETE4OK() *DeletePolicyUsingDELETE4OK {
 	return &DeletePolicyUsingDELETE4OK{}
 }
 
-/* DeletePolicyUsingDELETE4OK describes a response with status code 200, with default header values.
+/*
+DeletePolicyUsingDELETE4OK describes a response with status code 200, with default header values.
 
 OK
 */
 type DeletePolicyUsingDELETE4OK struct {
 }
 
+// IsSuccess returns true when this delete policy using d e l e t e4 o k response has a 2xx status code
+func (o *DeletePolicyUsingDELETE4OK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete policy using d e l e t e4 o k response has a 3xx status code
+func (o *DeletePolicyUsingDELETE4OK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete policy using d e l e t e4 o k response has a 4xx status code
+func (o *DeletePolicyUsingDELETE4OK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete policy using d e l e t e4 o k response has a 5xx status code
+func (o *DeletePolicyUsingDELETE4OK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete policy using d e l e t e4 o k response a status code equal to that given
+func (o *DeletePolicyUsingDELETE4OK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeletePolicyUsingDELETE4OK) Error() string {
+	return fmt.Sprintf("[DELETE /price/api/private/pricing-cards/{id}][%d] deletePolicyUsingDELETE4OK ", 200)
+}
+
+func (o *DeletePolicyUsingDELETE4OK) String() string {
 	return fmt.Sprintf("[DELETE /price/api/private/pricing-cards/{id}][%d] deletePolicyUsingDELETE4OK ", 200)
 }
 
@@ -78,14 +108,44 @@ func NewDeletePolicyUsingDELETE4NoContent() *DeletePolicyUsingDELETE4NoContent {
 	return &DeletePolicyUsingDELETE4NoContent{}
 }
 
-/* DeletePolicyUsingDELETE4NoContent describes a response with status code 204, with default header values.
+/*
+DeletePolicyUsingDELETE4NoContent describes a response with status code 204, with default header values.
 
 No Content
 */
 type DeletePolicyUsingDELETE4NoContent struct {
 }
 
+// IsSuccess returns true when this delete policy using d e l e t e4 no content response has a 2xx status code
+func (o *DeletePolicyUsingDELETE4NoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete policy using d e l e t e4 no content response has a 3xx status code
+func (o *DeletePolicyUsingDELETE4NoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete policy using d e l e t e4 no content response has a 4xx status code
+func (o *DeletePolicyUsingDELETE4NoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete policy using d e l e t e4 no content response has a 5xx status code
+func (o *DeletePolicyUsingDELETE4NoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete policy using d e l e t e4 no content response a status code equal to that given
+func (o *DeletePolicyUsingDELETE4NoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeletePolicyUsingDELETE4NoContent) Error() string {
+	return fmt.Sprintf("[DELETE /price/api/private/pricing-cards/{id}][%d] deletePolicyUsingDELETE4NoContent ", 204)
+}
+
+func (o *DeletePolicyUsingDELETE4NoContent) String() string {
 	return fmt.Sprintf("[DELETE /price/api/private/pricing-cards/{id}][%d] deletePolicyUsingDELETE4NoContent ", 204)
 }
 
@@ -99,14 +159,44 @@ func NewDeletePolicyUsingDELETE4Unauthorized() *DeletePolicyUsingDELETE4Unauthor
 	return &DeletePolicyUsingDELETE4Unauthorized{}
 }
 
-/* DeletePolicyUsingDELETE4Unauthorized describes a response with status code 401, with default header values.
+/*
+DeletePolicyUsingDELETE4Unauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
 type DeletePolicyUsingDELETE4Unauthorized struct {
 }
 
+// IsSuccess returns true when this delete policy using d e l e t e4 unauthorized response has a 2xx status code
+func (o *DeletePolicyUsingDELETE4Unauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete policy using d e l e t e4 unauthorized response has a 3xx status code
+func (o *DeletePolicyUsingDELETE4Unauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete policy using d e l e t e4 unauthorized response has a 4xx status code
+func (o *DeletePolicyUsingDELETE4Unauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete policy using d e l e t e4 unauthorized response has a 5xx status code
+func (o *DeletePolicyUsingDELETE4Unauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete policy using d e l e t e4 unauthorized response a status code equal to that given
+func (o *DeletePolicyUsingDELETE4Unauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DeletePolicyUsingDELETE4Unauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /price/api/private/pricing-cards/{id}][%d] deletePolicyUsingDELETE4Unauthorized ", 401)
+}
+
+func (o *DeletePolicyUsingDELETE4Unauthorized) String() string {
 	return fmt.Sprintf("[DELETE /price/api/private/pricing-cards/{id}][%d] deletePolicyUsingDELETE4Unauthorized ", 401)
 }
 
@@ -120,7 +210,8 @@ func NewDeletePolicyUsingDELETE4NotFound() *DeletePolicyUsingDELETE4NotFound {
 	return &DeletePolicyUsingDELETE4NotFound{}
 }
 
-/* DeletePolicyUsingDELETE4NotFound describes a response with status code 404, with default header values.
+/*
+DeletePolicyUsingDELETE4NotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -128,9 +219,39 @@ type DeletePolicyUsingDELETE4NotFound struct {
 	Payload *models.Error
 }
 
+// IsSuccess returns true when this delete policy using d e l e t e4 not found response has a 2xx status code
+func (o *DeletePolicyUsingDELETE4NotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete policy using d e l e t e4 not found response has a 3xx status code
+func (o *DeletePolicyUsingDELETE4NotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete policy using d e l e t e4 not found response has a 4xx status code
+func (o *DeletePolicyUsingDELETE4NotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete policy using d e l e t e4 not found response has a 5xx status code
+func (o *DeletePolicyUsingDELETE4NotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete policy using d e l e t e4 not found response a status code equal to that given
+func (o *DeletePolicyUsingDELETE4NotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DeletePolicyUsingDELETE4NotFound) Error() string {
 	return fmt.Sprintf("[DELETE /price/api/private/pricing-cards/{id}][%d] deletePolicyUsingDELETE4NotFound  %+v", 404, o.Payload)
 }
+
+func (o *DeletePolicyUsingDELETE4NotFound) String() string {
+	return fmt.Sprintf("[DELETE /price/api/private/pricing-cards/{id}][%d] deletePolicyUsingDELETE4NotFound  %+v", 404, o.Payload)
+}
+
 func (o *DeletePolicyUsingDELETE4NotFound) GetPayload() *models.Error {
 	return o.Payload
 }

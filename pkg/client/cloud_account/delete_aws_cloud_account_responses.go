@@ -51,7 +51,8 @@ func NewDeleteAwsCloudAccountAccepted() *DeleteAwsCloudAccountAccepted {
 	return &DeleteAwsCloudAccountAccepted{}
 }
 
-/* DeleteAwsCloudAccountAccepted describes a response with status code 202, with default header values.
+/*
+DeleteAwsCloudAccountAccepted describes a response with status code 202, with default header values.
 
 successful operation
 */
@@ -59,9 +60,39 @@ type DeleteAwsCloudAccountAccepted struct {
 	Payload *models.RequestTracker
 }
 
+// IsSuccess returns true when this delete aws cloud account accepted response has a 2xx status code
+func (o *DeleteAwsCloudAccountAccepted) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete aws cloud account accepted response has a 3xx status code
+func (o *DeleteAwsCloudAccountAccepted) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete aws cloud account accepted response has a 4xx status code
+func (o *DeleteAwsCloudAccountAccepted) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete aws cloud account accepted response has a 5xx status code
+func (o *DeleteAwsCloudAccountAccepted) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete aws cloud account accepted response a status code equal to that given
+func (o *DeleteAwsCloudAccountAccepted) IsCode(code int) bool {
+	return code == 202
+}
+
 func (o *DeleteAwsCloudAccountAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-aws/{id}][%d] deleteAwsCloudAccountAccepted  %+v", 202, o.Payload)
 }
+
+func (o *DeleteAwsCloudAccountAccepted) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-aws/{id}][%d] deleteAwsCloudAccountAccepted  %+v", 202, o.Payload)
+}
+
 func (o *DeleteAwsCloudAccountAccepted) GetPayload() *models.RequestTracker {
 	return o.Payload
 }
@@ -83,14 +114,44 @@ func NewDeleteAwsCloudAccountNoContent() *DeleteAwsCloudAccountNoContent {
 	return &DeleteAwsCloudAccountNoContent{}
 }
 
-/* DeleteAwsCloudAccountNoContent describes a response with status code 204, with default header values.
+/*
+DeleteAwsCloudAccountNoContent describes a response with status code 204, with default header values.
 
 No Content
 */
 type DeleteAwsCloudAccountNoContent struct {
 }
 
+// IsSuccess returns true when this delete aws cloud account no content response has a 2xx status code
+func (o *DeleteAwsCloudAccountNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete aws cloud account no content response has a 3xx status code
+func (o *DeleteAwsCloudAccountNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete aws cloud account no content response has a 4xx status code
+func (o *DeleteAwsCloudAccountNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete aws cloud account no content response has a 5xx status code
+func (o *DeleteAwsCloudAccountNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete aws cloud account no content response a status code equal to that given
+func (o *DeleteAwsCloudAccountNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteAwsCloudAccountNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-aws/{id}][%d] deleteAwsCloudAccountNoContent ", 204)
+}
+
+func (o *DeleteAwsCloudAccountNoContent) String() string {
 	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-aws/{id}][%d] deleteAwsCloudAccountNoContent ", 204)
 }
 
@@ -104,7 +165,8 @@ func NewDeleteAwsCloudAccountForbidden() *DeleteAwsCloudAccountForbidden {
 	return &DeleteAwsCloudAccountForbidden{}
 }
 
-/* DeleteAwsCloudAccountForbidden describes a response with status code 403, with default header values.
+/*
+DeleteAwsCloudAccountForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -112,9 +174,39 @@ type DeleteAwsCloudAccountForbidden struct {
 	Payload *models.ServiceErrorResponse
 }
 
+// IsSuccess returns true when this delete aws cloud account forbidden response has a 2xx status code
+func (o *DeleteAwsCloudAccountForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete aws cloud account forbidden response has a 3xx status code
+func (o *DeleteAwsCloudAccountForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete aws cloud account forbidden response has a 4xx status code
+func (o *DeleteAwsCloudAccountForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete aws cloud account forbidden response has a 5xx status code
+func (o *DeleteAwsCloudAccountForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete aws cloud account forbidden response a status code equal to that given
+func (o *DeleteAwsCloudAccountForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DeleteAwsCloudAccountForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-aws/{id}][%d] deleteAwsCloudAccountForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DeleteAwsCloudAccountForbidden) String() string {
+	return fmt.Sprintf("[DELETE /iaas/api/cloud-accounts-aws/{id}][%d] deleteAwsCloudAccountForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DeleteAwsCloudAccountForbidden) GetPayload() *models.ServiceErrorResponse {
 	return o.Payload
 }

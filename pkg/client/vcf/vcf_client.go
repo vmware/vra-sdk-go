@@ -42,13 +42,13 @@ type ClientService interface {
 
 	GetDomainsUsingGET(params *GetDomainsUsingGETParams, opts ...ClientOption) (*GetDomainsUsingGETOK, error)
 
-	PatchServiceAccountUsingPATCH(params *PatchServiceAccountUsingPATCHParams, opts ...ClientOption) (*PatchServiceAccountUsingPATCHOK, error)
+	PatchServiceAccountUsingPATCH(params *PatchServiceAccountUsingPATCHParams, opts ...ClientOption) (*PatchServiceAccountUsingPATCHOK, *PatchServiceAccountUsingPATCHNoContent, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  CreateServiceCredentialsUsingPOST creates service credentials
+CreateServiceCredentialsUsingPOST creates service credentials
 */
 func (a *Client) CreateServiceCredentialsUsingPOST(params *CreateServiceCredentialsUsingPOSTParams, opts ...ClientOption) (*CreateServiceCredentialsUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -86,7 +86,7 @@ func (a *Client) CreateServiceCredentialsUsingPOST(params *CreateServiceCredenti
 }
 
 /*
-  DeleteServiceAccountUsingDELETE deletes a service account
+DeleteServiceAccountUsingDELETE deletes a service account
 */
 func (a *Client) DeleteServiceAccountUsingDELETE(params *DeleteServiceAccountUsingDELETEParams, opts ...ClientOption) (*DeleteServiceAccountUsingDELETENoContent, error) {
 	// TODO: Validate the params before sending
@@ -124,7 +124,7 @@ func (a *Client) DeleteServiceAccountUsingDELETE(params *DeleteServiceAccountUsi
 }
 
 /*
-  DeleteServiceCredentialUsingDELETE deletes a service credential
+DeleteServiceCredentialUsingDELETE deletes a service credential
 */
 func (a *Client) DeleteServiceCredentialUsingDELETE(params *DeleteServiceCredentialUsingDELETEParams, opts ...ClientOption) (*DeleteServiceCredentialUsingDELETENoContent, error) {
 	// TODO: Validate the params before sending
@@ -162,7 +162,7 @@ func (a *Client) DeleteServiceCredentialUsingDELETE(params *DeleteServiceCredent
 }
 
 /*
-  EnumerateDomainsUsingPOST enumerates domains
+EnumerateDomainsUsingPOST enumerates domains
 */
 func (a *Client) EnumerateDomainsUsingPOST(params *EnumerateDomainsUsingPOSTParams, opts ...ClientOption) (*EnumerateDomainsUsingPOSTOK, error) {
 	// TODO: Validate the params before sending
@@ -200,7 +200,7 @@ func (a *Client) EnumerateDomainsUsingPOST(params *EnumerateDomainsUsingPOSTPara
 }
 
 /*
-  GetDomainUsingGET gets domain details
+GetDomainUsingGET gets domain details
 */
 func (a *Client) GetDomainUsingGET(params *GetDomainUsingGETParams, opts ...ClientOption) (*GetDomainUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -238,7 +238,7 @@ func (a *Client) GetDomainUsingGET(params *GetDomainUsingGETParams, opts ...Clie
 }
 
 /*
-  GetDomainsUsingGET gets domains
+GetDomainsUsingGET gets domains
 */
 func (a *Client) GetDomainsUsingGET(params *GetDomainsUsingGETParams, opts ...ClientOption) (*GetDomainsUsingGETOK, error) {
 	// TODO: Validate the params before sending
@@ -276,9 +276,9 @@ func (a *Client) GetDomainsUsingGET(params *GetDomainsUsingGETParams, opts ...Cl
 }
 
 /*
-  PatchServiceAccountUsingPATCH patches service account
+PatchServiceAccountUsingPATCH patches a service account
 */
-func (a *Client) PatchServiceAccountUsingPATCH(params *PatchServiceAccountUsingPATCHParams, opts ...ClientOption) (*PatchServiceAccountUsingPATCHOK, error) {
+func (a *Client) PatchServiceAccountUsingPATCH(params *PatchServiceAccountUsingPATCHParams, opts ...ClientOption) (*PatchServiceAccountUsingPATCHOK, *PatchServiceAccountUsingPATCHNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPatchServiceAccountUsingPATCHParams()
@@ -301,15 +301,16 @@ func (a *Client) PatchServiceAccountUsingPATCH(params *PatchServiceAccountUsingP
 
 	result, err := a.transport.Submit(op)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	success, ok := result.(*PatchServiceAccountUsingPATCHOK)
-	if ok {
-		return success, nil
+	switch value := result.(type) {
+	case *PatchServiceAccountUsingPATCHOK:
+		return value, nil, nil
+	case *PatchServiceAccountUsingPATCHNoContent:
+		return nil, value, nil
 	}
-	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchServiceAccountUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for vcf: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
