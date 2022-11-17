@@ -31,6 +31,9 @@ type BlueprintContentSourceConfig struct {
 
 	// repository
 	Repository string `json:"repository,omitempty"`
+
+	// request scope org
+	RequestScopeOrg bool `json:"requestScopeOrg,omitempty"`
 }
 
 // Validate validates this blueprint content source config

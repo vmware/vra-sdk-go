@@ -13,6 +13,10 @@
     "basePath": "/",
     "tags": [
         {
+            "name": "Capability Tags",
+            "description": "Tag Controller"
+        },
+        {
             "name": "Cluster Plans",
             "description": "Cluster Plan Controller"
         },
@@ -63,6 +67,10 @@
         {
             "name": "TMC Endpoints",
             "description": "TMC Endpoint Controller"
+        },
+        {
+            "name": "vCenter Endpoints",
+            "description": "Vcenter Endpoint Controller"
         },
         {
             "name": "vSphere Endpoints",
@@ -4322,6 +4330,82 @@
                 "deprecated": false
             }
         },
+        "/cmx/api/resources/tags": {
+            "get": {
+                "tags": [
+                    "Capability Tags"
+                ],
+                "summary": "Search for capability tags",
+                "description": "Search for capability tags using an OData filter. For example, use the following filter to retrieve the tag 'location:somewhere': $filter=(key eq '*location*')",
+                "operationId": "searchTagsUsingGET",
+                "parameters": [
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "pageNumber",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "paged",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "sort.sorted",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "sort.unsorted",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "unpaged",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfTagState"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden, the user lacks permissions"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
         "/cmx/api/resources/tmc/endpoints/clustergroups": {
             "get": {
                 "tags": [
@@ -4711,14 +4795,97 @@
                 "deprecated": false
             }
         },
+        "/cmx/api/resources/vcenter/endpoints/{endpointSelfLinkId}/storage-classes": {
+            "get": {
+                "tags": [
+                    "vCenter Endpoints"
+                ],
+                "summary": "Get all storage classes identifiers for a vCenter endpoint",
+                "description": "Get all storage classes defined in all managed supervisor clusters in a particular vCenter instance. vCenter instance is identified by endpoint SelfLink Id",
+                "operationId": "getStorageClassesUsingGET",
+                "parameters": [
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "pageNumber",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "paged",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "sort.sorted",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "sort.unsorted",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "unpaged",
+                        "in": "query",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "endpointSelfLinkId",
+                        "in": "path",
+                        "description": "endpointSelfLinkId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/PageOfStoragePolicy"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden, the user lacks permissions"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "deprecated": false
+            }
+        },
         "/cmx/api/resources/vsphere/endpoints/{endpointSelfLinkId}/storage-classes": {
             "get": {
                 "tags": [
                     "vSphere Endpoints"
                 ],
                 "summary": "Get all storage classes identifiers for a vSphere endpoint",
-                "description": "Get all storage classes defined in all managed supervisor clusters in a particular vSphere instance. vSphere instance is identified by endpoint SelfLink Id",
-                "operationId": "getStorageClassesUsingGET",
+                "description": "Get all storage classes defined in all managed supervisor clusters in a particular vSphere instance. vSphere instance is identified by endpoint SelfLink Id. This method is Deprecated. Instead, use /storage-classes from Vcenter Endpoints",
+                "operationId": "getStorageClassesUsingGET_1",
                 "parameters": [
                     {
                         "name": "endpointSelfLinkId",
@@ -4749,7 +4916,7 @@
                         ]
                     }
                 ],
-                "deprecated": false
+                "deprecated": true
             }
         },
         "/cmx/api/resources/vsphere/endpoints/{endpointSelfLinkId}/tanzu-kubernetes-releases": {
@@ -6700,6 +6867,53 @@
             },
             "title": "PageOfK8SZone"
         },
+        "PageOfStoragePolicy": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/StoragePolicy"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "pageable": {
+                    "$ref": "#/definitions/Pageable"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfStoragePolicy"
+        },
         "PageOfSupervisorCluster": {
             "type": "object",
             "properties": {
@@ -6793,6 +7007,53 @@
                 }
             },
             "title": "PageOfSupervisorNamespace"
+        },
+        "PageOfTagState": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TagState"
+                    }
+                },
+                "empty": {
+                    "type": "boolean"
+                },
+                "first": {
+                    "type": "boolean"
+                },
+                "last": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfElements": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "pageable": {
+                    "$ref": "#/definitions/Pageable"
+                },
+                "size": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sort": {
+                    "$ref": "#/definitions/Sort"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "PageOfTagState"
         },
         "PageOfWorkspace": {
             "type": "object",
@@ -7487,6 +7748,15 @@
             },
             "title": "StackTraceElement"
         },
+        "StoragePolicy": {
+            "type": "object",
+            "properties": {
+                "kubernetesId": {
+                    "type": "string"
+                }
+            },
+            "title": "StoragePolicy"
+        },
         "StorageSpec": {
             "type": "object",
             "properties": {
@@ -7548,6 +7818,9 @@
                 },
                 "registered": {
                     "type": "boolean"
+                },
+                "softwareVersion": {
+                    "type": "string"
                 },
                 "status": {
                     "type": "string",

@@ -51,7 +51,7 @@ GetConfigurationPropertyOK describes a response with status code 200, with defau
 successful operation
 */
 type GetConfigurationPropertyOK struct {
-	Payload *models.ConfigurationProperty
+	Payload *models.ConfigurationPropertyResult
 }
 
 // IsSuccess returns true when this get configuration property o k response has a 2xx status code
@@ -87,13 +87,13 @@ func (o *GetConfigurationPropertyOK) String() string {
 	return fmt.Sprintf("[GET /iaas/api/configuration-properties/{id}][%d] getConfigurationPropertyOK  %+v", 200, o.Payload)
 }
 
-func (o *GetConfigurationPropertyOK) GetPayload() *models.ConfigurationProperty {
+func (o *GetConfigurationPropertyOK) GetPayload() *models.ConfigurationPropertyResult {
 	return o.Payload
 }
 
 func (o *GetConfigurationPropertyOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ConfigurationProperty)
+	o.Payload = new(models.ConfigurationPropertyResult)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

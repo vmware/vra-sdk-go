@@ -41,6 +41,10 @@ type Execution interface {
 	ExecutedBy() string
 	SetExecutedBy(string)
 
+	// global
+	Global() bool
+	SetGlobal(bool)
+
 	// input meta
 	InputMeta() map[string]PropertyMetaData
 	SetInputMeta(map[string]PropertyMetaData)
@@ -162,8 +166,9 @@ type Execution interface {
 	Stages() map[string]StageExecution
 	SetStages(map[string]StageExecution)
 
-	Starred() PipelineStarredProperty
-	SetStarred(PipelineStarredProperty)
+	// starred
+	Starred() *PipelineStarredProperty
+	SetStarred(*PipelineStarredProperty)
 
 	// status
 	// Enum: [NOT_STARTED STARTED RUNNING CANCELING WAITING RESUMING PAUSING PAUSED CANCELED COMPLETED FAILED SKIPPED QUEUED FAILED_CONTINUE ROLLING_BACK ROLLBACK_FAILED PREPARING_WORKSPACE ROLLBACK_COMPLETED]
@@ -208,6 +213,8 @@ type execution struct {
 	durationInMicrosField int64
 
 	executedByField string
+
+	globalField bool
 
 	inputMetaField map[string]PropertyMetaData
 
@@ -265,7 +272,7 @@ type execution struct {
 
 	stagesField map[string]StageExecution
 
-	starredField PipelineStarredProperty
+	starredField *PipelineStarredProperty
 
 	statusField string
 
@@ -310,6 +317,16 @@ func (m *execution) ExecutedBy() string {
 // SetExecutedBy sets the executed by of this polymorphic type
 func (m *execution) SetExecutedBy(val string) {
 	m.executedByField = val
+}
+
+// Global gets the global of this polymorphic type
+func (m *execution) Global() bool {
+	return m.globalField
+}
+
+// SetGlobal sets the global of this polymorphic type
+func (m *execution) SetGlobal(val bool) {
+	m.globalField = val
 }
 
 // InputMeta gets the input meta of this polymorphic type
@@ -593,12 +610,12 @@ func (m *execution) SetStages(val map[string]StageExecution) {
 }
 
 // Starred gets the starred of this polymorphic type
-func (m *execution) Starred() PipelineStarredProperty {
+func (m *execution) Starred() *PipelineStarredProperty {
 	return m.starredField
 }
 
 // SetStarred sets the starred of this polymorphic type
-func (m *execution) SetStarred(val PipelineStarredProperty) {
+func (m *execution) SetStarred(val *PipelineStarredProperty) {
 	m.starredField = val
 }
 
@@ -896,13 +913,15 @@ func (m *execution) validateStarred(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if err := m.Starred().Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("starred")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("starred")
+	if m.Starred() != nil {
+		if err := m.Starred().Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("starred")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("starred")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -1123,13 +1142,15 @@ func (m *execution) contextValidateStages(ctx context.Context, formats strfmt.Re
 
 func (m *execution) contextValidateStarred(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.Starred().ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("starred")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("starred")
+	if m.Starred() != nil {
+		if err := m.Starred().ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("starred")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("starred")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil

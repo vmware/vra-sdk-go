@@ -67,17 +67,17 @@ type RevertDiskSnapshotParams struct {
 	*/
 	APIVersion *string
 
+	/* DiskID.
+
+	   The id of the Disk.
+	*/
+	DiskID string
+
 	/* ID.
 
 	   Snapshot id to revert.
 	*/
-	QueryID string
-
-	/* ID.
-
-	   The id of the Disk.
-	*/
-	PathID string
+	ID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -143,26 +143,26 @@ func (o *RevertDiskSnapshotParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
-// WithQueryID adds the id to the revert disk snapshot params
-func (o *RevertDiskSnapshotParams) WithQueryID(id string) *RevertDiskSnapshotParams {
-	o.SetQueryID(id)
+// WithDiskID adds the diskID to the revert disk snapshot params
+func (o *RevertDiskSnapshotParams) WithDiskID(diskID string) *RevertDiskSnapshotParams {
+	o.SetDiskID(diskID)
 	return o
 }
 
-// SetQueryID adds the id to the revert disk snapshot params
-func (o *RevertDiskSnapshotParams) SetQueryID(id string) {
-	o.QueryID = id
+// SetDiskID adds the diskId to the revert disk snapshot params
+func (o *RevertDiskSnapshotParams) SetDiskID(diskID string) {
+	o.DiskID = diskID
 }
 
-// WithPathID adds the id to the revert disk snapshot params
-func (o *RevertDiskSnapshotParams) WithPathID(id string) *RevertDiskSnapshotParams {
-	o.SetPathID(id)
+// WithID adds the id to the revert disk snapshot params
+func (o *RevertDiskSnapshotParams) WithID(id string) *RevertDiskSnapshotParams {
+	o.SetID(id)
 	return o
 }
 
-// SetPathID adds the id to the revert disk snapshot params
-func (o *RevertDiskSnapshotParams) SetPathID(id string) {
-	o.PathID = id
+// SetID adds the id to the revert disk snapshot params
+func (o *RevertDiskSnapshotParams) SetID(id string) {
+	o.ID = id
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -190,19 +190,19 @@ func (o *RevertDiskSnapshotParams) WriteToRequest(r runtime.ClientRequest, reg s
 		}
 	}
 
+	// path param diskId
+	if err := r.SetPathParam("diskId", o.DiskID); err != nil {
+		return err
+	}
+
 	// query param id
-	qrID := o.QueryID
+	qrID := o.ID
 	qID := qrID
 	if qID != "" {
 
 		if err := r.SetQueryParam("id", qID); err != nil {
 			return err
 		}
-	}
-
-	// path param id
-	if err := r.SetPathParam("id", o.PathID); err != nil {
-		return err
 	}
 
 	if len(res) > 0 {

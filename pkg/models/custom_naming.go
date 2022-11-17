@@ -45,9 +45,13 @@ type CustomNaming struct {
 	// Example: 42413b31-1716-477e-9a88-9dc1c3cb1cdf
 	OrgID string `json:"orgId,omitempty"`
 
-	// Email of the user that owns the entity.
+	// Email of the user or display name of the group that owns the entity.
 	// Example: csp@vmware.com
 	Owner string `json:"owner,omitempty"`
+
+	// Type of a owner(user/ad_group) that owns the entity.
+	// Example: ad_group
+	OwnerType string `json:"ownerType,omitempty"`
 
 	// Set of projects associated with custom name
 	// Example: [{\"defaultOrg\":true,\"active\":true,\"id\":\"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\"projectName\":\"string\",\"projectId\":\"string\",\"orgId\":\"string\"}]

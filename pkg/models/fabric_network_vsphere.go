@@ -68,7 +68,7 @@ type FabricNetworkVsphere struct {
 	// Example: i-cfe4-e241-e53b-756a9a2e25d2
 	ExternalID string `json:"externalId,omitempty"`
 
-	// The id of the region for which this network is defined
+	// The id of the region for which this network is defined.
 	// Example: us-east-1
 	ExternalRegionID string `json:"externalRegionId,omitempty"`
 
@@ -91,13 +91,21 @@ type FabricNetworkVsphere struct {
 	// Example: my-name
 	Name string `json:"name,omitempty"`
 
+	// The id of the network domain, that contains this fabric network.
+	// Example: 26dfa6f8-fcb7-40c2-8afe-2e069246fdeb
+	NetworkDomainID string `json:"networkDomainId,omitempty"`
+
 	// The id of the organization this entity belongs to.
 	// Example: 42413b31-1716-477e-9a88-9dc1c3cb1cdf
 	OrgID string `json:"orgId,omitempty"`
 
-	// Email of the user that owns the entity.
+	// Email of the user or display name of the group that owns the entity.
 	// Example: csp@vmware.com
 	Owner string `json:"owner,omitempty"`
+
+	// Type of a owner(user/ad_group) that owns the entity.
+	// Example: ad_group
+	OwnerType string `json:"ownerType,omitempty"`
 
 	// A set of tag keys and optional values that were set on this resource instance.
 	// Example: [ { \"key\" : \"fast-network\", \"value\": \"true\" } ]

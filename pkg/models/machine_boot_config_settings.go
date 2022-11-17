@@ -17,6 +17,10 @@ import (
 // swagger:model MachineBootConfigSettings
 type MachineBootConfigSettings struct {
 
+	// In case an error is thrown while processing cloud-config whether the provisioning process should fail or continue.
+	// Example: true
+	DeploymentFailOnCloudConfigRuntimeError bool `json:"deploymentFailOnCloudConfigRuntimeError,omitempty"`
+
 	// In case a timeout occurs whether the provisioning process should fail or continue.
 	// Example: false
 	PhoneHomeFailOnTimeout bool `json:"phoneHomeFailOnTimeout,omitempty"`

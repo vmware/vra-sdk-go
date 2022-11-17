@@ -6150,6 +6150,76 @@
                 "deprecated": false
             }
         },
+        "/codestream/api/pipelines/{id}/global": {
+            "patch": {
+                "tags": [
+                    "Pipelines"
+                ],
+                "summary": "Update a pipeline by id to be shared across all projects in an Org.",
+                "description": "Update a pipeline to be shared across projects",
+                "operationId": "patchPipelineGlobalUsingPATCH",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Patch Request for a pipeline",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PipelinePatchRequest"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The ID of the Pipeline",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /codestream/api/about",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "'Success' with the updated Pipeline",
+                        "schema": {
+                            "$ref": "#/definitions/Pipeline"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "deprecated": false
+            }
+        },
         "/codestream/api/pipelines/{project}/{name}": {
             "get": {
                 "tags": [
@@ -6750,6 +6820,83 @@
                         "description": "'Success' with the requested Execution",
                         "schema": {
                             "$ref": "#/definitions/Execution"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/codestream/api/pipelines/{project}/{name}/global": {
+            "patch": {
+                "tags": [
+                    "Pipelines"
+                ],
+                "summary": "Update a pipeline by pipeline name to be shared across projects",
+                "description": "Update a pipeline to be shared across projects",
+                "operationId": "patchPipelineGlobalByNameUsingPATCH",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Patch Request for a pipeline",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PipelinePatchRequest"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "description": "The name of the Pipeline",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "project",
+                        "in": "path",
+                        "description": "The project the Pipeline belongs to",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "apiVersion",
+                        "in": "query",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information please refer to /codestream/api/about",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "'Success' with the updated Pipeline",
+                        "schema": {
+                            "$ref": "#/definitions/Pipeline"
                         }
                     },
                     "401": {
@@ -9817,6 +9964,9 @@
                 "_executedBy": {
                     "type": "string"
                 },
+                "_global": {
+                    "type": "boolean"
+                },
                 "_inputMeta": {
                     "type": "object",
                     "additionalProperties": {
@@ -10050,6 +10200,12 @@
                 },
                 "input": {
                     "type": "object"
+                },
+                "projectId": {
+                    "type": "string"
+                },
+                "projectName": {
+                    "type": "string"
                 },
                 "source": {
                     "type": "string"
@@ -11857,6 +12013,11 @@
                     "example": true,
                     "description": "Indicates if the Pipeline is in enabled state."
                 },
+                "global": {
+                    "type": "boolean",
+                    "example": true,
+                    "description": "Indicates if the pipeline is shared with all projects in an Org."
+                },
                 "icon": {
                     "type": "string",
                     "example": "tools,,is-success is-solid",
@@ -11995,7 +12156,6 @@
         },
         "Pipeline$StarredProperty": {
             "type": "object",
-            "discriminator": "Represents properties that user can favourite or 'star' for convenience.",
             "properties": {
                 "input": {
                     "type": "string",
@@ -12012,8 +12172,7 @@
                     "description": "Contains the starred output parameter"
                 }
             },
-            "title": "Pipeline$StarredProperty",
-            "description": "Represents properties that user can favourite or 'star' for convenience."
+            "title": "Pipeline$StarredProperty"
         },
         "PipelinePatchRequest": {
             "type": "object",
@@ -12028,6 +12187,11 @@
                     "type": "boolean",
                     "example": true,
                     "description": "Indicates if the Pipeline is in enabled state."
+                },
+                "global": {
+                    "type": "boolean",
+                    "example": true,
+                    "description": "Indicates if the pipeline is shared with all projects in an Org."
                 },
                 "name": {
                     "type": "string",
@@ -12091,6 +12255,11 @@
                     "type": "boolean",
                     "example": true,
                     "description": "Indicates if the Pipeline is in enabled state."
+                },
+                "global": {
+                    "type": "boolean",
+                    "example": true,
+                    "description": "Indicates if the pipeline is shared with all projects in an Org."
                 },
                 "icon": {
                     "type": "string",
@@ -12273,6 +12442,11 @@
                     "type": "string",
                     "example": "Rolback-Pipeline",
                     "description": "Rollback Pipeline name."
+                },
+                "project": {
+                    "type": "string",
+                    "example": "1stProjectt",
+                    "description": "Project name of the rollback pipeline"
                 },
                 "stage": {
                     "type": "string",

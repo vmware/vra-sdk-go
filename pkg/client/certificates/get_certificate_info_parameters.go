@@ -65,7 +65,7 @@ type GetCertificateInfoParams struct {
 
 	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
-	APIVersion *string
+	APIVersion string
 
 	/* ID.
 
@@ -127,13 +127,13 @@ func (o *GetCertificateInfoParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithAPIVersion adds the aPIVersion to the get certificate info params
-func (o *GetCertificateInfoParams) WithAPIVersion(aPIVersion *string) *GetCertificateInfoParams {
+func (o *GetCertificateInfoParams) WithAPIVersion(aPIVersion string) *GetCertificateInfoParams {
 	o.SetAPIVersion(aPIVersion)
 	return o
 }
 
 // SetAPIVersion adds the apiVersion to the get certificate info params
-func (o *GetCertificateInfoParams) SetAPIVersion(aPIVersion *string) {
+func (o *GetCertificateInfoParams) SetAPIVersion(aPIVersion string) {
 	o.APIVersion = aPIVersion
 }
 
@@ -156,20 +156,13 @@ func (o *GetCertificateInfoParams) WriteToRequest(r runtime.ClientRequest, reg s
 	}
 	var res []error
 
-	if o.APIVersion != nil {
+	// query param apiVersion
+	qrAPIVersion := o.APIVersion
+	qAPIVersion := qrAPIVersion
+	if qAPIVersion != "" {
 
-		// query param apiVersion
-		var qrAPIVersion string
-
-		if o.APIVersion != nil {
-			qrAPIVersion = *o.APIVersion
-		}
-		qAPIVersion := qrAPIVersion
-		if qAPIVersion != "" {
-
-			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
-				return err
-			}
+		if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+			return err
 		}
 	}
 

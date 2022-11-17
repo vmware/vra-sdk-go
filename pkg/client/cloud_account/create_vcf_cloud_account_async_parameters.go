@@ -67,7 +67,7 @@ type CreateVcfCloudAccountAsyncParams struct {
 
 	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
-	APIVersion *string
+	APIVersion string
 
 	/* Body.
 
@@ -135,13 +135,13 @@ func (o *CreateVcfCloudAccountAsyncParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithAPIVersion adds the aPIVersion to the create vcf cloud account async params
-func (o *CreateVcfCloudAccountAsyncParams) WithAPIVersion(aPIVersion *string) *CreateVcfCloudAccountAsyncParams {
+func (o *CreateVcfCloudAccountAsyncParams) WithAPIVersion(aPIVersion string) *CreateVcfCloudAccountAsyncParams {
 	o.SetAPIVersion(aPIVersion)
 	return o
 }
 
 // SetAPIVersion adds the apiVersion to the create vcf cloud account async params
-func (o *CreateVcfCloudAccountAsyncParams) SetAPIVersion(aPIVersion *string) {
+func (o *CreateVcfCloudAccountAsyncParams) SetAPIVersion(aPIVersion string) {
 	o.APIVersion = aPIVersion
 }
 
@@ -175,20 +175,13 @@ func (o *CreateVcfCloudAccountAsyncParams) WriteToRequest(r runtime.ClientReques
 	}
 	var res []error
 
-	if o.APIVersion != nil {
+	// query param apiVersion
+	qrAPIVersion := o.APIVersion
+	qAPIVersion := qrAPIVersion
+	if qAPIVersion != "" {
 
-		// query param apiVersion
-		var qrAPIVersion string
-
-		if o.APIVersion != nil {
-			qrAPIVersion = *o.APIVersion
-		}
-		qAPIVersion := qrAPIVersion
-		if qAPIVersion != "" {
-
-			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
-				return err
-			}
+		if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+			return err
 		}
 	}
 	if o.Body != nil {

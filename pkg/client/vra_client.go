@@ -16,6 +16,7 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/blueprint_requests"
 	"github.com/vmware/vra-sdk-go/pkg/client/blueprint_terraform_integrations"
 	"github.com/vmware/vra-sdk-go/pkg/client/blueprint_validation"
+	"github.com/vmware/vra-sdk-go/pkg/client/capability_tags"
 	"github.com/vmware/vra-sdk-go/pkg/client/catalog_admin_items"
 	"github.com/vmware/vra-sdk-go/pkg/client/catalog_entitlements"
 	"github.com/vmware/vra-sdk-go/pkg/client/catalog_item_types"
@@ -102,6 +103,7 @@ import (
 	"github.com/vmware/vra-sdk-go/pkg/client/user_events"
 	"github.com/vmware/vra-sdk-go/pkg/client/user_operations"
 	"github.com/vmware/vra-sdk-go/pkg/client/vcf"
+	"github.com/vmware/vra-sdk-go/pkg/client/vcenter_endpoints"
 	"github.com/vmware/vra-sdk-go/pkg/client/vsphere_endpoints"
 	"github.com/vmware/vra-sdk-go/pkg/client/variables"
 )
@@ -154,6 +156,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *API {
 	cli.BlueprintRequests = blueprint_requests.New(transport, formats)
 	cli.BlueprintTerraformIntegrations = blueprint_terraform_integrations.New(transport, formats)
 	cli.BlueprintValidation = blueprint_validation.New(transport, formats)
+	cli.CapabilityTags = capability_tags.New(transport, formats)
 	cli.CatalogAdminItems = catalog_admin_items.New(transport, formats)
 	cli.CatalogEntitlements = catalog_entitlements.New(transport, formats)
 	cli.CatalogItemTypes = catalog_item_types.New(transport, formats)
@@ -240,6 +243,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *API {
 	cli.UserEvents = user_events.New(transport, formats)
 	cli.UserOperations = user_operations.New(transport, formats)
 	cli.Vcf = vcf.New(transport, formats)
+	cli.VCenterEndpoints = vcenter_endpoints.New(transport, formats)
 	cli.VSphereEndpoints = vsphere_endpoints.New(transport, formats)
 	cli.Variables = variables.New(transport, formats)
 	return cli
@@ -297,6 +301,8 @@ type API struct {
 	BlueprintTerraformIntegrations blueprint_terraform_integrations.ClientService
 
 	BlueprintValidation blueprint_validation.ClientService
+
+	CapabilityTags capability_tags.ClientService
 
 	CatalogAdminItems catalog_admin_items.ClientService
 
@@ -470,6 +476,8 @@ type API struct {
 
 	Vcf vcf.ClientService
 
+	VCenterEndpoints vcenter_endpoints.ClientService
+
 	VSphereEndpoints vsphere_endpoints.ClientService
 
 	Variables variables.ClientService
@@ -486,6 +494,7 @@ func (c *API) SetTransport(transport runtime.ClientTransport) {
 	c.BlueprintRequests.SetTransport(transport)
 	c.BlueprintTerraformIntegrations.SetTransport(transport)
 	c.BlueprintValidation.SetTransport(transport)
+	c.CapabilityTags.SetTransport(transport)
 	c.CatalogAdminItems.SetTransport(transport)
 	c.CatalogEntitlements.SetTransport(transport)
 	c.CatalogItemTypes.SetTransport(transport)
@@ -572,6 +581,7 @@ func (c *API) SetTransport(transport runtime.ClientTransport) {
 	c.UserEvents.SetTransport(transport)
 	c.UserOperations.SetTransport(transport)
 	c.Vcf.SetTransport(transport)
+	c.VCenterEndpoints.SetTransport(transport)
 	c.VSphereEndpoints.SetTransport(transport)
 	c.Variables.SetTransport(transport)
 }

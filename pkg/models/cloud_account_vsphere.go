@@ -37,7 +37,7 @@ type CloudAccountVsphere struct {
 	// Example: { \"isExternal\" : \"false\" }
 	CustomProperties map[string]string `json:"customProperties,omitempty"`
 
-	// Identifier of a data collector vm deployed in the on premise infrastructure.
+	// Identifier of a data collector vm deployed in the on premise infrastructure. If environment is equal to 'aap', dcid refers to the id of cloud gateway appliance.
 	// Example: 23959a1e-18bc-4f0c-ac49-b5aeb4b6eef4
 	Dcid string `json:"dcid,omitempty"`
 
@@ -47,6 +47,10 @@ type CloudAccountVsphere struct {
 
 	// A list of regions that are enabled for provisioning on this cloud account
 	EnabledRegions []*Region `json:"enabledRegions"`
+
+	// Environment of the data collector, will be available and set as 'aap' for vSphere+ cloud accounts
+	// Example: aap
+	Environment string `json:"environment,omitempty"`
 
 	// Host name for the vSphere cloud account
 	// Example: vc1.vmware.com
@@ -66,9 +70,13 @@ type CloudAccountVsphere struct {
 	// Example: 42413b31-1716-477e-9a88-9dc1c3cb1cdf
 	OrgID string `json:"orgId,omitempty"`
 
-	// Email of the user that owns the entity.
+	// Email of the user or display name of the group that owns the entity.
 	// Example: csp@vmware.com
 	Owner string `json:"owner,omitempty"`
+
+	// Type of a owner(user/ad_group) that owns the entity.
+	// Example: ad_group
+	OwnerType string `json:"ownerType,omitempty"`
 
 	// A set of tag keys and optional values that were set on the Cloud Account
 	// Example: [ { \"key\" : \"env\", \"value\": \"dev\" } ]

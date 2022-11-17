@@ -32,7 +32,7 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	GetFullVirtualMachineClassesUsingGET(params *GetFullVirtualMachineClassesUsingGETParams, opts ...ClientOption) (*GetFullVirtualMachineClassesUsingGETOK, error)
 
-	GetStorageClassesUsingGET(params *GetStorageClassesUsingGETParams, opts ...ClientOption) (*GetStorageClassesUsingGETOK, error)
+	GetStorageClassesUsingGET1(params *GetStorageClassesUsingGET1Params, opts ...ClientOption) (*GetStorageClassesUsingGET1OK, error)
 
 	GetTanzuKubernetesReleasesUsingGET(params *GetTanzuKubernetesReleasesUsingGETParams, opts ...ClientOption) (*GetTanzuKubernetesReleasesUsingGETOK, error)
 
@@ -82,24 +82,24 @@ func (a *Client) GetFullVirtualMachineClassesUsingGET(params *GetFullVirtualMach
 }
 
 /*
-GetStorageClassesUsingGET gets all storage classes identifiers for a v sphere endpoint
+GetStorageClassesUsingGET1 gets all storage classes identifiers for a v sphere endpoint
 
-Get all storage classes defined in all managed supervisor clusters in a particular vSphere instance. vSphere instance is identified by endpoint SelfLink Id
+Get all storage classes defined in all managed supervisor clusters in a particular vSphere instance. vSphere instance is identified by endpoint SelfLink Id. This method is Deprecated. Instead, use /storage-classes from Vcenter Endpoints
 */
-func (a *Client) GetStorageClassesUsingGET(params *GetStorageClassesUsingGETParams, opts ...ClientOption) (*GetStorageClassesUsingGETOK, error) {
+func (a *Client) GetStorageClassesUsingGET1(params *GetStorageClassesUsingGET1Params, opts ...ClientOption) (*GetStorageClassesUsingGET1OK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetStorageClassesUsingGETParams()
+		params = NewGetStorageClassesUsingGET1Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getStorageClassesUsingGET",
+		ID:                 "getStorageClassesUsingGET_1",
 		Method:             "GET",
 		PathPattern:        "/cmx/api/resources/vsphere/endpoints/{endpointSelfLinkId}/storage-classes",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetStorageClassesUsingGETReader{formats: a.formats},
+		Reader:             &GetStorageClassesUsingGET1Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -111,13 +111,13 @@ func (a *Client) GetStorageClassesUsingGET(params *GetStorageClassesUsingGETPara
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetStorageClassesUsingGETOK)
+	success, ok := result.(*GetStorageClassesUsingGET1OK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getStorageClassesUsingGET: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getStorageClassesUsingGET_1: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

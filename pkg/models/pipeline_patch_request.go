@@ -36,6 +36,11 @@ type PipelinePatchRequest interface {
 	Enabled() bool
 	SetEnabled(bool)
 
+	// Indicates if the pipeline is shared with all projects in an Org.
+	// Example: true
+	Global() bool
+	SetGlobal(bool)
+
 	// A human-friendly name used as an identifier for the Pipeline.
 	// Example: My name
 	Name() string
@@ -59,6 +64,8 @@ type pipelinePatchRequest struct {
 	descriptionField string
 
 	enabledField bool
+
+	globalField bool
 
 	nameField string
 
@@ -85,6 +92,16 @@ func (m *pipelinePatchRequest) Enabled() bool {
 // SetEnabled sets the enabled of this polymorphic type
 func (m *pipelinePatchRequest) SetEnabled(val bool) {
 	m.enabledField = val
+}
+
+// Global gets the global of this polymorphic type
+func (m *pipelinePatchRequest) Global() bool {
+	return m.globalField
+}
+
+// SetGlobal sets the global of this polymorphic type
+func (m *pipelinePatchRequest) SetGlobal(val bool) {
+	m.globalField = val
 }
 
 // Name gets the name of this polymorphic type

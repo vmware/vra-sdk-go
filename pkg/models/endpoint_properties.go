@@ -46,6 +46,9 @@ type EndpointProperties struct {
 
 	// url
 	URL string `json:"url,omitempty"`
+
+	// use service credentials
+	UseServiceCredentials bool `json:"useServiceCredentials,omitempty"`
 }
 
 // Validate validates this endpoint properties

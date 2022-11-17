@@ -49,6 +49,10 @@ type UpdateCloudAccountVsphereSpecification struct {
 	// A human-friendly description.
 	Description string `json:"description,omitempty"`
 
+	// The environment where data collectors are deployed. When the data collectors are deployed on an aap-based cloud gateway appliance, use "aap".
+	// Example: aap
+	Environment string `json:"environment,omitempty"`
+
 	// Host name for the vSphere endpoint
 	// Example: vc.mycompany.com
 	// Required: true
@@ -57,10 +61,9 @@ type UpdateCloudAccountVsphereSpecification struct {
 	// A human-friendly name used as an identifier in APIs that support this option.
 	Name string `json:"name,omitempty"`
 
-	// Password for the user used to authenticate with the cloud Account
+	// Password for the user used to authenticate with the cloud Account. Not required when environment is set to aap.
 	// Example: cndhjslacd90ascdbasyoucbdh
-	// Required: true
-	Password *string `json:"password"`
+	Password string `json:"password,omitempty"`
 
 	// A set of regions to enable provisioning on.Refer to /iaas/api/cloud-accounts/region-enumeration.
 	// Example: [{ \"name\": \"Datacenter:datacenter-3\",\"externalRegionId\": \"Datacenter:datacenter-3\"}]
@@ -70,10 +73,9 @@ type UpdateCloudAccountVsphereSpecification struct {
 	// Example: [ { \"key\" : \"env\", \"value\": \"dev\" } ]
 	Tags []*Tag `json:"tags"`
 
-	// Username to authenticate with the cloud account
+	// Username to authenticate with the cloud account. Not required when environment is set to aap.
 	// Example: administrator@mycompany.com
-	// Required: true
-	Username *string `json:"username"`
+	Username string `json:"username,omitempty"`
 }
 
 // Validate validates this update cloud account vsphere specification
@@ -92,19 +94,11 @@ func (m *UpdateCloudAccountVsphereSpecification) Validate(formats strfmt.Registr
 		res = append(res, err)
 	}
 
-	if err := m.validatePassword(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateRegions(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateTags(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateUsername(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -179,15 +173,6 @@ func (m *UpdateCloudAccountVsphereSpecification) validateHostName(formats strfmt
 	return nil
 }
 
-func (m *UpdateCloudAccountVsphereSpecification) validatePassword(formats strfmt.Registry) error {
-
-	if err := validate.Required("password", "body", m.Password); err != nil {
-		return err
-	}
-
-	return nil
-}
-
 func (m *UpdateCloudAccountVsphereSpecification) validateRegions(formats strfmt.Registry) error {
 	if swag.IsZero(m.Regions) { // not required
 		return nil
@@ -235,15 +220,6 @@ func (m *UpdateCloudAccountVsphereSpecification) validateTags(formats strfmt.Reg
 			}
 		}
 
-	}
-
-	return nil
-}
-
-func (m *UpdateCloudAccountVsphereSpecification) validateUsername(formats strfmt.Registry) error {
-
-	if err := validate.Required("username", "body", m.Username); err != nil {
-		return err
 	}
 
 	return nil

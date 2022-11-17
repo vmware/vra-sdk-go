@@ -96,7 +96,7 @@ type GetIntegrationsParams struct {
 
 	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
-	APIVersion *string
+	APIVersion string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -207,13 +207,13 @@ func (o *GetIntegrationsParams) SetDollarTop(dollarTop *int64) {
 }
 
 // WithAPIVersion adds the aPIVersion to the get integrations params
-func (o *GetIntegrationsParams) WithAPIVersion(aPIVersion *string) *GetIntegrationsParams {
+func (o *GetIntegrationsParams) WithAPIVersion(aPIVersion string) *GetIntegrationsParams {
 	o.SetAPIVersion(aPIVersion)
 	return o
 }
 
 // SetAPIVersion adds the apiVersion to the get integrations params
-func (o *GetIntegrationsParams) SetAPIVersion(aPIVersion *string) {
+func (o *GetIntegrationsParams) SetAPIVersion(aPIVersion string) {
 	o.APIVersion = aPIVersion
 }
 
@@ -310,20 +310,13 @@ func (o *GetIntegrationsParams) WriteToRequest(r runtime.ClientRequest, reg strf
 		}
 	}
 
-	if o.APIVersion != nil {
+	// query param apiVersion
+	qrAPIVersion := o.APIVersion
+	qAPIVersion := qrAPIVersion
+	if qAPIVersion != "" {
 
-		// query param apiVersion
-		var qrAPIVersion string
-
-		if o.APIVersion != nil {
-			qrAPIVersion = *o.APIVersion
-		}
-		qAPIVersion := qrAPIVersion
-		if qAPIVersion != "" {
-
-			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
-				return err
-			}
+		if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+			return err
 		}
 	}
 

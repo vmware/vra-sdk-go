@@ -21,6 +21,9 @@ import (
 // swagger:model NotificationScenarioConfig
 type NotificationScenarioConfig struct {
 
+	// Notification scenario body
+	Body string `json:"body,omitempty"`
+
 	// Notification scenario enabled
 	// Required: true
 	Enabled *bool `json:"enabled"`
@@ -37,6 +40,9 @@ type NotificationScenarioConfig struct {
 
 	// Notification scenario name
 	ScenarioName string `json:"scenarioName,omitempty"`
+
+	// Notification scenario subject
+	Subject string `json:"subject,omitempty"`
 }
 
 // Validate validates this notification scenario config

@@ -68,9 +68,13 @@ type IaaSProject struct {
 	// Example: 42413b31-1716-477e-9a88-9dc1c3cb1cdf
 	OrgID string `json:"orgId,omitempty"`
 
-	// Email of the user that owns the entity.
+	// Email of the user or display name of the group that owns the entity.
 	// Example: csp@vmware.com
 	Owner string `json:"owner,omitempty"`
+
+	// Type of a owner(user/ad_group) that owns the entity.
+	// Example: ad_group
+	OwnerType string `json:"ownerType,omitempty"`
 
 	// Placement policy for the project. Determines how a zone will be selected for provisioning. DEFAULT or SPREAD.
 	// Example: DEFAULT
@@ -78,6 +82,10 @@ type IaaSProject struct {
 
 	// Specifies whether the resources in this projects are shared or not.
 	SharedResources bool `json:"sharedResources,omitempty"`
+
+	// List of supervisor users associated with the project.
+	// Example: [ { \"email\":\"supervisor@vmware.com\" } ]
+	Supervisors []*User `json:"supervisors"`
 
 	// Date when the entity was last updated. The date is ISO 8601 and UTC.
 	// Example: 2012-09-27
@@ -112,6 +120,10 @@ func (m *IaaSProject) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateMembers(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSupervisors(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -246,6 +258,32 @@ func (m *IaaSProject) validateMembers(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *IaaSProject) validateSupervisors(formats strfmt.Registry) error {
+	if swag.IsZero(m.Supervisors) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Supervisors); i++ {
+		if swag.IsZero(m.Supervisors[i]) { // not required
+			continue
+		}
+
+		if m.Supervisors[i] != nil {
+			if err := m.Supervisors[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("supervisors" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("supervisors" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *IaaSProject) validateViewers(formats strfmt.Registry) error {
 	if swag.IsZero(m.Viewers) { // not required
 		return nil
@@ -315,6 +353,10 @@ func (m *IaaSProject) ContextValidate(ctx context.Context, formats strfmt.Regist
 	}
 
 	if err := m.contextValidateMembers(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSupervisors(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -403,6 +445,26 @@ func (m *IaaSProject) contextValidateMembers(ctx context.Context, formats strfmt
 					return ve.ValidateName("members" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("members" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IaaSProject) contextValidateSupervisors(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Supervisors); i++ {
+
+		if m.Supervisors[i] != nil {
+			if err := m.Supervisors[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("supervisors" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("supervisors" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

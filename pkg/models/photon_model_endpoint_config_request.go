@@ -53,6 +53,9 @@ type PhotonModelEndpointConfigRequest struct {
 
 	// task reference
 	TaskReference *URI `json:"taskReference,omitempty"`
+
+	// tenant links
+	TenantLinks []string `json:"tenantLinks"`
 }
 
 // Validate validates this photon model endpoint config request

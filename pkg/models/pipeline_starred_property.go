@@ -6,128 +6,50 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"bytes"
 	"context"
-	"encoding/json"
-	"io"
 
-	"github.com/go-openapi/errors"
-	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/validate"
+	"github.com/go-openapi/swag"
 )
 
 // PipelineStarredProperty Pipeline$StarredProperty
 //
-// Represents properties that user can favourite or 'star' for convenience.
-//
-// swagger:discriminator PipelineStarredProperty Represents properties that user can favourite or 'star' for convenience.
-type PipelineStarredProperty interface {
-	runtime.Validatable
-	runtime.ContextValidatable
+// swagger:model PipelineStarredProperty
+type PipelineStarredProperty struct {
 
 	// Contains the starred input parameter
 	// Example: {"input":"commitId"}
-	Input() string
-	SetInput(string)
+	Input string `json:"input,omitempty"`
 
 	// Contains the starred output parameter
 	// Example: {"output":"owner"}
-	Output() string
-	SetOutput(string)
-
-	// AdditionalProperties in base type shoud be handled just like regular properties
-	// At this moment, the base type property is pushed down to the subtype
-}
-
-type pipelineStarredProperty struct {
-	inputField string
-
-	outputField string
-}
-
-// Input gets the input of this polymorphic type
-func (m *pipelineStarredProperty) Input() string {
-	return m.inputField
-}
-
-// SetInput sets the input of this polymorphic type
-func (m *pipelineStarredProperty) SetInput(val string) {
-	m.inputField = val
-}
-
-// Output gets the output of this polymorphic type
-func (m *pipelineStarredProperty) Output() string {
-	return m.outputField
-}
-
-// SetOutput sets the output of this polymorphic type
-func (m *pipelineStarredProperty) SetOutput(val string) {
-	m.outputField = val
-}
-
-// UnmarshalPipelineStarredPropertySlice unmarshals polymorphic slices of PipelineStarredProperty
-func UnmarshalPipelineStarredPropertySlice(reader io.Reader, consumer runtime.Consumer) ([]PipelineStarredProperty, error) {
-	var elements []json.RawMessage
-	if err := consumer.Consume(reader, &elements); err != nil {
-		return nil, err
-	}
-
-	var result []PipelineStarredProperty
-	for _, element := range elements {
-		obj, err := unmarshalPipelineStarredProperty(element, consumer)
-		if err != nil {
-			return nil, err
-		}
-		result = append(result, obj)
-	}
-	return result, nil
-}
-
-// UnmarshalPipelineStarredProperty unmarshals polymorphic PipelineStarredProperty
-func UnmarshalPipelineStarredProperty(reader io.Reader, consumer runtime.Consumer) (PipelineStarredProperty, error) {
-	// we need to read this twice, so first into a buffer
-	data, err := io.ReadAll(reader)
-	if err != nil {
-		return nil, err
-	}
-	return unmarshalPipelineStarredProperty(data, consumer)
-}
-
-func unmarshalPipelineStarredProperty(data []byte, consumer runtime.Consumer) (PipelineStarredProperty, error) {
-	buf := bytes.NewBuffer(data)
-	buf2 := bytes.NewBuffer(data)
-
-	// the first time this is read is to fetch the value of the Represents properties that user can favourite or 'star' for convenience. property.
-	var getType struct {
-		RepresentsPropertiesThatUserCanFavouriteOrStarForConvenience string `json:"Represents properties that user can favourite or 'star' for convenience."`
-	}
-	if err := consumer.Consume(buf, &getType); err != nil {
-		return nil, err
-	}
-
-	if err := validate.RequiredString("Represents properties that user can favourite or 'star' for convenience.", "body", getType.RepresentsPropertiesThatUserCanFavouriteOrStarForConvenience); err != nil {
-		return nil, err
-	}
-
-	// The value of Represents properties that user can favourite or 'star' for convenience. is used to determine which type to create and unmarshal the data into
-	switch getType.RepresentsPropertiesThatUserCanFavouriteOrStarForConvenience {
-	case "PipelineStarredProperty":
-		var result pipelineStarredProperty
-		if err := consumer.Consume(buf2, &result); err != nil {
-			return nil, err
-		}
-		return &result, nil
-	}
-	return nil, errors.New(422, "invalid Represents properties that user can favourite or 'star' for convenience. value: %q", getType.RepresentsPropertiesThatUserCanFavouriteOrStarForConvenience)
+	Output string `json:"output,omitempty"`
 }
 
 // Validate validates this pipeline starred property
-func (m *pipelineStarredProperty) Validate(formats strfmt.Registry) error {
+func (m *PipelineStarredProperty) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
 // ContextValidate validates this pipeline starred property based on context it is used
-func (m *pipelineStarredProperty) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *PipelineStarredProperty) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PipelineStarredProperty) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PipelineStarredProperty) UnmarshalBinary(b []byte) error {
+	var res PipelineStarredProperty
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
 	return nil
 }

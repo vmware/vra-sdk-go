@@ -36,6 +36,11 @@ type RollbackConfiguration interface {
 	Name() string
 	SetName(string)
 
+	// Project name of the rollback pipeline
+	// Example: 1stProjectt
+	Project() string
+	SetProject(string)
+
 	// Stage name for which the rollback pipeline is configured.
 	// Example: Dev-Stage
 	Stage() string
@@ -54,6 +59,8 @@ type rollbackConfiguration struct {
 	inputsField interface{}
 
 	nameField string
+
+	projectField string
 
 	stageField string
 
@@ -78,6 +85,16 @@ func (m *rollbackConfiguration) Name() string {
 // SetName sets the name of this polymorphic type
 func (m *rollbackConfiguration) SetName(val string) {
 	m.nameField = val
+}
+
+// Project gets the project of this polymorphic type
+func (m *rollbackConfiguration) Project() string {
+	return m.projectField
+}
+
+// SetProject sets the project of this polymorphic type
+func (m *rollbackConfiguration) SetProject(val string) {
+	m.projectField = val
 }
 
 // Stage gets the stage of this polymorphic type

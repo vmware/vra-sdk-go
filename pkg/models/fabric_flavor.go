@@ -8,10 +8,8 @@ package models
 import (
 	"context"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // FabricFlavor Represents a fabric flavor from the corresponding cloud end-point
@@ -45,8 +43,7 @@ type FabricFlavor struct {
 
 	// The value of the instance type in the corresponding cloud.
 	// Example: i3.large
-	// Required: true
-	Name *string `json:"name"`
+	Name string `json:"name,omitempty"`
 
 	// The type of network supported by this instance type. Not populated when inapplicable.
 	// Example: Up to 10 Gigabit
@@ -59,24 +56,6 @@ type FabricFlavor struct {
 
 // Validate validates this fabric flavor
 func (m *FabricFlavor) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateName(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *FabricFlavor) validateName(formats strfmt.Registry) error {
-
-	if err := validate.Required("name", "body", m.Name); err != nil {
-		return err
-	}
-
 	return nil
 }
 

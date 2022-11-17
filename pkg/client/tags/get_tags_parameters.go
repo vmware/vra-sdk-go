@@ -96,7 +96,7 @@ type GetTagsParams struct {
 
 	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
-	APIVersion string
+	APIVersion *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -207,13 +207,13 @@ func (o *GetTagsParams) SetDollarTop(dollarTop *int64) {
 }
 
 // WithAPIVersion adds the aPIVersion to the get tags params
-func (o *GetTagsParams) WithAPIVersion(aPIVersion string) *GetTagsParams {
+func (o *GetTagsParams) WithAPIVersion(aPIVersion *string) *GetTagsParams {
 	o.SetAPIVersion(aPIVersion)
 	return o
 }
 
 // SetAPIVersion adds the apiVersion to the get tags params
-func (o *GetTagsParams) SetAPIVersion(aPIVersion string) {
+func (o *GetTagsParams) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
@@ -310,13 +310,20 @@ func (o *GetTagsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Regis
 		}
 	}
 
-	// query param apiVersion
-	qrAPIVersion := o.APIVersion
-	qAPIVersion := qrAPIVersion
-	if qAPIVersion != "" {
+	if o.APIVersion != nil {
 
-		if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
-			return err
+		// query param apiVersion
+		var qrAPIVersion string
+
+		if o.APIVersion != nil {
+			qrAPIVersion = *o.APIVersion
+		}
+		qAPIVersion := qrAPIVersion
+		if qAPIVersion != "" {
+
+			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
 		}
 	}
 

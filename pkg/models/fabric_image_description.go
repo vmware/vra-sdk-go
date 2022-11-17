@@ -27,6 +27,10 @@ type FabricImageDescription struct {
 	// Example: [{\"mandatory\" : \"true\", \"expression\": \"environment\":\"prod\"}, {\"mandatory\" : \"false\", \"expression\": \"pci\"}]
 	Constraints []*Constraint `json:"constraints"`
 
+	// External entity Id. Valid if id and name are not provided.
+	// Example: https://cloud-images.ubuntu.com/releases/16.04/release-20190605/ubuntu-16.04-server-cloudimg-amd64.ova
+	ExternalID string `json:"externalId,omitempty"`
+
 	// The id of the fabric image
 	// Example: 9e49
 	ID string `json:"id,omitempty"`

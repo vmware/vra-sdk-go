@@ -4,6 +4,13 @@
         "/iaas/api/load-balancers/{id}/operations/delete": {
             "post": {
                 "summary": "Delete operation for load balancer",
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
                 "produces": [
                     "application/json",
                     "app/json"
@@ -107,7 +114,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -159,7 +166,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -490,7 +497,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     },
                     {
                         "in": "query",
@@ -769,7 +776,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -835,7 +842,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -1016,7 +1023,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -1123,7 +1130,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -1477,6 +1484,13 @@
         "/iaas/api/images": {
             "get": {
                 "summary": "Get images",
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
                 "produces": [
                     "application/json",
                     "app/json"
@@ -2072,6 +2086,13 @@
         "/iaas/api/load-balancers": {
             "post": {
                 "summary": "Create load balancer",
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
                 "produces": [
                     "application/json",
                     "app/json"
@@ -2128,6 +2149,13 @@
             },
             "get": {
                 "summary": "Get load balancers",
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
                 "produces": [
                     "application/json",
                     "app/json"
@@ -2519,7 +2547,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     },
                     {
                         "in": "query",
@@ -3641,7 +3669,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": true
+                        "required": false
                     },
                     {
                         "in": "query",
@@ -3745,7 +3773,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -3871,7 +3899,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -3978,7 +4006,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -4516,7 +4544,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -4541,7 +4569,7 @@
                 "responses": {
                     "200": {
                         "schema": {
-                            "$ref": "#/definitions/ConfigurationProperty"
+                            "$ref": "#/definitions/ConfigurationPropertyResult"
                         },
                         "description": "successful operation"
                     },
@@ -4558,7 +4586,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -4836,7 +4864,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -4946,7 +4974,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -5053,7 +5081,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -5271,7 +5299,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -5378,7 +5406,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -5668,7 +5696,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -5782,7 +5810,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -5932,10 +5960,7 @@
                 "responses": {
                     "200": {
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/DeploymentResult"
-                            }
+                            "$ref": "#/definitions/DeploymentResult"
                         },
                         "description": "successful operation"
                     },
@@ -6148,6 +6173,13 @@
         "/iaas/api/image-profiles/{id}": {
             "patch": {
                 "summary": "Update image profile",
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
                 "produces": [
                     "application/json",
                     "app/json"
@@ -6205,6 +6237,13 @@
             },
             "get": {
                 "summary": "Get image profile",
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
                 "produces": [
                     "application/json",
                     "app/json"
@@ -6253,6 +6292,13 @@
             },
             "delete": {
                 "summary": "Delete image profile",
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
                 "produces": [
                     "application/json",
                     "app/json"
@@ -6342,7 +6388,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     },
                     {
                         "in": "query",
@@ -6675,9 +6721,9 @@
                 ]
             }
         },
-        "/iaas/api/block-devices/{id}/operations/revert": {
-            "post": {
-                "summary": "Revert snapshot operation for Block device",
+        "/iaas/api/load-balancers/{id}": {
+            "get": {
+                "summary": "Get load balancer",
                 "security": [
                     {
                         "Bearer": [
@@ -6685,63 +6731,6 @@
                         ]
                     }
                 ],
-                "produces": [
-                    "application/json",
-                    "app/json"
-                ],
-                "description": "Second day revert snapshot operation for Block device",
-                "operationId": "revertDiskSnapshot",
-                "responses": {
-                    "202": {
-                        "schema": {
-                            "$ref": "#/definitions/RequestTracker"
-                        },
-                        "description": "successful operation"
-                    },
-                    "403": {
-                        "schema": {
-                            "$ref": "#/definitions/ServiceErrorResponse"
-                        },
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "schema": {
-                            "$ref": "#/definitions/ServiceErrorResponse"
-                        },
-                        "description": "Not Found"
-                    }
-                },
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id of the Disk.",
-                        "type": "string",
-                        "required": true
-                    },
-                    {
-                        "in": "query",
-                        "name": "id",
-                        "description": "Snapshot id to revert.",
-                        "type": "string",
-                        "required": true
-                    },
-                    {
-                        "in": "query",
-                        "name": "apiVersion",
-                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
-                        "type": "string",
-                        "required": false
-                    }
-                ],
-                "tags": [
-                    "Disk"
-                ]
-            }
-        },
-        "/iaas/api/load-balancers/{id}": {
-            "get": {
-                "summary": "Get load balancer",
                 "produces": [
                     "application/json",
                     "app/json"
@@ -6790,6 +6779,13 @@
             },
             "delete": {
                 "summary": "Delete load balancer",
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
                 "produces": [
                     "application/json",
                     "app/json"
@@ -6889,7 +6885,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -6900,6 +6896,13 @@
         "/iaas/api/integrations": {
             "post": {
                 "summary": "Create an integration",
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
                 "produces": [
                     "application/json",
                     "app/json"
@@ -6941,7 +6944,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     },
                     {
                         "in": "query",
@@ -6957,6 +6960,13 @@
             },
             "get": {
                 "summary": "Get integrations",
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
                 "produces": [
                     "application/json",
                     "app/json"
@@ -6983,7 +6993,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     },
                     {
                         "in": "query",
@@ -7466,7 +7476,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     },
                     {
                         "in": "query",
@@ -7588,7 +7598,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -7645,7 +7655,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -7704,7 +7714,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     },
                     {
                         "in": "query",
@@ -7955,7 +7965,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     },
                     {
                         "in": "query",
@@ -8095,6 +8105,13 @@
         "/iaas/api/folders": {
             "get": {
                 "summary": "Get folders",
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
                 "produces": [
                     "application/json",
                     "app/json"
@@ -8121,7 +8138,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     },
                     {
                         "in": "query",
@@ -8293,7 +8310,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -8400,7 +8417,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -8596,6 +8613,13 @@
         "/iaas/api/load-balancers/{id}/operations/scale": {
             "post": {
                 "summary": "Scale operation for load balancer",
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
                 "produces": [
                     "application/json",
                     "app/json"
@@ -9270,7 +9294,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -9329,7 +9353,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -10125,7 +10149,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -10184,7 +10208,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     },
                     {
                         "in": "query",
@@ -10306,7 +10330,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -10657,7 +10681,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -10857,7 +10881,7 @@
                     "application/json",
                     "app/json"
                 ],
-                "description": "The page contains information about the supported API versions and the latest API version. The version parameter is optional but highly recommended.\nIf you do not specify explicitly an exact version, you will be calling the latest supported General Availability API version.\nHere is an example of a call which specifies the exact version you are using: `GET /iaas/api/network-profiles?apiVersion=2021-07-15`\n\nNote that this version is deprecated: 2019-01-15.",
+                "description": "The page contains information about the supported API versions and the latest API version. The version parameter is mandatory for endpoints introduced after version 2019-01-15and optional for the rest though highly recommended.\nIf you do not specify explicitly an exact version, you will be calling the latest supported General Availability API version.\nHere is an example of a call which specifies the exact version you are using: `GET /iaas/api/network-profiles?apiVersion=2021-07-15`\n\nNote that this version is deprecated: 2019-01-15.",
                 "operationId": "getAboutPage",
                 "responses": {
                     "200": {
@@ -11094,7 +11118,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -11201,7 +11225,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -11291,6 +11315,13 @@
         "/iaas/api/image-profiles": {
             "post": {
                 "summary": "Create image profile",
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
                 "produces": [
                     "application/json",
                     "app/json"
@@ -11341,6 +11372,13 @@
             },
             "get": {
                 "summary": "Get image profile",
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
                 "produces": [
                     "application/json",
                     "app/json"
@@ -11547,7 +11585,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     },
                     {
                         "in": "query",
@@ -11776,7 +11814,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -11990,7 +12028,7 @@
                 "responses": {
                     "200": {
                         "schema": {
-                            "$ref": "#/definitions/ConfigurationProperty"
+                            "$ref": "#/definitions/ConfigurationPropertyResult"
                         },
                         "description": "successful operation"
                     },
@@ -12013,7 +12051,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -12061,7 +12099,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -12127,7 +12165,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -12234,7 +12272,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -12856,7 +12894,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -12931,6 +12969,13 @@
         "/iaas/api/integrations/{id}": {
             "patch": {
                 "summary": "Update an integration",
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
                 "produces": [
                     "application/json",
                     "app/json"
@@ -12979,7 +13024,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -12988,6 +13033,13 @@
             },
             "get": {
                 "summary": "Get an integration",
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
                 "produces": [
                     "application/json",
                     "app/json"
@@ -13027,7 +13079,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     },
                     {
                         "in": "query",
@@ -13043,6 +13095,13 @@
             },
             "delete": {
                 "summary": "Delete an integration",
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
                 "produces": [
                     "application/json",
                     "app/json"
@@ -13079,11 +13138,75 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
                     "Integration"
+                ]
+            }
+        },
+        "/iaas/api/block-devices/{diskId}/operations/revert": {
+            "post": {
+                "summary": "Revert snapshot operation for Block device",
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
+                "produces": [
+                    "application/json",
+                    "app/json"
+                ],
+                "description": "Second day revert snapshot operation for Block device",
+                "operationId": "revertDiskSnapshot",
+                "responses": {
+                    "202": {
+                        "schema": {
+                            "$ref": "#/definitions/RequestTracker"
+                        },
+                        "description": "successful operation"
+                    },
+                    "403": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "schema": {
+                            "$ref": "#/definitions/ServiceErrorResponse"
+                        },
+                        "description": "Not Found"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "diskId",
+                        "description": "The id of the Disk.",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "id",
+                        "description": "Snapshot id to revert.",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "apiVersion",
+                        "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
+                        "type": "string",
+                        "required": false
+                    }
+                ],
+                "tags": [
+                    "Disk"
                 ]
             }
         },
@@ -13138,7 +13261,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     },
                     {
                         "in": "query",
@@ -13679,6 +13802,13 @@
         "/iaas/api/flavors": {
             "get": {
                 "summary": "Get flavors",
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
                 "produces": [
                     "application/json",
                     "app/json"
@@ -13795,6 +13925,13 @@
         "/iaas/api/load-balancers/{id}/network-interfaces/{id1}": {
             "get": {
                 "summary": "Get load balancer network interface",
+                "security": [
+                    {
+                        "Bearer": [
+                            "global"
+                        ]
+                    }
+                ],
                 "description": "Get network interface with a given id for specific load balancer",
                 "operationId": "getLoadBalancerNetworkInterface",
                 "responses": {
@@ -13959,7 +14096,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -14066,7 +14203,7 @@
                         "name": "apiVersion",
                         "description": "The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "tags": [
@@ -14164,9 +14301,6 @@
         "FabricFlavor": {
             "description": "Represents a fabric flavor from the corresponding cloud end-point",
             "type": "object",
-            "required": [
-                "name"
-            ],
             "properties": {
                 "bootDiskSizeInMB": {
                     "format": "int32",
@@ -14316,6 +14450,11 @@
                     "type": "string",
                     "example": "cndhjslacd90ascdbasyoucbdh"
                 },
+                "environment": {
+                    "description": "The environment where data collectors are deployed. When the data collectors are deployed on a cloud gateway appliance, use \"aap\".",
+                    "type": "string",
+                    "example": "aap"
+                },
                 "dcid": {
                     "description": "Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors.\nNote: Data collector endpoints are not available in vRA on-prem release.",
                     "type": "string",
@@ -14379,7 +14518,7 @@
             }
         },
         "FabricNetwork": {
-            "description": "State object representing a network on a external cloud provider.<br>**HATEOAS** links:<br>**region** - Region - Region for the network.<br>**self** - FabricNetwork - Self link to this network",
+            "description": "State object representing a network on a external cloud provider.<br>**HATEOAS** links:<br>**region** - Region - Region for the network.<br>**network-domain** - Network domain - Network domain for the network.<br>**self** - FabricNetwork - Self link to this network",
             "type": "object",
             "required": [
                 "_links",
@@ -14387,9 +14526,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "_links": {
                     "description": "HATEOAS of the entity",
@@ -14399,7 +14543,7 @@
                     "type": "object"
                 },
                 "externalRegionId": {
-                    "description": "The id of the region for which this network is defined",
+                    "description": "The id of the region for which this network is defined.",
                     "type": "string",
                     "example": "us-east-1"
                 },
@@ -14449,6 +14593,11 @@
                     "description": "Indicates whether this is the default subnet for the zone.",
                     "type": "boolean"
                 },
+                "networkDomainId": {
+                    "description": "The id of the network domain, that contains this fabric network.",
+                    "type": "string",
+                    "example": "26dfa6f8-fcb7-40c2-8afe-2e069246fdeb"
+                },
                 "customProperties": {
                     "description": "Custom properties of the fabric network instance",
                     "additionalProperties": {
@@ -14464,6 +14613,11 @@
                 "isPublic": {
                     "description": "Indicates whether the sub-network supports public IP assignment.",
                     "type": "boolean"
+                },
+                "zoneId": {
+                    "description": "The availability zone for which this network is defined.",
+                    "type": "string",
+                    "example": "us-west-1a"
                 },
                 "cidr": {
                     "description": "Network CIDR to be used.",
@@ -14724,9 +14878,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "cloudConfig": {
                     "description": "Cloud config for this image. This cloud config will be merged during provisioning with other cloud configurations such as the bootConfig provided in MachineSpecification.",
@@ -14854,9 +15013,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "createdAt": {
                     "description": "Date when the entity was created. The date is in ISO 8601 and UTC.",
@@ -15021,9 +15185,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "_links": {
                     "description": "HATEOAS of the entity",
@@ -15130,6 +15299,14 @@
                     "description": "Date when the entity was last updated. The date is ISO 8601 and UTC.",
                     "type": "string",
                     "example": "2012-09-27"
+                },
+                "supervisors": {
+                    "description": "List of supervisor users associated with the project. ",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/User"
+                    },
+                    "example": "[ { \"email\":\"supervisor@vmware.com\" } ]"
                 }
             }
         },
@@ -15290,9 +15467,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "cloudAccountProperties": {
                     "description": "Cloud account specific properties",
@@ -15409,6 +15591,34 @@
                 }
             }
         },
+        "ConfigurationPropertyResult": {
+            "description": "State object representing a query result of configuration properties.",
+            "type": "object",
+            "properties": {
+                "numberOfElements": {
+                    "format": "int64",
+                    "description": "Number of elements in the current page",
+                    "readOnly": true,
+                    "type": "integer",
+                    "example": 1
+                },
+                "content": {
+                    "description": "List of content items",
+                    "readOnly": true,
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ConfigurationProperty"
+                    }
+                },
+                "totalElements": {
+                    "format": "int64",
+                    "description": "Total number of elements. In some cases the field may not be populated",
+                    "readOnly": true,
+                    "type": "integer",
+                    "example": 1
+                }
+            }
+        },
         "RemoteAccessSpecification": {
             "description": "Represents a specification for machine's remote access settings.",
             "type": "object",
@@ -15474,15 +15684,19 @@
             "required": [
                 "_links",
                 "externalRegionId",
-                "externalZoneId",
                 "id",
                 "powerState"
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "address": {
                     "description": "Primary address allocated or in use by this machine. The actual type of the address depends on the adapter type. Typically it is either the public or the external IP address.",
@@ -15801,9 +16015,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "_links": {
                     "description": "HATEOAS of the entity",
@@ -15966,9 +16185,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "_links": {
                     "description": "HATEOAS of the entity",
@@ -16052,9 +16276,46 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
+                },
+                "_links": {
+                    "description": "HATEOAS of the entity",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/Href"
+                    },
+                    "type": "object"
+                },
+                "externalRegionId": {
+                    "description": "Indicates the ID of region.",
+                    "type": "string",
+                    "example": "westus"
+                },
+                "description": {
+                    "description": "A human-friendly description.",
+                    "type": "string",
+                    "example": "my-description"
+                },
+                "externalId": {
+                    "description": "External entity Id on the provider side.",
+                    "type": "string",
+                    "example": "i-cfe4-e241-e53b-756a9a2e25d2"
+                },
+                "type": {
+                    "description": "Indicates the performance tier for the storage type. Premium disks are SSD backed and Standard disks are HDD backed.",
+                    "type": "string",
+                    "example": "Standard_LRS / Premium_LRS"
+                },
+                "orgId": {
+                    "description": "The id of the organization this entity belongs to.",
+                    "type": "string",
+                    "example": "42413b31-1716-477e-9a88-9dc1c3cb1cdf"
                 },
                 "createdAt": {
                     "description": "Date when the entity was created. The date is in ISO 8601 and UTC.",
@@ -16070,47 +16331,15 @@
                     },
                     "example": "[9e49]"
                 },
-                "_links": {
-                    "description": "HATEOAS of the entity",
-                    "additionalProperties": {
-                        "$ref": "#/definitions/Href"
-                    },
-                    "type": "object"
-                },
-                "externalRegionId": {
-                    "description": "Indicates the ID of region.",
-                    "type": "string",
-                    "example": "westus"
-                },
                 "name": {
                     "description": "A human-friendly name used as an identifier in APIs that support this option.",
                     "type": "string",
                     "example": "my-name"
                 },
-                "description": {
-                    "description": "A human-friendly description.",
-                    "type": "string",
-                    "example": "my-description"
-                },
-                "externalId": {
-                    "description": "External entity Id on the provider side.",
-                    "type": "string",
-                    "example": "i-cfe4-e241-e53b-756a9a2e25d2"
-                },
                 "id": {
                     "description": "The id of this resource instance",
                     "type": "string",
                     "example": "9e49"
-                },
-                "type": {
-                    "description": "Indicates the performance tier for the storage type. Premium disks are SSD backed and Standard disks are HDD backed.",
-                    "type": "string",
-                    "example": "Standard_LRS / Premium_LRS"
-                },
-                "orgId": {
-                    "description": "The id of the organization this entity belongs to.",
-                    "type": "string",
-                    "example": "42413b31-1716-477e-9a88-9dc1c3cb1cdf"
                 },
                 "updatedAt": {
                     "description": "Date when the entity was last updated. The date is ISO 8601 and UTC.",
@@ -16706,9 +16935,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "createdAt": {
                     "description": "Date when the entity was created. The date is in ISO 8601 and UTC.",
@@ -16759,15 +16993,19 @@
                 "_links",
                 "capacityInGB",
                 "externalRegionId",
-                "externalZoneId",
                 "id",
                 "status"
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "_links": {
                     "description": "HATEOAS of the entity",
@@ -16947,9 +17185,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "_links": {
                     "description": "HATEOAS of the entity",
@@ -17062,9 +17305,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "freeSizeGB": {
                     "description": "Indicates free size available in datastore.",
@@ -17176,15 +17424,19 @@
             "required": [
                 "_links",
                 "externalRegionId",
-                "externalZoneId",
                 "id",
                 "rules"
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "_links": {
                     "description": "HATEOAS of the entity",
@@ -17372,9 +17624,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "_links": {
                     "description": "HATEOAS of the entity",
@@ -17384,7 +17641,7 @@
                     "type": "object"
                 },
                 "externalRegionId": {
-                    "description": "The id of the region for which this network is defined",
+                    "description": "The id of the region for which this network is defined.",
                     "type": "string",
                     "example": "us-east-1"
                 },
@@ -17443,6 +17700,11 @@
                 "isDefault": {
                     "description": "Indicates whether this is the default subnet for the zone.",
                     "type": "boolean"
+                },
+                "networkDomainId": {
+                    "description": "The id of the network domain, that contains this fabric network.",
+                    "type": "string",
+                    "example": "26dfa6f8-fcb7-40c2-8afe-2e069246fdeb"
                 },
                 "customProperties": {
                     "description": "Custom properties of the fabric network instance",
@@ -17508,9 +17770,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "createdAt": {
                     "description": "Date when the entity was created. The date is in ISO 8601 and UTC.",
@@ -17646,15 +17913,19 @@
             "required": [
                 "_links",
                 "externalRegionId",
-                "externalZoneId",
                 "id",
                 "networks"
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "_links": {
                     "description": "HATEOAS of the entity",
@@ -17766,14 +18037,44 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "accessKeyId": {
                     "description": "Access key id for Aws.",
                     "type": "string",
                     "example": "KLIKJ7EA4PPDZR7T7Z6K"
+                },
+                "_links": {
+                    "description": "HATEOAS of the entity",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/Href"
+                    },
+                    "type": "object"
+                },
+                "description": {
+                    "description": "A human-friendly description.",
+                    "type": "string",
+                    "example": "my-description"
+                },
+                "orgId": {
+                    "description": "The id of the organization this entity belongs to.",
+                    "type": "string",
+                    "example": "42413b31-1716-477e-9a88-9dc1c3cb1cdf"
+                },
+                "tags": {
+                    "description": "A set of tag keys and optional values that were set on the Cloud Account",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Tag"
+                    },
+                    "example": "[ { \"key\" : \"env\", \"value\": \"dev\" } ]"
                 },
                 "createdAt": {
                     "description": "Date when the entity was created. The date is in ISO 8601 and UTC.",
@@ -17795,45 +18096,20 @@
                     "type": "object",
                     "example": "{ \"isExternal\" : \"false\" }"
                 },
-                "_links": {
-                    "description": "HATEOAS of the entity",
-                    "additionalProperties": {
-                        "$ref": "#/definitions/Href"
-                    },
-                    "type": "object"
-                },
                 "name": {
                     "description": "A human-friendly name used as an identifier in APIs that support this option.",
                     "type": "string",
                     "example": "my-name"
-                },
-                "description": {
-                    "description": "A human-friendly description.",
-                    "type": "string",
-                    "example": "my-description"
                 },
                 "id": {
                     "description": "The id of this resource instance",
                     "type": "string",
                     "example": "9e49"
                 },
-                "orgId": {
-                    "description": "The id of the organization this entity belongs to.",
-                    "type": "string",
-                    "example": "42413b31-1716-477e-9a88-9dc1c3cb1cdf"
-                },
                 "updatedAt": {
                     "description": "Date when the entity was last updated. The date is ISO 8601 and UTC.",
                     "type": "string",
                     "example": "2012-09-27"
-                },
-                "tags": {
-                    "description": "A set of tag keys and optional values that were set on the Cloud Account",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Tag"
-                    },
-                    "example": "[ { \"key\" : \"env\", \"value\": \"dev\" } ]"
                 }
             }
         },
@@ -18006,9 +18282,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "_links": {
                     "description": "HATEOAS of the entity",
@@ -18195,9 +18476,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "_links": {
                     "description": "HATEOAS of the entity",
@@ -18291,9 +18577,14 @@
                     "example": "runcmd:\n  - [\"mkdir\", \"/imageFolder\"]"
                 },
                 "name": {
-                    "description": "Fabric image name. Valid if id not provided.",
+                    "description": "Fabric image name. Valid if id not provided. ",
                     "type": "string",
                     "example": "ami-ubuntu-16.04-1.9.1-00-1516139717"
+                },
+                "externalId": {
+                    "description": "External entity Id. Valid if id and name are not provided.",
+                    "type": "string",
+                    "example": "https://cloud-images.ubuntu.com/releases/16.04/release-20190605/ubuntu-16.04-server-cloudimg-amd64.ova"
                 },
                 "id": {
                     "description": "The id of the fabric image",
@@ -18322,9 +18613,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "_links": {
                     "description": "HATEOAS of the entity",
@@ -18561,9 +18857,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "createdAt": {
                     "description": "Date when the entity was created. The date is in ISO 8601 and UTC.",
@@ -18689,9 +18990,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "_links": {
                     "description": "HATEOAS of the entity",
@@ -18791,9 +19097,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "hostName": {
                     "description": "Host name for the Nsx-V cloud account",
@@ -18904,9 +19215,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "hostName": {
                     "description": "Host name for the NSX-T cloud account",
@@ -18995,6 +19311,27 @@
                 "name"
             ],
             "properties": {
+                "operationTimeout": {
+                    "format": "int64",
+                    "description": "The timeout that should be used for Blueprint operations and Provisioning tasks. The timeout is in seconds",
+                    "type": "integer",
+                    "example": 30
+                },
+                "description": {
+                    "description": "A human-friendly description.",
+                    "type": "string"
+                },
+                "constraints": {
+                    "description": "List of storage, network and extensibility constraints to be applied when provisioning through this project.",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/Constraint"
+                        }
+                    },
+                    "type": "object",
+                    "example": "{\"network\":[{\"mandatory\": \"true\", \"expression\": \"env:dev\"}],\"storage\":[{\"mandatory\": \"false\", \"expression\": \"gold\"}],\"extensibility\":[{\"mandatory\": \"false\", \"expression\": \"key:value\"}]}"
+                },
                 "viewers": {
                     "description": "List of viewer users associated with the project. ",
                     "type": "array",
@@ -19021,12 +19358,6 @@
                     "type": "boolean",
                     "example": true
                 },
-                "operationTimeout": {
-                    "format": "int64",
-                    "description": "The timeout that should be used for Blueprint operations and Provisioning tasks. The timeout is in seconds",
-                    "type": "integer",
-                    "example": 30
-                },
                 "members": {
                     "description": "List of member users associated with the project. ",
                     "type": "array",
@@ -19046,25 +19377,10 @@
                     "description": "A human-friendly name used as an identifier in APIs that support this option.",
                     "type": "string"
                 },
-                "description": {
-                    "description": "A human-friendly description.",
-                    "type": "string"
-                },
                 "placementPolicy": {
                     "description": "Placement policy for the project. Determines how a zone will be selected for provisioning. DEFAULT, SPREAD or SPREAD_MEMORY.",
                     "type": "string",
                     "example": "DEFAULT"
-                },
-                "constraints": {
-                    "description": "List of storage, network and extensibility constraints to be applied when provisioning through this project.",
-                    "additionalProperties": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/definitions/Constraint"
-                        }
-                    },
-                    "type": "object",
-                    "example": "{\"network\":[{\"mandatory\": \"true\", \"expression\": \"env:dev\"}],\"storage\":[{\"mandatory\": \"false\", \"expression\": \"gold\"}],\"extensibility\":[{\"mandatory\": \"false\", \"expression\": \"key:value\"}]}"
                 },
                 "administrators": {
                     "description": "List of administrator users associated with the project. Only administrators can manage project's configuration.",
@@ -19073,6 +19389,14 @@
                         "$ref": "#/definitions/User"
                     },
                     "example": "[{ \"email\":\"administrator@vmware.com\" }]"
+                },
+                "supervisors": {
+                    "description": "List of supervisor users associated with the project. ",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/User"
+                    },
+                    "example": "[ { \"email\":\"supervisor@vmware.com\" } ]"
                 }
             }
         },
@@ -19183,9 +19507,49 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
+                },
+                "_links": {
+                    "description": "HATEOAS of the entity",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/Href"
+                    },
+                    "type": "object"
+                },
+                "externalRegionId": {
+                    "description": "Id of datacenter in which the storage policy is present.",
+                    "type": "string",
+                    "example": "Datacenter:datacenter-2"
+                },
+                "description": {
+                    "description": "A human-friendly description.",
+                    "type": "string",
+                    "example": "my-description"
+                },
+                "externalId": {
+                    "description": "External entity Id on the provider side.",
+                    "type": "string",
+                    "example": "i-cfe4-e241-e53b-756a9a2e25d2"
+                },
+                "orgId": {
+                    "description": "The id of the organization this entity belongs to.",
+                    "type": "string",
+                    "example": "42413b31-1716-477e-9a88-9dc1c3cb1cdf"
+                },
+                "tags": {
+                    "description": "A set of tag keys and optional values that were set on this storage policy.",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Tag"
+                    },
+                    "example": "[ { \"key\" : \"vmencryption\", \"value\": \" \" } ]"
                 },
                 "createdAt": {
                     "description": "Date when the entity was created. The date is in ISO 8601 and UTC.",
@@ -19201,55 +19565,20 @@
                     },
                     "example": "[9e49]"
                 },
-                "_links": {
-                    "description": "HATEOAS of the entity",
-                    "additionalProperties": {
-                        "$ref": "#/definitions/Href"
-                    },
-                    "type": "object"
-                },
-                "externalRegionId": {
-                    "description": "Id of datacenter in which the storage policy is present.",
-                    "type": "string",
-                    "example": "Datacenter:datacenter-2"
-                },
                 "name": {
                     "description": "A human-friendly name used as an identifier in APIs that support this option.",
                     "type": "string",
                     "example": "my-name"
-                },
-                "description": {
-                    "description": "A human-friendly description.",
-                    "type": "string",
-                    "example": "my-description"
-                },
-                "externalId": {
-                    "description": "External entity Id on the provider side.",
-                    "type": "string",
-                    "example": "i-cfe4-e241-e53b-756a9a2e25d2"
                 },
                 "id": {
                     "description": "The id of this resource instance",
                     "type": "string",
                     "example": "9e49"
                 },
-                "orgId": {
-                    "description": "The id of the organization this entity belongs to.",
-                    "type": "string",
-                    "example": "42413b31-1716-477e-9a88-9dc1c3cb1cdf"
-                },
                 "updatedAt": {
                     "description": "Date when the entity was last updated. The date is ISO 8601 and UTC.",
                     "type": "string",
                     "example": "2012-09-27"
-                },
-                "tags": {
-                    "description": "A set of tag keys and optional values that were set on this storage policy.",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Tag"
-                    },
-                    "example": "[ { \"key\" : \"vmencryption\", \"value\": \" \" } ]"
                 }
             }
         },
@@ -19304,9 +19633,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "createdAt": {
                     "description": "Date when the entity was created. The date is in ISO 8601 and UTC.",
@@ -19461,16 +19795,19 @@
             "type": "object",
             "required": [
                 "_links",
-                "cidr",
                 "externalRegionId",
-                "externalZoneId",
                 "id"
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "_links": {
                     "description": "HATEOAS of the entity",
@@ -19891,9 +20228,7 @@
             "required": [
                 "hostName",
                 "name",
-                "password",
-                "regions",
-                "username"
+                "regions"
             ],
             "properties": {
                 "hostName": {
@@ -19940,7 +20275,7 @@
                     "example": "[ { \"key\" : \"env\", \"value\": \"dev\" } ]"
                 },
                 "password": {
-                    "description": "Password for the user used to authenticate with the cloud Account",
+                    "description": "Password for the user used to authenticate with the cloud Account. Not required when environment is set to aap.",
                     "type": "string",
                     "example": "cndhjslacd90ascdbasyoucbdh"
                 },
@@ -19948,6 +20283,11 @@
                     "description": "Create default cloud zones for the enabled regions.",
                     "type": "boolean",
                     "example": true
+                },
+                "environment": {
+                    "description": "The environment where data collectors are deployed. When the data collectors are deployed on an aap-based cloud gateway appliance, use \"aap\".",
+                    "type": "string",
+                    "example": "aap"
                 },
                 "dcid": {
                     "description": "Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors.\nNote: Data collector endpoints are not available in vRA on-prem release.",
@@ -19971,7 +20311,7 @@
                     "example": "{ \"42f3e0d199d134755684cd935435a\": \"BIDIRECTIONAL\" }"
                 },
                 "username": {
-                    "description": "Username to authenticate with the cloud account",
+                    "description": "Username to authenticate with the cloud account. Not required when environment is set to aap.",
                     "type": "string",
                     "example": "administrator@mycompany.com"
                 }
@@ -20014,9 +20354,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "createdAt": {
                     "description": "Date when the entity was created. The date is in ISO 8601 and UTC.",
@@ -20127,9 +20472,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "createdAt": {
                     "description": "Date when the entity was created. The date is in ISO 8601 and UTC.",
@@ -20423,16 +20773,20 @@
             "required": [
                 "_links",
                 "externalRegionId",
-                "externalZoneId",
                 "gateway",
                 "id",
                 "natRules"
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "_links": {
                     "description": "HATEOAS of the entity",
@@ -20549,9 +20903,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "_links": {
                     "description": "HATEOAS of the entity",
@@ -20640,9 +20999,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "createdAt": {
                     "description": "Date when the entity was created. The date is in ISO 8601 and UTC.",
@@ -20706,9 +21070,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "_links": {
                     "description": "HATEOAS of the entity",
@@ -20823,9 +21192,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "deviceType": {
                     "description": "Indicates the type of storage device.",
@@ -20918,9 +21292,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "createdAt": {
                     "description": "Date when the entity was created. The date is in ISO 8601 and UTC.",
@@ -21971,7 +22350,7 @@
                     "example": "any, 10.20.156.101"
                 },
                 "kind": {
-                    "description": "Kind of NAT: NAT44/NAT64/NAT66. Only NAT44 is supported currently and it is the default value.",
+                    "description": "Kind of NAT: NAT44/NAT64/NAT66. Only NAT44 is supported currently and it is the default value",
                     "type": "string",
                     "example": "NAT44"
                 },
@@ -22120,15 +22499,19 @@
             "required": [
                 "_links",
                 "externalRegionId",
-                "externalZoneId",
                 "id",
                 "routes"
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "address": {
                     "description": "Primary address allocated or in use by this load balancer. The address could be an in the form of a publicly resolvable DNS name or an IP address. ",
@@ -22255,9 +22638,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "addresses": {
                     "description": "A list of IP addresses allocated or in use by this network interface.",
@@ -22680,9 +23068,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "hostName": {
                     "description": "Host name for the vSphere cloud account",
@@ -22726,6 +23119,11 @@
                         "$ref": "#/definitions/Region"
                     }
                 },
+                "environment": {
+                    "description": "Environment of the data collector, will be available and set as 'aap' for vSphere+ cloud accounts",
+                    "type": "string",
+                    "example": "aap"
+                },
                 "customProperties": {
                     "description": "Additional properties that may be used to extend the base type.",
                     "additionalProperties": {
@@ -22735,7 +23133,7 @@
                     "example": "{ \"isExternal\" : \"false\" }"
                 },
                 "dcid": {
-                    "description": "Identifier of a data collector vm deployed in the on premise infrastructure.",
+                    "description": "Identifier of a data collector vm deployed in the on premise infrastructure. If environment is equal to 'aap', dcid refers to the id of cloud gateway appliance.",
                     "type": "string",
                     "example": "23959a1e-18bc-4f0c-ac49-b5aeb4b6eef4"
                 },
@@ -22916,9 +23314,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "_links": {
                     "description": "HATEOAS of the entity",
@@ -23157,9 +23560,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "createdAt": {
                     "description": "Date when the entity was created. The date is in ISO 8601 and UTC.",
@@ -23458,14 +23866,18 @@
             "required": [
                 "_links",
                 "externalRegionId",
-                "externalZoneId",
                 "id"
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "lifecycleState": {
                     "description": "Lifecycle status of the compute instance",
@@ -23697,9 +24109,7 @@
             "description": "Specification for a vSphere cloud account.<br><br>A cloud account identifies a cloud account type and an account-specific deployment region or data center where the associated cloud account resources are hosted.",
             "type": "object",
             "required": [
-                "hostName",
-                "password",
-                "username"
+                "hostName"
             ],
             "properties": {
                 "hostName": {
@@ -23746,7 +24156,7 @@
                     "example": "[ { \"key\" : \"env\", \"value\": \"dev\" } ]"
                 },
                 "password": {
-                    "description": "Password for the user used to authenticate with the cloud Account",
+                    "description": "Password for the user used to authenticate with the cloud Account. Not required when environment is set to aap.",
                     "type": "string",
                     "example": "cndhjslacd90ascdbasyoucbdh"
                 },
@@ -23754,6 +24164,11 @@
                     "description": "Create default cloud zones for the enabled regions.",
                     "type": "boolean",
                     "example": true
+                },
+                "environment": {
+                    "description": "The environment where data collectors are deployed. When the data collectors are deployed on an aap-based cloud gateway appliance, use \"aap\".",
+                    "type": "string",
+                    "example": "aap"
                 },
                 "dcid": {
                     "description": "Identifier of a data collector vm deployed in the on premise infrastructure. Refer to the data-collector API to create or list data collectors.\nNote: Data collector endpoints are not available in vRA on-prem release.",
@@ -23777,7 +24192,7 @@
                     "example": "{ \"42f3e0d199d134755684cd935435a\": \"BIDIRECTIONAL\" }"
                 },
                 "username": {
-                    "description": "Username to authenticate with the cloud account",
+                    "description": "Username to authenticate with the cloud account. Not required when environment is set to aap.",
                     "type": "string",
                     "example": "administrator@mycompany.com"
                 }
@@ -23842,9 +24257,47 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
+                },
+                "_links": {
+                    "description": "HATEOAS of the entity",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/Href"
+                    },
+                    "type": "object"
+                },
+                "integrationProperties": {
+                    "description": "Integration specific propertiesNote: Integration Properties can be blank for integrations requiring only username and password.",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "type": "object",
+                    "example": "{ \"userName\": \"admin\" }"
+                },
+                "description": {
+                    "description": "A human-friendly description.",
+                    "type": "string",
+                    "example": "my-description"
+                },
+                "orgId": {
+                    "description": "The id of the organization this entity belongs to.",
+                    "type": "string",
+                    "example": "42413b31-1716-477e-9a88-9dc1c3cb1cdf"
+                },
+                "tags": {
+                    "description": "A set of tag keys and optional values that were set on the Integration",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Tag"
+                    },
+                    "example": "[ { \"key\" : \"env\", \"value\": \"dev\" } ]"
                 },
                 "createdAt": {
                     "description": "Date when the entity was created. The date is in ISO 8601 and UTC.",
@@ -23864,53 +24317,20 @@
                     "type": "object",
                     "example": "{ \"isExternal\" : \"true\" }"
                 },
-                "_links": {
-                    "description": "HATEOAS of the entity",
-                    "additionalProperties": {
-                        "$ref": "#/definitions/Href"
-                    },
-                    "type": "object"
-                },
-                "integrationProperties": {
-                    "description": "Integration specific propertiesNote: Integration Properties can be blank for integrations requiring only username and password.",
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "type": "object",
-                    "example": "{ \"userName\": \"admin\" }"
-                },
                 "name": {
                     "description": "A human-friendly name used as an identifier in APIs that support this option.",
                     "type": "string",
                     "example": "my-name"
-                },
-                "description": {
-                    "description": "A human-friendly description.",
-                    "type": "string",
-                    "example": "my-description"
                 },
                 "id": {
                     "description": "The id of this resource instance",
                     "type": "string",
                     "example": "9e49"
                 },
-                "orgId": {
-                    "description": "The id of the organization this entity belongs to.",
-                    "type": "string",
-                    "example": "42413b31-1716-477e-9a88-9dc1c3cb1cdf"
-                },
                 "updatedAt": {
                     "description": "Date when the entity was last updated. The date is ISO 8601 and UTC.",
                     "type": "string",
                     "example": "2012-09-27"
-                },
-                "tags": {
-                    "description": "A set of tag keys and optional values that were set on the Integration",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Tag"
-                    },
-                    "example": "[ { \"key\" : \"env\", \"value\": \"dev\" } ]"
                 }
             }
         },
@@ -23951,9 +24371,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "_links": {
                     "description": "HATEOAS of the entity",
@@ -24140,9 +24565,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "_links": {
                     "description": "HATEOAS of the entity",
@@ -24295,9 +24725,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "_links": {
                     "description": "HATEOAS of the entity",
@@ -24537,9 +24972,14 @@
             ],
             "properties": {
                 "owner": {
-                    "description": "Email of the user that owns the entity.",
+                    "description": "Email of the user or display name of the group that owns the entity.",
                     "type": "string",
                     "example": "csp@vmware.com"
+                },
+                "ownerType": {
+                    "description": "Type of a owner(user/ad_group) that owns the entity.",
+                    "type": "string",
+                    "example": "ad_group"
                 },
                 "osFamily": {
                     "description": "Operating System family of the image.",
@@ -24623,6 +25063,11 @@
             "properties": {
                 "phoneHomeShouldWait": {
                     "description": "A phone_home module will be added to the Cloud Config and the provisioning will wait on a callback prior proceeding",
+                    "type": "boolean",
+                    "example": true
+                },
+                "deploymentFailOnCloudConfigRuntimeError": {
+                    "description": "In case an error is thrown while processing cloud-config whether the provisioning process should fail or continue.",
                     "type": "boolean",
                     "example": true
                 },

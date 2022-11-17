@@ -66,9 +66,13 @@ type CloudAccountVcf struct {
 	// Example: 42413b31-1716-477e-9a88-9dc1c3cb1cdf
 	OrgID string `json:"orgId,omitempty"`
 
-	// Email of the user that owns the entity.
+	// Email of the user or display name of the group that owns the entity.
 	// Example: csp@vmware.com
 	Owner string `json:"owner,omitempty"`
+
+	// Type of a owner(user/ad_group) that owns the entity.
+	// Example: ad_group
+	OwnerType string `json:"ownerType,omitempty"`
 
 	// SDDC Manager ID
 	// Example: 2e5bb71d-0c14-4066-a999-2cb6c693654a

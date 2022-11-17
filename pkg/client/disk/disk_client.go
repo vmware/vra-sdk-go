@@ -650,7 +650,7 @@ func (a *Client) RevertDiskSnapshot(params *RevertDiskSnapshotParams, opts ...Cl
 	op := &runtime.ClientOperation{
 		ID:                 "revertDiskSnapshot",
 		Method:             "POST",
-		PathPattern:        "/iaas/api/block-devices/{id}/operations/revert",
+		PathPattern:        "/iaas/api/block-devices/{diskId}/operations/revert",
 		ProducesMediaTypes: []string{"app/json", "application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
