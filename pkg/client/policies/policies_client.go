@@ -30,56 +30,15 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreatePolicyUsingPOST5(params *CreatePolicyUsingPOST5Params, opts ...ClientOption) (*CreatePolicyUsingPOST5OK, *CreatePolicyUsingPOST5Created, error)
-
 	DeletePolicyUsingDELETE5(params *DeletePolicyUsingDELETE5Params, opts ...ClientOption) (*DeletePolicyUsingDELETE5NoContent, error)
+
+	DryRunPolicyUsingPOST2(params *DryRunPolicyUsingPOST2Params, opts ...ClientOption) (*DryRunPolicyUsingPOST2OK, *DryRunPolicyUsingPOST2Accepted, error)
 
 	GetPoliciesUsingGET5(params *GetPoliciesUsingGET5Params, opts ...ClientOption) (*GetPoliciesUsingGET5OK, error)
 
 	GetPolicyUsingGET5(params *GetPolicyUsingGET5Params, opts ...ClientOption) (*GetPolicyUsingGET5OK, error)
 
 	SetTransport(transport runtime.ClientTransport)
-}
-
-/*
-CreatePolicyUsingPOST5 creates a new policy or updates an existing policy
-
-Create a new policy or update an existing policy based on request body and validate its fields according to business rules.
-*/
-func (a *Client) CreatePolicyUsingPOST5(params *CreatePolicyUsingPOST5Params, opts ...ClientOption) (*CreatePolicyUsingPOST5OK, *CreatePolicyUsingPOST5Created, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewCreatePolicyUsingPOST5Params()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "createPolicyUsingPOST_5",
-		Method:             "POST",
-		PathPattern:        "/policy/api/policies",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &CreatePolicyUsingPOST5Reader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, nil, err
-	}
-	switch value := result.(type) {
-	case *CreatePolicyUsingPOST5OK:
-		return value, nil, nil
-	case *CreatePolicyUsingPOST5Created:
-		return nil, value, nil
-	}
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for policies: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
 }
 
 /*
@@ -119,6 +78,47 @@ func (a *Client) DeletePolicyUsingDELETE5(params *DeletePolicyUsingDELETE5Params
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for deletePolicyUsingDELETE_5: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DryRunPolicyUsingPOST2 triggers a policy dry run
+
+Dry-run an existing policy to rehearse actual policy effect on application.
+*/
+func (a *Client) DryRunPolicyUsingPOST2(params *DryRunPolicyUsingPOST2Params, opts ...ClientOption) (*DryRunPolicyUsingPOST2OK, *DryRunPolicyUsingPOST2Accepted, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDryRunPolicyUsingPOST2Params()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "dryRunPolicyUsingPOST_2",
+		Method:             "POST",
+		PathPattern:        "/policy/api/policies",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DryRunPolicyUsingPOST2Reader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, nil, err
+	}
+	switch value := result.(type) {
+	case *DryRunPolicyUsingPOST2OK:
+		return value, nil, nil
+	case *DryRunPolicyUsingPOST2Accepted:
+		return nil, value, nil
+	}
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for policies: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

@@ -65,7 +65,7 @@ type DeleteAwsCloudAccountParams struct {
 
 	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
-	APIVersion *string
+	APIVersion string
 
 	/* ID.
 
@@ -127,13 +127,13 @@ func (o *DeleteAwsCloudAccountParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithAPIVersion adds the aPIVersion to the delete aws cloud account params
-func (o *DeleteAwsCloudAccountParams) WithAPIVersion(aPIVersion *string) *DeleteAwsCloudAccountParams {
+func (o *DeleteAwsCloudAccountParams) WithAPIVersion(aPIVersion string) *DeleteAwsCloudAccountParams {
 	o.SetAPIVersion(aPIVersion)
 	return o
 }
 
 // SetAPIVersion adds the apiVersion to the delete aws cloud account params
-func (o *DeleteAwsCloudAccountParams) SetAPIVersion(aPIVersion *string) {
+func (o *DeleteAwsCloudAccountParams) SetAPIVersion(aPIVersion string) {
 	o.APIVersion = aPIVersion
 }
 
@@ -156,20 +156,13 @@ func (o *DeleteAwsCloudAccountParams) WriteToRequest(r runtime.ClientRequest, re
 	}
 	var res []error
 
-	if o.APIVersion != nil {
+	// query param apiVersion
+	qrAPIVersion := o.APIVersion
+	qAPIVersion := qrAPIVersion
+	if qAPIVersion != "" {
 
-		// query param apiVersion
-		var qrAPIVersion string
-
-		if o.APIVersion != nil {
-			qrAPIVersion = *o.APIVersion
-		}
-		qAPIVersion := qrAPIVersion
-		if qAPIVersion != "" {
-
-			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
-				return err
-			}
+		if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+			return err
 		}
 	}
 

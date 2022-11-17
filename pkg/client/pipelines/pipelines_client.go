@@ -66,6 +66,10 @@ type ClientService interface {
 
 	PatchPipelineByNameUsingPATCH(params *PatchPipelineByNameUsingPATCHParams, opts ...ClientOption) (*PatchPipelineByNameUsingPATCHOK, error)
 
+	PatchPipelineGlobalByNameUsingPATCH(params *PatchPipelineGlobalByNameUsingPATCHParams, opts ...ClientOption) (*PatchPipelineGlobalByNameUsingPATCHOK, error)
+
+	PatchPipelineGlobalUsingPATCH(params *PatchPipelineGlobalUsingPATCHParams, opts ...ClientOption) (*PatchPipelineGlobalUsingPATCHOK, error)
+
 	PatchPipelineUsingPATCH(params *PatchPipelineUsingPATCHParams, opts ...ClientOption) (*PatchPipelineUsingPATCHOK, error)
 
 	UpdatePipelineByNameUsingPUT(params *UpdatePipelineByNameUsingPUTParams, opts ...ClientOption) (*UpdatePipelineByNameUsingPUTOK, error)
@@ -794,6 +798,86 @@ func (a *Client) PatchPipelineByNameUsingPATCH(params *PatchPipelineByNameUsingP
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for patchPipelineByNameUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PatchPipelineGlobalByNameUsingPATCH updates a pipeline by pipeline name to be shared across projects
+
+Update a pipeline to be shared across projects
+*/
+func (a *Client) PatchPipelineGlobalByNameUsingPATCH(params *PatchPipelineGlobalByNameUsingPATCHParams, opts ...ClientOption) (*PatchPipelineGlobalByNameUsingPATCHOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchPipelineGlobalByNameUsingPATCHParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchPipelineGlobalByNameUsingPATCH",
+		Method:             "PATCH",
+		PathPattern:        "/codestream/api/pipelines/{project}/{name}/global",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchPipelineGlobalByNameUsingPATCHReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchPipelineGlobalByNameUsingPATCHOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchPipelineGlobalByNameUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PatchPipelineGlobalUsingPATCH updates a pipeline by id to be shared across all projects in an org
+
+Update a pipeline to be shared across projects
+*/
+func (a *Client) PatchPipelineGlobalUsingPATCH(params *PatchPipelineGlobalUsingPATCHParams, opts ...ClientOption) (*PatchPipelineGlobalUsingPATCHOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchPipelineGlobalUsingPATCHParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchPipelineGlobalUsingPATCH",
+		Method:             "PATCH",
+		PathPattern:        "/codestream/api/pipelines/{id}/global",
+		ProducesMediaTypes: []string{"*/*"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchPipelineGlobalUsingPATCHReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchPipelineGlobalUsingPATCHOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchPipelineGlobalUsingPATCH: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

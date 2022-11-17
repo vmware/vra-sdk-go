@@ -51,7 +51,7 @@ GetDeploymentsOK describes a response with status code 200, with default header 
 successful operation
 */
 type GetDeploymentsOK struct {
-	Payload []*models.DeploymentResult
+	Payload *models.DeploymentResult
 }
 
 // IsSuccess returns true when this get deployments o k response has a 2xx status code
@@ -87,14 +87,16 @@ func (o *GetDeploymentsOK) String() string {
 	return fmt.Sprintf("[GET /iaas/api/deployments][%d] getDeploymentsOK  %+v", 200, o.Payload)
 }
 
-func (o *GetDeploymentsOK) GetPayload() []*models.DeploymentResult {
+func (o *GetDeploymentsOK) GetPayload() *models.DeploymentResult {
 	return o.Payload
 }
 
 func (o *GetDeploymentsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.DeploymentResult)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

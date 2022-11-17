@@ -10,6 +10,7 @@ rename() {
 }
 
 rename v_sphere vsphere
+rename v_center vcenter
 rename v_c_f vcf
 rename vm_c vmc
 rename a_w_s aws
@@ -31,6 +32,7 @@ find pkg -type f -name '*.go' -exec sed -i "$BACKUP" 's/v_c_f/vcf/g' {} +
 find pkg -type f -name '*.go' -exec sed -i "$BACKUP" 's/_v_m_c_/_vmc_/g' {} +
 find pkg -type f -name '*.go' -exec sed -i "$BACKUP" 's/_v_sphere_/_vsphere_/g' {} +
 find pkg -type f -name '*.go' -exec sed -i "$BACKUP" 's/v_sphere_/vsphere_/g' {} +
+find pkg -type f -name '*.go' -exec sed -i "$BACKUP" 's/v_center_/vcenter_/g' {} +
 find pkg -type f -name '*.go' -exec sed -i "$BACKUP" 's/p_k_s_/pks_/g' {} +
 find pkg -type f -name '*.go' -exec sed -i "$BACKUP" 's/_d_e_l_e_t_e/_delete/g' {} +
 find pkg -type f -name '*.go' -exec sed -i "$BACKUP" 's/_g_e_t/_get/g' {} +

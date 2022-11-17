@@ -1532,6 +1532,25 @@
             },
             "title": "User",
             "description": "A representation of a user"
+        },
+        "UserExperiencesResponse": {
+            "type": "object",
+            "discriminator": "Project callback response containing set of user experiences that needs to be activated",
+            "properties": {
+                "completeResponse": {
+                    "type": "boolean",
+                    "description": "Specifies if all services have responded or not"
+                },
+                "userExperiences": {
+                    "type": "array",
+                    "description": "Set of available User experiences",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "title": "UserExperiencesResponse",
+            "description": "Project callback response containing set of user experiences that needs to be activated"
         }
     }
 }

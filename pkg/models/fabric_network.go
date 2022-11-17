@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// FabricNetwork State object representing a network on a external cloud provider.<br>**HATEOAS** links:<br>**region** - Region - Region for the network.<br>**self** - FabricNetwork - Self link to this network
+// FabricNetwork State object representing a network on a external cloud provider.<br>**HATEOAS** links:<br>**region** - Region - Region for the network.<br>**network-domain** - Network domain - Network domain for the network.<br>**self** - FabricNetwork - Self link to this network
 //
 // swagger:model FabricNetwork
 type FabricNetwork struct {
@@ -48,7 +48,7 @@ type FabricNetwork struct {
 	// Example: i-cfe4-e241-e53b-756a9a2e25d2
 	ExternalID string `json:"externalId,omitempty"`
 
-	// The id of the region for which this network is defined
+	// The id of the region for which this network is defined.
 	// Example: us-east-1
 	ExternalRegionID string `json:"externalRegionId,omitempty"`
 
@@ -71,13 +71,21 @@ type FabricNetwork struct {
 	// Example: my-name
 	Name string `json:"name,omitempty"`
 
+	// The id of the network domain, that contains this fabric network.
+	// Example: 26dfa6f8-fcb7-40c2-8afe-2e069246fdeb
+	NetworkDomainID string `json:"networkDomainId,omitempty"`
+
 	// The id of the organization this entity belongs to.
 	// Example: 42413b31-1716-477e-9a88-9dc1c3cb1cdf
 	OrgID string `json:"orgId,omitempty"`
 
-	// Email of the user that owns the entity.
+	// Email of the user or display name of the group that owns the entity.
 	// Example: csp@vmware.com
 	Owner string `json:"owner,omitempty"`
+
+	// Type of a owner(user/ad_group) that owns the entity.
+	// Example: ad_group
+	OwnerType string `json:"ownerType,omitempty"`
 
 	// A set of tag keys and optional values that were set on this resource instance.
 	// Example: [ { \"key\" : \"fast-network\", \"value\": \"true\" } ]
@@ -86,6 +94,10 @@ type FabricNetwork struct {
 	// Date when the entity was last updated. The date is ISO 8601 and UTC.
 	// Example: 2012-09-27
 	UpdatedAt string `json:"updatedAt,omitempty"`
+
+	// The availability zone for which this network is defined.
+	// Example: us-west-1a
+	ZoneID string `json:"zoneId,omitempty"`
 }
 
 // Validate validates this fabric network

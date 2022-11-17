@@ -86,11 +86,11 @@ func (o *RevertDiskSnapshotAccepted) IsCode(code int) bool {
 }
 
 func (o *RevertDiskSnapshotAccepted) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/revert][%d] revertDiskSnapshotAccepted  %+v", 202, o.Payload)
+	return fmt.Sprintf("[POST /iaas/api/block-devices/{diskId}/operations/revert][%d] revertDiskSnapshotAccepted  %+v", 202, o.Payload)
 }
 
 func (o *RevertDiskSnapshotAccepted) String() string {
-	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/revert][%d] revertDiskSnapshotAccepted  %+v", 202, o.Payload)
+	return fmt.Sprintf("[POST /iaas/api/block-devices/{diskId}/operations/revert][%d] revertDiskSnapshotAccepted  %+v", 202, o.Payload)
 }
 
 func (o *RevertDiskSnapshotAccepted) GetPayload() *models.RequestTracker {
@@ -149,11 +149,11 @@ func (o *RevertDiskSnapshotForbidden) IsCode(code int) bool {
 }
 
 func (o *RevertDiskSnapshotForbidden) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/revert][%d] revertDiskSnapshotForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[POST /iaas/api/block-devices/{diskId}/operations/revert][%d] revertDiskSnapshotForbidden  %+v", 403, o.Payload)
 }
 
 func (o *RevertDiskSnapshotForbidden) String() string {
-	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/revert][%d] revertDiskSnapshotForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[POST /iaas/api/block-devices/{diskId}/operations/revert][%d] revertDiskSnapshotForbidden  %+v", 403, o.Payload)
 }
 
 func (o *RevertDiskSnapshotForbidden) GetPayload() *models.ServiceErrorResponse {
@@ -212,11 +212,11 @@ func (o *RevertDiskSnapshotNotFound) IsCode(code int) bool {
 }
 
 func (o *RevertDiskSnapshotNotFound) Error() string {
-	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/revert][%d] revertDiskSnapshotNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[POST /iaas/api/block-devices/{diskId}/operations/revert][%d] revertDiskSnapshotNotFound  %+v", 404, o.Payload)
 }
 
 func (o *RevertDiskSnapshotNotFound) String() string {
-	return fmt.Sprintf("[POST /iaas/api/block-devices/{id}/operations/revert][%d] revertDiskSnapshotNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[POST /iaas/api/block-devices/{diskId}/operations/revert][%d] revertDiskSnapshotNotFound  %+v", 404, o.Payload)
 }
 
 func (o *RevertDiskSnapshotNotFound) GetPayload() *models.Error {

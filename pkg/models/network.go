@@ -28,8 +28,7 @@ type Network struct {
 
 	// IPv4 address range of the network in CIDR format
 	// Example: 10.10.0.0/16
-	// Required: true
-	Cidr *string `json:"cidr"`
+	Cidr string `json:"cidr,omitempty"`
 
 	// Set of ids of the cloud accounts this resource belongs to.
 	// Example: [9e49]
@@ -63,8 +62,7 @@ type Network struct {
 
 	// The external zoneId of the resource.
 	// Example: us-east-1a
-	// Required: true
-	ExternalZoneID *string `json:"externalZoneId"`
+	ExternalZoneID string `json:"externalZoneId,omitempty"`
 
 	// The id of this resource instance
 	// Example: 9e49
@@ -79,9 +77,13 @@ type Network struct {
 	// Example: 42413b31-1716-477e-9a88-9dc1c3cb1cdf
 	OrgID string `json:"orgId,omitempty"`
 
-	// Email of the user that owns the entity.
+	// Email of the user or display name of the group that owns the entity.
 	// Example: csp@vmware.com
 	Owner string `json:"owner,omitempty"`
+
+	// Type of a owner(user/ad_group) that owns the entity.
+	// Example: ad_group
+	OwnerType string `json:"ownerType,omitempty"`
 
 	// The id of the project this resource belongs to.
 	// Example: 9e49
@@ -111,19 +113,11 @@ func (m *Network) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateCidr(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateCloudAccountIds(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateExternalRegionID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateExternalZoneID(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -168,15 +162,6 @@ func (m *Network) validateLinks(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *Network) validateCidr(formats strfmt.Registry) error {
-
-	if err := validate.Required("cidr", "body", m.Cidr); err != nil {
-		return err
-	}
-
-	return nil
-}
-
 func (m *Network) validateCloudAccountIds(formats strfmt.Registry) error {
 	if swag.IsZero(m.CloudAccountIds) { // not required
 		return nil
@@ -192,15 +177,6 @@ func (m *Network) validateCloudAccountIds(formats strfmt.Registry) error {
 func (m *Network) validateExternalRegionID(formats strfmt.Registry) error {
 
 	if err := validate.Required("externalRegionId", "body", m.ExternalRegionID); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *Network) validateExternalZoneID(formats strfmt.Registry) error {
-
-	if err := validate.Required("externalZoneId", "body", m.ExternalZoneID); err != nil {
 		return err
 	}
 

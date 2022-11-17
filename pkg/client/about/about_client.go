@@ -46,7 +46,7 @@ type ClientService interface {
 /*
 	GetAboutPage gets about page
 
-	The page contains information about the supported API versions and the latest API version. The version parameter is optional but highly recommended.
+	The page contains information about the supported API versions and the latest API version. The version parameter is mandatory for endpoints introduced after version 2019-01-15and optional for the rest though highly recommended.
 
 If you do not specify explicitly an exact version, you will be calling the latest supported General Availability API version.
 Here is an example of a call which specifies the exact version you are using: `GET /iaas/api/network-profiles?apiVersion=2021-07-15`

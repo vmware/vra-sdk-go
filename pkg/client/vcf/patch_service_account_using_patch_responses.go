@@ -127,7 +127,7 @@ func NewPatchServiceAccountUsingPATCHNoContent() *PatchServiceAccountUsingPATCHN
 /*
 PatchServiceAccountUsingPATCHNoContent describes a response with status code 204, with default header values.
 
-(empty)
+Success
 */
 type PatchServiceAccountUsingPATCHNoContent struct {
 	Payload []*models.VcfServiceCredential

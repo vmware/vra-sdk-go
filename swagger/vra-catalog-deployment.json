@@ -4625,9 +4625,9 @@
                 "tags": [
                     "Policies"
                 ],
-                "summary": "Creates a new policy or updates an existing policy.",
-                "description": "Create a new policy or update an existing policy based on request body and validate its fields according to business rules.",
-                "operationId": "createPolicyUsingPOST_5",
+                "summary": "Trigger a policy dry-run.",
+                "description": "Dry-run an existing policy to rehearse actual policy effect on application.",
+                "operationId": "dryRunPolicyUsingPOST_2",
                 "consumes": [
                     "application/json"
                 ],
@@ -4640,35 +4640,27 @@
                         "type": "string"
                     },
                     {
+                        "name": "dryRun",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
                         "in": "body",
                         "name": "policy",
-                        "description": "The policy to be created or updated",
+                        "description": "The policy to be created",
                         "required": false,
                         "schema": {
                             "$ref": "#/definitions/Policy"
                         }
-                    },
-                    {
-                        "name": "validationOnly",
-                        "in": "query",
-                        "description": "For a dry run that will do policy validation only instead of creating or updating a policy",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": false
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/Policy"
-                        }
+                        "description": "OK"
                     },
-                    "201": {
-                        "description": "Created",
-                        "schema": {
-                            "$ref": "#/definitions/Policy"
-                        }
+                    "202": {
+                        "description": "Accepted"
                     },
                     "400": {
                         "description": "Bad Request"
@@ -5699,7 +5691,7 @@
                 ],
                 "summary": "Create a new pricing card",
                 "description": "Create a new pricing card based on request body and validate its field according to business rules.",
-                "operationId": "createPolicyUsingPOST_4",
+                "operationId": "createPolicyUsingPOST_2",
                 "consumes": [
                     "application/json"
                 ],
@@ -7271,6 +7263,10 @@
                 "scenarioId"
             ],
             "properties": {
+                "body": {
+                    "type": "string",
+                    "description": "Notification scenario body"
+                },
                 "enabled": {
                     "type": "boolean",
                     "description": "Notification scenario enabled"
@@ -7290,6 +7286,10 @@
                 "scenarioName": {
                     "type": "string",
                     "description": "Notification scenario name"
+                },
+                "subject": {
+                    "type": "string",
+                    "description": "Notification scenario subject"
                 }
             },
             "title": "NotificationScenarioConfig",

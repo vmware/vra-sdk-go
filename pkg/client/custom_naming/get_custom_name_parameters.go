@@ -65,7 +65,7 @@ type GetCustomNameParams struct {
 
 	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
-	APIVersion *string
+	APIVersion string
 
 	/* ID.
 
@@ -127,13 +127,13 @@ func (o *GetCustomNameParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithAPIVersion adds the aPIVersion to the get custom name params
-func (o *GetCustomNameParams) WithAPIVersion(aPIVersion *string) *GetCustomNameParams {
+func (o *GetCustomNameParams) WithAPIVersion(aPIVersion string) *GetCustomNameParams {
 	o.SetAPIVersion(aPIVersion)
 	return o
 }
 
 // SetAPIVersion adds the apiVersion to the get custom name params
-func (o *GetCustomNameParams) SetAPIVersion(aPIVersion *string) {
+func (o *GetCustomNameParams) SetAPIVersion(aPIVersion string) {
 	o.APIVersion = aPIVersion
 }
 
@@ -156,20 +156,13 @@ func (o *GetCustomNameParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 	}
 	var res []error
 
-	if o.APIVersion != nil {
+	// query param apiVersion
+	qrAPIVersion := o.APIVersion
+	qAPIVersion := qrAPIVersion
+	if qAPIVersion != "" {
 
-		// query param apiVersion
-		var qrAPIVersion string
-
-		if o.APIVersion != nil {
-			qrAPIVersion = *o.APIVersion
-		}
-		qAPIVersion := qrAPIVersion
-		if qAPIVersion != "" {
-
-			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
-				return err
-			}
+		if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+			return err
 		}
 	}
 

@@ -69,9 +69,13 @@ type FabricImage struct {
 	// Example: linux, win
 	OsFamily string `json:"osFamily,omitempty"`
 
-	// Email of the user that owns the entity.
+	// Email of the user or display name of the group that owns the entity.
 	// Example: csp@vmware.com
 	Owner string `json:"owner,omitempty"`
+
+	// Type of a owner(user/ad_group) that owns the entity.
+	// Example: ad_group
+	OwnerType string `json:"ownerType,omitempty"`
 
 	// Date when the entity was last updated. The date is ISO 8601 and UTC.
 	// Example: 2012-09-27

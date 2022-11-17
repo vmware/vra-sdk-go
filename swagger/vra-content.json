@@ -789,6 +789,7 @@
                         }
                     },
                     "204": {
+                        "description": "Success",
                         "schema": {
                             "type": "array",
                             "items": {
@@ -1081,6 +1082,9 @@
                 },
                 "url": {
                     "type": "string"
+                },
+                "useServiceCredentials": {
+                    "type": "boolean"
                 }
             },
             "title": "EndpointProperties"
@@ -1175,6 +1179,12 @@
                 },
                 "taskReference": {
                     "$ref": "#/definitions/URI"
+                },
+                "tenantLinks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 }
             },
             "title": "PhotonModelEndpointConfigRequest"

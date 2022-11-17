@@ -59,6 +59,10 @@ type IaaSProjectSpecification struct {
 	// Example: true
 	SharedResources *bool `json:"sharedResources,omitempty"`
 
+	// List of supervisor users associated with the project.
+	// Example: [ { \"email\":\"supervisor@vmware.com\" } ]
+	Supervisors []*User `json:"supervisors"`
+
 	// List of viewer users associated with the project.
 	// Example: [{ \"email\":\"viewer@vmware.com\" }]
 	Viewers []*User `json:"viewers"`
@@ -84,6 +88,10 @@ func (m *IaaSProjectSpecification) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSupervisors(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -191,6 +199,32 @@ func (m *IaaSProjectSpecification) validateName(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *IaaSProjectSpecification) validateSupervisors(formats strfmt.Registry) error {
+	if swag.IsZero(m.Supervisors) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Supervisors); i++ {
+		if swag.IsZero(m.Supervisors[i]) { // not required
+			continue
+		}
+
+		if m.Supervisors[i] != nil {
+			if err := m.Supervisors[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("supervisors" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("supervisors" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *IaaSProjectSpecification) validateViewers(formats strfmt.Registry) error {
 	if swag.IsZero(m.Viewers) { // not required
 		return nil
@@ -256,6 +290,10 @@ func (m *IaaSProjectSpecification) ContextValidate(ctx context.Context, formats 
 	}
 
 	if err := m.contextValidateMembers(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSupervisors(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -325,6 +363,26 @@ func (m *IaaSProjectSpecification) contextValidateMembers(ctx context.Context, f
 					return ve.ValidateName("members" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("members" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IaaSProjectSpecification) contextValidateSupervisors(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Supervisors); i++ {
+
+		if m.Supervisors[i] != nil {
+			if err := m.Supervisors[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("supervisors" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("supervisors" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

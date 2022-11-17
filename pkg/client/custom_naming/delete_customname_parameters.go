@@ -65,7 +65,7 @@ type DeleteCustomnameParams struct {
 
 	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
 	*/
-	APIVersion *string
+	APIVersion string
 
 	/* ID.
 
@@ -127,13 +127,13 @@ func (o *DeleteCustomnameParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithAPIVersion adds the aPIVersion to the delete customname params
-func (o *DeleteCustomnameParams) WithAPIVersion(aPIVersion *string) *DeleteCustomnameParams {
+func (o *DeleteCustomnameParams) WithAPIVersion(aPIVersion string) *DeleteCustomnameParams {
 	o.SetAPIVersion(aPIVersion)
 	return o
 }
 
 // SetAPIVersion adds the apiVersion to the delete customname params
-func (o *DeleteCustomnameParams) SetAPIVersion(aPIVersion *string) {
+func (o *DeleteCustomnameParams) SetAPIVersion(aPIVersion string) {
 	o.APIVersion = aPIVersion
 }
 
@@ -156,20 +156,13 @@ func (o *DeleteCustomnameParams) WriteToRequest(r runtime.ClientRequest, reg str
 	}
 	var res []error
 
-	if o.APIVersion != nil {
+	// query param apiVersion
+	qrAPIVersion := o.APIVersion
+	qAPIVersion := qrAPIVersion
+	if qAPIVersion != "" {
 
-		// query param apiVersion
-		var qrAPIVersion string
-
-		if o.APIVersion != nil {
-			qrAPIVersion = *o.APIVersion
-		}
-		qAPIVersion := qrAPIVersion
-		if qAPIVersion != "" {
-
-			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
-				return err
-			}
+		if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+			return err
 		}
 	}
 

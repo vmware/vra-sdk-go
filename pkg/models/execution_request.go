@@ -42,6 +42,14 @@ type ExecutionRequest interface {
 	Input() interface{}
 	SetInput(interface{})
 
+	// project Id
+	ProjectID() string
+	SetProjectID(string)
+
+	// project name
+	ProjectName() string
+	SetProjectName(string)
+
 	// source
 	Source() string
 	SetSource(string)
@@ -62,6 +70,10 @@ type executionRequest struct {
 	executionLinkField string
 
 	inputField interface{}
+
+	projectIdField string
+
+	projectNameField string
 
 	sourceField string
 
@@ -106,6 +118,26 @@ func (m *executionRequest) Input() interface{} {
 // SetInput sets the input of this polymorphic type
 func (m *executionRequest) SetInput(val interface{}) {
 	m.inputField = val
+}
+
+// ProjectID gets the project Id of this polymorphic type
+func (m *executionRequest) ProjectID() string {
+	return m.projectIdField
+}
+
+// SetProjectID sets the project Id of this polymorphic type
+func (m *executionRequest) SetProjectID(val string) {
+	m.projectIdField = val
+}
+
+// ProjectName gets the project name of this polymorphic type
+func (m *executionRequest) ProjectName() string {
+	return m.projectNameField
+}
+
+// SetProjectName sets the project name of this polymorphic type
+func (m *executionRequest) SetProjectName(val string) {
+	m.projectNameField = val
 }
 
 // Source gets the source of this polymorphic type

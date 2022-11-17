@@ -30,7 +30,7 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	CreatePolicyUsingPOST4(params *CreatePolicyUsingPOST4Params, opts ...ClientOption) (*CreatePolicyUsingPOST4OK, *CreatePolicyUsingPOST4Created, error)
+	CreatePolicyUsingPOST2(params *CreatePolicyUsingPOST2Params, opts ...ClientOption) (*CreatePolicyUsingPOST2OK, *CreatePolicyUsingPOST2Created, error)
 
 	DeletePolicyUsingDELETE4(params *DeletePolicyUsingDELETE4Params, opts ...ClientOption) (*DeletePolicyUsingDELETE4OK, *DeletePolicyUsingDELETE4NoContent, error)
 
@@ -44,24 +44,24 @@ type ClientService interface {
 }
 
 /*
-CreatePolicyUsingPOST4 creates a new pricing card
+CreatePolicyUsingPOST2 creates a new pricing card
 
 Create a new pricing card based on request body and validate its field according to business rules.
 */
-func (a *Client) CreatePolicyUsingPOST4(params *CreatePolicyUsingPOST4Params, opts ...ClientOption) (*CreatePolicyUsingPOST4OK, *CreatePolicyUsingPOST4Created, error) {
+func (a *Client) CreatePolicyUsingPOST2(params *CreatePolicyUsingPOST2Params, opts ...ClientOption) (*CreatePolicyUsingPOST2OK, *CreatePolicyUsingPOST2Created, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewCreatePolicyUsingPOST4Params()
+		params = NewCreatePolicyUsingPOST2Params()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "createPolicyUsingPOST_4",
+		ID:                 "createPolicyUsingPOST_2",
 		Method:             "POST",
 		PathPattern:        "/price/api/private/pricing-cards",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &CreatePolicyUsingPOST4Reader{formats: a.formats},
+		Reader:             &CreatePolicyUsingPOST2Reader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -74,9 +74,9 @@ func (a *Client) CreatePolicyUsingPOST4(params *CreatePolicyUsingPOST4Params, op
 		return nil, nil, err
 	}
 	switch value := result.(type) {
-	case *CreatePolicyUsingPOST4OK:
+	case *CreatePolicyUsingPOST2OK:
 		return value, nil, nil
-	case *CreatePolicyUsingPOST4Created:
+	case *CreatePolicyUsingPOST2Created:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue

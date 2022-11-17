@@ -35,6 +35,10 @@ type CloudAccountVsphereRegionEnumerationSpecification struct {
 	// Example: 23959a1e-18bc-4f0c-ac49-b5aeb4b6eef4
 	Dcid string `json:"dcid,omitempty"`
 
+	// The environment where data collectors are deployed. When the data collectors are deployed on a cloud gateway appliance, use "aap".
+	// Example: aap
+	Environment string `json:"environment,omitempty"`
+
 	// Host name for the vSphere endpoint. Either provide hostName or provide a cloudAccountId of an existing account.
 	// Example: vc.mycompany.com
 	HostName string `json:"hostName,omitempty"`

@@ -81,6 +81,11 @@ type Pipeline interface {
 	Enabled() bool
 	SetEnabled(bool)
 
+	// Indicates if the pipeline is shared with all projects in an Org.
+	// Example: true
+	Global() bool
+	SetGlobal(bool)
+
 	// String description of the icon used for this Pipeline.
 	// Example: tools,,is-success is-solid
 	Icon() string
@@ -132,8 +137,10 @@ type Pipeline interface {
 	Stages() map[string]Stage
 	SetStages(map[string]Stage)
 
-	Starred() PipelineStarredProperty
-	SetStarred(PipelineStarredProperty)
+	// Highlights any given Input/Output properties
+	// Example: {"test-output":"${Stage0.Task0.status}"}
+	Starred() *PipelineStarredProperty
+	SetStarred(*PipelineStarredProperty)
 
 	// Indicates if the Pipeline is enabled/disabled/released to catalog.
 	// Example: RELEASED
@@ -191,6 +198,8 @@ type pipeline struct {
 
 	enabledField bool
 
+	globalField bool
+
 	iconField string
 
 	idField string
@@ -213,7 +222,7 @@ type pipeline struct {
 
 	stagesField map[string]Stage
 
-	starredField PipelineStarredProperty
+	starredField *PipelineStarredProperty
 
 	stateField string
 
@@ -338,6 +347,16 @@ func (m *pipeline) SetEnabled(val bool) {
 	m.enabledField = val
 }
 
+// Global gets the global of this polymorphic type
+func (m *pipeline) Global() bool {
+	return m.globalField
+}
+
+// SetGlobal sets the global of this polymorphic type
+func (m *pipeline) SetGlobal(val bool) {
+	m.globalField = val
+}
+
 // Icon gets the icon of this polymorphic type
 func (m *pipeline) Icon() string {
 	return m.iconField
@@ -449,12 +468,12 @@ func (m *pipeline) SetStages(val map[string]Stage) {
 }
 
 // Starred gets the starred of this polymorphic type
-func (m *pipeline) Starred() PipelineStarredProperty {
+func (m *pipeline) Starred() *PipelineStarredProperty {
 	return m.starredField
 }
 
 // SetStarred sets the starred of this polymorphic type
-func (m *pipeline) SetStarred(val PipelineStarredProperty) {
+func (m *pipeline) SetStarred(val *PipelineStarredProperty) {
 	m.starredField = val
 }
 
@@ -754,13 +773,15 @@ func (m *pipeline) validateStarred(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if err := m.Starred().Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("starred")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("starred")
+	if m.Starred() != nil {
+		if err := m.Starred().Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("starred")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("starred")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -905,13 +926,15 @@ func (m *pipeline) contextValidateStages(ctx context.Context, formats strfmt.Reg
 
 func (m *pipeline) contextValidateStarred(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.Starred().ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("starred")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("starred")
+	if m.Starred() != nil {
+		if err := m.Starred().ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("starred")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("starred")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil

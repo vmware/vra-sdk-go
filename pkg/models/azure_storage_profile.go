@@ -74,9 +74,13 @@ type AzureStorageProfile struct {
 	// Example: None / ReadOnly / ReadWrite
 	OsDiskCaching string `json:"osDiskCaching,omitempty"`
 
-	// Email of the user that owns the entity.
+	// Email of the user or display name of the group that owns the entity.
 	// Example: csp@vmware.com
 	Owner string `json:"owner,omitempty"`
+
+	// Type of a owner(user/ad_group) that owns the entity.
+	// Example: ad_group
+	OwnerType string `json:"ownerType,omitempty"`
 
 	// Indicates whether this storage profile should support encryption or not.
 	// Example: false

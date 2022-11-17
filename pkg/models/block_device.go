@@ -62,8 +62,7 @@ type BlockDevice struct {
 
 	// The external zoneId of the resource.
 	// Example: us-east-1a
-	// Required: true
-	ExternalZoneID *string `json:"externalZoneId"`
+	ExternalZoneID string `json:"externalZoneId,omitempty"`
 
 	// The id of this resource instance
 	// Example: 9e49
@@ -78,9 +77,13 @@ type BlockDevice struct {
 	// Example: 42413b31-1716-477e-9a88-9dc1c3cb1cdf
 	OrgID string `json:"orgId,omitempty"`
 
-	// Email of the user that owns the entity.
+	// Email of the user or display name of the group that owns the entity.
 	// Example: csp@vmware.com
 	Owner string `json:"owner,omitempty"`
+
+	// Type of a owner(user/ad_group) that owns the entity.
+	// Example: ad_group
+	OwnerType string `json:"ownerType,omitempty"`
 
 	// Indicates whether the block device survives a delete action.
 	// Example: true
@@ -134,10 +137,6 @@ func (m *BlockDevice) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateExternalRegionID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateExternalZoneID(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -214,15 +213,6 @@ func (m *BlockDevice) validateCloudAccountIds(formats strfmt.Registry) error {
 func (m *BlockDevice) validateExternalRegionID(formats strfmt.Registry) error {
 
 	if err := validate.Required("externalRegionId", "body", m.ExternalRegionID); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *BlockDevice) validateExternalZoneID(formats strfmt.Registry) error {
-
-	if err := validate.Required("externalZoneId", "body", m.ExternalZoneID); err != nil {
 		return err
 	}
 

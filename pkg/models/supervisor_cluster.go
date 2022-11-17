@@ -53,6 +53,9 @@ type SupervisorCluster struct {
 	// registered
 	Registered bool `json:"registered,omitempty"`
 
+	// software version
+	SoftwareVersion string `json:"softwareVersion,omitempty"`
+
 	// status
 	// Enum: [ON CONFIGURING REMOVING ERROR]
 	Status string `json:"status,omitempty"`
