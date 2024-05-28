@@ -32,7 +32,7 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	DeletePolicyUsingDELETE5(params *DeletePolicyUsingDELETE5Params, opts ...ClientOption) (*DeletePolicyUsingDELETE5NoContent, error)
 
-	DryRunPolicyUsingPOST2(params *DryRunPolicyUsingPOST2Params, opts ...ClientOption) (*DryRunPolicyUsingPOST2OK, *DryRunPolicyUsingPOST2Accepted, error)
+	DryRunPolicyUsingPOST2(params *DryRunPolicyUsingPOST2Params, opts ...ClientOption) (*DryRunPolicyUsingPOST2OK, *DryRunPolicyUsingPOST2Created, error)
 
 	GetPoliciesUsingGET5(params *GetPoliciesUsingGET5Params, opts ...ClientOption) (*GetPoliciesUsingGET5OK, error)
 
@@ -86,7 +86,7 @@ DryRunPolicyUsingPOST2 triggers a policy dry run
 
 Dry-run an existing policy to rehearse actual policy effect on application.
 */
-func (a *Client) DryRunPolicyUsingPOST2(params *DryRunPolicyUsingPOST2Params, opts ...ClientOption) (*DryRunPolicyUsingPOST2OK, *DryRunPolicyUsingPOST2Accepted, error) {
+func (a *Client) DryRunPolicyUsingPOST2(params *DryRunPolicyUsingPOST2Params, opts ...ClientOption) (*DryRunPolicyUsingPOST2OK, *DryRunPolicyUsingPOST2Created, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDryRunPolicyUsingPOST2Params()
@@ -114,7 +114,7 @@ func (a *Client) DryRunPolicyUsingPOST2(params *DryRunPolicyUsingPOST2Params, op
 	switch value := result.(type) {
 	case *DryRunPolicyUsingPOST2OK:
 		return value, nil, nil
-	case *DryRunPolicyUsingPOST2Accepted:
+	case *DryRunPolicyUsingPOST2Created:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
