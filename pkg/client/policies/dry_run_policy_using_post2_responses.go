@@ -29,8 +29,8 @@ func (o *DryRunPolicyUsingPOST2Reader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return result, nil
-	case 202:
-		result := NewDryRunPolicyUsingPOST2Accepted()
+	case 201:
+		result := NewDryRunPolicyUsingPOST2Created()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -109,53 +109,65 @@ func (o *DryRunPolicyUsingPOST2OK) readResponse(response runtime.ClientResponse,
 	return nil
 }
 
-// NewDryRunPolicyUsingPOST2Accepted creates a DryRunPolicyUsingPOST2Accepted with default headers values
-func NewDryRunPolicyUsingPOST2Accepted() *DryRunPolicyUsingPOST2Accepted {
-	return &DryRunPolicyUsingPOST2Accepted{}
+// NewDryRunPolicyUsingPOST2Created creates a DryRunPolicyUsingPOST2Created with default headers values
+func NewDryRunPolicyUsingPOST2Created() *DryRunPolicyUsingPOST2Created {
+	return &DryRunPolicyUsingPOST2Created{}
 }
 
 /*
-DryRunPolicyUsingPOST2Accepted describes a response with status code 202, with default header values.
+DryRunPolicyUsingPOST2Created describes a response with status code 201, with default header values.
 
-Accepted
+Created
 */
-type DryRunPolicyUsingPOST2Accepted struct {
+type DryRunPolicyUsingPOST2Created struct {
+	Payload *models.Policy
 }
 
-// IsSuccess returns true when this dry run policy using p o s t2 accepted response has a 2xx status code
-func (o *DryRunPolicyUsingPOST2Accepted) IsSuccess() bool {
+// IsSuccess returns true when this dry run policy using p o s t2 created response has a 2xx status code
+func (o *DryRunPolicyUsingPOST2Created) IsSuccess() bool {
 	return true
 }
 
-// IsRedirect returns true when this dry run policy using p o s t2 accepted response has a 3xx status code
-func (o *DryRunPolicyUsingPOST2Accepted) IsRedirect() bool {
+// IsRedirect returns true when this dry run policy using p o s t2 created response has a 3xx status code
+func (o *DryRunPolicyUsingPOST2Created) IsRedirect() bool {
 	return false
 }
 
-// IsClientError returns true when this dry run policy using p o s t2 accepted response has a 4xx status code
-func (o *DryRunPolicyUsingPOST2Accepted) IsClientError() bool {
+// IsClientError returns true when this dry run policy using p o s t2 created response has a 4xx status code
+func (o *DryRunPolicyUsingPOST2Created) IsClientError() bool {
 	return false
 }
 
-// IsServerError returns true when this dry run policy using p o s t2 accepted response has a 5xx status code
-func (o *DryRunPolicyUsingPOST2Accepted) IsServerError() bool {
+// IsServerError returns true when this dry run policy using p o s t2 created response has a 5xx status code
+func (o *DryRunPolicyUsingPOST2Created) IsServerError() bool {
 	return false
 }
 
-// IsCode returns true when this dry run policy using p o s t2 accepted response a status code equal to that given
-func (o *DryRunPolicyUsingPOST2Accepted) IsCode(code int) bool {
-	return code == 202
+// IsCode returns true when this dry run policy using p o s t2 created response a status code equal to that given
+func (o *DryRunPolicyUsingPOST2Created) IsCode(code int) bool {
+	return code == 201
 }
 
-func (o *DryRunPolicyUsingPOST2Accepted) Error() string {
-	return fmt.Sprintf("[POST /policy/api/policies][%d] dryRunPolicyUsingPOST2Accepted ", 202)
+func (o *DryRunPolicyUsingPOST2Created) Error() string {
+	return fmt.Sprintf("[POST /policy/api/policies][%d] dryRunPolicyUsingPOST2Created  %+v", 201, o.Payload)
 }
 
-func (o *DryRunPolicyUsingPOST2Accepted) String() string {
-	return fmt.Sprintf("[POST /policy/api/policies][%d] dryRunPolicyUsingPOST2Accepted ", 202)
+func (o *DryRunPolicyUsingPOST2Created) String() string {
+	return fmt.Sprintf("[POST /policy/api/policies][%d] dryRunPolicyUsingPOST2Created  %+v", 201, o.Payload)
 }
 
-func (o *DryRunPolicyUsingPOST2Accepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *DryRunPolicyUsingPOST2Created) GetPayload() *models.Policy {
+	return o.Payload
+}
+
+func (o *DryRunPolicyUsingPOST2Created) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Policy)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

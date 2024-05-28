@@ -4659,8 +4659,11 @@
                     "200": {
                         "description": "OK"
                     },
-                    "202": {
-                        "description": "Accepted"
+                    "201": {
+                        "schema": {
+                            "$ref": "#/definitions/Policy"
+                        },
+                        "description": "Created"
                     },
                     "400": {
                         "description": "Bad Request"
