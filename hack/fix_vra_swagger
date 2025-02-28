@@ -28,6 +28,7 @@ def add_filter_params(swagger):
         "/iaas/api/fabric-networks",
         "/iaas/api/fabric-vsphere-datastores",
         "/iaas/api/fabric-vsphere-storage-policies",
+        "/iaas/api/networks",
         "/iaas/api/network-domains",
         "/iaas/api/projects",
         "/iaas/api/security-groups",

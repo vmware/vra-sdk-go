@@ -61,6 +61,12 @@ GetNetworksParams contains all the parameters to send to the API endpoint
 */
 type GetNetworksParams struct {
 
+	/* DollarFilter.
+
+	   Add a filter to return limited results
+	*/
+	DollarFilter *string
+
 	/* APIVersion.
 
 	   The version of the API in yyyy-MM-dd format (UTC). For versioning information refer to /iaas/api/about
@@ -120,6 +126,17 @@ func (o *GetNetworksParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithDollarFilter adds the dollarFilter to the get networks params
+func (o *GetNetworksParams) WithDollarFilter(dollarFilter *string) *GetNetworksParams {
+	o.SetDollarFilter(dollarFilter)
+	return o
+}
+
+// SetDollarFilter adds the dollarFilter to the get networks params
+func (o *GetNetworksParams) SetDollarFilter(dollarFilter *string) {
+	o.DollarFilter = dollarFilter
+}
+
 // WithAPIVersion adds the aPIVersion to the get networks params
 func (o *GetNetworksParams) WithAPIVersion(aPIVersion *string) *GetNetworksParams {
 	o.SetAPIVersion(aPIVersion)
@@ -138,6 +155,23 @@ func (o *GetNetworksParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		return err
 	}
 	var res []error
+
+	if o.DollarFilter != nil {
+
+		// query param $filter
+		var qrDollarFilter string
+
+		if o.DollarFilter != nil {
+			qrDollarFilter = *o.DollarFilter
+		}
+		qDollarFilter := qrDollarFilter
+		if qDollarFilter != "" {
+
+			if err := r.SetQueryParam("$filter", qDollarFilter); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.APIVersion != nil {
 
