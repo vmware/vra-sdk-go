@@ -108,6 +108,12 @@ type GetPoliciesUsingGET5Params struct {
 	*/
 	Search *string
 
+	/* TypeID.
+
+	   The type id of the policy.
+	*/
+	TypeID string
+
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -238,6 +244,17 @@ func (o *GetPoliciesUsingGET5Params) SetSearch(search *string) {
 	o.Search = search
 }
 
+// WithTypeID adds the typeID to the get policies using g e t 5 params
+func (o *GetPoliciesUsingGET5Params) WithTypeID(typeID string) *GetPoliciesUsingGET5Params {
+	o.SetTypeID(typeID)
+	return o
+}
+
+// SetTypeID adds the typeId to the get policies using g e t 5 params
+func (o *GetPoliciesUsingGET5Params) SetTypeID(typeID string) {
+	o.TypeID = typeID
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetPoliciesUsingGET5Params) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -357,6 +374,14 @@ func (o *GetPoliciesUsingGET5Params) WriteToRequest(r runtime.ClientRequest, reg
 				return err
 			}
 		}
+	}
+
+	// query param typeId
+	qrTypeID := o.TypeID
+	qTypeID := qrTypeID
+
+	if err := r.SetQueryParam("typeId", qTypeID); err != nil {
+		return err
 	}
 
 	if len(res) > 0 {
