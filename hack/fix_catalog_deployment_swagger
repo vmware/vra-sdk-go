@@ -8,6 +8,23 @@ import json
 old_filename = "swagger/vra-catalog-deployment.json"
 new_filename = "swagger/vra-catalog-deployment-fixed.json"
 
+def add_typeid_param(swagger):
+    # The typeID parameter to insert
+    type_id_param = {
+        "name": "typeId",
+        "in": "query",
+        "description": "The type id of the policy.",
+        "required": False,
+        "type": "string",
+        "allowEmptyValue": True
+    }
+
+    # Update the needed path
+    param_list = swagger['paths']['/policy/api/policies']['get']['parameters']
+    param_name_list = [d['name'] for d in param_list]
+    if type_id_param['name'] not in param_name_list:
+        param_list.insert(0, type_id_param)
+
 
 def replace_value(d, k, v, new):
     if k in d and d[k] == v:
@@ -34,6 +51,15 @@ def rename_deployment_models(swagger):
         del swagger['definitions'][oldDef]
         swagger['definitions'][newDef] = v
         replace_value(swagger, "$ref", oldRef, newRef)
+
+
+def rename_deployment_operationid(swagger):
+    operations = [
+        ("/policy/api/policies", "post", "createPolicyUsingPOST_1"),
+    ]
+
+    for (path, op, newOperationid) in operations:
+        swagger['paths'][path][op]["operationId"] = newOperationid
 
 
 def remove_global_security(swagger):
@@ -63,6 +89,9 @@ if __name__ == "__main__":
     if args.omit_security:
         remove_global_security(swagger)
         remove_security(swagger)
+
+    add_typeid_param(swagger)
+    rename_deployment_operationid(swagger)
 
     # Overwrite the swagger spec
     f = open(new_filename, "w")
