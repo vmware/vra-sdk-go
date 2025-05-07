@@ -68,6 +68,12 @@ type GetCatalogItemUsingGET5Params struct {
 	*/
 	APIVersion *string
 
+	/* Expand.
+
+	   The expanded details of the requested comma separated objects.
+	*/
+	Expand *string
+
 	/* ExpandProjects.
 
 	   Retrieves the 'projects' field of the catalog item
@@ -146,6 +152,17 @@ func (o *GetCatalogItemUsingGET5Params) SetAPIVersion(aPIVersion *string) {
 	o.APIVersion = aPIVersion
 }
 
+// WithExpand adds the expand to the get catalog item using g e t 5 params
+func (o *GetCatalogItemUsingGET5Params) WithExpand(expand *string) *GetCatalogItemUsingGET5Params {
+	o.SetExpand(expand)
+	return o
+}
+
+// SetExpand adds the expand to the get catalog item using g e t 5 params
+func (o *GetCatalogItemUsingGET5Params) SetExpand(expand *string) {
+	o.Expand = expand
+}
+
 // WithExpandProjects adds the expandProjects to the get catalog item using g e t 5 params
 func (o *GetCatalogItemUsingGET5Params) WithExpandProjects(expandProjects *bool) *GetCatalogItemUsingGET5Params {
 	o.SetExpandProjects(expandProjects)
@@ -188,6 +205,23 @@ func (o *GetCatalogItemUsingGET5Params) WriteToRequest(r runtime.ClientRequest, 
 		if qAPIVersion != "" {
 
 			if err := r.SetQueryParam("apiVersion", qAPIVersion); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Expand != nil {
+
+		// query param expand
+		var qrExpand string
+
+		if o.Expand != nil {
+			qrExpand = *o.Expand
+		}
+		qExpand := qrExpand
+		if qExpand != "" {
+
+			if err := r.SetQueryParam("expand", qExpand); err != nil {
 				return err
 			}
 		}

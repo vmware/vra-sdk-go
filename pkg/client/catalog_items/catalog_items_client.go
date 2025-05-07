@@ -40,9 +40,15 @@ type ClientService interface {
 
 	GetVersionsUsingGET2(params *GetVersionsUsingGET2Params, opts ...ClientOption) (*GetVersionsUsingGET2OK, error)
 
+	PublishCatalogItem(params *PublishCatalogItemParams, opts ...ClientOption) (*PublishCatalogItemOK, error)
+
+	RepublishCatalogItem(params *RepublishCatalogItemParams, opts ...ClientOption) (*RepublishCatalogItemOK, error)
+
 	RequestCatalogItemInstancesUsingPOST1(params *RequestCatalogItemInstancesUsingPOST1Params, opts ...ClientOption) (*RequestCatalogItemInstancesUsingPOST1OK, error)
 
 	SubmitUpfrontPriceRequestForCatalogItemUsingPOST2(params *SubmitUpfrontPriceRequestForCatalogItemUsingPOST2Params, opts ...ClientOption) (*SubmitUpfrontPriceRequestForCatalogItemUsingPOST2OK, error)
+
+	UnpublishCatalogItem(params *UnpublishCatalogItemParams, opts ...ClientOption) (*UnpublishCatalogItemOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -248,6 +254,86 @@ func (a *Client) GetVersionsUsingGET2(params *GetVersionsUsingGET2Params, opts .
 }
 
 /*
+PublishCatalogItem publishes a catalog item
+
+Publishes a catalog item and shares it with the members of a specified project.
+*/
+func (a *Client) PublishCatalogItem(params *PublishCatalogItemParams, opts ...ClientOption) (*PublishCatalogItemOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPublishCatalogItemParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "publishCatalogItem",
+		Method:             "POST",
+		PathPattern:        "/catalog/api/items:publish",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PublishCatalogItemReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PublishCatalogItemOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for publishCatalogItem: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+RepublishCatalogItem republishes a catalog item
+
+Updates an existing catalog item.
+*/
+func (a *Client) RepublishCatalogItem(params *RepublishCatalogItemParams, opts ...ClientOption) (*RepublishCatalogItemOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewRepublishCatalogItemParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "republishCatalogItem",
+		Method:             "POST",
+		PathPattern:        "/catalog/api/items/{catalogItemId}:republish",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &RepublishCatalogItemReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*RepublishCatalogItemOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for republishCatalogItem: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 RequestCatalogItemInstancesUsingPOST1 creates deployments
 
 Creates deployments from a catalog item.
@@ -324,6 +410,46 @@ func (a *Client) SubmitUpfrontPriceRequestForCatalogItemUsingPOST2(params *Submi
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for submitUpfrontPriceRequestForCatalogItemUsingPOST_2: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UnpublishCatalogItem unpublishes a catalog item
+
+Unpublishes a catalog item with the specified ID. If content is of type template, unreleases all its versions.
+*/
+func (a *Client) UnpublishCatalogItem(params *UnpublishCatalogItemParams, opts ...ClientOption) (*UnpublishCatalogItemOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUnpublishCatalogItemParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "unpublishCatalogItem",
+		Method:             "POST",
+		PathPattern:        "/catalog/api/items/{catalogItemId}:unpublish",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UnpublishCatalogItemReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UnpublishCatalogItemOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for unpublishCatalogItem: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

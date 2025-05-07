@@ -8,7 +8,7 @@ import json
 old_filename = "swagger/vra-catalog-deployment.json"
 new_filename = "swagger/vra-catalog-deployment-fixed.json"
 
-def add_typeid_param(swagger):
+def add_policy_typeid_param(swagger):
     # The typeID parameter to insert
     type_id_param = {
         "name": "typeId",
@@ -24,6 +24,217 @@ def add_typeid_param(swagger):
     param_name_list = [d['name'] for d in param_list]
     if type_id_param['name'] not in param_name_list:
         param_list.insert(0, type_id_param)
+
+
+def add_catalog_item_expand_param(swagger):
+    # The Expand parameter to insert
+    type_id_param = {
+        'name': 'expand',
+        'in': 'query',
+        'description': 'The expanded details of the requested comma separated objects.',
+        'required': False,
+        'type': 'string',
+        'allowEmptyValue': False
+    }
+
+    # Update the needed path
+    param_list = swagger['paths']['/catalog/api/items/{id}']['get']['parameters']
+    param_name_list = [d['name'] for d in param_list]
+    if type_id_param['name'] not in param_name_list:
+        param_list.insert(0, type_id_param)
+
+
+def add_catalog_item_operations(swagger):
+    # Add a POST operation to publish a catalog item
+    if '/catalog/api/items:publish' not in swagger['paths']:
+        swagger['paths']['/catalog/api/items:publish'] = {
+            'post': {
+                'tags': [
+                    'Catalog Items'
+                ],
+                'summary': 'Publish a catalog item.',
+                'description': 'Publishes a catalog item and shares it with the members of a specified project.',
+                'operationId': 'publishCatalogItem',
+                'consumes': [
+                    'application/json'
+                ],
+                'parameters': [
+                    {
+                        'name': 'request',
+                        'in': 'body',
+                        'description': 'request',
+                        'required': True,
+                        'schema': {
+                            '$ref': '#/definitions/CatalogItemPublishRequest'
+                        }
+                    }
+                ],
+                'responses': {
+                    '200': {
+                        'description': 'OK',
+                        'schema': {
+                            '$ref': '#/definitions/CatalogItem'
+                        }
+                    },
+                    '400': {
+                        'description': 'Invalid request - bad data'
+                    },
+                    '401': {
+                        'description': 'Unauthorized'
+                    },
+                    '403': {
+                        'description': 'Forbidden'
+                    }
+                }
+            }
+        }
+
+    # Add a POST operation to republish a catalog item
+    if '/catalog/api/items/{catalogItemId}:republish' not in swagger['paths']:
+        swagger['paths']['/catalog/api/items/{catalogItemId}:republish'] = {
+            'post': {
+                'tags': [
+                    'Catalog Items'
+                ],
+                'summary': 'Republish a catalog item.',
+                'description': 'Updates an existing catalog item.',
+                'operationId': 'republishCatalogItem',
+                'consumes': [
+                    'application/json'
+                ],
+                'parameters': [
+                    {
+                        'name': 'catalogItemId',
+                        'in': 'path',
+                        'description': 'Catalog Item ID',
+                        'required': True,
+                        'type': 'string',
+                        'format': 'uuid'
+                    },
+                    {
+                        'name': 'request',
+                        'in': 'body',
+                        'description': 'request',
+                        'required': True,
+                        'schema': {
+                            '$ref': '#/definitions/CatalogItemPublishRequest'
+                        }
+                    }
+                ],
+                'responses': {
+                    '200': {
+                        'description': 'OK',
+                        'schema': {
+                            '$ref': '#/definitions/CatalogItem'
+                        }
+                    },
+                    '400': {
+                        'description': 'Invalid request - bad data'
+                    },
+                    '401': {
+                        'description': 'Unauthorized'
+                    },
+                    '403': {
+                        'description': 'Forbidden'
+                    },
+                    '404': {
+                        'description': 'Not Found'
+                    }
+                }
+            }
+        }
+
+    # Add a POST operation to unpublish a catalog item
+    if '/catalog/api/items/{catalogItemId}:unpublish' not in swagger['paths']:
+        swagger['paths']['/catalog/api/items/{catalogItemId}:unpublish'] = {
+            'post': {
+                'tags': [
+                    'Catalog Items'
+                ],
+                'summary': 'Unpublish a catalog item.',
+                'description': 'Unpublishes a catalog item with the specified ID. If content is of type template, unreleases all its versions.',
+                'operationId': 'unpublishCatalogItem',
+                'parameters': [
+                    {
+                        'name': 'catalogItemId',
+                        'in': 'path',
+                        'description': 'Catalog Item ID',
+                        'required': True,
+                        'type': 'string',
+                        'format': 'uuid'
+                    }
+                ],
+                'responses': {
+                    '200': {
+                        'description': 'OK',
+                    },
+                    '401': {
+                        'description': 'Unauthorized'
+                    },
+                    '403': {
+                        'description': 'Forbidden.'
+                    }
+                },
+            }
+        }
+
+    # Add a definition for the CatalogItemPublishRequest
+    if 'CatalogItemPublishRequest' not in swagger['definitions']:
+        swagger['definitions']['CatalogItemPublishRequest'] = {
+            'type': 'object',
+            'title': 'CatalogItemPublishRequest',
+            'description': 'A request to publish a catalog item to the catalog for the members of a specific project.',
+            'properties': {
+                'description': {
+                    'type': 'string',
+                    'description': 'Catalog item description.',
+                },
+                'global': {
+                    'type': 'boolean',
+                    'description': 'Set to true to allow this catalog to be shared with multiple projects, or false to restrict it to the specified project.',
+                },
+                'iconId': {
+                    'type': 'string',
+                    'format': 'uuid',
+                    'description': 'ID of the icon to associate with this catalog item.'
+                },
+                'name': {
+                    'type': 'string',
+                    'description': 'Catalog item name.',
+                },
+                'projectId': {
+                    'type': 'string',
+                    'format': 'uuid',
+                    'description': 'ID of the project to share this catalog item with.'
+                },
+                'spec': {
+                    'type': 'object',
+                    'description': 'Information specific to the content type.',
+                },
+                'typeId': {
+                    'type': 'string',
+                    'description': 'Type of content to be published, i.e., the catalog item type',
+                },
+            },
+        }
+
+    # Add missing properties at the CatalogItem definition
+    if 'CatalogItem' in swagger['definitions']:
+        if 'global' not in swagger['definitions']['CatalogItem']['properties']:
+            swagger['definitions']['CatalogItem']['properties']['global'] = {
+                'type': 'boolean',
+                'description': 'Indicates whether the catalog item can be assigned to other projects.',
+            }
+        if 'spec' not in swagger['definitions']['CatalogItem']['properties']:
+            swagger['definitions']['CatalogItem']['properties']['spec'] = {
+                'type': 'object',
+                'description': 'Information specific to the content type.',
+            }
+        if 'sourceProjectId' not in swagger['definitions']['CatalogItem']['properties']:
+            swagger['definitions']['CatalogItem']['properties']['sourceProjectId'] = {
+                'type': 'string',
+                'description': 'Project ID with which the catalog item was associated when created.',
+            }
 
 
 def replace_value(d, k, v, new):
@@ -90,7 +301,9 @@ if __name__ == "__main__":
         remove_global_security(swagger)
         remove_security(swagger)
 
-    add_typeid_param(swagger)
+    add_policy_typeid_param(swagger)
+    add_catalog_item_expand_param(swagger)
+    add_catalog_item_operations(swagger)
     rename_deployment_operationid(swagger)
 
     # Overwrite the swagger spec

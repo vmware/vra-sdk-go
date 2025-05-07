@@ -43,6 +43,9 @@ type CatalogItem struct {
 	// Form ID
 	FormID string `json:"formId,omitempty"`
 
+	// Indicates whether the catalog item can be assigned to other projects.
+	Global bool `json:"global,omitempty"`
+
 	// Icon ID
 	// Format: uuid
 	IconID strfmt.UUID `json:"iconId,omitempty"`
@@ -79,6 +82,12 @@ type CatalogItem struct {
 
 	// LibraryItem source name.
 	SourceName string `json:"sourceName,omitempty"`
+
+	// Project ID with which the catalog item was associated when created.
+	SourceProjectID string `json:"sourceProjectId,omitempty"`
+
+	// Information specific to the content type.
+	Spec interface{} `json:"spec,omitempty"`
 
 	// ResourceReference to type, e.g. blueprint, CFT... etc
 	// Required: true
