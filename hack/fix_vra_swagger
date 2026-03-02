@@ -65,6 +65,17 @@ def add_204(swagger):
             responses['204'] = {"description": "No Content"}
 
 
+def add_400(swagger):
+    paths = [
+        ('/deployment/api/deployments/{deploymentId}/requests', 'post'),
+    ]
+
+    # Update the needed paths
+    for p, op in paths:
+        responses = swagger['paths'][p][op]['responses']
+        if '400' not in responses:
+            responses['400'] = {"description": "Bad Request"}
+
 def add_409_conflict(swagger):
     # List of paths and operations to add a 409 conflict
     paths = [
@@ -191,6 +202,7 @@ if __name__ == "__main__":
 
     add_filter_params(swagger)
     add_204(swagger)
+    add_400(swagger)
     add_409_conflict(swagger)
     add_error_definition(swagger)
     add_default_value_to_boolean_properties(swagger)
