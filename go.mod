@@ -9,7 +9,7 @@ require (
 	github.com/go-openapi/swag v0.22.3
 	github.com/go-openapi/validate v0.22.0
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
-	go.mongodb.org/mongo-driver v1.10.3 // indirect
+	go.mongodb.org/mongo-driver v1.17.7 // indirect
 )
 
 go 1.14
