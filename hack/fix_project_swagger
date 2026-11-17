@@ -34,6 +34,14 @@ def rename_project_models(swagger):
         replace_value(swagger, "$ref", oldRef, newRef)
 
 
+# The project-service responses do not contain the springfox generated discriminator property, so go-swagger
+# generates polymorphic types that fail to unmarshal real responses ("... in body is required").
+# Drop the discriminator so plain structs are generated.
+def remove_discriminators(swagger):
+    for name in ['Project', 'UpdateProjectSpecification']:
+        swagger['definitions'][name].pop('discriminator', None)
+
+
 def remove_global_security(swagger):
     if 'securityDefinitions' in swagger:
         del swagger['securityDefinitions']
@@ -57,6 +65,7 @@ if __name__ == "__main__":
     swagger = json.loads(open(old_filename).read())
 
     rename_project_models(swagger)
+    remove_discriminators(swagger)
 
     if args.omit_security:
         remove_global_security(swagger)

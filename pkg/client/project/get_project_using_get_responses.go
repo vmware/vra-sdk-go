@@ -57,7 +57,7 @@ GetProjectUsingGETOK describes a response with status code 200, with default hea
 'Success' with the Project
 */
 type GetProjectUsingGETOK struct {
-	Payload models.Project
+	Payload *models.Project
 }
 
 // IsSuccess returns true when this get project using g e t o k response has a 2xx status code
@@ -93,18 +93,18 @@ func (o *GetProjectUsingGETOK) String() string {
 	return fmt.Sprintf("[GET /project-service/api/projects/{id}][%d] getProjectUsingGETOK  %+v", 200, o.Payload)
 }
 
-func (o *GetProjectUsingGETOK) GetPayload() models.Project {
+func (o *GetProjectUsingGETOK) GetPayload() *models.Project {
 	return o.Payload
 }
 
 func (o *GetProjectUsingGETOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response payload as interface type
-	payload, err := models.UnmarshalProject(response.Body(), consumer)
-	if err != nil {
+	o.Payload = new(models.Project)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
-	o.Payload = payload
 
 	return nil
 }

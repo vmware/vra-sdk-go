@@ -6,13 +6,9 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"bytes"
 	"context"
-	"encoding/json"
-	"io"
 
 	"github.com/go-openapi/errors"
-	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
@@ -22,29 +18,23 @@ import (
 //
 // Represents a specification for a updating a project.
 //
-// swagger:discriminator UpdateProjectSpecification Represents a specification for a updating a project.
-type UpdateProjectSpecification interface {
-	runtime.Validatable
-	runtime.ContextValidatable
+// swagger:model UpdateProjectSpecification
+type UpdateProjectSpecification struct {
 
 	// List of constraints of the project.
 	// Example: {"network":{"conditions":[{"enforcement":"HARD","expression":{"key":"key","value":"value"},"occurrence":"MUST_OCCUR","type":"TAG"}]}}
-	Constraints() map[string]ProjectConstraint
-	SetConstraints(map[string]ProjectConstraint)
+	Constraints map[string]ProjectConstraint `json:"constraints,omitempty"`
 
 	// A human-friendly description.
 	// Example: my-description
-	Description() string
-	SetDescription(string)
+	Description string `json:"description,omitempty"`
 
 	// A human-friendly name used as an identifier in APIs that support this option.
 	// Example: my-name
-	Name() string
-	SetName(string)
+	Name string `json:"name,omitempty"`
 
 	// The timeout that should be used for Blueprint operations and Provisioning tasks. The timeout is in seconds.
-	OperationTimeout() int64
-	SetOperationTimeout(int64)
+	OperationTimeout int64 `json:"operationTimeout,omitempty"`
 
 	// List of properties of the project, to be applied to any resource provisioned within the project.
 	//
@@ -55,149 +45,14 @@ type UpdateProjectSpecification interface {
 	//
 	// You can allow Terraform cloudzone mapping through the property with key: __allowTerraformCloudzoneMapping. It can be set to either true or false. By default, it is set to false.
 	// Example: {"__allowTerraformCloudzoneMapping":"true","__namingTemplate":"my-resource-template-${######}","__projectPlacementPolicy":"SPREAD","myproperty":"enforcement"}
-	Properties() map[string]string
-	SetProperties(map[string]string)
+	Properties map[string]string `json:"properties,omitempty"`
 
 	// Specifies whether the resources in this projects are shared or not.
-	SharedResources() bool
-	SetSharedResources(bool)
-
-	// AdditionalProperties in base type shoud be handled just like regular properties
-	// At this moment, the base type property is pushed down to the subtype
-}
-
-type updateProjectSpecification struct {
-	constraintsField map[string]ProjectConstraint
-
-	descriptionField string
-
-	nameField string
-
-	operationTimeoutField int64
-
-	propertiesField map[string]string
-
-	sharedResourcesField bool
-}
-
-// Constraints gets the constraints of this polymorphic type
-func (m *updateProjectSpecification) Constraints() map[string]ProjectConstraint {
-	return m.constraintsField
-}
-
-// SetConstraints sets the constraints of this polymorphic type
-func (m *updateProjectSpecification) SetConstraints(val map[string]ProjectConstraint) {
-	m.constraintsField = val
-}
-
-// Description gets the description of this polymorphic type
-func (m *updateProjectSpecification) Description() string {
-	return m.descriptionField
-}
-
-// SetDescription sets the description of this polymorphic type
-func (m *updateProjectSpecification) SetDescription(val string) {
-	m.descriptionField = val
-}
-
-// Name gets the name of this polymorphic type
-func (m *updateProjectSpecification) Name() string {
-	return m.nameField
-}
-
-// SetName sets the name of this polymorphic type
-func (m *updateProjectSpecification) SetName(val string) {
-	m.nameField = val
-}
-
-// OperationTimeout gets the operation timeout of this polymorphic type
-func (m *updateProjectSpecification) OperationTimeout() int64 {
-	return m.operationTimeoutField
-}
-
-// SetOperationTimeout sets the operation timeout of this polymorphic type
-func (m *updateProjectSpecification) SetOperationTimeout(val int64) {
-	m.operationTimeoutField = val
-}
-
-// Properties gets the properties of this polymorphic type
-func (m *updateProjectSpecification) Properties() map[string]string {
-	return m.propertiesField
-}
-
-// SetProperties sets the properties of this polymorphic type
-func (m *updateProjectSpecification) SetProperties(val map[string]string) {
-	m.propertiesField = val
-}
-
-// SharedResources gets the shared resources of this polymorphic type
-func (m *updateProjectSpecification) SharedResources() bool {
-	return m.sharedResourcesField
-}
-
-// SetSharedResources sets the shared resources of this polymorphic type
-func (m *updateProjectSpecification) SetSharedResources(val bool) {
-	m.sharedResourcesField = val
-}
-
-// UnmarshalUpdateProjectSpecificationSlice unmarshals polymorphic slices of UpdateProjectSpecification
-func UnmarshalUpdateProjectSpecificationSlice(reader io.Reader, consumer runtime.Consumer) ([]UpdateProjectSpecification, error) {
-	var elements []json.RawMessage
-	if err := consumer.Consume(reader, &elements); err != nil {
-		return nil, err
-	}
-
-	var result []UpdateProjectSpecification
-	for _, element := range elements {
-		obj, err := unmarshalUpdateProjectSpecification(element, consumer)
-		if err != nil {
-			return nil, err
-		}
-		result = append(result, obj)
-	}
-	return result, nil
-}
-
-// UnmarshalUpdateProjectSpecification unmarshals polymorphic UpdateProjectSpecification
-func UnmarshalUpdateProjectSpecification(reader io.Reader, consumer runtime.Consumer) (UpdateProjectSpecification, error) {
-	// we need to read this twice, so first into a buffer
-	data, err := io.ReadAll(reader)
-	if err != nil {
-		return nil, err
-	}
-	return unmarshalUpdateProjectSpecification(data, consumer)
-}
-
-func unmarshalUpdateProjectSpecification(data []byte, consumer runtime.Consumer) (UpdateProjectSpecification, error) {
-	buf := bytes.NewBuffer(data)
-	buf2 := bytes.NewBuffer(data)
-
-	// the first time this is read is to fetch the value of the Represents a specification for a updating a project. property.
-	var getType struct {
-		RepresentsaSpecificationForaUpdatingaProject string `json:"Represents a specification for a updating a project."`
-	}
-	if err := consumer.Consume(buf, &getType); err != nil {
-		return nil, err
-	}
-
-	if err := validate.RequiredString("Represents a specification for a updating a project.", "body", getType.RepresentsaSpecificationForaUpdatingaProject); err != nil {
-		return nil, err
-	}
-
-	// The value of Represents a specification for a updating a project. is used to determine which type to create and unmarshal the data into
-	switch getType.RepresentsaSpecificationForaUpdatingaProject {
-	case "UpdateProjectSpecification":
-		var result updateProjectSpecification
-		if err := consumer.Consume(buf2, &result); err != nil {
-			return nil, err
-		}
-		return &result, nil
-	}
-	return nil, errors.New(422, "invalid Represents a specification for a updating a project. value: %q", getType.RepresentsaSpecificationForaUpdatingaProject)
+	SharedResources bool `json:"sharedResources,omitempty"`
 }
 
 // Validate validates this update project specification
-func (m *updateProjectSpecification) Validate(formats strfmt.Registry) error {
+func (m *UpdateProjectSpecification) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateConstraints(formats); err != nil {
@@ -210,17 +65,17 @@ func (m *updateProjectSpecification) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *updateProjectSpecification) validateConstraints(formats strfmt.Registry) error {
-	if swag.IsZero(m.Constraints()) { // not required
+func (m *UpdateProjectSpecification) validateConstraints(formats strfmt.Registry) error {
+	if swag.IsZero(m.Constraints) { // not required
 		return nil
 	}
 
-	for k := range m.Constraints() {
+	for k := range m.Constraints {
 
-		if err := validate.Required("constraints"+"."+k, "body", m.Constraints()[k]); err != nil {
+		if err := validate.Required("constraints"+"."+k, "body", m.Constraints[k]); err != nil {
 			return err
 		}
-		if val, ok := m.Constraints()[k]; ok {
+		if val, ok := m.Constraints[k]; ok {
 			if err := val.Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("constraints" + "." + k)
@@ -237,7 +92,7 @@ func (m *updateProjectSpecification) validateConstraints(formats strfmt.Registry
 }
 
 // ContextValidate validate this update project specification based on the context it is used
-func (m *updateProjectSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *UpdateProjectSpecification) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateConstraints(ctx, formats); err != nil {
@@ -250,11 +105,11 @@ func (m *updateProjectSpecification) ContextValidate(ctx context.Context, format
 	return nil
 }
 
-func (m *updateProjectSpecification) contextValidateConstraints(ctx context.Context, formats strfmt.Registry) error {
+func (m *UpdateProjectSpecification) contextValidateConstraints(ctx context.Context, formats strfmt.Registry) error {
 
-	for k := range m.Constraints() {
+	for k := range m.Constraints {
 
-		if val, ok := m.Constraints()[k]; ok {
+		if val, ok := m.Constraints[k]; ok {
 			if err := val.ContextValidate(ctx, formats); err != nil {
 				return err
 			}
@@ -262,5 +117,23 @@ func (m *updateProjectSpecification) contextValidateConstraints(ctx context.Cont
 
 	}
 
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *UpdateProjectSpecification) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *UpdateProjectSpecification) UnmarshalBinary(b []byte) error {
+	var res UpdateProjectSpecification
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
 	return nil
 }

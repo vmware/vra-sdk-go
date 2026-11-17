@@ -57,7 +57,7 @@ ModifyProjectCostsUsingPATCHOK describes a response with status code 200, with d
 'Success' with the Project
 */
 type ModifyProjectCostsUsingPATCHOK struct {
-	Payload models.Project
+	Payload *models.Project
 }
 
 // IsSuccess returns true when this modify project costs using p a t c h o k response has a 2xx status code
@@ -93,18 +93,18 @@ func (o *ModifyProjectCostsUsingPATCHOK) String() string {
 	return fmt.Sprintf("[PATCH /project-service/api/projects/{id}/cost][%d] modifyProjectCostsUsingPATCHOK  %+v", 200, o.Payload)
 }
 
-func (o *ModifyProjectCostsUsingPATCHOK) GetPayload() models.Project {
+func (o *ModifyProjectCostsUsingPATCHOK) GetPayload() *models.Project {
 	return o.Payload
 }
 
 func (o *ModifyProjectCostsUsingPATCHOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response payload as interface type
-	payload, err := models.UnmarshalProject(response.Body(), consumer)
-	if err != nil {
+	o.Payload = new(models.Project)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
-	o.Payload = payload
 
 	return nil
 }

@@ -79,7 +79,7 @@ type ModifyProjectUsingPATCHParams struct {
 
 	   project
 	*/
-	Project models.UpdateProjectSpecification
+	Project *models.UpdateProjectSpecification
 
 	timeout    time.Duration
 	Context    context.Context
@@ -157,13 +157,13 @@ func (o *ModifyProjectUsingPATCHParams) SetID(id string) {
 }
 
 // WithProject adds the project to the modify project using p a t c h params
-func (o *ModifyProjectUsingPATCHParams) WithProject(project models.UpdateProjectSpecification) *ModifyProjectUsingPATCHParams {
+func (o *ModifyProjectUsingPATCHParams) WithProject(project *models.UpdateProjectSpecification) *ModifyProjectUsingPATCHParams {
 	o.SetProject(project)
 	return o
 }
 
 // SetProject adds the project to the modify project using p a t c h params
-func (o *ModifyProjectUsingPATCHParams) SetProject(project models.UpdateProjectSpecification) {
+func (o *ModifyProjectUsingPATCHParams) SetProject(project *models.UpdateProjectSpecification) {
 	o.Project = project
 }
 
@@ -196,8 +196,10 @@ func (o *ModifyProjectUsingPATCHParams) WriteToRequest(r runtime.ClientRequest, 
 	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
 	}
-	if err := r.SetBodyParam(o.Project); err != nil {
-		return err
+	if o.Project != nil {
+		if err := r.SetBodyParam(o.Project); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

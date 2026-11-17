@@ -63,7 +63,7 @@ CreateUsingPOSTMixin5Created describes a response with status code 201, with def
 'Created' with the newly created project
 */
 type CreateUsingPOSTMixin5Created struct {
-	Payload models.Project
+	Payload *models.Project
 }
 
 // IsSuccess returns true when this create using p o s t mixin5 created response has a 2xx status code
@@ -99,18 +99,18 @@ func (o *CreateUsingPOSTMixin5Created) String() string {
 	return fmt.Sprintf("[POST /project-service/api/projects][%d] createUsingPOSTMixin5Created  %+v", 201, o.Payload)
 }
 
-func (o *CreateUsingPOSTMixin5Created) GetPayload() models.Project {
+func (o *CreateUsingPOSTMixin5Created) GetPayload() *models.Project {
 	return o.Payload
 }
 
 func (o *CreateUsingPOSTMixin5Created) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	// response payload as interface type
-	payload, err := models.UnmarshalProject(response.Body(), consumer)
-	if err != nil {
+	o.Payload = new(models.Project)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
-	o.Payload = payload
 
 	return nil
 }
